@@ -1,0 +1,17 @@
+******************
+Tool installation
+******************
+sudo apt-get install python-sphinx
+
+
+******************
+Build instruction
+******************
+cd processor-sdk-doc
+make
+
+
+******************
+HTML page output
+******************
+Open processor-sdk-doc/build/index.html and explore in browser
