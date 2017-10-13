@@ -19,4 +19,15 @@ Processor SDK includes support for Linux, TI-RTOS and Android operating systems.
    rtos/Processor_SDK_RTOS_Software_Developer_Guide
    android/Processor_SDK_Android_Software_Developers_Guide
 
+
+.. toctree::
+   :maxdepth: 3
+   :hidden:
+
+   common/Processor_SDK_Supported_Platforms_and_Versions
+
+   common/Processor_SDK_Technical_Support
+
+   common/MCSDK_to_Processor_SDK_Migration
+
 .. image:: images/platform_red.png
