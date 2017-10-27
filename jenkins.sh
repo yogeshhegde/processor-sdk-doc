@@ -17,7 +17,7 @@ UBUNTU_PACKAGES="python-sphinx"
 mkdir -pv "${ARTIFACTS}" "${OUTPUT}" "${LOGS}"
 
 # Set up host
-sudo apt-get install ${UBUNTU_PACKAGES}
+sudo apt-get -y install ${UBUNTU_PACKAGES}
 
 
 # repo-revs.txt
