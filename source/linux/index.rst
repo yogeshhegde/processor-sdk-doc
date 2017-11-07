@@ -18,18 +18,21 @@ suggestions <Feedback>`.
 This information covers Processor SDK 3.3 and above, unless otherwise noted.
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3 
    :hidden:
 
    Processor_SDK_Linux_Getting_Started_Guide
+   ../common/Processor_SDK_Supported_Platforms_and_Versions
    Processor_SDK_Linux_Directory_Structure
    Processor_SDK_Linux_Release_Notes
    Processor_SDK_Linux_GPLv3_Disclaimer
+   ../common/Processor_SDK_Technical_Support
 
    Processor_Linux_SDK_How_To_Guides
    Processor_SDK_Linux_Software_Stack
    Processor_SDK_Building_The_SDK
    Processor_SDK_Linux_Migration_Guide
+   ../common/MCSDK_to_Processor_SDK_Migration
 
 +------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
 | **Processor SDK Linux**                                                                                                                                                                             |
