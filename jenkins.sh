@@ -54,12 +54,14 @@ comment=""
 repo_rev_line="${repo}:${commit}:${branch}:${comment}"
 echo "${repo_rev_line}" >> "${REPO_REV}"
 
+VER="04_01_00_06"
+
 build_doc()
 {
     # build targets
     OS=$1
-    BUILDDIR="${OUTPUT}/${OS}/html"
-    echo "${OS}/html/${OS}/index.html" >> "${BUILD_TARGETS}"
+    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/docs/${VER}"
+    echo "processor-sdk-${OS}/esd/docs/${VER}/${OS}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
     make BUILDDIR="${BUILDDIR}" OS="${OS}" 2>&1 | tee -a "${LOGS}/make.log"
