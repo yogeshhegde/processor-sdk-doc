@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Processor SDK documentation build configuration file
+# Processor SDK Android documentation build configuration file
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -36,7 +36,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['../_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -47,10 +47,10 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'android/index'
 
 # General information about the project.
-project = u'Processor SDK'
+project = u'Processor SDK Android'
 copyright = u'2017, Texas Instruments Incorporated'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -77,7 +77,7 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = []
+exclude_patterns = ['rtos', 'linux']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -121,11 +121,11 @@ html_theme = 'sphinx_rtd_theme'
 #html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ["_themes"]
+html_theme_path = ["../_themes"]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = 'Processor SDK Documentation'
+html_title = 'Processor SDK Android Documentation'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -137,12 +137,12 @@ html_title = 'Processor SDK Documentation'
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-html_favicon = 'images/tiicon.ico'
+html_favicon = '../images/tiicon.ico'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['../_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -205,7 +205,7 @@ html_search_language = 'en'
 html_search_scorer = ''
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ProcessorSDKdoc'
+htmlhelp_basename = 'ProcessorSDKAndroiddoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -224,7 +224,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'ProcessorSDK.tex', u'Processor SDK Documentation',
+  (master_doc, 'ProcessorSDKAndroid.tex', u'Processor SDK Android Documentation',
    u'Texas Instruments Incorporated', u'manual'),
 ]
 
@@ -254,7 +254,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ProcessorSDK', u'Processor SDK Documentation',
+    (master_doc, 'ProcessorSDKAndroid', u'Processor SDK Android Documentation',
      ['Texas Instruments Incorporated'], 1)
 ]
 
@@ -268,8 +268,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'ProcessorSDK', u'Processor SDK Documentation',
-   'Texas Instruments Incorporated', 'ProcessorSDK', 'One line description of project.',
+  (master_doc, 'ProcessorSDKAndroid', u'Processor SDK Android Documentation',
+   'Texas Instruments Incorporated', 'ProcessorSDKAndroid', 'One line description of project.',
    'Miscellaneous'),
 ]
 
