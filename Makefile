@@ -8,7 +8,8 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 OS            = linux
-BUILDDIR      = build/$(OS)/html
+VERSION       = $(shell cat version.txt)
+BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
 
 
 # User-friendly check for sphinx-build
@@ -24,7 +25,7 @@ ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(C
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) source
 
-.PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest coverage gettext
+.PHONY: help clean config html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest coverage gettext
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -55,6 +56,11 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
+	rm -f source/${OS}/conf.py
+
+config:
+	cat source/common/conf.py source/${OS}/conf-${OS}.py > source/${OS}/conf.py
+	sed -i 's/SDKVERSION/${VERSION}/g' source/${OS}/conf.py
 
 html: 
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)

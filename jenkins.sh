@@ -54,17 +54,18 @@ comment=""
 repo_rev_line="${repo}:${commit}:${branch}:${comment}"
 echo "${repo_rev_line}" >> "${REPO_REV}"
 
-VER="04_01_00_06"
+VERSION="$(cat version.txt)"
 
 build_doc()
 {
     # build targets
     OS=$1
-    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/docs/${VER}"
-    echo "processor-sdk-${OS}/esd/docs/${VER}/${OS}/index.html" >> "${BUILD_TARGETS}"
+    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/docs/${VERSION}"
+    echo "processor-sdk-${OS}/esd/docs/${VERSION}/${OS}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
-    make BUILDDIR="${BUILDDIR}" OS="${OS}" 2>&1 | tee -a "${LOGS}/make.log"
+    make config OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
+    make BUILDDIR="${BUILDDIR}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
 
     # provide link to output
     echo "${BUILDDIR}" | sed -e "s|^${ARTIFACTS}|${BUILD_URL}/artifacts/|g" | \
