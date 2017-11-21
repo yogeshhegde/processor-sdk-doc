@@ -1,0 +1,3 @@
+[submodule "source/swtoolsdev"]
+	path = source/swtoolsdev
+	url = https://bitbucket.itg.ti.com/scm/swtools/swtoolsdev.git
