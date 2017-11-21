@@ -8,9 +8,17 @@ sudo apt-get install python-sphinx
 Build instruction
 ******************
 cd processor-sdk-doc
-linux: make OS=linux
-rtos: make OS=rtos
-android: make OS=android
+linux:
+make config OS=linux
+make OS=linux
+
+rtos:
+make config OS=rtos
+make OS=rtos
+
+android
+make config OS=android
+make OS=android
 
 ******************
 HTML page output
