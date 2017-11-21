@@ -5,6 +5,13 @@ sudo apt-get install python-sphinx
 
 
 ******************
+Update submodule to get the theme files from swtoolsdev
+******************
+git submodule init
+git submodule update
+
+
+******************
 Build instruction
 ******************
 cd processor-sdk-doc
