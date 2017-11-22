@@ -45,6 +45,11 @@ mkdir -pv "${ARTIFACTS}" "${OUTPUT}" "${LOGS}"
 # Set up host
 sudo apt-get -y install ${UBUNTU_PACKAGES}
 
+# Update submodule
+echo "Update submodule..."
+git submodule init
+git submodule update
+
 # repo-revs.txt
 repo=`git config --get remote.origin.url | tr ':' ';'`
 commit=`git rev-parse HEAD`
