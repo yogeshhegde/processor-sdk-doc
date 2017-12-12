@@ -31,6 +31,6 @@ make OS=android
 HTML page output
 ******************
 Open index pages and explore in browser
-linux: processor-sdk-doc/build/linux/html/linux/index.html
-rtos: processor-sdk-doc/build/rtos/html/rtos/index.html
-android: processor-sdk-doc/build/android/html/android/index.html
+linux: ./build/processor-sdk-linux/esd/docs/[version]/linux/index.html
+rtos: ./build/processor-sdk-rtos/esd/docs/[version]/rtos/index.html
+android: ./build/processor-sdk-android/esd/docs/[version]/android/index.html
