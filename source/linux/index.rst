@@ -18,37 +18,43 @@ suggestions <Feedback>`.
 This information covers Processor SDK 3.3 and above, unless otherwise noted.
 
 .. toctree::
-   :maxdepth: 3 
+   :maxdepth: 5
    :hidden:
 
-   Processor_SDK_Linux_Getting_Started_Guide
-   ../common/Processor_SDK_Supported_Platforms_and_Versions
-   Processor_SDK_Linux_Directory_Structure
-   Processor_SDK_Linux_Release_Notes
-   Processor_SDK_Linux_GPLv3_Disclaimer
-   ../common/Processor_SDK_Technical_Support
+   Introduction
+   Getting_Started
+   U-Boot
+   Kernel
+   Filesystem
+   IPC
+   CMEM
+   Compute_Graphics_and_Media
+   PRU-ICSS
+   Industrial_Protocols
+   Virtualization
+   Examples_and_Demos
+   How_to_Guides
+   Tools
+   Hardware_Setup_with_CCS
+   Migration_Guide
+   Technical_Support 
 
-   Processor_Linux_SDK_How_To_Guides
-   Processor_SDK_Linux_Software_Stack
-   Processor_SDK_Building_The_SDK
-   Processor_SDK_Linux_Migration_Guide
-   ../common/MCSDK_to_Processor_SDK_Migration
++-------------------------------------------------+-------------------------------------------------------------------------------+
+| **Processor SDK Linux**                                                                                                         |
++=================================================+===============================================================================+
+| Getting Started Guide <-- **Start Here**        | How To Guides                                                                 | 
++-------------------------------------------------+-------------------------------------------------------------------------------+
+| Supported Platforms and Versions                | Linux Software Stack                                                          |
++-------------------------------------------------+-------------------------------------------------------------------------------+
+| Directory Structure Overview                    | Building the SDK                                                              |
++-------------------------------------------------+-------------------------------------------------------------------------------+
+| Release Notes                                   | Migration Guide                                                               |
++-------------------------------------------------+-------------------------------------------------------------------------------+
+| GPLv3 Disclaimer                                | MCSDK to Processor SDK Migration Guide                                        |
++-------------------------------------------------+-------------------------------------------------------------------------------+
+| Technical Support                               | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
++-------------------------------------------------+-------------------------------------------------------------------------------+
 
-+------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
-| **Processor SDK Linux**                                                                                                                                                                             |
-+======================================================================================================+==============================================================================================+
-| `Getting Started Guide <Processor_SDK_Linux_Getting_Started_Guide.html>`__ <-- **Start Here**        | `How To Guides <Processor_Linux_SDK_How_To_Guides.html>`__                                   | 
-+------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
-| `Supported Platforms and Versions <../common/Processor_SDK_Supported_Platforms_and_Versions.html>`__ | `Linux Software Stack <Processor_SDK_Linux_Software_Stack.html>`__                           |
-+------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
-| `Directory Structure Overview <Processor_SDK_Linux_Directory_Structure.html>`__                      | `Building the SDK <Processor_SDK_Building_The_SDK.html>`__                                   |
-+------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
-| `Release Notes <Processor_SDK_Linux_Release_Notes.html>`__                                           | `Migration Guide <Processor_SDK_Linux_Migration_Guide.html>`__                               |
-+------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
-| `GPLv3 Disclaimer <Processor_SDK_Linux_GPLv3_Disclaimer.html>`__                                     | `MCSDK to Processor SDK Migration Guide <../common/MCSDK_to_Processor_SDK_Migration.html>`__ |
-+------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
-| `Technical Support <../common/Processor_SDK_Technical_Support.html>`__                               | `Training <https://training.ti.com/processor-sdk-training-series>`__                         |
-+------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
 
 +-------------+-----------------+---------------+-----------------------------------+
 | **Foundational Components** (more information on each piece of the distribution)  |
