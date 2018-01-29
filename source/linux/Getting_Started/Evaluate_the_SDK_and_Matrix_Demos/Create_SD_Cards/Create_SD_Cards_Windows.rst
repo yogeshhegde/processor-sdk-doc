@@ -1,1 +1,103 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows
+.. rubric:: Introduction
+   :name: introduction
+
+This page details how to use an image file to create a SD Card
+containing the embedded Linux system provided with the Linux SDK. This
+allows a user to evaluate the embedded system on a supported hardware
+platform.
+
+.. rubric:: What is Needed
+   :name: what-is-needed
+
+-  Access to a Windows PC
+-  A valid Linux SDK image for the appropriate processor (AM335x, for
+   example)
+-  Software to decompress a zip file (ex. 7-zip)
+-  Software to write an image file to a SD card
+-  A SD card appropriate for the required hardware platform, must be 2GB
+   or larger
+-  A SD card reader/writer
+
+.. rubric:: Steps to Follow
+   :name: steps-to-follow
+
+Here is the process to follow to create the SD card.
+
+#. Download the Processor SDK for Linux image file that you want to use.
+#. On a Windows PC, you'll need software to decompress a zip file.
+   Windows 7 can do this natively. If you don't already have something
+   that works, the open source software `7-zip <http://www.7-zip.org>`__
+   is a great choice. Since this image is created with lots of empty
+   space, this step saves about 700 MB of download time.
+#. Use the decompression software to decompress the zipped file to an
+   image file. Here's how to do it with 7-zip:
+   |7zip to extract image.png|
+   You should see a status bar as the image is decompressed:
+   |Win32 Disk Imager Extracting.png|
+   And this is what you should have when it is finished:
+   |7zip image file extracted.png|
+#. If you don't have it already, download a program to write the image
+   file to the SD card. The open source `Win32 Disk
+   Imager <http://sourceforge.net/projects/win32diskimager>`__ is a good
+   option.
+#. Use the software for writing an image to disk to write the
+   decompressed .img file to the SD card.
+
+   #. Plug the SD card into the SD card reader/writer.
+   #. Insert the SD card reader/writer into the PC.
+   #. Launch the disk writer software, if needed.
+   #. Choose the image file for the SDK that you want to write.
+      |Win32 Disk Imager open.png|
+      And select the appropriate SDK Image file:
+      |Win32 disk imager select a disk image.png|
+   #. Choose the SD card as the destination.
+      |Win32 Disk Imager select disk.png|
+   #. Write the image to the SD card.
+      |Win32 Disk Imager write disk.png|
+
+      .. raw:: html
+
+         <div class="block-note">
+
+      |Note|\ **Note:** You'll likely get the below confirmation box.
+      This command will overwrite whatever disk you point it to, please
+      make sure and choose the correct disk:
+
+      .. raw:: html
+
+         </div>
+
+      |Win32 disk imager Confirm overwrite.png|
+      You should see the following status bar as the image is being
+      written to the disk:
+      |Win32 Disk Imager writing to disk.png|
+      And when the write is complete, you should get a notification:
+      |Win32 Disk Imager Complete.png|
+      You can now close the image writing program:
+      |Win32 Disk Imager exit.png|
+
+#. Safely eject the SD card from the computer. Here's an example using
+   Windows 7:
+   |Win7 eject disk.png|
+   |Win7 eject disk detail.png|
+   |Win7 device can be safely removed.png|
+#. Plug it into a supported hardware platform and boot the platform from
+   the SD card.
+#. If the platform has a display (Starterkit, for example), you should
+   see the Matrix application from the SDK. If the hardware does not
+   have a display, you should be able to access Matrix remotely through
+   a web browser if the PC and the board are on a common network. You
+   can also connect to the board using a terminal emulator (ex. Tera
+   Term) in order to view the serial console and interact with the
+   embedded Linux system (ex. run ifconfig to get the IP address of the
+   target board in order to connect to it to view remote matrix).
+
+.. rubric:: Useful Links
+   :name: useful-links
+
+`Processor SDK Linux Software Developer’s
+Guide </index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__
+
+| 
+
