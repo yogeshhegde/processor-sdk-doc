@@ -6,7 +6,7 @@
 
    <div>
 
-|Overview.PNG|
+.. Image:: ../images/Overview.PNG
 
 .. raw:: html
 
@@ -78,7 +78,7 @@ load firmwares into the PRU cores and then run them.
 
    <div class="floatright">
 
-|Step0 2 0 2 11.PNG|
+.. Image:: ../images/Step0_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -119,7 +119,7 @@ inserted.
 
    <div class="floatright">
 
-|Step1 2 0 2 11.PNG|
+.. Image:: ../images/Step1_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -144,7 +144,7 @@ inserted.
 
    <div class="floatright">
 
-|Step2 2 0 2 11.PNG|
+.. Image:: ../images/Step2_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -182,7 +182,7 @@ firmware loading process.
 
    <div class="floatright">
 
-|Step3 2 0 2 11.PNG|
+.. Image:: ../images/Step3_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -205,7 +205,7 @@ firmware loading process.
 
    <div class="floatright">
 
-|Step4 2 0 2 11.PNG|
+.. Image:: ../images/Step4_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -231,7 +231,7 @@ firmware loading process.
 
    <div class="floatright">
 
-|Step5 2 0 2 11.PNG|
+.. Image:: ../images/Step5_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -273,7 +273,7 @@ This overview is extremely dense as it tries to cover a lot of topics.
 Please see the diagram below, and the ones in the following sections,
 for further clarification.
 
-|Rpmsg diagram 2 0 2 11.PNG|
+.. Image:: ../images/Rpmsg_diagram_2_0_2_11.PNG
 
 --------------
 
@@ -284,7 +284,7 @@ for further clarification.
 
    <div class="floatright">
 
-|Arm-to-pru.PNG|
+.. Image:: ../images/Arm-to-pru.PNG
 
 .. raw:: html
 
@@ -327,7 +327,7 @@ abstraction layer.
 
    <div class="floatright">
 
-|Pru-to-arm.PNG|
+.. Image:: ../images/Pru-to-arm.PNG
 
 .. raw:: html
 
@@ -371,7 +371,7 @@ abstraction layer.
   messages from the ARM core. This code is provided as an example in the
   PRU Software Support Package that is include in the Linux Processor
   SDK.
-| |Rpmsg code.PNG|
+.. Image:: ../images/Rpmsg_code.PNG
 
 .. rubric:: Next Steps
    :name: next-steps

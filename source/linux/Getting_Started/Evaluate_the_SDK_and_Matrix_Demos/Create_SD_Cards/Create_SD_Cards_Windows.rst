@@ -32,11 +32,11 @@ Here is the process to follow to create the SD card.
    space, this step saves about 700 MB of download time.
 #. Use the decompression software to decompress the zipped file to an
    image file. Here's how to do it with 7-zip:
-   |7zip to extract image.png|
+.. Image:: ../images/7zip_to_extract_image.png
    You should see a status bar as the image is decompressed:
-   |Win32 Disk Imager Extracting.png|
+.. Image:: ../images/Win32_Disk_Imager_Extracting.png
    And this is what you should have when it is finished:
-   |7zip image file extracted.png|
+.. Image:: ../images/7zip_image_file_extracted.png
 #. If you don't have it already, download a program to write the image
    file to the SD card. The open source `Win32 Disk
    Imager <http://sourceforge.net/projects/win32diskimager>`__ is a good
@@ -48,13 +48,13 @@ Here is the process to follow to create the SD card.
    #. Insert the SD card reader/writer into the PC.
    #. Launch the disk writer software, if needed.
    #. Choose the image file for the SDK that you want to write.
-      |Win32 Disk Imager open.png|
+.. Image:: ../images/Win32_Disk_Imager_open.png
       And select the appropriate SDK Image file:
-      |Win32 disk imager select a disk image.png|
+.. Image:: ../images/Win32_disk_imager_select_a_disk_image.png
    #. Choose the SD card as the destination.
-      |Win32 Disk Imager select disk.png|
+.. Image:: ../images/Win32_Disk_Imager_select_disk.png
    #. Write the image to the SD card.
-      |Win32 Disk Imager write disk.png|
+.. Image:: ../images/Win32_Disk_Imager_write_disk.png
 
       .. raw:: html
 
@@ -68,20 +68,20 @@ Here is the process to follow to create the SD card.
 
          </div>
 
-      |Win32 disk imager Confirm overwrite.png|
+.. Image:: ../images/Win32_disk_imager_Confirm_overwrite.png
       You should see the following status bar as the image is being
       written to the disk:
-      |Win32 Disk Imager writing to disk.png|
+.. Image:: ../images/Win32_Disk_Imager_writing_to_disk.png
       And when the write is complete, you should get a notification:
-      |Win32 Disk Imager Complete.png|
+.. Image:: ../images/Win32_Disk_Imager_Complete.png
       You can now close the image writing program:
-      |Win32 Disk Imager exit.png|
+.. Image:: ../images/Win32_Disk_Imager_exit.png
 
 #. Safely eject the SD card from the computer. Here's an example using
    Windows 7:
-   |Win7 eject disk.png|
-   |Win7 eject disk detail.png|
-   |Win7 device can be safely removed.png|
+.. Image:: ../images/Win7_eject_disk.png
+.. Image:: ../images/Win7_eject_disk_detail.png
+.. Image:: ../images/Win7_device_can_be_safely_removed.png
 #. Plug it into a supported hardware platform and boot the platform from
    the SD card.
 #. If the platform has a display (Starterkit, for example), you should

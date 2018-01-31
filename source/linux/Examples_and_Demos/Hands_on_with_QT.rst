@@ -206,7 +206,7 @@ minutes. This section will cover the following topics
 
 #. You should see a listing of the cross-compile tools available like
    the one below.
-   |Sitara-linux-training-cross-tools-1.png|
+.. Image:: ../images/Sitara-linux-training-cross-tools-1.png
 #. To locate the pre-built ARM libraries perform the following commands:
 
    -  **cd /home/sitara/AM335x/ti-processor-sdk-linux-<machine>-<sdk
@@ -223,7 +223,7 @@ minutes. This section will cover the following topics
 
 #. You should see a listing of QT related libraries that can be used to
    build and run QT projects.
-   |Sitara Linux QT library listings 1.png|
+.. Image:: ../images/Sitara_Linux_QT_library_listings_1.png
 #. You can also find out where the QT header files are located. At the
    directory below are sub directories full of QT header files.
 
@@ -249,7 +249,7 @@ minutes. This section will cover the following topics
 
 #. You should see the changes that were applied by executing the setup
    script.
-   |Sitara Linux QT environment setup script.jpeg|
+.. Image:: ../images/Sitara_Linux_QT_environment_setup_script.jpeg
 #. You should have observed that the QMAKESPEC variable now contains the
    path to the QMAKESPEC files. Additionally your compile tools were
    added. There was also another change that occurred which was that
@@ -340,7 +340,7 @@ minutes. This section will cover the following topics
    -  **make**
 
 #. Notice the build is using our cross-compiler- arm-linux-gnueabihf-g++
-   |Sitara Linux QT make using cross compile.jpeg|
+.. Image:: ../images/Sitara_Linux_QT_make_using_cross_compile.jpeg
 #. Also notice we now have an executable, lets see what type of file we
    created
 
@@ -431,7 +431,7 @@ development.
          </div>
 
 #. QT creator should be up and running now
-   |Sitara Linux QT qtcreator.png|
+.. Image:: ../images/Sitara_Linux_QT_qtcreator.png
 #. Now lets setup QT creator to configure qmake. From the QT creator
    main menu shown above select the following:
 
@@ -479,7 +479,7 @@ development.
       -  Select **arm-linux-gnueabihf-gcc** and **click on open**
       -  Make sure to click on **Apply** to save your changes.
 
-      |Sitara-compilerAndDebugger.jpeg|
+.. Image:: ../images/Sitara-compilerAndDebugger.jpeg
 
 #. Next, let’s setup the Debuggers.
 
@@ -495,7 +495,7 @@ development.
       -  Select **arm-linux-gnueabihf-gdb** and **click on open**
       -  Make sure to click on **Apply** to save your changes.
 
-      |Sitara-Debugger.png|
+.. Image:: ../images/Sitara-Debugger.png
 
 #. Click the **Kits** tab under **Build & Run**
 
@@ -506,7 +506,7 @@ development.
    -  For Debugger select **GDB Engine**.
    -  For QT Version select **Qt 5.5 Sitara**
    -  Click **Apply** to register the options.
-      |Sitara-linux-kits.png|
+.. Image:: ../images/Sitara-linux-kits.png
 
 #. Now let's setup our Target. While still in the **Tools -> Options**
    menu
@@ -514,9 +514,9 @@ development.
    -  On the left side of the window, select the **Devices tab**
    -  In Devices: click the **Devices tab**
    -  Click **Add...** in the top right
-      |Sitara Linux QT options add device.png|
+.. Image:: ../images/Sitara_Linux_QT_options_add_device.png
    -  Select **Generic Linux device** and click on **Start Wizard**
-      |Sitara Linux QT Device Configuration Wizard Selection.jpeg|
+.. Image:: ../images/Sitara_Linux_QT_Device_Configuration_Wizard_Selection.jpeg
    -  The Device Configuration Wizard Selection Dialog box comes up
 
       -  Type in the name of the Device: **AM335x EVM**
@@ -546,7 +546,7 @@ development.
       Setup.jpeg|
    -  Click **Finish**. You should see that the target test passed, so
       you can close that window.
-      |Sitara target test.png|
+.. Image:: ../images/Sitara_target_test.png
 
 #. Now we need to setup an SSH key so that the host can communicate with
    the target
@@ -554,7 +554,7 @@ development.
    -  Still under the Devices tab click **Create New** for Private key
       file
 
-   |Sitara Linux QT create new ssh key.png|
+.. Image:: ../images/Sitara_Linux_QT_create_new_ssh_key.png
 
    -  
 
@@ -562,13 +562,13 @@ development.
       -  Select **Key size: 1024**
       -  Then click **Generate and Save Key Pair...**
 
-   |Sitara Linux QT options SSH Key Configuration.jpeg|
+.. Image:: ../images/Sitara_Linux_QT_options_SSH_Key_Configuration.jpeg
 
    -  
 
       -  Click **Do not Encrypt key file**
 
-   |Sitara Linux QT Password for Private Key.jpeg|
+.. Image:: ../images/Sitara_Linux_QT_Password_for_Private_Key.jpeg
 
    -  
 
@@ -577,7 +577,7 @@ development.
 
    -  Under the Devices tab now click **Deploy Public Key...**
 
-   |Sitara Linux QT Deploy Public Key.png|
+.. Image:: ../images/Sitara_Linux_QT_Deploy_Public_Key.png
 
    -  
 
@@ -599,12 +599,12 @@ development.
       -  Select the file **qtc\_id.pub** and click on **Open**, shortly
          a window should show up saying "Deployment finished
          sucessfully"
-         |Sitara successful deploy.png|
+.. Image:: ../images/Sitara_successful_deploy.png
 
    -  Close the window and **Click OK** to exit the Linux Devices
       Window.
 
-   |Sitara Linux QT ok to close devices.png|
+.. Image:: ../images/Sitara_Linux_QT_ok_to_close_devices.png
 #. Now that we are setup lets create a project build it and run it on
    the host
 
@@ -612,16 +612,16 @@ development.
    -  Then select **Applications** under projects then select **QT
       Widgets Applicaton** on the top center
    -  Click on **Choose**
-      |Sitara Linux QT new project.png|
+.. Image:: ../images/Sitara_Linux_QT_new_project.png
    -  Type in the name of the project as **terminal**. We will be
       building on this project in the next section.
    -  Change the **Create in** value to **/home/sitara**
    -  Click on **Next**
-      |Sitarea Linux Qt project terminal.png|
+.. Image:: ../images/Sitarea_Linux_Qt_project_terminal.png
    -  Click on **Next** again
    -  Type in **terminal** for the **Class name**
    -  Click **Next**
-      |Sitara Linux QT new terminal props.png|
+.. Image:: ../images/Sitara_Linux_QT_new_terminal_props.png
    -  Click **Finish**
 
 #. Now we've setup a new project let's explore and add some code.
@@ -629,7 +629,7 @@ development.
    -  Click on **Edit** on the **left hand menubar** and look at the
       project files including terminal.pro, main.cpp, terminal.cpp and
       terminal.ui
-      |Sitara-terminal-pro.jpeg|
+.. Image:: ../images/Sitara-terminal-pro.jpeg
    -  Under **Forms**, double click on **terminal.ui** This will bring
       up the widget editor.
    -  Remove the menuBar where it says Type Here on the top of the ui
@@ -638,12 +638,12 @@ development.
       the ui. It is not that easy to see, but it is there and blank.
    -  Once again remove the ToolBar (mainToolBar). It is found at the
       top of the ui and is also hard to see.
-      |RemoveMenubar.png|
+.. Image:: ../images/RemoveMenubar.png
    -  Find the **label widget** in the category of *display widgets*,
       **left click and drag it on to the User Interface (UI).**
    -  Type **Hello World!!!** into the label widget and strech out the
       borders so you can see all the letters.
-      |Sitara hello world UI.png|
+.. Image:: ../images/Sitara_hello_world_UI.png
 
 #. Now we need to check and update the build and run settings:
 
@@ -651,13 +651,13 @@ development.
    -  Select the **Build and Run** tab and select **Build** under
       AM335x.
    -  Uncheck **Shadow build** as shown in the screenshot below:
-      |Sitara Build settings 1.png|
+.. Image:: ../images/Sitara_Build_settings_1.png
    -  Now under the AM335x select the **Run** tab
    -  Under Method click **Add** and select **Add** and then **Deploy to
       Remote Linux Host**
    -  However you see the <Remote path not set> error under the Run
       secton.
-      |Sitara deploy remote.jpeg|
+.. Image:: ../images/Sitara_deploy_remote.jpeg
    -  To fix the <Remote path not set> error do the following:
 
       -  Click on **Edit** on the left side vertical bar and click on
@@ -682,14 +682,14 @@ development.
 
          ``target.path += /home/root``
          INSTALLS += target
-         |Sitara add target loc.jpeg|
+.. Image:: ../images/Sitara_add_target_loc.jpeg
       -  Select **File -> Save**
 
    -  Click on **Projects** on the left side vertical bar and you should
       now see the error is gone and replaced with /home/root/terminal
    -  Now in the Run portion: **Select Add -> terminal (on Remote
       Generic Linux Host)**
-      |Sitara remote host.jpeg|
+.. Image:: ../images/Sitara_remote_host.jpeg
 
 #. Finally we are ready to run
 
@@ -718,9 +718,9 @@ development.
    -  If you receive the error 'g++: Command not found', navigate to
       tools>options>build and run>kits. Add “linux-oe-g++” to the “Qt
       mkspec” text box
-      |CompileErrorFix.PNG|
+.. Image:: ../images/CompileErrorFix.PNG
    -  Save all files if asked
-      |Sitara-linux-Terminal-hello.jpeg|
+.. Image:: ../images/Sitara-linux-Terminal-hello.jpeg
 
 #. Extra Investigation:
 
@@ -766,7 +766,7 @@ scratch.
 
 #. Next we will add the Tab Widget. Just like the label widget, drag it
    over to the ui.
-   |Sitara tab widget.png|
+.. Image:: ../images/Sitara_tab_widget.png
 
    -  Select the tab widget layout. Currently, the tab widget is part of
       our ui, but it is just sitting at fixed location where we dragged
@@ -774,7 +774,7 @@ scratch.
 
       -  On the upper right side right click on the **terminal QWidget
          and select Lay Out -> Lay Out Vertical** as shown below
-         |Sitara layout vertically.png|
+.. Image:: ../images/Sitara_layout_vertically.png
 
    -  Now the tab widget should completely fill the ui.
 
@@ -793,7 +793,7 @@ scratch.
          Out in a Grid**
       -  Move them around so they look somewhat like the screen shot
          below
-         |Sitara ui layout.jpeg|
+.. Image:: ../images/Sitara_ui_layout.jpeg
 
 #. Lets Rename the Push Button widgets.
 
@@ -807,7 +807,7 @@ scratch.
       -  Just click on the widget and **drag the border to fill the
          screen** See screen shot below:
 
-      |Sitara adjust widths.png|
+.. Image:: ../images/Sitara_adjust_widths.png
 
 #. Now lets give our widget objects a unique name.
 
@@ -817,7 +817,7 @@ scratch.
       -  Add the text **\_linuxshell** to the end of the textBrowser
          name as shown below:
 
-      |Sitara rename objects.jpeg|
+.. Image:: ../images/Sitara_rename_objects.jpeg
 
 #. Now create unique names for the other 3 widgets.
 
@@ -862,7 +862,7 @@ scratch.
    to do.
 
    -  Right click on the **Exit widget -> Go to slot**
-      |Sitara goto slot.jpeg|
+.. Image:: ../images/Sitara_goto_slot.jpeg
    -  In the **Go to Slot selector**, select the first selection
       **clicked()** and hit OK
 
@@ -886,7 +886,7 @@ scratch.
    -  Add the following line of code to
       **on\_pushButton\_exit\_clicked()**
       ``qApp->quit();``
-      |Sitara pushbutton.png|
+.. Image:: ../images/Sitara_pushbutton.png
 
 #. Now repeat the same process you did for the exit button on the send
    CMD button. We will add code to control that button press.
@@ -922,14 +922,14 @@ scratch.
       while(process.waitForReadyRead())
       data.append(process.readAll());
       ui->textBrowser\_linuxshell->setText(data.data());
-      |Sitara SendCMD code.png|
+.. Image:: ../images/Sitara_SendCMD_code.png
 
 #. Finally since we don't have a keyboard to type a command lets add a
    predefined command to our **line Edit Widget** like shown below:
 
    -  Double click on the **line edit** and add the text: **date
       --help**
-      |Sitara add command.png|
+.. Image:: ../images/Sitara_add_command.png
 
 #. Now run, you should see interaction with the Linux shell when you
    push sendCMD.
@@ -978,7 +978,7 @@ style sheets.
 
    -  When complete with the above steps, it should look like the
       following:
-      |Sitara webview.jpeg|
+.. Image:: ../images/Sitara_webview.jpeg
 
 #. Now we can add a default URL. Since we are not connected to the
    internet, lets bring up matrix since it is running on a local server.
@@ -986,7 +986,7 @@ style sheets.
    -  Select the **WebView widget** and on the bottom right find the
       **url** property of **QWebView** near the bottom of the list.
    -  Type in: **http://localhost**
-      |Sitara default url.png|
+.. Image:: ../images/Sitara_default_url.png
 
       .. raw:: html
 
@@ -1006,7 +1006,7 @@ style sheets.
 
    -  Go to **Edit** mode and bring up the **terminal.pro** file
    -  Add **webkitwidgets** as shown below
-      |Sitara webkitwidgets.png|
+.. Image:: ../images/Sitara_webkitwidgets.png
 
 #. Give it a try and run it, you should see the Matrix displayed.
 
@@ -1035,10 +1035,10 @@ style sheets.
          will jump the available options with the matching text.
       -  Select **w.showFullScreen();** see screen shot.
 
-      |Sitara fullscreen.png|
+.. Image:: ../images/Sitara_fullscreen.png
 
 #. Now re-run and notice how it takes up the full screen.
-   |Sitara matrix.PNG|
+.. Image:: ../images/Sitara_matrix.PNG
 
    .. raw:: html
 
@@ -1091,11 +1091,11 @@ style sheets.
 
       -  Go to **Edit** mode and right click on **terminal -> Add
          Existing Files** as shown below.
-         |Sitara addexisting.png|
+.. Image:: ../images/Sitara_addexisting.png
       -  Navigate to the keyboard directory
          **/home/sitara/terminal/keyboard** and add all 4 files in that
          directory.
-         |Sitara addkeyboard.png|
+.. Image:: ../images/Sitara_addkeyboard.png
 
          .. raw:: html
 
@@ -1136,7 +1136,7 @@ style sheets.
             ``void open_keyboard_lineEdit();``
          -  In the section **private:** add
             ``Keyboard *lineEditkeyboard;``
-            |Sitara terminal h.png|
+.. Image:: ../images/Sitara_terminal_h.png
 
       -  Now add some code to **terminal.cpp**
 
@@ -1152,7 +1152,7 @@ style sheets.
             lineEditkeyboard->setLineEdit(line);
             lineEditkeyboard->show();
             }
-            |Sitara terminal cpp.jpeg|
+.. Image:: ../images/Sitara_terminal_cpp.jpeg
 
 #. You are now ready to run your code.
 
@@ -1179,7 +1179,7 @@ style sheets.
 
    -  Go back to your ui in the upper right corner: right click on the
       **terminal widget -> Change styleSheet**
-      |Sitara stylesheet.jpeg|
+.. Image:: ../images/Sitara_stylesheet.jpeg
    -  Cut and paste from terminal sytle sheet settings at the end of
       this lab section to the Terminal stylesheet settings and Apply
       them
@@ -1217,7 +1217,7 @@ style sheets.
 
 #. voila ... TI colors - your setup should now match the look and feel
    of the one below:
-   |Sitara tabStyle.jpeg|
+.. Image:: ../images/Sitara_tabStyle.jpeg
 #. Run it!
 #. Extra investigation: Run a debug session and set break points in
    keyboard.cpp. Notice how the each QPushbutton signals the

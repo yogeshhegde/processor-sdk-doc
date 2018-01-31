@@ -33,18 +33,18 @@ during the install.
 
 5. Configure the share
 
-|Samba Server Configuration 001.png|
+.. Image:: ../images/Samba_Server_Configuration_001.png
 
 -  Click on "Add Share"
 -  Specify the directory you want to share. For example,
    /home/<username>
 
-|Create Samba Share 002.png|
+.. Image:: ../images/Create_Samba_Share_002.png
 
 -  Check both the Writable and Visable boxes
 -  On the "Access" tab, select the Allow access to everyone option
 
-|Create Samba Share 003.png|
+.. Image:: ../images/Create_Samba_Share_003.png
 
 -  Select "OK"
 
@@ -54,7 +54,7 @@ during the install.
 
 -  From the toolbar, select Preferences -> Server Settings
 
-|Server Settings 004.png|
+.. Image:: ../images/Server_Settings_004.png
 
 -  Specify the "Workgroup" to match the workgroup on your Windows
    environment

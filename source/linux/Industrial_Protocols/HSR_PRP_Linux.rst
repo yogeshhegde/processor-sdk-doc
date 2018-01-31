@@ -41,7 +41,7 @@ Attached Node).
    -  Net-SNMP
    -  iproute2
 
-|Linux-hsr-architecture.png|
+.. Image:: ../images/Linux-hsr-architecture.png
 
 .. rubric:: Linux HSR/PRP Driver
    :name: linux-hsrprp-driver
@@ -83,7 +83,7 @@ firmware is a re-use from the TI RTOS implementation that is discussed
 above. Re-use means the data structures and API should be re-used across
 both TI RTOS and Linux driver implementations. A common PRU Ethernet
 driver is developed to support existing EMAC device as well HSR/PRP
-device. |Hsr-prp-offload.png|
+.. Image:: ../images/Hsr-prp-offload.png
 
 .. rubric:: Ethernet Driver
    :name: ethernet-driver
@@ -968,7 +968,7 @@ To test HSR, user would need two AM572x EVMs.
    4.3 above. And use IP Address from the same subnet as that of DAN-H-1
    hsr interface hsr0.
 
-|Hsr-network-setup-v2.jpg|
+.. Image:: ../images/Hsr-network-setup-v2.jpg
 
 For example use Ip Address 192.168.2.20 for DAN-H-1 and 192.168.2.30 for
 DAN-H-2. Assume CPSW ports at the EVM are on a different Subnet than the
@@ -1063,7 +1063,7 @@ Sample logs are shown here `DAN-H-1 </index.php/DAN-H-1>`__,
 .. rubric:: PRP Testing
    :name: prp-testing
 
-|Prp-network-setup.jpg|
+.. Image:: ../images/Prp-network-setup.jpg
 
 For Testing PRP, user is required to use the setup shown in the above
 diagram. A DAN-P is attached to two independent networks (A and B) each

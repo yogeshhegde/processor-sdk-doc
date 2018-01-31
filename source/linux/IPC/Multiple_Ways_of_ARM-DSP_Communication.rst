@@ -73,7 +73,7 @@ Component for the video/image codec processing on IVA.
 
    <div class="floatnone">
 
-|Mm software overview v3.png|
+.. Image:: ../images/Mm_software_overview_v3.png
 
 .. raw:: html
 
@@ -290,7 +290,7 @@ capability also need to be considered in the decision making process,
 such as if Image and Video Accelerator exists when using DCE.
 
 | 
-| |ARM-DSP DecisionMaking.jpg|
+.. Image:: ../images/ARM-DSP_DecisionMaking.jpg
 
 .. raw:: html
 

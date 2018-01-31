@@ -2988,7 +2988,7 @@ The QoS implementation allows for an abstracted tree of scheduler nodes
 represented in device tree form. An example is depicted below
 
 | 
-| |Qos-tree.jpg|
+.. Image:: ../images/Qos-tree.jpg
 
 | 
 | At each node, shaping and dropping parameters may be specified, within
@@ -3007,7 +3007,7 @@ In the device tree we are setting up a shaper that is depicted below
 
 | 
 
-|Qos-new-shaper.jpg|
+.. Image:: ../images/Qos-new-shaper.jpg
 
 | 
 | When egress shaper is enabled, all packets will be sent to the QoS
@@ -3023,7 +3023,7 @@ In the device tree we are setting up a shaper that is depicted below
 
 | 
 
-|Shaper-config-details.jpg|
+.. Image:: ../images/Shaper-config-details.jpg
 
 .. rubric:: QoS Node Attributes
    :name: qos-node-attributes

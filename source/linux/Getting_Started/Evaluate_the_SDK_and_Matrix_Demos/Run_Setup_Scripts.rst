@@ -18,7 +18,7 @@
 -  uboot setup
 -  Load uboot script
 
-|Linux Host Development System.png|
+.. Image:: ../images/Linux_Host_Development_System.png
 
 | 
 

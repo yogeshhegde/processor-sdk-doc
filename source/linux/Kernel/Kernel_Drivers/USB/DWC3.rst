@@ -86,7 +86,7 @@ notify the events to the dwc3 core.
 -  On AM437x-gp-evm, AM437x-epos-evm and AM437x-sk-evm, USB0 port is
    used as dual-role port and USB1 port is used as Host port (Type-A).
 
-|Am437x-dwc3.png|
+.. Image:: ../images/Am437x-dwc3.png
 
 | 
 
@@ -329,7 +329,7 @@ within the adapter must be grounded. Some of the adapters available in
 the market don't have ID pin grounded. If the ID pin is not grounded the
 dual-role port will not switch from peripheral mode to host mode.
 
-|OMAP5-HOST.jpg|
+.. Image:: ../images/OMAP5-HOST.jpg
 
 .. rubric:: DRA7x-evm
    :name: dra7x-evm
@@ -342,7 +342,7 @@ For connecting a device to the USB2 port use a mini-A to Type-A OTG
 adapter cable like this. The ID pin within the adapter cable must be
 grounded.
 
-|Dra7-HOST.jpg|
+.. Image:: ../images/Dra7-HOST.jpg
 
 For using the USB1 port in host mode use a Super-Speed OTG adapter cable
 similar to the one used in OMAP5.
@@ -357,7 +357,7 @@ The USB0 host port has a standard A female so no special cables needed.
 To use the USB1 port in host mode a micro OTG adapter cable is required
 like below.
 
-|Usb af to micro usb male adapter.jpg|
+.. Image:: ../images/Usb_af_to_micro_usb_male_adapter.jpg
 
 .. rubric:: Example
    :name: example

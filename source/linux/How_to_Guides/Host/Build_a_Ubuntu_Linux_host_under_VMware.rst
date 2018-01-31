@@ -149,7 +149,7 @@ drive, the Ubuntu OS will install itself in the virtual machine.
 Click through the Ubuntu installation, making the appropriate choices as
 you go.  This will help with SDK installation scripts.
 
-| |Vmware-player.PNG|
+.. Image:: ../images/Vmware-player.PNG
 
 | 
 | The full installation will take 20-30 minutes.  When it completes the
@@ -172,11 +172,11 @@ from the Ubuntu machine to and from the Windows host.
 
 | Within the virtual machine window click the Player -> Manage ->
   Install VMware Tools
-| |Install vmware tools.png|
+.. Image:: ../images/Install_vmware_tools.png
 | The VMware tools are contained in an ISO image that VMware
   will automatically mount.  This drive will show up on the Ubuntu
   desktop as if it were a disk in a DVD drive.
-| |Vmware-tools-cd.png|
+.. Image:: ../images/Vmware-tools-cd.png
 | There will be a single tarball on the drive named
   VMwareTools-9.9.0-2304977.tar.gz (or with a slightly different version
   number). Extract the tarball somewhere in your /home/<user>
@@ -251,5 +251,5 @@ address owned by the Windows host.
   card reader.
 
 | 
-| |Sd card reader.png|
+.. Image:: ../images/Sd_card_reader.png
 

@@ -55,7 +55,7 @@ encoders (for example, DPI to DVI encoder) and display panels.
 
    <div class="magnify">
 
-` </index.php/File:DSS_Example.png>`__
+.. Image:: ../images/DSS_Example.png
 
 .. raw:: html
 
@@ -94,7 +94,7 @@ which is encoded into DSI, then to LVDS, and shown on an LVDS panel.
 
    <div class="magnify">
 
-` </index.php/File:DSS_HW.png>`__
+.. Image:: ../images/DSS_HW.png
 
 .. raw:: html
 

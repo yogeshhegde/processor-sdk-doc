@@ -98,7 +98,7 @@ the device being used. The CCS installer can be found on the device's
 SDK installer page under the Optional Addons or directly from the
 `Download CCS </index.php/Download_CCS>`__ wiki page.
 
-|SDK download page.png|
+.. Image:: ../images/SDK_download_page.png
 
 Clicking this link will prompt you to fill out an export restriction
 form. After filling out the form, you will be given a download button to
@@ -162,24 +162,24 @@ installation options and the recommended settings when installing CCS.
 #. At the *Choose Installation Location* just hit "Next" to install at
    the default location. If you want the SDK installed at a different
    location then select "Browse" and pick another location.
-   |Sitara Linux CCS Install Directory.png|
+.. Image:: ../images/Sitara_Linux_CCS_Install_Directory.png
 #. At the *Processor Support* screen make sure to select the **Sitara
    ARM 32-bit processors** option. You should not select "GCC ARM
    Compiler" or "TI ARM Compiler", because you will be using the Linaro
    toolchain that comes with the Processor Linux SDK installation.
-   |Sitara Linux CCS Choose Sitara.png|
+.. Image:: ../images/Sitara_Linux_CCS_Choose_Sitara.png
 #. At the *Select Emulators* screen, select any emulators that you have
    and want to use. This is an optional feature you can use for
    debugging via JTAG.
-   |Sitara Linux CCS emulator.png|
+.. Image:: ../images/Sitara_Linux_CCS_emulator.png
 #. At the *APP Center* screen none of the options should be selected,
    click **Finish** to begin installation.
-   |Sitara Linux CCS Finish and install.png|
+.. Image:: ../images/Sitara_Linux_CCS_Finish_and_install.png
 #. Now the installation process starts and this can take some time.
-   |Sitara Linux SDK CCS installing.png|
+.. Image:: ../images/Sitara_Linux_SDK_CCS_installing.png
 #. After installation is complete, you should see the following screen,
    hit finish and installation is complete.
-   |Sitara Linux SDK finished.png|
+.. Image:: ../images/Sitara_Linux_SDK_finished.png
 
 | 
 
@@ -203,20 +203,20 @@ installer was run.
 
 #. **Double-Click the Code Composer Studio v6 icon on the desktop**. You
    will see a splash screen appear while CCS loads.
-   |CCSv6 splash.png|
+.. Image:: ../images/CCSv6_splash.png
 #. The next window will be the *Workspace Launcher* window which will
    ask you where you want to locate your CCSv6 workspace. Use the
    **default** value.
-   |CCS workspace launcher.png|
+.. Image:: ../images/CCS_workspace_launcher.png
 #. CCS will load the workspace and then launch to the default *TI
    Resource Explorer* screen.
-   |CCS getting started.png|
+.. Image:: ../images/CCS_getting_started.png
 #. **Close the TI Resource Explorer screen**. This screen is useful when
    making TI CCS projects which use TI tools. The Processor Linux SDK
    uses open source tools with the standard Eclipse features and
    therefore does not use the TI Resource Explorer. You will be left in
    the Project Explorer default view.
-   |CCS project explorer.png|
+.. Image:: ../images/CCS_project_explorer.png
 
 | 
 
@@ -230,15 +230,15 @@ the **Window -> Open Perspectives** list.
 After opening CCS with a new workspace:
 
 #. Open the **Window -> Preferences** menu.
-   |Sitara-Linux-CCS-window-preferences.png|
+.. Image:: ../images/Sitara-Linux-CCS-window-preferences.png
 #. Go to the **General -> Capabilities** menu.
-   |Sitara-Linux-CCS-general-capabilities.png|
+.. Image:: ../images/Sitara-Linux-CCS-general-capabilities.png
 #. Select the **RSE Project** Capability.
-   |Sitara-Linux-CCS-enable-rse.png|
+.. Image:: ../images/Sitara-Linux-CCS-enable-rse.png
 #. Click **Apply** and then **OK**. This enables the perspectives in the
    **Window -> Open Perspective -> Other** menu, as shown below, and is
    needed to make the Remote System Explorer plug-ins selectable.
-   |Sitara-Linux-CCS-open-perspective.png|
+.. Image:: ../images/Sitara-Linux-CCS-open-perspective.png
 
 | 
 
@@ -252,13 +252,13 @@ After opening CCS with a new workspace:
 #. From the main CCSv6 window, select **File -> Import...** menu item to
    open the import dialog.
 #. Select the **General -> Existing Projects into Workspace** option.
-   |CCS import.png|
+.. Image:: ../images/CCS_import.png
 #. Click **Next**.
 #. On the *Import Projects* page click **Browse**.
-   |CCS import browse.png|
+.. Image:: ../images/CCS_import_browse.png
 #. In the file browser window that is opened navigate to the **<SDK
    INSTALL DIR>/example-applications** directory and click **OK**.
-   |CCS example apps.png|
+.. Image:: ../images/CCS_example_apps.png
 #. The *Projects:* list will now be populated with the projects found.
 #. Uncheck the following projects. They are Qt projects and are imported
    using a different method. For more information, see the `Hands on
@@ -271,11 +271,11 @@ After opening CCS with a new workspace:
 #. Select the projects you want to import. The following screen capture
    shows importing all of the example projects for an ARM-Cortex device,
    excluding the matrix\_browser project.
-   |CCS example uncheck.png|
+.. Image:: ../images/CCS_example_uncheck.png
 #. Click **Finish** to import all of the selected projects.
 #. You can now see all of the projects listed in the *Project Explorer*
    tab.
-   |CCS projects added.png|
+.. Image:: ../images/CCS_projects_added.png
 
 .. rubric:: Building the C/C++ Projects
    :name: building-the-cc-projects
@@ -295,7 +295,7 @@ example we will use the *mem-util* project.
    Debug or Release directory (depending on which build configuration
    you used). You should see the file marked as an [arm/le] file which
    means it was compiled for the ARM.
-   |CCS build memutil.png|
+.. Image:: ../images/CCS_build_memutil.png
 
    .. raw:: html
 
@@ -363,17 +363,17 @@ build a simple *Hello World* application for the target.
    item.
 #. In the *Select a wizard* window, select the **C/C++ -> C Project**
    wizard.
-   |CCS new project.png|
+.. Image:: ../images/CCS_new_project.png
 #. Click **Next**.
 #. In the *C Project* dialog set the following values:
    Project Name: **helloworld**
    Project type: **Executable -> Empty Project**
    Toolchains: **Cross GCC**
-   |CCS C project.png|
+.. Image:: ../images/CCS_C_project.png
 #. Click **Next**.
 #. In the *Select Configurations* dialog, you can take the default
    *Debug* and *Release* configurations or add/remove more if you want.
-   |CCS config.png|
+.. Image:: ../images/CCS_config.png
 #. Click **Next**.
 #. In the *Command* dialog, set the following values:
    Tool command prefix: **arm-linux-gnueabihf-**.
@@ -398,12 +398,12 @@ build a simple *Hello World* application for the target.
    installation directory and then to the **linux-devkit/sysroots/<Arago
    Linux>/usr/bin** directory. You should see a list of tools such as
    *gcc* with the prefix you entered above.
-   |CCS gcc command.png|
+.. Image:: ../images/CCS_gcc_command.png
 #. Click **Finish**.
 #. After completing the steps above you should now have a *helloworld*
    project in your CCS *Project Explorer* window, but the project has no
    sources.
-   |CCS pe helloworld.png|
+.. Image:: ../images/CCS_pe_helloworld.png
 
 .. rubric:: Adding Sources to the Project
    :name: adding-sources-to-the-project
@@ -412,15 +412,15 @@ build a simple *Hello World* application for the target.
    item.
 #. In the *Source File* dialog set the *Source file:* setting to
    **helloworld.c**
-   |CCS new source.png|
+.. Image:: ../images/CCS_new_source.png
 #. Click **Finish**.
 #. After completing the steps above you will have a template
    *helloworld.c* file. Add your code to this file like the image below:
-   |CCS helloworld.png|
+.. Image:: ../images/CCS_helloworld.png
 #. Compile the *helloworld* project by selecting **Project -> Build
    Project**
 #. The resulting executable can be found in the *Debug* directory.
-   |CCS helloworld build.png|
+.. Image:: ../images/CCS_helloworld_build.png
 
 | 
 

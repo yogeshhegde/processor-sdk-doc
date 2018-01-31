@@ -58,7 +58,7 @@ Processor SDK.
 
    <div class="floatnone">
 
-|Graphic software stacks psdk202.png|
+.. Image:: ../images/Graphic_software_stacks_psdk202.png
 
 .. raw:: html
 

@@ -33,10 +33,10 @@ prerequisites are met:
 #. Go to **Window -> Open Perspective -> Other...**
 #. In the menu window select **Remote System Explorer** to open this
    perspective.
-   |Sitara-Linux-CCS-rse-perspective.png|
+.. Image:: ../images/Sitara-Linux-CCS-rse-perspective.png
 #. Click **OK**
 #. You will now have the RSE view opened
-   |Sitara-Linux-CCS-rse-view.png|
+.. Image:: ../images/Sitara-Linux-CCS-rse-view.png
 
 | 
 
@@ -49,11 +49,11 @@ Connection Wizard.
 #. Click **File -> New -> Other...**
 #. In the **Select a wizard** window select **Remote System Explorer ->
    Connection**
-   |New-connection.png|
+.. Image:: ../images/New-connection.png
 #. Click **Next**
 #. In the **Select Remote System Type** window select the **Linux**
    system type
-   |Remote-system-type.png|
+.. Image:: ../images/Remote-system-type.png
 #. Click **Next**
 #. In the **Remote Linux System Connection** window enter
    **Host name:** Enter the IP address of your target EVM. This can be
@@ -65,25 +65,25 @@ Connection Wizard.
    You can un-check **Verify host name** or leave it checked depending
    on whether you want to verify the IP address you entered for the
    *Host name* field.
-   |X-New Connection.png|
+.. Image:: ../images/X-New_Connection.png
 #. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.files** to use the *Secure Shell* protocol for
    communication
-   |Ssh-files.png|
+.. Image:: ../images/Ssh-files.png
 #. Do NOT click the Finish button.  Click **Next**
 #. Check **processes.shell.linux** to use a shell to work with processes
    on the remote system
-   |Processes .png|
+.. Image:: ../images/Processes_.png
 #. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.shells** to use *Secure Shell* to work will shell
    commands
-   |Shells.png|
+.. Image:: ../images/Shells.png
 #. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.terminals** to use *Secure Shell* to work with terminals
-   |Terminals.png|
+.. Image:: ../images/Terminals.png
 #. Click **Finish**
 #. You will now see your EVM configuration in the RSE view
-   |Sitara-Linux-CCS-target-view.png|
+.. Image:: ../images/Sitara-Linux-CCS-target-view.png
 
 .. rubric:: Re-Opening the C/C++ View
    :name: re-opening-the-cc-view
@@ -95,7 +95,7 @@ files to transfer to the remote system.
 
 #. Select **Window -> Show View -> Other...**
 #. In the **Show View** dialog select **C/C++ -> C/C++ Projects**
-   |Sitara-Linux-CCS-c-view.png|
+.. Image:: ../images/Sitara-Linux-CCS-c-view.png
 #. Click **OK**
 
    -  **NOTE:** If you do not like the location of the C/C++ Projects
@@ -111,7 +111,7 @@ steps:
 #. Select **Window -> Show View -> Other...**
 #. In the **Show View** dialog select **Remote Systems -> Remote
    Systems**
-   |Show-view-remote-systems.png|
+.. Image:: ../images/Show-view-remote-systems.png
 #. Click **OK**
 
    -  **NOTE:** If you do not like the location of the Remote Systems
@@ -130,7 +130,7 @@ steps:
    within CCS.
    Ssh Terminals - Provides a terminal window for the remote system
    within CCS.
-   |Sitara-Linux-CCS-target-view.png|
+.. Image:: ../images/Sitara-Linux-CCS-target-view.png
 
 | 
 
@@ -152,11 +152,11 @@ To bypass your proxy follow the below steps:
 #. enter your company's *host proxy URL* and *port number*
 #. Do the same for the **HTTPS** item. Both items should be checked as
    shown below.
-   |X-network-Connections-top.jpeg|
+.. Image:: ../images/X-network-Connections-top.jpeg
 #. In the **Proxy Bypass** section click **Add Host...**
 #. Add the **IP address** of target board (in place of xx.xx.xx.xx)
 #. Click OK.
-   |X-network-Connections-bottom.jpeg|
+.. Image:: ../images/X-network-Connections-bottom.jpeg
 
 | 
 
@@ -170,7 +170,7 @@ communicate with the target EVM.
 #. Right-Click the **Target EVM** node and select **Connect**
 #. A dialog like the one shown below will appear
 
-|X-login.png|
+.. Image:: ../images/X-login.png
 
 The Arago distribution that is used for our SDK is configured to use
 root as the usernamr and no password.
@@ -184,7 +184,7 @@ public key is created in the target file system. Before connecting to
 the target EVM the first time, the public key must be exported from the
 target EVM to the Linux host system. To configure the key do
 
-|Setup-ssh-editted-1.png|
+.. Image:: ../images/Setup-ssh-editted-1.png
 
 ::
 
@@ -198,7 +198,7 @@ the target board IP address remains the same). This is normal. In this
 case, click Yes and the public key from the target board will be
 exported to the Ubuntu host overwriting the existing public key.
 
-|Nasty-Warning-2.PNG|
+.. Image:: ../images/Nasty-Warning-2.PNG
 
 | 
 
@@ -213,7 +213,7 @@ remote file system down to the file level. Files can be dragged and
 dropped into the remote file tree. A context menu allows you to create,
 rename or delete files and folders.
 
-|Expand-root-small.jpeg|
+.. Image:: ../images/Expand-root-small.jpeg
 
 | 
 
@@ -227,7 +227,7 @@ To open an SSH Terminal view
 #. Select **Launch Terminal** from the context menu
 #. Type shell commands at the prompt in the terminal window. Below is a
    sample command to list the contents of the remote /usr folder.
-   |MyTerminalView-small.jpeg| 
+.. Image:: ../images/MyTerminalView-small.jpeg
 
 | 
 

@@ -597,7 +597,7 @@ Reset U-Boot environment variables if U-Boot version has been changed
 | Connect the RS232 Serial cable provided in the box to the serial port
   of the Host PC. If Host is running Windows OS, start tera term and
   configure the serial port settings as follows.
-| |Tera Term Connect.jpg|
+.. Image:: ../images/Tera_Term_Connect.jpg
 
 .. rubric:: Verifying NOR
    :name: verifying-nor
@@ -616,7 +616,7 @@ Reset U-Boot environment variables if U-Boot version has been changed
 | 2. Power Cycle the board.
 | 3. Make sure the evm is connected to the DHCP server.
 | 4. U-Boot will show up on the UART. A sample screen is shown below.
-| |Spl-boot.j.jpg|
+.. Image:: ../images/Spl-boot.j.jpg
 
 .. rubric:: Verifying NAND
    :name: verifying-nand
@@ -654,7 +654,7 @@ to verify.**
     boot
 
 | 4. A sample screen is shown below.
-| |Kernel Boot.jpg|
+.. Image:: ../images/Kernel_Boot.jpg
 
 | 
 

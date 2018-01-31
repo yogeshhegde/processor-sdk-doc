@@ -10,7 +10,7 @@
 .. rubric:: **PWMSS software architecture**
    :name: pwmss-software-architecture
 
-|AM335X PWM-SS arch.JPG|
+.. Image:: ../images/AM335X_PWM-SS_arch.JPG
 
 .. rubric:: Driver Configuration
    :name: driver-configuration

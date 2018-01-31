@@ -109,7 +109,7 @@ for the installer (e.g. text installer, etc.):
 The default selection of where to install is the user's home directory.
 In this particular example the name of the user is 'sitara'.
 
-|Processor sdk select directory.png|
+.. Image:: ../images/Processor_sdk_select_directory.png
 
 | 
 

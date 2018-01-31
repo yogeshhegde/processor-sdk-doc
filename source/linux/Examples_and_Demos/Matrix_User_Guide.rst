@@ -162,7 +162,7 @@ be used to add additional information that may not be obvious.
 
    <div class="floatnone">
 
-|Screenshot-2.png|
+.. Image:: ../images/Screenshot-2.png
 
 .. raw:: html
 

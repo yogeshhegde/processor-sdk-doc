@@ -54,13 +54,13 @@ projects into CCS.
 #. From the main CCS window, select **File -> Import...** menu item to
    open the import dialog
 #. Select the **General -> Existing Projects into Workspace** option
-   |Import C projects-1.png|
+.. Image:: ../images/Import_C_projects-1.png
 #. Click **Next**
 #. On the *Import Projects* page click **Browse**
-   |Sitara-Linux-CCS-import-c.png|
+.. Image:: ../images/Sitara-Linux-CCS-import-c.png
 #. In the file browser window that is opened navigate to the **<SDK
    INSTALL DIR>/example-applications** directory and click **OK**
-   |Example-applications.png|
+.. Image:: ../images/Example-applications.png
 
 | 
 
@@ -70,13 +70,13 @@ excluding the Qt projects.
 
 | 
 
-|Import-Qt.png|
+.. Image:: ../images/Import-Qt.png
 | 
 
 #. Click **Finish** to import all of the selected projects.
 #. You can now see all of the projects listed in the *Project Explorer*
    tab.
-   |Projects-imported.png|
+.. Image:: ../images/Projects-imported.png
 
 .. rubric:: Creating a New Project
    :name: creating-a-new-project
@@ -91,12 +91,12 @@ build a simple *Hello World* application for the target.
    item
 #. in the **Select a wizard** window select the **C/C++ -> C Project**
    wizard
-   |Sitara-Linux-CCS-new-c-project.png|
+.. Image:: ../images/Sitara-Linux-CCS-new-c-project.png
 #. Click **Next**
 #. In the **C Project** dialog set the following values:
    Project Name: **helloworld**
    Project type: **Cross-Compile Project**
-   |Sitara-Linux-CCS-cross-compile.png|
+.. Image:: ../images/Sitara-Linux-CCS-cross-compile.png
 #. Click **Next**
 #. In the **Command** dialog set the following values:
    Tool command prefix: **arm-linux-gnueabihf-**. Note the the prefix
@@ -107,11 +107,11 @@ build a simple *Hello World* application for the target.
    *Browse..* button to browse to the Sitra Linux SDK installation
    directory and then to the **linux-devkit/bin** directory. You should
    see a list of tools such as *gcc* with the prefix you entered above.
-   |Sitara-Linux-CCS-command-setup.png|
+.. Image:: ../images/Sitara-Linux-CCS-command-setup.png
 #. Click **Next**
 #. In the **Select Configurations** dialog you can take the default
    *Debug* and *Release* configurations or add/remove more if you want.
-   |Sitara-Linux-CCS-select-configurations.png|
+.. Image:: ../images/Sitara-Linux-CCS-select-configurations.png
 #. Click **Finish**
 
 .. rubric:: Adding Sources to the Project
@@ -120,18 +120,18 @@ build a simple *Hello World* application for the target.
 #. After completing the steps above you should now have a **helloworld**
    project in your CCS *Project Explorer* window, but the project has no
    sources.
-   |Sitara-Linux-CCS-empty-helloworld.png|
+.. Image:: ../images/Sitara-Linux-CCS-empty-helloworld.png
 #. From the main CCS window select **File -> New -> Source File** menu
    item
 #. In the **Source File** dialog set the *Source file:* setting to
    **helloworld.c**
-   |Sitara-Linux-CCS-helloworld-c-file.png|
+.. Image:: ../images/Sitara-Linux-CCS-helloworld-c-file.png
 #. Click **Finish**
 
 #. After completing the steps above you will have a template
    **helloworld.c** file. Add your code to this file like the image
    below:
-   |Sitara-Linux-CCS-helloworld.png|
+.. Image:: ../images/Sitara-Linux-CCS-helloworld.png
 
 | 
 
@@ -145,11 +145,11 @@ build a simple *Hello World* application for the target.
       Release**
    -  For Debug builds: **Build Configurations -> Set Active -> Debug**
 
-|Code Composer Studio Changing Build Configuration.png|
+.. Image:: ../images/Code_Composer_Studio_Changing_Build_Configuration.png
 
 #. Select **Project -> Build Project** to build the highlighted project
 
-|Code Composer Studio Compiling Project.png|
+.. Image:: ../images/Code_Composer_Studio_Compiling_Project.png
 
 #. 
 

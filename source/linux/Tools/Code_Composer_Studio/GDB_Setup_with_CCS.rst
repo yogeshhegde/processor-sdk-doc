@@ -34,7 +34,7 @@ prerequisites are met:
 
 | 
 
-| |Initial-debug-configurations.png|
+.. Image:: ../images/Initial-debug-configurations.png
 
 | 
 
@@ -45,7 +45,7 @@ debug configuration named "helloworld Debug" as shown below. 
 box.  In the example the target connection is called My Target EVM.
 
 | 
-| |Hello World Debug Configuration.png|
+.. Image:: ../images/Hello_World_Debug_Configuration.png
 
 | 
 
@@ -57,7 +57,7 @@ click OK.
 
 | 
 
-| |Debug-config-2.png|
+.. Image:: ../images/Debug-config-2.png
 
 | 
 
@@ -68,7 +68,7 @@ Application".  Navgate to the executable file on the remote
 at "/usr/bin/helloworld".
 
 | 
-| |Auto-debug-config-main-tab.png|
+.. Image:: ../images/Auto-debug-config-main-tab.png
 | 6.Click the Debugger tab.  On the Debugger page, the Main tab should
   be selected.
 
@@ -83,7 +83,7 @@ GDB should be located at:
 
 | When you try to browse to the .gdbinit file, you will need to right
   click and select Show Hidden Files to see the file.
-| |Show Hidden Files.png|
+.. Image:: ../images/Show_Hidden_Files.png
 
 | 
 
@@ -91,7 +91,7 @@ The .gdbinit file is used by GDB to locate source files and library
 files on the target. The .gdbinit file is created when the SDK
 environment script runs. Here is an example of a .gdbinit file.
 
-| |Gdbinit.png|
+.. Image:: ../images/Gdbinit.png
 
 | 
 
@@ -126,7 +126,7 @@ their current
     values.
 
 | 
-|     |Auto-debugging.png|
+.. Image:: ../images/Auto-debugging.png
 
 | 
 
@@ -186,8 +186,8 @@ executable name.
 will open a "Send a Kill Signal" dialog box.  Click the Kill button.
 
 | 
-| |Shell-processes.png|
-| |Kill-gdbserver.png|
+.. Image:: ../images/Shell-processes.png
+.. Image:: ../images/Kill-gdbserver.png
 
 | 
 

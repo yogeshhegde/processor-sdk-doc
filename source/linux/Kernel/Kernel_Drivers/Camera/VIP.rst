@@ -47,7 +47,7 @@ capture from video encoder/decoder and camera sensor.
 
    <div class="magnify">
 
-` </index.php/File:VIP-block-diagram.png>`__
+.. Image:: ../images/VIP-block-diagram.png
 
 .. raw:: html
 
@@ -352,7 +352,7 @@ Table:  **Supported Output Pixel Format**
 
    <div class="magnify">
 
-` </index.php/File:CSC_SC_PORTA_PORTB.png>`__
+.. Image:: ../images/CSC_SC_PORTA_PORTB.png
 
 .. raw:: html
 

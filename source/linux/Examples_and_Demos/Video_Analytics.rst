@@ -64,7 +64,7 @@ folder and can be compiled using the SDK's top-level Makefile
 
    <div class="floatnone">
 
-|Va demo diagram.png|
+.. Image:: ../images/Va_demo_diagram.png
 
 .. raw:: html
 

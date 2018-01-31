@@ -65,14 +65,14 @@ restriction on which end of the cable should be connected to host and
 device.
 
 
-|Back-to-back.jpeg|
+.. Image:: ../images/Back-to-back.jpeg
 
 | 
 | |Note|\ **Note:** For AM572x GP EVM, there is a Mini PCIe connector on
   the LCD board. To connect 2 boards involving a AM572x GP EVM, a
   mPCIe-to-PCIe adapter is needed.
 
-|MPCIe-to-PCIe Adapter.jpg|
+.. Image:: ../images/MPCIe-to-PCIe_Adapter.jpg
 
 .. rubric:: **EP Device**
    :name: ep-device

@@ -113,7 +113,7 @@ ISP block can be used to drive the sensor pixel clock. Horizontal sync
 field respectively. Sensor data line CMOS D4:D11 are connected to the
 processor D4:D11.
 
-|AM37xx LI-3M02 Single Camera Approach.png|
+.. Image:: ../images/AM37xx_LI-3M02_Single_Camera_Approach.png
 
 **Connectivity of LI-3M02 daughter card to AM/DM37x**
 

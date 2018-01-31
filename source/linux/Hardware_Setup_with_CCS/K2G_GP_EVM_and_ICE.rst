@@ -50,7 +50,7 @@ features of EVM are:
 .. rubric:: EVM Layout and Key Components
    :name: evm-layout-and-key-components
 
-|TI K2GEVM.png|
+.. Image:: ../images/TI_K2GEVM.png
 
 .. rubric:: JTAG debug probes (aka Emulators) supported
    :name: jtag-debug-probes-aka-emulators-supported
@@ -163,7 +163,7 @@ connector to the USB mini-B interface near to the audio line in on the
 EVM, and the USB connector to your PC. This enables XDS-2xx emulation
 and is directly useable by CCS.
 
-|XDS200 connect.png|
+.. Image:: ../images/XDS200_connect.png
 
 | 
 

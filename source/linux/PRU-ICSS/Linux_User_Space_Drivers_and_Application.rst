@@ -23,7 +23,7 @@ and Linux user space, with the difference on Linux OS with the UIO
 driver vs. RTOS.
 
 | 
-| |Icss-emac sw stack.png|
+.. Image:: ../images/Icss-emac_sw_stack.png
 
 .. rubric:: Memory Access and Interrupt Handling through UIO
    :name: memory-access-and-interrupt-handling-through-uio
@@ -45,7 +45,7 @@ defined in kernel device tree, and how the application/driver can map
 and access the memory regions, as well as handle the interrupts through
 the UIO driver.
 
-|Icss-emac uio.png|
+.. Image:: ../images/Icss-emac_uio.png
 
 | 
 

@@ -163,7 +163,7 @@ certain OpenCL kernels from executing on the DSP. The kernels are
 prevented to execute on the DSP if they did not pass the accuracy tests.
 
 | 
-| |FlowChart3.jpg|
+.. Image:: ../images/FlowChart3.jpg
 
 .. rubric:: Example of OpenCL offload
    :name: example-of-opencl-offload
@@ -381,13 +381,13 @@ from
   TFTP server. Note that the process takes few minutes because the file
   is very large. (More than 600MB)
 
-|UnzipMaster3.jpg|
+.. Image:: ../images/UnzipMaster3.jpg
 
 | 
 
-| |UnzipMaster4.jpg|
+.. Image:: ../images/UnzipMaster4.jpg
 
-|InflatedZip.jpg|
+.. Image:: ../images/InflatedZip.jpg
 
 | 
 
@@ -412,7 +412,7 @@ from
 | From the OpenCV directory do the following: ***mv
   opencv\_extra-master/testdata .*** . See the screen shot below.
 
-| |MoveTestdata.jpg|
+.. Image:: ../images/MoveTestdata.jpg
 
 .. rubric:: Environment Settings and Run the Tests
    :name: environment-settings-and-run-the-tests
@@ -425,7 +425,7 @@ from
   then ***source setupEnv.sh*** . See the screen shot below.
 
 | 
-| |Environment1.jpg|
+.. Image:: ../images/Environment1.jpg
 
 | 
 
@@ -435,7 +435,7 @@ from
   screen will show the following:
 
 | 
-| |RunTests1.jpg|
+.. Image:: ../images/RunTests1.jpg
 
 | 
 | **Notes:**
@@ -450,7 +450,7 @@ from
 | 
 
 | 
-| |Logfile.jpg|
+.. Image:: ../images/Logfile.jpg
 
 | 
 

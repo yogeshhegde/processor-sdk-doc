@@ -39,7 +39,7 @@ kernels and call them using OpenVX APIs.
 
    <div class="floatnone">
 
-|Tiovx.PNG|
+.. Image:: ../images/Tiovx.PNG
 
 .. raw:: html
 

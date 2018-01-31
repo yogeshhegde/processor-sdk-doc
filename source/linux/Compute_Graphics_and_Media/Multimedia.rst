@@ -117,7 +117,7 @@ video/image codecs, utilizing framework components and codec engine.
 
    <div class="floatnone">
 
-|Mm software overview v3.png|
+.. Image:: ../images/Mm_software_overview_v3.png
 
 .. raw:: html
 
@@ -249,7 +249,7 @@ destination at the alsasink element to play the decoded audio.
 
    <div class="floatnone">
 
-|Gst decode playout v2.png|
+.. Image:: ../images/Gst_decode_playout_v2.png
 
 .. raw:: html
 
@@ -278,7 +278,7 @@ RTP payloader and udp sink.
 
    <div class="floatnone">
 
-|Gst capture encode network.png|
+.. Image:: ../images/Gst_capture_encode_network.png
 
 .. raw:: html
 
@@ -523,7 +523,7 @@ the APIs are fixed.
 
    <div class="floatnone">
 
-|GST-dsp66-src.png|
+.. Image:: ../images/GST-dsp66-src.png
 
 .. raw:: html
 

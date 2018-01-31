@@ -35,7 +35,7 @@ uniquely identifies copies of the same frame.
 
 Figure below shows the structure of a DANH node.
 
-|Dan-h-v1.jpg|
+.. Image:: ../images/Dan-h-v1.jpg
 
 PRP stands for Parallel Redundancy Protocol which is another redundancy
 protocol defined by IEC 62439-3 clause 4. Standard Ethernet devices such
@@ -61,7 +61,7 @@ the LRE forwards the first received frame of a pair to its node’s upper
 layers and discards the duplicate frame (if it arrives). It removes the
 RCT if required.
 
-|Dan-p-v2.jpg|
+.. Image:: ../images/Dan-p-v2.jpg
 
 .. rubric:: ICSS PRU firmware for HSR/PRP/PTP
    :name: icss-pru-firmware-for-hsrprpptp

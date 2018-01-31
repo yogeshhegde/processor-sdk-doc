@@ -10,7 +10,7 @@ Sitara SDK.  This page is labled "Cryptos" in the top-level Matrix GUI.
 
 | 
 
-| |MatrixMain.PNG|
+.. Image:: ../images/MatrixMain.PNG
 
 | 
 
@@ -48,7 +48,7 @@ out-of-box experience intended with the Matrix GUI.  However, the
 examples present a nice variety of cryptographic functions that are
 available with OpenSSL on the Sitara platform.
 
-| |MatrixCryptos.PNG|
+.. Image:: ../images/MatrixCryptos.PNG
 
 | 
 
@@ -105,7 +105,7 @@ the top of the page will provide details of the certificate.
 
 | 
 
-|SecureServer.PNG|
+.. Image:: ../images/SecureServer.PNG
 
 .. raw:: html
 

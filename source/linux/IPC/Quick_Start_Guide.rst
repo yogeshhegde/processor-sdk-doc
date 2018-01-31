@@ -39,9 +39,9 @@ The out of box demo is only available on Keystone-2 EVMs.
   instead of on the on-board display device.
 | 4. Click the Multi-core Demonstrations, then Multi-core IPC Demo to
   start the IPC demonstration.
-| |MatrixAppLauncher.jpg|
+.. Image:: ../images/MatrixAppLauncher.jpg
 | The result from running IPC Demo
-| |IPC Demo Result.jpg|
+.. Image:: ../images/IPC_Demo_Result.jpg
 | |Note|\ **Note:** To view the out-of-box demo source code, please
   install Linux and RTOS Processor SDKs from `SDK download
   page <http://www.ti.com/lsds/ti/tools-software/processor_sw.page>`__

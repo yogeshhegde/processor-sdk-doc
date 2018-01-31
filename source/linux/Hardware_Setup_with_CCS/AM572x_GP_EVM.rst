@@ -20,7 +20,7 @@ and dual ARM Cortex-M4 cores.
 .. rubric:: EVM Layout and Key Components
    :name: evm-layout-and-key-components
 
-|AM572X GP EVM Overview.png|
+.. Image:: ../images/AM572X_GP_EVM_Overview.png
 
 .. rubric:: JTAG debug probes (aka Emulators) supported
    :name: jtag-debug-probes-aka-emulators-supported
@@ -50,7 +50,7 @@ UART cable from the FTDI website:
 .. rubric:: Setting boot switches
    :name: setting-boot-switches
 
-|Boot Switches.png|
+.. Image:: ../images/Boot_Switches.png
 
 Other Boot Pin configurations: `GP EVM Boot
 Options <http://processors.wiki.ti.com/AM572x_General_Purpose_EVM_HW_User_Guide#Boot_and_emulation_setup>`__
@@ -71,7 +71,7 @@ Refer to the image below for how to safely separate the processor module
 from the LCD panel.
 
 | 
-| |X15 PModule disconnect.jpg| |JMI 0065.jpg|
+.. Image:: ../images/JMI_0065.jpg
 
 | 
 | Image for how to connect the XDS200 Emulator to the 20 pin header is
@@ -85,7 +85,7 @@ from the LCD panel.
 .. rubric:: Power Supply specifications
    :name: power-supply-specifications
 
-|CUI Isolated Power Supply.png|
+.. Image:: ../images/CUI_Isolated_Power_Supply.png
 
 Please note that a power supply is NOT included with the AM572x
 Evaluation Module and needs to be purchased separately. A power supply
@@ -133,7 +133,7 @@ scenario, the SBL component provides the same functionality
 .. rubric:: Connect Power to the EVM
    :name: connect-power-to-the-evm
 
-|Push Power EVM.png|
+.. Image:: ../images/Push_Power_EVM.png
 
 .. rubric:: CCS Setup
    :name: ccs-setup
@@ -323,7 +323,7 @@ MULTICORE Initialization** enable the corresponding sub system clock.
 For example, enable ``DSP11SSClkEnable_API`` for the first DSP core.
 After running the clock enable option, you can connect to the core.
 
-|Multicore-Enable.jpg|
+.. Image:: ../images/Multicore-Enable.jpg
 
 If you wish to run TI RTOS code on DSP, please also run the `Timer
 Suspend Control
@@ -356,7 +356,7 @@ files when you connect to the target
 installed the CCSv6.1.1 package and done the software update correctly.
 
 | 
-| |COnfigure targetConfigFiles SDboot.png|
+.. Image:: ../images/COnfigure_targetConfigFiles_SDboot.png
 
 .. rubric:: GEL file options
    :name: gel-file-options
@@ -420,7 +420,7 @@ control signal to the DSP as shown in the image below:
 
 Connecting FTDI cable to the 6 pin UART header for serial debug
 
-|GP EVM UART.jpg|
+.. Image:: ../images/GP_EVM_UART.jpg
 
 **Note:** Pin 1 corresponds to ground.
 
@@ -435,7 +435,7 @@ Flow Control: Off
 For ethernet connectivity connect the ethernet cable to the top serial
 port which is port 0 on the GP EVM.
 
-|AM572x GP EVM Ethernet connect.jpg|
+.. Image:: ../images/AM572x_GP_EVM_Ethernet_connect.jpg
 
 You can connect the other end of the cable directly to the host or
 through a network switch based on the configuration required for your

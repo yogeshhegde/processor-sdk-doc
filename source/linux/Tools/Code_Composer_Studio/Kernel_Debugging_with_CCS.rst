@@ -119,7 +119,7 @@ Manual Remote Degugging Launcher**. Click **OK**.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 GDB config.png|
+.. Image:: ../images/Linux_debug_v5_GDB_config.png
 
 .. raw:: html
 
@@ -129,7 +129,7 @@ Manual Remote Degugging Launcher**. Click **OK**.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_GDB_config.png>`__
+.. Image:: ../images/Linux_debug_v5_GDB_config.png
 
 .. raw:: html
 
@@ -162,7 +162,7 @@ can be modified at this time.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 tab main.png|
+.. Image:: ../images/Linux_debug_v5_tab_main.png
 
 .. raw:: html
 
@@ -172,7 +172,7 @@ can be modified at this time.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_tab_main.png>`__
+.. Image:: ../images/Linux_debug_v5_tab_main.png
 
 .. raw:: html
 
@@ -216,7 +216,7 @@ button and you are now ready to debug the application!
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 tab dbg main.png|
+.. Image:: ../images/Linux_debug_v5_tab_dbg_main.png
 
 .. raw:: html
 
@@ -226,7 +226,7 @@ button and you are now ready to debug the application!
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_tab_dbg_main.png>`__
+.. Image:: ../images/Linux_debug_v5_tab_dbg_main.png
 
 .. raw:: html
 
@@ -263,7 +263,7 @@ to install it.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 ifconfig.png|
+.. Image:: ../images/Linux_debug_v5_ifconfig.png
 
 .. raw:: html
 
@@ -273,7 +273,7 @@ to install it.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_ifconfig.png>`__
+.. Image:: ../images/Linux_debug_v5_ifconfig.png
 
 .. raw:: html
 
@@ -299,7 +299,7 @@ to install it.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 tab dbg connection.png|
+.. Image:: ../images/Linux_debug_v5_tab_dbg_connection.png
 
 .. raw:: html
 
@@ -309,7 +309,7 @@ to install it.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_tab_dbg_connection.png>`__
+.. Image:: ../images/Linux_debug_v5_tab_dbg_connection.png
 
 .. raw:: html
 
@@ -343,7 +343,7 @@ shared NFS directory, to the SD card being used to boot linux, etc.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 gdbserver.png|
+.. Image:: ../images/Linux_debug_v5_gdbserver.png
 
 .. raw:: html
 
@@ -353,7 +353,7 @@ shared NFS directory, to the SD card being used to boot linux, etc.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_gdbserver.png>`__
+.. Image:: ../images/Linux_debug_v5_gdbserver.png
 
 .. raw:: html
 
@@ -386,7 +386,7 @@ shared NFS directory, to the SD card being used to boot linux, etc.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 debugger.png|
+.. Image:: ../images/Linux_debug_v5_debugger.png
 
 .. raw:: html
 
@@ -396,7 +396,7 @@ shared NFS directory, to the SD card being used to boot linux, etc.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_debugger.png>`__
+.. Image:: ../images/Linux_debug_v5_debugger.png
 
 .. raw:: html
 
@@ -523,7 +523,7 @@ enabled. To do it, go to:
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 kernel pjt wizard.png|
+.. Image:: ../images/Linux_debug_v5_kernel_pjt_wizard.png
 
 .. raw:: html
 
@@ -533,7 +533,7 @@ enabled. To do it, go to:
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_kernel_pjt_wizard.png>`__
+.. Image:: ../images/Linux_debug_v5_kernel_pjt_wizard.png
 
 .. raw:: html
 
@@ -563,7 +563,7 @@ toolchain as *<none>* and click *Finish*.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 kernel pjt new.png|
+.. Image:: ../images/Linux_debug_v5_kernel_pjt_new.png
 
 .. raw:: html
 
@@ -573,7 +573,7 @@ toolchain as *<none>* and click *Finish*.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_kernel_pjt_new.png>`__
+.. Image:: ../images/Linux_debug_v5_kernel_pjt_new.png
 
 .. raw:: html
 
@@ -599,7 +599,7 @@ toolchain as *<none>* and click *Finish*.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 kernel pjt tree.png|
+.. Image:: ../images/Linux_debug_v5_kernel_pjt_tree.png
 
 .. raw:: html
 
@@ -609,7 +609,7 @@ toolchain as *<none>* and click *Finish*.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_kernel_pjt_tree.png>`__
+.. Image:: ../images/Linux_debug_v5_kernel_pjt_tree.png
 
 .. raw:: html
 
@@ -642,7 +642,7 @@ and the tab *Behaviour*. Uncheck all the build rules boxes and click
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 kernel build set.png|
+.. Image:: ../images/Linux_debug_v5_kernel_build_set.png
 
 .. raw:: html
 
@@ -652,7 +652,7 @@ and the tab *Behaviour*. Uncheck all the build rules boxes and click
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_kernel_build_set.png>`__
+.. Image:: ../images/Linux_debug_v5_kernel_build_set.png
 
 .. raw:: html
 
@@ -711,7 +711,7 @@ button *New Launch configuration* at the top left.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 jtag tab main.png|
+.. Image:: ../images/Linux_debug_v5_jtag_tab_main.png
 
 .. raw:: html
 
@@ -721,7 +721,7 @@ button *New Launch configuration* at the top left.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_jtag_tab_main.png>`__
+.. Image:: ../images/Linux_debug_v5_jtag_tab_main.png
 
 .. raw:: html
 
@@ -756,7 +756,7 @@ performance.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 jtag target assign.png|
+.. Image:: ../images/Linux_debug_v5_jtag_target_assign.png
 
 .. raw:: html
 
@@ -766,7 +766,7 @@ performance.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_jtag_target_assign.png>`__
+.. Image:: ../images/Linux_debug_v5_jtag_target_assign.png
 
 .. raw:: html
 
@@ -826,7 +826,7 @@ possible it does not carry debug information. A typical size for the
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 jtag vmlinux.png|
+.. Image:: ../images/Linux_debug_v5_jtag_vmlinux.png
 
 .. raw:: html
 
@@ -836,7 +836,7 @@ possible it does not carry debug information. A typical size for the
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_jtag_vmlinux.png>`__
+.. Image:: ../images/Linux_debug_v5_jtag_vmlinux.png
 
 .. raw:: html
 
@@ -866,7 +866,7 @@ running (typically in the command prompt). Click on the *Debug* button.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 jtag debugger launching.png|
+.. Image:: ../images/Linux_debug_v5_jtag_debugger_launching.png
 
 .. raw:: html
 
@@ -876,7 +876,7 @@ running (typically in the command prompt). Click on the *Debug* button.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_jtag_debugger_launching.png>`__
+.. Image:: ../images/Linux_debug_v5_jtag_debugger_launching.png
 
 .. raw:: html
 
@@ -902,7 +902,7 @@ running (typically in the command prompt). Click on the *Debug* button.
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 jtag debugger.png|
+.. Image:: ../images/Linux_debug_v5_jtag_debugger.png
 
 .. raw:: html
 
@@ -912,7 +912,7 @@ running (typically in the command prompt). Click on the *Debug* button.
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_jtag_debugger.png>`__
+.. Image:: ../images/Linux_debug_v5_jtag_debugger.png
 
 .. raw:: html
 
@@ -958,7 +958,7 @@ two debug sessions as in the screen below:
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 mixed app startup.png|
+.. Image:: ../images/Linux_debug_v5_mixed_app_startup.png
 
 .. raw:: html
 
@@ -968,7 +968,7 @@ two debug sessions as in the screen below:
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_mixed_app_startup.png>`__
+.. Image:: ../images/Linux_debug_v5_mixed_app_startup.png
 
 .. raw:: html
 
@@ -998,7 +998,7 @@ screen below:
 
    <div class="thumbinner" style="width:302px;">
 
-|Linux debug v5 mixed kernel halted.png|
+.. Image:: ../images/Linux_debug_v5_mixed_kernel_halted.png
 
 .. raw:: html
 
@@ -1008,7 +1008,7 @@ screen below:
 
    <div class="magnify">
 
-` </index.php/File:Linux_debug_v5_mixed_kernel_halted.png>`__
+.. Image:: ../images/Linux_debug_v5_mixed_kernel_halted.png
 
 .. raw:: html
 

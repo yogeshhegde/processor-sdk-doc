@@ -24,7 +24,7 @@ Archives section at the bottom of this page.
 
    <div class="floatleft">
 
-|Am335x ice.jpg|
+.. Image:: ../images/Am335x_ice.jpg
 
 .. raw:: html
 
@@ -59,7 +59,7 @@ external components and with best in class low power performance.
 
    <div class="floatleft">
 
-|Am437x idk 500x300.jpg|
+.. Image:: ../images/Am437x_idk_500x300.jpg
 
 .. raw:: html
 
@@ -96,7 +96,7 @@ with best in class low power performance.
 
    <div class="floatleft">
 
-|Am571x idk.JPG|
+.. Image:: ../images/Am571x_idk.JPG
 
 .. raw:: html
 
@@ -152,7 +152,7 @@ leave **J51** open.
 
    <div class="floatleft">
 
-|Am572x idk.PNG|
+.. Image:: ../images/Am572x_idk.PNG
 
 .. raw:: html
 
@@ -201,7 +201,7 @@ used on silicon revision SR 2.0.
 
    <div class="floatleft">
 
-|K2g ice.PNG|
+.. Image:: ../images/K2g_ice.PNG
 
 .. raw:: html
 
@@ -287,7 +287,7 @@ IDK) additional 100 Mbps Ethernet interfaces to be exposed to the user.
 | This is a high level block diagram to show how everything fits
   together. For more information see the schematics for the boards as
   well as the Linux driver source code.
-| |Pru eth block diagram 3 0 0 4.PNG|
+.. Image:: ../images/Pru_eth_block_diagram_3_0_0_4.PNG
 
 | 
 
@@ -453,7 +453,7 @@ ports.
 
 | In this mode only one of the PRU-ICSS Ethernet ports are used. This is
   the simplest mode and works as you would expect it to.
-| |Pru eth block single port 3 0 0 4.PNG|
+.. Image:: ../images/Pru_eth_block_single_port_3_0_0_4.PNG
 
 --------------
 
@@ -485,7 +485,7 @@ on the same subnet, keep scrolling to the Bonding section below.
 
 | 
 
-|Pru eth block gateway 3 0 0 4.PNG|
+.. Image:: ../images/Pru_eth_block_gateway_3_0_0_4.PNG
 
 --------------
 
@@ -504,7 +504,7 @@ an increase in throughput.
   the other port and continue. To learn more about the other types
   bonding available check out the `Linux bonding
   documentation <https://www.kernel.org/doc/Documentation/networking/bonding.txt>`__.
-| |Pru eth block bonding 3 0 0 4.PNG|
+.. Image:: ../images/Pru_eth_block_bonding_3_0_0_4.PNG
 
 To learn even more about bonding see the `Wikipedia Link
 aggregation <https://en.wikipedia.org/wiki/Link_aggregation>`__ page.

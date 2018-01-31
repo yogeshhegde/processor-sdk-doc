@@ -27,7 +27,7 @@ Main features of the MMC/SDIO host controllers:
 
 | 
 
-|Mmcsd Driver.png|
+.. Image:: ../images/Mmcsd_Driver.png
 
 MMC/SD Driver Architecture
 

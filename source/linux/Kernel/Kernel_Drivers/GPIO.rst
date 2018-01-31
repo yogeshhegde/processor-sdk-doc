@@ -18,7 +18,7 @@ configuration.
 The GPIO controllers allow interaction with GPIO pins for input/output
 and interrupt generation.
 
-|GPIO driver diagram.png|
+.. Image:: ../images/GPIO_driver_diagram.png
 
 .. rubric:: User Layer
    :name: user-layer

@@ -85,7 +85,7 @@ driver binds the musb controller hardware to linux usb stack framework.
 The CPPI4.1 DMA controller driver is responsible for transmit/receive of
 packets over the musb endpoints.
 
-|Usb-stack-arch-image.JPG|
+.. Image:: ../images/Usb-stack-arch-image.JPG
 
 .. rubric:: **Driver Features List**
    :name: driver-features-list
