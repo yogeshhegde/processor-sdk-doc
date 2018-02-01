@@ -18,7 +18,7 @@ by just using the supplied USB cable.
 .. rubric:: EVM Layout and key components
    :name: evm-layout-and-key-components
 
-|AM572x\_IDK\_layout.png|
+.. Image:: ../images/AM572x_IDK_layout.png
 
 -  PRU1ETH0 and PRU2ETH0 are not enabled by default
 
@@ -44,8 +44,6 @@ designed to help you through the initial setup of the EVM.
 |                                                                          |
 |    <div class="thumbinner" style="width:227px;">                         |
 |                                                                          |
-| |image2|                                                                 |
-|                                                                          |
 | .. raw:: html                                                            |
 |                                                                          |
 |    <div class="thumbcaption">                                            |
@@ -54,25 +52,7 @@ designed to help you through the initial setup of the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| ` </index.php/File:IDK_uSD.png>`__                                       |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| Image:IDK\_uSD.png                                                       |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
+| .. Image:: ../images/IDK_uSD.png                                         |
 +--------------------------------------------------------------------------+
 
 +--------------------------------------------------------------------------+
@@ -87,8 +67,6 @@ designed to help you through the initial setup of the EVM.
 |                                                                          |
 |    <div class="thumbinner" style="width:224px;">                         |
 |                                                                          |
-| |image3|                                                                 |
-|                                                                          |
 | .. raw:: html                                                            |
 |                                                                          |
 |    <div class="thumbcaption">                                            |
@@ -97,25 +75,8 @@ designed to help you through the initial setup of the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| ` </index.php/File:Power_cord_connect.png>`__                            |
+| .. Image:: ../images/Power_cord_connect.png                              |
 |                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| Power\_cord\_connect.png                                                 |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
 +--------------------------------------------------------------------------+
 
 Note: When powering this IDK, always use the recommended power supply
@@ -140,8 +101,6 @@ VDE, CCC, PSE, etc.
 |                                                                          |
 |    <div class="thumbinner" style="width:225px;">                         |
 |                                                                          |
-| |image4|                                                                 |
-|                                                                          |
 | .. raw:: html                                                            |
 |                                                                          |
 |    <div class="thumbcaption">                                            |
@@ -150,55 +109,7 @@ VDE, CCC, PSE, etc.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| ` </index.php/File:JTAGUSB_UART.png>`__                                  |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| JTAGUSB\_UART.png                                                        |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tright">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:182px;">                         |
-|                                                                          |
-| `File:Ethernet                                                           |
-| connect.jpg </index.php?title=Special:Upload&wpDestFile=Ethernet_connect |
-| .jpg>`__                                                                 |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| Ethernet\_connect.jpg                                                    |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
+| .. Image:: ../images/JTAGUSB_UART.png                                    |
 +--------------------------------------------------------------------------+
 
 **Note:** The serial port will not show up on the host PC until you
@@ -215,8 +126,6 @@ power on the EVM.
 |                                                                          |
 |    <div class="thumbinner" style="width:226px;">                         |
 |                                                                          |
-| |image5|                                                                 |
-|                                                                          |
 | .. raw:: html                                                            |
 |                                                                          |
 |    <div class="thumbcaption">                                            |
@@ -225,122 +134,47 @@ power on the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| ` </index.php/File:PowerON.png>`__                                       |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| PowerON.png                                                              |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
+| .. Image:: ../images/PowerON.png                                         |
 +--------------------------------------------------------------------------+
 
 After, you power on the EVM the Status, Industrial LED2, Industrial LED3
 will turn on. If the microUSB cable is pluged in then the LED
 corresponding to FTDI UARTtoUSB will be turned on.
 
-+--------------------------------------------------------------------------+
-| **5.** **Users can now connect to UART and the on board XDS100 emulator  |
-| from the host machine.For UART port connections set the serial terminal  |
-| software Tera term/minicom/hyperterminal to baudrate 115200 to see log   |
-| messages. Connecting to target using emulator has been discussed in the  |
-| section below.**                                                         |
-+--------------------------------------------------------------------------+
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tleft">                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:402px;">                         |
-|                                                                          |
-| |image6|                                                                 |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="magnify">                                                 |
-|                                                                          |
-| ` </index.php/File:Serial_connect.jpg>`__                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| Serial connect.jpg                                                       |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="center">                                                  |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumb tnone">                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbinner" style="width:302px;">                         |
-|                                                                          |
-| |image7|                                                                 |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="thumbcaption">                                            |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    <div class="magnify">                                                 |
-|                                                                          |
-| ` </index.php/File:Baudrate.jpg>`__                                      |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| Baudrate.jpg                                                             |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-|                                                                          |
-| .. raw:: html                                                            |
-|                                                                          |
-|    </div>                                                                |
-+--------------------------------------------------------------------------+
++---------------------------------------------+---------------------------------------------+
+| **5.** **Users can now connect to UART and the on board XDS100 emulator                   |
+| from the host machine.For UART port connections set the serial terminal                   |
+| software Tera term/minicom/hyperterminal to baudrate 115200 to see log                    |
+| messages. Connecting to target using emulator has been discussed in the                   |
+| section below.**                                                                          |
++---------------------------------------------+---------------------------------------------+
+| .. raw:: html                               | .. raw:: html                               |
+|                                             |                                             |
+|    <div class="center">                     |    <div class="center">                     |
+|                                             |                                             |
+| .. raw:: html                               | .. raw:: html                               |
+|                                             |                                             |
+|    <div                                     |    <div                                     |
+|    class="thumb tnone">                     |    class="thumb tnone">                     |
+|                                             |                                             |
+| .. raw:: html                               | .. raw:: html                               |
+|                                             |                                             |
+|    <div                                     |    <div                                     |
+|    class="thumbinner"                       |    class="thumbinner"                       |
+|    style="width:402px;">                    |    style="width:302px;">                    |
+|                                             |                                             |
+| .. Image:: ../images/Serial_connect.jpg     | .. Image:: ../images/Baudrate.jpg           |
+|                                             |                                             |
+| .. raw:: html                               | .. raw:: html                               |
+|                                             |                                             |
+|    <div                                     |    <div                                     |
+|    class="thumbcaption">                    |    class="thumbcaption">                    |
+|                                             |                                             |
+| .. raw:: html                               | .. raw:: html                               |
+|                                             |                                             |
+|    <div class="magnify">                    |    <div class="magnify">                    |
+|                                             |                                             |
++---------------------------------------------+---------------------------------------------+
 
 .. rubric:: Connecting IDK EVM to Code Composer Studio
    :name: connecting-idk-evm-to-code-composer-studio
@@ -375,7 +209,7 @@ the Sitara Device support version 1.3.x package correctly
 
    </div>
 
-|Target configuration.png|
+.. Image:: ../images/Target_configuration.png
 
 | 
 | **Step4:** In advance settings, Make sure that the corresponding IDK
@@ -458,7 +292,7 @@ DSP11SSClkEnable\_API. After running the clock enable option, you can
 connect to the core.
 
 | 
-| |Multicore-Enable.jpg|
+.. Image:: ../images/Multicore-Enable.jpg
 
 .. rubric:: Related Links
    :name: related-links

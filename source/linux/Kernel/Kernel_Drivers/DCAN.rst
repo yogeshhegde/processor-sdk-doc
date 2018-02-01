@@ -80,58 +80,35 @@ Most TI boards by default will allow the user to use CAN without any
 changes. The boards that do require modifications to be enabled for CAN
 to work will be listed below.
 
-+--------------------------------------+--------------------------------------+
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    <div class="center">              |    <div class="center">              |
-|                                      |                                      |
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    <div class="thumb tnone">         |    <div class="thumb tnone">         |
-|                                      |                                      |
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    <div class="thumbinner"           |    <div class="thumbinner"           |
-|    style="width:302px;">             |    style="width:598px;">             |
-|                                      |                                      |
-| |Am335x-profile-selection.png|       | |Dcan node.png|                      |
-|                                      |                                      |
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    <div class="thumbcaption">        |    <div class="thumbcaption">        |
-|                                      |                                      |
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    <div class="magnify">             |    <div class="magnify">             |
-|                                      |                                      |
-| ` </index.php/File:Am335x-profile-se | ` </index.php/File:Dcan_node.png>`__ |
-| lection.png>`__                      |                                      |
-|                                      | .. raw:: html                        |
-| .. raw:: html                        |                                      |
-|                                      |    </div>                            |
-|    </div>                            |                                      |
-|                                      | .. raw:: html                        |
-| .. raw:: html                        |                                      |
-|                                      |    </div>                            |
-|    </div>                            |                                      |
-|                                      | .. raw:: html                        |
-| .. raw:: html                        |                                      |
-|                                      |    </div>                            |
-|    </div>                            |                                      |
-|                                      | .. raw:: html                        |
-| .. raw:: html                        |                                      |
-|                                      |    </div>                            |
-|    </div>                            |                                      |
-|                                      | .. raw:: html                        |
-| .. raw:: html                        |                                      |
-|                                      |    </div>                            |
-|    </div>                            |                                      |
-+--------------------------------------+--------------------------------------+
-| EVM configure for Profile 1 (CAN     | DCAN1 node after being changed from  |
-| enable)                              | disabled to okay                     |
-+--------------------------------------+--------------------------------------+
++----------------------------------------------------+--------------------------------------+
+| .. raw:: html                                      | .. raw:: html                        |
+|                                                    |                                      |
+|    <div class="center">                            |    <div class="center">              |
+|                                                    |                                      |
+| .. raw:: html                                      | .. raw:: html                        |
+|                                                    |                                      |
+|    <div class="thumb tnone">                       |    <div class="thumb tnone">         |
+|                                                    |                                      |
+| .. raw:: html                                      | .. raw:: html                        |
+|                                                    |                                      |
+|    <div class="thumbinner"                         |    <div class="thumbinner"           |
+|    style="width:302px;">                           |    style="width:598px;">             |
+|                                                    |                                      |
+| .. Image:: ../images/Am335x-profile-selection.png  | .. Image:: ../images/Dcan_node.png   |
+|                                                    |                                      |
+| .. raw:: html                                      | .. raw:: html                        |
+|                                                    |                                      |
+|    <div class="thumbcaption">                      |    <div class="thumbcaption">        |
+|                                                    |                                      |
+| .. raw:: html                                      | .. raw:: html                        |
+|                                                    |                                      |
+|    <div class="magnify">                           |    <div class="magnify">             |
++----------------------------------------------------+--------------------------------------+
+| enable)                                            | disabled to okay                     |
++----------------------------------------------------+--------------------------------------+
 
 Table:  AM335x Hardware and Software modifications
+
 
 By default the CAN signals on the AM335x GP EVM isn't routed to the CAN
 connector. To do so you must configure the EVM to profile 1 instead of
@@ -149,58 +126,36 @@ seen above.
 .. rubric:: **Connection Configuration**
    :name: connection-configuration
 
-+--------------------------+--------------------------+--------------------------+
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    <div class="center">  |    <div class="center">  |    <div class="center">  |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    <div                  |    <div                  |    <div                  |
-|    class="thumb tnone">  |    class="thumb tnone">  |    class="thumb tnone">  |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    <div                  |    <div                  |    <div                  |
-|    class="thumbinner"    |    class="thumbinner"    |    class="thumbinner"    |
-|    style="width:302px;"> |    style="width:302px;"> |    style="width:302px;"> |
-|                          |                          |                          |
-| |Dcan.png|               | |Dcan-header.png|        | |Dcan header to db9.png| |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    <div                  |    <div                  |    <div                  |
-|    class="thumbcaption"> |    class="thumbcaption"> |    class="thumbcaption"> |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    <div class="magnify"> |    <div class="magnify"> |    <div class="magnify"> |
-|                          |                          |                          |
-| ` </index.php/File:Dcan. | ` </index.php/File:Dcan- | ` </index.php/File:Dcan_ |
-| png>`__                  | header.png>`__           | header_to_db9.png>`__    |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    </div>                |    </div>                |    </div>                |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    </div>                |    </div>                |    </div>                |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    </div>                |    </div>                |    </div>                |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    </div>                |    </div>                |    </div>                |
-|                          |                          |                          |
-| .. raw:: html            | .. raw:: html            | .. raw:: html            |
-|                          |                          |                          |
-|    </div>                |    </div>                |    </div>                |
-+--------------------------+--------------------------+--------------------------+
-| DB9 to DB9               | Header to Header         | Header to DB9            |
-+--------------------------+--------------------------+--------------------------+
++-------------------------------+--------------------------------------+---------------------------------------------+
+| .. raw:: html                 | .. raw:: html                        | .. raw:: html                               |
+|                               |                                      |                                             |
+|    <div class="center">       |    <div class="center">              |    <div class="center">                     |
+|                               |                                      |                                             |
+| .. raw:: html                 | .. raw:: html                        | .. raw:: html                               |
+|                               |                                      |                                             |
+|    <div                       |    <div                              |    <div                                     |
+|    class="thumb tnone">       |    class="thumb tnone">              |    class="thumb tnone">                     |
+|                               |                                      |                                             |
+| .. raw:: html                 | .. raw:: html                        | .. raw:: html                               |
+|                               |                                      |                                             |
+|    <div                       |    <div                              |    <div                                     |
+|    class="thumbinner"         |    class="thumbinner"                |    class="thumbinner"                       |
+|    style="width:302px;">      |    style="width:302px;">             |    style="width:302px;">                    |
+|                               |                                      |                                             |
+| .. Image:: ../images/Dcan.png | .. Image:: ../images/Dcan-header.png | .. Image:: ../images/Dcan_header_to_db9.png |
+|                               |                                      |                                             |
+| .. raw:: html                 | .. raw:: html                        | .. raw:: html                               |
+|                               |                                      |                                             |
+|    <div                       |    <div                              |    <div                                     |
+|    class="thumbcaption">      |    class="thumbcaption">             |    class="thumbcaption">                    |
+|                               |                                      |                                             |
+| .. raw:: html                 | .. raw:: html                        | .. raw:: html                               |
+|                               |                                      |                                             |
+|    <div class="magnify">      |    <div class="magnify">             |    <div class="magnify">                    |
+|                               |                                      |                                             |
++-------------------------------+--------------------------------------+---------------------------------------------+
+| DB9 to DB9                    | Header to Header                     | Header to DB9                               |
++-------------------------------+--------------------------------------+---------------------------------------------+
 
 Table:  Various DCAN EVM Connection Configuration
 
@@ -215,44 +170,18 @@ DB9/Serial Port/RS 232 cable must be used to connect with the evm.
 Wheather the other end of the cable is female or male will depend on if
 the other CAN device the user will be connecting to.
 
-.. raw:: html
+.. Image:: ../images/DB9_cable.jpg
+   :scale: 50%
+   :align: center 
 
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|Image: 250 pixels|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: **Jumper Wires**
    :name: jumper-wires
 
-.. raw:: html
+.. Image:: ../images/Female_to_female_jumper.png
+   :scale: 20%
+   :align: center
 
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|Image: 250 pixels|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 For evms whose DCAN pins are broken out via a header then a female
 jumper wire would be best to use to connect to the various DCAN pins on
@@ -271,7 +200,7 @@ GND pin.
 |                                                                          |
 |    <div class="floatnone">                                               |
 |                                                                          |
-| |Image: 550 pixels|                                                      |
+| .. Image:: ../images/Dcan_j6eco.png                                      |
 |                                                                          |
 | .. raw:: html                                                            |
 |                                                                          |
@@ -315,27 +244,27 @@ pin 3 (GND). Make sure your soldering on the side of the DB9 that has
 the metal lip meant to push some of the exposed wire into and soldering
 to the correct pins correctly. Use the below diagram as a reference.
 
-+--------------------------------------+--------------------------------------+
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    <div class="center">              |    <div class="center">              |
-|                                      |                                      |
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    <div class="floatnone">           |    <div class="floatnone">           |
-|                                      |                                      |
-| |Image: 650 pixels|                  | |Image: 650 pixels|                  |
-|                                      |                                      |
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    </div>                            |    </div>                            |
-|                                      |                                      |
-| .. raw:: html                        | .. raw:: html                        |
-|                                      |                                      |
-|    </div>                            |    </div>                            |
-+--------------------------------------+--------------------------------------+
-| Wiring Diagram                       | Example of completed cable.          |
-+--------------------------------------+--------------------------------------+
++----------------------------------------------------+---------------------------------------+
+| .. raw:: html                                      | .. raw:: html                         |
+|                                                    |                                       |
+|    <div class="center">                            |    <div class="center">               |
+|                                                    |                                       |
+| .. raw:: html                                      | .. raw:: html                         |
+|                                                    |                                       |
+|    <div class="floatnone">                         |    <div class="floatnone">            |
+|                                                    |                                       |
+| .. Image:: ../images/DCAN_custom_cable_diagram.png | .. Image:: ../images/Custom_cable.png |
+|                                                    |                                       |
+| .. raw:: html                                      | .. raw:: html                         |
+|                                                    |                                       |
+|    </div>                                          |    </div>                             |
+|                                                    |                                       |
+| .. raw:: html                                      | .. raw:: html                         |
+|                                                    |                                       |
+|    </div>                                          |    </div>                             |
++----------------------------------------------------+---------------------------------------+
+| Wiring Diagram                                     | Example of completed cable.           |
++----------------------------------------------------+---------------------------------------+
 
 | 
 
@@ -608,7 +537,7 @@ into three layers Viz user space, kernel space and hardware.
 
    <div class="thumbinner" style="width:592px;">
 
-|Dcan driver architecture.png|
+.. Image:: ../images/Dcan_driver_architecture.png
 
 .. raw:: html
 
@@ -618,27 +547,7 @@ into three layers Viz user space, kernel space and hardware.
 
    <div class="magnify">
 
-` </index.php/File:Dcan_driver_architecture.png>`__
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: **User Space**
    :name: user-space
