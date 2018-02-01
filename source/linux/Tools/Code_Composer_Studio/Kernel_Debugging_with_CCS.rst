@@ -91,104 +91,44 @@ The following dependencies apply to Run Mode Debug:
 .. rubric:: Procedure
    :name: procedure
 
-| **IMPORTANT!** In certain versions CCSv5 does not enable "CDT GDB
-  Debugging" configurations. You need to enable them from the
-  Capabilities tab in the Preference dialog (select *Window* -->
-  *Preferences* --> *General* --> *Capabilities*).
-| **1.** Bring up the Debug Configurations dialog by selecting menu
-  *Run* --> *Debug Configurations*
-| **2.** Select *C/C++ Remote Application*
-| **3.** Click on the icon *New launch configuration* (Top left of the
-  pane)
-| **4.** Set the fields  *C/C++ Application:* and\ *Project:*
-  respectively to the existing project in the workspace and the binary
-  executable file
+**IMPORTANT!** In certain versions CCSv5 does not enable "CDT GDB
+Debugging" configurations. You need to enable them from the
+Capabilities tab in the Preference dialog (select *Window* -->
+*Preferences* --> *General* --> *Capabilities*).
 
-**Note:** If the project is already in focus (Active or highlighted) in
-the *Project Explorer* view, these fields will be already populated.
+**1.** Bring up the Debug Configurations dialog by selecting menu
+*Run* --> *Debug Configurations*
+
+**2.** Select *C/C++ Remote Application*
+
+**3.** Click on the icon *New launch configuration* (Top left of the
+pane)
+
+**4.** Set the fields  *C/C++ Application:* and\ *Project:*
+respectively to the existing project in the workspace and the binary
+executable file
+
+| **Note:** If the project is already in focus (Active or highlighted) in
+  the *Project Explorer* view, these fields will be already populated.
+
 **5.** In tab *Main*, click on the link *Select Other* at the bottom
 where it says **Using GDB (ASF) Automatic Remote Debugging Launcher**.
 Check *Use configuration specific settings* and select **GDB (DSF)
 Manual Remote Degugging Launcher**. Click **OK**.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_GDB_config.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_GDB_config.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **Note:** It is possible to set up CCSv5 to automatically connect and
 launch the debugger in the target by leaving the settings above
 untouched. Check section 8 of the `Eclipse CDT
 FAQ <http://wiki.eclipse.org/index.php/CDT/User/FAQ>`__.
+
 **Note:** Other options like *Enable auto build*, *arguments* and others
 can be modified at this time.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_tab_main.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_tab_main.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **6.** Select the **Debugger** tab and specify the GDB debugger as well
 as the GDB command file. In this case the GDB debugger from Arago is
@@ -208,41 +148,8 @@ button and you are now ready to debug the application!
 -  The GDB init file is located:
    /home/user/AM335X/SDK/ti-sdk-am335x-evm-06.00.00.00/.gdbinit
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_tab_dbg_main.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_tab_dbg_main.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **7.** On the Debugger **Connection** tab, specify the IP address and
 port of the GDB server running on the target.
@@ -255,77 +162,11 @@ linux console.
 the supplied filesystem. Check the SDK documentation for details on how
 to install it.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_ifconfig.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_ifconfig.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
 
 .. Image:: ../images/Linux_debug_v5_tab_dbg_connection.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_tab_dbg_connection.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **8.** On the target console, start the GDB server specifying the
 application file and the port number.
@@ -335,41 +176,8 @@ Debugger Connection tab (10000 by default).
 filesystem. This can be done in multiple ways: either copying it to the
 shared NFS directory, to the SD card being used to boot linux, etc.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
 
 .. Image:: ../images/Linux_debug_v5_gdbserver.png
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_gdbserver.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **9.** Launch the debug configuration by clicking the Debug button.
 
@@ -378,41 +186,7 @@ shared NFS directory, to the SD card being used to boot linux, etc.
    and view the memory, registers and variables of the application
    process running on the target.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_debugger.png
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_debugger.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **10.** You may need to set the shared library (object) search path in a
 cross compile debug enviroment.
@@ -515,117 +289,17 @@ enabled. To do it, go to:
 *Project* and select *Makefile Project with Existing Code*. Click
 *Next*.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_kernel_pjt_wizard.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_kernel_pjt_wizard.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **2.** In the section *Existing Code Location*, click on *Browse...* and
 point to the root directory of the Linux kernel source tree. Leave the
 toolchain as *<none>* and click *Finish*.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_kernel_pjt_new.png
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_kernel_pjt_new.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
 
 .. Image:: ../images/Linux_debug_v5_kernel_pjt_tree.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_kernel_pjt_tree.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **3.** To prevent CCS from building the Linux kernel automatically
 before launching the debugger, this option must be disabled. Highlight
@@ -634,41 +308,7 @@ select *Build Options...*, then select *C/C++ Build* in the left tree
 and the tab *Behaviour*. Uncheck all the build rules boxes and click
 *OK*.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_kernel_build_set.png
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_kernel_build_set.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **Note:** it is possible the C-syntax error checker built into Eclipse
 is also activated, which may throw errors while launching the debugger.
@@ -703,41 +343,8 @@ Guide </index.php/CCSv5_Getting_Started_Guide>`__.
 **2.** Select *Code Composer Studio - Device Debugging* and click on the
 button *New Launch configuration* at the top left.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_jtag_tab_main.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_jtag_tab_main.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **3.** Click on the button *File System...* near the box *Target
 Configuration* to select the target configuration file (.ccxml) for your
@@ -748,41 +355,7 @@ box *Name:*
 list of cores will be shown and can be disabled to improve the debugger
 performance.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_jtag_target_assign.png
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_jtag_target_assign.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **4.** Select the tab *Program* to assign the Linux kernel source code
 to the Debug configuration.
@@ -818,117 +391,15 @@ possible it does not carry debug information. A typical size for the
 ``vmlinux`` file usually starts at 30~40MB.
 **8.** At last, check the box *Load symbols only*. Click *Apply*.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_jtag_vmlinux.png
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_jtag_vmlinux.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **9.** Now the debug session is ready to be launched. At this point, the
 emulator must be connected, the target board powered up and Linux
 running (typically in the command prompt). Click on the *Debug* button.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_jtag_debugger_launching.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_jtag_debugger_launching.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_jtag_debugger.png
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_jtag_debugger.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: Mixed Mode Debug
    :name: mixed-mode-debug
@@ -950,81 +421,14 @@ Studio)* then *Hardware Breakpoint*. Resume the target execution.
 ``sleep()`` function call. After launching, the *Debug* view should show
 two debug sessions as in the screen below:
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_mixed_app_startup.png
 
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_mixed_app_startup.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **4.** Put the target to run. When the application calls ``sleep()`` the
 Stop mode debug session should halt at the breakpoint, as shown in the
 screen below:
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
 .. Image:: ../images/Linux_debug_v5_mixed_kernel_halted.png
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Linux_debug_v5_mixed_kernel_halted.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 **Important!** Keep in mind that halting the Linux kernel while
 GDB/GDBserver are running may cause communication timeouts, clock skews

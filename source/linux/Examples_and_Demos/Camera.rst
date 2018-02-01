@@ -6,27 +6,9 @@ This users guide provides an overview of camera loopback example
 integrated in matrix application on AM37x platform. This application can
 be executed by selecting the "Camera" icon at the top-level matrix.
 
-| 
 
-.. raw:: html
+.. Image:: ../images/Main_screen.png
 
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|main\_screen.png|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
 
 .. rubric:: Supported Platforms
    :name: supported-platforms

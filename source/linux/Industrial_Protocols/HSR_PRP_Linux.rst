@@ -83,6 +83,7 @@ firmware is a re-use from the TI RTOS implementation that is discussed
 above. Re-use means the data structures and API should be re-used across
 both TI RTOS and Linux driver implementations. A common PRU Ethernet
 driver is developed to support existing EMAC device as well HSR/PRP
+
 .. Image:: ../images/Hsr-prp-offload.png
 
 .. rubric:: Ethernet Driver

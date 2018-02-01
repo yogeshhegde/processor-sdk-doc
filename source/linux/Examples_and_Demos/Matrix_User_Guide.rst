@@ -43,23 +43,7 @@ system is booted and uses the target system's touchscreen interface for
 user input. Matrix comes as a 4x3 matrix of icons or as a 4x2 matrix
 depending on the display resolution.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|Matrix latest.png|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Matrix_2_Main_Menu.png
 
 .. rubric:: Local and Remote Matrix
    :name: local-and-remote-matrix

@@ -339,8 +339,10 @@ minutes. This section will cover the following topics
 
    -  **make**
 
-#. Notice the build is using our cross-compiler- arm-linux-gnueabihf-g++
+#. Notice the build is using our cross-compiler-arm-linux-gnueabihf-g++
+
 .. Image:: ../images/Sitara_Linux_QT_make_using_cross_compile.jpeg
+
 #. Also notice we now have an executable, lets see what type of file we
    created
 
@@ -431,7 +433,9 @@ development.
          </div>
 
 #. QT creator should be up and running now
+
 .. Image:: ../images/Sitara_Linux_QT_qtcreator.png
+
 #. Now lets setup QT creator to configure qmake. From the QT creator
    main menu shown above select the following:
 
@@ -1038,9 +1042,8 @@ style sheets.
 .. Image:: ../images/Sitara_fullscreen.png
 
 #. Now re-run and notice how it takes up the full screen.
-.. Image:: ../images/Sitara_matrix.PNG
 
-   .. raw:: html
+.. Image:: ../images/Sitara_matrix.PNG
 
       <div
       style="margin: 5px; padding: 5px 10px; background-color: #ffffec; border-left: 5px solid #ff6600;">
@@ -1049,9 +1052,6 @@ style sheets.
    You will need to use the **Exit** button on **Tab1** to close this
    program
 
-   .. raw:: html
-
-      </div>
 
 #. Now lets fix another issue back on Tab 1. We hard coded in a default
    command: **date --help**

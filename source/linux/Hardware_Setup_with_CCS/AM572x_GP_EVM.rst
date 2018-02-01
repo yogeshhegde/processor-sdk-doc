@@ -17,6 +17,26 @@ and dual ARM Cortex-M4 cores.
 
 .. rubric:: Contents of the kit
    :name: contents-of-the-kit
+
+.. Image:: ../images/EVM_modules.png
+
+**Module:**
+
+- Processor Module
+- LCD Module
+- Camera Module
+
+**Other components:**
+
+- µSD card with Linux SDK
+- USB-to-serial debug cable
+- HDMI cable for optional external display
+- LCD brackets
+
+**Printed documentation:**
+
+- `Quick start guide <http://www.ti.com/lit/ug/sprw275/sprw275.pdf>`__
+
 .. rubric:: EVM Layout and Key Components
    :name: evm-layout-and-key-components
 
@@ -70,14 +90,16 @@ panel in order to get access to the JTAG pins.
 Refer to the image below for how to safely separate the processor module
 from the LCD panel.
 
-| 
-.. Image:: ../images/JMI_0065.jpg
++-------------------------------------------------+-------------------------------------------------+
+| .. Image:: ../images/X15_PModule_disconnect.jpg | .. Image:: ../images/JMI_0065.jpg               |
++-------------------------------------------------+-------------------------------------------------+
 
 | 
 | Image for how to connect the XDS200 Emulator to the 20 pin header is
   shown below:
 
-|GPEVM\_XDS200.jpg|
+.. Image:: ../images/GPEVM_XDS200.jpg
+   :scale: 50%
 
 .. rubric:: Powering up the EVM
    :name: powering-up-the-evm
@@ -113,11 +135,6 @@ the board.
 In Linux boot, the uboot code keeps the PMIC On and in the TI RTOS boot
 scenario, the SBL component provides the same functionality
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
 **NOTE**
 
 -  To allow quicker execution of the GEL before the PMIC shuts off, you
@@ -129,6 +146,7 @@ scenario, the SBL component provides the same functionality
    failed, hit connect in CCS debug view without removing the power
    cable and then immediately hit the power switch besides the power
    plug.
+
 
 .. rubric:: Connect Power to the EVM
    :name: connect-power-to-the-evm
@@ -159,7 +177,7 @@ GPEVM\_AM572x\_SiRevA target make sure you have installed the CCSv6
 package with support for Sitara Processors and done the software update
 correctly from the Help Menu to get the latest Sitara CSP package.
 
-|GPEVM\_Target configuration.jpg|
+.. Image:: ../images/GPEVM_Target_configuration.jpg
 
 | 
 
@@ -410,7 +428,7 @@ Due to this issue the SYS/BIOS developers will need to configure an
 additional CCS configuration check to connect the GPTimer suspend
 control signal to the DSP as shown in the image below:
 
-|GPtimer5\_DSPConnect.png|
+.. Image:: ../images/GPtimer5_DSPConnect.png
 
 .. rubric:: Other How-To Options
    :name: other-how-to-options
@@ -421,6 +439,7 @@ control signal to the DSP as shown in the image below:
 Connecting FTDI cable to the 6 pin UART header for serial debug
 
 .. Image:: ../images/GP_EVM_UART.jpg
+   :scale: 50%
 
 **Note:** Pin 1 corresponds to ground.
 
@@ -436,10 +455,10 @@ For ethernet connectivity connect the ethernet cable to the top serial
 port which is port 0 on the GP EVM.
 
 .. Image:: ../images/AM572x_GP_EVM_Ethernet_connect.jpg
+   :scale: 50%
 
 You can connect the other end of the cable directly to the host or
 through a network switch based on the configuration required for your
 test setup.
 
-.. raw:: html
 

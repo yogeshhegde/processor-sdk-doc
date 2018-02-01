@@ -33,9 +33,12 @@ prerequisites are met:
 #. Go to **Window -> Open Perspective -> Other...**
 #. In the menu window select **Remote System Explorer** to open this
    perspective.
+
 .. Image:: ../images/Sitara-Linux-CCS-rse-perspective.png
+
 #. Click **OK**
 #. You will now have the RSE view opened
+
 .. Image:: ../images/Sitara-Linux-CCS-rse-view.png
 
 | 
@@ -49,11 +52,15 @@ Connection Wizard.
 #. Click **File -> New -> Other...**
 #. In the **Select a wizard** window select **Remote System Explorer ->
    Connection**
+
 .. Image:: ../images/New-connection.png
+
 #. Click **Next**
 #. In the **Select Remote System Type** window select the **Linux**
    system type
+
 .. Image:: ../images/Remote-system-type.png
+
 #. Click **Next**
 #. In the **Remote Linux System Connection** window enter
    **Host name:** Enter the IP address of your target EVM. This can be
@@ -65,24 +72,35 @@ Connection Wizard.
    You can un-check **Verify host name** or leave it checked depending
    on whether you want to verify the IP address you entered for the
    *Host name* field.
+
 .. Image:: ../images/X-New_Connection.png
+
 #. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.files** to use the *Secure Shell* protocol for
    communication
+
 .. Image:: ../images/Ssh-files.png
+
 #. Do NOT click the Finish button.  Click **Next**
 #. Check **processes.shell.linux** to use a shell to work with processes
    on the remote system
+
 .. Image:: ../images/Processes_.png
+
 #. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.shells** to use *Secure Shell* to work will shell
    commands
+
 .. Image:: ../images/Shells.png
+
 #. Do NOT click the Finish button.  Click **Next**
 #. Check **ssh.terminals** to use *Secure Shell* to work with terminals
+
 .. Image:: ../images/Terminals.png
+
 #. Click **Finish**
 #. You will now see your EVM configuration in the RSE view
+
 .. Image:: ../images/Sitara-Linux-CCS-target-view.png
 
 .. rubric:: Re-Opening the C/C++ View
@@ -95,7 +113,9 @@ files to transfer to the remote system.
 
 #. Select **Window -> Show View -> Other...**
 #. In the **Show View** dialog select **C/C++ -> C/C++ Projects**
+
 .. Image:: ../images/Sitara-Linux-CCS-c-view.png
+
 #. Click **OK**
 
    -  **NOTE:** If you do not like the location of the C/C++ Projects
@@ -111,7 +131,9 @@ steps:
 #. Select **Window -> Show View -> Other...**
 #. In the **Show View** dialog select **Remote Systems -> Remote
    Systems**
+
 .. Image:: ../images/Show-view-remote-systems.png
+
 #. Click **OK**
 
    -  **NOTE:** If you do not like the location of the Remote Systems
@@ -130,6 +152,7 @@ steps:
    within CCS.
    Ssh Terminals - Provides a terminal window for the remote system
    within CCS.
+
 .. Image:: ../images/Sitara-Linux-CCS-target-view.png
 
 | 
@@ -152,10 +175,13 @@ To bypass your proxy follow the below steps:
 #. enter your company's *host proxy URL* and *port number*
 #. Do the same for the **HTTPS** item. Both items should be checked as
    shown below.
+
 .. Image:: ../images/X-network-Connections-top.jpeg
+
 #. In the **Proxy Bypass** section click **Add Host...**
 #. Add the **IP address** of target board (in place of xx.xx.xx.xx)
 #. Click OK.
+
 .. Image:: ../images/X-network-Connections-bottom.jpeg
 
 | 
@@ -227,6 +253,7 @@ To open an SSH Terminal view
 #. Select **Launch Terminal** from the context menu
 #. Type shell commands at the prompt in the terminal window. Below is a
    sample command to list the contents of the remote /usr folder.
+
 .. Image:: ../images/MyTerminalView-small.jpeg
 
 | 

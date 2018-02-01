@@ -77,13 +77,14 @@ mode.
 | **For EVM Out of box experience uses SD/MMC boot as shown in the
   image**:
 
-|SD boot Switch Setting|
+.. Image:: ../images/Boot_switch_SDboot.jpg
 
 | 
 | **For Debugging over emulator use "No Boot/Sleep" Setting as shown
   below**:
 
-|No boot/sleep boot Switch Setting|
+.. Image:: ../images/Boot_Switch_NoBoot.jpg
+   :scale: 50%
 
 | 
 | The table below provides the list of all the boot modes supported on
@@ -204,7 +205,7 @@ supplied with your emulator for connection assistance.
 .. rubric:: Power Supply specifications
    :name: power-supply-specifications
 
-[[Image:CUI\_Isolated\_Power\_Supply.png\|300px]
+.. [[Image:CUI_Isolated_Power_Supply.png|300px]
 
 The EVMK2G can be powered from a single +12V / 5.0A DC (60W) external
 power supply connected to the DC power jack (J3). Internally, +12V input
@@ -249,7 +250,7 @@ this update.
 update the Keystone Device Support package by going into the Help->Check
 For Updates
 
-|Check\_for\_Updates.png|
+.. Image:: ../images/Check_for_Updates.png
 
 **Step 2** Select Keystone2 device support package. Follow menu options
 to continue with the update
@@ -258,7 +259,7 @@ to continue with the update
 and check that Keystone2 device support package v1.1.5 or later are
 installed as shown below
 
-|KeystoneII\_device\_support\_package.png|
+.. Image:: ../images/KeystoneII_device_support_package.png
 
 **Note:** The package can be downloaded separately from the link below
 and manually unzipped into CCSv6 installation.
@@ -296,7 +297,8 @@ and manually unzipped into CCSv6 installation.
 
 Launch CCS and create new target configuration(File->New->Target
 Configuration file) as shown in the images below
-|CCS\_target\_configuration.png|
+
+.. Image:: ../images/CCS_target_configuration.png
 
 | 
 | Provide appropriate name to the configuration. Select Spectrum digital
@@ -307,7 +309,7 @@ installed the CCSv6.1.3 package or for CCSv6.1.2 and earlier ensure that
 you have done the software update correctly as shown in the how to
 section below.
 
-|K2G GPEVM\_Target configuration.jpg|
+.. Image:: ../images/K2G_GPEVM_Target_configuration.jpg
 
 In advance settings, make sure that the gel files are populated
 correctly. The following GEL files and their corresponding cores are
@@ -343,7 +345,7 @@ section <http://ap-fpdsp-swapps.dal.design.ti.com/index.php/66AK2G02_GP_EVM_Hard
 | 
 | **Step5**: Launch Target configuration you just created.
 
-|K2G\_Launch\_targetConfig.png|
+.. Image:: ../images/K2G_Launch_targetConfig.png
 
 | 
 | **Step6**:K2G can be a DSP or an ARM master boot device so connect to
@@ -373,7 +375,8 @@ section <http://ap-fpdsp-swapps.dal.design.ti.com/index.php/66AK2G02_GP_EVM_Hard
 
 Launch CCS and create new target configuration(File->New->Target
 Configuration file) as shown in the images below
-|CCS\_target\_configuration.png|
+
+.. Image:: ../images/CCS_target_configuration.png
 
 | 
 | Provide appropriate name to the configuration. Select Spectrum digital
@@ -384,7 +387,7 @@ installed the CCSv6.1.3 package or for CCSv6.1.2 and earlier ensure that
 you have done the software update correctly as shown in the how to
 section below.
 
-|K2G GPEVM\_Target configuration\_alternate.jpg|
+.. Image:: ../images/K2G_GPEVM_Target_configuration_alternate.jpg
 
 In advance settings, make sure that the no gel files are populated.
 
@@ -405,7 +408,7 @@ section <http://ap-fpdsp-swapps.dal.design.ti.com/index.php/66AK2G02_GP_EVM_Hard
 | 
 | **Step5**: Launch Target configuration you just created.
 
-|K2G\_Launch\_targetConfig.png|
+.. Image:: ../images/K2G_Launch_targetConfig.png
 
 | 
 | **Step6**:K2G will boot with ARM master boot from the SD card so
@@ -483,7 +486,8 @@ machine.
 the interface section, select ‘Serial (UART)’ from the drop-down box on
 the left.Refer to the image provided below:
 
-|LMflashProgrammer\_Configuration|
+.. Image:: ../images/LMflashProg_Config.png
+
 
 **Step 7** Select the BMC COM Port and set the ‘Baud Rate’ to 115200.
 
@@ -494,7 +498,7 @@ the left.Refer to the image provided below:
    "Silicon Labs CP210x: USB to UART Bridge: Standard COM Port (COM##)"
    as shown below:
 
-|BMC UART Port#|
+.. Image:: ../images/BMCUARTPort.png
 
 **Note:** BMC outputs boot logs to serial console when EVM is powered
 ON. Connect the ‘USB to SoC UART0’ port to standard serial console
@@ -506,7 +510,7 @@ Support’ is unchecked.
 **Step 9** In the 'Program' tab, select the binary image file
 bmc\_evmKS2\_K2G.bin in the section 'Select.bin file'.
 
-|LMflashProgrammer\_program|
+.. Image:: ../images/LMflashProg_program.png
 
 **Step 10** Leave all other options as default, and press the ‘Program’
 button.
@@ -552,7 +556,8 @@ article
 -  Remove FB3 and connect a wire from R64.2 ‘rVCC\_VBUS\_XDS’ and R67.2
    ‘VCC5V0\_DCDC’ as shown in the image below:
 
-|R64\_to\_R67\_HWMod.png|
+.. Image:: ../images/R64_to_R67_HWMod.png
+   :scale: 70%
 
 .. rubric:: Update the EVM for improved USB performance
    :name: update-the-evm-for-improved-usb-performance
