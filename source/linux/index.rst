@@ -37,7 +37,8 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
    Tools
    Hardware_Setup_with_CCS
    Migration_Guide
-   Technical_Support 
+   Technical_Support
+   Disclaimer
 
 +-------------------------------------------------+-------------------------------------------------------------------------------+
 | **Processor SDK Linux**                                                                                                         |
