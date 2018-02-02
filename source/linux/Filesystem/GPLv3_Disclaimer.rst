@@ -1,3 +1,4 @@
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_GPLv3_Disclaimer
 There are GPLv3 licensed software components contained within the
 Processor SDK for Linux on both the target and the host.  The software
 manifest (software\_manifest.htm) for the Linux SDK is located in the

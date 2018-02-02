@@ -1,1 +1,587 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_Audio_User%27s_Guide
+.. rubric:: Introduction
+   :name: introduction
+
+- This page gives a basic information for audio usage on supported
+boards
+
+- More comprehensive information regarding to Linux audio (ALSA, ASoC)
+can be found:
+
+::
+
+    http://processors.wiki.ti.com/index.php/AM335x_Audio_Driver%27s_Guide
+    http://processors.wiki.ti.com/index.php/Sitara_SDK_Linux_Audio
+
+- For a generic linux kernel guide, try:
+
+::
+
+    http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
+
+.. rubric:: Generic commands and instructions
+   :name: generic-commands-and-instructions
+
+| Most of the boards have simple audio setup which means we have one
+  sound card with one playback and one capture PCM.
+| To list the available sound cards and PCMs for playback:
+
+::
+
+    aplay -l
+
+To list the available sound cards and PCMs for capture:
+
+::
+
+    arecord -l
+
+| In most cases ``-Dplughw:0,0`` is the device we want to use for audio
+  but in case we have several audio devices (onboard + USB for example)
+  one need to specify which device to use for audio:
+  ``-Dplughw:omap5uevm,0`` will use the onboard audio on OMAP5-uEVM
+  board.
+| To play audio on card0's PCM0 and let ALSA to decide if resampling is
+  needed:
+
+::
+
+    aplay -Dplughw:0,0 <path to wav file>
+
+To record audio to a file:
+
+::
+
+    arecord -Dplughw:0,0 -t wav <path to wav file>
+
+To test full duplex audio (play back the recorded audio w/o intermediate
+file):
+
+::
+
+    arecord -Dplughw:0,0 | aplay -Dplughw:0,0
+
+| To request specific format to be used for playback/capture take a look
+  at the help of aplay/arecord and specify the format with ``-f -r -c``
+  and open the hw device not the plughw ``-Dhw:0,0``
+| For example, record 48KHz, stereo 16bit audio:
+
+::
+
+    arecord -Dhw:0,0 -fdat -t wav record_48K_stereo_16bit.wav
+
+Or to record record 96KHz, stereo 24bit audio:
+
+::
+
+    arecord -Dhw:0,0 -fS24_LE -c2 -r96000 -t wav record_96K_stereo_24bit.wav
+
+It is a good practice to save the mixer settings found to be good and
+reload them after every boot (if your distribution is not doing this
+already)
+
+::
+
+    Set the mixers for the board with amixer, alsamixer
+    alsactl -f board.aconf store
+
+After booting up the board it can be restored with a single command:
+
+::
+
+    alsactl -f board.aconf restore
+
+.. rubric:: Board specific instructions
+   :name: board-specific-instructions
+
+TBAL
+
+.. rubric:: OMAP5 uEVM
+   :name: omap5-uevm
+
+| The board uses **twl6040 codec** connected through **McPDM** for
+  onboard audio and features one **Headset** connector, one **Stereo
+  Line In** and one **Stereo Line Out** 3.5mm jack connectors.
+
+.. rubric:: Kernel config
+   :name: kernel-config
+
+::
+
+    Device Drivers  --->
+      Common Clock Framework  --->
+        <*> Clock driver for TI Palmas devices
+      Sound card support  --->
+        Advanced Linux Sound Architecture  --->
+          ALSA for SoC audio support  --->
+            <*>   SoC Audio for the Texas Instruments OMAP chips
+            <*>   SoC Audio support for OMAP boards using ABE and twl6040 codec
+
+.. rubric:: User space
+   :name: user-space
+
+To set up the audio routing on the board (Headset playback/capture):
+
+::
+
+    amixer -c omap5uevm sset 'Headset Left Playback' 'HS DAC'  # HS Left channel from DAC
+    amixer -c omap5uevm sset 'Headset Right Playback' 'HS DAC' # HS Right channel from DAC
+    amixer -c omap5uevm sset Headset 4                         # HS volume to -22dB
+    amixer -c omap5uevm sset 'Analog Left' 'Headset Mic'       # Analog Left capture source from HS mic
+    amixer -c omap5uevm sset 'Analog Right' 'Headset Mic'      # Analog Right capture source from HS mic
+    amixer -c omap5uevm sset Capture 1                         # Analog Capture gain to 12dB
+
+To play audio to the HS:
+
+::
+
+    aplay -Dplughw:omap5uevm,0 <path to wav file (stereo)>
+
+On kernels where the AESS (ABE) support is not available the **Line
+Out** can be used only when playing 4 channel audio. In this case the
+first two channel will be routed to HS and the second two will be the
+Line Out.
+
+::
+
+    amixer -c omap5uevm sset 'Handsfree Left Playback' 'HF DAC'  # HF Left channel from DAC
+    amixer -c omap5uevm sset 'Handsfree Right Playback' 'HF DAC' # HF Right channel from DAC
+    amixer -c omap5uevm sset AUXL on                             # Enable route to AUXL from the HF path
+    amixer -c omap5uevm sset AUXR on                             # Enable route to AUXR from the HF path
+    amixer -c omap5uevm sset Handsfree 11                        # HS volume to -30dB
+
+To play audio to the Line Out one should have 4 channel sample crafted
+and channel 3,4 should have the audio destined to Line Out:
+
+::
+
+    aplay -Dplughw:omap5uevm,0 <path to wav file (4 channel)>
+
+.. rubric:: DRA7 and DRA72 EVM
+   :name: dra7-and-dra72-evm
+
+| The board uses **tlv320aic3106 codec** connected through **McASP3
+  [AXR0 for playback, AXR1 for Capture]** for audio. The board features
+  four 3.5mm jack for **Headphone**, **Line In**, **Line Out** and one
+  for **Microphone**.
+
+.. rubric:: Kernel config
+   :name: kernel-config-1
+
+::
+
+    Device Drivers  --->
+      Sound card support  --->
+        Advanced Linux Sound Architecture  --->
+          ALSA for SoC audio support  --->
+            <*>   SoC Audio for the Texas Instruments OMAP chips
+            <*>   SoC Audio for Texas Instruments chips using eDMA
+            <*>   Multichannel Audio Serial Port (McASP) support
+                  CODEC drivers  --->
+                    <*> Texas Instruments TLV320AIC3x CODECs
+            <*>   ASoC Simple sound card support
+
+.. rubric:: User space
+   :name: user-space-1
+
+The hardware defaults are correct for audio playback, the routing is OK
+and the volume is 'adequate' but in case the volume is not correct:
+
+::
+
+    amixer -c DRA7xxEVM sset PCM 90                            # Master Playback volume
+
+Playback to Headphone only:
+
+::
+
+    amixer -c DRA7xxEVM sset 'Left HP Mixer DACL1' on               # HP Left route enable
+    amixer -c DRA7xxEVM sset 'Right HP Mixer DACR1' on              # HP Right route enable
+    amixer -c DRA7xxEVM sset 'Left Line Mixer DACL1' off            # Line out Left disable
+    amixer -c DRA7xxEVM sset 'Right Line Mixer DACR1' off           # Line out Right disable
+    amixer -c DRA7xxEVM sset 'HP DAC' 90                            # Adjust HP volume
+
+Playback to Line Out only:
+
+::
+
+    amixer -c DRA7xxEVM sset 'Left HP Mixer DACL1' off              # HP Left route disable
+    amixer -c DRA7xxEVM sset 'Right HP Mixer DACR1' off             # HP Right route disable
+    amixer -c DRA7xxEVM sset 'Left Line Mixer DACL1' on             # Line out Left enable
+    amixer -c DRA7xxEVM sset 'Right Line Mixer DACR1' on            # Line out Right enable
+    amixer -c DRA7xxEVM sset 'Line DAC' 90                          # Adjust Line out volume
+
+Record from Line In:
+
+::
+
+    amixer -c DRA7xxEVM sset 'Left PGA Mixer Line1L' on             # Line in Left enable
+    amixer -c DRA7xxEVM sset 'Right PGA Mixer Line1R' on            # Line in Right enable
+    amixer -c DRA7xxEVM sset 'Left PGA Mixer Mic3L' off             # Analog mic Left disable
+    amixer -c DRA7xxEVM sset 'Right PGA Mixer Mic3R' off            # Analog mic Right disable
+    amixer -c DRA7xxEVM sset 'PGA' 40                               # Adjust Capture volume
+
+Record from Analog Mic IN:
+
+::
+
+    amixer -c DRA7xxEVM sset 'Left PGA Mixer Line1L' off            # Line in Left disable
+    amixer -c DRA7xxEVM sset 'Right PGA Mixer Line1R' off           # Line in Right disable
+    amixer -c DRA7xxEVM sset 'Left PGA Mixer Mic3L' on              # Analog mic Left enable
+    amixer -c DRA7xxEVM sset 'Right PGA Mixer Mic3R' on             # Analog mic Right enable
+    amixer -c DRA7xxEVM sset 'PGA' 40                               # Adjust Capture volume
+
+.. rubric:: AM335x EVM
+   :name: am335x-evm
+
+| The board uses **tlv320aic3106 codec** connected through **McASP1
+  [AXR2 for playback, AXR3 for Capture]** for audio. The board features
+  two 3.5mm jack for **Headphone** and **Line In**
+
+.. rubric:: Kernel config
+   :name: kernel-config-2
+
+::
+
+    Device Drivers  --->
+      Sound card support  --->
+        Advanced Linux Sound Architecture  --->
+          ALSA for SoC audio support  --->
+            <*>   SoC Audio for the Texas Instruments OMAP chips
+            <*>   SoC Audio for Texas Instruments chips using eDMA
+            <*>   Multichannel Audio Serial Port (McASP) support
+                  CODEC drivers  --->
+                    <*> Texas Instruments TLV320AIC3x CODECs
+            <*>   ASoC Simple sound card support
+
+.. rubric:: User space
+   :name: user-space-2
+
+The hardware defaults are correct for audio playback, the routing is OK
+and the volume is 'adequate' but in case the volume is not correct:
+
+::
+
+    amixer -c AM335xEVM sset PCM 90                            # Master Playback volume
+
+For audio capture trough stereo microphones:
+
+::
+
+    amixer sset 'Right PGA Mixer Line1R' on
+    amixer sset 'Right PGA Mixer Line1L' on
+    amixer sset 'Left PGA Mixer Line1R' on
+    amixer sset 'Left PGA Mixer Line1L' on
+
+In addition to previois commands for line in capture run also these:
+
+::
+
+    amixer sset 'Left Line1L Mux' differential
+    amixer sset 'Right Line1R Mux' differential
+
+.. rubric:: AM335x EVM-SK
+   :name: am335x-evm-sk
+
+| The board uses **tlv320aic3106 codec** connected through **McASP1
+  [AXR2 for playback]** for audio and only playback is supported on the
+  board via the lone 3.5mm jack.
+| ``NOTE: The Headphone jack wires are swapped. This means that the channels will be swapped on the output (Left channel -> Right HP, Right channel -> Left HP)``
+
+.. rubric:: Kernel config
+   :name: kernel-config-3
+
+::
+
+    Device Drivers  --->
+      Sound card support  --->
+        Advanced Linux Sound Architecture  --->
+          ALSA for SoC audio support  --->
+            <*>   SoC Audio for the Texas Instruments OMAP chips
+            <*>   SoC Audio for Texas Instruments chips using eDMA
+            <*>   Multichannel Audio Serial Port (McASP) support
+                  CODEC drivers  --->
+                    <*> Texas Instruments TLV320AIC3x CODECs
+            <*>   ASoC Simple sound card support
+
+.. rubric:: User space
+   :name: user-space-3
+
+The hardware defaults are correct for audio playback, the routing is OK
+and the volume is 'adequate' but in case the volume is not correct:
+
+::
+
+    amixer -c AM335xEVMSK sset PCM 90                            # Master Playback volume
+
+.. rubric:: AM43x-EPOS-EVM
+   :name: am43x-epos-evm
+
+| The board uses **tlv320aic3111 codec** connected through **McASP1
+  [AXR0 for playback, AXR1 for Capture]** for audio. The board features
+  internal stereo speakers and two 3.5mm jack for **Headphone** and
+  **Mic In**
+
+.. rubric:: Kernel config
+   :name: kernel-config-4
+
+::
+
+    Device Drivers  --->
+      Sound card support  --->
+        Advanced Linux Sound Architecture  --->
+          ALSA for SoC audio support  --->
+            <*>   SoC Audio for Texas Instruments chips using eDMA
+            <*>   Multichannel Audio Serial Port (McASP) support
+                  CODEC drivers  --->
+                    <*> Texas Instruments TLV320AIC31xx CODECs
+            <*>   ASoC Simple sound card support
+
+.. rubric:: User space
+   :name: user-space-4
+
+``NOTE: Before audio playback ALSA mixers must be configured for either Headphone or Speaker output. The audio will not work with non correct mixer configuration!``
+
+To play audio through headphone jack run:
+
+::
+
+    amixer sset 'DAC' 127
+    amixer sset 'HP Analog' 66
+    amixer sset 'HP Driver' 0 on
+    amixer sset 'HP Left' on
+    amixer sset 'HP Right' on
+    amixer sset 'Output Left From Left DAC' on
+    amixer sset 'Output Right From Right DAC' on
+
+To play audio through internal speakers run:
+
+::
+
+    amixer sset 'DAC' 127
+    amixer sset 'Speaker Analog' 127
+    amixer sset 'Speaker Driver' 0 on
+    amixer sset 'Speaker Left' on
+    amixer sset 'Speaker Right' on
+    amixer sset 'Output Left From Left DAC' on
+    amixer sset 'Output Right From Right DAC' on
+
+To capture audio from both microphone channels run:
+
+::
+
+    amixer sset 'MIC1RP P-Terminal' 'FFR 10 Ohm'
+    amixer sset 'MIC1LP P-Terminal' 'FFR 10 Ohm'
+    amixer sset 'ADC' 40
+    amixer cset name='ADC Capture Switch' on
+
+If the captured audio has low volume you can try higer values for 'Mic
+PGA' mixer, for instance:
+
+::
+
+    amixer sset 'Mic PGA' 50
+
+Note: The codec on has only one channel ADC so the captured audio is
+dual channel mono signal.
+
+| 
+
+.. rubric:: AM437x-GP-EVM
+   :name: am437x-gp-evm
+
+| The board uses **tlv320aic3106 codec** connected through **McASP1
+  [AXR2 for playback, AXR3 for Capture]** for audio. The board features
+  two 3.5mm jack for **Headphone** and **Line In**.
+
+.. rubric:: Kernel config
+   :name: kernel-config-5
+
+::
+
+    Device Drivers  --->
+      Sound card support  --->
+        Advanced Linux Sound Architecture  --->
+          ALSA for SoC audio support  --->
+            <*>   SoC Audio for Texas Instruments chips using eDMA
+            <*>   Multichannel Audio Serial Port (McASP) support
+                  CODEC drivers  --->
+                    <*> Texas Instruments TLV320AIC3x CODECs
+            <*>   ASoC Simple sound card support
+
+.. rubric:: User space
+   :name: user-space-5
+
+The hardware defaults are correct for audio playback, the routing is OK
+and the volume is 'adequate' but in case the volume is not correct:
+
+::
+
+    amixer -c AM437xGPEVM sset PCM 90                            # Master Playback volume
+
+Playback to Headphone only:
+
+::
+
+    amixer -c AM437xGPEVM sset 'Left HP Mixer DACL1' on               # HP Left route enable
+    amixer -c AM437xGPEVM sset 'Right HP Mixer DACR1' on              # HP Right route enable
+    amixer -c AM437xGPEVM sset 'Left Line Mixer DACL1' off            # Line out Left disable
+    amixer -c AM437xGPEVM sset 'Right Line Mixer DACR1' off           # Line out Right disable
+    amixer -c AM437xGPEVM sset 'HP DAC' 90                            # Adjust HP volume
+
+Record from Line In:
+
+::
+
+    amixer -c AM437xGPEVM sset 'Left PGA Mixer Line1L' on             # Line in Left enable
+    amixer -c AM437xGPEVM sset 'Right PGA Mixer Line1R' on            # Line in Right enable
+    amixer -c AM437xGPEVM sset 'Left PGA Mixer Mic3L' off             # Analog mic Left disable
+    amixer -c AM437xGPEVM sset 'Right PGA Mixer Mic3R' off            # Analog mic Right disable
+    amixer -c AM437xGPEVM sset 'PGA' 40                               # Adjust Capture volume
+
+.. rubric:: BeagleBoard-X15 and AM572x-GP-EVM
+   :name: beagleboard-x15-and-am572x-gp-evm
+
+| The board uses **tlv320aic3104 codec** connected through **McASP3
+  [AXR0 for playback, AXR1 for Capture]** for audio. The board features
+  two 3.5mm jack for **Line Out** and **Line In**.
+
+.. rubric:: Kernel config
+   :name: kernel-config-6
+
+::
+
+    Device Drivers  --->
+      Sound card support  --->
+        Advanced Linux Sound Architecture  --->
+          ALSA for SoC audio support  --->
+            <*>   SoC Audio for the Texas Instruments OMAP chips
+            <*>   SoC Audio for Texas Instruments chips using eDMA
+            <*>   Multichannel Audio Serial Port (McASP) support
+                  CODEC drivers  --->
+                    <*> Texas Instruments TLV320AIC3x CODECs
+            <*>   ASoC Simple sound card support
+
+.. rubric:: User space
+   :name: user-space-6
+
+The hardware defaults are correct for audio playback, the routing is OK
+and the volume is 'adequate' but in case the volume is not correct:
+
+::
+
+    amixer -c BeagleBoardX15 sset PCM 90                            # Master Playback volume
+
+Playback (line out):
+
+::
+
+    amixer -c BeagleBoardX15 sset 'Left Line Mixer DACL1' on             # Line out Left enable
+    amixer -c BeagleBoardX15 sset 'Right Line Mixer DACR1' on            # Line out Right enable
+    amixer -c BeagleBoardX15 sset 'Line DAC' 90                          # Adjust Line out volume
+
+Record (line in):
+
+::
+
+    amixer -c BeagleBoardX15 sset 'Left PGA Mixer Mic2L' on         # Line in Left enable (MIC2/LINE2)
+    amixer -c BeagleBoardX15 sset 'Right PGA Mixer Mic2R' on        # Line in Right enable (MIC2/LINE2)
+    amixer -c BeagleBoardX15 sset 'PGA' 40                          # Adjust Capture volume
+
+| 
+
+.. rubric:: K2G EVM
+   :name: k2g-evm
+
+| The board uses **tlv320aic3106 codec** connected through **McASP2
+  [AXR2 for playback, AXR3 for Capture]** for audio. The board features
+  two 3.5mm jack for **Headphone** and **Line In**
+| ``NOTE 1: The Headphone jack is labeld as LINE OUT on the board``
+| ``NOTE 2: Both analog and HDMI audio is served by McASP2, this means that they must not be used at the same time!``
+| ``NOTE 3: Sampling rate is restricted to 44.1KHz family due to the reference clock for McASP2 (22.5792MHz)``
+
+.. rubric:: Kernel config
+   :name: kernel-config-7
+
+::
+
+    Device Drivers  --->
+      Sound card support  --->
+        Advanced Linux Sound Architecture  --->
+          ALSA for SoC audio support  --->
+            <*>   SoC Audio for the Texas Instruments OMAP chips
+            <*>   SoC Audio for Texas Instruments chips using eDMA
+            <*>   Multichannel Audio Serial Port (McASP) support
+                  CODEC drivers  --->
+                    <*> Texas Instruments TLV320AIC3x CODECs
+            <*>   ASoC Simple sound card support
+
+.. rubric:: User space
+   :name: user-space-7
+
+The hardware defaults are correct for audio playback, the routing is OK
+and the volume is 'adequate' but in case the volume is not correct:
+
+::
+
+    amixer -c K2GEVM sset PCM 90                             # Master Playback volume
+
+For audio capture from Line-in:
+
+::
+
+    amixer -c K2GEVM sset 'Right PGA Mixer Line1R' on
+    amixer -c K2GEVM sset 'Left PGA Mixer Line1L' on
+
+| 
+
+.. rubric:: If there's an issue
+   :name: if-theres-an-issue
+
+.. rubric:: In case of XRUN (under or overrun)
+   :name: in-case-of-xrun-under-or-overrun
+
+| The underrun can happen when an application does not feed new samples
+  in time to alsa-lib (due CPU usage). The overrun can happen when an
+  application does not take new captured samples in time from alsa-lib.
+| There could be several reasons for XRUN to happen but it is usually
+  points to system latency issues connected to CPU utilization or
+  latency caused by the storage device.
+| Things to try:
+
+-  increase the buffer size (ALSA buffer and period size)
+-  try to cache the file to be played in memory
+-  try to use application which use threads for interacting with ALSA
+   and with the filesystem
+
+.. rubric:: ALSA period size must be aligned with the FIFO depth (tx/rx
+   numevt)
+   :name: alsa-period-size-must-be-aligned-with-the-fifo-depth-txrx-numevt
+
+| **No longer relevant** as the kernel side takes care of the AFIFO
+  depth vs period size issue..
+| To decrease audio caused stress on the system the AFIFO is enabled and
+  the depth is set to 32 for McASP.
+| If the ALSA period size is not aligned with this FIFO setting constant
+  'trrrrr' can be heard on the output. This is caused by eDMA not able
+  to handle fragment size not aligned with burst size (AFIFO depth).
+| Application need to make sure that **period\_size / FIFO depth** is
+  even number.
+
+.. rubric:: Additional Information
+   :name: additional-information
+
+#. `ALSA SoC Project
+   Homepage <http://www.alsa-project.org/main/index.php/ASoC>`__
+#. `ALSA Project
+   Homepage <http://www.alsa-project.org/main/index.php/Main_Page>`__
+#. `ALSA User Space
+   Library <http://www.alsa-project.org/alsa-doc/alsa-lib/>`__
+#. `Using ALSA Audio
+   API <http://www.equalarea.com/paul/alsa-audio.html>`__ Author: Paul
+   Davis
+#. `TLV320AIC31 - Low-Power Stereo CODEC with HP
+   Amplifier <http://focus.ti.com/lit/ds/symlink/tlv320aic31.pdf>`__
+
+.. raw:: html
+

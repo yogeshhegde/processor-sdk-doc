@@ -37,7 +37,7 @@ How to Change dtb File
 
 How to Set Display for AM572x GP EVM
 ==================================================================
-.. include:: How_to_Guides/Target/How_to_Set_Display_for_AM572x_GP_EVM.rst.rst
+.. include:: How_to_Guides/Target/How_to_Set_Display_for_AM572x_GP_EVM.rst
 
 How to Boot Beagle Bone Black with Processor SDK Linux
 ==================================================================
