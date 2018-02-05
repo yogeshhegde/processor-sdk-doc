@@ -13,8 +13,24 @@ Switch
 **********************************
 HSR_PRP
 **********************************
-.. include:: Industrial_Protocols/HSR_PRP.rst
-.. include:: Industrial_Protocols/HSR_PRP_Linux.rst
+
+Overview and Firmware
+=================================
+.. include:: Industrial_Protocols/HSR_PRP/Overview_and_Firmware.rst
+
+HSR PRP for Linux
+=================================
+.. include:: Industrial_Protocols/HSR_PRP/HSR_PRP_for_Linux.rst
+
+PTP
+=================================
+.. include:: Industrial_Protocols/HSR_PRP/PTP.rst
+
+
+PTP Boundary Clock
+=================================
+.. include:: Industrial_Protocols/HSR_PRP/PTP_Boundary_Clock.rst
+
 
 **********************************
 RSTP
