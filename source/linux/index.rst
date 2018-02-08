@@ -20,6 +20,7 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 .. toctree::
    :maxdepth: 5
    :hidden:
+   :numbered:
 
    Introduction
    Getting_Started
