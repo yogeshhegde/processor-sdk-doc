@@ -1,1 +1,1 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions
+.. include:: ../common/Introduction/Supported_Platforms_and_Versions.rst

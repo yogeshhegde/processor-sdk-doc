@@ -1,1 +1,1 @@
-.. http://processors.wiki.ti.com/index.php?title=MCSDK_to_Processor_SDK_Migration
+.. include:: ../common/Migration_Guide/From_MCSDK_to_PLSDK.rst

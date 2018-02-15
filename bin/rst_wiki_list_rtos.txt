@@ -1,0 +1,4 @@
+source/rtos/Introduction/Migration_Guide/From_Previous_PRSDK_Release.rst
+http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Migration_Guide
+source/rtos/Introduction/Release_Notes/Release_Notes.rst
+http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes
