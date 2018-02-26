@@ -7,6 +7,7 @@ Processor SDK RTOS
    :numbered:
 
    Introduction
+   PDK_Platform_Software
 
 
 
