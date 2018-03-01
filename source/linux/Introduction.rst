@@ -47,3 +47,17 @@ Layer Configuration
 *******************
 
 .. include:: Introduction/Layer_Configuration.rst
+
+
+**********************************
+Migration Guide
+**********************************
+
+From an Earlier PLSDK Release
+==============================================
+.. include:: Introduction/Migration_Guide/From_an_Earlier_PLSDK_Release.rst
+
+From MCSDK to PLSDK
+==============================================
+.. include:: Introduction/Migration_Guide/From_MCSDK_to_PLSDK.rst
+
