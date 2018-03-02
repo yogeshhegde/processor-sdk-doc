@@ -1,3 +1,5 @@
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions
+
 .. rubric:: Supported Host Operating Systems
    :name: supported-host-operating-systems
 
@@ -37,19 +39,16 @@ SDK.
 .. rubric:: Supported Platforms and EVMs
    :name: supported-platforms-and-evms
 
-The following platforms and EVMs are supported with Processor SDK 4.0.0
-(released July 2017).
+The following platforms and EVMs are supported with Processor SDK 4.2.0
+(released Dec 2017).
 
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |**Processor SDK |
 |                                      |                                      |Version** |                                            |Linux**         |RT Linux**      |RTOS**          |Android**       |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`AM572x <http://www.ti.com/lsds/ti/   |`AM572x EVM                           | A3       |`Hardware User's Guide <http://             | X              | X              | X              | X              |
-|processors/sitara/arm_cortex-a15/     |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM572x_    |                |                |                |                |
-|am57x/overview.page>`__               |TMDSEVM572X>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |                |                |                |
-|                                      |                                      |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
-|                                      |                                      |          |.wiki.ti.com/index.php/AM572x_GP_EVM_       |                |                |                |                |
-|                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
+|`AM57x <http://www.ti.com/lsds/ti/    |`AM572x EVM                           | A3       |`Hardware User's Guide <http://             | X              | X              | X              | X              |
+|processors/sitara/arm_cortex-a15/     |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruig1>`__              |                |                |                |                |
+|am57x/overview.page>`__               |TMDSEVM572X>`__                       |          |                                            |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |                                      |`AM572x IDK                           | 1.3A     |`Hardware User's Guide <http://             | X              | X              | X              | X              |
 |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui64>`__              |                |                |                |                |
@@ -62,6 +61,12 @@ The following platforms and EVMs are supported with Processor SDK 4.0.0
 |                                      |tmdxidk5718>`__                       |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
 |                                      |                                      |          |.wiki.ti.com/index.php/TMDXIDK5728_         |                |                |                |                |
 |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
+|                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
+|                                      |AM574x IDK                            | 1.0A     |Hardware User's Guide                       |                | X              | X              |                |
+|                                      |                                      |          |                                            |                |                |                |                |
+|                                      |                                      |          |Hardware Setup with CCS                     |                |                |                |                |
+|                                      |                                      |          |                                            |                |                |                |                |
+|                                      |                                      |          |                                            |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`AM437x <http://www.ti.com/lsds/ti/   |`AM437x EVM                           | 1.5B     |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |processors/sitara/arm_cortex-a9/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM437x_    |                |                |                |                |

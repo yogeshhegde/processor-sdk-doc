@@ -1,3 +1,5 @@
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK
+
 .. rubric:: Introduction
    :name: introduction
 
@@ -95,8 +97,51 @@ Run the following commands to install the Linaro Toolchain.
 
     $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
     $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-04.01.00.06-config.txt
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-04.02.00.09-config.txt
     $ cd build
+    $ . conf/setenv
+    $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
+    $ MACHINE=am57xx-evm bitbake arago-core-tisdk-image
+
+
+.. raw:: html
+
+   <div
+   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+
+**NOTE**
+One common location for hosting packages, gforge.ti.com, has recently
+been decommissioned. This will cause fetch failures for the current and
+past releases. Please follow this augmented procedure to configure the
+build to obtain these packages from the TI mirror.
+
+.. raw:: html
+
+   </div>
+
+::
+
+    $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
+    $ cd tisdk
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-04.02.00.09-config.txt
+    $ cd build
+    $ cat >> ./conf/local.conf << 'EOF'
+
+    TI_MIRROR = "http://software-dl.ti.com/processor-sdk-mirror/sources/"
+    MIRRORS += " \
+    bzr://.*/.*      ${TI_MIRROR} \n \
+    cvs://.*/.*      ${TI_MIRROR} \n \
+    git://.*/.*      ${TI_MIRROR} \n \
+    gitsm://.*/.*    ${TI_MIRROR} \n \
+    hg://.*/.*       ${TI_MIRROR} \n \
+    osc://.*/.*      ${TI_MIRROR} \n \
+    p4://.*/.*       ${TI_MIRROR} \n \
+    npm://.*/.*      ${TI_MIRROR} \n \
+    ftp://.*/.*      ${TI_MIRROR} \n \
+    https?$://.*/.*  ${TI_MIRROR} \n \
+    svn://.*/.*      ${TI_MIRROR} \n \
+    "
+    EOF
     $ . conf/setenv
     $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
     $ MACHINE=am57xx-evm bitbake arago-core-tisdk-image
@@ -123,7 +168,7 @@ directory of the oe-layersetup git repo.
 +----------------------------------------+---------------------------------+------------------------------------------------------------------------------------------+
 |**Config File**                         | **Description**                 | **Supported machines/platforms**                                                         |
 +----------------------------------------+---------------------------------+------------------------------------------------------------------------------------------+
-| processor-sdk-04.01.00.06-config.txt   | Processor SDK 4.1.0.6 Release   | am335x-evm, am437x-evm, am57xx-evm, k2hk-evm, k2e-evm, k2l-evm, k2g-evm, omapl138-lcdk   |
+| processor-sdk-04.02.00.09-config.txt   | Processor SDK 4.2.0.9 Release   | am335x-evm, am437x-evm, am57xx-evm, k2hk-evm, k2e-evm, k2l-evm, k2g-evm, omapl138-lcdk   |
 +----------------------------------------+---------------------------------+------------------------------------------------------------------------------------------+
 
 .. rubric:: Build Options
@@ -186,7 +231,7 @@ The following platforms are supported in Processor SDK. These are the
 .. rubric:: RT Support
    :name: rt-support
 
-Processor SDK Linux 4.1.0 supports RT Linux Kernel for the following
+Processor SDK Linux supports RT Linux Kernel for the following
 machines/EVMs. Use the command below to make the RT builds:
 
 ``MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake <target>``
@@ -198,7 +243,8 @@ machines/EVMs. Use the command below to make the RT builds:
 +--------------+---------------------------------------------------------------------------------------+
 | am437x-evm   | AM437x GP EVM, AM437x Industrial Development Kit                                      |
 +--------------+---------------------------------------------------------------------------------------+
-| am57xx-evm   | AM572x GP EVM, AM572x Industrial Development Kit, AM571x Industrial Development Kit   |
+| am57xx-evm   | AM572x GP EVM, AM574x Industrial Development Kit,                                     |
+|              | AM572x Industrial Development Kit, AM571x Industrial Development Kit                  |
 +--------------+---------------------------------------------------------------------------------------+
 | k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
 +--------------+---------------------------------------------------------------------------------------+
@@ -220,8 +266,8 @@ during the build when external URLs become unavailable. To use the
 snapshot of sources distributed with a given Processor SDK release, you
 must download a script from the SDK download page and then execute it on
 your host to fetch all the packages from TI servers. For example, see
-am57xx-evm-linux-sdk-arago-src-04.01.00.06.tar.xz file in
-`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/04_01_00_06/index_FDS.html>`__.
+am57xx-evm-linux-sdk-arago-src-04.02.00.09.tar.xz file in
+`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/04_02_00_09/index_FDS.html>`__.
 Once this package is downloaded, there are just a few extra steps in the
 build process to fetch all the corresponding packages. The extra steps
 are shown in red below:
@@ -230,7 +276,7 @@ are shown in red below:
 
     $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
     $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-04.01.00.06-config.txt
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-04.02.00.09-config.txt
     $ mkdir downloads
     $ cd downloads
     $ # Assuming src file downloaded to $HOME/Downloads
@@ -337,14 +383,14 @@ bitbake:
 .. rubric:: X11 Build instructions
    :name: x11-build-instructions
 
-Processor SDK can be completely assembled and built from sources, using
-the instructions at <wiki>. In order to build with X11 instead of
+X11 has been validated as a build option, on top of Processor SDK 4.1 release. 
+In order to build with X11 instead of
 Wayland, please use the configuration
 processor-sdk-04.01.00.06-x11-config.txt for oe-layer-setup. One of the
 key differences between this configuration file and the
 processor-sdk-04.01.00.06 config file is the branch from
 meta-processor-sdk. For X11 build, morty-x11-experimental branch is
-used, where the DISTRO\_CONFIG is set to X11 instead of wayland?
+used, where the DISTRO\_CONFIG is set to X11 instead of wayland.
 
 .. rubric:: X11 Filesystem
    :name: x11-filesystem

@@ -1,8 +1,26 @@
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Migration_Guide
+
 .. rubric:: Overview
    :name: overview
 
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
+
+
+.. rubric:: Processor SDK Linux 04.02.00
+   :name: processor-sdk-linux-04.02.00
+
+.. rubric:: Linux
+   :name: linux
+
+.. rubric:: PRUETH Driver
+   :name: prueth-driver
+
+| The module parameter syntax has changed from "prueth.pruss1\_ethtype"
+  and "prueth.pruss2\_ethtype" in older release to
+  "ti\_prueth.pruss1\_ethtype" and "ti\_prueth.pruss2\_ethtype".
+
+|
 
 .. rubric:: Processor SDK Linux 04.01.00
    :name: processor-sdk-linux-04.01.00
