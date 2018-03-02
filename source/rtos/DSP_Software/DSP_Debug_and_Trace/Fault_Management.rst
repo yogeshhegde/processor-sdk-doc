@@ -1,27 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FM 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `FM DSP Exception APIs &       |
-| essor_SDK_RTOS_FM#Introduction>`_ |    Usage </index.php/Processor_SD |
-| _                                 | K_RTOS_FM#FM_DSP_Exception_APIs_. |
-| -  `Additional                    | 26_Usage>`__                      |
-|    References </index.php/Process | -  `FM Global Configuration       |
-| or_SDK_RTOS_FM#Additional_Referen |    Parameters </index.php/Process |
-| ces>`__                           | or_SDK_RTOS_FM#FM_Global_Configur |
-|                                   | ation_Parameters>`__              |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `FM                            |                                   |
-|    Tests </index.php/Processor_SD |                                   |
-| K_RTOS_FM#FM_Tests>`__            |                                   |
-+-----------------------------------+-----------------------------------+
-
-| 
-
 .. rubric:: Introduction
    :name: introduction
 

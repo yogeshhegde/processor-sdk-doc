@@ -1,23 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CPPI 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_CPPI#Introduction> |    Configuration </index.php/Proc |
-| `__                               | essor_SDK_RTOS_CPPI#Driver_Config |
-| -  `Additional                    | uration>`__                       |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_CPPI#Additional_Refer | K_RTOS_CPPI#APIs>`__              |
-| ences>`__                         |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo | -  `Debug </index.php/Processor_S |
-| r_SDK_RTOS_CPPI#Example>`__       | DK_RTOS_CPPI#Debug_FAQ>`__        |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Overview
    :name: overview-1
 

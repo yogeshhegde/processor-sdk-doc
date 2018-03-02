@@ -1,23 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCBSP 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_MCBSP#Introduction |    Configuration </index.php/Proc |
-| >`__                              | essor_SDK_RTOS_MCBSP#Driver_Confi |
-| -  `Additional                    | guration>`__                      |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_MCBSP#Additional_Refe | K_RTOS_MCBSP#APIs>`__             |
-| rences>`__                        |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_MCBSP#Example>`__      |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Introduction
    :name: introduction
 

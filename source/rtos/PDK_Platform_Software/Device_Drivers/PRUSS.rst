@@ -1,25 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PRUSS 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_PRUSS#Introduction |    Configuration </index.php/Proc |
-| >`__                              | essor_SDK_RTOS_PRUSS#Driver_Confi |
-| -  `Firmware </index.php/Processo | guration>`__                      |
-| r_SDK_RTOS_PRUSS#Firmware>`__     | -  `APIs </index.php/Processor_SD |
-| -  `Additional                    | K_RTOS_PRUSS#APIs>`__             |
-|    Reference </index.php/Processo |                                   |
-| r_SDK_RTOS_PRUSS#Additional_Refer |                                   |
-| ence>`__                          |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_PRUSS#Examples>`__     |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Introduction
    :name: introduction
 

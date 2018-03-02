@@ -1,24 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_VPS_DRIVERS 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_VPS_DRIVERS#Introd |    Configuration </index.php/Proc |
-| uction>`__                        | essor_SDK_RTOS_VPS_DRIVERS#Driver |
-| -  `Additional                    | _Configuration>`__                |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_VPS_DRIVERS#Additiona | K_RTOS_VPS_DRIVERS#APIs>`__       |
-| l_References>`__                  |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_VPS_DRIVERS#Example>`_ |                                   |
-| _                                 |                                   |
-+-----------------------------------+-----------------------------------+
-
 | 
 
 .. rubric:: Introduction

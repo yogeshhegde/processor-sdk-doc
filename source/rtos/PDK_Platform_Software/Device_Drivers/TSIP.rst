@@ -1,23 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_TSIP 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_TSIP#Introduction> |    Configuration </index.php/Proc |
-| `__                               | essor_SDK_RTOS_TSIP#Driver_Config |
-| -  `Additional                    | uration>`__                       |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_TSIP#Additional_Refer | K_RTOS_TSIP#APIs>`__              |
-| ences>`__                         |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_TSIP#Example>`__       |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Introduction
    :name: introduction
 

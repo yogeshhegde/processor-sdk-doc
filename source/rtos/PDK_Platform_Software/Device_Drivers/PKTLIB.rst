@@ -1,23 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PKTLIB 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_PKTLIB#Introductio |    Configuration </index.php/Proc |
-| n>`__                             | essor_SDK_RTOS_PKTLIB#Driver_Conf |
-| -  `Additional                    | iguration>`__                     |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_PKTLIB#Additional_Ref | K_RTOS_PKTLIB#APIs>`__            |
-| erences>`__                       |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_PKTLIB#Example>`__     |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Introduction
    :name: introduction
 

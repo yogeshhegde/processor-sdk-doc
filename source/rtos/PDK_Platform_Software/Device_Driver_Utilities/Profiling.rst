@@ -1,28 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PROFILING 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc |                                   |
-| essor_SDK_RTOS_PROFILING#Introduc |                                   |
-| tion>`__                          |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Integration </index.php/Proce |                                   |
-| ssor_SDK_RTOS_PROFILING#Integrati |                                   |
-| on>`__                            |                                   |
-| -  `Profiling                     |                                   |
-|    Processing </index.php/Process |                                   |
-| or_SDK_RTOS_PROFILING#Profiling_P |                                   |
-| rocessing>`__                     |                                   |
-| -  `Profiling                     |                                   |
-|    Post-processing </index.php/Pr |                                   |
-| ocessor_SDK_RTOS_PROFILING#Profil |                                   |
-| ing_Post-processing>`__           |                                   |
-+-----------------------------------+-----------------------------------+
-
 | 
 
 .. rubric:: Introduction

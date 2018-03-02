@@ -5,9 +5,9 @@ PDK Platform Software
 ************************
 Foundational Components
 ************************
-`TI-RTOS Kernel <http://processors.wiki.ti.com/index.php?title=Category:SYSBIOS>`__
-`XDAIS <http://processors.wiki.ti.com/index.php?title=Category:XDAIS>`__
-`Framework Components <http://processors.wiki.ti.com/index.php?title=Category:Framework_Components>`__
+- `TI-RTOS Kernel <http://processors.wiki.ti.com/index.php?title=Category:SYSBIOS>`__
+- `XDAIS <http://processors.wiki.ti.com/index.php?title=Category:XDAIS>`__
+- `Framework Components <http://processors.wiki.ti.com/index.php?title=Category:Framework_Components>`__
 
 **********************************
 Boot, Board, and EVM Abstractions

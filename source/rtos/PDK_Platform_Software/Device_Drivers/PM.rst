@@ -1,22 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PM 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_PM#Introduction>`_ |    Configuration </index.php/Proc |
-| _                                 | essor_SDK_RTOS_PM#Driver_Configur |
-|                                   | ation>`__                         |
-|                                   | -  `APIs </index.php/Processor_SD |
-|                                   | K_RTOS_PM#APIs>`__                |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_PM#Example>`__         |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Introduction
    :name: introduction
 

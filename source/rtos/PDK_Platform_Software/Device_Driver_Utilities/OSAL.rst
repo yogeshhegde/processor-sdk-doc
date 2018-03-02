@@ -1,22 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_OSAL 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Overview </index.php/Processo |                                   |
-| r_SDK_RTOS_OSAL#Overview>`__      |                                   |
-| -  `Additional                    |                                   |
-|    References </index.php/Process |                                   |
-| or_SDK_RTOS_OSAL#Additional_Refer |                                   |
-| ences>`__                         |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Example </index.php/Processor |                                   |
-| _SDK_RTOS_OSAL#Example>`__        |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Overview
    :name: overview-1
 

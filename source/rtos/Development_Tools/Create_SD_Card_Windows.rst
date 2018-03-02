@@ -21,10 +21,6 @@ the SD card:
 |                                                                       |
 .. Image:: ../images/Helpful_tips_image.jpg
 |                                                                       |
-| .. raw:: html                                                         |
-|                                                                       |
-|    </div>                                                             |
-|                                                                       |
 | **Useful Tip**                                                        |
 |                                                                       |
 | If you have the SD card that came in the EVM kit, you can skip the    |

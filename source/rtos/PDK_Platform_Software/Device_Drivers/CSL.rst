@@ -1,23 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Overview </index.php/Processo | -  `AM335x/AM437x </index.php/Pro |
-| r_SDK_RTOS_CSL#Overview>`__       | cessor_SDK_RTOS_CSL#AM335x.2FAM43 |
-|                                   | 7x>`__                            |
-|                                   | -  `AM57x/K2x/C66x/C674x </index. |
-|                                   | php/Processor_SDK_RTOS_CSL#AM57x. |
-|                                   | 2FK2x.2FC66x.2FC674x>`__          |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `CSL-FL                        |                                   |
-|    EXAMPLES </index.php/Processor |                                   |
-| _SDK_RTOS_CSL#CSL-FL_EXAMPLES>`__ |                                   |
-+-----------------------------------+-----------------------------------+
-
 | 
 
 .. rubric:: Overview

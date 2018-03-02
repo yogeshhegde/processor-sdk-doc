@@ -1,25 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_WDT 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_Watchdog_Timer#Int |    Configuration </index.php/Proc |
-| roduction>`__                     | essor_SDK_RTOS_Watchdog_Timer#Dri |
-| -  `Additional                    | ver_Configuration>`__             |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_Watchdog_Timer#Additi | K_RTOS_Watchdog_Timer#APIs>`__    |
-| onal_References>`__               |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Tests </index.php/Processor_S |                                   |
-| DK_RTOS_Watchdog_Timer#Tests>`__  |                                   |
-+-----------------------------------+-----------------------------------+
-
-| 
-
 .. rubric:: Introduction
    :name: introduction
 

@@ -1,20 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_EDMA3 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_EDMA3#Introduction |    Configuration </index.php/Proc |
-| >`__                              | essor_SDK_RTOS_EDMA3#Driver_Confi |
-| -  `Additional                    | guration>`__                      |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_EDMA3#Additional_Refe | K_RTOS_EDMA3#APIs>`__             |
-| rences>`__                        |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-+-----------------------------------+-----------------------------------+
-
 | 
 
 .. rubric:: Introduction

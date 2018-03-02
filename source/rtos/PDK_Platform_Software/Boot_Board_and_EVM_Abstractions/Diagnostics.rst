@@ -1,45 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Overview </index.php/Processo | -  `Running the Diagnostic        |
-| r_SDK_RTOS_DIAG#Overview>`__      |    Examples </index.php/Processor |
-| -  `Building the                  | _SDK_RTOS_DIAG#Running_the_Diagno |
-|    Examples </index.php/Processor | stic_Examples>`__                 |
-| _SDK_RTOS_DIAG#Building_the_Examp |                                   |
-| les>`__                           | -  `Loading through SD Card       |
-|                                   |    (Default                       |
-| -  `Pre-requisites to             |    Method) </index.php/Processor_ |
-|    Building </index.php/Processor | SDK_RTOS_DIAG#Loading_through_SD_ |
-| _SDK_RTOS_DIAG#Pre-requisites_to_ | Card_.28Default_Method.29>`__     |
-| Building>`__                      | -  `Running or debugging on       |
-| -  `Compiling the Diagnostic      |    CCS </index.php/Processor_SDK_ |
-|    Applications </index.php/Proce | RTOS_DIAG#Running_or_debugging_on |
-| ssor_SDK_RTOS_DIAG#Compiling_the_ | _CCS>`__                          |
-| Diagnostic_Applications>`__       |                                   |
-| -  `Creating the SD Card Loadable |                                   |
-|    Files </index.php/Processor_SD |                                   |
-| K_RTOS_DIAG#Creating_the_SD_Card_ |                                   |
-| Loadable_Files>`__                |                                   |
-| -  `Make                          |                                   |
-|    targets </index.php/Processor_ |                                   |
-| SDK_RTOS_DIAG#Make_targets>`__    |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Diagnostic                    | -  Tips                           |
-|    Applications </index.php/Proce |                                   |
-| ssor_SDK_RTOS_DIAG#Diagnostic_App |                                   |
-| lications>`__                     |                                   |
-|                                   |                                   |
-| -  `Additional Jumper or Hardware |                                   |
-|    Settings </index.php/Processor |                                   |
-| _SDK_RTOS_DIAG#Additonal_Jumper_o |                                   |
-| r_Hardware_Settings>`__           |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Overview
    :name: overview-1
 

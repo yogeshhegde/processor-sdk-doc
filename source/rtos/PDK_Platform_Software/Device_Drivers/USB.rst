@@ -1,26 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_USB 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Driver                        | -  `Driver                        |
-|    Overview </index.php/Processor |    Configuration </index.php/Proc |
-| _SDK_RTOS_USB#Driver_Overview>`__ | essor_SDK_RTOS_USB#Driver_Configu |
-| -  `Additional                    | ration>`__                        |
-|    References </index.php/Process | -  `API Call                      |
-| or_SDK_RTOS_USB#Additional_docume |    Flow </index.php/Processor_SDK |
-| ntation_reference>`__             | _RTOS_USB#API_Call_Flow>`__       |
-|                                   | -  `Hardware                      |
-|                                   |    Setup </index.php/Processor_SD |
-|                                   | K_RTOS_USB#Hardware_Setup>`__     |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_USB#Examples>`__       |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Driver Overview
    :name: driver-overview
 

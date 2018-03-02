@@ -1,24 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QSPI-McSPI 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_QSPI-McSPI#Introdu |    Configuration </index.php/Proc |
-| ction>`__                         | essor_SDK_RTOS_QSPI-McSPI#Driver_ |
-| -  `Additional                    | Configuration>`__                 |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_QSPI-McSPI#Additional | K_RTOS_QSPI-McSPI#APIs>`__        |
-| _References>`__                   |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_QSPI-McSPI#Examples>`_ |                                   |
-| _                                 |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Introduction
    :name: introduction
 

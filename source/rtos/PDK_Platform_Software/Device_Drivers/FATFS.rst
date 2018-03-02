@@ -1,23 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FATFS 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_FATFS#Introduction |    Configuration </index.php/Proc |
-| >`__                              | essor_SDK_RTOS_FATFS#Driver_Confi |
-| -  `Additional                    | guration>`__                      |
-|    References </index.php/Process | -  `API Call                      |
-| or_SDK_RTOS_FATFS#Additional_docu |    Flow </index.php/Processor_SDK |
-| mentation_reference>`__           | _RTOS_FATFS#API_Call_Flow>`__     |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo | -  Tips                           |
-| r_SDK_RTOS_FATFS#Examples>`__     |                                   |
-+-----------------------------------+-----------------------------------+
-
 | 
 
 .. rubric:: Introduction

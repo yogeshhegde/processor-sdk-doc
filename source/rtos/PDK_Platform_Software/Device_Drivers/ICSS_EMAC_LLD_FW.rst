@@ -1,29 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC(DRIVER,FIRMWARE) 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Driver                        | -  `Driver                        |
-|    Overview </index.php/Processor |    Configuration </index.php/Proc |
-| _SDK_RTOS_ICSS-EMAC(DRIVER,FIRMWA | essor_SDK_RTOS_ICSS-EMAC(DRIVER,F |
-| RE)#Driver_Overview>`__           | IRMWARE)#Driver_Configuration>`__ |
-| -  `Firmware </index.php/Processo | -  `APIs </index.php/Processor_SD |
-| r_SDK_RTOS_ICSS-EMAC(DRIVER,FIRMW | K_RTOS_ICSS-EMAC(DRIVER,FIRMWARE) |
-| ARE)#Firmware>`__                 | #APIs>`__                         |
-| -  `Additional                    |                                   |
-|    References </index.php/Process |                                   |
-| or_SDK_RTOS_ICSS-EMAC(DRIVER,FIRM |                                   |
-| WARE)#Additional_documentation_re |                                   |
-| ference>`__                       |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_ICSS-EMAC(DRIVER,FIRMW |                                   |
-| ARE)#Examples>`__                 |                                   |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Driver Overview
    :name: driver-overview
 

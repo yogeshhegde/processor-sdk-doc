@@ -1,25 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_TF 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Introduction </index.php/Proc | -  `Driver                        |
-| essor_SDK_RTOS_TF#Introduction>`_ |    Configuration </index.php/Proc |
-| _                                 | essor_SDK_RTOS_TF#Driver_Configur |
-| -  `Additional                    | ation>`__                         |
-|    References </index.php/Process | -  `APIs </index.php/Processor_SD |
-| or_SDK_RTOS_TF#Additional_Referen | K_RTOS_TF#APIs>`__                |
-| ces>`__                           |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo |                                   |
-| r_SDK_RTOS_TF#Example>`__         |                                   |
-+-----------------------------------+-----------------------------------+
-
-| 
-
 .. rubric:: Overview
    :name: overview-1
 

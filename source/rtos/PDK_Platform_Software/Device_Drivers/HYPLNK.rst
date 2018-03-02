@@ -1,24 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_HYPLNK 
 
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `Driver                        | -  `Driver                        |
-|    Overview </index.php/Processor |    Configuration </index.php/Proc |
-| _SDK_RTOS_HYPLNK#Driver_Overview> | essor_SDK_RTOS_HYPLNK#Driver_Conf |
-| `__                               | iguration>`__                     |
-| -  `Additional                    | -  `API Call                      |
-|    References </index.php/Process |    Flow </index.php/Processor_SDK |
-| or_SDK_RTOS_HYPLNK#Additional_Ref | _RTOS_HYPLNK#API_Call_Flow>`__    |
-| erences>`__                       |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo | -  `Debug </index.php/Processor_S |
-| r_SDK_RTOS_HYPLNK#Examples>`__    | DK_RTOS_HYPLNK#Debug_FAQ>`__      |
-+-----------------------------------+-----------------------------------+
-
 .. rubric:: Overview
    :name: overview-1
 
