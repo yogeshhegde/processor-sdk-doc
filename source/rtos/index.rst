@@ -9,6 +9,11 @@ Processor SDK RTOS
    Introduction
    PDK_Platform_Software
    DSP_Software
+   Development_Tools
+   Compute
+   Tools
+   How_to_Guides
+   FAQ
 
 
 

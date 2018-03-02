@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Related_Software 
+.. http://processors.wiki.ti.com/index.php/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15 
 
 .. rubric:: Navigation menu
    :name: navigation-menu
@@ -16,7 +16,7 @@
    :name: p-personal-label
 
 -  `Log
-   in </index.php?title=Special:UserLogin&returnto=Processor+SDK+RTOS+Related+Software>`__
+   in </index.php?title=Special:UserLogin&returnto=Taking+the+C66x+Out+Of+Reset+with+Linux+Running+on+the+ARM+A15>`__
 -  `Request account </index.php/Special:RequestAccount>`__
 
 .. raw:: html
@@ -35,8 +35,8 @@
 .. rubric:: Namespaces
    :name: p-namespaces-label
 
--  `Page </index.php/Processor_SDK_RTOS_Related_Software>`__
--  `Discussion </index.php?title=Talk:Processor_SDK_RTOS_Related_Software&action=edit&redlink=1>`__
+-  `Page </index.php/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15>`__
+-  `Discussion </index.php?title=Talk:Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15&action=edit&redlink=1>`__
 
 .. raw:: html
 
@@ -78,11 +78,11 @@
 .. rubric:: Views
    :name: p-views-label
 
--  `Read </index.php/Processor_SDK_RTOS_Related_Software>`__
+-  `Read </index.php/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15>`__
 -  `View
-   source </index.php?title=Processor_SDK_RTOS_Related_Software&action=edit>`__
+   source </index.php?title=Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15&action=edit>`__
 -  `View
-   history </index.php?title=Processor_SDK_RTOS_Related_Software&action=history>`__
+   history </index.php?title=Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15&action=history>`__
 
 .. raw:: html
 
@@ -189,11 +189,11 @@
    <div class="body">
 
 -  `Create a
-   book </index.php?title=Special:Book&bookcmd=book_creator&referer=Processor+SDK+RTOS+Related+Software>`__
+   book </index.php?title=Special:Book&bookcmd=book_creator&referer=Taking+the+C66x+Out+Of+Reset+with+Linux+Running+on+the+ARM+A15>`__
 -  `Download as
-   PDF </index.php?title=Special:Book&bookcmd=render_article&arttitle=Processor+SDK+RTOS+Related+Software&oldid=214945&writer=rl>`__
+   PDF </index.php?title=Special:Book&bookcmd=render_article&arttitle=Taking+the+C66x+Out+Of+Reset+with+Linux+Running+on+the+ARM+A15&oldid=215908&writer=rl>`__
 -  `Printable
-   version </index.php?title=Processor_SDK_RTOS_Related_Software&printable=yes>`__
+   version </index.php?title=Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15&printable=yes>`__
 
 .. raw:: html
 
@@ -216,14 +216,14 @@
    <div class="body">
 
 -  `What links
-   here </index.php/Special:WhatLinksHere/Processor_SDK_RTOS_Related_Software>`__
+   here </index.php/Special:WhatLinksHere/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15>`__
 -  `Related
-   changes </index.php/Special:RecentChangesLinked/Processor_SDK_RTOS_Related_Software>`__
+   changes </index.php/Special:RecentChangesLinked/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15>`__
 -  `Special pages </index.php/Special:SpecialPages>`__
 -  `Permanent
-   link </index.php?title=Processor_SDK_RTOS_Related_Software&oldid=214945>`__
+   link </index.php?title=Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15&oldid=215908>`__
 -  `Page
-   information </index.php?title=Processor_SDK_RTOS_Related_Software&action=info>`__
+   information </index.php?title=Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15&action=info>`__
 
 .. raw:: html
 
@@ -245,8 +245,8 @@
 
    <div id="footer" role="contentinfo">
 
--  This page was last modified on 13 April 2016, at 10:57.
--  This page has been accessed 5,423 times.
+-  This page was last modified on 2 May 2016, at 06:34.
+-  This page has been accessed 2,030 times.
 -  Content is available under `Creative Commons
    Attribution-ShareAlike <http://creativecommons.org/licenses/by-sa/3.0/>`__
    unless otherwise noted.
@@ -271,6 +271,38 @@
 
    </div>
 
+.. Image:: ../images/Outofreset_1_lali.JPG
+   :width: 345px
+   :height: 244px
+.. Image:: ../images/Outofreset_1_lali.JPG
+.. Image:: ../images/Outofreset_2_lali.JPG
+   :width: 517px
+   :height: 280px
+.. Image:: ../images/Outofreset_2_lali.JPG
+.. Image:: ../images/Outofreset_3_lali.JPG
+   :width: 491px
+   :height: 303px
+.. Image:: ../images/Outofreset_3_lali.JPG
+.. Image:: ../images/Outofreset_4_lali.png
+   :width: 449px
+   :height: 177px
+.. Image:: ../images/Outofreset_4_lali.png
+.. Image:: ../images/Outofreset_5_lali.png
+   :width: 429px
+   :height: 125px
+.. Image:: ../images/Outofreset_5_lali.png
+.. Image:: ../images/Outofreset_6_lali.png
+   :width: 266px
+   :height: 111px
+.. Image:: ../images/Outofreset_6_lali.png
+.. Image:: ../images/Outofreset_7_lali.png
+   :width: 677px
+   :height: 235px
+.. Image:: ../images/Outofreset_7_lali.png
+.. Image:: ../images/Outofreset_8_lali.JPG
+   :width: 997px
+   :height: 391px
+.. Image:: ../images/Outofreset_8_lali.JPG
 .. Image:: ../images/E2e.jpg
    :width: 305px
    :height: 63px

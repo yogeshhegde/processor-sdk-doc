@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Multicore_System_Analyzer#Unified_Instrumentation_Architecture_.28UIA.29 
+.. http://processors.wiki.ti.com/index.php/Multicore_System_Analyzer 
 
 .. rubric:: Overview
    :name: overview
