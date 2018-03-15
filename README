@@ -3,6 +3,10 @@ Tool installation
 ******************
 sudo apt-get install python-sphinx
 
+******************
+clone the git repo
+******************
+git clone ssh://git@bitbucket.itg.ti.com/processor-sdk/processor-sdk-doc.git
 
 ******************
 Update submodule to get the theme files from swtoolsdev

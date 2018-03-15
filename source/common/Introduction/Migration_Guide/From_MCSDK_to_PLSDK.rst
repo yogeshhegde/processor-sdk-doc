@@ -1,3 +1,5 @@
+.. http://processors.wiki.ti.com/index.php/MCSDK_to_Processor_SDK_Migration
+
 .. rubric:: Introduction
    :name: introduction
 
@@ -278,6 +280,17 @@ Listed below are a few major differences from MCSDK (3.10 Kernel).
    k2-fw-initrd.cpio.gz file supplied in the release package and
    referred in the u-boot section of this document
 
+|
+
+.. rubric:: PCIe driver
+   :name: pcie-driver
+
+-  PCIe RC mode was set in Kernel in MCSDK but moved to U-boot in
+   ProcSDK for upstreaming reason. U-boot needs to be the same release
+   version as Kernel. If not, PCIe mode initialization needs to be added
+   in the older version of u-boot.
+
+
 .. rubric:: Building the Linux SDK
    :name: building-the-linux-sdk
 
@@ -443,3 +456,12 @@ in this initial release. But it is planned to be dropped in a future
 release. The Board Library is a common API across all devices in the
 Processor-SDK.
 
+
+|
+
+.. rubric:: MCSDK1.1 to Processor SDK Migration for OMAPL13x devices
+   :name: mcsdk1.1-to-processor-sdk-migration-for-omapl13x-devices
+
+For OMAPL13x devices, you can refer to the **`MCSDK1.1 to Processor SDK
+Migration <http://processors.wiki.ti.com/index.php/MCSDK1.1_to_Processor_SDK_Migration_Guide_for_OMAPL13x/C674x_devices>`__**
+link
