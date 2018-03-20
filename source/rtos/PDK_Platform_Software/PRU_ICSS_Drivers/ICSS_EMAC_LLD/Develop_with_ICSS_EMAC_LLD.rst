@@ -1802,8 +1802,9 @@ Received frames with size >= 512 bytes and <= 1023 bytes
 
 .. _api-guide-data-structures-2:
 
-API Guide & Data Structures
-===========================
+
+.. rubric:: API Guide & Data Structures
+   :name: api-guide-data-structures-2
 
 As discussed above there are two data structures for Statistics.
 
@@ -1870,10 +1871,8 @@ The corresponding API for this is
 
 IOCTL Param value is *ICSS_EMAC_IOCTL_STAT_CTRL_CLEAR*
 
-.. _usage-3:
-
-Usage
-=====
+.. rubric:: Usage
+   :name: usage-3
 
 Statistics are a great tool to debug issues on the switch. To get them
 in the application use the IOCTL calls to get and clear statistics
@@ -1884,8 +1883,8 @@ activity on the Ports is to directly go to the PRU data RAM offset
 *STATISTICS_OFFSET* and see the values directly in memory Refer Debug
 guide on how to see data RAM values directly in CCS.
 
-Memory Map
-==========
+.. rubric:: Memory Map
+   :name: Memory-Map
 
 The memory map here refers to the Shared Data RAM memory map in ICSS. L3
 map is not of much use to the developer while DDR map is dynamic and is
@@ -1978,11 +1977,12 @@ The memory map can be found in *icss_emacSwitch.h* under
    |           |           |           | 6 bytes   |           | 6 bytes   |
    +-----------+-----------+-----------+-----------+-----------+-----------+
 
-OS and TCP/IP
-=============
 
-RTOS
-----
+.. rubric:: OS and TCP/IP
+   :name: OS-and-TCP-IP
+
+.. rubric:: RTOS
+   :name: RTOS
 
 The SDK uses
 `SYS/BIOS <http://processors.wiki.ti.com/index.php/Category:SYSBIOS>`__
@@ -2008,8 +2008,9 @@ port the API's within these two files to their own Operating System.
 This is described in detail in the section `Porting
 Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Porting_ICSS_EMAC_LLD>`__
 
-TCP/IP
-------
+
+.. rubric:: TCP/IP
+   :name: TCP-IP
 
 The Industrial SDK uses `NDK <http://www.ti.com/tool/NDKTCPIP>`__ as
 it's TCP/IP stack. API reference guide
@@ -2035,8 +2036,8 @@ guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Po
 covers all aspects of using a custom TCP/IP stack to the EMAC LLD
 example.
 
-PRUSS & EMAC Handle
-===================
+.. rubric:: PRUSS & EMAC Handle
+   :name: PRUSS-EMAC-Handle
 
 The ICSS EMAC Handle is a main driver handle which provides access to
 all members, variables, registers and addresses in the SoC.
@@ -2071,8 +2072,8 @@ example application) is shown below
     ((ICSSEMAC_Object*)emachandle->object)->pruIcssHandle = handle;
     ((ICSSEMAC_Object*)emachandle->object)->emacInitcfg = switchEmacCfg;
 
-IOCTL
-=====
+.. rubric:: IOCTL
+:name: IOCTL
 
 IOCTL implementation for the switch drivers is identical to the
 Unix/Linux based IOCTL calls. They provide the application a convenient
@@ -2083,10 +2084,8 @@ IOCTL calls so that they can utilize all the features provided. This is
 even more important when working in an Application/OS kind of
 environment where access to an emulator is not available.
 
-.. _design-3:
-
-Design
-------
+.. rubric:: Design
+:name: _design-3
 
 The primary IOCTL call is through the API **ICSS_EmacIoctl** which is
 implemented in the file icss_emacFwInit.c An IOCTL call uses two
@@ -2122,8 +2121,8 @@ A complete list of commands and actions is given below.
 
 .. _api-guide-data-structures-3:
 
-API Guide & Data Structures
----------------------------
+.. rubric:: API Guide & Data Structures
+   :name: api-guide-data-structures-3
 
 IOCTL Command structure
 
@@ -2195,10 +2194,9 @@ Possible values for ***ioctlParams*** are
    There are no sub-commands here. Whether to enable or disable is
    decided by the value of ***ioctlVal***
 
-.. _usage-4:
 
-Usage
------
+.. rubric:: Usage
+:name: _usage-4
 
 Using IOCTL to debug the issues is encouraged. This is easier than
 trying to connect an emulator and reading the values at run time. There
@@ -2228,8 +2226,8 @@ code is self-explanatory
         ICSS_EmacIoctl(pi->nimuDrvHandle, ICSS_EMAC_IOCTL_STORM_PREV_CTRL, NULL, (void*)&ioctlParams);
      }
 
-Time Triggered Send
-===================
+.. rubric:: Time Triggered Send
+:name: Time-Triggered-Send
 
 The EMAC Time Triggered Send (TTS) is used to expand classical Ethernet
 to meet deterministic, time-critical or safety-relevant conditions. TTS
@@ -2241,8 +2239,8 @@ explained in the
 `IOCTL </index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__ section
 previously.
 
-TTS Design Overview
--------------------
+.. rubric:: TTS Design Overview
+:name: TTS-Design-Overview
 
 TTS is designed to facilitate transmission of packets at pre-defined
 cyclic instants/triggers. The `TTS API Details and Data
@@ -2370,8 +2368,8 @@ The PRU firmware makes the following assumptions regarding TTS:
    driver level if the queue is full. It is assumed that this is taken
    care of at the host level.
 
-TTS API Details and Data Structures
------------------------------------
+.. rubric:: TTS API Details and Data Structures
+:name: TTS-API-Details-and-Data-Structures
 
 TTS has the following APIs, which are accessed using EMAC IOCTL
 implementation as explained in the IOCTL section previously.
@@ -2508,8 +2506,8 @@ For Disable:
     ret = ICSS_EmacIoctl(icssEmacHandle, ICSS_EMAC_IOCTL_TTS_CTRL, portNumber, &ioctlParams2);
     assert(ret == 0);
 
-TTS Cyclic Frame Notification
------------------------------
+.. rubric:: TTS Cyclic Frame Notification
+:name: TTS-Cyclic-Frame-Notification
 
 The PRU firmware has been designed to notify the Host when it’s time to
 insert the cyclic packet. This helps the Host to queue the cyclic packet
@@ -2517,8 +2515,8 @@ well before trigger time and avoid any unnecessary jitter or any other
 erroneous situations as mentioned previously. The firmware does this in
 two ways:
 
-Polling Mode
-~~~~~~~~~~~~
+.. rubric:: Polling Mode
+:name: Polling-Mode
 
 -  In this mode the firmware sets a status bit when it’s time to insert
    the cyclic frame and this bit cleared when the time to insert the
@@ -2534,8 +2532,8 @@ Polling Mode
 -  Once insertCycFrameNotification = 1, the application must queue the
    cyclic frame in Queue 0.
 
-Interrupt Mode
-~~~~~~~~~~~~~~
+.. rubric:: Interrupt Mode
+:name: Interrupt-Mode
 
 -  In this mode, in addition to setting the status bit as in polling
    mode, the firmware has the capability to give an interrupt to the
@@ -2564,16 +2562,16 @@ Interrupt Mode
    function is called and this is where the application shall queue the
    cyclic packet to Queue 0.
 
-ICSS EMAC LLD Dependencies
-==========================
+.. rubric:: ICSS EMAC LLD Dependencies
+:name: ICSS-EMAC-LLD-Dependencies
 
 ICSS EMAC LLD is dependent on the Application/Transport layer for its
 proper functioning. These dependencies have been consolidated and
 exported to the application layer (example) to make it easy for
 developer to integrate the LLD with their own RTOS and TCP/IP stack.
 
-Interrupt Configuration
------------------------
+.. rubric:: Interrupt Configuration
+:name: Interrupt-Configuration
 
 ICSS EMAC LLD expects the Interrupt configuration to come from
 Application/Transport layer. The interrupt configuration is explained in
@@ -2584,8 +2582,8 @@ Please refer to it for more details.
 The LLD makes use of two interrupts for copying packets from the queues
 to the TCP/IP stack.
 
-Rx Interrupt
-~~~~~~~~~~~~
+.. rubric:: Rx Interrupt
+:name: Rx-Interrupt
 
 The ICSS EMAC LLD depends on the Rx interrupt for receiving packets.The
 application should do the interrupt creation and should use the API
@@ -2595,8 +2593,8 @@ EMAC LLD to receive packets. The user should make sure the arm interrupt
 Rx will be determined by the firmware which will be used along with the
 ICSS EMAC LLD
 
-Link Interrupt
-~~~~~~~~~~~~~~
+.. rubric:: Link Interrupt
+:name: Link-Interrupt
 
 Link Interrupt informs the ICSS EMAC LLD of any Link state change. This
 is where the LLD informs the firmware about the Link status and the Phy
@@ -2604,8 +2602,8 @@ configuration.The LLD expects single interrupt for both Ports. In case
 the Interrupt mechanism is not available, the application should call
 **ICSS_EmacLinkISR** whenever there is a link change.
 
-Learning module Increment counter implementation
-------------------------------------------------
+.. rubric:: Learning module Increment counter implementation
+:name: Learning-module-Increment-counter-implementation
 
 This is required for Switch implementation only. The application needs
 to call the IOCTL periodically, this is already done by the NDK. Refer
@@ -2613,8 +2611,8 @@ to the API
 `section <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#API_Guide_.26_Data_Structures>`__
 of Learning for more details.
 
-MDIO Configurations
--------------------
+.. rubric:: MDIO Configurations
+:name: MDIO-Configurations
 
 ICSS EMAC LLD does not do any of the MDIO configurations. It expects the
 application to do following MDIO operations
@@ -2627,33 +2625,21 @@ of how to initialize the MDIO sub-system and how to enable MDIO link
 interrupts. This file contains a set of MDIO test APIs which are used by
 the icss emac loopback unit tests.
 
-EMAC Configuration and How To
-=============================
+.. rubric:: EMAC Configuration and How To
+:name: EMAC-Configuration-and-How-To
 
-Network related
----------------
+.. rubric:: Network related
+:name: Network-related
 
-How to configure IP address and other IPv4 parameters
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. rubric:: How to configure IP address and other IPv4 parameters
+:name: How-to-configure-IP-address-and-other-IPv4-parameters
 
 IP address, network mask and other params can be set through the NDK
 configuration file. See
 `here <http://processors.wiki.ti.com/index.php/SYSBIOS_Industrial_SDK_02.01.00.01_User_Guide#Ethernet_MAC>`__
 
-How to configure MAC address
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-MAC address is variable **macId** in the configuration
-**ICSSEMAC_InitConfig**. It can be set as per the application
-requirements. The following excerpt from **ethernet_mac** example shows
-how to do this
-
-::
-
-    /*Get MAC address from eFUSE*/
-    SOCCtrlGetPortMacAddr(1,lclMac);
-    /*Assign MAC ID for that particular port*/
-    switchEmacCfg->macId = lclMac;
+.. rubric:: How to configure MAC address
+:name: How-to-configure-MAC-address
 
 .. raw:: html
 

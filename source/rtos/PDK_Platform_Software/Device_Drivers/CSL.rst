@@ -60,18 +60,6 @@ under rare cases in application when required.
 
 **Chip Support Library/DAL Summary**
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 **Component Type**
 
 Library
@@ -107,10 +95,10 @@ PDK_INSTALL_DIR\packages\ti\starterware\include
 | 
 
 AM57x/K2x/C66x/C674x
-====================
+---------------------
 
 Application Integration
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 CSL is common package supporting multiple devices.Software layer using
 CSL source would need to pass compile time define -DSOC_XXX. Refer
@@ -152,7 +140,7 @@ See docs under Install Directory
 | 
 
 CSL-FL EXAMPLES
-===============
+-----------------
 
 These are example projects to test the functionality of API in CSL-FL
 layers. The following is the list of CSL-FL test examples which are

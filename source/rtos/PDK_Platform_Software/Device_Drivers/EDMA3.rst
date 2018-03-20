@@ -116,7 +116,7 @@ See docs under install directory
 `BSD <http://www.opensource.org/licenses/bsd-license.php>`__
 
 EDMA3 sample libs
-=================
+-------------------
 
 **EDMA3 Driver Sample Summary**
 

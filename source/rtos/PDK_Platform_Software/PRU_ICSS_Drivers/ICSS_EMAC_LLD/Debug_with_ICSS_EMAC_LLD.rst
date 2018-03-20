@@ -635,7 +635,3 @@ EVMs in 2.1 SDK.
 
 .. raw:: html
 
-   </div>
-
-.. raw:: html
-
