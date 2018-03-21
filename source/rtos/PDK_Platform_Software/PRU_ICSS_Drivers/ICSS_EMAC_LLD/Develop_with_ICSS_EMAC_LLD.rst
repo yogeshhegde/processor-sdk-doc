@@ -436,29 +436,7 @@ which can hold one packet irrespective of packet size.
 **NOTE**
 There are no collision queues in EMAC.
 
-.. raw:: html
-
-   </div>
-
 The figure below is illustrative to remember this
-
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|Switch Rx/Tx Queues|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: How QoS Works
    :name: how-qos-works
@@ -528,24 +506,6 @@ knowledge of this is sufficient to build an application.
 
 .. rubric:: Rx Data Path
    :name: rx-data-path
-
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|Rx Data Path|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 Packets are received in the ICSS from where they are copied by the PRU's
 to L3 memory. The PRU's then assert an interrupt to tell the Host about
@@ -671,24 +631,6 @@ As can be seen **processProtocolFrames** function calls
 .. rubric:: Tx Data Path
    :name: tx-data-path
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|Tx Data Pah|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 The Transmit path on host is simpler than the Rx path. As far as the
 developer is concerned the main API call is **ICSS_EmacTxPacket**. This
 API implements the Learning/FDB functionality. **ICSS_EmacTxPacket** in
@@ -798,24 +740,6 @@ to each other and multiple modes are also allowed.
 
 Please note that EMAC can only forward to the Host, other modes only
 apply to switch.
-
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|Forwarding Rules|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 -  **Cut Through** - In this mode the firmware copies the data from Rx
    FIFO to Tx FIFO through the registers. No data is copied to the
@@ -948,24 +872,6 @@ The interrupt mapping consists of 3 parts:
    PRU.
 
 | 
-
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|AM335x PRUINT|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 | The complete mapping follows the pattern
@@ -1510,18 +1416,6 @@ given below.
 align="center"
 ***PRU Statistics Description & Memory Map***
 Name of Variable
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 Description
 
@@ -2252,24 +2146,6 @@ repeatedly and shall send the packets cyclically provided that they are
 queued before the trigger. The following timing diagram explains the use
 of TTS.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|Time Triggered Send Overview|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 Each cycle shall have a configuration time (as shown in the figure
 above) before each trigger. This configuration time is used to setup the
 start trigger and end trigger of current cycle in the PRU firmware. If
@@ -2290,24 +2166,6 @@ packets in queue 0 are cyclic packets. On the other hand, packets from
 other queues are acyclic packets. Cyclic packets are sent at triggered
 instances, whereas acyclic packets are sent based on time availability,
 as shown in the figure below.
-
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|TTS Time Availability Check|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 The time availability check for cyclic packets means to basically check
 whether the acyclic packet can be transmitted such that its transmission
@@ -2330,24 +2188,6 @@ possible:
    will result in increased jitter.
 
 The above two situations are demonstrated in the figure below.
-
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|TTS Error Conditions|
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 In the above figure, the PRU firmware ensures that the first two
 situations never occur but the application needs to take care of the

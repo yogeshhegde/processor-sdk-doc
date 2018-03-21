@@ -80,22 +80,6 @@ sample RTSC cfg file for reference.
 
 **Traceframework Library Summary**
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 **Component Type**
 
 Library

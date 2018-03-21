@@ -55,18 +55,6 @@ API reference for EDMA3 Resource Management layer
 
 **EDMA3 Driver Summary**
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 **Component Type**
 
 Library

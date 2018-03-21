@@ -138,18 +138,6 @@ Types of adapters:
 
 **Target connector**
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 **10-pin ARM**
 
 **14-pin TI**
