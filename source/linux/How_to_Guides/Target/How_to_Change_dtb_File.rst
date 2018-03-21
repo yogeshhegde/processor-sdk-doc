@@ -1,4 +1,8 @@
 .. http://processors.wiki.ti.com/index.php/How_to_Change_dtb_File
+
+How to Change dtb File
+=========================================
+
 .. rubric:: Introduction
    :name: introduction
 

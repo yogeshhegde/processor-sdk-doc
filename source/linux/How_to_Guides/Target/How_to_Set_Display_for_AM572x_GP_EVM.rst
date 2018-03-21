@@ -1,4 +1,8 @@
 .. http://processors.wiki.ti.com/index.php/How_to_Set_Display_for_AM572x_GP_EVM
+
+How to Set Display for AM572x GP EVM
+==================================================================
+
 .. rubric:: Introduction
    :name: introduction
 
