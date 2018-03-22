@@ -2,6 +2,9 @@
 Processor SDK Linux
 =================================================================
 
+.. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide
+   :name: welcome-to-the-processor-sdk-linux-software-developers-guide
+
 Thank you for choosing to evaluate one of our TI Processors `ARM
 microprocessors <http://www.ti.com/lsds/ti/dsp/arm.page>`__. Please
 *bookmark* this page and refer back to it as needed. It is designed to
@@ -22,40 +25,38 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
    :hidden:
    :numbered:
 
-   Introduction
-   Getting_Started
-   U-Boot
-   Kernel
-   Filesystem
-   IPC
-   CMEM
-   Compute_Graphics_and_Media
-   PRU-ICSS
-   Industrial_Protocols
-   Virtualization
-   Examples_and_Demos
-   How_to_Guides
-   Tools
-   Hardware_Setup_with_CCS
-   Migration_Guide
-   Technical_Support
-   Disclaimer
+   Overview
+   Release_Specific
+   Processor_Linux_SDK_How_To_Guides
+   Licenses
 
-+-------------------------------------------------+-------------------------------------------------------------------------------+
-| **Processor SDK Linux**                                                                                                         |
-+=================================================+===============================================================================+
-| Getting Started Guide <-- **Start Here**        | How To Guides                                                                 | 
-+-------------------------------------------------+-------------------------------------------------------------------------------+
-| Supported Platforms and Versions                | Linux Software Stack                                                          |
-+-------------------------------------------------+-------------------------------------------------------------------------------+
-| Directory Structure Overview                    | Building the SDK                                                              |
-+-------------------------------------------------+-------------------------------------------------------------------------------+
-| Release Notes                                   | Migration Guide                                                               |
-+-------------------------------------------------+-------------------------------------------------------------------------------+
-| GPLv3 Disclaimer                                | MCSDK to Processor SDK Migration Guide                                        |
-+-------------------------------------------------+-------------------------------------------------------------------------------+
-| Technical Support                               | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
-+-------------------------------------------------+-------------------------------------------------------------------------------+
++------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| **Processor SDK Linux**                                                                                                                                |
++========================================================================+===============================================================================+
+| `Getting Started Guide`_  <-- **Start Here**                           | `How To Guides`_                                                              | 
++------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| `Supported Platforms and Versions`_                                    | `Linux Software Stack`_                                                       |
++------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| `Directory Structure Overview`_                                        | `Building the SDK`_                                                           |
++------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| `Release Notes`_                                                       | `Migration Guide`_                                                            |
++------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| `GPLv3 Disclaimer`_                                                    | `MCSDK to Processor SDK Migration Guide`_                                     |
++------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| `Technical Support`_                                                   | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
++------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+
+.. _Getting Started Guide: Overview.html#getting-started-guide
+.. _Supported Platforms and Versions: Release_Specific.html#supported-platforms-and-versions
+.. _Release Notes: Release_Specific.html#release-notes
+.. _Technical Support: Overview.html#technical-support
+.. _Directory Structure Overview: Overview.html#directory-structure-overview
+.. _Linux Software Stack: Overview.html#software-stack
+.. _Building the SDK: Release_Specific.html#building-the-sdk
+.. _Migration Guide: Release_Specific.html#migration-guide
+.. _MCSDK to Processor SDK Migration Guide: Release_Specific.html#mcsdk-to-processor-sdk-migration-guide
+.. _GPLv3 Disclaimer: Licenses.html#gplv3-disclaimer
+.. _How To Guides: Processor_Linux_SDK_How_To_Guides.html
 
 
 +-------------+-----------------+---------------+-----------------------------------+
@@ -73,7 +74,7 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 +-------------+-----------------+---------------+-----------------------------------+
 | **Industrial Protocols** (more information on each piece of the distribution)     | 
 +=============+=================+===============+===================================+
-| HSR\_PRP    |                 |               |                                   |
+| HSR\_PRP    | RSTP            |               |                                   |
 +-------------+-----------------+---------------+-----------------------------------+
 
 
@@ -83,7 +84,6 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the `Linux
 forum <http://e2e.ti.com/support/embedded/linux>`__.
-
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: ../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
