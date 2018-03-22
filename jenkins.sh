@@ -65,8 +65,8 @@ build_doc()
 {
     # build targets
     OS=$1
-    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/docs/${VERSION}"
-    echo "processor-sdk-${OS}/esd/docs/${VERSION}/${OS}/index.html" >> "${BUILD_TARGETS}"
+    BUILDDIR="${OUTPUT}/processor-sdk-doc/esd/${VERSION}"
+    echo "processor-sdk-doc/esd/${VERSION}/${OS}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
     make config OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"

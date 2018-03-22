@@ -9,7 +9,7 @@ SPHINXBUILD   = sphinx-build
 PAPER         =
 OS            = linux
 VERSION       = $(shell cat version.txt)
-BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
+BUILDDIR      = build/processor-sdk-doc/esd/${VERSION}
 
 
 # User-friendly check for sphinx-build
