@@ -33,9 +33,7 @@ the ring carry the HSR tag inserted by the source, which contains a
 sequence number. The doublet {source MAC address, sequence number}
 uniquely identifies copies of the same frame.
 
-Figure below shows the structure of a DANH node.
-
-.. Image:: ../images/Dan-h-v1.jpg
+Please refer to IEC 62439-3 standard for the structure of a DANH node.
 
 PRP stands for Parallel Redundancy Protocol which is another redundancy
 protocol defined by IEC 62439-3 clause 4. Standard Ethernet devices such
@@ -46,22 +44,20 @@ Node PRP (DANP) appends a RCT trailer to the frame to manage redundancy.
 
 A DANP node has two ports that operate in parallel and that are attached
 to the same upper layers of the communication stack through the Link
-Redundancy Entity (LRE), as the figure below shows. For the basic
-communication, the LRE presents toward its upper layers the same
-interface as a non-redundant network adapter, so the upper layers are
-unaware of redundancy. The LRE has two tasks: handling of duplicates and
-management of redundancy. When receiving a frame from the node’s upper
-layers, the LRE appends a Redundancy Check Trailer (RCT) containing a
-sequence number to the frame and sends the frame through both ports at
-nearly the same time. The two frames are nearly identical except for the
-LAN identifier (and the checksum). The two frames transit through the
-two LANs with different delays, ideally they arrive at nearly the same
-time at the destination node. When receiving frames from the network,
-the LRE forwards the first received frame of a pair to its node’s upper
-layers and discards the duplicate frame (if it arrives). It removes the
-RCT if required.
-
-.. Image:: ../images/Dan-p-v2.jpg
+Redundancy Entity (LRE). For more details refer to IEC 62439-3 standard
+documentation. For the basic communication, the LRE presents toward its
+upper layers the same interface as a non-redundant network adapter, so
+the upper layers are unaware of redundancy. The LRE has two tasks:
+handling of duplicates and management of redundancy. When receiving a
+frame from the node’s upper layers, the LRE appends a Redundancy Check
+Trailer (RCT) containing a sequence number to the frame and sends the
+frame through both ports at nearly the same time. The two frames are
+nearly identical except for the LAN identifier (and the checksum). The
+two frames transit through the two LANs with different delays, ideally
+they arrive at nearly the same time at the destination node. When
+receiving frames from the network, the LRE forwards the first received
+frame of a pair to its node’s upper layers and discards the duplicate
+frame (if it arrives). It removes the RCT if required.
 
 .. rubric:: ICSS PRU firmware for HSR/PRP/PTP
    :name: icss-pru-firmware-for-hsrprpptp
@@ -272,10 +268,6 @@ cut-though.
 |                    | *hsr\_prp\_firmwar |                    |                    |
 |                    | e.h*               |                    |                    |
 +====================+====================+====================+====================+
-| LRE\_Interface\_St | HSR/PRP Firmware   | *0x140*            | *124*              |
-| ats\_and\_Monitori | Stats - See Table  |                    |                    |
-| ng                 | below              |                    |                    |
-+--------------------+--------------------+--------------------+--------------------+
 | INDEX\_ARRAY       | Index entry for    | *0x1E0*            | 144                |
 |                    | Node Table         |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
@@ -391,6 +383,18 @@ Table:  ***Shared RAM Memory Map***
 | LRE\_NODE\_TABLE\_FULL   | If Node Table is full,   | *120*                    |
 |                          | this value is            |                          |
 |                          | incremented              |                          |
++--------------------------+--------------------------+--------------------------+
+| LRE\_MULTICAST\_DROPPED  | If the Multicast frame is| *124*                    |
+|                          | dropped because of no    |                          |
+|                          | hash value configured in |                          |
+|                          | the filter table, this   |                          |
+|                          | value is incremented     |                          |
++--------------------------+--------------------------+--------------------------+
+| LRE\_VLAN\_DROPPED       | If the frame is dropped  | *128*                    |
+|                          | because of no entry for  |                          |
+|                          | the VID of the frame in  |                          |
+|                          | the VLAN filter table,   |                          |
+|                          | this value is incremented|                          |
 +--------------------------+--------------------------+--------------------------+
 
 Table:  ***LRE Interface Stats***
@@ -514,12 +518,6 @@ Table:  ***PRU1 RAM Memory Map***
 
 TI RTOS specific details are available at
 [`[1] <http://processors.wiki.ti.com/index.php/PRU_ICSS_HSR_PRP>`__]
-
-.. rubric:: Linux
-   :name: linux
-
-Linux specific details are available at
-[`[2] <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_HSR_PRP>`__]
 
 .. raw:: html
 

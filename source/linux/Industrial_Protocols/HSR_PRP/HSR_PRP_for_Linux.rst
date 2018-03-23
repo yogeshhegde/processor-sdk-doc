@@ -1,4 +1,3 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_HSR_PRP
 .. rubric:: Overview
    :name: overview
 
@@ -17,6 +16,10 @@ HSR/PRP solution to support redundancy.
 -  10/100 Mbits/s Full Duplex Ethernet Interface
 -  Store & forward with data integrity check
 -  VLAN over HSR/PRP interface
+   - VLAN filter table of 4096 entries for perfect match
+-  Multicast filtering. Hash table of 256 entries for imperfect
+   match. User configurable mask for selecting the bits to be
+   used for hash calculation.
 -  node table size 256
 -  Statistics & Node Table MIB support
 -  HSR Modes H;N,T,U,M - mode changethrough SNMP SET
@@ -373,8 +376,134 @@ PRUETH as SAN with PTP
 for now and required boot time configuration and above debugfs command
 once device is boot up in PRP mode**
 
+.. rubric:: Multicast filtering
+   :name: multicast-filtering
+
+Multicast filtering is an Ethernet frame filtering feature in PRU firmware based
+on the destination MAC address of the received frame. The PRU provides a
+Multicast filter table in Data RAM1 of PRU with a size of 256 entries of 1
+byte each. Firmware implements an imperfect match for filtering the frames based
+on a hash calculated using the destination MAC address of the frame and a
+configurable mask if the destination address is a multicast MAC address.
+
+::
+
+ Hash = (MAC_ADDR[0] AND MASK[0]) XOR
+        (MAC_ADDR[1] AND MASK[1]) XOR
+        (MAC_ADDR[2] AND MASK[2]) XOR
+        (MAC_ADDR[3] AND MASK[3]) XOR
+        (MAC_ADDR[4] AND MASK[4]) XOR
+        (MAC_ADDR[5] AND MASK[5])
+
+Where MASK is a user configurable value provided at boot time and MAC_ADDR is
+the multicast MAC address which is extracted from the destination address
+of the Ethernet frame and AND is the bitwise AND operation. In other words,
+a bitwise AND operation is performed between each byte of MAC address and
+a corresponding MASK byte and the resulting bytes are XOR-ed together to
+get the hash value. The hash is used to index into the Multicast filter
+table to check if it is set (1) or reset (0). If set, the frame is forwarded
+to ARM core (a.k.a Host). If reset, the frame is dropped at the PRU. This
+is an imperfect match since there can be multiple MAC addresses that produces
+the same hash value. So these frames will get forwarded to the ARM core.
+
+ti_prueth.prussX_mc_mask is the module parameter for MASK where X is 1 for
+ICSS-1 and 2 for ICSS-2 on AM57xx (On other devices, X is 0 for ICSS-1 and 1
+for ICSS-2).
+
+Sample bootargs with MASK configured
+
+::
+
+ setenv pruss1_mc_mask "FF:FF:FF:FF:00:00"
+ setenv pruss2_mc_mask "FF:FF:FF:FF:00:00"
+ setenv args_mmc 'run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}  ti_prueth.pruss1_ethtype=${pruss1_ethtype} ti_prueth.pruss2_ethtype=${pruss2_ethtype} ti_prueth.pruss1_mc_mask=${pruss1_mc_mask} ti_prueth.pruss2_mc_mask=${pruss2_mc_mask}'
+
+Typically, an application joins the multicast group either using a raw
+socket of type SOCK_DGRAM and use setsockopt() API to Join or leave the
+multicast group. An interesting article on this is available at
+
+http://www.tenouk.com/Module41c.html
+
+This causes the Multicast MAC address to be added to the mc_list of the
+socket and the associated network device in kernel and finally get passed
+to the Ethernet device driver (in our case, it is PRU Ethernet device
+driver). The relevant API is ndo_set_rx_mode() of the net_device_ops
+structure in Linux kernel associated with the network device. The PRU
+Ethernet device driver calculates the hash as described above and then
+writes 1 to MC filter table using the hash value as index. The PRU Ethernet
+device driver also supports allmulti which is used to enable receieve of
+all multicast frames at an interface. This is an option passed to the
+ifconfig command.
+
+::
+
+ Example
+ >ifconfig eth2 192.168.2.20 allmulti
+
+ To remove the option
+ >ifconfig eth2 192.168.2.20 -allmulti
+
+ To display the Multicast address list of an interface, say eth2, user types
+ >ip maddr show dev eth2
+
+sample display
+
+::
+
+ root@am57xx-evm:~# ip maddr show dev eth2
+ 6:      eth2
+         link  33:33:00:00:00:01 users 2
+         link  01:00:5e:00:00:01 users 2
+         link  33:33:ff:1c:16:e0 users 2
+         link  01:00:5e:00:00:fb
+         link  01:00:5e:00:00:fc
+         link  33:33:00:01:00:03 users 2
+         link  33:33:00:00:00:fb users 2
+         inet  224.0.0.1
+         inet6 ff02::fb
+         inet6 ff02::1:3
+         inet6 ff02::1:ff1c:16e0
+         inet6 ff02::1
+         inet6 ff01::1
+
+PRU Ethernet driver also provides a debugfs file mc_filter to display MC filter
+table in the memory
+
+::
+
+ /sys/kernel/debug/prueth-prp/mc_filter
+ or
+ /sys/kernel/debug/prueth-hsr/mc_filter
+
+Sample display
+
+::
+
+ root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp/mc_filter
+ MC Filter : enabled
+ MC Mask : ff:ff:ff:ff:0:0
+ MC Filter table below 1 - Allowed, 0 - Dropped
+
+   0: 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  10: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  30: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  50: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
+  60: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  70: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  80: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  90: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  a0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  b0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  c0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  d0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+  e0: 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
+  f0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
 .. rubric:: VLAN over PRU Ethernet
    :name: vlan-over-pru-ethernet
+.. _VLAN:
 
 Virtual LAN (VLAN) is a standard Linux feature that can be enabled over
 PRU Ethernet devices. There are many websites that describes how Linux
@@ -470,6 +599,114 @@ On Node-1
 
 Similar procedure can be used for setting up VLAN interfaces over PRU
 EMAC and HSR Ethernet types.
+
+.. rubric:: VLAN Filtering
+   :name: vlan-filter
+
+The PRU has a 4096 entry VLAN filter table that allows filtering out
+unwanted VLAN traffic to the host. As soon a VLAN interface is created,
+the 802.1q Linux kernel module sends the VID information down to the
+lower layer HSR or PRP Linux device which in turn pass it down to the
+slave Ethernet devices below it. The PRU Ethernet driver gets the VID
+information via net_device_ops:ndo_vlan_rx_add_vid(). On receiving this,
+PRU Etherent driver sets the entry at the VID index in VLAN filter table
+to 1. When the VLAN interface is deleted, the driver receives the same
+information through ndo_vlan_rx_kill_vid() and reset the entry at the
+VID index.
+
+PRU firmware on receiving a VLAN frame, extracts the VID and look up the
+VLAN filter table for an entry at the VID if VLAN filtering is enabled
+in firmware. If the entry is 1, it forwards the frame to the Host.
+Otherwise the frame is dropped. There are additional controls to allow
+priority tagged frames to Host if the corrsponding bit is set in firmware
+shared memory. PRU Ethernet driver always enables Priority tagged frames
+to the Host. User may setup a VLAN interface with VID 0 to send or
+receive priority tagged frames. See section VLAN_ for details
+on how to assign egress priority mapping for the priority tagged VLAN
+interface.
+
+.. rubric:: Usefull commands
+   :name: Usefull-commands
+
+User can use the following command to view the VLAN filter table at PRU.
+
+::
+
+ root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp/vlan_filter
+ VLAN Filter : enabled
+
+    0: 0011000000000000000000000000000000000000000000000000000000000000
+   64: 0000000000000000000000000000000000000000000000000000000000000000
+  128: 0000000000000000000000000000000000000000000000000000000000000000
+  192: 0000000000000000000000000000000000000000000000000000000000000000
+  256: 0000000000000000000000000000000000000000000000000000000000000000
+  320: 0000000000000000000000000000000000000000000000000000000000000000
+  384: 0000000000000000000000000000000000000000000000000000000000000000
+  448: 0000000000000000000000000000000000000000000000000000000000000000
+  512: 0000000000000000000000000000000000000000000000000000000000000000
+  576: 0000000000000000000000000000000000000000000000000000000000000000
+  640: 0000000000000000000000000000000000000000000000000000000000000000
+  704: 0000000000000000000000000000000000000000000000000000000000000000
+  768: 0000000000000000000000000000000000000000000000000000000000000000
+  832: 0000000000000000000000000000000000000000000000000000000000000000
+  896: 0000000000000000000000000000000000000000000000000000000000000000
+  960: 0000000000000000000000000000000000000000000000000000000000000000
+ 1024: 0000000000000000000000000000000000000000000000000000000000000000
+ 1088: 0000000000000000000000000000000000000000000000000000000000000000
+ 1152: 0000000000000000000000000000000000000000000000000000000000000000
+ 1216: 0000000000000000000000000000000000000000000000000000000000000000
+ 1280: 0000000000000000000000000000000000000000000000000000000000000000
+ 1344: 0000000000000000000000000000000000000000000000000000000000000000
+ 1408: 0000000000000000000000000000000000000000000000000000000000000000
+ 1472: 0000000000000000000000000000000000000000000000000000000000000000
+ 1536: 0000000000000000000000000000000000000000000000000000000000000000
+ 1600: 0000000000000000000000000000000000000000000000000000000000000000
+ 1664: 0000000000000000000000000000000000000000000000000000000000000000
+ 1728: 0000000000000000000000000000000000000000000000000000000000000000
+ 1792: 0000000000000000000000000000000000000000000000000000000000000000
+ 1856: 0000000000000000000000000000000000000000000000000000000000000000
+ 1920: 0000000000000000000000000000000000000000000000000000000000000000
+ 1984: 0000000000000000000000000000000000000000000000000000000000000000
+ 2048: 0000000000000000000000000000000000000000000000000000000000000000
+ 2112: 0000000000000000000000000000000000000000000000000000000000000000
+ 2176: 0000000000000000000000000000000000000000000000000000000000000000
+ 2240: 0000000000000000000000000000000000000000000000000000000000000000
+ 2304: 0000000000000000000000000000000000000000000000000000000000000000
+ 2368: 0000000000000000000000000000000000000000000000000000000000000000
+ 2432: 0000000000000000000000000000000000000000000000000000000000000000
+ 2496: 0000000000000000000000000000000000000000000000000000000000000000
+ 2560: 0000000000000000000000000000000000000000000000000000000000000000
+ 2624: 0000000000000000000000000000000000000000000000000000000000000000
+ 2688: 0000000000000000000000000000000000000000000000000000000000000000
+ 2752: 0000000000000000000000000000000000000000000000000000000000000000
+ 2816: 0000000000000000000000000000000000000000000000000000000000000000
+ 2880: 0000000000000000000000000000000000000000000000000000000000000000
+ 2944: 0000000000000000000000000000000000000000000000000000000000000000
+ 3008: 0000000000000000000000000000000000000000000000000000000000000000
+ 3072: 0000000000000000000000000000000000000000000000000000000000000000
+ 3136: 0000000000000000000000000000000000000000000000000000000000000000
+ 3200: 0000000000000000000000000000000000000000000000000000000000000000
+ 3264: 0000000000000000000000000000000000000000000000000000000000000000
+ 3328: 0000000000000000000000000000000000000000000000000000000000000000
+ 3392: 0000000000000000000000000000000000000000000000000000000000000000
+ 3456: 0000000000000000000000000000000000000000000000000000000000000000
+ 3520: 0000000000000000000000000000000000000000000000000000000000000000
+ 3584: 0000000000000000000000000000000000000000000000000000000000000000
+ 3648: 0000000000000000000000000000000000000000000000000000000000000000
+ 3712: 0000000000000000000000000000000000000000000000000000000000000000
+ 3776: 0000000000000000000000000000000000000000000000000000000000000000
+ 3840: 0000000000000000000000000000000000000000000000000000000000000000
+ 3904: 0000000000000000000000000000000000000000000000000000000000000000
+ 3968: 0000000000000000000000000000000000000000000000000000000000000000
+ 4032: 0000000000000000000000000000000000000000000000000000000000000000
+
+.. rubric:: Limitations
+   :name: Limitations
+
+Currently, the PRU firmware is configured to receive all of the
+untagged frames from the network when the VLAN filtering is enabled.
+However there is no support for port VLAN which allows these frames
+to be received at a designated VLAN interface.
 
 .. rubric:: Net-SNMP
    :name: net-snmp
