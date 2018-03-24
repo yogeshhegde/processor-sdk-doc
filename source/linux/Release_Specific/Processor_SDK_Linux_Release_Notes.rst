@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
 
 ************************************
-Release Notes
+Processor SDK Linux Release Notes
 ************************************
 
 .. rubric:: Overview

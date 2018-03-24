@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_create_SD_card_script
 
-Creating a SD Card Scripts
+Linux SD Card Creation Guide
 ======================================
 
 .. rubric:: Overview
