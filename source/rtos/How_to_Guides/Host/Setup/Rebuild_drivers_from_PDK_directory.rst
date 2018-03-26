@@ -284,6 +284,10 @@ how the scripts are used to create CCS project content.
    Below are the command formats for Window's pdkProjectCreate.bat and
    Linux's pdkProjectCreate.sh:
 
+.. raw:: html
+
+   </div>
+
 ::
 
     Windows Usage:

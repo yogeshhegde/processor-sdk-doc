@@ -7,72 +7,72 @@ The table below lists currently available libraries and the
 corresponding information - whether they are included in Proc-SDK Linux
 or RTOS, supported devices, and documentation links.
 
-+-------------+-------------+-------------+-------------+-------------+
-| Library     | Proc-SDK    | Proc-SDK    | Supported   | Documentati |
-|             | Linux       | RTOS        | Devices     | on          |
-+=============+=============+=============+=============+=============+
-| MATHLIB     | No          | Yes         | K1/K2/AM57x | `MATHLIB    |
-|             |             |             |             | Documentati |
-|             |             |             |             | on <http:// |
-|             |             |             |             | processors. |
-|             |             |             |             | wiki.ti.com |
-|             |             |             |             | /index.php/ |
-|             |             |             |             | Software_li |
-|             |             |             |             | braries#Mat |
-|             |             |             |             | hLIB>`__    |
-+-------------+-------------+-------------+-------------+-------------+
-| DSPLIB      | No          | Yes         | K1/K2/AM57x | `DSPLIB     |
-|             |             |             |             | Documentati |
-|             |             |             |             | on <http:// |
-|             |             |             |             | processors. |
-|             |             |             |             | wiki.ti.com |
-|             |             |             |             | /index.php/ |
-|             |             |             |             | Software_li |
-|             |             |             |             | braries#DSP |
-|             |             |             |             | LIB>`__     |
-+-------------+-------------+-------------+-------------+-------------+
-| IMGLIB      | No          | Yes         | K1/K2/AM57x | `IMGLIB     |
-|             |             |             |             | Documentati |
-|             |             |             |             | on <http:// |
-|             |             |             |             | processors. |
-|             |             |             |             | wiki.ti.com |
-|             |             |             |             | /index.php/ |
-|             |             |             |             | Software_li |
-|             |             |             |             | braries#IMG |
-|             |             |             |             | LIB>`__     |
-+-------------+-------------+-------------+-------------+-------------+
-| LibArch     | Yes         | Yes         | C6678(RTOS) | `LibArch    |
-|             |             |             | /K2H(Linux) | User's      |
-|             |             |             | /AM572x(Lin | Guide <http |
-|             |             |             | ux)         | ://processo |
-|             |             |             |             | rs.wiki.ti. |
-|             |             |             |             | com/index.p |
-|             |             |             |             | hp/Processo |
-|             |             |             |             | r_SDK_Libra |
-|             |             |             |             | ry_Architec |
-|             |             |             |             | ture_and_Fr |
-|             |             |             |             | amework>`__ |
-+-------------+-------------+-------------+-------------+-------------+
-| FFTLIB      | Yes         | Yes         | C6678(RTOS) | `FFT User's |
-|             |             |             | /K2H(Linux) | Guide <http |
-|             |             |             | /AM572x(Lin | ://processo |
-|             |             |             | ux)         | rs.wiki.ti. |
-|             |             |             |             | com/index.p |
-|             |             |             |             | hp/Processo |
-|             |             |             |             | r_SDK_FFT_L |
-|             |             |             |             | ibrary>`__  |
-+-------------+-------------+-------------+-------------+-------------+
-| LINALG      | Yes         | Yes         | C6678(RTOS) | `LINALG     |
-|             |             |             | /K2H(Linux) | User's      |
-|             |             |             | /AM572x(Lin | Guide <http |
-|             |             |             | ux)         | ://processo |
-|             |             |             |             | rs.wiki.ti. |
-|             |             |             |             | com/index.p |
-|             |             |             |             | hp/Processo |
-|             |             |             |             | r_SDK_Linea |
-|             |             |             |             | r_Algebra_L |
-|             |             |             |             | ibrary>`__  |
-+-------------+-------------+-------------+-------------+-------------+
++-------------+-------------+-------------+-------------+---------------+
+| Library     | Proc-SDK    | Proc-SDK    | Supported   | Documentation |
+|             | Linux       | RTOS        | Devices     |               |
++=============+=============+=============+=============+===============+
+| MATHLIB     | No          | Yes         | K1/K2/AM57x | `MATHLIB      |
+|             |             |             |             | Documentati   |
+|             |             |             |             | on <http://   |
+|             |             |             |             | processors.   |
+|             |             |             |             | wiki.ti.com   |
+|             |             |             |             | /index.php/   |
+|             |             |             |             | Software_li   |
+|             |             |             |             | braries#Mat   |
+|             |             |             |             | hLIB>`__      |
++-------------+-------------+-------------+-------------+---------------+
+| DSPLIB      | No          | Yes         | K1/K2/AM57x | `DSPLIB       |
+|             |             |             |             | Documentati   |
+|             |             |             |             | on <http://   |
+|             |             |             |             | processors.   |
+|             |             |             |             | wiki.ti.com   |
+|             |             |             |             | /index.php/   |
+|             |             |             |             | Software_li   |
+|             |             |             |             | braries#DSP   |
+|             |             |             |             | LIB>`__       |
++-------------+-------------+-------------+-------------+---------------+
+| IMGLIB      | No          | Yes         | K1/K2/AM57x | `IMGLIB       |
+|             |             |             |             | Documentati   |
+|             |             |             |             | on <http://   |
+|             |             |             |             | processors.   |
+|             |             |             |             | wiki.ti.com   |
+|             |             |             |             | /index.php/   |
+|             |             |             |             | Software_li   |
+|             |             |             |             | braries#IMG   |
+|             |             |             |             | LIB>`__       |
++-------------+-------------+-------------+-------------+---------------+
+| LibArch     | Yes         | Yes         | C6678(RTOS) | `LibArch      |
+|             |             |             | /K2H(Linux) | User's        |
+|             |             |             | /AM572x(Lin | Guide <http   |
+|             |             |             | ux)         | ://processo   |
+|             |             |             |             | rs.wiki.ti.   |
+|             |             |             |             | com/index.p   |
+|             |             |             |             | hp/Processo   |
+|             |             |             |             | r_SDK_Libra   |
+|             |             |             |             | ry_Architec   |
+|             |             |             |             | ture_and_Fr   |
+|             |             |             |             | amework>`__   |
++-------------+-------------+-------------+-------------+---------------+
+| FFTLIB      | Yes         | Yes         | C6678(RTOS) | `FFT User's   |
+|             |             |             | /K2H(Linux) | Guide <http   |
+|             |             |             | /AM572x(Lin | ://processo   |
+|             |             |             | ux)         | rs.wiki.ti.   |
+|             |             |             |             | com/index.p   |
+|             |             |             |             | hp/Processo   |
+|             |             |             |             | r_SDK_FFT_L   |
+|             |             |             |             | ibrary>`__    |
++-------------+-------------+-------------+-------------+---------------+
+| LINALG      | Yes         | Yes         | C6678(RTOS) | `LINALG       |
+|             |             |             | /K2H(Linux) | User's        |
+|             |             |             | /AM572x(Lin | Guide <http   |
+|             |             |             | ux)         | ://processo   |
+|             |             |             |             | rs.wiki.ti.   |
+|             |             |             |             | com/index.p   |
+|             |             |             |             | hp/Processo   |
+|             |             |             |             | r_SDK_Linea   |
+|             |             |             |             | r_Algebra_L   |
+|             |             |             |             | ibrary>`__    |
++-------------+-------------+-------------+-------------+---------------+
 
 Processor SDK libraries can be categorized into two groups, general
 purpose libraries and high performance or application specific
