@@ -31,7 +31,7 @@ Prerequisites
    Studio <http://processors.wiki.ti.com/index.php/Download_CCS>`__
    (choose version as specified on Proc SDK download page)
 
-| |Note|\ **Note:** Please be sure that you have the same version number
+**Note:** Please be sure that you have the same version number
   for both Processor SDK RTOS and Linux.
 
 For reference within the context of this wiki page, the Linux SDK is
@@ -120,33 +120,7 @@ the remotecores(DSP's and M4's) run a RTOS. In the normal operation,
 boot loader(U-Boot/SPL) boots and loads the A15 with the HLOS. The A15
 boots the DSP and the M4 cores.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:513px;">
-
-|image1|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-caption Normal Boot Flow
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Normal-boot.png
 
 In this sequence, the interval between the Power on Reset and the
 remotecores (i.e. the DSP's and the M4's) executing is dependent on the
@@ -399,29 +373,13 @@ the Linux config:
 
 linux/arch/arm/configs/tisdk_am57xx-evm_defconfig
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="bash source-bash">
-
-.. code:: de1
+:: 
 
     #
     # Default contiguous memory area size:
     #
     CONFIG_CMA_SIZE_MBYTES=24
     CONFIG_CMA_SIZE_SEL_MBYTES=y
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -537,10 +495,11 @@ Linux dts file.** For example for the AM57xx EVM:
 
 | You are able to change both the size and location. **Be careful not to
   overlap any other carveouts!
-  **
-| |Note|\ **Note:** The **two** location entries for a given DSP must be
+
+**Note:** The **two** location entries for a given DSP must be
   identical!
-| Additionally, when you change the carveout location, there is a
+
+  | Additionally, when you change the carveout location, there is a
   corresponding change that must be made to the resource table. For
   starters, if you're making a memory change you will need a **custom**
   resource table. The resource table is a large structure that is the
@@ -553,31 +512,16 @@ Once you've created your custom resource table, you must update the
 address of PHYS_MEM_IPC_VRING to be the same base address as your
 corresponding CMA.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
     #if defined (VAYU_DSP_1)
     #define PHYS_MEM_IPC_VRING      0x99000000
     #elif defined (VAYU_DSP_2)
     #define PHYS_MEM_IPC_VRING      0x9F000000
     #endif
 
-.. raw:: html
+| 
 
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|Note|\ **Note:** The PHYS_MEM_IPC_VRING definition from the resource
+**Note:** The PHYS_MEM_IPC_VRING definition from the resource
 table must match the address of the associated CMA carveout!
 
 .. rubric:: DSP Virtual Addresses
@@ -595,15 +539,7 @@ existing resource table inside IPC:
 
 ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_dsp.h
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         {
             TYPE_CARVEOUT,
@@ -640,26 +576,12 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_dsp.h
             DSP_MEM_IPC_VRING_SIZE, 0, 0, "DSP_MEM_IPC_VRING",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+| 
 
 Let's have a look at some of these to understand them better. For
 example:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         {
             TYPE_CARVEOUT,
@@ -667,13 +589,7 @@ example:
             DSP_MEM_TEXT_SIZE, 0, 0, "DSP_MEM_TEXT",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+| 
 
 Key points to note are:
 
@@ -691,27 +607,13 @@ Key points to note are:
 
 Let's take another:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         {
             TYPE_TRACE, TRACEBUFADDR, 0x8000, 0, "trace:dsp",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+| 
 
 Key points are:
 
@@ -725,15 +627,7 @@ Key points are:
 
 Finally, let's look at a TYPE_DEVMEM example:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         {
             TYPE_DEVMEM,
@@ -741,13 +635,7 @@ Finally, let's look at a TYPE_DEVMEM example:
             SZ_16M, 0, 0, "DSP_PERIPHERAL_L4CFG",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+| 
 
 Key points:
 
@@ -866,7 +754,7 @@ The 0x4a040002 shows us that it is a Supersection with base address
 afterward. That's a requirement of the MMU. Here's an excerpt from the
 TRM:
 
-|Note|\ **Note:** Supersection descriptors must be repeated 16 times,
+**Note:** Supersection descriptors must be repeated 16 times,
 because each descriptor in the first level translation table describes 1
 MiB of memory. If an access points to a descriptor that is not
 initialized, the MMU will behave in an unpredictable way.
@@ -913,9 +801,10 @@ Linux dts file.** For example for the AM57xx EVM:
 
 | You are able to change both the size and location. **Be careful not to
   overlap any other carveouts!
-  **
-| |Note|\ **Note:** The **two** location entries for a given carveout
+
+**Note:** The **two** location entries for a given carveout
   must be identical!
+
 | Additionally, when you change the carveout location, there is a
   corresponding change that must be made to the resource table. For
   starters, if you're making a memory change you will need a **custom**
@@ -929,31 +818,16 @@ Once you've created your custom resource table, you must update the
 address of PHYS_MEM_IPC_VRING to be the same base address as your
 corresponding CMA.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
     #if defined(VAYU_IPU_1)
     #define PHYS_MEM_IPC_VRING      0x9D000000
     #elif defined (VAYU_IPU_2)
     #define PHYS_MEM_IPC_VRING      0x95800000
     #endif
 
-.. raw:: html
+| 
 
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|Note|\ **Note:** The PHYS_MEM_IPC_VRING definition from the resource
+**Note:** The PHYS_MEM_IPC_VRING definition from the resource
 table must match the address of the associated CMA carveout!
 
 .. rubric:: Cortex M4 IPU Virtual Addresses
@@ -970,15 +844,7 @@ large pages. Here's a snippet showing some of the key mappings:
 
 ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/ipu1/IpuAmmu.cfg
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
     /*********************** Large Pages *************************/
     /* Instruction Code: Large page  (512M); cacheable */
@@ -1008,13 +874,7 @@ ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/ipu1/IpuAmmu.cfg
     AMMU.largePages[2].L1_cacheable = AMMU.CachePolicy_CACHEABLE;
     AMMU.largePages[2].L1_posted = AMMU.PostedPolicy_POSTED;
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+| 
 
 ````
 
@@ -1059,15 +919,7 @@ can be found at this location:
 
 ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
     #define IPU_MEM_TEXT            0x0
     #define IPU_MEM_DATA            0x80000000
@@ -1096,25 +948,11 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
     #define IPU_MEM_DATA_SIZE       (SZ_1M * 48)
     #endif
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+| 
 
 <snip...>
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         {
             TYPE_CARVEOUT,
@@ -1133,14 +971,7 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
             IPU_MEM_IPC_DATA, 0,
             IPU_MEM_IPC_DATA_SIZE, 0, 0, "IPU_MEM_IPC_DATA",
         },
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+| 
 
 The 3 entries above from the resource table all come from the associated
 IPU CMA pool (i.e. as dictated by the TYPE_CARVEOUT). The second
@@ -1386,8 +1217,7 @@ Copy these files into your CCS project...
 -  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\dsp1\Server.c
 -  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\dsp1\Server.h
 
-| 
-| |Note|\ **Note:** When you copy Dsp1.cfg into your CCS project, it
+  **Note:** When you copy Dsp1.cfg into your CCS project, it
   should show up greyed out. This is because the LED blink example
   already has a cfg file (gpio_test_evmAM572x.cfg). The Dsp1.cfg will be
   used for copying and pasting. When it's all done, you can delete it
@@ -1435,39 +1265,14 @@ make a *.c* source file.
 | 
 | Add the following to the beginning of your configuration file
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+:: 
 
     var Program = xdc.useModule('xdc.cfg.Program');
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 Comment out the Memory sections configuration as shown below
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+:: 
 
     /* ================ Memory sections configuration ================ */
     //Program.sectMap[".text"] = "EXT_RAM";
@@ -1476,102 +1281,38 @@ Comment out the Memory sections configuration as shown below
     /* Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1"; */
     /* Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1"; */
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 Since we are no longer using a shared folder, make the following change
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+:: 
 
     //var ipc_cfg = xdc.loadCapsule("../shared/ipc.cfg.xs");
     var ipc_cfg = xdc.loadCapsule("../ipc.cfg.xs");
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Comment out the following. We'll be calling this function directly from
 main.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+:: 
 
     //BIOS.addUserStartupFunction('&IpcMgr_ipcStartup');
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Increase the system stack size
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+:: 
 
     //Program.stack = 0x1000;
     Program.stack = 0x8000;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Comment out the entire TICK section
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+:: 
 
     /* --------------------------- TICK --------------------------------------*/
     // var Clock = xdc.useModule('ti.sysbios.knl.Clock');
@@ -1607,40 +1348,16 @@ Comment out the entire TICK section
     // /* Must be placed before pwr mgmt */
     // Idle.addFunc('&ti_deh_Deh_idleBegin');
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 Make configuration change to use custom resource table. Add to the end
 of the file.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+:: 
 
     /* Override the default resource table with my own */
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
     Resource.customTable = true;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -1652,41 +1369,17 @@ of the file.
 
 Add the following external declarations
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
     extern Int ipc_main();
     extern Void IpcMgr_ipcStartup(Void);
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 In main(), add a call to ipc_main() and IpcMgr_ipcStartup() just before
 BIOS_start()
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         ipc_main();
      
@@ -1698,14 +1391,6 @@ BIOS_start()
         BIOS_start();
         return (0);
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 | Comment out the line that calls Board_init(boardCfg). This call is in
@@ -1713,16 +1398,7 @@ BIOS_start()
   but in our case here, we are running Linux and this call is
   destructive so we comment it out.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+:: 
     #if defined(EVM_K2E) || defined(EVM_C6678)
         boardCfg = BOARD_INIT_MODULE_CLOCK |
         BOARD_INIT_UART_STDIO;
@@ -1732,14 +1408,6 @@ BIOS_start()
         BOARD_INIT_UART_STDIO;
     #endif
         //Board_init(boardCfg);
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -1751,103 +1419,37 @@ BIOS_start()
 
 The app now has it's own main(), so rename this one and get rid of args
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
     //Int main(Int argc, Char* argv[])
     Int ipc_main()
     {
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
-| 
-| No longer using args so comment these lines
+No longer using args so comment these lines
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         //taskParams.arg0 = (UArg)argc;
         //taskParams.arg1 = (UArg)argv;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
+
 
 BIOS_start() is done in the app main() so comment it out here
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         /* start scheduler, this never returns */
         //BIOS_start();
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
+
 
 Comment this out
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
         //Log_print0(Diags_EXIT, "<-- main:");
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 -  Edit **rsc_table_vayu_dsp.c**
@@ -1856,52 +1458,15 @@ Comment this out
 
 Set this #define before it's used to select PHYS_MEM_IPC_VRING value
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
     #define VAYU_DSP_1
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 Add this extern declaration prior to the symbol being used
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+:: 
     extern char ti_trace_SysMin_Module_State_0_outbuf__A;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
-
 | 
 
 -  Edit **Server.c**
@@ -1911,31 +1476,11 @@ Add this extern declaration prior to the symbol being used
 | 
 | No longer have shared folder so change include path
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+:: 
 
     /* local header files */
     //#include "../shared/AppCommon.h"
     #include "../AppCommon.h"
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
-
-| 
 
 | 
 
@@ -2111,8 +1656,7 @@ Copy these files into your CCS project...
 -  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\ipu2\Server.c
 -  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\ipu2\Server.h
 
-| 
-| |Note|\ **Note:** When you copy Ipu2.cfg into your CCS project, it
+  **Note:** When you copy Ipu2.cfg into your CCS project, it
   should show up greyed out. If not, right click and exclude it from
   build. This is because the UART example already has a cfg file
   (uart_m4_evmAM572x.cfg). The Ipu2.cfg will be used for copying and
@@ -2411,7 +1955,6 @@ examples setup the memory access using these MMUs which the users need
 to manage when integrating the components. This difference is
 highlighted below:
 
-| 
 .. Image:: ../images/IPU_MMU_Peripheral_access.png
 
 -  PDK examples use addresses (0x4X000000) to peripheral registers and
@@ -2475,7 +2018,7 @@ filesystem that is used to load M4 firmware.
 .. rubric:: Download the Full CCS Project
    :name: download-the-full-ccs-project-1
 
-.. Image:: ../images/UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip
+   `UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip <http://processors.wiki.ti.com/index.php/File:UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip>`__
 
 .. raw:: html
 

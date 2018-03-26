@@ -6,23 +6,10 @@
 This page will provide configuration information if the SDK is installed
 in a custom path.
 
-+-----------------------------------------------------------------------+
-| .. raw:: html                                                         |
-|                                                                       |
-|    <div class="floatleft">                                            |
-|                                                                       |
-.. Image:: ../images/Helpful_tips_image.jpg
-|                                                                       |
-| .. raw:: html                                                         |
-|                                                                       |
-|    </div>                                                             |
-|                                                                       |
-| **Useful Tip**                                                        |
-|                                                                       |
-| To avoid changing environment variable for each new shell, modify     |
-| environment variable file directly. This file is the *setupenv* file  |
-| located in the SDK root directory.                                    |
-+-----------------------------------------------------------------------+
+ **Useful Tip**
+ To avoid changing environment variable for each new shell, modify
+ environment variable file directly. This file is the *setupenv* file
+ located in the SDK root directory.
 
 | 
 

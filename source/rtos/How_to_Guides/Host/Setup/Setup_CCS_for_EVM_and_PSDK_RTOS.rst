@@ -113,24 +113,11 @@ MicroUSB AB connector. Select
 
 .. Image:: ../images/CCS-GP437x-EVM-Configure-Target.png
 
-+-----------------------------------------------------------------------+
-| .. raw:: html                                                         |
-|                                                                       |
-|    <div class="floatleft">                                            |
-|                                                                       |
-.. Image:: ../images/Helpful_tips_image.jpg
-|                                                                       |
-| .. raw:: html                                                         |
-|                                                                       |
-|    </div>                                                             |
-|                                                                       |
-| **Useful Tip**                                                        |
-|                                                                       |
-| If you enter the starting numbers of your device in the **Board or    |
-| Device** field, the list will show the relevant subset.               |
-+-----------------------------------------------------------------------+
+**Useful Tip**
 
-| 
+ If you enter the starting numbers of your device in the **Board or
+ Device** field, the list will show the relevant subset.
+
 | Here is a table showing configuration information for all supported
   EVMs in the Processor-SDK RTOS:
 

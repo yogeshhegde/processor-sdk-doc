@@ -55,8 +55,6 @@ API reference for application:
 
    <div class="c source-c">
 
-.. code:: de1
-
      ...
      memset((void *)&wdCfg, 0, sizeof(WatchdogTimer_InitCfg));
      
@@ -65,10 +63,6 @@ API reference for application:
      ...
      /* Initialize and start the timer */
      WatchdogTimer_Init(&wdCfg);
-
-.. raw:: html
-
-   </div>
 
 .. raw:: html
 
@@ -99,8 +93,8 @@ watchdog timer, resetting the count back to zero.
 |                       |   timers. Reference   |                       |
 |                       |   test for            | | See                 |
 |                       |   developers.         |   ti/instrumentation/ |
-|                       |                       | wdtimer/test/README.t |
-|                       |                       | xt                    |
+|                       |                       |   wdtimer/test/       |
+|                       |                       |   README.t xt         |
 |                       |                       |   for more details.   |
 +-----------------------+-----------------------+-----------------------+
 

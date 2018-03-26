@@ -110,22 +110,9 @@ After the SD card is partitioned and formatted, the files under the
 path/to/sdcard/files will be installed onto the SD card, then safely
 exit the script.
 
-+-----------------------------------------------------------------------+
-| .. raw:: html                                                         |
-|                                                                       |
-|    <div class="floatleft">                                            |
-|                                                                       |
-.. Image:: ../images/Helpful_tips_image.jpg
-|                                                                       |
-| .. raw:: html                                                         |
-|                                                                       |
-|    </div>                                                             |
-|                                                                       |
-| **Useful Tip**                                                        |
-|                                                                       |
-| Once SD card is made bootable, it contains sample “MLO” and “app”     |
-| which can be used on the target platform.                             |
-+-----------------------------------------------------------------------+
+**Useful Tip**
+ Once SD card is made bootable, it contains sample “MLO” and “app”
+ which can be used on the target platform.
 
 | 
 

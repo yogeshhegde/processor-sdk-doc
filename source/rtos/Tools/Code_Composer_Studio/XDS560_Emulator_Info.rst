@@ -11,7 +11,7 @@
    (HSRTDX) </index.php/High_Speed_RTDX_(HSRTDX)>`__
 
 +-----------------------------------+-----------------------------------+
-| |Warning| **Warning**:            | As of 6/24/2010 RTDX and HS-RTDX  |
+| **Warning**:                      | As of 6/24/2010 RTDX and HS-RTDX  |
 |                                   | are no longer supported.          |
 |                                   | Alternative transports should be  |
 |                                   | considered for the acquision of   |

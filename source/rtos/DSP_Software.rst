@@ -12,8 +12,8 @@ DSP Debug and Trace
 ********************
 
 CToolsLib
-=====
-.. include:: DSP_Software/DSP_Debug_and_Trace/CToolsLibs.rst
+==========
+.. include:: DSP_Software/DSP_Debug_and_Trace/CToolsLib.rst
 
 
 UIA

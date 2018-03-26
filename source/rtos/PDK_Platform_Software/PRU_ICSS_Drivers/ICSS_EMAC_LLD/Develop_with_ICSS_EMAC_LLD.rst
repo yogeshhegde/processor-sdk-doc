@@ -1694,9 +1694,6 @@ Received frames with size >= 512 bytes and <= 1023 bytes
 
 *0x1F88*
 
-.. _api-guide-data-structures-2:
-
-
 .. rubric:: API Guide & Data Structures
    :name: api-guide-data-structures-2
 
@@ -1967,7 +1964,7 @@ example application) is shown below
     ((ICSSEMAC_Object*)emachandle->object)->emacInitcfg = switchEmacCfg;
 
 .. rubric:: IOCTL
-:name: IOCTL
+   :name: IOCTL
 
 IOCTL implementation for the switch drivers is identical to the
 Unix/Linux based IOCTL calls. They provide the application a convenient
@@ -1979,7 +1976,7 @@ even more important when working in an Application/OS kind of
 environment where access to an emulator is not available.
 
 .. rubric:: Design
-:name: _design-3
+   :name: _design-3
 
 The primary IOCTL call is through the API **ICSS_EmacIoctl** which is
 implemented in the file icss_emacFwInit.c An IOCTL call uses two
@@ -2012,8 +2009,6 @@ disabling the port. Port selected is *ICSS_EMAC_PORT_1* which refers to
 Port 1.
 
 A complete list of commands and actions is given below.
-
-.. _api-guide-data-structures-3:
 
 .. rubric:: API Guide & Data Structures
    :name: api-guide-data-structures-3
@@ -2090,7 +2085,7 @@ Possible values for ***ioctlParams*** are
 
 
 .. rubric:: Usage
-:name: _usage-4
+   :name: _usage-4
 
 Using IOCTL to debug the issues is encouraged. This is easier than
 trying to connect an emulator and reading the values at run time. There
@@ -2121,7 +2116,7 @@ code is self-explanatory
      }
 
 .. rubric:: Time Triggered Send
-:name: Time-Triggered-Send
+   :name: Time-Triggered-Send
 
 The EMAC Time Triggered Send (TTS) is used to expand classical Ethernet
 to meet deterministic, time-critical or safety-relevant conditions. TTS
@@ -2134,7 +2129,7 @@ explained in the
 previously.
 
 .. rubric:: TTS Design Overview
-:name: TTS-Design-Overview
+   :name: TTS-Design-Overview
 
 TTS is designed to facilitate transmission of packets at pre-defined
 cyclic instants/triggers. The `TTS API Details and Data
@@ -2209,7 +2204,7 @@ The PRU firmware makes the following assumptions regarding TTS:
    care of at the host level.
 
 .. rubric:: TTS API Details and Data Structures
-:name: TTS-API-Details-and-Data-Structures
+   :name: TTS-API-Details-and-Data-Structures
 
 TTS has the following APIs, which are accessed using EMAC IOCTL
 implementation as explained in the IOCTL section previously.
@@ -2347,7 +2342,7 @@ For Disable:
     assert(ret == 0);
 
 .. rubric:: TTS Cyclic Frame Notification
-:name: TTS-Cyclic-Frame-Notification
+   :name: TTS-Cyclic-Frame-Notification
 
 The PRU firmware has been designed to notify the Host when it’s time to
 insert the cyclic packet. This helps the Host to queue the cyclic packet
@@ -2356,7 +2351,7 @@ erroneous situations as mentioned previously. The firmware does this in
 two ways:
 
 .. rubric:: Polling Mode
-:name: Polling-Mode
+   :name: Polling-Mode
 
 -  In this mode the firmware sets a status bit when it’s time to insert
    the cyclic frame and this bit cleared when the time to insert the
@@ -2373,7 +2368,7 @@ two ways:
    cyclic frame in Queue 0.
 
 .. rubric:: Interrupt Mode
-:name: Interrupt-Mode
+   :name: Interrupt-Mode
 
 -  In this mode, in addition to setting the status bit as in polling
    mode, the firmware has the capability to give an interrupt to the
@@ -2403,7 +2398,7 @@ two ways:
    cyclic packet to Queue 0.
 
 .. rubric:: ICSS EMAC LLD Dependencies
-:name: ICSS-EMAC-LLD-Dependencies
+   :name: ICSS-EMAC-LLD-Dependencies
 
 ICSS EMAC LLD is dependent on the Application/Transport layer for its
 proper functioning. These dependencies have been consolidated and
@@ -2411,7 +2406,7 @@ exported to the application layer (example) to make it easy for
 developer to integrate the LLD with their own RTOS and TCP/IP stack.
 
 .. rubric:: Interrupt Configuration
-:name: Interrupt-Configuration
+   :name: Interrupt-Configuration
 
 ICSS EMAC LLD expects the Interrupt configuration to come from
 Application/Transport layer. The interrupt configuration is explained in
@@ -2423,7 +2418,7 @@ The LLD makes use of two interrupts for copying packets from the queues
 to the TCP/IP stack.
 
 .. rubric:: Rx Interrupt
-:name: Rx-Interrupt
+   :name: Rx-Interrupt
 
 The ICSS EMAC LLD depends on the Rx interrupt for receiving packets.The
 application should do the interrupt creation and should use the API
@@ -2434,7 +2429,7 @@ Rx will be determined by the firmware which will be used along with the
 ICSS EMAC LLD
 
 .. rubric:: Link Interrupt
-:name: Link-Interrupt
+   :name: Link-Interrupt
 
 Link Interrupt informs the ICSS EMAC LLD of any Link state change. This
 is where the LLD informs the firmware about the Link status and the Phy
@@ -2443,7 +2438,7 @@ the Interrupt mechanism is not available, the application should call
 **ICSS_EmacLinkISR** whenever there is a link change.
 
 .. rubric:: Learning module Increment counter implementation
-:name: Learning-module-Increment-counter-implementation
+   :name: Learning-module-Increment-counter-implementation
 
 This is required for Switch implementation only. The application needs
 to call the IOCTL periodically, this is already done by the NDK. Refer
@@ -2452,7 +2447,7 @@ to the API
 of Learning for more details.
 
 .. rubric:: MDIO Configurations
-:name: MDIO-Configurations
+   :name: MDIO-Configurations
 
 ICSS EMAC LLD does not do any of the MDIO configurations. It expects the
 application to do following MDIO operations
@@ -2466,13 +2461,13 @@ interrupts. This file contains a set of MDIO test APIs which are used by
 the icss emac loopback unit tests.
 
 .. rubric:: EMAC Configuration and How To
-:name: EMAC-Configuration-and-How-To
+   :name: EMAC-Configuration-and-How-To
 
 .. rubric:: Network related
-:name: Network-related
+   :name: Network-related
 
 .. rubric:: How to configure IP address and other IPv4 parameters
-:name: How-to-configure-IP-address-and-other-IPv4-parameters
+   :name: How-to-configure-IP-address-and-other-IPv4-parameters
 
 IP address, network mask and other params can be set through the NDK
 configuration file. See

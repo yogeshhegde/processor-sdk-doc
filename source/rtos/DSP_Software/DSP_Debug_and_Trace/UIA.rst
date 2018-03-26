@@ -77,12 +77,14 @@ HWIs and SWIs. Start/Stop events logged for Duration Analysis and
 Enter/Exit events logged for Function Profiler are also shown in graph.
 In a multi core system all cores are shown in the same graph on the same
 timeline.
+
 .. rubric:: CPU Load
    :name: cpu-load
 
 Graphical representation and min, max, average statistics of CPU loading
 data collected from RTOS.
 In a multi core system loading and statistics for all cores are shown.
+
 .. rubric:: Task Load
    :name: task-load
 
@@ -90,6 +92,7 @@ Graphical representation and min, max, average statistics of task
 loading data collected from RTOS.
 In a multi core system different instance of analysis can be opened for
 each core.
+
 .. rubric:: Duration Analysis
    :name: duration-analysis
 
@@ -97,6 +100,7 @@ Analyze time to perform operations. Start/Stop events logged for each
 operation is used to calculate and graph the time for each instance of
 each operation. Summary statistics (including count, min, max and
 average) is also shown for each operation.
+
 .. rubric:: Context Aware Function Profiler
    :name: context-aware-function-profiler
 
@@ -106,26 +110,29 @@ for functions. Functions to be profiled must have their entry and exit
 instrumented. See FAQ below on how to leverage compiler entry/exit hook
 functions. For context awareness, RTOS context switch logging must also
 be enabled.
+
 .. rubric:: Concurrency Analysis
    :name: concurrency-analysis
 
 This is a multi-core tool to analyze parallel execution of application
 across multiple cores. RTOS Idle task is use to determine when the core
 is not in use. Task switch logging must be enabled for this analysis.
+
 .. rubric:: Task Profiler
    :name: task-profiler
 
 The task profiler analyzes what percent of time tasks are spending in
 their different states. RTOS context switch events are required for this
 analysis.
+
 .. rubric:: Count/Statistical Analysis
    :name: countstatistical-analysis
 
 Graphical representation of any counter/variable that is being logger.
 Also calculates number of occurrences and min, max, average value for
 each counter/variable.
-| 
-| **Note:** TIRTOS/SYSBIOS instrumentation is not enabled by default.
+
+**Note:** TIRTOS/SYSBIOS instrumentation is not enabled by default.
   See User Guide or Tutorials on how to enable this.
 
 **Note:** More information on the analysis features is available in the
@@ -186,13 +193,13 @@ MCSDK.
    may timeout resulting in uncorrelated data. In this case the data can
    be saved to a binary file and post process for correlation to work.
 
-.. rubric:: uia_1_00_04_35 : Tutorial 1 and Tutorial 2 do not build
-   properly.
+.. rubric:: uia_1_00_04_35 : Tutorial 1 and Tutorial 2 do not build properly.
    :name: uia_1_00_04_35-tutorial-1-and-tutorial-2-do-not-build-properly.
 
 -  The build fails with the error *"dc.services.global.XDCException:
    xdc.PACKAGE_NOT_FOUND: can't locate the package 'ti.sysbios.knl'"*
 -  To overcome this, please unzip
+
 .. Image:: ../images/UIAMetaData.zip
    <uia_1_00_04_35 install folder>/packages/ti/uia/runtime/ to update
    the UIAMetaData.xs file. Then delete the <Debug> folder from your
@@ -367,13 +374,8 @@ Note: When asking for help in the forum you should tag your posts in the
 Subject with "System Analyzer", the part number (e.g. "C6678"), and
 component (e.g. "UIA").
 
-| 
-| For product updates,
-
--  Use the CCS/Eclipse Update Manager (see the Getting Started Guide
-   above)
-
---------------
+For product updates,
+-  Use the CCS/Eclipse Update Manager (see the Getting Started Guide above)
 
 .. raw:: html
 

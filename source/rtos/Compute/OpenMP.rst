@@ -89,41 +89,7 @@ those who are new to CCS.
 When you load and run your first program, CCS needs to know which core
 to run it on. You see a dialog box similar this one:
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:670px;">
-
-|image0|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-Select CPU core 0
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Select_core.JPG
 
 Check the box only for core 0.
 
@@ -157,41 +123,7 @@ see some *Hello world example* projects. Select the best one for your HW
 platform. In this screen shot, the selection is for C6678. Select
 **Next**.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:612px;">
-
-|image1|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-Hello world Project Setup
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Omp_h1_project_setup.JPG
 
 The next dialog shows the RTSC Configuration Settings. If only one
 version of the MCSDK is installed, then nothing more is required. If
@@ -238,81 +170,13 @@ In the **Project Explorer** window, insure the new project is selected.
 
 Select the Debug icon.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:288px;">
-
-|image2|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-Debug icon
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Omp_h3_select_cores.JPG
 
 Next a dialog will come up which asks which CPU cores to load the
 program on. Select cores 0-3, then click **OK**. It will appear similar
 to this ...
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:727px;">
-
-|image3|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-Select cores 0-3
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Omp_h3_select_cores.JPG
 
 The following actions take place automatically:
 
@@ -329,41 +193,7 @@ The following actions take place automatically:
 Now you are ready to execute. In the Debug window, click the Resume
 execution icon.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:439px;">
-
-|image4|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-Resume execution
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Omp_h4_resume_icon.JPG
 
 The console window will show output similar to, but not exactly the same
 as, the following ...
@@ -404,41 +234,7 @@ Start it the same way as the hello world project. But give it a
 different name, look for *matrix* among the examples, and choose the
 *OpenMP matrix vector multiplication example* for your system.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:613px;">
-
-|image5|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-Matrix vector multiply Project Setup
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Omp_h5_matvec_setup.JPG
 
 .. rubric:: Build and Execute
    :name: build-and-execute
@@ -503,80 +299,14 @@ again. Here is a good way to do that.
 In the **Debug** window, select cores 0-3, right-click and choose
 **Group Core(s)**.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:562px;">
-
-|image6|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-Group Cores 0-3
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Omp_h6_group_cores.JPG
 
 Now reset the cores in the newly formed group. Select the group and
 click the **CPU Reset** icon near the top right of the **Debug** window.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:232px;">
-
-|image7|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
 CPU Reset icon
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Omp_h7_cpu_reset.JPG
 
 Then reload the program with the menu selection **Run \| Load \| Reload
 Program**. Now you are ready to resume execution as before. Compare with

@@ -67,21 +67,21 @@ structure has the following parameters:
    Fm_ExcludedResource's list. All AIF2 PE and PD channels will be
    disabled if the Fm_ExcludedResource's list is NULL.
 -  ``int32_t haltSGMII`` If set to a non-zero value, will halt the SGMII
-   ethernet switch. |Note|\ **Note:** This will prevent ARM Linux
-   ethernet from working properly.
+   ethernet switch. 
+   **Note:** This will prevent ARM Linux ethernet from working properly.
 -  ``int32_t haltEdma3`` If set to a non-zero value, will halt all EMDA3
    DMA, QDMA, and INT channels except those specified within the
    Fm_ExcludedResource's list. All EDMA3 DMA, QDMA, and INT channels
    will be disabled if the Fm_ExcludedResource's list is NULL.
-   |Note|\ **Note:** Some EDMA3 channels are used by ARM Linux to access
+   **Note:** Some EDMA3 channels are used by ARM Linux to access
    NAND in UBIFS. UBIFS will not work correctly if these channels are
    halted.
 -  ``int32_t haltCpdma`` If set to a non-zero value, will halt all CPDMA
    channels except those specified within the Fm_ExcludedResource's
    list. All CPDMA channels will be disabled if the
-   Fm_ExcludedResource's list is NULL. |Note|\ **Note:** Some CPDMA
-   channels are used by ARM Linux which will exhibit unknown behavior if
-   the relevant CPDMA channels are halted.
+   Fm_ExcludedResource's list is NULL. 
+   **Note:** Some CPDMA channels are used by ARM Linux which will exhibit
+   unknown behavior if the relevant CPDMA channels are halted.
 -  ``Fm_ExcludedResource *excludedResources;`` List of specific system
    IO values that should not be disabled.
 

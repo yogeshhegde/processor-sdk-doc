@@ -557,15 +557,6 @@ If Windows refuses to update the driver, they need to be fully removed.
 -  Repeat for *XDS100 Channel B*
 -  Do the procedure above to reinstall the drivers
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
 .. Image:: ../images/Xds100onWin10-sysdevices.png
 
 .. rubric:: Roadmap

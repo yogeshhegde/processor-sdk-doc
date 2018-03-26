@@ -14,19 +14,12 @@ the SD card:
 -  **app** - Application image
 -  **MLO** - Boot loader image
 
-+-----------------------------------------------------------------------+
-| .. raw:: html                                                         |
-|                                                                       |
-|    <div class="floatleft">                                            |
-|                                                                       |
-.. Image:: ../images/Helpful_tips_image.jpg
-|                                                                       |
-| **Useful Tip**                                                        |
-|                                                                       |
-| If you have the SD card that came in the EVM kit, you can skip the    |
-| following steps to *create* a bootable SD card and simply copy your   |
-| SD card image files directly to the SD card.                          |
-+-----------------------------------------------------------------------+
+
+**Useful Tip**
+ If you have the SD card that came in the EVM kit, you can skip the
+ following steps to *create* a bootable SD card and simply copy your
+ SD card image files directly to the SD card.
+
 
 | 
 
@@ -92,27 +85,40 @@ This application needs to be installed with Administrative privilages.
 -  Insert the SD card reader/writer into the PC.
 -  Launch the disk writer software. In the screenshots below, we are
    using *Win32 Disk Imager*.
+
 .. Image:: ../images/Win32_Disk_Imager_open.png
+
 -  Choose the image file for the SDK that you want to write.
+
 .. Image:: ../images/Win32_disk_imager_select_a_disk_image.png
+
 -  Choose the SD card as the "Device".
 -  Write the image to the SD card by click "Write". You will likely get
    the below confirmation box. This command will overwrite whatever disk
    you point it to, please make sure and choose the correct disk.
+
 .. Image:: ../images/Win32_disk_imager_Confirm_overwrite.png
+
 -  You should see the following status bar as the image is being written
    to the disk
+
 .. Image:: ../images/Win32_Disk_Imager_writing_to_disk.png
+
 -  When the write is complete, you will get the following notification:
+
 .. Image:: ../images/Win32_Disk_Imager_Complete.png
+
 -  You can now close the image writing program by click "Exit".
 
 .. rubric:: Safely eject the SD card from the computer
    :name: safely-eject-the-sd-card-from-the-computer
 
 | Here's an example using Windows 7:
+
 .. Image:: ../images/Win7_eject_disk.png
+
 .. Image:: ../images/Win7_eject_disk_detail.png
+
 .. Image:: ../images/Win7_device_can_be_safely_removed.png
 
 | 
