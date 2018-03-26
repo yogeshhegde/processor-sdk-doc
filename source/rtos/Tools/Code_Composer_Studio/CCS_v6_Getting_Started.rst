@@ -15,8 +15,7 @@ the Eclipse software framework with advanced embedded debug capabilities
 from Texas Instruments resulting in a compelling feature rich
 development environment for embedded developers.
 
-|Note|\ **Note:** This guide is designed for the latest release of
-CCSv6.
+**Note:** This guide is designed for the latest release of CCSv6.
 
 .. rubric:: Obtaining CCS
    :name: obtaining-ccs

@@ -147,11 +147,12 @@ API reference for application:
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-| 1. GPMC Test Application supports write test, by default write test is
-  disabled, user can enable the write test by defining
-  TEST_GPMC_FLASH_WRITE in test/src/GPMC_board.h.
-| 2. In GPMC_Test_icev2AM335x, J5 pin2 & 3 should be shorted on
-  iceV2AM335x board in order to test GPMC NOR flash.
+1. GPMC Test Application supports write test, by default write test is
+   disabled, user can enable the write test by defining
+   TEST_GPMC_FLASH_WRITE in test/src/GPMC_board.h.
+
+2. In GPMC_Test_icev2AM335x, J5 pin2 & 3 should be shorted on
+   iceV2AM335x board in order to test GPMC NOR flash.
 
 3. In GPMC_Test_evmAM437x, J2 pin1 & 2 should NOT be shorted on
 evmAM437x board in order to test GPMC NAND flash.

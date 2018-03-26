@@ -249,7 +249,7 @@ Compilers
 
    <div class="block-note">
 
-|Note|\ **Note:** To get to this page, you can also use the shortcut:
+**Note:** To get to this page, you can also use the shortcut:
 http://www.ti.com/processor_sdk_rtos
 
 .. raw:: html

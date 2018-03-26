@@ -69,6 +69,10 @@ been installed in the ``C:\ti`` directory, including CCS.
    environment, "dir /x" and "dir /-n" displays the short names
    generated for non-8dot3 file and directory names.
 
+.. raw:: html
+
+   </div>
+   
 -  After the build environment has been configured, the entire PDK, or
    individual components, can be rebuilt through the top-level makefile
    in pdk_[soc]_[version]\packages
@@ -253,9 +257,10 @@ how the scripts are used to create CCS project content.
    script. The default settings in the pdkProjectCreate script will have
    the product versions installed with the PDK. The pdkProjectCreate
    script can be modified to use older or newer product versions based
-   on the user's development environment. |Note|\ **Note:** Project
-   compilation and successful execution cannot be guaranteed for
-   products not installed with the PDK.
+   on the user's development environment. 
+  
+**Note:** Project compilation and successful execution cannot be 
+  guaranteed for products not installed with the PDK.
 
 .. raw:: html
 

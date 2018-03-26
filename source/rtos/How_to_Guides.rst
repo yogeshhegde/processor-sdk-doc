@@ -51,7 +51,7 @@ Rebuild drivers from PDK directory
 
 
 
-Flashing_and_Boot
+Flashing and Boot
 ==================
 
 Flash bootable images (C66x, K2H/K2E/K2L only)

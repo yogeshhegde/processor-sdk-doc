@@ -123,7 +123,7 @@ see some *Hello world example* projects. Select the best one for your HW
 platform. In this screen shot, the selection is for C6678. Select
 **Next**.
 
-.. Image:: ../images/Omp_h1_project_setup.JPG
+.. Image:: ../images/Omp_h1_project_setup.jpg
 
 The next dialog shows the RTSC Configuration Settings. If only one
 version of the MCSDK is installed, then nothing more is required. If
@@ -170,7 +170,7 @@ In the **Project Explorer** window, insure the new project is selected.
 
 Select the Debug icon.
 
-.. Image:: ../images/Omp_h3_select_cores.JPG
+.. Image:: ../images/Omp_h2_debug_icon.JPG
 
 Next a dialog will come up which asks which CPU cores to load the
 program on. Select cores 0-3, then click **OK**. It will appear similar

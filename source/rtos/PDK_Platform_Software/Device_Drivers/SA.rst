@@ -77,7 +77,7 @@ API reference for application:
 |                                   | pdf                               |
 +-----------------------------------+-----------------------------------+
 
-|Note|\ **Note:** Although SASS supports 3GPP specific Ciphering and
+**Note:** Although SASS supports 3GPP specific Ciphering and
 Authentication algorithms such as Kasumi F8/F9 and Snow3G F8, those
 algorithms are locked out in this standard SA LLD distribution. In order
 to access 3GPP specific functionalities, one must obtain ETSI licensing
@@ -89,6 +89,7 @@ http://software-dl.ti.com/libs/sa_3gpp_enabler/latest/index_FDS.html
 | 
 | Due to export control restrictions, the SA 3GPP Enabler is a seperate
   download from the rest of the PROCESSOR-SDK.
-
+| 
+| 
 .. raw:: html
 

@@ -131,7 +131,7 @@ API reference for application:
 |                       |   for developers      |                       |
 +-----------------------+-----------------------+-----------------------+
 
-|Note|\ **Note:**
+**Note:**
 
 ::
 
@@ -212,7 +212,7 @@ manual for minimum ratio allowed when using the scalar unit.
 -  Content will be displayed on the LCD panel or HDMI TV connected to
    EVM for test options
 
-|Note|\ **Note:**
+**Note:**
 
 -  Test Input files for Display Sample application will be in
    "<pdk>\drv\vps\docs\test_inputs\DisplayInput.rar"
@@ -285,7 +285,7 @@ evmAM572x) to DPI1 LCD output.
 #. Run the application, Select any of the option.
 #. Captured Content will be displayed on the LCD panel connected to EVM
 
-|Note|\ **Note:** The camera driver support is not added for evmAM572x
+**Note:** The camera driver support is not added for evmAM572x
 boards (GP AM572x EVM) - and hence all the tests related to camera are
 skipped for evmAM572x board.
 

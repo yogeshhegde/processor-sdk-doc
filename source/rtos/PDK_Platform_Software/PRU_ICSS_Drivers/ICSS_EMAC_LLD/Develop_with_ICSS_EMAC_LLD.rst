@@ -436,6 +436,10 @@ which can hold one packet irrespective of packet size.
 **NOTE**
 There are no collision queues in EMAC.
 
+.. raw:: html
+
+   </div>
+
 The figure below is illustrative to remember this
 
 .. rubric:: How QoS Works

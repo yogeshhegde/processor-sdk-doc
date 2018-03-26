@@ -115,8 +115,8 @@ X
 
 | 
 
-Source Code for CCLINK IEF Basic
-================================
+.. rubric:: Source Code for CCLINK IEF Basic
+   :name: source-code-for-cclink-ief-basic
 
 The CCLINK IEF basic source code for Linux can be requested from
 `CLPA <http://am.cc-link.org/en/index.html>`__. It can also be retrieved
@@ -125,8 +125,8 @@ Source <http://git.ti.com/processor-sdk/cclink/trees/master>`__.
 
 | 
 
-Compile CCLINK IEF Basic with Processor SDK Linux
-=================================================
+.. rubric:: Compile CCLINK IEF Basic with Processor SDK Linux
+   :name: compile-cclink-ief-basic-with-processor-sdk-linux
 
 Starting from Processor SDK Linux Releases 4.1.0, the pre-built binaries
 and configuration files for CCLINK IEF Basic will be part of the
@@ -174,8 +174,8 @@ ccief-basic binaries can found from the folder of
 
 | 
 
-Run CCLink IEF Basic Sample Application
-=======================================
+.. rubric:: Run CCLink IEF Basic Sample Application
+   :name: run-cclink-ief-basic-sample-application
 
 The picture below shows the test setup for the CCLINK IEF basic master
 and slave applications running on the supported TI platforms. For both
@@ -195,8 +195,9 @@ set correctly based on the type of application demonstrated:
 | Location of these two jumpers J18 and J19 can be found from
   http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_EVM_Rev2_1_HW_User_Guide#Component_Positions.
 
-Master Sample Application
--------------------------
+
+.. rubric:: Master Sample Application
+   :name: master-sample-application
 
 Before running the master sample application, first obtain the IP
 address of the slave Ethernet port to be tested. Then, modify
@@ -212,8 +213,8 @@ station.
 
 | 
 
-Slave Sample Application
-------------------------
+.. rubric:: Slave Sample Application
+   :name: slave-sample-application
 
 On the slave station, simply run the slave sample application:
 “Slave_sample /usr/share/cclink/SlaveParameter.csv”
@@ -227,8 +228,8 @@ station.
 
 | 
 
-Compliance Testing
-==================
+.. rubric:: Compliance Testing
+   :name: compliance-testing
 
 Every CCLINK IEF Basic application when demonstrated on any platform has
 to pass the conformance testing for various functionalities of IEF

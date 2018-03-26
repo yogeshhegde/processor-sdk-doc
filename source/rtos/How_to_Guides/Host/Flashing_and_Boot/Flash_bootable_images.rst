@@ -181,6 +181,10 @@ the options to select emulator and endianness:
 -  Also by default, Keystone 2 EVMs are expected to only use the XDS2xx
    Emulator. You do not have to supply the emulator in the parameter for
    K2H/K2E/K2L.
+   
+.. raw:: html
+
+   </div>
 
 Some examples are:
 

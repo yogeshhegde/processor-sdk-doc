@@ -301,8 +301,6 @@ Texas Instruments WikiDisclaimersTerms of UseCreative Commons
 Attribution-ShareAlike Powered by MediaWiki
 
 | 
-| Moved to
-  http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCASP
 
 .. raw:: html
 

@@ -206,42 +206,6 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 
 | 
 
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
-| 
-
 .. rubric:: Additional References
    :name: additional-references
 
@@ -262,12 +226,6 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 | 
 
 | 
-
-| 
-
-Moved to
-
-http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MMCSD
 
 .. raw:: html
 

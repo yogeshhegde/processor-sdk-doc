@@ -213,9 +213,6 @@ steps to follow:
 
    </div>
 
-.
-| 
-
 .. rubric:: What are the typical flows for a new user to setup the
    Processor SDK RTOS development environment?
    :name: what-are-the-typical-flows-for-a-new-user-to-setup-the-processor-sdk-rtos-development-environment
