@@ -46,3 +46,8 @@ Barcode
 **********************************
 .. include:: Examples_and_Demos/Barcode.rst
 
+**********************************
+ROS and Radar
+**********************************
+.. include:: Examples_and_Demos/ROS_Radar.rst
+
