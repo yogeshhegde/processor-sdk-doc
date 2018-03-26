@@ -9,8 +9,7 @@ SPHINXBUILD   = sphinx-build
 PAPER         =
 OS            = linux
 VERSION       = $(shell cat version.txt)
-BUILDDIR      = build/processor-sdk-doc/esd/${VERSION}
-
+BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
