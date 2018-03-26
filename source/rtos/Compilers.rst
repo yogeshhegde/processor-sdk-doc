@@ -5,7 +5,7 @@ Compilers
 *********
 TI C6000
 *********
-- ` TI C6000 Compilers <http://www.ti.com/lit/ug/sprui04b/sprui04b.pdf>`__
+- `TI C6000 Compilers <http://www.ti.com/lit/ug/sprui04b/sprui04b.pdf>`__
 
 
 *******

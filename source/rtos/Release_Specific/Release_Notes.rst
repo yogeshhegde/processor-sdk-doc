@@ -1,5 +1,7 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes
+.. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_Release_Notes 
 
+| .. rubric:: Contents                                                  |
+|    :name: contents                                                    |
 .. rubric::  Overview
    :name: overview
 
@@ -649,8 +651,8 @@ Updated
 -  CCS 7.4.0.195
 -  PDK for all platforms
 
-.. rubric::  Fixed Issues 
-   :name: fixed-issues
+ Fixed Issues 
+==============
 
 +-----------------------+-----------------------+-----------------------+
 | Record ID             | Platform              | Summary               |
@@ -803,12 +805,11 @@ Updated
 |                       |                       | platform              |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric::  Supported Platforms
-   :name: supported-platforms
+ Supported Platforms 
+=====================
 
-.. rubric::  Devices
-   :name: devices
-
+ Devices 
+---------
 
 The following table lists all supported devices for a given installer.
 
@@ -2805,3 +2806,4 @@ For further information or to report any problems, contact TI E2E:
 | 
 
 .. raw:: html
+

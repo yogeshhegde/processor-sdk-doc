@@ -5,7 +5,7 @@ Foundational Components
 ***************
 TI-RTOS Kernel
 ***************
-- ` SYSBIOS <http://processors.wiki.ti.com/index.php?title=Category:SYSBIOS>`__
+- `SYSBIOS <http://processors.wiki.ti.com/index.php?title=Category:SYSBIOS>`__
 
 
 *******
@@ -32,12 +32,6 @@ Boot
 .. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Boot.rst
 
 
-***************
-IPC
-***************
-.. include:: IPC.rst
-
-
 *****
 MPM
 *****
@@ -51,11 +45,6 @@ OpenMP
 
 
 ***************
-Network
-***************
-.. include:: NDK.rst
-
-***************
 PKTLIB
 ***************
 .. include:: PDK_Platform_Software/Device_Drivers/PKTLIB.rst
@@ -65,10 +54,4 @@ PKTLIB
 NWAL
 ***************
 .. include:: PDK_Platform_Software/Device_Drivers/NWAL.rst
-
-
-*******
-Tools
-*******
-.. include:: Tools.rst
 

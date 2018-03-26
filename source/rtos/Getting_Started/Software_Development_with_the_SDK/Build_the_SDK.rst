@@ -76,6 +76,10 @@ installed RTOS SDK.
 -  Script also sets CCS installation path using TOOLS_INSTALL_PATH
    variable so set the variable if you are not using default CCS install
    path
+   
+.. raw:: html
+
+   </div>
 
 ::
 

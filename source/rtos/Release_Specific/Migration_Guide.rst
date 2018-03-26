@@ -91,8 +91,8 @@ Example:
    2.0.1 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Migration_Guide&oldid=219677>`__
 -  `Processor-SDK RTOS
    2.0.0 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Migration_Guide&oldid=219677>`__
--  **`MCSDK to Processor SDK
-   Migration <http://processors.wiki.ti.com/index.php?title=MCSDK_to_Processor_SDK_Migration>`__**
+-  `MCSDK to Processor SDK
+   Migration <http://processors.wiki.ti.com/index.php?title=MCSDK_to_Processor_SDK_Migration>`__
 
 | 
 

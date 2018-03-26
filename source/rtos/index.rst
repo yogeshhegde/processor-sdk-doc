@@ -40,14 +40,12 @@ build information, and examples to use as a template to start development.
    :hidden:
    :numbered:
 
-   Overview
-   Release_Specific
+   Overview   
    Board_EVM_Abstration
    Foundational_Components
    DSP_Software
    Device_Drivers
    Compilers
-   How_to_Guides
    FAQ
 
 
@@ -59,7 +57,7 @@ build information, and examples to use as a template to start development.
 +========================================================================+===============================================================================+
 | `Getting Started Guide`_  <-- **Start Here**                           | `Release Notes`_                                                              | 
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `Examples and Demonstrations`_                                         | `RTOS Software Stack`_                                                        |
+|  Examples and Demonstrations                                           | `RTOS Software Stack`_                                                        |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | `Directory Structure Overview`_                                        | `Building the SDK`_                                                           |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
@@ -71,4 +69,3 @@ build information, and examples to use as a template to start development.
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | `Supported Platforms and Versions`_                                                                                                                    |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-
