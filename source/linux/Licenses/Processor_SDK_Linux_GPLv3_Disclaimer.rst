@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_GPLv3_Disclaimer
 
+.. _PLSDK-GPLv3-Disclaimer-label:
+
 ************************************
 GPLv3 Disclaimer
 ************************************

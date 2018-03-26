@@ -4,8 +4,8 @@
 Release Notes
 ************************************
 
-.. rubric:: Overview
-   :name: overview
+Overview
+========
 
 The **Processor Software Development Kit (Processor-SDK) for Linux**
 provides a fundamental software platform for development, deployment and
@@ -20,30 +20,23 @@ execution of Linux based applications and includes the following:
 -  WLAN support (Wilink 8)
 -  Code Composer Studio v7
 
-| 
+Licensing
+=========
 
-.. rubric:: Licensing
-   :name: licensing
-
-| Please refer to the software manifest, which outlines the licensing
+  Please refer to the software manifest, which outlines the licensing
   status for all packages included in this release. The manifest can be
   found on the SDK download page. The manifest can be found on the SDK
   download page or in the installed directory as indicated below. In
-  addition, see
-  `Processor\_SDK\_Linux\_GPLv3\_Disclaimer </index.php/Processor_SDK_Linux_GPLv3_Disclaimer>`__
+  addition, see :ref:`PLSDK-GPLv3-Disclaimer-label`
 
 .. rubric:: Documentation
    :name: documentation
 
--  `**Software Developer
-   Guide** </index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__:
-   Provides information on features, functions, delivery package and,
+-  :ref:`PLSDK-SDG-label`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
    infrastructure to allow developers to start creating applications.
--  `**Getting Started
-   Guide** </index.php/Processor_SDK_Linux_Getting_Started_Guide>`__:
-   provides information on getting the software and running
+-  :ref:`PLSDK-GSG-label`: Provides information on getting the software and running
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software
    included in the SDK release. This document is in the release at
@@ -52,41 +45,25 @@ execution of Linux based applications and includes the following:
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-| 
+Release 04.03.00
+================
 
-.. rubric:: Release 04.02.00
-   :name: release-04.02.00
-
-Released Dec 2017
+Released Mar 2018
 
 .. rubric:: What's New
    :name: whats-new
 
--  New Platforms
+-  New Demos
+    -  Qt5-based Thermostat demo on AM335x/AM437x/AM57x
+    -  Demonstrate 4K Video Encode with IVAHD on AM57x
+    -  Khronos OpenVX based demo example with C66x offload via OpenCL
+    -  ROS Turtlebot based demo using AM335x/AM437x/AM57x and Processor Linux SDK
 
-   -  AM574x: Platform Support with ECC
-   -  K2G: Support for 1Ghz FC SOC
-
--  HSR/PRP on AM57x
-
-   -  Ordinary Clock support for SAN on GMAC and PRU-ICSS, with 1 PPS
-      output
-   -  Support up to 256 nodes connected in HSR/PRP ring
-   -  Address protocol compliance issues discovered with NetJury IEC
-      62439-3 HSR/PRP testsuite
-
--  AM57xx: Enable non-IVAHD "IPU" M4s for general purpose usage from
-   Linux using IPC. For more details, see
-   `here <http://processors.wiki.ti.com/index.php/Linux_IPC_on_AM57xx#Getting_Started_with_IPC_Linux_Examples>`__
--  AM57xx Virtualization: Demonstrate EtherCAT Protocol running in a
-   Jailhouse inmate cell. For more details, see
-   `here <http://processors.wiki.ti.com/index.php/Processor_SDK_Jailhouse_Hypervisor>`__
--  Add meta-ros (Robot Operating System) support layer to Processor SDK
-   OE config – to enable easily inclusion of ROS packages into
-   filesystem.
--  K2HK: Enable IPSec with crypto modes (aes-gcm, aes-gmac, hmac-sha2)
-
-| 
+-  New Features
+    -  PTP: Support Boundary Clock between 3 ports (1xCPSW and 2xICSS) on AM571x
+    -  PTP: Configurable latency for 1 PPS Output, to compensate for the propagation delay of 1 PPS signal to the oscilloscope
+    -  HSR/PRP on AM57x: Support Multicast Filtering
+    -  HSR/PRP on AM57x: Support VLAN Filtering
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -94,7 +71,7 @@ Released Dec 2017
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.9.59+ (2017 LTS)         |
+| Linux Kernel             | 4.9.69+ (2017 LTS)         |
 +--------------------------+----------------------------+
 | U-Boot                   | 2017.01                    |
 +--------------------------+----------------------------+
@@ -113,6 +90,10 @@ Released Dec 2017
 | GStreamer                | 1.8.3                      |
 +--------------------------+----------------------------+
 | Chromium                 | v53                        |
++--------------------------+----------------------------+
+| TI PRU Compiler          | 2.2.1                      |
++--------------------------+----------------------------+
+| TI C66x CGT Compiler     | 8.2.2                      |
 +--------------------------+----------------------------+
 
 .. rubric:: Kernel and U-boot Details
@@ -140,9 +121,7 @@ Kernel Details:
 .. rubric:: Supported Platforms
    :name: supported-platforms
 
-| See
-  `Processor\_SDK\_Supported\_Platforms\_and\_Versions </index.php/Processor_SDK_Supported_Platforms_and_Versions>`__
-  for a list of supported platforms and links to more information.
+See :ref:`SDK-Supported-Platforms` for a list of supported platforms and links to more information.
 
 .. rubric:: Issues Tracker
    :name: issues-tracker
