@@ -61,11 +61,25 @@ build information, and examples to use as a template to start development.
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | `Directory Structure Overview`_                                        | `Building the SDK`_                                                           |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `Training`_                                                            | `Migration Guide`_                                                            |
+| `Training <https://training.ti.com/processor-sdk-training-series>`__   | `Migration Guide`_                                                            |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `Technical Support`_                                                   | `How To Guides`_                                                              |
+| `Technical Support`_                                                   | How To Guides                                                                 |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | `Related Software`_                                                    | `Frequently Asked Questions (FAQ)`__                                          |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | `Supported Platforms and Versions`_                                                                                                                    |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+
+
+.. _Getting Started Guide: Overview.html#getting-started-guide
+.. _Release Notes: Release_Specific.html#release-notes
+.. _RTOS Software Stack: Overview.html#software-stack
+.. _Directory Structure Overview: Overview.html#directory-structure-overview
+.. _Building the SDK: Release_Specific.html#building-the-sdk
+.. _Migration Guide: Release_Specific.html#migration-guide
+.. _Technical Support: Overview.html#technical-support
+.. _Related Software: Overview.html#related-software
+.. _Frequently Asked Questions (FAQ): FAQ.html#frequently-asked-questions
+.. _Supported Platforms and Versions: Release_Specific.html#supported-platforms-and-versions
+
+

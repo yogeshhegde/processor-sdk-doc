@@ -229,7 +229,7 @@ ignored when called in a C66x or K2H/K2E/K2L board library.
 
          <div class="block-note">
 
-      |Note|\ **Note:** It is recommended to use the latest available
+      **Note:** It is recommended to use the latest available
       PinMux Tool. For PinMux Tool prior to version v4.0.1482, you will
       have to edit **boardPadDelayTune.h** to select appropriate IO
       timing modes by uncommenting the build macros.
