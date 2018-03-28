@@ -1,6 +1,7 @@
+.. _PLSDK-SDG-label:
 
-Processor SDK Linux
-=================================================================
+Processor SDK Linux Software Developer's Guide
+==============================================
 
 .. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide
    :name: welcome-to-the-processor-sdk-linux-software-developers-guide

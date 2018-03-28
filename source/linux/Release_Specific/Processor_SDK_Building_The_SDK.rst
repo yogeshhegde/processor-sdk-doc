@@ -4,9 +4,8 @@
 Building the SDK
 ************************************
 
-.. rubric:: Introduction
-   :name: introduction
-
+Introduction
+============
 This page provides the steps to build the Processor SDK and individual
 components from source. The Processor SDK build is based on the `Arago
 Project <http://arago-project.org/wiki/index.php/Main_Page>`__ which
@@ -19,16 +18,14 @@ SDK along with a reference of Processor SDK specific configurations,
 build targets, and target devices. Also, tips and suggestions are
 provided along with links for more in-depth information.
 
-| 
+Quick Start
+===========
 
-.. rubric:: Quick Start
-   :name: quick-start
-
-.. rubric:: Prerequisites (One-time setup)
-   :name: prerequisites-one-time-setup
+Prerequisites (One-time setup)
+-----------------------------
 
 .. rubric:: Host Setup - Ubuntu (Recommended)
-   :name: host-setup-ubuntu
+   :name: Host Setup - ubuntu (Recommended)
 
 The recommended Linux distribution is Ubuntu 14.04 or Ubuntu 16.04.
 
@@ -52,8 +49,8 @@ reconfigure to use bash by running the following command:
 Be sure to select "No" when you are asked to use dash as the default
 system shell.
 
-.. rubric:: Host Setup - CentOS (when applicable)
-   :name: host-setup-centos
+.. rubric:: Host Setup - CentOS 
+   :name: Host Setup - CentOS 
 
 The build also requires that ``bash`` is configured as the default
 system shell. The following steps will configure Ubuntu to use ``bash``
@@ -62,7 +59,6 @@ instead of the default ``dash``.
 ::
 
     $ sudo dpkg-reconfigure dash
-
     (Select "no" when prompted)
 
 The following host packages are required for CentOS. Install the
@@ -72,19 +68,18 @@ packages using the command below:
 
     $ yum install gawk make wget tar bzip2 gzip python unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel texinfo chrpath socat SDL-devel xterm doxygen glibc-devel.i686 glibc-devel libstdc++-devel.i686 libgcc.i686 libstdc++-devel dos2unix 
 
-Perl’s Thread::Queue module needs to be installed also. Download and
-install perl-Thread-Queue-3.02-2.el7.noarch.rpm from
+Perl’s Thread::Queue module needs to be installed also. Download and install perl-Thread-Queue-3.02-2.el7.noarch.rpm from
 https://www.rpmfind.net/linux/rpm2html/search.php?query=perl-Thread-Queue.
 
 .. rubric:: Proxy Setup
-   :name: proxy-setup
+   :name: Proxy Setup
 
 If working behind a proxy, please see `Working Behind a Network
 Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
 
 
-.. rubric:: Cross-compile Toolchain
-   :name: cross-compile-toolchain
+.. rubric:: Cross-Compile Toolchain
+   :name: Cross-Compile Toolchain
 
 Run the following commands to install the Linaro Toolchain.
 
@@ -94,8 +89,8 @@ Run the following commands to install the Linaro Toolchain.
     $ tar -Jxvf gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf.tar.xz -C $HOME
 
 
-.. rubric:: Build Steps
-   :name: build-steps
+Build Steps
+-----------
 
 ::
 
@@ -109,7 +104,6 @@ Run the following commands to install the Linaro Toolchain.
 
 
 .. raw:: html
-
    <div
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
@@ -120,7 +114,6 @@ past releases. Please follow this augmented procedure to configure the
 build to obtain these packages from the TI mirror.
 
 .. raw:: html
-
    </div>
 
 ::
@@ -151,15 +144,14 @@ build to obtain these packages from the TI mirror.
     $ MACHINE=am57xx-evm bitbake arago-core-tisdk-image
 
 
-.. rubric:: Processor SDK Build Reference
-   :name: processor-sdk-build-reference
+Processor SDK Build Reference
+=============================
 
 The following sections provide information for configuration, build
 options, and supported platforms of the Processor SDK.
 
-.. rubric:: Layer Configuration
-   :name: layer-configuration
-
+Layer Configuration
+-------------------
 Processor SDK uses the following oe-layersetup configs to configure the
 meta layers. These are the <config> used in the command:
 
@@ -175,11 +167,11 @@ directory of the oe-layersetup git repo.
 | processor-sdk-04.02.00.09-config.txt   | Processor SDK 4.2.0.9 Release   | am335x-evm, am437x-evm, am57xx-evm, k2hk-evm, k2e-evm, k2l-evm, k2g-evm, omapl138-lcdk   |
 +----------------------------------------+---------------------------------+------------------------------------------------------------------------------------------+
 
-.. rubric:: Build Options
-   :name: build-options
+Build Options
+-------------
 
 .. rubric:: Images
-   :name: images
+   :name: Images
 
 In addition to individual components packages, the following table
 provides a list of build targets supported. These are the <target> used
@@ -203,14 +195,12 @@ The "Build Output" is given relative to the
 | 
 
 .. rubric:: Platforms
-   :name: platforms
+   :name: Platforms
 
 The following platforms are supported in Processor SDK. These are the
 <machine> in the command:
 
 ``MACHINE=<machine> bitbake <target>``
-
-| 
 
 +--------------+---------------------------------------------------------------------------------------+
 | **MACHINE**  | **Supported EVMs**                                                                    |
@@ -233,7 +223,7 @@ The following platforms are supported in Processor SDK. These are the
 +--------------+---------------------------------------------------------------------------------------+
 
 .. rubric:: RT Support
-   :name: rt-support
+   :name: RT Support
 
 Processor SDK Linux supports RT Linux Kernel for the following
 machines/EVMs. Use the command below to make the RT builds:
@@ -259,11 +249,8 @@ machines/EVMs. Use the command below to make the RT builds:
 | k2g-evm      | K2G EVM                                                                               |
 +--------------+---------------------------------------------------------------------------------------+
 
-| 
-
-.. rubric:: Using the snapshot of the source packages in Processor SDK
-   release
-   :name: using-the-snapshot-of-the-source-packages-in-processor-sdk-release
+Using the snapshot of the source packages in Processor SDK release
+------------------------------------------------------------------
 
 Using the snapshot of the arago source packages can avoid fetch errors
 during the build when external URLs become unavailable. To use the
@@ -293,11 +280,12 @@ are shown in red below:
     $ MACHINE=<target-board> bitbake arago-core-tisdk-image
 
 
-.. rubric:: Recipes
-   :name: recipes
+Recipes
+-------
+
 
 .. rubric:: Recipe Basics
-   :name: recipe-basics
+   :name: Recipe Basics
 
 One or more recipes can be specified for the <target> for greater
 granularity of recipe development and debug. Specifying a recipe name,
@@ -319,7 +307,7 @@ folder, and IPKs under deploy-ipks folder.
 
 
 .. rubric:: Forced Re-compilation
-   :name: forced-re-compilation
+   :name: Forced Re-compilation
 
 When needed, source code under the work directory (e.g.,
 *arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl*/git) can
@@ -354,8 +342,8 @@ recipe's output from the dependency tree used by other recipe's during
 compilation.
 
 
-.. rubric:: Common Variations
-   :name: common-variations
+Common Variations
+-----------------
 
 .. rubric:: Rebuilding without SGX
    :name: rebuilding-without-sgx
@@ -418,8 +406,8 @@ following shell file is provided to stop and start the Xserver.
 
     /etc/init.d/xorg <start|stop>
 
-.. rubric:: See also
-   :name: see-also
+See also
+========
 
 General information for building TI SDKs using the Arago Project can be
 found at `Arago Project: Setting Up The Build

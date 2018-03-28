@@ -10,10 +10,18 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
+Processor SDK 04.xx Releases
+============================
 
-.. rubric:: Processor SDK Linux 04.02.00
-   :name: processor-sdk-linux-04.02.00
+Processor SDK 04.03
+----------------------
+-  Added am572x-idk-pps.dts and am571x-idk-pps.dts which are extensions of the 
+   am572x-idk.dts abd an571x-idk.dts respectively. The new DTS enables the PPS 
+   IO pins (sync/latch) and PTP BC bindings at the modified AM572x-idk and 
+   AM571x-idks, where the USB/LCD Display are disabled
 
+Processor SDK 04.02
+----------------------
 .. rubric:: Linux
    :name: linux
 
@@ -26,8 +34,8 @@ of the Processor SDK for Linux.
 
 |
 
-.. rubric:: Processor SDK Linux 04.01.00
-   :name: processor-sdk-linux-04.01.00
+Processor SDK 04.01
+----------------------
 
 .. rubric:: IPC
    :name: ipc
@@ -53,8 +61,8 @@ of the Processor SDK for Linux.
 
 | 
 
-.. rubric:: Processor SDK Linux 04.00.00
-   :name: processor-sdk-linux-04.00.00
+Processor SDK 04.00
+----------------------
 
 -  This is the first release for 2017 LTS (Kernel: 4.9, U-boot: 2017.01,
    gcc: 6.2.1 and Yocto: 2.2 (morty)), with following major changes.
@@ -161,8 +169,11 @@ The following features are not ported to 2017 LTS
 
 | 
 
-.. rubric:: Processor SDK Linux 03.03.00
-   :name: processor-sdk-linux-03.03.00
+Processor SDK 03.xx Releases
+============================
+
+Processor SDK 03.03
+-------------------
 
 -  HDMI-connected monitor no longer takes precedence over built-in LCD
    as a default graphics display for e.g. Matrix
@@ -172,8 +183,8 @@ The following features are not ported to 2017 LTS
 
 | 
 
-.. rubric:: Processor SDK Linux 03.02.00
-   :name: processor-sdk-linux-03.02.00
+Processor SDK 03.02
+-------------------
 
 -  The QT QPA eglfs\_kms, which supports multiple screens, has been
    enabled and used as the default eglfs platform plugin. For more
@@ -197,8 +208,8 @@ The following features are not ported to 2017 LTS
 
 | 
 
-.. rubric:: Processor SDK Linux 03.01.00
-   :name: processor-sdk-linux-03.01.00
+Processor SDK 03.01
+-------------------
 
 -  defconfig\_builder is now used to generate working kernel defconfigs
 -  In K2 U-Boot, added multi slave support.
@@ -215,8 +226,8 @@ The following features are not ported to 2017 LTS
 
 | 
 
-.. rubric:: Processor SDK Linux 03.00.00
-   :name: processor-sdk-linux-03.00.00
+Processor SDK 03.00
+-------------------
 
 -  First 2016 LTS Release (Linux Kernel: 4.4, U-Boot: 2016.05, GCC 5.3,
    Yocto 2.1)
@@ -239,9 +250,11 @@ The following features are not ported to 2017 LTS
 
 | 
 
-.. rubric:: Processor SDK Linux 02.00.02
-   :name: processor-sdk-linux-02.00.02
+Processor SDK 02.xx Releases
+============================
 
+Processor SDK 02.00.02
+----------------------
 -  This release adds RT Linux support on AM335x, K2H/K, K2E, K2L
 -  This release supports AM572x IDK and K2G EVM
 -  OpenCV now uses OpenCL under the hood, to offload compute tasks to
@@ -258,9 +271,8 @@ The following features are not ported to 2017 LTS
 
 | 
 
-.. rubric:: Processor SDK Linux 02.00.01
-   :name: processor-sdk-linux-02.00.01
-
+Processor SDK 02.00.01
+----------------------
 -  This release adds support for devices from the KeyStone architecture:
    K2E, K2H/K, and K2L
 -  This release also supports RT Linux is supported on AM4 and AM5
@@ -278,9 +290,8 @@ The following features are not ported to 2017 LTS
 
 | 
 
-.. rubric:: Processor SDK Linux 02.00.00
-   :name: processor-sdk-linux-02.00.00
-
+Processor SDK 02.00.00
+----------------------
 -  This release adds support for AM57x
 -  First 2015 LTS (Kernel 4.1, U-boot 2015.07) Release
 -  Starting this release, Processor SDK Installer is 64-bit, and
