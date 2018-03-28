@@ -10,6 +10,9 @@ Foundational Components
 
 .. include:: Foundational_Components/Tools.rst
 
+.. include:: Foundational_Components/IPC.rst
+
+.. include:: Foundational_Components/CMEM.rst
 
 **********************************
 Graphics and Display
@@ -19,7 +22,6 @@ Graphics and Display
 SGX Debug Info
 =================================
 .. include:: Foundational_Components/Graphics/SGX_Debug_Info.rst
-
 
 **********************************
 Multimedia
@@ -40,3 +42,5 @@ OpenCV
 OpenVX
 **********************************
 .. include:: Foundational_Components/OpenVX.rst
+
+.. include:: Foundational_Components/Virtualization.rst
