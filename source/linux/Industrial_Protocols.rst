@@ -12,22 +12,26 @@ Dual EMAC
 HSR_PRP
 **********************************
 
-Overview and Firmware
+Protocol Overview
 =================================
-.. include:: Industrial_Protocols/HSR_PRP/Overview_and_Firmware.rst
+.. include:: Industrial_Protocols/HSR_PRP/Protocol_Overview.rst
 
-HSR PRP for Linux
+ICSS Firmware
+=================================
+.. include:: Industrial_Protocols/HSR_PRP/Firmware.rst
+
+Linux Software
 =================================
 .. include:: Industrial_Protocols/HSR_PRP/HSR_PRP_for_Linux.rst
 
+*********************************
 PTP
-=================================
-.. include:: Industrial_Protocols/HSR_PRP/PTP.rst
-
+*********************************
+.. include:: Industrial_Protocols/PTP/PTP.rst
 
 PTP Boundary Clock
 =================================
-.. include:: Industrial_Protocols/HSR_PRP/PTP_Boundary_Clock.rst
+.. include:: Industrial_Protocols/PTP/PTP_Boundary_Clock.rst
 
 
 **********************************

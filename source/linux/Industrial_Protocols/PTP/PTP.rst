@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_LINUX_PTP
-.. rubric:: Overview
-   :name: overview
-
+   
+Overview
+--------
 The Precision Time Protocol (PTP), defined in IEEE 1588, is a protocol
 used to synchronize clocks throughout a network. Many applications in
 Industrial automation, Grid Infrastructure, Motion Control, AVB, and
@@ -15,9 +15,8 @@ following sections provide details about the Software Architecture,
 Supported platforms, test setup and details about the support for
 Ordinary Clock (OC), Boundary Clock (BC) And Transparent Clock (TC)
 
-.. rubric:: Software Architecture
-   :name: software-architecture
-
+Software Architecture
+----------------------
 The picture below shows the Linux software stack of HSR/PRP/PTP in
 Processor SDK.
 
@@ -41,9 +40,8 @@ Processor SDK.
 -  linuxptp (ptp4l, phc2sys)
 -  Filesystem (/dev/ppsX, /dev/ptpX)
 
-.. rubric:: Linux PTP Overview
-   :name: linux-ptp-overview
-
+Linux PTP Overview
+-------------------
 The Linux PTP Project is a software implementation of the PTP according
 to the IEEE 1588 Standard. This software is licensed under GNU GPL
 License, as described in the Processor SDK Software Manifest. For more
@@ -75,8 +73,8 @@ as follows:
 TI has forked LinuxPTP to add support for Sitara family of devices, and
 the repo is hosted here: http://git.ti.com/processor-sdk/linuxptp
 
-.. rubric:: Hardware Overview
-   :name: hardware-overview
+Hardware Overview
+------------------
 
 TI’s Sitara devices have support for GMAC and PRU-ICSS ports, as shown
 in the table below.
@@ -91,18 +89,16 @@ in the table below.
 | AM574x                   | 1                        | 2(at 100Mbps)            |
 +--------------------------+--------------------------+--------------------------+
 
-.. rubric:: GMAC
-   :name: gmac
-
+GMAC
+^^^^
 GMAC interface can be configured to run at either 100 Mbps or 1 Gbps.
 CPTS hardware block helps with timestamping of packets. Refer to `CPSW
 Common Platform Time Sync(CPTS)
 module <http://processors.wiki.ti.com/index.php/Linux_Core_CPSW_User%27s_Guide#Common_Platform_Time_Sync_.28CPTS.29_module>`__
 for details.
 
-.. rubric:: PRU-ICSS
-   :name: pru-icss
-
+PRU-ICSS
+^^^^^^^^
 The processing load is shared between firmware (PRU) and Host (ARM) with
 the firmware doing most of the time critical activities. The IEP
 hardware block in the PRU-ICSS sub-system is responsible for
@@ -110,8 +106,8 @@ timestamping of packets. Memory map for the firmware interface can be
 found `ICSS PTP Developer Guide Memory
 Map <http://processors.wiki.ti.com/index.php/ICSS_PTP_1588_Developer_Guide#Memory_Map>`__
 
-.. rubric:: PTP Ordinary Clock
-   :name: ptp-ordinary-clock
+PTP Ordinary Clock
+------------------
 
 PTP ordinary clock (OC) is supported on both the CPSW GMAC ports and the
 PRU-ICSS ports.
@@ -495,8 +491,8 @@ are recommended for now.
 +--------------------------+--------------------------+--------------------------+
 
 
-.. rubric:: 1 PPS
-   :name: pps
+Generating 1 PPS
+-----------------
 
 The PPS (Pulse Per Second) or 1PPS signal is an electrical signal that
 has a width of less than one second and a sharply rising or abruptly
@@ -567,8 +563,8 @@ respectively:
     echo 1 > /sys/devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0/pps_enable
     echo 0 > /sys/devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0/pps_enable
 
-.. rubric:: Test Setup
-   :name: test-setup
+Test Setup
+----------
 
 .. rubric:: Supported Platforms
    :name: supported-platforms
@@ -707,9 +703,6 @@ signal between master and slave OC clock.
 
 The following features are not yet supported as of Processor SDK 4.2
 release, but will be added in future
-
-.. rubric:: Boundary Clock
-   :name: boundary-clock
 
 .. rubric:: Redundancy (HSR/PRP) Support in OC/BC
    :name: redundancy-hsrprp-support-in-ocbc

@@ -1,73 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_HSR_PRP
-.. rubric:: Overview
-   :name: overview
-
-HSR stands for High Availability Seamless Redundancy. This is a protocol
-used to support redundant networks needed for industrial applications
-such as factory automation, substation automation etc. The standard is
-defined in IEC 62439-3 clause 5. HSR Ethernet frames are not compatible
-with standard Ethernet frames. HSR frames are identified uniquely by the
-HSR tag. So only HSR frames are possible in the network which is not
-identifiable by a standard Ethernet device. Factory or field devices are
-connected to a Double Attached Node HSR (DANH). Typically these nodes
-are connected in a Ring topology and only DANH compliant nodes can be
-connected to the HSR network. Other standard Ethernet devices (Singly
-Attached Nodes, SANs) needs to be connected through a Redundancy Box
-(RedBox) to work with HSR networks. HSR tag is used to manage redundancy
-in HSR network.
-
-A DANH node has two ports operated in parallel. A source DANH prefixes a
-frame passed from its upper layers with an HSR tag to identify frame
-duplicates and sends the frame over each port.
-
-A destination DANH receives, in the fault-free state, two identical
-frames (one from each port) within a certain interval. It removes the
-HSR tag of the first frame before passing it to its upper layers and
-discards any duplicate. The nodes support the IEEE 802.1D bridge
-functionality and forward frames from one port to the other, except if
-they already sent the same frame in that same direction. In particular,
-the node will not forward a frame that it injected into the ring. A
-destination node of a unicast frame does not forward a frame for which
-it is the only destination, except for testing. Frames circulating in
-the ring carry the HSR tag inserted by the source, which contains a
-sequence number. The doublet {source MAC address, sequence number}
-uniquely identifies copies of the same frame.
-
-Please refer to IEC 62439-3 standard for the structure of a DANH node.
-
-PRP stands for Parallel Redundancy Protocol which is another redundancy
-protocol defined by IEC 62439-3 clause 4. Standard Ethernet devices such
-as bridges and switches can be connected (SANs) to a PRP network. The
-PRP frames uses a trailer called RCT (Redundancy Control Trailer) which
-is treated like a pad by standard network devices. A Double Attached
-Node PRP (DANP) appends a RCT trailer to the frame to manage redundancy.
-
-A DANP node has two ports that operate in parallel and that are attached
-to the same upper layers of the communication stack through the Link
-Redundancy Entity (LRE). For more details refer to IEC 62439-3 standard
-documentation. For the basic communication, the LRE presents toward its
-upper layers the same interface as a non-redundant network adapter, so
-the upper layers are unaware of redundancy. The LRE has two tasks:
-handling of duplicates and management of redundancy. When receiving a
-frame from the node’s upper layers, the LRE appends a Redundancy Check
-Trailer (RCT) containing a sequence number to the frame and sends the
-frame through both ports at nearly the same time. The two frames are
-nearly identical except for the LAN identifier (and the checksum). The
-two frames transit through the two LANs with different delays, ideally
-they arrive at nearly the same time at the destination node. When
-receiving frames from the network, the LRE forwards the first received
-frame of a pair to its node’s upper layers and discards the duplicate
-frame (if it arrives). It removes the RCT if required.
-
-.. rubric:: ICSS PRU firmware for HSR/PRP/PTP
-   :name: icss-pru-firmware-for-hsrprpptp
 
 A common firmware is used across TI RTOS and Linux implementations of
 HSR/PRP. This section describes the firmware details.
 
-.. rubric:: Duplicate algorithm and table
-   :name: duplicate-algorithm-and-table
-
+Duplicate algorithm and table
+-----------------------------
 Handling duplicate frames is one of the main tasks in HSR and PRP. The
 LRE must not provide the duplicate of a frame to its upper layer in
 order to offload the processor. The algorithm for discarding duplicates
@@ -104,8 +41,8 @@ in the table.
 A linear lookup process is too time consuming; thus Hash algorithms are
 used to decrease the search time.
 
-.. rubric:: Port to Host Duplicate Table
-   :name: port-to-host-duplicate-table
+Port to Host Duplicate Table
+----------------------------
 
 It is used to prevent sending duplicate frames to the upper layers. This
 table is common for both PRUs. Resource sharing implies that collision
@@ -113,8 +50,8 @@ table is common for both PRUs. Resource sharing implies that collision
 common to both PRUs, the host duplicate rejection must be done after the
 EOF is detected in order to avoid rejecting legitimate frames.
 
-.. rubric:: Port to Port Duplicate Table
-   :name: port-to-port-duplicate-table
+Port to Port Duplicate Table
+----------------------------
 
 A PRU forwards the frames received from one HSR port to the other HSR
 port, unless the frame was sent already. Each PRU has its own port
@@ -128,8 +65,8 @@ the reception process. An insertion in the table is still made only
 after the EOF is detected, but the operation is much faster since the
 result of the search operation can used.
 
-.. rubric:: Node Table
-   :name: node-table
+Node Table
+-----------
 
 The node table is a central element of the HSR/PRP mechanism although
 the standard declares node tables optional. This firmware implements
@@ -173,8 +110,8 @@ This assumption cannot be made for PRP since all frames can create an
 entry in the node table. The design is therefore optimized according to
 this assumption.
 
-.. rubric:: Frame duplication from the host
-   :name: frame-duplication-from-the-host
+Frame duplication from the host
+-------------------------------
 
 Frames sent by the host must be duplicated and should be sent to both
 ports nearly at the same time for HSR and PRP. In a simple approach, the
@@ -207,8 +144,8 @@ sent out within an unknown interval. The drawback of this solution is
 the lack of control on when each frame will be sent out. The interval
 can be bigger than one maximum sized Ethernet frame in this case.
 
-.. rubric:: Supervision Frame
-   :name: supervision-frame
+Supervision Frame
+------------------
 
 Incoming supervision frames are received and processed by the PRU. On
 reception of a frame, the PRU updates the node table and the statistic
@@ -222,8 +159,8 @@ available for this operation while receiving the frame. Each device in
 an HSR/PRP network sends supervision frames at a constant time interval.
 Outgoing supervision frames are composed and sent by the host CPU.
 
-.. rubric:: Cut-Through for HSR
-   :name: cut-through-for-hsr
+Cut-Through for HSR
+--------------------
 
 Cut through happens when switch firmware bypasses the transmit queues
 and directly copies data from Rx FIFO to Tx FIFO. The concept is
@@ -256,8 +193,8 @@ is aborted by asserting the TX\_RESET which will reset the transmit FIFO
 and clear all its contents and therefore corrupt the frame being
 cut-though.
 
-.. rubric:: Memory Map
-   :name: memory-map
+Memory Map
+----------
 
 .. rubric:: Shared RAM Memory Map
    :name: shared-ram-memory-map
@@ -275,7 +212,7 @@ cut-though.
 |                    | DANH/DANP          |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
 
-Table:  ***Shared RAM Memory Map***
+Table:  **Shared RAM Memory Map**
 
 +--------------------------+--------------------------+--------------------------+
 | Name of Offset           | Description              | Offset in Shared RAM     |
@@ -397,7 +334,7 @@ Table:  ***Shared RAM Memory Map***
 |                          | this value is incremented|                          |
 +--------------------------+--------------------------+--------------------------+
 
-Table:  ***LRE Interface Stats***
+Table:  **LRE Interface Stats**
 
 +--------------------+--------------------+--------------------+--------------------+
 | Name of Offset     | Description        | Offset in PRU0     | Size (in bytes)    |
@@ -423,7 +360,7 @@ Table:  ***LRE Interface Stats***
 |                    | e.w2)              |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
 
-Table:  ***PRU0 RAM Memory Map***
+Table:  **PRU0 RAM Memory Map**
 
 +--------------------+--------------------+--------------------+--------------------+
 | Name of Offset     | Description        | Offset in PRU1     | Size (in bytes)    |
@@ -511,13 +448,7 @@ Table:  ***PRU0 RAM Memory Map***
 |                    | address in HSR     |                    |                    |
 +--------------------+--------------------+--------------------+--------------------+
 
-Table:  ***PRU1 RAM Memory Map***
-
-.. rubric:: TI RTOS
-   :name: ti-rtos
-
-TI RTOS specific details are available at
-[`[1] <http://processors.wiki.ti.com/index.php/PRU_ICSS_HSR_PRP>`__]
+Table:  **PRU1 RAM Memory Map**
 
 .. raw:: html
 
