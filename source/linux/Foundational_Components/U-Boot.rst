@@ -1,12 +1,11 @@
 .. convert from page http://processors.wiki.ti.com/index.php/Linux_Core_U-Boot_User%27s_Guide#Using_USB_Device_Firmware_Upgrade_.28DFU.29
 
-##################
+*******************************
 U-Boot
-##################
+*******************************
 
-*******************************
 Overview
-*******************************
+==================
 
 This document covers the general use of Linux Core Release of U-Boot on
 following platforms:
@@ -77,9 +76,8 @@ documented here.
 
 | 
 
-*******************************
 General Information
-*******************************
+===================================
 
 .. rubric:: Getting the U-Boot Source Code
    :name: getting-the-u-boot-source-code
@@ -320,9 +318,8 @@ use.
 
 | 
 
-**********************************
 USB Device Firmware Upgrade
-**********************************
+===================================
 
 When working with USB Device Firmware Upgrade (DFU), regardless of the
 medium to be written to and of the board being used, there are some
@@ -435,9 +432,8 @@ the board.
 
 | 
 
-**********************************
 Network
-**********************************
+===================================
 
 This section documents how to configure the network and use it to load
 files and then boot the Linux Kernel using a root filesystem mounted
@@ -631,9 +627,8 @@ important variables in AM57x/DRA7x are **rootpath** and **nfsopts**, and
 
 | 
 
-**********************************
 NAND
-**********************************
+===================================
 
 This section documents how to write files to the NAND device and use it
 to load and then boot the Linux Kernel using a root filesystem also
@@ -865,9 +860,8 @@ on creating a UBIFS can be found
 
 | 
 
-**********************************
 SD, eMMC or USB Storage
-**********************************
+====================================
 
 The commands for using SD cards, eMMC flash and USB mass storage devices
 (hard drives, flash drives, card readers, etc) are all very similar. The
@@ -1248,9 +1242,9 @@ SPL directly boots the kernel image from SD (or eMMC).
 | 
 
 
-**********************************
 SPI
-**********************************
+====================================
+
 
 This section documents how to write files to the SPI device and use it
 to load and then boot the Linux Kernel using a root filesystem also
@@ -1334,9 +1328,8 @@ Hardware Setup of each Keystone-2 EVM.
 
 | 
 
-**********************************
 QSPI
-**********************************
+====================================
 
 QSPI is a serial peripheral interface like SPI the major difference
 being the support for Quad read, uses 4 data lines for read compared to
@@ -1592,9 +1585,8 @@ following example uses the partition table found in the kernel.
 
 | 
 
-**********************************
 NOR
-**********************************
+====================================
 
 This section documents how to write files to the NOR device and use it
 to load and then boot the Linux Kernel using a root filesystem also
@@ -1641,9 +1633,8 @@ Within the default environment there is not a shortcut for booting. One
 needs to pass **root=/dev/mtdblockN** where N is the number of the
 rootfs partition in **bootargs**.
 
-**********************************
 UART
-**********************************
+====================================
 
 
 This section documents how to use the UART to load files to boot the
@@ -1667,9 +1658,8 @@ is installed
     $ sx -kb /path/to/u-boot-spl.bin < /dev/ttyUSB0 > /dev/ttyUSB0
     $ sx -kb --ymodem /path/to/u-boot.img < /dev/ttyUSB0 > /dev/ttyUSB0
 
-**********************************
 SATA
-**********************************
+====================================
 
 SATA and eSATA devices show up as SCSI devices in U-boot.
 
