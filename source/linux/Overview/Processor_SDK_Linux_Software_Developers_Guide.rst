@@ -1,5 +1,3 @@
-.. _PLSDK-SDG-label:
-
 **********************************************
 Processor SDK Linux Software Developer's Guide
 **********************************************

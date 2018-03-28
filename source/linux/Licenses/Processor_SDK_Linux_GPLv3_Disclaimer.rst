@@ -1,10 +1,7 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_GPLv3_Disclaimer
-
-.. _PLSDK-GPLv3-Disclaimer-label:
-
 ************************************
 GPLv3 Disclaimer
 ************************************
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_GPLv3_Disclaimer
 
 There are GPLv3 licensed software components contained within the
 Processor SDK for Linux on both the target and the host.  The software

@@ -1,5 +1,3 @@
-.. _PLSDK-GSG-label:
-
 ********************************************
 Processor SDK Linux Getting Started Guide
 ********************************************

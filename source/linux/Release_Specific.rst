@@ -29,22 +29,24 @@ Performance Guide
 
 Kernel Performance Guide
 =================================
-.. include:: Foundational_Components/Kernel/Performance_Guide/Kernel_Performance_Guide.rst
+.. include:: Release_Specific/Performance_Guide/Kernel_Performance_Guide.rst
 
 RT Kernel Performance Guide
 =================================
-.. include:: Foundational_Components/Kernel/Performance_Guide/RT_Kernel_Performance_Guide.rst
+.. include:: Release_Specific/Performance_Guide/RT_Kernel_Performance_Guide.rst
 
 
 
 .. ************************************
 .. Supported Platforms and Versions 
 .. ************************************
+.. _SDK-Supported-Platforms:
 .. include:: ../common/Release_Specific/Processor_SDK_Supported_Platforms_and_Versions.rst
 
 .. ************************************
-.. Building the SDK
+.. Layer Configuration
 .. ************************************
+.. _PLSDK-LayerConfig-label:
 .. include:: Release_Specific/Layer_Configuration.rst
 
 .. ************************************

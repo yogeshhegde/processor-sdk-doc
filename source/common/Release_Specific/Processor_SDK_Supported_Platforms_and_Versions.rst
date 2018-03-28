@@ -1,10 +1,7 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions
-
-.. _SDK-Supported-Platforms:
-
 ************************************
 Supported Platforms and Versions
 ************************************
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions
 
 .. rubric:: Supported Host Operating Systems
    :name: supported-host-operating-systems
