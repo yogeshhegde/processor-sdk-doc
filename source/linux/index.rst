@@ -8,5 +8,6 @@
    Overview
    Release_Specific
    Foundational_Components
+   Examples_and_Demos
    Processor_Linux_SDK_How_To_Guides
    Licenses

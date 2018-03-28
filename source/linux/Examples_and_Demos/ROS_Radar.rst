@@ -2,7 +2,7 @@
 .. rubric:: Introduction
    :name: introduction
 
-The ROS is meta-os running on top of Linux. It is a collection of software
+The ROS is meta-ros running on top of Linux. It is a collection of software
 libraries and packages to help you write robotic applications. Both mobile
 platforms and static manipulators can leverage wide colelction of open-source
 drivers and tools. ROS framework is mainly based on publisher-subscriber
@@ -72,7 +72,7 @@ ROS is part of PLSDK 4.3 target filesystem, including mmWave ROS driver, so no a
 installation steps are required. ROS is installed in /opt/ros/indigo folder.
 Only setting up configuration related to specific IP address
 of target EVM, and Ubuntu x86 host IP address is needed.
-ROS is distributed meta-os, with single ROS host acting as a broker for all internode transcations.
+ROS is distributed meta-ros, with single ROS host acting as a broker for all internode transcations.
 It runs roscore node and in this case roscore is executed on Sitara. Linux Box will only run
 ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports OpenGL ES 2.0).
 
