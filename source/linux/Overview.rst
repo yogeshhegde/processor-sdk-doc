@@ -3,7 +3,7 @@ Overview
 ##################
 
 
-.. .. include:: Overview/Processor_SDK_Linux_Software_Developers_Guide.rst
+.. include:: Overview/Processor_SDK_Linux_Software_Developers_Guide.rst
 
 .. ************************************
 .. Getting Started Guide
