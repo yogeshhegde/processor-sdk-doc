@@ -9,3 +9,34 @@ Foundational Components
 .. include:: Foundational_Components/Processor_SDK_Linux_Filesystem.rst
 
 .. include:: Foundational_Components/Tools.rst
+
+
+**********************************
+Graphics and Display
+**********************************
+.. include:: Foundational_Components/Graphics/Graphics_and_Display.rst
+
+SGX Debug Info
+=================================
+.. include:: Foundational_Components/Graphics/SGX_Debug_Info.rst
+
+
+**********************************
+Multimedia
+**********************************
+.. include:: Foundational_Components/Multimedia.rst
+
+**********************************
+OpenCL
+**********************************
+`TI OpenCL <http://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
+
+**********************************
+OpenCV
+**********************************
+.. include:: Foundational_Components/OpenCV.rst
+
+**********************************
+OpenVX
+**********************************
+.. include:: Foundational_Components/OpenVX.rst
