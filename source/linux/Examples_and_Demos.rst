@@ -3,6 +3,12 @@ Examples and Demos
 ####################################
 
 **********************************
+Example Applications User's Guides
+**********************************
+.. include:: Examples_and_Demos/Matrix_Demos.rst
+
+
+**********************************
 Matrix User Guide
 **********************************
 .. include:: Examples_and_Demos/Matrix_User_Guide.rst

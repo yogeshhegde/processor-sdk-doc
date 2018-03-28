@@ -7,6 +7,22 @@ Release Specific
 .. ************************************
 .. include:: Release_Specific/Processor_SDK_Linux_Release_Notes.rst
 
+************************************
+U-boot Release Notes
+************************************
+.. include:: Release_Specific/U-boot_Release_Notes.rst
+
+************************************
+Kernel Release Notes
+************************************
+.. include:: Release_Specific/Kernel_Release_Notes.rst
+
+************************************
+RT Kernel Release Notes
+************************************
+.. include:: Release_Specific/RT_Kernel_Release_Notes.rst
+
+
 .. ************************************
 .. Supported Platforms and Versions 
 .. ************************************
@@ -15,7 +31,7 @@ Release Specific
 .. ************************************
 .. Building the SDK
 .. ************************************
-.. include:: Release_Specific/Processor_SDK_Building_The_SDK.rst
+.. include:: Release_Specific/Layer_Configuration.rst
 
 .. ************************************
 .. Migration Guide

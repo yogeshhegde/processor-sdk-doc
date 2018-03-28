@@ -1,8 +1,8 @@
 .. _PLSDK-GSG-label:
 
-***********************************************
+********************************************
 Processor SDK Linux Getting Started Guide
-***********************************************
+********************************************
 
 .. rubric:: Welcome to the Linux Getting Started Guide
    :name: welcome-to-the-linux-getting-started-guide
