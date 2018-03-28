@@ -146,16 +146,16 @@ VPE
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/VPE.rst
 
 
-Performance Guide
-=================================
+.. Performance Guide
+.. =================================
 
-Kernel Performance Guide
----------------------------------
-.. include:: Foundational_Components/Kernel/Performance_Guide/Kernel_Performance_Guide.rst
+.. Kernel Performance Guide
+.. ---------------------------------
+.. .. include:: Foundational_Components/Kernel/Performance_Guide/Kernel_Performance_Guide.rst
 
-RT Kernel Performance Guide
----------------------------------
-.. include:: Foundational_Components/Kernel/Performance_Guide/RT_Kernel_Performance_Guide.rst
+.. RT Kernel Performance Guide
+.. ---------------------------------
+.. .. include:: Foundational_Components/Kernel/Performance_Guide/RT_Kernel_Performance_Guide.rst
 
 
 LTP-DDT Validation

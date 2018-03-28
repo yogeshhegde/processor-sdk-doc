@@ -23,6 +23,20 @@ RT Kernel Release Notes
 .. include:: Release_Specific/RT_Kernel_Release_Notes.rst
 
 
+************************************
+Performance Guide
+************************************
+
+Kernel Performance Guide
+=================================
+.. include:: Foundational_Components/Kernel/Performance_Guide/Kernel_Performance_Guide.rst
+
+RT Kernel Performance Guide
+=================================
+.. include:: Foundational_Components/Kernel/Performance_Guide/RT_Kernel_Performance_Guide.rst
+
+
+
 .. ************************************
 .. Supported Platforms and Versions 
 .. ************************************
