@@ -152,20 +152,8 @@ options, and supported platforms of the Processor SDK.
 
 Layer Configuration
 -------------------
-Processor SDK uses the following oe-layersetup configs to configure the
-meta layers. These are the <config> used in the command:
+Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a particular release of Processor SDK Linux.
 
-``$ ./oe-layersetup.sh -f <config>``
-
- 
-The following config files are located in the *configs/processor-sdk*
-directory of the oe-layersetup git repo.
-
-+----------------------------------------+---------------------------------+------------------------------------------------------------------------------------------+
-|**Config File**                         | **Description**                 | **Supported machines/platforms**                                                         |
-+----------------------------------------+---------------------------------+------------------------------------------------------------------------------------------+
-| processor-sdk-04.02.00.09-config.txt   | Processor SDK 4.2.0.9 Release   | am335x-evm, am437x-evm, am57xx-evm, k2hk-evm, k2e-evm, k2l-evm, k2g-evm, omapl138-lcdk   |
-+----------------------------------------+---------------------------------+------------------------------------------------------------------------------------------+
 
 Build Options
 -------------

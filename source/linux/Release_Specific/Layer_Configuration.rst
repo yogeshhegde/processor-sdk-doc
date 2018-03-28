@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Layer_Configuration
 
+.. _PLSDK-LayerConfig-label:
+
 *******************
 Layer Configuration
 *******************
