@@ -1,8 +1,7 @@
+************************************
+Release Notes
+************************************
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
-
-************************************
-Processor SDK Linux Release Notes
-************************************
 
 Overview
 ========

@@ -9,6 +9,7 @@ Overview
 .. Getting Started Guide
 .. ************************************
 .. _PLSDK-GSG-label:
+.. _processor-sdk-linux-getting-started-guide:
 .. include:: Overview/Processor_SDK_Linux_Getting_Started_Guide.rst
 
 .. Creating a SD Card Scripts

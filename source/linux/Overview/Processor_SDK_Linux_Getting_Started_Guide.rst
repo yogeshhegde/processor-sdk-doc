@@ -1,5 +1,5 @@
 ********************************************
-Processor SDK Linux Getting Started Guide
+Getting Started Guide
 ********************************************
 
 .. rubric:: Welcome to the Linux Getting Started Guide

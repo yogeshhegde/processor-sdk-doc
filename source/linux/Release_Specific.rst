@@ -5,6 +5,7 @@ Release Specific
 .. ************************************
 .. Release Notes
 .. ************************************
+.. _processor-sdk-linux-release-notes:
 .. include:: Release_Specific/Processor_SDK_Linux_Release_Notes.rst
 
 ************************************

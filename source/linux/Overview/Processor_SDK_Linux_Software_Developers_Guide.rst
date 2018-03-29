@@ -36,13 +36,13 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 | `Technical Support`_                                                   | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
-.. _Getting Started Guide: Overview.html#getting-started-guide
+.. _Getting Started Guide: Overview.html#processor-sdk-linux-getting-started-guide
 .. _Supported Platforms and Versions: Release_Specific.html#supported-platforms-and-versions
 .. _Release Notes: Release_Specific.html#release-notes
 .. _Technical Support: Overview.html#technical-support
 .. _Directory Structure Overview: Overview.html#directory-structure-overview
 .. _Linux Software Stack: Overview.html#software-stack
-.. _Building the SDK: Release_Specific.html#building-the-sdk
+.. _Building the SDK: Overview.html#building-the-sdk
 .. _Migration Guide: Release_Specific.html#migration-guide
 .. _MCSDK to Processor SDK Migration Guide: Release_Specific.html#mcsdk-to-processor-sdk-migration-guide
 .. _GPLv3 Disclaimer: Licenses.html#gplv3-disclaimer
@@ -74,7 +74,3 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the `Linux
 forum <http://e2e.ti.com/support/embedded/linux>`__.
-
-+--------------------------------+--------------------------------------------------------------------------------------------------+
-| .. Image:: ../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
-+--------------------------------+--------------------------------------------------------------------------------------------------+
