@@ -3,12 +3,6 @@ Release Specific
 ##################
 
 .. ************************************
-.. Supported Platforms and Versions
-.. ************************************
-.. _SDK-Supported-Platforms:
-.. include:: ../common/Release_Specific/Processor_SDK_Supported_Platforms_and_Versions.rst
-
-.. ************************************
 .. Release Notes
 .. ************************************
 .. _processor-sdk-linux-release-notes:
@@ -42,3 +36,10 @@ RT Kernel Performance Guide
 .. MCSDK to Processor SDK Migration Guide
 .. ======================= 
 .. include:: ../common/Release_Specific/MCSDK_to_Processor_SDK_Migration.rst
+
+
+.. ************************************
+.. Supported Platforms and Versions
+.. ************************************
+.. _SDK-Supported-Platforms:
+.. include:: ../common/Release_Specific/Processor_SDK_Supported_Platforms_and_Versions.rst
