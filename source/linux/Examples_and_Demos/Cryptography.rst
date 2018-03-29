@@ -1,20 +1,12 @@
 .. http://processors.wiki.ti.com/index.php/Cryptography_Users_Guide
 .. rubric:: Overview
-   :name: overview
+   :name: overview-cryptography
 
 This article provides a description of the example applications under
 the cryptography page of the Matrix application that comes with the
-Sitara SDK.  This page is labled "Cryptos" in the top-level Matrix GUI.
-
-| 
-
-| 
+Processor SDK.  This page is labled "Cryptos" in the top-level Matrix GUI.
 
 .. Image:: ../images/MatrixMain.PNG
-
-| 
-
-| 
 
 .. rubric:: Devices Supported
    :name: devices-supported
@@ -26,17 +18,9 @@ devices have cryptographic hardware accelerators and drivers:
 -  AM37x - AES, DES, 3DES, SHA, MD5
 -  AM335x - AES, SHA, MD5, RNG
 
-| 
-
-| 
-
 The example applications have been designed to use hardware accelerators
 when they are available and fall back to a pure software implementation
 when hardware accelerators are not available.
-
-| 
-
- 
 
 .. rubric:: Cryptography Examples
    :name: cryptography-examples
@@ -50,8 +34,6 @@ available with OpenSSL on the Sitara platform.
 
 .. Image:: ../images/MatrixCryptos.PNG
 
-| 
-
 .. rubric:: OpenSSL Performance
    :name: openssl-performance
 
@@ -59,8 +41,6 @@ This example executes the OpenSSL built-in speed test for a variety of
 cryptographic algorithms.  The results of the test are displayed on the
 screen and also written to the file OpenSSLspeedResults.txt in the top
 level directory of the target filesystem.
-
-| 
 
 .. rubric:: Certificate Generation
    :name: certificate-generation
@@ -72,8 +52,6 @@ the certificate already exists, then the example will fail and prompt
 the user to delete the existing certificate (matrixcert.pem) before
 generating a new one.
 
-| 
-
 .. rubric:: Public Key Generation
    :name: public-key-generation
 
@@ -83,8 +61,6 @@ does not exist the example will fail and pronpt the user to first
 generate the certificate before trying to generate the public key.  The
 public key will be saved to a file pubkey.pem in the top level directory
 of the target file system.
-
-| 
 
 .. rubric:: Secure Server
    :name: secure-server
@@ -103,8 +79,6 @@ address in the URL of the browser.  Clicking the link to continue anyway
 provides the page below.  And clicking the "Certificate Error" button at
 the top of the page will provide details of the certificate.
 
-| 
-
 .. Image:: ../images/SecureServer.PNG
 
 .. raw:: html
@@ -121,8 +95,6 @@ build instructions are
 .. raw:: html
 
    </div>
-
-| 
 
 .. rubric:: Certificate Info
    :name: certificate-info
@@ -145,9 +117,6 @@ displayed to the screen.
 This example will perform a SHA1 hash function on the 10M file of random
 data (rnddata).  If the file doesn't exist, it is generated.  The result
 of the hash is displayed to the screen.
-
-| 
-|  
 
 .. rubric:: Building the Driver
    :name: building-the-driver
@@ -215,8 +184,6 @@ to Linux under the name "ocf-linux".  As long as the OCF pieces are
 enabled in menuconfig whenever the kernel is built the OCF components
 are built during that process.
 
-| 
-
 .. rubric:: Using Cryptographic Hardware Accelerators
    :name: using-cryptographic-hardware-accelerators
 
@@ -260,9 +227,8 @@ of the boot-up messages.
 
     [ 0.944152] omap4_rng omap4_rng: OMAP4 Random Number Generator ver. 2.00
 
-| 
-| Once the system is booted up, the hwrng device should now show up in
-  the filesystem.
+Once the system is booted up, the hwrng device should now show up in
+the filesystem.
 
 ::
 
@@ -270,8 +236,7 @@ of the boot-up messages.
     crw------- 1 root root 10, 183 Jan 1 2000 /dev/hwrng
     root@am335x-evm:~#
 
-| 
-| Use cat on this device to generate random numbers.
+Use cat on this device to generate random numbers.
 
 ::
 
@@ -466,6 +431,6 @@ software only implementation can be compared to the previous test.
 -  `AM335x Crypto Performance using
    openssl <http://processors.wiki.ti.com/index.php/AM335x_Crypto_Performance>`__
 
-| Read `AM3517 performance tests using
-  cryptotest <http://processors.wiki.ti.com/index.php/Build_Crypto_Module_for_Sitara#Test_the_Module>`__
+Read `AM3517 performance tests using
+cryptotest <http://processors.wiki.ti.com/index.php/Build_Crypto_Module_for_Sitara#Test_the_Module>`__
 

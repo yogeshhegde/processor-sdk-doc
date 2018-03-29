@@ -15,10 +15,6 @@ Power Management
 ================
 .. include:: Examples_and_Demos/Power_Management.rst
 
-Camera
-======
-.. include:: Examples_and_Demos/Camera.rst
-
 Cryptography
 ============
 .. include:: Examples_and_Demos/Cryptography.rst

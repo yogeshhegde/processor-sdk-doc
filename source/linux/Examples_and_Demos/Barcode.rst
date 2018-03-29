@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Barcode_Reader
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-barcode
 
 Detecting 1D and 2D barcodes on an image, and decoding those barcodes
 are important use cases for the Machine-Vision. Processor SDK Linux has
@@ -178,6 +178,4 @@ In order to use OpenCL dispatch, it is necessary to:
 -  Enable OpenCL use (by setting environment variables, and invoking
    ocl::setUseOpenCL(ocl\_acc\_flag))
 -  Use T-API: e.g. replace Mat types with UMat types
-
-.. raw:: html
 

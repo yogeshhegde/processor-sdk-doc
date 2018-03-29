@@ -1,6 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/ROS_Radar_demo_user_guide.html
-.. rubric:: Introduction
-   :name: introduction
+
+Introduction
+============
 
 The ROS is meta-ros running on top of Linux. It is a collection of software
 libraries and packages to help you write robotic applications. Both mobile
@@ -26,9 +27,8 @@ Sitara EVM and Radar EVM would be attached to Kobuki, and Sitara EVM running ROS
 would control Kobuki movement via USB connection. Please note that mobile base
 is not essentail for verification of ROS on Sitara plus Radar EVM operation.
 
-^^^^^^^^
 HW Setup
-^^^^^^^^
+========
 
 *  `Sitara device, e.g. AM5728 GP EVM <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup>`__
 
@@ -63,10 +63,8 @@ to have Indigo on Linux box as well.
 For this demo, IWR EVM requires mmWave SDK firmware. If different firmware is used on Radar EVM, please follow
 procedure using UniFlash tool to install `mmWave SDK <http://www.ti.com/tool/MMWAVE-SDK>`__
 
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ROS configuration verification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==============================
 
 ROS is part of PLSDK 4.3 target filesystem, including mmWave ROS driver, so no additional
 installation steps are required. ROS is installed in /opt/ros/indigo folder.
@@ -93,15 +91,13 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
    root@am57xx-evm:/usr/bin# ln -s python3 python.python
    root@am57xx-evm:/usr/bin# ln -s python3-config python-config.python
 
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ROS between distributed nodes (Sitara and LinuxBox)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===================================================
      
 .. rubric:: 1st SSH terminal, to Sitara EVM
    :name: 1st-ssh-terminal-1
 
-  Modify /opt/ros/indigo/setup.bash
+Modify /opt/ros/indigo/setup.bash
 
 .. code-block:: console
 
@@ -177,14 +173,13 @@ You will see log similar to following:
    data: hello world 5344
 
 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 mmWave ROS node on Sitara and RViz on Linux Box
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===============================================
 
 .. rubric:: 1st SSH terminal, to Sitara EVM
    :name: 1st-ssh-terminal-1
 
-   Start roscore, only if it is not already started
+Start roscore, only if it is not already started
 
    source /opt/ros/indigo/setup.bash
    roscore
@@ -396,8 +391,4 @@ E.g. on Windows PC (192.168.0.100), you can watch the stream using: "\Program Fi
     :figclass: align-center
 
     Multiple windows on Linux Box showing ROS RViz, front camera view and external camera view 
-
-
-.. raw:: html
-
 
