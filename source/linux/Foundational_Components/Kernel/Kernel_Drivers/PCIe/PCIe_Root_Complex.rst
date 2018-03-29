@@ -50,7 +50,7 @@ K2G EVM: Make sure following jumper settings on the EVM:-
 | 
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-pcie
 
 The TI Keystone platforms contain a PCI Express module which supports a
 multi-lane I/O interconnect providing low pin count, high reliability,
@@ -489,6 +489,4 @@ environment :-
 Now type boot command and boot to Linux. The above steps can be skipped
 once u-boot implements these env variables by default which is expected
 to be supported in the future.
-
-.. raw:: html
 

@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_Training:_Multimedia
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-accelerated-multimedia
 
 TI's embedded processors such as AM57xx have following hardware
 accelerators.
@@ -884,6 +884,4 @@ shown below.
         cat /lib/firmware/$FW > /sys/class/firmware/$FW/data
         echo 0 > /sys/class/firmware/$FW/loading
     done
-
-.. raw:: html
 

@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_PCIe_EP_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-pcie-ep
 
 PCI controller IPs integrated in DRA7x/AM57x and 66AK2G SoCs are capable
 of operating either in Root Complex mode (host) or Endpoint mode

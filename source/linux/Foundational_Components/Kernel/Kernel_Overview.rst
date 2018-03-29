@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Kernel
 .. rubric:: Overview
-   :name: overview
+   :name: overview-linux-kernel
 
 -  Each Processor SDK Kernel interface has a centralized information
    wiki page that covers the following areas, overview, application,

@@ -774,13 +774,11 @@ one of the kernel boot parameters for non-Weston application and at
 
 | 
 
-| 
-
 SOC Performance monitoring tools on AM5 Devices
 ================================================
 
 .. rubric:: Introduction
-   :name: introduction-1
+   :name: introduction-linux-sgx-soc-perf-monitor
 
 The SOC Performance monitoring tools are a set of tools that are
 included in the default filesystem that allow the user to visualize

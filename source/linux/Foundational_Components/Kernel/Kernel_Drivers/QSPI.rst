@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_QSPI_User%27s_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-qspi-ug
 
 | Quad Serial Peripheral Interface(QSPI) is a SPI module that allows
   single, dual and quad read access to external SPI devices. This module
@@ -420,6 +420,4 @@ Now you can access filesystem at /mnt/flash/
    mode, this is because there is an explicit write enable command that
    needs to be sent to flash for every page write (256 bytes) which is
    not handled by SPI\_MM\_IF.
-
-.. raw:: html
 

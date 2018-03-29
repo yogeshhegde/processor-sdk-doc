@@ -3,7 +3,7 @@
    :name: am335x-lcdc-drm-display-driver
 
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-core-lcdc-ug
 
 This page gives a brief description of LCDC usage with tilcdc DRM
 driver. The obsolete fbdev driver wiki page also remains at the end of
@@ -198,7 +198,7 @@ driver </index.php/Linux_Core_LCD_Controller_User_Guide#AM335x_LCDC_Display_Driv
 instead.
 
 .. rubric:: **Introduction:**
-   :name: introduction-1
+   :name: introduction-linux-core-lcdc-1
 
 -  Where can I find fbdev documentation:
 
@@ -256,7 +256,4 @@ https://www.kernel.org/doc/Documentation/fb/framebuffer.txt
        };
     };
 
-| 
-
-.. raw:: html
 

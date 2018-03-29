@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Pin_Mux_Utility_for_ARM_MPU_Processors
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-pinmux-utility
 
 The TI PinMux Tool is a Cloud, Windows, or Linux-based software tool for
 configuring pin multiplexing settings and I/O cell characteristics for

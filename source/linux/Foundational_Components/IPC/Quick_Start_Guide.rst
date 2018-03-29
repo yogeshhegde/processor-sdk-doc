@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_IPC_Quick_Start_Guide
 .. rubric:: Overview
-   :name: overview
+   :name: overview-ipc
 
 This wiki page is meant to be a Quick Start Guide for applications using
 IPC (Inter Processor Communication) in Processor SDK.

@@ -4,7 +4,7 @@ Virtualization
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Jailhouse_Hypervisor
 .. rubric:: Overview
-   :name: overview
+   :name: overview-virtualization
 
 Jailhouse is a static partitioning hypervisor that runs bare metal
 binaries. It cooperates closely with Linux. Jailhouse doesn't emulate
@@ -14,15 +14,11 @@ guest software programs called "inmates". One of these cells runs the
 Linux OS and is known as the "root cell". Other cells borrow CPUs and
 devices from the root cell as they are created.
 
-| 
 .. Image:: ../images/Jailhouse.png
 
-*The picture above shows the jailhouse on a system a) before the
+The picture above shows the jailhouse on a system a) before the
 jailhouse is enabled; b) after the jailhouse is enabled; c) after a cell
 is created.
-*
-
-| 
 
 Jailhouse consists of three parts: kernel module, hypervisor firmware
 and tools, which a user uses to enable the hypervisor, create a cell,
@@ -35,38 +31,30 @@ cpu\_down() for the ARM1 core, leaving for Linux ARM0 only. The new cell
 will use the ARM1 core and hardware resources dedicated for this cell in
 the cell configuration file.
 
-| 
-
 Jailhouse is an open source project, which can be found on
 https://github.com/siemens/jailhouse.
-
-| 
 
 .. rubric:: Demo
    :name: demo
 
-| Processor Linux SDK delivers Jailhouse’s prebuilt binaries. You may
-  try it immediately after installation. This section assumes that you
-  have already installed PLSDK, and have Linux booted on the AM572X-EVM
-  or AM572x-IDK.
+Processor Linux SDK delivers Jailhouse’s prebuilt binaries. You may
+try it immediately after installation. This section assumes that you
+have already installed PLSDK, and have Linux booted on the AM572X-EVM
+or AM572x-IDK.
 
-| **NOTE:** *to use Jailhouse hypervisor*
+**NOTE:** *to use Jailhouse hypervisor*
 
-| *1) set u-boot environment variable optargs*: setenv optargs
-  vmalloc=512M
+1) set u-boot environment variable optargs*: setenv optargs vmalloc=512M
 
-*2) use \ **am572x-evm-jailhouse.dtb** for AM572x-EVM
+2) use \ **am572x-evm-jailhouse.dtb** for AM572x-EVM
 or \ **am572x-idk-jailhouse.dtb** for AM572x-IDK
-*
-
-| 
 
 .. rubric:: Pre-built components
    :name: pre-built-components
 
-| As it was mentioned in the previous section, Jailhouse consists of
-  following components, which are prebuilt and copied to the target
-  filesystem:
+As it was mentioned in the previous section, Jailhouse consists of
+following components, which are prebuilt and copied to the target
+filesystem:
 
 #. jailhouse.ko kernel module located at
    /lib/modules/4.9.28-<gitid>/extra/driver directory;
@@ -108,8 +96,6 @@ where
    on AM572x-IDK only);
 -  **linux-loader.bin** - loader required to run inmates, which start
    address is not 0x0;
-
-| 
 
 .. rubric:: Running the Demo on AM572x-EVM
    :name: running-the-demo-on-am572x-evm
@@ -175,12 +161,12 @@ Here are the steps to run the demo:
     min 00000017; avr 0000001b; max 000002d4
     min 00000017; avr 0000001b; max 00000158
 
-**NOTE**: *becase all of the components: root-cell, hypervisor and demo
+**NOTE**: becase all of the components: root-cell, hypervisor and demo
 inmate use the same UART, there is a conflict. Once the inmate started
 to use the UART, Linux stops getting any input from console. To
 workaround this and continue to control the hypervisor, you may telnet
 to the EVM and issue all commands from the telnet shell. Hypervisor
-still will use Linux console to print it sdebug messages*
+still will use Linux console to print it sdebug messages
 
 -  Stop the binary
 
@@ -188,8 +174,8 @@ still will use Linux console to print it sdebug messages*
 
     root@am57xx-evm:~# jailhouse cell shutdown 1
 
-**NOTE**: *You may restore Linux console by killing the "/bin/login --"
-process from telnet session.*
+**NOTE**: You may restore Linux console by killing the "/bin/login --"
+process from telnet session.
 
 -  destroy cell
 
@@ -236,7 +222,7 @@ After you enable hyprevisor, create a pdk cell  
     [  312.470723] Created Jailhouse cell "AM57XX-EVM-PDK-LED"
     root@am57xx-evm:~#
 
-| load the led\_test.bin binary
+load the led\_test.bin binary
 
 ::
 
@@ -268,11 +254,11 @@ and start it
 
 You may see blinking leds, press "r" to repeat the test.
 
-| **NOTE:**
-| This example just demonstrates hypervisor's ability to run binaries
-  that were built outside of jailhouse source tree. This and other RTOS
-  examples were ported for this purpose. Look to RTOS SDK documentation
-  for description of the examples functionality.  
+**NOTE:**
+This example just demonstrates hypervisor's ability to run binaries
+that were built outside of jailhouse source tree. This and other RTOS
+examples were ported for this purpose. Look to RTOS SDK documentation
+for description of the examples functionality.  
 
 .. rubric:: Running the Demo on AM572x-IDK
    :name: running-the-demo-on-am572x-idk
@@ -334,8 +320,8 @@ where
 -  pruss.bin itself, loaded to the virtual address 0x80000000 - the
    address where this application is lined to;
 
-| 
-| After loading run the inmate as usual:
+
+After loading run the inmate as usual:
 
 ::
 
@@ -411,10 +397,10 @@ where
     Testing for instance: 2, pru num: 1 is complete
     All tests have passed
 
-| 
-| You may run the **icss\_emac.bin** in similar way using appropriate
-  cell configuration. **Note that icss\_emac has different entry point -
-  0x80000000**.
+
+You may run the **icss\_emac.bin** in similar way using appropriate
+cell configuration. **Note that icss\_emac has different entry point -
+0x80000000**.
 
 .. rubric:: Jailhouse Performance on AM5728
    :name: jailhouse-performance-on-am5728
@@ -441,8 +427,6 @@ cores share L2 cache and access to the rest of the SoC, which the STREAM
 benchmark running on core 0 stresses while core 1 access GIC registers
 to respond to the interrupt.
 
-| 
-
 +--------------------------+--------------------------+--------------------------+
 |                          | Unloaded Linux on core 0 | Linux Running STREAM     |
 |                          |                          | benchmark on core 0      |
@@ -466,10 +450,6 @@ to respond to the interrupt.
 
 Table:  **Interrupt latency of a bare metal inmate (core 1)**
 
-| 
-
-| 
-
 .. rubric:: Building Jailhouse from Sources
    :name: building-jailhouse-from-sources
 
@@ -489,11 +469,9 @@ directory contains the following subdirectories:
 -  **scripts**
 -  **tools** - jailhouse management utility
 
-The top level SDK Makefile has the *jailhouse\_clean*, *jailhouse* and
-*jailhouse\_install* targets which can be used to clean, build and
+The top level SDK Makefile has the **jailhouse\_clean**, **jailhouse** and
+**jailhouse\_install** targets which can be used to clean, build and
 install jailhouse to the target file system.
-
-| 
 
 .. rubric:: Building and Running the Ethercat Slave Demo
    :name: building-and-running-the-ethercat-slave-demo
@@ -538,9 +516,9 @@ parameter at the "jailhouse cell load" command:
 
     jailhouse cell load 1 linux-loader.bin -a 0 -s "kernel=0x80000000" -a 0x100 ethercat_slave_demo.bin -a 0x80000000
 
-| 
-| Procedure to check two-way communication between the slave inmate and
-  the master station:
+
+Procedure to check two-way communication between the slave inmate and
+the master station:
 
 -  Refer to
    http://processors.wiki.ti.com/index.php/PRU_ICSS_EtherCAT#Running_EtherCAT_Slave_Application
@@ -550,8 +528,6 @@ parameter at the "jailhouse cell load" command:
    The value can be checked with “devmem2 0xeef00000” also.
 -  Slave: devmem2 0xeef00004 b [data]. After this, Master should display
    the corresponding value in TXPDO 32Bit Input.
-
-| 
 
 .. rubric:: Jailhouse Internals
    :name: jailhouse-internals
@@ -649,8 +625,8 @@ the following node.
                 ti,irqs-skip = <10 133 134 135 139 140>;
             };
 
-| **Note:** The icss\_emac.bin application uses much more interrupt
-  lines. Thats is why IDK's dtb skips aditional interrupts.
+**Note:** The icss\_emac.bin application uses much more interrupt
+lines. Thats is why IDK's dtb skips aditional interrupts.
 
 ::
 
@@ -761,21 +737,19 @@ configuration.
 .. rubric:: Bare Metal Inmate Example
    :name: bare-metal-inmate-example
 
-Jailhouse comes with inmate demos located at the *inmates/demos*
+Jailhouse comes with inmate demos located at the **inmates/demos**
 directory. Current (v0.6) version has two demo inmates: **gic-demo** and
 **uart-demo**. Those are very simple bare-metal applications that
 demonstrates a uart and arm-timer interrupt. Those demos are common for
 all jailhouse platforms.
 
 More interesting may be the **ti-app**, a demo made especially for
-AM572x SOC. The code is located at the *inmate/ti\_app* directory.
+AM572x SOC. The code is located at the **inmate/ti\_app** directory.
 
 Basically this application is a sandbox to make some experiments. The
 current version demonstrates of using a uart, timer and a GIC SPI
 interrupt (timer generates periodic interrupts). The application also
 has some extra code, which was used to measure interrupt latency.
-
-| 
 
 As any inmate the ti-app inmate works in a cell. The am57xx-evm-ti-app.c
 is the cell configuration file. For this cell only ARM1 core will be
@@ -787,8 +761,8 @@ used:
             0x2,
         },
 
-**NOTE:** *Actually on am572 SOC, which has only 2 ARM core and Linux
-always uses the ARM0 core only ARM1 can be taken for an inmate.*
+**NOTE:** Actually on am572 SOC, which has only 2 ARM core and Linux
+always uses the ARM0 core only ARM1 can be taken for an inmate.
 
 The cell configuration has 5 memory regions:
 
@@ -830,10 +804,10 @@ The cell configuration has 5 memory regions:
                     JAILHOUSE_MEM_EXECUTE | JAILHOUSE_MEM_LOADABLE,
             },
 
-Two for UARTs. *The first one for UART3, which is a standard EVM debug
+Two for UARTs. The first one for UART3, which is a standard EVM debug
 uart. The second for UART9, using of which requires some board
 modifications. But UART9 doesn't conflict with Linux or hypervisor and
-may be more useful if the inmate needs a dedicated UART.* One region for
+may be more useful if the inmate needs a dedicated UART. One region for
 timer9 and one for access multiple configuration registers.
 
 The last region is for RAM allocated for the inmate. Similar to
@@ -844,7 +818,7 @@ inside of the physical memory reserved for inmates in the Linux DTS
 file.
 
 In the .irqchip section of the cell configuration file we reserve GIC
-interrupt line #134 (*One of two lines reserved in the kernel DTS*).
+interrupt line #134 (**One of two lines reserved in the kernel DTS**).
 
 ::
 
@@ -857,9 +831,9 @@ interrupt line #134 (*One of two lines reserved in the kernel DTS*).
             },
         },
 
-*Here where #134 comes from. The 0x00000040 is the bitmask of the sixth
+Here where #134 comes from. The 0x00000040 is the bitmask of the sixth
 bit. So, .pin\_base(160) + .pin\_bitmap(6) - 32(number of SWI and PPI
-interrupt) = 134.*
+interrupt) = 134.
 
 As other jailhouse demos the **ti-app** uses the jailhouse startup code,
 which sets the inmate vector table, zeros BSS segment, sets the stack up
@@ -870,9 +844,9 @@ read/write only GICD registers, related to the lines given in the
 .irq\_chips section. In our case for the line #134 only.
 
 In the inmate\_main() the inmate initializes uart, sets the crossbar and
-calls the gic\_setup() to set the inmate's interrupt handler. *The
+calls the gic\_setup() to set the inmate's interrupt handler. The
 jailhouse provides inmate interrupt controller API. This can be used by
-inmate.*
+inmate.
 
 The ti-app initializes the timer and enters to the infinite loop.
 
@@ -889,13 +863,13 @@ using independent makefile and third party libraries. This release
 provides **led\_test**, a simple example of a bare-metal application,
 which uses prebuilt RTOS PDK libraries and is built independently on
 Jailhouse. It also has ports of two TI RTOS SYSBIOS test applications -
-pruss and icss\_emac. *There are two other examples: 1) bare-metal
+pruss and icss\_emac. There are two other examples: 1) bare-metal
 memcp\_bm - a simple application to measure memory bandwidth; 2)
 Ethercat\_slave\_demo - ported to Jailhouse example from "PRU-ICSS
 Industrial Software for Sitara™ Processors". The example requires some
 modifications of the PRU-ICSS Industrial Software, which is not
 published yet. That is why the ethercat\_slave\_demo included here as a
-reference only.*
+reference only.
 
 The code of the applications is located on the
 $(SDK\_INSTALL\_PATH)/processor\_sdk\_rtos\_am57xx\_4\_01\_00\_04/demos/jailhouse-inmate
@@ -973,9 +947,9 @@ The **led** directory contains:
 -  **makefile** is to build the inmate. As you can see, it links number
    of brebuilt PDK libraries.
 
-| 
-| To build the **led\_test.bin** (a jailhouse inmate has to be \*.bin,
-  but not \*.out file):
+ 
+To build the **led\_test.bin** (a jailhouse inmate has to be \*.bin,
+but not \*.out file):
 
 -  cd to
    $(SDK\_INSTALL\_PATH)/processor\_sdk\_rtos\_am57xx\_4\_01\_00\_04
@@ -1004,32 +978,30 @@ way as the led\_test. Use the am57xx-bm.cell file from
 $TI\_SDK\_PATH/board-support/extra-drivers/jailhouse-0.7/configs to
 create the jailhouse cell for the memcp\_bm inmate.
 
-| 
-
 .. rubric:: RTOS BIOS Examples
    :name: rtos-bios-examples
 
-| The pruss and icss\_emac examples are located in the rtos/pruss and
-  rtos/icss\_emac directories. The structures of the both directories
-  are identical. Each directory contains the bios and src
-  subdirectories. The bios contains XDC type application configuration
-  file and makefile. The configuration file is reworked copy of the
-  original RTOS application configuration file. For example the
-  configuration file for icss\_emac inmate was ported from
-  $(SDK\_INSTALL\_PATH)/ti/pdk\_am57xx\_1\_0\_7/packages/ti/drv/icss\_emac/test/am572x/armv7/bios/icss\_emac\_arm\_wSoCLib.cfg
-  file. As far as jailhouse inmate is not responsible for board related
-  configuration, the board library, i2c library, OCRAM MMU sections and
-  some other unnecessary for the inmate components were removed from the
-  configuration file.
+The pruss and icss\_emac examples are located in the rtos/pruss and
+rtos/icss\_emac directories. The structures of the both directories
+are identical. Each directory contains the bios and src
+subdirectories. The bios contains XDC type application configuration
+file and makefile. The configuration file is reworked copy of the
+original RTOS application configuration file. For example the
+configuration file for icss\_emac inmate was ported from
+$(SDK\_INSTALL\_PATH)/ti/pdk\_am57xx\_1\_0\_7/packages/ti/drv/icss\_emac/test/am572x/armv7/bios/icss\_emac\_arm\_wSoCLib.cfg
+file. As far as jailhouse inmate is not responsible for board related
+configuration, the board library, i2c library, OCRAM MMU sections and
+some other unnecessary for the inmate components were removed from the
+configuration file.
 
-| As far as the application main function calls the board\_init()
-  function, this function as well as the Board\_moduleClockInit() (with
-  required for icss\_emac application clocks) are implemented in the
-  idkAM572x\_jh.c file.
+As far as the application main function calls the board\_init()
+function, this function as well as the Board\_moduleClockInit() (with
+required for icss\_emac application clocks) are implemented in the
+idkAM572x\_jh.c file.
 
-| Thus the ported configuration file, the idkAM572x\_jh.c and makefiles
-  are only new files required to port RTOS SDK existing project to
-  jailhouse inmate.
+Thus the ported configuration file, the idkAM572x\_jh.c and makefiles
+are only new files required to port RTOS SDK existing project to
+jailhouse inmate.
 
 The jailhouse-inmate/Makefile has the "pruss\_test" and
 "icss\_emac\_test" targets to build the BIOS inmates.
@@ -1039,8 +1011,6 @@ the pruss and icss\_emac examples. As far as it depends on a particular
 version of the "PRU-ICSS Industrial Software", which has to be installed
 independently, building of the demo is not included into the top level
 makefile.
-
-| 
 
 .. rubric:: RTOS BIOS Porting Notes
    :name: rtos-bios-porting-notes
@@ -1103,21 +1073,19 @@ node in the inmate cell configuration.
                     JAILHOUSE_MEM_EXECUTE | JAILHOUSE_MEM_LOADABLE,
             },
 
-| You may see that cell configuration for icss\_emac inmate configures
-  two RAM regions:
+You may see that cell configuration for icss\_emac inmate configures
+two RAM regions:
 
 #. small one with virtual address 0x0 for the linux-loader;
 #. main region for the icss\_emac test itself;
-
-| 
 
 .. rubric:: General Porting Notes
    :name: general-porting-notes
 
 When you start porting your RTOS or bare-metal application to Jailhouse
 inmate, you have to consider several things. They are listed below.
-*This list is not complete and has just recommendations based on common
-sense and previous porting experience*.
+This list is not complete and has just recommendations based on common
+sense and previous porting experience.
 
 -  **Linux always starts first** before hypervisor. Linux initializes
    all (or almost all) common resources of SOC. Thus it initializes
@@ -1155,6 +1123,4 @@ sense and previous porting experience*.
    disable an entire GPIO bank from using by Linux and use it for the
    Inmate. But it is not practical to share the same bank by the both
    Linux and Inmate.
-
-| 
 

@@ -274,5 +274,3 @@ test cases.
 | Developers are encouraged to read sections 3) and 4) in the README-DDT
   file before submitting patches.
 
-.. raw:: html
-

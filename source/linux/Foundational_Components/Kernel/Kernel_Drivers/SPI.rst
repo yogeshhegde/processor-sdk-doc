@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_SPI_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-spi
 
 -  Serial interface
 
@@ -9,8 +9,6 @@
 -  Master-slave configuration (driver supports only master mode)
 
 -  Data Exchange - DMA/PIO
-
-| 
 
 .. rubric:: SOC Specific Information
    :name: soc-specific-information
@@ -222,6 +220,4 @@ In the kernel sources,
 ./tools/spi/\ `spidev\_test.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/spi/spidev_test.c>`__
 is a test application within the kernel that can be cross compiled to
 show a C application interacting with the SPI peripheral.
-
-.. raw:: html
 

@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Sitara_Uniflash_Quick_Start_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-uniflash-qsg
 
 This document describes a process to program Flash memory (NAND, NOR,
 SPI, QSPI and eMMC) attached to a TI AM335x or AM437x processor on a
@@ -20,12 +20,8 @@ The overall process is broken into two parts:
    a Windows PC and serves the images to the target board that is being
    programmed. This process is detailed below.
 
-| 
-
-| 
-
 .. rubric:: Overview
-   :name: overview
+   :name: overview-uniflash
 
 Uniflash is one part of an overall system that includes the Windows PC
 on which Uniflash runs, a target board including an AM335x/AM437x Sitara
@@ -56,10 +52,6 @@ are really 2 different images that will be used:
    (zImage) and Root Filesystem. This is the image that will execute out
    of flash once it has been written and will vary depending the needs
    of the target board.
-
-| 
-
-| 
 
 .. rubric:: Using Uniflash to Program Flash Images
    :name: using-uniflash-to-program-flash-images
@@ -581,7 +573,4 @@ problems are encountered.
 -  More Uniflash information is available
    `here </index.php/Category:CCS_UniFlash>`__.
 
-| 
-
-| 
 

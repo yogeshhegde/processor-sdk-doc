@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Ethernet
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-pru-icss-ethernet-linux
 
 As of version 3.1.0.6 of the Linux Processor SDK, the evaluation modules
 listed below support additional 100 Mbps Ethernet ports through the
@@ -49,8 +49,6 @@ communication technologies used in a broad range of industrial
 automation equipment. It enables low foot print designs with minimal
 external components and with best in class low power performance.
 
-| 
-
 .. raw:: html
 
    <div>
@@ -85,8 +83,6 @@ The AM437x processors integrate a quad-core Programmable Real-time Unit
 technologies used in a broad range of industrial automation equipment.
 It enables low foot print designs with minimal external components and
 with best in class low power performance.
-
-| 
 
 .. raw:: html
 
@@ -765,8 +761,4 @@ You can use the **ethtool** utility:
 
 -  **ethtool eth2** (for link status)
 -  **ethtool -S eth2** (for hardware statistics)
-
-| 
-
-| 
 

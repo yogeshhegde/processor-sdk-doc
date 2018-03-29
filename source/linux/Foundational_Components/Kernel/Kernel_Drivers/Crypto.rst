@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_Crypto_User_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-core-crypto
 
 The Crypto API Driver is a set of Linux drivers that provide access to
 the hardware cryptographic accelerators available on
@@ -340,6 +340,4 @@ software only implementation can be compared to the previous test.
     Signals delivered: 0
     Page size (bytes): 4096
     Exit status: 0
-
-.. raw:: html
 

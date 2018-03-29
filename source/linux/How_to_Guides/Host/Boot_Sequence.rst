@@ -4,7 +4,7 @@ Boot Sequence
 ====================================
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-boot-sequence
 
 This page describes the boot sequence of an OMAP3 EVM. 
 

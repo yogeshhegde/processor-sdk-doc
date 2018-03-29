@@ -13,7 +13,7 @@ The H/W GPIO controllers available will vary by SoC and system
 configuration.
 
 .. rubric:: Overview
-   :name: overview
+   :name: overview-gpio-driver
 
 The GPIO controllers allow interaction with GPIO pins for input/output
 and interrupt generation.

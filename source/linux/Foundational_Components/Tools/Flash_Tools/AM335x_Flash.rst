@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Sitara_Linux_AM335x_Flash_Programming_Linux_Development
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-am335x-flash-programming
 
 This document describes how to develop a flash imager for the Sitara
 AM335x/AM437x SoCs and how to prepare an image to be flashed. This
@@ -43,6 +43,4 @@ The overall process of programming the flash is broken into two parts:
    a Windows PC and serves the images to the target board that is being
    programmed. This process is detailed in the `Sitara Uniflash Quick
    Start Guide </index.php/Sitara_Uniflash_Quick_Start_Guide>`__.
-
-.. raw:: html
 

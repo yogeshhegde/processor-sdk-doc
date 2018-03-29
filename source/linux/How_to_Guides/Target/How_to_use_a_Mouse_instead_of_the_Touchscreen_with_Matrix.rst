@@ -3,7 +3,7 @@
 How to use a Mouse instead of the Touchscreen with Matrix
 ==================================================================
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-use-mouse-instead-of-touch
 
 A mouse can be used instead of touchscreen input with the Matrix GUI by
 following these steps. It is also possible to use touchscreen and mouse
@@ -81,12 +81,4 @@ two configuration by typing 'y' and rebuild the kernel. You can find
 instructions for rebuilding kernel here:
 
 `Linux Kernel User's Guide </index.php/Linux_Kernel_Users_Guide>`__
-
-| 
-
-| 
-
-| 
-
-| 
 

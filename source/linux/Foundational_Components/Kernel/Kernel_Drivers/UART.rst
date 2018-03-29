@@ -11,7 +11,7 @@ usage of the hardware. The H/W UARTs available will vary by SoC and
 system configuration.
 
 .. rubric:: Overview
-   :name: overview
+   :name: overview-linux-uart
 
 The UART driver can be used to send/receive raw ASCII characters from
 the User Interface as shown by the below diagram.

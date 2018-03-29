@@ -4,7 +4,7 @@ CMEM
 *******************
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-cmem
 
 CMEM is an API (`Reference
 Guide <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/linuxutils/latest/docs/html/cmem_8h.html>`__)
@@ -578,6 +578,4 @@ and GPL v2 for the kernel mode driver.
 
 In CMEM 2.21, the Linux user mode library licensing changed from LGPL to
 BSD. The Linux kernel mode driver continued to be GPL v2.
-
-.. raw:: html
 

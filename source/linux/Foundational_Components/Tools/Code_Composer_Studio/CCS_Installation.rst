@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_CCS_Installation_Guide
 .. rubric:: Overview
-   :name: overview
+   :name: overview-linux-CCS-Installation
 
 Code Composer Studio (CCS) is the IDE integrated with the Processor
 Linux SDK and resides on your host Ubuntu machine. This wiki article

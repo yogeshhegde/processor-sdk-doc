@@ -6,7 +6,7 @@ Keystone Multicore Navigator consists of Packet DMA and Queue Management
 sub systems.
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-netcp
 
 The knav driver consists of 3 drivers
 
@@ -24,8 +24,6 @@ located at
 
 -  include/linux/soc/ti/knav\_dma.h
 -  include/linux/soc/ti/knav\_qmss.h
-
-| 
 
 .. rubric:: Driver Configuration
    :name: driver-configuration
@@ -3944,6 +3942,4 @@ keystone-k2hk-evm.dts or keystone-k2e-evm.dts.
    #. The firmware can be restarted by writing to CPU\_CTRL register,
       POR\_EN bit 29. Set this bit high, then set it low with at least
       10ms in between.
-
-.. raw:: html
 

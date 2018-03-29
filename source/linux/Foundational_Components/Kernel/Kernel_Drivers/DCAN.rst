@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_DCAN_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-dcan
 
 The Controller Area Network is a serial communications protocol which
 efficiently supports distributed real-time control with a high level of
@@ -601,6 +601,4 @@ Transmission or reception.
 +--------+---------------------------------------------+--------------------------------+
 | 2      | drivers/net/can/c\_can/c\_can\_platform.c   | Platform/SoC DCAN bus driver   |
 +--------+---------------------------------------------+--------------------------------+
-
-.. raw:: html
 

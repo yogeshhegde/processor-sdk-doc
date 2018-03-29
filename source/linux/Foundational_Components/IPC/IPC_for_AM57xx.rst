@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_IPC_on_AM57xx
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-ipc-on-am57xx
 
 This article is geared toward AM57xx users that are running Linux on the
 Cortex A15. The goal is to help users understand how to gain entitlement

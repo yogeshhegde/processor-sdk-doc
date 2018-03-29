@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/SGXDbgInfo
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-sgx-dbg
 
 The TI OMAP/AM/DM SGX Graphics Driver is closely tied to the environment
 it is running under, and the configuration it is built with. This

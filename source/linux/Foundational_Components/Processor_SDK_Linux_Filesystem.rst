@@ -5,7 +5,7 @@ Filesystem
 **********************************
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-fs
 
 | The Processor SDK Linux provides Filesystem Images that contain
   programs, scripts, Linux user-space components that abstract various
@@ -113,5 +113,4 @@ Documentation for details.
 .. rubric:: Miscellaneous Documentation
    :name: miscellaneous-documentation
 
-| 
 

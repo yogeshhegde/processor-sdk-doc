@@ -1,12 +1,12 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_Audio_User%27s_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-audio
 
 - This page gives a basic information for audio usage on supported
-boards
+  boards
 
 - More comprehensive information regarding to Linux audio (ALSA, ASoC)
-can be found:
+  can be found:
 
 ::
 
@@ -22,9 +22,9 @@ can be found:
 .. rubric:: Generic commands and instructions
    :name: generic-commands-and-instructions
 
-| Most of the boards have simple audio setup which means we have one
-  sound card with one playback and one capture PCM.
-| To list the available sound cards and PCMs for playback:
+Most of the boards have simple audio setup which means we have one
+sound card with one playback and one capture PCM.
+To list the available sound cards and PCMs for playback:
 
 ::
 
@@ -36,13 +36,14 @@ To list the available sound cards and PCMs for capture:
 
     arecord -l
 
-| In most cases ``-Dplughw:0,0`` is the device we want to use for audio
-  but in case we have several audio devices (onboard + USB for example)
-  one need to specify which device to use for audio:
-  ``-Dplughw:omap5uevm,0`` will use the onboard audio on OMAP5-uEVM
-  board.
-| To play audio on card0's PCM0 and let ALSA to decide if resampling is
-  needed:
+In most cases ``-Dplughw:0,0`` is the device we want to use for audio
+but in case we have several audio devices (onboard + USB for example)
+one need to specify which device to use for audio:
+``-Dplughw:omap5uevm,0`` will use the onboard audio on OMAP5-uEVM
+board.
+
+To play audio on card0's PCM0 and let ALSA to decide if resampling is
+needed:
 
 ::
 
@@ -61,10 +62,10 @@ file):
 
     arecord -Dplughw:0,0 | aplay -Dplughw:0,0
 
-| To request specific format to be used for playback/capture take a look
-  at the help of aplay/arecord and specify the format with ``-f -r -c``
-  and open the hw device not the plughw ``-Dhw:0,0``
-| For example, record 48KHz, stereo 16bit audio:
+To request specific format to be used for playback/capture take a look
+at the help of aplay/arecord and specify the format with ``-f -r -c``
+and open the hw device not the plughw ``-Dhw:0,0``
+For example, record 48KHz, stereo 16bit audio:
 
 ::
 
@@ -232,7 +233,7 @@ Record from Analog Mic IN:
     amixer -c DRA7xxEVM sset 'PGA' 40                               # Adjust Capture volume
 
 .. rubric:: AM335x EVM
-   :name: am335x-evm
+   :name: am335x-evm-audio
 
 | The board uses **tlv320aic3106 codec** connected through **McASP1
   [AXR2 for playback, AXR3 for Capture]** for audio. The board features
@@ -582,6 +583,4 @@ For audio capture from Line-in:
    Davis
 #. `TLV320AIC31 - Low-Power Stereo CODEC with HP
    Amplifier <http://focus.ti.com/lit/ds/symlink/tlv320aic31.pdf>`__
-
-.. raw:: html
 

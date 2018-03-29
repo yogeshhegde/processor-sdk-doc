@@ -3,7 +3,7 @@
 Windows SD Card Creation Guide
 ======================================
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-sd-card
 
 This page details how to use an image file to create a SD Card
 containing the embedded Linux system provided with the Linux SDK. This

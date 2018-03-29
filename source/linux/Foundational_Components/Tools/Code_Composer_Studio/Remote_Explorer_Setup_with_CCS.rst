@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_CCS_Remote_Explorer_Setup
 .. rubric:: Overview
-   :name: overview
+   :name: overview-ccs-remote-explorer
 
 Remote System Explorer (RSE) is an Eclipse plug-in that provides:
 
@@ -40,8 +40,6 @@ prerequisites are met:
 #. You will now have the RSE view opened
 
 .. Image:: ../images/Sitara-Linux-CCS-rse-view.png
-
-| 
 
 .. rubric:: Creating a New Connection
    :name: creating-a-new-connection

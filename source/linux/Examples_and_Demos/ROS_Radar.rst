@@ -95,7 +95,7 @@ ROS between distributed nodes (Sitara and LinuxBox)
 ===================================================
      
 .. rubric:: 1st SSH terminal, to Sitara EVM
-   :name: 1st-ssh-terminal-1
+   :name: 1st-ssh-terminal-1-ros-demo1
 
 Modify /opt/ros/indigo/setup.bash
 
@@ -120,7 +120,7 @@ Then, execute
         roscore
 
 .. rubric:: 2nd SSH terminal, to Sitara EVM 
-   :name: 2nd-ssh-terminal-1
+   :name: 2nd-ssh-terminal-1-demo1
 
 .. code-block:: console
 
@@ -143,7 +143,7 @@ You will see log similar to following:
     [ INFO] [1516637960.131164027]: hello world 5304
 
 .. rubric:: 3rd SSH terminal, to Linux BOX
-   :name: 3rd-ssh-terminal-1
+   :name: 3rd-ssh-terminal-1-demo1
 
 .. code-block:: console
 
@@ -177,7 +177,7 @@ mmWave ROS node on Sitara and RViz on Linux Box
 ===============================================
 
 .. rubric:: 1st SSH terminal, to Sitara EVM
-   :name: 1st-ssh-terminal-1
+   :name: 1st-ssh-terminal-1-ros-demo2
 
 Start roscore, only if it is not already started
 
@@ -186,7 +186,7 @@ Start roscore, only if it is not already started
 
 
 .. rubric:: 2nd SSH terminal, to Sitara EVM
-   :name: 2nd-ssh-terminal-1
+   :name: 2nd-ssh-terminal-1-ros-demo2
 
 .. code-block:: console
 

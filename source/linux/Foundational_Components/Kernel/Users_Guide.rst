@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
 .. rubric:: Overview
-   :name: overview
+   :name: overview-linux-kernel-ug
 
 This wiki will cover the basic steps for building the Linux kernel.
 

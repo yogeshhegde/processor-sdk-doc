@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Remoteproc_and_RPMsg
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-pru-icss-remoteproc-rpmsg
 
 .. raw:: html
 
@@ -39,10 +39,6 @@ All of these services are provided through a combination of the pruss,
 pru\_rproc, and rpmsg\_pru Linux drivers that TI provides in the
 `Processor
 SDK </index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__.
-
-| 
-
-| 
 
 .. rubric:: Remoteproc
    :name: remoteproc

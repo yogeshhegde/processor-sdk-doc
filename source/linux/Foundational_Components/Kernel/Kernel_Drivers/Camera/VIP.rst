@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_VIP_User%27s_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-vip-linux-ug
 
 This page gives a basic description of Video Input Port (VIP) hardware,
 the Linux kernel driver (**ti-vip**) and various TI boards which uses
@@ -20,8 +20,6 @@ The VIP IP is only available on the following TI SoCs or SoC families:
 
 -  AM5x
 -  DRA7x
-
-| 
 
 .. rubric:: Hardware Architecture
    :name: hardware-architecture
@@ -153,36 +151,37 @@ work with new cameras by doing simple device tree modifications.
 Following is an example showcasing the DT entries of VIP device node and
 its usage when interfacing different video sources.
 
-+--------------------------------------+--------------------------------------+
-| VIP device definition                | Camera device definition             |
-+======================================+======================================+
-| ::                                   | ::                                   |
-|                                      |                                      |
-|     vip1 {                           |     ov10633@37 {                     |
-|         #address-cells = <1>;        |         compatible = "ovti,ov10633"; |
-|         #size-cells = <0>;           |         reg = <0x37>                 |
-|         status = "okay";             |         ...                          |
-|         ports {                      |         port {                       |
-|             vin1a: port@0 {          |             cam1: endpoint {         |
-|                  reg = <0>;          |                 remote-endpoint = <& |
-|                  #address-cells = <1 | vin1a>;                              |
-| >;                                   |                 hsync-active = <1>;  |
-|                  #size-cells = <0>;  |                 vsync-active = <1>;  |
-|                  status = "okay";    |                 pclk-sample = <0>;   |
-|                  endpoint@0 {        |             };                       |
-|                      remote-endpoint |         };                           |
-|  = <&cam1>;                          |     };                               |
-|                  };                  |                                      |
-|             };                       |                                      |
-|             ...                      |                                      |
-|             vin2a: port@2 {          |                                      |
-|                  ...                 |                                      |
-|                  reg = <2>;          |                                      |
-|             };                       |                                      |
-|             ...                      |                                      |
-|         };                           |                                      |
-|     };                               |                                      |
-+--------------------------------------+--------------------------------------+
++----------------------------------------------------+---------------------------------------------+
+| VIP device definition                              | Camera device definition                    |
++====================================================+=============================================+
+| ::                                                 | ::                                          |
+|                                                    |                                             |
+|     vip1 {                                         |     ov10633@37 {                            |
+|         #address-cells = <1>;                      |         compatible = "ovti,ov10633";        |
+|         #size-cells = <0>;                         |         reg = <0x37>                        |
+|         status = "okay";                           |         ...                                 |
+|         ports {                                    |         port {                              |
+|             vin1a: port@0 {                        |             cam1: endpoint {                |
+|                  reg = <0>;                        |                 remote-endpoint = <&vin1a>; |
+|                  #address-cells = <1>;             |                 hsync-active = <1>;         |
+|                                                    |                 vsync-active = <1>;         |
+|                  #size-cells = <0>;                |                 pclk-sample = <0>;          |
+|                  status = "okay";                  |                                             |
+|                  endpoint@0 {                      |             };                              |
+|                      remote-endpoint = <&cam1>;    |         };                                  |
+|                                                    |     };                                      |
+|                  };                                |                                             |
+|             };                                     |                                             |
+|             ...                                    |                                             |
+|             vin2a: port@2 {                        |                                             |
+|                  ...                               |                                             |
+|                  reg = <2>;                        |                                             |
+|             };                                     |                                             |
+|             ...                                    |                                             |
+|         };                                         |                                             |
+|     };                                             |                                             |
++----------------------------------------------------+---------------------------------------------+
+
 
 .. rubric:: V4L2 asynchronous subdevice registration
    :name: v4l2-asynchronous-subdevice-registration
@@ -765,6 +764,4 @@ are expecting, then verify the pinmux.
    :name: ti-board-specific-information
 
 None at this time.
-
-.. raw:: html
 

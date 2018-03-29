@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_SATA_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-core-sata
 
 | Serial ATA (Advance Technology Attachment)(SATA) is a computer bus
   interface that connects host bus adapters to mass storage devices such
@@ -147,7 +147,7 @@ blank entry under mount point indicates the partition has not been
 mounted.
 
 .. rubric:: U-Boot
-   :name: u-boot
+   :name: u-boot-linux-core-sata
 
 Information regarding accessing SATA hard drive in U-boot can be found
 in the Linux Core U-boot User's Guide SATA Section.

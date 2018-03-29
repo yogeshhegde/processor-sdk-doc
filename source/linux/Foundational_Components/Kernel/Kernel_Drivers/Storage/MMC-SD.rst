@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_MMC/SD_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-core-mmc
 
 The multimedia card high-speed/SDIO (MMC/SDIO) host controller provides
 an interface between a local host (LH) such as a microprocessor unit
@@ -25,7 +25,6 @@ Main features of the MMC/SDIO host controllers:
    -  Maximum operating frequency of 48MHz
    -  MMC/SD card hot insertion and removal
 
-| 
 
 .. Image:: ../images/Mmcsd_Driver.png
 

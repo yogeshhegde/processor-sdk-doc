@@ -1,18 +1,17 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_VPE_User%27s_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-core-vpe
 
 - This page gives a basic description of VPE mem to mem video IP found
-in
-`devices </index.php/Linux_Core_VPE_User%27s_Guide#Supported_Devices>`__,
-the linux kernel drivers which implement it, how to build the drivers as
-modules or built-in, and how one can test and use the drivers.
+  in `devices </index.php/Linux_Core_VPE_User%27s_Guide#Supported_Devices>`__,
+  the linux kernel drivers which implement it, how to build the drivers as
+  modules or built-in, and how one can test and use the drivers.
 
 - The driver described here is the VPE v4l2 mem-2-mem driver.
 
 - The guide applies to both 3.12 and the current mainline kernel.
-Currently, DRA7x requires additional patches for hwmod and DT support
-for mainline.
+  Currently, DRA7x requires additional patches for hwmod and DT support
+  for mainline.
 
 - For a generic linux kernel guide, try:
 
@@ -353,6 +352,4 @@ likely omapdrm) instead of allocating by itself via the videobuf2 layer.
 
 Debug log can be enabled in the VPE driver by adding “#define DEBUG” at
 the first line of drivers/media/platform/ti-vpe/vpe.c.
-
-.. raw:: html
 

@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_ADC_Users_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-core-adc
 
 An analog-to-digital converter (abbreviated ADC) is a device that uses
 sampling to convert a continuous quantity to a discrete time
@@ -57,7 +57,7 @@ Formula:
    :name: accessing-adc-pins-on-ti-evms
 
 .. rubric:: **AM335x EVM**
-   :name: am335x-evm
+   :name: am335x-evm-adc
 
 On top of EVM, on LCD daughter board, J8 connector can be used, where
 ADC channel input AIN0-AN7 pins are brought out. For further information

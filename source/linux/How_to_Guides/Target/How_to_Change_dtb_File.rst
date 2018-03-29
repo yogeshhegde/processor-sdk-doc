@@ -4,14 +4,12 @@ How to Change dtb File
 =========================================
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-change-dtb-file
 
 In some scenarios, it is required to manually change the dtb file used
 by the target. For example, AM437X GP EVM uses LCD display by default.
 But it also supports HDMI display. In order to switch from LCD display
 to HDMI display, user needs to set the dtb file as desired.
-
-| 
 
 .. rubric:: Specify dtb File
    :name: specify-dtb-file
@@ -36,6 +34,4 @@ default am437x-gp-evm.dtb.
 
 After the dtb file is changed, reboot the EVM so that the new dtb file
 will be used for booting the EVM.
-
-.. raw:: html
 

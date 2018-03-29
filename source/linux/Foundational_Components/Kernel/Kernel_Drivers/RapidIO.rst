@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_RapidIO_User%27s_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-rapidio
 
 The Keystone 2 Hawking/Kepler (K2HK) SoC includes a RapidIO subsystem.
 This subsystem consists of the a Serial RapidIO module, a 4 lane SerDes
@@ -282,6 +282,4 @@ EVM.
                  ret = write(mport_fd, p + len, sizeof(sevent) - len);
                  len += ret;
          }
-
-.. raw:: html
 

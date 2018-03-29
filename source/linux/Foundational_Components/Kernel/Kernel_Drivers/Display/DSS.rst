@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_DSS_User%27s_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-core-dss-ug
 
 This page gives a basic description of DSS hardware, the Linux kernel
 drivers (omapdss and omapdrm) and various TI boards that use DSS. The
@@ -592,6 +592,4 @@ On the DRA7 EVM, DSS outputs are connected as follows:
     HDMI -> HDMI connector.
 
 The used LCD panel is chosen by selecting the appropriate .dtb file.
-
-.. raw:: html
 

@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_NAND_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-core-nand
 
 .. rubric::  **TI infrastructure for NAND Flash devices**
    :name: ti-infrastructure-for-nand-flash-devices
@@ -338,6 +338,7 @@ Transfer mode can be configured in linux-kernel via DT binding
 **<ti,nand-xfer-type>**
 Refer: Linux kernel\_docs @
 $LINUX/Documentation/devicetree/bindings/mtd/gpmc-nand.txt
+
 .. rubric:: **DMA vs Non DMA Mode (PIO Mode)**
    :name: dma-vs-non-dma-mode-pio-mode
 
@@ -396,6 +397,7 @@ have larger impact on NAND throughput than others.
    mem\_common.c
 
 *gpmc\_init()* :: *struct gpmc\_cfg*
+
 .. rubric:: **Tweaking UBIFS**
    :name: tweaking-ubifs
 

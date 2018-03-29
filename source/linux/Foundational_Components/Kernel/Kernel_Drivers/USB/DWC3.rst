@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_DWC3_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-core-dwc3-ug
 
 DWC3 is a SuperSpeed (SS) USB 3.0 Dual-Role-Device (DRD) from Synopsys.
 
@@ -13,8 +13,6 @@ The SuperSpeed USB controller features:
    Full-Speed (FS), and Low-Speed (LS)
 -  Internal DMA controller
 -  LPM protocol in USB 2.0 and U0, U1, U2, and U3 states for USB 3.0
-
-| 
 
 .. rubric:: **TI SoC Integration**
    :name: ti-soc-integration
@@ -634,6 +632,4 @@ For general Linux USB subsystem
 
 USB Debugging
 - `elinux.org/images/1/17/USB\_Debugging\_and\_Profiling\_Techniques.pdf <http://elinux.org/images/1/17/USB_Debugging_and_Profiling_Techniques.pdf>`__
-
-.. raw:: html
 

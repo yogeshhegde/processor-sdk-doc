@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/OpenCV
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-opencv
 
 | `OpenCV <http://opencv.org/>`__ (Open Source Computer Vision Library)
   is an open-source BSD-licensed library that includes several hundreds
@@ -43,12 +43,6 @@ accuracy of the implementation.
 
 This document provides instructions show how to load and run unit tests
 of TI’s OpenCV implementation.
-
-| 
-
-| 
-
-| 
 
 .. rubric:: OpenCV Modules Supported By TI
    :name: opencv-modules-supported-by-ti
@@ -1463,6 +1457,4 @@ DSP cores), these steps should be followed:
            EXAMPLE (EVM, execute from folder /usr/share/OpenCV/titestsuite): python ./run.py --perf_force_samples=5 -t imgproc --gtest_filter="*Sobel*" (run only Sobel filters from imgproc module)
            EXAMPLE (EVM, execute from folder /usr/share/OpenCV/titestsuite): python ./run.py --gtest_list_tests -t imgproc (list all the available performance tests, for imgproc module)
            EXAMPLE (EVM, execute from folder /usr/share/OpenCV/titestsuite): python ./run.py --perf_force_samples=5 -t imgproc --gtest_filter="*threshold/20*" (run single test case)
-
-.. raw:: html
 

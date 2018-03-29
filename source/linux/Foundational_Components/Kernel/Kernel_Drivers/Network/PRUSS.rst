@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_PRUSS_Ethernet_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-pruss-ethernet-ug
 
 All the Industrial Development Kit (IDK) boards can support 2 Ethernet
 ports per PRUSS (Programmable Real-time Unit Subsystem). Although it is
@@ -29,7 +29,7 @@ Below figure shows the PRU Ethernet Driver architecture.
 .. Image:: ../images/PRU_ethernet_architecture.png
 
 .. rubric:: **Overview**
-   :name: overview
+   :name: overview-kernel-core-pruss
 
 Each PRUSS instance contains 2 PRU cores and 2 Ethernet PHY interfaces.
 This means that each PRU core can fully own one Ethernet port allowing
@@ -104,12 +104,12 @@ This board has 2 Gigabit (CPSW) Ethernet ports and 4 PRUSS Ethernet
 ports. Due to pinmux limitations it can support either of the following
 configurations
 
--  - Jumper J51 placed. LCD + 2 Gigabit (CPSW) + 2 PRUSS Ethernet ports
+-  Jumper J51 placed. LCD + 2 Gigabit (CPSW) + 2 PRUSS Ethernet ports
    (PRU2\_ETH0 and PRU2\_ETH1)
 
 **OR**
 
--  - Jumper J51 removed. No LCD, 2 Gigabit (CPSW) + 4 PRUSS Ethernet
+-  Jumper J51 removed. No LCD, 2 Gigabit (CPSW) + 4 PRUSS Ethernet
    ports.
 
 NOTE: Jumper must be configured before powering up the board.
@@ -128,8 +128,7 @@ the supplied firmware.
 .. rubric:: Kernel configuration
    :name: kernel-configuration
 
-To enable/disable PRU Ethernet driver support, start the *Linux Kernel
-Configuration* tool:
+To enable/disable PRU Ethernet driver support, start the Linux Kernel Configuration tool:
 
 ::
 
@@ -137,7 +136,7 @@ Configuration* tool:
 
 Make sure Remoteproc and PRUSS core driver is enabled.
 
-Select *Device drivers* from the main menu.
+Select Device drivers from the main menu.
 
 ::
 
@@ -147,7 +146,7 @@ Select *Device drivers* from the main menu.
         File systems --->
         ...
 
-Select *Remoteproc drivers*.
+Select Remoteproc drivers.
 
 ::
 
@@ -167,7 +166,7 @@ Enable the below drivers.
         <M>   Keystone Remoteproc support
         ...
 
-Go back to the Device drivers menu *Network device support*.
+Go back to the Device drivers menu Network device support.
 
 ::
 
@@ -177,7 +176,7 @@ Go back to the Device drivers menu *Network device support*.
         [ ] Open-Channel SSD target support  ----
         ...
 
-Select *Ethernet driver support*.
+Select Ethernet driver support.
 
 ::
 
@@ -187,7 +186,7 @@ Select *Ethernet driver support*.
         < >   FDDI driver support
         ...
 
-Select *TI PRU Ethernet driver*.
+Select TI PRU Ethernet driver.
 
 ::
 
@@ -196,8 +195,6 @@ Select *TI PRU Ethernet driver*.
         <M>     TI PRU Ethernet EMAC/Switch driver
         [ ]   VIA devices
         ...
-
-| 
 
 .. rubric:: **Driver Usage & Testing**
    :name: driver-usage-testing

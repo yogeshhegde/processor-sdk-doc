@@ -451,7 +451,7 @@ development.
    -  Double click on **Version Name** and give the Qt Version a
       descriptive name such as **QT 5.5 Sitara** See image below.
 
-   |Sitara Linux QT Options.jpeg|
+   .. Image:: ../images/Sitara_Linux_QT_options.jpeg
 
    .. raw:: html
 
@@ -550,8 +550,8 @@ development.
          password field blank**.
       -  Click **Next**
 
-      |Sitara Linux options Generic Linux Device Configuration
-      Setup.jpeg|
+      .. Image:: ../images/Sitara_Linux_options_Generic_Linux_Device_Configuration_Setup.jpeg
+
    -  Click **Finish**. You should see that the target test passed, so
       you can close that window.
 
@@ -790,7 +790,8 @@ scratch.
    -  **Select the entire ui** as shown below.
    -  **Edit the Geometry values to Width = 440 and Height = 230** as
       shown.
-      |Resize the GUI screen size|
+
+   .. Image:: ../images/Sitara-Linux_QT_Resize_screen.png
 
 #. Next we will add the Tab Widget. Just like the label widget, drag it
    over to the ui.

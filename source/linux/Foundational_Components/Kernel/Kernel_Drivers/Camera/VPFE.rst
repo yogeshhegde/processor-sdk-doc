@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_VPFE_User%27s_Guide
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-vpfe
 
 | The Video Processing Front End (VPFE) is a key component for image
   capture applications. The capture module provides the system interface
@@ -392,7 +392,7 @@ This an excerpt from the arch/arm/boot/dts/am437x-gp-evm.dts
            pinctrl-1 = <&vpfe0_pins_sleep>;
 
      
-           /* Camera port */
+           /* Camera port \*/
            port {
                    vpfe0_ep: endpoint {
                            remote-endpoint = <&ov2659_0>;
@@ -521,6 +521,4 @@ In addition vpfe also has specific debug log which can be enabled as
 follows:
 
 -  echo 3 > /sys/module/am437x\_vpfe/parameters/debug
-
-.. raw:: html
 

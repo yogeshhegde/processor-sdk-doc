@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_PWM_User%27s_Guide
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-core-pwm-ug
 
 | Linux has support for Enhanced Pulse Width Modulator (ePWM) and
   Auxiliary Pulse Width Modulator (APWM) modules. APWM is Enhanced
@@ -205,6 +205,4 @@ Setup Signal Polarity
 .. raw:: html
 
    </div>
-
-.. raw:: html
 

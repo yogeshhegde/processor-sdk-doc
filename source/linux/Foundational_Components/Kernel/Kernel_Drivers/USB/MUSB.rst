@@ -7,7 +7,7 @@ platform with supplied pre-built binaries. Please refer to `USB Quick
 Start </index.php/Am335x-USB-quick-start>`__
 
 .. rubric:: **Introduction**
-   :name: introduction
+   :name: introduction-linux-core-musb-ug
 
 The USB User's Guide provides information about
 
@@ -182,6 +182,4 @@ This behaviour is expected.
 -  The Mentor USB driver can be built as module or built into kernel.
    For more information refer to `USB
    configuration </index.php/UsbgeneralpageLinuxCore>`__ 
-
-.. raw:: html
 
