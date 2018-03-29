@@ -193,8 +193,10 @@ is aborted by asserting the TX\_RESET which will reset the transmit FIFO
 and clear all its contents and therefore corrupt the frame being
 cut-though.
 
-Memory Map
-----------
+.. _HSR_PRP_Firmware_Memory_Map_label:
+
+HSR/PRP Memory Map
+------------------
 
 .. rubric:: Shared RAM Memory Map
    :name: shared-ram-memory-map

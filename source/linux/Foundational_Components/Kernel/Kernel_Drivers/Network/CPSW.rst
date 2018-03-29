@@ -1,6 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_CPSW_User%27s_Guide
-.. rubric:: **Introduction**
-   :name: introduction
+
+Introduction
+"""""""""""""
 
 TI Common Platform Ethernet Switch (CPSW) is a three port switch (one
 CPU port and two external ports). The CPSW or Ethernet Switch driver
@@ -1434,8 +1435,10 @@ after:
 
 | 
 
-.. rubric:: Common Platform Time Sync (CPTS) module
-   :name: common-platform-time-sync-cpts-module
+.. _PLSDK_CPTS_Module-label:
+
+Common Platform Time Sync (CPTS) module
+""""""""""""""""""""""""""""""""""""""""
 
 The Common Platform Time Sync (CPTS) module is used to facilitate host
 control of time sync operations. It enables compliance with the IEEE

@@ -342,6 +342,8 @@ MAC address and IP address from the same subnet.
     ifconfig eth2 192.168.2.20
     ifconfig eth3 192.168.3.20
 
+.. _PLSDK_PRP_EMAC_Mode-label:
+
 PRP EMAC mode
 """"""""""""""
 

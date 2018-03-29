@@ -29,11 +29,6 @@ PTP
 *********************************
 .. include:: Industrial_Protocols/PTP/PTP.rst
 
-PTP Boundary Clock
-=================================
-.. include:: Industrial_Protocols/PTP/PTP_Boundary_Clock.rst
-
-
 **********************************
 RSTP
 **********************************
