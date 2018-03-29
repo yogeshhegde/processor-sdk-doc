@@ -1326,5 +1326,3 @@ UART resume needs multiple things:
            echo enabled > /sys/devices/platform/44000000.ocp/48020000.serial/tty/ttyS2/power/wakeup
      c) echo mem > /sys/power/state
 
-.. raw:: html
-

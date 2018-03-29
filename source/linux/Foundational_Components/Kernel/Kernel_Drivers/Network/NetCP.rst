@@ -958,13 +958,11 @@ rftclk frequency according to the following
 
 a. if M/S/D is defined in devicetree bindings, use them; otherwise
 b. if the rftclk frequency matches one of the frequencies in the table
-above, select the corresponding M/S/D; otherwise
+   above, select the corresponding M/S/D; otherwise
 c. if the rftclk frequency differs from one of the frequencies in the
-table above by less than 1 MHz, select the M/S/D that corresponds to the
-frequency with the minimum difference; otherwise
-d. call clocks\_calc\_mult\_shift( ) to calculate the M & S and set D =
-1
-| 
+   table above by less than 1 MHz, select the M/S/D that corresponds to the
+   frequency with the minimum difference; otherwise
+d. call clocks\_calc\_mult\_shift( ) to calculate the M & S and set D = 1
 
 | Note 5: (**WARNING**) On Keystone 2 platforms, the default rftclk
   select is the internal SYSCLK2. On K2L, core pll is configured (based
@@ -2985,10 +2983,8 @@ bindings. These bindings are documented in the kernel itself at
 The QoS implementation allows for an abstracted tree of scheduler nodes
 represented in device tree form. An example is depicted below
 
-| 
 .. Image:: ../images/Qos-tree.jpg
 
-| 
 | At each node, shaping and dropping parameters may be specified, within
   limits of the constraints outlined in this document. The following
   sections detail the device tree attributes applicable for this
@@ -3251,26 +3247,20 @@ early drop.
 -  the input queues to this node (valid for leaf nodes only)
 -  the output queue from this node
 -  the output rate for the node. The current value can be shown by:  
-   "cat output\_rate".  The value can be modified by:  *echo  "<val>" >
-   output\_rate*
+   "cat output\_rate".  The value can be modified by:  **echo  "<val>" > output\_rate**
 -  the overhead bytes parameter for the node.  The current value can be
    shown by: "cat overhead\_bytes". The value can be modified by: 
-   *echo "<val>" > overhead\_bytes
-   *
+   **echo "<val>" > overhead\_bytes**
 -  burst size .  The current value can be shown by: "cat burst\_size".
-   The value can be modified by: *echo "<val>" > burst\_size
-   *
+   The value can be modified by: **echo "<val>" > burst\_size**
 -  drop\_policy . This is the name of the drop policy to be used.
 -  stats\_class associated with node.  This is the name of stats class
    to be used
 -  the priority of the node (for strict priority nodes only).  The
    current value can be shown by: "cat priority". The value can be
-   modified by:  *echo "<val>"  > priority*
+   modified by:  **echo "<val>"  > priority**
 -  weight : for wrr nodes.  The current value can be shown by: "cat
-   weight". The value can be modified by: *echo "<val>" > weight
-   *
-
-| 
+   weight". The value can be modified by: **echo "<val>" > weight**
 
 .. rubric:: Debug Filesystem support
    :name: debug-filesystem-support
@@ -3287,8 +3277,6 @@ first).
 
 | 
 | The appropriate path and contents are shown below
-
-| 
 
 ::
 

@@ -128,13 +128,12 @@ video/image codecs, utilizing framework components and codec engine.
    </div>
 
 **Overview of the Multimedia Software Stack**
-| The Multimedia software contains many software components. Some are
-  developed by Texas Instruments and some are developed in and by the
-  open source community(White). TI contributes, and sometimes even
-  maintains, some of these open source community projects, but the
-  support model is different from a project developed solely by TI.
 
-| 
+The Multimedia software contains many software components. Some are
+developed by Texas Instruments and some are developed in and by the
+open source community(White). TI contributes, and sometimes even
+maintains, some of these open source community projects, but the
+support model is different from a project developed solely by TI.
 
 .. rubric:: Gstreamer Pipelines for Multimedia
    :name: gstreamer-pipelines-for-multimedia

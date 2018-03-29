@@ -535,10 +535,10 @@ Linux dts file.** For example for the AM57xx EVM:
            };
 
 | You are able to change both the size and location. **Be careful not to
-  overlap any other carveouts!
-  **
-| |Note|\ **Note:** The **two** location entries for a given DSP must be
-  identical!
+  overlap any other carveouts!**
+
+| |Note|\ **Note:** The **two** location entries for a given DSP must be identical!
+
 | Additionally, when you change the carveout location, there is a
   corresponding change that must be made to the resource table. For
   starters, if you're making a memory change you will need a **custom**
@@ -567,14 +567,6 @@ corresponding CMA.
     #elif defined (VAYU_DSP_2)
     #define PHYS_MEM_IPC_VRING      0x9F000000
     #endif
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 |Note|\ **Note:** The PHYS\_MEM\_IPC\_VRING definition from the resource
 table must match the address of the associated CMA carveout!
@@ -911,10 +903,11 @@ Linux dts file.** For example for the AM57xx EVM:
            };
 
 | You are able to change both the size and location. **Be careful not to
-  overlap any other carveouts!
-  **
+  overlap any other carveouts!**
+
 | |Note|\ **Note:** The **two** location entries for a given carveout
   must be identical!
+
 | Additionally, when you change the carveout location, there is a
   corresponding change that must be made to the resource table. For
   starters, if you're making a memory change you will need a **custom**
@@ -2396,8 +2389,6 @@ No longer have shared folder so change include path
     //#include "../shared/AppCommon.h"
     #include "../AppCommon.h"
 
-| 
-
 .. rubric:: Handling AMMU (L1 Unicache MMU) and L2 MMU
    :name: handling-ammu-l1-unicache-mmu-and-l2-mmu
 
@@ -2411,7 +2402,6 @@ examples setup the memory access using these MMUs which the users need
 to manage when integrating the components. This difference is
 highlighted below:
 
-| 
 .. Image:: ../images/IPU_MMU_Peripheral_access.png
 
 -  PDK examples use addresses (0x4X000000) to peripheral registers and

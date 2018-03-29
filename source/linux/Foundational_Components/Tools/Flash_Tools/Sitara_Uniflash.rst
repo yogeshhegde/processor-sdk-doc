@@ -380,18 +380,18 @@ problems are encountered.
    new network interface. This can typically be seen in the lower
    right-hand corner of the toolbar:
 
-.. Image:: ../images/New_network_connection.png
+   .. Image:: ../images/New_network_connection.png
 
 #. This new interface needs to be configured with a static IP address.
    **Click** on the Networking icon in the toolbar, and then click on
    the **Open Network and Sharing Center** link.
 
-.. Image:: ../images/Open_network_sharing_center.png
+   .. Image:: ../images/Open_network_sharing_center.png
 
 #. Inside the Network and Sharing Center, click on the new Internet
    Connection:
 
-.. Image:: ../images/Internet_connection_2.png
+   .. Image:: ../images/Internet_connection_2.png
 
    **Note: The number next to the “Local Area Connection” will depend on
    the number of network connections the computer has. If this is the
@@ -403,12 +403,12 @@ problems are encountered.
    then this number could be higher.**
 #. In the Connection Dialog, **Click** on **Properties**.
 
-.. Image:: ../images/Local_area_connection_2_properties.png
+   .. Image:: ../images/Local_area_connection_2_properties.png
 
 #. Select **Internet Protocol Version 4 (TCP/IPv4)** and choose
    **Properties**.
 
-.. Image:: ../images/Tcpipv4_properties.png
+   .. Image:: ../images/Tcpipv4_properties.png
 
 #. Set the port to use a Static IP Address by selecting **Use the
    following IP Address:** and changing the **IP Address:** to
@@ -416,7 +416,7 @@ problems are encountered.
    Interface IP** setting in Uniflash. Verify that the **Subnet Mask**
    is set to 255.255.255.0 and click **OK**.
 
-.. Image:: ../images/Ip_address.png
+   .. Image:: ../images/Ip_address.png
 
    **Note: It is possible to use other IP addresses. However, the IP
    address used needs to match the Uniflash configuration. If you prefer
@@ -424,25 +424,25 @@ problems are encountered.
    as well.**
 #. Click **Close**.
 
-.. Image:: ../images/Local_Area_Connection_Properties_close.png
+   .. Image:: ../images/Local_Area_Connection_Properties_close.png
 
 #. Click **Close** one more time to get back to the Network Manager.
    Let's leave Network Manager open for now.
 
-.. Image:: ../images/Local_Area_Connection_Status_close.png
+   .. Image:: ../images/Local_Area_Connection_Status_close.png
 
 #. In Uniflash, enable the flashing capability by clicking on **Start
    Flashing**.
 
-.. Image:: ../images/Uniflash_start_flashing.png
+   .. Image:: ../images/Uniflash_start_flashing.png
 
 #. Depending on your Windows Firewall settings, you may get the below
    two warnings for the servers being used (opendhcp and opentftp). If
    so, please click **Allow access**.
 
-.. Image:: ../images/Windows_Security_Alert_opendhcp.png
+   .. Image:: ../images/Windows_Security_Alert_opendhcp.png
 
-.. Image:: ../images/Windows_Security_Alert_opentftp.png
+   .. Image:: ../images/Windows_Security_Alert_opentftp.png
 
 #. Now that the IP connection has been configured, the target board
    should request the first file from the Uniflash via TFTP over
@@ -453,6 +453,7 @@ problems are encountered.
    not complete quickly enough. Now that it is configured, you should be
    able to progress to the next steps.
    :|Flash Process Started|
+
 #. Once the first file is transferred from Host to Target, it will take
    over execution on the target board from the ROM on the Sitara device.
    This will cause another instance of the USB RNDIS driver to get
@@ -462,16 +463,17 @@ problems are encountered.
    section. If this does not happen, and the device driver fails to
    associate properly, you'll need to use the steps above to install the
    USB driver for the new device.
+
 #. When the second instance of the driver comes up, the new network
    interface will need to be configured like we did above. **Open the
    Network Connection and Sharing Center, if it is not already open.**
 
-.. Image:: ../images/Open_network_sharing_center.png
+   .. Image:: ../images/Open_network_sharing_center.png
 
 #. Inside the Network and Sharing Center, click on the new Internet
    Connection:
 
-.. Image:: ../images/Local_area_connection_3.png
+   .. Image:: ../images/Local_area_connection_3.png
 
    **Note: The number next to the “Local Area Connection” will depend on
    the number of network connections the computer has. If this is the
@@ -482,14 +484,15 @@ problems are encountered.
    be #3. However, if the computer has multiple connections already,
    then this number could be higher. Each new USB connection can
    increment this number.**
+
 #. In the Connection Dialog, **Click** on **Properties**.
 
-.. Image:: ../images/Local_Area_Connection_3_Properties.png
+   .. Image:: ../images/Local_Area_Connection_3_Properties.png
 
 #. Select **Internet Protocol Version 4 (TCP/IPv4)** and choose
    **Properties**.
 
-.. Image:: ../images/Tcpipv4_properties.png
+   .. Image:: ../images/Tcpipv4_properties.png
 
 #. Set the port to use a Static IP Address by selecting **Use the
    following IP Address:** and changing the **IP Address:** to
@@ -497,27 +500,28 @@ problems are encountered.
    Interface IP** setting in Uniflash. Verify that the **Subnet Mask**
    is set to 255.255.255.0 and click **OK**.
 
-.. Image:: ../images/Ip_address.png
+   .. Image:: ../images/Ip_address.png
 
    **Note: It is possible to use other IP addresses. However, the IP
    address used needs to match the Uniflash configuration. If you prefer
    to use another address, you will need to change those configurations
    as well.**
+
 #. Click “No” if asked to remove other static configurations. Since we
    are using the same IP address for both RNDIS connections, Windows is
    trying to let us know that this is generally not a good idea.
    However, in this situation, the configuration ensures that both
    interfaces won’t be used at the same time.
 
-.. Image:: ../images/Microsoft_TCP_IP.png
+   .. Image:: ../images/Microsoft_TCP_IP.png
 
 #. Click **Close**.
 
-.. Image:: ../images/Local_Area_Connection_Properties_close.png
+   .. Image:: ../images/Local_Area_Connection_Properties_close.png
 
 #. Click **Close** one more time to get back to the Network Manager.
 
-.. Image:: ../images/Local_Area_Connection_Status_close.png
+   .. Image:: ../images/Local_Area_Connection_Status_close.png
 
 #. Now that everything is configured, the process should be able to
    complete. Take a look at Uniflash and you should see the process
@@ -528,8 +532,10 @@ problems are encountered.
    :|Flash Process Starting|
    Until it completes:
    :|Flash Process Complete|
+
 #. When the flash process is complete, simply disconnect the target
    board. It should be flashed and ready for further testing.
+
 #. To flash another target board, simply make a connection between it
    and the Host PC by plugging a new powered target board into the USB
    cable. The board should start flashing automatically if powered and

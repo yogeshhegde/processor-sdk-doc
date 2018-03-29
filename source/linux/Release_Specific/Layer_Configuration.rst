@@ -1,6 +1,6 @@
-*******************
-Layer Configuration
-*******************
+**************************
+Yocto Layer Configuration
+**************************
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Layer_Configuration
 

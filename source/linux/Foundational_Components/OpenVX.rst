@@ -160,7 +160,7 @@ Following TIOVX components are present in EVM filesystem:
 | DSP firmware             | /lib/firmware/dra7-dsp1- | DSP firmware including   |
 |                          | fw.xe66.openvx,          | DSP side of TIOVX        |
 |                          |                          | framwork implementation, |
-|                          | | /lib/firmware/dra7-dsp | IPC implementation,      |
+|                          | /lib/firmware/dra7-dsp   | IPC implementation,      |
 |                          | 2-fw.xe66.openvx         | DSP kernels (part of     |
 |                          |                          | VXLIB DSP library) - for |
 |                          |                          | DSP1. This firmware is   |
@@ -321,8 +321,4 @@ evaluation.
 ::
 
     MACHINE=am57xx-evm bitbake tiovx-app-host 
-
-| 
-
-.. raw:: html
 

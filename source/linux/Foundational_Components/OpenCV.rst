@@ -156,7 +156,7 @@ implementation of OpenCV. The prohibited list allows us to prevent
 certain OpenCL kernels from executing on the DSP. The kernels are
 prevented to execute on the DSP if they did not pass the accuracy tests.
 
-| 
+ 
 .. Image:: ../images/FlowChart3.jpg
 
 .. rubric:: Example of OpenCL offload
@@ -296,9 +296,6 @@ Here is an example:
   are from AM57X build and run and can be used as a reference for build
   and run OpenCV test for any other TI devices from the above list
 
-| 
-| ****
-
 .. rubric:: Unit Tests Prerequisites
    :name: unit-tests-prerequisites
 
@@ -418,20 +415,15 @@ from
 | From the OpenCV directory do the following: ***cd titestsuit*** and
   then ***source setupEnv.sh*** . See the screen shot below.
 
-| 
+ 
 .. Image:: ../images/Environment1.jpg
 
-| 
-
-| 
 | The script runtests run all the unit tests. From the titestsuit
   directory do ***./runtests*** . The unit tests starts executing. The
   screen will show the following:
 
-| 
 .. Image:: ../images/RunTests1.jpg
 
-| 
 | **Notes:**
 
 #. Currently the last three tests in the script (videoio) do not run on
@@ -441,28 +433,15 @@ from
    /usr/share/OpenCV/titestsuite. The start of the log file looks like
    the following:
 
-| 
-
-| 
 .. Image:: ../images/Logfile.jpg
-
-| 
-
-| 
-
-| 
 
 .. rubric:: Reports and Results
    :name: reports-and-results
 
 Summary of accuracy test results on 66AK2H12 and AM57x platforms
 
-| 
-
-| 
-
 +---------------+--------------+-----------------------------------+--------------------+----+
-| Module Name   | # Of Tests   | #66AK2H12 Failures                | # AM57X Failures   |
+| Module Name   | # Of Tests   | #66AK2H12 Failures                | # AM57X Failures   |    |
 +===============+==============+===================================+====================+====+
 | calib3d       | 70           | 1                                 | 1                  |    |
 +---------------+--------------+-----------------------------------+--------------------+----+
@@ -493,43 +472,33 @@ Summary of accuracy test results on 66AK2H12 and AM57x platforms
 | videoio       | 70           | 0/3 (Not built with FFMPEG/GST)   | 1                  |    |
 +---------------+--------------+-----------------------------------+--------------------+----+
 
-| 
+Details of accuracy test failures results on 66AK2H12 and AM57x platforms
 
-| 
-| Details of accuracy test failures results on 66AK2H12 and AM57x
-  platforms
-
-| 
-
-| 
-
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | Module Name   | # Test   | 66AK2H12 Failure                                               | # Test   | AM57X Failure                                              |
-+===============+==========+================================================================+==========+============================================================+====+
++===============+==========+================================================================+==========+============================================================+
 | calib3d       | 1        | Calib3d\_SolvePnP (Neon)                                       | 1        | FisheyeTest.Rectify                                        |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | core          | 1        | turnOffOpenCL::Image2D (No Image2d support in TI OpenCL)       | 1        | turnOffOpenCL::Image2D (No Image2d support in TI OpenCL)   |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | core          | 8        | Mul (Neon)                                                     | 8        | Mul (Neon)                                                 |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | core          |          | -                                                              | 1        | Add (doesn't fail when run individually)                   |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | core          |          | -                                                              | 1        | Bitwise\_and (doesn't fail when run individually)          |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | imgproc       | 1        | Imgproc\_moments                                               | 1        | Imgproc\_moments                                           |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | imgproc       | 1        | Filter 2D (one test does not fail when run individually)       | 1        | Erode (does not fail when run individually)                |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
-| imgproc       |          |                                                                | 1        | Filter 2D (one test does not fail when run individually)   |    |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
+| imgproc       |          |                                                                | 1        | Filter 2D (one test does not fail when run individually)   |
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | imgproc       | 1        | Corner Harris (Not the same tests fail when run individually   | 1        | Corner Harris (does not fail when run individually)        |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | imgproc       |          | -                                                              | 2        | CornerMinEigenVal (does not fail when run individually)    |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 | videoio       | 0        | videoio.Regression (GST Library Issue)                         | 1        | GST library issue?                                         |
-+---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+----+
-
-| 
++---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 
 .. rubric:: Necessary steps to modify OpenCV framework to add more
    OpenCL Host side and DSP C66 optimized kernels
@@ -566,8 +535,8 @@ is dominated by kernel compilation (later they are cached either in
 memory or tmp filesystem) - please note that it may take several dozens
 of seconds on AM5728EVM. In order to enable OpenCL acceleration inside
 OpenCV, following environment variable need to be set (example applies
-to AM57xx): *export OPENCV\_OPENCL\_DEVICE='TI AM57:ACCELERATOR:TI
-Multicore C66 DSP'*
+to AM57xx): **export OPENCV\_OPENCL\_DEVICE='TI AM57:ACCELERATOR:TI
+Multicore C66 DSP'**
 
 -  For additional information, please refer to:
    http://downloads.ti.com/mctools/esd/docs/opencl/index.html
@@ -605,7 +574,7 @@ OpenCV and OpenCL are already included in PLSDK 3.10.
 Addition of a new kernel includes two steps: addition of Host (A15) side
 modification, and new DSP kernel (to be described in next chapter).
 
--  OpenCL dispatch is attempted with macro *CV\_OCL\_RUN\_()*, from top
+-  OpenCL dispatch is attempted with macro **CV\_OCL\_RUN\_()**, from top
    level function of specific OpenCV kernel. If OpenCV OpenCL dispatch
    fails, or some preconditions are not met, it falls back to Native C
    implementation).
@@ -624,7 +593,7 @@ modification, and new DSP kernel (to be described in next chapter).
    or setting parameters as constants).
 -  Kernel file name (where kernel is defined) is set in 2nd argument of
    kernel constructor, with "\_oclsrc" postfix: e.g.
-   *ocl::imgproc::threshold\_oclsrc* - this means that kernel body is
+   **ocl::imgproc::threshold\_oclsrc** - this means that kernel body is
    defined in "./opencl/threshold.cl" file. This operation is performed
    during configuration stage of OpenCV build.
 -  Kernel execution is invoked via run() method (of Kernel class). All

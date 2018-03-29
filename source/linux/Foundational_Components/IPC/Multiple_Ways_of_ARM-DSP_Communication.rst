@@ -289,8 +289,5 @@ decision on which methods to use for ARM/DSP communication. Hardware
 capability also need to be considered in the decision making process,
 such as if Image and Video Accelerator exists when using DCE.
 
-| 
 .. Image:: ../images/ARM-DSP_DecisionMaking.jpg
-
-.. raw:: html
 

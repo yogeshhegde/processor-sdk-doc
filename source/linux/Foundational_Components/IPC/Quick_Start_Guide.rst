@@ -28,20 +28,25 @@ The out of box demo is only available on Keystone-2 EVMs.
   http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide
   to update the release images on flash memory/SD card on the EVM using
   Program-evm or using the procedures for SD Card.
-| 1. Connect the EVM Ethernet port 0 to a corporate or local network
-  with DHCP server running, when the Linux kernel boots up, the rootfs
-  start up scripts will get an IP address from the DHCP server and print
-  the IP address to the EVM on-board LCD.
-| 2. Open an Internet browser (e.g. Mozilla Firefox) on a remote
-  computer that connects with the same network as the EVM.
-| 3. Type the IP address displayed on EVM LCD to the browser and click
-  cancel button to launch the Matrix launcher in the remote access mode
-  instead of on the on-board display device.
-| 4. Click the Multi-core Demonstrations, then Multi-core IPC Demo to
-  start the IPC demonstration.
-.. Image:: ../images/MatrixAppLauncher.jpg
-| The result from running IPC Demo
-.. Image:: ../images/IPC_Demo_Result.jpg
+
+1. Connect the EVM Ethernet port 0 to a corporate or local network
+   with DHCP server running, when the Linux kernel boots up, the rootfs
+   start up scripts will get an IP address from the DHCP server and print
+   the IP address to the EVM on-board LCD.
+2. Open an Internet browser (e.g. Mozilla Firefox) on a remote
+   computer that connects with the same network as the EVM.
+3. Type the IP address displayed on EVM LCD to the browser and click
+   cancel button to launch the Matrix launcher in the remote access mode
+   instead of on the on-board display device.
+4. Click the Multi-core Demonstrations, then Multi-core IPC Demo to
+   start the IPC demonstration.
+
+   .. Image:: ../images/MatrixAppLauncher.jpg
+
+   The result from running IPC Demo
+   
+   .. Image:: ../images/IPC_Demo_Result.jpg
+
 | |Note|\ **Note:** To view the out-of-box demo source code, please
   install Linux and RTOS Processor SDKs from `SDK download
   page <http://www.ti.com/lsds/ti/tools-software/processor_sw.page>`__
@@ -80,8 +85,7 @@ The source code are located in:
     $ make ti-ipc-linux
 
 **5.** The ARM binary will be located under the directory where the
-soruce code is
-<RTOS\_SDK\_INSTALL\_DIR>/ipc\_x\_xx\_xx\_xx/linux/src/tests/
+       source code is <RTOS\_SDK\_INSTALL\_DIR>/ipc\_x\_xx\_xx\_xx/linux/src/tests/
 
 | |Note|\ **Note:** Please follow the build instruction in `Linux Kernel
   User
@@ -94,8 +98,8 @@ soruce code is
 **1.** Install RTOS Proc SDK at the default location
 
 **2.** If RTOS Proc SDK and tools are not installed at its default
-location, then the environment variables, SDK\_INSTALL\_PATH and
-TOOLS\_INSTALL\_PATH need to be exported with their installed locations.
+       location, then the environment variables, SDK\_INSTALL\_PATH and
+       TOOLS\_INSTALL\_PATH need to be exported with their installed locations.
 
 ::
 
@@ -110,8 +114,8 @@ so point to CCS:
     export TOOLS_INSTALL_PATH=<TI_CCS_INSTALL_DIR>
 
 **3.** Configure the build environment in
-<RTOS\_SDK\_INSTALL\_DIR>/processor\_sdk\_rtos\_<platform>\_x\_xx\_xx\_xx
-directory
+       <RTOS\_SDK\_INSTALL\_DIR>/processor\_sdk\_rtos\_<platform>\_x\_xx\_xx\_xx
+       directory
 
 ::
 
@@ -125,7 +129,7 @@ directory
     $ make ipc_bios
 
 **5.** The DSP binary will be located under the directory where the
-source code is
+       source code is
 
 ::
 
@@ -185,7 +189,7 @@ TI\_CCS\_PATH need to be exported with their installed locations.
    :name: run-ipc-linux-examples
 
 1. The executables are in RTOS Proc SDK under the
-ipc\_xx\_xx\_xx\_xx/examples directory.
+   ipc\_xx\_xx\_xx\_xx/examples directory.
 
 ::
 
@@ -194,10 +198,10 @@ ipc\_xx\_xx\_xx\_xx/examples directory.
       <device>_<OS>_elf/ex<xx_yyyyyy/<processor_or_component>/bin/debug/<sServerCore_or_component.xem4 for IPU
 
 2. Copy the executables to the target filesystem. It can also be done by
-running "make ti-ipc-linux-examples\_install" to install the binaries to
-DESTDIR if using NFS filesystem. ( See
-`Moving\_Files\_to\_the\_Target\_System </index.php/Moving_Files_to_the_Target_System>`__
-for details of moving files to filesystem)
+   running "make ti-ipc-linux-examples\_install" to install the binaries to
+   DESTDIR if using NFS filesystem. ( See
+   `Moving\_Files\_to\_the\_Target\_System </index.php/Moving_Files_to_the_Target_System>`__
+   for details of moving files to filesystem)
 
 3. Load and start the executable on the target DSP/IPU.
 
@@ -231,10 +235,8 @@ to /usr/bin/mc\_demo\_ipc.sh for examples
          mpmcl run <dsp core>
 
 4. Run the example
-
-From the Linux kernel prompt, run the host executable, app\_host.
-
-An example from running ex02\_messageq:
+   From the Linux kernel prompt, run the host executable, app\_host.
+   An example from running ex02\_messageq:
 
 ::
 
@@ -330,6 +332,4 @@ The sources for examples are under
 ipc\_xx\_xx\_xx\_xx/examples/<device>\_<OS>\_elf directories. Once
 modified the same build process described above can be used to rebuild
 the examples.
-
-.. raw:: html
 
