@@ -797,8 +797,7 @@ These tools bring in the capability to visualize the following:
 #. DDR BW Utilization
    #. Overall DDR BW Usage
    #. Split of the traffic between the two EMIF's
-   #. A real time "top" like functionality that depicts the list of "Top
-      6" initiators generating the traffic.
+   #. A real time "top" like functionality that depicts the list of "Top 6" initiators generating the traffic.
 #. Voltage of the various rails
 #. Frequency of the various cores
 #. Temperature (read from on die temperature sensors)
@@ -821,6 +820,7 @@ These tools bring in the capability to visualize the following:
 
 .. rubric:: Getting started
    :name: getting-started
+
 -  Prepare the card with PLSDK 3.0.0 or later.
 -  Boot up
 -  Start weston

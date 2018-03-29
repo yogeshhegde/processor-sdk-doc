@@ -87,46 +87,11 @@ The latest release this documentation applies to is Kernel v3.12
 .. rubric:: Driver Architecture
    :name: driver-architecture
 
-| The following figure shows the basic block diagram of capture
-  interface.
+The following figure shows the basic block diagram of capture interface.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:558px;">
-
-|image1|
-
-.. raw:: html
-
-   <div class="thumbcaption">
+.. Image:: ../images/AM437x_capture_overview.png
 
 Capture Driver Component Overview
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
 
 | The system architecture diagram illustrates the software components
   that are relevant to the Camera Driver. Some components are outside

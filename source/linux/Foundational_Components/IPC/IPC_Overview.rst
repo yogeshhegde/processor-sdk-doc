@@ -54,7 +54,3 @@
 | `Modifying Memory Usage For IPUMM using DRA7xx <http://www.ti.com/lit/an/sprac08a/sprac08a.pdf>`__                         | Info on modifying memory usage of IPU for DRA7xx                                   |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 
-| 
-
-.. raw:: html
-

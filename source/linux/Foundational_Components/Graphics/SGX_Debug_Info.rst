@@ -47,7 +47,8 @@ This script performs the below actions:
    :name: run-time-checksconfiguration-of-the-sgx-driver
 
 One can confirm whether the SGX drivers have been properly installed by
-checking the following-
+checking the following
+
 -  One should have seen the message on serial console- "Initializing the
    graphics driver ..." just before getting the linux command prompt.
 -  lsmod shows pvrsrvkm module inserted successfully without any error

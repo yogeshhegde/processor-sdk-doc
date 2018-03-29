@@ -574,28 +574,23 @@ greater than zero then VLAN LLDP/Multicast is added.
 
 | cmd\_struct.cmd = CONFIG\_SWITCH\_ADD\_MULTICAST
 
-+--------------------------+--------------------------+--------------------------+
-| Parameter                | Description              | Range                    |
-+==========================+==========================+==========================+
-| cmd\_struct.addr         | LLDP/Multicast Address   | MAC Address              |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.port         | Member port              | 0 – 7                    |
-|                          | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.vid          | VLAN ID                  | 0 – 4095                 |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.super        | Super                    | 0/1                      |
-+--------------------------+--------------------------+--------------------------+
-
-| 
++--------------------------+----------------------------+--------------------------+
+| Parameter                | Description                | Range                    |
++==========================+============================+==========================+
+| cmd\_struct.addr         | LLDP/Multicast Address     | MAC Address              |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.port         | Member port                | 0 – 7                    |
+|                          | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.vid          | VLAN ID                    | 0 – 4095                 |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.super        | Super                      | 0/1                      |
++--------------------------+----------------------------+--------------------------+
 
 | **Result**
 | ioctl call returns success or failure.
-
-| 
 
 .. rubric:: CONFIG\_SWITCH\_DEL\_MULTICAST
    :name: config_switch_del_multicast
@@ -613,12 +608,8 @@ address with or without VLAN ID.
 | cmd\_struct.vid    | VLAN ID           | 0 – 4095      |
 +--------------------+-------------------+---------------+
 
-| 
-
 | **Result**
 | ioctl call returns success or failure.
-
-| 
 
 .. rubric:: CONFIG\_SWITCH\_ADD\_VLAN
    :name: config_switch_add_vlan
@@ -627,40 +618,35 @@ CONFIG\_SWITCH\_ADD\_VLAN is used to add VLAN ID.
 
 | cmd\_struct.cmd = CONFIG\_SWITCH\_ADD\_VLAN
 
-+--------------------------+--------------------------+--------------------------+
-| Parameter                | Description              | Range                    |
-+==========================+==========================+==========================+
-| cmd\_struct.vid          | VLAN ID                  | 0 – 4095                 |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.port         | Member port              | 0 – 7                    |
-|                          | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.untag\_port  | Untagged Egress port     | 0 – 7                    |
-|                          | mask                     |                          |
-|                          | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.reg\_multi   | Registered Multicast     | 0 – 7                    |
-|                          | flood port mask          |                          |
-|                          | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.unreg\_multi | Unknown Multicast flood  | 0 – 7                    |
-|                          | port mask                |                          |
-|                          | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
++--------------------------+----------------------------+--------------------------+
+| Parameter                | Description                | Range                    |
++==========================+============================+==========================+
+| cmd\_struct.vid          | VLAN ID                    | 0 – 4095                 |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.port         | Member port                | 0 – 7                    |
+|                          | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.untag\_port  | Untagged Egress port       | 0 – 7                    |
+|                          | mask                       |                          |
+|                          | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.reg\_multi   | Registered Multicast       | 0 – 7                    |
+|                          | flood port mask            |                          |
+|                          | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.unreg\_multi | Unknown Multicast flood    | 0 – 7                    |
+|                          | port mask                  |                          |
+|                          | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
 
-| 
 
 | **Result**
 | ioctl call returns success or failure.
@@ -695,43 +681,35 @@ Info.
 
 | cmd\_struct.cmd = CONFIG\_SWITCH\_ADD\_UNKNOWN\_VLAN\_INFO
 
-+--------------------------+--------------------------+--------------------------+
-| Parameter                | Description              | Range                    |
-+==========================+==========================+==========================+
-| cmd\_struct.unknown\_vla | Port mask                | 0 - 7                    |
-| n\_member                | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.unknown\_vla | Registered Multicast     | 0 - 7                    |
-| n\_reg\_multi            | flood port mask          |                          |
-|                          | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.unknown\_vla | Unknown Multicast flood  | 0 - 7                    |
-| n\_unreg\_multi          | port mask                |                          |
-|                          | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
-| cmd\_struct.unknown\_vla | Unknown Vlan Member port | 0 - 7                    |
-| n\_untag                 | mask                     |                          |
-|                          | | Bit 0 – Host port/Port |                          |
-|                          |   0                      |                          |
-|                          | | Bit 1 – Slave 0/Port 1 |                          |
-|                          | | Bit 2 – Slave 1/Port 2 |                          |
-+--------------------------+--------------------------+--------------------------+
-
-| 
++--------------------------+----------------------------+--------------------------+
+| Parameter                | Description                | Range                    |
++==========================+============================+==========================+
+| cmd\_struct.unknown\_vla | Port mask                  | 0 - 7                    |
+| n\_member                | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.unknown\_vla | Registered Multicast       | 0 - 7                    |
+| n\_reg\_multi            | flood port mask            |                          |
+|                          | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.unknown\_vla | Unknown Multicast flood    | 0 - 7                    |
+| n\_unreg\_multi          | port mask                  |                          |
+|                          | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
+| cmd\_struct.unknown\_vla | Unknown Vlan Member port   | 0 - 7                    |
+| n\_untag                 | mask                       |                          |
+|                          | | Bit 0 – Host port/Port 0 |                          |
+|                          | | Bit 1 – Slave 0/Port 1   |                          |
+|                          | | Bit 2 – Slave 1/Port 2   |                          |
++--------------------------+----------------------------+--------------------------+
 
 | **Result**
 | ioctl call returns success or failure.
-
-| 
 
 .. rubric:: CONFIG\_SWITCH\_SET\_PORT\_CONFIG
    :name: config_switch_set_port_config
@@ -1721,7 +1699,7 @@ It's required to rebuild kernel with below changes first:
 - enable config option CONFIG\_PWM\_OMAP\_DMTIMER=y
 
 - declare support of HW\_TS\_PUSH inputs in DT "mac: ethernet@4a100000"
-node
+  node
 
 ::
 
@@ -1742,7 +1720,7 @@ node
 - build and boot new Kernel
 
 - enable Timer7 to trigger 1sec periodic pulses on CPTS HW4\_TS\_PUSH
-input pin:
+  input pin:
 
 ::
 

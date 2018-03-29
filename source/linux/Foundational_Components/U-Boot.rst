@@ -1140,8 +1140,7 @@ Set up the following u-boot environment variables:
     saveenv
     boot
 
-|Note|\ **Note:** : <hex\_len> must be at least the hex size of the
-k2-fw-initrd.cpio.gz file size.
+**Note:**: <hex\_len> must be at least the hex size of the k2-fw-initrd.cpio.gz file size.
 
 .. rubric:: Booting from SD/eMMC from SPL (Single stage or Falcon mode)
    :name: booting-from-sdemmc-from-spl-single-stage-or-falcon-mode

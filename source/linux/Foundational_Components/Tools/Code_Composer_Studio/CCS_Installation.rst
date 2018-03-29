@@ -329,7 +329,8 @@ example we will use the *mem-util* project.
    Debug or Release directory (depending on which build configuration
    you used). You should see the file marked as an [arm/le] file which
    means it was compiled for the ARM.
-.. Image:: ../images/CCS_build_memutil.png
+
+   .. Image:: ../images/CCS_build_memutil.png
 
    .. raw:: html
 
@@ -398,7 +399,7 @@ build a simple *Hello World* application for the target.
 #. In the *Select a wizard* window, select the **C/C++ -> C Project**
    wizard.
 
-.. Image:: ../images/CCS_new_project.png
+   .. Image:: ../images/CCS_new_project.png
 
 #. Click **Next**.
 #. In the *C Project* dialog set the following values:
@@ -406,13 +407,13 @@ build a simple *Hello World* application for the target.
    Project type: **Executable -> Empty Project**
    Toolchains: **Cross GCC**
 
-.. Image:: ../images/CCS_C_project.png
+   .. Image:: ../images/CCS_C_project.png
 
 #. Click **Next**.
 #. In the *Select Configurations* dialog, you can take the default
    *Debug* and *Release* configurations or add/remove more if you want.
 
-.. Image:: ../images/CCS_config.png
+   .. Image:: ../images/CCS_config.png
 
 #. Click **Next**.
 #. In the *Command* dialog, set the following values:
@@ -439,14 +440,14 @@ build a simple *Hello World* application for the target.
    Linux>/usr/bin** directory. You should see a list of tools such as
    *gcc* with the prefix you entered above.
 
-.. Image:: ../images/CCS_gcc_command.png
+   .. Image:: ../images/CCS_gcc_command.png
 
 #. Click **Finish**.
 #. After completing the steps above you should now have a *helloworld*
    project in your CCS *Project Explorer* window, but the project has no
    sources.
 
-.. Image:: ../images/CCS_pe_helloworld.png
+   .. Image:: ../images/CCS_pe_helloworld.png
 
 .. rubric:: Adding Sources to the Project
    :name: adding-sources-to-the-project
@@ -456,17 +457,19 @@ build a simple *Hello World* application for the target.
 #. In the *Source File* dialog set the *Source file:* setting to
    **helloworld.c**
 
-.. Image:: ../images/CCS_new_source.png
+   .. Image:: ../images/CCS_new_source.png
 
 #. Click **Finish**.
 #. After completing the steps above you will have a template
-   *helloworld.c* file. Add your code to this file like the image below:
-.. Image:: ../images/CCS_helloworld.png
-#. Compile the *helloworld* project by selecting **Project -> Build
+   **helloworld.c** file. Add your code to this file like the image below:
+
+   .. Image:: ../images/CCS_helloworld.png
+
+#. Compile the **helloworld** project by selecting **Project -> Build
    Project**
 #. The resulting executable can be found in the *Debug* directory.
 
-.. Image:: ../images/CCS_helloworld_build.png
+   .. Image:: ../images/CCS_helloworld_build.png
 
 | 
 
