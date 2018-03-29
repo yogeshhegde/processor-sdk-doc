@@ -103,8 +103,8 @@ See docs under install directory
 
 `BSD <http://www.opensource.org/licenses/bsd-license.php>`__
 
-EDMA3 sample libs
--------------------
+.. rubric:: EDMA3 sample libs
+   :name: edma3_sample_libs
 
 **EDMA3 Driver Sample Summary**
 

@@ -75,39 +75,7 @@ is connected to a 6678 EVM via breakout card and cable.
 
 -  
 
-   .. raw:: html
-
-      <div style="width: 155px">
-
-   .. raw:: html
-
-      <div class="thumb" style="width: 150px;">
-
-   .. raw:: html
-
-      <div style="margin:30px auto;">
-
 .. Image:: ../images/K2-k1-hyplnk.jpg
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div class="gallerytext">
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      </div>
 
 +-----------------+-----------------+-----------------+-----------------+
 | Name            | Description     | EVM             | Expected        |

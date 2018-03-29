@@ -248,8 +248,7 @@ Status info will be returned in the link_info structure.
 |                       |    supported          |    prints the EMAC    |
 |                       | -  Download the test  |    statistics, which  |
 |                       |    PCAP               |    include DMA        |
-|                       |    `files </index.php |    overruns,          |
-.. Image:: ../images/Pcap.zip
+|                       |    `files <Pcap.zip>` |    overruns,          |
 |                       |    and update the     |    other error. No    |
 |                       |    source and dest    |    errors should be   |
 |                       |    MAC address of the |    seen during the    |

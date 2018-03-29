@@ -477,7 +477,7 @@ found in the Developer Guide.
 
 | Training Videos
 | https://training.ti.com/processor-sdk-training-series
-
+| 
  `Getting Started Guide <Overview.html#getting-started-guide>`__
 
 | Supported Platforms
@@ -485,7 +485,7 @@ found in the Developer Guide.
 
 | Landing Page to All Processor SDK RTOS Packages
 | http://www.ti.com/tool/ti-rtos-proc
-
+| 
  `Release Notes <Release_Specific.html#release-notes>`__
 
 | Examples and Demonstrations

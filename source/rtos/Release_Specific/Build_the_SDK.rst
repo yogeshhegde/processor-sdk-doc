@@ -77,6 +77,10 @@ installed RTOS SDK.
    variable so set the variable if you are not using default CCS install
    path
 
+.. raw:: html
+
+   </div>
+
 ::
 
      C:\ti\processor_sdk_rtos_[soc]_[version]>setupenv.bat

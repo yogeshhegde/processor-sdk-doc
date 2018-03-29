@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes
+..  
 
 .. rubric::  Overview
    :name: overview
@@ -84,73 +84,73 @@ SDK installer. See the `Software Developer
 Guide </index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__ for
 more information on each item.
 
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-|  Component  | Version     | |AM335x|AM437x|AM57x | |K2H/K2K| K2E | K2L | K2G | |C665x|C667x| |OMAP-L137|OMAP-L138|
-+=============+=============+=+======+======+======+=+=======+=====+=====+=====+=+=====+=====+=+=========+=========+
-| CG_XML      | 2.41.0      | |   X  |  X   |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| CTOOLSLIB   | 2.2.0.0     | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| DSPLIB      | 3.4.0.0     | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| EDMA3 LLD   | 2.12.5.30   | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| FC          | 3.40.2.7    | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| FFTLIB      | 3.1.0.0     | |      |      |      | |       |     |     |     | |     |  X  | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| IMGLIB      | 3.1.1.0     | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| IPC         | 3.47.0.0    | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |         |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| LIBARCH     | 1.0.0.0     | |      |      |      | |       |     |     |     | |     |  X  | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| LINALG      | 1.2.0.0     | |      |      |      | |       |     |     |     | |     |  X  | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| MATHLIB     | 3.1.1.0     | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| MPM         | 3.0.4.0     | |      |      |      | |   X   |  X  |  X  |  X  | |     |     | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| NDK         | 2.26.0.0    | |   X  |  X   |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| OPENCL      | 1.1.14.1    | |      |      |  X   | |       |     |     |     | |     |     | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| OPENMP      | Per platform| |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |         |         |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| PDK         | 3.1.1.0     | |1.0.10|1.0.10|1.0.10| | 4.0.9 |4.0.9|4.0.9|1.0.9| |2.0.9|2.0.9| |  1.0.4  |  1.0.4  |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| SYS/BIOS    | 6.52.0.12   | |   X  |  X   |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| UIA         | 2.21.2.07   | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| XDAIS       | 7.24.0.4    | |      |      |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-| XDCTOOLS    | 3.50.03.33  | |   X  |  X   |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+|  Component  | Version     |AM335x|AM437x|AM57x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
++=============+=============+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
+| CG_XML      | 2.41.0      |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| CTOOLSLIB   | 2.2.0.0     |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| DSPLIB      | 3.4.0.0     |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| EDMA3 LLD   | 2.12.5.30   |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| FC          | 3.40.2.7    |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| FFTLIB      | 3.1.0.0     |      |      |      |       |     |     |     |     |  X  |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| IMGLIB      | 3.1.1.0     |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| IPC         | 3.47.0.0    |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| LIBARCH     | 1.0.0.0     |      |      |      |       |     |     |     |     |  X  |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| LINALG      | 1.2.0.0     |      |      |      |       |     |     |     |     |  X  |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| MATHLIB     | 3.1.1.0     |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| MPM         | 3.0.4.0     |      |      |      |   X   |  X  |  X  |  X  |     |     |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| NDK         | 2.26.0.0    |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| OPENCL      | 1.1.14.1    |      |      |  X   |       |     |     |     |     |     |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| OPENMP      | Per platform|      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| PDK         | 3.1.1.0     |1.0.10|1.0.10|1.0.10| 4.0.9 |4.0.9|4.0.9|1.0.9|2.0.9|2.0.9|  1.0.4  |  1.0.4  |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| SYS/BIOS    | 6.52.0.12   |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| UIA         | 2.21.2.07   |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| XDAIS       | 7.24.0.4    |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| XDCTOOLS    | 3.50.03.33  |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
 
 The following compilers are bundled with the SDK installer:
 
-+----------------+---------+-+------+------+------+-+-------+-----+-----+--------+-+-----+-----+-+---------+---------+
-|    Compiler    | Version | |AM335x|AM437x|AM57x | |K2H/K2K| K2E | K2L |  K2G   | |C665x|C667x| |OMAP-L137|OMAP-L138|
-+================+=========+=+======+======+======+=+=======+=====+=====+========+=+=====+=====+=+=========+=========+
-|GNU ARM Embedded|6-2017-q1| |   A8 |  A9  |  A15 | |  A15  | A15 | A15 |  A15   | |     |     | |         |         |
-+----------------+---------+-+------+------+------+-+-------+-----+-----+--------+-+-----+-----+-+---------+---------+
-|TI ARM CGT      | 16.9.3  | |      |      |  M4  | |       |     |     |A15(SBL)| |     |     | |   ARM9  |   ARM9  |
-+----------------+---------+-+------+------+------+-+-------+-----+-----+--------+-+-----+-----+-+---------+---------+
-|TI C6000 CGT    | 8.2.2   | |      |      | C66x | | C66x  |C66x |C66x |  C66x  | |C66x |C66x | |   C74x  |   C74x  |
-+----------------+---------+-+------+------+------+-+-------+-----+-----+--------+-+-----+-----+-+---------+---------+
-|TI PRU CGT      | 2.2.1   | | PRU  | PRU  | PRU  | |       |     |     |  PRU   | |     |     | |         |         |
-+----------------+---------+-+------+------+------+-+-------+-----+-----+--------+-+-----+-----+-+---------+---------+
++----------------+---------+------+------+------+-------+-----+-----+--------+-----+-----+---------+---------+
+|    Compiler    | Version |AM335x|AM437x|AM57x |K2H/K2K| K2E | K2L |  K2G   |C665x|C667x|OMAP-L137|OMAP-L138|
++================+=========+======+======+======+=======+=====+=====+========+=====+=====+=========+=========+
+|GNU ARM Embedded|6-2017-q1|   A8 |  A9  |  A15 |  A15  | A15 | A15 |  A15   |     |     |         |         |
++----------------+---------+------+------+------+-------+-----+-----+--------+-----+-----+---------+---------+
+|TI ARM CGT      | 16.9.3  |      |      |  M4  |       |     |     |A15(SBL)|     |     |   ARM9  |   ARM9  |
++----------------+---------+------+------+------+-------+-----+-----+--------+-----+-----+---------+---------+
+|TI C6000 CGT    | 8.2.2   |      |      | C66x | C66x  |C66x |C66x |  C66x  |C66x |C66x |   C74x  |   C74x  |
++----------------+---------+------+------+------+-------+-----+-----+--------+-----+-----+---------+---------+
+|TI PRU CGT      | 2.2.1   | PRU  | PRU  | PRU  |       |     |     |  PRU   |     |     |         |         |
++----------------+---------+------+------+------+-------+-----+-----+--------+-----+-----+---------+---------+
 
 The SDK uses Code Composer Studio (CCS) as the integrated development
 environment (IDE) for all devices and EVMs:
 
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
-|  Component  | Version     | |AM335x|AM437x|AM57x | |K2H/K2K| K2E | K2L | K2G | |C665x|C667x| |OMAP-L137|OMAP-L138|
-+=============+=============+=+======+======+======+=+=======+=====+=====+=====+=+=====+=====+=+=========+=========+
-|    CCS      | 7.4.0.15    | |   X  |  X   |  X   | |   X   |  X  |  X  |  X  | |  X  |  X  | |    X    |    X    |
-+-------------+-------------+-+------+------+------+-+-------+-----+-----+-----+-+-----+-----+-+---------+---------+
++-----------+----------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+| Component | Version  |AM335x|AM437x|AM57x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
++===========+==========+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
+|   CCS     | 7.4.0.15 |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
++-----------+----------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
 
 If you need to install CCS, see the `CCS installation
@@ -327,116 +327,117 @@ Updated
 
 The following table lists all supported devices for a given installer.
 
-Installer
++----------------+------------+-------------------------------------------------------------------------------+
+| Installer      |Platform/SOC| Supported Devices                                                             |
++================+======+=====+===============================================================================+
+|                |`AM335x`_   | `AM3351`_, `AM3352`_, `AM3354`_, `AM3356`_, `AM3357`_, `AM3358`_, `AM3359`_   |
+|`RTOS-AM335X`_  +------------+-------------------------------------------------------------------------------+
+|                |`AMIC11x`_  | `AMIC110`_                                                                    |
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-AM437X`_  |`AM437x`_   | `AM4376`_, `AM4377`_, `AM4378`_, `AM4379`_                                    |
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-AM57X`_   |`AM57x`_    |`AM5706`_, `AM5708`_, `AM5716`_, `AM5718`_, `AM5726`_, `AM5728`_,AM5746, AM5748|
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-C665X`_   |`C665x`_    | `C6652`_, `C6654`_, `C6655`_, `C6657`_                                        |
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-C667X`_   |`C667x`_    | `C6671`_, `C6672`_, `C6674`_, `C6678`_                                        |
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-K2E`_     |`K2E`_      | `66AK2E02`_, `66AK2E05`_, `AM5K2E02`_, `AM5K2E04`_                            |
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-K2G`_     |`K2G`_      | `66AK2G02`_                                                                   |
++----------------+------------+-------------------------------------------------------------------------------+
+|                |`K2H`_      | `66AK2H06`_, `66AK2H12`_, `66AK2H14`_                                         |
+| `RTOS-K2HK`_   +------------+-------------------------------------------------------------------------------+
+|                |`K2K`_      | `TCI6638K2K`_                                                                 |
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-K2L`_     |`K2L`_      | `66AK2L06`_                                                                   |
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-OMAPL137`_|`OMAP-L1x`_ | `OMAP-L137`_, `C6743`_, `C6745`_, `C6747`_                                    |
++----------------+------------+-------------------------------------------------------------------------------+
+|`RTOS-OMAPL138`_|`OMAP-L1x`_ | `OMAP-L138`_, `C6742`_, `C6746`_, `C6748`_                                    |
++----------------+------------+-------------------------------------------------------------------------------+
 
-Platform/SOC
 
-Supported Devices
+.. _RTOS-AM335X: http://software-dl.ti.com/processor-sdk-rtos/esd/AM335X/latest/index_FDS.html
+.. _AM335x: http://www.ti.com/am335x
+.. _AM3351: http://www.ti.com/product/am3351
+.. _AM3352: http://www.ti.com/product/am3352
+.. _AM3354: http://www.ti.com/product/am3354
+.. _AM3356: http://www.ti.com/product/am3356
+.. _AM3357: http://www.ti.com/product/am3357
+.. _AM3358: http://www.ti.com/product/am3358
+.. _AM3359: http://www.ti.com/product/am3359
 
-`RTOS-AM335X <http://software-dl.ti.com/processor-sdk-rtos/esd/AM335X/latest/index_FDS.html>`__
+.. _AMIC11x: http://www.ti.com/lsds/ti/processors/sitara/industrial-ethernet/amic11x/amic11x-overview.page>`__
+.. _AMIC110: http://www.ti.com/product/amic110
 
-`AM335x <http://www.ti.com/am335x>`__
+.. _RTOS-AM437X: http://software-dl.ti.com/processor-sdk-rtos/esd/AM437X/latest/index_FDS.html
+.. _AM437x: http://www.ti.com/am437x
+.. _AM4376: http://www.ti.com/product/am4376
+.. _AM4377: http://www.ti.com/product/am4377
+.. _AM4378: http://www.ti.com/product/am4378
+.. _AM4379: http://www.ti.com/product/am4379
 
-`AM3351 <http://www.ti.com/product/am3351>`__,
-`AM3352 <http://www.ti.com/product/am3352>`__,
-`AM3354 <http://www.ti.com/product/am3354>`__,
-`AM3356 <http://www.ti.com/product/am3356>`__,
-`AM3357 <http://www.ti.com/product/am3357>`__,
-`AM3358 <http://www.ti.com/product/am3358>`__,
-`AM3359 <http://www.ti.com/product/am3359>`__
+.. _RTOS-AM57X: http://software-dl.ti.com/processor-sdk-rtos/esd/AM57X/latest/index_FDS.html
+.. _AM57x: http://www.ti.com/am57x
+.. _AM5706: http://www.ti.com/product/am5706
+.. _AM5708: http://www.ti.com/product/am5708
+.. _AM5716: http://www.ti.com/product/am5716
+.. _AM5718: http://www.ti.com/product/am5718
+.. _AM5726: http://www.ti.com/product/am5726
+.. _AM5728: http://www.ti.com/product/am5728
 
-`AMIC11x <http://www.ti.com/lsds/ti/processors/sitara/industrial-ethernet/amic11x/amic11x-overview.page>`__
+.. _RTOS-C665X: http://software-dl.ti.com/processor-sdk-rtos/esd/C665x/latest/index_FDS.html
+.. _C665x: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page
+.. _C6652: http://www.ti.com/product/tms320c6652
+.. _C6654: http://www.ti.com/product/tms320c6654
+.. _C6655: http://www.ti.com/product/tms320c6655
+.. _C6657: http://www.ti.com/product/tms320c6657
 
-`AMIC110 <http://www.ti.com/product/amic110>`__
+.. _RTOS-C667X: http://software-dl.ti.com/processor-sdk-rtos/esd/C667x/latest/index_FDS.html
+.. _C667x: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page
+.. _C6671: http://www.ti.com/product/tms320c6671
+.. _C6672: http://www.ti.com/product/tms320c6672
+.. _C6674: http://www.ti.com/product/tms320c6674
+.. _C6678: http://www.ti.com/product/tms320c6678
 
-`RTOS-AM437X <http://software-dl.ti.com/processor-sdk-rtos/esd/AM437X/latest/index_FDS.html>`__
+.. _RTOS-K2E: http://software-dl.ti.com/processor-sdk-rtos/esd/K2E/latest/index_FDS.html
+.. _K2E: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page
+.. _66AK2E02: http://www.ti.com/product/66ak2e02
+.. _66AK2E05: http://www.ti.com/product/66ak2e05
+.. _AM5K2E02: http://www.ti.com/product/am5k2e02
+.. _AM5K2E04: http://www.ti.com/product/am5k2e04
 
-`AM437x <http://www.ti.com/am437x>`__
+.. _RTOS-K2G: http://software-dl.ti.com/processor-sdk-rtos/esd/K2G/latest/index_FDS.html
+.. _K2G: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page
+.. _66AK2G02: http://www.ti.com/product/66ak2g02
 
-`AM4376 <http://www.ti.com/product/am4376>`__,
-`AM4377 <http://www.ti.com/product/am4377>`__,
-`AM4378 <http://www.ti.com/product/am4378>`__,
-`AM4379 <http://www.ti.com/product/am4379>`__
+.. _RTOS-K2HK: http://software-dl.ti.com/processor-sdk-rtos/esd/K2HK/latest/index_FDS.html
+.. _K2H: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page
+.. _66AK2H06: http://www.ti.com/product/66ak2h06
+.. _66AK2H12: http://www.ti.com/product/66ak2h12
+.. _66AK2H14: http://www.ti.com/product/66ak2h14
 
-`RTOS-AM57X <http://software-dl.ti.com/processor-sdk-rtos/esd/AM57X/latest/index_FDS.html>`__
+.. _K2K: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page
+.. _TCI6638K2K: http://www.ti.com/product/tci6638k2k
 
-`AM57x <http://www.ti.com/am57x>`__
+.. _RTOS-K2L: http://software-dl.ti.com/processor-sdk-rtos/esd/K2L/latest/index_FDS.html
+.. _K2L: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page
+.. _66AK2L06: http://www.ti.com/product/66ak2l06
 
-`AM5706 <http://www.ti.com/product/am5706>`__,
-`AM5708 <http://www.ti.com/product/am5708>`__,
-`AM5716 <http://www.ti.com/product/am5716>`__,
-`AM5718 <http://www.ti.com/product/am5718>`__,
-`AM5726 <http://www.ti.com/product/am5726>`__,
-`AM5728 <http://www.ti.com/product/am5728>`__,AM5746, AM5748
+.. _RTOS-OMAPL137: http://www.ti.com/tool/processor-sdk-omapl137
+.. _OMAP-L1x: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/omap-l1x/overview.page
+.. _OMAP-L137: http://www.ti.com/product/OMAP-L137
+.. _C6743: http://www.ti.com/product/tms320c6743
+.. _C6745: http://www.ti.com/product/tms320c6745
+.. _C6747: http://www.ti.com/product/tms320c6747
 
-`RTOS-C665X <http://software-dl.ti.com/processor-sdk-rtos/esd/C665x/latest/index_FDS.html>`__
-
-`C665x <http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page>`__
-
-`C6652 <http://www.ti.com/product/tms320c6652>`__,
-`C6654 <http://www.ti.com/product/tms320c6654>`__,
-`C6655 <http://www.ti.com/product/tms320c6655>`__,
-`C6657 <http://www.ti.com/product/tms320c6657>`__
-
-`RTOS-C667X <http://software-dl.ti.com/processor-sdk-rtos/esd/C667x/latest/index_FDS.html>`__
-
-`C667x <http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page>`__
-
-`C6671 <http://www.ti.com/product/tms320c6671>`__,
-`C6672 <http://www.ti.com/product/tms320c6672>`__,
-`C6674 <http://www.ti.com/product/tms320c6674>`__,
-`C6678 <http://www.ti.com/product/tms320c6678>`__
-
-`RTOS-K2E <http://software-dl.ti.com/processor-sdk-rtos/esd/K2E/latest/index_FDS.html>`__
-
-`K2E <http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page>`__
-
-`66AK2E02 <http://www.ti.com/product/66ak2e02>`__,
-`66AK2E05 <http://www.ti.com/product/66ak2e05>`__,
-`AM5K2E02 <http://www.ti.com/product/am5k2e02>`__,
-`AM5K2E04 <http://www.ti.com/product/am5k2e04>`__
-
-`RTOS-K2G <http://software-dl.ti.com/processor-sdk-rtos/esd/K2G/latest/index_FDS.html>`__
-
-`K2G <http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page>`__
-
-`66AK2G02 <http://www.ti.com/product/66ak2g02>`__
-
-`RTOS-K2HK <http://software-dl.ti.com/processor-sdk-rtos/esd/K2HK/latest/index_FDS.html>`__
-
-`K2H <http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page>`__
-
-`66AK2H06 <http://www.ti.com/product/66ak2h06>`__,
-`66AK2H12 <http://www.ti.com/product/66ak2h12>`__,
-`66AK2H14 <http://www.ti.com/product/66ak2h14>`__
-
-K2K
-
-`TCI6638K2K <http://www.ti.com/product/tci6638k2k>`__
-
-`RTOS-K2L <http://software-dl.ti.com/processor-sdk-rtos/esd/K2L/latest/index_FDS.html>`__
-
-`K2L <http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page>`__
-
-`66AK2L06 <http://www.ti.com/product/66ak2l06>`__
-
-`RTOS-OMAPL137 <http://www.ti.com/tool/processor-sdk-omapl137>`__
-
-`OMAP-L1x <http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/omap-l1x/overview.page>`__
-
-`OMAP-L137 <http://www.ti.com/product/OMAP-L137>`__,
-`C6743 <http://www.ti.com/product/tms320c6743>`__,
-`C6745 <http://www.ti.com/product/tms320c6745>`__,
-`C6747 <http://www.ti.com/product/tms320c6747>`__
-
-`RTOS-OMAPL138 <http://www.ti.com/tool/processor-sdk-omapl138>`__
-
-`OMAP-L1x <http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/omap-l1x/overview.page>`__
-
-`OMAP-L138 <http://www.ti.com/product/OMAP-L138>`__,
-`C6742 <http://www.ti.com/product/tms320c6742>`__,
-`C6746 <http://www.ti.com/product/tms320c6746>`__,
-`C6748 <http://www.ti.com/product/tms320c6748>`__
+.. _RTOS-OMAPL138: http://www.ti.com/tool/processor-sdk-omapl138
+.. _OMAP-L1x: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/omap-l1x/overview.page
+.. _OMAP-L138: http://www.ti.com/product/OMAP-L138
+.. _C6742: http://www.ti.com/product/tms320c6742
+.. _C6746: http://www.ti.com/product/tms320c6746
+.. _C6748: http://www.ti.com/product/tms320c6748
 
  Evaluation Modules 
 --------------------
