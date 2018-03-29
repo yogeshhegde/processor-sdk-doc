@@ -1,6 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_Graphics_and_Display
-.. rubric:: Introduction
-   :name: introduction
+
+Introduction
+============
 
 TI SOCs like AM355x, AM437x and AM57xx are enabled with 3D cores,
 capable of accelerating 3D operations with dedicated hardware. The
@@ -44,8 +45,8 @@ topics:
 -  SGX Debugging Tips
 -  SoC Performance Monitoring Tools
 
-.. rubric:: Software Architecture
-   :name: software-architecture
+Software Architecture
+=====================
 
 The picture below shows the software architecture of Graphics in
 Processor SDK.
@@ -68,8 +69,8 @@ Processor SDK.
 
    </div>
 
-.. rubric:: Graphics Demos Available via Matrix
-   :name: graphics-demos-available-via-matrix
+Graphics Demos Available via Matrix
+===================================
 
 The following 3D Graphics demos are available via Matrix. The table
 below provides a list of these demos, with a brief description.
@@ -91,8 +92,8 @@ below provides a list of these demos, with a brief description.
 Note that some of the 3D Graphics demos are from Imagination's PowerVR
 SDK.
 
-.. rubric:: Graphics Demos from Command Line
-   :name: graphics-demos-from-command-line
+Graphics Demos from Command Line
+================================
 
 The graphics driver and userspace libraries and binaries are distributed
 along with the SDK.
@@ -107,8 +108,8 @@ console.
 Please make sure the board is connected to at least one display before
 running these demos.
 
-.. rubric:: Finding Connector ID
-   :name: finding-connector-id
+Finding Connector ID
+---------------------
 
 **Note:** Most of the applications used in the Demos would require the
 user to pass a connector id. A connector id is a number that is assigned
@@ -141,8 +142,8 @@ such as HDMI, LCD etc.
 Usually, LCD is assigned 16 (800x480), and HDMI is assigned 4 (multiple
 resolutions).
 
-.. rubric:: Finding Plane ID
-   :name: finding-plane-id
+Finding Plane ID
+----------------
 
 To find the Plane ID, run the modetest command:
 
@@ -166,8 +167,8 @@ Planes section is given below)
      props:
      ...
 
-.. rubric:: kmscube
-   :name: kmscube
+kmscube
+-------
 
 Run kmscube on default display:
 
@@ -188,8 +189,8 @@ Run kmscube on all connected displays (LCD & HDMI):
 
       target # kmscube -a
 
-.. rubric:: Wayland/Weston
-   :name: waylandweston
+Wayland/Weston
+--------------
 
 The supported Wayland/Weston version brings in the multiple display
 support in extended desktop mode and the ability to drag-and-drop
@@ -286,8 +287,6 @@ video-sink for video playback:
 
       target # gst-launch-1.0 playbin uri=file://<path-to-file-name> video-sink=waylandsink
 
-| 
-
 .. rubric:: Exiting weston
    :name: exiting-weston
 
@@ -297,18 +296,18 @@ Weston from the serial console, exit Weston by pressing Ctrl-C.
 It is also possible to invoke Weston from the native console, exit
 Weston by using pressing Ctrl-Alt-Backspace.
 
-.. rubric:: Using IVI shell feature
-   :name: using-ivi-shell-feature
+Using IVI shell feature
+-----------------------
 
-| The SDK also has support for configuring weston ivi-shell. The default
-  shell that is configured in the SDK is the desktop-shell.
+The SDK also has support for configuring weston ivi-shell. The default
+shell that is configured in the SDK is the desktop-shell.
 
 To change the shell to ivi-shell, the user will have to add the
 following lines into the /etc/weston.ini.
 
-*To switch back to the desktop-shell can be done by commenting these
+To switch back to the desktop-shell can be done by commenting these
 lines in the /etc/weston.ini (comments begin with a '#' at the start of
-line).*
+line).
 
 ::
 
@@ -331,21 +330,20 @@ running the following commands
 black, this is different from the desktop-shell that brings up a window
 with background.
 
-| With ivi-shell configured for weston, wayland client applications use
-  ivi-application protocol to be managed by a central HMI window
-  management. The wayland-ivi-extension provides ivi-controller.so to
-  manage properties of surfaces/layers/screens and it also provides the
-  ivi-input-controller.so to manage the input focus on a surface.
+With ivi-shell configured for weston, wayland client applications use
+ivi-application protocol to be managed by a central HMI window
+management. The wayland-ivi-extension provides ivi-controller.so to
+manage properties of surfaces/layers/screens and it also provides the
+ivi-input-controller.so to manage the input focus on a surface.
 
-| Applications must support the ivi-application protocol to be managed
-  by the HMI central controller with an unique numeric ID.
+Applications must support the ivi-application protocol to be managed
+by the HMI central controller with an unique numeric ID.
 
 Some important references to wayland-ivi-extension can be found at the
 following links:
-https://at.projects.genivi.org/wiki/display/WIE/01.+Quick+start
-https://at.projects.genivi.org/wiki/display/PROJ/Wayland+IVI+Extension+Design
 
-| 
+-   https://at.projects.genivi.org/wiki/display/WIE/01.+Quick+start
+-   https://at.projects.genivi.org/wiki/display/PROJ/Wayland+IVI+Extension+Design
 
 .. rubric:: Running weston’s sample client applications with IVI shell
    :name: running-westons-sample-client-applications-with-ivi-shell
@@ -374,11 +372,12 @@ commands are required.
 
     target# layer-add-surfaces 0 1000 2 &
 
-| This command creates a layer with ID 1000 and to add maximum 2
-  surfaces to this layer on the screen 0 (which is usually the LCD).
-| At this point, the user can see weston-simple-shm running on LCD. This
-  also prints the numericID (surfaceID) to which client’s surface is
-  mapped as shown below:
+This command creates a layer with ID 1000 and to add maximum 2
+surfaces to this layer on the screen 0 (which is usually the LCD).
+
+At this point, the user can see weston-simple-shm running on LCD. This
+also prints the numericID (surfaceID) to which client’s surface is
+mapped as shown below:
 
 ::
 
@@ -391,8 +390,8 @@ commands are required.
      SetVisibility          : surface ID (10369), ILM_TRUE
      layerAddSurface        : surface ID (10369) is added to layer ID (1000)
 
-| Here 10369 is the number to which weston-simple-shm application’s
-  surface is mapped.
+Here 10369 is the number to which weston-simple-shm application’s
+surface is mapped.
 
 User can launch one more client application which allows
 layer\_add\_surfaces to add second surface to the layer 1000 as shown
@@ -445,8 +444,8 @@ applications. The examples can be invoked using the below commands.
 After you see the output on the display interface, hit *q* to terminate
 the application.
 
-.. rubric:: Using the PowerVR Tools
-   :name: using-the-powervr-tools
+Using the PowerVR Tools
+=======================
 
 The suite of PowerVR Tools is designed to enable rapid graphics
 application development. It targets a range of areas including asset
@@ -460,8 +459,8 @@ PVRScope and PVRTrace recorder libraries from Imagination PowerVR SDK to
 profile and trace SGX activities. In addition, it also includes
 PVRPerfServerDeveloper tool.
 
-.. rubric:: PVRTune
-   :name: pvrtune
+PVRTune
+-------
 
 The PVRTune utility is a real-time GPU performance analysis tool. It
 captures hardware timing data and counters which facilitate the
@@ -474,8 +473,8 @@ command:
 
     target # /opt/img-powervr-sdk/PVRHub/PVRPerfServer/PVRPerfServerDeveloper
 
-.. rubric:: PVRTrace
-   :name: pvrtrace
+PVRTrace
+--------
 
 The PVRTrace is an OpenGL ES API recording and analysis utility.
 PVRTrace GUI provides off-line tools to inspect captured data, identify
@@ -513,8 +512,8 @@ The trace file can then be transferred to a PC and we can visualize the
 application using the host side PVRTrace utility. Please refer to the
 link at the beginning of this section for more details.
 
-.. rubric:: Running DSS application
-   :name: running-dss-application
+Running DSS application
+=======================
 
 DSS applications are omapdrm based. These will demonstrate the clone
 mode, extended mode, overlay window, z-order and alpha blending
@@ -560,61 +559,32 @@ command:
 
 **Running drmzalpha application**
 
-*Z-order:*
+**Z-order**:
 
 It determines, which overlay window appears on top of the other.
 
-Range: 0 to 3
+|   Range: 0 to 3
+|         lowest value for bottom
+|         highest value for top
+|
 
-.. raw:: html
-
-   <div style="text-align: left; direction: ltr; margin-left: 1em;">
-
-lowest value for bottom
-
-highest value for top
-
-.. raw:: html
-
-   </div>
-
-*Alpha Blend:*
+**Alpha Blend**:
 
 It determines transparency level of image as a result of both global
 alpha & pre multiplied alpha value.
 
-Global alpha range: 0 to 255
-
-.. raw:: html
-
-   <div style="text-align: left; direction: ltr; margin-left: 1em;">
-
-0 - fully transparent
-
-127 - semi transparent
-
-255 - fully opaque
-
-.. raw:: html
-
-   </div>
+|   Global alpha range: 0 to 255
+|       0 - fully transparent
+|       127 - semi transparent
+|       255 - fully opaque
+|
 
 Pre multipled alpha value: 0 or 1
+    |  0 - source is not premultiply with alpha
+    |  1 - source is premultiply with alpha
 
-.. raw:: html
-
-   <div style="text-align: left; direction: ltr; margin-left: 1em;">
-
-0 - source is not premultiply with alpha
-
-1 - source is premultiply with alpha
-
-.. raw:: html
-
-   </div>
 
 To test drmzalpha, execute the following command:
-
 ::
 
       target # drmzalpha -s <crtc_w>x<crtc_h> -w <plane1_id>:<z_val>:<glo_alpha>:<pre_mul_alpha> -w <plane2_id>:<z_val>:<glo_alpha>:<pre_mul_alpha>
@@ -623,8 +593,8 @@ To test drmzalpha, execute the following command:
 
     e.g.: target # drmzalpha -s 1280x800 -w 19:1:255:1 -w 20:2:255:1
 
-.. rubric:: QT Graphics Framework
-   :name: qt-graphics-framework
+QT Graphics Framework
+=====================
 
 Qt is a powerful C++ toolkit for writing cross-platform graphics
 applications, enabling a single code base to run predictably and perform
@@ -645,8 +615,11 @@ wayland-egl is the default QPA. Hence all QT applications should be run
 on top of Weston. To run QT application without Weston, the user can use
 “- platform” option to specify the desired QPA as “linuxfb” or “eglfs".
 
-.. rubric:: Migration Guide from Processor SDK 1.x to 2.x for AM3, AM4
-   :name: migration-guide-from-processor-sdk-1.x-to-2.x-for-am3-am4
+Migration from prior releases
+=============================
+
+from Processor SDK 1.x to 2.x for AM3, AM4
+------------------------------------------
 
 The SGX driver has been enhanced to support DRM based Full Window
 Display in processor SDK 2.0 and the FBdev based Full Window modes are
@@ -693,8 +666,8 @@ the SDK file system
 -  /usr/bin/sgx\_render\_flip\_test
 -  /usr/bin/sgx\_render\_test
 
-.. rubric:: Migration Guide from Processor SDK 2.0.0 to 2.0.x for AM4
-   :name: migration-guide-from-processor-sdk-2.0.0-to-2.0.x-for-am4
+from Processor SDK 2.0.0 to 2.0.x for AM4
+-----------------------------------------
 
 The SGX driver has been enhanced to support DRM/WAYLAND based
 Multi-Window Display in processor SDK 2.0.1. The System startup and most
@@ -722,9 +695,8 @@ application use case, so that the PVR configuration parameter
 WindowSystem at the PVR configuration file /etc/powervr.ini is no longer
 used.
 
-.. rubric:: Migration Guide from Processor SDK 2.0.1 to 2.0.x for
-   AM3/4/5
-   :name: migration-guide-from-processor-sdk-2.0.1-to-2.0.x-for-am345
+from Processor SDK 2.0.1 to 2.0.x for AM3/4/5
+----------------------------------------------
 
 The SGX driver has been enhanced to support DRM-based Full
 Screen(NullDRM) and Multi-Window(Wayland) Display in processor SDK
@@ -749,8 +721,8 @@ application use case, so that the PVR configuration parameter
 WindowSystem at the PVR configuration file /etc/powervr.ini is no longer
 required.
 
-.. rubric:: Migration Guide from Processor SDK 3.1 to 3.x for AM3/4/5
-   :name: migration-guide-from-processor-sdk-3.1-to-3.x-for-am345
+from Processor SDK 3.1 to 3.x for AM3/4/5
+-----------------------------------------
 
 The QT QPA eglfs\_kms, which supports multiple screens, has been enabled
 and used as the default eglfs platform plugin in processor SDK 3.2. To
@@ -760,8 +732,8 @@ configuration file qt\_env.sh at /etc/profile.d
 
 -  export QT\_QPA\_EGLFS\_INTEGRATION=none
 
-.. rubric:: AM3 Beagle Bone Black Board Configuration
-   :name: am3-beagle-bone-black-board-configuration
+AM3 Beagle Bone Black Board Configuration
+=========================================
 
 AM335x has a HW bug, chapter 3.1.1 in the errata: "The blue and red
 color assignments to the LCD data pins are reversed when operating in
@@ -804,42 +776,31 @@ one of the kernel boot parameters for non-Weston application and at
 
 | 
 
-.. rubric:: Debugging SGX driver related issues
-   :name: debugging-sgx-driver-related-issues
-
-| For debugging issues with SGX driver and frequently asked questions,
-  please go through
-| http://processors.wiki.ti.com/index.php/SGXDbgInfo
-
-.. rubric:: SOC Performance monitoring tools on AM5 Devices
-   :name: soc-performance-monitoring-tools-on-am5-devices
+SOC Performance monitoring tools on AM5 Devices
+================================================
 
 .. rubric:: Introduction
    :name: introduction-1
 
---------------
-
-| The SOC Performance monitoring tools are a set of tools that are
-  included in the default filesystem that allow the user to visualize
-  various SOC parameters real-time on the screen.
-| Currently, there are two tools and a suite of scripts and utilities to
-  use them.
+The SOC Performance monitoring tools are a set of tools that are
+included in the default filesystem that allow the user to visualize
+various SOC parameters real-time on the screen.
+Currently, there are two tools and a suite of scripts and utilities to
+use them.
 
 #. soc-performance-monitor
 #. soc-ddr-bw-visualize
 
-| Both these applications are Wayland applications and need to be
-  invoked after running Weston.
+Both these applications are Wayland applications and need to be
+invoked after running Weston.
 
 These tools bring in the capability to visualize the following:
 
 #. DDR BW Utilization
-
    #. Overall DDR BW Usage
    #. Split of the traffic between the two EMIF's
    #. A real time "top" like functionality that depicts the list of "Top
       6" initiators generating the traffic.
-
 #. Voltage of the various rails
 #. Frequency of the various cores
 #. Temperature (read from on die temperature sensors)
@@ -860,13 +821,8 @@ These tools bring in the capability to visualize the following:
 
    </div>
 
-| 
-
 .. rubric:: Getting started
    :name: getting-started
-
---------------
-
 -  Prepare the card with PLSDK 3.0.0 or later.
 -  Boot up
 -  Start weston
@@ -935,13 +891,11 @@ These tools bring in the capability to visualize the following:
 The following sections will talk about the how to populate the data into
 tools and further controls that are possible.
 
-| 
-
 .. rubric:: Quick guide to available plugins
    :name: quick-guide-to-available-plugins
 
-| Plugins are the entities (scripts/native binaries) that can be used to
-  send commands to the SOC Performance Monitoring tools.
+Plugins are the entities (scripts/native binaries) that can be used to
+send commands to the SOC Performance Monitoring tools.
 
 The main intent of this is to separate the visualization engine from the
 data collection part and allow full configuration of the application.
@@ -1084,11 +1038,9 @@ order.
 .. rubric:: Config file format
    :name: config-file-format
 
---------------
-
-| The config file has the following format.
-| There are 3 different kinds of sections that can be defined, please
-  refer to the particular section for more details.
+The config file has the following format.
+There are 3 different kinds of sections that can be defined, please
+refer to the particular section for more details.
 
 The generic format is:
 
@@ -1208,13 +1160,11 @@ UNIT are the only supported values.
 .. rubric:: Commands:
    :name: commands
 
---------------
-
-| The **FIFO** can be used to communicate with the
-  soc-performance-monitor application and pass data from the command
-  line or from other applications.
-| There are a few commands that have been implemented to aid in
-  modifying the running application via the FIFO.
+The **FIFO** can be used to communicate with the
+soc-performance-monitor application and pass data from the command
+line or from other applications.
+There are a few commands that have been implemented to aid in
+modifying the running application via the FIFO.
 
 The commands in general have the following format:
 
@@ -1237,8 +1187,6 @@ The currently supported list of supported commands are:
 **NOTE: To execute a sequence of commands in a sequence, it is advised
 that a delay of REFRESH\_TIME\_USECS be inserted between two commands.**
 
-| 
-
 .. rubric:: TABLE command
    :name: table-command
 
@@ -1248,14 +1196,15 @@ The format of the TABLE command is:
 
     "TABLE: ROW_NAME value unit"
 
-| When this command is issued, the tool will find a table entry with the
-  ROW\_NAME in Column 0 and then update the Column 1 of the table with
-  "value unit"
-| If the ROW\_NAME is not found, then this command will have no effect.
-  Please note that this brings in a restriction that all the tables rows
-  will need to have a unique name. In order to ensure this, the
-  soc\_performance\_monitor.cfg file will have to be reviewed to ensure
-  unique names.
+When this command is issued, the tool will find a table entry with the
+ROW\_NAME in Column 0 and then update the Column 1 of the table with
+"value unit".
+
+If the ROW\_NAME is not found, then this command will have no effect.
+Please note that this brings in a restriction that all the tables rows
+will need to have a unique name. In order to ensure this, the
+soc\_performance\_monitor.cfg file will have to be reviewed to ensure
+unique names.
 
 Example: To update the FREQUENCY table for MPU, the user can send the
 following command:
@@ -1276,11 +1225,12 @@ The format of the CPULOAD command is:
      CORE_NAME has to be one of the names specified in the soc_performance_monitor.cfg.
      value is in the range 0 to 100
 
-| Usually, the CPULOAD command is invoked through an application
-  monitors the load of a specific core.
-| In each system, the mechanism to retrieve the CPULOAD of a particular
-  core can vary and it is for this reason that several plugins have been
-  provided and serve as an example for further extension.
+Usually, the CPULOAD command is invoked through an application
+monitors the load of a specific core.
+
+In each system, the mechanism to retrieve the CPULOAD of a particular
+core can vary and it is for this reason that several plugins have been
+provided and serve as an example for further extension.
 
 Example: To update the CPULOAD table for GPU, the user can send the
 following command:
@@ -1302,14 +1252,11 @@ internal working of the tool, launch the tool with the following option:
 .. rubric:: Build instructions
    :name: build-instructions
 
-| The full source of the tool is available and the required recipes have
-  been updated as part of the recipes and upstreamed to meta-arago.
-| Essentially, if the user builds the Yocto filesystem as documented in
-  the SDG, the tool will get recompiled as part of it.
+The full source of the tool is available and the required recipes have
+been updated as part of the recipes and upstreamed to meta-arago.
 
-| 
-
-| 
+Essentially, if the user builds the Yocto filesystem as documented in
+the SDG, the tool will get recompiled as part of it.
 
 .. rubric:: Configuration of the soc-ddr-bw-visualizer
    :name: configuration-of-the-soc-ddr-bw-visualizer

@@ -48,7 +48,6 @@ This script performs the below actions:
 
 One can confirm whether the SGX drivers have been properly installed by
 checking the following-
-
 -  One should have seen the message on serial console- "Initializing the
    graphics driver ..." just before getting the linux command prompt.
 -  lsmod shows pvrsrvkm module inserted successfully without any error
@@ -79,8 +78,6 @@ Important configuration parameters are mentioned below.
 
     * libpvrGBMWSEGL.so (GBM-based WS where it is up to application to perform KMS operations)
 
-| 
-
 .. rubric:: DisableHWTextureUpload
    :name: disablehwtextureupload
 
@@ -97,15 +94,11 @@ Important configuration parameters are mentioned below.
 
     * DefaultPixelFormat - This configuration item sets the default display pixel format. 
 
-RGB565
+For eg if one wants to configure the default pixel format, then edit /etc/powervr.ini to have following line
+     DefaultPixelFormat=ARGB8888
 
-ARGB8888 (Default)
-
-| 
-| For eg if one wants to configure the default pixel format, then edit
-  /etc/powervr.ini to have following line-
-| DefaultPixelFormat=ARGB8888
-| For AM3 Beagle Bone Black EVM- DefaultPixelFormat=RGB565
+For AM3 Beagle Bone Black EVM
+     DefaultPixelFormat=RGB565
 
 .. rubric:: SGX Driver Failure Modes (Installation)
    :name: sgx-driver-failure-modes-installation
@@ -126,8 +119,6 @@ modules. If the kernel modules are built correctly as specified, post
 the issue on the E2E forum with the output of the gfx\_check.sh script
 linked in earlier section.
 
-| 
-
 .. rubric:: SGX Driver Failure Modes (Run time)
    :name: sgx-driver-failure-modes-run-time
 
@@ -146,13 +137,14 @@ Please contact TI through the Linux E2E forums (http://e2e.ti.com/)
    clock rate?
    :name: demos-are-not-running-at-required-speed-how-to-check-sgx-clock-rate
 
-| If the demos are running slower than expected, check and ensure that
-  the clock frequency set for the SGX driver is correct. This can be
-  done by the following code in the KM kernel drivers -
+If the demos are running slower than expected, check and ensure that
+the clock frequency set for the SGX driver is correct. This can be
+done by the following code in the KM kernel drivers -
 
-| File - eurasia\_km/services4/system/omap/sysutils\_linux.c
-| Function - EnableSGXClocks()
-| You can print the SGX clock rate in debug build as below -
+File - eurasia\_km/services4/system/omap/sysutils\_linux.c
+Function - EnableSGXClocks()
+
+You can print the SGX clock rate in debug build as below -
 
 ::
 
@@ -185,8 +177,6 @@ log, with the below option enabled in the environment
 ::
 
     "QT_DEBUG_PLUGINS=1"
-
-| 
 
 .. rubric:: Posting to E2E forum
    :name: posting-to-e2e-forum
