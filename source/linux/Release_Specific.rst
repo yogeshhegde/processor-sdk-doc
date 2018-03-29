@@ -5,17 +5,50 @@ Release Specific
 .. ************************************
 .. Release Notes
 .. ************************************
+.. _processor-sdk-linux-release-notes:
 .. include:: Release_Specific/Processor_SDK_Linux_Release_Notes.rst
+
+************************************
+U-boot Release Notes
+************************************
+.. include:: Release_Specific/U-boot_Release_Notes.rst
+
+************************************
+Kernel Release Notes
+************************************
+.. include:: Release_Specific/Kernel_Release_Notes.rst
+
+************************************
+RT Kernel Release Notes
+************************************
+.. include:: Release_Specific/RT_Kernel_Release_Notes.rst
+
+
+************************************
+Performance Guide
+************************************
+
+Kernel Performance Guide
+=================================
+.. include:: Release_Specific/Performance_Guide/Kernel_Performance_Guide.rst
+
+RT Kernel Performance Guide
+=================================
+.. include:: Release_Specific/Performance_Guide/RT_Kernel_Performance_Guide.rst
+
+
 
 .. ************************************
 .. Supported Platforms and Versions 
 .. ************************************
+.. _SDK-Supported-Platforms:
 .. include:: ../common/Release_Specific/Processor_SDK_Supported_Platforms_and_Versions.rst
 
 .. ************************************
-.. Building the SDK
+.. Layer Configuration
 .. ************************************
-.. include:: Release_Specific/Processor_SDK_Building_The_SDK.rst
+.. _PLSDK-LayerConfig-label:
+.. include:: Release_Specific/Layer_Configuration.rst
 
 .. ************************************
 .. Migration Guide

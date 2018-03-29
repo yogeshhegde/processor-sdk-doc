@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/WL127x_WLAN_and_Bluetooth_Demos
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-wlan-bt
 
 This page is a landing page for the entire set of WLAN and Bluetooth
 Demos available for the WL127x. Many of the demos are platform-agnostic,
@@ -193,6 +193,4 @@ page for more instruction.
    General <http://linuxwireless.org/en/developers/Regulatory>`__
 -  `Regulatory
    rules <http://linuxwireless.org/en/developers/Regulatory/processing_rules>`__
-
-.. raw:: html
 

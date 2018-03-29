@@ -1,20 +1,18 @@
 .. http://processors.wiki.ti.com/index.php/Sitara_Linux_Training:_Hands_on_with_QT
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-hands-on-qt
 
-| 
-| This lab is going to give you a hands on tutorial on QT, the GUI
-  devolpment tool, which is a component of the Sitara SDK. Each of the
-  following sections below will walk you through a particular Lab
-  exercise, the key points to take away, and the step-by-step
-  instructions to complete the lab. The labs in this section will
-  utilize both a command line build approach and a IDE approach using QT
-  Creator.
+This lab is going to give you a hands on tutorial on QT, the GUI
+devolpment tool, which is a component of the Sitara SDK. Each of the
+following sections below will walk you through a particular Lab
+exercise, the key points to take away, and the step-by-step
+instructions to complete the lab. The labs in this section will
+utilize both a command line build approach and a IDE approach using QT
+Creator.
 
-| 
-| **Wiki Training:** - You can find the necessary code segments embedded
-  in the this wiki article. You can cut and paste them from the wiki as
-  needed.
+**Training:** - You can find the necessary code segments embedded
+in the this article. You can cut and paste them from the wiki as
+needed.
 
 **Hands On Session:** - In the vmware image, there are cheater files:
 /home/sitara/QT\_Lab You can cut and paste section of code from this
@@ -22,9 +20,8 @@ file rather than have to type them in. You can find a copy here, just
 right click and select "Save Target As": `File:QT
 Lab.tar.gz </index.php/File:QT_Lab.tar.gz>`__
 
-| 
-| **NOTE:** In this guide commands to be executed for each step will be
-  marked in **BOLD**
+**NOTE:** In this guide commands to be executed for each step will be
+marked in **BOLD**
 
 .. rubric:: Lab Configuration
    :name: lab-configuration
@@ -125,8 +122,6 @@ The following platforms are system tested to verify proper operation.
 **This current version has been validated on ti-processor-sdk version
 02.00.01.07 using QT Creator 3.6.0**
 
-| 
-
 .. rubric:: LAB 1: Hello World Command Line
    :name: lab-1-hello-world-command-line
 
@@ -143,8 +138,6 @@ minutes. This section will cover the following topics
 
    -  where to find things in the Sitara SDK
 
-| 
-
 .. rubric:: Key Points
    :name: key-points
 
@@ -157,7 +150,7 @@ minutes. This section will cover the following topics
    :name: lab-steps
 
 #. Connect the cables to the EVM. For details on where to connect these
-   cables see the *Quick Start Guide* that came with your EVM.
+   cables see the **Quick Start Guide** that came with your EVM.
 
    #. Connect the Serial cable to provide access to the console.
    #. Connect the network cable
@@ -206,7 +199,9 @@ minutes. This section will cover the following topics
 
 #. You should see a listing of the cross-compile tools available like
    the one below.
+
 .. Image:: ../images/Sitara-linux-training-cross-tools-1.png
+
 #. To locate the pre-built ARM libraries perform the following commands:
 
    -  **cd /home/sitara/AM335x/ti-processor-sdk-linux-<machine>-<sdk
@@ -223,7 +218,9 @@ minutes. This section will cover the following topics
 
 #. You should see a listing of QT related libraries that can be used to
    build and run QT projects.
+
 .. Image:: ../images/Sitara_Linux_QT_library_listings_1.png
+
 #. You can also find out where the QT header files are located. At the
    directory below are sub directories full of QT header files.
 
@@ -238,7 +235,7 @@ minutes. This section will cover the following topics
    variables such as CC to use the cross-compile toolchain, as well as
    adding the toolchain to your PATH and configuring paths for library
    locations. To utilize the setting provided by the environment-setup
-   script you will need to *source* the script. Perform the following
+   script you will need to **source** the script. Perform the following
    commands to source the environment-setup script and observe the
    change in the QMAKESPEC variable:
 
@@ -249,12 +246,14 @@ minutes. This section will cover the following topics
 
 #. You should see the changes that were applied by executing the setup
    script.
+
 .. Image:: ../images/Sitara_Linux_QT_environment_setup_script.jpeg
+
 #. You should have observed that the QMAKESPEC variable now contains the
    path to the QMAKESPEC files. Additionally your compile tools were
    added. There was also another change that occurred which was that
-   your standard prompt changed from *sitara@ubuntu* to
-   *[linux-devkit]*. The purpose of this change is to make it easy to
+   your standard prompt changed from **sitara@ubuntu** to
+   **[linux-devkit]**. The purpose of this change is to make it easy to
    identify when the environment-setup script has been sourced. This is
    important because there are times when you DO NOT want to source the
    environment-setup script. A perfect example is when building the
@@ -452,7 +451,7 @@ development.
    -  Double click on **Version Name** and give the Qt Version a
       descriptive name such as **QT 5.5 Sitara** See image below.
 
-   |Sitara Linux QT Options.jpeg|
+   .. Image:: ../images/Sitara_Linux_QT_options.jpeg
 
    .. raw:: html
 
@@ -510,6 +509,7 @@ development.
    -  For Debugger select **GDB Engine**.
    -  For QT Version select **Qt 5.5 Sitara**
    -  Click **Apply** to register the options.
+
 .. Image:: ../images/Sitara-linux-kits.png
 
 #. Now let's setup our Target. While still in the **Tools -> Options**
@@ -518,9 +518,13 @@ development.
    -  On the left side of the window, select the **Devices tab**
    -  In Devices: click the **Devices tab**
    -  Click **Add...** in the top right
-.. Image:: ../images/Sitara_Linux_QT_options_add_device.png
+
+   .. Image:: ../images/Sitara_Linux_QT_options_add_device.png
+
    -  Select **Generic Linux device** and click on **Start Wizard**
-.. Image:: ../images/Sitara_Linux_QT_Device_Configuration_Wizard_Selection.jpeg
+
+   .. Image:: ../images/Sitara_Linux_QT_Device_Configuration_Wizard_Selection.jpeg
+
    -  The Device Configuration Wizard Selection Dialog box comes up
 
       -  Type in the name of the Device: **AM335x EVM**
@@ -546,10 +550,11 @@ development.
          password field blank**.
       -  Click **Next**
 
-      |Sitara Linux options Generic Linux Device Configuration
-      Setup.jpeg|
+      .. Image:: ../images/Sitara_Linux_options_Generic_Linux_Device_Configuration_Setup.jpeg
+
    -  Click **Finish**. You should see that the target test passed, so
       you can close that window.
+
 .. Image:: ../images/Sitara_target_test.png
 
 #. Now we need to setup an SSH key so that the host can communicate with
@@ -558,33 +563,29 @@ development.
    -  Still under the Devices tab click **Create New** for Private key
       file
 
-.. Image:: ../images/Sitara_Linux_QT_create_new_ssh_key.png
+   .. Image:: ../images/Sitara_Linux_QT_create_new_ssh_key.png
 
    -  
-
       -  **Key algorithm RSA**
       -  Select **Key size: 1024**
       -  Then click **Generate and Save Key Pair...**
 
-.. Image:: ../images/Sitara_Linux_QT_options_SSH_Key_Configuration.jpeg
+   .. Image:: ../images/Sitara_Linux_QT_options_SSH_Key_Configuration.jpeg
 
    -  
-
       -  Click **Do not Encrypt key file**
 
-.. Image:: ../images/Sitara_Linux_QT_Password_for_Private_Key.jpeg
+   .. Image:: ../images/Sitara_Linux_QT_Password_for_Private_Key.jpeg
 
    -  
-
       -  Just use the default name qtc\_id.pub and **Click Save** and
          **Click Close** to close the Generate SSH Key window.
 
    -  Under the Devices tab now click **Deploy Public Key...**
 
-.. Image:: ../images/Sitara_Linux_QT_Deploy_Public_Key.png
+   .. Image:: ../images/Sitara_Linux_QT_Deploy_Public_Key.png
 
    -  
-
       -  Select the file just generated (should be under
          /home/sitara/.ssh)
 
@@ -603,12 +604,14 @@ development.
       -  Select the file **qtc\_id.pub** and click on **Open**, shortly
          a window should show up saying "Deployment finished
          sucessfully"
-.. Image:: ../images/Sitara_successful_deploy.png
+   
+   .. Image:: ../images/Sitara_successful_deploy.png
 
    -  Close the window and **Click OK** to exit the Linux Devices
       Window.
 
 .. Image:: ../images/Sitara_Linux_QT_ok_to_close_devices.png
+
 #. Now that we are setup lets create a project build it and run it on
    the host
 
@@ -616,16 +619,22 @@ development.
    -  Then select **Applications** under projects then select **QT
       Widgets Applicaton** on the top center
    -  Click on **Choose**
-.. Image:: ../images/Sitara_Linux_QT_new_project.png
+
+   .. Image:: ../images/Sitara_Linux_QT_new_project.png
+
    -  Type in the name of the project as **terminal**. We will be
       building on this project in the next section.
    -  Change the **Create in** value to **/home/sitara**
    -  Click on **Next**
-.. Image:: ../images/Sitarea_Linux_Qt_project_terminal.png
+
+   .. Image:: ../images/Sitarea_Linux_Qt_project_terminal.png
+
    -  Click on **Next** again
    -  Type in **terminal** for the **Class name**
    -  Click **Next**
-.. Image:: ../images/Sitara_Linux_QT_new_terminal_props.png
+
+   .. Image:: ../images/Sitara_Linux_QT_new_terminal_props.png
+   
    -  Click **Finish**
 
 #. Now we've setup a new project let's explore and add some code.
@@ -633,7 +642,9 @@ development.
    -  Click on **Edit** on the **left hand menubar** and look at the
       project files including terminal.pro, main.cpp, terminal.cpp and
       terminal.ui
-.. Image:: ../images/Sitara-terminal-pro.jpeg
+
+   .. Image:: ../images/Sitara-terminal-pro.jpeg
+   
    -  Under **Forms**, double click on **terminal.ui** This will bring
       up the widget editor.
    -  Remove the menuBar where it says Type Here on the top of the ui
@@ -642,12 +653,15 @@ development.
       the ui. It is not that easy to see, but it is there and blank.
    -  Once again remove the ToolBar (mainToolBar). It is found at the
       top of the ui and is also hard to see.
-.. Image:: ../images/RemoveMenubar.png
+
+   .. Image:: ../images/RemoveMenubar.png
+
    -  Find the **label widget** in the category of *display widgets*,
       **left click and drag it on to the User Interface (UI).**
    -  Type **Hello World!!!** into the label widget and strech out the
       borders so you can see all the letters.
-.. Image:: ../images/Sitara_hello_world_UI.png
+
+   .. Image:: ../images/Sitara_hello_world_UI.png
 
 #. Now we need to check and update the build and run settings:
 
@@ -655,13 +669,17 @@ development.
    -  Select the **Build and Run** tab and select **Build** under
       AM335x.
    -  Uncheck **Shadow build** as shown in the screenshot below:
-.. Image:: ../images/Sitara_Build_settings_1.png
+
+   .. Image:: ../images/Sitara_Build_settings_1.png
+
    -  Now under the AM335x select the **Run** tab
    -  Under Method click **Add** and select **Add** and then **Deploy to
       Remote Linux Host**
    -  However you see the <Remote path not set> error under the Run
       secton.
-.. Image:: ../images/Sitara_deploy_remote.jpeg
+
+   .. Image:: ../images/Sitara_deploy_remote.jpeg
+
    -  To fix the <Remote path not set> error do the following:
 
       -  Click on **Edit** on the left side vertical bar and click on
@@ -686,14 +704,17 @@ development.
 
          ``target.path += /home/root``
          INSTALLS += target
-.. Image:: ../images/Sitara_add_target_loc.jpeg
+
+      .. Image:: ../images/Sitara_add_target_loc.jpeg
+
       -  Select **File -> Save**
 
    -  Click on **Projects** on the left side vertical bar and you should
       now see the error is gone and replaced with /home/root/terminal
    -  Now in the Run portion: **Select Add -> terminal (on Remote
       Generic Linux Host)**
-.. Image:: ../images/Sitara_remote_host.jpeg
+   
+   .. Image:: ../images/Sitara_remote_host.jpeg
 
 #. Finally we are ready to run
 
@@ -722,9 +743,12 @@ development.
    -  If you receive the error 'g++: Command not found', navigate to
       tools>options>build and run>kits. Add “linux-oe-g++” to the “Qt
       mkspec” text box
-.. Image:: ../images/CompileErrorFix.PNG
+
+   .. Image:: ../images/CompileErrorFix.PNG
+
    -  Save all files if asked
-.. Image:: ../images/Sitara-linux-Terminal-hello.jpeg
+
+   .. Image:: ../images/Sitara-linux-Terminal-hello.jpeg
 
 #. Extra Investigation:
 
@@ -766,11 +790,13 @@ scratch.
    -  **Select the entire ui** as shown below.
    -  **Edit the Geometry values to Width = 440 and Height = 230** as
       shown.
-      |Resize the GUI screen size|
+
+   .. Image:: ../images/Sitara-Linux_QT_Resize_screen.png
 
 #. Next we will add the Tab Widget. Just like the label widget, drag it
    over to the ui.
-.. Image:: ../images/Sitara_tab_widget.png
+
+   .. Image:: ../images/Sitara_tab_widget.png
 
    -  Select the tab widget layout. Currently, the tab widget is part of
       our ui, but it is just sitting at fixed location where we dragged
@@ -778,7 +804,8 @@ scratch.
 
       -  On the upper right side right click on the **terminal QWidget
          and select Lay Out -> Lay Out Vertical** as shown below
-.. Image:: ../images/Sitara_layout_vertically.png
+
+   .. Image:: ../images/Sitara_layout_vertically.png
 
    -  Now the tab widget should completely fill the ui.
 
@@ -797,6 +824,7 @@ scratch.
          Out in a Grid**
       -  Move them around so they look somewhat like the screen shot
          below
+
 .. Image:: ../images/Sitara_ui_layout.jpeg
 
 #. Lets Rename the Push Button widgets.
@@ -866,7 +894,9 @@ scratch.
    to do.
 
    -  Right click on the **Exit widget -> Go to slot**
-.. Image:: ../images/Sitara_goto_slot.jpeg
+
+   .. Image:: ../images/Sitara_goto_slot.jpeg
+
    -  In the **Go to Slot selector**, select the first selection
       **clicked()** and hit OK
 
@@ -890,7 +920,8 @@ scratch.
    -  Add the following line of code to
       **on\_pushButton\_exit\_clicked()**
       ``qApp->quit();``
-.. Image:: ../images/Sitara_pushbutton.png
+
+   .. Image:: ../images/Sitara_pushbutton.png
 
 #. Now repeat the same process you did for the exit button on the send
    CMD button. We will add code to control that button press.
@@ -926,14 +957,16 @@ scratch.
       while(process.waitForReadyRead())
       data.append(process.readAll());
       ui->textBrowser\_linuxshell->setText(data.data());
-.. Image:: ../images/Sitara_SendCMD_code.png
+   
+   .. Image:: ../images/Sitara_SendCMD_code.png
 
 #. Finally since we don't have a keyboard to type a command lets add a
    predefined command to our **line Edit Widget** like shown below:
 
    -  Double click on the **line edit** and add the text: **date
       --help**
-.. Image:: ../images/Sitara_add_command.png
+
+   .. Image:: ../images/Sitara_add_command.png
 
 #. Now run, you should see interaction with the Linux shell when you
    push sendCMD.
@@ -982,7 +1015,8 @@ style sheets.
 
    -  When complete with the above steps, it should look like the
       following:
-.. Image:: ../images/Sitara_webview.jpeg
+   
+   .. Image:: ../images/Sitara_webview.jpeg
 
 #. Now we can add a default URL. Since we are not connected to the
    internet, lets bring up matrix since it is running on a local server.
@@ -990,7 +1024,8 @@ style sheets.
    -  Select the **WebView widget** and on the bottom right find the
       **url** property of **QWebView** near the bottom of the list.
    -  Type in: **http://localhost**
-.. Image:: ../images/Sitara_default_url.png
+
+      .. Image:: ../images/Sitara_default_url.png
 
       .. raw:: html
 
@@ -1010,7 +1045,8 @@ style sheets.
 
    -  Go to **Edit** mode and bring up the **terminal.pro** file
    -  Add **webkitwidgets** as shown below
-.. Image:: ../images/Sitara_webkitwidgets.png
+
+   .. Image:: ../images/Sitara_webkitwidgets.png
 
 #. Give it a try and run it, you should see the Matrix displayed.
 
@@ -1039,11 +1075,11 @@ style sheets.
          will jump the available options with the matching text.
       -  Select **w.showFullScreen();** see screen shot.
 
-.. Image:: ../images/Sitara_fullscreen.png
+      .. Image:: ../images/Sitara_fullscreen.png
 
 #. Now re-run and notice how it takes up the full screen.
 
-.. Image:: ../images/Sitara_matrix.PNG
+      .. Image:: ../images/Sitara_matrix.PNG
 
       <div
       style="margin: 5px; padding: 5px 10px; background-color: #ffffec; border-left: 5px solid #ff6600;">
@@ -1091,11 +1127,14 @@ style sheets.
 
       -  Go to **Edit** mode and right click on **terminal -> Add
          Existing Files** as shown below.
-.. Image:: ../images/Sitara_addexisting.png
+
+      .. Image:: ../images/Sitara_addexisting.png
+
       -  Navigate to the keyboard directory
          **/home/sitara/terminal/keyboard** and add all 4 files in that
          directory.
-.. Image:: ../images/Sitara_addkeyboard.png
+
+         .. Image:: ../images/Sitara_addkeyboard.png
 
          .. raw:: html
 
@@ -1136,7 +1175,8 @@ style sheets.
             ``void open_keyboard_lineEdit();``
          -  In the section **private:** add
             ``Keyboard *lineEditkeyboard;``
-.. Image:: ../images/Sitara_terminal_h.png
+
+         .. Image:: ../images/Sitara_terminal_h.png
 
       -  Now add some code to **terminal.cpp**
 
@@ -1152,6 +1192,7 @@ style sheets.
             lineEditkeyboard->setLineEdit(line);
             lineEditkeyboard->show();
             }
+
 .. Image:: ../images/Sitara_terminal_cpp.jpeg
 
 #. You are now ready to run your code.
@@ -1179,7 +1220,9 @@ style sheets.
 
    -  Go back to your ui in the upper right corner: right click on the
       **terminal widget -> Change styleSheet**
-.. Image:: ../images/Sitara_stylesheet.jpeg
+
+   .. Image:: ../images/Sitara_stylesheet.jpeg
+
    -  Cut and paste from terminal sytle sheet settings at the end of
       this lab section to the Terminal stylesheet settings and Apply
       them
@@ -1217,7 +1260,9 @@ style sheets.
 
 #. voila ... TI colors - your setup should now match the look and feel
    of the one below:
-.. Image:: ../images/Sitara_tabStyle.jpeg
+
+   .. Image:: ../images/Sitara_tabStyle.jpeg
+
 #. Run it!
 #. Extra investigation: Run a debug session and set break points in
    keyboard.cpp. Notice how the each QPushbutton signals the
@@ -1239,8 +1284,7 @@ style sheets.
 
          </div>
 
-| 
-| **terminal style sheet settings**
+**terminal style sheet settings**
 
 ::
 
@@ -1285,8 +1329,8 @@ style sheets.
          border-left: 10px transparent;**/
      }
 
-| 
-| **tab style sheet settings**
+ 
+**tab style sheet settings**
 
 ::
 

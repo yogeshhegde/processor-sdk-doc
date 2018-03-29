@@ -3,7 +3,7 @@
 How to add a JVM
 =================================
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-add-jvm
 
 This article shows the steps necessary to add an Oracle Hotspot Java
 Virtual Machine (JVM) to your Sitara SDK. Due to the licensing of this

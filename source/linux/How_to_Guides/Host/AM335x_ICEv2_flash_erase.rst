@@ -3,7 +3,7 @@
 AM335x ICEv2 flash erase
 ===============================
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-flash-erase
 
 The AM3359 ICE development board from Texas Instruments comes pre-loaded
 with a default application in the on-board SPI flash device. In order to
@@ -13,7 +13,7 @@ steps will clear the SPI flash. I performed these steps with CCS v6.1.3
 on a Ubuntu 14.04 host system
 
 .. rubric:: Steps
-   :name: steps
+   :name: steps-flash-erase
 
 #. Mare sure pins 1 and 2 of Jumper J5 (sysboot) are connected on the
    board

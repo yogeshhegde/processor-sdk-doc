@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Demos_Video_Analytics
 .. rubric:: Overview
-   :name: overview
+   :name: overview-video-analytics
 
 The Video Analytics demo shipped with the Processor SDK Linux for AM57xx
 showcases how a Linux Application running on Cortex A-15 cluster can
@@ -324,6 +324,4 @@ The demo code is provided under BSD/MIT License
 -  OpenCV 3.1 version shows low FPS rate for Camera Capture. Hence, a
    custom solution based on direct V4L2 ioctl() calls is adopted
    (cameraGrab.cpp file) to boost the FPS
-
-.. raw:: html
 

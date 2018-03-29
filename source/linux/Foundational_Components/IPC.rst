@@ -1,0 +1,19 @@
+******************
+IPC
+******************
+
+Overview
+==================================
+.. include:: Foundational_Components/IPC/IPC_Overview.rst
+
+Quick Start Guide
+==================================
+.. include:: Foundational_Components/IPC/Quick_Start_Guide.rst
+
+IPC for AM57xx
+==================================
+.. include:: Foundational_Components/IPC/IPC_for_AM57xx.rst
+
+Multiple Ways of ARM-DSP Communication
+=======================================
+.. include:: Foundational_Components/IPC/Multiple_Ways_of_ARM-DSP_Communication.rst

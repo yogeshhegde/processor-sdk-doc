@@ -1,5 +1,5 @@
-.. rubric:: Overview
-   :name: overview
+Overview
+---------
 
 In both HSR and PRP protocols, the DAN (Dual Attached Node) sends an
 identical frame to both the interfaces and uses a sequence number in the
@@ -7,9 +7,8 @@ tag to allow drop duplicates at the Rx node to achieve redundancy. This
 section describes the different software components of a Linux based
 HSR/PRP solution to support redundancy.
 
-.. rubric:: Features
-   :name: features
-
+Features supported
+------------------
 -  Enhanced ICSS cut-through switch with HSR capability
 -  HSR End Node (DANH) complying to IEC62439-3 Edition 2 Clause 5
 -  PRP End Node (DANP) complying to IEC6239-3 Edition 2 Clause 4
@@ -26,8 +25,8 @@ HSR/PRP solution to support redundancy.
 -  Duplicate Accept/Reject configuration change through SNMP SET
 -  Run time change of Protocol at PRU Ethernet
 
-.. rubric:: Software Architecture
-   :name: software-architecture
+Software Architecture
+----------------------
 
 The diagram below highlights the software components that are modified
 or developed specifically for HSR/PRP. These along with other standard
@@ -46,8 +45,15 @@ Attached Node).
 
 .. Image:: ../images/Linux-hsr-architecture.png
 
-.. rubric:: Linux HSR/PRP Driver
-   :name: linux-hsrprp-driver
+HSR/PRP Driver source code and Kconfig option
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The driver source code is located under net/hsr-prp folder of the Linux
+source tree. To build kernel with this driver, set Kconfig option
+CONFIG\_HSR\_PRP=y in the dotconfig or enable it from the menu.
+
+Linux HSR/PRP Driver
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Linux networking subsystem in upstream kernel has added support for
 HSR driver starting in v3.12 (HSRv0 - IEC 62439-3:2010) and enhanced the
@@ -89,8 +95,8 @@ driver is developed to support existing EMAC device as well HSR/PRP
 
 .. Image:: ../images/Hsr-prp-offload.png
 
-.. rubric:: Ethernet Driver
-   :name: ethernet-driver
+Ethernet Driver
+^^^^^^^^^^^^^^^^^^^
 
 Starting from Processor SDK 04.00.00 release, the PRU Ethernet driver
 supports HSR/PRP firmware offload. More specifically, based on a module
@@ -108,8 +114,8 @@ Notice that, from the user point of view, other than providing a module
 parameter to specify which firmware to load, all of the above mentioned
 driver behavior is transparent to the user.
 
-.. rubric:: PRU Ethernet Driver (EMAC/HSR/PRP)
-   :name: pru-ethernet-driver-emachsrprp
+PRU Ethernet Driver (EMAC/HSR/PRP)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Starting from Processor SDK 04.00.00 release, the PRU Ethernet driver
 supports HSR/PRP firmware offload. More specifically, based on a module
@@ -125,8 +131,8 @@ Notice that, from the user point of view, other than providing a module
 parameter to specify which firmware to load, all of the above mentioned
 driver behavior is transparent to the user.
 
-.. rubric:: Queue Usage and VLAN PCP to Queue Map
-   :name: queue-usage-and-vlan-pcp-to-queue-map
+Queue Usage and VLAN PCP to Queue Map
+""""""""""""""""""""""""""""""""""""""
 
 At the Ingress, there are two queues assigned for packets coming from
 each port or PRU. Here is how the PCP values of incoming packets mapped
@@ -170,16 +176,13 @@ queue (Q2) and so forth.
 
 | 
 
-| 
-
-.. rubric:: Changing protocol at PRU Ethernet
-   :name: changing-protocol-at-pru-ethernet
+Changing protocol at PRU Ethernet
+"""""""""""""""""""""""""""""""""""
 
 PRU Ethernet driver support multiple protocols based on the firmware
 loaded on ICSS PRU. In Processor SDK 04.00.00, a capability was added to
 change the protocol running on the PRU at boot time through bootargs.
-This is described at
-`Processor\_SDK\_Linux\_HSR\_PRP#Testing\_HSR.2FPRP\_Firmware\_Offload </index.php/Processor_SDK_Linux_HSR_PRP#Testing_HSR.2FPRP_Firmware_Offload>`__.
+This is described at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`.
 Starting Processor SDK 04.01.00, The driver can be configured to switch
 the protocol while the board is powered up and running Linux kernel. By
 default, the PRU Ethernet driver is probed to be in the EMAC mode and
@@ -339,8 +342,10 @@ MAC address and IP address from the same subnet.
     ifconfig eth2 192.168.2.20
     ifconfig eth3 192.168.3.20
 
-.. rubric:: PRP EMAC mode
-   :name: prp-emac-mode
+.. _PLSDK_PRP_EMAC_Mode-label:
+
+PRP EMAC mode
+""""""""""""""
 
 PRP EMAC mode is a special mode of PRP Ethernet type where the driver
 configures the PRP firmware to work like EMAC firmware. This is because
@@ -353,8 +358,7 @@ Until then this intermediate solution is used. Here are the steps to use
 PRUETH as SAN with PTP
 
 -  Boot the IDK EVM with prussX\_ethtype in bootargs set to PRP as
-   described at
-   `#Testing\_HSR.2FPRP\_Firmware\_Offload <#Testing_HSR.2FPRP_Firmware_Offload>`__
+   described at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
 -  Once the EVM boots up and user login, first thing to verify is if
    PRUETH is configured as PRP Ethernet type. See above section for
    details
@@ -376,8 +380,8 @@ PRUETH as SAN with PTP
 for now and required boot time configuration and above debugfs command
 once device is boot up in PRP mode**
 
-.. rubric:: Multicast filtering
-   :name: multicast-filtering
+Multicast filtering
+--------------------
 
 Multicast filtering is an Ethernet frame filtering feature in PRU firmware based
 on the destination MAC address of the received frame. The PRU provides a
@@ -501,9 +505,8 @@ Sample display
   e0: 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
   f0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
-.. rubric:: VLAN over PRU Ethernet
-   :name: vlan-over-pru-ethernet
-.. _VLAN:
+VLAN over PRU Ethernet
+-----------------------
 
 Virtual LAN (VLAN) is a standard Linux feature that can be enabled over
 PRU Ethernet devices. There are many websites that describes how Linux
@@ -600,8 +603,8 @@ On Node-1
 Similar procedure can be used for setting up VLAN interfaces over PRU
 EMAC and HSR Ethernet types.
 
-.. rubric:: VLAN Filtering
-   :name: vlan-filter
+VLAN Filtering
+---------------
 
 The PRU has a 4096 entry VLAN filter table that allows filtering out
 unwanted VLAN traffic to the host. As soon a VLAN interface is created,
@@ -625,8 +628,8 @@ receive priority tagged frames. See section VLAN_ for details
 on how to assign egress priority mapping for the priority tagged VLAN
 interface.
 
-.. rubric:: Usefull commands
-   :name: Usefull-commands
+.. rubric:: Useful commands
+   :name: Useful-commands
 
 User can use the following command to view the VLAN filter table at PRU.
 
@@ -708,8 +711,8 @@ untagged frames from the network when the VLAN filtering is enabled.
 However there is no support for port VLAN which allows these frames
 to be received at a designated VLAN interface.
 
-.. rubric:: Net-SNMP
-   :name: net-snmp
+Net-SNMP
+--------
 
 The TI SDK release ships tisdk-rootfs-image-am57xx-evm.tar.xz with
 Net-SNMP 5.7.3 binaries pre-installed and snmpd is started as part of
@@ -718,8 +721,7 @@ support IEC-62439-3 related MIB access at the DAN using snmp commands
 such as snmpwalk, snmpget etc. **NOTE:** IEC-62439-3 MIB is supported
 only in the offloaded case. So user is expected to create HSR/PRP
 interface with offload. For details on how to setup HSR/PRP interface
-with offload, please refer `HSR-PRP
-Offload </index.php/Processor_SDK_Linux_HSR_PRP#Testing_HSR.2FPRP_Firmware_Offload>`__
+with offload, please refer :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
 
 .. rubric:: Command examples
    :name: command-examples
@@ -922,35 +924,18 @@ snmpget
 
 **Note** NS: Not supported, NA: Not Applicable
 
-.. rubric:: iproute2
-   :name: iproute2
+iproute2
+--------
 
 iproute2 is enhanced to allow creating a prp interface similar to hsr
 interface using two slave interfaces.
 
-.. rubric:: Linux PTP
-   :name: linux-ptp
+Test Procedure
+---------------
+.. _PLSDK_HSR_PRP_Testing_Firmware_Offload:
 
-Linux PTP documentation is available at
-[`[5] <http://processors.wiki.ti.com/index.php/Processor_SDK_LINUX_PTP>`__]
-
-.. rubric:: Linux HSR/PRP Driver source code and Kconfig option
-   :name: linux-hsrprp-driver-source-code-and-kconfig-option
-
-The driver source code is located under net/hsr-prp folder of the Linux
-source tree. To build kernel with this driver, set Kconfig option
-CONFIG\_HSR\_PRP=y in the dotconfig or enable it from the menu.
-
-.. rubric:: Supported Platforms
-   :name: supported-platforms
-
--  AM571x, AM572x IDK (Only eth2 and eth3)
-
-.. rubric:: Test Procedure
-   :name: test-procedure
-
-.. rubric:: Testing HSR/PRP Firmware Offload
-   :name: testing-hsrprp-firmware-offload
+Testing HSR/PRP Firmware Offload
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The setup of the IDKs for testing HSR/PRP firmware offload and the
 configuration of the HSR/PRP interfaces after kernel boot up are no
@@ -1041,8 +1026,8 @@ For PRU PRP, the string displayed will be
 Where type is what is set in the bootargs and is listed in the table at
 the beginning of this section
 
-.. rubric:: Node Tables (firmware offload)
-   :name: node-tables-firmware-offload
+Node Tables (firmware offload)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the case of HSR/PRP firmware offload, the Node Table can be displayed
 as follows. Note: the locations are different from those when there is
@@ -1090,8 +1075,8 @@ connected to the IDK, do
      Time Last Seen: Sup=0 RxA=0 RxB=0
      PRP LineID Err: A=0 B=0
 
-.. rubric:: LRE Statistics (firmware offload)
-   :name: lre-statistics-firmware-offload
+LRE Statistics (firmware offload)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The LRE statistics is displayed as part the interface statistics using
 the "ethtool -S DEVNAME" command, where DEVNAME, in the case AM572x IDK,
@@ -1173,8 +1158,10 @@ Sample display:
           lreNtLookupErrB: 0
           lreNodeTableFull: 0
 
-.. rubric:: HSR Testing
-   :name: hsr-testing
+.. _PLSDK_HSR_Testing:
+
+HSR Testing
+^^^^^^^^^^^^^^
 
 To test HSR, user would need two AM572x EVMs.
 
@@ -1183,8 +1170,7 @@ To test HSR, user would need two AM572x EVMs.
    (corresponds to Linux interface eth2) as shown below. Similarly,
    connect the PRU2ETH1 ports (Linux interface eth3) as well.
 #. Configure the bootargs to boot PRU with HSR firmware as described
-   above at
-   `Processor\_SDK\_Linux\_HSR\_PRP#Testing\_HSR.2FPRP\_Firmware\_Offload </index.php/Processor_SDK_Linux_HSR_PRP#Testing_HSR.2FPRP_Firmware_Offload>`__
+   above at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
 #. Boot the EVMs using the pre-built images from the Processor SDK
    release. These images are built with Linux HSR/PRP driver enabled.
    Login to the console using root user name.
@@ -1298,8 +1284,10 @@ Using the above script, user teardown the hsr interface as
 Sample logs are shown here `DAN-H-1 </index.php/DAN-H-1>`__,
 `DAN-H-2 </index.php/DAN-H-2>`__
 
-.. rubric:: PRP Testing
-   :name: prp-testing
+.. _PLSDK_PTP_Testing:
+
+PRP Testing
+^^^^^^^^^^^^^^
 
 .. Image:: ../images/Prp-network-setup.jpg
 
@@ -1318,8 +1306,7 @@ incorrect connection and can produce undesirable results.**
 #. Similarly, connect DAN-P-2 EVM, PRU2ETH0 to a port at Ethernet switch
    A and PRU2ETH1 to a port at Ethernet switch B
 #. Configure the PRU to load PRP firmware by setting env variable as
-   discussed at
-   `Processor\_SDK\_Linux\_HSR\_PRP#Testing\_HSR.2FPRP\_Firmware\_Offload </index.php/Processor_SDK_Linux_HSR_PRP#Testing_HSR.2FPRP_Firmware_Offload>`__
+   discussed at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
 #. Boot the EVMs using the pre-built images from the Processor SDK
    release. These images are built with Linux HSR/PRP driver enabled.
    Login to the console using root user name.
@@ -1357,17 +1344,13 @@ To teardown the prp interface do
 Sample logs are shown here `DAN-P-1 </index.php/DAN-P-1>`__,
 `DAN-P-2 </index.php/DAN-P-2>`__
 
-.. rubric:: Performance Test and Logs
-   :name: performance-test-and-logs
+Performance Test and Logs
+-------------------------
 
 Boot up two AM571x/572x EVM to configure PRU Ethernet in HSR or PRP mode
-as described at
-`Processor\_SDK\_Linux\_HSR\_PRP#Testing\_HSR.2FPRP\_Firmware\_Offload </index.php/Processor_SDK_Linux_HSR_PRP#Testing_HSR.2FPRP_Firmware_Offload>`__.
+as described at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
 They are connected over eth2 and eth3 as described in
-`Processor\_SDK\_Linux\_HSR\_PRP#HSR
-Test </index.php/Processor_SDK_Linux_HSR_PRP#HSR_Test>`__ or
-`Processor\_SDK\_Linux\_HSR\_PRP#PRP
-Test </index.php/Processor_SDK_Linux_HSR_PRP#PRP_Test>`__
+:ref:`PLSDK_HSR_Testing` or :ref:`PLSDK_PTP_Testing`
 
 .. rubric:: UDP
    :name: udp
@@ -1586,8 +1569,8 @@ Client side
     [ ID] Interval       Transfer     Bandwidth
     [  3]  0.0-60.0 sec   660 MBytes  92.3 Mbits/sec
 
-.. rubric:: Redundancy Test and Logs
-   :name: redundancy-test-and-logs
+Redundancy Test and Logs
+------------------------
 
 For HSR and PRP redundancy is implemented using duplicate links and
 sending frame over both links and discarding the duplicate at the
@@ -1642,8 +1625,8 @@ eth2 link failed
     root@am57xx-evm:~# uname -a
     Linux am57xx-evm 4.9.41-rt23-gc038d21a22 #2 SMP PREEMPT RT Wed Sep 27 06:34:09 EDT 2017 armv7l GNU/Linux
 
-.. rubric:: Useful Commands
-   :name: useful-commands
+Useful Commands
+---------------
 
 For Non offload case following commands are available. To dump stats
 
@@ -1673,8 +1656,8 @@ where 1 is for Mode-H
 
 Other values are 2 (Mode-N), 3 (Mode-T), 4 (Mode-U), 5 (Mode-M)
 
-.. rubric:: FAQ
-   :name: faq
+FAQ
+----
 
 #. How to disable udhcpc from sending DHCP request over prueth Ethernet
    interfaces (eth2-eth3) when it is configured to run HSR/PRP protocol

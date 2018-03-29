@@ -14,7 +14,7 @@ date information that is better and more complete than what we've
 provided here.**
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-build-ubuntu-linux-host-under-vmware
 
 This guide demonstrates how to get a virtual Ubuntu Linux machine
 running with VMware under Windows 7.  Please use only the 32-bit Ubuntu
@@ -26,13 +26,9 @@ There are SDK scripts that will be checking for this release identity.
 -  Windows 7 host with internet connection, at least 1G of RAM and 40G
    of free hard drive space.
 
-| 
-
 The instructions here are for setting up a 40G virtual machine.  The
 entire 40G is not taken at once, but as the machine is used and software
 is installed, the machine can grow and take up as much as 40G. 
-
-| 
 
 .. rubric:: Download the Ubuntu 14.04 LTS ISO image
    :name: download-the-ubuntu-14.04-ltsiso-image
@@ -40,8 +36,6 @@ is installed, the machine can grow and take up as much as 40G. 
 Get the Ubuntu 14.04 LTS CD ISO image from:
 http://releases.ubuntu.com/14.04/. Select PC (Intel x86) desktop CD
 under the Desktop CD section.
-
-| 
 
 Click download and the follow instructions to download and save the ISO
 image somewhere. Remember where you save this - you will need the ISO
@@ -61,8 +55,6 @@ getting VMware are as follows:
 -  Login to the vmware website
 -  Select VMware Player from the products menu
 -  Follow the steps to download VMware Player
-
-| 
 
 **NOTE - We have tested with v7.0.0 with no known issues.  As of
 Feburary, 2015, v7.0.0 is the latest version.**
@@ -96,8 +88,6 @@ with other versions may vary slightly
    and transport if necessary. Click "Next".
 -  Click "Finish" to complete the creation of the virtual machine.
 
-| 
-
 The machine name will now be listed under the home page of VMware. It is
 necessary to modify some machine settings before playing the machine for
 the first time. Select the machine in the home page and then click on
@@ -105,15 +95,12 @@ the first time. Select the machine in the home page and then click on
 
 |Virtual Machine Settings|
 
-| 
 
 Click on CD/DVD and change the connection to "Use ISO image file". Click
 on "Browse..." and select the Ubuntu ISO image file that was previously
 downloaded. Click on Network Adapter and change the Network connection
 to "Bridged" and then check the box to "Replicate physical network
 connection state".
-
-| 
 
 .. rubric:: Adding a serial port to the virtual machine
    :name: adding-a-serial-port-to-the-virtual-machine

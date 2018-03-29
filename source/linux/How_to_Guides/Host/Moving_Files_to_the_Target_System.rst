@@ -4,12 +4,10 @@ Moving Files to the Target System
 ==========================================
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-linux-moving-files-to-fs
 
 This guide discusses how applications or other files can be moved to the
 target file system of the EVM.
-
-| 
 
 .. rubric:: File System on SD card
    :name: file-systemon-sd-card
@@ -20,17 +18,15 @@ Linux host.  In Ubuntu 10.04 this partition will be mounted on
 **/media/rootfs** when the card is used with an SD card reader inserted
 into a USB port on the Ubuntu host. 
 
-| When the SD card is mounted with a card reader in the Linux host it is
-  possible to perform "cp" commands from the host into sub-directories
-  under /media/rootfs or just use a browser window to drag and drop the
-  files from the host to the SD card.
+When the SD card is mounted with a card reader in the Linux host it is
+possible to perform "cp" commands from the host into sub-directories
+under /media/rootfs or just use a browser window to drag and drop the
+files from the host to the SD card.
 
 Switching the SD card back and forth from the EVM to the SD card reader
 is time consuming during development.  Using a NFS during development is
 the preferred method and makes moving files between the host and target
 trivial.
-
-| 
 
 .. rubric:: File System on Network File System (NFS)
    :name: file-system-on-network-file-system-nfs
@@ -77,11 +73,7 @@ subdirectory of ./filesystem (example ./filesystem/sub-dir) then it will
 show up in the /sub-dir directory of the target after the target boots
 into the NFS.
 
-| 
-
 The top level makefile of the TI SDK supports an install target that
 will copy applications into the NFS of the SDK.  See the README file at
 the top level of the SDK for information about the install target.
-
-.. raw:: html
 

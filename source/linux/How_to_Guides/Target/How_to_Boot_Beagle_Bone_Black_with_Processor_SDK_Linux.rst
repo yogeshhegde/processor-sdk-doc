@@ -3,24 +3,24 @@ How to Boot Beagle Bone Black with Processor SDK Linux
 ==================================================================
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-boot-bbb-linux
 
-| By default, BeagleBone Black EVM boots with the Debian image on eMMC.
-  This page describes two ways to boot a BeagleBone Black EVM with
-  Processor SDK Linux. First, create an SD card with processor SDK Linux
-  (`SDK Create SD Card
-  Script </index.php/Processor_SDK_Linux_create_SD_card_script>`__,
-  `Creating a SD Card with
-  Windows </index.php/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows>`__).
-  Then, choose either of the two procedures below to boot with Processor
-  SDK Linux.
+By default, BeagleBone Black EVM boots with the Debian image on eMMC.
+This page describes two ways to boot a BeagleBone Black EVM with
+Processor SDK Linux. First, create an SD card with processor SDK Linux
+(`SDK Create SD Card
+Script </index.php/Processor_SDK_Linux_create_SD_card_script>`__,
+`Creating a SD Card with
+Windows </index.php/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows>`__).
+Then, choose either of the two procedures below to boot with Processor
+SDK Linux.
 
 .. rubric:: Press S2 Button
    :name: press-s2-button
 
-| With the SD card plugged in, simply keep button S2 pressed while
-  powering up the BeagleBone Black EVM. This needs to be executed every
-  time powering up the EVM to use Processor SDK Linux.
+With the SD card plugged in, simply keep button S2 pressed while
+powering up the BeagleBone Black EVM. This needs to be executed every
+time powering up the EVM to use Processor SDK Linux.
 
 .. rubric:: Erase eMMC
    :name: erase-emmc
@@ -36,6 +36,4 @@ commands to erase eMMC.
 With eMMC erased (one-time change), the booting falls back to use the SD
 card. Power cycle the BeagleBone Black EVM to boot with Processor SDK
 Linux.
-
-.. raw:: html
 

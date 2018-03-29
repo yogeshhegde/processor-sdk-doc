@@ -19,6 +19,11 @@ Processor SDK 04.03
    am572x-idk.dts abd an571x-idk.dts respectively. The new DTS enables the PPS 
    IO pins (sync/latch) and PTP BC bindings at the modified AM572x-idk and 
    AM571x-idks, where the USB/LCD Display are disabled
+-  Camera support for AM572x GPEVM is not in the default DTB.Use
+   am57xx-evm*-cam-mt9t111.dtb for mt9t111 camera, and am57xx-evm*-cam-ov10635.dtb
+   for ov10635 camera
+-  Processor SDK documentation is now created from reStructuredText sources using
+   Sphinx, and hosted on software-dl.ti.com instead of processors wiki
 
 Processor SDK 04.02
 ----------------------

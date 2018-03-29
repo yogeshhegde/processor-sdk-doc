@@ -13,7 +13,7 @@ for AM35x and AM37x devices.   This information is obsolete as newer
 software has different NAND ECC requirements.
 
 .. rubric:: Introduction
-   :name: introduction
+   :name: introduction-flash-linux-system-from-uboot
 
 This guide will show how use u-boot to flash the NAND of an OMAP3 EVM
 (for AM37x, DM37x or OMAP35xx devices) or an AM3517EVM (for AM35x
@@ -26,8 +26,6 @@ devices) with Linux system binaries. 
 #. Linux root filesystem in **rootfs** partition of SD card or root
    filesystem available via NFS
 
-| 
-
 .. rubric:: Caution
    :name: caution
 
@@ -35,8 +33,6 @@ The procedures here will erase the NAND flash of the EVM.  This includes
 all u-boot environment variables.  Use the "**printenv**" command (or
 just "**pri**") in u-boot to print a complete list of environment
 variables.  Copy and paste these to a text file for safe keeping.
-
-| 
 
 .. rubric:: Boot EVM into SD/MMC card boot mode
    :name: bootevm-into-sdmmc-card-boot-mode
@@ -52,8 +48,6 @@ MLO as the primary bootloader.
 
 To boot from this SD card, the boot switches should be set to SD/MMC
 boot:
-
-| 
 
 **For Mistral OMAP EVM (AM37x, DM37x or OMAP35xx devices)**
 
@@ -190,12 +184,6 @@ environment after making changes.
     saveenv
     run nand_mmc_boot
 
-| 
-
- 
-
- 
-
 .. rubric:: Flashing the Root File System to NAND
    :name: flashing-the-root-file-system-to-nand
 
@@ -223,10 +211,6 @@ commands:
     setenv bootargs 'mem=128M console=ttyS0,115200n8 noinitrd root=/dev/mtdblock4 rw rootfstype=jffs2 ip=dhcp'
     bootm
 
-| 
-
-| 
-
 .. rubric:: Mounting File System from NFS
    :name: mounting-file-system-from-nfs
 
@@ -246,9 +230,6 @@ be changed by the user).
     saveenv
     run nand_nfs_boot
 
-| 
-|  
-
 .. rubric:: Default NAND partitioning (from x-loader)
    :name: default-nand-partitioning-from-x-loader
 
@@ -264,6 +245,4 @@ be changed by the user).
    \*/
 
 | 
-
-.. raw:: html
 
