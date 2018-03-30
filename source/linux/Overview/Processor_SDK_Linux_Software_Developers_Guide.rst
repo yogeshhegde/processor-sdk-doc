@@ -7,7 +7,7 @@ Processor SDK Linux Software Developer's Guide
 
 Thank you for choosing to evaluate one of our TI Processors `ARM
 microprocessors <http://www.ti.com/lsds/ti/dsp/arm.page>`__. Please
-*bookmark* this page and refer back to it as needed. It is designed to
+**bookmark** this page and refer back to it as needed. It is designed to
 quickly provide the information you need most while evaluating a TI
 microprocessor, specifically running one of the Software Architectures
 available, embedded Linux. We are always striving to improve this
@@ -49,24 +49,47 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 .. _How To Guides: Processor_Linux_SDK_How_To_Guides.html
 
 
-+-------------+-----------------+---------------+-----------------------------------+
-| **Foundational Components** (more information on each piece of the distribution)  |
-+=============+=================+===============+===================================+
-| U-Boot      | Boot Monitor    | Kernel        | Filesystem                        |
-+-------------+-----------------+---------------+-----------------------------------+
-| Tools       | OpenCL          | OpenCV        | Graphics & Display                |
-+-------------+-----------------+---------------+-----------------------------------+
-| Multimedia  | Examples, Demos | PRU-ICSS      | Virtualization                    |
-+-------------+-----------------+---------------+-----------------------------------+
++---------------+--------------------------+------------------+-----------------------------------+
+| **Foundational Components** (more information on each piece of the distribution)                |
++===============+==========================+==================+===================================+
+| `U-Boot`_     | `Boot Monitor`_          | `Kernel`_        | `Filesystem`_                     |
++---------------+--------------------------+------------------+-----------------------------------+
+| `Tools`_      | `OpenCL`_                | `OpenCV`_        | `Graphics & Display`_             |
++---------------+--------------------------+------------------+-----------------------------------+
+| `Multimedia`_ | `Examples, Demos`_       | `PRU-ICSS`_      | `Virtualization`_                 |
++---------------+--------------------------+------------------+-----------------------------------+
+| `IPC`_        | `OpenVX`_                | `CMEM`_          |                                   |
++---------------+--------------------------+------------------+-----------------------------------+
 
+.. _U-Boot: Foundational_Components.html#u-boot 
+.. _Boot Monitor: Foundational_Components.html#boot-monitor
+.. _Kernel: Foundational_Components.html#kernel
+.. _Filesystem: Foundational_Components.html#filesystem
+.. _Tools: Foundational_Components.html#tools
+.. _OpenCL: Foundational_Components.html#id117
+.. _OpenCV: Foundational_Components.html#opencv
+.. _Graphics & Display: Foundational_Components.html#id113
+.. _Multimedia: Foundational_Components.html#id116
+.. _Examples, Demos: Examples_and_Demos.html
+.. _PRU-ICSS: Industrial_Protocols.html
+.. _Virtualization: Foundational_Components.html#virtualization
+.. _IPC: Foundational_Components.html#ipc
+.. _OpenVX: Foundational_Components.html#openvx
+.. _CMEM: Foundational_Components.html#id111
 
++----------------+-------------------------+------------------+-----------------------------------+
+| **Industrial Protocols** (more information on each piece of the distribution)                   | 
++================+=========================+==================+===================================+
+| `DUAL_EMAC`_   | `HSR\_PRP`_             | `PTP`_           | `RSTP`_                           |
++----------------+-------------------------+------------------+-----------------------------------+
+| `CCLINK`_      |                         |                  |                                   |
++----------------+-------------------------+------------------+-----------------------------------+
 
-+-------------+-----------------+---------------+-----------------------------------+
-| **Industrial Protocols** (more information on each piece of the distribution)     | 
-+=============+=================+===============+===================================+
-| HSR\_PRP    | RSTP            |               |                                   |
-+-------------+-----------------+---------------+-----------------------------------+
-
+.. _DUAL_EMAC: Industrial_Protocols.html#dual-emac
+.. _HSR\_PRP: Industrial_Protocols.html#hsr-prp
+.. _RSTP: Industrial_Protocols.html#rstp
+.. _PTP: Industrial_Protocols.html#ptp
+.. _CCLINK: Industrial_Protocols.html#cclink
 
 .. rubric:: Feedback
    :name: feedback
