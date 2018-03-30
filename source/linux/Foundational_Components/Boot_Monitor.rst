@@ -1,6 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_Boot_Monitor_User%27s_Guide
+
 **************************************
-Linux Core Boot Monitor User's Guide
+Boot Monitor
 **************************************
 .. rubric:: Overview
    :name: overview
@@ -128,6 +129,4 @@ At the secondary core, following squence happens
    kernel.
 
 | 
-
-.. raw:: html
 

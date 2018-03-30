@@ -4,6 +4,8 @@ Foundational Components
 
 .. include:: Foundational_Components/U-Boot.rst
 
+.. include:: Foundational_Components/Boot_Monitor.rst
+
 .. include:: Foundational_Components/Kernel.rst
 
 .. include:: Foundational_Components/Processor_SDK_Linux_Filesystem.rst
@@ -23,9 +25,6 @@ SGX Debug Info
 =================================
 .. include:: Foundational_Components/Graphics/SGX_Debug_Info.rst
 
-**********************************
-Multimedia
-**********************************
 .. include:: Foundational_Components/Multimedia.rst
 
 **********************************

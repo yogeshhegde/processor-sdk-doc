@@ -807,16 +807,9 @@ These tools bring in the capability to visualize the following:
    instructions below.
 #. Power plot (Will be available soon. Note that this requires board
    modification on the EVM)
-
-.. raw:: html
-
-   <div class="floatnone">
-
-|SOC\_PERF\_Screenshot|
-
-.. raw:: html
-
-   </div>
+  
+  .. Image:: ../images/Updated_screen_shot_of_soc_performance_monitoring_tools.png
+|
 
 .. rubric:: Getting started
    :name: getting-started

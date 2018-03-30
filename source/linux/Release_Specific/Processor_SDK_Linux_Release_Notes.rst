@@ -168,7 +168,7 @@ Issues opened in previous releases that were closed on this release
 
 .. csv-table::
    :header: "Record ID", "Platform", "Title"
-   :widths: 10, 20, 70
+   :widths: 15, 20, 70
 
     LCPD-9496,"am437x-idk, am437x-sk, am43xx-epos, am43xx-gpevm, am43xx-hsevm",AM43XX DS0_PULL_UP_DOWN_EN wrong polarity
     LCPD-10976,am57xx-evm,Weston memory leak related to HDMI hotplug
@@ -230,7 +230,7 @@ Issued found and closed on this release that may be applicable to prior releases
 -----------------------------------------------------------------------------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title"
-   :widths: 10, 20, 70
+   :widths: 15, 20, 70
 
    LCPD-11124 ,  ,Fix WPA security vulnerability in ECS components
    LCPD-11109 ,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm ",System can not DHCP while booting
@@ -297,7 +297,7 @@ SDK Known Issues
 -----------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 10, 20, 70, 50
+   :widths: 25, 30, 50, 60
 
    LCPD-5578 ,beaglebone-black ,Exception triggered by graphics driver during boot if board does not have SGX (BBB A4) ,Build Processor SDK without SGX following instructions here
    LCPD-7025 ,am43xx-gpevm ,System takes more than 10 seconds to go from login prompt to system prompt ,Automated tests need to account for this boot delay
@@ -353,13 +353,11 @@ SDK Known Issues
 
 | 
 
-
-
 U-Boot Known Issues
 ------------------------
 .. csv-table::
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround"
-   :widths: 10, 10, 70, 10, 10, 30, 5
+   :widths: 15, 10, 70, 10, 10, 30, 5
 
    LCPD-10911 ,P3-Medium ,Boot device incorrect in u-boot file spl.h for am57xx ,Baseport ,u-boot ,am57xx-evm , 
    LCPD-10805 ,P3-Medium ,U-Boot: Fix uart boot on am335x-evm ,Baseport ,u-boot ,am335x-evm , 
