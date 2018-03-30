@@ -95,5 +95,5 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
    :name: feedback
 
 If you have feedback, suggestions, or ideas on how to improve the SDK,
-it is very appreciated. Please post your ideas to the `Linux
-forum <http://e2e.ti.com/support/embedded/linux>`__.
+it is very appreciated. Please post your ideas to the Linux
+forum listed at :ref:`PLSDK-technical-support-label`.

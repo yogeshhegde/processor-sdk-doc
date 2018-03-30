@@ -64,10 +64,10 @@ GCC ToolChain
 .. ************************************
 .. include:: Overview/Processor_SDK_Linux_Software_Stack.rst
 
-
 .. ************************************
 .. Technical Support
 .. ************************************
+.. _PLSDK-technical-support-label:
 .. include:: ../common/Overview/Processor_SDK_Technical_Support.rst
 
 ************************************
