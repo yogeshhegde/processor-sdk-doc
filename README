@@ -11,6 +11,7 @@ git clone ssh://git@bitbucket.itg.ti.com/processor-sdk/processor-sdk-doc.git
 ******************
 Update submodule to get the theme files from swtoolsdev
 ******************
+cd processor-sdk-doc
 git submodule init
 git submodule update
 
@@ -18,7 +19,6 @@ git submodule update
 ******************
 Build instruction
 ******************
-cd processor-sdk-doc
 linux:
 make config OS=linux
 make OS=linux
