@@ -29,7 +29,7 @@ OpenCL
 ***************
 Boot
 ***************
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Boot.rst
+.. include:: Boot.rst
 
 
 *****
@@ -54,4 +54,10 @@ PKTLIB
 NWAL
 ***************
 .. include:: PDK_Platform_Software/Device_Drivers/NWAL.rst
+
+
+***************
+Tools
+***************
+.. include:: Tools.rst
 

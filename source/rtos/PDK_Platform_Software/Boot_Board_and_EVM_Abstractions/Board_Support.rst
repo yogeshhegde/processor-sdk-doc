@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support
 
-.. rubric:: Introduction
+.. rubric::  Introduction
    :name: introduction
 
 | Board library contains a set of general initialization and setup
@@ -11,65 +11,33 @@
   DIAG </index.php/Processor_SDK_RTOS_DIAG>`__ for additional details on
   available diagnostic examples.
 
-.. rubric:: APIs
+.. rubric::  APIs
    :name: apis
 
 The Board_init() API supports initialization of PLL, peripheral clocks,
 external DDR memory, pinmux and IO Delay configurations. API Reference
 for application:
 
-.. raw:: html
+<syntaxhighlight lang="c">
 
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
+#. include <ti/board/board.h>
 
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
-    #include <ti/board/board.h>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+</syntaxhighlight>
 
 Example API pseudo code for Board_init() is as follows:
 
-.. raw:: html
+<syntaxhighlight lang="c"> /\* Setting up for pinmux and uart \*/
+Board_STATUS ret; Board_initCfg boardCfg;
 
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
+boardCfg = BOARD_INIT_MODULE_CLOCK \| BOARD_INIT_PINMUX_CONFIG \|
+BOARD_INIT_UART_STDIO;
 
-.. raw:: html
+ret = Board_init(boardCfg); </syntaxhighlight>
 
-   <div class="c source-c">
-
-.. code:: de1
-
-    /* Setting up for pinmux and uart */
-    Board_STATUS ret;
-    Board_initCfg boardCfg;
-     
-    boardCfg = BOARD_INIT_MODULE_CLOCK | BOARD_INIT_PINMUX_CONFIG | BOARD_INIT_UART_STDIO;
-     
-    ret = Board_init(boardCfg);
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: LLD Dependencies
+.. rubric::  LLD Dependencies
    :name: lld-dependencies
 
-.. rubric:: I2C
+.. rubric::  I2C
    :name: i2c
 
 Application need to configure **BOARD_INIT_MODULE_CLOCK** option to have
@@ -77,7 +45,12 @@ I2C operational. I2C is used to read EEPROM data. An I2C handle will be
 opened in polling mode, and closed after the board ID data is retrieved
 from EEPROM using Board_getIDInfo() API.
 
-.. rubric:: UART
+For DRA7xx EVMs, I2C is also used to configure various I/O expanders and
+board muxes to enable PDK examples to function properly on the EVM. The
+I2C handles are opened in polling mode and closed after the board mux
+initialization has completed.
+
+.. rubric::  UART
    :name: uart
 
 Application need to configure Board_init() with the
@@ -86,75 +59,102 @@ Application need to configure Board_init() with the
 After Board_init() completes, application can invoke UART stdio
 functions such as UART_printf, UART_scanFmt, and etc.
 
-.. rubric:: Application Integration for AM5x
-   :name: application-integration-for-am5x
+.. rubric::  Application Integration for AM5x/DRA7xx
+   :name: application-integration-for-am5xdra7xx
 
-When configuring pinmux with IO Delay settings for **AM5x** boards,
-there is a hard restriction: the code/data/stack during the IO Delay
-setup must be within local internal memory. Refer to SOC TRM for
-additional information.
+When configuring pinmux with IO Delay settings for **AM5x** and
+**DRA7xx** boards, there is a hard restriction: the code/data/stack
+during the IO Delay setup must be within local internal memory. Refer to
+SOC TRM for additional information.
 
 The board library specifies two sections for users to define for the
 sole purpose of meeting this requirement. They are:
 **BOARD_IO_DELAY_CODE** and **BOARD_IO_DELAY_DATA**. Below are examples
 of how to specify these section into the local memory, OCMC_RAM1:
 
-In baremetal case with a linker cmd file:
+In baremetal case with a linker cmd file: <syntaxhighlight lang="c">
+BOARD_IO_DELAY_CODE : {
 
-.. raw:: html
+::
 
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
+    . = ALIGN(4);
+    *(BOARD_IO_DELAY_CODE*)
 
-.. raw:: html
+} > OCMC_RAM1
 
-   <div class="c source-c">
+BOARD_IO_DELAY_DATA : {
 
-.. code:: de1
+::
 
-    BOARD_IO_DELAY_CODE :
-    {
-     . = ALIGN(4);
-     *(BOARD_IO_DELAY_CODE*)
-    } > OCMC_RAM1
-     
-    BOARD_IO_DELAY_DATA :
-    {
-     . = ALIGN(4);
-     *(BOARD_IO_DELAY_DATA*)
-    } > OCMC_RAM1
+    . = ALIGN(4);
+    *(BOARD_IO_DELAY_DATA*)
 
-.. raw:: html
+} > OCMC_RAM1 </syntaxhighlight>
 
-   </div>
+In a CCS RTSC project with .cfg file: <syntaxhighlight lang="c">
+Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1";
+Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1"; </syntaxhighlight>
 
-.. raw:: html
+.. rubric::  Considerations for DRA7xx devices
+   :name: considerations-for-dra7xx-devices
 
-   </div>
+When integrating the board library in applcations on DRA7xx, these
+code/data sections will likely overlap and conflict with the code/data
+sections used by the Secondary Boot Loader (SBL) as both modules will
+assume full access to OCMC_RAM1. Also, as the SBL performs identical
+configuration using the common pad config data structures, the pinmux
+request made by an application will be redundant. Therefore, it is
+advised that the pinmux API be used only when loading the application
+via CCS. When loading via SBL, there are three options available for
+handling this conflict:
 
-In a CCS RTSC project with .cfg file:
+#. Place the BOARD_IO_DELAY_DATA/BOARD_IO_DELAY_CODE sections to another
+   internal memory location. The Board library will check to see if the
+   board code/data/stack are located in internal memory before executing
+   the sequence. If another internal memory section is available for
+   placement (e.g. L2SRAM, OCMC_RAM2), then it is acceptable to place
+   the sections in these locations. The Board init sequence will proceed
+   as expected.
+#. Place the BOARD_IO_DELAY_DATA/BOARD_IO_DELAY_CODE sections into
+   external memory. The pinmux subroutine in the Board library checks
+   for code/data/stack placement and will fail if it detects that they
+   reside in DDR and return before performing the configuration. The
+   failure will not affect any other Board init requests as other flags
+   are treated orthogonally.
+#. Remove the BOARD_IO_DELAY_DATA/BOARD_IO_DELAY_CODE sections. This is
+   the preferred solution as it removes redundant code from executing
+   and will optimize code/data size and load speed. In order to remove
+   these sections, two modifications are required:
 
-.. raw:: html
+   -  Place BOARD_IO_DELAY_DATA/BOARD_IO_DELAY_CODE input sections into
+      an output Dummy Section (DSECT). DSECTs are a `Special Linker
+      Section
+      Type <http://processors.wiki.ti.com/index.php/Linker_Special_Section_Types#DSECT_Sections>`__
+      which are relocated for linker resolution but otherwise do not
+      allocate space to a memory map, place sections in the output file,
+      or ever get loaded to the target. In order to place these sections
+      into DSECTS, modify the placement as follows:
 
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
+Replace:
+<syntaxhighlight lang="c"> Program.sectMap["BOARD_IO_DELAY_DATA"] =
+"OCMC_RAM1"; Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1";
+</syntaxhighlight>
 
-.. raw:: html
+With:
+<syntaxhighlight lang="c"> Program.sectMap["BOARD_IO_DELAY_DATA"] = new
+Program.SectionSpec(); Program.sectMap["BOARD_IO_DELAY_CODE"] = new
+Program.SectionSpec(); Program.sectMap["BOARD_IO_DELAY_DATA"].type =
+"DSECT"; Program.sectMap["BOARD_IO_DELAY_CODE"].type = "DSECT";
+</syntaxhighlight>
 
-   <div class="c source-c">
+-  Remove the BOARD_INIT_PINMUX_CONFIG flag from the call to Board_init.
+   Since the BOARD_IO_DELAY_DATA/BOARD_IO_DELAY_CODE sections no longer
+   actually exist, we must instruct the application that it is no longer
+   safe to call the routines and access the data. Otherwise, the CPU
+   will branch to and access undefined memory and cause various
+   exceptions
 
-.. code:: de1
-
-    Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1";
-    Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1";
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Custom Board Addition
+.. rubric::  Custom Board Addition
    :name: custom-board-addition
 
 | Creating a custom board library has its merits whether you are
@@ -162,7 +162,7 @@ In a CCS RTSC project with .cfg file:
   losing your default board code. Below section include details needed
   for creation of additional board support.
 
-.. rubric:: Pinmux and IO Delay
+.. rubric::  Pinmux and IO Delay
    :name: pinmux-and-io-delay
 
 | When the **BOARD_INIT_PINMUX_CONFIG** option is specified, the
@@ -175,22 +175,26 @@ In a CCS RTSC project with .cfg file:
   Refer to `TI PinMux
   Tool <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool>`__ for
   more information.
+| For DRA7xx device, pinmux data is generated by the TI Pad Config Tool
+  (PCT). Please contact TI for more assistance in obtaining this tool.
+  Otherwise, values can be found through the device Data Manual (DM).
 
 .. raw:: html
 
    <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
 
 **NOTE**
-Pinmux is needed for AM3/AM4/AM5/K2G devices. Pinmux is not needed for
-C66x or K2H/K2E/K2L devices, and the BOARD_INIT_PINMUX_CONFIG option is
-ignored when called in a C66x or K2H/K2E/K2L board library.
+
+Pinmux is needed for AM3/AM4/AM5/DRA7/K2G devices. Pinmux is not needed
+for C66x or K2H/K2E/K2L devices, and the BOARD_INIT_PINMUX_CONFIG option
+is ignored when called in a C66x or K2H/K2E/K2L board library.
 
 .. raw:: html
 
    </div>
 
-.. rubric:: Custom Board Library
+.. rubric::  Custom Board Library
    :name: custom-board-library
 
 #. Set up your build environment according to the `Building the RTOS
@@ -223,20 +227,7 @@ ignored when called in a C66x or K2H/K2E/K2L board library.
 
    -  Copy the four generated files to your custom board library
       implementation folder.
-   -  
-
-      .. raw:: html
-
-         <div class="block-note">
-
-      **Note:** It is recommended to use the latest available
-      PinMux Tool. For PinMux Tool prior to version v4.0.1482, you will
-      have to edit **boardPadDelayTune.h** to select appropriate IO
-      timing modes by uncommenting the build macros.
-
-      .. raw:: html
-
-         </div>
+   -  |Warning|\ **Note:**
 
 #. Create build makefile infrastructure for new board under
    <ti/board/build>. Please refer existing board makefiles for
@@ -251,13 +242,17 @@ described in the article
 .. raw:: html
 
    <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
 
 **NOTE**
-TI evaluation platforms for Sitara Processors usually have board
-information stored in an EEPROM which checks for revision number and
-board name which is used to configure the board. When creating a custom
-platform if you don`t intend to use an EEPROM then we recommend removing
-code corresponding to Board_getIDInfo in your board library
+
+::
+
+    TI evaluation platforms for Sitara Processors usually have board information stored in an EEPROM which checks for revision number and board name which is used to configure the board. When creating a custom platform if you don`t intend to use an EEPROM then we recommend removing code corresponding to Board_getIDInfo  in your board library
 
 .. raw:: html
+
+   </div>
+
+.. raw:: html
+

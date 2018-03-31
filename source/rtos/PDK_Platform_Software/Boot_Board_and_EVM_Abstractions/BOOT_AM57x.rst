@@ -75,6 +75,10 @@ manual <http://www.ti.com/lit/pdf/spruhz6>`__
    address of the bootloader and size of the bootloader image.
 -  For more information on the TI header refer TRM document
 
+.. raw:: html
+
+   </div>
+
 .. rubric:: Directory structure
    :name: directory-structure
 
@@ -428,6 +432,10 @@ below.
    image.
 -  It is the responsibility of the user to provide proper offsets.
 
+.. raw:: html
+
+   </div>
+
 | 
 
 .. rubric:: Test Application
@@ -464,6 +472,10 @@ are listed below.
 
 -  Valid SOC settings are AM571x/AM572x
 -  Valid BOARD settings are evmAM572x/idkAM571x/idkAM572x
+
+.. raw:: html
+
+   </div>
 
 .. rubric:: Linux Environment:
    :name: linux-environment
@@ -539,6 +551,10 @@ boot using MMCSD boot mode.
    execute this script.
 -  Refer this link to download the
    `mono <http://www.mono-project.com>`__ tool
+
+.. raw:: html
+
+   </div>
 
 .. rubric:: Windows environment:
    :name: windows-environment

@@ -90,139 +90,51 @@ The '0' used in step 2 refers to the Core ID to boot. By default, '0' is
 MPU (Cortex A15) core 0. You can input a different value to boot to
 other cores. Valid values are:
 
-K2H
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-K2E
-
-K2L
-
-Core
-
-Value
-
-Core
-
-Value
-
-Core
-
-Value
-
-MPU Core 0
-
-0
-
-MPU Core 0
-
-0
-
-MPU Core 0
-
-0
-
-MPU Core 1
-
-1
-
-MPU Core 1
-
-1
-
-MPU Core 1
-
-1
-
-MPU Core 2
-
-2
-
-MPU Core 2
-
-2
-
-MPU SMP
-
-4
-
-MPU Core 3
-
-3
-
-MPU Core 3
-
-3
-
-DSP Core 0
-
-5
-
-MPU SMP
-
-4
-
-MPU SMP
-
-4
-
-DSP Core 1
-
-6
-
-DSP Core 0
-
-5
-
-DSP Core 0
-
-5
-
-DSP Core 2
-
-7
-
-DSP Core 1
-
-6
-
-DSP Core 3
-
-8
-
-DSP Core 2
-
-7
-
-DSP Core 3
-
-8
-
-DSP Core 4
-
-9
-
-DSP Core 5
-
-10
-
-DSP Core 6
-
-11
-
-DSP Core 7
-
-12
+.. list-table:: Title
+   :widths: 25 25 50
+   :header-rows: 2
+   
+    * - Heading row 1, column 1
+      - Heading row 1, column 2
+      - Heading row 1, column 3
+    * - Row 1, column 1
+      -
+      - Row 1, column 3
+    * - Row 2, column 1
+      - Row 2, column 2
+      - Row 2, column 3
+
++-----------------------+-----------------------+-----------------------+
+|         K2H           |          K2E          |         K2L           |
++==========+============+===========+===========+==========+============+
+| **Core** | **Value**  | **Core**  | **Value** | **Core** | **Value**  |
++----------+------------+-----------+-----------+----------+------------+
+|MPU Core 0|     0      |MPU Core 0 |     0     |MPU Core 0|     0      |
++----------+------------+-----------+-----------+----------+------------+
+|MPU Core 1|     1      |MPU Core 1 |     1     |MPU Core 1|     1      |
++----------+------------+-----------+-----------+----------+------------+
+|MPU Core 2|     2      |MPU Core 2 |     2     |MPU SMP   |     4      |
++----------+------------+-----------+-----------+----------+------------+
+|MPU Core 3|     3      |MPU Core 3 |     3     |DSP Core 0|     5      |
++----------+------------+-----------+-----------+----------+------------+
+|MPU SMP   |     4      |MPU SMP    |     4     |DSP Core 1|     6      |
++----------+------------+-----------+-----------+----------+------------+
+|DSP Core 0|     5      |DSP Core 0 |     5     |DSP Core 2|     7      |
++----------+------------+-----------+-----------+----------+------------+
+|DSP Core 1|     6      |           |           |DSP Core 3|     8      |
++----------+------------+-----------+-----------+----------+------------+
+|DSP Core 2|     7      |           |           |          |            |
++----------+------------+-----------+-----------+----------+------------+
+|DSP Core 3|     8      |           |           |          |            |
++----------+------------+-----------+-----------+----------+------------+
+|DSP Core 4|     9      |           |           |          |            |
++----------+------------+-----------+-----------+----------+------------+
+|DSP Core 5|     10     |           |           |          |            |
++----------+------------+-----------+-----------+----------+------------+
+|DSP Core 6|     11     |           |           |          |            |
++----------+------------+-----------+-----------+----------+------------+
+|DSP Core 7|     12     |           |           |          |            |
++----------+------------+-----------+-----------+----------+------------+
 
 If MPU SMP is chosen, the same boot image and entry will be used for all
 MPU cores. SBL can also parse multiple boot images that are concatenated
@@ -231,20 +143,18 @@ together. Simply use MulticoreImageGen as such:
 **MulticoreImageGen.exe LE 55 [output name] [Core ID a] [rprc output a]
 [Core ID b] [rprc output b] [Core ID c] [rprc output c] ...**
 
-Flash Writers
-=============
+.. rubric:: Flash Writers
+   :name: flash_writers
 
-SPI Writer
-----------
+.. rubric:: SPI Writer
+   :name: spi_writer
 
 The SPI flash writer, spi_flash_writer.out, is a part of the SBL package
 and allows users to flash multiple images at different offsets into the
 board's SPI NOR flash memory.
 
-.. _compilation-1:
-
-Compilation
-~~~~~~~~~~~
+.. rubric:: Compilation
+   :name: _compilation-1
 
 ::
 
@@ -257,10 +167,9 @@ The binary output will be at:
 
      [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/sbl/tools/flashWriter/spi/bin/<platform>
 
-.. _usage-1:
 
-Usage
-~~~~~
+.. rubric:: Usage
+   :name: _usage-1
 
 #. Copy the binaries that you want to flash to: [SDK Install
    Path]/pdk_<platform>_<version>/packages/ti/boot/sbl/tools/flashWriter/spi/bin/<platform>
@@ -275,8 +184,8 @@ Usage
 
 | 
 
-Boot Example
-============
+.. rubric:: Boot Example
+   :name: boot_example
 
 Below is an example output of evmK2H booting after having images flashed
 in by program_evm.js:

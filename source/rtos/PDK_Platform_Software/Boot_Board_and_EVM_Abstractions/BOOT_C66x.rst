@@ -25,7 +25,7 @@ supported bootmodes:
 | PCIe boot                            | Yes         | Yes         |
 +--------------------------------------+-------------+-------------+
 
-|Note|\ **Note:**
+**Note:**
 
 #. Support boot over I2C bus address 0x51
 #. Support POST boot over I2C bus address 0x50
@@ -33,6 +33,10 @@ supported bootmodes:
 #. IBL is using the first 128KB L2 local memory, any application booting
    from IBL should NOT use the first 128KB L2 memory, OR should only use
    the first 128KB L2 memory for uninitialized data section
+
+.. raw:: html
+
+   </div>
 
 | Please refer to the boot mode dip switch settings for different boot
   modes on
@@ -98,11 +102,15 @@ SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK
 guide on how to setup your environment for building within any of the
 Processor SDK RTOS packages.
 
-|Note|\ **Note:** C66x projects are supported by C6000 Code Generation
+**Note:** C66x projects are supported by C6000 Code Generation
 Tools 7.4.x. Make sure your environment variable, C6X_GEN_INSTALL_PATH,
 is pointing to a valid C6000 compiler. Compiling IBL invokes the C6000
 compiler, cl6x, directly. Your PATH variable will need to have
 $C6X_GEN_INSTALL_PATH/bin.
+
+.. raw:: html
+
+   </div>
 
 The IBL package can be found in:
 
@@ -157,10 +165,14 @@ application binaries. As such, respective flash writers are provided in:
 
      [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/writer
 
-|Note|\ **Note:** Please set your EVM to **NO BOOT** mode before loading
+**Note:** Please set your EVM to **NO BOOT** mode before loading
 and running any of the flash writers. Flashing in NO BOOT mode is the
 safest way since it eliminates any unwarranted interactions with booted
 applications.
+
+.. raw:: html
+
+   </div>
 
 .. rubric:: EEPROM Writer
    :name: eeprom-writer
@@ -522,10 +534,15 @@ defaulted to c6678-le.bin when iblConfig.out is run.
   Images <http://processors.wiki.ti.com/index.php/Program_EVM_UG>`__) or
   you can flash it individually using eepromwriter (refer to "Flash
   Writers" section above).
-| |Note|\ **Note:** If you updated the IBL with iblConfig and flashed it
+
+**Note:** If you updated the IBL with iblConfig and flashed it
   with eepromwriter, you should **NOT** use
   i2cparam_0x51_c667#_le_0x500.out and iblConfig.gel - this would
   overwrite the changes you made to the IBL.
+
+.. raw:: html
+
+   </div>
 
 .. rubric:: Compilation
    :name: compilation-4
@@ -648,11 +665,15 @@ To use pcsendpkt:
 
 *<EVM IP ADDRESS>* is the IP address you assigned the EVM in step 3
 
-|Note|\ **Note:** If you are on a Linux Host PC, you may need to
+**Note:** If you are on a Linux Host PC, you may need to
 recompile pcsendpkt locally with GCC
 
 To verify, connect to the EVM's Core 0 via CCS and check that the A1
 register is set to 0x11223344
+
+.. raw:: html
+
+   </div>
 
 | 
 
@@ -963,7 +984,7 @@ example does the following:
 -  Enable all modules previous disabled via PSC
 -  Pull all cores out of reset via PSC
 
-| |Note|\ **Note:** It is IBL (in local L2) that monitors magic address
+  **Note:** It is IBL (in local L2) that monitors magic address
   and boots the DDR init (in local L2) or POST (in local L2) or
   EDMA-interrupt (in local L2) in those demos. If one wants to load
   his/her own boot demo code, then it shouldn’t overlap with the IBL
@@ -974,6 +995,6 @@ example does the following:
   resulting ibl_c66x_init.map file. In addition, following local L2 is
   reserved by RBL and shouldn’t be used: for 6678 ROM PG 1.0, 0x00872DC0
   – 0x0087FFFF; for 6670 ROM PG 1.0, 0x008F2DC0 – 0x008FFFFF.
-
+  
 .. raw:: html
 

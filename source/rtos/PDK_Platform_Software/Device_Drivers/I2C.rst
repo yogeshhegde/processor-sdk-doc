@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_I2C 
 
-.. rubric:: Introduction
+.. rubric::  Introduction
    :name: introduction
 
 I2C module provides an interface to any I2C-bus-compatible device
@@ -29,9 +29,10 @@ mode and slave mode
 .. raw:: html
 
    <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
 
 **NOTE**
+
 If I2C peripheral is in reset during a transfer, it can cause the I2C
 bus to hang. I2C V0 IP (Keystone SoCs) does not have hardware support to
 recover the I2C bus from hanging, user needs to power cycle the board as
@@ -42,10 +43,21 @@ I2C_control() API and use I2C_CMD_RECOVER_BUS to recover the I2C bus.
 
    </div>
 
-.. rubric:: Driver Configuration
+.. rubric::  Firmware
+   :name: firmware
+
+TI PRU-ICSS cores (Programmable Real-Time Unit Industrial Communication
+Subsystem) is firmware programmable and can take on various
+personalities. Processor SDK package includes I2C Firmware support.
+Refer `I2C FW </index.php/Processor_SDK_RTOS_I2C_FIRMWARE>`__ for
+additional details.
+
+| 
+
+.. rubric::  Driver Configuration
    :name: driver-configuration
 
-.. rubric:: **Board Specific Configuration**
+.. rubric::  **Board Specific Configuration**
    :name: board-specific-configuration
 
 All the board specific configurations eg:enabling and pin-mux of I2C
@@ -58,7 +70,7 @@ details.
 Once the board specific configuration is complete driver API I2C_init()
 can be called to initialize driver
 
-.. rubric:: **I2C Configuration Structure**\ 
+.. rubric::  **I2C Configuration Structure**\ 
    :name: i2c-configuration-structure
 
 I2C_soc.c file binds driver with hardware attributes on the board
@@ -68,7 +80,7 @@ and cannot be changed afterwards. For details about the individual
 fields of this structure, see the Doxygen help by opening
 PDK_INSTALL_DIR\packages\ti\drv\i2c\docs\doxygen\html\index.html.
 
-.. rubric:: **APIs**
+.. rubric::  **APIs**
    :name: apis
 
 API reference for application:
@@ -103,7 +115,7 @@ API reference for application:
     /* I2C transaction failed */
     } 
 
-.. rubric:: Examples
+.. rubric::  Examples
    :name: examples
 
 | Refer Release Note for I2C support across different EVMs
@@ -220,9 +232,10 @@ API reference for application:
 .. raw:: html
 
    <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
 
 **NOTE**
+
 I2C_Test Application supports write test on Keystone II EVMs, by default
 write test is disabled, user can enable the write test by defining
 I2C_EEPROM_WRITE_ENABLE in test/eeprom_read/src/I2C_board.h.
@@ -232,7 +245,7 @@ I2C_TemperatureSensor Application is supported only on AM572x GP EVM.
 
    </div>
 
-.. rubric:: Additional References
+.. rubric::  Additional References
    :name: additional-references
 
 +-----------------------------------+-----------------------------------+

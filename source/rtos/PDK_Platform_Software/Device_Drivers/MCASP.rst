@@ -192,7 +192,20 @@ MSB-16bits are packed in to the system memory. The LSBs are ignored.
 
 .. Image:: ../images/WordSelect_MSB.PNG
 
-| 
+.. rubric:: Priming
+   :name: priming
+
+Applications using McASP driver often might send/receive one or two
+transfers via McASP before sending the application data in/out of McASP
+through the driver. This would internally set up transfer request queues
+so that the application can seamlessly send/receive data without the
+possibility of underrun. This process, a.k.a priming is used in the
+example application provided with the Processor SDK. In this example two
+frames are sent/received prior to submitting the application's audio
+data to the McASP driver. The number of transfer requests to prime is
+application dependent and some applications where there may be a lot of
+delay between transfer requests, enough to cause an underrun, the
+priming factor could be higher.
 
 .. rubric:: Example
    :name: example
@@ -301,6 +314,8 @@ Texas Instruments WikiDisclaimersTerms of UseCreative Commons
 Attribution-ShareAlike Powered by MediaWiki
 
 | 
+| Moved to
+  http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCASP
 
 .. raw:: html
 

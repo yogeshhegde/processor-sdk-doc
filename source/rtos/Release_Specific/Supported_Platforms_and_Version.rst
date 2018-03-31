@@ -75,53 +75,14 @@ SDK.
 The following platforms and EVMs are supported with Processor SDK 4.2.0
 (released Dec 2017).
 
-**Platform**
+ .. csv-table::
+    :header: "Platform", "EVM", "Tested Version", "Document", "Processor SDK Linux", "Processor SDK RT Linux", "Processor SDK RTOS", "Processor SDK Android"
+    :widths: 20, 20, 20, 40, 20, 20, 20. 20
 
-.. raw:: html
+     `AM57x <http://www.ti.com/lsds/ti/processors/sitara/arm_cortex-a15/am57x/overview.page>`__, `AM572x EVM <http://www.ti.com/tool/TMDSEVM572X>`__, A3, `Hardware User's Guide <http://www.ti.com/lit/pdf/spruig1>`__ `Hardware Setup with CCS <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup>`__, X, X, X, X
 
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-**EVM**
-
-**Tested Version**
-
-**Document**
-
-**Processor SDK Linux**
-
-**Processor SDK RT Linux**
-
-**Processor SDK RTOS**
-
-**Processor SDK Android**
-
-`AM57x <http://www.ti.com/lsds/ti/processors/sitara/arm_cortex-a15/am57x/overview.page>`__
-
-`AM572x EVM <http://www.ti.com/tool/TMDSEVM572X>`__
-
-A3
-
-`Hardware User's Guide <http://www.ti.com/lit/pdf/spruig1>`__
-
-`Hardware Setup with
-CCS <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup>`__
-
-X
-
-X
-
-X
-
-X
-
+| 
+     
 `AM572x IDK <http://www.ti.com/tool/TMDXIDK5728>`__
 
 1.3A

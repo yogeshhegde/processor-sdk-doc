@@ -48,6 +48,7 @@ build information, and examples to use as a template to start development.
    Device_Drivers
    Compilers
    Examples_and_Demonstrations
+   How_to_Guides
    FAQ
 
 

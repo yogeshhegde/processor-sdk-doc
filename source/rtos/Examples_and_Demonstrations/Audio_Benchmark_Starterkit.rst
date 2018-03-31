@@ -475,6 +475,10 @@ the twiddle factor coefficients, ``ptr_w``.
    here
    `Efficient_FFT_Computation_of_Real_Input </index.php/Efficient_FFT_Computation_of_Real_Input>`__
 
+.. raw:: html
+
+   </div>
+
 .. rubric:: Single Precision FIR: DSPF_sp_fir_cplx (Complex FIR Filter)
    :name: single-precision-fir-dspf_sp_fir_cplx-complex-fir-filter
 
