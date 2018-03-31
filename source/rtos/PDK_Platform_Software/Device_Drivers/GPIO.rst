@@ -1,0 +1,154 @@
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_GPIO 
+
+.. rubric:: Introduction
+   :name: introduction
+
+GPIO module allows application to manage General Purpose I/O  instances
+and pins via simple portable APIs. Because of its simplicity, APIs are
+pin based and does not follow model of other drivers inside PDK which
+requires handle abstraction.
+
+.. rubric:: Modes of Operation
+   :name: modes-of-operation
+
+| Following modes of operations are supported
+| **Input or Output**
+| Each gpio pin can be configured as either input: GPIO_CFG_INPUT or
+  output: GPIO_CFG_OUTPUT. If it is configured as an output then pin
+  level can be additionally configured
+
+| **Interrupt support**
+| Each gpio pin can be configured to generate interrupts based on event
+  type GPIO_CFG_IN_INT_XXX configuration. To generate interrupt, gpio
+  pin has to be configured as input pin.
+
+.. rubric:: Driver Configuration
+   :name: driver-configuration
+
+.. rubric:: **Board Specific Configuration**
+   :name: board-specific-configuration
+
+All board specific configurations like enabling clock and pin-mux are
+required before calling any driver APIs. By default Board_Init() API
+available under board module supports all initialization sequence for TI
+supported EVMs. In addition it initializes UART instance for
+Console/STDIO. Refer `Processor SDK RTOS Board
+Support </index.php/Processor_SDK_RTOS_Board_Support>`__ for additional
+details.
+
+.. rubric:: **GPIO Configuration Structure**\ 
+   :name: gpio-configuration-structure
+
+| GPIO_soc.c binds driver with hardware attributes on the board.
+  Hardware attributes includes base address, interrupt number etc. GPIO
+  pin behavior can be configured statically, or alternatively
+  dynamically during runtime.
+
+GPIO_init () API triggers all static configuration information available
+through hardware attributes. Once initialization is complete additional
+APIs can be used to configure and access pins.
+
+.. rubric:: **APIs**
+   :name: apis
+
+| API reference for Application:
+
+::
+
+    #include <ti/drv/gpio/GPIO.h>
+
+Below sequence indicates API calling sequence for a simple use case of
+LED toggling
+
+::
+
+    ...
+    Board_init(boardCfg);
+    GPIO_init();
+    While(1)
+    {
+    GPIO_write(Board_LED1, GPIO_PIN_VAL_HIGH);
+    Delay();
+    GPIO_write(Board_LED1, GPIO_PIN_VAL_LOW);
+    Delay();
+    }
+
+.. rubric:: Examples
+   :name: examples
+
+| Refer SDK Release Note for GPIO support across different EVMs.
+
++-----------------------+-----------------------+-----------------------+
+| Name                  | Description           | Expected Results      |
++=======================+=======================+=======================+
+| GPIO_LedBlink         | | Simple example      | | Following LED       |
+|                       |   demonstrating LED   |   blinks based on EVM |
+|                       |   Toggling            |   being used.         |
+|                       |                       |                       |
+|                       |                       | | **AM335x            |
+|                       |                       |   ICEv2**:            |
+|                       |                       |   USER  LED 1         |
+|                       |                       |                       |
+|                       |                       | | **AM437x            |
+|                       |                       |   EVM**:              |
+|                       |                       |   USER  LED 1         |
+|                       |                       |                       |
+|                       |                       | | **AM572x IDK** :    |
+|                       |                       |   STATUS LED 1 Yellow |
+|                       |                       | | **AM572x GP         |
+|                       |                       |   EVM** :   USER LED  |
+|                       |                       |   1                   |
+|                       |                       | | **AM574x IDK** :    |
+|                       |                       |   STATUS LED 1 Yellow |
+|                       |                       | | **AM572x GP         |
+|                       |                       |   EVM** :   USER LED  |
+|                       |                       |   1                   |
+|                       |                       | | **AM571x IDK** :    |
+|                       |                       |   Industrial LED 3    |
+|                       |                       |   Red                 |
+|                       |                       |                       |
+|                       |                       | **K2H EVM:**          |
+|                       |                       |     USER LED 2 Blue   |
+|                       |                       |                       |
+|                       |                       | **K2E EVM:**          |
+|                       |                       |        USER LED 1     |
+|                       |                       | Blue                  |
+|                       |                       |                       |
+|                       |                       | **K2G EVM:**          |
+|                       |                       |        USER LED 1     |
+|                       |                       | Yellow                |
++-----------------------+-----------------------+-----------------------+
+
+.. raw:: html
+
+   <div
+   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+
+**NOTE**
+There are no user mode LEDs directly connected to GPIO pins on K2L,
+C6678 and C6657 EVMs.
+
+.. raw:: html
+
+   </div>
+
+.. rubric:: 
+   :name: section
+
+.. rubric:: Additional References
+   :name: additional-references
+
++-----------------------------------+-----------------------------------+
+| **Document**                      | **Location**                      |
++-----------------------------------+-----------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
+|                                   | \drv\gpio\docs\doxygen\html\index |
+|                                   | .html                             |
++-----------------------------------+-----------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
+|                                   | \drv\gpio\docs\ReleaseNotes_GPIO_ |
+|                                   | LLD.pdf                           |
++-----------------------------------+-----------------------------------+
+
+.. raw:: html
+
