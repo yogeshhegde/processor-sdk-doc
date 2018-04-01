@@ -38,7 +38,12 @@ Keystone 2 family of devices.
 **NOTE**
 
 -  The K2G, K2E and K2H devices, can be located under Unclassified
-   devices in the Resource Explorer. Refer `Screenshot for Keystone II
+   devices in the Resource Explorer. Refer below Screenshot for Keystone II
+
+.. raw:: html
+
+   </div>
+
 .. Image:: ../images/KSII_RS.png
 
 1. Create a work space folder (\ti\am_572x_hello_workspace) under ti
@@ -98,8 +103,7 @@ Linker --> Libraries
 Build project.
 
 10. Create new target configuration (if one doesn`t exist) as described
-in
-`here </index.php/Processor_SDK_RTOS_Setup_CCS#Create_Target_Configuration_File_for_EVM>`__.
+in here :ref:`Create Target Configuration File for EVM <Create-Target-Configuration-File-for-EVM-label>`
 
 11. Right click on the target configuration and Launch target
 configurations.
@@ -176,7 +180,7 @@ Linker --> Libraries
 Build project.
 
 10. Create new target configuration (if one doesn`t exist) as described
-`here </index.php/Processor_SDK_RTOS_Setup_CCS#Create_Target_Configuration_File_for_EVM>`__.
+here :ref:`Create Target Configuration File for EVM <Create-Target-Configuration-File-for-EVM-label>`
 
 11. Right click on the target configuration and Launch target
 configurations.
@@ -251,7 +255,7 @@ Linker --> Libraries
 Build project.
 
 10. Create new target configuration (if one doesn`t exist) as described
-`here </index.php/Processor_SDK_RTOS_Setup_CCS#Create_Target_Configuration_File_for_EVM>`__.
+here :ref:`Create Target Configuration File for EVM <Create-Target-Configuration-File-for-EVM-label>`
 
 11. Right click on the target configuration and Launch target
 configurations.
@@ -326,11 +330,22 @@ Keystone I and Keystone 2 family of devices.
 
 -  The C66x examples corresponding Keystone I devices can be located
    under C66x Multi-core DSP devies in the Resource Explorer. Refer
-   `Screenshot for Keystone I
+   below screenshot
+
+.. raw:: html
+
+   </div>
+
 .. Image:: ../images/KSI_RS.png
 
+**NOTE**
 -  The K2G, K2E and K2H devices, can be located under Unclassified
-   devices in the Resource Explorer. Refer `Screenshot for Keystone II
+   devices in the Resource Explorer. Refer below screen shot
+
+.. raw:: html
+
+   </div>
+
 .. Image:: ../images/KSII_RS.png
 
 1. Create a work space folder (\ti\am_572x_hello_workspace) under ti
@@ -396,6 +411,10 @@ OMAPL1x/DA8x family of devices.
 
 -  Locate the appropriate device that you are using to make sure the
    correct SYSBIOS platform definiition gets used in the build
+
+.. raw:: html
+
+   </div>
 
 1. Create a work space folder ( Eg. tirtos_hello_workspace) that can be
 used for Hello Example project, and start CCS. You may be prompted with

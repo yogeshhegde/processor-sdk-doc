@@ -3,9 +3,10 @@ Overview
 ##################
 
 
-************************************
-Getting Started Guide
-************************************
+.. ************************************
+.. Getting Started Guide
+.. ************************************
+.. _Processor-SDK-RTOS-Getting-Started-Guide-label:
 .. include:: Overview/Getting_Started_Guide.rst
 
 ************************************
@@ -20,15 +21,23 @@ RTOS Software Stack
 .. include:: Overview/Software_Stack.rst
 
 
+*****************
+Building the SDK
+*****************
+.. include:: Release_Specific/Build_the_SDK.rst
+
+
 ************************************
 Related Software
 ************************************
 .. include:: Overview/Related_Software.rst
 
+
 ************************************
 Technical Support
 ************************************
 .. include:: Overview/Technical_Support.rst
+
 
 ************************************
 Training

@@ -255,12 +255,17 @@ platform supported.
 
 | 
 
-+-----------------------+-----------------------+-----------------------+
-| **AM335x GP EVM**     | **OMAPL137 EVM**      | **OMAPL138 LCDK**     |
-+=======================+=======================+=======================+
-| |Am335x usb ac        | |Omapl137 usb ac      | |Omapl138 usb ac      |
-| setup.jpg|            | setup.jpg|            | setup.jpg|            |
-+-----------------------+-----------------------+-----------------------+
+**AM335x GP EVM**
+
+.. Image:: ../images/Am335x_usb_ac_setup.jpg
+
+**OMAPL137 EVM**
+
+.. Image:: ../images/Omapl137_usb_ac_setup.jpg
+
+**OMAPL138 LCDK**
+
+.. Image:: ../images/Omapl138_usb_ac_setup.jpg
 
 **How to Run the Demo**
 

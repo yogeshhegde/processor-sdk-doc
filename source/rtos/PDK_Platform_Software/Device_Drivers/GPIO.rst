@@ -141,12 +141,12 @@ C6678 and C6657 EVMs.
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\gpio\docs\doxygen\html\index |
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/gpio/docs/doxygen/html/index |
 |                                   | .html                             |
 +-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\gpio\docs\ReleaseNotes_GPIO_ |
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/gpio/docs/ReleaseNotes_GPIO_ |
 |                                   | LLD.pdf                           |
 +-----------------------------------+-----------------------------------+
 

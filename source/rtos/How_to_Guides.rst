@@ -32,6 +32,7 @@ Setup
 
 Setup CCS for EVM and Processor-SDK RTOS
 ------------------------------------------
+.. _Processor-SDK-RTOS-Setup-CCS:
 .. include:: How_to_Guides/Host/Setup/Setup_CCS_for_EVM_and_PSDK_RTOS.rst
 
 

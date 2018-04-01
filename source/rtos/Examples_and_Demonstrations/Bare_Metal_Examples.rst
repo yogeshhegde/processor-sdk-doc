@@ -200,8 +200,7 @@ require this to be done explicitly in the linker settings
 project and generate hello_world.out.
 
 8. Launch target configuration using your emulator to connect to AM572X
-EVM as described in the `Getting Started
-Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__.
+EVM as described in the :ref:`Processor-SDK-RTOS-Getting-Started-Guide-label`.
 
 9. Right click **CortexA15_0** and select connect target.
 
@@ -227,8 +226,10 @@ configurations --> AM572_DDR3_532MHz_config
    in the linker setting. If it is not linked go to GNU linker settings
    in CCS project and add **"rdimon"** to the libraries that are linked
 
-| 
+.. raw:: html
 
+   </div>
+   
 | 
 
 .. rubric:: ARM Cortex-A9
@@ -610,6 +611,10 @@ device internal memory.
 -  An optional step is to modify the section definition in
    AM57xx_CM4.cmd file if you wish to introduce/partition existing
    sections or place the code in different memory section.
+
+.. raw:: html
+
+   </div>
 
 7. Now build the project to generate hello_world_m4.out.
 
