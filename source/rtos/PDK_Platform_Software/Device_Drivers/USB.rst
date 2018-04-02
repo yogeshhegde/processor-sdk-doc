@@ -269,8 +269,7 @@ platform supported.
 
 **How to Run the Demo**
 
--  Follow this link
-   (http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS)
+-  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly.
 -  Use CCS to import the USB_DevAudio_<board>_<core>ExampleProject under
    pdk_<platform>_<version>/packages/MyExampleProjects.

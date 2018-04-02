@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/XDS100 
 
-.. rubric:: What is the XDS100?
+.. rubric:: What is the XDS100
    :name: what-is-the-xds100
 
 -  The XDS100 emulator is Texas Instruments' ultra-low-cost

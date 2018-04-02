@@ -301,7 +301,7 @@ for the various EVMs.
    :name: building-the-bootloader
 
 **Pre-requisite:** Setup SDK build environment as described in article
-`Setup_Environment <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Setup_Environment>`__
+ :ref:`Setup_Environment <Build-The-SDK-Setup-Environment-label>`
 
 .. rubric:: Normal Operation of Bootloader:
    :name: normal-operation-of-bootloader

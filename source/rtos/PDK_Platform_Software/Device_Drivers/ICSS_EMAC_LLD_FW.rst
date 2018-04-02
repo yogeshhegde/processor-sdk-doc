@@ -1,6 +1,6 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC(DRIVER,FIRMWARE) 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC(DRIVER,FIRMWARE)
 
-.. rubric:: Driver Overview
+.. rubric::  Driver Overview
    :name: driver-overview
 
 The ICSS_EMAC (industrial communications subsystem Ethernet Media Access
@@ -11,7 +11,7 @@ Communication SubSystem) 32-bit RISC cores.
 
 | 
 
-.. rubric:: Software Architecture
+.. rubric::  Software Architecture
    :name: software-architecture
 
 The ICSS EMAC low level driver can be partitioned into the following:
@@ -24,7 +24,7 @@ The ICSS EMAC low level driver can be partitioned into the following:
 
 | 
 
-.. rubric:: Driver Features
+.. rubric::  Driver Features
    :name: driver-features
 
 ICSS_EMAC LLD implements following:
@@ -45,7 +45,7 @@ ICSS_EMAC LLD implements following:
 
 | 
 
-.. rubric:: Driver Configuration
+.. rubric::  Driver Configuration
    :name: driver-configuration
 
 | **Board Specific Configuration**
@@ -71,7 +71,7 @@ ICSS_EMAC LLD implements following:
 
 | 
 
-.. rubric:: **APIs**
+.. rubric::  **APIs**
    :name: apis
 
 API reference for application:
@@ -80,7 +80,7 @@ API reference for application:
 
     #include <ti/drv/icss_emac/icss_emacDrv.h>
 
-.. rubric:: **API Call Flow**
+.. rubric::  **API Call Flow**
    :name: api-call-flow
 
 The below sequence indicates the calling sequence of ICSS_EMAC driver
@@ -88,56 +88,53 @@ APIs for a use case of an EMAC example which implements single Ethernet
 MAC using PRU-ICSS Instance 2, ETH0. For additional details refer
 example inside package
 
-.. raw:: html
+<syntaxhighlight lang="c">
 
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
+::
 
-.. raw:: html
+    ...
+    Board_init(cfg);
+     
+    /* Perform MDIO init */
+    ICSS_EMAC_testMdioInit(CSL_MPU_PRUSS2_U_MII_MDIO_REGS);
 
-   <div class="c source-c">
+::
 
-.. code:: de1
+    /* Create handle for PRUICSS instance*/
+    ICSS_EMAC_testPruIcssHandle2= PRUICSS_create(pruss_config,2);
 
-     ...
-     Board_init(cfg);
-     
-     /* Perform MDIO init */
-     ICSS_EMAC_testMdioInit(CSL_MPU_PRUSS2_U_MII_MDIO_REGS);
-     
-     /* Create handle for PRUICSS instance*/
-     ICSS_EMAC_testPruIcssHandle2= PRUICSS_create(pruss_config,2);
-     
-     /* Setup crossbar configuration to receive PRU-ICSS interrupts and map them to A15 (illustration for PRU2ETH0) */
-     CSL_xbarDspIrqConfigure(..);  /* Link ISR */
-     CSL_xbarDspIrqConfigure(..);  /* RX PKT ISR */
-     CSL_xbarDspIrqConfigure(..);  /* TX PKT ISR */
-     
-     /*Initialize driver */
-     ...
-     ICSS_EmacInit(..);
-     
-     /* Register callbacks for RX/TX, Link Interrupts, these are called in context of ISR */
-     ICSS_EmacRegisterPort0ISRCallback(..);
-     ICSS_EmacRegisterHwIntRx(..);
-     ICSS_EmacRegisterHwIntTx(..);
-     
-     /* Enable interrupts for RX/TX/Link*/
-     ICSS_EMAC_testInterruptInit(ICSS_EMAC_testHandle2);
-     
-     /* Enable Link Interrupt in MDIO sub-system */
-     ICSS_EMAC_testMdioEnableLinkInterrupt(..);
-     
-     /* At this point, ICSS_EMAC LLD APIs can be called */
+    /* Setup crossbar configuration to receive PRU-ICSS interrupts and map them to A15 (illustration for PRU2ETH0) */
+    CSL_xbarDspIrqConfigure(..);  /* Link ISR */
+    CSL_xbarDspIrqConfigure(..);  /* RX PKT ISR */
+    CSL_xbarDspIrqConfigure(..);  /* TX PKT ISR */
 
-.. raw:: html
+::
 
-   </div>
+    /*Initialize driver */
+    ...
+    ICSS_EmacInit(..);
 
-.. raw:: html
+    /* Register callbacks for RX/TX, Link Interrupts, these are called in context of ISR */
+    ICSS_EmacRegisterPort0ISRCallback(..);
+    ICSS_EmacRegisterHwIntRx(..);
+    ICSS_EmacRegisterHwIntTx(..);
 
-   </div>
+::
 
-.. rubric:: Firmware
+    /* Enable interrupts for RX/TX/Link*/
+    ICSS_EMAC_testInterruptInit(ICSS_EMAC_testHandle2);
+
+::
+
+    /* Enable Link Interrupt in MDIO sub-system */
+    ICSS_EMAC_testMdioEnableLinkInterrupt(..);
+
+::
+
+    /* At this point, ICSS_EMAC LLD APIs can be called */
+    </syntaxhighlight>
+
+.. rubric::  Firmware
    :name: firmware
 
 TI PRU-ICSS cores (Programmable Real-Time Unit Industrial Communication
@@ -149,7 +146,7 @@ further explanation.
 
 | 
 
-.. rubric:: Examples
+.. rubric::  Examples
    :name: examples
 
 Refer “ICSS_EMAC_<Basic/Switch>Example_<SOC>_<CPU>Testproject” for
@@ -264,7 +261,13 @@ different EVMs.
 
 | 
 
-.. rubric:: Additional documentation reference
+.. rubric::  Debug Guide
+   :name: debug-guide
+
+For debugging ICSS EMAC examples or LLD. Please refer to `ICSS-EMAC
+Debug Guide </index.php/ICSS_EMAC_LLD_debug_guide>`__.
+
+.. rubric::  Additional documentation reference
    :name: additional-documentation-reference
 
 +-----------------------------------+-----------------------------------+
@@ -283,4 +286,3 @@ different EVMs.
 +-----------------------------------+-----------------------------------+
 
 .. raw:: html
-

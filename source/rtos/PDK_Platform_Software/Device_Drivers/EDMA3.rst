@@ -52,113 +52,102 @@ API reference for EDMA3 Resource Management layer
 
 .. rubric:: Additional References
    :name: additional-references
-
-**EDMA3 Driver Summary**
-
-**Component Type**
-
-Library
-
-**Install Package**
-
-EDMA3 Low level drivers
-
-**Install Directory**
-
-<root_install_dir>/edma3_lld_xx_xx_xx_xx
-
-**Project Type**
-
-N/A
-
-**Endian Support**
-
-Little and Big
-
-**Library Name**
-
-edma3_lld_drv.ae66 (little endian), edma3_lld_drv.ae66e (big
-endian),edma3_lld_drv.aa15fg (A15),edma3_lld_drv.aem4 (M4)
-
-**Linker Path**
-
-| <ti/sdo/edma3/drv/lib/[cpu]>
-| <ti/sdo/edma3/rm/lib/[soc-evm]>
-
-**Include Paths**
-
-| <ti/sdo/edma3/drv>
-| <ti/sdo/edma3/rm>
-
-**Reference Guides**
-
-See docs under install directory
-
-**Additional Resources**
-
-`Programming the EDMA3 using the Low-Level Driver
-(LLD) <http://processors.wiki.ti.com/index.php/Programming_the_EDMA3_using_the_Low-Level_Driver_%28LLD%29>`__
-
-**License**
-
-`BSD <http://www.opensource.org/licenses/bsd-license.php>`__
+   
++--------------------+-----------------------------------------------+
+|                       EDMA3 Driver Summary                         |
++====================+===============================================+
+| Component Type     |    Library                                    |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Install Package    |    EDMA3 Low level drivers                    |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Install Directory  |    <root_install_dir>/edma3_lld_xx_xx_xx_xx   |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Project Type       |    N/A                                        |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Endian Support     |    Little and Big                             |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Library Name       |    edma3_lld_drv.ae66 (little endian),        |
+|                    |    edma3_lld_drv.ae66e (big endian),          |
+|                    |    edma3_lld_drv.aa15fg (A15),                |
+|                    |    edma3_lld_drv.aem4 (M4)                    |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Linker Path        |    <ti/sdo/edma3/drv/lib/[cpu]>               |
+|                    |    <ti/sdo/edma3/rm/lib/[soc-evm]>            |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Include Paths      |    <ti/sdo/edma3/drv>                         |
+|                    |    <ti/sdo/edma3/rm>                          |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Reference Guides   |    See docs under install directory           |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Additional         |    Programming the EDMA3 using the            |
+| Resources          |    Low-Level Driver (LLD)                     |
+|                    |                                               |    
++--------------------+-----------------------------------------------+
+| License            |    BSD                                        |
+|                    |                                               |
++--------------------+-----------------------------------------------+
 
 .. rubric:: EDMA3 sample libs
    :name: edma3_sample_libs
+   
++--------------------+-----------------------------------------------+
+|                    EDMA3 Driver Sample Summary                     |
++====================+===============================================+
+| Component Type     |    Library                                    |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Install Package    |    EDMA3 Low level drivers                    |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Install Directory  |    <root_install_dir>/edma3_lld_xx_xx_xx_xx   |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Project Type       |    N/A                                        |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Endian Support     |    Little and Big                             |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Library Name       |    edma3_lld_drv_sample.ae66 (little endian), |
+|                    |    edma3_lld_drv_sample.ae66e (big endian),   |
+|                    |    edma3_lld_drv_sample.aa15fg (A15),         |
+|                    |    edma3_lld_drv_sample.aem4 (M4)             |
+|                    |                                               |
+|                    |    edma3_lld_rm_sample.ae66 (little endian),  |
+|                    |    edma3_lld_rm_sample.ae66e (big endian),    |
+|                    |    edma3_lld_rm_sample.aa15fg (A15),          |
+|                    |    edma3_lld_rm_sample.aem4 (M4)              |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Linker Path        |   <ti/sdo/edma3/drv/sample/lib/[soc-evm]/     |
+|                    |    [cpu]>                                     |
+|                    |   <ti/sdo/edma3/rm/sample/lib/[soc-evm]/[cpu]>|
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Include Paths      |    <ti/sdo/edma3/drv>                         |
+|                    |    <ti/sdo/edma3/rm>                          |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Reference Guides   |    See docs under install directory           |
+|                    |                                               |
++--------------------+-----------------------------------------------+
+| Additional         |    Programming the EDMA3 using the            |
+| Resources          |    Low-Level Driver (LLD)                     |
+|                    |                                               |    
++--------------------+-----------------------------------------------+
+| License            |    BSD                                        |
+|                    |                                               |
++--------------------+-----------------------------------------------+
 
-**EDMA3 Driver Sample Summary**
-
-**Component Type**
-
-Library
-
-**Install Package**
-
-EDMA3 Low level drivers
-
-**Install Directory**
-
-<root_install_dir>/edma3_lld_xx_xx_xx_xx
-
-**Project Type**
-
-N/A
-
-**Endian Support**
-
-Little and Big
-
-**Library Name**
-
-edma3_lld_drv_sample.ae66 (little endian), edma3_lld_drv_sample.ae66e
-(big endian), edma3_lld_drv_sample.aa15fg (A15),
-edma3_lld_drv_sample.aem4 (M4)
-
-edma3_lld_rm_sample.ae66 (little endian), edma3_lld_rm_sample.ae66e (big
-endian), edma3_lld_rm_sample.aa15fg (A15), edma3_lld_rm_sample.aem4 (M4)
-
-**Linker Path**
-
-| <ti/sdo/edma3/drv/sample/lib/[soc-evm]/[cpu]>
-| <ti/sdo/edma3/rm/sample/lib/[soc-evm]/[cpu]>
-
-**Include Paths**
-
-| <ti/sdo/edma3/drv>
-| <ti/sdo/edma3/rm>
-
-**Reference Guides**
-
-See docs under install directory
-
-**Additional Resources**
-
-`Programming the EDMA3 using the Low-Level Driver
-(LLD) <http://processors.wiki.ti.com/index.php/Programming_the_EDMA3_using_the_Low-Level_Driver_%28LLD%29>`__
-
-**License**
-
-`BSD <http://www.opensource.org/licenses/bsd-license.php>`__
 
 .. raw:: html
 

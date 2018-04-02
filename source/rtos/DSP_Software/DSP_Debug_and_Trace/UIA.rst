@@ -367,8 +367,7 @@ For technical discussions and issues, please visit
    http://e2e.ti.com/support/dsp/c6000_multi-core_dsps/f/639.aspx <http://e2e.ti.com/support/dsp/c6000_multi-core_dsps/f/639.aspx>`__
 -  `BIOS Embedded Software forum:
    http://e2e.ti.com/support/embedded/f/355.aspx <http://e2e.ti.com/support/embedded/f/355.aspx>`__
--  `Embedded Processors wiki:
-   http://processors.wiki.ti.com <http://processors.wiki.ti.com>`__
+-  :ref:`Embedded Processors Documentation: <Index-Processor-SDK-RTOS-label>`
 
 Note: When asking for help in the forum you should tag your posts in the
 Subject with "System Analyzer", the part number (e.g. "C6678"), and

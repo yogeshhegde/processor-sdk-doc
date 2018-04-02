@@ -141,8 +141,7 @@ Training URLs:
 
 There are three main documents for Processor SDK RTOS:
 
--  `**Getting Started
-   Guide** </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__:
+-  :ref:`**Getting Started Guide** <Processor-SDK-RTOS-Getting-Started-Guide-label>`
    Provides information on setting up software and running basic
    examples/demonstrations bundled within the Processor SDK.
 -  `**Software Developer
@@ -168,8 +167,7 @@ There are three main documents for Processor SDK RTOS:
 
 The steps to set up CCS and Processor SDK RTOS when the SDK or the IDE
 is installed in a location other than the default location are described
-below: `Processor SDK RTOS Setup with
-CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__
+below: :ref:`Processor SDK RTOS Setup with CCS <Processor-SDK-RTOS-Setup-CCS-label>`
 
 |  **A common gotcha while setting up the build environment is
   compatibility with CCS version. Please refer to `Release
@@ -206,8 +204,8 @@ steps to follow:
    add the custom path to discovery as described in `Setup
    CCS </index.php/Processor_SDK_RTOS_Setup_CCS>`__.
 -  Assuming CCS is installed in the default path, the process to set the
-   custom SDK path while building the SDK is provided in `Install in
-   Custom Path </index.php/Processor_SDK_RTOS_Install_In_Custom_Path>`__
+   custom SDK path while building the SDK is provided in :ref:`Install in
+   Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
 .. raw:: html
 
@@ -222,8 +220,8 @@ The typical Processor SDK RTOS setup steps have been described below:
 .. rubric:: Step 1: Basic Hardware, SDK, and IDE Setup
    :name: step-1-basic-hardware-sdk-and-ide-setup
 
-Setup the software and hardware as described in the `Getting Started
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__
+Setup the software and hardware as described in the :ref:`Getting Started
+Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
 At this stage, you should have the CCS IDE environment, the Processor
 SDK RTOS installed and be able to connect to your target using an
 emulator.
@@ -260,8 +258,7 @@ described here:
 Processor SDK RTOS provides a script to set up the Windows and Linux
 environment with the component and compiler PATHs. Running the script
 and rebuilding the Processor SDK from the root directory is described in
-the wiki article `Setup build
-Environment <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Setup_Environment>`__.
+the wiki article :ref:`Setup build Environment <Build-The-SDK-Setup-Environment-label>`.
 
 .. raw:: html
 
@@ -275,7 +272,7 @@ Environment <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building
    SDK RTOS in a custom location, then modify the setup file to the
    custom path. Please setup the environment using the steps described
    in the wiki article
-   `Processor_SDK_RTOS_Install_in_Custom_Path <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path>`__.
+   :ref:`Processor SDK RTOS Install in Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`.
 -  After the script executes, it prints all the PATH macros set for the
    different variables. Be sure that the compiler and component paths
    have been setup correctly.
@@ -450,8 +447,7 @@ based on the user-specific host setup. In order to create the example
 projects, users can follow the sequence provided below:
 
 #. Users are required to setup their development environment using
-   `Processor SDK RTOS
-   Setup <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Setup_Environment>`__.
+   :ref:`Processor SDK RTOS Setup <Build-The-SDK-Setup-Environment-label>`.
 #. Setup the PDK build environment `PDK
    Setup <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK#Building_PDK_using_gmake_in_Windows_environment>`__.
 #. Execute the PdkProjectCreate script in ${PDK_INSTALL_PATH}/packages
@@ -840,12 +836,10 @@ production environment.
    :name: where-do-i-locate-flashing-and-boot-utilities-in-the-package
 
 The documentation for the booting and flashing of images to EVMs using
-Processor SDK RTOS is provided from the wiki article `Processor SDK RTOS
-Boot
-Documentation <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot>`__.
+Processor SDK RTOS is provided from the wiki article :ref:`Processor SDK RTOS
+Boot Documentation <FC-Boot-label>`
 
-The `Boot and Flashing
-Utilities <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot>`__
+The :ref:`Boot and Flashing Utilities <FC-Boot-label>`
 for all devices is located in the PDK package under the path
 pdk_<device_name>_x_x_x\packages\ti\boot\sbl\tools.
 

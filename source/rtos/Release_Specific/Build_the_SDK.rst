@@ -34,7 +34,7 @@ Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide#Code_Composer_Studio>
 **NOTE**
 If you have installed the SDK and/or CCS in non-default locations follow
 the steps outlined in the article
-`Processor_SDK_RTOS_Install_In_Custom_Path </index.php/Processor_SDK_RTOS_Install_In_Custom_Path>`__
+:ref:`Processor SDK RTOS Install In Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 to build the SDK from the toplevel Makefile.
 
 .. raw:: html
@@ -43,6 +43,7 @@ to build the SDK from the toplevel Makefile.
 
 | 
 
+.. _Build-The-SDK-Setup-Environment-label:
 .. rubric:: Setup Environment
    :name: setup-environment
 

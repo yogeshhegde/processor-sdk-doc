@@ -29,6 +29,7 @@ OpenCL
 ***************
 Boot
 ***************
+.. _FC-Boot-label:
 .. include:: Boot.rst
 
 *****

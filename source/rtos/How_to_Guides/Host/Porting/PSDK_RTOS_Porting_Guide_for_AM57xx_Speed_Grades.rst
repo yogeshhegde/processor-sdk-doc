@@ -49,12 +49,9 @@ family :**
 
 TI Supports following evaluation platform for AM57xx class of devices:
 
--  `AM572x GP
-   EVM <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions#Supported_Platforms_and_EVMs>`__
--  `AM571x
-   IDK <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions#Supported_Platforms_and_EVMs>`__
--  `AM572x
-   IDK <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions#Supported_Platforms_and_EVMs>`__
+-  :ref:`AM572x GP EVM <SPV-Supported-Platforms-and-EVMs-label>`
+-  :ref:`AM571x IDK <SPV-Supported-Platforms-and-EVMs-label>`
+-  :ref:`AM572x IDK <SPV-Supported-Platforms-and-EVMs-label>`
 
 When developer selects any of the above platforms in Code composer
 Studio, the target configuration automatically brings in the required

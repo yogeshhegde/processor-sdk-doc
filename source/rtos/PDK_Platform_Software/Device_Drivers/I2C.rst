@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_I2C 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_I2C
 
 .. rubric::  Introduction
    :name: introduction
@@ -261,4 +261,3 @@ I2C_TemperatureSensor Application is supported only on AM572x GP EVM.
 +-----------------------------------+-----------------------------------+
 
 .. raw:: html
-

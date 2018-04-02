@@ -248,6 +248,7 @@ download stall or slow download. One simple solution is to run a
 download manager/accelerator such as
 http://www.freedownloadmanager.org/.
 
+.. _GSG-Code-Composer-Studio-label:
 .. rubric:: Code Composer Studio
    :name: code-composer-studio
 
@@ -328,6 +329,7 @@ For example, an update for Sitara devices will look like:
 
 .. Image:: ../images/Processor-SDK_CCS-Emu-Update.png
 
+.. _GSG-Processor-SDK-for-RTOS-label:
 .. rubric:: Processor-SDK for RTOS
    :name: processor-sdk-for-rtos
 
@@ -439,10 +441,9 @@ newly installed components.
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-If you installed the SDK and CCS in different paths, see the `Custom
-Installation
-Path </index.php/Processor_SDK_RTOS_Install_In_Custom_Path>`__ **How
-To** page that provides instructions to configure for a custom
+If you installed the SDK and CCS in different paths, see the 
+:ref:`Custom Installation Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
+**How To** page that provides instructions to configure for a custom
 installation path.
 
 .. raw:: html

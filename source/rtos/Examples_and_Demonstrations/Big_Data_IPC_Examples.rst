@@ -290,9 +290,8 @@ release. Once installed the source files can be found in the directory
 example-applications/big-data-ipc-demo-linux_<version>.
 
 Prerequisites: Also need to have the Processor SDK RTOS release
-installed to build the DSP side RTOS image. See the instruction in `RTOS
-SDK Getting Started
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__
+installed to build the DSP side RTOS image. See the instruction in :ref:`RTOS
+SDK Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
 
 The example can be rebuilt by using the following commands.
 
@@ -380,10 +379,9 @@ image or 'app' bootable through SBL is located under:
 .. rubric:: Pre-requisites
    :name: pre-requisites
 
-| 1. Create a bootable SDCard using the procedure here:
-| http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows
+| 1. Create a bootable SDCard using the procedure here: :ref:`Creating SD card in Windows <Tools-Create-SD-Card-Windows-label>`
 | or
-| http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script
+| :ref:`Create SD card in Linux <Tools-Create-SD-Card-Linux-label>`
 
 | 2. Connect the UART on the hardware to the Host.
 | ( Configure the terminal/console to Baud Rate= 115200, Data Bits= 8 ,
@@ -452,8 +450,7 @@ CCS to the appropriate cores and run.
 | (NOTE: The above command installs the elf binaries under the
   prebuilt-binaries location mentioned above.
 | Need to convert the prebuilt elf binaries into bootable images refer
-  to
-| http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot )
+  to :ref:`Processor SDK RTOS Boot <FC-Boot-label>`
 
 .. rubric:: Source files
    :name: source-files-1

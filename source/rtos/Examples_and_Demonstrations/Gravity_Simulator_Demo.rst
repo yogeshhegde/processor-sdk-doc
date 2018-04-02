@@ -66,9 +66,8 @@ The following are steps to compile the demo:
 
 You will need the following:
 
-#. Code Composer Studio to load and run the demo. Refer to `Processor
-   SDK RTOS Getting Started
-   Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__ for
+#. Code Composer Studio to load and run the demo. Refer to :ref:`Processor
+   SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` for
    installing CCS.
 #. idkAM572x board with attached LCD screen
 #. USB cable for JTAG and serial terminal (micro USB port)
@@ -78,9 +77,8 @@ To load and run the demo:
 #. Connect the USB cable from your computer to the idkAM572x's JTAG port
 #. Power on the idkAM572x board. Ensure that no boot mode is entered (do
    not have SD card loaded or QSPI flashed)
-#. Open up a serial terminal for UART communication (Refer to `Processor
-   SDK RTOS Getting Started
-   Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__, setup
+#. Open up a serial terminal for UART communication (Refer to :ref:`Processor
+   SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`, setup
    EVM hardware)
 #. Open CCS and launch target config file for idkAM572x (Refer to
    `Processor SDK RTOS Setup

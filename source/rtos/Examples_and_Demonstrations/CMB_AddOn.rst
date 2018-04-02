@@ -139,8 +139,7 @@ The following sections provide detailed steps for each EVM.
 .. rubric:: K2G EVM
    :name: k2g-evm-1
 
--  Follow this link
-   (http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS)
+-  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly.
 -  Connect to the on board emulator (J1 on K2G EVM) to your PC USB
 -  Plug power adaptor(12V) into the K2G EVM and power on the EVM
@@ -156,8 +155,7 @@ The following sections provide detailed steps for each EVM.
 .. rubric:: OMAP-L137 EVM
    :name: omap-l137-evm-1
 
--  Follow this link
-   (http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS)
+-  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly.
 -  Connect to the on board emulator (J201 on OMAP-L137 EVM) to your PC
    USB

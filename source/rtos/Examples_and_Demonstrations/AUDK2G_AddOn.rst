@@ -87,8 +87,7 @@ The unit test works on the K2G EVM with an AUDK2G connected.
 
 The following section provide detailed steps for K2G EVM
 
--  Follow this link
-   (http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS)
+-  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly
 -  Connect to the on board emulator (J1 on K2G EVM) to your PC USB
 -  Plug power adaptor(12V) into the K2G EVM and power on the EVM
