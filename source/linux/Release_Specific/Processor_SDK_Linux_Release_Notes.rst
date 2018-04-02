@@ -56,7 +56,7 @@ Released Mar 2018
     -  Qt5-based Thermostat demo on AM335x/AM437x/AM57x
     -  Demonstrate 4K Video Encode with IVAHD on AM57x
     -  Khronos OpenVX based demo example with C66x offload via OpenCL
-    -  ROS Turtlebot based demo using AM335x/AM437x/AM57x and Processor Linux SDK
+    -  ROS Turtlebot demo using AM57x and IWR1443/IWR1642 mmWave radar
 
 -  New Features
     -  PTP: Support Boundary Clock between 3 ports (1xCPSW and 2xICSS) on AM571x
