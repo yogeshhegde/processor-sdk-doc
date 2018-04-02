@@ -4,8 +4,8 @@ Release Notes
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes
 
-.. rubric::  Overview
-   :name: overview
+Overview
+==========
 
 The **Processor Software Development Kit (Processor-SDK)** provides the
 core foundation and building blocks that facilitate application software
@@ -14,8 +14,8 @@ the Real-time operating system (RTOS).
 
 | 
 
-.. rubric::  Licensing
-   :name: licensing
+Licensing
+===========
 
 Please refer to the software manifest, which outlines the licensing
 status for all packages included in this release. The manifest can be
@@ -24,18 +24,16 @@ indicated below.
 
 | 
 
-.. rubric::  Documentation
-   :name: documentation
+Documentation
+===============
 
--  :ref:`**Getting Started Guide** <Processor-SDK-RTOS-Getting-Started-Guide-label>`:
+-  :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`:
    Provides information on getting the software and running basic
    examples/demonstrations bundled in the SDK.
--  `**Migration
-   Guide** </index.php/Processor_SDK_RTOS_Migration_Guide>`__: Provides
+-  :ref:`Migration Guide <RTOS-SDK-Migration-Guide-label>` Provides
    migration information for applications built on top of the Processor
    SDK for RTOS.
--  `**Software Developer
-   Guide** </index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__:
+-  :ref:`Software Developer Guide <Index-Processor-SDK-RTOS-label>`
    Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK RTOS release. This also provides
    detailed information regarding software elements and software
@@ -50,8 +48,8 @@ indicated below.
 
 | 
 
-.. rubric::  Release 04.03.00
-   :name: release-04.03.00
+Release 04.03.00
+==================
 
 Released March 2018.
 
@@ -84,12 +82,11 @@ Released March 2018.
    :name: component-version
 
 The following software components and host tools are bundled with the
-SDK installer. See the `Software Developer
-Guide </index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__ for
+SDK installer. See the :ref:`Software Developer Guide <Index-Processor-SDK-RTOS-label>` for
 more information on each item.
 
 +-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-|  Component  | Version     |AM335x|AM437x|AM57x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
+|  Component  |   Version   |AM335x|AM437x|AM57x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
 +=============+=============+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
 | CG_XML      | 2.41.0      |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
 +-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
@@ -157,8 +154,7 @@ environment (IDE) for all devices and EVMs:
 +-----------+----------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
 
-If you need to install CCS, see the `CCS installation
-section </index.php/Processor_SDK_RTOS_Getting_Started_Guide#Code_Composer_Studio>`__
+If you need to install CCS, see the :ref:`CCS installation section <GSG-Code-Composer-Studio-label>`
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
 **Change log**
@@ -169,11 +165,11 @@ Updated
 -  CCS 7.4.0.195
 -  PDK for all platforms
 
- Fixed Issues 
+Fixed Issues 
 ==============
 
 +-----------------------+-----------------------+-----------------------+
-| Record ID             | Platform              | Summary               |
+|      Record ID        |       Platform        |       Summary         |
 +=======================+=======================+=======================+
 | PRSDK-415             | AM335x                | EDMA3 LLD RM code     |
 |                       |                       | reserves first 64     |
@@ -324,16 +320,16 @@ Updated
 +-----------------------+-----------------------+-----------------------+
 
 .. RN_Supported-Platforms-label:
- Supported Platforms 
+Supported Platforms 
 =====================
 
- Devices 
+Devices 
 ---------
 
 The following table lists all supported devices for a given installer.
 
 +----------------+------------+-------------------------------------------------------------------------------+
-| Installer      |Platform/SOC| Supported Devices                                                             |
+|   Installer    |Platform/SOC|                                 Supported Devices                             |
 +================+======+=====+===============================================================================+
 |                |`AM335x`_   | `AM3351`_, `AM3352`_, `AM3354`_, `AM3356`_, `AM3357`_, `AM3358`_, `AM3359`_   |
 |`RTOS-AM335X`_  +------------+-------------------------------------------------------------------------------+
@@ -444,22 +440,20 @@ The following table lists all supported devices for a given installer.
 .. _C6746: http://www.ti.com/product/tms320c6746
 .. _C6748: http://www.ti.com/product/tms320c6748
 
- Evaluation Modules 
+Evaluation Modules 
 --------------------
 
-See `Processor SDK Supported
-Platforms </index.php/Processor_SDK_Supported_Platforms_and_Versions>`__
+See :ref:`Processor SDK Supported Platforms <RTOS-SDK-Supported-Platforms>`
 page for a list of supported EVMs per platform and links to more
 information.
 
- Demonstrations 
+Demonstrations 
 ----------------
 
-See `Examples and
-Demonstrations </index.php/Processor_SDK_RTOS_Examples_and_Demonstrations>`__
+See :ref:`Examples and Demonstrations <RTOS-Examples-and-Demonstrations-label>`
 page for a list of demonstrations per platform and EVM.
 
- Drivers 
+Drivers 
 ---------
 
 The following tables show RTOS driver availability per platform and EVM.
@@ -484,6 +478,8 @@ platform/EVM.
 | GPMC             |   X   |   X  |     |   | X |   |   | X |   |   |     |     |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
 | I2C              |   X   |   X  |  X  | X | X | X | X | X | X | X |  X  |  X  |
++------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
+| PRUSS-I2C f/w    |   X   |   X  |  X  |   | X |   |   |   | X |   |     |  X  |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
 | ICSS-EMAC        |   X   |   X  |  X  |   | X |   |   |   | X |   |     |  X  |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
@@ -613,7 +609,7 @@ USB Device Audio
 +----------------+---------+---------+-------------+-------+--------+
 
 
- Other Features 
+Other Features 
 ----------------
 
 The following table shows other feature availability per platform and
@@ -703,14 +699,14 @@ EVM:
 +--------------+---------+---------+-------------+-------+--------+
 
 
- Known Issues 
+Known Issues 
 ==============
 
 This section contains the list of known issues at the time of making the
 release and any known workaround.
 
 +-------------+-------------+-------------+-------------+-------------+
-| Record ID   | Platform    | Area        | Summary     | Workaround  |
+|  Record ID  |  Platform   |    Area     |   Summary   | Workaround  |
 +=============+=============+=============+=============+=============+
 | PRSDK-335   | AM4X        | High-Speed  | USB host    | Re-enumerat |
 |             |             | Drivers     | MSC fails   | ion         |
@@ -901,9 +897,19 @@ release and any known workaround.
 |             |             |             | on Windows  | on Windows  |
 |             |             |             | OS          |             |
 +-------------+-------------+-------------+-------------+-------------+
+| PRSDK-3859  | am57xx,     | Starterware | Audio       | None        |
+|             | c665x,      |             | benchmark   |             |
+|             | c667x,      |             | starterkit  |             |
+|             | omapl13x,   |             | demo fails  |             |
+|             | keystone2,  |             | to build in |             |
+|             | c674x,      |             | Windows with|             |
+|             |             |             | Rules.make  |             |
+|             |             |             | environment |             |
+|             |             |             | setup       |             |
++-------------+-------------+-------------+-------------+-------------+
 
 
- Installation and Usage 
+Installation and Usage 
 ========================
 
 The :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` provides
@@ -916,7 +922,7 @@ components do not modify the Windows registry.
 
 | 
 
- Host Support 
+Host Support 
 ==============
 
 The recommended development host is
@@ -940,7 +946,7 @@ The Windows installer is a 32-bit binary, but is compatibility with
 
 | 
 
- Technical Support and Product Updates 
+Technical Support and Product Updates 
 =======================================
 
 For further information or to report any problems, contact TI E2E:
@@ -956,7 +962,7 @@ For further information or to report any problems, contact TI E2E:
 
 | 
 
- Archived 
+Archived 
 ==========
 
 -  `Processor-SDK RTOS

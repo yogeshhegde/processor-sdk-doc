@@ -1,3 +1,7 @@
+****************
+Migration Guide
+****************
+
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Migration_Guide
 
 .. rubric::  Overview

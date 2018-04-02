@@ -17,7 +17,8 @@ Release Specific
 .. include:: ../common/Release_Specific/Processor_SDK_Supported_Platforms_and_Versions.rst
 
 
-****************
-Migration Guide
-****************
+.. ****************
+.. Migration Guide
+.. ****************
+.. _RTOS-SDK-Migration-Guide-label:
 .. include:: Release_Specific/Migration_Guide.rst
