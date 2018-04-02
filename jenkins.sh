@@ -75,6 +75,9 @@ build_doc()
     # provide link to output
     echo "${BUILDDIR}" | sed -e "s|^${ARTIFACTS}|${BUILD_URL}/artifacts/|g" | \
                          sed -e 's|//*|/|g' -e 's|^http:/*|http://|g' >> "${BUILD_NOTES}"
+
+    # copy repo-revs.txt to output directory
+    cp $REPO_REV $BUILDDIR
 }
 
 if [[ ${OS} == all ]]; then
