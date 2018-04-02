@@ -3,20 +3,17 @@
 Linux SD Card Creation Guide
 ======================================
 
-.. rubric:: Overview
-   :name: overview
+Overview
+--------
 
 The Linux SDK includes a script in the **<SDK INSTALL DIR>/bin**
 directory named **create-sdcard.sh**. The purpose of this script is to
 create SD cards for the following high-level use cases:
 
-#. Create the `**SD card using default
-   images** <#SD_Card_Using_Default_Images>`__ from the Processor SDK
+#. Create the `SD Card using default images`_ from the Processor SDK
    for Linux
-#. Create the `**SD card using custom
-   images** <#SD_Card_Using_Custom_Images>`__
-#. Create the `**SD card using partition
-   tarballs** <#SD_Card_Using_Partition_Tarballs>`__ (This is not common
+#. Create the `SD card using custom images`_
+#. Create the `SD card using partition tarballs`_ (This is not common
    and is used most often by board vendors)
 
 The script will give you information about each step, but the following
@@ -25,14 +22,15 @@ through how to use the script as well.
 
 | 
 
-.. rubric:: Common Steps
-   :name: common-steps
+Common Steps
+-------------
 
 No matter which use case above that you are creating an SD card for the
 following steps are the same.
+|
 
 .. rubric:: Invoking the Script
-   :name: invoking-the-script
+   :name: invoking-the-sdcard-script
 
 The **create-sdcard.sh** script can be run from any location but must be
 run with **root** permissions. This usually means using the **sudo**
@@ -42,12 +40,6 @@ command to start execution of the script. For example:
 If you fail to execute the script without root permissions you will
 receive a message that root permissions are required and the script will
 exit.
-
-| 
-
-| 
-
-| 
 
 | 
 
@@ -69,7 +61,7 @@ SD card. For example if the output looks like:
      
     Enter Device Number: 
 
-You would enter **1** to select the *sdb* device
+You would enter **1** to select the **sdb** device
 
 **NOTE**: For most common installations, this script works fine.
 However, if you are using more advanced disk slicing and volume
@@ -108,8 +100,7 @@ can move on to the next step.
       card
    -  **n** - If the SD card already has the desired number of
       partitions then this will leave the partitioning alone. If you
-      select **n** here skip on to the `**Installing SD Card
-      Content** <#Installing_SD_Card_Content>`__ section.
+      select **n** here skip on to the `Installing SD Card Content`_ section.
 
 .. rubric:: Select Number of Partitions
    :name: select-number-of-partitions
@@ -129,13 +120,12 @@ many partitions you want to create for the SD card.
       making SD cards to go in the box with the EVM. This requires
       access to the partition tarballs used for Out-Of-Box SD cards.
       This option should be selected if you are going to follow the
-      `**SD card using partition
-      tarballs** <#SD_Card_Using_Partition_Tarballs>`__ steps below
+      `SD card using partition tarballs`_ steps below
 
 After selecting the number of partitions, move on to the next section.
 
-.. rubric:: Installing SD Card Content
-   :name: installing-sd-card-content
+Installing SD Card Content
+---------------------------
 
 After the SD card is partitioned, you will be prompted whether you want
 to continue installing the file system or safely exit the script.
@@ -148,20 +138,17 @@ to continue installing the file system or safely exit the script.
       additional instructions depending on which use case you are
       creating an SD card for
 
-      -  Create the `**SD card using default
-         images** <#SD_Card_Using_Default_Images>`__
-      -  Create the `**SD card using custom
-         images** <#SD_Card_Using_Custom_Images>`__
-      -  Create the `**SD card using partition
-         tarballs** <#SD_Card_Using_Partition_Tarballs>`__
+      -  Create the `SD card using default images`_
+      -  Create the `SD card using custom images`_
+      -  Create the `SD card using partition tarballs`_
 
    -  **n** - Selecting no here will allow you to have partitioned your
       card but will leave the partitions empty.
 
 | 
 
-.. rubric:: SD Card Using Default Images
-   :name: sd-card-using-default-images
+SD Card Using Default Images
+-----------------------------
 
 The purpose of this section is to cover how to use the
 **create-sdcard.sh** script to populate an SD card that can be used to
@@ -169,14 +156,13 @@ boot the device using the default images that ship with the Processor
 SDK for Linux.
 
 .. rubric:: Prerequisites
-   :name: prerequisites
+   :name: sd-default-image-prerequisites
 
 #. The Processor SDK for Linux is installed on your host system
 #. The SD card you wish to create is inserted into the host system and
    has a size sufficiently large to hold at least the bootloaders,
    kernel, and root file system.
-#. You have started running the script as detailed in the `**Common
-   Steps** <#Common_Steps>`__ section above.
+#. You have started running the script as detailed in the `SD Card Common steps`_ section above.
 
 .. rubric:: Choose Install Pre-built Images
    :name: choose-install-pre-built-images
@@ -250,7 +236,7 @@ directory and executed there, you may see a prompt like
     Enter path to SDK :
 
 Enter the path to the SDK installation directory here. For example if
-the SDK was installed into the home directory of the *sitara* user the
+the SDK was installed into the home directory of the **sitara** user the
 path to enter would be
 **/home/sitara/ti-processor-sdk-linux-<machine>-<version>**. You will be
 prompted to confirm the installation directory. The SD card will then be
@@ -258,8 +244,8 @@ created using the default images and the script will exit when finished.
 
 | 
 
-.. rubric:: SD Card Using Custom Images
-   :name: sd-card-using-custom-images
+SD Card Using Custom Images
+----------------------------
 
 Often times you will use TFTP and NFS during development to transfer you
 kernel images and boot your root file systems respectively. Once you are
@@ -268,14 +254,13 @@ card so that they can be used stand-along without requiring a network
 connection to a server.
 
 .. rubric:: Prerequisites
-   :name: prerequisites-1
+   :name: sd-custom-image-prerequisites
 
 #. The Processor SDK for Linux is installed on your host system
 #. The SD card you wish to create is inserted into the host system and
    has a size sufficiently large to hold at least the bootloaders,
    kernel, and root file system.
-#. You have started running the script as detailed in the `**Common
-   Steps** <#Common_Steps>`__ section above.
+#. You have started running the script as detailed in the `SD Card common steps`_ section above.
 
 .. rubric:: Choose Custom Images
    :name: choose-custom-images
@@ -333,22 +318,22 @@ the option to change the path if the list of files is not correct.
 
 | 
 
-.. rubric:: SD Card Using Partition Tarballs
-   :name: sd-card-using-partition-tarballs
+SD Card Using Partition Tarballs
+--------------------------------
 
 This option is meant for board vendors to create SD cards to go in the
 box with the EVM. It requires access to the three tarballs representing
 the the partitions of the SD card shipped with the EVM.
 
 .. rubric:: Prerequisites
-   :name: prerequisites-2
+   :name: sd-parition-tarballs-prerequisites
 
 #. The Processor SDK for Linux is installed on your host system
 #. The SD card you wish to create is inserted into the host system and
    has a size sufficiently large to hold at least the bootloaders,
    kernel, and root file system.
-#. You have started running the script as detailed in the `**Common
-   Steps** <#Common_Steps>`__ section above.
+#. You have started running the script as detailed in the `SD Card common
+   steps`_ section above.
 
 .. rubric:: Provide Tarball Location
    :name: provide-tarball-location
@@ -377,7 +362,7 @@ for inclusion in the box with the EVM.
 
 For OMAP-L138 LCDK, boot loader needs to be updated after the SD card is
 created as above. The pre-built u-boot-omapl138-lcdk.ais needs to be
-written to the SD card using the *dd* command. /dev/sd<N> below
+written to the SD card using the **dd** command. /dev/sd<N> below
 corresponds to the SD card device listed from the host machine.
 
 ::

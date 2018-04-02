@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Setup_Script
 .. rubric:: Overview
-   :name: overview
+   :name: processor-sdk-linux-setup-script-overview
 
 | After installation of the SDK on the Linux host, the setup script
   should be run to prepare the host for software development. Some of
