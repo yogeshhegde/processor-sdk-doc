@@ -26,9 +26,14 @@ Processor SDK 04.03
    Sphinx, and hosted on software-dl.ti.com instead of processors wiki
 -  For AM57xx, with the addition of new components in the filesystem, the minimum 
    SD-card size is 8 GB (4 GB SD cards no longer work). 
--  On AM57xx, default environment is now saved to eMMC instead of SD card. The 
-   setup scripts have been updated to account for this change and it is transparent
-   to the users 
+-  For am57xx devices, the location of the saved U-Boot environment has moved
+   from the external SD card to eMMC. Because of this change, the state of the
+   U-Boot environment can no longer be guaranteed on a newly created SD card.
+   The uEnv.txt file located on the boot partition of the SD card contains the
+   logic to compensate for this change. Upon the initial boot, the environment
+   will be reset to the default, and the empty file ".psdk_setup" will be
+   created on the boot partition. Subsequent boots will detect this file and
+   bypass resetting the environment.
 
 Processor SDK 04.02
 ----------------------
