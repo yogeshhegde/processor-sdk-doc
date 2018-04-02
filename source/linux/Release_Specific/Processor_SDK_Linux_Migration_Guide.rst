@@ -24,6 +24,11 @@ Processor SDK 04.03
    for ov10635 camera
 -  Processor SDK documentation is now created from reStructuredText sources using
    Sphinx, and hosted on software-dl.ti.com instead of processors wiki
+-  For AM57xx, with the addition of new components in the filesystem, the minimum 
+   SD-card size is 8 GB (4 GB SD cards no longer work). 
+-  On AM57xx, default environment is now saved to eMMC instead of SD card. The 
+   setup scripts have been updated to account for this change and it is transparent
+   to the users 
 
 Processor SDK 04.02
 ----------------------
