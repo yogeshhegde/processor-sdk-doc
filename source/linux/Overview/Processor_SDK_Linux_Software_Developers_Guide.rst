@@ -60,6 +60,11 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 .. _Verifying NOR: Overview.html#id7
 .. _Run the Setup.sh Script: Overview.html#processor-sdk-linux-setup-script-overview
 .. _top-level Makefile: Overview.html#id9
+.. _SD Card using default images: Overview.html#sd-card-using-default-images
+.. _SD Card using custom images: Overview.html#sd-card-using-custom-images
+.. _SD Card using parition tarballs: Overview.html#sd-card-using-partition-tarballs
+.. _Installing SD Card Content: :Overview.html#installing-sd-card-content
+.. _SD Card common steps: Overview.html#common-steps
  
 +---------------+--------------------------+------------------+-----------------------------------+
 | **Foundational Components** (more information on each piece of the distribution)                |
