@@ -182,6 +182,11 @@ running on two cores in this example.
 -  Some of the DMIPS values may not be accurate, but the values will
    increase proportionally with the number of cores
 
+.. raw:: html
+
+   </div>
+| 
+ 
 .. rubric:: How to Build the Demo
    :name: how-to-build-the-demo
 

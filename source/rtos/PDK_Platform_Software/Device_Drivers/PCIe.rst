@@ -106,22 +106,22 @@ The overall components are:
 +=================+=================+=================+=================+
 | PCIE_idkAM57[12 | 2-device PCIe   | **IMPORTANT:**  | **AM572x/AM574x |
 | 4]x*ExampleProj | connection      | Cable must be   | or AM571x       |
-| ect             |                 | `MODIFIED </ind | EVM** : One     |
-|                 |                 | ex.php/PCIe_Cab | board is        |
-|                 |                 | leMod>`__       | EP/other is RC; |
-|                 |                 | in order to     | link is         |
-|                 |                 | avoid damaging  | established and |
-|                 |                 | the clock       | data/interrupts |
-|                 |                 | drivers in the  | exchanged. All  |
-|                 |                 | SoC!            | printed output  |
+| ect             |                 | `MODIFIED`_     | EVM** : One     |
+|                 |                 | in order to     | board is        |
+|                 |                 | avoid damaging  | EP/other is RC; |
+|                 |                 | the clock       | link is         |
+|                 |                 | drivers in the  | established and |
+|                 |                 | SoC!            | data/interrupts |
+|                 |                 |                 | exchanged. All  |
+|                 |                 |                 | printed output  |
 |                 |                 | |               | goes to the     |
-|                 |                 | | Connect two   | serial console. |
-|                 |                 |   like AM57xx   |                 |
-|                 |                 |   IDK EVMs J22  |                 |
-|                 |                 |   using a       |                 |
-|                 |                 |   `MODIFIED </i |                 |
-|                 |                 | ndex.php/PCIe_C |                 |
-|                 |                 | ableMod>`__     |                 |
+|                 |                 | |               | serial console. |
+|                 |                 |                 |                 |
+|                 |                 |                 |                 |
+|                 |                 | Connect two     |                 |
+|                 |                 | like AM57xx     |                 |
+|                 |                 | IDK EVMs J22    |                 |
+|                 |                 | `MODIFIED`_     |                 |
 |                 |                 |   male-male     |                 |
 |                 |                 |   crossover     |                 |
 |                 |                 |   PCIe x1 or x4 |                 |
@@ -144,21 +144,21 @@ The overall components are:
 +-----------------+-----------------+-----------------+-----------------+
 | PCIE_evmK2G*Exa | 2-device PCIe   | **IMPORTANT:**  | **K2G EVM** :   |
 | mpleProject     | connection      | Cable must be   | One board is    |
-|                 |                 | `MODIFIED </ind | EP/other is RC; |
-|                 |                 | ex.php/PCIe_Cab | link is         |
-|                 |                 | leMod>`__       | established and |
-|                 |                 | in order to     | data is         |
-|                 |                 | avoid damaging  | exchanged. All  |
-|                 |                 | the clock       | printed output  |
-|                 |                 | drivers in the  | goes to serial  |
-|                 |                 | SoC!            | console.        |
+|                 |                 | `MODIFIED`_     | EP/other is RC; |
+|                 |                 | in order to     | link is         |
+|                 |                 | avoid damaging  | established and |
+|                 |                 | the clock       | data is         |
+|                 |                 | drivers in the  | exchanged. All  |
+|                 |                 | SoC!            | printed output  |
+|                 |                 |                 | goes to serial  |
+|                 |                 |                 | console.        |
 |                 |                 | |               |                 |
-|                 |                 | | Connect two   |                 |
-|                 |                 |   K2G  EVMs J5  |                 |
-|                 |                 |   using a       |                 |
-|                 |                 |   `MODIFIED </i |                 |
-|                 |                 | ndex.php/PCIe_C |                 |
-|                 |                 | ableMod>`__     |                 |
+|                 |                 | |               |                 |
+|                 |                 |                 |                 |
+|                 |                 | Connect two     |                 |
+|                 |                 | K2G  EVMs J5    |                 |
+|                 |                 | using a         |                 |
+|                 |                 | `MODIFIED`_     |                 |
 |                 |                 |   male-male     |                 |
 |                 |                 |   crossover     |                 |
 |                 |                 |   PCIe x1 cable |                 |
@@ -193,24 +193,24 @@ The overall components are:
 +-----------------+-----------------+-----------------+-----------------+
 | PCIE_idkAM571x_ | Packet Exchange | **IMPORTANT:**  | **AM571X        |
 | *armEdmaPktExam | over PCIe       | Cable must be   | >=REV1.3A       |
-| pleProject      | Benchmark       | `MODIFIED </ind | IDK** : One     |
-| *(Available     |                 | ex.php/PCIe_Cab | board is        |
-| starting in     |                 | leMod>`__       | EP/other is RC; |
-| Processor-SDK   |                 | in order to     | link is         |
-| 3.1)*           |                 | avoid damaging  | established and |
-|                 |                 | the clock       | data is         |
-|                 |                 | drivers in the  | exchanged.      |
-|                 |                 | SoC!            | Produces same   |
+| pleProject      | Benchmark       | `MODIFIED`_     | IDK** : One     |
+| *(Available     |                 | in order to     | board is        |
+| starting in     |                 | avoid damaging  | EP/other is RC; |
+| Processor-SDK   |                 | the clock       | link is         |
+| 3.1)*           |                 | drivers in the  | established and |
+|                 |                 | SoC!            | data is         |
+|                 |                 |                 | exchanged.      |
+|                 |                 |                 | Produces same   |
 |                 |                 | |               | output as       |
-|                 |                 | | Connect two   | standard        |
-|                 |                 |   like          | ExampleProject, |
-|                 |                 |   >=REV1.3A     | except EP also  |
-|                 |                 |   AM571x  IDK   | prints packet   |
-|                 |                 |   EVMs J22      | exchange        |
-|                 |                 |   using a       | benchmark       |
-|                 |                 |   `MODIFIED </i | results.        |
-|                 |                 | ndex.php/PCIe_C |                 |
-|                 |                 | ableMod>`__     |                 |
+|                 |                 | |               | standard        |
+|                 |                 |                 | ExampleProject, |
+|                 |                 | Connect two     | except EP also  |
+|                 |                 | like            | prints packet   |
+|                 |                 | >=REV1.3A       | exchange        |
+|                 |                 | AM571x  IDK     | benchmark       |
+|                 |                 | EVMs J22        | results.        |
+|                 |                 | using a         |                 |
+|                 |                 | `MODIFIED`_     |                 |
 |                 |                 |   male-male     |                 |
 |                 |                 |   crossover     |                 |
 |                 |                 |   PCIe x4 cable |                 |
@@ -249,6 +249,8 @@ The overall components are:
 |                 |                 | as present in   |                 |
 |                 |                 | each device.    |                 |
 +-----------------+-----------------+-----------------+-----------------+
+
+.. _MODIFIED: http://processors.wiki.ti.com/index.php/PCIe_CableMod
 
 .. rubric:: Quick setup of xds100 for two EVMs
    :name: quick-setup-of-xds100-for-two-evms
@@ -364,23 +366,23 @@ xds100 for two EVMs <#Quick_setup_of_xds100_for_two_EVMs>`__
 
 Additional documentation can be found in:
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| Hardware Peripheral Users Guide   | -  C66x/K2x: `User                |
-|                                   |    Guide <http://www.ti.com/lit/s |
-|                                   | prugs6>`__                        |
-|                                   | -  AM57XX: TRM Chapter 24.9       |
-|                                   |    titled "PCIe Controller"       |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\pcie\docs\doxygen\html\index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\pcie\docs\ReleaseNotes_PCIE_ |
-|                                   | LLD.pdf                           |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+---------------------------------------------+
+| **Document**                      | **Location**                                |
++-----------------------------------+---------------------------------------------+
+| Hardware Peripheral Users Guide   | -  C66x/K2x: `User                          |
+|                                   |    Guide <http://www.ti.com/lit/sprugs6>`__ |
+|                                   |                                             |
+|                                   | -  AM57XX: TRM Chapter 24.9                 |
+|                                   |    titled "PCIe Controller"                 |
++-----------------------------------+---------------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti           |
+|                                   | /drv/pcie/docs/doxygen/html/index           |
+|                                   | .html                                       |
++-----------------------------------+---------------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti           |
+|                                   | /drv/pcie/docs/ReleaseNotes_PCIE_           |
+|                                   | LLD.pdf                                     |
++-----------------------------------+---------------------------------------------+
 
 .. raw:: html
 

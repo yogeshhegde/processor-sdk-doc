@@ -1,3 +1,7 @@
+*****************************************
+Processor SDK RTOS Getting Started Guide
+*****************************************
+
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide 
 
 .. rubric:: Overview
@@ -405,8 +409,7 @@ SoC. Follow instructions in the included *EVM Quick Start Guide* for
 information on hardware configuration and other pertinent information.
 This guide is included in the EVM kit and also available for download
 from the software download page for your particular device. The list of
-supported EVMs are provided in the `Release
-Notes </index.php/Processor_SDK_RTOS_Release_Notes#Supported_Platforms>`__.
+supported EVMs are provided in the `Release Notes <RN_Supported-Platforms-label>`.
 
 If you connect to the EVM UART, use the following host configuration:
 
@@ -494,3 +497,9 @@ found in the Developer Guide.
   `FAQ <FAQ.html>`__
 | 
 
+.. rubric:: Archived
+   :name: archived
+- `Processor-SDK RTOS 4.0 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Getting_Started_Guide&oldid=230434>`__
+- `Processor-SDK RTOS 3.2 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Getting_Started_Guide&oldid=225568>`__
+
+| 

@@ -31,6 +31,10 @@ Boot
 ***************
 .. include:: Boot.rst
 
+*****
+IPC
+*****
+.. include:: IPC.rst
 
 *****
 MPM
@@ -42,6 +46,12 @@ MPM
 OpenMP
 *******
 .. include:: Compute/OpenMP.rst
+
+
+***************
+Network
+***************
+.. include:: NDK.rst
 
 
 ***************

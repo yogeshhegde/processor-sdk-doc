@@ -210,12 +210,12 @@ create EDMA handle and update the configuration before UART_init() API.
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\uart\docs\doxygen\html\index |
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/gpio/docs/doxygen/html/index |
 |                                   | .html                             |
 +-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\uart\docs\ReleaseNotes_UART_ |
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/gpio/docs/ReleaseNotes_UART_ |
 |                                   | LLD.pdf                           |
 +-----------------------------------+-----------------------------------+
 

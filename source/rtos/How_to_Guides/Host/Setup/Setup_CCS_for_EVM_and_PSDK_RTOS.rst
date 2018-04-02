@@ -58,6 +58,7 @@ newly discovered products from the custom path.
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Confirm.png
 
+.. _Create-Target-Configuration-File-for-EVM-label:
 .. rubric:: Create Target Configuration File for EVM
    :name: create-target-configuration-file-for-evm
 

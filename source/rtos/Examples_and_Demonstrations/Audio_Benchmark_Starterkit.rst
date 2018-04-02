@@ -43,40 +43,18 @@ release under the directory path
   the image below.
 
 Detailed description of the directory structure is given below:
-
-+-----------------------------------+-----------------------------------+
 .. Image:: ../images/Audben_dirStructure.png
-|                                   |    contains prebuilt out files to |
-|                                   |    run the benchmarks.            |
-|                                   |                                   |
-|                                   |    -  bootimages: SD card boot    |
-|                                   |       files to run the benchmarks |
-|                                   |       using SD boot.              |
-|                                   |                                   |
-|                                   | -  docs - directory contains      |
-|                                   |    ReadMe, Quick start guide and  |
-|                                   |    the software manifest for the  |
-|                                   |    package.                       |
-|                                   | -  scripts - directory contains   |
-|                                   |    .txt script files that is used |
-|                                   |    by BenchmarkProjectCreate      |
-|                                   |    script to create CCS projects  |
-|                                   | -  src                            |
-|                                   |                                   |
-|                                   |    -  common - Contains linker    |
-|                                   |       command file and logging    |
-|                                   |       functions used by all       |
-|                                   |       benchmark tests.            |
-|                                   |    -  singlePrecision_FFT -       |
-|                                   |       Source files for benchmark  |
-|                                   |       app for FFT                 |
-|                                   |    -  singlePrecision_FIR -       |
-|                                   |       Source files for benchmark  |
-|                                   |       app for FIR                 |
-|                                   |    -  singlePrecision_IIR -       |
-|                                   |       Source files for benchmark  |
-|                                   |       app for IIR                 |
-+-----------------------------------+-----------------------------------+
+
+-  prebuilt-binaries - directory contains prebuilt out files to run the benchmarks.           
+-  bootimages - SD card boot files to run the benchmarks using SD boot.
+-  docs - directory contains ReadMe, Quick start guide and the software manifest for the package.                      
+-  scripts - directory contains .txt script files that is used by BenchmarkProjectCreate     
+   script to create CCS projects
+-  src                           
+   -  common - Contains linker command file and logging functions used by all benchmark tests.           
+   -  singlePrecision_FFT - Source files for benchmark app for FFT                
+   -  singlePrecision_FIR - Source files for benchmark app for FIR                
+   -  singlePrecision_IIR - Source files for benchmark app for IIR                
 
 .. rubric:: Software Dependencies
    :name: software-dependencies
@@ -582,6 +560,10 @@ CCS Project settings to modify the compiler options.
 
 -  C6000 compiler documentation: `C6000 Compiler v8.x User
    Guide <http://www.ti.com/lit/ug/sprui04a/sprui04a.pdf>`__
+
+.. raw:: html
+
+   </div>
 
 .. rubric:: SOC Integration and Optimization
    :name: soc-integration-and-optimization
