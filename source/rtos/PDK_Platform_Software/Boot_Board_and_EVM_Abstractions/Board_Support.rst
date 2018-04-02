@@ -8,7 +8,7 @@
   for boards supported in the Processor SDK release. Refer to the
   package content for the list of supported boards.Board component also
   includes diagnostic software. Refer to `Processor SDK RTOS
-  DIAG </index.php/Processor_SDK_RTOS_DIAG>`__ for additional details on
+  DIAG <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG>`__ for additional details on
   available diagnostic examples.
 
 .. rubric::  APIs
@@ -198,7 +198,7 @@ is ignored when called in a C66x or K2H/K2E/K2L board library.
    :name: custom-board-library
 
 #. Set up your build environment according to the `Building the RTOS
-   SDK </index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page.
+   SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page.
 #. Create your own folder under the src directory. The name of this
    folder will be your board name (will be referred to as $BOARD). Put
    your source files in this src/$BOARD folder. Updated sources can also

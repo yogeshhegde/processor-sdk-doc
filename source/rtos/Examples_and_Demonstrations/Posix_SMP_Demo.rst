@@ -87,7 +87,7 @@ the supported EVMs. The makefile can also be used to compile native
 builds for Linux (both for EVMs and x86).
 
 For more information on TI-RTOS Posix, see `POSIX
-Support </index.php/SYS/BIOS_POSIX_Thread_(pthread)_Support>`__.
+Support <http://processors.wiki.ti.com/index.php/SYS/BIOS_POSIX_Thread_(pthread)_Support>`__.
 
 | 
 

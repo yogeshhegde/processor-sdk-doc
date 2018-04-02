@@ -35,7 +35,7 @@ Type of transfers
   Board_Init() API supports all initialization sequence for TI supported
   EVMs. In addition it initializes UART instance for Console/STDIO.Refer
   `Processor SDK RTOS Board
-  Support </index.php/Processor_SDK_RTOS_Board_Support>`__ for
+  Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for
   additional details.Once board specific configuration is complete 
   MMCSD_init() API can be called to initialize driver.
 

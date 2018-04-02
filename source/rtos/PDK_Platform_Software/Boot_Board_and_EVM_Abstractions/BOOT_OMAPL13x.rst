@@ -32,7 +32,7 @@ Processor SDK boot support for each of these SoC is shown below
 
    -  Board Initialization is done by a call to **Board_init()** API.
       For additional details refer to `Processor SDK Board
-      Support </index.php/Processor_SDK_RTOS_Board_Support>`__.
+      Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__.
    -  SBL setup includes configuring Pinmux, enable peripheral clocks,
       set up PLLs, and configure EMIF for SDRAM/DDR.
 

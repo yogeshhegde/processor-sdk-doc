@@ -51,7 +51,7 @@ manual <http://www.ti.com/lit/pdf/spruhz6>`__
       Initialization.
    -  Board Initialization is done by a call to **Board_init()** API.For
       additional details refer `Processor SDK Board
-      Support </index.php/Processor_SDK_RTOS_Board_Support>`__.
+      Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__.
    -  It includes setting up PLLs, enabling clocks to all interfaces and
       modules, performing pinmux and setting up UART console.
    -  Once Board Initialization is complete, it enables clocks to the
@@ -206,7 +206,7 @@ Core ID and Device ID for specific devices can be located in the file
 sbl_slave_core_boot.h in the boot/sbl/soc/<SOC_NAME> folder
 
 Refer section `App Image
-Creation </index.php/Processor_SDK_RTOS_BOOT_AM57x#Application_Image_Creation>`__
+Creation <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x#Application_Image_Creation>`__
 for more details on usage of this script and application image creation.
 
 **Flashing Tools**
@@ -297,29 +297,17 @@ demonstrates creation of SBL in CCS for AM572x GP EVM.
 This Release of SBL supports MMCSD and QSPI Boot modes. The different
 boot modes supported for all the boards is tabulated in the table below.
 
-+-----------------------+-----------------------+-----------------------+
-|                       | MMCSD                 | QSPI                  |
-+-----------------------+-----------------------+-----------------------+
-| AM572x GPEVM          | `YES </index.php/Proc | NO                    |
-|                       | essor_SDK_RTOS_BOOT_A |                       |
-|                       | M57x#Booting_Via_SD_C |                       |
-|                       | ard>`__               |                       |
-+-----------------------+-----------------------+-----------------------+
-| AM572x IDKEVM         | `YES </index.php/Proc | `YES </index.php/Proc |
-|                       | essor_SDK_RTOS_BOOT_A | essor_SDK_RTOS_BOOT_A |
-|                       | M57x#Booting_Via_SD_C | M57x#Booting_Via_QSPI |
-|                       | ard>`__               | >`__                  |
-+-----------------------+-----------------------+-----------------------+
-| AM571x IDKEVM         | `YES </index.php/Proc | `YES </index.php/Proc |
-|                       | essor_SDK_RTOS_BOOT_A | essor_SDK_RTOS_BOOT_A |
-|                       | M57x#Booting_Via_SD_C | M57x#Booting_Via_QSPI |
-|                       | ard>`__               | >`__                  |
-+-----------------------+-----------------------+-----------------------+
-| AM574x IDKEVM         | `YES </index.php/Proc | `YES </index.php/Proc |
-|                       | essor_SDK_RTOS_BOOT_A | essor_SDK_RTOS_BOOT_A |
-|                       | M57x#Booting_Via_SD_C | M57x#Booting_Via_QSPI |
-|                       | ard>`__               | >`__                  |
-+-----------------------+-----------------------+-----------------------+
++-----------------------+--------+------+
+|                       | MMCSD  | QSPI |
++-----------------------+--------+------+
+| AM572x GPEVM          |  YES   | NO   |
++-----------------------+--------+------+
+| AM572x IDKEVM         |  YES   | YES  |
++-----------------------+--------+------+
+| AM571x IDKEVM         |  YES   | YES  |
++-----------------------+--------+------+
+| AM574x IDKEVM         |  YES   | YES  |
++-----------------------+---------------+
 
 | 
 
@@ -334,14 +322,14 @@ boot modes supported for all the boards is tabulated in the table below.
 
 #. To boot the target the SD card should be bootable. Follow the steps
    at `Creating bootable SD card in
-   windows </index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
+   windows <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
    or `Creating bootable SD card in
-   Linux </index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
+   Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
 #. Delete the "MLO" and "app" in the bootable SD card which are created
    in the process of making the SD bootable.
 #. Copy the sbl binary(MLO) to the SD card.
 #. Copy the Application image(app) generated using the
-   `Script </index.php/Processor_SDK_RTOS_BOOT_AM57x#Application_Image_Creation>`__
+   `Script <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x#Application_Image_Creation>`__
    to the SD card.
 
 .. rubric:: Booting the target
@@ -680,7 +668,7 @@ even though the core(s) were booted successfully.
 Table indicated below provides memory map details for SBL image in
 OCMC_RAM1.  For more details on pinmux and IO delay requirements refer
 this link `Processor SDK Board
-Support </index.php/Processor_SDK_RTOS_Board_Support>`__
+Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__
 
 We recommend that users should refer to the linker command file and the
 map file for the boot loader to check for latest information on the
@@ -849,7 +837,7 @@ address of the memory section SBL_MEM
 
 Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article **`Common steps to debug application
-boot </index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__**
+boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__**
 
 .. raw:: html
 

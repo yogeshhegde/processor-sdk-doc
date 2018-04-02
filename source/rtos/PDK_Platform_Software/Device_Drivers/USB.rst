@@ -276,7 +276,7 @@ platform supported.
 -  Build the imported project. the OUT file will be at
    pdk_<platform>_<version>/packages/MyExampleProjects/USB_DevAudio_<board>_<core>ExampleProject/Debug.
 -  Make the HW connections as shown in `Hardware
-   Setup </index.php/Processor_SDK_RTOS_USB#Hardware_Setup>`__ section
+   Setup <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_USB#Hardware_Setup>`__ section
 -  Launch the target configuration for the EVM from CCS 7.x.
 -  Connect to ARM or DSP core as applicable.
 -  Load the

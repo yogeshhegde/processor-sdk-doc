@@ -304,7 +304,7 @@ switch running on PRU's which are part of the ICSS). The library used
 the ICSS_EMAC LLD to provide NIMU interface for NDK. This package has
 NDK unit test examples for all supported Devices as indicated in the
 table above. For details of the PRU-ICSS, please refer to
-`ICCS-EMAC </index.php/Processor_SDK_RTOS_ICSS-EMAC>`__.
+`ICCS-EMAC <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC>`__.
 
 | **Note**: This module is only intended to be used with NDK and
   requires ICSS-EMAC low level driver. As such, users should not tie up
@@ -367,7 +367,7 @@ Building the NDK examples
   modification to these scripts, if any, is to update the
   CCS_INSTALL_PATH variable to point to CCS location if its not in the
   c:\ti\ccsv6 directory . Please refer to `Rebuilding
-  PDK </index.php/Rebuilding_The_PDK>`__ for details of example project
+  PDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__ for details of example project
   creation and how to run the example projects using CCS.
 
 NDK Example Description
@@ -476,7 +476,7 @@ CCLink Example
 --------------
 
 Refer
-`Processor_SDK_RTOS_CCLINK </index.php/Processor_SDK_RTOS_CCLINK>`__ for
+`Processor_SDK_RTOS_CCLINK <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CCLINK>`__ for
 details on steps for running cclink master and slave examples on NDK.
 
 FAQ
@@ -617,9 +617,9 @@ Retrieved from
 
    <div id="mw-normal-catlinks" class="mw-normal-catlinks">
 
-`Category </index.php/Special:Categories>`__:
+`Category <http://processors.wiki.ti.com/index.php/Special:Categories>`__:
 
--  `PROCESSOR-SDK </index.php/Category:PROCESSOR-SDK>`__
+-  `PROCESSOR-SDK <http://processors.wiki.ti.com/index.php/Category:PROCESSOR-SDK>`__
 
 .. raw:: html
 
@@ -657,8 +657,8 @@ Retrieved from
    :name: p-personal-label
 
 -  `Log
-   in </index.php?title=Special:UserLogin&returnto=Processor+SDK+RTOS+NDK>`__
--  `Request account </index.php/Special:RequestAccount>`__
+   in <http://processors.wiki.ti.com/index.php?title=Special:UserLogin&returnto=Processor+SDK+RTOS+NDK>`__
+-  `Request account <http://processors.wiki.ti.com/index.php/Special:RequestAccount>`__
 
 .. raw:: html
 
@@ -676,8 +676,8 @@ Retrieved from
 .. rubric:: Namespaces
    :name: p-namespaces-label
 
--  `Page </index.php/Processor_SDK_RTOS_NDK>`__
--  `Discussion </index.php?title=Talk:Processor_SDK_RTOS_NDK&action=edit&redlink=1>`__
+-  `Page <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK>`__
+-  `Discussion <http://processors.wiki.ti.com/index.php?title=Talk:Processor_SDK_RTOS_NDK&action=edit&redlink=1>`__
 
 .. raw:: html
 
@@ -719,10 +719,10 @@ Retrieved from
 .. rubric:: Views
    :name: p-views-label
 
--  `Read </index.php/Processor_SDK_RTOS_NDK>`__
--  `View source </index.php?title=Processor_SDK_RTOS_NDK&action=edit>`__
+-  `Read <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK>`__
+-  `View source <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=edit>`__
 -  `View
-   history </index.php?title=Processor_SDK_RTOS_NDK&action=history>`__
+   history <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=history>`__
 
 .. raw:: html
 
@@ -783,7 +783,7 @@ Retrieved from
 
    <div id="p-logo" role="banner">
 
-` </index.php/Main_Page>`__
+` <http://processors.wiki.ti.com/index.php/Main_Page>`__
 
 .. raw:: html
 
@@ -801,11 +801,11 @@ Retrieved from
 
    <div class="body">
 
--  `Main Page </index.php/Main_Page>`__
--  `All pages </index.php/Special:AllPages>`__
--  `All categories </index.php/Special:Categories>`__
--  `Recent changes </index.php/Special:RecentChanges>`__
--  `Random page </index.php/Special:Random>`__
+-  `Main Page <http://processors.wiki.ti.com/index.php/Main_Page>`__
+-  `All pages <http://processors.wiki.ti.com/index.php/Special:AllPages>`__
+-  `All categories <http://processors.wiki.ti.com/index.php/Special:Categories>`__
+-  `Recent changes <http://processors.wiki.ti.com/index.php/Special:RecentChanges>`__
+-  `Random page <http://processors.wiki.ti.com/index.php/Special:Random>`__
 -  `Help <https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents>`__
 
 .. raw:: html
@@ -829,11 +829,11 @@ Retrieved from
    <div class="body">
 
 -  `Create a
-   book </index.php?title=Special:Book&bookcmd=book_creator&referer=Processor+SDK+RTOS+NDK>`__
+   book <http://processors.wiki.ti.com/index.php?title=Special:Book&bookcmd=book_creator&referer=Processor+SDK+RTOS+NDK>`__
 -  `Download as
-   PDF </index.php?title=Special:Book&bookcmd=render_article&arttitle=Processor+SDK+RTOS+NDK&oldid=232568&writer=rl>`__
+   PDF <http://processors.wiki.ti.com/index.php?title=Special:Book&bookcmd=render_article&arttitle=Processor+SDK+RTOS+NDK&oldid=232568&writer=rl>`__
 -  `Printable
-   version </index.php?title=Processor_SDK_RTOS_NDK&printable=yes>`__
+   version <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&printable=yes>`__
 
 .. raw:: html
 
@@ -856,14 +856,14 @@ Retrieved from
    <div class="body">
 
 -  `What links
-   here </index.php/Special:WhatLinksHere/Processor_SDK_RTOS_NDK>`__
+   here <http://processors.wiki.ti.com/index.php/Special:WhatLinksHere/Processor_SDK_RTOS_NDK>`__
 -  `Related
-   changes </index.php/Special:RecentChangesLinked/Processor_SDK_RTOS_NDK>`__
--  `Special pages </index.php/Special:SpecialPages>`__
+   changes <http://processors.wiki.ti.com/index.php/Special:RecentChangesLinked/Processor_SDK_RTOS_NDK>`__
+-  `Special pages <http://processors.wiki.ti.com/index.php/Special:SpecialPages>`__
 -  `Permanent
-   link </index.php?title=Processor_SDK_RTOS_NDK&oldid=232568>`__
+   link <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&oldid=232568>`__
 -  `Page
-   information </index.php?title=Processor_SDK_RTOS_NDK&action=info>`__
+   information <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=info>`__
 
 .. raw:: html
 
@@ -891,10 +891,10 @@ Retrieved from
    Attribution-ShareAlike <http://creativecommons.org/licenses/by-sa/3.0/>`__
    unless otherwise noted.
 
--  `Privacy policy </index.php/Project:Privacy_policy>`__
--  `About Texas Instruments Wiki </index.php/Project:About>`__
--  `Disclaimers </index.php/Project:General_disclaimer>`__
--  `Terms of Use </index.php/Project:Terms_of_Service>`__
+-  `Privacy policy <http://processors.wiki.ti.com/index.php/Project:Privacy_policy>`__
+-  `About Texas Instruments Wiki <http://processors.wiki.ti.com/index.php/Project:About>`__
+-  `Disclaimers <http://processors.wiki.ti.com/index.php/Project:General_disclaimer>`__
+-  `Terms of Use <http://processors.wiki.ti.com/index.php/Project:Terms_of_Service>`__
 
 -  |Creative Commons Attribution-ShareAlike|
 -  |Powered by MediaWiki|

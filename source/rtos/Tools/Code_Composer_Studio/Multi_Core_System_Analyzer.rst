@@ -149,7 +149,7 @@ with System Analyzer features using a data file shipped with CCStudio.
 Detail guide on configuring and using System Analyzer and UIA.
 
 `System Analyzer Tutorials
-(CCSv5) </index.php/System_Analyzer_Tutorials_(CCSv5)>`__ - Includes a
+(CCSv5) <http://processors.wiki.ti.com/index.php/System_Analyzer_Tutorials_(CCSv5)>`__ - Includes a
 series of projects that can be built and use, along with step-by-step
 walkthroughs of how to configure code, set up System Analyzer, work with
 Analysis Features, etc.

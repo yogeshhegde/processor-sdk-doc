@@ -3,14 +3,14 @@
 .. rubric:: Introduction
    :name: introduction
 
-See `**CToolsLib Article** </index.php/CToolsLib_Article>`__ for a
+See `**CToolsLib Article** <http://processors.wiki.ti.com/index.php/CToolsLib_Article>`__ for a
 comprehensive article on cToolsLibs and the hardware modules supported.
 
 .. rubric:: Overview
    :name: overview
 
 -  CToolsLib is collection of embedded target APIs/library focused to
-   enable easy programmatic access to `CTools </index.php/CTools>`__
+   enable easy programmatic access to `CTools <http://processors.wiki.ti.com/index.php/CTools>`__
    debug capabilities
 -  CToolsLib purpose is provided in source code for easy integration
    into applications
@@ -19,9 +19,9 @@ comprehensive article on cToolsLibs and the hardware modules supported.
 .. rubric:: AETLib
    :name: aetlib
 
--  The `AETLIB </index.php/AETLIB>`__ library provides programmatic
+-  The `AETLIB <http://processors.wiki.ti.com/index.php/AETLIB>`__ library provides programmatic
    access to the `Advanced Event
-   Triggering </index.php/Advanced_Event_Triggering>`__ capability on
+   Triggering <http://processors.wiki.ti.com/index.php/Advanced_Event_Triggering>`__ capability on
    64x and 64x+ processor cores.
 
 .. rubric:: ETBLib
@@ -43,10 +43,10 @@ comprehensive article on cToolsLibs and the hardware modules supported.
 -  The Examples projects are also a good source of information on using
    ETBLib for different cases.
 
--  Instructions for `STM EDMA Example </index.php/STM_EDMA_Example>`__
+-  Instructions for `STM EDMA Example <http://processors.wiki.ti.com/index.php/STM_EDMA_Example>`__
    to extend ETB using target memory
 -  Instructions for `DSPTrace EDMA
-   Example </index.php/DSPTrace_EDMA_Example>`__ to extend ETB using
+   Example <http://processors.wiki.ti.com/index.php/DSPTrace_EDMA_Example>`__ to extend ETB using
    target memory
 
 .. rubric:: DSPTraceLib
@@ -65,7 +65,7 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    when the trace completes, either from an end trace condition that has
    been configured or a manual call to stop tracing.
 -  Developed and tested for the CortexA8 on TCI6614 and C6A816x devices.
--  The `ETMLib Examples </index.php/ETMLib_Examples>`__ page provides
+-  The `ETMLib Examples <http://processors.wiki.ti.com/index.php/ETMLib_Examples>`__ page provides
    instructions on how to run the examples and display the results.
 
 .. rubric:: STMLib
@@ -76,7 +76,7 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    code. STM messages are captured via an ETB or with an external
    XDS560v2 System Trace receiver.
 -  For instructions on setting up CCS to capture STM data see `Using
-   System Trace(STM) </index.php/Using_System_Trace_(STM)>`__.
+   System Trace(STM) <http://processors.wiki.ti.com/index.php/Using_System_Trace_(STM)>`__.
 
 .. rubric:: ITMLib
    :name: itmlib
@@ -100,9 +100,9 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    low level CP Tracer module setup. The provided use case based helper
    file combined with CPTLib makes for an easy to use environment. For
    examples see `Common platform Tracer
-   Examples </index.php/Common_Platform_Tracer_Examples>`__. For debug
+   Examples <http://processors.wiki.ti.com/index.php/Common_Platform_Tracer_Examples>`__. For debug
    help see `Debugging with Common Platform
-   Tracer </index.php/Debugging_With_Common_Platform_Tracer>`__.
+   Tracer <http://processors.wiki.ti.com/index.php/Debugging_With_Common_Platform_Tracer>`__.
 
 .. rubric:: cTools_UCLib
    :name: ctools_uclib
@@ -138,7 +138,7 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    messages. The PMICMILib provides a common programming and control API
    for both units. For more details see `OMAP4 Power and Clock
    management
-   Profiling </index.php/OMAP4_Power_and_Clock_Management_Profiling>`__.
+   Profiling <http://processors.wiki.ti.com/index.php/OMAP4_Power_and_Clock_Management_Profiling>`__.
 
 .. rubric:: Linux Kernel Driver for STM printf
    :name: linux-kernel-driver-for-stm-printf
@@ -147,7 +147,7 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    STM as a standard character device driver. Users can redirect output
    (from printf) to a STM device, or directly write() to the STM device
    from their application. For details and examples see `STM Linux
-   Device Driver </index.php/STM_Linux_Device_Driver>`__.
+   Device Driver <http://processors.wiki.ti.com/index.php/STM_Linux_Device_Driver>`__.
 
 .. rubric:: SCILib
    :name: scilib
@@ -289,7 +289,7 @@ To decoder trace from a binary dump of the ETB memory, two tools are
 avaialble:
 
 **Bin2TDF utility
-**\ Refer here for the detail on using `BIN2TDF. </index.php/BIN2TDF>`__
+**\ Refer here for the detail on using `BIN2TDF. <http://processors.wiki.ti.com/index.php/BIN2TDF>`__
 
 **TD utility
 **\ Refer here for the detail on using
@@ -319,7 +319,7 @@ avaialble:
    If you are unsure, you may wish to ask in the support forum.
 
 .. rubric:: Q: Do I have to use CToolsLib with `Code Composer
-   Studio </index.php/Code_Composer_Studio>`__?
+   Studio <http://processors.wiki.ti.com/index.php/Code_Composer_Studio>`__?
    :name: q-do-i-have-to-use-ctoolslib-with-code-composer-studio
 
 -  A: No, other tools such as Lauterbach Trace32 can be used with the
@@ -328,7 +328,7 @@ avaialble:
 .. rubric:: Q: Do you have approximate cycle counts for each library?
    :name: q-do-you-have-approximate-cycle-counts-for-each-library
 
--  A: For `AETlib </index.php/AETlib>`__ there is a file called
+-  A: For `AETlib <http://processors.wiki.ti.com/index.php/AETlib>`__ there is a file called
    "aetlib_profiling_stats.txt" that gives this information
 -  A: For ETBLib, on the TI c6x compiler on a 64x+ device, it takes
    approximately 1000 cycles per call at the "-o2" optimization level.
@@ -336,7 +336,7 @@ avaialble:
 .. rubric:: Q: Do you have the code size for each library?
    :name: q-do-you-have-the-code-size-for-each-library
 
--  A: For `AETlib </index.php/AETlib>`__ there is a file called
+-  A: For `AETlib <http://processors.wiki.ti.com/index.php/AETlib>`__ there is a file called
    "aetlib_size_stats.txt" that gives this information
 -  A: For ETBLib, on the TI c6x compiler on a 64x+ device, it is
    approximately 4KB at the "-o2" optimization level.
@@ -354,13 +354,13 @@ avaialble:
    :name: related
 
 -  `TI.com XDS560 Product Page <http://ti.com/xds560>`__
--  `XDS560v2 System Trace </index.php/XDS560v2_System_Trace>`__
--  `CTools </index.php/CTools>`__
+-  `XDS560v2 System Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
+-  `CTools <http://processors.wiki.ti.com/index.php/CTools>`__
 -  `How OMAP software developers use System Trace to boost
    performance <http://e2e.ti.com/blogs_/b/mobile_momentum/archive/2011/01/03/how-omap-software-developers-use-system-trace-to-boost-performance.aspx>`__
--  `Using System Trace (STM) </index.php/Using_System_Trace_(STM)>`__
+-  `Using System Trace (STM) <http://processors.wiki.ti.com/index.php/Using_System_Trace_(STM)>`__
 -  Etblib Example
-   `Here </index.php/Capturing_ETB_Trace_Data_With_ETBLib>`__
+   `Here <http://processors.wiki.ti.com/index.php/Capturing_ETB_Trace_Data_With_ETBLib>`__
 
 | 
 

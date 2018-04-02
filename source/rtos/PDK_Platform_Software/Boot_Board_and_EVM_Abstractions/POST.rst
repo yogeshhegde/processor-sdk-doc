@@ -8,7 +8,7 @@ platform/EVM factory tests on reset and indicate a PASS/FAIL condition
 using the LEDs and write test result to UART. A PASS result indicates
 that the EVM can be booted. POST is supported on K2H/K2E/K2L/C66x
 devices, this functionality is provided on other devices (e.g., AM57x)
-by `Diagnostics </index.php/Processor_SDK_RTOS_DIAG>`__.
+by `Diagnostics <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG>`__.
 
 POST will perform the following functional tests:
 

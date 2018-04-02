@@ -73,57 +73,57 @@ application.
 **NOTE**
 For information on boot mode setting, see the applicable `EVM Hardware
 User
-Guide </index.php/Processor_SDK_Supported_Platforms_and_Versions>`__.
+Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions>`__.
 
 .. raw:: html
 
    </div>
 
-.. rubric:: `AM335x/AM437x </index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x>`__
+.. rubric:: `AM335x/AM437x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x>`__
    :name: am335xam437x
 
 Refer `Processor SDK RTOS BOOT
-AM335x/AM437x </index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x>`__ for
+AM335x/AM437x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x>`__ for
 more information including procedure to boot via different modes for all
 supported BOARDs.
 
-.. rubric:: `AM57x </index.php/Processor_SDK_RTOS_BOOT_AM57x>`__
+.. rubric:: `AM57x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x>`__
    :name: am57x
 
 Refer `Processor SDK RTOS BOOT
-AM57x </index.php/Processor_SDK_RTOS_BOOT_AM57x>`__ for more information
+AM57x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x>`__ for more information
 including procedure to boot via different modes for all supported
 BOARDs.
 
-.. rubric:: `C66x </index.php/Processor_SDK_RTOS_BOOT_C66x>`__
+.. rubric:: `C66x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_C66x>`__
    :name: c66x
 
 Refer `Processor SDK RTOS BOOT
-C66x </index.php/Processor_SDK_RTOS_BOOT_C66x>`__ for more information
+C66x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_C66x>`__ for more information
 including procedure to boot via different modes for all supported
 BOARDs.
 
-.. rubric:: `K2G </index.php/Processor_SDK_RTOS_BOOT_K2G>`__
+.. rubric:: `K2G <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2G>`__
    :name: k2g
 
 Refer `Processor SDK RTOS BOOT
-K2G </index.php/Processor_SDK_RTOS_BOOT_K2G>`__ for more information
+K2G <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2G>`__ for more information
 including procedure to boot via different modes for all supported
 BOARDs.
 
-.. rubric:: `K2H/K2E/K2L </index.php/Processor_SDK_RTOS_BOOT_K2H/E/L>`__
+.. rubric:: `K2H/K2E/K2L <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2H/E/L>`__
    :name: k2hk2ek2l
 
 Refer `Processor SDK RTOS BOOT
-K2H/E/L </index.php/Processor_SDK_RTOS_BOOT_K2H/E/L>`__ for more
+K2H/E/L <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2H/E/L>`__ for more
 information including procedure to boot via different modes for all
 supported BOARDs.
 
-.. rubric:: `OMAPL137/OMAPL138/C6748 </index.php/Processor_SDK_RTOS_BOOT_OMAPL13x>`__
+.. rubric:: `OMAPL137/OMAPL138/C6748 <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_OMAPL13x>`__
    :name: omapl137omapl138c6748
 
 Refer `Processor SDK RTOS BOOT
-OMAPL13x </index.php/Processor_SDK_RTOS_BOOT_OMAPL13x>`__ for more
+OMAPL13x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_OMAPL13x>`__ for more
 information including procedure to boot via different modes for all
 supported BOARDs.
 

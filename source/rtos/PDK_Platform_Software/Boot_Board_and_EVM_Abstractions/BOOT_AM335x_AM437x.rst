@@ -73,7 +73,7 @@ RTOS bootloader are shown below:
 
    -  RBL gets image size and load address by checking TI Image Header
       appended on bootloader binary(.bin). Check `binary
-      formats </index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Tools_and_Binary_formats>`__.
+      formats <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Tools_and_Binary_formats>`__.
    -  Loads the binary to internal OCMC memory at the Load address
       fetched from TI Image Header
    -  Passes control to Secondary Bootloader(SBL)
@@ -379,7 +379,7 @@ industrial use case.
    :name: boot-mode-settings
 
 | Boot mode settings for all supported AM335x and AM437x boards are
-  `here </index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+  `here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
 
 .. rubric:: Boot Modes
    :name: boot-modes
@@ -397,9 +397,9 @@ Booting from SD Card involves two steps.
 
 #. To boot target the SD card should be bootable. Follow the steps at
    `Creating bootable SD card in
-   windows </index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
+   windows <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
    or `Creating bootable SD card in
-   Linux </index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
+   Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
 #. Delete the "*MLO*" and "*app*" in the bootable SD card which are
    created in the process of making the SD bootable.
 #. Bootloader images with ti header (<mmcsd_bootloader>_ti.bin)should be
@@ -442,7 +442,7 @@ Selection pins from hardware reference manuals.
 | If the boards have no boot mode selection pins and a valid boot image
   is present on McSPI flash, Booting will happen from McSPI flash. Erase
   McSPI flash in such cases to boot from SD card `McSPI flash
-  erase </index.php?title=StarterWare_Booting_And_Flashing&action=edit&redlink=1>`__
+  erase <http://processors.wiki.ti.com/index.php?title=StarterWare_Booting_And_Flashing&action=edit&redlink=1>`__
   . The boot sequence depends on ROM bootloader.
 
 .. rubric:: Booting Via QSPI
@@ -587,7 +587,7 @@ Booting from McSPI involves two steps.
    :name: preparing-flash-device-1
 
 -  Set the appropriate bootmode if applicable for EVM.Refer `Boot mode
-   settings </index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__.
+   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__.
    **Note**: Most of the boards may not have switch settings.
 -  Add a required target configuration in CCS depending on emulator and
    board connected.
@@ -661,7 +661,7 @@ Booting from NAND involves two steps.
    :name: preparing-flash-device-2
 
 -  Configure BOOT pins for NAND `Boot mode
-   settings </index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
 -  Connect target with CCS.
 -  Load the
    *<PDK_INSTALL_DIR\packages\ti\starterware\starterware\tools\flash_writer\nand_flash_writer_AM335X.out>*
@@ -735,7 +735,7 @@ bootloader uses the BCH8 ECC scheme.
    (teraterm/hyperterminal) with 115200 baud, 8bit, No parity and 1 STOP
    bit configuration.
 -  Configure the board for NAND boot mode. Refer  `Boot mode
-   settings </index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
 -  On reset, ROM detects bootloader from NAND and copies it to internal
    memory. Bootloader then copies application image from the NAND to DDR
    and passes control to application. If the process is succesful,
@@ -767,18 +767,18 @@ application for am335x or am437x using MMCSD bootloader.
 Follow below steps to generate the bootable application image.
 
 #. Generate .out files using steps for `Rebuilding
-   PDK </index.php/Rebuilding_The_PDK>`__. Locate .out file in directory
+   PDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__. Locate .out file in directory
    *<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>*
 #. Convert files to support MMCSD boot using steps as per `Binary format
    conversion
-   procedure </index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Binary_format_conversion_procedure>`__.
+   procedure <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Binary_format_conversion_procedure>`__.
 #. Rename generated <Application>_ti.bin to "app".
 
 .. rubric:: Loading Test application
    :name: loading-test-application
 
 | Follow procedure to use "app" file as per section `Booting Via SD
-  Card </index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Booting_Via_SD_Card>`__.
+  Card <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Booting_Via_SD_Card>`__.
 
 .. rubric:: Usage Notes
    :name: usage-notes
@@ -920,7 +920,7 @@ of the app
 
 Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article **`Common steps to debug application
-boot </index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__**
+boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__**
 
 .. raw:: html
 

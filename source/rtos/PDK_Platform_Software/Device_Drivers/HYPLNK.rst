@@ -102,7 +102,7 @@ is connected to a 6678 EVM via breakout card and cable.
    :name: setup-of-multiple-evms-with-one-instance-of-ccs
 
 This is only needed for 2 board use cases. See
-`Multi-Emulator_Debug_with_CCS </index.php/Multi-Emulator_Debug_with_CCS>`__
+`Multi-Emulator_Debug_with_CCS <http://processors.wiki.ti.com/index.php/Multi-Emulator_Debug_with_CCS>`__
 for general configuration of multiple EVMs/emulators within one instance
 of CCS.
 

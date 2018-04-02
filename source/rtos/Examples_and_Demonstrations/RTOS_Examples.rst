@@ -305,7 +305,7 @@ AM572X EVM.
 
 10. Right click CortexA15_0 and connect target. From the Scripts menu
 select `AM572x Multicore
-Initialization->IPU1SSClkEnable_API </index.php/Processor_SDK_RTOS_Setup_CCS#Connect_to_Slave_Cores>`__.
+Initialization->IPU1SSClkEnable_API <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#Connect_to_Slave_Cores>`__.
 
 11. Connect to the Cortex_M4_IPU1_C0. Load and run Hello Example out
 file. You should see **Hello World** string displayed on console window.
@@ -376,19 +376,19 @@ check that the target is set to **ti.targets.elf.C66** (Auto populated)
 Build project.
 
 10. Create new target configuration (if one doesn`t exist) as described
-`here </index.php/Processor_SDK_RTOS_Setup_CCS#Create_Target_Configuration_File_for_EVM>`__.
+`here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#Create_Target_Configuration_File_for_EVM>`__.
 
 11. Right click on the target configuration and Launch target
 configurations.
 
 12. Right click CortexA15_0 and connect target. From the Scripts menu
 select `AM572x Multicore
-Initialization->DSP1SSClkEnable_API </index.php/Processor_SDK_RTOS_Setup_CCS#Connect_to_Slave_Cores>`__.
+Initialization->DSP1SSClkEnable_API <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#Connect_to_Slave_Cores>`__.
 
 13. Route the GPTimer5 suspend ctrl signal to the DSP using the Scripts
 menu GP timer Suspend Ctrl -> GPTimer5SuspendCtl_DSP1SS_BIOS as
 described
-`here </index.php/Processor_SDK_RTOS_Setup_CCS#Timer_Suspend_Control_Options_for_DSP>`__.
+`here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#Timer_Suspend_Control_Options_for_DSP>`__.
 
 14. Connect to C66x_DSP1 Load and run Hello Example out file. You should
 see **Hello World** string displayed on console window.
@@ -449,7 +449,7 @@ check that the target is set to **ti.targets.elf.C674** (Auto populated)
 Build project.
 
 10. Create new target configuration (if one doesn`t exist) as described
-`here </index.php/Processor_SDK_RTOS_Setup_CCS#Create_Target_Configuration_File_for_EVM>`__.
+`here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#Create_Target_Configuration_File_for_EVM>`__.
 
 11. Right click on the target configuration and Launch target
 configurations.

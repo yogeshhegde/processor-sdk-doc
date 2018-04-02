@@ -270,7 +270,7 @@ The overall components are:
 
 General instructions for configuring multiple EVMs with any emulator
 type are available in
-`Multi-Emulator_Debug_with_CCS </index.php/Multi-Emulator_Debug_with_CCS>`__
+`Multi-Emulator_Debug_with_CCS <http://processors.wiki.ti.com/index.php/Multi-Emulator_Debug_with_CCS>`__
 
 .. rubric:: Detailed instructions to run example
    :name: detailed-instructions-to-run-example

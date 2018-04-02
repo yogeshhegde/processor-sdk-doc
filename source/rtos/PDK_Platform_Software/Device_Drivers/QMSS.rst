@@ -391,10 +391,11 @@ This came from K2K multicore example:
 |                                   | PDF <http://www.ti.com/lit/sprugr |
 |                                   | 9>`__                             |
 +-----------------------------------+-----------------------------------+
-| CPPI LLD (Navigator/QMSS DMA      | `CPPI                             |
-| component)                        | LLD </index.php/Processor_SDK_RTO |
-|                                   | S_CPPI>`__                        |
+| CPPI LLD (Navigator/QMSS DMA      | `CPPI LLD`_                       |
+| component)                        |                                   |
 +-----------------------------------+-----------------------------------+
+
+.. _CPPI LLD: <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CPPI>
 
 .. raw:: html
 

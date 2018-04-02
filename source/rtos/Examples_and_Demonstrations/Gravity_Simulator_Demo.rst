@@ -44,7 +44,7 @@ Processor SDK RTOS Drivers:
 The demo is available pre-built for Processor SDK RTOS version 4.0.0.4
 or higher. You must first set up your development environment. Refer to
 the `Processor SDK RTOS
-Building </index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page for
+Building <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page for
 information on setting up your build environment.
 
 The following are steps to clean the demo:
@@ -82,7 +82,7 @@ To load and run the demo:
    EVM hardware)
 #. Open CCS and launch target config file for idkAM572x (Refer to
    `Processor SDK RTOS Setup
-   CCS </index.php/Processor_SDK_RTOS_Setup_CCS>`__ for setting up CCS)
+   CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__ for setting up CCS)
 #. Connect to CortexA15_0
 #. Load and launch the demo executable:
 

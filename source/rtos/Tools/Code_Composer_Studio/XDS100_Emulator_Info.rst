@@ -8,7 +8,7 @@
 -  The XDS100 emulator provides JTAG access to Texas Instruments' JTAG
    based devices.
 -  It is compatible with `Code Composer
-   Studio </index.php/Code_Composer_Studio>`__\ ™ development
+   Studio <http://processors.wiki.ti.com/index.php/Code_Composer_Studio>`__\ ™ development
    environment.
 -  TI creates the reference design and our 3rd party partners create the
    JTAG emulator products for end use.
@@ -19,12 +19,12 @@
    capability. The XDS100v3 is an updated XDS100v2 design with support
    for the 1149.7 protocol.
 -  Performance of the XDS100 is lower than the
-   `XDS510 </index.php/XDS510>`__ and `XDS560 </index.php/XDS560>`__.
+   `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ and `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__.
    This means that program and data downloads will take a longer time
-   than with `XDS510 </index.php/XDS510>`__ and
-   `XDS560 </index.php/XDS560>`__ emulators. Also, stepping in "C" and
+   than with `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ and
+   `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__ emulators. Also, stepping in "C" and
    "Assembly" will be slower with XDS100 when compared to
-   `XDS510 </index.php/XDS510>`__ or `XDS560 </index.php/XDS560>`__
+   `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ or `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__
    emulators.
 
 .. rubric:: General Features
@@ -34,10 +34,10 @@ The Texas Instruments' reference design for XDS100 has the following
 features (Please check your vendor for hardware details):
 
 -  Debug features (`Emulation
-   Connect/Disconnect </index.php/Emulation_Connect/Disconnect>`__,
+   Connect/Disconnect <http://processors.wiki.ti.com/index.php/Emulation_Connect/Disconnect>`__,
    Read/Write memory, Read registers, Load program, Run, Halt, Step,
-   Software and Hardware `Breakpoint </index.php/Breakpoint>`__ support,
-   `Real-Time Mode </index.php/Real-Time_Mode>`__)
+   Software and Hardware `Breakpoint <http://processors.wiki.ti.com/index.php/Breakpoint>`__ support,
+   `Real-Time Mode <http://processors.wiki.ti.com/index.php/Real-Time_Mode>`__)
 -  Compatible with Code Composer Studio™.
 -  Support for targets with 1.8v and 3.3v IO voltages.
 -  Support for “JTAG reset”/"wait-in-reset" boot-modes using the two EMU
@@ -45,13 +45,13 @@ features (Please check your vendor for hardware details):
 -  Support for “Power-on reset” boot-modes using the two EMU pins
    sampled by the TVD pin.
 -  Support for the configuration of the EMU pin features through `Code
-   Composer Studio </index.php/Code_Composer_Studio>`__\ ™ Setup
+   Composer Studio <http://processors.wiki.ti.com/index.php/Code_Composer_Studio>`__\ ™ Setup
    “connection properties” dialogs similar to those for the
-   `XDS560 </index.php/XDS560>`__ Rev-D cable.
+   `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__ Rev-D cable.
 -  Support for “target power-loss detection” via the TVD pin even when
-   `Code Composer Studio </index.php/Code_Composer_Studio>`__\ ™ is not
+   `Code Composer Studio <http://processors.wiki.ti.com/index.php/Code_Composer_Studio>`__\ ™ is not
    running, and applying boot-modes at `Code Composer
-   Studio </index.php/Code_Composer_Studio>`__\ ™ start-up.
+   Studio <http://processors.wiki.ti.com/index.php/Code_Composer_Studio>`__\ ™ start-up.
 -  Supports ETB trace
 
 .. rubric:: Which XDS100 is right for me?
@@ -78,7 +78,7 @@ below features are supported:
 -  Support for USB Full Speed (12 Mbits/s)
 -  Support for multiple FTDI devices (CCSv4 only)
 -  Support targets with `14-pin TI JTAG
-   connector </index.php/JTAG_Connectors>`__ used by Texas Instruments
+   connector <http://processors.wiki.ti.com/index.php/JTAG_Connectors>`__ used by Texas Instruments
    embedded processors.
 -  Support for the following processors cores: TMS320C28x, TMS320C54x,
    TMS320C55x, TMS320C64x+, TMS320C674x and TMS320C66x.
@@ -93,8 +93,8 @@ below features are supported:
 -  All of the XDS100 General Features
 -  Support for USB High Speed (480 Mbit/s)
 -  Support targets with `14-pin TI JTAG
-   connector </index.php/JTAG_Connectors>`__ or `20-pin TI JTAG
-   connector </index.php/JTAG_Connectors>`__ as used by Texas
+   connector <http://processors.wiki.ti.com/index.php/JTAG_Connectors>`__ or `20-pin TI JTAG
+   connector <http://processors.wiki.ti.com/index.php/JTAG_Connectors>`__ as used by Texas
    Instruments embedded processors. (Please check your vendor for
    hardware details)
 -  Support for the following processor cores: TMS320C28x, TMS320C54x,
@@ -110,7 +110,7 @@ below features are supported:
 -  Support for Code Composer Studio v4 and newer (Does not support Code
    Composer Studio v3.3)
 -  Note: As of 4/28/2010, the CPLD update was issued. Please see
-   `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F </index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
+   `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
 
 .. rubric:: XDS100v3 Features
    :name: xds100v3-features
@@ -134,8 +134,8 @@ below features are supported:
    :name: features-not-supported
 
 -  It does not support `Real Time Data eXchange
-   (RTDX) </index.php/Real_Time_Data_eXchange_(RTDX)>`__ or `High Speed
-   RTDX (HSRTDX) </index.php/High_Speed_RTDX_(HSRTDX)>`__
+   (RTDX) <http://processors.wiki.ti.com/index.php/Real_Time_Data_eXchange_(RTDX)>`__ or `High Speed
+   RTDX (HSRTDX) <http://processors.wiki.ti.com/index.php/High_Speed_RTDX_(HSRTDX)>`__
 -  It does not provide hardware support for TCLKR external clocking
 -  Cores NOT supported: ARM 7, ARM 11, TMS320C24x, TMS320C55x+,
    TMS320C670x, TMS320C671x, TMS320C672x, TMS320C64x (note that
@@ -237,7 +237,7 @@ D. Setup Code Composer Studio v5.1.x
 
 #. Start Code Composer Studio and create a new target configuration. See
    `Quick
-   Tips#Target_Setup.C2.A0 </index.php/Quick_Tips#Target_Setup.C2.A0>`__
+   Tips#Target_Setup.C2.A0 <http://processors.wiki.ti.com/index.php/Quick_Tips#Target_Setup.C2.A0>`__
 #. Select XDS100 as connection type (either XDS100 v1, XDS100 v2 or
    XDS100v3)
 #. Select device.
@@ -319,7 +319,7 @@ C. Setup Code Composer Studio v4.x
 
 #. Start Code Composer Studio and create a new target configuration. See
    `Quick
-   Tips#Target_Setup.C2.A0 </index.php/Quick_Tips#Target_Setup.C2.A0>`__
+   Tips#Target_Setup.C2.A0 <http://processors.wiki.ti.com/index.php/Quick_Tips#Target_Setup.C2.A0>`__
 #. Select XDS100 as connection type (either XDS100 v1 or XDS100 v2)
 #. Select device.
 
@@ -349,16 +349,9 @@ C. Setup Code Composer Studio v4.x
 +-----------------+-----------------+-----------------+-----------------+
 | TMS320C28xx     | v1              | CCS v3.3        | Included with   |
 |                 |                 | Platinum        | `CCS Service    |
-|                 |                 | Edition (TI     | Release         |
-|                 |                 | part #:         | 12 </index.php/ |
-|                 |                 | TMDSCCSALL-1)   | CCStudio_FAQ#Q: |
-|                 |                 |                 | _How_can_I_find |
-|                 |                 |                 | _out_which_CCSt |
-|                 |                 |                 | udio_3.3_Servic |
-|                 |                 |                 | e_Release_numbe |
-|                 |                 |                 | r_is_installed. |
-|                 |                 |                 | 3F>`__          |
-|                 |                 |                 | and newer.      |
+|                 |                 | Edition (TI     | Release12`_     |
+|                 |                 | part #:         | and newer.      |
+|                 |                 | TMDSCCSALL-1)   |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | TMS320C28xx     | v1              | `CCS v3.3 for   | XDS100 SW       |
 |                 |                 | C2000 Full      | required.       |
@@ -389,6 +382,8 @@ C. Setup Code Composer Studio v4.x
 |                 |                 | part #:         | newer.          |
 |                 |                 | TMDSCCSALL-1)   |                 |
 +-----------------+-----------------+-----------------+-----------------+
+
+.. _CCS Service Release12: <http://processors.wiki.ti.com/index.php/CCStudio_FAQ#Q:_How_can_I_find_out_which_CCStudio_3.3_Service_Release_number_is_installed3F>
 
 | **Note**: Code Composer Studio v3.3 ONLY supports XDS100v1 hardware
   emulator. XDS100v2 hardware is NOT supported on Code Composer Studio
@@ -436,7 +431,7 @@ C. Setup Code Composer Studio v3.3
 -  XDS100 debuggers suffer a **severe performance impact** when using
    Virtual Machines (VMware, Virtualbox, Parallels, etc.) and Linux as a
    guest OS. Additional details are shown `at this
-   page </index.php/VMware_with_CCS#Linux_as_a_guest_OS>`__.
+   page <http://processors.wiki.ti.com/index.php/VMware_with_CCS#Linux_as_a_guest_OS>`__.
 -  While loading a large program or program section, the file load
    status bar may appear frozen when it is not frozen. The status bar is
    showing section load start and completion.
@@ -444,7 +439,7 @@ C. Setup Code Composer Studio v3.3
    receives a lower chain number, the XDS100 SW will address it instead
    of the FT2232 used by the XDS100. Solution: only plug the XDS100 HW
    into the PC. This has been fixed with `Code Composer Studio
-   v4 </index.php/Code_Composer_Studio_v4>`__ support for the XDS100v2
+   v4 <http://processors.wiki.ti.com/index.php/Code_Composer_Studio_v4>`__ support for the XDS100v2
    **ONLY** (XDS100v1 still has this issue).
 -  XDS100 SW Driver does not install properly under Windows Vista 64 bit
    using CCSv3.3
@@ -480,7 +475,7 @@ C. Setup Code Composer Studio v3.3
 -  Adaptive clocking use with OMAPL138/ARM9 cores connection reliability
    varies by card. This results in connection errors. A fix has been
    identified by upgrading the CPLD on XDS100v2 designs. Please see
-   `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F </index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
+   `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
 
 | 
 
@@ -495,9 +490,9 @@ C. Setup Code Composer Studio v3.3
 
 -  Check whether the installation process was followed.
 -  Please check the FAQ questions below. (`Troubleshooting
-   FAQ </index.php/XDS100#Troubleshooting_FAQ>`__)
+   FAQ <http://processors.wiki.ti.com/index.php/XDS100#Troubleshooting_FAQ>`__)
 -  **Please check the section regarding `Troubleshooting
-   CCS </index.php/Troubleshooting_CCS>`__.**
+   CCS <http://processors.wiki.ti.com/index.php/Troubleshooting_CCS>`__.**
 -  Check your Windows System Devices. When properly installed, the
    XDS100 should look like the below image. If the XDS100 does not show
    up in the Windows device manager or shows with an error, then it is
@@ -514,7 +509,7 @@ C. Setup Code Composer Studio v3.3
 -  Check USB cable or change the USB port the emulator is connected
 -  Power cycle your target
 -  You may want to check the `VID/PID EEPROM was programed
-   correctly </index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
+   correctly <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
 -  Sometimes the use of different drivers such as libFTDI (used by
    OpenOCD, for example) or a simple corruption on other Windows .inf
    files may cause an improper initialization of the XDS100 device
@@ -598,7 +593,7 @@ If Windows refuses to update the driver, they need to be fully removed.
 -  Spectrum Digital, Inc., offers an XDS100v2 USB JTAG Emulator
    `here <http://www.spectrumdigital.com/product_info.php?cPath=22&products_id=230>`__
 -  TI Estore has a lifetime buy of the `20 pin compact
-   TI </index.php/JTAG_Connectors#TI_20-pin_Header_Information>`__
+   TI <http://processors.wiki.ti.com/index.php/JTAG_Connectors#TI_20-pin_Header_Information>`__
    version `available <http://www.ti.com/tool/TMDSEMU100V2U-20T>`__.
 
 .. rubric:: XDS100v1
@@ -682,7 +677,7 @@ If Windows refuses to update the driver, they need to be fully removed.
 -  Please read the included readme for details.
 -  Note as of 4/28/2010, the design package was updated with new CPLD
    source code. This is to fix the issues related to `Adaptive
-   Clocking </index.php/Adaptive_Clocking>`__ on ARM9.
+   Clocking <http://processors.wiki.ti.com/index.php/Adaptive_Clocking>`__ on ARM9.
 
 .. rubric:: Q: What should the USB device's UID (VID/PID) be?
    :name: q-what-should-the-usb-devices-uid-vidpid-be-1
@@ -735,7 +730,7 @@ stick and "Target Connect" worked afetr re-starting CCSv4
    CPLD as follows: BCBUS1 -> CPLD TCK, BCBUS2 -> CPLD TDI, BCBUS5 ->
    CPLD TDO, BCBUS6 -> CPLD TMS.
 -  Please note that using UART mode simultaneously with `Code Composer
-   Studio v4 </index.php/Code_Composer_Studio_v4>`__ has NOT been tested
+   Studio v4 <http://processors.wiki.ti.com/index.php/Code_Composer_Studio_v4>`__ has NOT been tested
    on the XDS100v2 design and is not officially supported. Experience
    with C2000 ControlCards which implement this functionality indicate
    the FTDI driver can handle such an interaction. \*The C2000 control
@@ -805,7 +800,7 @@ stick and "Target Connect" worked afetr re-starting CCSv4
 -  A: A general overview of TI emulation capabilities is
    `here <http://focus.ti.com/dsp/docs/dspfindtoolswbytooltype.tsp?sectionId=3&tabId=2093&toolTypeId=12&familyId=44>`__.
    For additional performance and capabilities, you may wish to review
-   the `XDS510 </index.php/XDS510>`__ and `XDS560 </index.php/XDS560>`__
+   the `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ and `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__
    product lines which support TI devices.
 
 .. rubric:: Q: I would like to purchase a faster emulator, which one is
@@ -818,20 +813,20 @@ stick and "Target Connect" worked afetr re-starting CCSv4
    The Blackhawk C2000 USB controller (TI part #TMDSEMU2000U) is
    available from TI
    `here <http://focus.ti.com/dsp/docs/thirdparty/catalog/devtoolsproductfolder.tsp?actionPerformed=productFolder&productId=3158>`__.
--  A: TMS320C674x: The Blackhawk `XDS560 </index.php/XDS560>`__\ (TI
+-  A: TMS320C674x: The Blackhawk `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__\ (TI
    part #TMDSEMU560U  for USB and TI part #TMDSEMU560PCI for PCI) are
    available from TI
    `here <http://focus.ti.com/docs/toolsw/folders/print/xds560.html>`__.
-   The Spectrum Digital `XDS510 </index.php/XDS510>`__\ (TI part
+   The Spectrum Digital `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__\ (TI part
    #TMDSEMU510U for USB) is available from TI
    `here <http://focus.ti.com/docs/toolsw/folders/print/xds510.html>`__.
 
 .. rubric:: Q: On the c28x, C674x, and C64x+ processor, does the XDS100
-   support `Real-Time Mode </index.php/Real-Time_Mode>`__?
+   support `Real-Time Mode <http://processors.wiki.ti.com/index.php/Real-Time_Mode>`__?
    :name: q-on-the-c28x-c674x-and-c64x-processor-does-the-xds100-support-real-time-mode
 
 -  A: Yes. Learn more about `Real-Time
-   Mode </index.php/Real-Time_Mode>`__.
+   Mode <http://processors.wiki.ti.com/index.php/Real-Time_Mode>`__.
 
 .. rubric:: Q: How to maximize performance of XDS100 under CCS?
    :name: q-how-to-maximize-performance-of-xds100-under-ccs
@@ -869,10 +864,10 @@ for every action
    working/supported on the XDS100?
 -  A: RTDX is not supported on the XDS100. Please see the seciton `What
    features does the XDS100 NOT
-   support </index.php/XDS100#Features_NOT_supported.C2.A0>`__
+   support <http://processors.wiki.ti.com/index.php/XDS100#Features_NOT_supported.C2.A0>`__
 
 .. rubric:: Q: Can I use `Advanced Event
-   Triggering </index.php/Advanced_Event_Triggering>`__ with XDS100?
+   Triggering <http://processors.wiki.ti.com/index.php/Advanced_Event_Triggering>`__ with XDS100?
    :name: q-can-i-use-advanced-event-triggering-with-xds100
 
 -  A: Yes.
@@ -911,7 +906,7 @@ for every action
 
 -  A: Stellaris is supported with CCS v4.2.2 and newer. You may also
    want to look at: `TI tools support for Cortex
-   M3 </index.php/TI_tools_support_for_Cortex_M3>`__
+   M3 <http://processors.wiki.ti.com/index.php/TI_tools_support_for_Cortex_M3>`__
 
 .. rubric:: Q: Can I use the XDS100v2 as JTAG simultaneously with the
    second port being a serial port (UART)?
@@ -919,7 +914,7 @@ for every action
 
 -  A: Please check for additional details in the XDS100v2 hardware
    design section. See
-   `XDS100#Q:_Can_I_use_port_B_as_a_UART.3F </index.php/XDS100#Q:_Can_I_use_port_B_as_a_UART.3F>`__.
+   `XDS100#Q:_Can_I_use_port_B_as_a_UART.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_Can_I_use_port_B_as_a_UART.3F>`__.
 
 .. rubric:: Q: How can I use the XDS100v2's second port as a serial port
    (UART)?
@@ -948,7 +943,7 @@ for every action
    :name: q-how-can-i-turn-on-adaptive-clocking
 
 -  A: You need to select the `Adaptive
-   Clocking </index.php/Adaptive_Clocking>`__ option in the setup box
+   Clocking <http://processors.wiki.ti.com/index.php/Adaptive_Clocking>`__ option in the setup box
    (CCS v4.x).
 
 .. raw:: html
@@ -977,7 +972,7 @@ for every action
 -  Note that the XDS100v2 users should upgrade to the latest CPLD. An
    upgrade of the CPLD will improve reliability for adaptive clocking
    connections. To update the XDS100v2 CPLD, please see
-   `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F </index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
+   `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
 
 .. rubric:: Q: My XDS100v2 does not work reliabily with the OMAPL138 /
    DM365 / ARM926 core
@@ -985,7 +980,7 @@ for every action
 
 -  A: This can be caused by a variety of issues such as where the PLL is
    programmed to the use of `Adaptive
-   Clocking </index.php/Adaptive_Clocking>`__ emulator. Usually, it is
+   Clocking <http://processors.wiki.ti.com/index.php/Adaptive_Clocking>`__ emulator. Usually, it is
    seen as a problem around the PLL setup. This is because the core PLL
    clock is changing. Example error message:
 
@@ -1002,20 +997,20 @@ A couple of things to try:
 #. Setup the PLL by executing code (ex: UBoot, etc.) instead of using
    the GEL file. (preferred)
 #. Turn on adaptive clocking
-   `XDS100#Q:_How_can_I_turn_on_adaptive_clocking.3F </index.php/XDS100#Q:_How_can_I_turn_on_adaptive_clocking.3F>`__
+   `XDS100#Q:_How_can_I_turn_on_adaptive_clocking.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_turn_on_adaptive_clocking.3F>`__
    and setup the timeouts to very slow. In this mode, it is still better
    to "run" the code and not "step" it.
 #. Make sure you have the latest CPLD version. To update the XDS100v2
    CPLD, please see
-   `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F </index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
+   `XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_update_the_CPLD_on_my_XDS100v2.3F>`__
 
 .. rubric:: Q: Can I use the XDS100 with OMAP-L138/C6748 EVM board?
    :name: q-can-i-use-the-xds100-with-omap-l138c6748-evm-board
 
 -  A: See `How to connect to the OMAP-L138/C6748 EVM board using
-   CCS? </index.php/How_to_connect_to_the_OMAP-L138/C6748_EVM_board_using_CCS%3F>`__
+   CCS? <http://processors.wiki.ti.com/index.php/How_to_connect_to_the_OMAP-L138/C6748_EVM_board_using_CCS%3F>`__
 -  A: See also
-   `XDS100#Q:_My_XDS100v2_does_not_work_reliabily_with_the_OMAPL138_.2F_DM365_.2F_ARM926_core. </index.php/XDS100#Q:_My_XDS100v2_does_not_work_reliabily_with_the_OMAPL138_.2F_DM365_.2F_ARM926_core.>`__
+   `XDS100#Q:_My_XDS100v2_does_not_work_reliabily_with_the_OMAPL138_.2F_DM365_.2F_ARM926_core. <http://processors.wiki.ti.com/index.php/XDS100#Q:_My_XDS100v2_does_not_work_reliabily_with_the_OMAPL138_.2F_DM365_.2F_ARM926_core.>`__
 
 .. rubric:: Q: Does XDS100 work with Window 7 64 bit?
    :name: q-does-xds100-work-with-window-7-64-bit
@@ -1032,7 +1027,7 @@ A couple of things to try:
    please post them in the support forum.
 -  If you need API for accessing CCS, without a GUI, you may want to
    consider `Debug Server
-   Scripting </index.php/Debug_Server_Scripting>`__
+   Scripting <http://processors.wiki.ti.com/index.php/Debug_Server_Scripting>`__
 
 .. rubric:: Q: Can I use the XDS100v1/v2 with CC13xx/CC26xx SimpleLink
    ULP devices?
@@ -1040,7 +1035,7 @@ A couple of things to try:
 
 -  A: No, only XDS100v3 supports the CC13xx/CC26xx device family. See
    `CC13xx CC26xx Tools
-   Overview </index.php/CC13xx_CC26xx_Tools_Overview>`__ for more
+   Overview <http://processors.wiki.ti.com/index.php/CC13xx_CC26xx_Tools_Overview>`__ for more
    details on debugger support for these devices.
 
 | 
@@ -1059,13 +1054,13 @@ A couple of things to try:
    :name: q-where-are-the-drivers-for-the-hardware-windows-is-asking-for-the-drivers.
 
 -  A: Please see Installation instructions and
-   `troubleshooting </index.php/XDS100#Troubleshooting>`__ section.
+   `troubleshooting <http://processors.wiki.ti.com/index.php/XDS100#Troubleshooting>`__ section.
 
 .. rubric:: Q: What operating systems are supported?
    :name: q-what-operating-systems-are-supported
 
 -  A: Please see `System
-   Requirements </index.php/System_Requirements>`__ for Operating System
+   Requirements <http://processors.wiki.ti.com/index.php/System_Requirements>`__ for Operating System
    support for CCS.
 
 .. rubric:: Q: I do not see my F28x Piccolo device listed in the CCS
@@ -1090,23 +1085,23 @@ A couple of things to try:
    :name: q-i-am-using-ccsv3.3-today.-can-i-get-a-driver-to-support-xds100-for-my-processor
 
 A: All new XDS100 development is being done on `Code Composer Studio
-v4 </index.php/Code_Composer_Studio_v4>`__. Existing processors
+v4 <http://processors.wiki.ti.com/index.php/Code_Composer_Studio_v4>`__. Existing processors
 supported by XDS100 in CCSv3.3 will continue to be supported, but newer
 processors will not be added.
 
 .. rubric:: Q: Can I use `Code Composer Studio
-   v4 </index.php/Code_Composer_Studio_v4>`__ with XDS100?
+   v4 <http://processors.wiki.ti.com/index.php/Code_Composer_Studio_v4>`__ with XDS100?
    :name: q-can-i-use-code-composer-studio-v4-with-xds100
 
 A: There is a free license for `Code Composer Studio
-v4 </index.php/Code_Composer_Studio_v4>`__ when used with XDS100. Code
+v4 <http://processors.wiki.ti.com/index.php/Code_Composer_Studio_v4>`__ when used with XDS100. Code
 Composer Studio v4 can be downloaded from the `Code Composer Studio
-v4 </index.php/Code_Composer_Studio_v4>`__ page. When you install CCS,
+v4 <http://processors.wiki.ti.com/index.php/Code_Composer_Studio_v4>`__ page. When you install CCS,
 you need to select the correct license. See below on how to select the
 correct license. This license is designed to be use with XDS100 only,
-and not `XDS510 </index.php/XDS510>`__ or `XDS560 </index.php/XDS560>`__
+and not `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ or `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__
 emulators. Please see `Activating
-CCS#Generate_and_Install_a_License_File </index.php/Activating_CCS#Generate_and_Install_a_License_File>`__
+CCS#Generate_and_Install_a_License_File <http://processors.wiki.ti.com/index.php/Activating_CCS#Generate_and_Install_a_License_File>`__
 for details.
 
 .. Image:: ../images/CCSV4xds100license.jpg
@@ -1137,7 +1132,7 @@ for details.
    on the forums.
 
 -  A: You may want to check
-   `XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F_if_your_VID.2FPID_are_programmed_correctly </index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F_if_your_VID.2FPID_are_programmed_correctly>`__
+   `XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F_if_your_VID.2FPID_are_programmed_correctly <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F_if_your_VID.2FPID_are_programmed_correctly>`__
 
 .. rubric:: Q: I used the FTClean utility on my computer and now I can't
    connect to the XDS100! What can I do?
@@ -1163,14 +1158,14 @@ for details.
    :name: q-my-jtag-is-not-working-with-ccs...
 
 A: Please check: `Debugging JTAG Connectivity
-Problems </index.php/Debugging_JTAG_Connectivity_Problems>`__
+Problems <http://processors.wiki.ti.com/index.php/Debugging_JTAG_Connectivity_Problems>`__
 
 .. rubric:: Q: I see in my Windows Device Manager an error for a TI
-   `XDS560 </index.php/XDS560>`__ emulator.
+   `XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__ emulator.
    :name: q-i-see-in-my-windows-device-manager-an-error-for-a-ti-xds560-emulator.
 
 A: The XDS100 will not be affected by this. Please see
-`XDS560#Q:_Why_does_my_Windows_Device_Manager_show_a_warning_for_the_TI_XDS560_PCI_Emulator.3F </index.php/XDS560#Q:_Why_does_my_Windows_Device_Manager_show_a_warning_for_the_TI_XDS560_PCI_Emulator.3F>`__
+`XDS560#Q:_Why_does_my_Windows_Device_Manager_show_a_warning_for_the_TI_XDS560_PCI_Emulator.3F <http://processors.wiki.ti.com/index.php/XDS560#Q:_Why_does_my_Windows_Device_Manager_show_a_warning_for_the_TI_XDS560_PCI_Emulator.3F>`__
 
 .. rubric:: Q: I see a Windows device manager problem with Texas
    Instruments XDS560 PCI JTAG emualtor. Does this affect the XDS100?
@@ -1178,9 +1173,9 @@ A: The XDS100 will not be affected by this. Please see
 
 A: No. This error is caused by the Texas Instruments XDS560 PCI JTAG
 emulator not being installed. This service may be used by other
-`XDS560 </index.php/XDS560>`__ emulators. A proper setup in Windows
+`XDS560 <http://processors.wiki.ti.com/index.php/XDS560>`__ emulators. A proper setup in Windows
 device manager will look like the image in
-`XDS100#Troubleshooting </index.php/XDS100#Troubleshooting>`__.
+`XDS100#Troubleshooting <http://processors.wiki.ti.com/index.php/XDS100#Troubleshooting>`__.
 
 .. rubric:: Q: Can I use an XDS100v2 hardware with a older version of
    Code Composer Studio? (Ex: CCS v3.3)
@@ -1193,7 +1188,7 @@ device manager will look like the image in
    versions as listed in the software installation section. If you use a
    XDS100v2 hardware unit with a version of CCS which does not support
    it, the software will just see a zero-bit scan chain. If you use
-   `DBGJTAG </index.php?title=DBGJTAG&action=edit&redlink=1>`__ to test
+   `DBGJTAG <http://processors.wiki.ti.com/index.php?title=DBGJTAG&action=edit&redlink=1>`__ to test
    the JTAG scan path, it will look like the below, with a zero-bit scan
    path on both IR and DR.
 
@@ -1251,7 +1246,7 @@ device manager will look like the image in
 -  A: It may also be that the FTDI EEPROM is not properly progrmmed.
    Please contact your XDS100 vendor to have the problem corrected. You
    could also see the section on
-   `Xds100#How_to_make_an_XDS100 </index.php/Xds100#How_to_make_an_XDS100>`__
+   `Xds100#How_to_make_an_XDS100 <http://processors.wiki.ti.com/index.php/Xds100#How_to_make_an_XDS100>`__
    to program the EEPROM.
 
 .. rubric:: Q: I got a -150 SC_ERR_POD_FAIL error, what does this mean?
@@ -1274,7 +1269,7 @@ device manager will look like the image in
 .. rubric:: Q: I got an "Error connecting to the target: Error
    0x80000240/-151 Fatal Error during: Initialization, OCS" when trying
    to connect to the target in `Code Composer Studio
-   v4 </index.php/Code_Composer_Studio_v4>`__
+   v4 <http://processors.wiki.ti.com/index.php/Code_Composer_Studio_v4>`__
    :name: q-i-got-an-error-connecting-to-the-target-error-0x80000240-151-fatal-error-during-initialization-ocs-when-trying-to-connect-to-the-target-in-code-composer-studio-v4
 
 .. Image:: ../images/Xds100v1poderror.jpg
@@ -1283,11 +1278,11 @@ device manager will look like the image in
    occur because the EEPROM was not programmed properly. Please check
    with your XDS100 manufacturer.
 -  A: More details on checking your EEPROM are
-   `XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F </index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
+   `XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
 
 .. rubric:: Q: I was following `Debugging JTAG Connectivity
-   Problems </index.php/Debugging_JTAG_Connectivity_Problems>`__ and I a
-   -151 SC_ERR_POD_OPEN error with `Dbgjtag </index.php/Dbgjtag>`__.
+   Problems <http://processors.wiki.ti.com/index.php/Debugging_JTAG_Connectivity_Problems>`__ and I a
+   -151 SC_ERR_POD_OPEN error with `Dbgjtag <http://processors.wiki.ti.com/index.php/Dbgjtag>`__.
    :name: q-i-was-following-debugging-jtag-connectivity-problems-and-i-a--151-sc_err_pod_open-error-with-dbgjtag.
 
 .. Image:: ../images/Xds100v1nopiddbgjtagpodfail.jpg
@@ -1296,14 +1291,14 @@ device manager will look like the image in
    occur because the EEPROM was not programmed properly. Please check
    with your XDS100 manufacturer.
 -  A: More details on checking your EEPROM are
-   `XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F </index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
+   `XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
 
 .. rubric:: Q: What happens when I plug a XDS100v2 in to my card but
    select XDS100v1 or XDS100 as the emulator?
    :name: q-what-happens-when-i-plug-a-xds100v2-in-to-my-card-but-select-xds100v1-or-xds100-as-the-emulator
 
 -  A: The output from a `path length
-   test </index.php/Debugging_JTAG_Connectivity_Problems>`__ will look
+   test <http://processors.wiki.ti.com/index.php/Debugging_JTAG_Connectivity_Problems>`__ will look
    like it is passing, with a zero - bit path length. This is because
    the XDS100v2 has a loopback mode which is used in testing. When the
    XDS100v1 software is used, it invokes this loopback mode.
@@ -1332,7 +1327,7 @@ device manager will look like the image in
    :name: q-what-happens-when-i-plug-a-xds100v1-into-a-card-but-select-an-xds100v2-in-ccs
 
 -  A: The output from `path length
-   test </index.php/Debugging_JTAG_Connectivity_Problems>`__ will vary
+   test <http://processors.wiki.ti.com/index.php/Debugging_JTAG_Connectivity_Problems>`__ will vary
    with the target device. This is because the XDS100v2 uses the pins on
    the communications chip different from how it was used on the
    XDS100v1. On some devices such as c28x, it may cause the device to
@@ -1345,7 +1340,7 @@ device manager will look like the image in
    :name: q-i-just-upgraded-to-ccs-4.1.2-and-now-my-xds100-is-not-working.-it-was-working-before
 
 -  A: `Check your VID/PID
-   value. </index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
+   value. <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
    If it does not match, you need to contact your manufacturer, or get
    the VID/PID EEPROM programmed properly.
 -  A: With CCS 4.1.2 and newer, a bug was fixed so that the XDS100
@@ -1360,7 +1355,7 @@ device manager will look like the image in
    :name: q-i-was-using-ccs-v3.3-sr12-before-and-upgraded-to-ccs-4.1.2-or-newer-and-now-my-xds100-is-not-working.-it-was-working-before
 
 -  `Please see previous
-   topic </index.php/Xds100#Q:_I_just_upgraded_to_CCS_4.1.2_and_now_my_XDS100_is_not_working._It_was_working_before.21>`__
+   topic <http://processors.wiki.ti.com/index.php/Xds100#Q:_I_just_upgraded_to_CCS_4.1.2_and_now_my_XDS100_is_not_working._It_was_working_before.21>`__
 
 .. rubric:: Hardware FAQ
    :name: hardware-faq
@@ -1369,7 +1364,7 @@ device manager will look like the image in
    :name: q-where-can-i-find-out-about-pinout-of-jtag-connectors
 
 -  A: Please check the page on `JTAG
-   Connectors </index.php/JTAG_Connectors>`__.
+   Connectors <http://processors.wiki.ti.com/index.php/JTAG_Connectors>`__.
 
 .. rubric:: Q: What if I need electrical isolation?
    :name: q-what-if-i-need-electrical-isolation
@@ -1462,10 +1457,10 @@ entry.
 
 -  Expected XDS100 VID/PID should be as described in the sections `how
    to make an
-   XDS100 </index.php/XDS100#How_to_make_an_XDS100_.2F_How_to_build_an_XDS100_hardware_emulator>`__
+   XDS100 <http://processors.wiki.ti.com/index.php/XDS100#How_to_make_an_XDS100_.2F_How_to_build_an_XDS100_hardware_emulator>`__
 -  A: If your hardware VID/PID does not match what is described in `How
    to make an
-   XDS100 </index.php/XDS100#How_to_make_an_XDS100_.2F_How_to_build_an_XDS100_hardware_emulator>`__,
+   XDS100 <http://processors.wiki.ti.com/index.php/XDS100#How_to_make_an_XDS100_.2F_How_to_build_an_XDS100_hardware_emulator>`__,
    please contact your hardware manufacturer.
 
 **Note:**\ It is possible to reprogram the EEPROM using MPROG or FT_Prog
@@ -1475,10 +1470,10 @@ file </images/0/00/XDS100_wUART.zip>`__. If you have a *FT2232H* device
 download the following `FT2232H EPT
 file </images/f/f8/XDS100_wUART_FT2232H.zip>`__. Refer to the
 instructions in the `How to make an XDS100
-section </index.php/XDS100#How_to_make_an_XDS100_.2F_How_to_build_an_XDS100_hardware_emulator>`__
+section <http://processors.wiki.ti.com/index.php/XDS100#How_to_make_an_XDS100_.2F_How_to_build_an_XDS100_hardware_emulator>`__
 
 -  A: For some 28x based cards, a similar problem may
-   `occur </index.php/XDS100#Q:_Windows_is_recognizing_the_XDS100_as_.22Dual_RS232_USB_Serial_Bridge.22_instead_of_the_TI_XDS100_JTAG_emulator.>`__
+   `occur <http://processors.wiki.ti.com/index.php/XDS100#Q:_Windows_is_recognizing_the_XDS100_as_.22Dual_RS232_USB_Serial_Bridge.22_instead_of_the_TI_XDS100_JTAG_emulator.>`__
 
 | 
 
@@ -1505,7 +1500,7 @@ section </index.php/XDS100#How_to_make_an_XDS100_.2F_How_to_build_an_XDS100_hard
 .. Image:: ../images/MPROG_3.5.jpg
 
 You should now be able to follow the directions
-`Here </index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
+`Here <http://processors.wiki.ti.com/index.php/XDS100#Q:_How_can_I_check_if_the_VID.2FPID_for_the_EEPROM_are_programmed_correctly.3F>`__
 to verify that it has been programmed correctly. If it has, you should
 now be able to use your XDS100 with CCS.
 
@@ -1530,7 +1525,7 @@ now be able to use your XDS100 with CCS.
    manufacturer did not follow the XDS100v2 reference design, please
    contact your manufacturer directly.
 -  As of 4/28/2010, an enhancment to improve reliability with devices
-   which require `Adaptive Clocking </index.php/Adaptive_Clocking>`__
+   which require `Adaptive Clocking <http://processors.wiki.ti.com/index.php/Adaptive_Clocking>`__
    (ex: ARM9) is included with the updated CPLD. The specific items
    implemented in this CPLD update are:
 

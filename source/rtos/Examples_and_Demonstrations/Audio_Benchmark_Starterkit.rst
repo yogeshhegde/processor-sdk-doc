@@ -69,7 +69,7 @@ Detailed description of the directory structure is given below:
 
 **NOTE**
 **For correct version of Code Composer Studio to download, please refer
-to the `Release Notes </index.php/Processor_SDK_RTOS_Release_Notes>`__
+to the `Release Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
 corresponding to the Processor SDK RTOS version that you have
 installed**
 
@@ -438,10 +438,10 @@ the twiddle factor coefficients, ``ptr_w``.
 
 -  For implementation details of this FFT computation refer to
    documentation provided in `Additional
-   resources </index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit#Additional_resources>`__
+   resources <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit#Additional_resources>`__
 -  For Real input sequences, efficient FFT Implementation is described
    here
-   `Efficient_FFT_Computation_of_Real_Input </index.php/Efficient_FFT_Computation_of_Real_Input>`__
+   `Efficient_FFT_Computation_of_Real_Input <http://processors.wiki.ti.com/index.php/Efficient_FFT_Computation_of_Real_Input>`__
 
 .. raw:: html
 

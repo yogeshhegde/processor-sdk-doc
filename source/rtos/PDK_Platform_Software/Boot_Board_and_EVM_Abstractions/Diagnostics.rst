@@ -6,7 +6,7 @@
 The Processor SDK RTOS Diagnostic package is designed to be a set of
 baremetal tests to run on a given board to provide data path continuity
 testing on peripherals. For K2H/K2E/K2L/C66x devices, this functionality
-is provided by `POST </index.php/Processor_SDK_RTOS_POST>`__.
+is provided by `POST <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_POST>`__.
 
 .. rubric:: Building the Examples
    :name: building-the-examples
@@ -17,7 +17,7 @@ is provided by `POST </index.php/Processor_SDK_RTOS_POST>`__.
 #. Set your environment using pdksetupenv.bat or pdksetupenv.sh. The
    diagnostic application uses the same environment variables as the
    board library build. Refer to the `Processor SDK RTOS
-   Building </index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page for
+   Building <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page for
    information on setting up your build environment.
 #. You will need the following libraries built:
 
@@ -142,7 +142,7 @@ diagnostics. Diagnostics test binaries need to be executed from CCS.
    :name: loading-through-sd-card-default-method
 
 Your SD card must be set up to a bootable format. Refer to the
-`Processor SDK RTOS Boot </index.php/Processor_SDK_RTOS_Boot>`__ page
+`Processor SDK RTOS Boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot>`__ page
 for information on how the SD card is handled.
 
 You will need to compile the diagnostic applications for your BOARD,
@@ -284,7 +284,7 @@ To run on CCS:
 #. Press the power button on the board to turn the board on
 #. Setup and run CCSv6.1 (or higher). Follow the `Processor SDK RTOS
    Getting Started
-   Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__ on how
+   Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__ on how
    to setup your CCS to connect to the board
 #. Launch target configuration for the board
 #. Connect to the core that you built your application for. For example:

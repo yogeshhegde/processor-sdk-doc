@@ -309,7 +309,8 @@ wait on multiple input sources.
 | subfolder.                        |                                   |
 |                                   |    <div class="magnify">          |
 | 4. Launch target configurations.  |                                   |
-| Note that BH560USB_M is emulator  | ` </index.php/File:Notify_peer_ar |
+| Note that BH560USB_M is emulator  | ` <http://processors.wiki.ti.com/ |
+|                                   | index.php/File:Notify_peer_ar     | 
 | is used to connect to AM572X EVM. | m0.png>`__                        |
 |                                   |                                   |
 | 5. Right click CortexA15_0 and    | .. raw:: html                     |

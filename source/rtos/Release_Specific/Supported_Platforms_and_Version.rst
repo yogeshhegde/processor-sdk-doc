@@ -399,10 +399,10 @@ All platforms supporting Linux share
 -  Linaro GCC 6.2.1 Toolchain
 
 For a full list of components, see the *Release Notes* for `Processor
-SDK Linux </index.php/Processor_SDK_Linux_Release_Notes>`__, `Processor
-SDK RTOS </index.php/Processor_SDK_RTOS_Release_Notes>`__, and
+SDK Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes>`__, `Processor
+SDK RTOS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__, and
 `Processor SDK
-Android </index.php/Processor_SDK_Android_Release_Notes>`__.
+Android <http://processors.wiki.ti.com/index.php/Processor_SDK_Android_Release_Notes>`__.
 
 Archived Versions
 =================

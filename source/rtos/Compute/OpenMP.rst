@@ -10,8 +10,8 @@ This page is intended to be the starting point for all information about
 OpenMP on C6000. However, at this writing, that is not the case. The
 information in this article is correct if you are using C667x devices
 which only contain C66x CorePac DSPs, and not any ARM cores. If you are
-using a 66AK2H device, then please see `MCSDK HPC 3.x
-OpenMP </index.php/MCSDK_HPC_3.x_OpenMP>`__. OpenMP is not supported on
+using a 66AK2H device, then please see `MCSDK HPC 3.x 
+OpenMP <http://processors.wiki.ti.com/index.php/MCSDK_HPC_3.x_OpenMP>`__. OpenMP is not supported on
 any other C6000 devices.
 
 Still here? After reading this article, you will be able to execute your
@@ -214,7 +214,7 @@ all of these lines.
    :name: tips-on-system-startup
 
 If things do not go smoothly, please see the article
-`SystemAnalyzerTutorial7 </index.php/SystemAnalyzerTutorial7>`__. That
+`SystemAnalyzerTutorial7 <http://processors.wiki.ti.com/index.php/SystemAnalyzerTutorial7>`__. That
 article is about running a tutorial for a tool named Unified
 Instrumentation Architecture (UIA). UIA is for analyzing system
 performance and behavior. This tutorial contains several tips on how to

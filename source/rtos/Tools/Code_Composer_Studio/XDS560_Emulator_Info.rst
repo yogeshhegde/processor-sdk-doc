@@ -8,7 +8,7 @@
 -  More information can be found here:
    `[1] <http://focus.ti.com/docs/toolsw/folders/print/xds560.html>`__
 -  The XDS560 Emulators support `High Speed RTDX
-   (HSRTDX) </index.php/High_Speed_RTDX_(HSRTDX)>`__
+   (HSRTDX) <http://processors.wiki.ti.com/index.php/High_Speed_RTDX_(HSRTDX)>`__
 
 +-----------------------------------+-----------------------------------+
 | **Warning**:                      | As of 6/24/2010 RTDX and HS-RTDX  |
@@ -24,26 +24,26 @@
 +-----------------------------------+-----------------------------------+
 
 -  The XDS560 Emulators support `Advanced Event
-   Triggering </index.php/Advanced_Event_Triggering>`__
+   Triggering <http://processors.wiki.ti.com/index.php/Advanced_Event_Triggering>`__
 -  The XDS560 Emulators support `IEEE 1149.1
-   (JTAG) </index.php/IEEE_1149.1_(JTAG)>`__
+   (JTAG) <http://processors.wiki.ti.com/index.php/IEEE_1149.1_(JTAG)>`__
 -  A general overview of TI emulation capabilities is
    `here <http://focus.ti.com/dsp/docs/dspfindtoolswbytooltype.tsp?sectionId=3&tabId=2093&toolTypeId=12&familyId=44>`__.
 -  For information about JTAG headers, please check the WIKI page `JTAG
-   Connectors </index.php/JTAG_Connectors>`__.
+   Connectors <http://processors.wiki.ti.com/index.php/JTAG_Connectors>`__.
 -  For debugging issues with JTAG, you may want to check the topic
    `Debugging JTAG Connectivity
-   Problems </index.php/Debugging_JTAG_Connectivity_Problems>`__
+   Problems <http://processors.wiki.ti.com/index.php/Debugging_JTAG_Connectivity_Problems>`__
 -  An XDS560 with Ethernet LAN support is available from
    `here <http://www.blackhawk-dsp.com/Lan560.aspx>`__
--  `XDS560v2 System Trace </index.php/XDS560v2_System_Trace>`__
+-  `XDS560v2 System Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
 
 | 
 
 .. rubric:: XDS560v2 System Trace
    :name: xds560v2-system-trace
 
--  The `XDS560v2 System Trace </index.php/XDS560v2_System_Trace>`__
+-  The `XDS560v2 System Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
    emulator is now available. It offers increased performance and
    features.
 
@@ -57,7 +57,7 @@ supports:
 -  Adaptive clocking for TI devices with ARM processors
 -  EMU pin boot modes
 -  Remote system reset `System Reset
-   (Emulation) </index.php/System_Reset_(Emulation)>`__
+   (Emulation) <http://processors.wiki.ti.com/index.php/System_Reset_(Emulation)>`__
 -  RTCK/TCK looback
 
 Rev D cables can be identified by their "00D" at the end of the cable
@@ -65,7 +65,7 @@ serial number.
 
 The TI 20-pin target card connector reduces the PWB foot print over the
 traditional TI 14-pin target connector while expanding the number of EMU
-pins supported. See `JTAG Connectors </index.php/JTAG_Connectors>`__
+pins supported. See `JTAG Connectors <http://processors.wiki.ti.com/index.php/JTAG_Connectors>`__
 Wiki page for the TI 20-pin cable's pin assignments and target card
 connector part number. The board requirements provided in `XDS560
 Emulator Technical
@@ -76,7 +76,7 @@ board requirment.
 
 Adaptive clocking for ARM devices can be enabled through CCSetup’s
 Connection Properties page (see “JTAG TCKL Frequency (MHz)” selection
-options). See the `Adaptive Clocking </index.php/Adaptive_Clocking>`__
+options). See the `Adaptive Clocking <http://processors.wiki.ti.com/index.php/Adaptive_Clocking>`__
 Wiki page for more information and board requirements. Generally, in CCS
 3.3 Setup, you may need to select the create board option to enable the
 rev D capabilities. This can be seen in the screen shot below.
@@ -162,7 +162,7 @@ N/A
 
 N/A
 
-**`MDL-ADA2 </index.php/JTAG_Adapters#MDL-ADA2>`__**
+**`MDL-ADA2 <http://processors.wiki.ti.com/index.php/JTAG_Adapters#MDL-ADA2>`__**
 
 N/A
 
@@ -174,21 +174,21 @@ N/A
 
 N/A
 
-| **`TMDSADP1414-ISO </index.php/JTAG_Adapters#TMDSADP1414-ISO>`__**\ :sup:`1`
-| **`TMDSADP1414 </index.php/JTAG_Adapters#TMDSADP1414>`__**\ :sup:`2,3,4`
+| **`TMDSADP1414-ISO <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADP1414-ISO>`__**\ :sup:`1`
+| **`TMDSADP1414 <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADP1414>`__**\ :sup:`2,3,4`
 | **701208**\ :sup:`2,7`
 | **701210**\ :sup:`2,3,4,7`
 
-| **`TMDSADP1420 </index.php/JTAG_Adapters#TMDSADP1420>`__**\ :sup:`2,3,4`
-| **`TMDSADPEMU-20T </index.php/JTAG_Adapters#TMDSADPEMU-20T>`__**\ :sup:`3`
+| **`TMDSADP1420 <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADP1420>`__**\ :sup:`2,3,4`
+| **`TMDSADPEMU-20T <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADPEMU-20T>`__**\ :sup:`3`
 | **701212**\ :sup:`2,3,4,7`
 | **701219**\ :sup:`7`
 | **14e_TI-20t_cTI**\ :sup:`6`
 
-| **`TMDSADPEMU-20A </index.php/JTAG_Adapters#TMDSADPEMU-20A>`__**\ :sup:`3`
+| **`TMDSADPEMU-20A <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADPEMU-20A>`__**\ :sup:`3`
 | **701280**\ :sup:`7`
 
-| **`TMDSADP1460 </index.php/JTAG_Adapters#TMDSADP1460>`__**
+| **`TMDSADP1460 <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADP1460>`__**
 | **14e_TI-60t_TI**\ :sup:`6`
 
  **`701282 <http://www.spectrumdigital.com/product_info.php?cPath=33&products_id=264&osCsid=0275b43739c81e0cb6aae06df25ced81>`__**\ :sup:`7`
@@ -216,13 +216,13 @@ N/A
 
 **20-pin ARM**
 
-**`MDL-ADA2 </index.php/JTAG_Adapters#MDL-ADA2>`__**
+**`MDL-ADA2 <http://processors.wiki.ti.com/index.php/JTAG_Adapters#MDL-ADA2>`__**
 
 **LA-7748**\ :sup:`5`
 
-**`TMDSADPEMU-20T </index.php/JTAG_Adapters#TMDSADPEMU-20T>`__**\ :sup:`3`
+**`TMDSADPEMU-20T <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADPEMU-20T>`__**\ :sup:`3`
 
-**`TMDSADPEMU-20A </index.php/JTAG_Adapters#TMDSADPEMU-20A>`__**\ :sup:`3`
+**`TMDSADPEMU-20A <http://processors.wiki.ti.com/index.php/JTAG_Adapters#TMDSADPEMU-20A>`__**\ :sup:`3`
 
 N/A
 
@@ -456,7 +456,7 @@ Q: What if I want to use the XDS560 Trace capability to collect trace from the p
 ------------------------------------------------------------------------------------
 
 -  A: You will need the XDS560 Trace unit. There are more details here:
-   `XDS560 Trace </index.php/XDS560_Trace>`__
+   `XDS560 Trace <http://processors.wiki.ti.com/index.php/XDS560_Trace>`__
 
 Q: Do any XDS560-class Emulators support Linux Operating Systems?
 -----------------------------------------------------------------
@@ -468,13 +468,13 @@ Q: Do any XDS560-class Emulators support Linux Operating Systems?
 (BH-USB-560bp), **USB560** (BH-USB-560)
 
 For XDS560v2 models, see `XDS560v2 System
-Trace </index.php/XDS560v2_System_Trace>`__
+Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
 
 Q: Does the XDS560 support ARM Adaptive clocking?
 -------------------------------------------------
 
 -  A: Yes, any XDS560 which is Revision D and above supports adaptive
-   clocking. See: `Adaptive Clocking </index.php/Adaptive_Clocking>`__
+   clocking. See: `Adaptive Clocking <http://processors.wiki.ti.com/index.php/Adaptive_Clocking>`__
    for details on Adaptive Clocking.
 -  A: For CCSv3.3 with Service Release 12 and above, you can setup for
    adaptive clocking as in the photo below:
@@ -486,12 +486,12 @@ Q: Does the XDS560 support ARM Adaptive clocking?
 
 .. Image:: ../images/Ccsv4adaptive.jpg
 
-Q: What is the difference between `XDS510 </index.php/XDS510>`__ and XDS560?
+Q: What is the difference between `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ and XDS560?
 ----------------------------------------------------------------------------
 
 -  A: XDS560 is capable of `High Speed RTDX
-   (HSRTDX) </index.php/High_Speed_RTDX_(HSRTDX)>`__, essentially it has
-   the same functionality of an `XDS510 </index.php/XDS510>`__ class
+   (HSRTDX) <http://processors.wiki.ti.com/index.php/High_Speed_RTDX_(HSRTDX)>`__, essentially it has
+   the same functionality of an `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ class
    emulator but is significantly faster, with data rates of over 2MBps.
 
 Q: Where to get an XDS560
@@ -539,13 +539,13 @@ Q: My JTAG is not working with CCS...
 -------------------------------------
 
 -  A: Please check: `Debugging JTAG Connectivity
-   Problems </index.php/Debugging_JTAG_Connectivity_Problems>`__
+   Problems <http://processors.wiki.ti.com/index.php/Debugging_JTAG_Connectivity_Problems>`__
 
 Q: Are there lower cost options?
 --------------------------------
 
--  A: Yes, Please see `XDS510 </index.php/XDS510>`__ and
-   `XDS100 </index.php/XDS100>`__
+-  A: Yes, Please see `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__ and
+   `XDS100 <http://processors.wiki.ti.com/index.php/XDS100>`__
 -  Ashling's Opella-XDS560
    `here <http://ashling.com/index.php?option=com_content&task=view&id=326>`__
    is less than $1500.
@@ -565,7 +565,7 @@ Q: I am a TI 3rd party, and I want to create my own XDS510. What do I do?
 -------------------------------------------------------------------------
 
 -  A: Approved, TI 3rd parties can purchase an `Emulation Porting
-   Kit </index.php/Emulation_Porting_Kit>`__
+   Kit <http://processors.wiki.ti.com/index.php/Emulation_Porting_Kit>`__
 
 Q: How do I get looback in a TI XDS560 Rev D cable to work?
 -----------------------------------------------------------
@@ -624,10 +624,10 @@ Q: Is RTDX supported with C2000 processors on the XDS560?
 Related
 =======
 
--  `XDS100 </index.php/XDS100>`__
--  `XDS510 </index.php/XDS510>`__
--  `XDS560v2 System Trace </index.php/XDS560v2_System_Trace>`__
--  `XDS560 Trace </index.php/XDS560_Trace>`__
+-  `XDS100 <http://processors.wiki.ti.com/index.php/XDS100>`__
+-  `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__
+-  `XDS560v2 System Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
+-  `XDS560 Trace <http://processors.wiki.ti.com/index.php/XDS560_Trace>`__
 
 --------------
 

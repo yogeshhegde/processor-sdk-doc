@@ -10,14 +10,14 @@ This user's guide contains the topics in the following list. It also
 links to API reference documentation for static configuration (|Book
 config.png|) and run-time C processing (|Book run.png|) for each module.
 
--  **`About IPC </index.php/IPC_Users_Guide/About_IPC>`__** provides an
+-  **`About IPC <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/About_IPC>`__** provides an
    overview of the IPC component.
 
    -  **`Use Cases for
-      IPC </index.php/IPC_Users_Guide/Use_Cases_for_IPC>`__**
+      IPC <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Use_Cases_for_IPC>`__**
 
 -  **`The ti.sdo.ipc
-   Package </index.php/IPC_Users_Guide/The_ti.sdo.ipc_Package>`__**
+   Package <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.ipc_Package>`__**
    describes the modules in the ti.sdo.ipc package.
    +-----------------+-----------------+-----------------+-----------------+
    | Module          | Wiki doc        | Config API      | C API           |
@@ -185,7 +185,7 @@ config.png|) and run-time C processing (|Book run.png|) for each module.
    +-----------------+-----------------+-----------------+-----------------+
 
 -  **`The ti.sdo.utils
-   Package </index.php/IPC_Users_Guide/The_ti.sdo.utils_Package>`__**
+   Package <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.utils_Package>`__**
    describes the modules in the ti.sdo.utils package.
    +-----------------+-----------------+-----------------+-----------------+
    | Module          | Wiki doc        | Config API      | C API           |
@@ -260,26 +260,26 @@ config.png|) and run-time C processing (|Book run.png|) for each module.
    |                 |                 |    </div>       |                 |
    +-----------------+-----------------+-----------------+-----------------+
 
--  **`Porting IPC </index.php/IPC_Users_Guide/Porting_IPC>`__** provides
+-  **`Porting IPC <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Porting_IPC>`__** provides
    an overview of the steps required to port IPC to new devices or
    systems.
 -  **`Optimizing IPC
-   Applications </index.php/IPC_Users_Guide/Optimizing_IPC_Applications>`__**
+   Applications <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Optimizing_IPC_Applications>`__**
    provides hints for improving the runtime performance and shared
    memory usage of applications that use IPC.
--  **`Rebuilding IPC </index.php/IPC_Users_Guide/Rebuilding_IPC>`__**
+-  **`Rebuilding IPC <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Rebuilding_IPC>`__**
    explains how to rebuild the IPC libraries if you modify the source
    files.
 -  **`Using IPC on Concerto
-   Devices </index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices>`__**
+   Devices <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices>`__**
    explains how to use IPC if you are designing applications for
    Concerto F28M35x devices.
--  **`Examples </index.php/IPC_Users_Guide/Examples>`__** explains how
+-  **`Examples <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Examples>`__** explains how
    to build and generate the IPC examples.
--  **`Tests </index.php/IPC_Users_Guide/Tests>`__** explains details of
+-  **`Tests <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Tests>`__** explains details of
    unit tests part of IPC
 -  **`RTOS IPC
-   Transports </index.php/Processor_SDK_RTOS_IPC_Transports>`__**
+   Transports <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_IPC_Transports>`__**
    explains details of the additional RTOS IPC transports provided via
    the Processor SDK PDK component.
 
@@ -348,12 +348,12 @@ support, issues, and compatibility information for a particular release.
 | 
 
 +-----------------------+-----------------------+-----------------------+
-| |Table of Contents|   |                       | `About                |
-| **IPC User's Guide**  |                       | IPC </index.php/IPC_U |
-|                       |                       | sers_Guide/About_IPC> |
-|                       |                       | `__                   |
-|                       |                       | |Next|                |
+| |Table of Contents|   |                       | `About IPC`_          |
+| **IPC User's Guide**  |                       |                       |
 +-----------------------+-----------------------+-----------------------+
+
+.. _About IPC:  <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/About_IPC>
+_
 
 | 
 

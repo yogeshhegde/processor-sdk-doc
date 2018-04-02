@@ -16,8 +16,8 @@
    :name: p-personal-label
 
 -  `Log
-   in </index.php?title=Special:UserLogin&returnto=Processor+SDK+RTOS+Related+Software>`__
--  `Request account </index.php/Special:RequestAccount>`__
+   in <http://processors.wiki.ti.com/index.php?title=Special:UserLogin&returnto=Processor+SDK+RTOS+Related+Software>`__
+-  `Request account <http://processors.wiki.ti.com/index.php/Special:RequestAccount>`__
 
 .. raw:: html
 
@@ -35,8 +35,8 @@
 .. rubric:: Namespaces
    :name: p-namespaces-label
 
--  `Page </index.php/Processor_SDK_RTOS_Related_Software>`__
--  `Discussion </index.php?title=Talk:Processor_SDK_RTOS_Related_Software&action=edit&redlink=1>`__
+-  `Page <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Related_Software>`__
+-  `Discussion <http://processors.wiki.ti.com/index.php?title=Talk:Processor_SDK_RTOS_Related_Software&action=edit&redlink=1>`__
 
 .. raw:: html
 
@@ -78,11 +78,11 @@
 .. rubric:: Views
    :name: p-views-label
 
--  `Read </index.php/Processor_SDK_RTOS_Related_Software>`__
+-  `Read <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Related_Software>`__
 -  `View
-   source </index.php?title=Processor_SDK_RTOS_Related_Software&action=edit>`__
+   source <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Related_Software&action=edit>`__
 -  `View
-   history </index.php?title=Processor_SDK_RTOS_Related_Software&action=history>`__
+   history <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Related_Software&action=history>`__
 
 .. raw:: html
 
@@ -143,7 +143,7 @@
 
    <div id="p-logo" role="banner">
 
-` </index.php/Main_Page>`__
+` <http://processors.wiki.ti.com/index.php/Main_Page>`__
 
 .. raw:: html
 
@@ -161,11 +161,11 @@
 
    <div class="body">
 
--  `Main Page </index.php/Main_Page>`__
--  `All pages </index.php/Special:AllPages>`__
--  `All categories </index.php/Special:Categories>`__
--  `Recent changes </index.php/Special:RecentChanges>`__
--  `Random page </index.php/Special:Random>`__
+-  `Main Page <http://processors.wiki.ti.com/index.php/Main_Page>`__
+-  `All pages <http://processors.wiki.ti.com/index.php/Special:AllPages>`__
+-  `All categories <http://processors.wiki.ti.com/index.php/Special:Categories>`__
+-  `Recent changes <http://processors.wiki.ti.com/index.php/Special:RecentChanges>`__
+-  `Random page <http://processors.wiki.ti.com/index.php/Special:Random>`__
 -  `Help <https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents>`__
 
 .. raw:: html
@@ -189,11 +189,11 @@
    <div class="body">
 
 -  `Create a
-   book </index.php?title=Special:Book&bookcmd=book_creator&referer=Processor+SDK+RTOS+Related+Software>`__
+   book <http://processors.wiki.ti.com/index.php?title=Special:Book&bookcmd=book_creator&referer=Processor+SDK+RTOS+Related+Software>`__
 -  `Download as
-   PDF </index.php?title=Special:Book&bookcmd=render_article&arttitle=Processor+SDK+RTOS+Related+Software&oldid=214945&writer=rl>`__
+   PDF <http://processors.wiki.ti.com/index.php?title=Special:Book&bookcmd=render_article&arttitle=Processor+SDK+RTOS+Related+Software&oldid=214945&writer=rl>`__
 -  `Printable
-   version </index.php?title=Processor_SDK_RTOS_Related_Software&printable=yes>`__
+   version <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Related_Software&printable=yes>`__
 
 .. raw:: html
 
@@ -216,14 +216,14 @@
    <div class="body">
 
 -  `What links
-   here </index.php/Special:WhatLinksHere/Processor_SDK_RTOS_Related_Software>`__
+   here <http://processors.wiki.ti.com/index.php/Special:WhatLinksHere/Processor_SDK_RTOS_Related_Software>`__
 -  `Related
-   changes </index.php/Special:RecentChangesLinked/Processor_SDK_RTOS_Related_Software>`__
--  `Special pages </index.php/Special:SpecialPages>`__
+   changes <http://processors.wiki.ti.com/index.php/Special:RecentChangesLinked/Processor_SDK_RTOS_Related_Software>`__
+-  `Special pages <http://processors.wiki.ti.com/index.php/Special:SpecialPages>`__
 -  `Permanent
-   link </index.php?title=Processor_SDK_RTOS_Related_Software&oldid=214945>`__
+   link <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Related_Software&oldid=214945>`__
 -  `Page
-   information </index.php?title=Processor_SDK_RTOS_Related_Software&action=info>`__
+   information <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Related_Software&action=info>`__
 
 .. raw:: html
 
@@ -251,10 +251,10 @@
    Attribution-ShareAlike <http://creativecommons.org/licenses/by-sa/3.0/>`__
    unless otherwise noted.
 
--  `Privacy policy </index.php/Project:Privacy_policy>`__
--  `About Texas Instruments Wiki </index.php/Project:About>`__
--  `Disclaimers </index.php/Project:General_disclaimer>`__
--  `Terms of Use </index.php/Project:Terms_of_Service>`__
+-  `Privacy policy <http://processors.wiki.ti.com/index.php/Project:Privacy_policy>`__
+-  `About Texas Instruments Wiki <http://processors.wiki.ti.com/index.php/Project:About>`__
+-  `Disclaimers <http://processors.wiki.ti.com/index.php/Project:General_disclaimer>`__
+-  `Terms of Use <http://processors.wiki.ti.com/index.php/Project:Terms_of_Service>`__
 
 -  |Creative Commons Attribution-ShareAlike|
 -  |Powered by MediaWiki|
