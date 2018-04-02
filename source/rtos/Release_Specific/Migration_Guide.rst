@@ -93,8 +93,7 @@ in this release. This new features increases the number of I2C interface
 available in the SOC. I2C LLD now depends on PRUSS LLD for compilation
 of this new feature. All of this is done in a transparent manner, so
 there is **no API change** and will not affect existing applications.
-However, for using the I2C FW feature refer `I2C
-FW </index.php/Processor_SDK_RTOS_I2C_FIRMWARE>`__ for additional
+However, for using the I2C FW feature refer :ref:`I2C FW <PRU-ICSS-I2C-FIRMWARE-label>` for additional
 details.
 
 | 

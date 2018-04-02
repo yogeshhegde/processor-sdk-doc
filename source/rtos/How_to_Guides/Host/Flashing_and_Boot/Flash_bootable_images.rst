@@ -33,8 +33,7 @@ default flashable binaries in the Processor SDK RTOS.
 **NOTE**
 Your board should be set to NO-BOOT mode. Please refer to the boot mode
 dip switch settings for different boot modes on your EVM Hardware User
-Guide. See `this
-page </index.php/Processor_SDK_Supported_Platforms_and_Versions>`__ for
+Guide. See :ref:`this page <RTOS-SDK-Supported-Platforms>` for
 a link to all supported EVM information.
 
 .. raw:: html

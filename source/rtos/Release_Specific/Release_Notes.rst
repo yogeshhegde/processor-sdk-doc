@@ -1,3 +1,7 @@
+************************************
+Release Notes
+************************************
+
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes
 
 .. rubric::  Overview
@@ -889,6 +893,15 @@ release and any known workaround.
 |             |             |             | 1GHz Flip   |             |
 |             |             |             | Chip        |             |
 +-------------+-------------+-------------+-------------+-------------+
+| PRSDK-3856  | AM335x      | Starterware | StarterWare | Top-level   |
+|             | AM437x      |             | build from  | make command|
+|             |             |             | the PDK     | can be used |
+|             |             |             | starterware | for building|
+|             |             |             | folder fails| starterware |
+|             |             |             | on Windows  | on Windows  |
+|             |             |             | OS          |             |
++-------------+-------------+-------------+-------------+-------------+
+
 
  Installation and Usage 
 ========================

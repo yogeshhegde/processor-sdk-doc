@@ -3,9 +3,10 @@ Release Specific
 ##################
 
 
-************************************
-Release Notes
-************************************
+.. ************************************
+.. Release Notes
+.. ************************************
+.. _processor-sdk-rtos-release-notes:
 .. include:: Release_Specific/Release_Notes.rst
 
 
