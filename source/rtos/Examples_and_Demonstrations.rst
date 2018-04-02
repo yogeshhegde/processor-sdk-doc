@@ -53,5 +53,6 @@ Gravity Simulator Demo
 ***************************
 RTOS Template Application
 ***************************
+.. _Demo-RTOS-Template-Application-label:
 .. include:: Examples_and_Demonstrations/RTOS_Template_App.rst
 

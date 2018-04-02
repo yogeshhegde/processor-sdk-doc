@@ -59,10 +59,8 @@ Detailed description of the directory structure is given below:
 .. rubric:: Software Dependencies
    :name: software-dependencies
 
--  `Processor SDK RTOS v3.3 and
-   later <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide#Processor-SDK_for_RTOS>`__
--  `Code Composer Studio IDE Environment v7 and
-   later <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide#Code_Composer_Studio>`__
+-  :ref:`Processor SDK RTOS v3.3 and later <GSG-Processor-SDK-for-RTOS-label>`
+-  :ref:`Code Composer Studio IDE Environment v7 and later <GSG-Code-Composer-Studio-label>`
 
 .. raw:: html
 
@@ -125,8 +123,7 @@ at both approaches.
 **Step1 : Setup Processor SDK RTOS build Environment.**
 
 Developers are required to setup the Processor SDK RTOS build
-environment as described in `Processor SDK RTOS Setup
-environment <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Setup_Environment>`__
+environment as described in :ref:`Processor SDK RTOS Setup environment <Build-The-SDK-Setup-Environment-label>`
 
 #. **set SDK_INSTALL_PATH = C:\ti\<Install directory>**
 #. **setupenv.bat**
@@ -138,9 +135,8 @@ environment <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building
 
 **NOTE**
 If developers install CCS or Processor SDK RTOS under Custom path then
-they need to refer to the setup instructions described under `Setup
-environment when installing to a custom
-path <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path>`__
+they need to refer to the setup instructions described under 
+:ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
 .. raw:: html
 
@@ -208,8 +204,7 @@ script provided in the root directory of the starterkit.
 TOOLS_INSTALL_PATH=C:\ti
 
 Developers are required to setup the Processor SDK RTOS build
-environment as described in `Processor SDK RTOS Setup
-environment <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Setup_Environment>`__
+environment as described in :ref:`Processor SDK RTOS Setup environment <Build-The-SDK-Setup-Environment-label>`
 
 .. raw:: html
 
@@ -218,9 +213,8 @@ environment <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building
 
 **NOTE**
 If developers install CCS or Processor SDK RTOS under a Custom path then
-they need to refer to the setup instructions described under `Setup
-environment when installing to a custom
-path <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path>`__
+they need to refer to the setup instructions described under 
+:ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
 .. raw:: html
 
@@ -312,8 +306,7 @@ a look at both these approaches.
 
 **Step 1: Connect Emulator and UART to Hardware**
 
--  Refer to the `Hardware Setup
-   guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions#Supported_Platforms_and_EVMs>`__
+-  Refer to the :ref:`Hardware Setup guide <SPV-Supported-Platforms-and-EVMs-label>`
    and connect the onboard or external emulator to the Hardware and Host
    machine with CCS installed.
 
@@ -329,7 +322,7 @@ a look at both these approaches.
 
 To connect to the SOC, developers need to create a Target configuration
 by following the procedure described in wiki
-`Create_Target_Configuration_File_for_EVM <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#Create_Target_Configuration_File_for_EVM>`__
+:ref:`Create_Target_Configuration_File_for_EVM <Create-Target-Configuration-File-for-EVM-label>`
 
 | 
 | Instructions specific to supported EVMs:
@@ -345,8 +338,7 @@ by following the procedure described in wiki
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-Please refer to `Hardware User
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions#Supported_Platforms_and_EVMs>`__
+Please refer to :ref:`Hardware User Guide <SPV-Supported-Platforms-and-EVMs-label>`
 corresponding to each supported EVM so setup the boot switches to No
 boot if available
 
@@ -393,10 +385,8 @@ Eg: create-sd evmK2G - Creates SD bootable images for K2G EVM.
 
 **Step 2 : Format and copy the SD card binaries to the SD card**
 
-Create an SD card using the procedure described in `Creating SD card in
-Windows <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
-and `Create SD card in
-Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__
+Create an SD card using the procedure described in :ref:`Creating SD card in Windows <Tools-Create-SD-Card-Windows-label>`
+and :ref:`Create SD card in Linux <Tools-Create-SD-Card-Linux-label>`
 
 Copy the "MLO" and "Singleprecision_<Module>_app" to the boot partition
 on the SD card.

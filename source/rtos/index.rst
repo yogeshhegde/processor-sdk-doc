@@ -1,4 +1,5 @@
 
+.. _Index-Processor-SDK-RTOS-label:
 Processor SDK RTOS
 =================================================================
 
@@ -46,6 +47,7 @@ build information, and examples to use as a template to start development.
    Foundational_Components
    DSP_Software
    Device_Drivers
+   PRU_ICSS
    Compilers
    Examples_and_Demonstrations
    How_to_Guides
@@ -204,6 +206,18 @@ build information, and examples to use as a template to start development.
 
 .. _OSAL: Device_Drivers.html#osal
 .. _Profiling: Device_Drivers.html#profiling
+
+
++-----------------------------+----------------------------+----------------------------+----------------------------+
+| **PRU-ICSS Firmware**                                                                                              |
++=============================+============================+============================+============================+
+| `Dual EMAC and Switch`_     | `PRU-ICSS SORTE`_          | `PRU-ICSS I2C`_            |                            |
++-----------------------------+----------------------------+----------------------------+----------------------------+
+
+.. _Dual EMAC and Switch: PRU_ICSS.html#dual-emac-and-switch
+.. _PRU-ICSS SORTE: PRU_ICSS.html#pru-icss-sorte
+.. _PRU-ICSS I2C: PRU_ICSS.html#pru-icss-i2c
+
 
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 | **Compilers**                                                                                                      |

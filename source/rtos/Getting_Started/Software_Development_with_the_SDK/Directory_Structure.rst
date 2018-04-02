@@ -83,8 +83,7 @@ These directories contain the collateral and tools applicable for RTOS:
    :name: components-included-in-sdk
 
 The following is a list of all components that may be included in the
-Processor-SDK RTOS SDK installer. See `Release
-Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes#Component_Version>`__
+Processor-SDK RTOS SDK installer. See :ref:`Release Notes <RN-Component-Version-label>`
 for applicable components for a specific platform.
 
 Development Host Content

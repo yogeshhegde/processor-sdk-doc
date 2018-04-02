@@ -23,8 +23,7 @@ indicated below.
 .. rubric::  Documentation
    :name: documentation
 
--  `**Getting Started
-   Guide** </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__:
+-  :ref:`**Getting Started Guide** <Processor-SDK-RTOS-Getting-Started-Guide-label>`:
    Provides information on getting the software and running basic
    examples/demonstrations bundled in the SDK.
 -  `**Migration
@@ -76,6 +75,7 @@ Released March 2018.
    -  RTOS Template Application extension to M4 and C66x cores on AM572x
       GP EVM
 
+.. _RN-Component-Version-label:
 .. rubric::  Component Version
    :name: component-version
 
@@ -893,8 +893,7 @@ release and any known workaround.
  Installation and Usage 
 ========================
 
-The `Getting Started
-Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__ provides
+The :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` provides
 instructions on how to setup up your development environment, install
 the SDK and start your development.
 

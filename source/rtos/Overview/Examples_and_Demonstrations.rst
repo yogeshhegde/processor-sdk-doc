@@ -262,8 +262,7 @@ both variable and updated continuously.
 
 X
 
-`RTOS Template
-Application </index.php/Processor_SDK_RTOS_Template_App>`__
+:ref:`RTOS Template Application <Demo-RTOS-Template-Application-label>`
 
 The RTOS template application is intended for customers to use as a
 starting point during software development using Processor SDK RTOS

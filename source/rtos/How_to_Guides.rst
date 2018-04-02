@@ -30,14 +30,15 @@ Host
 Setup
 ======
 
-Setup CCS for EVM and Processor-SDK RTOS
-------------------------------------------
-.. _Processor-SDK-RTOS-Setup-CCS:
+.. Setup CCS for EVM and Processor-SDK RTOS
+.. ------------------------------------------
+.. _Processor-SDK-RTOS-Setup-CCS-label:
 .. include:: How_to_Guides/Host/Setup/Setup_CCS_for_EVM_and_PSDK_RTOS.rst
 
 
-Update environment when installing to a custom path
------------------------------------------------------
+.. Update environment when installing to a custom path
+.. -----------------------------------------------------
+.. _Processor-SDK-RTOS-Install-In-Custom-Path-label:
 .. include:: How_to_Guides/Host/Setup/Update_ENV_for_a_Custom_Path.rst
 
 

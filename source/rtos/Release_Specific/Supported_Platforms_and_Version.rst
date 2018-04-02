@@ -69,6 +69,7 @@ SDK.
 
 | 
 
+.. _SPV-Supported-Platforms-and-EVMs-label:
 .. rubric:: Supported Platforms and EVMs
    :name: supported-platforms-and-evms
 

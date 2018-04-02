@@ -356,8 +356,7 @@ be updated as well for code section placement: from startup_ARMCA8.o
 7. Now build the project to generate hello_world.out file.
 
 8. Launch target configurations using your emulator to connect to AM335X
-EVM as described in the `Getting Started
-Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__.
+EVM as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`.
 
 9. Right click CortexA9 and connect target. The on target functionality
 in the GEL will initialize the clocks and DDR.
@@ -481,8 +480,7 @@ sections.
 7. Now build the project to generate hello_world_a8.out file.
 
 8. Launch target configurations using your emulator to connect to AM335X
-EVM as described in the `Getting Started
-Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__.
+EVM as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`.
 
 9. Right click CortexA8 and select connect target. The on target
 functionality in the GEL will initialize the clocks and DDR.
@@ -619,8 +617,7 @@ device internal memory.
 7. Now build the project to generate hello_world_m4.out.
 
 8. Launch target configurations using your emulator to connect to AM572X
-EVM as described in the `Getting Started
-Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__.
+EVM as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
 
 9. In order to wake up the M4 core from A15, Go to Menu option
 Scripts->AM572x_Multicore_Initialization->IPU1SSClkEnable_API. Refer to
@@ -793,8 +790,7 @@ code in different memory section.
 7. Now build the project to generate hello_world_dsp.out.
 
 8. Launch target configurations using your emulator to connect to AM572X
-EVM as described in the `Getting Started
-Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__.
+EVM as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
 
 9. In order to wake up the DSP1 core from A15, Go to Menu option
 Scripts->AM572x_Multicore_Initialization->DSP1SSClkEnable_API. Refer to
@@ -974,8 +970,7 @@ code in different memory section.
 "Build Project" to generate hello_world_lcdk674x.out.
 
 8. Launch target configurations using your emulator to connect to
-OMAPLx/C674x LCDK as described in the `Getting Started
-Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__.
+OMAPLx/C674x LCDK as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`.
 
 9. Developers can Connect to the C674x on OMAPL137/C6747/C6748 can
 connect directly to the DSP. For OMAPL138 device, you will need to

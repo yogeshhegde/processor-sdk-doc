@@ -75,9 +75,8 @@ Please follow below step by step procedure to build the application.
 #. Processor SDK RTOS and Code Composer Studio.
 #. Install Processor SDK RTOS ( AM57x, AM335x) respectively, in a
    location where CCS expects: (by default $HOME/ti or c:/ti) Refer
-   `Processor SDK RTOS Getting Started
-   Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__ for
-   details.
+   :ref:`Processor SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` 
+   for details.
 #. Open CCS:
 #. Click Project-->Import CCS Projects and select rtos_template_app
    under directory :
@@ -95,8 +94,8 @@ Please follow below step by step procedure to build the application.
 You will need the following:
 
 #. Install Code Composer Studio to load and run the Template
-   Application. Refer to `Processor SDK RTOS Getting Started
-   Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__ for
+   Application. Refer to :ref:`Processor SDK RTOS Getting Started
+   Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` for
    installing CCS.
 #. evmAM572x or evm AM335x board
 #. JTAG Emulator
@@ -107,9 +106,8 @@ To load and run Template Application:
    emulator.
 #. Power on evm574x or evm335x board. Ensure that no boot mode is
    entered (do not have SD card loaded or QSPI flashed)
-#. Open up a serial terminal for UART communication (Refer to `Processor
-   SDK RTOS Getting Started
-   Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__, setup
+#. Open up a serial terminal for UART communication (Refer to :ref:`Processor
+   SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`, setup
    EVM hardware)
 #. Open CCS and launch target config file for the EVM (Refer to
    `Processor SDK RTOS Setup
