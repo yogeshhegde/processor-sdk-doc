@@ -45,10 +45,11 @@ Related Software
 .. include:: Overview/Related_Software.rst
 
 
-************************************
-Technical Support
-************************************
-.. include:: Overview/Technical_Support.rst
+.. ************************************
+.. Technical Support
+.. ************************************
+.. _PRSDK-technical-support-label:
+.. include:: ../common/Overview/Processor_SDK_Technical_Support.rst
 
 
 ************************************

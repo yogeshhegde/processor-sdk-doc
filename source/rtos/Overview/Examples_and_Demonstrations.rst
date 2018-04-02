@@ -69,8 +69,7 @@ OMAPL137x/C6747x
 
 OMAPL138x/C6748x
 
-`Image Processing
-Demo </index.php/Processor_SDK_RTOS_Image_Processing_Demo>`__
+:ref:`Image Processing Demo <Demo-RTOS-Image-Processing-Demo-label>`
 
 The image processing demonstration utilizes SDK features such as
 multi-core A15 and DSP, optimized C66x IMGLIB, IPC, and UIA logging.
@@ -83,7 +82,7 @@ X
 
 X
 
-`POSIX-SMP Demo </index.php/Processor_SDK_Posix-SMP_Demo>`__
+:ref:`POSIX-SMP Demo <-RTOS-POSIX-SMP-Demo-label>`
 
 The Posix-SMP demonstration uses Posix APIs together with a simple
 benchmark (Dhrystone) to automatically calculate the effective
@@ -120,8 +119,7 @@ X
 
 X
 
-`Audio Benchmark
-Starterkit </index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit>`__
+:ref:`Audio Benchmark Starterkit <Demo-Audio-Benchmark-Starterkit-label>`
 
 The Audio Benchmark starter-kit demonstration provides quick and easy
 way to run core-benchmarks on the DSP for algorithms that are commonly
@@ -137,8 +135,7 @@ X
 
 X
 
-`Audio Pre-Processing
-Demo </index.php/Processor_SDK_RTOS_Audio_Pre-Processing>`__
+:ref:`Audio Pre-Processing Demo <Demo-Audio-Pre-Processing-Demo-label>`
 
 The Audio Pre-Processing demonstration provides an example for speech
 recognition application development by illustrating the integration of
@@ -151,8 +148,7 @@ X
 
 X
 
-`Big Data IPC
-Example </index.php/Processor_SDK_Big_Data_IPC_Examples>`__
+:ref:`Big Data IPC Example <Demo-Big-Data-IPC-Example-label>`
 
 The big data ipc examples are created mainly to show exchange of big
 data buffers between cores in a multi core system.
@@ -169,7 +165,7 @@ X
 
 X
 
-`TI-RTOS Kernel Example </index.php/Processor_SDK_RTOS_Examples>`__
+:ref:`TI-RTOS Kernel Example <Demo-TI-RTOS-Kernel-Example-label>`
 
 The RTOS examples gets user started with development of code using the
 TI-RTOS real-time operating system. These are simple examples that does
@@ -209,8 +205,7 @@ X
 
 X
 
-`No OS (Bare Metal)
-Example </index.php/Processor_SDK_Bare_Metal_Examples>`__
+:ref:`No OS (Bare Metal) Example <Demo-Bare-Metal-Example-label>`
 
 The bare-metal examples gets user started with development of code
 without an operating system. These are simple examples that does not get
@@ -252,8 +247,7 @@ X
 
 X
 
-`Gravity Simulator
-Demo </index.php/Processor_SDK_RTOS_Gravity_Simulator_Demo>`__
+:ref:`Gravity Simulator Demo <Demo-Gravity-Simulator-Demo-label>`
 
 The RTOS Gravity Simulator Demo demonstrates the usage of an open
 sourced library combined with RTOS drivers to create a vibrant display.

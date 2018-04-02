@@ -17,5 +17,6 @@ PRU-ICSS SORTE
 *************
 PRU-ICSS I2C
 *************
+.. _PRU-ICSS-I2C-FIRMWARE-label:
 .. include:: PDK_Platform_Software/PRU_ICSS_Drivers/I2C_FIRMWARE.rst
 

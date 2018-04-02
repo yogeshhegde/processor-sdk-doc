@@ -238,7 +238,7 @@ development ecosystem:
 -  Latest CCS Emulation package (for connecting to target using JTAG)
 -  Processor-SDK RTOS software
 
-See the `Release Notes </index.php/Processor_SDK_RTOS_Release_Notes>`__
+See the :ref`Release Notes <processor-sdk-rtos-release-notes>`
 for information on minimum requirements for host PC.
 
 The size of the installer is large since we want to provide one bundle
@@ -269,8 +269,7 @@ download page for your platform (see links in below section).
    <div
    style="word-wrap: break-word; margin: 5px; padding: 5px 10px; background-color: #fff3f3; border-left: 5px solid #ff3333;">
 
-**CAUTION** See the `Release
-Notes </index.php/Processor_SDK_RTOS_Release_Notes>`__ for the
+**CAUTION** See the :ref:`Release Notes <processor-sdk-rtos-release-notes>` for the
 recommended version of CCS. This is the version that was validated with
 the software in the SDK and will provide the best user experience.
 Occasionally, there may be compatibility issues if different versions
@@ -381,7 +380,7 @@ clicking "Get Software" for the RTOS package.
    and observe that the installer exits immediately after you try to run
    from command line then you need resolve dependencies using
    instructions provided here
-   `Processor_SDK_RTOS_Release_Notes#Installation_and_Usage </index.php/Processor_SDK_RTOS_Release_Notes#Installation_and_Usage>`__
+   :ref:`Processor_SDK_RTOS_Release_Notes <processor-sdk-rtos-release-notes>`
 
 .. raw:: html
 
@@ -421,8 +420,7 @@ If you connect to the EVM UART, use the following host configuration:
 -  **Flow Control**: Off
 
 For more information beyond what is covered in the *EVM Quick Start
-Guide*, see `EVM Hardware User
-Guides <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions#EVM_Hardware_Overview>`__.
+Guide*, see :ref:`EVM Hardware User Guides <RTOS-SDK-Supported-Platforms>`
 
 | 
 
@@ -451,9 +449,8 @@ installation path.
    </div>
 
 The next step is to make a connection between CCS and your EVM (or
-*target*). If you need help with this step, see the `Setup
-CCS </index.php/Processor_SDK_RTOS_Setup_CCS>`__ **How To** page
-explaining this further.
+*target*). If you need help with this step, see the `Setup CCS <Processor-SDK-RTOS-Setup-CCS-label>`
+**How To** page explaining this further.
 
 At this point, you should be able to connect to target using CCS and
 start development!
