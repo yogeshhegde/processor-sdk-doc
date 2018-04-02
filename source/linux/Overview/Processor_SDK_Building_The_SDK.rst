@@ -92,11 +92,13 @@ Run the following commands to install the Linaro Toolchain.
 Build Steps
 -----------
 
+Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a particular release of Processor SDK Linux.
+
 ::
 
     $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
     $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-04.02.00.09-config.txt
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
     $ cd build
     $ . conf/setenv
     $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
@@ -120,7 +122,7 @@ build to obtain these packages from the TI mirror.
 
     $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
     $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-04.02.00.09-config.txt
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
     $ cd build
     $ cat >> ./conf/local.conf << 'EOF'
 
@@ -168,7 +170,7 @@ in the command:
 ``MACHINE=<machine> bitbake <target>``
 
 The "Build Output" is given relative to the
-*arago-tmp-[toolchain]/deploy* directory.
+**arago-tmp-[toolchain]/deploy** directory.
 
 +------------------------------+---------------------------------------------------------------+---------------------+
 | **Target**                   | **Build Output**                                              | **Description**     |
@@ -245,8 +247,8 @@ during the build when external URLs become unavailable. To use the
 snapshot of sources distributed with a given Processor SDK release, you
 must download a script from the SDK download page and then execute it on
 your host to fetch all the packages from TI servers. For example, see
-am57xx-evm-linux-sdk-arago-src-04.02.00.09.tar.xz file in
-`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/04_02_00_09/index_FDS.html>`__.
+am57xx-evm-linux-sdk-arago-src-<version>.tar.xz file in
+`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/latest/index_FDS.html>`__.
 Once this package is downloaded, there are just a few extra steps in the
 build process to fetch all the corresponding packages. The extra steps
 are shown in red below:
@@ -255,7 +257,7 @@ are shown in red below:
 
     $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
     $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-04.02.00.09-config.txt
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
     $ mkdir downloads
     $ cd downloads
     $ # Assuming src file downloaded to $HOME/Downloads
@@ -286,7 +288,7 @@ dependencies it defines.
 ``MACHINE=am57xx-evm bitbake opencl``
 
 After the bitbake command above is successfully done,
-*arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl* directory
+**arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl** directory
 will be available including the original source code under the git
 folder, independent shared objects (.so files) under packages-split
 folder, and IPKs under deploy-ipks folder.
@@ -298,7 +300,7 @@ folder, and IPKs under deploy-ipks folder.
    :name: Forced Re-compilation
 
 When needed, source code under the work directory (e.g.,
-*arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl*/git) can
+**arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl**/git) can
 be modified. After the modification is done, run the following commands
 to force recompilation with the new code and rebuilding of the recipe,
 e.g.,
@@ -312,7 +314,7 @@ e.g.,
 
 To install a modified and rebuilt package, copy the new IPKs from the
 deploy-ipks folder (e.g.,
-*arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl/[version]/deploy-ipks*)
+**arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl/[version]/deploy-ipks**)
 to the target system and then run the following command to install the
 IPKs:
 
@@ -330,8 +332,8 @@ recipe's output from the dependency tree used by other recipe's during
 compilation.
 
 
-Common Variations
------------------
+Common Variations (no SGX, X11, etc.) 
+=====================================
 
 .. rubric:: Rebuilding without SGX
    :name: rebuilding-without-sgx
