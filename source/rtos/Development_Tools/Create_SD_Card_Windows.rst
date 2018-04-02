@@ -1,5 +1,5 @@
-Creating a SD Card with Windows
-================================
+Windows SD Card Creation Guide
+===============================
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows 
 

@@ -9,6 +9,18 @@ Overview
 .. _Processor-SDK-RTOS-Getting-Started-Guide-label:
 .. include:: Overview/Getting_Started_Guide.rst
 
+.. Create an SD card on Windows host
+.. ======================================
+.. _Tools-Create-SD-Card-Windows-label:
+.. include:: Development_Tools/Create_SD_Card_Windows.rst
+
+
+.. Create an SD card on Linux host
+.. ======================================
+.. _Tools-Create-SD-Card-Linux-label:
+.. include:: Development_Tools/Create_SD_Card_Linux.rst
+
+
 ************************************
 Directory Structure
 ************************************
