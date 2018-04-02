@@ -38,17 +38,29 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 
 .. _Getting Started Guide: Overview.html#processor-sdk-linux-getting-started-guide
 .. _Supported Platforms and Versions: Release_Specific.html#supported-platforms-and-versions
+.. _Hardware platform: Release_Specific.html#supported-platforms-and-versions
 .. _Release Notes: Release_Specific.html#release-notes
 .. _Technical Support: Overview.html#technical-support
 .. _Directory Structure Overview: Overview.html#directory-structure-overview
 .. _Linux Software Stack: Overview.html#software-stack
+.. _Embedded Linux System: Overview.html#software-stack
 .. _Building the SDK: Overview.html#building-the-sdk
 .. _Migration Guide: Release_Specific.html#migration-guide
 .. _MCSDK to Processor SDK Migration Guide: Release_Specific.html#mcsdk-to-processor-sdk-migration-guide
 .. _GPLv3 Disclaimer: Licenses.html#gplv3-disclaimer
 .. _How To Guides: Processor_Linux_SDK_How_To_Guides.html
-
-
+.. _Processor SDK Linux How-To Guides: Processor_Linux_SDK_How_To_Guides.html
+.. _Linux SDK Software Developer's Guide: Overview.html#processor-sdk-linux-software-developer-s-guide
+.. _Processor SDK Linux Software Developer's Guide: Overview.html#processor-sdk-linux-software-developer-s-guide
+.. _Developing with the Linux SDK: Overview.html#start-your-linux-development
+.. _Creating a SD Card with Windows: Overview.html#windows-sd-card-creation-guide
+.. _Install the Linux SDK: Overview.html#download-and-install-the-sdk
+.. _SDK Create SD Card Script: Overview.html#linux-sd-card-creation-guide
+.. _Program EVM User Guide: Overview.html#id5
+.. _Verifying NOR: Overview.html#id7
+.. _Run the Setup.sh Script: Overview.html#processor-sdk-linux-setup-script-overview
+.. _top-level Makefile: Overview.html#id9
+ 
 +---------------+--------------------------+------------------+-----------------------------------+
 | **Foundational Components** (more information on each piece of the distribution)                |
 +===============+==========================+==================+===================================+
@@ -62,14 +74,18 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 +---------------+--------------------------+------------------+-----------------------------------+
 
 .. _U-Boot: Foundational_Components.html#u-boot 
+.. _Processor SDK Linux U-Boot: Foundational_Components.html#u-boot 
 .. _Boot Monitor: Foundational_Components.html#boot-monitor
 .. _Kernel: Foundational_Components.html#kernel
+.. _Processor SDK Linux Kernel: Foundational_Components.html#kernel
 .. _Filesystem: Foundational_Components.html#filesystem
+.. _Processor SDK Linux Filesystem: Foundational_Components.html#filesystem
 .. _Tools: Foundational_Components.html#tools
-.. _OpenCL: Foundational_Components.html#id117
+.. _Processor SDK Linux Tools: Foundational_Components.html#tools
+.. _OpenCL: Foundational_Components.html#id119
 .. _OpenCV: Foundational_Components.html#opencv
-.. _Graphics & Display: Foundational_Components.html#id113
-.. _Multimedia: Foundational_Components.html#id116
+.. _Graphics & Display: Foundational_Components.html#id115
+.. _Multimedia: Foundational_Components.html#id118
 .. _Examples, Demos: Examples_and_Demos.html
 .. _PRU-ICSS: Industrial_Protocols.html
 .. _Virtualization: Foundational_Components.html#virtualization

@@ -1,6 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Program_EVM_UG
-.. rubric:: Overview
-   :name: overview
+
+Program EVM User Guide
+======================
+
+Overview
+--------
 
 This release provides the images for the factory to program on the
 eeprom, nand and nor for EVMK2H, EVM2E, and EVMK2L. The mechanism only
@@ -9,10 +13,8 @@ DSP, such as AM5K2E02 and AM5K2E04 devices.
 
 | 
 
-| 
-
-.. rubric:: Files Provided
-   :name: files-provided
+Files Provided
+--------------
 
 The files used for programming the EVMs are provided under
 bin\\program\_evm\\binaries\\[evmk2h, evmk2e, evmk2l].
@@ -82,8 +84,8 @@ nand\_writer\_input.txt:
 | Please use the md5sum utility from the following link:
   http://www.pc-tools.net/files/win32/freeware/md5sums-1.2.zip
 
-.. rubric:: Device Support
-   :name: device-support
+Device Support
+--------------
 
 -  EVMK2H in Little endian Mode.
 -  EVMK2E in little endian mode
@@ -91,8 +93,8 @@ nand\_writer\_input.txt:
 
 | 
 
-.. rubric:: Directory Structure
-   :name: directory-structure
+Directory Structure
+-------------------
 
 -  The program\_evm (top-level) directory is intended to hold the
    \*DSS\* script for the Code Composer Studio which programs the
@@ -141,14 +143,14 @@ nand\_writer\_input.txt:
 
 | 
 
-.. rubric:: Programming the bin files
-   :name: programming-the-bin-files
+Programming the bin files
+-------------------------
 
 | This section assumes you have installed Processor SDK 02.00.01 and
   above (which supports EVMK2H/EVMK2L/EVMK2E) and Code Composer Studio.
 
-.. rubric:: Verify CCS Connection
-   :name: verify-ccs-connection
+Verify CCS Connection
+---------------------  
 
 First, start CCS on linux host machine and configure the target
 configuration for the EVM (e.g.,
@@ -598,9 +600,10 @@ Reset U-Boot environment variables if U-Boot version has been changed
   of the Host PC. If Host is running Windows OS, start tera term and
   configure the serial port settings as follows.
 .. Image:: ../images/Tera_Term_Connect.jpg
+|
 
-.. rubric:: Verifying NOR
-   :name: verifying-nor
+Verifying NOR
+-------------
 
 .. rubric:: EVMK2H, EVMK2E, EVMK2L
    :name: evmk2h-evmk2e-evmk2l

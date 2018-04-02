@@ -26,10 +26,6 @@ Download and Install the SDK
 
 .. include:: Overview/Download_and_Install_the_SDK.rst
 
-
-Program EVM
-======================================
-
 .. include:: Overview/Program_EVM.rst
 
 
