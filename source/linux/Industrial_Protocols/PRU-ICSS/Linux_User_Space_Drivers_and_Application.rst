@@ -92,15 +92,21 @@ directories, respectively.
 .. rubric:: Running ICSS-EMAC Unit Test in Linux User Space
    :name: running-icss-emac-unit-test-in-linux-user-space
 
-| ICSS-EMAC unit test demonstrates loopback capability by sending dummy
-  broadcast packets, which are then looped back with loopback cables.
-  Unit test registers receive packet callback routine with LLD to be
-  called for RX packet. Call back routine will extract packet received,
-  perform simple memory comparison against packet sent for integrity
-  check. Unit test will iterate 10 times for packet transmission and
-  reception check. It also demonstrates time trigger send (TTS) after
-  broadcast packets send/receive are completed. At the end of unit test,
-  "All tests have passed" will be printed on console.
+ICSS-EMAC unit test demonstrates loopback capability by sending dummy
+broadcast packets, which are then looped back with loopback cables.
+Unit test registers receive packet callback routine with LLD to be
+called for RX packet. Call back routine will extract packet received,
+perform simple memory comparison against packet sent for integrity
+check. Unit test will iterate 10 times for packet transmission and
+reception check. It also demonstrates time trigger send (TTS) after
+broadcast packets send/receive are completed. At the end of unit test,
+"All tests have passed" will be printed on console.
+
+
+.. note::
+
+  Please note that time trigger send (TTS) is supported for PROCESSOR-SDK-LINUX-RT builds only due to its real-time requirement. Running TTS with PROCESSOR-SDK-LINUX builds can fail with "Packet cyclic timestamp error".
+
 
 ICSS-EMAC user space driver and unit test are now supported on multiple
 TI platforms, including
@@ -111,8 +117,10 @@ TI platforms, including
 -  AM572x IDK
 -  K2G ICE
 
-| The sections below describe the procedure and sample logs of running
-  the ICSS-EMAC unit test on these platforms.
+The sections below describe the procedure and sample logs of running
+the ICSS-EMAC unit test on these platforms.
+
+|
 
 .. rubric:: AM335x ICE V2
    :name: am335x-ice-v2
