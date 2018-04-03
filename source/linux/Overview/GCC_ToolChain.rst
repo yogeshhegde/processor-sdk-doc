@@ -57,41 +57,41 @@ components of the toolchain.
 .. rubric:: Cross-Compilers/Tools
    :name: cross-compilerstools
 
-| The cross-compilers and tools such as qmake2 can be found the the
-  **<SDK INSTALL DIR>/linux-devkit/bin** directory. Adding this
-  directory to your PATH will allow using these tools. For example:
+The cross-compilers and tools such as qmake2 can be found the the
+**<SDK INSTALL DIR>/linux-devkit/bin** directory. Adding this
+directory to your PATH will allow using these tools. For example:
 
 **host# export PATH="<SDK INSTALL
 DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin:$PATH"**
-| 
-| The cross-compile tools are prefixed with the **arm-linux-gnueabihf-**
-  prefix. i.e. the GCC cross compiler is called
-  **arm-linux-gnueabihf-gcc**. Additional tools are also located here
-  such as the **qmake2, rcc, uic** tools used by Qt. In addition there
-  is a qt.conf file that can be used by tools such as Qt creator to use
-  the pre-built libraries found in the Linux SDK.
+
+The cross-compile tools are prefixed with the **arm-linux-gnueabihf-**
+prefix. i.e. the GCC cross compiler is called
+**arm-linux-gnueabihf-gcc**. Additional tools are also located here
+such as the **qmake2, rcc, uic** tools used by Qt. In addition there
+is a qt.conf file that can be used by tools such as Qt creator to use
+the pre-built libraries found in the Linux SDK.
 
 .. rubric:: Cross-Compiled Libraries
    :name: cross-compiled-libraries
 
-| The toolchain within the Linux SDK contains more than just the
-  cross-compiler, it also contains pre-built libraries that can be used
-  in your applications without requiring you to cross-compile them
-  yourself. These libraries include packages from alsa to zlib. The
-  libraries are located in the **<SDK INSTALL
-  DIR>/linux-devkit/sysroots/<device specific
-  string>-vfp-neon-linux-gnueabi/** directory. For a list of the
-  libraries you can refer to the software manifest found in the **<SDK
-  INSTALL DIR>/docs** directory or look at the list of libraries
-  available in the **<SDK INSTALL DIR>/linux-devkit/sysroots/<device
-  specific string>-vfp-neon-linux-gnueabi/usr/lib** directory. You will
-  also find the header files corresponding to these libraries in the
-  **<SDK INSTALL DIR>/linux-devkit/sysroots/<device specific
-  string>-vfp-neon-linux-gnueabi/usr/include** directory. Usage of these
-  libraries will be covered in more detail in the next sections, but as
-  an example if your application wants access to the alsa asound library
-  then you can now do the following command (assuming you have added the
-  cross compiler to your PATH):
+The toolchain within the Linux SDK contains more than just the
+cross-compiler, it also contains pre-built libraries that can be used
+in your applications without requiring you to cross-compile them
+yourself. These libraries include packages from alsa to zlib. The
+libraries are located in the **<SDK INSTALL
+DIR>/linux-devkit/sysroots/<device specific
+string>-vfp-neon-linux-gnueabi/** directory. For a list of the
+libraries you can refer to the software manifest found in the **<SDK
+INSTALL DIR>/docs** directory or look at the list of libraries
+available in the **<SDK INSTALL DIR>/linux-devkit/sysroots/<device
+specific string>-vfp-neon-linux-gnueabi/usr/lib** directory. You will
+also find the header files corresponding to these libraries in the
+**<SDK INSTALL DIR>/linux-devkit/sysroots/<device specific
+string>-vfp-neon-linux-gnueabi/usr/include** directory. Usage of these
+libraries will be covered in more detail in the next sections, but as
+an example if your application wants access to the alsa asound library
+then you can now do the following command (assuming you have added the
+cross compiler to your PATH):
 
 **host# arm-linux-gnueabihf-gcc -lasound app.c -o app.out**
 | 
@@ -111,8 +111,8 @@ for you. This script exports variables to perform actions such as:
 -  Setting standard variable such as CC, CPP, AR to the cross-compile
    values
 
-| To *use* the environment-setup script you only need to source it. This
-  is as simple as:
+To **use** the environment-setup script you only need to source it. This
+is as simple as:
 
 **host# source linux-devkit/environment-setup**
 | 
@@ -121,7 +121,7 @@ To know if the environment setup script has been sourced in your current
 shell the shell prompt will be changed to contain the
 **[linux-devkit]:** prefix in the command prompt.
 
-The `**Usage** <#usage>`__ section below will cover some cases where
+The `Usage <#usage>`__ section below will cover some cases where
 using the environment-setup script is useful.
 
 .. rubric:: When Compiling the Linux Kernel
