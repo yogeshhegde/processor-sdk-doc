@@ -1251,7 +1251,7 @@ Supported OPPs:
           1176000 1210000   /* OPP_OD */
 
 .. rubric:: SmartReflex
-   :name: smartreflex-1
+   :name: smartreflex-2
 
 DRA7 platforms use Class 0 SmartReflex. It is a very simple class of
 AVS. The SR compensated voltages for different OPPs of various Voltage
