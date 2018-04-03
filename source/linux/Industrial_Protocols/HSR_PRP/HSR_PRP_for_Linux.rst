@@ -1281,8 +1281,177 @@ Using the above script, user teardown the hsr interface as
 
     /teardown.sh hsr
 
-Sample logs are shown here `DAN-H-1 </index.php/DAN-H-1>`__,
-`DAN-H-2 </index.php/DAN-H-2>`__
+Sample logs are shown below:
+
+**DAN-H-1**
+
+::
+
+    root@am57xx-evm:~# ifconfig eth2
+    eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0F:8D  [   38.944687] random: nonblocking pool is initialized
+              BROADCAST MULTICAST  MTU:1500  Metric:1
+              RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000
+               RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+    root@am57xx-evm:~# /setup.sh hsr 70:FF:76:1C:0F:8D 192.168.2.20
+    Setting up hsr0 interface with MAC address 70:FF:76:1C:0F:8D for slaves and IP address 192.168.2.20
+    [   62.319328]  remoteproc6: powering up 4b2b4000.pru0
+    [   62.325015]  remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 4350
+    [   62.335303] ti-pruss 4b280000.pruss: configured system_events = 0x0000060000500000 intr_channels = 0x00000095 host_intr = 0x00000115
+    [   62.348724]  remoteproc6: remote processor 4b2b4000.pru0 is now up
+    [   62.354947] net eth2: started
+    [   62.360842] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
+    [   62.408479]  remoteproc7: powering up 4b2b8000.pru1
+    [   62.413790]  remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 4382
+    [   62.422088] ti-pruss 4b280000.pruss: configured system_events = 0x0060000000a00000 intr_channels = 0x0000012a host_intr = 0x0000022a
+    [   62.434059]  remoteproc7: remote processor 4b2b8000.pru1 is now up
+    [   62.440281] net eth3: started
+    [   62.444625] IPv6: ADDRCONF(NETDEV_UP): eth3: link is not ready
+    [   62.509276] device eth2 entered promiscuous mode
+    [   62.549502] device eth3 entered promiscuous mode
+    [   62.593878] hsr0: Slave A (eth2) is not up; please bring it up to get a fully working HSR network
+    [   62.604214] IPv6: ADDRCONF(NETDEV_UP): hsr0: link is not ready
+    [   62.614722] IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
+    root@am57xx-evm:~#
+    root@am57xx-evm:~# [   63.648569] eth2: Link is Up - 100Mbps/Full - flow control off
+    [   63.654446] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
+    [   63.748602] eth3: Link is Up - 100Mbps/Full - flow control off
+    [   63.754477] IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
+
+    =========Setup hsr0 on DAN-H-2=============================================
+
+    root@am57xx-evm:~# ping 192.168.2.30
+    PING 192.168.2.30 (192.168.2.30): 56 data bytes
+    64 bytes from 192.168.2.30: seq=0 ttl=64 time=0.400 ms
+    64 bytes from 192.168.2.30: seq=1 ttl=64 time=0.190 ms
+    64 bytes from 192.168.2.30: seq=2 ttl=64 time=0.200 ms
+
+    --- 192.168.2.30 ping statistics ---
+    3 packets transmitted, 3 packets received, 0% packet loss
+    round-trip min/avg/max = 0.190/0.263/0.400 ms
+    root@am57xx-evm:~#
+    root@am57xx-evm:~# iperf -s
+    ------------------------------------------------------------
+    Server listening on TCP port 5001
+    TCP window size: 85.3 KByte (default)
+    ------------------------------------------------------------
+    [  4] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 33546
+    [ ID] Interval       Transfer     Bandwidth
+    [  4]  0.0-10.0 sec   108 MBytes  90.7 Mbits/sec
+    root@am57xx-evm:~# iperf -s -u
+    ------------------------------------------------------------
+    Server listening on UDP port 5001
+    Receiving 1470 byte datagrams
+    UDP buffer size:  160 KByte (default)
+    ------------------------------------------------------------
+    [  3] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 47913
+    [ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+    [  3]  0.0-10.0 sec   106 MBytes  89.0 Mbits/sec   0.078 ms  587/76246 (0.77%)
+    [  3]  0.0-10.0 sec  1 datagrams received out-of-order
+    root@am57xx-evm:~#
+    root@am57xx-evm:~# cat /sys/kernel/debug/hsr/node_table
+    Node Table entries
+    MAC-Address-A,   MAC-Address-B, time_in[A], time_in[B], Address-B port
+    d6:ab:09:0d:f0:e5: 00:00:00:00:00:00:0x45f, 0x45f 0x0
+
+    root@am57xx-evm:~# cat /sys/kernel/debug/hsr/stats
+    Stats entries
+    cnt_tx_a = 57946
+    cnt_tx_b = 57950
+    cnt_tx_c = 57536
+    cnt_rx_wrong_lan_a = 5
+    cnt_rx_wrong_lan_b = 0
+    cnt_rx_a = 232255
+    cnt_rx_b = 232233
+    cnt_rx_c = 230427
+    cnt_rx_errors_a = 45
+    cnt_rx_errors_b = 43
+    cnt_own_rx_a = 0
+
+
+
+**DAN-H-2**
+
+::
+
+    root@am57xx-evm:~# ifconfig eth2
+    eth2      Link encap:Ethernet  HWaddr D6:AB:09:0D:F0:E5
+              BROADCAST MULTICAST  MTU:1500  Metric:1
+              RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000
+              RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+    root@am57xx-evm:~# /setup.sh hsr D6:AB:09:0D:F0:E5 192.168.2.30
+    Setting up hsr0 interface with MAC address D6:AB:09:0D:F0:E5 for slaves and IP address
+    192.168.2.30
+    [   66.015629]  remoteproc6: powering up 4b2b4000.pru0
+    [   66.021263]  remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 4350
+    [   66.031502] ti-pruss 4b280000.pruss: configured system_events = 0x0000060000500000
+    intr_channels = 0x00000095 host_intr = 0x00000115
+    [   66.044965]  remoteproc6: remote processor 4b2b4000.pru0 is now up
+    [   66.052043] net eth2: started
+    [   66.055419] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
+    [   66.108268]  remoteproc7: powering up 4b2b8000.pru1
+    [   66.113562]  remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 4382
+    [   66.123585] ti-pruss 4b280000.pruss: configured system_events = 0x0060000000a00000
+    intr_channels = 0x0000012a host_intr = 0x0000022a
+    [   66.136973]  remoteproc7: remote processor 4b2b8000.pru1 is now up
+    [   66.143998] net eth3: started
+    [   66.147284] IPv6: ADDRCONF(NETDEV_UP): eth3: link is not ready
+    [   66.218855] device eth2 entered promiscuous mode
+    [   66.258015] device eth3 entered promiscuous mode
+    [   66.303911] hsr0: Slave A (eth2) is not up; please bring it up to get a fully working HSR
+    network
+    [   66.313621] IPv6: ADDRCONF(NETDEV_UP): hsr0: link is not ready
+    [   66.323162] IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
+    root@am57xx-evm:~# [   67.358460] eth2: Link is Up - 100Mbps/Full - flow control off
+    [   67.364336] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
+    [   67.518489] eth3: Link is Up - 100Mbps/Full - flow control off
+    [   67.524363] IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
+
+    root@am57xx-evm:~# iperf -c 192.168.2.20
+    ------------------------------------------------------------
+    Client connecting to 192.168.2.20, TCP port 5001
+    TCP window size: 70.0 KByte (default)
+    ------------------------------------------------------------
+    [  3] local 192.168.2.30 port 33546 connected with 192.168.2.20 port 5001
+    [ ID] Interval       Transfer     Bandwidth
+    [  3]  0.0-10.0 sec   108 MBytes  90.9 Mbits/sec
+    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b 90M
+    ------------------------------------------------------------
+    Client connecting to 192.168.2.20, UDP port 5001
+    Sending 1470 byte datagrams
+    UDP buffer size:  160 KByte (default)
+    ------------------------------------------------------------
+    [  3] local 192.168.2.30 port 47913 connected with 192.168.2.20 port 5001
+    [ ID] Interval       Transfer     Bandwidth
+    [  3]  0.0-10.0 sec   107 MBytes  89.7 Mbits/sec
+    [  3] Sent 76247 datagrams
+    [  3] Server Report:
+    [  3]  0.0-10.0 sec   106 MBytes  89.0 Mbits/sec   0.078 ms  587/76246 (0.77%)
+    [  3]  0.0-10.0 sec  1 datagrams received out-of-order
+    root@am57xx-evm:~# cat /sys/kernel/debug/hsr/node_table
+    Node Table entries
+    MAC-Address-A,   MAC-Address-B, time_in[A], time_in[B], Address-B port
+    70:ff:76:1c:0f:8d: 00:00:00:00:00:00:0x2f72, 0x2f72 0x0
+    root@am57xx-evm:~# cat /sys/kernel/debug/hsr/stats
+    Stats entries
+    cnt_tx_a = 233534
+    cnt_tx_b = 233534
+    cnt_tx_c = 233171
+    cnt_rx_wrong_lan_a = 0
+    cnt_rx_wrong_lan_b = 0
+    cnt_rx_a = 57638
+    cnt_rx_b = 57638
+    cnt_rx_c = 57457
+    cnt_rx_errors_a = 12
+    cnt_rx_errors_b = 13
+    cnt_own_rx_a = 0
+    cnt_own_rx_b = 0
+
 
 .. _PLSDK_PTP_Testing:
 
@@ -1341,8 +1510,193 @@ To teardown the prp interface do
 
     /teardown.sh prp
 
-Sample logs are shown here `DAN-P-1 </index.php/DAN-P-1>`__,
-`DAN-P-2 </index.php/DAN-P-2>`__
+Sample logs are shown below:
+
+**DAN-P-1**
+
+::
+
+    root@am57xx-evm:~# ifconfig eth2
+    eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0F:8D
+              inet6 addr: fe80::72ff:76ff:fe1c:f8d%3068183320/64 Scope:Link
+              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+              RX packets:80429 errors:0 dropped:0 overruns:0 frame:593
+              TX packets:40905 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000
+              RX bytes:121704175 (116.0 MiB)  TX bytes:2716445 (2.5 MiB)
+
+    root@am57xx-evm:~# /setup.sh prp 70:FF:76:1C:0F:8D 192.168.2.20
+    Setting up prp0 interface with MAC address 70:FF:76:1C:0F:8D for slaves and IP address
+    192.168.2.20
+    [21649.978346] ti-pruss 4b280000.pruss: unconfigured system_events = 0x0000060000500000
+    host_intr = 0x00000115
+    [21649.988138]  remoteproc6: stopped remote processor 4b2b4000.pru0
+    [21649.994196] net eth2: stopped
+    [21650.048408] ti-pruss 4b280000.pruss: unconfigured system_events = 0x0060000000a00000
+    host_intr = 0x0000022a
+    [21650.058199]  remoteproc7: stopped remote processor 4b2b8000.pru1
+    [21650.064258] net eth3: stopped
+    [21650.084733]  remoteproc6: powering up 4b2b4000.pru0
+    [21650.090419]  remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 4350
+    [21650.098711] ti-pruss 4b280000.pruss: configured system_events = 0x0000060000500000
+    intr_channels = 0x00000095 host_intr = 0x00000115
+    [21650.110746]  remoteproc6: remote processor 4b2b4000.pru0 is now up
+    [21650.117709] net eth2: started
+    [21650.121113] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
+    [21650.131268]  remoteproc7: powering up 4b2b8000.pru1
+    [21650.136538]  remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 4382
+    [21650.144871] ti-pruss 4b280000.pruss: configured system_events = 0x0060000000a00000
+    intr_channels = 0x0000012a host_intr = 0x0000022a
+    [21650.156838]  remoteproc7: remote processor 4b2b8000.pru1 is now up
+    [21650.163795] net eth3: started
+    [21650.167169] IPv6: ADDRCONF(NETDEV_UP): eth3: link is not ready
+    [21650.188520] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
+    [21650.248510] device eth2 entered promiscuous mode
+    [21650.287995] device eth3 entered promiscuous mode
+    [21650.328127] IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
+
+    root@am57xx-evm:~# ping 192.168.2.30
+    PING 192.168.2.30 (192.168.2.30): 56 data bytes
+    64 bytes from 192.168.2.30: seq=0 ttl=64 time=0.401 ms
+    64 bytes from 192.168.2.30: seq=1 ttl=64 time=0.189 ms
+    64 bytes from 192.168.2.30: seq=2 ttl=64 time=0.186 ms
+    ^C
+    --- 192.168.2.30 ping statistics ---
+    3 packets transmitted, 3 packets received, 0% packet loss
+    round-trip min/avg/max = 0.186/0.258/0.401 ms
+    root@am57xx-evm:~#
+    root@am57xx-evm:~#
+    root@am57xx-evm:~#
+    root@am57xx-evm:~# iperf -s
+    ------------------------------------------------------------
+    Server listening on TCP port 5001
+    TCP window size: 85.3 KByte (default)
+    ------------------------------------------------------------
+    [  4] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 38900
+    [ ID] Interval       Transfer     Bandwidth
+    [  4]  0.0-10.0 sec   109 MBytes  91.5 Mbits/sec
+    ^Croot@am57xx-evm:~# iperf -s  -u
+    ------------------------------------------------------------
+    Server listening on UDP port 5001
+    Receiving 1470 byte datagrams
+    UDP buffer size:  160 KByte (default)
+    ------------------------------------------------------------
+    [  3] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 43497
+    [ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
+    [  3]  0.0-10.0 sec   106 MBytes  88.8 Mbits/sec   0.070 ms  583/76109 (0.77%)
+    [  3]  0.0-10.0 sec  1 datagrams received out-of-order
+    ^Croot@am57xx-evm:~#
+    root@am57xx-evm:~#
+    root@am57xx-evm:~#
+    root@am57xx-evm:~# cat /sys/kernel/debug/prp/stats
+    Stats entries
+    cnt_tx_a = 40864
+    cnt_tx_b = 40864
+    cnt_tx_c = 40801
+    cnt_rx_wrong_lan_a = 8
+    cnt_rx_wrong_lan_b = 0
+    cnt_rx_a = 230882
+    cnt_rx_b = 230878
+    cnt_rx_c = 230746
+    cnt_rx_errors_a = 0
+    cnt_rx_errors_b = 0
+
+    root@am57xx-evm:~# cat /sys/kernel/debug/prp/node_table
+    Node Table entries
+    MAC-Address-A,   MAC-Address-B, time_in[A], time_in[B], Address-B port, san_a, san_b
+    11:ff:fe:80:00:00: 00:00:00:00:00:00:0x209604, 0x20964b 0x0, 1, 0
+    2a:da:8c:50:1b:86: 00:00:00:00:00:00:0x20c78e, 0x20c78e 0x0, 0, 0
+
+
+**DAN-P-2**
+
+::
+
+    root@am57xx-evm:~# ifconfig eth2
+    eth2      Link encap:Ethernet  HWaddr 2A:DA:8C:50:1B:86
+             inet6 addr: fe80::28da:8cff:fe50:1b86%3068203800/64 Scope:Link
+             UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+             RX packets:40881 errors:0 dropped:10 overruns:0 frame:64
+             TX packets:81022 errors:0 dropped:3528075 overruns:0 carrier:0
+             collisions:0 txqueuelen:1000
+             RX bytes:2718950 (2.5 MiB)  TX bytes:122601929 (116.9 MiB)
+
+    root@am57xx-evm:~# /setup.sh prp 2A:DA:8C:50:1B:86 192.168.2.30
+    Setting up prp0 interface with MAC address 2A:DA:8C:50:1B:86 for slaves and IP address
+    192.168.2.30
+    [21684.048303] ti-pruss 4b280000.pruss: unconfigured system_events = 0x0000060000500000
+    host_intr = 0x00000115
+    [21684.058095]  remoteproc6: stopped remote processor 4b2b4000.pru0
+    [21684.064152] net eth2: stopped
+    [21684.118368] ti-pruss 4b280000.pruss: unconfigured system_events = 0x0060000000a00000
+    host_intr = 0x0000022a
+    [21684.128160]  remoteproc7: stopped remote processor 4b2b8000.pru1
+    [21684.134217] net eth3: stopped
+    [21684.158347]  remoteproc6: powering up 4b2b4000.pru0
+    [21684.164069]  remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 4350
+    [21684.172524] ti-pruss 4b280000.pruss: configured system_events = 0x0000060000500000
+    intr_channels = 0x00000095 host_intr = 0x00000115
+    [21684.184563]  remoteproc6: remote processor 4b2b4000.pru0 is now up
+    [21684.191761] net eth2: started
+    [21684.195184] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
+    [21684.205638]  remoteproc7: powering up 4b2b8000.pru1
+    [21684.210960]  remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 4382
+    [21684.219252] ti-pruss 4b280000.pruss: configured system_events = 0x0060000000a00000
+    intr_channels = 0x0000012a host_intr = 0x0000022a
+    [21684.231220]  remoteproc7: remote processor 4b2b8000.pru1 is now up
+    [21684.238235] net eth3: started
+    [21684.241684] IPv6: ADDRCONF(NETDEV_UP): eth3: link is not ready
+    [21684.339123] device eth2 entered promiscuous mode
+    [21684.377962] device eth3 entered promiscuous mode
+    [21684.425802] prp0: Slave A (eth2) is not up; please bring it up to get a fully working HSR
+    network
+    [21684.436772] IPv6: ADDRCONF(NETDEV_UP): prp0: link is not ready
+    [21684.443615] IPv6: ADDRCONF(NETDEV_CHANGE): prp0: link becomes ready
+    root@am57xx-evm:~# [21684.488601] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
+    [21684.518615] IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
+
+    root@am57xx-evm:~# iperf -c 192.168.2.20
+    ------------------------------------------------------------
+    Client connecting to 192.168.2.20, TCP port 5001
+    TCP window size: 43.8 KByte (default)
+    ------------------------------------------------------------
+    [  3] local 192.168.2.30 port 38900 connected with 192.168.2.20 port 5001
+    [ ID] Interval       Transfer     Bandwidth
+    [  3]  0.0-10.0 sec   109 MBytes  91.5 Mbits/sec
+    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b 90M
+    ------------------------------------------------------------
+    Client connecting to 192.168.2.20, UDP port 5001
+    Sending 1470 byte datagrams
+    UDP buffer size:  160 KByte (default)
+    ------------------------------------------------------------
+    [  3] local 192.168.2.30 port 43497 connected with 192.168.2.20 port 5001
+    [ ID] Interval       Transfer     Bandwidth
+    [  3]  0.0-10.0 sec   107 MBytes  89.5 Mbits/sec
+    [  3] Sent 76110 datagrams
+    [  3] Server Report:
+    [  3]  0.0-10.0 sec   106 MBytes  88.8 Mbits/sec   0.069 ms  583/76109 (0.77%)
+    [  3]  0.0-10.0 sec  1 datagrams received out-of-order
+    root@am57xx-evm:~#  cat /sys/kernel/debug/prp/stats
+    Stats entries
+    cnt_tx_a = 232489
+    cnt_tx_b = 232488
+    cnt_tx_c = 232437
+    cnt_rx_wrong_lan_a = 0
+    cnt_rx_wrong_lan_b = 0
+    cnt_rx_a = 40822
+    cnt_rx_b = 40822
+    cnt_rx_c = 40757
+    cnt_rx_errors_a = 0
+    cnt_rx_errors_b = 0
+
+    root@am57xx-evm:~# cat /sys/kernel/debug/prp/node_table
+    Node Table entries
+    MAC-Address-A,   MAC-Address-B, time_in[A], time_in[B], Address-B port, san_a, san_b
+    70:ff:76:1c:0f:8d: 00:00:00:00:00:00:0x20cd1b, 0x20cd1b 0x0, 0, 0
+    11:ff:fe:80:00:00: 00:00:00:00:00:00:0x20a393, 0x20a38c 0x0, 0, 1
+
+
+|
 
 Performance Test and Logs
 -------------------------
