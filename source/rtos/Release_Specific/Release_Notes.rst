@@ -866,7 +866,7 @@ release and any known workaround.
 |             |             |             | on Windows  |                                                         |
 |             |             |             | OS          |                                                         |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3859  | am57xx,     | Starterware | Audio       | Environment variables in makefile needs to include in   |
+| PRSDK-3859  | am57xx,     | Demo        | Audio       | Environment variables in makefile needs to include in   |
 |             | c665x,      |             | benchmark   | double quote for enabling windows build. Makefile       |
 |             | c667x,      |             | starterkit  | under following directories singlePrecision_FFT,        |
 |             | omapl13x,   |             | demo fails  | singlePrecision_FIR and singlePrecision_IIR will        |
