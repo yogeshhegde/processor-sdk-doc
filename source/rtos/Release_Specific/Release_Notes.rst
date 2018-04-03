@@ -154,7 +154,7 @@ environment (IDE) for all devices and EVMs:
 +-----------+----------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
 
-If you need to install CCS, see the :ref:`CCS installation section <GSG-Code-Composer-Studio-label>`
+If you need to install CCS, see the `CCS installation section <Overview.html#code-composer-studio>`__
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
 **Change log**
