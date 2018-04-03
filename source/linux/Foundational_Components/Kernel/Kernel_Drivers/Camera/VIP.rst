@@ -660,15 +660,7 @@ any modifications) into the device. Following points to keep in mind –
 
 | 
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     static struct vip_fmt vip_formats[VIP_MAX_ACTIVE_FMT] = {
         {
@@ -686,16 +678,6 @@ any modifications) into the device. Following points to keep in mind –
             .data_type = DATA_TYPE_CBY422,
             .depth     = 8,
         },
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
 
 .. rubric:: What’s the maximum frame rate possible for W\*H resolution
    using VIP?
