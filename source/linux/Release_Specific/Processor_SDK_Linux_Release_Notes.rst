@@ -1,5 +1,5 @@
 ************************************
-Release Notes
+Processor SDK Linux Release Notes
 ************************************
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
 
@@ -31,11 +31,11 @@ Licensing
 .. rubric:: Documentation
    :name: documentation
 
--  :ref:`PLSDK-SDG-label`: Provides information on features, functions, delivery package and,
+-  :ref:`processor-sdk-linux-software-developers-guide`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
    infrastructure to allow developers to start creating applications.
--  :ref:`PLSDK-GSG-label`: Provides information on getting the software and running
+-  :ref:`processor-sdk-linux-getting-started-guide`: Provides information on getting the software and running
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software
    included in the SDK release. This document is in the release at

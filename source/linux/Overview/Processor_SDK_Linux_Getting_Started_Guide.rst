@@ -326,7 +326,7 @@ which you can start development.
    **NOTE**
    This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
    platforms, power up the EVM and stop at the U-boot prompt as
-   described in `Verifying NOR`_
+   described in :ref:`processor-sdk-linux-program-evm-verifying-nor`
 
 
 #. **Run the Setup Script** - Once the SDK has been installed, `Run
@@ -386,6 +386,7 @@ which you can start development.
 .. raw:: html
 
    </div>
+|
 
 .. rubric:: What Would You Like to do Next?
    :name: what-would-you-like-to-do-next

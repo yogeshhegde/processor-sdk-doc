@@ -1,4 +1,9 @@
 .. http://processors.wiki.ti.com/index.php/OpenCV
+
+**********************************
+OpenCV
+**********************************
+
 .. rubric:: Introduction
    :name: introduction-opencv
 

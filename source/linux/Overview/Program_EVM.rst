@@ -602,6 +602,8 @@ Reset U-Boot environment variables if U-Boot version has been changed
 .. Image:: ../images/Tera_Term_Connect.jpg
 |
 
+.. _processor-sdk-linux-program-evm-verifying-nor:
+
 Verifying NOR
 -------------
 
