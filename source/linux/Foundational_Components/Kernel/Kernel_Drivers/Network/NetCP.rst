@@ -1233,9 +1233,9 @@ NOT the current frequency.
 To check the ptp clock adjustment with PTP protocol, a PTP slave
 (client) and a PTP master (server) applications are needed to run on
 separate devices (EVM or PC). Open source application package linuxptp
-(`Reference <#CPTS_References>`__ iii) can be used as slave and as well
+(`Reference <#cpts-references>`__ iii) can be used as slave and as well
 as master. Another option for PTP master is the open source project ptpd
-(`Reference <#CPTS_References>`__ iv).
+(`Reference <#cpts-references>`__ iv).
 
 -  Slave Side Examples
 
@@ -1304,7 +1304,7 @@ simultaneously. This is desirable in some use cases because, for
 example, NTP timestamping is also needed in some systems and CPTS
 timestamping is only for PTP. However, CPTS has priority over PA to
 timestamp PTP messages. When CPTS timestamps a PTP message, PA will not
-timestamp it. See the section `PA Timestamping <#PA_Timestamping>`__ for
+timestamp it. See the section `PA Timestamping <#pa-timestamp>`__ for
 more details about PA timestamping.
 
 If needed, PA timestamping can be completely disabled by adding
@@ -1443,7 +1443,7 @@ asserted low when the polarity bit is low.
 | 
 
 -  Sysfs Provided by Linux PPS Layer (see
-   `Reference <#CPTS_References>`__ v for more details)
+   `Reference <#cpts-references>`__ v for more details)
 
 -  The Linux PPS layer implements a new class in the sysfs for
    supporting PPS.
@@ -1477,7 +1477,7 @@ clock\_settime() to inform the CPTS driver about any clock adjustment as
 a result of running the PTP protocol. The PPS may also need to be
 adjusted by the driver accordingly.
 
-See **Clock Adjustments** in the `CPTS User <#CPTS_User>`__ section for
+See **Clock Adjustments** in the `CPTS User <#testing-cptsptp>`__ section for
 more details on clock adjustments.
 
 -  Shifting Time
@@ -3572,7 +3572,7 @@ To disable QoS on the two 1-GigE interfaces
 
 -  delete all the qos related blocks or entries shown in the examples in
    section `Configuring QoS on an 1-GigE
-   interface <#Configuring_QoS_on_an_1-GigE_interface>`__, namely
+   interface <#configuring-qos-on-an-1-gige-interface>`__, namely
 
 -  droppolicies: default-drop-policies {...}
 -  qostree0: qos-tree-0 {...}

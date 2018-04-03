@@ -837,7 +837,7 @@ clocks).
    :name: getting-a-ptp-master-clock-ready
 
 Start a reference PTP master clock that is connected in the PTP network
-as shown in the `sample setup <#A_Sample_BC_Setup>`__.
+as shown in the `sample setup <#a-sample-bc-setup>`__.
 
 If the PTP master clock is an AM572x OC running linuxptp ptp4l, and for
 testing purpose, a line such as
@@ -1097,7 +1097,7 @@ Lines similar to the following should be displayed after a few seconds
 
 Start an AM57xx OC in slave only mode connected to a BC's master port,
 for example, the AM572x OC-3 in the `sample
-setup <#A_Sample_BC_Setup>`__. To make sure the OC is started in slave
+setup <#a-sample-bc-setup>`__. To make sure the OC is started in slave
 only mode, the ptp4l command
 
 ::
@@ -1113,9 +1113,9 @@ reference PTP master clock's PPS.
 To force a port state change on the BC ports for testing purpose, one
 can bring down the current reference PTP master clock and bring up
 another reference PTP master clock connected to, for example, the BC's
-eth1 interface in the `sample setup <#A_Sample_BC_Setup>`__. Or simply
+eth1 interface in the `sample setup <#a-sample-bc-setup>`__. Or simply
 rearrange the cable connections in the `sample
-setup <#A_Sample_BC_Setup>`__ as shown below.
+setup <#a-sample-bc-setup>`__ as shown below.
 
 .. Image:: ../images/Bc_reconnect.jpg
 
@@ -1123,7 +1123,7 @@ See
 `here <http://processors.wiki.ti.com/images/8/83/Bc_reconnect_20180112.pdf>`__
 for a sample log when the BC's cables are reconnected. The sample log
 starts right before when the cable is disconnected from eth2 on BC's
-ICSS2 in the `sample setup <#A_Sample_BC_Setup>`__.
+ICSS2 in the `sample setup <#a-sample-bc-setup>`__.
 
 Test Results
 -------------
@@ -1197,7 +1197,7 @@ or
 The same is true for other combinations. The intention is to avoid
 having more than one PPS enabled when the IDK has the HW mod mentioned
 in `Hardware Modifications for AM57xx IDK
-BC <#Hardware_Modifications_for_AM57xx_IDK_BC>`__ and the pins are tied
+BC <#hardware-modifications-for-am57xx-idk-bc>`__ and the pins are tied
 together.
 
 PTP Roadmap

@@ -121,7 +121,7 @@ To know if the environment setup script has been sourced in your current
 shell the shell prompt will be changed to contain the
 **[linux-devkit]:** prefix in the command prompt.
 
-The `**Usage** <#Usage>`__ section below will cover some cases where
+The `**Usage** <#usage>`__ section below will cover some cases where
 using the environment-setup script is useful.
 
 .. rubric:: When Compiling the Linux Kernel

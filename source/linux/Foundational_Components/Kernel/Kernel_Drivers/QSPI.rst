@@ -365,7 +365,7 @@ run:
    :name: using-ubifs-on-flash
 
 Make sure UBIFS filesystem is enabled in the kernel refer to `this
-section <#Enabling_QSPI_Driver_Configurations>`__.
+section <#enabling-qspi-driver-configurations>`__.
 
 ::
 

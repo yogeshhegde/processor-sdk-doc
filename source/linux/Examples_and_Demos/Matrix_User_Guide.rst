@@ -23,7 +23,7 @@ When you first boot up a target system which has display device attached
 automatically started. Matrix can be either operated by touchscreen or
 mouse. Default startup for most SDK platforms is touchscreen. Should you
 encounter any problems below are some tips to get everything running
-smoothly. See `**Matrix Startup Debug** <#Matrix_Startup_Debug>`__
+smoothly. See `**Matrix Startup Debug** <#matrix-startup-debug>`__
 
 When you boot up a target system without display (e.g., K2H/K2K, K2E,
 and K2L platforms), Matrix will not be automatically started during
@@ -359,7 +359,7 @@ Below are step by step instructions.
 
 
 Run your new application from Matrix!
-See reference examples below: `**Examples** <#Examples>`__
+See reference examples below: `**Examples** <#examples>`__
 
 Blank template icons for Matrix can be found here: 
 `**gforge.ti.com/gf/download/frsrelease/712/5167/blank\_icons\_1.1.tar.gz** <https://gforge.ti.com/gf/download/frsrelease/712/5167/blank_icons_1.1.tar.gz>`__
@@ -456,7 +456,7 @@ for your Ex Demo.
    :name: creating-a-new-application
 
 This example is assuming that you completed the \ `**Creating a New
-Matrix Directory** <#Creating_a_New_Matrix_Directory>`__ example.
+Matrix Directory** <#creating-a-new-matrix-directory>`__ example.
 
 You can get all the files including the image discussed below from the
 following file:
