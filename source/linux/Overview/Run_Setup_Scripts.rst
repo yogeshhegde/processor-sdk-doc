@@ -1,3 +1,6 @@
+Run Setup Scripts
+======================================
+
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Setup_Script
 .. rubric:: Overview
    :name: processor-sdk-linux-setup-script-overview

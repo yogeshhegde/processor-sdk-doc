@@ -1,3 +1,6 @@
+Download and Install the SDK
+======================================
+
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Installer
 .. rubric:: Overview
    :name: overview
