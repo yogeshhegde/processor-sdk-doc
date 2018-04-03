@@ -6,7 +6,7 @@ Overview
 ==================================
 .. include:: Foundational_Components/IPC/IPC_Overview.rst
 
-Quick Start Guide
+IPC Quick Start Guide
 ==================================
 .. include:: Foundational_Components/IPC/Quick_Start_Guide.rst
 

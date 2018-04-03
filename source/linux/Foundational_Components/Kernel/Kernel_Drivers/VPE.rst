@@ -19,8 +19,8 @@
 
     http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
 
-.. rubric:: Supported Devices
-   :name: supported-devices
+.. rubric:: VPE Supported Devices
+   :name: vpe-supported-devices
 
 DRA7x evm, AM57xx evm
 
