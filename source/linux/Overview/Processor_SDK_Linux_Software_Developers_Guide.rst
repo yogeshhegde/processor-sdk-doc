@@ -38,33 +38,32 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 
 .. _Getting Started Guide: Overview.html#processor-sdk-linux-getting-started-guide
 .. _Supported Platforms and Versions: Release_Specific.html#supported-platforms-and-versions
-.. _Hardware platform: Release_Specific.html#supported-platforms-and-versions
-.. _Release Notes: Release_Specific.html#release-notes
-.. _Technical Support: Overview.html#technical-support
-.. _Directory Structure Overview: Overview.html#directory-structure-overview
-.. _Linux Software Stack: Overview.html#software-stack
-.. _Embedded Linux System: Overview.html#software-stack
-.. _Building the SDK: Overview.html#building-the-sdk
-.. _Migration Guide: Release_Specific.html#migration-guide
+.. _Hardware platform: Release_Specific.html#supported-platforms-and-evms
+.. _Release Notes: Release_Specific.html#processor-sdk-linux-release-notes
+.. _Technical Support: Overview.html#processor-sdk-linux-technical-support
+.. _Directory Structure Overview: Overview.html#processor-sdk-linux-directory-structure
+.. _Linux Software Stack: Overview.html#processor-sdk-linux-software-stack
+.. _Embedded Linux System: Overview.html#processor-sdk-linux-software-stack
+.. _Building the SDK: Overview.html#processor-sdk-linux-building-the-sdk
+.. _Migration Guide: Release_Specific.html#processor-sdk-linux-migration-guide
 .. _MCSDK to Processor SDK Migration Guide: Release_Specific.html#mcsdk-to-processor-sdk-migration-guide
 .. _GPLv3 Disclaimer: Licenses.html#gplv3-disclaimer
 .. _How To Guides: Processor_Linux_SDK_How_To_Guides.html
 .. _Processor SDK Linux How-To Guides: Processor_Linux_SDK_How_To_Guides.html
-.. _Linux SDK Software Developer's Guide: Overview.html#processor-sdk-linux-software-developer-s-guide
-.. _Processor SDK Linux Software Developer's Guide: Overview.html#processor-sdk-linux-software-developer-s-guide
+.. _Linux SDK Software Developer's Guide: Overview.html#processor-sdk-linux-software-developers-guide
+.. _Processor SDK Linux Software Developer's Guide: Overview.html#processor-sdk-linux-software-developers-guide
 .. _Developing with the Linux SDK: Overview.html#start-your-linux-development
 .. _Creating a SD Card with Windows: Overview.html#windows-sd-card-creation-guide
 .. _Install the Linux SDK: Overview.html#download-and-install-the-sdk
 .. _SDK Create SD Card Script: Overview.html#linux-sd-card-creation-guide
-.. _Program EVM User Guide: Overview.html#id5
-.. _Verifying NOR: Overview.html#id7
+.. _Program EVM User Guide: Overview.html#processor-sdk-linux-program-evm
 .. _Run the Setup.sh Script: Overview.html#processor-sdk-linux-setup-script-overview
-.. _top-level Makefile: Overview.html#id9
-.. _SD Card using default images: Overview.html#sd-card-using-default-images
-.. _SD Card using custom images: Overview.html#sd-card-using-custom-images
-.. _SD Card using parition tarballs: Overview.html#sd-card-using-partition-tarballs
-.. _Installing SD Card Content: :Overview.html#installing-sd-card-content
-.. _SD Card common steps: Overview.html#common-steps
+.. _top-level Makefile: Overview.html#processor-sdk-linux-top-level-makefile
+.. _SD Card using default images: Overview.html#processor-sdk-linux-sd-card-using-default-images
+.. _SD Card using custom images: Overview.html#processor-sdk-linux-sd-card-using-custom-images
+.. _SD Card using parition tarballs: Overview.html#processor-sdk-linux-sd-card-using-partition-tarballs
+.. _Installing SD Card Content: :Overview.html#processor-sdk-linux-installing-sd-card-content
+.. _SD Card common steps: Overview.html#processor-sdk-linux-sd-card-common-steps
  
 +---------------+--------------------------+------------------+-----------------------------------+
 | **Foundational Components** (more information on each piece of the distribution)                |
@@ -78,25 +77,25 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 | `IPC`_        | `OpenVX`_                | `CMEM`_          |                                   |
 +---------------+--------------------------+------------------+-----------------------------------+
 
-.. _U-Boot: Foundational_Components.html#u-boot 
-.. _Processor SDK Linux U-Boot: Foundational_Components.html#u-boot 
-.. _Boot Monitor: Foundational_Components.html#boot-monitor
-.. _Kernel: Foundational_Components.html#kernel
-.. _Processor SDK Linux Kernel: Foundational_Components.html#kernel
-.. _Filesystem: Foundational_Components.html#filesystem
-.. _Processor SDK Linux Filesystem: Foundational_Components.html#filesystem
-.. _Tools: Foundational_Components.html#tools
-.. _Processor SDK Linux Tools: Foundational_Components.html#tools
-.. _OpenCL: Foundational_Components.html#id119
-.. _OpenCV: Foundational_Components.html#opencv
-.. _Graphics & Display: Foundational_Components.html#id115
-.. _Multimedia: Foundational_Components.html#id118
+.. _U-Boot: Foundational_Components.html#processor-sdk-linux-u-boot 
+.. _Processor SDK Linux U-Boot: Foundational_Components.html#_processor-sdk-linux-u-boot 
+.. _Boot Monitor: Foundational_Components.html#processor-sdk-linux-boot-monitor
+.. _Kernel: Foundational_Components.html#processor-sdk-linux-kernel
+.. _Processor SDK Linux Kernel: Foundational_Components.html#processor-sdk-linux-kernel
+.. _Filesystem: Foundational_Components.html#processor-sdk-linux-filesystem
+.. _Processor SDK Linux Filesystem: Foundational_Components.html#processor-sdk-linux-filesystem
+.. _Tools: Foundational_Components.html#processor-sdk-linux-tools
+.. _Processor SDK Linux Tools: Foundational_Components.html#processor-sdk-linux-tools
+.. _OpenCL: Foundational_Components.html#processor-sdk-linux-opencl
+.. _OpenCV: Foundational_Components.html#processor-sdk-linux-opencv
+.. _Graphics & Display: Foundational_Components.html#processor-sdk-linux-graphics-and-display
+.. _Multimedia: Foundational_Components.html#processor-sdk-linux-multimedia
 .. _Examples, Demos: Examples_and_Demos.html
 .. _PRU-ICSS: Industrial_Protocols.html
-.. _Virtualization: Foundational_Components.html#virtualization
-.. _IPC: Foundational_Components.html#ipc
-.. _OpenVX: Foundational_Components.html#openvx
-.. _CMEM: Foundational_Components.html#id111
+.. _Virtualization: Foundational_Components.html#processor-sdk-linux-virtualization
+.. _IPC: Foundational_Components.html#processor-sdk-linux-ipc
+.. _OpenVX: Foundational_Components.html#processor-sdk-linux-openvx
+.. _CMEM: Foundational_Components.html#processor-sdk-linux-cmem
 
 +----------------+-------------------------+------------------+-----------------------------------+
 | **Industrial Protocols** (more information on each piece of the distribution)                   | 

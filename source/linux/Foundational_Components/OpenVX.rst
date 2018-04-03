@@ -1,4 +1,8 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_TIOVX
+**********************************
+OpenVX
+**********************************
+
 .. rubric:: OpenVX
    :name: openvx
 

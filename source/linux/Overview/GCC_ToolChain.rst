@@ -218,17 +218,8 @@ dynamically linked (uses shared libs), for GNU/Linux 2.6.31, not
 stripped"
 | 
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The ARM entry above was made bold for emphasis.
-
-.. raw:: html
-
-   </div>
+.. note::
+   The ARM entry above was made bold for emphasis.
 
 | 
 
@@ -326,28 +317,19 @@ provides the pthread\_\* functions.
 DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin/:$PATH"**
 | 
 
-**arm-linux-gnueabihf-gcc '**\ *-lpthread'* **thread-ex.c -o thread-ex**
+**arm-linux-gnueabihf-gcc '**\ **-lpthread'** **thread-ex.c -o thread-ex**
 | 
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The -lpthread entry above was made italics for emphasis.
-
-.. raw:: html
-
-   </div>
+.. note::
+   The -lpthread entry above was made italics for emphasis.
 
 .. rubric:: Configure/Autotools
    :name: configureautotools
 
 The last case to cover is one where the **environment-setup** script is
-useful. In this case we will download the *gst-plugins-bad* package and
+useful. In this case we will download the **gst-plugins-bad** package and
 configure and build it using the environment-setup script to configure
-the system for the *autotools* to properly detect the libraries
+the system for the **autotools** to properly detect the libraries
 available as pre-built libraries.
 
 #. First download the

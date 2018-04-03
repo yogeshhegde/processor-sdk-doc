@@ -39,7 +39,6 @@ SDK.
 
 | 
 
-
 .. rubric:: Supported Platforms and EVMs
    :name: supported-platforms-and-evms
 

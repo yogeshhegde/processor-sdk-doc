@@ -1,4 +1,8 @@
 .. http://processors.wiki.ti.com/index.php/SGXDbgInfo
+
+SGX Debug Info
+===============
+
 .. rubric:: Introduction
    :name: introduction-linux-sgx-dbg
 

@@ -1,5 +1,5 @@
 ************************************
-Release Notes
+Processor SDK Linux Release Notes
 ************************************
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
 
@@ -31,11 +31,11 @@ Licensing
 .. rubric:: Documentation
    :name: documentation
 
--  :ref:`PLSDK-SDG-label`: Provides information on features, functions, delivery package and,
+-  :ref:`processor-sdk-linux-software-developers-guide`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
    infrastructure to allow developers to start creating applications.
--  :ref:`PLSDK-GSG-label`: Provides information on getting the software and running
+-  :ref:`processor-sdk-linux-getting-started-guide`: Provides information on getting the software and running
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software
    included in the SDK release. This document is in the release at
@@ -558,19 +558,11 @@ The Processor SDK is developed, built and verified on Ubuntu 14.04 and
 are described in `this
 page <Processor_Linux_SDK_How_To_Guides.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
 
-.. raw:: html
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Processor SDK Installer is 64-bit, and installs only on 64-bit host
-machine. Support for 32-bit host is dropped as Linaro toolchain is
-available only for 64-bit machines
-
-.. raw:: html
-
-   </div>
+.. note::
+   Processor SDK Installer is 64-bit, and installs only on 64-bit host
+   machine. Support for 32-bit host is dropped as Linaro toolchain is
+   available only for 64-bit machines
 
 | 
 
