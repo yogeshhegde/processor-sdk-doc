@@ -380,7 +380,7 @@ SPI_Params. Currently IP V1 driver (for AM3/4/5 devices) supports
 |                 | on Master EVM.  |                 |                 |
 |                 |                 | **ICEv2         |                 |
 |                 |               | AM335x:         |                 |
-|                 | **Note:**     | **\ EVM1(master)|                 |
+|                 | **Note:**       | **\ EVM1(master)|                 |
 |                 |                 | ====            |                 |
 |                 | A DGND          | EVM2(slave)     |                 |
 |                 | connection may  | J3-Pin12(CLK)   |                 |
@@ -392,7 +392,7 @@ SPI_Params. Currently IP V1 driver (for AM3/4/5 devices) supports
 |                 | data transfer   |                 |                 |
 |                 | is proper.      | J3-Pin16(MOSI)  |                 |
 |                 |                 | -------         |                 |
-|                 |               | J3-Pin14(MOSI)  |                 |
+|                 |                 | J3-Pin14(MOSI)  |                 |
 |                 |                 |                 |                 |
 |                 |                 | J3-Pin18(CS)-   |                 |
 |                 |                 | ----------      |                 |
