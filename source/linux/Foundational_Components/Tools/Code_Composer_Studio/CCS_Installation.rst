@@ -52,7 +52,7 @@ to the target with serial and Ethernet communication.
 
 For more information on setting up your development environment, see the
 `Processor SDK Linux Getting Started
-Guide </index.php/Processor_SDK_Linux_Getting_Started_Guide#Start_your_Linux_Development>`__.
+Guide <Overview.html#start-your-linux-development>`__.
 
 | 
 
