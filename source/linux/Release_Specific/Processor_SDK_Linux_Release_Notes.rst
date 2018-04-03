@@ -558,19 +558,11 @@ The Processor SDK is developed, built and verified on Ubuntu 14.04 and
 are described in `this
 page <Processor_Linux_SDK_How_To_Guides.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
 
-.. raw:: html
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Processor SDK Installer is 64-bit, and installs only on 64-bit host
-machine. Support for 32-bit host is dropped as Linaro toolchain is
-available only for 64-bit machines
-
-.. raw:: html
-
-   </div>
+.. note::
+   Processor SDK Installer is 64-bit, and installs only on 64-bit host
+   machine. Support for 32-bit host is dropped as Linaro toolchain is
+   available only for 64-bit machines
 
 | 
 

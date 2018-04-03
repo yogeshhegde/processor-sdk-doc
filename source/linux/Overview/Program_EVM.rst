@@ -81,8 +81,8 @@ nand\_writer\_input.txt:
 .. rubric:: MD5SUM utility used
    :name: md5sum-utility-used
 
-| Please use the md5sum utility from the following link:
-  http://www.pc-tools.net/files/win32/freeware/md5sums-1.2.zip
+Please use the md5sum utility from the following link:
+http://www.pc-tools.net/files/win32/freeware/md5sums-1.2.zip
 
 Device Support
 --------------
@@ -146,8 +146,8 @@ Directory Structure
 Programming the bin files
 -------------------------
 
-| This section assumes you have installed Processor SDK 02.00.01 and
-  above (which supports EVMK2H/EVMK2L/EVMK2E) and Code Composer Studio.
+This section assumes you have installed Processor SDK 02.00.01 and
+above (which supports EVMK2H/EVMK2L/EVMK2E) and Code Composer Studio.
 
 Verify CCS Connection
 ---------------------  
@@ -165,8 +165,8 @@ Variables <http://processors.wiki.ti.com/index.php?title=Program_EVM_UG#Set_the_
 .. rubric:: Update firmware on xd200 pod for USB3 Ports
    :name: update-firmware-on-xd200-pod-for-usb3-ports
 
-|Note|\ **Note:** Please note that this section is needed only the CCS
-connection cannot be established successfully.
+.. note::
+   Please note that this section is needed only the CCS connection cannot be established successfully.
 
 When USB3 ports are used for the JTAG, the following error can be
 reported when testing the connection to the target.
@@ -211,10 +211,10 @@ alternative programming method:
 | Rev 1.x            | No                     | Program\_evm                 |
 +--------------------+------------------------+------------------------------+
 
-| For Rev 2.0 and 3.0 EVM using alternative U-Boot command to program
-  NAND, please follow the steps below:
-| Set the boot mode to SPI boot mode:
-  `Set\_SPI\_boot <http://processors.wiki.ti.com/index.php/EVMK2H_Hardware_Setup#SPI_Little_Endian_Boot_mode>`__
+For Rev 2.0 and 3.0 EVM using alternative U-Boot command to program
+NAND, please follow the steps below:
+Set the boot mode to SPI boot mode:
+`Set\_SPI\_boot <http://processors.wiki.ti.com/index.php/EVMK2H_Hardware_Setup#SPI_Little_Endian_Boot_mode>`__
 
 ::
 
@@ -313,14 +313,14 @@ for the CCS. Example:
 .. rubric:: General Script Usage
    :name: general-script-usage
 
-| Script Usage:
+Script Usage:
 
 ::
 
      cd bin/program_evm
      $DSS_SCRIPT_DIR/dss.sh program_evm.js evm(k2h|k2e|k2l)[-le] (nor|nand)
 
-| 
+ 
 | **k2h:**\ TCI6638 device
 | **k2e:**\ C66AK2E device
 | **k2l:**\ TCI6630 device
@@ -333,50 +333,53 @@ for the CCS. Example:
 .. rubric:: Formatting the NAND Flash
    :name: formatting-the-nand-flash
 
-|Note|\ **Note:** Sometimes, NAND flash could be corrupted (e.g. EVM
-boots from UBI and does not gracefully shut down), NAND flash needs to
-be formatted before loading the program using program\_evm utility.
+.. note::
+   Sometimes, NAND flash could be corrupted (e.g. EVM
+   boots from UBI and does not gracefully shut down), NAND flash needs to
+   be formatted before loading the program using program\_evm utility.
 
-| The program\_evm supports formatting the NAND device as below.
-| Linux:
+The program\_evm supports formatting the NAND device as below.
+Linux:
 
 ::
 
       cd bin/program_evm
       $DSS_SCRIPT_DIR/dss.sh program_evm.js evm(k2h|k2e|k2l)-le format-nand
 
-|Warning| **Warning**: Please note that this would erase all the nand
-blocks.
+.. warning:: 
+   Please note that this would erase all the nand blocks.
 
 | 
 
 .. rubric:: Executing the DSS script to restore factory default images
    :name: executing-the-dss-script-to-restore-factory-default-images
 
-| 1. cd "bin/program\_evm" directory
-| 2. Set the necessary environment variables as described under `Set the
-  Environment
-  Variable <http://processors.wiki.ti.com/index.php/Program_EVM_UG#Set_the_Environment_Variables>`__.
-| 3. Run the "program\_evm.js" script command from program\_evm
-  directory.
-| **Example:**
+1. cd "bin/program\_evm" directory
+2. Set the necessary environment variables as described under `Set the
+   Environment
+   Variable <http://processors.wiki.ti.com/index.php/Program_EVM_UG#Set_the_Environment_Variables>`__.
+3. Run the "program\_evm.js" script command from program\_evm directory.
+|
+
+**Example:**
 
 ::
 
     cd bin/program_evm
     $DSS_SCRIPT_DIR/dss.sh program_evm.js evmk2h-le nor
 
-| This will write all the little endian images to K2H EVM.
+This will write all the little endian images to K2H EVM.
 
 | 
 
 .. rubric:: Sample DSS Script Output
    :name: sample-dss-script-output
 
-| The sample output after running the DSS Script is as below.
+The sample output after running the DSS Script is as below.
 
-|Note|\ **Note:** The loading of nand.bin can take up to a few minutes
-depending on the image size.
+.. note::
+   The loading of nand.bin can take up to a few minutes
+   depending on the image size.
 
 ::
 
@@ -493,19 +496,20 @@ depending on the image size.
     NOR programming completed successfully
     End programming NOR
 
-|Note|\ **Note:** For EVMs without Security Accelerator components, PSC
-errors will show up due to a known issue in GEL file. The PSC errors can
-be ignored and are not fatal. The program EVM will proceed and complete
-successfully.
+.. note::
+   For EVMs without Security Accelerator components, PSC
+   errors will show up due to a known issue in GEL file. The PSC errors can
+   be ignored and are not fatal. The program EVM will proceed and complete
+   successfully.
 
 | 
 
 .. rubric:: Programming the bin files for devices without DSP core
    :name: programming-the-bin-files-for-devices-without-dsp-core
 
-| This section describes how to program the bin files to either NOR or
-  NAND on the devices without DSP core (AM5K2E02 and AM5K2E04). The
-  installation of Processor SDK and Code Composer Studio is required.
+This section describes how to program the bin files to either NOR or
+NAND on the devices without DSP core (AM5K2E02 and AM5K2E04). The
+installation of Processor SDK and Code Composer Studio is required.
 
 | 
 
@@ -518,24 +522,24 @@ ProSDK installed directory to the tftp server directory. The files are
 located in board-support/prebuilt-images and filesystem directory
 respectively.
 
-| Have the Ethernet connection between the EVM and TFTP Server.
+Have the Ethernet connection between the EVM and TFTP Server.
 
 | 
 
 .. rubric:: Set the EVM for no-boot mode
    :name: set-the-evm-for-no-boot-mode-1
 
-| Follow the instruction in previous section to set the dip switch of
-  the EVM in no-boot mode
+Follow the instruction in previous section to set the dip switch of
+the EVM in no-boot mode
 
 | 
 
 .. rubric:: Load and Run U-Boot on keystone EVMs using CCS
    :name: load-and-run-u-boot-on-keystone-evms-using-ccs
 
-| Follow the instructions in
-  {Proc\_SDK\_Install\_Dir}/board-support/u-boot-{Version}/board/ti/ks2\_evm/README
-  to run u-boot using CCS
+Follow the instructions in
+{Proc\_SDK\_Install\_Dir}/board-support/u-boot-{Version}/board/ti/ks2\_evm/README
+to run u-boot using CCS
 
 | 
 
@@ -571,8 +575,9 @@ To restore the combined kernel and fileystem UBI image in NAND:
       # run burn_ubi
 
 | 
-| |Note|\ **Note:** When programming UBI image to NAND, be sure the UBI
-  image size is enough to fit in NAND memory.
+.. note::
+   When programming UBI image to NAND, be sure the UBI
+   image size is enough to fit in NAND memory.
 
 | 
 
@@ -588,18 +593,18 @@ Reset U-Boot environment variables if U-Boot version has been changed
 
 | 
 
-| 
-
 .. rubric:: Verification
    :name: verification
 
 .. rubric:: Serial Port Setup
    :name: serial-port-setup
 
-| Connect the RS232 Serial cable provided in the box to the serial port
-  of the Host PC. If Host is running Windows OS, start tera term and
-  configure the serial port settings as follows.
+Connect the RS232 Serial cable provided in the box to the serial port
+of the Host PC. If Host is running Windows OS, start tera term and
+configure the serial port settings as follows.
+
 .. Image:: ../images/Tera_Term_Connect.jpg
+
 |
 
 .. _processor-sdk-linux-program-evm-verifying-nor:
@@ -618,10 +623,11 @@ Verifying NOR
 | SW1          | **Off**    | **Off**    | On         | **Off**    |
 +--------------+------------+------------+------------+------------+
 
-| 2. Power Cycle the board.
-| 3. Make sure the evm is connected to the DHCP server.
-| 4. U-Boot will show up on the UART. A sample screen is shown below.
-.. Image:: ../images/Spl-boot.j.jpg
+2. Power Cycle the board.
+3. Make sure the evm is connected to the DHCP server.
+4. U-Boot will show up on the UART. A sample screen is shown below.
+
+   .. Image:: ../images/Spl-boot.j.jpg
 
 .. rubric:: Verifying NAND
    :name: verifying-nand
@@ -641,7 +647,7 @@ prior to burning the image. Example command to do this:
 **After entering the command, burn the NAND and perform the steps below
 to verify.**
 
-| 1. Set the dip switches as below to set SPI boot mode
+1. Set the dip switches as below to set SPI boot mode
 
 +--------------+------------+------------+------------+------------+
 | **SWITCH**   | **Pin1**   | **Pin2**   | **Pin3**   | **Pin4**   |
@@ -649,8 +655,8 @@ to verify.**
 | SW1          | **Off**    | **Off**    | On         | **Off**    |
 +--------------+------------+------------+------------+------------+
 
-| 2. Power Cycle the board. U-Boot will show up on the UART.
-| 3. Type the following commands into U-Boot:
+2. Power Cycle the board. U-Boot will show up on the UART.
+3. Type the following commands into U-Boot:
 
 ::
 
@@ -658,10 +664,9 @@ to verify.**
     setenv boot ubi
     boot
 
-| 4. A sample screen is shown below.
-.. Image:: ../images/Kernel_Boot.jpg
+4. A sample screen is shown below.
 
-| 
+   .. Image:: ../images/Kernel_Boot.jpg
 
-| 
+|
 

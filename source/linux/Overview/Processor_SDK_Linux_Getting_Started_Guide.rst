@@ -88,20 +88,10 @@ want to start with. However, it provides access to the full spectrum of
 development from rebuilding the SDK from sources to fully adapting it
 with new device drivers and applications.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For K2H/K2K, K2E, and K2L platforms which are not using SD cards, please
-also go ahead and skip down to the “I want to Develop!” (or, `Developing
-with the Linux SDK`_
-section.
-
-.. raw:: html
-
-   </div>
+.. note::
+   For K2H/K2K, K2E, and K2L platforms which are not using SD cards, please
+   also go ahead and skip down to the “I want to Develop!” (or, `Developing
+   with the Linux SDK`_ section.
 
 So, if you’re not quite there yet, let’s discuss some other options.
 Maybe you’d like to evaluate the SDK a bit to see if it is how you’d
@@ -142,18 +132,9 @@ simply evaluate the SDK Embedded Linux System with Matrix as delivered.
 But, even this is enough to get the imagination going and all some folks
 want to do.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The above is not applicable to K2H/K2K, K2E, and K2L platforms, which
-are not using SD card.
-
-.. raw:: html
-
-   </div>
+.. note::
+   The above is not applicable to K2H/K2K, K2E, and K2L platforms, which
+   are not using SD card.
 
 .. rubric:: Start your Linux Development
    :name: start-your-linux-development
@@ -217,77 +198,32 @@ which you can start development.
 
 #. **Install the SDK** - Within your Linux host machine, `Install the Linux SDK`_
 
-   .. raw:: html
+   .. note::
+      Processor SDK Installer is 64-bit, and installs only on 64-bit host
+      machine. Support for 32-bit host is dropped as Linaro toolchain is
+      available only for 64-bit machines
 
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
-   Processor SDK Installer is 64-bit, and installs only on 64-bit host
-   machine. Support for 32-bit host is dropped as Linaro toolchain is
-   available only for 64-bit machines
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
-   At least 20 GB of free space is required on the host machine for
-   installing Processor SDK Linux
-
-   .. raw:: html
-
-      </div>
+   .. note::
+      At least 20 GB of free space is required on the host machine for
+      installing Processor SDK Linux
 
 #. **Create a SD Card** - using the `SDK Create SD Card Script`_,
    or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide`_
 
-   .. raw:: html
+   .. note::
+      You will need a >8GB SD Card and the capability to connect that card
+      to your Linux Host machine (using a USB SD Card reader, for example).
 
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   .. note::
+      If using a virtual machine as your Linux host, you may need to import
+      the SD Card reader into your virtual machine (disconnect it from the
+      host and connect it to the VM so that the Linux VM can see it).
 
-   **NOTE**
-   You will need a >8GB SD Card and the capability to connect that card
-   to your Linux Host machine (using a USB SD Card reader, for example).
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
-   If using a virtual machine as your Linux host, you may need to import
-   the SD Card reader into your virtual machine (disconnect it from the
-   host and connect it to the VM so that the Linux VM can see it).
-
-   .. raw:: html
-
-      </div>
-
-   .. raw:: html
-
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
-   For K2H/K2K, K2E, and K2L platforms which are not using SD card,
-   one-time EVM programming is needed if u-boot has not been loaded
-   before or the previous u-boot is somehow corrupted. Please see
-   details at `Program EVM User Guide`_.
-
-   .. raw:: html
-
-      </div>
+   .. note::
+      For K2H/K2K, K2E, and K2L platforms which are not using SD card,
+      one-time EVM programming is needed if u-boot has not been loaded
+      before or the previous u-boot is somehow corrupted. Please see
+      details at `Program EVM User Guide`_.
 
 #. **Configure your development environment**
 
@@ -302,28 +238,19 @@ which you can start development.
       <div
       style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-   **NOTE**
+.. note::
    The recommended setup is to use TFTP for booting the kernel and NFS
    for hosting the target root filesystem. Since the SDK provides full
    cross-compile development environment for the x86 host, this
    configuration will simplify the transfer of files to and from the
    target platform.
 
-   .. raw:: html
-
-      </div>
-
    .. Image:: ../images/AM335x_Development_Environment.png
 
 #. **Use the SD Card to boot the target board** properly connected for
    your development environment
 
-   .. raw:: html
-
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
+  .. note::
    This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
    platforms, power up the EVM and stop at the U-boot prompt as
    described in :ref:`processor-sdk-linux-program-evm-verifying-nor`
@@ -334,19 +261,10 @@ which you can start development.
    on your host to guide you through the remaining development
    environment configuration.
 
-   .. raw:: html
-
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-   **NOTE**
+   .. note::
    If using a virtual machine as your Linux host, you will likely need
    to import the target board into the virtual machine as a mass storage
    device.
-
-   .. raw:: html
-
-      </div>
 
 #. **Rebuild sources** using the `top-level Makefile`_
    in the SDK root directory. For example:
@@ -357,21 +275,16 @@ which you can start development.
 
   The file system can be rebuilt following the instructions at `Building the SDK`_.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-  Starting with Processor SDK 3.3, some components such as Jailhouse
-  Hypervisor needs a newer make (> 3.81) that what comes by default with
-  Ubuntu 14.04. Please check your make version (make -v) and upgrade to
-  latest using following instructions. You can make it your default make
-  by prefixing /usr/local/bin to your $PATH variable in your shell startup
-  file; for instance, in .profile or .bashrc if you use the bash shell.
-  Don't try to install a self-compiled make (or anything else that doesn't
-  come from the distribution's package manager) into /bin or /usr/bin;
-  doing that will confuse your package manager.
+.. note::
+   Starting with Processor SDK 3.3, some components such as Jailhouse
+   Hypervisor needs a newer make (> 3.81) that what comes by default with
+   Ubuntu 14.04. Please check your make version (make -v) and upgrade to
+   latest using following instructions. You can make it your default make
+   by prefixing /usr/local/bin to your $PATH variable in your shell startup
+   file; for instance, in .profile or .bashrc if you use the bash shell.
+   Don't try to install a self-compiled make (or anything else that doesn't
+   come from the distribution's package manager) into /bin or /usr/bin;
+   doing that will confuse your package manager.
 
 |  cd /tmp
 |  wget http://ftp.gnu.org/gnu/make/make-4.1.tar.gz
@@ -383,9 +296,6 @@ which you can start development.
 |  cd ..
 |  rm -rf make-4.1.tar.gz make-4.1
 
-.. raw:: html
-
-   </div>
 |
 
 .. rubric:: What Would You Like to do Next?

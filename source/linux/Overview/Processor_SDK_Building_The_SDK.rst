@@ -104,19 +104,11 @@ Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a
     $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
     $ MACHINE=am57xx-evm bitbake arago-core-tisdk-image
 
-
-.. raw:: html
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-One common location for hosting packages, gforge.ti.com, has recently
-been decommissioned. This will cause fetch failures for the current and
-past releases. Please follow this augmented procedure to configure the
-build to obtain these packages from the TI mirror.
-
-.. raw:: html
-   </div>
+.. note::
+   One common location for hosting packages, gforge.ti.com, has recently
+   been decommissioned. This will cause fetch failures for the current and
+   past releases. Please follow this augmented procedure to configure the
+   build to obtain these packages from the TI mirror.
 
 ::
 
