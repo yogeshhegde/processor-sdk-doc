@@ -185,39 +185,31 @@ which you can start development.
    to develop and what you are trying to do. Here is an example of a
    common set up with a serial connection for console, an Ethernet for
    networking, and a USB connection for flashing and ADB:
-.. Image:: ../images/Android_Dev_Environment_Cropped.png
+
+   .. Image:: ../images/Android_Dev_Environment_Cropped.png
+
 #. **Run the Setup Script** - Once the SDK has been installed and the SD
    card has been created and placed into the device, `**run the setup.sh
    Script** </index.php/Processor_SDK_Android_Setup_Script>`__ on your
    host to guide you through the process of flashing the bootloader,
    kernel, and Android filesystem to the onboard eMMC.
 
-   .. raw:: html
+.. note::
 
-      <div class="block-note">
-
-   |Note|\ **Note:** The eMMC flashing process utilizes the fastboot
+   The eMMC flashing process utilizes the fastboot
    utility of U-Boot in order to place the bootloader (U-Boot), kernel,
    and Android filesystem into non-volatile eMMC memory. For this
    reason, U-Boot running on the SD card is only needed for the initial
    flashing procedure, after this, the bootloader can be run from the
    eMMC in order to flash updated bootloaders, kernels, or filesystems.
 
-   .. raw:: html
 
-      </div>
+.. note::
 
-   .. raw:: html
-
-      <div class="block-note">
-
-   |Note|\ **Note:** Booting Android solely from the SD card is not
+   Booting Android solely from the SD card is not
    supported on the Processor SDK Android v4.2 release. The SD card
    should only be used to run U-Boot in order to flash the onboard eMMC.
 
-   .. raw:: html
-
-      </div>
 
 #. **Rebuild sources** using the `top-level
    makefile </index.php/Processor_SDK_Android_Top-Level_Makefile>`__ in
