@@ -39,10 +39,10 @@ Here is the process to follow to create the SD card.
    .. Image:: ../images/7zip_to_extract_image.png
    You should see a status bar as the image is decompressed:
 
-  .. Image:: ../images/Win32_Disk_Imager_Extracting.png
+   .. Image:: ../images/Win32_Disk_Imager_Extracting.png
    And this is what you should have when it is finished:
 
-  .. Image:: ../images/7zip_image_file_extracted.png
+   .. Image:: ../images/7zip_image_file_extracted.png
 
 #. If you don't have it already, download a program to write the image
    file to the SD card. The open source `Win32 Disk
