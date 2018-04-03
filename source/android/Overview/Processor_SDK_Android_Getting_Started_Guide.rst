@@ -165,15 +165,15 @@ which you can start development.
    page
    `here <https://source.android.com/source/initializing.html#setting-up-a-linux-build-environment>`__
    for setting up the packages required for building Android.
-#. **Install the SDK** - Within your Linux host machine, `**Install the
-   Android SDK** <Overview.html#install-the-android-sdk>`__
+#. **Install the SDK** - Within your Linux host machine, `Install the
+   Android SDK <Overview.html#install-the-android-sdk>`__
    Processor SDK Installer is 64-bit, and installs only on 64-bit host
    machine. Support for 32-bit host is dropped as of the Gingerbread
    Android release
    At least 70 GB of free space is required on the host machine in order
    to pull and then rebuild the full AOSP filesystem
-#. **Create an SD Card using the `SDK Create SD Card
-   Script <Overview.html#sd-card-creation>`__**
+#. **Create an SD Card using the** `SDK Create SD Card
+   Script <Overview.html#sd-card-creation>`__
    You will need a >4GB SD Card and the capability to connect that card
    to your Linux Host machine (using a USB SD Card reader, for example).
    If using a virtual machine as your Linux host, you may need to import

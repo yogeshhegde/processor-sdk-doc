@@ -9,7 +9,7 @@ DIR>/bin** directory named **create-sdcard.sh**. The purpose of this
 script is to create SD cards for the following high-level use case:
 
 #. Create the `**SD card using default
-   images** <#SD_Card_Using_Default_Images>`__ from the Processor SDK
+   images** <#sd-card-using-default-images>`__ from the Processor SDK
    for Android
 
 The script will give you information about each step, but the following
@@ -89,7 +89,7 @@ can move on to the next step.
    -  **n** - If the SD card already has the desired number of
       partitions then this will leave the partitioning alone. If you
       select **n** here skip on to the `**Installing SD Card
-      Content** <#Installing_SD_Card_Content>`__ section.
+      Content** <#installing-sd-card-content>`__ section.
 
 .. rubric:: Installing SD Card Content
    :name: installing-sd-card-content
@@ -106,7 +106,7 @@ to continue installing the file system or safely exit the script.
       creating an SD card for
 
       -  Create the `**SD card using default
-         images** <#SD_Card_Using_Default_Images>`__
+         images** <#sd-card-using-default-images>`__
 
    -  **n** - Selecting no here will allow you to have partitioned your
       card but will leave the partitions empty.
@@ -129,7 +129,7 @@ SDK for Android.
    has a size sufficiently large to hold at least the bootloaders,
    kernel, and Android file system.
 #. You have started running the script as detailed in the `**Common
-   Steps** <#Common_Steps>`__ section above.
+   Steps** <#common-steps>`__ section above.
 
 .. rubric:: Choose Install Pre-built Images
    :name: choose-install-pre-built-images
