@@ -30,8 +30,9 @@ Prerequisites
    Studio <http://processors.wiki.ti.com/index.php/Download_CCS>`__
    (choose version as specified on Proc SDK download page)
 
-| |Note|\ **Note:** Please be sure that you have the same version number
-  for both Processor SDK RTOS and Linux.
+.. note::
+   Please be sure that you have the same version number
+   for both Processor SDK RTOS and Linux.
 
 For reference within the context of this wiki page, the Linux SDK is
 installed at the following location:
@@ -119,39 +120,11 @@ the remotecores(DSP's and M4's) run a RTOS. In the normal operation,
 boot loader(U-Boot/SPL) boots and loads the A15 with the HLOS. The A15
 boots the DSP and the M4 cores.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:513px;">
-
-|image1|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-caption Normal Boot Flow
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Normal-boot.png
 
 In this sequence, the interval between the Power on Reset and the
 remotecores (i.e. the DSP's and the M4's) executing is dependent on the
 HLOS initialization time.
-
-| 
 
 | 
 
@@ -398,29 +371,13 @@ the Linux config:
 
 linux/arch/arm/configs/tisdk\_am57xx-evm\_defconfig
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="bash source-bash">
-
-.. code:: de1
+.. code-block:: c
 
     #
     # Default contiguous memory area size:
     #
     CONFIG_CMA_SIZE_MBYTES=24
     CONFIG_CMA_SIZE_SEL_MBYTES=y
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -534,33 +491,26 @@ Linux dts file.** For example for the AM57xx EVM:
                    };
            };
 
-| You are able to change both the size and location. **Be careful not to
-  overlap any other carveouts!**
+You are able to change both the size and location. **Be careful not to
+overlap any other carveouts!**
 
-| |Note|\ **Note:** The **two** location entries for a given DSP must be identical!
+.. note::
+   The **two** location entries for a given DSP must be identical!
 
-| Additionally, when you change the carveout location, there is a
-  corresponding change that must be made to the resource table. For
-  starters, if you're making a memory change you will need a **custom**
-  resource table. The resource table is a large structure that is the
-  "bridge" between physical memory and virtual memory. This structure is
-  utilized for configuring the MMUs that sit in front of the DSP
-  subsystem. There is detailed information available in the article `IPC
-  Resource customTable </index.php/IPC_Resource_customTable>`__.
+Additionally, when you change the carveout location, there is a
+corresponding change that must be made to the resource table. For
+starters, if you're making a memory change you will need a **custom**
+resource table. The resource table is a large structure that is the
+"bridge" between physical memory and virtual memory. This structure is
+utilized for configuring the MMUs that sit in front of the DSP
+subsystem. There is detailed information available in the article `IPC
+Resource customTable </index.php/IPC_Resource_customTable>`__.
 
 Once you've created your custom resource table, you must update the
 address of PHYS\_MEM\_IPC\_VRING to be the same base address as your
 corresponding CMA.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     #if defined (VAYU_DSP_1)
     #define PHYS_MEM_IPC_VRING      0x99000000
@@ -568,8 +518,9 @@ corresponding CMA.
     #define PHYS_MEM_IPC_VRING      0x9F000000
     #endif
 
-|Note|\ **Note:** The PHYS\_MEM\_IPC\_VRING definition from the resource
-table must match the address of the associated CMA carveout!
+.. note::
+   The PHYS\_MEM\_IPC\_VRING definition from the resource
+   table must match the address of the associated CMA carveout!
 
 .. rubric:: DSP Virtual Addresses
    :name: dsp-virtual-addresses
@@ -586,15 +537,7 @@ existing resource table inside IPC:
 
 ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_dsp.h
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code:: c
 
         {
             TYPE_CARVEOUT,
@@ -631,40 +574,16 @@ ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_dsp.h
             DSP_MEM_IPC_VRING_SIZE, 0, 0, "DSP_MEM_IPC_VRING",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 Let's have a look at some of these to understand them better. For
 example:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
         {
             TYPE_CARVEOUT,
             DSP_MEM_TEXT, 0,
             DSP_MEM_TEXT_SIZE, 0, 0, "DSP_MEM_TEXT",
         },
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 Key points to note are:
 
@@ -682,27 +601,13 @@ Key points to note are:
 
 Let's take another:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
         {
             TYPE_TRACE, TRACEBUFADDR, 0x8000, 0, "trace:dsp",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+|
 
 Key points are:
 
@@ -716,15 +621,7 @@ Key points are:
 
 Finally, let's look at a TYPE\_DEVMEM example:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
         {
             TYPE_DEVMEM,
@@ -732,18 +629,12 @@ Finally, let's look at a TYPE\_DEVMEM example:
             SZ_16M, 0, 0, "DSP_PERIPHERAL_L4CFG",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+|
 
 Key points:
 
 #. The "TYPE\_DEVMEM" indicates that we are making an MMU mapping, but
-   this *does not come from the CMA pool*. This is intended for mapping
+   this **does not come from the CMA pool**. This is intended for mapping
    peripherals, etc. that already exist in the device memory map.
 #. DSP\_PERIPHERAL\_L4CFG (0x4A000000) is the virtual address while
    L4\_PERIPHERAL\_L4CFG (0x4A000000) is the physical address. **This is
@@ -840,7 +731,7 @@ at the associated format from the TRM:
 .. Image:: ../images/LinuxIpcPageTableDescriptor1.png
 
 The "da" ("device address") column reflects the virtual address. It is
-*derived* from the index into the table, i.e. there does not exist a
+**derived** from the index into the table, i.e. there does not exist a
 "da" register or field in the page table. Each MB of the address space
 maps to an entry in the table. The "da" column is displayed to make it
 easy to find the virtual address of interest.
@@ -857,10 +748,11 @@ The 0x4a040002 shows us that it is a Supersection with base address
 afterward. That's a requirement of the MMU. Here's an excerpt from the
 TRM:
 
-|Note|\ **Note:** Supersection descriptors must be repeated 16 times,
-because each descriptor in the first level translation table describes 1
-MiB of memory. If an access points to a descriptor that is not
-initialized, the MMU will behave in an unpredictable way.
+.. note::
+   Supersection descriptors must be repeated 16 times,
+   because each descriptor in the first level translation table describes 1
+   MiB of memory. If an access points to a descriptor that is not
+   initialized, the MMU will behave in an unpredictable way.
 
 | 
 
@@ -905,8 +797,9 @@ Linux dts file.** For example for the AM57xx EVM:
 | You are able to change both the size and location. **Be careful not to
   overlap any other carveouts!**
 
-| |Note|\ **Note:** The **two** location entries for a given carveout
-  must be identical!
+.. note::
+   The **two** location entries for a given carveout
+   must be identical!
 
 | Additionally, when you change the carveout location, there is a
   corresponding change that must be made to the resource table. For
@@ -921,15 +814,7 @@ Once you've created your custom resource table, you must update the
 address of PHYS\_MEM\_IPC\_VRING to be the same base address as your
 corresponding CMA.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     #if defined(VAYU_IPU_1)
     #define PHYS_MEM_IPC_VRING      0x9D000000
@@ -937,16 +822,10 @@ corresponding CMA.
     #define PHYS_MEM_IPC_VRING      0x95800000
     #endif
 
-.. raw:: html
 
-   </div>
-
-.. raw:: html
-
-   </div>
-
-|Note|\ **Note:** The PHYS\_MEM\_IPC\_VRING definition from the resource
-table must match the address of the associated CMA carveout!
+.. note::
+   The PHYS\_MEM\_IPC\_VRING definition from the resource
+   table must match the address of the associated CMA carveout!
 
 .. rubric:: Cortex M4 IPU Virtual Addresses
    :name: cortex-m4-ipu-virtual-addresses
@@ -962,15 +841,7 @@ large pages. Here's a snippet showing some of the key mappings:
 
 ipc\_3\_43\_02\_04/examples/DRA7XX\_linux\_elf/ex02\_messageq/ipu1/IpuAmmu.cfg
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     /*********************** Large Pages *************************/
     /* Instruction Code: Large page  (512M); cacheable */
@@ -1000,15 +871,7 @@ ipc\_3\_43\_02\_04/examples/DRA7XX\_linux\_elf/ex02\_messageq/ipu1/IpuAmmu.cfg
     AMMU.largePages[2].L1_cacheable = AMMU.CachePolicy_CACHEABLE;
     AMMU.largePages[2].L1_posted = AMMU.PostedPolicy_POSTED;
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-`` ``
+|
 
 +----------------+-------------------------+-------------------------+----------+---------------+
 | Page           | Cortex M4 Address       | Intermediate Address    | Size     | Comment       |
@@ -1025,7 +888,7 @@ requests to the associated address ranges. These intermediate addresses
 get mapped to their physical addresses in the next level of translation
 (IOMMU).
 
-The AMMU ranges for code and data *need* to be identity mappings because
+The AMMU ranges for code and data **need** to be identity mappings because
 otherwise the remoteproc loader wouldn't be able to match up the
 sections from the ELF file with the associated IOMMU mapping. These
 mappings should suffice for any application, i.e. no need to adjust
@@ -1051,15 +914,7 @@ can be found at this location:
 
 ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_ipu.h
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     #define IPU_MEM_TEXT            0x0
     #define IPU_MEM_DATA            0x80000000
@@ -1088,25 +943,13 @@ ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_ipu.h
     #define IPU_MEM_DATA_SIZE       (SZ_1M * 48)
     #endif
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+|
 
 <snip...>
 
-.. raw:: html
+|
 
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
         {
             TYPE_CARVEOUT,
@@ -1126,13 +969,6 @@ ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_ipu.h
             IPU_MEM_IPC_DATA_SIZE, 0, 0, "IPU_MEM_IPC_DATA",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 The 3 entries above from the resource table all come from the associated
 IPU CMA pool (i.e. as dictated by the TYPE\_CARVEOUT). The second
@@ -1259,20 +1095,20 @@ associated System FS name from the chart above.
 .. rubric:: Adding IPC to an existing TI RTOS application on the DSP
    :name: adding-ipc-to-an-existing-ti-rtos-application-on-the-dsp
 
-| A common thing people want to do is take an existing DSP application
-  and add IPC to it. This is common when migrating from a DSP only
-  solution to a heterogeneous SoC with an Arm plus a DSP. This is the
-  focus of this section.
+A common thing people want to do is take an existing DSP application
+and add IPC to it. This is common when migrating from a DSP only
+solution to a heterogeneous SoC with an Arm plus a DSP. This is the
+focus of this section.
 
-| In order to describe this process, we need an example test case to
-  work with. For this purpose, we'll be using the
-  GPIO\_LedBlink\_evmAM572x\_c66xExampleProject example that's part of
-  the PDK (installed as part of the Processor SDK RTOS). You can find it
-  at
-  c:\\ti\\pdk\_am57xx\_1\_0\_4\\packages\\MyExampleProjects\\GPIO\_LedBlink\_evmAM572x\_c66xExampleProject.
-  This example uses SYS/BIOS and blinks the USER0 LED on the AM572x GP
-  EVM, it's labeled D4 on the EVM silkscreen just to the right of the
-  blue reset button.
+In order to describe this process, we need an example test case to
+work with. For this purpose, we'll be using the
+GPIO\_LedBlink\_evmAM572x\_c66xExampleProject example that's part of
+the PDK (installed as part of the Processor SDK RTOS). You can find it
+at
+c:\\ti\\pdk\_am57xx\_1\_0\_4\\packages\\MyExampleProjects\\GPIO\_LedBlink\_evmAM572x\_c66xExampleProject.
+This example uses SYS/BIOS and blinks the USER0 LED on the AM572x GP
+EVM, it's labeled D4 on the EVM silkscreen just to the right of the
+blue reset button.
 
 | 
 
@@ -1294,13 +1130,14 @@ which will be described in following sections
 .. rubric:: Running LED Blink PDK Example from CCS
    :name: running-led-blink-pdk-example-from-ccs
 
-| TODO - Fill this section in with instructions on how to run the LED
-  blink example using JTAG and CCS after the board has booted Linux.
+TODO - Fill this section in with instructions on how to run the LED
+blink example using JTAG and CCS after the board has booted Linux.
 
-[NOTE] Some edits were made to the LED blink example to allow it to run
-in a Linux environment, specifically, removed the GPIO interrupts and
-then added a Clock object to call the LED GPIO toggle function on a
-periodic bases.
+.. note::
+   Some edits were made to the LED blink example to allow it to run
+   in a Linux environment, specifically, removed the GPIO interrupts and
+   then added a Clock object to call the LED GPIO toggle function on a
+   periodic bases.
 
 | 
 
@@ -1319,9 +1156,9 @@ The first step is to clone our out-of-box LED blink CCS project and
 rename it to denote it's using IPC. The easiest way to do this is using
 CCS. Here are the steps...
 
--  In the *Edit* perspective, go into your *Project Explorer* window and
+-  In the **Edit** perspective, go into your **Project Explorer** window and
    right click on your GPIO\_LedBlink\_evmAM572x+c66xExampleProject
-   project and select *copy* from the pop-up menu. Maske sure the
+   project and select **copy** from the pop-up menu. Maske sure the
    project is not is a closed state.
 -  Rick click in and empty area of the project explorer window and
    select past.
@@ -1336,32 +1173,33 @@ To do this, follow these steps.
 
 -  Right click on the
    GPIO\_LedBlink\_evmAM572x+c66xExampleProjec\_with\_ipc project and
-   select *Properties*
--  In the left hand pane, click on *CCS General*.
--  On the right hand side, click on the *RTSC* tab
--  For *XDCtools version:* select 3.32.0.06\_core
--  In the list of *Products and Repositories*, *check* the following...
+   select **Properties**
+-  In the left hand pane, click on **CCS General**.
+-  On the right hand side, click on the **RTSC** tab
+-  For **XDCtools version:** select 3.32.0.06\_core
+-  In the list of **Products and Repositories**, **check** the following...
 
    -  IPC 3.43.2.04
    -  SYS/BIOS 6.45.1.29
    -  am57xx PDK 1.0.4
 
--  For *Target*, select ti.targets.elf.C66
--  For *Platform*, select ti.platforms.evmDRA7XX
+-  For **Target**, select ti.targets.elf.C66
+-  For **Platform**, select ti.platforms.evmDRA7XX
 -  Once the platform is selected, edit its name buy hand and
    append :dsp1 to the end. After this it should be
    ti.platforms.evmDRA7XX:dsp1
--  Go ahead and leave the *Build-profile* set to debug.
+-  Go ahead and leave the **Build-profile** set to debug.
 -  Hit the OK button.
 
 | 
-| Now we want to copy configuration and source files from the
-  ex02\_messageq IPC example into our project. The IPC example is
-  located at
-  *C:\\ti\\ipc\_3\_43\_02\_04\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq*.
-  To copy files into your CCS project, you can simply select the files
-  you want in Windows explorer then drag and drop them into your project
-  in CCS.
+
+Now we want to copy configuration and source files from the
+ex02\_messageq IPC example into our project. The IPC example is
+located at
+**C:\\ti\\ipc\_3\_43\_02\_04\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq**.
+To copy files into your CCS project, you can simply select the files
+you want in Windows explorer then drag and drop them into your project
+in CCS.
 
 Copy these files into your CCS project...
 
@@ -1370,7 +1208,8 @@ Copy these files into your CCS project...
 -  C:\\ti\\ipc\_3\_43\_02\_04\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\shared\\ipc.cfg.xs
 
 | 
-| Now copy these files into your CCS project...
+
+Now copy these files into your CCS project...
 
 -  C:\\ti\\ipc\_3\_43\_02\_04\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\dsp1\\Dsp1.cfg
 -  C:\\ti\\ipc\_3\_43\_02\_04\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\dsp1\\MainDsp1.c
@@ -1378,11 +1217,13 @@ Copy these files into your CCS project...
 -  C:\\ti\\ipc\_3\_43\_02\_04\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\dsp1\\Server.h
 
 | 
-| |Note|\ **Note:** When you copy Dsp1.cfg into your CCS project, it
-  should show up greyed out. This is because the LED blink example
-  already has a cfg file (gpio\_test\_evmAM572x.cfg). The Dsp1.cfg will
-  be used for copying and pasting. When it's all done, you can delete it
-  from your project.
+
+.. note::
+   When you copy Dsp1.cfg into your CCS project, it
+   should show up greyed out. This is because the LED blink example
+   already has a cfg file (gpio\_test\_evmAM572x.cfg). The Dsp1.cfg will
+   be used for copying and pasting. When it's all done, you can delete it
+   from your project.
 
 Finally, you will likely want to use a custom resource table so copy
 these files into your CCS project...
@@ -1391,28 +1232,30 @@ these files into your CCS project...
 -  C:\\ti\\ipc\_3\_43\_02\_04\\packages\\ti\\ipc\\remoteproc\\rsc\_types.h
 
 The rsc\_table\_vayu\_dsp.h file defines an initialized structure so
-let's make a *.c* source file.
+let's make a **.c** source file.
 
 -  In your CCS project, rename rsc\_table\_vayu\_dsp.h to
    rsc\_table\_vayu\_dsp.c
 
-| 
-| Now we want to *merge* the IPC example configuration file with the LED
-  blink example configuration file. Follow these steps...
+|
+ 
+Now we want to **merge** the IPC example configuration file with the LED
+blink example configuration file. Follow these steps...
 
--  Open up *Dsp1.cfg* using a text editor (don't open it using the GUI).
-   Right click on it and select *Open With -> XDCscript Editor*
+-  Open up **Dsp1.cfg** using a text editor (don't open it using the GUI).
+   Right click on it and select **Open With -> XDCscript Editor**
 -  We want to copy the entire contents into the clipboard. Select all
    and copy.
 -  Now just like above, open the gpio\_test\_evmAM572x.cfg config file
-   in the text editor. Go to the very bottom and *paste* in the contents
+   in the text editor. Go to the very bottom and **paste** in the contents
    from the Dsp1.cfg file. Basically we've appended the contents of
    Dsp1.cfg into gpio\_test\_evmAM572x.cfg.
 
-| 
-| We've now added in all the necessary configuration and source files
-  into our project. Don't expect it to build at this point, we have to
-  make edits first. These edits are listed below.
+|
+ 
+We've now added in all the necessary configuration and source files
+into our project. Don't expect it to build at this point, we have to
+make edits first. These edits are listed below.
 
 ::
 
@@ -1423,42 +1266,19 @@ let's make a *.c* source file.
 
 -  Edit **gpio\_test\_evmAM572x.cfg**
 
-| 
-| Add the following to the beginning of your configuration file
+|
+ 
+Add the following to the beginning of your configuration file
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+.. code-block:: c
 
     var Program = xdc.useModule('xdc.cfg.Program');
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Comment out the Memory sections configuration as shown below
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+.. code-block:: javascript
 
     /* ================ Memory sections configuration ================ */
     //Program.sectMap[".text"] = "EXT_RAM";
@@ -1467,102 +1287,39 @@ Comment out the Memory sections configuration as shown below
     /* Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1"; */
     /* Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1"; */
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 Since we are no longer using a shared folder, make the following change
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+.. code-block:: javascript
 
     //var ipc_cfg = xdc.loadCapsule("../shared/ipc.cfg.xs");
     var ipc_cfg = xdc.loadCapsule("../ipc.cfg.xs");
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Comment out the following. We'll be calling this function directly from
 main.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+.. code-block:: c
 
     //BIOS.addUserStartupFunction('&IpcMgr_ipcStartup');
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Increase the system stack size
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+.. code-block:: javascript
 
     //Program.stack = 0x1000;
     Program.stack = 0x8000;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Comment out the entire TICK section
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+.. code-block:: javascript
 
     /* --------------------------- TICK --------------------------------------*/
     // var Clock = xdc.useModule('ti.sysbios.knl.Clock');
@@ -1598,42 +1355,17 @@ Comment out the entire TICK section
     // /* Must be placed before pwr mgmt */
     // Idle.addFunc('&ti_deh_Deh_idleBegin');
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Make configuration change to use custom resource table. Add to the end
 of the file.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+.. code-block:: javascript
 
     /* Override the default resource table with my own */
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
     Resource.customTable = true;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
 
 | 
 
@@ -1643,41 +1375,17 @@ of the file.
 
 Add the following external declarations
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     extern Int ipc_main();
     extern Void IpcMgr_ipcStartup(Void);
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 In main(), add a call to ipc\_main() and IpcMgr\_ipcStartup() just
 before BIOS\_start()
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
         ipc_main();
      
@@ -1689,30 +1397,14 @@ before BIOS\_start()
         BIOS_start();
         return (0);
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
-| Comment out the line that calls Board\_init(boardCfg). This call is in
-  the original example because it assumes TI-RTOS is running on the Arm
-  but in our case here, we are running Linux and this call is
-  destructive so we comment it out.
+Comment out the line that calls Board\_init(boardCfg). This call is in
+the original example because it assumes TI-RTOS is running on the Arm
+but in our case here, we are running Linux and this call is
+destructive so we comment it out.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     #if defined(EVM_K2E) || defined(EVM_C6678)
         boardCfg = BOARD_INIT_MODULE_CLOCK |
@@ -1724,16 +1416,6 @@ before BIOS\_start()
     #endif
         //Board_init(boardCfg);
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
-
 | 
 
 -  Edit **MainDsp1.c**
@@ -1742,102 +1424,37 @@ before BIOS\_start()
 
 The app now has it's own main(), so rename this one and get rid of args
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     //Int main(Int argc, Char* argv[])
     Int ipc_main()
     {
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
-| 
-| No longer using args so comment these lines
+No longer using args so comment these lines
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
         //taskParams.arg0 = (UArg)argc;
         //taskParams.arg1 = (UArg)argv;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 BIOS\_start() is done in the app main() so comment it out here
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
         /* start scheduler, this never returns */
         //BIOS_start();
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Comment this out
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
         //Log_print0(Diags_EXIT, "<-- main:");
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -1847,51 +1464,17 @@ Comment this out
 
 Set this #define before it's used to select PHYS\_MEM\_IPC\_VRING value
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     #define VAYU_DSP_1
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
 Add this extern declaration prior to the symbol being used
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     extern char ti_trace_SysMin_Module_State_0_outbuf__A;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
 
 | 
 
@@ -1899,57 +1482,36 @@ Add this extern declaration prior to the symbol being used
 
 | 
 
-| 
-| No longer have shared folder so change include path
+No longer have shared folder so change include path
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     /* local header files */
     //#include "../shared/AppCommon.h"
     #include "../AppCommon.h"
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
-
-| 
 
 | 
 
 .. rubric:: Download the Full CCS Project
    :name: download-the-full-ccs-project
 
-| `GPIO\_LedBlink\_evmAM572x\_c66xExampleProject\_with\_ipc.zip <http://processors.wiki.ti.com/images/c/c9/GPIO_LedBlink_evmAM572x_c66xExampleProject_with_ipc.zip>`__
+`GPIO\_LedBlink\_evmAM572x\_c66xExampleProject\_with\_ipc.zip <http://processors.wiki.ti.com/images/c/c9/GPIO_LedBlink_evmAM572x_c66xExampleProject_with_ipc.zip>`__
 
 .. rubric:: Adding IPC to an existing TI RTOS application on the IPU
    :name: adding-ipc-to-an-existing-ti-rtos-application-on-the-ipu
 
-| A common thing people want to do is take an existing IPU application
-  that may be controlling serial or control interfaces and add IPC to it
-  so that the firmware can be loaded from the ARM. This is common when
-  migrating from a IPU only solution to a heterogeneous SoC with an
-  MPUSS (ARM) and IPUSS. This is the focus of this section.
+A common thing people want to do is take an existing IPU application
+that may be controlling serial or control interfaces and add IPC to it
+so that the firmware can be loaded from the ARM. This is common when
+migrating from a IPU only solution to a heterogeneous SoC with an
+MPUSS (ARM) and IPUSS. This is the focus of this section.
 
-| In order to describe this process, we need an example TI RTOS test
-  case to work with. For this purpose, we'll be using the
-  UART\_BasicExample\_evmAM572x\_m4ExampleProject example that's part of
-  the PDK (installed as part of the Processor SDK RTOS). This example
-  uses TI RTOS and does serial IO using UART3 port on the AM572x GP EVM,
-  it's labeled Serial Debug on the EVM silkscreen.
+In order to describe this process, we need an example TI RTOS test
+case to work with. For this purpose, we'll be using the
+UART\_BasicExample\_evmAM572x\_m4ExampleProject example that's part of
+the PDK (installed as part of the Processor SDK RTOS). This example
+uses TI RTOS and does serial IO using UART3 port on the AM572x GP EVM,
+it's labeled Serial Debug on the EVM silkscreen.
 
 | 
 
@@ -1982,9 +1544,10 @@ For the UART M4 example run the script with the following arguments:
 
     pdkProjectCreate.bat AM572x evmAM572x little uart m4 
 
-| 
-| After you run the script, you can find the UART M4 example project at
-  <SDK\_INSTALL\_PATH>\\pdk\_am57xx\_1\_0\_4\\packages\\MyExampleProjects\\UART\_BasicExample\_evmAM572x\_m4ExampleProject.
+|
+ 
+After you run the script, you can find the UART M4 example project at
+<SDK\_INSTALL\_PATH>\\pdk\_am57xx\_1\_0\_4\\packages\\MyExampleProjects\\UART\_BasicExample\_evmAM572x\_m4ExampleProject.
 
 Import the project in CCS and build the example. You can now connect to
 the EVM using an emulator and CCS using the instructions provided here:
@@ -2004,12 +1567,6 @@ following log on the serial IO console:
     1234567890123456  <- loopback from user input
     uart driver and utils example test cases :
     Enter 16 characters or press Esc
-
-| 
-
-| 
-
-| 
 
 | 
 
@@ -2044,9 +1601,9 @@ The first step is to clone our out-of-box UART example CCS project and
 rename it to denote it's using IPC. The easiest way to do this is using
 CCS. Here are the steps...
 
--  In the *Edit* perspective, go into your *Project Explorer* window and
+-  In the **Edit** perspective, go into your **Project Explorer** window and
    right click on your UART\_BasicExample\_evmAM572x\_m4ExampleProject
-   project and select *copy* from the pop-up menu. Maske sure the
+   project and select **copy** from the pop-up menu. Maske sure the
    project is not is a closed state.
 -  Rick click in and empty area of the project explorer window and
    select past.
@@ -2062,33 +1619,33 @@ To do this, follow these steps.
 
 -  Right click on the
    UART\_BasicExample\_evmAM572x\_m4ExampleProject\_with\_ipc project
-   and select *Properties*
--  In the left hand pane, click on *CCS General*.
--  On the right hand side, click on the *RTSC* tab
--  For *XDCtools version:* select 3.xx.x.xx\_core
--  In the list of *Products and Repositories*, *check* the following...
+   and select **Properties**
+-  In the left hand pane, click on **CCS General**.
+-  On the right hand side, click on the **RTSC** tab
+-  For **XDCtools version:** select 3.xx.x.xx\_core
+-  In the list of **Products and Repositories**, **check** the following...
 
    -  IPC 3.xx.x.xx
    -  SYS/BIOS 6.4x.x.xx
    -  am57xx PDK x.x.x
 
--  For *Target*, select **ti.targets.arm.elf.M4**
--  For *Platform*, select **ti.platforms.evmDRA7XX**
+-  For **Target**, select **ti.targets.arm.elf.M4**
+-  For **Platform**, select **ti.platforms.evmDRA7XX**
 -  Once the platform is selected, edit its name buy hand and
    append :ipu2 to the end. After this it should be
    ti.platforms.evmDRA7XX:ipu2
--  Go ahead and leave the *Build-profile* set to debug.
+-  Go ahead and leave the **Build-profile** set to debug.
 -  Hit the OK button.
 
 | 
 
-| Now we want to copy configuration and source files from the
-  ex02\_messageq IPC example into our project. The IPC example is
-  located at
-  *C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq*.
-  To copy files into your CCS project, you can simply select the files
-  you want in Windows explorer then drag and drop them into your project
-  in CCS.
+Now we want to copy configuration and source files from the
+ex02\_messageq IPC example into our project. The IPC example is
+located at
+**C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq**.
+To copy files into your CCS project, you can simply select the files
+you want in Windows explorer then drag and drop them into your project
+in CCS.
 
 Copy these files into your CCS project...
 
@@ -2096,20 +1653,23 @@ Copy these files into your CCS project...
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\shared\\config.bld
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\shared\\ipc.cfg.xs
 
-| 
-| Now copy these files into your CCS project...
+|
+ 
+Now copy these files into your CCS project...
 
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\ipu2\\Ipu2.cfg
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\ipu2\\MainIpu2.c
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\ipu2\\Server.c
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\ipu2\\Server.h
 
-| 
-| |Note|\ **Note:** When you copy Ipu2.cfg into your CCS project, it
-  should show up greyed out. If not, right click and exclude it from
-  build. This is because the UART example already has a cfg file
-  (uart\_m4\_evmAM572x.cfg). The Ipu2.cfg will be used for copying and
-  pasting. When it's all done, you can delete it from your project.
+|
+ 
+.. note::
+   When you copy Ipu2.cfg into your CCS project, it
+   should show up greyed out. If not, right click and exclude it from
+   build. This is because the UART example already has a cfg file
+   (uart\_m4\_evmAM572x.cfg). The Ipu2.cfg will be used for copying and
+   pasting. When it's all done, you can delete it from your project.
 
 Finally, you will likely want to use a custom resource table so copy
 these files into your CCS project...
@@ -2118,53 +1678,48 @@ these files into your CCS project...
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\packages\\ti\\ipc\\remoteproc\\rsc\_types.h
 
 The rsc\_table\_vayu\_dsp.h file defines an initialized structure so
-let's make a *.c* source file.
+let's make a **.c** source file.
 
 -  In your CCS project, rename rsc\_table\_vayu\_ipu.h to
    rsc\_table\_vayu\_ipu.c
 
 | 
 
-Now we want to *merge* the IPC example configuration file with the LED
+Now we want to **merge** the IPC example configuration file with the LED
 blink example configuration file. Follow these steps...
 
--  Open up *Ipu2.cfg* using a text editor (don't open it using the GUI).
-   Right click on it and select *Open With -> XDCscript Editor*
+-  Open up **Ipu2.cfg** using a text editor (don't open it using the GUI).
+   Right click on it and select **Open With -> XDCscript Editor**
 -  We want to copy the entire contents into the clipboard. Select all
    and copy.
 -  Now just like above, open the uart\_m4\_evmAM572x.cfg config file in
-   the text editor. Go to the very bottom and *paste* in the contents
+   the text editor. Go to the very bottom and **paste** in the contents
    from the Ipu2.cfg file. Basically we've appended the contents of
    Ipu2.cfg into uart\_m4\_evmAM572x.cfg.
 
 | 
 
-| We've now added in all the necessary configuration and source files
-  into our project. Don't expect it to build at this point, we have to
-  make edits first. These edits are listed below.
+We've now added in all the necessary configuration and source files
+into our project. Don't expect it to build at this point, we have to
+make edits first. These edits are listed below.
 
 ::
 
     NOTE, you can download the full CCS project with source files to use as a reference. 
     See link towards the end of this section.
 
-| 
-
 -  Edit **uart\_m4\_evmAM572x.cfg**
 
-| 
-| Add the following to the beginning(at the top) of your configuration
-  file
+|
+
+Add the following to the beginning(at the top) of your configuration file
 
 ::
 
     var Program = xdc.useModule('xdc.cfg.Program');
 
-| 
-
-| 
-| Since we are no longer using a shared folder, make the following
-  change
+Since we are no longer using a shared folder, make the following
+change
 
 ::
 
@@ -2239,10 +1794,6 @@ of the file.
     /* Override the default resource table with my own */
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
     Resource.customTable = true;
-
-| 
-
-| 
 
 -  Edit **main\_uart\_example.c**
 
@@ -2284,7 +1835,7 @@ will be described later in the article). Since Linux will be running
 uboot performs the pinmux configuration but clock and UART Stdio setup
 needs to be performed by the M4.
 
-| **Original code**
+**Original code**
 
 ::
 
@@ -2297,13 +1848,13 @@ needs to be performed by the M4.
 
 | 
 
-| **Modified Code :**
+**Modified Code :**
 
 ::
 
            boardCfg = BOARD_INIT_UART_STDIO;
 
-| Board\_init(boardCfg);
+Board\_init(boardCfg);
 
 We are not done yet as we still need to configure turn the clock control
 on for the UART without impacting the other clocks. We can do that by
@@ -2372,8 +1923,6 @@ Add this extern declaration prior to the symbol being used
 ::
 
     extern char ti_trace_SysMin_Module_State_0_outbuf__A;
-
-| 
 
 | 
 
@@ -2457,7 +2006,7 @@ to PRCM registers that need to be changed as follows.
 ::
 
        CSL_l4per_cm_core_componentRegs *l4PerCmReg =
-      (CSL_l4per_cm_core_componentRegs *) 0x6a009700; //CSL_MPU_L4PER_CM_CORE_REGS;
+      (CSL_l4per_cm_core_componentRegs \*) 0x6a009700; //CSL_MPU_L4PER_CM_CORE_REGS;
 
 Now, you are ready to build the firmware. After the .out is built,
 change the extension to .xem4 and copy it over to the location in the
@@ -2466,5 +2015,5 @@ filesystem that is used to load M4 firmware.
 .. rubric:: Download the Full CCS Project
    :name: download-the-full-ccs-project-1
 
-| `UART\_BasicExample\_evmAM572x\_m4ExampleProject\_with\_ipc.zip <http://processors.wiki.ti.com/index.php/File:UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip>`__
+`UART\_BasicExample\_evmAM572x\_m4ExampleProject\_with\_ipc.zip <http://processors.wiki.ti.com/index.php/File:UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip>`__
 

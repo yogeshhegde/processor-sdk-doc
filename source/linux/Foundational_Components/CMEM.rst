@@ -105,15 +105,7 @@ pools.
 Here is an example CMEM configuration registry entry in platform.reg for
 TI EVM3530:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="reg source-reg">
-
-.. code:: de1
+.. code-block:: c
 
     ;-- CMEM --------------------------------------------------------------------
     IF SYSGEN_CMEM
@@ -165,14 +157,6 @@ TI EVM3530:
     ENDIF SYSGEN_CMEM
     ;------------------------------------------------------------------------------
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 The CMEM driver information must also be added to the platform.bib file
 (or some other .bib file that gets put into ce.bib). Here is an example
 of the CMEM driver entry in platform.bib:
@@ -195,26 +179,10 @@ There is also a debug library provided that provides tracing diagnostics
 during execution. XDC Config users can link in this library by adding
 the following to their application's config script:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+.. code-block:: javascript
 
     var CMEM = xdc.useModule('ti.sdo.linuxutils.cmem.CMEM');
     CMEM.debug = true;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: General Purpose Heaps
    :name: general-purpose-heaps
@@ -261,26 +229,10 @@ allowed to free the buffer.
 In order to facilitate multiple owners of an allocated buffer, a new set
 of APIs was introduced:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
+.. code-block:: c
 
     void *CMEM_registerAlloc(unsigned long physp);
     int CMEM_unregister(void *ptr, CMEM_AllocParams *params);
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 ``CMEM_registerAlloc()`` takes a buffer physical address as input
 (achieved through ``CMEM_getPhys()``) and returns a fresh virtual

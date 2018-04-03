@@ -165,15 +165,7 @@ application.
 Create a **helloworld.c** file
 | 
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="cpp source-cpp">
-
-.. code:: de1
+.. code-block:: c
 
     #include <stdio.h>
      
@@ -182,40 +174,36 @@ Create a **helloworld.c** file
          return 0;
      }
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| 
-
 Cross-compile the **helloworld.c** file using the cross-compile
 toolchain. In this example we will invoke the toolchain without it
 having been added to our PATH.
+
 | 
 
 **host# <SDK INSTALL
 DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin/arm-linux-gnueabihf-gcc
 helloworld.c -o helloworld**
+
 | 
 
 After the above steps are run you should now have a **helloworld**
 executable in your directory that has been compiled for the ARM. A
 simple way to check this is to run the following command:
+
 | 
 
 **host# file helloworld**
+
 | 
 
 This should yield output like:
+
 | 
 
 "helloworld: ELF 32-bit LSB executable, **ARM**, version 1 (SYSV),
 dynamically linked (uses shared libs), for GNU/Linux 2.6.31, not
 stripped"
+
 | 
 
 .. note::
@@ -226,26 +214,19 @@ stripped"
 .. rubric:: Using PThreads
    :name: using-pthreads
 
-| In many cases your simple application probably wants to use additional
-  libraries than the standard libgcc and glibc libraries. In this case
-  you will need to include the header files for those libraries as well
-  as add the library to the compile line. In this example we will look
-  at how to build a simple threading application and use the pthread
-  library. This example was derived from the example code at
-  `**http://www.amparo.net/ce155/thread-ex.html** <http://www.amparo.net/ce155/thread-ex.html>`__
+In many cases your simple application probably wants to use additional
+libraries than the standard libgcc and glibc libraries. In this case
+you will need to include the header files for those libraries as well
+as add the library to the compile line. In this example we will look
+at how to build a simple threading application and use the pthread
+library. This example was derived from the example code at
+`**http://www.amparo.net/ce155/thread-ex.html** <http://www.amparo.net/ce155/thread-ex.html>`__
 
 Create a file **thread-ex.c** with the following contents
+
 | 
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="cpp source-cpp">
-
-.. code:: de1
+.. code:: c
 
     #include <unistd.h>;
     #include <sys/types.h>;
@@ -296,14 +277,6 @@ Create a file **thread-ex.c** with the following contents
         return 0;
     }
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 Cross-compile the **thread-ex.c** file using the cross-compile
@@ -315,9 +288,11 @@ provides the pthread\_\* functions.
 
 **export PATH="<SDK INSTALL
 DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin/:$PATH"**
+
 | 
 
 **arm-linux-gnueabihf-gcc '**\ **-lpthread'** **thread-ex.c -o thread-ex**
+
 | 
 
 .. note::
