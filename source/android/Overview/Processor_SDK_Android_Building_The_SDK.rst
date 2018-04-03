@@ -1,6 +1,6 @@
-**********************
-Building The SDK
-**********************
+********************************************
+Processor SDK Android Building The SDK
+********************************************
 
 .. rubric:: Using the Prebuilt Release Images
    :name: using-the-prebuilt-release-images
@@ -445,18 +445,4 @@ section first.
    reboot the board.
 
 | 
-
-.. rubric:: Technical support
-   :name: technical-support
-
-We strongly recommend using the TI E2E forum for all queries.
-
-E2E Support Forums for all Sitara platforms - `Click
-Here <http://e2e.ti.com/support/arm/sitara_arm/f/791.aspx>`__
-
-There could be a few cases where your query has confidential information
-and cannot be posted publicly. In such cases, please contact your FAE or
-CPM.
-
-.. raw:: html
 

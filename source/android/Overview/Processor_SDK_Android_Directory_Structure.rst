@@ -1,6 +1,6 @@
-*********************************
-Directory Structure Overview
-*********************************
+********************************************
+Processor SDK Android Directory Structure
+********************************************
 
 | The Processor SDK for Android contains the following top-level
   directories and files
