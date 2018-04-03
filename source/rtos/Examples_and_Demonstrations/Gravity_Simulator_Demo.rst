@@ -104,7 +104,7 @@ To load and run the demo:
 
 Below is a screenshot of the terminal after one simulation:
 
-|gravit-screenshot_version_01_00_00.png|
+.. Image:: ../images/Gravit-screenshot_version_01_00_00.png
 
 .. rubric:: Display Output
    :name: display-output
@@ -117,7 +117,7 @@ Below is a screenshot of the terminal after one simulation:
 
 Below is an example display of a 500-particle simulation:
 
-|gravit-displayshot_version_01_00_00.jpg|
+.. Image:: ../images/Gravit-displayshot_version_01_00_00.jpg
 
 .. rubric:: Useful References
    :name: useful-references

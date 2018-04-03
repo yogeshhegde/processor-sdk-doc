@@ -18,21 +18,26 @@ The Board_init() API supports initialization of PLL, peripheral clocks,
 external DDR memory, pinmux and IO Delay configurations. API Reference
 for application:
 
-<syntaxhighlight lang="c">
+::
 
 #. include <ti/board/board.h>
 
-</syntaxhighlight>
+| 
 
 Example API pseudo code for Board_init() is as follows:
 
-<syntaxhighlight lang="c"> /\* Setting up for pinmux and uart \*/
-Board_STATUS ret; Board_initCfg boardCfg;
+::
 
+/* Setting up for pinmux and uart */
+Board_STATUS ret;
+Board_initCfg boardCfg;
+ 
 boardCfg = BOARD_INIT_MODULE_CLOCK \| BOARD_INIT_PINMUX_CONFIG \|
 BOARD_INIT_UART_STDIO;
 
 ret = Board_init(boardCfg); </syntaxhighlight>
+
+| 
 
 .. rubric::  LLD Dependencies
    :name: lld-dependencies
@@ -84,12 +89,12 @@ BOARD_IO_DELAY_CODE : {
 
 BOARD_IO_DELAY_DATA : {
 
-::
-
     . = ALIGN(4);
     *(BOARD_IO_DELAY_DATA*)
 
 } > OCMC_RAM1 </syntaxhighlight>
+
+| 
 
 In a CCS RTSC project with .cfg file: <syntaxhighlight lang="c">
 Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1";

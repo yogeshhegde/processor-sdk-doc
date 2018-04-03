@@ -108,82 +108,82 @@ instance identified by handle.
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
 +=======================+=======================+=======================+
-| Loopback DIO ISR      | The example is a      | | The application     |
-| Example Project       | demonstration of the  |   will run through a  |
-|                       | SRIO driver running   |   set of DIO tests.   |
-|                       | the SRIO IP Block in  |   Upon successful     |
-|                       | loopback mode. The    |   completion the      |
-|                       | example showcases the |   following string    |
-|                       | use of SRIO DIO       |   will be printed     |
-|                       | sockets using LSU     |   "DIO with           |
-|                       | interrupts to         |   Interrupts example  |
-|                       | indicate the          |   completed           |
-|                       | completion of packet  |   successfully."      |
+| Loopback DIO ISR      | The example is a      | The application       |
+| Example Project       | demonstration of the  | will run through a    |
+|                       | SRIO driver running   | set of DIO tests.     |
+|                       | the SRIO IP Block in  | Upon successful       |
+|                       | loopback mode. The    | completion the        |
+|                       | example showcases the | following string      |
+|                       | use of SRIO DIO       | will be printed       |
+|                       | sockets using LSU     | "DIO with             |
+|                       | interrupts to         | Interrupts example    |
+|                       | indicate the          | completed             |
+|                       | completion of packet  | successfully."        |
 |                       | transfer.             |                       |
 |                       |                       |                       |
-|                       | | It is shown how     |                       |
-|                       |   multiple sockets    |                       |
-|                       |   with different      |                       |
-|                       |   Source IDs can post |                       |
-|                       |   transactions and    |                       |
-|                       |   process the pending |                       |
-|                       |   interrupt raised by |                       |
-|                       |   SRIO device.        |                       |
+|                       | It is shown how       |                       |
+|                       | multiple sockets      |                       |
+|                       | with different        |                       |
+|                       | Source IDs can post   |                       |
+|                       | transactions and      |                       |
+|                       | process the pending   |                       |
+|                       | interrupt raised by   |                       |
+|                       | SRIO device.          |                       |
 +-----------------------+-----------------------+-----------------------+
-| Multicore Loopback    | The example is a      | | The application     |
-| Example Project       | demonstration of the  |   will run through a  |
-|                       | SRIO driver while     |   set of tests        |
-|                       | operating in a        |   sending and         |
-|                       | Multicore environment |   receiving data      |
-|                       | by running the SRIO   |   between two cores   |
-|                       | IP Block in loopback  |   over SRIO. Upon     |
-|                       | mode. The test case   |   successful          |
-|                       | here showcases the    |   completion the      |
-|                       | SRIO Driver API being |   following string    |
-|                       | multicore safe and    |   will be printed     |
-|                       | using the SRIO IP     |   "Multicore Test     |
-|                       | peripheral to         |   Passed" from each   |
-|                       | exchange messages     |   DSP core.           |
+| Multicore Loopback    | The example is a      | The application       |
+| Example Project       | demonstration of the  | will run through a    |
+|                       | SRIO driver while     | set of tests          |
+|                       | operating in a        | sending and           |
+|                       | Multicore environment | receiving data        |
+|                       | by running the SRIO   | between two cores     |
+|                       | IP Block in loopback  | over SRIO. Upon       |
+|                       | mode. The test case   | successful            |
+|                       | here showcases the    | completion the        |
+|                       | SRIO Driver API being | following string      |
+|                       | multicore safe and    | will be printed       |
+|                       | using the SRIO IP     | "Multicore Test       |
+|                       | peripheral to         | Passed" from each     |
+|                       | exchange messages     | DSP core.             |
 |                       | between different     |                       |
 |                       | cores running on the  |                       |
 |                       | same device.          |                       |
 |                       |                       |                       |
-|                       | | In this test case   |                       |
-|                       |   each core performs  |                       |
-|                       |   the role of a       |                       |
-|                       |   producer and        |                       |
-|                       |   consumer. The test  |                       |
-|                       |   starts with Core 1  |                       |
-|                       |   sending data to     |                       |
-|                       |   Core 2. Core 2      |                       |
-|                       |   receives and        |                       |
-|                       |   validates the data  |                       |
-|                       |   and sends another   |                       |
-|                       |   data message to     |                       |
-|                       |   Core3; which        |                       |
-|                       |   receives and        |                       |
-|                       |   validates the data  |                       |
-|                       |   and sends another   |                       |
-|                       |   different data      |                       |
-|                       |   message to Core 0.  |                       |
-|                       |   Core 0 then sends a |                       |
-|                       |   message to Core 1   |                       |
-|                       |   which is received   |                       |
-|                       |   and validated.      |                       |
+|                       | In this test case     |                       |
+|                       | each core performs    |                       |
+|                       | the role of a         |                       |
+|                       | producer and          |                       |
+|                       | consumer. The test    |                       |
+|                       | starts with Core 1    |                       |
+|                       | sending data to       |                       |
+|                       | Core 2. Core 2        |                       |
+|                       | receives and          |                       |
+|                       | validates the data    |                       |
+|                       | and sends another     |                       |
+|                       | data message to       |                       |
+|                       | Core3; which          |                       |
+|                       | receives and          |                       |
+|                       | validates the data    |                       |
+|                       | and sends another     |                       |
+|                       | different data        |                       |
+|                       | message to Core 0.    |                       |
+|                       | Core 0 then sends a   |                       |
+|                       | message to Core 1     |                       |
+|                       | which is received     |                       |
+|                       | and validated.        |                       |
 +-----------------------+-----------------------+-----------------------+
-| Loopback Test         | | Unit Test           | | The application     |
-|                       |   application to test |   will run through a  |
-|                       |   all APIs            |   set of tests to     |
-|                       |                       |   verify all SRIO LLD |
-|                       |                       |   APIS. Upon          |
-|                       |                       |   successful          |
-|                       |                       |   completion the      |
-|                       |                       |   following string    |
-|                       |                       |   will be printed     |
-|                       |                       |   "Unit Testing       |
-|                       |                       |   completed           |
-|                       |                       |   successfully." from |
-|                       |                       |   each DSP core.      |
+| Loopback Test         | Unit Test             | The application       |
+|                       | application to test   | will run through a    |
+|                       | all APIs              | set of tests to       |
+|                       |                       | verify all SRIO LLD   |
+|                       |                       | APIS. Upon            |
+|                       |                       | successful            |
+|                       |                       | completion the        |
+|                       |                       | following string      |
+|                       |                       | will be printed       |
+|                       |                       | "Unit Testing         |
+|                       |                       | completed             |
+|                       |                       | successfully." from   |
+|                       |                       | each DSP core.        |
 +-----------------------+-----------------------+-----------------------+
 | SRIO Benchmarking     | The SRIO benchmarking | Review the SRIO       |
 | Test                  | example code is       | Benchmarking Example  |

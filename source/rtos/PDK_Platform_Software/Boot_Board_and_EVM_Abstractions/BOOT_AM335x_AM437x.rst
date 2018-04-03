@@ -106,24 +106,19 @@ RTOS bootloader are shown below:
 |                       |                       | through XMODEM in     |
 |                       |                       | terminal.             |
 +-----------------------+-----------------------+-----------------------+
-| \_ti.bin              | MMCSD bootloader      | | .bin binaries are   |
-|                       | and app,              |   converted to        |
-|                       |                       |   \_ti.bin format by  |
-|                       | NAND bootloader and   |   adding Image        |
-|                       | app,                  |   size(4bytes) and    |
-|                       |                       |   Image load          |
-|                       | MCSPI boot loader and |   address(4bytes) as  |
-|                       | app,                  |   image header.       |
-|                       |                       | | Refer to Image      |
-|                       | QSPI app.             |   format section in   |
-|                       |                       |   Initialization      |
-|                       |                       |   chapter of `AM437x  |
-|                       |                       |   ARM cortex A9       |
-|                       |                       |   Processors          |
-|                       |                       |   Technical reference |
-|                       |                       |   manual <http://www. |
-|                       |                       | ti.com/lit/ug/spruhl7 |
-|                       |                       | d/spruhl7d.pdf>`__    |
+| \_ti.bin              | MMCSD bootloader      | .bin binaries are     |
+|                       | and app,              | converted to          |
+|                       |                       | \_ti.bin format by    |
+|                       | NAND bootloader and   | adding Image          |
+|                       | app,                  | size(4bytes) and      |
+|                       |                       | Image load            |
+|                       | MCSPI boot loader and | address(4bytes) as    |
+|                       | app,                  | image header.         |
+|                       |                       | Refer to Image        |
+|                       | QSPI app.             | format section in     |
+|                       |                       | Initialization        |
+|                       |                       | chapter of `AM437x    |
+|                       |                       | TRM`_                 |
 |                       |                       |                       |
 |                       |                       | MMCSD, NAND and MCSPI |
 |                       |                       | boot loaders and      |
@@ -131,15 +126,9 @@ RTOS bootloader are shown below:
 |                       |                       | should be appended    |
 |                       |                       | with ti image header. |
 |                       |                       |                       |
-|                       |                       | Procedure for         |
-|                       |                       | conversion is         |
-|                       |                       | `here </index.php?tit |
-|                       |                       | le=Processor_SDK_RTOS |
-|                       |                       | _CSL_AM335x/AM437x_Fl |
-|                       |                       | ashing_And_Booting&ac |
-|                       |                       | tion=edit&redlink=1>` |
-|                       |                       | __.                   |
 +-----------------------+-----------------------+-----------------------+
+
+.. _AM437x TRM: http://www.ti.com/lit/ug/spruhl7h/spruhl7h.pdf
 
 | 
 
@@ -222,75 +211,29 @@ for the various EVMs.
 +-----------+-----------+-----------+-----------+-----------+-----------+
 |           | **MMCSD** | **NAND**  | **McSPI** | **QSPI**  | **UART**  |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM335x  | `YES </in | `YES </in | `YES </in | NO        | `YES </in |
-| GPEVM**   | dex.php/P | dex.php/P | dex.php/P |           | dex.php/P |
-|           | rocessor_ | rocessor_ | rocessor_ |           | rocessor_ |
-|           | SDK_RTOS_ | SDK_RTOS_ | SDK_RTOS_ |           | SDK_RTOS_ |
-|           | BOOT_AM33 | BOOT_AM33 | BOOT_AM33 |           | BOOT_AM33 |
-|           | 5x/AM437x | 5x/AM437x | 5x/AM437x |           | 5x/AM437x |
-|           | #Booting_ | #Booting_ | #Booting_ |           | #Booting_ |
-|           | Via_SD_Ca | Via_NAND> | Via_McSPI |           | Via_UART> |
-|           | rd>`__    | `__       | >`__      |           | `__       |
+| **AM335x  |    YES    |    YES    |    YES    |    NO     |    YES    |
+| GPEVM**   |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM335x  | `YES </in | NO        | `YES </in | NO        | NO        |
-| ICEv2**   | dex.php/P |           | dex.php/P |           |           |
-|           | rocessor_ |           | rocessor_ |           |           |
-|           | SDK_RTOS_ |           | SDK_RTOS_ |           |           |
-|           | BOOT_AM33 |           | BOOT_AM33 |           |           |
-|           | 5x/AM437x |           | 5x/AM437x |           |           |
-|           | #Booting_ |           | #Booting_ |           |           |
-|           | Via_SD_Ca |           | Via_McSPI |           |           |
-|           | rd>`__    |           | >`__      |           |           |
+| **AM335x  |    YES    |    NO     |    YES    |    NO     |    NO     |
+| ICEv2**   |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM335x  | `YES </in | NO        | NO        | NO        | `YES </in |
-| StarterKi | dex.php/P |           |           |           | dex.php/P |
-| t**       | rocessor_ |           |           |           | rocessor_ |
-|           | SDK_RTOS_ |           |           |           | SDK_RTOS_ |
-|           | BOOT_AM33 |           |           |           | BOOT_AM33 |
-|           | 5x/AM437x |           |           |           | 5x/AM437x |
-|           | #Booting_ |           |           |           | #Booting_ |
-|           | Via_SD_Ca |           |           |           | Via_UART> |
-|           | rd>`__    |           |           |           | `__       |
+| **AM335x  |    YES    |    NO     |    NO     |    NO     |    YES    |
+| StarterKi |           |           |           |           |           |
+| t**       |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM335x  | `YES </in | NO        | NO        | NO        | `YES </in |
-| BeagleBon | dex.php/P |           |           |           | dex.php/P |
-| eBlack**  | rocessor_ |           |           |           | rocessor_ |
-|           | SDK_RTOS_ |           |           |           | SDK_RTOS_ |
-|           | BOOT_AM33 |           |           |           | BOOT_AM33 |
-|           | 5x/AM437x |           |           |           | 5x/AM437x |
-|           | #Booting_ |           |           |           | #Booting_ |
-|           | Via_SD_Ca |           |           |           | Via_UART> |
-|           | rd>`__    |           |           |           | `__       |
+| **AM335x  |    YES    |    NO     |    NO     |    NO     |    YES    |
+| BeagleBon |           |           |           |           |           |
+| eBlack**  |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM437x  | `YES </in | NO        | NO        | NO        | `YES </in |
-| GPEVM**   | dex.php/P |           |           |           | dex.php/P |
-|           | rocessor_ |           |           |           | rocessor_ |
-|           | SDK_RTOS_ |           |           |           | SDK_RTOS_ |
-|           | BOOT_AM33 |           |           |           | BOOT_AM33 |
-|           | 5x/AM437x |           |           |           | 5x/AM437x |
-|           | #Booting_ |           |           |           | #Booting_ |
-|           | Via_SD_Ca |           |           |           | Via_UART> |
-|           | rd>`__    |           |           |           | `__       |
+| **AM437x  |    YES    |    NO     |    NO     |    NO     |    YES    |
+| GPEVM**   |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM437x  | `YES </in | NO        | NO        | `YES </in | NO        |
-| IDK**     | dex.php/P |           |           | dex.php/P |           |
-|           | rocessor_ |           |           | rocessor_ |           |
-|           | SDK_RTOS_ |           |           | SDK_RTOS_ |           |
-|           | BOOT_AM33 |           |           | BOOT_AM33 |           |
-|           | 5x/AM437x |           |           | 5x/AM437x |           |
-|           | #Booting_ |           |           | #Booting_ |           |
-|           | Via_SD_Ca |           |           | Via_QSPI> |           |
-|           | rd>`__    |           |           | `__       |           |
+| **AM437x  |    YES    |    NO     |    NO     |    YES    |    NO     |
+| IDK**     |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM437x  | `YES </in | NO        | NO        | NO        | NO        |
-| StarterKi | dex.php/P |           |           |           |           |
-| t**       | rocessor_ |           |           |           |           |
-|           | SDK_RTOS_ |           |           |           |           |
-|           | BOOT_AM33 |           |           |           |           |
-|           | 5x/AM437x |           |           |           |           |
-|           | #Booting_ |           |           |           |           |
-|           | Via_SD_Ca |           |           |           |           |
-|           | rd>`__    |           |           |           |           |
+| **AM437x  |    YES    |    NO     |    NO     |    NO     |    NO     |
+| StarterKi |           |           |           |           |           |
+| t**       |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
 
 | 

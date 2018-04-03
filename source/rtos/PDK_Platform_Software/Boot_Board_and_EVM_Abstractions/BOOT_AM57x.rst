@@ -694,8 +694,8 @@ The SBL memory map is shown below
    SBL_MEM region indicated in the figure above. If pinmux data needs to
    be placed at a specific location then users can update the SBL linker
    command file to add the BOARD_IO_DELAY_CODE and BOARD_IO_DELAY_DATA
-   as described in **`Application Integration of board library for
-   AM5x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support#Application_Integration_for_AM5x>`__**
+   as described in `Application Integration of board library for
+   AM5x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support#Application_Integration_for_AM5x>`__
 
 | 
 

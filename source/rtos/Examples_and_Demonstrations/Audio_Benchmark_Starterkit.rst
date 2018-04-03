@@ -306,7 +306,7 @@ a look at both these approaches.
 
 **Step 1: Connect Emulator and UART to Hardware**
 
--  Refer to the :ref:`Hardware Setup guide <SPV-Supported-Platforms-and-EVMs-label>`
+-  Refer to the :ref:`Hardware Setup guide <RTOS-SDK-Supported-Platforms>`
    and connect the onboard or external emulator to the Hardware and Host
    machine with CCS installed.
 

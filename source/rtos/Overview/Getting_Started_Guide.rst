@@ -238,7 +238,7 @@ development ecosystem:
 -  Latest CCS Emulation package (for connecting to target using JTAG)
 -  Processor-SDK RTOS software
 
-See the :ref`Release Notes <processor-sdk-rtos-release-notes>`
+See the :ref:`Release Notes <processor-sdk-rtos-release-notes>`
 for information on minimum requirements for host PC.
 
 The size of the installer is large since we want to provide one bundle
@@ -449,7 +449,7 @@ installation path.
    </div>
 
 The next step is to make a connection between CCS and your EVM (or
-*target*). If you need help with this step, see the `Setup CCS <Processor-SDK-RTOS-Setup-CCS-label>`
+*target*). If you need help with this step, see the :ref:`Setup CCS <Processor-SDK-RTOS-Setup-CCS-label>`
 **How To** page explaining this further.
 
 At this point, you should be able to connect to target using CCS and
