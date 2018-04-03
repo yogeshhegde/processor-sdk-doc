@@ -611,7 +611,7 @@ Yes! The HSR and PRP protocols are currently supported on the AM572x IDK
 board. To learn more about the HSR and PRP PRU firmware implementation
 click `here <Industrial_Protocols.html#hsr-prp>`__. To learn more about
 running the protocols/firmwares while using the Linux Processor SDK
-click `here </index.php/Processor_SDK_Linux_HSR_PRP>`__.
+click `here <Industrial_Protocols.html#linux-software>`__.
 
 HSR stands for High Availability Seamless Redundancy. This is a protocol
 used to support redundant networks needed for industrial applications
