@@ -64,7 +64,7 @@ a few requirements once you have installed to your preferred directory.
 
 #. Install Processor SDK to the directory of your choosing
    Follow the installation instructions found
-   `here </index.php/Processor_SDK_Linux_Installer>`__.
+   `here <Overview.html#download-and-install-the-sdk>`__.
    Location does not matter, but the default installation directory is
    strongly suggested and makes using the SDK's scripts much easier.
 #. Install the PRU Software Support Package into the SDK you chose above
@@ -90,7 +90,7 @@ a few requirements once you have installed to your preferred directory.
    `here <https://git.ti.com/pru-software-support-package/pru-software-support-package/trees/master>`__.
 #. Install CCS to the directory of your choosing
    Installers can be found
-   `here </index.php/Download_CCS#Code_Composer_Studio_Version_7_Downloads>`__.
+   `here <http://processors.wiki.ti.com/index.php/Download_CCS#Code_Composer_Studio_Version_7_Downloads>`__.
 
 | 
 
@@ -114,7 +114,7 @@ Programming the PRU core is not terribly different from programming any
 other core. Because we now have a C compiler we are able to write
 regular C code and have it perform tasks on the PRU cores. A great place
 to start development is to take a look at the `Hands-on
-Labs </index.php/PRU_Training:_Hands-on_Labs>`__ that are provided in
+Labs <http://processors.wiki.ti.com/index.php/PRU_Training:_Hands-on_Labs>`__ that are provided in
 the PRU Software Support Package.
 
 .. rubric:: Register Header Files
@@ -125,7 +125,7 @@ easy configuration. In Linux, these are located in the
 <SDK\_install\_dir>/example-applications/pru-icss-x.y.z/include
 directory by default. In the Git repository these are located in the
 include folder. See the `header
-files </index.php/PRU-ICSS_Header_Files>`__ page for more information.
+files <Industrial_Protocols.html#header-files>`__ page for more information.
 
 | 
 
