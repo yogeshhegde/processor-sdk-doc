@@ -200,7 +200,7 @@ TI\_CCS\_PATH need to be exported with their installed locations.
 2. Copy the executables to the target filesystem. It can also be done by
    running "make ti-ipc-linux-examples\_install" to install the binaries to
    DESTDIR if using NFS filesystem. ( See
-   `Moving\_Files\_to\_the\_Target\_System </index.php/Moving_Files_to_the_Target_System>`__
+   `Moving\_Files\_to\_the\_Target\_System <Processor_Linux_SDK_How_To_Guides.html#moving-files-to-the-target-system>`__
    for details of moving files to filesystem)
 
 3. Load and start the executable on the target DSP/IPU.

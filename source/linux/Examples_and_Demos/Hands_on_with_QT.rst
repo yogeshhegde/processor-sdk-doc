@@ -18,7 +18,7 @@ needed.
 /home/sitara/QT\_Lab You can cut and paste section of code from this
 file rather than have to type them in. You can find a copy here, just
 right click and select "Save Target As": `File:QT
-Lab.tar.gz </index.php/File:QT_Lab.tar.gz>`__
+Lab.tar.gz <http://processors.wiki.ti.com/index.php/File:QT_Lab.tar.gz>`__
 
 **NOTE:** In this guide commands to be executed for each step will be
 marked in **BOLD**
@@ -93,7 +93,7 @@ be adapted accordingly.
 
    -  For help creating a 2 partition SD card with the SDK content see
       the `create\_sdcard.sh
-      script </index.php/Sitara_Linux_SDK_create_SD_card_script>`__ page
+      script <Overview.html#linux-sd-card-creation-guide>`__ page
 
 -  QT Creator 5.7.0 installed on your Linux host.
 

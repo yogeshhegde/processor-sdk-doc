@@ -53,7 +53,7 @@ by the tilcdc driver. With the 12-, 16-, and 24-bit modes the choice is
 limited to 16 and 24 bpp modes, and the 24 bpp mode is only supported by
 revision 2 LCDC. There is also a problem is using 16- and 24-bit modes
 with same HW, see `tilcdc Supported
-Features </index.php/Linux_Core_LCD_Controller_User_Guide#tilcdc_Supported_Features:>`__
+Features <Foundational_Components.html#tilcdc-supported-features>`__
 below.
 
 .. rubric:: **LCDC memory bandwidth issues**
@@ -193,7 +193,7 @@ A useful tool contained in this suite is modetest.
 
 This driver is currently obsolete (has been since ti-linux-3.14.y), and
 is not actively maintained any more. Please use `LCDC DRM
-driver </index.php/Linux_Core_LCD_Controller_User_Guide#AM335x_LCDC_Display_Driver_.28DRM.29>`__
+driver <Foundational_Components.html#am335x-lcdc-drm-display-driver>`__
 instead.
 
 .. rubric:: **Introduction:**

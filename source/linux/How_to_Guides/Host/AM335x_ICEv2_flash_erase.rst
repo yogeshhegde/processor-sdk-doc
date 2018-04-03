@@ -67,7 +67,7 @@ on a Ubuntu 14.04 host system
 #. Load the SPI flash programmer into the CortexA8 core
 
    -  Download the SPI flash programmer and unzip it: `File:Isdk spi
-      flasher.zip </index.php/File:Isdk_spi_flasher.zip>`__
+      flasher.zip <http://processors.wiki.ti.com/index.php/File:Isdk_spi_flasher.zip>`__
    -  Highlight the **Texas Instruments XDS100v2 USB Debug
       Probe\_0/CortxA8** by clicking on it
    -  Click **Run -> Load -> Load Program**

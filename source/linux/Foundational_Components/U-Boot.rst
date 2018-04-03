@@ -31,7 +31,7 @@ following platforms:
 -  `K2L EVM <http://www.ti.com/tool/xevmk2lx>`__
 -  `K2G GP EVM <http://www.ti.com/tool/evmk2g>`__
 -  `K2G ICE EVM <http://www.ti.com/tool/k2gice>`__
--  `OMAP-L138 LCDK </index.php/L138/C6748_Development_Kit_(LCDK)>`__
+-  `OMAP-L138 LCDK <http://processors.wiki.ti.com/index.php/L138/C6748_Development_Kit_(LCDK)>`__
 
 +--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
 | Board                    | Wired ethernet   | USB gadget ethernet   | DFU   | NAND   | SD/eMMC              | USB Host (mass storage)   | SPI flash    |
@@ -389,7 +389,7 @@ SoC where board support USB peripheral boot mode.
 -  From Ubuntu (or the host) PC, fetch and build usbboot application.
    usbboot pre-built binaries for particular distributions may be
    available in `processor
-   SDK </index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__
+   SDK <Overview.html#processor-sdk-linux-software-developer-s-guide>`__
    already. Here are the steps to build usbboot application.
 
 ::
@@ -539,7 +539,7 @@ Seccond as root, and ensuring execute permissions, create
 
 A walk through of these steps can be seen at `Ubuntu 12.04 Set Up to
 Network Boot an AM335x Based
-Platform </index.php/Ubuntu_12.04_Set_Up_to_Network_Boot_an_AM335x_Based_Platform>`__.
+Platform <http://processors.wiki.ti.com/index.php/Ubuntu_12.04_Set_Up_to_Network_Boot_an_AM335x_Based_Platform>`__.
 
 | 
 
@@ -852,7 +852,7 @@ the kernel what type of file system to use.
 By default for our evms properly loading, setting bootargs and booting
 the kernel is handled by running "run nandboot" in U-boot. Information
 on creating a UBIFS can be found
-`here </index.php/Linux_Core_NAND_User%27s_Guide#.23Building_UBI_File_system>`__.
+`here <Foundational_Components.html#building-ubi-file-system>`__.
 
 | 
 
@@ -900,7 +900,7 @@ A reset is required for the partition table to be visible.
 
 This section assume that you have created an SD card following the
 instructions on `Sitara Linux SDK create SD card
-script </index.php/Sitara_Linux_SDK_create_SD_card_script>`__ or have
+script <Overview.html#linux-sd-card-creation-guide>`__ or have
 made a compatible layout by hand. In this case, you will need to copy
 the **MLO** and **u-boot.img** files to the *boot* partition. At this
 point, the card is now bootable in the SD card slot. We default to using
@@ -1502,7 +1502,7 @@ enabled.
 MLO, u-boot.img (optional), DTB, uImage are stored in QSPI flash memory.
 Refer the "Memory Layout" section for offset details. To flash binaries
 to QSPI, you can use
-`DFU </index.php/Linux_Core_U-Boot_User%27s_Guide#Writing_to_QSPI_using_DFU>`__,
+`DFU <Foundational_Components.html#writing-to-qspi-using-dfu>`__,
 for example.
 
 The QSPI boot uses uImage. Build the kernel uImage. You will need to
@@ -1530,7 +1530,7 @@ From u-boot prompt
     => saveenv
 
 Set the `board boot from
-QSPI </index.php/Linux_Core_U-Boot_User%27s_Guide#Writing_to_QSPI_from_U-Boot>`__
+QSPI <Foundational_Components.html#writing-to-qspi-from-u-boot>`__
 and reset the EVM. The SPL directly boots the kernel image from QSPI.
 
 | 

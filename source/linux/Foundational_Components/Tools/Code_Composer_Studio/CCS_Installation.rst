@@ -13,7 +13,7 @@ CCS is an optional tool for the SDK, and may be downloaded and installed
 at the same time that the SDK is installed or at a later date. For
 instructions on how to download the Processor Linux SDK, please see
 `Processor SDK Linux
-Installer </index.php/Processor_SDK_Linux_Installer>`__.
+Installer <Overview.html#download-and-install-the-sdk>`__.
 
 CCS uses the Eclipse backend and includes the following plugins:
 
@@ -52,7 +52,7 @@ to the target with serial and Ethernet communication.
 
 For more information on setting up your development environment, see the
 `Processor SDK Linux Getting Started
-Guide </index.php/Processor_SDK_Linux_Getting_Started_Guide#Start_your_Linux_Development>`__.
+Guide <Overview.html#start-your-linux-development>`__.
 
 | 
 
@@ -66,7 +66,7 @@ SDK versions (v06.00, v08.00, v01.00.00.00, v02.00.00.00, etc) for
 non-ARM 9 devices, a new Linaro based toolchain is used and the location
 of the toolchain has changed. For more information on the GCC toolchain,
 please see `Processor Linux SDK GCC
-Toolchain </index.php/Processor_Linux_SDK_GCC_Toolchain>`__.
+Toolchain <Overview.html#gcc-toolchain>`__.
 
 Latest SDK toolchains use a prefix of **arm-linux-gnueabihf-**. Versions
 older than Processor Linux SDK 06.00 and AM18x users may still use the
@@ -96,7 +96,7 @@ can be located by browsing to `SDK for Sitara
 Processors <http://www.ti.com/tool/linuxezsdk-sitara>`__ and selecting
 the device being used. The CCS installer can be found on the device's
 SDK installer page under the Optional Addons or directly from the
-`Download CCS </index.php/Download_CCS>`__ wiki page.
+`Download CCS <http://processors.wiki.ti.com/index.php/Download_CCS>`__ wiki page.
 
 .. Image:: ../images/SDK_download_page.png
 
@@ -293,7 +293,7 @@ After opening CCS with a new workspace:
 #. The *Projects:* list will now be populated with the projects found.
 #. Uncheck the following projects. They are Qt projects and are imported
    using a different method. For more information, see the `Hands on
-   with QT </index.php/Sitara_Linux_Training:_Hands_on_with_QT>`__
+   with QT <Examples_and_Demos.html#hands-on-with-qt>`__
    training.
 
    -  matrix\_browser
@@ -353,13 +353,13 @@ file system:
 
 #. Use the top-level Makefile in the SDK install directory. See
    `Processor Linux SDK Top-Level
-   Makefile </index.php/Processor_Linux_SDK_Top-Level_Makefile>`__ for
+   Makefile <Overview.html#processor-sdk-linux-top-level-makefile>`__ for
    details of using the top-level Makefile to install files to a target
    file system. This target file system can be moved via an SD card
    connected to the host machine and then to the target board,
    transferred via TFTP, or some other method. For more information on
    setting up a target filesystem, see `Processor SDK Linux Setup
-   Script </index.php/Processor_SDK_Linux_Setup_Script>`__.
+   Script <Overview.html#run-setup-scripts>`__.
 
    .. raw:: html
 
@@ -480,11 +480,11 @@ CCS as installed with this SDK includes the Remote System Explorer (RSE)
 plugin. RSE provides drag-and-drop access to the target file system as
 well as remote shell and remote terminal views within CCS. Refer to
 `Processor Linux SDK CCS Remote System Explorer
-Setup </index.php/Processor_Linux_SDK_CCS_Remote_System_Explorer_Setup>`__
+Setup <Foundational_Components.html#remote-explorer-setup-with-ccs>`__
 to establish a connection to your target EVM and start using RSE. There
 is also a more detailed training using RSE with the SDK at `Processor
 SDK Linux Training: Hands on with the Linux
-SDK </index.php/Processor_SDK_Linux_Training:_Hands_on_with_the_Linux_SDK>`__.
+SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Training:_Hands_on_with_the_Linux_SDK>`__.
 
 | 
 
@@ -495,6 +495,6 @@ In order to debug Linux code using Code Composer Studio, you first need
 to configure the GDB server on both the host and target EVM side.
 
 Please refer to `Processor Linux SDK CCS GDB
-Setup </index.php/Processor_Linux_SDK_CCS_GDB_Setup>`__ for more
+Setup <Foundational_Components.html#gdb-setup-with-ccs>`__ for more
 information.
 

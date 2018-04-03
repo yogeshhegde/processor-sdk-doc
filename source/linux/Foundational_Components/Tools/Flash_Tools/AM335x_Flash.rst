@@ -14,11 +14,11 @@ networking protocol). The flasher application and image can be hosted on
 either Linux or Windows. For Linux, we use standard tools that most
 developers are already familiar with for development, and this setup is
 further documented
-`here </index.php/Ubuntu_12.04_Set_Up_to_Network_Boot_an_AM335x_Based_Platform>`__.
-For Windows, we use `CCS UniFlash </index.php/Category:CCS_UniFlash>`__.
+`here <http://processors.wiki.ti.com/index.php/Ubuntu_12.04_Set_Up_to_Network_Boot_an_AM335x_Based_Platform>`__.
+For Windows, we use `CCS UniFlash <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash>`__.
 For more information on using CCS UniFlash with Sitara Devices, please
 see the `Sitara Uniflash Quick Start
-Guide </index.php/Sitara_Uniflash_Quick_Start_Guide>`__.
+Guide <Foundational_Components.html#sitara-uniflash>`__.
 
 The overall process of programming the flash is broken into two parts:
 
@@ -31,16 +31,16 @@ The overall process of programming the flash is broken into two parts:
    #. Using U-Boot as the primary source of the flasher image. This
       works well for NAND, NOR, and (Q)SPI. It is the simplest process
       to use. Learn more about it
-      `here </index.php/Sitara_Uniflash_Flash_Programming_with_U-Boot>`__
+      `here <http://processors.wiki.ti.com/index.php/Sitara_Uniflash_Flash_Programming_with_U-Boot>`__
    #. Using a Linux kernel and minimal filesystem. This is recommended
       for eMMC, but may have advantages in other situations as it makes
       the full power of Linux available to the flasher program. This is
       a bit more complex and may require a bit more porting. This
       process is documented
-      `here </index.php/Sitara_Uniflash_Flash_Programming_with_Linux>`__.
+      `here <http://processors.wiki.ti.com/index.php/Sitara_Uniflash_Flash_Programming_with_Linux>`__.
 
 #. Actually programming the images using Uniflash v3. This tool runs on
    a Windows PC and serves the images to the target board that is being
    programmed. This process is detailed in the `Sitara Uniflash Quick
-   Start Guide </index.php/Sitara_Uniflash_Quick_Start_Guide>`__.
+   Start Guide <Foundational_Components.html#sitara-uniflash>`__.
 

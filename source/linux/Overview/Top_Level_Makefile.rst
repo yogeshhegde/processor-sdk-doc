@@ -12,7 +12,7 @@ various components can be built and the parameters to use.
 
 **NOTE:** You should not call this makefile with the
 `**environment-setup
-script** </index.php/Processor_Linux_SDK_GCC_Toolchain#environment-setup_script>`__
+script** <Overview.html#environment-setup-script>`__
 sourced. The sub-component Makefiles will handle sourcing this script
 where appropriate, but some make targets such as the Linux kernel make
 target do not work properly when this script is already sourced.
@@ -54,12 +54,12 @@ Rules.make file.
    default the initial value is a unique key value of \_\_DESTDIR\_\_
    which is replaced with the location of the target NFS file system
    when the
-   `**setup.sh** </index.php/Processor_SDK_Linux_Setup_Script>`__ script
+   `**setup.sh** <Overview.html#run-setup-scripts>`__ script
    is run.
 -  **LINUX\_DEVKIT\_PATH** - This points to the linux-devkit directory.
    This directory is the base directory containing the cross-compiler
    and cross-libraries as well as the
-   `**environment-setup** </index.php/Processor_Linux_SDK_GCC_Toolchain>`__
+   `**environment-setup** <Overview.html#gcc-toolchain>`__
    script used by many component Makefiles to source additional variable
    settings.
 -  **CROSS\_COMPILE** - This setting represents the CROSS\_COMPILE
@@ -68,7 +68,7 @@ Rules.make file.
    the proper prefix to commands such as *gcc* to invoke the ARM
    cross-compiler.
 -  **ENV\_SETUP** - This points to the
-   `**environment-setup** </index.php/Processor_Linux_SDK_GCC_Toolchain>`__
+   `**environment-setup** <Overview.html#gcc-toolchain>`__
    script in the linux-devkit directory used by many components to
    configure for a cross-compilation build.
 -  **LINUXKERNEL\_INSTALL\_DIR** - This points to the location of the

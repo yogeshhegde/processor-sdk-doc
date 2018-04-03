@@ -145,7 +145,7 @@ U-boot.
 After updating the files in the directories below you will need to
 recompile the **board\_lib** and **sbl** components of the Processor SDK
 Platform Development Kit (PDK). Follow this guide on `Rebuilding The
-PDK </index.php/Rebuilding_The_PDK>`__.
+PDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__.
 
 .. rubric:: AM3, AM4, AMIC
    :name: am3-am4-amic
@@ -168,10 +168,10 @@ ${PDK\_INSTALL\_DIR}\\packages\\ti\\board\\src\\${BOARD}\\
 
 Recompiling u-boot is required after making updates. Instructions are
 available in the
-`Linux\_Core\_U-Boot\_User's\_Guide </index.php/Linux_Core_U-Boot_User%27s_Guide>`__.
+`Linux\_Core\_U-Boot\_User's\_Guide <Foundational_Components.html#u-boot>`__.
 Compiling the devicetree dts to dtb is also required after making
 updates. Instructions are available in the `Linux Kernel Users
-Guide </index.php/Linux_Kernel_Users_Guide#Compiling_the_Sources>`__
+Guide <Foundational_Components.html#compiling-the-sources>`__
 
 .. rubric:: devicetree
    :name: devicetree

@@ -961,7 +961,7 @@ Table:  '
    :name: nand-driver
 
 Please refer `MTD Test
-Setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+Setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 before proceeding.
 
 .. rubric::  AM335X-EVM
@@ -1025,7 +1025,7 @@ Table:  '
    :name: qspi-flash-driver
 
 Test setup is available
-`here </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__.
+`here <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__.
 
 .. rubric:: K2G-EVM
    :name: k2g-evm
@@ -1083,7 +1083,7 @@ Table:  '
    </div>
 
 Please refer `MMC/SD Test
-Setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+Setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 before proceeding.
 
 | 
@@ -1402,7 +1402,7 @@ Table:  '
    </div>
 
 Please refer `MMC/SD Test
-Setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+Setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 before proceeding.
 
 .. rubric::  AM335X-EVM
@@ -1869,7 +1869,7 @@ storage:
     # insmod g_mass_storage.ko file=/dev/shm/50M 
 
 For test setup details refer to `USB MSC device
-setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 
 .. rubric::  AM335X USB SLAVE DEVICE PERFORMANCE
    :name: am335x-usb-slave-device-performance

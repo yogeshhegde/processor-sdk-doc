@@ -3,7 +3,7 @@
    :name: introduction-linux-core-vpe
 
 - This page gives a basic description of VPE mem to mem video IP found
-  in `devices </index.php/Linux_Core_VPE_User%27s_Guide#Supported_Devices>`__,
+  in `devices <Foundational_Components.html#vpe-supported-devices>`__,
   the linux kernel drivers which implement it, how to build the drivers as
   modules or built-in, and how one can test and use the drivers.
 

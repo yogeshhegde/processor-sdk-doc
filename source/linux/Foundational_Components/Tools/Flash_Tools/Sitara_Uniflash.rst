@@ -15,7 +15,7 @@ The overall process is broken into two parts:
    from the AM335x or AM437x SoC. This is usually done by the Linux
    developer responsible for creating the images. This process is
    documented
-   `here </index.php/Sitara_Linux_AM335x_Flash_Programming_Linux_Development>`__.
+   `here <Foundational_Components.html#am335x-flash>`__.
 #. Actually programming the images using Uniflash v3. This tool runs on
    a Windows PC and serves the images to the target board that is being
    programmed. This process is detailed below.
@@ -90,7 +90,7 @@ Uniflash is a tool provided by Texas Instruments that supports multiple
 platforms and flash configurations. Support for Sitara devices was added
 in Uniflash version 3.0 and beyond.
 
-#. Download Uniflash v3 `here </index.php/Category:CCS_UniFlash>`__.
+#. Download Uniflash v3 `here <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash>`__.
 #. Extract the downloaded .zip archive to a temporary folder.
 #. Execute the Uniflash Setup program, uniflash\_setup\_3.3.0.00058.
 #. Click **Next** to accept the terms of the license agreement.
@@ -569,14 +569,14 @@ problems are encountered.
    :name: useful-links
 
 -  `Sitara Flash Programming Linux Development for
-   AM335x/AM437x </index.php/Sitara_Flash_Programming_Linux_Development_for_AM335x/AM437x>`__
+   AM335x/AM437x <Foundational_Components.html#am335x-flash>`__
    to learn more about developing images to be flashed using this
    process.
 -  `Sitara Linux Program SPI Flash on AM335x
-   EVM </index.php/Sitara_Linux_Program_SPI_Flash_on_AM335x_EVM>`__ to
+   EVM <http://processors.wiki.ti.com/index.php/Sitara_Linux_Program_SPI_Flash_on_AM335x_EVM>`__ to
    see a specific example of how to program the SPI Flash an a AM335x
    EVM.
 -  More Uniflash information is available
-   `here </index.php/Category:CCS_UniFlash>`__.
+   `here <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash>`__.
 
 
