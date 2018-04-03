@@ -27,43 +27,9 @@ The VIP IP is only available on the following TI SoCs or SoC families:
 On supported SoCs the Video Input Port (VIP) module is used for video
 capture from video encoder/decoder and camera sensor.
 
-.. raw:: html
-
-   <div class="thumb tright">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:402px;">
-
-|image0|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
 .. Image:: ../images/VIP-block-diagram.png
 
-.. raw:: html
-
-   </div>
-
 VIP Instance block diagram
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 VIP instance has two slices each having one 24/16/8 bit port and one 8
 bit video port. Each slice has a color space converter block, a scaler
@@ -333,43 +299,9 @@ Table:  **Supported Output Pixel Format**
 .. rubric:: Hardware Limitations
    :name: hardware-limitations
 
-.. raw:: html
-
-   <div class="thumb tright">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:302px;">
-
-|image1|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
 .. Image:: ../images/CSC_SC_PORTA_PORTB.png
 
-.. raw:: html
-
-   </div>
-
 VIP Slice
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 -  CSC, SC and/or DS processing in discrete sync mode is supported only
    for following combination -

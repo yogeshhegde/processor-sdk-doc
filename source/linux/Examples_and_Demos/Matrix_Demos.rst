@@ -50,23 +50,3 @@
 
 | 
 
-.. rubric:: Archieved
-   :name: archieved
-
-| `Processor SDK Linux
-  04.00.00.04 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Linux_Example_Applications_User%27s_Guides&oldid=228886>`__
-| `Processor SDK Linux
-  03.03.00.04 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Linux_Example_Applications_User%27s_Guides&oldid=226234>`__
-| `Processor SDK Linux
-  03.02.00.05 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Linux_Example_Applications_User%27s_Guides&oldid=224143>`__
-| `Processor SDK Linux
-  03.00.03.04 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Linux_Example_Applications_User%27s_Guides&oldid=218666>`__
-| `Processor SDK Linux
-  02.00.02.11 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Linux_Example_Applications_User%27s_Guides&oldid=214892>`__
-| `Processor SDK Linux
-  02.00.01.07 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Linux_Example_Applications_User%27s_Guides&oldid=211929>`__
-| `Processor SDK Linux
-  02.00.00.00 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Linux_Example_Applications_User%27s_Guides&oldid=206486>`__
-
-.. raw:: html
-

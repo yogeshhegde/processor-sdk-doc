@@ -1,4 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_TIOVX
+
 **********************************
 OpenVX
 **********************************
@@ -6,10 +7,10 @@ OpenVX
 .. rubric:: OpenVX
    :name: openvx
 
-| OpenVX is an open, Khronos (https://www.khronos.org/openvx/) defined
-  standard for cross platform acceleration of computer vision
-  applications. OpenVX enables performance and power-optimized computer
-  vision processing, with emphasis on embedded and real-time use cases:
+OpenVX is an open, Khronos (https://www.khronos.org/openvx/) defined
+standard for cross platform acceleration of computer vision
+applications. OpenVX enables performance and power-optimized computer
+vision processing, with emphasis on embedded and real-time use cases:
 
 -  advanced driver assistance systems (ADAS)
 -  face, body and gesture tracking
@@ -35,23 +36,7 @@ TIOVX also provides optimized OpenVX kernels for C66x DSP. An extension
 API allows users to integrate their own natively developed custom
 kernels and call them using OpenVX APIs.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
 .. Image:: ../images/Tiovx.PNG
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -88,24 +73,25 @@ kernels and call them using OpenVX APIs.
 |                                      | specification.                       |
 +--------------------------------------+--------------------------------------+
 
-| There are two versions of VXLIB kernels: without BAM framework, and
-  with BAM framework. BAM is a low level framework representing directed
-  acyclic graph, where EDMA transfers are heavily utilized to bring 2D
-  memory objects to higher speed L2 memory, thus improving performance
-  almost twofold.
-| Current release has kernels with BAM framework. This framework
-  achieves higher performance via heavy use of EDMA, which brings blocks
-  of data from remote DDR memory to local L2, while DSP does the
-  processing. List of these kernels can be checked in
-  https://git.ti.com/processor-sdk/tiovx/trees/master/kernels/openvx-core/c66x/bam.
+There are two versions of VXLIB kernels: without BAM framework, and
+with BAM framework. BAM is a low level framework representing directed
+acyclic graph, where EDMA transfers are heavily utilized to bring 2D
+memory objects to higher speed L2 memory, thus improving performance
+almost twofold.
+
+Current release has kernels with BAM framework. This framework
+achieves higher performance via heavy use of EDMA, which brings blocks
+of data from remote DDR memory to local L2, while DSP does the
+processing. List of these kernels can be checked in
+https://git.ti.com/processor-sdk/tiovx/trees/master/kernels/openvx-core/c66x/bam.
 
 .. rubric:: TIOVX DSP Kernels (in VXLIB)
    :name: tiovx-dsp-kernels-in-vxlib
 
-| There are 44 kernels in current release of VXLIB (typically there are
-  multiple implementations for different data types).
-| Here is complete list of DSP kernel wrappers (wrappers are part of
-  TIOVX):
+There are 44 kernels in current release of VXLIB (typically there are
+multiple implementations for different data types).
+
+Here is complete list of DSP kernel wrappers (wrappers are part of TIOVX):
 
 -  AbsDiff
 -  AccumulateSquare
@@ -221,10 +207,10 @@ objects (typically in OCMC)
 .. rubric:: Run TIOVX test application
    :name: run-tiovx-test-application
 
-| First, it is necessary to copy test vectors from
-  https://git.ti.com/processor-sdk/tiovx/trees/master/conformance_tests/test_data
-  to EVM filesystem (e.g. ~/tiovx/test\_data).Then run following
-  commands:
+First, it is necessary to copy test vectors from
+https://git.ti.com/processor-sdk/tiovx/trees/master/conformance_tests/test_data
+to EVM filesystem (e.g. ~/tiovx/test\_data).Then run following
+commands:
 
 ::
 
