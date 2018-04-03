@@ -13,7 +13,7 @@ quickly provide the information you need most while evaluating a TI
 microprocessor, specifically running one of the Software Architectures
 available, embedded Android. We are always striving to improve this
 product.  Please let us know if you have `**ideas or
-suggestions** </index.php/Processor_SDK_Android_Software_Developer%E2%80%99s_Guide#Feedback>`__\ **.  **
+suggestions** <Overview.html#feedback>`__\ **.  **
 
 .. rubric:: Version
    :name: version
@@ -27,13 +27,13 @@ This information covers Processor SDK Android 4.0.0 and above.
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | `Supported Platforms and Versions`_                                    | `Android Software Stack`_                                                     |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| :ref:`Directory-Structure-Overview`                                    | :ref:`Building-the-SDK`                                                       |
+| `Directory Structure Overview`_                                        | `Building the SDK`_                                                           |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | `Release Notes`_                                                       | `Frequently Asked Questions`_                                                 |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | `GPLv3 Disclaimer`_                                                    | `Migration Guide`_                                                            |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| :ref:`Overview-Technical-Support`                                      | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
+| `Technical Support`_                                                   | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 .. _Getting Started Guide: Overview.html#processor-sdk-android-getting-started-guide
@@ -44,6 +44,9 @@ This information covers Processor SDK Android 4.0.0 and above.
 .. _Frequently Asked Questions: Processor_SDK_Android_How_To_Guides.html#frequently-asked-questions
 .. _GPLv3 Disclaimer: Licenses.html#gplv3-disclaimer
 .. _How To Guides: Processor_SDK_Android_How_To_Guides.html
+.. _Directory Structure Overview: Overview.html#processor-sdk-android-directory-structure
+.. _Building the SDK: Overview.html#processor-sdk-android-building-the-sdk
+.. _Technical Support: Overview.html#processor-sdk-technical-support
 
 
 .. rubric:: Feedback

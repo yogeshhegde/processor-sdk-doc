@@ -16,7 +16,7 @@ Migration Guide
 -  More details about Oreo can be obtained from
    `here <https://developer.android.com/about/versions/oreo/index.html>`__
 -  See the `Release
-   Notes </index.php/Processor_SDK_Android_Release_Notes>`__ for full
+   Notes <Release_Specific.html#processor-sdk-android-release-notes>`__ for full
    list of modifications.
 
 | 
@@ -27,7 +27,7 @@ Migration Guide
 -  This is the final release of the Processor SDK Android for AM57xx
    with Marshmallow. The next release will be based on Oreo
 -  See the `Release
-   Notes </index.php/Processor_SDK_Android_Release_Notes>`__ for full
+   Notes <Release_Specific.html#processor-sdk-android-release-notes>`__ for full
    list of modifications.
 
 | 
@@ -38,7 +38,7 @@ Migration Guide
 -  This is the first release of the Processor SDK Android which supports
    AM57xx devices.
 -  See the `Release
-   Notes </index.php/Processor_SDK_Android_Release_Notes>`__ for full
+   Notes <Release_Specific.html#processor-sdk-android-release-notes>`__ for full
    list of modifications.
 
 | 
