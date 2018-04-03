@@ -86,7 +86,7 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 .. _Processor SDK Linux Filesystem: Foundational_Components.html#processor-sdk-linux-filesystem
 .. _Tools: Foundational_Components.html#processor-sdk-linux-tools
 .. _Processor SDK Linux Tools: Foundational_Components.html#processor-sdk-linux-tools
-.. _OpenCL: Foundational_Components.html#processor-sdk-linux-opencl
+.. _OpenCL: http://downloads.ti.com/mctools/esd/docs/opencl/index.html
 .. _OpenCV: Foundational_Components.html#processor-sdk-linux-opencv
 .. _Graphics & Display: Foundational_Components.html#processor-sdk-linux-graphics-and-display
 .. _Multimedia: Foundational_Components.html#processor-sdk-linux-multimedia
@@ -116,4 +116,4 @@ This information covers Processor SDK 3.3 and above, unless otherwise noted.
 
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the Linux
-forum listed at :ref:`PLSDK-technical-support-label`.
+forum listed at `Technical Support`_. 
