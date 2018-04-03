@@ -17,7 +17,7 @@ environment variables being set prior to script execution. The defaults
 in the pdksetupenv.bat script assume all Processor SDK components have
 been installed in the ``C:\ti`` directory, including CCS.
 
--  Navigate to pdk_[soc]_[version]\packages
+-  Navigate to pdk_[soc]_[version]/packages
 -  Run pdksetupenv.bat
 
 ::
@@ -75,7 +75,7 @@ been installed in the ``C:\ti`` directory, including CCS.
    
 -  After the build environment has been configured, the entire PDK, or
    individual components, can be rebuilt through the top-level makefile
-   in pdk_[soc]_[version]\packages
+   in pdk_[soc]_[version]/packages
 
 All PDK components can be cleaned and rebuilt with the following
 commands:
@@ -442,7 +442,11 @@ not contain a DSP processor.
       #. Click on Target -> Reset CPU
       #. Click on Target -> Load Program
       #. Select the executable file to be loaded. Example:
-         *C:\ti\pdk_[soc]_[version]\packages\MyExampleProjects\GPIO_LedBlink_AM572X_GpEvm_c66xExampleProject\Debug\GPIO_LedBlink_evmAM572x_c66xExampleProject.out*
+
+	  ::
+
+         C:\ti\pdk_[soc]_[version]\packages\MyExampleProjects\GPIO_LedBlink_AM572X_GpEvm_c66xExampleProject\Debug\GPIO_LedBlink_evmAM572x_c66xExampleProject.out
+
       #. Click on OK.
       #. Once the project is loaded; click on Target -> Run to execute
          it.</pre>

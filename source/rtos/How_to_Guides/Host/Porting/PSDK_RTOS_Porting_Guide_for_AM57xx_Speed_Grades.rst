@@ -219,7 +219,7 @@ speed grade parts support a 667 MHz DDR clock, but some of the lower
 speed grade parts only support a 533 MHz DDR3 clock. Make sure to choose
 the appropriate DDR clock for the device on the custom board.
 
-Over in the board\src\<BoardName>\<BoardName_ddr>.c file, make sure that
+Over in the board/src/<BoardName>/<BoardName_ddr>.c file, make sure that
 the EMIF is being configured correctly for the appropriate speed, and
 that the appropriate number of EMIFs is being selected to match the part
 being used. AM572x part has 2 DDR interfaces running at 533 MHz and the
@@ -229,7 +229,7 @@ make sure to configure the new board correctly, with the appropriate
 number of DDR interfaces and speed configuration.
 
 For AM571x and AM570x, make sure to use the code for the AM571x IDK in
-board\src\<BoardName>\<BoardName_ddr>.c to select 1 EMIF:
+board/src/<BoardName>/<BoardName_ddr>.c to select 1 EMIF:
 
 ::
 
@@ -280,7 +280,7 @@ library for reference for configuring DDR on AM570x parts
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-Processor SDK RTOS provides board\src\idkAM571x\include\am570x_pinmux.h
+Processor SDK RTOS provides board/src/idkAM571x/include/am570x_pinmux.h
 file in the idkAM571x board library for reference for configuring pinmux
 on AM570x based hardware platform
 

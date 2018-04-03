@@ -25,18 +25,18 @@ wiki.
 
 **Step 1: Creating new directory for custom board library**
 
-In pdk_am57xx_x_x_x\packages\ti\board\src
+In pdk_am57xx_x_x_x/packages/ti/board/src
 
 | 
-| Create new directory myCustomBoard and copy files from existing board
-  library package. We recommend that you copy files from the board which
-  closely matches your custom board design. In this case, we assume that
-  the custom board is based on the design of evmAM572x so we copy over
-  the files from that directory into myCustomBoard folder.
+Create new directory myCustomBoard and copy files from existing board
+library package. We recommend that you copy files from the board which
+closely matches your custom board design. In this case, we assume that
+the custom board is based on the design of evmAM572x so we copy over
+the files from that directory into myCustomBoard folder.
 
 **Step 2: Updating names and makefile inside the customBoard package**
 
-In pdk_am57xx_x_x_x\packages\ti\board\src\myCustomBoard, Rename file
+In pdk_am57xx_x_x_x/packages/ti/board/src/myCustomBoard, Rename file
 src_files_evmAM572x.mk to src_files_myCustomBoard.mk. This file will
 need a bit of work depending on what elements of board you need for your
 platform. We have left all the files evmAM572x_*.c but you can modify as
@@ -45,7 +45,7 @@ needed.
 **Step 3: Adding MACRO based inclusion of updated board_cfg.h
 corresponding to custom Board**
 
-In packages\ti\board\board_cfg.h, add the lines pointing to board_cfg.h
+In packages/ti/board/board_cfg.h, add the lines pointing to board_cfg.h
 file in your customBoard package so that updated peripheral instances
 and board specific defines can be picked up
 
@@ -60,7 +60,7 @@ customBoard Library** The makefile is used to include all relevant make
 files for including Low level driver(LLD), source files relevant to
 board and the common board.c file
 
--  In packages\ti\board\build\makefile.mk, add board.c to the
+-  In packages/ti/board/build/makefile.mk, add board.c to the
    customBoard build :
 
 ::
@@ -72,7 +72,7 @@ board and the common board.c file
 
 -  Add board library source files and LLD files to the customBoard build
 
-In packages\ti\board\build\makefile.mk, change
+In packages/ti/board/build/makefile.mk, change
 
 ::
 
@@ -106,13 +106,13 @@ included in the build and evmAM572x define will ensure all evmAM572x
 specific includes that apply to the customAM572x are part of the build.
 
 | 
-| **Optional step to update RTSC platform definition** If you have a
-  custom RTSC platform definition for your custom board that updates the
-  memory and platform configuration using RTSC Tool then you need to
-  update the platform.mk file that associates the RTSC platfom with the
-  corresponding board library
+**Optional step to update RTSC platform definition** If you have a
+custom RTSC platform definition for your custom board that updates the
+memory and platform configuration using RTSC Tool then you need to
+update the platform.mk file that associates the RTSC platfom with the
+corresponding board library
 
-In packages\ti\build\makerules\platform.mk, add the following lines:
+In packages/ti/buildmakerules/platform.mk, add the following lines:
 
 | 
 
@@ -129,7 +129,7 @@ In packages\ti\build\makerules\platform.mk, add the following lines:
      endif
 
 **Note:** The SYSBIOS platforms follow the convention to consolidate all
-platform definitions under SYSBIOS_INSTALL_PATH\packages\ti\platforms\\*
+platform definitions under SYSBIOS_INSTALL_PATH/packages/ti/platforms/\*
 hence the convention ti.platorms.<platformName> but for custom platform,
 users are not required to follow this convnetion.
 
@@ -143,7 +143,7 @@ dependency on I2C, SPI and UART LLD drivers. Since the LLD drivers will
 be linked to the application along with board library, board library
 only needs <driver>_soc.c corresponding to SOC used on the custom Board.
 
-In packages\ti\board\src\src_files_lld.mk, add the following lines:
+In packages/ti/board/src/src_files_lld.mk, add the following lines:
 
 | 
 
@@ -185,7 +185,7 @@ files.
 
 **Step 7: Add custom Board to BOARDLIST and update CORELIST**
 
-In packages\ti\board\board_component.mk, modify the build to add your
+In packages/ti/board/board_component.mk, modify the build to add your
 custom board and specify the cores for which you want to build the board
 library. Example to build board library for only A15 and C66x cores,
 limit the build by specify only a15_0 and C66x in the CORELIST
@@ -201,7 +201,7 @@ limit the build by specify only a15_0 and C66x in the CORELIST
 
 **Step 8: Update .bld files for XDCTOOL based build steps.**
 
-Make corresponding changes in packages\ti\board\config.bld, by adding
+Make corresponding changes in packages/ti/board/config.bld, by adding
 the following lines:
 
 ::
@@ -219,15 +219,15 @@ the following lines:
 
     var boards = [ evmAM335x, icev2AM335x, skAM335x, bbbAM335x, evmAM437x, idkAM437x, skAM437x, myCustomBoard, evmAM572x, idkAM571x, idkAM572x, evmK2H, evmK2K, evmK2E, evmK2L, evmK2G, evmC6678, evmC6657 ];
 
-Also, in packages\ti\board\package.bld, I added the following line:
+Also, in packages/ti/board/package.bld, I added the following line:
 
 ::
 
     Pkg.otherFiles[Pkg.otherFiles.length++] = "src/myCustomBoard/src_files_myCustomBoard.mk";
 
 | 
-| **Step 9: Setup Top level PDK build files to add the Custom board to
-  setup environment.**
+**Step 9: Setup Top level PDK build files to add the Custom board to
+setup environment.**
 
 Final setup involves updating the top level setup file for PDK package
 to update to setup the build environment to include the custom Board in
@@ -251,10 +251,11 @@ AM572x EVM, you can invoke the build using:
     gmake board_lib LIMIT_SOCS=am572x LIMIT_BOARDS=customAM572x LIMIT_CORES=a15_0 
 
 | 
-| **Step 10 : Building the custom board with the updated settings**
+
+**Step 10 : Building the custom board with the updated settings**
 
 To build package change directory to
-<SDK_INSTALL_PATH>\pdk_am57xx_x_x_x\packages, first run pdksetupenv.bat
+<SDK_INSTALL_PATH>/pdk_am57xx_x_x_x/packages, first run pdksetupenv.bat
 
 To make just the board library: gmake board_lib
 

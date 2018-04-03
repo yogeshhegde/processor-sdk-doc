@@ -21,7 +21,7 @@ in a custom path.
 
 Installing the SDK in a folder other than where CCS is installed will
 require modifications to CCS to be able to discover the SDK. See the
-`Setup CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__ **How To** page
+`Setup CCS </index.php/Processor_SDK_RTOS_Setup_CCS>`__ **How To** page
 explaining how to update CCS configuration.
 
 | 
@@ -144,7 +144,7 @@ Gives the output:
     *******************************************************************************
 
 The `RTOS SDK top level
-Makefile <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__
+Makefile </index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__
 can now be used to rebuild SDK RTOS components with CCS and toolchains
 installed in a custom installation path.
 
@@ -255,7 +255,7 @@ Gives the output:
     *******************************************************************************
 
 The `RTOS SDK top level
-Makefile <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__
+Makefile </index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__
 can now be used to rebuild SDK RTOS components installed in the custom
 installation path.
 
@@ -393,7 +393,7 @@ Gives the output:
     *******************************************************************************
 
 The `RTOS SDK top level
-Makefile <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__
+Makefile </index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__
 can now be used to rebuild SDK RTOS components installed in the custom
 installation path using CCS and toolchains installed in a custom path as
 well.
@@ -413,7 +413,7 @@ properly.
 
 The instructions provided in the `CCS in Custom Path and SDK RTOS in
 Default
-Path <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path#CCS_in_Custom_Path_and_SDK_RTOS_in_Default_Path>`__
+Path </index.php/Processor_SDK_RTOS_Install_In_Custom_Path#CCS_in_Custom_Path_and_SDK_RTOS_in_Default_Path>`__
 section can be used to rebuild components at the PDK level. The only
 difference is the PDK level setup script should be used instead of the
 SDK RTOS level setup script. The PDK level setup scripts are found in
@@ -429,7 +429,7 @@ the following locations on Windows and Linux, respectively:
 
 The instructions provided in the `CCS in Default Path and SDK RTOS in
 Custom
-Path <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path#CCS_in_Default_Path_and_SDK_RTOS_in_Custom_Path>`__
+Path </index.php/Processor_SDK_RTOS_Install_In_Custom_Path#CCS_in_Default_Path_and_SDK_RTOS_in_Custom_Path>`__
 section can be used to rebuild components at the PDK level. The only
 difference is the PDK level setup script should be used instead of the
 SDK RTOS level setup script. The PDK level setup scripts are found in
@@ -444,7 +444,7 @@ the following locations on Windows and Linux, respectively:
    :name: ccs-and-pdk-in-custom-path
 
 The instructions provided in the `CCS and SDK RTOS in Custom
-Path <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path#CCS_and_SDK_RTOS_in_Custom_Path>`__
+Path </index.php/Processor_SDK_RTOS_Install_In_Custom_Path#CCS_and_SDK_RTOS_in_Custom_Path>`__
 section can be used to rebuild components at the PDK level. The only
 difference is the PDK level setup script should be used instead of the
 SDK RTOS level setup script. The PDK level setup scripts are found in
@@ -493,7 +493,7 @@ Prior to invoking the pdkProjectCreate script, make sure to start CCS
 and register the SDK RTOS components installed. Project creation will
 fail if the RTOS SDK components installed to the custom path have not
 been registered with CCS. Please see `CCS and SDK installed in different
-directories <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#CCS_and_SDK_installed_in_different_directories>`__
+directories </index.php/Processor_SDK_RTOS_Setup_CCS#CCS_and_SDK_installed_in_different_directories>`__
 for instructions on how to register SDK RTOS components installed to a
 custom path with CCS
 

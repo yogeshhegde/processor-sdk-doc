@@ -307,7 +307,7 @@ boot modes supported for all the boards is tabulated in the table below.
 | AM571x IDKEVM         |  YES   | YES  |
 +-----------------------+--------+------+
 | AM574x IDKEVM         |  YES   | YES  |
-+-----------------------+---------------+
++-----------------------+--------+------+
 
 | 
 

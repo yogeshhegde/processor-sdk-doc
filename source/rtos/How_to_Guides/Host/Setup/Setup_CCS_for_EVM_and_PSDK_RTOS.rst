@@ -320,7 +320,7 @@ If you face any problems, first check these basic items:
    different USB port.
 -  **Latest emulation package.** Ensure that you have the latest
    emulation files as specified in the `Getting Started
-   Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide#Emulator_support>`__.
+   Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide#Emulator_support>`__.
 
 If this does not resolve your problem, see these additional resources:
 

@@ -260,7 +260,7 @@ To reload DSP1 with this new executable, we perform the following steps:
     [27646.078026] virtio_rpmsg_bus virtio2: creating channel rpmsg-proto addr 0x3d
 
 More info related to loading firmware to the various cores can be found
-`here <http://processors.wiki.ti.com/index.php/Processor_Training:_Multimedia#Firmware_Loading_and_Unloading>`__.
+`here </index.php/Processor_Training:_Multimedia#Firmware_Loading_and_Unloading>`__.
 
 Finally, we can run the example on DSP1:
 
@@ -506,7 +506,7 @@ Linux dts file.** For example for the AM57xx EVM:
   "bridge" between physical memory and virtual memory. This structure is
   utilized for configuring the MMUs that sit in front of the DSP
   subsystem. There is detailed information available in the article `IPC
-  Resource customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__.
+  Resource customTable </index.php/IPC_Resource_customTable>`__.
 
 Once you've created your custom resource table, you must update the
 address of PHYS_MEM_IPC_VRING to be the same base address as your
@@ -534,7 +534,7 @@ You must ensure that the sizes of your sections are consistent with the
 corresponding definitions in the resource table. You should create your
 own resource table in order to modify the memory map. This is describe
 in the wiki page `IPC Resource
-customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__. You can look at an
+customTable </index.php/IPC_Resource_customTable>`__. You can look at an
 existing resource table inside IPC:
 
 ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_dsp.h
@@ -812,7 +812,7 @@ Linux dts file.** For example for the AM57xx EVM:
   "bridge" between physical memory and virtual memory. This structure is
   utilized for configuring the IPUx_MMU (not the Unicache MMU). There is
   detailed information available in the article `IPC Resource
-  customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__.
+  customTable </index.php/IPC_Resource_customTable>`__.
 
 Once you've created your custom resource table, you must update the
 address of PHYS_MEM_IPC_VRING to be the same base address as your
@@ -912,7 +912,7 @@ used by the L3 interconnect. The IOMMU is programmed by the ARM based on
 the associated resource table. If you're planning any memory changes
 then you'll want to make a custom resource table as described in the
 wiki page `IPC Resource
-customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__.
+customTable </index.php/IPC_Resource_customTable>`__.
 
 The default resource table (which can be adapted to make a custom table)
 can be found at this location:
@@ -992,7 +992,7 @@ You can dump the IPU IOMMU page tables with the following commands:
 +------+---------------------------------------------------------+
 
 Please see the `corresponding DSP
-documentation <http://processors.wiki.ti.com/index.php/Linux_IPC_on_AM57xx#Inspecting_the_DSP_IOMMU_Page_Tables_at_Run-Time>`__
+documentation </index.php/Linux_IPC_on_AM57xx#Inspecting_the_DSP_IOMMU_Page_Tables_at_Run-Time>`__
 for more details on interpreting the output.
 
 | 
@@ -1111,7 +1111,7 @@ associated System FS name from the chart above.
   work with. For this purpose, we'll be using the
   GPIO_LedBlink_evmAM572x_c66xExampleProject example that's part of the
   PDK (installed as part of the Processor SDK RTOS). You can find it at
-  c:\ti\pdk_am57xx_1_0_4\packages\MyExampleProjects\GPIO_LedBlink_evmAM572x_c66xExampleProject.
+  c:/ti/pdk_am57xx_1_0_4/packages/MyExampleProjects/GPIO_LedBlink_evmAM572x_c66xExampleProject.
   This example uses SYS/BIOS and blinks the USER0 LED on the AM572x GP
   EVM, it's labeled D4 on the EVM silkscreen just to the right of the
   blue reset button.
@@ -1198,24 +1198,24 @@ To do this, follow these steps.
 | 
 | Now we want to copy configuration and source files from the
   ex02_messageq IPC example into our project. The IPC example is located
-  at *C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq*. To
+  at *C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq*. To
   copy files into your CCS project, you can simply select the files you
   want in Windows explorer then drag and drop them into your project in
   CCS.
 
 Copy these files into your CCS project...
 
--  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\shared\AppCommon.h
--  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\shared\config.bld
--  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\shared\ipc.cfg.xs
+-  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/shared/AppCommon.h
+-  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/shared/config.bld
+-  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/shared/ipc.cfg.xs
 
 | 
 | Now copy these files into your CCS project...
 
--  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\dsp1\Dsp1.cfg
--  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\dsp1\MainDsp1.c
--  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\dsp1\Server.c
--  C:\ti\ipc_3_43_02_04\examples\DRA7XX_linux_elf\ex02_messageq\dsp1\Server.h
+-  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/dsp1/Dsp1.cfg
+-  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/dsp1/MainDsp1.c
+-  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/dsp1/Server.c
+-  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/dsp1/Server.h
 
   **Note:** When you copy Dsp1.cfg into your CCS project, it
   should show up greyed out. This is because the LED blink example
@@ -1226,8 +1226,8 @@ Copy these files into your CCS project...
 Finally, you will likely want to use a custom resource table so copy
 these files into your CCS project...
 
--  C:\ti\ipc_3_43_02_04\packages\ti\ipc\remoteproc\rsc_table_vayu_dsp.h
--  C:\ti\ipc_3_43_02_04\packages\ti\ipc\remoteproc\rsc_types.h
+-  C:/ti/ipc_3_43_02_04/packages/ti/ipc/remoteproc/rsc_table_vayu_dsp.h
+-  C:/ti/ipc_3_43_02_04/packages/ti/ipc/remoteproc/rsc_types.h
 
 The rsc_table_vayu_dsp.h file defines an initialized structure so let's
 make a *.c* source file.
@@ -1538,7 +1538,7 @@ For the UART M4 example run the script with the following arguments:
 
 | 
 | After you run the script, you can find the UART M4 example project at
-  <SDK_INSTALL_PATH>\pdk_am57xx_1_0_4\packages\MyExampleProjects\UART_BasicExample_evmAM572x_m4ExampleProject.
+  <SDK_INSTALL_PATH>/pdk_am57xx_1_0_4/packages/MyExampleProjects/UART_BasicExample_evmAM572x_m4ExampleProject.
 
 Import the project in CCS and build the example. You can now connect to
 the EVM using an emulator and CCS using the instructions provided here:
@@ -1637,24 +1637,24 @@ To do this, follow these steps.
 
 | Now we want to copy configuration and source files from the
   ex02_messageq IPC example into our project. The IPC example is located
-  at *C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq*. To
+  at *C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq*. To
   copy files into your CCS project, you can simply select the files you
   want in Windows explorer then drag and drop them into your project in
   CCS.
 
 Copy these files into your CCS project...
 
--  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\shared\AppCommon.h
--  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\shared\config.bld
--  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\shared\ipc.cfg.xs
+-  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/shared/AppCommon.h
+-  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/shared/config.bld
+-  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/shared/ipc.cfg.xs
 
 | 
 | Now copy these files into your CCS project...
 
--  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\ipu2\Ipu2.cfg
--  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\ipu2\MainIpu2.c
--  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\ipu2\Server.c
--  C:\ti\ipc_3_xx_xx_xx\examples\DRA7XX_linux_elf\ex02_messageq\ipu2\Server.h
+-  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/ipu2/Ipu2.cfg
+-  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/ipu2/MainIpu2.c
+-  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/ipu2/Server.c
+-  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/ipu2/Server.h
 
   **Note:** When you copy Ipu2.cfg into your CCS project, it
   should show up greyed out. If not, right click and exclude it from
@@ -1665,8 +1665,8 @@ Copy these files into your CCS project...
 Finally, you will likely want to use a custom resource table so copy
 these files into your CCS project...
 
--  C:\ti\ipc_3_xx_xx_xx\packages\ti\ipc\remoteproc\rsc_table_vayu_ipu.h
--  C:\ti\ipc_3_xx_xx_xx\packages\ti\ipc\remoteproc\rsc_types.h
+-  C:/ti/ipc_3_xx_xx_xx/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
+-  C:/ti/ipc_3_xx_xx_xx/packages/ti/ipc/remoteproc/rsc_types.h
 
 The rsc_table_vayu_dsp.h file defines an initialized structure so let's
 make a *.c* source file.
