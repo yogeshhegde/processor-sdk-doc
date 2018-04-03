@@ -77,14 +77,6 @@ Rules.make file.
 
 | 
 
-| 
-
-| 
-
-| 
-
-| 
-
 .. rubric:: Makefile
    :name: makefile
 
@@ -131,12 +123,6 @@ SDK:
    settings demos in Matrix
 -  **matrix-gui-browser** - Builds the matrix GUI browser Qt project
 -  **refresh-screen** - Builds the refresh screen Qt project
-
-| 
-
-| 
-
-| 
 
 | 
 

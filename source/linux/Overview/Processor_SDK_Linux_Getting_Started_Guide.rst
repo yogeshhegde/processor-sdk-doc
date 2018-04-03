@@ -196,6 +196,7 @@ which you can start development.
    `Ubuntu <http://www.ubuntu.com/download/desktop/install-desktop-long-term-support>`__
    provides a great overview for how to install natively.
 
+
 #. **Install the SDK** - Within your Linux host machine, `Install the Linux SDK`_
 
    .. note::
@@ -233,27 +234,22 @@ which you can start development.
    common set up with a serial connection for console and ethernet for
    networking (TFTP, NFS, etc.):
 
-   .. raw:: html
-
-      <div
-      style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-.. note::
-   The recommended setup is to use TFTP for booting the kernel and NFS
-   for hosting the target root filesystem. Since the SDK provides full
-   cross-compile development environment for the x86 host, this
-   configuration will simplify the transfer of files to and from the
-   target platform.
+   .. note::
+      The recommended setup is to use TFTP for booting the kernel and NFS
+      for hosting the target root filesystem. Since the SDK provides full
+      cross-compile development environment for the x86 host, this
+      configuration will simplify the transfer of files to and from the
+      target platform.
 
    .. Image:: ../images/AM335x_Development_Environment.png
 
 #. **Use the SD Card to boot the target board** properly connected for
    your development environment
 
-  .. note::
-   This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
-   platforms, power up the EVM and stop at the U-boot prompt as
-   described in :ref:`processor-sdk-linux-program-evm-verifying-nor`
+   .. note::
+      This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
+      platforms, power up the EVM and stop at the U-boot prompt as
+      described in :ref:`processor-sdk-linux-program-evm-verifying-nor`
 
 
 #. **Run the Setup Script** - Once the SDK has been installed, `Run
@@ -262,9 +258,9 @@ which you can start development.
    environment configuration.
 
    .. note::
-   If using a virtual machine as your Linux host, you will likely need
-   to import the target board into the virtual machine as a mass storage
-   device.
+      If using a virtual machine as your Linux host, you will likely need
+      to import the target board into the virtual machine as a mass storage
+      device.
 
 #. **Rebuild sources** using the `top-level Makefile`_
    in the SDK root directory. For example:
@@ -275,33 +271,34 @@ which you can start development.
 
   The file system can be rebuilt following the instructions at `Building the SDK`_.
 
-.. note::
-   Starting with Processor SDK 3.3, some components such as Jailhouse
-   Hypervisor needs a newer make (> 3.81) that what comes by default with
-   Ubuntu 14.04. Please check your make version (make -v) and upgrade to
-   latest using following instructions. You can make it your default make
-   by prefixing /usr/local/bin to your $PATH variable in your shell startup
-   file; for instance, in .profile or .bashrc if you use the bash shell.
-   Don't try to install a self-compiled make (or anything else that doesn't
-   come from the distribution's package manager) into /bin or /usr/bin;
-   doing that will confuse your package manager.
+   .. note::
+      Starting with Processor SDK 3.3, some components such as Jailhouse
+      Hypervisor needs a newer make (> 3.81) that what comes by default with
+      Ubuntu 14.04. Please check your make version (make -v) and upgrade to
+      latest using following instructions. You can make it your default make
+      by prefixing /usr/local/bin to your $PATH variable in your shell startup
+      file; for instance, in .profile or .bashrc if you use the bash shell.
+      Don't try to install a self-compiled make (or anything else that doesn't
+      come from the distribution's package manager) into /bin or /usr/bin;
+      doing that will confuse your package manager.
 
-|  cd /tmp
-|  wget http://ftp.gnu.org/gnu/make/make-4.1.tar.gz
-|  tar xvf make-4.1.tar.gz
-|  cd make-4.1/
-|  ./configure
-|  make
-|  sudo make install
-|  cd ..
-|  rm -rf make-4.1.tar.gz make-4.1
+   .. code-block:: bash
+
+      cd /tmp
+      wget http://ftp.gnu.org/gnu/make/make-4.1.tar.gz
+      tar xvf make-4.1.tar.gz
+      cd make-4.1/
+      ./configure
+      make
+      sudo make install
+      cd ..
+      rm -rf make-4.1.tar.gz make-4.1
 
 |
 
 .. rubric:: What Would You Like to do Next?
    :name: what-would-you-like-to-do-next
-|
-|
+
 Now that you have a solid baseline set up, you can choose what you'd
 like to do next based on what you need to do. Here are some of the many
 possibilities:
