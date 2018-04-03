@@ -967,10 +967,15 @@ ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_ipu.h
     #elif defined(VAYU_IPU_2)
     #define IPU_MEM_DATA_SIZE       (SZ_1M * 48)
     #endif
+
 |
+
 <snip...>
+
 |
+
 .. code-block:: c
+
         {
             TYPE_CARVEOUT,
             IPU_MEM_TEXT, 0,
@@ -1212,6 +1217,7 @@ To do this, follow these steps.
 -  Hit the OK button.
 
 | 
+
 Now we want to copy configuration and source files from the
 ex02\_messageq IPC example into our project. The IPC example is
 located at
@@ -1227,6 +1233,7 @@ Copy these files into your CCS project...
 -  C:\\ti\\ipc\_3\_43\_02\_04\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\shared\\ipc.cfg.xs
 
 | 
+
 Now copy these files into your CCS project...
 
 -  C:\\ti\\ipc\_3\_43\_02\_04\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\dsp1\\Dsp1.cfg
@@ -1255,7 +1262,8 @@ let's make a **.c** source file.
 -  In your CCS project, rename rsc\_table\_vayu\_dsp.h to
    rsc\_table\_vayu\_dsp.c
 
-| 
+|
+ 
 Now we want to **merge** the IPC example configuration file with the LED
 blink example configuration file. Follow these steps...
 
@@ -1268,7 +1276,8 @@ blink example configuration file. Follow these steps...
    from the Dsp1.cfg file. Basically we've appended the contents of
    Dsp1.cfg into gpio\_test\_evmAM572x.cfg.
 
-| 
+|
+ 
 We've now added in all the necessary configuration and source files
 into our project. Don't expect it to build at this point, we have to
 make edits first. These edits are listed below.
@@ -1282,7 +1291,8 @@ make edits first. These edits are listed below.
 
 -  Edit **gpio\_test\_evmAM572x.cfg**
 
-| 
+|
+ 
 Add the following to the beginning of your configuration file
 
 .. code-block:: c
@@ -1446,6 +1456,7 @@ The app now has it's own main(), so rename this one and get rid of args
     {
 
 | 
+
 No longer using args so comment these lines
 
 .. code-block:: c
@@ -1558,7 +1569,8 @@ For the UART M4 example run the script with the following arguments:
 
     pdkProjectCreate.bat AM572x evmAM572x little uart m4 
 
-| 
+|
+ 
 After you run the script, you can find the UART M4 example project at
 <SDK\_INSTALL\_PATH>\\pdk\_am57xx\_1\_0\_4\\packages\\MyExampleProjects\\UART\_BasicExample\_evmAM572x\_m4ExampleProject.
 
@@ -1666,7 +1678,8 @@ Copy these files into your CCS project...
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\shared\\config.bld
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\shared\\ipc.cfg.xs
 
-| 
+|
+ 
 Now copy these files into your CCS project...
 
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\ipu2\\Ipu2.cfg
@@ -1674,7 +1687,8 @@ Now copy these files into your CCS project...
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\ipu2\\Server.c
 -  C:\\ti\\ipc\_3\_xx\_xx\_xx\\examples\\DRA7XX\_linux\_elf\\ex02\_messageq\\ipu2\\Server.h
 
-| 
+|
+ 
 .. note::
    When you copy Ipu2.cfg into your CCS project, it
    should show up greyed out. If not, right click and exclude it from
@@ -1720,7 +1734,9 @@ make edits first. These edits are listed below.
     See link towards the end of this section.
 
 -  Edit **uart\_m4\_evmAM572x.cfg**
+
 |
+
 Add the following to the beginning(at the top) of your configuration file
 
 ::
