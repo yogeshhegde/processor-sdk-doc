@@ -59,8 +59,8 @@ Detailed description of the directory structure is given below:
 .. rubric:: Software Dependencies
    :name: software-dependencies
 
--  :ref:`Processor SDK RTOS v3.3 and later <GSG-Processor-SDK-for-RTOS-label>`
--  :ref:`Code Composer Studio IDE Environment v7 and later <GSG-Code-Composer-Studio-label>`
+-  `Processor SDK RTOS v3.3 and later <Overview.html#processor-sdk-for-rtos>`__
+-  `Code Composer Studio IDE Environment v7 and later <Overview.html#code-composer-studio>`__
 
 .. raw:: html
 
