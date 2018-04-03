@@ -3,9 +3,9 @@
 .. rubric:: Introduction
    :name: introduction
 
-| Driver enables UART's available on SOC for reading and writing to any
-  peripherals on board. Additionally it supports simple APIs for
-  Console/STDIO operations.
+Driver enables UART's available on SOC for reading and writing to any
+peripherals on board. Additionally it supports simple APIs for
+Console/STDIO operations.
 
 .. rubric:: Modes of Operation
    :name: modes-of-operation
@@ -19,9 +19,9 @@ until UART transaction is complete. While transaction is in progress
 additional tasks pending requests will remain in blocked state waiting
 for semaphore.
 
-| **UART_MODE_CALLBACK**: In this mode, read and write operation returns
-  immediately. On trigger of hardware Interrupt (hwi) callback function
-  gets triggered.
+**UART_MODE_CALLBACK**: In this mode, read and write operation returns
+immediately. On trigger of hardware Interrupt (hwi) callback function
+gets triggered.
 
 .. rubric:: Driver Configuration
    :name: driver-configuration
@@ -82,9 +82,9 @@ There are three ways to open a UART instance:
     ...
     handle = UART_open(UART_INSTANCE, &params);
 
-| At this point UART driver is ready for data transfer on specific
-  instance identified by handle. Application can call UART_read/write
-  API for read/write operation
+At this point UART driver is ready for data transfer on specific
+instance identified by handle. Application can call UART_read/write
+API for read/write operation
 
 2. UART_stdioInit() using the default UART parameters
 
@@ -99,9 +99,9 @@ There are three ways to open a UART instance:
     ...
     UART_stdioInit(UART_INSTANCE);
 
-| At this point UART driver is ready for data transfer on specific
-  instance. Application can call UART_printf/scanFmt API for read/write
-  operation
+At this point UART driver is ready for data transfer on specific
+instance. Application can call UART_printf/scanFmt API for read/write
+operation
 
 3. UART_stdioInit2() using Application specified UART parameters
 
@@ -118,9 +118,9 @@ There are three ways to open a UART instance:
     ...
     UART_stdioInit2(UART_INSTANCE, &params);
 
-| At this point UART driver is ready for data transfer on specific
-  instance. Application can call UART_printf/scanFmt API for read/write
-  operation
+At this point UART driver is ready for data transfer on specific
+instance. Application can call UART_printf/scanFmt API for read/write
+operation
 
 .. rubric:: Read/Write APIs
    :name: readwrite-apis
@@ -170,54 +170,54 @@ create EDMA handle and update the configuration before UART_init() API.
     uartInitCfg[UART_INSTANCE].edmaHandle = UartApp_edmaInit();/* Refer Example/Test */
     UART_init();
 
-| Refer “UART_BasicExample_[SOC]_[cpu]DMATestproject” for additional
-  reference. Refer SDK Release Note for supported EVMs.
+Refer “UART_BasicExample_[SOC]_[cpu]DMATestproject” for additional
+reference. Refer SDK Release Note for supported EVMs.
 
 .. rubric:: Example
    :name: example
 
-+-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
-+=======================+=======================+=======================+
-| UART_Example          | | Example             | | Application prompts |
-| application           |   demonstrating       |   user to enter input |
-|                       |   *simple* UART use   |   data in console.    |
-|                       |   case. Reference     |                       |
-|                       |   example for         | | User can enter up   |
-|                       |   developers          |   to 16 characters or |
-|                       |                       |   terminate with      |
-|                       |                       |   enter               |
-|                       |                       |   key.Application     |
-|                       |                       |   echoes back         |
-|                       |                       |   characters.         |
-+-----------------------+-----------------------+-----------------------+
-| UART_TestApplication  | | Unit Test           | User can enter up to  |
-|                       |   application to test | 16 characters using   |
-|                       |   all APIs            | serial                |
-|                       |                       | console.Application   |
-|                       |                       | echoes back           |
-+-----------------------+-----------------------+-----------------------+
-| UART_DMATestApplicati | | Unit Test           | User can enter up to  |
-| on                    |   application with    | 16 characters using   |
-|                       |   DMA mode.           | serial                |
-|                       |                       | console.Application   |
-|                       |                       | echoes back           |
-+-----------------------+-----------------------+-----------------------+
++-----------------------+---------------------+---------------------+
+|         Name          |    Description      |  Expected Results   |
++=======================+=====================+=====================+
+| UART_Example          | Example             | Application prompts |
+| application           | demonstrating       | user to enter input |
+|                       | *simple* UART use   | data in console.    |
+|                       | case. Reference     |                     |
+|                       | example for         | User can enter up   |
+|                       | developers          | to 16 characters or |
+|                       |                     | terminate with      |
+|                       |                     | enter               |
+|                       |                     | key.Application     |
+|                       |                     | echoes back         |
+|                       |                     | characters.         |
++-----------------------+---------------------+---------------------+
+| UART_TestApplication  | Unit Test           | User can enter up to|
+|                       | application to test | 16 characters using |
+|                       | all APIs            | serial              |
+|                       |                     | console.Application |
+|                       |                     | echoes back         |
++-----------------------+---------------------+---------------------+
+| UART_DMATestApplicati | Unit Test           | User can enter up to|
+| on                    | application with    | 16 characters using |
+|                       | DMA mode.           | serial              |
+|                       |                     | console.Application |
+|                       |                     | echoes back         |
++-----------------------+---------------------+---------------------+
 
 .. rubric:: Additional References
    :name: additional-references
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/gpio/docs/doxygen/html/index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/gpio/docs/ReleaseNotes_UART_ |
-|                                   | LLD.pdf                           |
-+-----------------------------------+-----------------------------------+
++----------------------+-----------------------------------+
+|     **Document**     |           **Location**            |
++----------------------+-----------------------------------+
+| API Reference Manual | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                      | /drv/gpio/docs/doxygen/html/index |
+|                      | .html                             |
++----------------------+-----------------------------------+
+| Release Notes        | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                      | /drv/gpio/docs/ReleaseNotes_UART  |
+|                      | _LLD.pdf                          |
++----------------------+-----------------------------------+
 
 .. raw:: html
 

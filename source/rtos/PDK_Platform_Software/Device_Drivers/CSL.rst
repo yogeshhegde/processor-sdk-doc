@@ -57,42 +57,30 @@ under rare cases in application when required.
   StarterWare low level package is retained. Customers are recommended
   to use driver interfaces for ease of migration of application software
   across SOCs.
+  
+  
++-----------------------+----------------------------------------------------+
+|                       Chip Support Library/DAL Summary                     |
++=======================+====================================================+
+|   Component Type      |   Library                                          |
+|                       |                                                    |
++-----------------------+----------------------------------------------------+
+|   Install Package     |   PDK                                              |
+|                       |                                                    |
++-----------------------+----------------------------------------------------+
+|   Install Directory   |   pdk_AMX_<version>\packages\ti\starterware        |
+|                       |                                                    |
++-----------------------+----------------------------------------------------+
+|   Endian Support      |   Little                                           |
+|                       |                                                    |
++-----------------------+----------------------------------------------------+
+|   Linker Path         |   PDK_INSTALL_DIR\packages\ti\starterware\binary   |
+|                       |                                                    |
++-----------------------+----------------------------------------------------+
+|   Include Paths       |   PDK_INSTALL_DIR\packages\ti\starterware\include  |
+|                       |                                                    |
++-----------------------+----------------------------------------------------+
 
-**Chip Support Library/DAL Summary**
-
-**Component Type**
-
-Library
-
-**Install Package**
-
-PDK
-
-**Install Directory**
-
-pdk_AMX_<version>\packages\ti\starterware
-
-**Endian Support**
-
-Little
-
-**Linker Path**
-
-PDK_INSTALL_DIR\packages\ti\starterware\binary
-
-**Include Paths**
-
-PDK_INSTALL_DIR\packages\ti\starterware\include
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-| 
 
 AM57x/K2x/C66x/C674x
 ---------------------
@@ -107,37 +95,31 @@ ti\csl\soc.h for list of devices/SOC's
 | Refer list of APIs/interfaces available under
   <PDK_INSTALL_DIR\packages\ti\csl> directory
 
-**Chip Support Library Summary**
-
-**Component Type**
-
-Library
-
-**Install Package**
-
-PDK
-
-**Install Directory**
-
-PDK_INSTALL_DIR\packages\ti\csl
-
-**Endian Support**
-
-Little
-
-**Linker Path**
-
-PDK_INSTALL_DIR\packages\ti\csl
-
-**Include Paths**
-
-$(TI_PDK_INSTALL_DIR)\packages\\
-
-**Reference Guides**
-
-See docs under Install Directory
-
-| 
++--------------------------+----------------------------------------+
+|                   Chip Support Library Summary                    |
++==========================+========================================+
+|   Component Type         |   Library                              |
+|                          |                                        |
++--------------------------+----------------------------------------+
+|   Install Package        |   PDK                                  |
+|                          |                                        |
++--------------------------+----------------------------------------+
+|   Install Directory      |   PDK_INSTALL_DIR\packages\ti\csl      |
+|                          |                                        |
++--------------------------+----------------------------------------+
+|   Endian Support         |   Little                               |
+|                          |                                        |
++--------------------------+----------------------------------------+
+|   Linker Path            |   PDK_INSTALL_DIR\packages\ti\csl      |
+|                          |                                        |
++--------------------------+----------------------------------------+
+|   Include Paths          |   $(TI_PDK_INSTALL_DIR)\packages\      |
+|                          |                                        |
++--------------------------+----------------------------------------+
+|   Reference Guides       |   See docs under Install Directory     |
+|                          |                                        |
++--------------------------+----------------------------------------+
+  
 
 CSL-FL EXAMPLES
 -----------------
