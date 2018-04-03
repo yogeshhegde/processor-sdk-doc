@@ -1304,7 +1304,7 @@ simultaneously. This is desirable in some use cases because, for
 example, NTP timestamping is also needed in some systems and CPTS
 timestamping is only for PTP. However, CPTS has priority over PA to
 timestamp PTP messages. When CPTS timestamps a PTP message, PA will not
-timestamp it. See the section `PA Timestamping <#pa-timestamping>`__ for
+timestamp it. See the section `PA Timestamping <#pa-timestamp>`__ for
 more details about PA timestamping.
 
 If needed, PA timestamping can be completely disabled by adding
@@ -1477,7 +1477,7 @@ clock\_settime() to inform the CPTS driver about any clock adjustment as
 a result of running the PTP protocol. The PPS may also need to be
 adjusted by the driver accordingly.
 
-See **Clock Adjustments** in the `CPTS User <#cpts-user>`__ section for
+See **Clock Adjustments** in the `CPTS User <#testing-cptsptp>`__ section for
 more details on clock adjustments.
 
 -  Shifting Time
