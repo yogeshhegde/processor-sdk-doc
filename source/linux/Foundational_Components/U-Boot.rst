@@ -89,7 +89,7 @@ General Information
   git repository including commit history.
 | Alternatively, U-Boot sources can directly be fetched from GIT. The
   GIT repo URL, branch and commit id can be found in the
-  `Processor\_SDK\_Linux\_U-Boot\_Release\_Notes </index.php/Processor_SDK_Linux_U-Boot_Release_Notes>`__
+  `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific.html#u-boot>`__
 
 .. rubric:: Device Trees
    :name: device-trees
@@ -794,9 +794,9 @@ NAND's SPL partition. For OMAP-L138 device, write the .ais image to the
 NAND's partition. For all devices this requires writing u-boot.img to
 the NAND's U-Boot partition.
 
-`Note </index.php?title=Note&action=edit&redlink=1>`__: The NAND
-partition of OMAP-L138 is different from other devices, please use the
-following commands to program the NAND
+.. note:: 
+  The NAND partition of OMAP-L138 is different from other devices, please use the
+  following commands to program the NAND
 
 ::
 

@@ -3,11 +3,6 @@
 Kernel
 ********************
 
-
-Overview
-==================================
-.. include:: Foundational_Components/Kernel/Kernel_Overview.rst
-
 Users Guide
 ==================================
 .. include:: Foundational_Components/Kernel/Users_Guide.rst

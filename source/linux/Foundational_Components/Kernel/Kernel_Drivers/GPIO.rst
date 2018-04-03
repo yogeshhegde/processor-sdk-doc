@@ -68,8 +68,7 @@ file for how the MMC/SD interface could use a GPIO as a card detect pin
 -  Access GPIO from user space as input or output
 -  Leverage GPIO from another "consumer" driver
 
-`Go Back to the Processor SDK Linux GPIO
-Interface </index.php/Processor_SDK_Linux_GPIO>`__
+|
 
 .. rubric:: Power Management
    :name: power-management

@@ -36,8 +36,3 @@ others, can easily be used to exercise a UART for data exchange.
 -  Supports multiple baud rates and UART capabilities
 -  Hardware Flow Control
 
-`Go Back to the Linux UART
-Interface </index.php/Processor_SDK_Linux_UART>`__
-
-| 
-

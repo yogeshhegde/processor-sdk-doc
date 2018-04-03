@@ -871,11 +871,12 @@ gauss.cl, sobel.cl, thresh.cl.
 #. TMS320C66x DSP CPU and instruction set:
    https://training.ti.com/system/files/docs/c66x-corepac-instruction-set-reference-guide.pdf
 
-.. rubric:: List of currently (PLSDK 3.1) DSP optimized OpenCV OpenCL
-   kernels, using non-standard OpenCL extensions
+
+.. rubric:: List of currently (PLSDK 3.1) DSP optimized OpenCV OpenCL kernels, using non-standard OpenCL extensions
    :name: list-of-currently-plsdk-3.1-dsp-optimized-opencv-opencl-kernels-using-non-standard-opencl-extensions
 
-.. rubric:: **OpenCL C C66 DSP kernels**
+
+.. rubric:: OpenCL C C66 DSP kernels
    :name: opencl-c-c66-dsp-kernels
 
 Kernel name

@@ -72,8 +72,7 @@ am3-evm or beaglebone-black in the u-boot config. If after using the
 patch you still see issues, you may need to further tune the value of
 REG\_PR\_OLD\_COUNT per your system need.
 
-.. rubric:: 
-   **tilcdc Supported Features:**
+.. rubric:: **tilcdc Supported Features**
    :name: tilcdc-supported-features
 
 -  RGB565 color format
