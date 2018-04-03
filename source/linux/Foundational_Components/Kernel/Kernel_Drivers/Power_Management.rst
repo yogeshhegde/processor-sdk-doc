@@ -182,7 +182,7 @@ regulator node by looking at the schematics.
 The ``operating-points`` table has been introduced instead of
 arch/arm/mach-omap2/oppXXXX\_data.c files for each platform that define
 OPPs for each silicon revision. More information can be found in the
-`Operating Points <#Operating_Points>`__ section.
+`Operating Points <#operating-points>`__ section.
 
 .. rubric:: Driver Usage
    :name: driver-usage
@@ -433,7 +433,7 @@ runtime, such as how long each state is occupied.
 Adaptive Voltage Scaling(AVS) is an active PM Technique and is based on
 the silicon type. SmartReflex is currently only supported on DRA7 and
 AM57 platforms, so more detail can be found under the section specific
-to those SoCs here: `DRA7 and AM57 SmartReflex <#SmartReflex_2>`__.
+to those SoCs here: `DRA7 and AM57 SmartReflex <#smartreflex-2>`__.
 
 .. rubric:: Source Location
    :name: source-location-2
@@ -793,7 +793,7 @@ are required when building a kernel to support suspend:
 
 Note that it is also possible to build all of the options under
 `` AMx3 Power Config Options `` as modules if desired. Finally, do not
-forget the steps mentioned in the `CM3 Firmware <#CM3_Firmware>`__
+forget the steps mentioned in the `CM3 Firmware <#cm3-firmware>`__
 section of the guide to make sure the proper firmware binary is
 available.
 

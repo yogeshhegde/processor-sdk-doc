@@ -508,7 +508,7 @@ After the steps above, copy ethercat\_slave\_demo.bin to target under
 /usr/share/jailhouse/examples.
 
 To run the inmate refer to the instructions for `**Running the Demo on
-AM572x-IDK** <#Running_the_Demo_on_AM572x-IDK>`__ . Be aware that the
+AM572x-IDK** <#running-the-demo-on-am572x-idk>`__ . Be aware that the
 inmate start address is 0x80000000. So, you need to use it as a
 parameter at the "jailhouse cell load" command:
 
@@ -971,7 +971,7 @@ $TI\_SDK\_PATH/board-support/extra-drivers/jailhouse-0.7/configs
 directory. Use the compiled am57xx-pdk-leddiag.cell file when you create
 the cell for led\_test.bin inmate.
 
-See `Running the Demo <#Running_the_Demo>`__ to run the inmate.
+See `Running the Demo <#running-the-demo>`__ to run the inmate.
 
 The **memcp\_bm** is very similar to led\_test. It is built in the same
 way as the led\_test. Use the am57xx-bm.cell file from

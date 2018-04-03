@@ -557,7 +557,7 @@ priority queue first for packets and transmits them before transmitting
 packets from the lower priority queues. At the ingress, the PRU checks
 the PCP value of the packet in the VLAN header and places the frame into
 one of the ingress queues. More details on Queue usage is available at
-`#Queue\_Usage\_and\_VLAN\_PCP\_to\_Queue\_Map <#Queue_Usage_and_VLAN_PCP_to_Queue_Map>`__
+`#Queue\_Usage\_and\_VLAN\_PCP\_to\_Queue\_Map <#queue-usage-and-vlan-pcp-to-queue-map>`__
 
 In the above example, after passing some UDP traffic over hsr0.2 and
 hsr0.3, the user may check following statistics to verify if the packets

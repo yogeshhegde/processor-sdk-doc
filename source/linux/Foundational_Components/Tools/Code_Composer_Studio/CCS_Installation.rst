@@ -377,7 +377,7 @@ file system:
 
 #. For all file system types, you can also transfer the file using the
    drag-and-drop method of Remote System Explorer. See the `Remote
-   System Explorer <#Remote_System_Explorer>`__ section below for more
+   System Explorer <#remote-system-explorer>`__ section below for more
    details.
 #. Files can also be moved from the Linux command line. Typically,
    executable files are stored in the project's Debug folder in the

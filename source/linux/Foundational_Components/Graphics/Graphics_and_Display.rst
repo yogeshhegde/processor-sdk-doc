@@ -1257,7 +1257,7 @@ the SDG, the tool will get recompiled as part of it.
    :name: configuration-of-the-soc-ddr-bw-visualizer
 
 Refer to
-`#Using\_the\_statistics\_collector\_.28bandwidth\_application.29 <#Using_the_statistics_collector_.28bandwidth_application.29>`__
+`#Using\_the\_statistics\_collector\_.28bandwidth\_application.29 <#using-the-statistics-collector-.28bandwidth-application.29>`__
 
 -  The total time that the tool runs is configured using config.ini.
 -  To allow finer granularity of control to choose the initiators of

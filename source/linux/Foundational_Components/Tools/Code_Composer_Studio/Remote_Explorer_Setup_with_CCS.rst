@@ -62,7 +62,7 @@ Connection Wizard.
 #. Click **Next**
 #. In the **Remote Linux System Connection** window enter
    **Host name:** Enter the IP address of your target EVM. This can be
-   determined as detailed in the `**Prerequisites** <#Prerequisites>`__
+   determined as detailed in the `**Prerequisites** <#prerequisites>`__
    section above
    **Connection name:** The default value is the same as the host name,
    but this can be changed to a more human readable value like *Target

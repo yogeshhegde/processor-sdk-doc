@@ -146,7 +146,7 @@ SDK:
 Depending on the capabilities and software available for a given device
 additional targets may also be defined. You can find the list of all the
 targets by looking at the **all** target as described in the
-`**Top-Level Targets** <#Top-Level_Targets>`__ section above. Add
+`**Top-Level Targets** <#top-level-targets>`__ section above. Add
 devices will have one or the other of the following targets depending on
 the u-boot version used:
 
