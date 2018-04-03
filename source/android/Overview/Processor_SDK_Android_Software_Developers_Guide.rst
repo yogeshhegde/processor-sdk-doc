@@ -13,7 +13,7 @@ quickly provide the information you need most while evaluating a TI
 microprocessor, specifically running one of the Software Architectures
 available, embedded Android. We are always striving to improve this
 product.  Please let us know if you have `**ideas or
-suggestions** </index.php/Processor_SDK_Android_Software_Developer%E2%80%99s_Guide#Feedback>`__\ **.  **
+suggestions** <Overview.html#feedback>`__\ **.  **
 
 .. rubric:: Version
    :name: version

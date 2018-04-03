@@ -28,7 +28,7 @@ At a high level, you will need the following hardware and software:
       is for UART/serial and JTAG)
    -  If you are having trouble getting your board booted see the
       `Processor SDK Android Getting Started
-      Guide </index.php/Processor_SDK_Android_Getting_Started_Guide>`__
+      Guide <Overview.html#processor-sdk-android-getting-started-guide>`__
 
 .. rubric:: Put Your Board into Development Mode
    :name: put-your-board-into-development-mode

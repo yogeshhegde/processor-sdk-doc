@@ -18,7 +18,7 @@ Processor SDK Android Building The SDK
 The prebuilt release image can be found in the
 'board-support/prebuilt-images/' directory of the Processor SDK Android 
 installation. The `create-sdcard.sh
-script </index.php/Processor_SDK_Android_create_SD_card_script>`__
+script <Overview.html#sd-card-creation>`__
 (found in the 'bin/' directory of the SDK) will create a bootable SD
 card using the prebuilt images that you can use to boot your AM572x GP
 EVM, AM571x IDK, or AM572x IDK.
@@ -40,13 +40,13 @@ EVM, AM571x IDK, or AM572x IDK.
    :name: flashing-to-onboard-emmc
 
 | You can also use the top-level `setup.sh
-  script </index.php/Processor_SDK_Android_Setup_Script>`__ to flash the
+  script <Overview.html#run-setup-scripts>`__ to flash the
   prebuilt release images to the eMMC of your EVM or IDK.
 
 .. note::
 
    You will still need to use the `create-sdcard.sh
-   script </index.php/Processor_SDK_Android_create_SD_card_script>`__ the
+   script <Overview.html#sd-card-creation>`__ the
    first time that you flash your board. This will allow you to run u-boot
    off of the SD card for your first boot and then the flashing procedure
    will put u-boot into the eMMC (or QSPI on the IDKs) for subsequent
@@ -169,14 +169,14 @@ the **board-support/linux-x.y.zz/** directory.
    The lzop tool needs to be installed on Linux PC when building
    Kernel using Android 4.9 toolchain. lzop should have been installed
    while following the steps in `this
-   section </index.php/Processor_SDK_Android_Building_The_SDK#Build_PC_setup>`__
+   section <Overview.html#build-pc-setup>`__
    of this guide.
 
 .. rubric:: Building U-boot sources
    :name: building-u-boot-sources
 
 The `top-level
-Makefile </index.php/Processor_SDK_Android_Top-Level_Makefile>`__ can be
+Makefile <Overview.html#top-level-makefile>`__ can be
 used to build MLO and U-Boot
 
 ::
@@ -188,7 +188,7 @@ used to build MLO and U-Boot
    :name: building-kernel
 
 The `top-level
-Makefile </index.php/Processor_SDK_Android_Top-Level_Makefile>`__ can
+Makefile <Overview.html#top-level-makefile>`__ can
 also be used to build the Linux kernel
 
 ::
@@ -202,7 +202,7 @@ also be used to build the Linux kernel
 
    If you are making changes to kernel defconfig and need
    to rebuild SGX kernel module, refer
-   `here </index.php/Processor_SDK_Android_Building_The_SDK#Building_SGX_Kernel_Module>`__
+   `here <Overview.html#building-sgx-kernel-module>`__
 
 | 
 
@@ -333,7 +333,7 @@ AFS to emmc.
 
 -  Create an SD card containing MLO and u-boot.img using the
    `create-sdcard.sh
-   script </index.php/Processor_SDK_Android_create_SD_card_script>`__
+   script <Overview.html#sd-card-creation>`__
    provided in the SDK and then boot the target board from this external
    SD card.
 
@@ -383,7 +383,7 @@ on the host machine
 
    If the emmc\_files directory does not exist, you need
    to following the instructions in the above `Preparing eMMC
-   binaries/images </index.php/Processor_SDK_Android_Building_The_SDK#Preparing_eMMC_binaries.2Fimages>`__
+   binaries/images <Overview.html#preparing-emmc-binariesimages>`__
    section first.
 
 
