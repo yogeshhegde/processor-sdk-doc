@@ -465,7 +465,7 @@ issue such requests.
 
 Any time we don't have a functioning Host on the Test Setup and still
 want to enter USB 2.0 Test Modes, we can use this `non-standard
-interface </index.php/Linux_Core_DWC3_User%27s_Guide#Non-Standard_DebugFS_Interface>`__
+interface <Foundational_Components.html#non-standard-debugfs-interface>`__
 for that purpose. One such use-case is for low level USB 2.0 Eye Diagram
 testing where the DUT (Device Under Test) is connected to an
 oscilloscope through a test fixture.
@@ -628,7 +628,7 @@ modes is through a USB Reset.
    :name: other-resources
 
 For general Linux USB subsystem
-- `Usbgeneralpage </index.php/Usbgeneralpage>`__
+- `Usbgeneralpage <http://processors.wiki.ti.com/index.php/Usbgeneralpage>`__
 
 USB Debugging
 - `elinux.org/images/1/17/USB\_Debugging\_and\_Profiling\_Techniques.pdf <http://elinux.org/images/1/17/USB_Debugging_and_Profiling_Techniques.pdf>`__

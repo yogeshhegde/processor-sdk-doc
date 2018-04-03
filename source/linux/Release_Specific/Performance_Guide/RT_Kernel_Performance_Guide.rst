@@ -932,7 +932,7 @@ details are mentioned below:
 **Setup** : Western Digital 1TB (My Book Essential) USB hard disk is
 connected to usb0 port. File read/write performance data on usb0 port is
 captured. For detailed test setup refer to `USB MSC host test
-setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 
 .. rubric::  AM574X-IDK USB MSC Host mode EXT2 File System Performance
    :name: am574x-idk-usb-msc-host-mode-ext2-file-system-performance
@@ -1010,7 +1010,7 @@ storage:
     # insmod g_mass_storage.ko file=/dev/shm/50M 
 
 For test setup details refer to `USB MSC device
-setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 
 .. rubric::  AM574X-IDK USB SLAVE DEVICE PERFORMANCE
    :name: am574x-idk-usb-slave-device-performance
@@ -1233,14 +1233,14 @@ Table:  '
    :name: nand-driver
 
 Please refer `MTD Test
-Setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+Setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 before proceeding.
 
 .. rubric::  QSPI Flash Driver
    :name: qspi-flash-driver
 
 Test setup is available
-`here </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__.
+`here <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__.
 
 .. rubric::  AM574x-IDK
    :name: am574x-idk-1
@@ -1284,7 +1284,7 @@ Table:  '
    </div>
 
 Please refer `MMC/SD Test
-Setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+Setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 before proceeding.
 
 .. rubric::  AM574X-IDK
@@ -1346,7 +1346,7 @@ Table:  '
    </div>
 
 Please refer `MMC/SD Test
-Setup </index.php?title=Sitara_PSP_Test_Setup&action=edit&redlink=1>`__
+Setup <http://processors.wiki.ti.com/index.php/Sitara_PSP_Test_Setup>`__
 before proceeding.
 
 .. rubric::  AM574X-IDK

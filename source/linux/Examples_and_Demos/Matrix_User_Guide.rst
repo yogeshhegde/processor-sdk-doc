@@ -284,7 +284,7 @@ disabling Matrix at start up.
 
 Please see this wiki page to recalibrate the touch screen: `**How to
 Recalibrate the
-Touchscreen** </index.php/How_to_Recalibrate_the_Touchscreen>`__
+Touchscreen** <Processor_Linux_SDK_How_To_Guides.html#how-to-recalibrate-the-touchscreen>`__
 
 .. rubric:: Matrix is running but I don't want it running
    :name: matrix-is-running-but-i-dont-want-it-running
@@ -317,7 +317,7 @@ From the console type the following commands:
 
 You can enable mouse by referring to the following: `**How to Enable
 Mouse for the Matrix
-GUI** </index.php/How_to_use_a_Mouse_instead_of_the_Touchscreen_with_Matrix>`__\ ***
+GUI** <Processor_Linux_SDK_How_To_Guides.html#how-to-use-a-mouse-instead-of-the-touchscreen-with-matrix>`__\ ***
 ***
 
 .. rubric:: How to Switch Display from LCD to DVI out for the Matrix
@@ -326,7 +326,7 @@ GUI** </index.php/How_to_use_a_Mouse_instead_of_the_Touchscreen_with_Matrix>`__\
 
 You can switch the display output by referring to the following:
 `**How to Switch Display Output for the Matrix
-GUI** </index.php/How_to_Switch_Display_From_Touchscreen_to_DVIout_with_Matrix>`__\ ***
+GUI** <http://processors.wiki.ti.com/index.php/How_to_Switch_Display_From_Touchscreen_to_DVIout_with_Matrix>`__\ ***
 ***
 
 .. rubric:: Adding a New Application/Directory to Matrix

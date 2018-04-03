@@ -15,7 +15,7 @@
 The host processor on TI's Sitara family of devices is an ARM Cortex-A
 processor. Typically the ARM core is running Linux based on the
 `Processor
-SDK </index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__.
+SDK <Overview.html#processor-sdk-linux-software-developer-s-guide>`__.
 TI has developed custom pruss and pru\_rproc (PRU Subsystem Remote
 Processor) drivers which will plug into this kernel. This provides an
 interface for the kernel to load firmware into the PRU core(s) and
@@ -38,7 +38,7 @@ to enable the PRU cores:
 All of these services are provided through a combination of the pruss,
 pru\_rproc, and rpmsg\_pru Linux drivers that TI provides in the
 `Processor
-SDK </index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__.
+SDK <Overview.html#processor-sdk-linux-software-developer-s-guide>`__.
 
 .. rubric:: Remoteproc
    :name: remoteproc
@@ -373,8 +373,8 @@ abstraction layer.
    :name: next-steps
 
 To get started quickly with remoteproc and RPMsg you can use the `RPMsg
-Quick Start Guide </index.php/RPMsg_Quick_Start_Guide>`__.
+Quick Start Guide <http://processors.wiki.ti.com/index.php/RPMsg_Quick_Start_Guide>`__.
 
 For Hands-on Labs that work with the BeagleBone Black and a PRU Cape
-start `here </index.php/PRU_Training:_Hands-on_Labs>`__.
+start `here <http://processors.wiki.ti.com/index.php/PRU_Training:_Hands-on_Labs>`__.
 

@@ -19,9 +19,9 @@
 +-----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
 | Links                                                                                                     | Description                                                   |
 +===========================================================================================================+===============================================================+
-| `Multiple Ways of ARM/DSP Communication </index.php/Processor-sdk-MultiWay-of-ARM-DSP-Communication>`__   | Provides brief overview of each method and pros and cons      |
+| `Multiple Ways of ARM/DSP Communication <Foundational_Components.html#multiple-ways-of-arm-dsp-communication>`__   | Provides brief overview of each method and pros and cons      |
 +-----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
-| `IPC Quick Start Guide </index.php/Processor_SDK_IPC_Quick_Start_Guide>`__                                | Building and setting up examples for IPC with Processor SDK   |
+| `IPC Quick Start Guide <Foundational_Components.html#ipc-quick-start-guide>`__                                | Building and setting up examples for IPC with Processor SDK   |
 +-----------------------------------------------------------------------------------------------------------+---------------------------------------------------------------+
 
 | 
@@ -32,7 +32,7 @@
 +-----------------------------------------------------+-----------------------+
 | Links                                               | Description           |
 +=====================================================+=======================+
-| `IPC User's Guide </index.php/IPC_Users_Guide>`__   | TI IPC User's Guide   |
+| `IPC User's Guide <http://processors.wiki.ti.com/index.php/IPC_Users_Guide>`__   | TI IPC User's Guide   |
 +-----------------------------------------------------+-----------------------+
 
 | 

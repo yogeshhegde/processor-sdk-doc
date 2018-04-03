@@ -93,7 +93,7 @@ be adapted accordingly.
 
    -  For help creating a 2 partition SD card with the SDK content see
       the `create\_sdcard.sh
-      script </index.php/Sitara_Linux_SDK_create_SD_card_script>`__ page
+      script <Overview.html#linux-sd-card-creation-guide>`__ page
 
 -  QT Creator 5.7.0 installed on your Linux host.
 

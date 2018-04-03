@@ -4,7 +4,7 @@
 
 This section is a quick guide on how to start using usb ports on TI
 platform with supplied pre-built binaries. Please refer to `USB Quick
-Start </index.php/Am335x-USB-quick-start>`__
+Start <http://processors.wiki.ti.com/index.php/Am335x-USB-quick-start>`__
 
 .. rubric:: **Introduction**
    :name: introduction-linux-core-musb-ug
@@ -15,7 +15,7 @@ The USB User's Guide provides information about
 -  Supported linux driver features for USB host and device mode of
    operation
 -  The Linux USB configuration through menuconfig. Please refer to `USB
-   configuration </index.php/UsbgeneralpageLinuxCore>`__
+   configuration <http://processors.wiki.ti.com/index.php/UsbgeneralpageLinuxCore>`__
 
 .. rubric:: **Hardware Overview**
    :name: hardware-overview
@@ -106,9 +106,9 @@ packets over the musb endpoints.
 +================================================================================+===========+
 | HUB class support                                                              | **Yes**   |
 +--------------------------------------------------------------------------------+-----------+
-| `Human Interface Class (HID) </index.php/Usbgeneralpage#USB_HID_Class>`__      | **Yes**   |
+| `Human Interface Class (HID) <http://processors.wiki.ti.com/index.php/Usbgeneralpage#USB_HID_Class>`__      | **Yes**   |
 +--------------------------------------------------------------------------------+-----------+
-| `Mass Storage Class (MSC) </index.php/Usbgeneralpage#Mass_Storage_Driver>`__   | **Yes**   |
+| `Mass Storage Class (MSC) <http://processors.wiki.ti.com/index.php/Usbgeneralpage#Mass_Storage_Driver>`__   | **Yes**   |
 +--------------------------------------------------------------------------------+-----------+
 
 Table: 
@@ -120,11 +120,11 @@ Table:
 +--------------------------------------------------------------------------------+-----------+
 | Gadget Mode Feature                                                            | AM33xx    |
 +================================================================================+===========+
-| `Mass Storage Class (MSC) </index.php/Usbgeneralpage#Mass_Storage_Gadget>`__   | **Yes**   |
+| `Mass Storage Class (MSC) <http://processors.wiki.ti.com/index.php/Usbgeneralpage#Mass_Storage_Gadget>`__   | **Yes**   |
 +--------------------------------------------------------------------------------+-----------+
-| `USB Networking - RNDIS </index.php/Usbgeneralpage#CDC.2FRNDIS_gadget>`__      | **Yes**   |
+| `USB Networking - RNDIS <http://processors.wiki.ti.com/index.php/Usbgeneralpage#CDC.2FRNDIS_gadget>`__      | **Yes**   |
 +--------------------------------------------------------------------------------+-----------+
-| `USB Networking - CDC </index.php/Usbgeneralpage#CDC.2FRNDIS_gadget>`__        | **Yes**   |
+| `USB Networking - CDC <http://processors.wiki.ti.com/index.php/Usbgeneralpage#CDC.2FRNDIS_gadget>`__        | **Yes**   |
 +--------------------------------------------------------------------------------+-----------+
 
 Table: 
@@ -136,7 +136,7 @@ Table:
 +-------------------------------------------------------------------------------------------+-----------+
 | Dual Mode Feature                                                                         | AM33x     |
 +===========================================================================================+===========+
-| `USB0 as OTG, USB1 as OTG </index.php/UsbgeneralpageLinux-v3p1#Driver_configuration>`__   | **Yes**   |
+| `USB0 as OTG, USB1 as OTG <http://processors.wiki.ti.com/index.php/UsbgeneralpageLinux-v3p1#Driver_configuration>`__   | **Yes**   |
 +-------------------------------------------------------------------------------------------+-----------+
 
 Table: 
@@ -181,5 +181,5 @@ This behaviour is expected.
 
 -  The Mentor USB driver can be built as module or built into kernel.
    For more information refer to `USB
-   configuration </index.php/UsbgeneralpageLinuxCore>`__ 
+   configuration <http://processors.wiki.ti.com/index.php/UsbgeneralpageLinuxCore>`__ 
 

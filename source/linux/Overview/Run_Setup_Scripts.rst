@@ -97,7 +97,7 @@ exit. If the user is running on a different Ubuntu version or another
 Linux distribution, they are encouraged to modify the environment setup
 script to match their distribution. See which version of Ubuntu is
 currently supported
-`here </index.php/Processor_SDK_Supported_Platforms_and_Versions>`__.
+`here <Release_Specific.html#supported-platforms-and-versions>`__.
 
 .. raw:: html
 

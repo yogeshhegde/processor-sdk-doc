@@ -14,8 +14,8 @@ memory. It also provides address translation services (e.g. virtual to
 physical translation) and user-mode cache management APIs. This
 physically contiguous memory is useful as data buffers that will be
 shared with another processor (e.g. for the DSP on an
-`OMAP3 </index.php/OMAP3_Overview>`__) or a hardware accelerator/DMA
-(e.g. used by codecs on a `DM365 </index.php/DM365>`__)
+`OMAP3 <http://processors.wiki.ti.com/index.php/OMAP3_Overview>`__) or a hardware accelerator/DMA
+(e.g. used by codecs on a `DM365 <http://processors.wiki.ti.com/index.php/DM365>`__)
 
 Using its pool-based configuration, CMEM enables users to avoid memory
 fragmentation, and ensures large physically contiguous memory blocks are
@@ -23,21 +23,21 @@ available even after a system has been running for very long periods of
 time.
 
 It was originally developed for the
-`DM644x </index.php/Category:DM644x>`__, and has been ported to several
+`DM644x <http://processors.wiki.ti.com/index.php/Category:DM644x>`__, and has been ported to several
 Operating Systems (e.g. Linux, WinCE, QNX, Nucleus, Green Hills
 Integrity, and others). Although generally associated with `Codec
-Engine </index.php/Category:Codec_Engine>`__, it has no dependency on
+Engine <http://processors.wiki.ti.com/index.php/Category:Codec_Engine>`__, it has no dependency on
 Codec Engine and can be used on its own.
 
 It's currently distributed as a component in the `Linux
-Utils </index.php/Linux_Utils_Roadmap>`__ and `WinCE
-Utils </index.php/Category:WinCE_Utils>`__ products, which may be
+Utils <http://processors.wiki.ti.com/index.php/Linux_Utils_Roadmap>`__ and `WinCE
+Utils <http://processors.wiki.ti.com/index.php/Category:WinCE_Utils>`__ products, which may be
 included in various Linux and WinCE based SDKs.
 
 .. rubric:: Development
    :name: development
 
-CMEM is a component of `Linux Utils </index.php/Linux_Utils_Roadmap>`__,
+CMEM is a component of `Linux Utils <http://processors.wiki.ti.com/index.php/Linux_Utils_Roadmap>`__,
 and is actively being developed in the publicly maintained, TI-hosted
 'ludev' git repository - http://git.ti.com/ipc/ludev. The `Linux Utils
 development process is documented
@@ -452,7 +452,7 @@ So, in short, CMEM's ``get_phys()`` doesn't handle non-direct-mapped
 kernel addresses except the ones that correspond to CMEM's managed
 memory block(s).
 **Q:** How does CMEM relate to `DSPLink's
-POOL </index.php/DSPLink_POOL_Module_Overview>`__ feature?
+POOL <http://processors.wiki.ti.com/index.php/DSPLink_POOL_Module_Overview>`__ feature?
 
 **A:** Though they provide overlapping features, they are independent,
 and each has unique features.

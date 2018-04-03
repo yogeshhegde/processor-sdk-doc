@@ -326,7 +326,7 @@ Here are the steps needed to test out the new Ethernet interfaces:
    -  follow the script directions to format your SD card and then
       install the pre-built binaries from the SDK
    -  for more information on creating an SD card:
-      `Processor\_SDK\_Linux\_create\_SD\_card\_script </index.php/Processor_SDK_Linux_create_SD_card_script>`__
+      `Processor\_SDK\_Linux\_create\_SD\_card\_script <Overview.html#linux-sd-card-creation-guide>`__
 
 -  Boot from the newly created SD card
 
@@ -341,7 +341,7 @@ Here are the steps needed to test out the new Ethernet interfaces:
       **NOTE**
       You'll need to clear the SPI flash on the AM3359 ICE board before
       you can boot from an SD card: `AM3359 ICE clear SPI
-      flash </index.php/AM335x_ICEv2_flash_erase>`__
+      flash <Processor_Linux_SDK_How_To_Guides.html#am335x-icev2-flash-erase>`__
 
       .. raw:: html
 
@@ -535,7 +535,7 @@ On your Linux development machine
       kernel and modules
 
       -  If you need help, see this page:
-         `Linux\_Kernel\_Users\_Guide </index.php/Linux_Kernel_Users_Guide>`__
+         `Linux\_Kernel\_Users\_Guide <Foundational_Components.html#users-guide>`__
 
    -  Now boot your board with the new kernel and bonding driver built
       above
@@ -609,7 +609,7 @@ On your development board console
 
 Yes! The HSR and PRP protocols are currently supported on the AM572x IDK
 board. To learn more about the HSR and PRP PRU firmware implementation
-click `here </index.php/Processor_SDK_HSR_PRP>`__. To learn more about
+click `here <Industrial_Protocols.html#hsr-prp>`__. To learn more about
 running the protocols/firmwares while using the Linux Processor SDK
 click `here </index.php/Processor_SDK_Linux_HSR_PRP>`__.
 

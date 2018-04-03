@@ -267,7 +267,7 @@ you first need to configure your project to use gdb and gdbserver
 included within the SDK.
 
 Please refer to `Debugging using GDB with Code Composer
-Studio </index.php/Sitara_Linux_SDK_CCS_GDB_Setup>`__ for more
+Studio <Foundational_Components.html#gdb-setup-with-ccs>`__ for more
 information.
 
 | 

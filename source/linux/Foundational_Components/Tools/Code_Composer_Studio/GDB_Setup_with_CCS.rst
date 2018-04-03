@@ -7,16 +7,16 @@ prerequisites are met:
 
 #. Installed the Processor Linux SDK
 #. You have ran the `SDK's Setup
-   Scripts </index.php/Processor_SDK_Linux_Setup_Script>`__
+   Scripts <Overview.html#run-setup-scripts>`__
 #. Installed Code Composer Studio
 #. Created or imported a C/C++ Project. This project should be already
    open. For this guide a helloworld project will be used as an example.
 #. Connected your host PC and evm to the same network. Your PC and EVM
    should be on the same subnet.
 #. `Remote System
-   Explorer </index.php/Processor_Linux_SDK_CCS_Remote_System_Explorer_Setup>`__
+   Explorer <Foundational_Components.html#remote-explorer-setup-with-ccs>`__
    has already been setup and your
-   `connected </index.php/Processor_Linux_SDK_CCS_Remote_System_Explorer_Setup#Connecting_to_the_Target>`__
+   `connected <Foundational_Components.html#connecting-to-the-target>`__
    to the board.
 #. The project you want to debug is already opened. Its important that
    the debug version of the executable is built.

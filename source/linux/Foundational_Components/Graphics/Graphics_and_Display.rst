@@ -249,7 +249,7 @@ display on all connectors, use the below command:
      weston --tty=1 --idle-time=0
 
 If you face any issues with the above procedure, please refer
-`GLSDK\_FAQs#Unable\_to\_run\_Weston\_on\_the\_GLSDK\_release </index.php/GLSDK_FAQs#Unable_to_run_Weston_on_the_GLSDK_release>`__
+`GLSDK\_FAQs#Unable\_to\_run\_Weston\_on\_the\_GLSDK\_release <http://processors.wiki.ti.com/index.php/GLSDK_FAQs#Unable_to_run_Weston_on_the_GLSDK_release>`__
 for troubling shooting tips.
 
 The filesystem comes with a preconfigured **weston.ini** file which will

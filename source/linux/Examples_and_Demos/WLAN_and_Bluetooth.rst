@@ -37,22 +37,22 @@ cases preloaded on the EVMs can be seen below:
    :name: classic-bluetooth
 
 -  `Demos using
-   GUI </index.php/OMAP_Wireless_Connectivity_Bluetooth_GUI>`__
+   GUI <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Bluetooth_GUI>`__
 
--  `SPP </index.php/OMAP_Wireless_Connectivity_Bluetooth_GUI#The_SPP_View>`__
--  `HID </index.php/OMAP_Wireless_Connectivity_Bluetooth_GUI#The_HID_View>`__
--  `A2DP </index.php/OMAP_Wireless_Connectivity_Bluetooth_GUI#The_Audio_View>`__
+-  `SPP <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Bluetooth_GUI#The_SPP_View>`__
+-  `HID <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Bluetooth_GUI#The_HID_View>`__
+-  `A2DP <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Bluetooth_GUI#The_Audio_View>`__
 
 -  `Bluetooth Demos using Command Line in
-   Linux </index.php/NLCP_Bluetooth_Command_Lines>`__
+   Linux <http://processors.wiki.ti.com/index.php/NLCP_Bluetooth_Command_Lines>`__
 -  `Bluetooth Demos using Command Line in
-   Windows </index.php/NLCP_Bluetooth_Terminal_with_Windows>`__
+   Windows <http://processors.wiki.ti.com/index.php/NLCP_Bluetooth_Terminal_with_Windows>`__
 
 .. rubric:: Bluetooth Low-Energy (BLE)
    :name: bluetooth-low-energy-ble
 
 -  `Enabling BLE on the
-   WL127xL </index.php/BTS_with_BLE_enabled_for_WL127xL>`__
+   WL127xL <http://processors.wiki.ti.com/index.php/BTS_with_BLE_enabled_for_WL127xL>`__
 
 | 
 
@@ -69,7 +69,7 @@ recommended that you first complete the two steps below:
    before any WLAN operation. Calibration is performed once after the
    board assembly, or in case the 12xx connectivity daughtercard or EVM
    are replaced (refer to `Calibration
-   Process </index.php/WL12xx_NLCP_Calibration_Proccess>`__).
+   Process <http://processors.wiki.ti.com/index.php/WL12xx_NLCP_Calibration_Proccess>`__).
 
 You may refer to `Linux Wireless
 Calibrator <http://linuxwireless.org/en/users/Drivers/wl12xx/calibrator>`__
@@ -78,7 +78,7 @@ page for more instruction.
 -  Step 2: MAC address settings - This is a one-time procedure, done
    after the calibration, and before any WLAN operation is performed
    (refer to: <`modifying WLAN MAC
-   address </index.php/OMAP_Wireless_Connectivity_Station_MAC_Change>`__>)
+   address <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Station_MAC_Change>`__>)
 
 .. rubric:: WLAN Station Demos
    :name: wlan-station-demos
@@ -96,7 +96,7 @@ page for more instruction.
 
 -  **WLAN Throughput Test Utility (Command line)**
 
--  `WLAN Throughput Test </index.php/WLAN_Throughput_Test>`__
+-  `WLAN Throughput Test <http://processors.wiki.ti.com/index.php/WLAN_Throughput_Test>`__
 
 -  **Web-Browsing on Matrix UI and Remote (PC Based) Web Browser (QT
    GUI)**
@@ -149,20 +149,20 @@ page for more instruction.
    Code <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_NLCP_WiFi_Direct_Configuration_Scripts#Create_1:2_P2P_Group_-_Connect_with_PIN_code>`__
 
 -  `WiFi Direct Battleship
-   Demo </index.php/OMAP_Wireless_Connectivity_Battleship_Game_demo>`__
+   Demo <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Battleship_Game_demo>`__
 
 .. rubric:: Miscellaneous WLAN Demos
    :name: miscellaneous-wlan-demos
 
 -  **`WLAN Code Descriptions and
-   Examples </index.php/OMAP35x_Wireless_Connectivity_Code_Descriptions_and_Examples>`__**
+   Examples <http://processors.wiki.ti.com/index.php/OMAP35x_Wireless_Connectivity_Code_Descriptions_and_Examples>`__**
 
 -  `Enabling Multiple WLAN Roles on the
-   WL127x </index.php/OMAP_Wireless_Connectivity_NLCP_Multi_Role_Configuration>`__
+   WL127x <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_NLCP_Multi_Role_Configuration>`__
 -  `How-to configure Ethernet to WLAN
-   Gateway </index.php/OMAP_Wireless_Connectivity_Ethernet_WLAN_Gateway>`__
+   Gateway <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Ethernet_WLAN_Gateway>`__
 -  `How-to configure Ethernet to WLAN
-   Bridge </index.php/OMAP_Wireless_Connectivity_Ethernet_WLAN_Bridge>`__
+   Bridge <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_Ethernet_WLAN_Bridge>`__
 
 | 
 
@@ -170,13 +170,13 @@ page for more instruction.
    :name: miscellaneous-demos
 
 -  `Setting Host CPU
-   clock </index.php/OMAP_Wireless_Connectivity_CPU_Clock_Setup#CPU_Clock>`__
+   clock <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_CPU_Clock_Setup#CPU_Clock>`__
 -  `AM37x Wlan Throughput
-   Measurement </index.php/OMAP_Wireless_Connectivity_AM37x_WLAN_Throughput_Measurement>`__
+   Measurement <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_AM37x_WLAN_Throughput_Measurement>`__
 -  `Suspend Resume
-   Operation </index.php/Open_Source_Wireless_Connectivity_Guide#Suspend_Resume>`__
+   Operation <http://processors.wiki.ti.com/index.php/Open_Source_Wireless_Connectivity_Guide#Suspend_Resume>`__
 -  `How to work with A
-   band </index.php/OMAP_Wireless_Connectivity_A_band_support>`__
+   band <http://processors.wiki.ti.com/index.php/OMAP_Wireless_Connectivity_A_band_support>`__
 
 .. rubric:: Regulatory Domain
    :name: regulatory-domain

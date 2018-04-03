@@ -23,7 +23,7 @@ CCSv5 supports run mode debug (a.k.a. remote GDB debug, agent-based
 debug, application debug)and stop mode debug (a.k.a. JTAG debug,
 low-level debug). For Linux aware debug support (an extension of the
 stop mode debug), please read the section `Linux Aware
-Debug </index.php/Linux_Debug_in_CCSv5#Linux_Aware_Debug>`__ below.
+Debug <http://processors.wiki.ti.com/index.php/Linux_Debug_in_CCSv5#Linux_Aware_Debug>`__ below.
 
 -  In run mode debug, the user can debug one or more Linux processes. On
    the host side, CCSv5 launches a cross platform GDB debugger to
@@ -33,16 +33,16 @@ Debug </index.php/Linux_Debug_in_CCSv5#Linux_Aware_Debug>`__ below.
    The Linux kernel remains active during the debug session. The user
    can only examine the state of the processes being debugged.
 -  In the stop mode debug, CCSv5 halts the target using a `JTAG
-   emulator </index.php/Emulation>`__. The Linux kernel and all
+   emulator <http://processors.wiki.ti.com/index.php/Emulation>`__. The Linux kernel and all
    processes are suspended completely. The user can examine the state of
    the target and the execution state of the current process.
 
 **IMPORTANT!** This page refers to CCS version 6.0.0 and newer.
 
 -  For CCSv5.1.x - CCSv5.5.x check `this
-   page </index.php/Linux_Debug_in_CCSv5>`__
+   page <http://processors.wiki.ti.com/index.php/Linux_Debug_in_CCSv5>`__
 -  For CCSv5.0.x check `this
-   page </index.php/Linux_Debug_in_CCSv5_0>`__.
+   page <http://processors.wiki.ti.com/index.php/Linux_Debug_in_CCSv5_0>`__.
 
 .. rubric:: Run Mode Debug
    :name: run-mode-debug
@@ -61,7 +61,7 @@ The following dependencies apply to Run Mode Debug:
    debugger located on the host (typically part of a SDK package like
    EZSDK, DVSDK, etc.)
 -  A GCC project (see `How to create GCC projects in
-   CCSv5 </index.php/How_to_create_GCC_projects_in_CCSv5>`__).
+   CCSv5 <http://processors.wiki.ti.com/index.php/How_to_create_GCC_projects_in_CCSv5>`__).
 
    The run mode debug requires two connections to the target system:
    **1.** One connection to the target console is used to execute Linux
@@ -71,7 +71,7 @@ The following dependencies apply to Run Mode Debug:
    like Beagleboard and Pandaboard), this connection can be done using a
    simple terminal program like Hyperterminal, Putty, TeraTerm or even a
    `CCSv5 terminal
-   plug-in </index.php/How_to_install_the_terminal_plugin_in_CCSv5>`__.
+   plug-in <http://processors.wiki.ti.com/index.php/How_to_install_the_terminal_plugin_in_CCSv5>`__.
 -  If using Ethernet, this connection must be done using one of the
    programs above and configuring it for telnet or SSH. Keep in mind
    that the linux running on the target board requires a telnet or SSH
@@ -324,9 +324,9 @@ your emulator and board must be ready.
 
 In this example a Beaglebone (AM3359) was used, together with the Sitara
 support package available at the `CCS download
-page </index.php/Download_CCS>`__.
+page <http://processors.wiki.ti.com/index.php/Download_CCS>`__.
 **Note:** check the `Getting Started
-Guide </index.php/GSG:Debugging_projects_v5#Creating_a_Target_Configuration_File>`__
+Guide <http://processors.wiki.ti.com/index.php/GSG:Debugging_projects_v5#Creating_a_Target_Configuration_File>`__
 to learn how to create one.
 **Important!** When debugging a target running any High-level OS (Linux,
 WinCE, Android, etc.) or its support/initialization routines (u-boot,
@@ -335,7 +335,7 @@ configuration (.ccxml) for device and peripheral initializations that
 will disrupt your environment. Details on how to add/remove GEL files
 are shown in the section *Advanced target configurations* --> *Adding
 GEL files to a target configuration* of the `CCSv5 Getting Started
-Guide </index.php/CCSv5_Getting_Started_Guide>`__.
+Guide <http://processors.wiki.ti.com/index.php/CCSv5_Getting_Started_Guide>`__.
 
 1. Select menu *Run* --> *Debug Configurations*
 2. Select *Code Composer Studio - Device Debugging* and click on the

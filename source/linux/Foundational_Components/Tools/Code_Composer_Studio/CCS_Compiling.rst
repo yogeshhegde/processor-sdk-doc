@@ -25,7 +25,7 @@ setup steps required before you attempt to install and run CCS.
       sharing capabilities
 
 See this link to meet the above requirements:
-`Sitara\_Linux\_SDK\_Getting\_Started\_Guide#Start\_your\_Linux\_Development </index.php/Sitara_Linux_SDK_Getting_Started_Guide#Start_your_Linux_Development>`__
+`Sitara\_Linux\_SDK\_Getting\_Started\_Guide#Start\_your\_Linux\_Development <Overview.html#start-your-linux-development>`__
 
 .. rubric:: Building Qt Applications
    :name: building-qt-applications
@@ -36,7 +36,7 @@ applications isn't recommended. QT Creator is the official IDE designed
 to be used when developing or debugging Qt applications.Please reference
 to the following link for further information on all the basic to
 download, install, run, and debug QT applications: `Hands on with
-Qt </index.php/Sitara_Linux_Training:_Hands_on_with_QT>`__
+Qt <Examples_and_Demos.html#hands-on-with-qt>`__
 
 | 
 
@@ -188,7 +188,7 @@ file system:
    system
 -  Using Code Composer Studio to automatically copy the executable to
    the target evm using `Remote System
-   Explorer </index.php/Sitara_Linux_SDK_CCS_Remote_Explorer_Setup>`__
+   Explorer <Foundational_Components.html#remote-explorer-setup-with-ccs>`__
 
 | 
 
@@ -201,7 +201,7 @@ remote shell and remote terminal views within CCS. It also provides a
 way for Code Composer Studio to automatically copy and run or debug an
 executable using a single button. Refer to `How to Setup and Use Remote
 System
-Explorer </index.php/Sitara_Linux_SDK_CCS_Remote_Explorer_Setup>`__ to
+Explorer <Foundational_Components.html#remote-explorer-setup-with-ccs>`__ to
 learn how to use this feature.
 
 | 
@@ -214,6 +214,6 @@ you first need to configure your project to use gdb and gdbserver
 included within the SDK.
 
 Please refer to `Debugging using GDB with Code Composer
-Studio </index.php/Sitara_Linux_SDK_CCS_GDB_Setup>`__ for more
+Studio <Foundational_Components.html#gdb-setup-with-ccs>`__ for more
 information.
 
