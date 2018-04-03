@@ -7,23 +7,23 @@ OpenCV
 .. rubric:: Introduction
    :name: introduction-opencv
 
-| `OpenCV <http://opencv.org/>`__ (Open Source Computer Vision Library)
-  is an open-source BSD-licensed library that includes several hundreds
-  of computer vision algorithms. It is designed for computational
-  efficiency with strong focus on real-time application.
+`OpenCV <http://opencv.org/>`__ (Open Source Computer Vision Library)
+is an open-source BSD-licensed library that includes several hundreds
+of computer vision algorithms. It is designed for computational
+efficiency with strong focus on real-time application.
 
-| The OpenCV 3.1 release provides a transparent API that allows seamless
-  offloads of OpenCL kernels when a supported accelerator is available.
-  Documentation, tutorials and examples of how to use OpenCV 3.1 are
-  available `here <http://docs.opencv.org/3.1.0/#gsc.tab=0>`__.
+The OpenCV 3.1 release provides a transparent API that allows seamless
+offloads of OpenCL kernels when a supported accelerator is available.
+Documentation, tutorials and examples of how to use OpenCV 3.1 are
+available `here <http://docs.opencv.org/3.1.0/#gsc.tab=0>`__.
 
-| 
-| This document outlines the specifics of how to test OpenCV that has
-  been released within Processor SDK. This release is based off OpenCV
-  3.1.
 
-| 
-| OpenCV implementation is available for the following TI devices:
+This document outlines the specifics of how to test OpenCV that has
+been released within Processor SDK. This release is based off OpenCV
+3.1.
+
+
+OpenCV implementation is available for the following TI devices:
 
 -  AM335X
 -  AM437X
@@ -52,9 +52,9 @@ of TI’s OpenCV implementation.
 .. rubric:: OpenCV Modules Supported By TI
    :name: opencv-modules-supported-by-ti
 
-| 
-| Table 1 lists the modules of OpenCV and indicates which modules are
-  supported by Processor SDK for K2H family and AM57X family.
+ 
+Table 1 lists the modules of OpenCV and indicates which modules are
+supported by Processor SDK for K2H family and AM57X family.
 
 +------------------+---------------------+------------------------+-------------------+
 | Module Name      | K2 Family Support   | AM57x Family Support   | Comments          |
@@ -106,10 +106,6 @@ of TI’s OpenCV implementation.
 
 | 
 
-| 
-
-| 
-
 .. rubric:: OpenCL offload
    :name: opencl-offload
 
@@ -140,19 +136,20 @@ AM57:ACCELERATOR:TI Multicore C66 DSP'
 If this environment variable is not defined properly then OpenCV will
 not initialize OpenCL and the OpenCL support is disabled.
 
-| Further, the library user can enable/disable OpenCL at runtime (at
-  higher granularity, e.g. to let only part of program to do OpenCL
-  offload) using ocl::setUseOpenCL(true) or ocl::setUseOpenCL(false)
-  routines.
+Further, the library user can enable/disable OpenCL at runtime (at
+higher granularity, e.g. to let only part of program to do OpenCL
+offload) using ocl::setUseOpenCL(true) or ocl::setUseOpenCL(false)
+routines.
 
 More OpenCL specific environment variables can affect the behavior.
 Please refer to:
 http://downloads.ti.com/mctools/esd/docs/opencl/environment_variables.html
 
-**Note: The script setupEnv.sh, part of the SDK release (in
-/usr/share/OpenCV/titestsuite), defines the appropriate environment
-variables OPENCV\_OPENCL\_DEVICE as well as other environment variables
-that are needed for the unit tests.**
+.. note::
+   The script setupEnv.sh, part of the SDK release (in
+   /usr/share/OpenCV/titestsuite), defines the appropriate environment
+   variables OPENCV\_OPENCL\_DEVICE as well as other environment variables
+   that are needed for the unit tests.**
 
 Figure 1 shows the decision tree the transparent API executes to
 determine if the computations will be offloaded to the accelerator
@@ -286,29 +283,24 @@ Here is an example:
        return 0;
      }
 
-| 
-
-| 
-
 .. rubric:: Unit Tests
    :name: unit-tests
 
-| Each function inthe OpenCV implementation has a unit test associate
-  with the function.
-| The following instructions show how to load and run unit tests of TI’s
-  OpenCV implementation.
-| The screen shots and device dependent instructions in this document
-  are from AM57X build and run and can be used as a reference for build
-  and run OpenCV test for any other TI devices from the above list
+Each function inthe OpenCV implementation has a unit test associate
+with the function.
+The following instructions show how to load and run unit tests of TI’s
+OpenCV implementation.
+The screen shots and device dependent instructions in this document
+are from AM57X build and run and can be used as a reference for build
+and run OpenCV test for any other TI devices from the above list
 
 .. rubric:: Unit Tests Prerequisites
    :name: unit-tests-prerequisites
 
-| **
-  ** OpenCV function unit test can run on any of TI devices that were
-  mentioned above. This document describes how to run the unit test on
-  AM57X family of TI devices. The screen shots were taken from a
-  Tera-terminal connected to AM5728 EVM.
+OpenCV function unit test can run on any of TI devices that were
+mentioned above. This document describes how to run the unit test on
+AM57X family of TI devices. The screen shots were taken from a
+Tera-terminal connected to AM5728 EVM.
 
 .. rubric:: Prerequisites
    :name: prerequisites
@@ -327,8 +319,8 @@ Here is an example:
 .. rubric:: Loading SDK and Standard Test Data
    :name: loading-sdk-and-standard-test-data
 
-| 
-| Processor SDK is available from the following locations
+
+Processor SDK is available from the following locations
 
 ::
 
@@ -353,8 +345,7 @@ from
 .. rubric:: Procedure to Get the Test Data
    :name: procedure-to-get-the-test-data
 
-| 
-| There are multiple ways to download the data into the EVM
+There are multiple ways to download the data into the EVM
 
 ::
 
@@ -363,19 +354,20 @@ from
        Otherwise download the data compressed file to a PC on the network and 
        use SCP or tftp or USB memory stick to move the data compressed file into the EVM. 
 
-| 
-| The following screen shots show how to download the standard data
-  compressed file into the EVM and unzip it. It assumes that there is a
-  TFTP master server, for example Solarwinds or similar, and that the
-  file opencv\_extra-master.zip was downloaded from
-  https://github.com/Itseez/opencv_extra/archive/master.zip and resides
-  in the root directory of the TFTP server. The beginning of the unzip
-  process and the end of the unzip process are shown in the screen shots
-  as well.
-| The TFTP command is tftp -g -r opencv\_extra-master.zip
-  xxx.xxx.xxx.xxx where xxx.xxx.xxx.xxx stands for the IP address of the
-  TFTP server. Note that the process takes few minutes because the file
-  is very large. (More than 600MB)
+ 
+The following screen shots show how to download the standard data
+compressed file into the EVM and unzip it. It assumes that there is a
+TFTP master server, for example Solarwinds or similar, and that the
+file opencv\_extra-master.zip was downloaded from
+https://github.com/Itseez/opencv_extra/archive/master.zip and resides
+in the root directory of the TFTP server. The beginning of the unzip
+process and the end of the unzip process are shown in the screen shots
+as well.
+
+The TFTP command is tftp -g -r opencv\_extra-master.zip
+xxx.xxx.xxx.xxx where xxx.xxx.xxx.xxx stands for the IP address of the
+TFTP server. Note that the process takes few minutes because the file
+is very large. (More than 600MB)
 
 .. Image:: ../images/UnzipMaster3.jpg
 
@@ -401,35 +393,32 @@ from
 
 | 
 
-| After unzip the file a new directory ***opencv\_extra-master*** is
-  generated. A sub-directory ***testdata*** should be moved up one
-  level.
+After unzip the file a new directory ***opencv\_extra-master*** is
+generated. A sub-directory ***testdata*** should be moved up one
+level.
 
-| From the OpenCV directory do the following: ***mv
-  opencv\_extra-master/testdata .*** . See the screen shot below.
+From the OpenCV directory do the following: ***mv
+opencv\_extra-master/testdata .*** . See the screen shot below.
 
 .. Image:: ../images/MoveTestdata.jpg
 
 .. rubric:: Environment Settings and Run the Tests
    :name: environment-settings-and-run-the-tests
 
-| 
-| The script setupEnv.sh in directory /usr/share/OpenCV/titestsuite sets
-  the environment variables that are needed for the unit tests.
+ 
+The script setupEnv.sh in directory /usr/share/OpenCV/titestsuite sets
+the environment variables that are needed for the unit tests.
 
-| From the OpenCV directory do the following: ***cd titestsuit*** and
-  then ***source setupEnv.sh*** . See the screen shot below.
-
+From the OpenCV directory do the following: ***cd titestsuit*** and
+then ***source setupEnv.sh*** . See the screen shot below.
  
 .. Image:: ../images/Environment1.jpg
 
-| The script runtests run all the unit tests. From the titestsuit
-  directory do ***./runtests*** . The unit tests starts executing. The
-  screen will show the following:
+The script runtests run all the unit tests. From the titestsuit
+directory do ***./runtests*** . The unit tests starts executing. The
+screen will show the following:
 
 .. Image:: ../images/RunTests1.jpg
-
-| **Notes:**
 
 #. Currently the last three tests in the script (videoio) do not run on
    AM57X. The script will stuck after about 90 minutes. The user can
@@ -770,11 +759,11 @@ are applicable in OpenCL C:
 ::
 
            ...
-          /* Convert from 8bpp to 16bpp so we can do SIMD of rows */
-          r0_2 = _dmpyu4(as_uchar8(r0), as_uchar8(mask1_8));  /* 8-way unsigned 8-bit X 8-bit multiplication */
+          /* Convert from 8bpp to 16bpp so we can do SIMD of rows \*/
+          r0_2 = _dmpyu4(as_uchar8(r0), as_uchar8(mask1_8));  /* 8-way unsigned 8-bit X 8-bit multiplication \*/
           r1_2 = _dmpyu4(as_uchar8(r1), as_uchar8(mask2_8));
           r2_2 = _dmpyu4(as_uchar8(r2), as_uchar8(mask1_8));
-          /* Add rows 0+1, column-wise */
+          /* Add rows 0+1, column-wise \*/
           r01_lo = _dadd2(as_long(r0_2.s0123), as_long(r1_2.s0123));
           r01_hi = _dadd2(as_long(r0_2.s4567), as_long(r1_2.s4567));
           ...
@@ -813,7 +802,7 @@ gauss.cl, sobel.cl, thresh.cl.
 
      for(i = 0; i < (LINES_CACHED + 1); i ++)
     {
-      memset ((void *)img_lines[i], 0, MAX_LINE_SIZE);
+      memset ((void \*)img_lines[i], 0, MAX_LINE_SIZE);
     }
 
 -  Partitioning data between DSP cores
@@ -821,23 +810,23 @@ gauss.cl, sobel.cl, thresh.cl.
 ::
 
      ...
-    int   gid   = get_global_id(0);  /* Identify DSP core: gid is set to 0 for 1st DSP core, and 1 for 2nd DSP core */
+    int   gid   = get_global_id(0);  /* Identify DSP core: gid is set to 0 for 1st DSP core, and 1 for 2nd DSP core \*/
     ...
 
 ::
 
      if(gid == 0)
-    { /* Upper half of image */
+    { /* Upper half of image \*/
       for(i = 1; i < LINES_CACHED; i ++)
-      { /* Use this, one time multiple 1D1D transfers, instead of one linked transfer, to allow for fast EDMA later */
-        EdmaMgr_copy1D1D(evIN, (void *)(srcptr + (rows - 1 + i) * cols), (void *)(img_lines[i]), cols);
+      { /* Use this, one time multiple 1D1D transfers, instead of one linked transfer, to allow for fast EDMA later \*/
+        EdmaMgr_copy1D1D(evIN, (void \*)(srcptr + (rows - 1 + i) * cols), (void \*)(img_lines[i]), cols);
       }
       fetch_rd_idx = cols;
     } else if(gid == 1)
-    { /* Bottom half of image */
+    { /* Bottom half of image \*/
       for(i = 0; i < LINES_CACHED; i ++)
-      { /* Use this, one time multiple 1D1D transfers, instead of one linked transfer, to allow for fast EDMA later */
-        EdmaMgr_copy1D1D(evIN, (void *)(srcptr + (rows - 1 + i) * cols), (void *)(img_lines[i]), cols);
+      { /* Use this, one time multiple 1D1D transfers, instead of one linked transfer, to allow for fast EDMA later \*/
+        EdmaMgr_copy1D1D(evIN, (void \*)(srcptr + (rows - 1 + i) * cols), (void \*)(img_lines[i]), cols);
       }
       fetch_rd_idx = (rows + 1) * cols;
       dest_ptr += rows * cols;
@@ -854,7 +843,7 @@ gauss.cl, sobel.cl, thresh.cl.
       rd_idx  = start_rd_idx;
       for(kk = 0; kk < LINES_CACHED; kk ++)
       {
-        y_ptr[kk] = (uchar *)img_lines[rd_idx];
+        y_ptr[kk] = (uchar \*)img_lines[rd_idx];
         rd_idx = (rd_idx + 1) & LINES_CACHED;
       }
       start_rd_idx = (start_rd_idx + 1) & LINES_CACHED;
@@ -865,7 +854,7 @@ gauss.cl, sobel.cl, thresh.cl.
       ycurr_ptr = y_ptr[1];
       ynext_ptr = y_ptr[2];
       ...
-      /* Access L2 data directly using yprev_ptr, ycurr_ptr, ynext_ptr... */
+      /* Access L2 data directly using yprev_ptr, ycurr_ptr, ynext_ptr... \*/
 
 .. rubric:: Additional information about C66 specific optimizations
    :name: additional-information-about-c66-specific-optimizations
@@ -985,12 +974,6 @@ DSP/ARM
 2.3x
 | 
 
-| 
-
-| 
-
-| 
-
 .. rubric:: **Single channel, 1920x1080. barcode ROI detection use
    case**
    :name: single-channel-1920x1080.-barcode-roi-detection-use-case
@@ -1039,14 +1022,6 @@ DSP/ARM
 1.8x
 | 
 
-| 
-
-| 
-
-| 
-
-| 
-
 .. rubric:: **Single channel, 720x576, Gesture recognition use case**
    :name: single-channel-720x576-gesture-recognition-use-case
 
@@ -1076,8 +1051,6 @@ DSP/ARM
 0.7x
 | 
 
-| 
-
 .. rubric:: Alternative approach to add new OpenCL kernels at OpenCV
    application level
    :name: alternative-approach-to-add-new-opencl-kernels-at-opencv-application-level
@@ -1090,15 +1063,7 @@ and reduced build time (only top level application and specific kernels
 need to be recompiled instead of doing Yocto builds). Building the
 application (below example is executed on target) is straightforward:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="bash source-bash">
-
-.. code:: de1
+.. code-block:: c
 
     g++ -I/usr/local/include/opencv -I/usr/local/include/opencv2 -g -c  cvclapp-direct.cpp
     g++ -I/usr/local/include/opencv -I/usr/local/include/opencv2 -L/usr/local/lib/ -g -o cvclapp \
@@ -1116,14 +1081,6 @@ application (below example is executed on target) is straightforward:
          -lopencv_imgcodecs \
          -lOpenCL -locl_util
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 Below two sections show how OpenCL kernels can be dispatched from OpenCV
 application in two different ways.
 
@@ -1135,15 +1092,7 @@ OpenCV host side code, using OpenCV classes (defined in
 modules/core/src/ocl.cpp) to load and dispatch OpenCL kernels (online
 compilation).
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="cpp source-cpp">
-
-.. code:: de1
+.. code-block:: c
 
     #define __CL_ENABLE_EXCEPTIONS
     #include <CL/cl.hpp>
@@ -1213,26 +1162,10 @@ compilation).
         return 1;
     }
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 This is kernel\_inv.cl file with OpenCL kernels (executed on DSP). It is
 loaded and compiled by above host program.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="cpp source-cpp">
-
-.. code:: de1
+.. code-block:: c
 
     __kernel void invert_img(__global uchar* src, int src_step, int src_offset, 
                              __global uchar* dst, int dst_step, int dst_offset, 
@@ -1249,14 +1182,6 @@ loaded and compiled by above host program.
     #endif
     }
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 | 
 
 .. rubric:: OpenCL kernel dispatch from OpenCV application, using
@@ -1269,15 +1194,7 @@ buffer copy. For more information refer to
 http://downloads.ti.com/mctools/esd/docs/opencl/memory/host-malloc-extension.html
 .
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="cpp source-cpp">
-
-.. code:: de1
+.. code-block:: c
 
     #define __CL_ENABLE_EXCEPTIONS
     #include <CL/cl.hpp>
@@ -1365,40 +1282,16 @@ http://downloads.ti.com/mctools/esd/docs/opencl/memory/host-malloc-extension.htm
         //===============================================================
     }
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 This is kernel\_direct.cl OpenCL C file. Kernel maskVector is loaded,
 compiled and disptache by above host program
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="cpp source-cpp">
-
-.. code:: de1
+.. code-block:: c
 
     kernel void maskVector(global const uchar4* a, global uchar4* b)
     {
         int id = get_global_id(0);
         b[id] = a[id] & (uchar4)(127, 127, 127, 127);
     }
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: OpenCV profiling - standard procedure
    :name: opencv-profiling---standard-procedure

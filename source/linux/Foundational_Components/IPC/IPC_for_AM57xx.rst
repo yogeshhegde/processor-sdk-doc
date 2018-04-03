@@ -30,8 +30,9 @@ Prerequisites
    Studio <http://processors.wiki.ti.com/index.php/Download_CCS>`__
    (choose version as specified on Proc SDK download page)
 
-| |Note|\ **Note:** Please be sure that you have the same version number
-  for both Processor SDK RTOS and Linux.
+.. note::
+   Please be sure that you have the same version number
+   for both Processor SDK RTOS and Linux.
 
 For reference within the context of this wiki page, the Linux SDK is
 installed at the following location:
@@ -119,39 +120,11 @@ the remotecores(DSP's and M4's) run a RTOS. In the normal operation,
 boot loader(U-Boot/SPL) boots and loads the A15 with the HLOS. The A15
 boots the DSP and the M4 cores.
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:513px;">
-
-|image1|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-caption Normal Boot Flow
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+.. Image:: ../images/Normal-boot.png
 
 In this sequence, the interval between the Power on Reset and the
 remotecores (i.e. the DSP's and the M4's) executing is dependent on the
 HLOS initialization time.
-
-| 
 
 | 
 
@@ -775,10 +748,11 @@ The 0x4a040002 shows us that it is a Supersection with base address
 afterward. That's a requirement of the MMU. Here's an excerpt from the
 TRM:
 
-|Note|\ **Note:** Supersection descriptors must be repeated 16 times,
-because each descriptor in the first level translation table describes 1
-MiB of memory. If an access points to a descriptor that is not
-initialized, the MMU will behave in an unpredictable way.
+.. note::
+   Supersection descriptors must be repeated 16 times,
+   because each descriptor in the first level translation table describes 1
+   MiB of memory. If an access points to a descriptor that is not
+   initialized, the MMU will behave in an unpredictable way.
 
 | 
 
@@ -823,8 +797,9 @@ Linux dts file.** For example for the AM57xx EVM:
 | You are able to change both the size and location. **Be careful not to
   overlap any other carveouts!**
 
-| |Note|\ **Note:** The **two** location entries for a given carveout
-  must be identical!
+.. note::
+   The **two** location entries for a given carveout
+   must be identical!
 
 | Additionally, when you change the carveout location, there is a
   corresponding change that must be made to the resource table. For
