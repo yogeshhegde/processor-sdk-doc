@@ -971,7 +971,7 @@ $TI\_SDK\_PATH/board-support/extra-drivers/jailhouse-0.7/configs
 directory. Use the compiled am57xx-pdk-leddiag.cell file when you create
 the cell for led\_test.bin inmate.
 
-See `Running the Demo <#running-the-demo>`__ to run the inmate.
+See `Running the Demo on AM572x-EVM <#running-the-demo-on-am572x-evm>`__ or `Running the Demo on AM572x-IDK <#running-the-demo-on-am572x-idk>`__ to run the inmate.
 
 The **memcp\_bm** is very similar to led\_test. It is built in the same
 way as the led\_test. Use the am57xx-bm.cell file from
