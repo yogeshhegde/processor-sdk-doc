@@ -4,14 +4,23 @@ Migration Guide
 .. rubric:: Overview
    :name: overview
 
-| This page covers migration information for applications built on top
-  of the Processor SDK for Android.
+This page covers migration information for applications built on top
+of the Processor SDK for Android.
 
-.. rubric:: Processor SDK Linux 04.02.00
-   :name: processor-sdk-linux-04.02.00
+.. rubric:: Processor SDK Android 04.03.00
+   :name: processor-sdk-android-04.03.00
+
+-  This is a maintenance update release of Processor SDK Android for AM57xx
+   with Oreo. More details about Oreo can be obtained from
+   `here <https://developer.android.com/about/versions/oreo/index.html>`__
+
+|
+
+.. rubric:: Processor SDK Android 04.02.00
+   :name: processor-sdk-android-04.02.00
 
 -  This is the first release of the Processor SDK Android for AM57xx
-   with Oreo. Both U-Boot and Linux Kernel are the same LTS as prior
+   with Oreo. Both U-Boot and Android Kernel are the same LTS as prior
    Processor SDK releases, i.e. 2016.05 and 4.4 respectively.
 -  More details about Oreo can be obtained from
    `here <https://developer.android.com/about/versions/oreo/index.html>`__
@@ -21,7 +30,7 @@ Migration Guide
 
 | 
 
-.. rubric:: Processor SDK Linux 04.01.00
+.. rubric:: Processor SDK Android 04.01.00
    :name: processor-sdk-linux-04.01.00
 
 -  This is the final release of the Processor SDK Android for AM57xx
@@ -32,7 +41,7 @@ Migration Guide
 
 | 
 
-.. rubric:: Processor SDK Linux 04.00.00
+.. rubric:: Processor SDK Android 04.00.00
    :name: processor-sdk-linux-04.00.00
 
 -  This is the first release of the Processor SDK Android which supports
@@ -42,6 +51,4 @@ Migration Guide
    list of modifications.
 
 | 
-
-.. raw:: html
 

@@ -23,12 +23,12 @@ execution of Android based applications and includes the following:
 Licensing
 =============================
 
-| Please refer to the software manifest, which outlines the licensing
-  status for all packages included in this release. The manifest can be
-  found on the SDK download page. The manifest can be found on the SDK
-  download page or in the installed directory as indicated below. In
-  addition, see `Processor SDK Android GPLv3
-  Disclaimer <Licenses.html#gplv3-disclaimer>`__
+Please refer to the software manifest, which outlines the licensing
+status for all packages included in this release. The manifest can be
+found on the SDK download page. The manifest can be found on the SDK
+download page or in the installed directory as indicated below. In
+addition, see `Processor SDK Android GPLv3
+Disclaimer <Licenses.html#gplv3-disclaimer>`__
 
 |
 
@@ -60,13 +60,11 @@ Release 04.03.00
 
 | Released March 2018
 
-|
-
 .. rubric:: What's New
    :name: whats-new
 
-| This is an "O-Pastry" based release of Processor SDK Android
-  for AM57x.
+This is an "O-Pastry" based release of Processor SDK Android
+for AM57x.
 
 |
 
@@ -117,9 +115,9 @@ Following new features are enabled/tested in this release:
 Supported Platforms
 =========================
 
-| See
-  `Processor\_SDK\_Supported\_Platforms\_and\_Versions <Release_Specific.html#supported-platforms-and-versions>`__
-  for a list of supported platforms and links to more information.
+See
+`Processor\_SDK\_Supported\_Platforms\_and\_Versions <Release_Specific.html#supported-platforms-and-versions>`__
+for a list of supported platforms and links to more information.
 
 | 
 
@@ -170,10 +168,10 @@ Known Issues
 .. rubric:: Installation and Usage
    :name: installation-and-usage
 
-| The `Software Developer's
-  Guide <index.html>`__
-  provides instructions on how to setup up your Android development
-  environment, install the SDK and start your development.
+The `Software Developer's
+Guide <index.html>`__
+provides instructions on how to setup up your Android development
+environment, install the SDK and start your development.
 
 |
 
@@ -182,19 +180,8 @@ Known Issues
 
 The Processor SDK is developed, built and verified on Ubuntu 14.04.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Processor SDK Installer is 64-bit, and installs only on 64-bit host
-machine. Support for 32-bit host is dropped as Linaro toolchain is
-available only for 64-bit machines
-
-.. raw:: html
-
-   </div>
-
-|
+.. note::
+   Processor SDK Installer is 64-bit, and installs only on 64-bit host
+   machine. Support for 32-bit host is dropped as Linaro toolchain is
+   available only for 64-bit machines
 
