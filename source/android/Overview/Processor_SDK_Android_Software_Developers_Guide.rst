@@ -8,12 +8,12 @@ Processor SDK Android Software Developers Guide
 
 Thank you for choosing to evaluate one of our TI Processors `ARM
 microprocessors <http://www.ti.com/lsds/ti/dsp/arm.page>`__. Please
-*bookmark* this page and refer back to it as needed. It is designed to
+bookmark this page and refer back to it as needed. It is designed to
 quickly provide the information you need most while evaluating a TI
 microprocessor, specifically running one of the Software Architectures
 available, embedded Android. We are always striving to improve this
-product.  Please let us know if you have `**ideas or
-suggestions** <Overview.html#feedback>`__\ **.  **
+product.  Please let us know if you have `ideas or
+suggestions <Overview.html#feedback>`__.
 
 .. rubric:: Version
    :name: version
@@ -55,6 +55,4 @@ This information covers Processor SDK Android 4.0.0 and above.
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the `Sitara E2E
 Forum <http://e2e.ti.com/support/arm/sitara_arm/f/791.aspx>`__.
-
-.. raw:: html
 

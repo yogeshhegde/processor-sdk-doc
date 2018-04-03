@@ -5,35 +5,35 @@ Processor SDK Android Getting Started Guide
 .. rubric:: Welcome to the Android Getting Started Guide
    :name: welcome-to-the-android-getting-started-guide
 
-| Thanks for your interest in learning more about the Android Software
-  Development Kit (SDK). The SDK as we affectionately call it is our
-  attempt to provide a great starting point to develop an embedded
-  system on a TI Processor running Android. Given this goal, we wanted
-  to provide something that is more than just a typical Board Support
-  Package (BSP) containing a bootloader, Linux kernel, and Android
-  filesystem. While these are certainly necessary elements, we feel they
-  are just a starting point, especially for those that aren’t experts in
-  developing with Android. So, the SDK also contains tools for
-  developing on TI Processors (a validated cross-compiling toolchain,
-  for example), pre-built libraries that you can use without having to
-  rebuild them yourself, and some documentation to help explain how all
-  of these pieces work together. We package all of this together with a
-  working Android Embedded System that has been built with all of the
-  things mentioned above.
+Thanks for your interest in learning more about the Android Software
+Development Kit (SDK). The SDK as we affectionately call it is our
+attempt to provide a great starting point to develop an embedded
+system on a TI Processor running Android. Given this goal, we wanted
+to provide something that is more than just a typical Board Support
+Package (BSP) containing a bootloader, Linux kernel, and Android
+filesystem. While these are certainly necessary elements, we feel they
+are just a starting point, especially for those that aren’t experts in
+developing with Android. So, the SDK also contains tools for
+developing on TI Processors (a validated cross-compiling toolchain,
+for example), pre-built libraries that you can use without having to
+rebuild them yourself, and some documentation to help explain how all
+of these pieces work together. We package all of this together with a
+working Android Embedded System that has been built with all of the
+things mentioned above.
 
-| What it really serves as is a “known good” starting point. One of the
-  big challenges with starting development on a new platform (not to
-  mention, a new Operating System (OS) for many), is getting an
-  environment set up where you can build and debug code on hardware. The
-  SDK attacks this problem with providing everything you need to do
-  development, and it is validated on standard `TI hardware platforms
-  (EVMs) <Release_Specific.html#supported-platforms-and-versions>`__.
-  It wraps all of this up into one simple installer that helps get
-  everything you need in the right place to do development. For example,
-  you can start off with simply re-building the Android Embedded System
-  that we provide to validate that everything is working on your system.
-  This simple step gives you confidence that you can move forward from a
-  good baseline.
+What it really serves as is a “known good” starting point. One of the
+big challenges with starting development on a new platform (not to
+mention, a new Operating System (OS) for many), is getting an
+environment set up where you can build and debug code on hardware. The
+SDK attacks this problem with providing everything you need to do
+development, and it is validated on standard `TI hardware platforms
+(EVMs) <Release_Specific.html#supported-platforms-and-versions>`__.
+It wraps all of this up into one simple installer that helps get
+everything you need in the right place to do development. For example,
+you can start off with simply re-building the Android Embedded System
+that we provide to validate that everything is working on your system.
+This simple step gives you confidence that you can move forward from a
+good baseline.
 
 As you go along your development journey and have questions, there is
 documentation and support available to you. Make sure to save a pointer
@@ -93,15 +93,15 @@ platform <Release_Specific.html#supported-platforms-and-versions>`__.
 .. rubric:: Evaluating the SDK Embedded Android System
    :name: evaluating-the-sdk-embedded-android-system
 
-| If you’re a hands on person, reading documentation and looking at
-  presentations gets old fast. So, if you want to see an example of what
-  you can build with the SDK and actually hold it in your hands and play
-  with it (or show it to someone else that needs help understanding what
-  you want to do with it), with minimal effort, you can simply run the
-  SDK Embedded Android System on a `supported Hardware
-  platform <Release_Specific.html#supported-platforms-and-versions>`__.
-  This will allow you to poke and prod and interact. It’s a powerful way
-  to get the imagination active and engaged.
+If you’re a hands on person, reading documentation and looking at
+presentations gets old fast. So, if you want to see an example of what
+you can build with the SDK and actually hold it in your hands and play
+with it (or show it to someone else that needs help understanding what
+you want to do with it), with minimal effort, you can simply run the
+SDK Embedded Android System on a `supported Hardware
+platform <Release_Specific.html#supported-platforms-and-versions>`__.
+This will allow you to poke and prod and interact. It’s a powerful way
+to get the imagination active and engaged.
 
 If you’ve recently purchased a TI AM572x GP EVM or an AM57xx IDK, move
 on to the next step to install the SDK and boot your board using the
