@@ -18,7 +18,7 @@ needed.
 /home/sitara/QT\_Lab You can cut and paste section of code from this
 file rather than have to type them in. You can find a copy here, just
 right click and select "Save Target As": `File:QT
-Lab.tar.gz </index.php/File:QT_Lab.tar.gz>`__
+Lab.tar.gz <http://processors.wiki.ti.com/index.php/File:QT_Lab.tar.gz>`__
 
 **NOTE:** In this guide commands to be executed for each step will be
 marked in **BOLD**
