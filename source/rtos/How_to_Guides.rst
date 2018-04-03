@@ -11,11 +11,6 @@ Run IPC Examples on AM572x
 .. include:: How_to_Guides/Target/Run_IPC_Examples_on_AM572x.rst
 
 
-Modify Board Library UART Instance on AM335x
-==============================================
-`<http://www.ti.com/lit/an/sprac32/sprac32.pdf>`__
-
-
 Taking the C66x Out Of Reset with Linux Running on the ARM A15
 ===============================================================
 .. include:: How_to_Guides/Target/C66x_Reset_from_A15_Running_Linux.rst

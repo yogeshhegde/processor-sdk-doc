@@ -145,14 +145,14 @@ There are three main documents for Processor SDK RTOS:
    Provides information on setting up software and running basic
    examples/demonstrations bundled within the Processor SDK.
 -  `**Software Developer
-   Guide** </index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__:
+   Guide** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__:
    Provides information on features, functions, delivery package, and
    compile tools for the Processor SDK RTOS release. This guide also
    provides detailed information regarding software elements and
    software infrastructure to allow developers to start creating
    applications.
 -  `**Migration
-   Guide** </index.php/Processor_SDK_RTOS_Migration_Guide>`__: Provides
+   Guide** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Migration_Guide>`__: Provides
    migration information for applications built on top of the Processor
    SDK for RTOS.
 
@@ -171,7 +171,7 @@ below: :ref:`Processor SDK RTOS Setup with CCS <Processor-SDK-RTOS-Setup-CCS-lab
 
 |  **A common gotcha while setting up the build environment is
   compatibility with CCS version. Please refer to `Release
-  Notes </index.php/Processor_SDK_RTOS_Release_Notes>`__ for the
+  Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__ for the
   recommended version of CCS**
 
 | 
@@ -202,7 +202,7 @@ steps to follow:
 
 -  CCS auto-detects components only in C:\ti path. So you will need to
    add the custom path to discovery as described in `Setup
-   CCS </index.php/Processor_SDK_RTOS_Setup_CCS>`__.
+   CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__.
 -  Assuming CCS is installed in the default path, the process to set the
    custom SDK path while building the SDK is provided in :ref:`Install in
    Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
@@ -385,10 +385,10 @@ Windows or Linux host machine, as described in the two articles shown
 here:
 
 -  `**Create an SD card on Windows Host (AMx, K2G
-   only)** </index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
+   only)** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
 
 -  `**Create an SD card on Linux Host (AMx, K2G
-   only)** </index.php/Processor_SDK_RTOS_create_SD_card_script>`__
+   only)** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__
 
 .. rubric:: How can I restore the firmware on my EVM to factory
    settings?

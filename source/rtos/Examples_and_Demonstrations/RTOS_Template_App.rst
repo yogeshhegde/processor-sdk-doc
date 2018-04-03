@@ -111,7 +111,7 @@ To load and run Template Application:
    EVM hardware)
 #. Open CCS and launch target config file for the EVM (Refer to
    `Processor SDK RTOS Setup
-   CCS </index.php/Processor_SDK_RTOS_Setup_CCS>`__ for setting up CCS)
+   CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__ for setting up CCS)
 #. Connect to A15_0 core for AM572x ( A8 core for AM335x).
 #. Load executable by clicking("Run --> Load --> Load Program.). Click
    on Browse Project and select outfile under:

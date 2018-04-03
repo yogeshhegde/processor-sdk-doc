@@ -32,10 +32,6 @@ Boot
 .. _FC-Boot-label:
 .. include:: Boot.rst
 
-*****
-IPC
-*****
-.. include:: IPC.rst
 
 *****
 MPM
@@ -47,12 +43,6 @@ MPM
 OpenMP
 *******
 .. include:: Compute/OpenMP.rst
-
-
-***************
-Network
-***************
-.. include:: NDK.rst
 
 
 ***************
@@ -70,5 +60,6 @@ NWAL
 ***************
 Tools
 ***************
-.. include:: Tools.rst
+- `Processor SDK RTOS Tools <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Tools>`__
+
 

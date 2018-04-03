@@ -11,16 +11,16 @@ requires handle abstraction.
 .. rubric:: Modes of Operation
    :name: modes-of-operation
 
-| Following modes of operations are supported
-| **Input or Output**
-| Each gpio pin can be configured as either input: GPIO_CFG_INPUT or
-  output: GPIO_CFG_OUTPUT. If it is configured as an output then pin
-  level can be additionally configured
+Following modes of operations are supported
+**Input or Output**
+Each gpio pin can be configured as either input: GPIO_CFG_INPUT or
+output: GPIO_CFG_OUTPUT. If it is configured as an output then pin
+level can be additionally configured
 
-| **Interrupt support**
-| Each gpio pin can be configured to generate interrupts based on event
-  type GPIO_CFG_IN_INT_XXX configuration. To generate interrupt, gpio
-  pin has to be configured as input pin.
+**Interrupt support**
+Each gpio pin can be configured to generate interrupts based on event
+type GPIO_CFG_IN_INT_XXX configuration. To generate interrupt, gpio
+pin has to be configured as input pin.
 
 .. rubric:: Driver Configuration
    :name: driver-configuration
@@ -33,16 +33,16 @@ required before calling any driver APIs. By default Board_Init() API
 available under board module supports all initialization sequence for TI
 supported EVMs. In addition it initializes UART instance for
 Console/STDIO. Refer `Processor SDK RTOS Board
-Support </index.php/Processor_SDK_RTOS_Board_Support>`__ for additional
+Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for additional
 details.
 
 .. rubric:: **GPIO Configuration Structure**\ 
    :name: gpio-configuration-structure
 
-| GPIO_soc.c binds driver with hardware attributes on the board.
-  Hardware attributes includes base address, interrupt number etc. GPIO
-  pin behavior can be configured statically, or alternatively
-  dynamically during runtime.
+GPIO_soc.c binds driver with hardware attributes on the board.
+Hardware attributes includes base address, interrupt number etc. GPIO
+pin behavior can be configured statically, or alternatively
+dynamically during runtime.
 
 GPIO_init () API triggers all static configuration information available
 through hardware attributes. Once initialization is complete additional
@@ -51,7 +51,7 @@ APIs can be used to configure and access pins.
 .. rubric:: **APIs**
    :name: apis
 
-| API reference for Application:
+API reference for Application:
 
 ::
 
@@ -76,48 +76,45 @@ LED toggling
 .. rubric:: Examples
    :name: examples
 
-| Refer SDK Release Note for GPIO support across different EVMs.
+Refer SDK Release Note for GPIO support across different EVMs.
 
-+-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
-+=======================+=======================+=======================+
-| GPIO_LedBlink         | | Simple example      | | Following LED       |
-|                       |   demonstrating LED   |   blinks based on EVM |
-|                       |   Toggling            |   being used.         |
-|                       |                       |                       |
-|                       |                       | | **AM335x            |
-|                       |                       |   ICEv2**:            |
-|                       |                       |   USER  LED 1         |
-|                       |                       |                       |
-|                       |                       | | **AM437x            |
-|                       |                       |   EVM**:              |
-|                       |                       |   USER  LED 1         |
-|                       |                       |                       |
-|                       |                       | | **AM572x IDK** :    |
-|                       |                       |   STATUS LED 1 Yellow |
-|                       |                       | | **AM572x GP         |
-|                       |                       |   EVM** :   USER LED  |
-|                       |                       |   1                   |
-|                       |                       | | **AM574x IDK** :    |
-|                       |                       |   STATUS LED 1 Yellow |
-|                       |                       | | **AM572x GP         |
-|                       |                       |   EVM** :   USER LED  |
-|                       |                       |   1                   |
-|                       |                       | | **AM571x IDK** :    |
-|                       |                       |   Industrial LED 3    |
-|                       |                       |   Red                 |
-|                       |                       |                       |
-|                       |                       | **K2H EVM:**          |
-|                       |                       |     USER LED 2 Blue   |
-|                       |                       |                       |
-|                       |                       | **K2E EVM:**          |
-|                       |                       |        USER LED 1     |
-|                       |                       | Blue                  |
-|                       |                       |                       |
-|                       |                       | **K2G EVM:**          |
-|                       |                       |        USER LED 1     |
-|                       |                       | Yellow                |
-+-----------------------+-----------------------+-----------------------+
++-------------------+-----------------------+-----------------------+
+|       Name        |      Description      |   Expected Results    |
++===================+=======================+=======================+
+| GPIO_LedBlink     | Simple example        | Following LED         |
+|                   | demonstrating LED     | blinks based on EVM   |
+|                   | Toggling              | being used.           |
+|                   |                       |                       |
+|                   |                       | **AM335x              |
+|                   |                       | ICEv2**:              |
+|                   |                       | USER  LED 1           |
+|                   |                       |                       |
+|                   |                       | **AM437x              |
+|                   |                       | EVM**:                |
+|                   |                       | USER  LED 1           |
+|                   |                       |                       |
+|                   |                       | **AM572x IDK** :      |
+|                   |                       | STATUS LED 1 Yellow   |
+|                   |                       | **AM572x GP           |
+|                   |                       | EVM** : USER LED1     |
+|                   |                       | **AM574x IDK** :      |
+|                   |                       | STATUS LED 1 Yellow   |
+|                   |                       | **AM572x GP           |
+|                   |                       | EVM** : USER LED1     |
+|                   |                       | **AM571x IDK** :      |
+|                   |                       | Industrial LED 3      |
+|                   |                       | Red                   |
+|                   |                       |                       |
+|                   |                       | **K2H EVM:**          |
+|                   |                       | USER LED 2 Blue       |
+|                   |                       |                       |
+|                   |                       | **K2E EVM:**          |
+|                   |                       | USER LED 1 Blue       |
+|                   |                       |                       |
+|                   |                       | **K2G EVM:**          |
+|                   |                       | USER LED 1 Yellow     |
+|                   |                       |                       |
++-------------------+-----------------------+-----------------------+
 
 .. raw:: html
 
@@ -138,17 +135,17 @@ C6678 and C6657 EVMs.
 .. rubric:: Additional References
    :name: additional-references
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/gpio/docs/doxygen/html/index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/gpio/docs/ReleaseNotes_GPIO_ |
-|                                   | LLD.pdf                           |
-+-----------------------------------+-----------------------------------+
++----------------------------+-----------------------------------+
+| **Document**               | **Location**                      |
++----------------------------+-----------------------------------+
+| API Reference Manual       | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                            | /drv/gpio/docs/doxygen/html/index |
+|                            | .html                             |
++----------------------------+-----------------------------------+
+| Release Notes              | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                            | /drv/gpio/docs/ReleaseNotes_GPIO  |
+|                            | _LLD.pdf                          |
++----------------------------+-----------------------------------+
 
 .. raw:: html
 

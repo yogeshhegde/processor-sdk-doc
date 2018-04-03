@@ -16,7 +16,7 @@ initialization for the board to load and run applications.
 
    -  Board Initialization is done by a call to **Board_init()** API.
       For additional details refer to `Processor SDK Board
-      Support </index.php/Processor_SDK_RTOS_Board_Support>`__.
+      Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__.
    -  SBL setup includes configuring Pinmux, enable peripheral clocks,
       set up PLLs, and configure EMIF for DDR.
 
@@ -118,9 +118,9 @@ This release of SBL supports MMCSD and QSPI boot modes.
 
 #. To boot the target, the SD card needs to be bootable. Follow the
    steps at `Creating bootable SD card in
-   windows </index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
+   windows <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
    or `Creating bootable SD card in
-   Linux </index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
+   Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
 #. Copy "MLO" and "app" to your SD card.
 
    -  MLO is the SBL formatted by the aforementioned tools. A pre-built

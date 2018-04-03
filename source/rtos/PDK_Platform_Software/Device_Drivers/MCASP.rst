@@ -313,9 +313,6 @@ information This page has been accessed 927 times. Privacy policyAbout
 Texas Instruments WikiDisclaimersTerms of UseCreative Commons
 Attribution-ShareAlike Powered by MediaWiki
 
-| 
-| Moved to
-  http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCASP
 
 .. raw:: html
 

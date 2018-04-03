@@ -111,12 +111,12 @@ build information, and examples to use as a template to start development.
 
 .. _TI-RTOS Kernel: Foundational_Components.html#ti-rtos-kernel
 .. _Boot: Foundational_Components.html#boot
-.. _IPC: Foundational_Components.html#ipc
+.. _IPC: http://processors.wiki.ti.com/index.php/IPC_Users_Guide
 .. _MPM: Foundational_Components.html#mpm
 .. _OpenMP: Foundational_Components.html#openmp
 .. _FC: Foundational_Components.html#fc
 .. _OpenCL: Foundational_Components.html#opencl
-.. _Network: Foundational_Components.html#ndk
+.. _Network: http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK
 .. _XDAIS: Foundational_Components.html#xdais
 .. _PKTLIB: Foundational_Components.html#pktlib
 .. _NWAL: Foundational_Components.html#nwal
@@ -176,7 +176,7 @@ build information, and examples to use as a template to start development.
 .. _PCIe: Device_Drivers.html#pcie
 .. _GPIO: Device_Drivers.html#gpio
 .. _I2C: Device_Drivers.html#i2c
-.. _QSPI-McSPI: Device_Drivers.html#qspi-mcspi
+.. _QSPI-McSPI: http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QSPI-McSPI
 .. _EDMA3: Device_Drivers.html#edma3
 .. _ICSS-EMAC(DRIVER,FIRMWARE): Device_Drivers.html#icss-emac-driver-firmware
 .. _PRUSS: Device_Drivers.html#pruss
@@ -190,7 +190,7 @@ build information, and examples to use as a template to start development.
 .. _HYPLNK: Device_Drivers.html#hyplnk
 .. _TSIP: Device_Drivers.html#tsip
 .. _MCBSP: Device_Drivers.html#mcbsp
-.. _EMAC: Device_Drivers.html#emac
+.. _EMAC: http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_EMAC
 .. _MCASP: Device_Drivers.html#mcasp
 .. _PM: Device_Drivers.html#pm
 .. _RM: Device_Drivers.html#rm

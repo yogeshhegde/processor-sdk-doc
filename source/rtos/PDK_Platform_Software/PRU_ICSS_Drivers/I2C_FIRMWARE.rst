@@ -190,173 +190,48 @@ Following are list supported EVMs along with the pin configurations:
 .. rubric::  icev2AM335x
    :name: icev2am335x
 
-ICSS
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-| PRU
-
-| Instance
-
-| Functional Pin
-
-| PRU GPIO Pins
-
-| EVM Port
-
-| EVM pin
-
-ICSS1
-
-PRU0
-
-I2C0
-
-SCL
-
-pr1_pru0_pru_r30_1
-
-J3
-
-14
-
-SDA
-
-pr1_edio_data_out7
-
-J4
-
-21
-
-pr1_pru0_pru_r31_0
-
-J3
-
-12
-
-| 
-
- idkAM572x/idkAM574x
-====================
-
-| ICSS
-
-| PRU
-
-| Instance
-
-| Functional Pin
-
-| PRU GPIO Pins
-
-| EVM Port
-
-| EVM pin
-
-ICSS1
-
-PRU0
-
-I2C0
-
-SCL
-
-pr1_pru1_gpo1
-
-J21
-
-5
-
-SDA
-
-pr1_edio_data_out1
-
-J46
-
-4
-
-pr1_pru1_gpi0
-
-J21
-
-3
-
-| 
-
- idkAM437x
-==========
-
-| ICSS
-
-| PRU
-
-| Instance
-
-| Functional Pin
-
-| PRU GPIO Pins
-
-| EVM Port
-
-| EVM pin
-
-ICSS1
-
-PRU0
-
-I2C0
-
-SCL
-
-pr1_pru0_pru_r30_8
-
-J3
-
-6
-
-SDA
-
-pr1_edio_data_out0
-
-J3
-
-5
-
-pr1_pru0_pru_r31_9
-
-J3
-
-8
-
-I2C1
-
-SCL
-
-pr1_pru0_pru_r30_10
-
-J16
-
-46
-
-SDA
-
-pr1_edio_data_out1
-
-J3
-
-7
-
-pr1_pru0_pru_r31_11
-
-J16
-
-48
++---------+-------+----------+--------------+---------------------+--------+-------+
+| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM pin|
++---------+-------+----------+--------------+---------------------+--------+-------+
+|         |       |          | SCL          |pr1_pru0_pru_r30_1   | J3     | 14    |
+|         |       |          +--------------+---------------------+--------+-------+
+| ICSS1   | PRU0  | I2C0     |              |pr1_edio_data_out7   | J4     | 21    |
+|         |       |          | SDA          +---------------------+--------+-------+
+|         |       |          |              |pr1_pru0_pru_r31_0   | J3     | 12    |
++---------+-------+----------+--------------+---------------------+--------+-------+
+
+.. rubric::  idkAM572x/idkAM574x
+   :name: idkAM572x-idkAM574x
+
++---------+-------+----------+--------------+---------------------+--------+-------+
+| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM pin|
++---------+-------+----------+--------------+---------------------+--------+-------+
+|         |       |          | SCL          |pr1_pru1_gpo1        | J21    | 5     |
+|         |       |          +--------------+---------------------+--------+-------+
+| ICSS1   | PRU0  | I2C0     |              |pr1_edio_data_out1   | J46    | 4     |
+|         |       |          | SDA          +---------------------+--------+-------+
+|         |       |          |              |pr1_pru1_gpi0        | J21    | 3     |
++---------+-------+----------+--------------+---------------------+--------+-------+
+
+
+.. rubric::  idkAM437x
+   :name: idkAM437x
+
++---------+-------+----------+--------------+---------------------+--------+-------+
+| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM pin|
++---------+-------+----------+--------------+---------------------+--------+-------+
+|         |       |          | SCL          |pr1_pru0_pru_r30_8   | J3     | 6     |
+|         |       |          +--------------+---------------------+--------+-------+
+|         |       | I2C0     |              |pr1_edio_data_out0   | J3     | 5     |
+|         |       |          | SDA          +---------------------+--------+-------+
+|         |       |          |              |pr1_pru0_pru_r31_9   | J3     | 8     |
+| ICSS1   | PRU0  +----------+--------------+---------------------+--------+-------+
+|         |       |          | SCL          |pr1_pru0_pru_r30_10  | J16    | 46    |
+|         |       |          +--------------+---------------------+--------+-------+
+|         |       | I2C1     |              |pr1_edio_data_out1   | J3     | 7     |
+|         |       |          | SDA          +---------------------+--------+-------+
+|         |       |          |              |pr1_pru0_pru_r31_11  | J16    | 48    |
++---------+-------+----------+--------------+---------------------+--------+-------+
 
 | 
 

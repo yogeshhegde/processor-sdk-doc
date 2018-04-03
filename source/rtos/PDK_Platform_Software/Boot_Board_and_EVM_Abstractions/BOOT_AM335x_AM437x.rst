@@ -73,7 +73,7 @@ RTOS bootloader are shown below:
 
    -  RBL gets image size and load address by checking TI Image Header
       appended on bootloader binary(.bin). Check `binary
-      formats </index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Tools_and_Binary_formats>`__.
+      formats <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Tools_and_Binary_formats>`__.
    -  Loads the binary to internal OCMC memory at the Load address
       fetched from TI Image Header
    -  Passes control to Secondary Bootloader(SBL)
@@ -106,24 +106,19 @@ RTOS bootloader are shown below:
 |                       |                       | through XMODEM in     |
 |                       |                       | terminal.             |
 +-----------------------+-----------------------+-----------------------+
-| \_ti.bin              | MMCSD bootloader      | | .bin binaries are   |
-|                       | and app,              |   converted to        |
-|                       |                       |   \_ti.bin format by  |
-|                       | NAND bootloader and   |   adding Image        |
-|                       | app,                  |   size(4bytes) and    |
-|                       |                       |   Image load          |
-|                       | MCSPI boot loader and |   address(4bytes) as  |
-|                       | app,                  |   image header.       |
-|                       |                       | | Refer to Image      |
-|                       | QSPI app.             |   format section in   |
-|                       |                       |   Initialization      |
-|                       |                       |   chapter of `AM437x  |
-|                       |                       |   ARM cortex A9       |
-|                       |                       |   Processors          |
-|                       |                       |   Technical reference |
-|                       |                       |   manual <http://www. |
-|                       |                       | ti.com/lit/ug/spruhl7 |
-|                       |                       | d/spruhl7d.pdf>`__    |
+| \_ti.bin              | MMCSD bootloader      | .bin binaries are     |
+|                       | and app,              | converted to          |
+|                       |                       | \_ti.bin format by    |
+|                       | NAND bootloader and   | adding Image          |
+|                       | app,                  | size(4bytes) and      |
+|                       |                       | Image load            |
+|                       | MCSPI boot loader and | address(4bytes) as    |
+|                       | app,                  | image header.         |
+|                       |                       | Refer to Image        |
+|                       | QSPI app.             | format section in     |
+|                       |                       | Initialization        |
+|                       |                       | chapter of `AM437x    |
+|                       |                       | TRM`_                 |
 |                       |                       |                       |
 |                       |                       | MMCSD, NAND and MCSPI |
 |                       |                       | boot loaders and      |
@@ -131,15 +126,9 @@ RTOS bootloader are shown below:
 |                       |                       | should be appended    |
 |                       |                       | with ti image header. |
 |                       |                       |                       |
-|                       |                       | Procedure for         |
-|                       |                       | conversion is         |
-|                       |                       | `here </index.php?tit |
-|                       |                       | le=Processor_SDK_RTOS |
-|                       |                       | _CSL_AM335x/AM437x_Fl |
-|                       |                       | ashing_And_Booting&ac |
-|                       |                       | tion=edit&redlink=1>` |
-|                       |                       | __.                   |
 +-----------------------+-----------------------+-----------------------+
+
+.. _AM437x TRM: http://www.ti.com/lit/ug/spruhl7h/spruhl7h.pdf
 
 | 
 
@@ -222,75 +211,29 @@ for the various EVMs.
 +-----------+-----------+-----------+-----------+-----------+-----------+
 |           | **MMCSD** | **NAND**  | **McSPI** | **QSPI**  | **UART**  |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM335x  | `YES </in | `YES </in | `YES </in | NO        | `YES </in |
-| GPEVM**   | dex.php/P | dex.php/P | dex.php/P |           | dex.php/P |
-|           | rocessor_ | rocessor_ | rocessor_ |           | rocessor_ |
-|           | SDK_RTOS_ | SDK_RTOS_ | SDK_RTOS_ |           | SDK_RTOS_ |
-|           | BOOT_AM33 | BOOT_AM33 | BOOT_AM33 |           | BOOT_AM33 |
-|           | 5x/AM437x | 5x/AM437x | 5x/AM437x |           | 5x/AM437x |
-|           | #Booting_ | #Booting_ | #Booting_ |           | #Booting_ |
-|           | Via_SD_Ca | Via_NAND> | Via_McSPI |           | Via_UART> |
-|           | rd>`__    | `__       | >`__      |           | `__       |
+| **AM335x  |    YES    |    YES    |    YES    |    NO     |    YES    |
+| GPEVM**   |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM335x  | `YES </in | NO        | `YES </in | NO        | NO        |
-| ICEv2**   | dex.php/P |           | dex.php/P |           |           |
-|           | rocessor_ |           | rocessor_ |           |           |
-|           | SDK_RTOS_ |           | SDK_RTOS_ |           |           |
-|           | BOOT_AM33 |           | BOOT_AM33 |           |           |
-|           | 5x/AM437x |           | 5x/AM437x |           |           |
-|           | #Booting_ |           | #Booting_ |           |           |
-|           | Via_SD_Ca |           | Via_McSPI |           |           |
-|           | rd>`__    |           | >`__      |           |           |
+| **AM335x  |    YES    |    NO     |    YES    |    NO     |    NO     |
+| ICEv2**   |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM335x  | `YES </in | NO        | NO        | NO        | `YES </in |
-| StarterKi | dex.php/P |           |           |           | dex.php/P |
-| t**       | rocessor_ |           |           |           | rocessor_ |
-|           | SDK_RTOS_ |           |           |           | SDK_RTOS_ |
-|           | BOOT_AM33 |           |           |           | BOOT_AM33 |
-|           | 5x/AM437x |           |           |           | 5x/AM437x |
-|           | #Booting_ |           |           |           | #Booting_ |
-|           | Via_SD_Ca |           |           |           | Via_UART> |
-|           | rd>`__    |           |           |           | `__       |
+| **AM335x  |    YES    |    NO     |    NO     |    NO     |    YES    |
+| StarterKi |           |           |           |           |           |
+| t**       |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM335x  | `YES </in | NO        | NO        | NO        | `YES </in |
-| BeagleBon | dex.php/P |           |           |           | dex.php/P |
-| eBlack**  | rocessor_ |           |           |           | rocessor_ |
-|           | SDK_RTOS_ |           |           |           | SDK_RTOS_ |
-|           | BOOT_AM33 |           |           |           | BOOT_AM33 |
-|           | 5x/AM437x |           |           |           | 5x/AM437x |
-|           | #Booting_ |           |           |           | #Booting_ |
-|           | Via_SD_Ca |           |           |           | Via_UART> |
-|           | rd>`__    |           |           |           | `__       |
+| **AM335x  |    YES    |    NO     |    NO     |    NO     |    YES    |
+| BeagleBon |           |           |           |           |           |
+| eBlack**  |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM437x  | `YES </in | NO        | NO        | NO        | `YES </in |
-| GPEVM**   | dex.php/P |           |           |           | dex.php/P |
-|           | rocessor_ |           |           |           | rocessor_ |
-|           | SDK_RTOS_ |           |           |           | SDK_RTOS_ |
-|           | BOOT_AM33 |           |           |           | BOOT_AM33 |
-|           | 5x/AM437x |           |           |           | 5x/AM437x |
-|           | #Booting_ |           |           |           | #Booting_ |
-|           | Via_SD_Ca |           |           |           | Via_UART> |
-|           | rd>`__    |           |           |           | `__       |
+| **AM437x  |    YES    |    NO     |    NO     |    NO     |    YES    |
+| GPEVM**   |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM437x  | `YES </in | NO        | NO        | `YES </in | NO        |
-| IDK**     | dex.php/P |           |           | dex.php/P |           |
-|           | rocessor_ |           |           | rocessor_ |           |
-|           | SDK_RTOS_ |           |           | SDK_RTOS_ |           |
-|           | BOOT_AM33 |           |           | BOOT_AM33 |           |
-|           | 5x/AM437x |           |           | 5x/AM437x |           |
-|           | #Booting_ |           |           | #Booting_ |           |
-|           | Via_SD_Ca |           |           | Via_QSPI> |           |
-|           | rd>`__    |           |           | `__       |           |
+| **AM437x  |    YES    |    NO     |    NO     |    YES    |    NO     |
+| IDK**     |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
-| **AM437x  | `YES </in | NO        | NO        | NO        | NO        |
-| StarterKi | dex.php/P |           |           |           |           |
-| t**       | rocessor_ |           |           |           |           |
-|           | SDK_RTOS_ |           |           |           |           |
-|           | BOOT_AM33 |           |           |           |           |
-|           | 5x/AM437x |           |           |           |           |
-|           | #Booting_ |           |           |           |           |
-|           | Via_SD_Ca |           |           |           |           |
-|           | rd>`__    |           |           |           |           |
+| **AM437x  |    YES    |    NO     |    NO     |    NO     |    NO     |
+| StarterKi |           |           |           |           |           |
+| t**       |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
 
 | 
@@ -379,7 +322,7 @@ industrial use case.
    :name: boot-mode-settings
 
 | Boot mode settings for all supported AM335x and AM437x boards are
-  `here </index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+  `here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
 
 .. rubric:: Boot Modes
    :name: boot-modes
@@ -397,9 +340,9 @@ Booting from SD Card involves two steps.
 
 #. To boot target the SD card should be bootable. Follow the steps at
    `Creating bootable SD card in
-   windows </index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
+   windows <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
    or `Creating bootable SD card in
-   Linux </index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
+   Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
 #. Delete the "*MLO*" and "*app*" in the bootable SD card which are
    created in the process of making the SD bootable.
 #. Bootloader images with ti header (<mmcsd_bootloader>_ti.bin)should be
@@ -442,7 +385,7 @@ Selection pins from hardware reference manuals.
 | If the boards have no boot mode selection pins and a valid boot image
   is present on McSPI flash, Booting will happen from McSPI flash. Erase
   McSPI flash in such cases to boot from SD card `McSPI flash
-  erase </index.php?title=StarterWare_Booting_And_Flashing&action=edit&redlink=1>`__
+  erase <http://processors.wiki.ti.com/index.php?title=StarterWare_Booting_And_Flashing&action=edit&redlink=1>`__
   . The boot sequence depends on ROM bootloader.
 
 .. rubric:: Booting Via QSPI
@@ -587,7 +530,7 @@ Booting from McSPI involves two steps.
    :name: preparing-flash-device-1
 
 -  Set the appropriate bootmode if applicable for EVM.Refer `Boot mode
-   settings </index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__.
+   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__.
    **Note**: Most of the boards may not have switch settings.
 -  Add a required target configuration in CCS depending on emulator and
    board connected.
@@ -661,7 +604,7 @@ Booting from NAND involves two steps.
    :name: preparing-flash-device-2
 
 -  Configure BOOT pins for NAND `Boot mode
-   settings </index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
 -  Connect target with CCS.
 -  Load the
    *<PDK_INSTALL_DIR\packages\ti\starterware\starterware\tools\flash_writer\nand_flash_writer_AM335X.out>*
@@ -735,7 +678,7 @@ bootloader uses the BCH8 ECC scheme.
    (teraterm/hyperterminal) with 115200 baud, 8bit, No parity and 1 STOP
    bit configuration.
 -  Configure the board for NAND boot mode. Refer  `Boot mode
-   settings </index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
 -  On reset, ROM detects bootloader from NAND and copies it to internal
    memory. Bootloader then copies application image from the NAND to DDR
    and passes control to application. If the process is succesful,
@@ -767,18 +710,18 @@ application for am335x or am437x using MMCSD bootloader.
 Follow below steps to generate the bootable application image.
 
 #. Generate .out files using steps for `Rebuilding
-   PDK </index.php/Rebuilding_The_PDK>`__. Locate .out file in directory
+   PDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__. Locate .out file in directory
    *<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>*
 #. Convert files to support MMCSD boot using steps as per `Binary format
    conversion
-   procedure </index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Binary_format_conversion_procedure>`__.
+   procedure <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Binary_format_conversion_procedure>`__.
 #. Rename generated <Application>_ti.bin to "app".
 
 .. rubric:: Loading Test application
    :name: loading-test-application
 
 | Follow procedure to use "app" file as per section `Booting Via SD
-  Card </index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Booting_Via_SD_Card>`__.
+  Card <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Booting_Via_SD_Card>`__.
 
 .. rubric:: Usage Notes
    :name: usage-notes
@@ -920,7 +863,7 @@ of the app
 
 Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article **`Common steps to debug application
-boot </index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__**
+boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__**
 
 .. raw:: html
 

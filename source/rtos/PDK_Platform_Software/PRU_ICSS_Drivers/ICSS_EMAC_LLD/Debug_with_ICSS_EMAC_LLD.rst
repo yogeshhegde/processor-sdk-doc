@@ -272,7 +272,7 @@ purpose. Usage given
 Because of it's nature Tx is much more reliable and there are far fewer
 issues related to it when compared to Rx. Transmit issues can be
 classified into two types. See `Tx data
-path </index.php/ICSS_EMAC_LLD_developers_guide#Tx_Data_Path>`__ for
+path <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Tx_Data_Path>`__ for
 more information.
 
 #. **Cut-through issues** : Packets received on one port and meant to go
@@ -296,7 +296,7 @@ also be used as a checklist for debugging.
    The Tx API checks for link and will not transmit if the link is down
    so this issue is more relevant to cut-through/store-forward. More on
    Link status
-   `here </index.php/ICSS_EMAC_LLD_debug_guide#Check_Link_Status>`__.
+   `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide#Check_Link_Status>`__.
 #. **Incorrect speed** : The link ISR also checks for speed and
    duplexity values. The values are written to in the same ISR
    **ICSS_EmacUpdatePhyStatus**, if the speed is read incorrectly then
@@ -306,7 +306,7 @@ also be used as a checklist for debugging.
    quickest way to debug this issue is to read the ICSS memory directly
    in CCS memory window. Interface speed is written directly in memory
    at the offset mentioned in `memory
-   map </index.php/ICSS_EMAC_LLD_developers_guide#Memory_Map>`__, please
+   map <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Memory_Map>`__, please
    verify the value (as mentioned in memory map) and compare with the
    actual interface speed.
 #. **Incorrect pinmux for Collision/Carrier Sense** : This is applicable
@@ -319,7 +319,7 @@ also be used as a checklist for debugging.
    recommended that half duplex functionality be disabled. Half Duplex
    functionality is controlled by the variable **halfDuplexEnable**
 #. **Queue contention issues** : Looking at the QoS
-   `scheme </index.php/ICSS_EMAC_LLD_developers_guide#Quality_of_Service_and_Queues>`__
+   `scheme <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Quality_of_Service_and_Queues>`__
    it's possible that there is a contention for the transmit queue when
    both Host and the opposite port are trying to transmit on the same
    port. In such cases if there are too many packets vying for the
@@ -337,7 +337,7 @@ also be used as a checklist for debugging.
 Statistics form the core of debugging so this section is very important.
 A brief introduction to statistics has been provided previously in the
 statistics
-`section </index.php/ICSS_EMAC_LLD_developers_guide#Statistics>`__ of
+`section <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Statistics>`__ of
 developer guide. This part explains how to use it for the purpose of
 debugging.
 
@@ -358,14 +358,14 @@ Statistics are accessible in three ways
 
 -  **IOCTL calls** : IOCTL calls (including an example) have been
    previously explained
-   `here </index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__ in
+   `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__ in
    developer guide.
 -  **Reading directly in memory window** : (This applies only to PRU
    based statistics). Use the statistics `memory
-   map </index.php/ICSS_EMAC_LLD_developers_guide#Design_3>`__ to find
+   map <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Design_3>`__ to find
    out the offset and look at the memory directly. Information on how to
    access the ICSS memory is provided
-   `here </index.php/ICSS_EMAC_LLD_debug_guide#Accessing_Memory>`__.
+   `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide#Accessing_Memory>`__.
 -  **In CCS watch window** : When using CCS the statistics can be read
    directly through the ICSS EMAC handle. Host statistics are available
    through **hostStat** while PRU statistics are available through

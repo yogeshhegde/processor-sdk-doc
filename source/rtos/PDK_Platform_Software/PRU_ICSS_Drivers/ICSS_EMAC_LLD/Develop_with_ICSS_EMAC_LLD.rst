@@ -223,7 +223,7 @@ in the SDK for a standalone Switch on the lines of EMAC. The example
 that comes close to it is the EtherNetIP adapter which is a standalone
 Ethernet Switch running a EtherNet/IP protocol stack. Instructions on
 how to remove the EtherNet/IP part of it are given
-`here </index.php/SYSBIOS_ISDK_Steps_for_creating_stand_alone_switch_example>`__.
+`here <http://processors.wiki.ti.com/index.php/SYSBIOS_ISDK_Steps_for_creating_stand_alone_switch_example>`__.
 
 There are some important differences between an EMAC and Switch
 
@@ -2129,7 +2129,7 @@ dynamically enabled and disabled by the Host. We have two well defined
 TTS APIs which control all TTS related EMAC aspects. Developers are
 advised to access these APIs using the EMAC IOCTL implementation as
 explained in the
-`IOCTL </index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__ section
+`IOCTL <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__ section
 previously.
 
 .. rubric:: TTS Design Overview
@@ -2137,7 +2137,7 @@ previously.
 
 TTS is designed to facilitate transmission of packets at pre-defined
 cyclic instants/triggers. The `TTS API Details and Data
-Structures </index.php/ICSS_EMAC_LLD_developers_guide#TTS_API_Details_and_Data_Structures>`__
+Structures <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#TTS_API_Details_and_Data_Structures>`__
 are explained below but in a broad sense we can say that while
 initializing TTS, the application must provide the first cyclic trigger
 and the cycle period. The PRU firmware then sets cyclic triggers

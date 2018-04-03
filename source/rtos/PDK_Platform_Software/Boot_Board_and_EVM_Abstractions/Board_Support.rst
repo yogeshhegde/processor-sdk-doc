@@ -8,7 +8,7 @@
   for boards supported in the Processor SDK release. Refer to the
   package content for the list of supported boards.Board component also
   includes diagnostic software. Refer to `Processor SDK RTOS
-  DIAG </index.php/Processor_SDK_RTOS_DIAG>`__ for additional details on
+  DIAG <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG>`__ for additional details on
   available diagnostic examples.
 
 .. rubric::  APIs
@@ -18,21 +18,26 @@ The Board_init() API supports initialization of PLL, peripheral clocks,
 external DDR memory, pinmux and IO Delay configurations. API Reference
 for application:
 
-<syntaxhighlight lang="c">
+::
 
 #. include <ti/board/board.h>
 
-</syntaxhighlight>
+| 
 
 Example API pseudo code for Board_init() is as follows:
 
-<syntaxhighlight lang="c"> /\* Setting up for pinmux and uart \*/
-Board_STATUS ret; Board_initCfg boardCfg;
+::
 
+/* Setting up for pinmux and uart */
+Board_STATUS ret;
+Board_initCfg boardCfg;
+ 
 boardCfg = BOARD_INIT_MODULE_CLOCK \| BOARD_INIT_PINMUX_CONFIG \|
 BOARD_INIT_UART_STDIO;
 
 ret = Board_init(boardCfg); </syntaxhighlight>
+
+| 
 
 .. rubric::  LLD Dependencies
    :name: lld-dependencies
@@ -84,12 +89,12 @@ BOARD_IO_DELAY_CODE : {
 
 BOARD_IO_DELAY_DATA : {
 
-::
-
     . = ALIGN(4);
     *(BOARD_IO_DELAY_DATA*)
 
 } > OCMC_RAM1 </syntaxhighlight>
+
+| 
 
 In a CCS RTSC project with .cfg file: <syntaxhighlight lang="c">
 Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1";
@@ -198,7 +203,7 @@ is ignored when called in a C66x or K2H/K2E/K2L board library.
    :name: custom-board-library
 
 #. Set up your build environment according to the `Building the RTOS
-   SDK </index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page.
+   SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page.
 #. Create your own folder under the src directory. The name of this
    folder will be your board name (will be referred to as $BOARD). Put
    your source files in this src/$BOARD folder. Updated sources can also
@@ -227,7 +232,10 @@ is ignored when called in a C66x or K2H/K2E/K2L board library.
 
    -  Copy the four generated files to your custom board library
       implementation folder.
-   -  |Warning|\ **Note:**
+   -  **Note:** It is recommended to use the latest available PinMux Tool. 
+      For PinMux Tool prior to version v4.0.1482, you will have to edit 
+      **boardPadDelayTune.h** to select appropriate IO timing modes by 
+      uncommenting the build macros.
 
 #. Create build makefile infrastructure for new board under
    <ti/board/build>. Please refer existing board makefiles for

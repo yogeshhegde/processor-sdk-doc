@@ -54,7 +54,7 @@ ICSS_EMAC LLD implements following:
   APIs. By default Board_Init() API supports all initialization sequence
   for TI supported EVMs. In addition it initializes UART instance for
   Console/STDIO.Refer `Processor SDK RTOS Board
-  Support </index.php/Processor_SDK_RTOS_Board_Support>`__ for
+  Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for
   additional details.Once board specific configuration is complete 
   driver APIS can be invoked.
 
@@ -141,7 +141,7 @@ TI PRU-ICSS cores (Programmable Real-Time Unit Industrial Communication
 Subsystem) is firmware programmable and can take on various
 personalities. Examples include an SORTE, ethernet Switch, Industrial
 protocol switch. Please refer to `ICSS-EMAC
-Firmwares </index.php/Processor_SDK_RTOS_ICSS-EMAC_FIRMWARES>`__ for
+Firmwares <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC_FIRMWARES>`__ for
 further explanation.
 
 | 
@@ -265,7 +265,7 @@ different EVMs.
    :name: debug-guide
 
 For debugging ICSS EMAC examples or LLD. Please refer to `ICSS-EMAC
-Debug Guide </index.php/ICSS_EMAC_LLD_debug_guide>`__.
+Debug Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide>`__.
 
 .. rubric::  Additional documentation reference
    :name: additional-documentation-reference

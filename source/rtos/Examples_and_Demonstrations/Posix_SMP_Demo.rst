@@ -87,7 +87,7 @@ the supported EVMs. The makefile can also be used to compile native
 builds for Linux (both for EVMs and x86).
 
 For more information on TI-RTOS Posix, see `POSIX
-Support </index.php/SYS/BIOS_POSIX_Thread_(pthread)_Support>`__.
+Support <http://processors.wiki.ti.com/index.php/SYS/BIOS_POSIX_Thread_(pthread)_Support>`__.
 
 | 
 
@@ -99,7 +99,7 @@ run using the SBL with UART or using CCS with UART or ROV (UART display
 for newer versions and ROV for older versions). To run using UART, hook
 up to the board using UART and run the .out file.
 
-| |Figure 1, UART demo result|
+.. Image:: ../images/Posix-demo-uart.PNG
 
 To run using CCS, use the following steps. Each binary has an associated
 \*.rov.xs file located in the same directory--enabling the CCS ROV tool.
@@ -140,7 +140,7 @@ If using Processor-SDK 3.0 or later,
 
 .. Image:: ../images/Use_rov_2.png
 
-| |Figure 2, ROV of demo result|
+.. Image:: ../images/Posix-smp2.png
 
 The output buffer shown in the ROV contains the different stages of the
 demo's progression:

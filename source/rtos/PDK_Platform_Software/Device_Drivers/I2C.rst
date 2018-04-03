@@ -13,7 +13,7 @@ mode and slave mode
 -  Write
 -  Write followed by read
 
-| In addition driver supports following modes of operation:
+In addition driver supports following modes of operation:
 
 -  **I2C_MODE_BLOCKING:** By default, driver operates in blocking mode.
    In blocking mode, a Task’s code execution is blocked until
@@ -49,7 +49,7 @@ I2C_control() API and use I2C_CMD_RECOVER_BUS to recover the I2C bus.
 TI PRU-ICSS cores (Programmable Real-Time Unit Industrial Communication
 Subsystem) is firmware programmable and can take on various
 personalities. Processor SDK package includes I2C Firmware support.
-Refer `I2C FW </index.php/Processor_SDK_RTOS_I2C_FIRMWARE>`__ for
+Refer `I2C FW <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_I2C_FIRMWARE>`__ for
 additional details.
 
 | 
@@ -64,7 +64,7 @@ All the board specific configurations eg:enabling and pin-mux of I2C
 pins should be performed before calling any driver APIs.By default
 Board_Init() API supports all initialization sequence for TI supported
 EVMs.Refer `Processor SDK RTOS Board
-Support </index.php/Processor_SDK_RTOS_Board_Support>`__ for additional
+Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for additional
 details.
 
 Once the board specific configuration is complete driver API I2C_init()
@@ -123,21 +123,21 @@ API reference for application:
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
 +=======================+=======================+=======================+
-| I2C_EepromRead        | | Simple example to   | Following prints will |
-| Example application   |   read fixed number   | come on console based |
-|                       |   of bytes from       | on pass/fail          |
-|                       |   EEPROM on board and | criteria:             |
-|                       |   compares it with    |                       |
-|                       |   expected data.      | **Pass criteria:**    |
+| I2C_EepromRead        | Simple example to     | Following prints will |
+| Example application   | read fixed number     | come on console based |
+|                       | of bytes from         | on pass/fail          |
+|                       | EEPROM on board and   | criteria:             |
+|                       | compares it with      |                       |
+|                       | expected data.        | **Pass criteria:**    |
 |                       |                       |                       |
-|                       |                       | | EEPROM data matched |
-|                       |                       | | All tests have      |
-|                       |                       |   passed.             |
+|                       |                       | EEPROM data matched   |
+|                       |                       | All tests have        |
+|                       |                       | passed.               |
 +-----------------------+-----------------------+-----------------------+
-| I2C_TestApplication   | | Driver Unit Test    | Following prints will |
-|                       |   application for     | come on console based |
-|                       |   additional I2C      | on pass/fail          |
-|                       |   speed               | criteria:             |
+| I2C_TestApplication   | Driver Unit Test      | Following prints will |
+|                       | application for       | come on console based |
+|                       | additional I2C        | on pass/fail          |
+|                       | speed                 | criteria:             |
 |                       |                       |                       |
 |                       |                       | **Pass criteria:**    |
 |                       |                       |                       |
@@ -157,33 +157,33 @@ API reference for application:
 |                       | on the serial         |                       |
 |                       | console.              | **Pass criteria:**    |
 |                       |                       |                       |
-|                       |                       | | Temperature =       |
-|                       |                       |   "value in           |
-|                       |                       |   centigrades" C      |
-|                       |                       | | All tests have      |
-|                       |                       |   passed.             |
+|                       |                       | Temperature =         |
+|                       |                       | "value in             |
+|                       |                       | centigrades" C        |
+|                       |                       | All tests have        |
+|                       |                       | passed.               |
 +-----------------------+-----------------------+-----------------------+
-| I2C_master/slave      | | Application         | Following prints will |
-|                       |   demonstrates        | come on console based |
-|                       |   master/slave        | on pass/fail          |
-|                       |   transfer of I2C.    | criteria:             |
-|                       |   Application use     |                       |
-|                       |   case requires two   | **Pass criteria:**    |
-|                       |   EVMs. One acts as   |                       |
-|                       |   Master and the      | All tests have        |
-|                       |   other as slave. I2C | passed.               |
-|                       |   connections         |                       |
-|                       |   information and     |                       |
-|                       |   addtional details   |                       |
-|                       |   are as follows:     |                       |
+| I2C_master/slave      | Application           | Following prints will |
+|                       | demonstrates          | come on console based |
+|                       | master/slave          | on pass/fail          |
+|                       | transfer of I2C.      | criteria:             |
+|                       | Application use       |                       |
+|                       | case requires two     | **Pass criteria:**    |
+|                       | EVMs. One acts as     |                       |
+|                       | Master and the        | All tests have        |
+|                       | other as slave. I2C   | passed.               |
+|                       | connections           |                       |
+|                       | information and       |                       |
+|                       | addtional details     |                       |
+|                       | are as follows:       |                       |
 |                       |                       |                       |
 |                       | AM57xx boards I2C bus |                       |
 |                       | connection on J9      |                       |
 |                       | (master board <-->    |                       |
 |                       | slave board)          |                       |
 |                       |                       |                       |
-|                       | | pin22 (SCL)<-->     |                       |
-|                       |   pin22 (SCL)         |                       |
+|                       | pin22 (SCL)<-->       |                       |
+|                       | pin22 (SCL)           |                       |
 |                       |                       |                       |
 |                       | pin24 (SDA)<--> pin24 |                       |
 |                       | (SDA)                 |                       |
@@ -191,42 +191,40 @@ API reference for application:
 |                       | pin21 (GND)<--> pin21 |                       |
 |                       | (GND)                 |                       |
 |                       |                       |                       |
-|                       | |                     |                       |
-|                       | | K2G boards I2C bus  |                       |
-|                       |   connection on J12   |                       |
-|                       |   (master board <-->  |                       |
-|                       |   slave board)        |                       |
-|                       | | pin28 (SCL)<-->     |                       |
-|                       |   pin28 (SCL)         |                       |
-|                       | | pin30 (SDA)<-->     |                       |
-|                       |   pin30 (SDA)         |                       |
-|                       | | pin50 (GND)<-->     |                       |
-|                       |   pin50 (GND)         |                       |
+|                       | K2G boards I2C bus    |                       |
+|                       | connection on J12     |                       |
+|                       | (master board <-->    |                       |
+|                       | slave board)          |                       |
+|                       | pin28 (SCL)<-->       |                       |
+|                       | pin28 (SCL)           |                       |
+|                       | pin30 (SDA)<-->       |                       |
+|                       | pin30 (SDA)           |                       |
+|                       | pin50 (GND)<-->       |                       |
+|                       | pin50 (GND)           |                       |
 |                       |                       |                       |
-|                       | |                     |                       |
-|                       | | OMAPL138/C6748      |                       |
-|                       |   boards I2C bus      |                       |
-|                       |   connection on J15   |                       |
-|                       |   (master board <-->  |                       |
-|                       |   slave board)        |                       |
-|                       | | pin13 (SCL)<-->     |                       |
-|                       |   pin13 (SCL)         |                       |
-|                       | | pin15 (SDA)<-->     |                       |
-|                       |   pin15 (SDA)         |                       |
-|                       | | pin35 (GND)<-->     |                       |
-|                       |   pin35 (GND)         |                       |
 |                       |                       |                       |
-|                       | |                     |                       |
-|                       | | Run                 |                       |
-|                       |   "I2C_Slave_<BoardTy |                       |
+|                       | OMAPL138/C6748        |                       |
+|                       | boards I2C bus        |                       |
+|                       | connection on J15     |                       |
+|                       | (master board <-->    |                       |
+|                       | slave board)          |                       |
+|                       | pin13 (SCL)<-->       |                       |
+|                       | pin13 (SCL)           |                       |
+|                       | pin15 (SDA)<-->       |                       |
+|                       | pin15 (SDA)           |                       |
+|                       | pin35 (GND)<-->       |                       |
+|                       | pin35 (GND)           |                       |
+|                       |                       |                       |
+|                       | Run                   |                       |
+|                       | "I2C_Slave_<BoardTy   |                       |
 |                       | pe>_<arm/c66x/m4>Test |                       |
 |                       | Project"              |                       |
-|                       |   first on Slave EVM  |                       |
-|                       |   and then            |                       |
-|                       |   "I2C_Master_<BoardT |                       |
+|                       | first on Slave EVM    |                       |
+|                       | and then              |                       |
+|                       | "I2C_Master_<BoardT   |                       |
 |                       | ype>_<arm/c66x/m4>Tes |                       |
 |                       | tProject"             |                       |
-|                       |   on Master EVM.      |                       |
+|                       | on Master EVM.        |                       |
 +-----------------------+-----------------------+-----------------------+
 
 .. raw:: html

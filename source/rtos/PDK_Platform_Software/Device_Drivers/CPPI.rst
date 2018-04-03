@@ -292,7 +292,7 @@ This came from k2k example:
       bytes) if some extensions are used. 0 (16 bytes) is likely to
       cause lock up!!
 
-#. See `QMSS Debug FAQ </index.php/Processor_SDK_RTOS_QMSS#Debug_FAQ>`__
+#. See `QMSS Debug FAQ <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS#Debug_FAQ>`__
    for more.
 
 .. rubric:: Additional References
@@ -313,10 +313,11 @@ This came from k2k example:
 |                                   | PDF <http://www.ti.com/lit/sprugr |
 |                                   | 9>`__                             |
 +-----------------------------------+-----------------------------------+
-| QMSS LLD (Navigator/Queueing HW   | `QMSS                             |
-| component)                        | LLD </index.php/Processor_SDK_RTO |
-|                                   | S_QMSS>`__                        |
+| QMSS LLD (Navigator/Queueing HW   | `QMSS LLD`_                       |
+| component)                        |                                   |
 +-----------------------------------+-----------------------------------+
+
+.. _QMSS LLD:  <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS>
 
 .. raw:: html
 

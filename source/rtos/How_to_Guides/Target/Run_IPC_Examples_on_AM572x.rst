@@ -9,11 +9,11 @@
 **ex01_hello**
 
 | 
-| The following examples demonstrate some of the rudimentary IPC
-  capabilities. They are mostly two processors examples. These examples
-  may be built for any two processors on your device, but only for two
-  at a time. An IPC Ping example using three processors is also
-  presented at the end.
+The following examples demonstrate some of the rudimentary IPC
+capabilities. They are mostly two processors examples. These examples
+may be built for any two processors on your device, but only for two
+at a time. An IPC Ping example using three processors is also
+presented at the end.
 
 Hello example uses the reader/writer design pattern. One processor will
 be the reader and the other will be the writer. The reader creates a
@@ -78,97 +78,54 @@ variable name and its value.
 
       ti.targets.arp32.elf.ARP32_far=$(DEPOT)/ccsv6/tools/compiler/arm_5.2.4
 
-+-----------------------------------+-----------------------------------+
-| |                                 | .. raw:: html                     |
-|                                   |                                   |
-| ::                                |    <div class="thumb tright">     |
-|                                   |                                   |
-|      See the following example, a | .. raw:: html                     |
-| nd ensure you are using the lates |                                   |
-| t version of folder names present |    <div class="thumbinner"        |
-|  in ~/ti folder:                  |    style="width:463px;">          |
-|                                   |                                   |
-|      DEPOT=/home/Your_Ubuntu_home | |image0|                          |
-| _folder/ti                        |                                   |
-|                                   | .. raw:: html                     |
-|      # Use the following environm |                                   |
-| ent assignment  (Note you must us |    <div class="thumbcaption">     |
-| e 32 bit Java even in Ubuntu 14.0 |                                   |
-| 4 64 bit OS environment)          | .. raw:: html                     |
-|      export XDCTOOLS_JAVA_HOME=/h |                                   |
-| ome/Your_Ubuntu_home_folder/ti/cc |    <div class="magnify">          |
-| sv6/eclipse/jre                   |                                   |
+::
+      
+	  See the following example, and ensure you are using the latest version 
+	  of folder names present in ~/ti folder:
+	  
+	  DEPOT=/home/Your_Ubuntu_home_folder/ti
+	  
+	  # Use the following environment assignment  (Note you must use 32 bit Java even in Ubuntu 14.04 64 bit OS environment)
+        export XDCTOOLS_JAVA_HOME=/home/Your_Ubuntu_home_folder/ti/ccsv6/eclipse/jre
+ 
+      #### BIOS-side dependencies ####
+      BIOS_INSTALL_DIR=$(DEPOT)/bios_6_41_04_54
+      IPC_INSTALL_DIR=$(DEPOT)/ipc_3_36_01_11
+      XDC_INSTALL_DIR=$(DEPOT)/xdctools_3_31_02_38
+ 
+      #### BIOS-side toolchains ####
+      gnu.targets.arm.A15F=$(DEPOT)/ccsv6/tools/compiler/gcc-arm-none-eabi-4_8-2014q3
+      ti.targets.elf.C66=$(DEPOT)/ti-cgt-c6000_8.0.3
+      ti.targets.arm.elf.M4=$(DEPOT)/ccsv6/tools/compiler/ti-cgt-arm_5.2.4
+      ti.targets.arp32.elf.ARP32_far=$(DEPOT)/ccsv6/tools/compiler/ti-cgt-arm_5.2.4
+
+3. Run make command in current folder to build DSP1 and DSP2 hello examples. Output files are created under debug sub folders.
+
+ - ex01_hello\dsp1\bin\debug
+ - ex01_hello\dsp2\bin\debug
+4. Launch target configurations.
+
+5. Right click CortexA15_0 and connect target.
+
+6. On CCS --> Scripts --> AM572 Multicore Initialization --> Run AM572x Multicore EnableAllCore
+
+7. Initialize DDR configuration. On CCS --> Scripts --> DDR configurations --> AM572_DDR3_532MHz_config
+
+8. Load DSP1 Hello Example hello_dsp1.xe66 (writer)file on DSP1.
+
+9. Load DSP2 Hello Example hello_dsp2.xe66 (reader) file on DSP2.
+
+10. Run both DSP1 and DSP2.
+
+11. On CCS --> Tools --> RTOS Object view (ROV).
+
+12. Suspend (halt) DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages.
+|
+
 .. Image:: ../images/Hello_dsp2.png
-|      #### BIOS-side dependencies  | >`__                              |
-| ####                              |                                   |
-|      BIOS_INSTALL_DIR=$(DEPOT)/bi | .. raw:: html                     |
-| os_6_41_04_54                     |                                   |
-|      IPC_INSTALL_DIR=$(DEPOT)/ipc |    </div>                         |
-| _3_36_01_11                       |                                   |
-.. Image:: ../images/Hello_dsp2.png
-| tools_3_31_02_38                  |                                   |
-|                                   | .. raw:: html                     |
-|      #### BIOS-side toolchains ## |                                   |
-| ##                                |    </div>                         |
-|      gnu.targets.arm.A15F=$(DEPOT |                                   |
-| )/ccsv6/tools/compiler/gcc-arm-no | .. raw:: html                     |
-| ne-eabi-4_8-2014q3                |                                   |
-|      ti.targets.elf.C66=$(DEPOT)/ |    </div>                         |
-| ti-cgt-c6000_8.0.3                |                                   |
-|      ti.targets.arm.elf.M4=$(DEPO | .. raw:: html                     |
-| T)/ccsv6/tools/compiler/ti-cgt-ar |                                   |
-| m_5.2.4                           |    </div>                         |
-|      ti.targets.arp32.elf.ARP32_f |                                   |
-| ar=$(DEPOT)/ccsv6/tools/compiler/ |                                   |
-| ti-cgt-arm_5.2.4                  |                                   |
-|                                   |                                   |
-|                                   |                                   |
-| 3. Run make command in current    |                                   |
-| folder to build DSP1 and DSP2     |                                   |
-| hello examples. Output files are  |                                   |
-| created under debug sub folders.  |                                   |
-|                                   |                                   |
-| -  ex01_hello\dsp1\bin\debug      |                                   |
-| -  ex01_hello\dsp2\bin\debug      |                                   |
-|                                   |                                   |
-| 4. Launch target configurations.  |                                   |
-|                                   |                                   |
-| 5. Right click CortexA15_0 and    |                                   |
-| connect target.                   |                                   |
-|                                   |                                   |
-| 6. On CCS --> Scripts --> AM572   |                                   |
-| Multicore Initialization --> Run  |                                   |
-| AM572x Multicore EnableAllCore    |                                   |
-|                                   |                                   |
-| 7. Initialize DDR configuration.  |                                   |
-| On CCS --> Scripts --> DDR        |                                   |
-| configurations -->                |                                   |
-| AM572_DDR3_532MHz_config          |                                   |
-|                                   |                                   |
-| 8. **Load DSP1** Hello Example    |                                   |
-| hello_dsp1.xe66 (writer)file on   |                                   |
-| DSP1.                             |                                   |
-|                                   |                                   |
-| 9. **Load DSP2** Hello Example    |                                   |
-| hello_dsp2.xe66 (reader) file on  |                                   |
-| DSP2.                             |                                   |
-|                                   |                                   |
-| 10. Run both DSP1 and DSP2.       |                                   |
-|                                   |                                   |
-| 11. On CCS --> Tools --> RTOS     |                                   |
-| Object view (ROV).                |                                   |
-|                                   |                                   |
-| 12. Suspend (halt) DSP1 to view   |                                   |
-| test messages on ROV Viewable     |                                   |
-| Modules -->LoggerBuf `Click here  |                                   |
-| to view ROV log messages          |                                   |
-| screenshot <http://ap-fpdsp-swapp |                                   |
-| s.dal.design.ti.com/index.php/Fil |                                   |
-.. Image:: ../images/Hello_dsp2.png
-|                                   |                                   |
-| 13. Suspend (halt) DSP2 and click |                                   |
-| on ROV icon to view log messages. |                                   |
-+-----------------------------------+-----------------------------------+
+
+|
+13. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 
 | 
 
@@ -193,67 +150,41 @@ The HOST processor is configured as client application. The client
 creates an anonymous message queue. The client also creates and manages
 the message pool. The client's return address is set in the message
 header for each message before sending it to the server.
-
-| 
-| 1. Change to messageQ folder example by enter: cd
+ 
+1. Change to messageQ folder example by enter: cd
   ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex02_messageQ**
 
 2. Open readme.txt file and follow build instructions step-by-step. Make
 sure there is no spaces between variable name and its value. See Hello
 World example environment varaible settings for reference.
 
-+-----------------------------------+-----------------------------------+
-| 3. Run make command in current    | .. raw:: html                     |
-| folder to build DSP1 and HOST     |                                   |
-| hello examples. Output files are  |    <div class="thumb tright">     |
-| created under debug sub folders   |                                   |
-|                                   | .. raw:: html                     |
-| -  ex02_messageq\host\bin\debug : |                                   |
-|    HOST A15 binary                |    <div class="thumbinner"        |
-| -  ex02_messageq\dsp1\bin\debug : |    style="width:461px;">          |
-|    C66x binary                    |                                   |
-|                                   | |image1|                          |
-| 4. Launch target configurations.  |                                   |
-| Note that BH560USB_M is emulator  | .. raw:: html                     |
-| is used to connect to AM572X EVM. |                                   |
-|                                   |    <div class="thumbcaption">     |
-| 5. Right click CortexA15_0 and    |                                   |
-| connect target.                   | .. raw:: html                     |
-|                                   |                                   |
-| 6. On CCS --> Scripts --> AM572   |    <div class="magnify">          |
-| Multicore Initialization --> Run  |                                   |
+3. Run make command in current folder to build DSP1 and HOST hello examples. Output files are created under debug sub folders
+
+ - ex02_messageq\host\bin\debug : HOST A15 binary
+ - ex02_messageq\dsp1\bin\debug : C66x binary
+4. Launch target configurations. Note that BH560USB_M is emulator is used to connect to AM572X EVM.
+
+5. Right click CortexA15_0 and connect target.
+
+6. On CCS --> Scripts --> AM572 Multicore Initialization --> Run AM572x Multicore EnableAllCore
+
+7. Initialize DDR configuration. On CCS --> Scripts --> DDR configurations --> AM572_DDR3_532MHz_config
+
+8. **Load DSP1** messageQ Example out file(server_dsp1.xe66) onto DSP1.
+
+9. **Load HOST** messageQ Example out file(app_host.xa15fg) onto ARM CortexA15_0.
+
+10. Run both DSP1 and HOST.
+
+11. On CCS --> Tools --> RTOS Object view (ROV).
+
+12. Suspend (halt) ARM Cortex_A15 to view test messages on ROV Viewable Modules -->LoggerBuf Refer the following ROV message queue screenshot
+|
+
 .. Image:: ../images/MesgQ_arm0.png
-|                                   | >`__                              |
-| 7. Initialize DDR configuration.  |                                   |
-| On CCS --> Scripts --> DDR        | .. raw:: html                     |
-| configurations -->                |                                   |
-| AM572_DDR3_532MHz_config          |    </div>                         |
-|                                   |                                   |
-.. Image:: ../images/MesgQ_arm0.png
-| out file(server_dsp1.xe66) onto   |                                   |
-| DSP1.                             | .. raw:: html                     |
-|                                   |                                   |
-| 9. **Load HOST** messageQ Example |    </div>                         |
-| out file(app_host.xa15fg) onto    |                                   |
-| ARM CortexA15_0.                  | .. raw:: html                     |
-|                                   |                                   |
-| 10. Run both DSP1 and HOST.       |    </div>                         |
-|                                   |                                   |
-| 11. On CCS --> Tools --> RTOS     | .. raw:: html                     |
-| Object view (ROV).                |                                   |
-|                                   |    </div>                         |
-| 12. Suspend (halt) ARM Cortex_A15 |                                   |
-| to view test messages on ROV      |                                   |
-| Viewable Modules -->LoggerBuf     |                                   |
-| `click here to view ROV message   |                                   |
-| queue                             |                                   |
-| screenshot <http://ap-fpdsp-swapp |                                   |
-| s.dal.design.ti.com/index.php/Fil |                                   |
-.. Image:: ../images/MesgQ_arm0.png
-|                                   |                                   |
-| 13. Suspend (halt) DSP1 and click |                                   |
-| on ROV icon to view log messages. |                                   |
-+-----------------------------------+-----------------------------------+
+
+|
+13. Suspend (halt) DSP1 and click on ROV icon to view log messages.
 
 | 
 
@@ -287,68 +218,35 @@ Since DSP1 will need to wait on both the message queue and the notify
 queue, we introduce events. The SYS/BIOS event object can be used to
 wait on multiple input sources.
 
-| 
 
-+-----------------------------------+-----------------------------------+
-| 1. Change to notify_peer folder   | .. raw:: html                     |
-| example by enter: cd              |                                   |
-| ~/ti/ipc_nn_nn_nn_nn/examples/DRA |    <div class="thumb tright">     |
-| 7xx_bios_elf/\ **ex13_notifypeer* |                                   |
-| *                                 | .. raw:: html                     |
-|                                   |                                   |
-| 2. Open readme.txt file and       |    <div class="thumbinner"        |
-| follow build instructions         |    style="width:462px;">          |
-| step-by-step. Make sure there is  |                                   |
-| no spaces between variable name   | |image2|                          |
-| and its value.                    |                                   |
-|                                   | .. raw:: html                     |
-| 3. Run make command in current    |                                   |
-| folder to build DSP1 and HOST     |    <div class="thumbcaption">     |
-| notifypeer examples. Output files |                                   |
-| are created under debug           | .. raw:: html                     |
-| subfolder.                        |                                   |
-|                                   |    <div class="magnify">          |
-| 4. Launch target configurations.  |                                   |
-| Note that BH560USB_M is emulator  | ` </index.php/File:Notify_peer_ar |
-| is used to connect to AM572X EVM. | m0.png>`__                        |
-|                                   |                                   |
-| 5. Right click CortexA15_0 and    | .. raw:: html                     |
-| connect target.                   |                                   |
-|                                   |    </div>                         |
-| 6. On CCS --> Scripts --> AM572   |                                   |
+1. Change to notify_peer folder example by enter: cd ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex13_notifypeer**
+
+2. Open readme.txt file and follow build instructions step-by-step. Make sure there is no spaces between variable name and its value.
+
+3. Run make command in current folder to build DSP1 and HOST notifypeer examples. Output files are created under debug subfolder.
+
+4. Launch target configurations. Note that BH560USB_M is emulator is used to connect to AM572X EVM.
+
+5. Right click CortexA15_0 and connect target.
+
+6. On CCS --> Scripts --> AM572 Multicore Initialization --> Run AM572x Multicore EnableAllCore
+
+7. Initialize DDR configuration. On CCS --> Scripts --> DDR configurations --> AM572_DDR3_532MHz_config
+
+8. **Load DSP1** notifypeer Example out file on DSP1.
+
+9. **Load HOST** notifypeer Example out file on ARM CortexA15_0.
+
+10. Run both DSP1 and CortexA15_0.
+
+11. On CCS --> Tools --> RTOS Object view (ROV).
+
+12. Suspend (halt) ARM CortexA15_0 to view test messages on ROV Viewable Modules -->LoggerBuf. Refer the following image of ROV log messages
+|
+
 .. Image:: ../images/Notify_peer_arm0.png
-| AM572x Multicore EnableAllCore    |                                   |
-|                                   | .. raw:: html                     |
-| 7. Initialize DDR configuration.  |                                   |
-| On CCS --> Scripts --> DDR        |    </div>                         |
-| configurations -->                |                                   |
-| AM572_DDR3_532MHz_config          | .. raw:: html                     |
-|                                   |                                   |
-| 8. **Load DSP1** notifypeer       |    </div>                         |
-| Example out file on DSP1.         |                                   |
-|                                   | .. raw:: html                     |
-| 9. **Load HOST** notifypeer       |                                   |
-| Example out file on ARM           |    </div>                         |
-| CortexA15_0.                      |                                   |
-|                                   |                                   |
-| 10. Run both DSP1 and             |                                   |
-| CortexA15_0.                      |                                   |
-|                                   |                                   |
-| 11. On CCS --> Tools --> RTOS     |                                   |
-| Object view (ROV).                |                                   |
-|                                   |                                   |
-| 12. Suspend (halt) ARM            |                                   |
-| CortexA15_0 to view test messages |                                   |
-| on ROV Viewable Modules           |                                   |
-| -->LoggerBuf `click here to view  |                                   |
-| ROV log messages                  |                                   |
-| screenshot <http://ap-fpdsp-swapp |                                   |
-| s.dal.design.ti.com/index.php/Fil |                                   |
-.. Image:: ../images/Notify_peer_arm0.png
-|                                   |                                   |
-| 13. Suspend (halt) DSP2 and click |                                   |
-| on ROV icon to view log messages. |                                   |
-+-----------------------------------+-----------------------------------+
+
+13. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 
 | 
 
@@ -379,8 +277,6 @@ message to be returned. This is repeated for each server in the system
 Note that presently EVE is not yet supported and therefore,
 DSP1/DSP2/HOST are built for testing.
 
-| 
-
 1. Change to ping folder example by enter: cd
 ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex11_ping**
 
@@ -389,59 +285,35 @@ sure there is no space between variable name and its value.
 
 3. Open makefile and remove EVE and IPU from PROC build list.
 
-+-----------------------------------+-----------------------------------+
-| 4. Run make command in current    | .. raw:: html                     |
-| folder to build DSP1, DSP2 and    |                                   |
-| HOST ping examples. Output files  |    <div class="thumb tright">     |
-| are created under debug           |                                   |
-| subfolder.                        | .. raw:: html                     |
-|                                   |                                   |
-| 5. Launch target configurations.  |    <div class="thumbinner"        |
-| Note that BH560USB_M is emulator  |    style="width:502px;">          |
-| is used to connect to AM572X EVM. |                                   |
-|                                   | |image3|                          |
-| 6. Right click CortexA15_0 and    |                                   |
-| connect target.                   | .. raw:: html                     |
-|                                   |                                   |
-| 7. On CCS --> Scripts --> AM572   |    <div class="thumbcaption">     |
-| Multicore Initialization --> Run  |                                   |
-| AM572x Multicore EnableAllCore    | .. raw:: html                     |
-|                                   |                                   |
-| 8. Initialize DDR configuration.  |    <div class="magnify">          |
-| On CCS --> Scripts --> DDR        |                                   |
+4. Run make command in current folder to build DSP1, DSP2 and HOST ping examples. Output files are created under debug subfolder.
+
+5. Launch target configurations. Note that BH560USB_M is emulator is used to connect to AM572X EVM.
+
+6. Right click CortexA15_0 and connect target.
+
+7. On CCS --> Scripts --> AM572 Multicore Initialization --> Run AM572x Multicore EnableAllCore
+
+8. Initialize DDR configuration. On CCS --> Scripts --> DDR configurations --> AM572_DDR3_532MHz_config
+
+9. **Load DSP1** Ping Example out file on DSP1.
+
+10. **Load DSP2** Ping Example out file on DSP2.
+
+10 **Load HOST** ping Example onto ARM CortexA15_0
+
+11. Run DSP1, DSP2, and HOST images.
+
+12. On CCS --> Tools --> RTOS Object view (ROV).
+
+13. Halt DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages
+|
+
 .. Image:: ../images/Ping_dsp1.png
-| AM572_DDR3_532MHz_config          | `__                               |
-|                                   |                                   |
-| 9. **Load DSP1** Ping Example out | .. raw:: html                     |
-| file on DSP1.                     |                                   |
-|                                   |    </div>                         |
-| 10. **Load DSP2** Ping Example    |                                   |
-.. Image:: ../images/Ping_dsp1.png
-|                                   |                                   |
-| 10 **Load HOST** ping Example     | .. raw:: html                     |
-| onto ARM CortexA15_0              |                                   |
-|                                   |    </div>                         |
-| 11. Run DSP1, DSP2, and HOST      |                                   |
-| images.                           | .. raw:: html                     |
-|                                   |                                   |
-| 12. On CCS --> Tools --> RTOS     |    </div>                         |
-| Object view (ROV).                |                                   |
-|                                   | .. raw:: html                     |
-| 13. Halt DSP1 to view test        |                                   |
-| messages on ROV Viewable Modules  |    </div>                         |
-| -->LoggerBuf `click here to view  |                                   |
-| ROV log messages                  |                                   |
-| screenshot <http://ap-fpdsp-swapp |                                   |
-| s.dal.design.ti.com/index.php/Fil |                                   |
-.. Image:: ../images/Ping_dsp1.png
-|                                   |                                   |
-| 14. Suspend (halt) DSP2 and click |                                   |
-| on ROV icon to view log messages. |                                   |
-|                                   |                                   |
-| 15. Suspend (halt) ARM            |                                   |
-| CortexA15_0 and click on ROV icon |                                   |
-| to view log messages.             |                                   |
-+-----------------------------------+-----------------------------------+
+
+|
+14. Suspend (halt) DSP2 and click on ROV icon to view log messages.
+
+15. Suspend (halt) ARM CortexA15_0 and click on ROV icon to view log messages.
 
 | 
 

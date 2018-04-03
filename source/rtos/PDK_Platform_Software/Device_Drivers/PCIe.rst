@@ -152,47 +152,44 @@ The overall components are:
 |                 |                 | SoC!            | printed output  |
 |                 |                 |                 | goes to serial  |
 |                 |                 |                 | console.        |
-|                 |                 | |               |                 |
-|                 |                 | |               |                 |
 |                 |                 |                 |                 |
 |                 |                 | Connect two     |                 |
 |                 |                 | K2G  EVMs J5    |                 |
 |                 |                 | using a         |                 |
 |                 |                 | `MODIFIED`_     |                 |
-|                 |                 |   male-male     |                 |
-|                 |                 |   crossover     |                 |
-|                 |                 |   PCIe x1 cable |                 |
-|                 |                 |   and optional  |                 |
-|                 |                 |   straight-thro |                 |
-|                 |                 | ugh             |                 |
-|                 |                 |   extender. We  |                 |
-|                 |                 |   used a        |                 |
-|                 |                 |   one-lane      |                 |
-|                 |                 |   cross cable.  |                 |
-|                 |                 | | Ensure that   |                 |
-|                 |                 |   jumper J15 is |                 |
-|                 |                 |   positioned to |                 |
-|                 |                 |   the left hand |                 |
-|                 |                 |   two pins as   |                 |
-|                 |                 |   viewed with   |                 |
-|                 |                 |   "J15"         |                 |
-|                 |                 |   silkscreen    |                 |
-|                 |                 |   right side up |                 |
-|                 |                 |   (pin 0 isn't  |                 |
-|                 |                 |   clearly       |                 |
-|                 |                 |   marked). In   |                 |
-|                 |                 |   the right     |                 |
-|                 |                 |   hand          |                 |
-|                 |                 |   position, the |                 |
-|                 |                 |   PCIe PLL will |                 |
-|                 |                 |   NOT get       |                 |
-|                 |                 |   clock.        |                 |
-|                 |                 | | Projects      |                 |
-|                 |                 |   available for |                 |
-|                 |                 |   C66 and A15.  |                 |
+|                 |                 | male-male       |                 |
+|                 |                 | crossover       |                 |
+|                 |                 | PCIe x1 cable   |                 |
+|                 |                 | and optional    |                 |
+|                 |                 | straight-through|                 |
+|                 |                 | extender. We    |                 |
+|                 |                 | used a          |                 |
+|                 |                 | one-lane        |                 |
+|                 |                 | cross cable.    |                 |
+|                 |                 | Ensure that     |                 |
+|                 |                 | jumper J15 is   |                 |
+|                 |                 | positioned to   |                 |
+|                 |                 | the left hand   |                 |
+|                 |                 | two pins as     |                 |
+|                 |                 | viewed with     |                 |
+|                 |                 | "J15"           |                 |
+|                 |                 | silkscreen      |                 |
+|                 |                 | right side up   |                 |
+|                 |                 | (pin 0 isn't    |                 |
+|                 |                 | clearly         |                 |
+|                 |                 | marked). In     |                 |
+|                 |                 | the right       |                 |
+|                 |                 | hand            |                 |
+|                 |                 | position, the   |                 |
+|                 |                 | PCIe PLL will   |                 |
+|                 |                 | NOT get         |                 |
+|                 |                 | clock.          |                 |
+|                 |                 | Projects        |                 |
+|                 |                 | available for   |                 |
+|                 |                 | C66 and A15.    |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| PCIE_idkAM571x_ | Packet Exchange | **IMPORTANT:**  | **AM571X        |
-| *armEdmaPktExam | over PCIe       | Cable must be   | >=REV1.3A       |
+| PCIE_idkAM571x_*| Packet Exchange | **IMPORTANT:**  | **AM571X        |
+| armEdmaPktExam  | over PCIe       | Cable must be   | >=REV1.3A       |
 | pleProject      | Benchmark       | `MODIFIED`_     | IDK** : One     |
 | *(Available     |                 | in order to     | board is        |
 | starting in     |                 | avoid damaging  | EP/other is RC; |
@@ -201,8 +198,8 @@ The overall components are:
 |                 |                 | SoC!            | data is         |
 |                 |                 |                 | exchanged.      |
 |                 |                 |                 | Produces same   |
-|                 |                 | |               | output as       |
-|                 |                 | |               | standard        |
+|                 |                 |                 | output as       |
+|                 |                 |                 | standard        |
 |                 |                 |                 | ExampleProject, |
 |                 |                 | Connect two     | except EP also  |
 |                 |                 | like            | prints packet   |
@@ -211,22 +208,21 @@ The overall components are:
 |                 |                 | EVMs J22        | results.        |
 |                 |                 | using a         |                 |
 |                 |                 | `MODIFIED`_     |                 |
-|                 |                 |   male-male     |                 |
-|                 |                 |   crossover     |                 |
-|                 |                 |   PCIe x4 cable |                 |
-|                 |                 |   and optional  |                 |
-|                 |                 |   straight-thro |                 |
-|                 |                 | ugh             |                 |
-|                 |                 |   extender. We  |                 |
-|                 |                 |   used a 4-lane |                 |
-|                 |                 |   cross cable.  |                 |
-|                 |                 | | Projects      |                 |
-|                 |                 |   available for |                 |
-|                 |                 |   A15 only.     |                 |
-|                 |                 |   >=REV1.3A EVM |                 |
-|                 |                 |   required (for |                 |
-|                 |                 |   x4 PCIe       |                 |
-|                 |                 |   connectors).  |                 |
+|                 |                 | male-male       |                 |
+|                 |                 | crossover       |                 |
+|                 |                 | PCIe x4 cable   |                 |
+|                 |                 | and optional    |                 |
+|                 |                 | straight-through|                 |
+|                 |                 | extender. We    |                 |
+|                 |                 | used a 4-lane   |                 |
+|                 |                 | cross cable.    |                 |
+|                 |                 | Projects        |                 |
+|                 |                 | available for   |                 |
+|                 |                 | A15 only.       |                 |
+|                 |                 | >=REV1.3A EVM   |                 |
+|                 |                 | required (for   |                 |
+|                 |                 | x4 PCIe         |                 |
+|                 |                 | connectors).    |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Remaining       | 2-device PCIe   | Connect two     | **6678, 6657,   |
 | PCIE_*ExamplePr | connection      | like C66x/K2x   | K2E, K2H,       |
@@ -270,7 +266,7 @@ The overall components are:
 
 General instructions for configuring multiple EVMs with any emulator
 type are available in
-`Multi-Emulator_Debug_with_CCS </index.php/Multi-Emulator_Debug_with_CCS>`__
+`Multi-Emulator_Debug_with_CCS <http://processors.wiki.ti.com/index.php/Multi-Emulator_Debug_with_CCS>`__
 
 .. rubric:: Detailed instructions to run example
    :name: detailed-instructions-to-run-example
@@ -380,8 +376,7 @@ Additional documentation can be found in:
 |                                   | .html                                       |
 +-----------------------------------+---------------------------------------------+
 | Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti           |
-|                                   | /drv/pcie/docs/ReleaseNotes_PCIE_           |
-|                                   | LLD.pdf                                     |
+|                                   | /drv/pcie/docs/ReleaseNotes_PCIE_LLD.pdf    |
 +-----------------------------------+---------------------------------------------+
 
 .. raw:: html
