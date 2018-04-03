@@ -57,6 +57,8 @@ Video Analytics
 Machine Vision
 **********************************
 
+.. include:: Examples_and_Demos/Optical_Flow_with_OpenVX.rst
+
 DLP 3D Scanner
 ==============
 
