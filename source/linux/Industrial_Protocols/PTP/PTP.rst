@@ -194,6 +194,39 @@ respectively:
     echo 1 > /sys/devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0/pps_enable
     echo 0 > /sys/devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0/pps_enable
 
+PPS Output Latency Configuration
+---------------------------------
+
+It should be possible to configure the latency of the 1PPS output of
+GMAC, PRU_ICSS to compensate for local propagation delay or for testing
+purpose. A new PTP interface has been defined and implemented to allow
+the PPS output latency to be adjusted in unit of ns.
+
+The PPS output latency adjustment called PPS Offset can be set through
+the command interface or as the port configuration parameter of linuxptp.
+
+To set PPS offset to -10ns on PRU-ICSS port, enter the following command:
+
+::
+
+    echo -10 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_offset
+
+
+To set PPS offset to 10ns on GMAC/CPTS port, enter the following command:
+
+::
+
+    echo 10 > /sys/devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0/pps_offset
+
+To configure the PPS offset of eth2 to 20ns, add the following line to
+the OC/BC configuration file
+
+::
+
+    [eth2]
+    ppsOffset 20
+
+
 .. _PLSDK_PTP_OC-label:
 
 PTP Ordinary Clock
