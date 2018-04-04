@@ -61,6 +61,7 @@ config:
 	cat source/common/conf.py source/${OS}/conf-${OS}.py > source/${OS}/conf.py
 	sed -i 's/SDKVERSION/${VERSION}/g' source/${OS}/conf.py
 	cp source/patch/footer.html source/_themes/sphinx_rtd_theme_ti/footer.html
+	cp source/patch/layout.html source/_themes/sphinx_rtd_theme_ti/layout.html
 
 html: 
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
