@@ -17,21 +17,7 @@ Power Management
 ================
 .. include:: Examples_and_Demos/Power_Management.rst
 
-Cryptography
-============
-.. include:: Examples_and_Demos/Cryptography.rst
-
-Hands on with QT
-================
-.. include:: Examples_and_Demos/Hands_on_with_QT.rst
-
-WLAN and Bluetooth
-==================
-.. include:: Examples_and_Demos/WLAN_and_Bluetooth.rst
-
-DSP offload with OpenCL
-=======================
-See http://downloads.ti.com/mctools/esd/docs/opencl/examples/index.html
+.. include::  Examples_and_Demos/AM335x_Power_Management_User_Guide.rst
 
 Accelerated Multimedia
 ======================
@@ -41,16 +27,32 @@ Graphics and Display
 ====================
 Refer to various SGX 3D demos and other Graphics applications at `Graphics & Display <Foundational_Components.html#processor-sdk-linux-graphics-and-display>`__ chapter.
 
+DSP offload with OpenCL
+=======================
+See http://downloads.ti.com/mctools/esd/docs/opencl/examples/index.html
+
+.. include:: Examples_and_Demos/Camera_Users_Guide.rst
+
+Cryptography
+============
+.. include:: Examples_and_Demos/Cryptography.rst
+
+WLAN and Bluetooth
+==================
+.. include:: Examples_and_Demos/WLAN_and_Bluetooth.rst
+
+Hands on with QT
+================
+.. include:: Examples_and_Demos/Hands_on_with_QT.rst
+
+
 **********************************
+Application Demos
+**********************************
+
 Video Analytics
-**********************************
+======================
 .. include:: Examples_and_Demos/Video_Analytics.rst
-
-**********************************
-Machine Vision
-**********************************
-
-.. include:: Examples_and_Demos/Optical_Flow_with_OpenVX.rst
 
 DLP 3D Scanner
 ==============
@@ -66,20 +68,19 @@ Barcode Reader
 ===============
 .. include:: Examples_and_Demos/Barcode.rst
 
-**********************************
-ROS and Radar
-**********************************
-.. include:: Examples_and_Demos/ROS_Radar.rst
-
-************************
 EVSE Demos
-************************
+===============
 
 This demo showcases Human Machine Interface (HMI) for Electric Vehicle Supply Equipment(EVSE) Charging Stations. More details can be found at http://www.ti.com/tool/TIDEP-0087
 
-************************
 Protection Relay Demo
-************************
+=======================
 
 Matrix UI provides out of box demo to showcase Human Machine Interface (HMI) for Protection Relays. More details can be found at http://www.ti.com/tool/TIDEP-0102
 
+
+.. include:: Examples_and_Demos/Optical_Flow_with_OpenVX.rst
+
+ROS and Radar
+===============
+.. include:: Examples_and_Demos/ROS_Radar.rst

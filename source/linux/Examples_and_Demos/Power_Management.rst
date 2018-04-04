@@ -11,7 +11,7 @@ your device.
 .. rubric:: Supported Devices
    :name: supported-devices-pm
 
-`**AM335x Power Management User
-Guide** <Examples_and_Demos.html#power-management>`__
+`AM335x Power Management User
+Guide <Examples_and_Demos.html#am335x-power-management-user-guide>`__
 
 -  Note: **BeagleBone** users click here.

@@ -2,6 +2,13 @@
 .. rubric:: Applications available by development platform
    :name: applications-available-by-development-platform
 
+There are a number of Example Applications provided within the Processor SDK for Linux. Below are the applications available on each platform and the User's Guides associated with each component.
+
+.. note::
+ The example applications below assume that you are using the default pinmux/profile configuration that the board ships with, unless otherwise noted in the individual application's User's Guide
+
+|
+
 .. csv-table::
    :header: "Applications", "AM335x EVM", "AM335x ICE", "AM335x SK","BeagleBone Black","AM437x EVM","AM437x Starter Kit","AM437x IDK","AM572x EVM","AM572x IDK","AM571x IDK","66AK2Hx EVMK2K EVM","K2Ex EVM","66AK2L06 EVM","K2G EVM","OMAP-L138 LCDK","Users Guide","Description"
 
