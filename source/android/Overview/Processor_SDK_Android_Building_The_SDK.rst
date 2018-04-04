@@ -39,9 +39,9 @@ EVM, AM571x IDK, or AM572x IDK.
 .. rubric:: Flashing to onboard eMMC
    :name: flashing-to-onboard-emmc
 
-| You can also use the top-level `setup.sh
-  script <Overview.html#run-setup-scripts>`__ to flash the
-  prebuilt release images to the eMMC of your EVM or IDK.
+You can also use the top-level `setup.sh
+script <Overview.html#run-setup-scripts>`__ to flash the
+prebuilt release images to the eMMC of your EVM or IDK.
 
 .. note::
 
@@ -290,8 +290,7 @@ boot.img)
     cd ~/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/board-support/aosp-6AM.1.3
     cp -v ../linux-4.4.x.../arch/arm/boot/zImage device/ti/am57xevm/kernel
 
-| 
-| Rebuild AFS to generate update images
+Rebuild AFS to generate update images
 
 ::
 
@@ -403,6 +402,4 @@ on the host machine
 
 -  **NOTE:** After the flashing is done, remove the external SD card and
    reboot the board.
-
-| 
 

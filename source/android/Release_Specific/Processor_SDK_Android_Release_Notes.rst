@@ -2,7 +2,6 @@
 Processor SDK Android Release Notes
 *******************************************
 
-
 Overview
 =======================
 

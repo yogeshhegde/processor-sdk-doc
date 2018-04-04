@@ -4,11 +4,11 @@ Run Setup Scripts
 .. rubric:: Overview
    :name: overview
 
-| After installation of the SDK on the Linux host, the setup script can
-  be run to flash the prebuilt images to the onboard eMMC. Some of the
-  tasks require administrator privileges. The script will prompt you
-  when these administrator privileges are required. The setup script
-  does the following things:
+After installation of the SDK on the Linux host, the setup script can
+be run to flash the prebuilt images to the onboard eMMC. Some of the
+tasks require administrator privileges. The script will prompt you
+when these administrator privileges are required. The setup script
+does the following things:
 
 -  Minicom setup (to create a serial connection to the board)
 -  u-boot setup (to configure the environment variables for the fastboot
@@ -25,8 +25,11 @@ To run the SDK's setup script the following steps should be taken first:
    to the dialout group. A Minicom script is used to configure the
    u-boot environment variables as well as put the device into fastboot
    mode.
-   **sudo apt-get install minicom**
-   **sudo usermod -a -G dialout $username**
+   
+   .. code-block:: bash
+      sudo apt-get install minicom
+      sudo usermod -a -G dialout $username
+
 #. Run the **create-sdcard.sh** script provided in the SDK's **bin/**
    directory
    This will create an SD card using the prebuilt images, including a
@@ -68,7 +71,10 @@ directory. By default, this directory has a name that has the form
 ti-processor-sdk-android-am57xx;-<Version>. Navigate to that
 ti-processor-sdk-android install directory. Then run the script:
 
-**./setup.sh**
+.. code-block:: bash
+
+   ./setup.sh
+
 .. rubric:: Detailed description of what the script is doing
    :name: detailed-description-of-what-the-script-is-doing
 

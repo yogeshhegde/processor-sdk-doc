@@ -2,8 +2,8 @@
 Processor SDK Android Directory Structure
 ********************************************
 
-| The Processor SDK for Android contains the following top-level
-  directories and files
+The Processor SDK for Android contains the following top-level
+directories and files
 
 .. Image:: ../images/Directory_structure_android.PNG
 
@@ -20,7 +20,7 @@ Processor SDK Android devices.
    out of tree drivers.
 -  **docs** - Contains various SDK documentation such as the software
    manifest and additional user's guide. This is also the location where
-   you can find the *training* directory with the device training
+   you can find the **training** directory with the device training
    materials.
 -  **filesystem** -
 -  **Makefile** - Provides build targets for many of the SDK components

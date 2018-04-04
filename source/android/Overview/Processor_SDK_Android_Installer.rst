@@ -4,56 +4,48 @@ Install the Android SDK
 .. rubric:: Overview
    :name: overview
 
-| The Processor SDK Installer
-  (ti-processor-sdk-android-am57xx-evm-xx.xx.xx.xx-Linux-x86-Install.bin)
-  will install the necessary components to start your development on the
-  TI microprocessor. The SDK consists of source for the universal
-  bootloader (u-boot), the Linux kernel, toolchain and board support
-  package, ease of use scripts and documentation. The Android file
-  system sources can also be cloned to the SDK using the provided repo
-  tool and manifest file.
-| The Processor SDK was built and tested against a specific Linux
-  Distribution name and version, Ubuntu 14.04. Note this **does not**
-  prevent the user from installing the SDK on other Linux distributions.
+The Processor SDK Installer
+(ti-processor-sdk-android-am57xx-evm-xx.xx.xx.xx-Linux-x86-Install.bin)
+will install the necessary components to start your development on the
+TI microprocessor. The SDK consists of source for the universal
+bootloader (u-boot), the Linux kernel, toolchain and board support
+package, ease of use scripts and documentation. The Android file
+system sources can also be cloned to the SDK using the provided repo
+tool and manifest file.
+The Processor SDK was built and tested against a specific Linux
+Distribution name and version, Ubuntu 14.04. Note this **does not**
+prevent the user from installing the SDK on other Linux distributions.
 
 | 
 
 .. rubric:: How to Get the SDK Installer
    :name: how-to-get-the-sdk-installer
 
-| Download from the `Android SDK download
-  page <http://software-dl.ti.com/processor-sdk-android/esd/AM57X/latest/index_FDS.html>`__.
-  This will always host the latest version of SDK.
+Download from the `Android SDK download
+page <http://software-dl.ti.com/processor-sdk-android/esd/AM57X/latest/index_FDS.html>`__.
+This will always host the latest version of SDK.
 
 | 
 
 .. rubric:: How to Run the SDK Installer
    :name: how-to-run-the-sdk-installer
 
-| Make sure that the execute permissions are set. Bring up a terminal
-  window and change directories to the where the installer is located
-  (probably the Downloads directory if downloaded) and run the following
-  commands:
+Make sure that the execute permissions are set. Bring up a terminal
+window and change directories to the where the installer is located
+(probably the Downloads directory if downloaded) and run the following
+commands:
 
-**chmod +x
-./ti-processor-sdk-android-am57xx-evm-xx.xx.xx.xx-Linux-x86-Install.bin**
-**./ti-processor-sdk-android-am57xx-evm-xx.xx.xx.xx-Linux-x86-Install.bin**
-| 
-| Alternatively, you can give execute permissions and run the SDK
-  Installer by double clicking on it within your Linux host PC.
+.. code-block:: bash
+   
+   chmod +x
+   ./ti-processor-sdk-android-am57xx-evm-xx.xx.xx.xx-Linux-x86-Install.bin**
 
-.. raw:: html
+Alternatively, you can give execute permissions and run the SDK
+Installer by double clicking on it within your Linux host PC.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If nothing seems to happen, you are probably running a 32-bit version of
-Linux. The installer is 64-bit, and will not execute properly.
-
-.. raw:: html
-
-   </div>
+.. note::
+   If nothing seems to happen, you are probably running a 32-bit version of
+   Linux. The installer is 64-bit, and will not execute properly.
 
 | 
 
@@ -63,9 +55,10 @@ Linux. The installer is 64-bit, and will not execute properly.
 Invoking the installer with argument --help will list available options
 for the installer (e.g. text installer, etc.):
 
-**./ti-processor-sdk-linux-[platformName]-evm-xx.xx.xx.xx-Linux-x86-Install.bin
---help**
-| 
+.. code-block:: bash
+   
+   ./ti-processor-sdk-linux-[platformName]-evm-xx.xx.xx.xx-Linux-x86-Install.bin --help
+
 
 .. rubric:: SDK Installer Execution Steps
    :name: sdk-installer-execution-steps
@@ -92,5 +85,4 @@ In this particular example the name of the user is 'sitara'.
 
 .. Image:: ../images/Processor_sdk_android_select_directory.png
 
-| 
 

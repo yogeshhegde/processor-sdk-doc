@@ -8,8 +8,8 @@ The Android SDK includes a script in the **<ANDROID SDK INSTALL
 DIR>/bin** directory named **create-sdcard.sh**. The purpose of this
 script is to create SD cards for the following high-level use case:
 
-#. Create the `**SD card using default
-   images** <#sd-card-using-default-images>`__ from the Processor SDK
+#. Create the `SD card using default
+   images <#sd-card-using-default-images>`__ from the Processor SDK
    for Android
 
 The script will give you information about each step, but the following
@@ -26,7 +26,10 @@ The **create-sdcard.sh** script can be run from any location but must be
 run with **root** permissions. This usually means using the **sudo**
 command to start execution of the script. For example:
 
-**sudo <ANDROID SDK INSTALL DIR>/bin/create-sdcard.sh**
+.. code-block:: bash
+
+   sudo <ANDROID SDK INSTALL DIR>/bin/create-sdcard.sh
+
 If you fail to execute the script without root permissions you will
 receive a message that root permissions are required and the script will
 exit.
@@ -49,19 +52,20 @@ SD card. For example if the output looks like:
      
     Enter Device Number: 
 
-You would enter **1** to select the *sdb* device
+You would enter **1** to select the **sdb** device
 
-**NOTE**: For most common installations, this script works fine.
-However, if you are using more advanced disk slicing and volume
-management, the presented list of device nodes are off by one; in the
-best case (picking the last item) it will flag a range error, and in the
-worst case (anything in the middle) the wrong DASD can be destroyed. The
-problem originates when it attempts to determine the $ROOTDRIVE to
-"mask" the volume where "/" is mounted from the selection list using a
-"grep -v $ROOTDRIVE" For the naive partitioning case, its heuristic is
-fine, yielding something like "sda" --- but for LVM, it grabs some chunk
-of the device name, e.g. "mapp" (out of "/dev/mapper/kubuntu--vg-root on
-/ type ...")
+.. note::
+   For most common installations, this script works fine.
+   However, if you are using more advanced disk slicing and volume
+   management, the presented list of device nodes are off by one; in the
+   best case (picking the last item) it will flag a range error, and in the
+   worst case (anything in the middle) the wrong DASD can be destroyed. The
+   problem originates when it attempts to determine the $ROOTDRIVE to
+   "mask" the volume where "/" is mounted from the selection list using a
+   "grep -v $ROOTDRIVE" For the naive partitioning case, its heuristic is
+   fine, yielding something like "sda" --- but for LVM, it grabs some chunk
+   of the device name, e.g. "mapp" (out of "/dev/mapper/kubuntu--vg-root on
+   / type ...")
 
 .. rubric:: Re-Partitioning the SD Card
    :name: re-partitioning-the-sd-card
@@ -128,8 +132,8 @@ SDK for Android.
 #. The SD card you wish to create is inserted into the host system and
    has a size sufficiently large to hold at least the bootloaders,
    kernel, and Android file system.
-#. You have started running the script as detailed in the `**Common
-   Steps** <#common-steps>`__ section above.
+#. You have started running the script as detailed in the `Common
+   Steps <#common-steps>`__ section above.
 
 .. rubric:: Choose Install Pre-built Images
    :name: choose-install-pre-built-images
@@ -169,8 +173,4 @@ images from the SDK. If you choose **n** then the script will exit.
 You should execute this script from within the SDK so the script can
 determine the SDK path automatically. The script will start copying the
 contents to the SD card. Once the files are copied the script will exit.
-
-| 
-
-| 
 
