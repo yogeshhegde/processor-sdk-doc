@@ -249,7 +249,7 @@ which you can start development.
    .. note::
       This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
       platforms, power up the EVM and stop at the U-boot prompt as
-      described in :ref:`processor-sdk-linux-program-evm-verifying-nor`
+      described in `Program EVM User Guide`_
 
 
 #. **Run the Setup Script** - Once the SDK has been installed, `Run
