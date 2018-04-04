@@ -49,6 +49,15 @@ Target
 **********************************
 Host
 **********************************
+
+How to Develop with 3D Graphics
+===================================
+Please refer to `Graphics & Display <Foundational_Components.html#processor-sdk-linux-graphics-and-display>`__ chapter for details.
+
+How to Develop accelerated Multimedia using GStreamer on AM57xx
+=================================================================
+Please refer to `Multimedia <Foundational_Components.html#processor-sdk-linux-multimedia>`__ chapter for details.
+
 .. Build a Ubuntu Linux host under VMware
 .. ==================================================================
 .. include:: How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware.rst
@@ -90,6 +99,16 @@ Preventing BeagleBone board reset on JTAG Connect
 .. Erase Flash for AM335x ICE v2
 .. ==================================================================
 .. include:: How_to_Guides/Host/AM335x_ICEv2_flash_erase.rst
+
+
+Processor SDK IPC Quick Start Guide
+======================================
+Please refer to `IPC Quick Started Guide  <Foundational_Components.html#ipc-quick-start-guide>`__ chapter for details.
+
+Create DSP and IPU firmware using PDK drivers and IPC to load from ARM Linux
+=============================================================================
+Please refer to `IPC on AM57xx <Foundational_Components.html#ipc-for-am57xx>`__ chapter for details.
+
 
 
 .. Understand and Build Boot Monitor for Keystone2
