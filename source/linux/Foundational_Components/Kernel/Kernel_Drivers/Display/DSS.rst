@@ -37,86 +37,22 @@ which encode the raw pixel data to standard display signals, like HDMI
 or MIPI DPI. In addition to the SoC's DSS, boards often contain external
 encoders (for example, DPI to DVI encoder) and display panels.
 
-.. raw:: html
-
-   <div class="thumb tright">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:402px;">
-
-|image0|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
+|
 
 .. Image:: ../images/DSS_Example.png
-
-.. raw:: html
-
-   </div>
 
 Simplified example setup where two overlays are merged into one output,
 which is encoded into DSI, then to LVDS, and shown on an LVDS panel.
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div class="thumb tright">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:402px;">
-
-|image1|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
+|
 
 .. Image:: ../images/DSS_HW.png
-
-.. raw:: html
-
-   </div>
 
 An overview of the DSS hardware. The arrows show how ovlerlays/pipelines
 are connected to overlay managers, which are further connected to
 encoders, which finally create an encoded pixel stream for display on to
 LCD or TV. The different colors of the blocks show the new sub-blocks
 added in subsequent DSS revisions
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: Display Controller (DISPC)
    :name: display-controller-dispc
