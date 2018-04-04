@@ -299,8 +299,6 @@ Gstreamer test pipeline:
 .. rubric:: Running a gstreamer pipeline
    :name: running-a-gstreamer-pipeline
 
-GStreamer v1.6 is supported in Processor SDK.
-
 Gstreamer pipelines can also run from command line. In order to do so,
 exit Weston by pressing Ctrl-Alt-Backspace from the keyboard which
 connects to the EVM. Then, if the LCD screen stays in "Please wait...",
@@ -308,9 +306,9 @@ press Ctrl-Alt-F1 to go to the command line on LCD console. After that,
 the command line can be used from serial console, SSH console, or LCD
 console.
 
-| One can run an audio video file using the gstreamer playbin from the
-  console. Currently, the supported Audio/video sink is kmssink,
-  waylandsink and alsassink.
+One can run an audio video file using the gstreamer playbin from the
+console. Currently, the supported Audio/video sink is kmssink,
+waylandsink and alsassink.
 
 ::
 
@@ -323,9 +321,8 @@ console.
       1. refer Wayland/Weston to start the weston
       2. target #  gst-launch-1.0 playbin uri=file:///<path_to_file> video-sink=waylandsink audio-sink=alsasink
 
-| 
-| The following pipelines show how to use vpe for scaling and color
-  space conversion.
+The following pipelines show how to use vpe for scaling and color
+space conversion.
 
 ::
 
@@ -340,17 +337,14 @@ console.
      (int)1280, height=(int)720' ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)720, height=(int)480' \
      ! kmssink
 
-::
+.. note::
+   1. While using playbin for playing the stream, vpe plugin is automatically picked up. However vpe cannot be used 
+      with playbin for scaling. For utilizing scaling capabilities of vpe, using manual pipeline given above is recommended.
+   2. Waylandsink and Kmssink uses the cropping metadata set on buffers and does not require vpe plugin for cropping
 
-    Note: 
-      1. While using playbin for playing the stream, vpe plugin is automatically picked up. However vpe cannot be used with playbin for scaling.
-    For utilizing scaling capabilities of vpe, using manual pipeline given above is recommended.
-      2. Waylandsink and Kmssink uses the cropping metadata set on buffers and does not require vpe plugin for cropping
-
-| 
-| The following pipelines show how to use v4l2src and ducatimpeg4enc
-  elements to capture video from VIP and encode captured video
-  respectively.
+The following pipelines show how to use v4l2src and ducatimpeg4enc
+elements to capture video from VIP and encode captured video
+respectively.
 
 ::
 
@@ -417,17 +411,16 @@ Below provides more gstreamer pipeline examples.
 
 1. File to file video encoding pipeline:
 
-::
+   ::
 
     target #  gst-launch-1.0 filesrc location=waterfall-352-288-nv12-inp.yuv ! videoparse width=352 height=288 format=nv12 ! video/x-raw, width=352, height=288 ! ducatih264enc ! filesink location=waterfall-352-288-nv12-inp_gst.h264
 
-The cap filter of "video/x-raw, width=352, height=288" is needed in this
-pipeline to specify the width and height. Otherwise, variable width and
-height are configured for the encoder and the encoded output can be
-corrupted.
+   The cap filter of "video/x-raw, width=352, height=288" is needed in this
+   pipeline to specify the width and height. Otherwise, variable width and
+   height are configured for the encoder and the encoded output can be
+   corrupted.
 
-| 
-| 2. ARM H265 (HEVC) decoding pipeline
+2. ARM H265 (HEVC) decoding pipeline
 
 ::
 
@@ -439,9 +432,9 @@ corrupted.
 
     target #  gst-launch-1.0 filesrc location=<file>.265 ! 'video/x-raw, format=(string)NV12, framerate=(fraction)24/1, width=(int)1280, height=(int)720'  ! h265dec threads=1 ! videoconvert ! dsp66videokernel kerneltype=1 filtersize=9 lum-only=1 ! videoconvert ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)640, height=(int)480' ! kmssink
 
-This pipeline decodes an H265 clip on ARM A15, offloads the image
-processing task (Sobel 3x3 kernel) to DSP, and the processed clip is
-then re-sized and displayed.
+  This pipeline decodes an H265 clip on ARM A15, offloads the image
+  processing task (Sobel 3x3 kernel) to DSP, and the processed clip is
+  then re-sized and displayed.
 
 Processor SDK provides reference implementation of multiple image
 processing kernels, for which the pipeline can be configured as shown in
@@ -461,16 +454,15 @@ the table below.
 | User defined kernel with Sobel3x3 and luminance only   | dsp66videokernel kerneltype=4 arbkernel=Sobel3x3 filtersize=9 lum-only=1   |
 +--------------------------------------------------------+----------------------------------------------------------------------------+
 
-| 
-| 4. Audio/Video decoding with http input source
+4. Audio/Video decoding with http input source
 
 ::
 
     target #  gst-launch-1.0 playbin uri=http://<link_to_file> video-sink=kmssink audio-sink=alsasink
 
-| 5. Audio/Video decoding with rtsp input source
-| First, set up and run RTSP server on host. Then, run the following
-  command:
+5. Audio/Video decoding with rtsp input source
+   First, set up and run RTSP server on host. Then, run the following
+   command:
 
 ::
 
@@ -490,13 +482,13 @@ pipeline completes.
 .. rubric:: DSP C66x Gstreamer Plugin Internals
    :name: dsp-c66x-gstreamer-plugin-internals
 
-| TI's Processor SDK Linux supplies ARM based GStreamer plugin that
-  abstracts C66x DSP offload. The primary goal of this DSP GStreamer
-  plugin is to demonstrate how C66x can be used in GStreamer framework,
-  in combination with other GStreamer plugins. The plugin, under the
-  hood, uses OpenCL to dispatch to the C66x cores. This plugin provides
-  sample DSP kernels and can be used as a reference to develop user's
-  own DSP kernels.
+TI's Processor SDK Linux supplies ARM based GStreamer plugin that
+abstracts C66x DSP offload. The primary goal of this DSP GStreamer
+plugin is to demonstrate how C66x can be used in GStreamer framework,
+in combination with other GStreamer plugins. The plugin, under the
+hood, uses OpenCL to dispatch to the C66x cores. This plugin provides
+sample DSP kernels and can be used as a reference to develop user's
+own DSP kernels.
 
 .. rubric:: Overview of Existing Source Code
    :name: overview-of-existing-source-code
@@ -519,23 +511,7 @@ this shared object can be compiled and installed separately. This
 approach allows easier modification, implementation and maintenance once
 the APIs are fixed.
 
-.. raw:: html
-
-   <div class="center">
-
-.. raw:: html
-
-   <div class="floatnone">
-
 .. Image:: ../images/GST-dsp66-src.png
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 The image processing functions in oclconv are implemented via calls to
 DSP optimized imglib and vlib library functions, or implemented in
@@ -549,15 +525,15 @@ OpenCL C.
 .. rubric:: Adding Custom DSP Kernels
    :name: adding-custom-dsp-kernels
 
-| Using the existing oclconv as the template, more folders can be added
-  under ./src/kernels folder to create shared libraries with additional
-  wrappers (for functions invoked from GST plugin context) and OCL (host
-  side and DSP) kernels. Makefile in ./src/kernels folder will attempt
-  make in all sub-folders. Each sub-folder will provide independent
-  shared library object that can be invoked from gstdsp66 context (e.g.,
-  function calls in ./src/gstdsp66videokernel.c file). Individual shared
-  object libraries can be independently recompiled and updated in the
-  target file system.
+Using the existing oclconv as the template, more folders can be added
+under ./src/kernels folder to create shared libraries with additional
+wrappers (for functions invoked from GST plugin context) and OCL (host
+side and DSP) kernels. Makefile in ./src/kernels folder will attempt
+make in all sub-folders. Each sub-folder will provide independent
+shared library object that can be invoked from gstdsp66 context (e.g.,
+function calls in ./src/gstdsp66videokernel.c file). Individual shared
+object libraries can be independently recompiled and updated in the
+target file system.
 
 .. rubric:: Modifying the Existing Plugin
    :name: modifying-the-existing-plugin
@@ -580,9 +556,9 @@ can be added so that they can be passed from gst-launcher.
 -  arbkernel: provide a way to specify the name of the kernel invoked
    via OpenCL.
 
-| Details of a specific image processing kernel can also be modified,
-  e.g., the coefficients for Conv5x5 kernel, which are defined in
-  kernels/oclconv/conv.cl::kernel void Conv5x5() function.
+Details of a specific image processing kernel can also be modified,
+e.g., the coefficients for Conv5x5 kernel, which are defined in
+kernels/oclconv/conv.cl::kernel void Conv5x5() function.
 
 .. rubric:: Rebuilding and Installing the Plugin
    :name: rebuilding-and-installing-the-plugin
@@ -612,21 +588,21 @@ After the installation, the following files will be updated and/or
 added. Gstreamer framework includes seamless detection and registration
 of the new plugin.
 
--  */usr/lib/gstreamer-1.0/libgstdsp66.so*
--  */usr/lib/liboclconv.so*
--  *[optional] any additional shared library (as described in previous
-   section), should be placed in /usr/lib*
+-  /usr/lib/gstreamer-1.0/libgstdsp66.so
+-  /usr/lib/liboclconv.so
+-  [optional] any additional shared library (as described in previous
+   section), should be placed in /usr/lib
 
 | 
 
 .. rubric:: Rebuild IPUMM Firmware
    :name: rebuild-ipumm-firmware
 
-| Pre-built IPUMM firmware images can be located on target file system
-  at /lib/firmware/dra7-ipu2-fw.xem4. In case there is a need to rebuild
-  the IPUMM firmware, the instructions below are provided for rebuilding
-  IPUMM firmware. It assumes that everything is done on a Ubuntu
-  machine.
+Pre-built IPUMM firmware images can be located on target file system
+at /lib/firmware/dra7-ipu2-fw.xem4. In case there is a need to rebuild
+the IPUMM firmware, the instructions below are provided for rebuilding
+IPUMM firmware. It assumes that everything is done on a Ubuntu
+machine.
 
 .. rubric:: IPUMM GIT Repo
    :name: ipumm-git-repo

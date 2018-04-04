@@ -2,6 +2,8 @@
 Examples and Demos
 ####################################
 
+.. include:: Examples_and_Demos/Matrix_Demos.rst
+
 **********************************
 Matrix User Guide
 **********************************
@@ -29,24 +31,15 @@ WLAN and Bluetooth
 
 DSP offload with OpenCL
 =======================
+See http://downloads.ti.com/mctools/esd/docs/opencl/examples/index.html
 
 Accelerated Multimedia
 ======================
+Refer to various GStreamer pipelines documented at `Multimedia <Foundational_Components.html#processor-sdk-linux-multimedia>`__ chapter.
 
-Graphics
-========
-
-Display
-========
-
-USB
-===
-
-ARM Benchmarks
-==============
-
-
-
+Graphics and Display
+====================
+Refer to various SGX 3D demos and other Graphics applications at `Graphics & Display <Foundational_Components.html#processor-sdk-linux-graphics-and-display>`__ chapter.
 
 **********************************
 Video Analytics
@@ -62,8 +55,12 @@ Machine Vision
 DLP 3D Scanner
 ==============
 
+This demo demonstrates an embedded 3D scanner based on the structured light principle, with am57xx. More details can be found at http://www.ti.com/tool/tidep0076
+
 People Tracking
 ===============
+
+This demo demonstrates the capability of people tracking and detection with TI's ToF (Time-of-Flight) sensor. More details can be found at http://www.ti.com/lit/pdf/tidud06
 
 Barcode Reader
 ===============
@@ -78,7 +75,11 @@ ROS and Radar
 EVSE Demos
 ************************
 
+This demo showcases Human Machine Interface (HMI) for Electric Vehicle Supply Equipment(EVSE) Charging Stations. More details can be found at http://www.ti.com/tool/TIDEP-0087
+
 ************************
 Protection Relay Demo
 ************************
+
+Matrix UI provides out of box demo to showcase Human Machine Interface (HMI) for Protection Relays. More details can be found at http://www.ti.com/tool/TIDEP-0102
 
