@@ -295,7 +295,6 @@ platform supported.
 
 -  Select the "Speakers USB Audio Device" in the "Sound" dialog, then
    click the "Configure"
-
 .. Image:: ../images/Speaker_setup.png
 
 -  Click the "Test" in "Speaker Setup", you should hear the testing tone
