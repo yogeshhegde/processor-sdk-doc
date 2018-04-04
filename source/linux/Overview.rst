@@ -19,9 +19,6 @@ Overview
 
 .. include:: Overview/Run_Setup_Scripts.rst
 
-.. _processor-sdk-linux-directory-structure:
-.. include:: Overview/Processor_SDK_Linux_Directory_Structure.rst
-
 .. _processor-sdk-linux-top-level-makefile:
 .. include:: Overview/Top_Level_Makefile.rst
 
@@ -29,6 +26,9 @@ Overview
 
 .. _processor-sdk-linux-building-the-sdk:
 .. include:: Overview/Processor_SDK_Building_The_SDK.rst
+
+.. _processor-sdk-linux-directory-structure:
+.. include:: Overview/Processor_SDK_Linux_Directory_Structure.rst
 
 .. _processor-sdk-linux-software-stack:
 .. include:: Overview/Processor_SDK_Linux_Software_Stack.rst
