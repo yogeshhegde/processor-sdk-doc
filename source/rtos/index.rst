@@ -80,8 +80,8 @@ build information, and examples to use as a template to start development.
 .. _Release Notes: Release_Specific.html#release-notes
 .. _Examples and Demonstrations: Examples_and_Demonstrations.html
 .. _RTOS Software Stack: Overview.html#rtos-software-stack
-.. _Directory Structure Overview: Overview.html#directory-structure-overview
-.. _Building the SDK: Release_Specific.html#building-the-sdk
+.. _Directory Structure Overview: Overview.html#directory-structure
+.. _Building the SDK: Overview.html#building-the-sdk
 .. _Migration Guide: Release_Specific.html#migration-guide
 .. _Technical Support: Overview.html#technical-support
 .. _How To Guides: How_to_Guides.html

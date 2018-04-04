@@ -74,62 +74,36 @@ sample RTSC cfg file for reference.
 .. rubric:: Additional References
    :name: additional-references
 
-.. raw:: html
-
-   <div style="float: left; padding-left: 10px">
-
-**Traceframework Library Summary**
-
-**Component Type**
-
-Library
-
-**Install Package**
-
-PDK
-
-**Install Directory**
-
-pdk_keystone_<version>\packages\ti\instrumentation\traceframework
-
-**Project Type**
-
-`Eclipse RTSC <http://www.eclipse.org/rtsc/>`__
-
-**Endian Support**
-
-Little
-
-**Linker Path**
-
-$(TI_PDK_INSTALL_DIR)\packages\ti\instrumentation\traceframework
-
-**Linker Sections**
-
-.vecs , .switch, .args, .cio
-
-**Include Paths**
-
-$(TI_PDK_INSTALL_DIR)\packages\ti\instrumentation\traceframework
-
-**Reference Guides**
-
-$(TI_PDK_INSTALL_DIR)\packages\ti\instrumentation\traceframework\docs\doxygen\html\index.html
-
-**Release Notes**
-
-$(TI_PDK_INSTALL_DIR)\packages\ti\instrumentation\traceframework\docs\ReleaseNotes_traceframework.pdf
-
-.. raw:: html
-
-   <div style="clear: both">
-
-.. raw:: html
-
-   </div>
-
-| 
-|  
++--------------------+-------------------------------------------------+
+|                 **Traceframework Library Summary**                   |
++====================+=================================================+
+| Component Type     | Library                                         |
++--------------------+-------------------------------------------------+
+| Install Package    | PDK                                             |
++--------------------+-------------------------------------------------+
+| Install Directory  | pdk_keystone_<version>\packages\ti\             |
+|                    | instrumentation\traceframework                  |
++--------------------+-------------------------------------------------+
+| Project Type       | `Eclipse RTSC <http://www.eclipse.org/rtsc/>`__ |
++--------------------+-------------------------------------------------+
+| Endian Support     | Little                                          |
++--------------------+-------------------------------------------------+
+| Linker Path        | $(TI_PDK_INSTALL_DIR)/packages/ti/              |
+|                    | instrumentation/traceframework                  |
++--------------------+-------------------------------------------------+
+| Linker Sections    | .vecs , .switch, .args, .cio                    |
++--------------------+-------------------------------------------------+
+| Include Paths      | $(TI_PDK_INSTALL_DIR)/packages/ti/              |
+|                    | instrumentation/traceframework                  |
++--------------------+-------------------------------------------------+
+| Reference Guides   | $(TI_PDK_INSTALL_DIR)/packages/ti/              |
+|                    | instrumentation/traceframework/docs/            |
+|                    | doxygen/html/index.html                         |
++--------------------+-------------------------------------------------+
+| Release Notes      | $(TI_PDK_INSTALL_DIR)/packages/ti/              |
+| Resources          | instrumentation/traceframework/docs/            |
+|                    | ReleaseNotes_traceframework.pdf                 |
++--------------------+-------------------------------------------------+
 
 .. raw:: html
 
