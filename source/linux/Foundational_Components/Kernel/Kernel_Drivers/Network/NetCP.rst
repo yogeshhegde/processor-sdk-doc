@@ -209,10 +209,12 @@ EVM going to edge connectors such as AMC
 
 | 
 
-|Note|\ **Note:** 66AK2E supports 8 Ethernet (SGMII) ports, 2 ports to
-the EVM PHYs, 2 ports to AMC connector, and 4 ports to RTM connector. To
-enable the rest Ethernet ports at AMC and RTM connectors, The example of
-modification to the DTS fiels are shown below:
+.. note::
+
+    66AK2E supports 8 Ethernet (SGMII) ports, 2 ports to
+    the EVM PHYs, 2 ports to AMC connector, and 4 ports to RTM connector. To
+    enable the rest Ethernet ports at AMC and RTM connectors, The example of
+    modification to the DTS fiels are shown below:
 
 1. Enable the SerDes1 and all lanes on both SerDes 66AK2E has two SerDes
 and 4 lanes each. The default configuration has only SerDes0 enabled.
@@ -303,10 +305,13 @@ following example is using Mistral AMC BoC and Mistral RTM BoC.
                                "netrx0-pa",
 
 | 4. Define switch ports
-| |Note|\ **Note:** When enabling the 4 PHYs on Mistral RTM BoC, the
-  SGMII ports need to be configured in reverse order. That is, instead
-  of SGMII4(ethphy4) connected to PHY0(gbe4) on the RTM BoC, it is
-  connected to PHY3(gbe7).
+
+.. note::
+
+    When enabling the 4 PHYs on Mistral RTM BoC, the
+    SGMII ports need to be configured in reverse order. That is, instead
+    of SGMII4(ethphy4) connected to PHY0(gbe4) on the RTM BoC, it is
+    connected to PHY3(gbe7).
 
 ::
 
@@ -421,9 +426,12 @@ removed
     +                                };
                             };
 
-| 7. Configure NETCP interfaces
-| |Note|\ **Note:** It is required that queues be contiguous on the rx
-  side, so rx-queue for gbe and xge need to be reassigned.
+
+
+.. note::
+
+    It is required that queues be contiguous on the rx
+    side, so rx-queue for gbe and xge need to be reassigned.
 
 ::
 
@@ -851,10 +859,11 @@ configuration
         where the displayed hex values correspond to the port registers
         ts_ctl, ts_seq_ltype, ts_vlan_ltype, ts_ctl_ltype2 and ts_ctl2
 
-| 
-| Note 1: Although the above configurations are done through command
-  line, they can also be done by using standard Linux
-  open()/read()/write() file function calls.
+|
+ 
+Note 1: Although the above configurations are done through command
+line, they can also be done by using standard Linux
+open()/read()/write() file function calls.
 
 Note 2: When uni-cast is enabled, ie. uni\_en=1, mcast\_addr
 configuration will not take effect since uni-cast will allow any
@@ -907,11 +916,9 @@ nsec = ((cycles \* M) >> S) / D
 | Note 2: The multiplier (M) shift (S) and divisor (D) depends on the
   rftclk frequency (F). Ideally, "good" values of M/S/D should be chosen
   so that when converting counter value when it reaches the rftclk
-  frequency value (F) to timestamp time, i.e.
-
-((F \* M) >> S) / D
-gives exactly 1000000000 nsec for accuracy and D should be 1 (if
-possible) to avoid long division for efficiency.
+  frequency value (F) to timestamp time, i.e. ((F \* M) >> S) / D
+  gives exactly 1000000000 nsec for accuracy and D should be 1 (if
+  possible) to avoid long division for efficiency.
 
 For example, if F = 614400000, to find M/S/D such that
 
