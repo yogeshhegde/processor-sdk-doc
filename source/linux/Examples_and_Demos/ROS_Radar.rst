@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/ROS_Radar_demo_user_guide.html
 
 Introduction
-============
+------------
 
 The ROS is meta-ros running on top of Linux. It is a collection of software
 libraries and packages to help you write robotic applications. Both mobile
@@ -28,7 +28,7 @@ would control Kobuki movement via USB connection. Please note that mobile base
 is not essentail for verification of ROS on Sitara plus Radar EVM operation.
 
 HW Setup
-========
+--------
 
 *  `Sitara device, e.g. AM5728 GP EVM <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup>`__
 
@@ -64,7 +64,7 @@ For this demo, IWR EVM requires mmWave SDK firmware. If different firmware is us
 procedure using UniFlash tool to install `mmWave SDK <http://www.ti.com/tool/MMWAVE-SDK>`__
 
 ROS configuration verification
-==============================
+------------------------------
 
 ROS is part of PLSDK 4.3 target filesystem, including mmWave ROS driver, so no additional
 installation steps are required. ROS is installed in /opt/ros/indigo folder.
@@ -92,7 +92,7 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
    root@am57xx-evm:/usr/bin# ln -s python3-config python-config.python
 
 ROS between distributed nodes (Sitara and LinuxBox)
-===================================================
+---------------------------------------------------
      
 .. rubric:: 1st SSH terminal, to Sitara EVM
    :name: 1st-ssh-terminal-1-ros-demo1
@@ -174,7 +174,7 @@ You will see log similar to following:
 
 
 mmWave ROS node on Sitara and RViz on Linux Box
-===============================================
+------------------------------------------------
 
 .. rubric:: 1st SSH terminal, to Sitara EVM
    :name: 1st-ssh-terminal-1-ros-demo2
