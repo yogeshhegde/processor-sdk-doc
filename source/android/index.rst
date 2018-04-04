@@ -8,4 +8,3 @@
    Overview
    Release_Specific
    Processor_SDK_Android_How_To_Guides
-   Licenses

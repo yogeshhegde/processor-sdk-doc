@@ -40,3 +40,6 @@ Overview
 Training
 ************************************
 `Training <https://training.ti.com/processor-sdk-training-series>`__
+
+.. _PLSDK-GPLv3-Disclaimer-label:
+.. include:: Overview/Processor_SDK_Linux_GPLv3_Disclaimer.rst

@@ -46,7 +46,7 @@ source_suffix = '.rst'
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
-copyright = u'2017, Texas Instruments Incorporated'
+copyright = u'1995-2018, Texas Instruments Incorporated. All rights reserved'
 author = u'Texas Instruments'
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -165,10 +165,10 @@ html_sidebars = { '**': ['globaltoc.html', 'relations.html', 'sourcelink.html',
 html_show_sourcelink = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-#html_show_sphinx = False
+html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-#html_show_copyright = True
+html_show_copyright = False 
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
