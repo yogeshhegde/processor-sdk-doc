@@ -28,7 +28,7 @@ Trace
 
 Fault Management
 =================
-- `Fault Management <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FM>`__
+.. include:: DSP_Software/DSP_Debug_and_Trace/Fault_Management.rst
 
 
 WDT
