@@ -2,9 +2,9 @@
 DSP Software
 ######################
 
-************************
-DSP Optimized Libraries
-************************
+.. ************************
+.. DSP Optimized Libraries
+.. ************************
 .. include:: DSP_Software/DSP_Optimized_Libraries.rst
 
 ********************
@@ -28,7 +28,7 @@ Trace
 
 Fault Management
 =================
-.. include:: DSP_Software/DSP_Debug_and_Trace/Fault_Management.rst
+- `Fault Management <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FM>`__
 
 
 WDT
