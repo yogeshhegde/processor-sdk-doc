@@ -10,6 +10,7 @@ Target
 .. =================================
 .. include:: How_to_Guides/Target/How_to_Recalibrate_the_Touchscreen.rst
 
+.. include:: How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization.rst
 
 .. Add a JVM
 .. =================================
@@ -23,12 +24,12 @@ Target
 
 .. Update U-Boot Environment Variables stored in SPI Flash from Linux
 .. ==================================================================
-.. include:: How_to_Guides/Target/Update_U_Boot_Environment_Variables_stored_in_SPI_Flash_from_Linux.rst
+.. include:: How_to_Guides/Target/Update_U-Boot_Environment_Variables_stored_in_SPI_Flash_from_Linux.rst
 
 
 .. Take C66x Out Of Reset with Linux Running on the ARM A15
 .. ==================================================================
-.. include:: How_to_Guides/Target/Take_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15.rst
+.. include:: How_to_Guides/Target/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15.rst
 
 
 .. How to Change dtb File
@@ -48,6 +49,15 @@ Target
 **********************************
 Host
 **********************************
+
+How to Develop with 3D Graphics
+===================================
+Please refer to `Graphics & Display <Foundational_Components.html#processor-sdk-linux-graphics-and-display>`__ chapter for details.
+
+How to Develop accelerated Multimedia using GStreamer on AM57xx
+=================================================================
+Please refer to `Multimedia <Foundational_Components.html#processor-sdk-linux-multimedia>`__ chapter for details.
+
 .. Build a Ubuntu Linux host under VMware
 .. ==================================================================
 .. include:: How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware.rst
@@ -89,6 +99,16 @@ Preventing BeagleBone board reset on JTAG Connect
 .. Erase Flash for AM335x ICE v2
 .. ==================================================================
 .. include:: How_to_Guides/Host/AM335x_ICEv2_flash_erase.rst
+
+
+Processor SDK IPC Quick Start Guide
+======================================
+Please refer to `IPC Quick Started Guide  <Foundational_Components.html#ipc-quick-start-guide>`__ chapter for details.
+
+Create DSP and IPU firmware using PDK drivers and IPC to load from ARM Linux
+=============================================================================
+Please refer to `IPC on AM57xx <Foundational_Components.html#ipc-for-am57xx>`__ chapter for details.
+
 
 
 .. Understand and Build Boot Monitor for Keystone2
