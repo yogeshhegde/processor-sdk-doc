@@ -627,7 +627,7 @@ Verifying NOR
 3. Make sure the evm is connected to the DHCP server.
 4. U-Boot will show up on the UART. A sample screen is shown below.
 
-   .. Image:: ../images/Spl-boot.j.jpg
+.. Image:: ../images/Spl-boot.j.jpg
 
 .. rubric:: Verifying NAND
    :name: verifying-nand
@@ -666,7 +666,7 @@ to verify.**
 
 4. A sample screen is shown below.
 
-   .. Image:: ../images/Kernel_Boot.jpg
+.. Image:: ../images/Kernel_Boot.jpg
 
 |
 
