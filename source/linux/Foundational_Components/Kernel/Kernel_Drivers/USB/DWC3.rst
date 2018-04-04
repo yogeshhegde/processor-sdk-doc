@@ -30,7 +30,7 @@ writes the events to the software mailbox present in DWC3 glue (SS USB
 OTG controller  module in the diagram) which interrupts the core using
 UTMI+ signals.
 
-|DWC3 integration in OMAP5|
+.. image:: ../images/Omap5-dwc3.png
 
 .. rubric:: DRA7x/AM57x
    :name: dra7xam57x

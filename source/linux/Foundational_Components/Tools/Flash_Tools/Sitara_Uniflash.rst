@@ -97,17 +97,24 @@ in Uniflash version 3.0 and beyond.
 #. Click **Next** to install into the default directory, c:\\ti, or
    **Browse** to install somewhere else.
 #. Select **Custom** under type of Setup and click **Next**.
-   |Custom Uniflash Setup|
+
+.. image:: ../images/Uniflashv3_setup_custom.png
+
 #. Select **Sitara AMxxxx processors** and click **Next**.
-   |Sitara Uniflash Setup|
+
+.. image:: ../images/Uniflashv3_setup_sitara.png
+
 #. Verify that **Sitara Flash Connection Support** is checked.
-   |Sitara Flash Connection|
+
+.. image:: ../images/Uniflashv3_setup_sitara_flash_connection.png
+
 #. Click **Next** to verify your choices.
 #. Wait while Uniflash installs.
 #. Choose what options you'd like to have to start Uniflash (place on
    desktop, quick start, etc.)
 #. Uniflash is now installed and you should see something like this:
-   |Uniflash|
+
+.. image:: ../images/Uniflashv3_setup_complete.png
 
 | 
 
@@ -277,14 +284,21 @@ Here is what you will need:
 #. If everything is working correctly, the flashing process should start
    automatically on the board. You should see status feedback appear in
    Uniflash as the process progresses.
-   :|Flash Process Started|
-   Until it completes:
-   :|Flash Process Complete|
-   **Note: The time the process takes to complete will vary considerably
+
+.. image:: ../images/UniFlash_status_start.png
+
+| Until it completes:
+
+.. image:: ../images/UniFlash_status_done.png
+
+.. note::
+
+   The time the process takes to complete will vary considerably
    depending on a number of factors: the amount of data to be
    transferred to the target, the speed of the interface between the
    host and the target, the amount of data to be flashed, the write
-   speed of the memory to be programmed, etc.**
+   speed of the memory to be programmed, etc.
+
 #. To flash another target board, simply make a connection between it
    and the host PC through the switch. The board should start flashing
    automatically if powered and connected properly.
@@ -346,36 +360,59 @@ problems are encountered.
    has never been plugged into that particular PC and that particular
    USB port on that PC. More than likely for the AM437x devices, this
    attempt will fail.
-   :|USB Driver Failed to Install|
+
+.. image:: ../images/Usb_driver_didnt_install.png
+
 #. Use Device Manager to install a USB driver. To open Device Manager,
    click on **Start --> All Programs --> Right Click on Computer and
    Select Properties**.
-   :|Open Device Manager|
+
+.. image:: ../images/Open_device_manager.png
+
 #. Click on Device Manager in the window that opens.
-   |Device Manager|
+
+.. image:: ../images/Device_manager.png
+
 #. Find the **AM43xx1.2** Device listed in “Other Devices” per below. It
    will have a little yellow exclamation point on it indicating there is
    currently a problem with the device. **Right click** on it and select
    **Update Driver Software…**.
-   :|AM335x USB Device Properties|
-   **Note: If the device is not listed, it is probably because the
+
+.. image:: ../images/Am43xx_device_properties.png
+
+.. note::
+
+   If the device is not listed, it is probably because the
    operation has already timed out. Simply power cycle the target board
-   to restart the process.**
+   to restart the process.
+
 #. In the Update Driver Software dialog, choose **Browse my computer for
    driver software**.
-   :|Search for USB Driver|
+
+.. image:: ../images/Update_USB_Driver_search.png
+
 #. Click **Let me pick from a list** in the next window:
-   :|Browse for USB Driver|
+
+.. image:: ../images/Update_Driver_Software_pick.png
+
 #. Choose **Network Adapter** and click **Next**:
-   :|Network Adapter|
+
+.. image:: ../images/RNDIS_network_adapter.png
+
 #. Choose **Microsoft Corporation** as the Manufacturer and **Remote
    NDIS6 based Device** under adapter. Click **Next**:
-   :|Network Adapter|
+
+.. image:: ../images/RNDIS_network_adapter_RNDIS.png
+
 #. If you see the following warning, click **Yes**:
-   :|Network Adapter|
+
+.. image:: ../images/RNDIS_network_adapter_warning.png
+
 #. You should receive a confirmation like below when the driver is
    successfully installed. Finally click **Close**.:
-   :|Success|
+
+.. image:: ../images/RNDIS_network_adapter_success.png
+
 #. When the USB Driver for RNDIS is properly installed, it will create a
    new network interface. This can typically be seen in the lower
    right-hand corner of the toolbar:
@@ -452,7 +489,8 @@ problems are encountered.
    restart is only necessary because the driver and network set up did
    not complete quickly enough. Now that it is configured, you should be
    able to progress to the next steps.
-   :|Flash Process Started|
+
+.. image:: ../images/UniFlash_status_start.png
 
 #. Once the first file is transferred from Host to Target, it will take
    over execution on the target board from the ROM on the Sitara device.
@@ -529,9 +567,12 @@ problems are encountered.
    process fresh by power cycling the Target Board. With everything set
    up correctly on the Host PC at this point, the process should be able
    to proceed without issue.
-   :|Flash Process Starting|
-   Until it completes:
-   :|Flash Process Complete|
+
+.. image:: ../images/UniFlash_status_start.png
+
+|  Until it completes:
+
+.. image:: ../images/UniFlash_status_done.png
 
 #. When the flash process is complete, simply disconnect the target
    board. It should be flashed and ready for further testing.

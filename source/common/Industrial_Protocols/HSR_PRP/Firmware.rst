@@ -452,5 +452,3 @@ Table:  **PRU0 RAM Memory Map**
 
 Table:  **PRU1 RAM Memory Map**
 
-.. raw:: html
-
