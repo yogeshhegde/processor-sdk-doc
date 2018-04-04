@@ -69,7 +69,7 @@ application.
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-For information on boot mode setting, see the applicable :ref:`EVM Hardware User Guide <RTOS-SDK-Supported-Platforms>`
+For information on boot mode setting, see the applicable `EVM Hardware User Guide <Release_Specific.html#supported-platforms-and-versions>`__
 
 .. raw:: html
 

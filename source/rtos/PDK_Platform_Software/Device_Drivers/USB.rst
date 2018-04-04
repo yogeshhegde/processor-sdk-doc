@@ -284,25 +284,19 @@ platform supported.
 -  Run the program (loaded previously) by pressing F8
 -  The CCS ConsoleIO will display the following:
 
-::
-
-     
+.. Image:: ../images/File_CCS_console_output.png
 
 -  Right click on the "Speaker Icon" on the USB Host (right side of the
    toolbar), then select "Playback devices"
 -  Wait until the "Speakers USB Audio Device" shows up in the "Sound"
    dialog
 
-::
-
-     
+.. Image:: ../images/Sound.png
 
 -  Select the "Speakers USB Audio Device" in the "Sound" dialog, then
    click the "Configure"
 
-::
-
-     
+.. Image:: ../images/Speaker_setup.png
 
 -  Click the "Test" in "Speaker Setup", you should hear the testing tone
    in the headphone connected to the EVM
@@ -313,8 +307,6 @@ platform supported.
 
 'core' can be arm or c674x
 
-| 
-| [end]
 
 .. raw:: html
 

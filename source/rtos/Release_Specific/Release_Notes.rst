@@ -443,14 +443,14 @@ The following table lists all supported devices for a given installer.
 Evaluation Modules 
 --------------------
 
-See :ref:`Processor SDK Supported Platforms <RTOS-SDK-Supported-Platforms>`
+See `Processor SDK Supported Platforms <Release_Specific.html#supported-platforms-and-versions>`__
 page for a list of supported EVMs per platform and links to more
 information.
 
 Demonstrations 
 ----------------
 
-See :ref:`Examples and Demonstrations <RTOS-Examples-and-Demonstrations-label>`
+See `Examples and Demonstrations <Examples_and_Demonstrations.html>`__
 page for a list of demonstrations per platform and EVM.
 
 Drivers 

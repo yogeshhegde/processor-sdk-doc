@@ -142,10 +142,10 @@ each counter/variable.
    :name: documents-and-tutorials
 
 `System Analyzer Getting Started
-Guide </images/7/7b/MCSA1.1_Getting_Started_Guide.pdf>`__ - Get familar
+Guide <http://processors.wiki.ti.com/images/7/7b/MCSA1.1_Getting_Started_Guide.pdf>`__ - Get familar
 with System Analyzer features using a data file shipped with CCStudio.
 
-`System Analyzer User's Guide </images/b/bc/MCSA1.1_User_Guide.pdf>`__ -
+`System Analyzer User's Guide <http://processors.wiki.ti.com/images/b/bc/MCSA1.1_User_Guide.pdf>`__ -
 Detail guide on configuring and using System Analyzer and UIA.
 
 `System Analyzer Tutorials
