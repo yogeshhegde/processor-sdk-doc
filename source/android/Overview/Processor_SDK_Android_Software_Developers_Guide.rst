@@ -59,7 +59,7 @@ This information covers Processor SDK Android 4.0.0 and above.
 .. _Android Software Stack: Overview.html#software-stack
 .. _Migration Guide: Release_Specific.html#migration-guide
 .. _Frequently Asked Questions: Processor_SDK_Android_How_To_Guides.html#frequently-asked-questions
-.. _GPLv3 Disclaimer: Licenses.html#gplv3-disclaimer
+.. _GPLv3 Disclaimer: Overview.html#processor-sdk-android-gplv3-disclaimer
 .. _How To Guides: Processor_SDK_Android_How_To_Guides.html
 .. _Directory Structure Overview: Overview.html#processor-sdk-android-directory-structure
 .. _Building the SDK: Overview.html#processor-sdk-android-building-the-sdk

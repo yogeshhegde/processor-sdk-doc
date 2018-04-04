@@ -17,3 +17,5 @@ Overview
 .. include:: Overview/Processor_SDK_Android_Software_Stack.rst
 
 .. include:: ../common/Overview/Processor_SDK_Technical_Support.rst
+
+.. include:: Overview/Processor_SDK_Android_GPLv3_Disclaimer.rst
