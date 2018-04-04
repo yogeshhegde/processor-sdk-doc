@@ -47,5 +47,3 @@ bit\_field\_names : bit\_size;
 Thus you can access a register programmatically through the structure
 (e.g., register\_set.register\_name[\_bit.bitfield\_name] = value).
 
-.. raw:: html
-
