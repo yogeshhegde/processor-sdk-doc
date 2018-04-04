@@ -42,8 +42,7 @@ SDK.
 .. rubric:: Supported Platforms and EVMs
    :name: supported-platforms-and-evms
 
-The following platforms and EVMs are supported with Processor SDK 4.2.0
-(released Dec 2017).
+The following platforms and EVMs are supported with Processor SDK 
 
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |**Processor SDK |
