@@ -83,8 +83,7 @@ change** and will not affect existing applications. However, there are
 considerations with respect to memory placement and potential conflicts
 between the board library and SBL code. These restrictions have always
 existed but are now more clearly defined and documented. Please refer to
-`Board
-Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__
+`Board Support <Board_EVM_Abstration.html#board-support>`__
 for more details.
 
 .. rubric::  I2C

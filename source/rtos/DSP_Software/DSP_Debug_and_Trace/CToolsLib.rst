@@ -353,7 +353,7 @@ avaialble:
 .. rubric:: Related
    :name: related
 
--  `TI.com XDS560 Product Page <http://ti.com/xds560>`__
+-  `TI.com XDS560 Product Page <http://www.ti.com/tool/TMDSEMU560V2STM-U>`__
 -  `XDS560v2 System Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
 -  `CTools <http://processors.wiki.ti.com/index.php/CTools>`__
 -  `How OMAP software developers use System Trace to boost

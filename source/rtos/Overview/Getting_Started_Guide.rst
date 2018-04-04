@@ -92,8 +92,8 @@ Code Composer Studio (CCS) and an Evaluation Module (EVM). See sections
 below for information to configure CCS and EVM for development. This is
 a top-level starting point, but you may need to go to your specific EVM
 hardware setup guide for some steps (e.g., connecting external JTAG). A
-cross reference to all hardware users guide can be found on the `Support
-Platforms <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions>`__
+cross reference to all hardware users guide can be found on the `Supported
+Platforms <Release_Specific.html#supported-platforms-and-versions>`__
 page.
 
 .. rubric:: “Hello World” example with no operating system
@@ -106,7 +106,7 @@ template allows standard output to be displayed on the host PC using the
 debugger. This is a good way to start learning basic configurations such
 as the memory map of your device. Specific instructions for each
 platform bundled in the Processor SDK RTOS can be found at
-http://processors.wiki.ti.com/index.php/Processor_SDK_Bare_Metal_Examples
+`Processor SDK Bare-Metal Examples <Examples_and_Demonstrations.html#no-os-bare-metal-example>`__
 
 .. rubric:: Simple examples with an operating system
    :name: simple-examples-with-an-operating-system
@@ -118,7 +118,7 @@ features of the kernel such as clock, error, event, log, SWI, and task.
 You will also learn how to configure the TI-RTOS kernel for such things
 as enabling semi-host support. Specific instructions for each platform
 bundled in the Processor SDK RTOS can be found at
-http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Examples
+`Processor SDK RTOS Examples <Examples_and_Demonstrations.html#ti-rtos-kernel-example>`__
 
 | 
 
@@ -143,7 +143,7 @@ in configuration files that you can use to generate CCS projects for
 your platform, EVM, endian, and core. Once CCS projects are created,
 they are loaded and run on the EVM via JTAG. Instructions to create and
 run the CCS projects can be found at
-http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK
+`Rebuilding The PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__
 
 | 
 
@@ -165,7 +165,7 @@ and graphics.
 
 Not all demonstrations are applicable to all platforms. The following
 page has a list of all demonstrations and supported platform:
-http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Examples_and_Demonstrations
+`Processor SDK_RTOS Examples and Demonstrations <Examples_and_Demonstrations.html>`__
 
 .. rubric:: Custom application
    :name: custom-application
@@ -410,7 +410,7 @@ SoC. Follow instructions in the included *EVM Quick Start Guide* for
 information on hardware configuration and other pertinent information.
 This guide is included in the EVM kit and also available for download
 from the software download page for your particular device. The list of
-supported EVMs are provided in the `Release Notes <RN_Supported-Platforms-label>`.
+supported EVMs are provided in the `Release Notes <Release_Specific.html#supported-platforms>`__
 
 If you connect to the EVM UART, use the following host configuration:
 
@@ -420,7 +420,7 @@ If you connect to the EVM UART, use the following host configuration:
 -  **Flow Control**: Off
 
 For more information beyond what is covered in the *EVM Quick Start
-Guide*, see :ref:`EVM Hardware User Guides <RTOS-SDK-Supported-Platforms>`
+Guide*, see `EVM Hardware User Guides <Release_Specific.html#supported-platforms-and-versions>`__
 
 | 
 
@@ -481,16 +481,14 @@ found in the Developer Guide.
 | 
  `Getting Started Guide <Overview.html#getting-started-guide>`__
 
-| Supported Platforms
-| http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions
+| `Supported Platforms <Release_Specific.html#supported-platforms-and-versions>`__
 
 | Landing Page to All Processor SDK RTOS Packages
 | http://www.ti.com/tool/ti-rtos-proc
 | 
  `Release Notes <Release_Specific.html#release-notes>`__
 
-| Examples and Demonstrations
-| http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Examples_and_Demonstrations
+| `Examples and Demonstrations <Examples_and_Demonstrations.html>`__
 
   `FAQ <FAQ.html>`__
 | 

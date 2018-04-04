@@ -306,7 +306,7 @@ a look at both these approaches.
 
 **Step 1: Connect Emulator and UART to Hardware**
 
--  Refer to the :ref:`Hardware Setup guide <RTOS-SDK-Supported-Platforms>`
+-  Refer to the `Hardware Setup guide <Release_Specific.html#supported-platforms-and-versions>`__
    and connect the onboard or external emulator to the Hardware and Host
    machine with CCS installed.
 
@@ -338,7 +338,7 @@ by following the procedure described in wiki
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-Please refer to :ref:`Hardware User Guide <SPV-Supported-Platforms-and-EVMs-label>`
+Please refer to `Hardware User Guide <Release_Specific.html#supported-platforms-and-versions>`__
 corresponding to each supported EVM so setup the boot switches to No
 boot if available
 

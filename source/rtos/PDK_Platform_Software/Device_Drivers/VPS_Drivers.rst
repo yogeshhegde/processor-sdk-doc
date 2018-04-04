@@ -1,8 +1,6 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_VPS_DRIVERS 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_VPS_DRIVERS
 
-| 
-
-.. rubric:: Introduction
+.. rubric::  Introduction
    :name: introduction
 
 VPS (Video Processing SubSystem) video Drivers allow users to make use
@@ -21,10 +19,10 @@ VPS consists of following modules
 -  Display SubSystem (DSS) - for LCD outputs on three parallel
    interfaces (DPI1, DPI2, and DPI3) and HDMI
 
-.. rubric:: Driver Configuration
+.. rubric::  Driver Configuration
    :name: driver-configuration
 
-.. rubric:: **Board Specific Configuration**
+.. rubric::  **Board Specific Configuration**
    :name: board-specific-configuration
 
 All board specific configurations eg:enabling clock and pin-mux for
@@ -32,14 +30,14 @@ UART/display/vip pins are required before calling any driver APIs. The
 board specific configurations are implemented under
 <pdk>/ti/drv/vps/src/boards/src folder.
 
-.. rubric:: **VPS Configuration Structure**
+.. rubric::  **VPS Configuration Structure**
    :name: vps-configuration-structure
 
 For details about individual fields of VPS library structure, see the
 Doxygen help by opening
 PDK_INSTALL_DIR\packages\ti\drv\vps\docs\doxygen\html\index.html.
 
-.. rubric:: **APIs**
+.. rubric::  **APIs**
    :name: apis
 
 The VPS driver API can be broadly divided into the following categories
@@ -74,7 +72,7 @@ API reference for application:
 
     #include <ti/drv/vps/include/vps_<func>.h>
 
-.. rubric:: Example
+.. rubric::  Example
    :name: example
 
 +-----------------------+-----------------------+-----------------------+
@@ -136,7 +134,7 @@ API reference for application:
 ::
 
      * Starting from Processor SDK 4.2 release, idkAM574x support is added for VPS.
-     * Starting from Processor SDK 4.2 release, oV1063x camera part support is added for AM572x - GP evm.
+     * Starting from Processor SDK 4.2 release, oV1063x camera part support is added for AM572x - GP evm (older Aptina MT9T11 camera is never supported).
      * Starting from Processor SDK 3.2 release, osd101t2587 lcd panel is supported (new part) along with osd101t2045 lcd panel (old part) on idkAM572x 
        and idkAM571x boards for all display subsystem examples.
      * The bare metal examples are added starting from Processor SDK 4.0 release
@@ -144,7 +142,7 @@ API reference for application:
        such as DSP/IPU, please make sure to disconnect the ARM core after connecting the ARM core & running the GEL files to enable the other cores and before 
        loading the executable on that core.
 
-.. rubric:: Additional References
+.. rubric::  Additional References
    :name: additional-references
 
 +-----------------------------------+-----------------------------------+
@@ -155,7 +153,7 @@ API reference for application:
 |                                   | html                              |
 +-----------------------------------+-----------------------------------+
 
-.. rubric:: **Building VPS examples**
+.. rubric::  **Building VPS examples**
    :name: building-vps-examples
 
 -  VPS examples and dependent libraries are built from the top level pdk
@@ -167,13 +165,13 @@ API reference for application:
    folder
 -  make vps_clean : to clean the vps and vps examples.
 
-.. rubric:: **VPS examples**
+.. rubric::  **VPS examples**
    :name: vps-examples
 
 .. rubric::  **Display DSS Example**
    :name: display-dss-example
 
-.. rubric::  ***Description***
+.. rubric::  *Description*
    :name: description
 
 The example exploits the DISPC (Display Controller) and LCD/HDMI outputs
@@ -194,7 +192,7 @@ manual for minimum ratio allowed when using the scalar unit.
 
 | 
 
-.. rubric::  ***Running the Display DSS example***
+.. rubric::  **Running the Display DSS example**
    :name: running-the-display-dss-example
 
 **Configuring Display**:
@@ -203,6 +201,8 @@ manual for minimum ratio allowed when using the scalar unit.
    the example binary.
 -  Make sure the HDMI is connected to TV from the EVM for HDMI display
    options.
+-  For AM571x IDK EVM, installing a shunt on header J51 to short those
+   pins
 
 **CCS connection**:
 
@@ -215,7 +215,7 @@ manual for minimum ratio allowed when using the scalar unit.
 **Note:**
 
 -  Test Input files for Display Sample application will be in
-   "<pdk>\drv\vps\docs\test_inputs\DisplayInput.rar"
+   "<pdk>\drv\vps\docs\test_inputs\dss_input_files.rar"
 
 The rar file can be unrar-ed to get the test files using utilities such
 as http://www.7-zip.org Please download the latest version of 7-zip from
@@ -224,7 +224,12 @@ this website. The command to unrar is: 7z x {file_to_unrar}
 When the test program expects the yuyv422 file, please load
 **display_yuyv422_prog_packed_1920_1080.tigf** file and when the test
 program expects the bgr888 file, please load
-**display_gbr888_prog_packed_1920_1080.tigf** file.
+**display_gbr888_prog_packed_1920_1080.tigf** file. Each video has 4
+frames. Below shows the first frame. If GP EVM is used, only the left
+upper corner of the video is displayed as it only has an 800x480 LCD.
+
+.. Image:: ../images/488px-Yuyv422.png
+.. Image:: ../images/488px-Gbr888.png
 
 The test runs bunch of test cases as shown in the test example menu.
 
@@ -242,7 +247,7 @@ loading the test files.
 .. rubric::  **Display DSS WB example**
    :name: display-dss-wb-example
 
-.. rubric::  ***Description***
+.. rubric::  *Description*
    :name: description-1
 
 The WB pipeline allows the use of the hardware processing available
@@ -250,7 +255,7 @@ inside the DISPC, such as color space conversion, rescaling, and
 compositing to perform memory-to-memory transfer with data processing or
 capturing a displayed frame.
 
-.. rubric:: ***Running Display DSS WB example***
+.. rubric::  *Running Display DSS WB example*
    :name: running-display-dss-wb-example
 
 The test connection and procedure for this example is very much same as
@@ -261,7 +266,7 @@ pipeline.
 .. rubric::  **Loopback (Capture and Display) example**
    :name: loopback-capture-and-display-example
 
-.. rubric::  ***Description***
+.. rubric::  *Description*
    :name: description-2
 
 This is the capture and display example that demonstrates the VIP
@@ -272,7 +277,7 @@ formats. This example demonstrates the video capture of 720P, YUY422
 format from the camera sensor (OV2659 for idkAM57x and OV1063x for
 evmAM572x) to DPI1 LCD output.
 
-.. rubric:: ***Running Loopback example***
+.. rubric::  *Running Loopback example*
    :name: running-loopback-example
 
 -  Make sure OV sensor and LCD Panel is connected to to the board before
@@ -285,9 +290,94 @@ evmAM572x) to DPI1 LCD output.
 #. Run the application, Select any of the option.
 #. Captured Content will be displayed on the LCD panel connected to EVM
 
-**Note:** The camera driver support is not added for evmAM572x
-boards (GP AM572x EVM) - and hence all the tests related to camera are
-skipped for evmAM572x board.
+**Note:** The camera driver support is not added for
+evmAM572x boards (GP AM572x EVM) - and hence all the tests related to
+camera are skipped for evmAM572x board.
+
+| 
+
+.. rubric::  **FAQ**
+   :name: faq
+
+.. rubric::  How to reduce the VPS test examples build time using
+   makefile?
+   :name: how-to-reduce-the-vps-test-examples-build-time-using-makefile
+
+Please refer to `Rebuilding The PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__
+on how to invoke the build for specific core and specific platform, to save the
+build time.
+
+.. rubric::  How to create a CCS project other than VPS loopback
+   example?
+   :name: how-to-create-a-ccs-project-other-than-vps-loopback-example
+
+To create a CCS project for other VPS examples, please use the existing
+text file under
+PDK_INSTALL_PATH\packages\ti\drv\vps\examples\ccsprojects\am57xx\bios as
+a template:
+
+-  Copy the .txt with desired processor then rename it to a new test
+   project name accord to CCS project create convention, see
+   `PDK Example and Test Project Creation <How_to_Guides.html#pdk-example-and-test-project-creation>`__
+-  Update the linked source files and include paths
+-  The common configuration file and build options can be kept
+-  Update pre-defined symbol -D<soc_name> to match your SOC, like
+   -DSOC_AM571x, -DSOC_AM572x or -DSOC_AM574x
+-  Update the configuration .bld file "-b
+   ${PDK_INSTALL_PATH}/ti/build/<soc>/config_<soc>_<core>.bld" to match
+   your soc
+-  In rtsc.setConfiguroOptions, add -DBOARD=<board_name>, which can be
+   idkAM571x, idkAM572x, evmAM572x or idkAM574x
+-  Save the file and re-run pdkProjectCreate to create the new added CCS
+   project
+
+Below is example for vps_dssExample_evmAM572x_armExampleProject.txt:
+
+``-ccs.linkFile "PDK_INSTALL_PATH/ti/drv/vps/examples/dss/displayDss/src/DisplayDss_main.c"``
+
+-ccs.linkFile
+"PDK_INSTALL_PATH/ti/drv/vps/examples/ccsprojects/common/bios/utils/bspCommonBIOS_a15.cfg"
+
+-ccs.setCompilerOptions "-c -mcpu=cortex-a15 -mtune=cortex-a15 -marm
+-mfloat-abi=hard -DMAKEFILE_BUILD -DNDEBUG -DTRACE_ENABLE
+-DASSERT_ENABLE -DVPS_VIP_BUILD -DVPS_VPE_BUILD -DVPS_DSS_BUILD
+-UVPS_ISS_BUILD -UVPS_SIMCOP_BUILD -UVPS_ISS_ISP_DEF -DVPS_VIP1_BUILD
+-DVPS_VIP2_BUILD -DVPS_VIP3_BUILD -DVPS_CAPT_BUILD -DVPS_DISP_BUILD
+-DSOC_AM572x -Dxdc_target_types__=gnu/targets/arm/std.h
+-Dxdc_target_name__=A15F -g -gstrict-dwarf -gdwarf-3 -Wimplicit -Wall
+-Wunused -Wunknown-pragmas -ffunction-sections -fdata-sections -MMD -MP
+-I${PDK_INSTALL_PATH}/ti/drv/vps
+-I${PDK_INSTALL_PATH}/ti/drv/vps/examples/dss/displayDss/src"
+-rtsc.enableRtsc
+
+-ccs.setLinkerOptions " -lrdimon -lgcc -lm -lnosys -nostartfiles -static
+-Wl,--gc-sections
+-L$(BIOS_INSTALL_PATH)/packages/gnu/targets/arm/libs/install-native/arm-none-eabi/lib/fpu
+" -rtsc.setConfiguroOptions "-b
+${PDK_INSTALL_PATH}/ti/build/am572x/config_am572x_a15.bld
+-DBOARD=evmAM572x"
+
+.. rubric::  Can I load any jpeg file into the memory to display through
+   DSS?
+   :name: can-i-load-any-jpeg-file-into-the-memory-to-display-through-dss
+
+The display uses video, not static image as input. There is no JPEG
+decoder so it will not work.
+
+.. rubric::  In DSS example, two input video files are loaded for
+   testing, what is their format and how to play them?
+   :name: in-dss-example-two-input-video-files-are-loaded-for-testing-what-is-their-format-and-how-to-play-them
+
+The two files are with .tigf extension. Tigf is a local convention that
+TI development team followed. The file name (before the extension) shows
+what you are attempting to decode: e.g., 24 bit RGB or yuyv422 video
+file with 1920x1080 resolutions. To play them:
+
+-  In Linux, use avplay with syntax: avplay -video_size <wxh>
+   -pixel_format <format> -f rawvideo <video file>, where wxh is
+   1902x1080 and pixel_format is rgb24 or yuyv422
+
+-  In Windows, use yuv player from:
+   https://sourceforge.net/projects/raw-yuvplayer/
 
 .. raw:: html
-
