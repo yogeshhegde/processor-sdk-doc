@@ -43,7 +43,7 @@ Rules.make file.
 -  **CROSS\_COMPILE** - This setting represents the CROSS\_COMPILE
    prefix to be used when invoking the cross-compiler. Many components
    such as the Linux kernel use the variable CROSS\_COMPILE to prepend
-   the proper prefix to commands such as *gcc* to invoke the ARM
+   the proper prefix to commands such as **gcc** to invoke the ARM
    cross-compiler.
 -  **LINUXKERNEL\_INSTALL\_DIR** - This points to the location of the
    Linux kernel sources, which is used by components such as out-of-tree
@@ -162,7 +162,7 @@ re-installed.
    :name: a-note-about-the-linux-kernel-version
 
 To simplify and accelerate rebuilding and installing the linux kernel,
-the file *.scmversion* is included in the kernel source tree to pin down
+the file **.scmversion** is included in the kernel source tree to pin down
 the version of the kernel provided in the SDK. If upgrading the kernel
 sources or adding new commits, this file should be removed so that the
 appropriate version is built into the kernel image.
