@@ -284,7 +284,7 @@ platform supported.
 -  Run the program (loaded previously) by pressing F8
 -  The CCS ConsoleIO will display the following:
 
-.. Image:: ../images/File_CCS_console_output.png
+.. Image:: ../images/CCS_console_output.png
 
 -  Right click on the "Speaker Icon" on the USB Host (right side of the
    toolbar), then select "Playback devices"
