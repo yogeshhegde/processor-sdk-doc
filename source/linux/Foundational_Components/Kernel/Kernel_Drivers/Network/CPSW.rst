@@ -22,15 +22,16 @@ The driver supports the following features:
 .. rubric:: **Driver Configuration**
    :name: driver-configuration
 
-| To enable/disable Networking support, start the *Linux Kernel
-  Configuration* tool:
+To enable/disable Networking support, start the *Linux Kernel Configuration*
+tool:
 
 ::
 
     $ make menuconfig
 
 | 
-| Select *Device Drivers* from the main menu.
+
+Select *Device Drivers* from the main menu.
 
 ::
 
@@ -45,7 +46,8 @@ The driver supports the following features:
        ...
 
 | 
-| Select *Network device support* as shown below:
+
+Select *Network device support* as shown below:
 
 ::
 
@@ -60,7 +62,8 @@ The driver supports the following features:
        ...
 
 | 
-| Select *Ethernet driver support* as shown below:
+
+Select *Ethernet driver support* as shown below:
 
 ::
 
@@ -76,7 +79,8 @@ The driver supports the following features:
        ...
 
 | 
-| Select ** as shown here:
+
+Select ** as shown here:
 
 ::
 
@@ -99,7 +103,8 @@ places mentioned in the section above select module build (short-cut key
 **M**).
 
 | 
-| Select ** as shown here:
+
+Select ** as shown here:
 
 ::
 
@@ -131,8 +136,9 @@ ethtool utility:
        ethtool -C eth0 rx-usecs <delayperiod>
 
 | 
-| To achieve maximum performance set <delayperiod> to 500/250 depends on
-  your platform
+
+To achieve maximum performance set <delayperiod> to 500/250 depends on
+your platform
 
 | 
 
@@ -140,43 +146,50 @@ ethtool utility:
    :name: configure-number-of-txrx-descriptors
 
 | 
-| By default CPSW allocates and uses as much CPPI Buffer Descriptors
-  descriptors as can fit into the internal CPSW SRAM, which is usually
-  is 256 descriptors. This is not enough for many high network
-  throughput use-cases where packet loss rate should be minimized, so
-  more RX/TX CPPI Buffer Descriptors need to be used.
-| CPSW allows to place and use CPPI Buffer Descriptors not only in SRAM,
-  but also in DDR. The "descs\_pool\_size" module parameter can be used
-  to setup total number of CPPI Buffer Descriptors to be allocated and
-  used for both RX/TX path.
-| To configure descs\_pool\_size from kernel boot cmdline:
+
+By default CPSW allocates and uses as much CPPI Buffer Descriptors
+descriptors as can fit into the internal CPSW SRAM, which is usually
+is 256 descriptors. This is not enough for many high network
+throughput use-cases where packet loss rate should be minimized, so
+more RX/TX CPPI Buffer Descriptors need to be used.
+
+CPSW allows to place and use CPPI Buffer Descriptors not only in SRAM,
+but also in DDR. The "descs\_pool\_size" module parameter can be used
+to setup total number of CPPI Buffer Descriptors to be allocated and
+used for both RX/TX path.
+
+To configure descs\_pool\_size from kernel boot cmdline:
 
 ::
 
        ti_cpsw.descs_pool_size=4096
 
 | 
-| To configure descs\_pool\_size from cmdline:
+
+To configure descs\_pool\_size from cmdline:
 
 ::
 
        insmod ti_cpsw descs_pool_size=4096
 
 | 
-| Hence, the CPSW uses one pool of descriptors for both RX and TX which
-  by default split between all channels proportionally depending on
-  total number of CPDMA channels and number of TX and RX channels.
-  Number of CPPI Buffer Descriptors allocated for RX and TX path can be
-  customized via ethtool '-G' command:
+
+Hence, the CPSW uses one pool of descriptors for both RX and TX which
+by default split between all channels proportionally depending on
+total number of CPDMA channels and number of TX and RX channels.
+Number of CPPI Buffer Descriptors allocated for RX and TX path can be
+customized via ethtool '-G' command:
 
 ::
 
          ethtool -G <devname> rx <number of descriptors>
 
 | 
-| ethtool '-G' command will accept only number of RX entries and rest of
-  descriptors will be arranged for TX automatically.
-| Defaults and limitations:
+
+ethtool '-G' command will accept only number of RX entries and rest of
+descriptors will be arranged for TX automatically.
+
+Defaults and limitations:
 
 ::
 
@@ -187,7 +200,8 @@ ethtool utility:
        - any values passed in "tx" parameter will be ignored
 
 | 
-| Examples:
+
+Examples:
 
 ::
 
@@ -229,19 +243,22 @@ VLAN will be subscribed to host port and the respective slave ports.
 .. rubric:: Examples
    :name: examples
 
-| **VLAN Add**
-| ``vconfig add eth0 5``
+**VLAN Add**
 
-| **VLAN del**
-| ``vconfig rem eth0 5``
+``vconfig add eth0 5``
 
-| **IP assigning**
-| IP address can be assigned to the VLAN interface either via udhcpc
-  when a VLAN aware dhcp server is present or via static ip asigning
-  using ifconfig.
+**VLAN del**
 
-| Once VLAN is added, it will create a new entry in Ethernet interfaces
-  like eth0.5, below is an example how it check the vlan interface
+``vconfig rem eth0 5``
+
+**IP assigning**
+
+IP address can be assigned to the VLAN interface either via udhcpc
+when a VLAN aware dhcp server is present or via static ip asigning
+using ifconfig.
+
+Once VLAN is added, it will create a new entry in Ethernet interfaces
+like eth0.5, below is an example how it check the vlan interface
 
 ::
 
@@ -301,8 +318,8 @@ Delete Multicast address
     ifr.ifr_hwaddr.sa_data[5] = 0x0E;
     ioctl(sockfd, SIOCDELMULTI, &ifr);
 
-| 
-| **Note** This interface does not support VLANs.
+.. note::
+   This interface does not support VLANs.
 
 | 
 
@@ -320,14 +337,14 @@ Delete Multicast address
 .. rubric:: Introduction
    :name: introduction-1
 
-| This section provides the user guide for Dual Emac mode
-  implementation. Following are the assumptions made for Dual Emac mode
-  implementation
+This section provides the user guide for Dual Emac mode
+implementation. Following are the assumptions made for Dual Emac mode
+implementation
 
 .. rubric:: Block Diagram
    :name: block-diagram
 
-|Block Diagram for Dual EMAC Implementation|
+.. Image:: ../images/Dual-EMAC-Implementation.jpg
 
 .. rubric:: Assumptions
    :name: assumptions
@@ -485,11 +502,11 @@ respective PHY modes.
 .. rubric:: Introduction
    :name: introduction-2
 
-| The CPSW Ethernet Switch can be configured in various different
-  combination of Ethernet Packet forwarding and blocking. There is no
-  such standard interface in Linux to configure a switch. This user
-  guide provides an interface to configure the switch using Socket IOCTL
-  through SIOCSWITCHCONFIG command.
+The CPSW Ethernet Switch can be configured in various different
+combination of Ethernet Packet forwarding and blocking. There is no
+such standard interface in Linux to configure a switch. This user
+guide provides an interface to configure the switch using Socket IOCTL
+through SIOCSWITCHCONFIG command.
 
 .. rubric:: Configuring Kernel with VLAN Support
    :name: configuring-kernel-with-vlan-support
@@ -572,7 +589,11 @@ CONFIG\_SWITCH\_ADD\_MULTICAST is used to add a LLDP Multicast address
 and forward the multicast packet to the subscribed ports. If VLAN ID is
 greater than zero then VLAN LLDP/Multicast is added.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_ADD\_MULTICAST
+|
+
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_ADD_MULTICAST
 
 +--------------------------+----------------------------+--------------------------+
 | Parameter                | Description                | Range                    |
@@ -589,8 +610,11 @@ greater than zero then VLAN LLDP/Multicast is added.
 | cmd\_struct.super        | Super                      | 0/1                      |
 +--------------------------+----------------------------+--------------------------+
 
-| **Result**
-| ioctl call returns success or failure.
+**Result**
+
+ioctl call returns success or failure.
+
+|
 
 .. rubric:: CONFIG\_SWITCH\_DEL\_MULTICAST
    :name: config_switch_del_multicast
@@ -598,7 +622,9 @@ greater than zero then VLAN LLDP/Multicast is added.
 CONFIG\_SWITCH\_DEL\_MULTICAST is used to Delete a LLDP/Multicast
 address with or without VLAN ID.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_DEL\_MULTICAST
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_DEL_MULTICAST
 
 +--------------------+-------------------+---------------+
 | Parameter          | Description       | Range         |
@@ -608,15 +634,20 @@ address with or without VLAN ID.
 | cmd\_struct.vid    | VLAN ID           | 0 – 4095      |
 +--------------------+-------------------+---------------+
 
-| **Result**
-| ioctl call returns success or failure.
+**Result**
+
+ioctl call returns success or failure.
+
+|
 
 .. rubric:: CONFIG\_SWITCH\_ADD\_VLAN
    :name: config_switch_add_vlan
 
 CONFIG\_SWITCH\_ADD\_VLAN is used to add VLAN ID.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_ADD\_VLAN
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_ADD_VLAN
 
 +--------------------------+----------------------------+--------------------------+
 | Parameter                | Description                | Range                    |
@@ -647,9 +678,9 @@ CONFIG\_SWITCH\_ADD\_VLAN is used to add VLAN ID.
 |                          | | Bit 2 – Slave 1/Port 2   |                          |
 +--------------------------+----------------------------+--------------------------+
 
+**Result**
 
-| **Result**
-| ioctl call returns success or failure.
+ioctl call returns success or failure.
 
 | 
 
@@ -658,7 +689,9 @@ CONFIG\_SWITCH\_ADD\_VLAN is used to add VLAN ID.
 
 CONFIG\_SWITCH\_DEL\_VLAN is used to delete VLAN ID.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_DEL\_VLAN
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_DEL_VLAN
 
 +-------------------+---------------+------------+
 | Parameter         | Description   | Range      |
@@ -666,10 +699,9 @@ CONFIG\_SWITCH\_DEL\_VLAN is used to delete VLAN ID.
 | cmd\_struct.vid   | VLAN ID       | 0 – 4095   |
 +-------------------+---------------+------------+
 
-| 
+**Result**
 
-| **Result**
-| ioctl call returns success or failure.
+ioctl call returns success or failure.
 
 | 
 
@@ -679,7 +711,9 @@ CONFIG\_SWITCH\_DEL\_VLAN is used to delete VLAN ID.
 CONFIG\_SWITCH\_ADD\_UNKNOWN\_VLAN\_INFO is used to set unknown VLAN
 Info.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_ADD\_UNKNOWN\_VLAN\_INFO
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_ADD_UNKNOWN_VLAN_INFO
 
 +--------------------------+----------------------------+--------------------------+
 | Parameter                | Description                | Range                    |
@@ -708,15 +742,20 @@ Info.
 |                          | | Bit 2 – Slave 1/Port 2   |                          |
 +--------------------------+----------------------------+--------------------------+
 
-| **Result**
-| ioctl call returns success or failure.
+**Result**
+
+ioctl call returns success or failure.
+
+|
 
 .. rubric:: CONFIG\_SWITCH\_SET\_PORT\_CONFIG
    :name: config_switch_set_port_config
 
 CONFIG\_SWITCH\_SET\_PORT\_CONFIG is used to set Phy Config.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_SET\_PORT\_CONFIG
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_SET_PORT_CONFIG
 
 +--------------------+----------------+--------------------------------------------------------------------------------------+
 | Parameter          | Description    | Range                                                                                |
@@ -726,10 +765,9 @@ CONFIG\_SWITCH\_SET\_PORT\_CONFIG is used to set Phy Config.
 | cmd\_struct.ecmd   | Phy settings   | Fill this structure (struct ethtool\_cmd), refer file include/uapi/linux/ethtool.h   |
 +--------------------+----------------+--------------------------------------------------------------------------------------+
 
-| 
+**Result**
 
-| **Result**
-| ioctl call returns success or failure.
+ioctl call returns success or failure.
 
 | 
 
@@ -738,7 +776,9 @@ CONFIG\_SWITCH\_SET\_PORT\_CONFIG is used to set Phy Config.
 
 CONFIG\_SWITCH\_GET\_PORT\_CONFIG is used to get Phy Config.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_GET\_PORT\_CONFIG
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_GET_PORT_CONFIG
 
 +--------------------+---------------+---------+
 | Parameter          | Description   | Range   |
@@ -746,11 +786,11 @@ CONFIG\_SWITCH\_GET\_PORT\_CONFIG is used to get Phy Config.
 | cmd\_struct.port   | Port number   | 0 - 2   |
 +--------------------+---------------+---------+
 
-| 
+**Result**
 
-| **Result**
-| ioctl call returns success or failure.
-| On success "cmd\_struct.ecmd" holds port phy settings
+ioctl call returns success or failure.
+
+On success "cmd\_struct.ecmd" holds port phy settings
 
 | 
 
@@ -759,7 +799,9 @@ CONFIG\_SWITCH\_GET\_PORT\_CONFIG is used to get Phy Config.
 
 CONFIG\_SWITCH\_SET\_PORT\_STATE is used to set port status.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_SET\_PORT\_STATE
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_SET_PORT_STATE
 
 +---------------------------+---------------+--------------------------+
 | Parameter                 | Description   | Range                    |
@@ -772,10 +814,9 @@ CONFIG\_SWITCH\_SET\_PORT\_STATE is used to set port status.
 |                           |               | PORT\_STATE\_FORWARD     |
 +---------------------------+---------------+--------------------------+
 
-| 
+**Result**
 
-| **Result**
-| ioctl call returns success or failure.
+ioctl call returns success or failure.
 
 | 
 
@@ -784,7 +825,9 @@ CONFIG\_SWITCH\_SET\_PORT\_STATE is used to set port status.
 
 CONFIG\_SWITCH\_GET\_PORT\_STATE is used to set port status.
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_GET\_PORT\_STATE
+::
+
+    cmd_struct.cmd = CONFIG_SWITCH_GET_PORT_STATE
 
 +--------------------+---------------+---------+
 | Parameter          | Description   | Range   |
@@ -792,11 +835,11 @@ CONFIG\_SWITCH\_GET\_PORT\_STATE is used to set port status.
 | cmd\_struct.port   | Port number   | 0 - 2   |
 +--------------------+---------------+---------+
 
-| 
+**Result**
 
-| **Result**
-| ioctl call returns success or failure.
-| On success "cmd\_struct.port\_state" holds port state
+ioctl call returns success or failure.
+
+On success "cmd\_struct.port\_state" holds port state
 
 | 
 
@@ -834,7 +877,11 @@ is calculated as:
 
       ALE_PRESCALE = Fclk / number_of_packets
 
-| cmd\_struct.cmd = CONFIG\_SWITCH\_RATELIMIT
+|
+
+::
+
+    cmd\_struct.cmd = CONFIG\_SWITCH\_RATELIMIT
 
 +----------------------------------+---------------------------+---------------------------+
 | Parameter                        | Description               | Range                     |
@@ -849,10 +896,9 @@ is calculated as:
 | cmd\_struct.mcast\_rate\_limit   | Multicast, No of Packet   | number\_of\_packets/sec   |
 +----------------------------------+---------------------------+---------------------------+
 
-| 
+**Result**
 
-| **Result**
-| ioctl call returns success or failure.
+ioctl call returns success or failure.
 
 | 
 
@@ -1001,8 +1047,10 @@ Below commands will be redirected to the phy driver:
        [ wol p|u|m|b|a|g|s|d... ]
        [ sopass %x:%x:%x:%x:%x:%x ]
 
-!Note. CPSW driver do not perform any kind of WOL specific actions or
-configurations.
+.. note::
+
+    CPSW driver do not perform any kind of WOL specific actions or
+    configurations.
 
 ::
 
@@ -1310,9 +1358,11 @@ changing number on one interface changes number of channels on another.
 .. rubric:: ethtool --set-eee DEVNAME Set EEE settings.
    :name: ethtool---set-eee-devname-set-eee-settings.
 
-| Note. Full EEE is not supported in cpsw driver, but it enables reading
-  and writing of EEE advertising settings in Ethernet PHY. This way one
-  can disable advertising EEE for certain speeds.
+.. note::
+
+    Full EEE is not supported in cpsw driver, but it enables reading
+    and writing of EEE advertising settings in Ethernet PHY. This way one
+    can disable advertising EEE for certain speeds.
 
 .. rubric:: Realtime Linux Kernel Network performance
    :name: realtime-linux-kernel-network-performance
