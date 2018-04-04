@@ -10,6 +10,7 @@ Target
 .. =================================
 .. include:: How_to_Guides/Target/How_to_Recalibrate_the_Touchscreen.rst
 
+.. include:: How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization.rst
 
 .. Add a JVM
 .. =================================
@@ -23,12 +24,12 @@ Target
 
 .. Update U-Boot Environment Variables stored in SPI Flash from Linux
 .. ==================================================================
-.. include:: How_to_Guides/Target/Update_U_Boot_Environment_Variables_stored_in_SPI_Flash_from_Linux.rst
+.. include:: How_to_Guides/Target/Update_U-Boot_Environment_Variables_stored_in_SPI_Flash_from_Linux.rst
 
 
 .. Take C66x Out Of Reset with Linux Running on the ARM A15
 .. ==================================================================
-.. include:: How_to_Guides/Target/Take_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15.rst
+.. include:: How_to_Guides/Target/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15.rst
 
 
 .. How to Change dtb File
