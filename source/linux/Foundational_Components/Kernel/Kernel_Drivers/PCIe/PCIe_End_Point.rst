@@ -32,7 +32,7 @@ These boards are by default intended to be operated in Root Complex
 mode. So in order to connect two boards, a specialized cable like below
 is required.
 
-|PCIe male-to-male connector|
+.. Image:: ../images/Pcie_ep_cable.jpg
 
 This cable can be obtained from http://www.adexelec.com/pciexp.htm. Use
 either X1 cable or X4 cable depending on the slot provided in the board.
@@ -43,22 +43,23 @@ ground loops (power) and smoking clock drivers (clk+/-).
 
 The ends of the modified cable should look like below
 
-   |image2|
+.. Image:: ../images/PCIE_B_side.jpg
 
-   B side
+B side
 
-   |image3|
+.. Image:: ../images/PCIE_A_side.jpg
 
-   A side
+A side
 
-   |image4|
+.. Image:: ../images/PCIE_A_side_side2.jpg
 
-   A side side2
+A side side2
 
-   |image5|
+.. Image:: ../images/PCIE_B_side_side2.jpg
 
-   B side side2
+B side side2
 
+|
 
 Image of a dra72-evm and dra7-evm connected back to back. There is no
 restriction on which end of the cable should be connected to host and
@@ -67,10 +68,13 @@ device.
 
 .. Image:: ../images/Back-to-back.jpeg
 
-| 
-| |Note|\ **Note:** For AM572x GP EVM, there is a Mini PCIe connector on
-  the LCD board. To connect 2 boards involving a AM572x GP EVM, a
-  mPCIe-to-PCIe adapter is needed.
+|
+
+..note::
+
+    For AM572x GP EVM, there is a Mini PCIe connector on
+    the LCD board. To connect 2 boards involving a AM572x GP EVM, a
+    mPCIe-to-PCIe adapter is needed.
 
 .. Image:: ../images/MPCIe-to-PCIe_Adapter.jpg
 
