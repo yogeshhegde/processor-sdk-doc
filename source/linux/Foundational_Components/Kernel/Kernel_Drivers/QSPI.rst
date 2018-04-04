@@ -2,15 +2,17 @@
 .. rubric:: Introduction
    :name: introduction-linux-qspi-ug
 
-| Quad Serial Peripheral Interface(QSPI) is a SPI module that allows
-  single, dual and quad read access to external SPI devices. This module
-  has a memory mapped register interface, which provides a direct
-  interface for accessing data from external SPI devices and thus
-  simplifying software requirements. The QSPI works as a master only.
-  The one QSPI in the device is primarily intended for fast booting from
-  quad-SPI flash memories.
-| This user guide applies to kernel v4.9 and higher.
-| Top level kernel user's guide can be found at:
+Quad Serial Peripheral Interface(QSPI) is a SPI module that allows
+single, dual and quad read access to external SPI devices. This module
+has a memory mapped register interface, which provides a direct
+interface for accessing data from external SPI devices and thus
+simplifying software requirements. The QSPI works as a master only.
+The one QSPI in the device is primarily intended for fast booting from
+quad-SPI flash memories.
+
+This user guide applies to kernel v4.9 and higher.
+
+Top level kernel user's guide can be found at:
   http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
 
 .. rubric:: Supported Devices
@@ -98,16 +100,17 @@ read from flash for maximum throughput and reduced CPU load.
 .. rubric:: Hardware Architecture
    :name: hardware-architecture
 
-| The QSPI is composed of two blocks. The first one is the SFI
-  memory-mapped interface (SFI\_MM\_IF) and the second one is the SPI
-  core (SPI\_CORE). The SFI\_MM\_IF block is associated only with SPI
-  flash memories and is used for specifying typical for the SPI flash
-  memories settings (read or write command, number of address and dummy
-  bytes, and so on) unlike the SPI\_CORE block, which is associated with
-  the SPI interface itself and is used to configure typical SPI settings
-  (chip-select polarity, serial clock inactive state, SPI clock mode,
-  length of the words transferred, and so on).
-| The SFI\_MM\_IF comprises the following two subblocks:
+The QSPI is composed of two blocks. The first one is the SFI
+memory-mapped interface (SFI\_MM\_IF) and the second one is the SPI
+core (SPI\_CORE). The SFI\_MM\_IF block is associated only with SPI
+flash memories and is used for specifying typical for the SPI flash
+memories settings (read or write command, number of address and dummy
+bytes, and so on) unlike the SPI\_CORE block, which is associated with
+the SPI interface itself and is used to configure typical SPI settings
+(chip-select polarity, serial clock inactive state, SPI clock mode,
+length of the words transferred, and so on).
+
+The SFI\_MM\_IF comprises the following two subblocks:
 
 -  SFI register control
 -  SFI translator
@@ -152,82 +155,22 @@ for more info
 
 | 
 
-.. raw:: html
+.. figure:: ../images/QSPI_block_diagram.png
 
-   <div class="center">
+    QSPI Block Diagram
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:650px;">
-
-|image0|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-QSPI Block Diagram
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+|
 
 .. rubric:: Driver Architecture
    :name: driver-architecture
 
-| Following diagram shows the QSPI driver stack:
+Following diagram shows the QSPI driver stack:
 
-.. raw:: html
+.. figure:: ../images/QSPI_architecture.png
 
-   <div class="center">
+    QSPI software stack
 
-.. raw:: html
-
-   <div class="thumb tnone">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:614px;">
-
-|image1|
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-QSPI software stack
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+|
 
 QSPI driver can be use both to access SPI flash devices via mtd
 subsystem or access generic SPI devices (like SPI touchscreen) via SPI
@@ -299,14 +242,16 @@ Enabling UBIFS filesystem support:
 .. rubric:: DT Configuration
    :name: dt-configuration
 
-| Refer to Documentation/devicetree/bindings/spi/ti\_qspi.txt under
-  kernel source tree for QSPI controller driver's DT bindings and their
-  usage.
-| For generic SPI bus related DT bindings refer to:
-  Documentation/devicetree/bindings/spi/ti\_qspi.txt
-| To configure QSPI flash partitions and flash related DT bindings refer
-  to: Documentation/devicetree/bindings/mtd/jedec,spi-nor.txt and
-  Documentation/devicetree/bindings/mtd/partition.txt
+Refer to Documentation/devicetree/bindings/spi/ti\_qspi.txt under
+kernel source tree for QSPI controller driver's DT bindings and their
+usage.
+
+For generic SPI bus related DT bindings refer to:
+Documentation/devicetree/bindings/spi/ti\_qspi.txt
+
+To configure QSPI flash partitions and flash related DT bindings refer
+to: Documentation/devicetree/bindings/mtd/jedec,spi-nor.txt and
+Documentation/devicetree/bindings/mtd/partition.txt
 
 .. rubric:: Driver Usage
    :name: driver-usage
