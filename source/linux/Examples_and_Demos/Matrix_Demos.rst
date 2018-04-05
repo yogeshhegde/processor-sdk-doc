@@ -21,9 +21,9 @@ There are a number of Example Applications provided within the Processor SDK for
     OpenCL ,  ,  ,  ,  ,  ,  ,  ,X ,X ,X ,X ,X ,X ,X ,  ,`OpenCL Examples <Examples_and_Demos.html#dsp-offload-with-opencl>`__ ,Provides OpenCL example descriptions. Matrix GUI provides two out of box OpenCL demos: Vector Addition and Floating Point Computation.
     Camera ,  ,  ,  ,  ,X ,X ,X ,X ,X ,X ,  ,  ,  ,  ,  ,`Camera User's Guide <Examples_and_Demos.html#camera-users-guide>`__ ,Provides details on how to support smart sensor camera sensor using the Media Controller Framework
     Video Analytics ,  ,  ,  ,  ,  ,  ,  ,X ,X ,X ,  ,  ,  ,  ,  ,`Video Analytics Demo <Examples_and_Demos.html#video-analytics>`__ ,Demonstrates the capability of AM57x for video analytics. It builds on Qt and utilizes various IP blocks on AM57x.
-    Machine Vision - DLP 3D Scanner ,  ,  ,  ,  ,  ,  ,  ,X ,X ,X ,  ,  ,  ,  ,  ,`3D Machine Vision Reference Design <Examples_and_Demos.html#dlp-3d-scanner>`__ ,Demonstrates the capability of AM57x for DLP 3D scanning.
-    Machine Vision - Simple People Tracking ,X ,  ,X ,X ,X ,X ,X ,X ,X ,X ,  ,  ,  ,  ,  ,`3D TOF Reference Design <Examples_and_Demos.html#people-tracking>`__ ,Demonstrates the capability of people tracking and detection with TI?s ToF (Time-of-Flight) sensor
-    Machine Vision - Barcode Reader ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,  ,`Barcode Reader <Examples_and_Demos.html#people-tracking>`__ ,Demonstrates the capability of detecting and decoding barcodes
+    DLP 3D Scanner ,  ,  ,  ,  ,  ,  ,  ,X ,X ,X ,  ,  ,  ,  ,  ,`3D Machine Vision Reference Design <Examples_and_Demos.html#dlp-3d-scanner>`__ ,Demonstrates the capability of AM57x for DLP 3D scanning.
+    Simple People Tracking ,X ,  ,X ,X ,X ,X ,X ,X ,X ,X ,  ,  ,  ,  ,  ,`3D TOF Reference Design <Examples_and_Demos.html#people-tracking>`__ ,Demonstrates the capability of people tracking and detection with TI?s ToF (Time-of-Flight) sensor
+    Barcode Reader ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,  ,`Barcode Reader <Examples_and_Demos.html#people-tracking>`__ ,Demonstrates the capability of detecting and decoding barcodes
     USB Profiler ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,NA , 
     ARM Benchmarks ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,NA , 
     Display ,X ,  ,X ,  ,X ,X ,  ,X ,X ,X ,  ,  ,  ,  ,  ,NA , 

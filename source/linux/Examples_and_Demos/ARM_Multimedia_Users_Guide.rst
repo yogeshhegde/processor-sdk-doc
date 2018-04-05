@@ -5,9 +5,6 @@ ARM Multimedia Users Guide
 .. rubric:: Overview
    :name: overview
 
-| **Content is no longer maintained and is being kept for reference
-  only!**
-
 | 
 
 Multimedia codecs on ARM based platforms could be optimised for better
