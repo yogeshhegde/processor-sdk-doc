@@ -233,5 +233,3 @@ statements.
   boot the Linux kernel.  So if the bootscript exists and is executed,
   it should not return to rest of the bootcmd.
 
-.. raw:: html
-

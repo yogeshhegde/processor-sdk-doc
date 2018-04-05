@@ -303,5 +303,3 @@ connect to the core.
 
 `AM572x\_Industrial\_EVM\_Hardware\_Users\_Guide <http://www.ti.com/lit/ug/sprui64a/sprui64a.pdf>`__
 
-.. raw:: html
-

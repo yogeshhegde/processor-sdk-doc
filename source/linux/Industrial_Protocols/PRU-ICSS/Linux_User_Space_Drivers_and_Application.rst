@@ -463,5 +463,3 @@ AM571x IDK board.
 
     All tests have passed
 
-.. raw:: html
-

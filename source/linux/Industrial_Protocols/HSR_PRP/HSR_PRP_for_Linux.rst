@@ -2042,5 +2042,3 @@ to /etc/systemd/network/ one for each prp0 or hsr0 similar to eth0, by
 using a Match name string of hsr0 or prp0. More details on this is at
 [`[6] <https://wiki.archlinux.org/index.php/systemd-networkd#Configuration_files>`__]
 
-.. raw:: html
-

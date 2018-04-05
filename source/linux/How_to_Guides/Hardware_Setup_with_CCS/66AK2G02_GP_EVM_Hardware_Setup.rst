@@ -583,5 +583,3 @@ We recommend that users need to replace these with 200 Ω / 1%.
 -  `Keystone E2E Support
    Forum <https://e2e.ti.com/support/dsp/c6000_multi-core_dsps/f/639>`__
 
-.. raw:: html
-

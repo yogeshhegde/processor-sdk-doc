@@ -98,5 +98,3 @@ down the board, and connect back pins 2 and 3 on Jumper J5 (sysboot).
 After that, you can put your SD card loaded with Linux into the ICE
 board and reset it to boot Linux.
 
-.. raw:: html
-
