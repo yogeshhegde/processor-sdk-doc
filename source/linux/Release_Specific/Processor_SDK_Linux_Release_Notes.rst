@@ -54,9 +54,9 @@ Released Mar 2018
 
 -  New Demos
     -  Qt5-based Thermostat demo on AM335x/AM437x/AM57x
-    -  Demonstrate 4K Video Encode with IVAHD on AM57x
-    -  Khronos OpenVX based demo example with C66x offload via OpenCL
-    -  ROS Turtlebot demo using AM57x and IWR1443/IWR1642 mmWave radar
+    -  `Demonstrate 4K Video Encode with IVAHD on AM57x <Foundational_Components.html#file-to-file-4k-h264-encoding-pipeline>`__
+    -  `Khronos OpenVX based demo example with C66x offload via OpenCL <Examples_and_Demos.html#optical-flow-with-openvx>`__
+    -  `ROS Turtlebot demo using AM57x and IWR1443/IWR1642 mmWave radar <Examples_and_Demos.html#ros-and-radar>`__
 
 -  New Features
     -  PTP: Support Boundary Clock between 3 ports (1xCPSW and 2xICSS) on AM571x

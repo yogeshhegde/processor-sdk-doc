@@ -409,32 +409,40 @@ respectively.
 
 Below provides more gstreamer pipeline examples.
 
-1. File to file video encoding pipeline:
+.. rubric:: File to file video encoding pipeline:
 
-   ::
+::
 
     target #  gst-launch-1.0 filesrc location=waterfall-352-288-nv12-inp.yuv ! videoparse width=352 height=288 format=nv12 ! video/x-raw, width=352, height=288 ! ducatih264enc ! filesink location=waterfall-352-288-nv12-inp_gst.h264
 
-   The cap filter of "video/x-raw, width=352, height=288" is needed in this
-   pipeline to specify the width and height. Otherwise, variable width and
-   height are configured for the encoder and the encoded output can be
-   corrupted.
+The cap filter of "video/x-raw, width=352, height=288" is needed in this
+pipeline to specify the width and height. Otherwise, variable width and
+height are configured for the encoder and the encoded output can be
+corrupted.
 
-2. ARM H265 (HEVC) decoding pipeline
+.. rubric:: File to file 4K H264 encoding pipeline
+   :name: file-to-file-4k-h264-encoding-pipeline
+
+::
+
+    target #  gst-launch-1.0 filesrc location= 4k.nv12 ! videoparse width=3840 height=2160 format=nv12 framerate=12/1 ! video/x-raw, width=40, height=2160 ! ducatih264enc level=51 profile=100 bitrate=16000 ! fink
+
+
+.. rubric:: ARM H265 (HEVC) decoding pipeline
 
 ::
 
     target #  gst-launch-1.0 filesrc location=<file>.265 ! 'video/x-raw, format=(string)NV12, framerate=(fraction)24/1, width=(int)1280, height=(int)720'  ! h265dec threads=2 !  vpe ! kmssink
 
-3. DSP offloaded image processing pipeline
+.. rubric:: DSP offloaded image processing pipeline
 
 ::
 
     target #  gst-launch-1.0 filesrc location=<file>.265 ! 'video/x-raw, format=(string)NV12, framerate=(fraction)24/1, width=(int)1280, height=(int)720'  ! h265dec threads=1 ! videoconvert ! dsp66videokernel kerneltype=1 filtersize=9 lum-only=1 ! videoconvert ! vpe ! 'video/x-raw, format=(string)NV12, width=(int)640, height=(int)480' ! kmssink
 
-  This pipeline decodes an H265 clip on ARM A15, offloads the image
-  processing task (Sobel 3x3 kernel) to DSP, and the processed clip is
-  then re-sized and displayed.
+This pipeline decodes an H265 clip on ARM A15, offloads the image
+processing task (Sobel 3x3 kernel) to DSP, and the processed clip is
+then re-sized and displayed.
 
 Processor SDK provides reference implementation of multiple image
 processing kernels, for which the pipeline can be configured as shown in
