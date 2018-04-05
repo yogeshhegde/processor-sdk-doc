@@ -20,7 +20,7 @@ for application:
 
 ::
 
-#. include <ti/board/board.h>
+   #. include <ti/board/board.h>
 
 | 
 
@@ -28,14 +28,14 @@ Example API pseudo code for Board_init() is as follows:
 
 ::
 
-/* Setting up for pinmux and uart */
-Board_STATUS ret;
-Board_initCfg boardCfg;
- 
-boardCfg = BOARD_INIT_MODULE_CLOCK \| BOARD_INIT_PINMUX_CONFIG \|
-BOARD_INIT_UART_STDIO;
+   /* Setting up for pinmux and uart */
+   Board_STATUS ret;
+   Board_initCfg boardCfg;
 
-ret = Board_init(boardCfg); </syntaxhighlight>
+   boardCfg = BOARD_INIT_MODULE_CLOCK \| BOARD_INIT_PINMUX_CONFIG \|
+   BOARD_INIT_UART_STDIO;
+
+   ret = Board_init(boardCfg);
 
 | 
 
@@ -77,28 +77,34 @@ sole purpose of meeting this requirement. They are:
 **BOARD_IO_DELAY_CODE** and **BOARD_IO_DELAY_DATA**. Below are examples
 of how to specify these section into the local memory, OCMC_RAM1:
 
-In baremetal case with a linker cmd file: <syntaxhighlight lang="c">
-BOARD_IO_DELAY_CODE : {
+In baremetal case with a linker cmd file: 
 
 ::
 
-    . = ALIGN(4);
-    *(BOARD_IO_DELAY_CODE*)
+   BOARD_IO_DELAY_CODE : {
 
-} > OCMC_RAM1
+      . = ALIGN(4);
+      *(BOARD_IO_DELAY_CODE*)
 
-BOARD_IO_DELAY_DATA : {
+   } > OCMC_RAM1
 
-    . = ALIGN(4);
-    *(BOARD_IO_DELAY_DATA*)
+   BOARD_IO_DELAY_DATA : {
 
-} > OCMC_RAM1 </syntaxhighlight>
+      . = ALIGN(4);
+      *(BOARD_IO_DELAY_DATA*)
+
+   } > OCMC_RAM1
 
 | 
 
-In a CCS RTSC project with .cfg file: <syntaxhighlight lang="c">
-Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1";
-Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1"; </syntaxhighlight>
+In a CCS RTSC project with .cfg file: 
+
+::
+
+   Program.sectMap["BOARD_IO_DELAY_DATA"] = "OCMC_RAM1";
+   Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1";
+
+| 
 
 .. rubric::  Considerations for DRA7xx devices
    :name: considerations-for-dra7xx-devices
@@ -141,16 +147,22 @@ handling this conflict:
       into DSECTS, modify the placement as follows:
 
 Replace:
-<syntaxhighlight lang="c"> Program.sectMap["BOARD_IO_DELAY_DATA"] =
-"OCMC_RAM1"; Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1";
-</syntaxhighlight>
+::
+
+   Program.sectMap["BOARD_IO_DELAY_DATA"] =
+   "OCMC_RAM1"; Program.sectMap["BOARD_IO_DELAY_CODE"] = "OCMC_RAM1";
+| 
 
 With:
-<syntaxhighlight lang="c"> Program.sectMap["BOARD_IO_DELAY_DATA"] = new
-Program.SectionSpec(); Program.sectMap["BOARD_IO_DELAY_CODE"] = new
-Program.SectionSpec(); Program.sectMap["BOARD_IO_DELAY_DATA"].type =
-"DSECT"; Program.sectMap["BOARD_IO_DELAY_CODE"].type = "DSECT";
-</syntaxhighlight>
+
+:: 
+
+   Program.sectMap["BOARD_IO_DELAY_DATA"] = new
+   Program.SectionSpec(); Program.sectMap["BOARD_IO_DELAY_CODE"] = new
+   Program.SectionSpec(); Program.sectMap["BOARD_IO_DELAY_DATA"].type =
+   "DSECT"; Program.sectMap["BOARD_IO_DELAY_CODE"].type = "DSECT";
+
+| 
 
 -  Remove the BOARD_INIT_PINMUX_CONFIG flag from the call to Board_init.
    Since the BOARD_IO_DELAY_DATA/BOARD_IO_DELAY_CODE sections no longer
