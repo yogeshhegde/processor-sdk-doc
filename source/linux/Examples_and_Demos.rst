@@ -79,6 +79,10 @@ Protection Relay Demo
 Matrix UI provides out of box demo to showcase Human Machine Interface (HMI) for Protection Relays. More details can be found at http://www.ti.com/tool/TIDEP-0102
 
 
+Qt5 Thermostat HMI Demo
+========================
+.. include:: Examples_and_Demos/Thermostat.rst
+
 .. include:: Examples_and_Demos/Optical_Flow_with_OpenVX.rst
 
 ROS and Radar
