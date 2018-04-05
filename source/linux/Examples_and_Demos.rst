@@ -19,6 +19,8 @@ Power Management
 
 .. include::  Examples_and_Demos/AM335x_Power_Management_User_Guide.rst
 
+.. include::  Examples_and_Demos/ARM_Multimedia_Users_Guide.rst
+
 Accelerated Multimedia
 ======================
 Refer to various GStreamer pipelines documented at `Multimedia <Foundational_Components.html#processor-sdk-linux-multimedia>`__ chapter.
