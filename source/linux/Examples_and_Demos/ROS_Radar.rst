@@ -45,9 +45,9 @@ HW Setup
 * [optional] Kobuki mobile base (as used by Turtlebot2), http://kobuki.yujinrobot.com/
 
 .. figure:: ../images/ros_radar_1.png
-    :width: 200px
+    :width: 500px
     :align: center
-    :height: 100px
+    :height: 350px
     :alt: alternate text
     :figclass: align-center
 
