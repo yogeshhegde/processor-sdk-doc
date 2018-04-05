@@ -85,23 +85,14 @@ that ti-processor-sdk-linux install directory.  Then run the script:
 
 **./setup.sh**
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The Setup Script will first check to see if the user is running the
-recommended Ubuntu Long Term Support (LTS) distribution, if not it will
-exit. If the user is running on a different Ubuntu version or another
-Linux distribution, they are encouraged to modify the environment setup
-script to match their distribution. See which version of Ubuntu is
-currently supported
-`here <Release_Specific.html#supported-platforms-and-versions>`__.
-
-.. raw:: html
-
-   </div>
+.. note::
+    The Setup Script will first check to see if the user is running the
+    recommended Ubuntu Long Term Support (LTS) distribution, if not it will
+    exit. If the user is running on a different Ubuntu version or another
+    Linux distribution, they are encouraged to modify the environment setup
+    script to match their distribution. See which version of Ubuntu is
+    currently supported
+    `here <Release_Specific.html#supported-platforms-and-versions>`__.
 
 .. rubric:: Detailed step by step description through the setup script
    :name: detailed-step-by-step-description-through-the-setup-script
@@ -125,38 +116,21 @@ packages to allow you do the following tasks:
 If your host lacks any of the needed packages, they will automatically
 be installed in this step.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This command requires you to have administrator priviliges (sudo access)
-on your host.
-
-.. raw:: html
-
-   </div>
+.. note::
+    This command requires you to have administrator priviliges (sudo access)
+    on your host.
 
 The command below is an example of what this script is doing. The actual
 packages may vary for different releases:
 
 **sudo apt-get install xinetd tftpd nfs-kernel-server minicom
 build-essential libncurses5-dev uboot-mkimage autoconf automake**
+
 .. rubric:: Add to Dialout Group
    :name: add-to-dialout-group
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This part requires you to have administrator priviliges (sudo access).
-
-.. raw:: html
-
-   </div>
+.. note::
+    This part requires you to have administrator priviliges (sudo access).
 
 A unique step is required for users using Ubuntu 12.04+. By default the
 user does not have the proper permissions to access a serial device ( ex
@@ -174,17 +148,8 @@ logs out and then logs back in.
 
 This step will extract the target filesystem.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This part requires you to have administrator priviliges (sudo access).
-
-.. raw:: html
-
-   </div>
+.. note::
+    This part requires you to have administrator priviliges (sudo access).
 
 The default locations is:
 /home/user/ti-processor-sdk-linux-[platformName]-evm-x.x.x.x/targetNFS
@@ -211,18 +176,9 @@ exists, you will be asked to either:
 This step will allow you to export your filesystem which was extracted
 in the previous step.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This command requires you to have administrator priviliges (sudo
-access).
-
-.. raw:: html
-
-   </div>
+.. note::
+    This command requires you to have administrator priviliges (sudo
+    access).
 
 -  This step adds the path to root filesystem from the previous step to
    the file /etc/exports on your host.
@@ -234,18 +190,9 @@ access).
 
 This section will setup tftp access on your host.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This command requires you to have administrator priviliges (sudo access)
-on your host.
-
-.. raw:: html
-
-   </div>
+.. note::
+    This command requires you to have administrator priviliges (sudo access)
+    on your host.
 
 ::
 
@@ -294,18 +241,9 @@ proper serial port will be setup in a later step.
 The configuration saved to /home/user/.minirc.dfl can be changed, see
 the Software Development Guide for more information.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If you are using a USB-to-Serial converter, your port should be
-configured for /dev/ttyUSBx
-
-.. raw:: html
-
-   </div>
+.. note::
+    If you are using a USB-to-Serial converter, your port should be
+    configured for /dev/ttyUSBx
 
 .. rubric:: uboot Setup
    :name: uboot-setup
@@ -338,18 +276,9 @@ to be located.
    -  SD card - located on the 2nd partition named "rootfs" of your SD
       card.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The option of "SD card" is not applicable to K2H/K2K, K2E, and K2L
-platforms. Therefore, please use TFTP/NFS for those keystone2 platforms.
-
-.. raw:: html
-
-   </div>
+.. note::
+    The option of "SD card" is not applicable to K2H/K2K, K2E, and K2L
+    platforms. Therefore, please use TFTP/NFS for those keystone2 platforms.
 
 Next if you have selected TFTP, you will be prompted which uImage you
 want to boot using TFTP. You will be given a list of existing uImage's
@@ -371,19 +300,10 @@ preferred configuration.
    uEnv.txt script is created and placed in the /boot partition of the
    SD card.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For devices which create a uEnv.txt, the device must already be booted
-up with the USB-to-Serial connector attached to the Host. Further the
-Host must recognize the boot and START\_HERE partitions.
-
-.. raw:: html
-
-   </div>
+.. note::
+    For devices which create a uEnv.txt, the device must already be booted
+    up with the USB-to-Serial connector attached to the Host. Further the
+    Host must recognize the boot and START\_HERE partitions.
 
 | 
 

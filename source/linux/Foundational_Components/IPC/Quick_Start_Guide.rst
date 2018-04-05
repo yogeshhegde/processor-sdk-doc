@@ -23,11 +23,13 @@ projects quickly.
 
 The out of box demo is only available on Keystone-2 EVMs.
 
-| |Note|\ **Note:** This assumes the release images are loaded in the
-  flash/SD Card. If needed to update to latest release follow the
-  http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide
-  to update the release images on flash memory/SD card on the EVM using
-  Program-evm or using the procedures for SD Card.
+.. note::
+
+    This assumes the release images are loaded in the
+    flash/SD Card. If needed to update to latest release follow the
+    http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide
+    to update the release images on flash memory/SD card on the EVM using
+    Program-evm or using the procedures for SD Card.
 
 1. Connect the EVM Ethernet port 0 to a corporate or local network
    with DHCP server running, when the Linux kernel boots up, the rootfs
@@ -47,9 +49,11 @@ The out of box demo is only available on Keystone-2 EVMs.
    
    .. Image:: ../images/IPC_Demo_Result.jpg
 
-| |Note|\ **Note:** To view the out-of-box demo source code, please
-  install Linux and RTOS Processor SDKs from `SDK download
-  page <http://www.ti.com/lsds/ti/tools-software/processor_sw.page>`__
+.. note::
+
+    To view the out-of-box demo source code, please
+    install Linux and RTOS Processor SDKs from `SDK download
+    page <http://www.ti.com/lsds/ti/tools-software/processor_sw.page>`__
 
 The source code are located in:
 
@@ -87,10 +91,11 @@ The source code are located in:
 **5.** The ARM binary will be located under the directory where the
        source code is <RTOS\_SDK\_INSTALL\_DIR>/ipc\_x\_xx\_xx\_xx/linux/src/tests/
 
-| |Note|\ **Note:** Please follow the build instruction in `Linux Kernel
-  User
-  Guide <http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide>`__
-  to set up the build environment.
+.. note::
+
+    Please follow the build instruction in `Linux Kernel User Guide
+    <http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide>`__
+    to set up the build environment.
 
 | 
 | **DSP RTOS :**
@@ -106,8 +111,10 @@ The source code are located in:
     export SDK_INSTALL_PATH=<RTOS_SDK_INSTALL_DIR>
     export TOOLS_INSTALL_PATH=<RTOS_SDK_INSTALL_DIR>
 
-|Note|\ **Note:** For ProcSDK 3.2, tools are not included in RTOS SDK,
-so point to CCS:
+.. note::
+
+    For ProcSDK 3.2, tools are not included in RTOS SDK,
+    so point to CCS:
 
 ::
 
@@ -171,14 +178,17 @@ with the following commands:
       $ cd <TI_LINUX_PROC_SDK_INSTALL_DIR>
       $ make ti-ipc-linux-examples
 
-|Note|\ **Note:** Please follow the build instruction in `Linux Kernel
-User
-Guide <http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide>`__
-to set up the build environment.
+.. note::
 
-|Note|\ **Note:** If RTOS Proc SDK is not installed at its default
-location, then the environment variables, TI\_RTOS\_PATH and
-TI\_CCS\_PATH need to be exported with their installed locations.
+    Please follow the build instruction in `Linux Kernel User Guide
+    <http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide>`__
+    to set up the build environment.
+
+.. note::
+
+    If RTOS Proc SDK is not installed at its default
+    location, then the environment variables, TI\_RTOS\_PATH and
+    TI\_CCS\_PATH need to be exported with their installed locations.
 
 ::
 
@@ -286,11 +296,13 @@ The IPC package also includes examples for the use case with Host and
 the slave cores running RTOS/BIOS. They can be built from the Processor
 SDK RTOS package.
 
-|Note|\ **Note:** To Install RTOS Proc SDK, please follow the
-instructions in `RTOS SDK Getting Started
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__
-In the RTOS Processor SDK, the ipc examples are located under
-<RTOS\_SDK\_INSTALL\_DIR>/processor\_sdk\_rtos\_<platform>\_x\_xx\_xx\_xx/ipc\_<version>/examples/<platform>\_bios\_elf.
+.. note::
+
+    To Install RTOS Proc SDK, please follow the
+    instructions in `RTOS SDK Getting Started
+    Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__
+    In the RTOS Processor SDK, the ipc examples are located under
+    <RTOS\_SDK\_INSTALL\_DIR>/processor\_sdk\_rtos\_<platform>\_x\_xx\_xx\_xx/ipc\_<version>/examples/<platform>\_bios\_elf.
 
 NOTE: The platform in the directory name may be slightly different from
 the top level platform name. For example, platform name DRA7XX refer to
@@ -308,9 +320,11 @@ IPC examples can be built with the following commands:
        2. Start the top level build:
             $ make ipc_examples
 
-|Note|\ **Note:** If RTOS Proc SDK and tools are not installed at its
-default location, then the environment variables, SDK\_INSTALL\_PATH and
-TOOLS\_INSTALL\_PATH need to be exported with their installed locations.
+.. note::
+
+    If RTOS Proc SDK and tools are not installed at its
+    default location, then the environment variables, SDK\_INSTALL\_PATH and
+    TOOLS\_INSTALL\_PATH need to be exported with their installed locations.
 
 | 
 

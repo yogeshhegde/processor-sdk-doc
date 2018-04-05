@@ -249,5 +249,3 @@ Something similar could be done for a "J" speed grade part that runs at
             /delete-node/ opp_high@1500000000;
     };
 
-.. raw:: html
-

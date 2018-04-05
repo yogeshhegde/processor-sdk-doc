@@ -33,5 +33,3 @@ setenv below will use HDMI as the primary display.
 
     setenv optargs omapdrm.displays=1,0
 
-.. raw:: html
-

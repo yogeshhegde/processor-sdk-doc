@@ -16,23 +16,7 @@ Archives section at the bottom of this page.
 .. rubric:: Boards Supported
    :name: boards-supported
 
-.. raw:: html
-
-   <div>
-
-.. raw:: html
-
-   <div class="floatleft">
-
 .. Image:: ../images/Am335x_ice.jpg
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: `AM3359 Industrial Communications Engine
    (ICE) <http://www.ti.com/tool/tmdsice3359>`__
@@ -49,23 +33,7 @@ communication technologies used in a broad range of industrial
 automation equipment. It enables low foot print designs with minimal
 external components and with best in class low power performance.
 
-.. raw:: html
-
-   <div>
-
-.. raw:: html
-
-   <div class="floatleft">
-
 .. Image:: ../images/Am437x_idk_500x300.jpg
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: `AM437x Industrial Development Kit
    (IDK) <http://www.ti.com/tool/tmdsidk437x>`__
@@ -84,23 +52,7 @@ technologies used in a broad range of industrial automation equipment.
 It enables low foot print designs with minimal external components and
 with best in class low power performance.
 
-.. raw:: html
-
-   <div>
-
-.. raw:: html
-
-   <div class="floatleft">
-
 .. Image:: ../images/Am571x_idk.JPG
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: `AM571x Industrial Development Kit
    (IDK) <http://www.ti.com/tool/TMDXIDK5718>`__
@@ -117,46 +69,21 @@ communication gateway or controller. In addition, it can directly
 operate as a standard remote I/O system or a sensor connected to an
 industrial communication network.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Due to pin muxing between the optional LCD and the PRUSS1 Ethernet
-ports, the AM571x IDK supports two configurations. The first
-configuration is 4-port Ethernet + LCD. In this configuration, two
-Ethernet ports are provided by the CPSW, two Ethernet ports are provided
-by PRUSS2, and the LCD is enabled. To use this configuration, place a
-jumper across **J51** on the board. The second configuration is 6-port
-Ethernet. In this configuration, two Ethernet ports are provided by the
-CPSW, two Ethernet ports are provided by PRUSS1, two Ethernet ports are
-provided by PRUSS2, and the LCD is disabled. To use this configuration,
-leave **J51** open.
-
-.. raw:: html
-
-   </div>
+.. note::
+    Due to pin muxing between the optional LCD and the PRUSS1 Ethernet
+    ports, the AM571x IDK supports two configurations. The first
+    configuration is 4-port Ethernet + LCD. In this configuration, two
+    Ethernet ports are provided by the CPSW, two Ethernet ports are provided
+    by PRUSS2, and the LCD is enabled. To use this configuration, place a
+    jumper across **J51** on the board. The second configuration is 6-port
+    Ethernet. In this configuration, two Ethernet ports are provided by the
+    CPSW, two Ethernet ports are provided by PRUSS1, two Ethernet ports are
+    provided by PRUSS2, and the LCD is disabled. To use this configuration,
+    leave **J51** open.
 
 | 
 
-.. raw:: html
-
-   <div>
-
-.. raw:: html
-
-   <div class="floatleft">
-
 .. Image:: ../images/Am572x_idk.PNG
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: `AM572x Industrial Development Kit
    (IDK) <http://www.ti.com/tool/TMDXIDK5728>`__
@@ -173,39 +100,14 @@ six ports of Ethernet, four of which can be used concurrently: 2x Gb
 Ethernet ports and 2x 10/100 Ethernet ports from the PRU-ICSS
 subsystems.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Due to changes in the PRU-ICSS between silicon revisions, the PRU
-Ethernet firmwares provided for the AM5728 device are only meant to be
-used on silicon revision SR 2.0.
-
-.. raw:: html
-
-   </div>
+.. note::
+    Due to changes in the PRU-ICSS between silicon revisions, the PRU
+    Ethernet firmwares provided for the AM5728 device are only meant to be
+    used on silicon revision SR 2.0.
 
 | 
 
-.. raw:: html
-
-   <div>
-
-.. raw:: html
-
-   <div class="floatleft">
-
 .. Image:: ../images/K2g_ice.PNG
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: `K2G Industrial Communication Engine
    (ICE) <http://www.ti.com/tool/k2gice>`__
@@ -333,19 +235,10 @@ Here are the steps needed to test out the new Ethernet interfaces:
    -  Put the SD card into your board, power it on, and wait for the
       login prompt then type **root** to log in.
 
-      .. raw:: html
-
-         <div
-         style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-      **NOTE**
-      You'll need to clear the SPI flash on the AM3359 ICE board before
-      you can boot from an SD card: `AM3359 ICE clear SPI
-      flash <Processor_Linux_SDK_How_To_Guides.html#am335x-icev2-flash-erase>`__
-
-      .. raw:: html
-
-         </div>
+      .. note::
+          You'll need to clear the SPI flash on the AM3359 ICE board before
+          you can boot from an SD card: `AM3359 ICE clear SPI
+          flash <Processor_Linux_SDK_How_To_Guides.html#am335x-icev2-flash-erase>`__
 
 -  Plug an Ethernet cable into the ports supported by the PRU-ICSS
 
@@ -370,27 +263,18 @@ Here are the steps needed to test out the new Ethernet interfaces:
       ETH1**, **PRU2 ETH0**, and **PRU2 ETH1** for the supported PRU
       ports
 
-      .. raw:: html
-
-         <div
-         style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-      **NOTE**
-      On the AM571x IDK board, the pins used for PRU1 ETH0 and PRU1 ETH1
-      are shared with pins used for the optional LCD touchscreen. U-Boot
-      uses jumper **J51** to determine if the LCD touchscreen should be
-      enabled or not. If **J51** is closed (jumper is present across the
-      two pins), then U-Boot will load a device tree that enables the
-      LCD touchscreen and disables PRUSS1 Ethernet ports. This means
-      that only **PRU2 ETH0** and **PRU2 ETH1** will be supported if
-      jumper **J51** is closed. If **J51** is open (jumper is not
-      present across the two pins), then U-Boot will load a device tree
-      that enables all four PRUSS Ethernet ports, two from PRUSS1 and
-      two from PRUSS2. In this mode, the LCD touchscreen is disabled.
-
-      .. raw:: html
-
-         </div>
+      .. note::
+          On the AM571x IDK board, the pins used for PRU1 ETH0 and PRU1 ETH1
+          are shared with pins used for the optional LCD touchscreen. U-Boot
+          uses jumper **J51** to determine if the LCD touchscreen should be
+          enabled or not. If **J51** is closed (jumper is present across the
+          two pins), then U-Boot will load a device tree that enables the
+          LCD touchscreen and disables PRUSS1 Ethernet ports. This means
+          that only **PRU2 ETH0** and **PRU2 ETH1** will be supported if
+          jumper **J51** is closed. If **J51** is open (jumper is not
+          present across the two pins), then U-Boot will load a device tree
+          that enables all four PRUSS Ethernet ports, two from PRUSS1 and
+          two from PRUSS2. In this mode, the LCD touchscreen is disabled.
 
    -  On the AM572x IDK the silkscreen says **PRU2 ETH0** and **PRU2
       ETH1** for the supported PRU ports
@@ -411,20 +295,11 @@ Here are the steps needed to test out the new Ethernet interfaces:
       to bring up **PRU2 ETH0**, and type **ifup eth5** to bring up
       **PRU2 ETH1**
 
-      .. raw:: html
-
-         <div
-         style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-      **NOTE**
-      As mentioned in the note above, jumper **J51** on the board
-      determines if two or four PRUSS Ethernet ports are supported. If
-      **J51** is closed then only two of the four interfaces listed here
-      will be available for use.
-
-      .. raw:: html
-
-         </div>
+      .. note::
+          As mentioned in the note above, jumper **J51** on the board
+          determines if two or four PRUSS Ethernet ports are supported. If
+          **J51** is closed then only two of the four interfaces listed here
+          will be available for use.
 
    -  On the AM572x IDK type **ifup eth2** to bring up **PRU2 ETH0** and
       type **ifup eth3** to bring up **PRU2 ETH1**
@@ -461,23 +336,14 @@ your device to act as a gateway between two different subnets. In this
 use case you just need to bring up both ports and then plug them into
 the two subnets as shown below.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-It is not a normal use case to plug both PRU-ICSS Ethernet ports into
-the same switch (same subnet) out-of-the-box. While it may appear to
-work at first, it will lead to unexpected behavior including (but not
-limited to) packets entering/exiting the device on the opposite port
-that you would expect due to ARP broadcasts and other topics that are
-outside the scope of this wiki page. If you would like to use both ports
-on the same subnet, keep scrolling to the Bonding section below.
-
-.. raw:: html
-
-   </div>
+.. note::
+    It is not a normal use case to plug both PRU-ICSS Ethernet ports into
+    the same switch (same subnet) out-of-the-box. While it may appear to
+    work at first, it will lead to unexpected behavior including (but not
+    limited to) packets entering/exiting the device on the opposite port
+    that you would expect due to ARP broadcasts and other topics that are
+    outside the scope of this wiki page. If you would like to use both ports
+    on the same subnet, keep scrolling to the Bonding section below.
 
 | 
 
@@ -559,12 +425,13 @@ On your development board console
       -  **ifup eth2** where 2 is the interface number for one of your
          PRU-ICSS Ethernet ports (this is board dependent)
       -  **ifconfig**
-         |Note|\ **Note:** AM3359ICE: **eth0** and **eth1** are the
-         PRU-ICSS Ethernet ports
-         AM437x IDK: **eth1** and **eth2** are the PRU-ICSS Ethernet
-         ports
-         AM572x IDK: **eth2** and **eth3** are the PRU-ICSS Ethernet
-         ports
+
+         .. note::
+             AM3359ICE: **eth0** and **eth1** are the PRU-ICSS Ethernet ports
+
+             AM437x IDK: **eth1** and **eth2** are the PRU-ICSS Ethernet ports
+
+             AM572x IDK: **eth2** and **eth3** are the PRU-ICSS Ethernet ports
 
 #. Take down your PRU-ICSS Ethernet ports (this is necesary for bonding)
 

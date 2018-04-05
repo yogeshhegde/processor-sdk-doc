@@ -93,7 +93,7 @@ necessary to modify some machine settings before playing the machine for
 the first time. Select the machine in the home page and then click on
 "Edit virtual machine settings" on the right.
 
-|Virtual Machine Settings|
+.. image:: ../images/Virtual_machine_setting.PNG
 
 
 Click on CD/DVD and change the connection to "Use ISO image file". Click

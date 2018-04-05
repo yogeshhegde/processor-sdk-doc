@@ -624,7 +624,7 @@ Otherwise the frame is dropped. There are additional controls to allow
 priority tagged frames to Host if the corrsponding bit is set in firmware
 shared memory. PRU Ethernet driver always enables Priority tagged frames
 to the Host. User may setup a VLAN interface with VID 0 to send or
-receive priority tagged frames. See section VLAN_ for details
+receive priority tagged frames. See section `VLAN <#vlan-over-pru-ethernet>`_ for details
 on how to assign egress priority mapping for the priority tagged VLAN
 interface.
 
@@ -2041,6 +2041,4 @@ To do DHCP over hsr0 or prp0 interfaces, user may add additional files
 to /etc/systemd/network/ one for each prp0 or hsr0 similar to eth0, by
 using a Match name string of hsr0 or prp0. More details on this is at
 [`[6] <https://wiki.archlinux.org/index.php/systemd-networkd#Configuration_files>`__]
-
-.. raw:: html
 
