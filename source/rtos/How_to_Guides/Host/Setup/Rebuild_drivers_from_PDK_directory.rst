@@ -3,7 +3,7 @@
 .. rubric:: Overview
    :name: overview
 
-Thee instructions below are for building for one platform. If you are
+The instructions below are for building for one platform. If you are
 developing for multiple platforms (e.g., AM437x and AM335x), please
 invoke builds in a serial fashion.
 
@@ -17,7 +17,7 @@ environment variables being set prior to script execution. The defaults
 in the pdksetupenv.bat script assume all Processor SDK components have
 been installed in the ``C:\ti`` directory, including CCS.
 
--  Navigate to pdk_[soc]_[version]/packages
+-  Navigate to *pdk_[soc]_[version]/packages*
 -  Run pdksetupenv.bat
 
 ::
@@ -140,7 +140,7 @@ environment variables being set prior to script execution. The defaults
 in the pdksetupenv.sh script assume all Processor SDK components have
 been installed in the ``~/ti`` directory, including CCS.
 
--  Navigate to pdk_[soc]_[version]/packages
+-  Navigate to *pdk_[soc]_[version]/packages*
 -  Run pdksetupenv.sh
 
 ::
@@ -252,15 +252,15 @@ how the scripts are used to create CCS project content.
    cause CCS to find and register any new products. Errors will occur
    during PDK project creation if any dependent products have not been
    registered with CCS.
--  Navigate to *pdk_[soc]_[version]\packages*
+-  Navigate to *pdk_[soc]_[version]/packages*
 -  [**Optional**] Edit the product versions within the pdkProjectCreate
    script. The default settings in the pdkProjectCreate script will have
    the product versions installed with the PDK. The pdkProjectCreate
    script can be modified to use older or newer product versions based
    on the user's development environment. 
   
-**Note:** Project compilation and successful execution cannot be 
-  guaranteed for products not installed with the PDK.
+**Note:** Project compilation and successful execution cannot be
+guaranteed for products not installed with the PDK.
 
 .. raw:: html
 
@@ -269,7 +269,7 @@ how the scripts are used to create CCS project content.
 
 **NOTE**
 
--  If the CCS installation is located somewhere other than "C:\ti",
+-  If the CCS installation is located somewhere other than "C:\\ti",
    ensure that the pdkProjectCreate script has this location correctly
    specified by updating the CCS_INSTALL_PATH or set TOOLS_INSTALL_PATH
    variable
@@ -385,7 +385,7 @@ not contain a DSP processor.
    project files matching the pdkProjectCreate input parameters. CCS
    projects created during the search will be placed into an centralized
    CCS project folder. By default this folder is
-   C:\ti\pdk_[soc]_[version]\packages\MyExampleProjects\\ in Windows and
+   C:\\ti\\pdk_[soc]_[version]\\packages\\MyExampleProjects\\ in Windows and
    ~/ti/pdk_[soc]_[version]/packages/MyExampleProjects/ in Linux.
 
 | 
@@ -443,9 +443,9 @@ not contain a DSP processor.
       #. Click on Target -> Load Program
       #. Select the executable file to be loaded. Example:
 
-	  ::
+	::
 
-         C:\ti\pdk_[soc]_[version]\packages\MyExampleProjects\GPIO_LedBlink_AM572X_GpEvm_c66xExampleProject\Debug\GPIO_LedBlink_evmAM572x_c66xExampleProject.out
+		C:\ti\pdk_[soc]_[version]\packages\MyExampleProjects\GPIO_LedBlink_AM572X_GpEvm_c66xExampleProject\Debug\GPIO_LedBlink_evmAM572x_c66xExampleProject.out
 
       #. Click on OK.
       #. Once the project is loaded; click on Target -> Run to execute

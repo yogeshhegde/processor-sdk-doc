@@ -9,10 +9,10 @@ Update environment when installing to a custom path
 This page will provide configuration information if the SDK is installed
 in a custom path.
 
- **Useful Tip**
- To avoid changing environment variable for each new shell, modify
- environment variable file directly. This file is the *setupenv* file
- located in the SDK root directory.
+**Useful Tip**
+To avoid changing environment variable for each new shell, modify
+environment variable file directly. This file is the *setupenv* file
+located in the SDK root directory.
 
 | 
 
@@ -43,11 +43,11 @@ version of the software/tool.
 CCS installation and toolchain paths can be customized by setting the
 TOOLS_INSTALL_PATH environment variable prior to running the SDK level
 setupenv script. This feature is used if CCS and the toolchains are
-installed somewhere other than the default C:\ti location.
+installed somewhere other than the default C:\\ti location.
 
 For example, environment configuration assuming CCS is installed to
-[os_base]\ti_temp and SDK RTOS has been installed to default path,
-[os_base]\ti :
+[os_base]\\ti_temp and SDK RTOS has been installed to default path,
+[os_base]\\ti :
 
 -  Windows
 
@@ -285,7 +285,7 @@ script. The Windows and Linux environment setup scripts can be found in
 the following locations, respectively:
 
 -  Windows -
-   C:\custom\install\path\processor_sdk_rtos_[soc]_[version]\setupenv.bat
+   C:\\custom\\install\\path\\processor_sdk_rtos_[soc]_[version]\\setupenv.bat
 -  Linux -
    /home/[user]/custom/install/path/processor_sdk_rtos_[soc]_[version]/setupenv.sh
 
@@ -294,7 +294,7 @@ be set to the custom install path **prior to running** the environment
 setup script.
 
 For example, environment configuration assuming CCS and the SDK have
-been installed to [os_base]\new_sdk_release\ :
+been installed to [os_base]\\new_sdk_release\\ :
 
 -  Windows
 
@@ -420,7 +420,7 @@ SDK RTOS level setup script. The PDK level setup scripts are found in
 the following locations on Windows and Linux, respectively:
 
 -  Windows -
-   C:\custom\install\path\pdk_[soc]_[version]\packages\pdksetupenv.bat
+   C:\\custom\\install\\path\\pdk_[soc]_[version]\\packages\\pdksetupenv.bat
 -  Linux -
    /home/[user]/custom/install/path/pdk_[soc]_[version]/packages/pdksetupenv.sh
 
@@ -436,7 +436,7 @@ SDK RTOS level setup script. The PDK level setup scripts are found in
 the following locations on Windows and Linux, respectively:
 
 -  Windows -
-   C:\custom\install\path\pdk_[soc]_[version]\packages\pdksetupenv.bat
+   C:\\custom\\install\\path\\pdk_[soc]_[version]\\packages\\pdksetupenv.bat
 -  Linux -
    /home/[user]/custom/install/path/pdk_[soc]_[version]/packages/pdksetupenv.sh
 
@@ -451,7 +451,7 @@ SDK RTOS level setup script. The PDK level setup scripts are found in
 the following locations on Windows and Linux, respectively:
 
 -  Windows -
-   C:\custom\install\path\pdk_[soc]_[version]\packages\pdksetupenv.bat
+   C:\\custom\\install\\path\\pdk_[soc]_[version]\\packages\\pdksetupenv.bat
 -  Linux -
    /home/[user]/custom/install/path/pdk_[soc]_[version]/packages/pdksetupenv.sh
 

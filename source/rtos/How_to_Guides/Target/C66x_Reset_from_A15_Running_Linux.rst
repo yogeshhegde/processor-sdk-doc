@@ -40,7 +40,7 @@ has the reset routines described below.
 
 4) Go to Tools>GEL files and load the evmk2x.gel file by right clicking on the GEL file window.
    The Gel file would typically be located in the CCS installation under 
-   \ccsv6\ccs_base\emulation\boards\evmk2x\gel\
+   \\ccsv6\\ccs_base\\emulation\\boards\\evmk2x\\gel\\
 
 .. Image:: ../images/Outofreset_4_lali.png
 
