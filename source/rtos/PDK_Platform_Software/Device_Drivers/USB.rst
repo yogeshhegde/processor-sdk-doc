@@ -11,8 +11,8 @@ class protocols:
 -  USB host Mass Storage Class
 -  USB device Audio Class
 
-| In rest of the page AM437x EVM is being refered as an example. Please
-  check Release Notes for list of supported EVMs for driver.
+In rest of the page AM437x EVM is being refered as an example. Please
+check Release Notes for list of supported EVMs for driver.
 
 .. rubric:: Modes of Operation
    :name: modes-of-operation
@@ -205,11 +205,11 @@ in the interrupt context.
 .. rubric:: Examples
    :name: examples
 
-| Bare-metal and RTOS/BIOS examples of the USB device and USB host MSC
-  are provided with the USB LLD. RTOS/BIOS examples are provided for USB
-  device audio class. Please see the readme.txt in the docs directory
-  for more info on how to build the example/demo application. Refer SDK
-  release notes for supported EVMs.
+Bare-metal and RTOS/BIOS examples of the USB device and USB host MSC
+are provided with the USB LLD. RTOS/BIOS examples are provided for USB
+device audio class. Please see the readme.txt in the docs directory
+for more info on how to build the example/demo application. Refer SDK
+release notes for supported EVMs.
 
 +-----------------------+-----------------------+-----------------------+
 | Example Name          | EVM's supported       | Notes                 |

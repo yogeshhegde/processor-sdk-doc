@@ -33,8 +33,8 @@ all existing devices (K2H, K2K) this is only mode that should be used.
 For the rest of the devices such as K2L, K2E, 6678 and 6657, this is the
 only mode available.
 
-| **Split Mode**: This mode shouldn't be used as it doesn't support all
-  peripherals on the device.
+**Split Mode**: This mode shouldn't be used as it doesn't support all
+peripherals on the device.
 
 .. rubric:: Driver Configuration
    :name: driver-configuration
@@ -65,7 +65,7 @@ Please see the doxygen in "API Reference Manual" below for details.
    :name: example
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+| Name                  || Description          | Expected Results      |
 +=======================+=======================+=======================+
 | QMSS_Example          | | Example             | | User observes the   |
 | application           |   demonstrating       |   output printed over |
@@ -395,7 +395,9 @@ This came from K2K multicore example:
 | component)                        |                                   |
 +-----------------------------------+-----------------------------------+
 
-.. _CPPI LLD: <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CPPI>
+.. _CPPI LLD: http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CPPI
+
+| 
 
 .. raw:: html
 

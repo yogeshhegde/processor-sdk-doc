@@ -122,8 +122,8 @@ Refer SDK Release Note for GPIO support across different EVMs.
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-There are no user mode LEDs directly connected to GPIO pins on K2L,
-C6678 and C6657 EVMs.
+
+There are no user mode LEDs directly connected to GPIO pins on K2L, C6678 and C6657 EVMs.
 
 .. raw:: html
 

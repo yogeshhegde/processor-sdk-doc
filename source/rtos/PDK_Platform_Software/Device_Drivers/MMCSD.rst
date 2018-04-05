@@ -11,18 +11,20 @@ to/from the CPU device through two-wire interface
 .. rubric:: Key Features
    :name: key-features
 
-Type of transfers
+| Type of transfers
 
--   Read
--   Write
--   Write followed by read
+   -   Read
+   -   Write
+   -   Write followed by read
 
 | Operating modes
 
--   Blocking(interrupt or Non interrupt)
--   Callback mode(interrupt)
+   -   Blocking(interrupt or Non interrupt)
+   -   Callback mode(interrupt)
 
 | Supports only master mode. Slave mode is not supported
+
+| 
 
 .. rubric:: Driver Configuration
    :name: driver-configuration
@@ -30,30 +32,29 @@ Type of transfers
 .. rubric:: **Board Specific Configuration**
    :name: board-specific-configuration
 
-| All board specific configurations eg:enabling clock and pin-mux for
-  UART pins are required before calling any driver APIs.By default
-  Board_Init() API supports all initialization sequence for TI supported
-  EVMs. In addition it initializes UART instance for Console/STDIO.Refer
-  `Processor SDK RTOS Board
-  Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for
-  additional details.Once board specific configuration is complete 
-  MMCSD_init() API can be called to initialize driver.
+All board specific configurations eg:enabling clock and pin-mux for
+UART pins are required before calling any driver APIs.By default
+Board_Init() API supports all initialization sequence for TI supported
+EVMs. In addition it initializes UART instance for Console/STDIO.Refer
+`Processor SDK RTOS Board
+Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for
+additional details.Once board specific configuration is complete 
+MMCSD_init() API can be called to initialize driver.
 
 .. rubric:: **MMCSD Configuration Structure**
    :name: mmcsd-configuration-structure
 
-| The MMCSD_soc.c file binds driver with hardware attributes on the
-  board through MMCSD_config structure. This structure must be 
-  initialized before the MMCSD_init() function is called and cannot be
-  changed afterwards. For details about the individual fields of this
-  structure, see the Doxygen help by opening
-  \\docs\doxygen\html\index.html
+The MMCSD_soc.c file binds driver with hardware attributes on the
+board through MMCSD_config structure. This structure must be 
+initialized before the MMCSD_init() function is called and cannot be
+changed afterwards. For details about the individual fields of this
+structure, see the Doxygen help by opening
+\\docs\\doxygen\\html\\index.html
 
-.. rubric:: 
-   **APIs**
+.. rubric:: **APIs**
    :name: apis
 
-| Reference for API header file with documentation
+Reference for API header file with documentation
 
 ::
 
@@ -80,9 +81,6 @@ for a use case of write transaction in blocking mode:
      writeOK = MMCSD_write(MMCSD, TxBuffer , startBlock, numBlock); /* Perform MMCSD write */
      if (!writeOK) { /* MMCSD transaction failed */} 
 
-      
-
-| 
 
 .. rubric:: eMMC Usage
    :name: emmc-usage
@@ -112,8 +110,8 @@ EDMA handle and update the configuration before MMCSD_init() API.
     mmcsdInitCfg[MMCSD_INSTANCE].edmaHandle = MMCSDApp_edmaInit();/* Refer Example/Test */
     MMCSD_init();
 
-| Refer “MMCSD_[Usecase]_[Board/SoC]_DMA_[cpu][Example/Test]project” for
-  additional reference. Refer SDK Release Note for supported EVMs.
+Refer “MMCSD_[Usecase]_[Board/SoC]_DMA_[cpu][Example/Test]project” for
+additional reference. Refer SDK Release Note for supported EVMs.
 
 .. rubric:: UHS Mode Usage
    :name: uhs-mode-usage
@@ -126,7 +124,7 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
    :name: examples
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+| Name                  | | Description         | Expected Results      |
 +=======================+=======================+=======================+
 | MMCSD FATFS Example   | | Example initializes | When a card is        |
 | application           |   the card and checks | detected with valid   |
@@ -184,27 +182,24 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 |                       |   Supported only on   |                       |
 |                       |   OMAPL137 platform.  |                       |
 |                       |                       |                       |
-|                       | There is no on-board  |                       |
-|                       | eMMC chip on OMAPL137 |                       |
-|                       | platform. Need to use |                       |
-|                       | external MMC card     |                       |
-|                       | inserted into MMCSD   |                       |
-|                       | slot of the board.    |                       |
-|                       | Currently the driver  |                       |
-|                       | supports standard MMC |                       |
-|                       | card and other cards  |                       |
-|                       | like MMCplus may not  |                       |
-|                       | work. The example     |                       |
-|                       | requires the card     |                       |
-|                       | size to be at least   |                       |
-|                       | 2GB.                  |                       |
+|                       | | There is no on-board|                       |
+|                       |  eMMC chip on OMAPL137|                       |
+|                       |  platform. Need to use|                       |
+|                       |  external MMC card    |                       |
+|                       |  inserted into MMCSD  |                       |
+|                       |  slot of the board.   |                       |
+|                       |  Currently the driver |                       |
+|                       |  supports standard MMC|                       |
+|                       |  card and other cards |                       |
+|                       |  like MMCplus may not |                       |
+|                       |  work. The example    |                       |
+|                       |  requires the card    |                       |
+|                       |  size to be at least  |                       |
+|                       |  2GB.                 |                       |
 |                       |                       |                       |
 |                       | |                     |                       |
 +-----------------------+-----------------------+-----------------------+
 
-| 
-
-| 
 
 .. rubric:: Additional References
    :name: additional-references
@@ -212,18 +207,14 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\mmcsd\docs\doxygen\html\inde |
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/mmcsd/docs/doxygen/html/inde |
 |                                   | x.html                            |
 +-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\mmcsd\docs\ReleaseNotes_MMCS |
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/mmcsd/docs/ReleaseNotes_MMCS |
 |                                   | D_LLD.pdf                         |
 +-----------------------------------+-----------------------------------+
-
-| 
-
-| 
 
 | 
 

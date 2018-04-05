@@ -114,33 +114,29 @@ The overall components are:
 |                 |                 | SoC!            | data/interrupts |
 |                 |                 |                 | exchanged. All  |
 |                 |                 |                 | printed output  |
-|                 |                 | |               | goes to the     |
-|                 |                 | |               | serial console. |
-|                 |                 |                 |                 |
-|                 |                 |                 |                 |
-|                 |                 | Connect two     |                 |
-|                 |                 | like AM57xx     |                 |
+|                 |                 | Connect two     | goes to the     |
+|                 |                 | like AM57xx     | serial console. |
 |                 |                 | IDK EVMs J22    |                 |
 |                 |                 | `MODIFIED`_     |                 |
-|                 |                 |   male-male     |                 |
-|                 |                 |   crossover     |                 |
-|                 |                 |   PCIe x1 or x4 |                 |
-|                 |                 |   cable and     |                 |
-|                 |                 |   optional      |                 |
-|                 |                 |   straight-thro |                 |
-|                 |                 | ugh             |                 |
-|                 |                 |   extender. For |                 |
-|                 |                 |   AM572x/AM574x |                 |
-|                 |                 |   we used a     |                 |
-|                 |                 |   one-lane      |                 |
-|                 |                 |   cross cable;  |                 |
-|                 |                 |   for AM571x we |                 |
-|                 |                 |   used a 4-lane |                 |
-|                 |                 |   cross cable.  |                 |
+|                 |                 | male-male       |                 |
+|                 |                 | crossover       |                 |
+|                 |                 | PCIe x1 or x4   |                 |
+|                 |                 | cable and       |                 |
+|                 |                 | optional        |                 |
+|                 |                 | straight-through|                 |
+|                 |                 | extender. For   |                 |
+|                 |                 | AM572x/AM574x   |                 |
+|                 |                 | we used a       |                 |
+|                 |                 | one-lane        |                 |
+|                 |                 | cross cable;    |                 |
+|                 |                 | for AM571x we   |                 |
+|                 |                 | used a 4-lane   |                 |
+|                 |                 | cross cable.    |                 |
 |                 |                 | | Projects      |                 |
-|                 |                 |   available for |                 |
-|                 |                 |   C66, A15, and |                 |
-|                 |                 |   M4.           |                 |
+|                 |                 | available for   |                 |
+|                 |                 | C66, A15, and   |                 |
+|                 |                 | M4.             |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | PCIE_evmK2G*Exa | 2-device PCIe   | **IMPORTANT:**  | **K2G EVM** :   |
 | mpleProject     | connection      | Cable must be   | One board is    |

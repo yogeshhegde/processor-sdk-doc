@@ -46,7 +46,7 @@ API reference for application:
    :name: example
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+| Name                  || Description          | Expected Results      |
 +=======================+=======================+=======================+
 | CPPI_Example          | | Example             | | User observes the   |
 | application           |   demonstrating       |   output printed over |
@@ -317,7 +317,7 @@ This came from k2k example:
 | component)                        |                                   |
 +-----------------------------------+-----------------------------------+
 
-.. _QMSS LLD:  <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS>
+.. _QMSS LLD:  http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS
 
 .. raw:: html
 

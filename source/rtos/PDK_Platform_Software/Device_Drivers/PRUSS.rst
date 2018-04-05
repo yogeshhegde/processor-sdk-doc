@@ -6,6 +6,8 @@
 | The PRUSS (Programmable Real-Time Unit Subsystem) provides a
   well-defined API layer which allows applications to use the PRUSS low
   level driver to control  sub system.
+ 
+| 
 
 .. rubric:: Firmware
    :name: firmware
@@ -30,20 +32,26 @@ http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PRUSS_SORTE
 .. rubric:: Driver Configuration
    :name: driver-configuration
 
-| **Board Specific Configuration**
-| All the board specific configurations like enabling the clock and
-  pin-mux of UART/GPIO/PRUSS ICSS pins should be performed before
-  calling any of the driver APIs.
+.. rubric::  **Board Specific Configuration**
+   :name: board-specific-configuration
+
+All the board specific configurations like enabling the clock and
+pin-mux of UART/GPIO/PRUSS ICSS pins should be performed before
+calling any of the driver APIs.
 
 | 
-| **PRUSS Configuration Structure
-  **\ The pruicss_device.c file contains the declaration of the PRUICSS
-  config structure. This structure must be provided to the driver at the
-  time when PRUICSS_create() API is called to creat the PRUICSS_Handle.
-  This handle is subsequently required to make any PRUSS LLD API call.
+.. rubric::  **PRUSS Configuration Structure**
+   :name: pruss-configuration-structure
 
-| **APIs**
-| Reference API header file:
+The pruicss_device.c file contains the declaration of the PRUICSS
+config structure. This structure must be provided to the driver at the
+time when PRUICSS_create() API is called to creat the PRUICSS_Handle.
+This handle is subsequently required to make any PRUSS LLD API call.
+
+.. rubric:: **APIs**
+   :name: apis
+
+Reference API header file:
 
 ::
 
@@ -91,16 +99,16 @@ for additional details
    :name: examples
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+| Name                  ||  Description         ||  Expected Results    |
 +=======================+=======================+=======================+
-| PRUSS_TestApplication | | Test application is | Following prints      |
+| PRUSS_TestApplication || Test application is  || Following prints     |
 |                       |   designed to ping    | expected on console   |
 |                       |   pong an event       | based on pass/fail    |
 |                       |   between CPU         | criteria:             |
-|                       |   target(A15/C66x)    |                       |
-|                       |   and PRU for a fixed | **Pass criteria:**    |
+|                       |   target(A15/C66x)    ||                      |
+|                       |   and PRU for a fixed || **Pass criteria:**   |
 |                       |   count.Application   |                       |
-|                       |   is to test PRU’s    | Prints related to     |
+|                       |   is to test PRU’s    || Prints related to    |
 |                       |   load, control and   | sending and           |
 |                       |   Interrupt           | receiving  event from |
 |                       |   controller          | PRU will be printed   |
@@ -115,7 +123,7 @@ for additional details
    :name: additional-reference
 
 +-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
+|   **Document**                    | **Location**                      |
 +-----------------------------------+-----------------------------------+
 | API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
 |                                   | \drv\pruss\docs\doxygen\html\inde |

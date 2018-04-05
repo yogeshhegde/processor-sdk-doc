@@ -156,7 +156,7 @@ different EVMs.
 | 
 
 +-----------------+-----------------+-----------------+-----------------+
-| Name            | Description     | EVM             | Expected        |
+|| Name           || Description    || EVM            || Expected       |
 |                 |                 | Configuration   | Results         |
 +=================+=================+=================+=================+
 | ICSS_EMAC_Basic | EMAC Loopback   | 10/100 Mb/s     | Unit Test will  |
@@ -284,5 +284,7 @@ Debug Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide>`
 | ICSS-EMAC LLD Details             | `[2] <http://processors.wiki.ti.c |
 |                                   | om/index.php/ICSS-EMAC>`__        |
 +-----------------------------------+-----------------------------------+
+
+| 
 
 .. raw:: html
