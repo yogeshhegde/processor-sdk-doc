@@ -1,10 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Related_Software
 
-This page provides a collection links to additional software elements
+This section provides a collection links to additional software elements
 that may be of interest for the Processor SDK RTOS package.
 
 +-----------------------------------+-----------------------------------+
-| Software                          | Description                       |
+|             Software              |            Description            |
 +===================================+===================================+
 | `PRU-ICSS Industrial              | The PRU-ICSS protocols enable     |
 | Software <http://www.ti.com/tool/ | real-time industrial              |

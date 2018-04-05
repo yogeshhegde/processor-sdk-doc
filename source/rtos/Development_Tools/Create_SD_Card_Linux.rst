@@ -3,8 +3,8 @@ Linux SD Card Creation Guide
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+----------
 
 The Processor SDK RTOS for AM3/AM4/AM5/K2G includes a script in the
 directory
@@ -28,8 +28,8 @@ script as well.
 
 | 
 
-.. rubric:: What is Needed
-   :name: what-is-needed
+What is Needed
+----------------
 
 -  Access to a Linux PC
 -  A valid Processor SDK RTOS for the appropriate processor installed
@@ -40,11 +40,11 @@ script as well.
 
 | 
 
-.. rubric:: Creating an SD card
-   :name: creating-an-sd-card
+Creating an SD card
+---------------------
 
-.. rubric:: Invoking the Script
-   :name: invoking-the-script
+Invoking the Script
+^^^^^^^^^^^^^^^^^^^^
 
 The **create-sdcard.sh** script can be run from any location but must be
 run with ``root`` permissions. This usually means using the ``sudo``
@@ -66,8 +66,8 @@ these files are:
 If you fail to execute the script with root permissions you will receive
 a message that root permissions are required and the script will exit.
 
-.. rubric:: Select the SD Card Device
-   :name: select-the-sd-card-device
+Select the SD Card Device
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first step of the script will ask you to select the drive
 representing the SD card that you want to format. In most cases your
@@ -106,22 +106,20 @@ Any partitions of the device that are already mounted will be un-mounted
 so that the device is ready for partitioning. The SD Card will then be
 partitioned and formatted into FAT32.
 
-.. rubric:: Installing SD Card Contents
-   :name: installing-sd-card-contents
-
+Installing SD Card Contents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 After the SD card is partitioned and formatted, the files under the
 path/to/sdcard/files will be installed onto the SD card, then safely
 exit the script.
 
-**Useful Tip**
- Once SD card is made bootable, it contains sample “MLO” and “app”
- which can be used on the target platform.
+.. tip::
+   Once SD card is made bootable, it contains sample “MLO” and “app”
+   which can be used on the target platform.
 
 | 
 
-.. rubric:: Load Default Images to SD Card
-   :name: load-default-images-to-sd-card
-
+Load Default Images to SD Card
+-------------------------------
 The purpose of this section is to cover how to use the
 **create-sdcard.sh** script to populate an SD card that can be used to
 boot the device using the default images that ship with the Processor
@@ -149,9 +147,8 @@ The command to load the SD card is
 
 | 
 
-.. rubric:: Boot from SD Card
-   :name: boot-from-sd-card
-
+Boot from SD Card
+-------------------
 To boot from SD card, simply plug in the SD card to the EVM and power on
 the board. If you used the examples provided in the Processor SDK RTOS
 installer, you will see

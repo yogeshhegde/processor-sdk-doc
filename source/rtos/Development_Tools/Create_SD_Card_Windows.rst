@@ -3,8 +3,8 @@ Windows SD Card Creation Guide
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+----------
 
 This page details how to use an image file to create a bootable SD card
 for the Processor SDK RTOS for AM3/AM4/AM5/K2G. This is only required
@@ -18,16 +18,15 @@ the SD card:
 -  **MLO** - Boot loader image
 
 
-**Useful Tip**
- If you have the SD card that came in the EVM kit, you can skip the
- following steps to *create* a bootable SD card and simply copy your
- SD card image files directly to the SD card.
-
+.. tip::
+   If you have the SD card that came in the EVM kit, you can skip the
+   following steps to *create* a bootable SD card and simply copy your
+   SD card image files directly to the SD card.
 
 | 
 
-.. rubric:: What is Needed
-   :name: what-is-needed
+What is Needed
+----------------
 
 -  Access to a Windows PC
 -  A valid Processor SDK RTOS for the appropriate processor installed
@@ -39,13 +38,13 @@ the SD card:
 
 | 
 
-.. rubric:: Steps to Follow
-   :name: steps-to-follow
+Steps to Follow
+-----------------
 
 Here is the process to follow to create the SD card.
 
-.. rubric:: Create a bootable SD image file
-   :name: create-a-bootable-sd-image-file
+Create a bootable SD image file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For example purposes, you can use the one that is bundled in the SDK.
 The file is located in
@@ -68,22 +67,11 @@ The open source `Win32 Disk
 Imager <http://sourceforge.net/projects/win32diskimager>`__ is a good
 option.
 
-.. raw:: html
+.. note::
+   This application needs to be installed with Administrative privilages.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This application needs to be installed with Administrative privilages.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Use the software for writing an image to disk to write the
-   .img file to the SD card
-   :name: use-the-software-for-writing-an-image-to-disk-to-write-the-.img-file-to-the-sd-card
-
+Use the software for writing an image to disk to write the .img file to the SD card
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 -  Plug the SD card into the SD card reader/writer.
 -  Insert the SD card reader/writer into the PC.
 -  Launch the disk writer software. In the screenshots below, we are
@@ -126,23 +114,14 @@ This application needs to be installed with Administrative privilages.
 
 | 
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Once SD card is made bootable with Win32 disk imager, it contains sample
-“MLO” and “app” which can be used on the target platform.
-
-.. raw:: html
-
-   </div>
+.. note::
+   Once SD card is made bootable with Win32 disk imager, it contains sample
+   “MLO” and “app” which can be used on the target platform.
 
 | 
 
-.. rubric:: Boot from SD Card
-   :name: boot-from-sd-card
+Boot from SD Card
+-------------------
 
 To boot from SD card, simply plug in the SD card to the EVM and power on
 the board. If you used the examples provided in the Processor SDK RTOS

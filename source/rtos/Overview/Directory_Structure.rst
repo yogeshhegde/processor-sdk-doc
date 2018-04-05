@@ -1,39 +1,26 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Directory_Structure 
 
-.. rubric:: Overview
-   :name: overview
-
+Overview
+===========
 The Processor SDK for RTOS contain a number of software components,
 including a top-level RTOS SDK directory. These components are all
 installed in one common install path specified when running the
 installer.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Not all components are applicable on all platforms.
-
-.. raw:: html
-
-   </div>
-
+.. note::
+   Not all components are applicable on all platforms.
 | 
 
-.. rubric:: Software Component Directories
-   :name: software-component-directories
-
+Software Component Directories
+================================
 Here is a sample directory layout for the AM57x RTOS SDK:
 
 .. Image:: ../images/Processor-SDK-RTOS-directories.png
 
 | 
 
-.. rubric:: Processor-SDK Directory
-   :name: processor-sdk-directory
-
+Processor-SDK Directory
+========================
 The Processor SDK for RTOS contains a top-level RTOS SDK directory:
 
 ::
@@ -79,14 +66,14 @@ These directories contain the collateral and tools applicable for RTOS:
 
 | 
 
-.. rubric:: Components Included in SDK
-   :name: components-included-in-sdk
-
+Components Included in SDK
+============================
 The following is a list of all components that may be included in the
-Processor-SDK RTOS SDK installer. See :ref:`Release Notes <RN-Component-Version-label>`
+Processor-SDK RTOS SDK installer. See `Release Notes <Release_Specific.html#component-version>`__
 for applicable components for a specific platform.
 
 Development Host Content
+--------------------------
 
 -  **CG_XML** - Perl scripts used to process the XML files that come
    from the TI code generation tools
@@ -107,6 +94,7 @@ Development Host Content
    compiler, linker, and run-time-support libraries
 
 Target Content
+---------------
 
 -  **CTOOLSLIB** - C6x DSP software libraries to use
    trace/instrumentation hardware blocks on SOC (e.g., ETB, AET, STM)

@@ -77,7 +77,6 @@ Released March 2018.
    -  RTOS Template Application extension to M4 and C66x cores on AM572x
       GP EVM
 
-.. _RN-Component-Version-label:
 .. rubric::  Component Version
    :name: component-version
 

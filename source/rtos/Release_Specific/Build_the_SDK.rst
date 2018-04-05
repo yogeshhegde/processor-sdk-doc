@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+=========
 
 The Processor SDK comes with pre-built libraries for everything you need
 to start writing an application. However, you may want to customize and
@@ -26,37 +26,26 @@ The pre-requisite compilers are provided in Code Compose Studio, see the
 `CCS installation section of the Getting Started
 Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide#Code_Composer_Studio>`__.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If you have installed the SDK and/or CCS in non-default locations follow
-the steps outlined in the article
-:ref:`Processor SDK RTOS Install In Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
-to build the SDK from the toplevel Makefile.
-
-.. raw:: html
-
-   </div>
+.. note::
+   If you have installed the SDK and/or CCS in non-default locations follow
+   the steps outlined in the article
+   `Processor SDK RTOS Install In Custom Path <How_to_Guides.html#update-environment-when-installing-to-a-custom-path>`
+   to build the SDK from the toplevel Makefile.
 
 | 
 
 .. _Build-The-SDK-Setup-Environment-label:
-.. rubric:: Setup Environment
-   :name: setup-environment
+Setup Environment
+====================
 
-.. rubric:: Command
-   :name: command
-
+Command
+---------
 The SDK build environment can be configured on Windows and Linux by
 running an environment setup script located in the top-level RTOS SDK
 folder.
 
-.. rubric:: Windows
-   :name: windows
-
+Windows
+^^^^^^^^^
 From the RTOS SDK directory, enter
 
 ::
@@ -66,21 +55,12 @@ From the RTOS SDK directory, enter
 which will configure the Windows command shell environment for the
 installed RTOS SDK.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  You must re-run this batch file any time you open a new terminal.
--  Script also sets CCS installation path using TOOLS_INSTALL_PATH
-   variable so set the variable if you are not using default CCS install
-   path
-
-.. raw:: html
-
-   </div>
+   -  You must re-run this batch file any time you open a new terminal.
+   -  Script also sets CCS installation path using TOOLS_INSTALL_PATH
+      variable so set the variable if you are not using default CCS install
+      path
 
 ::
 
@@ -115,23 +95,13 @@ installed RTOS SDK.
      PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
      **************************************************************************
 
-.. raw:: html
+.. note::
+   The warnings of optional parameters not configured can be ignored since
+   we are only rebuilding the libraries and not generating a release
+   package.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The warnings of optional parameters not configured can be ignored since
-we are only rebuilding the libraries and not generating a release
-package.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Linux
-   :name: linux
-
+Linux
+^^^^^^^^
 From the RTOS SDK directory, enter
 
 ::
@@ -172,30 +142,20 @@ SDK.
      PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
      *******************************************************************************
 
-.. raw:: html
+.. note::
+   The warnings of optional parameters not configured can be ignored since
+   we are only rebuilding the libraries and not generating a release
+   package.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-The warnings of optional parameters not configured can be ignored since
-we are only rebuilding the libraries and not generating a release
-package.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Top-Level Makefile
-   :name: top-level-makefile
-
+Top-Level Makefile
+====================
 The SDK level makefile can be used to compile SDK sub-components after
 the build environment has been configured. The following sections cover
 the Makefile found in the top-level of the Processor SDK for RTOS.
 
-.. rubric:: Target Types
-   :name: target-types
-
+Target Types
+--------------
 For each of the targets discussed below the following target type are
 defined:
 
@@ -204,9 +164,8 @@ defined:
 
 -  **<target>_clean** - This target will clean the component
 
-.. rubric:: Top-Level Targets
-   :name: top-level-targets
-
+Top-Level Targets
+------------------
 The Processor SDK for RTOS provides the following targets by default
 which will invoke the corresponding component targets:
 
@@ -218,33 +177,21 @@ which will invoke the corresponding component targets:
 -  **clean** - This will call the clean target for each component
    defined in the Makefile
 
-.. raw:: html
+.. note::
+   Invoking build using "all" option in SDK top level for multicore SOC
+   parts can take up to several hours to rebuild as the components need to
+   be built for all cores (e.g., A15, C66x, M4). Please rebuild individual
+   components in the PDK package for these devices to avoid long build times.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Invoking build using "all" option in SDK top level for multicore SOC
-parts can take up to several hours to rebuild as the components need to
-be built for all cores (e.g., A15, C66x, M4). Please rebuild individual
-components in the PDK package for these devices to avoid long build
-times.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Common Targets
-   :name: common-targets
-
+Common Targets
+---------------
 The following targets are common to all Processor SDKs for RTOS:
 
 -  **pdk** - Builds the Platform Development Kit that includes CSL and
    low level drivers
 
-.. rubric:: Additional Targets
-   :name: additional-targets
-
+Additional Targets
+-------------------
 You can find the list of all the targets by invoking **help** target as
 described above. Depending on the capabilities and software available
 for a given device additional targets may also be defined:
@@ -256,15 +203,14 @@ for a given device additional targets may also be defined:
 
 | 
 
-.. rubric:: Usage Examples
-   :name: usage-examples
-
+Usage Examples
+================
 The following examples demonstrate how to use the top-level Makefile for
 some common tasks. All of the examples below assume that you are calling
 the Makefile from the top-level of the SDK.
 
-.. rubric:: Windows
-   :name: windows-1
+Windows
+--------
 
 -  Build all
 
@@ -278,8 +224,8 @@ the Makefile from the top-level of the SDK.
 
      C:\ti\processor_sdk_rtos_[soc]_[version]> gmake clean
 
-.. rubric:: Linux
-   :name: linux-1
+Linux
+------
 
 -  Build all
 
@@ -295,9 +241,8 @@ the Makefile from the top-level of the SDK.
 
 | 
 
-.. rubric:: Rebuilding Components
-   :name: rebuilding-components
-
+Rebuilding Components
+=======================
 Instructions for rebuilding sub-components can be found in documentation
 within the component. Here are a collection of useful pages:
 
