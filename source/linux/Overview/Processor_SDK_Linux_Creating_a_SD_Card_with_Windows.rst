@@ -69,17 +69,10 @@ Here is the process to follow to create the SD card.
 
       .. Image:: ../images/Win32_Disk_Imager_write_disk.png
 
-      .. raw:: html
-
-         <div class="block-note">
-
-      |Note|\ **Note:** You'll likely get the below confirmation box.
-      This command will overwrite whatever disk you point it to, please
-      make sure and choose the correct disk:
-
-      .. raw:: html
-
-         </div>
+      .. note::
+          You'll likely get the below confirmation box. This command will
+          overwrite whatever disk you point it to, please make sure and choose
+          the correct disk:
 
       .. Image:: ../images/Win32_disk_imager_Confirm_overwrite.png
       You should see the following status bar as the image is being
