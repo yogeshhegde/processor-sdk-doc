@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x 
 
-.. rubric:: DRA7xx/AM572xx IPC Examples
-   :name: dra7xxam572xx-ipc-examples
+DRA7xx/AM572xx IPC Examples
+---------------------------
 
 .. rubric:: IPC Hello Example:
    :name: ipc-hello-example

@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15 
 
-.. rubric:: How to take the C66x DSP out of reset with Linux running on A15
-   :name: how-to-take-the-c66x-dsp-out-of-reset-with-linux-running-on-a15
+How to take the C66x DSP out of reset with Linux running on A15
+---------------------------------------------------------------
 
 This document describes the procedure to bring the C66x core out of reset after 
 booting Linux, or at the u-boot prompt.These steps are necessary in to order to 
@@ -56,8 +56,8 @@ has the reset routines described below.
 
 .. Image:: ../images/Outofreset_7_lali.png
 
-.. rubric:: Target Configuration
-   :name: target-configuration
+Target Configuration
+--------------------
 
 .. raw:: html
 
