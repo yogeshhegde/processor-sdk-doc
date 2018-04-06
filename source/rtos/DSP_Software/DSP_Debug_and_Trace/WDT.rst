@@ -1,14 +1,14 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_WDT 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+------------
 
 The Watchdog Timer Module provides configuration and use of the watchdog
 timer mode for the DSP local timers. The watchdog mode is a 64-bit timer
 mode for the local timers.
 
-.. rubric:: Modes of Operation
-   :name: modes-of-operation
+Modes of Operation
+------------------
 
 Following modes of operations are supported
 
@@ -23,11 +23,11 @@ Following modes of operations are supported
 
 Resets can be configured as a hard or soft reset.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+Driver Configuration
+--------------------
 
-.. rubric:: **Watchdog Timer Configuration Structure**
-   :name: watchdog-timer-configuration-structure
+Watchdog Timer Configuration Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The watchdog timer configuration is passed at the time of the
 WatchdogTimer_Init() function call and cannot be changed afterwards. For
@@ -35,8 +35,8 @@ details about individual fields of the configuration structure,
 WatchdogTimer_InitCfg, see the Watchdog Timer XDC by opening
 ``[PDK_INSTALL_DIR]\packages\ti\instrumentation\wdtimer\WatchdogTimer.xdc``.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^
 
 API reference for application:
 
@@ -44,8 +44,8 @@ API reference for application:
 
     #include <ti/instrumentation/wdtimer/WatchdogTimer.h>
 
-.. rubric:: Initialize a Watchdog Timer
-   :name: initialize-a-watchdog-timer
+Initialize a Watchdog Timer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. raw:: html
 
@@ -70,8 +70,8 @@ API reference for application:
 
 At this point the watchdog timer is enabled and running.
 
-.. rubric:: Service Watchdog Timer
-   :name: service-watchdog-timer
+Service Watchdog Timer
+^^^^^^^^^^^^^^^^^^^^^^
 
 The watchdog timer must be serviced prior to the configured period in
 order to avoid a timeout. The following API is used to service the
@@ -81,8 +81,8 @@ watchdog timer, resetting the count back to zero.
 
     WatchdogTimer_ResetTimer()
 
-.. rubric:: Tests
-   :name: tests
+Tests
+^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
@@ -98,19 +98,19 @@ watchdog timer, resetting the count back to zero.
 |                       |                       |   for more details.   |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \instrumentation\wdtimer\docs\dox |
-|                                   | ygen\html\index.html              |
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ |
+|                                   | ti\\instrumentation\\wdtimer\\    |
+|                                   | docs\\doxygen\\html\\index.html   |
 +-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \instrumentation\wdtimer\docs\Rel |
-|                                   | easeNotes_WatchdogTimer.pdf       |
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ |
+|                                   | ti\\instrumentation\\wdtimer\\do  |
+|                                   | cs\\ReleaseNotes_WatchdogTimer.pdf|
 +-----------------------------------+-----------------------------------+
 
 .. raw:: html

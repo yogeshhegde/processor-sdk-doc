@@ -1,14 +1,14 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FM 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+------------
 
 This section describes the Fault Management APIs and provides
 information on how to instrument a DSP image for exception. This library
 is currently supported for K2x devices only.
 
-.. rubric:: FM DSP Exception APIs & Usage
-   :name: fm-dsp-exception-apis-usage
+FM DSP Exception APIs & Usage
+-----------------------------
 
 A DSP application can create and install an exception hook configured
 with the following features using the APIs provided by FM:
@@ -87,7 +87,7 @@ structure has the following parameters:
 
 A customized version of the Fm_ExcludedResource's list can be created.
 However, a version has been created and supplied in
-*pdk_#_##_##_##\packages\ti\instrumentation\fault_mgmt\device\k2x\src\fm_device.c*
+*pdk_#_##_##_##\\packages\\ti\\instrumentation\\fault_mgmt\\device\\k2x\\src\\fm_device.c*
 which already accounts for all resources used the ARM Linux kernel
 delivered with the latest PROCSDK release.
 
@@ -130,8 +130,8 @@ This function will notify the ARM/Host an exception has occurred via
 Remoteproc and should be the last FM API called within the instrumented
 exception hook function.
 
-.. rubric:: Instrumenting a DSP Application with FM Exception APIs
-   :name: instrumenting-a-dsp-application-with-fm-exception-apis
+Instrumenting a DSP Application with FM Exception APIs
+------------------------------------------------------
 
 Create and install an exception hook in the DSP application that
 utilizes the DSP FM APIs.
@@ -229,10 +229,10 @@ utilizes the DSP FM APIs.
     }
 
 A sample test application is provided in
-*pdk_#_##_##_##\packages\ti\instrumentation\fault_mgmt\test\k2x\c66\bios\fmCoreDumpK2XC66TestProject*.
+*pdk_#_##_##_##\\packages\\ti\\instrumentation\\fault_mgmt\\test\\k2x\\c66\\bios\\fmCoreDumpK2XC66TestProject*.
 The test application uses the default resource exclusion list provided
 with FM in
-*pdk_#_##_##_##\packages\ti\instrumentation\fault_mgmt\device\k2x\src*.
+*pdk_#_##_##_##\\packages\\ti\\instrumentation\\fault_mgmt\\device\\k2x\\src*.
 The default list has been configured to exclude all Linux owned IO from
 the halting on exception. This allows the Linux kernel to remain
 operational after DSP exception so that the core dump can be processed.
@@ -255,19 +255,19 @@ Ethernet), and Linux owned CPPI DMAs.
 
    </div>
 
-.. rubric:: FM Global Configuration Parameters
-   :name: fm-global-configuration-parameters
+FM Global Configuration Parameters
+----------------------------------
 
 The Fm_GlobalConfigParams structure informs the IO halt and cleanup
 features of the system peripheral resource ranges that could not be
 pulled from CSL. The user should not create their own version of this
 structure. Instead, the version of the structure provided within
-*pdk_#_##_##_##\packages\ti\instrumentation\fault_mgmt\device\k2x\src\fm_device.c*
+*pdk_#_##_##_##\\packages\\ti\\instrumentation\\fault_mgmt\\device\\k2x\\src\\fm_device.c*
 should be used. This structure has been statically created based on
 device peripheral parameters.
 
-.. rubric:: FM Tests
-   :name: fm-tests
+FM Tests
+--------
 
 The Fault Management module comes with a single test application,
 fmCoreDumpK2HC66TestProject. The fmCoreDumpK2HC66TestProject forces a
@@ -277,19 +277,19 @@ executing the application, from the Linux shell, check /var/log/syslog
 for a message saying a crash event was detected on the DSP to which the
 core dump test was loaded and run.
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| Fault Management API Reference    | $(TI_PDK_INSTALL_DIR)\packages\ti |
-| Manual                            | \instrumentation\fault_mgmt\docs\ |
-|                                   | doxygen\html\index.html           |
+| Fault Management API Reference    | $(TI_PDK_INSTALL_DIR)\\packages\\ |
+| Manual                            | ti\\instrumentation\\fault_mgmt\\ |
+|                                   | docs\\doxygen\html\index.html     |
 +-----------------------------------+-----------------------------------+
-| Fault Management Release Notes    | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \instrumentation\fault_mgmt\docs\ |
-|                                   | ReleaseNotes_fault_mgmt.pdf       |
+| Fault Management Release Notes    | $(TI_PDK_INSTALL_DIR)\\packages\\ |
+|                                   | ti\\instrumentation\\fault_mgmt\\ |
+|                                   | docs\\ReleaseNotes_fault_mgmt.pdf |
 +-----------------------------------+-----------------------------------+
 
 .. raw:: html

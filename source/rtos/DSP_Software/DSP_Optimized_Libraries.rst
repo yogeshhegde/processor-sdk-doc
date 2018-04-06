@@ -4,8 +4,9 @@ DSP Optimized Libraries
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Libraries 
 
-.. rubric:: Available Libraries
-   :name: available-libraries
+
+Available Libraries
+===================
 
 The table below lists currently available libraries and the
 corresponding information - whether they are included in Proc-SDK Linux
@@ -16,8 +17,8 @@ or RTOS, supported devices, and documentation links.
 |             | Linux       | RTOS        | Devices     |               |
 +=============+=============+=============+=============+===============+
 | MATHLIB     | No          | Yes         | K1/K2/AM57x | `MATHLIB      |
-|             |             |             |             | Documentati   |
-|             |             |             |             | on <http://   |
+|             |             |             |             | Documentation |
+|             |             |             |             | <http://      |
 |             |             |             |             | processors.   |
 |             |             |             |             | wiki.ti.com   |
 |             |             |             |             | /index.php/   |
@@ -26,8 +27,8 @@ or RTOS, supported devices, and documentation links.
 |             |             |             |             | hLIB>`__      |
 +-------------+-------------+-------------+-------------+---------------+
 | DSPLIB      | No          | Yes         | K1/K2/AM57x | `DSPLIB       |
-|             |             |             |             | Documentati   |
-|             |             |             |             | on <http://   |
+|             |             |             |             | Documentation |
+|             |             |             |             | <http://      |
 |             |             |             |             | processors.   |
 |             |             |             |             | wiki.ti.com   |
 |             |             |             |             | /index.php/   |
@@ -36,8 +37,8 @@ or RTOS, supported devices, and documentation links.
 |             |             |             |             | LIB>`__       |
 +-------------+-------------+-------------+-------------+---------------+
 | IMGLIB      | No          | Yes         | K1/K2/AM57x | `IMGLIB       |
-|             |             |             |             | Documentati   |
-|             |             |             |             | on <http://   |
+|             |             |             |             | Documentation |
+|             |             |             |             | <http://      |
 |             |             |             |             | processors.   |
 |             |             |             |             | wiki.ti.com   |
 |             |             |             |             | /index.php/   |
@@ -82,8 +83,8 @@ Processor SDK libraries can be categorized into two groups, general
 purpose libraries and high performance or application specific
 libraries.
 
-.. rubric:: General Purpose Libraries
-   :name: general-purpose-libraries
+General Purpose Libraries
+-------------------------
 
 -  MATHLIB:\ `Standalone download
    page <http://www.ti.com/tool/mathlib>`__
@@ -96,8 +97,8 @@ downloaded from the links listed above and used in any C66x DSP code.
 
 | 
 
-.. rubric:: High Performance or Application Specific Libraries
-   :name: high-performance-or-application-specific-libraries
+High Performance or Application Specific Libraries
+--------------------------------------------------
 
 -  `LibArch <http://processors.wiki.ti.com/index.php/Processor_SDK_Library_Architecture_and_Framework>`__:
    Library Architecture and Framework, an abstraction layer for
@@ -110,22 +111,22 @@ downloaded from the links listed above and used in any C66x DSP code.
 These libraries are available in both Processor-SDK RTOS and
 Processor-SDK Linux.
 
-.. rubric:: Library Usage
-   :name: library-usage
+Library Usage
+=============
 
 Libraries can be used in either Processor-SDK RTOS or Processor-SDK
 Linux.
 
-.. rubric:: Using Libraries in Processor-SDK RTOS
-   :name: using-libraries-in-processor-sdk-rtos
+Using Libraries in Processor-SDK RTOS
+-------------------------------------
 
 The following diagram illustrates the software stack of various
 components including libraries provided with the Processor-SDK RTOS.
 
 .. Image:: ../images/Lib_sw_stack_rtos.jpg
 
-.. rubric:: Using Libraries in Processor-SDK Linux
-   :name: using-libraries-in-processor-sdk-linux
+Using Libraries in Processor-SDK Linux
+--------------------------------------
 
 The following diagram illustrates the software stack in Processor-SDK
 Linux environment, taking LINALG as an example. Applications access the
@@ -135,8 +136,8 @@ is explained in detail in each library's documentation page.
 
 .. Image:: ../images/Linalg.jpg
 
-.. rubric:: Delivery Format
-   :name: delivery-format
+Delivery Format
+===============
 
 All libraries are delivered with both source code and object code. The
 source code can be recompiled according to the instructions given in
