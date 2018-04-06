@@ -23,6 +23,7 @@ through how to use the script as well.
 | 
 
 .. _processor-sdk-linux-sd-card-common-steps:
+
 Common Steps
 -------------
 
