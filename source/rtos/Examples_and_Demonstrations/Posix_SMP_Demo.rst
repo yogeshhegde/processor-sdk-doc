@@ -117,7 +117,8 @@ demo will be the same:
 #. Using CCS, launch the target configuration for the EVM `CCS-Target
    Configurations <http://processors.wiki.ti.com/index.php/Target_Configuration_-_Custom_Configurations>`__.
    Please ensure that the target configuration will load the appropriate
-   CCS gel files found in the emupak.
+   CCS gel files found in the emupak. Make sure all Coretex-A15 cores in
+   the SMP cluster have an appropriate CCS gel file.
 #. The default ccxml file only loads a gel on connect for some of the
    cores. Modify the ccxml file to load the gel for all the
    corresponding cores.
