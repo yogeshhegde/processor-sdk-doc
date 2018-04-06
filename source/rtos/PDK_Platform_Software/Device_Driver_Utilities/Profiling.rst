@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PROFILING 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The profiling library can be used to profile any of the Platform
 Development Kit components at the runtime. Feature enables reporting of
@@ -12,8 +15,8 @@ processor cycles with minimal overhead. It use standard C programming
 hooks that may be adapted for any platform and/or processor
 architecture.
 
-.. rubric:: Integration
-   :name: integration
+Integration
+-----------
 
 **Baremetal or No-OS Use case**
 
@@ -41,13 +44,14 @@ Example:
 
 Refer \*.cfg of Uart test application for sample implementation
 
-1) load utils package.
+
+1. Load utils package.
 
 ::
 
     var Utils = xdc.loadPackage('ti.utils.profiling');
 
-2) Set the ‘enableProfiling’ attribute to ‘true’ into the .cfg file.
+2. Set the ‘enableProfiling’ attribute to ‘true’ into the .cfg file.
 This will load library with profiling enabled
 
 ::
@@ -55,14 +59,14 @@ This will load library with profiling enabled
     var Uart = xdc.loadPackage('ti.drv.uart’);
     Uart.Settings.enableProfiling = true;
 
-3) Enable DDR3 memory, if not already enabled in test/example
+3. Enable DDR3 memory, if not already enabled in test/example
 application
 
 ::
 
     Program.sectMap[".fardata:benchmarking"] = "DDR3";
 
-4) Add following line in .cfg if it does not exist already. Enable the
+4. Add following line in .cfg if it does not exist already. Enable the
 Task hooks for Task switches.
 
 ::
@@ -76,13 +80,13 @@ Task hooks for Task switches.
 
 **Additional compiler flags**
 
-1) For gcc compiler add
+1. For gcc compiler add
 
 ::
 
     -gdwarf-3 -finstrument-functions 
 
-2) For TI compiler add
+2. For TI compiler add
 
 ::
 
@@ -90,7 +94,8 @@ Task hooks for Task switches.
 
 Reference: \*project.txt inside UART test application
 
-**Rebuild the project**
+Rebuild the project
+-------------------
 
 .. rubric:: Profiling Processing
    :name: profiling-processing
@@ -101,10 +106,10 @@ configuration enabled by default.
 Load compiled program onto desired target and platform. Run program to a
 desired logical point where profiling data needs to be collected
 
-1) While program is at the break, open the Memory Browser (View > Memory
+1. While program is at the break, open the Memory Browser (View > Memory
 Browser).
 
-2) Save a memory snapshot by clicking "Save", setting the start address
+2. Save a memory snapshot by clicking "Save", setting the start address
 to "elemlog" and length to "log_idx*4". (It is preferred to save it into
 ti .dat format.)
 
@@ -130,8 +135,7 @@ ti .dat format.)
 (Follow the standard instruction for installing the tools from their
 websites.)
 
-| 
-| **Running the script**
+**Running the script**
 
 Open a cmd/terminal & set to the directory of the "decodeProfileDump.py"
 Python script (typically under utils/profiling/scripts)
@@ -146,8 +150,7 @@ Example:
 
     python decodeProfileDump.py -v uart.dat UART_BasicExample_k2h_armTestproject.out
 
-| 
-| **Optional flags**
+**Optional flags**
 
 +-----------------------------------+-----------------------------------+
 | Flags                             | Response                          |
@@ -172,8 +175,7 @@ Example:
 that is subtracted from the function times. Use this flag only if there
 is an additional offset you would like to subtract.)
 
-| 
-| **Report Fields**
+**Report Fields**
 
 +-----------------------------------+-----------------------------------+
 | Term                              | Meaning                           |
@@ -204,19 +206,15 @@ is an additional offset you would like to subtract.)
 (inclusive(inc): including the cycles of its child functions within,
 exclusive(exc): excluding the cycles of its child functions.)
 
+.. note::
+   
+   Remaining functions on the stack at last timestamp will be considered
+   closed.
+   
+   BIOS functions are not accounted by instrumentation and will not appear
+   in the report.
+   
+   Functions which are optimized out will not appear in the report eg.
+   empty/single-line functions, ti_sysbios_\* functions etc.
+
 | 
-
-.. rubric:: Notes:
-   :name: notes
-
-Remaining functions on the stack at last timestamp will be considered
-closed.
-
-BIOS functions are not accounted by instrumentation and will not appear
-in the report.
-
-Functions which are optimized out will not appear in the report eg.
-empty/single-line functions, ti_sysbios_\* functions etc.
-
-.. raw:: html
-

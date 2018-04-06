@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_I2C
 
-.. rubric::  Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 I2C module provides an interface to any I2C-bus-compatible device
 accessible via I2C serial bus. External components attached to I2C bus
@@ -26,22 +29,14 @@ In addition driver supports following modes of operation:
    user-provided hook function. Only interrupt based callback is
    supported.
 
-.. raw:: html
+.. note::
+   
+   If I2C peripheral is in reset during a transfer, it can cause the I2C
+   bus to hang. I2C V0 IP (Keystone SoCs) does not have hardware support to
+   recover the I2C bus from hanging, user needs to power cycle the board as
+   a workaround. For I2C V1 IP (AM3/4/5 SoCs), the application can call
+   I2C_control() API and use I2C_CMD_RECOVER_BUS to recover the I2C bus.
 
-   <div
-   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
-
-**NOTE**
-
-If I2C peripheral is in reset during a transfer, it can cause the I2C
-bus to hang. I2C V0 IP (Keystone SoCs) does not have hardware support to
-recover the I2C bus from hanging, user needs to power cycle the board as
-a workaround. For I2C V1 IP (AM3/4/5 SoCs), the application can call
-I2C_control() API and use I2C_CMD_RECOVER_BUS to recover the I2C bus.
-
-.. raw:: html
-
-   </div>
 
 .. rubric::  Firmware
    :name: firmware
@@ -54,8 +49,11 @@ additional details.
 
 | 
 
-.. rubric::  Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric::  **Board Specific Configuration**
    :name: board-specific-configuration
@@ -70,7 +68,7 @@ details.
 Once the board specific configuration is complete driver API I2C_init()
 can be called to initialize driver
 
-.. rubric::  **I2C Configuration Structure**\ 
+.. rubric::  **I2C Configuration Structure** 
    :name: i2c-configuration-structure
 
 I2C_soc.c file binds driver with hardware attributes on the board
@@ -78,10 +76,10 @@ through I2C_config structure. This structure must be provided to I2C
 driver. It must be initialized before the I2C_init() function is called
 and cannot be changed afterwards. For details about the individual
 fields of this structure, see the Doxygen help by opening
-PDK_INSTALL_DIR\packages\ti\drv\i2c\docs\doxygen\html\index.html.
+PDK_INSTALL_DIR\\packages\\ti\\drv\\i2c\\docs\\doxygen\\html\\index.html.
 
-.. rubric::  **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for application:
 
@@ -115,8 +113,11 @@ API reference for application:
     /* I2C transaction failed */
     } 
 
-.. rubric::  Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 Refer Release Note for I2C support across different EVMs
 
@@ -227,35 +228,26 @@ Refer Release Note for I2C support across different EVMs
 |                       | on Master EVM.        |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. raw:: html
+.. note::
+   
+   I2C_Test Application supports write test on Keystone II EVMs, by default
+   write test is disabled, user can enable the write test by defining
+   I2C_EEPROM_WRITE_ENABLE in test/eeprom_read/src/I2C_board.h.
+   I2C_TemperatureSensor Application is supported only on AM572x GP EVM.
 
-   <div
-   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
+Additional References
+---------------------
 
-**NOTE**
++-----------------------+------------------------------------------+
+| **Document**          |  **Location**                            |
++-----------------------+------------------------------------------+
+| API Reference Manual  | $(TI_PDK_INSTALL_DIR)\\packages\\ti      |
+|                       | \\drv\\i2c\\docs\\doxygen\\html\\index.  |
+|                       | html                                     |
++-----------------------+------------------------------------------+
+| Release Notes         | $(TI_PDK_INSTALL_DIR)\\packages\\ti      |
+|                       | \\drv\\i2c\\docs\\ReleaseNotes_I2C_LL    |
+|                       | D.pdf                                    |
++-----------------------+------------------------------------------+
 
-I2C_Test Application supports write test on Keystone II EVMs, by default
-write test is disabled, user can enable the write test by defining
-I2C_EEPROM_WRITE_ENABLE in test/eeprom_read/src/I2C_board.h.
-I2C_TemperatureSensor Application is supported only on AM572x GP EVM.
-
-.. raw:: html
-
-   </div>
-
-.. rubric::  Additional References
-   :name: additional-references
-
-+-----------------------+-----------------------------------+
-| **Document**          |  **Location**                     |
-+-----------------------+-----------------------------------+
-| API Reference Manual  | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                       | \drv\i2c\docs\doxygen\html\index. |
-|                       | html                              |
-+-----------------------+-----------------------------------+
-| Release Notes         | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                       | \drv\i2c\docs\ReleaseNotes_I2C_LL |
-|                       | D.pdf                             |
-+-----------------------+-----------------------------------+
-
-.. raw:: html
+| 

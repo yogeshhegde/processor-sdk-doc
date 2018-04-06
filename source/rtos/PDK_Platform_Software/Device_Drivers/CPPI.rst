@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CPPI 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 CPPI offers developers a common way of handling different protocol
 interfaces that may require multiple priorities and multiple channels on
@@ -22,8 +25,11 @@ bridging and routing.
 The LLD provides resource management for descriptors, receive/transmit
 channels and receive flows.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 The driver configures the CPPI subsystem using cppiGblCfgParams(system
 configuration) structure. The default global configuration per device is
@@ -33,8 +39,8 @@ For details about individual fields of this structure, see the Doxygen
 help by opening
 PDK_INSTALL_DIR\CPPIckages\ti\drv\CPPI\docs\doxygen\html\index.html.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for application:
 
@@ -42,8 +48,11 @@ API reference for application:
 
     #include <ti/drv/CPPI/CPPI_drv.h>
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  || Description          | Expected Results      |
@@ -295,18 +304,18 @@ This came from k2k example:
 #. See `QMSS Debug FAQ <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS#Debug_FAQ>`__
    for more.
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\CPPI\docs\doxygen\html\index |
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/CPPI/docs/doxygen/html/index |
 |                                   | .html                             |
 +-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\CPPI\docs\ReleaseNotes_CPPI_ |
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/CPPI/docs/ReleaseNotes_CPPI_ |
 |                                   | LLD.pdf                           |
 +-----------------------------------+-----------------------------------+
 | Hardware Userguide/TRM            | `UG TRM                           |
@@ -319,5 +328,5 @@ This came from k2k example:
 
 .. _QMSS LLD:  http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS
 
-.. raw:: html
+| 
 

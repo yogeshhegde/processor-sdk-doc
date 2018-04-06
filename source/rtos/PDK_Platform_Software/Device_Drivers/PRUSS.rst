@@ -1,7 +1,9 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PRUSS 
+Overview
+--------
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^
 
 | The PRUSS (Programmable Real-Time Unit Subsystem) provides a
   well-defined API layer which allows applications to use the PRUSS low
@@ -29,8 +31,11 @@ http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PRUSS_SORTE
    acknowledge interrupts
 -  Interrupt management for A15/C66x CPU targets
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric::  **Board Specific Configuration**
    :name: board-specific-configuration
@@ -48,8 +53,8 @@ config structure. This structure must be provided to the driver at the
 time when PRUICSS_create() API is called to creat the PRUICSS_Handle.
 This handle is subsequently required to make any PRUSS LLD API call.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 Reference API header file:
 
@@ -95,8 +100,11 @@ for additional details
      PRUICSS_pruSendEvent(handle,ARM_PRU0_EVENT);
       
 
-.. rubric:: Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  ||  Description         ||  Expected Results    |
@@ -119,22 +127,20 @@ for additional details
 |                       |                       | passed"               |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: Additional Reference
-   :name: additional-reference
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-|   **Document**                    | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\pruss\docs\doxygen\html\inde |
-|                                   | x.html                            |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\pruss\docs\ReleaseNotes_PRUS |
-|                                   | S_LLD.pdf                         |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+----------------------------------------+
+|   **Document**                    | **Location**                           |
++-----------------------------------+----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti    |
+|                                   | \\drv\\pruss\\docs\\doxygen\\html\\inde|
+|                                   | x.html                                 |
++-----------------------------------+----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti    |
+|                                   | \\drv\\pruss\\docs\\ReleaseNotes_PRUS  |
+|                                   | S_LLD.pdf                              |
++-----------------------------------+----------------------------------------+
 
 | 
-
-.. raw:: html
 

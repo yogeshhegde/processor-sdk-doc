@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC(DRIVER,FIRMWARE)
 
-.. rubric::  Driver Overview
-   :name: driver-overview
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The ICSS_EMAC (industrial communications subsystem Ethernet Media Access
 Controller) driver provide APIs to transmit and receive packets with a
@@ -39,14 +42,17 @@ ICSS_EMAC LLD implements following:
 -  Configuring IP address
 -  ARM interrupt management
 
-| 
-| For details of the driver, please refer to
+
+For details of the driver, please refer to
   `[1] <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC-Design>`__
 
 | 
 
-.. rubric::  Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 | **Board Specific Configuration**
 | All the board specific configurations eg: enabling clock and pin-mux
@@ -67,12 +73,12 @@ ICSS_EMAC LLD implements following:
   passed in as part of the ICSS_EMAC Handle when calling the
   icss_emacInit API. For details about individual fields of this
   structure, see the Doxygen help by opening
-  PDK_INSTALL_DIR\packages\ti\drv\icss_emac\docs\doxygen\html\index.html.
+  PDK_INSTALL_DIR\\packages\\ti\\drv\\icss_emac\\docs\\doxygen\\html\\index.html.
 
 | 
 
-.. rubric::  **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for application:
 
@@ -80,15 +86,13 @@ API reference for application:
 
     #include <ti/drv/icss_emac/icss_emacDrv.h>
 
-.. rubric::  **API Call Flow**
+.. rubric:: API Call Flow
    :name: api-call-flow
 
 The below sequence indicates the calling sequence of ICSS_EMAC driver
 APIs for a use case of an EMAC example which implements single Ethernet
 MAC using PRU-ICSS Instance 2, ETH0. For additional details refer
 example inside package
-
-<syntaxhighlight lang="c">
 
 ::
 
@@ -146,14 +150,16 @@ further explanation.
 
 | 
 
-.. rubric::  Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 Refer “ICSS_EMAC_<Basic/Switch>Example_<SOC>_<CPU>Testproject” for
 additional reference. Refer Release Note for ICSS_EMAC supported on
 different EVMs.
 
-| 
 
 +-----------------+-----------------+-----------------+-----------------+
 || Name           || Description    || EVM            || Expected       |
@@ -261,29 +267,29 @@ different EVMs.
 
 | 
 
-.. rubric::  Debug Guide
-   :name: debug-guide
+Debug Guide
+-----------
 
 For debugging ICSS EMAC examples or LLD. Please refer to `ICSS-EMAC
 Debug Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide>`__.
 
-.. rubric::  Additional documentation reference
-   :name: additional-documentation-reference
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\icss_emac\docs\doxygen\html\ |
-|                                   | index.html                        |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\icss_emac\docs\ReleaseNotes_ |
-|                                   | ICSS_EMAC_LLD.pdf                 |
-+-----------------------------------+-----------------------------------+
-| ICSS-EMAC LLD Details             | `[2] <http://processors.wiki.ti.c |
-|                                   | om/index.php/ICSS-EMAC>`__        |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+------------------------------------------+
+| **Document**                      | **Location**                             |
++-----------------------------------+------------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti      |
+|                                   | \\drv\\icss_emac\\docs\\doxygen\\html\\  |
+|                                   | index.html                               |
++-----------------------------------+------------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti      |
+|                                   | \\drv\\icss_emac\\docs\\ReleaseNotes_    |
+|                                   | ICSS_EMAC_LLD.pdf                        |
++-----------------------------------+------------------------------------------+
+| ICSS-EMAC LLD Details             | `[2] <http://processors.wiki.ti.c        |
+|                                   | om/index.php/ICSS-EMAC>`__               |
++-----------------------------------+------------------------------------------+
 
 | 
 

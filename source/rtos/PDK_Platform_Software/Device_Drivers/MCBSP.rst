@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCBSP 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The multichannel buffered serial port (MCBSP) peripheral allows direct
 interface to other TI DSPs, codecs, and other devices in a system. The
@@ -17,8 +20,11 @@ MCBSP driver uses the CSL MCBSP register layer for all MCBSP MMR access.
 The MCBSP driver also interfaces with the EDMA3 library to be able to
 transfer data to and from MCBSP peripheral and data memory.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 The MCBSP Driver initialization API needs to be called only once and it
 initializes the internal driver data structures like device objects.
@@ -43,8 +49,8 @@ For details about individual fields of this structure, see the Doxygen
 help by opening
 PDK_INSTALL_DIR\Packages\ti\drv\MCBSP\docs\doxygen\html\index.html.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for application:
 
@@ -52,13 +58,16 @@ API reference for application:
 
     #include <ti/drv/MCBSP/mcbsp_drv.h>
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+
 | Name                  | Description           |
 +=======================+=======================+
-| MCBSP_Example         | | Example             |
+| MCBSP_Example         |   Example             |
 | application           |   demonstrating       |
 |                       |   *sample MCBSP       |
 |                       |   loopback* test.     |
@@ -66,20 +75,20 @@ API reference for application:
 |                       |   for developers      |
 +-----------------------+-----------------------+
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\MCBSP\docs\doxygen\html\inde |
-|                                   | x.html                            |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\MCBSP\docs\ReleaseNotes_MCBS |
-|                                   | P.pdf                             |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+-----------------------------------------+
+| **Document**                      | **Location**                            |
++-----------------------------------+-----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\MCBSP\\docs\\doxygen\\html\\inde |
+|                                   | x.html                                  |
++-----------------------------------+-----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\MCBSP\\docs\\ReleaseNotes_MCBS   |
+|                                   | P.pdf                                   |
++-----------------------------------+-----------------------------------------+
 
-.. raw:: html
+| 
 

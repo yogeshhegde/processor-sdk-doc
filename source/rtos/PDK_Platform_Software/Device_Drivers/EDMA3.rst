@@ -1,9 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_EDMA3 
 
-| 
+Overview
+--------
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^
 
 EDMA3 Low Level Driver is targeted to device drivers and applications
 for submitting and synchronizing EDMA3-based DMA transfers.
@@ -19,8 +20,11 @@ transfers. In order to simplify the usage, this component internally
 uses the services of the **EDMA3 Resource Manager** and provides one
 consistent interface for applications or device drivers.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 EDMA3 peripheral IP is re-used in different SoCs with only a few
 configuration changes:
@@ -35,8 +39,8 @@ drivers of these peripherals as well as other application software that
 may need to use DMA services. Resources for EDMA driver is managed
 through RM sub module within driver.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for EDMA3 driver
 
@@ -50,8 +54,8 @@ API reference for EDMA3 Resource Management layer
 
     #include <ti/sdo/edma3/rm/edma3_rm.h>
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
    
 +--------------------+-----------------------------------------------+
 |                       EDMA3 Driver Summary                         |
@@ -128,9 +132,8 @@ API reference for EDMA3 Resource Management layer
 |                    |    edma3_lld_rm_sample.aem4 (M4)              |
 |                    |                                               |
 +--------------------+-----------------------------------------------+
-| Linker Path        |   <ti/sdo/edma3/drv/sample/lib/[soc-evm]/     |
-|                    |    [cpu]>                                     |
-|                    |   <ti/sdo/edma3/rm/sample/lib/[soc-evm]/[cpu]>|
+| Linker Path        |  <ti/sdo/edma3/drv/sample/lib/[soc-evm]/[cpu]>|
+|                    |  <ti/sdo/edma3/rm/sample/lib/[soc-evm]/[cpu]> |
 |                    |                                               |
 +--------------------+-----------------------------------------------+
 | Include Paths      |    <ti/sdo/edma3/drv>                         |
@@ -148,6 +151,4 @@ API reference for EDMA3 Resource Management layer
 |                    |                                               |
 +--------------------+-----------------------------------------------+
 
-
-.. raw:: html
-
+| 

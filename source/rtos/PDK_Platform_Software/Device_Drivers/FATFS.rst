@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FATFS 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 FATFS module provides an interface to configure a driver for FAT file
 system compatible device that connects via MMCSD, USB, etc. It
@@ -9,8 +12,11 @@ configures FATFS for disk operations driver disk Initialize, disk
 read, disk write
 
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: **Board Specific Configuration**
    :name: board-specific-configuration
@@ -37,8 +43,8 @@ be changed subsequently. For details about individual fields of this
 structure, see the Doxygen
 help:PDK_INSTALL_DIR\\packages\\ti\\fs\\fatfs\\docs\\doxygen\\html\\index.html.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 In order to use the FATFS module APIs, the FATFS.h and ff.h header file
 should be included in an application as follows:
@@ -67,8 +73,11 @@ eg: f_open(), f_write(), f_read() etc to perform file operations on
 device
 
 
-.. rubric:: Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  | | Description         | Expected Results      |
@@ -94,46 +103,22 @@ device
 |                       |   read operation).    |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: 
-   :name: section
 
-.. rubric:: 
-   :name: section-1
 
-.. rubric:: 
-   :name: section-2
+Additional References
+---------------------
 
-.. rubric:: 
-   :name: section-3
-
-.. rubric:: 
-   :name: section-4
-
-.. rubric:: 
-   :name: section-5
-
-.. rubric:: 
-   :name: section-6
-
-.. rubric:: 
-   :name: section-7
-
-.. rubric:: Additional reference
-   :name: additional-reference
-
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \fs\fatfs\docs\doxygen\html\index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \fs\fatfs\docs\ReleaseNotes_FATFS |
-|                                   | _LLD.pdf                          |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+-----------------------------------------+
+| **Document**                      | **Location**                            |
++-----------------------------------+-----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\fs\\fatfs\\docs\\doxygen\\html\\index |
+|                                   | .html                                   |
++-----------------------------------+-----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\fs\\fatfs\\docs\\ReleaseNotes_FATFS   |
+|                                   | _LLD.pdf                                |
++-----------------------------------+-----------------------------------------+
 
 | 
-
-.. raw:: html
 

@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_USB 
 
-.. rubric:: Driver Overview
-   :name: driver-overview
+Overview
+--------
+
+Driver Overview
+^^^^^^^^^^^^^^^
 
 PDK USB driver (USB LLD) provides the following USB class functions
 while isolating application from the complexity of low level USB and USB
@@ -100,8 +103,11 @@ and OMAP-L138 LCDK.
 
 | 
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 -  **Data Structures**:
 
@@ -139,8 +145,8 @@ core interrupts.
 After these steps, application code then can expect to have USB
 enumeration done and start USB transfer through the provided APIs.
 
-.. rubric:: API Call Flow
-   :name: api-call-flow
+API Call Flow
+^^^^^^^^^^^^^
 
 -  **USB Device MSC**
 
@@ -202,8 +208,11 @@ in the interrupt context.
 
 | 
 
-.. rubric:: Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 Bare-metal and RTOS/BIOS examples of the USB device and USB host MSC
 are provided with the USB LLD. RTOS/BIOS examples are provided for USB
@@ -239,8 +248,8 @@ release notes for supported EVMs.
 
 | 
 
-.. rubric:: Hardware Setup
-   :name: hardware-setup
+Hardware Setup
+--------------
 
 This section provides the specific HW setup required to run the USB
 examples.
@@ -300,12 +309,9 @@ platform supported.
 -  Click the "Test" in "Speaker Setup", you should hear the testing tone
    in the headphone connected to the EVM
 
-**Note:**
-
-'board' can be evmAM335x, evmOMAPL137 or lcdkOMAPL138
-
-'core' can be arm or c674x
-
-
-.. raw:: html
+.. note::
+   
+   'board' can be evmAM335x, evmOMAPL137 or lcdkOMAPL138
+   
+   'core' can be arm or c674x
 

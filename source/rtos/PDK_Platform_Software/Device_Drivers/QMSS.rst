@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The Queue Manager Sub System (QMSS) low level driver provides the
 interface to Queue Manager Subsystem hardware which is part of the
@@ -36,8 +39,11 @@ only mode available.
 **Split Mode**: This mode shouldn't be used as it doesn't support all
 peripherals on the device.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 The driver configures the QMSSSS subsystem using
 Qmss_GlobalConfigGroupRegs(system configuration) structure. The default
@@ -48,8 +54,8 @@ For details about individual fields of this structure, see the Doxygen
 help by opening
 PDK_INSTALL_DIR\QMSSckages\ti\drv\QMSS\docs\doxygen\html\index.html.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API header for application:
 
@@ -61,8 +67,11 @@ Please see the doxygen in "API Reference Manual" below for details.
 
 | 
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  || Description          | Expected Results      |
@@ -365,27 +374,27 @@ This came from K2K multicore example:
       undesirable to generate accounting/management for purpose of
       nondestructive debug.
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\QMSS\docs\doxygen\html\index |
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/QMSS/docs/doxygen/html/index |
 |                                   | .html                             |
 +-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\QMSS\docs\ReleaseNotes_QMSS_ |
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/QMSS/docs/ReleaseNotes_QMSS_ |
 |                                   | LLD.pdf                           |
 +-----------------------------------+-----------------------------------+
-| QoS (Weighted Round Robin and SP  | $(TI_PDK_INSTALL_DIR)\packages\ti |
-| QoS tree)                         | \drv\QMSS\docs\firmware\qos_sched |
+| QoS (Weighted Round Robin and SP  | $(TI_PDK_INSTALL_DIR)/packages/ti |
+| QoS tree)                         | /drv/QMSS/docs/firmware/qos_sched |
 |                                   | ,qos_sched_drop_sched,qos_sched_w |
 |                                   | ide.pdf                           |
 +-----------------------------------+-----------------------------------+
-| QoS (Leaky bucket and SRIO TX     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-| Scheduler)                        | \drv\QMSS\docs\firmware\qos.pdf   |
+| QoS (Leaky bucket and SRIO TX     | $(TI_PDK_INSTALL_DIR)/packages/ti |
+| Scheduler)                        | /drv/QMSS/docs/firmware/qos.pdf   |
 +-----------------------------------+-----------------------------------+
 | Hardware Userguide/TRM            | `UG TRM                           |
 |                                   | PDF <http://www.ti.com/lit/sprugr |
@@ -399,5 +408,4 @@ This came from K2K multicore example:
 
 | 
 
-.. raw:: html
 

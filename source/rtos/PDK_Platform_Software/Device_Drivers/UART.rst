@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_UART 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 Driver enables UART's available on SOC for reading and writing to any
 peripherals on board. Additionally it supports simple APIs for
@@ -23,8 +26,11 @@ for semaphore.
 immediately. On trigger of hardware Interrupt (hwi) callback function
 gets triggered.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: **Board Specific Configuration**
    :name: board-specific-configuration
@@ -47,8 +53,8 @@ and cannot be changed afterwards. For details about individual fields of
 this structure, see the Doxygen help by opening
 PDK_INSTALL_DIR\packages\ti\drv\uart\docs\doxygen\html\index.html.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^
 
 API reference for application:
 
@@ -173,8 +179,11 @@ create EDMA handle and update the configuration before UART_init() API.
 Refer “UART_BasicExample_[SOC]_[cpu]DMATestproject” for additional
 reference. Refer SDK Release Note for supported EVMs.
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+---------------------+---------------------+
 |         Name          |    Description      |  Expected Results   |
@@ -204,8 +213,8 @@ reference. Refer SDK Release Note for supported EVMs.
 |                       |                     | echoes back         |
 +-----------------------+---------------------+---------------------+
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
 +----------------------+-----------------------------------+
 |     **Document**     |           **Location**            |
@@ -219,5 +228,5 @@ reference. Refer SDK Release Note for supported EVMs.
 |                      | _LLD.pdf                          |
 +----------------------+-----------------------------------+
 
-.. raw:: html
+| 
 

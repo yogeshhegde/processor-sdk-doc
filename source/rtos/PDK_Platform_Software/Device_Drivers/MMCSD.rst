@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MMCSD 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 MMCSD module provides an interface between CPU and any
 MMCSD-bus-compatible device that connects via MMCSD serial bus. External
@@ -26,8 +29,11 @@ to/from the CPU device through two-wire interface
 
 | 
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: **Board Specific Configuration**
    :name: board-specific-configuration
@@ -51,8 +57,8 @@ changed afterwards. For details about the individual fields of this
 structure, see the Doxygen help by opening
 \\docs\\doxygen\\html\\index.html
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 Reference for API header file with documentation
 
@@ -120,13 +126,16 @@ The MMCSD driver supports UHS-I cards. Feature is available for AM57x
 SOC and is dependent on board or platform support for run-time switching
 from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 
-.. rubric:: Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | | Description         | Expected Results      |
+| Name                  | | Description         || Expected Results     |
 +=======================+=======================+=======================+
-| MMCSD FATFS Example   | | Example initializes | When a card is        |
+| MMCSD FATFS Example   | | Example initializes || When a card is       |
 | application           |   the card and checks | detected with valid   |
 |                       |   for valid FAT       | FAT partition a       |
 |                       |   partition. When a   | console interface     |
@@ -145,10 +154,10 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 |                       |   and cat (text file  |                       |
 |                       |   read operation).    |                       |
 +-----------------------+-----------------------+-----------------------+
-| MMCSD Test            | |                     | Prints results on     |
+| MMCSD Test            | |                     || Prints results on    |
 | Application           | | Unit Test           | console               |
-|                       |   application         | **Pass criteria:**    |
-|                       |   demonstrating write | All tests have        |
+|                       |   application         || **Pass criteria:**   |
+|                       |   demonstrating write || All tests have       |
 |                       |   and read a fixed    | passed.               |
 |                       |   number of bytes     |                       |
 |                       |   into MMCSD card.    |                       |
@@ -156,10 +165,10 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 |                       |   data pattern to     |                       |
 |                       |   conclude PASS/FAIL. |                       |
 +-----------------------+-----------------------+-----------------------+
-| eMMC Test Application | |                     | Prints results on     |
+| eMMC Test Application | |                     || Prints results on    |
 |                       | | Unit Test           | console               |
-|                       |   application         | **Pass criteria:**    |
-|                       |   demonstrating write | All tests have        |
+|                       |   application         || **Pass criteria:**   |
+|                       |   demonstrating write || All tests have       |
 |                       |   and read a fixed    | passed.               |
 |                       |   number of bytes     |                       |
 |                       |   into eMMC device.   |                       |
@@ -169,10 +178,10 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 |                       |                       |                       |
 |                       | |                     |                       |
 +-----------------------+-----------------------+-----------------------+
-| MMC Test Application  | |                     | Prints results on     |
+| MMC Test Application  | |                     || Prints results on    |
 |                       | | Unit Test           | console               |
-|                       |   application         | **Pass criteria:**    |
-|                       |   demonstrating write | All tests have        |
+|                       |   application         || **Pass criteria:**   |
+|                       |   demonstrating write || All tests have      |
 |                       |   and read a fixed    | passed.               |
 |                       |   number of bytes     |                       |
 |                       |   into MMC device.    |                       |
@@ -201,22 +210,20 @@ from 3.0V to 1.8V. Feature is validated on AM572x GP EVM 3.0
 +-----------------------+-----------------------+-----------------------+
 
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/mmcsd/docs/doxygen/html/inde |
-|                                   | x.html                            |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/mmcsd/docs/ReleaseNotes_MMCS |
-|                                   | D_LLD.pdf                         |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+--------------------------------------------+
+| **Document**                      | **Location**                               |
++-----------------------------------+--------------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti        |
+|                                   | \\drv\\mmcsd\\docs\\doxygen\\html\\inde    |
+|                                   | x.html                                     |
++-----------------------------------+--------------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti        |
+|                                   | \\drv\\mmcsd\\docs\\ReleaseNotes_MMCS      |
+|                                   | D_LLD.pdf                                  |
++-----------------------------------+--------------------------------------------+
 
 | 
-
-.. raw:: html
 

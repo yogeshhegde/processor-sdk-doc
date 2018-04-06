@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_VPS_DRIVERS
 
-.. rubric::  Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 VPS (Video Processing SubSystem) video Drivers allow users to make use
 of all video hardware features like 1080P capture, HDMI/LCD/SDTV
@@ -19,8 +22,11 @@ VPS consists of following modules
 -  Display SubSystem (DSS) - for LCD outputs on three parallel
    interfaces (DPI1, DPI2, and DPI3) and HDMI
 
-.. rubric::  Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric::  **Board Specific Configuration**
    :name: board-specific-configuration
@@ -35,10 +41,10 @@ board specific configurations are implemented under
 
 For details about individual fields of VPS library structure, see the
 Doxygen help by opening
-PDK_INSTALL_DIR\packages\ti\drv\vps\docs\doxygen\html\index.html.
+PDK_INSTALL_DIR\\packages\\ti\\drv\\vps\\docs\\doxygen\\html\\index.html.
 
-.. rubric::  **APIs**
-   :name: apis
+APIs
+^^^^^
 
 The VPS driver API can be broadly divided into the following categories
 
@@ -72,11 +78,14 @@ API reference for application:
 
     #include <ti/drv/vps/include/vps_<func>.h>
 
-.. rubric::  Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+| Name                  | | Description         | | Expected Results    |
 +=======================+=======================+=======================+
 | Display Dss           | | Example             | | Application prompts |
 | application           |   demonstrating       |   user to select the  |
@@ -129,32 +138,33 @@ API reference for application:
 |                       |   for developers      |                       |
 +-----------------------+-----------------------+-----------------------+
 
-**Note:**
+.. note::
+   
+   ::
+   
+        * Starting from Processor SDK 4.2 release, idkAM574x support is added for VPS.
+        * Starting from Processor SDK 4.2 release, oV1063x camera part support is added for AM572x - GP evm (older Aptina MT9T11 camera is never supported).
+        * Starting from Processor SDK 3.2 release, osd101t2587 lcd panel is supported (new part) along with osd101t2045 lcd panel (old part) on idkAM572x 
+          and idkAM571x boards for all display subsystem examples.
+        * The bare metal examples are added starting from Processor SDK 4.0 release
+        * Some of the clocks such as 32KHz Sync clock are directly tied to A15 core and need that core to be running. Hence while testing the code on other cores 
+          such as DSP/IPU, please make sure to disconnect the ARM core after connecting the ARM core & running the GEL files to enable the other cores and before 
+          loading the executable on that core.
 
-::
 
-     * Starting from Processor SDK 4.2 release, idkAM574x support is added for VPS.
-     * Starting from Processor SDK 4.2 release, oV1063x camera part support is added for AM572x - GP evm (older Aptina MT9T11 camera is never supported).
-     * Starting from Processor SDK 3.2 release, osd101t2587 lcd panel is supported (new part) along with osd101t2045 lcd panel (old part) on idkAM572x 
-       and idkAM571x boards for all display subsystem examples.
-     * The bare metal examples are added starting from Processor SDK 4.0 release
-     * Some of the clocks such as 32KHz Sync clock are directly tied to A15 core and need that core to be running. Hence while testing the code on other cores 
-       such as DSP/IPU, please make sure to disconnect the ARM core after connecting the ARM core & running the GEL files to enable the other cores and before 
-       loading the executable on that core.
+Additional References
+---------------------
 
-.. rubric::  Additional References
-   :name: additional-references
++-----------------------------------+----------------------------------------+
+| **Document**                      | **Location**                           |
++-----------------------------------+----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti    |
+|                                   | \\drv\\vps\\docs\\doxygen\\html\\index.|
+|                                   | html                                   |
++-----------------------------------+----------------------------------------+
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\vps\docs\doxygen\html\index. |
-|                                   | html                              |
-+-----------------------------------+-----------------------------------+
-
-.. rubric::  **Building VPS examples**
-   :name: building-vps-examples
+Building VPS examples
+---------------------
 
 -  VPS examples and dependent libraries are built from the top level pdk
    makefile after the environment setup is done using the
@@ -165,11 +175,11 @@ API reference for application:
    folder
 -  make vps_clean : to clean the vps and vps examples.
 
-.. rubric::  **VPS examples**
-   :name: vps-examples
+VPS examples
+------------
 
-.. rubric::  **Display DSS Example**
-   :name: display-dss-example
+Display DSS Example
+^^^^^^^^^^^^^^^^^^^
 
 .. rubric::  *Description*
    :name: description
@@ -212,11 +222,11 @@ manual for minimum ratio allowed when using the scalar unit.
 -  Content will be displayed on the LCD panel or HDMI TV connected to
    EVM for test options
 
-**Note:**
-
--  Test Input files for Display Sample application will be in
-   "<pdk>\drv\vps\docs\test_inputs\dss_input_files.rar"
-
+.. note::
+   
+   -  Test Input files for Display Sample application will be in
+      "<pdk>\drv\vps\docs\test_inputs\dss_input_files.rar"
+   
 The rar file can be unrar-ed to get the test files using utilities such
 as http://www.7-zip.org Please download the latest version of 7-zip from
 this website. The command to unrar is: 7z x {file_to_unrar}
@@ -244,8 +254,8 @@ loading the test files.
 #. Load example code for core type
 #. Run example code
 
-.. rubric::  **Display DSS WB example**
-   :name: display-dss-wb-example
+Display DSS WB example
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric::  *Description*
    :name: description-1
@@ -290,14 +300,15 @@ evmAM572x) to DPI1 LCD output.
 #. Run the application, Select any of the option.
 #. Captured Content will be displayed on the LCD panel connected to EVM
 
-**Note:** The camera driver support is not added for
-evmAM572x boards (GP AM572x EVM) - and hence all the tests related to
-camera are skipped for evmAM572x board.
+.. note::
+   The camera driver support is not added for
+   evmAM572x boards (GP AM572x EVM) - and hence all the tests related to
+   camera are skipped for evmAM572x board.
 
 | 
 
-.. rubric::  **FAQ**
-   :name: faq
+FAQ
+---
 
 .. rubric::  How to reduce the VPS test examples build time using
    makefile?
@@ -380,4 +391,4 @@ file with 1920x1080 resolutions. To play them:
 -  In Windows, use yuv player from:
    https://sourceforge.net/projects/raw-yuvplayer/
 
-.. raw:: html
+| 

@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_GPIO 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 GPIO module allows application to manage General Purpose I/O  instances
 and pins via simple portable APIs. Because of its simplicity, APIs are
@@ -36,7 +39,7 @@ Console/STDIO. Refer `Processor SDK RTOS Board
 Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for additional
 details.
 
-.. rubric:: **GPIO Configuration Structure**\ 
+.. rubric:: **GPIO Configuration Structure**
    :name: gpio-configuration-structure
 
 GPIO_soc.c binds driver with hardware attributes on the board.
@@ -48,8 +51,8 @@ GPIO_init () API triggers all static configuration information available
 through hardware attributes. Once initialization is complete additional
 APIs can be used to configure and access pins.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for Application:
 
@@ -73,27 +76,30 @@ LED toggling
     Delay();
     }
 
-.. rubric:: Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 Refer SDK Release Note for GPIO support across different EVMs.
 
 +-------------------+-----------------------+-----------------------+
-|       Name        |      Description      |   Expected Results    |
+|       Name        |      Description      || Expected Results     |
 +===================+=======================+=======================+
-| GPIO_LedBlink     | Simple example        | Following LED         |
+| GPIO_LedBlink     | Simple example        || Following LED        |
 |                   | demonstrating LED     | blinks based on EVM   |
 |                   | Toggling              | being used.           |
 |                   |                       |                       |
-|                   |                       | **AM335x              |
+|                   |                       || **AM335x             |
 |                   |                       | ICEv2**:              |
 |                   |                       | USER  LED 1           |
 |                   |                       |                       |
-|                   |                       | **AM437x              |
+|                   |                       || **AM437x             |
 |                   |                       | EVM**:                |
 |                   |                       | USER  LED 1           |
 |                   |                       |                       |
-|                   |                       | **AM572x IDK** :      |
+|                   |                       || **AM572x IDK** :     |
 |                   |                       | STATUS LED 1 Yellow   |
 |                   |                       | **AM572x GP           |
 |                   |                       | EVM** : USER LED1     |
@@ -105,35 +111,23 @@ Refer SDK Release Note for GPIO support across different EVMs.
 |                   |                       | Industrial LED 3      |
 |                   |                       | Red                   |
 |                   |                       |                       |
-|                   |                       | **K2H EVM:**          |
+|                   |                       || **K2H EVM:**         |
 |                   |                       | USER LED 2 Blue       |
 |                   |                       |                       |
-|                   |                       | **K2E EVM:**          |
+|                   |                       || **K2E EVM:**         |
 |                   |                       | USER LED 1 Blue       |
 |                   |                       |                       |
-|                   |                       | **K2G EVM:**          |
+|                   |                       || **K2G EVM:**         |
 |                   |                       | USER LED 1 Yellow     |
 |                   |                       |                       |
 +-------------------+-----------------------+-----------------------+
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   There are no user mode LEDs directly connected to GPIO pins on K2L, C6678 and C6657 EVMs.
 
-**NOTE**
-
-There are no user mode LEDs directly connected to GPIO pins on K2L, C6678 and C6657 EVMs.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: 
-   :name: section
-
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
 +----------------------------+-----------------------------------+
 | **Document**               | **Location**                      |
@@ -147,5 +141,4 @@ There are no user mode LEDs directly connected to GPIO pins on K2L, C6678 and C6
 |                            | _LLD.pdf                          |
 +----------------------------+-----------------------------------+
 
-.. raw:: html
-
+| 
