@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Pre-Processing 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+============
 
 This page describes the audio pre-processing for speech recognition
 framework provided in the Processor-SDK for RTOS. This demo illustrates
@@ -42,8 +42,8 @@ Currently, the following devices and EVMs are supported:
 
 | 
 
-.. rubric:: Requirements
-   :name: requirements
+Requirements
+============
 
 The following materials are required to run this demonstration:
 
@@ -63,11 +63,11 @@ Software
 
 | 
 
-.. rubric:: Software Design
-   :name: software-design
+Software Design
+===============
 
-.. rubric:: More about processing algorithms
-   :name: more-about-processing-algorithms
+More about processing algorithms
+--------------------------------
 
 The application will use AER & VOLIB APIs for its noise reduction
 processing needs. The following steps are performed for noise reduction:
@@ -80,8 +80,8 @@ processing needs. The following steps are performed for noise reduction:
 -  Do VAD(Voice Activity Detection) on the best virtual mic
 -  Write 1 processed audio channel into the buffer in DDR
 
-.. rubric:: Framework for Audio Pre-processing
-   :name: framework-for-audio-pre-processing
+Framework for Audio Pre-processing
+----------------------------------
 
 The current framework is based on SYS/BIOS. The following are the
 overall steps:
@@ -99,11 +99,11 @@ overall steps:
 
 | 
 
-.. rubric:: File Based Demo
-   :name: file-based-demo
+File Based Demo
+===============
 
-.. rubric:: How to Build the Demo
-   :name: how-to-build-the-demo
+How to Build the Demo
+---------------------
 
 .. raw:: html
 
@@ -119,8 +119,8 @@ have to be installed at the same location as the Processor SDK RTOS
 
    </div>
 
-.. rubric:: AM572x GP EVM
-   :name: am572x-gp-evm
+AM572x GP EVM
+^^^^^^^^^^^^^
 
 **For Linux:**
 
@@ -150,8 +150,8 @@ have to be installed at the same location as the Processor SDK RTOS
       the OUT files for DSP1 will be built at 
          processor_sdk_rtos_am57xx_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\am572x\build
 
-.. rubric:: K2G EVM
-   :name: k2g-evm
+K2G EVM
+^^^^^^^
 
 **For Linux:**
 
@@ -181,8 +181,8 @@ have to be installed at the same location as the Processor SDK RTOS
       the OUT files for DSP will be built at 
          processor_sdk_rtos_k2g_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\k2g\build
 
-.. rubric:: OMAP-L137 EVM
-   :name: omap-l137-evm
+OMAP-L137 EVM
+^^^^^^^^^^^^^
 
 **For Linux:**
 
@@ -212,8 +212,8 @@ have to be installed at the same location as the Processor SDK RTOS
       the OUT files for DSP will be built at 
          processor_sdk_rtos_omapl137_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\omapl137\build
 
-.. rubric:: How to Run the Demo
-   :name: how-to-run-the-demo
+How to Run the Demo
+-------------------
 
 The demo along with the audio input files will be loaded onto the target
 using JTAG. After executing, the output file can be read from target.
@@ -222,8 +222,8 @@ pre-processing.
 
 The following sections provide detailed steps for each EVM.
 
-.. rubric:: AM572x GP EVM
-   :name: am572x-gp-evm-1
+AM572x GP EVM
+^^^^^^^^^^^^^
 
 -  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly.
@@ -238,10 +238,10 @@ The following sections provide detailed steps for each EVM.
    (Due to the EVM will be auto power off in 10 secs)
 -  Then "Connect to C66xx_DSP1"
 -  Load the AM572x_bf.out from
-   audio-preprocessing\file_demo_bios\am572x\build
+   audio-preprocessing\\file_demo_bios\\am572x\\build
 -  Execute GEL function Scripts-->Microphone Load
    Functions-->BFMicLoadAll to load all 7 microphone input files
-   (audio-preprocessing\common\t8\y16L7g3m7090_x.pcm) into external
+   (audio-preprocessing\\common\\t8\\y16L7g3m7090_x.pcm) into external
    memory buffers
 -  Run the program (loaded previously) by pressing F8
 -  The program will print out the statistics and “EOF reached” when the
@@ -251,8 +251,8 @@ The following sections provide detailed steps for each EVM.
    external memory buffer to a file
    (audio-preprocessing\common\t8\fileOutput7.bin)
 
-.. rubric:: K2G EVM
-   :name: k2g-evm-1
+K2G EVM
+^^^^^^^
 
 -  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly.
@@ -263,10 +263,10 @@ The following sections provide detailed steps for each EVM.
 -  Launch the target configuration created in step 1 using "Launch
    Selected Configuration" from CCS 6.1.3
 -  Then "Connect to C66xx_DSP"
--  Load the K2G_bf.out from audio-preprocessing\file_demo_bios\k2g\build
+-  Load the K2G_bf.out from audio-preprocessing\\file_demo_bios\\k2g\\build
 -  Execute GEL function Scripts-->Microphone Load
    Functions-->BFMicLoadAll to load all 7 microphone input files
-   ((audio-preprocessing\common\t8\y16L7g3m7090_x.pcm)) into external
+   ((audio-preprocessing\\common\\t8\\y16L7g3m7090_x.pcm)) into external
    memory buffers
 -  Run the program (loaded previously) by pressing F8
 -  The program will print out the statistics and “EOF reached” when the
@@ -274,10 +274,10 @@ The following sections provide detailed steps for each EVM.
 -  Execute GEL function Scripts-->Microphone Save
    Functions-->BFSaveOutput to save the processed audio output from
    external memory buffer to a file
-   (audio-preprocessing\common\t8\fileOutput7.bin)
+   (audio-preprocessing\\common\\t8\\fileOutput7.bin)
 
-.. rubric:: OMAP-L137 EVM
-   :name: omap-l137-evm-1
+OMAP-L137 EVM
+^^^^^^^^^^^^^
 
 -  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly.
@@ -290,10 +290,10 @@ The following sections provide detailed steps for each EVM.
    Selected Configuration" from CCS 6.1.3
 -  Then "Connect to C674x_0"
 -  Load the DA830_bf.out from
-   audio-preprocessing\file_demo_bios\omapl137\build
+   audio-preprocessing\\file_demo_bios\\omapl137\\build
 -  Execute GEL function Scripts-->Microphone Load
    Functions-->BFMicLoadAll to load all 7 microphone input files
-   ((audio-preprocessing\common\t8\y16L7g3m7090_x.pcm)) into external
+   ((audio-preprocessing\\common\\t8\\y16L7g3m7090_x.pcm)) into external
    memory buffers
 -  Run the program (loaded previously) by pressing F8
 -  The program will print out the statistics and “EOF reached” when the
@@ -301,17 +301,17 @@ The following sections provide detailed steps for each EVM.
 -  Execute GEL function Scripts-->Microphone Save
    Functions-->BFSaveOutput to save the processed audio output from
    external memory buffer to a file
-   (audio-preprocessing\common\t8\fileOutput7.bin)
+   (audio-preprocessing\\common\\t8\\fileOutput7.bin)
 
 | 
 
 | 
 
-.. rubric:: Circular Microphone Board Demo
-   :name: circular-microphone-board-demo
+Circular Microphone Board Demo
+==============================
 
-.. rubric:: How to Build the Demo
-   :name: how-to-build-the-demo-1
+How to Build the Demo
+---------------------
 
 .. raw:: html
 
@@ -327,8 +327,8 @@ have to be installed at the same location as the Processor SDK RTOS
 
    </div>
 
-.. rubric:: K2G EVM
-   :name: k2g-evm-2
+K2G EVM
+^^^^^^^
 
 **For Linux:**
 
@@ -358,8 +358,8 @@ have to be installed at the same location as the Processor SDK RTOS
       the OUT files for DSP will be built at 
          processor_sdk_rtos_k2g_4_xx_xx_xx\demos\audio-preprocessing\realtime_demo_bios\k2g\build
 
-.. rubric:: OMAP-L137 EVM
-   :name: omap-l137-evm-2
+OMAP-L137 EVM
+^^^^^^^^^^^^^
 
 **For Linux:**
 
@@ -389,8 +389,8 @@ have to be installed at the same location as the Processor SDK RTOS
       the OUT files for DSP will be built at 
          processor_sdk_rtos_omapl137_4_xx_xx_xx\demos\audio-preprocessing\realtime_demo_bios\omapl137\make
 
-.. rubric:: How to Run the Demo
-   :name: how-to-run-the-demo-1
+How to Run the Demo
+-------------------
 
 The demo works with the real time audio input from CMB. After processing
 is complete, the audio output will be sent to the line-out(left channel)
@@ -400,8 +400,8 @@ unprocessed center microphone (mic 8) will be sent out to the line-out
 
 The following sections provide detailed steps for each EVM.
 
-.. rubric:: K2G EVM (using CCS)
-   :name: k2g-evm-using-ccs
+K2G EVM (using CCS)
+^^^^^^^^^^^^^^^^^^^
 
 -  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly.
@@ -411,13 +411,13 @@ The following sections provide detailed steps for each EVM.
    Selected Configuration" from CCS 6.1.3
 -  Then "Connect to C66xx_DSP"
 -  Load the K2G_bf_rt.out from
-   audio-preprocessing\realtime_demo_bios\k2g\build
+   audio-preprocessing\\realtime_demo_bios\\k2g\\build
 -  Run the program (loaded previously) by pressing F8
 -  The program will run the real time demo forever, taking the input
    from CMB and output to the on-board line-out
 
-.. rubric:: OMAP-L137 EVM (using CCS)
-   :name: omap-l137-evm-using-ccs
+OMAP-L137 EVM (using CCS)
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
    to get target configuration setup correctly.
@@ -428,16 +428,16 @@ The following sections provide detailed steps for each EVM.
    Selected Configuration" from CCS 6.1.3
 -  Then "Connect to C674X_0"
 -  Load the OMAPL137_bf_rt.out from
-   audio-preprocessing\realtime_demo_bios\omapl137\make
+   audio-preprocessing\\realtime_demo_bios\\omapl137\\make
 -  Run the program (loaded previously) by pressing F8
 -  The program will run the real time demo forever, taking the input
    from CMB and output to the on-board line-out
 
-.. rubric:: K2G EVM (Boot from SD card)
-   :name: k2g-evm-boot-from-sd-card
+K2G EVM (Boot from SD card)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  Copy "app" and "MLO" from
-   audio-preprocessing\realtime_demo_bios\k2g\pre-built\mmcsd on Windows
+   audio-preprocessing\\realtime_demo_bios\\k2g\\pre-built\\mmcsd on Windows
    or audio-preprocessing/realtime_demo_bios/k2g/pre-built/mmcsd on
    Linux to the root directory of a formatted micro SD card
 -  Plug in the micro SD card into uSD Card slot on K2G EVM
@@ -453,15 +453,15 @@ The following sections provide detailed steps for each EVM.
 
 | 
 
-.. rubric:: How to Read the Input/output Audio Files
-   :name: how-to-read-the-inputoutput-audio-files
+How to Read the Input/output Audio Files
+========================================
 
 Both the input/output audio files are in raw PCM format (*.pcm or
 \*.bin) 16 bit per sample, big endian, mono, at 16Khz. They can be
 imported either by Adobe Audition or Audacity as the raw audio data.
 
-.. rubric:: Import Raw Audio Data File using Adobe Audition
-   :name: import-raw-audio-data-file-using-adobe-audition
+Import Raw Audio Data File using Adobe Audition
+-----------------------------------------------
 
 -  Launch the Adobe Audition CS5.5
 -  File --> Import --> Raw Data...
@@ -472,8 +472,8 @@ imported either by Adobe Audition or Audacity as the raw audio data.
 -  Select the raw audio file and input the correct parameters
 -  Click OK
 
-.. rubric:: Before and After Comparison
-   :name: before-and-after-comparison
+Before and After Comparison
+---------------------------
 
 -  Before audio pre-processing (t8/y16L7g3m7090_1.pcm)
 

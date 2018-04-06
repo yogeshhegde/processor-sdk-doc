@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Posix-SMP_Demo 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+============
 
 This page describes the SMP/Posix demo provided in the Processor-SDK for
 RTOS and Linux. This demo uses Posix APIs together with a simple
@@ -24,8 +24,8 @@ This demo runs on:
 The sections below provide details of the application as well as build
 and run instructions.
 
-.. rubric:: Requirements
-   :name: requirements
+Requirements
+============
 
 The following materials are required to run this demonstration:
 
@@ -41,8 +41,8 @@ Software
 
 | 
 
-.. rubric:: Software Design
-   :name: software-design
+Software Design
+===============
 
 The demo is based on Dhrystone 2.1 from
 `link <http://fossies.org/linux/privat/old/dhrystone-2.1.tar.gz/>`__.
@@ -91,8 +91,8 @@ Support <http://processors.wiki.ti.com/index.php/SYS/BIOS_POSIX_Thread_(pthread)
 
 | 
 
-.. rubric:: How to Run the Demo
-   :name: how-to-run-the-demo
+How to Run the Demo
+===================
 
 The processor SDK includes pre-built binaries which may be loaded and
 run using the SBL with UART or using CCS with UART or ROV (UART display
@@ -102,7 +102,7 @@ up to the board using UART and run the .out file.
 .. Image:: ../images/Posix-demo-uart.PNG
 
 To run using CCS, use the following steps. Each binary has an associated
-\*.rov.xs file located in the same directory--enabling the CCS ROV tool.
+\\*.rov.xs file located in the same directory--enabling the CCS ROV tool.
 Newer versions will display directly to the UART console and any steps
 involving ROV may be skipped.
 
@@ -187,11 +187,11 @@ running on two cores in this example.
    </div>
 | 
  
-.. rubric:: How to Build the Demo
-   :name: how-to-build-the-demo
+How to Build the Demo
+=====================
 
-.. rubric:: Processor-SDK RTOS
-   :name: processor-sdk-rtos
+Processor-SDK RTOS
+------------------
 
 To build the project manually, first navigate to the top level makefile:
 
@@ -215,8 +215,8 @@ the toolchains for the cores being used.
 Navigate to the demo directory and run "make". The steps to run the demo
 will be the same.
 
-.. rubric:: Processor-SDK Linux
-   :name: processor-sdk-linux
+Processor-SDK Linux
+-------------------
 
 The Posix-SMP demo has been added to the Linux SDK matrix starting in
 Processor-SDK 3.0. Simply run the example from the Matrix and the output

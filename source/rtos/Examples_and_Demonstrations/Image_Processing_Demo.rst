@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Image_Processing_Demo 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+============
 
 This page describes the image processing demo provided in the
 Processor-SDK for RTOS. This demo illustrates the integration of key
@@ -61,8 +61,8 @@ This demo has been only verified with the Microsoft Internet Explorer
 
    </div>
 
-.. rubric:: Requirements
-   :name: requirements
+Requirements
+============
 
 The following materials are required to run this demonstration:
 
@@ -79,11 +79,11 @@ Software
 
 | 
 
-.. rubric:: Software Design
-   :name: software-design
+Software Design
+===============
 
-.. rubric:: More about processing algorithms
-   :name: more-about-processing-algorithms
+More about processing algorithms
+--------------------------------
 
 The application will use IMGLIB APIs for its core image processing
 needs. The following steps are performed for edge detection:
@@ -98,8 +98,8 @@ needs. The following steps are performed for edge detection:
    get the edges
 -  Combine the slices to get the final output
 
-.. rubric:: Framework for multicore
-   :name: framework-for-multicore
+Framework for multicore
+-----------------------
 
 The current framework for multicore is IPC (Message Queue). The
 following are the overall steps (the master and threads will be run on
@@ -118,11 +118,11 @@ one or more cores):
 
 | 
 
-.. rubric:: How to Build the Demo
-   :name: how-to-build-the-demo
+How to Build the Demo
+---------------------
 
-.. rubric:: AM572x GP EVM
-   :name: am572x-gp-evm
+AM572x GP EVM
+^^^^^^^^^^^^^
 
 **For Linux:**
 
@@ -141,7 +141,7 @@ one or more cores):
 
 **For Windows:**
 
--  Under C:\ti\processor_sdk_rtos_am57xx_3_01_xx_xx directory, run the
+-  Under C:\\ti\\processor_sdk_rtos_am57xx_3_01_xx_xx directory, run the
    following commands:
 
 ::
@@ -154,8 +154,8 @@ one or more cores):
          C:\ti\processor_sdk_rtos_am57xx_3_01_xx_xx\demos\image_processing\ipc\evmam572x\dsp1\build, and
          C:\ti\processor_sdk_rtos_am57xx_3_01_xx_xx\demos\image_processing\ipc\evmam572x\dsp2\build respectively
 
-.. rubric:: C6657 EVM
-   :name: c6657-evm
+C6657 EVM
+^^^^^^^^^
 
 **For Linux:**
 
@@ -173,7 +173,7 @@ one or more cores):
 
 **For Windows:**
 
--  Under C:\ti\processor_sdk_rtos_c665x_3_01_xx_xx directory, run the
+-  Under C:\\ti\\processor_sdk_rtos_c665x_3_01_xx_xx directory, run the
    following commands:
 
 ::
@@ -185,8 +185,8 @@ one or more cores):
          C:\ti\processor_sdk_rtos_c665x_3_01_xx_xx\demos\image_processing\ipc\evmc6657l\master\build,
          C:\ti\processor_sdk_rtos_c665x_3_01_xx_xx\demos\image_processing\ipc\evmc6657l\slave\build respectively
 
-.. rubric:: C6678 EVM
-   :name: c6678-evm
+C6678 EVM
+^^^^^^^^^
 
 **For Linux:**
 
@@ -204,7 +204,7 @@ one or more cores):
 
 **For Windows:**
 
--  Under C:\ti\processor_sdk_rtos_c667x_3_01_xx_xx directory, run the
+-  Under C:\\ti\\processor_sdk_rtos_c667x_3_01_xx_xx directory, run the
    following commands:
 
 ::
@@ -216,8 +216,8 @@ one or more cores):
          C:\ti\processor_sdk_rtos_c667x_3_01_xx_xx\demos\image_processing\ipc\evmc6678l\master\build,
          C:\ti\processor_sdk_rtos_c667x_3_01_xx_xx\demos\image_processing\ipc\evmc6678l\slave\build respectively
 
-.. rubric:: K2H EVM
-   :name: k2h-evm
+K2H EVM
+^^^^^^^
 
 **For Linux:**
 
@@ -235,7 +235,7 @@ one or more cores):
 
 **For Windows:**
 
--  Under C:\ti\processor_sdk_rtos_k2hk_3_01_xx_xx directory, run the
+-  Under C:\\ti\\processor_sdk_rtos_k2hk_3_01_xx_xx directory, run the
    following commands:
 
 ::
@@ -249,11 +249,11 @@ one or more cores):
 
 | 
 
-.. rubric:: How to Run the Demo
-   :name: how-to-run-the-demo
+How to Run the Demo
+-------------------
 
-.. rubric:: AM572x GP EVM (Using CCS)
-   :name: am572x-gp-evm-using-ccs
+AM572x GP EVM (Using CCS)
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The CCS is used to load the program and run on ARM-A15 (HOST), C66x Core
 1 (DSP1) and C66x Core 2 (DSP2) by following the steps below:
@@ -311,15 +311,15 @@ page using NDK.
 
 | 
 
-.. rubric:: AM572x GP EVM (Using SBL)
-   :name: am572x-gp-evm-using-sbl
+AM572x GP EVM (Using SBL)
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SBL is used to load the program from SD card and run on ARM-A15
 (HOST), C66x Core 1 (DSP1) and C66x Core 2 (DSP2) by following the steps
 below:
 
 -  Copy "app" and "MLO" from
-   processor_sdk_rtos_am57xx_3_0x_00_0x\prebuilt-sdcards\evmAM572x\sd_card_files
+   processor_sdk_rtos_am57xx_3_0x_00_0x\\prebuilt-sdcards\\evmAM572x\\sd_card_files
    on Windows or
    processor_sdk_rtos_am57xx_3_0x_00_0x/prebuilt-sdcards/evmAM572x/sd_card_files
    on Linux to the root directory of a formatted micro SD card
@@ -349,8 +349,8 @@ page using NDK.
 
 .. Image:: ../images/Am572x_web_2.jpg
 
-.. rubric:: C6678 EVM or C6657 EVM
-   :name: c6678-evm-or-c6657-evm
+C6678 EVM or C6657 EVM
+^^^^^^^^^^^^^^^^^^^^^^
 
 CCS is used to load the program and Core 0 will be configured as the
 host. The following steps show C667x but a similar process applies for
@@ -397,8 +397,8 @@ page using NDK.
 
 .. Image:: ../images/Demo_web_page_2.jpg
 
-.. rubric:: K2H EVM
-   :name: k2h-evm-1
+K2H EVM
+^^^^^^^
 
 CCS is used to load the program and arm_A15_0 will be configured as the
 master and C66xx_0 - C66xx_7 will be configured as slaves.

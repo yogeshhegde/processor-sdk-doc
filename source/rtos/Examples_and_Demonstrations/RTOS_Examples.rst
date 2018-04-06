@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Examples 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+========
 
 The SYS/BIOS examples gets user started with development of code using a
 real-time operating system. These are simple examples that does not get
@@ -21,8 +21,8 @@ forums <https://e2e.ti.com/>`__
 
    </div>
 
-.. rubric:: ARM Cortex-A15
-   :name: arm-cortex-a15
+ARM Cortex-A15
+==============
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout. As a
@@ -115,15 +115,13 @@ string displayed on console window.
 
 | 
 
-| 
-
-.. rubric:: ARM Cortex-A9
-   :name: arm-cortex-a9
+ARM Cortex-A9
+=============
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout.
 
-1. Create a work space folder (\ti\am_437x_hello_workspace) under ti
+1. Create a work space folder (\\ti\\am_437x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
@@ -192,13 +190,13 @@ string displayed on console window.
 
 | 
 
-.. rubric:: ARM Cortex-A8
-   :name: arm-cortex-a8
+ARM Cortex-A8
+=============
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout.
 
-1. Create a work space folder (\ti\am_335x_hello_workspace) under ti
+1. Create a work space folder (\\ti\\am_335x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
@@ -267,13 +265,13 @@ string displayed on console window.
 
 | 
 
-.. rubric:: ARM Cortex-M4
-   :name: arm-cortex-m4
+ARM Cortex-M4
+=============
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout.
 
-1. Create a work space folder (\ti\am_572x_hello_workspace) under ti
+1. Create a work space folder (\\ti\\am_572x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
@@ -312,8 +310,8 @@ file. You should see **Hello World** string displayed on console window.
 
 | 
 
-.. rubric:: DSP C66x
-   :name: dsp-c66x
+DSP C66x
+========
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout. As a
@@ -340,7 +338,7 @@ Keystone I and Keystone 2 family of devices.
 
 **NOTE**
 -  The K2G, K2E and K2H devices, can be located under Unclassified
-   devices in the Resource Explorer. Refer below screen shot
+devices in the Resource Explorer. Refer below screen shot
 
 .. raw:: html
 
@@ -393,8 +391,8 @@ described
 14. Connect to C66x_DSP1 Load and run Hello Example out file. You should
 see **Hello World** string displayed on console window.
 
-.. rubric:: DSP C674x
-   :name: dsp-c674x
+DSP C674x
+=========
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout. As a
@@ -476,17 +474,15 @@ power up the DSP You should see the following log in the Console
     C674X_0: Output:    DDR2 init for 150 MHz is done
     C674X_0: Output:    ---------------------------------------------
 
-14. Connect to C674x_DSP1 Load and run Hello Example out file. You
+13. Connect to C674x_DSP1 Load and run Hello Example out file. You
 should see **Hello World** string displayed on console window.
 
 .. Image:: ../images/Hello_world_dsp674x_rtos.png
 
 | 
 
-| 
-
-.. rubric:: Usage Notes
-   :name: usage-notes
+Usage Notes
+===========
 
 After execution of the hello world examples on the core, the CCS Editor
 may report "Can't find a source file" error messages when you pause or
@@ -510,8 +506,8 @@ to file search path under Windows->Preferences options in CCS GUI.
 
 | 
 
-.. rubric:: Known Issues
-   :name: known-issues
+Known Issues
+============
 
 -  **SYS/BIOS examples for Cortex-A15 generate linker errors due to the
    FPU related flags**
@@ -525,10 +521,9 @@ https://e2e.ti.com/support/development_tools/code_composer_studio/f/81/t/539973
 
 | 
 
-| 
 
-.. rubric:: Useful Resources
-   :name: useful-resources
+Useful Resources
+================
 
 -  `TI RTOS
    training <http://processors.wiki.ti.com/index.php/Introduction_to_the_TI-RTOS_Kernel_Workshop>`__

@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Bare_Metal_Examples 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+========
 
 The bare-metal examples gets user started with development of code
 without an operating system. These are simple examples that does not get
@@ -29,8 +29,8 @@ forums <https://e2e.ti.com/>`__
 
 | 
 
-.. rubric:: ARM Cortex-A15
-   :name: arm-cortex-a15
+ARM Cortex-A15
+==============
 
 In this article, we take a look at creating bare-metal hello world
 examples for Cortex A15 core using pre-built templates in CCS. As a
@@ -59,7 +59,7 @@ in the Keystone 2 family of devices.
    </div>
 
 | 
-| 1. Start CCS and create a work space for generating the project.
+1. Start CCS and create a work space for generating the project.
 
 2. Click on File menu option and select New--> CCS Project.
 
@@ -232,8 +232,8 @@ configurations --> AM572_DDR3_532MHz_config
    
 | 
 
-.. rubric:: ARM Cortex-A9
-   :name: arm-cortex-a9
+ARM Cortex-A9
+=============
 
 1. Start CCSv6 and create a work space for generating the project.
 
@@ -381,8 +381,8 @@ If the example does not load correctly in the first attempt, reload and
 
 | 
 
-.. rubric:: ARM Cortex-A8
-   :name: arm-cortex-a8
+ARM Cortex-A8
+=============
 
 1. Start CCSv6 and create a work space for generating the project.
 
@@ -505,8 +505,8 @@ If the example does not load correctly in the first attempt, reload and
 
 | 
 
-.. rubric:: ARM Coretex-M4
-   :name: arm-coretex-m4
+ARM Coretex-M4
+==============
 
 1. Start CCSv6 and create a work space for generating the project.
 
@@ -652,8 +652,8 @@ If the example does not load correctly in the first attempt, reload and
 
 | 
 
-.. rubric:: DSP C66x
-   :name: dsp-c66x
+DSP C66x
+========
 
 In this article, we take a look at creating bare-metal hello world
 examples for C66x core using pre-built templates in CCS. As a sample we
@@ -807,15 +807,15 @@ You should see the following log in the Console
      CortexA15_0: GEL Output: DEBUG: Data integrity check in GEM L2RAM is sucessful! 
      CortexA15_0: GEL Output: --->>> DSP1SS Initialization is DONE! <<<---
 
-11. Select and Connect to C66x_DSP1. Load and run hello_world_dsp.out
+10. Select and Connect to C66x_DSP1. Load and run hello_world_dsp.out
 file. You should see **Hello World** string displayed on console window.
 
 .. Image:: ../images/Hello_world_dsp.jpg
 
 | 
 
-.. rubric:: DSP C674x
-   :name: dsp-c674x
+DSP C674x
+=========
 
 In this article, we take a look at creating bare-metal hello world
 examples for C674x core using pre-built templates in CCS. As a sample we
@@ -949,8 +949,7 @@ SHRAM memory section as shown below.
        .stack         >  SHRAM                    
        .bss           >  SHRAM      
         .......
-
-}
+      }
 
 .. raw:: html
 
