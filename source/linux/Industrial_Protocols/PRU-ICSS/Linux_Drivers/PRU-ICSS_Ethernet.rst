@@ -185,6 +185,7 @@ IDK) additional 100 Mbps Ethernet interfaces to be exposed to the user.
 | This is a high level block diagram to show how everything fits
   together. For more information see the schematics for the boards as
   well as the Linux driver source code.
+
 .. Image:: ../images/Pru_eth_block_diagram_3_0_0_4.PNG
 
 | 
@@ -324,6 +325,7 @@ ports.
 
 | In this mode only one of the PRU-ICSS Ethernet ports are used. This is
   the simplest mode and works as you would expect it to.
+
 .. Image:: ../images/Pru_eth_block_single_port_3_0_0_4.PNG
 
 --------------
@@ -366,6 +368,7 @@ an increase in throughput.
   the other port and continue. To learn more about the other types
   bonding available check out the `Linux bonding
   documentation <https://www.kernel.org/doc/Documentation/networking/bonding.txt>`__.
+
 .. Image:: ../images/Pru_eth_block_bonding_3_0_0_4.PNG
 
 To learn even more about bonding see the `Wikipedia Link

@@ -378,6 +378,7 @@ files when you connect to the target
 installed the CCSv6.1.1 package and done the software update correctly.
 
 | 
+
 .. Image:: ../images/COnfigure_targetConfigFiles_SDboot.png
 
 .. rubric:: GEL file options

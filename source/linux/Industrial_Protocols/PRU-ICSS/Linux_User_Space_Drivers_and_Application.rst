@@ -23,6 +23,7 @@ and Linux user space, with the difference on Linux OS with the UIO
 driver vs. RTOS.
 
 | 
+
 .. Image:: ../images/Icss-emac_sw_stack.png
 
 .. rubric:: Memory Access and Interrupt Handling through UIO

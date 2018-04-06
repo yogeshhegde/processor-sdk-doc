@@ -161,25 +161,29 @@ VMware tools is a very useful addition to VMware.  It allows you to
 resize the VMware screen ,cut-and-paste of text and drag and drop files
 from the Ubuntu machine to and from the Windows host.
 
-| Within the virtual machine window click the Player -> Manage ->
-  Install VMware Tools
+Within the virtual machine window click the Player -> Manage ->
+Install VMware Tools
+
 .. Image:: ../images/Install_vmware_tools.png
-| The VMware tools are contained in an ISO image that VMware
-  will automatically mount.  This drive will show up on the Ubuntu
-  desktop as if it were a disk in a DVD drive.
+
+The VMware tools are contained in an ISO image that VMware
+will automatically mount.  This drive will show up on the Ubuntu
+desktop as if it were a disk in a DVD drive.
+
 .. Image:: ../images/Vmware-tools-cd.png
-| There will be a single tarball on the drive named
-  VMwareTools-9.9.0-2304977.tar.gz (or with a slightly different version
-  number). Extract the tarball somewhere in your /home/<user>
-  directory.  You will see that a vmware-tools-distrib folder was
-  created and a file name vmware-install.pl inside. Execute
-  vmware-install.pl to install VMware Tools.  The Perl script must be
-  executed as a super-user.  This is done in Ubuntu by pre-pending the
-  command with "sudo".  When prompted for a password, enter the
-  password for the user account.  In Ubuntu, there is no "root"
-  account.  However, the first user account created when Ubuntu is
-  installed can become a super-user with the "sudo" command. Select all
-  of defaults during installation of VMware Tools.
+
+There will be a single tarball on the drive named
+VMwareTools-9.9.0-2304977.tar.gz (or with a slightly different version
+number). Extract the tarball somewhere in your /home/<user>
+directory.  You will see that a vmware-tools-distrib folder was
+created and a file name vmware-install.pl inside. Execute
+vmware-install.pl to install VMware Tools.  The Perl script must be
+executed as a super-user.  This is done in Ubuntu by pre-pending the
+command with "sudo".  When prompted for a password, enter the
+password for the user account.  In Ubuntu, there is no "root"
+account.  However, the first user account created when Ubuntu is
+installed can become a super-user with the "sudo" command. Select all
+of defaults during installation of VMware Tools.
 
 An example is shown below. 
 
@@ -242,5 +246,6 @@ address owned by the Windows host.
   card reader.
 
 | 
+
 .. Image:: ../images/Sd_card_reader.png
 

@@ -296,6 +296,7 @@ DSP11SSClkEnable\_API. After running the clock enable option, you can
 connect to the core.
 
 | 
+
 .. Image:: ../images/Multicore-Enable.jpg
 
 .. rubric:: Related Links

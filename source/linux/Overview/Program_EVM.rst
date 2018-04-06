@@ -359,6 +359,7 @@ Linux:
    Environment
    Variable <http://processors.wiki.ti.com/index.php/Program_EVM_UG#Set_the_Environment_Variables>`__.
 3. Run the "program\_evm.js" script command from program\_evm directory.
+
 |
 
 **Example:**
@@ -575,6 +576,7 @@ To restore the combined kernel and fileystem UBI image in NAND:
       # run burn_ubi
 
 | 
+
 .. note::
    When programming UBI image to NAND, be sure the UBI
    image size is enough to fit in NAND memory.
