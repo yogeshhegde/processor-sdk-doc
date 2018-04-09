@@ -9,7 +9,8 @@ set OS=%2
 set /p VERSION=<version.txt
 set BUILDDIR=build/processor-sdk-%OS%/esd/docs/%VERSION%
 set CONFLOC=-c source/%OS%
-set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% %CONFLOC% source
+set VEROPTS=-D version=%VERSION% -D release=%VERSION%
+set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% %CONFLOC% %VEROPTS% source
 set I18NSPHINXOPTS=%SPHINXOPTS% source
 if NOT "%PAPER%" == "" (
 	set ALLSPHINXOPTS=-D latex_paper_size=%PAPER% %ALLSPHINXOPTS%
