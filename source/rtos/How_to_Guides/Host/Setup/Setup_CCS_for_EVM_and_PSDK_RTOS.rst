@@ -82,20 +82,16 @@ provided as needed.
 For EVM specific instructions, refer to the **Hardware User's Guide**
 for your `EVM <Release_Specific.html#supported-platforms-and-versions>`__
 
-.. raw:: html
+.. note::
+   **Note for K2G devices:** If using CCS v6.1.2 and Keystone2 device
+   support v1.1.7, 66AK2G02 would not show up in the list of devices when
+   creating the target configuration. This is due to an incompatibility in
+   the XML parser in CCS v6.1.2 with the K2G device xml. In order to
+   work-around this issue, make the change in 66AK2G02.xml as illustrated
+   below in order to have 66AK2G02 display in the device list. This problem
+   does not exist in CCS v6.1.3 onwards as the XML parser has been updated.
 
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-|
-**Note for K2G devices:** If using CCS v6.1.2 and Keystone2 device
-support v1.1.7, 66AK2G02 would not show up in the list of devices when
-creating the target configuration. This is due to an incompatibility in
-the XML parser in CCS v6.1.2 with the K2G device xml. In order to
-work-around this issue, make the change in 66AK2G02.xml as illustrated
-below in order to have 66AK2G02 display in the device list. This problem
-does not exist in CCS v6.1.3 onwards as the XML parser has been updated.
-
-::
+   ::
 
 	C:\ti\ccsv6\ccs_base\common\targetdb\devices\66AK2G02.xml
 
@@ -104,12 +100,6 @@ does not exist in CCS v6.1.3 onwards as the XML parser has been updated.
 	<?xml version="1.1" encoding="UTF-8" standalone="no"?>
 	to
 	<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
-.. raw:: html
-
-   </div>
-|
-
 
 .. rubric:: Open new target configuration file
    :name: open-new-target-configuration-file

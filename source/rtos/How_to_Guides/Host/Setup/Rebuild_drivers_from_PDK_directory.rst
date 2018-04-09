@@ -53,26 +53,16 @@ been installed in the ``C:\ti`` directory, including CCS.
     PDK BUILD ENVIRONMENT CONFIGURED
     **************************************************************************
 
-.. raw:: html
+.. note::
+   -  The PDK package uses ARM Linaro compiler for the A15/A9/A8 core, TI
+      ARM Compiler 5.x for M4/IPU and TI Compiler for C66x core.
+   -  The pdksetupenv.bat requires *path2dos.exe* utility available from
+      XDC tools. If *path2dos.exe* is not available in the build
+      environment then short names for paths **SHOULD** be provided to
+      environment variables e.g. *C:/ti/PDK_AM~2/packages*. In Windows
+      environment, "dir /x" and "dir /-n" displays the short names
+      generated for non-8dot3 file and directory names.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  The PDK package uses ARM Linaro compiler for the A15/A9/A8 core, TI
-   ARM Compiler 5.x for M4/IPU and TI Compiler for C66x core.
--  The pdksetupenv.bat requires *path2dos.exe* utility available from
-   XDC tools. If *path2dos.exe* is not available in the build
-   environment then short names for paths **SHOULD** be provided to
-   environment variables e.g. *C:/ti/PDK_AM~2/packages*. In Windows
-   environment, "dir /x" and "dir /-n" displays the short names
-   generated for non-8dot3 file and directory names.
-
-.. raw:: html
-
-   </div>
-   
 -  After the build environment has been configured, the entire PDK, or
    individual components, can be rebuilt through the top-level makefile
    in pdk_[soc]_[version]/packages
@@ -173,18 +163,9 @@ been installed in the ``~/ti`` directory, including CCS.
     PDK BUILD ENVIRONMENT CONFIGURED
     *******************************************************************************
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The PDK package uses ARM Linaro compiler for the A15/A9/A8 core, TI ARM
-Compiler 5.x for M4/IPU and TI Compiler for C66x core.
-
-.. raw:: html
-
-   </div>
+.. note::
+   The PDK package uses ARM Linaro compiler for the A15/A9/A8 core, TI ARM
+   Compiler 5.x for M4/IPU and TI Compiler for C66x core.
 
 -  After the build environment has been configured, the entire PDK, or
    individual components, can be rebuilt through the top-level makefile
@@ -259,34 +240,26 @@ how the scripts are used to create CCS project content.
    script can be modified to use older or newer product versions based
    on the user's development environment. 
   
-**Note:** Project compilation and successful execution cannot be
-guaranteed for products not installed with the PDK.
+.. note::
+   Project compilation and successful execution cannot be
+   guaranteed for products not installed with the PDK.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  If the CCS installation is located somewhere other than "C:\\ti",
-   ensure that the pdkProjectCreate script has this location correctly
-   specified by updating the CCS_INSTALL_PATH or set TOOLS_INSTALL_PATH
-   variable
--  You may see errors (failed to start server) during the running of the
-   script if an instance of CCS is running, so please ensure that CCS is
-   closed prior to running the pdkProjectCreate script
--  When soc is "AM572x" and board is "all", the script uses evmAM572x as
-   the default platform. Please specify board to idkAM572x to create the
-   project for AM572x IDK EVM.
--  Run the pdkProjectCreate script. The script takes parameters which
-   allow targeted creation of PDK example and test project content.
-   Below are the command formats for Window's pdkProjectCreate.bat and
-   Linux's pdkProjectCreate.sh:
-
-.. raw:: html
-
-   </div>
+   -  If the CCS installation is located somewhere other than "C:\\ti",
+      ensure that the pdkProjectCreate script has this location correctly
+      specified by updating the CCS_INSTALL_PATH or set TOOLS_INSTALL_PATH
+      variable
+   -  You may see errors (failed to start server) during the running of the
+      script if an instance of CCS is running, so please ensure that CCS is
+      closed prior to running the pdkProjectCreate script
+   -  When soc is "AM572x" and board is "all", the script uses evmAM572x as
+      the default platform. Please specify board to idkAM572x to create the
+      project for AM572x IDK EVM.
+   -  Run the pdkProjectCreate script. The script takes parameters which
+      allow targeted creation of PDK example and test project content.
+      Below are the command formats for Window's pdkProjectCreate.bat and
+      Linux's pdkProjectCreate.sh:
 
 ::
 

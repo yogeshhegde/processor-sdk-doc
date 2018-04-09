@@ -31,8 +31,9 @@ Prerequisites
    Studio <http://processors.wiki.ti.com/index.php/Download_CCS>`__
    (choose version as specified on Proc SDK download page)
 
-**Note:** Please be sure that you have the same version number
-for both Processor SDK RTOS and Linux.
+.. note::
+   Please be sure that you have the same version number
+   for both Processor SDK RTOS and Linux.
 
 For reference within the context of this wiki page, the Linux SDK is
 installed at the following location:
@@ -499,8 +500,9 @@ linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi
 You are able to change both the size and location. **Be careful not to
 overlap any other carveouts!**
 
-**Note:** The **two** location entries for a given DSP must be
-identical!
+.. note::
+   The **two** location entries for a given DSP must be
+   identical!
 
 |
 Additionally, when you change the carveout location, there is a
@@ -526,8 +528,9 @@ corresponding CMA.
 
 |
 
-**Note:** The PHYS_MEM_IPC_VRING definition from the resource
-table must match the address of the associated CMA carveout!
+.. note::
+   The PHYS_MEM_IPC_VRING definition from the resource
+   table must match the address of the associated CMA carveout!
 
 .. rubric:: DSP Virtual Addresses
    :name: dsp-virtual-addresses
@@ -759,11 +762,11 @@ The 0x4a040002 shows us that it is a Supersection with base address
 afterward. That's a requirement of the MMU. Here's an excerpt from the
 TRM:
 
-**Note:** Supersection descriptors must be repeated 16 times,
-because each descriptor in the first level translation table describes 1
-MiB of memory. If an access points to a descriptor that is not
-initialized, the MMU will behave in an unpredictable way.
-
+.. note::
+   Supersection descriptors must be repeated 16 times,
+   because each descriptor in the first level translation table describes 1
+   MiB of memory. If an access points to a descriptor that is not
+   initialized, the MMU will behave in an unpredictable way.
 | 
 
 .. rubric:: Changing Cortex M4 IPU Memory Map
@@ -810,9 +813,9 @@ linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi
 You are able to change both the size and location. **Be careful not to
 overlap any other carveouts!**
 
-**Note:** The **two** location entries for a given carveout
-must be identical!
-
+.. note::
+   The **two** location entries for a given carveout
+   must be identical!
 |
 Additionally, when you change the carveout location, there is a
 corresponding change that must be made to the resource table. For
@@ -837,18 +840,9 @@ corresponding CMA.
 
 | 
 
-.. raw:: html
-
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-|
-**Note:** The PHYS_MEM_IPC_VRING definition from the resource
-table must match the address of the associated CMA carveout!
-
-.. raw:: html
-
-   </div>
-|
+.. note::
+   The PHYS_MEM_IPC_VRING definition from the resource
+   table must match the address of the associated CMA carveout!
 
 .. rubric:: Cortex M4 IPU Virtual Addresses
    :name: cortex-m4-ipu-virtual-addresses
@@ -1162,22 +1156,10 @@ which will be described in following sections
 TODO - Fill this section in with instructions on how to run the LED
 blink example using JTAG and CCS after the board has booted Linux.
 
-.. raw:: html
-
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-|
-**[NOTE]** Some edits were made to the LED blink example to allow it to run
+.. note:: Some edits were made to the LED blink example to allow it to run
 in a Linux environment, specifically, removed the GPIO interrupts and
 then added a Clock object to call the LED GPIO toggle function on a
 periodic bases.
-
-.. raw:: html
-
-   </div>
-|
-
-|
 
 .. rubric:: Make CCS project out of ex02_messageq IPC example
    :name: make-ccs-project-out-of-ex02_messageq-ipc-example
@@ -1250,21 +1232,12 @@ Now copy these files into your CCS project...
 -  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/dsp1/Server.c
 -  C:/ti/ipc_3_43_02_04/examples/DRA7XX_linux_elf/ex02_messageq/dsp1/Server.h
 
-.. raw:: html
-
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-|
-**Note:** When you copy Dsp1.cfg into your CCS project, it
-should show up greyed out. This is because the LED blink example
-already has a cfg file (gpio_test_evmAM572x.cfg). The Dsp1.cfg will be
-used for copying and pasting. When it's all done, you can delete it
-from your project.
-
-.. raw:: html
-
-   </div>
-|
+.. note::
+   When you copy Dsp1.cfg into your CCS project, it
+   should show up greyed out. This is because the LED blink example
+   already has a cfg file (gpio_test_evmAM572x.cfg). The Dsp1.cfg will be
+   used for copying and pasting. When it's all done, you can delete it
+   from your project.
 
 Finally, you will likely want to use a custom resource table so copy
 these files into your CCS project...
@@ -1296,12 +1269,9 @@ We've now added in all the necessary configuration and source files
 into our project. Don't expect it to build at this point, we have to
 make edits first. These edits are listed below.
 
-::
-
-    NOTE, you can download the full CCS project with source files to use as a reference. 
-    See link towards the end of this section.
-
-| 
+.. note::
+   You can download the full CCS project with source files to use as a reference. 
+   See link towards the end of this section.
 
 -  Edit **gpio_test_evmAM572x.cfg**
 
@@ -1700,21 +1670,12 @@ Now copy these files into your CCS project...
 -  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/ipu2/Server.c
 -  C:/ti/ipc_3_xx_xx_xx/examples/DRA7XX_linux_elf/ex02_messageq/ipu2/Server.h
 
-.. raw:: html
-
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-|
-**Note:** When you copy Ipu2.cfg into your CCS project, it
-should show up greyed out. If not, right click and exclude it from
-build. This is because the UART example already has a cfg file
-(uart_m4_evmAM572x.cfg). The Ipu2.cfg will be used for copying and
-pasting. When it's all done, you can delete it from your project.
-
-.. raw:: html
-
-   </div>
-|
+.. note::
+   When you copy Ipu2.cfg into your CCS project, it
+   should show up greyed out. If not, right click and exclude it from
+   build. This is because the UART example already has a cfg file
+   (uart_m4_evmAM572x.cfg). The Ipu2.cfg will be used for copying and
+   pasting. When it's all done, you can delete it from your project.
 
 Finally, you will likely want to use a custom resource table so copy
 these files into your CCS project...
@@ -1748,12 +1709,9 @@ We've now added in all the necessary configuration and source files
 into our project. Don't expect it to build at this point, we have to
 make edits first. These edits are listed below.
 
-::
-
-    NOTE, you can download the full CCS project with source files to use as a reference. 
-    See link towards the end of this section.
-
-| 
+.. note::
+   You can download the full CCS project with source files to use as a reference. 
+   See link towards the end of this section.
 
 -  Edit **uart_m4_evmAM572x.cfg**
 

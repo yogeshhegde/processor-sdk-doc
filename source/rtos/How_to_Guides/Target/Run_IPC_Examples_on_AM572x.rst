@@ -24,20 +24,12 @@ message to the pool. Thus, messages are sent in only one direction.
 Default settings of the Hello world example configures DSP1 as the
 writer and DSP2 as the reader.
 
-.. raw:: html
+.. note::
+   if Windows 7 machine is used for building these examples,
+   **GnuWin32** make utility needs to be installed to run make which can be
+   downloaded from this link
+   `http://gnuwin32.sourceforge.net/packages/make.htm <http://gnuwin32.sourceforge.net/packages/make.htm>`__
 
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**Note**: if Windows 7 machine is used for building these examples,
-**GnuWin32** make utility needs to be installed to run make which can be
-downloaded from this link
-`http://gnuwin32.sourceforge.net/packages/make.htm <http://gnuwin32.sourceforge.net/packages/make.htm>`__
-
-.. raw:: html
-
-   </div>
-|
 
 Set **GnuWin32\\bin** folder on file path and add a system variable
 **XDCTOOLS_JAVA_HOME** to point to "**c:\\ti\\ccsv6\\eclipse\\jre**"
@@ -287,18 +279,9 @@ local processor). The task sends a message to a server and waits for the
 message to be returned. This is repeated for each server in the system
 (including the local server).
 
-.. raw:: html
-
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-Note that presently EVE is not yet supported and therefore,
-DSP1/DSP2/HOST are built for testing.
-
-.. raw:: html
-
-   </div>
-|
+.. note::
+   Note that presently EVE is not yet supported and therefore,
+   DSP1/DSP2/HOST are built for testing.
 
 1. Change to ping folder example by enter: cd
 ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex11_ping**
@@ -356,28 +339,17 @@ same as described in the previous example with the exception of
 additional steps to load the IPU1 core with the corresponding executable
 and running it in conjunction with DSP1, DSP2 and HOST.
 
-.. raw:: html
+.. note::
+   During build process using IPU1, you may encounter a message
+   indicating **rtsv7M4_T_le_eabi.lib** library is missing. This is a know
+   issue and is being tracked by **SDCOM00118417** IR. However, you may
+   create this missing library by going to the compiler installation's
+   **lib** directory and execute the following command to regenerate all
+   required libraries:
 
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   ::
 
-**NOTE**
-|
-During build process using IPU1, you may encounter a message
-indicating **rtsv7M4_T_le_eabi.lib** library is missing. This is a know
-issue and is being tracked by **SDCOM00118417** IR. However, you may
-create this missing library by going to the compiler installation's
-**lib** directory and execute the following command to regenerate all
-required libraries:
-
-::
-
-     ./mklib --all
-
-.. raw:: html
-
-   </div>
-|
+	./mklib --all
 
 The following example depicts a typical host communications protocol
 with other IPC apps (dsp1, dsp2, ipu1) **Note that the following HOST

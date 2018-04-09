@@ -259,21 +259,12 @@ Makefile </index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__
 can now be used to rebuild SDK RTOS components installed in the custom
 installation path.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The following known issue impacts this step:
-**PRSDK-1263**: PDK AM437x: Make fails on Windows if CCS is installed in
-custom path. **Workaround:** Edit the UTILS_INSTALL_DIR variable in
-<pdk_root_dir>/packages/ti/starterware/Rules.make to point to the CCS
-installation on your Windows PC.
-
-.. raw:: html
-
-   </div>
+.. note::
+   The following known issue impacts this step:
+   **PRSDK-1263**: PDK AM437x: Make fails on Windows if CCS is installed in
+   custom path. **Workaround:** Edit the UTILS_INSTALL_DIR variable in
+   <pdk_root_dir>/packages/ti/starterware/Rules.make to point to the CCS
+   installation on your Windows PC.
 
 .. rubric:: CCS and SDK RTOS in Custom Path
    :name: ccs-and-sdk-rtos-in-custom-path
@@ -483,25 +474,14 @@ installed to a custom path.
     # Install Location for CCS
     export CCS_INSTALL_PATH=~/ti/ccsv6
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Prior to invoking the pdkProjectCreate script, make sure to start CCS
-and register the SDK RTOS components installed. Project creation will
-fail if the RTOS SDK components installed to the custom path have not
-been registered with CCS. Please see `CCS and SDK installed in different
-directories </index.php/Processor_SDK_RTOS_Setup_CCS#CCS_and_SDK_installed_in_different_directories>`__
-for instructions on how to register SDK RTOS components installed to a
-custom path with CCS
-
-.. raw:: html
-
-   </div>
-
-| 
+.. note::
+   Prior to invoking the pdkProjectCreate script, make sure to start CCS
+   and register the SDK RTOS components installed. Project creation will
+   fail if the RTOS SDK components installed to the custom path have not
+   been registered with CCS. Please see `CCS and SDK installed in different
+   directories </index.php/Processor_SDK_RTOS_Setup_CCS#CCS_and_SDK_installed_in_different_directories>`__
+   for instructions on how to register SDK RTOS components installed to a
+   custom path with CCS
 
 .. raw:: html
 
