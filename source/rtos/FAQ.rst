@@ -4,8 +4,8 @@ Frequently Asked Questions
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FAQ 
 
-.. rubric:: General Support
-   :name: general-support
+General Support
+===============
 
 .. rubric:: What are the advantages of using the Processor SDK RTOS
    software?
@@ -53,12 +53,11 @@ software reuse for application developers:
    Users can subscribe to updates by using the "Alert Me" button for the
    package from the software download page on ti.com.
 
-Note: If you are unable to locate the "Alert Me" option, please check
-the screenshot here:
+.. note::
+   If you are unable to locate the "Alert Me" option, please check
+   the screenshot here:
 
 .. Image:: ../images/Alert_Me.png
-
-| 
 
 | 
 
@@ -115,8 +114,8 @@ this link provided under the section "Previous Release."
 
 | 
 
-.. rubric:: Training and Documentation
-   :name: training-and-documentation
+Training and Documentation
+==========================
 
 .. rubric:: Is there any training content available for Processor SDK
    RTOS?
@@ -141,25 +140,25 @@ Training URLs:
 
 There are three main documents for Processor SDK RTOS:
 
--  :ref:`**Getting Started Guide** <Processor-SDK-RTOS-Getting-Started-Guide-label>`
+-  :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
    Provides information on setting up software and running basic
    examples/demonstrations bundled within the Processor SDK.
--  `**Software Developer
-   Guide** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__:
+-  `Software Developer
+   Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__:
    Provides information on features, functions, delivery package, and
    compile tools for the Processor SDK RTOS release. This guide also
    provides detailed information regarding software elements and
    software infrastructure to allow developers to start creating
    applications.
--  `**Migration
-   Guide** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Migration_Guide>`__: Provides
+-  `Migration
+   Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Migration_Guide>`__: Provides
    migration information for applications built on top of the Processor
    SDK for RTOS.
 
 | 
 
-.. rubric:: Host and Target Setup
-   :name: host-and-target-setup
+Host and Target Setup
+=====================
 
 .. rubric:: How do I setup the build environment with custom Processor
    SDK RTOS and CCS Installation paths on the host machine?
@@ -169,12 +168,10 @@ The steps to set up CCS and Processor SDK RTOS when the SDK or the IDE
 is installed in a location other than the default location are described
 below: :ref:`Processor SDK RTOS Setup with CCS <Processor-SDK-RTOS-Setup-CCS-label>`
 
-|  **A common gotcha while setting up the build environment is
-  compatibility with CCS version. Please refer to `Release
-  Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__ for the
-  recommended version of CCS**
-
-| 
+**A common gotcha while setting up the build environment is
+compatibility with CCS version. Please refer to `Release
+Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__ for the
+recommended version of CCS** 
 
 .. rubric:: Can I install multiple versions of the Processor SDK RTOS in
    the same folder?
@@ -189,27 +186,18 @@ different devices on your machine and install all of them in custom
 folders. For example, if you have a project with AM335x and AM437x that
 requires you to download the Processor SDK RTOS for those device, we
 recommend that you install them under different directories say
-C:\ti\PRSDK_AM3x and C:\ti\PRSDK_AM4x
+C:\\ti\\PRSDK_AM3x and C:\\ti\\PRSDK_AM4x
 
-.. raw:: html
+.. note::
+   When you install the SDK in a custom location, there are few additional
+   steps to follow:
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-When you install the SDK in a custom location, there are few additional
-steps to follow:
-
--  CCS auto-detects components only in C:\ti path. So you will need to
-   add the custom path to discovery as described in `Setup
-   CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__.
--  Assuming CCS is installed in the default path, the process to set the
-   custom SDK path while building the SDK is provided in :ref:`Install in
-   Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
-
-.. raw:: html
-
-   </div>
+   -  CCS auto-detects components only in C:\\ti path. So you will need to
+      add the custom path to discovery as described in `Setup
+      CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__.
+   -  Assuming CCS is installed in the default path, the process to set the
+      custom SDK path while building the SDK is provided in :ref:`Install in
+      Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
 .. rubric:: What are the typical flows for a new user to setup the
    Processor SDK RTOS development environment?
@@ -226,20 +214,11 @@ At this stage, you should have the CCS IDE environment, the Processor
 SDK RTOS installed and be able to connect to your target using an
 emulator.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If you have installed CCS and/or the Processor SDK RTOS in a custom
-location, you need to manually add the SDK install path to CCS as
-described here
-`CCS_and_SDK_installed_in_different_directories <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#CCS_and_SDK_installed_in_different_directories>`__
-
-.. raw:: html
-
-   </div>
+.. note::
+   If you have installed CCS and/or the Processor SDK RTOS in a custom
+   location, you need to manually add the SDK install path to CCS as
+   described here
+   `CCS_and_SDK_installed_in_different_directories <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#CCS_and_SDK_installed_in_different_directories>`__
 
 .. rubric:: Step 2: Run the Out-of-Box Examples or Diagnostics
    :name: step-2-run-the-out-of-box-examples-or-diagnostics
@@ -260,26 +239,18 @@ environment with the component and compiler PATHs. Running the script
 and rebuilding the Processor SDK from the root directory is described in
 the wiki article :ref:`Setup build Environment <Build-The-SDK-Setup-Environment-label>`.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   -  The script assumes that CCS and Processor SDK RTOS are installed in
+      the default location. If you have installed CCS and/or the Processor
+      SDK RTOS in a custom location, then modify the setup file to the
+      custom path. Please setup the environment using the steps described
+      in the wiki article
+      :ref:`Processor SDK RTOS Install in Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`.
+   -  After the script executes, it prints all the PATH macros set for the
+      different variables. Be sure that the compiler and component paths
+      have been setup correctly.
 
-**NOTE**
-
--  The script assumes that CCS and Processor SDK RTOS are installed in
-   the default location. If you have installed CCS and/or the Processor
-   SDK RTOS in a custom location, then modify the setup file to the
-   custom path. Please setup the environment using the steps described
-   in the wiki article
-   :ref:`Processor SDK RTOS Install in Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`.
--  After the script executes, it prints all the PATH macros set for the
-   different variables. Be sure that the compiler and component paths
-   have been setup correctly.
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: Step 4: Rebuilding the SDK
    :name: step-4-rebuilding-the-sdk
@@ -291,19 +262,9 @@ from top-level make files is described in the wiki article `Rebuilding
 SDK
 Components <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The SDK offers command line build for all the components. CCS projects
-are only supported for DSP libraries and PDK driver examples.
-
-.. raw:: html
-
-   </div>
-
+.. note::
+   The SDK offers command line build for all the components. CCS projects
+   are only supported for DSP libraries and PDK driver examples.
 | 
 
 .. rubric:: Step 5: Generate and Run Peripheral Driver Examples
@@ -361,7 +322,6 @@ supports.
 
     For Example:
     make LIMIT_BOARDS="evmK2G iceK2G" LIMIT_SOCS="k2g" LIMIT_CORES="a15_0"
-
 | 
 
 .. rubric:: Why am I not able to connect to the DSP core in CCS when
@@ -384,11 +344,11 @@ create an SD differs depending on whether you are doing this on a
 Windows or Linux host machine, as described in the two articles shown
 here:
 
--  `**Create an SD card on Windows Host (AMx, K2G
-   only)** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
+-  `Create an SD card on Windows Host (AMx, K2G
+   only) <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
 
--  `**Create an SD card on Linux Host (AMx, K2G
-   only)** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__
+-  `Create an SD card on Linux Host (AMx, K2G
+   only) <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__
 
 .. rubric:: How can I restore the firmware on my EVM to factory
    settings?
@@ -415,13 +375,13 @@ default configuration of the board, we have observed that connecting a
 JTAG causes a reset. Users need to follow the procedure provided here to
 prevent a reset from occurring.
 
--  `**Preventing a Reset When Connecting a JTAG on
-   BeagleBone** <http://elinux.org/Beagleboard:BeagleBone#Board_Reset_on_JTAG_Connect.28A3.2CA4.2CA5.29>`__
+-  `Preventing a Reset When Connecting a JTAG on
+   BeagleBone <http://elinux.org/Beagleboard:BeagleBone#Board_Reset_on_JTAG_Connect.28A3.2CA4.2CA5.29>`__
 
 | 
 
-.. rubric:: Device Drivers
-   :name: device-drivers
+Device Drivers
+==============
 
 .. rubric:: How do I find out if a driver is supported in the package
    for my device?
@@ -525,10 +485,8 @@ INPUT syntax
 
 | 
 
-| 
-
-.. rubric:: Chip Support Library (CSL)
-   :name: chip-support-library-csl
+Chip Support Library (CSL)
+==========================
 
 .. rubric:: Are there any bare-metal examples in the PDK package?
    :name: are-there-any-bare-metal-examples-in-the-pdk-package
@@ -536,11 +494,11 @@ INPUT syntax
 Customers who are wanting to start bare-metal code development can refer
 to the diagnostics package which uses the PDK drivers and does not rely
 on the TI RTOS. There are also CSL examples included in the package
-under the path ${PDK_INSTALL_PATH}\packages\ti\csl\test.
+under the path ${PDK_INSTALL_PATH}\\packages\\ti\\csl\\test.
 
 In addition to CSL example, the PDK contains bare-metal diagnostic test
 cases that help in testing EVM functionality. These can be located under
-pdk_am57xx_x_x_x\packages\ti\board\diag
+pdk_am57xx_x_x_x\\packages\\ti\\board\\diag
 
 Some of the driver examples contain a flag for BARE METAL usage of the
 driver. Example: GPIO/SPI already have these flags implemented.
@@ -552,7 +510,7 @@ driver. Example: GPIO/SPI already have these flags implemented.
 Yes, SDK provides CSL code to read core status and system configurations
 using the CSL provided for specific core. For CSL code specific to cores
 and peripherals present on your device, please refer to the header files
-provided under ${PDK_INSTALL_PATH}\packages\ti\csl\src\ip.
+provided under ${PDK_INSTALL_PATH}\\packages\\ti\\csl\\src\\ip.
 
 A good example of where you may need to access CSL code to read
 core-specific information is on a multi-core device. You can have code
@@ -586,17 +544,17 @@ library or include the header files for a specific IP, the CSL library
 requires users to add a MACRO definition (-D SOC_XX####) to your build
 to indicate which SOC you are using. In order to locate the IP files for
 your device, always look at the header file at the top of the CSL
-directory pdk_<device>_xx_xx_xx\packages\ti\csl and the files that are
+directory pdk_<device>_xx_xx_xx\\packages\\ti\\csl and the files that are
 found under the SOC_XX#### corresponds to the SOC that you are using.
 
 SOC-specific files can also be found under the
-pdk_<device>_xx_xx_xx\packages\ti\csl\soc\<device_name>
+pdk_<device>_xx_xx_xx\\packages\\ti\\csl\\soc\\<device_name>
 
 .. rubric:: What is the system memory map used by the SDK examples?
    :name: what-is-the-system-memory-map-used-by-the-sdk-examples
 
 The TI RTOS-based examples included in the SDK rely on the platform
-definitions provided inside bios_6_xx_xx_xx\packages\ti\platforms for
+definitions provided inside bios_6_xx_xx_xx\\packages\\ti\\platforms for
 partitioning the SOC memory between all the available cores on the SoC.
 Please take a look at the snapshot below for AM572x:
 
@@ -649,8 +607,8 @@ diagnostics package.
 
 | 
 
-.. rubric:: Board Support
-   :name: board-support
+Board Support
+=============
 
 .. rubric:: What steps are involved when creating a new custom board
    library?
@@ -680,21 +638,21 @@ steps are involved in creating custom board library:
 **Useful DDR Configuration Resources**
 
 +-----------------------------------+-----------------------------------+
-| **Sitara Resources:**             | **Keystone Resources:**           |
+|    **Sitara Resources:**          |    **Keystone Resources:**        |
 +-----------------------------------+-----------------------------------+
-| -  `AM57x EMIF                    | -  `KeyStone II DDR               |
-|    Tools <http://www.ti.com/lit/a |    Initialization                 |
-| n/sprac36/sprac36.pdf>`__         |    Guide <http://www.ti.com/lit/a |
-| -  `AM437x DDR Configuration      | n/sprabx7/sprabx7.pdf>`__         |
+| -  `AM57x EMIF Tools              | -  `KeyStone II DDR               |
+|    <http://www.ti.com/lit/an/     |    Initialization                 |
+|    sprac36/sprac36.pdf>`__        |    Guide <http://www.ti.com/lit	|
+| -  `AM437x DDR Configuration      |    /an/sprabx7/sprabx7.pdf>`__	|
 |    Guide <http://processors.wiki. | -  `KeyStone II DDR Debug         |
-| ti.com/index.php/AM437x_DDR_Confi |    Guide <http://www.ti.com/lit/a |
-| guration_and_Programming_Guide>`_ | n/sprac04/sprac04.pdf>`__         |
-| _                                 | -  `KeyStoneI DDR                 |
+|    ti.com/index.php/AM437x_DDR_   |    Guide <http://www.ti.com/lit	|
+|    Configuration_and_ 	    |    /an/sprac04/sprac04.pdf>`__	|
+|    Programming_Guide>`__          | -  `KeyStoneI DDR                 |
 | -  `AM335x/AM11x EMIF             |    Initialization <http://www.ti. |
-|    Configuration                  | com/lit/an/sprabl2d/sprabl2d.pdf> |
-|    Tools <http://processors.wiki. | `__                               |
-| ti.com/index.php/AM335x_EMIF_Conf |                                   |
-| iguration_tips>`__                |                                   |
+|    Configuration                  |    com/lit/an/sprabl2d 		|
+|    Tools <http://processors.wiki. |    /sprabl2d.pdf>`__		|
+|    ti.com/index.php/AM335x_EMIF   |                                   |
+|    _Configuration_tips>`__        |                                   |
 +-----------------------------------+-----------------------------------+
 
 -  **Modify SoC Pin Mux Settings.** The Pin Mux configuration for a
@@ -730,24 +688,12 @@ Adding custom board to the PDK directory structure and build setup is
 described in the article
 `Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles <http://processors.wiki.ti.com/index.php/Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles>`__
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-TI evaluation platforms for Sitara Processors usually have board
-information stored in an EEPROM which checks for revision number and
-board name which is used to configure the board. When creating a custom
-platform if you don`t intend to use an EEPROM then we recommend removing
-code corresponding to Board_getIDInfo in your board library
-
-.. raw:: html
-
-   </div>
-
-| 
-
+.. note::
+   TI evaluation platforms for Sitara Processors usually have board
+   information stored in an EEPROM which checks for revision number and
+   board name which is used to configure the board. When creating a custom
+   platform if you don`t intend to use an EEPROM then we recommend removing
+   code corresponding to Board_getIDInfo in your board library
 | 
 
 .. rubric:: Do I need to do any post processing on PDK files generated
@@ -803,8 +749,8 @@ Instance <http://www.ti.com/lit/an/sprac32/sprac32.pdf>`__"
 
 | 
 
-.. rubric:: Secondary Bootloader
-   :name: secondary-bootloader
+Secondary Bootloader
+====================
 
 .. rubric:: What board initialization is required in the application
    after booting using the Secondary Boot Loader (SBL)?
@@ -817,19 +763,11 @@ configuration need to be done from the application code. As long as you
 have added all of the device initialization to the board library, you
 will not need to add any initialization code in the application.
 
-.. raw:: html
+.. note::
+   For AM57xx devices, the AVS and ABB settings required for all core rails
+   is added to the SBL code, as this initialization is required only in a
+   production environment.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For AM57xx devices, the AVS and ABB settings required for all core rails
-is added to the SBL code, as this initialization is required only in a
-production environment.
-
-.. raw:: html
-
-   </div>
 
 .. rubric:: Where do I locate flashing and boot utilities in the
    package?
@@ -841,7 +779,7 @@ Boot Documentation <FC-Boot-label>`
 
 The :ref:`Boot and Flashing Utilities <FC-Boot-label>`
 for all devices is located in the PDK package under the path
-pdk_<device_name>_x_x_x\packages\ti\boot\sbl\tools.
+pdk_<device_name>_x_x_x\\packages\\ti\\boot\\sbl\\tools.
 
 The SDK provides secondary bootloader code for all devices, which is
 loaded by the ROM bootloader. The SBL is responsible for device
@@ -854,7 +792,7 @@ Depending on the boot design you need to implement, the boot and
 flashing tools that are used for formatting and booting the SBL can also
 be leveraged to format and boot the application image directly. The
 flash-writing utilities for different EVMs can be located under the path
-pdk_<device_name>_x_x_x\packages\ti\boot\sbl\tools\flashWriter.
+pdk_<device_name>_x_x_x\\packages\\ti\\boot\\sbl\\tools\\flashWriter.
 
 If the intent is to restore the KeyStone II EVM to factory settings,
 then the `Program EVM
@@ -864,8 +802,8 @@ firmware images provided by TI/board manufacturer.
 
 | 
 
-.. rubric:: Diagnostics
-   :name: diagnostics
+Diagnostics
+===========
 
 .. rubric:: How to I test my EVM functionality? Can I use the same tests
    on my custom platform?
@@ -873,7 +811,7 @@ firmware images provided by TI/board manufacturer.
 
 The Processor SDK RTOS provides unit tests to test interfaces on the EVM
 as part of diagnostics package that can be found in the package in the
-path pdk_<device_namme>_x_x_x\packages\ti\board\diag. It also provides a
+path pdk_<device_namme>_x_x_x\\packages\\ti\\board\\diag. It also provides a
 framework to run each of these tests through a command line serial
 interface. Users can either load the tests using an emulator or they can
 load them over an SD card to test the EVM functionality.
@@ -888,8 +826,8 @@ on the custom hardware.
 
 | 
 
-.. rubric:: Filesystem Support
-   :name: filesystem-support
+Filesystem Support
+==================
 
 .. rubric:: What filesystem support if provided by Processor SDK RTOS ?
    Can I use UBIFS, RAMFS, or FATFS with TI RTOS when using external
@@ -907,11 +845,11 @@ RTOS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FATFS>`__.
 
 | 
 
-.. rubric:: TI RTOS
-   :name: ti-rtos
+TI RTOS
+=======
 
-.. rubric:: Useful Resources
-   :name: useful-resources
+Useful Resources
+----------------
 
 -  `SYSBIOS
    FAQ <http://processors.wiki.ti.com/index.php/SYS/BIOS_FAQs>`__
@@ -921,9 +859,6 @@ RTOS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FATFS>`__.
 -  `SYS/BIOS_with_GCC_(CortexA) <http://processors.wiki.ti.com/index.php/SYS/BIOS_with_GCC_(CortexA)>`__
 
 | 
-
-| 
-
 .. rubric:: How do I start writing my TI RTOS application code? Is there
    any documentation that describes the process?
    :name: how-do-i-start-writing-my-ti-rtos-application-code-is-there-any-documentation-that-describes-the-process
@@ -972,7 +907,7 @@ my.ti login to access this site.
 
 Within the SDK package, TI-RTOS Benchmark Documentation can be found
 under directory path
-*bios_6_xx_xx_xx\packages\ti\sysbios\benchmarks\doc-files*
+*bios_6_xx_xx_xx\\packages\\ti\\sysbios\\benchmarks\\doc-files*
 
 .. rubric:: How do I debug TI-RTOS and driver code?
    :name: how-do-i-debug-ti-rtos-and-driver-code
@@ -1012,8 +947,6 @@ on secondary ARM core, application users need to add :
 
     var Core = xdc.useModule('ti.sysbios.family.arm.ducati.Core');
     Core.id = 1;
-
-| 
 
 | 
 
@@ -1062,8 +995,8 @@ the following in your DSP2.cfg :
 
 | 
 
-.. rubric:: Networking Support
-   :name: networking-support
+Networking Support
+==================
 
 .. rubric:: Can I use NDK software stack on all devices supported in
    Processor SDK RTOS?
@@ -1087,8 +1020,8 @@ References <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK#Addit
 
 | 
 
-.. rubric:: Inter-processor Communication (IPC)
-   :name: inter-processor-communication-ipc
+Inter-processor Communication (IPC)
+===================================
 
 .. rubric:: How do I build and run IPC examples?
    :name: how-do-i-build-and-run-ipc-examples
@@ -1122,8 +1055,8 @@ AM57xx/DRA7xx <http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_D
 
 | 
 
-.. rubric:: DSP-Optimized Libraries
-   :name: dsp-optimized-libraries
+DSP-Optimized Libraries
+=======================
 
 .. rubric:: Why did I encounter a build issue while rebuilding DSPLIB,
    IMGLIB, or MATHLIB with C6000 CGT 8.x?
@@ -1160,8 +1093,8 @@ useful documents that enable benchmarking on the DSP and ARM cores.
 
 | 
 
-.. rubric:: EDMA Library
-   :name: edma-library
+EDMA Library
+============
 
 .. rubric:: How do I resolve EDMA instance usage conflict?
    :name: how-do-i-resolve-edma-instance-usage-conflict
@@ -1235,7 +1168,7 @@ the speed and duplex setting. Please refer to the TI KeyStone
 Architecture Gigabit Ethernet (GbE) Switch Subsystem User Guide, section
 3.3, SGMII_CONTROL, MR_ADV_ABILITY and MR_LP_ADV_ABILITY registers for
 detail. The corresponding CSL code is implemented in
-packages\ti\csl\src\ip\sgmii\Vx\csl_cpsgmiiAux.h.
+packages\\ti\\csl\\src\\ip\\sgmii\\Vx\\csl_cpsgmiiAux.h.
 
 .. rubric:: In a TI SGMII to FPGA (PHY port) connection, data corruption
    is observed on egress direction, what could be the cause?
@@ -1265,7 +1198,7 @@ For some TI EVMs, Init_MDIO() is empty because that PHY is configured
 using pin strapping and no MDIO control is needed to enable it to
 operate through auto-negotiation in the optimum configuration. Sample
 CSL code to access PHY via MDIO can be found under
-packages\ti\csl\src\ip\mdio\Vx\csl_mdioAux.h. The MDIO user access
+packages\\ti\\csl\\src\\ip\\mdio\\Vx\\csl_mdioAux.h. The MDIO user access
 register is used to communicate with the physical transceiver connected
 to the MDIO bus, not to a register of the Keystone SOC MDIO itself. The
 code must be customized for what you want to get or set within the PHY.
