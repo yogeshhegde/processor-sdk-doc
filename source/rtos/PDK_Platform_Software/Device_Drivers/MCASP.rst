@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_MCASP 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The multichannel audio serial port (McASP) functions as a
 general-purpose audio serial port optimized for the needs of
@@ -21,8 +24,11 @@ McASP driver uses the CSL McASP register layer for all McASP MMR access.
 The McASP driver also interfaces with the EDMA3 library to be able to
 transfer data to and from McASP peripheral and data memory.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 The McASP driver provides a sample implementation sequence which
 initializes the MCASP IP block. The McASP Device initialization API is
@@ -54,8 +60,8 @@ numbers, mux configuration parameters etc.
 The function set the soc configuration parameters such as interrupt
 numbers, mux configuration parameters etc.
 
-.. rubric:: APIs
-   :name: apis
+APIs
+^^^^^
 
 Refer to below API files:
 
@@ -207,11 +213,14 @@ application dependent and some applications where there may be a lot of
 delay between transfer requests, enough to cause an underrun, the
 priming factor could be higher.
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+| Name                  || Description          | | Expected Results    |
 +=======================+=======================+=======================+
 | AIC31 Stereo loopback | | Example             | | Audio sent in to    |
 |                       |   demonstrating       |   the EVM being       |
@@ -227,19 +236,24 @@ priming factor could be higher.
 |                       |   Reference example   |   internally using    |
 |                       |   for developers      |   device loopback     |
 +-----------------------+-----------------------+-----------------------+
-| `AudioEQ              | | Example             | | Three band          |
-| example <http://www.t |   demonstrating       |   Equalization of     |
-| i.com/tool/tidep0069> |   stereo audio        |   stereo channel      |
-| `__                   |   equalization using  |   using biquad        |
+| `AudioEQ example`_    | | Example             | | Three band          |
+|                       |   demonstrating       |   Equalization of     |
+|                       |   stereo audio        |   stereo channel      |
+|                       |   equalization using  |   using biquad        |
 |                       |   using biquad        |   filters with gain   |
 |                       |   filters . Reference |   control using       |
 |                       |   design for          |   serial console      |
 |                       |   developers. **TI    |   inputs              |
 |                       |   Design Guide**:     |                       |
-|                       |   `TIDEP0069 <http:// |                       |
-|                       | www.ti.com/lit/ug/tid |                       |
-|                       | ubq2/tidubq2.pdf>`__  |                       |
+|                       |   `TIDEP0069`_        |                       |
+|                       |                       |                       |
+|                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
+
+.. _AudioEQ example: http://www.ti.com/tool/tidep0069
+
+.. _TIDEP0069: http://www.ti.com/lit/ug/tidubq2/tidubq2.pdf
+
 
 .. rubric:: Introduction
    :name: introduction-1
@@ -281,26 +295,25 @@ Please ensure the below before running the demo
 NOTE: Please make sure the speakers’ output volume is high enough for
 the audio to be audible.
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\mcasp\docs\doxygen\html\inde |
-|                                   | x.html                            |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\mcasp\docs\ReleaseNotes_MCAS |
-|                                   | P_LLD.pdf                         |
-+-----------------------------------+-----------------------------------+
-| Software design Specification     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\mcasp\docs\MCASP_LLD_SDS.pdf |
-+-----------------------------------+-----------------------------------+
-
-| 
-| Templates used on this page:
++-----------------------------------+----------------------------------------+
+| **Document**                      | **Location**                           |
++-----------------------------------+----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti    |
+|                                   | \\drv\\mcasp\\docs\\doxygen\\html\\inde|
+|                                   | x.html                                 |
++-----------------------------------+----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti    |
+|                                   | \\drv\\mcasp\\docs\\ReleaseNotes_MCAS  |
+|                                   | P_LLD.pdf                              |
++-----------------------------------+----------------------------------------+
+| Software design Specification     | $(TI_PDK_INSTALL_DIR)\\packages\\ti    |
+|                                   | \\drv\\mcasp\\docs\\MCASP_LLD_SDS.pdf  |
++-----------------------------------+----------------------------------------+
+ 
+Templates used on this page:
 
 Return to Processor SDK RTOS MCASP.
 
@@ -314,5 +327,4 @@ Texas Instruments WikiDisclaimersTerms of UseCreative Commons
 Attribution-ShareAlike Powered by MediaWiki
 
 
-.. raw:: html
-
+| 

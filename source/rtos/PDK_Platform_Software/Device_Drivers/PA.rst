@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PA 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The packet accelerator (PA) is one of the main components of the network
 coprocessor (NETCP) peripheral in KeyStone devices, including C6678,
@@ -11,8 +14,10 @@ solution. The purpose of PA in the NETCP is to perform packet processing
 operations such as packet header classification, checksum generation,
 and multi-queue routing.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 The driver configures the PASS subsystem using Pa_config_t structure.
 This structure must be initialized before the Pa_create() function is
@@ -20,10 +25,10 @@ called and cannot be changed afterwards. Also, there are bunch of
 system/global configurations and per entry configurations for PA. For
 details about individual fields of this structure and other
 configuration API structures, see the Doxygen help by opening
-PDK_INSTALL_DIR\packages\ti\drv\PA\docs\doxygen\html\index.html.
+PDK_INSTALL_DIR\\packages\\ti\\drv\\PA\\docs\\doxygen\\html\\index.html.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for application can be found in below file:
 
@@ -31,8 +36,11 @@ API reference for application can be found in below file:
 
     #include <ti/drv/PA/PA.h>
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
@@ -53,8 +61,8 @@ API reference for application can be found in below file:
 |                       |                       |   the CCS console     |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: FAQ
-   :name: faq
+FAQ
+---
 
 .. rubric:: What is the difference between internal loopback and
    external loopback?
@@ -124,20 +132,20 @@ with pa_DEST_HOST can be passed. Please refer to Pa_addMac and
 Pa_addMac2() API explanations as provided under the doxygen folder of PA
 (Or refer to Pa.h interface header file).
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\PA\docs\doxygen\html\index.h |
-|                                   | tml                               |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\PA\docs\ReleaseNotes_PA_LLD. |
-|                                   | pdf                               |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+-----------------------------------------+
+| **Document**                      | **Location**                            |
++-----------------------------------+-----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\PA\\docs\\doxygen\\html\\index.h |
+|                                   | tml                                     |
++-----------------------------------+-----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\PA\\docs\\ReleaseNotes_PA_LLD.   |
+|                                   | pdf                                     |
++-----------------------------------+-----------------------------------------+
 
-.. raw:: html
+| 
 

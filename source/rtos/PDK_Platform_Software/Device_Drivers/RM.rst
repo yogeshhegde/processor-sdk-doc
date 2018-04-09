@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_RM 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The Resource Manager (RM) is delivered as part of Processor-SDK as a
 means for managing system resource contentions. RM has the ability to
@@ -45,8 +48,11 @@ There are five instance types
    perspective given shared memory MUST be available and used in order
    for Shared Server-Clients to function.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: **Resource Configuration**
    :name: resource-configuration
@@ -74,8 +80,8 @@ is available in
 implementation uses an IPC shared memory transport to connect an RM
 Server to RM Clients on multiple DSP cores.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 RM instance init/delete/status API reference for application:
 
@@ -101,11 +107,14 @@ RM Server interface API reference for application:
 
     #include <ti/drv/rm/rm_server_if.h>
 
-.. rubric:: Tests
-   :name: tests
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+| Name                  || Description          || Expected Results     |
 +=======================+=======================+=======================+
 | RM DSP BIOS Test      | | Unit Test           | | Application         |
 | application           |   application         |   successfully        |
@@ -177,23 +186,23 @@ RM Server interface API reference for application:
 |                       |   user-space.         |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\rm\docs\doxygen\html\index.h |
-|                                   | tml                               |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\rm\docs\ReleaseNotes_RM.pdf  |
-+-----------------------------------+-----------------------------------+
-| Resource Manager User Guide       | `Processor_SDK_Resource_Manager < |
-|                                   | /index.php/Processor_SDK_Resource |
-|                                   | _Manager>`__                      |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+-----------------------------------------+
+| **Document**                      | **Location**                            |
++-----------------------------------+-----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\rm\\docs\\doxygen\\html\\index.h |
+|                                   | tml                                     |
++-----------------------------------+-----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\rm\\docs\\ReleaseNotes_RM.pdf    |
++-----------------------------------+-----------------------------------------+
+| Resource Manager User Guide       | `Processor SDK Resource Manager`_       |
++-----------------------------------+-----------------------------------------+
 
-.. raw:: html
+.. _Processor SDK Resource Manager: http://processors.wiki.ti.com/index.php/Processor_SDK_Resource_Manager
+
+| 
 

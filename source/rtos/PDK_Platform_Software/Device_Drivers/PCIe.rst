@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PCIe 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+--------
 
 PCIe module supports dual operation mode: End Point (EP or Type0) or
 Root Complex (RC or Type1). This driver focuses on EP mode but it also
@@ -68,8 +68,11 @@ The example for AM57XX provides code to send interrupts from an
 endpoint, and the LLD/example together contain code to receive/demux the
 interrupts (both MSI and Legacy) on an RC.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Board-specific configuration
    :name: board-specific-configuration
@@ -84,8 +87,8 @@ Calling sequence is in example and repeated below.
 The pcie_soc.c binds the driver to the hardware on the board. It is
 passed into the driver via the call to Pcie_init().
 
-.. rubric:: API Call Flow
-   :name: api-call-flow
+API Call Flow
+^^^^^^^^^^^^^
 
 The API call flow is covered in pcie_sample.c.
 
@@ -97,8 +100,11 @@ The overall components are:
 #. Configure RC or EP symmetrically to talk to another similar device
 #. Perform data IO and interrupt.
 
-.. rubric:: Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------+-----------------+-----------------+-----------------+
 | Name            | Description     | EVM             | Expected        |
@@ -114,33 +120,29 @@ The overall components are:
 |                 |                 | SoC!            | data/interrupts |
 |                 |                 |                 | exchanged. All  |
 |                 |                 |                 | printed output  |
-|                 |                 | |               | goes to the     |
-|                 |                 | |               | serial console. |
-|                 |                 |                 |                 |
-|                 |                 |                 |                 |
-|                 |                 | Connect two     |                 |
-|                 |                 | like AM57xx     |                 |
+|                 |                 | Connect two     | goes to the     |
+|                 |                 | like AM57xx     | serial console. |
 |                 |                 | IDK EVMs J22    |                 |
 |                 |                 | `MODIFIED`_     |                 |
-|                 |                 |   male-male     |                 |
-|                 |                 |   crossover     |                 |
-|                 |                 |   PCIe x1 or x4 |                 |
-|                 |                 |   cable and     |                 |
-|                 |                 |   optional      |                 |
-|                 |                 |   straight-thro |                 |
-|                 |                 | ugh             |                 |
-|                 |                 |   extender. For |                 |
-|                 |                 |   AM572x/AM574x |                 |
-|                 |                 |   we used a     |                 |
-|                 |                 |   one-lane      |                 |
-|                 |                 |   cross cable;  |                 |
-|                 |                 |   for AM571x we |                 |
-|                 |                 |   used a 4-lane |                 |
-|                 |                 |   cross cable.  |                 |
+|                 |                 | male-male       |                 |
+|                 |                 | crossover       |                 |
+|                 |                 | PCIe x1 or x4   |                 |
+|                 |                 | cable and       |                 |
+|                 |                 | optional        |                 |
+|                 |                 | straight-through|                 |
+|                 |                 | extender. For   |                 |
+|                 |                 | AM572x/AM574x   |                 |
+|                 |                 | we used a       |                 |
+|                 |                 | one-lane        |                 |
+|                 |                 | cross cable;    |                 |
+|                 |                 | for AM571x we   |                 |
+|                 |                 | used a 4-lane   |                 |
+|                 |                 | cross cable.    |                 |
 |                 |                 | | Projects      |                 |
-|                 |                 |   available for |                 |
-|                 |                 |   C66, A15, and |                 |
-|                 |                 |   M4.           |                 |
+|                 |                 | available for   |                 |
+|                 |                 | C66, A15, and   |                 |
+|                 |                 | M4.             |                 |
+|                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | PCIE_evmK2G*Exa | 2-device PCIe   | **IMPORTANT:**  | **K2G EVM** :   |
 | mpleProject     | connection      | Cable must be   | One board is    |
@@ -331,8 +333,8 @@ xds100 for two EVMs <#Quick_setup_of_xds100_for_two_EVMs>`__
 
 | 
 
-.. rubric:: Debug FAQ
-   :name: debug-faq
+Debug FAQ
+---------
 
 #. If example fails to get link up
 
@@ -357,8 +359,8 @@ xds100 for two EVMs <#Quick_setup_of_xds100_for_two_EVMs>`__
          twice** instead of "PCIe test start EP mode" once and "PCIe
          test start RC mode" once.
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
 Additional documentation can be found in:
 
@@ -379,5 +381,4 @@ Additional documentation can be found in:
 |                                   | /drv/pcie/docs/ReleaseNotes_PCIE_LLD.pdf    |
 +-----------------------------------+---------------------------------------------+
 
-.. raw:: html
-
+| 

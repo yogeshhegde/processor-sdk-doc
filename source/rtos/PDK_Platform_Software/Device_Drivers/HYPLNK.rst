@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_HYPLNK 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 Hyperlink is a point-to-point peripheral. Each device has equal
 capability to operate on the address space of the other device. This
@@ -28,8 +31,11 @@ demuxed. Thus for multicore orthogonality, the cicInterruptExample is
 often better example (because each destination core can have completely
 independent interrupts).
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 The driver itself is entirely configured via API at runtime. However,
 the examples are configured using compiler flags that are in
@@ -40,6 +46,9 @@ hyplnkPlatCfg.h and hyplnkLLDCfg.h.
 
 The hyplnk_device.c binds the driver to the hardware on the board. It is
 passed into the driver via the call to Hyplnk_init().
+
+APIs
+^^^^^
 
 .. rubric:: API Call Flow
    :name: api-call-flow
@@ -60,8 +69,11 @@ They key parts are:
 
 | 
 
-.. rubric:: Examples
-   :name: examples
+Application
+------------
+
+Examples
+^^^^^^^^
 
 Hyperlink/hyplnk is supported only on Keystone devices. It is available
 on 6678, 6657, K2H, K2K, K2E. All examples can be used in either
@@ -73,7 +85,6 @@ For K2H/K2K/K2E, the breakout card is
 and the cable is also required. Below is a picture showing how a K2H EVM
 is connected to a 6678 EVM via breakout card and cable.
 
--  
 
 .. Image:: ../images/K2-k1-hyplnk.jpg
 
@@ -81,10 +92,10 @@ is connected to a 6678 EVM via breakout card and cable.
 | Name            | Description     | EVM             | Expected        |
 |                 |                 | Configuration   | Results         |
 +=================+=================+=================+=================+
-| memoryMappedExa | | Memory mapped | Loopback runs   | Link is         |
-| mple            |   data exchange | without any     | established and |
-|                 |   with loopback | extra hardware. | data is         |
-|                 |   or 2 devices  | See below for   | exchanged.      |
+| memoryMappedExa | Memory mapped   | Loopback runs   | Link is         |
+| mple            | data exchange   | without any     | established and |
+|                 | with loopback   | extra hardware. | data is         |
+|                 | or 2 devices    | See below for   | exchanged.      |
 |                 |                 | details on      |                 |
 |                 |                 | configuring     |                 |
 |                 |                 | board-to-board. |                 |
@@ -213,8 +224,8 @@ This came from k2h device running in loopback.
     .
     .
 
-.. rubric:: Debug FAQ
-   :name: debug-faq
+Debug FAQ
+---------
 
 #. If it seems to not work, check for lError and rError in the status
    register (hyplnkStatusReg_s). If these appear, it means double ecc
@@ -239,34 +250,34 @@ This came from k2h device running in loopback.
    in
    PDK_INSTALL_DIR/packages/ti/drv/hyplnk/example/common/hyplnkLLDCfg.h.
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
 Additional documentation can be found in:
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| Hardware Peripheral Hyperlink     | `User                             |
-| Users Guide                       | Guide <http://www.ti.com/lit/spru |
-|                                   | gw8>`__                           |
-+-----------------------------------+-----------------------------------+
-| Serdes Users Guide                | `User                             |
-|                                   | Guide <http://www.ti.com/lit/spru |
-|                                   | ho3>`__                           |
-+-----------------------------------+-----------------------------------+
-| CIC Peripheral Users Guide        | `CIC User                         |
-|                                   | Guide <http://www.ti.com/lit/spru |
-|                                   | gw4>`__                           |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\hyplnk\docs\doxygen\html\ind |
-|                                   | ex.html                           |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\hyplnk\docs\ReleaseNotes_HYP |
-|                                   | LNK_LLD.pdf                       |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+-----------------------------------------+
+| **Document**                      | **Location**                            |
++-----------------------------------+-----------------------------------------+
+| Hardware Peripheral Hyperlink     | `User                                   |
+| Users Guide                       | Guide <http://www.ti.com/lit/spru       |
+|                                   | gw8>`__                                 |
++-----------------------------------+-----------------------------------------+
+| Serdes Users Guide                | `User                                   |
+|                                   | Guide <http://www.ti.com/lit/spru       |
+|                                   | ho3>`__                                 |
++-----------------------------------+-----------------------------------------+
+| CIC Peripheral Users Guide        | `CIC User                               |
+|                                   | Guide <http://www.ti.com/lit/spru       |
+|                                   | gw4>`__                                 |
++-----------------------------------+-----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\hyplnk\\docs\\doxygen\\html\\ind |
+|                                   | ex.html                                 |
++-----------------------------------+-----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\hyplnk\\docs\\ReleaseNotes_HYP   |
+|                                   | LNK_LLD.pdf                             |
++-----------------------------------+-----------------------------------------+
 
-.. raw:: html
+| 
 

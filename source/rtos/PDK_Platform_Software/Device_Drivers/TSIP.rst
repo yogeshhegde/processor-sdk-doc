@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_TSIP 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The TSIP is a multi-link serial interface consisting of a maximum of
 eight transmit data signals (or links), eight receive data signals (or
@@ -31,16 +34,19 @@ links, and 65.536 MHz or 32.768 MHz for 32.768 Mbps serial links.
 Maximum occupation of the serial interface links for the entire TSIP is
 1024 transmit and receive timeslots in all configurations.
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 TSIP configuration involves configurations for desired stagger phase of
 a TSIP timeout, using Tsip_configPhase() API. For details about
 individual fields of this structure, see the Doxygen help by opening
-PDK_INSTALL_DIR\Packages\ti\drv\TSIP\docs\doxygen\html\index.html.
+PDK_INSTALL_DIR\\Packages\\ti\\drv\\TSIP\\docs\\doxygen\\html\\index.html.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for application:
 
@@ -48,8 +54,11 @@ API reference for application:
 
     #include <ti/drv/tsip/tsip.h>
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
@@ -65,20 +74,20 @@ API reference for application:
 |                       |   all APIs            |   the CCS console     |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\TSIP\docs\doxygen\html\index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\TSIP\docs\ReleaseNotes_TSIP. |
-|                                   | pdf                               |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+-----------------------------------------+
+| **Document**                      | **Location**                            |
++-----------------------------------+-----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\TSIP\\docs\\doxygen\\html\\index |
+|                                   | .html                                   |
++-----------------------------------+-----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\TSIP\\docs\ReleaseNotes_TSIP.    |
+|                                   | pdf                                     |
++-----------------------------------+-----------------------------------------+
 
-.. raw:: html
+| 
 

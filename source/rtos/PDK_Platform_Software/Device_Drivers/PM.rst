@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_PM 
 
-.. rubric:: Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The Power Management (PM) low level driver provide power and thermal
 management capabilities for RTOS applications.
@@ -21,8 +24,11 @@ management capabilities for RTOS applications.
 | K2G        | X       |        |        | X        |        | K2G EVM                      |
 +------------+---------+--------+--------+----------+--------+------------------------------+
 
-.. rubric:: Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: **Board Specific Configuration**
    :name: board-specific-configuration
@@ -52,8 +58,8 @@ about individual fields of this structure, see the Doxygen help by
 opening
 ``[PDK_INSTALL_DIR]\packages\ti\drv\pm\docs\doxygen\html\index.html``.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+^^^^^
 
 The following lists the main application interfaces; see the end of this
 page for a link to the API Reference Manual with full details.
@@ -81,13 +87,16 @@ in the below file:
 
 | 
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+| Name                  | | Description         || Expected Results     |
 +=======================+=======================+=======================+
-| PM RTOS Application   | | Example             | | Application cycles  |
+| PM RTOS Application   | | Example             || Application cycles   |
 |                       |   demonstrating power |   the processor       |
 |                       |   management use      |   running the         |
 |                       |   cases. Reference    |   application through |
@@ -97,7 +106,7 @@ in the below file:
 |                       |                       |   the output printed  |
 |                       |                       |   over the device's   |
 |                       |                       |   UART connection.    |
-|                       |                       | | **Note:** The       |
+|                       |                       || **Note:** The        |
 |                       |                       |   example should be   |
 |                       |                       |   run in "Free Run"   |
 |                       |                       |   mode when loaded    |
@@ -109,7 +118,7 @@ in the below file:
 |                       |                       |   interruptions from  |
 |                       |                       |   the JTAG.           |
 |                       |                       |                       |
-|                       |                       | Use the following     |
+|                       |                       || Use the following    |
 |                       |                       | steps to execute the  |
 |                       |                       | application on the    |
 |                       |                       | AM57xx's M4 and C66   |
@@ -126,7 +135,7 @@ in the below file:
 |                       |                       |    Scripts-->AM572x   |
 |                       |                       |    MULTICORE          |
 |                       |                       |    Initialization-->A |
-|                       |                       | M572x_MULTICORE_Enabl |
+|                       |                       || M572x_MULTICORE_Enabl|
 |                       |                       | eAllCores             |
 |                       |                       | -  Connect to         |
 |                       |                       |    M4_IPU1_C0 or the  |
@@ -138,7 +147,7 @@ in the below file:
 |                       |                       |    M4_IPU1_C0 or the  |
 |                       |                       |    C66xx_DSP1         |
 +-----------------------+-----------------------+-----------------------+
-| PM RTOS Thermal       | | Example             | | Application sets    |
+| PM RTOS Thermal       | | Example             || Application sets     |
 | Application           |   demonstrating       |   high and low        |
 |                       |   thermal management  |   thermal set points  |
 |                       |   use case. Reference |   using the PM APIs.  |
@@ -151,7 +160,7 @@ in the below file:
 |                       |                       |   the device's UART   |
 |                       |                       |   connection.         |
 |                       |                       |                       |
-|                       |                       | Use the following     |
+|                       |                       || Use the following    |
 |                       |                       | steps to execute the  |
 |                       |                       | application on the    |
 |                       |                       | AM57xx's M4 and C66   |
@@ -180,7 +189,7 @@ in the below file:
 |                       |                       | -  Run the M4_IPU1_C0 |
 |                       |                       |    or the C66xx_DSP1  |
 +-----------------------+-----------------------+-----------------------+
-| PM Measurement        | | Menu-based          | | Application allows  |
+| PM Measurement        | | Menu-based          || Application allows   |
 | Application           |   application         |   the user to control |
 |                       |   allowing selection  |   the processor's OPP |
 |                       |   of processor OPPs   |   settings via the PM |
@@ -206,20 +215,20 @@ in the below file:
 |                       |                       |   the moment.         |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\pm\docs\doxygen\html\index.h |
-|                                   | tml                               |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\pm\docs\ReleaseNotes_PM_LLD. |
-|                                   | pdf                               |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+-----------------------------------------+
+| **Document**                      | **Location**                            |
++-----------------------------------+-----------------------------------------+
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\pm\\docs\\doxygen\\html\\index.h |
+|                                   | tml                                     |
++-----------------------------------+-----------------------------------------+
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\pm\\docs\\ReleaseNotes_PM_LLD.   |
+|                                   | pdf                                     |
++-----------------------------------+-----------------------------------------+
 
-.. raw:: html
+| 
 

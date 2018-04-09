@@ -45,41 +45,41 @@ driver API. CSL Functional layer APIs could be used for low-level access
 when required. CSL Register layer memory map is available for being used
 under rare cases in application when required.
 
-| The source code of the CSL is located under
-  $(TI_PDK_INSTALL_DIR)\packages\ti\csl directory.
+The source code of the CSL is located under $(TI_PDK_INSTALL_DIR)\\packages\\ti\\csl directory.
+
 
 .. rubric:: AM335x/AM437x
    :name: am335xam437x
 
-| The CSL component of AM335x/AM437x Processor SDK is referred as
-  StarterWare in the legacy baseline releases.To maintain backward
-  compatibility for existing applications on AM335x/AM437x SOCs,
-  StarterWare low level package is retained. Customers are recommended
-  to use driver interfaces for ease of migration of application software
-  across SOCs.
+The CSL component of AM335x/AM437x Processor SDK is referred as
+StarterWare in the legacy baseline releases.To maintain backward
+compatibility for existing applications on AM335x/AM437x SOCs,
+StarterWare low level package is retained. Customers are recommended
+to use driver interfaces for ease of migration of application software
+across SOCs.
   
   
-+-----------------------+----------------------------------------------------+
-|                       Chip Support Library/DAL Summary                     |
-+=======================+====================================================+
-|   Component Type      |   Library                                          |
-|                       |                                                    |
-+-----------------------+----------------------------------------------------+
-|   Install Package     |   PDK                                              |
-|                       |                                                    |
-+-----------------------+----------------------------------------------------+
-|   Install Directory   |   pdk_AMX_<version>\packages\ti\starterware        |
-|                       |                                                    |
-+-----------------------+----------------------------------------------------+
-|   Endian Support      |   Little                                           |
-|                       |                                                    |
-+-----------------------+----------------------------------------------------+
-|   Linker Path         |   PDK_INSTALL_DIR\packages\ti\starterware\binary   |
-|                       |                                                    |
-+-----------------------+----------------------------------------------------+
-|   Include Paths       |   PDK_INSTALL_DIR\packages\ti\starterware\include  |
-|                       |                                                    |
-+-----------------------+----------------------------------------------------+
++-----------------------+------------------------------------------------------+
+|                       Chip Support Library/DAL Summary                       |
++=======================+======================================================+
+|   **Component Type**  |   **Library**                                        |
+|                       |                                                      |
++-----------------------+------------------------------------------------------+
+|   Install Package     |   PDK                                                |
+|                       |                                                      |
++-----------------------+------------------------------------------------------+
+|   Install Directory   |   pdk_AMX_<version>\\packages\\ti\\starterware       |
+|                       |                                                      |
++-----------------------+------------------------------------------------------+
+|   Endian Support      |   Little                                             |
+|                       |                                                      |
++-----------------------+------------------------------------------------------+
+|   Linker Path         |   PDK_INSTALL_DIR\\packages\\ti\\starterware\\binary |
+|                       |                                                      |
++-----------------------+------------------------------------------------------+
+|   Include Paths       |   PDK_INSTALL_DIR\\packages\\ti\\starterware\\include|
+|                       |                                                      |
++-----------------------+------------------------------------------------------+
 
 
 AM57x/K2x/C66x/C674x
@@ -92,9 +92,9 @@ CSL is common package supporting multiple devices.Software layer using
 CSL source would need to pass compile time define -DSOC_XXX. Refer
 ti\csl\soc.h for list of devices/SOC's
 
-| Refer list of APIs/interfaces available under
-  <PDK_INSTALL_DIR\packages\ti\csl> directory
-
+Refer list of APIs/interfaces available under <PDK_INSTALL_DIR\\packages\\ti\\csl> directory.
+  
+  
 +--------------------------+----------------------------------------+
 |                   Chip Support Library Summary                    |
 +==========================+========================================+
@@ -104,16 +104,16 @@ ti\csl\soc.h for list of devices/SOC's
 |   Install Package        |   PDK                                  |
 |                          |                                        |
 +--------------------------+----------------------------------------+
-|   Install Directory      |   PDK_INSTALL_DIR\packages\ti\csl      |
+|   Install Directory      |   PDK_INSTALL_DIR\\packages\\ti\\csl   |
 |                          |                                        |
 +--------------------------+----------------------------------------+
 |   Endian Support         |   Little                               |
 |                          |                                        |
 +--------------------------+----------------------------------------+
-|   Linker Path            |   PDK_INSTALL_DIR\packages\ti\csl      |
+|   Linker Path            |   PDK_INSTALL_DIR\\packages\\ti\\csl   |
 |                          |                                        |
 +--------------------------+----------------------------------------+
-|   Include Paths          |   $(TI_PDK_INSTALL_DIR)\packages\      |
+|   Include Paths          |   $(TI_PDK_INSTALL_DIR)\\packages\\    |
 |                          |                                        |
 +--------------------------+----------------------------------------+
 |   Reference Guides       |   See docs under Install Directory     |
@@ -143,9 +143,9 @@ supported with the CSL library:
 
 In order build the projects:
 
--  Navigate to pdk_[soc]_[version]\packages
+-  Navigate to pdk_[soc]_[version]\\packages
 -  Run pdksetupenv.bat (windows) OR pdksetupenv.sh (linux).
--  Navigate to pdk_[soc]_[version]\packages\ti\csl
+-  Navigate to pdk_[soc]_[version]\\packages\\ti\\csl
 
 All CSL-FL examples can be cleaned and rebuilt with the following
 commands on windows:
@@ -164,7 +164,7 @@ commands on linux:
     ~/ti/pdk_[soc]_[version]/packages/ti/csl$ make apps
 
 -  All the output binary files will be generated in common location i.e.
-   pdk_[soc]_[version]\packages\ti\binary\[EXAMPLE]\bin\[BOARD]\\
+   pdk_[soc]_[version]\\packages\\ti\\binary\\[EXAMPLE]\\bin\\[BOARD]\\
 
 -  DCAN RTOS example
 
@@ -174,6 +174,4 @@ Refer to the readme document at below path for more details.
 <PDK Root>/packages/ti/csl/example/dcan/dcanLoopback
 
 | 
-
-.. raw:: html
 

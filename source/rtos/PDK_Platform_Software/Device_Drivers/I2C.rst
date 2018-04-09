@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_I2C
 
-.. rubric::  Introduction
-   :name: introduction
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 I2C module provides an interface to any I2C-bus-compatible device
 accessible via I2C serial bus. External components attached to I2C bus
@@ -26,22 +29,14 @@ In addition driver supports following modes of operation:
    user-provided hook function. Only interrupt based callback is
    supported.
 
-.. raw:: html
+.. note::
+   
+   If I2C peripheral is in reset during a transfer, it can cause the I2C
+   bus to hang. I2C V0 IP (Keystone SoCs) does not have hardware support to
+   recover the I2C bus from hanging, user needs to power cycle the board as
+   a workaround. For I2C V1 IP (AM3/4/5 SoCs), the application can call
+   I2C_control() API and use I2C_CMD_RECOVER_BUS to recover the I2C bus.
 
-   <div
-   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
-
-**NOTE**
-
-If I2C peripheral is in reset during a transfer, it can cause the I2C
-bus to hang. I2C V0 IP (Keystone SoCs) does not have hardware support to
-recover the I2C bus from hanging, user needs to power cycle the board as
-a workaround. For I2C V1 IP (AM3/4/5 SoCs), the application can call
-I2C_control() API and use I2C_CMD_RECOVER_BUS to recover the I2C bus.
-
-.. raw:: html
-
-   </div>
 
 .. rubric::  Firmware
    :name: firmware
@@ -54,8 +49,11 @@ additional details.
 
 | 
 
-.. rubric::  Driver Configuration
-   :name: driver-configuration
+User Interface
+--------------
+
+Driver Configuration
+^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric::  **Board Specific Configuration**
    :name: board-specific-configuration
@@ -70,7 +68,7 @@ details.
 Once the board specific configuration is complete driver API I2C_init()
 can be called to initialize driver
 
-.. rubric::  **I2C Configuration Structure**\ 
+.. rubric::  **I2C Configuration Structure** 
    :name: i2c-configuration-structure
 
 I2C_soc.c file binds driver with hardware attributes on the board
@@ -78,10 +76,10 @@ through I2C_config structure. This structure must be provided to I2C
 driver. It must be initialized before the I2C_init() function is called
 and cannot be changed afterwards. For details about the individual
 fields of this structure, see the Doxygen help by opening
-PDK_INSTALL_DIR\packages\ti\drv\i2c\docs\doxygen\html\index.html.
+PDK_INSTALL_DIR\\packages\\ti\\drv\\i2c\\docs\\doxygen\\html\\index.html.
 
-.. rubric::  **APIs**
-   :name: apis
+APIs
+^^^^^
 
 API reference for application:
 
@@ -115,83 +113,86 @@ API reference for application:
     /* I2C transaction failed */
     } 
 
-.. rubric::  Examples
-   :name: examples
+Application
+------------
 
-| Refer Release Note for I2C support across different EVMs
+Examples
+^^^^^^^^
+
+Refer Release Note for I2C support across different EVMs
 
 +-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
+|| Name                 || Description          ||  Expected Results    |
 +=======================+=======================+=======================+
-| I2C_EepromRead        | Simple example to     | Following prints will |
-| Example application   | read fixed number     | come on console based |
-|                       | of bytes from         | on pass/fail          |
-|                       | EEPROM on board and   | criteria:             |
-|                       | compares it with      |                       |
-|                       | expected data.        | **Pass criteria:**    |
-|                       |                       |                       |
-|                       |                       | EEPROM data matched   |
-|                       |                       | All tests have        |
-|                       |                       | passed.               |
+| I2C_EepromRead        || Simple example to    || Following prints will|
+| Example application   | read fixed number     |  come on console based|
+|                       | of bytes from         |  on pass/fail         |
+|                       | EEPROM on board and   |  criteria:            |
+|                       | compares it with      ||                      |
+|                       | expected data.        || **Pass criteria:**   |
+|                       |                       ||                      |
+|                       |                       || EEPROM data matched  |
+|                       |                       |   All tests have      |
+|                       |                       |   passed.             |
 +-----------------------+-----------------------+-----------------------+
-| I2C_TestApplication   | Driver Unit Test      | Following prints will |
-|                       | application for       | come on console based |
-|                       | additional I2C        | on pass/fail          |
-|                       | speed                 | criteria:             |
-|                       |                       |                       |
-|                       |                       | **Pass criteria:**    |
-|                       |                       |                       |
-|                       |                       | I2C Test: 400Kbps:    |
-|                       |                       | PASS                  |
-|                       |                       |                       |
-|                       |                       | I2C Test: 100Kbps:    |
-|                       |                       | PASS                  |
-|                       |                       |                       |
-|                       |                       | All tests have        |
-|                       |                       | passed.               |
+| I2C_TestApplication   || Driver Unit Test     || Following prints will|
+|                       | application for       |  come on console based|
+|                       | additional I2C        |  on pass/fail         |
+|                       | speed                 |  criteria:            |
+|                       |                       ||                      |
+|                       |                       || **Pass criteria:**   |
+|                       |                       ||                      |
+|                       |                       || I2C Test: 400Kbps:   |
+|                       |                       |  PASS                 |
+|                       |                       ||                      |
+|                       |                       || I2C Test: 100Kbps:   |
+|                       |                       |  PASS                 |
+|                       |                       ||                      |
+|                       |                       || All tests have       |
+|                       |                       |  passed.              |
 +-----------------------+-----------------------+-----------------------+
-| I2C_TemperatureSensor | Example to get the    | Following prints will |
-|                       | temperature value     | come on console based |
-|                       | from the temperature  | on pass/fail          |
-|                       | sensor and displays   | criteria:             |
-|                       | on the serial         |                       |
-|                       | console.              | **Pass criteria:**    |
-|                       |                       |                       |
-|                       |                       | Temperature =         |
-|                       |                       | "value in             |
-|                       |                       | centigrades" C        |
-|                       |                       | All tests have        |
-|                       |                       | passed.               |
+| I2C_TemperatureSensor || Example to get the   || Following prints will|
+|                       | temperature value     |  come on console based|
+|                       | from the temperature  |  on pass/fail         |
+|                       | sensor and displays   |  criteria:            |
+|                       | on the serial         ||                      |
+|                       | console.              || **Pass criteria:**   |
+|                       |                       ||                      |
+|                       |                       || Temperature =        |
+|                       |                       |  "value in            |
+|                       |                       |  centigrades" C       |
+|                       |                       |  All tests have       |
+|                       |                       |  passed.              |
 +-----------------------+-----------------------+-----------------------+
-| I2C_master/slave      | Application           | Following prints will |
-|                       | demonstrates          | come on console based |
-|                       | master/slave          | on pass/fail          |
-|                       | transfer of I2C.      | criteria:             |
-|                       | Application use       |                       |
-|                       | case requires two     | **Pass criteria:**    |
-|                       | EVMs. One acts as     |                       |
-|                       | Master and the        | All tests have        |
+| I2C_master/slave      || Application          || Following prints will|
+|                       | demonstrates          |  come on console based|
+|                       | master/slave          |  on pass/fail         |
+|                       | transfer of I2C.      |  criteria:            |
+|                       | Application use       ||                      |
+|                       | case requires two     || **Pass criteria:**   | 
+|                       | EVMs. One acts as     ||                      |
+|                       | Master and the        || All tests have       |
 |                       | other as slave. I2C   | passed.               |
 |                       | connections           |                       |
 |                       | information and       |                       |
 |                       | addtional details     |                       |
 |                       | are as follows:       |                       |
-|                       |                       |                       |
-|                       | AM57xx boards I2C bus |                       |
+|                       ||                      |                       |
+|                       || AM57xx boards I2C bus|                       |
 |                       | connection on J9      |                       |
 |                       | (master board <-->    |                       |
 |                       | slave board)          |                       |
-|                       |                       |                       |
-|                       | pin22 (SCL)<-->       |                       |
+|                       ||                      |                       |
+|                       || pin22 (SCL)<-->      |                       |
 |                       | pin22 (SCL)           |                       |
-|                       |                       |                       |
-|                       | pin24 (SDA)<--> pin24 |                       |
+|                       ||                      |                       |
+|                       || pin24 (SDA)<--> pin24|                       |
 |                       | (SDA)                 |                       |
-|                       |                       |                       |
-|                       | pin21 (GND)<--> pin21 |                       |
+|                       ||                      |                       |
+|                       || pin21 (GND)<--> pin21|                       |
 |                       | (GND)                 |                       |
-|                       |                       |                       |
-|                       | K2G boards I2C bus    |                       |
+|                       ||                      |                       |
+|                       || K2G boards I2C bus   |                       |
 |                       | connection on J12     |                       |
 |                       | (master board <-->    |                       |
 |                       | slave board)          |                       |
@@ -201,9 +202,9 @@ API reference for application:
 |                       | pin30 (SDA)           |                       |
 |                       | pin50 (GND)<-->       |                       |
 |                       | pin50 (GND)           |                       |
+|                       ||                      |                       |
 |                       |                       |                       |
-|                       |                       |                       |
-|                       | OMAPL138/C6748        |                       |
+|                       || OMAPL138/C6748       |                       |
 |                       | boards I2C bus        |                       |
 |                       | connection on J15     |                       |
 |                       | (master board <-->    |                       |
@@ -214,8 +215,8 @@ API reference for application:
 |                       | pin15 (SDA)           |                       |
 |                       | pin35 (GND)<-->       |                       |
 |                       | pin35 (GND)           |                       |
-|                       |                       |                       |
-|                       | Run                   |                       |
+|                       ||                      |                       |
+|                       || Run                  |                       |
 |                       | "I2C_Slave_<BoardTy   |                       |
 |                       | pe>_<arm/c66x/m4>Test |                       |
 |                       | Project"              |                       |
@@ -227,35 +228,26 @@ API reference for application:
 |                       | on Master EVM.        |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. raw:: html
+.. note::
+   
+   I2C_Test Application supports write test on Keystone II EVMs, by default
+   write test is disabled, user can enable the write test by defining
+   I2C_EEPROM_WRITE_ENABLE in test/eeprom_read/src/I2C_board.h.
+   I2C_TemperatureSensor Application is supported only on AM572x GP EVM.
 
-   <div
-   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
+Additional References
+---------------------
 
-**NOTE**
++-----------------------+------------------------------------------+
+| **Document**          |  **Location**                            |
++-----------------------+------------------------------------------+
+| API Reference Manual  | $(TI_PDK_INSTALL_DIR)\\packages\\ti      |
+|                       | \\drv\\i2c\\docs\\doxygen\\html\\index.  |
+|                       | html                                     |
++-----------------------+------------------------------------------+
+| Release Notes         | $(TI_PDK_INSTALL_DIR)\\packages\\ti      |
+|                       | \\drv\\i2c\\docs\\ReleaseNotes_I2C_LL    |
+|                       | D.pdf                                    |
++-----------------------+------------------------------------------+
 
-I2C_Test Application supports write test on Keystone II EVMs, by default
-write test is disabled, user can enable the write test by defining
-I2C_EEPROM_WRITE_ENABLE in test/eeprom_read/src/I2C_board.h.
-I2C_TemperatureSensor Application is supported only on AM572x GP EVM.
-
-.. raw:: html
-
-   </div>
-
-.. rubric::  Additional References
-   :name: additional-references
-
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\i2c\docs\doxygen\html\index. |
-|                                   | html                              |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\i2c\docs\ReleaseNotes_I2C_LL |
-|                                   | D.pdf                             |
-+-----------------------------------+-----------------------------------+
-
-.. raw:: html
+| 

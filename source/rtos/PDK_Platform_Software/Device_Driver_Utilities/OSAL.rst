@@ -1,7 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_OSAL 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+--------
+
+Introduction
+^^^^^^^^^^^^
 
 The OSAL library provides operating system abstraction layer API sample
 implementations that are required for processor SDK drivers. Scope of
@@ -17,20 +20,22 @@ for RTOS or bare metal drivers
 
    -  Please refer to component release notes
 
-.. rubric:: Operating System Extension
-   :name: operating-system-extension
+Operating System Extension
+--------------------------
 
-| **APIs**
-| Porting of OSAL component will enable extending PDK components to
-  additional OS environment. Reference top level API header file 
-  includes:
+APIs
+^^^^
+
+Porting of OSAL component will enable extending PDK components to
+additional OS environment. Reference top level API header file 
+includes:
 
 ::
 
     #include <ti/osal/osal.h>
 
-.. rubric:: Application Integration Details
-   :name: application-integration-details
+Application Integration Details
+-------------------------------
 
 **Baremetal or No-OS Use case**
 
@@ -70,8 +75,11 @@ RTSC configuration lines before any other processor sdk components
 
 | 
 
-.. rubric:: Example
-   :name: example
+Application
+------------
+
+Examples
+^^^^^^^^
 
 .. rubric:: Sysbios Example
    :name: sysbios-example
@@ -223,5 +231,35 @@ from idkAM571x on the UART console.
 
     All tests have passed.
 
-.. raw:: html
+
+Additional References
+---------------------
+
++---------------------------------------------------------------------------------------------------+
+|                    **Operating System Abstraction Layer Library Summary**                         |
++---------------------+-----------------------------------------------------------------------------+
+| **Component Type**  |                               **Library**                                   |
++---------------------+-----------------------------------------------------------------------------+
+| Install Package     | PDK                                                                         |
++---------------------+-----------------------------------------------------------------------------+
+| Install Directory   | pdk_AMX_<version>\\packages\\ti\\osal                                       |
++---------------------+-----------------------------------------------------------------------------+
+| Project Type        | `Eclipse RTSC`_                                                             |
++---------------------+-----------------------------------------------------------------------------+
+| Endian Support      | Little                                                                      |
++---------------------+-----------------------------------------------------------------------------+
+| Linker Path         | $(TI_PDK_INSTALL_DIR)\\packages\\ti\\osal                                   |
++---------------------+-----------------------------------------------------------------------------+
+| Linker Sections     | .vecs , .switch, .args, .cio                                                |
++---------------------+-----------------------------------------------------------------------------+
+| Include Paths       | $(TI_PDK_INSTALL_DIR)\\packages\\ti\\osal                                   |
++---------------------+-----------------------------------------------------------------------------+
+| Reference Guides    | $(TI_PDK_INSTALL_DIR)\\packages\\ti\\osal\\docs\\doxygen\\html\\index.html  |
++---------------------+-----------------------------------------------------------------------------+
+| Release Notes       | $(TI_PDK_INSTALL_DIR)\\packages\\ti\\osal\\docs\\ReleaseNotes_OSAL.pdf      |
++---------------------+-----------------------------------------------------------------------------+
+
+.. _Eclipse RTSC: http://www.eclipse.org/rtsc/
+
+| 
 
