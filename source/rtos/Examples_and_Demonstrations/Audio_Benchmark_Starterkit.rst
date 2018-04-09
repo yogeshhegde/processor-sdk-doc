@@ -63,20 +63,11 @@ Software Dependencies
 -  `Processor SDK RTOS v3.3 and later <Overview.html#processor-sdk-for-rtos>`__
 -  `Code Composer Studio IDE Environment v7 and later <Overview.html#code-composer-studio>`__
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-**For correct version of Code Composer Studio to download, please refer
-to the `Release Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
-corresponding to the Processor SDK RTOS version that you have
-installed**
-
-.. raw:: html
-
-   </div>
+.. note::
+   **For correct version of Code Composer Studio to download, please refer
+   to the `Release Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
+   corresponding to the Processor SDK RTOS version that you have
+   installed**
 
 Supported Hardware
 ==================
@@ -129,19 +120,10 @@ environment as described in :ref:`Processor SDK RTOS Setup environment <Build-Th
 #. **set SDK_INSTALL_PATH = C:\\ti\\<Install directory>**
 #. **setupenv.bat**
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If developers install CCS or Processor SDK RTOS under Custom path then
-they need to refer to the setup instructions described under 
-:ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
-
-.. raw:: html
-
-   </div>
+.. note::
+   If developers install CCS or Processor SDK RTOS under Custom path then
+   they need to refer to the setup instructions described under 
+   :ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
 | 
 **Step2 : Invoke Make from root directory**
@@ -152,20 +134,11 @@ to build the entire package. To build the benchmark examples:
 #. **cd <PROC_SDK_INSTALL_PATH>/demos/audio-benchmark-starterkit**
 #. **make all**
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The build picks up the SOC information from the SDK setup. Also, in the
-make environment the benchmark application is built to send benchmark
-logs to UART console so that there is no dependency on the CCS IDE
-environment
-
-.. raw:: html
-
-   </div>
+.. note::
+   The build picks up the SOC information from the SDK setup. Also, in the
+   make environment the benchmark application is built to send benchmark
+   logs to UART console so that there is no dependency on the CCS IDE
+   environment
 
 | 
 For Other supported options, please type
@@ -201,25 +174,17 @@ script provided in the root directory of the starterkit.
 #. **set TOOLS_INSTALL_PATH = C:\\ti\\<CCS Install directory>**
 #. **setupenv.bat**
 
-**Note:** CCS by default is installed in the path C:\\ti\\ccsv7 so
-TOOLS_INSTALL_PATH=C:\\ti
+.. note::
+   CCS by default is installed in the path C:\\ti\\ccsv7 so
+   TOOLS_INSTALL_PATH=C:\\ti
 
 Developers are required to setup the Processor SDK RTOS build
 environment as described in :ref:`Processor SDK RTOS Setup environment <Build-The-SDK-Setup-Environment-label>`
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
+.. note::
 If developers install CCS or Processor SDK RTOS under a Custom path then
 they need to refer to the setup instructions described under 
 :ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -255,29 +220,20 @@ Description of arguments:
      d) BenchmarkProjectCreate.bat K2H evmK2H FFT
                  - Creates FFT module project for K2H soc for evmK2H
 
-.. raw:: html
+.. note::
+   **Known issue with Processor SDK RTOS 3.3**
+   The BenchmarkProjectCreate script uses text files .txt from scripts
+   folder to generate the CCS projects. The name for the demo folder was
+   updated from "audio-benchmark-kit" to "audio-benchmark-starterkit". This
+   will require CCS users to update the name in the .txt file before
+   generating the scripts.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-**Known issue with Processor SDK RTOS 3.3**
-The BenchmarkProjectCreate script uses text files .txt from scripts
-folder to generate the CCS projects. The name for the demo folder was
-updated from "audio-benchmark-kit" to "audio-benchmark-starterkit". This
-will require CCS users to update the name in the .txt file before
-generating the scripts.
-
-For Example if you are using K2G platform locate file
-Benchmark_FFT_evmK2G_c66ExampleProject.txt,
-Benchmark_FIR_evmK2G_c66ExampleProject.txt and
-Benchmark_IIR_evmK2G_c66ExampleProject.txt and update the demo name in
-the text files from "audio-benchmark-kit" to
-"audio-benchmark-starterkit"
-
-.. raw:: html
-
-   </div>
+   For Example if you are using K2G platform locate file
+   Benchmark_FFT_evmK2G_c66ExampleProject.txt,
+   Benchmark_FIR_evmK2G_c66ExampleProject.txt and
+   Benchmark_IIR_evmK2G_c66ExampleProject.txt and update the demo name in
+   the text files from "audio-benchmark-kit" to
+   "audio-benchmark-starterkit"
 
 **Step 3: Import Generated CCS Projects in CCS Workspace**
 
@@ -332,19 +288,10 @@ Instructions specific to supported EVMs:
 -  `AM572x GP EVM CCS
    Setup <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup#Connect_without_a_SD_card_boot_image>`__
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Please refer to `Hardware User Guide <Release_Specific.html#supported-platforms-and-versions>`__
-corresponding to each supported EVM so setup the boot switches to No
-boot if available
-
-.. raw:: html
-
-   </div>
+.. note::
+   Please refer to `Hardware User Guide <Release_Specific.html#supported-platforms-and-versions>`__
+   corresponding to each supported EVM so setup the boot switches to No
+   boot if available
 
 | 
 **Step 3: Loading and Running Benchmark application on the DSP**
@@ -430,23 +377,13 @@ the twiddle factor coefficients, ``ptr_w``.
 
 | 
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  For implementation details of this FFT computation refer to
-   documentation provided in `Additional
-   resources <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit#Additional_resources>`__
--  For Real input sequences, efficient FFT Implementation is described
-   here
-   `Efficient_FFT_Computation_of_Real_Input <http://processors.wiki.ti.com/index.php/Efficient_FFT_Computation_of_Real_Input>`__
-
-.. raw:: html
-
-   </div>
+.. note::
+   -  For implementation details of this FFT computation refer to
+      documentation provided in `Additional
+      resources <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit#Additional_resources>`__
+   -  For Real input sequences, efficient FFT Implementation is described
+      here
+      `Efficient_FFT_Computation_of_Real_Input <http://processors.wiki.ti.com/index.php/Efficient_FFT_Computation_of_Real_Input>`__
 
 .. rubric:: Single Precision FIR: DSPF_sp_fir_cplx (Complex FIR Filter)
    :name: single-precision-fir-dspf_sp_fir_cplx-complex-fir-filter
@@ -514,20 +451,11 @@ and instructions in L2 SRAM. Please refer to the linker command files
 include in the src/common folder to see how the instructions and data
 can be place in DSP internal L2 memory.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-In application use cases where audio data needs to be place in onchip
-shared memory (OCMC or MSMC) and DDR memory, we recommend that users
-move data from external memory to L2 for processing using EDMA or enable
-DSP cache using CSL to optimize performance.
-
-.. raw:: html
-
-   </div>
+.. note::
+   In application use cases where audio data needs to be place in onchip
+   shared memory (OCMC or MSMC) and DDR memory, we recommend that users
+   move data from external memory to L2 for processing using EDMA or enable
+   DSP cache using CSL to optimize performance.
 
 Compiler Optimization Flags
 ===========================
@@ -540,21 +468,12 @@ CCS Project settings to modify the compiler options.
 
 | 
 
-.. raw:: html
+.. note::
+   For more Details on recommended C6000 Compiler options refer
+   `C6000_Compiler:_Recommended_Compiler_Options <http://processors.wiki.ti.com/index.php/C6000_Compiler:_Recommended_Compiler_Options>`__
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For more Details on recommended C6000 Compiler options refer
-`C6000_Compiler:_Recommended_Compiler_Options <http://processors.wiki.ti.com/index.php/C6000_Compiler:_Recommended_Compiler_Options>`__
-
--  C6000 compiler documentation: `C6000 Compiler v8.x User
-   Guide <http://www.ti.com/lit/ug/sprui04a/sprui04a.pdf>`__
-
-.. raw:: html
-
-   </div>
+   -  C6000 compiler documentation: `C6000 Compiler v8.x User
+      Guide <http://www.ti.com/lit/ug/sprui04a/sprui04a.pdf>`__
 
 SOC Integration and Optimization
 ================================
@@ -578,20 +497,11 @@ depending on the environment setup
    audio starterkit, this initialization is done using board library
    which is linked to the secondary bootloader and the benchmark tests.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If the clocks are not configured the DSP will run at speed of the input
-clock rather than at the device speed grade. Hence if the clocks are not
-configured correctly the benchmarks will run much slower than
-anticipated but the cycle count will show the same.
-
-.. raw:: html
-
-   </div>
+.. note::
+   If the clocks are not configured the DSP will run at speed of the input
+   clock rather than at the device speed grade. Hence if the clocks are not
+   configured correctly the benchmarks will run much slower than
+   anticipated but the cycle count will show the same.
 
 Benchmarking using DSP TSCH/TSCL registers
 ==========================================
@@ -676,13 +586,13 @@ Benchmark results
 | cascade biquad)       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
 
-Notes:
+.. note::
 
--  All code and data for the benchmark tests is placed in L2 Memory.
--  C6000 compiler version used was CGTools v8.1.3
--  Bench marks were obtained from C66x DSP on K2G and C674x DSP on
-   OMAPL138 LCDK
--  FFT and FIR benchmarks were obtained using the DSPLIB functions.
+   -  All code and data for the benchmark tests is placed in L2 Memory.
+   -  C6000 compiler version used was CGTools v8.1.3
+   -  Bench marks were obtained from C66x DSP on K2G and C674x DSP on
+      OMAPL138 LCDK
+   -  FFT and FIR benchmarks were obtained using the DSPLIB functions.
 
 Support
 =======

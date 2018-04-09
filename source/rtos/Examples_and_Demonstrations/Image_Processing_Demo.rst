@@ -35,31 +35,14 @@ devices and EVM are supported:
 -  C667x, on the C667x EVM
 -  K2H, on the K2H EVM
 
-.. raw:: html
+.. note::
+   Before running image demo for AM572x and K2H platforms on arm and c66x
+   core , we need to increase stack size in netctrl.c file from 2048 to
+   4096 and rebuild the NDK library and driver, otherwise the demo fails
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+.. note::
+   This demo has been only verified with the Microsoft Internet Explorer
 
-**NOTE**
-Before running image demo for AM572x and K2H platforms on arm and c66x
-core , we need to increase stack size in netctrl.c file from 2048 to
-4096 and rebuild the NDK library and driver, otherwise the demo fails
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This demo has been only verified with the Microsoft Internet Explorer
-
-.. raw:: html
-
-   </div>
 
 Requirements
 ============

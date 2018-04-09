@@ -186,19 +186,11 @@ Porting to Custom Board
            " -L${TI_PDK_INSTALL_DIR}/packages/ti/board/lib/evmAM572x/a15/release/
              -l:ti.board.aa15fg
 
-.. raw:: html
+.. note::
+   Currently for AM572x there is also dependency on the
+   GPIO_evmAM572x_board.c & GPIO_board.h. These files can be modified to
+   customize for the customer board.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Currently for AM572x there is also dependency on the
-GPIO_evmAM572x_board.c & GPIO_board.h. These files can be modified to
-customize for the customer board.
-
-.. raw:: html
-
-   </div>
 
 .. raw:: html
 

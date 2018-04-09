@@ -105,19 +105,11 @@ File Based Demo
 How to Build the Demo
 ---------------------
 
-.. raw:: html
+.. note::
+   In order to make the following build procedure to work, AER and VOLIB
+   have to be installed at the same location as the Processor SDK RTOS
+   4.x.x
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-In order to make the following build procedure to work, AER and VOLIB
-have to be installed at the same location as the Processor SDK RTOS
-4.x.x
-
-.. raw:: html
-
-   </div>
 
 AM572x GP EVM
 ^^^^^^^^^^^^^
@@ -313,19 +305,10 @@ Circular Microphone Board Demo
 How to Build the Demo
 ---------------------
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-In order to make the following build procedure to work, AER and VOLIB
-have to be installed at the same location as the Processor SDK RTOS
-4.x.x
-
-.. raw:: html
-
-   </div>
+.. note::
+   In order to make the following build procedure to work, AER and VOLIB
+   have to be installed at the same location as the Processor SDK RTOS
+   4.x.x
 
 K2G EVM
 ^^^^^^^

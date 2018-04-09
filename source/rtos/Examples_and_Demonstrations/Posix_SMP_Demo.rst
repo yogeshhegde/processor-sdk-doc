@@ -156,36 +156,25 @@ two threads to four threads does not appreciably improve the DMIPS, so
 the demo completes. This behavior is expected because the demo is only
 running on two cores in this example.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  A15 cores may usually be connected to directly; on the AM572x, the M4
-   IPUs must first be initialized by the gel scripts (Scripts > AM572x
-   MULTICORE initialization > IPUxSSClkEnable_API)
--  If the K2 demo will not run, try updating to the latest emupack by
-   doing "Help/Check For Updates" and selecting "Keystone2 device
-   support" update (only). There are additional instructions for
-   configuring groups, etc. at `SMP
-   Debug <http://processors.wiki.ti.com/index.php/SMP_Debug>`__.
--  If the primary core of an SMP group will not allow running after
-   loading the demo, try pausing the linked cores and then running all
-   the cores in a group
--  For TI-RTOS documentation for enabling SMP, refer to
-   `SMP/BIOS <http://processors.wiki.ti.com/index.php/SMP/BIOS>`__. The
-   POSIX demo in the Processor SDK RTOS packages with C66x does not
-   support SMP. This is a POSIX pthread demo intended to run Dhrystone
-   on one C66x core without SMP.
--  Some of the DMIPS values may not be accurate, but the values will
-   increase proportionally with the number of cores
-
-.. raw:: html
-
-   </div>
-| 
+.. note::
+   -  A15 cores may usually be connected to directly; on the AM572x, the M4
+      IPUs must first be initialized by the gel scripts (Scripts > AM572x
+      MULTICORE initialization > IPUxSSClkEnable_API)
+   -  If the K2 demo will not run, try updating to the latest emupack by
+      doing "Help/Check For Updates" and selecting "Keystone2 device
+      support" update (only). There are additional instructions for
+      configuring groups, etc. at `SMP
+      Debug <http://processors.wiki.ti.com/index.php/SMP_Debug>`__.
+   -  If the primary core of an SMP group will not allow running after
+      loading the demo, try pausing the linked cores and then running all
+      the cores in a group
+   -  For TI-RTOS documentation for enabling SMP, refer to
+      `SMP/BIOS <http://processors.wiki.ti.com/index.php/SMP/BIOS>`__. The
+      POSIX demo in the Processor SDK RTOS packages with C66x does not
+      support SMP. This is a POSIX pthread demo intended to run Dhrystone
+      on one C66x core without SMP.
+   -  Some of the DMIPS values may not be accurate, but the values will
+      increase proportionally with the number of cores
  
 How to Build the Demo
 =====================

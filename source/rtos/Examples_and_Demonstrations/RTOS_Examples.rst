@@ -7,19 +7,10 @@ The SYS/BIOS examples gets user started with development of code using a
 real-time operating system. These are simple examples that does not get
 into details of software components provided in the SDK.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-All instructions on this wiki have been created using CCSv6 but should
-apply to CCSv7. Please report any issues by posting on `E2E
-forums <https://e2e.ti.com/>`__
-
-.. raw:: html
-
-   </div>
+.. note::
+   All instructions on this wiki have been created using CCSv6 but should
+   apply to CCSv7. Please report any issues by posting on `E2E
+   forums <https://e2e.ti.com/>`__
 
 ARM Cortex-A15
 ==============
@@ -30,19 +21,10 @@ sample we will use the AM572x device to describe the steps. The same
 steps can be used for create hello world examples for A15 cores in
 Keystone 2 family of devices.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  The K2G, K2E and K2H devices, can be located under Unclassified
-   devices in the Resource Explorer. Refer below Screenshot for Keystone II
-
-.. raw:: html
-
-   </div>
+   -  The K2G, K2E and K2H devices, can be located under Unclassified
+      devices in the Resource Explorer. Refer below Screenshot for Keystone II
 
 .. Image:: ../images/KSII_RS.png
 
@@ -89,12 +71,9 @@ file:
 
    </div>
 
-.. raw:: html
-
-   </div>
-
-**Note:** You also need to replace the nosys library in linker with
-rdimon which is the Semi-Hosting enabled BSP library.
+.. note::
+   You also need to replace the nosys library in linker with
+   rdimon which is the Semi-Hosting enabled BSP library.
 
 Right click on project --> Show Build Settings... --> Build --> GNU
 Linker --> Libraries
@@ -168,8 +147,9 @@ file:
 
    </div>
 
-**Note:** You also need to replace the nosys library in linker with
-rdimon which is the Semi-Hosting enabled BSP library.
+.. note::
+   You also need to replace the nosys library in linker with
+   rdimon which is the Semi-Hosting enabled BSP library.
 
 Right click on project --> Show Build Settings... --> Build --> GNU
 Linker --> Libraries
@@ -243,8 +223,9 @@ file:
 
    </div>
 
-**Note:** You also need to replace the nosys library in linker with
-rdimon which is the Semi-Hosting enabled BSP library.
+.. note::
+   You also need to replace the nosys library in linker with
+   rdimon which is the Semi-Hosting enabled BSP library.
 
 Right click on project --> Show Build Settings... --> Build --> GNU
 Linker --> Libraries
@@ -319,30 +300,18 @@ sample we will use the AM572x device to describe the steps but the same
 steps can be used for create hello world examples for C66x cores in
 Keystone I and Keystone 2 family of devices.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  The C66x examples corresponding Keystone I devices can be located
-   under C66x Multi-core DSP devies in the Resource Explorer. Refer
-   below screenshot
-
-.. raw:: html
-
-   </div>
+   -  The C66x examples corresponding Keystone I devices can be located
+      under C66x Multi-core DSP devies in the Resource Explorer. Refer
+      below screenshot
 
 .. Image:: ../images/KSI_RS.png
 
-**NOTE**
--  The K2G, K2E and K2H devices, can be located under Unclassified
-devices in the Resource Explorer. Refer below screen shot
+.. note::
 
-.. raw:: html
-
-   </div>
+   -  The K2G, K2E and K2H devices, can be located under Unclassified
+      devices in the Resource Explorer. Refer below screen shot
 
 .. Image:: ../images/KSII_RS.png
 
@@ -400,19 +369,10 @@ sample we will use the C6748 device to describe the steps but the same
 steps can be used for create hello world examples for C674x cores in
 OMAPL1x/DA8x family of devices.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  Locate the appropriate device that you are using to make sure the
-   correct SYSBIOS platform definiition gets used in the build
-
-.. raw:: html
-
-   </div>
+   -  Locate the appropriate device that you are using to make sure the
+      correct SYSBIOS platform definiition gets used in the build
 
 1. Create a work space folder ( Eg. tirtos_hello_workspace) that can be
 used for Hello Example project, and start CCS. You may be prompted with

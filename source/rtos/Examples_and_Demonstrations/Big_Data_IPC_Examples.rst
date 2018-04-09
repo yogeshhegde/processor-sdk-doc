@@ -69,14 +69,16 @@ reinitializes itself for future runs.
 Then the host receives back the remaining returned messages before
 shutting down.
 
-NOTE: The size of the big data buffer is configurable compile time by
-changing value of the define BIGDATA_SIZE in shared/AppCommon.h
+.. note::
+   The size of the big data buffer is configurable compile time by
+   changing value of the define BIGDATA_SIZE in shared/AppCommon.h
 
 Host Linux example
 ==================
 
-NOTE: Host linux example is only available starting from Processor SDK
-4.0.0 release for AM57xx platform
+.. note::
+   Host linux example is only available starting from Processor SDK
+   4.0.0 release for AM57xx platform
 
 Under the host_linux directory the simple_buffer_example is implemented
 for Host A15 running Linux and DSP core running TI-RTOS.
@@ -119,7 +121,8 @@ using the following steps. Unbind dsp
 
        echo 40800000.dsp > /sys/bus/platform/drivers/omap-rproc/unbind
 
-NOTE: May need to unbind all the other cores as well to avoid issues.
+.. note::
+   May need to unbind all the other cores as well to avoid issues.
 
 Update firmware symbolic link
 
@@ -313,8 +316,9 @@ command.
 
        make big-data-ipc-demo_install
 
-Note: Rules.make file can be edited to change the DESTDIR where the
-binaries will be installed.
+.. note::
+   Rules.make file can be edited to change the DESTDIR where the
+   binaries will be installed.
 
 Source files
 ^^^^^^^^^^^^
@@ -325,22 +329,23 @@ The source files for the example are located at
 
        <processor-sdk_linux-<platform>-<version>/example-applications/big-data-ipc-demo-linux-<version>/host_linux/simple_buffer_example.
 
-| The host directory and dsp directory has the corresponding sources.
-  The shared folder contains some common sources.
-| The main sequence for big data IPC can be followed by looking at
-  host/App.c and dsp/Server.c.
+The host directory and dsp directory has the corresponding sources.
+The shared folder contains some common sources.
+The main sequence for big data IPC can be followed by looking at
+host/App.c and dsp/Server.c.
+|
 
 Memory layout details
 ^^^^^^^^^^^^^^^^^^^^^
 
 The DSP side memory layout can be found in the file
 host_linux/simple_buffer_example/shared/<platform>/config.bld.
-
 Also note the addition of the following section in
 host_linux/simple_buffer_example/shared/<platform>/rsc_table_dsp.h.
+Please note the reserved carve-out in the DSP resource table
 
-Please note the reserved carve-out in the DSP resource table /\* NOTE:
-Make sure this matches what is configured in the linux device tree \*/
+.. note::
+   Make sure this matches what is configured in the linux device tree
 
 #. define DSP_CMEM_IOBUFS 0xA0000000
 #. define PHYS_CMEM_IOBUFS 0xA0000000
