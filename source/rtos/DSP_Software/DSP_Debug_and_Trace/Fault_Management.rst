@@ -91,18 +91,9 @@ However, a version has been created and supplied in
 which already accounts for all resources used the ARM Linux kernel
 delivered with the latest PROCSDK release.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Following the IO halt configuration defined in the FM test source code
-will diable all IO except that used by ARM Linux UBIFS and NFS.
-
-.. raw:: html
-
-   </div>
+.. note::
+   Following the IO halt configuration defined in the FM test source code
+   will diable all IO except that used by ARM Linux UBIFS and NFS.
 
 .. rubric:: Informing Remote DSP Core's of Exception
    :name: informing-remote-dsp-cores-of-exception
@@ -237,23 +228,15 @@ The default list has been configured to exclude all Linux owned IO from
 the halting on exception. This allows the Linux kernel to remain
 operational after DSP exception so that the core dump can be processed.
 
-.. raw:: html
+.. note::
+   It is recommended that the IO halt configuration defined within #if
+   EXCLUDE_LINUX_RESOURCES_FROM_HALT be used in addition to halting AIF and
+   CPDMA if Linux must remain active after a DSP exception occurs. This IO
+   halt configuration has been tested with both UBIFS and NFS. The
+   documented configuration shuts down all IO except those needed by Linux
+   to operate, such as EDMA3 (for access to NAND), the SGMII (for
+   Ethernet), and Linux owned CPPI DMAs.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-It is recommended that the IO halt configuration defined within #if
-EXCLUDE_LINUX_RESOURCES_FROM_HALT be used in addition to halting AIF and
-CPDMA if Linux must remain active after a DSP exception occurs. This IO
-halt configuration has been tested with both UBIFS and NFS. The
-documented configuration shuts down all IO except those needed by Linux
-to operate, such as EDMA3 (for access to NAND), the SGMII (for
-Ethernet), and Linux owned CPPI DMAs.
-
-.. raw:: html
-
-   </div>
 
 FM Global Configuration Parameters
 ----------------------------------

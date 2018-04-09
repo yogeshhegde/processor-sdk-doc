@@ -132,31 +132,13 @@ Graphical representation of any counter/variable that is being logger.
 Also calculates number of occurrences and min, max, average value for
 each counter/variable.
 
-.. raw:: html
+.. note::
+   TIRTOS/SYSBIOS instrumentation is not enabled by default.
+   See User Guide or Tutorials on how to enable this.
 
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-|
-**Note:** TIRTOS/SYSBIOS instrumentation is not enabled by default.
-See User Guide or Tutorials on how to enable this.
-
-.. raw:: html
-
-   </div>
-|
-
-.. raw:: html
-
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-|
-**Note:** More information on the analysis features is available in the
-`System Analyzer User's Guide <http://www.ti.com/lit/pdf/spruh43>`__.
-
-.. raw:: html
-
-   </div>
-|
+.. note::
+   More information on the analysis features is available in the
+   `System Analyzer User's Guide <http://www.ti.com/lit/pdf/spruh43>`__.
 
 Documents and Tutorials
 -----------------------
@@ -387,19 +369,10 @@ For technical discussions and issues, please visit
    http://e2e.ti.com/support/embedded/f/355.aspx <http://e2e.ti.com/support/embedded/f/355.aspx>`__
 -  :ref:`Embedded Processors Documentation: <Index-Processor-SDK-RTOS-label>`
 
-.. raw:: html
-
-    <div
-    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-|
-Note: When asking for help in the forum you should tag your posts in the
-Subject with "System Analyzer", the part number (e.g. "C6678"), and
-component (e.g. "UIA").
-
-.. raw:: html
-
-   </div>
-|
+.. note::
+   When asking for help in the forum you should tag your posts in the
+   Subject with "System Analyzer", the part number (e.g. "C6678"), and
+   component (e.g. "UIA").
 
 For product updates,
 -  Use the CCS/Eclipse Update Manager (see the Getting Started Guide above)
