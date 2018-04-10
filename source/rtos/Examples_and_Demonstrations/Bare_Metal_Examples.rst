@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Bare_Metal_Examples 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+========
 
 The bare-metal examples gets user started with development of code
 without an operating system. These are simple examples that does not get
@@ -13,24 +13,14 @@ If you face any problems with CCS or JTAG, see try these
 `troubleshooting
 steps <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#Troubleshooting>`__.
 
-.. raw:: html
+.. note::
+   All instructions on this wiki have been created using CCSv6 but should
+   apply to CCSv7. Please report any issues by posting on `E2E
+   forums <https://e2e.ti.com/>`__
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-All instructions on this wiki have been created using CCSv6 but should
-apply to CCSv7. Please report any issues by posting on `E2E
-forums <https://e2e.ti.com/>`__
-
-.. raw:: html
-
-   </div>
-
-| 
-
-.. rubric:: ARM Cortex-A15
-   :name: arm-cortex-a15
+ARM Cortex-A15
+==============
 
 In this article, we take a look at creating bare-metal hello world
 examples for Cortex A15 core using pre-built templates in CCS. As a
@@ -38,28 +28,18 @@ sample we will use the AM572x device to describe the steps but the same
 steps can be used for create hello world examples for Cortex A15 cores
 in the Keystone 2 family of devices.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   -  Only major difference between A15 examples for AM572x and Keystone 2
+      is that the Keystone 2 device contain MSMC memory instead of OCMC
+      memory as the shared memory.
+   -  For K2G devices, the hello world template will be created with the
+      .lds file that specifies MSMC and DDR memory sections. For K2E and
+      K2H, the CCS template doesn`t populate the .lds file. K2H & K2E users
+      can choose to use 66AK2G02.lds located at ccsv6\ccs_base\arm\include
+      as reference to add .lds file to their hello world projects.
 
-**NOTE**
-
--  Only major difference between A15 examples for AM572x and Keystone 2
-   is that the Keystone 2 device contain MSMC memory instead of OCMC
-   memory as the shared memory.
--  For K2G devices, the hello world template will be created with the
-   .lds file that specifies MSMC and DDR memory sections. For K2E and
-   K2H, the CCS template doesn`t populate the .lds file. K2H & K2E users
-   can choose to use 66AK2G02.lds located at ccsv6\ccs_base\arm\include
-   as reference to add .lds file to their hello world projects.
-
-.. raw:: html
-
-   </div>
-
-| 
-| 1. Start CCS and create a work space for generating the project.
+1. Start CCS and create a work space for generating the project.
 
 2. Click on File menu option and select New--> CCS Project.
 
@@ -112,20 +92,12 @@ highlighted code lines and save main.c file.
 
    </div>
 
-.. raw:: html
+.. note::
+   For Keystone2 users, the startup_ARMCA15.S and .lds file is not auto
+   populated by CCS. To add these file, right click the project and add
+   files and locate the 66AK2Gxx.lds and startup_ARMCA15.S under the file
+   path ccsvX/ccs_base/arm/include and add them to the project
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For Keystone2 users, the startup_ARMCA15.S and .lds file is not auto
-populated by CCS. To add these file, right click the project and add
-files and locate the 66AK2Gxx.lds and startup_ARMCA15.S under the file
-path ccsvX/ccs_base/arm/include and add them to the project
-
-.. raw:: html
-
-   </div>
 
 6. Ensure that CCSv6 generated linker command file **AM572x.lds**
 contains the following Memory configurations.
@@ -157,39 +129,21 @@ contains the following Memory configurations.
 
    </div>
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For Keystone 2 devices, replace all the OCMC_RAM# regions in the lds
-file and replace it with MSMC memory section as shown below. Refer to
-66AK2G02.lds file in ccs installation under directory path
-ccsv6\ccs_base\arm\include
-
-.. raw:: html
-
-   </div>
+.. note::
+   For Keystone 2 devices, replace all the OCMC_RAM# regions in the lds
+   file and replace it with MSMC memory section as shown below. Refer to
+   66AK2G02.lds file in ccs installation under directory path
+   ccsv6\ccs_base\arm\include
 
 ::
 
        MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */ 
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The .lds file expects users to provide STACKSIZE and HEAPSIZE from
-linker settings. To provide these settings got to Build Settings GNU
-Linker add the following to the Symbols section. Keystone II devices
-require this to be done explicitly in the linker settings
-
-.. raw:: html
-
-   </div>
+.. note::
+   The .lds file expects users to provide STACKSIZE and HEAPSIZE from
+   linker settings. To provide these settings got to Build Settings GNU
+   Linker add the following to the Symbols section. Keystone II devices
+   require this to be done explicitly in the linker settings
 
 ::
 
@@ -212,49 +166,30 @@ configurations --> AM572_DDR3_532MHz_config
 
 .. Image:: ../images/HelloWorldOutput.jpg
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  If the example does not load correctly in the first attempt, reload
-   and **ensure ARM core starts at main**.
--  If the ARM loads correctly but you don`t see any output then check to
-   see if the GNU linker is linking to Semihosting library (librdimon)
-   in the linker setting. If it is not linked go to GNU linker settings
-   in CCS project and add **"rdimon"** to the libraries that are linked
-
-.. raw:: html
-
-   </div>
-   
+   -  If the example does not load correctly in the first attempt, reload
+      and **ensure ARM core starts at main**.
+   -  If the ARM loads correctly but you don`t see any output then check to
+      see if the GNU linker is linking to Semihosting library (librdimon)
+      in the linker setting. If it is not linked go to GNU linker settings
+      in CCS project and add **"rdimon"** to the libraries that are linked
 | 
 
-.. rubric:: ARM Cortex-A9
-   :name: arm-cortex-a9
+ARM Cortex-A9
+=============
 
 1. Start CCSv6 and create a work space for generating the project.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-CCSv6.1.1 doesn`t contain a hello world project template for Cortex A9
-core using GNU Linaro 4.8.x tool chain. Due to code compatibility of
-Cortex A8 and cortex A9 platforms, We recommend that you create a
-project for Cortex A8 platform like AM335x using the GNU Linaro tool
-chain and then use the code to test hello world application on the
-Cortex A9 on the AM437x platform. If you wish to use TI ARM compiler
-5.2.x, then you can use the default hello world template in CCSv6 for
-the Cortex A9 on AM437x
-
-.. raw:: html
-
-   </div>
+.. note::
+   CCSv6.1.1 doesn`t contain a hello world project template for Cortex A9
+   core using GNU Linaro 4.8.x tool chain. Due to code compatibility of
+   Cortex A8 and cortex A9 platforms, We recommend that you create a
+   project for Cortex A8 platform like AM335x using the GNU Linaro tool
+   chain and then use the code to test hello world application on the
+   Cortex A9 on the AM437x platform. If you wish to use TI ARM compiler
+   5.2.x, then you can use the default hello world template in CCSv6 for
+   the Cortex A9 on AM437x
 
 2. Click on File menu option and select New--> CCS Project. Steps assume
 that user is using GN Linaro tool chain for Cortex A9.
@@ -336,22 +271,14 @@ Ensure the main.c file contains the following code
 
    </div>
 
-.. raw:: html
+.. note::
+   An optional step is to modify the section definition in AM437x.lds file
+   if you wish to introduce more sections or partition the existing
+   sections. If you renamed the startup file from startup_ARMCA8.S to
+   startup_ARMCA9.S in your project, then the linker command file needs to
+   be updated as well for code section placement: from startup_ARMCA8.o
+   (.text) to startup_ARMCA9.o (.text)
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-An optional step is to modify the section definition in AM437x.lds file
-if you wish to introduce more sections or partition the existing
-sections. If you renamed the startup file from startup_ARMCA8.S to
-startup_ARMCA9.S in your project, then the linker command file needs to
-be updated as well for code section placement: from startup_ARMCA8.o
-(.text) to startup_ARMCA9.o (.text)
-
-.. raw:: html
-
-   </div>
 
 7. Now build the project to generate hello_world.out file.
 
@@ -366,23 +293,13 @@ World!** string displayed on CCS console window.
 
 .. Image:: ../images/Hello_world_a9.jpg
 
-.. raw:: html
+.. note::
+   If the example does not load correctly in the first attempt, reload and
+   **ensure ARM core starts at main**.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-If the example does not load correctly in the first attempt, reload and
-**ensure ARM core starts at main**.
-
-.. raw:: html
-
-   </div>
-
-| 
-
-.. rubric:: ARM Cortex-A8
-   :name: arm-cortex-a8
+ARM Cortex-A8
+=============
 
 1. Start CCSv6 and create a work space for generating the project.
 
@@ -463,19 +380,10 @@ assembly code **startup_ARMCA8.S** and a linker command file
 
    </div>
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-An optional step is to modify the section definition in AM335x.lds file
-if you wish to introduce more sections or partition the existing
-sections.
-
-.. raw:: html
-
-   </div>
+.. note::
+   An optional step is to modify the section definition in AM335x.lds file
+   if you wish to introduce more sections or partition the existing
+   sections.
 
 7. Now build the project to generate hello_world_a8.out file.
 
@@ -490,23 +398,13 @@ World!** string displayed on CCS console window.
 
 .. Image:: ../images/Hello_world_a8.jpg
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If the example does not load correctly in the first attempt, reload and
-**ensure ARM core starts at main**.
-
-.. raw:: html
-
-   </div>
-
+.. note::
+   If the example does not load correctly in the first attempt, reload and
+   **ensure ARM core starts at main**.
 | 
 
-.. rubric:: ARM Coretex-M4
-   :name: arm-coretex-m4
+ARM Coretex-M4
+==============
 
 1. Start CCSv6 and create a work space for generating the project.
 
@@ -592,27 +490,18 @@ The linker command file is designed to place code in OCMC memory with
 interrupt vectors and .intc_txt generated by the compiler being place in
 device internal memory.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  Please note that if the device GEL files are setting up MMU for the
-   core then the code will not load correctly on the core and will cause
-   a CPU exception. We recommend that you modify the linker command file
-   appropriately to match the MMU settings in the GEL file. The linker
-   command file in all CCS releases prior to CCS 6.1.3 don`t account for
-   this MMU Setting in AM57xx GEL files. Please modify the OCMC
-   addresses to the logical address set in the GEL file
--  An optional step is to modify the section definition in
-   AM57xx_CM4.cmd file if you wish to introduce/partition existing
-   sections or place the code in different memory section.
-
-.. raw:: html
-
-   </div>
+   -  Please note that if the device GEL files are setting up MMU for the
+      core then the code will not load correctly on the core and will cause
+      a CPU exception. We recommend that you modify the linker command file
+      appropriately to match the MMU settings in the GEL file. The linker
+      command file in all CCS releases prior to CCS 6.1.3 don`t account for
+      this MMU Setting in AM57xx GEL files. Please modify the OCMC
+      addresses to the logical address set in the GEL file
+   -  An optional step is to modify the section definition in
+      AM57xx_CM4.cmd file if you wish to introduce/partition existing
+      sections or place the code in different memory section.
 
 7. Now build the project to generate hello_world_m4.out.
 
@@ -637,23 +526,13 @@ displayed on console window.
 
 .. Image:: ../images/Hello_world_m4.jpg
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If the example does not load correctly in the first attempt, reload and
-**ensure ARM core starts at main**.
-
-.. raw:: html
-
-   </div>
-
+.. note::
+   If the example does not load correctly in the first attempt, reload and
+   **ensure ARM core starts at main**.
 | 
 
-.. rubric:: DSP C66x
-   :name: dsp-c66x
+DSP C66x
+========
 
 In this article, we take a look at creating bare-metal hello world
 examples for C66x core using pre-built templates in CCS. As a sample we
@@ -661,19 +540,10 @@ will use the AM572x device to describe the steps but the same steps can
 be used for create hello world examples for C66x cores in the Keystone 2
 family of devices.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Only major difference C66x examples for AM572x and Keystone 2 is that
-the Keystone 2 device contain MSMC memory instead of OCMC memory as the
-shared on chip memory.
-
-.. raw:: html
-
-   </div>
+.. note::
+   Only major difference C66x examples for AM572x and Keystone 2 is that
+   the Keystone 2 device contain MSMC memory instead of OCMC memory as the
+   shared on chip memory.
 
 1. Start CCSv6 and create a work space for generating the project.
 
@@ -756,36 +626,20 @@ linker command file has the following memory sections.
 
 The linker command file is designed to place code in OCMC memory.
 
-.. raw:: html
+.. note::
+   For Keystone 2 devices, replace all the OCMC_RAM# regions in the lds
+   file and replace it with MSMC memory section as shown below.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For Keystone 2 devices, replace all the OCMC_RAM# regions in the lds
-file and replace it with MSMC memory section as shown below.
-
-.. raw:: html
-
-   </div>
 
 ::
 
        MSMC  :      o=0x0c000000,    l = 0x00600000  /* 6MB Muticore shared memory */ 
 
-.. raw:: html
+.. note::
+   An optional step is to modify the section definition in linker command
+   file if you wish to introduce/partition existing sections or place the
+   code in different memory section.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-An optional step is to modify the section definition in linker command
-file if you wish to introduce/partition existing sections or place the
-code in different memory section.
-
-.. raw:: html
-
-   </div>
 
 7. Now build the project to generate hello_world_dsp.out.
 
@@ -807,15 +661,15 @@ You should see the following log in the Console
      CortexA15_0: GEL Output: DEBUG: Data integrity check in GEM L2RAM is sucessful! 
      CortexA15_0: GEL Output: --->>> DSP1SS Initialization is DONE! <<<---
 
-11. Select and Connect to C66x_DSP1. Load and run hello_world_dsp.out
+10. Select and Connect to C66x_DSP1. Load and run hello_world_dsp.out
 file. You should see **Hello World** string displayed on console window.
 
 .. Image:: ../images/Hello_world_dsp.jpg
 
 | 
 
-.. rubric:: DSP C674x
-   :name: dsp-c674x
+DSP C674x
+=========
 
 In this article, we take a look at creating bare-metal hello world
 examples for C674x core using pre-built templates in CCS. As a sample we
@@ -823,19 +677,11 @@ will use the C6748 LCDK device to describe the steps but the same steps
 can be used for create hello world examples for C674x cores in the
 OMAPL13x/C647x/DA8x family of devices.
 
-.. raw:: html
+.. note::
+   All the C674x DSP cores on in OMAPL13x/C674x/DA8x have the same memory
+   map so modification are limited to selecting the correct platform when
+   generating the project
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-All the C674x DSP cores on in OMAPL13x/C674x/DA8x have the same memory
-map so modification are limited to selecting the correct platform when
-generating the project
-
-.. raw:: html
-
-   </div>
 
 1. Start CCS and create a work space for generating the project.
 
@@ -928,18 +774,9 @@ linker command file has the following memory sections.
 
 The linker command file is designed to place code in OCMC memory.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For OMAPL13x/C674x devices, the linker command file places code in the
-SHRAM memory section as shown below.
-
-.. raw:: html
-
-   </div>
+.. note::
+   For OMAPL13x/C674x devices, the linker command file places code in the
+   SHRAM memory section as shown below.
 
 ::
 
@@ -949,22 +786,12 @@ SHRAM memory section as shown below.
        .stack         >  SHRAM                    
        .bss           >  SHRAM      
         .......
+      }
 
-}
-
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-An optional step is to modify the section definition in linker command
-file if you wish to introduce/partition existing sections or place the
-code in different memory section.
-
-.. raw:: html
-
-   </div>
+.. note::
+   An optional step is to modify the section definition in linker command
+   file if you wish to introduce/partition existing sections or place the
+   code in different memory section.
 
 7. Now build the project by right clicking on the Project and selecting
 "Build Project" to generate hello_world_lcdk674x.out.

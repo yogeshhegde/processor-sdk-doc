@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+============
 
 The Audio Benchmark Starterkit is intended to provide an easy and quick
 way to benchmark key audio functions on C66x and C674x DSP devices. This
@@ -22,14 +22,15 @@ performance on TI DSP architecture. The package also demonstrates use of
 signal processing functions from TI C6000 DSPLIB which contains several
 kernels optimized for TI DSP architectures.
 
-**Software Features**
+Software Features
+=================
 
 -  Benchmark applications for core signal processing functions
 -  Makefile and CCS Project scripts to build applications
 -  SD card bootable binaries [Supported on SOCs that support SD boot]
 
-.. rubric:: Directory Structure
-   :name: directory-structure
+Directory Structure
+===================
 
 The audio benchmark starterkit is located in the Processor SDK RTOS
 release under the directory path
@@ -56,29 +57,20 @@ Detailed description of the directory structure is given below:
    -  singlePrecision_FIR - Source files for benchmark app for FIR                
    -  singlePrecision_IIR - Source files for benchmark app for IIR                
 
-.. rubric:: Software Dependencies
-   :name: software-dependencies
+Software Dependencies
+=====================
 
 -  `Processor SDK RTOS v3.3 and later <Overview.html#processor-sdk-for-rtos>`__
 -  `Code Composer Studio IDE Environment v7 and later <Overview.html#code-composer-studio>`__
 
-.. raw:: html
+.. note::
+   **For correct version of Code Composer Studio to download, please refer
+   to the `Release Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
+   corresponding to the Processor SDK RTOS version that you have
+   installed**
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-**For correct version of Code Composer Studio to download, please refer
-to the `Release Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
-corresponding to the Processor SDK RTOS version that you have
-installed**
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Supported Hardware
-   :name: supported-hardware
+Supported Hardware
+==================
 
 **Platforms supported in Processor SDK RTOS 3.3 and later**
 
@@ -96,8 +88,8 @@ installed**
 -  `C6678 EVM <http://www.ti.com/tool/tmdsevm6678>`__
 -  `C6657 EVM <http://www.ti.com/tool/tmdsevm6657>`__
 
-.. rubric:: QuickStart with How-To-Video
-   :name: quickstart-with-how-to-video
+QuickStart with How-To-Video
+============================
 
 For an easy and visual experience to build and run the benchmark tests,
 we have created a short How to video that demonstrates how the Benchmark
@@ -107,8 +99,8 @@ check out from the link provided below:
 -  `Demonstration of Audio Benchmark starterkit demo on 66AK2G02 GP
    EVM <https://training.ti.com/66ak2gx-gp-evm-audio-benchmark-starter-kit-demo>`__
 
-.. rubric:: How to Build the Benchmarks
-   :name: how-to-build-the-benchmarks
+How to Build the Benchmarks
+===========================
 
 The benchmark starterkit is designed to build with makefiles as well as
 with Code Composer Studio (CCS) IDE Environment. Both the approaches
@@ -117,33 +109,24 @@ environment. Developers can use either approach based on their
 familiarity with the chosen build environment. Let us take a closer look
 at both approaches.
 
-.. rubric:: Using Makefile
-   :name: using-makefile
+Using Makefile
+--------------
 
 **Step1 : Setup Processor SDK RTOS build Environment.**
 
 Developers are required to setup the Processor SDK RTOS build
 environment as described in :ref:`Processor SDK RTOS Setup environment <Build-The-SDK-Setup-Environment-label>`
 
-#. **set SDK_INSTALL_PATH = C:\ti\<Install directory>**
+#. **set SDK_INSTALL_PATH = C:\\ti\\<Install directory>**
 #. **setupenv.bat**
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If developers install CCS or Processor SDK RTOS under Custom path then
-they need to refer to the setup instructions described under 
-:ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
-
-.. raw:: html
-
-   </div>
+.. note::
+   If developers install CCS or Processor SDK RTOS under Custom path then
+   they need to refer to the setup instructions described under 
+   :ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
 | 
-| **Step2 : Invoke Make from root directory**
+**Step2 : Invoke Make from root directory**
 
 The make file in the root director of the audio-starterkit can be used
 to build the entire package. To build the benchmark examples:
@@ -151,23 +134,14 @@ to build the entire package. To build the benchmark examples:
 #. **cd <PROC_SDK_INSTALL_PATH>/demos/audio-benchmark-starterkit**
 #. **make all**
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The build picks up the SOC information from the SDK setup. Also, in the
-make environment the benchmark application is built to send benchmark
-logs to UART console so that there is no dependency on the CCS IDE
-environment
-
-.. raw:: html
-
-   </div>
+.. note::
+   The build picks up the SOC information from the SDK setup. Also, in the
+   make environment the benchmark application is built to send benchmark
+   logs to UART console so that there is no dependency on the CCS IDE
+   environment
 
 | 
-| For Other supported options, please type
+For Other supported options, please type
 
 **For Windows:**
 
@@ -185,8 +159,8 @@ All available options are provided below:
 
 .. Image:: ../images/Make_help.png
 
-.. rubric:: Using CCS Projects
-   :name: using-ccs-projects
+Using CCS Projects
+------------------
 
 The audio benchmark starterkit does not provide pre-canned CCS Projects
 as it is difficult to set up projects to be portable across various
@@ -196,29 +170,21 @@ script provided in the root directory of the starterkit.
 
 **Step1 : Setup Processor SDK RTOS build Environment.**
 
-#. **set SDK_INSTALL_PATH = C:\ti\<Install directory>**
-#. **set TOOLS_INSTALL_PATH = C:\ti\<CCS Install directory>**
+#. **set SDK_INSTALL_PATH = C:\\ti\\<Install directory>**
+#. **set TOOLS_INSTALL_PATH = C:\\ti\\<CCS Install directory>**
 #. **setupenv.bat**
 
-**Note:** CCS by default is installed in the path C:\ti\ccsv7 so
-TOOLS_INSTALL_PATH=C:\ti
+.. note::
+   CCS by default is installed in the path C:\\ti\\ccsv7 so
+   TOOLS_INSTALL_PATH=C:\\ti
 
 Developers are required to setup the Processor SDK RTOS build
 environment as described in :ref:`Processor SDK RTOS Setup environment <Build-The-SDK-Setup-Environment-label>`
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
+.. note::
 If developers install CCS or Processor SDK RTOS under a Custom path then
 they need to refer to the setup instructions described under 
 :ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -254,29 +220,20 @@ Description of arguments:
      d) BenchmarkProjectCreate.bat K2H evmK2H FFT
                  - Creates FFT module project for K2H soc for evmK2H
 
-.. raw:: html
+.. note::
+   **Known issue with Processor SDK RTOS 3.3**
+   The BenchmarkProjectCreate script uses text files .txt from scripts
+   folder to generate the CCS projects. The name for the demo folder was
+   updated from "audio-benchmark-kit" to "audio-benchmark-starterkit". This
+   will require CCS users to update the name in the .txt file before
+   generating the scripts.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-**Known issue with Processor SDK RTOS 3.3**
-The BenchmarkProjectCreate script uses text files .txt from scripts
-folder to generate the CCS projects. The name for the demo folder was
-updated from "audio-benchmark-kit" to "audio-benchmark-starterkit". This
-will require CCS users to update the name in the .txt file before
-generating the scripts.
-
-For Example if you are using K2G platform locate file
-Benchmark_FFT_evmK2G_c66ExampleProject.txt,
-Benchmark_FIR_evmK2G_c66ExampleProject.txt and
-Benchmark_IIR_evmK2G_c66ExampleProject.txt and update the demo name in
-the text files from "audio-benchmark-kit" to
-"audio-benchmark-starterkit"
-
-.. raw:: html
-
-   </div>
+   For Example if you are using K2G platform locate file
+   Benchmark_FFT_evmK2G_c66ExampleProject.txt,
+   Benchmark_FIR_evmK2G_c66ExampleProject.txt and
+   Benchmark_IIR_evmK2G_c66ExampleProject.txt and update the demo name in
+   the text files from "audio-benchmark-kit" to
+   "audio-benchmark-starterkit"
 
 **Step 3: Import Generated CCS Projects in CCS Workspace**
 
@@ -284,7 +241,6 @@ Launch CCS and Import the CCS Project using the Project->Import Existing
 CCS Project and browse to the audio-benchmark-starterkit folder
 
 .. Image:: ../images/CCS_Project_Browse.png
-View.png|
 
 **Step 4: Build Imported CCS Benchmark Projects**
 
@@ -293,16 +249,16 @@ below:
 
 .. Image:: ../images/Build_Benchmark.png
 
-.. rubric:: How to Run the Benchmarks
-   :name: how-to-run-the-benchmarks
+How to Run the Benchmarks
+=========================
 
 The benchmark examples can be run by loading the built out files with an
 emulator using the CCS Debug functionality or the examples can be run on
 the DSP by creating SD card bootable images using out files. Let us take
 a look at both these approaches.
 
-.. rubric:: Using CCS
-   :name: using-ccs
+Using CCS
+---------
 
 **Step 1: Connect Emulator and UART to Hardware**
 
@@ -325,29 +281,20 @@ by following the procedure described in wiki
 :ref:`Create_Target_Configuration_File_for_EVM <Create-Target-Configuration-File-for-EVM-label>`
 
 | 
-| Instructions specific to supported EVMs:
+Instructions specific to supported EVMs:
 
 -  `K2G GP EVM CCS
    Setup <http://processors.wiki.ti.com/index.php/66AK2G02_GP_EVM_Hardware_Setup#Connect_without_a_SD_card_boot_image>`__
 -  `AM572x GP EVM CCS
    Setup <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup#Connect_without_a_SD_card_boot_image>`__
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Please refer to `Hardware User Guide <Release_Specific.html#supported-platforms-and-versions>`__
-corresponding to each supported EVM so setup the boot switches to No
-boot if available
-
-.. raw:: html
-
-   </div>
+.. note::
+   Please refer to `Hardware User Guide <Release_Specific.html#supported-platforms-and-versions>`__
+   corresponding to each supported EVM so setup the boot switches to No
+   boot if available
 
 | 
-| **Step 3: Loading and Running Benchmark application on the DSP**
+**Step 3: Loading and Running Benchmark application on the DSP**
 
 -  Load the out file using **Run -> Load -> Load Program** and browse to
    the output binary.
@@ -362,8 +309,8 @@ boot if available
 .. Image:: ../images/FFTBenchmark_CCS_Output.png
 +--------------------------------+------------------------------+
 
-.. rubric:: Using SD card (Supported only on AM57xx and K2G)
-   :name: using-sd-card-supported-only-on-am57xx-and-k2g
+Using SD card (Supported only on AM57xx and K2G)
+------------------------------------------------
 
 **Step 1: Run Create SD script to generate SD bootable binaries**
 
@@ -400,12 +347,13 @@ on the SD card.
    **Flow Control**\ = Off
 -  Power on the EVM to view the output on the Serial console on the host
 
-**Benchmark App output on UART console** :
+Benchmark App output on UART console
+====================================
 
 .. Image:: ../images/FFTbenchmark_sdBoot.png
 
-.. rubric:: Benchmark Starterkit Implementation
-   :name: benchmark-starterkit-implementation
+Benchmark Starterkit Implementation
+-----------------------------------
 
 .. rubric:: Signal Processing functions used in Starterkit
    :name: signal-processing-functions-used-in-starterkit
@@ -429,23 +377,13 @@ the twiddle factor coefficients, ``ptr_w``.
 
 | 
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  For implementation details of this FFT computation refer to
-   documentation provided in `Additional
-   resources <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit#Additional_resources>`__
--  For Real input sequences, efficient FFT Implementation is described
-   here
-   `Efficient_FFT_Computation_of_Real_Input <http://processors.wiki.ti.com/index.php/Efficient_FFT_Computation_of_Real_Input>`__
-
-.. raw:: html
-
-   </div>
+.. note::
+   -  For implementation details of this FFT computation refer to
+      documentation provided in `Additional
+      resources <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit#Additional_resources>`__
+   -  For Real input sequences, efficient FFT Implementation is described
+      here
+      `Efficient_FFT_Computation_of_Real_Input <http://processors.wiki.ti.com/index.php/Efficient_FFT_Computation_of_Real_Input>`__
 
 .. rubric:: Single Precision FIR: DSPF_sp_fir_cplx (Complex FIR Filter)
    :name: single-precision-fir-dspf_sp_fir_cplx-complex-fir-filter
@@ -505,31 +443,22 @@ where CascadeBiquad_FilParam is defined as
           int      sampleCount;    // Number of samples
      }  CascadeBiquad_FilParam;
 
-.. rubric:: Memory placement of Instruction and Data
-   :name: memory-placement-of-instruction-and-data
+Memory placement of Instruction and Data
+========================================
 
 The best performance of the DSP can be obtained by placing all the data
 and instructions in L2 SRAM. Please refer to the linker command files
 include in the src/common folder to see how the instructions and data
 can be place in DSP internal L2 memory.
 
-.. raw:: html
+.. note::
+   In application use cases where audio data needs to be place in onchip
+   shared memory (OCMC or MSMC) and DDR memory, we recommend that users
+   move data from external memory to L2 for processing using EDMA or enable
+   DSP cache using CSL to optimize performance.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-In application use cases where audio data needs to be place in onchip
-shared memory (OCMC or MSMC) and DDR memory, we recommend that users
-move data from external memory to L2 for processing using EDMA or enable
-DSP cache using CSL to optimize performance.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Compiler Optimization Flags
-   :name: compiler-optimization-flags
+Compiler Optimization Flags
+===========================
 
 All the projects in the Audio Benchmark starterkit are built using C6000
 compiler with -o3 optimization that allows the source code to be
@@ -539,27 +468,18 @@ CCS Project settings to modify the compiler options.
 
 | 
 
-.. raw:: html
+.. note::
+   For more Details on recommended C6000 Compiler options refer
+   `C6000_Compiler:_Recommended_Compiler_Options <http://processors.wiki.ti.com/index.php/C6000_Compiler:_Recommended_Compiler_Options>`__
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   -  C6000 compiler documentation: `C6000 Compiler v8.x User
+      Guide <http://www.ti.com/lit/ug/sprui04a/sprui04a.pdf>`__
 
-**NOTE**
-\* For more Details on recommended C6000 Compiler options refer
-`C6000_Compiler:_Recommended_Compiler_Options <http://processors.wiki.ti.com/index.php/C6000_Compiler:_Recommended_Compiler_Options>`__
+SOC Integration and Optimization
+================================
 
--  C6000 compiler documentation: `C6000 Compiler v8.x User
-   Guide <http://www.ti.com/lit/ug/sprui04a/sprui04a.pdf>`__
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: SOC Integration and Optimization
-   :name: soc-integration-and-optimization
-
-.. rubric:: Configuring device clocks
-   :name: configuring-device-clocks
+Configuring device clocks
+-------------------------
 
 Every SOC with TI DSP requires users to enable the DSP clocks by setting
 up the PLL and or enabling the DSP through Power Sleep Controller or
@@ -577,23 +497,14 @@ depending on the environment setup
    audio starterkit, this initialization is done using board library
    which is linked to the secondary bootloader and the benchmark tests.
 
-.. raw:: html
+.. note::
+   If the clocks are not configured the DSP will run at speed of the input
+   clock rather than at the device speed grade. Hence if the clocks are not
+   configured correctly the benchmarks will run much slower than
+   anticipated but the cycle count will show the same.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-If the clocks are not configured the DSP will run at speed of the input
-clock rather than at the device speed grade. Hence if the clocks are not
-configured correctly the benchmarks will run much slower than
-anticipated but the cycle count will show the same.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Benchmarking using DSP TSCH/TSCL registers
-   :name: benchmarking-using-dsp-tschtscl-registers
+Benchmarking using DSP TSCH/TSCL registers
+==========================================
 
 For C66x+ and C674x members of the C6000 family, there is a pair of
 registers, TSCL and TSCH, which together provide a 64-bit clock value.
@@ -622,8 +533,8 @@ cycle count using the TSCH and TSCL regsiters.
            t_stop = _itoll(TSCH, TSCL);
            t_measured = (t_stop - t_start) - t_overhead;
 
-.. rubric:: Benchmark logging
-   :name: benchmark-logging
+Benchmark logging
+=================
 
 The Audio benchmarks demonstrates two ways to log benchmark numbers. One
 approach that can be used when code is loaded and run from Code composer
@@ -643,8 +554,8 @@ have IO_CONSOLE defined hence the benchmark logs will be directed to the
 UART serial console. In the CCS projects, we define the IO_CONSOLE macro
 so that the output can be observed on the CCS console.
 
-.. rubric:: Cache configuration for Code/data sections in SRAM/DDR
-   :name: cache-configuration-for-codedata-sections-in-sramddr
+Cache configuration for Code/data sections in SRAM/DDR
+======================================================
 
 The best performance of the DSP can be obtained by placing all the data
 and instructions in L2 SRAM. If developer application use cases places
@@ -655,8 +566,8 @@ To enable and utilize cache in the application, please refer to the
 csl_cacheAux.h file in the pdk_<soc>_x_x_x/packages/ti/csl folder in the
 SDK and link the CSL library for the soc into the application code.
 
-.. rubric:: Benchmark results
-   :name: benchmark-results
+Benchmark results
+=================
 
 +-----------------------+-----------------------+-----------------------+
 | Algorithm\DSP         | C66x DSP              | C674x DSP             |
@@ -675,16 +586,16 @@ SDK and link the CSL library for the soc into the application code.
 | cascade biquad)       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
 
-Notes:
+.. note::
 
--  All code and data for the benchmark tests is placed in L2 Memory.
--  C6000 compiler version used was CGTools v8.1.3
--  Bench marks were obtained from C66x DSP on K2G and C674x DSP on
-   OMAPL138 LCDK
--  FFT and FIR benchmarks were obtained using the DSPLIB functions.
+   -  All code and data for the benchmark tests is placed in L2 Memory.
+   -  C6000 compiler version used was CGTools v8.1.3
+   -  Bench marks were obtained from C66x DSP on K2G and C674x DSP on
+      OMAPL138 LCDK
+   -  FFT and FIR benchmarks were obtained using the DSPLIB functions.
 
-.. rubric:: Support
-   :name: support
+Support
+=======
 
 For questions, feature requests and bug reports, please use the TI E2E
 Forums provided below:
@@ -696,8 +607,8 @@ Forums provided below:
 -  **For AM57xx devices:** `Sitara
    Forums <http://e2e.ti.com/support/arm/sitara_arm/>`__
 
-.. rubric:: Additional resources
-   :name: additional-resources
+Additional resources
+====================
 
 **White papers:**
 

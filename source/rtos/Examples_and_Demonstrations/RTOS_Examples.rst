@@ -1,28 +1,19 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Examples 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+========
 
 The SYS/BIOS examples gets user started with development of code using a
 real-time operating system. These are simple examples that does not get
 into details of software components provided in the SDK.
 
-.. raw:: html
+.. note::
+   All instructions on this wiki have been created using CCSv6 but should
+   apply to CCSv7. Please report any issues by posting on `E2E
+   forums <https://e2e.ti.com/>`__
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-All instructions on this wiki have been created using CCSv6 but should
-apply to CCSv7. Please report any issues by posting on `E2E
-forums <https://e2e.ti.com/>`__
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: ARM Cortex-A15
-   :name: arm-cortex-a15
+ARM Cortex-A15
+==============
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout. As a
@@ -30,19 +21,10 @@ sample we will use the AM572x device to describe the steps. The same
 steps can be used for create hello world examples for A15 cores in
 Keystone 2 family of devices.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  The K2G, K2E and K2H devices, can be located under Unclassified
-   devices in the Resource Explorer. Refer below Screenshot for Keystone II
-
-.. raw:: html
-
-   </div>
+   -  The K2G, K2E and K2H devices, can be located under Unclassified
+      devices in the Resource Explorer. Refer below Screenshot for Keystone II
 
 .. Image:: ../images/KSII_RS.png
 
@@ -89,12 +71,9 @@ file:
 
    </div>
 
-.. raw:: html
-
-   </div>
-
-**Note:** You also need to replace the nosys library in linker with
-rdimon which is the Semi-Hosting enabled BSP library.
+.. note::
+   You also need to replace the nosys library in linker with
+   rdimon which is the Semi-Hosting enabled BSP library.
 
 Right click on project --> Show Build Settings... --> Build --> GNU
 Linker --> Libraries
@@ -115,15 +94,13 @@ string displayed on console window.
 
 | 
 
-| 
-
-.. rubric:: ARM Cortex-A9
-   :name: arm-cortex-a9
+ARM Cortex-A9
+=============
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout.
 
-1. Create a work space folder (\ti\am_437x_hello_workspace) under ti
+1. Create a work space folder (\\ti\\am_437x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
@@ -170,8 +147,9 @@ file:
 
    </div>
 
-**Note:** You also need to replace the nosys library in linker with
-rdimon which is the Semi-Hosting enabled BSP library.
+.. note::
+   You also need to replace the nosys library in linker with
+   rdimon which is the Semi-Hosting enabled BSP library.
 
 Right click on project --> Show Build Settings... --> Build --> GNU
 Linker --> Libraries
@@ -192,13 +170,13 @@ string displayed on console window.
 
 | 
 
-.. rubric:: ARM Cortex-A8
-   :name: arm-cortex-a8
+ARM Cortex-A8
+=============
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout.
 
-1. Create a work space folder (\ti\am_335x_hello_workspace) under ti
+1. Create a work space folder (\\ti\\am_335x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
@@ -245,8 +223,9 @@ file:
 
    </div>
 
-**Note:** You also need to replace the nosys library in linker with
-rdimon which is the Semi-Hosting enabled BSP library.
+.. note::
+   You also need to replace the nosys library in linker with
+   rdimon which is the Semi-Hosting enabled BSP library.
 
 Right click on project --> Show Build Settings... --> Build --> GNU
 Linker --> Libraries
@@ -267,13 +246,13 @@ string displayed on console window.
 
 | 
 
-.. rubric:: ARM Cortex-M4
-   :name: arm-cortex-m4
+ARM Cortex-M4
+=============
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout.
 
-1. Create a work space folder (\ti\am_572x_hello_workspace) under ti
+1. Create a work space folder (\\ti\\am_572x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
@@ -312,8 +291,8 @@ file. You should see **Hello World** string displayed on console window.
 
 | 
 
-.. rubric:: DSP C66x
-   :name: dsp-c66x
+DSP C66x
+========
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout. As a
@@ -321,30 +300,18 @@ sample we will use the AM572x device to describe the steps but the same
 steps can be used for create hello world examples for C66x cores in
 Keystone I and Keystone 2 family of devices.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  The C66x examples corresponding Keystone I devices can be located
-   under C66x Multi-core DSP devies in the Resource Explorer. Refer
-   below screenshot
-
-.. raw:: html
-
-   </div>
+   -  The C66x examples corresponding Keystone I devices can be located
+      under C66x Multi-core DSP devies in the Resource Explorer. Refer
+      below screenshot
 
 .. Image:: ../images/KSI_RS.png
 
-**NOTE**
--  The K2G, K2E and K2H devices, can be located under Unclassified
-   devices in the Resource Explorer. Refer below screen shot
+.. note::
 
-.. raw:: html
-
-   </div>
+   -  The K2G, K2E and K2H devices, can be located under Unclassified
+      devices in the Resource Explorer. Refer below screen shot
 
 .. Image:: ../images/KSII_RS.png
 
@@ -393,8 +360,8 @@ described
 14. Connect to C66x_DSP1 Load and run Hello Example out file. You should
 see **Hello World** string displayed on console window.
 
-.. rubric:: DSP C674x
-   :name: dsp-c674x
+DSP C674x
+=========
 
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout. As a
@@ -402,19 +369,10 @@ sample we will use the C6748 device to describe the steps but the same
 steps can be used for create hello world examples for C674x cores in
 OMAPL1x/DA8x family of devices.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  Locate the appropriate device that you are using to make sure the
-   correct SYSBIOS platform definiition gets used in the build
-
-.. raw:: html
-
-   </div>
+   -  Locate the appropriate device that you are using to make sure the
+      correct SYSBIOS platform definiition gets used in the build
 
 1. Create a work space folder ( Eg. tirtos_hello_workspace) that can be
 used for Hello Example project, and start CCS. You may be prompted with
@@ -476,17 +434,15 @@ power up the DSP You should see the following log in the Console
     C674X_0: Output:    DDR2 init for 150 MHz is done
     C674X_0: Output:    ---------------------------------------------
 
-14. Connect to C674x_DSP1 Load and run Hello Example out file. You
+13. Connect to C674x_DSP1 Load and run Hello Example out file. You
 should see **Hello World** string displayed on console window.
 
 .. Image:: ../images/Hello_world_dsp674x_rtos.png
 
 | 
 
-| 
-
-.. rubric:: Usage Notes
-   :name: usage-notes
+Usage Notes
+===========
 
 After execution of the hello world examples on the core, the CCS Editor
 may report "Can't find a source file" error messages when you pause or
@@ -510,8 +466,8 @@ to file search path under Windows->Preferences options in CCS GUI.
 
 | 
 
-.. rubric:: Known Issues
-   :name: known-issues
+Known Issues
+============
 
 -  **SYS/BIOS examples for Cortex-A15 generate linker errors due to the
    FPU related flags**
@@ -525,10 +481,9 @@ https://e2e.ti.com/support/development_tools/code_composer_studio/f/81/t/539973
 
 | 
 
-| 
 
-.. rubric:: Useful Resources
-   :name: useful-resources
+Useful Resources
+================
 
 -  `TI RTOS
    training <http://processors.wiki.ti.com/index.php/Introduction_to_the_TI-RTOS_Kernel_Workshop>`__

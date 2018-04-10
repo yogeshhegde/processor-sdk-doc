@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Posix-SMP_Demo 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+============
 
 This page describes the SMP/Posix demo provided in the Processor-SDK for
 RTOS and Linux. This demo uses Posix APIs together with a simple
@@ -24,8 +24,8 @@ This demo runs on:
 The sections below provide details of the application as well as build
 and run instructions.
 
-.. rubric:: Requirements
-   :name: requirements
+Requirements
+============
 
 The following materials are required to run this demonstration:
 
@@ -41,8 +41,8 @@ Software
 
 | 
 
-.. rubric:: Software Design
-   :name: software-design
+Software Design
+===============
 
 The demo is based on Dhrystone 2.1 from
 `link <http://fossies.org/linux/privat/old/dhrystone-2.1.tar.gz/>`__.
@@ -91,8 +91,8 @@ Support <http://processors.wiki.ti.com/index.php/SYS/BIOS_POSIX_Thread_(pthread)
 
 | 
 
-.. rubric:: How to Run the Demo
-   :name: how-to-run-the-demo
+How to Run the Demo
+===================
 
 The processor SDK includes pre-built binaries which may be loaded and
 run using the SBL with UART or using CCS with UART or ROV (UART display
@@ -102,7 +102,7 @@ up to the board using UART and run the .out file.
 .. Image:: ../images/Posix-demo-uart.PNG
 
 To run using CCS, use the following steps. Each binary has an associated
-\*.rov.xs file located in the same directory--enabling the CCS ROV tool.
+\\*.rov.xs file located in the same directory--enabling the CCS ROV tool.
 Newer versions will display directly to the UART console and any steps
 involving ROV may be skipped.
 
@@ -157,42 +157,31 @@ two threads to four threads does not appreciably improve the DMIPS, so
 the demo completes. This behavior is expected because the demo is only
 running on two cores in this example.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  A15 cores may usually be connected to directly; on the AM572x, the M4
-   IPUs must first be initialized by the gel scripts (Scripts > AM572x
-   MULTICORE initialization > IPUxSSClkEnable_API)
--  If the K2 demo will not run, try updating to the latest emupack by
-   doing "Help/Check For Updates" and selecting "Keystone2 device
-   support" update (only). There are additional instructions for
-   configuring groups, etc. at `SMP
-   Debug <http://processors.wiki.ti.com/index.php/SMP_Debug>`__.
--  If the primary core of an SMP group will not allow running after
-   loading the demo, try pausing the linked cores and then running all
-   the cores in a group
--  For TI-RTOS documentation for enabling SMP, refer to
-   `SMP/BIOS <http://processors.wiki.ti.com/index.php/SMP/BIOS>`__. The
-   POSIX demo in the Processor SDK RTOS packages with C66x does not
-   support SMP. This is a POSIX pthread demo intended to run Dhrystone
-   on one C66x core without SMP.
--  Some of the DMIPS values may not be accurate, but the values will
-   increase proportionally with the number of cores
-
-.. raw:: html
-
-   </div>
-| 
+.. note::
+   -  A15 cores may usually be connected to directly; on the AM572x, the M4
+      IPUs must first be initialized by the gel scripts (Scripts > AM572x
+      MULTICORE initialization > IPUxSSClkEnable_API)
+   -  If the K2 demo will not run, try updating to the latest emupack by
+      doing "Help/Check For Updates" and selecting "Keystone2 device
+      support" update (only). There are additional instructions for
+      configuring groups, etc. at `SMP
+      Debug <http://processors.wiki.ti.com/index.php/SMP_Debug>`__.
+   -  If the primary core of an SMP group will not allow running after
+      loading the demo, try pausing the linked cores and then running all
+      the cores in a group
+   -  For TI-RTOS documentation for enabling SMP, refer to
+      `SMP/BIOS <http://processors.wiki.ti.com/index.php/SMP/BIOS>`__. The
+      POSIX demo in the Processor SDK RTOS packages with C66x does not
+      support SMP. This is a POSIX pthread demo intended to run Dhrystone
+      on one C66x core without SMP.
+   -  Some of the DMIPS values may not be accurate, but the values will
+      increase proportionally with the number of cores
  
-.. rubric:: How to Build the Demo
-   :name: how-to-build-the-demo
+How to Build the Demo
+=====================
 
-.. rubric:: Processor-SDK RTOS
-   :name: processor-sdk-rtos
+Processor-SDK RTOS
+------------------
 
 To build the project manually, first navigate to the top level makefile:
 
@@ -216,8 +205,8 @@ the toolchains for the cores being used.
 Navigate to the demo directory and run "make". The steps to run the demo
 will be the same.
 
-.. rubric:: Processor-SDK Linux
-   :name: processor-sdk-linux
+Processor-SDK Linux
+-------------------
 
 The Posix-SMP demo has been added to the Linux SDK matrix starting in
 Processor-SDK 3.0. Simply run the example from the Matrix and the output

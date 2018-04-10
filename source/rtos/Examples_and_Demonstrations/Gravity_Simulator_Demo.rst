@@ -1,14 +1,14 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Gravity_Simulator_Demo 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+========
 
 This demo showcases a simple video display with Processor SDK RTOS. This
 demo uses Gravit, a GPL-licensed open-sourced library, to simulate
 gravity of particles in space.
 
-.. rubric:: Version Details
-   :name: version-details
+Version Details
+===============
 
 Latest version: 1.0.0
 
@@ -16,8 +16,8 @@ Supported platforms: idkAM572x
 
 Available in: Processor SDK RTOS 4.0.0.4
 
-.. rubric:: Components Used
-   :name: components-used
+Components Used
+===============
 
 Open Sourced Libraries:
 
@@ -38,8 +38,8 @@ Processor SDK RTOS Drivers:
 -  OSAL
 -  CSL
 
-.. rubric:: Building the Demo
-   :name: building-the-demo
+Building the Demo
+=================
 
 The demo is available pre-built for Processor SDK RTOS version 4.0.0.4
 or higher. You must first set up your development environment. Refer to
@@ -61,8 +61,8 @@ The following are steps to compile the demo:
      cd [SDK Install Path]/processor_sdk_rtos_[soc]_[version]/demos/gravit
      make BOARD=idkAM572x
 
-.. rubric:: Running the Demo
-   :name: running-the-demo
+Running the Demo
+================
 
 You will need the following:
 
@@ -90,8 +90,8 @@ To load and run the demo:
 
      [SDK Install Path]/processor_sdk_rtos_[soc]_[version]/demos/gravit/bin/idkAM572x/gravit_a15_0_release.xa15fg
 
-.. rubric:: Terminal Screenshot
-   :name: terminal-screenshot
+Terminal Screenshot
+===================
 
 -  When launched, you will be prompt for number of particles to
    simulate. Enter a value up to 1000.
@@ -106,8 +106,8 @@ Below is a screenshot of the terminal after one simulation:
 
 .. Image:: ../images/Gravit-screenshot_version_01_00_00.png
 
-.. rubric:: Display Output
-   :name: display-output
+Display Output
+==============
 
 -  Particles are set to rotate around a gravity center positioned at the
    center of the LCD screen
@@ -119,8 +119,8 @@ Below is an example display of a 500-particle simulation:
 
 .. Image:: ../images/Gravit-displayshot_version_01_00_00.jpg
 
-.. rubric:: Useful References
-   :name: useful-references
+Useful References
+=================
 
 Main Gravit website: https://gravit.slowchop.com/
 

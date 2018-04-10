@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Template_App 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+========
 
 The RTOS template application is intended for customers to use as a
 starting point during software development using Processor SDK RTOS
@@ -11,14 +11,14 @@ application currently includes the typical low level drivers (UART,
 GPIO, I2C), OSAL layer, and Board Library. For additional details refer
 to the README.txt file in the installed package.
 
-.. rubric:: Supported platforms
-   :name: supported-platforms
+Supported platforms
+===================
 
 -  evmAM572x
 -  evmAM335x
 
-.. rubric:: Requirements
-   :name: requirements
+Requirements
+============
 
 Following are required to run the application:
 
@@ -32,8 +32,8 @@ Software
 -  Processor-SDK RTOS
 -  Code Composer Studio
 
-.. rubric:: Components Used
-   :name: components-used
+Components Used
+===============
 
 RTOS Components:
 
@@ -41,15 +41,15 @@ RTOS Components:
 -  XDCTools
 -  Processor SDK RTOS PDK: Drivers, OSAL, etc.
 
-.. rubric:: Software Design
-   :name: software-design
+Software Design
+===============
 
-| The Template Application is designed to provide a foundation with
-  clean separation of application specific sub-module. This allows users
-  the ability to focus on application specific code and quickly get it
-  to run.
-| This is achieved by separating "main" and "app" sub modules in
-  different files.
+The Template Application is designed to provide a foundation with
+clean separation of application specific sub-module. This allows users
+the ability to focus on application specific code and quickly get it
+to run.
+This is achieved by separating "main" and "app" sub modules in
+different files.
 
 The source files are organized as follows:
 
@@ -67,8 +67,8 @@ The source files are organized as follows:
 In general to write a new application, **app.c** and **app.h** can be
 modified, recompiled, and run.
 
-.. rubric:: How to Build the Template Application
-   :name: how-to-build-the-template-application
+How to Build the Template Application
+=====================================
 
 Please follow below step by step procedure to build the application.
 
@@ -88,8 +88,8 @@ Please follow below step by step procedure to build the application.
    under
    rtos_template_app_<platform>/Debug/rtos_template_app_<platform>_<core>.out)
 
-.. rubric:: How to Run the Template Application
-   :name: how-to-run-the-template-application
+How to Run the Template Application
+===================================
 
 You will need the following:
 
@@ -132,8 +132,8 @@ The application will print back the entered word
 
 The application will exit.
 
-.. rubric:: Terminal Screenshot
-   :name: terminal-screenshot
+Terminal Screenshot
+===================
 
 ::
 
@@ -169,8 +169,8 @@ The application will exit.
         uart_task task ended
         Template app ended
 
-.. rubric:: Porting to Custom Board
-   :name: porting-to-custom-board
+Porting to Custom Board
+=======================
 
 | The Template Application can be easily modified to run on a custom
   board. The main change is to link in a new Board Library. Modification
@@ -186,19 +186,11 @@ The application will exit.
            " -L${TI_PDK_INSTALL_DIR}/packages/ti/board/lib/evmAM572x/a15/release/
              -l:ti.board.aa15fg
 
-.. raw:: html
+.. note::
+   Currently for AM572x there is also dependency on the
+   GPIO_evmAM572x_board.c & GPIO_board.h. These files can be modified to
+   customize for the customer board.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Currently for AM572x there is also dependency on the
-GPIO_evmAM572x_board.c & GPIO_board.h. These files can be modified to
-customize for the customer board.
-
-.. raw:: html
-
-   </div>
 
 .. raw:: html
 

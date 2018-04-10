@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Big_Data_IPC_Examples 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+============
 
 High Performance Computing applications and other Data intensive
 applications often require passing of Big data buffers between the
@@ -15,8 +15,8 @@ Currently the example named "simple_buffer_example", captures the
 details of exchange of big buffers with both host A15 core and a DSP
 cores.
 
-.. rubric:: Architecture Overview
-   :name: architecture-overview
+Architecture Overview
+=====================
 
 The following block diagram shows the various functional blocks used in
 the example on the cores running TI-RTOS/BIOS.
@@ -30,8 +30,8 @@ The BigDataXlat module, which is part of the example code, provides a
 high level abstraction to take care of Address translation and Cache
 sync on the big data buffers.
 
-.. rubric:: Simple Buffer example: Program Sequence
-   :name: simple-buffer-example-program-sequence
+Simple Buffer example: Program Sequence
+=======================================
 
 This section describes the program sequence captured in the example.
 
@@ -69,20 +69,22 @@ reinitializes itself for future runs.
 Then the host receives back the remaining returned messages before
 shutting down.
 
-| NOTE: The size of the big data buffer is configurable compile time by
-  changing value of the define BIGDATA_SIZE in shared/AppCommon.h
+.. note::
+   The size of the big data buffer is configurable compile time by
+   changing value of the define BIGDATA_SIZE in shared/AppCommon.h
 
-.. rubric:: Host Linux example
-   :name: host-linux-example
+Host Linux example
+==================
 
-NOTE: Host linux example is only available starting from Processor SDK
-4.0.0 release for AM57xx platform
+.. note::
+   Host linux example is only available starting from Processor SDK
+   4.0.0 release for AM57xx platform
 
 Under the host_linux directory the simple_buffer_example is implemented
 for Host A15 running Linux and DSP core running TI-RTOS.
 
-.. rubric:: Architecture Updates for Linux
-   :name: architecture-updates-for-linux
+Architecture Updates for Linux
+------------------------------
 
 The following block diagram shows the various functional blocks used in
 the example on the host running linux.
@@ -98,8 +100,8 @@ Linux with some limitations.
 The CMEM APIs provide user space allocation of contiguous memory for the
 Big data buffers.
 
-.. rubric:: How to Run the Example
-   :name: how-to-run-the-example
+How to Run the Example
+----------------------
 
 The Processor SDK Linux release includes the pre-built binaries for the
 host_linux example as part of the tisdk-rootfs-image filesystem.
@@ -119,7 +121,8 @@ using the following steps. Unbind dsp
 
        echo 40800000.dsp > /sys/bus/platform/drivers/omap-rproc/unbind
 
-NOTE: May need to unbind all the other cores as well to avoid issues.
+.. note::
+   May need to unbind all the other cores as well to avoid issues.
 
 Update firmware symbolic link
 
@@ -147,7 +150,7 @@ the trace.
 
        cat /sys/kernel/debug/remoteproc/remoteproc2/trace0
 
-| Here is a sample log.
+Here is a sample log.
 
 ::
 
@@ -280,10 +283,9 @@ the trace.
 
 | 
 
-| 
 
-.. rubric:: How to Re-Build the example
-   :name: how-to-re-build-the-example
+How to Re-Build the example
+---------------------------
 
 Also source code for the example is included in the Processor SDK Linux
 release. Once installed the source files can be found in the directory
@@ -314,34 +316,36 @@ command.
 
        make big-data-ipc-demo_install
 
-Note: Rules.make file can be edited to change the DESTDIR where the
-binaries will be installed.
+.. note::
+   Rules.make file can be edited to change the DESTDIR where the
+   binaries will be installed.
 
-.. rubric:: Source files
-   :name: source-files
+Source files
+^^^^^^^^^^^^
 
-| The source files for the example are located at
+The source files for the example are located at
 
 ::
 
        <processor-sdk_linux-<platform>-<version>/example-applications/big-data-ipc-demo-linux-<version>/host_linux/simple_buffer_example.
 
-| The host directory and dsp directory has the corresponding sources.
-  The shared folder contains some common sources.
-| The main sequence for big data IPC can be followed by looking at
-  host/App.c and dsp/Server.c.
+The host directory and dsp directory has the corresponding sources.
+The shared folder contains some common sources.
+The main sequence for big data IPC can be followed by looking at
+host/App.c and dsp/Server.c.
+|
 
-.. rubric:: Memory layout details
-   :name: memory-layout-details
+Memory layout details
+^^^^^^^^^^^^^^^^^^^^^
 
 The DSP side memory layout can be found in the file
 host_linux/simple_buffer_example/shared/<platform>/config.bld.
-
 Also note the addition of the following section in
 host_linux/simple_buffer_example/shared/<platform>/rsc_table_dsp.h.
+Please note the reserved carve-out in the DSP resource table
 
-Please note the reserved carve-out in the DSP resource table /\* NOTE:
-Make sure this matches what is configured in the linux device tree \*/
+.. note::
+   Make sure this matches what is configured in the linux device tree
 
 #. define DSP_CMEM_IOBUFS 0xA0000000
 #. define PHYS_CMEM_IOBUFS 0xA0000000
@@ -350,14 +354,14 @@ Make sure this matches what is configured in the linux device tree \*/
 The CMEM area allocated from this region is used for the big data
 buffers.
 
-.. rubric:: Host RTOS example
-   :name: host-rtos-example
+Host RTOS example
+=================
 
 Under the host_bios directory the simple_buffer_example is implemented
 for Host A15 and DSP both running TI RTOS/BIOS.
 
-.. rubric:: How to Run the Example
-   :name: how-to-run-the-example-1
+How to Run the Example
+----------------------
 
 The Processor SDK RTOS release include the pre-built binaries for the
 host_bios example under:
@@ -373,19 +377,19 @@ image or 'app' bootable through SBL is located under:
 
        processor_sdk_<platform>_<version>/demos/bigdataipc/prebuilt-binaries/bootimages/host_bios/simple_buffer_example/<board-name>/app
 
-.. rubric:: AM57xx & K2G boards
-   :name: am57xx-k2g-boards
+AM57xx & K2G boards
+^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Pre-requisites
    :name: pre-requisites
 
-| 1. Create a bootable SDCard using the procedure here: :ref:`Creating SD card in Windows <Tools-Create-SD-Card-Windows-label>`
-| or
-| :ref:`Create SD card in Linux <Tools-Create-SD-Card-Linux-label>`
+1. Create a bootable SDCard using the procedure here: :ref:`Creating SD card in Windows <Tools-Create-SD-Card-Windows-label>`
+or
+:ref:`Create SD card in Linux <Tools-Create-SD-Card-Linux-label>`
 
-| 2. Connect the UART on the hardware to the Host.
-| ( Configure the terminal/console to Baud Rate= 115200, Data Bits= 8 ,
-  Parity= None, Flow Control= Off )
+2. Connect the UART on the hardware to the Host.
+( Configure the terminal/console to Baud Rate= 115200, Data Bits= 8 ,
+Parity= None, Flow Control= Off )
 
 .. rubric:: Procedure
    :name: procedure
@@ -400,17 +404,17 @@ Passed" message will be printed to the UART console.
 
 .. Image:: ../images/BigDataIPC_Rtos_Demo.png
 
-.. rubric:: K2H, K2K, K2L, K2E Boards
-   :name: k2h-k2k-k2l-k2e-boards
+K2H, K2K, K2L, K2E Boards
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The prebuilt elf binaries of Host and DSP images can be loaded through
 CCS to the appropriate cores and run.
 
-.. rubric:: How to Re-Build the Example
-   :name: how-to-re-build-the-example-1
+How to Re-Build the Example
+---------------------------
 
-| The bigdata ipc examples can be built from the Processor SDK top level
-  directory using the following steps
+The bigdata ipc examples can be built from the Processor SDK top level
+directory using the following steps
 
 .. rubric:: 1. Build environment setup
    :name: build-environment-setup
@@ -440,31 +444,31 @@ CCS to the appropriate cores and run.
 
        make bigdataipc_examples
 
-| This creates the elf binaries for both the host and DSP cores.
-| And the binaries can be installed using
+This creates the elf binaries for both the host and DSP cores.
+And the binaries can be installed using
 
 ::
 
        make bigdataipc_examples_install
 
-| (NOTE: The above command installs the elf binaries under the
-  prebuilt-binaries location mentioned above.
-| Need to convert the prebuilt elf binaries into bootable images refer
-  to :ref:`Processor SDK RTOS Boot <FC-Boot-label>`
+(NOTE: The above command installs the elf binaries under the
+prebuilt-binaries location mentioned above.
+Need to convert the prebuilt elf binaries into bootable images refer
+to :ref:`Processor SDK RTOS Boot <FC-Boot-label>`)
 
 .. rubric:: Source files
    :name: source-files-1
 
-| The source files for the example are located at
+The source files for the example are located at
 
 ::
 
        <processor_sdk_<platform>_<version>/demos/bigdataipc/host_bios/simple_buffer_example.
 
-| The host directory and dsp directory has the corresponding sources.
-  The shared folder contains some common sources.
-| The main sequence for big data IPC can be followed by looking at
-  host/App.c and dsp/Server.c.
+The host directory and dsp directory has the corresponding sources.
+The shared folder contains some common sources.
+The main sequence for big data IPC can be followed by looking at
+host/App.c and dsp/Server.c.
 
 .. raw:: html
 
