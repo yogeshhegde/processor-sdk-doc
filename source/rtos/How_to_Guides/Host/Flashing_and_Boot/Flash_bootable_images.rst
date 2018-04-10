@@ -25,20 +25,11 @@ default flashable binaries in the Processor SDK RTOS.
 -  Code Composer Studio installed on your PC
 -  An USB connection to your EVM emulator
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Your board should be set to NO-BOOT mode. Please refer to the boot mode
-dip switch settings for different boot modes on your EVM Hardware User
-Guide. See `this page <Release_Specific.html#supported-platforms-and-versions>`__ for
-a link to all supported EVM information.
-
-.. raw:: html
-
-   </div>
+.. note::
+   Your board should be set to NO-BOOT mode. Please refer to the boot mode
+   dip switch settings for different boot modes on your EVM Hardware User
+   Guide. See `this page <Release_Specific.html#supported-platforms-and-versions>`__ for
+   a link to all supported EVM information.
 
 .. rubric:: Directory Structure
    :name: directory-structure
@@ -169,21 +160,11 @@ the options to select emulator and endianness:
 -  -le: Little Endian
 -  -be: Big Endian
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  By default, the images provided are little endian.
--  Also by default, Keystone 2 EVMs are expected to only use the XDS2xx
-   Emulator. You do not have to supply the emulator in the parameter for
-   K2H/K2E/K2L.
-   
-.. raw:: html
-
-   </div>
+.. note::
+   -  By default, the images provided are little endian.
+   -  Also by default, Keystone 2 EVMs are expected to only use the XDS2xx
+      Emulator. You do not have to supply the emulator in the parameter for
+      K2H/K2E/K2L.
 
 Some examples are:
 

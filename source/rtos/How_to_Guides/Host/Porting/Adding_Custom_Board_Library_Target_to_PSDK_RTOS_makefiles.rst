@@ -128,10 +128,11 @@ In packages/ti/buildmakerules/platform.mk, add the following lines:
        PLATFORM_XDC = "evmAM572XCustom"
      endif
 
-**Note:** The SYSBIOS platforms follow the convention to consolidate all
-platform definitions under SYSBIOS_INSTALL_PATH/packages/ti/platforms/\*
-hence the convention ti.platorms.<platformName> but for custom platform,
-users are not required to follow this convnetion.
+.. note::
+   The SYSBIOS platforms follow the convention to consolidate all
+   platform definitions under SYSBIOS_INSTALL_PATH/packages/ti/platforms/\*
+   hence the convention ti.platorms.<platformName> but for custom platform,
+   users are not required to follow this convention.
 
 **Step 6: Update source files corresponding to drivers used in board
 library**. src_files_lld.mk file adds source files corresponding to LLD
@@ -168,20 +169,11 @@ In packages/ti/board/src/src_files_lld.mk, add the following lines:
 
 | 
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For all LLD drivers linked to the board library you need to include
-corresponding <drv>_soc.c file. For example if you include GPIO driver
-for setting board mux then GPIO_soc.c needs to be added to LLD source
-files.
-
-.. raw:: html
-
-   </div>
+.. note::
+   For all LLD drivers linked to the board library you need to include
+   corresponding <drv>_soc.c file. For example if you include GPIO driver
+   for setting board mux then GPIO_soc.c needs to be added to LLD source
+   files.
 
 **Step 7: Add custom Board to BOARDLIST and update CORELIST**
 
@@ -272,19 +264,10 @@ steps to add your own board library.
 `File:Pdk packages ti board
 customAM572x.zip </index.php?title=Special:Upload&wpDestFile=Pdk_packages_ti_board_customAM572x.zip>`__
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Due to software distribution policy on the wiki, we have removed the
-file linked here. Users can refer to the discussion and zipped package
-linked from E2E post provided below:
-
-.. raw:: html
-
-   </div>
+.. note::
+   Due to software distribution policy on the wiki, we have removed the
+   file linked here. Users can refer to the discussion and zipped package
+   linked from E2E post provided below:
 
 -  `E2E post on creation of custom board
    library <https://e2e.ti.com/support/arm/sitara_arm/f/791/p/555022/2040948#pi316653=2>`__
@@ -292,21 +275,12 @@ linked from E2E post provided below:
 .. rubric:: Additional steps for AM335x/AM437x users
    :name: additional-steps-for-am335xam437x-users
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Currently the AM335x and AM437x board libraries re-use the board support
-that was used in legacy starterware software. AM335x and AM437x users
-will need to additionally modify build files in starterware to build
-their custom board library. Additional steps required for AM335x/AM437x
-will be added to this article soon in this section
-
-.. raw:: html
-
-   </div>
+.. note::
+   Currently the AM335x and AM437x board libraries re-use the board support
+   that was used in legacy starterware software. AM335x and AM437x users
+   will need to additionally modify build files in starterware to build
+   their custom board library. Additional steps required for AM335x/AM437x
+   will be added to this article soon in this section
 
 .. raw:: html
 

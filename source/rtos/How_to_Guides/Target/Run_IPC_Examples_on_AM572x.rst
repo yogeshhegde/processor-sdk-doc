@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x 
 
-.. rubric:: DRA7xx/AM572xx IPC Examples
-   :name: dra7xxam572xx-ipc-examples
+DRA7xx/AM572xx IPC Examples
+---------------------------
 
 .. rubric:: IPC Hello Example:
    :name: ipc-hello-example
@@ -24,13 +24,15 @@ message to the pool. Thus, messages are sent in only one direction.
 Default settings of the Hello world example configures DSP1 as the
 writer and DSP2 as the reader.
 
-Note: if Windows 7 machine is used for building these examples,
-**GnuWin32** make utility needs to be installed to run make which can be
-downloaded from this link
-**http://gnuwin32.sourceforge.net/packages/make.htm**.
+.. note::
+   if Windows 7 machine is used for building these examples,
+   **GnuWin32** make utility needs to be installed to run make which can be
+   downloaded from this link
+   `http://gnuwin32.sourceforge.net/packages/make.htm <http://gnuwin32.sourceforge.net/packages/make.htm>`__
 
-Set **GnuWin32\bin** folder on file path and add a system variable
-**XDCTOOLS_JAVA_HOME** to point to "**c:\ti\ccsv6\eclipse\jre**"
+
+Set **GnuWin32\\bin** folder on file path and add a system variable
+**XDCTOOLS_JAVA_HOME** to point to "**c:\\ti\\ccsv6\\eclipse\\jre**"
 
 ::
 
@@ -80,13 +82,13 @@ variable name and its value.
 
 ::
       
-	  See the following example, and ensure you are using the latest version 
-	  of folder names present in ~/ti folder:
+      See the following example, and ensure you are using the latest version
+      of folder names present in ~/ti folder:
 	  
-	  DEPOT=/home/Your_Ubuntu_home_folder/ti
+      DEPOT=/home/Your_Ubuntu_home_folder/ti
 	  
-	  # Use the following environment assignment  (Note you must use 32 bit Java even in Ubuntu 14.04 64 bit OS environment)
-        export XDCTOOLS_JAVA_HOME=/home/Your_Ubuntu_home_folder/ti/ccsv6/eclipse/jre
+      # Use the following environment assignment  (Note you must use 32 bit Java even in Ubuntu 14.04 64 bit OS environment)
+      export XDCTOOLS_JAVA_HOME=/home/Your_Ubuntu_home_folder/ti/ccsv6/eclipse/jre
  
       #### BIOS-side dependencies ####
       BIOS_INSTALL_DIR=$(DEPOT)/bios_6_41_04_54
@@ -101,8 +103,8 @@ variable name and its value.
 
 3. Run make command in current folder to build DSP1 and DSP2 hello examples. Output files are created under debug sub folders.
 
- - ex01_hello\dsp1\bin\debug
- - ex01_hello\dsp2\bin\debug
+ - ex01_hello\\dsp1\\bin\\debug
+ - ex01_hello\\dsp2\\bin\\debug
 4. Launch target configurations.
 
 5. Right click CortexA15_0 and connect target.
@@ -120,6 +122,7 @@ variable name and its value.
 11. On CCS --> Tools --> RTOS Object view (ROV).
 
 12. Suspend (halt) DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages.
+
 |
 
 .. Image:: ../images/Hello_dsp2.png
@@ -160,8 +163,8 @@ World example environment varaible settings for reference.
 
 3. Run make command in current folder to build DSP1 and HOST hello examples. Output files are created under debug sub folders
 
- - ex02_messageq\host\bin\debug : HOST A15 binary
- - ex02_messageq\dsp1\bin\debug : C66x binary
+ - ex02_messageq\\host\\bin\\debug : HOST A15 binary
+ - ex02_messageq\\dsp1\\bin\\debug : C66x binary
 4. Launch target configurations. Note that BH560USB_M is emulator is used to connect to AM572X EVM.
 
 5. Right click CortexA15_0 and connect target.
@@ -179,6 +182,7 @@ World example environment varaible settings for reference.
 11. On CCS --> Tools --> RTOS Object view (ROV).
 
 12. Suspend (halt) ARM Cortex_A15 to view test messages on ROV Viewable Modules -->LoggerBuf Refer the following ROV message queue screenshot
+
 |
 
 .. Image:: ../images/MesgQ_arm0.png
@@ -242,6 +246,7 @@ wait on multiple input sources.
 11. On CCS --> Tools --> RTOS Object view (ROV).
 
 12. Suspend (halt) ARM CortexA15_0 to view test messages on ROV Viewable Modules -->LoggerBuf. Refer the following image of ROV log messages
+
 |
 
 .. Image:: ../images/Notify_peer_arm0.png
@@ -274,8 +279,9 @@ local processor). The task sends a message to a server and waits for the
 message to be returned. This is repeated for each server in the system
 (including the local server).
 
-Note that presently EVE is not yet supported and therefore,
-DSP1/DSP2/HOST are built for testing.
+.. note::
+   Note that presently EVE is not yet supported and therefore,
+   DSP1/DSP2/HOST are built for testing.
 
 1. Change to ping folder example by enter: cd
 ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex11_ping**
@@ -299,21 +305,22 @@ sure there is no space between variable name and its value.
 
 10. **Load DSP2** Ping Example out file on DSP2.
 
-10 **Load HOST** ping Example onto ARM CortexA15_0
+11. **Load HOST** ping Example onto ARM CortexA15_0
 
-11. Run DSP1, DSP2, and HOST images.
+12. Run DSP1, DSP2, and HOST images.
 
-12. On CCS --> Tools --> RTOS Object view (ROV).
+13. On CCS --> Tools --> RTOS Object view (ROV).
 
-13. Halt DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages
+14. Halt DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages
+
 |
 
 .. Image:: ../images/Ping_dsp1.png
 
 |
-14. Suspend (halt) DSP2 and click on ROV icon to view log messages.
+15. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 
-15. Suspend (halt) ARM CortexA15_0 and click on ROV icon to view log messages.
+16. Suspend (halt) ARM CortexA15_0 and click on ROV icon to view log messages.
 
 | 
 
@@ -332,16 +339,17 @@ same as described in the previous example with the exception of
 additional steps to load the IPU1 core with the corresponding executable
 and running it in conjunction with DSP1, DSP2 and HOST.
 
-Note: During build process using IPU1, you may encounter a message
-indicating **rtsv7M4_T_le_eabi.lib** library is missing. This is a know
-issue and is being tracked by **SDCOM00118417** IR. However, you may
-create this missing library by going to the compiler installation's
-**lib** directory and execute the following command to regenerate all
-required libraries:
+.. note::
+   During build process using IPU1, you may encounter a message
+   indicating **rtsv7M4_T_le_eabi.lib** library is missing. This is a know
+   issue and is being tracked by **SDCOM00118417** IR. However, you may
+   create this missing library by going to the compiler installation's
+   **lib** directory and execute the following command to regenerate all
+   required libraries:
 
-::
+   ::
 
-     ./mklib --all
+	./mklib --all
 
 The following example depicts a typical host communications protocol
 with other IPC apps (dsp1, dsp2, ipu1) **Note that the following HOST

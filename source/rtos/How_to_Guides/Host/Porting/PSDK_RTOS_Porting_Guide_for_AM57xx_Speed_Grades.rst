@@ -67,13 +67,13 @@ if your board design is based of one of TI evalauation platforms listed
 below. The assumption here is that the custom board is based off AM571X
 IDK platform
 
-Note: Support for AM5708 was added to Sitara Chip Support Package 1.3.4
-in Code composer Studio. If you don`t see the device definition in CCS,
-then you can update the Sitara Chip Support package by going to
-`Help->Check
-Updates <http://ap-fpdsp-swapps.dal.design.ti.com/index.php/File:Check_Updates.png>`__
+.. note::
+   Support for AM5708 was added to Sitara Chip Support Package 1.3.4
+   in Code composer Studio. If you don`t see the device definition in CCS,
+   then you can update the Sitara Chip Support package by going to
+   `Help->Check
+   Updates <http://ap-fpdsp-swapps.dal.design.ti.com/index.php/File:Check_Updates.png>`__
 
-| 
 
 **Step 1: Select the AM570x part number that is populated on your custom
 platform:**
@@ -121,24 +121,14 @@ either
     /* Board Library Init. */
        Board_init(boardCfg);
 
-.. raw:: html
+.. note::
+   When bootloading direct from flash media, this change may also be
+   required in the SBL code
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-When bootloading direct from flash media, this change may also be
-required in the SBL code
-
-.. raw:: html
-
-   </div>
-
-| 
-| When using "D" rated parts that run at 500 MHz, in addition to the
-  above configuration, you will also need to modify OPP_NOM settings in
-  the board library by updating the DPLL setting for MPU and DSP in the
-  file <BoardName>_pll.c as shown below:
+When using "D" rated parts that run at 500 MHz, in addition to the
+above configuration, you will also need to modify OPP_NOM settings in
+the board library by updating the DPLL setting for MPU and DSP in the
+file <BoardName>_pll.c as shown below:
 
 **Step1 : Update MPU, DSP, IVA and GPU DPLL setting**
 
@@ -249,18 +239,9 @@ For AM572x, this is mapped as following
       hDmmCfg->LISA_MAP[0U] = 0x80740300;
       hDmmCfg->LISA_MAP[1U] = 0x80740300;
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Processor SDK RTOS provides am570x_ddr.c file in the idkAM571x board
-library for reference for configuring DDR on AM570x parts
-
-.. raw:: html
-
-   </div>
+.. note::
+   Processor SDK RTOS provides am570x_ddr.c file in the idkAM571x board
+   library for reference for configuring DDR on AM570x parts
 
 .. rubric:: Pinmux Changes to Consider
    :name: pinmux-changes-to-consider
@@ -274,20 +255,10 @@ library for reference for configuring DDR on AM570x parts
 -  There is no pinmux setting for CSI2 module so you can leave the
    MUXMODE=0 on those pins if there is no instance of the peripheral
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Processor SDK RTOS provides board/src/idkAM571x/include/am570x_pinmux.h
-file in the idkAM571x board library for reference for configuring pinmux
-on AM570x based hardware platform
-
-.. raw:: html
-
-   </div>
-
+.. note::
+   Processor SDK RTOS provides board/src/idkAM571x/include/am570x_pinmux.h
+   file in the idkAM571x board library for reference for configuring pinmux
+   on AM570x based hardware platform
 | 
 
 .. rubric:: Driver SOC Module clock changes
