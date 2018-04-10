@@ -29,6 +29,7 @@ your machine has the reset routines described below.
 1) Once Linux has booted, launch the target configuration.
 
 | 
+
 .. Image:: ../images/Outofreset_1_lali.JPG
 
 | 
@@ -42,6 +43,7 @@ your machine has the reset routines described below.
   and connect the CS\_DAP\_Debug\_SS core.
 
 | 
+
 .. Image:: ../images/Outofreset_3_lali.JPG
 
 | 

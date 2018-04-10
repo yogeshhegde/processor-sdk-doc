@@ -37,9 +37,11 @@ Here is the process to follow to create the SD card.
    image file. Here's how to do it with 7-zip:
 
    .. Image:: ../images/7zip_to_extract_image.png
+
    You should see a status bar as the image is decompressed:
 
    .. Image:: ../images/Win32_Disk_Imager_Extracting.png
+
    And this is what you should have when it is finished:
 
    .. Image:: ../images/7zip_image_file_extracted.png
@@ -57,6 +59,7 @@ Here is the process to follow to create the SD card.
    #. Choose the image file for the SDK that you want to write.
    
       .. Image:: ../images/Win32_Disk_Imager_open.png
+
       And select the appropriate SDK Image file:
 
       .. Image:: ../images/Win32_disk_imager_select_a_disk_image.png
@@ -75,13 +78,16 @@ Here is the process to follow to create the SD card.
           the correct disk:
 
       .. Image:: ../images/Win32_disk_imager_Confirm_overwrite.png
+
       You should see the following status bar as the image is being
       written to the disk:
 
       .. Image:: ../images/Win32_Disk_Imager_writing_to_disk.png
+
       And when the write is complete, you should get a notification:
 
       .. Image:: ../images/Win32_Disk_Imager_Complete.png
+
       You can now close the image writing program:
 
       .. Image:: ../images/Win32_Disk_Imager_exit.png

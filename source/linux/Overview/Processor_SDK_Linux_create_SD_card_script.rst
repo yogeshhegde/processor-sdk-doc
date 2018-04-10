@@ -23,6 +23,7 @@ through how to use the script as well.
 | 
 
 .. _processor-sdk-linux-sd-card-common-steps:
+
 Common Steps
 -------------
 
@@ -126,6 +127,7 @@ many partitions you want to create for the SD card.
 After selecting the number of partitions, move on to the next section.
 
 .. _processor-sdk-linux-installing-sd-card-content:
+
 Installing SD Card Content
 ---------------------------
 
@@ -150,6 +152,7 @@ to continue installing the file system or safely exit the script.
 | 
 
 .. _processor-sdk-linux-sd-card-using-default-images:
+
 SD Card Using Default Images
 -----------------------------
 
@@ -245,8 +248,10 @@ path to enter would be
 prompted to confirm the installation directory. The SD card will then be
 created using the default images and the script will exit when finished.
 
-| 
+|
+
 .. _processor-sdk-linux-sd-card-using-custom-images:
+
 SD Card Using Custom Images
 ----------------------------
 
@@ -320,7 +325,9 @@ will be given a list of the files that are going to be copied and given
 the option to change the path if the list of files is not correct.
 
 | 
+
 .. _processor-sdk-linux-sd-card-using-partition-tarballs:
+
 SD Card Using Partition Tarballs
 --------------------------------
 

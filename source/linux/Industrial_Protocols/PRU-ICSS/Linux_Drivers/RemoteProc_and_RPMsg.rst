@@ -367,6 +367,7 @@ abstraction layer.
   messages from the ARM core. This code is provided as an example in the
   PRU Software Support Package that is include in the Linux Processor
   SDK.
+
 .. Image:: ../images/Rpmsg_code.PNG
 
 .. rubric:: Next Steps

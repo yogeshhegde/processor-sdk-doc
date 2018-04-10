@@ -1,4 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Customizing_the_SDK_Splash_Screen
+
 Customizing the SDK Splash Screen
 =============================================
 .. rubric:: Overview
@@ -31,8 +32,9 @@ default in the psplash.c file. Unfortunately this isn't configurable and
 you have to edit the file manually if you wish to use different name.
 
 - The above command will generate the header file with the image
-contents (<your\_logo\_filename>-img.h). - Open the psplash.c file and
-replace the file name in the following line at the top of the file:
+  contents (<your\_logo\_filename>-img.h).
+- Open the psplash.c file and replace the file name in the following line
+  at the top of the file:
 
 ::
 

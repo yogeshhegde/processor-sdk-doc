@@ -731,6 +731,7 @@ signal between master and slave OC clock.
                Figure 1: PPS: Oregano Master vs. PRU-ICSS Slave Port
 
 | 
+
 .. Image:: ../images/Pic_1pps_cpts.png
 
 ::

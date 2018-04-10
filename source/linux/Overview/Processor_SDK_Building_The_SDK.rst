@@ -22,7 +22,7 @@ Quick Start
 ===========
 
 Prerequisites (One-time setup)
------------------------------
+------------------------------
 
 .. rubric:: Host Setup - Ubuntu (Recommended)
    :name: Host Setup - ubuntu (Recommended)
