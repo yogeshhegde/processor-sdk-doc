@@ -1,13 +1,13 @@
 .. http://processors.wiki.ti.com/index.php/CToolsLib 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+------------
 
-See `**CToolsLib Article** <http://processors.wiki.ti.com/index.php/CToolsLib_Article>`__ for a
+See `CToolsLib Article <http://processors.wiki.ti.com/index.php/CToolsLib_Article>`__ for a
 comprehensive article on cToolsLibs and the hardware modules supported.
 
-.. rubric:: Overview
-   :name: overview
+Overview
+--------
 
 -  CToolsLib is collection of embedded target APIs/library focused to
    enable easy programmatic access to `CTools <http://processors.wiki.ti.com/index.php/CTools>`__
@@ -16,16 +16,16 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    into applications
 -  CToolsLib consists of several libraries
 
-.. rubric:: AETLib
-   :name: aetlib
+AETLib
+^^^^^^
 
 -  The `AETLIB <http://processors.wiki.ti.com/index.php/AETLIB>`__ library provides programmatic
    access to the `Advanced Event
    Triggering <http://processors.wiki.ti.com/index.php/Advanced_Event_Triggering>`__ capability on
    64x and 64x+ processor cores.
 
-.. rubric:: ETBLib
-   :name: etblib
+ETBLib
+^^^^^^
 
 -  This library provides the ability to program and read trace data from
    an Embedded Trace Buffer (ETB). The ETB can be used with other
@@ -49,14 +49,14 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    Example <http://processors.wiki.ti.com/index.php/DSPTrace_EDMA_Example>`__ to extend ETB using
    target memory
 
-.. rubric:: DSPTraceLib
-   :name: dsptracelib
+DSPTraceLib
+^^^^^^^^^^^
 
 -  This library provides the ability to programmaticly setup 64x+ DSP
    trace export.
 
-.. rubric:: ETMLib
-   :name: etmlib
+ETMLib
+^^^^^^
 
 -  The ETM Library provides the interface to configure and control
    instruction and data tracing during program execution. A trace
@@ -68,8 +68,8 @@ comprehensive article on cToolsLibs and the hardware modules supported.
 -  The `ETMLib Examples <http://processors.wiki.ti.com/index.php/ETMLib_Examples>`__ page provides
    instructions on how to run the examples and display the results.
 
-.. rubric:: STMLib
-   :name: stmlib
+STMLib
+^^^^^^
 
 -  This library provides "C" printf and binary APIs for hardware
    assisted (System Trace software messages) instrumentation in your
@@ -78,8 +78,8 @@ comprehensive article on cToolsLibs and the hardware modules supported.
 -  For instructions on setting up CCS to capture STM data see `Using
    System Trace(STM) <http://processors.wiki.ti.com/index.php/Using_System_Trace_(STM)>`__.
 
-.. rubric:: ITMLib
-   :name: itmlib
+ITMLib
+^^^^^^
 
 -  The ITMLib provides "C" string amd binary value logging APIs for TI
    M3/M4 devices that includes an ITM module and supports SWD (Serial
@@ -88,12 +88,8 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    your XDS may need a firmware update to work with "SWD with SWO
    Trace". See your XDS vendor for firmware update instructions).
 
-| 
-
-| 
-
-.. rubric:: CPTLib
-   :name: cptlib
+CPTLib
+^^^^^^
 
 -  The Common Platform Tracer modules provides profile information via
    STM messages for critical buses within the device. CPTLib provides
@@ -104,8 +100,8 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    help see `Debugging with Common Platform
    Tracer <http://processors.wiki.ti.com/index.php/Debugging_With_Common_Platform_Tracer>`__.
 
-.. rubric:: cTools_UCLib
-   :name: ctools_uclib
+cTools_UCLib
+^^^^^^^^^^^^
 
 -  The cTools_UCLib is a library for Keystone family devices (C66xx,
    TCI66xx, 66AK2Hxx, 66AK2Exx and TCI6630K2L) that consolidates the
@@ -131,8 +127,8 @@ comprehensive article on cToolsLibs and the hardware modules supported.
 -  For more information about Ctools use-cases, please refer to
    Ctools_UCLib doxygen at Ctools_UCLib/doc/Ctools_UCLib.html/index.html
 
-.. rubric:: PMICMILib
-   :name: pmicmilib
+PMICMILib
+^^^^^^^^^
 
 -  The PMI and CMI units provide power and clock state profiling via STM
    messages. The PMICMILib provides a common programming and control API
@@ -140,8 +136,8 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    management
    Profiling <http://processors.wiki.ti.com/index.php/OMAP4_Power_and_Clock_Management_Profiling>`__.
 
-.. rubric:: Linux Kernel Driver for STM printf
-   :name: linux-kernel-driver-for-stm-printf
+Linux Kernel Driver for STM printf
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  Linux kernel module device driver enables applications to use MIPI
    STM as a standard character device driver. Users can redirect output
@@ -149,8 +145,8 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    from their application. For details and examples see `STM Linux
    Device Driver <http://processors.wiki.ti.com/index.php/STM_Linux_Device_Driver>`__.
 
-.. rubric:: SCILib
-   :name: scilib
+SCILib
+^^^^^^
 
 -  The OMAP44xx and OMAP54xx Statistic Collectors provides profile data
    for SDRAM load monitoring and Master load and Latency monitoring.
@@ -165,8 +161,8 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    -  Average Burst Length (for SDRAM and Master SC Modules)
    -  Average Latentcy (For Master SC Module only)
 
-.. rubric:: Examples
-   :name: examples
+Examples
+--------
 
 -  The CToolsLib examples package contains device or platform specific
    CCSv5 examples, which portrays typical use case scenarios involving
@@ -182,14 +178,14 @@ comprehensive article on cToolsLibs and the hardware modules supported.
    -  C6A816x family of devices
    -  DRA7xx family of devices
 
-.. rubric:: Documentation
-   :name: documentation
+Documentation
+-------------
 
 -  There is a generated Doxygen API description included with each
    CToolsLib.
 
-.. rubric:: Download
-   :name: download
+Download
+--------
 
 All cToolsLib libraries and example source are available in the links
 below. After downloading the zips you need, simply expand each zip under
@@ -199,11 +195,11 @@ compatible with CCSv6.
 +-----------------------+-----------------------+-----------------------+
 | Library               | Purpose               | File Repository       |
 +=======================+=======================+=======================+
-| GettingStarted        | Provides processor    | `GettingStarted <http |
-|                       | specific notes for    | ://downloads.ti.com/e |
-|                       | libraries and         | mulation/esd/ctoolsli |
-|                       | examples              | b/GettingStarted.htm> |
-|                       |                       | `__                   |
+| GettingStarted        | Provides processor    | `GettingStarted       |
+|                       | specific notes for    | <http://downloads.ti  |
+|                       | libraries and         | .com/emulation/esd/	|
+|                       | examples              | ctoolslib/GettingStar |
+|                       |                       | ted.htm>`__           |
 +-----------------------+-----------------------+-----------------------+
 | STMLib                | Software Message      | `STMLib_5.2 <http://d |
 |                       | Library               | ownloads.ti.com/emula |
@@ -267,12 +263,12 @@ compatible with CCSv6.
 |                       |                       | lation/esd/ctoolslib/ |
 |                       |                       | Examples_5.9.zip>`__  |
 +-----------------------+-----------------------+-----------------------+
-| Ctools_UCLib_Examples | CTools Use-Case       | `Ctools_UCLib_Example |
-|                       | Library Examples      | s_1.3 <http://downloa |
-|                       |                       | ds.ti.com/emulation/e |
-|                       |                       | sd/ctoolslib/Ctools_U |
-|                       |                       | CLib_Examples_1.3.zip |
-|                       |                       | >`__                  |
+| Ctools_UCLib_Examples | CTools Use-Case       | `Ctools_UCLib_	|
+|                       | Library Examples      | Examples_1.3 <http://	|
+|                       |                       | downloads.ti.com/	|
+|                       |                       | emulation/esd/ctool	|
+|                       |                       | slib/Ctools_UCLib_	|
+|                       |                       | Examples_1.3.zip>`__	|
 +-----------------------+-----------------------+-----------------------+
 
 | 
@@ -280,25 +276,25 @@ compatible with CCSv6.
 The latest release of all libraries now come with CCS projects. Please
 refer GettingStarted.htm for more details.
 
-| 
-
-.. rubric:: Trace Decoding
-   :name: trace-decoding
+Trace Decoding
+--------------
 
 To decoder trace from a binary dump of the ETB memory, two tools are
 avaialble:
 
-**Bin2TDF utility
-**\ Refer here for the detail on using `BIN2TDF. <http://processors.wiki.ti.com/index.php/BIN2TDF>`__
+**Bin2TDF utility**
 
-**TD utility
-**\ Refer here for the detail on using
+Refer here for the detail on using `BIN2TDF. <http://processors.wiki.ti.com/index.php/BIN2TDF>`__
+
+**TD utility**
+
+Refer here for the detail on using
 `TD <http://processors.wiki.ti.com/index.php/TD>`__ .
 
  
 
-.. rubric:: Support
-   :name: support
+Support
+-------
 
 -  `Support Forum - Please put CToolsLib in
    title <http://e2e.ti.com/support/development_tools/code_composer_studio/f/81.aspx>`__
@@ -362,7 +358,6 @@ avaialble:
 -  Etblib Example
    `Here <http://processors.wiki.ti.com/index.php/Capturing_ETB_Trace_Data_With_ETBLib>`__
 
-| 
 
 --------------
 

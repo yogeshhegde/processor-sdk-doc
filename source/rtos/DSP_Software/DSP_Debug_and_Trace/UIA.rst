@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Multicore_System_Analyzer#Unified_Instrumentation_Architecture_.28UIA.29 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+--------
 
 System Analyzer is a real-time tool for analyzing, visualizing and
 profiling application running on single or multi core systems. Data is
@@ -14,8 +14,8 @@ In a multi core system, data from all cores are correlated to a single
 timeline.
 
 .. Image:: ../images/SA.png
-.. rubric:: Unified Instrumentation Architecture (UIA)
-   :name: unified-instrumentation-architecture-uia
+Unified Instrumentation Architecture (UIA)
+------------------------------------------
 
 UIA is the target-side package which defines the APIs, transports,
 interfaces and guidelines that enable developers to instrument embedded
@@ -34,8 +34,8 @@ The framework includes:
    visibility into the operation of the O/S
 -  guidelines on how to instrument other RTOSes
 
-.. rubric:: Portable and Flexible
-   :name: portable-and-flexible
+Portable and Flexible
+^^^^^^^^^^^^^^^^^^^^^
 
 System Analyzer and UIA are designed to be portable and flexible:
 
@@ -57,8 +57,8 @@ instrumentation client tools, instrumented target content,
 infrastructure components, and instrumentation middleware components
 that interoperate and can be re-used across TI platforms and devices.
 
-.. rubric:: Available Analysis
-   :name: available-analysis
+Available Analysis
+^^^^^^^^^^^^^^^^^^
 
 -  RTOS Execution Graph
 -  CPU Load
@@ -132,14 +132,16 @@ Graphical representation of any counter/variable that is being logger.
 Also calculates number of occurrences and min, max, average value for
 each counter/variable.
 
-**Note:** TIRTOS/SYSBIOS instrumentation is not enabled by default.
-  See User Guide or Tutorials on how to enable this.
+.. note::
+   TIRTOS/SYSBIOS instrumentation is not enabled by default.
+   See User Guide or Tutorials on how to enable this.
 
-**Note:** More information on the analysis features is available in the
-`System Analyzer User's Guide <http://www.ti.com/lit/pdf/spruh43>`__.
+.. note::
+   More information on the analysis features is available in the
+   `System Analyzer User's Guide <http://www.ti.com/lit/pdf/spruh43>`__.
 
-.. rubric:: Documents and Tutorials
-   :name: documents-and-tutorials
+Documents and Tutorials
+-----------------------
 
 `System Analyzer Getting Started
 Guide <http://processors.wiki.ti.com/images/7/7b/MCSA1.1_Getting_Started_Guide.pdf>`__ - Get familar
@@ -154,8 +156,8 @@ series of projects that can be built and use, along with step-by-step
 walkthroughs of how to configure code, set up System Analyzer, work with
 Analysis Features, etc.
 
-.. rubric:: System Analyzer and the MCSDK Demo
-   :name: system-analyzer-and-the-mcsdk-demo
+System Analyzer and the MCSDK Demo
+----------------------------------
 
 System Analyzer provides visibility into the real-time behavior and
 performance of the `BIOS MCSDK
@@ -165,8 +167,8 @@ Demo <http://processors.wiki.ti.com/index.php/MCSA_and_the_MCSDK_Demo>`__
 page provides more information about how to use System Analyzer with the
 MCSDK.
 
-.. rubric:: Known Issues/Errata
-   :name: known-issueserrata
+Known Issues/Errata
+-------------------
 
 .. rubric:: CCS Crash when opening Graph in System Analyzer
    :name: ccs-crash-when-opening-graph-in-system-analyzer
@@ -198,9 +200,7 @@ MCSDK.
 
 -  The build fails with the error *"dc.services.global.XDCException:
    xdc.PACKAGE_NOT_FOUND: can't locate the package 'ti.sysbios.knl'"*
--  To overcome this, please unzip
-
-.. Image:: ../images/UIAMetaData.zip
+-  To overcome this, please unzip `UIAMetaData.zip <./images/UIAMetaData.zip>`__
    <uia_1_00_04_35 install folder>/packages/ti/uia/runtime/ to update
    the UIAMetaData.xs file. Then delete the <Debug> folder from your
    project and rebuild.
@@ -215,8 +215,8 @@ MCSDK.
    `uia_1_03_01_08 <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/uia/1_03_01_08/index_FDS.html>`__
    or later.
 
-.. rubric:: FAQs
-   :name: faqs
+FAQs
+----
 
 .. rubric:: Q: When can I use System Analyzer auto configuration
    :name: q-when-can-i-use-system-analyzer-auto-configuration
@@ -279,8 +279,8 @@ To use the required UIA events, need this include
     #include <ti/uia/events/UIABenchmark.h>
 
 | 
-| Add entry and exit hook functions to the source (The below one is for
-  Context aware function profiling)
+Add entry and exit hook functions to the source (The below one is for
+Context aware function profiling)
 
 ::
 
@@ -305,11 +305,11 @@ For CCS 5.5 and later
     }
 
 | 
-| The 1st parameter after the message string( 3rd parameter to
-  Log_write3) is a context parameter (For CCS 5.5 and later is the 2nd
-  parameter to Log_write2) and can be used to specify an additional
-  level of qualification (e.g. Task Context). For our purpose out here
-  we can ignore this and just set it to 0.
+The 1st parameter after the message string( 3rd parameter to
+Log_write3) is a context parameter (For CCS 5.5 and later is the 2nd
+parameter to Log_write2) and can be used to specify an additional
+level of qualification (e.g. Task Context). For our purpose out here
+we can ignore this and just set it to 0.
 
 If task aware profiling is needed, the Task context has to be logged.
 SYS/BIOS automatically logs events for task switches and SWI and HWI
@@ -324,8 +324,8 @@ added and hence called from functions in libraries that have been linked
 in. This will cause the Exclusive counts of the functions making calls
 to the Library, to include the Library functions duration.
 
-.. rubric:: Trouble Shooting
-   :name: trouble-shooting
+Trouble Shooting
+----------------
 
 .. rubric:: System Analyzer Events or Packets are being dropped
    :name: system-analyzer-events-or-packets-are-being-dropped
@@ -337,29 +337,29 @@ See **Troubleshooting System Analyzer Connections** section in the
    :name: no-events-showing-up-in-system-analyzer-views
 
 See **Troubleshooting System Analyzer Connections** section in the
-System Analyzer User's Guide.
+`System Analyzer User's Guide <http://www.ti.com/lit/pdf/spruh43>`__.
 
 .. rubric:: System Analyzer cannot connect to the target to retrieve
    logs
    :name: system-analyzer-cannot-connect-to-the-target-to-retrieve-logs
 
 See **Troubleshooting System Analyzer Connections** section in the
-System Analyzer User's Guide.
+`System Analyzer User's Guide <http://www.ti.com/lit/pdf/spruh43>`__.
 
 .. rubric:: System Analyzer Events do not make sense
    :name: system-analyzer-events-do-not-make-sense
 
 See **Troubleshooting System Analyzer Connections** section in the
-System Analyzer User's Guide.
+`System Analyzer User's Guide <http://www.ti.com/lit/pdf/spruh43>`__.
 
 .. rubric:: Time values in the logs are too large
    :name: time-values-in-the-logs-are-too-large
 
 See **Troubleshooting System Analyzer Connections** section in the
-System Analyzer User's Guide.
+`System Analyzer User's Guide <http://www.ti.com/lit/pdf/spruh43>`__.
 
-.. rubric:: Technical Support and Product Updates
-   :name: technical-support-and-product-updates
+Technical Support and Product Updates
+-------------------------------------
 
 For technical discussions and issues, please visit
 
@@ -369,9 +369,10 @@ For technical discussions and issues, please visit
    http://e2e.ti.com/support/embedded/f/355.aspx <http://e2e.ti.com/support/embedded/f/355.aspx>`__
 -  :ref:`Embedded Processors Documentation: <Index-Processor-SDK-RTOS-label>`
 
-Note: When asking for help in the forum you should tag your posts in the
-Subject with "System Analyzer", the part number (e.g. "C6678"), and
-component (e.g. "UIA").
+.. note::
+   When asking for help in the forum you should tag your posts in the
+   Subject with "System Analyzer", the part number (e.g. "C6678"), and
+   component (e.g. "UIA").
 
 For product updates,
 -  Use the CCS/Eclipse Update Manager (see the Getting Started Guide above)
