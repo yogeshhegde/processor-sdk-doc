@@ -1,7 +1,16 @@
-******************
-Tool installation
-******************
+*****************************
+Tool installation for Ubuntu
+*****************************
 sudo apt-get install python-sphinx
+
+*****************************
+Tool installation for Windows
+*****************************
+Follow instructions at http://www.sphinx-doc.org/en/stable/install.html#windows-install-python-and-sphinx
+to install python and sphinx.
+
+Please add the proxy setting when installing sphinx:
+pip install sphinx --proxy webproxy.ext.ti.com:80
 
 ******************
 clone the git repo
@@ -16,9 +25,9 @@ git submodule init
 git submodule update
 
 
-******************
-Build instruction
-******************
+*****************************
+Build instruction for Ubuntu
+*****************************
 linux:
 make config OS=linux
 make OS=linux
@@ -30,6 +39,21 @@ make OS=rtos
 android
 make config OS=android
 make OS=android
+
+*****************************
+Build instruction for Windows
+*****************************
+linux:
+make config linux
+make html linux
+
+rtos:
+make config rtos
+make html rtos
+
+android
+make config android
+make html android
 
 ******************
 HTML page output

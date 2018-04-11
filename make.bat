@@ -5,8 +5,12 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
-set BUILDDIR=build
-set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% source
+set OS=%2
+set /p VERSION=<version.txt
+set BUILDDIR=build/processor-sdk-%OS%/esd/docs/%VERSION%
+set CONFLOC=-c source/%OS%
+set VEROPTS=-D version=%VERSION% -D release=%VERSION%
+set ALLSPHINXOPTS=-d %BUILDDIR%/doctrees %SPHINXOPTS% %CONFLOC% %VEROPTS% source
 set I18NSPHINXOPTS=%SPHINXOPTS% source
 if NOT "%PAPER%" == "" (
 	set ALLSPHINXOPTS=-D latex_paper_size=%PAPER% %ALLSPHINXOPTS%
@@ -43,10 +47,18 @@ if "%1" == "help" (
 
 if "%1" == "clean" (
 	for /d %%i in (%BUILDDIR%\*) do rmdir /q /s %%i
-	del /q /s %BUILDDIR%\*
+	del /q /s "%BUILDDIR%\*"
+	del /q /s "source\%OS%\conf.py"
 	goto end
 )
 
+if "%1" == "config" (
+	type source\common\conf.py source\%OS%\conf-%OS%.py > source\%OS%\conf.py
+	REM sed -i 's/SDKVERSION/${VERSION}/g' source\${OS}\conf.py
+	copy source\patch\footer.html source\_themes\sphinx_rtd_theme_ti
+	copy source\patch\layout.html source\_themes\sphinx_rtd_theme_ti
+	goto end
+)
 
 REM Check if sphinx-build is available and fallback to Python version if any
 %SPHINXBUILD% 2> nul
@@ -73,10 +85,10 @@ if errorlevel 9009 (
 
 
 if "%1" == "html" (
-	%SPHINXBUILD% -b html %ALLSPHINXOPTS% %BUILDDIR%/html
+	%SPHINXBUILD% -b html %ALLSPHINXOPTS% %BUILDDIR%
 	if errorlevel 1 exit /b 1
 	echo.
-	echo.Build finished. The HTML pages are in %BUILDDIR%/html.
+	echo.Build finished. The HTML pages are in %BUILDDIR%.
 	goto end
 )
 
