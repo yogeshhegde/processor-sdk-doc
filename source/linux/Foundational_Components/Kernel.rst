@@ -7,6 +7,13 @@ Users Guide
 ==================================
 .. include:: Foundational_Components/Kernel/Users_Guide.rst
 
+.. Kernel Release Notes
+.. include:: Foundational_Components/Kernel/Processor_SDK_Linux_Kernel_Release_Notes.rst
+
+.. RT Kernel Release Notes
+.. include:: Foundational_Components/Kernel/Processor_SDK_Linux_RT_Kernel_Release_Notes.rst
+
+
 Kernel Drivers
 ==================================
 
