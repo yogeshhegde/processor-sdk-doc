@@ -35,42 +35,6 @@ Documentation
    Guide <http://processors.wiki.ti.com/index.php/Industrial_Protocol_Package_Getting_Started_Guide>`__:
    provides information on getting the software and running basic
    examples/demonstrations bundled in the package.
--  `User Guide <http://processors.wiki.ti.com/index.php/PRU_ICSS_HSR_PRP>`__: Documentation of
-   key API and interface changes from last release.
--  **HSR PRP Datasheet**: Data sheet contains information about the
-   capabilities of the solution, certification information (if
-   applicable), memory and pin mux information. It can be found in the
-   'docs' folder in the installation directory. The directory structure
-   is shown in the user guide `here <http://processors.wiki.ti.com/index.php/PRU_ICSS_HSR_PRP>`__
--  **Software Manifest**: Provides license information on software
-   included in the package. The manifest can be found on the SDK
-   download page or in the installed directory. The directory structure
-   is shown in the user guide `here <http://processors.wiki.ti.com/index.php/PRU_ICSS_HSR_PRP>`__
--  **EVM Quick Start Guide**: Provides information on hardware setup and
-   running the demonstration application that is loaded on flash. This
-   document is provided as part of the EVM kit.
-
-| 
-
-System Requirements
----------------------------
-
-1.0.3 release uses the PROCESSOR-SDK-RTOS 04\_02\_00\_09 which is
-available at:
-
--  AM335x family :
-   http://software-dl.ti.com/processor-sdk-rtos/esd/AM335X/04_02_00_09/index_FDS.html
--  AM437x family :
-   http://software-dl.ti.com/processor-sdk-rtos/esd/AM437X/04_02_00_09/index_FDS.html
--  AM57x family:
-   http://software-dl.ti.com/processor-sdk-rtos/esd/AM57X/04_02_00_09/index_FDS.html
--  K2G family :
-   http://software-dl.ti.com/processor-sdk-rtos/esd/K2G/04_02_00_09/index_FDS.html
-
-Alternatively one can follow "Previous SDK Link" from Processor SDK RTOS
-release page (
-http://software-dl.ti.com/processor-sdk-rtos/esd/<Soc>/latest/index_FDS.html
-)
 
 | 
 
@@ -78,23 +42,6 @@ Release 01.00.03
 ---------------------
 
 Released February 2018
-
-What's New
-^^^^^^^^^^^^^^^^
-
--  PRU-ICSS HSR-PRP Software support for AMIC1x
--  256 entries Node Table support on AM57x and K2G
--  Multicast Filter Support
--  Bug Fixes
-
-Platforms supported
-^^^^^^^^^^^^^^^^^^^^^^^
-
--  AM335x
--  AM437x
--  AM57x
--  K2G
--  AMIC1x
 
 Features supported
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -173,11 +120,6 @@ Features supported
 What is not supported
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  BMCA for PTP/1588
-
-   -  See User Guide on how to switch between Slave and Master
-
--  Boundary clock
 -  Multi domain support for SYNC
 
 | 
@@ -256,13 +198,3 @@ release.
 +---------------+------------------------------------------------+--------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------+
 
 | 
-
-| 
-
-Key APIs & interface changes
---------------------------------
-
--  `This
-   section <http://processors.wiki.ti.com/index.php/HSRPRP_Key_API_and_interface_changes>`__
-   provides important information on the application porting to the
-   current version of PRU-ICSS-HSR-PRP-DAN software
