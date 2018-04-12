@@ -193,7 +193,7 @@ Start roscore, only if it is not already started
    source /opt/ros/indigo/setup.bash
    roslaunch  ti_mmwave_rospkg rviz_1443_3d.launch
 
-   Change 1443 to 1642, based on Radar EVM type.
+   Change "rviz_1443_3d.launch to "rviz_1642_2d.launch", based on Radar EVM type (1443 or 1642).
    
    
 If Kobuki mobile is available use instead:
