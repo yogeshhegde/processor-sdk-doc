@@ -28,8 +28,8 @@ RT Kernel Performance Guide
 
 .. include:: ../common/Release_Specific/MCSDK_to_Processor_SDK_Migration.rst
 
-.. MCSDK1.1 to Processor SDK Migration Guide for OMAPL13x/C674x devices
-.. include:: ../common/Release_Specific/MCSDK1.1_to_Processor_SDK_Migration_Guide_for_OMAPL13x_C674x_devices.rst
+.. MCSDK1.1 to Processor SDK Migration Guide for OMAPL13x devices
+.. include:: Release_Specific/MCSDK1.1_to_Processor_SDK_Migration_Guide_for_OMAPL13x_C674x_devices.rst
 
 .. AMSDK to Processor SDK Migration Guide
 .. include:: Release_Specific/AMSDK_to_Processor_SDK_Migration_Guide.rst
