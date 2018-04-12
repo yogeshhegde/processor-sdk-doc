@@ -13,7 +13,7 @@ http://processors.wiki.ti.com/index.php/Processor_SDK_Android_Building_The_SDK
 source/android/How_To_Guides/Processor_SDK_Android_PRU-ICSS_Ethernet.rst
 http://processors.wiki.ti.com/index.php/Processor_SDK_Android_PRU-ICSS_Ethernet
 source/android/How_To_Guides/Processor_SDK_Android_How_To_Load_and_Debug_APKs_using_Android_Studio.rst
-http://processors.wiki.ti.com/index.php/Processor_SDK_Android_How_To_Load_and_Debug_APKs_using_Android_Studio
+http://processors.wiki.ti.com/index.php/Processor_SDK_Android_How_to_Load_and_Debug_APKs_using_Android_Studio
 source/android/Overview/Processor_SDK_Android_Software_Stack.rst
 http://processors.wiki.ti.com/index.php/Processor_SDK_Android_Software_Stack
 source/android/How_To_Guides/Frequently_Asked_Questions.rst
