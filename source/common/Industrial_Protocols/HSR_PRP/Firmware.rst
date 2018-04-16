@@ -1,7 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_HSR_PRP
 
-A common firmware is used across TI RTOS and Linux implementations of
-HSR/PRP. This section describes the firmware details.
 
 Duplicate algorithm and table
 -----------------------------

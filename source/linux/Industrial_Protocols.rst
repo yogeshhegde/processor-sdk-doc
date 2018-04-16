@@ -12,15 +12,15 @@ Dual EMAC
 HSR_PRP
 **********************************
 
-.. Release notes
-.. include:: ../common/Industrial_Protocols/HSR_PRP/PRU_ICSS_HSR_PRP_Release_Notes.rst
-
 Protocol Overview
 =================================
 .. include:: Industrial_Protocols/HSR_PRP/Protocol_Overview.rst
 
 ICSS Firmware
 =================================
+.. Firmware features
+.. include:: ../common/Industrial_Protocols/HSR_PRP/Firmware_Features.rst
+
 .. include:: Industrial_Protocols/HSR_PRP/Firmware.rst
 
 Linux Software
