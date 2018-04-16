@@ -42,6 +42,7 @@ Firmware Features Supported
 
    -  Duplicate discard on Port to Host path (HSR and PRP)
    -  Duplicate discard table on Port to Port path (HSR)
+   -  Data integrity (CRC) check during port to port forwarding, except cut through (HSR)
 
 -  **QoS scheme** : 3-bit VLAN PCP
 
