@@ -1,4 +1,4 @@
-.. include:: Overview/Processor_SDK_Android_Software_Developers_Guide.rst
+.. include:: Overview/Processor_SDK_Android_Software_Developers_Guide.rst.inc
 
 .. toctree::
    :maxdepth: 5
