@@ -18,6 +18,9 @@ Protocol Overview
 
 ICSS Firmware
 =================================
+.. Firmware features
+.. include:: ../common/Industrial_Protocols/HSR_PRP/Firmware_Features.rst
+
 .. include:: Industrial_Protocols/HSR_PRP/Firmware.rst
 
 Linux Software
