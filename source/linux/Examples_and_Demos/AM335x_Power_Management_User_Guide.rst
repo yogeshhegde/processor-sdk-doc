@@ -1,3 +1,5 @@
+.. http://processors.wiki.ti.com/index.php/AM335x_Power_Management_User_Guide
+
 AM335x Power Management User Guide
 ------------------------------------
 
