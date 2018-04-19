@@ -226,3 +226,26 @@ source/common/Release_Specific/MCSDK1.1_to_Processor_SDK_Migration_Guide_for_OMA
 http://processors.wiki.ti.com/index.php/MCSDK1.1_to_Processor_SDK_Migration_Guide_for_OMAPL13x/C674x_devices
 source/linux/Release_Specific/AMSDK_to_Processor_SDK_Migration_Guide.rst
 http://processors.wiki.ti.com/index.php/AMSDK_to_Processor_SDK_Migration_Guide
+
+# Processor SDK Linux wrapper pages for kernel drivers,
+# Locked in wiki, but not converted to rst
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_ADC
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Audio
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_CAN
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Capture
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_VPFE
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_DMA
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Ethernet_Interface
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_GPIO
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_I2C_Interface
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Display
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_LCDC
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_DSS
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_MMC_SD
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_PWM
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_SPI
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_USB
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_MUSB
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_DWC3
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_UART
+http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_PCIe
