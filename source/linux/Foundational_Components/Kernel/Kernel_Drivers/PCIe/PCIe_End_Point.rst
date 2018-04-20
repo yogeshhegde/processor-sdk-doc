@@ -348,7 +348,107 @@ function device to one of the controller driver present in the system.
 Once the above step is completed, the PCI endpoint is ready to establish
 a link with the host.
 
-| 
+.. rubric:: 4.14
+   :name: section
+
+The following steps should be followed for the upstreamed solution (from
+4.12 kernel). The custom solution used in 4.9/4.4 should not be used for
+upstreamed solution.
+
+.. rubric:: creating pci-epf-test device
+   :name: creating-pci-epf-test-device-2
+
+PCI endpoint function device can be created using the configfs. To
+create pci-epf-test device, the following commands can be used
+
+::
+
+    # mount -t configfs none /sys/kernel/config
+    # cd /sys/kernel/config/pci_ep/
+    # mkdir functions/pci_epf_test/func1
+
+The "mkdir functions/pci\_epf\_test/func1" above creates the
+pci-epf-test function device.
+
+The PCI endpoint framework populates the directory with configurable
+fields.
+
+::
+
+    # ls functions/pci_epf_test/func1
+      baseclass_code    function    revid      vendorid
+      cache_line_size   interrupt_pin   subclass_code
+      deviceid             peripheral   subsys_id
+      epc               progif_code subsys_vendor_id
+
+The driver populates these entries with default values when the device
+is bound to the driver. The pci-epf-test driver populates vendorid with
+0xffff and interrupt\_pin with 0x0001
+
+::
+
+    # cat functions/pci_epf_test/func1/vendorid
+      0xffff
+    # cat functions/pci_epf_test/func1/interrupt_pin
+      0x0001
+
+|
+
+.. rubric:: configuring pci-epf-test device
+   :name: configuring-pci-epf-test-device-2
+
+The user can configure the pci-epf-test device using the configfs. In
+order to change the vendorid and the number of MSI interrupts used by
+the function device, the following command can be used.
+
+Configure Texas Instruments as the vendor.
+
+::
+
+    # echo 0x104c > functions/pci_epf_test/func1/vendorid
+
+If the endpoint is a DRA74x or AM572x device:
+
+::
+
+    # echo 0xb500 > functions/pci_epf_test/func1/deviceid
+
+If the endpoint is a DRA72x or AM572x device:
+
+::
+
+    # echo 0xb501 > functions/pci_epf_test/func1/deviceid
+
+Then finally:
+
+::
+
+    # echo 16 > functions/pci_epf_test/func1/msi_interrupts
+
+.. rubric:: Binding pci-epf-test device to a EP controller
+   :name: binding-pci-epf-test-device-to-a-ep-controller-2
+
+In order for the endpoint function device to be useful, it has to be
+bound to a PCI endpoint controller driver. Use the configfs to bind the
+function device to one of the controller driver present in the system.
+
+::
+
+    # ln -s functions/pci_epf_test/func1 controllers/51000000.pcie_ep/
+
+.. rubric:: Starting the EP device
+   :name: starting-the-ep-device
+
+In order for the EP device to be ready to establish the link, the
+following command should be given
+
+::
+
+    # echo 1 > controllers/51000000.pcie_ep/start
+
+Once the above step is completed, the PCI endpoint is ready to establish
+a link with the host.
+
 
 .. rubric:: *66AK2G Limitation*
    :name: ak2g-limitation

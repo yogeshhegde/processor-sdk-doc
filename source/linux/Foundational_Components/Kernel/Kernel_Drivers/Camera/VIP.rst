@@ -672,7 +672,25 @@ receiving/detecting video data. To proceed with debugging, probe the
 pclk, vysnc and hsync signal at the connector. If they look as what you
 are expecting, then verify the pinmux.
 
-| 
+.. rubric:: How do I capture 10-bit or 12-bit YUV data?
+   :name: how-do-i-capture-10-bit-or-12-bit-yuv-data
+
+VIP can capture data in 8, 16 or 24 bus-width size. Configure VIP for 16
+bit bus-width size in order to capture pixel of 10-bit or 12-bit size.
+This includes dts file configuration and pin-mux configuration. Connect
+the pixel size data lanes from the sensor board to VIP input port.
+Ground or tie to VDD remaining unused pins. VIP will receive the
+10-bit/12-bit data in 16-bit container in memory with 6/4 LSb or MSb bit
+always being low or high based on how those unused bits are tied. Note
+that when capturing 10-bit/12-bit data in 16 bit container, you can not
+use any of the VIP internal processing module like scaling, format
+conversion etc.
+
+In dts file, specify the bus-width field as 16
+
+::
+
+    bus-width = <16>;    /* Used data lines */
 
 .. rubric:: TI Board Specific Information
    :name: ti-board-specific-information

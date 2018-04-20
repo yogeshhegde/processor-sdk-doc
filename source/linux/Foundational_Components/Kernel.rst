@@ -34,6 +34,11 @@ Crypto
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Crypto.rst
 
 
+MCAN
+---------------------------------
+.. include:: Foundational_Components/Kernel/Kernel_Drivers/MCAN.rst
+
+
 DCAN
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/DCAN.rst

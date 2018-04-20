@@ -65,8 +65,8 @@ issues manifest themselves as DMA FIFO underflow and frame
 synchronization lost errors. The problem is solved on Beaglebone-Black
 and am335x-evm with this
 `patch <https://lists.denx.de/pipermail/u-boot/2016-December/275681.html>`__.
-The patch is available in core sdk release version 2016.05 (Processor
-SDK version 3.3) onward. A similar u-boot change is needed for any other
+The patch is available in u-boot release version ti2017.01 (Processor
+SDK version 4.0) onwards. A similar u-boot change is needed for any other
 HW suffering from the same problem. Please check the ddr\_data for
 am3-evm or beaglebone-black in the u-boot config. If after using the
 patch you still see issues, you may need to further tune the value of

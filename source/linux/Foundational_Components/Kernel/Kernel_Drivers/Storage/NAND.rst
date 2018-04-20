@@ -78,7 +78,7 @@ information:
 
     cat /proc/mtd
 
-An example of this output performed on the DRA74x EVM can be seen below.
+An example of this output performed on the DRA71x EVM can be seen below.
 
 ::
 
@@ -159,6 +159,47 @@ contents of the NAND partition. If your interested in only a certain
 amount of data being dumped additional parameters can be passed to the
 utility.
 
+.. rubric:: Command Line Partitioning
+   :name: command-line-partitioning
+
+In some situations, partitions defined in device-tree may not be
+sufficient or correct. Note that once partitions are defined in
+device-tree and present in a mainline kernel release, they cannot be
+changed because this breaks users who have existing data on NAND flash
+and upgrade to new kernel and device-tree. If you are not affected by
+this issue, you may choose to override partition information passed from
+device-tree using command line.
+
+In TI kernel releases, MTD command line partitioning support is built as
+module. To use it, add something like following to the kernel command
+line (passed using ``bootargs`` U-Boot variable)
+
+::
+
+    setenv bootargs ${bootargs} cmdlinepart.mtdparts=davinci-nand.0:1m(image)ro,-(free-space)
+
+Note that MTD command line parses breaks if there is space in partition
+name. So use "free-space" not "free space". Change ``davinci-nand.0`` to
+the correct device name. You can usually find the name to use from
+``dmesg``\ output
+
+::
+
+    Creating 2 MTD partitions on "davinci-nand.0":
+
+You can also setup new partitions after kernel has booted with old
+partitions. You will need to re-probe the NAND driver if it has already
+probed. Something like:
+
+::
+
+    $ modprobe -r davinci_nand
+    $ modprobe cmdlinepart mtdparts="davinci-nand.0:2m(image)ro,-(free space)"
+    $ modprobe davinci_nand
+
+``davinci_nand`` module name here may have to be changed based on the
+SoC you are using.
+
 .. rubric:: U-boot
    :name: u-boot
 
@@ -233,7 +274,7 @@ the NAND's designated file-system partition.
 +-----------------+--------------------------------+-------------------------------------+
 | K2G EVM         | -F -m 4096 -e 253952 -c 1926   | -m 4096 -p 256KiB -s 4096 -O 4096   |
 +-----------------+--------------------------------+-------------------------------------+
-| DRA74x EVM      | -F -m 2048 -e 126976 -c 8192   | -m 2048 -p 128KiB -s 512 -O 2048    |
+| DRA71x EVM      | -F -m 2048 -e 126976 -c 8192   | -m 2048 -p 128KiB -s 512 -O 2048    |
 +-----------------+--------------------------------+-------------------------------------+
 
 Table:  Table of Parameters to use for Building UBI filesystem image
@@ -260,7 +301,7 @@ Table:  Table of Parameters to use for Building UBI filesystem image
 | AM437x   | MT29F4G0 | 512 MB   | 8        | 256      | 4        | 224      | BCH 16   | GPMC     |
 | EPOS     | 8AB      |          |          |          |          |          |          |          |
 +----------+----------+----------+----------+----------+----------+----------+----------+----------+
-| DRA74x   | MT29F2G1 | 256 MB   | 16       | 128      | 2        | 64       | BCH 8    | GPMC     |
+| DRA71x   | MT29F2G1 | 256 MB   | 16       | 128      | 2        | 64       | BCH 8    | GPMC     |
 |          | 6AADWP:D |          |          |          |          |          |          |          |
 +----------+----------+----------+----------+----------+----------+----------+----------+----------+
 | K2G      | MT29F2G1 | 512 MB   | 16       | 128      | 2        | 64       | BCH 16   | GPMC     |
@@ -290,7 +331,7 @@ or NAND can be used enabled at a time. By default NAND is enabled.
 On this board, NAND Flash control lines are muxed with QSPI, Thus either
 NAND or QSPI-NOR can be used at a time. By default NAND is enabled.
 
-.. rubric:: DRA74x EVM
+.. rubric:: DRA71x EVM
    :name: dra74x-evm
 
 On the board, NAND Flash signals are muxed between NAND, NOR and Video

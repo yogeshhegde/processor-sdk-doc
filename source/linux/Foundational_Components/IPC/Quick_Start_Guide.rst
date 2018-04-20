@@ -113,7 +113,7 @@ The source code are located in:
 
 .. note::
 
-    For ProcSDK 3.2, tools are not included in RTOS SDK,
+    For ProcSDK 3.2 or older releases, tools are not included in RTOS SDK,
     so point to CCS:
 
 ::
@@ -187,12 +187,17 @@ with the following commands:
 .. note::
 
     If RTOS Proc SDK is not installed at its default
-    location, then the environment variables, TI\_RTOS\_PATH and
-    TI\_CCS\_PATH need to be exported with their installed locations.
+    location, then the environment variables, TI\_RTOS\_PATH
+    needs to be exported with their installed locations.
 
 ::
 
       export TI_RTOS_PATH=<TI_RTOS_PROC_SDK_INSTALL_DIR>
+
+Also if using Processor SDK 3.2 or older release, need to also set TI_CCS_PATH to CCSV6 location
+
+::
+
       export TI_CCS_PATH=<TI_CCS_INSTALL_DIR>/ccsv6
 
 .. rubric:: Run IPC Linux examples
