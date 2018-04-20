@@ -25,15 +25,13 @@ Audio
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Audio.rst
 
-Camera
----------------------------------
 
 VPFE
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Camera/VPFE.rst
 
 VIP
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Camera/VIP.rst
 
 Crypto
@@ -45,18 +43,16 @@ DCAN
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/DCAN.rst
 
-Display
----------------------------------
 DSS
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Display/DSS.rst
 
 LCDC
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Display/LCDC.rst
 
 PWM
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Display/PWM.rst
 
 GPIO
@@ -68,31 +64,25 @@ I2C
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/I2C.rst
 
 
-Network
----------------------------------
-
 CPSW
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW.rst
 
 NetCP
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Network/NetCP.rst
 
 PRUSS
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Network/PRUSS.rst
 
 
-PCIe
----------------------------------
-
 PCIe End Point
-^^^^^^^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point.rst
 
 PCIe Root Complex
-^^^^^^^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex.rst
 
 Power Management
@@ -112,19 +102,16 @@ SPI
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/SPI.rst
 
-Storage
----------------------------------
-
 SATA
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Storage/SATA.rst
 
 NAND
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND.rst
 
 MMC/SD
-^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD.rst
 
 UART
@@ -132,15 +119,12 @@ UART
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/UART.rst
 
 
-USB
----------------------------------
-
 MUSB
-^^^^^^^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/USB/MUSB.rst
 
 DWC3
-^^^^^^^^^^^^^^^^^^
+---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/USB/DWC3.rst
 
 VPE
