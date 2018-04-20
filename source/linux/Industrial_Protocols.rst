@@ -14,14 +14,14 @@ HSR_PRP
 
 Protocol Overview
 =================================
-.. include:: Industrial_Protocols/HSR_PRP/Protocol_Overview.rst
+.. include:: ../common/Industrial_Protocols/HSR_PRP/Protocol_Overview.rst
 
 ICSS Firmware
 =================================
 .. Firmware features
 .. include:: ../common/Industrial_Protocols/HSR_PRP/Firmware_Features.rst
 
-.. include:: Industrial_Protocols/HSR_PRP/Firmware.rst
+.. include:: ../common/Industrial_Protocols/HSR_PRP/Firmware.rst
 
 Linux Software
 =================================

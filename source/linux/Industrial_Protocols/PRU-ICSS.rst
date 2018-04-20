@@ -1,10 +1,10 @@
 Getting Started with PRU-ICSS
 ==================================
-.. include:: Industrial_Protocols/PRU-ICSS/Getting_Started.rst
+.. include:: ../common/Industrial_Protocols/PRU-ICSS/Getting_Started.rst
 
 Header Files
 ==================================
-.. include:: Industrial_Protocols/PRU-ICSS/Header_Files.rst
+.. include:: ../common/Industrial_Protocols/PRU-ICSS/Header_Files.rst
 
 
 Linux Drivers
