@@ -1,3 +1,5 @@
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_U-Boot_Splash_Screen
+
 U-Boot Splash Screen
 ==========================
 
