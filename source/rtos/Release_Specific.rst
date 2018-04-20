@@ -7,18 +7,18 @@ Release Specific
 .. Release Notes
 .. ************************************
 .. _processor-sdk-rtos-release-notes:
-.. include:: Release_Specific/Release_Notes.rst
+.. include:: Release_Specific/Release_Notes.rst.inc
 
 
 .. ************************************
 .. Supported Platforms and Versions
 .. ************************************
 .. _RTOS-SDK-Supported-Platforms:
-.. include:: ../common/Release_Specific/Processor_SDK_Supported_Platforms_and_Versions.rst
+.. include:: ../common/Release_Specific/Processor_SDK_Supported_Platforms_and_Versions.rst.inc
 
 
 .. ****************
 .. Migration Guide
 .. ****************
 .. _RTOS-SDK-Migration-Guide-label:
-.. include:: Release_Specific/Migration_Guide.rst
+.. include:: Release_Specific/Migration_Guide.rst.inc
