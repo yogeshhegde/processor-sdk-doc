@@ -73,6 +73,23 @@ first before any schematic or board design is started.**
 Some peripherals may expose Use Cases to allow you to quickly eliminate
 the signals you won't need.
 
+.. rubric:: AM57xx and MCASP
+   :name: am57xx-and-mcasp
+
+On the AM57xx series of devices there is a concept of IODELAY. It is a
+module in the IO of the SoC that makes it possible to ensure valid IO
+timings on data interfaces with a clock signal. On some peripherals the
+use case selected can change the IODELAY setting for an IO. MCASP is an
+advanced audio interface that allows each AXR pin to be an audio source
+or audio sink, it also allows the SoC to be the clock master or slave,
+and these configuration can be independently mixed and matched. This
+makes it important to select the correct use case and pin configurations
+since the IODELAY configuration changes depending on the options chosen.
+See the "Virtual Mode Case Details" tables in the datasheet for more
+information.
+
+|
+
 .. rubric:: Power Domain Checking
    :name: power-domain-checking
 

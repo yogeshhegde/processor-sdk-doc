@@ -265,10 +265,6 @@ functions in order to communicate with the ARM core. Source code for the
 PRU RPMsg library is provided in the support package along with the
 ability to rebuild the library if changes are desired.
 
-This overview is extremely dense as it tries to cover a lot of topics.
-Please see the diagram below, and the ones in the following sections,
-for further clarification.
-
 .. Image:: ../images/Rpmsg_diagram_2_0_2_11.PNG
 
 --------------

@@ -341,7 +341,9 @@ and the volume is 'adequate' but in case the volume is not correct:
 .. rubric:: User space
    :name: user-space-4
 
-``NOTE: Before audio playback ALSA mixers must be configured for either Headphone or Speaker output. The audio will not work with non correct mixer configuration!``
+.. note::
+
+ Before audio playback ALSA mixers must be configured for either Headphone or Speaker output. The audio will not work with non correct mixer configuration!
 
 To play audio through headphone jack run:
 
@@ -525,7 +527,7 @@ and the volume is 'adequate' but in case the volume is not correct:
 
 ::
 
-    amixer -c K2GEVM sset PCM 90                             # Master Playback volume
+    amixer -c K2GEVM sset PCM 110                             # Master Playback volume
 
 For audio capture from Line-in:
 

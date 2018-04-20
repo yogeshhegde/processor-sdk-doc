@@ -854,23 +854,23 @@ following:
 
 ::
 
-        number_of_packets/sec = (Fclk / ALE_PRESCALE) * port.BCASTMCAST/_LIMIT
+        number_of_packets/sec = (Fclk / ALE_PRESCALE) * port.BCAST/MCAST_LIMIT
         where: ALE_PRESCALE width is 19bit and min value 0x10.
 
-Each ALE prescale pulse loads port.BCASTMCAST/\_LIMIT into the port
+Each ALE prescale pulse loads port.BCAST/MCAST\_LIMIT into the port
 MC/BC rate limit counter and port counters are decremented with each
 packet received or transmitted depending on whether the mode is transmit
 or receive. ALE prescale pulse frequency detrmined by ALE\_PRESCALE
 register.
 
-with Fclk = 125MHz and port.BCASTMCAST/\_LIMIT = 1
+with Fclk = 125MHz and port.BCAST/MCAST\_LIMIT = 1
 
 ::
 
          max number_of_packets/sec = (125MHz / 0x10) * 1 = 7 812 500
          min number_of_packets/sec = (125MHz / 0xFFFFF) * 1 = 119
 
-So port.BCASTMCAST/\_LIMIT can be selected to be 1 while ALE\_PRESCALE
+So port.BCAST/MCAST\_LIMIT can be selected to be 1 while ALE\_PRESCALE
 is calculated as:
 
 ::

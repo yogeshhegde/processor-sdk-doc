@@ -496,7 +496,20 @@ To build the ethercat\_slave\_demo.bin:
    to point to the install directory of PRU-ICSS-ETHERCAT-SLAVE.
 -  At
    ~/ti/processor\_sdk\_rtos\_am57xx\_[version]/demos/jailhouse-inmate/makefile:
-   add ethercat\_slave\_demo\* entries as pruss-test/icss-emac-test;
+   add ethercat\_slave\_demo\* entries as pruss-test/icss-emac-test to
+   the end of the makefile
+
+::
+
+    ethercat_slave_demo:
+        $(MAKE) -C ./rtos/ethercat_slave_demo
+
+    ethercat_slave_demo_clean:
+        $(MAKE) -C ./rtos/ethercat_slave_demo clean
+
+    ethercat_slave_demo_install:
+        $(MAKE) -C ./rtos/ethercat_slave_demo install
+
 -  cd ~/ti/processor\_sdk\_rtos\_am57xx\_[version]/
 -  source setupenv.sh
 -  cd
