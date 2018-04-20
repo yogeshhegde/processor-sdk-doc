@@ -1,10 +1,10 @@
 Getting Started with PRU-ICSS
 ==================================
-.. include:: ../common/Industrial_Protocols/PRU-ICSS/Getting_Started.rst
+.. include:: ../common/Industrial_Protocols/PRU-ICSS/Getting_Started.rst.inc
 
 Header Files
 ==================================
-.. include:: ../common/Industrial_Protocols/PRU-ICSS/Header_Files.rst
+.. include:: ../common/Industrial_Protocols/PRU-ICSS/Header_Files.rst.inc
 
 
 Linux Drivers
@@ -12,14 +12,14 @@ Linux Drivers
 
 RemoteProc and RPMsg
 -----------------------------------------
-.. include:: Industrial_Protocols/PRU-ICSS/Linux_Drivers/RemoteProc_and_RPMsg.rst
+.. include:: Industrial_Protocols/PRU-ICSS/Linux_Drivers/RemoteProc_and_RPMsg.rst.inc
 
 PRU-ICSS Ethernet
 -----------------------------------------
-.. include:: Industrial_Protocols/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet.rst
+.. include:: Industrial_Protocols/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet.rst.inc
 
 
 Linux User Space Drivers and Application
 ==========================================
-.. include:: Industrial_Protocols/PRU-ICSS/Linux_User_Space_Drivers_and_Application.rst
+.. include:: Industrial_Protocols/PRU-ICSS/Linux_User_Space_Drivers_and_Application.rst.inc
 
