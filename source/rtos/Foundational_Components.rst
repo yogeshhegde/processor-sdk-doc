@@ -30,31 +30,31 @@ OpenCL
 Boot
 ***************
 .. _FC-Boot-label:
-.. include:: Boot.rst
+.. include:: Boot.rst.inc
 
 
 *****
 MPM
 *****
-.. include:: MPM.rst
+.. include:: MPM.rst.inc
 
 
 *******
 OpenMP
 *******
-.. include:: Compute/OpenMP.rst
+.. include:: Compute/OpenMP.rst.inc
 
 
 ***************
 PKTLIB
 ***************
-.. include:: PDK_Platform_Software/Device_Drivers/PKTLIB.rst
+.. include:: PDK_Platform_Software/Device_Drivers/PKTLIB.rst.inc
 
 
 ***************
 NWAL
 ***************
-.. include:: PDK_Platform_Software/Device_Drivers/NWAL.rst
+.. include:: PDK_Platform_Software/Device_Drivers/NWAL.rst.inc
 
 
 ***************

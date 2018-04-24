@@ -148,11 +148,11 @@ build information, and examples to use as a template to start development.
 | `LINALG`_           |                   |                    |                    |
 +---------------------+-------------------+--------------------+--------------------+
 
-.. _MATHLIB: DSP_Optimized_Libraries.html
-.. _IMGLIB: DSP_Optimized_Libraries.html
-.. _DSPLIB: DSP_Optimized_Libraries.html
-.. _FFTLIB: DSP_Optimized_Libraries.html
-.. _LINALG: DSP_Optimized_Libraries.html
+.. _MATHLIB: DSP_Software.html#dsp-optimized-libraries 
+.. _IMGLIB: DSP_Software.html#dsp-optimized-libraries
+.. _DSPLIB: DSP_Software.html#dsp-optimized-libraries
+.. _FFTLIB: DSP_Software.html#dsp-optimized-libraries
+.. _LINALG: DSP_Software.html#dsp-optimized-libraries
 
 
 +---------------------+-------------------+--------------------+--------------------+

@@ -77,37 +77,37 @@ For information on boot mode setting, see the applicable `EVM Hardware User Guid
 
 AM335x/AM437x
 ==============
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM335x_AM437x.rst
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM335x_AM437x.rst.inc
 
 
 AM57x
 ==============
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM57x.rst
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM57x.rst.inc
 
 
 C66x
 ==============
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_C66x.rst
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_C66x.rst.inc
 
 
 K2G
 ==============
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_K2G.rst
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_K2G.rst.inc
 
 
 K2H/K2E/K2L
 ==============
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_K2H_E_L.rst
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_K2H_E_L.rst.inc
 
 
 OMAPL137/OMAPL138/C6748
 ========================
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_OMAPL13x.rst
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_OMAPL13x.rst.inc
 
 
 Bootloader Debugging
 ========================
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Boot_Debug.rst
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Boot_Debug.rst.inc
 
 
 .. raw:: html

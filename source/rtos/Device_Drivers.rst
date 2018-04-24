@@ -5,167 +5,167 @@ Device Drivers
 ***********
 CSL
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/CSL.rst
+.. include:: PDK_Platform_Software/Device_Drivers/CSL.rst.inc
 
 
 ***********
 UART
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/UART.rst
+.. include:: PDK_Platform_Software/Device_Drivers/UART.rst.inc
 
 
 ***********
 USB
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/USB.rst
+.. include:: PDK_Platform_Software/Device_Drivers/USB.rst.inc
 
 
 ***********
 PCIe
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/PCIe.rst
+.. include:: PDK_Platform_Software/Device_Drivers/PCIe.rst.inc
 
 
 ***********
 GPIO
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/GPIO.rst
+.. include:: PDK_Platform_Software/Device_Drivers/GPIO.rst.inc
 
 
 ***********
 I2C
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/I2C.rst
+.. include:: PDK_Platform_Software/Device_Drivers/I2C.rst.inc
 
 
 ***********
 QSPI-McSPI
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/QSPI_McSPI.rst
+.. include:: PDK_Platform_Software/Device_Drivers/QSPI_McSPI.rst.inc
 
 
 ***********
 EDMA3
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/EDMA3.rst
+.. include:: PDK_Platform_Software/Device_Drivers/EDMA3.rst.inc
 
 
 *********************************
 ICSS-EMAC (DRIVER,FIRMWARE)
 *********************************
-.. include:: PDK_Platform_Software/Device_Drivers/ICSS_EMAC_LLD_FW.rst
+.. include:: PDK_Platform_Software/Device_Drivers/ICSS_EMAC_LLD_FW.rst.inc
 
 
 ***********
 PRUSS
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/PRUSS.rst
+.. include:: PDK_Platform_Software/Device_Drivers/PRUSS.rst.inc
 
 
 ***********
 FATFS
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/FATFS.rst
+.. include:: PDK_Platform_Software/Device_Drivers/FATFS.rst.inc
 
 
 ***********
 MMCSD
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/MMCSD.rst
+.. include:: PDK_Platform_Software/Device_Drivers/MMCSD.rst.inc
 
 
 ***********
 QMSS
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/QMSS.rst
+.. include:: PDK_Platform_Software/Device_Drivers/QMSS.rst.inc
 
 
 ***********
 CPPI
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/CPPI.rst
+.. include:: PDK_Platform_Software/Device_Drivers/CPPI.rst.inc
 
 
 ***********
 PA
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/PA.rst
+.. include:: PDK_Platform_Software/Device_Drivers/PA.rst.inc
 
 
 ***********
 SA
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/SA.rst
+.. include:: PDK_Platform_Software/Device_Drivers/SA.rst.inc
 
 
 ***********
 SRIO
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/SRIO.rst
+.. include:: PDK_Platform_Software/Device_Drivers/SRIO.rst.inc
 
 
 ***********
 HYPLNK
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/HYPLNK.rst
+.. include:: PDK_Platform_Software/Device_Drivers/HYPLNK.rst.inc
 
 
 ***********
 TSIP
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/TSIP.rst
+.. include:: PDK_Platform_Software/Device_Drivers/TSIP.rst.inc
 
 
 ***********
 MCBSP
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/MCBSP.rst
+.. include:: PDK_Platform_Software/Device_Drivers/MCBSP.rst.inc
 
 
 ***********
 EMAC
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/EMAC.rst
+.. include:: PDK_Platform_Software/Device_Drivers/EMAC.rst.inc
 
 
 ***********
 MCASP
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/MCASP.rst
+.. include:: PDK_Platform_Software/Device_Drivers/MCASP.rst.inc
 
 
 ***********
 PM
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/PM.rst
+.. include:: PDK_Platform_Software/Device_Drivers/PM.rst.inc
 
 
 ***********
 RM
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/RM.rst
+.. include:: PDK_Platform_Software/Device_Drivers/RM.rst.inc
 
 
 ***********
 GPMC
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/GPMC.rst
+.. include:: PDK_Platform_Software/Device_Drivers/GPMC.rst.inc
 
 
 ***********
 VPS Drivers
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/VPS_Drivers.rst
+.. include:: PDK_Platform_Software/Device_Drivers/VPS_Drivers.rst.inc
 
 
 ***********
 OSAL
 ***********
-.. include:: PDK_Platform_Software/Device_Driver_Utilities/OSAL.rst
+.. include:: PDK_Platform_Software/Device_Driver_Utilities/OSAL.rst.inc
 
 
 ***********
 Profiling
 ***********
-.. include:: PDK_Platform_Software/Device_Driver_Utilities/Profiling.rst
+.. include:: PDK_Platform_Software/Device_Driver_Utilities/Profiling.rst.inc
 

@@ -2,12 +2,12 @@
 Examples and Demos
 ####################################
 
-.. include:: Examples_and_Demos/Matrix_Demos.rst
+.. include:: Examples_and_Demos/Matrix_Demos.rst.inc
 
 **********************************
 Matrix User Guide
 **********************************
-.. include:: Examples_and_Demos/Matrix_User_Guide.rst
+.. include:: Examples_and_Demos/Matrix_User_Guide.rst.inc
 
 **********************************
 Sub-system Demos
@@ -15,11 +15,11 @@ Sub-system Demos
 
 Power Management
 ================
-.. include:: Examples_and_Demos/Power_Management.rst
+.. include:: Examples_and_Demos/Power_Management.rst.inc
 
-.. include::  Examples_and_Demos/AM335x_Power_Management_User_Guide.rst
+.. include::  Examples_and_Demos/AM335x_Power_Management_User_Guide.rst.inc
 
-.. include::  Examples_and_Demos/ARM_Multimedia_Users_Guide.rst
+.. include::  Examples_and_Demos/ARM_Multimedia_Users_Guide.rst.inc
 
 Accelerated Multimedia
 ======================
@@ -33,19 +33,19 @@ DSP offload with OpenCL
 =======================
 See http://downloads.ti.com/mctools/esd/docs/opencl/examples/index.html
 
-.. include:: Examples_and_Demos/Camera_Users_Guide.rst
+.. include:: Examples_and_Demos/Camera_Users_Guide.rst.inc
 
 Cryptography
 ============
-.. include:: Examples_and_Demos/Cryptography.rst
+.. include:: Examples_and_Demos/Cryptography.rst.inc
 
 WLAN and Bluetooth
 ==================
-.. include:: Examples_and_Demos/WLAN_and_Bluetooth.rst
+.. include:: Examples_and_Demos/WLAN_and_Bluetooth.rst.inc
 
 Hands on with QT
 ================
-.. include:: Examples_and_Demos/Hands_on_with_QT.rst
+.. include:: Examples_and_Demos/Hands_on_with_QT.rst.inc
 
 
 **********************************
@@ -54,7 +54,7 @@ Application Demos
 
 Video Analytics
 ======================
-.. include:: Examples_and_Demos/Video_Analytics.rst
+.. include:: Examples_and_Demos/Video_Analytics.rst.inc
 
 DLP 3D Scanner
 ==============
@@ -68,7 +68,7 @@ This demo demonstrates the capability of people tracking and detection with TI's
 
 Barcode Reader
 ===============
-.. include:: Examples_and_Demos/Barcode.rst
+.. include:: Examples_and_Demos/Barcode.rst.inc
 
 EVSE Demos
 ===============
@@ -83,10 +83,10 @@ Matrix UI provides out of box demo to showcase Human Machine Interface (HMI) for
 
 Qt5 Thermostat HMI Demo
 ========================
-.. include:: Examples_and_Demos/Thermostat.rst
+.. include:: Examples_and_Demos/Thermostat.rst.inc
 
-.. include:: Examples_and_Demos/Optical_Flow_with_OpenVX.rst
+.. include:: Examples_and_Demos/Optical_Flow_with_OpenVX.rst.inc
 
 ROS and Radar
 ===============
-.. include:: Examples_and_Demos/ROS_Radar.rst
+.. include:: Examples_and_Demos/ROS_Radar.rst.inc
