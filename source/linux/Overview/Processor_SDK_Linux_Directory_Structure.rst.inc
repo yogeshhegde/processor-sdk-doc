@@ -1,3 +1,5 @@
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Directory_Structure
+
 ************************************
 Directory Structure Overview
 ************************************
