@@ -7,7 +7,7 @@ Frequently Asked Questions
 General Support
 ===============
 
-.. rubric:: What are the advantages of using the Processor SDK RTOS
+.. rubric:: What are the main advantages of using the Processor SDK RTOS
    software?
    :name: what-are-the-advantages-of-using-the-processor-sdk-rtos-software
 
