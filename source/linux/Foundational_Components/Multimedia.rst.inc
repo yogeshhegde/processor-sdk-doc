@@ -425,7 +425,7 @@ corrupted.
 
 ::
 
-    target #  gst-launch-1.0 filesrc location= 4k.nv12 ! videoparse width=3840 height=2160 format=nv12 framerate=12/1 ! video/x-raw, width=40, height=2160 ! ducatih264enc level=51 profile=100 bitrate=16000 ! fink
+    target #  gst-launch-1.0 filesrc location= 4k.nv12 ! videoparse width=3840 height=2160 format=nv12 framerate=12/1 ! video/x-raw, width=3840, height=2160 ! ducatih264enc level=51 profile=100 bitrate=16000 ! filesink location=4k.h264
 
 
 .. rubric:: ARM H265 (HEVC) decoding pipeline
