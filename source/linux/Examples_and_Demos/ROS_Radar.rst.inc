@@ -89,7 +89,7 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
    root@am57xx-evm:/usr/bin# rm python.python
    root@am57xx-evm:/usr/bin# rm python-config.python
    root@am57xx-evm:/usr/bin# ln -s python3 python.python
-   root@am57xx-evm:/usr/bin# ln -s python3-config python-config.python
+   root@am57xx-evm:/usr/bin# ln -s python3-config python-config
 
 ROS between distributed nodes (Sitara and LinuxBox)
 ---------------------------------------------------
@@ -142,7 +142,7 @@ You will see log similar to following:
     [ INFO] [1516637960.031165019]: hello world 5303
     [ INFO] [1516637960.131164027]: hello world 5304
 
-.. rubric:: 3rd SSH terminal, to Linux BOX
+.. rubric:: 3rd SSH terminal, to Linux BOX (Optional)
    :name: 3rd-ssh-terminal-1-demo1
 
 .. code-block:: console
@@ -337,8 +337,13 @@ Start Kobuki teleop console (remotely control Kobuki movement using keyboard)
 
         source /opt/ros/indigo/setup.bash
         roslaunch kobuki_keyop safe_keyop.launch
-
-
+		Operating kobuki from keyboard:
+		Forward/back arrows : linear velocity incr/decr.
+		Right/left arrows : angular velocity incr/decr.
+		Spacebar : reset linear/angular velocities.
+		d : disable motors.
+		e : enable motors.
+		q : quit.
         
 .. rubric:: 5th SSH terminal, to Linux box
    :name: 5th-ssh-terminal-1
@@ -347,19 +352,22 @@ Setup ROS variables on Linux Box (to enable communication with ROS host on Sitar
         
 .. code-block:: console
 
-	export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311
-	export ROS_IP=$LINUX_BOX_IP_ADDR
-	export ROS_HOSTNAME=$SITARA_IP_ADDR
+	export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311 (IP address of Sitara EVM, modify as needed)
+	export ROS_IP=$LINUX_BOX_IP_ADDR (IP address of Ubuntu machine, modify as needed)
+	export ROS_HOSTNAME=$SITARA_IP_ADDR (IP address of Ubuntu machine, modify as needed)
 	source /opt/ros/indigo/setup.bash
+	
+	roslaunch kobuki_description view_model.launch
 		
         rosrun rviz rviz
-
 
 
 In RViz add point cloud from mmWave radar: 
 
 * Click Add->PointCloud2 
 * Select /mmWaveDataHdl/RScan from the Topic field dropdown for the PointCloud2 on the left hand panel
+* Increase Size to 0.03, increase Decay Time to 0.25, and Select Style as "Spheres".
+* In rviz, select map for Fixed Frame in Global Options.
 * If Kobuki is also started, set Reference Frame (left panel) to "map".
 
 You should see a point cloud image:
