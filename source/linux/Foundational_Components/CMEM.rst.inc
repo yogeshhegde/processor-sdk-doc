@@ -49,7 +49,77 @@ here <http://git.ti.com/ipc/pages/Home>`__, patches are welcome!
 .. rubric:: Linux Configuration
    :name: linux-configuration
 
-Linux configuration is done when installing the cmemk.ko driver,
+CMEM configuration can be done in 2 ways either through device tree soruce file (DTS) or command line when installing cmemk.ko driver using insmod command. 
+
+.. rubric:: DTS Configuration
+   :name: DTS Configuration
+
+The CMEM configuration can be defined in the DTS file. Take AM57xx CMEM configuration as an example which is defined in arch/arm/boot/dts/am57xx-evm-cmem.dtsi. 
+
+::
+
+	/ {
+		reserved-memory {
+			#address-cells = <2>;
+			#size-cells = <2>;
+			ranges;
+
+			cmem_block_mem_0: cmem_block_mem@a0000000 {
+				reg = <0x0 0xa0000000 0x0 0x0c000000>;
+				no-map;
+				status = "okay";
+			};
+
+			cmem_block_mem_1_ocmc3: cmem_block_mem@40500000 {
+				reg = <0x0 0x40500000 0x0 0x100000>;
+				no-map;
+				status = "okay";
+			};
+		};
+
+		cmem {
+			compatible = "ti,cmem";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			#pool-size-cells = <2>;
+
+			status = "okay";
+
+			cmem_block_0: cmem_block@0 {
+				reg = <0>;
+				memory-region = <&cmem_block_mem_0>;
+				cmem-buf-pools = <1 0x0 0x0c000000>;
+			};
+
+			cmem_block_1: cmem_block@1 {
+				reg = <1>;
+				memory-region = <&cmem_block_mem_1_ocmc3>;
+			};
+		};
+	};
+
+
+There are 2 memory blocks reserved, one in DDR starting at 0xa0000000 of size 0x0c000000. The other reserved memory block is in MSMC at 0x40500000 of size 0x100000. There are 2 CMEM blocks configuration. The first CMEM block is from DDR area and has 1 buffer  in the pool of size 0x0c000000. The 2nd CMEM block is from OCMC area.
+
+The CMEM buffer pool allocation can be viewed at run time
+
+::
+
+	root@am57xx-evm:~# cat /proc/cmem
+
+	Block 0: Pool 0: 1 bufs size 0xc000000 (0xc000000 requested)
+
+	Pool 0 busy bufs:
+
+	Pool 0 free bufs:
+	id 0: phys addr 0xa0000000
+
+
+.. rubric:: Command Line Configuration
+   :name: Command Line Configuration
+
+CMEM Linux configuration through command line is done when installing the cmemk.ko driver,
 typically done using the insmod command. The cmemk.ko driver accepts
 command line parameters for configuring the physical memory to reserve
 and how to carve it up.
@@ -82,6 +152,8 @@ for the second pool.
 Pool allocations can be requested explicitly by pool number, or more
 generally by just a size. For size-based allocations, the pool which
 best fits the requested size is automatically chosen.
+
+For more details on CMEM configuration, please find info in [Linux ProcSDK]/board_support/extra-drivers/cmem-mod-(version+commit_ID)/include/ti/cmem.h which documents CMEM user interface, or refer to the device tree binding document in board-support/extra-drivers/cmem-mod-[version]+[git-commit-id]/src/cmem/module/kernel/Documentation/device-tree/bindings/cmem/ti,cmem.txt
 
 .. rubric:: WinCE Configuration
    :name: wince-configuration
@@ -262,6 +334,25 @@ CMEM 4.00 added the ability to leverage the `Linux kernel's CMA
 feature <http://lwn.net/Articles/396657/>`__. CMA supports a "global"
 memory pool, as well as device-specific memory - CMEM provides the
 facilities to allocate from either type of CMA pool.
+
+CMA also defines the carveout area of the physical location where the DSP code/data will actually reside. The DSP carveouts are defined in the dts file. For example the AM57xx EVM, it is linux/arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi. 
+
+::
+ 
+	dsp1_cma_pool: dsp1_cma@99000000 {
+		compatible = "shared-dma-pool";
+		reg = <0x0 0x99000000 0x0 0x4000000>;
+		reusable;
+		status = "okay";
+	};
+
+	dsp2_cma_pool: dsp2_cma@9f000000 {
+		compatible = "shared-dma-pool";
+		reg = <0x0 0x9f000000 0x0 0x800000>;
+		reusable;
+		status = "okay";
+	};
+
 
 Note that using CMEM to allocate from CMA-based memory is an additional
 feature. You can continue to use CMEM to manage memory carveouts as
