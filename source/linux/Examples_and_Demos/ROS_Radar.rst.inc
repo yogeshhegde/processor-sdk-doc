@@ -89,7 +89,7 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
    root@am57xx-evm:/usr/bin# rm python.python
    root@am57xx-evm:/usr/bin# rm python-config.python
    root@am57xx-evm:/usr/bin# ln -s python3 python.python
-   root@am57xx-evm:/usr/bin# ln -s python3-config python-config
+   root@am57xx-evm:/usr/bin# ln -s python3-config python-config.python
 
 ROS between distributed nodes (Sitara and LinuxBox)
 ---------------------------------------------------
@@ -196,8 +196,11 @@ Start roscore, only if it is not already started
    Change "rviz_1443_3d.launch to "rviz_1642_2d.launch", based on Radar EVM type (1443 or 1642).
    
    
-If Kobuki mobile is available use instead:
-roslaunch  plsdk_ti_mmwave_rospkg rviz_1443_3d.launch
+If Kobuki mobile is available, use the command below instead:
+
+.. code-block:: console
+
+	roslaunch  ti_mmwave_rospkg plsdk_rviz_1443_3d.launch
 
 Sample log is included:
 
@@ -337,6 +340,7 @@ Start Kobuki teleop console (remotely control Kobuki movement using keyboard)
 
         source /opt/ros/indigo/setup.bash
         roslaunch kobuki_keyop safe_keyop.launch
+
 		Operating kobuki from keyboard:
 		Forward/back arrows : linear velocity incr/decr.
 		Right/left arrows : angular velocity incr/decr.
@@ -348,8 +352,17 @@ Start Kobuki teleop console (remotely control Kobuki movement using keyboard)
 .. rubric:: 5th SSH terminal, to Linux box
    :name: 5th-ssh-terminal-1
 
+First, install RViz on Ubuntu if this has not been done before:
+
+.. code-block:: console
+
+        sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
+        wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
+        sudo apt-get update
+        sudo apt-get install ros-indigo-desktop-full
+
 Setup ROS variables on Linux Box (to enable communication with ROS host on Sitara) then start RViz
-        
+
 .. code-block:: console
 
 	export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311 (IP address of Sitara EVM, modify as needed)
@@ -357,10 +370,20 @@ Setup ROS variables on Linux Box (to enable communication with ROS host on Sitar
 	export ROS_HOSTNAME=$SITARA_IP_ADDR (IP address of Ubuntu machine, modify as needed)
 	source /opt/ros/indigo/setup.bash
 	
-	roslaunch kobuki_description view_model.launch
-		
         rosrun rviz rviz
 
+Alternatively, in order to get Kobuki avatar on the screen, install kobuki_description on Linux box
+and start RViz by launching view_model from kobuki_description.
+
+.. code-block:: console
+
+	git clone https://github.com/yujinrobot/kobuki
+	cd kobuki
+	cp -r kobuki_description /opt/ros/indigo/share
+
+.. code-block:: console
+
+	roslaunch kobuki_description view_model.launch
 
 In RViz add point cloud from mmWave radar: 
 
