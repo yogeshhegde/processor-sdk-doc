@@ -55,7 +55,6 @@ if "%1" == "clean" (
 if "%1" == "config" (
 	type source\common\conf.py source\%OS%\conf-%OS%.py > source\%OS%\conf.py
 	REM sed -i 's/SDKVERSION/${VERSION}/g' source\${OS}\conf.py
-	copy source\patch\footer.html source\_themes\sphinx_rtd_theme_ti
 	copy source\patch\layout.html source\_themes\sphinx_rtd_theme_ti
 	goto end
 )
