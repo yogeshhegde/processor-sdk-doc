@@ -96,21 +96,18 @@ single SOC. The following are the high level features it supports.
 .. rubric:: Code Organization
    :name: code-organization
 
-+-----------------------+-----------------------+-----------------------+
-| **Requirements**      | **Remarks**           | **Remarks**           |
-+-----------------------+-----------------------+-----------------------+
-| Common baseline code  | <PDK>/packages/ti/drv | common code for       |
-|                       | /icss_emac/firmware/i | dual_emac and switch  |
-|                       | css_dualemac          |                       |
-+-----------------------+-----------------------+-----------------------+
-| DUAL_EMAC             | <PDK>/packages/ti/drv | dual_emac firmware    |
-|                       | /icss_emac/firmware/i | specific code         |
-|                       | css_dualemac          |                       |
-+-----------------------+-----------------------+-----------------------+
-| SWITCH                | <PDK>/packages/ti/drv | switch firmware       |
-|                       | /icss_emac/firmware/i | specific code         |
-|                       | css_switch            |                       |
-+-----------------------+-----------------------+-----------------------+
++-----------------------+-----------------------------------+-----------------------+
+| **Requirements**      | **Location in SDK**               | **Remarks**           |
++-----------------------+-----------------------------------+-----------------------+
+| Common baseline code  | <PDK>/packages/ti/drv             | common code for       |
+|                       | /icss_emac/firmware/icss_dualemac | dual_emac and switch  |
++-----------------------+-----------------------------------+-----------------------+
+| DUAL_EMAC             | <PDK>/packages/ti/drv             | dual_emac firmware    |
+|                       | /icss_emac/firmware/icss_dualemac | specific code         |
++-----------------------+-----------------------------------+-----------------------+
+| SWITCH                | <PDK>/packages/ti/drv             | switch firmware       |
+|                       | /icss_emac/firmware/icss_switch   | specific code         |
++-----------------------+-----------------------------------+-----------------------+
 
 | 
 
