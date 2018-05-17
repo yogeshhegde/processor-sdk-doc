@@ -235,8 +235,8 @@ Following are list supported EVMs along with the pin configurations:
 
 | 
 
- I2C FIRMWARE Example 
-======================
+.. rubric::  I2C FIRMWARE Example
+   :name: i2c-firmware-example
 
  Sample code for initiating I2C FW transaction:
 
@@ -289,9 +289,8 @@ Following are list supported EVMs along with the pin configurations:
     } 
 
 | 
-
- Examples List 
----------------
+.. rubric::  Examples List 
+   :name: examples-list
 
 | Refer Release Note for I2C support across different EVMs
 
@@ -313,9 +312,8 @@ Following are list supported EVMs along with the pin configurations:
 +-----------------------+-----------------------+-----------------------+
 
 | 
-
- Firmware Design Guide 
------------------------
+.. rubric::  Firmware Design Guide 
+   :name: firmware-design-guide
 
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
