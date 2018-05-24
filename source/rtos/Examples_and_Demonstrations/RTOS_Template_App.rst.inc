@@ -14,8 +14,9 @@ to the README.txt file in the installed package.
 Supported platforms
 ===================
 
--  evmAM572x
--  evmAM335x
+-  evmAM572x ( A15, M4, DSP)
+-  evmAM335x ( A8 )
+-  evmAM437x ( A9 )
 
 Requirements
 ============
@@ -73,16 +74,19 @@ How to Build the Template Application
 Please follow below step by step procedure to build the application.
 
 #. Processor SDK RTOS and Code Composer Studio.
-#. Install Processor SDK RTOS ( AM57x, AM335x) respectively, in a
+#. Install Processor SDK RTOS for the respective platform needed, in a
    location where CCS expects: (by default $HOME/ti or c:/ti) Refer
    :ref:`Processor SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` 
    for details.
 #. Open CCS:
 #. Click Project-->Import CCS Projects and select rtos_template_app
-   under directory :
-   <Processor_sdk_rtos_<platform>_<version>/demos/rtos_template_app/
-   (NOTE: This will create project under current workspace and also copy
+   under directory :
+   <Processor_sdk_rtos_<platform>_<version>/demos/rtos_template_app/<soc_name>/<evm_name>/<core_name>
+   (NOTE1: This will create project under current workspace and also copy
    relevant files for the project.)
+   (NOTE2: The application is supported on different type of processors on the SOC.
+    But it is expected to be run only from one selected core at a time.
+    So don't run template application on two different cores at the same time)
 #. Build the application . ( By right clicking on imported project and
    clicking "Build project") (NOTE: This will create executable binary
    under
@@ -104,7 +108,7 @@ To load and run Template Application:
 
 #. Connect the computer to the JTAG port on the board using the JTAG
    emulator.
-#. Power on evm574x or evm335x board. Ensure that no boot mode is
+#. Power on the EVM/board. Ensure that no boot mode is
    entered (do not have SD card loaded or QSPI flashed)
 #. Open up a serial terminal for UART communication (Refer to :ref:`Processor
    SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`, setup
@@ -112,7 +116,9 @@ To load and run Template Application:
 #. Open CCS and launch target config file for the EVM (Refer to
    `Processor SDK RTOS Setup
    CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__ for setting up CCS)
-#. Connect to A15_0 core for AM572x ( A8 core for AM335x).
+#. Connect to the primary core to make sure on connect gels are run
+   A15_0 core for AM572x ; A8 core for AM335x; CortexA9 on AM437X
+#. Connect to core where the application is expected to run, if not the primary core.
 #. Load executable by clicking("Run --> Load --> Load Program.). Click
    on Browse Project and select outfile under:
    rtos_template_app_<platform><core>/Debug/rtos_template_app<platform>_<core>.out
@@ -122,7 +128,7 @@ Now application will run and print progress through the UART.
 
 -  Press enter to get UART prompt.
 
-uart_task :Enter a word or Esc to quit >
+uart_task :Enter a word or Esc to quit >
 
 -  Enter any word following by <CR>
 
@@ -153,19 +159,19 @@ Terminal Screenshot
         ======== Application tasks created successfully ========
        
         gpio_toggle_led task started
-        uart_task task started uart_task :Enter a word or Esc to quit >
+        uart_task task started uart_task :Enter a word or Esc to quit >
         i2c_eeprom_read_and_display task started
         spi_test task started
         Board Name read: AM572PM_
         Board version read: A.3A
         spi_test task ended
         i2c_eeprom_read_and_display task ended
-        uart_task :Enter a word or Esc to quit >
-        uart_task :Enter a word or Esc to quit >testing
+        uart_task :Enter a word or Esc to quit >
+        uart_task :Enter a word or Esc to quit >testing
         Data received is:testing
-        uart_task :Enter a word or Esc to quit >command
+        uart_task :Enter a word or Esc to quit >command
         Data received is:command
-        uart_task :Enter a word or Esc to quit >^[
+        uart_task :Enter a word or Esc to quit >^[
         uart_task task ended
         Template app ended
 
