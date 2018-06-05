@@ -10,58 +10,27 @@ invoke builds in a serial fashion.
 .. rubric:: Building PDK using gmake in Windows environment
    :name: building-pdk-using-gmake-in-windows-environment
 
-The Windows environment must be setup using the pdksetupenv.bat script
-provided within the PDK. The pdksetupenv.bat script has a set of default
-configurations it will set if the script is run standalone without any
-environment variables being set prior to script execution. The defaults
-in the pdksetupenv.bat script assume all Processor SDK components have
-been installed in the ``C:\ti`` directory, including CCS.
+The build environment for windows must be setup providing RULES_MAKE
+macro with the location of the top level Rules.make file. Additionally the
+environment PATH variable must be updated with the install location of
+gmake binary. The build environemnt shall also be set running pdksetupenv
+script file provided within the PDK. The build/Rules.make has all the set
+of default configurations. The defaults in the Rules.make assume all
+Processor SDK components have been installed in the SDK_INSTALL_PATH
+location .
 
--  Navigate to *pdk_[soc]_[version]/packages*
--  Run pdksetupenv.bat
+-  In command prompt navigate to *pdk_[soc]_[version]/packages*
+-  Set RULES_MAKE and PATH variable for Windows.
+-  Alternatively run pdksetupenv.bat.
 
 ::
 
-    C:\ti\pdk_[soc]_[version]\packages> pdksetupenv.bat
-
-    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
-    REQUIRED for xdc release build
-    Example: set CG_XML_BIN_INSTALL_PATH=C:/ti/cg_xml/bin
-    Optional parameter not configured : DOXYGEN_INSTALL_PATH
-    REQUIRED for xdc release build
-    Example: set DOXYGEN_INSTALL_PATH=C:/ti/Doxygen/doxygen/1.5.1-p1/bin
-    **************************************************************************
-    Environment Configuration:
-        PDK Directory             : /ti/PDK_AM~3/packages/
-        CGTOOL INSTALL Directory  : C:/ti/ccsv6/tools/compiler/ti-cgt-c6000_[version]
-        TOOLCHAIN A15 Directory   : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A8 Directory    : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A9 Directory    : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN M4 Directory    : C:/ti/ccsv6/tools/compiler/ti-cgt-arm_[version]
-        FPULIB_PATH               : C:/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
-        CROSS_TOOL_PRFX           : arm-none-eabi-
-        XDC_INSTALL_PATH          : C:/ti/xdctools_[version]_core
-        BIOS_INSTALL_PATH         : C:/ti/bios_[version]
-        IPC_INSTALL_PATH          : C:/ti/ipc_[version]
-        EDMA3LLD_BIOS6_INSTALLDIR : C:/ti/edma3_lld_[version]
-        NDK_INSTALL_PATH          : C:/ti/ndk_[version]
-        IMGLIB_INSTALL_PATH       : C:/ti/imglib_c66x_[version]
-        UIA_INSTALL_PATH          : C:/ti/uia_[version]
-    **************************************************************************
-    Changing to short name to support directory names containing spaces
-    current directory: /ti/PDK_AM~3/packages/
-    PDK BUILD ENVIRONMENT CONFIGURED
-    **************************************************************************
+    > set RULES_MAKE = C:\ti\pdk_[soc]_[version]\packages\Rules.make
+	> set PATH=%PATH%;C:\ti\xdc_[xdc_version]
 
 .. note::
    -  The PDK package uses ARM Linaro compiler for the A15/A9/A8 core, TI
       ARM Compiler 5.x for M4/IPU and TI Compiler for C66x core.
-   -  The pdksetupenv.bat requires *path2dos.exe* utility available from
-      XDC tools. If *path2dos.exe* is not available in the build
-      environment then short names for paths **SHOULD** be provided to
-      environment variables e.g. *C:/ti/PDK_AM~2/packages*. In Windows
-      environment, "dir /x" and "dir /-n" displays the short names
-      generated for non-8dot3 file and directory names.
 
 -  After the build environment has been configured, the entire PDK, or
    individual components, can be rebuilt through the top-level makefile
@@ -123,45 +92,19 @@ To build only, DSP version of evmK2G board library
 .. rubric:: Building PDK using make in Linux environment
    :name: building-pdk-using-make-in-linux-environment
 
-The Linux environment must be setup using the pdksetupenv.sh script
-provided within the PDK. The pdksetupenv.sh script has a set of default
-configurations it will set if the script is run standalone without any
-environment variables being set prior to script execution. The defaults
-in the pdksetupenv.sh script assume all Processor SDK components have
-been installed in the ``~/ti`` directory, including CCS.
+The Linux environment shall be setup by exporting RULES_MAKE variable with
+the location of top level Rules.make or by using the pdksetupenv.sh script
+provided within the PDK. The Rules.make has a set of default configurations
+The defaults in the Rules.make script assume all Processor SDK components have
+been installed in the SDK_INSTALL_PATH directory.
 
 -  Navigate to *pdk_[soc]_[version]/packages*
--  Run pdksetupenv.sh
+-  export RULES_MAKE variable
+-  Alternatively run pdksetupenv.sh
 
 ::
 
-    ~/ti/pdk_[soc]_[version]/packages$ source pdksetupenv.sh
-
-    Optional parameter not configured : CG_XML_BIN_INSTALL_PATH
-    REQUIRED for xdc release build
-    Example: export CG_XML_BIN_INSTALL_PATH="~/ti/cg_xml/bin"
-    Optional parameter not configured : DOXYGEN_INSTALL_PATH
-    REQUIRED for xdc release build
-    Example: export DOXYGEN_INSTALL_PATH="~/ti/Doxygen/doxygen/1.5.1-p1/bin"
-    **************************************************************************
-    Environment Configuration:
-        PDK Directory             : /home/[user]/ti/pdk_[soc]_[version]/packages
-        CGTOOL INSTALL Directory  : /home/[user]/ti/ccsv6/tools/compiler/ti-cgt-c6000_[version]
-        TOOLCHAIN A15 Directory   : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A8 Directory    : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN A9 Directory    : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]
-        TOOLCHAIN M4 Directory    : /home/[user]/ti/ccsv6/tools/compiler/ti-cgt-arm_[version]
-        FPULIB_PATH               : /home/[user]/ti/ccsv6/tools/compiler/gcc-arm-none-eabi-[version]/lib/gcc/arm-none-eabi/[version]/fpu
-        CROSS_TOOL_PRFX           : arm-none-eabi-
-        XDC_INSTALL_PATH          : /home/[user]/ti/xdctools_[version]_core
-        BIOS_INSTALL_PATH         : /home/[user]/ti/bios_[version]
-        IPC_INSTALL_PATH          : /home/[user]/ti/ipc_[version]
-        EDMA3LLD_BIOS6_INSTALLDIR : /home/[user]/ti/edma3_lld_[version]
-        NDK_INSTALL_PATH          : /home/[user]/ti/ndk_[version]
-        IMGLIB_INSTALL_PATH       : /home/[user]/ti/imglib_c66x_[version]
-        UIA_INSTALL_PATH          : /home/[user]/ti/uia_[version]
-    PDK BUILD ENVIRONMENT CONFIGURED
-    *******************************************************************************
+    $ export RULES_MAKE = /home/ti/pdk_[soc]_[version]/packages/Rules.make
 
 .. note::
    The PDK package uses ARM Linaro compiler for the A15/A9/A8 core, TI ARM
