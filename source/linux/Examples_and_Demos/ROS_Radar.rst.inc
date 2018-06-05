@@ -58,8 +58,8 @@ HW Setup
 
 The ti_mmwave_rospkg ROS driver package on Sitara is tested with Processor Linux SDK 4.3
 which includes meta-ros layer, indigo, (from https://github.com/bmwcarit/meta-ros).
-For visualization we used ROS indigo distro on Ubuntu Linux box - for compatibility reasons it is preferred 
-to have Indigo on Linux box as well.
+For visualization we used ROS indigo distro on Ubuntu Linux box, preffered for compatibility reasons. 
+Please follow installation instructions (for Linux box) at http://wiki.ros.org/indigo/Installation/Ubuntu 
 For this demo, IWR EVM requires mmWave SDK firmware. If different firmware is used on Radar EVM, please follow
 procedure using UniFlash tool to install `mmWave SDK <http://www.ti.com/tool/MMWAVE-SDK>`__
 
