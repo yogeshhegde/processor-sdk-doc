@@ -22,12 +22,16 @@ the last Processor SDK for RTOS release.
 For all drivers using DMA mode update is being handled internally to limit changes required for applications
 **Additional Details**: Application will need to initialize UDMA driver using Udma_init() API. Additionally it will need to link the UDMA driver library. Driver Test code could be used as reference
 
+**Migration:** For all drivers using DMA mode EDMA driver is updated to UDMA driver
+
+**Additional Details**: Application will need to initialize UDMA driver using 
+Udma_init() API. Test code could be used as reference
+
 
 | 
 
 .. rubric::  Archived
    :name: archived
-- `Processor-SDK RTOS   4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#migration-guide>`__
 -  `Processor-SDK RTOS
    4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#migration-guide>`__
 -  `Processor-SDK RTOS
