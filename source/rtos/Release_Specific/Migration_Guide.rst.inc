@@ -21,41 +21,17 @@ the last Processor SDK for RTOS release.
 **Migration:** TOOLS_INSTALL_PATH macro value changed to SDK_INSTALL_PATH
 No migration impact if tools and SDK are installed in same location. See additional details
 
-**Additional Details**: 
-TOOLS_INSTALL_PATH macro value is set to SDK_INSTALL_PATH by default.
-For accessing the tools from a different path, modify TOOLS_INSTALL_PATH in 
-packages/ti/build/Rules.make file or can be overriden from the build console
-as shown below.
+**Migration:** For all drivers using DMA mode EDMA driver is updated to UDMA driver
 
-Windows
-::
-       set TOOLS_INSTALL_PATH=<Path for the tools root folder>
+**Additional Details**: Application will need to initialize UDMA driver using 
+Udma_init() API. Test code could be used as reference
 
-Linux
-::
-       TOOLS_INSTALL_PATH=<Path for the tools root folder>
-
-
-.. rubric::  Build Setup
-   :name: build-setup
-
-**Migration:** There is no migration need for components used within processor SDK.
-Application Software outside processor SDK may require a change if there is a dependency 
-to internal Processor SDK environment variables. See more details below
-
-**Additional Details**:
-Rules.make file is used instead of pdksetupenv to setup the build environment variables.
-Components inside processor SDK are updated to align with this change. Any applications
-making use of pdksetupenv from processor SDK to setup the build environment variables
-should include below line in the application makefile.
-
-  include $(RULES_MAKE)
 
 | 
 
 .. rubric::  Archived
    :name: archived
-
+- `Processor-SDK RTOS   4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#migration-guide>`__
 -  `Processor-SDK RTOS
    4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#migration-guide>`__
 -  `Processor-SDK RTOS

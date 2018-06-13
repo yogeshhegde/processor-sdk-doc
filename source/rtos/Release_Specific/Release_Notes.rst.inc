@@ -599,6 +599,14 @@ release and any known workaround.
 |             |             |             |available in |                                                                                       |
 |             |             |             |pre-release  |                                                                                       |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------------------------------------+
+| PRSDK-4116  | AM65X       | NDK over    |Using NDK-FTP| None                                                                                  |
+|             |             | EMAC/ICSS-G |application  |                                                                                       |
+|             |             |             |doing a FTP  |                                                                                       |
+|             |             |             |put operation|                                                                                       |
+|             |             |             |after a get  |                                                                                       |
+|             |             |             |operation may|                                                                                       |
+|             |             |             |not complete |                                                                                       |
++-------------+-------------+-------------+-------------+---------------------------------------------------------------------------------------+
 
 Installation and Usage 
 ========================
@@ -628,7 +636,7 @@ The recommended development host is
 
 **NOTE**
 
-The Windows installer is a 32-bit binary, but is compatibility with
+The Windows installer is a 32-bit binary, but is compatibile with
 64-bit machine.
 
 .. raw:: html
