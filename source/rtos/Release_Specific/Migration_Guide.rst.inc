@@ -18,13 +18,9 @@ the last Processor SDK for RTOS release.
 .. rubric::  Build
    :name: Build
 
-**Migration:** TOOLS_INSTALL_PATH macro value changed to SDK_INSTALL_PATH
-No migration impact if tools and SDK are installed in same location. See additional details
-
-**Migration:** For all drivers using DMA mode EDMA driver is updated to UDMA driver
-
-**Additional Details**: Application will need to initialize UDMA driver using 
-Udma_init() API. Test code could be used as reference
+**Migration:** This is applicable for AM65x SOC. There is an updated infrastructure for the SOC which requires new driver UDMA support. 
+For all drivers using DMA mode update is being handled internally to limit changes required for applications
+**Additional Details**: Application will need to initialize UDMA driver using Udma_init() API. Additionally it will need to link the UDMA driver library. Driver Test code could be used as reference
 
 
 | 
