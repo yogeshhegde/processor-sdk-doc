@@ -593,35 +593,44 @@ Known Issues
 This section contains the list of known issues at the time of making the
 release and any known workaround.
 
-+-------------+-------------+-------------+-------------+---------------------------------------------------------------------------------------+
-|  Record ID  |  Platform   |    Area     |   Summary   | Workaround                                                                            |
-+=============+=============+=============+=============+=======================================================================================+
-| *           | AM65X       | Building    | make all    | Problem seen during first time build.                                                 |
-|             |             | Package     | fails while | device unplugged                                                                      |
-|             |             |             | building R4 | Trigger make command again after failure is seen.                                     |
-|             |             |             | RTSC library| For additional details related to issue   refer                                       |
-|             |             |             |             | `RTS Mklib <http://processors.wiki.ti.com/index.php/Mklib#Invoking_mklib_manually>`_  |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------------------------------------+
-| *           | AM65X       | Drivers     | High speed  |                                                                                       |
-|             |             |             | support not |                                                                                       |
-|             |             |             | validated   |                                                                                       |
-|             |             |             | for OSPI,USB|                                                                                       |
-|             |             |             | drivers     |                                                                                       |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------------------------------------+
-| *           | AM65X       | CCS Project |CCS project  | Use makefile based build infrastructure from top level makefile : make all or         |
-|             |             |             |based example| gmake all                                                                             |
-|             |             |             |and test not |                                                                                       |
-|             |             |             |available in |                                                                                       |
-|             |             |             |pre-release  |                                                                                       |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------------------------------------+
-| PRSDK-4116  | AM65X       | NDK over    |Using NDK-FTP| None                                                                                  |
-|             |             | EMAC/ICSS-G |application  |                                                                                       |
-|             |             |             |doing a FTP  |                                                                                       |
-|             |             |             |put operation|                                                                                       |
-|             |             |             |after a get  |                                                                                       |
-|             |             |             |operation may|                                                                                       |
-|             |             |             |not complete |                                                                                       |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------------------------------------+
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+|  Record ID  |  Platform   |    Area     |   Summary   | Workaround                                                                                                   |
++=============+=============+=============+=============+==============================================================================================================+
+| *           | AM65X       | Building    | make all    | Problem seen during first time build.                                                                        |
+|             |             | Package     | fails while | device unplugged                                                                                             |
+|             |             |             | building R4 | Trigger make command again after failure is seen.                                                            |
+|             |             |             | RTSC library| For additional details related to issue   refer                                                              |
+|             |             |             |             | `RTS Mklib <http://processors.wiki.ti.com/index.php/Mklib#Invoking_mklib_manually>`__                        |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4121  | AM65X       | Building    | make all    | Install `Strawberry Perl <http://strawberryperl.com/download/5.26.2.1/strawberry-perl-5.26.2.1-64bit.msi>`__ |
+|             |             | Package     | fails for   | Run gmake all on DOS prompt with admin priviledge                                                            |
+|             |             |             | Windows due |                                                                                                              |
+|             |             |             | to missing  |                                                                                                              |
+|             |             |             | openSSL     |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| *           | AM65X       | SBL         | DDR not     | Load application into internal memory                                                                        |
+|             |             |             | initialized |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| *           | AM65X       | Drivers     | High speed  |                                                                                                              |
+|             |             |             | support not |                                                                                                              |
+|             |             |             | validated   |                                                                                                              |
+|             |             |             | for OSPI,USB|                                                                                                              |
+|             |             |             | drivers     |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| *           | AM65X       | CCS Project |CCS project  | Use makefile based build infrastructure from top level makefile : make all or                                |
+|             |             |             |based example| gmake all                                                                                                    |
+|             |             |             |and test not |                                                                                                              |
+|             |             |             |available in |                                                                                                              |
+|             |             |             |pre-release  |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4116  | AM65X       | NDK over    |Using NDK-FTP| None                                                                                                         |
+|             |             | EMAC/ICSS-G |application  |                                                                                                              |
+|             |             |             |doing a FTP  |                                                                                                              |
+|             |             |             |put operation|                                                                                                              |
+|             |             |             |after a get  |                                                                                                              |
+|             |             |             |operation may|                                                                                                              |
+|             |             |             |not complete |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
 
 Installation and Usage 
 ========================
