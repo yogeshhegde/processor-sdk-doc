@@ -14,6 +14,7 @@ to the README.txt file in the installed package.
 Supported platforms
 ===================
 
+-  evmAM65xx ( A53)
 -  evmAM572x ( A15, M4, DSP)
 -  evmAM335x ( A8 )
 -  evmAM437x ( A9 )
@@ -31,7 +32,7 @@ Hardware
 Software
 
 -  Processor-SDK RTOS
--  Code Composer Studio
+-  Code Composer Studio (CCS 8.0 and up for AM65xx)
 
 Components Used
 ===============
@@ -101,7 +102,7 @@ You will need the following:
    Application. Refer to :ref:`Processor SDK RTOS Getting Started
    Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` for
    installing CCS.
-#. evmAM572x or evm AM335x board
+#. evmAM65xx, evmAM572x or evm AM335x board
 #. JTAG Emulator
 
 To load and run Template Application:
@@ -117,7 +118,7 @@ To load and run Template Application:
    `Processor SDK RTOS Setup
    CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__ for setting up CCS)
 #. Connect to the primary core to make sure on connect gels are run
-   A15_0 core for AM572x ; A8 core for AM335x; CortexA9 on AM437X
+   M3_0 first, then A53_0_0 for AM65xx; A15_0 core for AM572x ; A8 core for AM335x; CortexA9 on AM437X
 #. Connect to core where the application is expected to run, if not the primary core.
 #. Load executable by clicking("Run --> Load --> Load Program.). Click
    on Browse Project and select outfile under:
@@ -162,8 +163,8 @@ Terminal Screenshot
         uart_task task started uart_task :Enter a word or Esc to quit >
         i2c_eeprom_read_and_display task started
         spi_test task started
-        Board Name read: AM572PM_
-        Board version read: A.3A
+        Board Name read: AM572PM_ (may be different for evmAM65xx) 
+        Board version read: A.3A  (may be different for evmAM65xx)
         spi_test task ended
         i2c_eeprom_read_and_display task ended
         uart_task :Enter a word or Esc to quit >
