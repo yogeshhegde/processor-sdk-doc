@@ -84,6 +84,9 @@ The following software components and host tools are bundled with the
 SDK installer. See the :ref:`Software Developer Guide <Index-Processor-SDK-RTOS-label>` for
 more information on each item.
 
+.. note::
+   | This release has been tested with the following component and tool versions. It is recommended to use the versions listed here to avoid compatibility issues. 
+
 +-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 |  Component  |   Version   |AM335x|AM437x|AM57x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
 +=============+=============+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
@@ -962,4 +965,3 @@ Archived
 | 
 
 .. raw:: html
-
