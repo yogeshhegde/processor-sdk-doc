@@ -62,6 +62,10 @@ Released June 2018.
 -  Introduces support for AM65x SOC in Processor SDK
 -  EA release includes support for limited set of drivers and Board Diagnostic software
 -  Release includes unit test support for the drivers enabled through standard makefile. CCS project based example is not yet supported
+   Use make all or gmake all from top level pdk_am65xx_1_0_0\packages after setting the environment using pdksetupenv.bat|sh
+-  Note documentation updates for all components are in progress and is expected to be complete along with GA release during e/o Sept.
+   Pls refer Release Note to start with
+                
 
 .. rubric::  Component Version
    :name: component-version
