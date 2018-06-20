@@ -122,9 +122,8 @@ AM572x GP EVM
 ::
 
       source ./setupenv.sh
-      cd demos/audio-preprocessing/file_demo_bios/am572x/build
-      make clean
-      make all
+      make audio_preproc_clean
+      make audio_preproc
       the OUT files for DSP1 will be built at 
          processor_sdk_rtos_am57xx_4_xx_xx_xx/demos/audio-preprocessing/file_demo_bios/am572x/build
 
@@ -136,9 +135,8 @@ AM572x GP EVM
 ::
 
       setupenv.bat
-      cd demos\audio-preprocessing\file_demo_bios\am572x\build
-      gmake clean
-      gmake all
+      gmake audio_preproc_clean
+      gmake audio_preproc
       the OUT files for DSP1 will be built at 
          processor_sdk_rtos_am57xx_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\am572x\build
 
@@ -153,9 +151,8 @@ K2G EVM
 ::
 
       source ./setupenv.sh
-      cd demos/audio-preprocessing/file_demo_bios/k2g/build
-      make clean
-      make all
+      make audio_preproc_clean
+      make audio_preproc
       the OUT files for DSP will be built at 
          processor_sdk_rtos_k2g_4_xx_xx_xx/demos/audio-preprocessing/file_demo_bios/k2g/build
 
@@ -167,9 +164,8 @@ K2G EVM
 ::
 
       setupenv.bat
-      cd demos\audio-preprocessing\file_demo_bios\k2g\build
-      gmake clean
-      gmake all
+      gmake audio_preproc_clean
+      gmake audio_preproc
       the OUT files for DSP will be built at 
          processor_sdk_rtos_k2g_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\k2g\build
 
@@ -184,9 +180,8 @@ OMAP-L137 EVM
 ::
 
       source ./setupenv.sh
-      cd demos/audio-preprocessing/file_demo_bios/omapl137/build
-      make clean
-      make all
+      make audio_preproc_clean
+      make audio_preproc
       the OUT files for DSP will be built at 
          processor_sdk_rtos_omapl137_4_xx_xx_xx/demos/audio-preprocessing/file_demo_bios/omapl137/build
 
@@ -198,9 +193,8 @@ OMAP-L137 EVM
 ::
 
       setupenv.bat
-      cd demos\audio-preprocessing\file_demo_bios\omapl137\build
-      gmake clean
-      gmake all
+      gmake audio_preproc_clean
+      gmake audio_preproc
       the OUT files for DSP will be built at 
          processor_sdk_rtos_omapl137_4_xx_xx_xx\demos\audio-preprocessing\file_demo_bios\omapl137\build
 
@@ -321,9 +315,8 @@ K2G EVM
 ::
 
       source ./setupenv.sh
-      cd demos/audio-preprocessing/realtime_demo_bios/k2g/build
-      make clean
-      make all
+      make audio_preproc_clean
+      make audio_preproc
       the OUT files for DSP will be built at 
          processor_sdk_rtos_k2g_4_xx_xx_xx/demos/audio-preprocessing/realtime_demo_bios/k2g/build
 
@@ -335,9 +328,8 @@ K2G EVM
 ::
 
       setupenv.bat
-      cd demos\audio-preprocessing\realtime_demo_bios\k2g\build
-      gmake clean
-      gmake all
+      gmake audio_preproc_clean
+      gmake audio_preproc
       the OUT files for DSP will be built at 
          processor_sdk_rtos_k2g_4_xx_xx_xx\demos\audio-preprocessing\realtime_demo_bios\k2g\build
 
@@ -352,9 +344,8 @@ OMAP-L137 EVM
 ::
 
       source ./setupenv.sh
-      cd demos/audio-preprocessing/realtime_demo_bios/omapl137/build
-      make clean
-      make all
+      make audio_preproc_clean
+      make audio_preproc
       the OUT files for DSP will be built at 
          processor_sdk_rtos_omapl137_4_xx_xx_xx/demos/audio-preprocessing/realtime_demo_bios/omapl137/make
 
@@ -366,9 +357,8 @@ OMAP-L137 EVM
 ::
 
       setupenv.bat
-      cd demos\audio-preprocessing\realtime_demo_bios\omapl137\make
-      gmake clean
-      gmake all
+      gmake audio_preproc_clean
+      gmake audio_preproc
       the OUT files for DSP will be built at 
          processor_sdk_rtos_omapl137_4_xx_xx_xx\demos\audio-preprocessing\realtime_demo_bios\omapl137\make
 
