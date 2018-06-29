@@ -110,7 +110,7 @@ Please use top-level Makefile provided by Processor SDK Linux to build kernel an
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.14.40+ (2018 LTS)        |
+| Linux Kernel             | 4.14.52+ (2018 LTS)        |
 +--------------------------+----------------------------+
 | U-Boot                   | 2018.01                    |
 +--------------------------+----------------------------+
@@ -150,13 +150,13 @@ Build Information
 U-Boot
 -------------------------
 
-| Head Commit: 131dc8283021742f03e843e216ed301862e2db38 configs: dra7xx_evm/dra7xx_hs_evm: Enable AHCI and PIPE3 
-| Date: Wed Jun 13 12:48:25 CDT 2018
+| Head Commit: e1183b1ef6a3dc5d54603f904307bdbae51f22c3 configs:
+  am65x\_evm: Add initial support for applying overlays
+| Date: Wed Jun 27 21:22:27 2018 +0530
 | uBoot Version: 2018.01
-| uBoot Description: v2018.01-227-g131dc82
+| uBoot Description: v2018.01-373-ge1183b1
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2018.01
-| uBoot Tag: ti2018.01
 
 |
 
