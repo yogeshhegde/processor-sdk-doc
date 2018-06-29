@@ -104,7 +104,6 @@ Below are the main features which are not supported in this release:
 
 Please use top-level Makefile provided by Processor SDK Linux to build kernel and DTBs.
 
-
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
 
