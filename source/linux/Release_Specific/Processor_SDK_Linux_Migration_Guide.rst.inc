@@ -20,6 +20,7 @@ This is an early access release to support AM65x. Please refer to `board/ti/am65
 <http://git.ti.com/gitweb/?p=ti-u-boot/ti-u-boot.git;a=blob_plain;f=board/ti/am65x/README;hb=refs/heads/ti-u-boot-2018.01>`__
 to understand the boot flow on AM65x devices.
 
+
 Processor SDK 04.xx Releases
 ============================
 
