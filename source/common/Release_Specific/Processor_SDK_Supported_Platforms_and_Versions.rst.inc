@@ -48,10 +48,12 @@ The following platforms and EVMs are supported with Processor SDK
 |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |**Processor SDK |
 |                                      |                                      |Version** |                                            |Linux**         |RT Linux**      |RTOS**          |Android**       |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`AM65x                                |`AM654x EVM                           | Alpha    |Hardware User's Guide                       | X              |                | X              | X              |
+|`AM65x                                |AM654x EVM                            | Alpha    |Hardware User's Guide                       | X              |                | X              | X              |
+|                                      |                                      |          |                                            |                |                |                |                |
 |                                      |                                      |          |Diagnostic Software User Guide              |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |`AM654x IDK                           | Alpha    |Hardware User's Guide                       | X              |                | X              | X              |
+|                                      |AM654x IDK                            | Alpha    |Hardware User's Guide                       | X              |                | X              | X              |
+|                                      |                                      |          |                                            |                |                |                |                |
 |                                      |                                      |          |Diagnostic Software User Guide              |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`AM57x <http://www.ti.com/lsds/ti/    |`AM572x EVM                           | A3       |`Hardware User's Guide <http://             | X              | X              | X              | X              |

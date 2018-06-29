@@ -635,9 +635,9 @@ release and any known workaround.
 | *           | AM65X       | Drivers     |Following    | None. Pls refer passing cases in aternative core or OS eg: baremetal                                         |
 |             |             |             |tests are    |                                                                                                              |
 |             |             |             |failing      |                                                                                                              |
-|             |             |             |-OSPI RTOS   |                                                                                                              |
+|             |             |             |-OSPI/A53    |                                                                                                              |
 |             |             |             |-I2C/R5      |                                                                                                              |
-|             |             |             |             |                                                                                                              |
+|             |             |             |-UART DMA/R5 |                                                                                                              |
 |             |             |             |             |                                                                                                              |
 +-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | *           | AM65X       | Diagnostics |Refer        |                                                                                                              |
