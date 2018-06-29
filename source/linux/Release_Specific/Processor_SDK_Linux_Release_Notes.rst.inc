@@ -43,7 +43,7 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release AM65x EA2 v05.00.00.09
+Release AM65x EA v05.00.00.09
 ===============================
 
 Released June 30 2018
@@ -51,9 +51,9 @@ Released June 30 2018
 .. rubric:: Features Supported
    :name: features-supported
 
-Below please find the feature which are supported in this release:
+The following features are supported in this release:
 
-- Boot: please refer to http://git.ti.com/gitweb/?p=ti-u-boot/ti-u-boot.git;a=blob_plain;f=board/ti/am65x/README;hb=refs/heads/ti-u-boot-2018.01 for details of  U-boot flow
+- Boot: please refer to `U-boot flow <http://git.ti.com/gitweb/?p=ti-u-boot/ti-u-boot.git;a=blob_plain;f=board/ti/am65x/README;hb=refs/heads/ti-u-boot-2018.01>`__
 - Baseport: Dual and Quad Core SMP support
 - Connectivity: OSPI, MMC, CPSW, CIFS, USB host and client driver, UART, I2C, USB device, PRU Ethernet, SD card
 - Audio: McASP, stereo, playback and record
@@ -61,14 +61,48 @@ Below please find the feature which are supported in this release:
 - IPC: Hardware spinlocks and mailbox
 
 
-.. rubric:: Features Not Available
-   :name: features-not-available
+.. rubric:: Features Not Supported
+   :name: features-not-supported
 
-Below are the main features which are not available in this EA2 release:
+Below are the main features which are not supported in this release:
 
 -  PCIe
 -  USB 3.0 (SS)
 -  Graphics
+
+
+.. rubric:: Build U-Boot for AM65x
+   :name: build-u-boot-for-am65x
+
+.. code-block:: console
+
+    $ <Install SDK>
+    $ cd <sdk_install_dir>
+    $ export TISDK_PATH="$PWD"
+
+    $ cd linux-devkit
+    $ curl -L https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/arm-linux-gnueabihf/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf.tar.xz | tar xJf -
+
+    $ export CROSS_COMPILE_V7="$TISDK_PATH/linux-devkit/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
+    $ export CROSS_COMPILE_V8="$TISDK_PATH/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-linux-gnu-"
+    $ export ATF_FILE="$TISDK_PATH/board-support/prebuilt-images/bl31.bin"
+    $ export TEE_FILE="$TISDK_PATH/board-support/prebuilt-images/bl32.bin"
+    $ export SYSFW_FILE="$TISDK_PATH/board-support/prebuilt-images/sysfw.bin"
+
+    $ cd $TISDK_PATH/board-support/u-boot*
+    $ # Build U-Boot for R5
+    $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_V7" am65x_evm_r5_defconfig O=./build_r5
+    $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_V7" SYSFW="$SYSFW_FILE" CONFIG_MKIMAGE_DTC_PATH=./scripts/dtc/dtc O=./build_r5
+
+    $ # Build A53
+    $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_V8" am65x_evm_a53_defconfig O=./build_a53
+    $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_V8" ATF="$ATF_FILE" TEE="$TEE_FILE" CONFIG_MKIMAGE_DTC_PATH=./scripts/dtc/dtc O=./build_a53
+
+
+.. rubric:: Build Kernel for AM65x
+   :name: build-kernel-for-am65x
+
+Please use top-level Makefile provided by Processor SDK Linux to build kernel and DTBs.
 
 
 .. rubric:: SDK Components & Versions
