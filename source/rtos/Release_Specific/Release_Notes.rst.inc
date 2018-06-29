@@ -47,11 +47,10 @@ Documentation
    document is provided as part of the EVM kit.
 
 | 
+Release AM65x EA2 v05.00.00.09 
+==============================
 
-Release 05.00.00 AM65x EA1
-==========================
-
-Released June 2018.
+Released June 30 2018
 
 .. rubric::  What's New
    :name: whats-new
@@ -59,13 +58,13 @@ Released June 2018.
 .. rubric::  New Features
    :name: new-features
 
--  Introduces support for AM65x SOC in Processor SDK
--  EA release includes support for limited set of drivers and Board Diagnostic software
+-  Additional Diagnostic Test support:USB,PCIe,
+-  Board library config support for Ethernet config 100Mb/1Gig PHY
+-  Additional driver support: USB2.0 Host and Device
 -  Release includes unit test support for the drivers enabled through standard makefile. CCS project based example is not yet supported
    Use make all or gmake all from top level pdk_am65xx_1_0_0\packages after setting the environment using pdksetupenv.bat|sh
 -  Note documentation updates for all components are in progress and is expected to be complete along with GA release during e/o Sept.
    Pls refer Release Note to start with
-                
 
 .. rubric::  Component Version
    :name: component-version
@@ -165,8 +164,21 @@ Fixed Issues
 +-----------------------+-----------------------+-----------------------+
 |      Record ID        |       Platform        |       Summary         |
 +=======================+=======================+=======================+
-| None                  | None                  |                       |
+| None                  | AM65x                 |make all from top level|
+|                       |                       |failure while building |
+|                       |                       |R4 RTSC library for    |
+|                       |                       |first time             |
++-----------------------+-----------------------+-----------------------+
+| PRSDK-4130            | AM65x                 |Diagnostics Test       |
+| PRSDK-4127            |                       |failure: I2C EEPROM,   |
+|                       |                       |Memory Diagnostic Test |
 |                       |                       |                       |
++-----------------------+-----------------------+-----------------------+
+| PRSDK-4116            | AM65x                 |Using NDK/NIMU FTP     |
+|                       |                       |application, doing a   |
+|                       |                       |FTP put operation after|
+|                       |                       |a get operation may not|
+|                       |                       |complete.              |
 +-----------------------+-----------------------+-----------------------+
 
 .. RN_Supported-Platforms-label:
@@ -358,7 +370,7 @@ platform/EVM.
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
 | UART             |   X   |   X  |  X  | X | X | X | X | X | X | X |  X  |  X  |  X  |  X  |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
-| USB              |   X   |   X  |  X  | X |   |   |   | X |   |   |  X  |  X  |     |     |
+| USB              |   X   |   X  |  X  | X |   |   |   | X |   |   |  X  |  X  |  X  |   X |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
 | USB Device Audio |   X   |      |     | X |   |   |   |   |   |   |     |     |     |     |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
@@ -600,26 +612,17 @@ release and any known workaround.
 +-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
 |  Record ID  |  Platform   |    Area     |   Summary   | Workaround                                                                                                   |
 +=============+=============+=============+=============+==============================================================================================================+
-| *           | AM65X       | Building    | make all    | Problem seen during first time build.                                                                        |
-|             |             | Package     | fails while | device unplugged                                                                                             |
-|             |             |             | building R4 | Trigger make command again after failure is seen.                                                            |
-|             |             |             | RTSC library| For additional details related to issue   refer                                                              |
-|             |             |             |             | `RTS Mklib <http://processors.wiki.ti.com/index.php/Mklib#Invoking_mklib_manually>`__                        |
-+-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
-| PRSDK-4121  | AM65X       | Building    | make all    | Install `Strawberry Perl <http://strawberryperl.com/download/5.26.2.1/strawberry-perl-5.26.2.1-64bit.msi>`__ |
-|             |             | Package     | fails for   | Run gmake all on DOS prompt with admin priviledge                                                            |
-|             |             |             | Windows due |                                                                                                              |
-|             |             |             | to missing  |                                                                                                              |
-|             |             |             | openSSL     |                                                                                                              |
+| PRSDK-4050  | AM65X       | Drivers     | High speed  | OSPI driver not functional for Full rate 133, 166 MHz                                                        |
+|             |             |             | support not | with PHY enabled                                                                                             |
+|             |             |             | functional  | USB3.0 support is not functional in this release                                                             |
+|             |             |             | for OSPI,USB|                                                                                                              |
+|             |             |             | drivers     |                                                                                                              |
 +-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | *           | AM65X       | SBL         | DDR not     | Load application into internal memory                                                                        |
 |             |             |             | initialized |                                                                                                              |
 +-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
-| *           | AM65X       | Drivers     | High speed  |                                                                                                              |
-|             |             |             | support not |                                                                                                              |
-|             |             |             | validated   |                                                                                                              |
-|             |             |             | for OSPI,USB|                                                                                                              |
-|             |             |             | drivers     |                                                                                                              |
+| PRSDK-4131  | AM65X       | OSPI        | OSPI RTOS   | Example with or without DMA for RTOS is currently failing. Baremetal example is passing and can be used      |
+|             |             |             | Example Fail| as reference                                                                                                 |
 +-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | *           | AM65X       | CCS Project |CCS project  | Use makefile based build infrastructure from top level makefile : make all or                                |
 |             |             |             |based example| gmake all                                                                                                    |
@@ -632,7 +635,7 @@ release and any known workaround.
 |             |             |             |failing      |                                                                                                              |
 |             |             |             |-OSPI RTOS   |                                                                                                              |
 |             |             |             |-I2C/R5      |                                                                                                              |
-|             |             |             |-EMMC/SD RTOS|                                                                                                              |
+|             |             |             |             |                                                                                                              |
 |             |             |             |             |                                                                                                              |
 +-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | *           | AM65X       | Diagnostics |Refer        |                                                                                                              |
@@ -650,6 +653,18 @@ release and any known workaround.
 |             |             |             |after a get  |                                                                                                              |
 |             |             |             |operation may|                                                                                                              |
 |             |             |             |not complete |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4121  | AM65X       | Building    | make all    | Install`Strawberry Perl <http://strawberryperl.com/download/5.26.2.1/strawberry-perl-5.26.2.1-64bit.msi>`__  |
+|             |             | Package     | fails for   | Run gmake all on DOS prompt with admin priviledge                                                            |
+|             |             |             | Windows due |                                                                                                              |
+|             |             |             | to missing  |                                                                                                              |
+|             |             |             | openSSL     |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| *           | AM65X       | Building    | make all    | Problem seen during first time build.                                                                        |
+|             |             | Package     | fails while | device unplugged                                                                                             |
+|             |             |             | building R4 | Trigger make command again after failure is seen.                                                            |
+|             |             |             | RTSC library| For additional details related to issue   refer                                                              |
+|             |             |             |             | `RTS Mklib <http://processors.wiki.ti.com/index.php/Mklib#Invoking_mklib_manually>`__                        |
 +-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
 
 Installation and Usage 
