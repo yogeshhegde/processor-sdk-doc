@@ -18,12 +18,13 @@ the last Processor SDK for RTOS release.
 .. rubric::  Build
    :name: Build
 
-**Migration:** This is applicable for AM65x SOC. There is an updated infrastructure for the SOC which requires new driver UDMA support. 
-For all drivers using DMA mode update is being handled internally to limit changes required for applications
+**Migration:** This is applicable for Aapplications migrating from EDMA based DMA infrastructure to AM65x SOC with updated DMA infrastructure. Additional UDMA driver support is available to support enhanced DMA infrastrcuture available in AM654x
+Drivers for AM65x SOC is updated to include support of new DMA infrastructure. Limited change will be required for application using drivers included in Processor SDK. 
 
 | 
 
 **Additional Details**: Application will need to initialize UDMA driver using Udma_init() API. Additionally it will need to link the UDMA driver library. Driver Test code could be used as reference
+Additional migration details for all cases are covered in  \ti\drv\udma\docs folder inside PDK package
 
 **Migration:** For all drivers using DMA mode EDMA driver is updated to UDMA driver
 

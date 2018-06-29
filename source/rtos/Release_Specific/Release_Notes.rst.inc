@@ -61,6 +61,7 @@ Released June 30 2018
 -  Additional Diagnostic Test support:USB,PCIe,
 -  Board library config support for Ethernet config 100Mb/1Gig PHY
 -  Additional driver support: USB2.0 Host and Device
+-  EMAC driver example update to suppport external ethernet loopback across ports
 -  Release includes unit test support for the drivers enabled through standard makefile. CCS project based example is not yet supported
    Use make all or gmake all from top level pdk_am65xx_1_0_0\packages after setting the environment using pdksetupenv.bat|sh
 -  Note documentation updates for all components are in progress and is expected to be complete along with GA release during e/o Sept.
@@ -109,7 +110,7 @@ more information on each item.
 +--------------+------------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 |  OPENMP      | Per platform|     |      |  X   |      |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
 +--------------+------------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-|  PDK         | 3.1.1.0    |1.0.10|1.0.10|1.0.10| 1.0.0| 4.0.9 |4.0.9|4.0.9|1.0.9|2.0.9|2.0.9|  1.0.4  |  1.0.4  |
+|  PDK         | 3.1.1.0    |1.0.10|1.0.10|1.0.10| 1.0.1| 4.0.9 |4.0.9|4.0.9|1.0.9|2.0.9|2.0.9|  1.0.4  |  1.0.4  |
 +--------------+------------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 |  SYS/BIOS    | 6.73.0.03  |   X  |  X   |  X   |   X  |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
 +--------------+------------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
