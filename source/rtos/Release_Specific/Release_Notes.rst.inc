@@ -61,7 +61,7 @@ Released June 30 2018
 -  Additional Diagnostic Test support:USB,PCIe,
 -  Board library config support for Ethernet config 100Mb/1Gig PHY
 -  Additional driver support: USB2.0 Host and Device
--  EMAC driver example update to suppport external ethernet loopback across ports
+-  EMAC driver unit test update to support external port to port testing across all ICSSG ports
 -  SBL Boot loader validated for MMCSD boot mode support
 -  Release includes unit test support for the drivers enabled through standard makefile. CCS project based example is not yet supported
    Use make all or gmake all from top level pdk_am65xx_1_0_0\packages after setting the environment using pdksetupenv.bat|sh
