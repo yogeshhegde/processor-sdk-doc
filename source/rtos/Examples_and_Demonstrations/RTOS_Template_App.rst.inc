@@ -203,6 +203,7 @@ Porting to Custom Board
    Make modifications to the 'INPUT' section to add custom board library.
 
 ::
+
     INPUT(
         ti.board.aa53fg
     )
