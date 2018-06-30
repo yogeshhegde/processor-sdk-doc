@@ -48,7 +48,7 @@ The following platforms and EVMs are supported with Processor SDK
 |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |**Processor SDK |
 |                                      |                                      |Version** |                                            |Linux**         |RT Linux**      |RTOS**          |Android**       |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`AM65x                                |AM654x EVM                            | Alpha    |Hardware User's Guide                       | X              |                | X              | X              |
+|`AM65x                                |AM654x EVM                            | Alpha    |Hardware User's Guide                       | X              |     X          | X              |                |
 |                                      |                                      |          |                                            |                |                |                |                |
 |                                      |                                      |          |Diagnostic Software User Guide              |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
