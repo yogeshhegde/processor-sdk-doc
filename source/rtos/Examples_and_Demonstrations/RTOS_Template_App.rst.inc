@@ -198,6 +198,14 @@ Porting to Custom Board
    GPIO_evmAM572x_board.c & GPIO_board.h. These files can be modified to
    customize for the customer board.
 
+.. note::
+   Board library linking is included in the linker_a53.lds file for AM65xx platform as shown below.
+   Make modifications to the 'INPUT' section to add custom board library.
+
+::
+    INPUT(
+        ti.board.aa53fg
+    )
 
 .. raw:: html
 
