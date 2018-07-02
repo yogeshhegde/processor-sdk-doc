@@ -2,51 +2,19 @@
 Foundational Components
 ############################
 
-.. _processor-sdk-linux-u-boot:
-.. include:: Foundational_Components/U-Boot.rst.inc
+.. toctree::
+   :maxdepth: 5
 
-.. _processor-sdk-linux-boot-monitor:
-.. include:: Foundational_Components/Boot_Monitor.rst.inc
-
-.. _processor-sdk-linux-kernel:
-.. include:: Foundational_Components/Kernel.rst.inc
-
-.. _processor-sdk-linux-filesystem:
-.. include:: Foundational_Components/Processor_SDK_Linux_Filesystem.rst.inc
-
-.. _processor-sdk-linux-tools:
-.. include:: Foundational_Components/Tools.rst.inc
-
-.. _processor-sdk-linux-ipc:
-.. include:: Foundational_Components/IPC.rst.inc
-
-.. _processor-sdk-linux-cmem:
-.. include:: Foundational_Components/CMEM.rst.inc
-
-.. _processor-sdk-linux-graphics-and-display:
-.. include:: Foundational_Components/Graphics/Graphics_and_Display.rst.inc
-
-.. include:: Foundational_Components/Graphics/SGX_Debug_Info.rst.inc
-
-.. _processor-sdk-linux-multimedia:
-.. include:: Foundational_Components/Multimedia.rst.inc
-
-.. _processor-sdk-linux-opencl:
-
-**********************************
-OpenCL
-**********************************
-`TI OpenCL <http://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
-
-.. _processor-sdk-linux-opencv:
-.. include:: Foundational_Components/OpenCV.rst.inc
-
-.. _processor-sdk-linux-openvx:
-.. include:: Foundational_Components/OpenVX.rst.inc
-
-.. _processor-sdk-linux-virtualization:
-.. include:: Foundational_Components/Virtualization.rst.inc
-
-.. _processor-sdk-linux-tidl:
-.. include:: Foundational_Components/tidl.rst.inc
-
+   Foundational_Components_U-Boot
+   Foundational_Components_Boot_Monitor
+   Foundational_Components_Kernel
+   Foundational_Components_Filesystem
+   Foundational_Components_Tools
+   Foundational_Components_IPC
+   Foundational_Components_CMEM
+   Foundational_Components_Graphics
+   Foundational_Components_Multimedia
+   Foundational_Components_OpenCL
+   Foundational_Components_OpenCV
+   Foundational_Components_OpenVX
+   Foundational_Components_Virtualization
