@@ -339,10 +339,8 @@ Booting from SD Card involves two steps.
    :name: preparing-sd-card
 
 #. To boot target the SD card should be bootable. Follow the steps at
-   `Creating bootable SD card in
-   windows <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
-   or `Creating bootable SD card in
-   Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
+   `Creating bootable SD card in windows <Overview.html#windows-sd-card-creation-guide>`__
+   or `Creating bootable SD card in Linux <Overview.html#linux-sd-card-creation-guide>`__.
 #. Delete the "*MLO*" and "*app*" in the bootable SD card which are
    created in the process of making the SD bootable.
 #. Bootloader images with ti header (<mmcsd_bootloader>_ti.bin)should be

@@ -65,7 +65,7 @@ Software Dependencies
 
 .. note::
    **For correct version of Code Composer Studio to download, please refer
-   to the `Release Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
+   to the `Release Notes <Release_Specific.html#release-notes>`__
    corresponding to the Processor SDK RTOS version that you have
    installed**
 

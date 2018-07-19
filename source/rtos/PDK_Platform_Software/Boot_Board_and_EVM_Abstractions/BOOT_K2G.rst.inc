@@ -117,10 +117,8 @@ This release of SBL supports MMCSD and QSPI boot modes.
    :name: preparing-the-sd-card
 
 #. To boot the target, the SD card needs to be bootable. Follow the
-   steps at `Creating bootable SD card in
-   windows <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
-   or `Creating bootable SD card in
-   Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
+   steps at `Creating bootable SD card in windows <Overview.html#windows-sd-card-creation-guide>`__
+   or `Creating bootable SD card in Linux <Overview.html#linux-sd-card-creation-guide>`__.
 #. Copy "MLO" and "app" to your SD card.
 
    -  MLO is the SBL formatted by the aforementioned tools. A pre-built

@@ -77,8 +77,7 @@ addition request:
    :name: how-do-i-know-the-list-of-known-issues-and-bugs-resolved-in-processor-sdk-rtos-release
 
 The information on known issues and bug fixes in Processor SDK RTOS can
-be found in the `Release
-Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
+be found in the `Release Notes <Release_Specific.html#release-notes>`__
 for the version of the SDK you wish to use.
 
 .. rubric:: I am a current Sitara Starterware user. Should I migrate to
@@ -88,7 +87,7 @@ for the version of the SDK you wish to use.
 Starterware software is no longer active and will not have any further
 releases. Existing starterware users should refer the following article
 to determine the migration path: `Processor SDK RTOS Migration Guide
-Wiki <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Migration_Guide>`__.
+Wiki <Release_Specific.html#migration-guide>`__.
 For all new development, we recommend that users start with the
 Processor SDK RTOS, which is currently under active development and
 provides periodic updates and bug fixes.
@@ -144,14 +143,13 @@ There are three main documents for Processor SDK RTOS:
    Provides information on setting up software and running basic
    examples/demonstrations bundled within the Processor SDK.
 -  `Software Developer
-   Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__:
+   Guide <index.html#processor-sdk-rtos-software-developer-s-guide>`__:
    Provides information on features, functions, delivery package, and
    compile tools for the Processor SDK RTOS release. This guide also
    provides detailed information regarding software elements and
    software infrastructure to allow developers to start creating
    applications.
--  `Migration
-   Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Migration_Guide>`__: Provides
+-  `Migration Guide <Release_Specific.html#migration-guide>`__: Provides
    migration information for applications built on top of the Processor
    SDK for RTOS.
 
@@ -170,7 +168,7 @@ below: :ref:`Processor SDK RTOS Setup with CCS <Processor-SDK-RTOS-Setup-CCS-lab
 
 **A common gotcha while setting up the build environment is
 compatibility with CCS version. Please refer to `Release
-Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__ for the
+Notes <Release_Specific.html#release-notes>`__ for the
 recommended version of CCS** 
 
 .. rubric:: Can I install multiple versions of the Processor SDK RTOS in
@@ -289,8 +287,7 @@ contain an C66x DSP, the SDK provides several optimized DSP libraries
 (DSPLIB, MATHLIB and IMGLIB). These components also ship with pre-built
 examples that can be built using build steps described in their
 documentation that is linked at the top level `Software Developer
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__.
-`Processor_SDK_RTOS_Software_Developer_Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__
+Guide <index.html#processor-sdk-rtos-software-developer-s-guide>`__.
 
 | 
 
@@ -344,11 +341,9 @@ create an SD differs depending on whether you are doing this on a
 Windows or Linux host machine, as described in the two articles shown
 here:
 
--  `Create an SD card on Windows Host (AMx, K2G
-   only) <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
+-  `Create an SD card on Windows Host (AMx, K2G only) <Overview.html#windows-sd-card-creation-guide>`__
 
--  `Create an SD card on Linux Host (AMx, K2G
-   only) <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__
+-  `Create an SD card on Linux Host (AMx, K2G only) <Overview.html#linux-sd-card-creation-guide>`__
 
 .. rubric:: How can I restore the firmware on my EVM to factory
    settings?
@@ -836,7 +831,7 @@ Filesystem Support
 
 Processor SDK RTOS only supports use of FATFS filesystem for some
 devices. For availability of support for your devices check the `Release
-Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
+Notes <Release_Specific.html#release-notes>`__
 There are numerous examples for using FATFS with USB driver and SD/MMC
 driver in the SDK that you can use for reference. The FATFS-specific
 documentation for Processor SDK RTOS is available in the `FATFS wiki
@@ -868,7 +863,7 @@ predefined templates provided as part of CCS installation and then add
 custom configuration on top of it. CCS allows users to create a TI RTOS
 project with Minimum, Typical, and a set of generic examples, as you can
 see from wiki `Processor SDK RTOS TI RTOS Getting Started
-Examples <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__.
+Examples <Release_Specific.html#release-notes>`__.
 
 Other than that, there is an TI RTOS workshop that addresses different
 features and use cases of TI RTOS with CCS: `Introduction to the TI-RTOS
@@ -1005,8 +1000,7 @@ Networking Support
 The NDK software stack provided by TI typically requires a transport
 layer called Network Interface Management Unit (NIMU) layer to interface
 the underlying platform software elements and device drivers. Please
-check the `Processor SDK RTOS Release
-Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__
+check the `Processor SDK RTOS Release Notes <Release_Specific.html#release-notes>`__
 for support of the NIMU transport driver to determine if NDK software
 can be utilized on your device.
 
