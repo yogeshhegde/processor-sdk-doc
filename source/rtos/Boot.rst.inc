@@ -109,5 +109,8 @@ Bootloader Debugging
 ========================
 .. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Boot_Debug.rst.inc
 
+UART AppLoader
+========================
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/UART_Apploader.rst.inc
 
 .. raw:: html
