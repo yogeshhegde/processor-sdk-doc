@@ -34,4 +34,5 @@ There are a number of Example Applications provided within the Processor SDK for
     EVSE Demo ,X ,  ,X ,X ,X ,X ,X ,X ,X ,X ,  ,  ,  ,  ,  ,`HMI for EV charging infrastructure <Examples_and_Demos.html#evse-demos>`__ ,Provides out of box demo to showcase Human Machine Interface (HMI) for Electric Vehicle Supply Equipment(EVSE) Charging Stations.
     Protection Relay Demo ,X ,  ,X ,X ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,`HMI  for Protection Relay Demo <Examples_and_Demos.html#protection-relay-demo>`__,Matrix UI provides out of box demo to showcase Human Machine Interface (HMI) for Protection Relays.
     Qt5 Thermostat HMI Demo,X ,  ,X ,X ,X ,X ,X ,X ,X ,X ,  ,  ,  ,  ,  ,`Qt5 Thermostat HMI Demo <Examples_and_Demos.html#qt5-thermostat-hmi-demo>`__,Provides out of box Qt5-based HMI for Thermostat
+    Deep Learning ,  ,  ,  ,  ,  ,  ,  ,X ,X ,X ,X ,X ,X ,X ,  ,`Vision Deep Learning Examples <Examples_and_Demos.html#tidl-eve-dsp-demo>`__ ,Provides TIDL example descriptions. Matrix GUI provides three out of box TIDL demos: two with precanned video clips and third with live camera input.
 

@@ -46,3 +46,7 @@ OpenCL
 
 .. _processor-sdk-linux-virtualization:
 .. include:: Foundational_Components/Virtualization.rst.inc
+
+.. _processor-sdk-linux-tidl:
+.. include:: Foundational_Components/tidl.rst.inc
+
