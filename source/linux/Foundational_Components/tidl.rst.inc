@@ -474,28 +474,32 @@ Import process is done in two steps.
 
      The list of import configuration parameters is as below:
 
-     * **randParams** can be either 0 or 1. Default value is 0. If it is set to 0, the tool will generate the quantization parameters from model, otherwise it will generate random quantization parameters.
-     * **modelType** can be either 0 or 1. Default value is 0. Set this to 0 to read from caffeImport frame work, and set it to 1 to read from tensor flow frame work.
-     * **quantizationStyle** can be ‘0’ for fixed quantization by the training framework or ‘1’ for dynamic quantization by. Default value is 1. Currently, only dynamic quantization is supported.
-     * **quantRoundAdd** can take any value from 0 to 100. Default value is 50. quantRoundAdd/100 will be added while rounding to integer
-     * **numParamBits** can take values from 4 to 12. Default value is 8. This is the number of bits used to quantize the parameters.
-     * **preProcType** can take values from 0 to 3. Default value is 0.
-     * **Conv2dKernelType** can be either 0 or 1 for each layer. Default value is 0 for all the layers. Set it to 0 to use sparse convolution, otherwise, set it to 1 to use dense convolution.
-     * **inElementType** can be either 0 or 1. Default value is 1. Set it to 0 for 8-bit unsigned input or to 1 for 8-bit signed input.
-     * **inQuantFactor** can take values >0. Default value is -1.
-     * **rawSampleInData** can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data.
-     * **numSampleInData** can be > 0. Default value is 1.
-     * **foldBnInConv2D** can be either 0 or 1. Default value is 1.
-     * **inWidth** is Width of the input image, it can be >0.
-     * **inHeight** is Height of the input image, it can be >0.
-     * **inNumChannels** is input number of channels. It can be from 1 to 1024.
-     * **sampleInData** is Input data File name.
-     * **tidlStatsTool** is TIDL reference executable.
-     * **inputNetFile** is Input net file name (From Training frame work)
-     * **inputParamsFile** is Input Params file name (From Training frame work)
-     * **outputNetFile** is Output Model net file name, to be updated with stats.
-     * **outputParamsFile** is Output Params file name.
-     * **layersGroupId**  indictes group of layers that needs to be processed on a given CORE. Refer SSD import config for example usage
+==================   ======================================================================================================================================================================================
+Paramaeter           Configuration
+==================   ======================================================================================================================================================================================
+randParams           can be either 0 or 1. Default value is 0. If it is set to 0, the tool will generate the quantization parameters from model, otherwise it will generate random quantization parameters
+modelType            can be either 0 or 1. Default value is 0. Set this to 0 to read from caffeImport frame work, and set it to 1 to read from tensor flow frame work.
+quantizationStyle    can be ‘0’ for fixed quantization by the training framework or ‘1’ for dynamic quantization by. Default value is 1. Currently, only dynamic quantization is supported
+quantRoundAdd        can take any value from 0 to 100. Default value is 50. quantRoundAdd/100 will be added while rounding to integer
+numParamBits         can take values from 4 to 12. Default value is 8. This is the number of bits used to quantize the parameters
+preProcType          can take values from 0 to 3. Default value is 0.
+Conv2dKernelType     can be either 0 or 1 for each layer. Default value is 0 for all the layers. Set it to 0 to use sparse convolution, otherwise, set it to 1 to use dense convolution
+inElementType        can be either 0 or 1. Default value is 1. Set it to 0 for 8-bit unsigned input or to 1 for 8-bit signed input
+inQuantFactor        can take values >0. Default value is -1
+rawSampleInData      can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data.
+numSampleInData      can be > 0. Default value is 1.
+foldBnInConv2D       can be either 0 or 1. Default value is 1.
+inWidth              is Width of the input image, it can be >0.
+inHeight             is Height of the input image, it can be >0
+inNumChannels        is input number of channels. It can be from 1 to 1024
+sampleInData         is Input data File name
+tidlStatsTool        is TIDL reference executable
+inputNetFile         is Input net file name (From Training frame work)
+inputParamsFile      is Input Params file name (From Training frame work)
+outputNetFile        is Output Model net file name, to be updated with stats.
+outputParamsFile     is Output Params file name
+layersGroupId        indictes group of layers that needs to be processed on a given CORE. Refer SSD import config for example usage
+==================   ======================================================================================================================================================================================
 
 - Example of import config files
      Command to convert model (specified in configuration file)
