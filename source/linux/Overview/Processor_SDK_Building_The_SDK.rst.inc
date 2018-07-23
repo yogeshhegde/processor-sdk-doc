@@ -92,7 +92,7 @@ Run the following commands to install the Linaro Toolchain.
 Build Steps
 -----------
 
-Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a particular release of Processor SDK Linux.
+Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a particular release of Processor SDK Linux. The final command below will build the **arago-base-tisdk-image**, which is the minimal Processor SDK filesystem. See `Build Options`_ for a list of additional targets.
 
 ::
 
@@ -102,7 +102,7 @@ Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a
     $ cd build
     $ . conf/setenv
     $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
-    $ MACHINE=am57xx-evm bitbake arago-core-tisdk-image
+    $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
 .. note::
    One common location for hosting packages, gforge.ti.com, has recently
@@ -135,7 +135,7 @@ Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a
     EOF
     $ . conf/setenv
     $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
-    $ MACHINE=am57xx-evm bitbake arago-core-tisdk-image
+    $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
 
 Processor SDK Build Reference
