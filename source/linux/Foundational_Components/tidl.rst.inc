@@ -73,18 +73,18 @@ The following topologies have been verified with TIDL software stack:
 - InceptionV1
 - MobileNet
 
-Jacinto11 (Resnet10 motivated)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Jacinto11 Resnet10 motivated
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. Image:: ../images/j11v2.png
 
 JSeg21 (TBD motivated)
-^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. Image:: ../images/jseg21.png
 
 Jacinto JDetNet (SSD-300/512 motivated)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. Image:: ../images/jdetnet.png
 
@@ -374,18 +374,19 @@ Additional public TI resources
 Following two Caffe-related repositories (maintained by TI team) provides necessary tools for the training phase. 
 They include modifications to enable higher compute performance in inference phase.
 
-- https://github.com/tidsp/caffe-jacinto
-  Caffe-jacinto is a fork of NVIDIA/caffe, which in-turn is derived from BVLC/Caffe. \
-  The modifications in this fork enable training of sparse, quantized CNN models - resulting in low complexity models that can be used in embedded platforms. \
-  Please follow README.md, how to clone, compile and install this version of Caffe.
-
-- https://github.com/tidsp/caffe-jacinto-models
-  Caffe-jacinto-models provides example scripts for training sparse models using tidsp/caffe-jacinto. \
-  These scripts enable training of sparse CNN models - resulting in low complexity models that can be used in embedded platforms.
-  This repostory also includes pretrained models in https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained .
-  Additional scripts that can be used to prepare dataset and run the training are also in https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/scripts folder \
-  and its subfolders.
-
+=========================================================================      ===============================================================================================================================
+                    Repo/URL                                                     Description
+=========================================================================      ===============================================================================================================================
+`Caffe-jacinto <https://github.com/tidsp/caffe-jacinto>`_                       fork of NVIDIA/caffe, which in-turn is derived from BVLC/Caffe. The modifications \
+                                                                                in this fork enable training of sparse, quantized CNN models - resulting in low \ 
+                                                                                complexity models that can be used in embedded platforms. Please follow README.md, \
+                                                                                how to clone, compile and install this version of Caffe.
+`Caffe-jacinto-models <https://github.com/tidsp/caffe-jacinto-models>`_         provides example scripts for training sparse models using tidsp/caffe-jacinto. These scripts enable training of sparse \
+                                                                                CNN models resulting in low complexity models that can be used in embedded platforms. This repostory also includes \
+                                                                                `pretrained models <https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained>`_. \
+                                                                                Additional scripts that can be used to prepare dataset and run the training are also available in the \
+                                                                                `scripts folder <https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/scripts>`_.
+=========================================================================      ===============================================================================================================================
 
 Introduction to Programming Model
 ---------------------------------
