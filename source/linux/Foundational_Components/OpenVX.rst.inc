@@ -173,36 +173,11 @@ objects (typically in OCMC)
 .. rubric:: Switch from OpenCL to OpenVX firmware:
    :name: switch-from-opencl-to-openvxfirmware
 
-::
-
-    pkill ti-mctd                            # Kill CMEM multi-process daemon. This releases all CMEM memory used by OpenCL memory allocation
-    cd /sys/bus/platform/drivers/omap-rproc/ # Prepare to send commands for remoteproc
-    echo 40800000.dsp > unbind               # Release DSP1
-    echo 41000000.dsp > unbind               # Release DSP2
-    rm /lib/firmware/dra7-dsp1-fw.xe66       # 
-    ln -s /lib/firmware/dra7-dsp1-fw.xe66.openvx /lib/firmware/dra7-dsp1-fw.xe66 # Link TIOVX firmware for DSP1
-    rm /lib/firmware/dra7-dsp2-fw.xe66       # 
-    ln -s /lib/firmware/dra7-dsp2-fw.xe66.openvx /lib/firmware/dra7-dsp2-fw.xe66  # Link TIOVX firmware for DSP2
-    echo 40800000.dsp > bind                 # Load new DSP1 firmware (now, for OpenVX, as set in previous steps)
-    echo 41000000.dsp > bind                 # Load new DSP2 firmware (now, for OpenVX, as set in previous steps)
-    cd -                                     # Return to original folder
-
-.. rubric:: Switch from OpenVX, back to OpenCL firmware:
-   :name: switch-from-openvx-back-to-openclfirmware
+Run the command below to switch from OpenCL to OpenVx firmware:
 
 ::
 
-    ti-mctd                               # Start OpenCL CMEM memory allocation daemon
-    cd /sys/bus/platform/drivers/omap-rproc/   # Prepare for remoteproc operations
-    echo 40800000.dsp > unbind            # Release DSP1
-    echo 41000000.dsp > unbind            # Release DSP2
-    rm /lib/firmware/dra7-dsp1-fw.xe66    #
-    ln -s /lib/firmware/dra7-dsp1-fw.xe66.opencl-monitor  /lib/firmware/dra7-dsp1-fw.xe66  # Set new DSP1 firmware (OpenCL DSP firmware)
-    rm /lib/firmware/dra7-dsp2-fw.xe66    #
-    ln -s /lib/firmware/dra7-dsp2-fw.xe66.opencl-monitor  /lib/firmware/dra7-dsp2-fw.xe66  # Set new DSP2 firmware (OpenCL DSP firmware)
-    echo 40800000.dsp > bind              # Load new DSP1 firmware
-    echo 41000000.dsp > bind              # Load new DSP2 firmware
-    cd -                                  # Return to original folder
+    reload-dsp-fw.sh tiovx                   # load openvx firmware and restart dsps
 
 .. rubric:: Run TIOVX test application
    :name: run-tiovx-test-application
@@ -259,6 +234,15 @@ this:
 Please note that last ~3000 lines of test log include performance data
 (execution time and number of pixels processed) useful for further
 evaluation.
+
+.. rubric:: Switch from OpenVX, back to OpenCL firmware:
+   :name: switch-from-openvx-back-to-openclfirmware
+
+After finishing running the TIOVX test application, switch the firmware back to the default for OpenCL:
+
+::
+
+    reload-dsp-fw.sh opencl        # load opencl firmware and restart dsps
 
 .. rubric:: Recompile TIOVX (using Yocto build)
    :name: recompile-tiovx-using-yocto-build

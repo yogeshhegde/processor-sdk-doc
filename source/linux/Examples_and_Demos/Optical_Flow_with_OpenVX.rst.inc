@@ -115,4 +115,9 @@ Logs:
     LOG: [ status = -1 ] Hello there!
 
 
+After finishing running the OpenVX tutorial example, switch the firmware back to the default for OpenCL:
+
+::
+
+    reload-dsp-fw.sh opencl        # load opencl firmware and restart dsps
 
