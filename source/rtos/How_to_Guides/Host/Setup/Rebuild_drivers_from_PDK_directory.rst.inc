@@ -20,17 +20,22 @@ Processor SDK components have been installed in the SDK_INSTALL_PATH
 location .
 
 -  In command prompt navigate to *pdk_[soc]_[version]/packages*
--  Set RULES_MAKE and PATH variable for Windows.
--  Alternatively run pdksetupenv.bat.
+-  Run pdksetupenv.bat
 
 ::
 
-    > set RULES_MAKE = C:\ti\pdk_[soc]_[version]\packages\Rules.make
-	> set PATH=%PATH%;C:\ti\xdc_[xdc_version]
+    C:\ti\pdk_[soc]_[version]\packages> pdksetupenv.bat
+
+-  Alternatively set RULES_MAKE and PATH variable for Windows..
+
+::
+
+    > set RULES_MAKE = C:/ti/pdk_[soc]_[version]/packages/Rules.make
+    > set PATH=%PATH%;C:/ti/xdc_[xdc_version]
 
 .. note::
    -  The PDK package uses ARM Linaro compiler for the A15/A9/A8 core, TI
-      ARM Compiler 5.x for M4/IPU and TI Compiler for C66x core.
+      ARM Compiler for M4/IPU and TI Compiler for C66x core.
 
 -  After the build environment has been configured, the entire PDK, or
    individual components, can be rebuilt through the top-level makefile
@@ -99,8 +104,13 @@ The defaults in the Rules.make script assume all Processor SDK components have
 been installed in the SDK_INSTALL_PATH directory.
 
 -  Navigate to *pdk_[soc]_[version]/packages*
--  export RULES_MAKE variable
--  Alternatively run pdksetupenv.sh
+-  Run pdksetupenv.sh
+
+::
+
+    ~/ti/pdk_[soc]_[version]/packages$ source pdksetupenv.sh
+
+-  Alternatively the RULES_MAKE variable can be exported from the command line.
 
 ::
 
@@ -108,7 +118,7 @@ been installed in the SDK_INSTALL_PATH directory.
 
 .. note::
    The PDK package uses ARM Linaro compiler for the A15/A9/A8 core, TI ARM
-   Compiler 5.x for M4/IPU and TI Compiler for C66x core.
+   Compiler for M4/IPU and TI Compiler for C66x core.
 
 -  After the build environment has been configured, the entire PDK, or
    individual components, can be rebuilt through the top-level makefile
@@ -223,7 +233,7 @@ how the scripts are used to create CCS project content.
                       gpio / hyplnk / i2c / icss_emac / iqn2 / mcasp / mcbsp / mmap / mmcsd /
                       nimu / nimu_icss / nwal / osal / pa / pcie / pktlib / pruss / qm / rm /
                       sa /serdes-diag / spi / srio / tcp3d / tfw / transportqmss /
-                      transportsrio / tsip / uart / usb / wdtimer / vps
+                      transportsrio / tsip / uart / usb / wdtimer / vps / dcan / dss / lcdc
       project type -  all / example / test
       processor   -   arm / dsp / m4
       pdkDir      -   THIS FILE LOCATION / "C:\ti\pdk_<soc>_<version>\packages"
@@ -265,7 +275,7 @@ how the scripts are used to create CCS project content.
                       gpio / hyplnk / i2c / icss_emac / iqn2 / mcasp / mcbsp / mmap / mmcsd /
                       nimu / nimu_icss / nwal / osal / pa / pcie / pktlib / pruss / qm / rm /
                       sa / serdes-diag / spi / srio / tcp3d / tfw / transportqmss /
-                      transportsrio / tsip / uart / usb / wdtimer / vps
+                      transportsrio / tsip / uart / usb / wdtimer / vps / dcan / dss / lcdc
       project type -  all / example / test
       processor   -   arm / dsp / m4
      
