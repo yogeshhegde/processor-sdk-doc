@@ -256,17 +256,15 @@ is ignored when called in a C66x or K2H/K2E/K2L board library.
    The core clocks and module clocks used on the custom board library may 
    vary based on the power requirements and external components used on the 
    boards. TI provides `Clock Tree Tools <http://www.ti.com/tool/CLOCKTREETOOL>`__ 
-   to simulate the device clocks. We recommend that you test the settings in CCS by
-   creating a GEL file with the modified settings before modifying the
-   source in the board library.
+   to simulate the device clocks. GEL file can be used to verify the settings
+   in CCS before modifying the source in the board library.
 
 #. SOC DDR Configuration Update:
    The board library has the correct DDR initialization sequence to initialize 
    the DDR memory on your board. You may need to make changes to the AC timings, 
    hardware leveling, and DDR PHY configuration, some or all of which may be 
-   different than the TI supported platforms. We recommend that you test the settings
-   in CCS by creating a GEL file with the modified settings before modifying the 
-   source in the board library.
+   different than the TI supported platforms. GEL file can be used to verify 
+   the settings in CCS before modifying the source in the board library.
 
 #. IO Instance and Configuration update to Match Use Case:
    If your custom board uses an IO instance different from the TI-supported
