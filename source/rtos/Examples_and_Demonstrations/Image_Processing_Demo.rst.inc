@@ -36,12 +36,10 @@ devices and EVM are supported:
 -  K2H, on the K2H EVM
 
 .. note::
-   Before running image demo for AM572x and K2H platforms on arm and c66x
-   core , we need to increase stack size in netctrl.c file from 2048 to
-   4096 and rebuild the NDK library and driver, otherwise the demo fails
+   For AM572x EVM, only the SD card boot option (via SBL) is current supported. 
 
 .. note::
-   This demo has been only verified with the Microsoft Internet Explorer
+   This demo has been only verified with the Google Chrome along with the 100Mbit router with DHCP
 
 
 Requirements
@@ -109,7 +107,7 @@ AM572x GP EVM
 
 **For Linux:**
 
--  Under ~/ti/processor_sdk_rtos_am57xx_3_01_xx_xx directory, run the
+-  Under ~/ti/processor_sdk_rtos_am57xx_x_0x_xx_xx directory, run the
    following commands:
 
 ::
@@ -118,13 +116,13 @@ AM572x GP EVM
       make demo_clean
       make demo
       the OUT files for A15, DSP1 and DSP2 will be built at 
-         ~/ti/processor_sdk_rtos_am57xx_3_01_xx_xx/demos/image_processing/ipc/evmam572x/host/build,
-         ~/ti/processor_sdk_rtos_am57xx_3_01_xx_xx/demos/image_processing/ipc/evmam572x/dsp1/build, and
-         ~/ti/processor_sdk_rtos_am57xx_3_01_xx_xx/demos/image_processing/ipc/evmam572x/dsp2/build respectively
+         ~/ti/processor_sdk_rtos_am57xx_x_0x_xx_xx/demos/image_processing/ipc/evmam572x/host/build,
+         ~/ti/processor_sdk_rtos_am57xx_x_0x_xx_xx/demos/image_processing/ipc/evmam572x/dsp1/build, and
+         ~/ti/processor_sdk_rtos_am57xx_x_0x_xx_xx/demos/image_processing/ipc/evmam572x/dsp2/build respectively
 
 **For Windows:**
 
--  Under C:\\ti\\processor_sdk_rtos_am57xx_3_01_xx_xx directory, run the
+-  Under C:\\ti\\processor_sdk_rtos_am57xx_x_0x_xx_xx directory, run the
    following commands:
 
 ::
@@ -133,16 +131,16 @@ AM572x GP EVM
       gmake demo_clean
       gmake demo
       the OUT files for A15, DSP1 and DSP2 will be built at 
-         C:\ti\processor_sdk_rtos_am57xx_3_01_xx_xx\demos\image_processing\ipc\evmam572x\host\build,
-         C:\ti\processor_sdk_rtos_am57xx_3_01_xx_xx\demos\image_processing\ipc\evmam572x\dsp1\build, and
-         C:\ti\processor_sdk_rtos_am57xx_3_01_xx_xx\demos\image_processing\ipc\evmam572x\dsp2\build respectively
+         C:\ti\processor_sdk_rtos_am57xx_x_0x_xx_xx\demos\image_processing\ipc\evmam572x\host\build,
+         C:\ti\processor_sdk_rtos_am57xx_x_0x_xx_xx\demos\image_processing\ipc\evmam572x\dsp1\build, and
+         C:\ti\processor_sdk_rtos_am57xx_x_0x_xx_xx\demos\image_processing\ipc\evmam572x\dsp2\build respectively
 
 C6657 EVM
 ^^^^^^^^^
 
 **For Linux:**
 
--  Under ~/ti/processor_sdk_rtos_c665x_3_01_xx_xx directory, run the
+-  Under ~/ti/processor_sdk_rtos_c665x_x_0x_xx_xx directory, run the
    following commands:
 
 ::
@@ -151,12 +149,12 @@ C6657 EVM
       make demo_clean
       make demo
       the OUT files for DSPs will be built at 
-         ~/ti/processor_sdk_rtos_c665x_3_01_xx_xx/demos/image_processing/ipc/evmc6657l/master/build,
-         ~/ti/processor_sdk_rtos_c665x_3_01_xx_xx/demos/image_processing/ipc/evmc6657l/slave/build respectively
+         ~/ti/processor_sdk_rtos_c665x_x_0x_xx_xx/demos/image_processing/ipc/evmc6657l/master/build,
+         ~/ti/processor_sdk_rtos_c665x_x_0x_xx_xx/demos/image_processing/ipc/evmc6657l/slave/build respectively
 
 **For Windows:**
 
--  Under C:\\ti\\processor_sdk_rtos_c665x_3_01_xx_xx directory, run the
+-  Under C:\\ti\\processor_sdk_rtos_c665x_x_0x_xx_xx directory, run the
    following commands:
 
 ::
@@ -165,15 +163,15 @@ C6657 EVM
       gmake demo_clean
       gmake demo
       the OUT files for DSPs will be built at 
-         C:\ti\processor_sdk_rtos_c665x_3_01_xx_xx\demos\image_processing\ipc\evmc6657l\master\build,
-         C:\ti\processor_sdk_rtos_c665x_3_01_xx_xx\demos\image_processing\ipc\evmc6657l\slave\build respectively
+         C:\ti\processor_sdk_rtos_c665x_x_0x_xx_xx\demos\image_processing\ipc\evmc6657l\master\build,
+         C:\ti\processor_sdk_rtos_c665x_x_0x_xx_xx\demos\image_processing\ipc\evmc6657l\slave\build respectively
 
 C6678 EVM
 ^^^^^^^^^
 
 **For Linux:**
 
--  Under ~/ti/processor_sdk_rtos_c667x_3_01_xx_xx directory, run the
+-  Under ~/ti/processor_sdk_rtos_c667x_x_0x_xx_xx directory, run the
    following commands:
 
 ::
@@ -182,12 +180,12 @@ C6678 EVM
       make demo_clean
       make demo
       the OUT files for DSPs will be built at 
-         ~/ti/processor_sdk_rtos_c667x_3_01_xx_xx/demos/image_processing/ipc/evmc6678l/master/build,
-         ~/ti/processor_sdk_rtos_c667x_3_01_xx_xx/demos/image_processing/ipc/evmc6678l/slave/build respectively
+         ~/ti/processor_sdk_rtos_c667x_x_0x_xx_xx/demos/image_processing/ipc/evmc6678l/master/build,
+         ~/ti/processor_sdk_rtos_c667x_x_0x_xx_xx/demos/image_processing/ipc/evmc6678l/slave/build respectively
 
 **For Windows:**
 
--  Under C:\\ti\\processor_sdk_rtos_c667x_3_01_xx_xx directory, run the
+-  Under C:\\ti\\processor_sdk_rtos_c667x_x_0x_xx_xx directory, run the
    following commands:
 
 ::
@@ -196,15 +194,15 @@ C6678 EVM
       gmake demo_clean
       gmake demo
       the OUT files for DSPs will be built at 
-         C:\ti\processor_sdk_rtos_c667x_3_01_xx_xx\demos\image_processing\ipc\evmc6678l\master\build,
-         C:\ti\processor_sdk_rtos_c667x_3_01_xx_xx\demos\image_processing\ipc\evmc6678l\slave\build respectively
+         C:\ti\processor_sdk_rtos_c667x_x_0x_xx_xx\demos\image_processing\ipc\evmc6678l\master\build,
+         C:\ti\processor_sdk_rtos_c667x_x_0x_xx_xx\demos\image_processing\ipc\evmc6678l\slave\build respectively
 
 K2H EVM
 ^^^^^^^
 
 **For Linux:**
 
--  Under ~/ti/processor_sdk_rtos_k2hk_3_01_xx_xx directory, run the
+-  Under ~/ti/processor_sdk_rtos_k2hk_x_0x_xx_xx directory, run the
    following commands:
 
 ::
@@ -213,12 +211,12 @@ K2H EVM
       make demo_clean
       make demo
       the OUT files for A15, DSPs will be built at 
-         ~/ti/processor_sdk_rtos_k2hk_3_01_xx_xx/demos/image_processing/ipc/evmk2hk/master/build,
-         ~/ti/processor_sdk_rtos_k2hk_3_01_xx_xx/demos/image_processing/ipc/evmk2hk/slave/build respectively
+         ~/ti/processor_sdk_rtos_k2hk_x_0x_xx_xx/demos/image_processing/ipc/evmk2hk/master/build,
+         ~/ti/processor_sdk_rtos_k2hk_x_0x_xx_xx/demos/image_processing/ipc/evmk2hk/slave/build respectively
 
 **For Windows:**
 
--  Under C:\\ti\\processor_sdk_rtos_k2hk_3_01_xx_xx directory, run the
+-  Under C:\\ti\\processor_sdk_rtos_k2hk_x_0x_xx_xx directory, run the
    following commands:
 
 ::
@@ -227,8 +225,8 @@ K2H EVM
       gmake demo_clean
       gmake demo
       the OUT files for A15, DSPs will be built at 
-         C:\ti\processor_sdk_rtos_k2hk_3_01_xx_xx\demos\image_processing\ipc\evmk2hk\master\build,
-         C:\ti\processor_sdk_rtos_k2hk_3_01_xx_xx\demos\image_processing\ipc\evmk2hk\slave\build respectively
+         C:\ti\processor_sdk_rtos_k2hk_x_0x_xx_xx\demos\image_processing\ipc\evmk2hk\master\build,
+         C:\ti\processor_sdk_rtos_k2hk_x_0x_xx_xx\demos\image_processing\ipc\evmk2hk\slave\build respectively
 
 | 
 
@@ -302,9 +300,9 @@ The SBL is used to load the program from SD card and run on ARM-A15
 below:
 
 -  Copy "app" and "MLO" from
-   processor_sdk_rtos_am57xx_3_0x_00_0x\\prebuilt-sdcards\\evmAM572x\\sd_card_files
+   processor_sdk_rtos_am57xx_x_0x_00_0x\\prebuilt-sdcards\\evmAM572x\\sd_card_files
    on Windows or
-   processor_sdk_rtos_am57xx_3_0x_00_0x/prebuilt-sdcards/evmAM572x/sd_card_files
+   processor_sdk_rtos_am57xx_x_0x_00_0x/prebuilt-sdcards/evmAM572x/sd_card_files
    on Linux to the root directory of a formatted micro SD card
 -  Plug in the micro SD card into uSD slot on AM572x GP EVM
 -  Connect "Serial Debug" on AM572x GP EVM to a PC USB port via a
