@@ -58,7 +58,7 @@ compoments which can be found at:
 #. Set your environment using pdksetupenv.sh. Building the Firmware
    binaries and ARM application uses the same environment variables as
    the pruss driver library build. Refer to the `Processor SDK RTOS
-   Building <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page for
+   Building <Overview.html#building-the-sdk>`__ page for
    information on setting up your build environment.
 
 .. rubric::  Compiling the PRUSS SORTE Firmware

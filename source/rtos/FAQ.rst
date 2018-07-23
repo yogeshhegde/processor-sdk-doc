@@ -227,7 +227,7 @@ to an SD card, or loaded over emulator so that you can bring up and test
 the EVM hardware. The steps to flash and run the out-of-box examples are
 described here:
 
--  `Running_examples.2Fdemonstrations <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide#Running_examples.2Fdemonstrations>`__
+-  `Running_examples.2Fdemonstrations <Examples_and_Demonstrations.html#examples-and-demonstrations>`__
 
 .. rubric:: Step 3: Build Environment Setup
    :name: step-3-build-environment-setup
@@ -258,7 +258,7 @@ rebuilt from the top-level make file provided in the root directory
 processor_sdk_rtos_x_xx_xx_xx. Invoking the build and available options
 from top-level make files is described in the wiki article `Rebuilding
 SDK
-Components <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Top-Level_Makefile>`__.
+Components <Overview.html#top-level-makefile>`__.
 
 .. note::
    The SDK offers command line build for all the components. CCS projects
@@ -383,8 +383,7 @@ Device Drivers
    :name: how-do-i-find-out-if-a-driver-is-supported-in-the-package-for-my-device
 
 For all SoC and board-specific driver support, we recommend that you
-refer to the `Release
-Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes#Supported_Platforms>`__
+refer to the `Release Notes <Release_Specific.html#supported-platforms>`__
 corresponding to your release.
 
 If you need further details for driver support on all cores on
@@ -1021,10 +1020,8 @@ Inter-processor Communication (IPC)
    :name: how-do-i-build-and-run-ipc-examples
 
 IPC and corresponding examples are designed to be built from the top
-level `Processor SDK RTOS IPC Make
-Target <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Additional_Targets>`__.
-Please ensure the `Processor SDK RTOS
-build <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK#Additional_Targets>`__
+level `Processor SDK RTOS IPC Make Target <Overview.html#additional-targets>`__.
+Please ensure the `Processor SDK RTOS build <Overview.html#additional-targets>`__
 environments have been set up before running the "make ipc_bios" or
 [make ipc_examples] option.
 

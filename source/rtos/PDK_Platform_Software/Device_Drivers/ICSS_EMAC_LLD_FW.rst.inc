@@ -1,10 +1,5 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC(DRIVER,FIRMWARE)
-
-Overview
---------
-
 Introduction
-^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 The ICSS_EMAC (industrial communications subsystem Ethernet Media Access
 Controller) driver provide APIs to transmit and receive packets with a
@@ -49,10 +44,10 @@ For details of the driver, please refer to
 | 
 
 User Interface
---------------
+^^^^^^^^^^^^^^^^
 
 Driver Configuration
-^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
 
 | **Board Specific Configuration**
 | All the board specific configurations eg: enabling clock and pin-mux
@@ -78,7 +73,7 @@ Driver Configuration
 | 
 
 APIs
-^^^^^
+"""""
 
 API reference for application:
 
@@ -151,10 +146,10 @@ further explanation.
 | 
 
 Application
-------------
+^^^^^^^^^^^^
 
 Examples
-^^^^^^^^
+"""""""""
 
 Refer “ICSS_EMAC_<Basic/Switch>Example_<SOC>_<CPU>Testproject” for
 additional reference. Refer Release Note for ICSS_EMAC supported on
@@ -268,13 +263,13 @@ different EVMs.
 | 
 
 Debug Guide
------------
+^^^^^^^^^^^^
 
 For debugging ICSS EMAC examples or LLD. Please refer to `ICSS-EMAC
 Debug Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide>`__.
 
 Additional References
----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 +-----------------------------------+------------------------------------------+
 | **Document**                      | **Location**                             |

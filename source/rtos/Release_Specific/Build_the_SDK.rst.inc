@@ -23,8 +23,7 @@ The default SDK Install Path is ``C:\ti`` for Windows and
 ``/home/[user]/ti`` for Linux.
 
 The pre-requisite compilers are provided in Code Compose Studio, see the
-`CCS installation section of the Getting Started
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide#Code_Composer_Studio>`__.
+`CCS installation section of the Getting Started Guide <Overview.html#code-composer-studio>`__.
 
 .. note::
    If you have installed the SDK and/or CCS in non-default locations follow

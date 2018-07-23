@@ -215,7 +215,7 @@ is ignored when called in a C66x or K2H/K2E/K2L board library.
    :name: custom-board-library
 
 #. Set up your build environment according to the `Building the RTOS
-   SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page.
+   SDK <Overview.html#building-the-sdk>`__ page.
 #. Create your own folder under the src directory. The name of this
    folder will be your board name (will be referred to as $BOARD). Put
    your source files in this src/$BOARD folder. Updated sources can also

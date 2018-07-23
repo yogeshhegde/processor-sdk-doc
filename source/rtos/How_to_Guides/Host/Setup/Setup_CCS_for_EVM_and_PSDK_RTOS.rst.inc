@@ -3,25 +3,25 @@ Setup CCS for EVM and Processor-SDK RTOS
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+^^^^^^^^^
 
 This page provides information on configuring CCS to work with both the
 EVM and the Processor-SDK for RTOS.
 
-.. rubric:: Discovering SDK products
-   :name: discovering-sdk-products
+Discovering SDK products
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: CCS and SDK installed in same directory
-   :name: ccs-and-sdk-installed-in-same-directory
+CCS and SDK installed in same directory
+""""""""""""""""""""""""""""""""""""""""
 
 After installing the Processor-SDK RTOS, start CCS and it will
 automatically detect the newly installed components (*products*):
 
 .. Image:: ../images/CCS-discovered-products.png
 
-.. rubric:: CCS and SDK installed in different directories
-   :name: ccs-and-sdk-installed-in-different-directories
+CCS and SDK installed in different directories
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 If you chose to install the SDK package in a different folder from where
 CCS is installed (e.g. C:\\TEMP\\RTOS-SDK\\am57x), then you will need to
@@ -29,15 +29,15 @@ add the path to the search path for CCS to locate the new packages. The
 screenshots below demonstrate the process to setup the CCS environment;
 the sequence for a Linux host is the same.
 
-.. rubric:: Go to product preference
-   :name: go-to-product-preference
+Go to product preference
+'''''''''''''''''''''''''
 
 From CCS, select "Window -> Preferences":
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Preferences.png
 
-.. rubric:: Enter path to SDK
-   :name: enter-path-to-sdk
+Enter path to SDK
+'''''''''''''''''''
 
 In the Preferences window, select "Code Composer Studio -> RTSC ->
 Products" in the panel on the left. Then, press the "Add" button on the
@@ -45,25 +45,24 @@ panel on the right:
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Add.png
 
-.. rubric:: Verify components
-   :name: verify-components
+Verify components
+''''''''''''''''''
 
 Next, verify the newly discovered products. If everything is correct,
 press the "Finish" button on the bottom:
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Finish.png
 
-.. rubric:: Restart CCS
-   :name: restart-ccs
+Restart CCS
+''''''''''''
 
 When prompted, restart CCS for changes to take effect. You will see
 newly discovered products from the custom path.
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Confirm.png
 
-.. _Create-Target-Configuration-File-for-EVM-label:
-.. rubric:: Create Target Configuration File for EVM
-   :name: create-target-configuration-file-for-evm
+Create Target Configuration File for EVM
+""""""""""""""""""""""""""""""""""""""""""
 
 In CCS, you need to create a *Target Configuration* for your EVM to be
 able to connect to the target. This configuration defines your:
@@ -101,15 +100,15 @@ for your `EVM <Release_Specific.html#supported-platforms-and-versions>`__
 	to
 	<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 
-.. rubric:: Open new target configuration file
-   :name: open-new-target-configuration-file
+Open new target configuration file
+'''''''''''''''''''''''''''''''''''
 
 From CCS, select "File -> New -> Target Configuration File":
 
 .. Image:: ../images/CCS-GP437x-EVM-New-Target.png
 
-.. rubric:: Select target configuration options
-   :name: select-target-configuration-options
+Select target configuration options
+''''''''''''''''''''''''''''''''''''
 
 The AM437x GP EVM supports embedded XDS100V2 USB Emulation through the
 MicroUSB AB connector. Select
@@ -211,15 +210,15 @@ EVMs in the Processor-SDK RTOS:
 |                       | JTAG connector.       |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: Save target configuration
-   :name: save-target-configuration
+Save target configuration
+''''''''''''''''''''''''''
 
 Next, save the target configuration by pressing the **Save** button:
 
 .. Image:: ../images/CCS-GP437x-EVM-Save-Target.png
 
-.. rubric:: Test target configuration
-   :name: test-target-configuration
+Test target configuration
+''''''''''''''''''''''''''
 
 Next, test the target configuration by pressing the **Test Connection**
 button. This will confirm that you have successfully created an emulator
@@ -227,23 +226,23 @@ connection with your board.
 
 .. Image:: ../images/AM4-GP-test-connection.png
 
-.. rubric:: View target configurations
-   :name: view-target-configurations
+View target configurations
+'''''''''''''''''''''''''''
 
 From CCS, select "View -> Target Configurations":
 
 .. Image:: ../images/CCS-GP437x-EVM-View-Target.png
 
-.. rubric:: Launch target configuration
-   :name: launch-target-configuration
+Launch target configuration
+''''''''''''''''''''''''''''
 
 Open "User Defined" list and right click on the target configuration
 file that was just saved and select "Launch Selected Configuration":
 
 .. Image:: ../images/CCS-GP437x-EVM-Launch-Target.png
 
-.. rubric:: Connect target
-   :name: connect-target
+Connect target
+'''''''''''''''
 
 After launch, you can connect to a core. For GP AM437x EVM, select
 **Cortex A9** and select "Connect Target":
@@ -252,8 +251,8 @@ After launch, you can connect to a core. For GP AM437x EVM, select
 
 | 
 
-.. rubric:: Success!
-   :name: success
+Success!
+'''''''''
 
 After connecting to target, check the console for status. Typically, the
 end of the configuration will indicate success or failure. For GP AM437x
@@ -261,11 +260,11 @@ EVM, you will see the message "AM437x GP EVM Initialization is Done":
 
 .. Image:: ../images/CCS-GP437x-EVM-Run-Target.png
 
-.. rubric:: Additional Notes for AM57x
-   :name: additional-notes-for-am57x
+Additional Notes for AM57x
+"""""""""""""""""""""""""""
 
-.. rubric:: Connect to Slave Cores
-   :name: connect-to-slave-cores
+Connect to AM57x Slave Cores
+'''''''''''''''''''''''''''''
 
 After connecting to the boot master core -- typically the ARM core --
 you may need to connect to a slave core in order to run code. Depending
@@ -285,8 +284,8 @@ After running the clock enable option, you can connect to the core.
 
 .. Image:: ../images/Multicore-Enable.jpg
 
-.. rubric:: Timer Suspend Control Options for DSP
-   :name: timer-suspend-control-options-for-dsp
+Timer Suspend Control Options for DSP
+'''''''''''''''''''''''''''''''''''''''
 
 On AM57xx devices, all the timers on the chip have their suspend control
 signal routed to the A15 core. Which means that if any of the slave
@@ -310,8 +309,8 @@ control signal to the DSP as shown in the image below:
 
 | 
 
-.. rubric:: Troubleshooting
-   :name: troubleshooting
+Troubleshooting
+""""""""""""""""
 
 If you face any problems, first check these basic items:
 
@@ -322,8 +321,7 @@ If you face any problems, first check these basic items:
    list the TI XDS as a USB device. If this does not work, try a
    different USB port.
 -  **Latest emulation package.** Ensure that you have the latest
-   emulation files as specified in the `Getting Started
-   Guide </index.php/Processor_SDK_RTOS_Getting_Started_Guide#Emulator_support>`__.
+   emulation files as specified in the `Getting Started Guide <Overview.html#emulator-support>`__.
 
 If this does not resolve your problem, see these additional resources:
 

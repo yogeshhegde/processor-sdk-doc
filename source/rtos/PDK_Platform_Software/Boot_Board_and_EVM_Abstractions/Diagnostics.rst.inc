@@ -17,7 +17,7 @@ is provided by `POST <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS
 #. Set your environment using pdksetupenv.bat or pdksetupenv.sh. The
    diagnostic application uses the same environment variables as the
    board library build. Refer to the `Processor SDK RTOS
-   Building <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK>`__ page for
+   Building <Overview.html#building-the-sdk>`__ page for
    information on setting up your build environment.
 #. You will need the following libraries built:
 
@@ -284,7 +284,7 @@ To run on CCS:
 #. Press the power button on the board to turn the board on
 #. Setup and run CCSv6.1 (or higher). Follow the `Processor SDK RTOS
    Getting Started
-   Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__ on how
+   Guide <Overview.html#processor-sdk-rtos-getting-started-guide>`__ on how
    to setup your CCS to connect to the board
 #. Launch target configuration for the board
 #. Connect to the core that you built your application for. For example:

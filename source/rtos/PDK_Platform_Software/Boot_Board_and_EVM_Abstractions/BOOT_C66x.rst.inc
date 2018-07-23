@@ -97,8 +97,7 @@ setupenv.bat or setupenv.sh script located in
 
      [SDK Install Path]/processor_sdk_rtos_<platform>_<version>
 
-Refer to `Processor SDK RTOS Building the
-SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Building_The_SDK>`__
+Refer to `Processor SDK RTOS Building the SDK <Overview.html#building-the-sdk>`__
 guide on how to setup your environment for building within any of the
 Processor SDK RTOS packages.
 

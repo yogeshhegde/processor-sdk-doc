@@ -44,7 +44,7 @@ In addition driver supports following modes of operation:
 TI PRU-ICSS cores (Programmable Real-Time Unit Industrial Communication
 Subsystem) is firmware programmable and can take on various
 personalities. Processor SDK package includes I2C Firmware support.
-Refer `I2C FW <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_I2C_FIRMWARE>`__ for
+Refer `I2C FW <PRU_ICSS.html#pru-icss-i2c>`__ for
 additional details.
 
 | 
