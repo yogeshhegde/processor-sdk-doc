@@ -85,8 +85,8 @@ Run the following commands to install the Linaro Toolchain.
 
 ::
 
-    $ wget https://releases.linaro.org/components/toolchain/binaries/6.2-2016.11/arm-linux-gnueabihf/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf.tar.xz
-    $ tar -Jxvf gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf.tar.xz -C $HOME
+    $ wget https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/arm-linux-gnueabihf/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf.tar.xz
+    $ tar -Jxvf gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf.tar.xz -C $HOME
 
 
 Build Steps
@@ -101,7 +101,7 @@ Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a
     $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
     $ cd build
     $ . conf/setenv
-    $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
+    $ export PATH=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin:$PATH
     $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
 .. note::
@@ -134,7 +134,7 @@ Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a
     "
     EOF
     $ . conf/setenv
-    $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
+    $ export PATH=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin:$PATH
     $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
 
@@ -260,7 +260,7 @@ are shown in red below:
     $ cd ..</span>
     $ cd build
     $ . conf/setenv
-    $ export PATH=$HOME/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin:$PATH
+    $ export PATH=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin:$PATH
     $ MACHINE=<target-board> bitbake arago-core-tisdk-image
 
 
