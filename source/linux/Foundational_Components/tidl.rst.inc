@@ -10,15 +10,14 @@ Deep Learning Inference in Embedded Device
 
 TIDL brings deep learning to the edge by enabling applications to leverage TI’s proprietary, \
 highly optimized CNN/DNN implementation on the EVE and C66x DSP compute engines. TIDL initially targets Vision use cases on AM57x SoCs.
-But there are not fundamental limitations to have it used for 1D or 3D input data blobs.
+But there are no fundamental limitations to use TIDL for 1D or 3D input data blobs.
 
-It is a set of open-source Linux software packages and tools enabling offload of 
+TIDL is a set of open-source Linux software packages and tools enabling offload of 
 Deep Learning **(inference only)** compute workloads from ARM cores to hardware accelerators 
 such as EVE and/or C66x DSP. The objective for TIDL is to hide complexity of a heterogeneous device for Machine Learning/Neural network
-applications, and help developers focus on their specific requirements. 
-
-In this way ARM cores are not freed from heavy compute load of Deep Learning task and can be used for other roles in your application.
-This also allows to use traditional Computer Vision (via OpenCV) augmenting Deep Learning algorithms.
+applications, and help developers focus on their specific requirements. In this way, ARM cores are freed from heavy compute load 
+of Deep Learning task and can be used for other roles in your application. This also allows to use traditional Computer Vision 
+(via OpenCV) augmenting Deep Learning algorithms.
 
 At the moment, TIDL software stack primarily enables Convolutional Neural Network inference, using offline pre-trained models, 
 stored in device filesystem (**no training on target device**). Models trained using Caffe or Tensorflow-slim frameworks can be 
@@ -30,23 +29,21 @@ making convolutional weight tensor sparse, thus giving opportunity for 3x-4x per
 Application space
 -----------------
 
-Current version of TIDL software stack is targetting Computer Vision Deep Learning applications.
-So we typically use color image tensors (Width x Height x 3, for BGR planes), but it is possbile to use other data types
-(e.g. gray scale and depth plane: Width x Height x 2 tensor)
+Current version of TIDL software stack is targeting Computer Vision Deep Learning applications.
+So we typically use color image tensors (Width x Height x 3, for BGR planes), but it is possible to use other data types
+(E.g. gray scale and depth plane: Width x Height x 2 tensor)
 
 Based on model and task, TIDL input data are similar, but output data will vary based on task:
 
-- Image classification
-    Output is 1D vector with likelihood of class presence. Top ranking indicates class winner (i.e. object of data class appears in input).
+=========================   ============================================================================================================================================
+Task                        Output Data
+=========================   ============================================================================================================================================
+Image Classification        1D vector with likelihood of class presence. Top ranking indicates class winner (i.e. object of data class appears in input)
+Image Pixel Segmentation    2D matrix: Width x Height, with each cell set to integer value from 0 to max_class_index that model can discriminate
+Image Object Detection      list of tuples. Each tuple includes class index, probability of detection, upper left corner (xmin,ymin), width and height of bounding box
+=========================   ============================================================================================================================================
 
-- Image pixel segmentation
-    Output is 2D matrix: Widht x Height, with each cell set to integer value from 0 to max_class_index that model can discriminate.
-
-- Image object detection 
-    Output is list of tuples. Each tuple includes class index, probability of detection, \
-    upper left corner (xmin,ymin), width and height of bounding box.
-
-Additional examples covering other application areas (speech, audio, predictive mainteinance), are in the roadmap.
+Additional examples covering other application areas (speech, audio, predictive maintenance), are in the roadmap.
 
 Supported Devices
 -----------------
@@ -59,8 +56,8 @@ TIDL software stack is intended for AM57xx Sitara devices, that either have DSP 
 - AM572x (0xEVE + 1xDSP)
 
 
-Verified networks toplogies
----------------------------
+Verified networks topologies
+----------------------------
 
 It is necessary to understand that TIDL is not verified against arbitrary network topology
 that can run in Caffe or TF. Instead, we were focused on verification of layers and network
@@ -76,29 +73,29 @@ The following topologies have been verified with TIDL software stack:
 - InceptionV1
 - MobileNet
 
-Jacinto11 (Resnet10 motivated):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jacinto11 (Resnet10 motivated)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. Image:: ../images/j11v2.png
 
-JSeg21 (TBD motivated):
-~~~~~~~~~~~~~~~~~~~~~~~
+JSeg21 (TBD motivated)
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. Image:: ../images/jseg21.png
 
-Jacinto JDetNet (SSD-300/512 motivated):
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jacinto JDetNet (SSD-300/512 motivated)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. Image:: ../images/jdetnet.png
 
 Other network topologies are possible but they need to be verified.
-Majority of layers required (for inference only!) for classification, segmetnation and detection
+Majority of layers required (for inference only!) for classification, segmentation and detection
 tasks are implemented, though in some cases with certain parameter related constraints.
 
 TIDL Lib Supported Features
 ---------------------------
 
-TIDL Lib is set of kernels and indeoendent framework running on DSP or EVE accelerators. Configuration of the network (topology and parameters) are provied 
+TIDL Lib is set of kernels and independent framework running on DSP or EVE accelerators. Configuration of the network (topology and parameters) is provied 
 by the upper layer system - at configuration stage. Run-time processing is triggered by OpenCL calls. 
 Local framework invokes processing by individual layers.
 
@@ -133,80 +130,73 @@ List of supported layers:
 Unsupported but planned features
 --------------------------------
 
-- Support for additional layers suitable for sequentail/time-series processing (RNN, LSTM, GRU) are planned.
+- Support for additional layers suitable for sequential/time-series processing (RNN, LSTM, GRU) are planned.
 - Importing models in ONNX format
 - In current release, Matrix-GUI started Jacinto11 classification example runs at 8fps (per EVE or DSP), with total of 16fps for AM5749.
-     Next release will use optimal layer placement (EVE has slow SoftMax layer implementation) and enable up to 28-30fps on AM5749.
-
+  Next release will use optimal layer placement (EVE has slow SoftMax layer implementation) and enable up to 28-30fps on AM5749.
 
 Limitations of layers in TIDL Lib
 ---------------------------------
-Layers in current release of TIDL Lib has certain parameter related constraints:
+Layers in current release of TIDL Lib have certain parameter related constraints:
 
 - Convolution Layer
+   - We have tested the kernel size up to 7x7 (Shall work for higher values also, but not validated)
+   - Dilation is tested with 1,2,4
+   - We support only stride 1 and 2. Any value higher than 2 is not supported
+   - Dense convolution flow is supported for only 1x1 and 3x3 kernels with stride = 1 and dilation =1
+   - Maximum number of input and output channel supported in 1024. 
 
-  * We have tested the kernel size up to 7x7 (Shall work for higher values also, but not validated)
-  * Dilation is tested with 1,2,4
-  * We support only stride 1 and 2. Any value higher than 2 is not supported
-  * Dense convolution flow is supported for only 1x1 and 3x3 kernels with stride = 1 and dilation =1
-  * Maximum number of input and output channel supported in 1024. 
-
-- Deconvoltion Layer
-
-  * Number of groups shall be equal to the number of channels
-  * Only supported stride value is 2
+- Deconvolution Layer
+   - Number of groups shall be equal to the number of channels
+   - Only supported stride value is 2
 
 - Arg Max
-
-  * Up to 15 input channels are supported for EVE core and up to 6 channels are supported for DSP core
-  * out_max_val = false and top_k = 1 (Defaults) and axis = 1 (Supported only across channel)
+   - Up to 15 input channels are supported for EVE core and up to 6 channels are supported for DSP core
+   - out_max_val = false and top_k = 1 (Defaults) and axis = 1 (Supported only across channel)
 
 - InnerProductLayer
-
-  * Maximum input and output Nodes supported are 4096
-  * The input data has the flattened (That is C =1 and H =1 for the input data)
-  * A flatten layer cab be used before this layer in C > 1 and H > 1
-  * If a global avg Pooling also can be flattens the output
+   - Maximum input and output Nodes supported are 4096
+   - The input data has the flattened (That is C =1 and H =1 for the input data)
+   - A flatten layer cab be used before this layer in C > 1 and H > 1
+   - If a global average Pooling also can be flattens the output
 
 - Spatial Pooling Layer
-
-  * Average and Max Pooling are supported with stride 1, 2, 4 and kernel sizes of 2x2,3x3,4x4 etc. STOCHASTIC Pooling not supported
-  * Global Pooling supported for both Average and Max. The output data N=1 and H =1. The output W will be Updated with input ‘N’
+   - Average and Max Pooling are supported with stride 1, 2, 4 and kernel sizes of 2x2,3x3,4x4 etc. STOCHASTIC Pooling not supported
+   - Global Pooling supported for both Average and Max. The output data N=1 and H =1. The output W will be Updated with input ‘N’
 
 - BiasLayer
-     Only one scalar bias per channel is supported.
+   - Only one scalar bias per channel is supported.
 
 - CancatLayet
-     Concatenate is only supported across channel (axis = 1; default).
+   - Concatenate is only supported across channel (axis = 1; default).
 
 - CropLayer
-    Only Spatial crop is supported (axis = 2; default).
+   - Only Spatial crop is supported (axis = 2; default).
 
 - FlattenLayer
-     Keeps ‘N’ unchanged. Makes C=1 and H=1
+   - Keeps ‘N’ unchanged. Makes C=1 and H=1
 
 - ScaleLayer
-     Only one scalar scale and bias per channel is supported.
+   - Only one scalar scale and bias per channel is supported.
 
 - SliceLayer
-     Slice is only supported across channel (axis = 1; default).
+   - Slice is only supported across channel (axis = 1; default).
 
 - SoftmaxLayer
-     The input data has the flattened (That is C =1 and H =1 for the input data)
+   - The input data has the flattened (That is C =1 and H =1 for the input data)
 
 - SSD
-
-  * Only Caffe-Jacinto based SSD network is validated.
-  * Reshape, Permute layers are supported only in the context of SSD network.
-  * “share_location” has to be true
-  * Tested with 4 and 5 heads.
-  * SaveOutputParameter is ignored in TIDL inference.
-  * Code_type is only tested with CENTER_SIZE.
+   - Only Caffe-Jacinto based SSD network is validated.
+   - Reshape, Permute layers are supported only in the context of SSD network.
+   - “share_location” has to be true
+   - Tested with 4 and 5 heads.
+   - SaveOutputParameter is ignored in TIDL inference.
+   - Code_type is only tested with CENTER_SIZE.
 
 - Tensorflow
+   - Only Slim based models are validated. Please refer InceptionNetV1 and mobilenet_1.0 from below as examples for building your models.
+   - TF-Slim: https://github.com/tensorflow/models/tree/master/research/slim
 
-  * Only Slim based models are validated. Please refer InceptionNetV1 and mobilenet_1.0 from below as examples for building your models.
-  * TF-Slim: https://github.com/tensorflow/models/tree/master/research/slim
 
 Important TIDL_API framework features
 -------------------------------------
@@ -234,23 +224,18 @@ Examples and Demos
 TIDL-API examples
 -----------------
 
-This TIDL release comes with 5 examples provided in source, that can be cross-compiled on Linux x86 from top lavel Makefile (use tidl-examples as target), or on \
+This TIDL release comes with 5 examples provided in source, that can be cross-compiled on Linux x86 from top level Makefile (use tidl-examples as target), or on \
 target filesystem in: /usr/share/ti/tidl/examples (make).
 
-- Imagenet
-    classification example (http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#imagenet)
-
-- Segmentation (http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#segmentation)
-    Pixel level segmentation example
-
-- ssd_multibox (http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#ssd)
-    More complex with two layer groups handled by TIDL_API
-
-- test
-    Unit test (http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#test)
-
-- classification
-    Imagenet based classification example with additional class filtering, adapted for Matrix GUI demo
+=================================  ===========================================================================================================
+Example                            Link
+=================================  ===========================================================================================================
+Imagenet Classification            `Image classification <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#imagenet>`_
+Segmentation                       `Pixel segmentation <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#segmentation>`_
+SSD_multibox                       `Single shot Multi-box Detection <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#ssd>`_
+test                               `Unit test <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#test>`_
+Classification w/ class filtering  <URL TBD>
+=================================  ===========================================================================================================
 
 Matrix GUI demo
 ---------------
@@ -328,14 +313,14 @@ Please note that imagenet.txt is list of all classes (labels) that can be detect
 Different group of classes using different inputs can be used for user defined testing. In that case, download square images (if aspect is not square, do central cropping first) and place in folder on Linux x86 (that has ImageMagick and ffmpeg installed).
 Following commands should  be executed to create synthetic video clip that can be used in classification example:
 
-::
-    
+.. code-block:: console
+
     # Linux x86 commands to create short video clip out of several static images that are morphed into each other
     convert ./*.jpg -delay 500 -morph 300 -scale 320x320 %05d.jpg
-    ffmpeg -i %05d.jpg -vcodec libx264 -profile:v main -pix_fmt yuv420p  -r 15 test.mp4
+    ffmpeg -i %05d.jpg -vcodec libx264 -profile:v main -pix_fmt yuv420p -r 15 test.mp4
 
 Description of Matrix-GUI example
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Example is based on "imagenet" and "test" examples, with few additions related to decision filtering and visualization. There are two source files only:
 
@@ -347,7 +332,7 @@ Example is based on "imagenet" and "test" examples, with few additions related t
     * Additional functions: tf_postprocess (sort detections and check if top candidate is enabled in the subset) and ShowRegion (if decision is stable for last 3 frames).
 
 * findclasses.cpp
-    * Function populate_labels(), which reads all the model labels (e.g. 1000 strings for 1000-class imagenet classification model)
+    * Function populate_labels(), which reads all the model labels (E.g. 1000 strings for 1000-class imagenet classification model)
     * Function populate_selected_items(), which reads and verifies label names (using previous list of valid values), to be used in decision filtering.
 
 
@@ -411,7 +396,7 @@ Public programming model is defined in TIDL_API host wrapper package. In current
 has 3 classes only, allowing use of one or more neural network models that can run in parallel on 
 independent EVEs or C66x cores.
 
-Single unit of processing is a tensor (e.g. one image frame, but other inputs are also possible). 
+Single unit of processing is a tensor (E.g. one image frame, but other inputs are also possible). 
 Typically, NN model runs on single core (EVE or DSP). But in certain cases it is possible to split
 NN layers into two layer groups. Than, we can have one layer group running on EVE and second layer group on DSP.
 
@@ -455,7 +440,7 @@ Input data format
 Current release is mainly used with 2D inputs. Most frequent 2D input tensors are color images. Format has to be prepared in same like it was used during model training.
 Typically, this is following BGR plane interlaced format (common in OpenCV). That means, first 2D array is Blue color plane, next is Green color plane and finally Red color plane. 
 
-But, it is perfectly posible to have e.g. two planes on input only: e.g. one plane with Lidar distance measurements and second plane with illumination.
+But, it is perfectly posible to have E.g. two planes on input only: E.g. one plane with Lidar distance measurements and second plane with illumination.
 This assumes that same format was used during training.
 
 
@@ -628,7 +613,7 @@ Here is a sample list of files with intermediate activations:
 
 
 Splitting layers between layers groups
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In order to use both DSP and EVE accelerators, it is possibleto split the network into two sub-graphs using concept of layergroups.
 Than one layer group can be executed on EVE and another on DSP. Output of first group (running on EVE) will be used as input for DSP.
@@ -762,7 +747,7 @@ Here is an example command line:
        15, Data                ,  0,   1 , -1 , 14 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  0 ,    1 ,    1 ,    1 , 1000 ,    0 ,    0 ,    0 ,    0 ,
 
 
-Output file is jacinto11.dot, that can be converted to PNG or PDF file on **Linux x86**, using (e.g.):
+Output file is jacinto11.dot, that can be converted to PNG or PDF file on **Linux x86**, using (E.g.):
 
 ::
 
@@ -776,7 +761,7 @@ Simulation Tool
 
 We provide simulation tool both in PLSDK ARM filesystem, and Linux x86 simulation tool.
 This is bit-exact simulation, so output of simulation tool is expected to be identical to the output of A5749 or AM5729 target.
-Please use this tool as convinience tool only (e.g. testing model on setup without target EVM).
+Please use this tool as convinience tool only (E.g. testing model on setup without target EVM).
 
 Simulation tool can be used also to verify converted model accuracy (FP32 vs 8-bit implementation). 
 It can run in parallel on x86 leveraging bigger number of cores (simulation tool is single thread implementation).
@@ -821,20 +806,20 @@ After that training is done in 3 steps:
       weights smaller. Remaining weights would behave like feature extractors (required for next step).
 
 - Sparse ("sparsification")
-      By gradual adjustment of weight threshold (from smaller to higher) sparsification target is tested at each step (e.g. 70% or 80%).
+      By gradual adjustment of weight threshold (from smaller to higher) sparsification target is tested at each step (E.g. 70% or 80%).
       This procedure eliminates small weights, leaving bigger contributors only. Please note that this applies to Convolution 
       Layers only.
 
 - Define acceptable criteria for sparsification based on accuracy drop
       Due to conversion from FP32 representation to 8-12 bit representation of weights (and 8-bit activations), acceptable 
-      accuracy drop should be within 1-2% range (depending on model), e.g. if classification accuracy for Caffe-Jacinto 
+      accuracy drop should be within 1-2% range (depending on model), E.g. if classification accuracy for Caffe-Jacinto 
       desktop model is 70% (using model after initial phase), we should not see lower accuracy for sparsified and quantized model below 68%.
 
 Example of training procedure
 -----------------------------
 - Setup for data set collection of specific smaller objects.
       Apart from many publicly available image data sets, it is frequently the case that new data set need to be collected for specific use case.
-      E.g. in industrial environment, is typically more predictable and often it is possbile to ensure controlled environment with good illumination.
+      E.g. in industrial environment, is typically more predictable and often it is possible to ensure controlled environment with good illumination.
       For pick-and-place applications, set of objects that can appear in camera field-of-view is not infinite, but rather confined to few or few
       dozens classes. Using turn-table and photobooth with good illumination allows quick data set collection.
 
@@ -876,7 +861,7 @@ Where does the beneift of sparsification come from?
 
 - Additional optimization (described in above article) is based on sparsification of Convolution Layer weights. Individual weights are forced to zero during training.
   This is achieved during "L1 regularization" phase (enforcing fewer bigger weights at the expense of others) and "Sparse" when small weights are clamped to zero.
-  We can specify desired training target (e.g. 70% or 80% of all weights to be zero). During inference, computation is reorganized so that multiplication with single
+  We can specify desired training target (E.g. 70% or 80% of all weights to be zero). During inference, computation is reorganized so that multiplication with single
   weight parameter is done accross all input values. If weight is zero multiplcation against all input data (for that input channel) is skipped.
   All computation are done using preloaded blocks into local L2 memory (using "shadow" EDMA transfers).
 
