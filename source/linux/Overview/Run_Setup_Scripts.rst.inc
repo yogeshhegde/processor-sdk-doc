@@ -123,8 +123,7 @@ be installed in this step.
 The command below is an example of what this script is doing. The actual
 packages may vary for different releases:
 
-**sudo apt-get install xinetd tftpd nfs-kernel-server minicom
-build-essential libncurses5-dev uboot-mkimage autoconf automake**
+**sudo apt-get install xinetd tftpd nfs-kernel-server minicom build-essential libncurses5-dev autoconf automake dos2unix screen lrzsz lzop u-boot-tools**
 
 .. rubric:: Add to Dialout Group
    :name: add-to-dialout-group
