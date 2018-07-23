@@ -6,17 +6,60 @@ Uniflash is a standalone tool used to download application image over UART seria
 and flash it on to the flash device on the target platform.
 This section explains on how to use Uniflash CLI tool to flash images to the TI's MPU platform.
 
+Supported Platforms
+^^^^^^^^^^^^^^^^^^^
+
++----------------+------------------+---------------+--------------+
+|      SOC       |      PLATFORM    | FLASH DEVICE  |   MODES      |
+|                |                  +-------+-------+------+-------+
+|                |                  | SPI   | QSPI  | UART | JTAG  |
++================+==================+=======+=======+======+=======+
+| AM335x         |    EVMAM335x     |   X   |       |   X  |   X   |
+|                +------------------+-------+-------+------+-------+
+|                |    ICEV2AM335x   |   X   |       |      |   X   |
+|                +------------------+-------+-------+------+-------+
+|                |    ICEAMIC110    |   X   |       |   X  |   X   |
++----------------+------------------+-------+-------+------+-------+
+| AM437x         |    IDKAM437x     |       |   X   |      |   X   |
++----------------+------------------+-------+-------+------+-------+
+| AM571x         |    IDKAM571x     |       |   X   |      |   X   |
++----------------+------------------+-------+-------+------+-------+
+| AM572x         |    IDKAM572x     |       |   X   |      |   X   |
++----------------+------------------+-------+-------+------+-------+
+| AM574x         |    IDKAM574x     |       |   X   |      |   X   |
++----------------+------------------+-------+-------+------+-------+
+| K2G            |    EVMK2G        |       |   X   |      |   X   |
+|                +------------------+-------+-------+------+-------+
+|                |    ICEK2G        |       |   X   |      |   X   |
++----------------+------------------+-------+-------+------+-------+
+
+where,
+
+X - supported
 
 Pre-Requisites
 ^^^^^^^^^^^^^^
 
-1. Use the below link to download the latest Uniflash tool
-and install it in the test PC.
+1. Download and install the desktop version of `Uniflash tool <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash#UniFlash_v4>`__
 
-http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash#UniFlash_v4
+2. Download and install the Processor-SDK RTOS package. See
+the software product page for your device to get the latest version of
+this software:
 
+-  `Processor SDK for
+   AM335x <http://www.ti.com/tool/processor-sdk-am335x>`__
+-  `Processor SDK for
+   AM437x <http://www.ti.com/tool/processor-sdk-am437x>`__
+-  `Processor SDK for
+   AM57xx <http://www.ti.com/tool/processor-sdk-am57x>`__
+-  `Processor SDK for
+   AMIC110 <http://www.ti.com/tool/PROCESSOR-SDK-AMIC110>`__
+-  `Processor SDK RTOS for
+   K2G <http://www.ti.com/tool/PROCESSOR-SDK-K2G>`__
 
-2. Download and install the latest nightly PDK package on the test PC
+From the appropriate software product page, go to the download page by
+clicking "Get Software" for the RTOS package.
+
 
 Binaries
 ^^^^^^^^
@@ -30,7 +73,10 @@ to the TI's MPU platforms. This mode will execute the Uniflash CLI binary <path_
 
 **Target**
 
-The Flash Writer binaries shall be found under <pdk_install_path>/ti/board/utils/uniflash/bin/<board_name>/
+Get the Flash Writer binaries from <pdk_install_path>/packages/ti/board/utils/uniflash/bin/<board_name>/
+
+.. note::   Flash Writer Binaries needs to be rebuilt for AM335x platform. 
+            Refer :ref:`rebuild-flashwriter` section to rebuild FlashWriter.
 
 Display Help
 ^^^^^^^^^^^^
@@ -108,27 +154,27 @@ Following is the sample output on Windows.
 
 Programming FlashWriter
 ^^^^^^^^^^^^^^^^^^^^^^^^
-Flash Writer binary should be loaded and executed on the target platform to flash the binaries
-to the flash devices on the target platform.
+Flash Writer binary is the target software, used to program the binaries on to the flash devices
+of the target platform.
 
-There are two ways of loading and executing the Flash Writer on the target platform:
+There are two ways of loading and executing the Flash Writer on to the target platform:
 
-1. Loading Flash Writer to RBL
-2. Loading Flash Writer over JTAG interface
+1. Loading Flash Writer using RBL (over UART interface), for the target platforms that support UART Boot mode
+2. Loading Flash Writer over JTAG interface, for the target platforms that do not support UART Boot mode
 
 
-Loading Flash Writer to RBL
-+++++++++++++++++++++++++++
+Loading Flash Writer using RBL
+++++++++++++++++++++++++++++++
 
 For the target platforms that support UART Boot mode, use the following
-procedure to transfer flash writer to RBL on the target board
+procedure to transfer flash writer to RBL
 
 **Steps**
 
 1. Set the sysboot pins in UART boot mode.
 2. Make sure the Serial connections between the Host PC and the target platform are established.
 3. Power cycle the board
-4. Issue the following commands from Host PC
+4. Issue the following commands on the Host PC
 
 For Windows
 ::
@@ -176,8 +222,12 @@ Following is the sample output on Windows.
 
 
 
-The Flash Writer will be loaded and executed. The Flash Writer will start sending character 'C'(xmodem protocol).
-This can be verified in serial console using Teraterm tool
+Upon successful transfer, Flash Writer will be loaded and executed on the target platform.
+The Flash Writer starts sending character 'C'(xmodem protocol).
+This can be verified on the serial console utility.
+
+.. note::   Any Serial Console utility that supports xmodem protocol can be used.
+            Verified utilities are Teraterm (in Windows) and Minicom (in Linux)
 
 Loading Flash Writer over JTAG interface
 ++++++++++++++++++++++++++++++++++++++++
@@ -189,7 +239,7 @@ procedure to load and execute flash writer over JTAG interface.
 
 1. Make sure the Serial and JTAG connections between the Host PC and the target platform are established.
 2. Power cycle the board
-3. Issue the following commands from Host PC
+3. Issue the following commands on the Host PC
 
 For Windows
 
@@ -295,8 +345,8 @@ Following is the sample output on Windows.
         Success
 
 
-The Flash Writer will be loaded and executed. The Flash Writer will start sending character 'C'(xmodem protocol).
-This can be verified in serial console using Teraterm tool.
+The Flash Writer will be loaded and executed. The Flash Writer starts sending character 'C'(xmodem protocol).
+This can be verified on the serial console utility.
 
 Programming binaries to Flash Device
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -307,8 +357,7 @@ For Windows
 ::
 
         # cd <path_to_the_uniflash>
-        # dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_flash_writer_to_be_transfered>
-        -d  <device_type> -o <offset>
+        # dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_flash_writer_to_be_transfered> -d  <device_type> -o <offset>
         Example:
         # dslite.bat --mode processors -c COM7 -f C:\ti\pdk\packages\ti\starterware\binary\bootloader\bin\am335x-evm\gcc\bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0x0
 
@@ -409,3 +458,28 @@ Following is the sample output on Windows.
         Header Transfer Complete!!
         Flash Erase Success!
 
+.. _rebuild-flashwriter:
+
+Rebuilding FlashWriter
+^^^^^^^^^^^^^^^^^^^^^^
+- Use the following commands to rebuild Flash Writer
+
+- For Windows
+::
+
+        # cd <pdk_install_path>/packages
+        # pdksetupenv.bat
+        # cd ti\board\utils
+        # gmake clean
+        # gmake
+        
+- For Linux
+::
+
+        # cd <pdk_install_path>/packages
+        # ./pdksetupenv.sh
+        # cd ti/board/utils
+        # make clean
+        # make
+        
+- Uniflash binaries will be created under the folder <pdk_install_path>/packages/ti/board/utils/uniflash/bin/<board_name>/
