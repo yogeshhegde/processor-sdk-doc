@@ -78,7 +78,7 @@ Jacinto11 Resnet10 motivated
 
 .. Image:: ../images/j11v2.png
 
-JSeg21 (TBD motivated)
+JSeg21 (SegNet motivated)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. Image:: ../images/jseg21.png
@@ -227,15 +227,15 @@ TIDL-API examples
 This TIDL release comes with 5 examples provided in source, that can be cross-compiled on Linux x86 from top level Makefile (use tidl-examples as target), or on \
 target filesystem in: /usr/share/ti/tidl/examples (make).
 
-=================================  ===========================================================================================================
-Example                            Link
-=================================  ===========================================================================================================
-Imagenet Classification            `Image classification <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#imagenet>`_
-Segmentation                       `Pixel segmentation <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#segmentation>`_
-SSD_multibox                       `Single shot Multi-box Detection <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#ssd>`_
-test                               `Unit test <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#test>`_
-Classification w/ class filtering  <URL TBD>
-=================================  ===========================================================================================================
+===================================  ===========================================================================================================
+Example                              Link
+===================================  ===========================================================================================================
+Imagenet Classification              `Image classification <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#imagenet>`_
+Segmentation                         `Pixel segmentation <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#segmentation>`_
+SSD_multibox                         `Single shot Multi-box Detection <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#ssd>`_
+test                                 `Unit test <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#test>`_
+Classification with class filtering  - described in this chapter -
+===================================  ===========================================================================================================
 
 Matrix GUI demo
 ---------------
@@ -878,27 +878,58 @@ Computation performance of verified networks
 
 - J11, JSeg21, JDetNet, Mobilenet, SqueezeNet:
 
-.. Image:: ../images/tidl-benchmark1.png
 
+==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
+Network topology     ROI size    MMAC (million MAC)     Sparsity (%)   EVE using sparse model   EVE using dense model  DSP using sparse model  DSP using dense model  EVE + DSP (optimal model)
+==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
+MobileNet            224x224     567.70                 1.42           -                        682.63ms               -                       717.11ms               -
+SqueezeNet           227x227     390.8                  1.46           -                        289.76ms               -                       1008.92ms              -
+InceptionNetV1       224x224     1497.37                2.48           -                        785.43ms               -                       2235.99ms              -
+JacintoNet11         224x224     405.81                 73.15          125.9ms                  235.70ms               115.91ms                370.64ms               73.55ms
+JSegNet21            1024x512    8506.5                 76.47          378.18ms                 1236.84ms              1101.12ms               3825.95ms              -
+JDetNet              768x320     2191.44                61.84          -                        -                      -                       -                      197.55ms
+==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
 
-- Performance of individual layers
-    TBD.
+   * Sparsity provided in above table is average sparsity accross all convolution layers.
+   * Optimal Model – with optimal placement of layers between EVE and DSP (certain NN layers run faster on DSP, like SoftMax; ARP32 in EVE emulates float operation in software, so this can be rather slow).
 
 
 Accuracy of selected networks
 -----------------------------
 
-Please note change in accuracy between "Initial" (dense) and "Sparse" model (performance boost can be 3x-4x):
+- Image classification (https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Imagenet_Classification_README.md)
+     Top-1 classification accruracy indicates probability that ground truth is ranked highest. Top-5 classification accuracy indicates probability that ground truth is among top-5 ranking candidates.
 
+===============================================   ==============
+Configuration-Dataset Imagenet (1000 classes)     Top-1 accuracy
+===============================================   ==============
+JacintoNet11 non-sparse                           60.9%
+JacintoNet11 layerwise threshold sparse (80%)     57.3%
+JacintoNet11 channelwise threshold sparse (80%)   59.7%
+===============================================   ==============
 
-.. Image:: ../images/tidl-accuracy1.png
+- Image segmentation (https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Cityscapes_Segmentation_README.md)
+     Mean Intersection over Union is ratio between True Positives and sum of True Positives, False Negatives and False Positives
 
+===================================================    ===============  ========
+Configuration-Dataset Cityscapes (5-classes)           Pixel accuracy   Mean IOU
+===================================================    ===============  ========
+Initial L2 regularized training                        96.20%           83.23%
+L1 regularized training                                96.32%           83.94%
+Sparse fine tuned (~80% zero coefficients)             96.11%           82.85%
+Sparse (80%), Quantized (8-bit dynamic fixed point)    95.91%           82.15%
+===================================================    ===============  ========
 
-More details can be found at below links:
+- Object Detection (https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/VOC0712_ObjectDetect_README.md)
+     Valiation accuracy can be in classification accuracy or mean average precision (mAP). Please note change in accuracy between "Initial" (dense) and "Sparse" model (performance boost can be 2x-4x):
 
-- https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/VOC0712_ObjectDetect_README.md
-- https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Cityscapes_Segmentation_README.md
-- https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Imagenet_Classification_README.md
+===========================================   =======
+Configuration-Dataset VOC0712                 mAP
+===========================================   =======
+Initial L2 regularized training               68.66%
+L1 regularized fine tuning                    68.07%
+Sparse fine tuned (~61% zero coefficients)    65.77%
+===========================================   =======
 
 
 Troubleshooting
