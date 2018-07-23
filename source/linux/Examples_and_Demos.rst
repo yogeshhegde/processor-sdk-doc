@@ -48,6 +48,12 @@ Hands on with QT
 Application Demos
 **********************************
 
+Dual Camera
+======================
+.. include:: Examples_and_Demos/Dual_Camera_Demo.rst.inc
+
+
+
 Video Analytics
 ======================
 .. include:: Examples_and_Demos/Video_Analytics.rst.inc
