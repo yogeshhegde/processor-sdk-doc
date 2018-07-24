@@ -250,9 +250,10 @@ with three buttons:
 * ImageNet classification using Jacinto11 model with live camera input.
 
 Imagenet classification using Jacinto11 model, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving 
-IVAHD), and sent to OpenCV processing pipeline. Video clip is in **320x320** resolution, and scaled down to 224x224 before sending to TIDL_API. Result of this
-processing is standard Imagenet classification output (1D vector with 1000 elements). But, there is a subset of common objects expected to be used with the
-demo, so classification results are filtered using list of classes provided as command line argument.
+IVAHD), and sent to OpenCV processing pipeline. Video clip is in **320x320** resolution, and scaled down in run-time (using OpenCV API) to 224x224 before sending to TIDL_API. Result of this
+processing is standard Imagenet classification output (1D vector with 1000 elements). But, there is a subset of common objects expected to be used with the demo, so classification results 
+are filtered using list of classes provided as command line argument. Blue bounding rectangle (in main image window) is presented only when valid detection is reported. 
+Class string of last succesfull is preserved until next detection (so if no object is detected, blue rectangle will disappear, but last class string remains).
 
 Executable invoked from Matrix-GUI is in: /usr/share/ti/tidl/examples/tidl_classification.
 
@@ -801,7 +802,7 @@ numerical format of input image file (signed or unsigned), trace folder and mode
 Training
 ========
 
-Existing models can be imported as long as network topology or parameter constraints are not hit.
+Existing Caffe and TF-Slim models can be imported **as long as layers are supported and parameter constraints are met**.
 But, typically these models include dense weight matrices. 
 In order to leverage some benefits of TIDL Lib, and gain 3x-4x performance improvement (for Convolutional Layers), 
 it is necessary to repeat the training process using caffe-jacinto caffe fork, available at github.com/tidsp/caffe-jacinto.
@@ -857,9 +858,6 @@ Example of training procedure
       point is model created after "Iniitial" phase. We will need to repeat initial phase, but now using new data set, and using same layer names for those 
       layers that we want to preload with earlier model. Further, training can be tuned by reducing base_lr (in train.prototxt), and increasing lr for top one or 
       few layers. In this way bottom layers will be changed superficially, but top layers will adapt as necessary.
-
--  Show how to verify accuracy using Caffe-Jacinto inference, and then how to verify
-   accuracy of sparsified and quantized model using Simulation tool
 
 Where does the beneift of sparsification come from?
 ---------------------------------------------------
