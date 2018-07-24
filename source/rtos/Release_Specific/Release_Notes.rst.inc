@@ -48,10 +48,10 @@ Documentation
 
 | 
 
-Release 04.03.00
+Release 05.00.00
 ==================
 
-Released March 2018.
+Released July 2018.
 
 .. rubric::  What's New
    :name: whats-new
@@ -60,22 +60,15 @@ Released March 2018.
    :name: new-features
 
 -  AM335x,AM437x,AM57x,K2G
+	- `Uniflash Flash programmer <Board_EVM_Abstration.html#uniflash>`__ support. Support available as EA feature and includes flashing using JTAG and UART interface. Following EVMs and flash interface are supported
+		- SPI:  AMIC110 ICE, AM335x EVM, AM335x ICE
+		- QSPI: AM437x  IDK, AM571x IDK,AM572x IDK,AM574x IDK,K2G ICE,K2G EVM
+		- Generic USB Bulk support
+-  K2G
+	- `Performance Audio Demo Framework <Examples_and_Demonstrations.html#performance-audio-demo>`__  for Audio Applications illustrating integration of I/O, auto detection,decoding,audio stream processing and encoding
+-  `UART AppLoader <Foundational_Components.html#uart-apploader>`__ :Two stage bootloader support through UART interface
+-  General improvement in Build flow with introduction of RULES_MAKE for improved OOB experience. Processor SDK envrionment variables updates during installation step
 
-   -  Support for PRUSS based I2C Slave
-   -  I2C Driver extension to support PRUSS I2C Firmware in addition to
-      existing hardware IP instances
-   -  Additional PRUSS LLD API to control IEP clock source
-   -  McASP LLD support for changing channel parameters during run time
-
--  AM335x,AM437x
-
-   -  Display RTOS Example Support
-
--  AM437x,AM572x
-
-   -  RTOS Template Application extension for AM437x GP EVM
-   -  RTOS Template Application extension to M4 and C66x cores on AM572x
-      GP EVM
 
 .. rubric::  Component Version
    :name: component-version
@@ -87,49 +80,49 @@ more information on each item.
 .. note::
    | This release has been tested with the following component and tool versions. It is recommended to use the versions listed here to avoid compatibility issues. 
 
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-|  Component  |   Version   |AM335x|AM437x|AM57x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
-+=============+=============+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
-| CG_XML      | 2.41.0      |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| CTOOLSLIB   | 2.2.0.0     |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| DSPLIB      | 3.4.0.0     |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| EDMA3 LLD   | 2.12.5.30   |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| FC          | 3.40.2.7    |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| FFTLIB      | 3.1.0.0     |      |      |      |       |     |     |     |     |  X  |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| IMGLIB      | 3.1.1.0     |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| IPC         | 3.47.0.0    |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| LIBARCH     | 1.0.0.0     |      |      |      |       |     |     |     |     |  X  |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| LINALG      | 1.2.0.0     |      |      |      |       |     |     |     |     |  X  |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| MATHLIB     | 3.1.1.0     |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| MPM         | 3.0.4.0     |      |      |      |   X   |  X  |  X  |  X  |     |     |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| NDK         | 2.26.0.0    |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| OPENCL      | 1.1.14.1    |      |      |  X   |       |     |     |     |     |     |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| OPENMP      | Per platform|      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |         |         |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| PDK         | 3.1.1.0     |1.0.10|1.0.10|1.0.10| 4.0.9 |4.0.9|4.0.9|1.0.9|2.0.9|2.0.9|  1.0.4  |  1.0.4  |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| SYS/BIOS    | 6.52.0.12   |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| UIA         | 2.21.2.07   |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| XDAIS       | 7.24.0.4    |      |      |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-| XDCTOOLS    | 3.50.03.33  |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
-+-------------+-------------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  Component  |   Version   |AM335x|AM437x|AM57x |K2H/K2K| K2E  | K2L  | K2G  |C665x |C667x |OMAP-L137|OMAP-L138|
++=============+=============+======+======+======+=======+======+======+======+======+======+=========+=========+
+| CG_XML      | 2.41.0      |   X  |  X   |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| CTOOLSLIB   | 2.2.0.0     |      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| DSPLIB      | 3.4.0.0     |      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| EDMA3 LLD   | 2.12.5.30   |   X  |  X   |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| FC          | 3.40.2.7    |      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| FFTLIB      | 3.1.0.0     |      |      |      |       |      |      |      |      |  X   |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| IMGLIB      | 3.1.1.0     |      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| IPC         | 3.47.0.0    |      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |         |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| LIBARCH     | 1.0.0.0     |      |      |      |       |      |      |      |      |  X   |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| LINALG      | 1.2.0.0     |      |      |      |       |      |      |      |      |  X   |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| MATHLIB     | 3.1.1.0     |      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| MPM         | 3.0.4.0     |      |      |      |   X   |  X   |  X   |  X   |      |      |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| NDK         | 2.26.0.0    |   X  |  X   |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| OPENCL      | 1.1.14.1    |      |      |  X   |       |      |      |      |      |      |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| OPENMP      | Per platform|      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| PDK         |             |1.0.11|1.0.11|1.0.11| 4.0.10|4.0.10|4.0.10|1.0.10|2.0.10|2.0.10|  1.0.5  |  1.0.5  |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| SYS/BIOS    | 6.52.0.12   |   X  |  X   |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| UIA         | 2.21.2.07   |      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| XDAIS       | 7.24.0.4    |      |      |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
+| XDCTOOLS    | 3.50.03.33  |   X  |  X   |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+-------------+------+------+------+-------+------+------+------+------+------+---------+---------+
 
 
 The following compilers are bundled with the SDK installer:
@@ -152,7 +145,7 @@ environment (IDE) for all devices and EVMs:
 +-----------+----------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 | Component | Version  |AM335x|AM437x|AM57x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
 +===========+==========+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
-|   CCS     | 7.4.0.15 |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
+|   CCS     | 8.0.0.16 |   X  |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
 +-----------+----------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
 
@@ -163,8 +156,7 @@ in the *Getting Started Guide* for options to select for Processor-SDK.
 
 Updated
 
--  TI PRU CGT 2.2.1
--  CCS 7.4.0.195
+-  CCS 8.0.0.16
 -  PDK for all platforms
 
 Fixed Issues 
@@ -173,152 +165,79 @@ Fixed Issues
 +-----------------------+-----------------------+-----------------------+
 |      Record ID        |       Platform        |       Summary         |
 +=======================+=======================+=======================+
-| PRSDK-415             | AM335x                | EDMA3 LLD RM code     |
-|                       |                       | reserves first 64     |
-|                       |                       | parameters which are  |
-|                       |                       | not available to user |
-|                       |                       | app using             |
-|                       |                       | EDMA3_DRV_requestChan |
-|                       |                       | nel                   |
+| PRSDK-642             | \*                    |RTOS: SDK components   |
+|                       |                       |should be signed to    |
+|                       |                       |avoid Eclipse/CCS      |
+|                       |                       |warning when importing |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-1491            | K2G, K2H, K2L, K2K    | ARM PLL               |
-|                       |                       | initialization        |
-|                       |                       | sequence for K2 SOCs  |
-|                       |                       | needs to be updated   |
-|                       |                       | to avoid intermittent |
-|                       |                       | hang issue due to     |
-|                       |                       | glitch observed on    |
-|                       |                       | PLL clocks            |
+| PRSDK-3718            | AM57x                 | L3/L4 Interconnect    |
+|                       |                       | CLKSEL configuration  |
+|                       |                       | does not take to      |
+|                       |                       | effect                |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-2196            | AM57x                 | DCAN Diag test failed |
-|                       |                       | on AM57x IDK          |
-|                       |                       | Platforms             |
+| PRSDK-3030            | omap L13x             | Interrupt mode is not |
+|                       |                       | functional            |
+|                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-2941            | AM335x                | PLL Settings need to  |
-|                       |                       | be updated for        |
-|                       |                       | additional optimal    |
-|                       |                       | values                |
+| PRSDK-3856            | AM335x AM437x         | StarterWare build from|
+|                       |                       | the PDK starterware   |
+|                       |                       | folder fails on       |
+|                       |                       | Windows  OS           |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-2819            | AM335x                | Networking API header |
-|                       |                       | files are not         |
-|                       |                       | compatible with C++   |
+| IPC-217               | C667x,k2h,k2e         | IPC listMP corruption |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3142            | C667x,k2h,k2e         | IPC listMP corruption |
+| PRSDK-3859            | am57xx,c665x,c667x    | Audio benchmark       |
+|                       | omapl13x,keystone2    | starterkit demo fails |
+|                       | c674x                 | to build in Windows   |
+|                       |                       | with Rules.make       |
+|                       |                       | environment  setup    |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3382            | AM335x,AM437x,AM57x   | UART: API UART_read() |
-|                       |                       | reads additional byte |
-|                       |                       | from what requested   |
-|                       |                       | by application and    |
-|                       |                       | drops in case FIFO    |
-|                       |                       | has extra bytes       |
+| PRSDK-3865            | am57xx,c665x,c667x    | SPI driver doesn`t    |
+|                       | omapl13x,keystone2    | support timeout       |
+|                       | c674x                 |                       |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3381            | AM335x                | Support CPSW port-2   |
-|                       |                       | only in NDK/NIMU      |
-|                       |                       | transport             |
+| PRSDK-4013            | k2h                   | Client Socket recv()  |
+|                       |                       | returns -1 with large |
+|                       |                       | stream of data        |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3391            | K2G                   | EDMA-LLD Sample       |
-|                       |                       | library: Run time     |
-|                       |                       | interrupt handling    |
-|                       |                       | incorrect for         |
-|                       |                       | EventCombiner APIs.   |
-|                       |                       | Applicable for        |
-|                       |                       | C66x/C67x cores       |
+| PRSDK-3749            | K2G                   | Spurrious interrupt   |
+|                       |                       | in device mode config |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3267            | K2G                   | NIMU_ICSS_CCLinkSlave |
-|                       |                       | _idkAM437x_wSoCLib_ar |
-|                       |                       | mExampleProject       |
-|                       |                       | hangs during build on |
-|                       |                       | linux                 |
+| PRSDK-3932            | AMIC110               | DDR Less bootloader   |
+|                       |                       | support               |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3236            | K2E,K2L               | PDK: SA_BasicExample  |
-|                       |                       | hangs on K2E, K2L     |
-|                       |                       | platforms in nightly  |
+| PRSDK-4182            | AM57xx                | Global interrupt      |
+|                       |                       | disabling in EMAC     |
+|                       |                       | driver breaks real    |
+|                       |                       | time task             |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3666            | C6657x                | cslr_upp.h: Incorrect |
-|                       |                       | header file path      |
-|                       |                       | reference in CSL      |
-|                       |                       | module                |
+| PRSDK-4012            | AM335x AM437x         | Update to use -Wl,    |
+|                       |                       | --start-group -Wl,    |
+|                       |                       | --end-group during    |
+|                       |                       | linking with GCC      |
+|                       |                       | compiler              |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3578            | AM57x                 | QSPI test case fails  |
-|                       |                       | for higher transfer   |
-|                       |                       | length and duplicates |
-|                       |                       | flash driver files    |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3557            | AMIC110               | PDK Rebuild Failure   |
-|                       |                       | for                   |
-|                       |                       | LIMIT_BOARDS=iceAMIC1 |
-|                       |                       | 10                    |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3551            | AM335x                | Incorrect interrupt   |
-|                       |                       | definitions for UART  |
-|                       |                       | driver instances      |
-|                       |                       | 1,2,4,5               |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3549            | K2HK                  | MLO: Build failure    |
-|                       |                       | for Windows Host OS   |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3320            | K2HK                  | Program EVM: No       |
-|                       |                       | response on UART      |
-|                       |                       | after programming NOR |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3540            | AM335x                | The Processor SDK     |
-|                       |                       | RTOS installer        |
-|                       |                       | doesn't have UIA      |
-|                       |                       | package               |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3520            | \*                    | FATFS MMCSD: does not |
-|                       |                       | work to save large    |
-|                       |                       | files                 |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3464            | AM57x                 | SBL doesn`t place     |
-|                       |                       | pinmux code and data  |
-|                       |                       | at base of OCMC_RAM1  |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3391            | AM57x,K2H/K,K2G,C667x | EDMA-LLD Sample       |
-|                       | ,C6657x               | library: Run time     |
-|                       |                       | interrupt handling    |
-|                       |                       | incorrect for         |
-|                       |                       | EventCombiner APIs.   |
-|                       |                       | Applicable for        |
-|                       |                       | C66x/C67x cores       |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3289            | K2G                   | Macro inconsistencies |
-|                       |                       | for different boards  |
-|                       |                       | in PDK                |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3267            | AM437x IDK            | NIMU_ICSS_CCLinkSlave |
-|                       |                       | _idkAM437x_wSoCLib_ar |
-|                       |                       | mExampleProject       |
-|                       |                       | hangs during build on |
-|                       |                       | Linux host            |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3083            | K2H                   | K2HKeystone II Serdes |
-|                       |                       | PCIE BER diagnostic   |
+| PRSDK-3866            | AM57xx                | DSP1 image of IPC     |
+|                       |                       | ex02_messageq example |
 |                       |                       | doesn't work          |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-2225            | AM335x,AM437x         | Button Diag test      |
-|                       |                       | failed on AM3/4       |
-|                       |                       | Platforms             |
+| PRSDK-3867            | c674x, omapl13x       | MMCSD examples do not |
+|                       |                       | detect SD card        |
+|                       |                       | insertion             |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-2196            | am571x-idk,           | DCAN Diag test failed |
-|                       | am572x-idk,           | on AM57x IDK          |
-|                       | am574x-idk            | Platforms             |
+| PRSDK-3933            | AM57x                 | AM57x Board library   |
+|                       |                       | sets L3MAIN1 and      |
+|                       |                       | L4CFG CLKSTCTRL       |
+|                       |                       | to Reserved_2         |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-1932            | am335x-evm,           | SORTE firmware: Slave |
-|                       | am437x-evm            | devices report RX_CRC |
-|                       |                       | packet errors during  |
-|                       |                       | Parameterization      |
-|                       |                       | state                 |
+| PRSDK-4000            | k2g,omapl13x          | Aud/CMB loopback test |
+|                       |                       | and Audio             |
+|                       |                       | pre-processing demos  |
+|                       |                       | failure               |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-1186            | AM57x                 | SBL fails to read     |
-|                       |                       | MMCSD card with       |
-|                       |                       | multiple blocks       |
-|                       |                       | aligned to 0x200      |
-+-----------------------+-----------------------+-----------------------+
-| PRSDK-3387            | C6657                 | EMAC_evmc6657_C66Loop |
-|                       |                       | back_testProject.out  |
-|                       |                       | fails on C665x        |
-|                       |                       | platform              |
+| PRSDK-4048            | k2l                   | K2L boot loader       |
+|                       |                       | failure in SPI boot   |
+|                       |                       | mode                  |
 +-----------------------+-----------------------+-----------------------+
 
 .. RN_Supported-Platforms-label:
@@ -389,6 +308,8 @@ The following table lists all supported devices for a given installer.
 .. _AM5718: http://www.ti.com/product/am5718
 .. _AM5726: http://www.ti.com/product/am5726
 .. _AM5728: http://www.ti.com/product/am5728
+.. _AM5746: http://www.ti.com/product/am5746
+.. _AM5748: http://www.ti.com/product/am5748
 
 .. _RTOS-C665X: http://software-dl.ti.com/processor-sdk-rtos/esd/C665x/latest/index_FDS.html
 .. _C665x: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page
@@ -508,7 +429,6 @@ platform/EVM.
 | VPS              |       |      |  X  |   |   |   |   |   |   |   |  X  |  X  |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
 
-
 **DSP devices - K2x, C66x**
 
 +------------------+-------------------------------+-----------------------+-----------+
@@ -578,8 +498,6 @@ platform/EVM.
 +------------------+-------+---+---+---+-----+-----+---+---+---+---+-------+-----+-----+
 
 
-USB Device Audio
-
 **DSP devices - OMAP-L13x, C674x**
 
 +----------------+-------------------+-------------+----------------+
@@ -610,6 +528,27 @@ USB Device Audio
 |USB Device Audio|    X    |    X    |      X      |   X   |   X    |
 +----------------+---------+---------+-------------+-------+--------+
 
+**Driver Unsupported CPU/Cores**
+
+- In general driver support is available across all cores within an SOC
+  with following exceptions
++----------------+-------------------+
+|    Feature     | Not supported     |
++================+=========+=========+
+|                |SOC      |CPU/Core |
++----------------+---------+---------+
+|McASP           |  AM57x  |    M4   |
++----------------+---------+---------+
+|USB             |  AM57x  |    C66x |
++----------------+---------+---------+
+|USB             |  AM57x  |    M4   |
++----------------+---------+---------+
+|McBSP           |  K2G    |    A15  |
++----------------+---------+---------+
+|McBSP           |OMAP-L13x|    ARM9 |
++----------------+---------+---------+
+|All Drivers     |  K2x    |    A15  |
++----------------+---------+---------+
 
 Other Features 
 ----------------
@@ -767,42 +706,6 @@ release and any known workaround.
 |             |             |             | loopback    |                                                         |
 |             |             |             | cable       |                                                         |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-642   | \*          | Processor   | RTOS: SDK   | Ignore the Eclipse/CCS warning                          |          
-|             |             | SDK         | components  |                                                         |
-|             |             | Installer   | should be   |                                                         |
-|             |             |             | signed to   |                                                         |
-|             |             |             | avoid       |                                                         |
-|             |             |             | Eclipse/CCS |                                                         |
-|             |             |             | warning     |                                                         |
-|             |             |             | when        |                                                         |
-|             |             |             | importing   |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3648  | am437x-evm  | EMAC        | TCP/IP      | Use NDK no copy configuration. In addition NIMU driver  |                             
-|             |             |             | throughput  | update for increased number of CPPI descriptors.        |                           
-|             |             |             | improvement |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3718  | All AM57x   | Board       | L3/L4       | Default ROM is setting correct config. For fix modify   |                         
-|             | boards      |             | interconnec | CLKSEL fields from CM_CLKSEL_DPLL_CORE_REG to           |                  
-|             |             |             | t           | CM_CLKSEL_CORE_REG for corePllcParam->l3ClkSel and      |                           
-|             |             |             | CLKSEL      | corePllcParam->l4ClkSel                                 |
-|             |             |             | configurati |                                                         |
-|             |             |             | on          |                                                         |
-|             |             |             | does not    |                                                         |
-|             |             |             | take to     |                                                         |
-|             |             |             | effect      |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
 | PRSDK-3482  | \*          | CCS         | CCSV7.4:    | Retry for connection failure in DSS script.             |                  
 |             |             |             | Intermitten |                                                         |
 |             |             |             | t           |                                                         |
@@ -830,13 +733,31 @@ release and any known workaround.
 |             |             |             |             |                                                         |
 |             |             |             |             |                                                         |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3030  | omap L13x   | SPI         | Interrupt   | Poll/blocking mode can be used where there is no        |                      
-|             |             |             | mode is not | other task contention                                   |          
-|             |             |             | functional  |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
+| PRSDK-3318  | K2G 1Ghz    | EMAC        | EMAC_CpswRa | Incorrect Core clock config in test. Fix for            |
+|             |             |             | teLimit_evm | to set the correct CPU clock                            |
+|             |             |             | K2G_c66xExa |                                                         |
+|             |             |             | mpleProject |                                                         |
+|             |             |             | failure on  |                                                         |
+|             |             |             | 1GHz Flip   |                                                         |
+|             |             |             | Chip        |                                                         |
++-------------+-------------+-------------+-------------+---------------------------------------------------------+
+| PRSDK-4184  | am574x-idk  | Board       | Hello_World:| Problem observed with using GCC semihosting support     |
+|             |             | Diagnostic  | Baremetal   | Use UART driver for input and output                    |
+|             |             |             | ARM         |                                                         |
+|             |             |             | Cortex-A15  |                                                         |
+|             |             |             | test example|                                                         |
+|             |             |             | failure     |                                                         |
++-------------+-------------+-------------+-------------+---------------------------------------------------------+
+| PRSDK-4214  | k2g-hs      | Board       |create-sdcard| Default generated App image is not signed               |
+|             |             | Diagnostic  |script does  | follow the steps mentioned in section 6.2.1.2           |
+|             |             |             |not boot OOB | of the Processor SDK Secdev Build and Install           |
+|             |             |             |             | Guide to sign the app                                   |
++-------------+-------------+-------------+-------------+---------------------------------------------------------+
+| PRSDK-4108  | omapl13x    | USB         | USB Audio:  | None                                                    |
+|             |             |             | Lag when    |                                                         |
+|             |             |             | trying to   |                                                         |
+|             |             |             | adjust      |                                                         |
+|             |             |             | volume      |                                                         |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
 | PRSDK-3383  | am574x-idk  | Board       | Diagnostic  | None                                                    |
 |             |             | Diagnostic  | lcdTouchscr |                                                         |
@@ -852,38 +773,6 @@ release and any known workaround.
 |             |             |             | idkAM574x   |                                                         |
 |             |             |             | platform    |                                                         |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3318  | K2G 1Ghz    | EMAC        | EMAC_CpswRa | None                                                    |
-|             |             |             | teLimit_evm |                                                         |
-|             |             |             | K2G_c66xExa |                                                         |
-|             |             |             | mpleProject |                                                         |
-|             |             |             | failure on  |                                                         |
-|             |             |             | 1GHz Flip   |                                                         |
-|             |             |             | Chip        |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3856  | AM335x      | Starterware | StarterWare | Top-level make command can be used for building         |                       
-|             | AM437x      |             | build from  | starterware on Windows                                  |      
-|             |             |             | the PDK     |                                                         |
-|             |             |             | starterware |                                                         |
-|             |             |             | folder fails|                                                         |
-|             |             |             | on Windows  |                                                         |
-|             |             |             | OS          |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3859  | am57xx,     | Demo        | Audio       | Environment variables in makefile needs to include in   |
-|             | c665x,      |             | benchmark   | double quote for enabling windows build. Makefile       |
-|             | c667x,      |             | starterkit  | under following directories singlePrecision_FFT,        |
-|             | omapl13x,   |             | demo fails  | singlePrecision_FIR and singlePrecision_IIR will        |
-|             | keystone2,  |             | to build in | need update for variables: CC_INCS, CC, AR, LD          |
-|             | c674x,      |             | Windows with| Eg: CC = $(C6X_GEN_INSTALL_PATH)/bin/cl6x needs to be   |
-|             |             |             | Rules.make  | updated to CC = "$(C6X_GEN_INSTALL_PATH)/bin/cl6x"      |
-|             |             |             | environment |                                                         |
-|             |             |             | setup       | Replace $(SOC) variable in the top level makefile under |
-|             |             |             |             | the folder 'audio-benchmark-starterkit' with $(PDK_SOC) |
-|             |             |             |             | Ex:                                                     |
-|             |             |             |             | $(MAKE) -C ./src/singlePrecision_FFT SOC=$(SOC) all     |
-|             |             |             |             | to                                                      |
-|             |             |             |             | $(MAKE) -C ./src/singlePrecision_FFT SOC=$(PDK_SOC) all |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-
 
 Installation and Usage 
 ========================
@@ -940,7 +829,8 @@ For further information or to report any problems, contact TI E2E:
 
 Archived 
 ==========
-
+-  `Processor-SDK RTOS
+   4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
    4.2.0 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&oldid=232579>`__
 -  `Processor-SDK RTOS
