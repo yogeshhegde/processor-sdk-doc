@@ -1,19 +1,3 @@
-
-********************
-Kernel
-********************
-
-Users Guide
-==================================
-.. include:: Foundational_Components/Kernel/Users_Guide.rst.inc
-
-.. Kernel Release Notes
-.. include:: Foundational_Components/Kernel/Processor_SDK_Linux_Kernel_Release_Notes.rst.inc
-
-.. RT Kernel Release Notes
-.. include:: Foundational_Components/Kernel/Processor_SDK_Linux_RT_Kernel_Release_Notes.rst.inc
-
-
 Kernel Drivers
 ==================================
 
@@ -135,26 +119,3 @@ DWC3
 VPE
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/VPE.rst.inc
-
-
-.. Performance Guide
-.. =================================
-
-.. Kernel Performance Guide
-.. ---------------------------------
-.. .. include:: Foundational_Components/Kernel/Performance_Guide/Kernel_Performance_Guide.rst.inc
-
-.. RT Kernel Performance Guide
-.. ---------------------------------
-.. .. include:: Foundational_Components/Kernel/Performance_Guide/RT_Kernel_Performance_Guide.rst.inc
-
-
-LTP-DDT Validation
-==================================
-.. include:: Foundational_Components/Kernel/LTP-DDT_Validation.rst.inc
-
-FAQs
-==================================
-.. include:: Foundational_Components/Kernel/FAQs.rst.inc
-
-
