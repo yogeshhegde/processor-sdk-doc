@@ -18,7 +18,7 @@ Processor SDK Linux Software Developer's Guide
      forums listed at `Technical Support`_, and we would love to hear from you.
    |
    | Old Wiki Documentation links from previous releases:
-   |    - `Wiki Software Deveoper's Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__.
+   |    - `Wiki Software Developer's Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__.
    |    - `Wiki Getting Started Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide>`__.
    |
   
