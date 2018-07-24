@@ -9,8 +9,8 @@ Deep Learning Inference in Embedded Device
 ------------------------------------------
 
 TIDL brings deep learning to the edge by enabling applications to leverage TI’s proprietary, \
-highly optimized CNN/DNN implementation on the EVE and C66x DSP compute engines. TIDL initially targets Vision use cases on AM57x SoCs.
-But there are no fundamental limitations to use TIDL for 1D or 3D input data blobs.
+highly optimized CNN/DNN implementation on the EVE and C66x DSP compute engines. TIDL initially targets use cases with 2D (typically vision) data on AM57x SoCs.
+There are not fundamental limitations preventing the use of TIDL for 1D or 3D input data blobs.
 
 TIDL is a set of open-source Linux software packages and tools enabling offload of 
 Deep Learning **(inference only)** compute workloads from ARM cores to hardware accelerators 
@@ -19,19 +19,18 @@ applications, and help developers focus on their specific requirements. In this 
 of Deep Learning task and can be used for other roles in your application. This also allows to use traditional Computer Vision 
 (via OpenCV) augmenting Deep Learning algorithms.
 
-At the moment, TIDL software stack primarily enables Convolutional Neural Network inference, using offline pre-trained models, 
-stored in device filesystem (**no training on target device**). Models trained using Caffe or Tensorflow-slim frameworks can be 
+At the moment, TIDL software stack primarily enables Convolution Neural Network inference, using offline pre-trained models, 
+stored in device file-system (**no training on target device**). Models trained using Caffe or Tensorflow-slim frameworks can be 
 imported and converted for efficient execution on TI devices. 
 
 Additional performance benefits can be achieved by doing training using Caffe-Jacinto fork of Caffe, which includes functions for
-making convolutional weight tensor sparse, thus giving opportunity for 3x-4x performance boost of convolutional layers.
+making convolution weight tensor sparse, thus giving opportunity for 3x-4x performance boost of convolutions layers.
 
 Application space
 -----------------
 
-Current version of TIDL software stack is targeting Computer Vision Deep Learning applications.
-So we typically use color image tensors (Width x Height x 3, for BGR planes), but it is possible to use other data types
-(E.g. gray scale and depth plane: Width x Height x 2 tensor)
+Current version of TIDL software stack is targeting Computer Vision Deep Learning applications. Example applications include vision computers, barcode readers, machine vision cameras, industrial automation systems, optical inspection systems, industrial robots, currency counters, occupancy detectors, smart appliances and unmanned vehicles.
+In these cases color image tensors (Width x Height x 3, for BGR planes) are typically used, but it is possible to use other data types (E.g. gray scale and depth plane: Width x Height x 2 tensor)
 
 Based on model and task, TIDL input data are similar, but output data will vary based on task:
 
@@ -43,25 +42,24 @@ Image Pixel Segmentation    2D matrix: Width x Height, with each cell set to int
 Image Object Detection      list of tuples. Each tuple includes class index, probability of detection, upper left corner (xmin,ymin), width and height of bounding box
 =========================   ============================================================================================================================================
 
-Additional examples covering other application areas (speech, audio, predictive maintenance), are in the roadmap.
+Additional examples covering other application areas (speech, audio, predictive maintenance), are in the road map.
 
 Supported Devices
 -----------------
 
 TIDL software stack is intended for AM57xx Sitara devices, that either have DSP or EVE, or both accelerators:
 
-- AM5749 (2xEVE + 2xDSP)
-- AM5729 (4xEVE + 2xDSP) 
-- AM571x (0xEVE + 1xDSP)
-- AM572x (0xEVE + 1xDSP)
-
+- AM5749 (2xEVEs + 2xC66x DSPs)
+- AM5746 (2xC66x DSPs)
+- AM572x (2xC66x DSPs)
+- AM571x (1xC66x DSP)
 
 Verified networks topologies
 ----------------------------
 
 It is necessary to understand that TIDL is not verified against arbitrary network topology
 that can run in Caffe or TF. Instead, we were focused on verification of layers and network
-topolgoies that make sense to be executed on power-constraint embedded devices.
+topologies that make sense to be executed on power-constraint embedded devices.
 Some networks are too complex for power budget of few watts. So focus is put on networks that
 are not extremely computationally intensive and also not having very high memory requirements.
 The following topologies have been verified with TIDL software stack:
@@ -71,80 +69,80 @@ The following topologies have been verified with TIDL software stack:
 - JDetNet, (similar to SSD-300/512), object detection network
 - SqueezeNet
 - InceptionV1
-- MobileNet
+- MobileNetV1
 
-Jacinto11 Resnet10 motivated
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Here are graphs (created using TIDL viewer tool) of first three:
 
 .. Image:: ../images/j11v2.png
 
-JSeg21 (SegNet motivated)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: Jacinto11 (resnet10 motivated)
+   :name: jacinto11-graph
+
+
 
 .. Image:: ../images/jseg21.png
 
-Jacinto JDetNet (SSD-300/512 motivated)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric:: JSeg21 (SegNet motivated)
+   :name: jseg21-graph
+
+
 
 .. Image:: ../images/jdetnet.png
+
+.. rubric:: JDetNet (SSD-300/512 motivated)
+   :name: jdetnet-graph
+
+
+
 
 Other network topologies are possible but they need to be verified.
 Majority of layers required (for inference only!) for classification, segmentation and detection
 tasks are implemented, though in some cases with certain parameter related constraints.
 
-TIDL Lib Supported Features
+Features supported by TIDL
 ---------------------------
 
-TIDL Lib is set of kernels and independent framework running on DSP or EVE accelerators. Configuration of the network (topology and parameters) is provied 
-by the upper layer system - at configuration stage. Run-time processing is triggered by OpenCL calls. 
-Local framework invokes processing by individual layers.
+Software architecture is described in Developer's Guide section.
 
-.. rubric:: Supported Features
+.. rubric:: Supported Neural Network Inference Features
    :name: tidl-supported-features
 
-List of supported layers:
+List of supported layer types:
 
   1. Convolution Layer
   2. Pooling Layer
-  3. Average and Max Pooling
-  4. ReLU Layer
-  5. Element Wise Layer
-  6. Add, Max, Product
-  7. Inner Product Layer
-  8. Fully Connected Layer
-  9. Soft Max Layer
-  10. Bias Layer
-  11. Deconvolution Layer
-  12. Concatenate layer
-  13. ArgMax Layer
-  14. Scale Layer
-  15. PReLU Layer
-  16. Batch Normalization layer
-  17. ReLU6 Layer
-  18. Crop layer
-  19. Slice layer
-  20. Flatten layer
-  21. Split Layer
-  22. Detection Output Layer
+       - Average and Max Pooling
+  3. ReLU Layer
+  4. Element Wise Layer
+       - Add, Max, Product
+  5. Inner Product Layer
+       - Fully Connected Layer
+  6. Soft Max Layer
+  7. Bias Layer
+  8. Deconvolution Layer
+  9. Concatenate layer
+  10. ArgMax Layer
+  11. Scale Layer
+  12. PReLU Layer
+  13. Batch Normalization layer
+  14. ReLU6 Layer
+  15. Crop layer
+  16. Slice layer
+  17. Flatten layer
+  18. Split Layer
+  19. Detection Output Layer
 
-Unsupported but planned features
---------------------------------
-
-- Support for additional layers suitable for sequential/time-series processing (RNN, LSTM, GRU) are planned.
-- Importing models in ONNX format
-- In current release, Matrix-GUI started Jacinto11 classification example runs at 8fps (per EVE or DSP), with total of 16fps for AM5749.
-  Next release will use optimal layer placement (EVE has slow SoftMax layer implementation) and enable up to 28-30fps on AM5749.
 
 Limitations of layers in TIDL Lib
 ---------------------------------
 Layers in current release of TIDL Lib have certain parameter related constraints:
 
 - Convolution Layer
-   - We have tested the kernel size up to 7x7 (Shall work for higher values also, but not validated)
-   - Dilation is tested with 1,2,4
-   - We support only stride 1 and 2. Any value higher than 2 is not supported
+   - Verified for kernel size up to 7x7 (Shall work for higher values also, but not validated)
+   - Dilation vaild for parameter values of: 1,2,4
+   - Stride values of 1 and 2 are supported.
    - Dense convolution flow is supported for only 1x1 and 3x3 kernels with stride = 1 and dilation =1
-   - Maximum number of input and output channel supported in 1024. 
+   - Maximum number of input and output channel supported: 1024. 
 
 - Deconvolution Layer
    - Number of groups shall be equal to the number of channels
@@ -156,8 +154,8 @@ Layers in current release of TIDL Lib have certain parameter related constraints
 
 - InnerProductLayer
    - Maximum input and output Nodes supported are 4096
-   - The input data has the flattened (That is C =1 and H =1 for the input data)
-   - A flatten layer cab be used before this layer in C > 1 and H > 1
+   - The input data has to be flattened (That is C =1 and H =1 for the input data)
+   - A flatten layer can be used before this layer in C > 1 and H > 1
    - If a global average Pooling also can be flattens the output
 
 - Spatial Pooling Layer
@@ -183,7 +181,7 @@ Layers in current release of TIDL Lib have certain parameter related constraints
    - Slice is only supported across channel (axis = 1; default).
 
 - SoftmaxLayer
-   - The input data has the flattened (That is C =1 and H =1 for the input data)
+   - The input data has to be flattened (That is C =1 and H =1 for the input data)
 
 - SSD
    - Only Caffe-Jacinto based SSD network is validated.
@@ -198,10 +196,10 @@ Layers in current release of TIDL Lib have certain parameter related constraints
    - TF-Slim: https://github.com/tensorflow/models/tree/master/research/slim
 
 
-Important TIDL_API framework features
+Important TIDL API framework features
 -------------------------------------
 
-Current implementation of TIDL_API provides following important features:
+Current implementation of TIDL API provides following important features:
 
 - Multiple networks on different EVEs/DSPs can run concurrently
     We can run concurrently as many different networks as we have available accelerators.
@@ -210,7 +208,7 @@ Current implementation of TIDL_API provides following important features:
     start to end on only one EVE or DSP, but we can start one network with its own output
     in one EVE, and in parallel same or different network with its own input on second EVE.
 
-- Same TIDL_API based application code can run on EVE or DSP accelerator
+- Same TIDL API based application code can run on EVE or DSP accelerator
     This can be achieved just by modifying a parameter
 
 - Certain networks could be split between EVE and DSP
@@ -221,11 +219,11 @@ Current implementation of TIDL_API provides following important features:
 Examples and Demos
 ===================
 
-TIDL-API examples
+TIDL API examples
 -----------------
 
 This TIDL release comes with 5 examples provided in source, that can be cross-compiled on Linux x86 from top level Makefile (use tidl-examples as target), or on \
-target filesystem in: /usr/share/ti/tidl/examples (make).
+target file-system in: /usr/share/ti/tidl/examples (make).
 
 ===================================  ===========================================================================================================
 Example                              Link
@@ -242,18 +240,18 @@ Classification with class filtering  tidl-matrix-gui-demo_
 Matrix GUI demo
 ---------------
 
-Upon boot, Matrix-GUI is started with multiple button that can start many demos. In current release, PLSDK 5.0, there is submenu "TI Deep Learning"
+Upon boot, Matrix-GUI is started with multiple button that can start many demos. In current release, PLSDK 5.0, there is sub-menu "TI Deep Learning"
 with three buttons:
 
+* ImageNet classification using Jacinto11 model with pre-recorded real-world video clip.
 * ImageNet classification using Jacinto11 model with pre-recorded video clip, synthetically created from several static video images (using ImageMagick convert tool)
-* ImageNet classification using Jacinto11 model with pre-recorded video clip, captured in real-world.
 * ImageNet classification using Jacinto11 model with live camera input.
 
 Imagenet classification using Jacinto11 model, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving 
-IVAHD), and sent to OpenCV processing pipeline. Video clip is in **320x320** resolution, and scaled down in run-time (using OpenCV API) to 224x224 before sending to TIDL_API. Result of this
+IVAHD), and sent to OpenCV processing pipeline. Video clip is in **320x320** resolution, and scaled down in run-time (using OpenCV API) to 224x224 before sending to TIDL API. Result of this
 processing is standard Imagenet classification output (1D vector with 1000 elements). But, there is a subset of common objects expected to be used with the demo, so classification results 
 are filtered using list of classes provided as command line argument. Blue bounding rectangle (in main image window) is presented only when valid detection is reported. 
-Class string of last succesfull is preserved until next detection (so if no object is detected, blue rectangle will disappear, but last class string remains).
+Class string of last successful is preserved until next detection (so if no object is detected, blue rectangle will disappear, but last class string remains).
 
 Executable invoked from Matrix-GUI is in: /usr/share/ti/tidl/examples/tidl_classification.
 
@@ -288,7 +286,7 @@ Please note that video clip is looped as long as maximum frame count (specified 
      cd /usr/share/ti/tidl/examples/classification
      ./tidl_classification -n 2 -t d -l ./imagenet.txt -s ./classlist.txt -i ./clips/test2.mp4 -c ./stream_config_j11_v2.txt
    
-On AM5749, above two examples can be run on EVE as well, by changing "-t" parameter from "d"" to "e":
+On AM5749, above two examples can be run on EVE as well, by changing "-t" parameter from "d" to "e":
 
 ::
 
@@ -310,7 +308,6 @@ Please note that imagenet.txt is list of all classes (labels) that can be detect
   * beer_glass
   * fountain_pen
   * laptop
-  * envelope
   * notebook
 
 Different group of classes using different inputs can be used for user defined testing. In that case, download square images (if aspect is not square, do central cropping first) and place in folder on Linux x86 (that has ImageMagick and ffmpeg installed).
@@ -347,22 +344,22 @@ Example is based on "imagenet" and "test" examples, with few additions related t
     * Function populate_selected_items(), which reads and verifies label names (using previous list of valid values), to be used in decision filtering.
 
 
-Develeoper's guide
+Developer's guide
 ==================
 
 Software Stack
 --------------
 
 Complexity of software stack is provided for better understanding only. It is expected that
-the user does programming based on TIDL_API only.
+the user does programming based on TIDL API only.
 
 In case TIDL uses DSP as accelerator there are three software layers:
 
 - TIDL Library that runs on DSP C66
 
-- OpenCL runtime, which runs on A15, and DSP
+- OpenCL run-time, which runs on A15, and DSP
 
-- TIDL_API host wrapper, user space library
+- TIDL API host wrapper, user space library
 
 In case TIDL uses EVE as accelerator there are four software layers:
 
@@ -370,11 +367,11 @@ In case TIDL uses EVE as accelerator there are four software layers:
 
 - M4 service layer, acting as proxy between EVE and A15 Linux (considered to be part of OpenCL)
 
-- OpenCL runtime, which runs on A15, but also on M4 **(IPU1 which is reserved for TIDL OpenCL monitor role)**
+- OpenCL run-time, which runs on A15, but also on M4 **(IPU1 which is reserved for TIDL OpenCL monitor role)**
 
-- TIDL_API host wrapper, user space library
+- TIDL API host wrapper, user space library
 
-Please note that TIDL_API package APIs are identical whether we use DSP or EVE (or both).
+Please note that TIDL API package APIs are identical whether we use DSP or EVE (or both).
 User only needs to specify accelerator via parameter.
 
 .. Image:: ../images/tidl-sw-stack.png
@@ -394,18 +391,18 @@ They include modifications in Caffe source tree to enable higher compute perform
                                                                                 complexity models that can be used in embedded platforms. Please follow README.md, \
                                                                                 how to clone, compile and install this version of Caffe.
 `Caffe-jacinto-models <https://github.com/tidsp/caffe-jacinto-models>`_         provides example scripts for training sparse models using tidsp/caffe-jacinto. These scripts enable training of sparse \
-                                                                                CNN models resulting in low complexity models that can be used in embedded platforms. This repostory also includes \
-                                                                                `pretrained models <https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained>`_. \
-                                                                                Additional scripts that can be used to prepare dataset and run the training are also available in the \
+                                                                                CNN models resulting in low complexity models that can be used in embedded platforms. This repository also includes \
+                                                                                `pre-trained models <https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained>`_. \
+                                                                                Additional scripts that can be used to prepare data set and run the training are also available in the \
                                                                                 `scripts folder <https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/scripts>`_.
 =========================================================================      ===============================================================================================================================
 
 Introduction to Programming Model
 ---------------------------------
 
-Public interface of TIDL stack is TIDL_API, described in details at http://downloads.ti.com/mctools/esd/docs/tidl-api/viewer.html
+Public interface of TIDL stack is TIDL API, described in details at http://downloads.ti.com/mctools/esd/docs/tidl-api/viewer.html
 
-Public programming model is defined in TIDL_API host wrapper package. In current release it
+Public programming model is defined in TIDL API host wrapper package. In current release it
 has 3 classes only, allowing use of one or more neural network models that can run in parallel on 
 independent EVEs or C66x cores.
 
@@ -413,16 +410,16 @@ Single unit of processing is a tensor (E.g. one image frame, but other inputs ar
 Typically, NN model runs on single core (EVE or DSP). But in certain cases it is possible to split
 NN layers into two layer groups. Than, we can have one layer group running on EVE and second layer group on DSP.
 
-Top layer TIDL_API and OpenCL are primarily service layers, i.e. they help in simplifying 
+Top layer TIDL API and OpenCL are primarily service layers, i.e. they help in simplifying 
 programming model, IPC mechanism and memory management. Desired features are provided by
 TIDL Lib which runs in RTOS environment, either on EVE or DSP.
 
 
-Target filesystem
+Target file-system
 -----------------
 
 - Firmware
-    OpenCL firmware includes precanned DSP TIDL Lib (with hardcoded kernels) and EVE TIDL Lib following 
+    OpenCL firmware includes pre-canned DSP TIDL Lib (with hard-coded kernels) and EVE TIDL Lib following 
     Custom Accelerator model. OpenCL firmware is downloaded to DSP and M4/EVE immediately after Linux boot:
 
 ::
@@ -444,7 +441,7 @@ Target filesystem
           Imported model parser and dot graph creator. Input is TIDL model, output is .dot file that can be converted to PNG or PDF format using dot utility (on x86).
 
      - tidl_api
-          Source of TIDL_API implementation.
+          Source of TIDL API implementation.
 
 
 
@@ -453,7 +450,7 @@ Input data format
 Current release is mainly used with 2D inputs. Most frequent 2D input tensors are color images. Format has to be prepared in same like it was used during model training.
 Typically, this is following BGR plane interlaced format (common in OpenCV). That means, first 2D array is Blue color plane, next is Green color plane and finally Red color plane. 
 
-But, it is perfectly posible to have E.g. two planes on input only: E.g. one plane with Lidar distance measurements and second plane with illumination.
+But, it is perfectly possible to have E.g. two planes on input only: E.g. one plane with Lidar distance measurements and second plane with illumination.
 This assumes that same format was used during training.
 
 
@@ -475,7 +472,9 @@ Import process is done in two steps.
 
 - The first step deals with parsing of model parameters and network topology, and converting them into custom format that TIDL Lib can understand. 
 
-- The second step does calibration of dynamic quantization process by finding out ranges of activations for each layer. This is accomplished by invoking simulation (using native C implementation) which estimates initial values important for quantization process. These values are later updated on per frame basis, assuming strong temporal corelation between input frames.
+- The second step does calibration of dynamic quantization process by finding out ranges of activations for each layer. This is accomplished by invoking simulation (using native C implementation) which estimates initial values important for quantization process. These values are later updated on per frame basis, assuming strong temporal correlation between input frames.
+
+During import process, some of layers will be coalesced into one TIDL Layer (e.g. convolution and ReLU layer). This is done to further leverage EVE architecture which allows certain operations for free. Structure of converted (but equivalent) network can be checked using TIDL network viewer.
 
 We provide a tool (Linux x86 or ARM Linux port) to import the Model and Parameters trained using either caffe frame work or tensor flow frame work in PC. \
 This tool will accept various parameters through import configuration file and generate the Model and Parameter file that the code \
@@ -486,7 +485,7 @@ Sample Usage: tidl_model_import.out ./test/testvecs/config/import/tidl_import_js
 The list of import configuration parameters is as below:
 
 ==================   ======================================================================================================================================================================================
-Paramaeter           Configuration
+Parameter           Configuration
 ==================   ======================================================================================================================================================================================
 randParams           can be either 0 or 1. Default value is 0. If it is set to 0, the tool will generate the quantization parameters from model, otherwise it will generate random quantization parameters
 modelType            can be either 0 or 1. Default value is 0. Set this to 0 to read from caffeImport frame work, and set it to 1 to read from tensor flow frame work.
@@ -509,7 +508,7 @@ inputNetFile         is Input net file name (From Training frame work)
 inputParamsFile      is Input Params file name (From Training frame work)
 outputNetFile        is Output Model net file name, to be updated with stats.
 outputParamsFile     is Output Params file name
-layersGroupId        indictes group of layers that needs to be processed on a given CORE. Refer SSD import config for example usage
+layersGroupId        indicates group of layers that needs to be processed on a given CORE. Refer SSD import config for example usage
 ==================   ======================================================================================================================================================================================
 
 - Example of import config files
@@ -530,7 +529,7 @@ Sample configuration file (tidl_import_j11_v2.txt):
     # 0: Caffe, 1: TensorFlow, Default - 0
     modelType          = 0
 
-    # 0: Fixed quantization By tarininng Framework, 1: Dyanamic quantization by TIDL, Default - 1
+    # 0: Fixed quantization By tarininng Framework, 1: Dynamic quantization by TIDL, Default - 1
     quantizationStyle  = 1
 
     # quantRoundAdd/100 will be added while rounding to integer, Default - 50
@@ -563,7 +562,7 @@ Sample configuration file (tidl_import_j11_v2.txt):
     # Calibration image file
     sampleInData = "import/test.raw"
 
-    # Reference implementation executable, used in calibraton (processes calibration image file)
+    # Reference implementation executable, used in calibration (processes calibration image file)
     tidlStatsTool = "import/eve_test_dl_algo_ref.out"
  
 
@@ -606,7 +605,7 @@ Sample configuration file (tidl_import_j11_v2.txt):
 
 
 Final output (based on calibration raw image as provided in configuration file), is stored in a file with reserved name: stats_tool_out.bin
-Size of this file should be identical to count of output classes (in case of classificaiton). E.g. for imagenet 1000 classes, it has to be 1000 bytes big.
+Size of this file should be identical to count of output classes (in case of classification). E.g. for imagenet 1000 classes, it has to be 1000 bytes big.
 In addition to final blob, all intermediate results (activations of individual layers), are stored in ./tempDir folder (inside folder where import is invoked).
 Here is a sample list of files with intermediate activations:
 
@@ -630,10 +629,10 @@ Here is a sample list of files with intermediate activations:
 Splitting layers between layers groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to use both DSP and EVE accelerators, it is possibleto split the network into two sub-graphs using concept of layergroups.
+In order to use both DSP and EVE accelerators, it is possible to split the network into two sub-graphs using concept of layergroups.
 Than one layer group can be executed on EVE and another on DSP. Output of first group (running on EVE) will be used as input for DSP.
 
-This can be acomplished in following way (providing an example for Jacinto11 network):
+This can be accomplished in following way (providing an example for Jacinto11 network):
 
 ::
 
@@ -643,7 +642,7 @@ This can be acomplished in following way (providing an example for Jacinto11 net
    # 0: Caffe, 1: TensorFlow, Default - 0
    modelType          = 0
 
-   # 0: Fixed quantization By tarininng Framework, 1: Dyanamic quantization by TIDL, Default - 1
+   # 0: Fixed quantization By tarininng Framework, 1: Dynamic quantization by TIDL, Default - 1
    quantizationStyle  = 1
 
    # quantRoundAdd/100 will be added while rounding to integer, Default - 50
@@ -681,12 +680,12 @@ Here is a graph (group 1 is executed on EVE, and group 2 is executed on DSP):
 
 .. Image:: ../images/j11split.png
 
-Output of layers group 1 is shared (common) with input buffer of layers group 2 so no extra bufer copy overhead. Due to this buffer allocation, sequentail operation of EVE and DSP is necesary.
+Output of layers group 1 is shared (common) with input buffer of layers group 2 so no extra buffer copy overhead. Due to this buffer allocation, sequential operation of EVE and DSP is necessary.
 
 
 - How to calculate theoretical GMACs needed?
-     This can be calulated for Convolution Layers, Inner Product and Fully Connected Layers.
-     Each Convolutional Layer has certain number of input and output feature maps (2D tensors).
+     This can be calculated for Convolution Layers, Inner Product and Fully Connected Layers.
+     Each Convolution Layer has certain number of input and output feature maps (2D tensors).
      Input feature map is convolved with convolution kernel (usually 3x3, but also 5x5, 7x7..).
      So total number of MACs can be calculated as: Height_input_map x Width_input_map x N_input_maps x N_output_maps x size_of_kernel.
 
@@ -727,7 +726,7 @@ Obviously Convolution Layer workload is significantly higher.
 
 Viewer tool
 -----------  
-Viwer tool does visualization of **imported** network model. More details avialable at http://downloads.ti.com/mctools/esd/docs/tidl-api/viewer.html
+Viewer tool does visualization of **imported** network model. More details available at http://downloads.ti.com/mctools/esd/docs/tidl-api/viewer.html
 Here is an example command line:
 
 ::
@@ -776,7 +775,7 @@ Simulation Tool
 
 We provide simulation tool both in PLSDK ARM filesystem, and Linux x86 simulation tool.
 This is bit-exact simulation, so output of simulation tool is expected to be identical to the output of A5749 or AM5729 target.
-Please use this tool as convinience tool only (E.g. testing model on setup without target EVM).
+Please use this tool as convenience tool only (E.g. testing model on setup without target EVM).
 
 Simulation tool can be used also to verify converted model accuracy (FP32 vs 8-bit implementation). 
 It can run in parallel on x86 leveraging bigger number of cores (simulation tool is single thread implementation).
@@ -804,9 +803,9 @@ Training
 
 Existing Caffe and TF-Slim models can be imported **as long as layers are supported and parameter constraints are met**.
 But, typically these models include dense weight matrices. 
-In order to leverage some benefits of TIDL Lib, and gain 3x-4x performance improvement (for Convolutional Layers), 
+In order to leverage some benefits of TIDL Lib, and gain 3x-4x performance improvement (for Convolution Layers), 
 it is necessary to repeat the training process using caffe-jacinto caffe fork, available at github.com/tidsp/caffe-jacinto.
-Highest contibution to CNN compute load comes from Convolutional Layers (often in 80-90% range), hence special attention is paid
+Highest contribution to CNN compute load comes from Convolution Layers (often in 80-90% range), hence special attention is paid
 to optimize Convolution Layer processing.
 
 Data set preparation should follow standard Caffe approach, typically creating LMDB files.
@@ -836,10 +835,10 @@ Example of training procedure
       Apart from many publicly available image data sets, it is frequently the case that new data set need to be collected for specific use case.
       E.g. in industrial environment, is typically more predictable and often it is possible to ensure controlled environment with good illumination.
       For pick-and-place applications, set of objects that can appear in camera field-of-view is not infinite, but rather confined to few or few
-      dozens classes. Using turn-table and photobooth with good illumination allows quick data set collection.
+      dozens classes. Using turn-table and photo booth with good illumination allows quick data set collection.
 
 - Data set collection using AM57xx
-      AM57xx EVM can collect images using Camera Daughtercard (or external camera), using GStreamer pipeline capturing video recording or OpenCV 
+      AM57xx EVM can collect images using Camera Daughter card (or external camera), using GStreamer pipeline capturing video recording or OpenCV 
       based application (to capture individual images). In former case (GStreamer pipeline), using H264 encoder at higher bit-rate, capture 
       can last 15-20 seconds only (rotation period of turn-table). Using slower fps (10-15fps), this provides 200-300 frames. Procedure can be repeated
       by changing distance and elevation (3-4 times), so total image count can be up to 2000-3000 frames per class. This can limit single class data collection time to 5-10min.
@@ -855,18 +854,18 @@ Example of training procedure
 -  Do training from scratch or use transfer learning (fine-tuning)
       Frequently, it is good to start training using initial weights created with generic data set (like ImageNet). Bottom layers act like feature extractors, and
       only top 1 or few layers need to be fine tuned using data set that we just collected (as described in previous sets). In case of Jacinto11, good starting 
-      point is model created after "Iniitial" phase. We will need to repeat initial phase, but now using new data set, and using same layer names for those 
-      layers that we want to preload with earlier model. Further, training can be tuned by reducing base_lr (in train.prototxt), and increasing lr for top one or 
+      point is model created after "Initial" phase. We will need to repeat initial phase, but now using new data set, and using same layer names for those 
+      layers that we want to pre-load with earlier model. Further, training can be tuned by reducing base_lr (in train.prototxt), and increasing lr for top one or 
       few layers. In this way bottom layers will be changed superficially, but top layers will adapt as necessary.
 
-Where does the beneift of sparsification come from?
+Where does the benefit of sparsification come from?
 ---------------------------------------------------
 
-- Initially Deep Learning networks were implemented using Single Precision floating-point arithmentics (FP32). 
+- Initially Deep Learning networks were implemented using Single Precision floating-point arithmetic's (FP32). 
   During last few years, more research has been done regarding quantization impact and reduced accuracy of arithmetic operations.
   In many cases, 8-bits, or even less (down to 2-4 bits) are considered sufficient for correct operation.
   This is explained with huge number of parameters (weights) that all contribute to operation accuracy.
-  In case of DSP and EVE inference implementation, weights (controleld by parameter in import tool configuration file) can be quantized with 8-12 bit accuracy.
+  In case of DSP and EVE inference implementation, weights (controlled by parameter in import tool configuration file) can be quantized with 8-12 bit accuracy.
   Activation layer outputs (neuron output) are stored in memory with 8-bit accuracy (single byte). Accumulation is done with 40-bit accuracy, but
   final output is right-shifted before single byte is stored into memory. Right shift count is determined dynamically, uniquely for each layer and once per frame.
   More details can be found in http://openaccess.thecvf.com/content_cvpr_2017_workshops/w4/papers/Mathew_Sparse_Quantized_Full_CVPR_2017_paper.pdf 
@@ -874,11 +873,11 @@ Where does the beneift of sparsification come from?
 - Additional optimization (described in above article) is based on sparsification of Convolution Layer weights. Individual weights are forced to zero during training.
   This is achieved during "L1 regularization" phase (enforcing fewer bigger weights at the expense of others) and "Sparse" when small weights are clamped to zero.
   We can specify desired training target (E.g. 70% or 80% of all weights to be zero). During inference, computation is reorganized so that multiplication with single
-  weight parameter is done accross all input values. If weight is zero multiplcation against all input data (for that input channel) is skipped.
-  All computation are done using preloaded blocks into local L2 memory (using "shadow" EDMA transfers).
+  weight parameter is done across all input values. If weight is zero multiplication against all input data (for that input channel) is skipped.
+  All computation are done using pre-loaded blocks into local L2 memory (using "shadow" EDMA transfers).
 
-Benchmarking
-============
+Perofrmance data
+==================
 
 Computation performance of verified networks
 --------------------------------------------
@@ -897,16 +896,16 @@ JSegNet21            1024x512    8506.5                 76.47          378.18ms 
 JDetNet              768x320     2191.44                61.84          -                        -                      -                       -                      197.55ms
 ==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
 
-   * Sparsity provided in above table is average sparsity accross all convolution layers.
+   * Sparsity provided in above table is average sparsity across all convolution layers.
    * Optimal Model – with optimal placement of layers between EVE and DSP (certain NN layers run faster on DSP, like SoftMax; ARP32 in EVE emulates float operation in software, so this can be rather slow).
-
+   * Next release will have improved perforamnce by using optimal layer placement (EVE has slow SoftMax layer implementation) and will enable e.g. for Jacinto11 up to 28-30fps (on AM5749).
 
 Accuracy of selected networks
 -----------------------------
 
-Below tables are copied here for convinience, from https://github.com/tidsp/caffe-jacinto-models documents.
+Below tables are copied here for convenience, from https://github.com/tidsp/caffe-jacinto-models documents.
 
-- `Image classification <https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Imagenet_Classification_README.md>`_ : Top-1 classification accruracy indicates probability that ground truth is ranked highest. Top-5 classification accuracy indicates probability that ground truth is among top-5 ranking candidates.
+- `Image classification <https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Imagenet_Classification_README.md>`_ : Top-1 classification accuracy indicates probability that ground truth is ranked highest. Top-5 classification accuracy indicates probability that ground truth is among top-5 ranking candidates.
 
 ===============================================   ==============
 Configuration-Dataset Imagenet (1000 classes)     Top-1 accuracy
@@ -927,7 +926,7 @@ Sparse fine tuned (~80% zero coefficients)             96.11%           82.85%
 Sparse (80%), Quantized (8-bit dynamic fixed point)    95.91%           82.15%
 ===================================================    ===============  ========
 
-- `Object Detection <https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/VOC0712_ObjectDetect_README.md>`_ : Valiation accuracy can be in classification accuracy or mean average precision (mAP). Please note change in accuracy between "Initial" (dense) and "Sparse" model (performance boost can be 2x-4x):
+- `Object Detection <https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/VOC0712_ObjectDetect_README.md>`_ : Validation accuracy can be in classification accuracy or mean average precision (mAP). Please note change in accuracy between "Initial" (dense) and "Sparse" model (performance boost can be 2x-4x):
 
 ===========================================   =======
 Configuration-Dataset VOC0712                 mAP
@@ -986,7 +985,7 @@ Troubleshooting
      Traces that are generated by simulation tool can be visually compared against data blobs that are saved after desktop Caffe inference.
      If all the rest is correct, it is worth comparing intermediate results. Please keep in mind that numerical equivalence between Caffe desktop
      computation (using single precision FP32) and target computation (using 8-bit activations, and 8-12 bit weights) are not expected.
-     Still features maps (of intermediate layers) are supposed to be rather similar. If something is signficiantly different, please try to change
+     Still features maps (of intermediate layers) are supposed to be rather similar. If something is significantly different, please try to change
      number of bits for weights, or repeat import processing with more representative image. Problems of this sort should be rarely encountered. 
 
 
