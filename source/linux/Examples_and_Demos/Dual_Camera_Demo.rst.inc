@@ -1,16 +1,15 @@
 .. rubric:: Dual camera demo
    :name: dual camera demo
 
+Below diagram illustrates the video data processing flow of dual camera demo.
+
 .. Image:: ../images/Dual_camera_demo.png
 
-Dual camera example demo demonstrates following -
+**Dual camera example demo demonstrates following-**
 
 1. Video capture using V4L2 interface from up to two cameras.
-
 2. QT QWidget based drawing of user interface using linuxfb plugin. linuxfb is fbdev based software drawn QPA.
-
 #. Hardware accelerated scaling of input video from primary camera to display resolution using DSS IP.
-
 #. Hardware accelerated scaling of input video from secondary camera (if connected) to lower resolution using DSS IP.
 #. Hardware accelerated overlaying of two video planes and graphics plane using DSS IP.
 #. Scaling of two video planes and overlaying with graphics plane happens on the fly in single pass inside DSS IP using DRM atomic APIs.
@@ -22,8 +21,11 @@ Dual camera example demo demonstrates following -
 
 **Instructions to run dual camera demo**
 
+* Since the application need control of DRM resource (DSS) and there can be only one master, make sure that the wayland/weston is not running.  
+#/etc/init.d/weston stop
+
+* Run the dual camera application
 #dual-camera -platform linuxfb <0/1>
 
 * When last argument is set as 0, capture and display driver allocates memory from omap_bo pool. 
 * When it is set to 1, the buffers are allocated from CMEM pool. 
-* Since the application need control of DRM resource (DSS), make sure that the wayland/weston is not running (#etc /init.d/weston stop)
