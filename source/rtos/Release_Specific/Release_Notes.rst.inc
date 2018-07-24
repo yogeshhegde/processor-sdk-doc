@@ -60,14 +60,14 @@ Released July 2018.
    :name: new-features
 
 -  AM335x,AM437x,AM57x,K2G
-	- `Uniflash Flash programmer <Board_EVM_Abstration.html#uniflash>`__ support. Support available as EA feature and includes flashing using JTAG and UART interface. Following EVMs and flash interface are supported
+	- `Uniflash Flash programmer:<Board_EVM_Abstration.html#uniflash>`__. Support  introduced as EA feature in this release. Includes JTAG and UART interface based flashing support for:
 		- SPI:  AMIC110 ICE, AM335x EVM, AM335x ICE
 		- QSPI: AM437x  IDK, AM571x IDK,AM572x IDK,AM574x IDK,K2G ICE,K2G EVM
-		- Generic USB Bulk support
+	- Generic USB Bulk support
 -  K2G
-	- `Performance Audio Demo Framework <Examples_and_Demonstrations.html#performance-audio-demo>`__  for Audio Applications illustrating integration of I/O, auto detection,decoding,audio stream processing and encoding
--  `UART AppLoader <Foundational_Components.html#uart-apploader>`__ :Two stage bootloader support through UART interface
--  General improvement in Build flow with introduction of RULES_MAKE for improved OOB experience. Processor SDK envrionment variables updates during installation step
+	- `Performance Audio Demo Framework: <Examples_and_Demonstrations.html#performance-audio-demo>`__ Demo Audio Application illustrating integration of I/O, auto detection,decoding,audio stream processing and encoding
+-  `UART AppLoader: <Foundational_Components.html#uart-apploader>`__Two stage bootloader support through UART interface
+-  Improved OOB experience for overall building SDK with introduction of RULES_MAKE based environment. All envrionment variable dependency for processor SDK updates handled during post installation step
 
 
 .. rubric::  Component Version
@@ -528,7 +528,7 @@ platform/EVM.
 |USB Device Audio|    X    |    X    |      X      |   X   |   X    |
 +----------------+---------+---------+-------------+-------+--------+
 
-**Driver Unsupported CPU/Cores**
+**Unsupported Features**
 
 - In general driver support is available across all cores within an SOC
   with following exceptions

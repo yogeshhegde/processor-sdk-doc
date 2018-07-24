@@ -64,9 +64,9 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |                                      |          |.wiki.ti.com/index.php/TMDXIDK5728_         |                |                |                |                |
 |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |AM574x IDK                            | 1.0A     |Hardware User's Guide                       | X              | X              | X              |                |
-|                                      |                                      |          |                                            |                |                |                |                |
-|                                      |                                      |          |Hardware Setup with CCS                     |                |                |                |                |
+|                                      |`AM574x IDK                           | 1.0A     |`Hardware User's Guide <http://             | X              | X              | X              |                |
+|                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruij9>`__              |                |                |                |                |
+|                                      |tmdsidk574>`__                        |          |Hardware Setup with CCS                     |                |                |                |                |
 |                                      |                                      |          |                                            |                |                |                |                |
 |                                      |                                      |          |                                            |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
