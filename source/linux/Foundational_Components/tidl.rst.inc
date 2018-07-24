@@ -234,8 +234,10 @@ Imagenet Classification              `Image classification <http://downloads.ti.
 Segmentation                         `Pixel segmentation <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#segmentation>`_
 SSD_multibox                         `Single shot Multi-box Detection <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#ssd>`_
 test                                 `Unit test <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#test>`_
-Classification with class filtering  - described in this chapter -
+Classification with class filtering  tidl-matrix-gui-demo_
 ===================================  ===========================================================================================================
+
+.. _tidl-matrix-gui-demo:
 
 Matrix GUI demo
 ---------------
@@ -465,15 +467,13 @@ Import process is done in two steps.
 
 - The second step does calibration of dynamic quantization process by finding out ranges of activations for each layer. This is accomplished by invoking simulation (using native C implementation) which estimates initial values important for quantization process. These values are later updated on per frame basis, assuming strong temporal corelation between input frames.
 
-- Import configuration parameters described
+We provide a tool (Linux x86 or ARM Linux port) to import the Model and Parameters trained using either caffe frame work or tensor flow frame work in PC. \
+This tool will accept various parameters through import configuration file and generate the Model and Parameter file that the code \
+will be executed using TIDL library across multiple EVE and DSP cores. The import configuration file is available in {TIDL_install_path}/test/testvecs/config/import
 
-     We provide a tool (Linux x86 or ARM Linux port) to import the Model and Parameters trained using either caffe frame work or tensor flow frame work in PC. \
-     This tool will accept various parameters through import configuration file and generate the Model and Parameter file that the code \
-     will be executed using TIDL library across multiple EVE and DSP cores. The import configuration file is available in {TIDL_install_path}/test/testvecs/config/import
+Sample Usage: tidl_model_import.out ./test/testvecs/config/import/tidl_import_jseg21.txt
 
-     Sample Usage: tidl_model_import.out ./test/testvecs/config/import/tidl_import_jseg21.txt
-
-     The list of import configuration parameters is as below:
+The list of import configuration parameters is as below:
 
 ==================   ======================================================================================================================================================================================
 Paramaeter           Configuration
@@ -897,8 +897,7 @@ JDetNet              768x320     2191.44                61.84          -        
 Accuracy of selected networks
 -----------------------------
 
-- Image classification (https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Imagenet_Classification_README.md)
-     Top-1 classification accruracy indicates probability that ground truth is ranked highest. Top-5 classification accuracy indicates probability that ground truth is among top-5 ranking candidates.
+- `Image classification <https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Imagenet_Classification_README.md>`_ : Top-1 classification accruracy indicates probability that ground truth is ranked highest. Top-5 classification accuracy indicates probability that ground truth is among top-5 ranking candidates.
 
 ===============================================   ==============
 Configuration-Dataset Imagenet (1000 classes)     Top-1 accuracy
@@ -908,8 +907,7 @@ JacintoNet11 layerwise threshold sparse (80%)     57.3%
 JacintoNet11 channelwise threshold sparse (80%)   59.7%
 ===============================================   ==============
 
-- Image segmentation (https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Cityscapes_Segmentation_README.md)
-     Mean Intersection over Union is ratio between True Positives and sum of True Positives, False Negatives and False Positives
+- `Image segmentation <https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Cityscapes_Segmentation_README.md>`_ : Mean Intersection over Union is ratio between True Positives and sum of True Positives, False Negatives and False Positives
 
 ===================================================    ===============  ========
 Configuration-Dataset Cityscapes (5-classes)           Pixel accuracy   Mean IOU
@@ -920,8 +918,7 @@ Sparse fine tuned (~80% zero coefficients)             96.11%           82.85%
 Sparse (80%), Quantized (8-bit dynamic fixed point)    95.91%           82.15%
 ===================================================    ===============  ========
 
-- Object Detection (https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/VOC0712_ObjectDetect_README.md)
-     Valiation accuracy can be in classification accuracy or mean average precision (mAP). Please note change in accuracy between "Initial" (dense) and "Sparse" model (performance boost can be 2x-4x):
+- `Object Detection <https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/VOC0712_ObjectDetect_README.md>`_ : Valiation accuracy can be in classification accuracy or mean average precision (mAP). Please note change in accuracy between "Initial" (dense) and "Sparse" model (performance boost can be 2x-4x):
 
 ===========================================   =======
 Configuration-Dataset VOC0712                 mAP
@@ -935,10 +932,10 @@ Sparse fine tuned (~61% zero coefficients)    65.77%
 Troubleshooting
 ===============
 - Validate OpenCL stack is running
-    Upon Linux boot, OpenCL firmwares are downloaded to DSP and EVE.
-    As OpenCL monitor for IPU1 (which controls EVEs) is new addition, here is expected trace:
-    Enter following command on target: cat /sys/kernel/debug/remoteproc/remoteproc0/trace0
-    Following output is expected, indicating number of available EVE accelerators (below AM5729 trace indicates 4 EVEs):
+  Upon Linux boot, OpenCL firmwares are downloaded to DSP and EVE.
+  As OpenCL monitor for IPU1 (which controls EVEs) is new addition, here is expected trace:
+  Enter following command on target: cat /sys/kernel/debug/remoteproc/remoteproc0/trace0
+  Following output is expected, indicating number of available EVE accelerators (below AM5729 trace indicates 4 EVEs):
 
 ::
 
