@@ -5,66 +5,70 @@ Overview
 UART AppLoader is a standalone application used to download application image over UART
 from the host PC. Host PC shall use Teraterm tool to transfer application image to apploader.
 
-The UART AppLoader will be loaded by MMCSD SBL to the target platform. The Apploader
-application will load and execute the application binary to be tested, over UART on the target platform.
+The Apploader application loads and executes the application binary to be tested, 
+over UART on the target platform.
 
 Supported Platforms
 ^^^^^^^^^^^^^^^^^^^
 
-+----------------+------------------+
-|      SOC       |      PLATFORM    |
-+================+==================+
-| AM335x         |    EVMAM335x     |
-|                +------------------+
-|                |    ICEV2AM335x   |
-|                +------------------+
-|                |    ICEAMIC110    |
-+----------------+------------------+
-| AM437x         |    EVMAM437x     |
-|                +------------------+
-|                |    IDKAM437x     |
-+----------------+------------------+
-| AM571x         |    IDKAM571x     |
-+----------------+------------------+
-| AM572x         |    EVMAM572x     |
-+                +------------------+
-|                |    IDKAM572x     |
-+----------------+------------------+
-| AM574x         |    IDKAM574x     |
-+----------------+------------------+
-| K2G            |    EVMK2G        |
-|                +------------------+
-|                |    ICEK2G        |
-+----------------+------------------+
-| OMAPL137       |    EVMOMAPL137   |
-+----------------+------------------+
-| OMAPL138       |    LCDKOMAPL138  |
-+----------------+------------------+
-
-.. note::   In case of ICEAMIC110 and EVMOMAPL137 platforms, Sdcard boot mode is not available and so the below procedure cannot be used.
-            In both the cases, program Apploader to SPI flash using `Uniflash <Board_EVM_Abstration.html#programming-binaries-to-flash-device>`__ and boot the device from SPI flash.
-
++----------------+------------------+-----------------------+
+|      SOC       |      PLATFORM    |   Verified Boot Modes |
++================+==================+=======================+
+| AM335x         |    EVMAM335x     |       MMCSD           |
+|                +------------------+-----------------------+
+|                |    ICEV2AM335x   |       MMCSD           |
+|                +------------------+-----------------------+
+|                |    ICEAMIC110    |       SPI             |
++----------------+------------------+-----------------------+
+| AM437x         |    EVMAM437x     |       MMCSD           |
+|                +------------------+-----------------------+
+|                |    IDKAM437x     |       MMCSD           |
++----------------+------------------+-----------------------+
+| AM571x         |    IDKAM571x     |       MMCSD           |
++----------------+------------------+-----------------------+
+| AM572x         |    EVMAM572x     |       MMCSD           |
++                +------------------+-----------------------+
+|                |    IDKAM572x     |       MMCSD           |
++----------------+------------------+-----------------------+
+| AM574x         |    IDKAM574x     |       MMCSD           |
++----------------+------------------+-----------------------+
+| K2G            |    EVMK2G        |       MMCSD           |
+|                +------------------+-----------------------+
+|                |    ICEK2G        |       MMCSD           |
++----------------+------------------+-----------------------+
+| OMAPL137       |    EVMOMAPL137   |       SPI             |
++----------------+------------------+-----------------------+
+| OMAPL138       |    LCDKOMAPL138  |       MMCSD           |
++----------------+------------------+-----------------------+
 
 
 Pre-Requisites
 ^^^^^^^^^^^^^^
-* Download and install the latest nightly PDK package on the test PC
-* The Uart Apploader binaries will be found under <pdk_install_path>/ti/board/bin/<board_name>/sd/apploader_Test
+1. Download and install the Processor-SDK RTOS package. See the software product page for your device to get the latest version of this software:
 
-**SD Card preparation**
+-  `Processor SDK for
+   AM335x <http://www.ti.com/tool/processor-sdk-am335x>`__
+-  `Processor SDK for
+   AM437x <http://www.ti.com/tool/processor-sdk-am437x>`__
+-  `Processor SDK for
+   AM57xx <http://www.ti.com/tool/processor-sdk-am57x>`__
+-  `Processor SDK for
+   AMIC110 <http://www.ti.com/tool/PROCESSOR-SDK-AMIC110>`__
+-  `Processor SDK RTOS for
+   C6747/OMAP-L17 <http://www.ti.com/tool/processor-sdk-omapl137>`__
+-  `Processor SDK RTOS for
+   C6748/OMAP-L138 <http://www.ti.com/tool/processor-sdk-omapl138>`__
+-  `Processor SDK RTOS for
+   K2G <http://www.ti.com/tool/PROCESSOR-SDK-K2G>`__
 
-* Copy MLO to MMCSD card.
-* Rename apploader_Test to app and copy to MMCSD card.
+   From the appropriate software product page, go to the download page by
+   clicking "Get Software" for the RTOS package.
 
-**Target Platform Connection**
-
-1. Connect the MMCSD to the target platform.
-2. Make sure UART connection is established between Target platform and Host PC.
-3. Make sure the target platform is in MMCSD boot mode.
+2. The Uart Apploader binaries are found under <pdk_install_path>/ti/board/bin/<board_name>/sd/apploader_Test
 
 **Serial Connection**
 
-Establish the Teraterm connection with the following configurations:
+Establish Teraterm connection with the following configurations:
 
 
 * Baud Rate: 115200
@@ -78,11 +82,11 @@ Establish the Teraterm connection with the following configurations:
 * Flow Control : None
     
     
-Test Procedure
-^^^^^^^^^^^^^^
-1. Set the sysboot pins to MMCSD boot mode.
-2. Power cycle the board.
-3. MLO will be loaded from MMCSD, which loads the appLoader application.
+AppLoader Usage
+^^^^^^^^^^^^^^^
+1. Set the sysboot pins to the relevant boot mode(SPI / MMCSD).
+2. Make sure UART connection is established between Target platform and Host PC.
+3. Power cycle the board.
 4. Check the below output on the serial console. The application starts sending character 'C'
 
 ::
@@ -99,12 +103,13 @@ Test Procedure
         Please transfer file with XMODEM protocol...                     
         CCCC
 
+.. note::  The above log is for reference purpose and content might change based on latest software available in processor SDK release
+
 5. Now transfer the application binary to be tested over UART using Teraterm application.
 6. Use the following option in Teraterm to transfer the application binary.
   File -> Transfer -> XMODEM -> Send
-7. Upon success, the application will be loaded and executed by the appLoader.
-8. Check the below output on the serial console
-
+7. Upon success, the apploader loads and executes the application.
+8. Following is the sample output (using UART Diagnostic test), on the serial console.
 
 ::
 
@@ -123,7 +128,14 @@ Test Procedure
         Received: y                                                      
                                                                                     
         Test PASSED!
-        
 
-    
-.. note::  UART diagnostic application is loaded in this case
+.. note::   For SPI Boot Mode:
+            1. Program Apploader to SPI flash using `Uniflash <Board_EVM_Abstration.html#programming-binaries-to-flash-device>`__ and boot the device from SPI flash.
+            2. Set the sysboot pins to SPI Boot mode
+
+.. note::   For MMCSD Boot Mode:
+            1. Copy MLO to SD card.
+            2. Rename apploader_Test to app and copy to SD card.
+            3. Set the sysboot pins to MMCSD Boot mode
+
+ 

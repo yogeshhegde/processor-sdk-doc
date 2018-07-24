@@ -2,7 +2,7 @@
 Overview
 ^^^^^^^^
 
-Uniflash is a standalone tool used to download application image over UART serial interface
+Uniflash is a standalone tool used to download application image over UART/JTAG serial interface
 and flash it on to the flash device on the target platform.
 This section explains on how to use Uniflash CLI tool to flash images to the TI's MPU platform.
 
@@ -105,10 +105,10 @@ Following is the sample output on Windows.
 ::
 
         Executing the following command:
-        > C:\ti\uniflash_4.3.1\processors\ProcessorSDKSerialFlash.exe -h
+        > C:\ti\uniflash_[Version Num]\processors\ProcessorSDKSerialFlash.exe -h
 
         For more details and examples, please visit http://processors.wiki.ti.com/index.
-        php/UniFlash_v4_Quick_Guide#Command_Line_Interface
+        php/UniFlash_[Version Num]_Quick_Guide#Command_Line_Interface
 
 
         ----------------------------------------------------------------------------
@@ -159,15 +159,15 @@ of the target platform.
 
 There are two ways of loading and executing the Flash Writer on to the target platform:
 
-1. Loading Flash Writer using RBL (over UART interface), for the target platforms that support UART Boot mode
+1. Loading Flash Writer via ROM boot (over UART interface), for the target platforms that support UART Boot mode
 2. Loading Flash Writer over JTAG interface, for the target platforms that do not support UART Boot mode
 
 
-Loading Flash Writer using RBL
-++++++++++++++++++++++++++++++
+Loading Flash Writer via ROM boot
++++++++++++++++++++++++++++++++++
 
 For the target platforms that support UART Boot mode, use the following
-procedure to transfer flash writer to RBL
+procedure to transfer flash writer
 
 **Steps**
 
@@ -203,11 +203,11 @@ Following is the sample output on Windows.
 ::
 
         Executing the following command:
-        > C:\ti\uniflash_4.3.1\processors\ProcessorSDKSerialFlash.exe -c COM1 -f 
+        > C:\ti\uniflash_[Version Num]\processors\ProcessorSDKSerialFlash.exe -c COM1 -f 
         C:\ti\pdk\ti\board\utils\uniflash\bin\uart_iceAMIC110_flash_programmer.bin
 
         For more details and examples, please visit http://processors.wiki.ti.com/index.
-        php/UniFlash_v4_Quick_Guide#Command_Line_Interface
+        php/UniFlash_[Version Num]_Quick_Guide#Command_Line_Interface
 
 
         ----------------------------------------------------------------------------
@@ -271,11 +271,11 @@ Following is the sample output on Windows.
 ::
         
         Executing the following command:
-        > "C:\ti\uniflash_4.3.1\deskdb\content\TICloudAgent\win\ccs_base\DebugServer\bin\DSLite" load --config=C:\Users\username\ti\CCSTargetConfigurations\iceAMIC110.ccxml -f C:\ti\pdk\packages\ti\board\utils\uniflash\bin\iceAMIC110\uart_iceAMIC110_flash_programmer.out -n 1
+        > "C:\ti\uniflash_[Version Num]\deskdb\content\TICloudAgent\win\ccs_base\DebugServer\bin\DSLite" load --config=C:\Users\username\ti\CCSTargetConfigurations\iceAMIC110.ccxml -f C:\ti\pdk\packages\ti\board\utils\uniflash\bin\iceAMIC110\uart_iceAMIC110_flash_programmer.out -n 1
 
-        For more details and examples, please visit http://processors.wiki.ti.com/index.php/UniFlash_v4_Quick_Guide#Command_Line_Interface
+        For more details and examples, please visit http://processors.wiki.ti.com/index.php/UniFlash_[Version Num]_Quick_Guide#Command_Line_Interface
 
-        DSLite version 8.1.0.1275
+        DSLite version [Version Num]
         Configuring Debugger (may take a few minutes on first launch)...
                 Initializing Register Database...
                 Initializing: IcePick_D_0
@@ -384,11 +384,11 @@ Following is the sample output on Windows.
 ::
 
         Executing the following command:
-        > C:\ti\uniflash_4.3.1\processors\ProcessorSDKSerialFlash.exe -c COM7 -f
+        > C:\ti\uniflash_[Version Num]\processors\ProcessorSDKSerialFlash.exe -c COM7 -f
         C:\ti\pdk\packages\ti\starterware\binary\bootloader\bin\am335x-evm\gcc\bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0x0
 
         For more details and examples, please visit http://processors.wiki.ti.com/index.
-        php/UniFlash_v4_Quick_Guide#Command_Line_Interface
+        php/UniFlash_[Version Num]_Quick_Guide#Command_Line_Interface
 
 
         ----------------------------------------------------------------------------
@@ -440,11 +440,11 @@ Following is the sample output on Windows.
 ::
 
         Executing the following command:
-        > C:\ti\uniflash_4.3.1\processors\ProcessorSDKSerialFlash.exe -c COM7 -e 10000 -
+        > C:\ti\uniflash_[Version Num]\processors\ProcessorSDKSerialFlash.exe -c COM7 -e 10000 -
         d 1 -o 20000
 
         For more details and examples, please visit http://processors.wiki.ti.com/index.
-        php/UniFlash_v4_Quick_Guide#Command_Line_Interface
+        php/UniFlash_[Version Num]_Quick_Guide#Command_Line_Interface
 
 
         ----------------------------------------------------------------------------
