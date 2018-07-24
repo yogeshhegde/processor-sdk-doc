@@ -776,6 +776,94 @@ To disable do
 Currently this feature is not supported for Dual EMAC ethernet type
 (i.e when EMAC firmware is running on PRU ICSS).
 
+Receive Interrupt Pacing
+------------------------
+
+Currently PRUETH driver receives one interrupt per frame from each
+port. This results in lesser performance due to interrupt handling
+overhead in the Linux kernel especially for small size frames such
+as that used in grid infrastructure networks.
+
+A well-known technique used in rx packet processing of a network driver
+is to use rx interrupt pacing to accumulate the Ethernet frames at the
+hardware or underlying network device’s buffer so as to generate less
+number of interrupts per packet to the host. This reduces the overhead
+in Linux kernel associated with interrupt handling by distributing the
+same over muliple packets, thereby reducing CPU usage. In this case
+PRUETH firmware accumulates the frames in the ingress ring buffer
+between host and PRU for a configurable period of time and raise an
+interrupt on timeout expiry (timeout equals to the configured period)
+there by resulting in lesser number of interrupts per frame. PRUETH
+firmware implements a Rx Pacing timer and the same gets configured by
+the PRUETH driver for HSR/PRP Ethernet types when the network device
+is opened and stopped when the device is closed. This timer is
+implemented per interface since driver has separate interrupts per
+PRU or interface.
+
+The user may show the timer value using the ethtool –c option which
+is a standard Linux command to show different coalesce parameters at
+the network device. –C option allows user to override the default value
+at the device. The driver uses a default timeout value of 123 usec
+(Duration of an MTU frame). User is not expected to change this as
+there are limited number of buffers in the receive path between Host
+and PRU and using a bigger value can result in packet loss. However
+ethtool –c option is implemented in the PRUETH driver to show current
+setting in the driver and -C to change it if needed. Driver supports
+rx-usecs and adaptive-rx parameters from the available list of
+parameters and can be changed using –C option. When adaptive-rx is
+turned ON, every time a frame is received at the PRU and the buffer
+is empty, the PRU firmware raises an interrupt. However if the buffer
+is already occupied with some frames and the timer is already running,
+it will wait until timer expiry to raise the next interrupt. This would
+be useful to improve latency when using interrupts pacing. Currently
+this is disabled by default as enabling the same result in a lower
+throughput. However user may enable the same through ethtool –C
+command if needed.
+
+::
+
+Example
+
+To show the current value of pacing timer, use
+
+ >ethtool –c <Ethernet interface>
+
+To change the current value, use
+
+ >ethtool –C <Ethernet interface> <param> <value> <param> <value>
+
+For example for eth2, user type
+
+ >ethtool –c eth2
+
+Note that this changes the timer at both PRUs. So the command may be issued
+to one of the pair of Ethernet interfaces used for the HSR or PRP interface.
+i.e for ICSS2 (assuming eth2 and eth3), user may use either of the below
+command to set the timer
+
+ >ethtool –C eth2 rx-usecs 123
+or
+ >ethtool –C eth3 rx-usecs 123
+
+Similarly to enable adaptive-rx, user types
+
+ >ethtool –C eth2 adaptive-rx on
+or
+ >ethtool –C eth3 adaptive-rx on
+
+Both parameters may be updated in one go as
+
+ >ethtool –C eth2 rx-usecs 123 adaptive-rx on
+
+More details on the command syntax are available by typing man ethtool
+on a Linux PC as this is a standard Linux command.
+
+.. rubric:: Limitation
+   :name: Limitation
+
+Currently this feature is not supported for Dual EMAC ethernet type
+(i.e when EMAC firmware is running on PRU ICSS).
+
 Net-SNMP
 --------
 
