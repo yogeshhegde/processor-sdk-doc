@@ -250,7 +250,7 @@ with three buttons:
 * ImageNet classification using Jacinto11 model with live camera input.
 
 Imagenet classification using Jacinto11 model, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving 
-IVAHD), and sent to OpenCV processing pipeline. Video clip is in 320x320 resolution, and scaled down to 224x224 before sending to TIDL_API. Result of this
+IVAHD), and sent to OpenCV processing pipeline. Video clip is in **320x320** resolution, and scaled down to 224x224 before sending to TIDL_API. Result of this
 processing is standard Imagenet classification output (1D vector with 1000 elements). But, there is a subset of common objects expected to be used with the
 demo, so classification results are filtered using list of classes provided as command line argument.
 
@@ -292,8 +292,8 @@ On AM5749, above two examples can be run on EVE as well, by changing "-t" parame
 ::
 
      cd /usr/share/ti/tidl/examples/classification
-     ./tidl_classification -n 2 -t d -l ./imagenet.txt -s ./classlist.txt -i 1 -c ./stream_config_j11_v2.txt
-     ./tidl_classification -n 2 -t d -l ./imagenet.txt -s ./classlist.txt -i ./clips/test2.mp4 -c ./stream_config_j11_v2.txt
+     ./tidl_classification -n 2 -t e -l ./imagenet.txt -s ./classlist.txt -i 1 -c ./stream_config_j11_v2.txt
+     ./tidl_classification -n 2 -t e -l ./imagenet.txt -s ./classlist.txt -i ./clips/test2.mp4 -c ./stream_config_j11_v2.txt
 
 
 Please note that imagenet.txt is list of all classes (labels) that can be detected by the model specified in configuration file (stream_config_j11_v2.txt). List of filtered (allowed) detections is specified in ./classlist.txt (using subset of strings from imagenet.txt). E.g. currently following subset is used:
@@ -321,10 +321,18 @@ Following commands should  be executed to create synthetic video clip that can b
     convert ./*.jpg -delay 500 -morph 300 -scale 320x320 %05d.jpg
     ffmpeg -i %05d.jpg -vcodec libx264 -profile:v main -pix_fmt yuv420p -r 15 test.mp4
 
+If video clip is captured or prepared externally, it needs to be rescaled to 320x320 resolution first.
+Then, it should be copied to /usr/share/ti/tidl/examples/classification/clips/ (or just overwrite test1.mp4 in that same folder).
+
+
 Description of Matrix-GUI example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Example is based on "imagenet" and "test" examples, with few additions related to decision filtering and visualization. There are two source files only:
+
+
+.. Image:: ../images/tidl-demo1.png
+
 
 * main.cpp
     * Parse command line arguments (ParseArgs) and show help how to use the program (DisplayHelp)
@@ -374,7 +382,8 @@ Additional public TI resources
 ------------------------------
 
 Following two Caffe-related repositories (maintained by TI team) provides necessary tools for the training phase. 
-They include modifications to enable higher compute performance in inference phase.
+Please use them **as primary source of information for training**, for TIDL inference software stack.
+They include modifications in Caffe source tree to enable higher compute performance (with TIDL inference).
 
 =========================================================================      ===============================================================================================================================
                     Repo/URL                                                     Description
@@ -896,6 +905,8 @@ JDetNet              768x320     2191.44                61.84          -        
 
 Accuracy of selected networks
 -----------------------------
+
+Below tables are copied here for convinience, from https://github.com/tidsp/caffe-jacinto-models documents.
 
 - `Image classification <https://github.com/tidsp/caffe-jacinto-models/blob/caffe-0.17/docs/Imagenet_Classification_README.md>`_ : Top-1 classification accruracy indicates probability that ground truth is ranked highest. Top-5 classification accuracy indicates probability that ground truth is among top-5 ranking candidates.
 
