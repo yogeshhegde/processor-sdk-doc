@@ -60,13 +60,12 @@ Released July 2018.
    :name: new-features
 
 -  AM335x,AM437x,AM57x,K2G
-	- `Uniflash Flash programmer:<Board_EVM_Abstration.html#uniflash>`__. Support  introduced as EA feature in this release. Includes JTAG and UART interface based flashing support for:
+	- `Uniflash Flash programmer: <Board_EVM_Abstration.html#uniflash>`__ Available as Early Adopter feature in this release. Includes JTAG and UART interface based flashing support for:
 		- SPI:  AMIC110 ICE, AM335x EVM, AM335x ICE
 		- QSPI: AM437x  IDK, AM571x IDK,AM572x IDK,AM574x IDK,K2G ICE,K2G EVM
-	- Generic USB Bulk support
 -  K2G
 	- `Performance Audio Demo Framework: <Examples_and_Demonstrations.html#performance-audio-demo>`__ Demo Audio Application illustrating integration of I/O, auto detection,decoding,audio stream processing and encoding
--  `UART AppLoader: <Foundational_Components.html#uart-apploader>`__Two stage bootloader support through UART interface
+-  `UART AppLoader: <Foundational_Components.html#uart-apploader>`__ Two stage bootloader support through UART interface
 -  Improved OOB experience for overall building SDK with introduction of RULES_MAKE based environment. All envrionment variable dependency for processor SDK updates handled during post installation step
 
 
@@ -175,8 +174,8 @@ Fixed Issues
 |                       |                       | does not take to      |
 |                       |                       | effect                |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3030            | omap L13x             | Interrupt mode is not |
-|                       |                       | functional            |
+| PRSDK-3030            | omap L13x             | SPI driver Interrupt  |
+|                       |                       | mode is not functional|
 |                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
 | PRSDK-3856            | AM335x AM437x         | StarterWare build from|
@@ -200,8 +199,8 @@ Fixed Issues
 |                       |                       | returns -1 with large |
 |                       |                       | stream of data        |
 +-----------------------+-----------------------+-----------------------+
-| PRSDK-3749            | K2G                   | Spurrious interrupt   |
-|                       |                       | in device mode config |
+| PRSDK-3749            | K2G                   |USB Spurrious interrupt|
+|                       |                       |in device mode config  |
 +-----------------------+-----------------------+-----------------------+
 | PRSDK-3932            | AMIC110               | DDR Less bootloader   |
 |                       |                       | support               |
@@ -258,7 +257,8 @@ The following table lists all supported devices for a given installer.
 +----------------+------------+-------------------------------------------------------------------------------+
 |`RTOS-AM437X`_  |`AM437x`_   | `AM4376`_, `AM4377`_, `AM4378`_, `AM4379`_                                    |
 +----------------+------------+-------------------------------------------------------------------------------+
-|`RTOS-AM57X`_   |`AM57x`_    |`AM5706`_, `AM5708`_, `AM5716`_, `AM5718`_, `AM5726`_, `AM5728`_,AM5746, AM5748|
+|`RTOS-AM57X`_   |`AM57x`_    |`AM5706`_, `AM5708`_, `AM5716`_, `AM5718`_, `AM5726`_, `AM5728`_,              |
+|                |            |`AM5746`_, `AM5748`_                                                           |
 +----------------+------------+-------------------------------------------------------------------------------+
 |`RTOS-C665X`_   |`C665x`_    | `C6652`_, `C6654`_, `C6655`_, `C6657`_                                        |
 +----------------+------------+-------------------------------------------------------------------------------+
@@ -426,6 +426,8 @@ platform/EVM.
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
 | USB Device Audio |   X   |      |     | X |   |   |   |   |   |   |     |     |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
+| USB Device Bulk  |   X   |   X  |  X  | X |   |   |   | X |   |   |     |  X  |
++------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
 | VPS              |       |      |  X  |   |   |   |   |   |   |   |  X  |  X  |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+
 
@@ -495,6 +497,8 @@ platform/EVM.
 | USB              |       |   |   | X |     |     |   |   |   | X |       |     |     |
 +------------------+-------+---+---+---+-----+-----+---+---+---+---+-------+-----+-----+
 | USB Device Audio |       |   |   |   |     |     |   |   |   |   |       |     |     |
++------------------+-------+---+---+---+-----+-----+---+---+---+---+-------+-----+-----+
+| USB Device Bulk  |       |   |   | X |     |     |   |   |   |   |       |     |     |
 +------------------+-------+---+---+---+-----+-----+---+---+---+---+-------+-----+-----+
 
 
@@ -649,6 +653,16 @@ release and any known workaround.
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
 |  Record ID  |  Platform   |    Area     |   Summary   | Workaround                                              |
 +=============+=============+=============+=============+=========================================================+
+| PRSDK-642   | \*          | Processor   | RTOS: SDK   | Ignore the Eclipse/CCS warning                          |          
+|             |             | SDK         | components  |                                                         |
+|             |             | Installer   | should be   |                                                         |
+|             |             |             | signed to   |                                                         |
+|             |             |             | avoid       |                                                         |
+|             |             |             | Eclipse/CCS |                                                         |
+|             |             |             | warning     |                                                         |
+|             |             |             | when        |                                                         |
+|             |             |             | importing   |                                                         |
++-------------+-------------+-------------+-------------+---------------------------------------------------------+
 | PRSDK-335   | AM4X        | High-Speed  | USB host    | Re-enumeration support for the case of                  |
 |             |             | Drivers     | MSC fails   | device unplugged                                        |
 |             |             |             | to          | and plugged back currently fails for the                |
@@ -741,7 +755,7 @@ release and any known workaround.
 |             |             |             | 1GHz Flip   |                                                         |
 |             |             |             | Chip        |                                                         |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4184  | am574x-idk  | Board       | Hello_World:| Problem observed with using GCC semihosting support     |
+| PRSDK-4184  | am57x,k2x   | Board       | Hello_World:| Problem observed with using GCC semihosting support     |
 |             |             | Diagnostic  | Baremetal   | Use UART driver for input and output                    |
 |             |             |             | ARM         |                                                         |
 |             |             |             | Cortex-A15  |                                                         |
