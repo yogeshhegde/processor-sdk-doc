@@ -28,24 +28,25 @@ as shown below.
 
 Windows
 ::
-       set TOOLS_INSTALL_PATH=<Path for the toools root folder>
+       set TOOLS_INSTALL_PATH=<Path for the tools root folder>
 
 Linux
 ::
-       TOOLS_INSTALL_PATH=<Path for the toools root folder>
+       TOOLS_INSTALL_PATH=<Path for the tools root folder>
 
 
 .. rubric::  Build Setup
    :name: build-setup
 
 **Migration:** There is no migration needed for default components in processor SDK.
-Custom software modules and/or mmodules outside processor SDK may need to include 
+Custom software modules and/or mmodules outside processor SDK should include 
 RULES_MAKE variable.
 
 **Additional Details**:
 Rules.make file is used instead of pdksetupenv to setup the build environment variables.
-Components inside processor SDK are updated to align with this change. Add below line
-in the component make file to use the updated build system.
+Components inside processor SDK are updated to align with this change. Any applications
+making use of pdksetupenv from processor SDK to setup the build environment variables
+should include below line in the application makefile.
 
   include $(RULES_MAKE)
 
