@@ -63,9 +63,9 @@ development.
       $ sudo dd if=u-boot.ais of=/dev/sd<N> seek=117 bs=512 conv=fsync
 
 -  For more details, refer to `Processor SDK U-Boot Release
-   Notes <Foundational_Components.html#u-boot-release-notes>`__
+   Notes <Foundational_Components_U-Boot.html#u-boot-release-notes>`__
    and `Processor SDK U-Boot User’s
-   Guide <Foundational_Components.html#u-boot-user-s-guide>`__
+   Guide <Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__
 
 .. rubric:: Linux Kernel
    :name: linux-kernel
@@ -76,9 +76,9 @@ development.
 -  Kernel is device tree (.dts) based, and not board platform based
    implementation.
 -  For more details, refer to `Processor SDK Kernel Release
-   Notes <Foundational_Components.html#kernel-release-notes>`__
+   Notes <Foundational_Components_Kernel_Release_Notes.html>`__
    and `Processor SDK Kernel User’s
-   Guide <Foundational_Components.html#users-guide>`__
+   Guide <Foundational_Components_Kernel_Users_Guide.html>`__
 
 .. rubric:: Building the Linux SDK
    :name: building-the-linux-sdk

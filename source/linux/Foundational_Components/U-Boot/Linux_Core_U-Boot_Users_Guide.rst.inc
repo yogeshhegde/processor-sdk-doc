@@ -812,7 +812,7 @@ the kernel what type of file system to use.
 By default for our evms properly loading, setting bootargs and booting
 the kernel is handled by running "run nandboot" in U-boot. Information
 on creating a UBIFS can be found
-`here <Foundational_Components.html#building-ubi-file-system>`__.
+`here <Foundational_Components_Kernel_Drivers.html#building-ubi-file-system>`__.
 
 | 
 
@@ -1437,7 +1437,7 @@ enabled.
 MLO, u-boot.img (optional), DTB, uImage are stored in QSPI flash memory.
 Refer the "Memory Layout" section for offset details. To flash binaries
 to QSPI, you can use
-`DFU <Foundational_Components.html#writing-to-qspi-using-dfu>`__,
+`DFU <Foundational_Components_U-Boot.html#writing-to-qspi-using-dfu>`__,
 for example.
 
 The QSPI boot uses uImage. Build the kernel uImage. You will need to
@@ -1465,7 +1465,7 @@ From u-boot prompt
     => saveenv
 
 Set the `board boot from
-QSPI <Foundational_Components.html#writing-to-qspi-from-u-boot>`__
+QSPI <Foundational_Components_U-Boot.html#writing-to-qspi-from-u-boot>`__
 and reset the EVM. The SPL directly boots the kernel image from QSPI.
 
 | 

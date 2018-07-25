@@ -293,7 +293,7 @@ After opening CCS with a new workspace:
 #. The *Projects:* list will now be populated with the projects found.
 #. Uncheck the following projects. They are Qt projects and are imported
    using a different method. For more information, see the `Hands on
-   with QT <Examples_and_Demos.html#hands-on-with-qt>`__
+   with QT <Examples_and_Demos_Sub-system_Demos.html#hands-on-with-qt>`__
    training.
 
    -  matrix\_browser
@@ -480,7 +480,7 @@ CCS as installed with this SDK includes the Remote System Explorer (RSE)
 plugin. RSE provides drag-and-drop access to the target file system as
 well as remote shell and remote terminal views within CCS. Refer to
 `Processor Linux SDK CCS Remote System Explorer
-Setup <Foundational_Components.html#remote-explorer-setup-with-ccs>`__
+Setup <Foundational_Components_Tools.html#remote-explorer-setup-with-ccs>`__
 to establish a connection to your target EVM and start using RSE. There
 is also a more detailed training using RSE with the SDK at `Processor
 SDK Linux Training: Hands on with the Linux
@@ -495,6 +495,6 @@ In order to debug Linux code using Code Composer Studio, you first need
 to configure the GDB server on both the host and target EVM side.
 
 Please refer to `Processor Linux SDK CCS GDB
-Setup <Foundational_Components.html#gdb-setup-with-ccs>`__ for more
+Setup <Foundational_Components_Tools.html#gdb-setup-with-ccs>`__ for more
 information.
 

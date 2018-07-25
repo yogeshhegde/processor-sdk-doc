@@ -125,7 +125,7 @@ easy configuration. In Linux, these are located in the
 <SDK\_install\_dir>/example-applications/pru-icss-x.y.z/include
 directory by default. In the Git repository these are located in the
 include folder. See the `header
-files <Industrial_Protocols.html#header-files>`__ page for more information.
+files <Industrial_Protocols_PRU-ICSS.html#header-files>`__ page for more information.
 
 | 
 

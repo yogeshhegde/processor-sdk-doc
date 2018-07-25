@@ -67,7 +67,7 @@ utility.
 
 | Instructions on executing menuconfig can be found here: `Customizing
   the Kernel
-  Configuration <Foundational_Components.html#customizing-the-configuration>`__
+  Configuration <Foundational_Components_Kernel_Users_Guide.html#customizing-the-configuration>`__
 
 | 
 | Look under:
@@ -80,5 +80,5 @@ If mouse support is not already included in the kernel, enable the above
 two configuration by typing 'y' and rebuild the kernel. You can find
 instructions for rebuilding kernel here:
 
-`Linux Kernel User's Guide <Foundational_Components.html#users-guide>`__
+`Linux Kernel User's Guide <Foundational_Components_Kernel_Users_Guide.html>`__
 

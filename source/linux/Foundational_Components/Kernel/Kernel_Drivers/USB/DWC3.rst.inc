@@ -465,7 +465,7 @@ issue such requests.
 
 Any time we don't have a functioning Host on the Test Setup and still
 want to enter USB 2.0 Test Modes, we can use this `non-standard
-interface <Foundational_Components.html#non-standard-debugfs-interface>`__
+interface <Foundational_Components_Kernel_Drivers.html#non-standard-debugfs-interface>`__
 for that purpose. One such use-case is for low level USB 2.0 Eye Diagram
 testing where the DUT (Device Under Test) is connected to an
 oscilloscope through a test fixture.

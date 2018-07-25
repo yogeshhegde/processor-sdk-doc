@@ -258,7 +258,7 @@ To reload DSP1 with this new executable, we perform the following steps:
     [27646.078026] virtio_rpmsg_bus virtio2: creating channel rpmsg-proto addr 0x3d
 
 More info related to loading firmware to the various cores can be found
-`here <Foundational_Components.html#firmware-loading-and-unloading>`__.
+`here <Foundational_Components_Multimedia.html#firmware-loading-and-unloading>`__.
 
 Finally, we can run the example on DSP1:
 
@@ -989,7 +989,7 @@ You can dump the IPU IOMMU page tables with the following commands:
 +--------+------------------------------------------------------------+
 
 Please see the `corresponding DSP
-documentation <Foundational_Components.html#inspecting-the-dsp-iommu-page-tables-at-run-time>`__
+documentation <Foundational_Components_IPC.html#inspecting-the-dsp-iommu-page-tables-at-run-time>`__
 for more details on interpreting the output.
 
 | 

@@ -33,11 +33,11 @@ multimedia applications.
 On AM57xx processor, ARM offloads H.264, VC1, MPEG-4, MPEG-2 and MJPEG
 codecs processing to IVA-HD hardware accelerator. Please refer to
 `AM57xx Multimedia
-Training <Foundational_Components.html#multimedia>`__
+Training <Foundational_Components_Multimedia.html>`__
 guide to learn more on AM57xx multimedia capabilities, demos, software
 stack, gstreamer plugins and pipelines. Also refer to AM57xx `Graphics
 Display Getting Started
-Guide <Foundational_Components.html#graphics-and-display>`__
+Guide <Foundational_Components_Graphics.html>`__
 to learn on AM57xx graphics software architecture, demos, tools and
 display applications.
 
@@ -133,7 +133,7 @@ Processor SDK includes ARM based multimedia using opensource GPLv2+
 FFmpeg/Libav codecs, the codec portfolio includes MPEG-4, H.264 for
 video in VGA/WQVGA/480p resolution and AAC codec for audio. Codec
 portforlio for Processor SDK on AM57xx device is listed
-`here <Foundational_Components.html#capabilities-of-iva-hd-vpe-dsp-and-arm>`__
+`here <Foundational_Components_Multimedia.html#capabilities-of-iva-hd-vpe-dsp-and-arm>`__
 
 The script file to launch multimedia demo detects the display enabled
 and accordingly decodes VGA or 480p video. In AM37x platform VGA clip is

@@ -12,11 +12,11 @@ Power Management
 
 Accelerated Multimedia
 ======================
-Refer to various GStreamer pipelines documented at `Multimedia <Foundational_Components.html#processor-sdk-linux-multimedia>`__ chapter.
+Refer to various GStreamer pipelines documented at `Multimedia <Foundational_Components_Multimedia.html>`__ chapter.
 
 Graphics and Display
 ====================
-Refer to various SGX 3D demos and other Graphics applications at `Graphics & Display <Foundational_Components.html#processor-sdk-linux-graphics-and-display>`__ chapter.
+Refer to various SGX 3D demos and other Graphics applications at `Graphics & Display <Foundational_Components_Graphics.html>`__ chapter.
 
 DSP offload with OpenCL
 =======================

@@ -170,7 +170,7 @@ Majority of workload is in following lines:
 
 Not all OpenCV kernels can be dispatched to DSP via OpenCL. Please refer
 to
-`OpenCV#OpenCL\_C\_C66\_DSP\_kernels <Foundational_Components.html#opencl-c-c66-dsp-kernels>`__
+`OpenCV#OpenCL\_C\_C66\_DSP\_kernels <Foundational_Components_OpenCV.html#opencl-c-c66-dsp-kernels>`__
 for the list of kernels which are currently DSP accelerated.
 
 In order to use OpenCL dispatch, it is necessary to:

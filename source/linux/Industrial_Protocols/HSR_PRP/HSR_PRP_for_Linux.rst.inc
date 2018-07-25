@@ -2084,7 +2084,7 @@ sending frame over both links and discarding the duplicate at the
 receive side. The test requires two DAN-P or DAN-H nodes connected over
 eth2 and eth3 Ethernet Links. Boot up the EVM with bootargs set to
 configure PRU Ethernet in HSR or PRP mode as described at
-`Processor\_SDK\_Linux\_HSR\_PRP#Testing\_HSR.2FPRP\_Firmware\_Offload <Industrial_Protocols.html#testing-hsr-prp-firmware-offload>`__
+`Processor\_SDK\_Linux\_HSR\_PRP#Testing\_HSR.2FPRP\_Firmware\_Offload <Industrial_Protocols_HSR_PRP.html#plsdk-hsr-prp-testing-firmware-offload>`__
 Do an iperf UDP test at 88Mbits/sec for MTU sized packets (size = 1466)
 and then pull out either eth2 or eth3 Ethernet cable. Make sure iperf
 stats doesn't show packet loss during the test period. Here is the log

@@ -54,11 +54,11 @@ Host
 
 How to Develop with 3D Graphics
 ===================================
-Please refer to `Graphics & Display <Foundational_Components.html#processor-sdk-linux-graphics-and-display>`__ chapter for details.
+Please refer to `Graphics & Display <Foundational_Components_Graphics.html>`__ chapter for details.
 
 How to Develop accelerated Multimedia using GStreamer on AM57xx
 =================================================================
-Please refer to `Multimedia <Foundational_Components.html#processor-sdk-linux-multimedia>`__ chapter for details.
+Please refer to `Multimedia <Foundational_Components_Multimedia.html>`__ chapter for details.
 
 .. Build a Ubuntu Linux host under VMware
 .. ==================================================================
@@ -105,11 +105,11 @@ Preventing BeagleBone board reset on JTAG Connect
 
 Processor SDK IPC Quick Start Guide
 ======================================
-Please refer to `IPC Quick Started Guide  <Foundational_Components.html#ipc-quick-start-guide>`__ chapter for details.
+Please refer to `IPC Quick Started Guide  <Foundational_Components_IPC.html#ipc-quick-start-guide>`__ chapter for details.
 
 Create DSP and IPU firmware using PDK drivers and IPC to load from ARM Linux
 =============================================================================
-Please refer to `IPC on AM57xx <Foundational_Components.html#ipc-for-am57xx>`__ chapter for details.
+Please refer to `IPC on AM57xx <Foundational_Components_IPC.html#ipc-for-am57xx>`__ chapter for details.
 
 
 

@@ -94,25 +94,25 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 | `IPC`_        | `OpenVX`_                | `CMEM`_          |                                   |
 +---------------+--------------------------+------------------+-----------------------------------+
 
-.. _U-Boot: Foundational_Components.html#processor-sdk-linux-u-boot 
-.. _Processor SDK Linux U-Boot: Foundational_Components.html#_processor-sdk-linux-u-boot 
-.. _Boot Monitor: Foundational_Components.html#processor-sdk-linux-boot-monitor
-.. _Kernel: Foundational_Components.html#processor-sdk-linux-kernel
-.. _Processor SDK Linux Kernel: Foundational_Components.html#processor-sdk-linux-kernel
-.. _Filesystem: Foundational_Components.html#processor-sdk-linux-filesystem
-.. _Processor SDK Linux Filesystem: Foundational_Components.html#processor-sdk-linux-filesystem
-.. _Tools: Foundational_Components.html#processor-sdk-linux-tools
-.. _Processor SDK Linux Tools: Foundational_Components.html#processor-sdk-linux-tools
+.. _U-Boot: Foundational_Components_U-Boot.html
+.. _Processor SDK Linux U-Boot: Foundational_Components_U-Boot.html
+.. _Boot Monitor: Foundational_Components_Boot_Monitor.html
+.. _Kernel: Foundational_Components_Kernel.html
+.. _Processor SDK Linux Kernel: Foundational_Components_Kernel.html
+.. _Filesystem: Foundational_Components_Filesystem.html
+.. _Processor SDK Linux Filesystem: Foundational_Components_Filesystem.html
+.. _Tools: Foundational_Components_Tools.html
+.. _Processor SDK Linux Tools: Foundational_Components_Tools.html
 .. _OpenCL: http://downloads.ti.com/mctools/esd/docs/opencl/index.html
-.. _OpenCV: Foundational_Components.html#processor-sdk-linux-opencv
-.. _Graphics & Display: Foundational_Components.html#processor-sdk-linux-graphics-and-display
-.. _Multimedia: Foundational_Components.html#processor-sdk-linux-multimedia
+.. _OpenCV: Foundational_Components_OpenCV.html
+.. _Graphics & Display: Foundational_Components_Graphics.html
+.. _Multimedia: Foundational_Components_Multimedia.html
 .. _Examples, Demos: Examples_and_Demos.html
 .. _PRU-ICSS: Industrial_Protocols.html
-.. _Virtualization: Foundational_Components.html#processor-sdk-linux-virtualization
-.. _IPC: Foundational_Components.html#processor-sdk-linux-ipc
-.. _OpenVX: Foundational_Components.html#processor-sdk-linux-openvx
-.. _CMEM: Foundational_Components.html#processor-sdk-linux-cmem
+.. _Virtualization: Foundational_Components_Virtualization.html
+.. _IPC: Foundational_Components_IPC.html
+.. _OpenVX: Foundational_Components_OpenVX.html
+.. _CMEM: Foundational_Components_CMEM.html
 
 +----------------+-------------------------+------------------+-----------------------------------+
 | **PRU-ICSS Protocols** (more information on each piece of the distribution)                     | 
@@ -122,11 +122,11 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 | `CCLINK`_      |                         |                  |                                   |
 +----------------+-------------------------+------------------+-----------------------------------+
 
-.. _DUAL_EMAC: Industrial_Protocols.html#dual-emac
-.. _HSR\_PRP: Industrial_Protocols.html#hsr-prp
-.. _RSTP: Industrial_Protocols.html#rstp
-.. _PTP: Industrial_Protocols.html#ptp
-.. _CCLINK: Industrial_Protocols.html#cclink
+.. _DUAL_EMAC: Industrial_Protocols_PRU-ICSS.html
+.. _HSR\_PRP: Industrial_Protocols_HSR_PRP.html
+.. _RSTP: Industrial_Protocols_RSTP.html
+.. _PTP: Industrial_Protocols_PTP.html
+.. _CCLINK: Industrial_Protocols_CCLINK.html
 
 .. rubric:: Feedback
    :name: feedback

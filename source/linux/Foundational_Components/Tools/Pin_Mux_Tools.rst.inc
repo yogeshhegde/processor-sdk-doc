@@ -185,10 +185,10 @@ ${PDK\_INSTALL\_DIR}\\packages\\ti\\board\\src\\${BOARD}\\
 
 Recompiling u-boot is required after making updates. Instructions are
 available in the
-`Linux\_Core\_U-Boot\_User's\_Guide <Foundational_Components.html#u-boot>`__.
+`Linux\_Core\_U-Boot\_User's\_Guide <Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__.
 Compiling the devicetree dts to dtb is also required after making
 updates. Instructions are available in the `Linux Kernel Users
-Guide <Foundational_Components.html#compiling-the-sources>`__
+Guide <Foundational_Components_Kernel_Users_Guide.html#compiling-the-sources>`__
 
 .. rubric:: devicetree
    :name: devicetree

@@ -12,6 +12,6 @@ your device.
    :name: supported-devices-pm
 
 `AM335x Power Management User
-Guide <Examples_and_Demos.html#am335x-power-management-user-guide>`__
+Guide <Examples_and_Demos_Sub-system_Demos.html#am335x-power-management-user-guide>`__
 
 -  Note: **BeagleBone** users click here.
