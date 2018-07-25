@@ -219,8 +219,7 @@ is ignored when called in a C66x or K2H/K2E/K2L board library.
 #. Create your own folder under the src directory. The name of this
    folder will be your board name (will be referred to as $BOARD). Put
    your source files in this src/$BOARD folder. Updated sources can also
-   include initialization sequence for additional devices specific to
-   board.
+   include initialization sequence for additional devices specific to board.
 #. Pinmux Update (see above note for applicable devices):
 
    -  Use the `TI PinMux
@@ -241,13 +240,61 @@ is ignored when called in a C66x or K2H/K2E/K2L board library.
          during board Initialization.
       -  boardPadDelayDevice.c: This file includes the pinmuxdata for
          runtime pinmux configuration of the MMC module.
+     
+   - Some platforms not requiring IO delay configurations will have two files
+     <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c files generated 
+     by the pinmux tool
 
-   -  Copy the four generated files to your custom board library
+   -  Copy the pinmux tool generated files to your custom board library
       implementation folder.
    -  **Note:** It is recommended to use the latest available PinMux Tool. 
       For PinMux Tool prior to version v4.0.1482, you will have to edit 
       **boardPadDelayTune.h** to select appropriate IO timing modes by 
       uncommenting the build macros.
+      
+#. SOC Clock Settings Update:
+   The core clocks and module clocks used on the custom board library may 
+   vary based on the power requirements and external components used on the 
+   boards. TI provides `Clock Tree Tools <http://www.ti.com/tool/CLOCKTREETOOL>`__ 
+   to simulate the device clocks. GEL file can be used to verify the settings
+   in CCS before modifying the source in the board library.
+
+#. SOC DDR Configuration Update:
+   The board library has the correct DDR initialization sequence to initialize 
+   the DDR memory on your board. You may need to make changes to the AC timings, 
+   hardware leveling, and DDR PHY configuration, some or all of which may be 
+   different than the TI supported platforms. GEL file can be used to verify 
+   the settings in CCS before modifying the source in the board library.
+
+#. IO Instance and Configuration update to Match Use Case:
+   If your custom board uses an IO instance different from the TI-supported
+   board, the instance needs to be modified in the Pin Mux setup as well
+   as in the board_cfg.h file in
+   pdk_xx_Xx_xx_xx/packages/ti/board/src/<customBoardName>/
+
+#. Updating the Files Corresponding to External Board Components:
+   The custom board may have external components (flash devices, Ethernet
+   PHY, etc.) that are different from the components populated on the
+   TI-supported EVM. These components and their support files need to be
+   added to the
+   pdk_xx_Xx_xx_xx/packages/ti/board/src/<customBoardName>/device path
+   and linked as part of the board library build.
+
+#. PLL Settings Update:
+   The SOC board library in the PDK configures the SOC PLL and module clock
+   settings to the nominal settings required to be used with the TI
+   evaluation platform. If you want to use different clock settings due to
+   power consideration, or if you are using a variant of the device that
+   needs to be clocked differently, you can enter the PLL and clock
+   settings in the board library. All of the PLL and module clock settings
+   are consolidated in the following files:
+
+   -  <Board>.c: Contains calls related to all board-level initialization.
+      <Board> refers to the evaluation platform (For example, evmam335x)
+   -  <EVM>_pll.c: Defines the Board_PLLInit() function that configures the
+      dividers and multipliers for the clock tree.
+   -  <EVM>_clock.c: Defines clock dividers, scalars, and multipliers for
+      individual board modules initialized using the board library.
 
 #. Create build makefile infrastructure for new board under
    <ti/board/build>. Please refer existing board makefiles for
@@ -259,20 +306,13 @@ Adding custom board to the PDK directory structure and build setup is
 described in the article
 `Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles <http://processors.wiki.ti.com/index.php/Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles>`__
 
-.. raw:: html
-
-   <div
-   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
-
-**NOTE**
-
-::
-
-    TI evaluation platforms for Sitara Processors usually have board information stored in an EEPROM which checks for revision number and board name which is used to configure the board. When creating a custom platform if you don`t intend to use an EEPROM then we recommend removing code corresponding to Board_getIDInfo  in your board library
-
-.. raw:: html
-
-   </div>
+.. note::
+   TI evaluation platforms for Sitara Processors usually have board
+   information stored in an EEPROM which checks for revision number and
+   board name which is used to configure the board. When creating a custom
+   platform if you don`t intend to use an EEPROM then we recommend removing
+   code corresponding to Board_getIDInfo in your board library
+| 
 
 .. raw:: html
 
