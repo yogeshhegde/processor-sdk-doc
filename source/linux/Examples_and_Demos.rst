@@ -35,10 +35,6 @@ See http://downloads.ti.com/mctools/esd/docs/opencl/examples/index.html
 
 .. include:: Examples_and_Demos/Camera_Users_Guide.rst.inc
 
-Cryptography
-============
-.. include:: Examples_and_Demos/Cryptography.rst.inc
-
 WLAN and Bluetooth
 ==================
 .. include:: Examples_and_Demos/WLAN_and_Bluetooth.rst.inc
