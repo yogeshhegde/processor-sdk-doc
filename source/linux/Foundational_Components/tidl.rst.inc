@@ -73,65 +73,50 @@ The following topologies have been verified with TIDL software stack:
 
 Here are graphs (created using TIDL viewer tool) of first three:
 
-.. Image:: ../images/j11v2.png
+.. figure:: ../images/j11v2.png
 
-.. rubric:: Jacinto11 (resnet10 motivated)
-   :name: jacinto11-graph
+   Figure Jacinto11 (resnet10 motivated)
 
+|
 
+.. figure:: ../images/jseg21.png
 
-.. Image:: ../images/jseg21.png
+   Figure JSeg21 (SegNet motivated)
 
-.. rubric:: JSeg21 (SegNet motivated)
-   :name: jseg21-graph
+|
 
+.. figure:: ../images/jdetnet.png
 
+   Figure JDetNet (SSD-300/512 motivated)
 
-.. Image:: ../images/jdetnet.png
+|
 
-.. rubric:: JDetNet (SSD-300/512 motivated)
-   :name: jdetnet-graph
-
-
-
-
-Other network topologies are possible but they need to be verified.
-Majority of layers required (for inference only!) for classification, segmentation and detection
+Other network topologies are possible but they need to be verified. Majority of layers required (for inference only!) for classification, segmentation and detection
 tasks are implemented, though in some cases with certain parameter related constraints.
 
 Features supported by TIDL
 ---------------------------
+The following layer types/Inference features are supported in TIDL 
 
-Software architecture is described in Developer's Guide section.
-
-.. rubric:: Supported Neural Network Inference Features
-   :name: tidl-supported-features
-
-List of supported layer types:
-
-  1. Convolution Layer
-  2. Pooling Layer
-       - Average and Max Pooling
-  3. ReLU Layer
-  4. Element Wise Layer
-       - Add, Max, Product
-  5. Inner Product Layer
-       - Fully Connected Layer
-  6. Soft Max Layer
-  7. Bias Layer
-  8. Deconvolution Layer
-  9. Concatenate layer
-  10. ArgMax Layer
-  11. Scale Layer
-  12. PReLU Layer
-  13. Batch Normalization layer
-  14. ReLU6 Layer
-  15. Crop layer
-  16. Slice layer
-  17. Flatten layer
-  18. Split Layer
-  19. Detection Output Layer
-
+#. Convolution Layer
+#. Pooling Layer (Average and Max Pooling)
+#. ReLU Layer
+#. Element Wise Layer (Add, Max, Product)
+#. Inner Product Layer (Fully Connected Layer)
+#. Soft Max Layer
+#. Bias Layer
+#. Deconvolution Layer
+#. Concatenate layer
+#. ArgMax Layer
+#. Scale Layer
+#. PReLU Layer
+#. Batch Normalization layer
+#. ReLU6 Layer
+#. Crop layer
+#. Slice layer
+#. Flatten layer
+#. Split Layer
+#. Detection Output Layer
 
 Limitations of layers in TIDL Lib
 ---------------------------------
@@ -202,10 +187,8 @@ Important TIDL API framework features
 Current implementation of TIDL API provides following important features:
 
 - Multiple networks on different EVEs/DSPs can run concurrently
-    We can run concurrently as many different networks as we have available accelerators.
-    In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP).
-    Single unit of task execution is complete network, i.e. it is typically executed from
-    start to end on only one EVE or DSP, but we can start one network with its own output
+    We can run concurrently as many different networks as we have available accelerators. In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP).
+    Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP, but we can start one network with its own output
     in one EVE, and in parallel same or different network with its own input on second EVE.
 
 - Same TIDL API based application code can run on EVE or DSP accelerator
@@ -324,10 +307,9 @@ Then, it should be copied to /usr/share/ti/tidl/examples/classification/clips/ (
 
 
 Description of Matrix-GUI example
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 
 Example is based on "imagenet" and "test" examples, with few additions related to decision filtering and visualization. There are two source files only:
-
 
 .. Image:: ../images/tidl-demo1.png
 
@@ -374,7 +356,9 @@ In case TIDL uses EVE as accelerator there are four software layers:
 Please note that TIDL API package APIs are identical whether we use DSP or EVE (or both).
 User only needs to specify accelerator via parameter.
 
-.. Image:: ../images/tidl-sw-stack.png
+.. figure:: ../images/tidl-sw-stack.png
+
+   Figure TIDL Software Stack
 
 Additional public TI resources 
 ------------------------------
@@ -416,11 +400,13 @@ TIDL Lib which runs in RTOS environment, either on EVE or DSP.
 
 
 Target file-system
------------------
+---------------------
 
-- Firmware
-    OpenCL firmware includes pre-canned DSP TIDL Lib (with hard-coded kernels) and EVE TIDL Lib following 
-    Custom Accelerator model. OpenCL firmware is downloaded to DSP and M4/EVE immediately after Linux boot:
+Firmware
+"""""""""
+
+OpenCL firmware includes pre-canned DSP TIDL Lib (with hard-coded kernels) and EVE TIDL Lib following Custom Accelerator model. 
+OpenCL firmware is downloaded to DSP and M4/EVE immediately after Linux boot:
 
 ::
 
@@ -428,22 +414,19 @@ Target file-system
 - dra7-dsp1-fw.xe66 -> /lib/firmware/dra7-dsp1-fw.xe66.opencl-monitor
 - dra7-dsp2-fw.xe66 -> /lib/firmware/dra7-dsp2-fw.xe66.opencl-monitor
 
-- User space example files
-     Folder /usr/share/ti/tidl includes several sub-folders:
+User space components
+"""""""""""""""""""""""""
 
-     - examples
-          test (file-to-file examples), imagenet classification, image segmentation and SSD multibox examples are here. Matrix GUI example which is based on imagenet one, is in folder tidl_classification.
+User space TIDL components are included in the Folder /usr/share/ti/tidl and its sub-folders. The sub-folder name and description is as follows:
 
-     - utils
-          ARM 32-bit binaries for importing models and simulation, and configuration files for running example import tool operations.
-
-     - viewer
-          Imported model parser and dot graph creator. Input is TIDL model, output is .dot file that can be converted to PNG or PDF format using dot utility (on x86).
-
-     - tidl_api
-          Source of TIDL API implementation.
-
-
+=============  ======================================================================================================================================================================================================  
+Sub folder      Description of content 
+=============  ======================================================================================================================================================================================================  
+examples        test (file-to-file examples), imagenet classification, image segmentation and SSD multibox examples are here. Matrix GUI example which is based on imagenet one, is in folder tidl_classification.
+utils           ARM 32-bit binaries for importing models and simulation, and configuration files for running example import tool operations.  
+viewer          Imported model parser and dot graph creator. Input is TIDL model, output is .dot file that can be converted to PNG or PDF format using dot utility (on x86).   
+tidl_api        Source of TIDL API implementation.
+=============  ======================================================================================================================================================================================================  
 
 Input data format
 -----------------
@@ -485,7 +468,7 @@ Sample Usage: tidl_model_import.out ./test/testvecs/config/import/tidl_import_js
 The list of import configuration parameters is as below:
 
 ==================   ======================================================================================================================================================================================
-Parameter           Configuration
+Parameter            Configuration
 ==================   ======================================================================================================================================================================================
 randParams           can be either 0 or 1. Default value is 0. If it is set to 0, the tool will generate the quantization parameters from model, otherwise it will generate random quantization parameters
 modelType            can be either 0 or 1. Default value is 0. Set this to 0 to read from caffeImport frame work, and set it to 1 to read from tensor flow frame work.
@@ -511,15 +494,18 @@ outputParamsFile     is Output Params file name
 layersGroupId        indicates group of layers that needs to be processed on a given CORE. Refer SSD import config for example usage
 ==================   ======================================================================================================================================================================================
 
-- Example of import config files
-     Command to convert model (specified in configuration file)
+Example of import config files
+""""""""""""""""""""""""""""""""
+
+Command to convert model (specified in configuration file)
 
 ::
 
      ./tidl_model_import.out  ./import/tidl_import_j11_v2.txt
 
      
-Sample configuration file (tidl_import_j11_v2.txt):
+Sample configuration file (tidl_import_j11_v2.txt)
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ::
 
@@ -566,24 +552,23 @@ Sample configuration file (tidl_import_j11_v2.txt):
     tidlStatsTool = "import/eve_test_dl_algo_ref.out"
  
 
-- Import tool traces
-
-     During conversion, import tool generates traces reporting detected layers and its parameters (last several columns indicate input tensor dimensions and 
-     output tensor dimensions).
+Import tool traces
+""""""""""""""""""""
+During conversion, import tool generates traces reporting detected layers and its parameters (last several columns indicate input tensor dimensions and output tensor dimensions).
 
 ::
 
     Processing config file ./tempDir/qunat_stats_config.txt !
-    0, TIDL_DataLayer                ,  0,  -1 ,  1 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  0 ,    0 ,    0 ,    0 ,    0 ,    1 ,    3 ,  224 ,  224 ,
-    1, TIDL_BatchNormLayer           ,  1,   1 ,  1 ,  0 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  1 ,    1 ,    3 ,  224 ,  224 ,    1 ,    3 ,  224 ,  224 ,
-    2, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  1 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  2 ,    1 ,    3 ,  224 ,  224 ,    1 ,   32 ,  112 ,  112 ,
-    3, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  2 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  3 ,    1 ,   32 ,  112 ,  112 ,    1 ,   32 ,   56 ,   56 ,
-    4, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  3 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  4 ,    1 ,   32 ,   56 ,   56 ,    1 ,   64 ,   56 ,   56 ,
-    5, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  4 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  5 ,    1 ,   64 ,   56 ,   56 ,    1 ,   64 ,   28 ,   28 ,
-    6, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  5 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  6 ,    1 ,   64 ,   28 ,   28 ,    1 ,  128 ,   28 ,   28 ,
-    7, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  6 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  7 ,    1 ,  128 ,   28 ,   28 ,    1 ,  128 ,   14 ,   14 ,
-    8, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  7 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  8 ,    1 ,  128 ,   14 ,   14 ,    1 ,  256 ,   14 ,   14 ,
-    9, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  8 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  9 ,    1 ,  256 ,   14 ,   14 ,    1 ,  256 ,    7 ,    7 ,
+    0, TIDL_DataLayer                 ,  0,  -1 ,  1 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  0 ,    0 ,    0 ,    0 ,    0 ,    1 ,    3 ,  224 ,  224 ,
+    1, TIDL_BatchNormLayer            ,  1,   1 ,  1 ,  0 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  1 ,    1 ,    3 ,  224 ,  224 ,    1 ,    3 ,  224 ,  224 ,
+    2, TIDL_ConvolutionLayer          ,  1,   1 ,  1 ,  1 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  2 ,    1 ,    3 ,  224 ,  224 ,    1 ,   32 ,  112 ,  112 ,
+    3, TIDL_ConvolutionLayer          ,  1,   1 ,  1 ,  2 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  3 ,    1 ,   32 ,  112 ,  112 ,    1 ,   32 ,   56 ,   56 ,
+    4, TIDL_ConvolutionLayer          ,  1,   1 ,  1 ,  3 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  4 ,    1 ,   32 ,   56 ,   56 ,    1 ,   64 ,   56 ,   56 ,
+    5, TIDL_ConvolutionLayer          ,  1,   1 ,  1 ,  4 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  5 ,    1 ,   64 ,   56 ,   56 ,    1 ,   64 ,   28 ,   28 ,
+    6, TIDL_ConvolutionLayer          ,  1,   1 ,  1 ,  5 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  6 ,    1 ,   64 ,   28 ,   28 ,    1 ,  128 ,   28 ,   28 ,
+    7, TIDL_ConvolutionLayer          ,  1,   1 ,  1 ,  6 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  7 ,    1 ,  128 ,   28 ,   28 ,    1 ,  128 ,   14 ,   14 ,
+    8, TIDL_ConvolutionLayer          ,  1,   1 ,  1 ,  7 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  8 ,    1 ,  128 ,   14 ,   14 ,    1 ,  256 ,   14 ,   14 ,
+    9, TIDL_ConvolutionLayer          ,  1,   1 ,  1 ,  8 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  9 ,    1 ,  256 ,   14 ,   14 ,    1 ,  256 ,    7 ,    7 ,
     10, TIDL_ConvolutionLayer         ,  1,   1 ,  1 ,  9 ,  x ,  x ,  x ,  x ,  x ,  x ,  x , 10 ,    1 ,  256 ,    7 ,    7 ,    1 ,  512 ,    7 ,    7 ,
     11, TIDL_ConvolutionLayer         ,  1,   1 ,  1 , 10 ,  x ,  x ,  x ,  x ,  x ,  x ,  x , 11 ,    1 ,  512 ,    7 ,    7 ,    1 ,  512 ,    7 ,    7 ,
     12, TIDL_PoolingLayer             ,  1,   1 ,  1 , 11 ,  x ,  x ,  x ,  x ,  x ,  x ,  x , 12 ,    1 ,  512 ,    7 ,    7 ,    1 ,    1 ,    1 ,  512 ,
@@ -627,7 +612,7 @@ Here is a sample list of files with intermediate activations:
 
 
 Splitting layers between layers groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 
 In order to use both DSP and EVE accelerators, it is possible to split the network into two sub-graphs using concept of layergroups.
 Than one layer group can be executed on EVE and another on DSP. Output of first group (running on EVE) will be used as input for DSP.
@@ -683,21 +668,19 @@ Here is a graph (group 1 is executed on EVE, and group 2 is executed on DSP):
 Output of layers group 1 is shared (common) with input buffer of layers group 2 so no extra buffer copy overhead. Due to this buffer allocation, sequential operation of EVE and DSP is necessary.
 
 
-- How to calculate theoretical GMACs needed?
-     This can be calculated for Convolution Layers, Inner Product and Fully Connected Layers.
-     Each Convolution Layer has certain number of input and output feature maps (2D tensors).
-     Input feature map is convolved with convolution kernel (usually 3x3, but also 5x5, 7x7..).
-     So total number of MACs can be calculated as: Height_input_map x Width_input_map x N_input_maps x N_output_maps x size_of_kernel.
+Calculating theoretical GMACs needed
+""""""""""""""""""""""""""""""""""""""
+
+This can be calculated for Convolution Layers, Inner Product and Fully Connected Layers. Each Convolution Layer has certain number of input and output feature maps (2D tensors).
+Input feature map is convolved with convolution kernel (usually 3x3, but also 5x5, 7x7..).
+So total number of MACs can be calculated as: Height_input_map x Width_input_map x N_input_maps x N_output_maps x size_of_kernel.
 
 ::
 
        E.g. for 112x112 feature map, with 64 inputs, 64 outputs and 3x3 kernels, we need:
        112x112x64x64x3x3 MAC operations = 4624229916 MAC operations
 
-    
-
 Similarly for fully connected layer, with N_inputs and N_outputs, total number of MAC operations is \
-     
 
 ::
 
@@ -705,24 +688,22 @@ Similarly for fully connected layer, with N_inputs and N_outputs, total number o
        Fully Connected Layer MAC operations = N_inputs * N_outputs = 4096 * 1000 = 4096000 MAC operations
 
 
-
 Obviously Convolution Layer workload is significantly higher.
 
+Mapping to EVE capabilities
+""""""""""""""""""""""""""""""
+Each EVE core can do 16 MAC operation per cycle. Accumulated results are stored in 40-bit accumulator and can be barrel shifted
+before stored into local memory. Also, EVE can do ReLU operation for free, so frequently, Convolution Layer or 
+Fully Connected Layer is coalesced with ReLU layer.
 
-- How to map this to EVE capabilities?
+In order to support these operations wide path to local memory is needed. Concurrently transfers from external DDR memory
+are performed using dedicated EDMA engines. So, when EVE does convolutions it is always accessing both activations and 
+weights that are already present in high speed local memory.
 
-  Each EVE core can do 16 MAC operation per cycle. Accumulated results are stored in 40-bit accumulator and can be barrel shifted
-  before stored into local memory. Also, EVE can do ReLU operation for free, so frequently, Convolution Layer or 
-  Fully Connected Layer is coalesced with ReLU layer.
-
-  In order to support these operations wide path to local memory is needed. Concurrently transfers from external DDR memory
-  are performed using dedicated EDMA engines. So, when EVE does convolutions it is always accessing both activations and 
-  weights that are already present in high speed local memory.
-
-  One or two layers are implemented on EVE local RISC CPU which is used primarily for programming vector engine and EDMA. In these
-  rare cases EVE CPU is used as fully programmable, but slow compute engine. SoftMax layer is implemented using 
-  general purpose CPU, and significantly slower than DSP or A15 implementation. As SoftMax layer is terminal layer it is advised to
-  do SoftMax either on A15 (in user space) or using DSP (layergroup2, as implemented in JDetNet examples).
+One or two layers are implemented on EVE local RISC CPU which is used primarily for programming vector engine and EDMA. In these
+rare cases EVE CPU is used as fully programmable, but slow compute engine. SoftMax layer is implemented using 
+general purpose CPU, and significantly slower than DSP or A15 implementation. As SoftMax layer is terminal layer it is advised to
+do SoftMax either on A15 (in user space) or using DSP (layergroup2, as implemented in JDetNet examples).
 
 Viewer tool
 -----------  
@@ -876,7 +857,7 @@ Where does the benefit of sparsification come from?
   weight parameter is done across all input values. If weight is zero multiplication against all input data (for that input channel) is skipped.
   All computation are done using pre-loaded blocks into local L2 memory (using "shadow" EDMA transfers).
 
-Perofrmance data
+Performance data
 ==================
 
 Computation performance of verified networks
@@ -988,11 +969,10 @@ Troubleshooting
      Still features maps (of intermediate layers) are supposed to be rather similar. If something is significantly different, please try to change
      number of bits for weights, or repeat import processing with more representative image. Problems of this sort should be rarely encountered. 
 
-
 - Typical errors in runtime (when to reboot the platform)
 
-  - ... inc/executor.h:199: T* tidl::malloc_ddr(size_t) [with T = char; size_t = unsigned int]: Assertion `val != nullptr' failed.
-       This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
+::
 
-
+  ... inc/executor.h:199: T* tidl::malloc_ddr(size_t) [with T = char; size_t = unsigned int]: Assertion `val != nullptr' failed.
+  This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
 
