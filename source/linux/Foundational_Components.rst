@@ -18,3 +18,4 @@ Foundational Components
    Foundational_Components_OpenCV
    Foundational_Components_OpenVX
    Foundational_Components_Virtualization
+   Foundational_Components_TIDL
