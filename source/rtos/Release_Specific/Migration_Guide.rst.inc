@@ -34,11 +34,28 @@ Linux
 ::
        TOOLS_INSTALL_PATH=<Path for the toools root folder>
 
+
+.. rubric::  Build Setup
+   :name: build-setup
+
+**Migration:** There is no migration needed for default components in processor SDK.
+Custom software modules and/or mmodules outside processor SDK may need to include 
+RULES_MAKE variable.
+
+**Additional Details**:
+Rules.make file is used instead of pdksetupenv to setup the build environment variables.
+Components inside processor SDK are updated to align with this change. Add below line
+in the component make file to use the updated build system.
+
+  include $(RULES_MAKE)
+
 | 
 
 .. rubric::  Archived
    :name: archived
 
+-  `Processor-SDK RTOS
+   4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#migration-guide>`__
 -  `Processor-SDK RTOS
    4.2.0 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Migration_Guide&oldid=232582>`__
 -  `Processor-SDK RTOS
