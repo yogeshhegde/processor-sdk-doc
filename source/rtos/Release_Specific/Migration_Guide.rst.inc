@@ -39,7 +39,7 @@ Linux
    :name: build-setup
 
 **Migration:** There is no migration needed for default components in processor SDK.
-Custom software modules and/or mmodules outside processor SDK should include 
+Custom software modules and/or modules outside processor SDK should include 
 RULES_MAKE variable.
 
 **Additional Details**:
