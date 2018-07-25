@@ -890,32 +890,23 @@ helpful to make sure that the OC will be a master clock. Refer to
    :name: preparation-on-the-am57xx-bc-idk
 
 This section assumes that an AM571x is used. It should be similar for
-AM572x except that information about ICSS1 PRU (PRUSS1), eth4 and eth5
+AM572x (or AM574x IDK) except that information about ICSS1 PRU (PRUSS1), eth4 and eth5
 are not applicable.
 
 .. rubric:: Hardware
    :name: hardware
 
-.. rubric:: AM571x
-   :name: am571x-1
+.. rubric:: AM571x IDK
+   :name: am571x-1 idk
 
-Connect the following 6 pins together. See the `AM571x Mod
+Connect the following 4 pins together. See the `AM571x Mod
 List <http://processors.wiki.ti.com/images/6/66/Am571x_idk_bc_ModList.pdf>`__
 for more details.
 
--  timer16: C23 XREF CLK3
--  timer15: AC10 (input): USB2\_DRVVBUS (USB2\_VBUS\_EN)
--  pr1\_edc\_sync0\_out
--  pr1\_edc\_latch0\_out
--  pr2\_edc\_sync0\_out
--  pr2\_edc\_latch0\_out
-
-Example: See below pictures (J21 is connector along top edge)
-
 +--------------------------------------+--------------------------------------+
-| Wire on AM571x IDK                   | signal                               |
+| Wire on AM571x IDK                   | Signal                               |
 +======================================+======================================+
-| lower left yellow (above board)      | .. raw:: html                        |
+| lower yellow wire                    | .. raw:: html                        |
 |                                      |                                      |
 |                                      |    <div style="text-align: center;"> |
 |                                      |                                      |
@@ -925,17 +916,7 @@ Example: See below pictures (J21 is connector along top edge)
 |                                      |                                      |
 |                                      |    </div>                            |
 +--------------------------------------+--------------------------------------+
-| top right yellow (coming out from    | .. raw:: html                        |
-| underneath)                          |                                      |
-|                                      |    <div style="text-align: center;"> |
-|                                      |                                      |
-|                                      | timer16 CLK3 out                     |
-|                                      |                                      |
-|                                      | .. raw:: html                        |
-|                                      |                                      |
-|                                      |    </div>                            |
-+--------------------------------------+--------------------------------------+
-| J21-18 left green                    | .. raw:: html                        |
+| J21-18 right blue wire               | .. raw:: html                        |
 |                                      |                                      |
 |                                      |    <div style="text-align: center;"> |
 |                                      |                                      |
@@ -945,7 +926,7 @@ Example: See below pictures (J21 is connector along top edge)
 |                                      |                                      |
 |                                      |    </div>                            |
 +--------------------------------------+--------------------------------------+
-| J21-20 right green                   | .. raw:: html                        |
+| J21-20 purple wire                   | .. raw:: html                        |
 |                                      |                                      |
 |                                      |    <div style="text-align: center;"> |
 |                                      |                                      |
@@ -955,7 +936,7 @@ Example: See below pictures (J21 is connector along top edge)
 |                                      |                                      |
 |                                      |    </div>                            |
 +--------------------------------------+--------------------------------------+
-| J21-54 left red                      | .. raw:: html                        |
+| J21-54 left blue wire                | .. raw:: html                        |
 |                                      |                                      |
 |                                      |    <div style="text-align: center;"> |
 |                                      |                                      |
@@ -965,34 +946,64 @@ Example: See below pictures (J21 is connector along top edge)
 |                                      |                                      |
 |                                      |    </div>                            |
 +--------------------------------------+--------------------------------------+
-| J21-56 right red                     | .. raw:: html                        |
+
+Example: See below pictures (J21 is connector along bottom left edge)
+
+.. Image:: ../images/Am571x_whole_small2.png
+
+and this more J21 focused of the same picture above
+
+.. Image:: ../images/Am571x_j21.png
+
+.. rubric:: AM572x and AM574x IDK
+   :name: am572x-1
+
+Connect the following 3 pins together. See the `AM572x Mod
+List <http://processors.wiki.ti.com/images/c/c3/Am572x_idk_bc_ModList.pdf>`__
+for more details.
+
+
++--------------------------------------+--------------------------------------+
+| Wire on AM574x IDK                   | Signal                               |
++======================================+======================================+
+| Center left black wire               | .. raw:: html                        |
 |                                      |                                      |
 |                                      |    <div style="text-align: center;"> |
 |                                      |                                      |
-|                                      | pr2\_edc\_sync0\_out                 |
+|                                      | timer15                              |
+|                                      |                                      |
+|                                      | .. raw:: html                        |
+|                                      |                                      |
+|                                      |    </div>                            |
++--------------------------------------+--------------------------------------+
+| J21-13 black wire                    | .. raw:: html                        |
+|                                      |                                      |
+|                                      |    <div style="text-align: center;"> |
+|                                      |                                      |
+|                                      | pr2\_edc\_latch0\_out                |
+|                                      |                                      |
+|                                      | .. raw:: html                        |
+|                                      |                                      |
+|                                      |    </div>                            |
++--------------------------------------+--------------------------------------+
+| J21-17 white wire                    | .. raw:: html                        |
+|                                      |                                      |
+|                                      |    <div style="text-align: center;"> |
+|                                      |                                      |
+|                                      | pr1\_edc\_sync0\_out                 |
 |                                      |                                      |
 |                                      | .. raw:: html                        |
 |                                      |                                      |
 |                                      |    </div>                            |
 +--------------------------------------+--------------------------------------+
 
-.. Image:: ../images/Am571x_whole_small2.jpg
+Example: See below pictures (J21 is connector along top right edge)
+
+.. Image:: ../images/Am574x_whole_small2.png
 
 and this more J21 focused of the same picture above
 
-.. Image:: ../images/Am571x_j21.jpg
-
-.. rubric:: AM572x
-   :name: am572x-1
-
-Connect the following 4 pins together. See the `AM572x Mod
-List <http://processors.wiki.ti.com/images/c/c3/Am572x_idk_bc_ModList.pdf>`__
-for more details.
-
--  timer16: C23 XREF CLK3
--  timer15: AC10 (input): USB2\_DRVVBUS (USB2\_VBUS\_EN)
--  pr2\_edc\_sync0\_out
--  pr2\_edc\_latch0\_out
+.. Image:: ../images/Am574x_j21.png
 
 .. rubric:: Software
    :name: software-1
