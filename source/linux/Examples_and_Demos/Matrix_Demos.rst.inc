@@ -27,7 +27,6 @@ There are a number of Example Applications provided within the Processor SDK for
     USB Profiler ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,NA , 
     ARM Benchmarks ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,NA , 
     Display ,X ,  ,X ,  ,X ,X ,  ,X ,X ,X ,  ,  ,  ,  ,  ,NA , 
-    Cryptography ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,X ,`Cryptography User's Guide <Examples_and_Demos.html#cryptography>`__ ,Provide details on how to implement cryptography through use of OpenSSL and various example applications.
     WLAN and Bluetooth ,X ,  ,X ,  ,X ,X ,  ,X ,  ,  ,  ,  ,  ,  ,  ,`WL127x WLAN and Bluetooth Demos <Examples_and_Demos.html#wlan-and-bluetooth>`__ ,Provides details on how to enable the WL1271 daughtercard which is connected to the EVM
     QT Demos ,X ,  ,X ,X ,X ,X ,X ,X ,X ,X ,  ,  ,  ,  ,  ,`Hands on with QT <Examples_and_Demos.html#hands-on-with-qt>`__,"Provides out of box Qt5.4 demos from Matrix GUI, including Calculator, Web Browser, Deform (shows vector deformation in the shape of a lens), and Animated Tiles."
     Web Browser ,X ,  ,X ,X ,X ,X ,X ,X ,X ,X ,  ,  ,  ,  ,  ,NA , 
