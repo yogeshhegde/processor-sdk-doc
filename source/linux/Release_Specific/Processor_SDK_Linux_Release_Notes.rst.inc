@@ -22,15 +22,14 @@ execution of Linux based applications and includes the following:
 Licensing
 =========
 
-  Please refer to the software manifest, which outlines the licensing
-  status for all packages included in this release. The manifest can be
-  found on the SDK download page. The manifest can be found on the SDK
-  download page or in the installed directory as indicated below. In
-  addition, see :ref:`PLSDK-GPLv3-Disclaimer-label`
+Please refer to the software manifest, which outlines the licensing
+status for all packages included in this release. The manifest can be
+found on the SDK download page. The manifest can be found on the SDK
+download page or in the installed directory as indicated below. In
+addition, see :ref:`PLSDK-GPLv3-Disclaimer-label`
 
-.. rubric:: Documentation
-   :name: documentation
-
+Documentation
+===============
 -  :ref:`processor-sdk-linux-software-developers-guide`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
@@ -44,25 +43,20 @@ Licensing
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 04.03.00 Highlights
+Release 05.00.00 Highlights
 ============================
 
-Released Mar 2018
+Released Jul 2018
 
 .. rubric:: What's New
    :name: whats-new
 
--  New Demos
-    -  `Qt5-based Thermostat demo on AM335x/AM437x/AM57x <Examples_and_Demos_Application_Demos.html#qt5-thermostat-hmi-demo>`__
-    -  `Demonstrate 4K Video Encode with IVAHD on AM57x <Foundational_Components_Multimedia.html#file-to-file-4k-h264-encoding-pipeline>`__
-    -  `Khronos OpenVX based demo example with C66x offload via OpenCL <Examples_and_Demos_Application_Demos.html#optical-flow-with-openvx>`__
-    -  `ROS Turtlebot demo using AM57x and IWR1443/IWR1642 mmWave radar <Examples_and_Demos_Application_Demos.html#ros-and-radar>`__
-
--  New Features
-    -  PTP: Support Boundary Clock between 3 ports (1xCPSW and 2xICSS) on AM571x
-    -  PTP: Configurable latency for 1 PPS Output, to compensate for the propagation delay of 1 PPS signal to the oscilloscope
-    -  HSR/PRP on AM57x: Support Multicast Filtering
-    -  HSR/PRP on AM57x: Support VLAN Filtering
+- 2018 LTS Update: First release in 2018 LTS (Kernel 4.14, U-boot: 2018.01, gcc: 7.2-2017.11, Yocto 2.4 (rocko). For more details, see the migration guide
+- AM57x: Enable Deep Learning at the edge using TI-DL that leverages TI’s proprietary, highly optimized CNN/DNN implementation on the EVE and C66x DSP compute engines. Please see here for more details
+- AM57x: PTP: Support Ordinary Clock (OC) Master/Slave with HSR redundancy on PRU-ICSS
+- AM57x: PTP: Support Hybrid Clock (HC), i.e. Transparent Clock (TC) + Ordinary Clock (OC) in HSR mode
+- AM57x: HSR/PRP: Add Broadcast Storm Prevention, and improve throughput at smaller packet sizes
+- AM335x, AM437x, AM57x: Implement Simple Open Real-Time Ethernet (SORTE) with Linux. Please see here for more details
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -70,23 +64,23 @@ Released Mar 2018
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.9.69+ (2017 LTS)         |
+| Linux Kernel             | 4.14.40+ (2018 LTS)        |
 +--------------------------+----------------------------+
-| U-Boot                   | 2017.01                    |
+| U-Boot                   | 2018.01                    |
 +--------------------------+----------------------------+
-| Yocto Project            | 2.2 (morty)                |
+| Yocto Project            | 2.4 (rocko)                |
 +--------------------------+----------------------------+
-| Linaro Toolchain (gcc)   | 6.2.1 2016.11 hard-float   |
+| Linaro Toolchain (gcc)   | 7.2-2017.11 hard-float     |
 +--------------------------+----------------------------+
-| Qt                       | 5.7.1                      |
+| Qt                       | 5.9.6                      |
 +--------------------------+----------------------------+
-| OpenCL                   | 1.1.14                     |
+| OpenCL                   | 1.1.15                     |
 +--------------------------+----------------------------+
 | OpenCV                   | 3.1                        |
 +--------------------------+----------------------------+
-| Wayland                  | 1.11                       |
+| Wayland                  | 1.13                       |
 +--------------------------+----------------------------+
-| GStreamer                | 1.8.3                      |
+| GStreamer                | 1.12.2                     |
 +--------------------------+----------------------------+
 | Chromium                 | v53                        |
 +--------------------------+----------------------------+
@@ -110,14 +104,13 @@ Build Information
 U-Boot
 -------------------------
 
-| Head Commit: c68ed086bd00054e28c46e033385f79104c3f84c mmc:
-  omap\_hsmmc: Handle command and data errors after response
-| Date: Wed Dec 20 11:21:41 CST 2017
-| uBoot Version: 2017.01
-| uBoot Description: v2017.01-457-gc68ed08
+| Head Commit: 131dc8283021742f03e843e216ed301862e2db38 configs: dra7xx_evm/dra7xx_hs_evm: Enable AHCI and PIPE3 
+| Date: Wed Jun 13 12:48:25 CDT 2018
+| uBoot Version: 2018.01
+| uBoot Description: v2018.01-227-g131dc82
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2017.01
-| uBoot Tag: ti2017.06
+| Branch: ti-u-boot-2018.01
+| uBoot Tag: ti2018.01
 
 |
 
@@ -128,10 +121,10 @@ Kernel
    :name: linux-kernel
 
 | The kernel git repository, branch and commit id can be found below:
-| Based on Version: 4.9.69
+| Based on Version: 4.14.40
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
-| Branch: processor-sdk-linux-04.03.00
-| Commit ID: bfe793963ed7b2af3e1c3dd32e7275f449e6259d 
+| Branch: processor-sdk-linux-4.14.y
+| Commit ID: 4796173fc58688055a99a1cef19a839174067220
 
 |
 
@@ -140,12 +133,12 @@ Kernel
 
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
-| Kernel Version: 4.9.65
-| RT Kernel Version: 4.9.65-rt23
+| Kernel Version: 4.14.40
+| RT Kernel Version: 4.9.40-rt29
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
-| Branch: processor-sdk-linux-rt-04.03.00
-| Commit ID: 3986f9c45542f5ff4ce7f0c916c4aae8f868a042 
+| Branch: processor-sdk-linux-4.14.y
+| Commit ID: d5443cbd3b5a79c7b4f817896e12014f2b30e34b
 
 |
 
@@ -153,7 +146,7 @@ Kernel
    :name: generic-kernel-release-notes
 
 | Generic kernel release notes from kernelnewbies.org can be found at:
-  http://kernelnewbies.org/Linux_4.9
+  http://kernelnewbies.org/Linux_4.14
 | Archived versions can be found at:
   http://kernelnewbies.org/LinuxVersions
 
