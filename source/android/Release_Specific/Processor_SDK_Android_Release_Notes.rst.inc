@@ -31,8 +31,8 @@ Disclaimer <Licenses.html#gplv3-disclaimer>`__
 
 |
 
-.. rubric:: Documentation
-   :name: documentation
+Documentation
+==================
 
 -  `Software Developer
    Guide <index.html>`__:
@@ -57,7 +57,7 @@ Disclaimer <Licenses.html#gplv3-disclaimer>`__
 Release 05.00.00
 =====================
 
-| Released July 2018
+Released July 2018
 
 .. rubric:: What's New
    :name: whats-new
@@ -87,8 +87,6 @@ Following new features are enabled/tested in this release:
 -  **Audio:** MP3/AAC playback, ARM<->DSP Audio Routing
 -  **Display:** SGX accelerated UI and touch, DRM/KMS, DSS WB, SGX and
    DSS simultaneous composition.
--  **Camera:** VIP: YUYV/RGB888 format capture, NV12 capture, Interlaced
-   capture, VPE: color conversion, V4L2 M2M, scalar, DEI
 
 | 
 
@@ -164,8 +162,8 @@ Known Issues
 
 | 
 
-.. rubric:: Installation and Usage
-   :name: installation-and-usage
+Installation and Usage
+========================
 
 The `Software Developer's
 Guide <index.html>`__
@@ -174,8 +172,8 @@ environment, install the SDK and start your development.
 
 |
 
-.. rubric:: Host Support
-   :name: host-support
+Host Support
+==============
 
 The Processor SDK is developed, built and verified on Ubuntu 14.04.
 

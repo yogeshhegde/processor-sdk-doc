@@ -130,8 +130,9 @@ If you answer 'n' to this question the script will exit.
    :name: boot-android
 
 At the completion of the this process you will have a board that can
-boot Android from either the SD card that is plugged in or through the
-newly flashed eMMC device. The recommended method is to power the device
-off, remove the SD card, and then power the device back on to boot
-Android from the eMMC.
+boot Android through the newly flashed eMMC device. For AM57x IDKs,
+keep the SD card plugged in, power cycle the board to use MLO and
+u-boot.img from the SD card and the rest from the eMMC. For AM57x GP EVM,
+SD card can be removed  before the power cycle to boot Android with
+everything from the eMMC.
 
