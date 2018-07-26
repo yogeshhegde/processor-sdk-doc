@@ -52,7 +52,7 @@ The following platforms and EVMs are supported with Processor SDK
 |processors/sitara/arm_cortex-a15/     |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruig1>`__              |                |                |                |                |
 |am57x/overview.page>`__               |TMDSEVM572X>`__                       |          |                                            |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |`AM572x IDK                           | 1.3A     |`Hardware User's Guide <http://             | X              | X              | X              | X              |
+|                                      |`AM572x IDK                           | 1.3A     |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui64>`__              |                |                |                |                |
 |                                      |TMDXIDK5728>`__                       |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
 |                                      |                                      |          |.wiki.ti.com/index.php/TMDXIDK5728_         |                |                |                |                |
@@ -64,11 +64,11 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |                                      |          |.wiki.ti.com/index.php/TMDXIDK5728_         |                |                |                |                |
 |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |`AM574x IDK                           | 1.0A     |`Hardware User's Guide <http://             | X              | X              | X              |                |
-|                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruij9>`__              |                |                |                |                |
-|                                      |tmdsidk574>`__                        |          |Hardware Setup with CCS                     |                |                |                |                |
-|                                      |                                      |          |                                            |                |                |                |                |
-|                                      |                                      |          |                                            |                |                |                |                |
+|                                      |`AM574x IDK                           | 1.0A     |`Hardware User's Guide <http://             | X              | X              | X              | X              |
+|                                      |<http://www.ti.com/tool/              |          |http://www.ti.com/lit/pdf/spruij9>`__       |                |                |                |                |
+|                                      |TMDSIDK574>`__                        |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
+|                                      |                                      |          |.wiki.ti.com/index.php/TMDXIDK5728_         |                |                |                |                |
+|                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`AM437x <http://www.ti.com/lsds/ti/   |`AM437x EVM                           | 1.5B     |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |processors/sitara/arm_cortex-a9/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM437x_    |                |                |                |                |
@@ -160,19 +160,4 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |                                      |          |.wiki.ti.com/index.php/ICE_AMIC110_         |                |                |                |                |
 |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-
-
-All platforms supporting Linux share
-
--  Linux Kernel 4.9
--  U-Boot 2017.01
--  Linaro GCC 6.2.1 Toolchain
-
-For a full list of components, see the *Release Notes* for `Processor
-SDK
-Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes>`__,
-`Processor SDK
-RTOS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Release_Notes>`__,
-and `Processor SDK
-Android <http://processors.wiki.ti.com/index.php/Processor_SDK_Android_Release_Notes>`__.
 
