@@ -10,6 +10,47 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
+Processor SDK 05.xx Releases
+============================
+
+Processor SDK 05.00
+---------------------
+- This is the first release for 2018 LTS (Kernel: 4.14, U-boot: 2018.01, gcc: 7.2.1 and Yocto: 2.4 (rocko)).
+- With Yocto migration, several open source components (Qt, Wayland, Weston, GStreamer, iPerf, etc.) are all upgraded. For the exact versions of the new components, please refer to the 
+  Software Manifest., and for any migration issues, refer to the corresponding component's release notes, and Processor SDK Known Issues list.
+- Following are major compatability changes for TI drivers, components.
+- IPC
+   - Remoteproc core
+        - RPMSG_VIRTIO is no longer automatically selected by remoteproc platform drivers, has to be enabled specifically in defconfigs
+        - The RSC_CUSTOM remoteproc custom resource type has been replaced with two new RSC_PRELOAD_VENDOR and RSC_POSTLOAD_VENDOR resource types.
+        - Two new debugfs variables "resource_table" and "carveout_memories" are added to print the resource table and carveout memories used by a remoteproc
+        - Error recovery with virtio-rpmsg-bus stack is broken on Upstream vanilla 4.14 kernel. Error recovery is supported only on TI kernels.
+   - PRUSS remoteproc
+        - The PRUSS remoteproc bindings have been revised significantly to improve scalability and flexibility
+             - New child nodes are added to represent the CFG, IEP and MII_RT sub-modules.
+             - Default firmware names are moved from driver to DT
+             - Client users will require a new "prus" mandatory property instead of the previous "pruss" property
+             - "ti,pruss-gp-mux-sel" property is removed from PRU nodes and added as an optional property to client nodes.
+             - "label" property is dropped from PRU nodes
+             - "interrupts" and "interrupt-names" properties were moved from INTC node to their parent node.
+        - Client user API has changed to acquire and use a PRU core
+   - Keystone_remoteproc
+        - The "label" binding property is dropped from the driver bindings, and is replaced with an alias using the stem "rproc"
+        - The "ti,sci-id" property for K2G DSP nodes is also dropped.
+        - The keystone-dsp-mem driver is converted to a regular module from a platform driver, so the dspmem nodes are dropped. The module uses revised bindings.
+   - Userspace
+        - New IPC and CMEM releases are needed to use with 4.14 kernel due to difference in AF_RPMSG family number and other kernel API changes
+- iperf2 is now replaced by iperf3
+- Keystone-2: PA/PA2 is not supported in NetCP driver.
+- MMC: AM57x uses sdhci-omap.c driver instead of omap_hsmmc.c driver
+- PCIe: The way in which PCIe endpoint is configured has changed. It's specified in http://processors.wiki.ti.com/index.php/Linux_Core_PCIe_EP_User%27s_Guide#4.14
+- AM335x ICE v2: A new DT file (am335x-ice-v2-prueth.dts) is added to support PRUSS Ethernet ports. The following configurations are supported.
+
+:: 
+
+   am335x-ice-v2.dts: Both ports are CPSW controlled (Board jumpers J18 and J19 at RMII).
+   am335x-ice-v2-prueth.dts: Both ports are PRUSS controlled (Board jumpers J18 and J19 at MII).
+
 Processor SDK 04.xx Releases
 ============================
 
