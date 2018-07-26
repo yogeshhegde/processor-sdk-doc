@@ -43,7 +43,7 @@ Processor SDK 05.00
 - iperf2 is now replaced by iperf3
 - Keystone-2: PA/PA2 is not supported in NetCP driver.
 - MMC: AM57x uses sdhci-omap.c driver instead of omap_hsmmc.c driver
-- PCIe: The way in which PCIe endpoint is configured has changed. It's specified in http://processors.wiki.ti.com/index.php/Linux_Core_PCIe_EP_User%27s_Guide#4.14
+- PCIe: The way in which PCIe endpoint is configured has changed. More details can be found from `PCIe End Point Driver <Foundational_Components_Kernel_Drivers.html#pcie-end-point-4-14-kernel>`__.
 - AM335x ICE v2: A new DT file (am335x-ice-v2-prueth.dts) is added to support PRUSS Ethernet ports. The following configurations are supported.
 
 :: 

@@ -186,7 +186,7 @@ supported are
 -  Copy tests
 
 .. rubric:: 4.4 Kernel
-   :name: kernel
+   :name: pcie-end-point-4-4-kernel
 
 .. rubric:: creating pci-epf-test device
    :name: creating-pci-epf-test-device
@@ -257,7 +257,7 @@ Once the above step is completed, the PCI endpoint is ready to establish
 a link with the host.
 
 .. rubric:: 4.9 Kernel
-   :name: kernel-1
+   :name: pcie-end-point-4-9-kernel
 
 .. rubric:: creating pci-epf-test device
    :name: creating-pci-epf-test-device-1
@@ -348,8 +348,8 @@ function device to one of the controller driver present in the system.
 Once the above step is completed, the PCI endpoint is ready to establish
 a link with the host.
 
-.. rubric:: 4.14
-   :name: section
+.. rubric:: 4.14 Kernel
+   :name: pcie-end-point-4-14-kernel
 
 The following steps should be followed for the upstreamed solution (from
 4.12 kernel). The custom solution used in 4.9/4.4 should not be used for
