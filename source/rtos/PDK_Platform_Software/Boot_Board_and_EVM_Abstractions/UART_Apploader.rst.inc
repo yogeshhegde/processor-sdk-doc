@@ -3,7 +3,7 @@ Overview
 ^^^^^^^^
 
 UART AppLoader is a standalone application used to download application image over UART
-from the host PC. Host PC shall use Teraterm tool to transfer application image to apploader.
+from the host PC. Host PC uses the serial console utility to transfer application image to apploader.
 
 The Apploader application loads and executes the application binary to be tested, 
 over UART on the target platform.
@@ -68,7 +68,7 @@ Pre-Requisites
 
 **Serial Connection**
 
-Establish Teraterm connection with the following configurations:
+Launch the serial console utility with the following configurations:
 
 
 * Baud Rate: 115200
@@ -80,7 +80,9 @@ Establish Teraterm connection with the following configurations:
 * Stop : 1 bit
 
 * Flow Control : None
-    
+
+.. note::   Any Serial Console utility that supports xmodem protocol can be used.
+            Verified utility is Teraterm
     
 AppLoader Usage
 ^^^^^^^^^^^^^^^
@@ -105,11 +107,12 @@ AppLoader Usage
 
 .. note::  The above log is for reference purpose and content might change based on latest software available in processor SDK release
 
-5. Now transfer the application binary to be tested over UART using Teraterm application.
-6. Use the following option in Teraterm to transfer the application binary.
-  File -> Transfer -> XMODEM -> Send
-7. Upon success, the apploader loads and executes the application.
-8. Following is the sample output (using UART Diagnostic test), on the serial console.
+5. Now transfer the application binary to be tested over UART using serial console utility.
+
+.. note::	For example in Teraterm, use the following option to transfer the application binary.
+			File -> Transfer -> XMODEM -> Send
+6. Upon success, the apploader loads and executes the application.
+7. Following is the sample output (using UART Diagnostic application), on the serial console.
 
 ::
 
@@ -129,13 +132,13 @@ AppLoader Usage
                                                                                     
         Test PASSED!
 
-.. note::   For SPI Boot Mode:
-            1. Program Apploader to SPI flash using `Uniflash <Board_EVM_Abstration.html#programming-binaries-to-flash-device>`__ and boot the device from SPI flash.
-            2. Set the sysboot pins to SPI Boot mode
+.. note::	For SPI Boot Mode:
+			1. Program Apploader to SPI flash using `Uniflash <Board_EVM_Abstration.html#programming-binaries-to-flash-device>`__ and boot the device from SPI flash.
+			2. Set the sysboot pins to SPI Boot mode
 
-.. note::   For MMCSD Boot Mode:
-            1. Copy MLO to SD card.
-            2. Rename apploader_Test to app and copy to SD card.
-            3. Set the sysboot pins to MMCSD Boot mode
+.. note::	For MMCSD Boot Mode:
+			1. Copy MLO to SD card.
+			2. Rename apploader_Test to app and copy to SD card.
+			3. Set the sysboot pins to MMCSD Boot mode
 
  
