@@ -32,6 +32,13 @@ Audio Pre-Processing Demo
 
 
 ***************************
+Performance Audio Demo
+***************************
+.. _Demo-Performance-Audio-Demo-label:
+.. include:: Examples_and_Demonstrations/Performance_Audio.rst.inc
+
+
+***************************
 Big Data IPC Example
 ***************************
 .. _Demo-Big-Data-IPC-Example-label:
