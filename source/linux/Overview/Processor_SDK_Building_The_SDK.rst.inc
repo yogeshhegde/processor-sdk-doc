@@ -264,6 +264,9 @@ are shown in red below:
     $ MACHINE=<target-board> bitbake arago-core-tisdk-image
 
 
+
+.. _building-the-sdk-recipes:
+
 Recipes
 -------
 

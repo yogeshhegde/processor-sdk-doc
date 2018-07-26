@@ -119,7 +119,7 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 +================+=========================+==================+===================================+
 | `DUAL_EMAC`_   | `HSR\_PRP`_             | `PTP`_           | `RSTP`_                           |
 +----------------+-------------------------+------------------+-----------------------------------+
-| `CCLINK`_      |                         |                  |                                   |
+| `CCLINK`_      | `SORTE`_                |                  |                                   |
 +----------------+-------------------------+------------------+-----------------------------------+
 
 .. _DUAL_EMAC: Industrial_Protocols_PRU-ICSS.html
@@ -127,6 +127,7 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 .. _RSTP: Industrial_Protocols_RSTP.html
 .. _PTP: Industrial_Protocols_PTP.html
 .. _CCLINK: Industrial_Protocols_CCLINK.html
+.. _SORTE: Industrial_Protocols_SORTE.html
 
 .. rubric:: Feedback
    :name: feedback

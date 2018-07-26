@@ -10,3 +10,4 @@ Industrial Protocols
    Industrial_Protocols_PTP
    Industrial_Protocols_RSTP
    Industrial_Protocols_CCLINK
+   Industrial_Protocols_SORTE

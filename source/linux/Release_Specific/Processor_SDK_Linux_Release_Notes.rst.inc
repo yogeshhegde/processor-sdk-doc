@@ -57,7 +57,7 @@ Released Jul 2018
 - AM57x: PTP: Support Hybrid Clock (HC), i.e. Transparent Clock (TC) + Ordinary Clock (OC) in HSR mode
 - AM57x: HSR/PRP: Add `Broadcast Storm Prevention <Industrial_Protocols_HSR_PRP.html#broadcast-storm-prevention>`__
 - AM57x: HSR/PRP: Improve throughput at smaller packet sizes, details `here <Industrial_Protocols_HSR_PRP.html#receive-interrupt-pacing>`__
-- AM335x, AM437x, AM57x: Implement Simple Open Real-Time Ethernet (SORTE) with Linux. Please see here for more details
+- AM437x, AM57x: Implement Simple Open Real-Time Ethernet (SORTE) with Linux. Please see `here <Industrial_Protocols_SORTE.html>`__ for more details
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
