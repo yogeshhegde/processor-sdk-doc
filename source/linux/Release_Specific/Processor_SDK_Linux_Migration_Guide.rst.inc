@@ -51,6 +51,14 @@ Processor SDK 05.00
    am335x-ice-v2.dts: Both ports are CPSW controlled (Board jumpers J18 and J19 at RMII).
    am335x-ice-v2-prueth.dts: Both ports are PRUSS controlled (Board jumpers J18 and J19 at MII).
 
+   Also note that there is an update to the u-boot env script to select DTB file
+   name based on jumper settings. So user needs to do following when upgrading
+   to the latest u-boot from this release:
+
+   >env default -a
+   >saveenv
+   >reset
+
 Processor SDK 04.xx Releases
 ============================
 
