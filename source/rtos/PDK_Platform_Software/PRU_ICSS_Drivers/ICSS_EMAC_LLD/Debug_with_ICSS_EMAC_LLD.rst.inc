@@ -1,12 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide 
 
-.. rubric:: This Page is under construction
-   :name: this-page-is-under-construction
-
-Last updated: **12/15/2015**
-
-.. raw:: html
-
 .. rubric:: Introduction
    :name: introduction
 

@@ -1,243 +1,211 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_CCLINK 
+Introduction
+-------------
 
-.. rubric:: Overview
-   :name: overview
+CC-Link is an open-architecture network that was originally developed
+by the Mitsubishi Electric Corporation.It have been widely used in
+Process control, building automation etc. CLPA (CC-Link Partner
+Association) maintains the network technology and support many
+manufacturer supporting the application. CC-Link is available in
+multiple flavours i.e. CC-Link, CC-Link LT, CC-Link Safety, CC-Link IE
+(Industrial Ethernet) - Control and CC-Link IE Field. For further
+details regarding CCLink and its flavours please refer the CLPA
+website.\ `[1] <http://am.cc-link.org/en/index.html>`__
 
-Control and Communication Link (CC-Link) is an open network administered
-as a fully-open architecture by the CC-Link Partner Association (CLPA).
-CC-Link is available in multiple formats: CC-Link, CC-Link Safety,
-CCLink IE (Industrial Ethernet) Control, and CC-Link IE Field. CC-Link
-IE Field Basic (or IEF Basic) is a new addition to the family of CC-Link
-IE open network technologies that enable device vendors to easily add
-CC-Link IE compatibility to any product with a 100-Mbit Ethernet port.
+Protocol Overview
+------------------
 
-| The CC-Link IE Field Basic operates with Processor SDK Linux, using
-  the Linux networking stack based on either EMAC or PRU-ICSS. This page
-  will describe how to get the source code of CCLINK IEF Basic, how to
-  compile it with Processor SDK Linux, and how to run it on the
-  supported TI platforms.
+The implementation will demonstrate how to create, run and test CC-Link
+IE Field Network Basic examples on TI platforms. The following shows the
+CC-Link IE Field Network Basic Overview:
 
-.. rubric:: Supported TI Platforms
-   :name: supported-ti-platforms
+-  1 Gbit/s Ethernet based network
+-  Ethernet physical layer (Cat5e cable & RJ45 connectors)
+-  254 stations per network
+-  100 meters between stations
+-  Completely deterministic without using switches
+| 
+Code Organization
+------------------
 
-The table below lists the TI platforms which support CCLINK IEF Basic
-with EMAC, and PRU-ICSS, respectively.
+The Directory structure for CC-Link IE Field Network Basic source code
+and examples for both NIMU and NIMU_ICSS is shown in the following
+table.
 
-**Device**
++-------------------------------------------------------------------------------------------------------------------+
+|                                        **CCLink for CPSW i.e. NIMU**                                              |
++-------------------------------+-----------------------------------------------------------------------------------+
++**Master Station Source code** | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/cclink_master |
++-------------------------------+-----------------------------------------------------------------------------------+
++**SLave Station Source code**  |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/cclink_slave   |
++-------------------------------+-----------------------------------------------------------------------------------+
++**Test Examples script**       |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/<SOC>          |
++-------------------------------+-----------------------------------------------------------------------------------+
++**Test Examples main code**    |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/src            |
++-------------------------------+-----------------------------------------------------------------------------------+
 
-.. raw:: html
 
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-**EVM**
-
-**IEF Basic on EMAC**
-
-**IEF Basic on PRU-ICSS**
-
-AM572x
-
-AM572x EVM
-
-X
-
-AM572x IDK
-
-X
-
-X
-
-AM571x
-
-AM571x IDK
-
-X
-
-X
-
-AM437x
-
-AM437x EVM
-
-X
-
-AM437x SK
-
-X
-
-AM437x IDK
-
-X
-
-X
-
-AM335x
-
-AM335x EVM
-
-X
-
-AM335x BeagleBoneBlack
-
-X
-
-AM335x SK
-
-X
-
-AM335x ICE
-
-X
-
-X
-
-K2G
-
-K2G EVM
-
-X
-
-K2G ICE
-
-X
-
-X
++------------------------------------------------------------------------------------------------------------------------+
+|                                     **CCLink for ICSS i.e. NIMU_ICSS**                                                 |
++-------------------------------+----------------------------------------------------------------------------------------+
++**Master Station Source code** | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/cclink_master |
++-------------------------------+----------------------------------------------------------------------------------------+
++**Slave Station Source code**  |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/cclink_slave   |
++-------------------------------+----------------------------------------------------------------------------------------+
++**Test Examples script**       |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/<SOC>          |
++-------------------------------+----------------------------------------------------------------------------------------+
++**Test Examples main code**    |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/src            |
++-------------------------------+----------------------------------------------------------------------------------------+
 
 | 
 
+Building the Examples
+----------------------
+
+Use pdkProjectCreate.sh for Linux environment or pdkProjectCreate.bat
+for Windows.
+This can be found under the <PDK>/packages folder. The only
+modification to these scripts, if any, is to update the
+CCS_INSTALL_PATH variable to point to CCS location if its not in the
+c:\ti\ccsv6 directory . Please refer to `Rebuilding
+PDK </index.php/Rebuilding_The_PDK>`__ for details of example project
+creation and how to run the example projects using CCS.
+
+CC-Link IE Field Network Basic Example Description
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For each EVM Type supported, there is a cclink example which demonstates
+cyclic data communication between master and slave station. Once the
+application is loaded via CCS and run, you will be able to see master
+sending cyclic data packets and slave receiving the packet. For example,
+the config file for NIMU for CPSW for idkAM572x, can be found in
+ti/transport/ndk/nimu/example/CCLink/am572x/armv7/bios/cclink_idkAM572x.cfg.
+The default IP address for master is 192.168.3.100 and for slave it is
+192.168.3.4. If you wish to re-configure the IP address of the CPSW
+interface you will need to modify the following configuration
+parameters. make sure master and slave are in same network.
+
+-  Ip.address = "new ip address"
+-  Ip.mask = "new ip mask"
+-  Ip.gatewayIpAddr = "new gatewayIpAddr"
+
+If you do change these settings, you will be required to re-build the
+Example Project using CCS.
+
++-----------------------+-----------------------+-----------------------+
+| Name                  | Description           | EVM Configuration     |
++=======================+=======================+=======================+
+| NIMU_CCLinkMaster_<ev | | Example             | | icev2AM335x:        |
+| m/idk>XXXX_<arm/c66x/ |   demonstrates CCLink |   Jumpers J18 and J19 |
+| m4>Exampleproject.txt |   master station      |   need to be set      |
+|                       |   sending cyclic      |   properly to select  |
+|                       |   packet to slave.    |   CPSW or ICSS mode.  |
+|                       |                       |                       |
+|                       |                       | | Pin2 and Pin3 need  |
+|                       |                       |   to be connected for |
+|                       |                       |   ICSS mode and Pin1  |
+|                       |                       |   and Pin2 for CPSW   |
+|                       |                       |   mode.               |
+|                       |                       |                       |
+|                       |                       | Update \*.cfg file    |
+|                       |                       | with static IP to     |
+|                       |                       | test. NIMU for CPSW   |
+|                       |                       | test Tests requires   |
+|                       |                       | connection of         |
+|                       |                       | configured Ethernet   |
+|                       |                       | port under test to    |
+|                       |                       | external PC on same   |
+|                       |                       | subnet.               |
++-----------------------+-----------------------+-----------------------+
+| NIMU_CCLinkSlave_<evm | | Example             | | icev2AM335x:        |
+| /idk>XXXX_<arm/c66x/m |   demonstrates CCLink |   Jumpers J18 and J19 |
+| 4>Exampleproject.txt  |   slave station       |   need to be set      |
+|                       |   receiving cyclic    |   properly to select  |
+|                       |   packet from master  |   CPSW or ICSS mode.  |
+|                       |   and sending a       |                       |
+|                       |   response back.      | | Pin2 and Pin3 need  |
+|                       |                       |   to be connected for |
+|                       |                       |   ICSS mode and Pin1  |
+|                       |                       |   and Pin2 for CPSW   |
+|                       |                       |   mode.               |
+|                       |                       |                       |
+|                       |                       | Update \*.cfg file    |
+|                       |                       | with static IP to     |
+|                       |                       | test. NIMU for CPSW   |
+|                       |                       | test Tests requires   |
+|                       |                       | connection of         |
+|                       |                       | configured PRU-ICSS   |
+|                       |                       | Ethernet port under   |
+|                       |                       | test to external PC   |
+|                       |                       | on same subnet.       |
++-----------------------+-----------------------+-----------------------+
+| NIMU_ICSS_CCLinkMaste | | Example             | | icev2AM335x:        |
+| r_<evm/idk>XXXX_<arm/ |   demonstrates CCLink |   Jumpers J18 and J19 |
+| c66x/m4>Exampleprojec |   master station      |   need to be set      |
+| t.txt                 |   sending cyclic      |   properly to select  |
+|                       |   packet to slave.    |   CPSW or ICSS mode.  |
+|                       |                       |                       |
+|                       |                       | | Pin2 and Pin3 need  |
+|                       |                       |   to be connected for |
+|                       |                       |   ICSS mode and Pin1  |
+|                       |                       |   and Pin2 for CPSW   |
+|                       |                       |   mode.               |
+|                       |                       |                       |
+|                       |                       | Update \*.cfg file    |
+|                       |                       | with static IP to     |
+|                       |                       | test. NIMU for CPSW   |
+|                       |                       | test Tests requires   |
+|                       |                       | connection of         |
+|                       |                       | configured Ethernet   |
+|                       |                       | port under test to    |
+|                       |                       | external PC on same   |
+|                       |                       | subnet.               |
++-----------------------+-----------------------+-----------------------+
+| NIMU_ICSS_CCLinkSlave | | Example             | | icev2AM335x:        |
+| _<evm/idk>XXXX_<arm/c |   demonstrates CCLink |   Jumpers J18 and J19 |
+| 66x/m4>Exampleproject |   slave station       |   need to be set      |
+| .txt                  |   receiving cyclic    |   properly to select  |
+|                       |   packet from master  |   CPSW or ICSS mode.  |
+|                       |   and sending a       |                       |
+|                       |   response back.      | | Pin2 and Pin3 need  |
+|                       |                       |   to be connected for |
+|                       |                       |   ICSS mode and Pin1  |
+|                       |                       |   and Pin2 for CPSW   |
+|                       |                       |   mode.               |
+|                       |                       |                       |
+|                       |                       | Update \*.cfg file    |
+|                       |                       | with static IP to     |
+|                       |                       | test. NIMU for CPSW   |
+|                       |                       | test Tests requires   |
+|                       |                       | connection of         |
+|                       |                       | configured PRU-ICSS   |
+|                       |                       | Ethernet port under   |
+|                       |                       | test to external PC   |
+|                       |                       | on same subnet.       |
++-----------------------+-----------------------+-----------------------+
+
 | 
 
-.. rubric:: Source Code for CCLINK IEF Basic
-   :name: source-code-for-cclink-ief-basic
+Running CC-Link IE Field Network Basic example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The CCLINK IEF basic source code for Linux can be requested from
-`CLPA <http://am.cc-link.org/en/index.html>`__. It can also be retrieved
-from `Processor SDK CCLink
-Source <http://git.ti.com/processor-sdk/cclink/trees/master>`__.
-
-| 
-
-.. rubric:: Compile CCLINK IEF Basic with Processor SDK Linux
-   :name: compile-cclink-ief-basic-with-processor-sdk-linux
-
-Starting from Processor SDK Linux Releases 4.1.0, the pre-built binaries
-and configuration files for CCLINK IEF Basic will be part of the
-filesystem of Processor SDK Linux. The binaries (Master_sample and
-Slave_sample) can be located under the /usr/bin folder. The
-configuration files (MasterParameter.csv and SlaveParameter.csv) are
-placed at /usr/share/cclink.
-
-If it is needed to rebuild the sources, the CCLINK IEF Basic sources can
-be fetched directly to the EVM and compiled natively on target. Using
-the source code at `Processor SDK CCLink
-Source <http://git.ti.com/processor-sdk/cclink/trees/master>`__ as the
-example:
-
--  CCLINK IEF Basic for Master
-
-First change directory to the Linux build folder for master, i.e.,
-CCIEF-BASIC_Master/build/linux. Then, run "make" which generates
-Master_sample
-
--  CCLINK IEF Basic for Slave
-
-First change directory to the Linux build folder for slave,
-CCIEF-BASIC_Slave/build/linux. Then, run "make" which generates
-Slave_sample
-
-An alternative to rebuild CCLINK IEF Basic is cross-compilation on X86
-using the Yocto recipe. In order to do that, please refer to `Processor
-SDK Building The
-SDK <http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK>`__
-to set up the build environment, and `Processor SDK Yocto
-Recipes <http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Recipes>`__
-to bitbake the recipes and install the newly built packages for CCLINK
-IEF Basic:
-
-::
-
-    MACHINE=am57xx-evm bitbake ccief-basic
-
-After the bitbake commands above are successfully done, the newly built
-ccief-basic binaries can found from the folder of
-./build/arago-tmp-external-linaro-toolchain/work/armv7ahf-neon-linux-gnueabi/ccief-basic/<ver_number>/packages-split/ccief-basic/usr/bin.
-
-| 
-
-| 
-
-.. rubric:: Run CCLink IEF Basic Sample Application
-   :name: run-cclink-ief-basic-sample-application
-
-The picture below shows the test setup for the CCLINK IEF basic master
-and slave applications running on the supported TI platforms. For both
-the master and the slave stations, connect the Ethernet ports to be
-tested to a switch.
+The following is the test setup needed to run the example for CCLink
+demonstration on TI platform. Connect the tested eth port of the evm to
+a switch for master station. Do the same connection for slave station to
+same switch.
 
 .. Image:: ../images/Cclink_setup_pic.PNG
 
-Please note that the jumper setting for AM335x ICE V2 EVM needs to be
-set correctly based on the type of application demonstrated:
-
--  If running with EMAC, connect the jumper J18 and J19 for both boards
-   into EMAC mode. Hence, connect pin1 and pin2.
--  If running with PRU_ICSS, connect the jumper J18 and J19 for both
-   boards into ICSS mode. Hence, connect pin2 and pin3.
-
-| Location of these two jumpers J18 and J19 can be found from
-  http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_EVM_Rev2_1_HW_User_Guide#Component_Positions.
-
-
-.. rubric:: Master Sample Application
-   :name: master-sample-application
-
-Before running the master sample application, first obtain the IP
-address of the slave Ethernet port to be tested. Then, modify
-/usr/share/cclink/MasterParameter.csv to update "Slave1 IP address"
-using the IP address of the Slave station. After that, run the master
-sample application: “Master_sample
-/usr/share/cclink/MasterParameter.csv”
-
-The figure below shows the sample output from the console of the master
-station.
+| 
+| Once the connection is done, load master and slave station code on
+  both evm and run them simultaneously. You would see following output
+  on uart port of master station.
 
 .. Image:: ../images/Cclink_master_screeshot_linux.png
 
-| 
-
-.. rubric:: Slave Sample Application
-   :name: slave-sample-application
-
-On the slave station, simply run the slave sample application:
-“Slave_sample /usr/share/cclink/SlaveParameter.csv”
-
-The figure below shows the sample output from the console of the slave
-station.
+You would see following output on uart port of slave station.
 
 .. Image:: ../images/Cclink_slave_screenshot_linux.png
 
 | 
 
-| 
-
-.. rubric:: Compliance Testing
-   :name: compliance-testing
-
-Every CCLINK IEF Basic application when demonstrated on any platform has
-to pass the conformance testing for various functionalities of IEF
-Basic. The conformance test results are sent to CLPA for approval. Upon
-approval from CLPA, the platform is accepted as CC-Link IEF Basic
-complaint.
-
-| 
-
 .. raw:: html
-
