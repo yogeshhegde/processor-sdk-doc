@@ -19,6 +19,7 @@ the last Processor SDK for RTOS release.
    :name: Build
 
 **Migration:** TOOLS_INSTALL_PATH macro value changed to SDK_INSTALL_PATH
+No migration impact if tools and SDK are installed in same location. See additional details
 
 **Additional Details**: 
 TOOLS_INSTALL_PATH macro value is set to SDK_INSTALL_PATH by default.
@@ -38,9 +39,9 @@ Linux
 .. rubric::  Build Setup
    :name: build-setup
 
-**Migration:** There is no migration needed for default components in processor SDK.
-Custom software modules and/or modules outside processor SDK should include 
-RULES_MAKE variable.
+**Migration:** There is no migration need for components used within processor SDK.
+Application Software outside processor SDK may require a change if there is a dependency 
+to internal Processor SDK environment variables. See more details below
 
 **Additional Details**:
 Rules.make file is used instead of pdksetupenv to setup the build environment variables.
