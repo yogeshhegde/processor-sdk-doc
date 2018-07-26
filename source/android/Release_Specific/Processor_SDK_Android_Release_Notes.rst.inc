@@ -54,10 +54,10 @@ Disclaimer <Licenses.html#gplv3-disclaimer>`__
 
 | 
 
-Release 04.03.00
+Release 05.00.00
 =====================
 
-| Released March 2018
+| Released July 2018
 
 .. rubric:: What's New
    :name: whats-new
@@ -83,7 +83,7 @@ Following new features are enabled/tested in this release:
 -  **Power:** AVS0, MPU DVFS, ABB
 -  **Thermal:** Governors implemented for MPU (On Die), Monitoring
    implemented for all on chip sensors
--  **Video:** 1080p60 MP4/H264/MP2, H264 Video Encode (F2F)
+-  **Video:** 1080p60 MP4/H264/MP2
 -  **Audio:** MP3/AAC playback, ARM<->DSP Audio Routing
 -  **Display:** SGX accelerated UI and touch, DRM/KMS, DSS WB, SGX and
    DSS simultaneous composition.
@@ -98,13 +98,13 @@ Following new features are enabled/tested in this release:
 +----------------+------------------------------------------------+
 | Component      | Version                                        |
 +================+================================================+
-| Linux Kernel   | 4.4.117                                        |
+| Linux Kernel   | 4.14.40                                        |
 +----------------+------------------------------------------------+
-| U-boot         | 2016.05                                        |
+| U-boot         | 2018.01                                        |
 +----------------+------------------------------------------------+
 | Android        | Android O-Pastry 8.1                           |
 +----------------+------------------------------------------------+
-| Toolchain      | Andriod linux-x86 toolchain android-eabi-4.9   |
+| Toolchain      | Linaro GCC 7.2-2017.11                         |
 +----------------+------------------------------------------------+
 | IPC            | 3.47.01.00                                     |
 +----------------+------------------------------------------------+

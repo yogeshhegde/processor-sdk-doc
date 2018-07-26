@@ -7,6 +7,16 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Android.
 
+.. rubric:: Processor SDK Android 05.00.00
+   :name: processor-sdk-android-05.00.00
+
+-  Linux Kernel and U-boot are updated to v4.14 and 2018.01 respectively, while
+   the pastry continues to be Android-Oreo
+-  More details about Oreo can be obtained from
+   `here <https://developer.android.com/about/versions/oreo/index.html>`__
+
+|
+
 .. rubric:: Processor SDK Android 04.03.00
    :name: processor-sdk-android-04.03.00
 
