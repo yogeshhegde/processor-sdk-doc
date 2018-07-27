@@ -104,39 +104,6 @@ Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a
     $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
     $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
-.. note::
-   One common location for hosting packages, gforge.ti.com, has recently
-   been decommissioned. This will cause fetch failures for the current and
-   past releases. Please follow this augmented procedure to configure the
-   build to obtain these packages from the TI mirror.
-
-::
-
-    $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
-    $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
-    $ cd build
-    $ cat >> ./conf/local.conf << 'EOF'
-
-    TI_MIRROR = "http://software-dl.ti.com/processor-sdk-mirror/sources/"
-    MIRRORS += " \
-    bzr://.*/.*      ${TI_MIRROR} \n \
-    cvs://.*/.*      ${TI_MIRROR} \n \
-    git://.*/.*      ${TI_MIRROR} \n \
-    gitsm://.*/.*    ${TI_MIRROR} \n \
-    hg://.*/.*       ${TI_MIRROR} \n \
-    osc://.*/.*      ${TI_MIRROR} \n \
-    p4://.*/.*       ${TI_MIRROR} \n \
-    npm://.*/.*      ${TI_MIRROR} \n \
-    ftp://.*/.*      ${TI_MIRROR} \n \
-    https?$://.*/.*  ${TI_MIRROR} \n \
-    svn://.*/.*      ${TI_MIRROR} \n \
-    "
-    EOF
-    $ . conf/setenv
-    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
-    $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
-
 
 Processor SDK Build Reference
 =============================
