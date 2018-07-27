@@ -101,7 +101,7 @@ Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a
     $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
     $ cd build
     $ . conf/setenv
-    $ export PATH=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin:$PATH
+    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
     $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
 .. note::
@@ -134,7 +134,7 @@ Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a
     "
     EOF
     $ . conf/setenv
-    $ export PATH=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin:$PATH
+    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
     $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
 
@@ -260,7 +260,7 @@ are shown in red below:
     $ cd ..</span>
     $ cd build
     $ . conf/setenv
-    $ export PATH=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin:$PATH
+    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
     $ MACHINE=<target-board> bitbake arago-core-tisdk-image
 
 
