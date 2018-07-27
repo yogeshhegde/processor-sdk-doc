@@ -65,7 +65,7 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |                                      |`AM574x IDK                           | 1.0A     |`Hardware User's Guide <http://             | X              | X              | X              | X              |
-|                                      |<http://www.ti.com/tool/              |          |http://www.ti.com/lit/pdf/spruij9>`__       |                |                |                |                |
+|                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruij9>`__              |                |                |                |                |
 |                                      |TMDSIDK574>`__                        |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
 |                                      |                                      |          |.wiki.ti.com/index.php/TMDXIDK5728_         |                |                |                |                |
 |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
