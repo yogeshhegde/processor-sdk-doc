@@ -947,7 +947,7 @@ for more details.
 |                                      |    </div>                            |
 +--------------------------------------+--------------------------------------+
 
-Example: See below pictures (J21 is connector along bottom left edge)
+Example: See below pictures (J21 is the connector along the top right edge)
 
 .. Image:: ../images/Am571x_whole_small2.png
 
@@ -997,7 +997,7 @@ for more details.
 |                                      |    </div>                            |
 +--------------------------------------+--------------------------------------+
 
-Example: See below pictures (J21 is connector along top right edge)
+Example: See below pictures (J21 is the connector along the top right edge)
 
 .. Image:: ../images/Am574x_whole_small2.png
 
