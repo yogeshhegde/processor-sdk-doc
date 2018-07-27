@@ -21,10 +21,19 @@ of Deep Learning task and can be used for other roles in your application. This 
 
 At the moment, TIDL software stack primarily enables Convolution Neural Network inference, using offline pre-trained models, 
 stored in device file-system (**no training on target device**). Models trained using Caffe or Tensorflow-slim frameworks can be 
-imported and converted for efficient execution on TI devices. 
+imported and converted (with provided import tool) for efficient execution on TI devices. 
 
 Additional performance benefits can be achieved by doing training using Caffe-Jacinto fork of Caffe, which includes functions for
 making convolution weight tensor sparse, thus giving opportunity for 3x-4x performance boost of convolutions layers.
+
+.. figure:: ../images/tidl-flow.png
+    :width: 800px
+    :align: center
+    :height: 300px
+
+    Deep Learnining development flow on AM57xx devices
+
+|
 
 Application space
 -----------------
@@ -43,6 +52,7 @@ Image Object Detection      list of tuples. Each tuple includes class index, pro
 =========================   ============================================================================================================================================
 
 Additional examples covering other application areas (speech, audio, predictive maintenance), are in the road map.
+Apart from Convolution Network topologies, support for RNN/LSTM layers and topologies, targetting processing of sequential data, are planned in future releases.
 
 Supported Devices
 -----------------
@@ -53,6 +63,8 @@ TIDL software stack is intended for AM57xx Sitara devices, that either have DSP 
 - AM5746 (2xC66x DSPs)
 - AM572x (2xC66x DSPs)
 - AM571x (1xC66x DSP)
+- AM5706 (1xC66x DSP)
+- AM5708 (2xC66x DSP)
 
 Verified networks topologies
 ----------------------------
@@ -118,8 +130,8 @@ The following layer types/Inference features are supported in TIDL
 #. Split Layer
 #. Detection Output Layer
 
-Limitations of layers in TIDL Lib
----------------------------------
+Constraints on layer parameters
+-------------------------------
 Layers in current release of TIDL Lib have certain parameter related constraints:
 
 - Convolution Layer
@@ -230,7 +242,7 @@ with three buttons:
 * ImageNet classification using Jacinto11 model with pre-recorded video clip, synthetically created from several static video images (using ImageMagick convert tool)
 * ImageNet classification using Jacinto11 model with live camera input.
 
-Imagenet classification using Jacinto11 model, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving 
+Imagenet classification using Jacinto11 model `<https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained/image_classification/imagenet_jacintonet11v2/sparse>`_, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving 
 IVAHD), and sent to OpenCV processing pipeline. Video clip is in **320x320** resolution, and scaled down in run-time (using OpenCV API) to 224x224 before sending to TIDL API. Result of this
 processing is standard Imagenet classification output (1D vector with 1000 elements). But, there is a subset of common objects expected to be used with the demo, so classification results 
 are filtered using list of classes provided as command line argument. Blue bounding rectangle (in main image window) is presented only when valid detection is reported. 
@@ -390,13 +402,11 @@ Public programming model is defined in TIDL API host wrapper package. In current
 has 3 classes only, allowing use of one or more neural network models that can run in parallel on 
 independent EVEs or C66x cores.
 
-Single unit of processing is a tensor (E.g. one image frame, but other inputs are also possible). 
-Typically, NN model runs on single core (EVE or DSP). But in certain cases it is possible to split
-NN layers into two layer groups. Than, we can have one layer group running on EVE and second layer group on DSP.
+Single unit of processing is a tensor (e.g. one image frame, but other inputs are also possible), which is typically processed by single accelerator (EVE or DSP), till completion. But in certain cases it is justified, from performance point of view, to split network layers into two layer groups. 
+Than, we can have one layer group running on EVE and second layer group on DSP. This is done sequentially.
 
-Top layer TIDL API and OpenCL are primarily service layers, i.e. they help in simplifying 
-programming model, IPC mechanism and memory management. Desired features are provided by
-TIDL Lib which runs in RTOS environment, either on EVE or DSP.
+Top layer TIDL API and OpenCL are primarily service software layers (in terms of TIDL stack, not NN), i.e. they help in simplifying programming model, IPC mechanism and memory management. Desired features are provided by
+TIDL Lib which runs in RTOS environment, either on EVE or DSP. This software layer is provided in closed firmware, and used as is, by end user.
 
 
 Target file-system
@@ -671,7 +681,7 @@ Output of layers group 1 is shared (common) with input buffer of layers group 2 
 Calculating theoretical GMACs needed
 """"""""""""""""""""""""""""""""""""""
 
-This can be calculated for Convolution Layers, Inner Product and Fully Connected Layers. Each Convolution Layer has certain number of input and output feature maps (2D tensors).
+This can be calculated for up-front for computationally most intensive layers: Convolution Layers and Fully Connected Layers. Each Convolution Layer has certain number of input and output feature maps (2D tensors).
 Input feature map is convolved with convolution kernel (usually 3x3, but also 5x5, 7x7..).
 So total number of MACs can be calculated as: Height_input_map x Width_input_map x N_input_maps x N_output_maps x size_of_kernel.
 
@@ -785,16 +795,16 @@ Training
 Existing Caffe and TF-Slim models can be imported **as long as layers are supported and parameter constraints are met**.
 But, typically these models include dense weight matrices. 
 In order to leverage some benefits of TIDL Lib, and gain 3x-4x performance improvement (for Convolution Layers), 
-it is necessary to repeat the training process using caffe-jacinto caffe fork, available at github.com/tidsp/caffe-jacinto.
-Highest contribution to CNN compute load comes from Convolution Layers (often in 80-90% range), hence special attention is paid
+it is necessary to repeat the training process using caffe-jacinto caffe fork, available at `<https://github.com/tidsp/caffe-jacinto>`_
+Highest contribution to Convolution Neural Networks compute load comes from Convolution Layers (often in 80-90% range), hence special attention is paid
 to optimize Convolution Layer processing.
 
 Data set preparation should follow standard Caffe approach, typically creating LMDB files.
 After that training is done in 3 steps:
 
-- Initial training, creating dense model.
-      At the end of this procedure, it is necessary to verify accuracy of the model. Weight tensors are dense so performance target may not be hit \
-      but following steps can improve the performance.
+- Initial training (typically with L2 regularization), creating dense model.
+      This phase is actually usual training procedure applied on desktop. At the end of this phase, it is necessary to verify accuracy of the model. Weight tensors are dense so performance target may not be hit \
+      but following steps can improve the performance. If accuracy is not sufficient, it is not advisible to proceed with further steps (they won't improve accuracy - actually small drop in accruacy of 1-2% is expected). Instead, modify training parameters or enhance data set, and repeat the training, until accuracy target is met.
 
 - L1 regularization
       This step is necessary to (opposite to L2) favor certain weight values at the expense of others, and make larger portion
@@ -819,9 +829,7 @@ Example of training procedure
       dozens classes. Using turn-table and photo booth with good illumination allows quick data set collection.
 
 - Data set collection using AM57xx
-      AM57xx EVM can collect images using Camera Daughter card (or external camera), using GStreamer pipeline capturing video recording or OpenCV 
-      based application (to capture individual images). In former case (GStreamer pipeline), using H264 encoder at higher bit-rate, capture 
-      can last 15-20 seconds only (rotation period of turn-table). Using slower fps (10-15fps), this provides 200-300 frames. Procedure can be repeated
+      Data set images can be recorded by external camera device, or even using Camera Daughter card (of AM57xx). Suggested recorded format is H264, that offers good quality and can be efficiently decoded using GStreamer pipeline. It can last 15-20 seconds only (rotation period of turn-table). With slower fps (10-15fps), this provides 200-300 frames. Procedure can be repeated
       by changing distance and elevation (3-4 times), so total image count can be up to 2000-3000 frames per class. This can limit single class data collection time to 5-10min.
       
 - Post-processing
@@ -832,7 +840,7 @@ Example of training procedure
 -  Prepare LMDB files for the training
       Please refer to available scripts in github.com/tidsp/caffe-jacinto-models/scripts
 
--  Do training from scratch or use transfer learning (fine-tuning)
+-  Do training from scratch or do transfer learning (fine-tuning)
       Frequently, it is good to start training using initial weights created with generic data set (like ImageNet). Bottom layers act like feature extractors, and
       only top 1 or few layers need to be fine tuned using data set that we just collected (as described in previous sets). In case of Jacinto11, good starting 
       point is model created after "Initial" phase. We will need to repeat initial phase, but now using new data set, and using same layer names for those 
