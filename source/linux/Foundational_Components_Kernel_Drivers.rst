@@ -83,10 +83,6 @@ QSPI
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/QSPI.rst.inc
 
-RapidIO
----------------------------------
-.. include:: Foundational_Components/Kernel/Kernel_Drivers/RapidIO.rst.inc
-
 SPI
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/SPI.rst.inc
