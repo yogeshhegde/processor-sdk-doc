@@ -3,31 +3,32 @@ Update environment when installing to a custom path
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Install_In_Custom_Path 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+^^^^^^^^
 
 This page will provide configuration information if the SDK is installed
 in a custom path.
 
 **Useful Tip**
+
 To avoid changing environment variable for each new shell, modify
 environment variable file directly. This file is the *setupenv* file
 located in the SDK root directory.
 
-| 
 
-.. rubric:: Changes to CCS Configuration
-   :name: changes-to-ccs-configuration
+
+Changes to CCS Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Installing the SDK in a folder other than where CCS is installed will
 require modifications to CCS to be able to discover the SDK. See the
 `Setup CCS </index.php/Processor_SDK_RTOS_Setup_CCS>`__ **How To** page
 explaining how to update CCS configuration.
 
-| 
 
-.. rubric:: Rebuilding the SDK RTOS
-   :name: rebuilding-the-sdk-rtos
+
+Rebuilding the SDK RTOS
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Installing the SDK in a folder other than the default (``C:\TI`` for
 Windows, ``/home/[user]/ti`` for Linux) requires modifications to SDK
@@ -37,8 +38,8 @@ work properly.
 In all the commands below, replace *[version]* with the appropriate
 version of the software/tool.
 
-.. rubric:: CCS in Custom Path and SDK RTOS in Default Path
-   :name: ccs-in-custom-path-and-sdk-rtos-in-default-path
+CCS in Custom Path and SDK RTOS in Default Path
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 CCS installation and toolchain paths can be customized by setting the
 TOOLS_INSTALL_PATH environment variable prior to running the SDK level
@@ -148,8 +149,8 @@ Makefile <Overview.html#top-level-makefile>`__
 can now be used to rebuild SDK RTOS components with CCS and toolchains
 installed in a custom installation path.
 
-.. rubric:: CCS in Default Path and SDK RTOS in Custom Path
-   :name: ccs-in-default-path-and-sdk-rtos-in-custom-path
+CCS in Default Path and SDK RTOS in Custom Path
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 SDK RTOS component installation paths can be customized by setting the
 SDK_INSTALL_PATH variable prior to running the SDK level setupenv
@@ -266,8 +267,8 @@ installation path.
    <pdk_root_dir>/packages/ti/starterware/Rules.make to point to the CCS
    installation on your Windows PC.
 
-.. rubric:: CCS and SDK RTOS in Custom Path
-   :name: ccs-and-sdk-rtos-in-custom-path
+CCS and SDK RTOS in Custom Path
+"""""""""""""""""""""""""""""""
 
 When CCS and the SDK RTOS are both installed to custom paths the SDK can
 be rebuilt by setting the SDK_INSTALL_PATH and TOOLS_INSTALL_PATH
@@ -388,18 +389,17 @@ can now be used to rebuild SDK RTOS components installed in the custom
 installation path using CCS and toolchains installed in a custom path as
 well.
 
-| 
 
-.. rubric:: Rebuilding the PDK
-   :name: rebuilding-the-pdk
+Rebuilding the PDK
+^^^^^^^^^^^^^^^^^^
 
 Installing the PDK in a folder other than the default (C:\TI for
 Windows, /home/[user]/ti for Linux) requires modifications to PDK
 scripts in order for recompilation and example/test creation to work
 properly.
 
-.. rubric:: CCS in Custom Path and PDK in Default Path
-   :name: ccs-in-custom-path-and-pdk-in-default-path
+CCS in Custom Path and PDK in Default Path
+""""""""""""""""""""""""""""""""""""""""""
 
 The instructions provided in the `CCS in Custom Path and SDK RTOS in
 Default
@@ -414,8 +414,8 @@ the following locations on Windows and Linux, respectively:
 -  Linux -
    /home/[user]/custom/install/path/pdk_[soc]_[version]/packages/pdksetupenv.sh
 
-.. rubric:: CCS in Default Path and PDK in Custom Path
-   :name: ccs-in-default-path-and-pdk-in-custom-path
+CCS in Default Path and PDK in Custom Path
+""""""""""""""""""""""""""""""""""""""""""
 
 The instructions provided in the `CCS in Default Path and SDK RTOS in
 Custom
@@ -430,8 +430,8 @@ the following locations on Windows and Linux, respectively:
 -  Linux -
    /home/[user]/custom/install/path/pdk_[soc]_[version]/packages/pdksetupenv.sh
 
-.. rubric:: CCS and PDK in Custom Path
-   :name: ccs-and-pdk-in-custom-path
+CCS and PDK in Custom Path
+""""""""""""""""""""""""""
 
 The instructions provided in the `CCS and SDK RTOS in Custom
 Path </index.php/Processor_SDK_RTOS_Install_In_Custom_Path#CCS_and_SDK_RTOS_in_Custom_Path>`__
@@ -445,11 +445,9 @@ the following locations on Windows and Linux, respectively:
 -  Linux -
    /home/[user]/custom/install/path/pdk_[soc]_[version]/packages/pdksetupenv.sh
 
-| 
 
-.. rubric:: Creating PDK Example/Test Projects When CCS is Installed to
-   Custom Path
-   :name: creating-pdk-exampletest-projects-when-ccs-is-installed-to-custom-path
+Creating PDK Example/Test Projects When CCS is Installed to Custom Path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The pdkProjectCreate scripts must be modified in order to build PDK
 example and test projects only if CCS has been installed to a custom

@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Flashing_Bootable_Images 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+^^^^^^^^
 
 The Processor SDK RTOS for C6657, C6678, K2H, K2E, and K2L EVMs includes
 a script in the directory
@@ -16,8 +16,8 @@ flash bootable images onto your EVM.
 The following sections will describe how to use this script and the
 default flashable binaries in the Processor SDK RTOS.
 
-.. rubric:: Requirements
-   :name: requirements
+Requirements
+^^^^^^^^^^^^
 
 -  A Windows or Linux PC
 -  Processor SDK RTOS installed on your PC. The version to install must
@@ -31,8 +31,8 @@ default flashable binaries in the Processor SDK RTOS.
    Guide. See `this page <Release_Specific.html#supported-platforms-and-versions>`__ for
    a link to all supported EVM information.
 
-.. rubric:: Directory Structure
-   :name: directory-structure
+Directory Structure
+^^^^^^^^^^^^^^^^^^^
 
 The files used are in the Processor SDK RTOS directory. Expanded below
 are the relevant files and directories for flashing the bootable images
@@ -80,8 +80,8 @@ and K2L EVMs.
         ├── MLO
         └── spi_flash_writer.out
 
-.. rubric:: Default Binaries and Setup
-   :name: default-binaries-and-setup
+Default Binaries and Setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Processor SDK RTOS provides the basic CCXML files to connect to your
 SOC. There is a separate CCXML file for each SOC, emulator, and host OS
@@ -132,8 +132,8 @@ Flash images
 -  [K2H/K2E/K2L] MLO - Secondary Bootloader. The default flash location
    is in SPI NOR flash memory at offset 0.
 
-.. rubric:: Usage
-   :name: usage
+Usage
+^^^^^
 
 For Windows users:
 
@@ -192,8 +192,8 @@ EVMK2E little endian
 
       > $DSS_SCRIPT_DIR/dss.sh program_evm.js tmdsevmk2e
 
-.. rubric:: Sample Output
-   :name: sample-output
+Sample Output
+^^^^^^^^^^^^^
 
 ::
 

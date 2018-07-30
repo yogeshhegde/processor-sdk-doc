@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Porting_Guide_for_AM571x/AM570x_Speed_Grades 
 
-.. rubric:: Description
-   :name: description
+Description
+^^^^^^^^^^^
 
 The AM57x Family of Processors includes a wide range of operating
 performance to meet the needs of a number of broad applications. Among
@@ -31,8 +31,8 @@ This document is not an exhaustive list of all the changes needed for a
 proper board port as it focused on the changes needed to enable
 different speed grades.
 
-.. rubric:: Comparison of AM572x, AM571x and AM570x devices
-   :name: comparison-of-am572x-am571x-and-am570x-devices
+Comparison of AM572x, AM571x and AM570x devices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Quick Feature Set comparison between devices in Sitara AM57xx
 family :**
@@ -44,8 +44,8 @@ family :**
 
 .. Image:: ../images/AM57xx_OPP.png
 
-.. rubric:: Code Composer Studio (CCS) and Emulation support
-   :name: code-composer-studio-ccs-and-emulation-support
+Code Composer Studio (CCS) and Emulation support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TI Supports following evaluation platform for AM57xx class of devices:
 
@@ -86,12 +86,11 @@ Core as shown in the screenshot below
 
 .. Image:: ../images/Advanced_settings_GEL_setup.png
 
-.. rubric:: Board Library Changes to Consider for Using Processor SDK
-   RTOS
-   :name: board-library-changes-to-consider-for-using-processor-sdk-rtos
+Board Library Changes to Consider for Using Processor SDK RTOS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: Clock and PRCM Updates to consider
-   :name: clock-and-prcm-updates-to-consider
+Clock and PRCM Updates to consider
+""""""""""""""""""""""""""""""""""
 
 The board library provides setting for OPP_NOM, OPP_OD and OPP_HIGH in
 the PLL settings using 20 MHz input clock that has been used on the
@@ -200,8 +199,8 @@ remove IVA wakeup and clock configuration
     -      CSL_FEXT(ivaCmReg->CM_IVA_IVA_CLKCTRL_REG,
     -       IVA_CM_CORE_CM_IVA_IVA_CLKCTRL_REG_IDLEST));
 
-.. rubric:: Configure DDR Interfaces
-   :name: configure-ddr-interfaces
+Configure DDR Interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 An important one to consider is the speed of the DDR memory. The clock
 for the DDR is selected using the same dplls structure. Some higher
@@ -243,8 +242,8 @@ For AM572x, this is mapped as following
    Processor SDK RTOS provides am570x_ddr.c file in the idkAM571x board
    library for reference for configuring DDR on AM570x parts
 
-.. rubric:: Pinmux Changes to Consider
-   :name: pinmux-changes-to-consider
+Pinmux Changes to Consider
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  For part number where the Display subsystem or SATA is not available,
    the pins can be configured to any other pin functionality that may be
@@ -259,10 +258,10 @@ For AM572x, this is mapped as following
    Processor SDK RTOS provides board/src/idkAM571x/include/am570x_pinmux.h
    file in the idkAM571x board library for reference for configuring pinmux
    on AM570x based hardware platform
-| 
+ 
 
-.. rubric:: Driver SOC Module clock changes
-   :name: driver-soc-module-clock-changes
+Driver SOC Module clock changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some control drivers use default Module input clock frequency settings
 in <module>_soc.c file that gets used by the Low level drivers to
@@ -284,8 +283,8 @@ be modified
        /* Set the default SPI init configurations */
        SPI_socSetInitCfg(TEST_SPI_PORT, &spi_cfg);
 
-.. rubric:: Related Article for Processor SDK Linux developers
-   :name: related-article-for-processor-sdk-linux-developers
+Related Article for Processor SDK Linux developers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  `Linux_Porting_Guide_for_AM571x/AM570x_Speed_Grades <http://processors.wiki.ti.com/index.php/Linux_Porting_Guide_for_AM571x/AM570x_Speed_Grades>`__
 
@@ -295,8 +294,8 @@ be modified
 -  `Clock Tree Tool <http://www.ti.com/tool/clockTreeTool>`__
 -  `Pin Mux tool <http://www.ti.com/tool/PinMuxTool>`__
 
-.. rubric:: Support
-   :name: support
+Support
+^^^^^^^
 
 For any questions related Usage of AM572x, AM571x and AM570x devices,
 please post your question on TI E2E Forums

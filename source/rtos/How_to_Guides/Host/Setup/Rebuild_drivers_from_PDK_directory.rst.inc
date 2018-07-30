@@ -1,14 +1,14 @@
 .. http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK 
 
-.. rubric:: Overview
-   :name: overview
+Overview
+^^^^^^^^
 
 The instructions below are for building for one platform. If you are
 developing for multiple platforms (e.g., AM437x and AM335x), please
 invoke builds in a serial fashion.
 
-.. rubric:: Building PDK using gmake in Windows environment
-   :name: building-pdk-using-gmake-in-windows-environment
+Building PDK using gmake in Windows environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The build environment for windows must be setup providing RULES_MAKE
 macro with the location of the top level Rules.make file. Additionally the
@@ -90,12 +90,9 @@ To build only, DSP version of evmK2G board library
 
     gmake LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="dsp_0" 
 
-| 
 
-| 
-
-.. rubric:: Building PDK using make in Linux environment
-   :name: building-pdk-using-make-in-linux-environment
+Building PDK using make in Linux environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Linux environment shall be setup by exporting RULES_MAKE variable with
 the location of top level Rules.make or by using the pdksetupenv.sh script
@@ -173,8 +170,8 @@ To build only, DSP version of evmK2G board library
 
     make LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="dsp_0" 
 
-.. rubric:: PDK Example and Test Project Creation
-   :name: pdk-example-and-test-project-creation
+PDK Example and Test Project Creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The PDK contains Windows and Linux scripts used to create example and
 test CCS projects for all PDK sub-components. The following steps detail
@@ -314,13 +311,12 @@ not contain a DSP processor.
    C:\\ti\\pdk_[soc]_[version]\\packages\\MyExampleProjects\\ in Windows and
    ~/ti/pdk_[soc]_[version]/packages/MyExampleProjects/ in Linux.
 
-| 
 
-.. rubric:: Steps to run example and/or unit test projects on C66x/A15
-   Target
-   :name: steps-to-run-example-andor-unit-test-projects-on-c66xa15-target
+Steps to run example and/or unit test projects on C66x/A15 Target
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. **Import Project**
+
    Below are the steps for importing project assumes that CCS project is
    already available.
 
@@ -368,14 +364,13 @@ not contain a DSP processor.
       #. Click on Target -> Reset CPU
       #. Click on Target -> Load Program
       #. Select the executable file to be loaded. Example:
-
-	::
-
-		C:\ti\pdk_[soc]_[version]\packages\MyExampleProjects\GPIO_LedBlink_AM572X_GpEvm_c66xExampleProject\Debug\GPIO_LedBlink_evmAM572x_c66xExampleProject.out
-
-      #. Click on OK.
-      #. Once the project is loaded; click on Target -> Run to execute
-         it.</pre>
+      
+        ::
+      
+                C:\ti\pdk_[soc]_[version]\packages\MyExampleProjects\GPIO_LedBlink_AM572X_GpEvm_c66xExampleProject\Debug\GPIO_LedBlink_evmAM572x_c66xExampleProject.out
+      4. Click on OK.
+      5. Once the project is loaded; click on Target -> Run to execute
+         it.
 
 | 
 

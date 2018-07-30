@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^^
 
 The following article describes how a custom Board can be added to the
 Processor SDK RTOS. The scope of this article is to only describe how to
@@ -20,14 +20,12 @@ variant board library has several dependencies on legacy starterware
 package, hence additional steps are required and not covered in the
 wiki.
 
-.. rubric:: Instructions to add custom Board to the PDK build
-   :name: instructions-to-add-custom-board-to-the-pdk-build
+Instructions to add custom Board to the PDK build
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Step 1: Creating new directory for custom board library**
 
-In pdk_am57xx_x_x_x/packages/ti/board/src
-
-| 
+In pdk_am57xx_x_x_x/packages/ti/board/src, 
 Create new directory myCustomBoard and copy files from existing board
 library package. We recommend that you copy files from the board which
 closely matches your custom board design. In this case, we assume that
@@ -105,7 +103,7 @@ The SOC_AM572x macro ensures that the CSL aplicable to this SOC will be
 included in the build and evmAM572x define will ensure all evmAM572x
 specific includes that apply to the customAM572x are part of the build.
 
-| 
+
 **Optional step to update RTSC platform definition** If you have a
 custom RTSC platform definition for your custom board that updates the
 memory and platform configuration using RTSC Tool then you need to
@@ -114,7 +112,6 @@ corresponding board library
 
 In packages/ti/buildmakerules/platform.mk, add the following lines:
 
-| 
 
 ::
 
@@ -146,7 +143,6 @@ only needs <driver>_soc.c corresponding to SOC used on the custom Board.
 
 In packages/ti/board/src/src_files_lld.mk, add the following lines:
 
-| 
 
 ::
 
@@ -167,7 +163,6 @@ In packages/ti/board/src/src_files_lld.mk, add the following lines:
     SRCS_COMMON += I2C_soc.c UART_soc.c SPI_soc.c
     endif
 
-| 
 
 .. note::
    For all LLD drivers linked to the board library you need to include
@@ -217,7 +212,7 @@ Also, in packages/ti/board/package.bld, I added the following line:
 
     Pkg.otherFiles[Pkg.otherFiles.length++] = "src/myCustomBoard/src_files_myCustomBoard.mk";
 
-| 
+
 **Step 9: Setup Top level PDK build files to add the Custom board to
 setup environment.**
 
@@ -226,7 +221,6 @@ to update to setup the build environment to include the custom Board in
 setup. This can be done by commenting out the top line and adding in the
 bottom line in pdksetupenv.bat:
 
-| 
 
 ::
 
@@ -242,7 +236,7 @@ AM572x EVM, you can invoke the build using:
 
     gmake board_lib LIMIT_SOCS=am572x LIMIT_BOARDS=customAM572x LIMIT_CORES=a15_0 
 
-| 
+
 
 **Step 10 : Building the custom board with the updated settings**
 
@@ -251,10 +245,9 @@ To build package change directory to
 
 To make just the board library: gmake board_lib
 
-| 
 
-.. rubric:: Example custom Board library for reference
-   :name: example-custom-board-library-for-reference
+Example custom Board library for reference
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The package provided below provides updated files for building
 customBoard "customAM572x" following all steps described above. Please
@@ -272,8 +265,8 @@ customAM572x.zip </index.php?title=Special:Upload&wpDestFile=Pdk_packages_ti_boa
 -  `E2E post on creation of custom board
    library <https://e2e.ti.com/support/arm/sitara_arm/f/791/p/555022/2040948#pi316653=2>`__
 
-.. rubric:: Additional steps for AM335x/AM437x users
-   :name: additional-steps-for-am335xam437x-users
+Additional steps for AM335x/AM437x users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
    Currently the AM335x and AM437x board libraries re-use the board support

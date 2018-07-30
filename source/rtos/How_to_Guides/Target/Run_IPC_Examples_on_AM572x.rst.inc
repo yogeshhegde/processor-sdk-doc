@@ -123,14 +123,9 @@ variable name and its value.
 
 12. Suspend (halt) DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages.
 
-|
-
 .. Image:: ../images/Hello_dsp2.png
 
-|
 13. Suspend (halt) DSP2 and click on ROV icon to view log messages.
-
-| 
 
 | 
 
@@ -153,7 +148,7 @@ The HOST processor is configured as client application. The client
 creates an anonymous message queue. The client also creates and manages
 the message pool. The client's return address is set in the message
 header for each message before sending it to the server.
- 
+
 1. Change to messageQ folder example by enter: cd
   ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex02_messageQ**
 
@@ -183,16 +178,11 @@ World example environment varaible settings for reference.
 
 12. Suspend (halt) ARM Cortex_A15 to view test messages on ROV Viewable Modules -->LoggerBuf Refer the following ROV message queue screenshot
 
-|
-
 .. Image:: ../images/MesgQ_arm0.png
 
-|
 13. Suspend (halt) DSP1 and click on ROV icon to view log messages.
 
-| 
-
-| 
+|
 
 .. rubric:: IPC Notify Peer Example:
    :name: ipc-notify-peer-example
@@ -247,13 +237,9 @@ wait on multiple input sources.
 
 12. Suspend (halt) ARM CortexA15_0 to view test messages on ROV Viewable Modules -->LoggerBuf. Refer the following image of ROV log messages
 
-|
-
 .. Image:: ../images/Notify_peer_arm0.png
 
 13. Suspend (halt) DSP2 and click on ROV icon to view log messages.
-
-| 
 
 | 
 
@@ -313,16 +299,11 @@ sure there is no space between variable name and its value.
 
 14. Halt DSP1 to view test messages on ROV Viewable Modules -->LoggerBuf Refer below image of ROV log messages
 
-|
-
 .. Image:: ../images/Ping_dsp1.png
 
-|
 15. Suspend (halt) DSP2 and click on ROV icon to view log messages.
 
 16. Suspend (halt) ARM CortexA15_0 and click on ROV icon to view log messages.
-
-| 
 
 | 
 

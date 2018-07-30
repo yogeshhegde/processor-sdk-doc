@@ -87,9 +87,9 @@ in here :ref:`Create Target Configuration File for EVM <Create-Target-Configurat
 11. Right click on the target configuration and Launch target
 configurations.
 
-11. Right click CortexA15_0 and connect target.
+12. Right click CortexA15_0 and connect target.
 
-12. Load and run Hello Example out file. You should see **Hello World**
+13. Load and run Hello Example out file. You should see **Hello World**
 string displayed on console window.
 
 | 
@@ -163,9 +163,9 @@ here :ref:`Create Target Configuration File for EVM <Create-Target-Configuration
 11. Right click on the target configuration and Launch target
 configurations.
 
-11. Right click CortexA9_0 and connect target.
+12. Right click CortexA9_0 and connect target.
 
-12. Load and run Hello Example out file. You should see **Hello World**
+13. Load and run Hello Example out file. You should see **Hello World**
 string displayed on console window.
 
 | 
@@ -239,9 +239,9 @@ here :ref:`Create Target Configuration File for EVM <Create-Target-Configuration
 11. Right click on the target configuration and Launch target
 configurations.
 
-11. Right click CortexA8_0 and connect target.
+12. Right click CortexA8_0 and connect target.
 
-12. Load and run Hello Example out file. You should see **Hello World**
+13. Load and run Hello Example out file. You should see **Hello World**
 string displayed on console window.
 
 | 

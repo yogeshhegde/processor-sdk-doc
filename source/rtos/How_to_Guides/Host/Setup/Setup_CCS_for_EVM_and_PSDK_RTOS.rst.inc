@@ -19,7 +19,7 @@ After installing the Processor-SDK RTOS, start CCS and it will
 automatically detect the newly installed components (*products*):
 
 .. Image:: ../images/CCS-discovered-products.png
-
+|
 CCS and SDK installed in different directories
 """""""""""""""""""""""""""""""""""""""""""""""
 
@@ -35,7 +35,7 @@ Go to product preference
 From CCS, select "Window -> Preferences":
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Preferences.png
-
+|
 Enter path to SDK
 '''''''''''''''''''
 
@@ -44,7 +44,7 @@ Products" in the panel on the left. Then, press the "Add" button on the
 panel on the right:
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Add.png
-
+|
 Verify components
 ''''''''''''''''''
 
@@ -52,7 +52,7 @@ Next, verify the newly discovered products. If everything is correct,
 press the "Finish" button on the bottom:
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Finish.png
-
+|
 Restart CCS
 ''''''''''''
 
@@ -60,7 +60,7 @@ When prompted, restart CCS for changes to take effect. You will see
 newly discovered products from the custom path.
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Confirm.png
-
+|
 Create Target Configuration File for EVM
 """"""""""""""""""""""""""""""""""""""""""
 
@@ -106,7 +106,7 @@ Open new target configuration file
 From CCS, select "File -> New -> Target Configuration File":
 
 .. Image:: ../images/CCS-GP437x-EVM-New-Target.png
-
+|
 Select target configuration options
 ''''''''''''''''''''''''''''''''''''
 
@@ -117,7 +117,7 @@ MicroUSB AB connector. Select
 -  **Board or Device**: EVMAM437X
 
 .. Image:: ../images/CCS-GP437x-EVM-Configure-Target.png
-
+|
 **Useful Tip**
 
 If you enter the starting numbers of your device in the **Board or
@@ -210,13 +210,14 @@ EVMs in the Processor-SDK RTOS:
 |                       | JTAG connector.       |                       |
 +-----------------------+-----------------------+-----------------------+
 
+|
 Save target configuration
 ''''''''''''''''''''''''''
 
 Next, save the target configuration by pressing the **Save** button:
 
 .. Image:: ../images/CCS-GP437x-EVM-Save-Target.png
-
+|
 Test target configuration
 ''''''''''''''''''''''''''
 
@@ -225,14 +226,14 @@ button. This will confirm that you have successfully created an emulator
 connection with your board.
 
 .. Image:: ../images/AM4-GP-test-connection.png
-
+|
 View target configurations
 '''''''''''''''''''''''''''
 
 From CCS, select "View -> Target Configurations":
 
 .. Image:: ../images/CCS-GP437x-EVM-View-Target.png
-
+|
 Launch target configuration
 ''''''''''''''''''''''''''''
 
@@ -240,7 +241,7 @@ Open "User Defined" list and right click on the target configuration
 file that was just saved and select "Launch Selected Configuration":
 
 .. Image:: ../images/CCS-GP437x-EVM-Launch-Target.png
-
+|
 Connect target
 '''''''''''''''
 
@@ -259,7 +260,7 @@ end of the configuration will indicate success or failure. For GP AM437x
 EVM, you will see the message "AM437x GP EVM Initialization is Done":
 
 .. Image:: ../images/CCS-GP437x-EVM-Run-Target.png
-
+|
 Additional Notes for AM57x
 """""""""""""""""""""""""""
 
@@ -283,7 +284,7 @@ For example, enable ``DSP11SSClkEnable_API`` for the first DSP core.
 After running the clock enable option, you can connect to the core.
 
 .. Image:: ../images/Multicore-Enable.jpg
-
+|
 Timer Suspend Control Options for DSP
 '''''''''''''''''''''''''''''''''''''''
 

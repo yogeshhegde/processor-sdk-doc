@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Linux_IPC_on_AM57xx#Adding_IPC_to_an_Existing_TI-RTOS_Application 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^
 
 This article is geared toward AM57xx users that are running Linux on the
 Cortex A15. The goal is to help users understand how to gain entitlement
@@ -127,12 +127,10 @@ In this sequence, the interval between the Power on Reset and the
 remotecores (i.e. the DSP's and the M4's) executing is dependent on the
 HLOS initialization time.
 
-| 
+|
 
-| 
-
-.. rubric:: Getting Started with IPC Linux Examples
-   :name: getting-started-with-ipc-linux-examples
+Getting Started with IPC Linux Examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. DSP, IPU,
@@ -307,8 +305,8 @@ The similar procedure can be used for DSP2/IPU1/IPU2 also to update
 the soft link of the firmware, reload the firmware at run-time, and
 run the host binary from A15.
 
-.. rubric:: Understanding the Memory Map
-   :name: understanding-the-memory-map
+Understanding the Memory Map
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Overall Linux Memory Map
    :name: overall-linux-memory-map
@@ -1049,8 +1047,8 @@ Example: Accessing UART5 from IPU
    0x48066000. This would correspondingly be accessed from the IPU at
    0x68066000.
 
-.. rubric:: Power Management
-   :name: power-management
+Power Management
+^^^^^^^^^^^^^^^^
 
 The IPUs and DSPs auto-idle by default. This can prevent you from being
 able to connect to the device using JTAG or from accessing local memory
@@ -1110,8 +1108,8 @@ the following command to force it on:
 The same is true for any of the cores, but replace 40800000.dsp with the
 associated System FS name from the chart above.
 
-.. rubric:: Adding IPC to an Existing TI-RTOS Application on slave cores
-   :name: adding-ipc-to-an-existing-ti-rtos-application-on-slave-cores
+Adding IPC to an Existing TI-RTOS Application on slave cores
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Adding IPC to an existing TI RTOS application on the DSP
    :name: adding-ipc-to-an-existing-ti-rtos-application-on-the-dsp
