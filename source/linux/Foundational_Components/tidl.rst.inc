@@ -83,7 +83,7 @@ The following topologies have been verified with TIDL software stack:
 - InceptionV1
 - MobileNetV1
 
-Here are graphs (created using TIDL viewer tool) of first three:
+Here are the graphs (created using TIDL viewer tool) of first three:
 
 .. figure:: ../images/j11v2.png
 
@@ -106,8 +106,8 @@ Here are graphs (created using TIDL viewer tool) of first three:
 Other network topologies are possible but they need to be verified. Majority of layers required (for inference only!) for classification, segmentation and detection
 tasks are implemented, though in some cases with certain parameter related constraints.
 
-Features supported by TIDL
----------------------------
+Neural network layers supported by TIDL stack
+---------------------------------------------
 The following layer types/Inference features are supported in TIDL 
 
 #. Convolution Layer
@@ -199,16 +199,17 @@ Important TIDL API framework features
 Current implementation of TIDL API provides following important features:
 
 - Multiple networks on different EVEs/DSPs can run concurrently
-    We can run concurrently as many different networks as we have available accelerators. In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP).
+    We can run concurrently as many different networks as we have available accelerators. In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP) - may need increase in default CMEM block size (~64MB per accelerator are advices - default setting is 192MB).
     Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP, but we can start one network with its own output
     in one EVE, and in parallel same or different network with its own input on second EVE.
 
 - Same TIDL API based application code can run on EVE or DSP accelerator
-    This can be achieved just by modifying a parameter
+    This can be achieved just by modifying a `device type parameter <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#_CPPv2N4tidl10DeviceTypeE>`_
+    More details in `Introduction to Programming Model`_
 
 - Certain networks could be split between EVE and DSP
     For certain networks (JDetNet is one example), it is beneficial to use concept of layer groups.
-    One layer group runs on EVE and another on DSP. There are two layers that run faster on DSP: SoftMax, InnerProduct layers.
+    One layer group runs on EVE and another on DSP. There are few layers which runs faster on DSP: SoftMax, Flatten and Concat layers.
     So in this case we are using DSP+EVE for single network.
 
 Examples and Demos
@@ -243,9 +244,8 @@ with three buttons:
 * ImageNet classification using Jacinto11 model with live camera input.
 
 Imagenet classification using Jacinto11 model `<https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained/image_classification/imagenet_jacintonet11v2/sparse>`_, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving 
-IVAHD), and sent to OpenCV processing pipeline. Video clip is in **320x320** resolution, and scaled down in run-time (using OpenCV API) to 224x224 before sending to TIDL API. Result of this
-processing is standard Imagenet classification output (1D vector with 1000 elements). But, there is a subset of common objects expected to be used with the demo, so classification results 
-are filtered using list of classes provided as command line argument. Blue bounding rectangle (in main image window) is presented only when valid detection is reported. 
+IVAHD), and sent to OpenCV processing pipeline. Live camera input (default 640x480 resolution), or decoded video clip (320x320 resolution), are scaled down and central-cropped in run-time (using OpenCV API) to 224x224 before sending to TIDL API. Result of this
+processing is standard Imagenet classification output (1D vector with 1000 elements). Further there is provision to define subset of objects expected to be present in video clip or live camera input, so classification results. This allows additional decision filtering (by using list of classes provided as command line argument). Blue bounding rectangle (in main image window) is presented only when valid detection is reported. 
 Class string of last successful is preserved until next detection (so if no object is detected, blue rectangle will disappear, but last class string remains).
 
 Executable invoked from Matrix-GUI is in: /usr/share/ti/tidl/examples/tidl_classification.
@@ -314,7 +314,7 @@ Following commands should  be executed to create synthetic video clip that can b
     convert ./*.jpg -delay 500 -morph 300 -scale 320x320 %05d.jpg
     ffmpeg -i %05d.jpg -vcodec libx264 -profile:v main -pix_fmt yuv420p -r 15 test.mp4
 
-If video clip is captured or prepared externally, it needs to be rescaled to 320x320 resolution first.
+If video clip is captured or prepared externally (e.g. with the smartphone), object need to be centrally located (in run-time we do resize and central cropping).
 Then, it should be copied to /usr/share/ti/tidl/examples/classification/clips/ (or just overwrite test1.mp4 in that same folder).
 
 
@@ -396,7 +396,7 @@ They include modifications in Caffe source tree to enable higher compute perform
 Introduction to Programming Model
 ---------------------------------
 
-Public interface of TIDL stack is TIDL API, described in details at http://downloads.ti.com/mctools/esd/docs/tidl-api/viewer.html
+Public interface of TIDL stack is TIDL API, described in details at http://downloads.ti.com/mctools/esd/docs/tidl-api/intro.html
 
 Public programming model is defined in TIDL API host wrapper package. In current release it
 has 3 classes only, allowing use of one or more neural network models that can run in parallel on 
@@ -715,6 +715,7 @@ rare cases EVE CPU is used as fully programmable, but slow compute engine. SoftM
 general purpose CPU, and significantly slower than DSP or A15 implementation. As SoftMax layer is terminal layer it is advised to
 do SoftMax either on A15 (in user space) or using DSP (layergroup2, as implemented in JDetNet examples).
 
+
 Viewer tool
 -----------  
 Viewer tool does visualization of **imported** network model. More details available at http://downloads.ti.com/mctools/esd/docs/tidl-api/viewer.html
@@ -765,7 +766,7 @@ Simulation Tool
 ----------------
 
 We provide simulation tool both in PLSDK ARM filesystem, and Linux x86 simulation tool.
-This is bit-exact simulation, so output of simulation tool is expected to be identical to the output of A5749 or AM5729 target.
+This is bit-exact simulation, so output of simulation tool is expected to be identical to the output of A5749 or AM57xx target.
 Please use this tool as convenience tool only (E.g. testing model on setup without target EVM).
 
 Simulation tool can be used also to verify converted model accuracy (FP32 vs 8-bit implementation). 
@@ -787,6 +788,64 @@ numerical format of input image file (signed or unsigned), trace folder and mode
    outData   = "stats_tool_out.bin"
    netBinFile      = "./tidl_net_imagenet_jacintonet11v2.bin"
    paramsBinFile   = "./tidl_param_imagenet_jacintonet11v2.bin"
+
+
+
+In case multiple images need to be processed, below (or similar) script can be used:
+
+::
+
+   SRC_DIR=$1
+
+   echo "#########################################################" >  TestResults.log
+   echo "Testing in $SRC_DIR" >> TestResults.log
+   echo "#########################################################" >> TestResults.log
+   for filename in $SRC_DIR/*.png; do
+        convert $filename -separate +channel -swap 0,2 -combine -colorspace sRGB ./sample_bgr.png
+        convert ./sample_bgr.png  -interlace plane BGR:sample_img_256x256.raw
+        ./eve_test_dl_algo.out sim.txt
+        echo "$filename Results " >> TestResults.log
+        hd stats_tool_out.bin | tee -a TestResults.log
+  done
+
+Simulation tool ./eve_test_dl_algo.out is invoked with single command line argument:
+
+::
+
+   ./eve_test_dl_algo.out sim.txt
+   
+Simulation configuration file includes list of network modesl to execute, in this case only one: tild_config_j11.txt
+List is termined with: "0 ":
+
+::
+
+   1 ./tidl_config_j11_v2.txt
+   0
+
+Sample confiuguration file used by simulation tool (tidl_config_j11_v2.txt):
+
+::
+
+   rawImage    = 1
+   numFrames   = 1
+   preProcType  = 0
+   inData   = "./sample_img_256x256.raw"
+   traceDumpBaseName   = "./out/trace_dump_"
+   outData   = "stats_tool_out.bin"
+   updateNetWithStats   = 0
+   netBinFile      = "./tidl_net_model.bin"
+   paramsBinFile   = "./tidl_param_model.bin"
+
+Results for all images in SRC_DIR will be directed to TestResults.log, and can be tested against Caffe-Jacinto desktop execution.
+
+Summary of model porting steps
+------------------------------
+
+- After model creation using desktop framework (Caffe or TF), it is ncessary to verify accuracy of the model (using inference on desktop framework: Caffe/Caffe-Jacinto or TensorFlow).
+- Import the final model (in case of Caffe-Jacinto, at the end of "sparse" phase) using above import procedure
+- Verify accuracy (using smaller test data set than the one used in first step) using simulation tool.
+  - Drop in accuracy (vs first step) should not be big (few percents).
+- Test the network on the target, using TIDL API based program and imported model.
 
 
 Training
