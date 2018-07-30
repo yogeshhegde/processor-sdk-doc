@@ -1245,6 +1245,350 @@ in `Hardware Modifications for AM57xx IDK
 BC <#hardware-modifications-for-am57xx-idk-bc>`__ and the pins are tied
 together.
 
+
+HSR OC TC
+=========
+
+Overview
+--------
+
+The purpose of this section and the sub-sections there in  is to provide
+an overview of Linux PTP ordinary clock (OC) and transparent clock (TC)
+in a HSR network, the internal mechanism of how HSR OC and TC works on
+TI's AM57xx processors, required software and hardware, test setup and
+procedure, and our test results. In this section boundary clock (BC) with
+connections in HSR network is not considered.
+
+PTP OC, TC in HSR Network
+-------------------------
+
+The implementation of the HSR OC and TC on AM57xx is based on the
+IEEE-62439-03-2016 recommendation. Currently it supports only two-step
+HSR hybrid clock (OC+TC) without BMCA enhanced for HSR. Future releases
+will fill in the missing features.
+
+Since HSR network is a ring topology network, the PTP clocks in such
+networks must handle PTP messages communicated over the two slave ports
+under a HSR interface. In addition to originating its own PTP messages
+and receiving PTP messages, a HSR clock must also forward PTP messages,
+except link local messages, for downstream nodes to process. In other
+words, a PTP clock in a HSR network must either be a standalone TC or an
+OC which also functions as a TC, i.e. a hybrid clock, as is defined in
+IEEE-62439-03-2016.
+
+Hardware
+^^^^^^^^
+
+On AM57xx platforms, the HSR PTP OC and TC functionalities are provided
+by the ICSS-PRU hardware modules.
+
+Software
+^^^^^^^^
+
+On the software side, the key software modules for supporting the HSR
+PTP clock functionalities include the HSR firmware, PRU ethernet driver,
+core HSR layer, core network layer and the application linuxptp. The
+Linux kernel modules are responsible passing timestamps and HSR tag
+information to application linuxptp on receive path. On transmit path,
+those kernel modules are also responsible for accepting HSR tag
+information (if passed in by application, for example, for delay corrected
+FOLLOW-UPs that are passing through the node) and sending frames out over
+a specific HSR slave port indicated by the application. Sending a PTP
+message over a specified HSR slave port is needed, for example, for
+FOLLOW-UP messages.
+
+For OC functionality, other than handling the HSR tag information, the
+processing of PTP messages by the application is similar to the regular
+OC functionality without HSR, although the application running on a
+slave OC must only allow the ACTIVE port to adjust its PTP clock.
+
+One of the key features of a TC is the capability of being able to make
+timestamp "corrections" in the FOLLOW-UP message for a SYNC message.
+This is achieved as follows. When the HSR firmware receives a SYNC
+message, it passes both the rx timestamp and cut-through forward tx
+timestamp of the SYNC message to the host driver. These timestamps are
+then passed to the application, along with the SYNC, by the kernel
+drivers. With the rx timestamp and the cut-through tx timestamp of the
+SYNC message, the application linuxptp can then add the residence time
+delay, in addtion to the peer path delay, in the correctionField of the
+SYNC's FOLLOW-UP message before the FOLLOW-UP is forwarded to next hop.
+
+Required hardware and software to setup HSR OC, TC
+--------------------------------------------------
+
+Hardware Modifications for AM57xx IDK HSR OC, TC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The hardware modifications needed for AM57xx IDK to function as HSR OC
+and TC are the same as those required for regular OC and BC. These
+modifications are for PPS generation on the AM57xx IDK.
+
+AM571x
+~~~~~~
+
+See the `AM571x Mod
+List <http://processors.wiki.ti.com/images/3/34/Am571x_idk_pps_ModList.pdf>`_
+for more details of the hardware modification specification. Sample assembly photos can
+be found `here <http://processors.wiki.ti.com/images/9/9d/IDK-Mods-AM571x-v2.2c.pdf>`_
+
+AM572x and AM574x
+~~~~~~~~~~~~~~~~~
+
+See the `AM572x/AM574x Mod
+List <http://processors.wiki.ti.com/images/2/2f/Am572x_am574x_idk_pps_ModList.pdf>`_
+for more details of the hardware modification specification.
+
+Software
+^^^^^^^^
+
+AM57xx HSR OC and TC are supported with limitations in ProcessorSDK
+Linux release starting from version 4.3.0.6. See the section
+`Limitations <#Limitations>`_ below for more details.
+
+**Remark** Because PPS needs to be enabled in PTP tests, so the
+devicetree (dtb) needs to be loaded when booting the kernel must contain
+the PPS configurations. But by default, after **make Linux\_install**,
+the default devicetree is not the right one for enabling PPS:
+
+::
+
+    $ ls -l /rel4306/rootfs/boot/am571x-idk.dtb
+    lrwxrwxrwx 1 user user32 Apr 20 22:54 /rel4306/rootfs/boot/am571x-idk.dtb -> devicetree-uImage-am571x-idk.dtb
+
+The correct dtb needed for enabling pps is
+
+::
+
+    $ ls -l /rel4306/rootfs/boot/am571x-idk-pps.dtb 
+    lrwxrwxrwx 1 user user 36 Apr 20 22:54 /rel4306/rootfs/boot/am571x-idk-pps.dtb -> devicetree-uImage-am571x-idk-pps.dtb
+
+For PTP tests, the default dtb **am571x-idk.dtb** needs to be replaced
+by **am571x-idk-pps.dtb** when creating the SDCard for kernel bootup.
+
+One way to do that is, for example, in the boot directory overwrite the
+default dtb by the pps dtb
+
+::
+
+    $ cd /rel4306/rootfs/boot/
+    $ rm am571x-idk.dtb
+    $ cp am571x-idk-pps.dtb  am571x-idk.dtb
+
+And then follow the usual steps to create the SDCard.
+
+Similarly for AM572x.
+
+Test Setup/Procedure
+--------------------
+
+Test 1. With a hybrid clock (OC+TC) between master and slave clock
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A Sample 3 HSR Hybrid Clock Setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. Image:: ../images/3clock.jpg
+
+Although each clock in this setup is a HSR hybrid clock, the role that
+each clock plays in this test is as follows:
+
+::
+
+    DUT-2 : AM572x : Master clock
+    DUT-1 : AM571x : Transparent clock
+    DUT-3 : AM572x : Slave clock
+
+.. note:: In this release BMCA enhanced for HSR is not supported, hence the connection is not a HSR close-loop network.
+
+Procedure
+~~~~~~~~~
+
+The script file
+`setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
+and clock configuration files
+`dut\_1\_hsr\_oc.cfg <http://processors.wiki.ti.com/images/3/37/Dut_1_hsr_oc.pdf>`_,
+`dut\_2\_hsr\_oc.cfg <http://processors.wiki.ti.com/images/3/38/Dut_2_hsr_oc.pdf>`_
+and
+`dut\_3\_hsr\_oc.cfg <http://processors.wiki.ti.com/images/f/fe/Dut_3_hsr_oc.pdf>`_
+will be used in the setup of the tests.
+
+-  For each DUT-X, copy the setup script setup\_hsr.sh and the clock
+   configuration file dut\_X\_hsr\_oc.cfg into the target filesystem of
+   DUT-X. For the sample setup above
+
+::
+
+    DUT-2 : setup_hsr.sh : dut_2_hsr_oc.cfg
+    DUT-1 : setup_hsr.sh : dut_1_hsr_oc.cfg
+    DUT-3 : setup_hsr.sh : dut_3_hsr_oc.cfg
+
+-  Connect the 3 AM57xx IDKs as shown above.
+
+-  Boot IDK into u-boot prompt and to specify HSR firmware is to be
+   loaded, do
+
+::
+
+    $ setenv pruss1_ethtype 1
+    $ setenv pruss2_ethtype 1
+    $ saveenv
+
+-  Boot IDK into kernel prompt.
+
+-  Modify the top fields in `setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
+   to reflect the HSR slave
+   ports' MAC addresses and IP address of the DUT's HSR interface. The
+   **ETHA** or **ETHB** fields may also need to be modified if an ICSS
+   different from the one shown in the picture is used.
+
+-  Run the modified setup\_hsr.sh script to configure the hsr0
+   interface.
+
+-  After each IDK is bootup, do a ping to make sure the setup is fine.
+
+-  On DUT-2 (master OC) do
+
+::
+
+    $ ptp4l -2 -P -f dut_2_hsr_oc.cfg -m
+
+-  On DUT-1 (OC+TC) do
+
+::
+
+    $ ptp4l -2 -P -f dut_1_hsr_oc.cfg -m -s
+
+-  On DUT-3 (slave OC) do:
+
+::
+
+    $ ptp4l -2 -P -f dut_3_hsr_oc.cfg -m -s
+
+-  Open a telnet terminal to DUT-2 and enable PPS:
+
+::
+
+    $ echo 1 > /sys/class/ptp/ptp1/pps_enable
+
+-  Open a telnet terminal to DUT-3 and enable PPS:
+
+::
+
+    $ echo 1 > /sys/class/ptp/ptp1/pps_enable
+
+-  Measure PPS jitter between DUT-2 (master) and DUT-3 (slave)
+
+-  See sample capture files
+   `dut\_1\_log.txt <http://processors.wiki.ti.com/images/7/77/Dut_1.pdf>`_,
+   `dut\_2\_log.txt <http://processors.wiki.ti.com/images/e/ea/Dut_2.pdf>`_,
+   `dut\_3\_log,txt <http://processors.wiki.ti.com/images/0/08/Dut_3.pdf>`_
+   for more detail.
+
+**Remark:** When enabling the ICSS2 PPS, the ptpX entry associated with
+ICSS2 on DUT-2 and DUT-3 may be different on different setups. Run the
+script
+`ptpinfo.sh <http://processors.wiki.ti.com/images/2/24/Ptpinfo.pdf>`_
+to find out the correct ptpX entry that is associated with ICSS2 on each
+platform.
+
+From the sample display of the ptpinfo.sh script below, the ptpX entry
+associated with ICSS2 (PRUSS2 timer) is ptp1.
+
+::
+
+    root@am57xx-evm:~# ./ptpinfo.sh
+    ls /sys/devices/platform/44000000.ocp/48484000.ethernet/net/
+    eth0  eth1
+    ls /sys/devices/platform/pruss2_eth/net
+    eth2  eth3
+    lrwxrwxrwx    1 root     root             0 Apr 20 19:11 ptp0 -> ../../devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0
+    lrwxrwxrwx    1 root     root             0 Apr 21 21:18 ptp1 -> ../../devices/platform/pruss2_eth/ptp/ptp1
+    ptp clock names:
+    /sys/class/ptp/ptp0 : CTPS timer
+    /sys/class/ptp/ptp1 : PRUSS2 timer
+    pps's ptp device:
+    /sys/class/pps/pps0 : ptp0
+    /sys/class/pps/pps1 : ptp1
+    root@am57xx-evm:~#
+
+Test 2. Without a hybrid clock between Master and Slave Clock
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A Sample 2 Hybrid Clock Setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. Image:: ../images/2clock.jpg
+
+Procedure
+~~~~~~~~~
+
+-  Remove DUT-1 (role: transparent clock) from the 3 clock test
+   `setup <#A_Sample_3_HSR_Hybrid_Clock_Setup>`_ above and connect only
+   port DUT-2-A to port DUT-3-A.
+
+-  Repeat Test 1 steps but skip those for DUT-1.
+
+-  Measure PPS jitter.
+
+Test Results
+------------
+
+Test 1. With a hybrid clock (OC+TC) between master and slave clock
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. Image:: ../images/Hsr_pps_w_tc.png
+
+Test 2. Without a hybrid clock between Master and Slave Clock
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. Image:: ../images/Hsr_pps_wo_tc.png
+
+Limitations
+-----------
+
+The current implementation of HSR PTP OC and TC has the following
+limitations
+
+-  Only HSR hybrid clock is supported. Standalone TC is not supported.
+
+-  Only 2-step clock is supported.
+
+-  BMCA enhanced for HSR is not supported.
+
+-  The two slave ports of an HSR interface is assumed to have the same
+   characteristics such as the linuxptp egressLatency and ingressLatency
+   configurations are the same.
+
+Known Issues
+------------
+
+-  Once a while the HSR master OC reports "send XYZ failed" which can
+   cause an OC downstream to restart its state machine.
+
+::
+
+    root@am57xx-evm:~# ./ptp4l -2 -P -f och.cfg -m
+    ptp4l[90599.734]: selected /dev/ptp1 as PTP clock
+    ptp4l[90599.734]: hsr0: red port A is set to ACTIVE
+    ptp4l[90599.734]: hsr0: red port B is set to ACTIVE
+    ptp4l[90599.820]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
+    ptp4l[90599.820]: 1port_dispatch: p=A state=LISTENING, pp=B state=INITIALIZING
+    ptp4l[90599.820]: port 0: INITIALIZING to LISTENING on INIT_COMPLETE
+    ptp4l[90607.417]: port 1: LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+    ptp4l[90607.417]: 1port_dispatch: p=A state=MASTER, pp=B state=MASTER
+    ptp4l[90607.417]: selected best master clock 70ff76.fffe.1c0fab
+    ptp4l[90607.417]: assuming the grand master role
+    ptp4l[98211.790]: port 1: send sync failed
+    ptp4l[98211.790]: port 1: MASTER to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
+    ptp4l[98211.870]: 1port_dispatch: p=A state=FAULTY, pp=B state=MASTER
+    ptp4l[98227.950]: port 1: FAULTY to LISTENING on INIT_COMPLETE
+    ptp4l[98227.950]: 1port_dispatch: p=A state=LISTENING, pp=B state=MASTER
+    ptp4l[98234.535]: port 1: LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
+    ptp4l[98234.535]: 1port_dispatch: p=A state=MASTER, pp=B state=MASTER
+    ptp4l[98234.535]: selected best master clock 70ff76.fffe.1c0fab
+    ptp4l[98234.535]: assuming the grand master role
+
+
 PTP Roadmap
 ===========
 The following features are not yet supported as of Processor SDK 4.2
