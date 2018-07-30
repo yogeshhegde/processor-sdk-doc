@@ -91,7 +91,7 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 +---------------+--------------------------+------------------+-----------------------------------+
 | `Multimedia`_ | `Examples, Demos`_       | `PRU-ICSS`_      | `Virtualization`_                 |
 +---------------+--------------------------+------------------+-----------------------------------+
-| `IPC`_        | `OpenVX`_                | `CMEM`_          |                                   |
+| `IPC`_        | `OpenVX`_                | `CMEM`_          | `TIDL`_                           |
 +---------------+--------------------------+------------------+-----------------------------------+
 
 .. _U-Boot: Foundational_Components_U-Boot.html
@@ -113,6 +113,7 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 .. _IPC: Foundational_Components_IPC.html
 .. _OpenVX: Foundational_Components_OpenVX.html
 .. _CMEM: Foundational_Components_CMEM.html
+.. _TIDL: Foundational_Components_TIDL.html
 
 +----------------+-------------------------+------------------+-----------------------------------+
 | **PRU-ICSS Protocols** (more information on each piece of the distribution)                     | 
