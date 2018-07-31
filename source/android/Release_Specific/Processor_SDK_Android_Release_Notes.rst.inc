@@ -72,6 +72,7 @@ for AM57x.
 
 Following new features are enabled/tested in this release:
 
+-  **Support AM574x IDK**
 -  **Boot:** fastboot, QSPI/NOR + emmc boot, Single stage bootloader,
    USB peripheral boot, HS Boot with FIT model, IPU Loading, Switch to
    recovery mode
@@ -83,7 +84,7 @@ Following new features are enabled/tested in this release:
 -  **Power:** AVS0, MPU DVFS, ABB
 -  **Thermal:** Governors implemented for MPU (On Die), Monitoring
    implemented for all on chip sensors
--  **Video:** 1080p60 MP4/H264/MP2
+-  **Video:** 1080p30 MP4/H264/MP2
 -  **Audio:** MP3/AAC playback, ARM<->DSP Audio Routing
 -  **Display:** SGX accelerated UI and touch, DRM/KMS, DSS WB, SGX and
    DSS simultaneous composition.
@@ -128,14 +129,16 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 10, 20, 70
 
-   PANDSDK-109,"am572x-evm, am571x-idk, am572x-idk",Get libpcre2.so "No such file or directory" error when running setup.sh
-   PSDKAA-1949,"am572x-evm, am571x-idk, am572x-idk",Touchscreen errors when terminal disconnected. Issue with touchscreen with some PSUs
-   PSDKAA-1943,"am572x-evm, am571x-idk, am572x-idk",Crash seen with MPEG2 robustness test
-   PSDKAA-1942,"am572x-evm, am571x-idk, am572x-idk",H264 encode fails with main and high profiles
-   PSDKAA-1938,"am572x-evm, am571x-idk, am572x-idk",Wallpaper is loaded a few seconds after UI comes up
-   PSDKAA-1932,"am572x-evm, am571x-idk, am572x-idk",System crashes and reboots after adb remount
-   PSDKAA-1797,"am572x-evm, am571x-idk, am572x-idk",OOM and Kernel crash with 10 minutes of monkey test
-   PSDKAA-1718,"am572x-evm, am571x-idk, am572x-idk",Fence timeout issue - HWC timeout is not cleaned up correctly causing graphics failure
+   PANDSDK-112,am572x-evm,u-boot version being used is showing MMC fail messages
+   PANDSDK-127,"am571x-idk, am572x-idk",AM57xx-IDK: Screen is hard to use at default resolution
+   PANDSDK-128,am572x-idk,AM572x-IDK: LCD & HDMI screens intermittently lockup while playing videos
+   PANDSDK-129,"am571x-idk, am572x-idk",AM57xx-IDK: Video played on LCD has long pauses when Android is booted without HDMI connected
+   PANDSDK-132,"am572x-evm, am571x-idk, am572x-idk",Audio breaks up some when MP3 clip is played and Internet is browsed
+   PANDSDK-142,"am572x-evm, am571x-idk, am572x-idk","When running setup.sh script seeing error pop up: ""Unable to find the requested file. Please check the spelling and try again"""
+   PSDKAA-1950,"am572x-evm, am571x-idk, am572x-idk","Random sgx crash on J6 with HDMI connected, one time issue."
+   PSDKAA-1948,"am572x-evm, am571x-idk, am572x-idk","After leaving SGX idle, UI was observed to freeze with SGX crash. One time issue"
+   PSDKAA-1937,"am572x-evm, am571x-idk, am572x-idk",Crashes seen while running gfxbench
+
 
 | 
 
@@ -146,19 +149,14 @@ Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 10, 20, 70, 50
 
-   PANDSDK-112,am572x-evm,u-boot version being used is showing MMC fail messages,Does not affect functionality
-   PANDSDK-126,am572x-evm,AM572x-EVM: No audio over HDMI when HDMI monitor connected,
-   PANDSDK-127,"am571x-idk, am572x-idk",AM57xx-IDK: Screen is hard to use at default resolution,change resolution with "su; wm density 240"
-   PANDSDK-128,am572x-idk,AM572x-IDK: LCD & HDMI screens intermittently lockup while playing videos,
-   PANDSDK-129,"am571x-idk, am572x-idk",AM57xx-IDK: Video played on LCD has long pauses when Android is booted without HDMI connected,
-   PANDSDK-131,"am572x-evm, am571x-idk, am572x-idk",Web pages take a very long time to load >30 seconds,
-   PANDSDK-132,"am572x-evm, am571x-idk, am572x-idk",Audio breaks up some when MP3 clip is played and Internet is browsed,
-   PANDSDK-142,"am572x-evm, am571x-idk, am572x-idk","When running setup.sh script seeing error pop up: ""Unable to find the requested file. Please check the spelling and try again""",
-   PANDSDK-145,"am572x-evm, am571x-idk, am572x-idk",Camera application not able to connect to camera,
-   PSDKAA-1950,"am572x-evm, am571x-idk, am572x-idk","Random sgx crash on J6 with HDMI connected, one time issue.",
-   PSDKAA-1948,"am572x-evm, am571x-idk, am572x-idk","After leaving SGX idle, UI was observed to freeze with SGX crash. One time issue",
-   PSDKAA-1937,"am572x-evm, am571x-idk, am572x-idk",Crashes seen while running gfxbench,
-
+    LCPD-11852,am57xx-evm,U-Boot: AM57x: doesn't detect super-speed thumb drive,
+    LCPD-12491,am57xx-evm,Android: Selinux warnings during bootup,
+    LCPD-12513,am57xx-evm,Android O: Board takes longer to boot compared to MM,
+    LCPD-12776,am57xx-evm,Android: Graphics Error with Vellamo3 Benchmark,
+    LCPD-12934,am57xx-evm,Android: Robustness test: monkey fails, "Appy patch available `here <http://git.ti.com/cgit/cgit.cgi/android/device-ti-am57xevm.git/commit/?h=d-oreo-mr1-core-release&id=3474bd4ce8d6179eb7aa8a974553a4c63ab91dff>`__"
+    LCPD-12935,"am571x-idk, am572x-idk, am574x-idk",PVR Dmabuf error observed,"Apply `kernel patch <http://git.ti.com/cgit/cgit.cgi/ti-linux-kernel/ti-linux-kernel.git/commit/ti_config_fragments/android.cfg?h=ti-android-linux-4.14.y&id=539a5985e9637391ed6b5eea0725da4818bab35f>`__ and `patches for vendor-ti-dra7xx <http://git.ti.com/cgit/cgit.cgi/android/vendor-ti-dra7xx.git/log/?h=d-oreo-mr1-core-release>`__"
+    LCPD-13011,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm", Web pages take a very long time to load >30 seconds,
+    PANDSDK-154, "am571x-idk, am572x-idk, am574x-idk", 1080p decoding does not work for AM57xx IDKs with LCD connected, "For LCD only without HDMI connected, reduce the resolution by running *wm size 1280x720*. No workaround when both LCD and HDMI are used. This limitation comes from insufficient TILER memory when the screen resolution is larger than 720p. When LCD is connected, the screen resolution is detected and selected as 1920x1200."
 
 | 
 
