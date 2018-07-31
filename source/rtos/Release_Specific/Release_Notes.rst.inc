@@ -66,7 +66,7 @@ Released July 2018.
 -  K2G
 	- `Performance Audio Demo Framework: <Examples_and_Demonstrations.html#performance-audio-demo>`__ Demo Audio Application illustrating integration of I/O, auto detection,decoding,audio stream processing and encoding
 -  `UART AppLoader: <Foundational_Components.html#uart-apploader>`__ Two stage bootloader support through UART interface
--  Improved OOB experience for overall building SDK with introduction of RULES_MAKE based environment. All envrionment variable dependency for processor SDK updates handled during post installation step
+-  Improved OOB experience for overall `Building SDK <How_to_Guides.html#building-pdk-using-gmake-in-windows-environment>`__ with introduction of RULES_MAKE based environment. All envrionment variable dependency for processor SDK updates handled during post installation step
 
 
 .. rubric::  Component Version
@@ -799,6 +799,14 @@ release and any known workaround.
 |             |             |             | hangs on    |                                                         |
 |             |             |             | idkAM574x   |                                                         |
 |             |             |             | platform    |                                                         |
++-------------+-------------+-------------+-------------+---------------------------------------------------------+
+| PRSDK-4304  | am335x      | Uniflash    | Flash writer| Rebuilding the flash writer binaries shall fix this     |
+|             |             | Flash       | prebuilt    | issue. Refer the `Section <                             |
+|             |             | Writer      | binaries    | Board_EVM_Abstration.html#rebuilding-flashwriter>`__    |
+|             |             |             | does not    |                                                         |
+|             |             |             | work on     |                                                         |
+|             |             |             | AM335x      |                                                         |
+|             |             |             | platforms   |                                                         |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
 
 Installation and Usage 
