@@ -172,28 +172,28 @@ Issues opened in previous releases that were closed on this release
     LCPD-12279,am335x-evm,Uboot: usb ethernet doesn't work in U-boot
     LCPD-12283,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15",ti-cpufreq: backport couple of upstream fixes
     LCPD-12311,"am571x-idk, am572x-idk",Board could not boot to kernel when one Inateck pci-usb card is in
-    LCPD-12347,,edma: Fix Clockwork reported issue
+    LCPD-12347,,edma: Fix Klocwork reported issue
     LCPD-12353,,Two files with the same name MLO appear in the SD card
     LCPD-12377,am335x-ice,am335x-ice - Builds should be updated with dtb for prueth support
     LCPD-12378,am574x-idk,VIP is not being enumerated as a v4l2 device
     LCPD-12381,,WLAN disabled to allow suspend/standby to work
-    PLSDK-881,"Linux: Toplevel make gets warnings from dhry_1,linpack and loopback for AM and K2 (rt and non rt) platforms","am335x-evm, am437x-evm, am572x-evm, k2g-evm, k2h-evm, k2e-evm, k2l-evm"
-    PLSDK-1842,CMEM misses some multi-thread protection,
-    PLSDK-1891,QT Wayland compositor with SGX on AM335x Processor SDK,am335x-evm
-    PLSDK-1939,A-B forwarding with wrong/no FCS in HSR mode,am571x-idk
-    PLSDK-1940,Unexpected offset jump in PTP,am571x-idk
-    PLSDK-1941,PTP: Overshoot state reported,am571x-idk
-    PLSDK-1944,GPIO Test fails on AM572/4-idk,
-    PLSDK-1957,PPS offset of CPTS is big and jumping,"am571x-idk, am572x-idk"
-    PLSDK-1960,Top level make failed on am438 epos,am438x-epos-evm
-    PLSDK-1975,"Download page has incorrect ""Back to Software Product Overview"" link",
-    PLSDK-2070,HSR/PRP: Maintain a MTU of 1500 for all cases (with or without VLAN),
-    PLSDK-2080,GPIO control of the CPTS reference PPS signal is low-active,
-    PLSDK-2083,CPTS 1PPS reference signal should be optional,
-    PLSDK-2097,"High level build of big-data-ipc-demo & ti-ipc-linux failed in PSDK 4.3 release, but works in 4.2",am572x-evm
-    PLSDK-2101,icss-emac unit test icev2AM335x/idkAM437x: test hangs after transmitting one packet,"am335x-ice, am437x-idk"
-    PLSDK-2149,ARM multimedia tests and 3D demos failed on AM3 HS evms,
-    PLSDK-2150,ARM multimedia tests failed on AM4 HS and EPOS evms,"am438x-epos-evm, am437x-hsevm"
+    PLSDK-881,"am335x-evm, am437x-evm, am572x-evm, k2g-evm, k2h-evm, k2e-evm, k2l-evm","Linux: Toplevel make gets warnings from dhry_1,linpack and loopback for AM and K2 (rt and non rt) platforms"
+    PLSDK-1842,,CMEM misses some multi-thread protection
+    PLSDK-1891,am335x-evm,QT Wayland compositor with SGX on AM335x Processor SDK
+    PLSDK-1939,am571x-idk,A-B forwarding with wrong/no FCS in HSR mode
+    PLSDK-1940,am571x-idk,Unexpected offset jump in PTP
+    PLSDK-1941,am571x-idk,PTP: Overshoot state reported
+    PLSDK-1944,,GPIO Test fails on AM572/4-idk
+    PLSDK-1957,"am571x-idk, am572x-idk",PPS offset of CPTS is big and jumping
+    PLSDK-1960,am438x-epos-evm,Top level make failed on am438 epos
+    PLSDK-1975,,"Download page has incorrect ""Back to Software Product Overview"" link"
+    PLSDK-2070,,HSR/PRP: Maintain a MTU of 1500 for all cases (with or without VLAN)
+    PLSDK-2080,,GPIO control of the CPTS reference PPS signal is low-active
+    PLSDK-2083,,CPTS 1PPS reference signal should be optional
+    PLSDK-2097,am572x-evm,"High level build of big-data-ipc-demo & ti-ipc-linux failed in PSDK 4.3 release, but works in 4.2"
+    PLSDK-2101,"am335x-ice, am437x-idk",icss-emac unit test icev2AM335x/idkAM437x: test hangs after transmitting one packet
+    PLSDK-2149,,ARM multimedia tests and 3D demos failed on AM3 HS evms
+    PLSDK-2150,"am438x-epos-evm, am437x-hsevm",ARM multimedia tests failed on AM4 HS and EPOS evms
 
 |
 
@@ -206,7 +206,7 @@ Issued found and closed on this release that may be applicable to prior releases
 
     LCPD-12422,am571x-idk,davinci_mdio 48485000.mdio: timed out waiting for idle? seen in bootlog
     LCPD-12435,am43xx-gpevm,V3_3D domain consumes ~4mw higher during suspend & standby states
-    LCPD-12456,,Analyze / fix klockworks warnings for DWC3 / UDC
+    LCPD-12456,,Analyze / fix klocwork warnings for DWC3 / UDC
     LCPD-12461,,Analyze / fix klocwork warnings for GPMC
     LCPD-12465,,Analyze / fix klocwork warnings for PRUETH
     LCPD-12474,am43xx-gpevm,am437x-gp-evm: Remove duplicate uart0 and uart0_pins_default nodes
@@ -325,25 +325,25 @@ SDK Known Issues
 U-Boot Known Issues
 ------------------------
 .. csv-table::
-   :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround"
-   :widths: 15, 10, 70, 10, 10, 30, 5
+   :header: "Record ID", "Priority", "Title", "Platform", "Workaround"
+   :widths: 15, 10, 70, 30, 5
 
-   LCPD-10726 ,P3-Medium ,Update DDR3 emif regs structure for EMIF2 for the beagle_x15 board in U-Boot board file ,Baseport ,  ,"am572x-idk, am57xx-evm ", 
-   LCPD-10668 ,P3-Medium ,Ethernet boot: Sometimes the board could not boot uboot from Ethernet on k2g-evm ,Connectivity ,UBOOT ,k2g-evm , 
-   LCPD-9539 ,P3-Medium ,dhcp does not work after soft reboot ,Connectivity ,UBOOT ,k2g-evm , 
-   LCPD-9369 ,P3-Medium ,AM437x GP EVM older PG version Uboot UART boot fails intermittently ,Baseport ,u-boot ,  , 
-   LCPD-8701 ,P3-Medium ,Soft reboot broken ,Baseport ,UBOOT ,k2g-ice , 
-   LCPD-8393 ,P3-Medium ,u-boot ramfs boot does not work ,Baseport ,u-boot ,k2g-evm , 
-   LCPD-8123 ,P3-Medium ,K2G: MSMC: Memory seen by USB controller not cache-coherent ,Baseport ,UBOOT ,k2g-evm , 
-   LCPD-7864 ,P3-Medium ,U-Boot: Ethernet boot fails on AM335x and AM437x ,Connectivity ,  ,"am335x-evm, am335x-ice, am335x-sk, am437x-idk, am437x-sk, am43xx-gpevm ", 
-   LCPD-7547 ,P3-Medium ,uboot nand write hangs for big size on k2g ,Connectivity ,UBOOT ,k2g-evm , 
-   LCPD-7519 ,P3-Medium ,dfu_get_buf return error when use dfu to update mmc card ,"Baseport, Connectivity ",UBOOT ,am335x-evm , 
-   LCPD-7366 ,P3-Medium ,uboot McSPI driver drives multiple chip selects simultaneously ,Connectivity ,UBOOT ,  , 
-   LCPD-5517 ,P3-Medium ,Board fails to load bootloader sometimes when eSATA is connected ,Connectivity ,UBOOT ,AM572x , 
-   LCPD-5416 ,P3-Medium ,U-BOOT: K2G: ?reset? fails for certain SD cards ,Baseport ,UBOOT ,K2G , 
-   LCPD-5320 ,P3-Medium ,Update K2G Pinmuxing in U-boot with buffer class settings ,Baseport ,  ,K2G , 
-   LCPD-5116 ,P3-Medium ,BBB: U-Boot: Board fails to acquire dhcp address sometimes ,Connectivity ,UBOOT ,AM335x , 
-   LCPD-4817 ,P4-Low ,am57xx-evm: uboot: usb failed to detect Kingston DataTraveler usb msc device ,Connectivity ,UBOOT ,AM572x ,
+    LCPD-12244,P3-Medium,AM43xx u-boot needs to support PHY_INVERT_CLKOUT=1,"am437x-idk, am437x-sk, am43xx-epos, am43xx-gpevm",
+    LCPD-12176,P3-Medium,U-boot: Fix IOdelay error path issue,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",
+    LCPD-11586,P3-Medium,dhcp failed to get IP address after reboot for K2G-ICE non-RT linux,k2g-ice,
+    LCPD-10805,P3-Medium,U-Boot: Fix uart boot on am335x-evm,am335x-evm,
+    LCPD-10726,P3-Medium,Update DDR3 emif regs structure for EMIF2 for the beagle_x15 board in U-Boot board file,"am572x-idk, am57xx-evm",
+    LCPD-9369,P3-Medium,AM437x GP EVM older PG version Uboot UART boot fails intermittently,,
+    LCPD-8701,P3-Medium,Soft reboot broken,k2g-ice,
+    LCPD-5416,P3-Medium,"U-BOOT: K2G: ""reset"" fails for certain SD cards",K2G,
+    LCPD-10668,P3-Medium,Ethernet boot: Sometimes the board could not boot uboot from Ethernet on k2g-evm,k2g-evm,
+    LCPD-9539,P3-Medium,dhcp does not work after soft reboot,k2g-evm,
+    LCPD-7864,P3-Medium,U-Boot: Ethernet boot fails on AM335x and AM437x,"am335x-evm, am335x-ice, am335x-sk, am437x-idk, am437x-sk, am43xx-gpevm",
+    LCPD-7547,P3-Medium,uboot nand write hangs for big size on k2g,k2g-evm,
+    LCPD-7366,P3-Medium,uboot McSPI driver drives multiple chip selects simultaneously,am335x-evm,
+    LCPD-5517,P3-Medium,Board fails to load bootloader sometimes when eSATA is connected,AM572x,
+    LCPD-5116,P3-Medium,BBB: U-Boot: Board fails to acquire dhcp address sometimes,AM335x,
+    LCPD-4817,P4-Low,am57xx-evm: uboot: usb failed to detect Kingston DataTraveler usb msc device,AM572x,
 
 |
 
