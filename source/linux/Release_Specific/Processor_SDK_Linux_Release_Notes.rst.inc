@@ -179,6 +179,7 @@ Issues opened in previous releases that were closed on this release
     LCPD-12381,,WLAN disabled to allow suspend/standby to work
     PLSDK-881,"am335x-evm, am437x-evm, am572x-evm, k2g-evm, k2h-evm, k2e-evm, k2l-evm","Linux: Toplevel make gets warnings from dhry_1,linpack and loopback for AM and K2 (rt and non rt) platforms"
     PLSDK-1842,,CMEM misses some multi-thread protection
+    PLSDK-1815,"am335x-evm, am437x-evm, am572x-evm",DNS should be operational using binaries
     PLSDK-1891,am335x-evm,QT Wayland compositor with SGX on AM335x Processor SDK
     PLSDK-1939,am571x-idk,A-B forwarding with wrong/no FCS in HSR mode
     PLSDK-1940,am571x-idk,Unexpected offset jump in PTP
@@ -194,6 +195,7 @@ Issues opened in previous releases that were closed on this release
     PLSDK-2101,"am335x-ice, am437x-idk",icss-emac unit test icev2AM335x/idkAM437x: test hangs after transmitting one packet
     PLSDK-2149,,ARM multimedia tests and 3D demos failed on AM3 HS evms
     PLSDK-2150,"am438x-epos-evm, am437x-hsevm",ARM multimedia tests failed on AM4 HS and EPOS evms
+    PLSDK-2168,"am571x-idk, am572x-idk, am572x-evm, am572x-hsevm",Matrix-GUI needs 2-3 minutes to come up after boot
 
 |
 
@@ -272,7 +274,7 @@ SDK Known Issues
    LCPD-11549,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm","Error message with multiple egl, not shared context","Limitation with Imagination DDK, no workaround"
    LCPD-12679,am574x-idk,PVR_K: dmabuf error during video playback,
    LCPD-12778,am335x-evm,Board hangs in standby & suspend state when wl12x card is attached,
-   PLSDK-832 ,AM57 ,OpenCL matmpy intermittent DSP1 crash due to EdmaMgr issues w/ suspend/resume ,Disable DSP suspend/resume echo on > /sys/bus/platform/devices/40800000.dsp/power/control echo on > /sys/bus/platform/devices/41000000.dsp/power/control
+   PLSDK-832,AM57,OpenCL matmpy intermittent DSP1 crash due to EdmaMgr issues w/ suspend/resume,"Disabling suspend/resume on the DSPs prevents this intermittent failure: *echo on > /sys/bus/platform/devices/40800000.dsp/power/control; echo on > /sys/bus/platform/devices/41000000.dsp/power/control*"
    PLSDK-885,AM57,OpenCV Video test failure w/ GStreamer errors,Use the workaround from    PLSDK-832
    PLSDK-1266,am572x-idk,PRP: stale IGMP packets (IPv6) seems directly sent to eth2/eth3 of a HRP node,None
    PLSDK-1308,am572x-idk,PRP: PRP node is shown as SAN at times in the node table dump when not offloaded,"No problem with offload, which is default"
@@ -280,41 +282,38 @@ SDK Known Issues
    PLSDK-1419,k2l-evm,Intermittent-IP address display issue on LCD for K2L RT,"Use ifconfig once Linux boots, to acquire IP address"
    PLSDK-1556,"k2hk-evm, k2hk-hsevm, k2e-evm, k2l-evm",SA LLD: saBasicExample test shows warning as 'Alignment trap' on K2x platforms.,Just a warning message. No impact to test output
    PLSDK-1602,am437x-evm,"Simple people tracking demo: Bulk transfer failed, observed inconsistent behavior of the application",None
-   PLSDK-1693,am572x-evm,Incorrect behaviour observed for HDMI matrix on AM572x-GP EVM,None
+   PLSDK-1693,am572x-evm,"It takes long time to use ""kill pid"" to close matrix-browser","Start and stop Matrix GUI using /etc/init.d/matrix start, and /etc/init.d/matrix stop, respectively"
    PLSDK-1707,"am571x-idk, am572x-idk",prueth: debugfs_create_dir() fails during boot and error message shown,"Only impact the debug stats display. No other functionality affected. Once user login to root, user may do ifconfig or ifup to bring up the interface"
    PLSDK-1720,am437x-evm,Simple people tracking demo: Tracking Incorrect Number of People,None
-   PLSDK-1814 ,am572x-evm ,Camera support is not available from the default dtbs ,"Use am57xx-evm*-cam-mt9t111.dtb for mt9t111 camera, and am57xx-evm*-cam-ov10635.dtb for ov10635 camera"
-   PLSDK-1817,,HSR/PRP: Outstanding Net-Jury tests failures,
+   PLSDK-1814,am572x-evm,Camera support is not available from the default dtbs ,"Use am57xx-evm*-cam-mt9t111.dtb for mt9t111 camera, and am57xx-evm*-cam-ov10635.dtb for ov10635 camera"
+   PLSDK-1817,,"HSR/PRP: Outstanding Net-Jury tests failures: 92/105 passed, 7 blocked and 6 failed",None
    PLSDK-1828,"am571x-idk, am572x-idk","HSR: In a ring topology, seeing small performance degradation with concurrent traffic",None
    PLSDK-1909,am572x-evm,DLP SDK demo: Assertion `ctx->pollfds_cnt >= internal_nfds' failed,None
    PLSDK-1922,"k2hk-hsevm, k2e-evm, k2e-hsevm, k2l-evm",K2: PA and NWAL are not supported in PLSDK 5.0,None
    PLSDK-1924,"am335x-ice, am335x-sk, beagleboneblack",AM3: Observed unwanted failure message in boot log.,None
    PLSDK-1945,am572x-evm,qApp->quit() does not work with the enhanced eglfs_kms QPA,None
-   PLSDK-1953,"am571x-idk, am572x-idk",Linux PRP: lreTransparentReception - passRCT doesn't work as expected,
+   PLSDK-1953,"am571x-idk, am572x-idk",Linux PRP: lreTransparentReception - passRCT doesn't work as expected,None
    PLSDK-1963,k2e-evm,K2E:Observed unwanted failure messages in boot log,"No functionality affected except the log message. If not needed, do not connect anything to the PCIe slot."
-   PLSDK-2067,am571x-idk,Transparent Clock crashes after a couple of days,
+   PLSDK-2067,am571x-idk,Transparent Clock crashes after a couple of days due to memory leak,
    PLSDK-2095,"am571x-idk, am572x-idk","kernel: EXPORT symbol ""__hyp_stub_vectors seen during kernel build",
    PLSDK-2107,k2g-ice,sorte for K2G: master is not working,None
    PLSDK-2109,"am437x-evm, am572x-evm",QtWebengine demobrowser shows problems at LTS2018 on EGLFS QPA,None
-   PLSDK-2111,am572x-evm,Dual Camera Demo: No camera output displayed,
    PLSDK-2113,"am571x-idk, am572x-idk",PTP BC overshoot caused by cable unplug and plug back in,
    PLSDK-2128,"am335x-evm, am437x-evm, am438x-epos-evm, am572x-evm",Weston 2.0: overlay window display issue,"None. For Wayland demo, you may use qwindow-compositor instead of Weston."
    PLSDK-2171,"am571x-idk, am572x-idk",PRU HSR firmware: small degradation in performance seen for MTU sized frames,None
-   PLSDK-2173,beagleboneblack,IOT: Failed to install npm on beagleboneblack,
    PLSDK-2174,"am335x-evm, am335x-hsevm, am335x-ice, am335x-sk, beagleboneblack, am437x-idk, am437x-sk, am437x-evm, am438x-epos-evm, am437x-hsevm, am570x-evm, am571x-idk, am572x-idk, am572x-evm, am572x-hsevm, am574x-idk, am574x-hsidk","boot stuck on ""please wait"" display screen when no input device is connected","Connect an input device (e.g., mouse, keyboard) when booting the EVM"
-   PLSDK-2178,am335x-ice,Icss Emac : TTS Port 2: Error in received acyclic pkt content. Packet mismatch.,None
+   PLSDK-2178,am335x-ice,ICSS EMAC intermittent error in received acyclic packet content,None
    PLSDK-2181,k2g-ice,k2g-ice Eth0 IP address not displayed,
-   PLSDK-2185,am572x-evm,Qt Creator test failing on am572x GP EVM,None
    PLSDK-2186,am572x-evm,video-analytic-demo should run on top of Weston instead of qwindow-compistor,"Run the deom on top of qwindow-compositor, as available from Matrix GUI"
    PLSDK-2188,"am335x-evm, am572x-evm",Failure to load ftdi_sio kernel module,None
    PLSDK-2190,am571x-idk,Matrix Launcher: Independent_Video_with_QT_widgets_to_Different_Displays failing on am571-idk-rt platform,Intermittent issue
    PLSDK-2192,am572x-evm,Using OpenVX image causing kernel crash or hang during boot up,Switch back to OpenCL firmware after completing the OpenVX testing: reload-dsp-fw.sh opencl
    PLSDK-2194,"am437x-evm, am572x-evm",QtWebengine demobrowser crashes during window resize operations at LTS2018,None
    PLSDK-2198,"k2g-ice, k2g-evm",Multimedia: ERROR: from element /GstPipeline:pipeline0/GSTQTMux: qtmux0: Could not multiplex stream,None
-   PLSDK-2220,k2e-evm,k2e evm not booting up with ubi image,None
-   PLSDK-2228,am572x-evm,AM572x GP EVM: Unable to boot with jailhouse dtb,None
+   PLSDK-2220,k2e-evm,UBI Image for K2E exceeds the available size limit,None
+   PLSDK-2228,am572x-evm,AM572x GP EVM: Unable to boot with jailhouse dtb,Apply patch here
    PLSDK-2229,am572x-idk,Jailhouse ethercat slave failed to reach Operational state with SOEM master on am572-idk rt,
-   PLSDK-2231,"am571x-idk, am572x-idk, am574x-idk",HSR/PRP: Fix collsion code in PRUETH,
+   PLSDK-2234,am571x-idk,3BC Jitter exceeds specification,None
 
 | 
 
