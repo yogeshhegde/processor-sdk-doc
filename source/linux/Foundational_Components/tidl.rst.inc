@@ -19,7 +19,7 @@ applications, and help developers focus on their specific requirements. In this 
 of Deep Learning task and can be used for other roles in your application. This also allows to use traditional Computer Vision 
 (via OpenCV) augmenting Deep Learning algorithms.
 
-At the moment, TIDL software stack primarily enables Convolution Neural Network inference, using offline pre-trained models, 
+At the moment, TIDL software primarily enables Convolution Neural Network inference, using offline pre-trained models, 
 stored in device file-system (**no training on target device**). Models trained using Caffe or Tensorflow-slim frameworks can be 
 imported and converted (with provided import tool) for efficient execution on TI devices. 
 
@@ -38,7 +38,7 @@ making convolution weight tensor sparse, thus giving opportunity for 3x-4x perfo
 Application space
 -----------------
 
-Current version of TIDL software stack is targeting Computer Vision Deep Learning applications. Example applications include vision computers, barcode readers, machine vision cameras, industrial automation systems, optical inspection systems, industrial robots, currency counters, occupancy detectors, smart appliances and unmanned vehicles.
+Current version of TIDL software is targeting Computer Vision Deep Learning applications. Example applications include vision computers, barcode readers, machine vision cameras, industrial automation systems, optical inspection systems, industrial robots, currency counters, occupancy detectors, smart appliances and unmanned vehicles.
 In these cases color image tensors (Width x Height x 3, for BGR planes) are typically used, but it is possible to use other data types (E.g. gray scale and depth plane: Width x Height x 2 tensor)
 
 Based on model and task, TIDL input data are similar, but output data will vary based on task:
@@ -57,7 +57,7 @@ Apart from Convolution Network topologies, support for RNN/LSTM layers and topol
 Supported Devices
 -----------------
 
-TIDL software stack is intended for AM57xx Sitara devices, that either have DSP or EVE, or both accelerators:
+TIDL software is intended for AM57xx Sitara devices, that either have DSP or EVE, or both accelerators:
 
 - AM5749 (2xEVEs + 2xC66x DSPs)
 - AM5746 (2xC66x DSPs)
@@ -74,7 +74,7 @@ that can run in Caffe or TF. Instead, we were focused on verification of layers 
 topologies that make sense to be executed on power-constraint embedded devices.
 Some networks are too complex for power budget of few watts. So focus is put on networks that
 are not extremely computationally intensive and also not having very high memory requirements.
-The following topologies have been verified with TIDL software stack:
+The following topologies have been verified with TIDL software:
 
 - Jacinto11 (similar to ResNet10), classification network
 - JSeg21, pixel level segmentation network
@@ -106,9 +106,9 @@ Here are the graphs (created using TIDL viewer tool) of first three:
 Other network topologies are possible but they need to be verified. Majority of layers required (for inference only!) for classification, segmentation and detection
 tasks are implemented, though in some cases with certain parameter related constraints.
 
-Neural network layers supported by TIDL stack
----------------------------------------------
-The following layer types/Inference features are supported in TIDL 
+Neural network layers supported by TIDL
+---------------------------------------
+The following layer types/Inference features are supported:
 
 #. Convolution Layer
 #. Pooling Layer (Average and Max Pooling)
@@ -329,7 +329,7 @@ Example is based on "imagenet" and "test" examples, with few additions related t
 * main.cpp
     * Parse command line arguments (ParseArgs) and show help how to use the program (DisplayHelp)
     * Initialize configuration (using network model) and executors (DSPs or EVEs), as well as execution objects (frame input and output buffers).
-    * Create windows with TIDL stack static image, Decoded clip or Live camera input and window with enabled classes.
+    * Create windows with TIDL static image, Decoded clip or Live camera input and window with the list of enabled classes.
     * Main processing loop is in RunConfiguration
     * Additional functions: tf_postprocess (sort detections and check if top candidate is enabled in the subset) and ShowRegion (if decision is stable for last 3 frames).
 
@@ -344,7 +344,7 @@ Developer's guide
 Software Stack
 --------------
 
-Complexity of software stack is provided for better understanding only. It is expected that
+Complexity of software is provided for better understanding only. It is expected that
 the user does programming based on TIDL API only.
 
 In case TIDL uses DSP as accelerator there are three software layers:
@@ -376,7 +376,7 @@ Additional public TI resources
 ------------------------------
 
 Following two Caffe-related repositories (maintained by TI team) provides necessary tools for the training phase. 
-Please use them **as primary source of information for training**, for TIDL inference software stack.
+Please use them **as primary source of information for training**, for TIDL inference software.
 They include modifications in Caffe source tree to enable higher compute performance (with TIDL inference).
 
 =========================================================================      ===============================================================================================================================
@@ -396,16 +396,15 @@ They include modifications in Caffe source tree to enable higher compute perform
 Introduction to Programming Model
 ---------------------------------
 
-Public interface of TIDL stack is TIDL API, described in details at http://downloads.ti.com/mctools/esd/docs/tidl-api/intro.html
+Public TIDL API interface is described in details at http://downloads.ti.com/mctools/esd/docs/tidl-api/intro.html
 
-Public programming model is defined in TIDL API host wrapper package. In current release it
-has 3 classes only, allowing use of one or more neural network models that can run in parallel on 
+In current release it has 3 classes only, allowing use of one or multiple neural network models that can run in parallel on 
 independent EVEs or C66x cores.
 
 Single unit of processing is a tensor (e.g. one image frame, but other inputs are also possible), which is typically processed by single accelerator (EVE or DSP), till completion. But in certain cases it is justified, from performance point of view, to split network layers into two layer groups. 
 Than, we can have one layer group running on EVE and second layer group on DSP. This is done sequentially.
 
-Top layer TIDL API and OpenCL are primarily service software layers (in terms of TIDL stack, not NN), i.e. they help in simplifying programming model, IPC mechanism and memory management. Desired features are provided by
+Top layer TIDL API and OpenCL are primarily service software layers (with respect to TIDL software, not NN), i.e. they help in simplifying programming model, IPC mechanism and memory management. Desired features are provided by
 TIDL Lib which runs in RTOS environment, either on EVE or DSP. This software layer is provided in closed firmware, and used as is, by end user.
 
 
