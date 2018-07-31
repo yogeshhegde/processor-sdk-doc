@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC_FIRMWARES 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+=============
 
 | The ICSS FIRMWARES serves as example to implement various network
   functionalities. Package includes source release for Dual_emac and
@@ -9,8 +9,8 @@
 
 | 
 
-.. rubric:: DUAL_EMAC
-   :name: dual_emac
+DUAL_EMAC
+=========
 
 ICSS DUAL EMAC FIRMWARE is a single port Ethernet MAC (Media Access
 Control) i.e. Layer 2 of OSI Model. It implements a 2 port ethernet mac
@@ -48,8 +48,8 @@ are high level features:
 
 | 
 
-.. rubric:: SWITCH
-   :name: switch
+SWITCH
+======
 
 ICSS SWITCH FIRMWARE is a three port learning Ethernet switch i.e. Layer
 2 of OSI Model. It implements a 2 port cut through ethernet switch
@@ -93,8 +93,8 @@ single SOC. The following are the high level features it supports.
 
 | 
 
-.. rubric:: Code Organization
-   :name: code-organization
+Code Organization
+=================
 
 +-----------------------+-----------------------------------+-----------------------+
 | **Requirements**      | **Location in SDK**               | **Remarks**           |
@@ -111,11 +111,11 @@ single SOC. The following are the high level features it supports.
 
 | 
 
-.. rubric:: Firmware Build Instruction
-   :name: firmware-build-instruction
+Firmware Build Instruction
+==========================
 
-.. rubric:: Build instruction from Processor SDK Release package
-   :name: build-instruction-from-processor-sdk-release-package
+Build instruction from Processor SDK Release package
+---------------------------------------------------
 
 .. rubric:: Pre-requisites to Building
    :name: pre-requisites-to-building
@@ -147,8 +147,8 @@ Firmware binaries at the end of the build will be located at:
 
 | 
 
-.. rubric:: Build instruction from GIT
-   :name: build-instruction-from-git
+Build instruction from GIT
+--------------------------
 
 Following are the steps for building firmware from any external
 environment outside PROC SDK RTOS.
@@ -188,8 +188,8 @@ environment outside PROC SDK RTOS.
 
 | 
 
-.. rubric:: Supported EVMs
-   :name: supported-evms
+Supported EVMs
+==============
 
 The following is a list of EVMS supported and the PRU-ICSS ethernet
 ports to be used:
@@ -215,8 +215,8 @@ ports to be used:
 
 | 
 
-.. rubric:: Running ICSS-EMAC FIRMWARES Example
-   :name: running-icss-emac-firmwares-example
+Running ICSS-EMAC FIRMWARES Example
+===================================
 
 Please go through the following page for example demonstrating the use
 of the firmware via icss-emac driver.
