@@ -263,7 +263,7 @@ SDK Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 25, 30, 50, 60
 
-   LCPD-5578,,Exception triggered by graphics driver during boot if board does not have SGX (BBB A4),Build Processor SDK without SGX following instructions here
+   LCPD-5578,,Exception triggered by graphics driver during boot if board does not have SGX (BBB A4),"Build Processor SDK without SGX following instructions `here <Overview.html#rebuilding-without-sgx>`__"
    LCPD-7025,am43xx-gpevm,System takes more than 10 seconds to go from login prompt to system prompt,Automated tests need to account for this boot delay
    LCPD-8352,"am43xx-gpevm, am57xx-evm",weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory,1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer
    LCPD-9006,am57xx-evm,Some GLBenchmark tests fail to run,"This is a limitation with Imagination DDK, and no workaround"
@@ -272,8 +272,6 @@ SDK Known Issues
    LCPD-11549,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm","Error message with multiple egl, not shared context","Limitation with Imagination DDK, no workaround"
    LCPD-12679,am574x-idk,PVR_K: dmabuf error during video playback,
    LCPD-12778,am335x-evm,Board hangs in standby & suspend state when wl12x card is attached,
-   LCPD-12917,,Iperf results in segmentation fault causing iperf tests to fail randomly,
-   LCPD-12918,,UDP Iperf issues with newer iperf build,
    PLSDK-832 ,AM57 ,OpenCL matmpy intermittent DSP1 crash due to EdmaMgr issues w/ suspend/resume ,Disable DSP suspend/resume echo on > /sys/bus/platform/devices/40800000.dsp/power/control echo on > /sys/bus/platform/devices/41000000.dsp/power/control
    PLSDK-885,AM57,OpenCV Video test failure w/ GStreamer errors,Use the workaround from    PLSDK-832
    PLSDK-1266,am572x-idk,PRP: stale IGMP packets (IPv6) seems directly sent to eth2/eth3 of a HRP node,None
@@ -282,8 +280,6 @@ SDK Known Issues
    PLSDK-1419,k2l-evm,Intermittent-IP address display issue on LCD for K2L RT,"Use ifconfig once Linux boots, to acquire IP address"
    PLSDK-1556,"k2hk-evm, k2hk-hsevm, k2e-evm, k2l-evm",SA LLD: saBasicExample test shows warning as 'Alignment trap' on K2x platforms.,Just a warning message. No impact to test output
    PLSDK-1602,am437x-evm,"Simple people tracking demo: Bulk transfer failed, observed inconsistent behavior of the application",None
-   PLSDK-1603,"am571x-idk, am572x-idk, am572x-evm",Received bad addr len cause the OpenAMP test failure when DSP is redownloaded on AM57xx platforms,None
-   PLSDK-1641,,HSR/PRP: NetJury Test TC_HSR_5_2_1 fails,None
    PLSDK-1693,am572x-evm,Incorrect behaviour observed for HDMI matrix on AM572x-GP EVM,None
    PLSDK-1707,"am571x-idk, am572x-idk",prueth: debugfs_create_dir() fails during boot and error message shown,"Only impact the debug stats display. No other functionality affected. Once user login to root, user may do ifconfig or ifup to bring up the interface"
    PLSDK-1720,am437x-evm,Simple people tracking demo: Tracking Incorrect Number of People,None
