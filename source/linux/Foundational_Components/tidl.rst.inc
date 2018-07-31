@@ -1024,6 +1024,24 @@ Troubleshooting
 
 - Verify model preparation procedure
 
+- Import process may not give enough information if it fails to import external model.
+    E.g. following report can be seen if format is not recognized (in this case, an attempt to import Keras model was made):
+  
+    ::
+
+       $ ./tidl_model_import.out ./modelInput/tidl_import_mymodel.txt
+       TF Model File : ./modelInput/mymodel
+       Num of Layer Detected :   0
+       Total Giga Macs : 0.0000
+
+       Processing config file ./tempDir/qunat_stats_config.txt !
+         0, TIDL_DataLayer                ,  0,   0 ,  0 ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  x ,  0 ,    0 ,    0 ,    0 ,    0 ,    0 ,    0 ,    0 ,    0 ,
+
+       Processing Frame Number : 0
+
+       End of config list found !
+
+
 - Data set preparation concerns
     - Good lighting is very desirable while preparing training set.
     - Augmentation
