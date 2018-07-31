@@ -108,7 +108,7 @@ How to Build the Demo
 .. note::
    In order to make the following build procedure to work, AER and VOLIB
    have to be installed at the same location as the Processor SDK RTOS
-   4.x.x
+   and make sure the AER 17.0.0.0 (C64P) is installed at aer_c64Px_obj_17_0_0_0
 
 
 AM572x GP EVM
@@ -302,7 +302,7 @@ How to Build the Demo
 .. note::
    In order to make the following build procedure to work, AER and VOLIB
    have to be installed at the same location as the Processor SDK RTOS
-   4.x.x
+   and make sure the AER 17.0.0.0 (C64P) is installed at aer_c64Px_obj_17_0_0_0
 
 K2G EVM
 ^^^^^^^
