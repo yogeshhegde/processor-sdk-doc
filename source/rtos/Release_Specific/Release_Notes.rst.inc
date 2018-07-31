@@ -801,8 +801,8 @@ release and any known workaround.
 |             |             |             | platform    |                                                         |
 +-------------+-------------+-------------+-------------+---------------------------------------------------------+
 | PRSDK-4304  | am335x      | Uniflash    | Flash writer| Rebuilding the flash writer binaries shall fix this     |
-|             |             | Flash       | prebuilt    | issue. Refer the `Section <                             |
-|             |             | Writer      | binaries    | Board_EVM_Abstration.html#rebuilding-flashwriter>`__    |
+|             |             | Flash       | prebuilt    | issue. Refer the `Rebuilding the flash writer           |
+|             |             | Writer      | binaries    | <Board_EVM_Abstration.html#rebuilding-flashwriter>`__   |
 |             |             |             | does not    |                                                         |
 |             |             |             | work on     |                                                         |
 |             |             |             | AM335x      |                                                         |
