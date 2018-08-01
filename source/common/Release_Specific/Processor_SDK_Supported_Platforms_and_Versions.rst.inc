@@ -52,7 +52,7 @@ The following platforms and EVMs are supported with Processor SDK
 |processors/sitara/arm_cortex-a15/     |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruig1>`__              |                |                |                |                |
 |am57x/overview.page>`__               |TMDSEVM572X>`__                       |          |                                            |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |`AM572x IDK                           | 1.3A     |`Hardware User's Guide <http://             | X              | X              | X              |                |
+|                                      |`AM572x IDK                           | 1.3A     |`Hardware User's Guide <http://             | X              | X              | X              | X              |
 |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui64>`__              |                |                |                |                |
 |                                      |TMDXIDK5728>`__                       |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
 |                                      |                                      |          |.wiki.ti.com/index.php/TMDXIDK5728_         |                |                |                |                |

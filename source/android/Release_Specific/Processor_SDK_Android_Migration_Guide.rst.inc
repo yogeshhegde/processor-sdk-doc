@@ -21,8 +21,7 @@ of the Processor SDK for Android.
    power cycle AM57x IDKs to use MLO and u-boot.img from the SD card
    and the rest from the eMMC. For AM57x GP EVM, SD card can be removed
    before the power cycle to boot Android with everything from the eMMC.
--  HDMI audio is not supported
--  Camera and VPE are not supported
+-  VPE is not supported
 
 |
 

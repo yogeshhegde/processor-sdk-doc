@@ -73,21 +73,16 @@ for AM57x.
 Following new features are enabled/tested in this release:
 
 -  **Support AM574x IDK**
--  **Boot:** fastboot, QSPI/NOR + emmc boot, Single stage bootloader,
-   USB peripheral boot, HS Boot with FIT model, IPU Loading, Switch to
-   recovery mode
--  **Platform:** LPAE support, SELinux enforce mode
--  **IPC:** MessageQ, MmRpc, Late attach support, error recovery : DEH
-   And MMU faults
--  **Connectivity:** USB2.0/USB3.0 Host, Gadget and dual-role, Dual
-   Ethernet, SD card detect, eMMC HS200 mode
+-  **Boot:** fastboot, emmc boot, GP with FIT model
+-  **Platform:** LPAE support, SELinux Permissive mode
+-  **Connectivity:** USB2.0/USB3.0 Host, Gadget,
+   Ethernet, SD card detect, eMMC
 -  **Power:** AVS0, MPU DVFS, ABB
 -  **Thermal:** Governors implemented for MPU (On Die), Monitoring
    implemented for all on chip sensors
 -  **Video:** 1080p30 MP4/H264/MP2
--  **Audio:** MP3/AAC playback, ARM<->DSP Audio Routing
--  **Display:** SGX accelerated UI and touch, DRM/KMS, DSS WB, SGX and
-   DSS simultaneous composition.
+-  **Audio:** MP3/AAC playback
+-  **Display:** SGX accelerated UI and touch, DRM/KMS
 
 | 
 
