@@ -44,7 +44,7 @@ Prevent BeagleBone board reset on JTAG Connect
 
 Rebuild drivers from PDK directory
 ------------------------------------
-.. include:: How_to_Guides/Host/Setup/Rebuild_drivers_from_PDK_directory.rst.inc
+Refer `Rebuilding the PDK <Overview.html#rebuild-pdk>`__ for details on rebuilding the PDK components.
 
 
 

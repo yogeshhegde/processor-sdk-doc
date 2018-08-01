@@ -204,16 +204,25 @@ Rebuilding Components
 Instructions for rebuilding sub-components can be found in documentation
 within the component. Here are a collection of useful pages:
 
+Rebuild PDK
+--------------
+.. include:: How_to_Guides/Host/Setup/Rebuild_drivers_from_PDK_directory.rst.inc
+
+Rebuild IPC
+--------------
 -  `Rebuild
    IPC <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Rebuilding_IPC>`__
    *(Starting in Release 3.0, IPC build has been integrated into the
    top-level SDK Makefile.)*
 
+Rebuild NDK
+--------------
 -  `Rebuild
    NDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_NDK_Core_Using_Gmake>`__
 
--  `Rebuild PDK <How_to_Guides.html#building-pdk-using-gmake-in-windows-environment>`__
 
+Rebuild SYS/BIOS
+-----------------
 -  `Rebuild
    SYS/BIOS <http://processors.wiki.ti.com/index.php/SYS/BIOS_FAQs>`__
 
