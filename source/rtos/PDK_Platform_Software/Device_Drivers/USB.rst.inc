@@ -6,13 +6,14 @@ Overview
 Driver Overview
 ^^^^^^^^^^^^^^^
 
-PDK USB driver (USB LLD) provides the following USB class functions
+PDK USB driver (USB LLD) provides the following USB class/functions
 while isolating application from the complexity of low level USB and USB
 class protocols:
 
 -  USB device Mass Storage Class
 -  USB host Mass Storage Class
 -  USB device Audio Class
+-  USB generic bulk device class
 
 In rest of the page AM437x EVM is being refered as an example. Please
 check Release Notes for list of supported EVMs for driver.
@@ -53,7 +54,7 @@ can just ignore it and just continue without scanning.
 
 | 
 
--  **USB device Mass Storage Class with MMCSD card**
+   -  **USB device Mass Storage Class with MMCSD card**
 
 This example acts like a USB - MMCSD card reader. The example exposes
 the EVM's MMCSD card to the Host PC via USB MSC. The Host PC can
@@ -101,6 +102,56 @@ and OMAP-L138 LCDK.
 | 
 .. Image:: ../images/Am335x_usb_ac_bd.jpg
 
+| 
+
+-  **USB generic bulk device class**
+
+In this mode, a user-selected USB instance of the EVM will be working in
+device mode. The mentioned USB device will show up in the host PC as a generic 
+USB bulk device with one single interface containing a bulk IN and a bulk OUT
+endpoints. The configuration and interface descriptors published by the device 
+contain vendor-specific class identifiers, so an application on the host will 
+have to communicate with the device using either a custom driver or a subsystem 
+such as WinUSB or libusb-win32 on Windows (or just libusb on Linux) to read and 
+write to the device. 
+
+
+   -  **Running USB bulk device demo application**
+
+The bulk demo application requires a host PC with USB host plugged to the USB device 
+port on the EVM. Depending on the platform, the USB device port might be USB port #0 
+or #1. 
+
+.. Image:: ../images/USB_MSC_device.PNG
+
+Please refer to PDK user guide for how to generate USB example projects. Once the demo 
+application is loaded and run, the EVM UART console shows the following:
+
+.. Image:: ../images/usb_dev_bulk_console.png
+
+A Python host PC example application is provided in 
+ti/drv/usb/example/usb_dev/bulk/usb_dev_bulk_host_application.py
+
+|
+
+The example Python script requires PyUSB to run. On Linux host, proper UDEV rule is 
+also required in order to access the USB bulk device as non-sudo user.  The script 
+itself also lists the requirements to run it as well as what command options available. 
+The example UDEV rule is also placed in the same place where the Python script is located.
+It does the following:
+
+- The Python script looks for the USB device with the example PID:VID, 
+- Sends an ASCII text string to the USB bulk demo application running on the EVM 
+- Expects the same text string with reversed case letter returned back, and also
+- Verifies the received data with the data that it has sent and report the test result.
+
+A screen shot of what the Python test script outputs
+
+.. Image:: ../images/usb_dev_bulk_host_tool_output.png
+
+The USB bulk demo application configures the USB endpoints as high speed endpoints with 512KB packet size.
+
+|
 | 
 
 User Interface
@@ -206,7 +257,22 @@ in the interrupt context.
 
 .. Image:: ../images/USB_Audio_class_flowchart.jpg
 
+
 | 
+
+-  **USB Device Bulk**
+
+Sequence of API calls as long as what the example application looks like are 
+described bellow
+
+.. Image:: ../images/usb_device_generic_bulk_example_application.png
+
+- Main APIs that are used to read/write from and to the USB bulk device are USBD_bulkRead() and USBD_bulkWrite(). 
+These two functions will block the caller until they finish their operation.
+
+- The main application should wait for about 500ms after the USB host sends the SetConfig request to make sure 
+the enumeration is completely finished before calling USBD_bulkRead/Write functions
+
 
 Application
 ------------
@@ -240,13 +306,17 @@ release notes for supported EVMs.
 |                       |                       | USB3.0 host supported |
 |                       |                       | on AM572IDK.          |
 +-----------------------+-----------------------+-----------------------+
-| **usb_device_audio**  | AM335x EVM,OMAPL137   | Refer to Hardware     |
+| **usb_device_audio**  | AM335xGP,OMAPL137     | Refer to Hardware     |
 |                       | EVM,OMAPL138 LCDK     | Setup and How to Run  |
 |                       |                       | the Demo sections     |
 |                       |                       | below                 |
 +-----------------------+-----------------------+-----------------------+
-
-| 
+| **usb_device_bulk**   | AM335xGP, AM437xGP,   |                       |
+|                       | AM572xIDK, AM571xIDK, |                       |
+|                       | AM574xIDK, K2GEVM     |                       |
+|                       |                       |                       |
+|                       |                       |                       |
++-----------------------+-----------------------+-----------------------+
 
 Hardware Setup
 --------------
