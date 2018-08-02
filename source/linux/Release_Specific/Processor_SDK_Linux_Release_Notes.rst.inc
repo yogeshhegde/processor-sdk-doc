@@ -267,6 +267,7 @@ SDK Known Issues
 
    LCPD-5578,,Exception triggered by graphics driver during boot if board does not have SGX (BBB A4),"Build Processor SDK without SGX following instructions `here <Overview.html#rebuilding-without-sgx>`__"
    LCPD-7025,am43xx-gpevm,System takes more than 10 seconds to go from login prompt to system prompt,Automated tests need to account for this boot delay
+   LCPD-8345,"am335x-evm, am437x-idk, k2e-evm, k2e-hsevm, k2hk-evm, k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)",Restart the EVM
    LCPD-8352,"am43xx-gpevm, am57xx-evm",weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory,1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer
    LCPD-9006,am57xx-evm,Some GLBenchmark tests fail to run,"This is a limitation with Imagination DDK, and no workaround"
    LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
@@ -274,6 +275,7 @@ SDK Known Issues
    LCPD-11549,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm","Error message with multiple egl, not shared context","Limitation with Imagination DDK, no workaround"
    LCPD-12679,am574x-idk,PVR_K: dmabuf error during video playback,
    LCPD-12778,am335x-evm,Board hangs in standby & suspend state when wl12x card is attached,
+   LCPD-12784,omapl138-lcdk,Board can't resume from suspend state sometimes, None
    PLSDK-832,AM57,OpenCL matmpy intermittent DSP1 crash due to EdmaMgr issues w/ suspend/resume,"Disabling suspend/resume on the DSPs prevents this intermittent failure: *echo on > /sys/bus/platform/devices/40800000.dsp/power/control; echo on > /sys/bus/platform/devices/41000000.dsp/power/control*"
    PLSDK-885,AM57,OpenCV Video test failure w/ GStreamer errors,Use the workaround from    PLSDK-832
    PLSDK-1266,am572x-idk,PRP: stale IGMP packets (IPv6) seems directly sent to eth2/eth3 of a HRP node,None
