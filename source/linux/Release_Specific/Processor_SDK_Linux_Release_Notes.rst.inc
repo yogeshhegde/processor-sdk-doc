@@ -53,8 +53,8 @@ Released Jul 2018
 
 - 2018 LTS Update: First release in 2018 LTS (Kernel 4.14, U-boot: 2018.01, gcc: 7.2-2017.11, Yocto 2.4 (rocko). For more details, see the `migration guide <Release_Specific.html#processor-sdk-05-00>`__
 - AM57x: Enable Deep Learning at the edge using TI-DL that leverages TI’s proprietary, highly optimized CNN/DNN implementation on the EVE and C66x DSP compute engines. Please see `here <Foundational_Components_TIDL.html>`__ for more details
-- AM57x: PTP: Support Ordinary Clock (OC) Master/Slave with HSR redundancy on PRU-ICSS
-- AM57x: PTP: Support Hybrid Clock (HC), i.e. Transparent Clock (TC) + Ordinary Clock (OC) in HSR mode
+- AM57x: PTP: Support Ordinary Clock (OC) Master/Slave with HSR redundancy on PRU-ICSS. Please refer to `HSR OC TC <Industrial_Protocols_PTP.html#hsr-oc-tc>`__ for more details
+- AM57x: PTP: Support Hybrid Clock (HC), i.e. Transparent Clock (TC) + Ordinary Clock (OC) in HSR mode. Please refer to `HSR OC TC <Industrial_Protocols_PTP.html#hsr-oc-tc>`__ for more details
 - AM57x: HSR/PRP: Add `Broadcast Storm Prevention <Industrial_Protocols_HSR_PRP.html#broadcast-storm-prevention>`__
 - AM57x: HSR/PRP: Improve throughput at smaller packet sizes, details `here <Industrial_Protocols_HSR_PRP.html#receive-interrupt-pacing>`__
 - AM437x, AM57x: Implement Simple Open Real-Time Ethernet (SORTE) with Linux. Please see `here <Industrial_Protocols_SORTE.html>`__ for more details
