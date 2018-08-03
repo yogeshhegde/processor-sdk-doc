@@ -298,12 +298,11 @@ instances will have can0 and can1.
 
 -  Set bit-timing
 
-Set the bit-rate to 50Kbits/sec with triple sampling using the following
-command
+Set the bit-rate to 50Kbits/sec using the following command:
 
 ::
 
-    $ canconfig can0 bitrate 50000 ctrlmode triple-sampling on
+    $ ip link set can0 type can bitrate 50000
 
 -  Set bit-timing (loopback mode)
 
@@ -312,7 +311,7 @@ mode using the following command
 
 ::
 
-    $ canconfig can0 bitrate 50000 ctrlmode triple-sampling on loopback on
+    $ ip link set can0 type can bitrate 50000 loopback on
 
 .. rubric:: **Start CAN Bus**
    :name: start-can-bus
@@ -323,7 +322,7 @@ Bring up the device using the command:
 
 ::
 
-    $ canconfig can0 start
+    $ ip link set can0 up
 
 .. raw:: html
 
@@ -347,23 +346,20 @@ first start the CAN instance.
 Packet transmission can be achieve by using cansend and cansequence
 utilities.
 
-a. Transmit 8 bytes with standard packet id number as 0x10
+Transmit 4 bytes with standard packet id number as 0x123
 
 ::
 
-    $ cansend can0 -i 0x10 0x11 0x22 0x33 0x44 0x55 0x66 0x77 0x88
+    $ cansend can0 123#DEADBEEF
 
-e. Transmit a sequence of numbers from 0x00-0xFF and roll-back in a
-continuous loop
+
+Transmit a sequence of can frames with random IDs and random data.
 
 ::
 
-    $ cansequence can0 -p
+    $ cangen can0
 
 -  Receive packets
-
-.. rubric:: **Stop CAN Bus**
-   :name: stop-can-bus
 
 Packet reception can be achieve by using candump utility
 
@@ -371,10 +367,32 @@ Packet reception can be achieve by using candump utility
 
     $ candump can0
 
+
+.. rubric:: **Stop CAN Bus**
+   :name: stop-can-bus
+
+::
+
+    $ ip link set can0 down
+
 | 
 
 .. rubric:: **Advanced Usage**
    :name: advanced-usage
+
+The following are some examples exploring the capabilties of can-utils. See can-utils documentation for a comprehensive set of options.
+
+Transmit fixed CAN ID and length with an incrementing data
+
+::
+
+    $ cangen can0 -g 4 -I 42A -L 1 -D i -v -v
+
+Log only error frames but no data frames
+
+::
+
+    $ candump -l any,0~0,#FFFFFFFF
 
 .. rubric:: **Statistics of CAN**
    :name: statistics-of-can
@@ -457,7 +475,7 @@ the previous section
 
 ::
 
-    $ candump can0 --error
+    $ candump can0 -e
 
 | 
 
