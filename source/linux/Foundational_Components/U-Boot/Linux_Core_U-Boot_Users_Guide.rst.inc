@@ -969,53 +969,25 @@ variables here are **mmcroot** and **mmcrootfstype**.
 .. rubric:: Booting MLO and u-boot from eMMC boot partition
    :name: booting-mlo-and-u-boot-from-emmc-boot-partition
 
-The DRA7xx and AM57xx processors support booting from the eMMC boot
-partition. To do this, some u-boot files need to be modified. First swap
-two values in u-boot//arch/arm/include/asm/arch-omap5/spl.h.
+The dra7xx and am57xx processors support booting from the eMMC boot partition. The following commands load the boot images from network and write them into the boot0 partition.
 
 ::
 
-    From
-    #define BOOT_DEVICE_MMC1        0x05
-    #define BOOT_DEVICE_MMC2        0x06
-    #define BOOT_DEVICE_MMC2_2      0x07
-    To
-    #define BOOT_DEVICE_MMC1        0x05
-    #define BOOT_DEVICE_MMC2        0x07
-    #define BOOT_DEVICE_MMC2_2      0x06
+    U-boot # setenv autoload no
+    U-boot # dhcp
+    U-boot # mmc dev 1 1
+    U-boot # tftp ${loadaddr} dra7xx/MLO
+    U-boot # mmc write ${loadaddr} 0x0 0x300
+    U-boot # tftp ${loadaddr} dra7xx/u-boot.img
+    U-boot # mmc write ${loadaddr} 0x300 0x400
 
-Next add the boot partition to the list of boot devices. Modify
-u-boot/arch/arm/mach-omap2/omap5/boot.c and change.
+We also need to configure the eMMC using the bootbus and partconf commands. The bootbus command sets the eMMC into dual data rate mode with a bus width of 8 to match with the bus configuration supported by the Boot ROM. The partconf command gives access to the boot0 partition during boot operation. Note that these configurations are limited to boot operation and the eMMC can be set to its highest speed mode once boot operation is complete. All these are non-volatile configurations that need to be done **once per eMMC/board** .
 
 ::
 
-    From
-    static u32 boot_devices[] = {
-    #if defined(CONFIG_DRA7XX)
-            BOOT_DEVICE_MMC2,
-            BOOT_DEVICE_NAND,
-    To
-    static u32 boot_devices[] = {
-    #if defined(CONFIG_DRA7XX)
-            BOOT_DEVICE_MMC2_2,
-            BOOT_DEVICE_MMC2,
-            BOOT_DEVICE_NAND,
-
-Finally modify the board's defconfig and add.
-
-::
-
-    CONFIG_SYS_EXTRA_OPTIONS="EMMC_BOOT"
-
-Then use the following commands to make the boot partition read-write
-and write MLO and u-boot.img to the boot partition.
-
-::
-
-    echo 0 > /sys/block/mmcblk1boot0/force_ro
-    dd if=/dev/zero of=/dev/mmcblk1boot0 bs=512
-    dd if=MLO of=/dev/mmcblk1boot0 bs=512
-    dd if=u-boot.img of=/dev/mmcblk1boot0 bs=512 seek=768
+    U-boot # mmc bootbus 1 2 0 2
+    U-boot # mmc partconf 1 1 1 0
+    U-boot # mmc rst-function 1 1
 
 | 
 
