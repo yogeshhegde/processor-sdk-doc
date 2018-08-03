@@ -2,8 +2,6 @@
 How to Guides
 ##################
 
-.. include:: How_To_Guides/Processor_SDK_Android_PRU-ICSS_Ethernet.rst.inc
-
 *******************************************************
 How to connect the LCD to your AM571x/AM572x IDK board
 *******************************************************
@@ -22,6 +20,8 @@ Coming soon!
 How to boot directly into your application
 *******************************************************
 Coming soon!
+
+.. include:: How_To_Guides/Processor_SDK_Android_PRU-ICSS_Ethernet.rst.inc
 
 .. include:: How_To_Guides/Frequently_Asked_Questions.rst.inc
 
