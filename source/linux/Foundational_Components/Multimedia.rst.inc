@@ -29,6 +29,8 @@ This multimedia training page will cover the following topics.
 -  Out of Box Multimedia Demos in PROCESSOR-SDK
 -  Software Stack of Accerelated Codec Encoding/Decoding
 -  Gstreamer Pipelines for Multimedia Applications
+-  Gstreamer Plugins Limitations
+-  List of Features not Supported with Gstreamer
 -  DSP C66x Gstreamer Plugin Internals
 -  Rebuild IPUMM Firmware
 -  Load and Unload Firmware
@@ -427,6 +429,44 @@ corrupted.
 
     target #  gst-launch-1.0 filesrc location= 4k.nv12 ! videoparse width=3840 height=2160 format=nv12 framerate=12/1 ! video/x-raw, width=3840, height=2160 ! ducatih264enc level=51 profile=100 bitrate=16000 ! filesink location=4k.h264
 
+.. rubric:: Full HD at 60fps Encoding
+    :name: full-hd-at-60fps-encoding
+
+::
+
+   target #  gst-launch-1.0 videotestsrc num-buffers=1000 ! 'video/x-raw,format=(string)NV12,width=1920,height=1080,framerate=(fraction)60/1' ! ducatih264enc level=level-51 profile=high ! queue ! h264parse ! mp4mux ! filesink location=test.mp4
+
+
+.. rubric:: Multi-channel Encoding
+        :name: multi-channel-encoding
+
+::
+
+	target # gst-launch-1.0 -e v4l2src device=/dev/video1 num-buffers=1000 io-mode=4 ! 'video/x-raw, format=(string)YUY2, width=(int)1280, height=(int)720, framerate=(fraction)30/1' ! tee name=t ! vpe num-input-buffers=8 ! queue ! ducatih264enc ! queue ! h264parse ! qtmux ! filesink location=test.mov t. ! vpe num-input-buffers=8 ! 'video/x-raw, format=(string)NV12, width=(int)640, height=(int)480' ! queue ! ducatih264enc ! queue ! h264parse ! qtmux ! filesink location=test1.mov
+
+
+.. rubric:: Network Loopback
+    :name: network-loopback
+
+::
+
+	    Sender:
+
+	    target # gst-launch-1.0 -e v4l2src device=/dev/video1 io-mode=4 ! 'video/x-raw,format=(string)YUY2,width=1280,height=720,framerate=(fraction)30/1' ! vpe num-input-buffers=8 ! queue ! ducatih264enc intra-interval=1 ! h264parse ! rtph264pay mtu=200 ! udpsink host=127.0.0.1 port=5000 &
+
+::
+
+	    Receiver:
+
+	    target # gst-launch-1.0 -v udpsrc port=5000 ! 'application/x-rtp,media=(string)video, clock-rate=(int)90000, payload=(int)96' ! rtph264depay ! h264parse ! ducatih264dec ! vpe ! 'video/x-raw,format=(string)NV12, width=320,height=240' ! waylandsink sync=false
+
+::
+
+	    Note:
+
+	    Both pipelines must be executed on target board.
+
+::
 
 .. rubric:: ARM H265 (HEVC) decoding pipeline
 
@@ -484,6 +524,22 @@ the table below.
 
 Note: please view fps\_log.txt to find out the FPS information after the
 pipeline completes.
+
+|
+
+ .. rubric:: Gstreamer Plugins Limitations
+    :name: gstreamer-plugins-limitations
+
+* Gstreamer VPE plugin supports only YUY2, NV12, YUYV input/output formats.
+* Not all encoder's parameters are exposed as gstreamer encoder's properties.
+
+
+ .. rubric:: List of Features not Supported with Gstreamer
+     :name: list-of-features-not-supported-with-gstreamer
+
+* DSS WB is not supported with gstreamer.
+* Ivi-shell is not supported with gstreamer.
+
 
 | 
 
