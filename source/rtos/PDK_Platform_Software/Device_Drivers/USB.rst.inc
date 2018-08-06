@@ -149,7 +149,7 @@ A screen shot of what the Python test script outputs
 
 .. Image:: ../images/usb_dev_bulk_host_tool_output.png
 
-The USB bulk demo application configures the USB endpoints as high speed endpoints with 512KB packet size.
+The USB bulk demo application configures the USB endpoints as high speed endpoints with 512B packet size.
 
 |
 | 
