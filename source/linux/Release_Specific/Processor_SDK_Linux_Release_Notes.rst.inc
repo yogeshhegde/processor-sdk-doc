@@ -313,7 +313,7 @@ SDK Known Issues
    PLSDK-2194,"am437x-evm, am572x-evm",QtWebengine demobrowser crashes during window resize operations at LTS2018,None
    PLSDK-2198,"k2g-ice, k2g-evm",Multimedia: ERROR: from element /GstPipeline:pipeline0/GSTQTMux: qtmux0: Could not multiplex stream,None
    PLSDK-2220,k2e-evm,UBI Image for K2E exceeds the available size limit,None
-   PLSDK-2228,am572x-evm,AM572x GP EVM: Unable to boot with jailhouse dtb,Apply patch here
+   PLSDK-2228,am572x-evm,AM572x GP EVM: Unable to boot with jailhouse dtb,Apply patch `here <http://git.ti.com/processor-sdk/processor-sdk-linux/commit/75c7f060a41e0bc5c6088f1ca1b432087ae09611>`__
    PLSDK-2229,am572x-idk,Jailhouse ethercat slave failed to reach Operational state with SOEM master on am572-idk rt,
    PLSDK-2234,am571x-idk,3BC Jitter exceeds specification,None
 
