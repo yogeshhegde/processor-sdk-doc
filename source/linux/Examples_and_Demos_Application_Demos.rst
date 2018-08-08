@@ -44,3 +44,10 @@ Qt5 Thermostat HMI Demo
 ROS and Radar
 ===============
 .. include:: Examples_and_Demos/ROS_Radar.rst.inc
+
+
+TIDL Classification Demo
+========================
+
+Refer to various TIDL demos documented at  `Examples and Demos <Foundational_Components_TIDL.html#examples-and-demos>`__
+
