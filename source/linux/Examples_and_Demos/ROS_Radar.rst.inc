@@ -27,6 +27,10 @@ Sitara EVM and Radar EVM would be attached to Kobuki, and Sitara EVM running ROS
 would control Kobuki movement via USB connection. Please note that mobile base
 is not essentail for verification of ROS on Sitara plus Radar EVM operation.
 
+It is desirable to have Ubuntu Linux box (typically Linux PC desktop or laptop) with Ubuntu 14.04LTS
+and ROS indigo installed (please note that ROS Indigo is natively supported in Ubuntu 14.04).
+
+
 HW Setup
 --------
 
@@ -45,13 +49,13 @@ HW Setup
 * [optional] Kobuki mobile base (as used by Turtlebot2), http://kobuki.yujinrobot.com/
 
 .. figure:: ../images/ros_radar_1.png
-    :width: 500px
+    :width: 800px
     :align: center
-    :height: 350px
+    :height: 450px
     :alt: alternate text
     :figclass: align-center
 
-    Kobuki mobile base with Sitara and Radar EVMs
+    Kobuki mobile base with Sitara, Radar EVMs and monitoring Ubuntu Linux box (PC desktop or laptop)
 
 .. rubric:: Compatibility
    :name: compatibility
@@ -59,7 +63,7 @@ HW Setup
 The ti_mmwave_rospkg ROS driver package on Sitara is tested with Processor Linux SDK 4.3
 which includes meta-ros layer, indigo, (from https://github.com/bmwcarit/meta-ros).
 For visualization we used ROS indigo distro on Ubuntu Linux box, preffered for compatibility reasons. 
-Please follow installation instructions (for Linux box) at http://wiki.ros.org/indigo/Installation/Ubuntu 
+Please follow installation instructions (for Ubuntu Linux box) at http://wiki.ros.org/indigo/Installation/Ubuntu 
 For this demo, IWR EVM requires mmWave SDK firmware. If different firmware is used on Radar EVM, please follow
 procedure using UniFlash tool to install `mmWave SDK <http://www.ti.com/tool/MMWAVE-SDK>`__
 
@@ -69,12 +73,12 @@ ROS configuration verification
 ROS is part of PLSDK 4.3 target filesystem, including mmWave ROS driver, so no additional
 installation steps are required. ROS is installed in /opt/ros/indigo folder.
 Only setting up configuration related to specific IP address
-of target EVM, and Ubuntu x86 host IP address is needed.
+of target EVM, and Ubuntu Linux box host IP address is needed.
 ROS is distributed meta-ros, with single ROS host acting as a broker for all internode transcations.
-It runs roscore node and in this case roscore is executed on Sitara. Linux Box will only run
+It runs roscore node and in this case roscore is executed on Sitara. Ubuntu Linux box will only run
 ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports OpenGL ES 2.0).
 
-.. note:: If visualization using RViz is not needed, Linux Box is not necessary for this demo (except to start
+.. note:: If visualization using RViz is not needed, Ubuntu Linux box is not necessary for this demo (except to start
           multiple SSH terminals).
 
 
@@ -91,7 +95,7 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
    root@am57xx-evm:/usr/bin# ln -s python3 python.python
    root@am57xx-evm:/usr/bin# ln -s python3-config python-config.python
 
-ROS between distributed nodes (Sitara and LinuxBox)
+ROS between distributed nodes (Sitara and Ubuntu Linux box)
 ---------------------------------------------------
      
 .. rubric:: 1st SSH terminal, to Sitara EVM
@@ -173,8 +177,8 @@ You will see log similar to following:
    data: hello world 5344
 
 
-mmWave ROS node on Sitara and RViz on Linux Box
-------------------------------------------------
+mmWave ROS node on Sitara and RViz on Ubuntu Linux box
+------------------------------------------------------
 
 .. rubric:: 1st SSH terminal, to Sitara EVM
    :name: 1st-ssh-terminal-1-ros-demo2
@@ -349,10 +353,10 @@ Start Kobuki teleop console (remotely control Kobuki movement using keyboard)
 		e : enable motors.
 		q : quit.
         
-.. rubric:: 5th SSH terminal, to Linux box
+.. rubric:: 5th SSH terminal, to Ubuntu Linux box
    :name: 5th-ssh-terminal-1
 
-First, install RViz on Ubuntu if this has not been done before:
+First, install RViz on Ubuntu Linux box if this has not been done before:
 
 .. code-block:: console
 
@@ -361,18 +365,18 @@ First, install RViz on Ubuntu if this has not been done before:
         sudo apt-get update
         sudo apt-get install ros-indigo-desktop-full
 
-Setup ROS variables on Linux Box (to enable communication with ROS host on Sitara) then start RViz
+Setup ROS variables on Ubuntu Linux box (to enable communication with ROS host on Sitara) then start RViz
 
 .. code-block:: console
 
 	export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311 (IP address of Sitara EVM, modify as needed)
-	export ROS_IP=$LINUX_BOX_IP_ADDR (IP address of Ubuntu machine, modify as needed)
-	export ROS_HOSTNAME=$SITARA_IP_ADDR (IP address of Ubuntu machine, modify as needed)
+	export ROS_IP=$LINUX_BOX_IP_ADDR (IP address of Ubuntu Linux box, modify as needed)
+	export ROS_HOSTNAME=$SITARA_IP_ADDR (IP address of Ubuntu Linux box, modify as needed)
 	source /opt/ros/indigo/setup.bash
 	
         rosrun rviz rviz
 
-Alternatively, in order to get Kobuki avatar on the screen, install kobuki_description on Linux box
+Alternatively, in order to get Kobuki avatar on the screen, install kobuki_description on Ubuntu Linux box
 and start RViz by launching view_model from kobuki_description.
 
 .. code-block:: console
@@ -403,7 +407,7 @@ in chapters: "Visualizating the data", "Reconfiguring the chirp profile", and "H
 .. rubric:: Starting GStreamer pipeline for streaming front view camer
    :name: gst-ssh-terminal-1
 
-It is possible to start GStreamer pipeline on Sitara and receive front-camera view on Linux Box or Windows PC using VLC.
+It is possible to start GStreamer pipeline on Sitara and receive front-camera view on Ubuntu Linux box or Windows PC using VLC.
 
         
 .. code-block:: console
@@ -421,5 +425,5 @@ E.g. on Windows PC (192.168.0.100), you can watch the stream using: "\Program Fi
     :alt: alternate text
     :figclass: align-center
 
-    Multiple windows on Linux Box showing ROS RViz, front camera view and external camera view 
+    Multiple windows on Ubuntu Linux box showing ROS RViz, front camera view and external camera view 
 
