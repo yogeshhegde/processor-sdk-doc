@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_OMAPL13x 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+^^^^^^^^^^
 
 The Secondary Bootloader (SBL) for OMAPL137/OMAPL138/C6748 does basic
 hardware initialization for the board to load and run applications.
@@ -22,8 +22,8 @@ Processor SDK boot support for each of these SoC is shown below
 | C6748       | DSP (C674x) | DSP         | MMCSD       | C6748 LCDK  |
 +-------------+-------------+-------------+-------------+-------------+
 
-.. rubric:: Bootloader Execution Sequence
-   :name: bootloader-execution-sequence
+Bootloader Execution Sequence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  Power On Reset occurs
 -  ROM Bootloader (RBL) executes. It checks for bootmode and attempts to
@@ -32,7 +32,7 @@ Processor SDK boot support for each of these SoC is shown below
 
    -  Board Initialization is done by a call to **Board_init()** API.
       For additional details refer to `Processor SDK Board
-      Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__.
+      Support <Board_EVM_Abstration.html#board-support>`__.
    -  SBL setup includes configuring Pinmux, enable peripheral clocks,
       set up PLLs, and configure EMIF for SDRAM/DDR.
 
@@ -41,11 +41,11 @@ Processor SDK boot support for each of these SoC is shown below
 -  Once located, app will be loaded into memory and execution will be
    branched to the application's entry address
 
-.. rubric:: Tools and Binary Formats
-   :name: tools-and-binary-formats
+Tools and Binary Formats
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: Making Bootable SBL image (MLO)
-   :name: making-bootable-sbl-image-mlo
+Making Bootable SBL image (MLO)
+""""""""""""""""""""""""""""""""
 
 RBL loads and runs "MLO", which is a .out executable formatted by TI
 tools. HexAIS tool should be used to convert the .out into MLO using the
@@ -82,8 +82,8 @@ OMAPL137 HexAIS tool is available at **< PDK_INSTALL_DIR
 OMAPL138/C6748 HexAIS tool is available at **< PDK_INSTALL_DIR
 >/packages/ti/boot/sbl/tools/omapl13x_boot_utils/OMAP-L138/GNU/AISUtils**
 
-.. rubric:: Making Loadable User Application image (app)
-   :name: making-loadable-user-application-image-app
+Making Loadable User Application image (app)
+""""""""""""""""""""""""""""""""""""""""""""""
 
 For converting the compiled .out files to a format loadable by TI's
 Secondary Boot Loader (SBL), you must follow these two steps:
@@ -108,22 +108,21 @@ input a different value to boot to other cores. Valid values are:
 | DSP Core | 1     |
 +----------+-------+
 
-::
+.. note::
+   Program entry point of DSP app images on OMAPL138 platform should be 1KByte aligned for loading and executing the DSP images from 
+   ARM core. GPIO LLD LED blink example for C674x core can be used as reference for aligning the DSP entry point to run the DSP code from 
+   SBL. Other LLD examples does not work from SBL as is.
 
-    Note: Program entry point of DSP app images on OMAPL138 platform should be 1KByte aligned for loading and executing the DSP images from 
-    ARM core. GPIO LLD LED blink example for C674x core can be used as reference for aligning the DSP entry point to run the DSP code from 
-    SBL. Other LLD examples does not work from SBL as is.
-
-.. rubric:: Boot Modes
-   :name: boot-modes
+Boot Modes
+^^^^^^^^^^^^
 
 This release of SBL supports SPI and MMCSD boot modes.
 
-.. rubric:: SPI Boot Mode
-   :name: spi-boot-mode
+SPI Boot Mode
+""""""""""""""
 
-.. rubric:: Preparing SPI Flash
-   :name: preparing-spi-flash
+Preparing SPI Flash
+'''''''''''''''''''''
 
 MLO and app needs to be flashed into SPI memory so that they can be
 booted. MLO will reside at offset 0 and app will reside at offset
@@ -189,21 +188,12 @@ The images can be flashed into SPI flash by following steps given below:
            Verified flash data equal expected data!
     Successfully flashed memory content!
 
-.. raw:: html
+.. note::
+   This application will flash the image at required offset without taking
+   into consideration any overwriting to previously flashed image.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This application will flash the image at required offset without taking
-into consideration any overwriting to previously flashed image.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Booting via SPI
-   :name: booting-via-spi
+Booting via SPI
+''''''''''''''''''''
 
 #. Set the OMAPL137 EVM to SPI bootmode by configuring the SW2 DIP
    switches 1-4 to 'OFF ON OFF ON'. Other switch positions on SW2 are
@@ -220,16 +210,16 @@ blink application
 
 | 
 
-.. rubric:: MMCSD Boot Mode
-   :name: mmcsd-boot-mode
+MMCSD Boot Mode
+""""""""""""""""
 
 OMAPL138/C6848 RBL does not support reading the boot images as files
 from SD card. Secondary Boot loader image should be written to SD card
 as raw data. Special formatting is needed for SD card to create
 un-formatted area at the beginning of the card to store SBL.
 
-.. rubric:: Formatting the SD Card
-   :name: formatting-the-sd-card
+Formatting the SD Card
+''''''''''''''''''''''''
 
 SD card for booting OMAPL138/C6748 needs to be formatted from Linux PC
 due to un-formatted area requirement. Formatting the SD card from
@@ -246,8 +236,8 @@ card
 -  create-sdcard-omapl13x.sh script is available at
    **<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/omapl13x_sd_card_format**
 
-.. rubric:: Preparing the SD Card
-   :name: preparing-the-sd-card
+Preparing the SD Card
+''''''''''''''''''''''
 
 For both OMAPL138 and C6748, MLO needs to be flashed onto SD card
 un-formatted area and app should be copied onto SD card.
@@ -318,23 +308,14 @@ mentioned above.
     zero value which is multiple of 512 and should be within first 2Mbytes of SD card memory. DO NOT set the MLO offset to '0' which will corrupt the file 
     system on the card.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This application will flash the image at required offset without taking
-into consideration any overwriting to previously flashed image.
-
-.. raw:: html
-
-   </div>
+.. note::
+   This application will flash the image at required offset without taking
+   into consideration any overwriting to previously flashed image.
 
 | 
 
-.. rubric:: Booting via MMCSD
-   :name: booting-via-mmcsd
+Booting via MMCSD
+''''''''''''''''''''
 
 #. Set the OMAPL138/C6748 LCDK to MMCSD bootmode by configuring the SW1
    DIP switches 1-4 to 'OFF OFF OFF ON'. Other switch positions on SW1
@@ -351,36 +332,27 @@ blink application
 
 | 
 
-.. rubric:: Memory Usage
-   :name: memory-usage
+Memory Usage
+^^^^^^^^^^^^^^^
 
 SBL uses 0x20000 bytes from shared RAM (0x80000000 to 0x8001FFFF).
 
 | 
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-app should not have loadable sections residing in SBL memory region to
-prevent overwriting SBL during load time. It is, however, free to use
-SBL memory after it is loaded and running.
-
-.. raw:: html
-
-   </div>
+.. note::
+   app should not have loadable sections residing in SBL memory region to
+   prevent overwriting SBL during load time. It is, however, free to use
+   SBL memory after it is loaded and running.
 
 | 
 
-.. rubric:: Additional Details
-   :name: additional-details
+Additional Details
+^^^^^^^^^^^^^^^^^^^^
 
 Use below commands to clean and build the SBL and associated tools.
 
-.. rubric:: Initial Steps
-   :name: initial-steps
+Initial Steps
+"""""""""""""""
 
 Setup the environment variables to configure the build tools
 
@@ -390,24 +362,24 @@ Run pdksetupenv script
 
 cd ti/boot/sbl
 
-.. rubric:: Cleaning SBL
-   :name: cleaning-sbl
+Cleaning SBL
+"""""""""""""""
 
 gmake clean SOC=<SoC Name> BOARD=<Board Name> BOOTMODE=<Boot Mode>
 
-.. rubric:: Building SBL
-   :name: building-sbl
+Building SBL
+"""""""""""""""
 
 gmake SOC=<SoC Name> BOARD=<Board Name> BOOTMODE=<Boot Mode>
 
-.. rubric:: Cleaning Flash Writer
-   :name: cleaning-flash-writer
+Cleaning Flash Writer
+""""""""""""""""""""""
 
 gmake <Flash Writer>_clean SOC=<SoC Name> BOARD=<Board Name>
 BOOTMODE=<Boot Mode>
 
-.. rubric:: Building Flash Writer
-   :name: building-flash-writer
+building-flash-writer
+""""""""""""""""""""""
 
 gmake <Flash Writer> SOC=<SoC Name> BOARD=<Board Name> BOOTMODE=<Boot
 Mode>

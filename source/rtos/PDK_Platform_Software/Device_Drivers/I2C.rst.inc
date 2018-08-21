@@ -62,7 +62,7 @@ All the board specific configurations eg:enabling and pin-mux of I2C
 pins should be performed before calling any driver APIs.By default
 Board_Init() API supports all initialization sequence for TI supported
 EVMs.Refer `Processor SDK RTOS Board
-Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for additional
+Support <Board_EVM_Abstration.html#board-support>`__ for additional
 details.
 
 Once the board specific configuration is complete driver API I2C_init()

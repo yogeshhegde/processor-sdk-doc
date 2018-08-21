@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_C66x 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+^^^^^^^^^^^
 
 C66x SOCs use the Intermediate Boot-Loader (IBL) to initialize and setup
 the SOC for specific boot modes. The table below illustrates the
@@ -25,28 +25,23 @@ supported bootmodes:
 | PCIe boot                            | Yes         | Yes         |
 +--------------------------------------+-------------+-------------+
 
-**Note:**
+.. note::
+   #. Support boot over I2C bus address 0x51
+   #. Support POST boot over I2C bus address 0x50
+   #. Only ELF and BBLOB images are supported for booting
+   #. IBL is using the first 128KB L2 local memory, any application booting
+      from IBL should NOT use the first 128KB L2 memory, OR should only use
+      the first 128KB L2 memory for uninitialized data section
 
-#. Support boot over I2C bus address 0x51
-#. Support POST boot over I2C bus address 0x50
-#. Only ELF and BBLOB images are supported for booting
-#. IBL is using the first 128KB L2 local memory, any application booting
-   from IBL should NOT use the first 128KB L2 memory, OR should only use
-   the first 128KB L2 memory for uninitialized data section
+Please refer to the boot mode dip switch settings for different boot
+modes on
+`TMDSEVM6678L_EVM <http://processors.wiki.ti.com/index.php/TMDXEVM6678L_EVM_Hardware_Setup#Boot_Mode_Dip_Switch_Settings>`__,
+and
+`TMDSEVM6657L_EVM <http://processors.wiki.ti.com/index.php/TMDSEVM6657L_EVM_Hardware_Setup#Boot_Mode_Dip_Switch_Settings>`__
+that IBL supports.
 
-.. raw:: html
-
-   </div>
-
-| Please refer to the boot mode dip switch settings for different boot
-  modes on
-  `TMDSEVM6678L_EVM <http://processors.wiki.ti.com/index.php/TMDXEVM6678L_EVM_Hardware_Setup#Boot_Mode_Dip_Switch_Settings>`__,
-  and
-  `TMDSEVM6657L_EVM <http://processors.wiki.ti.com/index.php/TMDSEVM6657L_EVM_Hardware_Setup#Boot_Mode_Dip_Switch_Settings>`__
-  that IBL supports.
-
-.. rubric:: Flashing the Bootloader
-   :name: flashing-the-bootloader
+Flashing the Bootloader
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 IBL needs to be flashed into EEPROM address 0x51.
 
@@ -55,8 +50,8 @@ Images <http://processors.wiki.ti.com/index.php/Program_EVM_UG>`__] for
 instructions on using the script, program_evm.js, to automatically flash
 your device.
 
-.. rubric:: Bootloader Execution Sequence
-   :name: bootloader-execution-sequence
+Bootloader Execution Sequence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 IBL is flashed into I2C EEPROM bus address 0x51. IBL provides a
 workaround for the PLL lockup issue (please refer to C6678 errata
@@ -69,7 +64,7 @@ settings) and then re enters the ROM to accomplish the desired boot
 mode. Please note that the re entry is done for all boot modes except
 for PCIe boot mode and I2C boot mode with bus address 0x51.
 
-| Below are the steps done in the IBL:
+Below are the steps done in the IBL:
 
 #. FPGA samples the bootmode pins
 #. FPGA forces the DSP to boot via I2C bus address 0x51
@@ -85,8 +80,8 @@ for PCIe boot mode and I2C boot mode with bus address 0x51.
    into the DSP Program Counter, DSP executes the desired internal ROM
    boot mode or boot from I2C bus address 0x50 as normal.
 
-.. rubric:: Compilation
-   :name: compilation
+Compilation
+^^^^^^^^^^^^^^
 
 The recommended rule-of-thumb to compiling projects in the Processor SDK
 RTOS package is to use the makefiles provided. The makefiles are usable
@@ -101,15 +96,12 @@ Refer to `Processor SDK RTOS Building the SDK <Overview.html#building-the-sdk>`_
 guide on how to setup your environment for building within any of the
 Processor SDK RTOS packages.
 
-**Note:** C66x projects are supported by C6000 Code Generation
-Tools 7.4.x. Make sure your environment variable, C6X_GEN_INSTALL_PATH,
-is pointing to a valid C6000 compiler. Compiling IBL invokes the C6000
-compiler, cl6x, directly. Your PATH variable will need to have
-$C6X_GEN_INSTALL_PATH/bin.
-
-.. raw:: html
-
-   </div>
+.. note::
+   C66x projects are supported by C6000 Code Generation
+   Tools 7.4.x. Make sure your environment variable, C6X_GEN_INSTALL_PATH,
+   is pointing to a valid C6000 compiler. Compiling IBL invokes the C6000
+   compiler, cl6x, directly. Your PATH variable will need to have
+   $C6X_GEN_INSTALL_PATH/bin.
 
 The IBL package can be found in:
 
@@ -136,25 +128,16 @@ The resulting output will be in [SDK Install
 Path]/pdk_<platform>_<version>/packages/ti/boot/ibl/src/make/bin
 directory.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-For developers, who want to build IBL in Windows environment. Please
-build this using MinGW environment using the instructions provided in
-the build_instructions.txt that can be found under
-pdk_c66xx_xx_xx\packages\ti\boot\ibl\doc\ibl\doc
-
-.. raw:: html
-
-   </div>
+.. note::
+   For developers, who want to build IBL in Windows environment. Please
+   build this using MinGW environment using the instructions provided in
+   the build_instructions.txt that can be found under
+   pdk_c66xx_xx_xx\packages\ti\boot\ibl\doc\ibl\doc
 
 | 
 
-.. rubric:: Flash Writers
-   :name: flash-writers
+Flash Writers
+^^^^^^^^^^^^^^^^^
 
 There are three types of flash memory provided with the C66x SOCs:
 EEPROM, NOR, and NAND. Each of these flash memory can hold bootable
@@ -164,30 +147,28 @@ application binaries. As such, respective flash writers are provided in:
 
      [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/writer
 
-**Note:** Please set your EVM to **NO BOOT** mode before loading
-and running any of the flash writers. Flashing in NO BOOT mode is the
-safest way since it eliminates any unwarranted interactions with booted
-applications.
+.. note::
+   Please set your EVM to **NO BOOT** mode before loading
+   and running any of the flash writers. Flashing in NO BOOT mode is the
+   safest way since it eliminates any unwarranted interactions with booted
+   applications.
 
-.. raw:: html
 
-   </div>
-
-.. rubric:: EEPROM Writer
-   :name: eeprom-writer
+EEPROM Writer
+""""""""""""""
 
 The EEPROM Writer is used to write a binary into the EEPROM memory.
 
-.. rubric:: Compilation
-   :name: compilation-1
+Compilation
+'''''''''''''
 
 ::
 
      cd [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/writer/eeprom/<platform>/build
      make all
 
-.. rubric:: Usage
-   :name: usage
+Usage
+'''''''
 
 #. Set your EVM to **NO BOOT**. Power on, launch target configuration in
    CCS, and connect to Core 0. Be sure the GEL file is used and DDR is
@@ -208,21 +189,21 @@ The EEPROM Writer is used to write a binary into the EEPROM memory.
 If it succeeds, the console will print "EEPROM programming completed
 successfully"
 
-.. rubric:: NOR Writer
-   :name: nor-writer
+NOR Writer
+"""""""""""
 
 The NOR Writer is used to write a binary into the NOR memory.
 
-.. rubric:: Compilation
-   :name: compilation-2
+Compilation
+''''''''''''
 
 ::
 
      cd [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/writer/nor/<platform>/build
      make all
 
-.. rubric:: Usage
-   :name: usage-1
+Usage
+''''''
 
 #. Set your EVM to **NO BOOT**. Power on, launch target configuration in
    CCS, and connect to Core 0. Be sure the GEL file is used and DDR is
@@ -243,21 +224,21 @@ The NOR Writer is used to write a binary into the NOR memory.
 If it succeeds, the console will print "NOR programming completed
 successfully"
 
-.. rubric:: NAND Writer
-   :name: nand-writer
+NAND Writer
+""""""""""""
 
 The NAND Writer is used to write a binary into the NAND memory.
 
-.. rubric:: Compilation
-   :name: compilation-3
+Compilation
+'''''''''''''
 
 ::
 
      cd [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/writer/nand/<platform>/build
      make all
 
-.. rubric:: Usage
-   :name: usage-2
+Usage
+''''''
 
 #. Set your EVM to **NO BOOT**. Power on, launch target configuration in
    CCS, and connect to Core 0. Be sure the GEL file is used and DDR is
@@ -278,47 +259,13 @@ The NAND Writer is used to write a binary into the NAND memory.
 If it succeeds, the console will print "NAND programming completed
 successfully"
 
-.. rubric:: Boot Modes
-   :name: boot-modes
+Boot Modes
+^^^^^^^^^^^
 
-.. rubric:: NAND Boot
-   :name: nand-boot
-
-.. raw:: html
-
-   <div class="thumb tright">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:502px;">
+NAND Boot
+""""""""""""
 
 .. Image:: ../images/Nandboot.jpg
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Nandboot.jpg
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 NAND boot is a multi-stage process which is designed to boot an
 application from NAND flash after reset. Figure below illustrates the
@@ -340,44 +287,10 @@ modified and re-programmed to EEPROM.
 
 | 
 
-.. rubric:: NOR Boot
-   :name: nor-boot
-
-.. raw:: html
-
-   <div class="thumb tright">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:502px;">
+NOR Boot
+""""""""""""
 
 .. Image:: ../images/Norboot.jpg
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Norboot.jpg
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 NOR boot is a multi-stage process which is designed to boot an
 application from NOR flash after reset. Figure below illustrates the
@@ -396,44 +309,10 @@ parameter index dip switch, maximum 2 boot images can be supported.
 
 | 
 
-.. rubric:: TFTP Boot
-   :name: tftp-boot
-
-.. raw:: html
-
-   <div class="thumb tright">
-
-.. raw:: html
-
-   <div class="thumbinner" style="width:502px;">
+TFTP Boot
+""""""""""""
 
 .. Image:: ../images/Emacboot.jpg
-
-.. raw:: html
-
-   <div class="thumbcaption">
-
-.. raw:: html
-
-   <div class="magnify">
-
-.. Image:: ../images/Emacboot.jpg
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 EMAC boot is a multi-stage process which is designed to boot an
 application from TFTP server after reset. Figure below illustrates the
@@ -452,14 +331,13 @@ re-programmed to EEPROM.
 
 | 
 
-.. rubric:: Updating the IBL Ethernet Configurations
-   :name: updating-the-ibl-ethernet-configurations
+Updating the IBL Ethernet Configurations
+'''''''''''''''''''''''''''''''''''''''''''
 
 There are two ways to update the IBL ethernet configurations for
 ethernet boot.
 
-.. rubric:: Using CCS
-   :name: using-ccs
+**Using CCS**
 
 #. Turn on and connect to your EVM with the appropriate Target
    Configuration file.
@@ -483,8 +361,7 @@ editor before loading and running the script in CCS. Please note that
 this gel file contains configuration settings for multiple SOCs and
 multiple boot modes.
 
-.. rubric:: Using iblConfig Utility Program
-   :name: using-iblconfig-utility-program
+**Using iblConfig Utility Program**
 
 The second way to update the IBL ethernet configurations is to use
 **iblConfig.out**. This utility program is located under:
@@ -527,32 +404,29 @@ Path]/pdk_<platform>_<version>/packages/ti/boot/ibl/src/util/iblConfig/src/SOC.h
 file. In the example above, the ethernet boot file name will be
 defaulted to c6678-le.bin when iblConfig.out is run.
 
-| After running iblConfig.out and updating the IBL binary, you must
-  flash the modified IBL binary to your EVM. You can do this as part of
-  program_evm (refer to `Processor SDK Flashing Bootable
-  Images <http://processors.wiki.ti.com/index.php/Program_EVM_UG>`__) or
-  you can flash it individually using eepromwriter (refer to "Flash
-  Writers" section above).
+After running iblConfig.out and updating the IBL binary, you must
+flash the modified IBL binary to your EVM. You can do this as part of
+program_evm (refer to `Processor SDK Flashing Bootable
+Images <http://processors.wiki.ti.com/index.php/Program_EVM_UG>`__) or
+you can flash it individually using eepromwriter (refer to "Flash
+Writers" section above).
 
-**Note:** If you updated the IBL with iblConfig and flashed it
-  with eepromwriter, you should **NOT** use
-  i2cparam_0x51_c667#_le_0x500.out and iblConfig.gel - this would
-  overwrite the changes you made to the IBL.
+.. note::
+   If you updated the IBL with iblConfig and flashed it
+   with eepromwriter, you should **NOT** use
+   i2cparam_0x51_c667#_le_0x500.out and iblConfig.gel - this would
+   overwrite the changes you made to the IBL.
 
-.. raw:: html
-
-   </div>
-
-.. rubric:: Compilation
-   :name: compilation-4
+Compilation
+'''''''''''''
 
 ::
 
      cd [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/i2c/tftp/<platform>/build
      make all
 
-.. rubric:: Usage
-   :name: usage-3
+Usage
+'''''''''''''
 
 After your IBL ethernet settings are configured correctly and flashed
 into EEPROM memory, follow these steps to continue the TFTP booting
@@ -572,8 +446,8 @@ process:
 Your PC will send the application image to the EVM to boot. Open an UART
 terminal to view the output.
 
-.. rubric:: POST Boot
-   :name: post-boot
+POST Boot
+""""""""""""
 
 POST (Power On Self Test) Boot is designed to do a quick self-diagnostic
 upon boot. The POST application itself is located in
@@ -586,8 +460,8 @@ This application should already be compiled and flashed into EEPROM
 out-of-box. Below instructions are for re-compilation or re-flashing
 only.
 
-.. rubric:: Compilation
-   :name: compilation-5
+Compilation
+'''''''''''''
 
 ::
 
@@ -599,8 +473,8 @@ only.
 Note: You would need to use post_romparse.bat instead of the \*.sh
 version if your host system is running on Windows.
 
-.. rubric:: Usage
-   :name: usage-4
+Usage
+'''''''''''''
 
 To flash the POST binary into EEPROM:
 
@@ -621,8 +495,8 @@ available over the UART serial console.
 
 | 
 
-.. rubric:: ETHERNET Boot
-   :name: ethernet-boot
+ETHERNET Boot
+""""""""""""""
 
 ETHERNET Boot uses Ethernet sockets to transfer a bootable image from a
 host to the EVM. After powering on in Ethernet boot mode, the EVM will
@@ -632,8 +506,8 @@ MAC ID of the EVM to the network.
 Below are instructions on compiling and running an example to send a
 simple program to the EVM while in Ethernet boot mode.
 
-.. rubric:: Compilation
-   :name: compilation-6
+Compilation
+'''''''''''''
 
 ::
 
@@ -642,8 +516,8 @@ simple program to the EVM while in Ethernet boot mode.
      cd [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/examples/ethernet/simple
      make all
 
-.. rubric:: Usage
-   :name: usage-5
+Usage
+'''''''''''''
 
 #. Set the EVM's DIP switches to Ethernet boot mode. Connect Ethernet
    cables such that the EVM and your Host PC are on the same network.
@@ -664,20 +538,16 @@ To use pcsendpkt:
 
 *<EVM IP ADDRESS>* is the IP address you assigned the EVM in step 3
 
-**Note:** If you are on a Linux Host PC, you may need to
-recompile pcsendpkt locally with GCC
-
-To verify, connect to the EVM's Core 0 via CCS and check that the A1
-register is set to 0x11223344
-
-.. raw:: html
-
-   </div>
+.. note::
+   If you are on a Linux Host PC, you may need to recompile pcsendpkt locally with GCC
+  
+  To verify, connect to the EVM's Core 0 via CCS and check that the A1
+  register is set to 0x11223344
 
 | 
 
-.. rubric:: SRIO Boot
-   :name: srio-boot
+SRIO Boot
+""""""""""""
 
 SRIO boot will attempt to load and run a binary image received via SRIO.
 An example can be found in:
@@ -688,8 +558,8 @@ An example can be found in:
 
 Below are instructions on compiling and running the SRIO boot example.
 
-.. rubric:: Compilation
-   :name: compilation-7
+Compilation
+'''''''''''''
 
 ::
 
@@ -709,8 +579,8 @@ helloworld_elf2HBin.bat instead of their \*.sh version respectively if
 your host system is running on Windows. Compilation of the projects
 should be done in the order stated above.
 
-.. rubric:: Usage
-   :name: usage-6
+Usage
+'''''''''''''
 
 You will need to have 2 EVMs - both should be set to SRIO boot mode. The
 two EVMs will be connected through the AMC breakout board (lane x of one
@@ -754,8 +624,8 @@ Terminal for your BOOTING EVM should display:
      Booting Hello World image on Core 6 from Core 0 ...
      Booting Hello World image on Core 7 from Core 0 ...
 
-.. rubric:: PCIE Boot
-   :name: pcie-boot
+PCIE Boot
+""""""""""""
 
 PCIE boot will attempt to load and run a binary image upon enumeration.
 Example is located:
@@ -766,8 +636,8 @@ Example is located:
 
 Below are instructions on compiling and running the PCIE boot example.
 
-.. rubric:: Compilation
-   :name: compilation-8
+Compilation
+'''''''''''''
 
 ::
 
@@ -789,8 +659,8 @@ The POST application can also be used as a PCIE Boot example. Run the
 corresponding \*_elf2HBin.bat (or .sh) to convert the .out files into
 PCIE bootable binaries.
 
-.. rubric:: Usage
-   :name: usage-7
+Usage
+'''''''''''''
 
 An AMC to PCIE adaptor card, a TMS320C66xxL EVM card and a Linux PC are
 required to do the test. The test is verified on both TMS320C6670L and
@@ -848,8 +718,8 @@ TMS320C6678L cards, with both 32-bit and 64-Linux PCs running Ubuntu
    for cores other than core 0 should be inside DDR; and magic address
    for cores other than core 0 should be written with 0xBABEFACE.
 
-.. rubric:: Procedure to build and run Linux host loader
-   :name: procedure-to-build-and-run-linux-host-loader
+Procedure to build and run Linux host loader
+''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 -  Create a folder (e.g. pcie_test) in a Linux machine. Copy pciedemo.c,
    Makefile, pcieDdrInit_66xx.h, pcieBootCode_66xx.h,
@@ -881,8 +751,8 @@ POST demo can be run on little endian only.
 
 pciedemo.ko”
 
-.. rubric:: The role of IBL in PCIE boot mode
-   :name: the-role-of-ibl-in-pcie-boot-mode
+The role of IBL in PCIE boot mode
+'''''''''''''''''''''''''''''''''''''''
 
 The Intermediate Boot Loader (IBL) is flashed into I2C EEPROM bus
 address 0x51. IBL provides a workaround for the PLL lockup issue (please
@@ -921,8 +791,8 @@ can be initialized in two ways:
 
 the DDR. In Processor SDK, the second approach is used.
 
-.. rubric:: How HelloWorld boot example works
-   :name: how-helloworld-boot-example-works
+How HelloWorld boot example works
+'''''''''''''''''''''''''''''''''''''''
 
 The Linux host first pushes the DDR init boot image data to L2 memory of
 core 0, then writes the boot entry address of the DDR init boot image to
@@ -946,8 +816,8 @@ Note that host boot application needs to wait for some time after
 pushing the DDR init boot image and before pushing the HelloWorld boot
 image to the DDR, this will ensure DDR is properly initialized.
 
-.. rubric:: How POST boot example works
-   :name: how-post-boot-example-works
+How POST boot example works
+'''''''''''''''''''''''''''''
 
 The POST example uses L2 only. The Linux host first pushes the POST boot
 image data to L2 memory of core 0, then writes the boot entry address of
@@ -955,8 +825,8 @@ the POST to the magic address on core 0, both via PCIE. The IBL code
 running on the DSP core 0 polls the entry address and jumps to that
 address and starts to boot.
 
-.. rubric:: How DSP local reset example works
-   :name: how-dsp-local-reset-example-works
+How DSP local reset example works
+'''''''''''''''''''''''''''''''''''''''
 
 A user may want to re-run a PCIE demo without power cycle the Linux PC.
 There is a need to reset the DSP chip from host software. There are
@@ -983,7 +853,8 @@ example does the following:
 -  Enable all modules previous disabled via PSC
 -  Pull all cores out of reset via PSC
 
-  **Note:** It is IBL (in local L2) that monitors magic address
+.. note::
+  It is IBL (in local L2) that monitors magic address
   and boots the DDR init (in local L2) or POST (in local L2) or
   EDMA-interrupt (in local L2) in those demos. If one wants to load
   his/her own boot demo code, then it shouldn’t overlap with the IBL

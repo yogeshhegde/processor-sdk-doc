@@ -60,9 +60,7 @@ This will create the .out executable that can be loaded via CCS
    :name: flashing-post-image
 
 To flash a bootable image of POST, please refer to the `SDK RTOS
-Flashing Bootable
-Images <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Flashing_Bootable_Images%7CProcessor>`__
-guide.
+Flashing Bootable Images <How_to_Guides.html#flash-bootable-images-c66x-k2h-k2e-k2l-only>`__ guide.
 
 | 
 

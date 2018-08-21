@@ -192,7 +192,7 @@ C:\\ti\\PRSDK_AM3x and C:\\ti\\PRSDK_AM4x
 
    -  CCS auto-detects components only in C:\\ti path. So you will need to
       add the custom path to discovery as described in `Setup
-      CCS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS>`__.
+      CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__.
    -  Assuming CCS is installed in the default path, the process to set the
       custom SDK path while building the SDK is provided in :ref:`Install in
       Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
@@ -216,7 +216,7 @@ emulator.
    If you have installed CCS and/or the Processor SDK RTOS in a custom
    location, you need to manually add the SDK install path to CCS as
    described here
-   `CCS_and_SDK_installed_in_different_directories <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Setup_CCS#CCS_and_SDK_installed_in_different_directories>`__
+   `CCS_and_SDK_installed_in_different_directories <How_to_Guides.html#ccs-and-sdk-installed-in-different-directories>`__
 
 .. rubric:: Step 2: Run the Out-of-Box Examples or Diagnostics
    :name: step-2-run-the-out-of-box-examples-or-diagnostics
@@ -356,7 +356,7 @@ Script <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_create_SD_ca
 provided in Processor SDK Linux.
 
 For KeyStone Devices, the Processor SDK RTOS provides a `Program EVM
-Script <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Flashing_Bootable_Images#Default_Binaries_and_Setup>`__
+Script <How_to_Guides.html#default-binaries-and-setup>`__
 with default binaries that reflash images on EEPROM, SPI, and/or NAND
 (depending on the EVM platform used).
 
@@ -594,8 +594,7 @@ For bare-metal code, users are required to use a linker command file for
 each of the cores and partition the memory manually so that there is no
 memory overlap in the applications running on each of the cores. For
 bare-metal linker command files, you can refer to the CCS templates for
-`Hello
-World <http://processors.wiki.ti.com/index.php/Processor_SDK_Bare_Metal_Examples>`__
+`Hello World <Examples_and_Demonstrations.html#no-os-bare-metal-example>`__
 or the linker command file used in the common folder of the the
 diagnostics package.
 
@@ -789,8 +788,7 @@ flash-writing utilities for different EVMs can be located under the path
 pdk_<device_name>_x_x_x\\packages\\ti\\boot\\sbl\\tools\\flashWriter.
 
 If the intent is to restore the KeyStone II EVM to factory settings,
-then the `Program EVM
-Script <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Flashing_Bootable_Images>`__
+then the `Program EVM Script <How_to_Guides.html#flash-bootable-images-c66x-k2h-k2e-k2l-only>`__
 enables users to program the flash on the EVM using the pre-built
 firmware images provided by TI/board manufacturer.
 

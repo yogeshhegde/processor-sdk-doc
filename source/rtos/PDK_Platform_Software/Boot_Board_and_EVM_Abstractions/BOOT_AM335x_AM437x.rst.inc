@@ -1,22 +1,23 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+^^^^^^^^^
 
-| Bootloader supports power-on-reset bootstraps for the board. It
-  initializes board, loads application from the memory device to DDR and
-  transfers control to application. Section provides additional details
-  including flashing and booting instructions across different media.
+Bootloader supports power-on-reset bootstraps for the board. It
+initializes board, loads application from the memory device to DDR and
+transfers control to application. Section provides additional details
+including flashing and booting instructions across different media.
 
-.. rubric:: Source Reference
-   :name: source-reference
+Source Reference
+^^^^^^^^^^^^^^^^^^
 
 ::
 
     < BASE_DIR = PDK_INSTALL_DIR\packages\ti\starterware>
 
-| 
-| **Bootloader build files for AM335x/AM437x**
+
+Bootloader build files for AM335x/AM437x
+"""""""""""""""""""""""""""""""""""""""""
 
 **Source files:**
 
@@ -48,14 +49,15 @@
 
 | 
 
-.. rubric:: Bootloader execution sequence
-   :name: bootloader-execution-sequence
+Bootloader execution sequence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Processor SDK RTOS boot loader uses a two stage boot process. The
 different stages of the application boot sequence using Processor SDK
 RTOS bootloader are shown below:
 
-**Boot Sequence**
+Boot Sequence
+"""""""""""""""
 
 #. Power on Reset
 #. ROM Bootloader (RBL)
@@ -87,8 +89,8 @@ RTOS bootloader are shown below:
 
 #. Application execution
 
-.. rubric:: Tools and Binary formats
-   :name: tools-and-binary-formats
+Tools and Binary formats
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Binary format         | Requirement           | Details               |
@@ -134,8 +136,6 @@ RTOS bootloader are shown below:
 
 **TI Boot image**
 
-| 
-
 +------------+----------------------------+
 | Offset     | Binary value               |
 +============+============================+
@@ -146,26 +146,16 @@ RTOS bootloader are shown below:
 | 0x00000008 | **Binary (.bin)**          |
 +------------+----------------------------+
 
-.. raw:: html
+.. note::
+   - For bootloader Entry point is usually 0x402f0000
+   - For the app the entry point is usually 0x80000000.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-\* For bootloader Entry point is usually 0x402f0000
+Binary format conversion procedure
+"""""""""""""""""""""""""""""""""""
 
--  For the app the entry point is usually 0x80000000.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Binary format conversion procedure
-   :name: binary-format-conversion-procedure
-
-.. rubric:: Binary format conversion in Linux
-   :name: binary-format-conversion-in-linux
-
+Binary format conversion in Linux
+''''''''''''''''''''''''''''''''''
 1) To convert from .out -> .bin
 
 ::
@@ -184,9 +174,8 @@ RTOS bootloader are shown below:
 
     tiimage.out <Image Load Address> NONE <application>.bin <application>_ti.bin
 
-.. rubric:: Binary format conversion in Windows
-   :name: binary-format-conversion-in-windows
-
+Binary format conversion in Windows
+''''''''''''''''''''''''''''''''''''
 1) To convert from .out -> .bin
 
 ::
@@ -202,8 +191,8 @@ binary in starterware/tools/ti_image.
 
 | 
 
-.. rubric:: Boot Modes supported
-   :name: boot-modes-supported
+Boot Modes supported
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Following are the Boot Modes supported through AM335x/AM437x bootloader
 for the various EVMs.
@@ -238,10 +227,8 @@ for the various EVMs.
 
 | 
 
-| 
-
-.. rubric:: Building the Bootloader
-   :name: building-the-bootloader
+Building the Bootloader
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Pre-requisite:** Setup SDK build environment as described in article
  :ref:`Setup_Environment <Build-The-SDK-Setup-Environment-label>`
@@ -318,25 +305,24 @@ industrial use case.
 
 | 
 
-.. rubric:: Boot Mode settings
-   :name: boot-mode-settings
+Boot Mode settings
+^^^^^^^^^^^^^^^^^^^
 
-| Boot mode settings for all supported AM335x and AM437x boards are
-  `here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+Boot mode settings for all supported AM335x and AM437x boards are `here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
 
-.. rubric:: Boot Modes
-   :name: boot-modes
+Boot Modes
+^^^^^^^^^^^^
 
-.. rubric:: Booting Via SD Card
-   :name: booting-via-sd-card
+Booting Via SD Card
+"""""""""""""""""""""
 
 Booting from SD Card involves two steps.
 
 #. Preparing SD card.
 #. Booting target.
 
-.. rubric:: Preparing SD card 
-   :name: preparing-sd-card
+Preparing SD card 
+'''''''''''''''''''
 
 #. To boot target the SD card should be bootable. Follow the steps at
    `Creating bootable SD card in windows <Overview.html#windows-sd-card-creation-guide>`__
@@ -352,8 +338,8 @@ Booting from SD Card involves two steps.
    "*app*" to the SD card.
 #. The SD card is ready for use on target.
 
-.. rubric:: Booting target
-   :name: booting-target
+Booting target
+'''''''''''''''
 
 #. Insert SD card to the base board SD slot. Connect a UART cable to a
    host running a serial terminal application (teraterm/hyperterminal)
@@ -386,19 +372,19 @@ Selection pins from hardware reference manuals.
   erase <http://processors.wiki.ti.com/index.php?title=StarterWare_Booting_And_Flashing&action=edit&redlink=1>`__
   . The boot sequence depends on ROM bootloader.
 
-.. rubric:: Booting Via QSPI
-   :name: booting-via-qspi
+Booting Via QSPI
+""""""""""""""""""
 
 Booting from QSPI flash involves two steps-
 
 #. Preparing Flash Device
 #. Booting target.
 
-.. rubric:: Preparing Flash Device
-   :name: preparing-flash-device
+Preparing Flash Device
+'''''''''''''''''''''''
 
-| Procedure relies on contents being copied to SD card. Additional
-  details below:
+Procedure relies on contents being copied to SD card. Additional
+details below:
 
 #. Copy bootloader image(bootloader_boot_qspi_a9host_debug.bin rename)
    and app image("<app_name>_ti.bin") into the SD card.
@@ -442,8 +428,8 @@ Booting from QSPI flash involves two steps-
     SUCCESS!!!
     Flashing completed
 
-.. rubric:: Booting the target.
-   :name: booting-the-target.
+Booting the target.
+''''''''''''''''''''
 
 #. Connect UART cable to a host running serial terminal application
    (teraterm/hyperterminal) with 115200 baud, 8bit, No parity and 1 STOP
@@ -473,11 +459,11 @@ Booting from QSPI flash involves two steps-
      NOTE:If there is no boot mode selection present on board, boot image will be loaded depending on ROM boot sequence
     Example: If QSPI flash and MMCSD has valid bootloaders, on reset MMCSD boot image will be loaded following ROM Boot sequence.
 
-.. rubric:: Booting Via UART
-   :name: booting-via-uart
+Booting Via UART
+""""""""""""""""""
 
-| ROM and Bootloader supports XMODEM protocol with images being binary
-  not requiring any additional headers. Following are steps for boot:
+ROM and Bootloader supports XMODEM protocol with images being binary
+not requiring any additional headers. Following are steps for boot:
 
 #. Configure board for UART boot mode :
    UART boot need to be first in the boot device list. Note: In case if
@@ -516,8 +502,8 @@ Booting from QSPI flash involves two steps-
   4.  As  a next step application binary (without header) can be sent
 via XMODEM which will lead to application start executing.
 
-.. rubric:: Booting Via McSPI
-   :name: booting-via-mcspi
+Booting Via McSPI
+"""""""""""""""""""
 
 Booting from McSPI involves two steps.
 
@@ -590,8 +576,8 @@ Booting from McSPI involves two steps.
 
 | 
 
-.. rubric:: Booting Via NAND
-   :name: booting-via-nand
+Booting Via NAND
+""""""""""""""""""
 
 Booting from NAND involves two steps.
 
@@ -694,16 +680,16 @@ bootloader uses the BCH8 ECC scheme.
     NAND flash is connected to GPMC on this board
     Jumping to StarterWare Application...
 
-| After this application should take control and execute.
+After this application should take control and execute.
 
-.. rubric:: Test Application
-   :name: test-application
+Test Application
+^^^^^^^^^^^^^^^^^^
 
 The section explains steps for building and booting a sample pdk
 application for am335x or am437x using MMCSD bootloader.
 
-.. rubric:: Test Application Image Creation
-   :name: test-application-image-creation
+Test Application Image Creation
+""""""""""""""""""""""""""""""""""
 
 Follow below steps to generate the bootable application image.
 
@@ -715,14 +701,14 @@ Follow below steps to generate the bootable application image.
    procedure <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Binary_format_conversion_procedure>`__.
 #. Rename generated <Application>_ti.bin to "app".
 
-.. rubric:: Loading Test application
-   :name: loading-test-application
+Loading Test application
+"""""""""""""""""""""""""
 
-| Follow procedure to use "app" file as per section `Booting Via SD
-  Card <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Booting_Via_SD_Card>`__.
+Follow procedure to use "app" file as per section `Booting Via SD
+Card <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Booting_Via_SD_Card>`__.
 
-.. rubric:: Usage Notes
-   :name: usage-notes
+Usage Notes
+^^^^^^^^^^^^^
 
 -  **Bootloader Memory map**
 
@@ -756,19 +742,10 @@ pass control. After MLO is created check the TI image format file(
 \_ti.bin) to confirm that the entry point matches the location of Entry
 symbol in the .map file.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The object file created by sbl_init.S should always be the first object
-file in the link order for the symbol Entry to be placed at the BASE
-address of the memory section SBL_MEM
-
-.. raw:: html
-
-   </div>
+.. note::
+   The object file created by sbl_init.S should always be the first object
+   file in the link order for the symbol Entry to be placed at the BASE
+   address of the memory section SBL_MEM
 
 -  **Boot image creation tools generates a large boot image if load
    sections are fragmented**
@@ -841,23 +818,14 @@ Alternate approach using linker command file:
            *(.ddr3Heap)
        } > HOST_DDR3
 
-.. raw:: html
+.. note::
+   The approach described above helps improve boot times but Users are
+   recommended to initialize the HEAP sections to zeros post boot during
+   initialization to avoid any undesired behavior during normal operation
+   of the app
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The approach described above helps improve boot times but Users are
-recommended to initialize the HEAP sections to zeros post boot during
-initialization to avoid any undesired behavior during normal operation
-of the app
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Debugging application boot
-   :name: debugging-application-boot
+Debugging application boot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article **`Common steps to debug application

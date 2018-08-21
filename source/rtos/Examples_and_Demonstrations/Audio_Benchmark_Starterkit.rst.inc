@@ -379,8 +379,7 @@ the twiddle factor coefficients, ``ptr_w``.
 
 .. note::
    -  For implementation details of this FFT computation refer to
-      documentation provided in `Additional
-      resources <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Audio_Benchmark_Starterkit#Additional_resources>`__
+      documentation provided in `Additional resources <Examples_and_Demonstrations.html#additional-resources>`__
    -  For Real input sequences, efficient FFT Implementation is described
       here
       `Efficient_FFT_Computation_of_Real_Input <http://processors.wiki.ti.com/index.php/Efficient_FFT_Computation_of_Real_Input>`__

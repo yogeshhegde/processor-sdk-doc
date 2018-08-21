@@ -51,9 +51,8 @@ Driver Configuration
 All the board specific configurations eg:enabling and pin-mux of GPMC
 pins should be performed before calling any driver APIs.By default
 Board_Init() API supports all initialization sequence for TI supported
-EVMs.Refer `Processor SDK RTOS Board
-Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for additional
-details.
+EVMs.Refer `Processor SDK RTOS Board Support <Board_EVM_Abstration.html#board-support>`__ 
+for additional details.
 
 Once the board specific configuration is complete driver API GPMC_init()
 can be called to initialize driver

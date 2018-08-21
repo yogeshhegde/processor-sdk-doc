@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+^^^^^^^^^
 
 The Secondary Bootloader (SBL) for AM57xx device initializes the
 execution environment for multi-core application and this can be used to
@@ -9,8 +9,8 @@ demonstrate an out-of-box experience.The section covers additional
 details including execution sequence, tools and additional flashing
 instructions.
 
-.. rubric:: Bootloader Execution Sequence
-   :name: bootloader-execution-sequence
+Bootloader Execution Sequence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  **Power On Reset**
 -  **ROM Bootloader (RBL)**
@@ -29,19 +29,10 @@ instructions.
       from TI Image Header
    -  Passes control to Secondary Bootloader(SBL)
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Detailed description of ROM bootloader is provided in Initialization
-Chapter in `AM57xx Technical Reference
-manual <http://www.ti.com/lit/pdf/spruhz6>`__
-
-.. raw:: html
-
-   </div>
+.. note::
+   Detailed description of ROM bootloader is provided in Initialization
+   Chapter in `AM57xx Technical Reference
+   manual <http://www.ti.com/lit/pdf/spruhz6>`__
 
 -  **Secondary bootloader(SBL)**
 
@@ -51,7 +42,7 @@ manual <http://www.ti.com/lit/pdf/spruhz6>`__
       Initialization.
    -  Board Initialization is done by a call to **Board_init()** API.For
       additional details refer `Processor SDK Board
-      Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__.
+      Support <Board_EVM_Abstration.html#board-support>`__.
    -  It includes setting up PLLs, enabling clocks to all interfaces and
       modules, performing pinmux and setting up UART console.
    -  Once Board Initialization is complete, it enables clocks to the
@@ -63,24 +54,15 @@ manual <http://www.ti.com/lit/pdf/spruhz6>`__
 
 -  **Application then starts executing from DDR**.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+    -  RBL requires boot loader to be in a special format with a header
+       appended to the binary image. The header shall contain the load
+       address of the bootloader and size of the bootloader image.
+    -  For more information on the TI header refer TRM document
 
-**NOTE**
-
--  RBL requires boot loader to be in a special format with a header
-   appended to the binary image. The header shall contain the load
-   address of the bootloader and size of the bootloader image.
--  For more information on the TI header refer TRM document
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Directory structure
-   :name: directory-structure
+Directory structure
+^^^^^^^^^^^^^^^^^^^^
 
 **Makefiles:**
 
@@ -99,22 +81,21 @@ manual <http://www.ti.com/lit/pdf/spruhz6>`__
 
 | 
 
-.. rubric:: Tools and Binary Formats
-   :name: tools-and-binary-formats
+Tools and Binary Formats
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section lists out the various tools and scripts used by SBL for
 different boot modes and those required to create a bootable application
 image.
 
 **SBL/MLO image format:**
+To generate the *MLO*, SBL uses tiImageGen tool to prepend the sbl.bin
+image with the TI header information. The image format has been
+described in detail in the Image Format Section of the\ `AM57xx
+Technical Reference manual <http://www.ti.com/lit/pdf/spruhz6>`__
 
-| To generate the *MLO*, SBL uses tiImageGen tool to prepend the sbl.bin
-  image with the TI header information. The image format has been
-  described in detail in the Image Format Section of the\ `AM57xx
-  Technical Reference manual <http://www.ti.com/lit/pdf/spruhz6>`__
-
+| 
 **Application image format:**
-
 A bootable application image can be created by using the Am57xImageGen
 script provided under tools folder as part of sbl. It can be located at
 *<PDK_INSTALL_DIR>\packages\ti\boot\sbl\tools\scripts* folder.
@@ -171,7 +152,7 @@ The script creates the bootable image in 2 steps
 +------------+---------------------------+
 
 | 
-| **Step 2: Multicore Image file generation**
+**Step 2: Multicore Image file generation**
 
 -  RPRC files for each cores is combined into a single multicore
    bootable application image.
@@ -211,13 +192,13 @@ for more details on usage of this script and application image creation.
 
 **Flashing Tools**
 
-| SBL provides a CCS based qspi flash writer utility to flash image and
-  multicore AppImage from a SD card to onboard QSPI device. It
-  is located
-  at \ *<PDK_INSTALL_DIR>\packages\ti\boot\sbl\tools\flashWriter\qspi*
+SBL provides a CCS based qspi flash writer utility to flash image and
+multicore AppImage from a SD card to onboard QSPI device. It
+is located
+at \ *<PDK_INSTALL_DIR>\packages\ti\boot\sbl\tools\flashWriter\qspi*
 
-.. rubric:: Building the SBL
-   :name: building-the-sbl
+Building the SBL
+^^^^^^^^^^^^^^^^^^^^
 
 **Pre-requisites to Building**
 
@@ -236,20 +217,11 @@ for more details on usage of this script and application image creation.
    -  MMCSD
    -  PM
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Refer to the makefile for the board you are using for the latest driver
-dependency. These libraries should come pre-built with any fresh
-installation of the Processor SDK RTOS but may be removed if a gmake
-clean is invoked
-
-.. raw:: html
-
-   </div>
+.. note::
+   Refer to the makefile for the board you are using for the latest driver
+   dependency. These libraries should come pre-built with any fresh
+   installation of the Processor SDK RTOS but may be removed if a gmake
+   clean is invoked
 
 **Compiling the SBL Components**
 
@@ -264,18 +236,9 @@ To build the SBL components:
 This will make the SBL for a specific $BOARD and $BOOT_MEDIA. Output
 files will be located in: **<PDK>/packages/ti/boot/sbl/binary/<BOARD>**
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Refer **<PDK>/packages/ti/boot/sbl/sbl_<DEVICE>.sh** for more build
-options
-
-.. raw:: html
-
-   </div>
+.. note::
+   Refer **<PDK>/packages/ti/boot/sbl/sbl_<DEVICE>.sh** for more build
+   options
 
 **Building SBL using CCS project**
 
@@ -291,8 +254,8 @@ demonstrates creation of SBL in CCS for AM572x GP EVM.
 
 | 
 
-.. rubric:: Boot Modes
-   :name: boot-modes
+Boot Modes
+^^^^^^^^^^^^
 
 This Release of SBL supports MMCSD and QSPI Boot modes. The different
 boot modes supported for all the boards is tabulated in the table below.
@@ -311,14 +274,14 @@ boot modes supported for all the boards is tabulated in the table below.
 
 | 
 
-.. rubric:: Booting Via SD Card
-   :name: booting-via-sd-card
+Booting Via SD Card
+""""""""""""""""""""""
 
 #. Preparing the SD card.
 #. Booting the target.
 
-.. rubric:: Preparing the SD card 
-   :name: preparing-the-sd-card
+Preparing the SD card 
+'''''''''''''''''''''''
 
 #. To boot the target the SD card should be bootable. Follow the steps
    at `Creating bootable SD card in windows <Overview.html#windows-sd-card-creation-guide>`__
@@ -330,8 +293,8 @@ boot modes supported for all the boards is tabulated in the table below.
    `Script <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x#Application_Image_Creation>`__
    to the SD card.
 
-.. rubric:: Booting the target
-   :name: booting-the-target
+Booting the target
+''''''''''''''''''''
 
 #. Insert micro SD card into the SD card slot of the board.
 #. Open a serial communication terminal like TeraTerm, MiniCom on host
@@ -339,16 +302,15 @@ boot modes supported for all the boards is tabulated in the table below.
 #. Do a power reset of the board to boot the appliation from the SD
    card.
 
-.. rubric:: Booting Via QSPI
-   :name: booting-via-qspi
-
+Booting Via QSPI
+""""""""""""""""""
 Booting from QSPI flash involves two steps-
 
 #. Flashing bootloader and app image to QSPI flash.
 #. Booting the target.
 
-.. rubric:: Preparing Flash Device
-   :name: preparing-flash-device
+Preparing Flash Device
+''''''''''''''''''''''''
 
 Use the CCS based qspi_flash_writer.out utility provided in
 <*TI_PDK_INSTALL_DIR>\packages\ti\boot\sbl\tools\flashwriter\qspi\<Board>'*
@@ -403,43 +365,33 @@ below.
     SUCCESS!!!
     Flashing completed
 
-.. raw:: html
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+.. note::
 
-**NOTE**
+   -  The file names have to be renamed in such a way that the length of
+      name is less than 9 characters. Any file name less than 9 characters
+      can be used.
+   -  This application will flash the image at required offset without
+      taking into consideration any overwriting to previously flashed
+      image.
+   -  It is the responsibility of the user to provide proper offsets.
 
--  The file names have to be renamed in such a way that the length of
-   name is less than 9 characters. Any file name less than 9 characters
-   can be used.
--  This application will flash the image at required offset without
-   taking into consideration any overwriting to previously flashed
-   image.
--  It is the responsibility of the user to provide proper offsets.
 
-.. raw:: html
+Test Application
+^^^^^^^^^^^^^^^^^^
 
-   </div>
-
-| 
-
-.. rubric:: Test Application
-   :name: test-application
-
-| SBL provides a test application to demonstrate booting of multicore
-  application image on A15 and DSP cores.The multicore sample
-  application uses mailbox for inter-processor communication. It is used
-  to validate the multi-core boot-up use case.
+SBL provides a test application to demonstrate booting of multicore
+application image on A15 and DSP cores.The multicore sample
+application uses mailbox for inter-processor communication. It is used
+to validate the multi-core boot-up use case.
 
 Master application sends wake-up message to the DSP slave cores & waits
 for acknowledgement message from the slave cores in an infinite
 loop.Each slave DSP core waits for wake-up message from the master core 
 responds back with an acknowledgement message.
 
-.. rubric:: Application Image Creation
-   :name: application-image-creation
-
+Application Image Creation
+"""""""""""""""""""""""""""""
 Application Image creation involves two steps.
 
 #. Generating the .outs of applications for individual cores
@@ -449,23 +401,12 @@ Application Image creation involves two steps.
 The steps to create the bootable image in Linux and Windows environment
 are listed below.
 
-.. raw:: html
+.. note::
+   -  Valid SOC settings are AM571x/AM572x
+   -  Valid BOARD settings are evmAM572x/idkAM571x/idkAM572x
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-
--  Valid SOC settings are AM571x/AM572x
--  Valid BOARD settings are evmAM572x/idkAM571x/idkAM572x
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Linux Environment:
-   :name: linux-environment
-
+Linux Environment
+"""""""""""""""""""
 Command to build the test application.
 
 ::
@@ -494,12 +435,9 @@ Pointing to the path where the AppImage needs to be generated
 2. Edit the script file to point to the application elf files by setting
 the input application variables. 
 
-|  App_MPU_CPU0: Point to the path where the application .out for A15
-  MPU is located
-|  App_DSP1: Point to the path where the dsp core 1 application is
-  located
-|  App_DSP2: Point to the path where the dsp core 2 application is
-  located
+App_MPU_CPU0: Point to the path where the application .out for A15 MPU is located
+App_DSP1: Point to the path where the dsp core 1 application is located
+App_DSP2: Point to the path where the dsp core 2 application is located
 
 ::
 
@@ -524,27 +462,17 @@ BIN_PATH variable
 6. Copy the Bootlaoder image(MLO) and application(app) in the SD card to
 boot using MMCSD boot mode.
 
-.. raw:: html
+.. note::
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   -  The AM57xImageGen.sh script depends on tools like mono to execute the
+      out2rprc.exe.
+   -  The linux host environment needs to have this tool installed to
+      execute this script.
+   -  Refer this link to download the
+      `mono <http://www.mono-project.com>`__ tool
 
-**NOTE**
-
--  The AM57xImageGen.sh script depends on tools like mono to execute the
-   out2rprc.exe.
--  The linux host environment needs to have this tool installed to
-   execute this script.
--  Refer this link to download the
-   `mono <http://www.mono-project.com>`__ tool
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Windows environment:
-   :name: windows-environment
-
+Windows environment
+"""""""""""""""""""""
 Command to build the test application.
 
 ::
@@ -574,12 +502,9 @@ BIN_PATH: Pointing to the path where the AppImage needs to be generated 
 2. Edit the batch file to point to the application elf files by setting
 the input application variables.
 
-|   App_MPU_CPU0: Point to the path where the application .out for A15
-  MPU is located
-|   App_DSP1: Point to the path where the dsp core 1 application is
-  located
-|   App_DSP2: Point to the path where the dsp core 2 application is
-  located
+App_MPU_CPU0: Point to the path where the application .out for A15 MPU is located
+App_DSP1: Point to the path where the dsp core 1 application is located
+App_DSP2: Point to the path where the dsp core 2 application is located
 
 ::
 
@@ -598,11 +523,10 @@ the variable blank.
 
 4. Run the batch file
 
-| 5. Follow the steps 4 to 6 listed above for Linux environment.
-
-.. rubric:: Setup Requirements
-   :name: setup-requirements
-
+5. Follow the steps 4 to 6 listed above for Linux environment.
+|
+Setup Requirements
+""""""""""""""""""""
 For information on board specific requirements like power supply, UART
 console port connections refer the Hardware User guide of the respective
 boards.
@@ -610,21 +534,18 @@ boards.
 The configurations needed to setup UART console through a serial
 terminal application on host PC are listed in the next section.
 
-.. rubric:: UART Console Setup
-   :name: uart-console-setup
-
+UART Console Setup
+'''''''''''''''''''
 PDK SBL prints messages on the UART Serial Console running on the host.
 Hence, a serial terminal application (like Tera
 Term/HyperTerminal/minicom) should be running on the host.
 
-| The host serial port must be configured at 115200 baud, no parity, 1
-  stop bit and no flow control.
-| Please ensure that the local echo setting for the terminal is turned
-  off.
+The host serial port must be configured at 115200 baud, no parity, 1
+stop bit and no flow control.
+Please ensure that the local echo setting for the terminal is turned off.
 
-.. rubric:: Loading the test application
-   :name: loading-the-test-application
-
+Loading the test application
+''''''''''''''''''''''''''''''
 Follow these steps to load the test application using a SD card on the
 target
 
@@ -642,31 +563,22 @@ console for a AM572x based board.
 
 .. Image:: ../images/Sbl_example.jpg
 
-.. raw:: html
+.. note::
+   MPU Core 0 example does a sequential check of mailbox messages sent from
+   the other cores. On rare occasions, the check happens before the message
+   is sent - the "<core> boot-up Successful" message might not be displayed
+   even though the core(s) were booted successfully.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+Application Integration
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**NOTE**
-MPU Core 0 example does a sequential check of mailbox messages sent from
-the other cores. On rare occasions, the check happens before the message
-is sent - the "<core> boot-up Successful" message might not be displayed
-even though the core(s) were booted successfully.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Application Integration
-   :name: application-integration
-
-.. rubric:: Memory Map
-   :name: memory-map
+Memory Map
+""""""""""""
 
 Table indicated below provides memory map details for SBL image in
 OCMC_RAM1.  For more details on pinmux and IO delay requirements refer
 this link `Processor SDK Board
-Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__
+Support <Board_EVM_Abstration.html#board-support>`__
 
 We recommend that users should refer to the linker command file and the
 map file for the boot loader to check for latest information on the
@@ -679,33 +591,22 @@ The SBL memory map is shown below
 
 .. Image:: ../images/SBL_memory_map.png
 
-.. raw:: html
+..  note::
+   -  After the application boots and is running on the SOC, it is free to
+      use the SBL_MEM region.
+   -  The pinmux data from the board library and MMU Table are part of the
+      SBL_MEM region indicated in the figure above. If pinmux data needs to
+      be placed at a specific location then users can update the SBL linker
+      command file to add the BOARD_IO_DELAY_CODE and BOARD_IO_DELAY_DATA
+      as described in `Application Integration of board library for
+      AM5x <Board_EVM_Abstration.html#application-integration-for-am5x-dra7xx>`__
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
+SBL Customization
+^^^^^^^^^^^^^^^^^^^
 
--  After the application boots and is running on the SOC, it is free to
-   use the SBL_MEM region.
--  The pinmux data from the board library and MMU Table are part of the
-   SBL_MEM region indicated in the figure above. If pinmux data needs to
-   be placed at a specific location then users can update the SBL linker
-   command file to add the BOARD_IO_DELAY_CODE and BOARD_IO_DELAY_DATA
-   as described in `Application Integration of board library for
-   AM5x <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support#Application_Integration_for_AM5x>`__
-
-| 
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: SBL Customization
-   :name: sbl-customization
-
-**Changing boot media offsets**
-
+Changing boot media offsets
+"""""""""""""""""""""""""""""
 The location at which SBL resides on the flash is predefined by the ROM
 bootloader spec and so these defaults can`t be changed. However the SBL
 is a user defined bootloader so many of the defaults can easily be
@@ -715,15 +616,13 @@ in the source files located under
 PDK_INSTALL_PATH\packages\ti\boot\sbl\src\<BOOT_MEDIA>
 
 Examples of customization that can be changed:
-
 -  QSPI/SPI flash offsets: These offsets are configured in sbl_qspi.c
    and sbl_spi.c
 -  MMCSD: The name of the application is hard coded as app in function
    SBL_MMCBootImage in the sbl_mmcsd.c
 
-| 
-| **Speeding up boot by increasing speed of the boot interface**
-
+Speeding up boot by increasing speed of the boot interface
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 The SBL for AM57xx devices uses LLD drivers to read and write from boot
 media supported. The SBL uses the default SOC configuration of the
 drivers and the speeds setup. For example, the SPI driver default SPI
@@ -748,35 +647,28 @@ boot/sbl/soc/<device>/sbl_soc.c file.
 Also, check to see if the CACHE and MMU settings for the ARM core are
 setup to enable fast boot.
 
-.. raw:: html
+.. note::
+   **SYSBOOT settings for AM57xx**
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+   The SYSBOOT configuration in your hardware using Sitara devices
+   (AM3/AM4/AM5) can play a big role in the time required to boot
+   successfully. On these devices the boot pins configure a boot sequence
+   for the ROM bootloader to check for valid boot image so if you have a
+   preferred boot mode designers are required to use SYSBOOT setup such
+   that the preferred boot media is first in the boot sequence. If the
+   preferred boot media occurs later boot sequence, the boot is likely to
+   add the time required by RBL to check other boot media for an valid
+   image. For example if QSPI is the preferred boot media on your AM57xx
+   hardware then you should have system configure SYSBOOT to boot of QSPI
+   first using SYSBOOT setting for QSPI_1 or QSPI4 for Memory preferred
+   booting or Production booting (Refer: Initialization chapter in
+   TRM).Incorrect SYSBOOT configuration can causes long delays especially
+   if peripheral boot is configured to be one of the preferred boot modes
+   in the boot order
+|
 
-**NOTE**
-**SYSBOOT settings for AM57xx**
-The SYSBOOT configuration in your hardware using Sitara devices
-(AM3/AM4/AM5) can play a big role in the time required to boot
-successfully. On these devices the boot pins configure a boot sequence
-for the ROM bootloader to check for valid boot image so if you have a
-preferred boot mode designers are required to use SYSBOOT setup such
-that the preferred boot media is first in the boot sequence. If the
-preferred boot media occurs later boot sequence, the boot is likely to
-add the time required by RBL to check other boot media for an valid
-image. For example if QSPI is the preferred boot media on your AM57xx
-hardware then you should have system configure SYSBOOT to boot of QSPI
-first using SYSBOOT setting for QSPI_1 or QSPI4 for Memory preferred
-booting or Production booting (Refer: Initialization chapter in
-TRM).Incorrect SYSBOOT configuration can causes long delays especially
-if peripheral boot is configured to be one of the preferred boot modes
-in the boot order
-
-.. raw:: html
-
-   </div>
-
-**Reducing size of SBL and application**
-
+Reducing size of SBL and application
+"""""""""""""""""""""""""""""""""""""
 Another way to optimize boot times is to reduce the size of the binary
 that needs to be loaded by the bootloader by building the app with
 optimization for code size using -Os (GNU GCC) and for -O<level> when
@@ -787,11 +679,11 @@ non-essential modules and features to reduce code size. For example if
 UART logging is not required or DDR memory is not connected in the
 system, the initialization functions can be removed to reduce code size.
 
-.. rubric:: Usage Notes
-   :name: usage-notes
+Usage Notes
+^^^^^^^^^^^^^
 
--  **SBL AVS and ABB setup**
-
+SBL AVS and ABB setup
+""""""""""""""""""""""
 AVS and ABB configuration is mandated for normal operation of AM57xx
 devices. All Processor SDK RTOS releases v3.3 and later contain SBL that
 sets up AVS and ABB configuration features using PM LLD APIs The
@@ -802,7 +694,8 @@ PDK_INSTALL_PATH\packages\ti\boot\sbl\board\src\sbl_avs_config.c If you
 are using the same PMIC as GP EVM or IDK platform then you can reuse the
 settings as is in SBL for your custom platform
 
--  **Configuring entry point for SBL**
+Configuring entry point for SBL
+""""""""""""""""""""""""""""""""
 
 The two key files that help setup the entry point in the SBL build are
 "sbl/soc/<SOC_NAME>/sbl_init.S" and the linker command file
@@ -814,28 +707,16 @@ MLO is created check the TI image format file(MLO or \_ti.bin) or the GP
 Header file to confirm that the entry point matches the location of
 Entry symbol in the sbl.map
 
-.. raw:: html
+.. note::
+   The object file created by sbl_init.S should always be the first object
+   file in the link order for the symbol Entry to be placed at the BASE
+   address of the memory section SBL_MEM
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-The object file created by sbl_init.S should always be the first object
-file in the link order for the symbol Entry to be placed at the BASE
-address of the memory section SBL_MEM
-
-.. raw:: html
-
-   </div>
-
-| 
-
-.. rubric:: Debugging application boot
-   :name: debugging-application-boot
-
+Debugging application boot
+""""""""""""""""""""""""""""
 Steps to debug application boot using Processor SDK RTOS bootloader are
-discussed in the article **`Common steps to debug application
-boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__**
+discussed in the article `Common steps to debug application
+boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__
 
 .. raw:: html
-
