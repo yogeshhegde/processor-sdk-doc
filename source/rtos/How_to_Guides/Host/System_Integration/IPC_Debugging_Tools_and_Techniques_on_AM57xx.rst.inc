@@ -92,11 +92,11 @@ The remote core traces can be checked by using debugfs. Run the following comman
 with the core-id for the remote core to be checked.
 ::
 
-	cat /d/remoteproc/remoteprocX/trace0
+	cat /sys/kernel/debug/remoteproc/remoteprocX/trace0
 
 Check the following when checking the traces after an error recovery has occurred::
 
-	cat /d/remoteproc/remoteprocX/trace0_last
+	cat /sys/kernel/debug/remoteproc/remoteprocX/trace0_last
 
 This provides the last traces that happened before error recovery was triggered. For more information
 about debugging remote core faults and exceptions, see `Debugging MMU Faults and Exceptions`_.
@@ -110,7 +110,7 @@ The core associated with a particular core-id can be found by checking the name 
 remote processor.
 ::
 
-	cat /d/remoteproc/remoteprocX/name
+	cat /sys/kernel/debug/remoteproc/remoteprocX/name
 
 Table 2. Remoteproc Names for AM57xx
 
@@ -177,7 +177,7 @@ Information about each remote core can be found in the following, where the “X
 remote core id.
 ::
 
-	cat /d/remoteproc/remoteprocX/<entry>
+	cat /sys/kernel/debug/remoteproc/remoteprocX/<entry>
 
 Table 3 lists what can be found for each core.
 
@@ -201,7 +201,7 @@ Table 3. Remoteproc Debugfs Entries
 | trace0       | Returns the contents of the remote processor trace buffer.                                |                                               
 +--------------+-------------------------------------------------------------------------------------------+
 | trace0_last  | Created after recovering the remote core. Returns the contents of the remote processor    |
-|              |  trace buffer before recovery was triggered.                                              |                                                   
+|              | trace buffer before recovery was triggered.                                               |                                                   
 +--------------+-------------------------------------------------------------------------------------------+
 | version      | Returns the version. Currently returns nothing.                                           |                                                    
 +--------------+-------------------------------------------------------------------------------------------+
@@ -212,7 +212,7 @@ Information about the IOMMU can also be found in debugfs. It can be found in the
 “XXXXXXXX” is replaced by the register address for the remote core MMU registers.
 ::
 
-	cat /d/omap_iommu/XXXXXXXX.mmu/<entry>
+	cat /sys/kernel/debug/omap_iommu/XXXXXXXX.mmu/<entry>
 
 Table 4 gives the corresponding core name for each MMU for AM57xx, and the register address in the TRM.
 
@@ -253,7 +253,7 @@ Table 5. IOMMU Debugfs Entries
 QNX – Remote Core State Information
 """""""""""""""""""""""""""""""""""
 Find out the current state of the remote core by issuing the following command:
-
+::
 	cat /dev/ipc-state/<core_name>
 
 The “core_name” is the name of the remote core. Valid names for AM57xx are IPU1, IPU2, DSP1, and
@@ -297,9 +297,9 @@ watchdog timers for IPU1, change the dts file as below::
 
             timers = <&timer11>;
 
-           ``-`` watchdog-timers = <&timer7>, <&timer8>;
+           - watchdog-timers = <&timer7>, <&timer8>;
 
-           ``+`` /*watchdog-timers = <&timer7>, <&timer8>;*/
+           + /*watchdog-timers = <&timer7>, <&timer8>;*/
 
 
 SYS/BIOS – Disabling Watchdog
@@ -430,7 +430,7 @@ Linux and Android - Disabling Error Recovery
 To debug an error, it may be necessary to turn of error recovery. Error recovery can be disabled by giving
 the following command::
 
-	echo disabled > /d/remoteproc/remoteprocX/recovery
+	echo disabled > /sys/kernel/debug/remoteproc/remoteprocX/recovery
 
 See `Linux and Android - Remoteproc`_ for more information.
 
@@ -586,11 +586,11 @@ The information about the task that was executing when the exception occurred is
 
  [0] [ 91.045] CPU context: thread
 
- [0] **[ 91.045]** BIOS Task name: {empty-instance-name} handle: 0x80060090.
+ [0] **[ 91.045] BIOS Task name: {empty-instance-name} handle: 0x80060090.**
 
- [0] **[ 91.045]** BIOS Task stack base: 0x800600e0.
+ [0] **[ 91.045] BIOS Task stack base: 0x800600e0.**
 
- [0] **[ 91.045]** BIOS Task stack size: 0x800.
+ [0] **[ 91.045] BIOS Task stack size: 0x800.**
 
 **Fault Information**
 
@@ -607,13 +607,13 @@ type of exception that occurred, but often provides a fault address to identify 
 
  [0] [ 91.045] BIOS Task stack size: 0x800.
 
- [0] [ 91.045] [t=0x18f6df13] ti.sysbios.family.arm.m3.Hwi: ERROR: line 1078: E_hardFault: FORCED
+ [0] [ 91.045] **[t=0x18f6df13] ti.sysbios.family.arm.m3.Hwi: ERROR: line 1078: E_hardFault: FORCED**
 
- [0] [ 91.045] ti.sysbios.family.arm.m3.Hwi: line 1078: E_hardFault: FORCED
+ [0] [ 91.045] **ti.sysbios.family.arm.m3.Hwi: line 1078: E_hardFault: FORCED**
 
- [0] [ 91.045] [t=0x18f9a0cb] ti.sysbios.family.arm.m3.Hwi: ERROR: line 1155: E_busFault: PRECISERR: Immediate Bus Fault, exact addr known, address: 96000000
+ [0] [ 91.045] **[t=0x18f9a0cb] ti.sysbios.family.arm.m3.Hwi: ERROR: line 1155: E_busFault: PRECISERR: Immediate Bus Fault, exact addr known, address: 96000000**
 
- [0] [ 91.045] ti.sysbios.family.arm.m3.Hwi: line 1155: E_busFault: PRECISERR: Immediate Bus Fault, exact addr known, address: 96000000
+ [0] [ 91.045] **ti.sysbios.family.arm.m3.Hwi: line 1155: E_busFault: PRECISERR: Immediate Bus Fault, exact addr known, address: 96000000**
 
 **Registers**
 
