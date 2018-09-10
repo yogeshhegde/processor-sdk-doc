@@ -131,6 +131,14 @@ Notice that, from the user point of view, other than providing a module
 parameter to specify which firmware to load, all of the above mentioned
 driver behavior is transparent to the user.
 
+.. note:: For all discussion and examples shown, AM57xx device is used as
+          example, but different devices will use different ports. i.e.
+
+          -  AM335x = eth0, eth1
+          -  AM437x = eth1, eth2
+          -  K2G    = eth1, eth2
+          -  AM57xx = eth2, eth3
+
 Queue Usage and VLAN PCP to Queue Map
 """"""""""""""""""""""""""""""""""""""
 
@@ -1983,37 +1991,45 @@ these tuning shows no packet loss.
 
 +---------------+----------------------------------------+
 | Packet Size   | Tput with no packet loss (Mbits/sec)   |
-+===============+========================================+
-| 1466          | 88                                     |
-+---------------+----------------------------------------+
-| 1024          | 88                                     |
-+---------------+----------------------------------------+
-| 512           | 64                                     |
-+---------------+----------------------------------------+
-| 256           | 45                                     |
-+---------------+----------------------------------------+
++===============+=========+=========+=========+==========+
+|               | AM335x  | AM437x  | AM57xx  |   K2G    |
++---------------+---------+---------+---------+----------+
+| 1472          | 30      | 64      | 88      | 30       |
++---------------+---------+---------+---------+----------+
+| 1024          | 29      | 52      | 86      | 26       |
++---------------+---------+---------+---------+----------+
+| 512           | 18      | 36      | 52      | 16       |
++---------------+---------+---------+---------+----------+
+| 256           | 11      | 22      | 25      | 10       |
++---------------+---------+---------+---------+----------+
 
 Table:  UDP Performance for HSR
 
 +---------------+----------------------------------------+
 | Packet Size   | Tput with no packet loss (Mbits/sec)   |
-+===============+========================================+
-| 1466          | 88                                     |
-+---------------+----------------------------------------+
-| 1024          | 88                                     |
-+---------------+----------------------------------------+
-| 512           | 60                                     |
-+---------------+----------------------------------------+
-| 256           | 38                                     |
-+---------------+----------------------------------------+
++===============+=========+=========+=========+==========+
+|               | AM335x  | AM437x  | AM57xx  |   K2G    |
++---------------+---------+---------+---------+----------+
+| 1472          | 30      | 64      | 88      | 30       |
++---------------+---------+---------+---------+----------+
+| 1024          | 27      | 52      | 88      | 26       |
++---------------+---------+---------+---------+----------+
+| 512           | 19      | 34      | 46      | 15       |
++---------------+---------+---------+---------+----------+
+| 256           | 11      | 22      | 28      | 9        |
++---------------+---------+---------+---------+----------+
 
 Table:  UDP Performance for PRP
 
 | 
 
 **NOTE-1:**\ Test ran for 1 minute with single direction traffic (Client
-to Server). Reduced the traffic from 88Mbits/sec until there is no out
-of order or lost packets in the iperf stats
+to Server). Both ports were individually disconnected and then reconnected
+during the test. Reduced the traffic from 88Mbits/sec until there is no out
+of order or lost packets in the iperf stats i.e. iperf command client side
+::
+
+    iperf3 -c <IP> -u -l1472 -b<Rate>M -t60 -i5
 
 .. rubric:: TCP
    :name: tcp
