@@ -101,11 +101,27 @@ notify the events to the dwc3 core.
 
 - On AM65x-evm/IDK, USB2 port is used as high-speed dual-role port (micro-AB)
   as shown in figure below.
+
+.. note:: The board might come with force host jumper J4 pre-installed at the
+  factory. Please remove this jumper for proper dual-role/device-mode operation
+  of USB2 port.
+
 - On AM65x-IDK, USB1 port is available as a high-speed dual-role port (micro-AB)
   through a 2Lane PCIe USB2 SERDES card. See below figure.
+
+.. note:: AM65x-IDK might come with the force host jumper J5 pre-installed
+  on the SERDES card. Please remove this jumper for proper dual-role/device mode
+  operation of USB1 port.
+
 .. Image:: ../images/am65x-dwc3-usbhs.png
+
 - On AM65x-evm, USB1 port is available as a Super-Speed device or host port
   (3.0 micro-AB) through a 1Lane PCIe USB3 SERDES card. See below figure.
+
+.. note:: AM65x-evm might come with the force host jumper J5 pre-installed
+  on the SERDES card. Please remove this jumper for proper dual-role/device mode
+  operation of USB1 port.
+
 .. Image:: ../images/am65x-dwc3-usbss.png
 
 |
