@@ -28,7 +28,7 @@ Hardware
 -  Blue wires between CC3120 BP and AMIC110 ICE 
 -  Serial UART cable (provided in EVM kit)
 -  Connection Diagram
-.. Image:: ../images/sl_wifi_demo_connetion.jpg
+.. Image:: ../images/sl_wifi_demo_connection.jpg
 -  Picture of connected EVMs
 .. Image:: ../images/sl_wifi_demo_connected.jpg
 
@@ -88,17 +88,16 @@ Please follow below step by step procedure to build the application.
 #. Click Project-->Import CCS Projects and select network_terminal_AMIC110_ICE_RTOS_ccs
    under directory :
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/
-   (NOTE1: This will create project under current workspace and also copy
-   relevant files for the project.)
-   (NOTE2: The application is supported on different type of processors on the SOC.
-    But it is expected to be run only from one selected core at a time.
-    So don't run demon on two different cores at the same time)
+   
+.. note::
+   This will create project under current workspace and also copy relevant files for the project.
 #. Build the application . ( By right clicking on imported project and
-   clicking "Build project") (NOTE: This will create executable binary
-   under
-   <CCS_Workspace>/network_terminal_AMIC110_ICE_RTOS_RTOS_ccs/Debug/network_terminal_AMIC110_ICE_RTOS_RTOS_ccs.out)
+   clicking "Build project") 
+   
+.. note::
+   This will create executable binary under <CCS_Workspace>/network_terminal_AMIC110_ICE_RTOS_RTOS_ccs/Debug/network_terminal_AMIC110_ICE_RTOS_RTOS_ccs.out
 
-   .. Image:: ../images/sl_wifi_demo_ccs_import.jpg
+.. Image:: ../images/sl_wifi_demo_ccs_import.jpg
    
    
 How to Build the SimpleLink WiFi Plugin Demo using makefile on Windows
