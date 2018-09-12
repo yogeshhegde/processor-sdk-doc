@@ -88,9 +88,6 @@ Please follow below step by step procedure to build the application.
 #. Click Project-->Import CCS Projects and select network_terminal_AMIC110_ICE_RTOS_ccs
    under directory :
    processor_sdk_rtos_<platform>_<version>/demos/simplelink-wifi-demo/
-   
-.. note::
-   This will create project under current workspace and also copy relevant files for the project.
 #. Build the application . ( By right clicking on imported project and
    clicking "Build project") 
    
