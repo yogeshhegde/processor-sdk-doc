@@ -268,6 +268,3 @@ Stop the can bus by:
 ::
 
     $ ip link set can0 down
-
-.. raw:: html
-
