@@ -301,8 +301,7 @@ This came from k2k example:
       bytes) if some extensions are used. 0 (16 bytes) is likely to
       cause lock up!!
 
-#. See `QMSS Debug FAQ <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS#Debug_FAQ>`__
-   for more.
+#. See `QMSS Debug FAQ <Device_Drivers.html#qmss>`__ for more.
 
 Additional References
 ---------------------
@@ -326,7 +325,7 @@ Additional References
 | component)                        |                                   |
 +-----------------------------------+-----------------------------------+
 
-.. _QMSS LLD:  http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QMSS
+.. _QMSS LLD:  Device_Drivers.html#qmss
 
 | 
 

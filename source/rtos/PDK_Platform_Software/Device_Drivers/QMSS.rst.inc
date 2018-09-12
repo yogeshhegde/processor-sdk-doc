@@ -330,8 +330,8 @@ This came from K2K multicore example:
     ******** QMSS Multicore (0) Example Done (PASS) *******
     *******************************************************
 
-.. rubric:: Debug FAQ
-   :name: debug-faq
+Debug FAQ
+----------
 
 #. Double Push - Some queue elements lost.
 
@@ -404,7 +404,7 @@ Additional References
 | component)                        |                                   |
 +-----------------------------------+-----------------------------------+
 
-.. _CPPI LLD: http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CPPI
+.. _CPPI LLD: Device_Drivers.html#cppi
 
 | 
 

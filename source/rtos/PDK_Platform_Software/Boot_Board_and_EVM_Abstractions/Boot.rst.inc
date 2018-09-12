@@ -255,8 +255,7 @@ may be required to change these setting to match the timings required by
 custom design. We highly recommend that users create a GEL script
 similar to one provided by TI and test the memory interface with the new
 settings before using them in the secondary bootloader to setup external
-memory. `**Processor SDK
-Diagnostics** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG>`__
+memory. `**Processor SDK Diagnostics** <Board_EVM_Abstration.html#diagnostics>`__
 provides a mem_test that can be used to test read and writes to the
 entire DDR address space for confirming the SOC EMIF settings.
 

@@ -164,7 +164,7 @@ Host and Target Setup
 
 The steps to set up CCS and Processor SDK RTOS when the SDK or the IDE
 is installed in a location other than the default location are described
-below: :ref:`Processor SDK RTOS Setup with CCS <Processor-SDK-RTOS-Setup-CCS-label>`
+below: `Processor SDK RTOS Setup with CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
 
 **A common gotcha while setting up the build environment is
 compatibility with CCS version. Please refer to `Release
@@ -194,8 +194,8 @@ C:\\ti\\PRSDK_AM3x and C:\\ti\\PRSDK_AM4x
       add the custom path to discovery as described in `Setup
       CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__.
    -  Assuming CCS is installed in the default path, the process to set the
-      custom SDK path while building the SDK is provided in :ref:`Install in
-      Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
+      custom SDK path while building the SDK is provided in `Install in
+      Custom Path <How_to_Guides.html#update-environment-when-installing-to-a-custom-path>`
 
 .. rubric:: What are the typical flows for a new user to setup the
    Processor SDK RTOS development environment?
@@ -235,7 +235,7 @@ described here:
 Processor SDK RTOS provides a script to set up the Windows and Linux
 environment with the component and compiler PATHs. Running the script
 and rebuilding the Processor SDK from the root directory is described in
-the wiki article :ref:`Setup build Environment <Build-The-SDK-Setup-Environment-label>`.
+the wiki article `Setup build Environment <Overview.html#setup-environment>`.
 
 .. note::
 
@@ -244,7 +244,7 @@ the wiki article :ref:`Setup build Environment <Build-The-SDK-Setup-Environment-
       SDK RTOS in a custom location, then modify the setup file to the
       custom path. Please setup the environment using the steps described
       in the wiki article
-      :ref:`Processor SDK RTOS Install in Custom Path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`.
+      `Processor SDK RTOS Install in Custom Path <How_to_Guides.html#update-environment-when-installing-to-a-custom-path>`__
    -  After the script executes, it prints all the PATH macros set for the
       different variables. Be sure that the compiler and component paths
       have been setup correctly.
@@ -275,7 +275,7 @@ pre-generated CCS projects and require users to generate a project
 create script to generate the CCS project for the unit tests. The
 procedure to generate the CCS projects for a given SOC is described in
 this article
-`PDK_Example_and_Test_Project_Creation <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK#PDK_Example_and_Test_Project_Creation>`__.
+`PDK_Example_and_Test_Project_Creation <How_to_Guides.html#pdk-example-and-test-project-creation>`__.
 
 .. rubric:: Step 6: Exploring Other Components in the SDK
    :name: step-6-exploring-other-components-in-the-sdk
@@ -328,7 +328,7 @@ supports.
 The U-boot code that is booted before booting Linux puts the DSP core in
 reset. In order to connect to the DSP, you need to run a GEL script in
 CCS as described in this article
-`Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15 <http://processors.wiki.ti.com/index.php/Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15>`__.
+`Taking_the_C66x_Out_Of_Reset_with_Linux_Running_on_the_ARM_A15 <How_to_Guides.html#taking-the-c66x-out-of-reset-with-linux-running-on-the-arm-a15>`__.
 
 .. rubric:: How can I create a SD card for Processor SDK RTOS?
    :name: how-can-i-create-a-sd-card-for-processor-sdk-rtos
@@ -401,12 +401,12 @@ based on the user-specific host setup. In order to create the example
 projects, users can follow the sequence provided below:
 
 #. Users are required to setup their development environment using
-   :ref:`Processor SDK RTOS Setup <Build-The-SDK-Setup-Environment-label>`.
+   `Processor SDK RTOS Setup <Overview.html#setup-environment>`__
 #. Setup the PDK build environment `PDK
-   Setup <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK#Building_PDK_using_gmake_in_Windows_environment>`__.
+   Setup <How_to_Guides.html#building-pdk-using-gmake-in-windows-environment>`__.
 #. Execute the PdkProjectCreate script in ${PDK_INSTALL_PATH}/packages
    as described on the `PDK Example and Test Project Creation
-   wiki <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK#PDK_Example_and_Test_Project_Creation>`__
+   wiki <How_to_Guides.html#pdk-example-and-test-project-creation>`__
 
 .. rubric:: What is the difference between SOC-specific driver library
    and the SOC-independent (Generic core-specific) driver library?
@@ -679,7 +679,7 @@ clocking, peripheral instance, etc.
 
 Adding custom board to the PDK directory structure and build setup is
 described in the article
-`Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles <http://processors.wiki.ti.com/index.php/Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles>`__
+`Adding_Custom_Board_Library_Target_to_Processor_SDK_RTOS_makefiles <How_to_Guides.html#adding-custom-board-library-target-to-processor-sdk-rtos-makefiles>`__
 
 .. note::
    TI evaluation platforms for Sitara Processors usually have board
@@ -832,8 +832,7 @@ Notes <Release_Specific.html#release-notes>`__
 There are numerous examples for using FATFS with USB driver and SD/MMC
 driver in the SDK that you can use for reference. The FATFS-specific
 documentation for Processor SDK RTOS is available in the `FATFS wiki
-section of the Processor SDK
-RTOS <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FATFS>`__.
+section of the Processor SDK RTOS <Device_Drivers.html#fatfs>`__.
 
 | 
 
@@ -1026,7 +1025,7 @@ environments have been set up before running the "make ipc_bios" or
 The documentation to run the IPC examples is provided as part of
 ReadMe.txt in the IPC examples or on a device-specific wiki article like
 `How to Run AM57x IPC
-Examples <http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x>`__.
+Examples <How_to_Guides.html#run-ipc-examples-on-am572x>`__.
 
 .. rubric:: Where can I locate IPC FAQ document?
    :name: where-can-i-locate-ipc-faq-document
@@ -1040,7 +1039,7 @@ consolidates the FAQ across all multi-core TI processors.
 
 The instructions to run the IPC examples on AM57xx are provided in the
 wiki article "`Running IPC Examples on
-AM57xx/DRA7xx <http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x>`__"
+AM57xx/DRA7xx <How_to_Guides.html#run-ipc-examples-on-am572x>`__"
 
 | 
 

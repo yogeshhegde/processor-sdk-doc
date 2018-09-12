@@ -187,7 +187,7 @@ Core ID and Device ID for specific devices can be located in the file
 sbl_slave_core_boot.h in the boot/sbl/soc/<SOC_NAME> folder
 
 Refer section `App Image
-Creation <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x#Application_Image_Creation>`__
+Creation <Foundational_Components.html#application-image-creation>`__
 for more details on usage of this script and application image creation.
 
 **Flashing Tools**
@@ -290,7 +290,7 @@ Preparing the SD card 
    in the process of making the SD bootable.
 #. Copy the sbl binary(MLO) to the SD card.
 #. Copy the Application image(app) generated using the
-   `Script <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM57x#Application_Image_Creation>`__
+   `Script <Foundational_Components.html#application-image-creation>`__
    to the SD card.
 
 Booting the target
@@ -717,6 +717,6 @@ Debugging application boot
 """"""""""""""""""""""""""""
 Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article `Common steps to debug application
-boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__
+boot <Foundational_Components.html#common-steps-to-debug-application-boot>`__
 
 .. raw:: html

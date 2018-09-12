@@ -6,7 +6,7 @@
 The Processor SDK RTOS Diagnostic package is designed to be a set of
 baremetal tests to run on a given board to provide data path continuity
 testing on peripherals. For K2H/K2E/K2L/C66x devices, this functionality
-is provided by `POST <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_POST>`__.
+is provided by `POST <Board_EVM_Abstration.html#power-on-self-test>`__.
 
 .. rubric:: Building the Examples
    :name: building-the-examples
@@ -142,7 +142,7 @@ diagnostics. Diagnostics test binaries need to be executed from CCS.
    :name: loading-through-sd-card-default-method
 
 Your SD card must be set up to a bootable format. Refer to the
-`Processor SDK RTOS Boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot>`__ page
+`Processor SDK RTOS Boot <Foundational_Components.html#boot>`__ page
 for information on how the SD card is handled.
 
 You will need to compile the diagnostic applications for your BOARD,

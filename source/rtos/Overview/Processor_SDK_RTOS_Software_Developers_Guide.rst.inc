@@ -113,7 +113,7 @@ build information, and examples to use as a template to start development.
 .. _OpenMP: Foundational_Components.html#openmp
 .. _FC: Foundational_Components.html#fc
 .. _OpenCL: Foundational_Components.html#opencl
-.. _Network: http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK
+.. _Network: Foundational_Components.html#ndk
 .. _XDAIS: Foundational_Components.html#xdais
 .. _PKTLIB: Foundational_Components.html#pktlib
 .. _NWAL: Foundational_Components.html#nwal
@@ -187,7 +187,7 @@ build information, and examples to use as a template to start development.
 .. _HYPLNK: Device_Drivers.html#hyplnk
 .. _TSIP: Device_Drivers.html#tsip
 .. _MCBSP: Device_Drivers.html#mcbsp
-.. _EMAC: http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_EMAC
+.. _EMAC: Device_Drivers.html#emac
 .. _MCASP: Device_Drivers.html#mcasp
 .. _PM: Device_Drivers.html#pm
 .. _RM: Device_Drivers.html#rm

@@ -75,7 +75,7 @@ Boot Sequence
 
    -  RBL gets image size and load address by checking TI Image Header
       appended on bootloader binary(.bin). Check `binary
-      formats <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Tools_and_Binary_formats>`__.
+      formats <Foundational_Components.html#tools-and-binary-formats>`__.
    -  Loads the binary to internal OCMC memory at the Load address
       fetched from TI Image Header
    -  Passes control to Secondary Bootloader(SBL)
@@ -231,7 +231,7 @@ Building the Bootloader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Pre-requisite:** Setup SDK build environment as described in article
- :ref:`Setup_Environment <Build-The-SDK-Setup-Environment-label>`
+ `Setup_Environment <Overview.html#setup-environment>`__
 
 .. rubric:: Normal Operation of Bootloader:
    :name: normal-operation-of-bootloader
@@ -694,18 +694,17 @@ Test Application Image Creation
 Follow below steps to generate the bootable application image.
 
 #. Generate .out files using steps for `Rebuilding
-   PDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__. Locate .out file in directory
+   PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__. Locate .out file in directory
    *<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>*
 #. Convert files to support MMCSD boot using steps as per `Binary format
-   conversion
-   procedure <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Binary_format_conversion_procedure>`__.
+   conversion procedure <Foundational_Components.html#binary-format-conversion-procedure>`__.
 #. Rename generated <Application>_ti.bin to "app".
 
 Loading Test application
 """""""""""""""""""""""""
 
 Follow procedure to use "app" file as per section `Booting Via SD
-Card <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM335x/AM437x#Booting_Via_SD_Card>`__.
+Card <Foundational_Components.html#booting-via-sd-card>`__.
 
 Usage Notes
 ^^^^^^^^^^^^^
@@ -829,7 +828,7 @@ Debugging application boot
 
 Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article **`Common steps to debug application
-boot <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Boot#Common_steps_to_debug_application_boot>`__**
+boot <Foundational_Components.html#common-steps-to-debug-application-boot>`__**
 
 .. raw:: html
 

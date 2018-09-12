@@ -220,7 +220,7 @@ Running ICSS-EMAC FIRMWARES Example
 
 Please go through the following page for example demonstrating the use
 of the firmware via icss-emac driver.
-`[1] <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC>`__
+`[1] <Device_Drivers.html#icss-emac>`__
 
 | 
 

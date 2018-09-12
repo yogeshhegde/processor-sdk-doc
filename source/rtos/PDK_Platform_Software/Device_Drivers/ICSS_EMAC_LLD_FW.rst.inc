@@ -139,8 +139,7 @@ example inside package
 TI PRU-ICSS cores (Programmable Real-Time Unit Industrial Communication
 Subsystem) is firmware programmable and can take on various
 personalities. Examples include an SORTE, ethernet Switch, Industrial
-protocol switch. Please refer to `ICSS-EMAC
-Firmwares <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC_FIRMWARES>`__ for
+protocol switch. Please refer to `ICSS-EMAC Firmwares <PRU_ICSS.html#pru-icss-firmware>`__ for
 further explanation.
 
 | 
@@ -266,7 +265,7 @@ Debug Guide
 ^^^^^^^^^^^^
 
 For debugging ICSS EMAC examples or LLD. Please refer to `ICSS-EMAC
-Debug Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide>`__.
+Debug Guide <Device_Drivers.html#debug-with-icss-emac-driver>`__.
 
 Additional References
 ^^^^^^^^^^^^^^^^^^^^^^
