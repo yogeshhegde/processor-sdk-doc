@@ -102,7 +102,7 @@ Build instruction from Processor SDK Release package
 .. rubric::  Pre-requisites to Building
    :name: pre-requisites-to-building
 
-| Refer to the Processor SDK RTOS Building page for information on setting up the build environment. 
+Refer to the Processor SDK RTOS Building page for information on setting up the build environment.
 
 .. rubric::  Compiling I2C FIRMWARE
    :name: compiling-i2c-firmware
@@ -248,7 +248,7 @@ Supported EVMs and pin configurations for these EVMs are listed below.
 I2C FIRMWARE Example
 ====================
 
- Sample code for I2C transaction:
+Sample code for I2C transaction:
 
 ::
 
@@ -285,7 +285,7 @@ I2C FIRMWARE Example
         /* I2C transaction failed */
     }
 
- Sample code for SMBus transaction:
+Sample code for SMBus transaction:
 
 ::
 
