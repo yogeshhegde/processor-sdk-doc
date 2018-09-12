@@ -3,40 +3,41 @@
 Introduction
 ============
 
-| PRU-ICSS-I2C serves as an example for firmware based I2C peripheral
-  support. Feature allows additional I2C instances for SOCs. Processor
-  SDK package includes source release for Firmware.
+| PRU-ICSS I2C serves as an example for firmware-based I2C peripheral
+  support. The I2C firmware (I2C FW) allows additional I2C instances for SOCs 
+  beyond those supported by SOC hardware. The Processor SDK package includes 
+  full source code for I2C FW.
 
 | 
 
 FIRMWARE FEATURES
 =================
 
-PRU-ICSS-I2C firmware supports standard two pin I2C interface through
-three GPIO pins from PRU-ICSS peripheral. I2C SCL pin for firmware is
-implemented with single GPIO configured in GPI mode. While I2C SDA pin
-is implemented with two GPIO pins, one pin configured in GPI mode for
-taking input sample and second pin configured in GPO mode for driving
-the line. Depending on Baud rate, firmware can emulate multiple instance
-of I2C interface from a single PRU core. Following are high level
-features:
+I2C FW supports the standard two pin I2C interface through three GPIO pins 
+from the PRU-ICSS module. The I2C SCL pin is implemented using a single 
+GPIO configured in GPO mode. The I2C SDA pin is implemented using two GPIO 
+pins: one pin configured in GPI mode for sampling SDA, and a second pin 
+configured in GPO mode for driving the SDA. Depending on the I2C clock 
+speed, I2C FW can emulate multiple I2C instances from a single PRU core. 
+Following are high-level I2C FW features:
 
 +-----------------------------------+-----------------------------------+
-| **Features**                      | **Remarks**                       |
+| **Feature**                       | **Remarks**                       |
 +-----------------------------------+-----------------------------------+
-| No. of instances                  | 4(Standard mode)                  |
-|                                   | 1(Fast mode)                      |
+| No. of instances                  | 4 (Standard mode)                 |
+|                                   |                                   |
+|                                   | 1 (Fast mode)                     |
 |                                   |                                   |
 |                                   | 1 (HS mode at 1 MHz)              |
 +-----------------------------------+-----------------------------------+
-| SMbus Support                     | Supported                         |
+| SMBus support                     | Supported                         |
 +-----------------------------------+-----------------------------------+
 | Addressing modes                  | 7/10-bit                          |
 +-----------------------------------+-----------------------------------+
-| Master Mode                       | Supported                         |
+| Master mode                       | Supported                         |
 +-----------------------------------+-----------------------------------+
-| I2C data transfer rate of from    | 100KHz/400KHz/1MHz                |
-| 100 Kbps up to 1 Mbps             |                                   |
+| I2C data transfer rate from       | 100 kHz / 400 kHz / 1 MHz         |
+| 100 kbps up to 1 Mbps             |                                   |
 +-----------------------------------+-----------------------------------+
 | Bit format transfer               | 8 bit                             |
 +-----------------------------------+-----------------------------------+
@@ -49,7 +50,7 @@ features:
 +-----------------------------------+-----------------------------------+
 | Built-in configurable FIFOs (8,   | 8/16/32/64/128/256                |
 | 16, 32, 64 bytes) for buffered    |                                   |
-| read/ write                       |                                   |
+| read/write                        |                                   |
 +-----------------------------------+-----------------------------------+
 | 8-bit-wide data access            | Supported                         |
 +-----------------------------------+-----------------------------------+
@@ -57,33 +58,33 @@ features:
 +-----------------------------------+-----------------------------------+
 | Internal loopback feature         | Supported                         |
 +-----------------------------------+-----------------------------------+
-| Slave Mode                        | Not Supported                     |
+| Slave mode                        | Not Supported                     |
 +-----------------------------------+-----------------------------------+
 | Combined Master-Slave             | Not Supported                     |
-| Mode/transaction                  |                                   |
+| mode/transaction                  |                                   |
 +-----------------------------------+-----------------------------------+
-| DMA Support                       | Not Supported                     |
+| DMA support                       | Not Supported                     |
 +-----------------------------------+-----------------------------------+
 | Programmable clock generation     | Not Supported                     |
 +-----------------------------------+-----------------------------------+
 | Implement Auto Idle mechanism     | Not Supported                     |
-| (SOC Specific feature)            |                                   |
+| (SOC specific feature)            |                                   |
 +-----------------------------------+-----------------------------------+
 | Implement Idle Request/Idle       | Not Supported                     |
 | Acknowledge handshake mechanism   |                                   |
-| (SOC Specific feature)            |                                   |
+| (SOC specific feature)            |                                   |
 +-----------------------------------+-----------------------------------+
 | Support for asynchronous wakeup   | Not Supported                     |
 | mechanism                         |                                   |
 +-----------------------------------+-----------------------------------+
 
-Code Organization
-=================
+Firmware Organization
+=====================
 
 +-------------------------+--------------------------------------------------+
-| **I2C FW Organization** | **Directory**                                    |
+| **FW Item**             | **Directory**                                    |
 +-------------------------+--------------------------------------------------+
-| Source Code             | <PDK>/packages/ti/drv/i2c/firmware/icss_i2c/src  |
+| Source code             | <PDK>/packages/ti/drv/i2c/firmware/icss_i2c/src  |
 +-------------------------+--------------------------------------------------+
 | Design Guide            | <PDK>/packages/ti/drv/i2c/firmware/icss_i2c/docs |
 +-------------------------+--------------------------------------------------+
@@ -101,9 +102,7 @@ Build instruction from Processor SDK Release package
 .. rubric::  Pre-requisites to Building
    :name: pre-requisites-to-building
 
-::
-
-    Refer to the Processor SDK RTOS Building page for information on setting up build environment. 
+| Refer to the Processor SDK RTOS Building page for information on setting up the build environment. 
 
 .. rubric::  Compiling I2C FIRMWARE
    :name: compiling-i2c-firmware
@@ -117,13 +116,13 @@ Firmware binaries at the end of the build will be located at:
 
 -  <FIRMWARE_TYPE> indicates the firmware type i.e. icss_i2c
 
--  <SOC> indicates the SOC type.
+-  <SOC> indicates the SOC type, e.g. am437x
 
 -  <HOST_CORE> indicates the Host core type on which the built binary
-   can be loaded.
+   can be loaded, e.g. a9host
 
 -  <REVISION> indicates the revision of the firmware binary based on
-   core. (There are 2 revision of PRU-ICSS core)
+   core (there are 2 revision of PRU-ICSS core), e.g. REV1.
 
 | 
 
@@ -171,19 +170,19 @@ environment outside Processor SDK RTOS package.
 Supported EVMs
 ==============
 
-Following are list supported EVMs along with the pin configurations:
+Supported EVMs and pin configurations for these EVMs are listed below.
 
-+-------------+---------------------+----------------------------------+
-| EVM Name    | PRU-ICSS Instance   | Supported PRU ICSS core revision |
-+-------------+---------------------+----------------------------------+
-| icev2AM335x | PRU-ICSS instance 1 | REV1                             |
-+-------------+---------------------+----------------------------------+
-| idkAM437x   | PRU-ICSS instance 2 | REV1                             |
-+-------------+---------------------+----------------------------------+
-| idkAM574x   | PRU-ICSS instance 2 | REV2                             |
-+-------------+---------------------+----------------------------------+
-| idkAM572x   | PRU-ICSS instance 2 | REV2                             |
-+-------------+---------------------+----------------------------------+
++-------------+---------------------+-------------------+
+| EVM Name    | PRU-ICSS Instances  | PRU-ICSS Revision |
++=============+=====================+===================+
+| icev2AM335x | 1                   | REV1              |
++-------------+---------------------+-------------------+
+| idkAM437x   | 2                   | REV1              |
++-------------+---------------------+-------------------+
+| idkAM574x   | 2                   | REV2              |
++-------------+---------------------+-------------------+
+| idkAM572x   | 2                   | REV2              |
++-------------+---------------------+-------------------+
 
 | 
 
@@ -191,8 +190,8 @@ Following are list supported EVMs along with the pin configurations:
    :name: icev2am335x
 
 +---------+-------+----------+--------------+---------------------+--------+-------+
-| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM pin|
-+---------+-------+----------+--------------+---------------------+--------+-------+
+| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM Pin|
++=========+=======+==========+==============+=====================+========+=======+
 |         |       |          | SCL          |pr1_pru0_pru_r30_1   | J3     | 14    |
 |         |       |          +--------------+---------------------+--------+-------+
 | ICSS1   | PRU0  | I2C0     |              |pr1_edio_data_out7   | J4     | 21    |
@@ -200,26 +199,12 @@ Following are list supported EVMs along with the pin configurations:
 |         |       |          |              |pr1_pru0_pru_r31_0   | J3     | 12    |
 +---------+-------+----------+--------------+---------------------+--------+-------+
 
-.. rubric::  idkAM572x/idkAM574x
-   :name: idkAM572x-idkAM574x
-
-+---------+-------+----------+--------------+---------------------+--------+-------+
-| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM pin|
-+---------+-------+----------+--------------+---------------------+--------+-------+
-|         |       |          | SCL          |pr1_pru1_gpo1        | J21    | 5     |
-|         |       |          +--------------+---------------------+--------+-------+
-| ICSS1   | PRU0  | I2C0     |              |pr1_edio_data_out1   | J46    | 4     |
-|         |       |          | SDA          +---------------------+--------+-------+
-|         |       |          |              |pr1_pru1_gpi0        | J21    | 3     |
-+---------+-------+----------+--------------+---------------------+--------+-------+
-
-
 .. rubric::  idkAM437x
    :name: idkAM437x
 
 +---------+-------+----------+--------------+---------------------+--------+-------+
-| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM pin|
-+---------+-------+----------+--------------+---------------------+--------+-------+
+| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM Pin|
++=========+=======+==========+==============+=====================+========+=======+
 |         |       |          | SCL          |pr1_pru0_pru_r30_8   | J3     | 6     |
 |         |       |          +--------------+---------------------+--------+-------+
 |         |       | I2C0     |              |pr1_edio_data_out0   | J3     | 5     |
@@ -232,86 +217,118 @@ Following are list supported EVMs along with the pin configurations:
 |         |       |          | SDA          +---------------------+--------+-------+
 |         |       |          |              |pr1_pru0_pru_r31_11  | J16    | 48    |
 +---------+-------+----------+--------------+---------------------+--------+-------+
+|         |       |          | SCL          |pr0_pru0_pru_r30_8   | J16    | 56    |
+|         |       |          +--------------+---------------------+--------+-------+
+|         |       | I2C0     |              |pr1_edio_data_out0   | J3     | 5     |
+|         |       |          | SDA          +---------------------+--------+-------+
+|         |       |          |              |pr0_pru0_pru_r31_9   | J16    | 37    |
+| ICSS0   | PRU0  +----------+--------------+---------------------+--------+-------+
+|         |       |          | SCL          |pr0_pru0_pru_r30_10  | J16    | 38    |
+|         |       |          +--------------+---------------------+--------+-------+
+|         |       | I2C1     |              |pr1_edio_data_out1   | J3     | 7     |
+|         |       |          | SDA          +---------------------+--------+-------+
+|         |       |          |              |pr0_pru0_pru_r31_11  | J16    | 58    |
++---------+-------+----------+--------------+---------------------+--------+-------+
+
+.. rubric::  idkAM572x/idkAM574x
+   :name: idkAM572x-idkAM574x
+
++---------+-------+----------+--------------+---------------------+--------+-------+
+| ICSS    | PRU   | Instance |Functional Pin|PRU GPIO Pins        |EVM Port|EVM Pin|
++=========+=======+==========+==============+=====================+========+=======+
+|         |       |          | SCL          |pr1_pru1_gpo1        | J21    | 5     |
+|         |       |          +--------------+---------------------+--------+-------+
+| ICSS1   | PRU0  | I2C0     |              |pr1_edio_data_out1   | J46    | 4     |
+|         |       |          | SDA          +---------------------+--------+-------+
+|         |       |          |              |pr1_pru1_gpi0        | J21    | 3     |
++---------+-------+----------+--------------+---------------------+--------+-------+
 
 | 
 
 I2C FIRMWARE Example
 ====================
 
- Sample code for initiating I2C FW transaction:
+ Sample code for I2C transaction:
 
 ::
 
+    /* Refer to I2C FW Example for details */
     ...
-    Board_init(boardCfg);
-    ...
-    /* Initialize the I2C fw configuration */
+    
+    /* Initialize the I2C FW configuration */
     I2C_socInitFwCfg();
 
-    /* Get the default I2C init configurations */
+    /* Get the default I2C init configuration */
     I2C_socGetFwCfg(I2C_TEST_INSTANCE1, &i2c_cfg);
 
     /* Modify the default I2C configurations if necessary */
 
     /* Set the default I2C init configurations */
     I2C_socSetFwCfg(I2C_TEST_INSTANCE1, &i2c_cfg);
-
+    ...
+    
+    Board_init(boardCfg);   
+    ...
+    
     I2C_init();
 
-    i2c = I2C_open(peripheralNum, &i2cParams);
-    ...
+    handle = I2C_open(I2C_TEST_INSTANCE1, &i2cParams);
     ...
 
-    /* Initiate I2C transfers. Refer Example for details
-    */
+    /* Initiate I2C transfers */
     I2C_transactionInit(&i2cTransaction);
-    transaction.masterMode   = true;
+    i2cTransaction.slaveAddress = I2C_EEPROM_ADDR;
     ...
-    ...
-    transferOK = I2C_transfer(i2c, &i2cTransaction);
-    if (transferOK != I2C_STS_SUCCESS) {
-    /* I2C transaction failed */
-    } 
+    
+    status = I2C_transfer(handle, &i2cTransaction);
+    if (status!= I2C_STS_SUCCESS) {
+        /* I2C transaction failed */
+    }
 
- For SMBUS  transaction:
+ Sample code for SMBus transaction:
 
 ::
 
+    /* Refer to I2C FW Test for details */
     ...
+    
     testCmd.transferCmd = SMBUS_WRITE_BYTE_CMD;
     testCmd.cmdCode = WRITE_SMBUS_COMMAND_CODE;
     controlStatus = I2C_control(handle, I2C_CMD_SMBUS_TYPE, ((void*)&testCmd));
     I2C_transactionInit(&i2cTransaction);
     ...
-    transferOK = I2C_transfer(i2c, &i2cTransaction);
-    if (transferOK != I2C_STS_SUCCESS) {
-    /* I2C transaction failed */
+    
+    status = I2C_transfer(handle, &i2cTransaction);
+    if (status != I2C_STS_SUCCESS) {
+        /* I2C transaction failed */
     } 
 
 | 
+
 .. rubric::  Examples List 
    :name: examples-list
 
-| Refer Release Note for I2C support across different EVMs
+| Refer to the Release Notes for details I2C support across different EVMs
 
-+-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
-+=======================+=======================+=======================+
-| I2C_FwExampleApplicat | | Driver Firmware     | Following prints will |
-| ion                   |   Example application | come on console based |
-|                       |   for additional I2C  | on pass/fail          |
-|                       |   Instances           | criteria:             |
-|                       |                       |                       |
-|                       |                       | **Pass criteria:**    |
-|                       |                       |                       |
-|                       |                       | I2C Test: Instance :  |
-|                       |                       | Baud Rate 100KHz:     |
-|                       |                       |                       |
-|                       |                       | All tests have        |
-|                       |                       | passed.               |
-+-----------------------+-----------------------+-----------------------+
++-----------------------+-----------------------+------------------------+
+| Name                  | Description           | Expected Results       |
++=======================+=======================+========================+
+| I2C_FwExample         | Driver Firmware       | Status messages will   |
+|                       | example application   | be displayed on        |
+|                       | for I2C FW instances  | console based based    |
+|                       |                       | on pass/fail criteria: |
+|                       |                       |                        |
+|                       |                       | **Pass criteria:**     |
+|                       |                       |                        |
+|                       |                       | I2C Test: Instance:    |
+|                       |                       | Baud Rate 100KHz:      |
+|                       |                       |                        |
+|                       |                       | All tests have         |
+|                       |                       | passed.                |
++-----------------------+-----------------------+------------------------+
 
 | 
+
 .. rubric::  Firmware Design Guide 
    :name: firmware-design-guide
 
@@ -323,9 +340,9 @@ I2C FIRMWARE Example
 |                                   | DE.pdf                            |
 +-----------------------------------+-----------------------------------+
 
-**NOTE: For normal use case, there is no need to refer this document.
-Unless you wish to go through the internal working for firmware and/or
-wanted to modify it.**
+**NOTE: For normal use of I2C FW, there is no need to refer to the design guide.
+This document can be cosulted in case of interest in details of internal firmware 
+operation, or a desire to modify the firmware.**
 
 | 
 
