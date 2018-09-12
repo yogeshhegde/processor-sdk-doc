@@ -66,17 +66,17 @@ Directory structure
 
 **Makefiles:**
 
--  **PDK_INSTALL_PATH/ti\boot\sbl\board\<EVAL_BOARD>\build**: Makefile
+-  **PDK_INSTALL_PATH/ti/boot/sbl/board/<EVAL_BOARD>/build**: Makefile
    for bootloader that provides list of source files and library and
    compiler options to create bootloader binary.
 
 **Source Files:**
 
--  **PDK_INSTALL_PATH/ti\boot\sbl\board\<EVAL_BOARD>**: Source to SBL
+-  **PDK_INSTALL_PATH/ti/boot/sbl/board/<EVAL_BOARD>**: Source to SBL
    main function that consolidates all features
--  **PDK_INSTALL_PATH/ti\boot\sbl\soc**: Source to SOC specific
+-  **PDK_INSTALL_PATH/ti/boot/sbl/soc**: Source to SOC specific
    initialization used in the SBL.
--  **PDK_INSTALL_PATH/ti\boot\sbl\src**: Source to boot media specific
+-  **PDK_INSTALL_PATH/ti/boot/sbl/src**: Source to boot media specific
    initialization used in the SBL.
 
 | 
@@ -98,7 +98,7 @@ Technical Reference manual <http://www.ti.com/lit/pdf/spruhz6>`__
 **Application image format:**
 A bootable application image can be created by using the Am57xImageGen
 script provided under tools folder as part of sbl. It can be located at
-*<PDK_INSTALL_DIR>\packages\ti\boot\sbl\tools\scripts* folder.
+*<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/scripts* folder.
 
 The Am57xImageGen script uses out2rprc and multicoreImageGen format
 conversion tools to create the final application image. Graphical view
@@ -195,7 +195,8 @@ for more details on usage of this script and application image creation.
 SBL provides a CCS based qspi flash writer utility to flash image and
 multicore AppImage from a SD card to onboard QSPI device. It
 is located
-at \ *<PDK_INSTALL_DIR>\packages\ti\boot\sbl\tools\flashWriter\qspi*
+at \ *<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/qspi*
+
 
 Building the SBL
 ^^^^^^^^^^^^^^^^^^^^
@@ -313,7 +314,7 @@ Preparing Flash Device
 ''''''''''''''''''''''''
 
 Use the CCS based qspi_flash_writer.out utility provided in
-<*TI_PDK_INSTALL_DIR>\packages\ti\boot\sbl\tools\flashwriter\qspi\<Board>'*
+<*TI_PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashwriter/qspi/<Board>'*
 to flash the SBL image at offset 0 and application image at offset
 0x80000 to the QSPI device.
 
@@ -454,7 +455,7 @@ App_DSP2: Point to the path where the dsp core 2 application is located
 3. If it is not required to load an application on specific core leave
 the variable blank.
 
-4. Run the script file
+4. Run the script file AM57xImageGen found under the path $(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/tools/scripts
 
 5. An application image by name app is created in the path pointed by
 BIN_PATH variable
@@ -521,7 +522,7 @@ App_DSP2: Point to the path where the dsp core 2 application is located
 3. If it is not required to load an application on specific core leave
 the variable blank.
 
-4. Run the batch file
+4. Run the batch file AM57xImageGen found under the path $(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/tools/scripts
 
 5. Follow the steps 4 to 6 listed above for Linux environment.
 |
