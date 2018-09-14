@@ -171,6 +171,12 @@ GPMC
 
 
 ***********
+SCICLIENT
+***********
+.. include:: PDK_Platform_Software/Device_Drivers/SCICLIENT.rst.inc
+
+
+***********
 VPS Drivers
 ***********
 .. include:: PDK_Platform_Software/Device_Drivers/VPS_Drivers.rst.inc
@@ -186,4 +192,3 @@ OSAL
 Profiling
 ***********
 .. include:: PDK_Platform_Software/Device_Driver_Utilities/Profiling.rst.inc
-
