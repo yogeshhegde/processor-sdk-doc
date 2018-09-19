@@ -27,8 +27,6 @@ Following are high-level I2C FW features:
 | No. of instances                  | 4 (Standard mode)                 |
 |                                   |                                   |
 |                                   | 1 (Fast mode)                     |
-|                                   |                                   |
-|                                   | 1 (HS mode at 1 MHz)              |
 +-----------------------------------+-----------------------------------+
 | SMBus support                     | Supported                         |
 +-----------------------------------+-----------------------------------+
@@ -36,8 +34,8 @@ Following are high-level I2C FW features:
 +-----------------------------------+-----------------------------------+
 | Master mode                       | Supported                         |
 +-----------------------------------+-----------------------------------+
-| I2C data transfer rate from       | 100 kHz / 400 kHz / 1 MHz         |
-| 100 kbps up to 1 Mbps             |                                   |
+| I2C data transfer rate from       | 100 kHz / 400 kHz                 |
+| 100 kbps up to 400 kbps           |                                   |
 +-----------------------------------+-----------------------------------+
 | Bit format transfer               | 8 bit                             |
 +-----------------------------------+-----------------------------------+
@@ -308,7 +306,7 @@ Sample code for SMBus transaction:
 .. rubric::  Examples List 
    :name: examples-list
 
-| Refer to the Release Notes for details I2C support across different EVMs
+Refer to the Release Notes for details concerning I2C support across different EVMs.
 
 +-----------------------+-----------------------+------------------------+
 | Name                  | Description           | Expected Results       |
@@ -332,13 +330,11 @@ Sample code for SMBus transaction:
 .. rubric::  Firmware Design Guide 
    :name: firmware-design-guide
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| I2C FIRMWARE Design Guide         | <PDK>/packages/ti/drv/i2c/firmwar |
-|                                   | e/icss_i2c/docs/I2C_FW_DESIGN_GUI |
-|                                   | DE.pdf                            |
-+-----------------------------------+-----------------------------------+
++-----------------------------------+--------------------------------------------------------------------------+
+| **Document**                      | **Location**                                                             |
++-----------------------------------+--------------------------------------------------------------------------+
+| I2C FIRMWARE Design Guide         | <PDK>/packages/ti/drv/i2c/firmware/icss_i2c/docs/I2C_FW_DESIGN_GUIDE.pdf |
++-----------------------------------+--------------------------------------------------------------------------+
 
 **NOTE: For normal use of I2C FW, there is no need to refer to the design guide.
 This document can be cosulted in case of interest in details of internal firmware 
