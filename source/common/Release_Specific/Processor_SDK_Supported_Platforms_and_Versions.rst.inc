@@ -126,12 +126,13 @@ The following platforms and EVMs are supported with Processor SDK
 |processors/dsp/c6000_dsp-arm/66ak2x/  |<http://www.ti.com/tool               |          |processors.wiki.ti.com/index.php/           |                |                |                |                |
 |overview.page>`__                     |/xevmk2lx>`__                         |          |TCIEVMK2L_Hardware_Setup>`__                |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`K2G <http://www.ti.com/lsds/ti/      |`K2G EVM                              | 1.3D     |`Hardware User's Guide <http://             | X              | X              | X              |                |
-|dsp/c6000_dsp-arm/66ak2x/             |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui65>`__              |                |                |                |                |
-|overview.page>`__                     |EVMK2G>`__                            |          |                                            |                |                |                |                |
-|                                      |                                      |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
-|                                      |                                      |          |.wiki.ti.com/index.php/66AK2G02_GP_EVM_     |                |                |                |                |
-|                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
+|`K2G <http://www.ti.com/processors/   |`K2G EVM                              | 1.3D     |`Hardware User's Guide <http://             | X              | X              | X              |                |
+|dsp/c6000-dsp-arm/66ak2x/             |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui65a>`__             |                |                |                |                |
+|overview.html>`__                     |EVMK2G>`__                            |          |                                            |                |                |                |                |
+|                                      +--------------------------------------+----------+                                            +----------------+----------------+----------------+----------------+
+|                                      |`K2G 1G EVM                           | 1.5D     |`Hardware Setup with CCS <http://processors | X              | X              | X              |                |
+|                                      |<http://www.ti.com/tool/              |          |.wiki.ti.com/index.php/66AK2G02_GP_EVM_     |                |                |                |                |
+|                                      |EVMK2GX>`__                           |          |Hardware_Setup>`__                          |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |                                      |`K2G Audio Daughtercard               | D        |`Software Support <http://                  |                |                | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/           |                |                |                |                |

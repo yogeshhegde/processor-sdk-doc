@@ -214,7 +214,7 @@ The following table lists all supported devices for a given installer.
 +----------------+------------+-------------------------------------------------------------------------------+
 |`RTOS-K2E`_     |`K2E`_      | `66AK2E02`_, `66AK2E05`_, `AM5K2E02`_, `AM5K2E04`_                            |
 +----------------+------------+-------------------------------------------------------------------------------+
-|`RTOS-K2G`_     |`K2G`_      | `66AK2G02`_                                                                   |
+|`RTOS-K2G`_     |`K2G`_      | `66AK2G02`_, `66AK2G12`_                                                      |
 +----------------+------------+-------------------------------------------------------------------------------+
 |                |`K2H`_      | `66AK2H06`_, `66AK2H12`_, `66AK2H14`_                                         |
 | `RTOS-K2HK`_   +------------+-------------------------------------------------------------------------------+
@@ -281,8 +281,9 @@ The following table lists all supported devices for a given installer.
 .. _AM5K2E04: http://www.ti.com/product/am5k2e04
 
 .. _RTOS-K2G: http://software-dl.ti.com/processor-sdk-rtos/esd/K2G/latest/index_FDS.html
-.. _K2G: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page
+.. _K2G: http://www.ti.com/processors/dsp/c6000-dsp-arm/66ak2x/overview.html
 .. _66AK2G02: http://www.ti.com/product/66ak2g02
+.. _66AK2G12: http://www.ti.com/product/66ak2g12
 
 .. _RTOS-K2HK: http://software-dl.ti.com/processor-sdk-rtos/esd/K2HK/latest/index_FDS.html
 .. _K2H: http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page

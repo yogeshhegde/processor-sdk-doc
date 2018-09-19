@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/66AK2G02_GP_EVM_Hardware_Setup 
 
-66AK2G02 GP EVM Hardware Setup
+66AK2GX GP EVM Hardware Setup
 ====================================================
 
 .. rubric:: Description
@@ -8,12 +8,12 @@
 
 The EVMK2G is a high performance, cost-efficient, standalone development
 platform that enables users to evaluate and develop applications for the
-Texas Instrument’s Keystone2 System-on-Chip (SoC) 66AK2G02. The Key
+Texas Instrument’s Keystone2 System-on-Chip (SoC) 66AK2GX. The Key
 features of EVM are:
 
 **Processor and controller**
 
--  K2G SoC 66AK2G02 is based on keystone II architecture with ARM cortex
+-  K2G SoC 66AK2GX is based on keystone II architecture with ARM cortex
    A15 @600MHz and C66x DSP @600MHz
 -  Board Management Controller (BMC) for board management functions like
    system status and Boot mode control
@@ -215,7 +215,7 @@ The EVMK2G can be powered from a single +12V / 5.0A DC (60W) external
 power supply connected to the DC power jack (J3). Internally, +12V input
 is converted into required voltage levels using local DC-DC converters
 
-Please note that a power supply is included with the 66AK2G02 Evaluation
+Please note that a power supply is included with the 66AK2GX Evaluation
 Module. The power supply has the following specs :
 
 -  12V DC output
@@ -227,7 +227,7 @@ Module. The power supply has the following specs :
 .. rubric:: CCS Setup
    :name: ccs-setup
 
-This section describes the setup to connect to 66AK2G02 GP EVM using
+This section describes the setup to connect to 66AK2GX GP EVM using
 Code composer Studio environment and an emulator.
 
 There are two scenarios while connecting to the EVM :
@@ -247,7 +247,7 @@ All revisions of the board require this step to be performed in order to
 get the latest GEL files and the target content for the K2G. This step
 will not be required for CCS versions higher than version 6.1.3.
 CCSv6.1.3 package contain KeystoneII device support package v1.1.4 which
-doesn\`t contain 66AK2G02 GPEVM specific target files hence we recommend
+doesn\`t contain 66AK2GX GPEVM specific target files hence we recommend
 this update.
 
 **Step 1** All CCS v6.1.3 and earlier version users are required to
@@ -333,7 +333,7 @@ earlier, ensure it contains Keystone device support package version
 K2G <http://http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide#Code_Composer_Studio%7C>`__
 
 | 
-| **Step2:** 66AK2G02 GP EVM contains boot switches to configure for "No
+| **Step2:** 66AK2GX GP EVM contains boot switches to configure for "No
   boot/sleep" mode. So configure the boot switches to No Boot Mode as
   described in the
   `Setting\_Boot\_Switch <http://ap-fpdsp-swapps.dal.design.ti.com/index.php/66AK2G02_GP_EVM_Hardware_Setup#Setting_boot_switches>`__
@@ -577,9 +577,10 @@ We recommend that users need to replace these with 200 Ω / 1%.
    :name: useful-resources-and-support
 
 -  `66AK2G02 Product folder <http://www.ti.com/product/66ak2g02>`__
--  `66AK2G02 GP EVM Technical Reference
-   Manual <http://www.ti.com/lit/ug/sprui65/sprui65.pdf>`__
--  `66AK2G02 GP EVM Product folder <http://www.ti.com/tool/evmk2g>`__
+-  `66AK2G12 Product folder <http://www.ti.com/product/66ak2g12>`__
+-  `66AK2Gx GP EVM Technical Reference Manual <http://www.ti.com/lit/pdf/sprui65a>`__
+-  `66AK2Gx GP EVM Product folder <http://www.ti.com/tool/evmk2g>`__
+-  `66AK2Gx 1GHz GP EVM Product folder <http://www.ti.com/tool/evmk2gx>`__
 -  `Keystone E2E Support
    Forum <https://e2e.ti.com/support/dsp/c6000_multi-core_dsps/f/639>`__
 
