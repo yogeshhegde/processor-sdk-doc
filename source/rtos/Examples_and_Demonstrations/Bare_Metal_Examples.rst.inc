@@ -35,7 +35,7 @@ Click Finish after you are done to allow CCS to auto generate the
 project from the template.
 
 
-.. Image:: ../images/AM65x_Create_CCS_Project.PNG
+.. Image:: ../images/AM65x_Create_CCS_Project.png
 
 
 5. The generated CCS project contains source file **main.c**, ARM assembly code **startup_ARMCA53.S** and a linker command file **AM65X.lds**. 
@@ -44,6 +44,7 @@ Remove startup_ARMCA53.S and AM65X.lds from the project.
 
 6. Add the following linker command file to the project. 
 ::
+
 	(PDK INSTALL PATH)/packages/ti/build/am65xx/linker_a53.lds
 	
 
@@ -100,7 +101,7 @@ After connecting to the M3, right click on **CortexA53_0_0** and connect to it.
 14. Load and run hello_world.out example file on the Cortex-A53. 
 You should see a Hello_world string displayed in the CCS console window.
 
-.. Image:: ../images/AM65x_CCS_Hello_World.png
+.. Image:: ../images/AM65x_CCS_Hello_World.PNG
 
 ARM Cortex-A15
 ==============
@@ -945,10 +946,10 @@ The linker command file is designed to place code in OCMC memory.
 8. Launch target configurations using your emulator to connect to
 OMAPLx/C674x LCDK as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`.
 
-9. Developers can Connect to the C674x on OMAPL137/C6747/C6748 can
+9. Developers on OMAPL137/C6747/C6748 can
 connect directly to the DSP. For OMAPL138 device, you will need to
 connect to the ARM as this is ARM master boot device and ARM needs to
-power up the DSP You should see the following log in the Console
+power up the DSP. You should see the following log in the console.
 
 ::
 
