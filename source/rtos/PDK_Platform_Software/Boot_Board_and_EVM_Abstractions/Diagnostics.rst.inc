@@ -1,18 +1,18 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+-----------
 
 The Processor SDK RTOS Diagnostic package is designed to be a set of
 baremetal tests to run on a given board to provide data path continuity
 testing on peripherals. For K2H/K2E/K2L/C66x devices, this functionality
 is provided by `POST <Board_EVM_Abstration.html#power-on-self-test>`__.
 
-.. rubric:: Building the Examples
-   :name: building-the-examples
+Building the Examples
+----------------------
 
-.. rubric:: Pre-requisites to Building
-   :name: pre-requisites-to-building
+Pre-requisites to Building
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Set your environment using pdksetupenv.bat or pdksetupenv.sh. The
    diagnostic application uses the same environment variables as the
@@ -29,13 +29,16 @@ is provided by `POST <Board_EVM_Abstration.html#power-on-self-test>`__.
 -  CSL
 -  ICSS
 -  PRUSS
+-  MMCSD
+-  EMAC
+-  USB  
 
 (Note: not every library is used for every application, and these
 libraries should come pre-built with any fresh installation of the
 Processor SDK)
 
-.. rubric:: Compiling the Diagnostic Applications
-   :name: compiling-the-diagnostic-applications
+Compiling the Diagnostic Applications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To build the diagnostic examples:
 
@@ -46,8 +49,8 @@ This will make the diagnostic applications for a specific $BOARD.
 Alternatively, "make all" will make for all boards. Output files will be
 located in: **<PDK>/packages/ti/board/bin/<BOARD>**
 
-.. rubric:: Creating the SD Card Loadable Files
-   :name: creating-the-sd-card-loadable-files
+Creating the SD Card Loadable Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For converting the compiled .out files to a format loadable by TI's
 Secondary Boot Loader (SBL), you must follow these two steps:
@@ -74,8 +77,8 @@ create the SD card loadable files. The output files will be located in:
 application is named "app" to allow it to be the default application to
 be loaded by the SBL.
 
-.. rubric:: Creating the SPI Flash Loadable Files
-   :name: creating-the-spi-flash-loadable-files
+Creating the SPI Flash Loadable Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 SPI boot shall be the primary boot option for the platforms (Ex: AMIC110
 ICE) which does not support SD card interface. All the diagnostic tests
@@ -90,8 +93,8 @@ loadable files.
 
 | 
 
-.. rubric:: Make targets
-   :name: make-targets
+Make targets
+^^^^^^^^^^^^^^^
 
 The simplest invocation is to use "make <BOARD>" to compile all the
 applications. Here is a list of make targets implemented for the
@@ -114,32 +117,32 @@ The <BOARD> supported depends on your Processor SDK RTOS variant. Refer
 to following table for available <BOARD> for each Processor SDK RTOS
 variant:
 
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| make      | am335x    | am437x    | am57xx    | k2g       | omapl13x  |
-| target /  |           |           |           |           |           |
-| Variant   |           |           |           |           |           |
-+===========+===========+===========+===========+===========+===========+
-| <Board>   | evmAM335x | evmAM437x | idkAM572x | evmK2G    | evmOMAPL1 |
-|           | skAM335x  | skAM437x  | idkAM571x | iceK2G    | 37        |
-|           | bbbAM335x | idkAM437x | evmAM572x |           | (No Boot  |
-|           | icev2AM33 |           | idkAM574x |           | support.  |
-|           | 5x        |           |           |           |           |
-|           | iceAMIC11 |           |           |           | Diagnosti |
-|           | 0         |           |           |           | cs        |
-|           |           |           |           |           | need to   |
-|           |           |           |           |           | run from  |
-|           |           |           |           |           | CCS)      |
-+-----------+-----------+-----------+-----------+-----------+-----------+
++-----------+-----------+-----------+-----------+-----------+-----------+------------+
+| make      | am335x    | am437x    | am57xx    | k2g       | omapl13x  | AM65xx     |
+| target /  |           |           |           |           |           |            |
+| Variant   |           |           |           |           |           |            |
++===========+===========+===========+===========+===========+===========+============+
+| <Board>   | evmAM335x | evmAM437x | idkAM572x | evmK2G    | evmOMAPL1 | am65xx_evm |
+|           | skAM335x  | skAM437x  | idkAM571x | iceK2G    | 37        | am65xx_idk |
+|           | bbbAM335x | idkAM437x | evmAM572x |           | (No Boot  |            |
+|           | icev2AM33 |           | idkAM574x |           | support.  |            |
+|           | 5x        |           |           |           |           |            |
+|           | iceAMIC11 |           |           |           | Diagnosti |            |
+|           | 0         |           |           |           | cs        |            |
+|           |           |           |           |           | need to   |            |
+|           |           |           |           |           | run from  |            |
+|           |           |           |           |           | CCS)      |            |
++-----------+-----------+-----------+-----------+-----------+-----------+------------+
 
 **Note:** OMAPL137 EVM diagnostic tests does not support executing from
 a boot device. Use the command **make evmOMAPL137** to build the
 diagnostics. Diagnostics test binaries need to be executed from CCS.
 
-.. rubric:: Running the Diagnostic Examples
-   :name: running-the-diagnostic-examples
+Running the Diagnostic Examples
+-----------------------------------
 
-.. rubric:: Loading through SD Card (Default Method)
-   :name: loading-through-sd-card-default-method
+Loading through SD Card (Default Method)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Your SD card must be set up to a bootable format. Refer to the
 `Processor SDK RTOS Boot <Foundational_Components.html#boot>`__ page
@@ -164,6 +167,12 @@ To do so:
    program is opened after boot is powered on, you would've missed the
    initial printout messages. This step is for demonstration and
    confidence checking that the board has booted correctly)
+   
+.. note::
+    For AM65xx platform, SBL binary location and name is different.
+    Copy the sbl_mmcsd_img_mcu1_0_release.tiimage file from 
+    <PDK>/packages/ti/boot/sbl/img/mmcsd/<BOARD> to SD card and 
+    rename it to tiboot3.bin
 
 You should see the following screen:
 
@@ -184,8 +193,8 @@ Result of return from above run:
 
 .. Image:: ../images/Diag-screen3.png
 
-.. rubric:: Loading through SPI Flash
-   :name: loading-through-spi-flash
+Loading through SPI Flash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section describes creating the diagnostic test images for SPI flash
 booting, programming and running them from SPI flash. Currently SPI boot
@@ -252,8 +261,8 @@ Below is an example of running a diagnostic application:
 
 | 
 
-.. rubric:: Running or debugging on CCS
-   :name: running-or-debugging-on-ccs
+Running or debugging on CCS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To debug your application, CCS can give you access to the chip's memory
 and register values. You can follow the below steps to load and run an
@@ -302,8 +311,8 @@ Note: On omapl13x platforms diagnostic tests can only be run from CCS as
 SBL support is not available at this point. Diagnostics are built for
 both DSP (C674x) and ARM (arm9) cores on omapl13x platform.
 
-.. rubric:: Running on a different ARM core
-   :name: running-on-a-different-arm-core
+Running on a different ARM core
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The diagnostic baremetal applications are typically targeted for Core 0
 of an ARM corepac. It is possible to load and run it on one of the
@@ -318,369 +327,422 @@ subcores in CCS. To do so, please consider the following:
    Scripts -> AM572x PRCM CLOCK configuration ->
    AM572x_PRCM_Clock_Config_OPPHIGH (similarly named for AM571x).
 
-.. rubric:: Diagnostic Applications
-   :name: diagnostic-applications
+Diagnostic Applications
+-----------------------------
    
 
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                      Name                       |    Description    | GP     | IDK           | IDK    | EVM | ICE | EVM    | SK     | BBB    | ICEv2  | EVM    | SK     | IDK    | EVM      | ICE     |
-|                                                 |                   | AM572x | AM572x/AM574x | AM571x | K2G | K2G | AM335x | AM335x | AM335x | AM335x | AM437x | AM437x | AM437x | OMAPL137 | AMIC110 |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+=================================================+===================+========+===============+========+=====+=====+========+========+========+========+========+========+========+==========+=========+
-|                                                 | Test for device   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    lcdTouchscreen_diagExample_<BOARD>_armv7.out | detection and     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | read the X, Y     |        |               |        |     |     |    x   |  x     |        |        |  x     |  x     |        |          |         |
-|                                                 | and Z axis        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | values to confirm |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | values within     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | range.            |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Test for ADC      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |      
-|    adc_<BOARD>_armv7.out                        | configuration for |        |               |        |     |     |    x   |  x     |        |        |    x   |  x     |        |          |         |
-|                                                 | Channel sequencing|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | and One shot mode |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | operation.        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Test for device   |        |               |        |     |     |        |        |        |        |        |        |        |          |         | 
-|    ambient_light_sensor_<BOARD>_armv7.out       | detection on board|        |               |        |     |     |    x   |        |        |        |    x   |        |        |          |         |
-|                                                 | and working of    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | the light sensor. |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Writes to GPIO in |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    buzzer_diagExample_<BOARD>_armv7.out         | connected to a    |        |               |        |     |     |    x   |        |        |        |    x   |        |        |          |         |
-|                                                 | buzzer. Requires  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | user to verify    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | sound             |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Probes the clock  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    clock_generator_diagExample_<BOARD>_armv7.out| generator on      |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 | I2C bus           |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Read voltage      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    current_monitor_diagExample_<BOARD>_armv7.out| current on I2C    |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 | devices           |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Does DCAN loopback|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    dcan_diagExample_<BOARD>_armv7.out           | writes and reads. |        |     x         |    x   |  x  |     |        |        |        |        |        |        |        |          |         |
-|                                                 | Passes on         |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | successful return.|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Reads the EEPROM  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    eeprom_diagExample_<BOARD>_armv7.out         | and prints out the|    x   |     x         |    x   |  x  |  x  |    x   |    x   |    x   |     x  |    x   |    x   |    x   |          |    x    |
-|                                                 | board's ID        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | information.      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | Passes on         |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | successful I2C    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | reads. EEPROM will|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | need to be        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | programmed prior  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | in order for a    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | correct read.     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Sends packet o    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    emac_diagExample_<BOARD>_armv7.out           | PHY loopback t    |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 | verify MAC        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | operations        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Writes to and read|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    emmc_diagExample_<BOARD>_armv7.out           | from eMMC memory. |    x   |    x          |  x     |  x  |     |        |        |        |        |        |        |        |          |         |
-|                                                 | Passes on reading |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | back the correct  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | value as the one  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | written           |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | The main          |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    framework_<BOARD>_armv7.out                  | diagnostic        |    x   |     x         |    x   |  x  |  x  |    x   |    x   |    x   |     x  |    x   |    x   |    x   |          |    x    |
-|                                                 | application. This |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | is loaded by SBL  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | and can load other|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | diagnostic        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | applications on   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | the SD card.      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Sends and receive |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    gmac_diagExample_<BOARD>_armv7.out           | packets over      |        |    x          |    x   |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | ethernet, both    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | internally and    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | externally. Passes|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | on receiving all  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | packets.          |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Writes to the GPIO|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    haptics_diagExample_<BOARD>_armv7.out        | pin connected to a|        |    x          |  x     |     |     |        |        |        |        |   x    |        |        |          |         |
-|                                                 | motor (haptics).  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | Requires user to  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | verify that the   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | motor is active.  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests HDMI        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    hdmi_diagExample_<BOARD>_armv7.out           | display output    |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Configures one    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    icssEmac_diagExample_<BOARD>_armv7.out       | ICSS EMAC port    |        |     x         |  x     |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | and tests         |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | functionality via |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | packet loopback.  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests GPIO over   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    ioexpGpio_diagExample_<BOARD>_armv7.out      | the IO expander   |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests I2C over    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    ioexpI2c_diagExample_<BOARD>_armv7.out       | the IO expander   |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Cycles through    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    ioexpLed_diagExample_<BOARD>_armv7.out       | the LEDs on the   |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 | IO expander       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests LCD display |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    lcd_diagExample_<BOARD>_armv7.out            | output            |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Prompts the user  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    lcdTouchscreen_diagExample_<BOARD>_armv7.out | for touches on the|        |     x         |   x    |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | LCD touchscreen   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | and report back   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | its location.     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | Requires user to  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | input 9           |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | simultaneous      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | touches to        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | verify pass.      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Cycles through    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    led_diagExample_<BOARD>_armv7.out            | GPIO LEDs on the  |    x   |     x         |   x    |  x  |  x  |    x   |    x   |   x    |   x    |    x   |    x   |    x   |          |    x    |
-|                                                 | board. Requires   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | user to verify    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | the LEDs blink.   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Cycles through the|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    ledIndustrial_diagExample_<BOARD>_armv7.out  | I2C LEDs on the   |        |     x         |   x    |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 | board. Requires   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | user to verify    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | LEDs blink.       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Attempts one      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    mcspi_diagExample_<BOARD>_armv7.out          | write and read on |        |     x         |   x    |     |     |        |        |        |        |        |        |    x   |          |    x    |
-|                                                 | the MCSPI header. |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | Requires user to  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | verify the value  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | being read back   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | is as expected.   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Writes and reads  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    mem_diagExample_<BOARD>_armv7.out            | to external (DDR) |   x    |     x         |    x   |  x  |  x  |    x   |   x    |   x    |   x    |    x   |    x   |    x   |          |    x    |
-|                                                 | memory of the     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | board. Value      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | written/read is   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | the address of    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | the word. This is |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | done two times,   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | for value and     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | ~value            |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | (complement), to  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | test for all bits.|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Writes to and     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    mmcsd_diagExample_<BOARD>_armv7.out          | read from MMCSD   |   x    |     x         |    x   |     |     |    x   |   x    |   x    |   x    |    x   |    x   |    x   |          |         |
-|                                                 | memory. Passes on |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | reading back the  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | correct value as  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | the one written   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests reading and |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    nand_diagExample_<BOARD>_armv7.out           | writing to NAND   |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
-|                                                 | flash memory      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests reading and |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    norflash_diagExample_<BOARD>_armv7.out       | writing to NOR    |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
-|                                                 | flash memory      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Light up the OLED |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    oled_display_diagExample_<BOARD>_armv7.out   | display to verify |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 | functionality     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Writes and reads  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    pmic_diagExample_<BOARD>_armv7.out           | to the PMIC       |   x    |     x         |    x   |     |     |     x  |    x   |    x   |   x    |    x   |    x   |        |          |         |
-|                                                 | controller. This  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | is to verify      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | ability to use    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | I2C to control    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | PMIC. Test passes |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | on successful read|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | and write.        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests the Quad    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    qspi_diagExample_<BOARD>_armv7.out           | SPI by writing    |        |     x         |    x   |  x  |  x  |        |        |        |        |        |    x   |        |          |         |
-|                                                 | and reading back  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | the value written |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | to memory. Test   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | passes on correct |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | data read back.   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests the rotary  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    rotary_switch_diagExample_<BOARD>_armv7.out  | switch at the     |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 | 10 possible       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | positions         |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Test for setting  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    rtc_<BOARD>_armv7.out                        | date and time to  |        |               |        |     |     |    x   |    x   |    x   |    x   |    x   |    x   |    x   |          |         |
-|                                                 | RTC registers and |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | running the clock |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests reading     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    temperature_diagExample_<BOARD>_armv7.out    | back from         |   x    |               |        |  x  |     |    x   |        |        |        |    x   |        |        |          |         |
-|                                                 | temperature sensor|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | via I2C. Test     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | passes on         |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | successful I2C    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | reads.            |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests uart        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    uart2usb_diagExample<BOARD>_armv7.out        | messages over usb |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
-|                                                 | port.             |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Data Path         |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    uart_diagExample_<BOARD>_armv7.out           | continuity test   |   x    |    x          |    x   |  x  |  x  |    x   |    x   |    x   |    x   |    x   |     x  |    x   |          |         |
-|                                                 | for UART output.  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | Requires user to  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | verify that       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | outputs do appear |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | on console.       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | On-board          |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    mcasp_diagExample_<BOARD>_<CORE>.out         | audio codec       |        |               |        |  x  |     |        |        |        |        |        |        |        |    x     |         |
-|                                                 | functionality is  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | exercised by this |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | test. Audio       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | supplied at EVM   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | audio input port  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | will loopback to  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | audio output port.|        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | This test is      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | intended to       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | demonstrate       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | baremetal         |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | functionality of  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | mcasp, edma3 and  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | i2c CSL modules   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | without depending |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | on the LLD        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | libraries. No     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | console output is |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | supported by this |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | test.             |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Multi-channel     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    mcaspAudioDC_diagExample_<BOARD>_<CORE>.out  | audio daughter    |        |               |        |     |     |        |        |        |        |        |        |        |    x     |         |
-|                                                 | card              |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | functionality is  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | exercised by      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | this test. Audio  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | supplied at audio |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | DC input ports    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | will loopback to  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | audio DC output   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | ports. This test  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | is intended to    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | demonstrate bare  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | metal             |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | functionality of  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | mcasp, edma3 and  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | spi CSL modules   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | without depending |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | on the LLD        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | libraries. No     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | console output is |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | supported by      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | this test.	      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Demonstrates the  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    pwm_diagExample_<BOARD>_<CORE>.out           | usage of PWM CSL  |   x    |               |        |  x  |     |    x   |        |        |        |        |        |    x   |          |         |
-|                                                 | FL APIs by        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | configuring the   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | PWM module to     |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | generate a pulse  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | of 1KHz with      |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | different         |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | duty cycle - 25,  |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 | 50 and 75%.       |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                      Name                       |    Description    | AM65xx | AM65xx | GP     | IDK           | IDK    | EVM | ICE | EVM    | SK     | BBB    | ICEv2  | EVM    | SK     | IDK    | EVM      | ICE     |
+|                                                 |                   | EVM    | IDK    | AM572x | AM572x/AM574x | AM571x | K2G | K2G | AM335x | AM335x | AM335x | AM335x | AM437x | AM437x | AM437x | OMAPL137 | AMIC110 |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++=================================================+===================+========+========+========+===============+========+=====+=====+========+========+========+========+========+========+========+==========+=========+
+|                                                 | Test for device   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    lcdTouchscreen_TEST                          | detection and     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | read the X, Y     |        |        |        |               |        |     |     |    x   |  x     |        |        |  x     |  x     |        |          |         |
+|                                                 | and Z axis        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | values to confirm |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | values within     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | range.            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Test for ADC      |   x    |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |      
+|    adc_TEST                                     | configuration for |        |        |        |               |        |     |     |    x   |  x     |        |        |    x   |  x     |        |          |         |
+|                                                 | Channel sequencing|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and One shot mode |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | operation.        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Test for device   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         | 
+|    ambient_TEST                                 | detection on board|        |        |        |               |        |     |     |    x   |        |        |        |    x   |        |        |          |         |
+|                                                 | and working of    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the light sensor. |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Writes to GPIO in |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    buzzer_TEST                                  | connected to a    |        |        |        |               |        |     |     |    x   |        |        |        |    x   |        |        |          |         |
+|                                                 | buzzer. Requires  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | user to verify    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | sound             |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Probes the clock  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    clock_TEST                                   | generator on      |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 | I2C bus           |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Read voltage      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    current_TEST                                 | current on I2C    |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 | devices           |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Does DCAN loopback|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    dcan_TEST                                    | writes and reads. |        |        |        |     x         |    x   |  x  |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Passes on         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | successful return.|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Reads the EEPROM  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    eeprom_TEST                                  | and prints out the|    x   |    x   |    x   |     x         |    x   |  x  |  x  |    x   |    x   |    x   |     x  |    x   |    x   |    x   |          |    x    |
+|                                                 | board's ID        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | information.      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Passes on         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | successful I2C    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | reads. EEPROM will|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | need to be        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | programmed prior  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | in order for a    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | correct read.     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Sends packet o    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    emac_TEST                                    | PHY loopback t    |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 | verify MAC        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | operations        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Writes to and read|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    emmc_TEST                                    | from eMMC memory. |    x   |    x   |    x   |    x          |  x     |  x  |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Passes on reading |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | back the correct  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | value as the one  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | written           |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | The main          |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    app                                          | diagnostic        |    x   |    x   |    x   |     x         |    x   |  x  |  x  |    x   |    x   |    x   |     x  |    x   |    x   |    x   |          |    x    |
+|                                                 | application. This |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | is loaded by SBL  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and can load other|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | diagnostic        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | applications on   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the SD card.      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Sends and receive |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    gmac_TEST                                    | packets over      |        |        |        |    x          |    x   |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | ethernet, both    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | internally and    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | externally. Passes|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | on receiving all  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | packets.          |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Writes to the GPIO|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    haptics_TEST                                 | pin connected to a|        |        |        |    x          |  x     |     |     |        |        |        |        |   x    |        |        |          |         |
+|                                                 | motor (haptics).  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Requires user to  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | verify that the   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | motor is active.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests HDMI        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    hdmi_TEST                                    | display output    |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Configures one    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    icssEmac_TEST                                | ICSS EMAC port    |        |        |        |     x         |  x     |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and tests         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | functionality via |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | packet loopback.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests GPIO over   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    ioexpGpio_TEST                               | the IO expander   |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests I2C over    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    ioexpI2c_TEST                                | the IO expander   |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Cycles through    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    ioexpLed_TEST                                | the LEDs on the   |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 | IO expander       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests LCD display |   x    |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    lcd_TEST                                     | output            |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Prompts the user  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    lcdTouchscreen_TEST                          | for touches on the|        |        |        |     x         |   x    |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | LCD touchscreen   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and report back   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | its location.     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Requires user to  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | input 9           |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | simultaneous      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | touches to        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | verify pass.      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Cycles through    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    led_TEST                                     | GPIO LEDs on the  |    x   |    x   |    x   |     x         |   x    |  x  |  x  |    x   |    x   |   x    |   x    |    x   |    x   |    x   |          |    x    |
+|                                                 | board. Requires   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | user to verify    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the LEDs blink.   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Cycles through the|   x    |   x    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    ledIndustrial_TEST                           | I2C LEDs on the   |        |        |        |     x         |   x    |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 | board. Requires   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | user to verify    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | LEDs blink.       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Attempts one      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    mcspi_TEST                                   | write and read on |        |        |        |     x         |   x    |     |     |        |        |        |        |        |        |    x   |          |    x    |
+|                                                 | the MCSPI header. |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Requires user to  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | verify the value  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | being read back   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | is as expected.   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Writes and reads  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    mem_TEST                                     | to external (DDR) |   x    |   x    |   x    |     x         |    x   |  x  |  x  |    x   |   x    |   x    |   x    |    x   |    x   |    x   |          |    x    |
+|                                                 | memory of the     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | board. Value      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | written/read is   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the address of    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the word. This is |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | done two times,   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | for value and     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | ~value            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | (complement), to  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | test for all bits.|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Writes to and     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    mmcsd_TEST                                   | read from MMCSD   |   x    |   x    |   x    |     x         |    x   |     |     |    x   |   x    |   x    |   x    |    x   |    x   |    x   |          |         |
+|                                                 | memory. Passes on |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | reading back the  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | correct value as  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the one written   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests reading and |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    nand_TEST                                    | writing to NAND   |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
+|                                                 | flash memory      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests reading and |   x    |   x    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    norflash_TEST                                | writing to NOR    |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
+|                                                 | flash memory      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Light up the OLED |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    oled_TEST                                    | display to verify |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 | functionality     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Writes and reads  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    pmic_TEST                                    | to the PMIC       |   x    |   x    |   x    |     x         |    x   |     |     |     x  |    x   |    x   |   x    |    x   |    x   |        |          |         |
+|                                                 | controller. This  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | is to verify      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | ability to use    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | I2C to control    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | PMIC. Test passes |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | on successful read|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and write.        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests the Quad    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    qspi_TEST                                    | SPI by writing    |        |        |        |     x         |    x   |  x  |  x  |        |        |        |        |        |    x   |        |          |         |
+|                                                 | and reading back  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the value written |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | to memory. Test   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | passes on correct |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | data read back.   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests the rotary  |        |   x    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    rotary_TEST                                  | switch at the     |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
+|                                                 | 10 possible       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | positions         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Test for setting  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    rtc_TEST                                     | date and time to  |        |        |        |               |        |     |     |    x   |    x   |    x   |    x   |    x   |    x   |    x   |          |         |
+|                                                 | RTC registers and |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | running the clock |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests reading     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    temperature_TEST                             | back from         |   x    |   x    |   x    |               |        |  x  |     |    x   |        |        |        |    x   |        |        |          |         |
+|                                                 | temperature sensor|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | via I2C. Test     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | passes on         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | successful I2C    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | reads.            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests uart        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    uart2usb_TEST                                | messages over usb |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
+|                                                 | port.             |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Data Path         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    uart_TEST                                    | continuity test   |   x    |   x    |   x    |    x          |    x   |  x  |  x  |    x   |    x   |    x   |    x   |    x   |     x  |    x   |          |         |
+|                                                 | for UART output.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Requires user to  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | verify that       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | outputs do appear |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | on console.       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | On-board          |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    mcasp_TEST                                   | audio codec       |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |    x     |         |
+|                                                 | functionality is  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | exercised by this |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | test. Audio       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | supplied at EVM   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | audio input port  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | will loopback to  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | audio output port.|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | This test is      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | intended to       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | demonstrate       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | baremetal         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | functionality of  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | mcasp, edma3 and  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | i2c CSL modules   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | without depending |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | on the LLD        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | libraries. No     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | console output is |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | supported by this |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | test.             |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Multi-channel     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    mcaspAudioDC_TEST                            | audio daughter    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |    x     |         |
+|                                                 | card              |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | functionality is  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | exercised by      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | this test. Audio  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | supplied at audio |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | DC input ports    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | will loopback to  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | audio DC output   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | ports. This test  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | is intended to    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | demonstrate bare  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | metal             |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | functionality of  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | mcasp, edma3 and  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | spi CSL modules   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | without depending |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | on the LLD        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | libraries. No     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | console output is |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | supported by      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | this test.	      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Demonstrates the  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    pwm_TEST                                     | usage of PWM CSL  |   x    |   x    |   x    |               |        |  x  |     |    x   |        |        |        |        |        |    x   |          |         |
+|                                                 | FL APIs by        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | configuring the   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | PWM module to     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | generate a pulse  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | of 1KHz with      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | different         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | duty cycle - 25,  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | 50 and 75%.       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Verifies the USB  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    usbDevice_TEST                               | device mode       |   x    |   x    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | operation of      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | board under test. |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | USB modules       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | operates at high  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | speed (2.0)       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Board is exposed  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | as USB MSC device |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | to host PC during |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the test.         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Verifies the USB  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    usbHost_TEST                                 | host mode         |   x    |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | operation of      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | boardf under test.|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | USB modules       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | operates at high  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | speed (2.0)       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | during the test.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | File write/read   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and data          |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | verification on   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the connected USB |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | device is done    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | during the test   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests the Octal   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    ospi_TEST                                    | SPI by writing    |   x    |   x    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and reading back  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the value written |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | to memory. Test   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | passes on correct |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | data read back.   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Tests the PCIe    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    pcie_TEST                                    | interface in      |   x    |   x    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | end point and     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | rootcomplex mode  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | using two boards. |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Data is sent from |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | one board to other|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and sent it back  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | to the first board|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | for verification. |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Verifies boot     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    bootEeprom_TEST                              | EEPROM by writing |    x   |    x   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | a block of data,  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | reading back      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | written data      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | for correctness.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 
 | Some diagnostic applications expect additional jumpers or hardware
   settings to complete. Refer to below section.
 
-.. rubric:: Additional Jumper or Hardware Settings
-   :name: additional-jumper-or-hardware-settings
+Additional Jumper or Hardware Settings
+----------------------------------------
 
-.. rubric:: Current Monitor
-   :name: current-monitor
+Current Monitor
+^^^^^^^^^^^^^^^^
 
 For iceK2G, this test expects J16 and J17 to be connected with jumper
 shunts. This enables the current monitors to be used.
 
-.. rubric:: GMAC
-   :name: gmac
+GMAC
+^^^^^
 
 For idkAM572x, idkAM571x, idkAM574x and evmAM572x, this test expects
 loopback plugs to be used on both Ethernet ports. These loopback plugs
 will loopback the TX lines back to the RX lines. The Ethernet ports are
 the RJ-45 connectors labeled "Ethernet" on the board.
 
-.. rubric:: ICSS EMAC
-   :name: icss-emac
+ICSS EMAC
+^^^^^^^^^^
 
 For idkAM572x, idkAM574x and idkAM571x, this test expects loopback plug
 to be used on J6. These loopback plugs will loopback the TX lines back
 to the RX lines. For iceK2G, this test expects loopback plugs to be used
 on all four ICSS EMAC ports.
 
-.. rubric:: LCD Touchscreen
-   :name: lcd-touchscreen
+LCD Touchscreen
+^^^^^^^^^^^^^^^^^^
 
 For idkAM572x, idkAM574x and idkAM571x, this test expects the LCD module
 to be connected. This requires the two ribbon cables (one for display,
 one for the capacitive-touch IC) to be connected.
 
-.. rubric:: McSPI
-   :name: mcspi
+McSPI
+^^^^^^^
 
 For idkAM572x, idkAM574x and idkAM571x, this test expects pins to be
 connected to the Industrial I/O header. The Industrial I/O header, J37,
@@ -690,8 +752,8 @@ read on that McSPI input. By connecting the first, second, third, and
 forth row with jumpers would yield 0x1, 0x2, 0x4, and 0x8 being read
 respectively.
 
-.. rubric:: PWM
-   :name: pwm
+PWM
+^^^^^
 
 PWM output generated while running the diagnostic test can be verified
 at below pins.
