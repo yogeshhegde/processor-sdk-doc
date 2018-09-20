@@ -35,7 +35,7 @@ Click Finish after you are done to allow CCS to auto generate the
 project from the template.
 
 
-.. Image:: ../images/AM65x_Create_CCS_Project.png
+.. Image:: ../images/AM65x_Create_CCS_Project.PNG
 
 
 5. The generated CCS project contains source file **main.c**, ARM assembly code **startup_ARMCA53.S** and a linker command file **AM65X.lds**. 
@@ -543,7 +543,7 @@ After connecting to the M3, right click on **MCU_PULSAR_Cortex_R5_0** and connec
 11. Load and run hello_world.out example file on the Cortex-A53. 
 You should see a Hello_world string displayed in the CCS console window.
 
-.. Image:: ../images/AM65x_CCS_Hello_World_R5.png
+.. Image:: ../images/AM65x_CCS_Hello_World_R5.PNG
 
 | 
 
