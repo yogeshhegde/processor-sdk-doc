@@ -220,7 +220,6 @@ Rebuild NDK
 -  `Rebuild
    NDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_NDK_Core_Using_Gmake>`__
 
-
 Rebuild SYS/BIOS
 -----------------
 -  `Rebuild

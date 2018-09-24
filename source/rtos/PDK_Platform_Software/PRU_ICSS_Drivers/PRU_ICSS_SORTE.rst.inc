@@ -1,6 +1,6 @@
 
-.. rubric::  Introduction
-   :name: introduction
+Introduction
+============
 
 | The Simple Open Real-time Ethernet protocol (SORTE) serves as an
   example for Texas Instruments programmable approach to real-time
@@ -14,8 +14,8 @@
   different end-equipment using Ethernet physical layer devices and 100
   Mbit Ethernet cable.
 
-.. rubric:: Protocol Overview
-   :name: protocol-overview
+Protocol Overview
+=================
 
 The SORTE protocol is a TI-developed industrial Ethernet protocol that
 supports 4-µs cycle time. The SORTE protocol operates on the PRU-ICSS,
@@ -28,8 +28,8 @@ and one or more slave devices. For in depth details of the protocol
 please refer to the the design documents as listed in the References
 section below.
 
-.. rubric::  Code Organization
-   :name: code-organization
+Code Organization
+=================
 
 THE SORTE ARM application and firmware sources can be found under the
 following directory :
@@ -49,11 +49,11 @@ compoments which can be found at:
 
 | 
 
-.. rubric::  Building the Examples
-   :name: building-the-examples
+Building the Examples
+=====================
 
-.. rubric::  Pre-requisites to Building
-   :name: pre-requisites-to-building
+Pre-requisites to Building
+--------------------------
 
 #. Set your environment using pdksetupenv.sh. Building the Firmware
    binaries and ARM application uses the same environment variables as
@@ -61,8 +61,8 @@ compoments which can be found at:
    Building <Overview.html#building-the-sdk>`__ page for
    information on setting up your build environment.
 
-.. rubric::  Compiling the PRUSS SORTE Firmware
-   :name: compiling-the-pruss-sorte-firmware
+Compiling the PRUSS SORTE Firmware
+----------------------------------
 
 To build the SORTE firmware binaries:
 
@@ -75,8 +75,8 @@ This will make the firmware binaries which will be located in:
 
 | 
 
-.. rubric::  Compiling the PRUSS SORTE Application
-   :name: compiling-the-pruss-sorte-application
+Compiling the PRUSS SORTE Application
+-------------------------------------
 
 To build the SORTE ARM applications:
 
@@ -92,8 +92,8 @@ which will be located in:
 
 | 
 
-.. rubric::  Supported EVMs
-   :name: supported-evms
+Supported EVMs
+==============
 
 The following is a list of EVMS supported and the PRU-ICSS ethernet
 ports to be used:
@@ -114,8 +114,8 @@ ports to be used:
 
 | 
 
-.. rubric::  Running the PRUSS SORTE Example
-   :name: running-the-pruss-sorte-example
+Running the PRUSS SORTE Example
+===============================
 
 In order to run the SORTE applications, you will require 1 EVM running
 as master and 2 EVMs running as slave(slave1/slave2). Use CCS to load
@@ -156,8 +156,8 @@ print will be displayed on UART console:
 
 | 
 
-.. rubric::  Additional Reference
-   :name: additional-reference
+Additional Reference
+====================
 
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |

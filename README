@@ -17,12 +17,21 @@ clone the git repo
 ******************
 git clone ssh://git@bitbucket.itg.ti.com/processor-sdk/processor-sdk-doc.git
 
-******************
-Update submodule to get the theme files from swtoolsdev
-******************
+*******************************************
+Get the theme files from swtoolsdev: Ubuntu
+*******************************************
+Update submodule:
 cd processor-sdk-doc
 git submodule init
 git submodule update
+
+********************************************
+Get the theme files from swtoolsdev: Windows
+********************************************
+git clone ssh://git@bitbucket.itg.ti.com/swtools/swtoolsdev.git
+xcopy /e .\swtoolsdev\src\doc\etc\doc_guide\sphinx_rtd_theme_ti\*.* .\processor-sdk-doc\source\_themes\sphinx_rtd_theme_ti
+copy .\swtoolsdev\src\doc\etc\doc_guide\theme_overrides.css .\processor-sdk-doc\source\_static\theme_overrides.css
+cd processor-sdk-doc
 
 
 *****************************

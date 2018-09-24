@@ -111,7 +111,6 @@ Modify /opt/ros/indigo/setup.bash
         export PYTHONPATH=/usr/lib/python3.5/site-packages:/opt/ros/indigo/lib/python3.5/site-packages
         export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311
         export ROS_IP=$SITARA_IP_ADDR
-        export ROS_HOSTNAME=$SITARA_IP_ADDR
         export CMAKE_PREFIX_PATH=/opt/ros/indigo
         export ROS_PACKAGE_PATH=/opt/ros/indigo/share
         touch /opt/ros/indigo/.catkin
@@ -153,7 +152,6 @@ You will see log similar to following:
 
          export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311
          export ROS_IP=$LINUXBOX_IP_ADDR
-         export ROS_HOSTNAME=$LINUXBOX_IP_ADDR
          source /opt/ros/indigo/setup.bash
          rosrun roscpp_tutorials listener
 
@@ -371,7 +369,6 @@ Setup ROS variables on Ubuntu Linux box (to enable communication with ROS host o
 
 	export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311 (IP address of Sitara EVM, modify as needed)
 	export ROS_IP=$LINUX_BOX_IP_ADDR (IP address of Ubuntu Linux box, modify as needed)
-	export ROS_HOSTNAME=$SITARA_IP_ADDR (IP address of Ubuntu Linux box, modify as needed)
 	source /opt/ros/indigo/setup.bash
 	
         rosrun rviz rviz

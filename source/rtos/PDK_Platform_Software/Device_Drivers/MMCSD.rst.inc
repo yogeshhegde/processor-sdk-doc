@@ -43,7 +43,7 @@ UART pins are required before calling any driver APIs.By default
 Board_Init() API supports all initialization sequence for TI supported
 EVMs. In addition it initializes UART instance for Console/STDIO.Refer
 `Processor SDK RTOS Board
-Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__ for
+Support <Board_EVM_Abstration.html#board-support>`__ for
 additional details.Once board specific configuration is complete 
 MMCSD_init() API can be called to initialize driver.
 

@@ -3,14 +3,13 @@
 Introduction
 ============
 
-This page describes a demo implementation of performance audio 
-applications developed with Processor SDK RTOS on 66AK2Gx platform. This demo 
-implements and integrates audio I/O, framework, auto-detection, decoding, audio stream 
-processing (ASP) and encoding - the fundational building blocks of any 
-performance audio application. The block diagram below shows the structure of the demo. 
- 
+This page describes the performance audio demo, developed within Processor SDK RTOS on 66AK2Gx platform. 
+This demo implements and integrates audio I/O, framework, auto-detection, decoding, audio stream 
+processing (ASP) and encoding - the foundational building blocks of any performance audio application. 
+The system block diagram below shows the structure of the demo.
+
 .. Image:: ../images/pa_k2g_layout.png
-	:scale: 50 %
+	:scale: 100 %
 
 This demo utilizes Processor SDK features/components:
 
@@ -116,6 +115,7 @@ Limitations:
 
 Run-time Reconfiguration (in Windows only)
 ------------------------------------------
+Please make sure src/setup_build_env/setup_env.bat and tools/setup.bat have both been run to setup the tools path. 
 
 Output volume can be changed at run-time via Python scripts through UART:
 
@@ -194,7 +194,7 @@ Problems may be encountered when setting up or running the demo. Here are some c
 1.  Sound doesn't come out of the speakers:
 
    -  Make sure the audio daughter card (and HDMI repeater card if used) is connected well. The `PDK addon audio loopback test 
-      <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_AUDK2G_AddOn>`__ can be run to verify the setup of EVM and audio daughter card. 
+      <Examples_and_Demonstrations.html#k2g-audio-dc-addon>`__ can be run to verify the setup of EVM and audio daughter card. 
    -  In CCS Expressions window, enter variable "asipLoopCount1" and check if it is incrementing. If not, terminate the debug session, power cycle 
       the EVM, and restart. 
 

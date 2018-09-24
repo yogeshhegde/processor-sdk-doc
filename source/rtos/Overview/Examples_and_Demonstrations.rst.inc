@@ -119,7 +119,7 @@ X
 
 X
 
-:ref:`Audio Benchmark Starterkit <Demo-Audio-Benchmark-Starterkit-label>`
+`Audio Benchmark Starterkit <Examples_and_Demonstrations.html#audio-benchmark-starterkit>`__
 
 The Audio Benchmark starter-kit demonstration provides quick and easy
 way to run core-benchmarks on the DSP for algorithms that are commonly
@@ -135,7 +135,7 @@ X
 
 X
 
-:ref:`Audio Pre-Processing Demo <Demo-Audio-Pre-Processing-Demo-label>`
+`Audio Pre-Processing Demo <Examples_and_Demonstrations.html#audio-pre-processing-demo>`__
 
 The Audio Pre-Processing demonstration provides an example for speech
 recognition application development by illustrating the integration of
@@ -148,7 +148,7 @@ X
 
 X
 
-:ref:`Big Data IPC Example <Demo-Big-Data-IPC-Example-label>`
+`Big Data IPC Example <Examples_and_Demonstrations.html#big-data-ipc-example>`__
 
 The big data ipc examples are created mainly to show exchange of big
 data buffers between cores in a multi core system.
@@ -165,7 +165,7 @@ X
 
 X
 
-:ref:`TI-RTOS Kernel Example <Demo-TI-RTOS-Kernel-Example-label>`
+`TI-RTOS Kernel Example <Examples_and_Demonstrations.html#ti-rtos-kernel-example>`__
 
 The RTOS examples gets user started with development of code using the
 TI-RTOS real-time operating system. These are simple examples that does
@@ -205,7 +205,7 @@ X
 
 X
 
-:ref:`No OS (Bare Metal) Example <Demo-Bare-Metal-Example-label>`
+`No OS (Bare Metal) Example <Examples_and_Demonstrations.html#no-os-bare-metal-example>`__
 
 The bare-metal examples gets user started with development of code
 without an operating system. These are simple examples that does not get
@@ -247,7 +247,7 @@ X
 
 X
 
-:ref:`Gravity Simulator Demo <Demo-Gravity-Simulator-Demo-label>`
+`Gravity Simulator Demo <Examples_and_Demonstrations.html#gravity-simulator-demo>`__
 
 The RTOS Gravity Simulator Demo demonstrates the usage of an open
 sourced library combined with RTOS drivers to create a vibrant display.
@@ -256,7 +256,7 @@ both variable and updated continuously.
 
 X
 
-:ref:`RTOS Template Application <Demo-RTOS-Template-Application-label>`
+`RTOS Template Application <Examples_and_Demonstrations.html#rtos-template-application>`__
 
 The RTOS template application is intended for customers to use as a
 starting point during software development using Processor SDK RTOS

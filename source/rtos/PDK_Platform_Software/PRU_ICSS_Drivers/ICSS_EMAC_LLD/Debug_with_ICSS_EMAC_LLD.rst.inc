@@ -1,10 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^^^
 
 This is a companion guide to `ICSS EMAC Developer
-Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide>`__,
+Guide <Device_Drivers.html#development-with-icss-emac-driver>`__,
 if you have not read the developer guide it's highly suggested that you
 do so.
 
@@ -22,8 +22,8 @@ covers most of the ethernet driver/firmware issues and goes a long way
 in the understanding of other industrial protocol implementations. This
 applies to debug guide as well.
 
-.. rubric:: Assumption
-   :name: assumption
+Assumption
+"""""""""""
 
 Assumptions are same as those in developer guide. A basic understanding
 of ICSS Architecture and SoC is assumed, some level of familiarity with
@@ -35,19 +35,19 @@ familiarity with the following tools is also assumed.
 -  Wireshark or any other packet sniffing tool
 -  Any PC based tool capable of sending packets
 
-.. rubric:: Scope of the document
-   :name: scope-of-the-document
+Scope of the document
+""""""""""""""""""""""
 
 This document is meant to help the developer
 
 -  Familiarize with common debugging tools and techniques
 -  Identify and resolve frequently faced issues
 
-.. rubric:: Common Debugging Tasks
-   :name: common-debugging-tasks
+Common Debugging Tasks
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: Loading and running on CCS
-   :name: loading-and-running-on-ccs
+Loading and running on CCS
+""""""""""""""""""""""""""""
 
 1. Connect JTAG Emulator to EVM in-case of IDK or Connect USB cable to
 board in-case of ICE
@@ -101,17 +101,17 @@ avoid this, put a hardware breakpoint at 0x402f_0400(in case of MMSCD
 boot mode) or 0x30000000(in case of qSPI boot mode) and then do a
 "System Reset". You can then continue with Step 4 after this step.
 
-.. rubric:: Connecting the PRU's
-   :name: connecting-the-prus
+Connecting the PRU's
+"""""""""""""""""""""
 
-.. rubric:: Check Link Status
-   :name: check-link-status
+Check Link Status
+""""""""""""""""""
 
 Link Status is available as an array **linkStatus** in
 **ICSSEMAC_Object**. The status is updated in the Link ISR
 **ICSS_EmacLinkISR**. It's possible that the link interrupt is
 configured incorrectly or MDIO is not triggering the interrupts. (see
-`here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Link_Interrupt>`__
+`here <Device_Drivers.html#link-interrupt>`__
 on how to configure Link Interrupt) In which case one needs to put a
 breakpoint in the ISR **ICSS_EmacLinkISR** and disconnect or connect the
 cable on any one port. The breakpoint should get hit, if it does not
@@ -131,12 +131,11 @@ read incorrectly, if that's the issue then please consult the porting
 guide and reference manual for your PHY to figure out where the issue
 could be.
 
-.. rubric:: Checking if Receive is working
-   :name: checking-if-receive-is-working
+Checking if Receive is working
+"""""""""""""""""""""""""""""""
 
 The receive path has been explained previously in the developer guide.
-See
-`here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Rx_Data_Path>`__.
+See `here <Device_Drivers.html#rx-data-path>`__.
 Rx issues can manifest themselves in several ways, the following table
 covers most of them (not exhaustively!)
 
@@ -180,14 +179,11 @@ perform these steps in order.
 
 #. **Check if Rx is disabled** : It's possible to disable Rx in firmware
    through IOCTL. This is controlled through a location in ICSS memory.
-   See `memory
-   map <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Memory_Map>`__.
+   See `memory map <Device_Drivers.html#memory-map>`__.
    Check this as a very first step. It's not a common error but it's
    possible that user is invoking the IOCTL by mistake.
-#. **Check if firmware is receiving packets** : See statistics
-   `this <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Statistics>`__
-   and
-   `this <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide#Check_Statistics>`__
+#. **Check if firmware is receiving packets** : See statistics `this <Device_Drivers.html#statistics>`__
+   and `this <Device_Drivers.html#check-statistics>`__
    and find out if PRU is receiving the frames. Failure to receive
    frames in firmware can indicate other issues like corrupted frames,
    link negotiation failure or PHY related issues.
@@ -195,14 +191,14 @@ perform these steps in order.
    reasons why Host would not receive packets. Put a break point in
    **ICSS_EmacRxInterruptHandler** and send a single packet using any PC
    based tool. The ISR should get hit. Refer to this
-   `section <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Rx_Interrupt>`__
+   `section <Device_Drivers.html#rx-interrupt>`__
    on how to configure the interrupt properly if interrupt is not being
    asserted.
 #. **Check if Packets are being copied in driver** : If the interrupt is
    asserted but packets do not reach the application, check Host
    statistics to verify if packets are being received correctly in the
    driver. Refer to the
-   `section <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Rx_Data_Path>`__\ on
+   `section <Device_Drivers.html#rx-data-path>`__\ on
    Rx data path and put a breakpoint in **RxTask**. Step through to
    verify that the priority is set correctly and packets are being
    copied properly. If interrupt is being asserted correctly but packet
@@ -214,8 +210,7 @@ perform these steps in order.
    with TCP/IP stack. Refer to `NDK User's
    guide <http://www.ti.com/lit/ug/spru523i/spru523i.pdf>`__ on correct
    usage of sockets. The example socket application provided in the
-   developer guide
-   `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Usage>`__
+   developer guide `here <Device_Drivers.html#usage>`__
    is known to work though. In addition to this check if NDK buffers
    have been allocated correctly. If you are using your own TCP/IP stack
    refer to the Porting Guide and double check.
@@ -224,14 +219,14 @@ perform these steps in order.
    set incorrectly packets may not reach Host at all. Check if storm
    prevention module is enabled by checking the variable
    **suppressionEnabled** for both ports. Refer to
-   `this <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Design_2>`__
+   `this <Device_Drivers.html#id59>`__
    for more details. Additionally one should check the statistics to see
    if the PRU statistics **stormPrevCounter** is getting incremented.
 #. **Check Interface MAC** : The firmware compares the interface MAC
    written to the PRU memory by the Host against the incoming packets
    destination MAC to verify if the packet must be forwarded to Host or
    cut-through. Please refer to the `memory
-   map <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Memory_Map>`__
+   map <Device_Drivers.html#memory-map>`__
    and check if the MAC value is what you are expecting it to be.
 #. **Queue Overflow** : If too many packets are received on a single
    queue without Host emptying them out then overflow may occur, packets
@@ -245,7 +240,7 @@ perform these steps in order.
    rate at which firmware is putting data in the queue. In such a
    scenario first turn on Interrupt pacing to find if it solves the
    issue (interrupt pacing has it's own limitations, refer to
-   `this <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Interrupt_Pacing>`__
+   `this <Device_Drivers.html#interrupt-pacing>`__
    to know more about it), if issue is still not resolved then try to
    find the throughput by comparing the number of packets received on
    the Host vs that in the firmware.
@@ -257,15 +252,15 @@ tested during release to cope with 100% throughput at line rate (960 IPG
 and 64 byte size packet) so any drop in throughput can only be caused by
 additional loading on the CPU. Use UIA which comes SYSBIOS for this
 purpose. Usage given
-`here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide#Checking_the_system_performance_using_UIA>`__
+`here <Device_Drivers.html#checking-the-system-performance-using-uia>`__
 
-.. rubric:: Checking if Transmit is working
-   :name: checking-if-transmit-is-working
+Checking if Transmit is working
+""""""""""""""""""""""""""""""""
 
 Because of it's nature Tx is much more reliable and there are far fewer
 issues related to it when compared to Rx. Transmit issues can be
 classified into two types. See `Tx data
-path <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Tx_Data_Path>`__ for
+path <Device_Drivers.html#tx-data-path>`__ for
 more information.
 
 #. **Cut-through issues** : Packets received on one port and meant to go
@@ -288,8 +283,7 @@ also be used as a checklist for debugging.
    Please check the link status to make sure that this is not the case.
    The Tx API checks for link and will not transmit if the link is down
    so this issue is more relevant to cut-through/store-forward. More on
-   Link status
-   `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide#Check_Link_Status>`__.
+   Link status `here <Device_Drivers.html#check-link-status>`__.
 #. **Incorrect speed** : The link ISR also checks for speed and
    duplexity values. The values are written to in the same ISR
    **ICSS_EmacUpdatePhyStatus**, if the speed is read incorrectly then
@@ -298,8 +292,7 @@ also be used as a checklist for debugging.
    packets as successful transmit but Tx might not actually happen. The
    quickest way to debug this issue is to read the ICSS memory directly
    in CCS memory window. Interface speed is written directly in memory
-   at the offset mentioned in `memory
-   map <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Memory_Map>`__, please
+   at the offset mentioned in `memory map <Device_Drivers.html#memory-map>`__, please
    verify the value (as mentioned in memory map) and compare with the
    actual interface speed.
 #. **Incorrect pinmux for Collision/Carrier Sense** : This is applicable
@@ -312,7 +305,7 @@ also be used as a checklist for debugging.
    recommended that half duplex functionality be disabled. Half Duplex
    functionality is controlled by the variable **halfDuplexEnable**
 #. **Queue contention issues** : Looking at the QoS
-   `scheme <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Quality_of_Service_and_Queues>`__
+   `scheme <Device_Drivers.html#quality-of-service-and-queues>`__
    it's possible that there is a contention for the transmit queue when
    both Host and the opposite port are trying to transmit on the same
    port. In such cases if there are too many packets vying for the
@@ -324,13 +317,13 @@ also be used as a checklist for debugging.
    in such cases put a breakpoint in **ICSS_EmacTxPacket** to see if NDK
    is calling it.
 
-.. rubric:: Check Statistics
-   :name: check-statistics
+Check Statistics
+"""""""""""""""""
 
 Statistics form the core of debugging so this section is very important.
 A brief introduction to statistics has been provided previously in the
 statistics
-`section <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Statistics>`__ of
+`section <Device_Drivers.html#statistics>`__ of
 developer guide. This part explains how to use it for the purpose of
 debugging.
 
@@ -344,21 +337,21 @@ specialized statistics like **rxUnknownProtocol** and **linkBreak**.
 This property can be used to find out how many packets are being
 received in the firmware and how many are reaching Host.
 
-.. rubric:: Getting the values
-   :name: getting-the-values
+Getting the values
+''''''''''''''''''''
 
 Statistics are accessible in three ways
 
 -  **IOCTL calls** : IOCTL calls (including an example) have been
    previously explained
-   `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__ in
+   `here <Device_Drivers.html#ioctl>`__ in
    developer guide.
 -  **Reading directly in memory window** : (This applies only to PRU
    based statistics). Use the statistics `memory
-   map <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Design_3>`__ to find
+   map <Device_Drivers.html#id63>`__ to find
    out the offset and look at the memory directly. Information on how to
    access the ICSS memory is provided
-   `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide#Accessing_Memory>`__.
+   `here <Device_Drivers.html#accessing-memory>`__.
 -  **In CCS watch window** : When using CCS the statistics can be read
    directly through the ICSS EMAC handle. Host statistics are available
    through **hostStat** while PRU statistics are available through
@@ -376,8 +369,8 @@ Statistics are accessible in three ways
 **NOTE :** Since they are void members they need to be typecast to
 access the members in CCS watch window.
 
-.. rubric:: Example Usage
-   :name: example-usage
+Example Usage
+'''''''''''''''
 
 Described below are some scenarios which involve multiple statistics,
 this will help the developer understand how to use statistics.
@@ -404,11 +397,11 @@ fields have been populated)
 | *stormPrevCounter* | NA         | 10,000       | 0            |
 +--------------------+------------+--------------+--------------+
 
-.. rubric:: Accessing Memory
-   :name: accessing-memory
+Accessing Memory
+^^^^^^^^^^^^^^^^^^
 
-.. rubric:: ICSS Shared RAM
-   :name: icss-shared-ram
+ICSS Shared RAM
+"""""""""""""""""
 
 This section explains how to access ICSS memory. The icss_emacSwitch.h
 file contains the offset information.
@@ -451,14 +444,14 @@ For AM437x, the DRAM base addresses are as follows:
 
 | 
 
-.. rubric:: System Debug
-   :name: system-debug
+System Debug
+^^^^^^^^^^^^^^
 
-.. rubric:: SYS/BIOS
-   :name: sysbios
+SYS/BIOS
+"""""""""
 
-.. rubric:: Using ROV to Debug RTOS
-   :name: using-rov-to-debug-rtos
+Using ROV to Debug RTOS
+'''''''''''''''''''''''''
 
 To view ROV tab, goto Tools -> RTOS Object View (ROV) and halt the debug
 session.
@@ -467,8 +460,8 @@ session.
 
 | 
 
-.. rubric:: Checking the system performance using UIA
-   :name: checking-the-system-performance-using-uia
+Checking the system performance using UIA
+'''''''''''''''''''''''''''''''''''''''''''
 
 The UIA (Unified Instrumentation Architecture) is a target-side package
 that provides instrumentation services which can be downloaded from
@@ -523,14 +516,14 @@ different loads.
 
 | 
 
-.. rubric:: Using SYS/BIOS Timer to measure performance
-   :name: using-sysbios-timer-to-measure-performance
+Using SYS/BIOS Timer to measure performance
+'''''''''''''''''''''''''''''''''''''''''''''
 
-.. rubric:: NDK
-   :name: ndk
+NDK
+""""""
 
-.. rubric:: Performing NDK tests
-   :name: performing-ndk-tests
+Performing NDK tests
+''''''''''''''''''''''
 
 The steps to be followed in order to enable NDK Performance Tests are:
 
@@ -566,8 +559,8 @@ to test performance.
 
 | 
 
-.. rubric:: Measuring network performance
-   :name: measuring-network-performance
+Measuring network performance
+'''''''''''''''''''''''''''''''
 
 The network performance can be measured from the console output upon
 running the above tests. Consider the log when send.exe application is
@@ -588,17 +581,17 @@ from 1 to 1472 bytes and test loop should pass.
 
 | 
 
-.. rubric:: Checking NDK Buffers
-   :name: checking-ndk-buffers
+Checking NDK Buffers
+'''''''''''''''''''''
 
-.. rubric:: Frequently Encountered Issues
-   :name: frequently-encountered-issues
+Frequently Encountered Issues
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: Build Issues
-   :name: build-issues
+Build Issues
+"""""""""""""
 
-.. rubric:: Tools compatibility
-   :name: tools-compatibility
+Tools compatibility
+'''''''''''''''''''''
 
 One of the frequent issues faced during build are issues of tools
 compatibility. The SDK build is dependent on NDK, SysBIOS and XDC Tools.
@@ -609,8 +602,8 @@ guide
 (`sample <http://processors.wiki.ti.com/index.php/SYSBIOS_Industrial_SDK_02.01.00.01_User_Guide>`__)
 of every SDK release.
 
-.. rubric:: System Variables
-   :name: system-variables
+System Variables
+''''''''''''''''''
 
 The variable *IA_SDK_HOME* must point to *(place where SDK is
 installed)/public/sdk*, most often than not this is the main reason for
@@ -618,8 +611,8 @@ build issues, especially when multiple SDK's are installed. This
 variable is used everywhere during the build process to select include
 files, libraries, tools etc.
 
-.. rubric:: Migration from 1.1 to 2.1 Industrial SDK
-   :name: migration-from-1.1-to-2.1-industrial-sdk
+Migration from 1.1 to 2.1 Industrial SDK
+'''''''''''''''''''''''''''''''''''''''''
 
 There is a possibility of build issue while migrating from 1.1 to 2.1
 Industrial SDK. The “Debug” folder needs to be removed from the project

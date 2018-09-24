@@ -1,7 +1,7 @@
 .. http://ap-fpdsp-swapps.dal.design.ti.com/index.php/Processor_SDK_RTOS_I2C_FIRMWARE 
 
-.. rubric::  Introduction
-   :name: introduction
+Introduction
+============
 
 | PRU-ICSS-I2C serves as an example for firmware based I2C peripheral
   support. Feature allows additional I2C instances for SOCs. Processor
@@ -9,8 +9,8 @@
 
 | 
 
-.. rubric:: FIRMWARE FEATURES
-   :name: firmware-features
+FIRMWARE FEATURES
+=================
 
 PRU-ICSS-I2C firmware supports standard two pin I2C interface through
 three GPIO pins from PRU-ICSS peripheral. I2C SCL pin for firmware is
@@ -77,8 +77,8 @@ features:
 | mechanism                         |                                   |
 +-----------------------------------+-----------------------------------+
 
-.. rubric::  Code Organization
-   :name: code-organization
+Code Organization
+=================
 
 +-------------------------+--------------------------------------------------+
 | **I2C FW Organization** | **Directory**                                    |
@@ -92,11 +92,11 @@ features:
 
 | 
 
-.. rubric::  Firmware Build Instruction
-   :name: firmware-build-instruction
+Firmware Build Instruction
+==========================
 
-.. rubric::  Build instruction from Processor SDK Release package
-   :name: build-instruction-from-processor-sdk-release-package
+Build instruction from Processor SDK Release package
+----------------------------------------------------
 
 .. rubric::  Pre-requisites to Building
    :name: pre-requisites-to-building
@@ -127,8 +127,8 @@ Firmware binaries at the end of the build will be located at:
 
 | 
 
-.. rubric::  Build instruction for GIT
-   :name: build-instruction-for-git
+Build instruction for GIT
+-------------------------
 
 Following are the steps for building firmware from any external
 environment outside Processor SDK RTOS package.
@@ -168,8 +168,8 @@ environment outside Processor SDK RTOS package.
 
 | 
 
-.. rubric::  Supported EVMs
-   :name: supported-evms
+Supported EVMs
+==============
 
 Following are list supported EVMs along with the pin configurations:
 
@@ -235,8 +235,8 @@ Following are list supported EVMs along with the pin configurations:
 
 | 
 
-.. rubric::  I2C FIRMWARE Example
-   :name: i2c-firmware-example
+I2C FIRMWARE Example
+====================
 
  Sample code for initiating I2C FW transaction:
 

@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2H/E/L 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+^^^^^^^^^
 
 K2H/K2E/K2L EVMs uses the Secondary Boot Loader (SBL) to configure
 board-related settings and execute a user application. The user
@@ -11,11 +11,11 @@ not overlap the memory space that SBL uses.
 
 The K2H/K2E/K2L SBL supports ARM master boot using SPI NOR. Please refer
 to the boot mode dip switch settings in the respective EVM hardware page
-(`link <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions>`__)
+(`link <Release_Specific.html#supported-platforms-and-versions>`__)
 to configure your EVM for NOR boot.
 
-.. rubric:: Flashing the Bootloader
-   :name: flashing-the-bootloader
+Flashing the Bootloader
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 SBL and user application needs to be flashed into SPI NOR.
 
@@ -23,8 +23,8 @@ Refer to `Program EVM Guide <http://processors.wiki.ti.com/index.php/Program_EVM
 instructions on using the script, program_evm.js, to automatically flash
 your device.
 
-.. rubric:: Usage
-   :name: usage
+Usage
+^^^^^^^
 
 #. Flash the bootloader and user application. This can be done
    automatically with default files by using program_evm.js
@@ -33,8 +33,8 @@ your device.
    terminal such as HyperTerminal or TeraTerm to see console output
 #. Power on the EVM
 
-.. rubric:: Compilation
-   :name: compilation
+Compilation
+^^^^^^^^^^^^^
 
 The recommended rule-of-thumb to compiling projects in the Processor SDK
 RTOS package is to use the makefiles provided. The makefiles are usable
@@ -71,8 +71,8 @@ The resulting output will be in [SDK Install
 Path]/pdk_<platform>_<version>/packages/ti/boot/sbl/binary/<platform>/spi/bin
 directory.
 
-.. rubric:: Making Loadable User Application image (app)
-   :name: making-loadable-user-application-image-app
+Making Loadable User Application image (app)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For converting the compiled .out files to a format loadable by TI's
 Secondary Boot Loader (SBL), you must follow these two steps:
@@ -142,18 +142,18 @@ together. Simply use MulticoreImageGen as such:
 **MulticoreImageGen.exe LE 55 [output name] [Core ID a] [rprc output a]
 [Core ID b] [rprc output b] [Core ID c] [rprc output c] ...**
 
-.. rubric:: Flash Writers
-   :name: flash_writers
+Flash Writers
+^^^^^^^^^^^^^^^
 
-.. rubric:: SPI Writer
-   :name: spi_writer
+SPI Writer
+""""""""""""
 
 The SPI flash writer, spi_flash_writer.out, is a part of the SBL package
 and allows users to flash multiple images at different offsets into the
 board's SPI NOR flash memory.
 
-.. rubric:: Compilation
-   :name: _compilation-1
+Compilation
+'''''''''''''
 
 ::
 
@@ -167,8 +167,8 @@ The binary output will be at:
      [SDK Install Path]/pdk_<platform>_<version>/packages/ti/boot/sbl/tools/flashWriter/spi/bin/<platform>
 
 
-.. rubric:: Usage
-   :name: _usage-1
+Usage
+'''''''''
 
 #. Copy the binaries that you want to flash to: [SDK Install
    Path]/pdk_<platform>_<version>/packages/ti/boot/sbl/tools/flashWriter/spi/bin/<platform>
@@ -183,8 +183,8 @@ The binary output will be at:
 
 | 
 
-.. rubric:: Boot Example
-   :name: boot_example
+Boot Example
+^^^^^^^^^^^^^^
 
 Below is an example output of evmK2H booting after having images flashed
 in by program_evm.js:

@@ -1,13 +1,13 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_K2G 
 
-.. rubric:: Overview
-   :name: overview-1
+Overview
+^^^^^^^^^^
 
 The Secondary Bootloader (SBL) for K2G does basic hardware
 initialization for the board to load and run applications.
 
-.. rubric:: Bootloader Execution Sequence
-   :name: bootloader-execution-sequence
+Bootloader Execution Sequence
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 -  Power On Reset occurs
 -  ROM Bootloader (RBL) executes. It checks for bootmode and attempts to
@@ -16,7 +16,7 @@ initialization for the board to load and run applications.
 
    -  Board Initialization is done by a call to **Board_init()** API.
       For additional details refer to `Processor SDK Board
-      Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Support>`__.
+      Support <Board_EVM_Abstration.html#board-support>`__.
    -  SBL setup includes configuring Pinmux, enable peripheral clocks,
       set up PLLs, and configure EMIF for DDR.
 
@@ -26,11 +26,11 @@ initialization for the board to load and run applications.
 -  Once located, app will be loaded into memory and execution will be
    branched to the application's entry address
 
-.. rubric:: Tools and Binary Formats
-   :name: tools-and-binary-formats
+Tools and Binary Formats
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: Making Bootable SBL image (MLO)
-   :name: making-bootable-sbl-image-mlo
+Making Bootable SBL image (MLO)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 RBL loads and runs "MLO", which is a .out executable formatted by TI
 tools. To make a .out, such as SBL, bootable by ROM, you must follow
@@ -72,8 +72,8 @@ Armhex is part of TI ARM CGT, in
 the tools can be found in:
 **<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools**
 
-.. rubric:: Making Loadable User Application image (app)
-   :name: making-loadable-user-application-image-app
+Making Loadable User Application image (app)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For converting the compiled .out files to a format loadable by TI's
 Secondary Boot Loader (SBL), **you must follow these two steps:**
@@ -105,16 +105,16 @@ together. Simply use MulticoreImageGen as such:
 **MulticoreImageGen.exe LE 55 [output name] [Core ID a] [rprc output a]
 [Core ID b] [rprc output b] [Core ID c] [rprc output c] ...**
 
-.. rubric:: Boot Modes
-   :name: boot-modes
+Boot Modes
+^^^^^^^^^^^
 
 This release of SBL supports MMCSD and QSPI boot modes.
 
-.. rubric:: MMCSD Boot Mode
-   :name: mmcsd-boot-mode
+MMCSD Boot Mode
+""""""""""""""""
 
-.. rubric:: Preparing the SD card
-   :name: preparing-the-sd-card
+Preparing the SD card
+'''''''''''''''''''''''
 
 #. To boot the target, the SD card needs to be bootable. Follow the
    steps at `Creating bootable SD card in windows <Overview.html#windows-sd-card-creation-guide>`__
@@ -128,8 +128,8 @@ This release of SBL supports MMCSD and QSPI boot modes.
       the aforementioned tools. (Note that the tools for making the
       bootable MLO and the loadable app are different).
 
-.. rubric:: Booting via SD Card
-   :name: booting-via-sd-card
+Booting via SD Card
+'''''''''''''''''''''
 
 #. Insert micro SD card into the SD card slot of the board
 #. Set the board to MMC/SD bootmode by configuring the DIP switches to
@@ -142,11 +142,11 @@ This release of SBL supports MMCSD and QSPI boot modes.
   application:
 .. Image:: ../images/K2g_boot_diag.jpg
 
-.. rubric:: QSPI Boot Mode
-   :name: qspi-boot-mode
+QSPI Boot Mode
+""""""""""""""""
 
-.. rubric:: Preparing QSPI Flash
-   :name: preparing-qspi-flash
+Preparing QSPI Flash
+''''''''''''''''''''''
 
 MLO and app needs to be flashed into QSPI memory so that they can be
 booted. MLO will reside at offset 0 and app will reside at offset
@@ -199,21 +199,12 @@ below:
      Finished flashing 'app' with size 19398 at offset 80000
      Flashing completed!
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
+.. note::
 This application will flash the image at required offset without taking
 into consideration any overwriting to previously flashed image.
 
-.. raw:: html
-
-   </div>
-
-.. rubric:: Booting via QSPI
-   :name: booting-via-qspi
+Booting via QSPI
+''''''''''''''''''
 
 #. Set the board to QSPI-48 bootmode by configuring the DIP switches to
    '1111'. Verify the bootmode on the LCD display on your board
@@ -221,8 +212,8 @@ into consideration any overwriting to previously flashed image.
    etc.) on host PC and connect to the UART console port
 #. Power on the board
 
-.. rubric:: Memory Usage
-   :name: memory-usage
+Memory Usage
+^^^^^^^^^^^^^^^^^^^^
 
 SBL uses the last 0x40000 memory from MSMC RAM memory.
 
@@ -230,19 +221,10 @@ The SBL memory map is shown below:
 
 .. Image:: ../images/SBL_mem_k2g.jpg
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-app should not have loadable sections residing in SBL memory region to
-prevent overwriting SBL during load time. It is, however, free to use
-SBL memory after it is loaded and running.
-
-.. raw:: html
-
-   </div>
+.. note::
+   app should not have loadable sections residing in SBL memory region to
+   prevent overwriting SBL during load time. It is, however, free to use
+   SBL memory after it is loaded and running.
 
 .. raw:: html
 

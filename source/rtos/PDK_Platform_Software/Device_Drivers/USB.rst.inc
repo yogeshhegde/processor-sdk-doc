@@ -348,14 +348,14 @@ platform supported.
 
 **How to Run the Demo**
 
--  Follow this link :ref:`Processor-SDK-RTOS-Setup-CCS-label`
+-  Follow this link `Processor SDK RTOS Setup CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
    to get target configuration setup correctly.
 -  Use CCS to import the USB_DevAudio_<board>_<core>ExampleProject under
    pdk_<platform>_<version>/packages/MyExampleProjects.
 -  Build the imported project. the OUT file will be at
    pdk_<platform>_<version>/packages/MyExampleProjects/USB_DevAudio_<board>_<core>ExampleProject/Debug.
 -  Make the HW connections as shown in `Hardware
-   Setup <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_USB#Hardware_Setup>`__ section
+   Setup <Device_Drivers.html#hardware-setup>`__ section
 -  Launch the target configuration for the EVM from CCS 7.x.
 -  Connect to ARM or DSP core as applicable.
 -  Load the

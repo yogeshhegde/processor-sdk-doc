@@ -1,5 +1,5 @@
-.. rubric:: Common Steps to debug application boot
-   :name: common-steps-to-debug-application-boot
+Common Steps to debug application boot
+----------------------------------------
 
 Bootloading an application is a system level issue which is impacted by
 hardware as well as software setup. There are some common steps that
@@ -9,8 +9,8 @@ boot.
 
 | 
 
-.. rubric:: Hardware Debug Steps
-   :name: hardware-debug-steps
+Hardware Debug Steps
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. raw:: html
 
@@ -33,8 +33,7 @@ boot.
    provides the correct output that matches your software
    configurations.
 
-.. rubric:: **Boot pins:**
-   :name: boot-pins
+**Boot pins:**
 
 Best way to confirm what the device ROM bootloader reads from the pins
 is to read the register where the Boot pins are latched into the device:
@@ -44,8 +43,7 @@ is to read the register where the Boot pins are latched into the device:
 -  For C66x/K2X devices: Check the DEVSTAT register
 -  For OMAPL13x/C674x devices: Check BOOTCFG register
 
-.. rubric:: **Boot media connectivity**
-   :name: boot-media-connectivity
+**Boot media connectivity**
 
 Users are required to test their boot interface by running boot loader
 independent diagnostic tests that confirm that the SOC can read and
@@ -60,8 +58,7 @@ bootloader and limitations and constraints for each boot mode.
 Application developers need to account for this while designing their
 system to ensure smooth bring up process.
 
-.. rubric:: **Signalling on boot media and reset pins**
-   :name: signalling-on-boot-media-and-reset-pins
+**Signalling on boot media and reset pins**
 
 If software and other hardware debug steps have not helped identify the
 issue, you may need to hook up a scope or protocol analyzer to check the
@@ -75,8 +72,8 @@ on E2E forums so TI engineers can confirm that there are no issues.
 
    </div>
 
-.. rubric:: Software Debug Steps
-   :name: software-debug-steps
+Software Debug Steps
+^^^^^^^^^^^^^^^^^^^^^
 
 .. raw:: html
 
@@ -127,8 +124,7 @@ may be required to change these setting to match the timings required by
 custom design. We highly recommend that users create a GEL script
 similar to one provided by TI and test the memory interface with the new
 settings before using them in the secondary bootloader to setup external
-memory. `**Processor SDK
-Diagnostics** <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_DIAG>`__
+memory. `**Processor SDK Diagnostics** <Board_EVM_Abstration.html#diagnostics>`__
 provides a mem_test that can be used to test read and writes to the
 entire DDR address space for confirming the SOC EMIF settings.
 
@@ -149,19 +145,11 @@ other application. If you load the debug version of the bootloader, you
 can single step through the code that initializes the SOC and also part
 of the SBL code that loads the app from the boot media.
 
-.. raw:: html
+.. note::
+   SBL runs from onchip memory so users can load the SBL.out even without
+   using the GEL file but using the GEL sometimes helps with putting the
+   core in a clean state so usage of the GEL is optional
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-SBL runs from onchip memory so users can load the SBL.out even without
-using the GEL file but using the GEL sometimes helps with putting the
-core in a clean state so usage of the GEL is optional
-
-.. raw:: html
-
-   </div>
 
 **Alternate Approach:**
 

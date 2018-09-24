@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide 
 
-.. rubric:: Terms and Glossary
-   :name: terms-and-glossary
+Terms and Glossary
+^^^^^^^^^^^^^^^^^^^
 
 .. table::  **Glossary**
 
@@ -49,8 +49,8 @@
 
     Sample code snippet
 
-.. rubric:: Document Revision Table
-   :name: document-revision-table
+Document Revision Table
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. table::  Document Revision
 
@@ -64,8 +64,8 @@
    | 04-July-2016 | v.1.2    | Added Time Triggered Send details |
    +--------------+----------+-----------------------------------+
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^^^
 
 The `Industrial SDK <http://www.ti.com/tool/sysbiossdk-ind-sitara>`__
 release from Texas Instruments enables the use of the PRU-ICSS for
@@ -90,8 +90,8 @@ understanding the implementation of other protocols. This is a
 recommended reading for anyone trying to develop or use other Ethernet
 based protocols provided in the SDK.
 
-.. rubric:: Assumption
-   :name: assumption
+Assumption
+"""""""""""""
 
 The guide is geared towards helping developers with starting to build
 applications using the Ethernet MAC and as such does not contain
@@ -110,8 +110,8 @@ covers both AM335x and AM437x platforms, please refer to the TRM's for
 details on the SoC. The TRM's can be found here.
 `AM335x <http://www.ti.com/lit/ug/spruh73l/spruh73l.pdf>`__/`AM437x <http://www.ti.com/lit/ug/spruhl7d/spruhl7d.pdf>`__.
 
-.. rubric:: Scope of the Document
-   :name: scope-of-the-document
+Scope of the Document
+""""""""""""""""""""""
 
 This document:
 
@@ -130,27 +130,18 @@ from questions on the forum and field.
 
 To prevent the guide from becoming too big and to limit it's scope a
 separate `debugging
-guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide>`__
+guide <Device_Drivers.html#debug-with-icss-emac-driver>`__
 has been written which covers various other aspects such as Q&A's and
 Debug examples with screenshots. The two documents must be used in
 conjunction to utilize them fully.
 
-.. raw:: html
+.. note::
+   The code snippets in this guide are only informative, they may or may
+   not compile if taken as it is. Developers are requested to consult the
+   API guide and other relevant user guides for exact coding details.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-The code snippets in this guide are only informative, they may or may
-not compile if taken as it is. Developers are requested to consult the
-API guide and other relevant user guides for exact coding details.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Software Architecture
-   :name: software-architecture
+Software Architecture
+^^^^^^^^^^^^^^^^^^^^^^
 
 The ICSS EMAC consists of driver + firmware implementation. Firmware
 refers to the code running on the two PRU's which are part of ICSS while
@@ -170,8 +161,8 @@ Out of these the first three are relevant to this discussion. Only the
 driver is discussed in depth while NDK and SYS/BIOS are mentioned in
 passing whenever relevant.
 
-.. rubric:: File Organization
-   :name: file-organization
+File Organization
+""""""""""""""""""
 
 SDK Folder structure is covered in the SDK User Guide
 `here <http://processors.wiki.ti.com/index.php/SYSBIOS_Industrial_SDK_02.01.00.01_User_Guide#SDK_Directory_Structure>`__.
@@ -186,12 +177,9 @@ The contents of the folder *os_drivers* are discussed briefly:
    -  Rx - Copying the packet received from the firmware and providing
       it to the TCP/IP stack
    -  Tx - Providing packet from TCP/IP stack to the firmware
-   -  Learning/Forwarding Data Base - refer
-      `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Learning.2FFDB>`__
-   -  Storm Prevention implementation - refer
-      `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Storm_Control>`__
-   -  Host Statistics implementation - refer
-      `here <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Statistics>`__
+   -  Learning/Forwarding Data Base - refer `here <Device_Drivers.html#learning-fdb>`__
+   -  Storm Prevention implementation - refer `here <Device_Drivers.html#storm-control>`__
+   -  Host Statistics implementation - refer `here <Device_Drivers.html#statistics>`__
 
 -  ***pruss*** - Refers to the software which manages the PRU. It
    performs the following tasks
@@ -206,8 +194,8 @@ The contents of the folder *os_drivers* are discussed briefly:
    -  Configuring IP address
    -  ARM interrupt management
 
-.. rubric:: EMAC and Switch
-   :name: emac-and-switch
+EMAC and Switch
+"""""""""""""""""
 
 It is important to differentiate between the two different types of
 implementations in SDK context because this keeps coming up while
@@ -257,8 +245,8 @@ There are some important differences between an EMAC and Switch
    |                                   | forwarding rules                  |
    +-----------------------------------+-----------------------------------+
 
-.. rubric:: Ports in Driver context
-   :name: ports-in-driver-context
+Ports in Driver context
+""""""""""""""""""""""""""
 
 Before beginning it’s important to explain the conventions used in this
 document, although there are two physical ports for every ICSS for the
@@ -275,8 +263,8 @@ The ports are referred to as
 This convention is followed throughout the document as well as inside
 the driver and firmware.
 
-.. rubric:: Driver Architecture and Memory Map
-   :name: driver-architecture-and-memory-map
+Driver Architecture and Memory Map
+"""""""""""""""""""""""""""""""""""
 
 A detailed discussion of the architecture is beyond the scope of this
 document. A brief summary is provided below to explain where the data is
@@ -285,8 +273,8 @@ copied to, how and why.
 While discussing the ICSS Switch we are mainly concerned with 4 types of
 memories.
 
-.. rubric:: DDR
-   :name: ddr
+DDR
+'''''
 
 This is the memory from where ARM core operates. It's not on the SoC and
 hence has a lower performance. This is cached.
@@ -298,8 +286,8 @@ This contains
 -  Host Statistics.
 -  Control structures and variables.
 
-.. rubric:: L3 OCMC RAM
-   :name: l3-ocmc-ram
+L3 OCMC RAM
+''''''''''''
 
 This is where the actual packet buffers or queues are located. There are
 15 queues (Switch) or 12 queues (EMAC) in total. 4 queues for each port
@@ -317,21 +305,13 @@ RAM contains:
 -  Port transmit queues
 -  Collision queues (not in EMAC mode)
 
-.. raw:: html
+.. note::
+   This memory map is applicable only for EMAC application. Other
+   applications might have their own map.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-This memory map is applicable only for EMAC application. Other
-applications might have their own map.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Shared Data RAM
-   :name: shared-data-ram
+Shared Data RAM
+'''''''''''''''''
 
 This is specific to the PRU subsystem although access is possible from
 Host albeit slowly. Data common to both PRU's such as Host queue
@@ -344,21 +324,13 @@ more details. The Shared Data RAM contains
 -  Buffer descriptors for all 12 queues
 -  Host Rx Context for 4 Host receive queues
 
-.. raw:: html
+.. note::
+   This memory map is applicable only for EMAC application. Other
+   applications might have their own map.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-This memory map is applicable only for EMAC application. Other
-applications might have their own map.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: PRU0 Data RAM
-   :name: pru0-data-ram
+PRU0 Data RAM
+'''''''''''''''
 
 This is similar to Shared Data RAM though meant for use only by PRU0.
 Access from PRU1 is also possible, so the separation is only logical,
@@ -372,26 +344,17 @@ for more details. The PRU0 Data RAM contains:
 -  Port 0 MAC ID
 -  Port 0 Port, Speed and Duplex information
 
-.. raw:: html
+.. note::
+   This memory map is applicable only for EMAC application. Other
+   applications might have their own map.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This memory map is applicable only for EMAC application. Other
-applications might have their own map.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: PRU1 Data RAM
-   :name: pru1-data-ram
+PRU1 Data RAM
+''''''''''''''
 
 Similar to PRU0 Data RAM but for PRU1.
 
-.. rubric:: Quality of Service and Queues
-   :name: quality-of-service-and-queues
+Quality of Service and Queues
+""""""""""""""""""""""""""""""
 
 Quality of Service is very important for an Ethernet Switch/EMAC as it
 allows high priority packets to be processed separately from regular
@@ -405,7 +368,7 @@ is 32 bytes in size. The sizes are limited by L3 size which are dictated
 by SoC. For in depth information on how to re-build the icss-emac LLD
 PDK component in case your use case requires re-sizing the Queue sizes,
 refer to
-`[1] <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__.
+`[1] <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__.
 
 ::
 
@@ -428,25 +391,17 @@ for Host and 4 transmit queues for each of the two physical ports. In
 addition to these there is 1 collision queue each for Host and 2 ports
 which can hold one packet irrespective of packet size.
 
-.. raw:: html
+.. note::
+   There are no collision queues in EMAC.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-There are no collision queues in EMAC.
-
-.. raw:: html
-
-   </div>
 
 The figure below is illustrative to remember this
 
-.. rubric:: How QoS Works
-   :name: how-qos-works
+How QoS Works
+''''''''''''''
 
-.. rubric:: Switch QoS
-   :name: switch-qos
+Switch QoS
+~~~~~~~~~~~~
 
 When a packet is received in firmware, the 3 bit PCP field of the VLAN
 tag is read and the packet is copied to the appropriate queue based on
@@ -456,8 +411,8 @@ number then translates to the priority value and is used to decide how
 to process the packet. If a packet is missing VLAN tag then the lowest
 priority queue Queue 4 is chosen.
 
-.. rubric:: EMAC QoS
-   :name: emac-qos
+EMAC QoS
+~~~~~~~~~
 
 PCP to queue mapping is different for EMAC. In EMAC, the 4 Host receive
 queues are split into two groups. Queue 1 and Queue 2 are used for
@@ -478,29 +433,20 @@ Queue 3 are high priority queues for Port 1 and Port 2 respectively.
 More on this in the next section where driver side Rx processing is
 discussed in detail.
 
-.. raw:: html
+.. note::
+   -  When a queue overflows, packets are **not** automatically copied to
+      the next free queue. So overflow can occur.
+   -  Contention/Collision queue can only handle a single packet
+      irrespective of size, anything above is dropped.
+   -  On Tx side, there is no special handling with regards to QoS. Data is
+      copied to one of the four queues based on the **queuePriority** field
+      **ICSS_EmacTxArgument** structure passed to the **ICSS_EmacTxPacket**
+      API.
+   -  At the moment driver/firmware doesn't support DSCP.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-
--  When a queue overflows, packets are **not** automatically copied to
-   the next free queue. So overflow can occur.
--  Contention/Collision queue can only handle a single packet
-   irrespective of size, anything above is dropped.
--  On Tx side, there is no special handling with regards to QoS. Data is
-   copied to one of the four queues based on the **queuePriority** field
-   **ICSS_EmacTxArgument** structure passed to the **ICSS_EmacTxPacket**
-   API.
--  At the moment driver/firmware doesn't support DSCP.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Data Path
-   :name: data-path
+Data Path
+"""""""""""
 
 Data path refers to the control flow which is executed on the driver and
 firmware to send or receive a packet. A basic understanding of it goes a
@@ -508,8 +454,8 @@ long way in explaining the software architecture and if a developer is
 only trying to use the Rx and Tx capabilities of EMAC or Switch a
 knowledge of this is sufficient to build an application.
 
-.. rubric:: Rx Data Path
-   :name: rx-data-path
+Rx Data Path
+''''''''''''''
 
 Packets are received in the ICSS from where they are copied by the PRU's
 to L3 memory. The PRU's then assert an interrupt to tell the Host about
@@ -566,7 +512,7 @@ In the code snippet above, function **ICSS_EmacRxPktInfo** goes through
 each queue one at a time, extracts the port & queue number information
 for every packet and provides it to functions below. Based on the
 priority of the packet which is decided by the queue number (refer to
-`discussion <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_2_1_Driver_Guide#How_QoS_works>`__
+`discussion <Device_Drivers.html#how-qos-works>`__
 on QoS and queues) driver decides to either forward it to NDK, done by
 **icssEmacHwIntRx** or give it to the callback function.
 
@@ -632,8 +578,8 @@ As can be seen **processProtocolFrames** function calls
 **ICSS_EmacRxPktGet** internally and passes the data to
 **processDLRFrame** for further processing.
 
-.. rubric:: Tx Data Path
-   :name: tx-data-path
+Tx Data Path
+'''''''''''''''
 
 The Transmit path on host is simpler than the Rx path. As far as the
 developer is concerned the main API call is **ICSS_EmacTxPacket**. This
@@ -653,20 +599,12 @@ must always call the API **ICSS_EmacTxPacket** (NOT
 -  *ICSS_EMAC_PORT_1* or *ICSS_EMAC_PORT_2* : If they know the port
    number
 
-.. raw:: html
+.. note::
+   Firmware automatically appends CRC to the packet on Transmit path.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-Firmware automatically appends CRC to the packet on Transmit path.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Usage
-   :name: usage
+Usage
+'''''''
 
 For simple and/or non time critical applications, it makes more sense to
 use the NDK socket API's to perform Receive and Transmit operations. An
@@ -733,8 +671,8 @@ in **(uint32_t)dest_address** from **ICSS_EmacRxPktGet** inside
 **RxTask**. Modify the **ethPrioQueue** value as per requirement.
 (Explained above)
 
-.. rubric:: Forwarding Rules
-   :name: forwarding-rules
+Forwarding Rules
+'''''''''''''''''
 
 Forwarding Rules specify how packets are forwarded between ports and
 from the port to the Host. There are three basic types of forwarding
@@ -778,8 +716,8 @@ apply to switch.
 
 | 
 
-.. rubric:: Interrupts and Tasks
-   :name: interrupts-and-tasks
+Interrupts and Tasks
+""""""""""""""""""""""
 
 This section deals with Interrupts and Tasks required to implement an
 EMAC LLD application. Since they are tied to the RTOS used, they are
@@ -788,11 +726,10 @@ OSAL layer. Developers must take care to maintain correct priorities and
 order so as not to alter the behavior of the driver. All the interrupts
 and tasks enabled in an application can be checked using the SYSBIOS
 ROV. For more details on this tool refer to the
-`SYSBIOS <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide#SYS.2FBIOS>`__
-section of EMAC LLD Debug Guide.
+`SYSBIOS <Device_Drivers.html#sys-bios>`__ section of EMAC LLD Debug Guide.
 
-.. rubric:: Interrupts
-   :name: interrupts
+Interrupts
+'''''''''''
 
 There are six interrupts (eight if time triggered send is enabled) in an
 EMAC LLD coming from PRU. Other implementations like EtherNet/IP, PTP,
@@ -828,21 +765,12 @@ The eight interrupts are:
    only applicable when TTS is enabled and initialized by the
    application.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Tx Completion Interrupts and TTS Cyclic Frame Interrupts are different
-PRU events, i.e., total 4 PRU events. But these map to the same
-interrupt and ISR per port i.e., Tx Completion Interrupt and TTS Cyclic
-Frame Interrupt share one ARM interrupt number and ISR for Port 1 and
-share one ARM interrupt number and ISR for Port 2.
-
-.. raw:: html
-
-   </div>
+.. note::
+   Tx Completion Interrupts and TTS Cyclic Frame Interrupts are different
+   PRU events, i.e., total 4 PRU events. But these map to the same
+   interrupt and ISR per port i.e., Tx Completion Interrupt and TTS Cyclic
+   Frame Interrupt share one ARM interrupt number and ISR for Port 1 and
+   share one ARM interrupt number and ISR for Port 2.
 
 There are two types of interrupts:
 
@@ -1020,8 +948,8 @@ Some examples of Host interrupts used in the driver are DMTimer
 interrupts and EDMA interrupts which are available through the OSAL
 layer *osdrv_edma.c* and *osdrv_osal.c*
 
-.. rubric:: Interrupt Pacing
-   :name: interrupt-pacing
+Interrupt Pacing
+'''''''''''''''''
 
 When packets are sent to the Host at a very high rate (this happens more
 often with small frames) it's possible that ARM is interrupted
@@ -1047,8 +975,8 @@ some delay may occur. Pacing is enabled in the driver using the variable
    PRU. This requires firmware support. Only supported in Profinet right
    now.
 
-.. rubric:: Tasks
-   :name: tasks
+Tasks
+''''''
 
 Tasks are the Linux equivalent of processes in SysBIOS. A simple example
 to create a task from EMAC application is given below
@@ -1077,16 +1005,15 @@ with two arguments
     }
 
 They can be used for simple tasks like sending or receiving a packet. To
-get an idea
-`refer <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Usage>`__
+get an idea `refer <Device_Drivers.html#usage>`__
 to the example usage for sending a packet through a call to transmit API
 **ICSS_EmacTxPacket** in a loop. If calling the task in an endless while
 loop developers must add a small delay inside the loop using
 *Task_sleep(time in milliseconds)* to let other tasks get some time as
 well, failure to do so is a common mistake that developers make.
 
-.. rubric:: Learning/FDB
-   :name: learningfdb
+Learning/FDB
+"""""""""""""
 
 Learning/FDB where FDB stands for Forwarding Data Base is a module that
 learns source MAC addresses of packets addressed to the Host and thus
@@ -1097,8 +1024,8 @@ duplication of traffic on both ports. This module is applicable only in
 Switch mode, in EMAC mode this module is disabled since there is only
 one port.
 
-.. rubric:: Design
-   :name: design
+Design
+''''''''
 
 Learning table is currently implemented as a Hash table. There is one
 table for each physical port. Each table has 256 buckets where a bucket
@@ -1129,8 +1056,8 @@ Collisions are handled using ageing counters, one ageing counter is
 associated with each of the 4 entries inside a bucket. It tells the
 module which entries are old and which ones are new.
 
-.. rubric:: API Guide & Data Structures
-   :name: api-guide-data-structures
+API Guide & Data Structures
+'''''''''''''''''''''''''''''
 
 A learning table has the following structure
 
@@ -1166,8 +1093,7 @@ The algorithm assumes these values and they cannot be changed at
 present.
 
 API descriptions are only for information, developers are requested to
-use corresponding
-`IOCTL <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__
+use corresponding `IOCTL <Device_Drivers.html#ioctl>`__
 calls. The IOCTL command for Learning/FDB modules is
 ***ICSS_EMAC_IOCTL_LEARNING_CTRL***
 
@@ -1244,8 +1170,8 @@ this is
 Not integrated with driver, call separately using IOCTL Param value
 *ICSS_EMAC_LEARN_CTRL_CLR_TABLE*
 
-.. rubric:: Usage
-   :name: usage-1
+Usage
+'''''''
 
 The module is integrated with the driver so a developer need not bother
 about calling the API's separately in the application unless there is a
@@ -1261,8 +1187,8 @@ faster please call the routine separately in another task. Changing the
 time period of **\_HwPktPoll** is not recommended as many other tasks
 are performed in this.
 
-.. rubric:: Storm Control
-   :name: storm-control
+Storm Control
+"""""""""""""""
 
 Strom control or Storm prevention is a feature that limits the number of
 broadcast and multicast packets going to the host and/or cutting through
@@ -1271,8 +1197,8 @@ all the ports of a switch they have the potential to create a storm
 which drowns all other traffic on the network, in this regard this is a
 very important feature for the switch.
 
-.. rubric:: Design
-   :name: design-1
+Design
+'''''''
 
 Storm prevention is implemented on the two PRU's as a credit based
 scheme. When the feature is enabled, every time a multicast or broadcast
@@ -1293,8 +1219,8 @@ each port. As of now the multicast and broadcast storm prevention
 functionalities are clubbed together but it is proposed to have them
 separate in the future.
 
-.. rubric:: API Guide & Data Structures
-   :name: api-guide-data-structures-1
+API Guide & Data Structures
+''''''''''''''''''''''''''''
 
 The main parent structure for Storm Prevention is
 
@@ -1310,8 +1236,7 @@ The main parent structure for Storm Prevention is
 There is an instance of this structure for each port
 
 API descriptions are only for information, developers are requested to
-use corresponding
-`IOCTL <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__
+use corresponding `IOCTL <Device_Drivers.html#ioctl>`__
 calls. The IOCTL command for Learning/FDB modules is
 ***ICSS_EMAC_IOCTL_STORM_PREV_CTRL***
 
@@ -1360,8 +1285,8 @@ The corresponding API for this is
 
 IOCTL Param value is *ICSS_EMAC_STORM_PREV_CTRL_SET_CREDITS*
 
-.. rubric:: Usage
-   :name: usage-2
+Usage
+''''''
 
 Most often Storm Prevention is the main reason for users not being able
 to receive a packet, esp if the rate is configured incorrectly. So first
@@ -1380,8 +1305,8 @@ some broadcast packets at line rate to the device and check the value of
 PRU statistics variable **stormPrevCounter**. See statistics section on
 how to read this variable.
 
-.. rubric:: Statistics
-   :name: statistics
+Statistics
+""""""""""""
 
 Statistics on ICSS Switch provide a great deal of information on what's
 going on with the switch. They are enabled by default and provide
@@ -1389,8 +1314,8 @@ provide port specific statistics. They are also a great debugging tool
 and should be the first thing a developer should look at if they suspect
 any issue with Rx or Tx.
 
-.. rubric:: Design
-   :name: design-2
+Design
+''''''''
 
 The Statistics are divided into
 
@@ -1698,8 +1623,8 @@ Received frames with size >= 512 bytes and <= 1023 bytes
 
 *0x1F88*
 
-.. rubric:: API Guide & Data Structures
-   :name: api-guide-data-structures-2
+API Guide & Data Structures
+''''''''''''''''''''''''''''
 
 As discussed above there are two data structures for Statistics.
 
@@ -1731,8 +1656,7 @@ statistics (they are a subset) and if all packets are sent to the Host
 then these member values for PRU and Host statistics should match.
 
 API descriptions are only for information, developers are requested to
-use corresponding
-`IOCTL <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__
+use corresponding `IOCTL <Device_Drivers.html#ioctl>`__
 calls. The IOCTL command for Statistics module is
 ***ICSS_EMAC_IOCTL_STATS_CTRL***
 
@@ -1743,8 +1667,8 @@ identical. Developers should not modify the member order in
 **pruStatistics_t. Doing so can give incorrect results**
 
 Host statistics are updated on the fly in the structure as packets are
-received (**ICSS_EmacUpdateRxStats** ) or transmitted
-(**ICSS_EmacUpdateTxStats** ) so there is no separate API to collate
+received (ICSS_EmacUpdateRxStats) or transmitted
+(ICSS_EmacUpdateTxStats) so there is no separate API to collate
 them.
 
 The corresponding API for this is
@@ -1766,8 +1690,8 @@ The corresponding API for this is
 
 IOCTL Param value is *ICSS_EMAC_IOCTL_STAT_CTRL_CLEAR*
 
-.. rubric:: Usage
-   :name: usage-3
+Usage
+''''''''
 
 Statistics are a great tool to debug issues on the switch. To get them
 in the application use the IOCTL calls to get and clear statistics
@@ -1778,8 +1702,8 @@ activity on the Ports is to directly go to the PRU data RAM offset
 *STATISTICS_OFFSET* and see the values directly in memory Refer Debug
 guide on how to see data RAM values directly in CCS.
 
-.. rubric:: Memory Map
-   :name: Memory-Map
+Memory Map
+^^^^^^^^^^^
 
 The memory map here refers to the Shared Data RAM memory map in ICSS. L3
 map is not of much use to the developer while DDR map is dynamic and is
@@ -1873,11 +1797,11 @@ The memory map can be found in *icss_emacSwitch.h* under
    +-----------+-----------+-----------+-----------+-----------+-----------+
 
 
-.. rubric:: OS and TCP/IP
-   :name: OS-and-TCP-IP
+OS and TCP/IP
+^^^^^^^^^^^^^^^
 
-.. rubric:: RTOS
-   :name: RTOS
+RTOS
+"""""
 
 The SDK uses
 `SYS/BIOS <http://processors.wiki.ti.com/index.php/Category:SYSBIOS>`__
@@ -1900,12 +1824,10 @@ The *osdrv* layer deals with RTOS and other OS related tasks in general,
 within this layer the relevant files which deal with OSAL layer are
 ***osdrv_osal.c*** and ***osdrv_osal.h***. Developers are requested to
 port the API's within these two files to their own Operating System.
-This is described in detail in the section `Porting
-Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Porting_ICSS_EMAC_LLD>`__
 
 
-.. rubric:: TCP/IP
-   :name: TCP-IP
+TCP/IP
+""""""""
 
 The Industrial SDK uses `NDK <http://www.ti.com/tool/NDKTCPIP>`__ as
 it's TCP/IP stack. API reference guide
@@ -1931,8 +1853,8 @@ guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Po
 covers all aspects of using a custom TCP/IP stack to the EMAC LLD
 example.
 
-.. rubric:: PRUSS & EMAC Handle
-   :name: PRUSS-EMAC-Handle
+PRUSS & EMAC Handle
+^^^^^^^^^^^^^^^^^^^^
 
 The ICSS EMAC Handle is a main driver handle which provides access to
 all members, variables, registers and addresses in the SoC.
@@ -1967,8 +1889,8 @@ example application) is shown below
     ((ICSSEMAC_Object*)emachandle->object)->pruIcssHandle = handle;
     ((ICSSEMAC_Object*)emachandle->object)->emacInitcfg = switchEmacCfg;
 
-.. rubric:: IOCTL
-   :name: IOCTL
+IOCTL
+^^^^^^^
 
 IOCTL implementation for the switch drivers is identical to the
 Unix/Linux based IOCTL calls. They provide the application a convenient
@@ -1979,8 +1901,8 @@ IOCTL calls so that they can utilize all the features provided. This is
 even more important when working in an Application/OS kind of
 environment where access to an emulator is not available.
 
-.. rubric:: Design
-   :name: _design-3
+Design
+"""""""
 
 The primary IOCTL call is through the API **ICSS_EmacIoctl** which is
 implemented in the file icss_emacFwInit.c An IOCTL call uses two
@@ -2014,8 +1936,8 @@ Port 1.
 
 A complete list of commands and actions is given below.
 
-.. rubric:: API Guide & Data Structures
-   :name: api-guide-data-structures-3
+API Guide & Data Structures
+"""""""""""""""""""""""""""""
 
 IOCTL Command structure
 
@@ -2088,8 +2010,8 @@ Possible values for ***ioctlParams*** are
    decided by the value of ***ioctlVal***
 
 
-.. rubric:: Usage
-   :name: _usage-4
+Usage
+"""""""
 
 Using IOCTL to debug the issues is encouraged. This is easier than
 trying to connect an emulator and reading the values at run time. There
@@ -2119,8 +2041,8 @@ code is self-explanatory
         ICSS_EmacIoctl(pi->nimuDrvHandle, ICSS_EMAC_IOCTL_STORM_PREV_CTRL, NULL, (void*)&ioctlParams);
      }
 
-.. rubric:: Time Triggered Send
-   :name: Time-Triggered-Send
+Time Triggered Send
+^^^^^^^^^^^^^^^^^^^^^
 
 The EMAC Time Triggered Send (TTS) is used to expand classical Ethernet
 to meet deterministic, time-critical or safety-relevant conditions. TTS
@@ -2128,16 +2050,15 @@ reduces the transmission jitter from 10us range to 40ns. TTS can be
 dynamically enabled and disabled by the Host. We have two well defined
 TTS APIs which control all TTS related EMAC aspects. Developers are
 advised to access these APIs using the EMAC IOCTL implementation as
-explained in the
-`IOCTL <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#IOCTL>`__ section
+explained in the `IOCTL <Device_Drivers.html#ioctl>`__ section
 previously.
 
-.. rubric:: TTS Design Overview
-   :name: TTS-Design-Overview
+TTS Design Overview
+"""""""""""""""""""""
 
 TTS is designed to facilitate transmission of packets at pre-defined
 cyclic instants/triggers. The `TTS API Details and Data
-Structures <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#TTS_API_Details_and_Data_Structures>`__
+Structures <Device_Drivers.html#tts-api-details-and-data-structures>`__
 are explained below but in a broad sense we can say that while
 initializing TTS, the application must provide the first cyclic trigger
 and the cycle period. The PRU firmware then sets cyclic triggers
@@ -2207,8 +2128,8 @@ The PRU firmware makes the following assumptions regarding TTS:
    driver level if the queue is full. It is assumed that this is taken
    care of at the host level.
 
-.. rubric:: TTS API Details and Data Structures
-   :name: TTS-API-Details-and-Data-Structures
+TTS API Details and Data Structures
+"""""""""""""""""""""""""""""""""""""
 
 TTS has the following APIs, which are accessed using EMAC IOCTL
 implementation as explained in the IOCTL section previously.
@@ -2345,8 +2266,8 @@ For Disable:
     ret = ICSS_EmacIoctl(icssEmacHandle, ICSS_EMAC_IOCTL_TTS_CTRL, portNumber, &ioctlParams2);
     assert(ret == 0);
 
-.. rubric:: TTS Cyclic Frame Notification
-   :name: TTS-Cyclic-Frame-Notification
+TTS Cyclic Frame Notification
+"""""""""""""""""""""""""""""""
 
 The PRU firmware has been designed to notify the Host when it’s time to
 insert the cyclic packet. This helps the Host to queue the cyclic packet
@@ -2354,8 +2275,8 @@ well before trigger time and avoid any unnecessary jitter or any other
 erroneous situations as mentioned previously. The firmware does this in
 two ways:
 
-.. rubric:: Polling Mode
-   :name: Polling-Mode
+Polling Mode
+''''''''''''''
 
 -  In this mode the firmware sets a status bit when it’s time to insert
    the cyclic frame and this bit cleared when the time to insert the
@@ -2371,8 +2292,8 @@ two ways:
 -  Once insertCycFrameNotification = 1, the application must queue the
    cyclic frame in Queue 0.
 
-.. rubric:: Interrupt Mode
-   :name: Interrupt-Mode
+Interrupt Mode
+''''''''''''''''
 
 -  In this mode, in addition to setting the status bit as in polling
    mode, the firmware has the capability to give an interrupt to the
@@ -2401,28 +2322,27 @@ two ways:
    function is called and this is where the application shall queue the
    cyclic packet to Queue 0.
 
-.. rubric:: ICSS EMAC LLD Dependencies
-   :name: ICSS-EMAC-LLD-Dependencies
+ICSS EMAC LLD Dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ICSS EMAC LLD is dependent on the Application/Transport layer for its
 proper functioning. These dependencies have been consolidated and
 exported to the application layer (example) to make it easy for
 developer to integrate the LLD with their own RTOS and TCP/IP stack.
 
-.. rubric:: Interrupt Configuration
-   :name: Interrupt-Configuration
+Interrupt Configuration
+""""""""""""""""""""""""
 
 ICSS EMAC LLD expects the Interrupt configuration to come from
 Application/Transport layer. The interrupt configuration is explained in
-detail in the interrupts
-`section <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#Interrupts>`__.
+detail in the interrupts `section <Device_Drivers.html#id58>`__.
 Please refer to it for more details.
 
 The LLD makes use of two interrupts for copying packets from the queues
 to the TCP/IP stack.
 
-.. rubric:: Rx Interrupt
-   :name: Rx-Interrupt
+Rx Interrupt
+''''''''''''''
 
 The ICSS EMAC LLD depends on the Rx interrupt for receiving packets.The
 application should do the interrupt creation and should use the API
@@ -2432,8 +2352,8 @@ EMAC LLD to receive packets. The user should make sure the arm interrupt
 Rx will be determined by the firmware which will be used along with the
 ICSS EMAC LLD
 
-.. rubric:: Link Interrupt
-   :name: Link-Interrupt
+Link Interrupt
+'''''''''''''''
 
 Link Interrupt informs the ICSS EMAC LLD of any Link state change. This
 is where the LLD informs the firmware about the Link status and the Phy
@@ -2441,17 +2361,16 @@ configuration.The LLD expects single interrupt for both Ports. In case
 the Interrupt mechanism is not available, the application should call
 **ICSS_EmacLinkISR** whenever there is a link change.
 
-.. rubric:: Learning module Increment counter implementation
-   :name: Learning-module-Increment-counter-implementation
+Learning module Increment counter implementation
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
 This is required for Switch implementation only. The application needs
 to call the IOCTL periodically, this is already done by the NDK. Refer
-to the API
-`section <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_developers_guide#API_Guide_.26_Data_Structures>`__
+to the API `section <Device_Drivers.html#api-guide-data-structures>`__
 of Learning for more details.
 
-.. rubric:: MDIO Configurations
-   :name: MDIO-Configurations
+MDIO Configurations
+"""""""""""""""""""""
 
 ICSS EMAC LLD does not do any of the MDIO configurations. It expects the
 application to do following MDIO operations
@@ -2464,14 +2383,14 @@ of how to initialize the MDIO sub-system and how to enable MDIO link
 interrupts. This file contains a set of MDIO test APIs which are used by
 the icss emac loopback unit tests.
 
-.. rubric:: EMAC Configuration and How To
-   :name: EMAC-Configuration-and-How-To
+EMAC Configuration and How To
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: Network related
-   :name: Network-related
+Network related
+""""""""""""""""""
 
-.. rubric:: How to configure IP address and other IPv4 parameters
-   :name: How-to-configure-IP-address-and-other-IPv4-parameters
+How to configure IP address and other IPv4 parameters
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 IP address, network mask and other params can be set through the NDK
 configuration file. See
@@ -2479,6 +2398,15 @@ configuration file. See
 
 .. rubric:: How to configure MAC address
 :name: How-to-configure-MAC-address
+MAC address is variable macId in the configuration ICSSEMAC_InitConfig. It can be set as per the application requirements.
+The following excerpt from ethernet_mac example shows how to do this
+
+::
+
+    /*Get MAC address from eFUSE*/
+    SOCCtrlGetPortMacAddr(1,lclMac);
+    /*Assign MAC ID for that particular port*/
+    switchEmacCfg->macId = lclMac;
 
 .. raw:: html
 
