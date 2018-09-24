@@ -208,178 +208,185 @@ Known Issues
 This section contains the list of known issues at the time of making the
 release and any known workaround.
 
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-|  Record ID  |  Platform   |    Area     |   Summary   | Workaround                                              |
-+=============+=============+=============+=============+=========================================================+
-| PRSDK-335   | AM4X        | High-Speed  | USB host    | Re-enumeration support for the case of                  |
-|             |             | Drivers     | MSC fails   | device unplugged                                        |
-|             |             |             | to          | and plugged back currently fails for the                |
-|             |             |             | re-enumerat | example.Workaround is to avoid                          |
-|             |             |             | e           | disconnecting drive while running example.              |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-330   | AM4X        | High-Speed  | USB device  | Problem not observed with Linux USB Host.               |
-|             |             | Drivers     | MSC         |                                                         |
-|             |             |             | re-enumerat |                                                         |
-|             |             |             | ion         |                                                         |
-|             |             |             | fails while |                                                         |
-|             |             |             | disconnecti |                                                         |
-|             |             |             | ng          |                                                         |
-|             |             |             | and         |                                                         |
-|             |             |             | reconnectin |                                                         |
-|             |             |             | g           |                                                         |
-|             |             |             | on a        |                                                         |
-|             |             |             | Windows     |                                                         |
-|             |             |             | host        |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-1682  | AM5X        | Diagnostics | Board       | For LCD/Display checkout example under VPS component    |
-|             |             |             | diagnostics | could be used                                           |
-|             |             |             | LCD         |                                                         |
-|             |             |             | Touchscreen |                                                         |
-|             |             |             | test does   |                                                         |
-|             |             |             | not work    |                                                         |
-|             |             |             | with new    |                                                         |
-|             |             |             | version of  |                                                         |
-|             |             |             | LCD TSC     |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-2166  | AM5X        | High-Speed  | USB3.0 host | Start the example without the USB plugged in. Once      |
-|             |             | Drivers     | problem     | the example is up and waiting for USB stick,            |
-|             |             |             | with        | plug the USB stick in and it will enumerateproperly.    |
-|             |             |             | Sandisk     |                                                         |
-|             |             |             | Extreme     |                                                         |
-|             |             |             | USB3.0      |                                                         |
-|             |             |             | stick       |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-1975  | \*          | Board       | Timer       | Example can run on ARM Core 0                           |
-|             |             | Diagnostics | Diagnostic  |                                                         |
-|             |             |             | example     |                                                         |
-|             |             |             | does not    |                                                         |
-|             |             |             | run on ARM  |                                                         |
-|             |             |             | Core 1      |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3344  | am572x-id,a | Board       | Diagnostics | ICSS-EMAC LLD TI-RTOS example can be used for           |
-|             | m574x-idk   | Diagnostics | Baremetal   | similar test.                                           |
-|             |             |             | icssEmac_TE |                                                         |
-|             |             |             | ST          |                                                         |
-|             |             |             | idkAM57{2/4 |                                                         |
-|             |             |             | }x :        |                                                         |
-|             |             |             | LINK IS     |                                                         |
-|             |             |             | DOWN,       |                                                         |
-|             |             |             | pluggin     |                                                         |
-|             |             |             | loopback    |                                                         |
-|             |             |             | cable       |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3482  | \*          | CCS         | CCSV8.1:    | Retry for connection failure in DSS script.             |
-|             |             |             | Intermitten |                                                         |
-|             |             |             | t           |                                                         |
-|             |             |             | issue not   |                                                         |
-|             |             |             | able to     |                                                         |
-|             |             |             | connect     |                                                         |
-|             |             |             | target      |                                                         |
-|             |             |             | while using |                                                         |
-|             |             |             | DSS script  |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3482  | \*          | CCS         | Cortex A8   | Warning can be ignored                                  |
-|             |             |             | SemiHosting:|                                                         |
-|             |             |             | File IO     |                                                         |
-|             |             |             | error :     |                                                         |
-|             |             |             | fopen()     |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-2336  | am335x-evm, | PM          | PM Unit     | Use debug version of PM library for the test. To        |
-|             | am437x-evm  |             | Test        | build from the top-level makefile in                    |
-|             |             |             | failure     | pdk.../packages folder run "make BUILD_CONFIG=debug pm" |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-|             |             |             |             |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3318  | K2G 1Ghz    | EMAC        | EMAC_CpswRa | Incorrect Core clock config in test. Fix for            |
-|             |             |             | teLimit_evm | to set the correct CPU clock                            |
-|             |             |             | K2G_c66xExa |                                                         |
-|             |             |             | mpleProject |                                                         |
-|             |             |             | failure on  |                                                         |
-|             |             |             | 1GHz Flip   |                                                         |
-|             |             |             | Chip        |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4184  | am57x,k2x   | Board       | Hello_World:| Problem observed with using GCC semihosting support     |
-|             |             | Diagnostic  | Baremetal   | Use UART driver for input and output                    |
-|             |             |             | ARM         |                                                         |
-|             |             |             | Cortex-A15  |                                                         |
-|             |             |             | test example|                                                         |
-|             |             |             | failure     |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4214  | k2g-hs      | Board       |create-sdcard| Default generated App image is not signed               |
-|             |             | Diagnostic  |script does  | follow the steps mentioned in section 6.2.1.2           |
-|             |             |             |not boot OOB | of the Processor SDK Secdev Build and Install           |
-|             |             |             |             | Guide to sign the app                                   |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-642   | \*          | Uniflash    | Uniflash    |Command line option can be used.                         |
-|             |             |             | based       |Refer `User Guide <Board_EVM_Abstration.html#uniflash>`__|
-|             |             |             | flashing is |                                                         |
-|             |             |             | not         |                                                         |
-|             |             |             | available   |                                                         |
-|             |             |             | through GUI |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4108  | omapl13x    | USB         | USB Audio:  | None                                                    |
-|             |             |             | Lag when    |                                                         |
-|             |             |             | trying to   |                                                         |
-|             |             |             | adjust      |                                                         |
-|             |             |             | volume      |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3383  | am574x-idk  | Board       | Diagnostic  | None                                                    |
-|             |             | Diagnostic  | lcdTouchscr |                                                         |
-|             |             |             | een_TEST    |                                                         |
-|             |             |             | hangs on    |                                                         |
-|             |             |             | AM574x IDK  |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-3369  | am574x-idk  | PCIE-LLD    | PCIE board  | None                                                    |
-|             |             |             | to board    |                                                         |
-|             |             |             | ARM test    |                                                         |
-|             |             |             | examples    |                                                         |
-|             |             |             | hangs on    |                                                         |
-|             |             |             | idkAM574x   |                                                         |
-|             |             |             | platform    |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4304  | am335x      | Uniflash    | Flash writer| Rebuilding the flash writer binaries shall fix this     |
-|             |             | Flash       | prebuilt    | issue. Refer the `Rebuilding the flash writer           |
-|             |             | Writer      | binaries    | <Board_EVM_Abstration.html#rebuilding-flashwriter>`__   |
-|             |             |             | does not    |                                                         |
-|             |             |             | work on     |                                                         |
-|             |             |             | AM335x      |                                                         |
-|             |             |             | platforms   |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4869  | c6657-evm   | NDK         | No support  | Feature no longer supported                             |
-|             | omapl137    |             | for Big     |                                                         |
-|             |             |             | Endian      |                                                         |
-|             |             |             | Libraries   |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4667  |  am57x      | Demo        | Image       | Issue seen using 1Gig router on ETH0. Replace with      |
-|             |             |             | Processing  | 100Mbps                                                 |
-|             |             |             | Demo lock up|                                                         |
-|             |             |             | on AM572x   |                                                         |
-|             |             |             | GP EVM      |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4050  |  am65x      | ospi        | Driver does | Current support is limited to 32 Mhz with PHy disabled  |
-|             |             |             | not support |                                                         |
-|             |             |             | 133/166Mhz  |                                                         |
-|             |             |             | with PHY    |                                                         |
-|             |             |             |             |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
-| PRSDK-4639  |  am65x      | sbl R5      | SBL example | Internal memory  based examples currently available     |
-|             |             |             | currently   |                                                         |
-|             |             |             | does not    |                                                         |
-|             |             |             | cover app   |                                                         |
-|             |             |             |loaded from  |                                                         |
-|             |             |             |DDR for R5   |                                                         |
-+-------------+-------------+-------------+-------------+---------------------------------------------------------+
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+|  Record ID  |  Platform   |    Area     |   Summary   | Workaround                                                                                                   |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4050  |  am65x      | Drivers     | High speed  | OSPI driver not functional for Full rate 133, 166 MHz                                                        |
+|             |             |             | support not | with PHY enabled                                                                                             |
+|             |             |             | functional  | USB3.0 support is not functional in this release                                                             |
+|             |             |             | for OSPI,USB|                                                                                                              |
+|             |             |             | drivers     |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4639  |  am65x      | sbl R5      | SBL examples| Internal memory  based examples currently available                                                          |
+|             |             |             | currently   |                                                                                                              |
+|             |             |             | does not    |                                                                                                              |
+|             |             |             | cover app   |                                                                                                              |
+|             |             |             | loaded from |                                                                                                              |
+|             |             |             | DDR for R5  |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4121  | AM65X       | Building    | make all    | Install`Strawberry Perl <http://strawberryperl.com/download/5.26.2.1/strawberry-perl-5.26.2.1-64bit.msi>`__  |
+|             |             | Package     | fails for   | Run gmake all on DOS prompt with admin priviledge                                                            |
+|             |             |             | Windows due |                                                                                                              |
+|             |             |             | to missing  |                                                                                                              |
+|             |             |             | openSSL     |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-335   | AM4X        | High-Speed  | USB host    | Re-enumeration support for the case of                                                                       |
+|             |             | Drivers     | MSC fails   | device unplugged                                                                                             |
+|             |             |             | to          | and plugged back currently fails for the                                                                     |
+|             |             |             | re-enumerate| example.Workaround is to avoid                                                                               |
+|             |             |             |             | disconnecting drive while running example.                                                                   |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-330   | AM4X        | High-Speed  | USB device  | Problem not observed with Linux USB Host.                                                                    |
+|             |             | Drivers     | MSC         |                                                                                                              |
+|             |             |             | re-enumerat |                                                                                                              |
+|             |             |             | ion         |                                                                                                              |
+|             |             |             | fails while |                                                                                                              |
+|             |             |             | disconnecti |                                                                                                              |
+|             |             |             | ng          |                                                                                                              |
+|             |             |             | and         |                                                                                                              |
+|             |             |             | reconnectin |                                                                                                              |
+|             |             |             | g           |                                                                                                              |
+|             |             |             | on a        |                                                                                                              |
+|             |             |             | Windows     |                                                                                                              |
+|             |             |             | host        |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-1682  | AM5X        | Diagnostics | Board       | For LCD/Display checkout example under VPS component                                                         |
+|             |             |             | diagnostics | could be used                                                                                                |
+|             |             |             | LCD         |                                                                                                              |
+|             |             |             | Touchscreen |                                                                                                              |
+|             |             |             | test does   |                                                                                                              |
+|             |             |             | not work    |                                                                                                              |
+|             |             |             | with new    |                                                                                                              |
+|             |             |             | version of  |                                                                                                              |
+|             |             |             | LCD TSC     |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-2166  | AM5X        | High-Speed  | USB3.0 host | Start the example without the USB plugged in. Once                                                           |
+|             |             | Drivers     | problem     | the example is up and waiting for USB stick,                                                                 |
+|             |             |             | with        | plug the USB stick in and it will enumerateproperly.                                                         |
+|             |             |             | Sandisk     |                                                                                                              |
+|             |             |             | Extreme     |                                                                                                              |
+|             |             |             | USB3.0      |                                                                                                              |
+|             |             |             | stick       |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-1975  | \*          | Board       | Timer       | Example can run on ARM Core 0                                                                                |
+|             |             | Diagnostics | Diagnostic  |                                                                                                              |
+|             |             |             | example     |                                                                                                              |
+|             |             |             | does not    |                                                                                                              |
+|             |             |             | run on ARM  |                                                                                                              |
+|             |             |             | Core 1      |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-3344  | am572x-id,a | Board       | Diagnostics | ICSS-EMAC LLD TI-RTOS example can be used for                                                                |
+|             | m574x-idk   | Diagnostics | Baremetal   | similar test.                                                                                                |
+|             |             |             | icssEmac_TE |                                                                                                              |
+|             |             |             | ST          |                                                                                                              |
+|             |             |             | idkAM57{2/4 |                                                                                                              |
+|             |             |             | }x :        |                                                                                                              |
+|             |             |             | LINK IS     |                                                                                                              |
+|             |             |             | DOWN,       |                                                                                                              |
+|             |             |             | pluggin     |                                                                                                              |
+|             |             |             | loopback    |                                                                                                              |
+|             |             |             | cable       |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-3482  | \*          | CCS         | CCSV8.1:    | Retry for connection failure in DSS script.                                                                  |
+|             |             |             | Intermitten |                                                                                                              |
+|             |             |             | t           |                                                                                                              |
+|             |             |             | issue not   |                                                                                                              |
+|             |             |             | able to     |                                                                                                              |
+|             |             |             | connect     |                                                                                                              |
+|             |             |             | target      |                                                                                                              |
+|             |             |             | while using |                                                                                                              |
+|             |             |             | DSS script  |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-3482  | \*          | CCS         | Cortex A8   | Warning can be ignored                                                                                       |
+|             |             |             | SemiHosting:|                                                                                                              |
+|             |             |             | File IO     |                                                                                                              |
+|             |             |             | error :     |                                                                                                              |
+|             |             |             | fopen()     |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-2336  | am335x-evm, | PM          | PM Unit     | Use debug version of PM library for the test. To                                                             |
+|             | am437x-evm  |             | Test        | build from the top-level makefile in                                                                         |
+|             |             |             | failure     | pdk.../packages folder run "make BUILD_CONFIG=debug pm"                                                      |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
+|             |             |             |             |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-3318  | K2G 1Ghz    | EMAC        | EMAC_CpswRa | Incorrect Core clock config in test. Fix for                                                                 |
+|             |             |             | teLimit_evm | to set the correct CPU clock                                                                                 |
+|             |             |             | K2G_c66xExa |                                                                                                              |
+|             |             |             | mpleProject |                                                                                                              |
+|             |             |             | failure on  |                                                                                                              |
+|             |             |             | 1GHz Flip   |                                                                                                              |
+|             |             |             | Chip        |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4184  | am57x,k2x   | Board       | Hello_World:| Problem observed with using GCC semihosting support                                                          |
+|             |             | Diagnostic  | Baremetal   | Use UART driver for input and output                                                                         |
+|             |             |             | ARM         |                                                                                                              |
+|             |             |             | Cortex-A15  |                                                                                                              |
+|             |             |             | test example|                                                                                                              |
+|             |             |             | failure     |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4214  | k2g-hs      | Board       |create-sdcard| Default generated App image is not signed                                                                    |
+|             |             | Diagnostic  |script does  | follow the steps mentioned in section 6.2.1.2                                                                |
+|             |             |             |not boot OOB | of the Processor SDK Secdev Build and Install                                                                |
+|             |             |             |             | Guide to sign the app                                                                                        |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-642   | \*          | Uniflash    | Uniflash    |Command line option can be used.                                                                              |
+|             |             |             | based       |Refer `User Guide <Board_EVM_Abstration.html#uniflash>`__                                                     |
+|             |             |             | flashing is |                                                                                                              |
+|             |             |             | not         |                                                                                                              |
+|             |             |             | available   |                                                                                                              |
+|             |             |             | through GUI |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4108  | omapl13x    | USB         | USB Audio:  | None                                                                                                         |
+|             |             |             | Lag when    |                                                                                                              |
+|             |             |             | trying to   |                                                                                                              |
+|             |             |             | adjust      |                                                                                                              |
+|             |             |             | volume      |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-3383  | am574x-idk  | Board       | Diagnostic  | None                                                                                                         |
+|             |             | Diagnostic  | lcdTouchscr |                                                                                                              |
+|             |             |             | een_TEST    |                                                                                                              |
+|             |             |             | hangs on    |                                                                                                              |
+|             |             |             | AM574x IDK  |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-3369  | am574x-idk  | PCIE-LLD    | PCIE board  | None                                                                                                         |
+|             |             |             | to board    |                                                                                                              |
+|             |             |             | ARM test    |                                                                                                              |
+|             |             |             | examples    |                                                                                                              |
+|             |             |             | hangs on    |                                                                                                              |
+|             |             |             | idkAM574x   |                                                                                                              |
+|             |             |             | platform    |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4304  | am335x      | Uniflash    | Flash writer| Rebuilding the flash writer binaries shall fix this                                                          |
+|             |             | Flash       | prebuilt    | issue. Refer the `Rebuilding the flash writer                                                                |
+|             |             | Writer      | binaries    | <Board_EVM_Abstration.html#rebuilding-flashwriter>`__                                                        |
+|             |             |             | does not    |                                                                                                              |
+|             |             |             | work on     |                                                                                                              |
+|             |             |             | AM335x      |                                                                                                              |
+|             |             |             | platforms   |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4869  | c6657-evm   | NDK         | No support  | Feature no longer supported                                                                                  |
+|             | omapl137    |             | for Big     |                                                                                                              |
+|             |             |             | Endian      |                                                                                                              |
+|             |             |             | Libraries   |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+| PRSDK-4667  |  am57x      | Demo        | Image       | Issue seen using 1Gig router on ETH0. Replace with                                                           |
+|             |             |             | Processing  | 100Mbps                                                                                                      |
+|             |             |             | Demo lock up|                                                                                                              |
+|             |             |             | on AM572x   |                                                                                                              |
+|             |             |             | GP EVM      |                                                                                                              |
++-------------+-------------+-------------+-------------+--------------------------------------------------------------------------------------------------------------+
+
 
 .. RN_Supported-Platforms-label:
 Supported Platforms 
