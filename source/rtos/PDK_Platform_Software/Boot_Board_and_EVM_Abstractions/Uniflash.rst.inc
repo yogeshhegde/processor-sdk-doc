@@ -9,29 +9,33 @@ This section explains on how to use Uniflash CLI tool to flash images to the TI'
 Supported Platforms
 ^^^^^^^^^^^^^^^^^^^
 
-+----------------+------------------+---------------+--------------+
-|      SOC       |      PLATFORM    | FLASH DEVICE  |   MODES      |
-|                |                  +-------+-------+------+-------+
-|                |                  | SPI   | QSPI  | UART | JTAG  |
-+================+==================+=======+=======+======+=======+
-| AM335x         | AM335x GP EVM    |   X   |       |   X  |   X   |
-|                +------------------+-------+-------+------+-------+
-|                | AM335x ICEv2     |   X   |       |      |   X   |
-|                +------------------+-------+-------+------+-------+
-|                | AMIC110 ICE      |   X   |       |   X  |   X   |
-+----------------+------------------+-------+-------+------+-------+
-| AM437x         | AM437x IDK       |       |   X   |      |   X   |
-+----------------+------------------+-------+-------+------+-------+
-| AM571x         | AM571x IDK       |       |   X   |      |   X   |
-+----------------+------------------+-------+-------+------+-------+
-| AM572x         | AM572x IDK       |       |   X   |      |   X   |
-+----------------+------------------+-------+-------+------+-------+
-| AM574x         | AM574x IDK       |       |   X   |      |   X   |
-+----------------+------------------+-------+-------+------+-------+
-| K2G            | K2G GP EVM       |       |   X   |      |   X   |
-|                +------------------+-------+-------+------+-------+
-|                | K2G ICE          |       |   X   |      |   X   |
-+----------------+------------------+-------+-------+------+-------+
++----------------+------------------+---------------+------+--------------+
+|      SOC       |      PLATFORM    | FLASH DEVICE         |    MODES     |
+|                |                  +-------+-------+------+------+-------+
+|                |                  | SPI   | QSPI  | OSPI | UART | JTAG  |
++================+==================+=======+=======+======+======+=======+
+| AM335x         | AM335x GP EVM    |   X   |       |      |   X  |   X   |
+|                +------------------+-------+-------+------+------+-------+
+|                | AM335x ICEv2     |   X   |       |      |      |   X   |
+|                +------------------+-------+-------+------+------+-------+
+|                | AMIC110 ICE      |   X   |       |      |   X  |   X   |
++----------------+------------------+-------+-------+------+------+-------+
+| AM437x         | AM437x IDK       |       |   X   |      |      |   X   |
++----------------+------------------+-------+-------+------+------+-------+
+| AM571x         | AM571x IDK       |       |   X   |      |      |   X   |
++----------------+------------------+-------+-------+------+------+-------+
+| AM572x         | AM572x IDK       |       |   X   |      |      |   X   |
++----------------+------------------+-------+-------+------+------+-------+
+| AM574x         | AM574x IDK       |       |   X   |      |      |   X   |
++----------------+------------------+-------+-------+------+------+-------+
+| K2G            | K2G GP EVM       |       |   X   |      |      |   X   |
+|                +------------------+-------+-------+------+------+-------+
+|                | K2G ICE          |       |   X   |      |      |   X   |
++----------------+------------------+-------+-------+------+------+-------+
+| AM65XX         | AM65xx EVM       |       |       |   X  |      |   X   |
+|                +------------------+-------+-------+------+------+-------+
+|                | AM65xx IDK       |       |       |   X  |      |   X   |
++----------------+------------------+-------+-------+------+------+-------+
 
 where,
 
@@ -75,8 +79,8 @@ to the TI's MPU platforms. This mode will execute the Uniflash CLI binary <path_
 
 Get the Flash Writer binaries from <pdk_install_path>/packages/ti/board/utils/uniflash/bin/<board_name>/
 
-.. note::   Flash Writer Binaries needs to be rebuilt for AM335x platform. 
-            Refer :ref:`rebuild-flashwriter` section to rebuild FlashWriter.
+.. note::   Flash Writer Binaries needs to be rebuilt for AM335x and AM65xx platforms.
+            Refer :ref:`rebuild-board_utils` section to rebuild FlashWriter.
 
 Display Help
 ^^^^^^^^^^^^
@@ -126,6 +130,8 @@ Following is the sample output on Windows.
         0 - NAND
         1 - SPI
         2 - QSPI
+        3 - OSPI
+        4 - eMMC
 
         Image_Type:
         0 - Flash
@@ -161,6 +167,9 @@ There are two ways of loading and executing the Flash Writer on to the target pl
 
 1. Loading Flash Writer via ROM boot (over UART interface), for the target platforms that support UART Boot mode
 2. Loading Flash Writer over JTAG interface, for the target platforms that do not support UART Boot mode
+
+.. note:: This Section does not apply for AM65xx platform.
+          Refer Section :ref:`program-flashwriter-am65xx` to load FlashWriter on AM65xx platform
 
 
 Loading Flash Writer via ROM boot
@@ -348,6 +357,21 @@ Following is the sample output on Windows.
 The Flash Writer will be loaded and executed. The Flash Writer starts sending character 'C'(xmodem protocol).
 This can be verified on the serial console utility.
 
+.. _program-flashwriter-am65xx:
+
+Programming FlashWriter on AM65xx Platform
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Lauch Code Composer Studio.
+- Establish connection with M3_0 core and then with A53_0_0 core of the target, using `Connect Target` option. Refer
+  `CCS Target setup` http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#launch-target-configuration
+  for help.
+- Load Flash Writer program to M3_0 core using Run->Load->Load Program option.
+- Run the FlashWriter program. The Flash Writer starts sending character 'C'(xmodem protocol).
+- Refer Sections :ref:`program_target` and :ref:`erasing_target` for programming and erasing the flash device
+  on the target platform.
+
+.. _program_target:
+
 Programming binaries to Flash Device
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Follow the procedure explained in Section :ref:`program-flashwriter` to load Flash Writer binary to the target platform.
@@ -357,7 +381,7 @@ For Windows
 ::
 
         # cd <path_to_the_uniflash>
-        # dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_flash_writer_to_be_transfered> -d  <device_type> -o <offset>
+        # dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
         Example:
         # dslite.bat --mode processors -c COM7 -f C:\ti\pdk\packages\ti\starterware\binary\bootloader\bin\am335x-evm\gcc\bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0x0
 
@@ -367,7 +391,7 @@ For Linux
 ::
 
         # cd <path_to_the_uniflash>
-        # sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_flash_writer_to_be_transfered> -d  <device_type> -o <offset>
+        # sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
         Example:
         # sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f /home/user/pdk/packages/ti/starterware/binary/bootloader/bin/am335x-evm/gcc/bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0x0
 
@@ -375,8 +399,11 @@ For Linux
 
 where device type is,
 
+0. NAND Flash
 1. SPI Flash
 2. QSPI Flash
+3. OSPI Flash
+4. eMMC
 
 The application will output the progress of file transfer to the console on the Host PC.
 Following is the sample output on Windows.
@@ -407,6 +434,7 @@ Following is the sample output on Windows.
 
         Flash Programming Success!
 
+.. _erasing_target:
 
 Erasing Flash Device on the Target Platform
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -458,11 +486,11 @@ Following is the sample output on Windows.
         Header Transfer Complete!!
         Flash Erase Success!
 
-.. _rebuild-flashwriter:
+.. _rebuild-board_utils:
 
-Rebuilding FlashWriter
+Rebuilding Board-utils
 ^^^^^^^^^^^^^^^^^^^^^^
-- Use the following commands to rebuild Flash Writer
+- Use the following commands to rebuild Flash Writer/Apploader
 
 - For Windows
 ::
@@ -483,3 +511,6 @@ Rebuilding FlashWriter
         # make
         
 - Uniflash binaries will be created under the folder <pdk_install_path>/packages/ti/board/utils/uniflash/bin/<board_name>/
+- Apploader binaries will be created under the folder <pdk_install_path>/packages/ti/board/utils/uartAppLoader/bin/<board_name>/
+
+.. raw:: html
