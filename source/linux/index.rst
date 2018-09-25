@@ -10,7 +10,7 @@
    Foundational_Components
    Industrial_Protocols
    Examples_and_Demos
-   Processor_Linux_SDK_How_To_Guides
+   How_to_Guides
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: ../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |

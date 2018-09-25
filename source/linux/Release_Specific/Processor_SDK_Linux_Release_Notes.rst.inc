@@ -218,7 +218,7 @@ Composer Studio.
 The Processor SDK is developed, built and verified on Ubuntu 14.04 and
 16.04.   Details on how to create a virtual machine to load Ubuntu 14.04
 are described in `this
-page <Processor_Linux_SDK_How_To_Guides.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
+page <How_to_Guides_Host.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
 
 
 .. note::
