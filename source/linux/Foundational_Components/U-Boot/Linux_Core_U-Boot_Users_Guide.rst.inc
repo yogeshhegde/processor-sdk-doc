@@ -84,7 +84,7 @@ General Information
   git repository including commit history.
 | Alternatively, U-Boot sources can directly be fetched from GIT. The
   GIT repo URL, branch and commit id can be found in the
-  `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific.html#u-boot>`__
+  `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_Release_Notes.html#u-boot>`__
 
 .. rubric:: Device Trees
    :name: device-trees

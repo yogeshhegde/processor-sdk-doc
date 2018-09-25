@@ -15,7 +15,7 @@ This wiki will cover the basic steps for building the Linux kernel.
 | Alternatively, Kernel sources can directly be fetched from GIT. You
   can find the details about the git repository, branch and commit id in
   the
-  `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific.html#kernel>`__
+  `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_Release_Notes.html#kernel>`__
 
 | 
 

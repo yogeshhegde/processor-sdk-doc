@@ -92,7 +92,7 @@ Run the following commands to install the Linaro Toolchain.
 Build Steps
 -----------
 
-Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a particular release of Processor SDK Linux. The final command below will build the **arago-base-tisdk-image**, which is the minimal Processor SDK filesystem. See `Build Options`_ for a list of additional targets.
+Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the layer configuration for a particular release of Processor SDK Linux. The final command below will build the **arago-base-tisdk-image**, which is the minimal Processor SDK filesystem. See `Build Options`_ for a list of additional targets.
 
 ::
 
@@ -113,7 +113,7 @@ options, and supported platforms of the Processor SDK.
 
 Layer Configuration
 -------------------
-Please refer to :ref:`PLSDK-LayerConfig-label` for the layer configuration for a particular release of Processor SDK Linux.
+Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the layer configuration for a particular release of Processor SDK Linux.
 
 
 Build Options
