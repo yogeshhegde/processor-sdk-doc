@@ -65,8 +65,8 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 .. _Migration Guide: Release_Specific.html#processor-sdk-linux-migration-guide
 .. _MCSDK to Processor SDK Migration Guide: Release_Specific.html#mcsdk-to-processor-sdk-migration-guide
 .. _GPLv3 Disclaimer: Overview.html#plsdk-gplv3-disclaimer-label
-.. _How To Guides: Processor_Linux_SDK_How_To_Guides.html
-.. _Processor SDK Linux How-To Guides: Processor_Linux_SDK_How_To_Guides.html
+.. _How To Guides: How_to_Guides.html
+.. _Processor SDK Linux How-To Guides: How_to_Guides.html
 .. _Linux SDK Software Developer's Guide: Overview.html#processor-sdk-linux-software-developers-guide
 .. _Processor SDK Linux Software Developer's Guide: Overview.html#processor-sdk-linux-software-developers-guide
 .. _Developing with the Linux SDK: Overview.html#start-your-linux-development
