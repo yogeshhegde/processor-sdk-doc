@@ -24,7 +24,7 @@ development.
    machines running Linux. Support for 32-bit machines is dropped
    primarily due to the Linzro toolchain not supporting 32-bit anymore.
    Host support for the SDK is described in the `Release
-   Notes <Release_Specific.html#host_support>`__
+   Notes <Release_Specific_Release_Notes.html#host_support>`__
 
 .. rubric:: Tool Chain
    :name: tool-chain

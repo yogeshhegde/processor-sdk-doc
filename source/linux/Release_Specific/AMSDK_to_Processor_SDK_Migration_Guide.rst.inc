@@ -88,7 +88,7 @@ Hardware Platforms
 ^^^^^^^^^^^^^^^^^^^
 
 Both SDKs support the same hardware platforms from TI. Here's the
-`list <Release_Specific.html#supported-platforms-and-versions>`__
+`list <Release_Specific_Supported_Platforms_and_Versions.html>`__
 from the Processor SDK, for completeness.
 
 Board Porting
