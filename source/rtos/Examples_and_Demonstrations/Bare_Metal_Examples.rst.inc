@@ -9,13 +9,15 @@ into details of software components provided in the SDK. Consequently,
 make sure there are no SD cards installed on the EVM with an OS prior to
 exploring the following examples.
 
-If you face any problems with CCS or JTAG, see try these
+If you face any problems with CCS or JTAG, try these
 `troubleshooting steps <How_to_Guides.html#troubleshooting>`__.
 
 
 ARM Cortex-A53
 ===============
 In this article, we take a look at creating bare-metal hello world examples for the Cortex-A53 core in CCS. We will be using the AM654x device as an example.
+
+.. Note:: For future Device Support Package releases, the Hello World examples will be added to CCS as an out-of-box experience. 
 
 1. Start CCS and create a workspace for 
 generating the project.
@@ -495,13 +497,15 @@ ARM Cortex-R5
 
 In this article, we take a look at creating bare-metal hello world examples for the Cortex-R5 core in CCS. We will be using the AM654x device as an example.
 
+.. Note:: For future Device Support Package releases, the Hello World examples will be added to CCS as an out-of-box experience. 
+
 1. Start CCS and create a workspace for 
 generating the project.
 
 2. Navigate to File -> New -> 
 CCS Project.
 
-3. Select Target as AM65x - Cortex A53 and GPEVM_AM65x as 
+3. Select Target as AM65x - Cortex R5 and GPEVM_AM65x as 
 shown in the image below.
 
 4. Select the **Cortex R** tab and provide a name for the project. Select **TI v18.1.2.LTS** (or higher) for the Compiler Version. 
@@ -541,7 +545,7 @@ described in the :ref:`Processor-SDK-RTOS-Getting-Started-Guide-label`.
 10. Right click on **DMSC_Cortex_M3_0** and click connect to target. 
 After connecting to the M3, right click on **MCU_PULSAR_Cortex_R5_0** and connect to it. 
 
-11. Load and run hello_world.out example file on the Cortex-A53. 
+11. Load and run hello_world.out example file on the Cortex-R5. 
 You should see a Hello_world string displayed in the CCS console window.
 
 .. Image:: ../images/AM65x_CCS_Hello_World_R5.PNG
