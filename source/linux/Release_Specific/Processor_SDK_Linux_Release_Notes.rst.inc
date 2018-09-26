@@ -1,5 +1,5 @@
 ************************************
-Processor SDK Linux Release Notes
+Release Notes
 ************************************
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
 
@@ -26,15 +26,15 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page. The manifest can be found on the SDK
 download page or in the installed directory as indicated below. In
-addition, see :ref:`PLSDK-GPLv3-Disclaimer-label`
+addition, see `PLSDK GPLv3 Disclaimer <Overview_GPLv3_Disclaimer.html>`__
 
 Documentation
 ===============
--  :ref:`processor-sdk-linux-software-developers-guide`: Provides information on features, functions, delivery package and,
+-  `Processor SDK Linux Software Developer's Guide <index.html>`__: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
    infrastructure to allow developers to start creating applications.
--  :ref:`processor-sdk-linux-getting-started-guide`: Provides information on getting the software and running
+-  `Processor SDK Linux Getting Started Guide <Overview_Getting_Started_Guide.html>`__: Provides information on getting the software and running
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software
    included in the SDK release. This document is in the release at
@@ -204,7 +204,7 @@ Kernel
    :name: installation-and-usage
 
 The `Software Developer's
-Guide <Overview.html#processor-sdk-linux-software-developer-s-guide>`__
+Guide <index.html>`__
 provides instructions on how to setup up your Linux development
 environment, install the SDK and start your development.  It also
 includes User's Guides for various Example Applications and Code

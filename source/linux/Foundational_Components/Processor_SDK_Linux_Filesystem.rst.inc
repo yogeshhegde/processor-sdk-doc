@@ -11,7 +11,7 @@ Filesystem
   programs, scripts, Linux user-space components that abstract various
   hardware accelerators available in the SoC. The Filesystem can be
   fully assembled via Yocto, following the instructions
-  `Processor\_SDK\_Building\_The\_SDK <Overview.html#processor-sdk-linux-building-the-sdk>`__.
+  `Processor\_SDK\_Building\_The\_SDK <Overview_Building_the_SDK.html>`__.
 
 .. rubric:: Filesystem Images
    :name: filesystem-images

@@ -102,7 +102,7 @@ can move on to the next step.
       card
    -  **n** - If the SD card already has the desired number of
       partitions then this will leave the partitioning alone. If you
-      select **n** here skip on to the `Installing SD Card Content`_ section.
+      select **n** here skip on to the `Installing SD Card Content <Overview_Getting_Started_Guide.html#installing-sd-card-content>`__ section.
 
 .. rubric:: Select Number of Partitions
    :name: select-number-of-partitions
@@ -168,7 +168,7 @@ SDK for Linux.
 #. The SD card you wish to create is inserted into the host system and
    has a size sufficiently large to hold at least the bootloaders,
    kernel, and root file system.
-#. You have started running the script as detailed in the `SD Card Common steps`_ section above.
+#. You have started running the script as detailed in the `SD Card Common Steps <Overview_Getting_Started_Guide.html#common-steps>`__ section above.
 
 .. rubric:: Choose Install Pre-built Images
    :name: choose-install-pre-built-images
@@ -268,7 +268,7 @@ connection to a server.
 #. The SD card you wish to create is inserted into the host system and
    has a size sufficiently large to hold at least the bootloaders,
    kernel, and root file system.
-#. You have started running the script as detailed in the `SD Card common steps`_ section above.
+#. You have started running the script as detailed in the `SD Card Common Steps <Overview_Getting_Started_Guide.html#common-steps>`__ section above.
 
 .. rubric:: Choose Custom Images
    :name: choose-custom-images
@@ -342,8 +342,8 @@ the the partitions of the SD card shipped with the EVM.
 #. The SD card you wish to create is inserted into the host system and
    has a size sufficiently large to hold at least the bootloaders,
    kernel, and root file system.
-#. You have started running the script as detailed in the `SD Card common
-   steps`_ section above.
+#. You have started running the script as detailed in the `SD Card Common
+   Steps <Overview_Getting_Started_Guide.html#common-steps>`__ section above.
 
 .. rubric:: Provide Tarball Location
    :name: provide-tarball-location

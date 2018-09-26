@@ -64,7 +64,7 @@ a few requirements once you have installed to your preferred directory.
 
 #. Install Processor SDK to the directory of your choosing
    Follow the installation instructions found
-   `here <Overview.html#download-and-install-the-sdk>`__.
+   `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__.
    Location does not matter, but the default installation directory is
    strongly suggested and makes using the SDK's scripts much easier.
 #. Install the PRU Software Support Package into the SDK you chose above
