@@ -1,41 +1,11 @@
-**********************************************
-Processor SDK Linux Software Developer's Guide
-**********************************************
-
-.. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide
-   :name: welcome-to-the-processor-sdk-linux-software-developers-guide
-
-.. note::
-   | Processor SDK documentation is now created from reStructuredText sources using
-     Sphinx, and hosted on ti.com instead of processors wiki - starting
-     4.3 release.
-   |
-   | We intend to retain the look and feel of the content
-     to make this transition seamless, and yet provide the users with the benefits of
-     consuming the content generated with emergent documentation tools.
-   |
-   | Wiki content will be left for reference during this migration process to find any missing old content. Feel free to drop us a note using the
-     forums listed at `Technical Support`_, and we would love to hear from you.
-   |
-   | Old Wiki Documentation links from previous releases:
-   |    - `Wiki Software Developer's Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__.
-   |    - `Wiki Getting Started Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide>`__.
-   |
-  
 Thank you for choosing to evaluate one of our TI Processors `ARM
-microprocessors <http://www.ti.com/lsds/ti/dsp/arm.page>`__. Please
-**bookmark** this page and refer back to it as needed. It is designed to
-quickly provide the information you need most while evaluating a TI
+microprocessors <http://www.ti.com/lsds/ti/dsp/arm.page>`__. It is
+designed to quickly provide the information you need most while evaluating a TI
 microprocessor, specifically running one of the Software Architectures
 available, embedded Linux. We are always striving to improve this
 product. Please let us know if you have :ref:`ideas or
 suggestions <Feedback>`.
 
-
-.. rubric:: Version
-   :name: version
-
-This information covers Processor SDK 4.3 and above, unless otherwise noted.
 
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | **Processor SDK Linux**                                                                                                                                |
@@ -53,34 +23,32 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 | `Technical Support`_                                                   | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
-.. _Getting Started Guide: Overview.html#processor-sdk-linux-getting-started-guide
+.. _Getting Started Guide: Overview_Getting_Started_Guide.html
 .. _Supported Platforms and Versions: Release_Specific_Supported_Platforms_and_Versions.html
 .. _Hardware platform: Release_Specific_Supported_Platforms_and_Versions.html#supported-platforms-and-evms
 .. _Release Notes: Release_Specific_Release_Notes.html
-.. _Technical Support: Overview.html#processor-sdk-linux-technical-support
-.. _Directory Structure Overview: Overview.html#processor-sdk-linux-directory-structure
-.. _Linux Software Stack: Overview.html#processor-sdk-linux-software-stack
-.. _Embedded Linux System: Overview.html#processor-sdk-linux-software-stack
-.. _Building the SDK: Overview.html#processor-sdk-linux-building-the-sdk
+.. _Technical Support: Overview_Technical_Support.html
+.. _Directory Structure Overview: Overview_Directory_Structure_Overview.html
+.. _Linux Software Stack: Overview_Software_Stack.html
+.. _Embedded Linux System: Overview_Software_Stack.html
+.. _Building the SDK: Overview_Building_the_SDK.html
 .. _Migration Guide: Release_Specific_Migration_Guide.html
 .. _MCSDK to Processor SDK Migration Guide: Release_Specific_Migration_Guide.html#mcsdk-to-processor-sdk-migration-guide
-.. _GPLv3 Disclaimer: Overview.html#plsdk-gplv3-disclaimer-label
+.. _GPLv3 Disclaimer: Overview_GPLv3_Disclaimer.html
 .. _How To Guides: How_to_Guides.html
 .. _Processor SDK Linux How-To Guides: How_to_Guides.html
-.. _Linux SDK Software Developer's Guide: Overview.html#processor-sdk-linux-software-developers-guide
-.. _Processor SDK Linux Software Developer's Guide: Overview.html#processor-sdk-linux-software-developers-guide
-.. _Developing with the Linux SDK: Overview.html#start-your-linux-development
-.. _Creating a SD Card with Windows: Overview.html#windows-sd-card-creation-guide
-.. _Install the Linux SDK: Overview.html#download-and-install-the-sdk
-.. _SDK Create SD Card Script: Overview.html#linux-sd-card-creation-guide
-.. _Program EVM User Guide: Overview.html#processor-sdk-linux-program-evm
-.. _Run the Setup.sh Script: Overview.html#processor-sdk-linux-setup-script-overview
-.. _top-level Makefile: Overview.html#processor-sdk-linux-top-level-makefile
-.. _SD Card using default images: Overview.html#processor-sdk-linux-sd-card-using-default-images
-.. _SD Card using custom images: Overview.html#processor-sdk-linux-sd-card-using-custom-images
-.. _SD Card using parition tarballs: Overview.html#processor-sdk-linux-sd-card-using-partition-tarballs
-.. _Installing SD Card Content: :Overview.html#processor-sdk-linux-installing-sd-card-content
-.. _SD Card common steps: Overview.html#processor-sdk-linux-sd-card-common-steps
+.. _Linux SDK Software Developer's Guide: index.html
+.. _Processor SDK Linux Software Developer's Guide: index.html
+.. _Developing with the Linux SDK: Overview_Getting_Started_Guide.html#start-your-linux-development
+.. _Creating a SD Card with Windows: Overview_Getting_Started_Guide.html#windows-sd-card-creation-guide
+.. _Install the Linux SDK: Overview_Getting_Started_Guide.html#download-and-install-the-sdk
+.. _SDK Create SD Card Script: Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide
+.. _Program EVM User Guide: Overview_Getting_Started_Guide.html#program-evm-user-guide
+.. _Run the Setup.sh Script: Overview_Getting_Started_Guide.html#run-setup-scripts
+.. _top-level Makefile: Overview_Getting_Started_Guide.html#top-level-makefile
+.. _SD Card using default images: Overview_Getting_Started_Guide.html#sd-card-using-default-images
+.. _SD Card using custom images: Overview_Getting_Started_Guide.html#sd-card-using-custom-images
+.. _SD Card using parition tarballs: Overview_Getting_Started_Guide.html#sd-card-using-partition-tarballs
  
 +---------------+--------------------------+------------------+-----------------------------------+
 | **Foundational Components** (more information on each piece of the distribution)                |
@@ -129,10 +97,3 @@ This information covers Processor SDK 4.3 and above, unless otherwise noted.
 .. _PTP: Industrial_Protocols_PTP.html
 .. _CCLINK: Industrial_Protocols_CCLINK.html
 .. _SORTE: Industrial_Protocols_SORTE.html
-
-.. rubric:: Feedback
-   :name: feedback
-
-If you have feedback, suggestions, or ideas on how to improve the SDK,
-it is very appreciated. Please post your ideas to the Linux
-forum listed at `Technical Support`_. 

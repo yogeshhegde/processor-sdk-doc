@@ -371,8 +371,8 @@ SoC where board support USB peripheral boot mode.
    cable.
 -  From Ubuntu (or the host) PC, fetch and build usbboot application.
    usbboot pre-built binaries for particular distributions may be
-   available in `processor
-   SDK <Overview.html#processor-sdk-linux-software-developer-s-guide>`__
+   available in `Processor
+   SDK <index.html>`__
    already. Here are the steps to build usbboot application.
 
 ::
@@ -855,8 +855,8 @@ A reset is required for the partition table to be visible.
    :name: updating-an-sd-card-from-a-host-pc
 
 This section assume that you have created an SD card following the
-instructions on `Sitara Linux SDK create SD card
-script <Overview.html#linux-sd-card-creation-guide>`__ or have
+instructions on `Processor SDK Linux Create SD Card
+Script <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__ or have
 made a compatible layout by hand. In this case, you will need to copy
 the **MLO** and **u-boot.img** files to the *boot* partition. At this
 point, the card is now bootable in the SD card slot. We default to using
