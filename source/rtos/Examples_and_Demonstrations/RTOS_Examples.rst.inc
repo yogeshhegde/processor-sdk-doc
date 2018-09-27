@@ -7,11 +7,6 @@ The SYS/BIOS examples gets user started with development of code using a
 real-time operating system. These are simple examples that does not get
 into details of software components provided in the SDK.
 
-.. note::
-   All instructions on this wiki have been created using CCSv6 but should
-   apply to CCSv7. Please report any issues by posting on `E2E
-   forums <https://e2e.ti.com/>`__
-   
 
 ARM Cortex-A53
 ==============
@@ -20,51 +15,52 @@ The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout. As a
 sample we will use the AM65x device to describe the steps for the Cortex-A53. 
 
-1. Create a work space folder (\ti\am_572x_hello_workspace) under ti
+.. Note:: For future Device Support Package releases, the Hello World example for the Cortex-A53 will be added to CCS as an out-of-box experience. 
+
+1. Create a work space folder (/ti/am_572x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
 
-2. In CCS, navigate to File --> New --> 
+2. In CCS, go to File --> New --> 
 CCS Project
 
-3. Select the Target as **GPEVM_AM65x** and navigate to the 
-**Cortex A** tab.
+3. Enter a project name and configure the new CCS project as
+follows:
 
-4. Enter a project name and select **GNU v7.2.1 (or higher) 
-(Linaro aarch64)**.
+ * **Target**: GPEVM_AM65x
+ * **Cortex A**
+ * **Compiler**: GNU v7.2.1 (Linaro aarch64) (or higher)
+ * **Device Endianness**: little
+ * **Linker Command File**: (PDK INSTALL PATH)/packages/ti/build/am65xx/linker_a53.lds
 
-5. Under Tool-chain, set the device endianness 
-to **little**
-
-6. For the linker command file, select **linker_a53.lds** 
-located in (PDK INSTALL PATH)packages/ti/build/am65xx/.
-
-7. Select the Empty Project (with main.c) template and 
+4. Select the Empty Project (with main.c) template and 
 click Finish.
 
-8. Remove startup_ARMCA53.S from the project, and add (PDK INSTALL PATH)/packages/ti/build/am65xx/**sysbios_a53.cfg.** 
+5. Remove startup_ARMCA53.S from the project. Add the file **sysbios_a53.cfg** located in the 
+folder (PDK INSTALL PATH)/packages/ti/build/am65xx/.
+
 You will be prompted to enable XDCtools, click yes. 
 
-9. Navigate to Project Properties --> CCS General --> Products tab and set the Target to **gnu.targets.arm.A53F** and 
-the Platform to **ti.platforms.cortexA:AM65X** and click Apply and Close.
+6. In Project Properties --> CCS General --> Products, set Target to **gnu.targets.arm.A53F** and 
+Platform to **ti.platforms.cortexA:AM65X**. Click Apply and Close.
 
-10. Add the file **InitMmu.c** located under (IPC INSTALL PATH)\examples\AM65XX_bios_elf\ex02_messageq\host 
+7. Add the file **InitMmu.c** located under (IPC INSTALL PATH)/examples/AM65XX_bios_elf/ex02_messageq/host 
 to the project. 
 
-11. Navigate to Project Properties --> CCS Build --> XDCtools --> Package Repositories and 
+8. In Project Properties --> CCS Build --> XDCtools --> Package Repositories, 
 add the path **${BIOS_CG_ROOT}/packages**
 
-12. Navigate to Project Properties --> GNU Linker --> Libraries, add the **gcc** and **rdimon** libraries, and 
-add the library search path **${xdc_find:gnu/targets/arm/libs/install-native/arm-none-eabi/lib:${ProjName}}**
+9. In Project Properties --> GNU Linker --> Libraries, add the **gcc** and **rdimon** libraries, 
+and the library search path "${xdc_find:gnu/targets/arm/libs/install-native/arm-none-eabi/lib:${ProjName}}"
 
-13. Navigate to Project Properties --> GNU Linker --> Basic and check the option **Do not use the standard system 
-startup files when linking (-nostartfiles)**
+10. In Project Properties --> GNU Linker --> Basic, check the option "Do not use the standard system 
+startup files when linking (-nostartfiles)."
 
-14. Navigate to Project Properties --> GNU Compiler --> Debugging and 
+11. Navigate to Project Properties --> GNU Compiler --> Debugging and 
 uncheck all options.
 
-15. Finally, add the following code to main.c and 
+12. Finally, add the following code to main.c and 
 build the project.
 ::
 
@@ -76,13 +72,13 @@ build the project.
 		return 0;
 	}
 	
-16. Launch the target configuration using the appropriate emulator to connect to AM65x EVM 
+13. Launch the target configuration using the appropriate emulator to connect to AM65x EVM 
 as described in the AM65x EVM Hardware Setup Guide.
 
-17. Right click on DMSC_Cortex_M3_0 and click 
+14. Right click on DMSC_Cortex_M3_0 and click 
 Connect Target. 
 
-18. Connect to the CortexA53_0_0 core. Load and run Hello Example out file. You should 
+15. Connect to the CortexA53_0_0 core. Load and run Hello Example out file. You should 
 see Hello World string displayed on console window.
 
    
@@ -156,7 +152,7 @@ Linker --> Libraries
 Build project.
 
 10. Create new target configuration (if one doesn`t exist) as described
-in here :ref:`Create Target Configuration File for EVM <Create-Target-Configuration-File-for-EVM-label>`
+in here :ref:`Create Target Configuration File for EVM <Create-Target-Configuration-File-for-EVM-label/>`
 
 11. Right click on the target configuration and Launch target
 configurations.
