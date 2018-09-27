@@ -116,6 +116,9 @@ Launch the serial console utility with the following configurations:
 .. note::   Any Serial Console utility that supports xmodem protocol can be used.
             Verified utility is Teraterm
     
+.. note::	TI Binaries does not work with Apploader on AM335x/AM437x platforms.
+            Make sure to use non TI binaries for testing on these platforms.
+
 AppLoader Usage
 ---------------
 1. Set the sysboot pins to the relevant boot mode(SPI / MMCSD).
