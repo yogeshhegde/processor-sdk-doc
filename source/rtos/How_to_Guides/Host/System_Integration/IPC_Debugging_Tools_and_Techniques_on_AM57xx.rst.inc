@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x 
 
-The sections relevant to AM57xx have been pulled from the `Debugging Tools and Techniques With IPC3.x Application Note <http://www.ti.com/lit/an/sprac12/sprac12.pdf/>`_ and placed here.
+The sections relevant to AM57xx have been pulled from the `Debugging Tools and Techniques With IPC3.x Application Note <http://www.ti.com/lit/an/sprac12/sprac12.pdf>`_ and placed here.
 
 Introduction
 ^^^^^^^^^^^^
