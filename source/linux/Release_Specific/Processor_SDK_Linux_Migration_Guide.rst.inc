@@ -89,6 +89,7 @@ supported through debugfs files at the prueth device.
 - /proc/<if_name>/dd-mode  - Replaces /sys/kernel/debug/prueth-<hsr/prp>/duplicate_discard
 - /proc/<if_name>/prp-tr - Replaces  /sys/kernel/debug/prueth/transparent_reception
 
+
 Processor SDK 05.00
 ---------------------
 - This is the first release for 2018 LTS (Kernel: 4.14, U-boot: 2018.01, gcc: 7.2.1 and Yocto: 2.4 (rocko)).
