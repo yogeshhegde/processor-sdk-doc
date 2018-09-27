@@ -13,6 +13,82 @@ of the Processor SDK for Linux.
 Processor SDK 05.xx Releases
 ============================
 
+Processor SDK 05.01
+----------------------
+
+.. rubric:: Linux
+
+.. rubric:: PRUETH Driver
+
+**1. debugfs file path has changed**
+
+The path for debugfs file has changed to include the PRU-ICSS ID as there could be upto two instances of offloaded hsr/prp prueth driver and so has to distictly identify which instance the debugfs file refers to.
+
+For example, the path for hsr/prp changed from
+
+- /sys/kernel/debug/prueth-<hsr/prp>/
+ to
+- /sys/kernel/debug/prueth-<hsr/prp>-<ID>/
+Where ID is the PRU-ICSS ID as described in the HSR/PRP User Guide.
+
+- For HSR on PRU-ICSS2 of AM571x, path is changed to /sys/kernel/debug/prueth-hsr-2/
+- For HSR on PRU-ICSS1 of AM571x, path is changed to /sys/kernel/debug/prueth-hsr-1/
+- For PRP on PRU-ICSS2 of AM571x, path is changed /sys/kernel/debug/prueth-prp-2/
+- for PRP on PRU-ICSS1 of AM571x, path is changed to /sys/kernel/debug/prueth-prp-1/
+
+All of the existing debugfs files except prp_emac_mode have moved to the new location. prp_emac_mode is now changed to sysfs file as decribed in the below section.  The files are not writeable anymore as it is meant only for showing debug information. The write functions are moved to the upper layer HSR/PRP driver and implemented though proc entries. See the Linux HSR/PRP driver section for more details.
+
+**2. sysfs file path has changed**
+
+The path for sysfs files have also changed from
+
+- /sys/devices/platform/pruss<ID>_eth/eth2/
+
+ to
+
+- /sys/devices/platform/pruss<ID>_eth/net/eth2/
+Where ID is the PRU-ICSS ID as described in the User Guide.
+
+For example, nsp_credit sysfs file is now accessed at
+
+ /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit
+
+prp_emac_mode file is at
+
+ /sys/devices/platform/pruss2_eth/net/eth2/prp_emac_mode
+
+.. rubric:: Linux HSR/PRP Driver
+
+**1. debugfs file path has changed**
+
+The debugfs file directory created by the driver now uses the interface name so that multiple
+instances of the device can co-exist and each will have its own unique path names.
+
+Path is now changed from
+
+- /sys/kernel/debug/<hsr/prp>/
+ to
+- /sys/kernel/debug/<if_name>/
+
+For example, if hsr interface name is hsr0, the path will be
+- /sys/kernel/debug/hsr0/
+
+Write functions are now supported through proc entries. So similar functions are removed from debugfs.
+See below section for details of proc entries.
+stats file is renamed to lre_info which shows SV frame tx count along with additional debug information
+about the LRE.
+
+**2. proc file paths**
+
+Following commands can be used for updating values at the prueth offloaded device which was earlier
+supported through debugfs files at the prueth device.
+
+- /proc/<if_name>/clear-nt - Replaces /sys/kernel/debug/prueth-<hsr/prp>/node_table_clear
+- /proc/<if_name>/hsr-mode - Replaces /sys/kernel/debug/prueth-<hsr/prp>/hsr_mode
+- /proc/<if_name>/dlrmt - Replaces /sys/kernel/debug/prueth-<hsr/prp>/dup_list_reside_max_time
+- /proc/<if_name>/dd-mode  - Replaces /sys/kernel/debug/prueth-<hsr/prp>/duplicate_discard
+- /proc/<if_name>/prp-tr - Replaces  /sys/kernel/debug/prueth/transparent_reception
+
 Processor SDK 05.00
 ----------------------
 
