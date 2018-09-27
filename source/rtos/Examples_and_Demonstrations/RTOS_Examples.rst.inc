@@ -17,7 +17,7 @@ sample we will use the AM65x device to describe the steps for the Cortex-A53.
 
 .. Note:: For future Device Support Package releases, the Hello World example for the Cortex-A53 will be added to CCS as an out-of-box experience. 
 
-1. Create a work space folder (/ti/am_572x_hello_workspace) under ti
+1. Create a work space folder (/ti/am65x_am53_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
@@ -325,7 +325,7 @@ ARM Cortex-R5
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout.
 
-1. Create a work space folder (\\ti\\am_654x_hello_workspace) under ti
+1. Create a work space folder (/ti/am65x_r5_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
@@ -367,7 +367,7 @@ ARM Cortex-M4
 The hello example serves as a basic sanity check program for SYS/BIOS.
 It demonstrates how to print the string 'hello world' to stdout.
 
-1. Create a work space folder (\\ti\\am_572x_hello_workspace) under ti
+1. Create a work space folder (/ti/am_572x_hello_workspace) under ti
 folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
