@@ -7,7 +7,7 @@ Graphics and Display
 Introduction
 ============
 
-TI SOCs like AM355x, AM437x and AM57xx are enabled with 3D cores,
+TI SOCs like AM335x, AM437x, AM57xx and AM65xx are enabled with 3D cores,
 capable of accelerating 3D operations with dedicated hardware. The
 dedicated hardware is based on SGX series of devices from Imagination
 Technologies. The graphics cores only accelerate graphics operations,
@@ -25,6 +25,8 @@ SGX core information
 | AM437x        | SGX530     | 1.2.5               | 200                            |
 +---------------+------------+---------------------+--------------------------------+
 | AM57xx        | SGX544     | 1.1.6               | 532                            |
++---------------+------------+---------------------+--------------------------------+
+| AM65xx        | SGX544     | 1.1.7               | 450                            |
 +---------------+------------+---------------------+--------------------------------+
 
 Table:  TI System on Chips, and SGX cores
