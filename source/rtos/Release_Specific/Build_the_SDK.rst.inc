@@ -43,6 +43,16 @@ The SDK build environment can be configured on Windows and Linux by
 running an environment setup script located in the top-level RTOS SDK
 folder.
 
+.. note::
+
+   -  Windows 10 is required for building the SDK.
+   -  OpenSSL is required for building the SDK. You can check if OpenSSL is
+      is installed by typing "openssl version" at the comamnd prompt. If OpenSSL
+      is not installed, download and install OpenSSL for your OS.
+   -  Mono is required for building the the SDK on linux. You can check if
+      mono is installed by typing "mono --version" at the linux prompt. If mono
+      is not installed, download and install mono from `here <http://www.mono-project.com>`__
+|
 Windows
 ^^^^^^^^^
 From the RTOS SDK directory, enter
