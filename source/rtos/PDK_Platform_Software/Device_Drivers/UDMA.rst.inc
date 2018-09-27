@@ -15,26 +15,22 @@ For more information on NAVSS DMA architecture, refer to the device Technical Re
 The UDMA driver provides API to program the DMA portion of the NAVSS subsystem
 to setup and initiate transfers. Below are the high level features supported by the driver
 
-- Both Main and MCU NAVSS instances
-- Supports all DMA operations from both instances from all the cores in the SOC
-- UDMAP block copy using native NAVSS channels
-- DRU block copy using direct TR submission to DRU register
-- DRU block copy using indirect (PSIL) TR submission to UDMA external channels
-- PDMA module to initiate transfers to/from PDMA peripherals like UART, McASP, McSPI, ADC, MCAN
-- DMA transfer to/from from native PSIL peripherals like EMAC, CPSW, SA2UL
-- Event and interrupt management like DMA completion, channel chaining, interrupt sharing using IA
-- Resources management across instances and cores for UDMAP DMA channels,
-RX flow, External UTC channel (DRU), interrupt aggregators (IA), interrupt routers (IR),
-global events, ring accelerators (RA)
-- Interaction with DMSC RM module via SCICLIENT for all non-RealTime (NRT) configuration
-- Supports both TI-RTOS and baremetal
+-  Both Main and MCU NAVSS instances
+-  Supports all DMA operations from both instances from all the cores in the SOC
+-  UDMAP block copy using native NAVSS channels
+-  DRU block copy using direct TR submission to DRU register
+-  DRU block copy using indirect (PSIL) TR submission to UDMA external channels
+-  PDMA module to initiate transfers to/from PDMA peripherals like UART, McASP, McSPI, ADC, MCAN
+-  DMA transfer to/from from native PSIL peripherals like EMAC, CPSW, SA2UL
+-  Event and interrupt management like DMA completion, channel chaining, interrupt sharing using IA
+-  Resources management across instances and cores for UDMAP DMA channels,RX flow, External UTC channel (DRU), interrupt aggregators (IA), interrupt routers (IR),global events, ring accelerators (RA)
+-  Interaction with DMSC RM module via SCICLIENT for all non-RealTime (NRT) configuration
+-  Supports both TI-RTOS and baremetal
 
 **Notes**
 
-- UDMA driver doesn't manage/allocate the descriptor and RA memory.
-The caller need to allocate and provide the required memory.
-- UDMA driver doesn't use any global variables. All the required object memory like
-channel, driver instance, event etc should be allocated by the caller
+-  UDMA driver doesn't manage/allocate the descriptor and RA memory.The caller need to allocate and provide the required memory.
+-  UDMA driver doesn't use any global variables. All the required object memory like channel, driver instance, event etc should be allocated by the caller
 
 This document has detailed API description that user can use
 to make use of the UDMA driver.
@@ -58,11 +54,11 @@ APIs
 
 The UDMA driver API can be broadly divided into the following categories
 
-- UDMAP native channel API
-- DRU (External UTC) channel API
-- PDMA channel operations
-- Event and interrupt API
-- Ring API
+-  UDMAP native channel API
+-  DRU (External UTC) channel API
+-  PDMA channel operations
+-  Event and interrupt API
+-  Ring API
 
 In addition to above drivers the UDMA package also includes many sample
 examples which show how to use the drivers in different ways. Many of
