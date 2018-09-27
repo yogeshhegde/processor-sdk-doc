@@ -17,7 +17,7 @@ execution of Linux based applications and includes the following:
 -  Matrix Application Launcher
 -  Example Applications
 -  WLAN support (Wilink 8)
--  Code Composer Studio v7
+-  Code Composer Studio
 
 Licensing
 =========
@@ -43,67 +43,40 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release AM65x EA v05.00.00.09
-===============================
+Release 05.01.00
+==================
 
-Released June 30 2018
+Released Sep 2018
 
-.. rubric:: Features Supported
-   :name: features-supported
+.. rubric:: What's New
+   :name: whats-new
 
-The following features are supported in this release:
-
-- Boot: please refer to `U-boot flow <http://git.ti.com/gitweb/?p=ti-u-boot/ti-u-boot.git;a=blob_plain;f=board/ti/am65x/README;hb=refs/heads/ti-u-boot-2018.01>`__
-- Baseport: Dual and Quad Core SMP support
-- Connectivity: OSPI, MMC, CPSW, CIFS, USB host and client driver, UART, I2C, USB device, PRU Ethernet, SD card
-- Audio: McASP, stereo, playback and record
-- Display: DSS, touchscreen, DRM, LCD backlight
-- IPC: Hardware spinlocks and mailbox
-
-
-.. rubric:: Features Not Supported
-   :name: features-not-supported
-
-Below are the main features which are not supported in this release:
-
--  PCIe
--  USB 3.0 (SS)
--  Graphics
-
-
-.. rubric:: Build U-Boot for AM65x
-   :name: build-u-boot-for-am65x
-
-.. code-block:: console
-
-    $ <Install SDK>
-    $ cd <sdk_install_dir>
-    $ export TISDK_PATH="$PWD"
-
-    $ cd linux-devkit
-    $ curl -L https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/arm-linux-gnueabihf/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf.tar.xz | tar xJf -
-
-    $ export CROSS_COMPILE_V7="$TISDK_PATH/linux-devkit/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-"
-    $ export CROSS_COMPILE_V8="$TISDK_PATH/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-linux-gnu-"
-    $ export ATF_FILE="$TISDK_PATH/board-support/prebuilt-images/bl31.bin"
-    $ export TEE_FILE="$TISDK_PATH/board-support/prebuilt-images/bl32.bin"
-    $ export SYSFW_FILE="$TISDK_PATH/board-support/prebuilt-images/sysfw.bin"
-
-    $ cd $TISDK_PATH/board-support/u-boot*
-    $ # Build U-Boot for R5
-    $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_V7" am65x_evm_r5_defconfig O=./build_r5
-    $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_V7" SYSFW="$SYSFW_FILE" CONFIG_MKIMAGE_DTC_PATH=./scripts/dtc/dtc O=./build_r5
-
-    $ # Build A53
-    $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_V8" am65x_evm_a53_defconfig O=./build_a53
-    $ make ARCH=arm CROSS_COMPILE="$CROSS_COMPILE_V8" ATF="$ATF_FILE" TEE="$TEE_FILE" CONFIG_MKIMAGE_DTC_PATH=./scripts/dtc/dtc O=./build_a53
-
-
-.. rubric:: Build Kernel for AM65x
-   :name: build-kernel-for-am65x
-
-Please use top-level Makefile provided by Processor SDK Linux to build kernel and DTBs.
-
+- Processor SDK Linux now supports AM65x family of devices, in addition to AM335x, AM437x, AM57x, K2H, K2E, K2L, K2G.
+- New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
+- AM65x
+   - Features supported
+        - Boot: please refer to `U-boot flow <http://git.ti.com/gitweb/?p=ti-u-boot/ti-u-boot.git;a=blob_plain;f=board/ti/am65x/README;hb=refs/heads/ti-u-boot-2018.01>`__
+        - Baseport: Dual and Quad Core SMP support
+        - Connectivity: OSPI, MMC, CPSW, CIFS, USB host and client driver, UART, I2C, USB device, PRU Ethernet, SD card
+        - Audio: McASP, stereo, playback and record
+        - Graphics: 3D SGX Acceleration with Qt, Wayland/Weston, Matrix GUI
+        - Display: DSS, touchscreen, DRM, LCD backlight
+        - IPC: Hardware spinlocks and mailbox
+        - DDR @ 1333 MHz, and CPU @ 800 MHz configuration
+   - Features not (yet) supported
+        - PCIe, USB 3.0
+- Deep Learning
+   - TIDL performance optimizations: Concurrent processing on all 4 cores: 2xDSP + 2xEVE
+   - Port ARM NN inference engine to AM335x, AM437x, AM57xx. For more information on ARMNN, see `here <https://developer.arm.com/products/processors/machine-learning/arm-nn>`__
+- HSR/PRP
+   - Dual Instance support on the two PRU-ICSS on AM571x
+   - Support VLAN tag in supervision frames
+   - Extend support to AM335x, AM437x, K2G from AM57xx
+- New TI Designs (available as part of Processor SDK Linux)
+   - Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK
+   - Robotics sense and avoid demonstration using TI mmWave sensors
+- OpenCV Performance optimizatons: StereoBM with C66x offload
+- GTK+ 3.0 Support on AM335x, AM437x, AM57x
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -111,7 +84,7 @@ Please use top-level Makefile provided by Processor SDK Linux to build kernel an
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.14.52+ (2018 LTS)        |
+| Linux Kernel             | 4.14.67+ (2018 LTS)        |
 +--------------------------+----------------------------+
 | U-Boot                   | 2018.01                    |
 +--------------------------+----------------------------+
@@ -121,7 +94,7 @@ Please use top-level Makefile provided by Processor SDK Linux to build kernel an
 +--------------------------+----------------------------+
 | Qt                       | 5.9.6                      |
 +--------------------------+----------------------------+
-| OpenCL                   | 1.1.15                     |
+| OpenCL                   | 1.1.16                     |
 +--------------------------+----------------------------+
 | OpenCV                   | 3.1                        |
 +--------------------------+----------------------------+
@@ -203,11 +176,8 @@ Kernel
 .. rubric:: Installation and Usage
    :name: installation-and-usage
 
-The `Software Developer's
-Guide <index.html>`__
-provides instructions on how to setup up your Linux development
-environment, install the SDK and start your development.  It also
-includes User's Guides for various Example Applications and Code
+The `Software Developer's Guide <index.html>`__ provides instructions on how to setup up your Linux development
+environment, install the SDK and start your development.  It also includes User's Guides for various Example Applications and Code
 Composer Studio.
 
 | 
@@ -215,10 +185,8 @@ Composer Studio.
 .. rubric:: Host Support
    :name: host-support
 
-The Processor SDK is developed, built and verified on Ubuntu 14.04 and
-16.04.   Details on how to create a virtual machine to load Ubuntu 14.04
-are described in `this
-page <How_to_Guides_Host.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
+The Processor SDK is developed, built and verified on Ubuntu 14.04, 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu 14.04
+are described in `this page <How_to_Guides_Host.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
 
 
 .. note::
