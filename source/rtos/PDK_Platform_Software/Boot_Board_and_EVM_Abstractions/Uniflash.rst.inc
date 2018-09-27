@@ -153,7 +153,10 @@ Following is the sample output on Windows.
         Erase Example:ProcessorSDKSerialFlash.exe -c COM7 -d 2 -e 1000 -o 20000
     
 
-.. note::  Currently Image_Type(option -i) is not supported
+.. note::  Currently Image_Type(option -i) is not supported.
+
+           Offset option(option -o) receives hexadecimal value by default.
+           The offset value(hexadecimal) can be preceded with or without "0x"
 
 
 .. _program-flashwriter:
@@ -383,7 +386,7 @@ For Windows
         # cd <path_to_the_uniflash>
         # dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
         Example:
-        # dslite.bat --mode processors -c COM7 -f C:\ti\pdk\packages\ti\starterware\binary\bootloader\bin\am335x-evm\gcc\bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0x0
+        # dslite.bat --mode processors -c COM7 -f C:\ti\pdk\packages\ti\starterware\binary\bootloader\bin\am335x-evm\gcc\bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0
 
 
 
@@ -393,7 +396,7 @@ For Linux
         # cd <path_to_the_uniflash>
         # sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
         Example:
-        # sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f /home/user/pdk/packages/ti/starterware/binary/bootloader/bin/am335x-evm/gcc/bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0x0
+        # sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f /home/user/pdk/packages/ti/starterware/binary/bootloader/bin/am335x-evm/gcc/bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0
 
 
 
@@ -412,7 +415,7 @@ Following is the sample output on Windows.
 
         Executing the following command:
         > C:\ti\uniflash_[Version Num]\processors\ProcessorSDKSerialFlash.exe -c COM7 -f
-        C:\ti\pdk\packages\ti\starterware\binary\bootloader\bin\am335x-evm\gcc\bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0x0
+        C:\ti\pdk\packages\ti\starterware\binary\bootloader\bin\am335x-evm\gcc\bootloader_boot_mcspi_a8host_debug_ti.bin -d 1 -o 0
 
         For more details and examples, please visit http://processors.wiki.ti.com/index.
         php/UniFlash_[Version Num]_Quick_Guide#Command_Line_Interface
@@ -433,6 +436,10 @@ Following is the sample output on Windows.
         Programming Flash Device..
 
         Flash Programming Success!
+
+
+.. note::  Make sure the Profile Selection switch in AM335x GP EVM is set to Profile#2
+           to support SPI flash programming
 
 .. _erasing_target:
 
