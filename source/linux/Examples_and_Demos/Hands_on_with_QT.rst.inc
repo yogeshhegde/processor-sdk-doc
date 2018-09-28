@@ -200,7 +200,7 @@ minutes. This section will cover the following topics
 #. You should see a listing of the cross-compile tools available like
    the one below.
 
-.. Image:: ../images/Sitara-linux-training-cross-tools-1.png
+   .. Image:: ../images/Sitara-linux-training-cross-tools-1.png
 
 #. To locate the pre-built ARM libraries perform the following commands:
 
@@ -219,7 +219,7 @@ minutes. This section will cover the following topics
 #. You should see a listing of QT related libraries that can be used to
    build and run QT projects.
 
-.. Image:: ../images/Sitara_Linux_QT_library_listings_1.png
+   .. Image:: ../images/Sitara_Linux_QT_library_listings_1.png
 
 #. You can also find out where the QT header files are located. At the
    directory below are sub directories full of QT header files.
@@ -247,7 +247,7 @@ minutes. This section will cover the following topics
 #. You should see the changes that were applied by executing the setup
    script.
 
-.. Image:: ../images/Sitara_Linux_QT_environment_setup_script.jpeg
+   .. Image:: ../images/Sitara_Linux_QT_environment_setup_script.jpeg
 
 #. You should have observed that the QMAKESPEC variable now contains the
    path to the QMAKESPEC files. Additionally your compile tools were
@@ -263,12 +263,14 @@ minutes. This section will cover the following topics
    sourced then the standard CC variable will cause these applications
    to be built for the ARM, which in turn will cause them to fail to
    execute on the x86 host system.
+
 #. As mentioned above sometimes it is not appropriate to source the
    environment-setup script, or you only want to source it during a
    particular build but not affect your default environment. The way
    this is done in the SDK is to source the environment-setup script
    inside of the project Makefile so that it is used only during the
    build process.
+
 #. Take a look at the enviroment setup file to see what all is going on
    there. Look through file to see where the compile tools variables
    such as CC and CPP and PATH are defined.
@@ -340,7 +342,7 @@ minutes. This section will cover the following topics
 
 #. Notice the build is using our cross-compiler-arm-linux-gnueabihf-g++
 
-.. Image:: ../images/Sitara_Linux_QT_make_using_cross_compile.jpeg
+   .. Image:: ../images/Sitara_Linux_QT_make_using_cross_compile.jpeg
 
 #. Also notice we now have an executable, lets see what type of file we
    created
@@ -352,6 +354,7 @@ minutes. This section will cover the following topics
    (uses shared libs), for GNU/Linux 2.6.31,
    BuildID[sha1]=0x8569a0956d8efffcfde68fca5c883be5fa4f1c31, not
    stripped
+
 #. Finally lets copy the helloworld over to our target file system and
    run it.
 
@@ -384,6 +387,7 @@ minutes. This section will cover the following topics
 
 #. You should see helloworld print on the LCD panel of your target
    board.
+
 
 .. rubric:: LAB 2: QT Creator Hello World
    :name: lab-2-qt-creator-hello-world
@@ -433,7 +437,7 @@ development.
 
 #. QT creator should be up and running now
 
-.. Image:: ../images/Sitara_Linux_QT_qtcreator.png
+   .. Image:: ../images/Sitara_Linux_QT_qtcreator.png
 
 #. Now lets setup QT creator to configure qmake. From the QT creator
    main menu shown above select the following:
@@ -482,7 +486,7 @@ development.
       -  Select **arm-linux-gnueabihf-gcc** and **click on open**
       -  Make sure to click on **Apply** to save your changes.
 
-.. Image:: ../images/Sitara-compilerAndDebugger.jpeg
+   .. Image:: ../images/Sitara-compilerAndDebugger.jpeg
 
 #. Next, let’s setup the Debuggers.
 
@@ -498,7 +502,7 @@ development.
       -  Select **arm-linux-gnueabihf-gdb** and **click on open**
       -  Make sure to click on **Apply** to save your changes.
 
-.. Image:: ../images/Sitara-Debugger.png
+   .. Image:: ../images/Sitara-Debugger.png
 
 #. Click the **Kits** tab under **Build & Run**
 
@@ -510,7 +514,7 @@ development.
    -  For QT Version select **Qt 5.5 Sitara**
    -  Click **Apply** to register the options.
 
-.. Image:: ../images/Sitara-linux-kits.png
+   .. Image:: ../images/Sitara-linux-kits.png
 
 #. Now let's setup our Target. While still in the **Tools -> Options**
    menu
@@ -555,7 +559,7 @@ development.
    -  Click **Finish**. You should see that the target test passed, so
       you can close that window.
 
-.. Image:: ../images/Sitara_target_test.png
+   .. Image:: ../images/Sitara_target_test.png
 
 #. Now we need to setup an SSH key so that the host can communicate with
    the target
@@ -610,10 +614,9 @@ development.
    -  Close the window and **Click OK** to exit the Linux Devices
       Window.
 
-.. Image:: ../images/Sitara_Linux_QT_ok_to_close_devices.png
+   .. Image:: ../images/Sitara_Linux_QT_ok_to_close_devices.png
 
-#. Now that we are setup lets create a project build it and run it on
-   the host
+#. Now that lets create a project build it and run it on the host
 
    -  Select **File -> New File or Project**
    -  Then select **Applications** under projects then select **QT
@@ -629,13 +632,20 @@ development.
 
    .. Image:: ../images/Sitarea_Linux_Qt_project_terminal.png
 
-   -  Click on **Next** again
+   -  Select the desired Kit for the target system
+   -  Click on **Next**
+
+   .. Image:: ../images/Sitara_Linux_Qt_project_kits_select.png
+
    -  Type in **terminal** for the **Class name**
    -  Click **Next**
 
    .. Image:: ../images/Sitara_Linux_QT_new_terminal_props.png
-   
+
+   -  Select **None** under version control
    -  Click **Finish**
+
+   .. Image:: ../images/Sitara_Linux_Qt_project_vc_select.png
 
 #. Now we've setup a new project let's explore and add some code.
 
@@ -758,6 +768,7 @@ development.
    -  See how much memory is used by helloworld by itself, you may need
       to kill matrix **/etc/init.d/matrix-gui-2.0 stop**
 
+
 .. rubric:: LAB 3: Terminal project
    :name: lab-3-terminal-project
 
@@ -825,7 +836,7 @@ scratch.
       -  Move them around so they look somewhat like the screen shot
          below
 
-.. Image:: ../images/Sitara_ui_layout.jpeg
+   .. Image:: ../images/Sitara_ui_layout.jpeg
 
 #. Lets Rename the Push Button widgets.
 
@@ -839,7 +850,7 @@ scratch.
       -  Just click on the widget and **drag the border to fill the
          screen** See screen shot below:
 
-.. Image:: ../images/Sitara_adjust_widths.png
+   .. Image:: ../images/Sitara_adjust_widths.png
 
 #. Now lets give our widget objects a unique name.
 
@@ -849,7 +860,7 @@ scratch.
       -  Add the text **\_linuxshell** to the end of the textBrowser
          name as shown below:
 
-.. Image:: ../images/Sitara_rename_objects.jpeg
+   .. Image:: ../images/Sitara_rename_objects.jpeg
 
 #. Now create unique names for the other 3 widgets.
 
@@ -970,6 +981,7 @@ scratch.
 
 #. Now run, you should see interaction with the Linux shell when you
    push sendCMD.
+
 
 .. rubric:: LAB 4: Enhancing the project with a web viewer, soft
    keyboard, and Style Sheets
@@ -1193,7 +1205,7 @@ style sheets.
             lineEditkeyboard->show();
             }
 
-.. Image:: ../images/Sitara_terminal_cpp.jpeg
+   .. Image:: ../images/Sitara_terminal_cpp.jpeg
 
 #. You are now ready to run your code.
 
@@ -1215,6 +1227,7 @@ style sheets.
 
 #. Type in a linux command such as **ps** to list the running processes
    and verify that you get back the expected results.
+
 #. Next lets add specific colors to the GUI components using style
    sheets.
 
@@ -1264,6 +1277,7 @@ style sheets.
    .. Image:: ../images/Sitara_tabStyle.jpeg
 
 #. Run it!
+
 #. Extra investigation: Run a debug session and set break points in
    keyboard.cpp. Notice how the each QPushbutton signals the
    keyboardHandler slot.
@@ -1355,6 +1369,7 @@ style sheets.
         background-color: white;
     }
 
+
 .. rubric:: LAB 5: Exploring Existing Demos and Examples
    :name: lab-5-exploring-existing-demos-and-examples
 
@@ -1410,8 +1425,10 @@ style sheets.
    -  run this **./hellogl2**
 
 #. You should see an SGX accelerated demo
+
 #. As mentioned there are many demos available. Some may not work due to
    how QT was configured when it was built.
+
 #. Some additional demo of interest:
 
    #. **/usr/share/qt5/examples/webkitwidgets/browser** -- This is the
@@ -1427,7 +1444,7 @@ style sheets.
       style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
    **NOTE**
-   You may need need to do some project setup to make sure you will run
+   You may need to do some project setup to make sure you will run
    on the target
 
    .. raw:: html
@@ -1450,8 +1467,7 @@ For example, following steps to debug qtbase application
 1. Copy and install the associated ipk packages into the sysroot
 directory
 
-#. dpkg -x qtbase-dbg\_xxx\_armv7ahf-neon.ipk
-   sysroots/armv7ahf-neon-linux-gnueabi/
+# dpkg -x qtbase-dbg\_xxx\_armv7ahf-neon.ipk sysroots/armv7ahf-neon-linux-gnueabi/
 
 2. Set sysroot in the QT Creator: Under Tools -> Options -> Debugger tab
 of the QT Creator, go to the GDB tab and add these additional startup
