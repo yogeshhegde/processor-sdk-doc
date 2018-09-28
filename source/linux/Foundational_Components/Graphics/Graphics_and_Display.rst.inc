@@ -113,6 +113,22 @@ console.
 Please make sure the board is connected to at least one display before
 running these demos.
 
+IMG PowerVR Demos
+------------------
+
+The Processor SDK filesystem comes packaged with example OpenGLES
+applications. The examples can be invoked using the below commands.
+
+::
+
+    target # /usr/bin/SGX/demos/Raw/OGLES2Coverflow
+    target # /usr/bin/SGX/demos/Raw/OGLES2ChameleonMan
+    target # /usr/bin/SGX/demos/Raw/OGLES2ExampleUI
+    target # /usr/bin/SGX/demos/Raw/OGLES2Navigation
+
+After you see the output on the display interface, hit *q* to terminate
+the application.
+
 Finding Connector ID
 ---------------------
 
@@ -305,18 +321,6 @@ Weston by using pressing Ctrl-Alt-Backspace.
 .. rubric:: IMG PowerVR Demos
    :name: img-powervr-demos
 
-The Processor SDK filesystem comes packaged with example OpenGLES
-applications. The examples can be invoked using the below commands.
-
-::
-
-    target # /usr/bin/SGX/demos/Raw/OGLES2Coverflow
-    target # /usr/bin/SGX/demos/Raw/OGLES2ChameleonMan
-    target # /usr/bin/SGX/demos/Raw/OGLES2ExampleUI
-    target # /usr/bin/SGX/demos/Raw/OGLES2Navigation
-
-After you see the output on the display interface, hit *q* to terminate
-the application.
 
 Using the PowerVR Tools
 =======================
