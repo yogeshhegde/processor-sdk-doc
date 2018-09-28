@@ -489,6 +489,19 @@ wayland-egl is the default QPA. Hence all QT applications should be run
 on top of Weston. To run QT application without Weston, the user can use
 “- platform” option to specify the desired QPA as “linuxfb” or “eglfs".
 
+GTK+ Graphics Framework
+=====================
+
+GTK+, or the GIMP Toolkit, is a multi-platform toolkit for creating graphical user interfaces.
+Offering a complete set of widgets, GTK+ is suitable for projects ranging from small one-off
+tools to complete application suites.
+
+**Please refer https://www.gtk.org/ for additional details on GTK+.**
+
+The PSDK target file system includes the pre-built GTK+ libraries under
+/usr/lib for GTK+3 over Wayland support. There is also a comprenhensive GTK+3 demo application
+gtk3-demo under /usr/bin to demonstrate GTK+3 APIs and their usages.
+
 Migration from prior releases
 =============================
 
