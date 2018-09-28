@@ -69,7 +69,7 @@ This can be found under the <PDK>/packages folder. The only
 modification to these scripts, if any, is to update the
 CCS_INSTALL_PATH variable to point to CCS location if its not in the
 c:\ti\ccsv6 directory . Please refer to `Rebuilding
-PDK </index.php/Rebuilding_The_PDK>`__ for details of example project
+PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__ for details of example project
 creation and how to run the example projects using CCS.
 
 CC-Link IE Field Network Basic Example Description
