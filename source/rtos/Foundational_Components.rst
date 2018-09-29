@@ -60,12 +60,16 @@ NDK
 =======
 .. include:: PDK_Platform_Software/Network_and_Transport/NDK.rst.inc
 
-
-***************
 NWAL
 ***************
 .. include:: PDK_Platform_Software/Device_Drivers/NWAL.rst.inc
 
+***************
+Transport
+***************
+TimeSync (PTP)
+==============
+.. include:: PDK_Platform_Software/Network_and_Transport/TimeSync.rst.inc
 
 ***************
 Tools
