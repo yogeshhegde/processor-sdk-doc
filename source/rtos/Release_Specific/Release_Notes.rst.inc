@@ -47,6 +47,7 @@ Documentation
    document is provided as part of the EVM kit.
 
 | 
+
 Processor SDK v05.01.00 
 ========================
 
@@ -71,6 +72,7 @@ Released Sept 30 2018
 -  AM437x PRU-ICSS I2C Firmware 
    Additional support for ICSS-0 instance   
 -  AM335x Connectivity extension to support Simplelink (3120 NWP) WiFi
+
 .. rubric::  Component Version
    :name: component-version
 
@@ -152,7 +154,9 @@ environment (IDE) for all devices and EVMs:
 +===========+==========+======+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
 |   CCS     | 8.1.0.11 |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-|   EMU Pack| 8.0.598.14      |      |      |  X   |       |     |     |     |     |     |         |         |
+|   EMU Pack|Sitara    |      |      |      |  X   |       |     |     |     |     |     |         |         |
+|           |Device    |      |      |      |      |       |     |     |     |     |     |         |         |
+|           |1.4.1     |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
 If you need to install CCS, see the `CCS installation section <Overview.html#code-composer-studio>`__
@@ -168,40 +172,30 @@ Updated
 Fixed Issues 
 ==============
 
-+-----------------------+-----------------------+-------------------------------------+
-|      Record ID        |       Platform        |       Summary                       |
-+=======================+=======================+=====================================+
-| PRSDK-642             | \*                    |RTOS: SDK components should be       |
-|                       |                       |signed to avoid Eclipse/CCS warning  |
-|                       |                       |when importing                       |
-+-----------------------+-----------------------+-------------------------------------+
-| PRSDK-3318            | k2g                   |EMAC_CpswRateLimit_evmK2G_c66x       |
-|                       |                       |ExampleProject failure on 1GHz       |
-|                       |                       |Flip Chip                            |
-+-----------------------+-----------------------+-------------------------------------+
-| PRSDK-4016            | k2h                   |NDK stack task doesn't work after    |
-|                       |                       |moving to any core other than core 0 |
-+-----------------------+-----------------------+-------------------------------------+
-| PRSDK-4546            | AM57x                 |SBL RPRC parser bug when checking    |
-|                       |                       |section address for L1D range on DSP1|
-+-----------------------+-----------------------+-------------------------------------+
-| PRSDK-4460            | AM335x                |MDIOPhyRegRead incorrect execution   |
-+-----------------------+-----------------------+-------------------------------------+
-| PRSDK-4305            | omapl138              |BenchmarkProjectCreate.bat error     |
-|                       |                       |: CGT_VERSION not set                |
-+-----------------------+-----------------------+-------------------------------------+
-| PRSDK-4197            | AM57x                 |UARTDivisorValCompute does not       |
-|                       |                       |round up to nearest integer          |
-|                       |                       |resulting in large baudrate errors   |
-+-----------------------+-----------------------+-------------------------------------+
-| PRSDK-4197            | AM57x                 |UART LLD input clock control         |
-|                       |                       |required at LLD level.               |
-+-----------------------+-----------------------+-------------------------------------+
-| PRSDK-4197            | AM57x                 |UART open sets up incorrect          |
-|                       |                       |baudrates for 921600 bps settings.   |
-+-----------------------+-----------------------+-------------------------------------+
+.. csv-table::
+   :header: "Record ID","Board/s", "Component/s", "Summary"
+   :widths: 15, 20,20,30
+   
+	PRSDK-642,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, amic110-ice, beagleboneblack, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-evm",System Integration,RTOS: SDK components should be signed to avoid Eclipse/CCS warning when importing
+	PRSDK-3439,"am571x-idk, am572x-evm, c6678-evm, c6748-lcdk",Optimized Libraries,DIVSP API causes fmodf RTS library function to fail when MATHLIB is used in OVERRIDE_RTS mode
+	PRSDK-4546,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, k2g-evm, k2h-evm, k2k-evm",Boot,SBL RPRC parser bug when checking section address for L1D range on DSP1
+	PRSDK-4460,am335x-evm,Chip Support,MDIOPhyRegRead() implementation in mdio.c contains erroneous semicolon
+	PRSDK-2575,"am571x-idk, am572x-evm, am572x-idk, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-evm",Optimized Libraries,DSPLIB header files prevents function declarations from being included.
+	PRSDK-4712,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Demonstrations,POSIX-SMP demo failed to work
+	PRSDK-4016,k2h-evm,Networking,NDK stack task doesn't work after moving to any core other than core 0
+	PRSDK-3318,k2g-evm,Networking,EMAC_CpswRateLimit_evmK2G_c66xExampleProject failure on 1GHz Flip Chip
+	PRSDK-1995,c6678-evm,Optimized Libraries,"FFTLIB: 3D FFT CCS project example fails to build with Processor-SDK tools (CCS, OpenMP)"
+	PRSDK-2423,"am570x-evm, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, omapl138-evm",Optimized Libraries,Need to document that MATHLIB RTS overload library dependencies.
+	PRSDK-2263,"c6748-lcdk, omapl137-evm, omapl138-evm",Optimized Libraries,DSPLIB CCS test projects don`t have optimized compiler settings.
+	PRSDK-4303,"k2g-evm, k2g-hsevm, k2g-ice",Chip Support,C++ build issue due to cslr_msmc.h missing closing brackets for extern C
+	PRSDK-4449,"am437x-evm, am437x-hsevm, am437x-idk, am437x-sk",Control Drivers,Processor SDK Starterware QSPI clock setup issue on AM437x
+	PRSDK-4305,omapl138-lcdk,Demonstrations,BenchmarkProjectCreate.bat error: CGT_VERSION not set
+	PRSDK-2972,"c6748-lcdk, omapl137-evm, omapl138-evm",Optimized Libraries,DSPLIB for C674x doesn`t provide fixed point 16 bit FFT function like C66x version
+	PRSDK-4105,"am571x-idk, am572-evm, am572x-evm, am572x-idk, am574x-idk",Control Drivers,UART open sets up incorrect baudrates for 921600 bps settings.
+	PRSDK-4187,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Control Drivers,UART LLD input clock control required at LLD level.
+	PRSDK-4197,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Control Drivers,UARTDivisorValCompute does not round up to nearest integer resulting in large baudrate errors
 
-
+	
 Known Issues 
 ==============
 
@@ -211,7 +205,7 @@ release and any known workaround.
 .. csv-table::
    :header: "Record ID","Board/s", "Component/s", "Summary","Workaround"
    :widths: 15, 20,20,30,70
-   
+  
 	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,SBL supports Dual R5 configuration boot
 	PRSDK-4617,"am335x-evm, am335x-sk, am437x-sk, amic110-ice, beagleboneblack","Control Drivers, Networking",CortxA8: Semihostsupport warning in CCS,Warning can be ignored
 	PRSDK-4662,"am654x-evm, am654x-idk",Diagnostics,Board diagnostics application intermittently hangs,Issue is seen due to PLL initialization in the led test. PLL initialization can be skipped in LED test or test could be bypassed
@@ -267,6 +261,7 @@ release and any known workaround.
 
 
 .. RN_Supported-Platforms-label:
+
 Supported Platforms 
 =====================
 
@@ -581,6 +576,7 @@ platform/EVM.
 
 - In general driver support is available across all cores within an SOC
   with following exceptions
+  
 +----------------+-------------------+
 |    Feature     | Not supported     |
 +================+=========+=========+
@@ -728,16 +724,10 @@ The Windows installer is a 32-bit binary, but is compatibile with
 Technical Support and Product Updates 
 =======================================
 
-For further information or to report any problems, contact TI E2E:
+For further information or to report any problems, contact:
+-  TI E2E Processor Support <https://e2e.ti.com/support/processors/>`__
+   for all supported platforms
 
--  `Sitara Processor <http://e2e.ti.com/support/arm/sitara_arm/f/791>`__
-   for AM335x, AM437x, and AM57x
--  `C6000 Multicore
-   DSP <http://e2e.ti.com/support/dsp/c6000_multi-core_dsps/f/639>`__
-   for C665x, C667x, K2E, K2G, K2H, and K2L
--  `OMAP
-   Processor <http://e2e.ti.com/support/dsp/omap_applications_processors/f/42>`__
-   for OMAP-L13x, C674x
 
 | 
 
