@@ -59,19 +59,15 @@ Released Sept 30 2018
 .. rubric::  New Features
    :name: new-features
 
--  Processor SDK software GA support extension for SOC: AM65x and EVMs:am65xx-evm and am65xx-idk
- 
-   All unit tests for drivers in the case of AM65x SOC is available through standard makefile infrastructure.Use make all or gmake all from top level pdk_am65xx_1_0_x\packages after setting the environment using pdksetupenv.bat|sh
-   Updates from EA Release:
-   SBL (Boot Loader Support) for MMCSD and OSPI interface
-   Additional Drivers: PCIe, UDMA LLD, DSS, CAL
-   Additional firmware: PRU-ICSS-G Dual EMAC support
-   Refer Release Note for details of component supported
+-  Processor SDK software support extension for AM65x SOC and additional boards/EVMs am65xx-evm and am65xx-idk. All unit tests for drivers in the case of AM65x SOC is available through standard makefile infrastructure.Use make all or gmake all from top level pdk_am65xx_1_0_x\packages after setting the environment using pdksetupenv.bat|sh. Following additional updates are available from EA Release:
+	- SBL (Boot Loader Support) for MMCSD and OSPI interface
+	- Additional Drivers: PCIe, UDMA LLD, DSS, CAL
+	- Additional source release of firmware: PRU-ICSS-G Dual EMAC support
    
--  PRU-ICSS Dual EMAC Firmware : Multicast filtering and PTP Feature externsion
+-  PRU-ICSS Dual EMAC Firmware Feature externsion: Multicast filtering and PTP
 -  AM437x PRU-ICSS I2C Firmware 
-   Additional support for ICSS-0 instance   
--  AM335x Connectivity extension to support Simplelink (3120 NWP) WiFi
+	- Additional support for PRU-ICSS-0 instance
+-  AM335x Connectivity extension to support `Simplelink 3120 NWP WiFi: <Examples_and_Demonstrations.html#simplelink-wifi-demo>`__
 
 .. rubric::  Component Version
    :name: component-version
