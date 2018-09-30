@@ -10,6 +10,10 @@ Diagnostics
 ============
 .. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Diagnostics.rst.inc
 
+Diagnostics Execution
+======================
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Diagnostics_Execution.rst.inc
+
 Power-On Self Test
 ===================
 .. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/POST.rst.inc
