@@ -1060,3 +1060,67 @@ Troubleshooting
   ... inc/executor.h:199: T* tidl::malloc_ddr(size_t) [with T = char; size_t = unsigned int]: Assertion `val != nullptr' failed.
   This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
 
+
+ARMNN and ARM Compute Library
+=============================
+
+For Sitara devices without accelerators like C66x or EVE (AM3/4), one can use ARM provided libraries created for supporting inference only tasks on ARM CPUs.
+These two libraries can be used on AM57xx devices too, but as complementary approach to previously discussed TIDL-API.
+
+ARM Compute Library
+-------------------
+
+It is a software library for computer vision and machine learning, optimized for NEON SIMD architecture (Mali GPU OpenCL is not applicable to TI devices).
+Exact list of functions can be found at https://developer.arm.com/technologies/compute-library. ARM Compute Libraries and sample executables are included in PLSDK filesystem.
+AM3/4/5 devices can utilize this library to unleash full potential of ARM CPUs.
+
+Sample NN related executables (using ARM Compute Library only):
+
+::
+
+   /usr/bin/graph2tree
+   /usr/bin/graph_alexnet
+   /usr/bin/graph_googlenet
+   /usr/bin/graph_inception_v3
+   /usr/bin/graph_inception_v4
+   /usr/bin/graph_lenet
+   /usr/bin/graph_mobilenet
+   /usr/bin/graph_mobilenet_qasymm8
+   /usr/bin/graph_resnet50
+   /usr/bin/graph_resnext50
+   /usr/bin/graph_squeezenet
+   /usr/bin/graph_squeezenet_v1_1
+   /usr/bin/graph_vgg16
+   /usr/bin/graph_vgg19
+
+
+ARMNN
+-----
+
+ARMNN is library built on top of ARM Compute Library leveraging its NEON optimized kernels. Importing of Caffe and Tensorflow inference models is significantly simplified.
+Library and executables are part of AM3/4/5 target filesystem. More information can be found at: https://developer.arm.com/products/processors/machine-learning/arm-nn
+
+Sample ARMNN executables using Caffe models:
+
+::
+
+   /usr/bin/CaffeAlexNet-Armnn
+   /usr/bin/CaffeCifar10AcrossChannels-Armnn
+   /usr/bin/CaffeInception_BN-Armnn
+   /usr/bin/CaffeMnist-Armnn
+   /usr/bin/CaffeResNet-Armnn
+   /usr/bin/CaffeVGG-Armnn
+   /usr/bin/CaffeYolo-Armnn
+
+Sample executables using TF models:
+
+::
+
+   /usr/bin/TfCifar10-Armnn
+   /usr/bin/TfInceptionV3-Armnn
+   /usr/bin/TfMnist-Armnn
+   /usr/bin/TfMobileNet-Armnn
+   /usr/bin/TfResNext-Armnn
+  
+Please note that these examples (ARM baseline code) use hardcoded paths, so source modification might be required (one can use Yocto based compilation - look for armnn recipe in meta-arago layer).
+
