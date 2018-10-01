@@ -60,8 +60,8 @@ Released Sept 30 2018
    :name: new-features
 
 -  Processor SDK RTOS now includes additional support of AM65x family of devices.
-- New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
-AM65x
+- New platforms: AM65x/DRA80xM Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x/DRA80xM Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
+- AM65x
 	- Features Supported
 		- Boot :SBL (Boot Loader Support) for MMCSD and OSPI interface. Please refer to `SBL AM65x: <Foundational_Components.html#am65x>`__
 		- Connectivity: UART, I2C,GPIO, McSPI,OSPI,MMC,CPSW,ICSS-G Dual EMAC/PRU Ethernet,USB host and device, MMCSD,eMMC
@@ -70,10 +70,11 @@ AM65x
 		- Display and Camera: DSS,CAL
 		- IPC: Hardware spinlocks and mailbox
 		- Crypto Low level Driver: SA2 UL
-		- DDR @ 1333 MHz, and CPU @ 800 MHz configuration
+		- DDR @ 1600 MTS, and CPU @ 800 MHz configuration
 		- Additional source release of firmware: PRU-ICSS-G Dual EMAC support
 	- Features not (yet) supported
         - USB 3.0,OSPI 133Mhz/166Mhz, MCU/R5 Split Mode, MPU TI-RTOS SMP Support
+		
 -  PRU-ICSS Dual EMAC Firmware Feature extension: Multicast filtering and PTP
 -  `PRU-ICSS I2C Firmware: <PRU_ICSS.html#pru-icss-i2c>`__
 	- Additional support for PRU-ICSS-0 instance of AM437x SOC
@@ -211,27 +212,43 @@ release and any known workaround.
 .. csv-table::
    :header: "Record ID","Board/s", "Component/s", "Summary","Workaround"
    :widths: 15, 20,20,30,70
-  
-	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,SBL supports Dual R5 configuration boot
-	PRSDK-4617,"am335x-evm, am335x-sk, am437x-sk, amic110-ice, beagleboneblack","Control Drivers, Networking",CortxA8: Semihostsupport warning in CCS,Warning can be ignored
-	PRSDK-4662,"am654x-evm, am654x-idk",Diagnostics,Board diagnostics application intermittently hangs,Issue is seen due to PLL initialization in the led test. PLL initialization can be skipped in LED test or test could be bypassed
-	PRSDK-4412,,System,Processor SDK RTOS Windows installer needs to be signed,Warning message if seen can be ignored
+
+    PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,Dual R5 configuration support in SBL could be used
+	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package,"| 
+	- For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. The Strawberry Perl installer automatically installs and sets up OpenSSL. 
+	- For Linux : Execute the command ""sudo apt-get install openssl"" at the linux command prompt. 
+	- Check if OpenSSL is installed by typing ""openssl version"" at the command prompt. 
+	|"
+	PRSDK-4743,am654x-evm,Networking,"Host buffers need to be in MSMC for high throughput icss-g dual mac performance (FTP put/get). Host buffers in DDR results in degradation, improvement pending",Update linker command file for Buffer placement to on chip MSMC memory
 	PRSDK-4727,am437x-idk,Diagnostics,ledIndustrial_TEST of Diagnostics hangs,Delay value need to be tuned for the SOC. Add BoardDiag_AppDelay(0x1FFFF); after Board_i2cIoExpWritePort() for test to pass
-	PRSDK-4743,am654x-evm,Networking,Moving host buffers to DDR results in icss-g dual mac performance degredation (FTP put/get),Buffer placement in on chip MSMC memory expected to improve throughput
-	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package,"openSSL package not available in installer. 
-	Install`Strawberry Perl <http://strawberryperl.com/download/5.26.2.1/strawberry-perl-5.26.2.1-64bit.msi>`__ 
-	Run gmake all on DOS prompt with admin privilege"
-	PRSDK-4541,"am571x-idk, c6748-lcdk, k2g-evm, omapl138-lcdk",OSAL,OSAL_BasicExample DSP LE hangs on c6748-lcdk,
 	PRSDK-4721,k2g-ice,Diagnostics,"Diagnostics EMAC iceK2G: test hangs after ""Received Packet: 10""",
-	PRSDK-4462,am654x-evm,System,IPC A53 ROV log won't show correctly because of XDCtools bug,Need to recompile examples/test with new XDC tool to resolve issues.
+	PRSDK-4617,"am335x-evm, am335x-sk, am437x-sk, amic110-ice, beagleboneblack","Control Drivers, Networking",CortxA8: Semihostsupport warning in CCS,Warning can be ignored
 	PRSDK-4184,am572x-evm,Example,Hello_World: Baremetal ARM Cortex-A15 test example failure,Problem observed with using GCC semihosting support. Can use UART driver for input and output
 	PRSDK-3482,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, amic110-ice, beagleboneblack, c6657-evm, c6678-evm, c6748-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-lcdk",CCS,CCSV8.1: Intermittent issue not able to connect target while using DSS script,Retry for connection failure in DSS script.
 	PRSDK-3116,am335x-evm,High-Speed Drivers,USB Dev MSC drive corruptions after unplugging and replugging the cable,
+	PRSDK-4448,"am437x-evm, am437x-hsevm, am437x-idk, am437x-sk",High-Speed Drivers,SD card insert/remove doesn't work in MMCSD/FATFS,Modify PINMUX config for CTRL_CONF_SPI0_CS1 to 0x00060007 instead of 0x00060005
+	PRSDK-4758,k2h-evm,Boot,Images not booting on slave DSP cores,
 	PRSDK-4145,c6678-evm,Control Drivers,SPI v0 ISR hangs processor when RX data is not ready after TX data has sent,"Add a WHILE delay loop in after the 
 	SPI_INT_TX_EMPTY is processed, until SPI_INT_RX_FULL is set."
 	PRSDK-4108,omapl138-lcdk,High-Speed Drivers,USB Audio: Lag when trying to adjust volume,
 	PRSDK-4456,omapl138-lcdk,Control Drivers,OMAPL138 SPI driver doesn't configure clock polarity and phase when in slave mode,
 	PRSDK-4529,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, amic110-ice, beagleboneblack, c6657-evm, c6678-evm, c6748-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, omapl137-evm, omapl138-evm, omapl138-lcdk",KeyStone Drivers,UART LLD can't read value 0xff byte over the UART as it is detected as -1 (error),
+	PRSDK-4478,"am654x-evm, am654x-idk",Chip Support,AM65x R5F Baremetal CSL Startup code is setting instruction cache to disabled,"""S"" bit in MPU attr need to be set to ""0"" in CSL startup code for enabling instruction cache"
+	PRSDK-4741,am654x-evm,Boot,SBL does not work if entry point specified is address 0x0,"For baremetal and BIOS applications, The SBL reserves the first 0x100 bytes of memory from address 0x0 and memory from 0x41C00200 to 0x41C60000 for its use. This memory is available only for run time use by applications. 
+
+	For MCU RTOS applications, the linker command file must specify the entry point as 
+
+	--entry_point=ti_sysbios_family_arm_v7r_keystone3_Hwi_vectors 
+
+	and add the following line to the BIOS application config file 
+
+	Program.sectMap["".vecs""] = ""MCU0_R5F_TCMA""; 
+
+	(Refer http://git.ti.com/keystone-rtos/processor-pdk-build/blobs/master/am65xx/linker_r5_sysbios.lds for an example)"
+	PRSDK-4639,"am654x-evm, am654x-idk",Chip Support,SBL examples currently does not program loaded from DDR for R5 core,"If an MCU application uses DDR, it must setup the RAT before it accesses DDR. The best place to set it up is in the reset vector, before branching to c_init_00. For an eg, please refer the code for the sbl_mcu_ddr_entry test case http://git.ti.com/keystone-rtos/sbl/blobs/master/example/ampMulticoreApp/sbl_ddr_entry_r5.asm"
+	PRSDK-4541,"am571x-idk, c6748-lcdk, k2g-evm, omapl138-lcdk",OSAL,OSAL_BasicExample DSP LE hangs after HWI tests have passed.,
+	PRSDK-4662,"am654x-evm, am654x-idk",Diagnostics,Board diagnostics application intermittently hangs,Issue is seen due to PLL initialization in the led test. PLL initialization can be skipped in LED test or test could be bypassed
+	PRSDK-4412,,System,Processor SDK RTOS Windows installer needs to be signed,Warning message if seen can be ignored
 	PRSDK-4526,"am654x-evm, am654x-idk",Board Support,R5 Interrupts will not work when program is loaded using CCS,"If code is loaded using CCS, the reset vector must be at 0x41C00000"
 	PRSDK-4180,,UNIFLASH,Sitara Uniflash CLI Plugin could not open COM ports with number higher than 9,Select COM ports in lower range
 	PRSDK-4689,"c6657-evm, c6678-evm",Networking,NIMU example fails compilation for big endian projects. Feature being descoped,
@@ -251,7 +268,6 @@ release and any known workaround.
 	PRSDK-2166,am572x-idk,High-Speed Drivers,USB3.0 host problem with Sandisk Extreme USB3.0 stick,"Start the example without the USB plugged in. Once the example is up and waiting for USB stick, plug the USB stick in and it will enumerate properly."
 	PRSDK-1682,"am571x-idk, am572x-idk",Diagnostics,Board diagnostics LCD Touchscreen test does not work with new version of LCD TSC,For LCD/Display checkout example under VPS component could be used
 	PRSDK-330,AM4X,High-Speed Drivers,USB device MSC re-enumeration failed,Problem not observed with Linux USB Host.
-	PRSDK-4639,"am654x-evm, am654x-idk",Chip Support,SBL examples currently does not program loaded from DDR for R5 core,
 	PRSDK-4050,"am654x-evm, am654x-idk",Control Drivers,RTOS: K3: OSPI high speed mode is not supported,"OSPI driver not functional for Full rate 133, 166 MHz with PHY enabled. Workaround by default is enabled in driver with PHY disabled. No change required for application"
 	PRSDK-4771,"am654x-evm, am654x-idk",High-Speed Drivers,MMCSD_EMMC_Regression_TestApp hangs during DDR part of test,
 	PRSDK-4464,"am654x-evm, am654x-idk",Networking,ICSS-G-FW: Dual-emac: ping with 16K packet size fails,
@@ -262,8 +278,12 @@ release and any known workaround.
 	To 
 	MPU.setRegionMeta(1, 0x00000000, MPU.RegionSize_32K, attrs); 
 	"
+	PRSDK-4779,"am654x-evm, am654x-idk",Board Support,AM65xx: Test control does not return to menu after executing USB device test,Reboot the board after running the USB device test
+	PRSDK-4778,"am654x-evm, am654x-idk",Board Support,SPI NOR flash diagnostic test is failing on AM65xx platform with IDK application card,Keep SPI0 CS1 (SOC_PADCONFIG_112) high during NOR flash test.
+	PRSDK-4777,"am654x-evm, am654x-idk",Board Support,AM65xx EMAC diagnostic test failure,Ethernet functional test runs fine but extended tests cannot be run due to this failure. Test control returns to menu after failure and allows to run other tests normally.
+	PRSDK-4668,am572x-idk,Board Support,AM65xx Diag: ICSSG Ethernet Test hang while running second time,
+	PRSDK-4462,am654x-evm,System,IPC A53 ROV log won't show correctly because of XDCtools bug,Need to recompile examples/test with new XDC tool to resolve issues.
 	PRSDK-4718,"am654x-evm, am654x-idk",Board Support,DDR Controller ECC Scrubbing feature can cause DRAM data corruption,
-	PRSDK-4668,,Board Support,AM65xx Diag: ICSSG Ethernet Test hang while running second time,
 
 
 .. RN_Supported-Platforms-label:
