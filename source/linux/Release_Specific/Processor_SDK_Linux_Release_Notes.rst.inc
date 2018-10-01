@@ -286,16 +286,13 @@ SDK Known Issues
    LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
    LCPD-11010,am574x-idk,AM574x-idk graphics performance is lower than am572x-idk,"Performance issue, no workaround"
    LCPD-12784,omapl138-lcdk,Board can't resume from suspend state sometimes, None
-   LCPD-13241,am654x-evm,SGX crashes on AM654x,
    LCPD-13417,am43xx-gpevm,"Error message with multiple egl, not shared context (double unmap)","Limitation with Imagination DDK, no workaround"
    LCPD-13419,am57xx-evm,QT Touchscreen interaction - Bear Whack crash,
    LCPD-13470,am335x-evm,klogd and syslog are not needed when using systemd,
    LCPD-13475,"am437x-idk, am43xx-gpevm",Back trace seen on AM437x-IDK when we reboot,
    LCPD-13499,am654x-evm,SGX KM Memory allocation failure,
    LCPD-13501,am654x-evm,"Kmscube: need to support the new display ""tidss""",
-   LCPD-13620,"am654x-evm, am654x-idk",Maxwell: PVR Tools do not work,
-   LCPD-13820,"am654x-evm, am654x-idk",AM65x: IPC sample firmware images are missing from FS,
-
+   LCPD-13620,"am654x-evm, am654x-idk",PVR Tools do not work,
    PLSDK-832,AM57,OpenCL matmpy intermittent DSP1 crash due to EdmaMgr issues w/ suspend/resume,"Disabling suspend/resume on the DSPs prevents this intermittent failure: *echo on > /sys/bus/platform/devices/40800000.dsp/power/control; echo on > /sys/bus/platform/devices/41000000.dsp/power/control*"
    PLSDK-885,AM57,OpenCV Video test failure w/ GStreamer errors,Use the workaround from    PLSDK-832
    PLSDK-1266,am572x-idk,PRP: stale IGMP packets (IPv6) seems directly sent to eth2/eth3 of a HRP node,None
@@ -308,31 +305,31 @@ SDK Known Issues
    PLSDK-1817,,"HSR/PRP: Outstanding Net-Jury tests failures: 92/105 passed, 7 blocked and 6 failed",None
    PLSDK-1828,"am571x-idk, am572x-idk","HSR: In a ring topology, seeing small performance degradation with concurrent traffic",None
    PLSDK-1909,am572x-evm,DLP SDK demo: Assertion `ctx->pollfds_cnt >= internal_nfds' failed,None
-   PLSDK-1924,"am335x-ice, am335x-sk, beagleboneblack",AM3: Observed unwanted failure message in boot log.,None
+   PLSDK-1924,"am335x-ice, am335x-sk, beagleboneblack",AM3: Observed unwanted failure message in boot log.,No functionality affected except the log message
    PLSDK-1945,am572x-evm,qApp->quit() does not work with the enhanced eglfs_kms QPA,None
    PLSDK-1953,"am571x-idk, am572x-idk",Linux PRP: lreTransparentReception - passRCT doesn't work as expected,None
    PLSDK-1963,k2e-evm,K2E:Observed unwanted failure messages in boot log,"No functionality affected except the log message. If not needed, do not connect anything to the PCIe slot."
    PLSDK-2067,am571x-idk,Transparent Clock crashes after a couple of days due to memory leak,
-   PLSDK-2095,"am571x-idk, am572x-idk","kernel: EXPORT symbol ""__hyp_stub_vectors seen during kernel build",
+   PLSDK-2095,"am571x-idk, am572x-idk","kernel: EXPORT symbol ""__hyp_stub_vectors seen during kernel build", it is just a warning message, and can be ignored
    PLSDK-2107,k2g-ice,sorte for K2G: master is not working,None
    PLSDK-2109,"am437x-evm, am572x-evm",QtWebengine demobrowser shows problems at LTS2018 on EGLFS QPA,None
    PLSDK-2128,"am335x-evm, am437x-evm, am438x-epos-evm, am572x-evm",Weston 2.0: overlay window display issue,"None. For Wayland demo, you may use qwindow-compositor instead of Weston."
    PLSDK-2178,"am335x-ice, am437x-idk",ICSS EMAC intermittent error in received acyclic packet content,None
    PLSDK-2181,k2g-ice,k2g-ice Eth0 IP address not displayed,
-   PLSDK-2186,am572x-evm,video-analytic-demo should run on top of Weston instead of qwindow-compistor,"Run the deom on top of qwindow-compositor, as available from Matrix GUI"
+   PLSDK-2186,am572x-evm,video-analytic-demo should run on top of Weston instead of qwindow-compistor,"Run the demo on top of qwindow-compositor, as available from Matrix GUI"
    PLSDK-2190,am571x-idk,Matrix Launcher: Independent_Video_with_QT_widgets_to_Different_Displays failing on am571-idk-rt platform,Intermittent issue
    PLSDK-2220,k2e-evm,UBI Image for K2E exceeds the available size limit,None
    PLSDK-2253,am571x-idk,Accidental loop (no STP enabled) crashed Linux,
    PLSDK-2289,am571x-idk,MatrixLauncher: ivahd_enc_4K_resolution failing on am571x-idk platform,
    PLSDK-2312,"am335x-evm, am437x-evm, am572x-evm",Some Qt3d examples either crash or works with errors,
-   PLSDK-2319,am654x-evm,Maxwell: QT5 Touch Screen demo: characters are corrupted,
+   PLSDK-2319,am654x-evm,QT5 Touch Screen demo: characters are corrupted,
    PLSDK-2323,am571x-idk,PRUETH: hsr/prp on PRUSS1/PRUSS2 can't co-exists with Dual EMAC,
    PLSDK-2326,k2e-evm,K2E-RT: Kernel warning during boot at cryptomgr_probe,
-   PLSDK-2329,am654x-evm,"Maxwell: OOBE Multimedia demo H264 resolution and ""please wait""",
-   PLSDK-2330,am654x-evm,Maxwell: Simple People Tracking Demo causes Matrix Crash,
-   PLSDK-2331,am654x-evm,Maxwell: OOBE EVESE demo Text Truncated,
+   PLSDK-2329,am654x-evm,"Matrix-GUI Multimedia demo H264 doesn't play full screen,
+   PLSDK-2330,am654x-evm,Simple People Tracking Demo doesn't restart Matrix GUI intermittently, when there is no ToF EVM connected,
+   PLSDK-2331,am654x-evm,Matrix-GUI EVSE demo Text overflows the button, and gets truncated,
    PLSDK-2334,am572x-evm,video-graphics-test runs with error messages and lower performance,
-   PLSDK-2339,"am335x-evm, am335x-ice, am335x-sk, beagleboneblack, am437x-idk, am437x-sk, am437x-evm, am438x-epos-evm, am571x-idk, am572x-idk, am572x-evm, am574x-idk",Matrix GUI takes 2 min to launch when not connected to ethernet,
+   PLSDK-2339,"am335x-evm, am335x-ice, am335x-sk, beagleboneblack, am437x-idk, am437x-sk, am437x-evm, am438x-epos-evm, am571x-idk, am572x-idk, am572x-evm, am574x-idk",Matrix GUI takes 2 min to launch when not connected to ethernet, Need to convert Matrix GUI from initd script to systemd service
    PLSDK-2340,,"HSR/PRP: With VLAN tagged SV frame, nodes using untagged SV frames appears in NT",
    PLSDK-2352,"am335x-evm, am437x-evm, am571x-idk, am572x-idk, am572x-evm, am574x-idk",Graphics Demo: Video_Scaling_Overlaying_Positioning test failing on am platforms,
    PLSDK-2355,"am572x-idk, am572x-evm",Openvx: openvx_tiovx_application hangs on am572x evm,
@@ -421,7 +418,6 @@ Linux Kernel Known Issues
    LCPD-13679,P3-Medium,There is no i2c command in uboot on am65x,Connectivity,,"am654x-evm, am654x-idk",,
    LCPD-13667,P3-Medium,mmc 0 timeout and env could not be saved to eMMC on one board (farm26),Connectivity,,am654x-evm,,
    LCPD-13666,P3-Medium,Seeing mmc0 timeout errors on some boards,Connectivity,,am654x-evm,,
-   LCPD-13657,P3-Medium,ti-4.14 (2018.02) BBB Enet phy problem,Connectivity,,beaglebone-black,,
    LCPD-13603,P3-Medium,One board could not boot rootfs from one SDHC card,Connectivity,,am654x-evm,,
    LCPD-13587,P3-Medium,dwc3: g_audio can only record once,Connectivity,USB,am57xx-evm,,
    LCPD-13561,P3-Medium,AM64: icssg-prueth: prueth can fail occassionally with RX tdown timeout,Connectivity,UDMA,"am654x-evm, am654x-idk",,
