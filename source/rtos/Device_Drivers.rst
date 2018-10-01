@@ -144,6 +144,18 @@ MCASP
 
 
 ***********
+DSS
+***********
+.. include:: PDK_Platform_Software/Device_Drivers/DSS.rst.inc
+
+
+***********
+UDMA
+***********
+.. include:: PDK_Platform_Software/Device_Drivers/UDMA.rst.inc
+
+
+***********
 PM
 ***********
 .. include:: PDK_Platform_Software/Device_Drivers/PM.rst.inc

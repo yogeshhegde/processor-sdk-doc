@@ -92,7 +92,7 @@ that ti-processor-sdk-linux install directory.  Then run the script:
     Linux distribution, they are encouraged to modify the environment setup
     script to match their distribution. See which version of Ubuntu is
     currently supported
-    `here <Release_Specific.html#supported-platforms-and-versions>`__.
+    `here <Release_Specific_Supported_Platforms_and_Versions.html>`__.
 
 .. rubric:: Detailed step by step description through the setup script
    :name: detailed-step-by-step-description-through-the-setup-script

@@ -33,7 +33,7 @@ mention, a new Operating System (OS) for many), is getting an
 environment set up where you can build and debug code on hardware. The
 SDK attacks this problem with providing everything you need to do
 development, and it is validated on standard TI hardware platforms
-(EVMs).(see :ref:`SDK-Supported-Platforms` for more details). 
+(EVMs) (see `here <Release_Specific_Supported_Platforms_and_Versions.html>`__ for more details).
 It wraps all of this up into one simple installer that helps get
 everything you need in the right place to do development. For example,
 you can start off with simply re-building the Linux Embedded System

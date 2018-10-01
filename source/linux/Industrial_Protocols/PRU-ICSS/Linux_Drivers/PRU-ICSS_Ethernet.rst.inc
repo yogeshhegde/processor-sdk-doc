@@ -229,7 +229,7 @@ Here are the steps needed to test out the new Ethernet interfaces:
    -  follow the script directions to format your SD card and then
       install the pre-built binaries from the SDK
    -  for more information on creating an SD card:
-      `Processor\_SDK\_Linux\_create\_SD\_card\_script <Overview.html#linux-sd-card-creation-guide>`__
+      `Processor\_SDK\_Linux\_create\_SD\_card\_script <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__
 
 -  Boot from the newly created SD card
 
@@ -239,7 +239,7 @@ Here are the steps needed to test out the new Ethernet interfaces:
       .. note::
           You'll need to clear the SPI flash on the AM3359 ICE board before
           you can boot from an SD card: `AM3359 ICE clear SPI
-          flash <Processor_Linux_SDK_How_To_Guides.html#am335x-icev2-flash-erase>`__
+          flash <How_to_Guides_Host.html#am335x-icev2-flash-erase>`__
 
 -  Plug an Ethernet cable into the ports supported by the PRU-ICSS
 

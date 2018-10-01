@@ -88,6 +88,44 @@ notify the events to the dwc3 core.
 
 | 
 
+.. rubric:: AM65x
+   :name: am65x
+
+AM65x has 2 DWC3 controller instances. USB1 instance can be a super-speed
+port and USB2 instance is a high-speed port.
+The following diagram depicts dwc3 integration in AM65x's high-speed port.
+VBUS and ID detection is done internally so companion device is not needed.
+DWC3 controller uses HW UTMI mode to get the VBUS and ID events and the glue
+driver (dwc3-am65.c) does not need to write to the software mailbox to
+notify the events to the dwc3 core.
+
+- On AM65x-evm/IDK, USB2 port is used as high-speed dual-role port (micro-AB)
+  as shown in figure below.
+
+.. note:: The board might come with force host jumper J4 pre-installed at the
+  factory. Please remove this jumper for proper dual-role/device-mode operation
+  of USB2 port.
+
+- On AM65x-IDK, USB1 port is available as a high-speed dual-role port (micro-AB)
+  through a 2Lane PCIe USB2 SERDES card. See below figure.
+
+.. note:: AM65x-IDK might come with the force host jumper J5 pre-installed
+  on the SERDES card. Please remove this jumper for proper dual-role/device mode
+  operation of USB1 port.
+
+.. Image:: ../images/am65x-dwc3-usbhs.png
+
+- On AM65x-evm, USB1 port is available as a Super-Speed device or host port
+  (3.0 micro-AB) through a 1Lane PCIe USB3 SERDES card. See below figure.
+
+.. note:: AM65x-evm might come with the force host jumper J5 pre-installed
+  on the SERDES card. Please remove this jumper for proper dual-role/device mode
+  operation of USB1 port.
+
+.. Image:: ../images/am65x-dwc3-usbss.png
+
+|
+
 .. rubric:: **Features NOT supported**
    :name: features-not-supported
 

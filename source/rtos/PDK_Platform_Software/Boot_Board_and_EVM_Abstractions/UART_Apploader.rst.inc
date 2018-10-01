@@ -1,6 +1,6 @@
 
 Overview
-^^^^^^^^
+--------
 
 UART AppLoader is a standalone application used to download application image over UART
 from the host PC. Host PC uses the serial console utility to transfer application image to apploader.
@@ -9,7 +9,7 @@ The Apploader application loads and executes the application binary to be tested
 over UART on the target platform.
 
 Supported Platforms
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 +----------------+------------------+-----------------------+
 |      SOC       |      PLATFORM    |   Verified Boot Modes |
@@ -41,9 +41,41 @@ Supported Platforms
 | OMAPL138       | OMAPL138 LCDK    |       MMCSD           |
 +----------------+------------------+-----------------------+
 
+Apploader Load Address
+----------------------
+
++----------------+------------------+------------------+-----------------------+--------------------------+
+|      SOC       |     PLATFORM     |      DDR Size    |   DDR Start Address   |  Apploader Load Address  |
++================+==================+==================+=======================+==========================+
+| AM335x         | AM335x GP EVM    |       1GB        |       0x80010000      |         0xBFE00000       |
+|                +------------------+------------------+-----------------------+--------------------------+
+|                | AM335x ICEv2     |      256MB       |       0x80010000      |         0x8FD00000       |
+|                +------------------+------------------+-----------------------+--------------------------+
+|                | AMIC110 ICE      |      512MB       |       0x80010000      |         0x9FE00000       |
++----------------+------------------+------------------+-----------------------+--------------------------+
+| AM437x         | AM437x EVM       |       2GB        |       0x80000000      |         0xFFE00000       |
+|                +------------------+------------------+-----------------------+--------------------------+
+|                | AM437x IDK       |       1GB        |       0x80000000      |         0xBFE00000       |
++----------------+------------------+------------------+-----------------------+--------------------------+
+| AM571x         | AM571x IDK       |       1GB        |       0x80000000      |         0xBFDFFFFF       |
++----------------+------------------+------------------+-----------------------+--------------------------+
+| AM572x         | AM572x EVM       |       2GB        |       0x80000000      |         0xFFDFFFFF       |
++                +------------------+------------------+-----------------------+--------------------------+
+|                | AM572x IDK       |       2GB        |       0x80000000      |         0xFFDFFFFF       |
++----------------+------------------+------------------+-----------------------+--------------------------+
+| AM574x         | AM574x IDK       |       2GB        |       0x80000000      |         0xFFDFFFFF       |
++----------------+------------------+------------------+-----------------------+--------------------------+
+| K2G            | K2G GP EVM       |       2GB        |       0x80000000      |         0xFFD00000       |
+|                +------------------+------------------+-----------------------+--------------------------+
+|                | K2G ICE          |      512MB       |       0x80000000      |         0x9FE00000       |
++----------------+------------------+------------------+-----------------------+--------------------------+
+| OMAPL137       | OMAPL137 EVM     |      64MB        |       0xC3000000      |         0xC6E00000       |
++----------------+------------------+------------------+-----------------------+--------------------------+
+| OMAPL138       | OMAPL138 LCDK    |      128MB       |       0xC0000000      |         0xC7E00000       |
++----------------+------------------+------------------+-----------------------+--------------------------+
 
 Pre-Requisites
-^^^^^^^^^^^^^^
+--------------
 1. Download and install the Processor-SDK RTOS package. See the software product page for your device to get the latest version of this software:
 
 -  `Processor SDK for
@@ -64,7 +96,7 @@ Pre-Requisites
    From the appropriate software product page, go to the download page by
    clicking "Get Software" for the RTOS package.
 
-2. The Uart Apploader binaries are found under <pdk_install_path>/ti/board/bin/<board_name>/sd/apploader_Test
+2. The Uart Apploader binaries are found under <pdk_install_path>/packages/ti/board/utils/uartAppLoader/bin/<board_name>/sd/apploader_Test
 
 **Serial Connection**
 
@@ -84,8 +116,11 @@ Launch the serial console utility with the following configurations:
 .. note::   Any Serial Console utility that supports xmodem protocol can be used.
             Verified utility is Teraterm
     
+.. note::	TI Binaries does not work with Apploader on AM335x/AM437x platforms.
+            Make sure to use non TI binaries for testing on these platforms.
+
 AppLoader Usage
-^^^^^^^^^^^^^^^
+---------------
 1. Set the sysboot pins to the relevant boot mode(SPI / MMCSD).
 2. Make sure UART connection is established between Target platform and Host PC.
 3. Power cycle the board.
@@ -111,6 +146,7 @@ AppLoader Usage
 
 .. note::	For example in Teraterm, use the following option to transfer the application binary.
 			File -> Transfer -> XMODEM -> Send
+
 6. Upon success, the apploader loads and executes the application.
 7. Following is the sample output (using UART Diagnostic application), on the serial console.
 
@@ -141,4 +177,11 @@ AppLoader Usage
 			2. Rename apploader_Test to app and copy to SD card.
 			3. Set the sysboot pins to MMCSD Boot mode
 
- 
+Rebuilding AppLoader
+---------------------
+Apploader pre-built binaries are currently not available for OMAPL137/L138 platforms.
+Binaries needs to be manually built for these platforms.
+
+Refer :ref:`rebuild-board_utils` section to build Apploader.
+
+.. raw:: html

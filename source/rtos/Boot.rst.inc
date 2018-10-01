@@ -79,6 +79,9 @@ AM57x
 ---------------
 .. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM57x.rst.inc
 
+AM65x
+---------------
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM65x.rst.inc
 
 C66x
 ---------------

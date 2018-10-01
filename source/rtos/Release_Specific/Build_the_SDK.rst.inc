@@ -43,6 +43,22 @@ The SDK build environment can be configured on Windows and Linux by
 running an environment setup script located in the top-level RTOS SDK
 folder.
 
+.. note::
+
+   -  Windows 10 is required for building the SDK.
+   -  Mono is required for building the the SDK on linux. You can check if
+      mono is installed by typing "mono --version" at the linux prompt. If mono
+      is not installed, download and install mono from `here <http://www.mono-project.com>`__
+   -  OpenSSL is required for building the SDK for AM65xx. Check if OpenSSL is
+      is installed by typing "openssl version" at the comamnd prompt. If OpenSSL
+      is not installed, download and install OpenSSL for your OS.
+
+      -  For Windows : Download and install `Strawberry Perl <http://strawberryperl.
+         com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. 
+         The Strawberry Perl installer automatically installs and sets up OpenSSL.
+      -  For Linux : Execute the command "sudo apt-get install openssl" at the linux
+         command prompt.
+|
 Windows
 ^^^^^^^^^
 From the RTOS SDK directory, enter

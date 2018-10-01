@@ -53,9 +53,9 @@ access can be found from `test/src <http://git.ti.com/keystone-rtos/pruss-lld/tr
 
 When there is need to modify the source code of SORTE application and/or firmware,
 the SORTE application (which links the firmware statically) can be rebuilt through Yocto
-recipes. In order to do so, please refer to `Building the SDK <Overview.html#processor-sdk-linux-building-the-sdk>`__
+recipes. In order to do so, please refer to `Building the SDK <Overview_Building_the_SDK.html>`__
 to set up the build environment, and `Processor SDK Yocto
-Recipes <Overview.html#building-the-sdk-recipes>`__
+Recipes <Overview_Building_the_SDK.html#building-the-sdk-recipes>`__
 to bitbake the recipes and install the newly built packages.
 
 For example, the command below is for rebuilding the SORTE application for AM57xx.

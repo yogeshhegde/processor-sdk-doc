@@ -13,7 +13,7 @@ CCS is an optional tool for the SDK, and may be downloaded and installed
 at the same time that the SDK is installed or at a later date. For
 instructions on how to download the Processor Linux SDK, please see
 `Processor SDK Linux
-Installer <Overview.html#download-and-install-the-sdk>`__.
+Installer <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__.
 
 CCS uses the Eclipse backend and includes the following plugins:
 
@@ -52,7 +52,7 @@ to the target with serial and Ethernet communication.
 
 For more information on setting up your development environment, see the
 `Processor SDK Linux Getting Started
-Guide <Overview.html#start-your-linux-development>`__.
+Guide <Overview_Getting_Started_Guide.html#start-your-linux-development>`__.
 
 | 
 
@@ -66,7 +66,7 @@ SDK versions (v06.00, v08.00, v01.00.00.00, v02.00.00.00, etc) for
 non-ARM 9 devices, a new Linaro based toolchain is used and the location
 of the toolchain has changed. For more information on the GCC toolchain,
 please see `Processor Linux SDK GCC
-Toolchain <Overview.html#gcc-toolchain>`__.
+Toolchain <Overview_Getting_Started_Guide.html#gcc-toolchain>`__.
 
 Latest SDK toolchains use a prefix of **arm-linux-gnueabihf-**. Versions
 older than Processor Linux SDK 06.00 and AM18x users may still use the
@@ -353,13 +353,13 @@ file system:
 
 #. Use the top-level Makefile in the SDK install directory. See
    `Processor Linux SDK Top-Level
-   Makefile <Overview.html#processor-sdk-linux-top-level-makefile>`__ for
+   Makefile <Overview_Getting_Started_Guide.html#top-level-makefile>`__ for
    details of using the top-level Makefile to install files to a target
    file system. This target file system can be moved via an SD card
    connected to the host machine and then to the target board,
    transferred via TFTP, or some other method. For more information on
    setting up a target filesystem, see `Processor SDK Linux Setup
-   Script <Overview.html#run-setup-scripts>`__.
+   Script <Overview_Getting_Started_Guide.html#run-setup-scripts>`__.
 
    .. raw:: html
 

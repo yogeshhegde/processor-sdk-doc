@@ -9,21 +9,85 @@ HSR/PRP solution to support redundancy.
 
 Features supported
 ------------------
--  Enhanced ICSS cut-through switch with HSR capability
--  HSR End Node (DANH) complying to IEC62439-3 Edition 2 Clause 5
--  PRP End Node (DANP) complying to IEC6239-3 Edition 2 Clause 4
--  10/100 Mbits/s Full Duplex Ethernet Interface
--  Store & forward with data integrity check
--  VLAN over HSR/PRP interface
-   - VLAN filter table of 4096 entries for perfect match
--  Multicast filtering. Hash table of 256 entries for imperfect
-   match. User configurable mask for selecting the bits to be
-   used for hash calculation.
--  node table size 256
--  Statistics & Node Table MIB support
--  HSR Modes H;N,T,U,M - mode changethrough SNMP SET
--  Duplicate Accept/Reject configuration change through SNMP SET
--  Run time change of Protocol at PRU Ethernet
+
+-  **HSR/PRP**
+
+   -  100 Mbits/s Full Duplex Ethernet Interface
+   -  The implementation is as per IEC 62439-3 Ed 2.0
+   -  Operates as a DAN (Dual Attached Node)
+
+-  **HSR**
+
+   -  Operates as a DANH
+   -  As per clause 5 of the standard
+   -  Support for modes – H, T, U and N as per standard
+   -  Modes can be changed at run time
+   -  Cut-through switching
+
+-  **PRP**
+
+   -  Operates as a DANP
+   -  As per clause 6 of the standard
+   -  Two ports as per standard, Port A and Port B
+
+-  **Support for Node Table**
+
+   -  Total 128 entries on AMICx, AM335x, AM437x
+   -  Total 256 entries on AM57xx & K2G
+   -  Hash Table for faster lookup
+   -  O(1) complexity
+   -  Node Table statistics
+
+-  **Support for Multicast Filtering**
+
+   -  Supported on all SoCs
+   -  Hash Table of 128 entries for faster lookup
+   -  O(1) complexity
+   -  User configurable mask to select bits for hashing
+
+-  **Support for VLAN over HSR/PRP interface**
+
+-  **Support for VLAN Filtering**
+
+   -  VLAN filter table of 4096 entries for perfect match
+   -  O(1) complexity
+
+-  **Duplicate Discard Table**
+
+   -  Duplicate discard on Port to Host path (HSR and PRP)
+   -  Duplicate discard table on Port to Port path (HSR)
+   -  Data integrity (CRC) check during port to port forwarding, except cut through (HSR)
+
+-  **QoS scheme** : 3-bit VLAN PCP
+
+   -  No of levels supported : 2
+   -  Number of host queues : 2 \| 2 QoS levels per host queue
+   -  Number of port queues : 2 \| 2 QoS levels per port queue
+
+-  **Statistics**
+
+   -  Supports all MIB statistics as per standard
+   -  Node Table statistics for debugging
+
+-  **Storm Prevention** : Yes. Configurable per port
+
+-  **Dual instance of HSR/PRP using two PRU-ICSS on AM571x**
+
+-  **VLAN tag support in Supervision frames**
+
+-  **Run time change of Protocol at PRU-ICSS without reboot**
+
+- **SAN PTP/1588**
+   -  Supported using PRP firmware in EMAC mode
+   -  PTP Slave and Master mode
+   -  Supports P2P clock.
+   -  PTP over 802.3 (Annex F)
+   -  Ordinary Clock (GMAC/PRU port)
+   -  Boundary Clock supported
+   -  Two step clock supported
+
+- **Redundant PTP/1588**
+   -  Transparent clock as per IEC62439-3 Annex C
 
 Software Architecture
 ----------------------
@@ -95,24 +159,42 @@ driver is developed to support existing EMAC device as well HSR/PRP
 
 .. Image:: ../images/Hsr-prp-offload.png
 
-Ethernet Driver
-^^^^^^^^^^^^^^^^^^^
+.. _PLSDK_HSR_PRP_id_if_number_mapping:
 
-Starting from Processor SDK 04.00.00 release, the PRU Ethernet driver
-supports HSR/PRP firmware offload. More specifically, based on a module
-parameter configured at boot time, the PRU Ethernet driver loads either
-a PRU EMAC firmware, PRU HSR firmware or PRU PRP firmware. The first
-case (EMAC) is the non-offload case, while the latter 2 cases are the
-firmware offload cases. When a HSR/PRP firmware is loaded, the PRU
-Ethernet driver will do proper firmware configurations and indicate
-offload capabilities in the netdev feature flag. The Linux HSR/PRP
-driver stack use these feature flag to determine if offload is supported
-or not at the lower level Ethernet driver and disable certain processing
-at the its layer.
+PRU-ICSS Subsystem Driver
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Notice that, from the user point of view, other than providing a module
-parameter to specify which firmware to load, all of the above mentioned
-driver behavior is transparent to the user.
+PRU-ICSS Subsystem Driver provide a set of functions to client driver
+such as PRU Ethernet (described in next section) to load and run firmware
+on a specific core, such as PRU on a PRU-ICSS. On a SoC, there can be 1 or
+2 instance of the PRU-ICSS and client driver might want to know which
+instance it is referring to. For example, PRU Ethernet driver calls
+pruss_get() to get the instance ID. Also PRU-ICSS and PRU Ethernet
+driver support sysfs and debugfs files specific to an instance and user
+might have to know what instance the file refers to. Following mapping is
+used for the ID based on the SoC and the PRU-ICSS instance.
+
++---------------------------+------+-----------+--------------------+
+| SoC                       | ID   | if number | ICSS TRM reference |
++===========================+======+===========+====================+
+| AM3                       |  0   | eth0/1    | PRU-ICSS           |
++---------------------------+------+-----------+--------------------+
+| AM4                       |  0   | eth1/2    | PRU-ICSS0          |
++---------------------------+------+-----------+--------------------+
+| AM4                       |  1   | eth3/4    | PRU-ICSS1          |
++---------------------------+------+-----------+--------------------+
+| AM5                       |  1   | eth4/5    | PRU-ICSS1          |
++---------------------------+------+-----------+--------------------+
+| AM5                       |  2   | eth2/3    | PRU-ICSS2          |
++---------------------------+------+-----------+--------------------+
+| K2G                       |  0   | eth1/2    | PRU-ICSS0          |
++---------------------------+------+-----------+--------------------+
+| K2G                       |  1   | eth3/4    | PRU-ICSS1          |
++---------------------------+------+-----------+--------------------+
+
+In the following section, the PRU-ICSS ID is used in the debugfs or
+sysfs file path and the same can be obtained from the table above to
+know which PRU-ICSS the file refers to.
 
 PRU Ethernet Driver (EMAC/HSR/PRP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,55 +213,121 @@ Notice that, from the user point of view, other than providing a module
 parameter to specify which firmware to load, all of the above mentioned
 driver behavior is transparent to the user.
 
+.. note:: For all discussion and examples shown, AM57xx device is used as
+	   example, but different devices will use different ports. Please
+	   see :ref:`PLSDK_HSR_PRP_id_if_number_mapping` for interface
+	   number and PRU-ICSS ID information for different SoCs.
+
+As of Processor SDK 5.1.x, the driver supports 2 instances of HSR/PRP
+one on each of PRU-ICSS on AM5xxx as per table below.
+
+ +------------+-----------+
+ | PRU-ICSS1  | PRU-ICSS2 |
+ +============+===========+
+ | HSR        |    HSR    |
+ +------------+-----------+
+ | HSR        |    PRP    |
+ +------------+-----------+
+ | PRP        |    PRP    |
+ +------------+-----------+
+ | PRP        |    HSR    |
+ +------------+-----------+
+
 Queue Usage and VLAN PCP to Queue Map
 """"""""""""""""""""""""""""""""""""""
 
-At the Ingress, there are two queues assigned for packets coming from
-each port or PRU. Here is how the PCP values of incoming packets mapped
-to the each of the two queues. Firmware maintains a mapping table in the
-shared memory that is configured by the PRU Ethernet driver for HSR/PRP.
-For EMAC, the firmware has a similar mapping that is hard coded.
-
-Ingress Host PCP to priority Queue map table in shared memory for
-HSR/PRP/EMAC
-
-::
-
-      byte 0 => PRU 0 (eth2), PCP 0-3 => Q1 
-      byte 1 => PRU 0 (eth2), PCP 4-7 => Q0
-      byte 2 => Unused.
-      byte 3 => Unused.
-      byte 4 => PRU 1 (eth3), PCP 0-3 => Q3 
-      byte 5 => PRU 1 (eth3), PCP 4-7 => Q2 
-      byte 6 => Unused
-      byte 7 => Unused
+At the Ingress, there are two queues available for queueing the frames
+coming from each port or PRU to Host and two queues available for packets
+from Host to each PRU. At the Egress, there are additionally two more
+queues used for forward traffic from PRU1 to PRU0 and vice-versa. PRUETH
+driver configures the PCP to Queue MAP in Shared RAM which is used by firmware
+to decide which queue to pick to enqueue frames towards Host or other
+PRU. Priority queues are assigned based on the PCP value in VLAN tag
+of an Ethernet frame. Untagged frame is treated like PCP 0. Here is
+the mapping value configured by driver in 4 bytes starting at offset
+QUEUE_2_PCP_MAP_OFFSET (defined in hsr_prp_firmware.h). Same mapping is
+used for Ingress and Egress traffic.
 
 The convention is that higher queue value corresponds to lower priority
 
-At the Ingress, two separate irq handlers are assigned to each port to
-process the packets. Driver handler first process packets from the high
-priority queue followed by packets from the lower priority queue.
+**For HSR/PRP Ethernet types**
 
-At the Egress, there are 4 queues where driver enqueue the packets for
-Egress transmission. Following are the PCP to queue map used for Egress
-that are same across all protocols.
+- At ingress to Host
 
 ::
 
-     low  - pcp 0..1 maps to Q3
-                2..3 maps to Q2
-                4..5 maps to Q1
-     high - pcp 6..7 maps to Q0.
+ byte 0 - To host from PRU 1, PCP 0-3 => Q3
+ byte 1 - To host from PRU 1, PCP 4-7 => Q2
+ byte 2 - To host from PRU 0, PCP 0-3 => Q1
+ byte 3 - To host from PRU 0, PCP 4-7 => Q0
+
+At the ingress, firmware inspect the PCP value in the incoming Ethernet
+frame's VLAN tag and choose a priority queue to enqueue the frame based on
+the above mapping.
+
+- At egress from host to wire/network
+
+::
+
+ PRU0/PRU1
+ ---------
+ byte 0 - from Host to PRU, PCP 0-3 => Q3
+ byte 1 - from Host to PRU, PCP 4-7 => Q2
+
+ PRU0
+ -----
+ byte 2 - from PRU1 to PRU0, PCP 0-3 => Q1
+ byte 3 - from PRU1 to PRU0, PCP 4-7 => Q0
+
+ PRU1
+ -----
+ byte 2 - from PRU0 to PRU1, PCP 0-3 => Q1
+ byte 3 - from PRU0 to PRU1, PCP 4-7 => Q0
+
+Driver choose the priority queue for egress transmission based on the
+PCP value of the Ethernet frame received from the upper layer.  Firmware
+sends the frames first from Q0 and Q2 in a round robin fashion. Once these
+queues are drained, it then sends from the next higher queues Q1 and Q3
+again in a round robin fashion. At the egress, Q0/Q1 are port queues and
+Q2/Q3 are host queues.
+
+**For Dual EMAC Ethernet type**
+
+In Dual EMAC case, mapping is hard coded in firmware.
+
+- At ingress to Host
+
+::
+
+ From PRU0 to Host, PCP 0-3 => Q1
+ From PRU0 to Host, PCP 4-7 => Q0
+
+ From PRU1 to Host, PCP 0-3 => Q3
+ From PRU1 to Host, PCP 4-7 => Q2
+
+- At egress from host to wire/network
+
+::
+
+ PRU0/PRU1
+ -- ---------
+ From Host to PRU0/PRU1, PCP 0-1 => Q3
+ From Host to PRU0/PRU1, PCP 2-3 => Q2
+ From Host to PRU0/PRU1, PCP 4-5 => Q1
+ From Host to PRU0/PRU1, PCP 6-7 => Q0
 
 Firmware sends the frames first from Q1, and then from the next higher
 queue (Q2) and so forth.
 
-| 
+For all ethernet types, at the Ingress, two separate irq handlers are
+assigned to each port to process the packets. Driver handler first process
+packets from the high priority queue followed by packets from the lower
+priority queue.
 
 Changing protocol at PRU Ethernet
 """""""""""""""""""""""""""""""""""
 
-PRU Ethernet driver support multiple protocols based on the firmware
+PRU Ethernet driver supports multiple protocols based on the firmware
 loaded on ICSS PRU. In Processor SDK 04.00.00, a capability was added to
 change the protocol running on the PRU at boot time through bootargs.
 This is described at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`.
@@ -251,10 +399,6 @@ user may type following command for example for eth2
 ::
 
       ethtool -k eth2
-
-| 
-
-| 
 
 .. rubric:: Sample commands
    :name: sample-commands
@@ -367,8 +511,9 @@ PRUETH as SAN with PTP
 
 ::
 
-     echo 1 > /sys/kernel/debug/prueth-ethX/prp_emac_mode
-     where X is 2 or 3 or 4 or 5
+  echo 1 > /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/prp_emac_mode
+
+where <ID> and <if number> are described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
 
 -  Now bring up Ethernet interfaces as usual and the device is ready to
    be used as SAN. PTP support can be enabled at this time. See section
@@ -410,9 +555,8 @@ to ARM core (a.k.a Host). If reset, the frame is dropped at the PRU. This
 is an imperfect match since there can be multiple MAC addresses that produces
 the same hash value. So these frames will get forwarded to the ARM core.
 
-ti_prueth.prussX_mc_mask is the module parameter for MASK where X is 1 for
-ICSS-1 and 2 for ICSS-2 on AM57xx (On other devices, X is 0 for ICSS-1 and 1
-for ICSS-2).
+ti_prueth.pruss<ID>_mc_mask is the module parameter for MASK where <ID> is
+described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
 
 Sample bootargs with MASK configured
 
@@ -475,15 +619,23 @@ table in the memory
 
 ::
 
- /sys/kernel/debug/prueth-prp/mc_filter
- or
- /sys/kernel/debug/prueth-hsr/mc_filter
+ /sys/kernel/debug/prueth-prp-<ID>/mc_filter
+
+
+or
+
+::
+
+ /sys/kernel/debug/prueth-hsr-<ID>/mc_filter
+
+
+where ID is described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
 
 Sample display
 
 ::
 
- root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp/mc_filter
+ root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp-2/mc_filter
  MC Filter : enabled
  MC Mask : ff:ff:ff:ff:0:0
  MC Filter table below 1 - Allowed, 0 - Dropped
@@ -635,8 +787,16 @@ User can use the following command to view the VLAN filter table at PRU.
 
 ::
 
- root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp/vlan_filter
+ cat /sys/kernel/debug/prueth-prp-<ID>/vlan_filter
+
+Where ID is described at :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
+
+::
+
+ root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp-2/vlan_filter
  VLAN Filter : enabled
+ VLAN Filter untagged : allowed to Host
+ VLAN Filter priority tagged: allowed to Host
 
     0: 0011000000000000000000000000000000000000000000000000000000000000
    64: 0000000000000000000000000000000000000000000000000000000000000000
@@ -704,7 +864,6 @@ User can use the following command to view the VLAN filter table at PRU.
  4032: 0000000000000000000000000000000000000000000000000000000000000000
 
 .. rubric:: Limitation
-   :name: Limitation
 
 Currently, the PRU firmware is configured to receive all of the
 untagged frames from the network when the VLAN filtering is enabled.
@@ -726,52 +885,50 @@ on a per interface basis. There is a sysfs entry
 
 ::
 
-  /sys/devices/platform/pruss2_eth/ethx/nsp_credit
+  /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/nsp_credit
 
-to allow user to configure the credit value, where x is 2-5
-(4 & 5 available only on AM571x, not 572x). The driver writes
-the credit value in DRAM based on the sysfs entry from user.
-The PRU firmware uses the credit value as a counter. The driver
-refreshes the counter every 100 msec. i.e write the credit
-value to memory every 100 msec. PRU Firmware upon receiving
-a broadcast frame decrements this counter until it becomes zero.
-Firmware forwards the broadcast frames to Host or ARM until
-the counter is non zero. PRU Firmware drops the broadcast
-frames if the counter is zero. Since driver writes the credit
-value to DRAM every 100 msec, the number of broadcast frames
-sent to host or ARM during a 100 msec window is limited to
-the credit value and anything beyond that is dropped by the
-firmware. Firmware maintains a statistics counter,
-stormPrevCounter, for the number of frames dropped due to storm
-prevention control and can be seen using ethtool -S command.
+Where ID and if number are obtained from the table under the section
+:ref:`PLSDK_HSR_PRP_id_if_number_mapping`. The driver writes the credit value in DRAM
+based on the sysfs entry from user. The PRU firmware uses the credit
+value as a counter. The driver refreshes the counter every 100 msec.
+i.e write the credit value to memory every 100 msec. PRU Firmware
+upon receiving a broadcast frame decrements this counter until it
+becomes zero.  Firmware forwards the broadcast frames to Host or ARM
+until the counter is non zero. PRU Firmware drops the broadcast frames
+if the counter is zero. Since driver writes the credit value to DRAM
+every 100 msec, the number of broadcast frames sent to host or ARM
+during a 100 msec window is limited to the credit value and anything
+beyond that is dropped by the firmware. Firmware maintains a statistics
+counter, stormPrevCounter, for the number of frames dropped due to
+storm prevention control and can be seen using ethtool -S command.
 
-Note that this feature is disabled by default and user needs
-to configure it explicitely to enable the feature. A write
-of non zero value to the sysfs file enables the feature and
-zero disables the feature. The value to be used may be
-experimented in a particular network situation and configured
-by the user. In a typical network, there will be few of these
-per 100 msec window such as ARP broadcast, DHCP broadcast,
-router advetisement etc. So user may observe the broadcast
-traffic in the network using network tools such as wireshark
+Note that this feature is disabled by default and user needs to
+configure it explicitely to enable the feature. A write of non zero
+value to the sysfs file enables the feature and zero disables the
+feature. The value to be used may be experimented in a particular
+network situation and configured by the user. In a typical network,
+there will be few of these per 100 msec window such as ARP broadcast,
+DHCP broadcast, router advetisement etc. So user may observe the
+broadcast traffic in the network using network tools such as wireshark
 and set the credit value accordingly.
-
-::
 
 Example
 
 To enable do
 
- >echo 10 > /sys/devices/platform/pruss2_eth/eth2/nsp_credit
+::
+
+ >echo 10 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit
 
 for setting credit value to 10 for eth2. Similarly for other interfaces.
 
 To disable do
 
- >echo 0 > /sys/devices/platform/pruss2_eth/eth2/nsp_credit
+::
+
+ >echo 0 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit
 
 .. rubric:: Limitation
-   :name: Limitation
 
 Currently this feature is not supported for Dual EMAC ethernet type
 (i.e when EMAC firmware is running on PRU ICSS).
@@ -820,19 +977,23 @@ this is disabled by default as enabling the same result in a lower
 throughput. However user may enable the same through ethtool –C
 command if needed.
 
-::
-
 Example
 
 To show the current value of pacing timer, use
+
+::
 
  >ethtool –c <Ethernet interface>
 
 To change the current value, use
 
+::
+
  >ethtool –C <Ethernet interface> <param> <value> <param> <value>
 
 For example for eth2, user type
+
+::
 
  >ethtool –c eth2
 
@@ -841,17 +1002,31 @@ to one of the pair of Ethernet interfaces used for the HSR or PRP interface.
 i.e for ICSS2 (assuming eth2 and eth3), user may use either of the below
 command to set the timer
 
+::
+
  >ethtool –C eth2 rx-usecs 123
+
 or
+
+::
+
  >ethtool –C eth3 rx-usecs 123
 
 Similarly to enable adaptive-rx, user types
 
+::
+
  >ethtool –C eth2 adaptive-rx on
+
 or
+
+::
+
  >ethtool –C eth3 adaptive-rx on
 
 Both parameters may be updated in one go as
+
+::
 
  >ethtool –C eth2 rx-usecs 123 adaptive-rx on
 
@@ -859,10 +1034,36 @@ More details on the command syntax are available by typing man ethtool
 on a Linux PC as this is a standard Linux command.
 
 .. rubric:: Limitation
-   :name: Limitation
 
 Currently this feature is not supported for Dual EMAC ethernet type
 (i.e when EMAC firmware is running on PRU ICSS).
+
+VLAN Tag in Supervision frame
+-----------------------------
+
+HSR/PRP protocol standard IEC62439-3 defines that the PRP_Supervision frame
+as well as HSR_Supervision frames optionally include a VLAN tag header.
+Starting with Processor SDK 5.1.x, VLAN tag is supprted in Linux HSR/PRP
+implementation.
+
+In Linux, user use the ip link add command to create an HSR/PRP
+interface. ip link command is supported by the iproute2 package which is an open
+source software. hsr or prp type is currently a supported link type by ip
+link command. To support VLAN tag in SV frames, the command now accepts
+3 more parameters from user. They are:-
+
+ * VLAN Identifier (VID) - sv_vid
+ * Priority code point (PCP) - sv_pcp
+ * Drop eligible indicator  (DEI) or formerly known as Canonical Format Indicator (CFI) - sv_cfi
+
+User provides following values in the ip link add command for this purpose.
+
+::
+
+ sv_vid <vid value> sv_pcp <pcp value> sv_cfi <cfi value>
+
+These are all optional parameters. At least one of the value to be provided
+to use vlan. A default value of zero is used if not supplied by the user.
 
 Net-SNMP
 --------
@@ -935,18 +1136,19 @@ is the IP address of the remote DAN-P or DAN-H prp/hsr interface.
     IEC-62439-3-MIB::lreTimeLastSeenB.1.1 = Timeticks: (1) 0:00:00.01
     IEC-62439-3-MIB::lreRemNodeType.1.1 = INTEGER: danh(3)
 
-Individual MIB variable may be queried or set using snmpset or snmpget
-commands. Below are some examples:- snmpset
+Individual MIB variable may be queried or set using snmpset or snmpget commands. Below are some examples:-
+
+snmpset
 
 ::
 
-    snmpset -v 2c -c private 192.168.2.20 IEC-62439-3-MIB::lreHsrLREMode.1 i 3
+ snmpset -v 2c -c private 192.168.2.20 IEC-62439-3-MIB::lreHsrLREMode.1 i 3
 
 snmpget
 
 ::
 
-    snmpget -v 2c -c public 192.168.2.20 IEC-62439-3-MIB::lreManufacturerName.0
+ snmpget -v 2c -c public 192.168.2.20 IEC-62439-3-MIB::lreManufacturerName.0
 
 .. rubric:: MIB Support
    :name: mib-support
@@ -1189,12 +1391,12 @@ no firmware offload.
 To show the **HSR Node Table**, under the kernel prompt on the terminal
 connected to the IDK, do
 
--  root@am57xx-evm:~# cat /sys/kernel/debug/**prueth-hsr**/node\_table
+-  root@am57xx-evm:~# cat /sys/kernel/debug/**prueth-hsr-<ID>**/node\_table
 -  Sample display
 
 ::
 
-     root@am57xx-evm:~# cat /sys/kernel/debug/prueth-hsr/node_table 
+     root@am57xx-evm:~# cat /sys/kernel/debug/prueth-hsr-2/node_table
      
      Remote nodes in network: 1
      
@@ -1209,12 +1411,12 @@ connected to the IDK, do
 To show the **PRP Node Table**, under the kernel prompt on the terminal
 connected to the IDK, do
 
--  root@am57xx-evm:~# cat /sys/kernel/debug/**prueth-prp**/node\_table
+-  root@am57xx-evm:~# cat /sys/kernel/debug/**prueth-prp-<ID>**/node\_table
 -  Sample display
 
 ::
 
-     root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp/node_table 
+     root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp-2/node_table
      
      Remote nodes in network: 1
      
@@ -1434,6 +1636,129 @@ Using the above script, user teardown the hsr interface as
 
     /teardown.sh hsr
 
+Sample script below can be used to create two instances of HSR/PRP at PRU-ICSS1 and PRU-ICSS2 on AM571x. For other platform
+where applicable, this can be customized by changing the slave eth interface names to match with that on the specific
+platform. The script also allows configuring the LRE to use VLAN tag for Supervision frames by providing an optional vlan
+string in the command line of the script as documented in the script.
+
+**On PRU-ICSS1 of AM571x**
+::
+
+ #!/bin/sh
+ if [ $# -lt 4 ]
+ then
+ 	echo "setup-pruss1.sh <hsr/prp> <MAC-Address of slave-A>"
+ 	echo "   <ip address for hsr/prp interface>"
+ 	echo "	<if_name of hsr/prp interface>  [vlan]" 
+ 	echo " vlan is optional and if present use vlan tag"
+ 	echo " in the SV frame. Use values of vid, pcp and"
+ 	echo " and cfi hardcoded in the script"
+ 	exit
+ fi
+
+ if [ "$1" != "hsr" ] && [ "$1" != "prp" ]
+ then
+ 	echo "use hsr or prp as first argument"
+ 	exit
+ fi
+
+ if_a=eth4
+ if_b=eth5
+ if_name=$4
+ vl=$5
+ #change this as needed
+ vid=10
+ pcp=5
+ cfi=0
+
+ ifconfig $if_a down
+ ifconfig $if_b down
+ ifconfig $if_a hw ether $2
+ ifconfig $if_b hw ether $2
+ ifconfig $if_a up
+ ifconfig $if_b up
+
+ echo "Setting up $if_name with MAC address $2 for slaves and IP address $3"
+ echo "          using $if_a and $if_b"
+
+ if [ "$1" = "hsr" ]; then
+  	if [ "$vl" = "vlan" ]; then
+ 	options="version 1 sv_vid $vid sv_pcp $pcp sv_cfi $cfi"
+  		echo $options
+ 	else
+		options="version 1"
+ 	fi
+ else
+ 	if [ "$vl" = "vlan" ]; then
+ 		options="sv_vid $vid sv_pcp $pcp sv_cfi $cfi"
+ 	else
+ 		options=""
+ 	fi
+ fi
+
+ ip link add name $if_name type $1 slave1 $if_a slave2 $if_b supervision 0 $options
+ ifconfig $if_name $3 up
+
+
+**On PRU-ICSS2 of AM571x**
+
+::
+
+ #!/bin/sh
+ if [ $# -lt 4 ]
+ then
+ 	echo "setup-pruss2.sh <hsr/prp> <MAC-Address of slave-A>"
+ 	echo "   <ip address for hsr/prp interface>"
+ 	echo "	<if_name of hsr/prp interface>  [vlan]" 
+ 	echo " vlan is optional and if present use vlan tag"
+ 	echo " in the SV frame. Use values of vid, pcp and"
+ 	echo " and cfi hardcoded in the script"
+ 	exit
+ fi
+ 
+ if [ "$1" != "hsr" ] && [ "$1" != "prp" ]
+ then
+ 	echo "use hsr or prp as first argument"
+ 	exit
+ fi
+ 
+ if_a=eth2
+ if_b=eth3
+ if_name=$4
+ vl=$5
+ #change this as needed
+ vid=10
+ pcp=5
+ cfi=0
+ 
+ ifconfig $if_a down
+ ifconfig $if_b down
+ ifconfig $if_a hw ether $2
+ ifconfig $if_b hw ether $2
+ ifconfig $if_a up
+ ifconfig $if_b up
+ 
+ echo "Setting up $if_name with MAC address $2 for slaves and IP address $3"
+ echo "          using $if_a and $if_b"
+ 
+ if [ "$1" = "hsr" ]; then
+ 	if [ "$vl" = "vlan" ]; then
+ 		options="version 1 sv_vid $vid sv_pcp $pcp sv_cfi $cfi"
+ 		echo $options
+ 	else
+  		options="version 1"
+ 	fi
+ else
+ 	if [ "$vl" = "vlan" ]; then
+ 		options="sv_vid $vid sv_pcp $pcp sv_cfi $cfi"
+ 	else
+ 		options=""
+ 	fi
+ fi
+ 
+ ip link add name $if_name type $1 slave1 $if_a slave2 $if_b supervision 0 $options
+ ifconfig $if_name $3 up
+ 
 Sample logs are shown below:
 
 **DAN-H-1**
@@ -1983,37 +2308,45 @@ these tuning shows no packet loss.
 
 +---------------+----------------------------------------+
 | Packet Size   | Tput with no packet loss (Mbits/sec)   |
-+===============+========================================+
-| 1466          | 88                                     |
-+---------------+----------------------------------------+
-| 1024          | 88                                     |
-+---------------+----------------------------------------+
-| 512           | 64                                     |
-+---------------+----------------------------------------+
-| 256           | 45                                     |
-+---------------+----------------------------------------+
++===============+=========+=========+=========+==========+
+|               | AM335x  | AM437x  | AM57xx  |   K2G    |
++---------------+---------+---------+---------+----------+
+| 1472          | 30      | 64      | 88      | 30       |
++---------------+---------+---------+---------+----------+
+| 1024          | 29      | 52      | 86      | 26       |
++---------------+---------+---------+---------+----------+
+| 512           | 18      | 36      | 52      | 16       |
++---------------+---------+---------+---------+----------+
+| 256           | 11      | 22      | 25      | 10       |
++---------------+---------+---------+---------+----------+
 
 Table:  UDP Performance for HSR
 
 +---------------+----------------------------------------+
 | Packet Size   | Tput with no packet loss (Mbits/sec)   |
-+===============+========================================+
-| 1466          | 88                                     |
-+---------------+----------------------------------------+
-| 1024          | 88                                     |
-+---------------+----------------------------------------+
-| 512           | 60                                     |
-+---------------+----------------------------------------+
-| 256           | 38                                     |
-+---------------+----------------------------------------+
++===============+=========+=========+=========+==========+
+|               | AM335x  | AM437x  | AM57xx  |   K2G    |
++---------------+---------+---------+---------+----------+
+| 1472          | 30      | 64      | 88      | 30       |
++---------------+---------+---------+---------+----------+
+| 1024          | 27      | 52      | 88      | 26       |
++---------------+---------+---------+---------+----------+
+| 512           | 19      | 34      | 46      | 15       |
++---------------+---------+---------+---------+----------+
+| 256           | 11      | 22      | 28      | 9        |
++---------------+---------+---------+---------+----------+
 
 Table:  UDP Performance for PRP
 
 | 
 
 **NOTE-1:**\ Test ran for 1 minute with single direction traffic (Client
-to Server). Reduced the traffic from 88Mbits/sec until there is no out
-of order or lost packets in the iperf stats
+to Server). Both ports were individually disconnected and then reconnected
+during the test. Reduced the traffic from 88Mbits/sec until there is no out
+of order or lost packets in the iperf stats i.e. iperf command client side
+::
+
+    iperf3 -c <IP> -u -l1472 -b<Rate>M -t60 -i5
 
 .. rubric:: TCP
    :name: tcp
@@ -2135,33 +2468,61 @@ eth2 link failed
 Useful Commands
 ---------------
 
-For Non offload case following commands are available. To dump stats
+ **Linux HSR/PRP driver help commands**
 
--  cat /sys/kernel/debug/hsr/stats
+To dump lre_info such as sv_vid, sv_pcp, sv_cfi, protocol etc used at the LRE of
+Linux HSR/PRP driver
+
+-  cat /sys/kernel/debug/<hsr/prp-if_name>/lre_info
+   example
+   cat /sys/kernel/debug/hsr0/lre_info
 
 To dump Node\_Table
 
--  cat /sys/kernel/debug/hsr/node\_table
+-  cat /proc/<hsr/prp-if_name>/node-table
 
-For PRP, replace hsr in the above paths with prp
-
-For Offloaded case following commands are available to change mode To
-change HSR mode do both commands below.
-
--  echo 1 > /sys/kernel/debug/hsr/hsr\_mode
--  echo 1 > /sys/kernel/debug/prueth-prp/hsr\_mode
-
-To see the node table entries for offloaded case, do
-
--  cat /sys/kernel/debug/prueth-prp/new\_nt\_bins
-
-or
-
--  cat /sys/kernel/debug/prueth-hsr/new\_nt\_bins
+To set hsr-mode
+-  echo 1 > /proc/<hsr/prp-if_name>/hsr-mode
 
 where 1 is for Mode-H
-
 Other values are 2 (Mode-N), 3 (Mode-T), 4 (Mode-U), 5 (Mode-M)
+
+To clear node table
+-  echo 1 > /proc/<hsr/prp-if_name>/clear-nt
+
+To change duplicate detection mode
+-  echo 1 > /proc/<hsr/prp-if_name>/dd-mode
+
+To change duplicate list max resident time
+-  echo 1000 > /proc/<hsr/prp-if_name>/dlrmt
+
+To change prp transparent reception mode
+-  echo 1 > /proc/<hsr/prp-if_name>/prp-tr
+
+To disable SV frame transmission
+-  echo 1 > /proc/<hsr/prp-if_name>/disable-sv_frame
+
+ **PRU Ethernet driver help commands**
+
+
+To see queue stats
+
+-  cat /sys/kernel/debug/prueth-eth<if_number>/stats
+
+To see lre_config
+
+-  cat /sys/kernel/debug/prueth-<hsr/prp>-<ID>>/lre_config
+
+To dump node table
+
+-  cat /sys/kernel/debug/prueth-<hsr/prp>-<ID>>/node_table
+
+Also
+
+-  cat /sys/kernel/debug/prueth-<hsr/prp-<ID>/new\_nt\_bins
+
+In the above commands ID and if_nubers are chosen as described
+in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
 
 FAQ
 ----

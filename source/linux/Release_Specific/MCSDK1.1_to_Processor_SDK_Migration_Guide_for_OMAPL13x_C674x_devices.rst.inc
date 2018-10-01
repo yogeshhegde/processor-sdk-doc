@@ -24,7 +24,7 @@ development.
    machines running Linux. Support for 32-bit machines is dropped
    primarily due to the Linzro toolchain not supporting 32-bit anymore.
    Host support for the SDK is described in the `Release
-   Notes <Release_Specific.html#host_support>`__
+   Notes <Release_Specific_Release_Notes.html#host_support>`__
 
 .. rubric:: Tool Chain
    :name: tool-chain
@@ -47,7 +47,7 @@ development.
 -  For an overview of the directory structure and a brief description of
    the contents of the folders, please refer to `Processor SDK Linux
    Directory
-   Structure <Overview.html#processor-sdk-linux-directory-structure>`__
+   Structure <Overview_Directory_Structure_Overview.html>`__
 
 .. rubric:: U-Boot
    :name: u-boot
@@ -87,7 +87,7 @@ development.
    Yocto.
 -  The instructions on how to build the Processor SDK Linux are
    available in `Building the Linux
-   SDK <Overview.html#processor-sdk-linux-building-the-sdk>`__
+   SDK <Overview_Building_the_SDK.html>`__
 
 .. rubric:: Inter-Processor Communication (IPC)
    :name: inter-processor-communication-ipc
