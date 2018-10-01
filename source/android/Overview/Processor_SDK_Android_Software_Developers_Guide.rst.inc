@@ -70,6 +70,6 @@ This information covers Processor SDK Android 4.0.0 and above.
    :name: feedback
 
 If you have feedback, suggestions, or ideas on how to improve the SDK,
-it is very appreciated. Please post your ideas to the `Sitara E2E
-Forum <http://e2e.ti.com/support/arm/sitara_arm/f/791.aspx>`__.
+it is very appreciated. Please post your ideas to the `E2E Processor
+Support <https://e2e.ti.com/support/processors/>`__ Forum.
 
