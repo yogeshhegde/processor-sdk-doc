@@ -495,11 +495,11 @@ Test supports verifying the DCAN interface in internal and external loopback mod
 
 Test Accessories
 """""""""""""""""
-No additional accessories are required for running this test.
+DCAN loopback cable (for evmK2G)
 
 Test Setup
 """""""""""
-No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+Connect two DCAN ports (P2 and P3) with DCAN loopback cable - only on evmK2G
 
 Test Execution
 """"""""""""""""
@@ -591,9 +591,9 @@ Sample log for Board ID EEPROM test is shown below
    Board ID content shown in the above log changes from platform to platform.
 
 
-EMAC Diagnostic Test
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This test verifies the EMAC Ethernet port on HW platform under test. 
+EMAC Test
+^^^^^^^^^^^
+This test verifies the EMAC Ethernet port on HW platform under test.
 Ethernet link and data transmit/receive are verified during this test.
 Ethernet interface is configured for 100mbps speed and 10 packets are sent/received during the test.
 Ethernet cable disconnect/reconnect and data transfer after cable connection is also verified during the test.
@@ -605,6 +605,17 @@ Ethernet loopback cables/plugs
 Test Setup
 """""""""""
 Connect the Ethernet loopback cables to the EMAC Ethernet port (RJ-45) on the board.
+Check below table for the details of EMAC Ethernet ports used by the test on different platforms.
+
++---------------+-----------------+
+| HW Platform   | Ethernet Port   |
++===============+=================+
+| iceK2G        | J10             |
++---------------+-----------------+
+| am65xx_evm    | J12 on CP board |
++---------------+-----------------+
+| am65xx_idk    | J12 on CP board |
++---------------+-----------------+
 
 Test Execution
 """"""""""""""""
@@ -852,10 +863,20 @@ Ethernet loopback cables/plugs
 
 Test Setup
 """""""""""
-For idkAM572x, idkAM571x, idkAM574x and evmAM572x, this test expects
-loopback plugs to be used on both Ethernet ports. These loopback plugs
-will loopback the TX lines back to the RX lines. The Ethernet ports are
-the RJ-45 connectors labeled "Ethernet" on the board.
+Connect the Ethernet loopback cables to the GMAC Ethernet port (RJ-45) on the board.
+Check below table for the details of GMAC Ethernet ports used by the test on different platforms.
+
++---------------+-----------------+
+| HW Platform   | Ethernet Port   |
++===============+=================+
+| idkAM571x     | J10 & J12       |
++---------------+-----------------+
+| idkAM572x     | J10 & J12       |
++---------------+-----------------+
+| idkAM574x     | J10 & J12       |
++---------------+-----------------+
+| evmAM572x     | Both ports of P5|
++---------------+-----------------+
 
 Test Execution
 """"""""""""""""
@@ -932,6 +953,13 @@ Test Accessories
 Test Setup
 """""""""""
 Connect the HDMI Display to the HDMI port on the board.
+Check below table for the details of HDMI ports used by the test on different platforms.
+
++---------------+-----------------+
+| HW Platform   | HDMI Port       |
++===============+=================+
+| evmK2G        | J36             |
++---------------+-----------------+
 
 Test Execution
 """"""""""""""""
@@ -980,7 +1008,7 @@ Sample log for HDMI test is shown below
 ICSS EMAC Test
 ^^^^^^^^^^^^^^
 This test verifies ICSS EMAC Ethernet port on HW platform under test.
-PRU-ICSS Ethernet ports are configured for 100mpbs speed and 5 packets are sent/received during the test.
+PRU-ICSS Ethernet ports are configured for 100mbps speed and 5 packets are sent/received during the test.
 
 Test Accessories
 """""""""""""""""
@@ -988,10 +1016,20 @@ Ethernet loopback cables/plugs
 
 Test Setup
 """""""""""
-For idkAM572x, idkAM574x and idkAM571x, this test expects loopback plug
-to be used on J6. These loopback plugs will loopback the TX lines back
-to the RX lines. For iceK2G, this test expects loopback plugs to be used
-on all four ICSS EMAC ports.
+Connect the Ethernet loopback cables to the PRU-ICSS Ethernet ports (RJ-45) on the board.
+Check below table for the details of Ethernet ports used by the test on different platforms.
+
++---------------+-----------------------+
+| HW Platform   | ICSS Ethernet Port    |
++===============+=======================+
+| idkAM571x     | J6                    |
++---------------+-----------------------+
+| idkAM572x     | J6                    |
++---------------+-----------------------+
+| idkAM574x     | J6                    |
++---------------+-----------------------+
+| iceK2G        | All ports of J8 & J9  |
++---------------+-----------------------+
 
 Test Execution
 """"""""""""""""
@@ -1071,12 +1109,13 @@ Sample log for ICSS EMAC test is shown below
 
 |    
 
-ICSSG EMAC Diagnostic Test
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ICSSG EMAC Test
+^^^^^^^^^^^^^^^^^
 This port to port Ethernet test verifies the PRU-ICSS gigabit Ethernet interface on the board under test. 
 During the test, Ethernet interface is configured for 1000mbps speed with one port of an ICSS instance 
 is connected to another port. 5 packets are sent from one port and received by another port. 
-Both the ports are verified for transmit and receive.
+Both the ports are verified for transmit and receive. All the ICSSG EMAC ports available on the board
+verified during the test.
 
 Test Accessories
 """"""""""""""""""
@@ -1085,6 +1124,23 @@ Ethernet cables
 Test Setup
 """"""""""""
 Connect Ethernet cable between two ports of an PRU-ICSS instance. Make such connections on all the PRU-ICSS ports available
+Check below table for the detials of ICSSG Ethernet ports used by the test on different platforms
+
++---------------+-----------------------+
+| HW Platform   | ICSSG Ethernet Port   |
++===============+=======================+
+| am65xx_evm    | Two ports on          |
+|               | J14 of CP board.      |
++---------------+-----------------------+
+| am65xx_idk    | Two ports on          |
+|               | J14 of CP board.      |
+|               |                       |
+|               | Two ports on          |
+|               | J1 of IDK board.      |
+|               |                       |
+|               | Two ports on          |
+|               | J3 of IDK board.      |
++---------------+-----------------------+
 
 Test Execution
 """"""""""""""""
@@ -1541,6 +1597,7 @@ Connect the LCD Display to the HW platform under test.
 Test Execution
 """"""""""""""""
  - Select the menu option to run ‘lcdTouchscreen_TEST’
+ - Provide multiple touch points to verify multi-touch input detection
  - Verify the test log on serial console
  
 Test Log
@@ -1610,7 +1667,7 @@ Sample log for ICSS LED test is shown below
 
 Industrial LED Test
 ^^^^^^^^^^^^^^^^^^^^
-This test verifies industrial LEDs on the HW platform under test.
+This test verifies industrial LEDs connected to I2C interface on the HW platform under test.
 All the LEDs are turned ON and OFF for 3 times during the test.
 
 Test Accessories
@@ -1742,11 +1799,20 @@ Data is sent from one port and received on another port. Both the ports are veri
 
 Test Accessories
 """""""""""""""""
-MCAN cable
+MCAN port to port loopback cable
 
 Test Setup
 """""""""""
 Connect two MCAN ports on the board to each other with MCAN cable.
+Check below table for the details of MCAN ports used by the test on different platforms.
+
++---------------+-----------------+
+| HW Platform   | MCAN Ports      |
++===============+=================+
+| am65xx_idk    | Two ports on P1 |
+|               | connector of    |
+|               | IDK board       |
++---------------+-----------------+
 
 Test Execution
 """""""""""""""
@@ -2654,6 +2720,15 @@ Test Accessories
 Test Setup
 """""""""""
 Connect audio LINE IN cable to audio input port and headphone to audio output port on the HW platform under test.
+Check below table for the details of audio ports used by the test on different platforms.
+
++---------------+-----------------+-----------------+
+| HW Platform   | Audio IN Port   | Audio OUT Port  |
++===============+=================+=================+
+| evmK2G        | J32             | J33             |
++---------------+-----------------+-----------------+
+| evmOMAPL137   | P3              | P5              |
++---------------+-----------------+-----------------+
 
 Test Execution
 """""""""""""""
@@ -2694,8 +2769,8 @@ Test Accessories
 
 Test Setup
 """""""""""
- - Connect LINE IN cables to all the audio input ports on the audio daughter card.
- - Connect headset to all the audio output ports on the audio daughter card.
+ - Connect LINE IN cables to all the audio input ports (J5 to J8) on the audio daughter card.
+ - Connect headsets to all the audio output ports (J9 to J12) on the audio daughter card.
 
 Test Execution
 """"""""""""""""
@@ -2728,8 +2803,8 @@ McSPI Test
 This test verifies reading the industrial input data through McSPI interface.
 Need to provide input to industrial input channels while running the test.
 
-For idkAM572x, idkAM574x and idkAM571x, this test expects pins to be
-connected to the Industrial I/O header. The Industrial I/O header, J37,
+Except for iceAMIC110, this test expects pins to be
+connected to the Industrial I/O header. The Industrial I/O header,
 has two columns in parallel, one of which is the McSPI input and the
 other being VDD. Thus, connecting any row with a jumper will yield a '1'
 read on that McSPI input. By connecting the first, second, third, and
@@ -2743,6 +2818,20 @@ Wires to short pins on industrial I/O header.
 Test Setup
 """""""""""
 Short the rows on industrial I/O header.
+Check below table for the details of industrial IO header used by the test on different platforms.
+
++---------------+-----------------------+
+| HW Platform   | Industrial I/O Header |
++===============+=======================+
+| idkAM571x     | J37                   |
++---------------+-----------------------+
+| idkAM572x     | J37                   |
++---------------+-----------------------+
+| idkAM574x     | J37                   |
++---------------+-----------------------+
+| idkAM437x     | J1                    |
++---------------+-----------------------+
+
 
 Test Execution
 """""""""""""""
@@ -3072,6 +3161,9 @@ This test verifies the two-lane PCIe ports on the AM65x IDK kit.
 Two AM65x IDK kits are required to run this test. 
 Both the boards should be equipped with SD cards having the same diagnostic test binaries.
 
+.. note::
+   Current version of test is exercising only one lane of the 2-lane PCIe card.
+
 Test Accessories
 """""""""""""""""
  - Two AM65x IDK kits
@@ -3236,7 +3328,7 @@ duty cycles on the HW platform under test.
 
 Test Accessories
 """""""""""""""""
-No additional accessories are required for running this test.
+Oscilloscope to confirm the PWM output
 
 Test Setup
 """""""""""
@@ -3246,6 +3338,21 @@ Test Execution
 """"""""""""""""
  - Select the menu option to run ‘pwm_TEST’
  - Verify the test log on serial console
+ - Verify the PWM output to cofirm the duty cycle generated by the test
+
+Refer below table for the PWM output signals generated by the test on different platforms
+
++---------------+-----------------+
+| HW Platform   | PWM Output Pin  |
++===============+=================+
+| evmK2G        | J12 pin 33      |
++---------------+-----------------+
+| evmAM572x     | P17 pin 5       |
++---------------+-----------------+
+| idkAM437x     | J16 pin 14      |
++---------------+-----------------+
+| evmAM335x     | J5 pin 13       |
++---------------+-----------------+
  
 Test Log
 """""""""
@@ -3353,14 +3460,22 @@ RS485 UART Test
 This test verifies RS485 interface on platform under test.
 RS485 interface is connected to PRU-ICSS port of the SoC. 
 Test outputs a test string through RS485 UART interface and receives user input as confirmation.
+Test is executed on two boards for AM57xx IDK platforms. 
+RS485 to RS232 USB cable is used on AM65x IDK platform to run the test.
 
 Test Accessories
 """""""""""""""""
-RS485 to RS232 USB cable
+Cable to connect RS485 ports on two boards (AM57x IDK)
+RS485 to RS232 USB cable (AM65x IDK)
 
 Test Setup
 """""""""""
- - Connect RS485 to RS232 USB cable between RS485 UART port of the board and host PC
+idkAM571x/idkAM572x:
+ - Connect RS485 UART header (J39) between two boards
+
+| 
+am65x_idk:
+ - Connect RS485 to RS232 USB cable between RS485 UART port of the board and host PC.
  - Setup serial console application on host PC with below configurations
  :: 
 
@@ -3372,13 +3487,19 @@ Test Setup
 
 Test Execution
 """""""""""""""
+idkAM571x/idkAM572x:
+ - Select the menu option to run ‘rs485_TEST’
+ - Follow the instructions on serial console to send data from one board and receive on another board
+ - Verify the test log on serial console
+| 
+am65x_idk:
  - Select the menu option to run ‘rs485_TEST’
  - Verify the test log on serial console
  - Confirm the test result on RS485 UART console
  
 Test Log
 """""""""""
-Sample log for RS485 UART test is shown below
+Sample log for RS485 UART test (am65xx_idk) is shown below
 
 Main test console log
 ::
@@ -3569,7 +3690,7 @@ Sample UART test log is shown below
 
 UART2USB Test
 ^^^^^^^^^^^^^^
-This test verifies the UART to USB serial port interface on the HW platform under test. 
+This test verifies the UART to USB serial port interface on K2G EVM. 
 
 Test Accessories
 """""""""""""""""
@@ -3577,7 +3698,7 @@ mini USB cable
 
 Test Setup
 """""""""""
- - Connect the UART serial cable between the board and host PC
+ - Connect the UART serial cable between the board (J23) and host PC
  - Setup serial console application on host PC with below configurations
  :: 
 
@@ -3631,7 +3752,16 @@ USB cable
 
 Test Setup
 """""""""""
-Connect USB device port of the board to host PC
+Connect USB device port of the board to host PC.
+Check below table for the details of USB device port used by the test on different platforms.
+
++---------------+-----------------+
+| HW Platform   | USB Device Port |
++===============+=================+
+| am65xx_evm    | J3 on CP board  |
++---------------+-----------------+
+| am65xx_idk    | J3 on CP board  |
++---------------+-----------------+
 
 Test Execution
 """""""""""""""
@@ -3670,20 +3800,33 @@ USB interface operates at high-speed (USB 2.0) during the test.
 
 Test Accessories
 """""""""""""""""
-USB pen drive
+USB OTG pen drive or normal USB pen drive with OTG cable
 
 Test Setup
 """""""""""
 Connect USB pen drive to host port of the board.
+Check below table for the details of USB host port used by the test on different platforms.
+
++---------------+-----------------+
+| HW Platform   | USB Host Port   |
++===============+=================+
+| am65xx_evm    | J3 on CP board  |
++---------------+-----------------+
+| am65xx_idk    | J3 on CP board. |
+|               | J13 on SerDes   |
+|               | board           |
++---------------+-----------------+
 
 Test Execution
 """""""""""""""
  - Select the menu option to run ‘usbHost_TEST’
+ - Test supports USB host port on CP board and SerDes board on AM65x IDK platform. 
+   Choose the board under test in the serial console while running the test on am65xx_idk
  - Verify the test log on serial console
  
 Test Log
 """""""""""
-Sample log for USB host test is shown below
+Sample log for USB host test on am65xx_evm is shown below
 
 ::
 
@@ -3701,6 +3844,2773 @@ Sample log for USB host test is shown below
     Data verified successfully
 
     USB Host test Passed
+
+| 
+
+Sample log for USB host test on am65xx_idk CP board is shown below
+
+::
+
+    *************************************************
+    *                  USB Host Test                *
+    *************************************************
+
+    USB Host MSC example!!
+
+    Select the options below on which application has to be run
+
+    1.CP board
+    2.Serdes Board
+    1
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+    USB Host test Passed
+
+| 
+
+Sample log for USB host test on am65xx_idk SerDes board is shown below
+
+::
+
+    *************************************************
+    *                  USB Host Test                *
+    *************************************************
+
+    USB Host MSC example!!
+
+    Select the options below on which application has to be run
+
+    1.CP board
+    2.Serdes Board
+    2
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+    USB Host test Passed
+
+| 
+
+Stress Tests
+-----------------
+This section describes the test procedure and setup for diagnostic stress tests.
+Stress test execution is done based on the type of interface as listed below
+ - Memory interfaces: Whole memory is accessed during stress test
+ - Communication interfaces (Ethernet, UART etc): Bulk data is sent during the stress test
+ - Control interfaces (On-board I2C, SPI, GPIO control interfaces): Functional test is repeated for 100 iterations 
+
+User confirmation for pass/fail status is disabled during the stress test.
+
+Enter the character 'b' to break the stress test before it completes 100 iterations for control interfaces. 
+There is no option to break the stress test before completion in case of memory and communication interfaces.
+
+Only partial logs are provided for stress tests for better readability.
+
+Boot EEPROM Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^^^
+This test verifies Boot EEPROM memory. All the pages of the EEPROM are written with
+a test pattern and read back for data verification.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+Make sure pins 2-3 of J44 and J45 headers on AM65x CP board are shorted
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘bootEepromStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for boot EEPROM stress test is shown below
+
+::
+
+    *******************************************
+    *           Boot EEPROM Stress Test       *
+    *******************************************
+
+    Verifying the Boot EEPROM interface under stress conditions...
+
+    Verifying the page number - 0
+
+    Verifying the page number - 1
+
+    Verifying the page number - 2
+
+    Verifying the page number - 3
+
+    Verifying the page number - 4
+
+    Verifying the page number - 5
+
+    Verifying the page number - 6
+
+    Verifying the page number - 7
+
+    Verifying the page number - 8
+
+    Verifying the page number - 9
+
+    Verifying the page number - 10
+
+    Verifying the page number - 11
+
+    Verifying the page number - 12
+
+    Verifying the page number - 13
+
+    Verifying the page number - 14
+
+    Verifying the page number - 15
+
+    Verifying the page number - 16
+
+    Verifying the page number - 17
+
+    Verifying the page number - 18
+
+    Verifying the page number - 19
+
+    Verifying the page number - 20
+
+    ...
+    ...
+    ...
+
+    Verifying the page number - 500
+
+    Verifying the page number - 501
+
+    Verifying the page number - 502
+
+    Verifying the page number - 503
+
+    Verifying the page number - 504
+
+    Verifying the page number - 505
+
+    Verifying the page number - 506
+
+    Verifying the page number - 507
+
+    Verifying the page number - 508
+
+    Verifying the page number - 509
+
+    Verifying the page number - 510
+
+    Verifying the page number - 511
+
+    Boot EEPROM memory verification Successful under stress conditions
+
+    Clearing the Boot EEPROM pages used for testing...
+
+    Clearing the Boot EEPROM pages successful...
+
+| 
+
+Current Monitor Stress Test 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Test reads the voltage and current values from different current monitor devices available on the board.
+All the current monitor devices available on the board are verified during the test.
+Test is repeated for 100 iterations.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+For iceK2G, this test expects J16 and J17 to be connected with jumper
+shunts. This enables the current monitors to be used.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘currentMonitorStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for current monitor stress test is shown below
+
+::
+
+    **********************************************
+    *            Current Monitor Test            *
+    **********************************************
+
+
+    Running Current Monitor Test in Stress Mode for 100 Number of Times...
+
+
+    Verifying Device VDD_CORE at Address - 0x40
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1003mV
+    Reading the Power register...
+    Power = 915mW
+    Reading the Current register...
+    Current = 11mA
+
+
+    Verifying Device VDD_MCU at Address - 0x41
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 4mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 998mV
+    Reading the Power register...
+    Power = 21282mW
+    Reading the Current register...
+    Current = 425mA
+
+
+    Verifying Device VDD_MPU at Address - 0x42
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1002mV
+    Reading the Power register...
+    Power = 503mW
+    Reading the Current register...
+    Current = 7mA
+
+
+    Verifying Device SoC_DVDD3V3 at Address - 0x43
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 3338mV
+    Reading the Power register...
+    Power = 2670mW
+    Reading the Current register...
+    Current = 18mA
+
+
+    Verifying Device SoC_DVDD1V8 at Address - 0x44
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1800mV
+    Reading the Power register...
+    Power = 3204mW
+    Reading the Current register...
+    Current = 26mA
+
+
+    Verifying Device SoC_AVDD1V8 at Address - 0x45
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 3mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1797mV
+    Reading the Power register...
+    Power = 15713mW
+    Reading the Current register...
+    Current = 70mA
+
+
+    Verifying Device SoC_VDDS_DDR at Address - 0x46
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1197mV
+    Reading the Power register...
+    Power = 1388mW
+    Reading the Current register...
+    Current = 66mA
+
+
+    Verifying Device VDD_DDR at Address - 0x47
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1198mV
+    Reading the Power register...
+    Power = 689mW
+    Reading the Current register...
+    Current = 10mA
+
+
+
+
+    Iteration : 1 Current Monitor Test Passed
+
+    ...
+    ...
+    ...
+
+
+    Verifying Device VDD_CORE at Address - 0x40
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1003mV
+    Reading the Power register...
+    Power = 915mW
+    Reading the Current register...
+    Current = 12mA
+
+
+    Verifying Device VDD_MCU at Address - 0x41
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 4mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 998mV
+    Reading the Power register...
+    Power = 21282mW
+    Reading the Current register...
+    Current = 425mA
+
+
+    Verifying Device VDD_MPU at Address - 0x42
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1002mV
+    Reading the Power register...
+    Power = 503mW
+    Reading the Current register...
+    Current = 7mA
+
+
+    Verifying Device SoC_DVDD3V3 at Address - 0x43
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 3337mV
+    Reading the Power register...
+    Power = 2860mW
+    Reading the Current register...
+    Current = 18mA
+
+
+    Verifying Device SoC_DVDD1V8 at Address - 0x44
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1800mV
+    Reading the Power register...
+    Power = 3204mW
+    Reading the Current register...
+    Current = 26mA
+
+
+    Verifying Device SoC_AVDD1V8 at Address - 0x45
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 3mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1797mV
+    Reading the Power register...
+    Power = 15789mW
+    Reading the Current register...
+    Current = 70mA
+
+
+    Verifying Device SoC_VDDS_DDR at Address - 0x46
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1198mV
+    Reading the Power register...
+    Power = 1388mW
+    Reading the Current register...
+    Current = 66mA
+
+
+    Verifying Device VDD_DDR at Address - 0x47
+    Setting the configuration register...
+    Setting the calibration register...
+    Reading the Shunt Voltage register...
+    Shunt Voltage = 0mV
+    Reading the Bus Voltage register...
+    Bus Voltage = 1198mV
+    Reading the Power register...
+    Power = 689mW
+    Reading the Current register...
+    Current = 10mA
+
+
+
+
+    Iteration : 100 Current Monitor Test Passed
+
+
+    Current Monitor Stress Test Status
+    ===================================
+    Number of Times Executed - 100
+    Pass Count - 100
+    Fail Count - 0
+    Overall Status - PASS
+
+| 
+
+EMAC Stress Test
+^^^^^^^^^^^^^^^^^
+This test verifies the EMAC Ethernet port on HW platform under test.
+Ethernet link and data transmit/receive are verified during this test.
+Ethernet interface is configured for 100mbps speed and 10240 packets are sent/received during the test.
+
+Test Accessories
+""""""""""""""""""
+Ethernet loopback cables/plugs
+
+Test Setup
+"""""""""""
+Refer `EMAC Test Setup <Board_EVM_Abstration.html#id40>`_ section for more details
+
+Test Execution
+""""""""""""""""
+ - Select the menu option to run ‘emacStress_TEST’
+ - Verify the test log on serial console
+
+ 
+Test Log
+"""""""""
+
+Sample log for Ethernet stress test is shown below
+
+::
+
+    ************************************************
+    *      ETHERNET LOOPBACK STRESS Test           *
+    ************************************************
+
+
+    Reading Ethernet PHY Register Dump...
+    Register Dump for PHY Addr - 0x0000
+    PHY Register 0x0000 - 0x1140
+    PHY Register 0x0001 - 0x7949
+    PHY Register 0x0002 - 0x2000
+    PHY Register 0x0003 - 0xa231
+    PHY Register 0x0004 - 0x01e1
+    PHY Register 0x0005 - 0xc1e1
+    PHY Register 0x0006 - 0x006f
+    PHY Register 0x0007 - 0x2001
+    PHY Register 0x0008 - 0x4806
+    PHY Register 0x0009 - 0x0300
+    PHY Register 0x000a - 0x0c00
+    PHY Register 0x000b - 0x0000
+    PHY Register 0x000c - 0x0000
+    PHY Register 0x000d - 0x401f
+    PHY Register 0x000e - 0x0006
+    PHY Register 0x000f - 0x3000
+    PHY Register(STRAP1) 0x006e - 0x0000
+    PHY Register(STRAP2) 0x006f - 0x0000
+    RGMII Control Register (RGMIICTL) Value - 0x00d3
+      --- RGMII_RX_CLK_DELAY - 0x0001
+      --- RGMII_TX_CLK_DELAY - 0x0001
+    RGMII Delay Control Register (RGMIIDCTL) Value - 0x0077
+    EMAC loopback test application initialization
+    main: emac_open success
+    Configuring Phy
+    Waiting for Link Status
+    Link is UP!!
+
+    Sending Packet: 1
+    Received Packet: 1
+    Sending Packet: 2
+    Received Packet: 2
+    Sending Packet: 3
+    Received Packet: 3
+    Sending Packet: 4
+    Received Packet: 4
+    Sending Packet: 5
+    Received Packet: 5
+    Sending Packet: 6
+    Received Packet: 6
+    Sending Packet: 7
+    Received Packet: 7
+    Sending Packet: 8
+    Received Packet: 8
+    Sending Packet: 9
+    Received Packet: 9
+    Sending Packet: 10
+    Received Packet: 10
+    Sending Packet: 11
+    Received Packet: 11
+    Sending Packet: 12
+    Received Packet: 12
+    Sending Packet: 13
+    Received Packet: 13
+    Sending Packet: 14
+    Received Packet: 14
+    Sending Packet: 15
+    Received Packet: 15
+    Sending Packet: 16
+    Received Packet: 16
+    Sending Packet: 17
+    Received Packet: 17
+    Sending Packet: 18
+    Received Packet: 18
+    Sending Packet: 19
+    Received Packet: 19
+    Sending Packet: 20
+    Received Packet: 20
+    Sending Packet: 21
+    Received Packet: 21
+    Sending Packet: 22
+    Received Packet: 22
+    Sending Packet: 23
+    Received Packet: 23
+    Sending Packet: 24
+    Received Packet: 24
+    Sending Packet: 25
+    Received Packet: 25
+    Sending Packet: 26
+    Received Packet: 26
+    Sending Packet: 27
+    Received Packet: 27
+    Sending Packet: 28
+    Received Packet: 28
+    Sending Packet: 29
+    Received Packet: 29
+    Sending Packet: 30
+    Received Packet: 30
+    Sending Packet: 31
+    Received Packet: 31
+    Sending Packet: 32
+    Received Packet: 32
+    Sending Packet: 33
+    Received Packet: 33
+    Sending Packet: 34
+    Received Packet: 34
+    Sending Packet: 35
+    Received Packet: 35
+    Sending Packet: 36
+    Received Packet: 36
+    Sending Packet: 37
+    Received Packet: 37
+    Sending Packet: 38
+    Received Packet: 38
+    Sending Packet: 39
+    Received Packet: 39
+    Sending Packet: 40
+    Received Packet: 40
+    Sending Packet: 41
+    Received Packet: 41
+    Sending Packet: 42
+    Received Packet: 42
+    Sending Packet: 43
+    Received Packet: 43
+    Sending Packet: 44
+    Received Packet: 44
+    Sending Packet: 45
+    Received Packet: 45
+    Sending Packet: 46
+    Received Packet: 46
+    Sending Packet: 47
+    Received Packet: 47
+    Sending Packet: 48
+    Received Packet: 48
+    Sending Packet: 49
+    Received Packet: 49
+    Sending Packet: 50
+    Received Packet: 50
+    Sending Packet: 51
+    Received Packet: 51
+    Sending Packet: 52
+    Received Packet: 52
+    Sending Packet: 53
+    Received Packet: 53
+    Sending Packet: 54
+    Received Packet: 54
+    Sending Packet: 55
+    Received Packet: 55
+    Sending Packet: 56
+    Received Packet: 56
+    Sending Packet: 57
+    Received Packet: 57
+    Sending Packet: 58
+    Received Packet: 58
+    Sending Packet: 59
+    Received Packet: 59
+    Sending Packet: 60
+    Received Packet: 60
+    Sending Packet: 61
+    Received Packet: 61
+    Sending Packet: 62
+    Received Packet: 62
+    Sending Packet: 63
+    Received Packet: 63
+    Sending Packet: 64
+    Received Packet: 64
+
+    ...
+    ...
+    ...
+
+    Sending Packet: 10200
+    Received Packet: 10200
+    Sending Packet: 10201
+    Received Packet: 10201
+    Sending Packet: 10202
+    Received Packet: 10202
+    Sending Packet: 10203
+    Received Packet: 10203
+    Sending Packet: 10204
+    Received Packet: 10204
+    Sending Packet: 10205
+    Received Packet: 10205
+    Sending Packet: 10206
+    Received Packet: 10206
+    Sending Packet: 10207
+    Received Packet: 10207
+    Sending Packet: 10208
+    Received Packet: 10208
+    Sending Packet: 10209
+    Received Packet: 10209
+    Sending Packet: 10210
+    Received Packet: 10210
+    Sending Packet: 10211
+    Received Packet: 10211
+    Sending Packet: 10212
+    Received Packet: 10212
+    Sending Packet: 10213
+    Received Packet: 10213
+    Sending Packet: 10214
+    Received Packet: 10214
+    Sending Packet: 10215
+    Received Packet: 10215
+    Sending Packet: 10216
+    Received Packet: 10216
+    Sending Packet: 10217
+    Received Packet: 10217
+    Sending Packet: 10218
+    Received Packet: 10218
+    Sending Packet: 10219
+    Received Packet: 10219
+    Sending Packet: 10220
+    Received Packet: 10220
+    Sending Packet: 10221
+    Received Packet: 10221
+    Sending Packet: 10222
+    Received Packet: 10222
+    Sending Packet: 10223
+    Received Packet: 10223
+    Sending Packet: 10224
+    Received Packet: 10224
+    Sending Packet: 10225
+    Received Packet: 10225
+    Sending Packet: 10226
+    Received Packet: 10226
+    Sending Packet: 10227
+    Received Packet: 10227
+    Sending Packet: 10228
+    Received Packet: 10228
+    Sending Packet: 10229
+    Received Packet: 10229
+    Sending Packet: 10230
+    Received Packet: 10230
+    Sending Packet: 10231
+    Received Packet: 10231
+    Sending Packet: 10232
+    Received Packet: 10232
+    Sending Packet: 10233
+    Received Packet: 10233
+    Sending Packet: 10234
+    Received Packet: 10234
+    Sending Packet: 10235
+    Received Packet: 10235
+    Sending Packet: 10236
+    Received Packet: 10236
+    Sending Packet: 10237
+    Received Packet: 10237
+    Sending Packet: 10238
+    Received Packet: 10238
+    Sending Packet: 10239
+    Received Packet: 10239
+    Sending Packet: 10240
+    Received Packet: 10240
+
+    Packets sent: 10240, Packets received: 10240
+
+    Ethernet Loopback test passed
+    All tests completed
+
+| 
+
+eMMC Stress Test
+^^^^^^^^^^^^^^^^
+This test verifies eMMC memory interface on the HW platform under test.
+Whole memory of eMMC is written and read during the test.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘emmcStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for eMMC stress test is shown below
+
+::
+
+    *********************************************
+    *                 eMMC Stress Test            *
+    ***********************************************
+
+    PASS: Read/Write Success for this block-0x300000
+
+    PASS: Read/Write Success for this block-0x301000
+
+    PASS: Read/Write Success for this block-0x302000
+
+    PASS: Read/Write Success for this block-0x303000
+
+    PASS: Read/Write Success for this block-0x304000
+
+    PASS: Read/Write Success for this block-0x305000
+
+    PASS: Read/Write Success for this block-0x306000
+
+    PASS: Read/Write Success for this block-0x307000
+
+    PASS: Read/Write Success for this block-0x308000
+
+    PASS: Read/Write Success for this block-0x309000
+
+    PASS: Read/Write Success for this block-0x30a000
+
+    PASS: Read/Write Success for this block-0x30b000
+
+    PASS: Read/Write Success for this block-0x30c000
+
+    PASS: Read/Write Success for this block-0x30d000
+
+    PASS: Read/Write Success for this block-0x30e000
+
+    PASS: Read/Write Success for this block-0x30f000
+
+    ...
+    ...
+    ...
+
+    PASS: Read/Write Success for this block-0x1d55000
+
+    PASS: Read/Write Success for this block-0x1d56000
+
+    PASS: Read/Write Success for this block-0x1d57000
+
+    PASS: Read/Write Success for this block-0x1d58000
+
+    PASS: Read/Write Success for this block-0x1d59000
+
+    PASS: Read/Write Success for this block-0x1d5a000
+
+    PASS: Read/Write Success for this block-0x1d5b000
+
+    PASS: Read/Write Success for this pattern
+| 
+
+External RTC Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This test verifies setting the time, date and running the clock for on-board RTC interface.
+RTC configuration is done through I2C interface. Time and date are read for 100 times for every 5secs
+during the test to demonstrate operation of the RTC clock.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘extRtcStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for external RTC stress test is shown below
+
+::
+
+    *********************************************
+    *                 RTC Test                  *
+    *********************************************
+    Running RTC Test in Stress Mode for 100 Number of Times...
+    Enter 'b' in Serial Console to Terminate the Test
+
+
+    Running RTC Test...
+
+    Setting Time... 
+
+    Setting Date... 
+
+    Reading Time... 
+
+    Reading Date... 
+
+
+    Displaying time: 11:59:53 PM
+    Displaying  Day: Sunday
+    Displaying Date: 31/12/18
+
+    Displaying time: 11:59:57 PM
+    Displaying  Day: Sunday
+    Displaying Date: 31/12/18
+
+    Displaying time: 12:0:2 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:7 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:12 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:17 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+    If the time and date increment, press 'y' to indicate pass or any other character to indicate failure
+
+
+    Iteration : 1 RTC Test Passed
+
+    Running RTC Test...
+
+    Setting Time... 
+
+    Setting Date... 
+
+    Reading Time... 
+
+    Reading Date... 
+
+
+    Displaying time: 11:59:53 PM
+    Displaying  Day: Sunday
+    Displaying Date: 31/12/18
+
+    Displaying time: 11:59:58 PM
+    Displaying  Day: Sunday
+    Displaying Date: 31/12/18
+
+    Displaying time: 12:0:3 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:8 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:14 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:19 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+    If the time and date increment, press 'y' to indicate pass or any other character to indicate failure
+
+
+    Iteration : 2 RTC Test Passed
+
+    ...
+    ...
+    ...
+
+    Running RTC Test...
+
+    Setting Time... 
+
+    Setting Date... 
+
+    Reading Time... 
+
+    Reading Date... 
+
+
+    Displaying time: 11:59:53 PM
+    Displaying  Day: Sunday
+    Displaying Date: 31/12/18
+
+    Displaying time: 11:59:58 PM
+    Displaying  Day: Sunday
+    Displaying Date: 31/12/18
+
+    Displaying time: 12:0:3 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:8 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:13 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+
+    Displaying time: 12:0:18 AM
+    Displaying  Day: Monday
+    Displaying Date: 1/1/19
+    If the time and date increment, press 'y' to indicate pass or any other character to indicate failure
+
+
+    Iteration : 100 RTC Test Passed
+    RTC Stress Test Status
+    ===================================
+    Number of Times Executed - 100
+    Pass Count - 100
+    Fail Count - 0
+    Overall Status - PASS
+
+    RTC Test Passed
+
+| 
+
+ICSSG EMAC Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^
+This port to port Ethernet test verifies the PRU-ICSS gigabit Ethernet interface on the board under test. 
+During the test, Ethernet interface is configured for 1000mbps speed with one port of an ICSS instance 
+is connected to another port. 10240 packets are sent from one port and received by another port. 
+Both the ports are verified for transmit and receive. All the ICSSG EMAC ports available on the board
+verified during the test. 
+
+Test Accessories
+""""""""""""""""""
+Ethernet cables
+
+Test Setup
+""""""""""""
+Refer `ICSSG EMAC Test Setup <Board_EVM_Abstration.html#id68>`_ section for more details
+
+Test Execution
+""""""""""""""""
+ - Select the menu option to run ‘icssgEmacStress_TEST’
+ - Verify the test log on serial console
+
+ 
+Test Log
+""""""""""
+
+Sample log for ICSGG Ethernet stress test is shown below
+
+::
+
+    **********************************************
+    *           ICSSG EMAC STRESS TEST           *
+    **********************************************
+
+
+    Performing UDMA driver init...
+
+
+    Reading Ethernet PHY Register Dump...
+
+
+    Register Dump for PHY Addr - 0x0000
+    PHY Register 0x0000 - 0x1140
+    PHY Register 0x0001 - 0x796d
+    PHY Register 0x0002 - 0x2000
+    PHY Register 0x0003 - 0xa231
+    PHY Register 0x0004 - 0x01e1
+    PHY Register 0x0005 - 0xc1e1
+    PHY Register 0x0006 - 0x006f
+    PHY Register 0x0007 - 0x2001
+    PHY Register 0x0008 - 0x4806
+    PHY Register 0x0009 - 0x1b00
+    PHY Register 0x000a - 0x7c00
+    PHY Register 0x000b - 0x0000
+    PHY Register 0x000c - 0x0000
+    PHY Register 0x000d - 0x401f
+    PHY Register 0x000e - 0x0006
+    PHY Register 0x000f - 0x3000
+    PHY Configuration Register(CFG4) 0x0031 - 0xbf02
+    PHY Register(STRAP1) 0x006e - 0x0000
+    PHY Register(STRAP2) 0x006f - 0x0000
+    RGMII Control Register (RGMIICTL) Value - 0x00d3
+      --- RGMII_RX_CLK_DELAY - 0x0001
+      --- RGMII_TX_CLK_DELAY - 0x0001
+    RGMII Delay Control Register (RGMIIDCTL) Value - 0x0077
+
+
+    Register Dump for PHY Addr - 0x0003
+    PHY Register 0x0000 - 0x1140
+    PHY Register 0x0001 - 0x796d
+    PHY Register 0x0002 - 0x2000
+    PHY Register 0x0003 - 0xa231
+    PHY Register 0x0004 - 0x01e1
+    PHY Register 0x0005 - 0xc1e1
+    PHY Register 0x0006 - 0x006f
+    PHY Register 0x0007 - 0x2001
+    PHY Register 0x0008 - 0x4806
+    PHY Register 0x0009 - 0x1300
+    PHY Register 0x000a - 0x3c00
+    PHY Register 0x000b - 0x0000
+    PHY Register 0x000c - 0x0000
+    PHY Register 0x000d - 0x401f
+    PHY Register 0x000e - 0x0006
+    PHY Register 0x000f - 0x3000
+    PHY Configuration Register(CFG4) 0x0031 - 0xbd02
+    PHY Register(STRAP1) 0x006e - 0x0003
+    PHY Register(STRAP2) 0x006f - 0x0000
+    RGMII Control Register (RGMIICTL) Value - 0x00d3
+      --- RGMII_RX_CLK_DELAY - 0x0001
+      --- RGMII_TX_CLK_DELAY - 0x0001
+    RGMII Delay Control Register (RGMIIDCTL) Value - 0x0077
+
+
+    Register Dump for PHY Addr - 0x0000
+    PHY Register 0x0000 - 0x1140
+    PHY Register 0x0001 - 0x796d
+    PHY Register 0x0002 - 0x2000
+    PHY Register 0x0003 - 0xa231
+    PHY Register 0x0004 - 0x01e1
+    PHY Register 0x0005 - 0xc1e1
+    PHY Register 0x0006 - 0x006f
+    PHY Register 0x0007 - 0x2001
+    PHY Register 0x0008 - 0x4806
+    PHY Register 0x0009 - 0x1b00
+    PHY Register 0x000a - 0x3c00
+    PHY Register 0x000b - 0x0000
+    PHY Register 0x000c - 0x0000
+    PHY Register 0x000d - 0x401f
+    PHY Register 0x000e - 0x0006
+    PHY Register 0x000f - 0x3000
+    PHY Configuration Register(CFG4) 0x0031 - 0xbd02
+    PHY Register(STRAP1) 0x006e - 0x0000
+    PHY Register(STRAP2) 0x006f - 0x0000
+    RGMII Control Register (RGMIICTL) Value - 0x00d3
+      --- RGMII_RX_CLK_DELAY - 0x0001
+      --- RGMII_TX_CLK_DELAY - 0x0001
+    RGMII Delay Control Register (RGMIIDCTL) Value - 0x0077
+
+
+    Register Dump for PHY Addr - 0x0003
+    PHY Register 0x0000 - 0x1140
+    PHY Register 0x0001 - 0x796d
+    PHY Register 0x0002 - 0x2000
+    PHY Register 0x0003 - 0xa231
+    PHY Register 0x0004 - 0x01e1
+    PHY Register 0x0005 - 0xc1e1
+    PHY Register 0x0006 - 0x006f
+    PHY Register 0x0007 - 0x2001
+    PHY Register 0x0008 - 0x4806
+    PHY Register 0x0009 - 0x1300
+    PHY Register 0x000a - 0x3c00
+    PHY Register 0x000b - 0x0000
+    PHY Register 0x000c - 0x0000
+    PHY Register 0x000d - 0x401f
+    PHY Register 0x000e - 0x0006
+    PHY Register 0x000f - 0x3000
+    PHY Configuration Register(CFG4) 0x0031 - 0xbe02
+    PHY Register(STRAP1) 0x006e - 0x0003
+    PHY Register(STRAP2) 0x006f - 0x0000
+    RGMII Control Register (RGMIICTL) Value - 0x00d3
+      --- RGMII_RX_CLK_DELAY - 0x0001
+      --- RGMII_TX_CLK_DELAY - 0x0001
+    RGMII Delay Control Register (RGMIIDCTL) Value - 0x0077
+
+
+    Register Dump for PHY Addr - 0x0000
+    PHY Register 0x0000 - 0x1140
+    PHY Register 0x0001 - 0x796d
+    PHY Register 0x0002 - 0x2000
+    PHY Register 0x0003 - 0xa231
+    PHY Register 0x0004 - 0x01e1
+    PHY Register 0x0005 - 0xc1e1
+    PHY Register 0x0006 - 0x006f
+    PHY Register 0x0007 - 0x2001
+    PHY Register 0x0008 - 0x4806
+    PHY Register 0x0009 - 0x1b00
+    PHY Register 0x000a - 0x7c00
+    PHY Register 0x000b - 0x0000
+    PHY Register 0x000c - 0x0000
+    PHY Register 0x000d - 0x401f
+    PHY Register 0x000e - 0x0006
+    PHY Register 0x000f - 0x3000
+    PHY Configuration Register(CFG4) 0x0031 - 0xbc02
+    PHY Register(STRAP1) 0x006e - 0x0000
+    PHY Register(STRAP2) 0x006f - 0x0000
+    RGMII Control Register (RGMIICTL) Value - 0x00d3
+      --- RGMII_RX_CLK_DELAY - 0x0001
+      --- RGMII_TX_CLK_DELAY - 0x0001
+    RGMII Delay Control Register (RGMIIDCTL) Value - 0x0077
+
+
+    Register Dump for PHY Addr - 0x0003
+    PHY Register 0x0000 - 0x1140
+    PHY Register 0x0001 - 0x796d
+    PHY Register 0x0002 - 0x2000
+    PHY Register 0x0003 - 0xa231
+    PHY Register 0x0004 - 0x01e1
+    PHY Register 0x0005 - 0xc1e1
+    PHY Register 0x0006 - 0x006f
+    PHY Register 0x0007 - 0x2001
+    PHY Register 0x0008 - 0x4806
+    PHY Register 0x0009 - 0x1300
+    PHY Register 0x000a - 0x3c00
+    PHY Register 0x000b - 0x0000
+    PHY Register 0x000c - 0x0000
+    PHY Register 0x000d - 0x401f
+    PHY Register 0x000e - 0x0006
+    PHY Register 0x000f - 0x3000
+    PHY Configuration Register(CFG4) 0x0031 - 0xbc02
+    PHY Register(STRAP1) 0x006e - 0x0003
+    PHY Register(STRAP2) 0x006f - 0x0000
+    RGMII Control Register (RGMIICTL) Value - 0x00d3
+      --- RGMII_RX_CLK_DELAY - 0x0001
+      --- RGMII_TX_CLK_DELAY - 0x0001
+    RGMII Delay Control Register (RGMIIDCTL) Value - 0x0077
+    port 0:  FW is ready
+    Port 0:  Config FW Complete
+    port 1:  FW is ready
+    Port 1:  Config FW Complete
+    port 2:  FW is ready
+    Port 2:  Config FW Complete
+    port 3:  FW is ready
+    Port 3:  Config FW Complete
+    port 4:  FW is ready
+    Port 4:  Config FW Complete
+    port 5:  FW is ready
+    Port 5:  Config FW Complete
+
+    EMAC loopback test application initialization
+    main: emac_open success
+
+
+    Waiting for LINK UP, Make sure to plugin loopback cable
+    PRU_ICSS port 0 LINK IS UP!
+
+    EMAC loopback test application initialization
+    main: emac_open success
+
+
+    Waiting for LINK UP, Make sure to plugin loopback cable
+    PRU_ICSS port 1 LINK IS UP!
+
+    EMAC loopback test application initialization
+    main: emac_open success
+
+
+    Waiting for LINK UP, Make sure to plugin loopback cable
+    PRU_ICSS port 2 LINK IS UP!
+
+    EMAC loopback test application initialization
+    main: emac_open success
+
+
+    Waiting for LINK UP, Make sure to plugin loopback cable
+    PRU_ICSS port 3 LINK IS UP!
+
+    EMAC loopback test application initialization
+    main: emac_open success
+
+
+    Waiting for LINK UP, Make sure to plugin loopback cable
+    PRU_ICSS port 4 LINK IS UP!
+
+    EMAC loopback test application initialization
+    main: emac_open success
+
+
+    Waiting for LINK UP, Make sure to plugin loopback cable
+    PRU_ICSS port 5 LINK IS UP!
+
+
+    Sending Packets on Port - 0
+    Receiving Packets on Port - 1
+
+    Sending Packet: 1
+    Received Packet: 1
+    Sending Packet: 2
+    Received Packet: 2
+    Sending Packet: 3
+    Received Packet: 3
+    Sending Packet: 4
+    Received Packet: 4
+    Sending Packet: 5
+    Received Packet: 5
+    Sending Packet: 6
+    Received Packet: 6
+    Sending Packet: 7
+    Received Packet: 7
+    Sending Packet: 8
+    Received Packet: 8
+    Sending Packet: 9
+    Received Packet: 9
+    Sending Packet: 10
+    Received Packet: 10
+    Sending Packet: 11
+    Received Packet: 11
+    Sending Packet: 12
+    Received Packet: 12
+    Sending Packet: 13
+    Received Packet: 13
+    Sending Packet: 14
+    Received Packet: 14
+    Sending Packet: 15
+    Received Packet: 15
+    Sending Packet: 16
+    Received Packet: 16
+
+    ...
+    ...
+    ...
+
+    Sending Packet: 10236
+    Received Packet: 10236
+    Sending Packet: 10237
+    Received Packet: 10237
+    Sending Packet: 10238
+    Received Packet: 10238
+    Sending Packet: 10239
+    Received Packet: 10239
+    Sending Packet: 10240
+    Received Packet: 10240
+
+    Packets Sent: 10240, Packets Received: 10240
+    Port 0 Send to Port 1 Receive Test Passed!
+
+    Sending Packets on Port - 1
+    Receiving Packets on Port - 0
+    Sending Packet: 1
+    Received Packet: 1
+    Sending Packet: 2
+    Received Packet: 2
+    Sending Packet: 3
+    Received Packet: 3
+    Sending Packet: 4
+    Received Packet: 4
+    Sending Packet: 5
+    Received Packet: 5
+    Sending Packet: 6
+    Received Packet: 6
+    Sending Packet: 7
+    Received Packet: 7
+    Sending Packet: 8
+    Received Packet: 8
+    Sending Packet: 9
+    Received Packet: 9
+    Sending Packet: 10
+    Received Packet: 10
+    Sending Packet: 11
+    Received Packet: 11
+    Sending Packet: 12
+    Received Packet: 12
+    Sending Packet: 13
+    Received Packet: 13
+    Sending Packet: 14
+    Received Packet: 14
+    Sending Packet: 15
+    Received Packet: 15
+    Sending Packet: 16
+    Received Packet: 16
+
+    ...
+    ...
+    ...
+
+    Sending Packet: 10236
+    Received Packet: 10236
+    Sending Packet: 10237
+    Received Packet: 10237
+    Sending Packet: 10238
+    Received Packet: 10238
+    Sending Packet: 10239
+    Received Packet: 10239
+    Sending Packet: 10240
+    Received Packet: 10240
+
+    Packets Sent: 10240, Packets Received: 10240
+    Port 1 Send to Port 0 Receive Test Passed!
+
+    Sending Packets on Port - 2
+    Receiving Packets on Port - 3
+
+    Sending Packet: 1
+    Received Packet: 1
+    Sending Packet: 2
+    Received Packet: 2
+    Sending Packet: 3
+    Received Packet: 3
+    Sending Packet: 4
+    Received Packet: 4
+    Sending Packet: 5
+    Received Packet: 5
+    Sending Packet: 6
+    Received Packet: 6
+    Sending Packet: 7
+    Received Packet: 7
+    Sending Packet: 8
+    Received Packet: 8
+    Sending Packet: 9
+    Received Packet: 9
+    Sending Packet: 10
+    Received Packet: 10
+    Sending Packet: 11
+    Received Packet: 11
+    Sending Packet: 12
+    Received Packet: 12
+    Sending Packet: 13
+    Received Packet: 13
+    Sending Packet: 14
+    Received Packet: 14
+    Sending Packet: 15
+    Received Packet: 15
+    Sending Packet: 16
+    Received Packet: 16
+
+    ...
+    ...
+    ...
+
+    Sending Packet: 10236
+    Received Packet: 10236
+    Sending Packet: 10237
+    Received Packet: 10237
+    Sending Packet: 10238
+    Received Packet: 10238
+    Sending Packet: 10239
+    Received Packet: 10239
+    Sending Packet: 10240
+    Received Packet: 10240
+
+    Packets Sent: 10240, Packets Received: 10240
+    Port 2 Send to Port 3 Receive Test Passed!
+
+    Sending Packets on Port - 3
+    Receiving Packets on Port - 2
+    Sending Packet: 1
+    Received Packet: 1
+    Sending Packet: 2
+    Received Packet: 2
+    Sending Packet: 3
+    Received Packet: 3
+    Sending Packet: 4
+    Received Packet: 4
+    Sending Packet: 5
+    Received Packet: 5
+    Sending Packet: 6
+    Received Packet: 6
+    Sending Packet: 7
+    Received Packet: 7
+    Sending Packet: 8
+    Received Packet: 8
+    Sending Packet: 9
+    Received Packet: 9
+    Sending Packet: 10
+    Received Packet: 10
+    Sending Packet: 11
+    Received Packet: 11
+    Sending Packet: 12
+    Received Packet: 12
+    Sending Packet: 13
+    Received Packet: 13
+    Sending Packet: 14
+    Received Packet: 14
+    Sending Packet: 15
+    Received Packet: 15
+    Sending Packet: 16
+    Received Packet: 16
+
+    ...
+    ...
+    ...
+
+    Sending Packet: 10236
+    Received Packet: 10236
+    Sending Packet: 10237
+    Received Packet: 10237
+    Sending Packet: 10238
+    Received Packet: 10238
+    Sending Packet: 10239
+    Received Packet: 10239
+    Sending Packet: 10240
+    Received Packet: 10240
+
+    Packets Sent: 10240, Packets Received: 10240
+    Port 2 Send to Port 3 Receive Test Passed!
+
+    ...
+    ...
+    ...
+
+    Sending Packets on Port - 5
+    Receiving Packets on Port - 4
+    Sending Packet: 1
+    Received Packet: 1
+    Sending Packet: 2
+    Received Packet: 2
+    Sending Packet: 3
+    Received Packet: 3
+    Sending Packet: 4
+    Received Packet: 4
+    Sending Packet: 5
+    Received Packet: 5
+    Sending Packet: 6
+    Received Packet: 6
+    Sending Packet: 7
+    Received Packet: 7
+    Sending Packet: 8
+    Received Packet: 8
+    Sending Packet: 9
+    Received Packet: 9
+    Sending Packet: 10
+    Received Packet: 10
+    Sending Packet: 11
+    Received Packet: 11
+    Sending Packet: 12
+    Received Packet: 12
+    Sending Packet: 13
+    Received Packet: 13
+    Sending Packet: 14
+    Received Packet: 14
+    Sending Packet: 15
+    Received Packet: 15
+    Sending Packet: 16
+    Received Packet: 16
+
+    ...
+    ...
+    ...
+
+    Sending Packet: 10236
+    Received Packet: 10236
+    Sending Packet: 10237
+    Received Packet: 10237
+    Sending Packet: 10238
+    Received Packet: 10238
+    Sending Packet: 10239
+    Received Packet: 10239
+    Sending Packet: 10240
+    Received Packet: 10240
+
+    Packets Sent: 10240, Packets Received: 10240
+    Port 5 Send to Port 4 Receive Test Passed!
+
+
+    ICSSG Ethernet Port to Port Test Passed!
+    All Tests Completed
+
+| 
+
+ICSS LED Stress Test
+^^^^^^^^^^^^^^^^^^^^^
+This test verifies LEDs connected to PRU-ICSS ports.
+All the LEDs are turned ON and OFF for 3 times during the test. 
+Test is repeated for 100 iterations.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test. 
+
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘icssgLedStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for ICSS LED stress test is shown below
+
+::
+
+    Running ICSSG LED Test in Stress Mode for 100 Number of Times...
+    Enter 'b' in Serial Console to Terminate the Test
+
+
+    ********************************************
+    *              ICSS LED Test               *
+    ********************************************
+
+    Testing ICSSG PRG0 and PRG1 LED's
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 1 ICSSG LED Test Passed
+
+    ********************************************
+    *              ICSS LED Test               *
+    ********************************************
+
+    Testing ICSSG PRG0 and PRG1 LED's
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 2 ICSSG LED Test Passed
+
+    ********************************************
+    *              ICSS LED Test               *
+    ********************************************
+
+    Testing ICSSG PRG0 and PRG1 LED's
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 3 ICSSG LED Test Passed
+
+    ********************************************
+    *              ICSS LED Test               *
+    ********************************************
+
+    Testing ICSSG PRG0 and PRG1 LED's
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 4 ICSSG LED Test Passed
+
+    ********************************************
+    *              ICSS LED Test               *
+    ********************************************
+
+    Testing ICSSG PRG0 and PRG1 LED's
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 5 ICSSG LED Test Passed
+
+    ...
+    ...
+    ...
+
+    ********************************************
+    *              ICSS LED Test               *
+    ********************************************
+
+    Testing ICSSG PRG0 and PRG1 LED's
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 99 ICSSG LED Test Passed
+
+    ********************************************
+    *              ICSS LED Test               *
+    ********************************************
+
+    Testing ICSSG PRG0 and PRG1 LED's
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 100 ICSSG LED Test Passed
+
+
+    ICSSG LED Stress Test Status
+    ===================================
+    Number of Times Executed - 100
+    Pass Count - 100
+    Fail Count - 0
+    Overall Status - PASS
+
+| 
+
+Industrial LED Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This test verifies industrial LEDs connected to I2C interface on the HW platform under test.
+All the LEDs are turned ON and OFF for 3 times during the test.
+Test is repeated for 100 iterations.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘ledIndustrialStress_TEST’
+ - Confirm that all the industrial LEDs on the board are toggling during the test
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for industrial LED stress test is shown below
+
+::
+
+    *********************************************
+    *            Industrial LED Test            *
+    *********************************************
+
+
+    Running Industrial Test in Stress Mode for 100 Number of Times...
+    Enter 'b' in Serial Console to Terminate the Test
+
+
+    Running Industrial Test...
+    Verifying LED's connected to I2C IO Expander slave device...
+
+    Testing Industrial LEDs
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+    Testing Industrial LEDs on AM65xx IDK Board
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 1 Industrial Test Passed
+
+    Running Industrial Test...
+    Verifying LED's connected to I2C IO Expander slave device...
+
+    Testing Industrial LEDs
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+    Testing Industrial LEDs on AM65xx IDK Board
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 2 Industrial Test Passed
+
+    Running Industrial Test...
+    Verifying LED's connected to I2C IO Expander slave device...
+
+    Testing Industrial LEDs
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+    Testing Industrial LEDs on AM65xx IDK Board
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 3 Industrial Test Passed
+
+    Running Industrial Test...
+    Verifying LED's connected to I2C IO Expander slave device...
+
+    Testing Industrial LEDs
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+    Testing Industrial LEDs on AM65xx IDK Board
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 4 Industrial Test Passed
+
+    ...
+    ...
+    ...
+
+    Running Industrial Test...
+    Verifying LED's connected to I2C IO Expander slave device...
+
+    Testing Industrial LEDs
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+    Testing Industrial LEDs on AM65xx IDK Board
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 99 Industrial Test Passed
+
+    Running Industrial Test...
+    Verifying LED's connected to I2C IO Expander slave device...
+
+    Testing Industrial LEDs
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+    Testing Industrial LEDs on AM65xx IDK Board
+    Cycling LEDs 3 times
+    Press 'y' to verify pass, 'r' to cycle leds again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 100 Industrial Test Passed
+
+    Industrial Stress Test Status
+    ===================================
+    Number of Times Executed - 100
+    Pass Count - 100
+    Fail Count - 0
+    Overall Status - PASS
+
+| 
+
+LED Stress Test
+^^^^^^^^^^^^^^^^
+This test verifies general purpose user LEDs on the HW platform under test.
+All the LEDs are turned ON and OFF for 3 times during the test.
+Test is repeated for 100 iterations.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘ledStress_TEST’
+ - Confirm that all the general purpose user LEDs on the board are toggling during the test
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for LED stress test is shown below
+
+::
+
+    Running LED Test in Stress Mode for 100 Number of Times...
+    Enter 'b' in Serial Console to Terminate the Test
+
+
+    *********************************************
+    *                 LED Test                  *
+    *********************************************
+
+    Testing LED
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 1 LED Test Passed
+
+    *********************************************
+    *                 LED Test                  *
+    *********************************************
+
+    Testing LED
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 2 LED Test Passed
+
+    *********************************************
+    *                 LED Test                  *
+    *********************************************
+
+    Testing LED
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 3 LED Test Passed
+
+    *********************************************
+    *                 LED Test                  *
+    *********************************************
+
+    Testing LED
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 4 LED Test Passed
+
+    ...
+    ...
+    ...
+
+    *********************************************
+    *                 LED Test                  *
+    *********************************************
+
+    Testing LED
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 99 LED Test Passed
+
+    *********************************************
+    *                 LED Test                  *
+    *********************************************
+
+    Testing LED
+    Blinking LEDs...
+    Press 'y' to verify pass, 'r' to blink again,
+    or any other character to indicate failure: Received: y
+
+    Test PASSED!
+
+
+
+
+    Iteration : 100 LED Test Passed
+
+
+    LED Stress Test Status
+    ===================================
+    Number of Times Executed - 100
+    Pass Count - 100
+    Fail Count - 0
+    Overall Status - PASS
+
+| 
+
+Memory (DDR) Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^^^
+This test verifies the DDR memory of the HW platform under test. 
+Address bus test is performed with a test pattern and its compliment during the test.
+Walking 1s and walking 0s test is executed additionally as part of stress test.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘memStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+
+Sample DDR stress test log is shown below
+
+::
+
+    *********************************************
+    *              DDR Memory Test              *
+    *********************************************
+
+    Testing writing and reading memory
+    board_external_memory_test: Start address (0x80000000),            end address (0xffffffff)
+    First test started
+    Writing to test area...
+            Write up to 0x80000000 done
+            Write up to 0x90000000 done
+            Write up to 0xa0000000 done
+            Write up to 0xb0000000 done
+            Write up to 0xc0000000 done
+            Write up to 0xd0000000 done
+            Write up to 0xe0000000 done
+            Write up to 0xf0000000 done
+    Write finished!
+    Checking values...
+            Read up to 0x80000000 okay
+            Read up to 0x90000000 okay
+            Read up to 0xa0000000 okay
+            Read up to 0xb0000000 okay
+            Read up to 0xc0000000 okay
+            Read up to 0xd0000000 okay
+            Read up to 0xe0000000 okay
+            Read up to 0xf0000000 okay
+    Second test started
+    Writing complementary values to test area...
+            Write up to 0x80000000 done
+            Write up to 0x90000000 done
+            Write up to 0xa0000000 done
+            Write up to 0xb0000000 done
+            Write up to 0xc0000000 done
+            Write up to 0xd0000000 done
+            Write up to 0xe0000000 done
+            Write up to 0xf0000000 done
+    Write finished!
+    Checking values...
+            Read up to 0x80000000 okay
+            Read up to 0x90000000 okay
+            Read up to 0xa0000000 okay
+            Read up to 0xb0000000 okay
+            Read up to 0xc0000000 okay
+            Read up to 0xd0000000 okay
+            Read up to 0xe0000000 okay
+            Read up to 0xf0000000 okay
+    Board memory test passed!
+             walking1s test verified up to 0x80000000      done
+             walking1s test verified up to 0x90000000      done
+             walking1s test verified up to 0xa0000000      done
+             walking1s test verified up to 0xb0000000      done
+             walking1s test verified up to 0xc0000000      done
+             walking1s test verified up to 0xd0000000      done
+             walking1s test verified up to 0xe0000000      done
+             walking1s test verified up to 0xf0000000      done
+    walking1s test passed!
+             walking0s test verified up to 0x80000000      done
+             walking0s test verified up to 0x90000000      done
+             walking0s test verified up to 0xa0000000      done
+             walking0s test verified up to 0xb0000000      done
+             walking0s test verified up to 0xc0000000      done
+             walking0s test verified up to 0xd0000000      done
+             walking0s test verified up to 0xe0000000      done
+             walking0s test verified up to 0xf0000000      done
+    walking0s test passed!
+    Memory test passed!
+
+| 
+
+MMCSD Stress Test
+^^^^^^^^^^^^^^^^^^
+This test verifies SD card interface on the platform under test.
+Whole memory of SD card starting from 1.5GB offset is written and read during the test.
+
+Test Accessories
+"""""""""""""""""
+SD card.
+
+Test Setup
+"""""""""""
+Insert the SD card into MMCSD slot of the board.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘mmcsdStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for SD card stress test is shown below
+
+::
+
+    *********************************************
+    *                 MMCSD Stress Test         *
+    *********************************************
+
+    PASS: Read/Write Success for this block-0x300000
+
+    PASS: Read/Write Success for this block-0x301000
+
+    PASS: Read/Write Success for this block-0x302000
+
+    PASS: Read/Write Success for this block-0x303000
+
+    PASS: Read/Write Success for this block-0x304000
+
+    PASS: Read/Write Success for this block-0x305000
+
+    PASS: Read/Write Success for this block-0x306000
+
+    PASS: Read/Write Success for this block-0x307000
+
+    PASS: Read/Write Success for this block-0x308000
+
+    PASS: Read/Write Success for this block-0x309000
+
+    PASS: Read/Write Success for this block-0x30a000
+
+    PASS: Read/Write Success for this block-0x30b000
+
+    PASS: Read/Write Success for this block-0x30c000
+
+    PASS: Read/Write Success for this block-0x30d000
+
+    PASS: Read/Write Success for this block-0x30e000
+
+    PASS: Read/Write Success for this block-0x30f000
+
+    PASS: Read/Write Success for this block-0x310000
+
+    ...
+    ...
+    ...
+
+    PASS: Read/Write Success for this block-0x5fa000
+
+    PASS: Read/Write Success for this block-0x5fb000
+
+    PASS: Read/Write Success for this block-0x5fc000
+
+    PASS: Read/Write Success for this block-0x5fd000
+
+    PASS: Read/Write Success for this block-0x5fe000
+
+    PASS: Read/Write Success for this block-0x5ff000
+
+    PASS: Read/Write Success for this pattern
+
+| 
+
+NOR Flash Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This test verifies the NOR flash memory connected to SPI interface.
+Whole memory of flash is written and read back for data verification during the test.
+
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘norflashStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for NOR flash stress test is shown below
+
+::
+
+    ************************************************
+    *            SPI FlASH Stress Test             *
+    ************************************************
+    Reading Flash Device ID...
+    Device ID 0 - 0x20
+    Device ID 1 - 0xba
+    Device ID 2 - 0x18
+    Flash Device ID Match!
+
+    Flash Device ID Read Passed!
+
+    Verifying Sector - 0
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 1
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 2
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 3
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 4
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 5
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 6
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 7
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 8
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 9
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 10
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 11
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 12
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 13
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 14
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 15
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 16
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    ...
+    ...
+    ...
+
+    Verifying Sector - 250
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 251
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 252
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 253
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 254
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    Verifying Sector - 255
+    Data Read matches with Data written
+    SPI Flash Test Passed!
+
+    SPI NOR Flash Test Passed
+
+| 
+
+OSPI Flash Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^
+This test verifies the flash memory connected to OSPI interface.
+Whole memory of OSPI flash is written and read back for data verification during the test.
+
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘ospiStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for OSPI flash stress test is shown below
+
+::
+
+    ****************************************************
+    *            OSPI FLASH Stress Test                *
+    ****************************************************
+
+    OSPI NOR device ID: 0x5b1a, manufacturer ID: 0x2c 
+
+    Verifying the OSPI Flash ...
+
+    OSPI Flash Stress Test Iteration - 1
+
+    Verified upto Page - 0x0
+
+    Verified upto Page - 0x1000
+
+    Verified upto Page - 0x2000
+
+    Verified upto Page - 0x3000
+
+    Verified upto Page - 0x4000
+
+    Verified upto Page - 0x5000
+
+    Verified upto Page - 0x6000
+
+    Verified upto Page - 0x7000
+
+    Verified upto Page - 0x8000
+
+    Verified upto Page - 0x9000
+
+    Verified upto Page - 0xa000
+
+    Verified upto Page - 0xb000
+
+    Verified upto Page - 0xc000
+
+    Verified upto Page - 0xd000
+
+    Verified upto Page - 0xe000
+
+    Verified upto Page - 0xf000
+    
+    ...
+    ...
+    ...
+   
+    Verified upto Page - 0x3ffd000
+
+    Verified upto Page - 0x3ffe000
+
+    Verified upto Page - 0x3fff000
+    
+    OSPI NOR Flash verification Successful
+
+| 
+
+Temperature Sensor Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+This test verifies reading the ambient temperature from temperature sensor interface. 
+Test verifies all the temperature sensor devices on the board.
+Test is repeated for 100 iterations.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘temperatureStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for temperature sensor stress test is shown below
+
+::
+
+    *********************************************
+    *          Temperature Sensor Test          *
+    *********************************************
+
+
+    Running Temperature Sensor Test in Stress Mode for 100 Number of Times...
+    Enter 'b' in Serial Console to Terminate the Test
+
+
+    Running Temperature Sensor Test...
+    Running temperature sensor test... 
+    Read temperature register value - 680
+
+    Temperature read from the temperature sensor
+     slave address - 0x48 is 42 degree centigrade
+    Read temperature register value - 616
+
+    Temperature read from the temperature sensor
+     slave address - 0x49 is 38 degree centigrade
+    Temperature sensor test Passed!
+
+
+
+
+    Iteration : 1 Temperature Sensor Test Passed
+
+    Running Temperature Sensor Test...
+    Running temperature sensor test... 
+    Read temperature register value - 680
+
+    Temperature read from the temperature sensor
+     slave address - 0x48 is 42 degree centigrade
+    Read temperature register value - 616
+
+    Temperature read from the temperature sensor
+     slave address - 0x49 is 38 degree centigrade
+    Temperature sensor test Passed!
+
+
+
+
+    Iteration : 2 Temperature Sensor Test Passed
+
+    Running Temperature Sensor Test...
+    Running temperature sensor test... 
+    Read temperature register value - 680
+
+    Temperature read from the temperature sensor
+     slave address - 0x48 is 42 degree centigrade
+    Read temperature register value - 616
+
+    Temperature read from the temperature sensor
+     slave address - 0x49 is 38 degree centigrade
+    Temperature sensor test Passed!
+
+
+
+
+    Iteration : 3 Temperature Sensor Test Passed
+
+    Running Temperature Sensor Test...
+    Running temperature sensor test... 
+    Read temperature register value - 680
+
+    Temperature read from the temperature sensor
+     slave address - 0x48 is 42 degree centigrade
+    Read temperature register value - 616
+
+    Temperature read from the temperature sensor
+     slave address - 0x49 is 38 degree centigrade
+    Temperature sensor test Passed!
+
+
+
+
+    Iteration : 4 Temperature Sensor Test Passed
+
+    ...
+    ...
+    ...
+
+    Running Temperature Sensor Test...
+    Running temperature sensor test... 
+    Read temperature register value - 680
+
+    Temperature read from the temperature sensor
+     slave address - 0x48 is 42 degree centigrade
+    Read temperature register value - 616
+
+    Temperature read from the temperature sensor
+     slave address - 0x49 is 38 degree centigrade
+    Temperature sensor test Passed!
+
+
+
+
+    Iteration : 99 Temperature Sensor Test Passed
+
+    Running Temperature Sensor Test...
+    Running temperature sensor test... 
+    Read temperature register value - 680
+
+    Temperature read from the temperature sensor
+     slave address - 0x48 is 42 degree centigrade
+    Read temperature register value - 616
+
+    Temperature read from the temperature sensor
+     slave address - 0x49 is 38 degree centigrade
+    Temperature sensor test Passed!
+
+
+
+
+    Iteration : 100 Temperature Sensor Test Passed
+
+    Temperature Sensor Stress Test Status
+    ===================================
+    Number of Times Executed - 100
+    Pass Count - 100
+    Fail Count - 0
+    Overall Status - PASS
+
+
+
+    Temperature Sensor Test Passed
+| 
+
+USB Host Stress Test
+^^^^^^^^^^^^^^^^^^^^^
+This test verifies USB host mode operation of the HW platform under test.
+USB interface functions as USB mass storage host during the test.
+USB device connected to the board will be enumerated, a file will be created, 
+written with test data and read back to verify the data. 
+USB interface operates at high-speed (USB 2.0) during the test.
+Test is repeated for 100 iterations.
+
+Test Accessories
+"""""""""""""""""
+USB OTG pen drive or normal pen drive with OTG cable
+
+Test Setup
+"""""""""""
+Refer `USB Host Test Setup <Board_EVM_Abstration.html#id188>`_ section for more details
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘usbHostStress_TEST’
+ - Test supports USB host port on CP board and SerDes board on AM65x IDK platform. 
+   Choose the board under test in the serial console while running the test on am65xx_idk
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for USB host stress test on am65xx_evm is shown below
+
+::
+
+    *************************************************
+    *                  USB Host Test                *
+    *************************************************
+
+    USB Host MSC example!!
+
+
+
+    Running USB Host Test in Stress Mode for 100 Number of Times...
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 1 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 2 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 3 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 4 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 5 USB Host Test Passed
+
+    ...
+    ...
+    ...
+
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 99 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 100 USB Host Test Passed
+
+
+    USB Host Stress Test Status
+    ===================================
+    Number of Times Executed - 100
+    Pass Count - 100
+    Fail Count - 0
+    Overall Status - PASS
+
+
+
+    USB Host test Passed
+
+| 
+
+Sample log for USB host stress test on am65xx_idk board is shown below
+
+::
+
+    *************************************************
+    *                  USB Host Test                *
+    *************************************************
+
+    USB Host MSC example!!
+
+    Select the options below on which application has to be run
+
+    1.CP board
+    2.Serdes Board
+    1
+
+
+    Running USB Host Test in Stress Mode for 100 Number of Times...
+    Enter 'b' in Serial Console to Terminate the Test
+
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 1 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 2 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 3 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 4 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 5 USB Host Test Passed
+
+    ...
+    ...
+    ...
+
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 99 USB Host Test Passed
+    Creating a text file...
+    File already exist..!, deleting existing file and creating a new file
+
+    Successfully created text file!
+    Verifying data......
+    Data verified successfully
+
+
+
+
+    Iteration : 100 USB Host Test Passed
+
+
+    USB Host Stress Test Status
+    ===================================
+    Number of Times Executed - 100
+    Pass Count - 100
+    Fail Count - 0
+    Overall Status - PASS
 
 | 
 
