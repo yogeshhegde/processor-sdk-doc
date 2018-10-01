@@ -213,7 +213,7 @@ release and any known workaround.
    :header: "Record ID","Board/s", "Component/s", "Summary","Workaround"
    :widths: 15, 20,20,30,70
 
-    PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,Dual R5 configuration support in SBL could be used
+    git rePRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,Dual R5 configuration support in SBL could be used
 	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package,"| 
 	- For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. The Strawberry Perl installer automatically installs and sets up OpenSSL. 
 	- For Linux : Execute the command ""sudo apt-get install openssl"" at the linux command prompt. 
@@ -727,7 +727,7 @@ Host Support
 The recommended development host is
 
 -  **Windows**: Windows 10 on 64-bit machine
--  **Linux**: Ubuntu 16.04 on 64-bit machine
+-  **Linux**: Ubuntu 14.04, 16.04 on 64-bit machine
 
 .. raw:: html
 
