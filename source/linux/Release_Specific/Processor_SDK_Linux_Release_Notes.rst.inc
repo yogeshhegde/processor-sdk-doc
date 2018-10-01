@@ -73,10 +73,10 @@ Released Sep 2018
    - Support VLAN tag in supervision frames
    - Extend support to AM335x, AM437x, K2G from AM57xx
 - New TI Designs (available as part of Processor SDK Linux)
-   - Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK
+   - `Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK <http://www.ti.com/tool/TIDA-01555>`__
    - Robotics sense and avoid demonstration using TI mmWave sensors
 - OpenCV Performance optimizatons: StereoBM with C66x offload
-- GTK+ 3.0 Support on AM335x, AM437x, AM57x
+- `GTK+ 3.0 Support on AM335x, AM437x, AM57x <Foundational_Components_Graphics.html#gtk-graphics-framework>`__
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -124,13 +124,13 @@ Build Information
 U-Boot
 -------------------------
 
-| Head Commit: e1183b1ef6a3dc5d54603f904307bdbae51f22c3 configs:
-  am65x\_evm: Add initial support for applying overlays
-| Date: Wed Jun 27 21:22:27 2018 +0530
+| Head Commit: 8b2f1df4b55bc0797399a21d42ac191d44f99227:
+  HACK: armv7R: K3: am654: Shut down R5 core after ATF startup on A53
+| Date: Fri Sep 7 14:11:17 CDT 2018
 | uBoot Version: 2018.01
-| uBoot Description: v2018.01-373-ge1183b1
+| uBoot Description: v2018.01-441-g8b2f1df
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2018.01
+| Branch: ti2018.03
 
 |
 
@@ -141,10 +141,10 @@ Kernel
    :name: linux-kernel
 
 | The kernel git repository, branch and commit id can be found below:
-| Based on Version: 4.14.40
+| Based on Version: 4.14.67
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-4.14.y
-| Commit ID: 4796173fc58688055a99a1cef19a839174067220
+| Commit ID: 74866f59d3507397ce9e296998fa2fc74f633dd7
 
 |
 
@@ -153,12 +153,12 @@ Kernel
 
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
-| Kernel Version: 4.14.40
-| RT Kernel Version: 4.9.40-rt29
+| Kernel Version: 4.14.67
+| RT Kernel Version: 4.9.40-rt40
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-4.14.y
-| Commit ID: d5443cbd3b5a79c7b4f817896e12014f2b30e34b
+| Commit ID: 3011944cfe166a6fc1bc96f578183d0c1c8ad664
 
 |
 
