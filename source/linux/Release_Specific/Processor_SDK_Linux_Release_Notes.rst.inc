@@ -71,7 +71,7 @@ Released Sep 2018
 - HSR/PRP
    - Dual Instance support on the two PRU-ICSS on AM571x
    - Support VLAN tag in supervision frames
-   - Extend support to AM335x, AM437x, K2G from AM57xx
+   - Extend HSR/PRP support to AM335x, AM437x, K2G from AM57xx (Note: PTP SAN is supported only on AM57xx in this release)
 - New TI Designs (available as part of Processor SDK Linux)
    - Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK
    - Robotics sense and avoid demonstration using TI mmWave sensors
