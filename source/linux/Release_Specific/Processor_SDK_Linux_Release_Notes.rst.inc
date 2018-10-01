@@ -306,7 +306,7 @@ SDK Known Issues
    PLSDK-1953,"am571x-idk, am572x-idk",Linux PRP: lreTransparentReception - passRCT doesn't work as expected,None
    PLSDK-1963,k2e-evm,K2E:Observed unwanted failure messages in boot log,"No functionality affected except the log message. If not needed, do not connect anything to the PCIe slot."
    PLSDK-2067,am571x-idk,Transparent Clock crashes after a couple of days due to memory leak,
-   PLSDK-2095,"am571x-idk, am572x-idk","kernel: EXPORT symbol ""__hyp_stub_vectors seen during kernel build", it is just a warning message, and can be ignored
+   PLSDK-2095,"am571x-idk, am572x-idk","kernel: EXPORT symbol ""__hyp_stub_vectors seen during kernel build", "it is just a warning message, and can be ignored"
    PLSDK-2107,k2g-ice,sorte for K2G: master is not working,None
    PLSDK-2109,"am437x-evm, am572x-evm",QtWebengine demobrowser shows problems at LTS2018 on EGLFS QPA,None
    PLSDK-2128,"am335x-evm, am437x-evm, am438x-epos-evm, am572x-evm",Weston 2.0: overlay window display issue,"None. For Wayland demo, you may use qwindow-compositor instead of Weston."
@@ -321,9 +321,9 @@ SDK Known Issues
    PLSDK-2319,am654x-evm,QT5 Touch Screen demo: characters are corrupted,
    PLSDK-2323,am571x-idk,PRUETH: hsr/prp on PRUSS1/PRUSS2 can't co-exists with Dual EMAC,
    PLSDK-2326,k2e-evm,K2E-RT: Kernel warning during boot at cryptomgr_probe,
-   PLSDK-2329,am654x-evm,"Matrix-GUI Multimedia demo H264 doesn't play full screen,
-   PLSDK-2330,am654x-evm,Simple People Tracking Demo doesn't restart Matrix GUI intermittently, when there is no ToF EVM connected,
-   PLSDK-2331,am654x-evm,Matrix-GUI EVSE demo Text overflows the button, and gets truncated,
+   PLSDK-2329,am654x-evm,"Matrix-GUI Multimedia demo H264 doesn't play full screen",
+   PLSDK-2330,am654x-evm,"Simple People Tracking Demo doesn't restart Matrix GUI intermittently, when there is no ToF EVM connected",
+   PLSDK-2331,am654x-evm,"Matrix-GUI EVSE demo Text overflows the button, and gets truncated",
    PLSDK-2334,am572x-evm,video-graphics-test runs with error messages and lower performance,
    PLSDK-2339,"am335x-evm, am335x-ice, am335x-sk, beagleboneblack, am437x-idk, am437x-sk, am437x-evm, am438x-epos-evm, am571x-idk, am572x-idk, am572x-evm, am574x-idk",Matrix GUI takes 2 min to launch when not connected to ethernet, Need to convert Matrix GUI from initd script to systemd service
    PLSDK-2340,,"HSR/PRP: With VLAN tagged SV frame, nodes using untagged SV frames appears in NT",
