@@ -67,14 +67,14 @@ Released Sep 2018
         - PCIe, USB 3.0
 - Deep Learning
    - AM57xx: TIDL performance optimizations: Concurrent processing on all 4 cores: 2xDSP + 2xEVE
-   - Port ARM NN inference engine to AM335x, AM437x, AM57xx. For more information on ARMNN, see `here <https://developer.arm.com/products/processors/machine-learning/arm-nn>`__
+   - `Port ARM NN inference engine to AM335x, AM437x, AM57xx <Foundational_Components_TIDL.html#armnn-and-arm-compute-library>`__. For more information on ARMNN, see `here <https://developer.arm.com/products/processors/machine-learning/arm-nn>`__
 - HSR/PRP
    - Dual Instance support on the two PRU-ICSS on AM571x
    - `Support VLAN tag in supervision frames. <Industrial_Protocols_HSR_PRP.html#vlan-tag-in-supervision-frame>`__
    - Extend HSR/PRP support to AM335x, AM437x, K2G from AM57xx (Note: PTP SAN is supported only on AM57xx in this release)
 - New TI Designs (available as part of Processor SDK Linux)
    - `Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK <http://www.ti.com/tool/TIDA-01555>`__
-   - Robotics sense and avoid demonstration using TI mmWave sensors
+   - `Robotics sense and avoid demonstration using TI mmWave sensors <Examples_and_Demos_Application_Demos.html#sense-and-avoid-demo-with-mmwave-and-sitara>`__
 - OpenCV Performance optimizatons: StereoBM with C66x offload
 - `GTK+ 3.0 Support on AM335x, AM437x, AM57x <Foundational_Components_Graphics.html#gtk-graphics-framework>`__
 
