@@ -192,10 +192,10 @@ for more details on usage of this script and application image creation.
 
 **Flashing Tools**
 
+
 SBL provides a CCS based qspi flash writer utility to flash image and
 multicore AppImage from a SD card to onboard QSPI device. It
-is located
-at \ *<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/qspi*
+is located at *<PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/qspi*
 
 
 Building the SBL
@@ -241,22 +241,9 @@ files will be located in: **<PDK>/packages/ti/boot/sbl/binary/<BOARD>**
    Refer **<PDK>/packages/ti/boot/sbl/sbl_<DEVICE>.sh** for more build
    options
 
-**Building SBL using CCS project**
 
-The SBL build in the Processor SDK RTOS is designed to be built using
-Makefile. Users can also choose to create a CCS project for the
-bootloader if they prefer the IDE environment by converting the make
-file based build to CCS project by linking the appropriate source files
-to the project and using the same compiler options.
-
-**Example:** The wiki article
-"`Creating_a_CCS_Project_for_SBL_on_AM572x_GP_EVM <http://processors.wiki.ti.com/index.php/Creating_a_CCS_Project_for_SBL_on_AM572x_GP_EVM>`__"
-demonstrates creation of SBL in CCS for AM572x GP EVM.
-
-| 
-
-Boot Modes
-^^^^^^^^^^^^
+.. rubric:: Boot Modes
+   :name: boot-modes
 
 This Release of SBL supports MMCSD and QSPI Boot modes. The different
 boot modes supported for all the boards is tabulated in the table below.
