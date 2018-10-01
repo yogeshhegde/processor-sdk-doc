@@ -301,6 +301,7 @@ SDK Known Issues
    PLSDK-1817,,"HSR/PRP: Outstanding Net-Jury tests failures: 92/105 passed, 7 blocked and 6 failed",None
    PLSDK-1828,"am571x-idk, am572x-idk","HSR: In a ring topology, seeing small performance degradation with concurrent traffic",None
    PLSDK-1909,am572x-evm,DLP SDK demo: Assertion `ctx->pollfds_cnt >= internal_nfds' failed,None
+   PLSDK-1924,"am335x-ice, am335x-sk, beagleboneblack",AM3: Observed unwanted failure message in boot log.,No functionality affected except the log message
    PLSDK-1945,am572x-evm,qApp->quit() does not work with the enhanced eglfs_kms QPA,None
    PLSDK-1953,"am571x-idk, am572x-idk",Linux PRP: lreTransparentReception - passRCT doesn't work as expected,None
    PLSDK-1963,k2e-evm,K2E:Observed unwanted failure messages in boot log,"No functionality affected except the log message. If not needed, do not connect anything to the PCIe slot."
