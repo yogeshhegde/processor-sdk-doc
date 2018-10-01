@@ -287,12 +287,8 @@ SDK Known Issues
    LCPD-11010,am574x-idk,AM574x-idk graphics performance is lower than am572x-idk,"Performance issue, no workaround"
    LCPD-12784,omapl138-lcdk,Board can't resume from suspend state sometimes, None
    LCPD-13417,am43xx-gpevm,"Error message with multiple egl, not shared context (double unmap)","Limitation with Imagination DDK, no workaround"
-   LCPD-13419,am57xx-evm,QT Touchscreen interaction - Bear Whack crash,
    LCPD-13470,am335x-evm,klogd and syslog are not needed when using systemd,
    LCPD-13475,"am437x-idk, am43xx-gpevm",Back trace seen on AM437x-IDK when we reboot,
-   LCPD-13499,am654x-evm,SGX KM Memory allocation failure,
-   LCPD-13501,am654x-evm,"Kmscube: need to support the new display ""tidss""",
-   LCPD-13620,"am654x-evm, am654x-idk",PVR Tools do not work,
    PLSDK-832,AM57,OpenCL matmpy intermittent DSP1 crash due to EdmaMgr issues w/ suspend/resume,"Disabling suspend/resume on the DSPs prevents this intermittent failure: *echo on > /sys/bus/platform/devices/40800000.dsp/power/control; echo on > /sys/bus/platform/devices/41000000.dsp/power/control*"
    PLSDK-885,AM57,OpenCV Video test failure w/ GStreamer errors,Use the workaround from    PLSDK-832
    PLSDK-1266,am572x-idk,PRP: stale IGMP packets (IPv6) seems directly sent to eth2/eth3 of a HRP node,None
@@ -375,7 +371,6 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround", "Impact"
    :widths: 5, 10, 70, 10, 5, 20, 35, 20
 
-   LCPD-13820,P2-High,AM65x: IPC sample firmware images are missing from FS,"IPC, System Integration",,"am654x-evm, am654x-idk",,
    LCPD-9877,P2-High,rtc alarm does not wakeup board from poweroff state,Power & Thermal,,omapl138-lcdk,,
    LCPD-13767,P2-High,am654x: RT mmc probe errors,Connectivity,,am654x-idk,,
    LCPD-13766,P2-High,am654x: RT latency numbers are 60 us versus ~25 in am574x,Connectivity,,am654x-idk,,
@@ -400,7 +395,6 @@ Linux Kernel Known Issues
    LCPD-965,P3-Medium,AM335x: Power: Poweroff is not shutting down voltage domains,Power & Thermal,,,,
    LCPD-13819,P3-Medium,Kernel warning is sometimes observed when stopping a remoteproc,IPC,,am654x-evm,,
    LCPD-13813,P3-Medium,"In 2018 LTS, CCS can't connect to DSP if ARM is running Linux",IPC,,,,
-   LCPD-13453,P3-Medium,MPM service daemon does not start. Error allocating CMEM buffer,IPC,,"k2e-evm, k2g-evm, k2g-ice, k2hk-evm, k2l-evm",,
    LCPD-13832,P3-Medium,usb: missing CONFIG_USB_ANNOUNCE_NEW_DEVICES option,Connectivity,USB,,,
    LCPD-13827,P3-Medium,drivers/phy/ti/phy-ti-am654.c:278 serdes_am654_clk_mux_get_parent() warn: signedness bug returning '(-22)',Connectivity,,,,
    LCPD-13818,P3-Medium,MMC could not be built to module for am65xx,Connectivity,,am654x-evm,,
