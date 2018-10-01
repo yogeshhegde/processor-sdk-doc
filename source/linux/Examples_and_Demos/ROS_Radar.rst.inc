@@ -82,6 +82,8 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
           multiple SSH terminals).
 
 
+.. _reconfigure-plsdk-for-python3:
+
 .. topic:: Reconfigure PLSDK for Python3
 
     PLSDK includes ROS packages from meta-ros layer, compiled with Python3 support (build/conf/local.conf : ROS_USE_PYTHON3 = "yes")
@@ -90,16 +92,16 @@ ROS RViz node since RViz requires OpenGL desktop support (Sitara only supports O
 
 .. code-block:: console
 
-   root@am57xx-evm:/usr/bin# rm python.python
-   root@am57xx-evm:/usr/bin# rm python-config.python
-   root@am57xx-evm:/usr/bin# ln -s python3 python.python
-   root@am57xx-evm:/usr/bin# ln -s python3-config python-config.python
+   root@am57xx-evm:/usr/bin# ln -sf python3 python.python
+   root@am57xx-evm:/usr/bin# ln -sf python3-config python-config.python
 
 ROS between distributed nodes (Sitara and Ubuntu Linux box)
----------------------------------------------------
+--------------------------------------------------------------
      
 .. rubric:: 1st SSH terminal, to Sitara EVM
    :name: 1st-ssh-terminal-1-ros-demo1
+
+.. _modify-setup-bash:
 
 Modify /opt/ros/indigo/setup.bash
 
@@ -424,3 +426,394 @@ E.g. on Windows PC (192.168.0.100), you can watch the stream using: "\Program Fi
 
     Multiple windows on Ubuntu Linux box showing ROS RViz, front camera view and external camera view 
 
+
+Sense and Avoid Demo with mmWave and Sitara
+------------------------------------------------------
+This section shows a complete sense and avoid navigation demo which runs on AM572x EVM with mmWave sensors.
+It will be available as a TI-design (TIDEP-01006) in the coming quarter.
+
+
+Preparation on Ubuntu
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In order to run the RViz for this navigation demo, rviz_plugin_covariance is needed on Ubuntu Linux box.
+First, create ROS workspace on Ubunut Linux box:
+
+.. code-block:: console
+
+    source /opt/ros/indigo/setup.bash
+    mkdir -p ~/catkin_ws/src
+    cd ~/catkin_ws/
+    catkin_make
+
+Second, clone and build rviz_plugin_covariance:
+
+.. code-block:: console
+
+    cd ~/catkin_ws/src
+    git clone https://github.com/laas/rviz_plugin_covariance
+    cd ~/catkin_ws/
+    catkin_make
+
+At the end of catkin_make, there should be:
+
+.. code-block:: console
+
+    [100%] Built target rviz_plugin_covariance
+
+
+After the plugin is successfully built, set up ROS variables on Ubuntu Linux box by adding the following two lines to  ~/.bashrc
+
+.. code-block:: console
+
+    source /opt/ros/indigo/setup.bash
+    source ~/catkin_ws/devel/setup.bash
+
+
+The last step of Ubuntu prepartation is copying the navigation demo packages from Sitara target filesystem (located under /opt/ros/indigo/share/) to Ubuntu Linux box (destitation is also /opt/ros/indigo/share/), including
+
+.. code-block:: console
+
+    /opt/ros/indigo/share/turtlebot_description/
+    /opt/ros/indigo/share/turtlebot_bringup/
+    /opt/ros/indigo/share/turtlebot_mmwave_launchers/
+
+
+Run Sense and Avoid Navigation Demo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Follow the steps in previous sections to :ref:`reconfigure PLSDK for Python3 <reconfigure-plsdk-for-python3>` and :ref:`prepare setup.bash <modify-setup-bash>` if they have not been done earlier.
+Then, close all the ROS terminal consoles for both Sitara EVM and Ubuntu Linux box.
+
+
+.. rubric:: Run roscore on Sitara EVM
+   :name: run-roscore-on-sitara-evm
+
+Open the first SSH terminal on Sitara EVM and run roscore:
+
+.. code-block:: console
+
+        source /opt/ros/indigo/setup.bash
+        roscore
+
+
+.. rubric:: Launch Robot Description on Ubuntu Linux Box
+   :name: launch-robot-description-on-ubunut-linux-box
+
+Open a new terminal console on Ubuntu Linux box, export ROS_MASTER_URI and ROS_IP, and then launch robot description:
+
+.. code-block:: console
+
+    export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311  (IP address of Sitara EVM)
+    export ROS_IP=$LINUX_BOX_IP_ADDR (IP address of Ubuntu Linux box)
+
+    roslaunch turtlebot_bringup description.launch
+
+
+.. rubric:: Turtlebot Minimal Launch on Sitara EVM
+   :name: turtlebot-minimal-launch-on-sitara-evm
+
+Open the second SSH terminal on Sitara EVM and set up mmWave sensor and Kobuki via minimal.launch of turtlebot_bringup:
+
+.. code-block:: console
+
+    source /opt/ros/indigo/setup.bash
+    roslaunch turtlebot_bringup minimal.launch
+
+
+.. rubric:: Launch Radar Navigation on Sitara EVM
+   :name: launch-radar-navigation-on-sitara-evm
+
+Open the third SSH terminal on Sitara EVM and launch radar navigation:
+
+.. code-block:: console
+
+    source /opt/ros/indigo/setup.bash
+    roslaunch turtlebot_mmwave_launchers radar_navigation.launch
+
+Sample log is as attached below:
+
+.. code-block:: console
+
+    root@am57xx-evm:~# roslaunch turtlebot_mmwave_launchers radar_navigation.launch
+    ... logging to /home/root/.ros/log/556bfd2c-bd4f-11e8-ad8a-a0f6fdc25c34/roslaunch-am57xx-evm-2190.log
+    Checking log directory for disk usage. This may take awhile.
+    Press Ctrl-C to interrupt
+    Done checking log file disk usage. Usage is <1GB.
+
+    started roslaunch server http://192.168.0.222:35107/
+
+    SUMMARY
+    ========
+
+    PARAMETERS
+     * /fake_localization/use_map_topic: True
+     * /i_filt/filter_field_name: intensity
+     * /i_filt/filter_limit_max: 100
+     * /i_filt/filter_limit_min: 28
+     * /i_filt/filter_limit_negative: False
+     * /move_base/DWAPlannerROS/acc_lim_theta: 2.0
+     * /move_base/DWAPlannerROS/acc_lim_x: 2.0
+     * /move_base/DWAPlannerROS/acc_lim_y: 0.0
+     * /move_base/DWAPlannerROS/forward_point_distance: 0.12
+     * /move_base/DWAPlannerROS/global_frame_id: odom
+     * /move_base/DWAPlannerROS/goal_distance_bias: 0.01
+     * /move_base/DWAPlannerROS/holonomic_robot: False
+     * /move_base/DWAPlannerROS/latch_xy_goal_tolerance: True
+     * /move_base/DWAPlannerROS/max_rot_vel: 2.0
+     * /move_base/DWAPlannerROS/max_scaling_factor: 0.20000000000000001
+     * /move_base/DWAPlannerROS/max_trans_vel: 0.5
+     * /move_base/DWAPlannerROS/max_vel_x: 0.20000000000000001
+     * /move_base/DWAPlannerROS/max_vel_y: 0.0
+     * /move_base/DWAPlannerROS/min_rot_vel: 0.40000000000000002
+     * /move_base/DWAPlannerROS/min_trans_vel: 0.10000000000000001
+     * /move_base/DWAPlannerROS/min_vel_x: 0.0
+     * /move_base/DWAPlannerROS/min_vel_y: 0.0
+     * /move_base/DWAPlannerROS/occdist_scale: 0.01
+     * /move_base/DWAPlannerROS/oscillation_reset_angle: 0.0
+     * /move_base/DWAPlannerROS/oscillation_reset_dist: 0.0
+     * /move_base/DWAPlannerROS/path_distance_bias: 32.0
+     * /move_base/DWAPlannerROS/publish_cost_grid_pc: True
+     * /move_base/DWAPlannerROS/publish_traj_pc: True
+     * /move_base/DWAPlannerROS/rot_stopped_vel: 0.40000000000000002
+     * /move_base/DWAPlannerROS/scaling_speed: 0.25
+     * /move_base/DWAPlannerROS/sim_time: 1.7
+     * /move_base/DWAPlannerROS/stop_time_buffer: 0.20000000000000001
+     * /move_base/DWAPlannerROS/trans_stopped_vel: 0.050000000000000003
+     * /move_base/DWAPlannerROS/vtheta_samples: 20
+     * /move_base/DWAPlannerROS/vx_samples: 3
+     * /move_base/DWAPlannerROS/vy_samples: 0
+     * /move_base/DWAPlannerROS/xy_goal_tolerance: 0.17000000000000001
+     * /move_base/DWAPlannerROS/yaw_goal_tolerance: 0.40000000000000002
+     * /move_base/GlobalPlanner/allow_unknown: True
+     * /move_base/GlobalPlanner/cost_factor: 3.0
+     * /move_base/GlobalPlanner/default_tolerance: 0.0
+     * /move_base/GlobalPlanner/lethal_cost: 253
+     * /move_base/GlobalPlanner/neutral_cost: 66
+     * /move_base/GlobalPlanner/old_navfn_behavior: False
+     * /move_base/GlobalPlanner/planner_costmap_publish_frequency: 0.0
+     * /move_base/GlobalPlanner/planner_window_x: 0.0
+     * /move_base/GlobalPlanner/planner_window_y: 0.0
+     * /move_base/GlobalPlanner/publish_potential: True
+     * /move_base/GlobalPlanner/publish_scale: 100
+     * /move_base/GlobalPlanner/use_dijkstra: True
+     * /move_base/GlobalPlanner/use_grid_path: False
+     * /move_base/GlobalPlanner/use_quadratic: True
+     * /move_base/NavfnROS/allow_unknown: False
+     * /move_base/NavfnROS/default_tolerance: 0.0
+     * /move_base/NavfnROS/planner_window_x: 0.0
+     * /move_base/NavfnROS/planner_window_y: 0.0
+     * /move_base/NavfnROS/visualize_potential: False
+     * /move_base/aggressive_reset/layer_names: ['obstacle_layer']
+     * /move_base/base_global_planner: navfn/NavfnROS
+     * /move_base/base_local_planner: dwa_local_planner...
+     * /move_base/conservative_reset/layer_names: ['obstacle_layer']
+     * /move_base/controller_frequency: 5.0
+     * /move_base/controller_patience: 3.0
+     * /move_base/global_costmap/global_frame: map
+     * /move_base/global_costmap/height: 10.0
+     * /move_base/global_costmap/inflation_layer/cost_scaling_factor: 9.8000000000000007
+     * /move_base/global_costmap/inflation_layer/enabled: True
+     * /move_base/global_costmap/inflation_layer/inflation_radius: 0.37
+     * /move_base/global_costmap/map_type: voxel
+     * /move_base/global_costmap/max_obstacle_height: 1
+     * /move_base/global_costmap/obstacle_layer/bump/clearing: False
+     * /move_base/global_costmap/obstacle_layer/bump/data_type: PointCloud2
+     * /move_base/global_costmap/obstacle_layer/bump/marking: True
+     * /move_base/global_costmap/obstacle_layer/bump/max_obstacle_height: 0.14999999999999999
+     * /move_base/global_costmap/obstacle_layer/bump/min_obstacle_height: 0.0
+     * /move_base/global_costmap/obstacle_layer/bump/topic: mobile_base/senso...
+     * /move_base/global_costmap/obstacle_layer/combination_method: 1
+     * /move_base/global_costmap/obstacle_layer/enabled: True
+     * /move_base/global_costmap/obstacle_layer/mark_threshold: 2
+     * /move_base/global_costmap/obstacle_layer/max_obstacle_height: 1
+     * /move_base/global_costmap/obstacle_layer/observation_sources: scan bump
+     * /move_base/global_costmap/obstacle_layer/obstacle_range: 1.0
+     * /move_base/global_costmap/obstacle_layer/origin_z: 0.0
+     * /move_base/global_costmap/obstacle_layer/publish_voxel_map: True
+     * /move_base/global_costmap/obstacle_layer/raytrace_range: 3.0
+     * /move_base/global_costmap/obstacle_layer/scan/clearing: False
+     * /move_base/global_costmap/obstacle_layer/scan/data_type: PointCloud2
+     * /move_base/global_costmap/obstacle_layer/scan/marking: True
+     * /move_base/global_costmap/obstacle_layer/scan/max_obstacle_height: 1
+     * /move_base/global_costmap/obstacle_layer/scan/min_obstacle_height: 0.0
+     * /move_base/global_costmap/obstacle_layer/scan/topic: xyzi_filt_out
+     * /move_base/global_costmap/obstacle_layer/track_unknown_space: True
+     * /move_base/global_costmap/obstacle_layer/unknown_threshold: 15
+     * /move_base/global_costmap/obstacle_layer/z_resolution: 0.014999999999999999
+     * /move_base/global_costmap/obstacle_layer/z_voxels: 16
+     * /move_base/global_costmap/plugins: [{'name': 'static...
+     * /move_base/global_costmap/publish_frequency: 5
+     * /move_base/global_costmap/resolution: 0.02
+     * /move_base/global_costmap/robot_base_frame: base_footprint
+     * /move_base/global_costmap/robot_radius: 0.17999999999999999
+     * /move_base/global_costmap/rolling_window: True
+     * /move_base/global_costmap/static_layer/enabled: True
+     * /move_base/global_costmap/static_map: False
+     * /move_base/global_costmap/transform_tolerance: 10
+     * /move_base/global_costmap/update_frequency: 7
+     * /move_base/global_costmap/width: 10.0
+     * /move_base/local_costmap/global_frame: odom
+     * /move_base/local_costmap/height: 4.0
+     * /move_base/local_costmap/inflation_layer/cost_scaling_factor: 8.0
+     * /move_base/local_costmap/inflation_layer/enabled: True
+     * /move_base/local_costmap/inflation_layer/inflation_radius: 0.22
+     * /move_base/local_costmap/map_type: voxel
+     * /move_base/local_costmap/max_obstacle_height: 1
+     * /move_base/local_costmap/obstacle_layer/bump/clearing: False
+     * /move_base/local_costmap/obstacle_layer/bump/data_type: PointCloud2
+     * /move_base/local_costmap/obstacle_layer/bump/marking: True
+     * /move_base/local_costmap/obstacle_layer/bump/max_obstacle_height: 0.14999999999999999
+     * /move_base/local_costmap/obstacle_layer/bump/min_obstacle_height: 0.0
+     * /move_base/local_costmap/obstacle_layer/bump/topic: mobile_base/senso...
+     * /move_base/local_costmap/obstacle_layer/combination_method: 1
+     * /move_base/local_costmap/obstacle_layer/enabled: True
+     * /move_base/local_costmap/obstacle_layer/mark_threshold: 2
+     * /move_base/local_costmap/obstacle_layer/max_obstacle_height: 1
+     * /move_base/local_costmap/obstacle_layer/observation_sources: scan bump
+     * /move_base/local_costmap/obstacle_layer/obstacle_range: 1.0
+     * /move_base/local_costmap/obstacle_layer/origin_z: 0.0
+     * /move_base/local_costmap/obstacle_layer/publish_voxel_map: True
+     * /move_base/local_costmap/obstacle_layer/raytrace_range: 3.0
+     * /move_base/local_costmap/obstacle_layer/scan/clearing: False
+     * /move_base/local_costmap/obstacle_layer/scan/data_type: PointCloud2
+     * /move_base/local_costmap/obstacle_layer/scan/marking: True
+     * /move_base/local_costmap/obstacle_layer/scan/max_obstacle_height: 1
+     * /move_base/local_costmap/obstacle_layer/scan/min_obstacle_height: 0.0
+     * /move_base/local_costmap/obstacle_layer/scan/topic: xyzi_filt_out
+     * /move_base/local_costmap/obstacle_layer/track_unknown_space: True
+     * /move_base/local_costmap/obstacle_layer/unknown_threshold: 15
+     * /move_base/local_costmap/obstacle_layer/z_resolution: 0.014999999999999999
+     * /move_base/local_costmap/obstacle_layer/z_voxels: 16
+     * /move_base/local_costmap/plugins: [{'name': 'static...
+     * /move_base/local_costmap/publish_frequency: 10
+     * /move_base/local_costmap/resolution: 0.02
+     * /move_base/local_costmap/robot_base_frame: base_footprint
+     * /move_base/local_costmap/robot_radius: 0.17999999999999999
+     * /move_base/local_costmap/rolling_window: True
+     * /move_base/local_costmap/static_layer/enabled: True
+     * /move_base/local_costmap/static_map: False
+     * /move_base/local_costmap/transform_tolerance: 1
+     * /move_base/local_costmap/update_frequency: 12
+     * /move_base/local_costmap/width: 4.0
+     * /move_base/oscillation_distance: 0.20000000000000001
+     * /move_base/oscillation_timeout: 10.0
+     * /move_base/planner_frequency: 1.0
+     * /move_base/planner_patience: 5.0
+     * /move_base/recovery_behavior_enabled: True
+     * /move_base/recovery_behaviors: [{'name': 'cleari...
+     * /move_base/shutdown_costmaps: False
+     * /navigation_velocity_smoother/accel_lim_v: 1.0
+     * /navigation_velocity_smoother/accel_lim_w: 2.0
+     * /navigation_velocity_smoother/decel_factor: 1.5
+     * /navigation_velocity_smoother/frequency: 20.0
+     * /navigation_velocity_smoother/robot_feedback: 2
+     * /navigation_velocity_smoother/speed_lim_v: 0.80000000000000004
+     * /navigation_velocity_smoother/speed_lim_w: 5.4000000000000004
+     * /rosdistro: b'<unknown>\n'
+     * /rosversion: b'1.11.21\n'
+     * /x_filt/filter_field_name: x
+     * /x_filt/filter_limit_max: 4
+     * /x_filt/filter_limit_min: 0.10000000000000001
+     * /x_filt/filter_limit_negative: False
+     * /y_filt/filter_field_name: y
+     * /y_filt/filter_limit_max: 3
+     * /y_filt/filter_limit_min: -3
+     * /y_filt/filter_limit_negative: False
+     * /z_filt/filter_field_name: z
+     * /z_filt/filter_limit_max: 0.10000000000000001
+     * /z_filt/filter_limit_min: -0.40000000000000002
+     * /z_filt/filter_limit_negative: False
+
+    NODES
+     /
+        fake_localization (fake_localization/fake_localization)
+        i_filt (nodelet/nodelet)
+        kobuki_safety_controller (nodelet/nodelet)
+        move_base (move_base/move_base)
+        navigation_velocity_smoother (nodelet/nodelet)
+        octomap_server (octomap_server/octomap_server_node)
+        pcl_manager (nodelet/nodelet)
+        voxel_grid_2_point_cloud (costmap_2d/costmap_2d_cloud)
+        x_filt (nodelet/nodelet)
+        y_filt (nodelet/nodelet)
+        z_filt (nodelet/nodelet)
+
+    ROS_MASTER_URI=http://192.168.0.222:11311
+    
+    core service [/rosout] found
+    process[pcl_manager-1]: started with pid [2208]
+    process[x_filt-2]: started with pid [2209]
+    process[y_filt-3]: started with pid [2210]
+    process[z_filt-4]: started with pid [2212]
+    process[i_filt-5]: started with pid [2218]
+    [ INFO] [1537502385.764232051]: Loading nodelet /x_filt of type pcl/PassThrough to manager pcl_manager with the following remappings:
+    [ INFO] [1537502385.764535262]: /x_filt/input -> /mmWaveDataHdl/RScan
+    [ INFO] [1537502385.764637905]: /x_filt/output -> /x_filt_out
+    process[octomap_server-6]: started with pid [2222]
+    [ INFO] [1537502385.807461531]: waitForService: Service [/pcl_manager/load_nodelet] has not been advertised, waiting...
+    process[fake_localization-7]: started with pid [2234]
+    [ INFO] [1537502385.876881320]: Loading nodelet /y_filt of type pcl/PassThrough to manager pcl_manager with the following remappings:
+    [ INFO] [1537502385.877401203]: /y_filt/input -> /x_filt_out
+    [ INFO] [1537502385.877811123]: /y_filt/output -> /xy_filt_out
+    process[navigation_velocity_smoother-8]: started with pid [2245]
+    process[kobuki_safety_controller-9]: started with pid [2254]
+    [ INFO] [1537502386.021405773]: waitForService: Service [/pcl_manager/load_nodelet] has not been advertised, waiting...
+    process[move_base-10]: started with pid [2260]
+    [ INFO] [1537502386.050920176]: Loading nodelet /z_filt of type pcl/PassThrough to manager pcl_manager with the following remappings:
+    [ INFO] [1537502386.051338880]: /z_filt/input -> /xy_filt_out
+    [ INFO] [1537502386.051423954]: /z_filt/output -> /xyz_filt_out
+    process[voxel_grid_2_point_cloud-11]: started with pid [2275]
+    [ INFO] [1537502386.110001522]: Loading nodelet /i_filt of type pcl/PassThrough to manager pcl_manager with the following remappings:
+    [ INFO] [1537502386.110382000]: /i_filt/input -> /xyz_filt_out
+    [ INFO] [1537502386.110469189]: /i_filt/output -> /xyzi_filt_out
+    [ INFO] [1537502386.210300162]: waitForService: Service [/pcl_manager/load_nodelet] has not been advertised, waiting...
+    [ INFO] [1537502386.330222095]: waitForService: Service [/pcl_manager/load_nodelet] has not been advertised, waiting...
+    [ INFO] [1537502386.339760543]: Initializing nodelet with 2 worker threads.
+    [ INFO] [1537502386.370224431]: waitForService: Service [/pcl_manager/load_nodelet] is now available.
+    [ INFO] [1537502386.386837903]: waitForService: Service [/pcl_manager/load_nodelet] is now available.
+    [ INFO] [1537502386.396840601]: waitForService: Service [/pcl_manager/load_nodelet] is now available.
+    [ INFO] [1537502386.414131417]: waitForService: Service [/pcl_manager/load_nodelet] is now available.
+    [ INFO] [1537502388.467073886]: Using plugin "static_layer"
+    [ INFO] [1537502388.552441027]: Requesting the map...
+    [ INFO] [1537502389.009091093]: Resizing static layer to 38 X 29 at 0.050000 m/pix
+    [ INFO] [1537502389.109529463]: Received a 38 X 29 map at 0.050000 m/pix
+    [ INFO] [1537502389.152919170]: Using plugin "obstacle_layer"
+    [ INFO] [1537502389.184083012]:     Subscribed to Topics: scan bump
+    [ INFO] [1537502389.743721736]: Using plugin "inflation_layer"
+    [ INFO] [1537502390.205726137]: Using plugin "static_layer"
+    [ INFO] [1537502390.229255871]: Requesting the map...
+    [ INFO] [1537502390.245325223]: Resizing static layer to 38 X 29 at 0.050000 m/pix
+    [ INFO] [1537502390.343836481]: Received a 38 X 29 map at 0.050000 m/pix
+    [ INFO] [1537502390.370283641]: Using plugin "obstacle_layer"
+    [ INFO] [1537502390.385764465]:     Subscribed to Topics: scan bump
+    [ INFO] [1537502390.651627515]: Using plugin "inflation_layer"
+    [ INFO] [1537502390.942044935]: Created local_planner dwa_local_planner/DWAPlannerROS
+    [ INFO] [1537502390.967666237]: Sim period is set to 0.20
+    [ INFO] [1537502392.012863983]: odom received!
+
+.. rubric:: Launch RViz for Sense and Avoid Navigation on Ubuntu Linux Box
+   :name: launch-rviz-for-sense-and-avoid-navigation-on-ubuntu-linux-box
+
+Open a new terminal console on Ubunut Linux box, export ROS_MASTER_URI and ROS_IP, and then start Rviz with navigation_visualization_2.rviz:
+
+.. code-block:: console
+
+    export ROS_MASTER_URI=http://$SITARA_IP_ADDR:11311  (IP address of Sitara EVM)
+    export ROS_IP=$LINUX_BOX_IP_ADDR (IP address of Ubuntu Linux box)
+
+    rosrun rviz rviz -d /opt/ros/indigo/share/turtlebot_mmwave_launchers/launch/navigation_visualization_2.rviz 
+
+.. rubric:: Set Initial Position and Goal for Navigation on Sitara EVM
+   :name: set-initial-position-and-goal-for-navigation-on-sitara-evm
+
+The demo uses a pre-defined map file of size 4 feet by 6 feet, with three locations (a, b, and c) on each side. 
+
+Open the fourth SSH terminal on Sitara EVM, and set the initial posistion with side (left or right) and position (a, b, or c), 
+and then set the goal position (a, b, or c) on the other side, by running the scripts below:
+
+.. code-block:: console
+
+   source /opt/ros/indigo/setup.bash
+   cd /opt/ros/indigo/share/turtlebot_mmwave_launchers/scripts/
+   ./start_nav.sh
