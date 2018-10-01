@@ -51,7 +51,7 @@ Released Sep 2018
 .. rubric:: What's New
    :name: whats-new
 
-- Processor SDK Linux now supports AM65x family of devices, in addition to AM335x, AM437x, AM57x, K2H, K2E, K2L, K2G.
+- Processor SDK Linux now supports AM65x family of devices, in addition to AM335x, AM437x, AM57x, K2H, K2E, K2L, K2G and OMAP-L138.
 - New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
 - AM65x
    - Features supported
@@ -66,11 +66,11 @@ Released Sep 2018
    - Features not (yet) supported
         - PCIe, USB 3.0
 - Deep Learning
-   - TIDL performance optimizations: Concurrent processing on all 4 cores: 2xDSP + 2xEVE
+   - AM57xx: TIDL performance optimizations: Concurrent processing on all 4 cores: 2xDSP + 2xEVE
    - Port ARM NN inference engine to AM335x, AM437x, AM57xx. For more information on ARMNN, see `here <https://developer.arm.com/products/processors/machine-learning/arm-nn>`__
 - HSR/PRP
    - Dual Instance support on the two PRU-ICSS on AM571x
-   - Support VLAN tag in supervision frames
+   - `Support VLAN tag in supervision frames. <Industrial_Protocols_HSR_PRP.html#vlan-tag-in-supervision-frame>`__
    - Extend HSR/PRP support to AM335x, AM437x, K2G from AM57xx (Note: PTP SAN is supported only on AM57xx in this release)
 - New TI Designs (available as part of Processor SDK Linux)
    - `Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK <http://www.ti.com/tool/TIDA-01555>`__
@@ -154,10 +154,10 @@ Kernel
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
 | Kernel Version: 4.14.67
-| RT Kernel Version: 4.9.40-rt40
+| RT Kernel Version: 4.14.67-rt40
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
-| Branch: processor-sdk-linux-4.14.y
+| Branch: processor-sdk-linux-rt-4.14.y
 | Commit ID: 3011944cfe166a6fc1bc96f578183d0c1c8ad664
 
 |
