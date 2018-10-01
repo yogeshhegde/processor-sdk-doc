@@ -52,7 +52,7 @@ from the Processor SDK
       system firmware (SYSFW) is downloaded to the DMSC subsystem.
    -  Once the SYSFW is up and running, the rest of the initialization can be done.
    -  This includes optionally enbaling ATCM, and optionally using **Board_init()** 
-      to configure PLLs, LPSCs and DDR.
+      to configure DDR.
    -  The SBL then parses application image(s) for each of the core(s) from boot 
       media and loads it to memory.
    -  Once the application is loaded, the SBL communicates with the system firmware
@@ -81,6 +81,8 @@ from the Processor SDK
 
    </div>
 
+.. _am655x-sbl-memory-usage:
+
 Memory Map
 ^^^^^^^^^^^
 
@@ -97,7 +99,7 @@ Directory structure
     sbl
     │
     ├── board
-    │   ├── k3
+    │   ├── am65xx
     │   │   └── sbl_main.c					<= define main() for SBL, board specific init
     │   └── src
     │       ├── sbl_image_copy.c				<= Copies Image from boot media
@@ -114,13 +116,15 @@ Directory structure
     │   └── sbl_multicore_amp.mk				<= Builds multi-core image from single core tests to demonstrate asymmetric multiprocessor boot (AMP)
     │
     ├── example
-    │   └── k3MulticoreApp
+    │   └── ampMulticoreApp
     │       ├── binary
-    │       │   └── am65xx
-    │       │       └── sbl_baremetal_*.appimage 		<= SBL loadable board specific sample apps for testing SBL boot flow
+    │       │   ├── am65xx_evm
+    │       │   │   └── sbl_baremetal_*.appimage 		<= SBL loadable board specific sample apps for testing SBL boot flow
+    │       │   └── am65xx_idk
+    │       │       └── sbl_baremetal_*.appimage 		<= SBL loadable board specific sample apps for testing SBL boot flow	
     │       ├── obj
-    │       ├── mcuAmplinker.lds 				<= Linker comamnd file when TI CGT is used for Asym. Multiproc. boot
-    │       ├── mpuAmplinker.lds 				<= GCC linker command file (for Cortex Axx cores) for Asym. Multiproc. boot
+    │       ├── linker.cmd 					<= Linker comamnd file when TI CGT is used for Asym. Multiproc. boot
+    │       ├── linker.lds 					<= GCC linker command file (for Cortex Axx cores) for Asym. Multiproc. boot
     │       ├── mcuLockStepLinker.lds 				<= Linker comamnd file when TI CGT is used for R5 lock-step boot
     │       ├── mpuSmplinker.lds 				<= GCC linker command file (for Cortex Axx cores) for SMP boot
     │       ├── sbl_amp_multicore.c 				<= Simple SBL test that displays UART message
@@ -133,22 +137,22 @@ Directory structure
     │       └── sbl_smp_r5.asm 					<= Provides dummy override function for __mpu_init for SMP testcase.
     │      
     ├── binary							<= ROM bootable SBL images for each board/boot media
-    │   ├── am65xx_evm
-    │   │   ├── mmcsd
+    │   ├── mmcsd
+    │   │   ├── am65xx_evm
     │   │   │   └── sbl_mmcsd_img_mcu1_0_release.tiimage
-    │   │   └── ospi
-    │   │       └── sbl_ospi_img_mcu1_0_release.tiimage
+    │   │   └── am65xx_idk
+    │   │       └── sbl_mmcsd_img_mcu1_0_release.tiimage
     │   │
-    │   └── am65xx_idk
-    │       ├── mmcsd
-    │       │   └── sbl_mmcsd_img_mcu1_0_release.tiimage
-    │       └── ospi
+    │   └── ospi
+    │       ├── am65xx_evm
+    │       │   └── sbl_ospi_img_mcu1_0_release.tiimage
+    │       └── am65xx_idk
     │           └── sbl_ospi_img_mcu1_0_release.tiimage	
     │ 
     ├── lib							<= SBL lib for each boot media/board supported
     │   ├── mmcsd
     │   │   ├── am65xx_evm
-    │   │   │   └── r5f
+    │   │   │   └── mcu1_0
     │   │   │       └── release
     │   │   │           └── sbl_lib_mmcsd.aer5f
     │   │   └── am65xx_idk
@@ -158,14 +162,14 @@ Directory structure
     │   │
     │   └── ospi
     │       └── am65xx_evm
-    │           └── r5f
+    │           └── mcu1_0
     │               └── release
     │                   └── sbl_lib_ospi.aer5f	
     │ 
     ├── obj							<= OBJs from the SBL build
     │ 
     ├── soc							<= SOC specific SBL code
-    │   └── k3
+    │   └── am65xx
     │       ├── linker.cmd					<= Linker file used for generating ROM loadable SBL image.
     │       ├── sbl_sci_client.c				<= Calls SYSFW on DMSC
     │       ├── sbl_sci_client.h
@@ -290,8 +294,13 @@ Building the SBL and its components
 **NOTE**
 
 -  SBL needs openssl to build. To check if openssl is present, at the command 
-   prompt, type openssl version. If openssl is not present, download and install 
-   openssl for your OS from the internet.
+   prompt, type "openssl version". If openssl is not present,
+
+   -  For Windows : download and install `Strawberry Perl <http://strawberryperl.
+      com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. 
+      The Strawberry Perl installer automatically installs and sets up OpenSSL.
+   -  For Linux : Execute the command "sudo apt-get install openssl" at the linux
+      command prompt.
 -  To build on Linux, you need to have `mono <http://www.mono-project.com>`__ installed.
 -  Refer to the makefile for the board you are using for the latest driver 
    dependency. These libraries should come pre-built with any fresh installation of
@@ -323,20 +332,11 @@ ease of use, boot time and size. These can be enabled or disabled by editing `sb
 
 -  SBL_LOG_LEVEL : Controls amount of SBL logs on the MCU UART. Varies from 0 
    (no logs) to  3 (all logs)
--  SBL_ENABLE_CLOCKS : Dials up all the PLLs and enables all the module clocks by
-   calling Board_init(). Makes it easier for applications as they no longer have 
-   to initialize clocks and PLLs. However, enabling this significantly increases
-   boot time and power consumption.
 -  SBL_ENABLE_ATCM : Enables ATCM for both MCUs. The ATCM is accessible locally
    within the MCU at 0x0 and at CSL_MCU_ARMSS0_CORE0_ATCM_BASE and 
    CSL_MCU_ARMSS0_CORE1_ATCM_BASE address for other cores.
 -  SBL_ENABLE_DDR : Initializes the DDR. At the cost of boot time, this enables
-   to run from and use DDR. SBL_ENABLE_CLOCKS must also be enabed for this to
-   work. Enabling this option increases the boot time.
--  SBL_SKIP_MCU_RESET : Jumps to the MCU0 application entry point
-   without resetting the core. Enables faster boot time. Cannot change the MCU's
-   mode (lock-step/split). Application also inherits the MCU state as the SBL
-   left it in.
+   applications to run from DDR. Enabling this option increases the boot time.
    
 .. raw:: html
 
@@ -345,7 +345,13 @@ ease of use, boot time and size. These can be enabled or disabled by editing `sb
 
 **NOTE**
 
-Refer **<PDK>/packages/ti/boot/sbl/buid/sbl_am65xx.sh** for more build options
+-  Refer **<PDK>/packages/ti/boot/sbl/buid/sbl_am65xx.sh** for more build options
+-  When SBL_ENABLE_DDR compile option is enabled, SBL only initializes DDR if it
+   detects a section is being loaded into DDR address space. If an application
+   does not load any section into DDR, but uses DDR at runtime (say only heap is in DDR)
+   then the SBL will not initilaize the DDR. In such cases, it is the applications
+   responsibility to call Board_init(BOARD_INIT_DDR) to initialize the
+   DDR.
 
 .. raw:: html
 
@@ -354,6 +360,107 @@ Refer **<PDK>/packages/ti/boot/sbl/buid/sbl_am65xx.sh** for more build options
 .. _am655x-compiling-apps-for-sbl:
 
 **Compiling apps that can be loaded by SBL:**
+
+**Memory Map Considerations**
+
+Applications that the SBL loads must comply with the am655x-sbl-memory-usage_. 
+In the application's linker command file, care must be taken to not use the first
+0x100 bytes of either MCU's ATCM memory and SBL reserved memory from 0x41C00100 
+to 0x41C60000.
+
+The local address 0x0 of the MPU is not accessible from the MCU, so any MPU linker 
+command file must not specify any loadable sections in that memory region. The SBL
+will not be able to access that memory to load code or data.
+
+.. raw:: html
+
+   <div
+   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+
+**NOTE**
+
+-  The reference rtos linker command file for MCU in <PDK>/packages/ti/build/
+   am65xx/linker_r5_sysbios.lds is incorrect, as it does not mark the memory used by
+   the SBL as reserved. SYSBIOS applications using this memory map will work 
+   when loaded through CCS, but will crash when loaded using the SBL. Please refer 
+   the release notes for information on how to update the linker command file so 
+   that the application can be loaded by both CCS and SBL
+-  MCU app entry point in DDR: If an MCU application specifies that its entry point is in 
+   DDR, it must take care that the function pointed to by the reset vector should setup the 
+   RAT to map DDR, before branching to the application entry point in DDR.
+
+::
+
+    ;*------------------------------------------------------
+    ;* Example Reset vector code. This will not work
+    ;* if entry point is in DDR.
+    ;* This will be visible at address 0x0
+    ;*------------------------------------------------------
+    .global _resetvectors
+    .sect ".rstvectors"
+    _resetvectors:
+    .asmfunc
+    LDR pc, c_int00_addr ; Reset.
+                         ; This instuction will fail as
+                         ; c_int00_addr is in DDR and DDR
+                         ; is not enabled in MCU RAT RAT
+    LDR pc, HF_addr ; Undefined Instruction
+    LDR pc, HF_addr ; Software interrupt
+    LDR pc, HF_addr ; Abort (prefetch)
+    LDR pc, HF_addr ; Abort (data)
+    LDR pc, HF_addr ; IRQ
+    LDR pc, HF_addr ; FIQ
+    .endasmfunc
+
+    c_int00_addr .long _c_int00
+    HF_addr .long HF
+
+
+
+    ;*------------------------------------------------------
+    ;* Modified Reset vector code that will work
+    ;* if entry point is in DDR.
+    ;* This will be visible at address 0x0
+    ;*------------------------------------------------------
+
+    .global _resetvectors
+    .sect ".rstvectors"
+    _resetvectors:
+    .asmfunc
+    B rat_init ; Reset
+               ; This is PC relative
+               ; Make sure rat_init is right 
+               ; after vector table
+    LDR pc, HF_addr ; Undefined Instruction
+    LDR pc, HF_addr ; Software interrupt
+    LDR pc, HF_addr ; Abort (prefetch)
+    LDR pc, HF_addr ; Abort (data)
+    LDR pc, HF_addr ; IRQ
+    LDR pc, HF_addr ; FIQ
+
+    ;*------------------------------------------------------
+    ;* Setup single rat entry for DDR
+    ;* Making sure  _resetvectors to HF_aadr
+    ;* is not more than 128 bytes
+    ;*------------------------------------------------------
+
+    rat_init:
+    ;*------------------
+    ;*Setup RAT here
+    ;*Map DDR memory
+    ;*------------------
+    LDR pc, c_int00_addr    ; Branches to DDR
+
+    c_int00_addr .long _c_int00
+    HF_addr .long HF
+
+    .endasmfunc
+
+.. raw:: html
+
+   </div>
+
+**Converting ELF executables to SBL loadable image**
 
 Depending on the usecase, an ELF application executable can be converted into an 
 image that can be loaded by SBL in many ways.
@@ -586,5 +693,5 @@ running on the host.
 -  All SBL prints are routed to the MCU UART.
 -  To verify setup is correct, setup the EVM to boot from UART  as the Primary Boot 
    Device(refer `AM6x EVM Hardware Users Guide <http://www.ti.com/lit/pdf/spruim7>`__.
-   Power cycle the EVM, and look for he string CCCCCCC on the UART.
+   Power cycle the EVM, and look for the string CCCCCCC on the UART.
 	
