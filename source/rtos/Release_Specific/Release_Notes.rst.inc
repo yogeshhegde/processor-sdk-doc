@@ -59,14 +59,24 @@ Released Sept 30 2018
 .. rubric::  New Features
    :name: new-features
 
--  Processor SDK software support extension for AM65x SOC and additional boards/EVMs am65xx-evm and am65xx-idk. All unit tests for drivers in the case of AM65x SOC is available through standard makefile infrastructure.Use make all or gmake all from top level pdk_am65xx_1_0_x\packages after setting the environment using pdksetupenv.bat|sh. Following additional updates are available from EA Release:
-	- SBL (Boot Loader Support) for MMCSD and OSPI interface
-	- Additional Drivers: PCIe, UDMA LLD, DSS, CAL
-	- Additional source release of firmware: PRU-ICSS-G Dual EMAC support
-   
--  PRU-ICSS Dual EMAC Firmware Feature externsion: Multicast filtering and PTP
--  AM437x PRU-ICSS I2C Firmware 
-	- Additional support for PRU-ICSS-0 instance
+-  Processor SDK RTOS now includes additional support of AM65x family of devices.
+- New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
+AM65x
+	- Features Supported
+		- Boot :SBL (Boot Loader Support) for MMCSD and OSPI interface. Please refer to `SBL AM65x: <Foundational_Components.html#am65x>`__
+		- Connectivity: UART, I2C,GPIO, McSPI,OSPI,MMC,CPSW,ICSS-G Dual EMAC/PRU Ethernet,USB host and device, MMCSD,eMMC
+		- Audio: McASP
+		- DMA Driver: UDMA LLD
+		- Display and Camera: DSS,CAL
+		- IPC: Hardware spinlocks and mailbox
+		- Crypto Low level Driver: SA2 UL
+		- DDR @ 1333 MHz, and CPU @ 800 MHz configuration
+		- Additional source release of firmware: PRU-ICSS-G Dual EMAC support
+	- Features not (yet) supported
+        - USB 3.0,OSPI 133Mhz/166Mhz, MCU/R5 Split Mode, MPU TI-RTOS SMP Support
+-  PRU-ICSS Dual EMAC Firmware Feature extension: Multicast filtering and PTP
+-  `PRU-ICSS I2C Firmware: <PRU_ICSS.html#pru-icss-i2c>`__
+	- Additional support for PRU-ICSS-0 instance of AM437x SOC
 -  AM335x Connectivity extension to support `Simplelink 3120 NWP WiFi: <Examples_and_Demonstrations.html#simplelink-wifi-demo>`__
 
 .. rubric::  Component Version
@@ -278,9 +288,7 @@ The following table lists all supported devices for a given installer.
 |`RTOS-AM57X`_   |`AM57x`_    |`AM5706`_, `AM5708`_, `AM5716`_, `AM5718`_, `AM5726`_, `AM5728`_,              |
 |                |            |`AM5746`_, `AM5748`_                                                           |
 +----------------+------------+-------------------------------------------------------------------------------+
-|RTOS-AM65X      |AM65x       |AM65xx Family of SOCs (AM6526,AM6528,AM6546,AM6548)  Available through mySecure |
-+----------------+------------+-------------------------------------------------------------------------------+
-|RTOS-AM65X      |AM65x       |AM65xx Family of SOCs(AM6526,AM6528,AM6546,AM6548)  Available through mySecure |
+| RTOS-AM65X     | AM65x      |AM65xx Family of SOCs (AM6526,AM6528,AM6546,AM6548, DRA80xM)                   |
 +----------------+------------+-------------------------------------------------------------------------------+
 |`RTOS-C665X`_   |`C665x`_    | `C6652`_, `C6654`_, `C6655`_, `C6657`_                                        |
 +----------------+------------+-------------------------------------------------------------------------------+
