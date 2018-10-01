@@ -84,3 +84,9 @@ Customizing Memory map for creating Multicore Applications on AM57xx using IPC
 IPC Debugging Tools and Techniques on AM57xx
 --------------------------------------------
 .. include:: How_to_Guides/Host/System_Integration/IPC_Debugging_Tools_and_Techniques_on_AM57xx.rst.inc
+
+*******************
+EVM Hardware Setup
+*******************
+
+.. include:: How_to_Guides/EVM_Hardware_Setup/TMDX654_EVM_Hardware_Setup.rst.inc
