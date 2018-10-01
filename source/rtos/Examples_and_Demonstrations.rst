@@ -80,3 +80,10 @@ RTOS Template Application
 ***************************
 .. include:: Examples_and_Demonstrations/RTOS_Template_App.rst.inc
 
+
+***************************
+SimpleLink WiFi Demo
+***************************
+.. _Demo-SimpleLink-WiFi-Demo-label:
+.. include:: Examples_and_Demonstrations/SimpleLink_WiFi_Demo.rst.inc
+

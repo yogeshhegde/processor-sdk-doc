@@ -80,3 +80,7 @@ Create DSP and IPU firmware using PDK drivers and IPC to load from ARM Linux on 
 Customizing Memory map for creating Multicore Applications on AM57xx using IPC 
 -------------------------------------------------------------------------------
 `<http://www.ti.com/lit/an/sprac60/sprac60.pdf>`__
+
+IPC Debugging Tools and Techniques on AM57xx
+--------------------------------------------
+.. include:: How_to_Guides/Host/System_Integration/IPC_Debugging_Tools_and_Techniques_on_AM57xx.rst.inc

@@ -68,16 +68,17 @@ software reuse for application developers:
 TI E2E device-specific forums can be used to report a bug or a feature
 addition request:
 
--  **`Sitara E2E forums <http://e2e.ti.com/support/arm/sitara_arm>`__**
--  **`Digital Signal Processsors(DSP) E2E
-   forums <http://e2e.ti.com/support/dsp/c6000_multi-core_dsps>`__**
+-  `Sitara E2E forums <http://e2e.ti.com/support/arm/sitara_arm>`_
+
+-  `Digital Signal Processsors(DSP) E2E
+   forums <http://e2e.ti.com/support/dsp/c6000_multi-core_dsps>`_
 
 .. rubric:: How do I know the list of known issues and bugs resolved in
    Processor SDK RTOS release?
    :name: how-do-i-know-the-list-of-known-issues-and-bugs-resolved-in-processor-sdk-rtos-release
 
 The information on known issues and bug fixes in Processor SDK RTOS can
-be found in the `Release Notes <Release_Specific.html#release-notes>`__
+be found in the `Release Notes <Release_Specific.html#release-notes>`_
 for the version of the SDK you wish to use.
 
 .. rubric:: I am a current Sitara Starterware user. Should I migrate to
@@ -102,7 +103,7 @@ Processor SDK RTOS provides an easy migration path for existing MCSDK
 3.x (K2X) and MCSDK 2.x (C66xx) developers to move their application to
 the new software package. For complete details please refer to the wiki
 `MCSDK to Processor SDK RTOS
-Migration <http://processors.wiki.ti.com/index.php/MCSDK_to_Processor_SDK_Migration#Processor_SDK_RTOS>`__.
+Migration <http://processors.wiki.ti.com/index.php/MCSDK_to_Processor_SDK_Migration#Processor_SDK_RTOS>`_.
 
 .. rubric:: How do I download earlier version of Processor SDK RTOS?
    :name: how-do-i-download-earlier-version-of-processor-sdk-rtos
@@ -110,6 +111,27 @@ Migration <http://processors.wiki.ti.com/index.php/MCSDK_to_Processor_SDK_Migrat
 The download page for every Processor SDK RTOS release contains links to
 the previous release. Users can revert back to earlier releases using
 this link provided under the section "Previous Release."
+
+.. rubric:: Does processor SDK RTOS release support all device part numbers in supported device family?
+   :name: does-processor-sdk-rtos-release-support-all-device-part-numbers-in-supported-device-family
+   
+Processor SDK RTOS software is tested and validated on TI evaluation platforms that generally includes the superset part
+in the device family however, the software components like CSL, LLD drivers and RTOS are applicable on reduced feature set 
+variant of the devices. Most of the code in the Processor SDK RTOS for multi-core devices is independent of how many cores 
+exists on the device as they provide baseline platform software that can be run from any core. 
+
+It is the users responsibility to modify components that deploy tasks/software on slave cores like OpenMP, OpenCL, IPC and MultiProc Manager 
+so that they use the feature set that is available on their device. In most cases software documentation will provide guidance on updating 
+the software package however this should not be considered a comprehensive list of software components to be updated
+to run the software on a reduced feature set device variant.
+
+Example: `Processor SDK RTOS porting guide for AM571x/AM570x Speed 
+Grades <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Porting_Guide_for_AM571x/AM570x_Speed_Grades>`_
+
+Features noted as “not supported,” in device datasheet must not be used. Their functionality is not supported by TI for this 
+family of devices. These features are subject to removal without notice on future device revisions. Any information regarding 
+the unsupported features has been retained in the documentation solely for the purpose of clarifying signal names or for consistency 
+with previous feature descriptions.
 
 | 
 
@@ -630,23 +652,15 @@ steps are involved in creating custom board library:
 
 **Useful DDR Configuration Resources**
 
-+-----------------------------------+-----------------------------------+
-|    **Sitara Resources:**          |    **Keystone Resources:**        |
-+-----------------------------------+-----------------------------------+
-| -  `AM57x EMIF Tools              | -  `KeyStone II DDR               |
-|    <http://www.ti.com/lit/an/     |    Initialization                 |
-|    sprac36/sprac36.pdf>`__        |    Guide <http://www.ti.com/lit	|
-| -  `AM437x DDR Configuration      |    /an/sprabx7/sprabx7.pdf>`__	|
-|    Guide <http://processors.wiki. | -  `KeyStone II DDR Debug         |
-|    ti.com/index.php/AM437x_DDR_   |    Guide <http://www.ti.com/lit	|
-|    Configuration_and_ 	    |    /an/sprac04/sprac04.pdf>`__	|
-|    Programming_Guide>`__          | -  `KeyStoneI DDR                 |
-| -  `AM335x/AM11x EMIF             |    Initialization <http://www.ti. |
-|    Configuration                  |    com/lit/an/sprabl2d 		|
-|    Tools <http://processors.wiki. |    /sprabl2d.pdf>`__		|
-|    ti.com/index.php/AM335x_EMIF   |                                   |
-|    _Configuration_tips>`__        |                                   |
-+-----------------------------------+-----------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+| Sitara Resources:                                                                                                                | Keystone Resources:                                                  |
++==================================================================================================================================+======================================================================+
+| `AM57x EMIF Tools <http://www.ti.com/lit/pdf/sprac36>`_                                                                          | `KeyStone II DDR Guide <http://www.ti.com/lit/pdf/sprabx7>`_         |
++----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+| `AM437x DDR Configuration Guide <http://processors.wiki.ti.com/index.php/AM437x_DDR_Configuration_and_Programming_Guide>`_       | `KeyStone II DDR Debug Guide <http://www.ti.com/lit/pdf/sprac04>`_   |
++----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
+| `AM335x/AM11x EMIF ConfigurationTools <http://processors.wiki.ti.com/index.php/AM335x_EMIF_Configuration_tips>`_                 | `KeyStoneI DDR Initialization <http://www.ti.com/lit/pdf/sprabl2>`_  |
++----------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
 
 -  **Modify SoC Pin Mux Settings.** The Pin Mux configuration for a
    particular platform is obtained by creating a .pinmux project for the
@@ -711,7 +725,7 @@ Customization <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Custom
 Processor SDK RTOS
 Training <http://training.ti.com/application-development-using-processor-sdk-rtos/index.html>`__
 and `Application Notes on AM57xx Pin Multiplexing
-Utilities <http://www.ti.com/lit/an/sprac44/sprac44.pdf>`__.
+Utilities <http://www.ti.com/lit/pdf/sprac44>`__.
 
 .. rubric:: How can I modify PLL settings in board libraries?
    :name: how-can-i-modify-pll-settings-in-board-libraries
@@ -738,7 +752,7 @@ are consolidated in the following files:
 A good example of the steps involved in modifying a peripheral instance
 is provided in the application note "`Processor SDK RTOS Customization:
 Modifying UART
-Instance <http://www.ti.com/lit/an/sprac32/sprac32.pdf>`__"
+Instance <http://www.ti.com/lit/pdf/sprac32>`__"
 
 | 
 
@@ -1073,11 +1087,11 @@ management of instruction memory as well as data memory. There are some
 useful documents that enable benchmarking on the DSP and ARM cores.
 
 -  `Introduction to DSP
-   Optimization <http://www.ti.com/lit/an/sprabf2/sprabf2.pdf>`__
+   Optimization <http://www.ti.com/lit/pdf/sprabf2>`__
 -  `TI portal for Core
    Benchmarking <http://www.ti.com/lsds/ti/processors/technology/benchmarks/core-benchmarks.page>`__
 -  `TI DSP Benchmarking Application
-   Report <http://www.ti.com/lit/an/sprac13/sprac13.pdf>`__
+   Report <http://www.ti.com/lit/pdf/sprac13>`__
 
 | 
 

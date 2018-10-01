@@ -9,14 +9,101 @@ into details of software components provided in the SDK. Consequently,
 make sure there are no SD cards installed on the EVM with an OS prior to
 exploring the following examples.
 
-If you face any problems with CCS or JTAG, see try these
+If you face any problems with CCS or JTAG, try these
 `troubleshooting steps <How_to_Guides.html#troubleshooting>`__.
 
-.. note::
-   All instructions on this wiki have been created using CCSv6 but should
-   apply to CCSv7. Please report any issues by posting on `E2E
-   forums <https://e2e.ti.com/>`__
 
+ARM Cortex-A53
+===============
+In this article, we take a look at creating bare-metal hello world examples for the Cortex-A53 core in CCS. We will be using the AM654x device as an example.
+
+.. Note:: For future Device Support Package releases, the Hello World examples will be added to CCS as an out-of-box experience. 
+
+1. Start CCS and create a workspace for 
+generating the project.
+
+2. Navigate to File -> New -> 
+CCS Project.
+
+3. Select Target as AM65x - Cortex A53 and GPEVM_AM65x as 
+shown in the image below.
+
+4. Select **Cortex A setting** in the options below and provide a name for the project. Use the default advanced settings 
+for the project. Select **GNU v7.2.1 (Linaro aarch64)** (or higher) for the Compiler Version. Under Tool-chain, for the Linker Command file, select the file (PDK INSTALL PATH)/packages/ti/build/am65xx/**linker_a53.lds**.  
+
+Under Project templates and examples, select **Empty Project (with main.c).**
+	
+Click Finish after you are done to allow CCS to auto generate the
+project from the template.
+
+
+.. Image:: ../images/AM65x_Create_CCS_Project.png
+
+
+5. The generated CCS project contains source file **main.c**, ARM assembly code **startup_ARMCA53.S** and a linker command file **AM65X.lds**. 
+Remove startup_ARMCA53.S and AM65X.lds from the project.
+
+
+6. Add the following linker command file to the project. 
+::
+
+	(PDK INSTALL PATH)/packages/ti/build/am65xx/linker_a53.lds
+	
+
+|
+	
+7. Modify main.c to include the 
+following::
+	
+	/* Header files */
+	#include <stdint.h>
+	#include "stdio.h"
+
+	int main(void)
+	{
+		printf("Hello World\n");
+		while(1);
+	}
+
+8. Navigate to Project Properties -> CCS Build -> GNU Compiler -> Directories and 
+add the following include paths. 
+::
+ 
+	(PDK INSTALL PATH)/packages
+	(PDK INSTALL PATH)/packages/ti/csl
+	
+9. Navigate to CCS Build -> GNU Linker -> Libraries and add the 
+following libraries.
+::
+ 
+	ti.csl.init.aa53fg
+	ti.csl.aa53fg
+	rdimon
+	stdc++
+	gcc
+	c
+	m
+
+10. Add the following library search 
+path.
+::
+
+	(PDK INSTALL PATH)/ti/csl/lib/am65xx/a53/release
+	
+
+11. Save all changes, and right click on the project and select Build Project to 
+build the project and generate hello_world.out. 
+
+12. Launch the target configuration using your emulator to connect to the AM65x EVM as 
+described in the :ref:`Processor-SDK-RTOS-Getting-Started-Guide-label`.
+
+13. Right click on **DMSC_Cortex_M3_0** and click connect to target. 
+After connecting to the M3, right click on **CortexA53_0_0** and connect to it. 
+
+14. Load and run hello_world.out example file on the Cortex-A53. 
+You should see a Hello_world string displayed in the CCS console window.
+
+.. Image:: ../images/AM65x_CCS_Hello_World.PNG
 
 ARM Cortex-A15
 ==============
@@ -37,6 +124,7 @@ in the Keystone 2 family of devices.
       K2H, the CCS template doesn`t populate the .lds file. K2H & K2E users
       can choose to use 66AK2G02.lds located at ccsv6\ccs_base\arm\include
       as reference to add .lds file to their hello world projects.
+
 
 1. Start CCS and create a work space for generating the project.
 
@@ -70,7 +158,7 @@ highlighted code lines and save main.c file.
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
       /*
       * hello.c
@@ -109,7 +197,7 @@ contains the following Memory configurations.
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
      MEMORY
      {
@@ -173,6 +261,7 @@ configurations --> AM572_DDR3_532MHz_config
       see if the GNU linker is linking to Semihosting library (librdimon)
       in the linker setting. If it is not linked go to GNU linker settings
       in CCS project and add **"rdimon"** to the libraries that are linked
+	  
 | 
 
 ARM Cortex-A9
@@ -220,7 +309,7 @@ Ensure the main.c file contains the following code
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
       /*
       * hello.c
@@ -251,7 +340,7 @@ Ensure the main.c file contains the following code
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
      MEMORY
      {
@@ -329,7 +418,7 @@ assembly code **startup_ARMCA8.S** and a linker command file
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
       /*
       * hello.c
@@ -360,7 +449,7 @@ assembly code **startup_ARMCA8.S** and a linker command file
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
      MEMORY
      {
@@ -400,9 +489,70 @@ World!** string displayed on CCS console window.
 .. note::
    If the example does not load correctly in the first attempt, reload and
    **ensure ARM core starts at main**.
+   
+|
+
+ARM Cortex-R5
+=============
+
+In this article, we take a look at creating bare-metal hello world examples for the Cortex-R5 core in CCS. We will be using the AM654x device as an example.
+
+.. Note:: For future Device Support Package releases, the Hello World examples will be added to CCS as an out-of-box experience. 
+
+1. Start CCS and create a workspace for 
+generating the project.
+
+2. Navigate to File -> New -> 
+CCS Project.
+
+3. Select Target as AM65x - Cortex R5 and GPEVM_AM65x as 
+shown in the image below.
+
+4. Select the **Cortex R** tab and provide a name for the project. Select **TI v18.1.2.LTS** (or higher) for the Compiler Version. 
+Under Tool-chain, set the Device Endianness to **little**, and for the Linker Command file, select **linker_r5.lds** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/.
+
+Under Project templates and examples, select **Basic Examples -> Hello World**
+	
+Click Finish after you are done to allow CCS to auto generate the
+project from the template.
+
+.. Image:: ../images/AM65x_Create_CCS_Project_R5.png
+
+5. The generated CCS project contains source file **hello.c**, 
+and linker command file **linker_r5.lds**. 
+	
+6. Navigate to CCS Build -> ARM Linker -> File Search Path and 
+add the following libraries.
+::
+ 
+	ti.csl.aer5f
+	ti.csl.init.aer5f
+	libc.a
+
+7. Add the following library 
+search path.
+::
+
+	(PDK INSTALL PATH)/ti/csl/lib/am65xx/r5f/release
+	
+
+8. Save all changes, and right click on the project and select Build Project to 
+build the project and generate hello_world.out. 
+
+9. Launch the target configuration using your emulator to connect to the AM65x EVM as 
+described in the :ref:`Processor-SDK-RTOS-Getting-Started-Guide-label`.
+
+10. Right click on **DMSC_Cortex_M3_0** and click connect to target. 
+After connecting to the M3, right click on **MCU_PULSAR_Cortex_R5_0** and connect to it. 
+
+11. Load and run hello_world.out example file on the Cortex-R5. 
+You should see a Hello_world string displayed in the CCS console window.
+
+.. Image:: ../images/AM65x_CCS_Hello_World_R5.PNG
+
 | 
 
-ARM Coretex-M4
+ARM Cortex-M4
 ==============
 
 1. Start CCSv6 and create a work space for generating the project.
@@ -433,7 +583,7 @@ Ensure the main.c file contains the following code
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
       /*
       * hello.c
@@ -466,7 +616,7 @@ linker command file has the following memory sections.
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
     MEMORY
     {
@@ -526,8 +676,10 @@ displayed on console window.
 .. Image:: ../images/Hello_world_m4.jpg
 
 .. note::
+
    If the example does not load correctly in the first attempt, reload and
    **ensure ARM core starts at main**.
+   
 | 
 
 DSP C66x
@@ -571,7 +723,7 @@ Ensure the main.c file contains the following code
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
       /*
       * hello.c
@@ -604,7 +756,7 @@ linker command file has the following memory sections.
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
     MEMORY
     {
@@ -709,7 +861,7 @@ Ensure the main.c file contains the following code
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
       /*
       * hello.c
@@ -742,7 +894,7 @@ linker command file has the following memory sections.
 
    <div class="c source-c">
 
-.. code:: de1
+.. code:: c
 
     MEMORY
     {
@@ -798,10 +950,10 @@ The linker command file is designed to place code in OCMC memory.
 8. Launch target configurations using your emulator to connect to
 OMAPLx/C674x LCDK as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`.
 
-9. Developers can Connect to the C674x on OMAPL137/C6747/C6748 can
+9. Developers on OMAPL137/C6747/C6748 can
 connect directly to the DSP. For OMAPL138 device, you will need to
 connect to the ARM as this is ARM master boot device and ARM needs to
-power up the DSP You should see the following log in the Console
+power up the DSP. You should see the following log in the console.
 
 ::
 
