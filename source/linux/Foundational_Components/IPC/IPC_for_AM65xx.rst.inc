@@ -17,7 +17,7 @@ Prerequisites
 
 -  `Processor SDK Linux for
    AM65xx <http://software-dl.ti.com/processor-sdk-linux/esd/AM65X/latest/index_FDS.html>`__
-   (Version 3.01 or newer needed)
+   (Version 5.1 or newer needed)
 -  `Processor SDK RTOS for
    AM65xx <http://software-dl.ti.com/processor-sdk-rtos/esd/AM65X/latest/index_FDS.html>`__
 -  `Code Composer
@@ -58,7 +58,7 @@ The RTOS SDK is installed at:
     ├── ipc_3_xx_xx_xx
     ├── ndk_3_xx_xx_xx
     ├── ns_2_xx_xx_xx
-    ├── pdk_am57xx_x_x_x
+    ├── pdk_am65xx_x_x_x
     ├── processor_sdk_rtos_am65xx_x_xx_xx_xx
     ├── uia_2_xx_xx_xx
     ├── xdais_7_xx_xx_xx
@@ -75,10 +75,10 @@ the remotecores(R5's) run TI RTOS. In the normal operation,
 boot loader(U-Boot/SPL) boots and loads the A53 with the HLOS. The A53
 boots the R5 cores.
 
-.. Image:: ../images/Normal-boot.png
+.. Image:: ../images/Normal-boot-a53.png
 
 In this sequence, the interval between the Power on Reset and the
-remotecores (i.e. the DSP's and the M4's) executing is dependent on the
+remotecores (i.e. the R5Fs) executing is dependent on the
 HLOS initialization time.
 
 | 
@@ -101,8 +101,7 @@ point for this effort.
 
 The instructions to build IPC examples found under
 ipc\_3\_xx\_xx\_xx/examples/AM65XX\_linux\_elf have been provided in the
-**`Processor\_SDK IPC Quick Start
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_IPC_Quick_Start_Guide#Build_IPC_Linux_examples>`__.**
+`Processor SDK IPC Quick Start Guide <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_IPC.html#ipc-quick-start-guide>`__.
 
 Let's focus on one example in particular, ex02\_messageq, which is
 located at
@@ -139,8 +138,8 @@ On the target, let's create a directory called ipc-starter:
 
 ::
 
-    root@am57xx-evm:~# mkdir -p /home/root/ipc-starter
-    root@am57xx-evm:~# cd /home/root/ipc-starter/
+    root@am65xx-evm:~# mkdir -p /home/root/ipc-starter
+    root@am65xx-evm:~# cd /home/root/ipc-starter/
 
 You will need to copy the ex02\_messageq directory of your host PC to
 that directory on the target (through SD card, NFS export, SCP, etc.).
@@ -161,21 +160,21 @@ example, let's update the r5f0 executable on the target:
 
 ::
 
-    root@am57xx-evm:~# cd /lib/firmware/
-    root@am57xx-evm:/lib/firmware# ln -sf /home/root/ipc-starter/ex02_messageq/r5f-0/bin/debug/server_r5f-0.xer5f am65x-mcu-r5f0-fw
+    root@am65xx-evm:~# cd /lib/firmware/
+    root@am65xx-evm:/lib/firmware# ln -sf /home/root/ipc-starter/ex02_messageq/r5f-0/bin/debug/server_r5f-0.xer5f am65x-mcu-r5f0-fw
 
 To reload R5F0 with this new executable, we perform the following steps:
 
-::
+First identify the remotproc node associated with R5F0. This can be done by::
 
-First identify the remotproc node associated with R5F0. This can be done by
-    root@am57xx-evm:/lib/firmware# grep -Isr r5f /sys/kernel/debug/remoteproc/
+    root@am65xx-evm:/lib/firmware# grep -Isr r5f /sys/kernel/debug/remoteproc/
 
-This will display for example.
+This will display for example::
+
     /sys/kernel/debug/remoteproc/remoteproc8/resource_table:  Name trace:r5f0
     /sys/kernel/debug/remoteproc/remoteproc8/name:41000000.r5f
 
-then remoteproc8 is the node for the r5f core. ( Note the remoteprocx can change to for example remoteproc4)
+then remoteproc8 is the node for the r5f core. ( Note the remoteprocx can change to for example remoteproc4)::
 
     root@am65xx-evm:~# echo stop > /sys/class/remoteproc/remoteproc4/state
     [ 6663.636529] remoteproc remoteproc4: stopped remote processor 41000000.r5f
@@ -192,9 +191,8 @@ then remoteproc8 is the node for the r5f core. ( Note the remoteprocx can change
 More info related to loading firmware to the various cores can be found
 `here <Foundational_Components_Multimedia.html#firmware-loading-and-unloading>`__.
 
-Finally, we can run the example on R5 core:
+Finally, we can run the example on R5 core::
 
-::
     root@am65xx-evm:~# ./app_host R5F-0
     --> main:
     --> Main_main:
@@ -235,7 +233,7 @@ Finally, we can run the example on R5 core:
 
 ::
 
-    root@am57xx-evm:~# cat /proc/iomem
+    root@am65xx-evm:~# cat /proc/iomem
     [snip...]
 	80000000-9affffff : System RAM
 	80080000-80b2ffff : Kernel code
