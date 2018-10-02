@@ -1,10 +1,12 @@
 .. rubric:: Introduction
    :name: introduction-linux-ipc-on-am65xx
 
-AM65xx device in addition to the Cortex A53 cores has a MCU subsystem, which has 2 R5F cores which can work as seperate cores or in lock-step mode.
+The AM65xx device has an MCU subsystem in addition to the Cortex-A53 cores. The MCU subsystem consists of 2 Cortex-R5F cores which can work as seperate cores or in lock-step mode.
 
 This article is geared toward AM65xx users that are running Linux on the
 Cortex A53 core. The goal is to help users understand how to establish communication with the R5F cores.
+
+For users running TI-RTOS on the A53 core, please refer to the section "A53 Running TI-RTOS" at the end of this article. 
 
 There are many facets to this task: building, loading, debugging,
 memory sharing, etc. This article intends to take incremental steps
@@ -69,16 +71,14 @@ The RTOS SDK is installed at:
 .. rubric:: Typical Boot Flow on AM65xx for ARM Linux users
    :name: typical-boot-flow-on-am65xx-for-arm-linux-users
 
-AM65xx SOC's have multiple processor cores - Cortex A53, ARM R5F cores.
- The A53 typically runs a HLOS like Linux/Android and
-the remotecores(R5's) run TI RTOS. In the normal operation,
-boot loader(U-Boot/SPL) boots and loads the A53 with the HLOS. The A53
+AM65xx SOC's have multiple processor cores - Cortex A53, ARM R5F cores. The A53 typically runs a HLOS like Linux/Android and the remote cores (R5Fs) run TI-RTOS. In the normal operation, 
+boot loader(U-Boot/SPL) boots and loads the A53 with the HLOS. The A53 
 boots the R5 cores.
 
 .. Image:: ../images/Normal-boot-a53.png
 
 In this sequence, the interval between the Power on Reset and the
-remotecores (i.e. the R5Fs) executing is dependent on the
+remote cores (i.e. the R5Fs) executing is dependent on the
 HLOS initialization time.
 
 | 
@@ -426,3 +426,27 @@ Key points are:
    in the cfg file should be the same (or less). It looks like this:
    ``SysMin.bufSize  = 0x8000;``
 
+.. rubric:: A53 Running TI-RTOS
+   :name: A53 Running TI-RTOS
+   
+The IPC package also includes examples for the use-case with the Host and slave cores running TI-RTOS. 
+They can be built from the Processor SDK RTOS package.
+
+.. Note:: To Install RTOS Proc SDK, please follow the instructions in the `RTOS SDK Getting Started Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#processor-sdk-rtos-getting-started-guide>`_ 
+
+In the RTOS Processor SDK, the ipc examples are located under <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx/ipc_<version>/examples/<platform>_bios_elf.
+
+Once the RTOS Processor SDK is installed at the default location, the IPC examples can be built with the following commands:
+
+.. code-block:: c
+  
+	1. Configure the build environment in
+      <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx directory
+        $ cd <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx 
+        $ source ./setupenv.sh
+	2. Start the top level build:
+        $ make ipc_examples
+		
+Once the examples are built, they can be run by loading and running the binaries using CCS through JTAG. Please refer to the section "Advanced AM65x Debug Setup with DMSC Firmware Load" of the TMDX654 EVM Hardware Setup Guide for steps to load and run the IPC examples.
+
+`TMDX654 EVM Hardware Setup <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#tmdx654-evm-hardware-setup>`_
