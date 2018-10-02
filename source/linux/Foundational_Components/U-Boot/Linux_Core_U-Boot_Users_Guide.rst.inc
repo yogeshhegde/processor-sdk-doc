@@ -30,10 +30,16 @@ following platforms:
 -  `K2L EVM <http://www.ti.com/tool/xevmk2lx>`__
 -  `K2G GP EVM <http://www.ti.com/tool/evmk2g>`__
 -  `K2G ICE EVM <http://www.ti.com/tool/k2gice>`__
--  `OMAP-L138 LCDK <http://processors.wiki.ti.com/index.php/L138/C6748_Development_Kit_(LCDK)>`__
+-  `OMAP-L138 LCDK <http://www.ti.com/product/omap-l138>`__
+-  `AM654x EVM <http://www.ti.com/tool/TMDSEVM654X>`__
+-  `AM654x IDK <http://www.ti.com/tool/TMDXIDK654X>`__
+
+
+Supported Boot Modes
+^^^^^^^^^^^^^^^^^^^^^
 
 +--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| Board                    | Wired ethernet   | USB gadget ethernet   | DFU   | NAND   | SD/eMMC              | USB Host (mass storage)   | SPI flash    |
+| Board                    | CPSW Ethernet    | USB gadget ethernet   | DFU   | NAND   | SD/eMMC              | USB Host (mass storage)   | SPI flash    |
 +==========================+==================+=======================+=======+========+======================+===========================+==============+
 | AM335x EVM               | yes              | yes                   | yes   | yes    | yes                  | yes                       | yes          |
 +--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
@@ -56,6 +62,8 @@ following platforms:
 | K2G EVM                  | yes              | no                    | no    | no     | yes (both)           | no                        | yes (QSPI)   |
 +--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
 | OMAP-L138 LCDK           | yes              | no                    | no    | yes    | yes (SD card only)   | no                        | no           |
++--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
+| AM65xx EVM               | yes              | no                    | yes   | no     | yes                  | yes                       | yes          |
 +--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
 
 We assume that a GCC-based toolchain has already been installed and the
