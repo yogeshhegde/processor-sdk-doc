@@ -31,8 +31,8 @@ following platforms:
 -  `K2G GP EVM <http://www.ti.com/tool/evmk2g>`__
 -  `K2G ICE EVM <http://www.ti.com/tool/k2gice>`__
 -  `OMAP-L138 LCDK <http://www.ti.com/product/omap-l138>`__
--  `AM654x EVM <http://www.ti.com/tool/TMDSEVM654X>`__
--  `AM654x IDK <http://www.ti.com/tool/TMDXIDK654X>`__
+-  `AM65x EVM <http://www.ti.com/tool/TMDX654GPEVM>`__
+-  `AM65x IDK <http://www.ti.com/tool/TMDX654IDKEVM>`__
 
 
 Supported Boot Modes
@@ -63,7 +63,7 @@ Supported Boot Modes
 +--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
 | OMAP-L138 LCDK           | yes              | no                    | no    | yes    | yes (SD card only)   | no                        | no           |
 +--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM65xx EVM               | yes              | no                    | yes   | no     | yes                  | yes                       | yes          |
+| AM65x EVM                | yes              | no                    | yes   | no     | yes                  | yes                       | yes          |
 +--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
 
 We assume that a GCC-based toolchain has already been installed and the
