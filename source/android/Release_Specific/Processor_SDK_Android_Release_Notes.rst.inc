@@ -54,10 +54,10 @@ Documentation
 
 | 
 
-Release 05.00.00
+Release 05.01.00
 =====================
 
-Released July 2018
+Released October 2018
 
 .. rubric:: What's New
    :name: whats-new
@@ -72,7 +72,6 @@ for AM57x.
 
 Following new features are enabled/tested in this release:
 
--  **Support AM574x IDK**
 -  **Boot:** fastboot, emmc boot, GP with FIT model
 -  **Platform:** LPAE support, SELinux Permissive mode
 -  **Connectivity:** USB2.0/USB3.0 Host, Gadget,
@@ -80,7 +79,7 @@ Following new features are enabled/tested in this release:
 -  **Power:** AVS0, MPU DVFS, ABB
 -  **Thermal:** Governors implemented for MPU (On Die), Monitoring
    implemented for all on chip sensors
--  **Video:** 1080p30 MP4/H264/MP2
+-  **Video:** 720p30 MP4/H264/MP2
 -  **Audio:** MP3/AAC playback
 -  **Display:** SGX accelerated UI and touch, DRM/KMS
 
@@ -92,15 +91,13 @@ Following new features are enabled/tested in this release:
 +----------------+------------------------------------------------+
 | Component      | Version                                        |
 +================+================================================+
-| Linux Kernel   | 4.14.40                                        |
+| Linux Kernel   | 4.14.67                                        |
 +----------------+------------------------------------------------+
 | U-boot         | 2018.01                                        |
 +----------------+------------------------------------------------+
 | Android        | Android O-Pastry 8.1                           |
 +----------------+------------------------------------------------+
 | Toolchain      | Linaro GCC 7.2-2017.11                         |
-+----------------+------------------------------------------------+
-| IPC            | 3.47.01.00                                     |
 +----------------+------------------------------------------------+
 
 | 
@@ -124,18 +121,28 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 10, 20, 70
 
-   PANDSDK-112,am572x-evm,u-boot version being used is showing MMC fail messages
-   PANDSDK-127,"am571x-idk, am572x-idk",AM57xx-IDK: Screen is hard to use at default resolution
-   PANDSDK-128,am572x-idk,AM572x-IDK: LCD & HDMI screens intermittently lockup while playing videos
-   PANDSDK-129,"am571x-idk, am572x-idk",AM57xx-IDK: Video played on LCD has long pauses when Android is booted without HDMI connected
-   PANDSDK-132,"am572x-evm, am571x-idk, am572x-idk",Audio breaks up some when MP3 clip is played and Internet is browsed
-   PANDSDK-142,"am572x-evm, am571x-idk, am572x-idk","When running setup.sh script seeing error pop up: ""Unable to find the requested file. Please check the spelling and try again"""
-   PSDKAA-1950,"am572x-evm, am571x-idk, am572x-idk","Random sgx crash on J6 with HDMI connected, one time issue."
-   PSDKAA-1948,"am572x-evm, am571x-idk, am572x-idk","After leaving SGX idle, UI was observed to freeze with SGX crash. One time issue"
-   PSDKAA-1937,"am572x-evm, am571x-idk, am572x-idk",Crashes seen while running gfxbench
+   LCPD-11852,am57xx-evm,U-Boot: AM57x: doesn't detect super-speed thumb drive
+   LCPD-12487,"am574x-idk, am57xx-evm",Android: eth port issue
+   LCPD-12776,am57xx-evm,Android: Graphics Error with Vellamo3 Benchmark
+   LCPD-12934,am57xx-evm,Android: Robustness test: monkey fails
+   LCPD-12935,"am571x-idk, am572x-idk, am574x-idk",PVR Dmabuf error observed
+   LCPD-13467,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Services problems reported after reboot
 
 
 | 
+
+Issues found and closed on this release that may be applicable to prior releases
+-------------------------------------------------------------------------------------
+
+.. csv-table::
+   :header: "Record ID", "Platform", "Title"
+   :widths: 10, 20, 70
+
+    LCPD-13568,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15",Android Boot failure due to binder errors
+    LCPD-13601,"am571x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15",Android: Treble: Gatekeeper service crash
+    LCPD-13668,am57xx-evm,Android: AM57x with LCD: Android System Internal error reported at boot_complete
+
+|
 
 Known Issues
 ----------------
@@ -144,14 +151,16 @@ Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 10, 20, 70, 50
 
-    LCPD-11852,am57xx-evm,U-Boot: AM57x: doesn't detect super-speed thumb drive,
     LCPD-12491,am57xx-evm,Android: Selinux warnings during bootup,
+    LCPD-12511,am57xx-evm,Audio record is not working,
     LCPD-12513,am57xx-evm,Android O: Board takes longer to boot compared to MM,
-    LCPD-12776,am57xx-evm,Android: Graphics Error with Vellamo3 Benchmark,
-    LCPD-12934,am57xx-evm,Android: Robustness test: monkey fails, "Appy patch available `here <http://git.ti.com/cgit/cgit.cgi/android/device-ti-am57xevm.git/commit/?h=d-oreo-mr1-core-release&id=3474bd4ce8d6179eb7aa8a974553a4c63ab91dff>`__"
-    LCPD-12935,"am571x-idk, am572x-idk, am574x-idk",PVR Dmabuf error observed,"Apply `kernel patch <http://git.ti.com/cgit/cgit.cgi/ti-linux-kernel/ti-linux-kernel.git/commit/ti_config_fragments/android.cfg?h=ti-android-linux-4.14.y&id=539a5985e9637391ed6b5eea0725da4818bab35f>`__ and `patches for vendor-ti-dra7xx <http://git.ti.com/cgit/cgit.cgi/android/vendor-ti-dra7xx.git/log/?h=d-oreo-mr1-core-release>`__"
-    LCPD-13011,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm", Web pages take a very long time to load >30 seconds,
-    PANDSDK-154, "am571x-idk, am572x-idk, am574x-idk", 1080p decoding does not work for AM57xx IDKs with LCD connected, "For LCD only without HDMI connected, reduce the resolution by running *wm size 1280x720*. No workaround when both LCD and HDMI are used. This limitation comes from insufficient TILER memory when the screen resolution is larger than 720p. When LCD is connected, the screen resolution is detected and selected as 1920x1200."
+    LCPD-12928,am57xx-evm,Periodic frame freezes observed while decoding H264 video,
+    LCPD-13409,"am571x-idk, am572x-idk, am574x-idk",Android: IDK: Bootloader images fail to boot from eMMC,
+    LCPD-13602,"am571x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15",Android: Treble: Selinux warnings and enforcing mode errors,
+    LCPD-13723,,[android] allmodconfig fails to build on kernel build redirect,
+    LCPD-13795,"am571x-idk, am57xx-evm, am57xx-beagle-x15","Android: Graphics service failure with ""stop"" and ""start"" command",
+    LCPD-13796,am57xx-evm,Android: monkey test causes system crash after 10 mins of execution,
+    LCPD-13797,am57xx-evm,Android:CTS Failures,
 
 | 
 
