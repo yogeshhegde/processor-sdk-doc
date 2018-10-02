@@ -73,7 +73,7 @@ Released Sep 2018
    - `Support VLAN tag in supervision frames. <Industrial_Protocols_HSR_PRP.html#vlan-tag-in-supervision-frame>`__
    - Extend HSR/PRP support to AM335x, AM437x, K2G from AM57xx (Note: PTP SAN is supported only on AM57xx in this release)
 - New TI Designs (available as part of Processor SDK Linux)
-   - `Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK <http://www.ti.com/tool/TIDA-01555>`__
+   - `Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK <Examples_and_Demos_Application_Demos.html#pru-adc-demo>`__
    - `Robotics sense and avoid demonstration using TI mmWave sensors <Examples_and_Demos_Application_Demos.html#sense-and-avoid-demo-with-mmwave-and-sitara>`__
 - OpenCV Performance optimizatons: StereoBM with C66x offload
 - `GTK+ 3.0 Support on AM335x, AM437x, AM57x <Foundational_Components_Graphics.html#gtk-graphics-framework>`__

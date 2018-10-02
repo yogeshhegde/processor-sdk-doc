@@ -51,3 +51,7 @@ TIDL Classification Demo
 
 Refer to various TIDL demos documented at  `Examples and Demos <Foundational_Components_TIDL.html#examples-and-demos>`__
 
+
+PRU-ADC Demo
+========================
+.. include:: Examples_and_Demos/PRU_ADC.rst.inc
