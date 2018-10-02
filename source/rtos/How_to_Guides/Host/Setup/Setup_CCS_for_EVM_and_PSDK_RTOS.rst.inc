@@ -146,6 +146,16 @@ EVMs in the Processor-SDK RTOS:
 +-----------------------+-----------------------+-----------------------+
 | EVM                   | Connection            | Board                 |
 +=======================+=======================+=======================+
+| AM65x EVM             | Texas Instruments     | GPEVM_AM65x           |
+|                       | XDS110 USB Debug      |                       |
+|                       | Probe                 |                       |
+|                       |                       |                       |
++-----------------------+-----------------------+-----------------------+
+| AM65x IDK             | Texas Instruments     | IDK_AM65x             |
+|                       | XDS110 USB Debug      |                       |
+|                       | Probe                 |                       |
+|                       |                       |                       |
++-----------------------+-----------------------+-----------------------+
 | GP335x                | External Emulator     | EVMAM3358             |
 |                       | Supplied by User. EVM |                       |
 |                       | includes a TI 20 pin  |                       |
