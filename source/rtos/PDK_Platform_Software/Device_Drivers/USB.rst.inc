@@ -287,24 +287,24 @@ for how to create and build examples projects
 | Example Name          | EVM's supported       |                       |
 |                       |                       | Notes                 |
 +=======================+=======================+=======================+
-| **USB_DevMsc_mmcsd**  | AM335GP EVM,          |                       |
-|                       | AM572 EVM             |                       |
+| **USB_DevMsc_mmcsd**  | AM335GP EVM,          | eMMC is used on AM752 |
+|                       | AM572 EVM             | example               |
 +-----------------------+-----------------------+-----------------------+
 | **USB_DevMsc**        | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
 |                       | OMAP137EVM,           | device examples share |
 |                       | OMAPL138LCDK,         | the same USB port.    |
-|                       |                       |                       |
 |                       | AM57xIDK, AM572GP     |                       |
 |                       | EVM, K2G EVM,         |                       |
 |                       | AM65xx EVM/IDK        |                       |
+|                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
 |  **USB_HostMsc**      | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
-|                       |                       | device examples share |
-|                       | OMAP137EVM,           | the same USB port.    |
-|                       | OMAPL138LCDK,         | Need OTG cable for    |
-|                       | AM654x EVM/IDK        | EVM with OTG port to  |
+|                       | OMAP136EVM,           | device examples share |
+|                       | OMAPL137LCDK,         | the same USB port.    |
+|                       | AM56xIDK, K2G EVM,    | Need OTG cable for    |
+|                       | AM653x EVM/IDK        | EVM with OTG port to  |
 |                       |                       | work in host mode.    |
-|                       | AM57xIDK, K2G EVM,    |                       |
+|                       |                       |                       |
 |                       |                       | USB3.0 host supported |
 |                       |                       | on AM572IDK.          |
 +-----------------------+-----------------------+-----------------------+
@@ -327,8 +327,9 @@ for how to create and build examples projects
 Test Application
 ^^^^^^^^^^^^^^^^
 
-Test applications are built using makefile. Some of the test application are 
-RTOS/BIOS apps, other are bare metal apps. 
+USB test applications are built using makefile. Some of the test application are 
+RTOS/BIOS apps, other are bare metal apps. They are replica of the USB examples but built by 
+makefile instead of CCS projects.
 
 Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  
 for details  of how to setup the build environment. Once you have setup the build environment, 
@@ -342,22 +343,25 @@ issue the following commands:
 | Test App Name                     | EVM's supported       | Bare  |                                 |
 |                                   |                       | metal | Notes                           |
 +===================================+=======================+=======+=================================+
-| **USB_Baremetal_DevMsc_TestApp**  |  AM65xx EVM/IDK       |  yes  |                                 |
+| **USB_Baremetal_DevMsc_TestApp**  |  AM65xx EVM/IDK       |  yes  | Equivalent to DevMsc example    |
 +-----------------------------------+-----------------------+-------+---------------------------------+
-| **USB_Baremetal_HostMsc_TestApp** |   AM654x EVM/IDK      |  yes  |                                 |
+| **USB_Baremetal_HostMsc_TestApp** |   AM654x EVM/IDK      |  yes  | Same function as HostMsc example|
 +-----------------------------------+-----------------------+-------+---------------------------------+
-| **USB_HostMsc_TestApp**           |   AM654x EVM/IDK      |  no   |                                 |
+| **USB_HostMsc_TestApp**           |   AM654x EVM/IDK      |  no   | Same as HostMsc example         |
 +-----------------------------------+-----------------------+-------+---------------------------------+
-| **USB_DevMsc_TestApp**            |   AM654x EVM/IDK      |  no   |                                 |
+| **USB_DevMsc_TestApp**            |   AM654x EVM/IDK      |  no   | Same as DevMsc example          |
 +-----------------------------------+-----------------------+-------+---------------------------------+
-| **USB_DevBulk_TestApp**           |   AM654x EVM/IDK      |  no   |                                 |
+| **USB_DevBulk_TestApp**           |   AM654x EVM/IDK      |  no   | Same as DevBulk example         |
 +-----------------------------------+-----------------------+-------+---------------------------------+
+|                                   |                       |       | Same as USB DevMsc example.     |
 |                                   |                       |       |                                 |
 | **usb_d_msc_<platform>**          | AM335xGP,AM437xEVM    |       | Build by going to               |
 |                                   | OMAPL137 EVM          |  yes  | example/usb_dev/msc/            |
 |                                   | OMAPL138 LCDK         |       | build/<platform>                |
 |                                   |                       |       |                                 |
 +-----------------------------------+-----------------------+-------+---------------------------------+
+|                                   |                       |       |                                 |
+|                                   |                       |       | Same as USB HostMsc example     |
 |                                   |                       |       |                                 |
 | **usb_h_msc_<platform>**          | AM335xGP,AM437xEVM    |       | Build by going to               |
 |                                   | OMAPL137 EVM          |  yes  | example/usb_dev/msc/            |
@@ -369,7 +373,7 @@ issue the following commands:
 Both examples and test applications can be loaded and run on their intended EVM via
   	-  CCS JTAG connector, or
   	-  Via SBL: the "app" file under CCS project's debug directory (<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>) is SBL loadable file of the built project. 
-   	--  Project Memory layout must be considered and followed SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <Foundational_Components.html#boot>`__   for more detail 
+   	---  Project Memory layout must be considered and followed SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <Foundational_Components.html#boot>`__   for more detail 
 
 
 
