@@ -2,12 +2,12 @@ Introduction
 =============
 
 SPI driver enables communication for general SPI, MCSPI (Multichannel
-SPI) and QSPI (Quad SPI) based peripherals on board through common API
-to application.
+SPI), QSPI (Quad SPI) and OSPI (Octal SPI) based peripherals on board 
+through common API to application.
 MCSPI is a generic full-duplex interface supporting transmit and
-receive of data over SPI bus. QSPI a variant of SPI supports four
+receive of data over SPI bus. QSPI/OSPI is a variant of SPI supports four
 receive data lanes. Driver supports configuration for either single,
-dual or quad data lanes
+dual, quad or octal data lines
 
 Modes of Operation
 ===================
@@ -60,8 +60,8 @@ fields of this structure, see Doxygen help by opening
 *PDK_INSTALL_DIR\packages\ti\drv\spi\docs\doxygen\html\index.html.*
 
 Driver  requires common *SPI_config[]*  to configure hardware attributes
-of MCSPI and QSPI peripherals on SOC and board. First all MCSPI related
-hardware attributes is defined  followed by QSPI hardware attributes.
+of MCSPI and QSPI/OSPI peripherals on SOC and board. First all MCSPI related
+hardware attributes is defined followed by QSPI/OSPI hardware attributes.
 Application will need to include appropriate offset to instance while
 invoking *SPI_open()* API..
 
@@ -154,229 +154,269 @@ Examples
 SPI
 ----
 
-+-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
-+=======================+=======================+=======================+
-| SPI_FlashReadWrite    | Sample application    | Following prints on   |
-|                       | demonstrating read    | console expected:     |
-| Example application   | and write of data     | **Pass criteria:**    |
-|                       | to a NOR flash        |                       |
-|                       | device connected      | All tests have        |
-|                       | over SPI interface.   | passed.               |
-|                       | By default, write     |                       |
-|                       | test is disabled,     |                       |
-|                       | user can enable       |                       |
-|                       | write test by         |                       |
-|                       | defining              |                       |
-|                       | TEST_SPI_NOR_WRITE    |                       |
-|                       | in                    |                       |
-|                       | test/src/SPI_board.h  |                       |
-|                       |                       |                       |
-|                       | If write test is      |                       |
-|                       | enabled, write        |                       |
-|                       | transaction is        |                       |
-|                       | verified              |                       |
-|                       | for correctness by    |                       |
-|                       | reading contents      |                       |
-|                       | back.                 |                       |
-+-----------------------+-----------------------+-----------------------+
-| SPI_TestApplication   |                       | Following prints on   |
-|                       | Driver unit test      | console expected:     |
-|                       | application to        | **Pass criteria:**    |
-|                       | validate features     | All tests have        |
-|                       | and interfaces for    | passed.               |
-|                       | SPI driver            |                       |
-+-----------------------+-----------------------+-----------------------+
-| spiLoopback example   |                       | Following prints on   |
-|                       | Example application   | console expected:     |
-|                       | to validate           | **Pass criteria:**    |
-|                       | features and          | All tests have        |
-|                       | interfaces for SPI    | passed.               |
-|                       | driver in loopback    |                       |
-|                       | mode. Configures      |                       |
-|                       | the SPI in loopback   |                       |
-|                       | mode, transmits a     |                       |
-|                       | test pattern and      |                       |
-|                       | receives it back      |                       |
-|                       | from SPI.             |                       |
-|                       |                       |                       |
-|                       |                       |                       |
-|                       | Note: This example    |                       |
-|                       | is intended to        |                       |
-|                       | demonstrate the SPI   |                       |
-|                       | LLD API usage on      |                       |
-|                       | the HW platforms      |                       |
-|                       | where SPI memory is   |                       |
-|                       | not available.        |                       |
-|                       | Currently this        |                       |
-|                       | example is            |                       |
-|                       | supported on          |                       |
-|                       | OMAPL138/C6748        |                       |
-|                       | platforms.            |                       |
-+-----------------------+-----------------------+-----------------------+
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+| Name                  | Description           | Expected Results      | SoC Supported       | Build Type          |
++=======================+=======================+=======================+=====================+=====================+
+| SPI_FlashReadWrite    | Sample application    | Following prints on   |    k2g,             | CCS project         |
+|                       | demonstrating read    | console expected:     |    k2hk,            |                     |
+| Example application   | and write of data     | **Pass criteria:**    |    k2l,             |                     |
+|                       | to a NOR flash        |                       |    k2e,             |                     |
+|                       | device connected      | All tests have        |    c6657,           |                     |
+|                       | over SPI interface.   | passed.               |    c6678,           |                     |
+|                       | By default, write     |                       |    omapl137,        |                     |
+|                       | test is disabled,     |                       |                     |                     |
+|                       | user can enable       |                       |                     |                     |
+|                       | write test by         |                       |                     |                     |
+|                       | defining              |                       |                     |                     |
+|                       | TEST_SPI_NOR_WRITE    |                       |                     |                     |
+|                       | in                    |                       |                     |                     |
+|                       | test/src/SPI_board.h  |                       |                     |                     |
+|                       |                       |                       |                     |                     |
+|                       | If write test is      |                       |                     |                     |
+|                       | enabled, write        |                       |                     |                     |
+|                       | transaction is        |                       |                     |                     |
+|                       | verified              |                       |                     |                     |
+|                       | for correctness by    |                       |                     |                     |
+|                       | reading contents      |                       |                     |                     |
+|                       | back.                 |                       |                     |                     |
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+| SPI_TestApplication   |                       | Following prints on   |    am335x           | CCS project         |
+|                       | Driver unit test      | console expected:     |    AM437x,          |                     |
+|                       | application to        | **Pass criteria:**    |    AM571x,          |                     |
+|                       | validate features     | All tests have        |    AM572x,          |                     |
+|                       | and interfaces for    | passed.               |    AM574x,          |                     |
+|                       | SPI driver            |                       |                     |                     |
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+| spiLoopback example   |                       | Following prints on   |    k2g,             | CCS project         |
+|                       | Example application   | console expected:     |    k2l,             |                     |
+|                       | to validate           | **Pass criteria:**    |    k2e,             |                     |
+|                       | features and          | All tests have        |    omapl138,        |                     |
+|                       | interfaces for SPI    | passed.               |    AM335x,          |                     |
+|                       | driver in loopback    |                       |    AM437x,          |                     |
+|                       | mode. Configures      |                       |    AM571x,          |                     |
+|                       | the SPI in loopback   |                       |    AM572x,          |                     |
+|                       | mode, transmits a     |                       |    AM574x,          |                     |
+|                       | test pattern and      |                       |                     |                     |
+|                       | receives it back      |                       |                     |                     |
+|                       | from SPI.             |                       |                     |                     |
+|                       |                       |                       |                     |                     |
+|                       |                       |                       |                     |                     |
+|                       | Note: This example    |                       |                     |                     |
+|                       | is intended to        |                       |                     |                     |
+|                       | demonstrate the SPI   |                       |                     |                     |
+|                       | LLD API usage on      |                       |                     |                     |
+|                       | the HW platforms      |                       |                     |                     |
+|                       | where SPI memory is   |                       |                     |                     |
+|                       | not available.        |                       |                     |                     |
+|                       | Currently this        |                       |                     |                     |
+|                       | example is            |                       |                     |                     |
+|                       | supported on          |                       |                     |                     |
+|                       | OMAPL138/C6748        |                       |                     |                     |
+|                       | platforms.            |                       |                     |                     |
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
 | 
 QSPI
 -----
 
-+-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      |
-+=======================+=======================+=======================+
-| QSPI_FlashReadWrite   | Sample application    | Following prints on   |
-|                       | demonstrating read    | console expected:     |
-| Example application   | and write of data     | **Pass criteria:**    |
-|                       | to a flash device     |                       |
-|                       | connected over QSPI   | All tests have        |
-|                       | interface. Write      | passed.               |
-|                       | transaction is        |                       |
-|                       | verified  for         |                       |
-|                       | correctness by        |                       |
-|                       | reading contents      |                       |
-|                       | back.                 |                       |
-+-----------------------+-----------------------+-----------------------+
-| QSPI_TestApplication  |                       | Following prints on   |
-|                       | Driver unit test      | console expected:     |
-|                       | application to        | **Pass criteria:**    |
-|                       | validate features     | All tests have        |
-|                       | and interfaces for    | passed.               |
-|                       | QSPI driver           |                       |
-+-----------------------+-----------------------+-----------------------+
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+| Name                  | Description           | Expected Results      | SoC Supported       | Build Type          |
++=======================+=======================+=======================+=====================+=====================+
+| QSPI_FlashReadWrite   | Sample application    | Following prints on   |    AM437x,          | CCS project         |
+|                       | demonstrating read    | console expected:     |    AM571x,          |                     |
+| Example application   | and write of data     | **Pass criteria:**    |    AM572x,          |                     |
+|                       | to a flash device     |                       |    AM574x,          |                     |
+|                       | connected over QSPI   | All tests have        |    k2g,             |                     |
+|                       | interface. Write      | passed.               |                     |                     |
+|                       | transaction is        |                       |                     |                     |
+|                       | verified  for         |                       |                     |                     |
+|                       | correctness by        |                       |                     |                     |
+|                       | reading contents      |                       |                     |                     |
+|                       | back.                 |                       |                     |                     |
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+| QSPI_TestApplication  |                       | Following prints on   |    AM437x,          | CCS project         |
+|                       | Driver unit test      | console expected:     |    AM571x,          |                     |
+|                       | application to        | **Pass criteria:**    |    AM572x,          |                     |
+|                       | validate features     | All tests have        |    AM574x,          |                     |
+|                       | and interfaces for    | passed.               |    k2g,             |                     |
+|                       | QSPI driver           |                       |                     |                     |
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+
+| 
+OSPI
+-----
+
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+| Name                  | Description           | Expected Results      | SoC Supported       | Build Type          |
++=======================+=======================+=======================+=====================+=====================+
+| OSPI_TestApplication  |                       | Following prints on   |    am65xx           | makefile            |
+|                       | Driver unit test      | console expected:     |                     |                     |
+|                       | application to        | **Pass criteria:**    |                     |                     |
+|                       | validate features     | All tests have        |                     |                     |
+|                       | and interfaces for    | passed.               |                     |                     |
+|                       | OSPI driver           |                       |                     |                     |
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
 | 
 
 MCSPI
 ------
 
-+-----------------+-----------------+----------------------------------------+-----------------+
-| Name            | Description     | Additional EVM                         | Expected        |
-|                 |                 | Configuration                          | Results         |
-+=================+=================+========================================+=================+
-| MCSPI_Serialize | Sample          | **AM57x IDK EVM:**                     | |               |
-| r               | Application     |                                        | | ** **         |
-| Example         | demonstrating   |                                        |                 |
-| application     | reading data    | Short pins 1  and 2 on header          | Following       |
-|                 | generated from  | J37(Industrial I/O)                    | prints  on      |
-|                 | industrial      |                                        | console         |
-|                 | input module.   | **AM335x ICE v2:**                     | expected:       |
-|                 | Application     | Short pins 1 and 2 on header           |                 |
-|                 | uses GPIO pins  | J14(Industrial I/O)                    | **Pass          |
-|                 | to assert load  |                                        | criteria:**     |
-|                 | signal in order | **AM437x IDK EVM:**                    |                 |
-|                 | to generate     | Short pins 1 and 2 on                  | All tests have  |
-|                 | date from       | header J1(Industrial I/O)              | passed.         |
-|                 | industrial      |                                        |                 |
-|                 | input module.   |                                        |                 |
-+-----------------+-----------------+----------------------------------------+-----------------+
-| MCSPI_Dma_Seria | Sample          | **AM57x IDK EVM:**                     | |               |
-| lizer           | Application     | Short pins 1 and 2 on header           | | ** **         |
-| Example         | demonstrating   | J37(Industrial I/O)                    |                 |
-| application     | reading data    | |                                      | Following       |
-|                 | generated from  | **AM437x IDK EVM:**                    | prints  on      |
-|                 | industrial      | Short pins 1 and 2 on header           | console         |
-|                 | input module    | J1(Industrial I/O)                     | expected:       |
-|                 | through EDMA.   |                                        |                 |
-|                 | Application     |                                        | **Pass          |
-|                 | uses GPIO pins  |                                        | criteria:**     |
-|                 | to assert load  |                                        |                 |
-|                 | signal in order |                                        | All tests have  |
-|                 | to generate     |                                        | passed.         |
-|                 | date from       |                                        |                 |
-|                 | industrial      |                                        |                 |
-|                 | input module.   |                                        |                 |
-+-----------------+-----------------+----------------------------------------+-----------------+
-| MCSPI_SerialFla | Sample          | **AM335x GP EVM:**                     | |               |
-| sh              | Application     | Set the EVM in profile 2               | | ** **         |
-|                 | demonstrating   | (SW8[1] = OFF,                         |                 |
-|                 | writing and     |  SW8[2] = ON,                          | Following       |
-|                 | reading data    |  SW8[3:4] = OFF)                       | prints  on      |
-|                 | from the serial |                                        | console         |
-|                 | flash through   |                                        | expected:       |
-|                 | MCSPI EDMA      |                                        |                 |
-|                 | interface.      |                                        | **Pass          |
-|                 |                 |                                        | criteria:**     |
-|                 |                 |                                        |                 |
-|                 |                 |                                        | All tests have  |
-|                 |                 |                                        | passed.         |
-+-----------------+-----------------+----------------------------------------+-----------------+
-| MCSPI_slavemode | Application     | **Pin Connections:**                   | | **On          |
-| example         | demonstrates    |                                        |   slave EVM     |
-| application     | slave recieve   |                                        |   console:      |
-|                 | and transmit    | | **IDK AM571x,**                      |   **\ SPI       |
-|                 | features of     | | **IDK AM572x or IDK AM574x:**        |   initialized   |
-|                 | McSPI.          | | EVM1(master) ==== EVM2(slave)        | | Slave: PASS:  |
-|                 | Application use | | J21-Pin24(CLK)---J21-Pin24(CLK)      |   Txd from      |
-|                 | case requires   | | J21-Pin26(MISO)---J21-Pin28(MISO)    |   master SPI    |
-|                 | two EVMs. One   | | J21-Pin28(MOSI)---J21-Pin26(MOSI)    |                 |
-|                 | acts as Master  | | J21-Pin30(CS)------J21-Pin30(CS)     | |               |
-|                 | and Another as  | | J21-Pin22(DGND)--J21-Pin22(DGND)     | | **On Master   |
-|                 | slave. McSPI    | |                                      |   EVM console:  |
-|                 | connections     | | **IDK AM437x:**                      |                 |
-|                 | information and | | EVM1(master) ==== EVM2(slave)        |   initialized   |
-|                 | addtional       | | J16-Pin24(CLK)-----J16-Pin24(CLK)    | | Master: PASS: |
-|                 | details are as  | | J16-Pin26(MISO)---J16-Pin28(MISO)    |   Txd from      |
-|                 | follows.        | | J16-Pin28(MOSI)---J16-Pin26(MOSI)    |   slave SPI     |
-|                 |                 | | J16-Pin30(CS)------J16-Pin30(CS)     | | Done          |
-|                 | **No of Boards  | | J16-Pin22(DGND)--J16-Pin22(DGND)     |                 |
-|                 | Required**:     | |                                      |                 |
-|                 |                 | | **ICEv2AM335x:**                     |                 |
-|                 | 2               | | EVM1(master) ========= EVM2(slave)   |                 |
-|                 |                 | | J3-Pin12(CLK)---------J3-Pin12(CLK)  |                 |
-|                 | **Connection    | | J3-Pin14(MIS0)-------J3-Pin16(MISO)  |                 |
-|                 | requirements:** | | J3-Pin16(MOSI)-------J3-Pin14(MOSI)  |                 |
-|                 |                 | | J3-Pin18(CS)-----------J3-Pin18(CS)  |                 |
-|                 | | Consider EVM1 | | J3-Pin2(DGND)--------J3-Pin2(DGND)   |                 |
-|                 |   as Master and | |                                      |                 |
-|                 |   EVM2 as       | | **BBB AM335x:**                      |                 |
-|                 |   slave.        | | EVM1(master) ===== EVM2(slave)       |                 |
-|                 | | MasterSPI_CLK | | P9-Pin31(CLK)-------P9-Pin31(CLK)    |                 |
-|                 |   -------SlaveS | | P9-Pin29(MISO)------P9-Pin30(MISO)   |                 |
-|                 | PI_CLK          | | P9-Pin30(MOSI)------P9-Pin29(MOSI)   |                 |
-|                 | | MasterSPI_D0- | | P9-Pin28(CS)---------P9-Pin28(CS)    |                 |
-|                 | ---------SlaveS | | P9-Pin1(DGND)-------P9-Pin1(DGND)    |                 |
-|                 | PI_D1           | |                                      |                 |
-|                 | | MasterSPI_D1- | | **K2G EVM:**                         |                 |
-|                 | ---------Slave  | | EVM1(master) ======= EVM2(slave)     |                 |
-|                 |   SPI_D0        | | J12-Pin9(MISO)-------J12-Pin9(MISO)  |                 |
-|                 | | MasterSPI_CS0 | | J12-Pin11(MOSI)----J12-Pin11(MOSI)   |                 |
-|                 | --------SlaveSP | | J12-Pin13(CLK)------J12-Pin13(CLK)   |                 |
-|                 | I_CS0           | | J12-Pin15(CS0)------J12-Pin15(CS0)   |                 |
-|                 | | DGND--------- | | J12-Pin49(DGND)--J12-Pin49(DGND)     |                 |
-|                 | -------------DG | |                                      |                 |
-|                 | ND              |                                        |                 |
-|                 |                 | | **icev2AMIC110 EVM:**                |                 |
-|                 | **Additional    | | EVM1(master) ======= EVM2(slave)     |                 |
-|                 | Requirements:** | | J5-Pin12(MISO)-------J5-Pin14(MISO)  |                 |
-|                 |                 | | J5-Pin14(MOSI)------J5-Pin12(MOSI)   |                 |
-|                 | Run             | | J4-Pin13(CLK)------J4-Pin13(CLK)     |                 |
-|                 | "MCSPI_SlaveMod | | J5-Pin4(CS)---------J5-Pin4(CS)      |                 |
-|                 | e_SlaveExample_ | | J5-Pin2(DGND)-------J5-Pin2(DGND)    |                 |
-|                 | <BoardType><arm |                                        |                 |
-|                 | /c66x/m4>Exampl |                                        |                 |
-|                 | eProject"       |                                        |                 |
-|                 | first on Slave  |                                        |                 |
-|                 | EVM and then    |                                        |                 |
-|                 | "MCSPI_SlaveMode|                                        |                 |
-|                 | _MasterExample  |                                        |                 |
-|                 | <BoardType>_<ar |                                        |                 |
-|                 | m/c66x/m4>Examp |                                        |                 |
-|                 | leProject"      |                                        |                 |
-|                 | on Master EVM.  |                                        |                 |
-|                 |                 |                                        |                 |
-|                 | |               |                                        |                 |
-|                 | | **Note:**     |                                        |                 |
-|                 |                 |                                        |                 |
-|                 | A DGND          |                                        |                 |
-|                 | connection may  |                                        |                 |
-|                 | be required     |                                        |                 |
-|                 | from expansion  |                                        |                 |
-|                 | connector on    |                                        |                 |
-|                 | each board to   |                                        |                 |
-|                 | make sure the   |                                        |                 |
-|                 | data transfer   |                                        |                 |
-|                 | is proper.      |                                        |                 |
-|                 |                 |                                        |                 |
-|                 |                 |                                        |                 |
-+-----------------+-----------------+----------------------------------------+-----------------+
++-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
+| Name            | Description     | Additional EVM                         | Expected        | SoC Supported       | Build Type          |
+|                 |                 | Configuration                          | Results         |                     |                     |
++=================+=================+========================================+=================+=====================+=====================+
+| MCSPI_Serialize | Sample          | **AM57x IDK EVM:**                     | |               |    AM335x,          | CCS project         |
+| r               | Application     |                                        | | ** **         |    AM437x,          |                     |
+| Example         | demonstrating   |                                        |                 |    AM571x,          |                     |
+| application     | reading data    | Short pins 1  and 2 on header          | Following       |    AM572x,          |                     |
+|                 | generated from  | J37(Industrial I/O)                    | prints  on      |    AM574x,          |                     |
+|                 | industrial      |                                        | console         |                     |                     |
+|                 | input module.   | **AM335x ICE v2:**                     | expected:       |                     |                     |
+|                 | Application     | Short pins 1 and 2 on header           |                 |                     |                     |
+|                 | uses GPIO pins  | J14(Industrial I/O)                    | **Pass          |                     |                     |
+|                 | to assert load  |                                        | criteria:**     |                     |                     |
+|                 | signal in order | **AM437x IDK EVM:**                    |                 |                     |                     |
+|                 | to generate     | Short pins 1 and 2 on                  | All tests have  |                     |                     |
+|                 | date from       | header J1(Industrial I/O)              | passed.         |                     |                     |
+|                 | industrial      |                                        |                 |                     |                     |
+|                 | input module.   |                                        |                 |                     |                     |
++-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
+| MCSPI_Dma_Seria | Sample          | **AM57x IDK EVM:**                     | |               |    AM437x,          | CCS project         |
+| lizer           | Application     | Short pins 1 and 2 on header           | | ** **         |    AM571x,          |                     |
+| Example         | demonstrating   | J37(Industrial I/O)                    |                 |    AM572x,          |                     |
+| application     | reading data    | |                                      | Following       |    AM574x,          |                     |
+|                 | generated from  | **AM437x IDK EVM:**                    | prints  on      |                     |                     |
+|                 | industrial      | Short pins 1 and 2 on header           | console         |                     |                     |
+|                 | input module    | J1(Industrial I/O)                     | expected:       |                     |                     |
+|                 | through EDMA.   |                                        |                 |                     |                     |
+|                 | Application     |                                        | **Pass          |                     |                     |
+|                 | uses GPIO pins  |                                        | criteria:**     |                     |                     |
+|                 | to assert load  |                                        |                 |                     |                     |
+|                 | signal in order |                                        | All tests have  |                     |                     |
+|                 | to generate     |                                        | passed.         |                     |                     |
+|                 | date from       |                                        |                 |                     |                     |
+|                 | industrial      |                                        |                 |                     |                     |
+|                 | input module.   |                                        |                 |                     |                     |
++-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
+| MCSPI_SerialFla | Sample          | **AM335x GP EVM:**                     | |               |    AM335x,          | CCS project         |
+| sh              | Application     | Set the EVM in profile 2               | | ** **         |                     |                     |
+|                 | demonstrating   | (SW8[1] = OFF,                         |                 |                     |                     |
+|                 | writing and     |  SW8[2] = ON,                          | Following       |                     |                     |
+|                 | reading data    |  SW8[3:4] = OFF)                       | prints  on      |                     |                     |
+|                 | from the serial |                                        | console         |                     |                     |
+|                 | flash through   |                                        | expected:       |                     |                     |
+|                 | MCSPI EDMA      |                                        |                 |                     |                     |
+|                 | interface.      |                                        | **Pass          |                     |                     |
+|                 |                 |                                        | criteria:**     |                     |                     |
+|                 |                 |                                        |                 |                     |                     |
+|                 |                 |                                        | All tests have  |                     |                     |
+|                 |                 |                                        | passed.         |                     |                     |
++-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
+| MCSPI_slavemode | Application     | **Pin Connections:**                   | | **On          |    AM335x,          | CCS project         |
+| example         | demonstrates    |                                        |   slave EVM     |    AM437x,          |                     |
+| application     | slave recieve   |                                        |   console:      |    AM571x,          |                     |
+|                 | and transmit    | | **IDK AM571x,**                      |   **\ SPI       |    AM572x,          |                     |
+|                 | features of     | | **IDK AM572x or IDK AM574x:**        |   initialized   |    AM574x,          |                     |
+|                 | McSPI.          | | EVM1(master) ==== EVM2(slave)        | | Slave: PASS:  |    k2g,             |                     |
+|                 | Application use | | J21-Pin24(CLK)---J21-Pin24(CLK)      |   Txd from      |                     |                     |
+|                 | case requires   | | J21-Pin26(MISO)---J21-Pin28(MISO)    |   master SPI    +---------------------+---------------------+
+|                 | two EVMs. One   | | J21-Pin28(MOSI)---J21-Pin26(MOSI)    |                 |    am65xx           | makefile            |
+|                 | acts as Master  | | J21-Pin30(CS)------J21-Pin30(CS)     | |               |                     |                     |
+|                 | and Another as  | | J21-Pin22(DGND)--J21-Pin22(DGND)     | | **On Master   |                     |                     |
+|                 | slave. McSPI    | |                                      |   EVM console:  |                     |                     |
+|                 | connections     | | **IDK AM437x:**                      |                 |                     |                     |
+|                 | information and | | EVM1(master) ==== EVM2(slave)        |   initialized   |                     |                     |
+|                 | addtional       | | J16-Pin24(CLK)-----J16-Pin24(CLK)    | | Master: PASS: |                     |                     |
+|                 | details are as  | | J16-Pin26(MISO)---J16-Pin28(MISO)    |   Txd from      |                     |                     |
+|                 | follows.        | | J16-Pin28(MOSI)---J16-Pin26(MOSI)    |   slave SPI     |                     |                     |
+|                 |                 | | J16-Pin30(CS)------J16-Pin30(CS)     | | Done          |                     |                     |
+|                 | **No of Boards  | | J16-Pin22(DGND)--J16-Pin22(DGND)     |                 |                     |                     |
+|                 | Required**:     | |                                      |                 |                     |                     |
+|                 |                 | | **ICEv2AM335x:**                     |                 |                     |                     |
+|                 | 2               | | EVM1(master) ========= EVM2(slave)   |                 |                     |                     |
+|                 |                 | | J3-Pin12(CLK)---------J3-Pin12(CLK)  |                 |                     |                     |
+|                 | **Connection    | | J3-Pin14(MIS0)-------J3-Pin16(MISO)  |                 |                     |                     |
+|                 | requirements:** | | J3-Pin16(MOSI)-------J3-Pin14(MOSI)  |                 |                     |                     |
+|                 |                 | | J3-Pin18(CS)-----------J3-Pin18(CS)  |                 |                     |                     |
+|                 | | Consider EVM1 | | J3-Pin2(DGND)--------J3-Pin2(DGND)   |                 |                     |                     |
+|                 |   as Master and | |                                      |                 |                     |                     |
+|                 |   EVM2 as       | | **BBB AM335x:**                      |                 |                     |                     |
+|                 |   slave.        | | EVM1(master) ===== EVM2(slave)       |                 |                     |                     |
+|                 | | MasterSPI_CLK | | P9-Pin31(CLK)-------P9-Pin31(CLK)    |                 |                     |                     |
+|                 |   -------SlaveS | | P9-Pin29(MISO)------P9-Pin30(MISO)   |                 |                     |                     |
+|                 | PI_CLK          | | P9-Pin30(MOSI)------P9-Pin29(MOSI)   |                 |                     |                     |
+|                 | | MasterSPI_D0- | | P9-Pin28(CS)---------P9-Pin28(CS)    |                 |                     |                     |
+|                 | ---------SlaveS | | P9-Pin1(DGND)-------P9-Pin1(DGND)    |                 |                     |                     |
+|                 | PI_D1           | |                                      |                 |                     |                     |
+|                 | | MasterSPI_D1- | | **K2G EVM:**                         |                 |                     |                     |
+|                 | ---------Slave  | | EVM1(master) ======= EVM2(slave)     |                 |                     |                     |
+|                 |   SPI_D0        | | J12-Pin9(MISO)-------J12-Pin9(MISO)  |                 |                     |                     |
+|                 | | MasterSPI_CS0 | | J12-Pin11(MOSI)----J12-Pin11(MOSI)   |                 |                     |                     |
+|                 | --------SlaveSP | | J12-Pin13(CLK)------J12-Pin13(CLK)   |                 |                     |                     |
+|                 | I_CS0           | | J12-Pin15(CS0)------J12-Pin15(CS0)   |                 |                     |                     |
+|                 | | DGND--------- | | J12-Pin49(DGND)--J12-Pin49(DGND)     |                 |                     |                     |
+|                 | -------------DG | |                                      |                 |                     |                     |
+|                 | ND              |                                        |                 |                     |                     |
+|                 |                 | | **icev2AMIC110 EVM:**                |                 |                     |                     |
+|                 | **Additional    | | EVM1(master) ======= EVM2(slave)     |                 |                     |                     |
+|                 | Requirements:** | | J5-Pin12(MISO)-------J5-Pin14(MISO)  |                 |                     |                     |
+|                 |                 | | J5-Pin14(MOSI)------J5-Pin12(MOSI)   |                 |                     |                     |
+|                 | Run             | | J4-Pin13(CLK)------J4-Pin13(CLK)     |                 |                     |                     |
+|                 | "MCSPI_SlaveMod | | J5-Pin4(CS)---------J5-Pin4(CS)      |                 |                     |                     |
+|                 | e_SlaveExample_ | | J5-Pin2(DGND)-------J5-Pin2(DGND)    |                 |                     |                     |
+|                 | <BoardType><arm |                                        |                 |                     |                     |
+|                 | /c66x/m4>Exampl |                                        |                 |                     |                     |
+|                 | eProject"       |                                        |                 |                     |                     |
+|                 | first on Slave  |                                        |                 |                     |                     |
+|                 | EVM and then    |                                        |                 |                     |                     |
+|                 | "MCSPI_SlaveMode|                                        |                 |                     |                     |
+|                 | _MasterExample  |                                        |                 |                     |                     |
+|                 | <BoardType>_<ar |                                        |                 |                     |                     |
+|                 | m/c66x/m4>Examp |                                        |                 |                     |                     |
+|                 | leProject"      |                                        |                 |                     |                     |
+|                 | on Master EVM.  |                                        |                 |                     |                     |
+|                 |                 |                                        |                 |                     |                     |
+|                 | |               |                                        |                 |                     |                     |
+|                 | | **Note:**     |                                        |                 |                     |                     |
+|                 |                 |                                        |                 |                     |                     |
+|                 | A DGND          |                                        |                 |                     |                     |
+|                 | connection may  |                                        |                 |                     |                     |
+|                 | be required     |                                        |                 |                     |                     |
+|                 | from expansion  |                                        |                 |                     |                     |
+|                 | connector on    |                                        |                 |                     |                     |
+|                 | each board to   |                                        |                 |                     |                     |
+|                 | make sure the   |                                        |                 |                     |                     |
+|                 | data transfer   |                                        |                 |                     |                     |
+|                 | is proper.      |                                        |                 |                     |                     |
+|                 |                 |                                        |                 |                     |                     |
+|                 |                 |                                        |                 |                     |                     |
++-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
+
+Building SPI examples
+----------------------
+
+-  Makefile based examples and dependent libraries can be built from the top level or module level SPI makefile, refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+::
+
+   To build and clean libs/apps from top-level makefile:
+   cd <pdk>/packages
+   make spi
+   make spi_clean
+
+   To build and clean libs/apps from module-level makefile:
+   cd <pdk>/packages/ti/drv/spi
+   make all
+   make clean
+
+
+-  RTSC CCS project based examples are built from CCS
+::
+
+   cd <pdk>/packages
+   ./pdkProjectCreate.sh [soc] [board] [endian] spi [project type] [processor] [SECUREMODE=<yes/no>]
+   Import and build CCS Project from  <pdk>/packages/MyExampleProjects/
+
 
 Additional References
 ======================

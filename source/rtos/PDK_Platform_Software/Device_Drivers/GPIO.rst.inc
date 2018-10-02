@@ -84,47 +84,75 @@ Examples
 
 Refer SDK Release Note for GPIO support across different EVMs.
 
-+-------------------+-----------------------+-----------------------+
-|       Name        |      Description      || Expected Results     |
-+===================+=======================+=======================+
-| GPIO_LedBlink     | Simple example        || Following LED        |
-|                   | demonstrating LED     | blinks based on EVM   |
-|                   | Toggling              | being used.           |
-|                   |                       |                       |
-|                   |                       || **AM335x             |
-|                   |                       | ICEv2**:              |
-|                   |                       | USER  LED 1           |
-|                   |                       |                       |
-|                   |                       || **AM437x             |
-|                   |                       | EVM**:                |
-|                   |                       | USER  LED 1           |
-|                   |                       |                       |
-|                   |                       || **AM572x IDK** :     |
-|                   |                       | STATUS LED 1 Yellow   |
-|                   |                       | **AM572x GP           |
-|                   |                       | EVM** : USER LED1     |
-|                   |                       | **AM574x IDK** :      |
-|                   |                       | STATUS LED 1 Yellow   |
-|                   |                       | **AM572x GP           |
-|                   |                       | EVM** : USER LED1     |
-|                   |                       | **AM571x IDK** :      |
-|                   |                       | Industrial LED 3      |
-|                   |                       | Red                   |
-|                   |                       |                       |
-|                   |                       || **K2H EVM:**         |
-|                   |                       | USER LED 2 Blue       |
-|                   |                       |                       |
-|                   |                       || **K2E EVM:**         |
-|                   |                       | USER LED 1 Blue       |
-|                   |                       |                       |
-|                   |                       || **K2G EVM:**         |
-|                   |                       | USER LED 1 Yellow     |
-|                   |                       |                       |
-+-------------------+-----------------------+-----------------------+
++-------------------+-----------------------+-----------------------+---------------------+---------------------+
+|       Name        |      Description      || Expected Results     | SoC Supported       | Build Type          |
++===================+=======================+=======================+=====================+=====================+
+| GPIO_LedBlink     | Simple example        || Following LED        |    AM335x,          | CCS project         |
+|                   | demonstrating LED     | blinks based on EVM   |    AM437x,          |                     |
+|                   | Toggling              | being used.           |    AM571x,          |                     |
+|                   |                       |                       |    AM572x,          |                     |
+|                   |                       || **AM335x             |    AM574x,          |                     |
+|                   |                       | ICEv2**:              |    k2g,             |                     |
+|                   |                       | USER  LED 1           |    k2hk,            |                     |
+|                   |                       |                       |    k2l,             |                     |
+|                   |                       || **AM437x             |    k2e,             |                     |
+|                   |                       | EVM**:                |    c6657,           |                     |
+|                   |                       | USER  LED 1           |    c6678,           |                     |
+|                   |                       |                       |    omapl137,        |                     |
+|                   |                       || **AM572x IDK** :     |                     |                     |
+|                   |                       | STATUS LED 1 Yellow   +---------------------+---------------------+
+|                   |                       | **AM572x GP           |    am65xx           | makefile            |
+|                   |                       | EVM** : USER LED1     |                     |                     |
+|                   |                       | **AM574x IDK** :      |                     |                     |
+|                   |                       | STATUS LED 1 Yellow   |                     |                     |
+|                   |                       | **AM572x GP           |                     |                     |
+|                   |                       | EVM** : USER LED1     |                     |                     |
+|                   |                       | **AM571x IDK** :      |                     |                     |
+|                   |                       | Industrial LED 3      |                     |                     |
+|                   |                       | Red                   |                     |                     |
+|                   |                       |                       |                     |                     |
+|                   |                       || **K2H EVM:**         |                     |                     |
+|                   |                       | USER LED 2 Blue       |                     |                     |
+|                   |                       |                       |                     |                     |
+|                   |                       || **K2E EVM:**         |                     |                     |
+|                   |                       | USER LED 1 Blue       |                     |                     |
+|                   |                       |                       |                     |                     |
+|                   |                       || **K2G EVM:**         |                     |                     |
+|                   |                       | USER LED 1 Yellow     |                     |                     |
+|                   |                       |                       |                     |                     |
+|                   |                       || **AM65xx EVM:**      |                     |                     |
+|                   |                       | USER LD16, LD17       |                     |                     |
+|                   |                       |                       |                     |                     |
++-------------------+-----------------------+-----------------------+---------------------+---------------------+
 
 .. note::
 
    There are no user mode LEDs directly connected to GPIO pins on K2L, C6678 and C6657 EVMs.
+
+Building GPIO examples
+----------------------
+
+-  Makefile based examples and dependent libraries can be built from the top level or module level GPIO makefile, refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+::
+
+   To build and clean libs/apps from top-level makefile:
+   cd <pdk>/packages
+   make gpio
+   make gpio_clean
+
+   To build and clean libs/apps from module-level makefile:
+   cd <pdk>/packages/ti/drv/gpio
+   make all
+   make clean
+
+
+-  RTSC CCS project based examples are built from CCS
+::
+
+   cd <pdk>/packages
+   ./pdkProjectCreate.sh [soc] [board] [endian] gpio [project type] [processor] [SECUREMODE=<yes/no>]
+   Import and build CCS Project from  <pdk>/packages/MyExampleProjects/
+
 
 Additional References
 ---------------------
