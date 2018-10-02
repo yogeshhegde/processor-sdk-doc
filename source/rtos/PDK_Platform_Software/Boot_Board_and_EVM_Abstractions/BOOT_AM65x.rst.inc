@@ -349,9 +349,9 @@ ease of use, boot time and size. These can be enabled or disabled by editing `sb
 -  When SBL_ENABLE_DDR compile option is enabled, SBL only initializes DDR if it
    detects a section is being loaded into DDR address space. If an application
    does not load any section into DDR, but uses DDR at runtime (say only heap is in DDR)
-   then the SBL will not initilaize the DDR. In such cases, it is the applications
-   responsibility to call Board_init(BOARD_INIT_DDR) to initialize the
-   DDR.
+   then the SBL will not initilaize the DDR. For this reason, if the application
+   uses DDR, it is best to place any one of the .text, .data or .const sections
+   also in DDR for force the SBL to enable DDR.
 
 .. raw:: html
 
