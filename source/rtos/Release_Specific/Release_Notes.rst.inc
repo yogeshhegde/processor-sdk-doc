@@ -72,12 +72,12 @@ Released October 2018
 		- Crypto Low level Driver: SA2 UL
 		- DDR @ 1600 MTS, and CPU @ 800 MHz configuration
 		- Additional source release of firmware: PRU-ICSS-G Dual EMAC support
-	- Features not (yet) supported
-        - USB 3.0,OSPI 133Mhz/166Mhz, MCU/R5 Split Mode, MPU TI-RTOS SMP Support
-		
--  PRU-ICSS Dual EMAC Firmware Feature extension: Multicast filtering and PTP
+	- Features not (yet) supported: USB 3.0,OSPI 133Mhz/166Mhz, MCU/R5 Split Mode, MPU TI-RTOS SMP Support
+-  PRU-ICSS Dual EMAC Firmware Feature extension:
+    - `Multicast filtering: <PRU_ICSS.html>`__
+    - `Timesync PTP: <Foundational_Components.html#timesync-ptp>`__
 -  `PRU-ICSS I2C Firmware: <PRU_ICSS.html#pru-icss-i2c>`__
-	- Additional support for PRU-ICSS-0 instance of AM437x SOC
+	- Additional support for `PRU-ICSS-0 instance of AM437x SOC: <PRU_ICSS.html#pru-icss-i2c>`__
 -  AM335x Connectivity extension to support `Simplelink 3120 NWP WiFi: <Examples_and_Demonstrations.html#simplelink-wifi-demo>`__
 
 .. rubric::  Component Version
