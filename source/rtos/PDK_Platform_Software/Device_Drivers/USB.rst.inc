@@ -231,7 +231,7 @@ USB device information (PID/VID, device names, etc.)
 The LLD also provides a USB host MSC example. The USB LLD is acting as a
 USB host, waiting for a USB thumb drive/memory stick to be plugged in. A
 console with a simple shell command is also provided so that the demo
-example can display and manipulated content of the USB device.
+example can display and manipulate content of the USB device.
 
 The following is how the USB host MSC example demo is organized:
 
@@ -270,53 +270,108 @@ described bellow
 - Main APIs that are used to read/write from and to the USB bulk device are USBD_bulkRead() and USBD_bulkWrite(). 
 These two functions will block the caller until they finish their operation.
 
-- The main application should wait for about 500ms after the USB host sends the SetConfig request to make sure 
-the enumeration is completely finished before calling USBD_bulkRead/Write functions
+- The main application should wait for about 500ms after the USB host sends the SetConfig request to make sure that the enumeration is completely finished before calling USBD_bulkRead/Write functions
 
 
 Application
 ------------
 
-Examples
-^^^^^^^^
+Examples 
+^^^^^^^^  
 
-Bare-metal and RTOS/BIOS examples of the USB device and USB host MSC
-are provided with the USB LLD. RTOS/BIOS examples are provided for USB
-device audio class. Please see the readme.txt in the docs directory
-for more info on how to build the example/demo application. Refer SDK
-release notes for supported EVMs.
+Examples are CCS projects. Generated with pdkProjectCreate scripts.
+Please refer  `Processor SDK RTOS Getting Started Guide <Overview.html#pdk-example-and-test-project-creation>`__  
+for how to create and build examples projects
 
 +-----------------------+-----------------------+-----------------------+
-| Example Name          | EVM's supported       | Notes                 |
+| Example Name          | EVM's supported       |                       |
+|                       |                       | Notes                 |
 +=======================+=======================+=======================+
-| **usb_dev_msc_mmcsd** | AM335GP EVM           |                       |
+| **USB_DevMsc_mmcsd**  | AM335GP EVM,          |                       |
+|                       | AM572 EVM             |                       |
 +-----------------------+-----------------------+-----------------------+
-| **usb_dev_msc**       | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
-|                       | AM57xIDK, AM572GP     | device examples share |
-|                       | EVM, K2G EVM,         | the same USB port.    |
-|                       | OMAP137EVM,           |                       |
-|                       | OMAPL138LCDK          |                       |
+| **USB_DevMsc**        | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
+|                       | OMAP137EVM,           | device examples share |
+|                       | OMAPL138LCDK,         | the same USB port.    |
+|                       |                       |                       |
+|                       | AM57xIDK, AM572GP     |                       |
+|                       | EVM, K2G EVM,         |                       |
+|                       | AM65xx EVM/IDK        |                       |
 +-----------------------+-----------------------+-----------------------+
-| **usb_host_msc**      | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
-|                       | AM57xIDK, K2G EVM,    | device examples share |
+|  **USB_HostMsc**      | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
+|                       |                       | device examples share |
 |                       | OMAP137EVM,           | the same USB port.    |
-|                       | OMAPL138LCDK          | Need OTG cable for    |
-|                       |                       | EVM with OTG port to  |
+|                       | OMAPL138LCDK,         | Need OTG cable for    |
+|                       | AM654x EVM/IDK        | EVM with OTG port to  |
 |                       |                       | work in host mode.    |
+|                       | AM57xIDK, K2G EVM,    |                       |
 |                       |                       | USB3.0 host supported |
 |                       |                       | on AM572IDK.          |
 +-----------------------+-----------------------+-----------------------+
-| **usb_device_audio**  | AM335xGP,OMAPL137     | Refer to Hardware     |
+| **USB_DevAudio**      | AM335xGP,OMAPL137     | Refer to Hardware     |
 |                       | EVM,OMAPL138 LCDK     | Setup and How to Run  |
 |                       |                       | the Demo sections     |
 |                       |                       | below                 |
 +-----------------------+-----------------------+-----------------------+
-| **usb_device_bulk**   | AM335xGP, AM437xGP,   |                       |
+| **USB_DevBulk**       | AM335xGP, AM437xGP,   |                       |
 |                       | AM572xIDK, AM571xIDK, |                       |
-|                       | AM574xIDK, K2GEVM     |                       |
-|                       |                       |                       |
+|                       | AM574xIDK, K2GEVM,    |                       |
+|                       | OMAPL137EVM,          |                       |
+|                       | OMAP138LCDK,          |                       |
+|                       | AM654x EVM/IDK        |                       |
 |                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
+
+
+
+Test Application
+^^^^^^^^^^^^^^^^
+
+Test applications are built using makefile. Some of the test application are 
+RTOS/BIOS apps, other are bare metal apps. 
+
+Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  
+for details  of how to setup the build environment. Once you have setup the build environment, 
+issue the following commands:  
+	-  cd <pdk>/packages/
+	-  To build: make usb 
+	-  To clean: make usb_clean 
+	-  Test applications are then under (TI_PDK_INSTALL_DIR)/packages/ti/binary/
+
++-----------------------------------+-----------------------+-------+---------------------------------+
+| Test App Name                     | EVM's supported       | Bare  |                                 |
+|                                   |                       | metal | Notes                           |
++===================================+=======================+=======+=================================+
+| **USB_Baremetal_DevMsc_TestApp**  |  AM65xx EVM/IDK       |  yes  |                                 |
++-----------------------------------+-----------------------+-------+---------------------------------+
+| **USB_Baremetal_HostMsc_TestApp** |   AM654x EVM/IDK      |  yes  |                                 |
++-----------------------------------+-----------------------+-------+---------------------------------+
+| **USB_HostMsc_TestApp**           |   AM654x EVM/IDK      |  no   |                                 |
++-----------------------------------+-----------------------+-------+---------------------------------+
+| **USB_DevMsc_TestApp**            |   AM654x EVM/IDK      |  no   |                                 |
++-----------------------------------+-----------------------+-------+---------------------------------+
+| **USB_DevBulk_TestApp**           |   AM654x EVM/IDK      |  no   |                                 |
++-----------------------------------+-----------------------+-------+---------------------------------+
+|                                   |                       |       |                                 |
+| **usb_d_msc_<platform>**          | AM335xGP,AM437xEVM    |       | Build by going to               |
+|                                   | OMAPL137 EVM          |  yes  | example/usb_dev/msc/            |
+|                                   | OMAPL138 LCDK         |       | build/<platform>                |
+|                                   |                       |       |                                 |
++-----------------------------------+-----------------------+-------+---------------------------------+
+|                                   |                       |       |                                 |
+| **usb_h_msc_<platform>**          | AM335xGP,AM437xEVM    |       | Build by going to               |
+|                                   | OMAPL137 EVM          |  yes  | example/usb_dev/msc/            |
+|                                   | OMAPL138 LCDK         |       | build/<platform>                |
+|                                   |                       |       |                                 |
++-----------------------------------+-----------------------+-------+---------------------------------+
+
+
+Both examples and test applications can be loaded and run on their intended EVM via
+  	-  CCS JTAG connector, or
+  	-  Via SBL: the "app" file under CCS project's debug directory (<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>) is SBL loadable file of the built project. 
+   	--  Project Memory layout must be considered and followed SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <Foundational_Components.html#boot>`__   for more detail 
+
+
 
 Hardware Setup
 --------------
@@ -341,7 +396,6 @@ platform supported.
 **OMAPL137 EVM**
 
 .. Image:: ../images/Omapl137_usb_ac_setup.jpg
-
 **OMAPL138 LCDK**
 
 .. Image:: ../images/Omapl138_usb_ac_setup.jpg
