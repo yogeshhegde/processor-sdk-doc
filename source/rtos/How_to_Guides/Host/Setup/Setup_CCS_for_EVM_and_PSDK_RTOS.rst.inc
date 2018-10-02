@@ -61,6 +61,23 @@ newly discovered products from the custom path.
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Confirm.png
 |
+
+Install Latest Emulation Package and Sitara Device Support Package
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support" 
+and "TI Emulators" and click Next.
+	
+ .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
+	
+2. Click "Next" again, select "I accept the terms of the license agreements" 
+and click Finish to begin the installation.
+
+ .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
+	
+3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when 
+prompted to complete the installation.
+
+
 Create Target Configuration File for EVM
 """"""""""""""""""""""""""""""""""""""""""
 
