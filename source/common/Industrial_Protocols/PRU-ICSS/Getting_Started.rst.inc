@@ -146,6 +146,6 @@ functionality.
 .. rubric:: What Next?
    :name: what-next
 
-For support please post questions on the TI E2E forum for `Sitara
-devices <http://e2e.ti.com/support/arm/sitara_arm/default.aspx>`__.
+For support please post questions on `E2E Processor Support 
+<https://e2e.ti.com/support/processors/>`__.
 

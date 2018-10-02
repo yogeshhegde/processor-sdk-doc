@@ -597,14 +597,10 @@ Support
 =======
 
 For questions, feature requests and bug reports, please use the TI E2E
-Forums provided below:
+Forum provided below:
 
--  **For C66x and K2x devices :** `Multicore DSP
-   Forums <http://e2e.ti.com/support/dsp/c6000_multi-core_dsps/>`__
--  **For OMAPL and C674x devices :** `Single core DSP
-   Forums <http://e2e.ti.com/support/dsp/tms320c6000_high_performance_dsps/>`__
--  **For AM57xx devices:** `Sitara
-   Forums <http://e2e.ti.com/support/arm/sitara_arm/>`__
+-  `E2E Processor Support
+   <https://e2e.ti.com/support/processors/>`__
 
 Additional resources
 ====================

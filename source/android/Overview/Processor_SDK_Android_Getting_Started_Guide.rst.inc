@@ -39,9 +39,9 @@ As you go along your development journey and have questions, there is
 documentation and support available to you. Make sure to save a pointer
 to the `Android SDK Software Developer’s Guide
 (SDG) <Overview.html#processor-sdk-android-software-developers-guide>`__.
-If you don’t find what you need, take a look at the active `Sitara
-Forum <http://e2e.ti.com/support/arm/sitara_arm/f/791.aspx>`__ on the
-E2E Community and see if the topic has been covered before. If not, post
+If you don’t find what you need, take a look at the active `E2E Processor
+Support <https://e2e.ti.com/support/processors/>`__
+Forum and see if the topic has been covered before. If not, post
 a new thread and we’ll do our best to provide some guidance.
 
 .. rubric:: What would you like to do with the SDK?

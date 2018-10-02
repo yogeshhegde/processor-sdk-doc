@@ -364,8 +364,8 @@ System Analyzer User's Guide.
 
 For technical discussions and issues, please visit
 
--  `C66x Multicore forum:
-   http://e2e.ti.com/support/dsp/c6000_multi-core_dsps/f/639.aspx <http://e2e.ti.com/support/dsp/c6000_multi-core_dsps/f/639.aspx>`__
+-  `E2E Processor Support:
+   https://e2e.ti.com/support/processors/ <https://e2e.ti.com/support/processors/>`__
 -  `BIOS Embedded Software forum:
    http://e2e.ti.com/support/embedded/f/355.aspx <http://e2e.ti.com/support/embedded/f/355.aspx>`__
 -  `Embedded Processors wiki:

@@ -68,10 +68,7 @@ software reuse for application developers:
 TI E2E device-specific forums can be used to report a bug or a feature
 addition request:
 
--  `Sitara E2E forums <http://e2e.ti.com/support/arm/sitara_arm>`_
-
--  `Digital Signal Processsors(DSP) E2E
-   forums <http://e2e.ti.com/support/dsp/c6000_multi-core_dsps>`_
+-  `E2E Processor Support <https://e2e.ti.com/support/processors/`_
 
 .. rubric:: How do I know the list of known issues and bugs resolved in
    Processor SDK RTOS release?

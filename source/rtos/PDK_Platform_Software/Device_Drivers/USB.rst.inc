@@ -373,7 +373,7 @@ issue the following commands:
 Both examples and test applications can be loaded and run on their intended EVM via
   	-  CCS JTAG connector, or
   	-  Via SBL: the "app" file under CCS project's debug directory (<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>) is SBL loadable file of the built project. 
-   	---  Project Memory layout must be considered and followed SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <Foundational_Components.html#boot>`__   for more detail 
+   	--  Project Memory layout must be considered and followed SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <Foundational_Components.html#boot>`__   for more detail 
 
 
 
