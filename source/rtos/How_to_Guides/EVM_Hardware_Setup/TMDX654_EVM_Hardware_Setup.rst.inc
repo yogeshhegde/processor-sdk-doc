@@ -1,5 +1,5 @@
 EVM Layout and Key Components
-==============================
+-------------------------------
 
 Refer to the image below which highlights the key components available on the AM65x EVM.
 
@@ -10,7 +10,7 @@ The complete feature set for the AM65x EVM is described in AM65x EVM User Manual
 of components that are required to complete basic EVM setup for debugging code using an emulator and Code Composer Studio. 
 
 Supported JTAG Debug Probes (Emulators)
-----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The AM65x EVM includes a cTI20 JTAG connector for external emulators and a micro USB connector for the on-board XDS110 emulator. 
 
 For XDS110 connect a USB cable to the micro USB connector J23 on the front of the board.
@@ -32,7 +32,7 @@ If you are using an external emulator pod, you must select which connector sourc
 		
 
 BOOTMODE Switches
-------------------
+^^^^^^^^^^^^^^^^^^
 
 .. image:: ../images/TMDX654_EVM_Hardware_Setup/AM65x_Boot_Modes.png
 
@@ -50,7 +50,7 @@ BOOTMODE[18:0] - 1111111000011110000
 
 
 Recommended Boot Mode
-^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""
 BOOTMODE[18:0] = 000000000 0000000000  MCUBOOTMODE[8:0]= 000000011 (SLEEP BOOT)
 
 **Boot Settings**
@@ -122,7 +122,7 @@ For full details on supported boot modes, please refer to the table below.
 +-------+-------+-------+-----------------------------------------------+
 
 UART Connection
-----------------
+^^^^^^^^^^^^^^^^^
 1. Connect a micro USB cable between UART port (J42) of the EVM and host PC. 
 
 2. Open a serial console (e.g. Tera Term) on host PC, connect to COM port on which SOC UART0 port is connected. Four COM ports should appear in the serial console application. Connect to the first COM port in the list. 
@@ -143,7 +143,7 @@ UART Connection
  * Flow control - None 
 
 Powering the EVM
------------------
+^^^^^^^^^^^^^^^^^^
 
 +-------------------------------------------+-----------------------------+--------------------------+
 | Connector                                 | Specifications              | Example                  |
@@ -158,7 +158,7 @@ Powering the EVM
 .. Note:: The DIN connector power supply is recommended to provide enough power for applications that make use of the PCIe interface.
 
 Minimum Hardware Setup Required to Connect to EVM
-==================================================
+--------------------------------------------------
 
  1. Connect micro USB cable to J23 and connect USB to Host PC on which CCS is installed.
  2. Connect micro USB cable to J42 for UART serial IO.
@@ -177,7 +177,7 @@ Minimum Hardware Setup Required to Connect to EVM
  * J8 – Short pins 1 & 2 
 
 AM65x Debug Software Setup
-=============================
+----------------------------
 
 The following software packages are required to setup the AM65x EVM
 
@@ -186,7 +186,7 @@ The following software packages are required to setup the AM65x EVM
 - Processor SDK RTOS for AM65xx 
  
 CCS Host Setup 
----------------
+^^^^^^^^^^^^^^^
 
 1. Download CCS from the following link:
 http://processors.wiki.ti.com/index.php/Download_CCS
@@ -200,7 +200,7 @@ Ensure that at least "Sitara AMx Processors" is selected:
  
 
 Install the latest Emulation Package and Device Support Package
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	
 1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support" 
 and "TI Emulators" and click Next.
@@ -222,7 +222,7 @@ To disable automatic updates in CCS, navigate to Windows -> Preferences -> Insta
 This is a precautionary step to avoid automatic updates overwriting files updated through TI Emulation Updates for AM65x
 
 Basic CCS Setup
-----------------
+^^^^^^^^^^^^^^^^^
 
 The Basic CCS setup is similar to earlier Sitara devices which involves creation of target configuration and connecting 
 to cores using the GEL files. This step is suitable for new board bring up and getting hello world going on the AM65x cores.
@@ -234,7 +234,7 @@ We recommend that you follow the steps in basic setup and then migrate to the ad
 
 
 Creating the Target Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 
 
 1. In CCS, open the Target Configurations window by navigating to View -> Target Configurations.
@@ -270,7 +270,7 @@ The initialization script for the Cortex A53 and Cortex R5 will perform a simila
 
 
 Connecting to the Cores on AM65x
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 
 1. **Launch Target Configuration**
 In CCS Editor View, go to View -> Target Configuration, and right click on the configuration that was created in the previous section and select "Launch Selected Configuration."
@@ -495,7 +495,7 @@ The same GEL output will be shown if connecting to the Cortex R5 first instead o
 |
 
 Advanced AM65x Debug Setup with DMSC Firmware Load 
----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Description**
 
@@ -537,7 +537,7 @@ AM65x Advanced Debug Script Flow
 |
 
 Creating Debug Configuration to Integrate CCS GEL and DMSC Firmware Initialization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 With the intent to maintain the same CCS target connect flow as existing devices, we provide a Debug Server Script (DSS) that users can link to in their target configuration to allow for loading SYSFW firmware on the DMSC as part of the target connect process.
 
@@ -807,7 +807,7 @@ GEL Output Log::
 |
 
 Additional Notes for GEL Users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 
 **R5F in Split Mode Configuration**
 

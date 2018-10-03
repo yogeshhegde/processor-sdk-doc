@@ -51,7 +51,7 @@ Documentation
 Processor SDK v05.01.00 
 ========================
 
-Released Sept 30 2018
+Released October 2018
 
 .. rubric::  What's New
    :name: whats-new

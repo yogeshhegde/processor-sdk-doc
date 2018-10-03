@@ -46,7 +46,7 @@ Documentation
 Release 05.01.00
 ==================
 
-Released Sep 2018
+Released October 2018
 
 .. rubric:: What's New
    :name: whats-new
