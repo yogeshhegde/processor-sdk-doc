@@ -287,7 +287,7 @@ for how to create and build examples projects
 | Example Name          | EVM's supported       |                       |
 |                       |                       | Notes                 |
 +=======================+=======================+=======================+
-| **USB_DevMsc_mmcsd**  | AM335GP EVM,          | eMMC is used on AM752 |
+| **USB_DevMsc_mmcsd**  | AM335GP EVM,          | eMMC is used on AM572 |
 |                       | AM572 EVM             | example               |
 +-----------------------+-----------------------+-----------------------+
 | **USB_DevMsc**        | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
