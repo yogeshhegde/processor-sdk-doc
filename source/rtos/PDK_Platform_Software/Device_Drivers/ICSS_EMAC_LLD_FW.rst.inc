@@ -1,5 +1,5 @@
 Introduction
-^^^^^^^^^^^^^
+-------------
 
 The ICSS_EMAC (industrial communications subsystem Ethernet Media Access
 Controller) driver provide APIs to transmit and receive packets with a
@@ -44,10 +44,10 @@ For details of the driver, please refer to
 | 
 
 User Interface
-^^^^^^^^^^^^^^^^
+----------------
 
 Driver Configuration
-"""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^
 
 | **Board Specific Configuration**
 | All the board specific configurations eg: enabling clock and pin-mux
@@ -73,7 +73,7 @@ Driver Configuration
 | 
 
 APIs
-"""""
+^^^^^
 
 API reference for application:
 
@@ -145,10 +145,10 @@ further explanation.
 | 
 
 Application
-^^^^^^^^^^^^
+------------
 
 Examples
-"""""""""
+^^^^^^^^^
 
 Refer “ICSS_EMAC_<Basic/Switch>Example_<SOC>_<CPU>Testproject” for
 additional reference. Refer Release Note for ICSS_EMAC supported on
@@ -160,9 +160,9 @@ different EVMs.
 |                 |                 | Configuration   | Results         |
 +=================+=================+=================+=================+
 | ICSS_EMAC_Basic | EMAC Loopback   | 10/100 Mb/s     | Unit Test will  |
-| Example         | test at         | loopback cable  | print "All      |
+| Example         | test at         | loopback cable  | print ^All      |
 |                 | PRU-ICSS        |                 | tests have      |
-|                 | EMAC PHY.       |                 | passed" via     |
+|                 | EMAC PHY.       |                 | passed^ via     |
 |                 |                 |                 | UART console.   |
 |                 | | Example       |                 |                 |
 |                 |   demonstrates  |                 |                 |
@@ -204,9 +204,9 @@ different EVMs.
 |                 |   check.        |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | ICSS_EMAC_Switc | Switch Loopback | 100 Mb/s        | Unit Test will  |
-| hExample        | test at         | loopback cable  | print "All      |
+| hExample        | test at         | loopback cable  | print ^All      |
 |                 | PRU-ICSS        |                 | tests have      |
-|                 | EMAC PHY.       |                 | passed" via     |
+|                 | EMAC PHY.       |                 | passed^ via     |
 |                 |                 |                 | UART console.   |
 |                 | | Example       |                 |                 |
 |                 |   demonstrates  |                 |                 |
@@ -262,13 +262,13 @@ different EVMs.
 | 
 
 Debug Guide
-^^^^^^^^^^^^
+------------
 
 For debugging ICSS EMAC examples or LLD. Please refer to `ICSS-EMAC
-Debug Guide <Device_Drivers.html#debug-with-icss-emac-driver>`__.
+Debug Guide <http://processors.wiki.ti.com/index.php/ICSS_EMAC_LLD_debug_guide>`__.
 
 Additional References
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 +-----------------------------------+------------------------------------------+
 | **Document**                      | **Location**                             |
