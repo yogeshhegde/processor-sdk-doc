@@ -259,20 +259,27 @@ Examples & Unit tests
 |                                    |   test application        |                       |          |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
 
-Building Examples & Unit tests
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Building CCS projects based examples
+----------------------------------------------
 
 CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
 `PDK Example and Test Project Creation <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#pdk-example-and-test-project-creation>`
 
-The Makefile based tests in the above table are built using top level make procedure as explained in 
-`Top-Level Makefile PDK <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#top-level-makefile>`
+Building MCASP Test applications via makefiles
+----------------------------------------------
 
-We specify only mcasp to be built
-  i.e pdk_<ver>/packages> make mcasp
- 
-The test binaries are built in packages/ti/binary/
-  
+-  MCASP Test applications and dependent libraries are built from the top level mmcsd makefile
+-  Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details
+   of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+	-  cd <pdk>/packages/
+	-  To build: make mcasp 
+	-  To clean: make mcasp_clean 
+
+- Similarly, to build at the module level, issue the following commands for rebuilding :
+	
+	- cd <pdk>/packages/ti/drv/mcasp
+	- To build: make all
+	- To clean: make clean
 
 .. _AudioEQ example: http://www.ti.com/tool/tidep0069
 
