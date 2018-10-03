@@ -21,7 +21,7 @@ the application layer to send and receive data via the McASP peripheral.
 The driver also exposes a set of well-defined OS abstraction APIs which
 are used to ensure that the driver is OS independent and portable. The
 McASP driver uses the CSL McASP register layer for all McASP MMR access.
-The McASP driver also interfaces with the EDMA3 library to be able to
+The McASP driver also interfaces with the EDMA3/UDMA library to be able to
 transfer data to and from McASP peripheral and data memory.
 
 User Interface
@@ -216,39 +216,63 @@ priming factor could be higher.
 Application
 ------------
 
-Examples
-^^^^^^^^
+Examples & Unit tests
+^^^^^^^^^^^^^^^^^^^^^
 
-+-----------------------+-----------------------+-----------------------+
-| Name                  || Description          | | Expected Results    |
-+=======================+=======================+=======================+
-| AIC31 Stereo loopback | | Example             | | Audio sent in to    |
-|                       |   demonstrating       |   the EVM being       |
-|                       |   sample McASP        |   played out via the  |
-|                       |   loopback .          |   stereo output of    |
-|                       |   Reference example   |   the EVM             |
-|                       |   for developers      |                       |
-+-----------------------+-----------------------+-----------------------+
-| Device loopback       | | Example             | | Digital ramp        |
-|                       |   demonstrating       |   pattern sent to     |
-|                       |   sample McASP device |   McASP and getting   |
-|                       |   loopback .          |   looped back         |
-|                       |   Reference example   |   internally using    |
-|                       |   for developers      |   device loopback     |
-+-----------------------+-----------------------+-----------------------+
-| `AudioEQ example`_    | | Example             | | Three band          |
-|                       |   demonstrating       |   Equalization of     |
-|                       |   stereo audio        |   stereo channel      |
-|                       |   equalization using  |   using biquad        |
-|                       |   using biquad        |   filters with gain   |
-|                       |   filters . Reference |   control using       |
-|                       |   design for          |   serial console      |
-|                       |   developers. **TI    |   inputs              |
-|                       |   Design Guide**:     |                       |
-|                       |   `TIDEP0069`_        |                       |
-|                       |                       |                       |
-|                       |                       |                       |
-+-----------------------+-----------------------+-----------------------+
++------------------------------------+---------------------------+-----------------------+----------+-------------+
+| Name                               || Description              | | Expected Results    |  SOCs    | Build type  |
++====================================+===========================+=======================+==========+=============+
+| Audio_ExampleProject               | | Example                 | | Audio sent in to    | AM335X   | CCS Project |        
+|                                    |   demonstrating           |   the EVM being       | AM437x   |             |
+|                                    |   sample McASP            |   played out via the  | AM572x   |             | 
+|                                    |   loopback using AIC31    |   stereo output of    | K2G      |             |
+|                                    |   codec. Reference example|   the EVM             | OMAPL137 |             |
+|                                    |   for developers          |                       | OMAPL138 |             |
++------------------------------------+---------------------------+-----------------------+----------+-------------+   
+| DeviceLoopback_ExampleProject      | | Example                 | | Digital ramp        | AM335X   | CCS Project |  
+|                                    |   demonstrating           |   pattern sent to     | AM437x   |             |
+|                                    |   sample McASP device     |   McASP and getting   | AM571x   |             |
+|                                    |   loopback .              |   looped back         | AM572x   |             |
+|                                    |   Reference example       |   internally using    | AM574x   |             |
+|                                    |   for developers          |   device loopback     | K2G      |             | 
++------------------------------------+---------------------------+-----------------------+----------+-------------+
+| AudioEQ_ExampleProject             | | Example                 | | Three band          | AM572x   | CCS Project |          
+|                                    |   demonstrating           |   Equalization of     | K2G      |             |
+|                                    |   stereo audio            |   stereo channel      |          |             |
+|                                    |   using biquad            |   filters with gain   |          |             |
+|                                    |   filters . Reference     |   control using       |          |             |
+|                                    |   design for              |   serial console      |          |             |
+|                                    |   developers. **TI        |   inputs              |          |             |
+|                                    |   Design Guide**:         |                       |          |             |
+|                                    |   `TIDEP0069`_            |                       |          |             |
++------------------------------------+---------------------------+-----------------------+----------+-------------+
+| DeviceLoopback_TestApp             | | Unit test               | | Digital ramp        | AM65x    | Makefile    |
+|                                    |   demonstrating           |   pattern sent to     |          |             |
+|                                    |   sample McASP device     |   McASP and getting   |          |             |
+|                                    |   loopback .              |   looped back         |          |             |
++------------------------------------+---------------------------+-----------------------+----------+-------------+
+| DeviceLoopback_Regression_TestApp  | | Regression unit test    | | Menu Driven test    | AM65x    | Makefile    |
+|                                    |   which tests various     |   sending digital ramp|          |             |
+|                                    |   features/configurations |   and getting looped  |          |             |
+|                                    |   of the MCASP driver     |   back in various     |          |             |
+|                                    |   This is a menu based    |   configurations      |          |             |
+|                                    |   test application        |                       |          |             |
++------------------------------------+---------------------------+-----------------------+----------+-------------+
+
+Building Examples & Unit tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
+`PDK Example and Test Project Creation <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#pdk-example-and-test-project-creation>`
+
+The Makefile based tests in the above table are built using top level make procedure as explained in 
+`Top-Level Makefile PDK <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#top-level-makefile>`
+
+We specify only mcasp to be built
+  i.e pdk_<ver>/packages> make mcasp
+ 
+The test binaries are built in packages/ti/binary/
+  
 
 .. _AudioEQ example: http://www.ti.com/tool/tidep0069
 
