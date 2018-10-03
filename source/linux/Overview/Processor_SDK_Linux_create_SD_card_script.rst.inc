@@ -45,6 +45,24 @@ exit.
 
 | 
 
+.. rubric:: Select the Target Board [AM65x/DRA80xM Only]
+   :name: select-am65x-target-board
+
+Due to a limitation in automatically detecting the specific board, the script
+for AM65x/DRA80xM will request this information from the user. The following
+options are available:
+
+#. **am65x_evm** : AM654x EVM (`TMDSEVM654X <http://www.ti.com/tool/TMDSEVM654X>`__)
+#. **am65x_idk** : AM654x Industrial Development Kit (`TMDXIDK654X <http://www.ti.com/tool/TMDXIDK654X>`__)
+#. **unknown**
+
+This information is used to determine which board features are required to be
+enabled in the Linux kernel. Therefore, if unsure, **unknown** is a valid
+option. The resulting SD card will be capable of booting Linux, but minimal
+board support will be available.
+
+|
+
 .. rubric:: Select the SD Card Device
    :name: select-the-sd-card-device
 

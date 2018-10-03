@@ -7,6 +7,16 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Android.
 
+.. rubric:: Processor SDK Android 05.01.00
+   :name: processor-sdk-android-05.01.00
+
+-  This is a maintenance update release of Processor SDK Android for AM57xx
+   with Oreo. More details about Oreo can be obtained from
+   `here <https://developer.android.com/about/versions/oreo/index.html>`__
+-  Multimedia with hardware acceleration is not supported
+-  Video decoding up to 720p resolution
+
+
 .. rubric:: Processor SDK Android 05.00.00
    :name: processor-sdk-android-05.00.00
 

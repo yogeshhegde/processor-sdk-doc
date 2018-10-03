@@ -79,7 +79,7 @@ After going through these videos, you will have a good understanding of
    low-level driver to middleware
 -  where to customize software for different use cases
 
-| 
+|
 
 Basic examples
 ================
@@ -145,6 +145,21 @@ Application development
 ========================
 We now take the leap to put together parts of the SDK and create a more
 complex application.
+
+RTOS Template Application Workshop
+----------------------------------
+Take a look at the `workshop`__ for the RTOS Template Application. This
+workshop will cover the basics of navigating the SDK and its documentation and
+using CCS. The RTOS Template Application is a good 
+starting point to learn how to use drivers, the OSAL layer, and Board Library.
+It pulls portions of the RTOS software into one application which can serve
+as the starting point for creating your first application.
+
+__ Examples_and_Demonstrations.html#rtos-template-application
+
+.. note::
+   The RTOS template application currently supports Sitara EVMs (AM335x EVM,
+   AM437x EVM, AM572x EVM, and AM654x EVM) only.
 
 Demonstrations in Processor SDK RTOS
 --------------------------------------

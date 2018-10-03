@@ -159,25 +159,30 @@ operation
     ... 
     UART_writePolling(handle, bufferPrompt, sizeof(bufferPrompt));/* Write Polling API */ 
 
-.. rubric:: EDMA Usage :
-   :name: edma-usage
+.. rubric:: DMA Usage :
+   :name: dma-usage
 
-UART driver supports EDMA operations to transfer data between
+UART driver supports DMA operations to transfer data between
 
 -  Memory and RX FIFO for read transfer
 -  Memory and TX FIFO for write transfer.
 
-Driver uses separate source files for these operations.Refer source
-UART_soc_dma.c for DMA UART SOC configuration. Application need to
-create EDMA handle and update the configuration before UART_init() API.
+DMA Driver is DMA family IP (EDMA and UDMA) and UART IP (V0 and V1) specific.
+Refer soc/dma/v#/UART_dma.c for these operations. Application need to
+create DMA handle and update the configuration before UART_init() API.
 
 ::
 
-    uartInitCfg[UART_INSTANCE].edmaHandle = UartApp_edmaInit();/* Refer Example/Test */
+    uartInitCfg[UART_INSTANCE].edmaHandle = UartApp_edmaInit();/* For AM/K1/K2 devices */
+    
+    or
+    
+    uartInitCfg[UART_INSTANCE].udmaHandle = UartApp_udmaInit();/* For K3 devices */
+
     UART_init();
 
-Refer “UART_BasicExample_[SOC]_[cpu]DMATestproject” for additional
-reference. Refer SDK Release Note for supported EVMs.
+Refer “UART_BasicExample_[SOC]_[cpu]DMATestproject” or "UART_DMA_[evm]_[cpu]TestApp" 
+for additional reference. Refer SDK Release Note for supported EVMs.
 
 Application
 ------------
@@ -185,33 +190,62 @@ Application
 Examples
 ^^^^^^^^
 
-+-----------------------+---------------------+---------------------+
-|         Name          |    Description      |  Expected Results   |
-+=======================+=====================+=====================+
-| UART_Example          | Example             | Application prompts |
-| application           | demonstrating       | user to enter input |
-|                       | *simple* UART use   | data in console.    |
-|                       | case. Reference     |                     |
-|                       | example for         | User can enter up   |
-|                       | developers          | to 16 characters or |
-|                       |                     | terminate with      |
-|                       |                     | enter               |
-|                       |                     | key.Application     |
-|                       |                     | echoes back         |
-|                       |                     | characters.         |
-+-----------------------+---------------------+---------------------+
-| UART_TestApplication  | Unit Test           | User can enter up to|
-|                       | application to test | 16 characters using |
-|                       | all APIs            | serial              |
-|                       |                     | console.Application |
-|                       |                     | echoes back         |
-+-----------------------+---------------------+---------------------+
-| UART_DMATestApplicati | Unit Test           | User can enter up to|
-| on                    | application with    | 16 characters using |
-|                       | DMA mode.           | serial              |
-|                       |                     | console.Application |
-|                       |                     | echoes back         |
-+-----------------------+---------------------+---------------------+
++-----------------------+---------------------+---------------------+---------------------+---------------------+
+|         Name          |    Description      |  Expected Results   | SoC Supported       | Build Type          |
++=======================+=====================+=====================+=====================+=====================+
+| UART_Example          | Example             | Application prompts |    AM335x,          | CCS project         |
+| application           | demonstrating       | user to enter input |    AM437x,          |                     |
+|                       | *simple* UART use   | data in console.    |    AM571x,          |                     |
+|                       | case. Reference     |                     |    AM572x,          |                     |
+|                       | example for         | User can enter up   |    AM574x,          |                     |
+|                       | developers          | to 16 characters or |    k2g,             |                     |
+|                       |                     | terminate with      |    k2hk,k2l,k2e,k2l |                     |
+|                       |                     | enter               |    c6657,c6678      |                     |
+|                       |                     | key.Application     |    omapl137,        |                     |
+|                       |                     | echoes back         |    omapl138,        |                     |
+|                       |                     | characters.         |                     |                     |
++-----------------------+---------------------+---------------------+---------------------+---------------------+
+| UART_TestApplication  | Unit Test           | User can enter up to| AM335x,AM437x,AM571x| CCS project         |
+|                       | application to test | 16 characters using | AM572x,AM574X       |                     |
+|                       | all APIs            | serial              | k2g,k2hk,k2l,k2e,k2l|                     |
+|                       |                     | console.Application | c6657,c6678         |                     |
+|                       |                     | echoes back         | omapl137,omapl138   |                     |
+|                       |                     |                     +---------------------+---------------------+
+|                       |                     |                     | am65xx              | makefile            |
++-----------------------+---------------------+---------------------+---------------------+---------------------+
+| UART_DMATestApplicati | Unit Test           | User can enter up to| AM335x,AM437x,AM571x| CCS project         |
+| on                    | application with    | 16 characters using | AM572x,AM574X       |                     |
+|                       | DMA mode.           | serial              | k2g,k2hk,k2l,k2e,k2l|                     |
+|                       |                     | console.Application | c6657,c6678         |                     |
+|                       |                     | echoes back         | omapl137,omapl138   |                     |
+|                       |                     |                     +---------------------+---------------------+
+|                       |                     |                     | am65xx              | makefile            |
++-----------------------+---------------------+---------------------+---------------------+---------------------+
+
+Building UART examples
+----------------------
+
+-  Makefile based examples and dependent libraries can be built from the top level or module level UART makefile, refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+::
+
+   To build and clean libs/apps from top-level makefile:
+   cd <pdk>/packages
+   make uart
+   make uart_clean
+
+   To build and clean libs/apps from module-level makefile:
+   cd <pdk>/packages/ti/drv/uart
+   make all
+   make clean
+
+
+-  RTSC CCS project based examples are built from CCS
+::
+
+   cd <pdk>/packages
+   ./pdkProjectCreate.sh [soc] [board] [endian] uart [project type] [processor] [SECUREMODE=<yes/no>]
+   Import and build CCS Project from  <pdk>/packages/MyExampleProjects/
+
 
 Additional References
 ---------------------

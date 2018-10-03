@@ -107,6 +107,8 @@ This sysbios based example tests Hwi, Timer, Semaphores etc.
     evmK2H
     evmOMAPL137
     lcdkOMAPL138
+    am65xx_evm
+    am65xx_idk
 
 .. rubric:: Build instructions
    :name: build-instructions
@@ -151,6 +153,8 @@ Semaphores etc and prints output on UART console.
     idkAM572x 
     idkAM571x 
     idkAM437x
+    am65xx_evm
+    am65xx_idk
 
 .. rubric:: Build instructions
    :name: build-instructions-1

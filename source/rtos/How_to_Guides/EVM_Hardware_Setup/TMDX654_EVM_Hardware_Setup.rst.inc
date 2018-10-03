@@ -199,41 +199,20 @@ Ensure that at least "Sitara AMx Processors" is selected:
 
  
 
-Install the AM65x Emulation Package and Device Support Package
+Install the latest Emulation Package and Device Support Package
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. Note:: For pre-release customers, steps 1-3 are required. Otherwise, please skip to step 4.
-
-1. In CCS, navigate to Help -> Install New Software and 
-click "Add..."
-
-2. Add the MS9 Emulation Package repo URL (see links below) to the "Location" field 
-and click OK.
-
- **Windows:** `http://sdo-swlab-hou.dhcp.ti.com/sdo/emulation/K3_releases/MS-9_int_rel2/repo_win32 <http://sdo-swlab-hou.dhcp.ti.com/sdo/emulation/K3_releases/MS-9_int_rel2/repo_win32>`_ 
 	
- **Linux:** `http://sdo-swlab-hou.dhcp.ti.com/sdo/emulation/K3_releases/MS-9_int_rel2/repo_linux <http://sdo-swlab-hou.dhcp.ti.com/sdo/emulation/K3_releases/MS-9_int_rel2/repo_linux>`_ 
-
-3. Add the Device Support Package repo URL below to the "Location field 
-and click OK.
-
- `http://downloads.ti.com/sdo/sdo_apps_public_sw/output <http://downloads.ti.com/sdo/sdo_apps_public_sw/output>`_ 
- 
- .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Add_Repository.png
- 
-.. Note:: The AM65x Device Support Package has dependencies on the Emulation Package so the MS9 Emulation Package may need to be updated to the latest version prior to updating the Device Support Package. Please refer to the Processor SDK Release Notes for the latest versions.
-	
-3. In CCS, navigate to Help -> Check for Updates and select "Sitara device support" 
+1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support" 
 and "TI Emulators" and click Next.
 	
  .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
 	
-4. Click "Next" again, select "I accept the terms of the license agreements" 
+2. Click "Next" again, select "I accept the terms of the license agreements" 
 and click Finish to begin the installation.
 
  .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
 	
-You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when 
+3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when 
 prompted to complete the installation.
 
 **Disable Automatic Updates**

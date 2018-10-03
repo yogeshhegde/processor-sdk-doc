@@ -17,26 +17,28 @@ configuration of the interface and sending/receiving interrupts via
 Address Space 0. Data is transferred outside the scope of the LLD using
 CPU or EDMA through the data area.
 
-There are two revisions of the pcie hardware. The first, v0, in KeyStone
-devices (C66x, K2x). The second, v1, is in AM57xx devices. The LLD
+There are three revisions of the pcie hardware. The first, v0, in KeyStone
+devices (C66x, K2x). The second, v1, is in AM57xx devices. The third, 
+v2, is in AM65xx devices.  The LLD
 abstacts the configuration of standards-based PCIe registers (Type 0,
 Type 1 and Capabilities registers) so same user code can be used on both
 device types. However, there are different interfaces for the registers
 not based on PCIe standards (port logic and ti-conf which generally
 covers interrupts and address translation). That portion of user code
-needs to differ between C66x/K2x and AM57xx devices.
+needs to differ between C66x/K2x, AM57xx, and AM65xx devices.
 
 The example includes configuration of one SoC as EP and a second as RC.
 It then performs a simple CPU-based memory transfer (EDMA can be used
 via the same addresses used by the CPU), and interrupt generation (from
 EP) and reception (to RC). It also shows differences in user code
-required to support both C66x/K2x and AM57xx devices.
+required to support both C66x/K2x, AM57xx and AM65xx devices.
 
 .. rubric:: Differences in Operation between C66x/K2x and AM57xx devices
    :name: differences-in-operation-between-c66xk2x-and-am57xx-devices
 
-C66x/K2x and AM57xx are functionally identical, except that interrupts
-are handled by example and lld only on AM57xx.
+C66x/K2x, AM57xx, and AM65xx are functionally identical, except that interrupts
+are handled by example and lld only on AM57xx.  Also older devices only support
+gen 1/2, while AM65xx supports gen 3.
 
 .. rubric:: Modes of Operation
    :name: modes-of-operation
@@ -110,9 +112,9 @@ Examples
 | Name            | Description     | EVM             | Expected        |
 |                 |                 | Configuration   | Results         |
 +=================+=================+=================+=================+
-| PCIE_idkAM57[12 | 2-device PCIe   | **IMPORTANT:**  | **AM572x/AM574x |
-| 4]x*ExampleProj | connection      | Cable must be   | or AM571x       |
-| ect             |                 | `MODIFIED`_     | EVM** : One     |
+| PCIE_idkAM57[1\ | 2-device PCIe   | **IMPORTANT:**  | **AM572x/AM574x |
+| 24]x*ExamplePr\ | connection      | Cable must be   | or AM571x       |
+| oject           |                 | `MODIFIED`_     | EVM** : One     |
 |                 |                 | in order to     | board is        |
 |                 |                 | avoid damaging  | EP/other is RC; |
 |                 |                 | the clock       | link is         |
@@ -144,8 +146,53 @@ Examples
 |                 |                 | M4.             |                 |
 |                 |                 |                 |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| PCIE_evmK2G*Exa | 2-device PCIe   | **IMPORTANT:**  | **K2G EVM** :   |
-| mpleProject     | connection      | Cable must be   | One board is    |
+| PCIE_sample_Ex\ | 2-device PCIe   | **IMPORTANT:**  | **AM65xx IDK**  |
+| ampleProject    | connection      | Cable must be   | One board is EP/|
+|                 |                 | `MODIFIED`_     | other           |
+| (for AM65xx IDK)|                 | in order to     | is              |
+|                 |                 | avoid damaging  | RC;             |
+|                 |                 | the clock       | link is         |
+|                 |                 | drivers in the  | established and |
+|                 |                 | SoC!            | data            |
+|                 |                 |                 | exchanged. All  |
+|                 |                 |                 | printed output  |
+|                 |                 | Connect two     | goes to the     |
+|                 |                 | like AM65xx     | serial console. |
+|                 |                 | IDK EVMs PCIe   |                 |
+|                 |                 | using a         |                 |
+|                 |                 | `MODIFIED`_     |                 |
+|                 |                 | male-male       |                 |
+|                 |                 | crossover       |                 |
+|                 |                 | PCIe x1 or x4   |                 |
+|                 |                 | cable and       |                 |
+|                 |                 | optional        |                 |
+|                 |                 | straight-through|                 |
+|                 |                 | extender.       |                 |
+|                 |                 |                 |                 |
+|                 |                 | We used a       |                 |
+|                 |                 | one-lane        |                 |
+|                 |                 | cross cable.    |                 |
+|                 |                 |                 |                 |
+|                 |                 | Executables     |                 |
+|                 |                 | for A53 (mpu)   |                 |
+|                 |                 | and R5 (mcu)    |                 |
+|                 |                 | available.      |                 |
+|                 |                 |                 |                 |
+|                 |                 | Note: this is   |                 |
+|                 |                 | NOT a CCS       |                 |
+|                 |                 | project.  It    |                 |
+|                 |                 | is built from   |                 |
+|                 |                 | running         |                 |
+|                 |                 | ``make pcie``   |                 |
+|                 |                 | from $(TI_PDK\  |                 |
+|                 |                 | _INSTALL_DIR)/\ |                 |
+|                 |                 | packages.       |                 |
+|                 |                 | Result is in    |                 |
+|                 |                 | ti/binary.      |                 |
+|                 |                 |                 |                 |
++-----------------+-----------------+-----------------+-----------------+
+| PCIE_evmK2G*Ex\ | 2-device PCIe   | **IMPORTANT:**  | **K2G EVM** :   |
+| ampleProject    | connection      | Cable must be   | One board is    |
 |                 |                 | `MODIFIED`_     | EP/other is RC; |
 |                 |                 | in order to     | link is         |
 |                 |                 | avoid damaging  | established and |
@@ -190,9 +237,9 @@ Examples
 |                 |                 | available for   |                 |
 |                 |                 | C66 and A15.    |                 |
 +-----------------+-----------------+-----------------+-----------------+
-| PCIE_idkAM571x_*| Packet Exchange | **IMPORTANT:**  | **AM571X        |
-| armEdmaPktExam  | over PCIe       | Cable must be   | >=REV1.3A       |
-| pleProject      | Benchmark       | `MODIFIED`_     | IDK** : One     |
+| PCIE_idkAM571x\ | Packet Exchange | **IMPORTANT:**  | **AM571X        |
+| _*armEdmaPktEx\ | over PCIe       | Cable must be   | >=REV1.3A       |
+| ampleProject    | Benchmark       | `MODIFIED`_     | IDK** : One     |
 | *(Available     |                 | in order to     | board is        |
 | starting in     |                 | avoid damaging  | EP/other is RC; |
 | Processor-SDK   |                 | the clock       | link is         |
@@ -227,8 +274,8 @@ Examples
 |                 |                 | connectors).    |                 |
 +-----------------+-----------------+-----------------+-----------------+
 | Remaining       | 2-device PCIe   | Connect two     | **6678, 6657,   |
-| PCIE_*ExamplePr | connection      | like C66x/K2x   | K2E, K2H,       |
-| oject           |                 | (except K2G,    | K2L** : One     |
+| PCIE_*ExampleP\ | connection      | like C66x/K2x   | K2E, K2H,       |
+| roject          |                 | (except K2G,    | K2L** : One     |
 |                 |                 | see previous    | board is        |
 |                 |                 | row) EVMs using | EP/other is RC; |
 |                 |                 | an AMC breakout | link is         |
@@ -268,7 +315,7 @@ Examples
 
 General instructions for configuring multiple EVMs with any emulator
 type are available in
-`Multi-Emulator_Debug_with_CCS <http://processors.wiki.ti.com/index.php/Multi-Emulator_Debug_with_CCS>`__
+`Debugging with Multiple Debug Probes <http://software-dl.ti.com/ccs/esd/documents/sdto_ccs_multi-probe-debug.html>`__
 
 .. rubric:: Detailed instructions to run example
    :name: detailed-instructions-to-run-example
@@ -291,8 +338,8 @@ whether output is expected on serial console or CCS console.
 
 Note that output will vary slightly based on device type. The following
 is from A57XX. The output from the RC and EP are interleaved since this
-is run from a 2*XDS1000 double config as described in `#Quick setup of
-xds100 for two EVMs <#Quick_setup_of_xds100_for_two_EVMs>`__
+is run from a 2*XDS1000 double config as described in `Quick setup of
+xds100 for two EVMs <#quick-setup-of-xds100-for-two-evms>`__
 
 ::
 
@@ -372,6 +419,12 @@ Additional documentation can be found in:
 |                                   |                                             |
 |                                   | -  AM57XX: TRM Chapter 24.9                 |
 |                                   |    titled "PCIe Controller"                 |
+|                                   |                                             |
+|                                   | -  AM65XX: TRM Chapter 12.2.2               |
+|                                   |    titled "Peripheral Component Controller  |
+|                                   |    Interconnect Express (PCIe)              |
+|                                   |    Subsystem"                               |
+|                                   |                                             |
 +-----------------------------------+---------------------------------------------+
 | API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti           |
 |                                   | /drv/pcie/docs/doxygen/html/index           |

@@ -39,7 +39,7 @@ I2C
 
 
 ***********
-QSPI-McSPI
+McSPI-QSPI-OSPI
 ***********
 .. include:: PDK_Platform_Software/Device_Drivers/QSPI_McSPI.rst.inc
 

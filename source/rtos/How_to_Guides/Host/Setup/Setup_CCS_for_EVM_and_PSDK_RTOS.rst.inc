@@ -61,6 +61,23 @@ newly discovered products from the custom path.
 
 .. Image:: ../images/CCS-GP57x-EVM-Custom-Confirm.png
 |
+
+Install Latest Emulation Package and Sitara Device Support Package
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+1. In CCS, navigate to Help -> Check for Updates and select "Sitara device support" 
+and "TI Emulators" and click Next.
+	
+ .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Check_for_Updates.PNG
+	
+2. Click "Next" again, select "I accept the terms of the license agreements" 
+and click Finish to begin the installation.
+
+ .. image:: ../images/TMDX654_EVM_Hardware_Setup/CCS_Updating_Software.png
+	
+3. You may be prompted to restart CCS for the updates to take effect. Click "Restart Now" when 
+prompted to complete the installation.
+
+
 Create Target Configuration File for EVM
 """"""""""""""""""""""""""""""""""""""""""
 
@@ -129,6 +146,16 @@ EVMs in the Processor-SDK RTOS:
 +-----------------------+-----------------------+-----------------------+
 | EVM                   | Connection            | Board                 |
 +=======================+=======================+=======================+
+| AM65x EVM             | Texas Instruments     | GPEVM_AM65x           |
+|                       | XDS110 USB Debug      |                       |
+|                       | Probe                 |                       |
+|                       |                       |                       |
++-----------------------+-----------------------+-----------------------+
+| AM65x IDK             | Texas Instruments     | IDK_AM65x             |
+|                       | XDS110 USB Debug      |                       |
+|                       | Probe                 |                       |
+|                       |                       |                       |
++-----------------------+-----------------------+-----------------------+
 | GP335x                | External Emulator     | EVMAM3358             |
 |                       | Supplied by User. EVM |                       |
 |                       | includes a TI 20 pin  |                       |

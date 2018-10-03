@@ -252,26 +252,28 @@ Executable invoked from Matrix-GUI is in: /usr/share/ti/tidl/examples/tidl_class
 
 ::
 
-   root@am57xx-evm:/usr/share/ti/tidl/examples/classification# ./tidl_classification  -h
-   Usage: tidl
+   root@am57xx-evm:/usr/share/ti/tidl/examples/classification# ./tidl_classification -h
+   Usage: tidl_classification
      Will run all available networks if tidl is invoked without any arguments.
      Use -c to run a single network.
    Optional arguments:
-   -c                   Path to the configuration file
-   -n <number of cores> Number of cores to use (1 - 4)
-   -t <d|e>             Type of core. d -> DSP, e -> EVE
-   -l                   List of label strings (of all classes in model)
-   -s                   List of strings with selected classes
-   -i                   Video input (for camera:0,1 or video clip)
-   -v                   Verbose output during execution
-   -h                   Help
+    -c                   Path to the configuration file
+    -d <number of DSP cores> Number of DSP cores to use (0 - 2)
+    -e <number of EVE cores> Number of EVE cores to use (0 - 2)
+    -g <1|2>             Number of layer groups
+    -l                   List of label strings (of all classes in model)
+    -s                   List of strings with selected classes
+    -i                   Video input (for camera:0,1 or video clip)
+    -v                   Verbose output during execution
+    -h                   Help
 
-Here is an example (invoked from /usr/share/ti/tidl/examples/classification folder), of classification using live camera input - stop at any time with mouse right-click on main image window:
+Here is an example (invoked from /usr/share/ti/tidl/examples/classification folder), of classification using live camera input - stop at any time with mouse right-click on main image window.
+In this example two DSP cores only are used, so it could be run on AM5728 device as well:
 
 ::
 
      cd /usr/share/ti/tidl/examples/classification
-     ./tidl_classification -n 2 -t d -l ./imagenet.txt -s ./classlist.txt -i 1 -c ./stream_config_j11_v2.txt
+     ./tidl_classification -g 1 -d 2 -e 0 -l ./imagenet.txt -s ./classlist.txt -i 1 -c ./stream_config_j11_v2.txt
 
 Another example (invoked from /usr/share/ti/tidl/examples/classification folder), of classification using pre-recorded video input (test2.mp4) - stop at any time with mouse right-click on main image window:
 Please note that video clip is looped as long as maximum frame count (specified in stream_config_j11_v2.txt) is not exceeded.
@@ -279,16 +281,25 @@ Please note that video clip is looped as long as maximum frame count (specified 
 ::
 
      cd /usr/share/ti/tidl/examples/classification
-     ./tidl_classification -n 2 -t d -l ./imagenet.txt -s ./classlist.txt -i ./clips/test2.mp4 -c ./stream_config_j11_v2.txt
+     ./tidl_classification -g 1 -d 2 -e 0 -l ./imagenet.txt -s ./classlist.txt -i ./clips/test2.mp4 -c ./stream_config_j11_v2.txt
    
-On AM5749, above two examples can be run on EVE as well, by changing "-t" parameter from "d" to "e":
+On AM5749, we can leverage presence of EVE cores ("-e 2"). Also note that two layergroups are used (indicated with "-g 2"), 
+meaning that two EVEs are involved and only one DSP, with several bottom layers (closest to output) executed on DSP.
+Also since DSP utilization for 2nd layergroup is low, it can balance workload for two EVEs (running rest of layers):
 
 ::
 
      cd /usr/share/ti/tidl/examples/classification
-     ./tidl_classification -n 2 -t e -l ./imagenet.txt -s ./classlist.txt -i 1 -c ./stream_config_j11_v2.txt
-     ./tidl_classification -n 2 -t e -l ./imagenet.txt -s ./classlist.txt -i ./clips/test2.mp4 -c ./stream_config_j11_v2.txt
+     ./tidl_classification -g 2 -d 1 -e 2 -l ./imagenet.txt -s ./classlist.txt -i 1 -c ./stream_config_j11_v2.txt
+     ./tidl_classification -g 2 -d 1 -e 2 -l ./imagenet.txt -s ./classlist.txt -i ./clips/test10.mp4 -c ./stream_config_j11_v2.txt
 
+Slightly higher performance (on AM5749) can be achieved if both DSP and both EVE cores are running concurrently (each core processes one frame independently). Please note that applicability of such approach
+depends on type of network. If EVE core does processing much faster than the DSP, this is not very useful.
+
+::
+
+     cd /usr/share/ti/tidl/examples/classification
+     ./tidl_classification -g 1 -d 2 -e 2 -l ./imagenet.txt -s ./classlist.txt -i ./clips/test10.mp4 -c ./stream_config_j11_v2.txt
 
 Please note that imagenet.txt is list of all classes (labels) that can be detected by the model specified in configuration file (stream_config_j11_v2.txt). List of filtered (allowed) detections is specified in ./classlist.txt (using subset of strings from imagenet.txt). E.g. currently following subset is used:
 
