@@ -769,8 +769,7 @@ Output file is jacinto11.dot, that can be converted to PNG or PDF file on **Linu
 
      dot -Tpdf ./jacinto11.dot -o ./jacinto11.pdf
 
-- Point to layer groups in JDetNet and describe how to do graph partitioning into two groups, creating
-  EVE optimal group and DSP optimal group
+For networks with two layer groups, viewer generated graph clearly depicts layer group partitioning, typically top layers in EVE and bottom layers in DSP optimal group.
 
 Simulation Tool
 ----------------
@@ -940,7 +939,8 @@ Performance data
 Computation performance of verified networks
 --------------------------------------------
 
-- J11, JSeg21, JDetNet, Mobilenet, SqueezeNet:
+- Results in below table are collected FOR SINGLE CORE execution (EVE or DSP). EVE running at 535MHz and DSP running at 750MHz.
+- J11, JSeg21, JDetNet, InceptionNetV1, Mobilenet, SqueezeNet:
 
 
 ==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
@@ -956,7 +956,19 @@ JDetNet              768x320     2191.44                61.84          -        
 
    * Sparsity provided in above table is average sparsity across all convolution layers.
    * Optimal Model – with optimal placement of layers between EVE and DSP (certain NN layers run faster on DSP, like SoftMax; ARP32 in EVE emulates float operation in software, so this can be rather slow).
-   * Next release will have improved perforamnce by using optimal layer placement (EVE has slow SoftMax layer implementation) and will enable e.g. for Jacinto11 up to 28-30fps (on AM5749).
+
+- Results in below table are collected using same models (like in above table), but with EVE running at 650MHz.
+
+==================   ==========  ==================
+Network topology     ROI size    EVE (650MHz)
+==================   ==========  ==================
+SqueezeNet           227x227     243.26ms (dense) 
+JacintoNet11         224x224     104.61ms (sparse)   
+JSegNet21            1024x512    305.51ms (sparse) 
+JDetNet              768x320     167.43ms (EVE+DSP)      
+==================   ==========  ==================
+
+- From release PLSDK 5.1, default speed for EVE core is increased from 535MHz to 650MHz.
 
 Accuracy of selected networks
 -----------------------------
