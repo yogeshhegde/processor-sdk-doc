@@ -293,17 +293,17 @@ for how to create and build examples projects
 | **USB_DevMsc**        | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
 |                       | OMAP137EVM,           | device examples share |
 |                       | OMAPL138LCDK,         | the same USB port.    |
-|                       | AM57xIDK, AM572GP     |                       |
-|                       | EVM, K2G EVM,         |                       |
-|                       | AM65xx EVM/IDK        |                       |
+|                       | AM57xIDK, AM572 EVM,  |                       |
+|                       | K2G EVM, DRA7xx EVM,  |                       |
+|                       | AM65x EVM/IDK         |                       |
 |                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
 |  **USB_HostMsc**      | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
 |                       | OMAP136EVM,           | device examples share |
 |                       | OMAPL137LCDK,         | the same USB port.    |
-|                       | AM56xIDK, K2G EVM,    | Need OTG cable for    |
-|                       | AM653x EVM/IDK        | EVM with OTG port to  |
-|                       |                       | work in host mode.    |
+|                       | AM57xIDK, K2G EVM,    | Need OTG cable for    |
+|                       | DRA7xx EVM,           | EVM with OTG port to  |
+|                       | AM65x EVM/IDK         | work in host mode.    |
 |                       |                       |                       |
 |                       |                       | USB3.0 host supported |
 |                       |                       | on AM572IDK.          |
@@ -373,7 +373,7 @@ issue the following commands:
 Both examples and test applications can be loaded and run on their intended EVM via
   	-  CCS JTAG connector, or
   	-  Via SBL: the "app" file under CCS project's debug directory (<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>) is SBL loadable file of the built project. 
-   	--  Project Memory layout must be considered and followed SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <Foundational_Components.html#boot>`__   for more detail 
+   	--  Project Memory layout must be considered and following SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <Foundational_Components.html#boot>`__   for more detail 
 
 
 
