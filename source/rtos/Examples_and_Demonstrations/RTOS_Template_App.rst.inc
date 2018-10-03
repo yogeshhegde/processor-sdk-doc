@@ -47,6 +47,11 @@ Software
 
   - A download link for CCS is located on the same page as the SDK download.
 
+.. note::
+   If you are using AM65x, you will also need to install latest TI Emulators
+   and Sitara device support packages into CCS. This can be done through 
+   CCS --> Help --> Check for Updates.
+
 Hardware
 --------
 - A supported Sitara Evaluation Module
