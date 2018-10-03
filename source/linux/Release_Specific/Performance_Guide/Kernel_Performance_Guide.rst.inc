@@ -19,6 +19,8 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+----------------------------------------------------------------------------------------------------------------+
 | K2G EVM        | K2 Galileo Evaluation Module rev C, DDR3-1333 (666 MHz/1333 MT/S), EVMK2G                                      |
 +----------------+----------------------------------------------------------------------------------------------------------------+
+| AM65x EVM      | AM65x Evaluation Module with ARM running at ***MHz, DDR***, TMDX654GPEVM                                       |
++----------------+----------------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
 
@@ -39,14 +41,11 @@ with drivers included in a particular release.
 For further information or to report any problems, contact
 http://community.ti.com/ or http://support.ti.com/
 
-.. rubric::  **Linux Kernel**
-   :name: linux-kernel
+System Benchmarks
+-------------------
 
-.. rubric::  **System Benchmarks**
-   :name: system-benchmarks
-
-.. rubric::  LMBench
-   :name: lmbench
+LMBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
@@ -167,8 +166,8 @@ http://community.ti.com/ or http://support.ti.com/
 
 Table:  **LM Bench Metrics**
 
-.. rubric::  Dhrystone
-   :name: dhrystone
+Dhrystone
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
@@ -180,8 +179,8 @@ Table:  **LM Bench Metrics**
 
 Table:  **Dhrystone Benchmark**
 
-.. rubric::  Whestone
-   :name: whestone
+Whestone
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
 
@@ -190,8 +189,9 @@ Table:  **Dhrystone Benchmark**
 
 Table:  **Whestone Benchmark**
 
-.. rubric::  Linpack
-   :name: linpack
+Linpack
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
 
@@ -200,8 +200,9 @@ Table:  **Whestone Benchmark**
 
 Table:  **Linpack Benchmark**
 
-.. rubric::  NBench
-   :name: nbench
+NBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
 
@@ -218,8 +219,8 @@ Table:  **Linpack Benchmark**
 
 Table:  **NBench Benchmarks**
 
-.. rubric::  Stream
-   :name: stream
+Stream
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf"
@@ -232,11 +233,11 @@ Table:  **NBench Benchmarks**
 
 Table:  **Stream**
 
-.. rubric::  **Boot-time Measurement**
-   :name: boot-time-measurement
+Boot-time Measurement
+-------------------------
 
-.. rubric::  Boot media: MMCSD
-   :name: boot-media-mmcsd
+Boot media: MMCSD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Boot Configuration","am335x-evm: boot time (sec)","am57xx-evm: boot time (sec)","am654x-evm: boot time (sec)","k2g-evm: boot time (sec)"
@@ -246,15 +247,15 @@ Table:  **Stream**
 
 Table:  **Boot time MMC/SD**
 
-.. rubric::  Boot media: NAND
-   :name: boot-media-nand
+Boot media: NAND
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Table:  **Boot time MMC/SD**
 
 
-.. rubric::  ALSA SoC Audio Driver
-   :name: alsa-soc-audio-driver
+ALSA SoC Audio Driver
+-------------------------
 
 #. Access type - RW\_INTERLEAVED
 #. Channels - 2
@@ -297,8 +298,8 @@ Table:  **Audio Playback**
 
 |
 
-.. rubric::  Sensor Capture
-   :name: sensor-capture
+Sensor Capture
+-------------------------
 
 Capture video frames (MMAP buffers) with v4l2c-ctl and record the
 reported fps
@@ -315,9 +316,8 @@ Table:  **Sensor Capture**
 
 |
 
-.. rubric::  Display Driver
-   :name: display-driver
-
+Display Driver
+-------------------------
 
 .. csv-table::
     :header: "Mode","am335x-evm: Fps","am57xx-evm: Fps","am654x-evm: Fps","k2g-evm: Fps"
@@ -382,15 +382,15 @@ Table:  **Display performance (HDMI)**
 
 |
 
-.. rubric::  Graphics SGX Driver
-   :name: graphics-sgx-driver
+Graphics SGX Driver
+-------------------------
 
 Run GLBenchmark and capture performance reported Display rate (Fps),
 Fill rate, Vertex Throughput, etc. All display outputs (HDMI and LCD)
 are connected when running these tests
 
-.. rubric::  Performance (Fps)
-   :name: performance-fps
+Performance (Fps)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Benchmark","am335x-evm: Test Number","am335x-evm: Fps","am57xx-evm: Test Number","am57xx-evm: Fps"
@@ -405,8 +405,8 @@ are connected when running these tests
 
 Table:  **GLBenchmark 2.5 Performance**
 
-.. rubric::  Vertex Throughput
-   :name: vertex-throughput
+Vertex Throughput
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Benchmark","am335x-evm: Test Number","am335x-evm: Rate (triangles/sec)","am57xx-evm: Test Number","am57xx-evm: Rate (triangles/sec)"
@@ -418,8 +418,8 @@ Table:  **GLBenchmark 2.5 Performance**
 
 Table:  **GLBenchmark 2.5 Vertex Throughput**
 
-.. rubric::  Pixel Throughput
-   :name: pixel-throughput
+Pixel Throughput
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Benchmark","am335x-evm: Test Number","am335x-evm: Rate (texel/sec)","am335x-evm: Fps","am57xx-evm: Test Number","am57xx-evm: Rate (texel/sec)","am57xx-evm: Fps"
@@ -431,8 +431,8 @@ Table:  **GLBenchmark 2.5 Pixel Throughput**
 
 |
 
-.. rubric::  Multimedia (Decode)
-   :name: multimedia-decode
+Multimedia (Decode)
+-------------------------
 
 Run gstreamer pipeline "gst-launch-1.0 playbin uri=\ file://\ <Path to
 stream> video-sink="kmssink sync=false connector=<connector id>"
@@ -441,8 +441,8 @@ time reported. All display display outputs (HDMI and LCD) were connected
 when running these tests, but playout was forced to LCD via the
 connector=<connector id> option.
 
-.. rubric::  H264
-   :name: h264
+H264
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Resolution","am57xx-evm: Fps","am57xx-evm: IVA Freq (MHz)","am57xx-evm: IPU Freq (MHz)"
@@ -458,8 +458,8 @@ Table:  **Gstreamer H264 in AVI Container Decode Performance**
 
 |
 
-.. rubric::  MPEG4
-   :name: mpeg4
+MPEG4
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Resolution","am57xx-evm: Fps","am57xx-evm: IVA Freq (MHz)","am57xx-evm: IPU Freq (MHz)"
@@ -472,8 +472,9 @@ Table:  **GStreamer MPEG4 in 3GP Container Decode Performance**
 
 |
 
-.. rubric::  MPEG2
-   :name: mpeg2
+MPEG2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. csv-table::
     :header: "Resolution","am57xx-evm: Fps","am57xx-evm: IVA Freq (MHz)","am57xx-evm: IPU Freq (MHz)"
 
@@ -486,11 +487,11 @@ Table:  **GStreamer MPEG2 in MP4 Container Decode Performance**
 |
 
 |
-    .. rubric::  **Ethernet Driver**
-   :name: ethernet-driver
+Ethernet Driver
+-------------------------
 
-.. rubric::  TCP Throughput
-   :name: tcp-throughput
+TCP Throughput
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "TCP Window Size (KBytes)","am335x-evm: Throughput (Mbits/sec)","am335x-evm: CPU Load ","am57xx-evm: Throughput (Mbits/sec)","am57xx-evm: CPU Load ","am654x-evm: Throughput (Mbits/sec)","am654x-evm: CPU Load ","k2g-evm: Throughput (Mbits/sec)","k2g-evm: CPU Load ","omapl138-lcdk: Throughput (Mbits/sec)","omapl138-lcdk: CPU Load "
@@ -518,6 +519,10 @@ Table: **TCP Throughput**
     "256","375.28","","1044.00","","0.00","","62.56",""
 
 Table: **TCP Throughput Interrupt Pacing**
+
+
+UDP Throughput
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric::  UDP Throughput Egress
    :name: udp-throughput-egress
@@ -552,11 +557,11 @@ Table: **UDP Throughput Egress**
 Table: **UDP Throughput Ingress**
 
 
-.. rubric::  PCIe Driver
-   :name: pcie-driver
+PCIe Driver
+-------------------------
 
-.. rubric::  PCIe-ETH
-   :name: pcie-eth
+PCIe-ETH
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "TCP Window Size(Kbytes)","am654x-evm: Bandwidth (Mbits/sec)","k2g-evm: Bandwidth (Mbits/sec)"
@@ -570,12 +575,11 @@ Table: **UDP Throughput Ingress**
 
 Table: **PCI Ethernet**
 
-.. rubric::  NAND Driver
-   :name: nand-driver
+NAND Driver
+-------------------------
 
-
-.. rubric::  AM335X-EVM
-   :name: am335x-evm
+AM335X-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","am335x-evm: Write UBIFS Throughput (Mbytes/sec)","am335x-evm: Write UBIFS CPU Load (%)","am335x-evm: Read UBIFS Throughput (Mbytes/sec)","am335x-evm: Read UBIFS CPU Load (%)"
@@ -594,9 +598,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric:: OMAPL138-LCDK
-   :name: omapl138-lcdk
-
+OMAPL138-LCDK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. csv-table::
     :header: "Buffer size (bytes)","omapl138-lcdk: Write UBIFS Throughput (Mbytes/sec)","omapl138-lcdk: Write UBIFS CPU Load (%)","omapl138-lcdk: Read UBIFS Throughput (Mbytes/sec)","omapl138-lcdk: Read UBIFS CPU Load (%)"
 
@@ -610,16 +613,11 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  QSPI Flash Driver
-   :name: qspi-flash-driver
+QSPI Flash Driver
+-------------------------
 
-
-
-
-
-
-.. rubric::  AM654x-EVM
-   :name: am654x-evm
+AM654x-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-evm: Write UBIFS Throughput (Mbytes/sec)","am654x-evm: Write UBIFS CPU Load (%)","am654x-evm: Read UBIFS Throughput (Mbytes/sec)","am654x-evm: Read UBIFS CPU Load (%)"
@@ -641,8 +639,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric:: K2G-EVM
-   :name: k2g-evm
+K2G-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","k2g-evm: Write UBIFS Throughput (Mbytes/sec)","k2g-evm: Write UBIFS CPU Load (%)","k2g-evm: Read UBIFS Throughput (Mbytes/sec)","k2g-evm: Read UBIFS CPU Load (%)"
@@ -656,11 +654,11 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  SPI Flash Driver
-   :name: spi-flash-driver
+SPI Flash Driver
+-------------------------
 
-
-.. rubric:: K2G-EVM
+K2G-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
    :name: k2g-evm
 
 .. csv-table::
@@ -675,8 +673,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  EMMC Driver
-   :name: emmc-driver
+EMMC Driver
+-------------------------
 
 .. raw:: html
 
@@ -702,8 +700,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  AM57XX-EVM
-   :name: am57xx-evm
+AM57XX-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","am57xx-evm: Write VFAT Throughput (Mbytes/sec)","am57xx-evm: Write VFAT CPU Load (%)","am57xx-evm: Read VFAT Throughput (Mbytes/sec)","am57xx-evm: Read VFAT CPU Load (%)"
@@ -750,8 +748,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  AM654x-EVM
-   :name: am654x-evm
+AM654x-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-evm: Write VFAT Throughput (Mbytes/sec)","am654x-evm: Write VFAT CPU Load (%)","am654x-evm: Read VFAT Throughput (Mbytes/sec)","am654x-evm: Read VFAT CPU Load (%)"
@@ -824,8 +822,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  K2G-EVM
-   :name: k2g-evm
+K2G-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","k2g-evm: Write VFAT Throughput (Mbytes/sec)","k2g-evm: Write VFAT CPU Load (%)","k2g-evm: Read VFAT Throughput (Mbytes/sec)","k2g-evm: Read VFAT CPU Load (%)"
@@ -866,9 +864,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  SATA Driver
-   :name: sata-driver
-
+SATA Driver
+-------------------------
 
 
 .. rubric::  AM57XX-EVM
@@ -932,9 +929,8 @@ Table: **PCI Ethernet**
 -  SATA II Harddisk used is: Seagate ST3500514NS 500G
 
 
-.. rubric::  mSATA Driver
-   :name: msata-driver
-
+mSATA Driver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. rubric::  AM57XX-EVM
@@ -978,8 +974,8 @@ Table: **PCI Ethernet**
 
 |
 
-.. rubric::  MMC/SD Driver
-   :name: mmcsd-driver
+MMC/SD Driver
+-------------------------
 
 .. raw:: html
 
@@ -1000,8 +996,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric:: AM335x-EVM
-   :name: am335x-evm
+AM335x-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","am335x-evm: Write VFAT Throughput (Mbytes/sec)","am335x-evm: Write VFAT CPU Load (%)","am335x-evm: Read VFAT Throughput (Mbytes/sec)","am335x-evm: Read VFAT CPU Load (%)"
@@ -1050,8 +1046,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  AM57XX-EVM
-   :name: am57xx-evm
+AM57XX-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","am57xx-evm: Write VFAT Throughput (Mbytes/sec)","am57xx-evm: Write VFAT CPU Load (%)","am57xx-evm: Read VFAT Throughput (Mbytes/sec)","am57xx-evm: Read VFAT CPU Load (%)"
@@ -1105,9 +1101,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  AM654x-EVM
-   :name: am654x-evm
-
+AM654x-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 |
 
@@ -1163,8 +1158,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric::  K2G-EVM
-   :name: k2g-evm
+K2G-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","k2g-evm: Write VFAT Throughput (Mbytes/sec)","k2g-evm: Write VFAT CPU Load (%)","k2g-evm: Read VFAT Throughput (Mbytes/sec)","k2g-evm: Read VFAT CPU Load (%)"
@@ -1205,8 +1200,8 @@ Table: **PCI Ethernet**
 
 
 
-.. rubric:: OMAPL138-LCDK
-   :name: omapl138-lcdk
+OMAPL138-LCDK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Buffer size (bytes)","omapl138-lcdk: Write VFAT Throughput (Mbytes/sec)","omapl138-lcdk: Write VFAT CPU Load (%)","omapl138-lcdk: Read VFAT Throughput (Mbytes/sec)","omapl138-lcdk: Read VFAT CPU Load (%)"
@@ -1259,39 +1254,39 @@ The performance numbers were captured using the following:
 
 |
 
-.. rubric::  UART Driver
-   :name: uart-driver
+UART Driver
+-------------------------
 
 Performance and Benchmarks not available in this release.
 
 |
 
-.. rubric::  I2C Driver
-   :name: i2c-driver
+I2C Driver
+-------------------------
 
 Performance and Benchmarks not available in this release.
 
 |
 
-.. rubric::  EDMA Driver
-   :name: edma-driver
+EDMA Driver
+-------------------------
 
 Performance and Benchmarks not available in this release.
 
 |
 
-.. rubric::  Touchscreen Driver
-   :name: touchscreen-driver
+Touchscreen Driver
+-------------------------
 
 Performance and Benchmarks not available in this release.
 
 |
 
-.. rubric::  USB Driver
-   :name: usb-driver
+USB Driver
+-------------------------
 
-.. rubric::  MUSB/XHCI Host controller
-   :name: musbxhci-host-controller
+MUSB/XHCI Host controller
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. raw:: html
 
@@ -1340,12 +1335,11 @@ Table: **USB Host EXT2**
 
 
 
-.. rubric::  CRYPTO Driver
-   :name: crypto-driver
+CRYPTO Driver
+-------------------------
 
-.. rubric::  OpenSSL Performance
-   :name: openssl-performance
-
+OpenSSL Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
     :header: "Algorithm","Buffer Size","am335x-evm: throughput","am57xx-evm: throughput","am654x-evm: throughput"
@@ -1417,8 +1411,8 @@ Table: **USB Host EXT2**
 
 -
 
-.. rubric::  IPSec Performance
-   :name: ipsec-performance
+IPSec Performance
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Note: queue\_len is set to 300 and software fallback threshold set to 9
 to enable software support for optimal performance
@@ -1433,20 +1427,16 @@ to enable software support for optimal performance
 
 
 
-.. rubric::  DCAN Driver
-   :name: dcan-driver
+DCAN Driver
+-------------------------
 
 Performance and Benchmarks not available in this release.
 
-.. rubric::  **Power Management**
-    :name: power-management
+Power Management
+-------------------------
 
-.. rubric::  Power Measurements
-   :name: power-measurements
-
-
-.. rubric:: AM335x-EVM
-    :name: am335x-evm=
+AM335x-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: At each OPP
    :name: each-opp
