@@ -89,4 +89,6 @@ IPC Debugging Tools and Techniques on AM57xx
 EVM Hardware Setup
 *******************
 
+AM65x EVM 
+===================
 .. include:: How_to_Guides/EVM_Hardware_Setup/TMDX654_EVM_Hardware_Setup.rst.inc
