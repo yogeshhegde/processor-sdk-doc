@@ -60,7 +60,7 @@ Released October 2018
    :name: new-features
 
 -  Processor SDK RTOS now includes additional support of AM65x family of devices.
-- New platforms: AM65x/DRA80xM Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x/DRA80xM Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
+- New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
 - AM65x
 	- Features Supported
 		- Boot :SBL (Boot Loader Support) for MMCSD and OSPI interface. Please refer to `SBL AM65x: <Foundational_Components.html#am65x>`__
@@ -71,14 +71,14 @@ Released October 2018
 		- IPC: Hardware spinlocks and mailbox
 		- Crypto Low level Driver: SA2 UL
 		- DDR @ 1600 MTS, and CPU @ 800 MHz configuration
-		- Additional source release of firmware: PRU-ICSS-G Dual EMAC support
-	- Features not (yet) supported: USB 3.0,OSPI 133Mhz/166Mhz, MCU/R5 Split Mode, MPU TI-RTOS SMP Support
+		- Additional source release for PRU-ICSS-G Dual EMAC firmware
+	- Features not (yet) supported: USB 3.0,OSPI 133Mhz/166Mhz, MCU/R5 Split Mode, MPU TI-RTOS SMP Support,CTOOLSLIB
 -  PRU-ICSS Dual EMAC Firmware Feature extension:
-    - `Multicast filtering: <PRU_ICSS.html>`__
-    - `Timesync PTP: <Foundational_Components.html#timesync-ptp>`__
--  `PRU-ICSS I2C Firmware: <PRU_ICSS.html#pru-icss-i2c>`__
-	- Additional support for `PRU-ICSS-0 instance of AM437x SOC: <PRU_ICSS.html#pru-icss-i2c>`__
--  AM335x Connectivity extension to support `Simplelink 3120 NWP WiFi: <Examples_and_Demonstrations.html#simplelink-wifi-demo>`__
+    - `Multicast filtering <PRU_ICSS.html>`__
+    - `Timesync PTP <Foundational_Components.html#timesync-ptp>`__
+-  `PRU-ICSS I2C Firmware <PRU_ICSS.html#pru-icss-i2c>`__
+	- Additional support for `PRU-ICSS-0 instance of AM437x SOC <PRU_ICSS.html#pru-icss-i2c>`__
+-  AM335x Connectivity extension to support `Simplelink 3120 NWP WiFi <Examples_and_Demonstrations.html#simplelink-wifi-demo>`__
 
 .. rubric::  Component Version
    :name: component-version
@@ -107,34 +107,34 @@ more information on each item.
 +-------------+-------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  IMGLIB     | 3.1.1.0     |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
 +-------------+-------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  IPC        | 3.50.1      |      |      |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |         |    X    |
+|  IPC        | 3.50.2      |      |      |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |         |    X    |
 +-------------+-------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  LIBARCH    | 1.0.0.0     |      |      |      |      |   X   |      |      |      |      |  X   |         |         |
 +-------------+-------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-| LINALG      | 1.2.0.0     |      |      |      |      |   X   |      |      |      |      |  X   |         |         |
+|  LINALG     | 1.2.0.0     |      |      |      |      |   X   |      |      |      |      |  X   |         |         |
 +-------------+-------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-| MATHLIB      | 3.1.1.0    |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-| MPM          | 3.0.4.0    |      |      |      |      |   X   |  X   |  X   |  X   |      |      |         |         |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-| NDK          | 3.40.1     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-| NS           | 2.40.1     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-| OPENCL       | 1.1.14.1   |      |      |  X   |      |       |      |      |      |      |      |         |         |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  OPENMP      |Per platform|      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  PDK         |            |1.0.11|1.0.11|1.0.11| 1.0.2| 4.0.10|4.0.10|4.0.10|1.0.10|2.0.10|2.0.10|  1.0.5  |  1.0.5  |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  SYS/BIOS    | 6.73.0.03  |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  UIA         | 2.21.2.07  |      |      |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  XDAIS       | 7.24.0.4   |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  XDCTOOLS    | 3.50.04.43 |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
-+--------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  MATHLIB    | 3.1.1.0    |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  MPM        | 3.0.4.0    |      |      |      |      |   X   |  X   |  X   |  X   |      |      |         |         |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  NDK        | 3.40.1     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  NS         | 2.40.1     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  OPENCL     | 1.1.14.1   |      |      |  X   |      |       |      |      |      |      |      |         |         |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  OPENMP     |2.6.2.1     |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  PDK        |            |1.0.12|1.0.12|1.0.12| 1.0.2| 4.0.11|4.0.11|4.0.11|1.0.11|2.0.11|2.0.11|  1.0.6  |  1.0.6  |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  SYS/BIOS   | 6.73.0.03  |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  UIA        | 2.30.1.2   |      |      |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  XDAIS      | 7.24.0.4   |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
+|  XDCTOOLS   | 3.50.07.20 |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
++-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 
 
 The following compilers are bundled with the SDK installer:
@@ -161,19 +161,16 @@ environment (IDE) for all devices and EVMs:
 +===========+==========+======+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
 |   CCS     | 8.1.0.11 |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-|   EMU Pack|Sitara    |      |      |      |  X   |       |     |     |     |     |     |         |         |
+|   EMU Pack|Sitara    |   X  |  X   |  X   |  X   |       |     |     |     |     |     |         |         |
 |           |Device    |      |      |      |      |       |     |     |     |     |     |         |         |
 |           |1.4.1     |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-
+|    TI     |8.0.803.0 |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |     X   |     X   |
+| Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
++-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 If you need to install CCS, see the `CCS installation section <Overview.html#code-composer-studio>`__
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
-**Change log**
-
-Updated
-
-- Support for AM65x SOC
 
 
 Fixed Issues 
@@ -183,24 +180,19 @@ Fixed Issues
    :header: "Record ID","Board/s", "Component/s", "Summary"
    :widths: 15, 20,20,30
    
-	PRSDK-642,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, amic110-ice, beagleboneblack, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-evm",System Integration,RTOS: SDK components should be signed to avoid Eclipse/CCS warning when importing
-	PRSDK-3439,"am571x-idk, am572x-evm, c6678-evm, c6748-lcdk",Optimized Libraries,DIVSP API causes fmodf RTS library function to fail when MATHLIB is used in OVERRIDE_RTS mode
-	PRSDK-4546,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, k2g-evm, k2h-evm, k2k-evm",Boot,SBL RPRC parser bug when checking section address for L1D range on DSP1
+	PRSDK-642,*,System Integration,RTOS: SDK components should be signed to avoid Eclipse/CCS warning when importing
 	PRSDK-4460,am335x-evm,Chip Support,MDIOPhyRegRead() implementation in mdio.c contains erroneous semicolon
-	PRSDK-2575,"am571x-idk, am572x-evm, am572x-idk, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-evm",Optimized Libraries,DSPLIB header files prevents function declarations from being included.
-	PRSDK-4712,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Demonstrations,POSIX-SMP demo failed to work
-	PRSDK-4016,k2h-evm,Networking,NDK stack task doesn't work after moving to any core other than core 0
-	PRSDK-3318,k2g-evm,Networking,EMAC_CpswRateLimit_evmK2G_c66xExampleProject failure on 1GHz Flip Chip
-	PRSDK-1995,c6678-evm,Optimized Libraries,"FFTLIB: 3D FFT CCS project example fails to build with Processor-SDK tools (CCS, OpenMP)"
-	PRSDK-2423,"am570x-evm, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, omapl138-evm",Optimized Libraries,Need to document that MATHLIB RTS overload library dependencies.
-	PRSDK-2263,"c6748-lcdk, omapl137-evm, omapl138-evm",Optimized Libraries,DSPLIB CCS test projects don`t have optimized compiler settings.
-	PRSDK-4303,"k2g-evm, k2g-hsevm, k2g-ice",Chip Support,C++ build issue due to cslr_msmc.h missing closing brackets for extern C
 	PRSDK-4449,"am437x-evm, am437x-hsevm, am437x-idk, am437x-sk",Control Drivers,Processor SDK Starterware QSPI clock setup issue on AM437x
-	PRSDK-4305,omapl138-lcdk,Demonstrations,BenchmarkProjectCreate.bat error: CGT_VERSION not set
-	PRSDK-2972,"c6748-lcdk, omapl137-evm, omapl138-evm",Optimized Libraries,DSPLIB for C674x doesn`t provide fixed point 16 bit FFT function like C66x version
-	PRSDK-4105,"am571x-idk, am572-evm, am572x-evm, am572x-idk, am574x-idk",Control Drivers,UART open sets up incorrect baudrates for 921600 bps settings.
+	PRSDK-4712,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Demonstrations,POSIX-SMP demo failed to work
 	PRSDK-4187,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Control Drivers,UART LLD input clock control required at LLD level.
 	PRSDK-4197,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Control Drivers,UARTDivisorValCompute does not round up to nearest integer resulting in large baudrate errors
+	PRSDK-4546,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, k2g-evm, k2h-evm, k2k-evm",Boot,SBL RPRC parser bug when checking section address for L1D range on DSP1
+	PRSDK-4105,"am571x-idk, am572-evm, am572x-evm, am572x-idk, am574x-idk",Control Drivers,UART open sets up incorrect baudrates for 921600 bps settings.
+	PRSDK-3318,k2g-evm,Networking,EMAC_CpswRateLimit_evmK2G_c66xExampleProject failure on 1GHz Flip Chip
+	PRSDK-4303,"k2g-evm, k2g-hsevm, k2g-ice",Chip Support,C++ build issue due to cslr_msmc.h missing closing brackets for extern C
+	PRSDK-4016,k2h-evm,Networking,NDK stack task doesn't work after moving to any core other than core 0
+	PRSDK-4305,omapl138-lcdk,Demonstrations,BenchmarkProjectCreate.bat error: CGT_VERSION not set
+
 
 	
 Known Issues 
@@ -213,27 +205,37 @@ release and any known workaround.
    :header: "Record ID","Board/s", "Component/s", "Summary","Workaround"
    :widths: 15, 20,20,30,70
 
-    git rePRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,Dual R5 configuration support in SBL could be used
+	PRSDK-4529,*,KeyStone Drivers,UART LLD can't read value 0xff byte over the UART as it is detected as -1 (error),UART LLD when configured to read data in BINARY format reports error and hangs if the received data is 0xFF. Issue is because it conflicts with failure return code. Workaround will be either prevent above pattern if controlled use case or modify the driver to bypass the failure handling
+	PRSDK-3482,*,CCS,CCSV8.1: Intermittent issue not able to connect target while using DSS script,Retry for connection failure in DSS script.
+	PRSDK-4412,*,System,Processor SDK RTOS Windows installer needs to be signed,Warning message if seen can be ignored
+	PRSDK-4180,*,UNIFLASH,Sitara Uniflash CLI Plugin could not open COM ports with number higher than 9,Select COM ports in lower range
+	PRSDK-4304,"am335x-evm, am335x-ice, amic110-ice",Board Support,Flash Writer pre-built Binary does not work,Rebuilding the flash writer binaries shall fix this issue. Refer the Rebuilding the flash writer
+	PRSDK-4617,"am335x-evm, am335x-sk, am437x-sk, amic110-ice, beagleboneblack","Control Drivers, Networking",Cortex-A8: Semi host support warning in CCS,Warning can be ignored
+	PRSDK-2336,"am335x-evm, am437x-evm",Power,PM LLD test failing using CCS/JTAG,"The debug versions of the PM apps are still functional. To build them: 
+	From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm"" 
+	This will build the debug versions of the PM RTOS and measurement apps."
+	PRSDK-4725,"am335x-ice, am437x-idk",PDK,PTP: ICSS-EMAC LLD Master Mode config does not sync with slave,
+	PRSDK-4448,"am437x-evm, am437x-hsevm, am437x-idk, am437x-sk",High-Speed Drivers,SD card insert/remove doesn't work in MMCSD/FATFS,Modify PINMUX config for CTRL_CONF_SPI0_CS1 to 0x00060007 instead of 0x00060005
+	PRSDK-4727,am437x-idk,Diagnostics,ledIndustrial_TEST of Diagnostics hangs,Delay value need to be tuned for the SOC. Add BoardDiag_AppDelay(0x1FFFF); after Board_i2cIoExpWritePort() for test to pass
+	PRSDK-330,AM4X,High-Speed Drivers,USB device MSC re-enumeration failed,Problem not observed with Linux USB Host.
+	PRSDK-335,"AM4X, k2g-evm",High-Speed Drivers,USB host MSC fails to re-enumerate,Re-enumeration support for the case of device unplugged and plugged back currently fails for the example. Workaround is to avoid disconnecting drive while running example.
+	PRSDK-2892,"am571x-idk, am572x-evm, am572x-idk",PDK,Incorrect A15 MMU configurations in default config file,"Set MMU attribute to not executable for device memory 
+	attrs0.noExecute = true; // Not executable"
+	PRSDK-1682,"am571x-idk, am572x-idk",Diagnostics,Board diagnostics LCD Touchscreen test does not work with new version of LCD TSC,For LCD/Display checkout example under VPS component could be used
+	PRSDK-4541,"am571x-idk, c6748-lcdk, k2g-evm, omapl138-lcdk",OSAL,OSAL_BasicExample DSP LE hangs after HWI tests have passed.,Issue narrowed to example causing incorrectly creating two duplicate task. Example could be modified for the fix
+	PRSDK-4184,am572x-evm,Example,Hello_World: Baremetal ARM Cortex-A15 test example failure,Problem observed with using GCC semihosting support. Can use UART driver for input and output
+	PRSDK-4667,am572x-evm,"Demonstrations, Networking",Image Processing Demo lock up on AM572x GP EVM,Issue seen using 1Gig router on ETH0. Replace with 100Mbps
+	PRSDK-1975,am572x-evm,Diagnostics,timer_DiagExample_evmAM572x_arm7.out doesn't work on ARM1 core,Example can run on ARM Core 0
+	PRSDK-2166,am572x-idk,High-Speed Drivers,USB3.0 host problem with Sandisk Extreme USB3.0 stick,"Start the example without the USB plugged in. Once the example is up and waiting for USB stick, plug the USB stick in and it will enumerate properly."
+	PRSDK-4668,am572x-idk,Board Support,AM65xx Diag: ICSSG Ethernet Test hang while running second time,Diagnostic test still can be used for basic checkout of the board
+	PRSDK-3344,"am572x-idk, am574x-idk",Diagnostics,"Diagnostics icssEmac_TEST idkAM57{2/4}x : LINK IS DOWN, pluggin loopback cable",ICSS-EMAC LLD TI-RTOS example can be used for similar test.
+	PRSDK-3383,am574x-idk,Diagnostics,Diagnostics: lcdTouchscreen_TEST hangs,"Issue expected to be specific to TI EVM. For TI EVM, test need to be bypassed from the diagnostic menu."
+	PRSDK-4743,am654x-evm,Networking,"Host buffers need to be in MSMC for high throughput icss-g dual mac performance (FTP put/get). Host buffers in DDR results in degradation, improvement pending",Update linker command file for Buffer placement to on chip MSMC memory
 	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package,"| 
 	- For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. The Strawberry Perl installer automatically installs and sets up OpenSSL. 
 	- For Linux : Execute the command ""sudo apt-get install openssl"" at the linux command prompt. 
 	- Check if OpenSSL is installed by typing ""openssl version"" at the command prompt. 
 	|"
-	PRSDK-4743,am654x-evm,Networking,"Host buffers need to be in MSMC for high throughput icss-g dual mac performance (FTP put/get). Host buffers in DDR results in degradation, improvement pending",Update linker command file for Buffer placement to on chip MSMC memory
-	PRSDK-4727,am437x-idk,Diagnostics,ledIndustrial_TEST of Diagnostics hangs,Delay value need to be tuned for the SOC. Add BoardDiag_AppDelay(0x1FFFF); after Board_i2cIoExpWritePort() for test to pass
-	PRSDK-4721,k2g-ice,Diagnostics,"Diagnostics EMAC iceK2G: test hangs after ""Received Packet: 10""",
-	PRSDK-4617,"am335x-evm, am335x-sk, am437x-sk, amic110-ice, beagleboneblack","Control Drivers, Networking",CortxA8: Semihostsupport warning in CCS,Warning can be ignored
-	PRSDK-4184,am572x-evm,Example,Hello_World: Baremetal ARM Cortex-A15 test example failure,Problem observed with using GCC semihosting support. Can use UART driver for input and output
-	PRSDK-3482,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, amic110-ice, beagleboneblack, c6657-evm, c6678-evm, c6748-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-lcdk",CCS,CCSV8.1: Intermittent issue not able to connect target while using DSS script,Retry for connection failure in DSS script.
-	PRSDK-3116,am335x-evm,High-Speed Drivers,USB Dev MSC drive corruptions after unplugging and replugging the cable,
-	PRSDK-4448,"am437x-evm, am437x-hsevm, am437x-idk, am437x-sk",High-Speed Drivers,SD card insert/remove doesn't work in MMCSD/FATFS,Modify PINMUX config for CTRL_CONF_SPI0_CS1 to 0x00060007 instead of 0x00060005
-	PRSDK-4758,k2h-evm,Boot,Images not booting on slave DSP cores,
-	PRSDK-4145,c6678-evm,Control Drivers,SPI v0 ISR hangs processor when RX data is not ready after TX data has sent,"Add a WHILE delay loop in after the 
-	SPI_INT_TX_EMPTY is processed, until SPI_INT_RX_FULL is set."
-	PRSDK-4108,omapl138-lcdk,High-Speed Drivers,USB Audio: Lag when trying to adjust volume,
-	PRSDK-4456,omapl138-lcdk,Control Drivers,OMAPL138 SPI driver doesn't configure clock polarity and phase when in slave mode,
-	PRSDK-4529,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, amic110-ice, beagleboneblack, c6657-evm, c6678-evm, c6748-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, omapl137-evm, omapl138-evm, omapl138-lcdk",KeyStone Drivers,UART LLD can't read value 0xff byte over the UART as it is detected as -1 (error),
-	PRSDK-4478,"am654x-evm, am654x-idk",Chip Support,AM65x R5F Baremetal CSL Startup code is setting instruction cache to disabled,"""S"" bit in MPU attr need to be set to ""0"" in CSL startup code for enabling instruction cache"
 	PRSDK-4741,am654x-evm,Boot,SBL does not work if entry point specified is address 0x0,"For baremetal and BIOS applications, The SBL reserves the first 0x100 bytes of memory from address 0x0 and memory from 0x41C00200 to 0x41C60000 for its use. This memory is available only for run time use by applications. 
 
 	For MCU RTOS applications, the linker command file must specify the entry point as 
@@ -245,45 +247,38 @@ release and any known workaround.
 	Program.sectMap["".vecs""] = ""MCU0_R5F_TCMA""; 
 
 	(Refer http://git.ti.com/keystone-rtos/processor-pdk-build/blobs/master/am65xx/linker_r5_sysbios.lds for an example)"
-	PRSDK-4639,"am654x-evm, am654x-idk",Chip Support,SBL examples currently does not program loaded from DDR for R5 core,"If an MCU application uses DDR, it must setup the RAT before it accesses DDR. The best place to set it up is in the reset vector, before branching to c_init_00. For an eg, please refer the code for the sbl_mcu_ddr_entry test case http://git.ti.com/keystone-rtos/sbl/blobs/master/example/ampMulticoreApp/sbl_ddr_entry_r5.asm"
-	PRSDK-4541,"am571x-idk, c6748-lcdk, k2g-evm, omapl138-lcdk",OSAL,OSAL_BasicExample DSP LE hangs after HWI tests have passed.,
-	PRSDK-4662,"am654x-evm, am654x-idk",Diagnostics,Board diagnostics application intermittently hangs,Issue is seen due to PLL initialization in the led test. PLL initialization can be skipped in LED test or test could be bypassed
-	PRSDK-4412,,System,Processor SDK RTOS Windows installer needs to be signed,Warning message if seen can be ignored
-	PRSDK-4526,"am654x-evm, am654x-idk",Board Support,R5 Interrupts will not work when program is loaded using CCS,"If code is loaded using CCS, the reset vector must be at 0x41C00000"
-	PRSDK-4180,,UNIFLASH,Sitara Uniflash CLI Plugin could not open COM ports with number higher than 9,Select COM ports in lower range
-	PRSDK-4689,"c6657-evm, c6678-evm",Networking,NIMU example fails compilation for big endian projects. Feature being descoped,
-	PRSDK-2892,"am571x-idk, am572x-evm, am572x-idk",PDK,Incorrect A15 MMU configurations in default config file,"Set MMU attribute to not executable for device memory 
-	attrs0.noExecute = true; // Not executable"
-	PRSDK-4725,"am335x-ice, am437x-idk",PDK,PTP: ICSS-M /EMAC LLD Master Mode config does not sync with slave,
-	PRSDK-4667,am572x-evm,"Demonstrations, Networking",Image Processing Demo lock up on AM572x GP EVM,Issue seen using 1Gig router on ETH0. Replace with 100Mbps
-	PRSDK-4304,"am335x-evm, am335x-ice, amic110-ice",Board Support,Flash Writer pre-built Binary does not work,Rebuilding the flash writer binaries shall fix this issue. Refer the Rebuilding the flash writer
-	PRSDK-3369,am574x-idk,High-Speed Drivers,PCIE board to board ARM test examples hangs,
-	PRSDK-3383,am574x-idk,Diagnostics,Diagnostics: lcdTouchscreen_TEST hangs,
-	PRSDK-4214,k2g-hsevm,System,create-sdcard script does not boot OOB,Default generated App image is not signed follow the steps mentioned in User Guide of the Processor SDK Secdev Build and Install Guide to sign the app
-	PRSDK-2336,"am335x-evm, am437x-evm",Power,PM LLD test failing using CCS/JTAG,"The debug versions of the PM apps are still functional. To build them: 
-	From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm"" 
-	This will build the debug versions of the PM RTOS and measurement apps."
-	PRSDK-3344,"am572x-idk, am574x-idk",Diagnostics,"Diagnostics icssEmac_TEST idkAM57{2/4}x : LINK IS DOWN, pluggin loopback cable",ICSS-EMAC LLD TI-RTOS example can be used for similar test.
-	PRSDK-1975,am572x-evm,Diagnostics,timer_DiagExample_evmAM572x_arm7.out doesn't work on ARM1 core,Example can run on ARM Core 0
-	PRSDK-2166,am572x-idk,High-Speed Drivers,USB3.0 host problem with Sandisk Extreme USB3.0 stick,"Start the example without the USB plugged in. Once the example is up and waiting for USB stick, plug the USB stick in and it will enumerate properly."
-	PRSDK-1682,"am571x-idk, am572x-idk",Diagnostics,Board diagnostics LCD Touchscreen test does not work with new version of LCD TSC,For LCD/Display checkout example under VPS component could be used
-	PRSDK-330,AM4X,High-Speed Drivers,USB device MSC re-enumeration failed,Problem not observed with Linux USB Host.
-	PRSDK-4050,"am654x-evm, am654x-idk",Control Drivers,RTOS: K3: OSPI high speed mode is not supported,"OSPI driver not functional for Full rate 133, 166 MHz with PHY enabled. Workaround by default is enabled in driver with PHY disabled. No change required for application"
-	PRSDK-4771,"am654x-evm, am654x-idk",High-Speed Drivers,MMCSD_EMMC_Regression_TestApp hangs during DDR part of test,
+	PRSDK-4462,am654x-evm,System,IPC A53 ROV log won't show correctly because of XDCtools bug,Need to recompile examples/test with new XDC tool to resolve issues.
+	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,Dual R5 configuration support in SBL could be used
+	PRSDK-4478,"am654x-evm, am654x-idk",Chip Support,AM65x R5F Baremetal CSL Startup code is setting instruction cache to disabled,"""S"" bit in MPU attr need to be set to ""0"" in CSL startup code for enabling instruction cache"
 	PRSDK-4464,"am654x-evm, am654x-idk",Networking,ICSS-G-FW: Dual-emac: ping with 16K packet size fails,
-	PRSDK-335,"AM4X, k2g-evm",High-Speed Drivers,USB host MSC fails to re-enumerate,Re-enumeration support for the case of device unplugged and plugged back currently fails for the example. Workaround is to avoid disconnecting drive while running example.
+	PRSDK-4771,"am654x-evm, am654x-idk",High-Speed Drivers,MMCSD_EMMC_Regression_TestApp hangs during DDR part of test,Application can configure for higher supported speed mode HS200
+	PRSDK-4630,"am654x-evm, am654x-idk",Demonstrations,Windows top level gmake clean followed by gmake all does not complete,"Issue due to dependency for PDK build before IPC example build. As a workaround following sequence will work 
+	gmake clean 
+	gmake pdk 
+	gmake all 
+	"
+	PRSDK-4639,"am654x-evm, am654x-idk",Chip Support,SBL examples currently does not program loaded from DDR for R5 core,"If an MCU application uses DDR, it must setup the RAT before it accesses DDR. The best place to set it up is in the reset vector, before branching to c_init_00. For an eg, please refer the code for the sbl_mcu_ddr_entry test case http://git.ti.com/keystone-rtos/sbl/blobs/master/example/ampMulticoreApp/sbl_ddr_entry_r5.asm"
+	PRSDK-4662,"am654x-evm, am654x-idk",Diagnostics,Board diagnostics application intermittently hangs,Issue is seen due to PLL initialization in the led test. PLL initialization can be skipped in LED test or test could be bypassed
+	PRSDK-4526,"am654x-evm, am654x-idk",Board Support,R5 Interrupts will not work when program is loaded using CCS,"If code is loaded using CCS, the reset vector must be at 0x41C00000"
+	PRSDK-4050,"am654x-evm, am654x-idk",Control Drivers,RTOS: K3: OSPI high speed mode is not supported,"OSPI driver not functional for Full rate 133, 166 MHz with PHY enabled. Workaround by default is enabled in driver with PHY disabled. No change required for application"
 	PRSDK-4704,"am654x-evm, am654x-idk",PDK,R5F RTOS MPU attributes don`t support running out of ATCM memory,"Workaround 
 	Current MPU settings set permission and sets ATCM region as 1KB size which needs to be changed to 32 KB Modify following from. 
 	MPU.setRegionMeta(1, 0x00000000, MPU.RegionSize_1K, attrs); 
 	To 
 	MPU.setRegionMeta(1, 0x00000000, MPU.RegionSize_32K, attrs); 
 	"
+	PRSDK-4718,"am654x-evm, am654x-idk",Board Support,DDR Controller ECC Scrubbing feature can cause DRAM data corruption,The ECC scrubbing feature inside the DDR controller must be kept disabled at all times by setting DIS_SCRUB=1 in the DDR controller's ECC Configuraion 0 (DDRCTRL_ECCCFG0) register.
 	PRSDK-4779,"am654x-evm, am654x-idk",Board Support,AM65xx: Test control does not return to menu after executing USB device test,Reboot the board after running the USB device test
 	PRSDK-4778,"am654x-evm, am654x-idk",Board Support,SPI NOR flash diagnostic test is failing on AM65xx platform with IDK application card,Keep SPI0 CS1 (SOC_PADCONFIG_112) high during NOR flash test.
 	PRSDK-4777,"am654x-evm, am654x-idk",Board Support,AM65xx EMAC diagnostic test failure,Ethernet functional test runs fine but extended tests cannot be run due to this failure. Test control returns to menu after failure and allows to run other tests normally.
-	PRSDK-4668,am572x-idk,Board Support,AM65xx Diag: ICSSG Ethernet Test hang while running second time,
-	PRSDK-4462,am654x-evm,System,IPC A53 ROV log won't show correctly because of XDCtools bug,Need to recompile examples/test with new XDC tool to resolve issues.
-	PRSDK-4718,"am654x-evm, am654x-idk",Board Support,DDR Controller ECC Scrubbing feature can cause DRAM data corruption,
+	PRSDK-4689,"c6657-evm, c6678-evm",Networking,NIMU example fails compilation for big endian projects. Feature being descoped,BE mode has been descoped. Little Endian mode is supported.
+	PRSDK-4145,c6678-evm,Control Drivers,SPI v0 ISR hangs processor when RX data is not ready after TX data has sent,"Add a WHILE delay loop in after the 
+	SPI_INT_TX_EMPTY is processed, until SPI_INT_RX_FULL is set."
+	PRSDK-4214,k2g-hsevm,System,create-sdcard script does not boot OOB,Default generated App image is not signed follow the steps mentioned in User Guide of the Processor SDK Secdev Build and Install Guide to sign the app
+	PRSDK-4721,k2g-ice,Diagnostics,"Diagnostics EMAC iceK2G: test hangs after ""Received Packet: 10""",Diagnostic test can still be used for board checkout
+	PRSDK-4758,k2h-evm,Boot,Images not booting on slave DSP cores,
+	PRSDK-4456,omapl138-lcdk,Control Drivers,OMAPL138 SPI driver doesn't configure clock polarity and phase when in slave mode,SPIFMT Polarity & Phase bits can be updated inside the driver directly to reflect the required config
+	PRSDK-4108,omapl138-lcdk,High-Speed Drivers,USB Audio: Lag when trying to adjust volume,
 
 
 .. RN_Supported-Platforms-label:
