@@ -168,6 +168,7 @@ environment (IDE) for all devices and EVMs:
 |    TI     |8.0.803.0 |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |     X   |     X   |
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
+
 If you need to install CCS, see the `CCS installation section <Overview.html#code-composer-studio>`__
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
@@ -231,22 +232,20 @@ release and any known workaround.
 	PRSDK-3344,"am572x-idk, am574x-idk",Diagnostics,"Diagnostics icssEmac_TEST idkAM57{2/4}x : LINK IS DOWN, pluggin loopback cable",ICSS-EMAC LLD TI-RTOS example can be used for similar test.
 	PRSDK-3383,am574x-idk,Diagnostics,Diagnostics: lcdTouchscreen_TEST hangs,"Issue expected to be specific to TI EVM. For TI EVM, test need to be bypassed from the diagnostic menu."
 	PRSDK-4743,am654x-evm,Networking,"Host buffers need to be in MSMC for high throughput icss-g dual mac performance (FTP put/get). Host buffers in DDR results in degradation, improvement pending",Update linker command file for Buffer placement to on chip MSMC memory
-	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package,"| 
-	- For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. The Strawberry Perl installer automatically installs and sets up OpenSSL. 
-	- For Linux : Execute the command ""sudo apt-get install openssl"" at the linux command prompt. 
-	- Check if OpenSSL is installed by typing ""openssl version"" at the command prompt. 
-	|"
-	PRSDK-4741,am654x-evm,Boot,SBL does not work if entry point specified is address 0x0,"For baremetal and BIOS applications, The SBL reserves the first 0x100 bytes of memory from address 0x0 and memory from 0x41C00200 to 0x41C60000 for its use. This memory is available only for run time use by applications. 
-
-	For MCU RTOS applications, the linker command file must specify the entry point as 
-
+	PRSDK-4741,am654x-evm,Boot,SBL does not work if entry point specified is address 0x0,"For baremetal and BIOS applications, The SBL reserves the first 0x100 bytes of memory from address 0x0 and memory from 0x41C00200 to 0x41C60000 for its use. This memory is available only for run time use by applications. For MCU RTOS applications, the linker command file must specify the entry point as 
 	--entry_point=ti_sysbios_family_arm_v7r_keystone3_Hwi_vectors 
-
+	
 	and add the following line to the BIOS application config file 
-
 	Program.sectMap["".vecs""] = ""MCU0_R5F_TCMA""; 
-
+	
 	(Refer http://git.ti.com/keystone-rtos/processor-pdk-build/blobs/master/am65xx/linker_r5_sysbios.lds for an example)"
+	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package,"| 
+	For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. The Strawberry Perl installer automatically installs and sets up OpenSSL. 
+	
+	For Linux : Execute the command ""sudo apt-get install openssl"" at the linux command prompt. 
+	
+	Check if OpenSSL is installed by typing ""openssl version"" at the command prompt. 
+	|"
 	PRSDK-4462,am654x-evm,System,IPC A53 ROV log won't show correctly because of XDCtools bug,Need to recompile examples/test with new XDC tool to resolve issues.
 	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,Dual R5 configuration support in SBL could be used
 	PRSDK-4478,"am654x-evm, am654x-idk",Chip Support,AM65x R5F Baremetal CSL Startup code is setting instruction cache to disabled,"""S"" bit in MPU attr need to be set to ""0"" in CSL startup code for enabling instruction cache"
@@ -279,6 +278,7 @@ release and any known workaround.
 	PRSDK-4758,k2h-evm,Boot,Images not booting on slave DSP cores,
 	PRSDK-4456,omapl138-lcdk,Control Drivers,OMAPL138 SPI driver doesn't configure clock polarity and phase when in slave mode,SPIFMT Polarity & Phase bits can be updated inside the driver directly to reflect the required config
 	PRSDK-4108,omapl138-lcdk,High-Speed Drivers,USB Audio: Lag when trying to adjust volume,
+
 
 
 .. RN_Supported-Platforms-label:
