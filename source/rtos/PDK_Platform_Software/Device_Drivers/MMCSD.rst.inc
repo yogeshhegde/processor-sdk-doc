@@ -156,9 +156,9 @@ Examples & Unit tests
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_Test_Project               |                            |  Prints results on    |  AM335x         |              |
 |                                  |   Unit Test                |  console              |  AM437x         |              |
-|                                  |   application              |  **Pass criteria:**   |  AM571x         |              |
-|                                  |   demonstrating write      |  All tests have       |  AM572x         |              |
-|                                  |   and read a fixed         |  passed.              |  AM574x         | CCS Project  |
+|                                  |   application              | All tests have passed |   AM571x        |              |
+|                                  |   demonstrating write      |                       |  AM572x         |              |
+|                                  |   and read a fixed         |                       |  AM574x         | CCS Project  |
 |                                  |    number of bytes         |                       |  K2G            |              |
 |                                  |   into MMCSD card.         |                       |  OMAPL137x      |              |
 |                                  |   Verifies written         |                       |  OMAPL138x      |              |
@@ -167,20 +167,20 @@ Examples & Unit tests
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_DMA_Test_Project           |                            | Prints results on     |   AM335x        |              |
 |                                  |   Unit Test                | console               |   AM437x        |              |
-|                                  |   application              |  **Pass criteria:**   |   AM571x        |              |
-|                                  |   demonstrating write      |  All tests have       |   AM572x        |              |
-|                                  |   and read a fixed         |  passed.              |   AM574x        | CCS Project  |
+|                                  |   application              | All tests have passed |   AM571x        |              |
+|                                  |   demonstrating write      |                       |   AM572x        |              |
+|                                  |   and read a fixed         |                       |   AM574x        | CCS Project  |
 |                                  |    number of bytes         |                       |   K2G           |              |
 |                                  |   into MMCSD card.         |                       |   OMAPL137x     |              |
 |                                  |   Verifies written         |                       |   OMAPl138x     |              |
 |                                  |   data pattern to          |                       |                 |              |
 |                                  |   conclude PASS/FAIL.      |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMCSD_EMMC_TestProject           |                            |  Prints results on    |   AM335x        |              |
+| MMCSD_EMMC_TestProject           |                            | Prints results on     |   AM335x        |              |
 |                                  |   Unit Test                | console               |   AM437x        |              |
-|                                  |   application              |  **Pass criteria:**   |   AM571x        |              |
-|                                  |   demonstrating write      |  All tests have       |   AM572x        |              |
-|                                  |   and read a fixed         | passed.               |   AM574x        | CCS Project  |
+|                                  |   application              | All tests have passed |   AM571x        |              |
+|                                  |   demonstrating write      |                       |   AM572x        |              |
+|                                  |   and read a fixed         |                       |   AM574x        | CCS Project  |
 |                                  |   number of bytes          |                       |   K2G           |              |
 |                                  |   into eMMC device.        |                       |   OMAPL137x     |              |
 |                                  |   Verifies written         |                       |   OMAPL138x     |              |
@@ -188,11 +188,11 @@ Examples & Unit tests
 |                                  |   conclude PASS/FAIL.      |                       |                 |              |
 |                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMCSD_EMMC_DMA_TestProject       |                            |  Prints results on    |   AM335x        |              |
+| MMCSD_EMMC_DMA_TestProject       |                            | Prints results on     |   AM335x        |              |
 |                                  |   Unit Test                | console               |   AM437x        |              |
-|                                  |   application              |  **Pass criteria:**   |   AM571x        |              |
-|                                  |   demonstrating write      |  All tests have       |   AM572x        |              |
-|                                  |   and read a fixed         | passed.               |   AM574x        |              |
+|                                  |   application              | All tests have passed |   AM571x        |              |
+|                                  |   demonstrating write      |                       |   AM572x        |              |
+|                                  |   and read a fixed         |                       |   AM574x        |              |
 |                                  |   number of bytes          |                       |   K2G           | CCS Project  |
 |                                  |   into eMMC device.        |                       |   OMAPL137x     |              |
 |                                  |   Verifies written         |                       |   OMAPL138x     |              |
@@ -201,11 +201,11 @@ Examples & Unit tests
 |                                  |                            |                       |                 |              |
 |                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMC Test Application             |                            |  Prints results on    |                 |              |
+| MMC Test Application             |                            | Prints results on     |                 |              |
 |                                  |   Unit Test                | console               |                 |              |
-|                                  |   application              |  **Pass criteria:**   |                 |              |
-|                                  |   demonstrating write      |  All tests have       |                 |              |
-|                                  |   and read a fixed         | passed.               |                 |              |
+|                                  |   application              | All tests have passed |                 |              |
+|                                  |   demonstrating write      |                       |                 |              |
+|                                  |   and read a fixed         |                       |                 |              |
 |                                  |   number of bytes          |                       |                 |              |
 |                                  |   into MMC device.         |                       |                 |              |
 |                                  |   Verifies written         |                       |                 |              |
@@ -233,9 +233,9 @@ Examples & Unit tests
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_TestApp                    |                            | Prints results on     |                 |              |
 |                                  |   Unit Test                | console               |                 |              |
-|                                  |   application              | **Pass criteria:**    |                 |              |
-|                                  |   demonstrating write      | All tests have        |                 |              |
-|                                  |   and read a fixed         | passed.               |                 |              |
+|                                  |   application              | All tests have passed |                 |              |
+|                                  |   demonstrating write      |                       |                 |              |
+|                                  |   and read a fixed         |                       |                 |              |
 |                                  |    number of bytes         |                       |    AM65x        | Makefile     |
 |                                  |   into MMCSD card.         |                       |                 |              |
 |                                  |   Verifies written         |                       |                 |              |
@@ -244,14 +244,14 @@ Examples & Unit tests
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 |  MMCSD_DMA_TestApp               |   Functionally same        | Prints results on     |                 |              |
 |                                  |   as MMCSD_TestApp         |  console              |                 |              |
-|                                  |   but with DMA enabled     |  **Pass criteria:**   |    AM65x        | Makefile     |
-|                                  |                            |  All tests have       |                 |              |
-|                                  |                            |  passed.              |                 |              |
+|                                  |   but with DMA enabled     | All tests have passed |    AM65x        | Makefile     |
+|                                  |                            |                       |                 |              |
+|                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_EMMC_TestApp               |                            |                       |                 |              |
 |                                  |   Unit Test                | Prints results on     |                 |              |
 |                                  |   application              | console               |                 |              |
-|                                  |   demonstrating write      |  All tests have       |                 |              |
+|                                  |   demonstrating write      | All tests have        |                 |              |
 |                                  |   and read a fixed         | passed.               |     AM65x       | Makefile     |
 |                                  |    number of bytes         |                       |                 |              |
 |                                  |   into the onboard         |                       |                 |              |
@@ -261,42 +261,42 @@ Examples & Unit tests
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_EMMC_DMA_TestApp           |   Functionally             |  Prints results on    |                 |              |
 |                                  |   Same as EMMC_TestApp     | console               |     AM65x       | Makefile     |
-|                                  |   but using  DMA mode      |  **Pass criteria:**   |                 |              |
+|                                  |   but using  DMA mode      | All tests have passed |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_Baremetal_TestApp          |  Baremetal version of      | Prints on console     |                 |              |
-|                                  |  MMCSD_TestApp             | **Pass criteria:**    |                 |              |
-|                                  |                            | All tests have        |     AM65x       | Makefile     |
-|                                  |                            | passed                |                 |              |
+|                                  |  MMCSD_TestApp             | All tests have passed |                 |              |
+|                                  |                            |                       |     AM65x       | Makefile     |
+|                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_Baremetal_DMA_TestApp      |  Baremetal version of      | Prints on console     |                 |              |
-|                                  |  MMCSD_EMMC_TestApp        | **Pass criteria:**    |                 |              |
-|                                  |                            | All tests have        |     AM65x       | Makefile     |
-|                                  |                            | passed                |                 |              |
+|                                  |  MMCSD_EMMC_TestApp        | All tests have passed |                 |              |
+|                                  |                            |                       |     AM65x       | Makefile     |
+|                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_Baremetal_EMMC_TestApp     |  Baremetal version of      | Prints on console     |                 |              |
-|                                  |  MMCSD_EMMC_TestApp        | **Pass criteria:**    |                 |              |
-|                                  |                            | All tests have        |     AM65x       | Makefile     |
-|                                  |                            | passed                |                 |              |
+|                                  |  MMCSD_EMMC_TestApp        | All tests have passed |                 |              |
+|                                  |                            |                       |     AM65x       | Makefile     |
+|                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_Baremetal_EMMC_DMA_TestApp |  Functionally same as      | Prints on console     |                 |              |
-|                                  |MMCSD_Baremetal_EMMC_TestApp| **Pass criteria:**    |                 |              |
-|                                  |but with DMA enabled        | All tests have        |     AM65x       | Makefile     |
-|                                  |                            | passed                |                 |              |
+|                                  |MMCSD_Baremetal_EMMC_TestApp| All tests have passed |                 |              |
+|                                  |but with DMA enabled        |                       |     AM65x       | Makefile     |
+|                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_Regression_TestApp         | Menu driven regression test| Prints on console     |                 |              |
-|                                  | which tests various        | ** Pass criteria ***  |     AM65x       | Makefile     |
-|                                  | configurations of SD card  | All tests have passed |                 |              |
+|                                  | which tests various        | All tests have passed |     AM65x       | Makefile     |
+|                                  | configurations of SD card  |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_EMMC_Regression_TestApp    | Menu driven regression test| Prints on console     |                 |              |
-|                                  | which tests various        | ** Pass criteria ***  |     AM65x       | Makefile     |
-|                                  | configurations of EMMC     | All tests have passed |                 |              |
+|                                  | which tests various        | All tests have passed |     AM65x       | Makefile     |
+|                                  | configurations of EMMC     |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 
 Building CCS projects based examples
 ----------------------------------------------
 
 CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
-`PDK Example and Test Project Creation <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#pdk-example-and-test-project-creation>`
+`PDK Example and Test Project Creation <Overview.html#pdk-example-and-test-project-creation>`
 
 Building MMCSD Test applications via makefiles
 ----------------------------------------------
