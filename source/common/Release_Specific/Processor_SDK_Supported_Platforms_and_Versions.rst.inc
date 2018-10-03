@@ -48,13 +48,13 @@ The following platforms and EVMs are supported with Processor SDK
 |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |**Processor SDK |
 |                                      |                                      |Version** |                                            |Linux**         |RT Linux**      |RTOS**          |Android**       |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`AM65x                                |AM654x EVM                            | Alpha    |Hardware User's Guide                       | X              |     X          | X              |                |
-|                                      |                                      |          |                                            |                |                |                |                |
-|                                      |                                      |          |Diagnostic Software User Guide              |                |                |                |                |
+|`AM65x <http://www.ti.com/product/    |AM654x EVM                            | Beta     |Hardware User's Guide                       | X              |     X          | X              |                |
+|am6548>`__                            |<http://www.ti.com/tool/              |          |                                            |                |                |                |                |
+|                                      |tmdx654gpevm>`__                      |          |Diagnostic Software User Guide              |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |AM654x IDK                            | Alpha    |Hardware User's Guide                       | X              |                | X              | X              |
-|                                      |                                      |          |                                            |                |                |                |                |
-|                                      |                                      |          |Diagnostic Software User Guide              |                |                |                |                |
+|                                      |AM654x IDK                            | Beta     |Hardware User's Guide                       | X              |                | X              | X              |
+|                                      |<http://www.ti.com/tool/              |          |                                            |                |                |                |                |
+|                                      |tmdx654idkevm>`__                     |          |Diagnostic Software User Guide              |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`AM57x <http://www.ti.com/lsds/ti/    |`AM572x EVM                           | A3       |`Hardware User's Guide <http://             | X              | X              | X              | X              |
 |processors/sitara/arm_cortex-a15/     |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruig1>`__              |                |                |                |                |
