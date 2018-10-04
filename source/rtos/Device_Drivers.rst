@@ -141,6 +141,12 @@ DSS
 
 
 ***********
+CAL
+***********
+.. include:: PDK_Platform_Software/Device_Drivers/CAL.rst.inc
+
+
+***********
 UDMA
 ***********
 .. include:: PDK_Platform_Software/Device_Drivers/UDMA.rst.inc
