@@ -79,32 +79,59 @@ Application
 Examples
 ^^^^^^^^
 
-+-----------------------+-----------------------+-----------------------+
-| Name                  | | Description         | Expected Results      |
-+=======================+=======================+=======================+
-| FATFS Example         | | Example will        | When a card is        |
-| application           |   initialize card and | detected with valid   |
-|                       |   checks for valid    | FAT partition console |
-|                       |   FAT partition. When | interface output will |
-|                       |   a valid FAT         | indicate "0:> "       |
-|                       |   partition is        |                       |
-|                       |   detected console    |                       |
-|                       |   interface for       |                       |
-|                       |   command execution   |                       |
-|                       |   is provided.        |                       |
-|                       |   Supported console   |                       |
-|                       |   commands include ls |                       |
-|                       |   (to list files of   |                       |
-|                       |   directory), cd      |                       |
-|                       |   (change directory), |                       |
-|                       |   pwd (present        |                       |
-|                       |   working directory)  |                       |
-|                       |   and cat (text file  |                       |
-|                       |   read operation).    |                       |
-+-----------------------+-----------------------+-----------------------+
++------------------------------+-----------------------+-----------------------+----------------+--------------+
+| Name                         | | Description         | Expected Results      | Supported SOCs | Build Type   |
++==============================+=======================+=======================+================+==============+
+| FATFS_Console_ExampleProject | | Example will        | When a card is        |                |              |
+|                              |   initialize card and | detected with valid   |  AM335x        | CCS  Project |
+|                              |   checks for valid    | FAT partition console |  AM437x        |              |
+|                              |   FAT partition. When | interface output will |  AM571x        |              |
+|                              |   a valid FAT         | indicate "0:> "       |  AM572x        |              |
+|                              |   partition is        |                       |  AM574x        |              |
+|                              |   detected console    |                       |                |              |
+|                              |   interface for       |                       |                |              |
+|                              |   command execution   |                       |                |              |
+|                              |   is provided.        |                       |                |              |
+|                              |   Supported console   |                       |                |              |
+|                              |   commands include ls |                       |                |              |
+|                              |   (to list files of   |                       |                |              |
+|                              |   directory), cd      |                       |                |              |
+|                              |   (change directory), |                       |                |              |
+|                              |   pwd (present        |                       |                |              |
+|                              |   working directory)  |                       |                |              |
+|                              |   and cat (text file  |                       |                |              |
+|                              |   read operation).    |                       |                |              |
++------------------------------+-----------------------+-----------------------+----------------+--------------+
+| FATFS_Console_TestApp        | Same as above         | Same as above         | AM65x          | Makefile     |
++------------------------------+-----------------------+-----------------------+----------------+--------------+
+
+
+Building CCS projects based examples
+------------------------------------
+
+CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
+`PDK Example and Test Project Creation <Overview.html#pdk-example-and-test-project-creation>`__
+
+
+Building FATFS Test applications via makefiles
+----------------------------------------------
+
+-  FATFSD Test applications and dependent libraries are built from the top level fatfs makefile
+-  Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details
+   of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+	-  cd <pdk>/packages/
+	-  To build: make fatfs 
+	-  To clean: make fatfs_clean 
+
+- Similarly, to build at the module level, issue the following commands for rebuilding :
+	
+	- cd <pdk>/packages/ti/fs/fatfs
+	- To build: make all
+	- To clean: make clean
 
 
 
+  
 Additional References
 ---------------------
 
