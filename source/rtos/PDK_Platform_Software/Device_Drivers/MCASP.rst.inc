@@ -268,7 +268,7 @@ CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/s
 Building MCASP Test applications via makefiles
 ----------------------------------------------
 
--  MCASP Test applications and dependent libraries are built from the top level mmcsd makefile
+-  MCASP Test applications and dependent libraries are built from the top level mcasp makefile
 -  Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details
    of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
 	-  cd <pdk>/packages/
