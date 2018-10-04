@@ -291,8 +291,9 @@ Examples & Unit tests
 |                                  | which tests various        | All tests have passed |     AM65x       | Makefile     |
 |                                  | configurations of EMMC     |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
+
 Building CCS projects based examples
-----------------------------------------------
+------------------------------------
 
 CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
 `PDK Example and Test Project Creation <Overview.html#pdk-example-and-test-project-creation>`__
