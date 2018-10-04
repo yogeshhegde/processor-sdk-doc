@@ -12,11 +12,11 @@ SDK.
 -  **Linux SDK**
 
 +---------------------------+-------------------------+
-| **Operating System**      | **Version**             |
+| **Operating System**      |   **Version**           |
 +---------------------------+-------------------------+
-| Ubuntu                    | 14.04 (64-bit)          |
-+---------------------------+-------------------------+
-| Ubuntu                    | 16.04 (64-bit)          |
+| Ubuntu                    | | 14.04 (64-bit)        |
+|                           | | 16.04 (64-bit)        |
+|                           | | 18.04 (64-bit)        |
 +---------------------------+-------------------------+
 
 -  **RTOS SDK**
@@ -48,11 +48,11 @@ The following platforms and EVMs are supported with Processor SDK
 |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |**Processor SDK |
 |                                      |                                      |Version** |                                            |Linux**         |RT Linux**      |RTOS**          |Android**       |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`AM65x <http://www.ti.com/product/    |`AM654x EVM                           | Beta     |Hardware User's Guide                       | X              |     X          | X              |                |
-|am6548>`__                            |<http://www.ti.com/tool/              |          |                                            |                |                |                |                |
+|`AM65x/DRA80xM <http://www.ti.com/    |`AM65x/DRA80xM EVM                    | Beta     |Hardware User's Guide                       | X              | X              | X              |                |
+|AM65x>`__                             |<http://www.ti.com/tool/              |          |                                            |                |                |                |                |
 |                                      |tmdx654gpevm>`__                      |          |                                            |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |`AM654x IDK                           | Beta     |Hardware User's Guide                       | X              |                | X              | X              |
+|                                      |`AM65x/DRA80xM IDK                    | Beta     |Hardware User's Guide                       | X              | X              | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |                                            |                |                |                |                |
 |                                      |tmdx654idkevm>`__                     |          |                                            |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
@@ -60,7 +60,7 @@ The following platforms and EVMs are supported with Processor SDK
 |processors/sitara/arm_cortex-a15/     |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruig1>`__              |                |                |                |                |
 |am57x/overview.page>`__               |TMDSEVM572X>`__                       |          |                                            |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |`AM572x IDK                           | 1.3A     |`Hardware User's Guide <http://             | X              | X              | X              | X              |
+|                                      |`AM572x IDK                           | 1.3A     |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui64>`__              |                |                |                |                |
 |                                      |TMDXIDK5728>`__                       |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
 |                                      |                                      |          |.wiki.ti.com/index.php/TMDXIDK5728_         |                |                |                |                |
