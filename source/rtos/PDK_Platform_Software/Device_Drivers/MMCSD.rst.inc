@@ -233,7 +233,7 @@ Examples & Unit tests
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_TestApp                    |                            | Prints on console     |                 |              |
 |                                  |   Unit Test                | All tests have passed |                 |              |
-|                                  |   application              |                       |              |
+|                                  |   application              |                       |                 |              |
 |                                  |   demonstrating write      |                       |                 |              |
 |                                  |   and read a fixed         |                       |                 |              |
 |                                  |    number of bytes         |                       |    AM65x        | Makefile     |
