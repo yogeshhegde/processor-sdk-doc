@@ -154,9 +154,9 @@ Examples & Unit tests
 |                                  |   and cat (text file       |                       |                 |              |
 |                                  |   read operation).         |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMCSD_Test_Project               |                            |  Prints results on    |  AM335x         |              |
-|                                  |   Unit Test                |  console              |  AM437x         |              |
-|                                  |   application              | All tests have passed |   AM571x        |              |
+| MMCSD_Test_Project               |                            |  Prints  on  console  |  AM335x         |              |
+|                                  |   Unit Test                | All tests have passed |  AM437x         |              |
+|                                  |   application              |                       |   AM571x        |              |
 |                                  |   demonstrating write      |                       |  AM572x         |              |
 |                                  |   and read a fixed         |                       |  AM574x         | CCS Project  |
 |                                  |    number of bytes         |                       |  K2G            |              |
@@ -165,9 +165,9 @@ Examples & Unit tests
 |                                  |   data pattern to          |                       |                 |              |
 |                                  |   conclude PASS/FAIL.      |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMCSD_DMA_Test_Project           |                            | Prints results on     |   AM335x        |              |
-|                                  |   Unit Test                | console               |   AM437x        |              |
-|                                  |   application              | All tests have passed |   AM571x        |              |
+| MMCSD_DMA_Test_Project           |                            | Prints on console     |   AM335x        |              |
+|                                  |   Unit Test                | All tests have passed |   AM437x        |              |
+|                                  |   application              |                       |   AM571x        |              |
 |                                  |   demonstrating write      |                       |   AM572x        |              |
 |                                  |   and read a fixed         |                       |   AM574x        | CCS Project  |
 |                                  |    number of bytes         |                       |   K2G           |              |
@@ -176,9 +176,9 @@ Examples & Unit tests
 |                                  |   data pattern to          |                       |                 |              |
 |                                  |   conclude PASS/FAIL.      |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMCSD_EMMC_TestProject           |                            | Prints results on     |   AM335x        |              |
-|                                  |   Unit Test                | console               |   AM437x        |              |
-|                                  |   application              | All tests have passed |   AM571x        |              |
+| MMCSD_EMMC_TestProject           |                            | Prints on console     |   AM335x        |              |
+|                                  |   Unit Test                | All tests have passed |   AM437x        |              |
+|                                  |   application              |                       |   AM571x        |              |
 |                                  |   demonstrating write      |                       |   AM572x        |              |
 |                                  |   and read a fixed         |                       |   AM574x        | CCS Project  |
 |                                  |   number of bytes          |                       |   K2G           |              |
@@ -188,9 +188,9 @@ Examples & Unit tests
 |                                  |   conclude PASS/FAIL.      |                       |                 |              |
 |                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMCSD_EMMC_DMA_TestProject       |                            | Prints results on     |   AM335x        |              |
-|                                  |   Unit Test                | console               |   AM437x        |              |
-|                                  |   application              | All tests have passed |   AM571x        |              |
+| MMCSD_EMMC_DMA_TestProject       |                            | Prints on console     |   AM335x        |              |
+|                                  |   Unit Test                | All tests have passed |   AM437x        |              |
+|                                  |   application              |                       |   AM571x        |              |
 |                                  |   demonstrating write      |                       |   AM572x        |              |
 |                                  |   and read a fixed         |                       |   AM574x        |              |
 |                                  |   number of bytes          |                       |   K2G           | CCS Project  |
@@ -201,9 +201,9 @@ Examples & Unit tests
 |                                  |                            |                       |                 |              |
 |                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMC Test Application             |                            | Prints results on     |                 |              |
-|                                  |   Unit Test                | console               |                 |              |
-|                                  |   application              | All tests have passed |                 |              |
+| MMC Test Application             |                            | Prints on console     |                 |              |
+|                                  |   Unit Test                | All tests have passed |                 |              |
+|                                  |   application              |                       |                 |              |
 |                                  |   demonstrating write      |                       |                 |              |
 |                                  |   and read a fixed         |                       |                 |              |
 |                                  |   number of bytes          |                       |                 |              |
@@ -231,9 +231,9 @@ Examples & Unit tests
 |                                  |                            |                       |                 |              |
 |                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMCSD_TestApp                    |                            | Prints results on     |                 |              |
-|                                  |   Unit Test                | console               |                 |              |
-|                                  |   application              | All tests have passed |                 |              |
+| MMCSD_TestApp                    |                            | Prints on console     |                 |              |
+|                                  |   Unit Test                | All tests have passed |                 |              |
+|                                  |   application              |                       |              |
 |                                  |   demonstrating write      |                       |                 |              |
 |                                  |   and read a fixed         |                       |                 |              |
 |                                  |    number of bytes         |                       |    AM65x        | Makefile     |
@@ -242,26 +242,26 @@ Examples & Unit tests
 |                                  |   data pattern to          |                       |                 |              |
 |                                  |   conclude PASS/FAIL.      |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-|  MMCSD_DMA_TestApp               |   Functionally same        | Prints results on     |                 |              |
-|                                  |   as MMCSD_TestApp         |  console              |                 |              |
-|                                  |   but with DMA enabled     | All tests have passed |    AM65x        | Makefile     |
+|  MMCSD_DMA_TestApp               |   Functionally same        | Prints on console     |                 |              |
+|                                  |   as MMCSD_TestApp         | All tests have passed |                 |              |
+|                                  |   but with DMA enabled     |                       |    AM65x        | Makefile     |
 |                                  |                            |                       |                 |              |
 |                                  |                            |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_EMMC_TestApp               |                            |                       |                 |              |
-|                                  |   Unit Test                | Prints results on     |                 |              |
-|                                  |   application              | console               |                 |              |
-|                                  |   demonstrating write      | All tests have        |                 |              |
-|                                  |   and read a fixed         | passed.               |     AM65x       | Makefile     |
+|                                  |   Unit Test                | Prints  on console    |                 |              |
+|                                  |   application              | All tests have passed |                 |              |
+|                                  |   demonstrating write      |                       |                 |              |
+|                                  |   and read a fixed         |                       |     AM65x       | Makefile     |
 |                                  |    number of bytes         |                       |                 |              |
 |                                  |   into the onboard         |                       |                 |              |
 |                                  |   EMMC.Verifies written    |                       |                 |              |
 |                                  |   data pattern to          |                       |                 |              |
 |                                  |   conclude PASS/FAIL.      |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-| MMCSD_EMMC_DMA_TestApp           |   Functionally             |  Prints results on    |                 |              |
-|                                  |   Same as EMMC_TestApp     | console               |     AM65x       | Makefile     |
-|                                  |   but using  DMA mode      | All tests have passed |                 |              |
+| MMCSD_EMMC_DMA_TestApp           |   Functionally             |  Prints on console    |                 |              |
+|                                  |   Same as EMMC_TestApp     | All tests have passed |     AM65x       | Makefile     |
+|                                  |   but using  DMA mode      |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
 | MMCSD_Baremetal_TestApp          |  Baremetal version of      | Prints on console     |                 |              |
 |                                  |  MMCSD_TestApp             | All tests have passed |                 |              |
@@ -291,12 +291,12 @@ Examples & Unit tests
 |                                  | which tests various        | All tests have passed |     AM65x       | Makefile     |
 |                                  | configurations of EMMC     |                       |                 |              |
 +----------------------------------+----------------------------+-----------------------+-----------------+--------------+
-
 Building CCS projects based examples
 ----------------------------------------------
 
 CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
-`PDK Example and Test Project Creation <Overview.html#pdk-example-and-test-project-creation>`
+`PDK Example and Test Project Creation <Overview.html#pdk-example-and-test-project-creation>`__
+
 
 Building MMCSD Test applications via makefiles
 ----------------------------------------------
