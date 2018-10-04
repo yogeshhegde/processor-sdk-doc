@@ -21,12 +21,12 @@ There are a number of Example Applications provided within the Processor SDK for
     Camera,,,,,X,X,X,X,X,X,X,,,,,,,,`Camera User's Guide <Examples_and_Demos_Sub-system_Demos.html#camera-users-guide>`__ ,Provides details on how to support smart sensor camera sensor using the Media Controller Framework
     Video Analytics,,,,,,,,X,X,X,X,,,,,,,,`Video Analytics Demo <Examples_and_Demos_Application_Demos.html#video-analytics>`__ ,Demonstrates the capability of AM57x for video analytics. It builds on Qt and utilizes various IP blocks on AM57x.
     DLP 3D Scanner,,,,,,,,X,X,X,X,,,,,,,,`3D Machine Vision Reference Design <Examples_and_Demos_Application_Demos.html#dlp-3d-scanner>`__ ,Demonstrates the capability of AM57x for DLP 3D scanning.
-    Simple People Tracking,X,,X,X,X,X,X,X,X,X,X,X,X,,,,,,`3D TOF Reference Design <Examples_and_Demos_Application_Demos.html#people-tracking>`__ ,Demonstrates the capability of people tracking and detection with TI?s ToF (Time-of-Flight) sensor
+    Simple People Tracking,X,,X,X,X,X,X,X,X,X,X,,,,,,,,`3D TOF Reference Design <Examples_and_Demos_Application_Demos.html#people-tracking>`__ ,Demonstrates the capability of people tracking and detection with TI?s ToF (Time-of-Flight) sensor
     Barcode Reader,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,,`Barcode Reader <Examples_and_Demos_Application_Demos.html#barcode-reader>`__ ,Demonstrates the capability of detecting and decoding barcodes
     USB Profiler,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,NA ,
     ARM Benchmarks,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,NA ,
     Display,X,,X,,X,X,,X,X,X,X,X,X,,,,,,NA ,
-    WLAN and Bluetooth,X,,X,,X,X,,X,,,,X,,,,,,,`WL127x WLAN and Bluetooth Demos <Examples_and_Demos_Sub-system_Demos.html#wlan-and-bluetooth>`__ ,Provides details on how to enable the WL1271 daughtercard which is connected to the EVM
+    WLAN and Bluetooth,X,,X,,X,X,,X,,,,,,,,,,,`WL127x WLAN and Bluetooth Demos <Examples_and_Demos_Sub-system_Demos.html#wlan-and-bluetooth>`__ ,Provides details on how to enable the WL1271 daughtercard which is connected to the EVM
     QT Demos,X,,X,X,X,X,X,X,X,X,X,X,X,,,,,,`Hands on with QT <Examples_and_Demos_Sub-system_Demos.html#hands-on-with-qt>`__,"Provides out of box Qt5.4 demos from Matrix GUI, including Calculator, Web Browser, Deform (shows vector deformation in the shape of a lens), and Animated Tiles."
     Web Browser,X,,X,X,X,X,X,X,X,X,X,X,X,,,,,,NA ,
     System Settings,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,NA ,
