@@ -11,7 +11,7 @@ to multiple cameras supporting MIPI CSI-2 over D-PHY serial interface,
 a LVDS serial interface, and a traditional parallel interface.
 It also includes an internal write DMA engine connected to VBUSM interface.
 This document has detailed API description that user can use
-to make use of the DSS driver.
+to make use of the CAL driver.
 
 
 User Interface
