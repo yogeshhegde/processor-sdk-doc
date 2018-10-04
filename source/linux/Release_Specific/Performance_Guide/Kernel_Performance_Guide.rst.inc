@@ -19,7 +19,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+----------------------------------------------------------------------------------------------------------------+
 | K2G EVM        | K2 Galileo Evaluation Module rev C, DDR3-1333 (666 MHz/1333 MT/S), EVMK2G                                      |
 +----------------+----------------------------------------------------------------------------------------------------------------+
-| AM65x EVM      | AM65x Evaluation Module with ARM running at ***MHz, DDR***, TMDX654GPEVM                                       |
+| AM65x EVM      | AM65x Evaluation Module rev 1.0 with ARM running at 800MHz, DDR4-2400 (1333 MT/S), TMDX654GPEVM                |
 +----------------+----------------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
