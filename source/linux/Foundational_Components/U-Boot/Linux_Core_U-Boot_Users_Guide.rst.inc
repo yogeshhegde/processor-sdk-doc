@@ -82,8 +82,8 @@ documented here.
 General Information
 -----------------------------------
 
-.. rubric:: Getting the U-Boot Source Code
-   :name: getting-the-u-boot-source-code
+Getting the U-Boot Source Code
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | The easiest way to get access to the U-boot source code is by
   downloading and installing the Processor SDK Linux. Once installed,
@@ -94,8 +94,8 @@ General Information
   GIT repo URL, branch and commit id can be found in the
   `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_Release_Notes.html#u-boot>`__
 
-.. rubric:: Device Trees
-   :name: device-trees
+Device Trees
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A note about device trees. With this LCPD release all boards are
 required to use a device tree to boot. To facilitate this in Sitara
@@ -106,8 +106,8 @@ family devices (K2H/K/E/L/G), it is specified by **name\_fdt** variable
 for each platform. The device tree is expected to be loaded from the
 same media as the kernel, and from the same relative path.
 
-.. rubric:: Building MLO and u-boot
-   :name: building-mlo-and-u-boot
+Building MLO and u-boot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We strongly recommend the use of separate object directories when
 building. This is done with O= parameter to make. We also recommend that
@@ -208,8 +208,8 @@ statements.
 
 | 
 
-.. rubric:: U-Boot Environment
-   :name: u-boot-environment
+U-Boot Environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Please note that on many boards we modify the environment during system
 start for a variety of variables such as **board\_name** and if unset,
@@ -276,8 +276,8 @@ Another alternative is to utilize the full syntax of the tftp command:
     U-Boot # dhcp
     U-Boot # tftp ${loadaddr} server.ip:fileName
 
-.. rubric:: Available RAM for image download
-   :name: available-ram-for-image-download
+Available RAM for image download
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To know the amount of RAM available for downloading images or for other
 usage, use ``bdinfo`` command.
@@ -324,9 +324,8 @@ specifying a single device to work with. Finally, to program via DFU for
 a given storage device see the section for the storage device you are
 working with.
 
-.. rubric:: USB Peripheral boot mode on DRA7x/AM57x (SPL-DFU support)
-   :name: usb-peripheral-boot-mode-on-dra7xam57x-spl-dfu-support
-
+USB Peripheral boot mode on DRA7x/AM57x (SPL-DFU support)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The USB Peripheral boot mode is used to boot DRA7x EVM using USB
 interface using SPL-DFU feature. Same steps could be used on an AM57x
 SoC where board support USB peripheral boot mode.
@@ -426,8 +425,8 @@ files and then boot the Linux Kernel using a root filesystem mounted
 over NFS. At this time, no special builds of U-Boot are required to
 perform these operations on the supported hardware.
 
-.. rubric:: Booting U-Boot from the network
-   :name: booting-u-boot-from-the-network
+Booting U-Boot from the network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In some cases we support loading SPL and U-Boot over the network because
 of ROM support. In some cases, a special build of U-Boot may be
@@ -529,8 +528,8 @@ Platform <http://processors.wiki.ti.com/index.php/Ubuntu_12.04_Set_Up_to_Network
 
 | 
 
-.. rubric:: Multiple Interfaces
-   :name: multiple-interfaces
+Multiple Interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On some boards, for example when we have both a wired interface and USB
 RNDIS gadget ethernet, it can be desirable to change from the default
@@ -549,8 +548,8 @@ command:
 
     U-Boot # setenv ethact usb_ether
 
-.. rubric:: Network configuration via DHCP
-   :name: network-configuration-via-dhcp
+Network configuration via DHCP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To configure the network via DHCP, use the following commands:
 
@@ -562,8 +561,8 @@ To configure the network via DHCP, use the following commands:
 And ensure that a DHCP server is configured to serve addresses for the
 network you are connected to.
 
-.. rubric:: Manual network configuration
-   :name: manual-network-configuration
+Manual network configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To configure the network manually, the **ipaddr**, **serverip**,
 **gatewayip** and **netmask**:
@@ -575,9 +574,8 @@ To configure the network manually, the **ipaddr**, **serverip**,
     U-Boot # setenv gatewayip 192.168.1.1
     U-Boot # setenv netmask 255.255.255.0
 
-.. rubric:: Disabling Gigabit Phy Advertising
-   :name: disabling-gigabit-phy-advertising
-
+Disabling Gigabit Phy Advertising
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 On some boards like DRA72x Rev B or earlier, there is an issue like
 ethernet doesn't connect to 1Gbps switch. This issue is due to the use
 of an old ti phy with history of bad behaviour, due to this several J6
@@ -590,8 +588,8 @@ disable phy's 1Gbps support and connect as 100Mbps max capable.
     => mii modify 0x3 0x0 0x0 0x1000     /* Disable Auto Negotiation */
     => mii modify 0x3 0x0 0x1000 0x1000  /* Enable Auto Negotiation */
 
-.. rubric:: Booting Linux from the network
-   :name: booting-linux-from-the-network
+Booting Linux from the network
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Within the default environment for each board that supports networking
 there is a boot command called **netboot** in AM EVMs and **boot=net**
@@ -610,8 +608,8 @@ This section documents how to write files to the NAND device and use it
 to load and then boot the Linux Kernel using a root filesystem also
 found on NAND.
 
-.. rubric:: Erasing, Reading and Writing to/from NAND partitions
-   :name: erasing-reading-and-writing-tofrom-nand-partitions
+Erasing, Reading and Writing to/from NAND partitions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Listing NAND partitions
    :name: listing-nand-partitions
@@ -702,8 +700,8 @@ read from.
 
 | 
 
-.. rubric:: Writing to NAND via DFU
-   :name: writing-to-nand-via-dfu
+Writing to NAND via DFU
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Currently in boards that support using DFU, the default build supports
 writing to NAND, so no custom build is required. To see the list of
@@ -756,8 +754,8 @@ Then on the host PC to write **MLO** to the first SPL partition:
 
     $ sudo dfu-util -D MLO -a NAND.SPL
 
-.. rubric:: NAND Boot
-   :name: nand-boot
+NAND Boot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to load and run U-Boot from NAND the first step is insuring
 that the appropriate U-boot files are loaded in the correct partition.
@@ -789,8 +787,8 @@ the evm's hardware setup guide.
 
 | 
 
-.. rubric:: Booting Kernel and Filesystem from NAND
-   :name: booting-kernel-and-filesystem-from-nand
+Booting Kernel and Filesystem from NAND
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If a user wants to use NAND as their primary storage then the NAND flash
 must have individual partitions for all the critical software needed to
@@ -834,8 +832,8 @@ U-Boot out of ROM from the storage device as it is unsupported. Once
 U-Boot is running however, any of these may be used for the kernel and
 the root filesystem.
 
-.. rubric:: Partitioning eMMC from U-Boot
-   :name: partitioning-emmc-from-u-boot
+Partitioning eMMC from U-Boot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The eMMC device typically ships without any partition table. We make use
 of the GPT support in U-Boot to write a GPT partition table to eMMC. In
@@ -859,8 +857,8 @@ the UUIDs used for the disk and each partition.
 
 A reset is required for the partition table to be visible.
 
-.. rubric:: Updating an SD card from a host PC
-   :name: updating-an-sd-card-from-a-host-pc
+Updating an SD card from a host PC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section assume that you have created an SD card following the
 instructions on `Processor SDK Linux Create SD Card
@@ -879,8 +877,8 @@ using ``dd`` command.
 
      $ sudo dd if=u-boot.ais of=/dev/sd<N> seek=117 bs=512 conv=fsync
 
-.. rubric:: Updating an SD card or eMMC using DFU
-   :name: updating-an-sd-card-or-emmc-using-dfu
+Updating an SD card or eMMC using DFU
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To see the list of available places to write to (in DFU terms,
 altsettings) use the **mmc part** command to list the partitions on the
@@ -939,8 +937,8 @@ new created on the host FAT filesystem image:
 
     $ sudo dfu-util -D fat.img -a boot
 
-.. rubric:: Updating an SD card or eMMC with RAW writes
-   :name: updating-an-sd-card-or-emmc-with-raw-writes
+Updating an SD card or eMMC with RAW writes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In some cases it is desirable to write **MLO** and **u-boot.img** as raw
 images to the MMC device rather than in a filesystem. eMMC requires
@@ -962,8 +960,8 @@ filesystem image to the device, so an example is also provided.
     U-Boot # fatload mmc 0 ${loadaddr} rootfs.ext4
     U-Boot # mmc write ${loadaddr} 0x1000 ...rootfs.ext4 size in bytes divided by 512, in hex...
 
-.. rubric:: Booting Linux from SD card or eMMC
-   :name: booting-linux-from-sd-card-or-emmc
+Booting Linux from SD card or eMMC
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Within the default environment for each board that supports SD/MMC there
 is a boot command called **mmcboot** that will set the boot arguments
@@ -974,7 +972,8 @@ memory. For the exact details of each use **printenv** on the
 turn **printenv** other sub-sections of the command. The most important
 variables here are **mmcroot** and **mmcrootfstype**.
 
-.. rubric:: Booting MLO and u-boot from eMMC boot partition
+Booting MLO and u-boot from eMMC boot partition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    :name: booting-mlo-and-u-boot-from-emmc-boot-partition
 
 The dra7xx and am57xx processors support booting from the eMMC boot partition. The following commands load the boot images from network and write them into the boot0 partition.
@@ -999,7 +998,8 @@ We also need to configure the eMMC using the bootbus and partconf commands. The 
 
 | 
 
-.. rubric:: Booting Linux from USB storage
+Booting Linux from USB storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    :name: booting-linux-from-usb-storage
 
 To load the Linux Kernel and rootfs from USB rather than SD/MMC card on
@@ -1074,8 +1074,8 @@ Set up the following u-boot environment variables:
 
 **Note:**: <hex\_len> must be at least the hex size of the k2-fw-initrd.cpio.gz file size.
 
-.. rubric:: Booting from SD/eMMC from SPL (Single stage or Falcon mode)
-   :name: booting-from-sdemmc-from-spl-single-stage-or-falcon-mode
+Booting from SD/eMMC from SPL (Single stage or Falcon mode)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this boot mode SPL (first stage bootloader) directly boots the Linux
 kernel. Optionally, in order to enter into U-Boot, reset the board while
@@ -1182,8 +1182,8 @@ DRA7x EVMs, but in Keystone-2 EVMs, it is only NOR. Finally, for
 simplicity we assume the files are being loaded from an SD card. Using
 the network interface (if applicable) is documented above.
 
-.. rubric:: Writing to SPI from U-Boot
-   :name: writing-to-spi-from-u-boot
+Writing to SPI from U-Boot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Note for AM57x and DRA7x platforms:
 
@@ -1232,9 +1232,8 @@ Note for Keystone-2 (K2H/K/E/L/G) platforms:
 
 | 
 
-.. rubric:: Booting from SPI
-   :name: booting-from-spi
-
+Booting from SPI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Within the default environment for each board that supports SPI there is
 a boot command called **spiboot** that will automatically load the
 kernel and boot. For the exact details of each use **printenv** on the
@@ -1259,8 +1258,8 @@ supported hardware. For simplicity we assume the files are being loaded
 from an SD card. Using the network interface (if applicable) is
 documented above.
 
-.. rubric:: DRA7xx support
-   :name: dra7xx-support
+DRA7xx support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Memory Layout of QSPI Flash
 
@@ -1450,8 +1449,8 @@ and reset the EVM. The SPL directly boots the kernel image from QSPI.
 
 | 
 
-.. rubric:: AM43xx support
-   :name: am43xx-support
+AM43xx support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Using QSPI on AM43xx platforms is done as eXecute In Place and U-Boot is
 directly booted.
@@ -1504,8 +1503,8 @@ instead of the default, which typically is NAND. Finally, for simplicity
 we assume the files are being loaded from an SD card. Using the network
 interface (if applicable) is documented above.
 
-.. rubric:: Writing to NOR from U-Boot
-   :name: writing-to-nor-from-u-boot
+Writing to NOR from U-Boot
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Note:
 
@@ -1533,8 +1532,8 @@ Note:
     U-Boot # fatload mmc 0 ${loadaddr} zImage
     U-Boot # cp.b ${loadaddr} 080c0000 ${filesize}
 
-.. rubric:: Booting from NOR
-   :name: booting-from-nor
+Booting from NOR
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Within the default environment there is not a shortcut for booting. One
 needs to pass **root=/dev/mtdblockN** where N is the number of the
@@ -1550,8 +1549,8 @@ This section documents how to use the UART to load files to boot the
 board into U-Boot. After that the user is expected to know how they want
 to continue loading files.
 
-.. rubric:: Booting U-Boot from the console UART
-   :name: booting-u-boot-from-the-console-uart
+Booting U-Boot from the console UART
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In some cases we support loading SPL and U-Boot over the console UART.
 You will need to use the **spl/u-boot-spl.bin** and **u-boot.img** files
@@ -1575,9 +1574,8 @@ SATA
 
 SATA and eSATA devices show up as SCSI devices in U-boot.
 
-.. rubric:: Viewing SATA Devices
-   :name: viewing-sata-devices
-
+Viewing SATA Devices
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To view all SCSI devices that U-boot sees the command "scsi info" can be
 used.
 
@@ -1595,9 +1593,8 @@ Device 0 represents the instance of the scsi device. Therefore, in later
 commands when a "<dev>" parameter is seen replace it with the
 appropriate device number.
 
-.. rubric:: Viewing Partitions
-   :name: viewing-partitions
-
+Viewing Partitions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To view all the partitions found on the SATA device the command "scsi
 part <dev>" can be used.
 
@@ -1619,8 +1616,8 @@ reference it the part number shown above. In commands shown below <part>
 should be replaced with the appropriate partition number seen from this
 table.
 
-.. rubric:: Identifying Partition Filesystem Type
-   :name: identifying-partition-filesystem-type
+Identifying Partition Filesystem Type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As shown above the "scsi part <dev>" command can be used to view all the
 partitions available on the particular scsi device. However, the proper
@@ -1638,9 +1635,8 @@ to find a complete list of partition ids.
 
 | 
 
-.. rubric:: Viewing, Reading and Writing to Partition
-   :name: viewing-reading-and-writing-to-partition
-
+Viewing, Reading and Writing to Partition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Depending on the filesystem type of the partition will depend on the
 exact commands to use to read and write to the partition. The two most
 common partitions are FAT32, EXT2 and EXT4. Luckily the commands to
@@ -1649,8 +1645,8 @@ partition uses <prefix>ls, reading files is <prefix>load and writing
 files is <prefix>write. Replace <prefix> with fat, ext2 and ext4
 depending on the filesystem type.
 
-.. rubric:: = View Partition Contents
-   :name: view-partition-contents
+View Partition Contents
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To view the contents of a FAT32 partition the user would use "fatls scsi
 <dev>:<partition>"
