@@ -939,36 +939,25 @@ Performance data
 Computation performance of verified networks
 --------------------------------------------
 
-- Results in below table are collected FOR SINGLE CORE execution (EVE or DSP). EVE running at 535MHz and DSP running at 750MHz.
+- Results in below table are collected FOR SINGLE CORE execution (EVE or DSP). EVE running at 650MHz and DSP running at 750MHz (CCS Setup, single core).
 - J11, JSeg21, JDetNet, InceptionNetV1, Mobilenet, SqueezeNet:
 
 
 ==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
 Network topology     ROI size    MMAC (million MAC)     Sparsity (%)   EVE using sparse model   EVE using dense model  DSP using sparse model  DSP using dense model  EVE + DSP (optimal model)
 ==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
-MobileNet            224x224     567.70                 1.42           -                        682.63ms               -                       717.11ms               -
-SqueezeNet           227x227     390.8                  1.46           -                        289.76ms               -                       1008.92ms              -
-InceptionNetV1       224x224     1497.37                2.48           -                        785.43ms               -                       2235.99ms              -
-JacintoNet11         224x224     405.81                 73.15          125.9ms                  235.70ms               115.91ms                370.64ms               73.55ms
-JSegNet21            1024x512    8506.5                 76.47          378.18ms                 1236.84ms              1101.12ms               3825.95ms              -
-JDetNet              768x320     2191.44                61.84          -                        -                      -                       -                      197.55ms
+MobileNet            224x224     567.70                 1.42           -                        559.18ms               -                       717.11ms               -
+SqueezeNet           227x227     390.8                  1.46           -                        237.60ms               -                       1008.92ms              -
+InceptionNetV1       224x224     1497.37                2.48           -                        643.78ms               -                       2235.99ms              -
+JacintoNet11_v2      224x224     405.81                 73.15          103.23ms                 203.23ms               115.91ms                370.64ms               61.22
+JSegNet21            1024x512    8506.5                 76.47          309.65ms                 1236.84ms              1101.12ms               3825.95ms              -
+JDetNet              768x320     2191.44                61.84          -                        -                      -                       -                      165.83ms
 ==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
 
    * Sparsity provided in above table is average sparsity across all convolution layers.
    * Optimal Model – with optimal placement of layers between EVE and DSP (certain NN layers run faster on DSP, like SoftMax; ARP32 in EVE emulates float operation in software, so this can be rather slow).
 
-- Results in below table are collected using same models (like in above table), but with EVE running at 650MHz.
-
-==================   ==========  ==================
-Network topology     ROI size    EVE (650MHz)
-==================   ==========  ==================
-SqueezeNet           227x227     243.26ms (dense) 
-JacintoNet11         224x224     104.61ms (sparse)   
-JSegNet21            1024x512    305.51ms (sparse) 
-JDetNet              768x320     167.43ms (EVE+DSP)      
-==================   ==========  ==================
-
-- From release PLSDK 5.1, default speed for EVE core is increased from 535MHz to 650MHz.
+- From release PLSDK 5.1, default EVE speed is increased from 535MHz to 650MHz.
 
 Accuracy of selected networks
 -----------------------------
