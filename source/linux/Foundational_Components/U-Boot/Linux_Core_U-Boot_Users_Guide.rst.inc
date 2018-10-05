@@ -94,6 +94,8 @@ Getting the U-Boot Source Code
   GIT repo URL, branch and commit id can be found in the
   `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_Release_Notes.html#u-boot>`__
 
+|
+
 Device Trees
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -205,6 +207,13 @@ supported by TI. To find these read the 'boards.cfg' file and look for
 the build target listed above. And please note that the main config file
 will leverage other files under include/configs, as seen by #include
 statements.
+
+|
+
+U-Boot Details for AM65x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The AM65x family of SoCs is the first device family from K3 Multicore
+SoC architecture. Please see `here <Foundational_Components_U-Boot.html#u-boot-for-am65x-family-of-socs>`__ for AM65x U-boot details.
 
 | 
 
@@ -1688,3 +1697,255 @@ memory onto a EXT4 partition
     update journal finished
     110578 bytes written in 2650 ms (40 KiB/s)
 
+|
+
+U-Boot for AM65x Family of SoCs
+-----------------------------------
+
+The AM65x family of SoCs is the first device family from K3 Multicore
+SoC architecture, targeted for broad market and industrial control with
+aim to meet the complex processing needs of modern embedded products.
+
+This section describes the boot flow, sources, build procedure, and supported boot modes
+specific to AM65x family of SoCs.
+
+The device is built over three domains, each containing specific processing
+cores, voltage domains and peripherals:
+
+#. Wake-up (WKUP) domain: Device Management and Security Controller (DMSC)
+#. Microcontroller (MCU) domain:  Dual Core ARM Cortex-R5F processor
+#. MAIN domain: Quad core 64-bit ARM Cortex-A53
+
+More info can be found in TRM: http://www.ti.com/lit/pdf/spruid7
+
+
+Boot Flow
+^^^^^^^^^^^
+On AM65x family devices, ROM supports boot only via MCU(R5). This means that
+bootloader has to run on R5 core. In order to meet this constraint, keeping
+safety in picture and to have faster boot time, the software boot architecture
+is designed as below:
+
+.. Image:: ../images/u-boot-boot-flow-am65x.png
+
+Here DMSC acts as master and provides all the critical services. R5/A53
+requests DMSC to get these services done as shown in the above diagram.
+
+
+Sources
+^^^^^^^^^^^
+* SYSFW:
+        System Firmware repo is closed source and the binaries are delivered
+        to users with NDA. Please contact TI to get the System Firmware
+        Binary named ti-sci-firmware-am6x.bin that runs on AM65x SoC.
+
+* ATF:
+        Tree: git://git.ti.com/atf/arm-trusted-firmware.git; Branch: ti-atf
+
+* OPTEE:
+        Tree: git://git.ti.com/optee/ti-optee-os.git; Branch: ti_optee_os
+
+* U-Boot:
+        Tree: git://git.ti.com/ti-u-boot/ti-u-boot.git; Branch: ti-u-boot-2018.01
+
+
+Build Procedure
+^^^^^^^^^^^^^^^^^^^^^^
+
+* SYSFW
+SPL expects an image tree blob (FIT image) containing the an X.509-
+signed system firmware binary image (as expected by ROM) plus system firmware
+configuration artifacts. Contact TI on the procedure to create the SYSFS
+image tree blob and how to provide and generate the configuration data to be
+included.
+
+* ATF
+.. code-block:: console
+
+  $ make CROSS_COMPILE=aarch64-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed
+
+* OPTEE
+.. code-block:: console
+
+  $ make PLATFORM=k3-am65x CFG_ARM64_core=y
+
+* U-Boot
+**R5**
+
+.. code-block:: console
+
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=/tmp/r5
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=/tmp/r5
+
+**A53**
+
+.. code-block:: console
+
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=/tmp/a53
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to ATF dir>/build/k3/generic/release/bl31.bin TEE=<path to OPTEE OS dir>/out/arm-plat-k3/core/tee-pager.bin O=/tmp/a53
+
+.. rubric:: Target Images
+
+Copy the below images to an SD card and boot:
+
+- tiboot3.bin from step 4.1
+- tispl.bin, u-boot.img from 4.2
+- sysfw.itb (blob containing signed binary system firmware image and config)
+
+.. rubric:: Image Formats
+
+- tiboot3.bin
+
+.. Image:: ../images/u-boot-image-format-tiboot3-bin-am65x.png
+
+- tispl.bin
+
+.. Image:: ../images/u-boot-image-format-tispl-bin-am65x.png
+
+
+Supported Boot Modes
+^^^^^^^^^^^^^^^^^^^^^^
+
+The boot media supported for AM65x devices include OSPI, eMMC, and UART.
+
+.. rubric:: OSPI
+
+ROM supports booting from OSPI from offset 0x0.
+
+**Flashing Images to OSPI**
+
+Below commands can be used to download tiboot3.bin, tispl.bin, u-boot.img,
+sysfw.itb, and config.sys over tftp and then flash it to OSPI at respective
+addresses.
+
+.. code-block:: console
+
+  => sf probe
+  => tftp ${loadaddr} tiboot3.bin
+  => sf update $loadaddr 0x0 $filesize
+  => tftp ${loadaddr} tispl.bin
+  => sf update $loadaddr 0x80000 $filesize
+  => tftp ${loadaddr} u-boot.img
+  => sf update $loadaddr 0x280000 $filesize
+  => tftp ${loadaddr} sysfw.itb
+  => sf update $loadaddr 0x7A0000 $filesize
+
+**Flash Layout for OSPI**
+
+.. Image:: ../images/u-boot-flash-layout-ospi-am65x.png
+
+Kernel Image and DT are expected to be present in the /boot folder of UBIFS
+ospi.rootfs just like in SD card case. U-Boot looks for UBI volume named
+"rootfs" for rootfs.
+
+To boot kernel from OSPI, at the U-Boot prompt:
+
+.. code-block:: console
+
+  => setenv boot ubi
+  => boot
+
+
+.. rubric:: eMMC
+
+ROM supports booting from eMMC from boot0 partition offset 0x0
+
+**Flashing Images to eMMC**
+
+The following commands can be used to download tiboot3.bin, tispl.bin,
+u-boot.img, and sysfw.itb from an SD card and write them to the eMMC boot0
+partition at respective addresses.
+
+.. code-block:: console
+
+  => mmc dev 0 1
+  => fatload mmc 1 ${loadaddr} tiboot3.bin
+  => mmc write ${loadaddr} 0x0 0x400
+  => fatload mmc 1 ${loadaddr} tispl.bin
+  => mmc write ${loadaddr} 0x400 0x1000
+  => fatload mmc 1 ${loadaddr} u-boot.img
+  => mmc write ${loadaddr} 0x1400 0x2800
+  => fatload mmc 1 ${loadaddr} sysfw.itb
+  => mmc write ${loadaddr} 0x3d00 0x300
+
+To give the ROM access to the boot partition, the following commands must be
+used for the first time:
+
+.. code-block:: console
+
+  => mmc partconf 0 1 1 1
+  => mmc bootbus 0 1 0 0
+
+To create a software partition for the rootfs, the following command can be
+used:
+
+.. code-block:: console
+
+  => gpt write mmc 0 ${partitions}
+
+**eMMC Layout**
+
+.. Image:: ../images/u-boot-flash-layout-emmc-am65x.png
+
+Kernel image and DT are expected to be present in the /boot folder of rootfs.
+To boot kernel from eMMC, use the following commands:
+
+.. code-block:: console
+
+  => setenv mmcdev 0
+  => setenv bootpart 0
+  => boot
+
+
+.. rubric:: UART
+
+ROM supports booting from MCU_UART0 via X-Modem protocol. The entire UART-based
+boot process up to U-Boot (proper) prompt goes through different stages and uses
+different UART peripherals as follows:
+
++----------+---------------+-------------+------------+
+|  WHO     | Loading WHAT  |  HW Module  |  Protocol  |
++----------+---------------+-------------+------------+
+|Boot ROM  |  tiboot3.bin  |  MCU_UART0  |  X-Modem(*)|
++----------+---------------+-------------+------------+
+|R5 SPL    |  sysfw.itb    |  MCU_UART0  |  Y-Modem(*)|
++----------+---------------+-------------+------------+
+|R5 SPL    |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
++----------+---------------+-------------+------------+
+|A53 SPL   |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
++----------+---------------+-------------+------------+
+
+.. note::
+
+    (*) In addition to X/Y-Modem related protocol timeouts, the DMSC
+    watchdog timeout of 3 min (typ.) needs to be observed until System Firmware
+    is fully loaded (from sysfw.itb) and started.
+
+
+**Debug UART**
+
+On the AM65x family of SoCs much device functionality is dependent on SYSFW
+being up and initialized correctly, including but not limited to peripheral
+modules such as the MAIN_UART0 also used from R5 SPL. In order to allow
+easier early debug functionality a debug UART functionality has been provided
+that when turned on will use the MCU_UART0 during the very early stages of R5
+SPL, namely pre-DM and pre-SYSFW initialization.
+
+In order to turn the debug UART functionality on set the following config
+options:
+
+.. code-block:: console
+
+  CONFIG_DEBUG_UART=y
+  CONFIG_DEBUG_UART_OMAP=y
+  CONFIG_DEBUG_UART_BASE=0x40a00000
+  CONFIG_DEBUG_UART_CLOCK=48000000
+  CONFIG_DEBUG_UART_SHIFT=2
+  CONFIG_DEBUG_UART_BOARD_INIT=y
+  CONFIG_DEBUG_UART_ANNOUNCE=y
+
+Note that the module input frequency of 48MHz corresponds to the device state
+right after startup through ROM. Once SYSFW is up and running this frequency
+changes, and the console needs to be re-initialized, which in most cases will
+be done through preloader_console_init() starting up the configured 'stdout'
+UART module as configured via DTS.
