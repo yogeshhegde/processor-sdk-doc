@@ -3,7 +3,7 @@
    :name: overview
 
 | 
-| IPC is a genric term of Inter-Processor Communication referred widely
+| IPC is a generic term of Inter-Processor Communication referred widely
   in the industry, but also a package in TI Processor SDK for multi-core
   communication. In generic usage, there are different ways for
   multi-core communication such as OpenCL, DCE, TI-IPC, and etc. In TI's
@@ -54,5 +54,7 @@
 | `AM57x Customizing Multicore Application <http://www.ti.com/lit/an/sprac60/sprac60.pdf>`__                                 | Info and guide to customize memory usage for custom design based on AM57x          |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 | `Modifying Memory Usage For IPUMM using DRA7xx <http://www.ti.com/lit/an/sprac08a/sprac08a.pdf>`__                         | Info on modifying memory usage of IPU for DRA7xx                                   |
++----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
+| `Linux IPC on AM65xx <Foundational_Components_IPC.html#ipc-for-am65xx>`__                                                  | General info on IPC under Linux environment for AM65xx                             |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 

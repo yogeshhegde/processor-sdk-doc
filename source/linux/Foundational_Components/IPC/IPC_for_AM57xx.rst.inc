@@ -17,7 +17,7 @@ memory sharing, etc. This article intends to take incremental steps
 toward understanding all of those pieces.
 
 .. rubric:: Software Dependencies to Get Started
-   :name: software-dependencies-to-get-started
+   :name: ipc-am57xx-software-dependencies-to-get-started
 
 Prerequisites
 
@@ -129,7 +129,7 @@ HLOS initialization time.
 | 
 
 .. rubric:: Getting Started with IPC Linux Examples
-   :name: getting-started-with-ipc-linux-examples
+   :name: ipc-am57xx-getting-started-with-ipc-linux-examples
 
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. DSP, IPU,
@@ -143,7 +143,7 @@ describe how to build and run this examples and use that as a starting
 point for this effort.
 
 .. rubric:: Building the Bundled IPC Examples
-   :name: building-the-bundled-ipc-examples
+   :name: ipc-am57xx-building-the-bundled-ipc-examples
 
 The instructions to build IPC examples found under
 ipc\_3\_xx\_xx\_xx/examples/DRA7XX\_linux\_elf have been provided in the
@@ -192,7 +192,7 @@ Here are the key files that you should see after a successful build:
 | 
 
 .. rubric:: Running the Bundled IPC Examples
-   :name: running-the-bundled-ipc-examples
+   :name: ipc-am57xx-running-the-bundled-ipc-examples
 
 On the target, let's create a directory called ipc-starter:
 
@@ -304,7 +304,7 @@ Finally, we can run the example on DSP1:
   run the host binary from A15.
 
 .. rubric:: Understanding the Memory Map
-   :name: understanding-the-memory-map
+   :name: ipc-am57xx-understanding-the-memory-map
 
 .. rubric:: Overall Linux Memory Map
    :name: overall-linux-memory-map

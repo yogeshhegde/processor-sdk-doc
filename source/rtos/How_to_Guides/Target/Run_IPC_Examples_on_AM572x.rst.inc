@@ -8,7 +8,8 @@ DRA7xx/AM572xx IPC Examples
 
 **ex01_hello**
 
-| 
+|
+ 
 The following examples demonstrate some of the rudimentary IPC
 capabilities. They are mostly two processors examples. These examples
 may be built for any two processors on your device, but only for two
@@ -105,6 +106,7 @@ variable name and its value.
 
  - ex01_hello\\dsp1\\bin\\debug
  - ex01_hello\\dsp2\\bin\\debug
+
 4. Launch target configurations.
 
 5. Right click CortexA15_0 and connect target.
@@ -149,8 +151,8 @@ creates an anonymous message queue. The client also creates and manages
 the message pool. The client's return address is set in the message
 header for each message before sending it to the server.
 
-1. Change to messageQ folder example by enter: cd
-  ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex02_messageQ**
+1. Change to messageQ folder example by enter: 
+    cd  ~/ti/ipc_nn_nn_nn_nn/examples/DRA7xx_bios_elf/\ **ex02_messageQ**
 
 2. Open readme.txt file and follow build instructions step-by-step. Make
 sure there is no spaces between variable name and its value. See Hello
@@ -160,6 +162,7 @@ World example environment varaible settings for reference.
 
  - ex02_messageq\\host\\bin\\debug : HOST A15 binary
  - ex02_messageq\\dsp1\\bin\\debug : C66x binary
+
 4. Launch target configurations. Note that BH560USB_M is emulator is used to connect to AM572X EVM.
 
 5. Right click CortexA15_0 and connect target.
@@ -437,4 +440,3 @@ at different intervals depending on each core processes execution time.
        81    xdc.runtime.Main    MainHost_done:
 
 .. raw:: html
-

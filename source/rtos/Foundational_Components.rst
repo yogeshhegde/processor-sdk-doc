@@ -19,6 +19,23 @@ FC
 ****
 - `Framework Components <http://processors.wiki.ti.com/index.php?title=Category:Framework_Components>`__
 
+*******
+IPC
+*******
+.. rubric:: IPC technical documents links
+   :name: IPC technical documents links
+
++----------------------------------------------------------------------------------+-----------------------+
+| Links                                                                            | Description           |
++==================================================================================+=======================+
+| `IPC User's Guide <http://processors.wiki.ti.com/index.php/IPC_Users_Guide>`__   | TI IPC User's Guide   |
++----------------------------------------------------------------------------------+-----------------------+
+
+| 
+
+IPC Examples
+=============
+.. include:: IPC_examples.rst.inc
 
 ***************
 OpenCL

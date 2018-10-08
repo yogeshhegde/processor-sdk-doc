@@ -13,7 +13,7 @@ memory sharing, etc. This article intends to take incremental steps
 toward understanding all of those pieces.
 
 .. rubric:: Software Dependencies to Get Started
-   :name: software-dependencies-to-get-started
+   :name: ipc-am65xx-software-dependencies-to-get-started
 
 Prerequisites
 
@@ -84,7 +84,7 @@ HLOS initialization time.
 | 
 
 .. rubric:: Getting Started with IPC Linux Examples
-   :name: getting-started-with-ipc-linux-examples
+   :name: ipc-am65xx-getting-started-with-ipc-linux-examples
 
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. R5F) running RTOS.
@@ -97,7 +97,7 @@ describe how to build and run this examples and use that as a starting
 point for this effort.
 
 .. rubric:: Building the Bundled IPC Examples
-   :name: building-the-bundled-ipc-examples
+   :name: ipc-am65xx-building-the-bundled-ipc-examples
 
 The instructions to build IPC examples found under
 ipc\_3\_xx\_xx\_xx/examples/AM65XX\_linux\_elf have been provided in the
@@ -132,7 +132,7 @@ Here are the key files that you should see after a successful build:
 | 
 
 .. rubric:: Running the Bundled IPC Examples
-   :name: running-the-bundled-ipc-examples
+   :name: ipc-am65xx-running-the-bundled-ipc-examples
 
 On the target, let's create a directory called ipc-starter:
 
@@ -226,10 +226,10 @@ Finally, we can run the example on R5 core::
     root@am65xx-evm:~#
  
 .. rubric:: Understanding the Memory Map
-   :name: understanding-the-memory-map
+   :name: ipc-am65xx-understanding-the-memory-map
 
 .. rubric:: Overall Linux Memory Map
-   :name: overall-linux-memory-map
+   :name: ipc-am65xx-overall-linux-memory-map
 
 ::
 
@@ -261,7 +261,7 @@ carveout:
 +------------------+--------------------+---------+
 | Memory Section   | Physical Address   | Size    |
 +==================+====================+=========+
-| R5F-0 Pool       | 0x9c000000         | 8 MB   |
+| R5F-0 Pool       | 0x9c000000         | 8 MB    |
 +------------------+--------------------+---------+
 | R5F-1 Pool       | 0x9b000000         | 16 MB   |
 +------------------+--------------------+---------+
@@ -425,28 +425,3 @@ Key points are:
 #. The TRACEBUFSIZE is the size of the Trace section The corresponding size
    in the cfg file should be the same (or less). It looks like this:
    ``SysMin.bufSize  = 0x8000;``
-
-.. rubric:: A53 Running TI-RTOS
-   :name: A53 Running TI-RTOS
-   
-The IPC package also includes examples for the use-case with the Host and slave cores running TI-RTOS. 
-They can be built from the Processor SDK RTOS package.
-
-.. Note:: To Install RTOS Proc SDK, please follow the instructions in the `RTOS SDK Getting Started Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#processor-sdk-rtos-getting-started-guide>`_ 
-
-In the RTOS Processor SDK, the ipc examples are located under <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx/ipc_<version>/examples/<platform>_bios_elf.
-
-Once the RTOS Processor SDK is installed at the default location, the IPC examples can be built with the following commands:
-
-.. code-block:: c
-  
-	1. Configure the build environment in
-      <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx directory
-        $ cd <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx 
-        $ source ./setupenv.sh
-	2. Start the top level build:
-        $ make ipc_examples
-		
-Once the examples are built, they can be run by loading and running the binaries using CCS through JTAG. Please refer to the section "Advanced AM65x Debug Setup with DMSC Firmware Load" of the TMDX654 EVM Hardware Setup Guide for steps to load and run the IPC examples.
-
-`TMDX654 EVM Hardware Setup <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#tmdx654-evm-hardware-setup>`_
