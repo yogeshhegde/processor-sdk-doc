@@ -513,6 +513,7 @@ Table:  **GStreamer MPEG2 in MP4 Container Decode Performance**
 |
 
 |
+
 Ethernet Driver
 -------------------------
 
@@ -545,21 +546,24 @@ Table: **TCP Throughput**
 
 Table: **TCP Throughput Interrupt Pacing**
 
-.. rubric::  UDP Throughput Egress
-   :name: udp-throughput-egress
-
 UDP Throughput
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Table: **UDP Throughput Egress**
+-  iperf version 2.0.5
+-  For receive performance, on DUT, invoke iperf in server mode.
 
-.. rubric::  UDP Throughput Ingress
-   :name: udp-throughput-ingress
+::
 
+    iperf -s -u
 
-Table: **UDP Throughput Ingress**
+-  For transmit performance, on DUT, invoke iperf in client mode.
 
+::
+
+    iperf -c <server ip> -b <bandwidth limit> -f M -t 60
+
+|
 
 PCIe Driver
 -------------------------
@@ -1043,8 +1047,6 @@ OpenSSL Performance
 
 
 
--
-
 |
 | Listed for each algorithm are the code snippets used to run each
   benchmark test.
@@ -1055,7 +1057,6 @@ OpenSSL Performance
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
--
 
 IPSec Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1073,3 +1074,15 @@ DCAN Driver
 
 Performance and Benchmarks not available in this release.
 
+
+Power Management
+-----------------
+
+Power Measurements
+^^^^^^^^^^^^^^^^^^^
+
+.. warning::
+
+  Active power is slightly higher on this release
+  because PRUSS is enabled by default. Customers not using PRUSS are
+  advised to disable it to reduce power consumption.

@@ -487,6 +487,7 @@ Table:  **GStreamer MPEG2 in MP4 Container Decode Performance**
 |
 
 |
+
 Ethernet Driver
 -------------------------
 
@@ -555,6 +556,23 @@ Table: **UDP Throughput Egress**
     "256","44.40","99.40","21.00","115.00","77.00","56.00","70.50","38.30","34.00"
 
 Table: **UDP Throughput Ingress**
+
+|
+
+-  iperf version 2.0.5
+-  For receive performance, on DUT, invoke iperf in server mode.
+
+::
+
+    iperf -s -u
+
+-  For transmit performance, on DUT, invoke iperf in client mode.
+
+::
+
+    iperf -c <server ip> -b <bandwidth limit> -f M -t 60
+
+|
 
 
 PCIe Driver
