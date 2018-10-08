@@ -659,7 +659,6 @@ SPI Flash Driver
 
 K2G-EVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   :name: k2g-evm
 
 .. csv-table::
     :header: "Buffer size (bytes)","k2g-evm: Write UBIFS Throughput (Mbytes/sec)","k2g-evm: Write UBIFS CPU Load (%)","k2g-evm: Read UBIFS Throughput (Mbytes/sec)","k2g-evm: Read UBIFS CPU Load (%)"
