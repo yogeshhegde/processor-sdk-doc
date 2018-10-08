@@ -364,14 +364,26 @@ This can be verified on the serial console utility.
 
 Programming FlashWriter on AM65xx Platform
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- Lauch Code Composer Studio.
-- Establish connection with M3_0 core and then with A53_0_0 core of the target, using `Connect Target` option. Refer
-  `CCS Target setup` http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#launch-target-configuration
-  for help.
-- Load Flash Writer program to M3_0 core using Run->Load->Load Program option.
-- Run the FlashWriter program. The Flash Writer starts sending character 'C'(xmodem protocol).
-- Refer Sections :ref:`program_target` and :ref:`erasing_target` for programming and erasing the flash device
-  on the target platform.
+- Follow the instructions mentioned in `Basic CCS Setup <http://software-dl.ti.com/processor-sdk-rtos/esd
+  /docs/latest/rtos/How_to_Guides.html#ccs-host-setup>`__ to connect to M3_0 and A53_0_0 and configure DDR.
+- Once DDR is configured, load the Flash Writer program (<uniflash_install_path>/processors/FlashWriter/AM65XX/
+  uart_am65xx_evm_flash_programmer.out) on to the A53_0_0 core.
+- Run the FlashWriter program. The Flash Writer starts sending character 'C'(xmodem protocol) on the `SoC Main Uart0
+  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
+- Refer section `Programming OSPI flash <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/
+  Foundational_Components.html#am655x-sbl-programming-ospi-flash>`__  for the commands to program SBL and
+  app image on the AM65xx EVM.
+- Refer Section :ref:`erasing_target` for programming and erasing the flash device on the target platform.
+
+.. note::
+   When using the dslite scripts for the AM65xx EVMs:
+     #. Specify the <device_type> as 3
+     #. <COM_Port> must refer to the `SoC Main Uart0  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
+
+.. warning::   If you open the SoC Main Uart0 on a terminal application like minicom or hyperterm to see if the
+               'CCCC' is being output, please power down and power up the PC before executing dslite. If a
+               terminal program like minicom or hyperterminal is run first, the dslite script might not run
+               successfully.
 
 .. _program_target:
 

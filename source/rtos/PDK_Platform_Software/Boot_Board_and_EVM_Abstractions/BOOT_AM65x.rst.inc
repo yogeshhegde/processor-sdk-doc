@@ -636,6 +636,8 @@ all the am65xx boards is tabulated below.
 #. Programming the OSPI flash
 #. Booting the testcase from OSPI flash
 
+.. _am655x-sbl-programming-ospi-flash:
+
 **Programming the OSPI flash**
 
 #. To prgram the OSPI flash follow the steps mentioned in the `Uniflash
