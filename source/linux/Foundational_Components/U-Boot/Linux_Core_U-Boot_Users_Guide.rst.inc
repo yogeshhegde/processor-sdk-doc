@@ -1753,11 +1753,9 @@ Build Procedure
 ^^^^^^^^^^^^^^^^^^^^^^
 
 * SYSFW
-SPL expects an image tree blob (FIT image) containing the an X.509-
-signed system firmware binary image (as expected by ROM) plus system firmware
-configuration artifacts. Contact TI on the procedure to create the SYSFS
-image tree blob and how to provide and generate the configuration data to be
-included.
+ROM expects a signed binary that contains the X509 certificate. So
+the binary ti-sci-firmware-am6x.bin cannot be uses as-is and needs to be signed.
+Contact TI on the procedure to sign the system firmware binary.
 
 * ATF
 .. code-block:: console
@@ -1775,7 +1773,7 @@ included.
 .. code-block:: console
 
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=/tmp/r5
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=/tmp/r5
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- SYSFW=<path to signed system firmware binary sysfw.bin> O=/tmp/r5
 
 **A53**
 
@@ -1814,9 +1812,8 @@ ROM supports booting from OSPI from offset 0x0.
 
 **Flashing Images to OSPI**
 
-Below commands can be used to download tiboot3.bin, tispl.bin, u-boot.img,
-sysfw.itb, and config.sys over tftp and then flash it to OSPI at respective
-addresses.
+Below commands can be used to download tiboot3.bin, tispl.bin and
+u-boot.img over tftp and then flash it to OSPI at respective addresses.
 
 .. code-block:: console
 
@@ -1827,8 +1824,6 @@ addresses.
   => sf update $loadaddr 0x80000 $filesize
   => tftp ${loadaddr} u-boot.img
   => sf update $loadaddr 0x280000 $filesize
-  => tftp ${loadaddr} sysfw.itb
-  => sf update $loadaddr 0x7A0000 $filesize
 
 **Flash Layout for OSPI**
 
@@ -1852,9 +1847,9 @@ ROM supports booting from eMMC from boot0 partition offset 0x0
 
 **Flashing Images to eMMC**
 
-The following commands can be used to download tiboot3.bin, tispl.bin,
-u-boot.img, and sysfw.itb from an SD card and write them to the eMMC boot0
-partition at respective addresses.
+The following commands can be used to download tiboot3.bin, tispl.bin and
+u-boot.img from an SD card and write them to the eMMC boot0 partition at
+respective addresses.
 
 .. code-block:: console
 
@@ -1865,8 +1860,6 @@ partition at respective addresses.
   => mmc write ${loadaddr} 0x400 0x1000
   => fatload mmc 1 ${loadaddr} u-boot.img
   => mmc write ${loadaddr} 0x1400 0x2800
-  => fatload mmc 1 ${loadaddr} sysfw.itb
-  => mmc write ${loadaddr} 0x3d00 0x300
 
 To give the ROM access to the boot partition, the following commands must be
 used for the first time:
@@ -1895,57 +1888,3 @@ To boot kernel from eMMC, use the following commands:
   => setenv mmcdev 0
   => setenv bootpart 0
   => boot
-
-
-.. rubric:: UART
-
-ROM supports booting from MCU_UART0 via X-Modem protocol. The entire UART-based
-boot process up to U-Boot (proper) prompt goes through different stages and uses
-different UART peripherals as follows:
-
-+----------+---------------+-------------+------------+
-|  WHO     | Loading WHAT  |  HW Module  |  Protocol  |
-+----------+---------------+-------------+------------+
-|Boot ROM  |  tiboot3.bin  |  MCU_UART0  |  X-Modem(*)|
-+----------+---------------+-------------+------------+
-|R5 SPL    |  sysfw.itb    |  MCU_UART0  |  Y-Modem(*)|
-+----------+---------------+-------------+------------+
-|R5 SPL    |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
-+----------+---------------+-------------+------------+
-|A53 SPL   |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
-+----------+---------------+-------------+------------+
-
-.. note::
-
-    (*) In addition to X/Y-Modem related protocol timeouts, the DMSC
-    watchdog timeout of 3 min (typ.) needs to be observed until System Firmware
-    is fully loaded (from sysfw.itb) and started.
-
-
-**Debug UART**
-
-On the AM65x family of SoCs much device functionality is dependent on SYSFW
-being up and initialized correctly, including but not limited to peripheral
-modules such as the MAIN_UART0 also used from R5 SPL. In order to allow
-easier early debug functionality a debug UART functionality has been provided
-that when turned on will use the MCU_UART0 during the very early stages of R5
-SPL, namely pre-DM and pre-SYSFW initialization.
-
-In order to turn the debug UART functionality on set the following config
-options:
-
-.. code-block:: console
-
-  CONFIG_DEBUG_UART=y
-  CONFIG_DEBUG_UART_OMAP=y
-  CONFIG_DEBUG_UART_BASE=0x40a00000
-  CONFIG_DEBUG_UART_CLOCK=48000000
-  CONFIG_DEBUG_UART_SHIFT=2
-  CONFIG_DEBUG_UART_BOARD_INIT=y
-  CONFIG_DEBUG_UART_ANNOUNCE=y
-
-Note that the module input frequency of 48MHz corresponds to the device state
-right after startup through ROM. Once SYSFW is up and running this frequency
-changes, and the console needs to be re-initialized, which in most cases will
-be done through preloader_console_init() starting up the configured 'stdout'
-UART module as configured via DTS.
