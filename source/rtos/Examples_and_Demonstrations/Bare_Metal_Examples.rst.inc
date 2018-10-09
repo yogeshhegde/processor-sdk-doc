@@ -65,12 +65,8 @@ following::
 		while(1);
 	}
 
-8. Navigate to Project Properties -> CCS Build -> GNU Compiler -> Directories and 
-add the following include paths. 
-::
- 
-	(PDK INSTALL PATH)/packages
-	(PDK INSTALL PATH)/packages/ti/csl
+8. Navigate to Project Properties -> CCS Build -> GNU Linker and add "Entry" to the "Set start address" field.
+
 	
 9. Navigate to CCS Build -> GNU Linker -> Libraries and add the 
 following libraries.
@@ -508,8 +504,10 @@ CCS Project.
 3. Select Target as AM65x - Cortex R5 and GPEVM_AM65x as 
 shown in the image below.
 
-4. Select the **Cortex R** tab and provide a name for the project. Select **TI v18.1.2.LTS** (or higher) for the Compiler Version. 
+4. Select the **Cortex R** tab and provide a name for the project. Select **TI v16.9.4.LTS** (or higher) for the Compiler Version. 
 Under Tool-chain, set the Device Endianness to **little**, and for the Linker Command file, select **linker_r5.lds** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/.
+
+.. Note:: Please refer to the Release Notes for the recommended Compiler version. 
 
 Under Project templates and examples, select **Basic Examples -> Hello World**
 	

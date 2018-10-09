@@ -43,7 +43,8 @@ folder (PDK INSTALL PATH)/packages/ti/build/am65xx/.
 You will be prompted to enable XDCtools, click yes. 
 
 6. In Project Properties --> CCS General --> Products, set Target to **gnu.targets.arm.A53F** and 
-Platform to **ti.platforms.cortexA:AM65X**. Click Apply and Close.
+Platform to **ti.platforms.cortexA:AM65X**. Uncheck all products except for SYS/BIOS and XDCtools. Refer to the Release Notes for the recommended package verisons. 
+Click Apply and Close.
 
 7. Add the file **InitMmu.c** located under (IPC INSTALL PATH)/examples/AM65XX_bios_elf/ex02_messageq/host 
 to the project. 
@@ -58,7 +59,7 @@ and the library search path "${xdc_find:gnu/targets/arm/libs/install-native/arm-
 startup files when linking (-nostartfiles)."
 
 11. Navigate to Project Properties --> GNU Compiler --> Debugging and 
-uncheck all options.
+uncheck "Do not emit DWARF additions beyong selected version" and set the gdwarf version to 2 or lower.
 
 12. Finally, add the following code to main.c and 
 build the project.
