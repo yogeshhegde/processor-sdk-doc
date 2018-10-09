@@ -55,13 +55,13 @@ Released October 2018
 - New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
 - AM65x
    - Features supported
-        - Boot: please refer to `U-boot flow <http://git.ti.com/gitweb/?p=ti-u-boot/ti-u-boot.git;a=blob_plain;f=board/ti/am65x/README;hb=refs/heads/ti-u-boot-2018.01>`__
+        - Boot: please refer to `U-Boot for AM65x <Foundational_Components_U-Boot.html#u-boot-for-am65x-family-of-socs>`__
         - Baseport: Dual and Quad Core SMP support
         - Connectivity: OSPI, MMC, CPSW, CIFS, USB host and client driver, UART, I2C, USB device, PRU Ethernet, SD card
         - Audio: McASP, stereo, playback and record
         - Graphics: 3D SGX Acceleration with Qt, Wayland/Weston, Matrix GUI
         - Display: DSS, touchscreen, DRM, LCD backlight
-        - IPC: Hardware spinlocks and mailbox
+        - IPC: Hardware spinlocks and mailbox, R5F remoteproc
         - DDR @ 1333 MHz, and CPU @ 800 MHz configuration
    - Features not (yet) supported
         - PCIe, USB 3.0

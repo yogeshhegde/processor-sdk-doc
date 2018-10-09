@@ -68,7 +68,7 @@ Released October 2018
 		- Audio: McASP
 		- DMA Driver: UDMA LLD
 		- Display and Camera: DSS,CAL
-		- IPC: Hardware spinlocks and mailbox
+		- IPC: Hardware spinlocks and mailbox, R5F remoteproc
 		- Crypto Low level Driver: SA2 UL
 		- DDR @ 1600 MTS, and CPU @ 800 MHz configuration
 		- Additional source release for PRU-ICSS-G Dual EMAC firmware
