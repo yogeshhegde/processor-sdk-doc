@@ -1746,7 +1746,7 @@ Sources
         Tree: git://git.ti.com/optee/ti-optee-os.git; Branch: ti_optee_os
 
 * U-Boot:
-        Tree: git://git.ti.com/ti-u-boot/ti-u-boot.git; Branch: ti-u-boot-2018.01
+        Tree: git://git.ti.com/ti-u-boot/ti-u-boot.git; Branch: ti-u-boot-2018.03
 
 
 Build Procedure

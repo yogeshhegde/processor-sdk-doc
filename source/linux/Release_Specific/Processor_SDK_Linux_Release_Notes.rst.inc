@@ -124,13 +124,11 @@ Build Information
 U-Boot
 -------------------------
 
-| Head Commit: 8b2f1df4b55bc0797399a21d42ac191d44f99227:
-  HACK: armv7R: K3: am654: Shut down R5 core after ATF startup on A53
-| Date: Fri Sep 7 14:11:17 CDT 2018
-| uBoot Version: 2018.01
-| uBoot Description: v2018.01-441-g8b2f1df
-| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti2018.03
+| The U-Boot git repository, branch and commit id can be found below:
+| Based on verson: 2018.01
+| URL: git://git.ti.com/ti-u-boot/ti-u-boot.git
+| Branch: ti-u-boot-2018.03
+| Commit ID: cdb1cc0a9e56e703166b1a1ff08b30d99e266244
 
 |
 
