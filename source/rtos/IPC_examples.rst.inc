@@ -1,8 +1,8 @@
 
 IPC RTOS Examples
 ---------------------------
-.. rubric:: IPC ARM Host Running TI-RTOS
-   :name: IPC ARM Host Running TI-RTOS
+.. rubric:: IPC Examples with ARM Host running TI-RTOS
+   :name: IPC Examples with ARM Host running TI-RTOS
 
 The IPC package includes examples for the use-case with both the Host and slave cores running TI-RTOS. 
 They can be built from the Processor SDK RTOS package.
@@ -13,10 +13,11 @@ In the RTOS Processor SDK, the ipc examples are located under <RTOS_SDK_INSTALL_
 
 Once the RTOS Processor SDK is installed at the default location, the IPC examples can be built with the following commands:
 
-.. code-block:: c
-  
-	1. Configure the build environment in
-      <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx directory
+ 
+1. Change to Processor SDK RTOS directory
+
         $ cd <RTOS_SDK_INSTALL_DIR>/processor_sdk_rtos_<platform>_x_xx_xx_xx 
-	2. Start the top level build:
+
+2. Start the top level build:
+
         $ make ipc_examples

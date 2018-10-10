@@ -33,6 +33,8 @@ IPC
 
 | 
 
+.. _ipc-rtos-examples:
+
 IPC Examples
 =============
 .. include:: IPC_examples.rst.inc

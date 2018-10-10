@@ -5,12 +5,13 @@ AM65xx IPC Examples
 In the processor SDK release ipc examples can be built from the Processor SDK top level makefile.
 
 See link for building IPC examples
-`Processor SDK IPC examples section <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Foundational_Components.html#ipc-examples>`__.
+
+:ref:`ipc-rtos-examples`
 
 Once the examples are built, they can be run by loading and running the binaries using CCS through JTAG.
 Please refer to the section "Advanced AM65x Debug Setup with DMSC Firmware Load" of the TMDX654 EVM Hardware Setup Guide for setting up the JTAG.
 
-`TMDX654 EVM Hardware Setup <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#tmdx654-evm-hardware-setup>`_
+`Advanced AM65x Debug Setup with DMSC Firmware Load`_
 
 .. rubric:: IPC Message Queue Example:
    :name: ipc-message-queue-example
@@ -37,7 +38,7 @@ header for each message before sending it to the server.
  - AM65XX_bios_elfex02_messageq\\r5f-0\\bin\\debug : R5 binary
 
 2. Follow procedure to initialize platform and launch target configuration through steps outlined
-in the hardware setup guide.
+   in the hardware setup guide.
 
 3. Right click R5 core 0 and connect target.
 

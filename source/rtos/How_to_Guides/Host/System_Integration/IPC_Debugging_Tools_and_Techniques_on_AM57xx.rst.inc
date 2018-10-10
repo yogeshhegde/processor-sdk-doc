@@ -254,6 +254,7 @@ QNX – Remote Core State Information
 """""""""""""""""""""""""""""""""""
 Find out the current state of the remote core by issuing the following command:
 ::
+
 	cat /dev/ipc-state/<core_name>
 
 The “core_name” is the name of the remote core. Valid names for AM57xx are IPU1, IPU2, DSP1, and
