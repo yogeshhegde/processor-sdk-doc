@@ -108,7 +108,7 @@ build information, and examples to use as a template to start development.
 
 .. _TI-RTOS Kernel: Foundational_Components.html#ti-rtos-kernel
 .. _Boot: Foundational_Components.html#boot
-.. _IPC: http://processors.wiki.ti.com/index.php/IPC_Users_Guide
+.. _IPC: Foundational_Components.html#IPC
 .. _MPM: Foundational_Components.html#mpm
 .. _OpenMP: Foundational_Components.html#openmp
 .. _FC: Foundational_Components.html#fc
