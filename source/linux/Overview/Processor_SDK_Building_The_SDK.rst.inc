@@ -162,6 +162,8 @@ The following platforms are supported in Processor SDK. These are the
 +--------------+---------------------------------------------------------------------------------------+
 | am57xx-evm   | AM572x GP EVM, AM572x Industrial Development Kit, AM571x Industrial Development Kit   |
 +--------------+---------------------------------------------------------------------------------------+
+| am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
++--------------+---------------------------------------------------------------------------------------+
 | k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
 +--------------+---------------------------------------------------------------------------------------+
 | k2e-evm      | K2Ex EVM                                                                              |
@@ -190,6 +192,8 @@ machines/EVMs. Use the command below to make the RT builds:
 +--------------+---------------------------------------------------------------------------------------+
 | am57xx-evm   | AM572x GP EVM, AM574x Industrial Development Kit,                                     |
 |              | AM572x Industrial Development Kit, AM571x Industrial Development Kit                  |
++--------------+---------------------------------------------------------------------------------------+
+| am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
 +--------------+---------------------------------------------------------------------------------------+
 | k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
 +--------------+---------------------------------------------------------------------------------------+
