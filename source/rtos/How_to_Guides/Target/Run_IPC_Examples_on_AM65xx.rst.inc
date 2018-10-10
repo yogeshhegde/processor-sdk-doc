@@ -32,13 +32,15 @@ creates an anonymous message queue. The client also creates and manages
 the message pool. The client's return address is set in the message
 header for each message before sending it to the server.
 
-1. Run top level  make command to build R5F-0 and HOST binaries. Output files are created under debug and release sub folders
+Here are the steps to run the example.
 
- - AM65XX_bios_elf\\ex02_messageq\\host\\bin\\debug : HOST A15 binary
- - AM65XX_bios_elfex02_messageq\\r5f-0\\bin\\debug : R5 binary
+1. Follow instructions above to build the IPC examples. The build will create the R5F-0 and HOST binaries under debug and release sub folders
+   For example
+ - AM65XX_bios_elf\\ex02_messageq\\host\\bin\\debug\\app_host.xa53fg : HOST A15 binary
+ - AM65XX_bios_elfex02_messageq\\r5f-0\\bin\\debug\\server_r5f-0.xer5fg : R5 binary
 
 2. Follow procedure to initialize platform and launch target configuration through steps outlined
-   in the hardware setup guide.
+   in the hardware setup guide referred above.
 
 3. Right click R5 core 0 and connect target.
 
