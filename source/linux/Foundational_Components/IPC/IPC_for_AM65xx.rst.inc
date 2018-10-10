@@ -6,8 +6,6 @@ The AM65xx device has an MCU subsystem in addition to the Cortex-A53 cores. The 
 This article is geared toward AM65xx users that are running Linux on the
 Cortex A53 core. The goal is to help users understand how to establish communication with the R5F cores.
 
-For users running TI-RTOS on the A53 core, please refer to the section "A53 Running TI-RTOS" at the end of this article. 
-
 There are many facets to this task: building, loading, debugging,
 memory sharing, etc. This article intends to take incremental steps
 toward understanding all of those pieces.
