@@ -57,6 +57,8 @@ this software:
 -  `Processor SDK for
    AM57xx <http://www.ti.com/tool/processor-sdk-am57x>`__
 -  `Processor SDK for
+   AM65xx <http://www.ti.com/tool/processor-sdk-am65x>`__
+-  `Processor SDK for
    AMIC110 <http://www.ti.com/tool/PROCESSOR-SDK-AMIC110>`__
 -  `Processor SDK RTOS for
    K2G <http://www.ti.com/tool/PROCESSOR-SDK-K2G>`__
@@ -370,15 +372,35 @@ Programming FlashWriter on AM65xx Platform
   uart_am65xx_evm_flash_programmer.out) on to the A53_0_0 core.
 - Run the FlashWriter program. The Flash Writer starts sending character 'C'(xmodem protocol) on the `SoC Main Uart0
   <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
-- Refer section `Programming OSPI flash <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/
-  Foundational_Components.html#am655x-sbl-programming-ospi-flash>`__  for the commands to program SBL and
-  app image on the AM65xx EVM.
-- Refer Section :ref:`erasing_target` for programming and erasing the flash device on the target platform.
+- Refer Section :ref:`erasing_target` for erasing the flash device on the target platform.
+- To program SBL and app image on the AM65xx EVM
+    - Program the SBL image (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0.
+    - Program the SBL app (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0x80000.
 
-.. note::
-   When using the dslite scripts for the AM65xx EVMs:
-     #. Specify the <device_type> as 3
-     #. <COM_Port> must refer to the `SoC Main Uart0  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
+::
+
+    For Linux:
+    cd <path_to_the_uniflash>
+    sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
+
+    Example:
+    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/binary/ospi/am65xx_evm/sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 000
+    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/example/ampMulticoreApp/binary/am65xx_evm/ sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o 80000
+
+::
+
+    For Windows:
+    cd <path_to_the_uniflash>
+    .\dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
+
+    Example:
+    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\binary\ospi\am65xx_evm\sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 000
+    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\example\ampMulticoreApp\binary\am65xx_evm\sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o 80000
+
+.. note:: When using the dslite scripts for the AM65xx EVMs:
+
+            - Specify the <device_type> as 3 (for OSPI flash)
+            - <COM_Port> must refer to the `SoC Main Uart0  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
 
 .. warning::   If you open the SoC Main Uart0 on a terminal application like minicom or hyperterm to see if the
                'CCCC' is being output, please power down and power up the PC before executing dslite. If a

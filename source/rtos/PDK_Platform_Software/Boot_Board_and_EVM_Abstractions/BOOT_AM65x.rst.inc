@@ -633,37 +633,9 @@ all the am65xx boards is tabulated below.
    
 **Booting Via OSPI flash**
 
-#. Programming the OSPI flash
+#. `Programming the OSPI flash <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Board_EVM_Abstration.html#uniflash>`__
 #. Booting the testcase from OSPI flash
 
-.. _am655x-sbl-programming-ospi-flash:
-
-**Programming the OSPI flash**
-
-#. To prgram the OSPI flash follow the steps mentioned in the `Uniflash
-   User Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Board_EVM_Abstration.html#uniflash>`__
-#. Program the SBL image (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0.
-#. Program the SBL app (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0x80000.
-
-::
-
-    For Linux:
-    cd <path_to_the_uniflash>
-    sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_flash_writer_to_be_transfered> -d  <device_type> -o <offset>
-    
-    Example:
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/binary/ospi/am65xx_evm/sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 000
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/example/ampMulticoreApp/binary/am65xx_evm/ sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o 80000
-
-::
-
-    For Windows:
-    cd <path_to_the_uniflash>
-    .\dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_flash_writer_to_be_transfered> -d  <device_type> -o <offset>
-    
-    Example:
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\binary\ospi\am65xx_evm\sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 000
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\example\ampMulticoreApp\binary\am65xx_evm\ sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o 80000
 
 **Booting the testcase from OSPI flash**
 
@@ -673,9 +645,9 @@ all the am65xx boards is tabulated below.
    PC and connect to the MCU UART console port
 #. Power cycle  the board to boot the appliation from the OSPI flash.
 #. The test logs will be displayed on the MCU UART
-   
-Setup Requirements
-^^^^^^^^^^^^^^^^^^^
+
+EVM Setup for testing SBL
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For information on board specific requirements like power supply, UART console port 
 connections refer the Hardware User guide of the respective boards.
@@ -692,7 +664,7 @@ running on the host.
 -  The host serial port must be configured at 115200 baud, no parity, 1  stop bit 
    and no flow control.
 -  Please ensure that the local echo setting for the terminal is turned  off.
--  All SBL prints are routed to the MCU UART.
+-  All SBL prints are routed to the `MCU UART <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
 -  To verify setup is correct, setup the EVM to boot from UART  as the Primary Boot 
    Device(refer `AM6x EVM Hardware Users Guide <http://www.ti.com/lit/pdf/spruim7>`__.
    Power cycle the EVM, and look for the string CCCCCCC on the UART.
