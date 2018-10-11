@@ -185,9 +185,81 @@ creating it for custom silicon or for debugging/enhancements without
 losing your default board code. Below section include details needed
 for creation of additional board support.
 
-Pinmux and IO Delay
-^^^^^^^^^^^^^^^^^^^^
+Board Configurations
+^^^^^^^^^^^^^^^^^^^^^^
+Board library supports different SoC and HW board specific configuration functions. 
+Below table shows configurations supported by board library across different platforms.
 
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|         Board Configuration         |    Description          |  AM65xx   |  AM57xx   |  AM437x   |  AM335x   |   K2G   |  K2-E/H/K/L   |
+|                                     |                         |           |           |           |           |         |               |
+|                                     |                         |           |           |           |           |         |               |
++=====================================+=========================+===========+===========+===========+===========+=========+===============+
+|                                     | Configures pinmux for   |           |           |           |           |         |               |
+|    Pinmux                           | interfaces on the HW    |     x     |     x     |     x     |     x     |    x    |               |
+|                                     | board.                  |           |           |           |           |         |               |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Enables power domains   |           |           |           |           |         |               |     
+|    SoC Clock Settings               | and clocks for SoC      |     x     |     x     |     x     |     x     |    x    |       x       |
+|                                     | peripherals             |           |           |           |           |         |               |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures DDR/EMIF     |           |           |           |           |         |               |
+|    DDR Configuration                | controller and DDR      |     x     |     x     |           |           |    x    |       x       |
+|                                     | timing parameters.      |           |           |           |           |         |               |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures PLL modules  |           |           |           |           |         |               |
+|    PLL Configuration                | to generate various     |     x     |     x     |           |           |    x    |       x       |
+|                                     | clocks used by the SoC. |           |           |           |           |         |               |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures Ethernet     |           |           |           |           |         |               |
+|    Ethernet Conguration             | PHYs on the board.      |     x     |     x     |     x     |     x     |    x    |               |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Defines IO instances    |           |           |           |           |         |               |
+|    IO Instances                     | for HW interfaces.      |     x     |     x     |     x     |     x     |    x    |       x       |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Provies Common APIs for |           |           |           |           |         |               |
+|    Board Flash APIs                 | accessing flash devices.|     x     |           |     x     |     x     |    x    |       x       |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configuires SerDes      |           |           |           |           |         |               |
+|    SerDes Configuration             | interface internal      |     x     |           |           |           |         |               |
+|                                     | muxing and basic setup. |           |           |           |           |         |               |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Add-on board detection  |           |           |           |           |         |               |
+|     Board Detection                 | function.               |     x     |           |           |           |         |               |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | APIs to configure and   |           |           |           |           |         |               |
+|     IO expander APIs                | access I2C IO expander  |     x     |           |           |           |         |               |
+|                                     | devices on the HW board.|           |           |           |           |         |               |
+|                                     |                         |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+
+
+Creating Board Library with Custom Name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Refer `Adding Custom Board Library Target to Processor SDK RTOS <How_to_Guides.html#adding-custom-board-library-target-to-processor-sdk-rtos-makefiles>`__ 
+section for the details on creating board library with custom name
+
+Creating Board Configurations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<Add GEL file based steps to generate board configurations??>
+
+Updating Board Configurations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Steps for updating the board library configurations for a custom board is described in this section.
+Updating some of the configurations may need addtional steps based on the platform. 
+Refer `Platform Specific Configuration <Board_EVM_Abstration.html#platform-specific-configurations>`_ section for more details.
+
+Pinmux 
+"""""""
 When the **BOARD_INIT_PINMUX_CONFIG** option is specified, the
 Board_init() API configures the pinmux for the board. If applicable,
 it will also configure IO delay values for those device pads, which
@@ -198,6 +270,7 @@ The pinmux data to be configured is generated by the TI pinmux tool.
 Refer to `TI PinMux
 Tool <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool>`__ for
 more information.
+
 For DRA7xx device, pinmux data is generated by the TI Pad Config Tool
 (PCT). Please contact TI for more assistance in obtaining this tool.
 Otherwise, values can be found through the device Data Manual (DM).
@@ -310,6 +383,130 @@ described in the article
    platform if you don`t intend to use an EEPROM then we recommend removing
    code corresponding to Board_getIDInfo in your board library
 | 
+=======
+
+Once the pinmux selection is done, Copy the pinmux tool generated files to your custom board library
+implementation folder.
+
+Refer `Platform Specific Configuration <Board_EVM_Abstration.html#platform-specific-configurations>`_ section for more details on the files generated
+by pinmux tool for different platforms.
+
+SoC Clock Settings
+"""""""""""""""""""""
+The core clocks and module clocks used on the custom board library may 
+vary based on the power requirements and external components used on the 
+boards. TI provides `Clock Tree Tools <http://www.ti.com/tool/CLOCKTREETOOL>`__ 
+to simulate the device clocks. GEL file can be used to verify the settings
+in CCS before modifying the source in the board library.
+
+<Board>_clock.c: Defines functions and structures for configuring the clock and power modules. 
+Update this file based on the data from clock tree tool and GEL file validation.
+
+DDR Configuration
+"""""""""""""""""""""
+The board library has the correct DDR initialization sequence to initialize 
+the DDR memory on your board. You may need to make changes to the AC timings, 
+hardware leveling, and DDR PHY configuration, some or all of which may be 
+different than the TI supported platforms. GEL file can be used to verify 
+the settings in CCS before modifying the source in the board library.
+
+<Board>_ddr.c: Defines functions and structures for configuring the DDR module. 
+Update this file based on the DDR timing parameters specific to custom board.
+   
+PLL Configuration
+""""""""""""""""""""
+The SOC board library in the PDK configures the SOC PLL and module clock
+settings to the nominal settings required to be used with the TI
+evaluation platform. If you want to use different clock settings due to
+power consideration, or if you are using a variant of the device that
+needs to be clocked differently, you can enter the PLL and clock
+settings in the board library. All of the PLL and module clock settings
+are consolidated in the following files:
+
+-  <Board>.c: Contains calls related to all board-level initialization.
+  <Board> refers to the evaluation platform (For example, evmam335x)
+-  <Board>_pll.c: Defines the Board_PLLInit() function that configures the
+  dividers and multipliers for the clock tree.
+
+Ethernet Conguration
+""""""""""""""""""""""
+The custom board may have external components (flash devices, Ethernet
+PHY, etc.) that are different from the components populated on the
+TI-supported EVM. These components and their support files need to be
+added to the
+pdk_xx_xx_xx_xx/packages/ti/board/src/<customBoardName>/device path
+and linked as part of the board library build.
+
+IO Instances
+"""""""""""""
+If your custom board uses an IO instance different from the TI-supported
+board, the instance needs to be modified in the Pin Mux setup as well
+as in the board_cfg.h file in
+pdk_xx_xx_xx_xx/packages/ti/board/src/<customBoardName>/include
+
+
+Platform Specific Configurations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+AM65xx
+"""""""
+Pinmux 
+'''''''
+For AM65xx platform <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c files generated by the pinmux tool.
+
+SerDes Configuration
+'''''''''''''''''''''
+
+Board Detection
+'''''''''''''''''
+
+IO expander APIs
+''''''''''''''''''
+
+
+AM57xx
+"""""""
+Pinmux 
+'''''''
+Pinmux tool output for AM57xx platform includes IO delay information.
+Below are the files generated by pinmux tool:
+ -  boardPadDelay.h: Includes the prototypes of all structures and
+    functions used by pinmux functions
+ -  boardPadDelayInit.c: Includes the pinmux pad config data for
+    all device pads along with values used to compute
+    Manual/Virtual mode values.This data is used to configure
+    pinmux during board initialization.
+ -  boardPadDelayTune.h: This file includes the compile time macros
+    used to select the Timing modes to be configured for modules
+    during board Initialization.
+ -  boardPadDelayDevice.c: This file includes the pinmuxdata for
+    runtime pinmux configuration of the MMC module.
+
+
+AM335x/AM437x
+"""""""""""""""
+Pinmux 
+'''''''
+For AM335x/AM437x platforms pinmux data need to be updated in the StarterWare package.
+
+
+K2G
+""""
+Pinmux 
+'''''''
+For K2G platform <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c files are generated by the pinmux tool.
+
+
+K2E/K2H/K2K/K2L
+""""""""""""""""
+Pinmux 
+'''''''
+Pinmux is not needed for C66x or K2H/K2E/K2L devices, and the BOARD_INIT_PINMUX_CONFIG option
+is ignored when called in a C66x or K2H/K2E/K2L board library.
+
+Board Library Validation
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+<Add Details of board library debugging anf diagnostic validation for basic interfaces??>
 
 .. raw:: html
 
