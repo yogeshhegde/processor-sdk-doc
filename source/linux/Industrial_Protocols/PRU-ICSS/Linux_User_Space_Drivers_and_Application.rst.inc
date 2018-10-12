@@ -134,8 +134,8 @@ http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_E
 #. Plug in loopback cables to the two ICSS-EMAC ports of AM335x ICEv2
    EVM
 #. On the filesystem under /boot directory, link
-   am335x-icev2-pru-excl-uio.dtb as the default dtb file, i.e.,
-   am335x-icev2.dtb.
+   am335x-icev2-pru-excl-uio.dtb as the default dtb to support PRUSS Ethernet ports, i.e.,
+   am335x-icev2-prueth.dtb.
 #. Reboot the EVM
 #. Run "icss\_emacMainTest\_am335x.out"
 
