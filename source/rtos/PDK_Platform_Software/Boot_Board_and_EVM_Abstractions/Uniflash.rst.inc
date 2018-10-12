@@ -403,9 +403,9 @@ Programming FlashWriter on AM65xx Platform
             - <COM_Port> must refer to the `SoC Main Uart0  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
 
 .. warning::   If you open the SoC Main Uart0 on a terminal application like minicom or hyperterm to see if the
-               'CCCC' is being output, please power down and power up the PC before executing dslite. If a
-               terminal program like minicom or hyperterminal is run first, the dslite script might not run
-               successfully.
+               'CCCC' is being output, make sure to close the application before executing dslite. Disconnect
+               and re-connect the Serial cable to reset the connection. If a terminal program like minicom or
+               hyperterminal is run first, the dslite script might not run successfully.
 
 .. _program_target:
 
