@@ -15,6 +15,9 @@ of the Processor SDK for Android.
    `here <https://developer.android.com/about/versions/oreo/index.html>`__
 -  Multimedia with hardware acceleration is not supported
 -  Video decoding up to 720p resolution
+-  See `05.01.00 Release
+   Notes <http://software-dl.ti.com/processor-sdk-android/esd/docs/05_01_00_11/android/Release_Specific.html#processor-sdk-android-release-notes>`__ for full
+   list of modifications.
 
 
 .. rubric:: Processor SDK Android 05.00.00
@@ -32,6 +35,9 @@ of the Processor SDK for Android.
    and the rest from the eMMC. For AM57x GP EVM, SD card can be removed
    before the power cycle to boot Android with everything from the eMMC.
 -  VPE is not supported
+-  See `05.00.00 Release
+   Notes <http://software-dl.ti.com/processor-sdk-android/esd/docs/05_00_00_15/android/Release_Specific.html#processor-sdk-android-release-notes>`__ for full
+   list of modifications.
 
 |
 
@@ -41,6 +47,9 @@ of the Processor SDK for Android.
 -  This is a maintenance update release of Processor SDK Android for AM57xx
    with Oreo. More details about Oreo can be obtained from
    `here <https://developer.android.com/about/versions/oreo/index.html>`__
+-  See `04.03.00 Release
+   Notes <http://software-dl.ti.com/processor-sdk-android/esd/docs/04_03_00_05/android/Release_Specific.html#processor-sdk-android-release-notes>`__ for full
+   list of modifications.
 
 |
 
@@ -52,8 +61,8 @@ of the Processor SDK for Android.
    Processor SDK releases, i.e. 2016.05 and 4.4 respectively.
 -  More details about Oreo can be obtained from
    `here <https://developer.android.com/about/versions/oreo/index.html>`__
--  See the `Release
-   Notes <Release_Specific.html#processor-sdk-android-release-notes>`__ for full
+-  See `04.02.00 Release
+   Notes <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Android_Release_Notes&oldid=232605>`__ for full
    list of modifications.
 
 | 
@@ -63,8 +72,8 @@ of the Processor SDK for Android.
 
 -  This is the final release of the Processor SDK Android for AM57xx
    with Marshmallow. The next release will be based on Oreo
--  See the `Release
-   Notes <Release_Specific.html#processor-sdk-android-release-notes>`__ for full
+-  See `04.01.00 Release
+   Notes <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Android_Release_Notes&oldid=230917>`__ for full
    list of modifications.
 
 | 
@@ -74,8 +83,8 @@ of the Processor SDK for Android.
 
 -  This is the first release of the Processor SDK Android which supports
    AM57xx devices.
--  See the `Release
-   Notes <Release_Specific.html#processor-sdk-android-release-notes>`__ for full
+-  See `04.00.00 Release
+   Notes <http://processors.wiki.ti.com/index.php?title=Processor_SDK_Android_Release_Notes&oldid=228953>`__ for full
    list of modifications.
 
 | 
