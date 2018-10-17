@@ -2,6 +2,14 @@
 .. rubric:: Overview
    :name: overview
 
+.. note::
+
+ This section covers the software aspects of getting started on the PRU-ICSS and
+ the PRU_ICSSG. Hardware information, training material, software development
+ resources, and more are currently located on the `PRU-ICSS wiki page
+ <http://processors.wiki.ti.com/index.php/PRU-ICSS>`__
+
+
 The PRU Software Support Package provides support for the PRU-ICSS
 Subsystem in AM335x, AM437x, AM57xx, and K2G devices. This package
 contains:
@@ -20,7 +28,7 @@ contains:
 .. rubric:: Things to Obtain
    :name: things-to-obtain
 
--  `CCSv7 <http://processors.wiki.ti.com/index.php/Download_CCS#Code_Composer_Studio_Version_7_Downloads>`__
+-  `Code Composer Studio <http://processors.wiki.ti.com/index.php/Download_CCS>`__
 -  `PRU Code Generation
    Tools <http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
    (you can also get these tools through the CCS App Center)
@@ -32,6 +40,8 @@ contains:
       AM437x <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-LINUX-AM437X/latest/index_FDS.html>`__,
       `Linux Processor SDK for
       AM57xx <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-LINUX-AM57X/latest/index_FDS.html>`__,
+      `Linux Processor SDK for
+      AM65xx <http://software-dl.ti.com/processor-sdk-linux/esd/AM65X/latest/index_FDS.html>`__
       or `Linux Processor SDK for
       K2G <http://software-dl.ti.com/processor-sdk-linux/esd/K2G/latest/index_FDS.html>`__
    -  The PRU Software Support Package is built into the Linux Processor
@@ -45,6 +55,8 @@ contains:
       AM437x <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-RTOS-AM437X/latest/index_FDS.html>`__,
       `RTOS Processor SDK for
       AM57xx <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-RTOS-AM57X/latest/index_FDS.html>`__,
+      `RTOS Processor SDK for
+      AM65xx <http://software-dl.ti.com/processor-sdk-rtos/esd/AM65X/latest/index_FDS.html>`__
       or `RTOS Processor SDK for
       K2G <http://software-dl.ti.com/processor-sdk-rtos/esd/K2G/latest/index_FDS.html>`__
    -  `PRU Software Support
