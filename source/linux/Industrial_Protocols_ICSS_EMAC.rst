@@ -1,4 +1,5 @@
 **********************************
-Dual EMAC
+ICSS_EMAC
 **********************************
-.. include:: Industrial_Protocols/PRU-ICSS.rst.inc
+.. include:: Industrial_Protocols/ICSS_EMAC.rst.inc
+
