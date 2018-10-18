@@ -60,12 +60,23 @@ HW Setup
 .. rubric:: Compatibility
    :name: compatibility
 
-The ti_mmwave_rospkg ROS driver package on Sitara is tested with Processor Linux SDK 4.3
+The ti_mmwave_rospkg ROS driver package on Sitara is tested with Processor Linux SDK
 which includes meta-ros layer, indigo, (from https://github.com/bmwcarit/meta-ros).
-For visualization we used ROS indigo distro on Ubuntu Linux box, preffered for compatibility reasons. 
-Please follow installation instructions (for Ubuntu Linux box) at http://wiki.ros.org/indigo/Installation/Ubuntu 
+
+.. _ros-indigo-installation-ubuntu:
+
+For visualization we use ROS indigo distro on Ubuntu Linux box, preffered for compatibility reasons. Run the commands
+below to install ROS indigo on Ubuntu Linux box. More details can be found from http://wiki.ros.org/indigo/Installation/Ubuntu.
+
+.. code-block:: console
+
+        sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
+        wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
+        sudo apt-get update
+        sudo apt-get install ros-indigo-desktop-full
+
 For this demo, IWR EVM requires mmWave SDK firmware. If different firmware is used on Radar EVM, please follow
-procedure using UniFlash tool to install `mmWave SDK <http://www.ti.com/tool/MMWAVE-SDK>`__
+procedure using UniFlash tool to install `mmWave SDK <http://www.ti.com/tool/MMWAVE-SDK>`__.
 
 ROS configuration verification
 ------------------------------
@@ -356,14 +367,7 @@ Start Kobuki teleop console (remotely control Kobuki movement using keyboard)
 .. rubric:: 5th SSH terminal, to Ubuntu Linux box
    :name: 5th-ssh-terminal-1
 
-First, install RViz on Ubuntu Linux box if this has not been done before:
-
-.. code-block:: console
-
-        sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list'
-        wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
-        sudo apt-get update
-        sudo apt-get install ros-indigo-desktop-full
+First, :ref:`install ROS Indigo distribution on Ubuntu Linux box <ros-indigo-installation-ubuntu>` if it has not been done before.
 
 Setup ROS variables on Ubuntu Linux box (to enable communication with ROS host on Sitara) then start RViz
 
@@ -436,8 +440,12 @@ It will be available as a TI-design (TIDEP-01006) in the coming quarter.
 Preparation on Ubuntu
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
+First, :ref:`install ROS Indigo distribution on Ubuntu Linux box <ros-indigo-installation-ubuntu>` if it has not been done before.
+
 In order to run the RViz for this navigation demo, rviz_plugin_covariance is needed on Ubuntu Linux box.
-First, create ROS workspace on Ubunut Linux box:
+Follow instructions below to create ROS workspace, and then clone and build rviz_plugin_covariance.
+
+**Create ROS workspace**
 
 .. code-block:: console
 
@@ -446,7 +454,7 @@ First, create ROS workspace on Ubunut Linux box:
     cd ~/catkin_ws/
     catkin_make
 
-Second, clone and build rviz_plugin_covariance:
+**Clone and build rviz_plugin_covariance**
 
 .. code-block:: console
 
@@ -470,7 +478,7 @@ After the plugin is successfully built, set up ROS variables on Ubuntu Linux box
     source ~/catkin_ws/devel/setup.bash
 
 
-The last step of Ubuntu prepartation is copying the navigation demo packages from Sitara target filesystem (located under /opt/ros/indigo/share/) to Ubuntu Linux box (destitation is also /opt/ros/indigo/share/), including
+The last step of Ubuntu prepartation is copying the navigation demo packages from Sitara target filesystem (located under /opt/ros/indigo/share/) to Ubuntu Linux box (destitation is also /opt/ros/indigo/share/). The packages to be copied include:
 
 .. code-block:: console
 
