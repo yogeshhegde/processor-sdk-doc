@@ -115,7 +115,7 @@ In a CCS RTSC project with .cfg file:
 Considerations for DRA7xx devices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When integrating the board library in applcations on DRA7xx, these
+When integrating the board library in applications on DRA7xx, these
 code/data sections will likely overlap and conflict with the code/data
 sections used by the Secondary Boot Loader (SBL) as both modules will
 assume full access to OCMC_RAM1. Also, as the SBL performs identical
@@ -179,83 +179,345 @@ With:
 
 Custom Board Addition
 ----------------------
+This section provides the guidelines for creating a custom board library.
 
-Creating a custom board library has its merits whether you are
-creating it for custom silicon or for debugging/enhancements without
-losing your default board code. Below section include details needed
-for creation of additional board support.
+Below image shows the recommended sequence to be followed while porting processor SDK to custom board.
+
+.. Image:: ../images/prsdk_rtos_custom_board_porting_steps.png
 
 Board Configurations
 ^^^^^^^^^^^^^^^^^^^^^^
 Board library supports different SoC and HW board specific configuration functions. 
 Below table shows configurations supported by board library across different platforms.
 
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|         Board Configuration         |    Description          |  AM65xx   |  AM57xx   |  AM437x   |  AM335x   |   K2G   |  K2-E/H/K/L   |
-|                                     |                         |           |           |           |           |         |               |
-|                                     |                         |           |           |           |           |         |               |
-+=====================================+=========================+===========+===========+===========+===========+=========+===============+
-|                                     | Configures pinmux for   |           |           |           |           |         |               |
-|    Pinmux                           | interfaces on the HW    |     x     |     x     |     x     |     x     |    x    |               |
-|                                     | board.                  |           |           |           |           |         |               |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Enables power domains   |           |           |           |           |         |               |     
-|    SoC Clock Settings               | and clocks for SoC      |     x     |     x     |     x     |     x     |    x    |       x       |
-|                                     | peripherals             |           |           |           |           |         |               |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Configures DDR/EMIF     |           |           |           |           |         |               |
-|    DDR Configuration                | controller and DDR      |     x     |     x     |           |           |    x    |       x       |
-|                                     | timing parameters.      |           |           |           |           |         |               |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Configures PLL modules  |           |           |           |           |         |               |
-|    PLL Configuration                | to generate various     |     x     |     x     |           |           |    x    |       x       |
-|                                     | clocks used by the SoC. |           |           |           |           |         |               |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Configures Ethernet     |           |           |           |           |         |               |
-|    Ethernet Conguration             | PHYs on the board.      |     x     |     x     |     x     |     x     |    x    |               |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Defines IO instances    |           |           |           |           |         |               |
-|    IO Instances                     | for HW interfaces.      |     x     |     x     |     x     |     x     |    x    |       x       |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Provies Common APIs for |           |           |           |           |         |               |
-|    Board Flash APIs                 | accessing flash devices.|     x     |           |     x     |     x     |    x    |       x       |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Configuires SerDes      |           |           |           |           |         |               |
-|    SerDes Configuration             | interface internal      |     x     |           |           |           |         |               |
-|                                     | muxing and basic setup. |           |           |           |           |         |               |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Add-on board detection  |           |           |           |           |         |               |
-|     Board Detection                 | function.               |     x     |           |           |           |         |               |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | APIs to configure and   |           |           |           |           |         |               |
-|     IO expander APIs                | access I2C IO expander  |     x     |           |           |           |         |               |
-|                                     | devices on the HW board.|           |           |           |           |         |               |
-|                                     |                         |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-----------+-----------+-----------+-----------+---------+---------------+
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|         Board Configuration         |    Description          |            References               |  AM65xx   |  AM57xx   |  AM437x   |  AM335x   |   K2G   |  K2-E/H/K/L   |
+|                                     |                         |                                     |           |           |           |           |         |               |
++=====================================+=========================+=====================================+===========+===========+===========+===========+=========+===============+
+|                                     | Configures pinmux for   |   `Pinmux Tool`_                    |           |           |           |           |         |               |
+|    Pinmux                           | interfaces on the HW    |                                     |     x     |     x     |     x     |     x     |    x    |               |
+|                                     | board.                  |                                     |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Enables power domains   |                                     |           |           |           |           |         |               |     
+|    SoC Clock Settings               | and clocks for SoC      |   `Clock Tree Tool`_                |     x     |     x     |     x     |     x     |    x    |       x       |
+|                                     | peripherals             |                                     |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures DDR/EMIF     |                                     |           |           |           |           |         |               |
+|    DDR Configuration                | controller and DDR      |   `EMIF Tools Appnote`_             |     x     |     x     |           |           |    x    |       x       |
+|                                     | timing parameters.      |                                     |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures PLL modules  |                                     |           |           |           |           |         |               |
+|    PLL Configuration                | to generate various     |    NA                               |     x     |     x     |           |           |    x    |       x       |
+|                                     | clocks used by the SoC. |                                     |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures Ethernet     |                                     |           |           |           |           |         |               |
+|    Ethernet Configuration           | PHYs on the board.      |    NA                               |     x     |     x     |     x     |     x     |    x    |               |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Defines IO instances    |                                     |           |           |           |           |         |               |
+|    IO Instances                     | for HW interfaces.      |    NA                               |     x     |     x     |     x     |     x     |    x    |       x       |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | EEPROM board ID for     |                                     |           |           |           |           |         |               |
+|    Board Detection                  | board detection.        |    NA                               |     x     |     x     |     x     |     x     |    x    |               |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Provides Common APIs for|                                     |           |           |           |           |         |               |
+|    Board Flash APIs                 | accessing flash devices.|    NA                               |     x     |           |     x     |     x     |    x    |       x       |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures SerDes       |                                     |           |           |           |           |         |               |
+|    SerDes Configuration             | interface internal      |    NA                               |     x     |           |           |           |         |               |
+|                                     | muxing and basic setup. |                                     |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
 
+.. _Pinmux Tool: http://processors.wiki.ti.com/index.php/TI_PinMux_Tool
+.. _Clock Tree Tool: http://www.ti.com/tool/CLOCKTREETOOL
+.. _EMIF Tools Appnote: FAQ.html#useful-ddr-configuration-resources
 
 Creating Board Library with Custom Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Refer `Adding Custom Board Library Target to Processor SDK RTOS <How_to_Guides.html#adding-custom-board-library-target-to-processor-sdk-rtos-makefiles>`__ 
-section for the details on creating board library with custom name
+
+Instructions to add custom Board to the PDK build
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+**Step 1: Creating new directory for custom board library**
+
+In pdk_am57xx_x_x_x/packages/ti/board/src, 
+Create new directory myCustomBoard and copy files from existing board
+library package. We recommend that you copy files from the board which
+closely matches your custom board design. In this case, we assume that
+the custom board is based on the design of evmAM572x so we copy over
+the files from that directory into myCustomBoard folder.
+
+**Step 2: Updating names and makefile inside the customBoard package**
+
+In pdk_am57xx_x_x_x/packages/ti/board/src/myCustomBoard, Rename file
+src_files_evmAM572x.mk to src_files_myCustomBoard.mk. This file will
+need a bit of work depending on what elements of board you need for your
+platform. We have left all the files evmAM572x_*.c but you can modify as
+needed.
+
+**Step 3: Adding MACRO based inclusion of updated board_cfg.h
+corresponding to custom Board**
+
+In packages/ti/board/board_cfg.h, add the lines pointing to board_cfg.h
+file in your customBoard package so that updated peripheral instances
+and board specific defines can be picked up
+
+::
+
+    #if defined (myCustomBoard)
+    #include <ti/board/src/myCustomBoard/include/board_cfg.h>
+    #endif
+
+**Step 4: Update top level board package makefile to include build for
+customBoard Library** The makefile is used to include all relevant make
+files for including Low level driver(LLD), source files relevant to
+board and the common board.c file
+
+-  In packages/ti/board/build/makefile.mk, add board.c to the
+   customBoard buildÂ :
+
+::
+
+    ifeq ($(BOARD),$(filter $(BOARD),evmAM335x icev2AM335x skAM335x bbbAM335x evmAM437x idkAM437x skAM437x myCustomBoard evmAM572x idkAM571x idkAM572x evmK2H evmK2K evmK2E evmK2L evmK2G iceK2G evmC6678 evmC6657))
+    # Common source files across all platforms and cores
+    SRCS_COMMON += board.c
+    endif
+
+-  Add board library source files and LLD files to the customBoard build
+
+In packages/ti/board/build/makefile.mk, change
+
+::
+
+    ifeq ($(BOARD),$(filter $(BOARD), evmAM572x idkAM571x idkAM572x))
+    include $(PDK_BOARD_COMP_PATH)/src/$(BOARD)/src_files_$(BOARD).mk
+    include $(PDK_BOARD_COMP_PATH)/src/src_files_lld.mk
+    CFLAGS_LOCAL_$(BOARD) += -D$(BOARD)
+    endif
+
+to
+
+::
+
+    ifeq ($(BOARD),$(filter $(BOARD), myCustomBoard evmAM572x idkAM571x idkAM572x))
+    include $(PDK_BOARD_COMP_PATH)/src/$(BOARD)/src_files_$(BOARD).mk
+    include $(PDK_BOARD_COMP_PATH)/src/src_files_lld.mk
+    CFLAGS_LOCAL_$(BOARD) += -D$(BOARD)
+    endif
+
+**Step 5: Update Global makerules**
+
+build_config.mk defines the global CFLAGS used to compile different PDK
+components. Add the following line in the BOARD Specific configurations.
+
+::
+
+    CFLAGS_GLOBAL_customAM572x  = -DSOC_AM572x -DcustomAM572x=customAM572x
+
+The SOC_AM572x macro ensures that the CSL aplicable to this SOC will be
+included in the build and evmAM572x define will ensure all evmAM572x
+specific includes that apply to the customAM572x are part of the build.
+
+
+**Optional step to update RTSC platform definition** If you have a
+custom RTSC platform definition for your custom board that updates the
+memory and platform configuration using RTSC Tool then you need to
+update the platform.mk file that associates the RTSC platfom with the
+corresponding board library
+
+In packages/ti/buildmakerules/platform.mk, add the following lines:
+
+
+::
+
+     ifeq ($(BOARD),$(filter $(BOARD), evmAM572x))
+       PLATFORM_XDC = "ti.platforms.evmAM572X"
+     endif
+
+::
+
+     ifeq ($(BOARD),$(filter $(BOARD), myCustomBoard))
+       PLATFORM_XDC = "evmAM572XCustom"
+     endif
+
+.. note::
+   The SYSBIOS platforms follow the convention to consolidate all
+   platform definitions under SYSBIOS_INSTALL_PATH/packages/ti/platforms/\*
+   hence the convention ti.platorms.<platformName> but for custom platform,
+   users are not required to follow this convention.
+
+**Step 6: Update source files corresponding to drivers used in board
+library**. src_files_lld.mk file adds source files corresponding to LLD
+drivers used in the board library. Usually most boards utilitize control
+driver like I2C (for programming the PMIC or reading EEPROM), UART
+drivers (for IO) and boot media drivers like (SPI/QSPI, MMC or NAND). In
+the example below, we assume that the custom Board library has
+dependency on I2C, SPI and UART LLD drivers. Since the LLD drivers will
+be linked to the application along with board library, board library
+only needs <driver>_soc.c corresponding to SOC used on the custom Board.
+
+In packages/ti/board/src/src_files_lld.mk, add the following lines:
+
+
+::
+
+    ifeq ($(BOARD),$(filter $(BOARD), myCustomBoard))
+    SRCDIR +=  $(PDK_INSTALL_PATH)/ti/drv/i2c/soc/am572x \
+               $(PDK_INSTALL_PATH)/ti/drv/uart/soc/am572x \
+               $(PDK_INSTALL_PATH)/ti/drv/spi/soc/am572x
+
+::
+
+    INCDIR +=  $(PDK_INSTALL_PATH)/ti/drv/i2c/soc/am572x \
+               $(PDK_INSTALL_PATH)/ti/drv/uart/soc/am572x \
+               $(PDK_INSTALL_PATH)/ti/drv/spi/soc/am572x
+
+::
+
+    # Common source files across all platforms and cores
+    SRCS_COMMON += I2C_soc.c UART_soc.c SPI_soc.c
+    endif
+
+
+.. note::
+   For all LLD drivers linked to the board library you need to include
+   corresponding <drv>_soc.c file. For example if you include GPIO driver
+   for setting board mux then GPIO_soc.c needs to be added to LLD source
+   files.
+
+**Step 7: Add custom Board to BOARDLIST and update CORELIST**
+
+In packages/ti/board/board_component.mk, modify the build to add your
+custom board and specify the cores for which you want to build the board
+library. Example to build board library for only A15 and C66x cores,
+limit the build by specify only a15_0 and C66x in the CORELIST
+
+::
+
+    board_lib_BOARDLIST       = myCustomBoard evmAM335x icev2AM335x skAM335x bbbAM335x evmAM437x idkAM437x skAM437x evmAM572x idkAM571x idkAM572x evmK2H evmK2K evmK2E evmK2L evmK2G iceK2G \
+
+::
+
+    #board_lib_am572x_CORELIST = c66x a15_0 ipu1_0
+    board_lib_am572x_CORELIST = a15_0 c66x
+
+**Step 8: Update .bld files for XDCTOOL based build steps.**
+
+Make corresponding changes in packages/ti/board/config.bld, by adding
+the following lines:
+
+::
+
+    var myCustomBoard = {
+       name: "myCustomBoard",
+       ccOpts: "-DevmAM572x -DSOC_AM572x",
+       targets: [C66LE,A15LE ]
+       lldFiles: [ "$(PDK_INSTALL_PATH)/ti/drv/i2c/soc/am572x/I2C_soc.c",
+               "$(PDK_INSTALL_PATH)/ti/drv/uart/soc/am572x/UART_soc.c",
+               "$(PDK_INSTALL_PATH)/ti/drv/spi/soc/am572x/SPI_soc.c"]
+    }
+
+::
+
+    var boards = [ evmAM335x, icev2AM335x, skAM335x, bbbAM335x, evmAM437x, idkAM437x, skAM437x, myCustomBoard, evmAM572x, idkAM571x, idkAM572x, evmK2H, evmK2K, evmK2E, evmK2L, evmK2G, evmC6678, evmC6657 ];
+
+Also, in packages/ti/board/package.bld, I added the following line:
+
+::
+
+    Pkg.otherFiles[Pkg.otherFiles.length++] = "src/myCustomBoard/src_files_myCustomBoard.mk";
+
+
+**Step 9: Setup Top level PDK build files to add the Custom board to
+setup environment.**
+
+Final setup involves updating the top level setup file for PDK package
+to update to setup the build environment to include the custom Board in
+setup. This can be done by commenting out the top line and adding in the
+bottom line in pdksetupenv.bat:
+
+
+::
+
+    @REM if not defined LIMIT_BOARDS set LIMIT_BOARDS=evmAM572x idkAM571x idkAM572x
+    if not defined LIMIT_BOARDS set LIMIT_BOARDS=myCustomBoard
+
+**Alternative:** Invoke the build using command line options to limit
+the build to specific board, specific SOC and specific CORE. For
+example, if you want to build the A15 version of board library for
+AM572x EVM, you can invoke the build using:
+
+::
+
+    gmake board_lib LIMIT_SOCS=am572x LIMIT_BOARDS=customAM572x LIMIT_CORES=a15_0 
+
+
+
+**Step 10: Building the custom board with the updated settings**
+
+To build package change directory to
+<SDK_INSTALL_PATH>/pdk_am57xx_x_x_x/packages, first run pdksetupenv.bat
+
+To make just the board library: gmake board_lib
+
+
+Example custom Board library for reference
+"""""""""""""""""""""""""""""""""""""""""""
+
+The package provided below provides updated files for building
+customBoard "customAM572x" following all steps described above. Please
+compare the files to the evmAM57xx board library files to follow the
+steps to add your own board library.
+
+`File:Pdk packages ti board
+customAM572x.zip </index.php?title=Special:Upload&wpDestFile=Pdk_packages_ti_board_customAM572x.zip>`__
+
+.. note::
+   Due to software distribution policy on the wiki, we have removed the
+   file linked here. Users can refer to the discussion and zipped package
+   linked from E2E post provided below:
+
+-  `E2E post on creation of custom board
+   library <https://e2e.ti.com/support/arm/sitara_arm/f/791/p/555022/2040948#pi316653=2>`__
+
+Additional steps for AM335x/AM437x users
+"""""""""""""""""""""""""""""""""""""""""
+
+.. note::
+   Currently the AM335x and AM437x board libraries re-use the board support
+   that was used in legacy starterware software. AM335x and AM437x users
+   will need to additionally modify build files in starterware to build
+   their custom board library. Additional steps required for AM335x/AM437x
+   will be added to this article soon in this section
+
 
 Creating Board Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-<Add GEL file based steps to generate board configurations??>
+Before updating the board library with configurations for custom board, it is recommended to use
+GEL file and CCS for validating the configurations. 
+Follow the steps mentioned below
+
+- Update the SoC clock configurations in the GEL file.
+  TI provides `Clock Tree Tool <http://www.ti.com/tool/CLOCKTREETOOL>`_ to simulate the device clocks.
+- Update the PLL clock configurations in GEL file if custom board uses a different input clock than the eval platform and/or needs different clock outputs.
+- Update DDR PHY and timing configurations for custom board. 
+  Refer the guidelines described in `Application Report on EMIF Tools <FAQ.html#useful-ddr-configuration-resources>`_
+- After GEL file update is complete, connect to custom board using JTAG, run the GEL script to apply the modified configurations and verify the configured values.
+  Load and run simple hello world example out of SoC internal memory and DDR memory.
+
 
 Updating Board Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Steps for updating the board library configurations for a custom board is described in this section.
-Updating some of the configurations may need addtional steps based on the platform. 
+Updating some of the configurations may need additional steps based on the platform.
 Refer `Platform Specific Configuration <Board_EVM_Abstration.html#platform-specific-configurations>`_ section for more details.
 
 Pinmux 
@@ -395,9 +657,7 @@ SoC Clock Settings
 """""""""""""""""""""
 The core clocks and module clocks used on the custom board library may 
 vary based on the power requirements and external components used on the 
-boards. TI provides `Clock Tree Tools <http://www.ti.com/tool/CLOCKTREETOOL>`__ 
-to simulate the device clocks. GEL file can be used to verify the settings
-in CCS before modifying the source in the board library.
+boards.
 
 <Board>_clock.c: Defines functions and structures for configuring the clock and power modules. 
 Update this file based on the data from clock tree tool and GEL file validation.
@@ -423,13 +683,13 @@ needs to be clocked differently, you can enter the PLL and clock
 settings in the board library. All of the PLL and module clock settings
 are consolidated in the following files:
 
--  <Board>.c: Contains calls related to all board-level initialization.
+- <Board>.c: Contains calls related to all board-level initialization.
   <Board> refers to the evaluation platform (For example, evmam335x)
--  <Board>_pll.c: Defines the Board_PLLInit() function that configures the
+- <Board>_pll.c: Defines the Board_PLLInit() function that configures the
   dividers and multipliers for the clock tree.
 
-Ethernet Conguration
-""""""""""""""""""""""
+Ethernet Configuration
+"""""""""""""""""""""""
 The custom board may have external components (flash devices, Ethernet
 PHY, etc.) that are different from the components populated on the
 TI-supported EVM. These components and their support files need to be
@@ -444,7 +704,35 @@ board, the instance needs to be modified in the Pin Mux setup as well
 as in the board_cfg.h file in
 pdk_xx_xx_xx_xx/packages/ti/board/src/<customBoardName>/include
 
+Board Detection
+'''''''''''''''''
+ - TI defined board detect mechanism using structure stored in I2C EEPROM
+ - Board Lib APIs read and write Board ID to EEPROM on I2C address 0x50
+ - Application boards, if available, will have their own EEPROM with board information
+ - Structure typically defines:
+ 
+::
 
+    Board ID (IDK vs GP EVM vs custom)
+    Revision number (board revision to address board level issues)
+    Serial Number (internal tracking)
+    MAC ID  (Custom MAC ID use)
+| 
+.. note::
+   Board detection is TI defined mechanism to detect evaluation platform details. 
+   This needs to be removed/replicated from board based on customer board implementation.
+   In case board detect mechanism is not used in custom board, check for the Board_getIDInfo() API calls 
+   and make necessary changes in the code to avoid dependencies on board detect mechanism.
+
+Board Flash APIs
+'''''''''''''''''
+Board library includes a dedicated flash library to abstract the HW flash interface access
+using a standard set of APIs. In case custom board uses flash devices that are different
+from eval platform, update to board flash APIs is required. 
+Check the board flash library available at <PDK Root>/packages/ti/board/src/flash and 
+make changes required for custom board as needed.
+
+   
 Platform Specific Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -452,16 +740,16 @@ AM65xx
 """""""
 Pinmux 
 '''''''
-For AM65xx platform <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c files generated by the pinmux tool.
+Follow below steps to update pinmux configuration for custom board on AM65xx platforms.
+ - Download the pinmux files <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool
+ - Copy the files to custom board folder and rename them to match with board name if needed.
+ - Rebuild the board library with new pinmux configurations
 
 SerDes Configuration
 '''''''''''''''''''''
-
-Board Detection
-'''''''''''''''''
-
-IO expander APIs
-''''''''''''''''''
+AM65xx board library includes SerDes module which configures the SerDes interface internal pinmux
+to route PCIe, USB and SGMII interfaces to different personality cards. If custom board uses
+similar design, SerDes configurations can be reused. Otherwise this configuration can be ignored.
 
 
 AM57xx
@@ -482,31 +770,59 @@ Below are the files generated by pinmux tool:
  -  boardPadDelayDevice.c: This file includes the pinmuxdata for
     runtime pinmux configuration of the MMC module.
 
+Copy the above listed files generated by pinmux tool to custom board folder and 
+rebuild the board library with updated pinmux configurations.
 
 AM335x/AM437x
 """""""""""""""
 Pinmux 
 '''''''
-For AM335x/AM437x platforms pinmux data need to be updated in the StarterWare package.
+Follow below steps to update pinmux configuration for custom board on AM335x/AM437x platforms.
 
+ - Download the pinmux files <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool
+ - At the bottom of <Platform Name>pinmux.h change extern pinmuxBoardCfg_t g<Platform Name>PinmuxData[]; to extern pinmuxBoardCfg_t g<Custom Board Name>PinmuxData[];
+ - Change <Platform Name>_pinmux_data.c to <Platform Name>_<Custom Board Name>pinmux_data.c
+ - Change g<Platform Name>PinmuxData to g<Custom Board Name>PinmuxData at the end of the file in <Platform Name>_<Custom Board Name>pinmux_data.c 
+ - The last step is to invoke the PinMuxModuleConfig in the file <BoardName>_pinmux.c that is found at <PDK_INSTALL_PATH>\packages\ti\board\src\<BoardName>. 
+   For Example to add three instances of UART in the pinmux setup, users can add :
+
+::
+
+    /* UART */
+     status = PINMUXModuleConfig(CHIPDB_MOD_ID_UART, 0U, NULL);
+     status = PINMUXModuleConfig(CHIPDB_MOD_ID_UART, 1U, NULL);
+     status = PINMUXModuleConfig(CHIPDB_MOD_ID_UART, 4U, NULL);
+| 
+ - Rebuild the board library with new pinmux configurations
 
 K2G
 """"
 Pinmux 
 '''''''
-For K2G platform <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c files are generated by the pinmux tool.
+Follow below steps to update pinmux configuration for custom board on K2G platforms.
+ - Download the pinmux files <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool
+ - Copy the files to custom board folder and rename them to match with board name if needed.
+ - Rebuild the board library with new pinmux configurations
 
 
-K2E/K2H/K2K/K2L
-""""""""""""""""
-Pinmux 
-'''''''
-Pinmux is not needed for C66x or K2H/K2E/K2L devices, and the BOARD_INIT_PINMUX_CONFIG option
-is ignored when called in a C66x or K2H/K2E/K2L board library.
-
-Board Library Validation
+Custom Board Validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-<Add Details of board library debugging anf diagnostic validation for basic interfaces??>
+Validate the basic functionality of custom board using hardware diagnostics before bringing-up 
+RTOS applications or Linux. Hardware diagnostics help verify the functionality of on-board 
+peripherals and external interfaces of each board. 
+
+Refer `Board Diagnostics <Board_EVM_Abstration.html#diagnostics>`_ section for more details on the 
+diagnostic tests supported as part of processor SDK.
+ 
+Below are the recommended diagnostic tests which can be validated on custom board
+
+ - External memory (DDR): DDR timing and leveling setting can be checked out using mem_test
+ - Debug UART: Debug UART pin functionality
+ - Boot Media: Validate functionality of SD/MMC, OSPIor any other boot interfaces
+ - Board ID/EEPROM test: Recommend checking out/writing ID on personality EEPROM. 
+   This also checkout I2C pin functionality
+ - Ethernet PHY: Ethernet diagnostics tests read PHY configuration over MDIO and 
+   check for Link up status. Good first step before bringing up any network stack
 
 .. raw:: html
 
