@@ -1869,6 +1869,20 @@ used for the first time:
   => mmc partconf 0 1 1 1
   => mmc bootbus 0 1 0 0
 
+**Bootmode Switch Settings**
+
+After writing the images, change the bootmode switches on the evm to the following:
+
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| Switch No. | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| SW3        | ON  | OFF | ON  | ON  | OFF | OFF | OFF | OFF | OFF | ON  |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| SW2        | OFF | ON  | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
+**Booting Kernel from eMMC**
+
 To create a software partition for the rootfs, the following command can be
 used:
 
