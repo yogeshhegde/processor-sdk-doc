@@ -9,6 +9,12 @@ Dual EMAC and Switch
 
 
 *********************
+ICSS-G Dual EMAC 
+*********************
+.. include:: PDK_Platform_Software/PRU_ICSS_Drivers/ICSS-G-EMAC_FIRMWARES.rst.inc
+
+
+*********************
 PRU-ICSS SORTE
 *********************
 .. include:: PDK_Platform_Software/PRU_ICSS_Drivers/PRU_ICSS_SORTE.rst.inc
