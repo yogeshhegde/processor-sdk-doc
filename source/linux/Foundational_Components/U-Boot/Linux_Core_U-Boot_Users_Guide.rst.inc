@@ -1736,8 +1736,7 @@ Sources
 ^^^^^^^^^^^
 * SYSFW:
         System Firmware repo is closed source and the binaries are delivered
-        to users with NDA. Please contact TI to get the System Firmware
-        Binary named ti-sci-firmware-am6x.bin that runs on AM65x SoC.
+        to users as part of the SDK.
 
 * ATF:
         Tree: git://git.ti.com/atf/arm-trusted-firmware.git; Branch: ti-atf
