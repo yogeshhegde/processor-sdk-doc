@@ -140,7 +140,7 @@ VPE cycles.
    :name: driver-configuration
 
 .. rubric:: Source Location
-   :name: source-location
+   :name: source-location-vpe
 
 -  kernel driver:
 

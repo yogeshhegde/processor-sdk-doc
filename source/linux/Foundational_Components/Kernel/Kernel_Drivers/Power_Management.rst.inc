@@ -85,7 +85,7 @@ governors are enabled with the ondemand governor selected as the default
 governor. To make changes, follow the instructions below.
 
 .. rubric:: Source Location
-   :name: source-location
+   :name: source-location-pm
 
 drivers/cpufreq/ti-cpufreq.c drivers/cpufreq/cpufreq-dt.c
 

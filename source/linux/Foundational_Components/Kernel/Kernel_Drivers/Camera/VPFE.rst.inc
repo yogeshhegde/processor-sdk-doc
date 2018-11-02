@@ -139,7 +139,7 @@ Capture Driver Component Overview
     and desired output from the camera driver.
 
 .. rubric:: Source Location
-   :name: source-location
+   :name: source-location-vpfe
 
 -  drivers/media/platform/ti\_vpfe/
 -  `AM437x VPFE Driver

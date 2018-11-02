@@ -180,7 +180,7 @@ framework.
    :name: driver-configuration
 
 .. rubric:: Source Location
-   :name: source-location
+   :name: source-location-qspi
 
 The source file for QSPI driver can be found at:
 drivers/spi/spi-ti-qspi.c under Linux kernel source tree.
