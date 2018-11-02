@@ -36,7 +36,7 @@
 | 
 
 .. rubric:: **Driver Usage**
-   :name: driver-usage
+   :name: driver-usage-pwm
 
 .. rubric:: **eCAP**
    :name: ecap

@@ -185,7 +185,7 @@ OPPs for each silicon revision. More information can be found in the
 `Operating Points <#operating-points>`__ section.
 
 .. rubric:: Driver Usage
-   :name: driver-usage
+   :name: driver-usage-pm
 
 All of the standard governors are built-in to the kernel, and by default
 the ondemand governor is selected.

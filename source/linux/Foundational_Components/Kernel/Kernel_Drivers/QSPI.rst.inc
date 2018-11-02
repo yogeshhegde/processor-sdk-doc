@@ -254,7 +254,7 @@ to: Documentation/devicetree/bindings/mtd/jedec,spi-nor.txt and
 Documentation/devicetree/bindings/mtd/partition.txt
 
 .. rubric:: Driver Usage
-   :name: driver-usage
+   :name: driver-usage-qspi
 
 Load QSPI module using modprobe (this will take care of dependencies and
 load those modules as well)

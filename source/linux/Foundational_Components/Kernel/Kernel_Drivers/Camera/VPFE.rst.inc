@@ -382,7 +382,7 @@ This an excerpt from the arch/arm/boot/dts/am437x-gp-evm.dts
 -  vdpol when set to 1 is used to invert the Vsync polarity
 
 .. rubric:: Driver Usage
-   :name: driver-usage
+   :name: driver-usage-vpfe
 
 As seen previously the driver create a /dev/videoX device node when a
 sub-device is successfully registered. The device node provide access to

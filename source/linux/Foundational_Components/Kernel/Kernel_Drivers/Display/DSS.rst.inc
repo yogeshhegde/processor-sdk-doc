@@ -335,7 +335,7 @@ enable omapdrm (CONFIG\_DRM\_OMAP).
 | 
 
 .. rubric:: Driver Usage
-   :name: driver-usage
+   :name: driver-usage-dss
 
 .. rubric:: Loading omapdrm
    :name: loading-omapdrm

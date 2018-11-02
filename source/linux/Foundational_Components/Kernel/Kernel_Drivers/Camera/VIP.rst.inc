@@ -344,7 +344,7 @@ enable ti-vip (CONFIG\_VIDEO\_TI\_VIP).
 | 
 
 .. rubric:: Driver Usage
-   :name: driver-usage
+   :name: driver-usage-vip
 
 .. rubric:: Loading ti-vip
    :name: loading-ti-vip

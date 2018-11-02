@@ -243,7 +243,7 @@ VPE cycles.
 Similar to built-in, just replace with <M>.
 
 .. rubric:: Driver Usage
-   :name: driver-usage
+   :name: driver-usage-vpe
 
 .. rubric:: Loading Modules
    :name: loading-modules
