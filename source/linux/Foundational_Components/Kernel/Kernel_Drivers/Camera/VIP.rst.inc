@@ -331,7 +331,7 @@ VIP Slice
    :name: driver-configuration
 
 .. rubric:: Kernel Configuration Options
-   :name: kernel-configuration-options
+   :name: kconfig-options-vip
 
 ti-vip supports building both as built-in or as a module.
 

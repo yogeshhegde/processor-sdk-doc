@@ -149,7 +149,7 @@ VPE cycles.
     drivers/media/platform/ti-vpe/
 
 .. rubric:: Kernel Configuration Options
-   :name: kernel-configuration-options
+   :name: kconfig-options-vpe
 
 .. rubric:: Kernel config(built-in)
    :name: kernel-configbuilt-in

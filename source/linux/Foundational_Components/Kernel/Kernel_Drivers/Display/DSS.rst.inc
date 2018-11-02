@@ -315,7 +315,7 @@ HDMI output:
    :name: driver-configuration
 
 .. rubric:: Kernel Configuration Options
-   :name: kernel-configuration-options
+   :name: kconfig-options-dss
 
 omapdrm supports building both as built-in or as a module.
 

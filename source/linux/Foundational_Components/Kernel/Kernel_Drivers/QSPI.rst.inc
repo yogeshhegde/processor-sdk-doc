@@ -186,7 +186,7 @@ The source file for QSPI driver can be found at:
 drivers/spi/spi-ti-qspi.c under Linux kernel source tree.
 
 .. rubric:: Kernel Configuration Options
-   :name: kernel-configuration-options
+   :name: kconfig-options-qspi
 
 The driver can be built into the kernel or can be compiled as module and
 loaded into the kernel dynamically.

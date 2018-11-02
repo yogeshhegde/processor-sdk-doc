@@ -148,7 +148,7 @@ Capture Driver Component Overview
 | 
 
 .. rubric:: Kernel Configuration Options
-   :name: kernel-configuration-options
+   :name: kconfig-options-vpfe
 
 The driver can be built as a static or dynamic module. When built as a
 dynamic module the driver is named ti\_vpfe.ko.

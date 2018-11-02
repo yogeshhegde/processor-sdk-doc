@@ -94,7 +94,7 @@ silicon characteristics. The OPP data itself is used by the cpufreq DT
 driver to scale voltages based on frequency changes for the CPU.
 
 .. rubric:: Kernel Configuration Options
-   :name: kernel-configuration-options
+   :name: kconfig-options-pm
 
 The driver can be built into the kernel as a static module, dynamic
 module, or both.
