@@ -450,7 +450,7 @@ without TILER the allocated memory is always from the contiguous DMA
 memory pool, and imported memory must be contiguous memory.
 
 .. rubric:: Debugging
-   :name: debugging
+   :name: debugging-dss
 
 There are two debugfs directiories that can be used when debugging
 omapdrm:

@@ -388,7 +388,7 @@ yavta can be found from:
     http://git.ideasonboard.org/yavta.git
 
 .. rubric:: Debugging
-   :name: debugging
+   :name: debugging-vip
 
 As ti-vip driver is based on the V4L2 framework, framework level tracing
 can be enable as follows:

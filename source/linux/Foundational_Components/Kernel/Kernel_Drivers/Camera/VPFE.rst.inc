@@ -472,7 +472,7 @@ an example to configured sensor/decoder sub-device:
    Application <http://git.ideasonboard.org/media-ctl.git>`__
 
 .. rubric:: Debugging
-   :name: debugging
+   :name: debugging-vpfe
 
 As vpfe driver is based on the V4L2 framework, framework level tracing
 can be enable as follows:

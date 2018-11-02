@@ -348,7 +348,7 @@ buffers by itself. It will use dma-bufs shared by a dmabuf exporter(most
 likely omapdrm) instead of allocating by itself via the videobuf2 layer.
 
 .. rubric:: Debugging
-   :name: debugging
+   :name: debugging-vpe
 
 Debug log can be enabled in the VPE driver by adding “#define DEBUG” at
 the first line of drivers/media/platform/ti-vpe/vpe.c.
