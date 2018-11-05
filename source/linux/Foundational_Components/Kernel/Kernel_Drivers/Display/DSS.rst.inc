@@ -312,7 +312,7 @@ HDMI output:
 -  YUV output
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-dss
 
 .. rubric:: Kernel Configuration Options
    :name: kconfig-options-dss

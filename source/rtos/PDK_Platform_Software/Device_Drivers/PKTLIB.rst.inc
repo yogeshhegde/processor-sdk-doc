@@ -27,7 +27,7 @@ A pktlib heap can be created in on of the following two modes:
 -  Shared: visible across multiple cores
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-pktlib
 
 Applications can use Pktlib_createHeap() API to create heap(s) in the
 system and heap properties are specified by the Pktlib_HeapCfg

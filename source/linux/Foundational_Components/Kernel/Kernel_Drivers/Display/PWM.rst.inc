@@ -13,7 +13,7 @@
 .. Image:: ../images/AM335X_PWM-SS_arch.JPG
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-pwm
 
 .. rubric:: Procedure to build eHRPWM driver
    :name: procedure-to-build-ehrpwm-driver

@@ -115,7 +115,7 @@ the PCIe slot and Power on the EVM. Other PCIe cards can be tested in a
 similar way.
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-pcierc
 
 Assume, you have default configuration set for kernel build. To enable
 PCI Keystone driver, traverse the following config tree from menuconfig

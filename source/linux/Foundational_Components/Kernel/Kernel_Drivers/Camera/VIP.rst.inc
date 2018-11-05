@@ -328,7 +328,7 @@ VIP Slice
 | 
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-vip
 
 .. rubric:: Kernel Configuration Options
    :name: kconfig-options-vip

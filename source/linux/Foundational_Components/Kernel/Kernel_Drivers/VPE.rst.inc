@@ -137,7 +137,7 @@ supports multiple open() calls, allowing multiple applications to share
 VPE cycles.
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-vpe
 
 .. rubric:: Source Location
    :name: source-location-vpe

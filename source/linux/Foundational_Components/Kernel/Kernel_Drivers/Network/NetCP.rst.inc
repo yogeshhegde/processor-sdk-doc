@@ -26,7 +26,7 @@ located at
 -  include/linux/soc/ti/knav\_qmss.h
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-netcp
 
 To enable/disable Navigator support, start the Linux Kernel
 Configuration tool:

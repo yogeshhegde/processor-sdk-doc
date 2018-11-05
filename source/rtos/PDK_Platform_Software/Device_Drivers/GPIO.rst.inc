@@ -26,7 +26,7 @@ type GPIO_CFG_IN_INT_XXX configuration. To generate interrupt, gpio
 pin has to be configured as input pin.
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-gpio
 
 .. rubric:: **Board Specific Configuration**
    :name: board-specific-configuration

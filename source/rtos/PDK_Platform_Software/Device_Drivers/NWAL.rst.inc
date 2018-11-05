@@ -51,7 +51,7 @@ poll routine to retrieve status response result.
 | 
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-nwal
 
 The driver configures the NWAL subsystem using the nwalGlobCfg_t
 structure.

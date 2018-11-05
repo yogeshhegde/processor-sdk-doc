@@ -134,7 +134,7 @@ notify the events to the dwc3 core.
 | 
 
 .. rubric:: **Driver Configuration**
-   :name: driver-configuration
+   :name: driver-configuration-dwc3
 
 The default kernel configuration enables support for USB\_DWC3,
 USB\_DWC3\_OMAP (the wrapper driver), USB\_DWC3\_DUAL\_ROLE.

@@ -138,7 +138,7 @@ modes.
 Table:  **MMC2/EMMC**
 
 .. rubric:: **Driver Configuration**
-   :name: driver-configuration
+   :name: driver-configuration-mmcsd
 
 The default kernel configuration enables support for MMC/SD(built-in to
 kernel). OMAP MMC/SD driver is used.

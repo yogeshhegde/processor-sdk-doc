@@ -75,7 +75,7 @@ schematics
 | 
 
 .. rubric:: **Driver Configuration**
-   :name: driver-configuration
+   :name: driver-configuration-adc
 
 You can enable ADC driver in the kernel as follows.
 

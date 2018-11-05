@@ -20,7 +20,7 @@ The driver supports the following features:
 | 
 
 .. rubric:: **Driver Configuration**
-   :name: driver-configuration
+   :name: driver-configuration-cpsw
 
 To enable/disable Networking support, start the *Linux Kernel Configuration*
 tool:

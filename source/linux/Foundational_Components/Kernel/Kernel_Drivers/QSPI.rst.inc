@@ -177,7 +177,7 @@ subsystem or access generic SPI devices (like SPI touchscreen) via SPI
 framework.
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-qspi
 
 .. rubric:: Source Location
    :name: source-location-qspi

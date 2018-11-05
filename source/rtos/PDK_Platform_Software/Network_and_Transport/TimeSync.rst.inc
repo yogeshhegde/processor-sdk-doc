@@ -54,7 +54,7 @@ TimeSync (PTP) driver does the task of
 
 
 .. rubric:: Driver Configuration
-   :name: driver-configuration
+   :name: driver-configuration-timesync
 
 .. rubric:: **Board Specific Configuration**
    :name: board-specific-configuration
