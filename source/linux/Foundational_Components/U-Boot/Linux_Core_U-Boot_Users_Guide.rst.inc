@@ -1866,7 +1866,7 @@ used for the first time:
 .. code-block:: console
 
   => mmc partconf 0 1 1 1
-  => mmc bootbus 0 1 0 0
+  => mmc bootbus 0 2 0 0
 
 **Bootmode Switch Settings**
 
@@ -1877,7 +1877,7 @@ After writing the images, change the bootmode switches on the evm to the followi
 +------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 | SW3        | ON  | OFF | ON  | ON  | OFF | OFF | OFF | OFF | OFF | ON  |
 +------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| SW2        | OFF | ON  | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
+| SW2        | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
 +------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 
 **Booting Kernel from eMMC**
