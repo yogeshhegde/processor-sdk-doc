@@ -244,12 +244,13 @@ Below table shows configurations supported by board library across different pla
 Adding custom board library can follow two approaches as mentioned below
 
 |  **Approach 1**: Update files in existing TI board library and modify for custom board.
-|  Advantage: Migration of changes is easier between two versions of Processor SDK.
-|  Disadvantage: No easy way to switch between TI board library and custom board library.
+|  This approach will be less time consuming since the board library setup is already existing
+|  in the processor SDK, but no easy way to switch between TI board library and custom board library.
 |
 |  **Approach 2**: Add custom board to PDK build
-|  Advantage: Easy switching between TI board and custom board library with same release
-|  Disadvantage: One time effort every release to integrate custom board in PDK build, in case of upgrading the board library to latest processor SDK version.
+|  This approach involves one time effort of setting up the custom board library but makes it easy
+|  to switch between custom board library and TI reference board library. Migration effort can be   
+|  relatively more, in case of upgrading the board library to latest processor SDK.
 
 |
 |  
