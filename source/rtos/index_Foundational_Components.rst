@@ -33,7 +33,7 @@ IPC
 
 IPC Examples
 =============
-.. include:: ../IPC_examples.rst.inc
+.. include:: IPC_examples.rst.inc
 
 ***************
 OpenCL
@@ -45,46 +45,46 @@ OpenCL
 Boot
 ***************
 .. _FC-Boot-label:
-.. include:: ../Boot.rst.inc
+.. include:: Boot.rst.inc
 
 
 *****
 MPM
 *****
-.. include:: ../MPM.rst.inc
+.. include:: MPM.rst.inc
 
 
 *******
 OpenMP
 *******
-.. include:: ../Compute/OpenMP.rst.inc
+.. include:: Compute/OpenMP.rst.inc
 
 
 ***************
 PKTLIB
 ***************
-.. include:: Device_Drivers/PKTLIB.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/PKTLIB.rst.inc
 
 ***************
 Network
 ***************
 CCLink
 =======
-.. include:: Network_and_Transport/CCLink.rst.inc
+.. include:: PDK_Platform_Software/Network_and_Transport/CCLink.rst.inc
 NDK
 =======
-.. include:: Network_and_Transport/NDK.rst.inc
+.. include:: PDK_Platform_Software/Network_and_Transport/NDK.rst.inc
 
 NWAL
 ***************
-.. include:: Device_Drivers/NWAL.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/NWAL.rst.inc
 
 ***************
 Transport
 ***************
 TimeSync (PTP)
 ==============
-.. include:: Network_and_Transport/TimeSync.rst.inc
+.. include:: PDK_Platform_Software/Network_and_Transport/TimeSync.rst.inc
 
 ***************
 Tools

@@ -5,5 +5,5 @@ PRU-ICSS Firmware
 .. toctree::
    :maxdepth: 5
 
-   PDK_Platform_Software/PRU_ICSS_Drivers/index
+   index_pru_icss_fw
 

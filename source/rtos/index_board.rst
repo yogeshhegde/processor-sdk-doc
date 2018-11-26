@@ -1,24 +1,24 @@
 Board Support
 ==============
-.. include:: Boot_Board_and_EVM_Abstractions/Board_Support.rst.inc
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Board_Support.rst.inc
 
 Diagnostics
 ============
-.. include:: Boot_Board_and_EVM_Abstractions/Diagnostics.rst.inc
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Diagnostics.rst.inc
 
 Diagnostics Execution
 ======================
-.. include:: Boot_Board_and_EVM_Abstractions/Diagnostics_Execution.rst.inc
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Diagnostics_Execution.rst.inc
 
 Power-On Self Test
 ===================
-.. include:: Boot_Board_and_EVM_Abstractions/POST.rst.inc
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/POST.rst.inc
 
 Board Utils
 ============
 Uniflash
 --------
-.. include:: Boot_Board_and_EVM_Abstractions/Uniflash.rst.inc
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Uniflash.rst.inc
 
 UART Apploader
 --------------

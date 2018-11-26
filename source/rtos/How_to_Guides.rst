@@ -5,5 +5,5 @@ How to Guides
 .. toctree::
    :maxdepth: 3
 
-   How_to_Guides/index
+   index_how_to_guides
 

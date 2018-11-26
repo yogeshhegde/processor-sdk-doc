@@ -1,7 +1,7 @@
 .. ************************
 .. DSP Optimized Libraries
 .. ************************
-.. include:: DSP_Optimized_Libraries.rst.inc
+.. include:: DSP_Software/DSP_Optimized_Libraries.rst.inc
 
 ********************
 DSP Debug and Trace
@@ -9,27 +9,27 @@ DSP Debug and Trace
 
 CToolsLib
 ==========
-.. include:: DSP_Debug_and_Trace/CToolsLib.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/CToolsLib.rst.inc
 
 
 UIA
 =====
-.. include:: DSP_Debug_and_Trace/UIA.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/UIA.rst.inc
 
 
 Trace
 ======
-.. include:: DSP_Debug_and_Trace/Trace.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/Trace.rst.inc
 
 
 Fault Management
 =================
-.. include:: DSP_Debug_and_Trace/Fault_Management.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/Fault_Management.rst.inc
 
 
 WDT
 ======
-.. include:: DSP_Debug_and_Trace/WDT.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/WDT.rst.inc
    
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
