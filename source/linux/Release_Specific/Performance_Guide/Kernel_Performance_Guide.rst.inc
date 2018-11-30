@@ -46,7 +46,22 @@ System Benchmarks
 
 LMBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+LMBench is a collection of microbenchmarks of which the memory bandwidth 
+and latency related ones are typically used to estimate processor 
+memory system performance.
+  
+  Latency    
+  lat_mem_rd-stride128-szN , where N is equal to or smaller than the cache 
+  size at given level measures the cache miss penalty. N that is at least
+  double the size of last level cache is the latency to external memory.
+  
+  Bandwidth
+  bw_mem_bcopy-N , where N is is equal to or smaller than the cache size at
+  a given level measures the achivable memory bandwidth from software doing
+  a memcpy() type operation. Typical use is for external memory bandwidth
+  calculation. The bandwidth is calculated as byte read and written counts
+  as 1 which should be roughly half of STREAM copy result.
+  
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
 
@@ -168,7 +183,10 @@ Table:  **LM Bench Metrics**
 
 Dhrystone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+Dhrystone is a core only benchmark that runs from warm L1 caches in all
+modern processors. It scales linearly with clock speed. For standard ARM
+cores the DMIPS/MHz score will be identical with the same compiler and flags.
+  
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
 
@@ -179,7 +197,7 @@ Dhrystone
 
 Table:  **Dhrystone Benchmark**
 
-Whestone
+Whetstone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
@@ -187,10 +205,12 @@ Whestone
     "whetstone","555.60","3333.30","2000.00","2500.00","25.70"
 
 
-Table:  **Whestone Benchmark**
+Table:  **Whetstone Benchmark**
 
 Linpack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Linpack measures peak double precision (64 bit) floating point performance in
+sloving a dense linear system.
 
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf","omapl138-lcdk: perf"
@@ -221,6 +241,13 @@ Table:  **NBench Benchmarks**
 
 Stream
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+STREAM is a microbenchmarks for measuring data memory system performance without
+any data reuse. It is designed to miss on caches and exercise data prefetcher and
+apeculative accesseses. it uses double precision floating point (64bit) but in
+most modern processors the memory access will be the bottleck. The four individual
+scores are copy, scale as in multiply by constant, add two numbers, and triad for
+multiply accumulate. For bandwidth a byte read counts as one and a byte written
+counts as one resulting in a score that is double the bandwidth LMBench will show.
 
 .. csv-table::
     :header: "Benchmarks","am335x-evm: perf","am57xx-evm: perf","am654x-evm: perf","k2g-evm: perf"
@@ -636,7 +663,8 @@ QSPI Flash Driver
 
 AM654x-EVM
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+UBIFS
+"""""""""""""""""""""""""""
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-evm: Write UBIFS Throughput (Mbytes/sec)","am654x-evm: Write UBIFS CPU Load (%)","am654x-evm: Read UBIFS Throughput (Mbytes/sec)","am654x-evm: Read UBIFS CPU Load (%)"
 
@@ -1055,7 +1083,10 @@ AM335x-EVM
 
 
 
+The performance numbers were captured using the following:
 
+-  SanDisk 8GB MicroSDHC Class 10 Memory Card
+-  Partition was mounted with async option
 
 
 
@@ -1105,7 +1136,10 @@ AM57XX-EVM
 
 
 
+The performance numbers were captured using the following:
 
+-  SanDisk 8GB MicroSDHC Class 10 Memory Card
+-  Partition was mounted with async option
 
 
 
@@ -1151,7 +1185,10 @@ AM654x-EVM
 
 
 
+The performance numbers were captured using the following:
 
+-  SanDisk 8GB SDHC UHS Memory Card
+-  Partition was mounted with async option
 
 
 
@@ -1212,6 +1249,16 @@ K2G-EVM
     "1048576","7.27 (min 6.67, max 8.06)","4.67 (min 3.83, max 6.02)","22.81","6.80"
     "524288","6.51 (min 5.47, max 7.96)","4.28 (min 3.67, max 5.02)","22.81","7.41"
     "5242880","7.36 (min 6.78, max 8.05)","4.79 (min 4.03, max 6.72)","22.82","7.00"
+
+|
+
+
+|
+
+The performance numbers were captured using the following:
+
+-  SanDisk 8GB MicroSDHC Class 10 Memory Card
+-  Partition was mounted with async option
 
 |
 

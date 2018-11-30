@@ -49,6 +49,21 @@ System Benchmarks
 
 LMBench
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+LMBench is a collection of microbenchmarks of which the memory bandwidth 
+and latency related ones are typically used to estimate processor 
+memory system performance.
+  
+  Latency    
+  lat_mem_rd-stride128-szN , where N is equal to or smaller than the cache 
+  size at given level measures the cache miss penalty. N that is at least
+  double the size of last level cache is the latency to external memory.
+  
+  Bandwidth
+  bw_mem_bcopy-N , where N is is equal to or smaller than the cache size at
+  a given level measures the achivable memory bandwidth from software doing
+  a memcpy() type operation. Typical use is for external memory bandwidth
+  calculation. The bandwidth is calculated as byte read and written counts
+  as 1 which should be roughly half of STREAM copy result.
 
 .. csv-table::
     :header: "Benchmarks","am574x-idk: perf"
@@ -171,6 +186,9 @@ Table:  **LM Bench Metrics**
 
 Dhrystone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dhrystone is a core only benchmark that runs from warm L1 caches in all
+modern processors. It scales linearly with clock speed. For standard ARM
+cores the DMIPS/MHz score will be identical with the same compiler and flags.
 
 .. csv-table::
     :header: "Benchmarks","am574x-idk: perf"
@@ -182,7 +200,7 @@ Dhrystone
 
 Table:  **Dhrystone Benchmark**
 
-Whestone
+Whetstone
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
@@ -191,10 +209,12 @@ Whestone
     "whetstone","2500.00"
 
 
-Table:  **Whestone Benchmark**
+Table:  **Whetstone Benchmark**
 
 Linpack
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Linpack measures peak double precision (64 bit) floating point performance in
+sloving a dense linear system.
 
 .. csv-table::
     :header: "Benchmarks","am574x-idk: perf"
@@ -225,6 +245,13 @@ Table:  **NBench Benchmarks**
 
 Stream
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+STREAM is a microbenchmarks for measuring data memory system performance without
+any data reuse. It is designed to miss on caches and exercise data prefetcher and
+apeculative accesseses. it uses double precision floating point (64bit) but in
+most modern processors the memory access will be the bottleck. The four individual
+scores are copy, scale as in multiply by constant, add two numbers, and triad for
+multiply accumulate. For bandwidth a byte read counts as one and a byte written
+counts as one resulting in a score that is double the bandwidth LMBench will show.
 
 .. csv-table::
     :header: "Benchmarks","am574x-idk: perf"
@@ -530,7 +557,7 @@ TCP Throughput
     "8","137.76",""
     "256","783.52",""
 
-Table: **TCP Throughput**
+Table: **TCP Throughput No Interrupt Pacing**
 
 .. rubric::  TCP Throughput Interrupt Pacing
    :name: tcp-throughput-interrupt-pacing
