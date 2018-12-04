@@ -50,17 +50,17 @@ suggestions <Feedback>`.
 .. _SD Card using custom images: Overview_Getting_Started_Guide.html#sd-card-using-custom-images
 .. _SD Card using parition tarballs: Overview_Getting_Started_Guide.html#sd-card-using-partition-tarballs
  
-+---------------+--------------------------+------------------+-----------------------------------+
-| **Foundational Components** (more information on each piece of the distribution)                |
-+===============+==========================+==================+===================================+
-| `U-Boot`_     | `Boot Monitor`_          | `Kernel`_        | `Filesystem`_                     |
-+---------------+--------------------------+------------------+-----------------------------------+
-| `Tools`_      | `OpenCL`_                | `OpenCV`_        | `Graphics & Display`_             |
-+---------------+--------------------------+------------------+-----------------------------------+
-| `Multimedia`_ | `Examples, Demos`_       | `PRU-ICSS`_      | `Virtualization`_                 |
-+---------------+--------------------------+------------------+-----------------------------------+
-| `IPC`_        | `OpenVX`_                | `CMEM`_          | `TIDL`_                           |
-+---------------+--------------------------+------------------+-----------------------------------+
++---------------+--------------------+-------------------------+----------------------------+
+| **Foundational Components** (more information on each piece of the distribution)          |
++===============+====================+=========================+============================+
+| `U-Boot`_     | `Boot Monitor`_    | `Kernel`_               | `Filesystem`_              |
++---------------+--------------------+-------------------------+----------------------------+
+| `Tools`_      | `OpenCL`_          | `OpenCV`_               | `Graphics & Display`_      |
++---------------+--------------------+-------------------------+----------------------------+
+| `Multimedia`_ | `Examples, Demos`_ | `PRU-ICSS / PRU_ICSSG`_ | `Virtualization`_          |
++---------------+--------------------+-------------------------+----------------------------+
+| `IPC`_        | `OpenVX`_          | `CMEM`_                 | `TIDL`_                    |
++---------------+--------------------+-------------------------+----------------------------+
 
 .. _U-Boot: Foundational_Components_U-Boot.html
 .. _Processor SDK Linux U-Boot: Foundational_Components_U-Boot.html
@@ -76,7 +76,7 @@ suggestions <Feedback>`.
 .. _Graphics & Display: Foundational_Components_Graphics.html
 .. _Multimedia: Foundational_Components_Multimedia.html
 .. _Examples, Demos: Examples_and_Demos.html
-.. _PRU-ICSS: Industrial_Protocols.html
+.. _PRU-ICSS / PRU_ICSSG: Foundational_Components_PRU-ICSS_PRU_ICSSG.html
 .. _Virtualization: Foundational_Components_Virtualization.html
 .. _IPC: Foundational_Components_IPC.html
 .. _OpenVX: Foundational_Components_OpenVX.html
@@ -84,14 +84,14 @@ suggestions <Feedback>`.
 .. _TIDL: Foundational_Components_TIDL.html
 
 +----------------+-------------------------+------------------+-----------------------------------+
-| **PRU-ICSS Protocols** (more information on each piece of the distribution)                     | 
+| **PRU-ICSS / PRU_ICSSG Protocols** (more information on each piece of the distribution)         | 
 +================+=========================+==================+===================================+
 | `DUAL_EMAC`_   | `HSR\_PRP`_             | `PTP`_           | `RSTP`_                           |
 +----------------+-------------------------+------------------+-----------------------------------+
 | `CCLINK`_      | `SORTE`_                |                  |                                   |
 +----------------+-------------------------+------------------+-----------------------------------+
 
-.. _DUAL_EMAC: Industrial_Protocols_PRU-ICSS.html
+.. _DUAL_EMAC: Industrial_Protocols_ICSS_Dual_EMAC.html
 .. _HSR\_PRP: Industrial_Protocols_HSR_PRP.html
 .. _RSTP: Industrial_Protocols_RSTP.html
 .. _PTP: Industrial_Protocols_PTP.html
