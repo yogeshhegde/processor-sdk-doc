@@ -39,7 +39,7 @@ All board specific configurations eg:enabling clock and pin-mux for UART
 pins are required before calling any driver APIs.By default Board_Init()
 API supports all initialization sequence for TI supported EVMs. In
 addition it initializes UART instance for Console/STDIO.Refer `Processor
-SDK RTOS Board Support <Board_EVM_Abstration.html#board-support>`__
+SDK RTOS Board Support <index_board.html#board-support>`__
 for additional details.Once board specific configuration is complete 
 UART_init() API can be called to initialize driver.
 
@@ -225,7 +225,7 @@ Examples
 Building UART examples
 ----------------------
 
--  Makefile based examples and dependent libraries can be built from the top level or module level UART makefile, refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+-  Makefile based examples and dependent libraries can be built from the top level or module level UART makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
 ::
 
    To build and clean libs/apps from top-level makefile:

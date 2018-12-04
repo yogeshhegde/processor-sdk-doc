@@ -60,12 +60,12 @@ Detailed description of the directory structure is given below:
 Software Dependencies
 =====================
 
--  `Processor SDK RTOS v3.3 and later <Overview.html#processor-sdk-for-rtos>`__
--  `Code Composer Studio IDE Environment v7 and later <Overview.html#code-composer-studio>`__
+-  `Processor SDK RTOS v3.3 and later <index_overview.html#processor-sdk-for-rtos>`__
+-  `Code Composer Studio IDE Environment v7 and later <index_overview.html#code-composer-studio>`__
 
 .. note::
    **For correct version of Code Composer Studio to download, please refer
-   to the `Release Notes <Release_Specific.html#release-notes>`__
+   to the `Release Notes <index_release_specific.html#release-notes>`__
    corresponding to the Processor SDK RTOS version that you have
    installed**
 
@@ -262,7 +262,7 @@ Using CCS
 
 **Step 1: Connect Emulator and UART to Hardware**
 
--  Refer to the `Hardware Setup guide <Release_Specific.html#supported-platforms-and-versions>`__
+-  Refer to the `Hardware Setup guide <index_release_specific.html#supported-platforms-and-versions>`__
    and connect the onboard or external emulator to the Hardware and Host
    machine with CCS installed.
 
@@ -289,7 +289,7 @@ Instructions specific to supported EVMs:
    Setup <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup#Connect_without_a_SD_card_boot_image>`__
 
 .. note::
-   Please refer to `Hardware User Guide <Release_Specific.html#supported-platforms-and-versions>`__
+   Please refer to `Hardware User Guide <index_release_specific.html#supported-platforms-and-versions>`__
    corresponding to each supported EVM so setup the boot switches to No
    boot if available
 
@@ -379,7 +379,7 @@ the twiddle factor coefficients, ``ptr_w``.
 
 .. note::
    -  For implementation details of this FFT computation refer to
-      documentation provided in `Additional resources <Examples_and_Demonstrations.html#additional-resources>`__
+      documentation provided in `Additional resources <index_examples_demos.html#additional-resources>`__
    -  For Real input sequences, efficient FFT Implementation is described
       here
       `Efficient_FFT_Computation_of_Real_Input <http://processors.wiki.ti.com/index.php/Efficient_FFT_Computation_of_Real_Input>`__

@@ -280,7 +280,7 @@ Examples
 ^^^^^^^^  
 
 Examples are CCS projects. Generated with pdkProjectCreate scripts.
-Please refer  `Processor SDK RTOS Getting Started Guide <Overview.html#pdk-example-and-test-project-creation>`__  
+Please refer  `Processor SDK RTOS Getting Started Guide <index_overview.html#pdk-example-and-test-project-creation>`__  
 for how to create and build examples projects
 
 +-----------------------+-----------------------+-----------------------+
@@ -331,7 +331,7 @@ USB test applications are built using makefile. Some of the test application are
 RTOS/BIOS apps, other are bare metal apps. They are replica of the USB examples but built by 
 makefile instead of CCS projects.
 
-Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  
+Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  
 for details  of how to setup the build environment. Once you have setup the build environment, 
 issue the following commands:  
 	-  cd <pdk>/packages/
@@ -373,7 +373,7 @@ issue the following commands:
 Both examples and test applications can be loaded and run on their intended EVM via
   	-  CCS JTAG connector, or
   	-  Via SBL: the "app" file under CCS project's debug directory (<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>) is SBL loadable file of the built project. 
-   	--  Project Memory layout must be considered and following SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <Foundational_Components.html#boot>`__   for more detail 
+   	--  Project Memory layout must be considered and following SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <index_Foundational_Components.html#boot>`__   for more detail 
 
 
 
@@ -413,7 +413,7 @@ platform supported.
 -  Build the imported project. the OUT file will be at
    pdk_<platform>_<version>/packages/MyExampleProjects/USB_DevAudio_<board>_<core>ExampleProject/Debug.
 -  Make the HW connections as shown in `Hardware
-   Setup <Device_Drivers.html#hardware-setup>`__ section
+   Setup <index_device_drv.html#hardware-setup>`__ section
 -  Launch the target configuration for the EVM from CCS 7.x.
 -  Connect to ARM or DSP core as applicable.
 -  Load the

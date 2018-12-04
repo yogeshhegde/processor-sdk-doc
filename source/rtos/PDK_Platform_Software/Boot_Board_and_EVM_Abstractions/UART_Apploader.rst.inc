@@ -169,7 +169,7 @@ AppLoader Usage
         Test PASSED!
 
 .. note::	For SPI Boot Mode:
-			1. Program Apploader to SPI flash using `Uniflash <Board_EVM_Abstration.html#programming-binaries-to-flash-device>`__ and boot the device from SPI flash.
+			1. Program Apploader to SPI flash using `Uniflash <index_board.html#programming-binaries-to-flash-device>`__ and boot the device from SPI flash.
 			2. Set the sysboot pins to SPI Boot mode
 
 .. note::	For MMCSD Boot Mode:

@@ -28,7 +28,7 @@ Requirements
 .. note::
    Your board should be set to NO-BOOT mode. Please refer to the boot mode
    dip switch settings for different boot modes on your EVM Hardware User
-   Guide. See `this page <Release_Specific.html#supported-platforms-and-versions>`__ for
+   Guide. See `this page <index_release_specific.html#supported-platforms-and-versions>`__ for
    a link to all supported EVM information.
 
 Directory Structure

@@ -55,7 +55,7 @@ Driver Configuration
   APIs. By default Board_Init() API supports all initialization sequence
   for TI supported EVMs. In addition it initializes UART instance for
   Console/STDIO.Refer `Processor SDK RTOS Board
-  Support <Board_EVM_Abstration.html#board-support>`__ for
+  Support <index_board.html#board-support>`__ for
   additional details.Once board specific configuration is complete 
   driver APIS can be invoked.
 
@@ -139,7 +139,7 @@ example inside package
 TI PRU-ICSS cores (Programmable Real-Time Unit Industrial Communication
 Subsystem) is firmware programmable and can take on various
 personalities. Examples include an SORTE, ethernet Switch, Industrial
-protocol switch. Please refer to `ICSS-EMAC Firmwares <PRU_ICSS.html#pru-icss-firmware>`__ for
+protocol switch. Please refer to `ICSS-EMAC Firmwares <index_pru_icss_fw.html#pru-icss-firmware>`__ for
 further explanation.
 
 | 

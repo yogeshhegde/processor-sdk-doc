@@ -4,7 +4,7 @@ Introduction
 ^^^^^^^^^^^^^^
 
 This is a companion guide to `ICSS EMAC Developer
-Guide <Device_Drivers.html#development-with-icss-emac-driver>`__,
+Guide <index_device_drv.html#development-with-icss-emac-driver>`__,
 if you have not read the developer guide it's highly suggested that you
 do so.
 
@@ -111,7 +111,7 @@ Link Status is available as an array **linkStatus** in
 **ICSSEMAC_Object**. The status is updated in the Link ISR
 **ICSS_EmacLinkISR**. It's possible that the link interrupt is
 configured incorrectly or MDIO is not triggering the interrupts. (see
-`here <Device_Drivers.html#link-interrupt>`__
+`here <index_device_drv.html#link-interrupt>`__
 on how to configure Link Interrupt) In which case one needs to put a
 breakpoint in the ISR **ICSS_EmacLinkISR** and disconnect or connect the
 cable on any one port. The breakpoint should get hit, if it does not
@@ -135,7 +135,7 @@ Checking if Receive is working
 """""""""""""""""""""""""""""""
 
 The receive path has been explained previously in the developer guide.
-See `here <Device_Drivers.html#rx-data-path>`__.
+See `here <index_device_drv.html#rx-data-path>`__.
 Rx issues can manifest themselves in several ways, the following table
 covers most of them (not exhaustively!)
 
@@ -179,11 +179,11 @@ perform these steps in order.
 
 #. **Check if Rx is disabled** : It's possible to disable Rx in firmware
    through IOCTL. This is controlled through a location in ICSS memory.
-   See `memory map <Device_Drivers.html#memory-map>`__.
+   See `memory map <index_device_drv.html#memory-map>`__.
    Check this as a very first step. It's not a common error but it's
    possible that user is invoking the IOCTL by mistake.
-#. **Check if firmware is receiving packets** : See statistics `this <Device_Drivers.html#statistics>`__
-   and `this <Device_Drivers.html#check-statistics>`__
+#. **Check if firmware is receiving packets** : See statistics `this <index_device_drv.html#statistics>`__
+   and `this <index_device_drv.html#check-statistics>`__
    and find out if PRU is receiving the frames. Failure to receive
    frames in firmware can indicate other issues like corrupted frames,
    link negotiation failure or PHY related issues.
@@ -191,14 +191,14 @@ perform these steps in order.
    reasons why Host would not receive packets. Put a break point in
    **ICSS_EmacRxInterruptHandler** and send a single packet using any PC
    based tool. The ISR should get hit. Refer to this
-   `section <Device_Drivers.html#rx-interrupt>`__
+   `section <index_device_drv.html#rx-interrupt>`__
    on how to configure the interrupt properly if interrupt is not being
    asserted.
 #. **Check if Packets are being copied in driver** : If the interrupt is
    asserted but packets do not reach the application, check Host
    statistics to verify if packets are being received correctly in the
    driver. Refer to the
-   `section <Device_Drivers.html#rx-data-path>`__\ on
+   `section <index_device_drv.html#rx-data-path>`__\ on
    Rx data path and put a breakpoint in **RxTask**. Step through to
    verify that the priority is set correctly and packets are being
    copied properly. If interrupt is being asserted correctly but packet
@@ -210,7 +210,7 @@ perform these steps in order.
    with TCP/IP stack. Refer to `NDK User's
    guide <http://www.ti.com/lit/ug/spru523i/spru523i.pdf>`__ on correct
    usage of sockets. The example socket application provided in the
-   developer guide `here <Device_Drivers.html#usage>`__
+   developer guide `here <index_device_drv.html#usage>`__
    is known to work though. In addition to this check if NDK buffers
    have been allocated correctly. If you are using your own TCP/IP stack
    refer to the Porting Guide and double check.
@@ -219,14 +219,14 @@ perform these steps in order.
    set incorrectly packets may not reach Host at all. Check if storm
    prevention module is enabled by checking the variable
    **suppressionEnabled** for both ports. Refer to
-   `this <Device_Drivers.html#id59>`__
+   `this <index_device_drv.html#id59>`__
    for more details. Additionally one should check the statistics to see
    if the PRU statistics **stormPrevCounter** is getting incremented.
 #. **Check Interface MAC** : The firmware compares the interface MAC
    written to the PRU memory by the Host against the incoming packets
    destination MAC to verify if the packet must be forwarded to Host or
    cut-through. Please refer to the `memory
-   map <Device_Drivers.html#memory-map>`__
+   map <index_device_drv.html#memory-map>`__
    and check if the MAC value is what you are expecting it to be.
 #. **Queue Overflow** : If too many packets are received on a single
    queue without Host emptying them out then overflow may occur, packets
@@ -240,7 +240,7 @@ perform these steps in order.
    rate at which firmware is putting data in the queue. In such a
    scenario first turn on Interrupt pacing to find if it solves the
    issue (interrupt pacing has it's own limitations, refer to
-   `this <Device_Drivers.html#interrupt-pacing>`__
+   `this <index_device_drv.html#interrupt-pacing>`__
    to know more about it), if issue is still not resolved then try to
    find the throughput by comparing the number of packets received on
    the Host vs that in the firmware.
@@ -252,7 +252,7 @@ tested during release to cope with 100% throughput at line rate (960 IPG
 and 64 byte size packet) so any drop in throughput can only be caused by
 additional loading on the CPU. Use UIA which comes SYSBIOS for this
 purpose. Usage given
-`here <Device_Drivers.html#checking-the-system-performance-using-uia>`__
+`here <index_device_drv.html#checking-the-system-performance-using-uia>`__
 
 Checking if Transmit is working
 """"""""""""""""""""""""""""""""
@@ -260,7 +260,7 @@ Checking if Transmit is working
 Because of it's nature Tx is much more reliable and there are far fewer
 issues related to it when compared to Rx. Transmit issues can be
 classified into two types. See `Tx data
-path <Device_Drivers.html#tx-data-path>`__ for
+path <index_device_drv.html#tx-data-path>`__ for
 more information.
 
 #. **Cut-through issues** : Packets received on one port and meant to go
@@ -283,7 +283,7 @@ also be used as a checklist for debugging.
    Please check the link status to make sure that this is not the case.
    The Tx API checks for link and will not transmit if the link is down
    so this issue is more relevant to cut-through/store-forward. More on
-   Link status `here <Device_Drivers.html#check-link-status>`__.
+   Link status `here <index_device_drv.html#check-link-status>`__.
 #. **Incorrect speed** : The link ISR also checks for speed and
    duplexity values. The values are written to in the same ISR
    **ICSS_EmacUpdatePhyStatus**, if the speed is read incorrectly then
@@ -292,7 +292,7 @@ also be used as a checklist for debugging.
    packets as successful transmit but Tx might not actually happen. The
    quickest way to debug this issue is to read the ICSS memory directly
    in CCS memory window. Interface speed is written directly in memory
-   at the offset mentioned in `memory map <Device_Drivers.html#memory-map>`__, please
+   at the offset mentioned in `memory map <index_device_drv.html#memory-map>`__, please
    verify the value (as mentioned in memory map) and compare with the
    actual interface speed.
 #. **Incorrect pinmux for Collision/Carrier Sense** : This is applicable
@@ -305,7 +305,7 @@ also be used as a checklist for debugging.
    recommended that half duplex functionality be disabled. Half Duplex
    functionality is controlled by the variable **halfDuplexEnable**
 #. **Queue contention issues** : Looking at the QoS
-   `scheme <Device_Drivers.html#quality-of-service-and-queues>`__
+   `scheme <index_device_drv.html#quality-of-service-and-queues>`__
    it's possible that there is a contention for the transmit queue when
    both Host and the opposite port are trying to transmit on the same
    port. In such cases if there are too many packets vying for the
@@ -323,7 +323,7 @@ Check Statistics
 Statistics form the core of debugging so this section is very important.
 A brief introduction to statistics has been provided previously in the
 statistics
-`section <Device_Drivers.html#statistics>`__ of
+`section <index_device_drv.html#statistics>`__ of
 developer guide. This part explains how to use it for the purpose of
 debugging.
 
@@ -344,14 +344,14 @@ Statistics are accessible in three ways
 
 -  **IOCTL calls** : IOCTL calls (including an example) have been
    previously explained
-   `here <Device_Drivers.html#ioctl>`__ in
+   `here <index_device_drv.html#ioctl>`__ in
    developer guide.
 -  **Reading directly in memory window** : (This applies only to PRU
    based statistics). Use the statistics `memory
-   map <Device_Drivers.html#id63>`__ to find
+   map <index_device_drv.html#id63>`__ to find
    out the offset and look at the memory directly. Information on how to
    access the ICSS memory is provided
-   `here <Device_Drivers.html#accessing-memory>`__.
+   `here <index_device_drv.html#accessing-memory>`__.
 -  **In CCS watch window** : When using CCS the statistics can be read
    directly through the ICSS EMAC handle. Host statistics are available
    through **hostStat** while PRU statistics are available through

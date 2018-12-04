@@ -18,7 +18,7 @@ The PRUSS (Programmable Real-Time Unit Subsystem) is firmware
 programmable and can take on various personalities. Examples include an
 ethernet MAC, ethernet Switch, Industrial protocol switch. For a good
 example, please refer to `Simple Open Real Time Ethernet Protocol (SORTE)
-<PRU_ICSS.html#pru-icss-sorte>`__
+<index_pru_icss_fw.html#pru-icss-sorte>`__
 
 .. rubric:: Driver Features
    :name: driver-features

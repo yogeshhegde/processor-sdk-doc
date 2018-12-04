@@ -103,7 +103,7 @@ Code
     
             /** testCaseId **/
             0U,
-- Refer the section `Boot-Modes <Foundational_Components.html#boot-modes>`_ for details on how to use a bootmedia.
+- Refer the section `Boot-Modes <index_Foundational_Components.html#boot-modes>`_ for details on how to use a bootmedia.
 
 
 Load using CCS

@@ -96,7 +96,7 @@ AM437x EVM; configuration information for other supported EVMs are also
 provided as needed.
 
 For EVM specific instructions, refer to the **Hardware User's Guide**
-for your `EVM <Release_Specific.html#supported-platforms-and-versions>`__
+for your `EVM <index_release_specific.html#supported-platforms-and-versions>`__
 
 .. note::
    **Note for K2G devices:** If using CCS v6.1.2 and Keystone2 device
@@ -349,7 +349,7 @@ If you face any problems, first check these basic items:
    list the TI XDS as a USB device. If this does not work, try a
    different USB port.
 -  **Latest emulation package.** Ensure that you have the latest
-   emulation files as specified in the `Getting Started Guide <Overview.html#emulator-support>`__.
+   emulation files as specified in the `Getting Started Guide <index_overview.html#emulator-support>`__.
 
 If this does not resolve your problem, see these additional resources:
 

@@ -58,7 +58,7 @@ Pre-requisites to Building
 #. Set your environment using pdksetupenv.sh. Building the Firmware
    binaries and ARM application uses the same environment variables as
    the pruss driver library build. Refer to the `Processor SDK RTOS
-   Building <Overview.html#building-the-sdk>`__ page for
+   Building <index_overview.html#building-the-sdk>`__ page for
    information on setting up your build environment.
 
 Compiling the PRUSS SORTE Firmware

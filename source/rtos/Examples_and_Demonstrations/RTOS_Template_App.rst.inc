@@ -166,7 +166,7 @@ products.
    :scale: 70 %
 
 For more info on setting up CCS. Check out 
-`Setup CCS for EVM and Processor-SDK RTOS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
+`Setup CCS for EVM and Processor-SDK RTOS <index_how_to_guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
 in the How To Guides.
 
 Task 2 - Importing and Building the RTOS Template Application
@@ -698,12 +698,12 @@ where to find various documentation in the SDK and Software Developer Guide.
 
 Next, you can check out our various video training series in the `TI training
 portal`__, check out our
-`Examples and Demonstrations <Examples_and_Demonstrations.html>`__, and get
+`Examples and Demonstrations <index_examples_demos.html>`__, and get
 started writing your own application!
 
 __ https://training.ti.com/
 
 If you have any questions along the way please remember to read the
-`FAQ <FAQ.html>`__ or reach out to our engineers on the `E2E forums`__.
+`FAQ <index_faq.html>`__ or reach out to our engineers on the `E2E forums`__.
 
 __ http://e2e.ti.com/

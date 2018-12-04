@@ -1543,7 +1543,7 @@ which will be described in following sections
 
 Developers are required to run pdkProjectCreate script to generate this
 example as described in the `Processor SDK RTOS wiki
-article <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__.
+article <index_how_to_guides.html#rebuild-drivers-from-pdk-directory>`__.
 
 For the UART M4 example run the script with the following arguments:
 

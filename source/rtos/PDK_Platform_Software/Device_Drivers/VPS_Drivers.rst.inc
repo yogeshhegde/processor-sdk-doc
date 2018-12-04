@@ -314,7 +314,7 @@ FAQ
    makefile?
    :name: how-to-reduce-the-vps-test-examples-build-time-using-makefile
 
-Please refer to `Rebuilding The PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__
+Please refer to `Rebuilding The PDK <index_how_to_guides.html#rebuild-drivers-from-pdk-directory>`__
 on how to invoke the build for specific core and specific platform, to save the
 build time.
 
@@ -329,7 +329,7 @@ a template:
 
 -  Copy the .txt with desired processor then rename it to a new test
    project name accord to CCS project create convention, see
-   `PDK Example and Test Project Creation <How_to_Guides.html#pdk-example-and-test-project-creation>`__
+   `PDK Example and Test Project Creation <index_how_to_guides.html#pdk-example-and-test-project-creation>`__
 -  Update the linked source files and include paths
 -  The common configuration file and build options can be kept
 -  Update pre-defined symbol -D<soc_name> to match your SOC, like

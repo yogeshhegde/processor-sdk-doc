@@ -63,7 +63,7 @@ Released October 2018
 - New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
 - AM65x
 	- Features Supported
-		- Boot :SBL (Boot Loader Support) for MMCSD and OSPI interface. Please refer to `SBL AM65x: <Foundational_Components.html#am65x>`__
+		- Boot :SBL (Boot Loader Support) for MMCSD and OSPI interface. Please refer to `SBL AM65x: <index_Foundational_Components.html#am65x>`__
 		- Connectivity: UART, I2C,GPIO, McSPI,OSPI,MMC,CPSW,ICSS-G Dual EMAC/PRU Ethernet,USB host and device, MMCSD,eMMC
 		- Audio: McASP
 		- DMA Driver: UDMA LLD
@@ -74,11 +74,11 @@ Released October 2018
 		- Additional source release for PRU-ICSS-G Dual EMAC firmware
 	- Features not (yet) supported: USB 3.0,OSPI 133Mhz/166Mhz, MCU/R5 Split Mode, MPU TI-RTOS SMP Support,CTOOLSLIB
 -  PRU-ICSS Dual EMAC Firmware Feature extension:
-    - `Multicast filtering <PRU_ICSS.html>`__
-    - `Timesync PTP <Foundational_Components.html#timesync-ptp>`__
--  `PRU-ICSS I2C Firmware <PRU_ICSS.html#pru-icss-i2c>`__
-	- Additional support for `PRU-ICSS-0 instance of AM437x SOC <PRU_ICSS.html#pru-icss-i2c>`__
--  AM335x Connectivity extension to support `Simplelink 3120 NWP WiFi <Examples_and_Demonstrations.html#simplelink-wifi-demo>`__
+    - `Multicast filtering <index_pru_icss_fw.html>`__
+    - `Timesync PTP <index_Foundational_Components.html#timesync-ptp>`__
+-  `PRU-ICSS I2C Firmware <index_pru_icss_fw.html#pru-icss-i2c>`__
+	- Additional support for `PRU-ICSS-0 instance of AM437x SOC <index_pru_icss_fw.html#pru-icss-i2c>`__
+-  AM335x Connectivity extension to support `Simplelink 3120 NWP WiFi <index_examples_demos.html#simplelink-wifi-demo>`__
 
 .. rubric::  Component Version
    :name: component-version
@@ -169,7 +169,7 @@ environment (IDE) for all devices and EVMs:
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
-If you need to install CCS, see the `CCS installation section <Overview.html#code-composer-studio>`__
+If you need to install CCS, see the `CCS installation section <index_overview.html#code-composer-studio>`__
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
 
@@ -420,14 +420,14 @@ The following table lists all supported devices for a given installer.
 Evaluation Modules 
 --------------------
 
-See `Processor SDK Supported Platforms <Release_Specific.html#supported-platforms-and-versions>`__
+See `Processor SDK Supported Platforms <index_release_specific.html#supported-platforms-and-versions>`__
 page for a list of supported EVMs per platform and links to more
 information.
 
 Demonstrations 
 ----------------
 
-See `Examples and Demonstrations <Examples_and_Demonstrations.html>`__
+See `Examples and Demonstrations <index_examples_demos.html>`__
 page for a list of demonstrations per platform and EVM.
 
 Drivers 
@@ -766,11 +766,11 @@ Archived
 ==========
 
 -  `Processor-SDK RTOS
-   5.0.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_15/Release_Specific.html#processor-sdk-rtos-release-notes>`__
+   5.0.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_15/index_release_specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
-   5.0.0 AM65x EA Release <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_09/Release_Specific.html#processor-sdk-rtos-release-notes>`__
+   5.0.0 AM65x EA Release <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_09/index_release_specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
-   4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
+   4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/index_release_specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
    4.2.0 <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&oldid=232579>`__
 -  `Processor-SDK RTOS

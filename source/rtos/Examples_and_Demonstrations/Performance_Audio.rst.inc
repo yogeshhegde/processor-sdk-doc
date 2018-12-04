@@ -194,7 +194,7 @@ Problems may be encountered when setting up or running the demo. Here are some c
 1.  Sound doesn't come out of the speakers:
 
    -  Make sure the audio daughter card (and HDMI repeater card if used) is connected well. The `PDK addon audio loopback test 
-      <Examples_and_Demonstrations.html#k2g-audio-dc-addon>`__ can be run to verify the setup of EVM and audio daughter card. 
+      <index_examples_demos.html#k2g-audio-dc-addon>`__ can be run to verify the setup of EVM and audio daughter card. 
    -  In CCS Expressions window, enter variable "asipLoopCount1" and check if it is incrementing. If not, terminate the debug session, power cycle 
       the EVM, and restart. 
 

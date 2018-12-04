@@ -367,11 +367,11 @@ This can be verified on the serial console utility.
 Programming FlashWriter on AM65xx Platform
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - Follow the instructions mentioned in `Basic CCS Setup <http://software-dl.ti.com/processor-sdk-rtos/esd
-  /docs/latest/rtos/How_to_Guides.html#ccs-host-setup>`__ to connect to M3_0 and A53_0_0 and configure DDR.
+  /docs/latest/rtos/index_how_to_guides.html#ccs-host-setup>`__ to connect to M3_0 and A53_0_0 and configure DDR.
 - Once DDR is configured, load the Flash Writer program (<uniflash_install_path>/processors/FlashWriter/AM65XX/
   uart_am65xx_evm_flash_programmer.out) on to the A53_0_0 core.
 - Run the FlashWriter program. The Flash Writer starts sending character 'C'(xmodem protocol) on the `SoC Main Uart0
-  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
+  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_how_to_guides.html#uart-connection>`__
 - Refer Section :ref:`erasing_target` for erasing the flash device on the target platform.
 - To program SBL and app image on the AM65xx EVM
     - Program the SBL image (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0.
@@ -400,7 +400,7 @@ Programming FlashWriter on AM65xx Platform
 .. note:: When using the dslite scripts for the AM65xx EVMs:
 
             - Specify the <device_type> as 3 (for OSPI flash)
-            - <COM_Port> must refer to the `SoC Main Uart0  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
+            - <COM_Port> must refer to the `SoC Main Uart0  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_how_to_guides.html#uart-connection>`__
 
 .. warning::   If you open the SoC Main Uart0 on a terminal application like minicom or hyperterm to see if the
                'CCCC' is being output, make sure to close the application before executing dslite. Disconnect

@@ -16,7 +16,7 @@ Bootloader Execution Sequence
 
    -  Board Initialization is done by a call to **Board_init()** API.
       For additional details refer to `Processor SDK Board
-      Support <Board_EVM_Abstration.html#board-support>`__.
+      Support <index_board.html#board-support>`__.
    -  SBL setup includes configuring Pinmux, enable peripheral clocks,
       set up PLLs, and configure EMIF for DDR.
 
@@ -117,8 +117,8 @@ Preparing the SD card
 '''''''''''''''''''''''
 
 #. To boot the target, the SD card needs to be bootable. Follow the
-   steps at `Creating bootable SD card in windows <Overview.html#windows-sd-card-creation-guide>`__
-   or `Creating bootable SD card in Linux <Overview.html#linux-sd-card-creation-guide>`__.
+   steps at `Creating bootable SD card in windows <index_overview.html#windows-sd-card-creation-guide>`__
+   or `Creating bootable SD card in Linux <index_overview.html#linux-sd-card-creation-guide>`__.
 #. Copy "MLO" and "app" to your SD card.
 
    -  MLO is the SBL formatted by the aforementioned tools. A pre-built

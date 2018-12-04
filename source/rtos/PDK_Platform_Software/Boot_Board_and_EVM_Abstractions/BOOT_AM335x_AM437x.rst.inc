@@ -75,7 +75,7 @@ Boot Sequence
 
    -  RBL gets image size and load address by checking TI Image Header
       appended on bootloader binary(.bin). Check `binary
-      formats <Foundational_Components.html#tools-and-binary-formats>`__.
+      formats <index_Foundational_Components.html#tools-and-binary-formats>`__.
    -  Loads the binary to internal OCMC memory at the Load address
       fetched from TI Image Header
    -  Passes control to Secondary Bootloader(SBL)
@@ -231,7 +231,7 @@ Building the Bootloader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **Pre-requisite:** Setup SDK build environment as described in article
- `Setup_Environment <Overview.html#setup-environment>`__
+ `Setup_Environment <index_overview.html#setup-environment>`__
 
 .. rubric:: Normal Operation of Bootloader:
    :name: normal-operation-of-bootloader
@@ -325,8 +325,8 @@ Preparing SD card 
 '''''''''''''''''''
 
 #. To boot target the SD card should be bootable. Follow the steps at
-   `Creating bootable SD card in windows <Overview.html#windows-sd-card-creation-guide>`__
-   or `Creating bootable SD card in Linux <Overview.html#linux-sd-card-creation-guide>`__.
+   `Creating bootable SD card in windows <index_overview.html#windows-sd-card-creation-guide>`__
+   or `Creating bootable SD card in Linux <index_overview.html#linux-sd-card-creation-guide>`__.
 #. Delete the "*MLO*" and "*app*" in the bootable SD card which are
    created in the process of making the SD bootable.
 #. Bootloader images with ti header (<mmcsd_bootloader>_ti.bin)should be
@@ -694,17 +694,17 @@ Test Application Image Creation
 Follow below steps to generate the bootable application image.
 
 #. Generate .out files using steps for `Rebuilding
-   PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__. Locate .out file in directory
+   PDK <index_how_to_guides.html#rebuild-drivers-from-pdk-directory>`__. Locate .out file in directory
    *<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>*
 #. Convert files to support MMCSD boot using steps as per `Binary format
-   conversion procedure <Foundational_Components.html#binary-format-conversion-procedure>`__.
+   conversion procedure <index_Foundational_Components.html#binary-format-conversion-procedure>`__.
 #. Rename generated <Application>_ti.bin to "app".
 
 Loading Test application
 """""""""""""""""""""""""
 
 Follow procedure to use "app" file as per section `Booting Via SD
-Card <Foundational_Components.html#booting-via-sd-card>`__.
+Card <index_Foundational_Components.html#booting-via-sd-card>`__.
 
 Usage Notes
 ^^^^^^^^^^^^^
@@ -828,7 +828,7 @@ Debugging application boot
 
 Steps to debug application boot using Processor SDK RTOS bootloader are
 discussed in the article **`Common steps to debug application
-boot <Foundational_Components.html#common-steps-to-debug-application-boot>`__**
+boot <index_Foundational_Components.html#common-steps-to-debug-application-boot>`__**
 
 .. raw:: html
 

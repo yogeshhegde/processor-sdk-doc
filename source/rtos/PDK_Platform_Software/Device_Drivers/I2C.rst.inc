@@ -44,7 +44,7 @@ In addition driver supports following modes of operation:
 TI PRU-ICSS cores (Programmable Real-Time Unit Industrial Communication
 Subsystem) is firmware programmable and can take on various
 personalities. Processor SDK package includes I2C Firmware support.
-Refer `I2C FW <PRU_ICSS.html#pru-icss-i2c>`__ for
+Refer `I2C FW <index_pru_icss_fw.html#pru-icss-i2c>`__ for
 additional details.
 
 | 
@@ -62,7 +62,7 @@ All the board specific configurations eg:enabling and pin-mux of I2C
 pins should be performed before calling any driver APIs.By default
 Board_Init() API supports all initialization sequence for TI supported
 EVMs.Refer `Processor SDK RTOS Board
-Support <Board_EVM_Abstration.html#board-support>`__ for additional
+Support <index_board.html#board-support>`__ for additional
 details.
 
 Once the board specific configuration is complete driver API I2C_init()
@@ -241,7 +241,7 @@ Refer Release Note for I2C support across different EVMs
 Building I2C examples
 ----------------------
 
--  Makefile based examples and dependent libraries can be built from the top level or module level I2C makefile, refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+-  Makefile based examples and dependent libraries can be built from the top level or module level I2C makefile, refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
 ::
 
    To build and clean libs/apps from top-level makefile:

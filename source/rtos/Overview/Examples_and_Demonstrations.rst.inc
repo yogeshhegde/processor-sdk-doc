@@ -119,7 +119,7 @@ X
 
 X
 
-`Audio Benchmark Starterkit <Examples_and_Demonstrations.html#audio-benchmark-starterkit>`__
+`Audio Benchmark Starterkit <index_examples_demos.html#audio-benchmark-starterkit>`__
 
 The Audio Benchmark starter-kit demonstration provides quick and easy
 way to run core-benchmarks on the DSP for algorithms that are commonly
@@ -135,7 +135,7 @@ X
 
 X
 
-`Audio Pre-Processing Demo <Examples_and_Demonstrations.html#audio-pre-processing-demo>`__
+`Audio Pre-Processing Demo <index_examples_demos.html#audio-pre-processing-demo>`__
 
 The Audio Pre-Processing demonstration provides an example for speech
 recognition application development by illustrating the integration of
@@ -148,7 +148,7 @@ X
 
 X
 
-`Big Data IPC Example <Examples_and_Demonstrations.html#big-data-ipc-example>`__
+`Big Data IPC Example <index_examples_demos.html#big-data-ipc-example>`__
 
 The big data ipc examples are created mainly to show exchange of big
 data buffers between cores in a multi core system.
@@ -165,7 +165,7 @@ X
 
 X
 
-`TI-RTOS Kernel Example <Examples_and_Demonstrations.html#ti-rtos-kernel-example>`__
+`TI-RTOS Kernel Example <index_examples_demos.html#ti-rtos-kernel-example>`__
 
 The RTOS examples gets user started with development of code using the
 TI-RTOS real-time operating system. These are simple examples that does
@@ -205,7 +205,7 @@ X
 
 X
 
-`No OS (Bare Metal) Example <Examples_and_Demonstrations.html#no-os-bare-metal-example>`__
+`No OS (Bare Metal) Example <index_examples_demos.html#no-os-bare-metal-example>`__
 
 The bare-metal examples gets user started with development of code
 without an operating system. These are simple examples that does not get
@@ -247,7 +247,7 @@ X
 
 X
 
-`Gravity Simulator Demo <Examples_and_Demonstrations.html#gravity-simulator-demo>`__
+`Gravity Simulator Demo <index_examples_demos.html#gravity-simulator-demo>`__
 
 The RTOS Gravity Simulator Demo demonstrates the usage of an open
 sourced library combined with RTOS drivers to create a vibrant display.
@@ -256,7 +256,7 @@ both variable and updated continuously.
 
 X
 
-`RTOS Template Application <Examples_and_Demonstrations.html#rtos-template-application>`__
+`RTOS Template Application <index_examples_demos.html#rtos-template-application>`__
 
 The RTOS template application is intended for customers to use as a
 starting point during software development using Processor SDK RTOS

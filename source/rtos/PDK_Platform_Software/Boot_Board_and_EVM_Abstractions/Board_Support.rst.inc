@@ -8,7 +8,7 @@ functions that are board-specific. This component includes libraries
 for boards supported in the Processor SDK release. Refer to the
 package content for the list of supported boards.Board component also
 includes diagnostic software. Refer to `Processor SDK RTOS
-DIAG <Board_EVM_Abstration.html#diagnostics>`__ for additional details on
+DIAG <index_board.html#diagnostics>`__ for additional details on
 available diagnostic examples.
 
 Board APIs
@@ -206,7 +206,7 @@ Custom Board Library
 ^^^^^^^^^^^^^^^^^^^^^
 
 #. Set up your build environment according to the `Building the RTOS
-   SDK <Overview.html#building-the-sdk>`__ page.
+   SDK <index_overview.html#building-the-sdk>`__ page.
 #. Create your own folder under the src directory. The name of this
    folder will be your board name (will be referred to as $BOARD). Put
    your source files in this src/$BOARD folder. Updated sources can also
@@ -295,7 +295,7 @@ Custom Board Library
 
 Adding custom board to the PDK directory structure and build setup is
 described in the article
-`Adding Custom Board Library Target to Processor SDK RTOS makefiles <How_to_Guides.html#adding-custom-board-library-target-to-processor-sdk-rtos-makefiles>`__
+`Adding Custom Board Library Target to Processor SDK RTOS makefiles <index_how_to_guides.html#adding-custom-board-library-target-to-processor-sdk-rtos-makefiles>`__
 
 .. note::
    TI evaluation platforms for Sitara Processors usually have board

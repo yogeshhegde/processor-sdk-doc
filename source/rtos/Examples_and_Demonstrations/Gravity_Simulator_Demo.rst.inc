@@ -43,7 +43,7 @@ Building the Demo
 
 The demo is available pre-built for Processor SDK RTOS version 4.0.0.4
 or higher. You must first set up your development environment. Refer to
-the `Processor SDK RTOS Building <Overview.html#building-the-sdk>`__ page for
+the `Processor SDK RTOS Building <index_overview.html#building-the-sdk>`__ page for
 information on setting up your build environment.
 
 The following are steps to clean the demo:
@@ -80,7 +80,7 @@ To load and run the demo:
    SDK RTOS Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`, setup
    EVM hardware)
 #. Open CCS and launch target config file for idkAM572x (Refer to
-   `Processor SDK RTOS Setup CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__ for setting up CCS)
+   `Processor SDK RTOS Setup CCS <index_how_to_guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__ for setting up CCS)
 #. Connect to CortexA15_0
 #. Load and launch the demo executable:
 

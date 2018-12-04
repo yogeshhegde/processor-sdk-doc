@@ -226,7 +226,7 @@ Running ICSS-EMAC FIRMWARES Example
 
 Please go through the following page for example demonstrating the use
 of the firmware via icss-emac driver.
-`[1] <Device_Drivers.html#icss-emac>`__
+`[1] <index_device_drv.html#icss-emac>`__
 
 | 
 

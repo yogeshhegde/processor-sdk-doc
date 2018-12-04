@@ -64,7 +64,7 @@ application image from flash to the DDR memory and gives control to the
 application.
 
 .. note::
-    For information on boot mode setting, see the applicable `EVM Hardware User Guide <Release_Specific.html#supported-platforms-and-versions>`__
+    For information on boot mode setting, see the applicable `EVM Hardware User Guide <index_release_specific.html#supported-platforms-and-versions>`__
 
 
 Platforms

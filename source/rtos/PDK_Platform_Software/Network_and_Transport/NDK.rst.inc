@@ -164,7 +164,7 @@ Building the NDK examples
   modification to these scripts, if any, is to update the
   CCS_INSTALL_PATH variable to point to CCS location if its not in the
   c:\ti\ccsv6 directory . Please refer to `Rebuilding
-  PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__ for details of example project
+  PDK <index_how_to_guides.html#rebuild-drivers-from-pdk-directory>`__ for details of example project
   creation and how to run the example projects using CCS.
 
 NDK Example Description
@@ -273,7 +273,7 @@ CCLink Example
 ---------------
 
 Refer
-`Processor_SDK_RTOS_CCLINK <Foundational_Components.html#cclink>`__ for
+`Processor_SDK_RTOS_CCLINK <index_Foundational_Components.html#cclink>`__ for
 details on steps for running cclink master and slave examples on NDK.
 
 FAQ

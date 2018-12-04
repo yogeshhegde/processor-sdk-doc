@@ -263,13 +263,13 @@ Building CCS projects based examples
 ----------------------------------------------
 
 CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
-`PDK Example and Test Project Creation <Overview.html#pdk-example-and-test-project-creation>`__
+`PDK Example and Test Project Creation <index_overview.html#pdk-example-and-test-project-creation>`__
 
 Building MCASP Test applications via makefiles
 ----------------------------------------------
 
 -  MCASP Test applications and dependent libraries are built from the top level mcasp makefile
--  Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details
+-  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
    of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
 	-  cd <pdk>/packages/
 	-  To build: make mcasp 

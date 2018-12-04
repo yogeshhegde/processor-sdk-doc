@@ -78,9 +78,9 @@ Examples
 Building SA Examples/Unit Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Setup the build environment `SetupBuildEnvironment <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#setup-environment>`__
-- Follow the steps `SDK example and test CCS Project Creation <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#pdk-example-and-test-project-creation>`__  for creating the CCS based example and test projects creation
-- Create make based test application executables following the link `Building the component and make based test application <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#rebuilding-components>`__. Once the build environment is set, issue the following commands:  
+- Setup the build environment `SetupBuildEnvironment <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#setup-environment>`__
+- Follow the steps `SDK example and test CCS Project Creation <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#pdk-example-and-test-project-creation>`__  for creating the CCS based example and test projects creation
+- Create make based test application executables following the link `Building the component and make based test application <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#rebuilding-components>`__. Once the build environment is set, issue the following commands:  
     -  cd <pdk>/packages/
     -  To build: make sa 
     -  To clean: make sa_clean 

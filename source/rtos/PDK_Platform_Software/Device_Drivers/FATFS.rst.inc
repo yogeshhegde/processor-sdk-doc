@@ -25,7 +25,7 @@ All board specific configurations eg:enabling clock and pin-mux for UART
 pins are required before calling any driver APIs.By default Board_Init()
 API supports all initialization sequence for TI supported EVMs. In
 addition it initializes UART instance for Console/STDIO.Refer `Processor
-SDK RTOS Board Support <Board_EVM_Abstration.html#board-support>`__
+SDK RTOS Board Support <index_board.html#board-support>`__
 for additional details.Once board specific configuration is complete 
 FATFS_init() API can be called to initialize FATFS for the driver.
 
@@ -110,14 +110,14 @@ Building CCS projects based examples
 ------------------------------------
 
 CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/sh as explained in 
-`PDK Example and Test Project Creation <Overview.html#pdk-example-and-test-project-creation>`__
+`PDK Example and Test Project Creation <index_overview.html#pdk-example-and-test-project-creation>`__
 
 
 Building FATFS Test applications via makefiles
 ----------------------------------------------
 
 -  FATFSD Test applications and dependent libraries are built from the top level fatfs makefile
--  Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details
+-  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
    of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
 	-  cd <pdk>/packages/
 	-  To build: make fatfs 

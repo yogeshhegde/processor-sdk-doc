@@ -91,7 +91,7 @@ below for information to configure CCS and EVM for development. This is
 a top-level starting point, but you may need to go to your specific EVM
 hardware setup guide for some steps (e.g., connecting external JTAG). A
 cross reference to all hardware users guide can be found on the `Supported
-Platforms <Release_Specific.html#supported-platforms-and-versions>`__
+Platforms <index_release_specific.html#supported-platforms-and-versions>`__
 page.
 
 “Hello World” example with no operating system
@@ -103,7 +103,7 @@ template allows standard output to be displayed on the host PC using the
 debugger. This is a good way to start learning basic configurations such
 as the memory map of your device. Specific instructions for each
 platform bundled in the Processor SDK RTOS can be found at
-`Processor SDK Bare-Metal Examples <Examples_and_Demonstrations.html#no-os-bare-metal-example>`__
+`Processor SDK Bare-Metal Examples <index_examples_demos.html#no-os-bare-metal-example>`__
 
 Simple examples with an operating system
 ------------------------------------------
@@ -114,7 +114,7 @@ features of the kernel such as clock, error, event, log, SWI, and task.
 You will also learn how to configure the TI-RTOS kernel for such things
 as enabling semi-host support. Specific instructions for each platform
 bundled in the Processor SDK RTOS can be found at
-`Processor SDK RTOS Examples <Examples_and_Demonstrations.html#ti-rtos-kernel-example>`__
+`Processor SDK RTOS Examples <index_examples_demos.html#ti-rtos-kernel-example>`__
 
 | 
 
@@ -137,7 +137,7 @@ in configuration files that you can use to generate CCS projects for
 your platform, EVM, endian, and core. Once CCS projects are created,
 they are loaded and run on the EVM via JTAG. Instructions to create and
 run the CCS projects can be found at
-`Rebuilding The PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__
+`Rebuilding The PDK <index_how_to_guides.html#rebuild-drivers-from-pdk-directory>`__
 
 | 
 
@@ -155,7 +155,7 @@ starting point to learn how to use drivers, the OSAL layer, and Board Library.
 It pulls portions of the RTOS software into one application which can serve
 as the starting point for creating your first application.
 
-__ Examples_and_Demonstrations.html#rtos-template-application
+__ index_examples_demos.html#rtos-template-application
 
 .. note::
    The RTOS template application currently supports Sitara EVMs (AM335x EVM,
@@ -172,7 +172,7 @@ and graphics.
 
 Not all demonstrations are applicable to all platforms. The following
 page has a list of all demonstrations and supported platform:
-`Processor SDK_RTOS Examples and Demonstrations <Examples_and_Demonstrations.html>`__
+`Processor SDK_RTOS Examples and Demonstrations <index_examples_demos.html>`__
 
 Custom application
 --------------------
@@ -243,7 +243,7 @@ development ecosystem:
 -  Latest CCS Emulation package (for connecting to target using JTAG)
 -  Processor-SDK RTOS software
 
-See the `Release Notes <Release_Specific.html#release-notes>`__
+See the `Release Notes <index_release_specific.html#release-notes>`__
 for information on minimum requirements for host PC.
 
 The size of the installer is large since we want to provide one bundle
@@ -271,7 +271,7 @@ download page for your platform (see links in below section).
 
 
 .. Attention::
-   See the `Release Notes <Release_Specific.html#release-notes>`__ for the
+   See the `Release Notes <index_release_specific.html#release-notes>`__ for the
    recommended version of CCS. This is the version that was validated with
    the software in the SDK and will provide the best user experience.
    Occasionally, there may be compatibility issues if different versions
@@ -362,7 +362,7 @@ clicking "Get Software" for the RTOS package.
     -  On Ubuntu 14.04 Linux Host, if you are installing Processor SDK RTOS
        and observe that the installer exits immediately after you try to run
        from command line then you need resolve dependencies using
-       instructions provided here `Processor SDK RTOS_Release Notes <Release_Specific.html#release-notes>`__
+       instructions provided here `Processor SDK RTOS_Release Notes <index_release_specific.html#release-notes>`__
 
 | 
 
@@ -382,7 +382,7 @@ SoC. Follow instructions in the included *EVM Quick Start Guide* for
 information on hardware configuration and other pertinent information.
 This guide is included in the EVM kit and also available for download
 from the software download page for your particular device. The list of
-supported EVMs are provided in the `Release Notes <Release_Specific.html#supported-platforms>`__
+supported EVMs are provided in the `Release Notes <index_release_specific.html#supported-platforms>`__
 
 If you connect to the EVM UART, use the following host configuration:
 
@@ -392,7 +392,7 @@ If you connect to the EVM UART, use the following host configuration:
 -  **Flow Control**: Off
 
 For more information beyond what is covered in the *EVM Quick Start
-Guide*, see `EVM Hardware User Guides <Release_Specific.html#supported-platforms-and-versions>`__
+Guide*, see `EVM Hardware User Guides <index_release_specific.html#supported-platforms-and-versions>`__
 
 | 
 
@@ -406,12 +406,12 @@ newly installed components.
 
 .. note::
    If you installed the SDK and CCS in different paths, see the 
-   `Custom Installation Path <How_to_Guides.html#update-environment-when-installing-to-a-custom-path>`__
+   `Custom Installation Path <index_how_to_guides.html#update-environment-when-installing-to-a-custom-path>`__
    **How To** page that provides instructions to configure for a custom
    installation path.
 
 The next step is to make a connection between CCS and your EVM (or
-*target*). If you need help with this step, see the `Setup CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
+*target*). If you need help with this step, see the `Setup CCS <index_how_to_guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
 **How To** page explaining this further.
 
 At this point, you should be able to connect to target using CCS and
@@ -429,14 +429,14 @@ Useful links
 
 
 - `Training Videos <https://training.ti.com/processor-sdk-training-series>`__
-- `Getting Started Guide <Overview.html#getting-started-guide>`__
+- `Getting Started Guide <index_overview.html#getting-started-guide>`__
 
-- `Supported Platforms <Release_Specific.html#supported-platforms-and-versions>`__
+- `Supported Platforms <index_release_specific.html#supported-platforms-and-versions>`__
 
 - `Landing Page to All Processor SDK RTOS Packages <http://www.ti.com/tool/ti-rtos-proc>`__
-- `Release Notes <Release_Specific.html#release-notes>`__
-- `Examples and Demonstrations <Examples_and_Demonstrations.html>`__
-- `FAQ <FAQ.html>`__
+- `Release Notes <index_release_specific.html#release-notes>`__
+- `Examples and Demonstrations <index_examples_demos.html>`__
+- `FAQ <index_faq.html>`__
 | 
 
 Archived

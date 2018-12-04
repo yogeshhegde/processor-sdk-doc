@@ -24,7 +24,7 @@ The default SDK Install Path is ``C:\ti`` for Windows and
 
 The pre-requisite compilers are provided in Code Compose Studio, see the
 `CCS installation section of the Getting Started
-Guide <Overview.html#code-composer-studio>`__.
+Guide <index_overview.html#code-composer-studio>`__.
 
 .. raw:: html
 
@@ -34,7 +34,7 @@ Guide <Overview.html#code-composer-studio>`__.
 **NOTE**
 If you have installed the SDK and/or CCS in non-default locations follow
 the steps outlined in the article
-`Processor SDK RTOS Install In Custom Path <How_to_Guides.html#update-environment-when-installing-to-a-custom-path>`__
+`Processor SDK RTOS Install In Custom Path <index_how_to_guides.html#update-environment-when-installing-to-a-custom-path>`__
 to build the SDK from the toplevel Makefile.
 
 .. raw:: html
@@ -310,7 +310,7 @@ within the component. Here are a collection of useful pages:
 -  `Rebuild
    NDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_NDK_Core_Using_Gmake>`__
 
--  `Rebuild PDK <How_to_Guides.html#rebuild-drivers-from-pdk-directory>`__
+-  `Rebuild PDK <index_how_to_guides.html#rebuild-drivers-from-pdk-directory>`__
 
 -  `Rebuild
    SYS/BIOS <http://processors.wiki.ti.com/index.php/SYS/BIOS_FAQs>`__

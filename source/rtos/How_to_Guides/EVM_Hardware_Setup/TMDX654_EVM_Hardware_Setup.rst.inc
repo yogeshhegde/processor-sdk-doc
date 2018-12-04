@@ -191,7 +191,7 @@ CCS Host Setup
 1. Download CCS from the following link:
 http://processors.wiki.ti.com/index.php/Download_CCS
 
-.. Note:: Check the `Processor SDK Release Notes <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Release_Specific.html#release-notes>`_ for the recommended CCS version. 
+.. Note:: Check the `Processor SDK Release Notes <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#release-notes>`_ for the recommended CCS version. 
  
 Ensure that at least "Sitara AMx Processors" is selected:
 

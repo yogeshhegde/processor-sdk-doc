@@ -404,7 +404,7 @@ Additional References
 | component)                        |                                   |
 +-----------------------------------+-----------------------------------+
 
-.. _CPPI LLD: Device_Drivers.html#cppi
+.. _CPPI LLD: index_device_drv.html#cppi
 
 | 
 

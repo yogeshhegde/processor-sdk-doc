@@ -8,7 +8,7 @@ platform/EVM factory tests on reset and indicate a PASS/FAIL condition
 using the LEDs and write test result to UART. A PASS result indicates
 that the EVM can be booted. POST is supported on K2H/K2E/K2L/C66x
 devices, this functionality is provided on other devices (e.g., AM57x)
-by `Diagnostics <Board_EVM_Abstration.html#diagnostics>`__.
+by `Diagnostics <index_board.html#diagnostics>`__.
 
 POST will perform the following functional tests:
 
@@ -41,7 +41,7 @@ setupenv.bat or setupenv.sh script located in
 
      [SDK Install Path]/processor_sdk_rtos_<platform>_<version>
 
-Refer to `Processor SDK RTOS Building the SDK <Overview.html#building-the-sdk>`__
+Refer to `Processor SDK RTOS Building the SDK <index_overview.html#building-the-sdk>`__
 guide on how to setup your environment for building within any of the
 Processor SDK RTOS packages.
 
@@ -60,7 +60,7 @@ This will create the .out executable that can be loaded via CCS
    :name: flashing-post-image
 
 To flash a bootable image of POST, please refer to the `SDK RTOS
-Flashing Bootable Images <How_to_Guides.html#flash-bootable-images-c66x-k2h-k2e-k2l-only>`__ guide.
+Flashing Bootable Images <index_how_to_guides.html#flash-bootable-images-c66x-k2h-k2e-k2l-only>`__ guide.
 
 | 
 

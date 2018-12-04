@@ -72,7 +72,7 @@ application.
 
 **NOTE**
 For information on boot mode setting, see the applicable `EVM Hardware
-User Guide <Release_Specific.html#supported-platforms-and-versions>`__.
+User Guide <index_release_specific.html#supported-platforms-and-versions>`__.
 
 .. raw:: html
 
@@ -255,7 +255,7 @@ may be required to change these setting to match the timings required by
 custom design. We highly recommend that users create a GEL script
 similar to one provided by TI and test the memory interface with the new
 settings before using them in the secondary bootloader to setup external
-memory. `**Processor SDK Diagnostics** <Board_EVM_Abstration.html#diagnostics>`__
+memory. `**Processor SDK Diagnostics** <index_board.html#diagnostics>`__
 provides a mem_test that can be used to test read and writes to the
 entire DDR address space for confirming the SOC EMIF settings.
 
@@ -264,7 +264,7 @@ entire DDR address space for confirming the SOC EMIF settings.
 
 The processor SDK RTOS bootloader is like any other application that can
 be loaded over the emulator and debugged. Steps to connect an emulator
-to the EVM have been described in the `**Hardware Setup Guides** <Release_Specific.html#supported-platforms-and-versions>`__
+to the EVM have been described in the `**Hardware Setup Guides** <index_release_specific.html#supported-platforms-and-versions>`__
 that is linked to the Processor SDK RTOS documentation.
 
 Loading the bootloader over emulator can be very useful step in

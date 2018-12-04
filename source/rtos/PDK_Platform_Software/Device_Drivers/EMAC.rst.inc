@@ -20,7 +20,7 @@ All the board specific configurations eg:enabling and pin-mux of
 RGMII/MDIO pins should be performed before calling any driver APIs.By
 default Board_Init() API supports all initialization sequence for TI
 supported EVMs.Refer `Processor SDK RTOS Board
-Support <Board_EVM_Abstration.html#board-support>`__ for additional
+Support <index_board.html#board-support>`__ for additional
 details.
 
 Once the board specific configuration is complete driver API emac_open()
@@ -352,7 +352,7 @@ Building EMAC Test applications via makefiles
 
 -  EMAC Test applications and dependent libraries are built from the top level emac
    makefile
--  Refer to the `Processor SDK RTOS Getting Started Guide <Overview.html#setup-environment>`__  for details
+-  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
    of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
 	-  cd <pdk>/packages/
 	-  To build: make emac 
@@ -389,7 +389,7 @@ EMAC Test applications demonstrates the key features of the driver.
 **Via Secondary Bootloader (SBL)**:
 
 EMAC Test applications can also be run via SBL. To run via SBL, please following the instructions as specified in the following link:
-`SBL User Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Foundational_Components.html#am655x-compiling-apps-for-sbl>`__
+`SBL User Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#am655x-compiling-apps-for-sbl>`__
 
 .. _files: :download:`<../images/Pcap.zip>`
 

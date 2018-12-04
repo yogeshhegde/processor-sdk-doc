@@ -160,7 +160,7 @@ To load and run SimpleLink WiFi Plugin Demo:
    EVM hardware)
 #. Open CCS and launch target config file for the EVM (Refer to
    `Processor SDK RTOS Setup
-   CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__ for setting up CCS)
+   CCS <index_how_to_guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__ for setting up CCS)
 #. Connect to the primary core to make sure on connect gels are run
    A8 core for AM335x
 #. Connect to core where the application is expected to run, if not the primary core.

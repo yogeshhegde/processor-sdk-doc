@@ -32,7 +32,7 @@ Bootloader Execution Sequence
 
    -  Board Initialization is done by a call to **Board_init()** API.
       For additional details refer to `Processor SDK Board
-      Support <Board_EVM_Abstration.html#board-support>`__.
+      Support <index_board.html#board-support>`__.
    -  SBL setup includes configuring Pinmux, enable peripheral clocks,
       set up PLLs, and configure EMIF for SDRAM/DDR.
 

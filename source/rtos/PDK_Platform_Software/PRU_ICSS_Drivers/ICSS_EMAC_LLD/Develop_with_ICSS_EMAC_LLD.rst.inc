@@ -130,7 +130,7 @@ from questions on the forum and field.
 
 To prevent the guide from becoming too big and to limit it's scope a
 separate `debugging
-guide <Device_Drivers.html#debug-with-icss-emac-driver>`__
+guide <index_device_drv.html#debug-with-icss-emac-driver>`__
 has been written which covers various other aspects such as Q&A's and
 Debug examples with screenshots. The two documents must be used in
 conjunction to utilize them fully.
@@ -177,9 +177,9 @@ The contents of the folder *os_drivers* are discussed briefly:
    -  Rx - Copying the packet received from the firmware and providing
       it to the TCP/IP stack
    -  Tx - Providing packet from TCP/IP stack to the firmware
-   -  Learning/Forwarding Data Base - refer `here <Device_Drivers.html#learning-fdb>`__
-   -  Storm Prevention implementation - refer `here <Device_Drivers.html#storm-control>`__
-   -  Host Statistics implementation - refer `here <Device_Drivers.html#statistics>`__
+   -  Learning/Forwarding Data Base - refer `here <index_device_drv.html#learning-fdb>`__
+   -  Storm Prevention implementation - refer `here <index_device_drv.html#storm-control>`__
+   -  Host Statistics implementation - refer `here <index_device_drv.html#statistics>`__
 
 -  ***pruss*** - Refers to the software which manages the PRU. It
    performs the following tasks
@@ -512,7 +512,7 @@ In the code snippet above, function **ICSS_EmacRxPktInfo** goes through
 each queue one at a time, extracts the port & queue number information
 for every packet and provides it to functions below. Based on the
 priority of the packet which is decided by the queue number (refer to
-`discussion <Device_Drivers.html#how-qos-works>`__
+`discussion <index_device_drv.html#how-qos-works>`__
 on QoS and queues) driver decides to either forward it to NDK, done by
 **icssEmacHwIntRx** or give it to the callback function.
 
@@ -726,7 +726,7 @@ OSAL layer. Developers must take care to maintain correct priorities and
 order so as not to alter the behavior of the driver. All the interrupts
 and tasks enabled in an application can be checked using the SYSBIOS
 ROV. For more details on this tool refer to the
-`SYSBIOS <Device_Drivers.html#sys-bios>`__ section of EMAC LLD Debug Guide.
+`SYSBIOS <index_device_drv.html#sys-bios>`__ section of EMAC LLD Debug Guide.
 
 Interrupts
 '''''''''''
@@ -1005,7 +1005,7 @@ with two arguments
     }
 
 They can be used for simple tasks like sending or receiving a packet. To
-get an idea `refer <Device_Drivers.html#usage>`__
+get an idea `refer <index_device_drv.html#usage>`__
 to the example usage for sending a packet through a call to transmit API
 **ICSS_EmacTxPacket** in a loop. If calling the task in an endless while
 loop developers must add a small delay inside the loop using
@@ -1093,7 +1093,7 @@ The algorithm assumes these values and they cannot be changed at
 present.
 
 API descriptions are only for information, developers are requested to
-use corresponding `IOCTL <Device_Drivers.html#ioctl>`__
+use corresponding `IOCTL <index_device_drv.html#ioctl>`__
 calls. The IOCTL command for Learning/FDB modules is
 ***ICSS_EMAC_IOCTL_LEARNING_CTRL***
 
@@ -1236,7 +1236,7 @@ The main parent structure for Storm Prevention is
 There is an instance of this structure for each port
 
 API descriptions are only for information, developers are requested to
-use corresponding `IOCTL <Device_Drivers.html#ioctl>`__
+use corresponding `IOCTL <index_device_drv.html#ioctl>`__
 calls. The IOCTL command for Learning/FDB modules is
 ***ICSS_EMAC_IOCTL_STORM_PREV_CTRL***
 
@@ -1656,7 +1656,7 @@ statistics (they are a subset) and if all packets are sent to the Host
 then these member values for PRU and Host statistics should match.
 
 API descriptions are only for information, developers are requested to
-use corresponding `IOCTL <Device_Drivers.html#ioctl>`__
+use corresponding `IOCTL <index_device_drv.html#ioctl>`__
 calls. The IOCTL command for Statistics module is
 ***ICSS_EMAC_IOCTL_STATS_CTRL***
 
@@ -2050,7 +2050,7 @@ reduces the transmission jitter from 10us range to 40ns. TTS can be
 dynamically enabled and disabled by the Host. We have two well defined
 TTS APIs which control all TTS related EMAC aspects. Developers are
 advised to access these APIs using the EMAC IOCTL implementation as
-explained in the `IOCTL <Device_Drivers.html#ioctl>`__ section
+explained in the `IOCTL <index_device_drv.html#ioctl>`__ section
 previously.
 
 TTS Design Overview
@@ -2058,7 +2058,7 @@ TTS Design Overview
 
 TTS is designed to facilitate transmission of packets at pre-defined
 cyclic instants/triggers. The `TTS API Details and Data
-Structures <Device_Drivers.html#tts-api-details-and-data-structures>`__
+Structures <index_device_drv.html#tts-api-details-and-data-structures>`__
 are explained below but in a broad sense we can say that while
 initializing TTS, the application must provide the first cyclic trigger
 and the cycle period. The PRU firmware then sets cyclic triggers
@@ -2335,7 +2335,7 @@ Interrupt Configuration
 
 ICSS EMAC LLD expects the Interrupt configuration to come from
 Application/Transport layer. The interrupt configuration is explained in
-detail in the interrupts `section <Device_Drivers.html#id58>`__.
+detail in the interrupts `section <index_device_drv.html#id58>`__.
 Please refer to it for more details.
 
 The LLD makes use of two interrupts for copying packets from the queues
@@ -2366,7 +2366,7 @@ Learning module Increment counter implementation
 
 This is required for Switch implementation only. The application needs
 to call the IOCTL periodically, this is already done by the NDK. Refer
-to the API `section <Device_Drivers.html#api-guide-data-structures>`__
+to the API `section <index_device_drv.html#api-guide-data-structures>`__
 of Learning for more details.
 
 MDIO Configurations

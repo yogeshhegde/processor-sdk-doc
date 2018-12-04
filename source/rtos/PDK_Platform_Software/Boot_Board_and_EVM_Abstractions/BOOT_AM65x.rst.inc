@@ -47,7 +47,7 @@ from the Processor SDK
       globals and the MCU subsystem. It then jumps to main().
    -  Board Initialization is done by a call to **Board_init()** API.For additional
       details refer `Processor SDK Board Support
-      <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Board_EVM_Abstration.html>`__.
+      <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_board.html>`__.
    -  First the UART console is setup by a call to **Board_init()**. Then the 
       system firmware (SYSFW) is downloaded to the DMSC subsystem.
    -  Once the SYSFW is up and running, the rest of the initialization can be done.
@@ -284,7 +284,7 @@ Building the SBL and its components
 **Pre-requisites to Building**
 
 -  Set your environment using pdksetupenv.bat or pdksetupenv.sh. Refer to 
-   `Processor SDK RTOS Building <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#setup-environment>`__ for information on setting up your build environment
+   `Processor SDK RTOS Building <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#setup-environment>`__ for information on setting up your build environment
 
 .. raw:: html
 
@@ -633,7 +633,7 @@ all the am65xx boards is tabulated below.
    
 **Booting Via OSPI flash**
 
-#. `Programming the OSPI flash <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Board_EVM_Abstration.html#uniflash>`__
+#. `Programming the OSPI flash <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_board.html#uniflash>`__
 #. Booting the testcase from OSPI flash
 
 
@@ -664,7 +664,7 @@ running on the host.
 -  The host serial port must be configured at 115200 baud, no parity, 1  stop bit 
    and no flow control.
 -  Please ensure that the local echo setting for the terminal is turned  off.
--  All SBL prints are routed to the `MCU UART <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#uart-connection>`__
+-  All SBL prints are routed to the `MCU UART <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_how_to_guides.html#uart-connection>`__
 -  To verify setup is correct, setup the EVM to boot from UART  as the Primary Boot 
    Device(refer `AM6x EVM Hardware Users Guide <http://www.ti.com/lit/pdf/spruim7>`__.
    Power cycle the EVM, and look for the string CCCCCCC on the UART.

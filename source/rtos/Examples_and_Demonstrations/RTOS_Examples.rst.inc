@@ -403,7 +403,7 @@ AM572X EVM.
 
 10. Right click CortexA15_0 and connect target. From the Scripts menu
 select `AM572x Multicore
-Initialization->IPU1SSClkEnable_API <How_to_Guides.html#connect-to-am57x-slave-cores>`__.
+Initialization->IPU1SSClkEnable_API <index_how_to_guides.html#connect-to-am57x-slave-cores>`__.
 
 11. Connect to the Cortex_M4_IPU1_C0. Load and run Hello Example out
 file. You should see **Hello World** string displayed on console window.
@@ -462,18 +462,18 @@ check that the target is set to **ti.targets.elf.C66** (Auto populated)
 Build project.
 
 10. Create new target configuration (if one doesn`t exist) as described
-`here <How_to_Guides.html#create-target-configuration-file-for-evm>`__.
+`here <index_how_to_guides.html#create-target-configuration-file-for-evm>`__.
 
 11. Right click on the target configuration and Launch target
 configurations.
 
 12. Right click CortexA15_0 and connect target. From the Scripts menu
 select `AM572x Multicore
-Initialization->DSP1SSClkEnable_API <How_to_Guides.html#connect-to-am57x-slave-cores>`__.
+Initialization->DSP1SSClkEnable_API <index_how_to_guides.html#connect-to-am57x-slave-cores>`__.
 
 13. Route the GPTimer5 suspend ctrl signal to the DSP using the Scripts
 menu GP timer Suspend Ctrl -> GPTimer5SuspendCtl_DSP1SS_BIOS as
-described `here <How_to_Guides.html#timer-suspend-control-options-for-dsp>`__.
+described `here <index_how_to_guides.html#timer-suspend-control-options-for-dsp>`__.
 
 14. Connect to C66x_DSP1 Load and run Hello Example out file. You should
 see **Hello World** string displayed on console window.
@@ -498,7 +498,7 @@ used for Hello Example project, and start CCS. You may be prompted with
 at this stage the version of SYSBIOS and corresponding dependencies are
 assumed to be discovered by CCS. If not please follow the steps
 described here:
-`Discovering_SDK_products <How_to_Guides.html#discovering-sdk-products>`__
+`Discovering_SDK_products <index_how_to_guides.html#discovering-sdk-products>`__
 
 2. On CCS click View --> Resource Explorer Classic (Examples).
 
@@ -525,7 +525,7 @@ check that the target is set to **ti.targets.elf.C674** (Auto populated)
 Build project.
 
 10. Create new target configuration (if one doesn`t exist) as described
-`here <How_to_Guides.html#create-target-configuration-file-for-evm>`__.
+`here <index_how_to_guides.html#create-target-configuration-file-for-evm>`__.
 
 11. Right click on the target configuration and Launch target
 configurations.

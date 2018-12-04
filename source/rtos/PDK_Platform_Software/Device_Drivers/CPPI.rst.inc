@@ -301,7 +301,7 @@ This came from k2k example:
       bytes) if some extensions are used. 0 (16 bytes) is likely to
       cause lock up!!
 
-#. See `QMSS Debug FAQ <Device_Drivers.html#qmss>`__ for more.
+#. See `QMSS Debug FAQ <index_device_drv.html#qmss>`__ for more.
 
 Additional References
 ---------------------
@@ -325,7 +325,7 @@ Additional References
 | component)                        |                                   |
 +-----------------------------------+-----------------------------------+
 
-.. _QMSS LLD:  Device_Drivers.html#qmss
+.. _QMSS LLD:  index_device_drv.html#qmss
 
 | 
 

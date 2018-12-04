@@ -8,7 +8,7 @@ Two different modes of diagnostic tests are supported - Functional and Stress. F
 interface to confirm the interface HW connectivity. Stress tests verify the functionality of an interface under stress conditions which will
 confirm the stability of the HW interface.
 
-Refer to `Diagnostic Applications <Board_EVM_Abstration.html#diagnostic-applications>`_ section for details of the platforms
+Refer to `Diagnostic Applications <index_board.html#diagnostic-applications>`_ section for details of the platforms
 supported by each of the diagnostic tests described below.
 
 Application/Daughter cards required for running the test are not mentioned in the test setup assuming the tests are run with full HW kit.
@@ -4299,7 +4299,7 @@ Ethernet loopback cables/plugs
 
 Test Setup
 """""""""""
-Refer `EMAC Test Setup <Board_EVM_Abstration.html#id40>`_ section for more details
+Refer `EMAC Test Setup <index_board.html#id40>`_ section for more details
 
 Test Execution
 """"""""""""""""
@@ -4830,7 +4830,7 @@ Ethernet cables
 
 Test Setup
 """"""""""""
-Refer `ICSSG EMAC Test Setup <Board_EVM_Abstration.html#id68>`_ section for more details
+Refer `ICSSG EMAC Test Setup <index_board.html#id68>`_ section for more details
 
 Test Execution
 """"""""""""""""
@@ -6380,7 +6380,7 @@ USB OTG pen drive or normal pen drive with OTG cable
 
 Test Setup
 """""""""""
-Refer `USB Host Test Setup <Board_EVM_Abstration.html#id188>`_ section for more details
+Refer `USB Host Test Setup <index_board.html#id188>`_ section for more details
 
 Test Execution
 """""""""""""""

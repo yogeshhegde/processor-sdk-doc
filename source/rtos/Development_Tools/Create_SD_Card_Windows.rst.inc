@@ -136,7 +136,7 @@ You can follow the instructions provide below:
 
 8. You can now insert the SD card in the TI evaluation platform and boot the platform in SD boot.
 
-.. Note:: Bootmode switches are set for MMC/SD boot. See the `Hardware User's Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Release_Specific.html#supported-platforms-and-versions/>`_ for the evaluation platform for details.
+.. Note:: Bootmode switches are set for MMC/SD boot. See the `Hardware User's Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#supported-platforms-and-versions/>`_ for the evaluation platform for details.
 
 
 **HP USB Disk Storage Format Tool v2.0.6 (works with AM335x and AM437x devices)**
@@ -160,7 +160,7 @@ You can follow the instructions provide below:
 
 7. Rename application binary as "app" and copy it to SD Card.
 
-8. Make sure that TI evaluation platform bootmode switches are set for MMC/SD boot. See the `Hardware User's Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Release_Specific.html#supported-platforms-and-versions/>`_  for the evaluation platform for details.
+8. Make sure that TI evaluation platform bootmode switches are set for MMC/SD boot. See the `Hardware User's Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#supported-platforms-and-versions/>`_  for the evaluation platform for details.
 
 9. Attach the SD card to IDK MMC/SD Card slot and switch on TI evaluation platform.
 
@@ -168,7 +168,7 @@ You can follow the instructions provide below:
 **Use the SD card creation script on Linux platform (works with all platforms)**
 
 
-This method works with all the platforms. However, this method requires the PDK installation on Linux and using the SD card creation script provided in the installer. Please refer to the `Linux SD Card Creation Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#linux-sd-card-creation-guide>`_ for details.
+This method works with all the platforms. However, this method requires the PDK installation on Linux and using the SD card creation script provided in the installer. Please refer to the `Linux SD Card Creation Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#linux-sd-card-creation-guide>`_ for details.
 
 |
 

@@ -145,7 +145,7 @@ Gives the output:
     *******************************************************************************
 
 The `RTOS SDK top level
-Makefile <Overview.html#top-level-makefile>`__
+Makefile <index_overview.html#top-level-makefile>`__
 can now be used to rebuild SDK RTOS components with CCS and toolchains
 installed in a custom installation path.
 
@@ -256,7 +256,7 @@ Gives the output:
     *******************************************************************************
 
 The `RTOS SDK top level
-Makefile <Overview.html#top-level-makefile>`__
+Makefile <index_overview.html#top-level-makefile>`__
 can now be used to rebuild SDK RTOS components installed in the custom
 installation path.
 
@@ -384,7 +384,7 @@ Gives the output:
     PROCESSOR SDK BUILD ENVIRONMENT CONFIGURED
     *******************************************************************************
 
-The `RTOS SDK top level Makefile <Overview.html#top-level-makefile>`__
+The `RTOS SDK top level Makefile <index_overview.html#top-level-makefile>`__
 can now be used to rebuild SDK RTOS components installed in the custom
 installation path using CCS and toolchains installed in a custom path as
 well.

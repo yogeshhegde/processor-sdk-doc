@@ -64,7 +64,7 @@ required before calling any driver APIs. By default Board_Init() API
 available under board module supports all initialization sequence for TI
 supported EVMs. In addition it initializes UART instance for
 Console/STDIO. Refer `Processor SDK RTOS Board
-Support <Board_EVM_Abstration.html#board-support>`__ for additional
+Support <index_board.html#board-support>`__ for additional
 details.
 
 .. rubric:: **TimeSync Configuration Structure**
@@ -168,8 +168,8 @@ Below tasks would be created after Application calls TimeSync_drvInit() function
 Building timeSync Examples/Unit Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Setup the build environment `SetupBuildEnvironment <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#setup-environment>`__
-- Follow the steps as mentioned under `SDK example and test CCS Project Creation <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#pdk-example-and-test-project-creation>`__  for creating the CCS based example and test projects creation
+- Setup the build environment `SetupBuildEnvironment <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#setup-environment>`__
+- Follow the steps as mentioned under `SDK example and test CCS Project Creation <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#pdk-example-and-test-project-creation>`__  for creating the CCS based example and test projects creation
 
 
 Sample Examples
