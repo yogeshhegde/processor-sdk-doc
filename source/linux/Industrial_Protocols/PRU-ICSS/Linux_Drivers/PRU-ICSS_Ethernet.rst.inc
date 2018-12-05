@@ -623,6 +623,15 @@ to get your PRU-ICSS interface up and running already):
 | Flow control is not currently supported in this version of the
   PRU-ICSS Ethernet firware that is provided by Texas Instruments.
 
+.. rubric:: Are multicast and VLAN filtering as well as storm prevention
+   supported in the PRU-ICSS Ethernet ports?
+   :name: are-multicast-and-VLAN-filtering-as-well-as-storm-prevention-supported-in-the-pru-icss-ethernet-ports
+
+Yes, the Dual EMAC firmware supports per port multicast and VLAN filtering, as well
+as network storm prevention. These features also exist in the HSR/PRP firmware
+and are detailed for both HSR/PRP and Dual EMAC here:
+`HSR/PRP Linux Software <Industrial_Protocols_HSR_PRP.html#linux_software>`__
+
 .. rubric:: How do I check the link status and hardware statistics of my
    PRU-ICSS Ethernet ports?
    :name: how-do-i-check-the-link-status-and-hardware-statistics-of-my-pru-icss-ethernet-ports

@@ -18,6 +18,10 @@ Processor SDK 05.02
 
 - The minimum SD card size is now 16GB when creating an SD card with the default images for Processor SDK Linux.
 
+.. rubric:: Multicast Filtering Mask
+
+* The parameter for setting a multicast filtering mask is now 'pruss<ID>_port<PORT>_mc_mask' instead of 'pruss<ID>_mc_mask' because support was added to enable per port multicast filtering for Dual EMAC.
+
 
 Processor SDK 05.01
 ----------------------
