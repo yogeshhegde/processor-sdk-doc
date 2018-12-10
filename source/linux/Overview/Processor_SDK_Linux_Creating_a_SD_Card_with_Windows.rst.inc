@@ -18,7 +18,7 @@ platform.
    example)
 -  Software to decompress a zip file (ex. 7-zip)
 -  Software to write an image file to a SD card
--  A SD card appropriate for the required hardware platform, must be 2GB
+-  A SD card appropriate for the required hardware platform, must be 16GB
    or larger
 -  A SD card reader/writer
 

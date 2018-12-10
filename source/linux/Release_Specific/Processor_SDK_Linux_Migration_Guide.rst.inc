@@ -13,6 +13,12 @@ of the Processor SDK for Linux.
 Processor SDK 05.xx Releases
 ============================
 
+Processor SDK 05.02
+----------------------
+
+- The minimum SD card size is now 16GB when creating an SD card with the default images for Processor SDK Linux.
+
+
 Processor SDK 05.01
 ----------------------
 
