@@ -1,5 +1,5 @@
 *******************************************
-Processor SDK Android Release Notes
+Release Notes
 *******************************************
 
 Overview
@@ -27,7 +27,7 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page. The manifest can be found on the SDK
 download page or in the installed directory as indicated below. In
 addition, see `Processor SDK Android GPLv3
-Disclaimer <Licenses.html#gplv3-disclaimer>`__
+Disclaimer <Overview_GPLv3_Disclaimer.html>`__
 
 |
 
@@ -106,7 +106,7 @@ Supported Platforms
 =========================
 
 See
-`Processor\_SDK\_Supported\_Platforms\_and\_Versions <Release_Specific.html#supported-platforms-and-versions>`__
+`Processor\_SDK\_Supported\_Platforms\_and\_Versions <Release_Specific_Supported_Platforms_and_Versions.html>`__
 for a list of supported platforms and links to more information.
 
 | 

@@ -29,10 +29,10 @@ This information covers Processor SDK Android 4.0.0 and above.
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 .. _Getting Started Guide: Overview_Getting_Started_Guide.html
-.. _Supported Platforms and Versions: Release_Specific.html#supported-platforms-and-versions
-.. _Release Notes: Release_Specific.html#processor-sdk-android-release-notes
+.. _Supported Platforms and Versions: Release_Specific_Supported_Platforms_and_Versions.html
+.. _Release Notes: Release_Specific_Release_Notes.html
 .. _Android Software Stack: Overview_Software_Stack.html
-.. _Migration Guide: Release_Specific.html#migration-guide
+.. _Migration Guide: Release_Specific_Migration_Guide.html
 .. _Frequently Asked Questions: Processor_SDK_Android_How_To_Guides.html#frequently-asked-questions
 .. _GPLv3 Disclaimer: Overview_GPLv3_Disclaimer.html
 .. _How To Guides: Processor_SDK_Android_How_To_Guides.html

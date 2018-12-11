@@ -27,7 +27,7 @@ mention, a new Operating System (OS) for many), is getting an
 environment set up where you can build and debug code on hardware. The
 SDK attacks this problem with providing everything you need to do
 development, and it is validated on standard `TI hardware platforms
-(EVMs) <Release_Specific.html#supported-platforms-and-versions>`__.
+(EVMs) <Release_Specific_Supported_Platforms_and_Versions.html>`__.
 It wraps all of this up into one simple installer that helps get
 everything you need in the right place to do development. For example,
 you can start off with simply re-building the Android Embedded System
@@ -88,7 +88,7 @@ something, check out the next section which shares how to play with the
 embedded Android system. All you’ll need is access to a Windows/Linux
 computer, an SD card, an SD card reader, some free, open-source
 software, and a supported `Hardware
-platform <Release_Specific.html#supported-platforms-and-versions>`__.
+platform <Release_Specific_Supported_Platforms_and_Versions.html>`__.
 
 .. rubric:: Evaluating the SDK Embedded Android System
    :name: evaluating-the-sdk-embedded-android-system
@@ -99,7 +99,7 @@ you can build with the SDK and actually hold it in your hands and play
 with it (or show it to someone else that needs help understanding what
 you want to do with it), with minimal effort, you can simply run the
 SDK Embedded Android System on a `supported Hardware
-platform <Release_Specific.html#supported-platforms-and-versions>`__.
+platform <Release_Specific_Supported_Platforms_and_Versions.html>`__.
 This will allow you to poke and prod and interact. It’s a powerful way
 to get the imagination active and engaged.
 
