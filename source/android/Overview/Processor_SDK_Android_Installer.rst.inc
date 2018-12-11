@@ -2,7 +2,7 @@ Install the Android SDK
 ======================================
 
 .. rubric:: Overview
-   :name: overview
+   :name: install-the-android-sdk-overview
 
 The Processor SDK Installer
 (ti-processor-sdk-android-am57xx-evm-xx.xx.xx.xx-Linux-x86-Install.bin)

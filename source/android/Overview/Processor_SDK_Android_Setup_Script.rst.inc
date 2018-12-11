@@ -2,7 +2,7 @@ Run Setup Scripts
 ======================================
 
 .. rubric:: Overview
-   :name: overview
+   :name: run-setup-scripts-overview
 
 After installation of the SDK on the Linux host, the setup script can
 be run to flash the prebuilt images to the onboard eMMC. Some of the
@@ -17,7 +17,7 @@ does the following things:
    the board from the eMMC)
 
 .. rubric:: Prerequisites
-   :name: prerequisites
+   :name: run-setup-scripts-prerequisites
 
 To run the SDK's setup script the following steps should be taken first:
 
@@ -27,6 +27,7 @@ To run the SDK's setup script the following steps should be taken first:
    mode.
    
    .. code-block:: bash
+
       sudo apt-get install minicom
       sudo usermod -a -G dialout $username
 

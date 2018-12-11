@@ -15,8 +15,10 @@ Frequently Asked Questions
 Gallery/Music Player is not aware of files pushed via ADB at run time.
 After pushing the files reboot the board to have the gallery updated.
 Alternatively, to avoid a reboot, you can use the following command:
-**$am broadcast -a android.intent.action.MEDIA\_MOUNTED -d
-  file:///mnt/shell/emulated/0**
+
+.. code-block:: none
+
+  $am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/shell/emulated/0
 
 .. rubric:: Why does my board hang during boot if I have an empty SD
    card connected but I've flashed the eMMC?
