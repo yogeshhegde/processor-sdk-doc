@@ -32,4 +32,4 @@ Processor SDK Android Software Developer's Guide
 
    Overview
    Release_Specific
-   Processor_SDK_Android_How_To_Guides
+   How_To_Guides

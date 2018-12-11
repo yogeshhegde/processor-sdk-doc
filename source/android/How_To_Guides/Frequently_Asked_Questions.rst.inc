@@ -2,8 +2,11 @@
 Frequently Asked Questions
 **********************************************
 
-.. rubric:: Frequently Asked Questions
-   :name: frequently-asked-questions
+.. rubric:: How to connect the LCD to your AM571x/AM572x IDK board
+   :name: how-to-connect-the-lcd-to-your-am571x-am572x-idk-board
+
+`am57x-idk-lcd-bringup <https://training.ti.com/am57x-idk-lcd-bringup>`__
+
 
 .. rubric:: How do I see recently added files in the Gallery or Music
    Player app?

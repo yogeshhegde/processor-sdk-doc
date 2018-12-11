@@ -33,7 +33,7 @@ This information covers Processor SDK Android 4.0.0 and above.
 .. _Release Notes: Release_Specific_Release_Notes.html
 .. _Android Software Stack: Overview_Software_Stack.html
 .. _Migration Guide: Release_Specific_Migration_Guide.html
-.. _Frequently Asked Questions: Processor_SDK_Android_How_To_Guides.html#frequently-asked-questions
+.. _Frequently Asked Questions: How_To_Guides_Frequently_Asked_Question.html
 .. _GPLv3 Disclaimer: Overview_GPLv3_Disclaimer.html
 .. _How To Guides: Processor_SDK_Android_How_To_Guides.html
 .. _Directory Structure Overview: Overview_Directory_Structure.html
