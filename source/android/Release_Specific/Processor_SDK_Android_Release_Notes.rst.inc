@@ -42,7 +42,7 @@ Documentation
    software infrastructure to allow developers to start creating
    applications.
 -  `Getting Started
-   Guide <Overview.html#processor-sdk-android-getting-started-guide>`__:
+   Guide <Overview_Getting_Started_Guide.html>`__:
    provides information on getting the software and running
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software

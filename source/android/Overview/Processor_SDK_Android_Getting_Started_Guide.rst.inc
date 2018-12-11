@@ -1,5 +1,5 @@
 ***************************************************
-Processor SDK Android Getting Started Guide
+Getting Started Guide
 ***************************************************
 
 .. rubric:: Welcome to the Android Getting Started Guide
@@ -38,7 +38,7 @@ good baseline.
 As you go along your development journey and have questions, there is
 documentation and support available to you. Make sure to save a pointer
 to the `Android SDK Software Developer’s Guide
-(SDG) <Overview.html#processor-sdk-android-software-developers-guide>`__.
+(SDG) <index.html>`__.
 If you don’t find what you need, take a look at the active `E2E Processor
 Support <https://e2e.ti.com/support/processors/>`__
 Forum and see if the topic has been covered before. If not, post
@@ -51,7 +51,7 @@ As described above, the SDK has a lot to it. Let’s break it down to two
 pieces to simplify things a bit:
 
 -  The example `embedded Android
-   system <Overview.html#software-stack>`__.
+   system <Overview_Software_Stack.html>`__.
    Essentially, a working bootloader (U-Boot), Linux kernel, and Android
    filesystem that can be put on an SD card and ran on a TI AM57xx EVM.
 -  Everything needed to create the above embedded system from “scratch”:
@@ -71,7 +71,7 @@ all important question, “What would you like to do with the SDK?”. If
 the answer is clearly “I want to build something and I’m ready to start
 developing now!”, then go ahead and skip down to the “I want to
 Develop!” (or, `Developing with the
-SDK <Overview.html#start-your-android-development>`__)
+SDK <Overview_Getting_Started_Guide.html#start-your-android-development>`__)
 section below for instructions on installing the SDK on a Linux Host
 System. This is a somewhat involved process focusing on the second of
 the two parts of the SDK listed above and may be more than some people
@@ -166,14 +166,14 @@ which you can start development.
    `here <https://source.android.com/source/initializing.html#setting-up-a-linux-build-environment>`__
    for setting up the packages required for building Android.
 #. **Install the SDK** - Within your Linux host machine, `Install the
-   Android SDK <Overview.html#install-the-android-sdk>`__
+   Android SDK <Overview_Getting_Started_Guide.html#install-the-android-sdk>`__
    Processor SDK Installer is 64-bit, and installs only on 64-bit host
    machine. Support for 32-bit host is dropped as of the Gingerbread
    Android release
    At least 70 GB of free space is required on the host machine in order
    to pull and then rebuild the full AOSP filesystem
 #. **Create an SD Card using the** `SDK Create SD Card
-   Script <Overview.html#sd-card-creation>`__
+   Script <Overview_Getting_Started_Guide.html#sd-card-creation>`__
    You will need a >4GB SD Card and the capability to connect that card
    to your Linux Host machine (using a USB SD Card reader, for example).
    If using a virtual machine as your Linux host, you may need to import
@@ -189,8 +189,8 @@ which you can start development.
    .. Image:: ../images/Android_Dev_Environment_Cropped.png
 
 #. **Run the Setup Script** - Once the SDK has been installed and the SD
-   card has been created and placed into the device, `**run the setup.sh
-   Script** <Overview.html#run-setup-scripts>`__ on your
+   card has been created and placed into the device, `run the setup.sh
+   Script <Overview_Getting_Started_Guide.html#run-setup-scripts>`__ on your
    host to guide you through the process of flashing the bootloader,
    kernel, and Android filesystem to the onboard eMMC.
 
@@ -212,7 +212,7 @@ which you can start development.
 
 
 #. **Rebuild sources** using the `top-level
-   makefile <Overview.html#top-level-makefile>`__ in
+   makefile <Overview_Directory_Structure.html#top-level-makefile>`__ in
    the SDK root directory. For example:
 
 -  ``make all`` rebuilds all components in the SDK
@@ -221,7 +221,7 @@ which you can start development.
 
 The Android filesystem can be rebuilt, and then flashed to the onboard
 eMMC, by following `these
-instructions <Overview.html#processor-sdk-android-building-the-sdk>`__.
+instructions <Overview_Building_the_SDK.html>`__.
 
 .. rubric:: What Would You Like to do Next?
    :name: what-would-you-like-to-do-next
@@ -235,5 +235,5 @@ possibilities:
    :widths: 50, 70
 
    "`AM57X <http://www.ti.com/tool/PROCESSOR-SDK-AM57X>`__", Download the SDK
-   "`Processor SDK Android Software DeveloperâGuide <Overview.html#processor-sdk-android-software-developers-guide>`__", "The SDK's Homepage, a must have link for SDK users."
+   "`Processor SDK Android Software Developer's Guide <index.html>`__", "The SDK's Homepage, a must have link for SDK users."
    "`Processor SDK Android How-To Guides <Processor_SDK_Android_How_To_Guides.html>`__", "The SDK How-To pages. The Hands On with the SDK has some great information for developing your first Android application."

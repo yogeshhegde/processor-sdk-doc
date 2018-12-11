@@ -29,7 +29,7 @@ of the Processor SDK for Android.
    `here <https://developer.android.com/about/versions/oreo/index.html>`__
 -  SD card creation now creates boot partition only with MLO, u-boot.img,
    and uEnv.txt. After flashing the eMMC device by
-   `Running Setup Scripts <Overview.html#run-setup-scripts>`__,
+   `Running Setup Scripts <Overview_Getting_Started_Guide.html#run-setup-scripts>`__,
    SD card is required to boot AM57x IDKs. Keep the SD card plugged in,
    power cycle AM57x IDKs to use MLO and u-boot.img from the SD card
    and the rest from the eMMC. For AM57x GP EVM, SD card can be removed
