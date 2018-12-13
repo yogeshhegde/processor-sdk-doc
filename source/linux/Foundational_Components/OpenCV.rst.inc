@@ -879,49 +879,18 @@ gauss.cl, sobel.cl, thresh.cl.
 .. rubric:: OpenCL C C66 DSP kernels
    :name: opencl-c-c66-dsp-kernels
 
-Kernel name
-Data type - input
-Data type - output
-Host side file (full path)
-OpenCL C kernel file (full path)
-Comments
-**erode**
-uint8
-uint8
-modules/imgproc/src/morph.cpp
-modules/imgproc/src/opencl/morph.cl
-**dilate**
-uint8
-uint8
-modules/imgproc/src/morph.cpp
-modules/imgproc/src/opencl/morph.cl
-**SobelX/SobelY**
-uint8
-int16
-modules/imgproc/src/deriv.cpp
-modules/imgproc/src/opencl/sobel.cl
-**threshold**
-uint8
-uint8
-modules/imgproc/src/thresh.cpp
-modules/imgproc/src/opencl/threshold.cl
-**GaussBlur (3x3)**
-uint8
-uint8
-modules/imgproc/src/smooth.cpp
-modules/imgproc/src/opencl/gauss.cl
-**convertScaleAbs**
-int16
-uint8
-modules/core/src/convert.cpp
-modules/core/src/opencl/tidsparithm.cl
-Additional optimizations possible
-**MOG2 (mixture of Gaussians)**
-uint8 (float32 internal)
-uint8 (float32 internal)
-modules/core/src/bgfg\_gaussmix2.cpp
-modules/core/src/opencl/bgfg\_mog2.cl
-Additional optimizations possible
+.. csv-table::
+   :header: "Kernel name","Data type - input","Data type - output","Host side file (full path)","OpenCL C kernel file (full path)","Comments"
+   :widths: 20, 20, 20, 30, 30, 30
+
+   erode,uint8,uint8,modules/imgproc/src/morph.cpp,modules/imgproc/src/opencl/morph.cl,
+   dilate,uint8,uint8,modules/imgproc/src/morph.cpp,modules/imgproc/src/opencl/morph.cl,
+   SobelX/SobelY,uint8,int16,modules/imgproc/src/deriv.cpp,modules/imgproc/src/opencl/sobel.cl,
+   threshold,uint8,uint8,modules/imgproc/src/thresh.cpp,modules/imgproc/src/opencl/threshold.cl,
+   GaussBlur (3x3),uint8,uint8,modules/imgproc/src/smooth.cpp,modules/imgproc/src/opencl/gauss.cl,
+   convertScaleAbs,int16,uint8,modules/core/src/convert.cpp,modules/core/src/opencl/tidsparithm.cl,Additional optimizations possible
+   MOG2 (mixture of Gaussians),uint8 (float32 internal),uint8 (float32 internal),modules/core/src/bgfg_gaussmix2.cpp,modules/core/src/opencl/bgfg_mog2.cl,Additional optimizations possible
+
 | 
 
 .. rubric:: Profiling results of DSP optimized OpenCV OpenCL kernels
@@ -931,125 +900,47 @@ Additional optimizations possible
 .. rubric:: **Single channel, 1200x709, barcode ROI detection use case**
    :name: single-channel-1200x709-barcode-roidetection-use-case
 
-Kernel name
-DSP optimized, cycles (per core)
-DSP baseline wall clock
-DSP optimized wall clock
-ARM wall clock
-DSP/ARM
-**erode**
-883436
-288.10ms
-2.33ms
-13.65ms
-5.8x
-**dilate**
-893387
-290.232ms
-2.36ms
-13.67ms
-5.8x
-**SobelX/SobelY**
-586885
-232.450ms
-1.58ms
-2.69ms
-1.7x
-**threshold**
-676208
-3.583ms
-1.72ms
-0.49288ms
-0.3x
-**GaussBlur (3x3)**
-903159
-82.601ms
-2.036ms
-4.289ms
-2.1x
-**convertScaleAbs**
-725346
-112.60ms
-1.73077ms
-3.92ms
-2.3x
+.. csv-table::
+   :header: "Kernel name", "DSP optimized, cycles (per core)","DSP baseline wall clock","DSP optimized wall clock","ARM wall clock","DSP/ARM"
+   :widths: 30, 30, 30, 30, 30, 30
+
+   erode,883436,288.10ms,2.33ms,13.65ms,5.8x
+   dilate,893387,290.232ms,2.36ms,13.67ms,5.8x
+   SobelX/SobelY,586885,232.450ms,1.58ms,2.69ms,1.7x
+   threshold,676208,3.583ms,1.72ms,0.49288ms,0.3x
+   GaussBlur (3x3),903159,82.601ms,2.036ms,4.289ms,2.1x
+   convertScaleAbs,725346,112.60ms,1.73077ms,3.92ms,2.3x
+
 | 
 
 .. rubric:: **Single channel, 1920x1080. barcode ROI detection use
    case**
    :name: single-channel-1920x1080.-barcode-roi-detection-use-case
 
-Kernel name
-DSP optimized, cycles (per core)
-DSP baseline wall clock
-DSP optimized wall clock
-ARM wall clock (ms)
-DSP/ARM
-**erode**
-2016149
-358.46ms
-3.762ms
-74.7736ms
-20.2x
-**dilate**
-2020188
-348.255ms
-3.734ms
-68.1547ms
-20.2x
-**SobelX/SobelY**
-1260833
-281.58ms
-2.38ms
-13.3328ms
-5.6x
-**threshold**
-1535483
-6.311ms
-2.815ms
-1.08271ms
-0.4x
-**GaussBlur (3x3)**
-2092713
-98.61ms
-3.478ms
-10.0458ms
-2.9x
-**convertScaleAbs**
-1646050
-268.272ms
-3.13524ms
-5.77027ms
-1.8x
+.. csv-table::
+   :header: "Kernel name", "DSP optimized, cycles (per core)","DSP baseline wall clock","DSP optimized wall clock","ARM wall clock","DSP/ARM"
+   :widths: 30, 30, 30, 30, 30, 30
+
+   erode,2016149,358.46ms,3.762ms,74.7736ms,20.2x
+   dilate,2020188,348.255ms,3.734ms,68.1547ms,20.2x
+   SobelX/SobelY,1260833,281.58ms,2.38ms,13.3328ms,5.6x
+   threshold,1535483,6.311ms,2.815ms,1.08271ms,0.4x
+   GaussBlur (3x3),2092713,98.61ms,3.478ms,10.0458ms,2.9x
+   convertScaleAbs,1646050,268.272ms,3.13524ms,5.77027ms,1.8x
+
 | 
 
 .. rubric:: **Single channel, 720x576, Gesture recognition use case**
    :name: single-channel-720x576-gesture-recognition-use-case
 
-Kernel name
-DSP optimized, cycles (per core)
-DSP baseline wall clock
-DSP optimized wall clock
-ARM wall clock
-DSP/ARM
-**erode**
-567719
-30.985ms
-1.707ms
-5.45ms
-3.2x
-**dilate**
-570094
-31.035ms
-1.750ms
-5.455ms
-3.2x
-**MOG2 (mixture of Gaussians)**
-40307446
-316.984ms
-59.63ms
-40.667ms
-0.7x
+.. csv-table::
+   :header: "Kernel name", "DSP optimized, cycles (per core)","DSP baseline wall clock","DSP optimized wall clock","ARM wall clock","DSP/ARM"
+   :widths: 30, 30, 30, 30, 30, 30
+
+   erode,567719,30.985ms,1.707ms,5.45ms,3.2x
+   dilate,570094,31.035ms,1.750ms,5.455ms,3.2x
+   MOG2 (mixture of Gaussians),40307446,316.984ms,59.63ms,40.667ms,0.7x
+
 | 
 
 .. rubric:: Alternative approach to add new OpenCL kernels at OpenCV
