@@ -215,12 +215,6 @@ Directory structure
         │   └── AM65xxImageGen.sh
         └── tiImageGen						<= Unused for AM65xx. Image generation is handled by PDK build framework (<prsdk_install_path>/pdk_*/packages/ti/build/)
 
-.. _am655x-fxn-flowchart:
-
-Functional Flowchart
-^^^^^^^^^^^^^^^^^^^^
-
-.. Image:: ../images/k3_sbl_call_graph.png
 
 .. _am655x-image-formats:
 
@@ -552,7 +546,8 @@ The test log for sbl_baremetal_boot_perf_*_mcu1_0TestApp_release.appimage, when 
     Time elapsed since start of SBL: 39692us
     fxn:boot_perf_test_main cycles: 15877177
     MCU CLK @ 400000000Hz, cycles/usec = 400
-    Boot time is now optimised....Taa-Daa!!
+    Boot time is now optimised....
+    All tests have passed
     
     
 Boot Modes
