@@ -15,7 +15,9 @@ from the Processor SDK
 - <PDK>/packages/ti/csl : For initialization and SoC addresses
 - <PDK>/packages/ti/board : For board and usecase specific initialization
 - <PDK>/packages/ti/drv/spi :  For reading applications from OSPI flashes
+- <PDK>/packages/ti/drv/udma :  For reading data from boot media using DMA
 - <PDK>/packages/ti/drv/mmcsd : For reading applications from MMC/SD/eMMC
+- <PDK>/packages/ti/fs/fatfs : For reading files from MMC/SD/eMMC
 - <PDK>/packages/ti/drv/sciclient : For communicating with DMSC sub-system
 - <PDK>/packages/ti/drv/uart : For log messages
 - <PDK>/packages/ti/osal : Primitives required by ti/drv components
@@ -42,17 +44,16 @@ from the Processor SDK
 
 -  **Secondary bootloader(SBL)**
 
-   -  User level secondary bootloader(SBL) begins execution from internal memory 
-      by running basic initialization routines like  setting up the stack, heap, 
-      globals and the MCU subsystem. It then jumps to main().
-   -  Board Initialization is done by a call to **Board_init()** API.For additional
+   -  User level secondary bootloader(SBL) begins execution from internal memory. 
+      It enables ATCM, starts PMU timers for profiling, initializes the MCU, 
+      and sets up the stack, heap and globals. It then jumps to main().
+   -  Board Initialization is done by calls to **Board_init()** API.For additional
       details refer `Processor SDK Board Support
       <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Board_EVM_Abstration.html>`__.
-   -  First the UART console is setup by a call to **Board_init()**. Then the 
-      system firmware (SYSFW) is downloaded to the DMSC subsystem.
+   -  First the Pin MUX and UART console are setup by a calls to **Board_init()**. Then the 
+      system firmware (SYSFW) is loaded from the boot media into the DMSC subsystem.
    -  Once the SYSFW is up and running, the rest of the initialization can be done.
-   -  This includes optionally enbaling ATCM, and optionally using **Board_init()** 
-      to configure PLLs, LPSCs and DDR.
+   -  This includes optionally using **Board_init()** to configure PLLs, LPSCs and DDR.
    -  The SBL then parses application image(s) for each of the core(s) from boot 
       media and loads it to memory.
    -  Once the application is loaded, the SBL communicates with the system firmware
@@ -72,14 +73,23 @@ from the Processor SDK
 -  For a detailed description of ROM bootloader and more information on the image 
    format expected by the RBL refer the initialization chapter in the `AM65xx Technical
    Reference Manual <http://www.ti.com/lit/pdf/spruid7>`__
--  If ATCM is enabled at compile time, the first 256 bytes of the ATCM are reserved by 
-   SBL for its use.
+-  In addition to the bootloader and application, the DMSC firmware binary is also needed
+   for the SoC to complete the boot flow.
+-  The first 256 bytes of the ATCM are reserved by SBL for its use. The SBL initializes
+   the ATCM with 0xFF before it uses it.
 -  When the R5 is released from reset, it will always fetch and execute the first
    intruction from address 0x0.
 
 .. raw:: html
 
    </div>
+
+.. _am655x-sbl-high-level-arch:
+
+Block Diagram
+^^^^^^^^^^^^^^^^
+
+.. Image:: ../images/k3_sbl_srch_block_diag.png
 
 .. _am655x-sbl-memory-usage:
 
@@ -99,17 +109,15 @@ Directory structure
     sbl
     │
     ├── board
-    │   ├── k3
-    │   │   └── sbl_main.c					<= define main() for SBL, board specific init
-    │   └── src
-    │       ├── sbl_image_copy.c				<= Copies Image from boot media
-    │       └── sbl_image_copy.h
+    │   └── k3
+    │       └── sbl_main.c					<= define main() for SBL, board specific init
     │
     ├── build
     │   ├── makefile						<= makefile for the SBL component
     │   ├── sbl_am65xx.sh					<= For legacy, called by Yocto build
     │   ├── sbl_boot_test.mk					<= Builds SBL single core tests
     │   ├── sbl_smp_test.mk					<= Builds example app for using SBL lib
+    │   ├── sbl_mcu0_boot_perf_test.mk				<= Builds example app for SBL performance tuning    
     │   ├── sbl_img.mk						<= builds SBL image that is loaded and executed by ROM code
     │   ├── sbl_lib.mk						<= Builds sbl library that other apps can link into
     │   ├── sbl_multicore_smp.mk				<= Builds multi-core image from SBL lib eg. test to demonstrate symmetric multiprocessor boot (SMP)
@@ -122,10 +130,12 @@ Directory structure
     │       │       └── sbl_baremetal_*.appimage 		<= SBL loadable board specific sample apps for testing SBL boot flow
     │       ├── mcuAmplinker.lds 				<= Linker comamnd file when TI CGT is used for Asym. Multiproc. boot
     │       ├── mpuAmplinker.lds 				<= GCC linker command file (for Cortex Axx cores) for Asym. Multiproc. boot
+    │       ├── mcuBootPerfLinker.lds 				<= TI CGT Linker comamnd file for SBL performance tuning example.
     │       ├── mcuLockStepLinker.lds 				<= Linker comamnd file when TI CGT is used for R5 lock-step boot
     │       ├── mpuSmplinker.lds 				<= GCC linker command file (for Cortex Axx cores) for SMP boot
     │       ├── sbl_amp_multicore.c 				<= Simple SBL test that displays UART message
     │       ├── sbl_amp_multicore_sections.h 			<= Allows same source to be loaded to different sections for different cores.
+    │       ├── sbl_mcu_0_boot_perf_benchmark.c			<= SBL Test to tune boot performance.    
     │       ├── sbl_multicore_a53.asm 				<= Test case entry point  for Cortex-Axx cores
     │       ├── sbl_multicore_r5.asm 				<= Test case entry point for Cortex-R5 cores
     │       ├── sbl_multicore_r5_sections.inc 			<= Allows same source to be loaded to different sections for different MCUs.
@@ -173,12 +183,16 @@ Directory structure
     ├── soc							<= SOC specific SBL code
     │   └── k3
     │       ├── linker.cmd					<= Linker file used for generating ROM loadable SBL image.
+    │       ├── sbl_err_trap.h					<= Error loops for SBL
+    │       ├── sbl_init.asm					<= SBL Entry point    
+    │       ├── sbl_misc.asm					<= SBL Assembly utility functions    
+    │       ├── sbl_log.h					<= SBL logging framework    
     │       ├── sbl_sci_client.c				<= Calls SYSFW on DMSC
     │       ├── sbl_sci_client.h
     │       ├── sbl_slave_core_boot.c				<= Code that contains the sequence to release a core from reset
     │       ├── sbl_slave_core_boot.h
-    │       ├── sbl_soc.c					<= Core init (Cache, Interrupt, FPU, etc.)
-    │       └── tisci_proc_messages.h
+    │       ├── sbl_soc.c					<= Cache Ops, PMU init etc..
+    │       └── sbl_profile.h					<= SBL profiling framework 
     │
     ├── src							<= Common drivers used across SOCs 
     │   ├── mmcsd
@@ -200,6 +214,13 @@ Directory structure
         │   ├── AM65xxImageGen.bat
         │   └── AM65xxImageGen.sh
         └── tiImageGen						<= Unused for AM65xx. Image generation is handled by PDK build framework (<prsdk_install_path>/pdk_*/packages/ti/build/)
+
+.. _am655x-fxn-flowchart:
+
+Functional Flowchart
+^^^^^^^^^^^^^^^^^^^^
+
+.. Image:: ../images/k3_sbl_call_graph.png
 
 .. _am655x-image-formats:
 
@@ -295,18 +316,18 @@ Building the SBL and its components
 
 **NOTE**
 
--  SBL needs openssl to build. To check if openssl is present, type the following 
+-  SBL needs openssl to build. To check if openssl is present, type the
+   following at the linux or windows prompt.
 ::
 
-    For Linux
     openssl version
 
-::
-
-    For Windows:
-    bash -c "openssl version"
 
 -  To build on Linux, you need to have `mono <http://www.mono-project.com>`__ installed.
+
+-  Refer `Build Dependencies <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Overview.html#command>`__ for instructions on how to install these tools,
+   if they are not already present on your system.
+
 
 .. raw:: html
 
@@ -323,7 +344,7 @@ To build all the SBL components:
     BOOTMEDIA : mmcsd, ospi
 
 -  SBL image files are be located at: **<PDK>/packages/ti/boot/sbl/binary/**
--  SBL examples are located at **<PDK>/packages/ti/boot/sbl/examples/ampMulticoreApp/binary**
+-  SBL examples are located at **<PDK>/packages/ti/boot/sbl/examples/k3MulticoreApp/binary**
 -  SBL lib are located at **<PDK>/packages/ti/boot/sbl/lib/**
 
 **Compile time options for the SBL**
@@ -334,13 +355,18 @@ ease of use, boot time and size. These can be enabled or disabled by editing `sb
 
 -  SBL_LOG_LEVEL : Controls amount of SBL logs on the MCU UART. Varies from 0 
    (no logs) to  3 (all logs)
--  SBL_ENABLE_CLOCKS : Dials up all the PLLs and enables all the module clocks by
-   calling Board_init(). Makes it easier for applications as they no longer have 
-   to initialize clocks and PLLs. However, enabling this significantly increases
-   boot time and power consumption.
+-  SBL_DISPLAY_PROFILE_INFO : At the end of the boot process, displays a log of timestamps
+   at which different SBL profile points are hit. This is useful to see how much 
+   time the SBL spends in different functions.
+-  SBL_ENABLE_PLL : Dials up all the PLLs calling Board_init(). Makes it easier for 
+   applications as they no longer have to initialize the PLLs. However, enabling this
+   significantly increases boot time and power consumption. Requires system firmware to
+   be loaded.
+-  SBL_ENABLE_CLOCKS : Enables all the module clocks by calling Board_init(). Makes 
+   it easier for applications as they no longer have to enable clocks. 
 -  SBL_ENABLE_DDR : Initializes the DDR. At the cost of boot time, this enables
-   applications to run from and use DDR. SBL_ENABLE_CLOCKS must also be enabed
-   for this to work. Enabling this option increases the boot time.
+   applications to run from and use DDR. SBL_ENABLE_CLOCKS and SBL_ENABLE_PLL must
+   also be enabed for this to work. Enabling this option increases the boot time.
 -  SBL_SKIP_MCU_RESET : Jumps to the MCU0 application entry point
    without resetting the core. Enables faster boot time. Will change the MCU's
    mode (lock-step/split). Application also inherits the MCU state as the SBL
@@ -367,8 +393,8 @@ ease of use, boot time and size. These can be enabled or disabled by editing `sb
 
 Applications that the SBL loads must comply with the am655x-sbl-memory-usage_. 
 In the application's linker command file, care must be taken to not use the first
-0x100 bytes of either MCU's ATCM memory and SBL reserved memory from 0x41C40600 
-to 0x41C60000.
+0x100 bytes of either MCU's ATCM memory and SBL reserved memory from 0x41C00100 
+to 0x41C28000.
 
 .. raw:: html
 
@@ -380,9 +406,6 @@ to 0x41C60000.
 -  The local address 0x0 of the MPU is not accessible from the MCU, so any MPU linker 
    command file must not specify any loadable sections in that memory region. The SBL
    will not be able to access that memory to load code or data.
--  MCU app entry point in DDR: If an MCU application specifies that its entry point is in 
-   DDR, it must take care that the function pointed to by the reset vector should setup the 
-   RAT to map DDR, before branching to the application entry point in DDR.
 
 
 .. raw:: html
@@ -455,8 +478,8 @@ To stitch multiple .rprc images into a multicore image, execute the following co
 **NOTE**
 
 -  The linux host environment needs to have `mono <http://www.mono-project.com>`__ installed.
--  The values used for the Core ID and Device ID can be found in `sbl/soc/am65xx/
-   sbl_slave_core_boot.h <http://git.ti.com/keystone-rtos/sbl/blobs/master/soc/am65xx/sbl_slave_core_boot.h#line51>`__
+-  The values used for the Core ID and Device ID can be found in `sbl/soc/k3/
+   sbl_slave_core_boot.h <http://git.ti.com/keystone-rtos/sbl/blobs/master/soc/k3/sbl_slave_core_boot.h#line51>`__
 -  To simply load an ELF without executing it, use CoreID value ONLY_LOAD_ID
 -  If an image for MCU_1 core is provided, the SBL will attempt to switch to 
    split mode. 
@@ -488,6 +511,12 @@ exercises are listed below.
 -  sbl_*_smp_test_*_all_coresTestApp_release.appimage: A single SMP boot test case 
    that boots MCUs in lock step. The MCU app then uses the SBL lib to boot all the
    MPUs in SMP mode, ie, all the MPUs execute a single binary from the same address.
+-  sbl_baremetal_boot_perf_*_mcu1_0TestApp_release.appimage: A single MCU1_0 test
+   case that can be used to measure the effect of enabling/disabling the perf.
+   tuning knobs in the SBL for OSPI boot. The size of the test case can be easily 
+   modified by changing the value of SIZE_OF_PAD in `sbl/example/k3MulticoreApp/
+   sbl_mcu_0_boot_perf_benchmark.c <http://git.ti.com/keystone-rtos/sbl/blobs/master/example/k3MulticoreApp/sbl_mcu_0_boot_perf_benchmark.c#line90>`__
+   to profile for different app image sizes.
 
 The test log for sbl_*_boot_test_*_all_coresTestApp_release is
 ::
@@ -517,6 +546,15 @@ The test log for sbl_*_smp_test_*_all_coresTestApp_release.appimage is
     No of MPU core(s) running: 4                                                  
     All tests have passed
 
+The test log for sbl_baremetal_boot_perf_*_mcu1_0TestApp_release.appimage, when the best boot time is reached is
+::
+
+    Time elapsed since start of SBL: 39692us
+    fxn:boot_perf_test_main cycles: 15877177
+    MCU CLK @ 400000000Hz, cycles/usec = 400
+    Boot time is now optimised....Taa-Daa!!
+    
+    
 Boot Modes
 ^^^^^^^^^^
 
@@ -529,7 +567,7 @@ all the am65xx boards is tabulated below.
 +-----------------------+--------+------+------+------+------+
 | AM65xx EVM            |  YES   | YES  |  NO  |  NO  |  NO  |
 +-----------------------+--------+------+------+------+------+
-| AM65xx IDK            |  YES   |  NO  |  NO  |  NO  |  NO  |
+| AM65xx IDK            |  YES   | YES  |  NO  |  NO  |  NO  |
 +-----------------------+--------+------+------+------+------+
 
 **Booting Via SD Card**
@@ -544,9 +582,9 @@ all the am65xx boards is tabulated below.
    windows <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__
    or `Creating bootable SD card in
    Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__.
-#. Delete all the files from the SD card.
-#. Copy the sbl image (sbl_mmcsd_img_mcu1_0_release.tiimage) to the SD card. 
+#. To update the SBL with a newer version, copy the sbl image (sbl_mmcsd_img_mcu1_0_release.tiimage) to the SD card. 
    Rename it to **tiboot3.bin**
+#. To update the SYSFW with a newer version, copy the system firmware image (sysfw.bin) to the SD card. 
 #. Copy the generated application image(\*.appimage) to the SD card. Rename it to 
    **app**
 
@@ -575,6 +613,11 @@ all the am65xx boards is tabulated below.
 #. Power cycle  the board to boot the appliation from the OSPI flash.
 #. The test logs will be displayed on the MCU UART
 
+.. warning::   If sysfw.bin is not present in the boot media, the boot will fail without displaying any
+               logs on the MCU UART. SBL enables UART logging only after successfully starting the system
+               firmware image. If the system firmware load fails, the RBL will eventually reset the system.
+               
+               
 EVM Setup for testing SBL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
