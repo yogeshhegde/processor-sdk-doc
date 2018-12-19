@@ -74,7 +74,7 @@ device.
 
 |
 
-..note::
+.. note::
 
     For AM572x GP EVM, there is a Mini PCIe connector on
     the LCD board. To connect 2 boards involving a AM572x GP EVM, a
