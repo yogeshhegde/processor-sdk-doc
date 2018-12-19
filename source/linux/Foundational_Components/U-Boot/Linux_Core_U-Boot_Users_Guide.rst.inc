@@ -1824,6 +1824,19 @@ u-boot.img over tftp and then flash it to OSPI at respective addresses.
   => tftp ${loadaddr} u-boot.img
   => sf update $loadaddr 0x280000 $filesize
 
+**Bootmode Switch Settings**
+
+After writing the images, change the bootmode switches on the EVM to the
+following in order to boot from OSPI flash:
+
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| Switch No. | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| SW3        | ON  | OFF | OFF | OFF | OFF | OFF | OFF | ON  | OFF | OFF |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| SW2        | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+
 **Flash Layout for OSPI**
 
 .. Image:: ../images/u-boot-flash-layout-ospi-am65x.png

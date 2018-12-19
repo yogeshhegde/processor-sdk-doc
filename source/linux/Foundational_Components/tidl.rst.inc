@@ -13,9 +13,9 @@ highly optimized CNN/DNN implementation on the EVE and C66x DSP compute engines.
 There are not fundamental limitations preventing the use of TIDL for 1D or 3D input data blobs.
 
 TIDL is a set of open-source Linux software packages and tools enabling offload of 
-Deep Learning **(inference only)** compute workloads from ARM cores to hardware accelerators 
+Deep Learning **(inference only)** compute workloads from Arm cores to hardware accelerators
 such as EVE and/or C66x DSP. The objective for TIDL is to hide complexity of a heterogeneous device for Machine Learning/Neural network
-applications, and help developers focus on their specific requirements. In this way, ARM cores are freed from heavy compute load 
+applications, and help developers focus on their specific requirements. In this way, Arm cores are freed from heavy compute load
 of Deep Learning task and can be used for other roles in your application. This also allows to use traditional Computer Vision 
 (via OpenCV) augmenting Deep Learning algorithms.
 
@@ -64,7 +64,7 @@ TIDL software is intended for AM57xx Sitara devices, that either have DSP or EVE
 - AM572x (2xC66x DSPs)
 - AM571x (1xC66x DSP)
 - AM5706 (1xC66x DSP)
-- AM5708 (2xC66x DSP)
+- AM5708 (1xC66x DSP)
 
 Verified networks topologies
 ----------------------------
@@ -443,7 +443,7 @@ User space TIDL components are included in the Folder /usr/share/ti/tidl and its
 Sub folder      Description of content 
 =============  ======================================================================================================================================================================================================  
 examples        test (file-to-file examples), imagenet classification, image segmentation and SSD multibox examples are here. Matrix GUI example which is based on imagenet one, is in folder tidl_classification.
-utils           ARM 32-bit binaries for importing models and simulation, and configuration files for running example import tool operations.  
+utils           Arm 32-bit binaries for importing models and simulation, and configuration files for running example import tool operations.
 viewer          Imported model parser and dot graph creator. Input is TIDL model, output is .dot file that can be converted to PNG or PDF format using dot utility (on x86).   
 tidl_api        Source of TIDL API implementation.
 =============  ======================================================================================================================================================================================================  
@@ -479,7 +479,7 @@ Import process is done in two steps.
 
 During import process, some of layers will be coalesced into one TIDL Layer (e.g. convolution and ReLU layer). This is done to further leverage EVE architecture which allows certain operations for free. Structure of converted (but equivalent) network can be checked using TIDL network viewer.
 
-We provide a tool (Linux x86 or ARM Linux port) to import the Model and Parameters trained using either caffe frame work or tensor flow frame work in PC. \
+We provide a tool (Linux x86 or Arm Linux port) to import the Model and Parameters trained using either caffe frame work or tensor flow frame work in PC. \
 This tool will accept various parameters through import configuration file and generate the Model and Parameter file that the code \
 will be executed using TIDL library across multiple EVE and DSP cores. The import configuration file is available in {TIDL_install_path}/test/testvecs/config/import
 
@@ -774,7 +774,7 @@ For networks with two layer groups, viewer generated graph clearly depicts layer
 Simulation Tool
 ----------------
 
-We provide simulation tool both in PLSDK ARM filesystem, and Linux x86 simulation tool.
+We provide simulation tool both in PLSDK Arm filesystem, and Linux x86 simulation tool.
 This is bit-exact simulation, so output of simulation tool is expected to be identical to the output of A5749 or AM57xx target.
 Please use this tool as convenience tool only (E.g. testing model on setup without target EVM).
 
@@ -1073,20 +1073,20 @@ Troubleshooting
   This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
 
 
-ARMNN and ARM Compute Library
-=============================
+Arm NN and Arm Compute Library
+==============================
 
-For Sitara devices without accelerators like C66x or EVE (AM3/4), one can use ARM provided libraries created for supporting inference only tasks on ARM CPUs.
+For Sitara devices without accelerators like C66x or EVE (AM3/4), one can use Arm provided libraries created for supporting inference only tasks on Arm CPUs.
 These two libraries can be used on AM57xx devices too, but as complementary approach to previously discussed TIDL-API.
 
-ARM Compute Library
+Arm Compute Library
 -------------------
 
 It is a software library for computer vision and machine learning, optimized for NEON SIMD architecture (Mali GPU OpenCL is not applicable to TI devices).
-Exact list of functions can be found at https://developer.arm.com/technologies/compute-library. ARM Compute Libraries and sample executables are included in PLSDK filesystem.
-AM3/4/5 devices can utilize this library to unleash full potential of ARM CPUs.
+Exact list of functions can be found at https://developer.arm.com/technologies/compute-library. Arm Compute Libraries and sample executables are included in PLSDK filesystem.
+AM3/4/5 devices can utilize this library to unleash full potential of Arm CPUs.
 
-Sample NN related executables (using ARM Compute Library only):
+Sample NN related executables (using Arm Compute Library only):
 
 ::
 
@@ -1106,13 +1106,13 @@ Sample NN related executables (using ARM Compute Library only):
    /usr/bin/graph_vgg19
 
 
-ARMNN
------
+Arm NN
+------
 
-ARMNN is library built on top of ARM Compute Library leveraging its NEON optimized kernels. Importing of Caffe and Tensorflow inference models is significantly simplified.
+Arm NN is library built on top of Arm Compute Library leveraging its NEON optimized kernels. Importing of Caffe and Tensorflow inference models is significantly simplified.
 Library and executables are part of AM3/4/5 target filesystem. More information can be found at: https://developer.arm.com/products/processors/machine-learning/arm-nn
 
-Sample ARMNN executables using Caffe models:
+Sample Arm NN executables using Caffe models:
 
 ::
 
@@ -1134,5 +1134,5 @@ Sample executables using TF models:
    /usr/bin/TfMobileNet-Armnn
    /usr/bin/TfResNext-Armnn
   
-Please note that these examples (ARM baseline code) use hardcoded paths, so source modification might be required (one can use Yocto based compilation - look for armnn recipe in meta-arago layer).
+Please note that these examples (Arm baseline code) use hardcoded paths, so source modification might be required (one can use Yocto based compilation - look for armnn recipe in meta-arago layer).
 

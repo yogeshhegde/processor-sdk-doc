@@ -142,7 +142,7 @@ Kernel
 | Based on Version: 4.14.67
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-4.14.y
-| Commit ID: 74866f59d3507397ce9e296998fa2fc74f633dd7
+| Commit ID: d315a9bb00b65589fa23ad07c0b07e3b672db0d0
 
 |
 
@@ -156,7 +156,7 @@ Kernel
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-rt-4.14.y
-| Commit ID: 3011944cfe166a6fc1bc96f578183d0c1c8ad664
+| Commit ID: cfb76a2032cf42007d7aefcefda1b5a673999769
 
 |
 

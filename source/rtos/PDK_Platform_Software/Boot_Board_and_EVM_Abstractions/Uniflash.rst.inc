@@ -374,8 +374,12 @@ Programming FlashWriter on AM65xx Platform
   <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_how_to_guides.html#uart-connection>`__
 - Refer Section :ref:`erasing_target` for erasing the flash device on the target platform.
 - To program SBL and app image on the AM65xx EVM
-    - Program the SBL image (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0.
-    - Program the SBL app (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0x80000.
+    - First Program the SBL image (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0.
+      Power down, then restart the entire process again to flash the next image.
+    - Program the system firmware image (sysfw.bin) at offset 0x40000.
+      Power down, then restart the entire process again to flash the next image.
+    - Program the SBL app (sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage) at offset 0xA0000.
+      Power down, flashing is now complete
 
 ::
 
@@ -385,7 +389,8 @@ Programming FlashWriter on AM65xx Platform
 
     Example:
     sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/binary/ospi/am65xx_evm/sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 000
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/example/ampMulticoreApp/binary/am65xx_evm/ sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o 80000
+    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>packages/ti/drv/sciclient/soc/V0/sysfw.bin -d 3 -o 40000
+    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/example/ampMulticoreApp/binary/am65xx_evm/sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o A0000
 
 ::
 
@@ -395,7 +400,8 @@ Programming FlashWriter on AM65xx Platform
 
     Example:
     .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\binary\ospi\am65xx_evm\sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 000
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\example\ampMulticoreApp\binary\am65xx_evm\sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o 80000
+    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\drv\sciclient\V0\sysfw.bin -d 3 -o 40000
+    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\example\ampMulticoreApp\binary\am65xx_evm\sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o A0000
 
 .. note:: When using the dslite scripts for the AM65xx EVMs:
 
