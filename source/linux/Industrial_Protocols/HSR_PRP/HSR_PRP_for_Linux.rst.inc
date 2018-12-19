@@ -41,7 +41,7 @@ Features supported
 -  **Support for Multicast Filtering**
 
    -  Supported on all SoCs
-   -  Hash Table of 128 entries for faster lookup
+   -  Hash Table of 256 entries for faster lookup
    -  O(1) complexity
    -  User configurable mask to select bits for hashing
 
@@ -1093,16 +1093,56 @@ link command. To support VLAN tag in SV frames, the command now accepts
 
  * VLAN Identifier (VID) - sv_vid
  * Priority code point (PCP) - sv_pcp
- * Drop eligible indicator  (DEI) or formerly known as Canonical Format Indicator (CFI) - sv_cfi
+ * Drop eligible indicator  (DEI) or formerly known as Canonical Format Indicator (CFI) - sv_dei
 
 User provides following values in the ip link add command for this purpose.
 
 ::
 
- sv_vid <vid value> sv_pcp <pcp value> sv_cfi <cfi value>
+ sv_vid <vid value> sv_pcp <pcp value> sv_dei <dei value>
 
 These are all optional parameters. At least one of the value to be provided
 to use vlan. A default value of zero is used if not supplied by the user.
+
+Node Table
+----------
+
+HSR/PRP offloaded LRE supports a Node Table (NT) of 256 entries on AM5/K2G
+devices and 128 entries on AM3/4 devices. NT entries are maintained in
+shared RAM of the PRU ICSS. For HSR, an entry containing the MAC address
+of the remote node is inserted to the Node table when a supervison(SV) frame
+is received from that node. For PRP, this gets added for any frame received
+from the node. Firmware first looks up the address in the NT upon receiving
+a SV frame. The look up status is indicated in a bit in the buffer descriptor.
+The same is checked by the driver and if the look up status indicates no
+success, the MAC entry is inserted to the NT by driver.  For subsequent
+frames received from the node, the firmware updates the NT and the insertion
+process is skipped in the driver.
+
+The driver also runs an ageing timer to forget the node if there was no
+frame received from the remote node for a period of time as specified by
+the standard. During the timeout, if the entry is aged, then the same is
+deleted from the NT.
+
+In Summary, search/update of an NT entry is done in firmware and insert/
+delete of an entry is done by the driver.
+
+The NT entries can be displayed by the user at the console using the proc
+file /proc/<if_name>/node-table.
+
+Example: If the interface name is prp0, a sample command is shown below to
+display the NT entries.
+
+::
+
+ root@am57xx-evm:~# cat /proc/prp0/node-table
+ 
+ Remote nodes in network: 1
+ 
+ Node[0]:
+ MAC ADDR: 70:ff:76:1c:16:ef
+ DANP
+ Time Last Seen: RxA=0 RxB=0
 
 Net-SNMP
 --------
@@ -1691,7 +1731,7 @@ string in the command line of the script as documented in the script.
  	echo "	<if_name of hsr/prp interface>  [vlan]" 
  	echo " vlan is optional and if present use vlan tag"
  	echo " in the SV frame. Use values of vid, pcp and"
- 	echo " and cfi hardcoded in the script"
+ 	echo " and dei hardcoded in the script"
  	exit
  fi
 
@@ -1708,7 +1748,7 @@ string in the command line of the script as documented in the script.
  #change this as needed
  vid=10
  pcp=5
- cfi=0
+ dei=0
 
  ifconfig $if_a down
  ifconfig $if_b down
@@ -1722,14 +1762,14 @@ string in the command line of the script as documented in the script.
 
  if [ "$1" = "hsr" ]; then
   	if [ "$vl" = "vlan" ]; then
- 	options="version 1 sv_vid $vid sv_pcp $pcp sv_cfi $cfi"
+ 	options="version 1 sv_vid $vid sv_pcp $pcp sv_dei $dei"
   		echo $options
  	else
 		options="version 1"
  	fi
  else
  	if [ "$vl" = "vlan" ]; then
- 		options="sv_vid $vid sv_pcp $pcp sv_cfi $cfi"
+ 		options="sv_vid $vid sv_pcp $pcp sv_dei $dei"
  	else
  		options=""
  	fi
@@ -1751,7 +1791,7 @@ string in the command line of the script as documented in the script.
  	echo "	<if_name of hsr/prp interface>  [vlan]" 
  	echo " vlan is optional and if present use vlan tag"
  	echo " in the SV frame. Use values of vid, pcp and"
- 	echo " and cfi hardcoded in the script"
+ 	echo " and dei hardcoded in the script"
  	exit
  fi
  
@@ -1768,7 +1808,7 @@ string in the command line of the script as documented in the script.
  #change this as needed
  vid=10
  pcp=5
- cfi=0
+ dei=0
  
  ifconfig $if_a down
  ifconfig $if_b down
@@ -1782,14 +1822,14 @@ string in the command line of the script as documented in the script.
  
  if [ "$1" = "hsr" ]; then
  	if [ "$vl" = "vlan" ]; then
- 		options="version 1 sv_vid $vid sv_pcp $pcp sv_cfi $cfi"
+ 		options="version 1 sv_vid $vid sv_pcp $pcp sv_dei $dei"
  		echo $options
  	else
   		options="version 1"
  	fi
  else
  	if [ "$vl" = "vlan" ]; then
- 		options="sv_vid $vid sv_pcp $pcp sv_cfi $cfi"
+ 		options="sv_vid $vid sv_pcp $pcp sv_dei $dei"
  	else
  		options=""
  	fi
@@ -1868,25 +1908,43 @@ Sample logs are shown below:
     [  3]  0.0-10.0 sec   106 MBytes  89.0 Mbits/sec   0.078 ms  587/76246 (0.77%)
     [  3]  0.0-10.0 sec  1 datagrams received out-of-order
     root@am57xx-evm:~#
-    root@am57xx-evm:~# cat /sys/kernel/debug/hsr/node_table
-    Node Table entries
-    MAC-Address-A,   MAC-Address-B, time_in[A], time_in[B], Address-B port
-    d6:ab:09:0d:f0:e5: 00:00:00:00:00:00:0x45f, 0x45f 0x0
+    root@am57xx-evm:~# cat /proc/hsr0/node-table 
+    
+    Remote nodes in network: 1
+    
+    Node[0]:
+    MAC ADDR: d6:ab:09:0d:f0:e5
+    DANH
+    Time Last Seen: RxA=0 RxB=0
 
-    root@am57xx-evm:~# cat /sys/kernel/debug/hsr/stats
-    Stats entries
-    cnt_tx_a = 57946
-    cnt_tx_b = 57950
-    cnt_tx_c = 57536
-    cnt_rx_wrong_lan_a = 5
-    cnt_rx_wrong_lan_b = 0
-    cnt_rx_a = 232255
-    cnt_rx_b = 232233
-    cnt_rx_c = 230427
-    cnt_rx_errors_a = 45
-    cnt_rx_errors_b = 43
-    cnt_own_rx_a = 0
-
+    root@am57xx-evm:~# cat /proc/hsr0/lre-stats  
+    LRE statistics:
+    Rx Offloaded: 1
+        lreTxA: 15915369
+        lreTxB: 15915369
+        lreTxC: 673
+        lreErrWrongLanA: 207816
+        lreErrWrongLanB: 207789
+        lreErrWrongLanC: 0
+        lreRxA: 0
+        lreRxB: 27
+        lreRxC: 15707590
+        lreErrorsA: 0
+        lreErrorsB: 0
+        lreErrorsC: 0
+        lreNodes: 1
+        lreProxyNodes: 0
+        lreUniqueRxA: 0
+        lreUniqueRxB: 0
+        lreUniqueRxC: 0
+        lreDuplicateRxA: 0
+        lreDuplicateRxB: 0
+        lreDuplicateRxC: 0
+        lreMultiRxA: 0
+        lreMultiRxB: 0
+        lreMultiRxC: 0
+        lreOwnRxA: 0
+        lreOwnRxB: 0
 
 
 **DAN-H-2**
@@ -1950,24 +2008,45 @@ Sample logs are shown below:
     [  3] Server Report:
     [  3]  0.0-10.0 sec   106 MBytes  89.0 Mbits/sec   0.078 ms  587/76246 (0.77%)
     [  3]  0.0-10.0 sec  1 datagrams received out-of-order
-    root@am57xx-evm:~# cat /sys/kernel/debug/hsr/node_table
-    Node Table entries
-    MAC-Address-A,   MAC-Address-B, time_in[A], time_in[B], Address-B port
-    70:ff:76:1c:0f:8d: 00:00:00:00:00:00:0x2f72, 0x2f72 0x0
-    root@am57xx-evm:~# cat /sys/kernel/debug/hsr/stats
-    Stats entries
-    cnt_tx_a = 233534
-    cnt_tx_b = 233534
-    cnt_tx_c = 233171
-    cnt_rx_wrong_lan_a = 0
-    cnt_rx_wrong_lan_b = 0
-    cnt_rx_a = 57638
-    cnt_rx_b = 57638
-    cnt_rx_c = 57457
-    cnt_rx_errors_a = 12
-    cnt_rx_errors_b = 13
-    cnt_own_rx_a = 0
-    cnt_own_rx_b = 0
+
+    root@am57xx-evm:~# cat /proc/hsr0/node-table 
+    
+    Remote nodes in network: 1
+    
+    Node[0]:
+    MAC ADDR: 70:ff:76:1c:0f:8d
+    DANH
+    Time Last Seen: RxA=0 RxB=0
+
+    root@am57xx-evm:/# cat /proc/prp0/lre-stats  
+    LRE statistics:
+    Rx Offloaded: 1
+
+        lreTxA: 208128
+        lreTxB: 208128
+        lreTxC: 31305063
+        lreErrWrongLanA: 0
+        lreErrWrongLanB: 0
+        lreErrWrongLanC: 0
+        lreRxA: 0
+        lreRxB: 0
+        lreRxC: 208
+        lreErrorsA: 0
+        lreErrorsB: 0
+        lreErrorsC: 0
+        lreNodes: 1
+        lreProxyNodes: 0
+        lreUniqueRxA: 0
+        lreUniqueRxB: 0
+        lreUniqueRxC: 0
+        lreDuplicateRxA: 0
+        lreDuplicateRxB: 0
+        lreDuplicateRxC: 0
+        lreMultiRxA: 0
+        lreMultiRxB: 0
+        lreMultiRxC: 0
+        lreOwnRxA: 0
+        lreOwnRxB: 0
 
 
 .. _PLSDK_PTP_Testing:
@@ -2100,30 +2179,49 @@ Sample logs are shown below:
     ------------------------------------------------------------
     [  3] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 43497
     [ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
-    [  3]  0.0-10.0 sec   106 MBytes  88.8 Mbits/sec   0.070 ms  583/76109 (0.77%)
+    [  3]  0.0-10.0 sec   106 MBytes  88.8 Mbits/sec   0.070 ms  0/76109 (0.0%)
     [  3]  0.0-10.0 sec  1 datagrams received out-of-order
     ^Croot@am57xx-evm:~#
     root@am57xx-evm:~#
     root@am57xx-evm:~#
-    root@am57xx-evm:~# cat /sys/kernel/debug/prp/stats
-    Stats entries
-    cnt_tx_a = 40864
-    cnt_tx_b = 40864
-    cnt_tx_c = 40801
-    cnt_rx_wrong_lan_a = 8
-    cnt_rx_wrong_lan_b = 0
-    cnt_rx_a = 230882
-    cnt_rx_b = 230878
-    cnt_rx_c = 230746
-    cnt_rx_errors_a = 0
-    cnt_rx_errors_b = 0
+    root@am57xx-evm:/# cat /proc/prp0/node-table 
+   
+    Remote nodes in network: 1
+   
+    Node[0]:
+    MAC ADDR: 2a:da:8c:50:1b:86 
+    DANP
+    Time Last Seen: RxA=0 RxB=0
 
-    root@am57xx-evm:~# cat /sys/kernel/debug/prp/node_table
-    Node Table entries
-    MAC-Address-A,   MAC-Address-B, time_in[A], time_in[B], Address-B port, san_a, san_b
-    11:ff:fe:80:00:00: 00:00:00:00:00:00:0x209604, 0x20964b 0x0, 1, 0
-    2a:da:8c:50:1b:86: 00:00:00:00:00:00:0x20c78e, 0x20c78e 0x0, 0, 0
+    root@am57xx-evm:/# cat /proc/prp0/lre-stats  
+    LRE statistics:
+    Rx Offloaded: 1
 
+        lreTxA: 208128
+        lreTxB: 208128
+        lreTxC: 31305063
+        lreErrWrongLanA: 0
+        lreErrWrongLanB: 0
+        lreErrWrongLanC: 0
+        lreRxA: 0
+        lreRxB: 0
+        lreRxC: 208
+        lreErrorsA: 0
+        lreErrorsB: 0
+        lreErrorsC: 0
+        lreNodes: 1
+        lreProxyNodes: 0
+        lreUniqueRxA: 0
+        lreUniqueRxB: 0
+        lreUniqueRxC: 0
+        lreDuplicateRxA: 0
+        lreDuplicateRxB: 0
+        lreDuplicateRxC: 0
+        lreMultiRxA: 0
+        lreMultiRxB: 0
+        lreMultiRxC: 0
+        lreOwnRxA: 0
+        lreOwnRxB: 0
 
 **DAN-P-2**
 
@@ -2180,7 +2278,7 @@ Sample logs are shown below:
     [  3] local 192.168.2.30 port 38900 connected with 192.168.2.20 port 5001
     [ ID] Interval       Transfer     Bandwidth
     [  3]  0.0-10.0 sec   109 MBytes  91.5 Mbits/sec
-    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b 90M
+    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b 88M
     ------------------------------------------------------------
     Client connecting to 192.168.2.20, UDP port 5001
     Sending 1470 byte datagrams
@@ -2191,27 +2289,44 @@ Sample logs are shown below:
     [  3]  0.0-10.0 sec   107 MBytes  89.5 Mbits/sec
     [  3] Sent 76110 datagrams
     [  3] Server Report:
-    [  3]  0.0-10.0 sec   106 MBytes  88.8 Mbits/sec   0.069 ms  583/76109 (0.77%)
+    [  3]  0.0-10.0 sec   106 MBytes  88.8 Mbits/sec   0.069 ms  0/76109 (0.0%)
     [  3]  0.0-10.0 sec  1 datagrams received out-of-order
-    root@am57xx-evm:~#  cat /sys/kernel/debug/prp/stats
-    Stats entries
-    cnt_tx_a = 232489
-    cnt_tx_b = 232488
-    cnt_tx_c = 232437
-    cnt_rx_wrong_lan_a = 0
-    cnt_rx_wrong_lan_b = 0
-    cnt_rx_a = 40822
-    cnt_rx_b = 40822
-    cnt_rx_c = 40757
-    cnt_rx_errors_a = 0
-    cnt_rx_errors_b = 0
+    Remote nodes in network: 1
+   
+    Node[0]:
+    MAC ADDR: 70:ff:76:1c:0f:8d
+    DANP
+    Time Last Seen: RxA=0 RxB=0
 
-    root@am57xx-evm:~# cat /sys/kernel/debug/prp/node_table
-    Node Table entries
-    MAC-Address-A,   MAC-Address-B, time_in[A], time_in[B], Address-B port, san_a, san_b
-    70:ff:76:1c:0f:8d: 00:00:00:00:00:00:0x20cd1b, 0x20cd1b 0x0, 0, 0
-    11:ff:fe:80:00:00: 00:00:00:00:00:00:0x20a393, 0x20a38c 0x0, 0, 1
+    root@am57xx-evm:/# cat /proc/prp0/lre-stats  
+    LRE statistics:
+    Rx Offloaded: 1
 
+        lreTxA: 208128
+        lreTxB: 208128
+        lreTxC: 31305063
+        lreErrWrongLanA: 0
+        lreErrWrongLanB: 0
+        lreErrWrongLanC: 0
+        lreRxA: 0
+        lreRxB: 0
+        lreRxC: 208
+        lreErrorsA: 0
+        lreErrorsB: 0
+        lreErrorsC: 0
+        lreNodes: 1
+        lreProxyNodes: 0
+        lreUniqueRxA: 0
+        lreUniqueRxB: 0
+        lreUniqueRxC: 0
+        lreDuplicateRxA: 0
+        lreDuplicateRxB: 0
+        lreDuplicateRxC: 0
+        lreMultiRxA: 0
+        lreMultiRxB: 0
+        lreMultiRxC: 0
+        lreOwnRxA: 0
+        lreOwnRxB: 0
 
 |
 
@@ -2509,7 +2624,7 @@ Useful Commands
 
  **Linux HSR/PRP driver help commands**
 
-To dump lre_info such as sv_vid, sv_pcp, sv_cfi, protocol etc used at the LRE of
+To dump lre_info such as sv_vid, sv_pcp, sv_dei, protocol etc used at the LRE of
 Linux HSR/PRP driver
 
 -  cat /sys/kernel/debug/<hsr/prp-if_name>/lre_info
@@ -2566,7 +2681,7 @@ in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
 FAQ
 ----
 
-#. How to disable udhcpc from sending DHCP request over prueth Ethernet
+*  How to disable udhcpc from sending DHCP request over prueth Ethernet
    interfaces (eth2-eth3) when it is configured to run HSR/PRP protocol
    in firmware?
 
@@ -2595,3 +2710,15 @@ to /etc/systemd/network/ one for each prp0 or hsr0 similar to eth0, by
 using a Match name string of hsr0 or prp0. More details on this is at
 [`[6] <https://wiki.archlinux.org/index.php/systemd-networkd#Configuration_files>`__]
 
+*  Why do I see duplicate frames displayed by ping when I use PRP interface?
+
+In ICSS firmware, PRU-0 is assumed to be for Link-A and PRU-1 for Link-B
+of a LRE in the case DANP. So in PRP case, Link-A should be connected
+network A and Link-B should be connected to Network B of a PRP network
+since net-id has to match as per duplicate detect alogrithm. If this
+convention is not followed, duplicate detection logic fails and duplicates
+are sent to upper layer causing ping application to complain about duplicates.
+So when creating prp interface, make sure ip link command parameter slave 1
+use linux interface associated with PRU-0 and slave 2 use interface associated
+with PRU-1. Also when making network connection make sure that PRU-0 port is
+connected to Network A and PRU-1 port to Network B.
