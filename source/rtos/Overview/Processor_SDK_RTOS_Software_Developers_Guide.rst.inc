@@ -175,7 +175,7 @@ build information, and examples to use as a template to start development.
 .. _PCIe: index_device_drv.html#pcie
 .. _GPIO: index_device_drv.html#gpio
 .. _I2C: index_device_drv.html#i2c
-.. _McSPI-QSPI-OSPI: index_device_drv.html#McSPI-QSPI-OSPI
+.. _McSPI-QSPI-OSPI: index_device_drv.html#mcspi-qspi-ospi
 .. _EDMA3: index_device_drv.html#edma3
 .. _ICSS-EMAC(DRIVER,FIRMWARE): index_device_drv.html#icss-emac-driver-firmware
 .. _PRUSS: index_device_drv.html#pruss

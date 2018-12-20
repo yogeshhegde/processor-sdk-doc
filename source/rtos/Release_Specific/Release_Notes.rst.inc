@@ -166,7 +166,7 @@ environment (IDE) for all devices and EVMs:
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
-If you need to install CCS, see the `CCS installation section <Overview.html#code-composer-studio>`__
+If you need to install CCS, see the `CCS installation section <index_overview.html#code-composer-studio>`__
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
 
@@ -413,7 +413,7 @@ The following table lists all supported devices for a given installer.
 Evaluation Modules 
 --------------------
 
-See `Processor SDK Supported Platforms <Release_Specific.html#supported-platforms-and-versions>`__
+See `Processor SDK Supported Platforms <index_release_specific.html#supported-platforms-and-versions>`__
 page for a list of supported EVMs per platform and links to more
 information.
 
