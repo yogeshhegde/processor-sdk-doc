@@ -43,40 +43,18 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 05.01.00
+Release 05.02.00
 ==================
 
-Released October 2018
+Released December 2018
 
 .. rubric:: What's New
    :name: whats-new
 
-- Processor SDK Linux now supports AM65x family of devices, in addition to AM335x, AM437x, AM57x, K2H, K2E, K2L, K2G and OMAP-L138.
-- New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
-- AM65x
-   - Features supported
-        - Boot: please refer to `U-Boot for AM65x <Foundational_Components_U-Boot.html#u-boot-for-am65x-family-of-socs>`__
-        - Baseport: Dual and Quad Core SMP support
-        - Connectivity: OSPI, MMC, CPSW, CIFS, USB host and client driver, UART, I2C, USB device, PRU Ethernet, SD card
-        - Audio: McASP, stereo, playback and record
-        - Graphics: 3D SGX Acceleration with Qt, Wayland/Weston, Matrix GUI
-        - Display: DSS, touchscreen, DRM, LCD backlight
-        - IPC: Hardware spinlocks and mailbox, R5F remoteproc
-        - DDR @ 1333 MHz, and CPU @ 800 MHz configuration
-   - Features not (yet) supported
-        - PCIe, USB 3.0
 - Deep Learning
-   - AM57xx: TIDL performance optimizations: Concurrent processing on all 4 cores: 2xDSP + 2xEVE
-   - `Port ARM NN inference engine to AM335x, AM437x, AM57xx <Foundational_Components_TIDL.html#armnn-and-arm-compute-library>`__. For more information on ARMNN, see `here <https://developer.arm.com/products/processors/machine-learning/arm-nn>`__
+   - Python binding
+   - Added Arm NN system level demo
 - HSR/PRP
-   - Dual Instance support on the two PRU-ICSS on AM571x
-   - `Support VLAN tag in supervision frames. <Industrial_Protocols_HSR_PRP.html#vlan-tag-in-supervision-frame>`__
-   - Extend HSR/PRP support to AM335x, AM437x, K2G from AM57xx (Note: PTP SAN is supported only on AM57xx in this release)
-- New TI Designs (available as part of Processor SDK Linux)
-   - `Flexible Interface (PRU-ICSS) Reference Design for Simultaneous, Coherent DAQ Using Multiple ADCs into Processor SDK <Examples_and_Demos_Application_Demos.html#pru-adc-demo>`__
-   - `Robotics sense and avoid demonstration using TI mmWave sensors <Examples_and_Demos_Application_Demos.html#sense-and-avoid-demo-with-mmwave-and-sitara>`__
-- OpenCV Performance optimizatons: StereoBM with C66x offload
-- `GTK+ 3.0 Support on AM335x, AM437x, AM57x <Foundational_Components_Graphics.html#gtk-graphics-framework>`__
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -84,7 +62,7 @@ Released October 2018
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.14.67+ (2018 LTS)        |
+| Linux Kernel             | 4.14.79+ (2018 LTS)        |
 +--------------------------+----------------------------+
 | U-Boot                   | 2018.01                    |
 +--------------------------+----------------------------+
@@ -92,9 +70,9 @@ Released October 2018
 +--------------------------+----------------------------+
 | Linaro Toolchain (gcc)   | 7.2-2017.11 hard-float     |
 +--------------------------+----------------------------+
-| Qt                       | 5.9.6                      |
+| Qt                       | 5.9.7                      |
 +--------------------------+----------------------------+
-| OpenCL                   | 1.1.16                     |
+| OpenCL                   | 1.1.17                     |
 +--------------------------+----------------------------+
 | OpenCV                   | 3.1                        |
 +--------------------------+----------------------------+
@@ -127,8 +105,8 @@ U-Boot
 | The U-Boot git repository, branch and commit id can be found below:
 | Based on verson: 2018.01
 | URL: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2018.03
-| Commit ID: cdb1cc0a9e56e703166b1a1ff08b30d99e266244
+| Branch: ti2018.05
+| Commit ID: eac41e26ac56fcabf9826b21377931c7b8e646f2
 
 |
 
@@ -139,10 +117,10 @@ Kernel
    :name: linux-kernel
 
 | The kernel git repository, branch and commit id can be found below:
-| Based on Version: 4.14.67
+| Based on Version: 4.14.79
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-4.14.y
-| Commit ID: d315a9bb00b65589fa23ad07c0b07e3b672db0d0
+| Commit ID: bde58ab01e3651529680af3eeea7e4d37cb94d40
 
 |
 
@@ -151,12 +129,12 @@ Kernel
 
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
-| Kernel Version: 4.14.67
-| RT Kernel Version: 4.14.67-rt40
+| Kernel Version: 4.14.79
+| RT Kernel Version: 4.14.79-rt47
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-rt-4.14.y
-| Commit ID: cfb76a2032cf42007d7aefcefda1b5a673999769
+| Commit ID: 28d73230daa45803af5fed792bf635fe40ee3dbd
 
 |
 
