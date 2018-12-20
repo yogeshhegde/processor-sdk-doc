@@ -1,5 +1,5 @@
 Introduction
-=============
+------------
 
 SPI driver enables communication for general SPI, MCSPI (Multichannel
 SPI), QSPI (Quad SPI) and OSPI (Octal SPI) based peripherals on board 
@@ -10,7 +10,7 @@ receive data lanes. Driver supports configuration for either single,
 dual, quad or octal data lines
 
 Modes of Operation
-===================
+------------------
 
 Following modes of operations are supported:
 
@@ -27,10 +27,10 @@ is invoked once transaction is complete.This mode is supported only in
 interrupt configuration.
 
 Driver Configuration
-======================
+--------------------
 
 Board Specific Configuration
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All board specific configurations eg:enabling clock and pin-mux for SPI
 pins are required before calling any driver APIs.By default Board_Init()
@@ -41,7 +41,7 @@ for additional details.Once board specific configuration is
 complete \ *SPI_init()* API should be called to initialize driver.
 
 SoC Specific Configuration
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All SoC specific configurations (eg: SPI module registers base address,
 interrupt configurations, etc.) can be set using SPI_socSetInitCfg() SoC
@@ -50,7 +50,7 @@ configurations can be retrieved using SPI_socGetInitCfg() SoC driver
 API. 
 
 SPI Configuration Structure
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The *SPI_soc.c* file binds driver with hardware attributes on the board
 through *SPI_config[]* structure. This structure must be provided to the
@@ -66,7 +66,7 @@ Application will need to include appropriate offset to instance while
 invoking *SPI_open()* API..
 
 APIs
-=====
+----
 
 API Reference for application:
 
@@ -84,7 +84,7 @@ SPI IP V1 driver also supports multi-channel API's:
    :name: section
 
 Open SPI
----------
+^^^^^^^^
 
 ::
 
@@ -149,10 +149,10 @@ SPI IP V1 driver also supports multi-channel transfer API's:
   8/16-bit word length.
 
 Examples
-===========
+--------
 
 SPI
-----
+^^^
 
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 | Name                  | Description           | Expected Results      | SoC Supported       | Build Type          |
@@ -217,7 +217,7 @@ SPI
 
 | 
 QSPI
------
+^^^^
 
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 | Name                  | Description           | Expected Results      | SoC Supported       | Build Type          |
@@ -244,7 +244,7 @@ QSPI
 
 | 
 OSPI
------
+^^^^
 
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 | Name                  | Description           | Expected Results      | SoC Supported       | Build Type          |
@@ -260,7 +260,7 @@ OSPI
 | 
 
 MCSPI
-------
+^^^^^
 
 +-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
 | Name            | Description     | Additional EVM                         | Expected        | SoC Supported       | Build Type          |
@@ -418,8 +418,40 @@ Building SPI examples
    Import and build CCS Project from  <pdk>/packages/MyExampleProjects/
 
 
+Support for Benchmark Testing
+------------------------------
+
++-----------------------+-----------------------+-----------------------------------------+-----------------------+-----------------------+
+| Name                  | Description           | Expected Results                        | SOC/Core Suppported   | Build Type            |
++=======================+=======================+=========================================+=======================+=======================+
+| OSPI flash Test App   | Test application used | Test application                        |  am65xx/A53           | make                  |  
+|                       | for performance       | will print on the UART console:         |  am65xx/R5            |                       | 
+|                       | benchmarking          |                                         |                       |                       |
+|                       |                       | Board_flashWrite ### bytes at transfer  |                       |                       |
+|                       |                       | rate #### Kbps                          |                       |                       |
+|                       |                       |                                         |                       |                       |
+|                       |                       | Board_flashRead ### bytes at transfer   |                       |                       |
+|                       |                       | rate #### Mbps                          |                       |                       |
+|                       |                       |                                         |                       |                       |
+|                       |                       | Board_flashWrite CPU Load %##           |                       |                       |
+|                       |                       |                                         |                       |                       |
+|                       |                       | Board_flashRead CPU Load %##            |                       |                       |
++-----------------------+-----------------------+-----------------------------------------+-----------------------+-----------------------+
+
+.. note::
+
+  1. Data transfer between DDR and OSPI flash memory, performance measurement does not include time to invalidate/write back cache
+  2. GTC counter (200MHz) used for throughput measurement on A53, and PMU cycle counter (400MHz) on R5
+  3. sysbios load moduel used for load measurement
+  4. Pipeline PHY enabled, DDR mode enabled in DAC mode
+  5. Pipeline PHY disabled, DDR mode disabled in INDAC mode with ospi clock divider of 32
+  6. Read/write transfer size of 1M bytes
+  7. Write transfer size 1M bytes with DMA chunk size of 16 bytes in DAC DMA mode
+
+|
 Additional References
-======================
+---------------------
+
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
@@ -429,7 +461,7 @@ Additional References
 +-----------------------------------+-----------------------------------+
 | Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
 |                                   | \drv\spi\docs\ReleaseNotes_SPI_LL |
-|                                   | D.pdf                             |
+|                  git                  | D.pdf                             |
 +-----------------------------------+-----------------------------------+
 
 | 
