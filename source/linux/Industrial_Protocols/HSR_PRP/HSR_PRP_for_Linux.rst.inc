@@ -555,16 +555,29 @@ to ARM core (a.k.a Host). If reset, the frame is dropped at the PRU. This
 is an imperfect match since there can be multiple MAC addresses that produces
 the same hash value. So these frames will get forwarded to the ARM core.
 
-ti_prueth.pruss<ID>_mc_mask is the module parameter for MASK where <ID> is
-described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
+ti_prueth.pruss<ID>_port<PORT>_mc_mask is the module parameter for MASK where <ID> is
+described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping` and <PORT> is
+'0' in HSR/PRP case since both ports share the same MASK (port 1 does not need 
+to be set and has no effect), and '0' or '1' in Dual
+EMAC case since both ports can be configured independently.
 
-Sample bootargs with MASK configured
+Sample bootargs with MASK configured (HSR/PRP)
 
 ::
 
- setenv pruss1_mc_mask "FF:FF:FF:FF:00:00"
- setenv pruss2_mc_mask "FF:FF:FF:FF:00:00"
- setenv args_mmc 'run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}  ti_prueth.pruss1_ethtype=${pruss1_ethtype} ti_prueth.pruss2_ethtype=${pruss2_ethtype} ti_prueth.pruss1_mc_mask=${pruss1_mc_mask} ti_prueth.pruss2_mc_mask=${pruss2_mc_mask}'
+ setenv pruss1_port0_mc_mask "FF:FF:FF:FF:00:00"
+ setenv pruss2_port0_mc_mask "FF:FF:FF:FF:00:00"
+ setenv args_mmc 'run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}  ti_prueth.pruss1_ethtype=${pruss1_ethtype} ti_prueth.pruss2_ethtype=${pruss2_ethtype} ti_prueth.pruss1_port0_mc_mask=${pruss1_port0_mc_mask} ti_prueth.pruss2_port0_mc_mask=${pruss2_port0_mc_mask}'
+
+A comparable sample bootargs with MASK configured for Dual EMAC
+
+::
+
+ setenv pruss1_port0_mc_mask "FF:FF:FF:FF:00:00"
+ setenv pruss1_port1_mc_mask "FF:FF:FF:FF:00:00"
+ setenv pruss2_port0_mc_mask "FF:FF:FF:FF:00:00"
+ setenv pruss2_port1_mc_mask "FF:FF:FF:FF:00:00"
+ setenv args_mmc 'run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}  ti_prueth.pruss1_ethtype=${pruss1_ethtype} ti_prueth.pruss2_ethtype=${pruss2_ethtype} ti_prueth.pruss1_port0_mc_mask=${pruss1_port0_mc_mask} ti_prueth.pruss1_port1_mc_mask=${pruss1_port1_mc_mask} ti_prueth.pruss2_port0_mc_mask=${pruss2_port0_mc_mask} ti_prueth.pruss2_port1_mc_mask=${pruss2_port1_mc_mask}'
 
 Typically, an application joins the multicast group either using a raw
 socket of type SOCK_DGRAM and use setsockopt() API to Join or leave the
@@ -629,7 +642,14 @@ or
  /sys/kernel/debug/prueth-hsr-<ID>/mc_filter
 
 
-where ID is described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
+or (for Dual EMAC)
+
+::
+
+ /sys/kernel/debug/prueth-eth<if number>/mc_filter
+
+
+where ID/'if number' is described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
 
 Sample display
 
@@ -656,6 +676,14 @@ Sample display
   d0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
   e0: 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
   f0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+Dual EMAC 
+^^^^^^^^^^^^^^^^^^
+
+If using Dual EMAC, the only interface differences are the debugfs paths and the
+mask parameters, as mentioned above. Internally, the multicast filter table(s)
+are stored in each PRU's Data RAM (PRU0->Data RAM0, PRU1->Data RAM1) instead of
+one table in Data RAM1 as for HSR/PRP.
 
 VLAN over PRU Ethernet
 -----------------------
@@ -762,9 +790,10 @@ The PRU has a 4096 entry VLAN filter table that allows filtering out
 unwanted VLAN traffic to the host. As soon a VLAN interface is created,
 the 802.1q Linux kernel module sends the VID information down to the
 lower layer HSR or PRP Linux device which in turn pass it down to the
-slave Ethernet devices below it. The PRU Ethernet driver gets the VID
+slave Ethernet devices below it (or directly to the Ethernet device in the
+case of Dual EMAC). The PRU Ethernet driver gets the VID
 information via net_device_ops:ndo_vlan_rx_add_vid(). On receiving this,
-PRU Etherent driver sets the entry at the VID index in VLAN filter table
+PRU Ethernet driver sets the entry at the VID index in VLAN filter table
 to 1. When the VLAN interface is deleted, the driver receives the same
 information through ndo_vlan_rx_kill_vid() and reset the entry at the
 VID index.
@@ -784,6 +813,7 @@ interface.
    :name: Useful-commands
 
 User can use the following command to view the VLAN filter table at PRU.
+(Similar commands apply for HSR and Dual EMAC)
 
 ::
 
@@ -863,6 +893,19 @@ Where ID is described at :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
  3968: 0000000000000000000000000000000000000000000000000000000000000000
  4032: 0000000000000000000000000000000000000000000000000000000000000000
 
+Dual EMAC 
+^^^^^^^^^^^^^^^^^^
+
+If using Dual EMAC, the only interface differences are the debugfs paths.
+
+::
+
+ /sys/kernel/debug/prueth-eth<if number>/vlan_filter
+
+Internally, the VLAN filter table(s) are stored in each PRU's Data RAM 
+(PRU0->Data RAM0, PRU1->Data RAM1) instead of one table in Shared RAM 
+as for HSR/PRP.
+
 .. rubric:: Limitation
 
 Currently, the PRU firmware is configured to receive all of the
@@ -873,7 +916,7 @@ to be received at a designated VLAN interface.
 Broadcast Storm Prevention
 --------------------------
 Broadcast storm is defined as an excessive amount of Layer 2
-broadcast Ethenet frames at the ingress of a network interface
+broadcast Ethernet frames at the ingress of a network interface
 causing resources being wasted in the device for processing
 these frames and thereby affecting the device performance.
 
@@ -927,11 +970,6 @@ To disable do
 ::
 
  >echo 0 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit
-
-.. rubric:: Limitation
-
-Currently this feature is not supported for Dual EMAC ethernet type
-(i.e when EMAC firmware is running on PRU ICSS).
 
 Receive Interrupt Pacing
 ------------------------
@@ -1037,6 +1075,7 @@ on a Linux PC as this is a standard Linux command.
 
 Currently this feature is not supported for Dual EMAC ethernet type
 (i.e when EMAC firmware is running on PRU ICSS).
+
 
 VLAN Tag in Supervision frame
 -----------------------------

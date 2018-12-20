@@ -184,7 +184,7 @@ SDK for Linux.
 
 #. The Processor SDK for Linux is installed on your host system
 #. The SD card you wish to create is inserted into the host system and
-   has a size sufficiently large to hold at least the bootloaders,
+   has a size sufficiently large (16GB or larger) to hold at least the bootloaders,
    kernel, and root file system.
 #. You have started running the script as detailed in the `SD Card Common Steps <Overview_Getting_Started_Guide.html#common-steps>`__ section above.
 
@@ -284,7 +284,7 @@ connection to a server.
 
 #. The Processor SDK for Linux is installed on your host system
 #. The SD card you wish to create is inserted into the host system and
-   has a size sufficiently large to hold at least the bootloaders,
+   has a size sufficiently large (16GB or larger) to hold at least the bootloaders,
    kernel, and root file system.
 #. You have started running the script as detailed in the `SD Card Common Steps <Overview_Getting_Started_Guide.html#common-steps>`__ section above.
 
@@ -358,7 +358,7 @@ the the partitions of the SD card shipped with the EVM.
 
 #. The Processor SDK for Linux is installed on your host system
 #. The SD card you wish to create is inserted into the host system and
-   has a size sufficiently large to hold at least the bootloaders,
+   has a size sufficiently large (16GB or larger) to hold at least the bootloaders,
    kernel, and root file system.
 #. You have started running the script as detailed in the `SD Card Common
    Steps <Overview_Getting_Started_Guide.html#common-steps>`__ section above.

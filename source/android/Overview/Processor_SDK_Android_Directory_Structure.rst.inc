@@ -1,5 +1,5 @@
 ********************************************
-Processor SDK Android Directory Structure
+Directory Structure
 ********************************************
 
 The Processor SDK for Android contains the following top-level

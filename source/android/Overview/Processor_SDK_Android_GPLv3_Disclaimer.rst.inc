@@ -1,5 +1,5 @@
 *****************************************
-Processor SDK Android GPLv3 Disclaimer
+GPLv3 Disclaimer
 *****************************************
 
 There are GPLv3 licensed software components contained within the

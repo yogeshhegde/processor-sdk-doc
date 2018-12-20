@@ -10,6 +10,7 @@ Foundational Components
    Foundational_Components_Kernel
    Foundational_Components_Filesystem
    Foundational_Components_Tools
+   Foundational_Components_PRU-ICSS_PRU_ICSSG
    Foundational_Components_IPC
    Foundational_Components_CMEM
    Foundational_Components_Graphics

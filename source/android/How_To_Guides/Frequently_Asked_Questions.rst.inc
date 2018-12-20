@@ -2,8 +2,11 @@
 Frequently Asked Questions
 **********************************************
 
-.. rubric:: Frequently Asked Questions
-   :name: frequently-asked-questions
+.. rubric:: How to connect the LCD to your AM571x/AM572x IDK board
+   :name: how-to-connect-the-lcd-to-your-am571x-am572x-idk-board
+
+`am57x-idk-lcd-bringup <https://training.ti.com/am57x-idk-lcd-bringup>`__
+
 
 .. rubric:: How do I see recently added files in the Gallery or Music
    Player app?
@@ -12,8 +15,10 @@ Frequently Asked Questions
 Gallery/Music Player is not aware of files pushed via ADB at run time.
 After pushing the files reboot the board to have the gallery updated.
 Alternatively, to avoid a reboot, you can use the following command:
-**$am broadcast -a android.intent.action.MEDIA\_MOUNTED -d
-  file:///mnt/shell/emulated/0**
+
+.. code-block:: none
+
+  $am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///mnt/shell/emulated/0
 
 .. rubric:: Why does my board hang during boot if I have an empty SD
    card connected but I've flashed the eMMC?

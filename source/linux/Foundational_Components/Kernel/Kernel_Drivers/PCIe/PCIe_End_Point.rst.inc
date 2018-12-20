@@ -25,7 +25,11 @@ The following boards have standard female connector
 +-----------------+
 | am572x-idk      |
 +-----------------+
-| 66ak2g-gp-evm   |
+| k2g-gp-evm      |
++-----------------+
+| am654-evm       |
++-----------------+
+| am654-idk       |
 +-----------------+
 
 These boards are by default intended to be operated in Root Complex
@@ -70,11 +74,14 @@ device.
 
 |
 
-..note::
+.. note::
 
     For AM572x GP EVM, there is a Mini PCIe connector on
     the LCD board. To connect 2 boards involving a AM572x GP EVM, a
     mPCIe-to-PCIe adapter is needed.
+
+    For AM65x boards, remove any jumpers present in the SERDES card when
+    operating in endpoint mode.
 
 .. Image:: ../images/MPCIe-to-PCIe_Adapter.jpg
 
@@ -141,6 +148,47 @@ To configure am572x-idk in EP mode:
      &pcie1_ep {
     +       status = "okay";
             gpios = <&gpio3 23 GPIO_ACTIVE_HIGH>;
+     };
+
+To configure am65x-evm in EP mode:
+
+::
+
+    diff --git a/arch/arm64/boot/dts/ti/k3-am654-pcie-usb3.dtso b/arch/arm64/boot/dts/ti/k3-am654-pcie-usb3.dtso
+    index 3fc3c52aba80..789545d47e36 100644
+    --- a/arch/arm64/boot/dts/ti/k3-am654-pcie-usb3.dtso
+    +++ b/arch/arm64/boot/dts/ti/k3-am654-pcie-usb3.dtso
+    @@ -14,9 +14,8 @@
+            status = "okay";
+     };
+
+    -&pcie1_rc {
+    +&pcie1_ep {
+            phys = <&serdes1 PHY_TYPE_PCIE 0>;
+            phy-names = "pcie-phy0";
+    -       reset-gpios = <&pca9555 5 GPIO_ACTIVE_HIGH>;
+            status = "okay";
+     };
+
+To configure am65x-idk in EP mode:
+
+::
+
+    diff --git a/arch/arm64/boot/dts/ti/k3-am654-pcie-usb2.dtso b/arch/arm64/boot/dts/ti/k3-am654-pcie-usb2.dtso
+    index f5c15bbdf029..b259a86e9d20 100644
+    --- a/arch/arm64/boot/dts/ti/k3-am654-pcie-usb2.dtso
+    +++ b/arch/arm64/boot/dts/ti/k3-am654-pcie-usb2.dtso
+    @@ -46,10 +46,9 @@
+            status = "okay";
+     };
+ 
+    -&pcie0_rc {
+    +&pcie0_ep {
+            num-lanes = <2>;
+            phys = <&serdes0 PHY_TYPE_PCIE 1>, <&serdes1 PHY_TYPE_PCIE 1>;
+            phy-names = "pcie-phy0", "pcie-phy1";
+    -       reset-gpios = <&pca9555 5 GPIO_ACTIVE_HIGH>;
+            status = "okay";
      };
 
 .. rubric:: *Linux Driver Configuration*
@@ -365,13 +413,33 @@ create pci-epf-test device, the following commands can be used
 
     # mount -t configfs none /sys/kernel/config
     # cd /sys/kernel/config/pci_ep/
+
+In the case of dra7x/am57x, use the below command to create
+pci-epf-test function device.
+
+::
+
     # mkdir functions/pci_epf_test/func1
 
-The "mkdir functions/pci\_epf\_test/func1" above creates the
+In the case of k2g, use the below command to create
 pci-epf-test function device.
+
+::
+
+    # mkdir functions/pci_epf_test_k2g/func1
+
+In the case of am65x, use the below command to create
+pci-epf-test function device.
+
+::
+
+    # mkdir functions/pci_epf_test_am6/func1
 
 The PCI endpoint framework populates the directory with configurable
 fields.
+
+All the commands below use pci_epf_test. However depending on the platform
+pci_epf_test or pci_epf_test_k2g or pci_epf_test_am6 should be used.
 
 ::
 
@@ -419,6 +487,18 @@ If the endpoint is a DRA72x or AM572x device:
 
     # echo 0xb501 > functions/pci_epf_test/func1/deviceid
 
+If the endpoint is K2G device:
+
+::
+
+    # echo 0xb00b > functions/pci_epf_test_k2g/func1/deviceid
+
+If the endpoint is AM6 device:
+
+::
+
+    # echo 0xb00c > functions/pci_epf_test_am6/func1/deviceid
+
 Then finally:
 
 ::
@@ -432,9 +512,25 @@ In order for the endpoint function device to be useful, it has to be
 bound to a PCI endpoint controller driver. Use the configfs to bind the
 function device to one of the controller driver present in the system.
 
+If the endpoint is a DRA72x or AM572x device:
 ::
 
     # ln -s functions/pci_epf_test/func1 controllers/51000000.pcie_ep/
+
+If the endpoint is a K2G device:
+::
+
+    # ln -s functions/pci_epf_test_k2g/func1 controllers/21800000.pcie-ep/
+
+If the endpoint is a AM654-EVM device:
+::
+
+    # ln -s functions/pci_epf_test_am6/func1 controllers/5600000.pcie-ep
+
+If the endpoint is a AM654-IDK device:
+::
+
+    # ln -s functions/pci_epf_test_am6/func1 controllers/5500000.pcie-ep
 
 .. rubric:: Starting the EP device
    :name: starting-the-ep-device
@@ -442,16 +538,32 @@ function device to one of the controller driver present in the system.
 In order for the EP device to be ready to establish the link, the
 following command should be given
 
+If the endpoint is a DRA72x or AM572x device:
 ::
 
     # echo 1 > controllers/51000000.pcie_ep/start
+
+If the endpoint is a K2G device:
+::
+
+    # echo 1 > controllers/21800000.pcie-ep/start
+
+If the endpoint is a AM654-EVM device:
+::
+
+    # echo 1 > controllers/5600000.pcie-ep/start
+
+If the endpoint is a AM654-IDK device:
+::
+
+    # echo 1 > controllers/5500000.pcie-ep/start
 
 Once the above step is completed, the PCI endpoint is ready to establish
 a link with the host.
 
 
-.. rubric:: *66AK2G Limitation*
-   :name: ak2g-limitation
+.. rubric:: *K2G Limitation*
+   :name: k2g-limitation
 
 K2G outbound transfers has a limitation that the target address should
 be aligned to a minimum of 1MB address. This restriction is because of

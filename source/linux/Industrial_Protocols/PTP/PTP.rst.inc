@@ -24,6 +24,8 @@ Processor SDK.
 
 .. Image:: ../images/Software-arch-v1.jpg
 
+PTP is supported via the PRP firmware (in PRP EMAC mode) and Dual EMAC firmware.
+
 Software Components
 --------------------
 
@@ -82,15 +84,21 @@ Hardware Overview
 TI’s Sitara devices have support for GMAC and PRU-ICSS ports, as shown
 in the table below.
 
-+--------------------------+--------------------------+--------------------------+
-| SoC                      | # of GMAC ports          | # of PRU-ICSS ports      |
-+==========================+==========================+==========================+
-| AM571x                   | 1                        | 2(at 100Mbps)            |
-+--------------------------+--------------------------+--------------------------+
-| AM572x                   | 1                        | 1(at 100Mbps)            |
-+--------------------------+--------------------------+--------------------------+
-| AM574x                   | 1                        | 2(at 100Mbps)            |
-+--------------------------+--------------------------+--------------------------+
++--------------------------+--------------------------+--------------------------+-----------------------+
+| SoC                      | # of GMAC ports          | # of PRU-ICSS ports      | PRU Firmware Supported|
++==========================+==========================+==========================+=======================+
+| AM335x                   | 0                        | 1(at 100Mbps)            | Dual EMAC             |
++--------------------------+--------------------------+--------------------------+-----------------------+
+| AM437x                   | 0                        | 1(at 100Mbps)            | Dual EMAC             |
++--------------------------+--------------------------+--------------------------+-----------------------+
+| AM571x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / PRP (SAN) |
++--------------------------+--------------------------+--------------------------+-----------------------+
+| AM572x                   | 1                        | 1(at 100Mbps)            | Dual EMAC / PRP (SAN) |
++--------------------------+--------------------------+--------------------------+-----------------------+
+| AM574x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / PRP (SAN) |
++--------------------------+--------------------------+--------------------------+-----------------------+
+| K2G                      | 0                        | 2(at 100Mbps)            | Dual EMAC             |
++--------------------------+--------------------------+--------------------------+-----------------------+
 
 GMAC
 -----
@@ -105,8 +113,8 @@ PRU-ICSS
 The processing load is shared between firmware (PRU) and Host (ARM) with
 the firmware doing most of the time critical activities. The IEP
 hardware block in the PRU-ICSS sub-system is responsible for
-timestamping of packets. Memory map for the firmware interface can be
-found in :ref:`HSR_PRP_Firmware_Memory_Map_label`.  
+timestamping of packets. Memory map for the firmware interface for HSR/PRP 
+firmware can be found in :ref:`HSR_PRP_Firmware_Memory_Map_label`.  
 
 .. _PLSDK_PTP_HW_Mods-label:
 
@@ -133,6 +141,41 @@ falling edge at the second boundary. The PPS signal can be used to
 measure the offset and jitters of the system time between the master and
 slave clock. This signal can also be used to synchronize the slave clock
 to its master within a BC.
+
+Device Tree Setup
+-----------------
+
+To enable PPS the device needs to first be booted using a different device tree
+file to enable the PPS pins, as listed below:
+
++--------------------------+------------------------------+
+| SoC                      | Device Tree File (*.dtb)     |
++==========================+==============================+
+| AM335x                   | am335x-icev2-prueth-pps.dtb  |
++--------------------------+------------------------------+
+| AM437x                   | am437x-idk-pps.dtb           |
++--------------------------+------------------------------+
+| AM571x                   | am571x-idk-pps.dtb           |
++--------------------------+------------------------------+
+| AM572x                   | am572x-idk-pps.dtb           |
++--------------------------+------------------------------+
+| AM574x                   | am574x-idk-pps.dtb           |
++--------------------------+------------------------------+
+| K2G                      | keystone-k2g-ice-pps.dtb     |
++--------------------------+------------------------------+
+
+To configure this, change the device tree loaded in Uboot. If using the default
+Uboot environment, you can make the following changes to force the device to
+boot using the PPS device tree file.
+
+1. Disable the automatic device tree file selection. Remove 'run findfdt;' from 
+the relevant boot command (e.g. 'bootcmd', mmcboot' or 'netboot')
+
+2. Set the device tree file to be used.
+::
+
+ setenv fdtfile <PPS dtb>
+
 
 PRU-ICSS
 ---------
@@ -172,6 +215,18 @@ assigned PTP ports.
 
     ls /sys/devices/platform/pruss1_eth/ptp
     ls /sys/devices/platform/pruss2_eth/ptp
+
+.. note::
+    Known Issue: On AM335x/AM437x, the current PPS implementation has the
+    possibility of failing to correctly synchronize PPS output to a master
+    (only the PPS output is affected, the PTP functionality still succeeds).
+    This appears as the slave PPS being offset from the master PPS signal on
+    an order of 40-100ms either on starting PPS or after running for an
+    extended period of time. As a workaround, if PPS output is observed to be
+    offset, bring down and then bring back up the ethernet interface in use to
+    reset PTP/PPS (e.g. ifconfig eth1 down/ifconfig eth1 up). If the PPS
+    output is successful, then the output is valid and can be used to
+    measure jitter.
 
 GMAC
 ------
@@ -276,9 +331,9 @@ PTP Ordinary Clock on PRU-ICSS
 ------------------------------
 
 Timestamping of PTP event messages at the PRU-ICSS ports is provided by
-the PRU-ICSS IEP module together with the PRU firmware. More precisely,
-the PRU-PRP firmware is used and is configured in SAN (Single Attached
-Node) mode.
+the PRU-ICSS IEP module together with the PRU firmware. PTP is supported via
+the Dual EMAC firmware and the PRU-PRP firmware (when configured in
+SAN (Single Attached Node) mode.
 
 In this Linux PRU-ICSS OC implementation, the PRU firmware stores
 timestamps (IEP counter values) of PTP event messages in specific shared
@@ -295,11 +350,11 @@ more details.
 
 The PTP OC protocol is provided by the linuxptp application.
 
-Follow the steps at :ref:`PLSDK_PRP_EMAC_Mode-label`
+If using PRP firmware, follow the steps at :ref:`PLSDK_PRP_EMAC_Mode-label`
 to boot up the AM57xx IDK and configure the PRU-PRP firmware to run in
-**PRP\_EMAC** mode. Once the AM57xx IDK is boot into Linux kernel prompt
-and the PRU-ICSS Ethernet ports are properly configured, to run linuxptp
-over the PRU-ICSS Ethernet ports, do
+**PRP\_EMAC** mode (not needed if using Dual EMAC firmware). Once the AM57xx
+IDK is boot into Linux kernel prompt and the PRU-ICSS Ethernet ports are
+properly configured, to run linuxptp over the PRU-ICSS Ethernet ports, do
 
 ::
 
@@ -617,8 +672,11 @@ Test Setup
 .. rubric:: Supported Platforms
    :name: supported-platforms
 
+-   AM335x ICE (PRU-ICSS0:eth0-eth1)
+-   AM437x IDK (PRU-ICSS0:eth1-eth2)
 -   AM571x IDK (GMAC/CPTS: eth0-eth1, PRU-ICSS2:eth2-eth3,PRU-ICSS1:eth4-eth5)
 -   AM572x IDK (GMAC/CPTS: eth0-eth1, PRU-ICSS2:eth2-eth3)
+-   K2G ICE (PRU-ICSS2:eth1-eth2,PRU-ICSS1:eth3-eth4)
 
 .. rubric:: Hardware Modifications
    :name: hardware-modifications
@@ -670,7 +728,7 @@ the following command
 
 Follow the steps at :ref:`PLSDK_PRP_EMAC_Mode-label`
 to boot up the AM57xx IDK and configure the PRU-PRP firmware to run in
-PRP\_EMAC mode.
+PRP\_EMAC mode if using PRP firmware.
 
 Use the fconfig command to configure the desired IP address, for example
 
@@ -763,7 +821,7 @@ ptp4l application and the linuxptp phc2sys application.
 
 The ICSS PRU firmware used in BC is the PRP firmware (with PTP
 timestamping capability enabled) configured to run in Single Attached
-Node (SAN) mode.
+Node (SAN) mode, or the Dual EMAC firmware.
 
 .. rubric:: CPSW/CPTS Ethernet Driver
    :name: cpswcpts-ethernet-driver
@@ -844,9 +902,9 @@ corresponding ethernet port is in PTP slave port state.
 Hardware Overview
 -----------------
 
-For AM57xx IDK BC, since PPC generated by one internal clock needs to be
+For AM57xx IDK BC, since PPS generated by one internal clock needs to be
 latched into another internal clock, hardware, mainly blue wire,
-modifications are needed in order to achieive the latching of the PPS
+modifications are needed in order to achieve the latching of the PPS
 generated by one internal clock into another internal clock.
 
 Refer to the :ref:`PLSDK_PTP_HW_Mods-label`
@@ -1017,7 +1075,7 @@ shell scripts are displayed. Some of the scrits are for retrieving
 system information while others are for performing configurations. These
 sample scripts are for informational purpose only.
 
-Since BC and OC are supported by using the PRP firmware configured to
+If using the PRP firmware configured to
 run in SAN mode, make sure to boot up the kernel with the parameters
 
 -  ti\_prueth.pruss1\_ethtype=2
@@ -1053,8 +1111,8 @@ the command
     $ ls /sys/devices/platform/44000000.ocp/48484000.ethernet/net
       eth0/ eth1/
 
-Then enable SAN mode on each of the ICSS PRU interfaces (assuming eth2
-and eth3 are on ICSS2, eth4 and eth5 are on ICSS1):
+If using PRP firmware, enable SAN mode on each of the ICSS PRU interfaces
+(assuming eth2 and eth3 are on ICSS2, eth4 and eth5 are on ICSS1):
 
 ::
 

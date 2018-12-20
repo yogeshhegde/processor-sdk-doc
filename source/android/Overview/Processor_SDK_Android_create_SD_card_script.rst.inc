@@ -2,7 +2,7 @@ SD Card Creation
 =============================
 
 .. rubric:: Overview
-   :name: overview
+   :name: sd-card-creation-overview
 
 The Android SDK includes a script in the **<ANDROID SDK INSTALL
 DIR>/bin** directory named **create-sdcard.sh**. The purpose of this
@@ -126,7 +126,7 @@ boot the device using the default images that ship with the Processor
 SDK for Android.
 
 .. rubric:: Prerequisites
-   :name: prerequisites
+   :name: sd-card-creation-prerequisites
 
 #. The Processor SDK for Android is installed on your host system
 #. The SD card you wish to create is inserted into the host system and
