@@ -44,55 +44,57 @@ might not work any more, as the memory constraints are tighter. For details, ref
 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Foundational_Components.html#am655x-sbl-memory-usage>`__
 
 
-.. rubric::  Board
-   :name: Board
+.. rubric::  PDK
+   :name: PDK
    
-**Migration:** Board library dependency on sciclient module
+**Migration:** AM65xx PDK component dependency on sciclient module.
 
-**Impact Scope:** Applications using Board library on AM65xx platform.
+**Impact Scope:** Applications will need to link to sciclient module library. 
+No migration impact if application is already linking the library.
 
 **Additional Details**: 
-sciclient APIs are used by the AM65xx board library to configure PLL clocks.
-Applications using the board library shall include scicilent library as well.
+All application using PDK components on AM65xx platform will need to link sciclient library 
+as components internally will be using sciclient API for PLL and interrupt configuration. 
+In this release, requirement for application will be more mandated as more components
+are using common infrastructure.
 
-DMSC firmware should be loaded to Cortex-M4 core using SBL or 
+DMSC firmware should be loaded onto Cortex-M4 core using SBL or 
 `CCS GEL script <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`_
 before calling the Board Init API with 'BOARD_INIT_PLL' flag.
 
-| 
-| 
+
+.. rubric::  Board
+   :name: Board
 
 **Migration:** New APIs for EEPROM Board ID Information
 
-**Impact Scope:** Applications using Board ID info APIs on AM65xx platform.
+**Impact Scope:** Applications using Board ID info APIs on AM65xx platform. 
+No migration impact for existing applications and boards using version 1 API.
 
 **Additional Details**: 
-TI Board ID information format has been updated to new version.
+TI Board ID information format has been updated to new version on AM65xx.
 New board library APIs 'Board_getIDInfo_v2' and 'Board_writeIDInfo_v2' are added
 to support new Board ID information format. Old Board ID info APIs are still avaialble
 to retain the backward build compatibility but returns error when used on AM65xx platform.
 
-.. note::
-  This change is specific to AM65xx platform. Board ID information format and API
-  support remains unchanged on other platforms.
-
 
   
-.. rubric::  FatFs
-   :name: FatFs
+.. rubric::  FATFS
+   :name: FATFS
 
-**Migration:** Multi-partition support
+**Migration:** FATFS module in this release includes multipartition support and capability of 
+detecting single vs multiple partitions run time.
 
-**Impact Scope:** Applications using MS-DOS Floppy disk format storage media.
-No impact if the disk is formatted using the steps provided by `Windows SD Card Creation Guide <index_overview.html#windows-sd-card-creation-guide>`_/
+**Impact Scope:** Limited to the case if user had used MS-DOS Floppy disk format for formatting the SD/eMMC memory. No impact if the SD/eMMC is formatted using the steps provided by `Windows SD Card Creation Guide <index_overview.html#windows-sd-card-creation-guide>`_/
 `Linux SD Card Creation Guide <index_overview.html#tools-create-sd-card-linux-label>`_
 
 **Additional Details**:
 Partition entry information may be wrongly detected for the storage media formated to 
-MS-DOS Floppy disk format. FatFs APIs fail to access the disk in this case.
+MS-DOS Floppy disk format. FATFS APIs fail to access the disk in this case.
+
+**Workaround**:
 Format the storage media using the steps provided by `Windows SD Card Creation Guide <index_overview.html#windows-sd-card-creation-guide>`_/
 `Linux SD Card Creation Guide <index_overview.html#tools-create-sd-card-linux-label>`_
-
 in case this issue is observed.
 
 .. raw:: html
