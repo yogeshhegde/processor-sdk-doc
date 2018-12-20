@@ -1207,4 +1207,151 @@ PHY Link Status Register (LINK) can be read to monitor this status of
 the PHY and link (please refer to the TI KeyStone Architecture Gigabit
 Ethernet (GbE) Switch Subsystem User Guide, section 3.4).
 
+C++ Build Verification
+=======================
+
+.. rubric:: How do I verify C++ build environment?
+   :name: how-do-i-verify-C++-build-environment
+
+Cpptest application verifies C++ Build environment on the Processor SDK package. It is
+located under the path $(PDK_INSTALL_PATH)/ti/osal/test
+This is a simple application with a print message. The application includes top level header
+files of all components in the PDK package and is built in C++ build environment.
+The header files are included dynamically for AM57xx and K2G platforms and statically
+included for AM335x and AM437x platforms.
+
+.. _platform_supported:
+
+Platforms Supported
+--------------------
+
++----------------+------------------+--------------------------------------------+
+|      SOC       |   BOARD NAMES    |                CORE                        |
+|                |                  +--------+--------+--------+--------+--------+
+|                |                  | a8host | a9host |  a15_0 |  c66x  | ipu1_0 |
++================+==================+========+========+========+========+========+
+| AM335x         |    evmAM335x     |   X    |        |        |        |        |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    icev2AM335x   |   X    |        |        |        |        |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    iceAMIC110    |   X    |        |        |        |        |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    skAM335x      |   X    |        |        |        |        |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    bbbAM335x     |   X    |        |        |        |        |
++----------------+------------------+--------+--------+--------+--------+--------+
+| AM437x         |    evmAM437x     |        |   X    |        |        |        |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    idkAM437x     |        |   X    |        |        |        |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    skAM437x      |        |   X    |        |        |        |
++----------------+------------------+--------+--------+--------+--------+--------+
+| AM57xx         |    idkAM571x     |        |        |    X   |    X   |   X    |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    idkAM572x     |        |        |    X   |    X   |   X    |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    idkAM574x     |        |        |    X   |    X   |   X    |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    evmAM572x     |        |        |    X   |    X   |   X    |
++----------------+------------------+--------+--------+--------+--------+--------+
+| K2G            |    evmK2G        |        |        |    X   |    X   |        |
+|                +------------------+--------+--------+--------+--------+--------+
+|                |    iceK2G        |        |        |    X   |    X   |        |
++----------------+------------------+--------+--------+--------+--------+--------+
+
+where,
+
+X - supported
+
+Build Setup
+-----------
+-  For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__.
+-  For Linux : Execute the command "sudo apt-get -y install perl" at the linux
+   command prompt.
+
+.. note::
+
+   This is an one-time installation and need not be repeated for every build.
+
+Steps to Build
+--------------
+The following are the steps to build and test the Cpptest Application.
+
+1. Build the PDK package
+
+.. note::
+
+   Building PDK package completely is neccessary before invoking a build on Cpptest
+   application.
+
+
+-  For Windows:
+::
+
+     cd $(PDK_INSTALL_PATH)
+     pdksetupenv.bat
+     gmake all
+
+
+-  For Linux:
+::
+
+     cd $(PDK_INSTALL_PATH)
+     source pdksetupenv.sh
+     make all
+
+
+2. Invoke the Cpptest application build, using the following commands.
+
+-  For Windows:
+::
+
+     cd ti/osal/test/cpptest
+     gmake BOARD=<board_name>  CORE=<core> CPLUSPLUS_BUILD=yes
+     Example:
+     gmake BOARD=idkAM572x  CORE=a15_0 CPLUSPLUS_BUILD=yes
+
+-  For Linux:
+::
+
+     cd ti/osal/test/cpptest
+     make BOARD=<board_name>  CORE=<core> CPLUSPLUS_BUILD=yes
+     Example:
+     make BOARD=idkAM572x  CORE=a15_0 CPLUSPLUS_BUILD=yes
+
+
+Refer section :ref:`platform_supported` for the BOARD and CORE names.
+
+3. Upon successful build, the application binaries are created under
+   $(PDK_INSTALL_PATH)/ti/binary/cpptest/bin/<board_name>
+
+Running the Application
+-----------------------
+1. Launch CCS and and switch to the Debug Perspective.
+2. Launch the Target configuration and connect to the target.
+3. Load the binaries to the selected core using Run->Load->Load Program.If you need help in CCS setup,
+   refer section `Setup CCS <index_how_to_guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
+   explaining this further.
+4. Launch the serial console utility with the following configurations:
+
+* Baud Rate: 115200
+
+* Data : 8 bits
+
+* Parity : None
+
+* Stop : 1 bit
+
+* Flow Control : None
+
+Verified utilities are Teraterm (Windows) and Minicom (Linux).
+
+5. Run the program in CCS and check for the below output on the serial console:
+
+::
+
+     C++ Build Successful!
+
+
+
 .. raw:: html

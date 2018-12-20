@@ -17,7 +17,7 @@ Board Specific Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All the board specific configurations eg:enabling and pin-mux of
-RGMII/MDIO pins should be performed before calling any driver APIs.By
+RGMII/MDIO pins should be performed before calling any driver APIs. By
 default Board_Init() API supports all initialization sequence for TI
 supported EVMs.Refer `Processor SDK RTOS Board
 Support <index_board.html#board-support>`__ for additional
@@ -128,6 +128,23 @@ At this point EMAC driver is ready to send and receive packets.
 
 | 
 
+
+Interposer Card Support
+------------------------
+Interposer card is an ethernet wiring adapter to let 2 ICSSG subsystems drive 2 ethernet ports with DUAL MAC or SWITCH firmware. 
+So that each direction (TX/RX) can be handled by one pair of PRU cores. 
+The interposer card permits the power of two ICSSG instances to be used on a two port switch or dual EMAC as opposed to the two-port, single ICSSG configuration.
+The following diagrams show the PRU-ICSSG RGMII TX/RX mapping to the physical ports for Maxwell and then for Maxwell with interposer card configured.
+Interposer card functionality can be verified by running the icssg-emac DIAG test( Refer `Processor SDK RTOS Board
+Support <index_board.html#board-support>`__ for additional details ) or the emac LLD test
+application (Emac_Icssg_TestApp described below).
+Note that prior to running these tests on Maxwell with interposer card, please hook up an ethernet cable between PHY0 and PHY1. 
+
+
+.. rubric:: Interposer Layout 
+   :name: Interposer Layout
+
+.. Image:: ../images/Interposer.png
 
 Example and Test Applications
 ------------------------------
@@ -316,11 +333,11 @@ Example and Test Applications
 |                       | follows with          |                       |                       |                       |
 |                       | ethernet cables:      |                       |                       |                       |
 |                       |                       |                       |                       |                       |
-|                       | ETH0 to ETH1          |                       |                       |                       |
+|                       | PHY0 to PHY1          |                       |                       |                       |
 |                       |                       |                       |                       |                       |
-|                       | ETH2 to ETH3          |                       |                       |                       |
+|                       | PHY2 to PHY3          |                       |                       |                       |
 |                       |                       |                       |                       |                       |
-|                       | PRU2 ETH0 to PRU2ETH1 |                       |                       |                       |
+|                       | PHY4 to PHY5          |                       |                       |                       |
 |                       |                       |                       |                       |                       |
 |                       | Test app demonstrates |                       |                       |                       |
 |                       | packet TX/RX between  |                       |                       |                       |
@@ -346,6 +363,82 @@ Example and Test Applications
 |                       | packet transmission   |                       |                       |                       |
 |                       | and reception check.  |                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+
+
+Support for Benchmark Testing
+------------------------------
+
++-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| Name                  | Description           | Expected Results      | SOC Suppported        | Build Type            |
++=======================+=======================+=======================+=======================+=======================+
+| Emac_Icssg_TestApp    | Test application with | Test applicaiton      |  am65xx               | make                  |  
+|                       | modifications can     | will print "polling   |                       |                       | 
+|                       | used for performance  | rx packets on port 4" |                       |                       |
+|                       | benchmarking          | via the UART console  |                       |                       |
+|                       |                       |                       |                       |                       |
+|                       |                       | Every 60 seconds,     |                       |                       |
+|                       | In order to run the   | a sub-set of hardware |                       |                       |
+|                       | test application in   | statistics will be    |                       |                       |
+|                       | benchamrk mode you    | displayed via UART    |                       |                       |
+|                       | need to update        | console               |                       |                       |
+|                       | ti/drv/emac/test/     |                       |                       |                       |
+|                       | EmacLoopbackTest/     |                       |                       |                       |
+|                       | test_loc.h to enable  |                       |                       |                       |
+|                       | EMAC_BENCHMARK macro  |                       |                       |                       |
+|                       |                       |                       |                       |                       |
+|                       |                       |                       |                       |                       |
+|                       | Connect external      |                       |                       |                       |
+|                       | packet generator to   |                       |                       |                       | 
+|			| PHY4.                 |                       |                       |                       |
+|                       |                       |                       |                       |                       |
+|                       | The unit test will    |                       |                       |                       |
+|                       | poll the RX packet    |                       |                       |                       |
+|                       | channel/ring for the  |                       |                       |                       |
+|                       | port being testing and|                       |                       |                       |
+|                       | will loop the packet  |                       |                       |                       |
+|                       | back to the external  |                       |                       |                       |
+|                       | traffic generator with|                       |                       |                       |
+|                       | "no touch" to the     |                       |                       |                       |
+|                       | packet                |                       |                       |                       |
+|                       |			|                       |                       |                       |
++-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| Emac_Cpsw_TestApp     | Test application with | Test application      |  am65xx               | make                  |  
+|                       | modifications can     | will print "polling   |                       |                       | 
+|                       | used for performance  | rx packets on port 6" |                       |                       |
+|                       | benchmarking          | via the UART console  |                       |                       |
+|                       |                       |                       |                       |                       |
+|                       |                       | Every 60 seconds,     |                       |                       |
+|                       | In order to run the   | a sub-set of hardware |                       |                       |
+|                       | test application in   | statistics will be    |                       |                       |
+|                       | benchamrk mode you    | displayed via UART    |                       |                       |
+|                       | need to update        | console               |                       |                       |
+|                       | ti/drv/emac/test/     |                       |                       |                       |
+|                       | EmacLoopbackTest/     |                       |                       |                       |
+|                       | test_loc.h to enable  |                       |                       |                       |
+|                       | EMAC_BENCHMARK macro  |                       |                       |                       |
+|                       |                       |                       |                       |                       |
+|                       | To benchmark ICSSG    |                       |                       |                       |
+|                       | connect external      |                       |                       |                       |
+|                       | packet generator to   |                       |                       |                       | 
+|			| PHY4.                 |                       |                       |                       |
+|                       |                       |                       |                       |                       |
+|                       | To benchmark CPSW     |                       |                       |                       |
+|                       | connect external      |                       |                       |                       |
+|                       | packet generator to   |                       |                       |                       |
+|                       | CPSW port             |                       |                       |                       |
+|                       |                       |                       |                       |                       |
+|                       | The unit test will    |                       |                       |                       |
+|                       | poll the RX packet    |                       |                       |                       |
+|                       | channel/ring for the  |                       |                       |                       |
+|                       | port being testing and|                       |                       |                       |
+|                       | will loop the packet  |                       |                       |                       |
+|                       | back to the external  |                       |                       |                       |
+|                       | traffic generator with|                       |                       |                       |
+|                       | "no touch" to the     |                       |                       |                       |
+|                       | packet                |                       |                       |                       |
+|                       |			|                       |                       |                       |
++-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+
 
 Building EMAC Test applications via makefiles
 ----------------------------------------------
@@ -406,6 +499,9 @@ Additional References
 | Release Notes                     | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
 |                                   | \\drv\\emac\\docs\\ReleaseNotes_EMAC_   |
 |                                   | LLD.pdf                                 |
++-----------------------------------+-----------------------------------------+
+| Software Design                   | $(TI_PDK_INSTALL_DIR)\\packages\\ti     |
+|                                   | \\drv\\emac\\docs\\EMAC_LLD_SD.pdf      |
 +-----------------------------------+-----------------------------------------+
 
 

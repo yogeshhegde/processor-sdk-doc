@@ -288,7 +288,8 @@ for how to create and build examples projects
 |                       |                       | Notes                 |
 +=======================+=======================+=======================+
 | **USB_DevMsc_mmcsd**  | AM335GP EVM,          | eMMC is used on AM572 |
-|                       | AM572 EVM             | example               |
+|                       | BeagleBoneBlack,      | and BealgeBoneBlack   |
+|                       | AM572 EVM             | examples              |
 +-----------------------+-----------------------+-----------------------+
 | **USB_DevMsc**        | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
 |                       | OMAP137EVM,           | device examples share |
@@ -374,6 +375,41 @@ Both examples and test applications can be loaded and run on their intended EVM 
   	-  CCS JTAG connector, or
   	-  Via SBL: the "app" file under CCS project's debug directory (<PDK_INSTALL_PATH/MyExampleProjects/<ExampleProjectDirectory>/Debug>) is SBL loadable file of the built project. 
    	--  Project Memory layout must be considered and following SBL guideline so that examples can run safely via SBL. Please refer to `SBL Component <index_Foundational_Components.html#boot>`__   for more detail 
+
+
+
+Benchmark tool
+--------------
+
+USB host MSC
+^^^^^^^^^^^^
+    - To measure the USB host MSC throughput, a new command (bm) is added into the USB host mode example (or test application). 
+    - This command is to run with a good known fast USB thumb drive attached to the USB host port. 
+    - The throughput measurement result varies greatly depends on which USB device is plugged in and which filesystem is used
+    - The USB drive needs to be formated as FAT32 (since the USB host example only supports FAT filesystem) and has at least 100MB free space. Fast blank USB thumb drive is recomended.
+    - The command, when run, writes a 100MB file into the thumb drive and measures the time it takes to do so. It then reads back this 100MB file with time measurement to find the read throughput. 
+    - The write and read are done in block size of 100KB, 256KB, 1MB, and 5MB. It prints throughput measurements for each of these blocks.
+    - This command is only supported in AM65xx at the moment. 
+    - Syntax:
+
+::
+
+            bm <test_file_name>
+
+
+USB device MSC
+^^^^^^^^^^^^^^
+    - To measure USB device MSC throughtput a simple linux shell script usb_dev_msc_perf.sh is provided in PDK/packages/ti/drv/usb/example/usb_dev/msc/
+    - This script assumes the USB Dev MSC drive (PDK-USBDEV) is already mounted on the Linux host PC (under /media/$USER/PDK-USBDEV) when it runs
+    - It uses "dd" command to report the thoughput
+    - Tested on Ubuntu 16.04. Different version of Linux might mount the MSC drive at different place. Please adjust the script accordingly.
+    - The script writes a file to the PDK-USBDEV drive with a number of blocksize. By default it creates a 15MB test file by writing 150 blocks of 100K each (which would fit inside the 16MB RAM disk provided by the USB Dev MSC.)
+    - User is free to change the block size and number of blocks for the test. However it doens't check if the end result file would fit the PDK-USBDEV drive or not.
+    - Syntax:
+
+::
+
+         usb_dev_msc_perf.sh [<blocksize> <count>]
 
 
 

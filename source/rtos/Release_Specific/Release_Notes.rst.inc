@@ -69,7 +69,7 @@ Released December 2018
 		- `Uniflash <index_board.html#uniflash>`__ flash writer support for OSPI with writer being loaded from CCS/JTAG
 		- `OSPI <index_device_drv.html#mcspi-qspi-ospi Driver>`__ update to support higher 133Mhz/166Mhz support
 	- Features not (yet) supported: USB 3.0, MPU TI-RTOS SMP Support,CTOOLSLIB
--  `PRU-ICSS eSPI Firmware <PRU_ICSS.html#pru-icss-eSPI>`__
+-  `PRU-ICSS eSPI Firmware <PRU_ICSS.html#pru-icss-espi>`__
 	- Additional support for eSPI protocol offload for AM335x and AM437x SOC
 -  AM57x SOC
 	- `SBL <index_Foundational_Components.html#boot-modes>`__  eMMC boot support

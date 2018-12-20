@@ -1115,7 +1115,9 @@ This port to port Ethernet test verifies the PRU-ICSS gigabit Ethernet interface
 During the test, Ethernet interface is configured for 1000mbps speed with one port of an ICSS instance 
 is connected to another port. 5 packets are sent from one port and received by another port. 
 Both the ports are verified for transmit and receive. All the ICSSG EMAC ports available on the board
-verified during the test.
+verified during the test. 
+Note that ICSSG EMAC Test can also run on a am65xx_idk with Interposer daughter card. For details
+of Interposer daughter card, please refer to  `Device Drivers <index_device_drv.html#emac>`_ 
 
 Test Accessories
 """"""""""""""""""
@@ -1138,6 +1140,13 @@ Check below table for the detials of ICSSG Ethernet ports used by the test on di
 |               | Two ports on          |
 |               | J1 of IDK board.      |
 |               |                       |
+|               | Two ports on          |
+|               | J3 of IDK board.      |
++---------------+-----------------------+
+| am65xx_idk    | Two ports on          |
+| with          | J14 of CP board.      |
+| Interposer    |                       |
+| card          |                       |
 |               | Two ports on          |
 |               | J3 of IDK board.      |
 +---------------+-----------------------+

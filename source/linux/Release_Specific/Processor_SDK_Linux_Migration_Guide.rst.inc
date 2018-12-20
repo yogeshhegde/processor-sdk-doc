@@ -22,6 +22,9 @@ Processor SDK 05.02
 
 * The parameter for setting a multicast filtering mask is now 'pruss<ID>_port<PORT>_mc_mask' instead of 'pruss<ID>_mc_mask' because support was added to enable per port multicast filtering for Dual EMAC.
 
+.. rubric:: ip link command
+
+* ip link parameter for setting up VLAN tag for HSR/PRP, sv_cfi is renamed to sv_dei.
 
 Processor SDK 05.01
 ----------------------
