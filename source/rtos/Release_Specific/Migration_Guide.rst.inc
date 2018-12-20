@@ -43,5 +43,57 @@ to 0x41C28000. If the applications violate the SBL memory usage, then apps that 
 might not work any more, as the memory constraints are tighter. For details, refer the `SBL Memory Utilization
 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Foundational_Components.html#am655x-sbl-memory-usage>`__
 
+
+.. rubric::  Board
+   :name: Board
+   
+**Migration:** Board library dependency on sciclient module
+
+**Impact Scope:** Applications using Board library on AM65xx platform.
+
+**Additional Details**: 
+sciclient APIs are used by the AM65xx board library to configure PLL clocks.
+Applications using the board library shall include scicilent library as well.
+
+DMSC firmware should be loaded to Cortex-M4 core using SBL or 
+`CCS GEL script <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`_
+before calling the Board Init API with 'BOARD_INIT_PLL' flag.
+
+| 
+| 
+
+**Migration:** New APIs for EEPROM Board ID Information
+
+**Impact Scope:** Applications using Board ID info APIs on AM65xx platform.
+
+**Additional Details**: 
+TI Board ID information format has been updated to new version.
+New board library APIs 'Board_getIDInfo_v2' and 'Board_writeIDInfo_v2' are added
+to support new Board ID information format. Old Board ID info APIs are still avaialble
+to retain the backward build compatibility but returns error when used on AM65xx platform.
+
+.. note::
+  This change is specific to AM65xx platform. Board ID information format and API
+  support remains unchanged on other platforms.
+
+
+  
+.. rubric::  FatFs
+   :name: FatFs
+
+**Migration:** Multi-partition support
+
+**Impact Scope:** Applications using MS-DOS Floppy disk format storage media.
+No impact if the disk is formatted using the steps provided by `Windows SD Card Creation Guide <index_overview.html#windows-sd-card-creation-guide>`_/
+`Linux SD Card Creation Guide <index_overview.html#tools-create-sd-card-linux-label>`_
+
+**Additional Details**:
+Partition entry information may be wrongly detected for the storage media formated to 
+MS-DOS Floppy disk format. FatFs APIs fail to access the disk in this case.
+Format the storage media using the steps provided by `Windows SD Card Creation Guide <index_overview.html#windows-sd-card-creation-guide>`_/
+`Linux SD Card Creation Guide <index_overview.html#tools-create-sd-card-linux-label>`_
+
+in case this issue is observed.
+
 .. raw:: html
 
