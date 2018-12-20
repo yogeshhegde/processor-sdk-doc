@@ -32,13 +32,7 @@ Refer to the Processor SDK RTOS Building page for information on setting up the 
 .. rubric::  Compiling Driver/Firmware
    :name: espi-compiling-driver-firmware
    
-1. Copy the SPI package into ``<PDK>/packages/drv/spi/``
-2. To build the driver and firmware, open a CMD window and enter the following:
-      1. cd ``<PDK>/packages/``
-      2. ``pdksetupenv.bat``
-      3. ``gmake spi``
-      4. ``cd ti/drv/spi/``
-      5. ``gmake xdc_meta``
+1. ``make spi``
 
    
 .. rubric::  Running CCS Application
