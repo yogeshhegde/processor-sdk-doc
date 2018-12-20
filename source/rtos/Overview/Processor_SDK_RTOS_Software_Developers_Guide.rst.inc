@@ -154,7 +154,7 @@ build information, and examples to use as a template to start development.
 +=============================+============================+============================+============================+
 | `CSL`_                      | `UART`_                    | `USB`_                     | `PCIe`_                    |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `GPIO`_                     | `I2C`_                     | `QSPI-McSPI`_              | `EDMA3`_                   |
+| `GPIO`_                     | `I2C`_                     | `McSPI-QSPI-OSPI`_         | `EDMA3`_                   |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 |`ICSS-EMAC(DRIVER,FIRMWARE)`_| `PRUSS`_                   | `FATFS`_                   | `MMCSD`_                   |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
@@ -164,7 +164,9 @@ build information, and examples to use as a template to start development.
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 | `EMAC`_                     | `MCASP`_                   | `PM`_                      | `RM`_                      |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `GPMC`_                     | `VPS Drivers`_             |                            |                            |
+| `GPMC`_                     | `VPS Drivers`_             | `DSS`_                     | `CAL`_                     |
++-----------------------------+----------------------------+----------------------------+----------------------------+
+| `UDMA`_                     | `SCICLIENT`_               |                            |                            |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 
 .. _CSL: index_device_drv.html#csl
@@ -173,7 +175,7 @@ build information, and examples to use as a template to start development.
 .. _PCIe: index_device_drv.html#pcie
 .. _GPIO: index_device_drv.html#gpio
 .. _I2C: index_device_drv.html#i2c
-.. _QSPI-McSPI: http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_QSPI-McSPI
+.. _McSPI-QSPI-OSPI: index_device_drv.html#McSPI-QSPI-OSPI
 .. _EDMA3: index_device_drv.html#edma3
 .. _ICSS-EMAC(DRIVER,FIRMWARE): index_device_drv.html#icss-emac-driver-firmware
 .. _PRUSS: index_device_drv.html#pruss
@@ -193,6 +195,10 @@ build information, and examples to use as a template to start development.
 .. _RM: index_device_drv.html#rm
 .. _GPMC: index_device_drv.html#gpmc
 .. _VPS Drivers: index_device_drv.html#vps-drivers
+.. _DSS: index_device_drv.html#dss
+.. _CAL: index_device_drv.html#cal
+.. _UDMA: index_device_drv.html#udma
+.. _SCICLIENT: index_device_drv.html#sciclient
 
 
 +-----------------------------+----------------------------+----------------------------+----------------------------+
