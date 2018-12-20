@@ -384,8 +384,7 @@ Finish**
 4. To import Hello Example, on the right window click on step 1. Import
 The Example to CCS Project.
 
-5. On New CCS Project window enter project name and 
-then click Next.
+5. Go to Project Explorer window and click on project properties.
 
 .. Image:: ../images/SYSBIOS_M4_platformSelect.jpg
 
