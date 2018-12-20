@@ -292,6 +292,43 @@ Examples & Unit tests
 |                                  |   configurations of EMMC      |                       |                 |              |
 +----------------------------------+-------------------------------+-----------------------+-----------------+--------------+
 
+Benchmarking Read/Write Performance (on AM65x)
+-----------------------------------------------
+
+The MMCSD_<EMMC>_Regression_TestApp application (listed above) measures read/write throughput (in mega bytes per sec). 
+
+It measures the following
+	- RAW read/write throughput:  This involves the reading/writing of a continuous block of data, say 1MB data buffer on 
+	  to the SD/eMMC using MMCSD_Read()/MMCSD_Write().
+	- FATFS read/write (SD Only) throughput: This involves reading/writing of a 1MB buffer of data through f_read()/f_write(). 
+	  Please note that FAT32 is tested with SD card only
+
+Benchmarking Steps
+------------------
+
+The performance benchmarks on SD Read/Write can be done with the following steps
+	- Load the MMCSD_Regression_TestApp on A53/R5 core of AM65x
+	- Insert SD Card formatted with FAT32 format preferably with allocation size=4096 bytes for better performance.
+	- Run the application. It presents with a menu of various modes the SD card which can be run on the UART console
+	- Select the desired mode from the list (say HS mode) and press Enter
+	- The test will run RAW & FATFS read/writes of various buffer sizes 256K, 512K, 1024K and 2048K. 
+	  This might take a minute or two to complete.
+	- Two tables are printed at the end of the test run for this mode with RAW & FATFS throughput numbers 
+	  for each buffer size.
+	- Note: Instead of running each mode seperately, you can select "All non powercycle tests" option (-1)  
+	  which runs all the supported modes along with the benchmark throughput numbers for each of them.
+
+
+EMMC performance benchmarks can be measured with the following steps
+	- Load the MMCSD_Regression_TestApp on A53/R5 core of AM65x
+	- Run the application. It presents with a menu of various eMMC modes which can be run on the UART console
+	- Select the desired mode from the list (say HS-DDR mode) and press Enter
+	- The test will run RAW read/writes of various buffer sizes 256K, 512K, 1024K and 2048K. 
+	  This might take a minute or two to complete.
+	- A table is printed at the end of the test with the RAW throughput numbers for each buffer size.
+	- Note: Instead of running each mode seperately, you can select "All non powercycle tests" option (-1)  
+	  which runs all the supported modes along with the benchmark throughput numbers for each of them.
+
 Building CCS projects based examples
 ------------------------------------
 
