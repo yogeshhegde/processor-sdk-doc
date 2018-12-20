@@ -40,40 +40,11 @@ Refer to the Processor SDK RTOS Building page for information on setting up the 
       4. ``cd ti/drv/spi/``
       5. ``gmake xdc_meta``
 
-.. rubric::  Building Application
-   :name: espi-compiling-app
-1. To create the application CCS project, open a CMD window and enter the following:
-      1. ``cd <PDK>/packages/``
-      2. ``pdksetupenv.bat``
-      3. ``pdkProjectCreate.bat <SOC> all little spi``
-      	    1. ``<SOC>`` = processor used (e.g. ``AM335x``)
-      	    2. This builds all SPI applications
-      
-2. To build the CCS application:
-      1. Open CCS 8.1.0
-      2. Create a new Workspace
-      3. In the menu bar select ``Project > Import CCS Projects…``
-      4. Click “Browse…”
-      5. Navigate to and select: ``<PDK>/MyExampleProjects/``
-      6. Select “ESPI_FwExample_bbbAM335x_armExampleProject” from Discovered Projects
-      7. From the Project Explorer, select ESPI_FwExample_AM335x_armExampleProject
-      8. Right-click the project name, and select Build Project
    
-.. rubric::  Load/Run the Application
-   :name: espi-load-run-app
-1. In the Target Configurations window, right click and select “New Target Configuration” and set up as follows:
-      1. Connection: Select whichever debugger you have hooked up
-      2. Board or device: BeagleBone_Black
-2. Right-click your created CCXML from the Target Configurations window and select “Launch selected configuration”
-3. Menu-bar: ``Run > Reset > System Reset``
-4. Right-click the CortexA8 core in the Debug window, select “Connect Target”
-5. Menu-bar: ``Scripts > PRU_ICSS > PRU_ICSS_Init``
-6. Menu-bar: ``Run > Load > Load Program…`` and navigate to: <PDK>/packages/MyExampleProjects/ESPI_FwExample_bbbAM335x_armExampleProject/Debug/ESPI_FwExample_bbbAM335x_armExampleProject.out
-7. Menu-bar: ``Run > Resume`` (if not already running automatically)
-8. Connect to PRU0
-9. ``Run > Resume``
-10. Connect to PRU1
-11. ``Run > Resume``
+.. rubric::  Running CCS Application
+   :name: espi-run-app
+
+CCS applications will be build and run just like any other project with one exception. Before loading the binary, from the menu-bar run ``Scripts > PRU_ICSS > PRU_ICSS_Init``.
 
 Supported EVMs
 ==============
@@ -95,7 +66,6 @@ Supported EVMs and pin configurations for these EVMs are listed below. See the d
 +---------+-------+--------------+---------------------+--------+-------+
 | Core    | PRU   |Functional Pin|GPIO Pins            |EVM Port|EVM Pin|
 +=========+=======+==============+=====================+========+=======+
-|         |       |--------------+---------------------+--------+-------+ 
 |         |       | OUT[0]       |pr1_pru0_pru_r30_4   | J3     | 41    |
 |         |       |--------------+---------------------+--------+-------+ 
 |         |       | OUT[1]       |pr1_pru0_pru_r30_5   | J3     | 42    |
@@ -129,7 +99,6 @@ Supported EVMs and pin configurations for these EVMs are listed below. See the d
 +---------+-------+--------------+---------------------+--------+-------+
 | Core    | PRU   |Functional Pin|GPIO Pins            |EVM Port|EVM Pin|
 +=========+=======+==============+=====================+========+=======+
-|         |       |--------------+---------------------+--------+-------+ 
 |         |       | OUT[0]       |pr1_pru0_pru_r30_6   | P16    | 49    |
 |         |       |--------------+---------------------+--------+-------+ 
 |         |       | Alert        |pr1_pru0_pru_r30_11  | P16    | 48    |
@@ -257,7 +226,7 @@ Refer to the Release Notes for details concerning eSPI support across different 
 
 +-----------------------------------+---------------------------------------------------------+
 | **Document**                      | **Location**                                            |
-+-----------------------------------+---------------------------------------------------------+
++===================================+=========================================================+
 | eSPI FIRMWARE Design Guide        | <PDK>/packages/ti/drv/spi/docs/ESPI_FW_DESIGN_GUIDE.doc |
 +-----------------------------------+---------------------------------------------------------+
 
