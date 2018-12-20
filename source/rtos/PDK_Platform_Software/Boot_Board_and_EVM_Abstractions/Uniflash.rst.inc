@@ -9,33 +9,33 @@ This section explains on how to use Uniflash CLI tool to flash images to the TI'
 Supported Platforms
 ^^^^^^^^^^^^^^^^^^^
 
-+----------------+------------------+---------------+------+--------------+
-|      SOC       |      PLATFORM    | FLASH DEVICE         |    MODES     |
-|                |                  +-------+-------+------+------+-------+
-|                |                  | SPI   | QSPI  | OSPI | UART | JTAG  |
-+================+==================+=======+=======+======+======+=======+
-| AM335x         | AM335x GP EVM    |   X   |       |      |   X  |   X   |
-|                +------------------+-------+-------+------+------+-------+
-|                | AM335x ICEv2     |   X   |       |      |      |   X   |
-|                +------------------+-------+-------+------+------+-------+
-|                | AMIC110 ICE      |   X   |       |      |   X  |   X   |
-+----------------+------------------+-------+-------+------+------+-------+
-| AM437x         | AM437x IDK       |       |   X   |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+-------+
-| AM571x         | AM571x IDK       |       |   X   |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+-------+
-| AM572x         | AM572x IDK       |       |   X   |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+-------+
-| AM574x         | AM574x IDK       |       |   X   |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+-------+
-| K2G            | K2G GP EVM       |       |   X   |      |      |   X   |
-|                +------------------+-------+-------+------+------+-------+
-|                | K2G ICE          |       |   X   |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+-------+
-| AM65XX         | AM65xx EVM       |       |       |   X  |      |   X   |
-|                +------------------+-------+-------+------+------+-------+
-|                | AM65xx IDK       |       |       |   X  |      |   X   |
-+----------------+------------------+-------+-------+------+------+-------+
++----------------+------------------+---------------+------+------+--------------+
+|      SOC       |      PLATFORM    |    FLASH DEVICE             |    MODES     |
+|                |                  +-------+-------+------+------+------+-------+
+|                |                  | SPI   | QSPI  | OSPI | EMMC | UART | JTAG  |
++================+==================+=======+=======+======+======+======+=======+
+| AM335x         | AM335x GP EVM    |   X   |       |      |      |   X  |   X   |
+|                +------------------+-------+-------+------+------+------+-------+
+|                | AM335x ICEv2     |   X   |       |      |      |      |   X   |
+|                +------------------+-------+-------+------+------+------+-------+
+|                | AMIC110 ICE      |   X   |       |      |      |   X  |   X   |
++----------------+------------------+-------+-------+------+------+------+-------+
+| AM437x         | AM437x IDK       |       |   X   |      |      |      |   X   |
++----------------+------------------+-------+-------+------+------+------+-------+
+| AM571x         | AM571x IDK       |       |   X   |      |      |      |   X   |
++----------------+------------------+-------+-------+------+------+------+-------+
+| AM572x         | AM572x IDK       |       |   X   |      |      |      |   X   |
++----------------+------------------+-------+-------+------+------+------+-------+
+| AM574x         | AM574x IDK       |       |   X   |      |      |      |   X   |
++----------------+------------------+-------+-------+------+------+------+-------+
+| K2G            | K2G GP EVM       |       |   X   |      |      |      |   X   |
+|                +------------------+-------+-------+------+------+------+-------+
+|                | K2G ICE          |       |   X   |      |      |      |   X   |
++----------------+------------------+-------+-------+------+------+------+-------+
+| AM65XX         | AM65xx EVM       |       |       |   X  |   X  |      |   X   |
+|                +------------------+-------+-------+------+------+------+-------+
+|                | AM65xx IDK       |       |       |   X  |   X  |      |   X   |
++----------------+------------------+-------+-------+------+------+------+-------+
 
 where,
 
@@ -44,28 +44,7 @@ X - supported
 Pre-Requisites
 ^^^^^^^^^^^^^^
 
-1. Download and install the desktop version of `Uniflash tool <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash#UniFlash_v4>`__
-
-2. Download and install the Processor-SDK RTOS package. See
-the software product page for your device to get the latest version of
-this software:
-
--  `Processor SDK for
-   AM335x <http://www.ti.com/tool/processor-sdk-am335x>`__
--  `Processor SDK for
-   AM437x <http://www.ti.com/tool/processor-sdk-am437x>`__
--  `Processor SDK for
-   AM57xx <http://www.ti.com/tool/processor-sdk-am57x>`__
--  `Processor SDK for
-   AM65xx <http://www.ti.com/tool/processor-sdk-am65x>`__
--  `Processor SDK for
-   AMIC110 <http://www.ti.com/tool/PROCESSOR-SDK-AMIC110>`__
--  `Processor SDK RTOS for
-   K2G <http://www.ti.com/tool/PROCESSOR-SDK-K2G>`__
-
-From the appropriate software product page, go to the download page by
-clicking "Get Software" for the RTOS package.
-
+Download and install the desktop version of `Uniflash tool <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash#UniFlash_v4>`__
 
 Binaries
 ^^^^^^^^
@@ -79,10 +58,7 @@ to the TI's MPU platforms. This mode will execute the Uniflash CLI binary <path_
 
 **Target**
 
-Get the Flash Writer binaries from <pdk_install_path>/packages/ti/board/utils/uniflash/bin/<board_name>/
-
-.. note::   Flash Writer Binaries needs to be rebuilt for AM335x and AM65xx platforms.
-            Refer :ref:`rebuild-board_utils` section to rebuild FlashWriter.
+Get the Flash Writer binaries from <path_to_the_uniflash>/processors/FlashWriter/<board_name>/
 
 Display Help
 ^^^^^^^^^^^^
@@ -120,7 +96,7 @@ Following is the sample output on Windows.
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
         Copyright (C) 2017-2018 Texas Instruments Incorporated - http://www.ti.com/
-        Version 0.2
+        Version 1.0.0.5
         ----------------------------------------------------------------------------
         Displaying Help..
 
@@ -227,7 +203,7 @@ Following is the sample output on Windows.
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
         Copyright (C) 2017-2018 Texas Instruments Incorporated - http://www.ti.com/
-        Version 0.2
+        Version 1.0.0.5
         ----------------------------------------------------------------------------
         Flashing Flash Writer to RBL..
 
@@ -366,31 +342,18 @@ This can be verified on the serial console utility.
 
 Programming FlashWriter on AM65xx Platform
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- Follow the instructions mentioned in `Basic CCS Setup <http://software-dl.ti.com/processor-sdk-rtos/esd
-  /docs/latest/rtos/index_how_to_guides.html#ccs-host-setup>`__ to connect to M3_0 and A53_0_0 and configure DDR.
-- Once DDR is configured, load the Flash Writer program (<uniflash_install_path>/processors/FlashWriter/AM65XX/
-  uart_am65xx_evm_flash_programmer.out) on to the A53_0_0 core.
-- Run the FlashWriter program. The Flash Writer starts sending character 'C'(xmodem protocol) on the `SoC Main Uart0
-  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_how_to_guides.html#uart-connection>`__
+- Launch and setup CCS for AM65xx to configure DDR and load the DMSC firmware. Refer below link for detailed instructions
+  http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#ccs-host-setup
+- Connect the USB cable between USB2UART port (J42) of the board and host PC
+- Configure the board to "no boot" mode
+- Configure the serial console application on host PC to connect to MAIN UART0 port. Connect to the first COM port
+  out of four COM ports detected.
+- Launch target config file for AM65xx platform and connect to A53 core.
+- Load the flash writer binary <path_to_the_uniflash>/processors/FlashWriter/am65xx_evm/uart_am65xx_evm_flash_programmer.out to A53 core.
+- Run the program and confirm that character 'C' is getting printed on the host PC serial console. Make a note of the COM port number.
+- Close the serial console, disconnect and reconnect the serial cable to USB2UART port (J42) of the board.
 - Refer Section :ref:`erasing_target` for erasing the flash device on the target platform.
-- To program SBL and app image on the AM65xx EVM
-    - First Program the SBL image (sbl_ospi_img_mcu1_0_release.tiimage) at offset 0.
-      Power down, then restart the entire process again to flash the next image.
-    - Program the system firmware image (sysfw.bin) at offset 0x40000.
-      Power down, then restart the entire process again to flash the next image.
-    - Program the SBL app (sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage) at offset 0xA0000.
-      Power down, flashing is now complete
-
-::
-
-    For Linux:
-    cd <path_to_the_uniflash>
-    sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
-
-    Example:
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/binary/ospi/am65xx_evm/sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 000
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>packages/ti/drv/sciclient/soc/V0/sysfw.bin -d 3 -o 40000
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/example/ampMulticoreApp/binary/am65xx_evm/sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o A0000
+- Run the below commands to program the OSPI/eMMC flash device.
 
 ::
 
@@ -399,14 +362,30 @@ Programming FlashWriter on AM65xx Platform
     .\dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
 
     Example:
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\binary\ospi\am65xx_evm\sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 000
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\drv\sciclient\V0\sysfw.bin -d 3 -o 40000
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\example\ampMulticoreApp\binary\am65xx_evm\sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o A0000
+    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\binary\ospi\am65xx_evm\sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 0
 
-.. note:: When using the dslite scripts for the AM65xx EVMs:
+::
 
-            - Specify the <device_type> as 3 (for OSPI flash)
-            - <COM_Port> must refer to the `SoC Main Uart0  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_how_to_guides.html#uart-connection>`__
+    For Linux:
+    cd <path_to_the_uniflash>
+    sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
+
+    Example:
+    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/binary/ospi/am65xx_evm/sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 0
+
+
+where,
+
+COM port - COM port number on which MAIN UART0 port is connected
+
+- After successful flashing, power OFF the board and change the boot setting to configure the respective boot mode. 
+- Configure the serial console application on host PC to connect to MCU UART port. Connect to the second COM port
+  out of four COM ports detected.
+- Power ON the board and confirm that SBL is booting.
+
+.. note:: When using the dslite scripts for the AM65xx platform:
+
+            - Specify the <device_type> as 3 (for OSPI flash) and 4 (for eMMC)
 
 .. warning::   If you open the SoC Main Uart0 on a terminal application like minicom or hyperterm to see if the
                'CCCC' is being output, make sure to close the application before executing dslite. Disconnect
@@ -464,7 +443,7 @@ Following is the sample output on Windows.
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
         Copyright (C) 2017-2018 Texas Instruments Incorporated - http://www.ti.com/
-        Version 0.2
+        Version 1.0.0.5
         ----------------------------------------------------------------------------
         Flashing Image to Flash Writer..
 
@@ -486,7 +465,8 @@ Following is the sample output on Windows.
 Erasing Flash Device on the Target Platform
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Follow the procedure explained in Section :ref:`program-flashwriter` to load Flash Writer binary to the target platform.
+Follow the procedure explained in Section :ref:`program-flashwriter` (:ref:`program-flashwriter-am65xx` in case of AM65xx platform)
+to load Flash Writer binary to the target platform.
 Once the Flash Writer is loaded and executed, use the following commands to erase the Flash Device on the target platform
 
 For Windows
@@ -525,7 +505,7 @@ Following is the sample output on Windows.
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
         Copyright (C) 2017-2018 Texas Instruments Incorporated - http://www.ti.com/
-        Version 0.2
+        Version 1.0.0.5
         ----------------------------------------------------------------------------
         Erasing Flash....
 
