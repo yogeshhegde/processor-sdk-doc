@@ -379,7 +379,6 @@ SDK Known Issues
    PLSDK-2515,"am571x-idk, am572x-evm, am572x-idk, am574x-idk","TIDL import tool should link with OpenCV to allow use of JPG, PNG",None
    PLSDK-2530,"am335x-ice, am437x-idk",AM3/4 PTP PPS fails intermittently,No complete workaround. Restarting the ethernet interface should reset PPS and likely resolve the issue temporarily.
    PLSDK-2545,"am574x-hsidk, am574x-idk",Caffe-Jacinto trained SSD model hangs when running the inference using TIDL on AM5749,None
-   PLSDK-2554,"am574x-hsidk, am574x-idk",TIDL import model reports floating point exception (core dumped) issue,None
    PLSDK-2564,am654x-idk,Maxwell IDK Multimedia Test Failures,None
    PLSDK-2565,am572x-evm,ROS navigation demo with IWR6843: intermittently the global path is not updated in time,None
    PLSDK-2566,"k2e-evm, k2e-hsevm, k2hk-evm, k2hk-hsevm, k2l-evm, k2l-hsevm",transportIpcQmssMultiProcess failed due to missing .out file on k2 platform,
