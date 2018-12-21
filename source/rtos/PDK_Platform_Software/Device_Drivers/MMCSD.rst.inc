@@ -307,6 +307,7 @@ Benchmarking Steps
 ------------------
 
 The performance benchmarks on SD Read/Write can be done with the following steps
+
 	- Load the MMCSD_Regression_TestApp on A53/R5 core of AM65x
 	- Insert SD Card formatted with FAT32 format preferably with allocation size=4096 bytes for better performance.
 	- Run the application. It presents with a menu of various modes the SD card which can be run on the UART console
@@ -316,18 +317,19 @@ The performance benchmarks on SD Read/Write can be done with the following steps
 	- Two tables are printed at the end of the test run for this mode with RAW & FATFS throughput numbers 
 	  for each buffer size.
 	- Note: Instead of running each mode seperately, you can select "All non powercycle tests" option (-1)  
-	  which runs all the supported modes along with the benchmark throughput numbers for each of them.
+	  which runs all the supported modes along with the throughput numbers for each of them.
 
 
 EMMC performance benchmarks can be measured with the following steps
-	- Load the MMCSD_Regression_TestApp on A53/R5 core of AM65x
+
+	- Load the MMCSD_EMMC_Regression_TestApp on A53/R5 core of AM65x
 	- Run the application. It presents with a menu of various eMMC modes which can be run on the UART console
 	- Select the desired mode from the list (say HS-DDR mode) and press Enter
 	- The test will run RAW read/writes of various buffer sizes 256K, 512K, 1024K and 2048K. 
 	  This might take a minute or two to complete.
 	- A table is printed at the end of the test with the RAW throughput numbers for each buffer size.
 	- Note: Instead of running each mode seperately, you can select "All non powercycle tests" option (-1)  
-	  which runs all the supported modes along with the benchmark throughput numbers for each of them.
+	  which runs all the supported modes along with the throughput numbers for each of them.
 
 Building CCS projects based examples
 ------------------------------------
