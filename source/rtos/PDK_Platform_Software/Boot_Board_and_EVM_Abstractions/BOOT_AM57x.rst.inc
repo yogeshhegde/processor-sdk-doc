@@ -248,17 +248,17 @@ files will be located in: **<PDK>/packages/ti/boot/sbl/binary/<BOARD>**
 This Release of SBL supports MMCSD and QSPI Boot modes. The different
 boot modes supported for all the boards is tabulated in the table below.
 
-+-----------------------+--------+------+
-|                       | MMCSD  | QSPI |
-+-----------------------+--------+------+
-| AM572x GPEVM          |  YES   | NO   |
-+-----------------------+--------+------+
-| AM572x IDKEVM         |  YES   | YES  |
-+-----------------------+--------+------+
-| AM571x IDKEVM         |  YES   | YES  |
-+-----------------------+--------+------+
-| AM574x IDKEVM         |  YES   | YES  |
-+-----------------------+--------+------+
++-----------------------+--------+------+------+
+|                       | MMCSD  | QSPI | eMMC |
++-----------------------+--------+------+------+
+| AM572x GPEVM          |  YES   | NO   | YES  |
++-----------------------+--------+------+------+
+| AM572x IDKEVM         |  YES   | YES  | NO   |
++-----------------------+--------+------+------+
+| AM571x IDKEVM         |  YES   | YES  | NO   |
++-----------------------+--------+------+------+
+| AM574x IDKEVM         |  YES   | YES  | NO   |
++-----------------------+--------+------+------+
 
 | 
 
@@ -289,6 +289,39 @@ Booting the target
    PC and connect to the UART console port
 #. Do a power reset of the board to boot the appliation from the SD
    card.
+
+Booting Via eMMC
+""""""""""""""""""""""
+
+#. Preparing the eMMC.
+#. Booting the target.
+
+Preparing the eMMC 
+'''''''''''''''''''
+
+#. To format the eMMC of the target board, Run the following application on the target board
+   `USB_DevMsc_mmcsd <Device_Drivers.html#id6>`__ .
+#. To boot the target the eMMC should be bootable. Follow the steps same as SD card
+   formatting as given
+   at `Creating bootable SD card in windows <Overview.html#windows-sd-card-creation-guide>`__
+   or `Creating bootable SD card in Linux <Overview.html#linux-sd-card-creation-guide>`__
+   except instead of SD card, connect the target board eMMC to the host PC.
+#. Delete the "MLO" and "app" in the bootable eMMC which are created
+   in the process of making the eMMC bootable.
+#. Copy the sbl binary(MLO) to the eMMC.
+#. Copy the Application image(app) generated using the
+   `Script <Foundational_Components.html#application-image-creation>`__
+   to the eMMC.
+
+Booting the target
+''''''''''''''''''''
+
+#. Set boot settings to eMMC by selecting J3, J4 and J6 jumpers on Pin 2 and 3
+   of AM572x EVM Board.
+#. Ensure there is no SD card inserted in the SD card slot.
+#. Open a serial communication terminal like TeraTerm, MiniCom on host
+   PC and connect to the UART console port
+#. Do a power reset of the board to boot the appliation from the eMMC.
 
 Booting Via QSPI
 """"""""""""""""""
