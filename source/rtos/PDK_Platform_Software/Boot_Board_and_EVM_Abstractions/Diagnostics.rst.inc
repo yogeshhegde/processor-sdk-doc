@@ -169,6 +169,11 @@ To do so:
 #. insert your SD card into your board and power on your board
 #. open Terminal emulator program eg: Teraterm to connect to the board's
    UART console
+
+.. note::
+    Use MAIN UART0 console for running the tests on A53 core and MCU UART console
+    for running the tests on R5 core for AM65xx platform.
+
 #. press the "Hard Reset" button on your board. (This is to force
    re-booting, and not absolutely necessary. Because Terminal emulator
    program is opened after boot is powered on, you would've missed the

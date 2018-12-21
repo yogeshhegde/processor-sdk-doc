@@ -6621,7 +6621,590 @@ Sample log for USB host stress test on am65xx_idk board is shown below
     Fail Count - 0
     Overall Status - PASS
 
+|
+
+MCAN Stress Test
+^^^^^^^^^^^^^^^^^
+Verifies MCAN ports on the HW platform with two MCAN ports connected with each other. 
+10240 packets sent from one port and received on another port. Both the ports are verified for Tx and Rx.
+
+Test Accessories
+"""""""""""""""""
+MCAN port to port loopback cable
+
+Test Setup
+"""""""""""
+Refer `MCAN Test Setup <index_board.html#id96>`_ section for more details
+
+Test Execution
+"""""""""""""""
+ - Select the menu option to run ‘mcanStress_TEST’
+ - Verify the test log on serial console
+ 
+Test Log
+"""""""""""
+Sample log for MCAN stress test is shown below
+
+::
+
+    ***********************************************
+    *                MCAN Stress Test             *
+    ***********************************************
+    MCANSS Revision ID:
+    scheme:0x1
+    Business Unit:0x2
+    Module ID:0x8e0
+    RTL Revision:0x5
+    Major Revision:0x1
+    Custom Revision:0x0
+    Minor Revision:0x1
+    CAN-FD operation is enabled through E-Fuse.
+    Endianess Value:0x87654321
+    Successfully configured MCAN0
+    MCANSS Revision ID:
+    scheme:0x1
+    Business Unit:0x2
+    Module ID:0x8e0
+    RTL Revision:0x5
+    Major Revision:0x1
+    Custom Revision:0x0
+    Minor Revision:0x1
+    CAN-FD operation is enabled through E-Fuse.
+    Endianess Value:0x87654321
+    Successfully configured MCAN1
+
+
+    Transmitting Data on MCAN Port0 and Receiving on MCAN port 1
+
+    Sending Packet - 1
+
+    Message successfully transferred with payload Bytes:0xf
+
+    Message ID:0x100000
+
+    Message Remote Transmission Request:0x0
+
+    Message Extended Frame ID(0:11Bit ID/1:29bit ID):0x0
+
+    Message Error State Indicator(0:Error Active/1:Error Passive):0x0
+
+    Message Data Length Code:0xf
+
+    Message BRS:0x1
+
+    Message CAN FD format:0x1
+
+    Message Store Tx Events:0x1
+
+    Message Marker:0xaa
+
+    Message DataByte0:0xaa
+
+    Message DataByte1:0x30
+
+    Message DataByte2:0xb9
+
+    Message DataByte3:0xd6
+
+    Message DataByte4:0xfb
+
+    Message DataByte5:0x4b
+
+    Message DataByte6:0x87
+
+    Message DataByte7:0x27
+
+    Message DataByte8:0x97
+
+    Message DataByte9:0x58
+
+    Message DataByte10:0x0
+
+    Message DataByte11:0xc0
+
+    Message DataByte12:0xd4
+
+    Message DataByte13:0xe
+
+    Message DataByte14:0x3
+
+    Message successfully received with payload Bytes:0xf
+
+    Received last message with following details:
+    Message ID:0x100008
+
+    Message Remote Transmission Request:0x0
+
+    Message Extended Frame ID(0:11Bit ID/1:29bit ID):0x0
+
+    Message Error State Indicator(0:Error Active/1:Error Passive):0x0
+
+    Message TimeStamp:0x0
+
+    Message Data Length Code:0xf
+
+    Message BRS:0x1
+
+    Message CAN FD format:0x1
+
+    Message Filter Index:0x0
+
+    Message Accept Non-matching Frame:0x0
+
+    Message DataByte0:0xaa
+
+    Message DataByte1:0x30
+
+    Message DataByte2:0xb9
+
+    Message DataByte3:0xd6
+
+    Message DataByte4:0xfb
+
+    Message DataByte5:0x4b
+
+    Message DataByte6:0x87
+
+    Message DataByte7:0x27
+
+    Message DataByte8:0x97
+
+    Message DataByte9:0x58
+
+    Message DataByte10:0x0
+
+    Message DataByte11:0xc0
+
+    Message DataByte12:0xd4
+
+    Message DataByte13:0xe
+
+    Message DataByte14:0x3
+
+    Received Packet - 1
+
+    ...
+    ...
+    ...
+
+    Sending Packet - 10240
+
+    Message successfully transferred with payload Bytes:0xf
+
+    Message ID:0x100000
+
+    Message Remote Transmission Request:0x0
+
+    Message Extended Frame ID(0:11Bit ID/1:29bit ID):0x0
+
+    Message Error State Indicator(0:Error Active/1:Error Passive):0x0
+
+    Message Data Length Code:0xf
+
+    Message BRS:0x1
+
+    Message CAN FD format:0x1
+
+    Message Store Tx Events:0x1
+
+    Message Marker:0xaa
+
+    Message DataByte0:0xaa
+
+    Message DataByte1:0x59
+
+    Message DataByte2:0x2a
+
+    Message DataByte3:0x5b
+
+    Message DataByte4:0x4b
+
+    Message DataByte5:0x9e
+
+    Message DataByte6:0xd1
+
+    Message DataByte7:0x77
+
+    Message DataByte8:0x9d
+
+    Message DataByte9:0x46
+
+    Message DataByte10:0x6d
+
+    Message DataByte11:0x74
+
+    Message DataByte12:0xd7
+
+    Message DataByte13:0xc2
+
+    Message DataByte14:0x8d
+
+    Message successfully received with payload Bytes:0xf
+
+    Received last message with following details:
+    Message ID:0x110008
+
+    Message Remote Transmission Request:0x0
+
+    Message Extended Frame ID(0:11Bit ID/1:29bit ID):0x0
+
+    Message Error State Indicator(0:Error Active/1:Error Passive):0x0
+
+    Message TimeStamp:0x0
+
+    Message Data Length Code:0xf
+
+    Message BRS:0x1
+
+    Message CAN FD format:0x1
+
+    Message Filter Index:0x0
+
+    Message Accept Non-matching Frame:0x0
+
+    Message DataByte0:0xaa
+
+    Message DataByte1:0x59
+
+    Message DataByte2:0x2a
+
+    Message DataByte3:0x5b
+
+    Message DataByte4:0x4b
+
+    Message DataByte5:0x9e
+
+    Message DataByte6:0xd1
+
+    Message DataByte7:0x77
+
+    Message DataByte8:0x9d
+
+    Message DataByte9:0x46
+
+    Message DataByte10:0x6d
+
+    Message DataByte11:0x74
+
+    Message DataByte12:0xd7
+
+    Message DataByte13:0xc2
+
+    Message DataByte14:0x8d
+
+    Received Packet - 10240
+
+
+
+    Transmitting Data on MCAN Port1 and Receiving on MCAN port 0
+
+    Sending Packet - 1
+
+    Message successfully transferred with payload Bytes:0xf
+    Receiving data on port0
+
+    Message successfully received with payload Bytes:0xf
+
+    Received last message with following details:
+    Message ID:0x110008
+
+    Message Remote Transmission Request:0x0
+
+    Message Extended Frame ID(0:11Bit ID/1:29bit ID):0x0
+
+    Message Error State Indicator(0:Error Active/1:Error Passive):0x0
+
+    Message TimeStamp:0x0
+
+    Message Data Length Code:0xf
+
+    Message BRS:0x1
+
+    Message CAN FD format:0x1
+
+    Message Filter Index:0x0
+
+    Message Accept Non-matching Frame:0x0
+
+    Message DataByte0:0xaa
+
+    Message DataByte1:0x1f
+
+    Message DataByte2:0x44
+
+    Message DataByte3:0x40
+
+    Message DataByte4:0x68
+
+    Message DataByte5:0x7a
+
+    Message DataByte6:0x5d
+
+    Message DataByte7:0xf5
+
+    Message DataByte8:0x3e
+
+    Message DataByte9:0xa5
+
+    Message DataByte10:0xb7
+
+    Message DataByte11:0xe3
+
+    Message DataByte12:0x36
+
+    Message DataByte13:0x3a
+
+    Message DataByte14:0x76
+
+    Received Packet - 1
+
+    ...
+    ...
+    ...
+
+    Sending Packet - 10240
+
+    Message successfully transferred with payload Bytes:0xf
+
+    Message ID:0x100000
+
+    Message Remote Transmission Request:0x0
+
+    Message Extended Frame ID(0:11Bit ID/1:29bit ID):0x0
+
+    Message Error State Indicator(0:Error Active/1:Error Passive):0x0
+
+    Message Data Length Code:0xf
+
+    Message BRS:0x1
+
+    Message CAN FD format:0x1
+
+    Message Store Tx Events:0x1
+
+    Message Marker:0xaa
+
+    Message DataByte0:0xaa
+
+    Message DataByte1:0xbd
+
+    Message DataByte2:0x97
+
+    Message DataByte3:0xca
+
+    Message DataByte4:0x10
+
+    Message DataByte5:0xd5
+
+    Message DataByte6:0x2c
+
+    Message DataByte7:0x14
+
+    Message DataByte8:0x6e
+
+    Message DataByte9:0xcc
+
+    Message DataByte10:0x69
+
+    Message DataByte11:0x21
+
+    Message DataByte12:0xb8
+
+    Message DataByte13:0x94
+
+    Message DataByte14:0xf6
+    Receiving data on port0
+
+    Message successfully received with payload Bytes:0xf
+
+    Received last message with following details:
+    Message ID:0x110008
+
+    Message Remote Transmission Request:0x0
+
+    Message Extended Frame ID(0:11Bit ID/1:29bit ID):0x0
+
+    Message Error State Indicator(0:Error Active/1:Error Passive):0x0
+
+    Message TimeStamp:0x0
+
+    Message Data Length Code:0xf
+
+    Message BRS:0x1
+
+    Message CAN FD format:0x1
+
+    Message Filter Index:0x0
+
+    Message Accept Non-matching Frame:0x0
+
+    Message DataByte0:0xaa
+
+    Message DataByte1:0xbd
+
+    Message DataByte2:0x97
+
+    Message DataByte3:0xca
+
+    Message DataByte4:0x10
+
+    Message DataByte5:0xd5
+
+    Message DataByte6:0x2c
+
+    Message DataByte7:0x14
+
+    Message DataByte8:0x6e
+
+    Message DataByte9:0xcc
+
+    Message DataByte10:0x69
+
+    Message DataByte11:0x21
+
+    Message DataByte12:0xb8
+
+    Message DataByte13:0x94
+
+    Message DataByte14:0xf6
+
+    Received Packet - 10240
+
+
+     MCAN diagnostic test completed.
+    Finished running mcanStress_TEST, result passed!
+
 | 
+
+UART Stress Test
+^^^^^^^^^^^^^^^^^
+This test verifies the UART serial port by sending 10MB of data to the serial console.
+Data is received by the teraterm script on host PC and looped back to the board. Data is 
+recieved by the test running on the board and verified to confirm data match.
+
+.. note:: 
+   This test does not support SD boot execution and need to run from CCS over JTAG.
+   Automation script is provided for teraterm application but the test should
+   be functional with any utility that can receive the data over COM port and 
+   send it back on the same COM port.
+
+Test Accessories
+"""""""""""""""""
+ - UART serial cable.
+ - JTAG connection (on board or external as supported)
+Different platforms may need different cable for accessing the serial port. Refer to HW manual
+for more details.
+
+Test Setup
+"""""""""""
+ - Connect the UART serial cable between the board UART port and host PC
+ - Connect the JTAG port of the board to host PC
+ - Setup serial console application on host PC with below configurations
+ :: 
+
+    Baud rate    -    115200
+    Data length  -    8 bit
+    Parity       -    None
+    Stop bits    -    1
+    Flow control -    None
+
+ - Four UART ports are verified on am65xx_evm platform and three UART ports are verified on am65xx_idk platform. 
+   Need to make above setup on all serial consoles connected to multiple ports on these platforms.
+
+Test Execution
+"""""""""""""""
+ - Power ON the board and clear any data on the serial consoles
+ - Run the TTL script from all the Teraterm consoles by selecting menu 'Control->Macro' and select the script file "am65xx_uart_stress_test_script.ttl"
+ - Open CCS, launch the target config file for the platform under test and connect to the target
+ - Load and run the UART diagnostic stress test binary (uartStress_diagExample_<BOARD>_<TARGET>.x<CORE>fg) on the <CORE> being used for the test.
+ - Test script shall start displaying the messages on Teraterm consoles.
+ - Test shall take few hours to complete and displays final result on the console.
+
+Test Log
+"""""""""""
+Sample UART stress test log is shown below
+
+::
+
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    
+    ....
+    ....
+    ....
+    
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:
+    
+    UART Stress Test Passed
+| 
+
+RS485 UART Stress Test
+^^^^^^^^^^^^^^^^^^^^^^^
+This test verifies the RS485 UART serial port by sending 10MB of data to the serial console.
+Data is received by the teraterm script on host PC and looped back to the board. Data is 
+recieved by the test running on the board and verified to confirm data match.
+
+.. note:: 
+   This test does not support SD boot execution and need to run from CCS over JTAG.
+   Automation script is provided for teraterm application but the test should
+   be functional with any utility that can receive the data over COM port and 
+   send it back on the same COM port.
+
+Test Accessories
+"""""""""""""""""
+ - UART serial cable.
+   RS485 to RS232 USB cable is used on AM65x IDK platform to run the test.
+ - JTAG connection (on board or external as supported)
+Different platforms may need different cable for accessing the serial port. Refer to HW manual
+for more details.
+
+Test Setup
+"""""""""""
+ - Connect the UART serial cable between the board RS485 UART port and host PC
+ - Connect the JTAG port of the board to host PC
+ - Setup serial console application on host PC with below configurations
+ :: 
+
+    Baud rate    -    115200
+    Data length  -    8 bit
+    Parity       -    None
+    Stop bits    -    1
+    Flow control -    None
+
+Test Execution
+"""""""""""""""
+ - Power ON the board and clear any data on the serial console
+ - Run the TTL script from the Teraterm console by selecting menu 'Control->Macro' and select the script file "am65xx_uart_stress_test_script.ttl"
+ - Open CCS, launch the target config file for the platform under test and connect to the target
+ - Load and run the UART diagnostic stress test binary (rs485_uartStress_diagExample_<BOARD>_<TARGET>.x<CORE>fg) on the <CORE> being used for the test.
+ - Test script shall start displaying the messages on Teraterm console.
+ - Test shall take few hours to complete and displays final result on the console.
+
+Test Log
+"""""""""""
+Sample RS485 UART stress test log is shown below
+
+::
+
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    
+    ....
+    ....
+    ....
+    
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+    0123456789:
+    
+    PRU-ICSS UART Stress Test Passed
+|  
 
 .. raw:: html
 
