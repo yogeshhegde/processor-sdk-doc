@@ -64,9 +64,10 @@ Released December 2018
 
 
 - This is an "O-Pastry" based release of Processor SDK Android for AM57x and AM65x
-
-- New platforms: AM65x Evaluation Module (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__), AM65x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
-
+- Early access release for AM65x
+- PRU-Ethernet support for AM57x
+- Android Treble support
+- Full CTS/VTS execution
 
 |
 
@@ -85,13 +86,15 @@ Following features are enabled/tested in this release for AM57x:
 -  **Video:** 720p30 MP4/H264/MP2
 -  **Audio:** MP3/AAC playback
 -  **Display:** SGX accelerated UI and touch, DRM/KMS
+-  **Android Treble Support**
 
 Following features are enabled/tested in this release for AM65x:
 
 -  **Boot:** fastboot, emmc boot
 -  **Connectivity:** USB2.0/USB3.0 Host, Gadget,
    Ethernet, SD card detect, eMMC
--  **Display:** SGX accelerated UI and touch, DRM/KMS
+-  **Display:** SGX Accelerated UI with DRM/KMS and ION
+-  **Android Treble Support**
 
 | 
 
