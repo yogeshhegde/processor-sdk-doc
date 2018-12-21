@@ -63,9 +63,8 @@ Released December 2018
    :name: whats-new
 
 
-- This is an "O-Pastry" based release of Processor SDK Android for AM57x and AM65x
-- Early access release for AM65x
-- PRU-Ethernet support for AM57x
+- This is an "O-Pastry" based release of Processor SDK Android for AM57x
+- PRU-Ethernet support
 - Android Treble support
 - Full CTS/VTS execution
 
@@ -86,14 +85,6 @@ Following features are enabled/tested in this release for AM57x:
 -  **Video:** 720p30 MP4/H264/MP2
 -  **Audio:** MP3/AAC playback
 -  **Display:** SGX accelerated UI and touch, DRM/KMS
--  **Android Treble Support**
-
-Following features are enabled/tested in this release for AM65x:
-
--  **Boot:** fastboot, emmc boot
--  **Connectivity:** USB2.0/USB3.0 Host, Gadget,
-   Ethernet, SD card detect, eMMC
--  **Display:** SGX Accelerated UI with DRM/KMS and ION
 -  **Android Treble Support**
 
 | 
@@ -147,12 +138,10 @@ Issues found and closed on this release that may be applicable to prior releases
    :widths: 10, 20, 70
 
    LCPD-14172,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Android: am57xevm: ADB Broken
-   LCPD-14267,"am57xx-evm, am654x-evm",Android: Android System Internal error reported at boot_complete
-   LCPD-14222,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm, am654x-evm",Android: 4.14.77 PVR Mismatch: Boot failure
+   LCPD-14267,"am57xx-evm",Android: Android System Internal error reported at boot_complete
+   LCPD-14222,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Android: 4.14.77 PVR Mismatch: Boot failure
    LCPD-13894,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Android: 4.14.71 PVR Mismatch: Boot failure
-   LCPD-14204,am654x-evm,"Android: AM65x: longer first boot ,because of no package preoptimization"
    LCPD-14095,,[Android] allmodconfig warning on linux 4.14
-   LCPD-14309,am654x-evm,Android: AM65: selinux denial warnings with ion
 |
 
 Known Issues
@@ -167,12 +156,9 @@ Known Issues
    LCPD-12928,am57xx-evm,Periodic frame freezes observed while decoding H264 video,
    LCPD-13956,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Graphics stack crash after HDMI hot un-plug,
    LCPD-12511,am57xx-evm,Audio record is not working,
-   LCPD-14444,am654x-evm,VTS tests time-out with kernel warning,
-   LCPD-14443,am654x-evm,CTS failures detected,
-   LCPD-14442,am654x-evm,Ethernert port does not obtain ip address,
    LCPD-14423,am57xx-evm,Some Am57xx EVMs board are not able to fully boot from emmc,
    LCPD-13797,am57xx-evm,Android:CTS Failures,
-   LCPD-13796,"am57xx-evm, am654x-evm",Android: monkey test causes system crash after 10 mins of execution,
+   LCPD-13796,"am57xx-evm",Android: monkey test causes system crash after 10 mins of execution,
    LCPD-13795,"am571x-idk, am572x-idk, am57xx-evm","Android: Graphics service failure with ""stop"" and ""start"" command",
    LCPD-13723,,[android] allmodconfig fails to build on kernel build redirect,
    LCPD-13409,"am571x-idk, am572x-idk, am574x-idk",Android: IDK: Bootloader images fail to boot from eMMC,
