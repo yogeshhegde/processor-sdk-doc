@@ -64,6 +64,12 @@ Application need to configure Board_init() with the
 After Board_init() completes, application can invoke UART stdio
 functions such as UART_printf, UART_scanFmt, and etc.
 
+SCICLIENT
+""""""""""
+
+AM65xx Board library uses sciclient APIs for configuring the PLL clocks.
+
+
 Application Integration for AM5x/DRA7xx
 ----------------------------------------
 

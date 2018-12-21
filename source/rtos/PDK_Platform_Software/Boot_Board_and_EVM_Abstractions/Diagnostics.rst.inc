@@ -32,6 +32,8 @@ Pre-requisites to Building
 -  MMCSD
 -  EMAC
 -  USB  
+-  UDMA
+-  SCICLIENT
 
 (Note: not every library is used for every application, and these
 libraries should come pre-built with any fresh installation of the
@@ -46,8 +48,7 @@ To build the diagnostic examples:
 #. **make <BOARD>**
 
 This will make the diagnostic applications for a specific $BOARD.
-Alternatively, "make all" will make for all boards. Output files will be
-located in: **<PDK>/packages/ti/board/bin/<BOARD>**
+Output files will be located in: **<PDK>/packages/ti/board/bin/<BOARD>**
 
 Creating the SD Card Loadable Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,6 +77,11 @@ create the SD card loadable files. The output files will be located in:
 **<PDK>/packages/ti/board/bin/<BOARD>/sd**. Note that the framework
 application is named "app" to allow it to be the default application to
 be loaded by the SBL.
+
+.. note::
+    Diagnostic tests on AM65xx platform supports A53 and R5 cores.
+    A53 binary path: <PDK>/packages/ti/board/bin/<BOARD>/sd/armv8.
+    R5 binary path: <PDK>/packages/ti/board/bin/<BOARD>/sd/armv7.
 
 Creating the SPI Flash Loadable Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -124,9 +130,9 @@ variant:
 +===========+===========+===========+===========+===========+===========+============+
 | <Board>   | evmAM335x | evmAM437x | idkAM572x | evmK2G    | evmOMAPL1 | am65xx_evm |
 |           | skAM335x  | skAM437x  | idkAM571x | iceK2G    | 37        | am65xx_idk |
-|           | bbbAM335x | idkAM437x | evmAM572x |           | (No Boot  |            |
-|           | icev2AM33 |           | idkAM574x |           | support.  |            |
-|           | 5x        |           |           |           |           |            |
+|           | bbbAM335x | idkAM437x | evmAM572x |           | (No Boot  | (Supports  |
+|           | icev2AM33 |           | idkAM574x |           | support.  | A53 & R5   |
+|           | 5x        |           |           |           |           | cores)     |
 |           | iceAMIC11 |           |           |           | Diagnosti |            |
 |           | 0         |           |           |           | cs        |            |
 |           |           |           |           |           | need to   |            |
@@ -134,9 +140,10 @@ variant:
 |           |           |           |           |           | CCS)      |            |
 +-----------+-----------+-----------+-----------+-----------+-----------+------------+
 
-**Note:** OMAPL137 EVM diagnostic tests does not support executing from
-a boot device. Use the command **make evmOMAPL137** to build the
-diagnostics. Diagnostics test binaries need to be executed from CCS.
+.. note::
+   OMAPL137 EVM diagnostic tests does not support executing from
+   a boot device. Use the command **make evmOMAPL137** to build the
+   diagnostics. Diagnostics test binaries need to be executed from CCS.
 
 Running the Diagnostic Examples
 -----------------------------------
@@ -169,12 +176,19 @@ To do so:
    confidence checking that the board has booted correctly)
    
 .. note::
-    For AM65xx platform, SBL binary name is different.
+    Diagnostic tests on AM65xx platform supports A53 and R5 cores.
+    A53 binary path: <PDK>/packages/ti/board/bin/<BOARD>/sd/armv8.
+    R5 binary path: <PDK>/packages/ti/board/bin/<BOARD>/sd/armv7.
+
+.. note::
+    SBL binary name is different on AM65xx platform and requires
+    system firmware binary also to be copied to SD card.
     Copy the sbl_mmcsd_img_mcu1_0_release.tiimage file from 
     <PDK>/packages/ti/boot/sbl/binary/mmcsd/<BOARD> to SD card and 
-    rename it to tiboot3.bin
+    rename it to tiboot3.bin.
+    Copy the system firmware image <PDK>/packages/ti/drv/sciclient/soc/V0/sysfw.bin to SD card
 
-You should see the following screen:
+You should see the following screen when board is bootted with diagnostic binaries in SD card:
 
 .. Image:: ../images/Diag-screen1.jpg
 
@@ -307,9 +321,8 @@ To run on CCS:
    at. If it is at 0x3808c (or near it), try reloading the program and
    running again.
 
-Note: On omapl13x platforms diagnostic tests can only be run from CCS as
-SBL support is not available at this point. Diagnostics are built for
-both DSP (C674x) and ARM (arm9) cores on omapl13x platform.
+.. note:: Diagnostics are built for both DSP (C674x) and ARM (arm9) cores 
+   on omapl13x platform.
 
 Running on a different ARM core
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -345,7 +358,7 @@ Diagnostic Applications
 |                                                 | range.            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Test for ADC      |   x    |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |      
+|                                                 | Test for ADC      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |      
 |    adc_TEST                                     | configuration for |        |        |        |               |        |     |     |    x   |  x     |        |        |    x   |  x     |        |          |         |
 |                                                 | Channel sequencing|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | and One shot mode |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
@@ -466,22 +479,9 @@ Diagnostic Applications
 |                                                 | packet loopback.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests GPIO over   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    ioexpGpio_TEST                               | the IO expander   |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Tests I2C over    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    ioexpI2c_TEST                                | the IO expander   |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
-|                                                 | Cycles through    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    ioexpLed_TEST                                | the LEDs on the   |        |        |        |               |        |     |  x  |        |        |        |        |        |        |        |          |         |
-|                                                 | IO expander       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-+-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 |                                                 | Tests LCD display |   x    |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    lcd_TEST                                     | output            |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
-|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    lcd_TEST                                     | output and touch  |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |          |         |
+|                                                 | input             |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 |                                                 | Prompts the user  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |    lcdTouchscreen_TEST                          | for touches on the|        |        |        |     x         |   x    |     |     |        |        |        |        |        |        |        |          |         |
@@ -612,7 +612,7 @@ Diagnostic Applications
 |                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 |                                                 | Writes and reads  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    pmic_TEST                                    | to the PMIC       |   x    |   x    |   x    |     x         |    x   |     |     |     x  |    x   |    x   |   x    |    x   |    x   |        |          |         |
+|    pmic_TEST                                    | to the PMIC       |        |        |   x    |     x         |    x   |     |     |     x  |    x   |    x   |   x    |    x   |    x   |        |          |         |
 |                                                 | controller. This  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | is to verify      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | ability to use    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
@@ -681,6 +681,28 @@ Diagnostic Applications
 |                                                 | on console.       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Verifies UART port|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    uartStress_TEST                              | with large block  |   x    |   x    |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | of data transfer. |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Sends 10MB of data|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | from the board to |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | serial console.   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Teraterm script   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | loops the data    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | back to the board.|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Data recieved on  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the board and     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | verified.         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | RS485 to RS232    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | coverter is needed|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | to run the test on|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | AM65xx platform.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Need to run this  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | test from CCS.    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | SD boot support is|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | not available.    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 |                                                 | On-board          |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |    mcasp_TEST                                   | audio codec       |        |        |        |               |        |  x  |     |        |        |        |        |        |        |        |    x     |         |
 |                                                 | functionality is  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
@@ -731,7 +753,7 @@ Diagnostic Applications
 |                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 |                                                 | Demonstrates the  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
-|    pwm_TEST                                     | usage of PWM CSL  |   x    |   x    |   x    |               |        |  x  |     |    x   |        |        |        |        |        |    x   |          |         |
+|    pwm_TEST                                     | usage of PWM CSL  |        |        |   x    |               |        |  x  |     |    x   |        |        |        |        |        |    x   |          |         |
 |                                                 | FL APIs by        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | configuring the   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | PWM module to     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
@@ -919,6 +941,20 @@ Diagnostic Applications
 |                                                 | veirified for Tx  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | and Rx            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Verifies MCAN     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    mcanStress_TEST                              | ports on the      |        |    x   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | board with two    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | ports connected   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | with each other.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | 10240 packets     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | are sent from     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | one port and      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | received on       |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | another port. Both|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | ports are         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | veirified for Tx  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | and Rx            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 |                                                 | Verifies PRU UART |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |    rs485_TEST                                   | port on the       |        |    x   |        |       x       |   x    |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | board.            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
@@ -929,6 +965,28 @@ Diagnostic Applications
 |                                                 | coverter is needed|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | to run the test on|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | AM65xx platform   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Verifies PRU UART |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    rs485Stress_TEST                             | port on the       |        |    x   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | board.            |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Sends 10MB of data|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | from the board to |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | serial console.   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Teraterm script   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | loops the data    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | back to the board.|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Data recieved on  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the board and     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | verified.         |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | RS485 to RS232    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | coverter is needed|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | to run the test on|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | AM65xx platform.  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 |                   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Need to run this  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | test from CCS.    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | SD boot support is|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | not available.    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 
 | Some diagnostic applications expect additional jumpers or hardware
