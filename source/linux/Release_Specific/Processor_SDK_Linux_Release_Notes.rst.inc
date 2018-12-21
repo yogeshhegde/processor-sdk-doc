@@ -64,7 +64,7 @@ Released December 2018
     - Support SPI Flash as mtd device
     - PCIe Gen3 RC and EP mode support
 - `Support Docker containerization <Foundational_Components_Virtualization.html#docker-linux-container-runtime>`__
-- Integrate OPCUA open source stack (Open65241)
+- `Integrate OPCUA open source stack (Open65241) <Industrial_Protocols_OPCUA.html>`__
 - Add Tiny Filesystem to PLSDK to support on board flashing of eMMC and QSPI from an initramfs
 - HSR/PRP/EMAC/PTP
     - `EMAC: Multicast, VLAN and Storm prevention feature <Industrial_Protocols_HSR_PRP.html#linux-software>`__
