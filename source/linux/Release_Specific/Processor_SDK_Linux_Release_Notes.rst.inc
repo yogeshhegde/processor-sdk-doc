@@ -63,19 +63,20 @@ Released December 2018
     - Rotary Encoder support
     - Support SPI Flash as mtd device
     - PCIe Gen3 RC and EP mode support
-- Support Docker containerization
+- `Support Docker containerization <Foundational_Components_Virtualization.html#docker-linux-container-runtime>`__
 - Integrate OPCUA open source stack (Open65241)
 - Add Tiny Filesystem to PLSDK to support on board flashing of eMMC and QSPI from an initramfs
 - HSR/PRP/EMAC/PTP
-    - EMAC: Multicast, VLAN and Storm prevention feature
-    - EMAC: PTP Support for SAN mode
+    - `EMAC: Multicast, VLAN and Storm prevention feature <Industrial_Protocols_HSR_PRP.html#linux-software>`__
+    - `EMAC: PTP Support for SAN mode <Industrial_Protocols_PTP.html>`__
     - HSR: Add support of PTP 1-step to 2-step conversion on ingress
     - HSR: PTP OC Master or Slave (with redundancy)
     - PRP: PTP OC Master or Slave (with redundancy)
-- TI Deep Learning (TIDL)
-   - Arm NN system level demo
+- Deep Learning
+   - `Port ARM NN inference engine to AM65x <Foundational_Components_ArmNN.html>`__
+   - `Add Arm NN MobileNet demo <Foundational_Components_ArmNN.html#arm-nn-mobilenet-demo>`__
    - Publish TIDL import tool source files
-- Add IWR6843 (60GHz) support to the TI design TIDEP-01006 http://www.ti.com/tool/TIDEP-01006
+- Add IWR6843 (60GHz) support to the `TI design TIDEP-01006 <http://www.ti.com/tool/TIDEP-01006>`__
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -337,20 +338,12 @@ SDK Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 25, 30, 50, 60
 
-   LCPD-7025,am43xx-gpevm,System takes more than 10 seconds to go from login prompt to system prompt,Automated tests need to account for this boot delay
    LCPD-8345,"am335x-evm, am437x-idk, k2e-evm, k2hk-evm, k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)",Restart the EVM
    LCPD-8352,"am43xx-gpevm, am57xx-evm",weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory,1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer
    LCPD-9006,"am57xx-evm",Some GLBenchmark tests fail to run,
    LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
    LCPD-11010,am574x-idk,AM574x-idk graphics performance is lower than am572x-idk,"Performance issue, no workaround"
-   LCPD-13417,am43xx-gpevm,"Error message with multiple egl, not shared context (double unmap)","Limitation with Imagination DDK, no workaround"
    LCPD-13470,am335x-evm,klogd and syslog are not needed when using systemd,
-   LCPD-13475,"am437x-idk, am43xx-gpevm",Back trace seen on AM437x-IDK when we reboot,
-   LCPD-13583,,SGX does not start on AM654 EVM,
-   LCPD-13620,"am654x-evm, am654x-idk",PVR Tools do not work,
-   LCPD-14419,"am335x-evm, am43xx-gpevm, am57xx-evm",SGX DDK gbm wsegl: Close Weston may cause SGX crash,
-
-
    PLSDK-832,AM57,OpenCL matmpy intermittent DSP1 crash due to EdmaMgr issues w/ suspend/resume,"Disabling suspend/resume on the DSPs prevents this intermittent failure: *echo on > /sys/bus/platform/devices/40800000.dsp/power/control; echo on > /sys/bus/platform/devices/41000000.dsp/power/control*"
    PLSDK-1398,"k2g-hsevm, k2hk-hsevm, k2e-evm, k2e-hsevm",Document workaround for IPC demo hangs if run after OpenCL demos,Run IPC demo w/o running OpenCL first
    PLSDK-1419,k2l-evm,Intermittent-IP address display issue on LCD for K2L RT,"Use ifconfig once Linux boots, to acquire IP address"
@@ -367,7 +360,7 @@ SDK Known Issues
    PLSDK-2186,am572x-evm,video-analytic-demo should run on top of Weston instead of qwindow-compistor,"Run the demo on top of qwindow-compositor, as available from Matrix GUI"
    PLSDK-2220,k2e-evm,UBI Image for K2E exceeds the available size limit,None
    PLSDK-2312,"am335x-evm, am437x-evm, am572x-evm",Some Qt3d examples either crash or works with errors,
-   PLSDK-2319,am654x-evm,QT5 Touch Screen demo: characters are corrupted,
+   PLSDK-2319,am654x-evm,QT5 Touch Screen demo: characters are corrupted, "Set environment variable QML_USE_GLYPHCACHE_WORKAROUND to 1: export QML_USE_GLYPHCACHE_WORKAROUD=1"
    PLSDK-2355,"am572x-idk, am572x-evm",Openvx: openvx_tiovx_application hangs on am572x evm,
    PLSDK-2456,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, k2g-ice",hsr: Node is not removed from node table after forget time.,"Node table can be manually cleared with: echo 1 > /proc/<hsr/prp-if_name>/clear-nt or will be cleared when device is rebooted."
    PLSDK-2465,"am571x-idk, am572x-idk, am574x-idk",Isolated BC stopped internal sync after about 9 hours,None

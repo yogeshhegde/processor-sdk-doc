@@ -91,7 +91,7 @@ suggestions <Feedback>`.
 +================+=========================+==================+===================================+
 | `DUAL_EMAC`_   | `HSR\_PRP`_             | `PTP`_           | `RSTP`_                           |
 +----------------+-------------------------+------------------+-----------------------------------+
-| `CCLINK`_      | `SORTE`_                |                  |                                   |
+| `CCLINK`_      | `SORTE`_                | `OPC/UA`_        |                                   |
 +----------------+-------------------------+------------------+-----------------------------------+
 
 .. _DUAL_EMAC: Industrial_Protocols_ICSS_Dual_EMAC.html
@@ -100,3 +100,4 @@ suggestions <Feedback>`.
 .. _PTP: Industrial_Protocols_PTP.html
 .. _CCLINK: Industrial_Protocols_CCLINK.html
 .. _SORTE: Industrial_Protocols_SORTE.html
+.. _OPC/UA: Industrial_Protocols_OPCUA.html
