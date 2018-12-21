@@ -61,13 +61,12 @@ Released December 2018
 
 - AM65x
 	- Updated `ICSS-G Dual EMAC firmware <index_pru_icss_fw.html#icss-g-dual-emac>`__ and `EMAC driver  <index_device_drv.html#emac>`__ to support
-	    - PTP slave support
-		- Dynamic configuration interface support between firmware and driver
+		- PTP slave and Dynamic configuration interface support between firmware and driver
 	- Additional Features
 		- `Board Diagnostic <index_board.html#diagnostics>`__  testcases extension to R5 core and support for ICSS-G interposer card
 		- `SBL <index_Foundational_Components.html#am65x>`__  enhancements for reduced size.SYSFW binary being exposed as separate binary for reduced boot time
 		- `Uniflash <index_board.html#uniflash>`__ flash writer support for OSPI with writer being loaded from CCS/JTAG
-		- `OSPI <index_device_drv.html#mcspi-qspi-ospi Driver>`__ update to support higher 133Mhz/166Mhz support
+		- `OSPI <index_device_drv.html#mcspi-qspi-ospi>`__ Driver update to support higher 133Mhz/166Mhz support
 	- Features not (yet) supported: USB 3.0, MPU TI-RTOS SMP Support,CTOOLSLIB
 -  `PRU-ICSS eSPI Firmware <PRU_ICSS.html#pru-icss-espi>`__
 	- Additional support for eSPI protocol offload for AM335x and AM437x SOC
