@@ -51,6 +51,11 @@ TIDL Classification Demo
 
 Refer to various TIDL demos documented at  `Examples and Demos <Foundational_Components_TIDL.html#examples-and-demos>`__
 
+Arm NN Classification Demo
+==========================
+
+Refer to `Arm NN MobileNet Demo <Foundational_Components_ArmNN.html#Arm-NN-MobileNet-Demo>`__
+
 
 PRU-ADC Demo
 ========================

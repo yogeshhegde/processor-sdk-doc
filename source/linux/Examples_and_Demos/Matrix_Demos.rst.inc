@@ -34,3 +34,4 @@ There are a number of Example Applications provided within the Processor SDK for
     Protection Relay Demo,X,,X,X,,,,,,,,,,,,,,,Protection Relay Demo ,X ,  ,X ,X ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,  ,`HMI  for Protection Relay Demo <Examples_and_Demos_Application_Demos.html#protection-relay-demo>`__,Matrix UI provides out of box demo to showcase Human Machine Interface (HMI) for Protection Relays.
     Qt5 Thermostat HMI Demo,X,,X,X,X,X,X,X,X,X,X,X,X,,,,,,`Qt5 Thermostat HMI Demo <Examples_and_Demos_Application_Demos.html#qt5-thermostat-hmi-demo>`__,Provides out of box Qt5-based HMI for Thermostat
     Deep Learning,,,,,,,,X,X,X,X,,,X,X,X,X,,`Vision Deep Learning Examples <Examples_and_Demos_Applicati
+    Arm NN,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,X,,`Arm NN Examples <Foundational_Components_ArmNN.html#Arm-NN-MobileNet-Demo>`__,Demonstrates Deep Learning Imagenet classification with MobileNet model
