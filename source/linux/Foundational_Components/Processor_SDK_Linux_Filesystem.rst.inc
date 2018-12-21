@@ -13,10 +13,11 @@ Filesystem
   fully assembled via Yocto, following the instructions
   `Processor\_SDK\_Building\_The\_SDK <Overview_Building_the_SDK.html>`__.
 
+
 .. rubric:: Filesystem Images
    :name: filesystem-images
 
-There are two filesystem images provided in the SDK. You'll find them at
+There are four filesystem images provided in the SDK. You'll find them at
 the SDK Installation directory/filesystem folder.
 
 .. rubric:: arago-base-tisdk-image
@@ -40,3 +41,14 @@ limit of the rootfs ubi image:
 -  tisdk-server-extra-rootfs-image-k2g-evm.tar.gz: complete filesystem
    image that can be used with NFS and/or SD card (K2G only).
 
+.. rubric:: tisdk-docker-rootfs-image
+   :name: tisdk-docker-rootfs-image
+
+This is a minimal image with support for Docker.
+See `Docker Linux Container Runtime <Foundational_Components_Virtualization.html#docker-linux-container-runtime>`__ for more information.
+
+.. rubric:: arago-tiny-image
+   :name: arago-tiny-image
+
+This is the absolute minimal filesystem. The boot files are omitted from this
+image and systemd has been replaced with sysvinit.
