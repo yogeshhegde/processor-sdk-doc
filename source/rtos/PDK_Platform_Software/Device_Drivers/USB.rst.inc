@@ -290,6 +290,10 @@ for how to create and build examples projects
 | **USB_DevMsc_mmcsd**  | AM335GP EVM,          | eMMC is used on AM572 |
 |                       | BeagleBoneBlack,      | and BealgeBoneBlack   |
 |                       | AM572 EVM             | examples              |
+|                       |                       | This example can be   |
+|                       |                       | used to format eMMC,  |
+|                       |                       | just like any other   |
+|                       |                       | USB storage device    |
 +-----------------------+-----------------------+-----------------------+
 | **USB_DevMsc**        | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
 |                       | OMAP137EVM,           | device examples share |
