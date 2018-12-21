@@ -16,83 +16,19 @@ Driver Overview
 
 PDK FATFS driver provides support for both single and multiple partition on a given
 SD/MMC card. The driver uses a volume to partition mapping technique to handle multiple
-storage device with multiple partition which is detailed in the following section. The
-driver supports file operations such as open, read and wirte on to the SD/MMC card.
-The FATFS driver access the SD/MMC card through the PDK MMCSD driver which needs to be
-configured from the application as part of the FATFS_config structure.
+storage device with multiple partition. The driver supports file operations such as
+open, read and wirte on to the SD/MMC card. The FATFS driver access the SD/MMC card
+through the PDK MMCSD driver which needs to be configured from the application as part
+of the FATFS_config structure. The FATFS driver is used in other PDK module application
+such as MMCSD, USB and SBL.
 
-The FATFS_config structure array holds the information of the MMCSD controller instance number,
-MMCSD driver function table, FATFS object which holds the information of filesystem of the
-SD/MMC card.
-
-The file operation API uses the filesystem object of each partition to read, write or
-remove a file or a folder and update the same to the SD/MMC card.
+FATFS file operation API's can be accessed from the application only after FATFS_open
+function is invoked.
 
 ::
 
-   struct FATFS_Config {
-       /*! Pointer to a table of driver-specific implementations of SD APIs */
-       FATFS_DrvFxnTable    *drvFxnTablePtr;
-
-       /*! Pointer to a driver specific data and file system object */
-       FATFS_Object         *object;
-
-       /*! Pointer to a driver specific hardware attributes structure */
-       FATFS_HwAttrs        *hwAttrs;
-   };
-
-
-Partition management
-^^^^^^^^^^^^^^^^^^^^^
-
-The FATFS driver uses a VolToPart structure variable which is a volume management table
-to map logical drives to the partitions. The volume management table has two fields, pt and pd,
-which are physical drive number and partition number. By default the VolToPart structure will be
-assigned with 0xF indicating that the index is not assigned with any physical drive or partition number.
-
--  Partition structure Definition and default Volume Management Table
-::
-
-   typedef struct {
-        BYTE pd;        /* Physical drive# */
-        BYTE pt;        /* Partition # (0-3) */
-   } PARTITION;
-
-   PARTITION VolToPart[] = {
-        {0xf, 0xf},
-        {0xf, 0xf},
-        {0xf, 0xf},
-        {0xf, 0xf},
-   };
-
-
-To access FATFS API's the application needs to get the FATFS handle before
-any file operation is invoked and it can be obtained by calling FATFS_open()
-function. The FATFS_open function reads the sector '0' which can be either
-Master Boot Record or a Boot record of any given SD/MMC card.
-
-The sector 0 block is parsed in the FATFS_open function to get the information
-of the valid partition(s) number in the card. This partition entry information
-is used to update the volume management table. In case of MBR, if a card contains
-a valid partition then an entry will be available in the partition entry section.
-So if a card has three valid partition then the MBR has 3 partition entry.
-
-In MBR the partition entry starts from offset 446. Each partition entry information
-is of 16 bytes. The FAT table supports upto maximum of 4 partitions. When a
-partition entry is found, the VolToPart structure is updated with the logical drive
-number and partition number in a incremental order starting from 0 to 3
-
--  Updated volume management table after parsing MBR and BR of two physical drives
-::
-
-   Below is the example of two physical drives, one(MBR) with 2 partition and other(BR) with no partition
-   PARTITION VolToPart[] = {
-        {0, 1},    /* "0:" ==> Physical drive 0, 1st partition */
-        {0, 2},    /* "1:" ==> Physical drive 0, 2nd partition */
-        {1, 0},    /* "2:" ==> Physical drive 1, no valid partition */
-        {0xf, 0xf} /* No more partition available */
-    };
-
+   FATFS_init();
+   FATFS_open(0U, NULL, &fatfsHandle);
 
 
 User Interface
