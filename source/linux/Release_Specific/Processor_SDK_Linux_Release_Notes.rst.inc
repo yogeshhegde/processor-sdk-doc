@@ -51,10 +51,31 @@ Released December 2018
 .. rubric:: What's New
    :name: whats-new
 
-- Deep Learning
-   - Python binding
-   - Added Arm NN system level demo
-- HSR/PRP
+- AM654x
+    - DDR @ 1666 MT/s
+    - IPC: Support IPC between A53 running Linux with R5F running in split mode
+    - Driver and API to access AM654x internal temp sensors
+    - Add ARMNN and ARM Compute Library
+    - Early Access: DisplayPort driver for TC358867 DPI-DP bridge
+    - IPSec sideband support 
+    - Kernel: OSPI Performance Improvement w/ DMA mode
+    - MCAN Support
+    - Rotary Encoder support
+    - Support SPI Flash as mtd device
+    - PCIe Gen3 RC and EP mode support
+- Support Docker containerization
+- Integrate OPCUA open source stack (Open65241)
+- Add Tiny Filesystem to PLSDK to support on board flashing of eMMC and QSPI from an initramfs
+- HSR/PRP/EMAC/PTP
+    - EMAC: Multicast, VLAN and Storm prevention feature
+    - EMAC: PTP Support for SAN mode
+    - HSR: Add support of PTP 1-step to 2-step conversion on ingress
+    - HSR: PTP OC Master or Slave (with redundancy)
+    - PRP: PTP OC Master or Slave (with redundancy)
+- TI Deep Learning (TIDL)
+   - Arm NN system level demo
+   - Publish TIDL import tool source files
+- Add IWR6843 (60GHz) support to the TI design TIDEP-01006 http://www.ti.com/tool/TIDEP-01006
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
