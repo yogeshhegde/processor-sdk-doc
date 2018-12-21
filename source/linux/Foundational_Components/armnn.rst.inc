@@ -10,7 +10,7 @@ For Sitara devices without accelerators like C66x or EVE (AM3/4/6), one can use 
 Arm NN and Arm Compute Library can also be used on AM57xx devices as well, as complementary approach to TIDL-API.
 
 Arm Compute Library
--------------------
+===================
 
 Arm Compute Library is a software library for computer vision and machine learning, optimized for NEON SIMD architecture (Mali GPU OpenCL is not applicable to TI devices).
 Exact list of functions can be found at https://developer.arm.com/technologies/compute-library. Arm Compute Libraries and sample executables are included in PLSDK filesystem.
@@ -37,7 +37,7 @@ Sample NN related executables (using Arm Compute Library only):
 
 
 Arm NN
-------
+======
 
 Arm NN is library built on top of Arm Compute Library leveraging its NEON optimized kernels. Importing of Caffe and Tensorflow inference models is significantly simplified.
 Library and executables are part of AM3/4/5/6 target filesystem. More information can be found at: https://developer.arm.com/products/processors/machine-learning/arm-nn
@@ -68,7 +68,7 @@ Sample executables using TF models:
 Please note that these examples (Arm baseline code) use hardcoded paths, so source modification might be required (one can use Yocto based compilation - look for armnn recipe in meta-arago layer).
 
 Arm NN MobileNet Demo
----------------------
+=====================
 
 Upon boot, Matrix-GUI is started with multiple buttons that can start many demos. In PLSDK 5.2, under sub-menu "Machine Learning",
 there are two Arm NN GUI buttons:

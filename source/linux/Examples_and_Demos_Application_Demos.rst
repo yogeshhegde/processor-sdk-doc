@@ -54,7 +54,7 @@ Refer to various TIDL demos documented at  `Examples and Demos <Foundational_Com
 Arm NN Classification Demo
 ==========================
 
-Refer to `Arm NN MobileNet Demo <Foundational_Components_ArmNN.html#Arm-NN-MobileNet-Demo>`__
+Refer to `Arm NN MobileNet Demo <Foundational_Components_ArmNN.html#arm-nn-mobilenet-demo>`__
 
 
 PRU-ADC Demo

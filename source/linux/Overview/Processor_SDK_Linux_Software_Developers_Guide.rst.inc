@@ -61,7 +61,7 @@ suggestions <Feedback>`.
 +---------------+--------------------+-------------------------+----------------------------+
 | `IPC`_        | `OpenVX`_          | `CMEM`_                 | `TIDL`_                    |
 +---------------+--------------------+-------------------------+----------------------------+
-| `ArmNN`_      |                    |                         |                            |
+| `Arm NN`_     |                    |                         |                            |
 +---------------+--------------------+-------------------------+----------------------------+
 
 .. _U-Boot: Foundational_Components_U-Boot.html
@@ -84,7 +84,7 @@ suggestions <Feedback>`.
 .. _OpenVX: Foundational_Components_OpenVX.html
 .. _CMEM: Foundational_Components_CMEM.html
 .. _TIDL: Foundational_Components_TIDL.html
-.. _ArmNN: Foundational_Components_ArmNN.html
+.. _Arm NN: Foundational_Components_ArmNN.html
 
 +----------------+-------------------------+------------------+-----------------------------------+
 | **PRU-ICSS / PRU_ICSSG Protocols** (more information on each piece of the distribution)         | 
