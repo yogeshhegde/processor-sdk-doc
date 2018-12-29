@@ -18,22 +18,16 @@ FC
 *******
 IPC
 *******
-.. rubric:: IPC technical documents links
-   :name: IPC technical documents links
 
-+----------------------------------------------------------------------------------+-----------------------+
-| Links                                                                            | Description           |
-+==================================================================================+=======================+
-| `IPC User's Guide <http://processors.wiki.ti.com/index.php/IPC_Users_Guide>`__   | TI IPC User's Guide   |
-+----------------------------------------------------------------------------------+-----------------------+
+IPC User Guide
+================
+.. include:: PDK_Platform_Software/IPC/IPC_Users_Guide.rst.inc
 
 | 
 
-.. _ipc-rtos-examples:
-
 IPC Examples
 =============
-.. include:: IPC_examples.rst.inc
+.. include:: PDK_Platform_Software/IPC/IPC_examples.rst.inc
 
 ***************
 OpenCL
