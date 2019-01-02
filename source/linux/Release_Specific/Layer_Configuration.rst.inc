@@ -17,7 +17,7 @@ meta layers. These are the <config> used in the command:
 | Config File                            | Description                     | Supported machines/platforms                   |
 +========================================+=================================+================================================+
 |                                        |                                 | am335x-evm, am437x-evm, am57xx-evm,            |
-| processor-sdk-05.01.00.11-config.txt   | Processor SDK 5.1.0.11 Release  | am65xx-evm, k2hk-evm, k2e-evm, k2l-evm,        |
+| processor-sdk-05.02.00.10-config.txt   | Processor SDK 5.2.0.10 Release  | am65xx-evm, k2hk-evm, k2e-evm, k2l-evm,        |
 |                                        |                                 | k2g-evm, omapl138-lcdk                         |
 +----------------------------------------+---------------------------------+------------------------------------------------+
 
