@@ -94,7 +94,7 @@ The Multiple Processor Manager (MPM) module is used to load and run DSP images f
 
 .. Image:: ../images/MPM_Structure.png
 
-.. rubric::Methods to load and run ELF images using MPM
+.. rubric:: Methods to load and run ELF images using MPM
    :name: methods-to-load-and-run-elf-images-using-mpm
    
 **Using mpmcl utility to manage slave processors**
