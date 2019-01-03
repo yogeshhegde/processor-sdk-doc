@@ -1,10 +1,10 @@
 .. rubric:: Introduction
-   :name: introduction-linux-ipc-on-am65xx
+   :name: introduction-linux-ipc-on-k2x
 
 This article is geared toward 66AK2x users that are running Linux on the Cortex A15. The goal is to help users understand how to gain access to the DSP (c66x) subsystem of the 66AK2G. While the examples used in this guide are specific to K2G, the information provided here applies to all K2x platforms.
 
 .. rubric:: Software Dependencies to Get Started
-   :name: ipc-am65xx-software-dependencies-to-get-started
+   :name: ipc-k2x-software-dependencies-to-get-started
 
 Prerequisites
 
@@ -188,7 +188,7 @@ The segment mapping can be changed using the mpm_config.json and Linux kernel de
 |
 
 .. rubric:: Getting Started with IPC Linux Examples
-   :name: ipc-am65xx-getting-started-with-ipc-linux-examples
+   :name: ipc-k2x-getting-started-with-ipc-linux-examples
 
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. DSP) running RTOS.
@@ -232,7 +232,7 @@ Here are the key files that you should see after a successful build:
 | 
 
 .. rubric:: Running the Bundled IPC Examples
-   :name: ipc-am65xx-running-the-bundled-ipc-examples
+   :name: ipc-k2x-running-the-bundled-ipc-examples
 
 
 You will need to copy the ex02\_messageq executable binaries onto the target (through SD card, NFS export, SCP, etc.).
