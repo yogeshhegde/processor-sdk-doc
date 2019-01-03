@@ -577,7 +577,7 @@ After power-cycling the EVM, we can now load and run the example:
 	./app_host CORE0
 
 	
-.. rubric::Loading DSP images from CCS (without using MPM)
+.. rubric:: Loading DSP images from CCS (without using MPM)
    :name: loading-dsp-images-from-ccs
    
 By default, the DSP cores are powered down by u-boot at the time of EVM boot. After kernel is running, MPM can be used to load and run DSP images from Linux command-line/utility.
