@@ -26,7 +26,33 @@ The related kernel modules are listed below:
    pruss_soc_bus          16384  0
 
 
-With only eth2 (pruss2-eth port 0) plugged in when booting the EVM, the eth2 port gets the IP address dynamically assigned, e.g.,
+PRU Ethernet Ports on AM57xx IDK Boards
+========================================
+
+**AM571x IDK**
+
+Due to pin muxing between the optional LCD and the PRUSS1 Ethernet
+ports, the AM571x IDK supports two configurations. The first
+configuration is 4-port Ethernet + LCD. In this configuration, two
+Ethernet ports are provided by the CPSW, two Ethernet ports are provided
+by PRUSS2, and the LCD is enabled. To use this configuration, place a
+jumper across **J51** on the board. The second configuration is 6-port
+Ethernet. In this configuration, two Ethernet ports are provided by the
+CPSW, two Ethernet ports are provided by PRUSS1, two Ethernet ports are
+provided by PRUSS2, and the LCD is disabled. To use this configuration,
+leave **J51** open.
+
+**AM572x IDK and AM574x IDK**
+
+AM572x IDK and AM574x IDK supports 4-port Ethernet configuration only, with
+two Ethernet ports provided by the CPSW, and two Ethernet ports provided
+by PRUSS2.
+
+
+Testing the PRU Ethernet Ports
+========================================
+
+The PRU Ethernet ports (PRU2 ETH0 for AM572x IDK and AM574x IDK, and PRU1 ETH0 for AM571x IDK ) can get an IP address dynamically assigned. Simply boot the EVM with the particular PRU Ethernet port connected, and check the output of *ifconfig* such as the below for AM572x IDK.
 
 .. code-block:: console
 
@@ -39,7 +65,8 @@ With only eth2 (pruss2-eth port 0) plugged in when booting the EVM, the eth2 por
              collisions:0 txqueuelen:1000
              RX bytes:15810 TX bytes:16520
 
-Plug in an Ethernet cable to eth3 (pruss2-eth port 1), and a static IP address can be assigned by running the commands below, e.g.,
+
+For the other Ethernet port, a static IP address can be assigned by running the commands as follows after connecting the port, e.g., the below for PRU2 ETH1 on AM572x IDK.
 
 .. code-block:: console
 
@@ -50,15 +77,15 @@ Plug in an Ethernet cable to eth3 (pruss2-eth port 1), and a static IP address c
        ip route add default via 192.168.0.216 dev eth3  [note: 192.168.0.216 is the IP address of the host PC]
        ip rule add from all lookup main pref 99
 
-Plug in an Ethernet cable to eth0 (CPSW port 1) , and a static IP address can be assigned as follows:
 
+For any additioal ports,  a static IP address can be assigned as follows after connecting them, e.g., the below for CPSW ETH0
 
 .. code-block:: console
 
        ip addr add 192.168.0.110 dev eth0  [note: static IP address 192.168.0.110 for eth0]
        ip link set eth0 up
 
-After the steps above, ifconfig shows all the three ports: eth0, eth2, and eth3. All the three ports can be pinged from the host PC also.
+After the steps above, ifconfig shows all the three ports with IP addresses assigned: eth0, eth2, and eth3. All the three ports can be pinged from the host PC also.
 
 .. code-block:: console
 
