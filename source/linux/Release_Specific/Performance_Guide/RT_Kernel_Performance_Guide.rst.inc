@@ -53,17 +53,15 @@ LMBench is a collection of microbenchmarks of which the memory bandwidth
 and latency related ones are typically used to estimate processor 
 memory system performance.
   
-  Latency    
-  lat_mem_rd-stride128-szN , where N is equal to or smaller than the cache 
-  size at given level measures the cache miss penalty. N that is at least
-  double the size of last level cache is the latency to external memory.
-  
-  Bandwidth
-  bw_mem_bcopy-N , where N is is equal to or smaller than the cache size at
-  a given level measures the achivable memory bandwidth from software doing
-  a memcpy() type operation. Typical use is for external memory bandwidth
-  calculation. The bandwidth is calculated as byte read and written counts
-  as 1 which should be roughly half of STREAM copy result.
+**Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
+size at given level measures the cache miss penalty. N that is at least
+double the size of last level cache is the latency to external memory.
+
+**Bandwidth**: bw_mem_bcopy-N, where N is is equal to or smaller than the cache size at
+a given level measures the achivable memory bandwidth from software doing
+a memcpy() type operation. Typical use is for external memory bandwidth
+calculation. The bandwidth is calculated as byte read and written counts
+as 1 which should be roughly half of STREAM copy result.
 
 .. csv-table::
     :header: "Benchmarks","am654x-idk: perf"
@@ -322,7 +320,7 @@ Boot media: NAND
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Table:  **Boot time MMC/SD**
+Table:  **Boot time NAND**
 
 
 ALSA SoC Audio Driver
@@ -697,20 +695,13 @@ SPI Flash Driver
 EMMC Driver
 -------------------------
 
-.. raw:: html
+.. warning::
 
-   <div style="padding:5px; background: #eeeeee; color: #348017">
-
-| **IMPORTANT**
-| The performance numbers can be severely affected if the media is
+  **IMPORTANT**: The performance numbers can be severely affected if the media is
   mounted in sync mode. Hot plug scripts in the filesystem mount
   removable media in sync mode to ensure data integrity. For performance
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
-
-.. raw:: html
-
-   </div>
 
 |
 
@@ -890,20 +881,13 @@ mSATA Driver
 MMC/SD Driver
 -------------------------
 
-.. raw:: html
+.. warning::
 
-   <div style="padding:5px; background: #eeeeee; color: #348017">
-
-| **IMPORTANT**
-| The performance numbers can be severely affected if the media is
+  **IMPORTANT**: The performance numbers can be severely affected if the media is
   mounted in sync mode. Hot plug scripts in the filesystem mount
   removable media in sync mode to ensure data integrity. For performance
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
-
-.. raw:: html
-
-   </div>
 
 | 
 
@@ -1067,20 +1051,13 @@ USB Driver
 MUSB/XHCI Host controller
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. raw:: html
+.. warning::
 
-   <div style="padding:5px; background: #eeeeee; color: #348017">
-
-| **IMPORTANT**
-| For Mass-storage applications, the performance numbers can be severely
+  **IMPORTANT**: For Mass-storage applications, the performance numbers can be severely
   affected if the media is mounted in sync mode. Hot plug scripts in the
   filesystem mount removable media in sync mode to ensure data
   integrity. For performance sensitive applications, umount the
   auto-mounted filesystem and re-mount in async mode.
-
-.. raw:: html
-
-   </div>
 
 |
 
@@ -1160,8 +1137,6 @@ OpenSSL Performance
 
 
 
--
-
 |
 | Listed for each algorithm are the code snippets used to run each
   benchmark test.
@@ -1172,7 +1147,6 @@ OpenSSL Performance
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
--
 
 IPSec Performance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
