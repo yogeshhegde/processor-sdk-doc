@@ -59,7 +59,12 @@ comment=""
 repo_rev_line="${repo}:${commit}:${branch}:${comment}"
 echo "${repo_rev_line}" >> "${REPO_REV}"
 
-VERSION="$(cat version.txt)"
+# get the version number from processor-sdk-config git repo
+git clone https://bitbucket.itg.ti.com/scm/processor-sdk/processor-sdk-config.git
+RELEASE="$(cat version.txt)"
+RELEASE=${RELEASE//_/.}
+VERSION="$(./processor-sdk-config/bin/get_version.sh -d ./processor-sdk-config/bin -r ${RELEASE})"
+VERSION=${VERSION//./_}
 
 build_doc()
 {
