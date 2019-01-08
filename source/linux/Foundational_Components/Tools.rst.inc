@@ -34,14 +34,13 @@ Please refer to `Run Setup Scripts <Overview_Getting_Started_Guide.html#run-setu
 Flash Tools
 ==================================
 
-Sitara Uniflash
----------------------------------
-
-.. include:: Foundational_Components/Tools/Flash_Tools/Sitara_Uniflash.rst.inc
-
-AM335x Flash
+AM335x/AM437x Flash Programming
 ---------------------------------
 .. include:: Foundational_Components/Tools/Flash_Tools/AM335x_Flash.rst.inc
+
+Sitara Uniflash
+---------------------------------
+.. include:: Foundational_Components/Tools/Flash_Tools/Sitara_Uniflash.rst.inc
 
 Pin Mux Tools
 ==================================
