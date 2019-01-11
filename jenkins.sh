@@ -59,11 +59,19 @@ comment=""
 repo_rev_line="${repo}:${commit}:${branch}:${comment}"
 echo "${repo_rev_line}" >> "${REPO_REV}"
 
-# get the version number from processor-sdk-config git repo
-git clone https://bitbucket.itg.ti.com/scm/processor-sdk/processor-sdk-config.git
+# Get the version number from processor-sdk-config git repo
 RELEASE="$(cat version.txt)"
 RELEASE=${RELEASE//_/.}
-VERSION="$(./processor-sdk-config/bin/get_version.sh -d ./processor-sdk-config/bin -r ${RELEASE})"
+CONFIG_REPO='https://bitbucket.itg.ti.com/scm/processor-sdk/processor-sdk-config.git'
+if [[ ${branch} == next ]]; then
+    # For the next branch, use the same version number as in the nightly builds
+    git clone $CONFIG_REPO
+    VERSION="$(./processor-sdk-config/bin/get_version.sh -d ./processor-sdk-config/bin -r ${RELEASE})"
+else
+   # For the other branches, use the latest SDF version number for the release
+   TAG_PREFIX='DEV.PROCESSOR-SDK.'
+   VERSION="$(git ls-remote --tags "$CONFIG_REPO" "$TAG_PREFIX$RELEASE"\* | sed -ne 's|.*'"$TAG_PREFIX"'||p' | sort | tail -1)"
+fi
 VERSION=${VERSION//./_}
 
 build_doc()
