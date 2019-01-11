@@ -53,6 +53,11 @@ Preventing BeagleBone board reset on JTAG Connect
 .. include:: How_to_Guides/Host/AM335x_ICEv2_flash_erase.rst.inc
 
 
+.. Setup Ubuntu 14.04 for Network Boot on AM335x/AM437x
+.. ==================================================================
+.. include:: How_to_Guides/Host/How_to_Setup_Ubuntu_1404_Network_Boot.rst.inc
+
+
 Processor SDK IPC Quick Start Guide
 ======================================
 Please refer to `IPC Quick Started Guide  <Foundational_Components_IPC.html#ipc-quick-start-guide>`__ chapter for details.
