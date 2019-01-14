@@ -84,13 +84,21 @@ USB there are some additional steps required.
          {
             filename "u-boot-spl-restore.bin";
          }
-         elsif substring (option vendor-class-identifier, 0, 17) = "AM335x U-Boot SPL"
+         elsif substring (option vendor-class-identifier, 0, 10) = "AM43xx ROM"
+	 {
+	    filename "u-boot-restore.img";
+         } 
+	 elsif substring (option vendor-class-identifier, 0, 17) = "AM335x U-Boot SPL"
          {
             filename "u-boot-restore.img";
          }
-         else
+	 elsif substring (option vendor-class-identifier, 0, 10) = "AM43xx U-B"
+	 {
+	    filename "u-boot-restore.img";
          {
-            filename "zImage";
+	 else
+	 {   
+	    filename "zImage";
          }
      
          range 192.168.2.101 192.168.2.199;
