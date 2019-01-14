@@ -245,17 +245,16 @@ Adding custom board library can follow two approaches as mentioned below
 
 |  **Approach 1**: Update files in existing TI board library and modify for custom board.
 |  This approach will be less time consuming since the board library setup is already existing
-|  in the processor SDK, but no easy way to switch between TI board library and custom board library.
+   in the processor SDK, but need to maintain TI board library separately for reference.
 |
 |  **Approach 2**: Add custom board to PDK build
 |  This approach involves one time effort of setting up the custom board library but makes it easy
-|  to switch between custom board library and TI reference board library. Migration effort can be   
-|  relatively more, in case of upgrading the board library to latest processor SDK.
-
+   to switch between custom board library and TI reference board library. In this approach during migration 
+   to updated processor SDK, review and selective updates from existing TI board reference source will need to be considered.
 |
 |  
-   Refer the section `Board Library Creation with Custom Name <Board_EVM_Abstration.html#creating-board-library-with-custom-name>`_ 
-   for additonal steps involved in creating board library with Approach 2.
+   Refer the section `Board Library Creation with Custom Name <index_board.html#creating-board-library-with-custom-name>`_ 
+   for additional steps involved in creating board library with Approach 2.
 |
 
 Creating Board Configurations
@@ -277,7 +276,7 @@ Updating Board Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Steps for updating the board library configurations for a custom board is described in this section.
 Updating some of the configurations may need additional steps based on the platform.
-Refer `Platform Specific Configuration <Board_EVM_Abstration.html#platform-specific-configurations>`_ section for more details.
+Refer `Platform Specific Configuration <index_board.html#platform-specific-configurations>`_ section for more details.
 
 Pinmux 
 """""""
@@ -295,7 +294,7 @@ more information.
 Once the pinmux selection is done, Copy the pinmux tool generated files to your custom board library
 implementation folder.
 
-Refer `Platform Specific Configuration <Board_EVM_Abstration.html#platform-specific-configurations>`_ section for more details on the files generated
+Refer `Platform Specific Configuration <index_board.html#platform-specific-configurations>`_ section for more details on the files generated
 by pinmux tool for different platforms.
 
 SoC Clock Settings
@@ -374,7 +373,7 @@ Board Flash APIs
 Board library includes a dedicated flash library to abstract the HW flash interface access
 using a standard set of APIs. In case custom board uses flash devices that are different
 from eval platform, update to board flash APIs is required. 
-Check the board flash library available at <PDK Root>/packages/ti/board/src/flash and 
+Check the board flash library available at <PDK_INSTALL_PATH>/packages/ti/board/src/flash and 
 make changes required for custom board as needed.
 
    
@@ -439,6 +438,7 @@ Follow below steps to update pinmux configuration for custom board on AM335x/AM4
      status = PINMUXModuleConfig(CHIPDB_MOD_ID_UART, 4U, NULL);
 | 
  - Rebuild the board library with new pinmux configurations
+|
 
 K2G
 """"
@@ -456,7 +456,7 @@ Validate the basic functionality of custom board using hardware diagnostics befo
 RTOS applications or Linux. Hardware diagnostics help verify the functionality of on-board 
 peripherals and external interfaces of each board. 
 
-Refer `Board Diagnostics <Board_EVM_Abstration.html#diagnostics>`_ section for more details on the 
+Refer `Board Diagnostics <index_board.html#diagnostics>`_ section for more details on the 
 diagnostic tests supported as part of processor SDK.
  
 Below are the recommended diagnostic tests which can be validated on custom board
@@ -475,23 +475,21 @@ Creating Board Library with Custom Name
 
 Instructions to add custom Board to the PDK build
 """"""""""""""""""""""""""""""""""""""""""""""""""
+Follow below steps for creating board library with custom name. 
+AM572x platform is used as reference in the examples wherever needed.
 
 **Step 1: Creating new directory for custom board library**
 
-In pdk_am57xx_x_x_x/packages/ti/board/src, 
+In <PDK_INSTALL_PATH>/packages/ti/board/src, 
 Create new directory myCustomBoard and copy files from existing board
-library package. We recommend that you copy files from the board which
-closely matches your custom board design. In this case, we assume that
-the custom board is based on the design of evmAM572x so we copy over
-the files from that directory into myCustomBoard folder.
+library package which closely matches your custom board design.
 
 **Step 2: Updating names and makefile inside the customBoard package**
 
-In pdk_am57xx_x_x_x/packages/ti/board/src/myCustomBoard, Rename file
-src_files_evmAM572x.mk to src_files_myCustomBoard.mk. This file will
+In <PDK_INSTALL_PATH>/packages/ti/board/src/myCustomBoard, Rename file
+src_files_<Board>.mk to src_files_myCustomBoard.mk. This file will
 need a bit of work depending on what elements of board you need for your
-platform. We have left all the files evmAM572x_*.c but you can modify as
-needed.
+platform.
 
 **Step 3: Adding MACRO based inclusion of updated board_cfg.h
 corresponding to custom Board**
@@ -512,7 +510,7 @@ files for including Low level driver(LLD), source files relevant to
 board and the common board.c file
 
 -  In packages/ti/board/build/makefile.mk, add board.c to the
-   customBoard buildÂ :
+   customBoard build:
 
 ::
 
@@ -530,7 +528,6 @@ In packages/ti/board/build/makefile.mk, change
     ifeq ($(BOARD),$(filter $(BOARD), evmAM572x idkAM571x idkAM572x))
     include $(PDK_BOARD_COMP_PATH)/src/$(BOARD)/src_files_$(BOARD).mk
     include $(PDK_BOARD_COMP_PATH)/src/src_files_lld.mk
-    CFLAGS_LOCAL_$(BOARD) += -D$(BOARD)
     endif
 
 to
@@ -540,7 +537,6 @@ to
     ifeq ($(BOARD),$(filter $(BOARD), myCustomBoard evmAM572x idkAM571x idkAM572x))
     include $(PDK_BOARD_COMP_PATH)/src/$(BOARD)/src_files_$(BOARD).mk
     include $(PDK_BOARD_COMP_PATH)/src/src_files_lld.mk
-    CFLAGS_LOCAL_$(BOARD) += -D$(BOARD)
     endif
 
 **Step 5: Update Global makerules**
@@ -550,20 +546,19 @@ components. Add the following line in the BOARD Specific configurations.
 
 ::
 
-    CFLAGS_GLOBAL_customAM572x  = -DSOC_AM572x -DcustomAM572x=customAM572x
+    CFLAGS_GLOBAL_myCustomBoard  = -DSOC_AM572x -DmyCustomBoard=myCustomBoard
 
-The SOC_AM572x macro ensures that the CSL aplicable to this SOC will be
-included in the build and evmAM572x define will ensure all evmAM572x
-specific includes that apply to the customAM572x are part of the build.
+The SOC_AM572x macro ensures that the CSL applicable to this SOC will be
+included in the build. Use the SoC name that corresponds to the platform of your custom board.
 
 
 **Optional step to update RTSC platform definition** If you have a
 custom RTSC platform definition for your custom board that updates the
 memory and platform configuration using RTSC Tool then you need to
-update the platform.mk file that associates the RTSC platfom with the
+update the platform.mk file that associates the RTSC platform with the
 corresponding board library
 
-In packages/ti/buildmakerules/platform.mk, add the following lines:
+In packages/ti/build/makerules/platform.mk, add the following lines:
 
 
 ::
@@ -648,18 +643,15 @@ the following lines:
 
     var myCustomBoard = {
        name: "myCustomBoard",
-       ccOpts: "-DevmAM572x -DSOC_AM572x",
+       ccOpts: "-DmyCustomBoard -DSOC_AM572x",
        targets: [C66LE,A15LE ]
-       lldFiles: [ "$(PDK_INSTALL_PATH)/ti/drv/i2c/soc/am572x/I2C_soc.c",
-               "$(PDK_INSTALL_PATH)/ti/drv/uart/soc/am572x/UART_soc.c",
-               "$(PDK_INSTALL_PATH)/ti/drv/spi/soc/am572x/SPI_soc.c"]
     }
 
 ::
 
     var boards = [ evmAM335x, icev2AM335x, skAM335x, bbbAM335x, evmAM437x, idkAM437x, skAM437x, myCustomBoard, evmAM572x, idkAM571x, idkAM572x, evmK2H, evmK2K, evmK2E, evmK2L, evmK2G, evmC6678, evmC6657 ];
 
-Also, in packages/ti/board/package.bld, I added the following line:
+Also, in packages/ti/board/package.bld, add the following line:
 
 ::
 
@@ -672,13 +664,13 @@ setup environment.**
 Final setup involves updating the top level setup file for PDK package
 to update to setup the build environment to include the custom Board in
 setup. This can be done by commenting out the top line and adding in the
-bottom line in pdksetupenv.bat:
+bottom line in <PDK_INSTALL_PATH>/packages/Rules.make:
 
 
 ::
 
-    @REM if not defined LIMIT_BOARDS set LIMIT_BOARDS=evmAM572x idkAM571x idkAM572x
-    if not defined LIMIT_BOARDS set LIMIT_BOARDS=myCustomBoard
+    #export LIMIT_BOARDS ?= evmAM572x idkAM571x idkAM572x
+    export LIMIT_BOARDS ?= myCustomBoard
 
 **Alternative:** Invoke the build using command line options to limit
 the build to specific board, specific SOC and specific CORE. For
@@ -687,14 +679,14 @@ AM572x EVM, you can invoke the build using:
 
 ::
 
-    gmake board_lib LIMIT_SOCS=am572x LIMIT_BOARDS=customAM572x LIMIT_CORES=a15_0 
+    gmake board_lib LIMIT_SOCS=am572x LIMIT_BOARDS=myCustomBoard LIMIT_CORES=a15_0 
 
 
 
 **Step 10: Building the custom board with the updated settings**
 
 To build package change directory to
-<SDK_INSTALL_PATH>/pdk_am57xx_x_x_x/packages, first run pdksetupenv.bat
+<SDK_INSTALL_PATH>/<PDK_INSTALL_PATH>/packages, first run pdksetupenv.bat
 
 To make just the board library: gmake board_lib
 
@@ -706,333 +698,7 @@ Additional steps for AM335x/AM437x users
    Currently the AM335x and AM437x board libraries re-use the board support
    that was used in legacy starterware software. AM335x and AM437x users
    will need to additionally modify build files in starterware to build
-   their custom board library. Additional steps required for AM335x/AM437x
-   will be added to this article soon in this section
-
-Creating Board Configurations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Before updating the board library with configurations for custom board, it is recommended to use
-GEL file and CCS for validating the configurations. 
-Follow the steps mentioned below
-
-- Update the SoC clock configurations in the GEL file.
-  TI provides `Clock Tree Tool <http://www.ti.com/tool/CLOCKTREETOOL>`_ to simulate the device clocks.
-- Update the PLL clock configurations in GEL file if custom board uses a different input clock than the eval platform and/or needs different clock outputs.
-- Update DDR PHY and timing configurations for custom board. 
-  Refer the guidelines described in `Application Report on EMIF Tools <FAQ.html#useful-ddr-configuration-resources>`_
-- After GEL file update is complete, connect to custom board using JTAG, run the GEL script to apply the modified configurations and verify the configured values.
-  Load and run simple hello world example out of SoC internal memory and DDR memory.
-
-
-Updating Board Configurations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Steps for updating the board library configurations for a custom board is described in this section.
-Updating some of the configurations may need additional steps based on the platform.
-Refer `Platform Specific Configuration <Board_EVM_Abstration.html#platform-specific-configurations>`_ section for more details.
-
-Pinmux 
-"""""""
-When the **BOARD_INIT_PINMUX_CONFIG** option is specified, the
-Board_init() API configures the pinmux for the board. If applicable,
-it will also configure IO delay values for those device pads, which
-ensures correct IO timings are met along with the pinmux settings.
-Refer SOC TRM for additional details.
-
-The pinmux data to be configured is generated by the TI pinmux tool.
-Refer to `TI PinMux
-Tool <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool>`__ for
-more information.
-
-For DRA7xx device, pinmux data is generated by the TI Pad Config Tool
-(PCT). Please contact TI for more assistance in obtaining this tool.
-Otherwise, values can be found through the device Data Manual (DM).
-
-.. note::
-
-   Pinmux is needed for AM3/AM4/AM5/DRA7/K2G devices. Pinmux is not needed
-   for C66x or K2H/K2E/K2L devices, and the BOARD_INIT_PINMUX_CONFIG option
-   is ignored when called in a C66x or K2H/K2E/K2L board library.
-
-Custom Board Library
-^^^^^^^^^^^^^^^^^^^^^
-
-#. Set up your build environment according to the `Building the RTOS
-   SDK <index_overview.html#building-the-sdk>`__ page.
-#. Create your own folder under the src directory. The name of this
-   folder will be your board name (will be referred to as $BOARD). Put
-   your source files in this src/$BOARD folder. Updated sources can also
-   include initialization sequence for additional devices specific to board.
-#. Pinmux Update (see above note for applicable devices):
-
-   -  Use the `TI PinMux
-      Tool <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool>`__
-      to generate the new pinmux files. Refer the PinMux tool
-      documentation on how to select pinmux for all the device pads and
-      generate the pinmux data files.
-   -  The four generated files are:
-
-      -  boardPadDelay.h: Includes the prototypes of all structures and
-         functions used by pinmux functions
-      -  boardPadDelayInit.c: Includes the pinmux pad config data for
-         all device pads along with values used to compute
-         Manual/Virtual mode values.This data is used to configure
-         pinmux during board initialization.
-      -  boardPadDelayTune.h: This file includes the compile time macros
-         used to select the Timing modes to be configured for modules
-         during board Initialization.
-      -  boardPadDelayDevice.c: This file includes the pinmuxdata for
-         runtime pinmux configuration of the MMC module.
-     
-   - Some platforms not requiring IO delay configurations will have two files
-     <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c files generated 
-     by the pinmux tool
-
-   -  Copy the pinmux tool generated files to your custom board library
-      implementation folder.
-   -  **Note:** It is recommended to use the latest available PinMux Tool. 
-      For PinMux Tool prior to version v4.0.1482, you will have to edit 
-      **boardPadDelayTune.h** to select appropriate IO timing modes by 
-      uncommenting the build macros.
-      
-#. SOC Clock Settings Update:
-   The core clocks and module clocks used on the custom board library may 
-   vary based on the power requirements and external components used on the 
-   boards. TI provides `Clock Tree Tools <http://www.ti.com/tool/CLOCKTREETOOL>`__ 
-   to simulate the device clocks. GEL file can be used to verify the settings
-   in CCS before modifying the source in the board library.
-
-#. SOC DDR Configuration Update:
-   The board library has the correct DDR initialization sequence to initialize 
-   the DDR memory on your board. You may need to make changes to the AC timings, 
-   hardware leveling, and DDR PHY configuration, some or all of which may be 
-   different than the TI supported platforms. GEL file can be used to verify 
-   the settings in CCS before modifying the source in the board library.
-
-#. IO Instance and Configuration update to Match Use Case:
-   If your custom board uses an IO instance different from the TI-supported
-   board, the instance needs to be modified in the Pin Mux setup as well
-   as in the board_cfg.h file in
-   pdk_xx_Xx_xx_xx/packages/ti/board/src/<customBoardName>/
-
-#. Updating the Files Corresponding to External Board Components:
-   The custom board may have external components (flash devices, Ethernet
-   PHY, etc.) that are different from the components populated on the
-   TI-supported EVM. These components and their support files need to be
-   added to the
-   pdk_xx_Xx_xx_xx/packages/ti/board/src/<customBoardName>/device path
-   and linked as part of the board library build.
-
-#. PLL Settings Update:
-   The SOC board library in the PDK configures the SOC PLL and module clock
-   settings to the nominal settings required to be used with the TI
-   evaluation platform. If you want to use different clock settings due to
-   power consideration, or if you are using a variant of the device that
-   needs to be clocked differently, you can enter the PLL and clock
-   settings in the board library. All of the PLL and module clock settings
-   are consolidated in the following files:
-
-   -  <Board>.c: Contains calls related to all board-level initialization.
-      <Board> refers to the evaluation platform (For example, evmam335x)
-   -  <EVM>_pll.c: Defines the Board_PLLInit() function that configures the
-      dividers and multipliers for the clock tree.
-   -  <EVM>_clock.c: Defines clock dividers, scalars, and multipliers for
-      individual board modules initialized using the board library.
-
-#. Create build makefile infrastructure for new board under
-   <ti/board/build>. Please refer existing board makefiles for
-   reference.
-#. Update top level makefile <ti/board/makefile> for additional support
-   of new boards.
-
-Adding custom board to the PDK directory structure and build setup is
-described in the article
-`Adding Custom Board Library Target to Processor SDK RTOS makefiles <index_how_to_guides.html#adding-custom-board-library-target-to-processor-sdk-rtos-makefiles>`__
-
-.. note::
-   TI evaluation platforms for Sitara Processors usually have board
-   information stored in an EEPROM which checks for revision number and
-   board name which is used to configure the board. When creating a custom
-   platform if you don`t intend to use an EEPROM then we recommend removing
-   code corresponding to Board_getIDInfo in your board library
-| 
-=======
-
-Once the pinmux selection is done, Copy the pinmux tool generated files to your custom board library
-implementation folder.
-
-Refer `Platform Specific Configuration <Board_EVM_Abstration.html#platform-specific-configurations>`_ section for more details on the files generated
-by pinmux tool for different platforms.
-
-SoC Clock Settings
-"""""""""""""""""""""
-The core clocks and module clocks used on the custom board library may 
-vary based on the power requirements and external components used on the 
-boards.
-
-<Board>_clock.c: Defines functions and structures for configuring the clock and power modules. 
-Update this file based on the data from clock tree tool and GEL file validation.
-
-DDR Configuration
-"""""""""""""""""""""
-The board library has the correct DDR initialization sequence to initialize 
-the DDR memory on your board. You may need to make changes to the AC timings, 
-hardware leveling, and DDR PHY configuration, some or all of which may be 
-different than the TI supported platforms. GEL file can be used to verify 
-the settings in CCS before modifying the source in the board library.
-
-<Board>_ddr.c: Defines functions and structures for configuring the DDR module. 
-Update this file based on the DDR timing parameters specific to custom board.
-   
-PLL Configuration
-""""""""""""""""""""
-The SOC board library in the PDK configures the SOC PLL and module clock
-settings to the nominal settings required to be used with the TI
-evaluation platform. If you want to use different clock settings due to
-power consideration, or if you are using a variant of the device that
-needs to be clocked differently, you can enter the PLL and clock
-settings in the board library. All of the PLL and module clock settings
-are consolidated in the following files:
-
-- <Board>.c: Contains calls related to all board-level initialization.
-  <Board> refers to the evaluation platform (For example, evmam335x)
-- <Board>_pll.c: Defines the Board_PLLInit() function that configures the
-  dividers and multipliers for the clock tree.
-
-Ethernet Configuration
-"""""""""""""""""""""""
-The custom board may have external components (flash devices, Ethernet
-PHY, etc.) that are different from the components populated on the
-TI-supported EVM. These components and their support files need to be
-added to the
-pdk_xx_xx_xx_xx/packages/ti/board/src/<customBoardName>/device path
-and linked as part of the board library build.
-
-IO Instances
-"""""""""""""
-If your custom board uses an IO instance different from the TI-supported
-board, the instance needs to be modified in the Pin Mux setup as well
-as in the board_cfg.h file in
-pdk_xx_xx_xx_xx/packages/ti/board/src/<customBoardName>/include
-
-Board Detection
-'''''''''''''''''
- - TI defined board detect mechanism using structure stored in I2C EEPROM
- - Board Lib APIs read and write Board ID to EEPROM on I2C address 0x50
- - Application boards, if available, will have their own EEPROM with board information
- - Structure typically defines:
- 
-::
-
-    Board ID (IDK vs GP EVM vs custom)
-    Revision number (board revision to address board level issues)
-    Serial Number (internal tracking)
-    MAC ID  (Custom MAC ID use)
-| 
-.. note::
-   Board detection is TI defined mechanism to detect evaluation platform details. 
-   This needs to be removed/replicated from board based on customer board implementation.
-   In case board detect mechanism is not used in custom board, check for the Board_getIDInfo() API calls 
-   and make necessary changes in the code to avoid dependencies on board detect mechanism.
-
-Board Flash APIs
-'''''''''''''''''
-Board library includes a dedicated flash library to abstract the HW flash interface access
-using a standard set of APIs. In case custom board uses flash devices that are different
-from eval platform, update to board flash APIs is required. 
-Check the board flash library available at <PDK Root>/packages/ti/board/src/flash and 
-make changes required for custom board as needed.
-
-   
-Platform Specific Configurations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-AM65xx
-"""""""
-Pinmux 
-'''''''
-Follow below steps to update pinmux configuration for custom board on AM65xx platforms.
- - Download the pinmux files <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool
- - Copy the files to custom board folder and rename them to match with board name if needed.
- - Rebuild the board library with new pinmux configurations
-
-SerDes Configuration
-'''''''''''''''''''''
-AM65xx board library includes SerDes module which configures the SerDes interface internal pinmux
-to route PCIe, USB and SGMII interfaces to different personality cards. If custom board uses
-similar design, SerDes configurations can be reused. Otherwise this configuration can be ignored.
-
-
-AM57xx
-"""""""
-Pinmux 
-'''''''
-Pinmux tool output for AM57xx platform includes IO delay information.
-Below are the files generated by pinmux tool:
- -  boardPadDelay.h: Includes the prototypes of all structures and
-    functions used by pinmux functions
- -  boardPadDelayInit.c: Includes the pinmux pad config data for
-    all device pads along with values used to compute
-    Manual/Virtual mode values.This data is used to configure
-    pinmux during board initialization.
- -  boardPadDelayTune.h: This file includes the compile time macros
-    used to select the Timing modes to be configured for modules
-    during board Initialization.
- -  boardPadDelayDevice.c: This file includes the pinmuxdata for
-    runtime pinmux configuration of the MMC module.
-
-Copy the above listed files generated by pinmux tool to custom board folder and 
-rebuild the board library with updated pinmux configurations.
-
-AM335x/AM437x
-"""""""""""""""
-Pinmux 
-'''''''
-Follow below steps to update pinmux configuration for custom board on AM335x/AM437x platforms.
-
- - Download the pinmux files <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool
- - At the bottom of <Platform Name>pinmux.h change extern pinmuxBoardCfg_t g<Platform Name>PinmuxData[]; to extern pinmuxBoardCfg_t g<Custom Board Name>PinmuxData[];
- - Change <Platform Name>_pinmux_data.c to <Platform Name>_<Custom Board Name>pinmux_data.c
- - Change g<Platform Name>PinmuxData to g<Custom Board Name>PinmuxData at the end of the file in <Platform Name>_<Custom Board Name>pinmux_data.c 
- - The last step is to invoke the PinMuxModuleConfig in the file <BoardName>_pinmux.c that is found at <PDK_INSTALL_PATH>\packages\ti\board\src\<BoardName>. 
-   For Example to add three instances of UART in the pinmux setup, users can add :
-
-::
-
-    /* UART */
-     status = PINMUXModuleConfig(CHIPDB_MOD_ID_UART, 0U, NULL);
-     status = PINMUXModuleConfig(CHIPDB_MOD_ID_UART, 1U, NULL);
-     status = PINMUXModuleConfig(CHIPDB_MOD_ID_UART, 4U, NULL);
-| 
- - Rebuild the board library with new pinmux configurations
-
-K2G
-""""
-Pinmux 
-'''''''
-Follow below steps to update pinmux configuration for custom board on K2G platforms.
- - Download the pinmux files <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool
- - Copy the files to custom board folder and rename them to match with board name if needed.
- - Rebuild the board library with new pinmux configurations
-
-
-Custom Board Validation
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-Validate the basic functionality of custom board using hardware diagnostics before bringing-up 
-RTOS applications or Linux. Hardware diagnostics help verify the functionality of on-board 
-peripherals and external interfaces of each board. 
-
-Refer `Board Diagnostics <Board_EVM_Abstration.html#diagnostics>`_ section for more details on the 
-diagnostic tests supported as part of processor SDK.
- 
-Below are the recommended diagnostic tests which can be validated on custom board
-
- - External memory (DDR): DDR timing and leveling setting can be checked out using mem_test
- - Debug UART: Debug UART pin functionality
- - Boot Media: Validate functionality of SD/MMC, OSPIor any other boot interfaces
- - Board ID/EEPROM test: Recommend checking out/writing ID on personality EEPROM. 
-   This also checkout I2C pin functionality
- - Ethernet PHY: Ethernet diagnostics tests read PHY configuration over MDIO and 
-   check for Link up status. Good first step before bringing up any network stack
+   their custom board library.
 
 .. raw:: html
 
