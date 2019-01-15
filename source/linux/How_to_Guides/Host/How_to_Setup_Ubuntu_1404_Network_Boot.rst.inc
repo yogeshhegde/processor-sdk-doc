@@ -125,13 +125,15 @@ USB there are some additional steps required.
        USE_INETD=false
        OPTIONS="--tftpd-timeout 300 --retry-timeout 5 --maxthread 100 --verbose=5 --logfile /var/log/atftpd.log --port 69 /tftpboot"
 
-   ..  note:: This is an exapmple congiguration and it can certainly be modified for specific situations.
+   ..  note:: This is an example configuration and it can certainly be modified for specific situations.
 
 #. Create directory to store TFTP files (/tftpboot used here)
 
-     **sudo mkdir /tftpboot**
-     **sudo chmod -R 777 /tftpboot**
-     **sudo chown -R nobody /tftpboot**
+    **sudo mkdir /tftpboot**
+
+    **sudo chmod -R 777 /tftpboot**
+
+    **sudo chown -R nobody /tftpboot**
 
    Make sure the server is configured to look at the port that you are
    using. Edit /etc/default/isc-dhcp-server and add the appropriate port
@@ -144,11 +146,11 @@ USB there are some additional steps required.
 
 #. Restart the services to pick-up the configuration changes
 
-   **sudo service isc-dhcp-server restart**
+      **sudo service isc-dhcp-server restart**
 
-   **sudo service atftpd restart**
+      **sudo service atftpd restart**
 
-   |
+      |
 
 #. Configure a static IP address for the appropriate interface (Ethernet or
    USB0). There are many ways to do this in Linux. **Network Manager** is
@@ -158,10 +160,10 @@ USB there are some additional steps required.
    and more stable for USB. Only one of these methods needs to be used per
    interface.
 
-   #. Make sure the target board is configured to boot from the appropriate
+   A. Make sure the target board is configured to boot from the appropriate
       interface (ethernet or USB).
 
-   #. Connect the interface on the PC to the target board. This should create
+   B. Connect the interface on the PC to the target board. This should create
       a new connection in Network Manager. Click on Network Manager and choose
       "edit connections".
 
@@ -171,11 +173,11 @@ USB there are some additional steps required.
       throughout this guide).
 
       ..  image::  ../images/Ubuntu_Setup_Ethernet_Connection_Choose_Interface.png
-      
+       
       | 
-      
+       
       ..  image::  ../images/Ubuntu_Setup_Ethernet_Connection_Manual_Address.png
-      
+       
       |
    
    #. Save all of your changes.
@@ -185,29 +187,30 @@ USB there are some additional steps required.
       to be restarted when it comes up each time. Network Manager provides a
       capability to do this using the dispatcher.
 
-      #. As root, create /etc/NetworkManager/dispatcher.d/99am-usb-dhcp-server
-
+      -  As root, create /etc/NetworkManager/dispatcher.d/99am-usb-dhcp-server
+ 
          .. code::
-
-	    #!/bin/sh
-	          
-	    IF=$1
-	    STATUS=$2
-	    					      
-	    if [ "$IF" = "usb0" ] && [ "$STATUS" = "up" ]; then
-	        service isc-dhcp-server restart
-	    fi
-
-      #. Make sure this file is executable.
-
+ 
+           #!/bin/sh
+               
+           IF=$1
+           STATUS=$2
+         					      
+           if [ "$IF" = "usb0" ] && [ "$STATUS" = "up" ]; then
+                service isc-dhcp-server restart
+           fi
+ 
+      -  Make sure this file is executable.
+ 
          **sudo chmod +x /etc/NetworkManager/dispatcher.d/99am-usb-dhcp-server**
-	
-	 |
-
-      #. Restart Network Manager:
-
+ 
+         |
+ 
+      -  Restart Network Manager:
+ 
          **sudo service network-manager restart**
-	 
+
+
 
 #. This step is an **alternative** to the above step which describes how to
    use Network Manager to set up a network connection. Depending on the
@@ -221,7 +224,7 @@ USB there are some additional steps required.
    this is not convenient. The more traditional ifconfig model is
    configured at an interface level and avoids these issues.
 
-   #. Configure /etc/network/interfaces by adding the below structure for
+   A) Configure /etc/network/interfaces by adding the below structure for
       usb0:
 
       .. code::
@@ -234,40 +237,41 @@ USB there are some additional steps required.
          broadcast 192.168.2.255
          up /etc/network/if-up.d/usb-interfaces
 
-   #. Add the below script to /etc/network/if-up.d as sudo with the
+	 
+   #) Add the below script to /etc/network/if-up.d as sudo with the
       filename "usb-interfaces" (this is called by the "up" command in
       /etc/network/interfaces). This script restarts the DHCP/BOOTP server
       automatically.
 
-         .. code::
+      .. code::
 
-            #!/bin/sh
+         #!/bin/sh
         
-            if [ "$IFACE" = usb0 ]; then
-                sudo service isc-dhcp-server restart
-            fi
+         if [ "$IFACE" = usb0 ]; then
+             sudo service isc-dhcp-server restart
+         fi
 
-   #.  Make sure the script is executable as well.
+   #) Make sure the script is executable as well.
       
-       **chmod +x /etc/network/if-up.d/usb-interfaces**
+      **chmod +x /etc/network/if-up.d/usb-interfaces**
        
-       |
+      |
 
-   #.  Finally, make sure Network Manager is set up to ignore interfaces
-       managed by /etc/network/interfaces by adding the below code to
-       /etc/NetworkManager/NetworkManager.conf:
+   #) Finally, make sure Network Manager is set up to ignore interfaces
+      managed by /etc/network/interfaces by adding the below code to
+      /etc/NetworkManager/NetworkManager.conf:
 
-       .. code::
+      .. code::
 
-          [main]
-          plugins=ifupdown
+         [main]
+         plugins=ifupdown
         
-          [ifupdown]
-          managed=false
+         [ifupdown]
+         managed=false
 
-   #.  Restart Network Manager for the changes to take affect.
+   #) Restart Network Manager for the changes to take affect.
        
-       **sudo service network-manager restart**
+      **sudo service network-manager restart**
 
 At this point, the Ubuntu box should be set up to host the boot process
 for an AM335x/AM437x based board. If you already have files to use, copy them
