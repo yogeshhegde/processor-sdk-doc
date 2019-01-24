@@ -60,3 +60,7 @@ Refer to `Arm NN MobileNet Demo <Foundational_Components_ArmNN.html#arm-nn-mobil
 PRU-ADC Demo
 ========================
 .. include:: Examples_and_Demos/PRU_ADC.rst.inc
+
+Video Graphics Test
+=======================
+.. include:: Examples_and_Demos/Video_Graphics_Test.rst.inc
