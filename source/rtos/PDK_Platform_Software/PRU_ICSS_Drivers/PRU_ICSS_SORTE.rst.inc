@@ -127,6 +127,10 @@ follows:
 Connect master Port0 to slave1 Port0. Connect slave1 Port1 to slave2
 Port0.
 
+After loading the application binaries from CCS, run the master first, 
+then run the slave2, finally run the slave1 with Port0 connecting to the
+the master Port 0.
+
 Note that the master device will wait until it discovers 2 slave devices
 in the network. UART console on the master will print the following
 until 2 slave devices are detected:
