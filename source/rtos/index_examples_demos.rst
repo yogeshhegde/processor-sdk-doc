@@ -81,3 +81,8 @@ SimpleLink WiFi Demo
 ***************************
 .. _Demo-SimpleLink-WiFi-Demo-label:
 .. include:: Examples_and_Demonstrations/SimpleLink_WiFi_Demo.rst.inc
+
+***************************
+CAN-Eth Gatway Demo
+***************************
+.. include:: Examples_and_Demonstrations/Can_Eth_Gateway_Demo.rst.inc
