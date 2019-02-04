@@ -4,8 +4,9 @@
 OpenCV
 **********************************
 
-.. rubric:: Introduction
-   :name: introduction-opencv
+==============
+Introduction
+==============
 
 `OpenCV <http://opencv.org/>`__ (Open Source Computer Vision Library)
 is an open-source BSD-licensed library that includes several hundreds
@@ -49,8 +50,9 @@ accuracy of the implementation.
 This document provides instructions show how to load and run unit tests
 of TI’s OpenCV implementation.
 
-.. rubric:: OpenCV Modules Supported By TI
-   :name: opencv-modules-supported-by-ti
+=================================
+OpenCV Modules Supported By TI
+=================================
 
  
 Table 1 lists the modules of OpenCV and indicates which modules are
@@ -106,8 +108,9 @@ supported by Processor SDK for K2H family and AM57X family.
 
 | 
 
-.. rubric:: OpenCL offload
-   :name: opencl-offload
+=================================
+OpenCL offload
+=================================
 
 OpenCV 3.1 provides a transparent API that allows seamless offloads of
 OpenCL kernels when a supported hardware accelerator is available.
@@ -283,10 +286,11 @@ Here is an example:
        return 0;
      }
 
-.. rubric:: Unit Tests
-   :name: unit-tests
+=================================
+Unit Tests
+=================================
 
-Each function inthe OpenCV implementation has a unit test associate
+Each function in the OpenCV implementation has a unit test associate
 with the function.
 The following instructions show how to load and run unit tests of TI’s
 OpenCV implementation.
@@ -494,9 +498,9 @@ Details of accuracy test failures results on 66AK2H12 and AM57x platforms
 | videoio       | 0        | videoio.Regression (GST Library Issue)                         | 1        | GST library issue?                                         |
 +---------------+----------+----------------------------------------------------------------+----------+------------------------------------------------------------+
 
-.. rubric:: Necessary steps to modify OpenCV framework to add more
-   OpenCL Host side and DSP C66 optimized kernels
-   :name: necessary-steps-to-modify-opencv-framework-to-add-more-opencl-host-side-and-dsp-c66-optimized-kernels
+=======================================================================================================
+Necessary steps to modify OpenCV framework to add more OpenCL Host side and DSP C66 optimized kernels
+=======================================================================================================
 
 Primary purpose of this tutorial is to show how one can add TI DSP C66
 optimized kernels to existing OpenCV framework. Necessary steps are
@@ -1216,4 +1220,82 @@ DSP cores), these steps should be followed:
            EXAMPLE (EVM, execute from folder /usr/share/OpenCV/titestsuite): python ./run.py --perf_force_samples=5 -t imgproc --gtest_filter="*Sobel*" (run only Sobel filters from imgproc module)
            EXAMPLE (EVM, execute from folder /usr/share/OpenCV/titestsuite): python ./run.py --gtest_list_tests -t imgproc (list all the available performance tests, for imgproc module)
            EXAMPLE (EVM, execute from folder /usr/share/OpenCV/titestsuite): python ./run.py --perf_force_samples=5 -t imgproc --gtest_filter="*threshold/20*" (run single test case)
+
+
+=================================
+Frequently Asked Questions
+=================================
+
+**How to compile OpenCV natively on 66AK2H platform?**
+
+    The Linaro gcc compiler is included in the ProcSDK filesystem under /usr/bin directory.
+    OpenCV is supported on Keystone2 platforms (K2H/K/E/L). However, the following OpenCV include files
+    and libraries are not in the filesystem, but needed to compile natively.
+
+    Libraries need to be copied from
+    Linux_ProSDK/linux-devkit/sysroot/armv7ahf-neon-linux-gnueabi/usr/lib to /usr/lib are::
+
+         libopencv*
+         libgst*
+         libgphoto*
+         liborc*
+         libtbb*
+         libwebp*
+         libtiff*
+         libgst*
+         libgphoto*
+         libexif*
+         liborc*
+
+    OpenCV include directories need to be copied from
+    Linux_ProSDK/linux-devkit/sysroot/armv7ahf-neon-linux-gnueabi/usr/include to /usr/include are::
+
+         opencv
+         opencv2
+
+    Once all the libraries and include files are copied, the OpenCV example, canny_ex1, can be compiled natively on EVM..
+
+**Why the performance of running on DSP offloaded using OpenCL is slower than that running on ARM using OpenMP?**
+
+    Unless the system can hide somewhat the data movement
+    (using DMA to move data while some other computations are taking place)
+    this is data movement problem. Each of the cores, DSP and the ARM are capable of
+    doing floating point multiplication and addition in a single step
+    (in pipeline fashion) so really the bottle neck is the data in and out the DDR,
+    2M 32-bit elements of two vectors read and one vector write must reside in the DDR
+    (or generated on the fly)
+
+    Since this is data movement problem and not processing problem, it is not expected that
+    the DSP to be much faster, unless the ARM is busy doing something else at the same time.
+    So the advantage of the OpenCL in this case is that the ARM can do something else
+    while the DSP is busy performing the (so simple) algorithm.
+
+**When using UMat to do remap, it shows faster than using Mat, but why UMat time cost of saving results is longer than Mat?**
+
+    When OpenCL is turned on and if data are in UMat, remap is directed to DSP,
+    i.e. offload to DSP happens, but OpenCL in OpenCV has somewhat different call flow.
+    It submits a task (to DSP OpenCL queue) and returns immediately.
+    This allows parallelization between accelerator (DSP) and CPU,
+    as long as data dependency is satisfied.  So, when save is requested,
+    CPU waits for end of submitted task before it can actually do the save.
+    DSP in many cases is slower than A15 (NEON operation). The UMat cost time includes:
+    waiting time (for DSP to finish) plus actual write and any format conversion (done on CPU).
+    It also depends a lot on data types used, and if floating point operations are involved.
+    This can be accelerated if DSP optimized implementation of remap() is created.
+
+    To optimize DSP, please follow guideline in
+
+    http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_OpenCV.html
+
+    (chapters "Creating OpenCL C kernel optimized for C66 core" to
+    "Alternative approach to add new OpenCL kernels at OpenCV application level")
+
+**Why isn't the performance improved when calling dsplib and use OpenMP to accelerate?**
+
+
+    There is overhead involved in dispatching compute to the DSP.
+    If the amount of compute in the offloaded region is small, the user can notice a slowdown.
+    The "null" OpenMPAcc example that ships on the target file system
+    (/usr/share/ti/examples/openmpacc/) can be run to determine the overhead involved in
+    dispatching a target region.
 
