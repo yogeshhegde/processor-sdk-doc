@@ -146,8 +146,8 @@ file(\ ``arch/arm/boot/dts/am335x-evm.dts``) as shown below.
 -  This example is using channels AIN4, AIN5, AIN6, and AIN7 are used by
    ADC. The remaining channels (0 to 3) are used by TSC.
 
-You can find the source code for ADC
-`here <http://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-3.14.y/drivers/iio/adc/ti_am335x_adc.c>`__
+You can find the source code for ADC in the kernel sources at
+``drivers/iio/adc/ti_am335x_adc.c``.
 
 .. rubric:: **Usage**
    :name: usage
