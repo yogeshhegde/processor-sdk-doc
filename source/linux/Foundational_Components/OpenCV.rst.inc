@@ -515,17 +515,18 @@ standard, and can execute baseline OpenCV OpenCL kernels (as-is!). But
 additional performance improvements can be achieved by using TI DSP
 OpenCL extensions (intrinsics and EDMAmgr).
 
-.. rubric:: Supported Platforms
-   :name: supported-platforms
+--------------------
+Supported Platforms
+--------------------
 
-| See
-  `Processor\_SDK\_Supported\_Platforms\_and\_Versions <http://processors.wiki.ti.com/index.php/Processor_SDK_Supported_Platforms_and_Versions>`__
-  for a list of supported platforms and links to more information.
-  OpenCL dispatch is available only on platforms with DSP C66 core, like
-  AM5728 (2 C66 cores).
+See `here <Release_Specific_Supported_Platforms_and_Versions.html>`__ for a list
+of supported platforms and links to more information.
+OpenCL dispatch is available only on platforms with DSP C66 core, like
+AM5728 (2 C66 cores).
 
-.. rubric:: OpenCV OpenCL run-time setup
-   :name: opencv-opencl-run-time-setup
+-----------------------------
+OpenCV OpenCL run-time setup
+-----------------------------
 
 OpenCV and OpenCL are already included in PLSDK 3.10. OpenCV uses
 run-time compilation of OpenCL kernels, so first time kernel execution
@@ -537,15 +538,16 @@ to AM57xx): **export OPENCV\_OPENCL\_DEVICE='TI AM57:ACCELERATOR:TI
 Multicore C66 DSP'**
 
 -  For additional information, please refer to:
-   http://downloads.ti.com/mctools/esd/docs/opencl/index.html
+   `OpenCL User Guide <Foundational_Components_OpenCL.html>`__
 
-.. rubric:: OpenCV OpenCL development setup
-   :name: opencv-opencl-development-setup
+--------------------------------
+OpenCV OpenCL development setup
+--------------------------------
 
 OpenCV and OpenCL are already included in PLSDK 3.10.
 
 -  Development setup need to be prepared based on
-   http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK.
+   `Building the Processor SDK <Overview_Building_the_SDK.html>`__
 -  When needed, source code under the work directory (e.g.,
    arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencv/git) can
    be modified.
@@ -565,9 +567,9 @@ OpenCV and OpenCL are already included in PLSDK 3.10.
 
      opkg install libopencv-<modulename.version.commit>-r0.tisdk4_am57xx_evm.ipk
 
-.. rubric:: OpenCV OpenCL related framework details: how to add new DSP
-   kernel
-   :name: opencv-opencl-related-framework-details-how-to-add-new-dsp-kernel
+----------------------------------------------------------------------
+OpenCV OpenCL related framework details: how to add new DSP kernel
+----------------------------------------------------------------------
 
 Addition of a new kernel includes two steps: addition of Host (A15) side
 modification, and new DSP kernel (to be described in next chapter).
@@ -612,8 +614,9 @@ modification, and new DSP kernel (to be described in next chapter).
 As a reference you can look for ocl\_XYZ functions including
 preprocessor conditional #ifdef TIOPENCL (in modules/\*/src files).
 
-.. rubric:: Creating OpenCL C kernel optimized for C66 core
-   :name: creating-opencl-c-kernel-optimized-for-c66-core
+----------------------------------------------------------------------
+Creating OpenCL C kernel optimized for C66 core
+----------------------------------------------------------------------
 
 DSP specific implementation of kernel body can be placed in existing
 XXX.cl or new YYY.cl file - both have to be placed in
@@ -743,9 +746,9 @@ Output looks like:
      [core 1] TIDSP dilate clockdiff=532646
     [core 0] TIDSP dilate clockdiff=531362
 
-.. rubric:: OpenCV OpenCL kernels implemented specifically for DSP C66
-   core
-   :name: opencv-opencl-kernels-implemented-specifically-for-dsp-c66-core
+----------------------------------------------------------------------
+OpenCV OpenCL kernels implemented specifically for DSP C66 core
+----------------------------------------------------------------------
 
 Coding in OpenCL C is very close to coding in Native DSP C (cl6x). Many
 platform specific details are automatically resolved with OpenCL tools
@@ -783,8 +786,9 @@ are applicable in OpenCL C:
    Use EDMA to parallelize data transfers (from DDR to/from L2) with DSP
    core execution
 
-.. rubric:: EDMA transfer framework
-   :name: edma-transfer-framework
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+EDMA transfer framework
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is essential that EDMA operates in parallel with DSP core operation,
 so that DSP core always have ready data to be processed. This can be
@@ -860,8 +864,9 @@ gauss.cl, sobel.cl, thresh.cl.
       ...
       /* Access L2 data directly using yprev_ptr, ycurr_ptr, ynext_ptr... \*/
 
-.. rubric:: Additional information about C66 specific optimizations
-   :name: additional-information-about-c66-specific-optimizations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Additional information about C66 specific optimizations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. C6000 Programmers guide:
    http://www.ti.com/lit/ug/spru198k/spru198k.pdf.
@@ -875,13 +880,13 @@ gauss.cl, sobel.cl, thresh.cl.
 #. TMS320C66x DSP CPU and instruction set:
    https://training.ti.com/system/files/docs/c66x-corepac-instruction-set-reference-guide.pdf
 
+--------------------------------------------------------------------------------------------------------
+List of currently (PLSDK 3.1) DSP optimized OpenCV OpenCL kernels, using non-standard OpenCL extensions
+--------------------------------------------------------------------------------------------------------
 
-.. rubric:: List of currently (PLSDK 3.1) DSP optimized OpenCV OpenCL kernels, using non-standard OpenCL extensions
-   :name: list-of-currently-plsdk-3.1-dsp-optimized-opencv-opencl-kernels-using-non-standard-opencl-extensions
-
-
-.. rubric:: OpenCL C C66 DSP kernels
-   :name: opencl-c-c66-dsp-kernels
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OpenCL C C66 DSP kernels
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
    :header: "Kernel name","Data type - input","Data type - output","Host side file (full path)","OpenCL C kernel file (full path)","Comments"
@@ -897,12 +902,13 @@ gauss.cl, sobel.cl, thresh.cl.
 
 | 
 
-.. rubric:: Profiling results of DSP optimized OpenCV OpenCL kernels
-   (PLSDK 3.1), AM5728 platform
-   :name: profiling-results-of-dsp-optimized-opencv-opencl-kernels-plsdk-3.1-am5728-platform
+--------------------------------------------------------------------------------------
+Profiling results of DSP optimized OpenCV OpenCL kernels (PLSDK 3.1), AM5728 platform
+--------------------------------------------------------------------------------------
 
-.. rubric:: **Single channel, 1200x709, barcode ROI detection use case**
-   :name: single-channel-1200x709-barcode-roidetection-use-case
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Single channel, 1200x709, barcode ROI detection use case**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
    :header: "Kernel name", "DSP optimized, cycles (per core)","DSP baseline wall clock","DSP optimized wall clock","ARM wall clock","DSP/ARM"
@@ -917,9 +923,9 @@ gauss.cl, sobel.cl, thresh.cl.
 
 | 
 
-.. rubric:: **Single channel, 1920x1080. barcode ROI detection use
-   case**
-   :name: single-channel-1920x1080.-barcode-roi-detection-use-case
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Single channel, 1920x1080. barcode ROI detection use case**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
    :header: "Kernel name", "DSP optimized, cycles (per core)","DSP baseline wall clock","DSP optimized wall clock","ARM wall clock","DSP/ARM"
@@ -934,8 +940,10 @@ gauss.cl, sobel.cl, thresh.cl.
 
 | 
 
-.. rubric:: **Single channel, 720x576, Gesture recognition use case**
-   :name: single-channel-720x576-gesture-recognition-use-case
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Single channel, 720x576, Gesture recognition use case**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 .. csv-table::
    :header: "Kernel name", "DSP optimized, cycles (per core)","DSP baseline wall clock","DSP optimized wall clock","ARM wall clock","DSP/ARM"
@@ -947,9 +955,9 @@ gauss.cl, sobel.cl, thresh.cl.
 
 | 
 
-.. rubric:: Alternative approach to add new OpenCL kernels at OpenCV
-   application level
-   :name: alternative-approach-to-add-new-opencl-kernels-at-opencv-application-level
+----------------------------------------------------------------------------
+Alternative approach to add new OpenCL kernels at OpenCV application level
+----------------------------------------------------------------------------
 
 Instead of adding OpenCL kernels into OpenCV framework, it is possible
 to do that directly from OpenCV application. This approach might be
@@ -980,9 +988,9 @@ application (below example is executed on target) is straightforward:
 Below two sections show how OpenCL kernels can be dispatched from OpenCV
 application in two different ways.
 
-.. rubric:: OpenCL kernel dispatch from OpenCV application, using
-   existing OpenCV-OpenCL classes
-   :name: opencl-kernel-dispatch-from-opencv-application-using-existing-opencv-opencl-classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OpenCL kernel dispatch from OpenCV application, using existing OpenCV-OpenCL classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 OpenCV host side code, using OpenCV classes (defined in
 modules/core/src/ocl.cpp) to load and dispatch OpenCL kernels (online
@@ -1080,9 +1088,9 @@ loaded and compiled by above host program.
 
 | 
 
-.. rubric:: OpenCL kernel dispatch from OpenCV application, using
-   standard OpenCL dispatch with access to OpenCV data objects
-   :name: opencl-kernel-dispatch-from-opencv-application-using-standard-opencl-dispatch-with-access-to-opencv-data-objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OpenCL kernel dispatch from OpenCV application, using standard OpenCL dispatch with access to OpenCV data objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to use CMEM memory directly accessible by DSP.
 OpenCV Mat data structures are created to store data in CMEM, thus avoid
@@ -1189,8 +1197,9 @@ compiled and disptache by above host program
         b[id] = a[id] & (uchar4)(127, 127, 127, 127);
     }
 
-.. rubric:: OpenCV profiling - standard procedure
-   :name: opencv-profiling---standard-procedure
+----------------------------------------------------------------------------
+OpenCV profiling - standard procedure
+----------------------------------------------------------------------------
 
 Standard procedure for profiling OpenCV kernels (with OpenCL dispatch or
 without), is described in:
@@ -1285,7 +1294,7 @@ Frequently Asked Questions
 
     To optimize DSP, please follow guideline in
 
-    http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_OpenCV.html
+    `OpenCV User Guide <Foundational_Components_OpenCV.html>`__
 
     (chapters "Creating OpenCL C kernel optimized for C66 core" to
     "Alternative approach to add new OpenCL kernels at OpenCV application level")
