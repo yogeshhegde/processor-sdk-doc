@@ -414,7 +414,7 @@ The script setupEnv.sh in directory /usr/share/OpenCV/titestsuite sets
 the environment variables that are needed for the unit tests.
 
 From the OpenCV directory do the following: ***cd titestsuit*** and
-then ***source setupEnv.sh*** . See the screen shot below.
+then ***source ./setupEnv.sh*** . See the screen shot below.
  
 .. Image:: ../images/Environment1.jpg
 
@@ -1230,6 +1230,14 @@ DSP cores), these steps should be followed:
            EXAMPLE (EVM, execute from folder /usr/share/OpenCV/titestsuite): python ./run.py --gtest_list_tests -t imgproc (list all the available performance tests, for imgproc module)
            EXAMPLE (EVM, execute from folder /usr/share/OpenCV/titestsuite): python ./run.py --perf_force_samples=5 -t imgproc --gtest_filter="*threshold/20*" (run single test case)
 
+
+=================================
+OpenCV Performance
+=================================
+
+Please refer to
+`OpenCV Performance <http://www.ti.com/processors/digital-signal-processors/libraries/open-cv.html>`__ 
+for the comparison of example performance of OpenCV routines as measured on multicore ARM Cortex-A15 cores and C66x DSPs in two different TI SoCs.
 
 =================================
 Frequently Asked Questions
