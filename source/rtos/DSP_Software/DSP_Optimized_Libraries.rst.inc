@@ -143,5 +143,12 @@ All libraries are delivered with both source code and object code. The
 source code can be recompiled according to the instructions given in
 each individual library's documentation.
 
+Core benchmark comparison
+=========================
+
+Please refer to `Core Benchmarks
+<http://www.ti.com/processors/digital-signal-processors/core-benchmarks/core-benchmarks.html>`__
+for DSP vs A15 core benchmark comparison for computation intensive tasks. 
+
 .. raw:: html
 
