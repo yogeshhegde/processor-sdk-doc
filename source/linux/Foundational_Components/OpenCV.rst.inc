@@ -802,7 +802,7 @@ beginning of image rows is maintained. Main unit of operation is single
 image row. Only one image row is in-flight, both on input and output.
 Still, DSP processing (which is typical use case) may use multiple
 consecutive image rows. Examples of this framework can be found in:
-gauss.cl, sobel.cl, thresh.cl.
+gauss.cl, sobel.cl, thresh.cl in tiopencv repository (http://git.ti.com/opencv/tiopencv/trees/tiopencvrelease_3.1)
 
 -  Initialization: resetting L2 image rows
 
@@ -1300,12 +1300,12 @@ Frequently Asked Questions
     It also depends a lot on data types used, and if floating point operations are involved.
     This can be accelerated if DSP optimized implementation of remap() is created.
 
-    To optimize DSP, please follow guideline in
+    To optimize DSP, please follow guideline in Chapters 
+    `Creating OpenCL C kernel optimized for C66 core
+    <Foundational_Components_OpenCV.html#creating-opencl-c-kernel-optimized-for-c66-core>`__ to 
+    `Alternative approach to add new OpenCL kernels at OpenCV application level
+    <Foundational_Components_OpenCV.html#alternative-approach-to-add-new-opencl-kernels-at-opencv-application-level>`__ 
 
-    `OpenCV User Guide <Foundational_Components_OpenCV.html>`__
-
-    (chapters "Creating OpenCL C kernel optimized for C66 core" to
-    "Alternative approach to add new OpenCL kernels at OpenCV application level")
 
 **Why isn't the performance improved when calling dsplib and use OpenMP to accelerate?**
 
