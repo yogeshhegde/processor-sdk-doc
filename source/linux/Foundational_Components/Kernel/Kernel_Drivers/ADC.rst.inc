@@ -102,7 +102,7 @@ Should the entry "TI's AM335X ADC driver" be missing the MFD component
 -  In-case if you want to build the driver as module, use <M> instead of
    <\*> during menuconfig while selecting the drivers (as shown below).
    For more information on compiling and installing kernel modules, refer
-   to the `Kernel User's Guide <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_Kernel_Users_Guide.html>`__ .
+   to the `Kernel User's Guide <Foundational_Components_Kernel_Users_Guide.html>`__ .
    For more information on loadable modules refer to `Loadable Module
    HOWTO <http://tldp.org/HOWTO/Module-HOWTO/>`__ .
 
