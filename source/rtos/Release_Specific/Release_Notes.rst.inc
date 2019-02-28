@@ -759,11 +759,11 @@ For further information or to report any problems, contact:
 Archived 
 ==========
 -  `Processor-SDK RTOS
-   5.1.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_01_00_11/Release_Specific.html#processor-sdk-rtos-release-notes>`__
+   5.1.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_01_00_11/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
-   5.0.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_15/Release_Specific.html#processor-sdk-rtos-release-notes>`__
+   5.0.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_15/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
-   5.0.0 AM65x EA Release <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_09/Release_Specific.html#processor-sdk-rtos-release-notes>`__
+   5.0.0 AM65x EA Release <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_09/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
    4.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
