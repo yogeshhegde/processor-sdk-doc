@@ -641,3 +641,10 @@ You can use the **ethtool** utility:
 -  **ethtool eth2** (for link status)
 -  **ethtool -S eth2** (for hardware statistics)
 
+.. rubric:: Is RX interrupt pacing supported?
+   :name: is-rx-interrupt-pacing-support
+
+Yes, usage is the same as for HSR/PRP protocols, see 
+`HSR/PRP Linux Software>Receive Interrupt Pacing <Industrial_Protocols_HSR_PRP.html#receive-interrupt-pacing>`__.
+
+

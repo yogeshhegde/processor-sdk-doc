@@ -1033,8 +1033,9 @@ For example for eth2, user type
 
  >ethtool –c eth2
 
-Note that this changes the timer at both PRUs. So the command may be issued
-to one of the pair of Ethernet interfaces used for the HSR or PRP interface.
+Note that this changes the timer at both PRUs (for HSR/PRP). So the command
+may be issued to one of the pair of Ethernet interfaces used for the HSR
+or PRP interface.
 i.e for ICSS2 (assuming eth2 and eth3), user may use either of the below
 command to set the timer
 
@@ -1068,11 +1069,6 @@ Both parameters may be updated in one go as
 
 More details on the command syntax are available by typing man ethtool
 on a Linux PC as this is a standard Linux command.
-
-.. rubric:: Limitation
-
-Currently this feature is not supported for Dual EMAC ethernet type
-(i.e when EMAC firmware is running on PRU ICSS).
 
 
 VLAN Tag in Supervision frame
