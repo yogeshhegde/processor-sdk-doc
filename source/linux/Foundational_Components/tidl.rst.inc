@@ -154,6 +154,7 @@ Layers in current release of TIDL Lib have certain parameter related constraints
    - The input data has to be flattened (That is C =1 and H =1 for the input data)
    - A flatten layer can be used before this layer in C > 1 and H > 1
    - If a global average Pooling also can be flattens the output
+   - Input size has to be multiple of 8, because DSP implementation of the layer does aligned 8-byte double word loads
 
 - Spatial Pooling Layer
    - Average and Max Pooling are supported with stride 1, 2, 4 and kernel sizes of 2x2,3x3,4x4 etc. STOCHASTIC Pooling not supported
