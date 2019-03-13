@@ -332,8 +332,9 @@ PTP Ordinary Clock on PRU-ICSS
 
 Timestamping of PTP event messages at the PRU-ICSS ports is provided by
 the PRU-ICSS IEP module together with the PRU firmware. PTP is supported via
-the Dual EMAC firmware and the PRU-PRP firmware (when configured in
-SAN (Single Attached Node) mode.
+the Dual EMAC firmware, PRP firmware (configured in
+SAN (Single Attached Node). PTP with redundancy is supported via both HSR and
+PRP firmware.
 
 In this Linux PRU-ICSS OC implementation, the PRU firmware stores
 timestamps (IEP counter values) of PTP event messages in specific shared
@@ -350,7 +351,7 @@ more details.
 
 The PTP OC protocol is provided by the linuxptp application.
 
-If using PRP firmware, follow the steps at :ref:`PLSDK_PRP_EMAC_Mode-label`
+If using PRP firmware for SAN, follow the steps at :ref:`PLSDK_PRP_EMAC_Mode-label`
 to boot up the AM57xx IDK and configure the PRU-PRP firmware to run in
 **PRP\_EMAC** mode (not needed if using Dual EMAC firmware). Once the AM57xx
 IDK is boot into Linux kernel prompt and the PRU-ICSS Ethernet ports are
@@ -440,6 +441,128 @@ PTP/OC in slave mode:
     ...
 
 | 
+
+Redundancy (HSR/PRP)
+^^^^^^^^^^^^^^^^^^^^
+
+To set up PTP OC over HSR/PRP redundant interface, first setup HSR/PRP interface
+as detailed in `HSR/PRP Linux Software <Industrial_Protocols_HSR_PRP.html#linux-software>`__.
+
+Start PTP with the same command listed above, but using a different
+configuration file:
+(where eth2/eth3 are the slave interfaces used for the HSR/PRP interface)
+
+HSR:
+::
+
+    [global]
+    sanity_freq_limit 0    
+    step_threshold 0.00002   
+    tx_timestamp_timeout 20
+
+    domainNumber 0
+    priority1    128
+    priority2    128
+    slaveOnly    0
+
+    twoStepFlag                  1
+    summary_interval             0
+    doubly_attached_clock        1
+
+    [hsr0]
+    redundancy                   1
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [eth2]
+    redundancy                   1
+    redundancy_master_interface  hsr0
+    redundancy_slave_number      1
+
+    logAnnounceInterval          0
+    logSyncInterval              0
+    logMinPdelayReqInterval      0
+    announceReceiptTimeout       3
+    syncReceiptTimeout           2
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+    [eth3]
+    redundancy                   1
+    redundancy_master_interface  hsr0
+    redundancy_slave_number      2
+
+    logAnnounceInterval          0
+    logSyncInterval              0
+    logMinPdelayReqInterval      0
+    announceReceiptTimeout       3
+    syncReceiptTimeout           2
+
+    delay_mechanism              P2P 
+    network_transport            L2  
+    egressLatency                726                
+    ingressLatency               186
+    fault_reset_interval         0
+
+PRP:
+::
+
+    [global]
+    sanity_freq_limit            0
+    step_threshold               0.00002
+    tx_timestamp_timeout         10
+
+    domainNumber                 0
+    priority1                    128
+    priority2                    123
+    slaveOnly                    0                    
+
+    twoStepFlag                  1
+    summary_interval             0
+    doubly_attached_clock        1
+
+    [prp0]                            
+    redundancy                   2
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [eth2]
+    redundancy                    2
+    redundancy_master_interface   prp0
+    redundancy_slave_number       1
+
+    logAnnounceInterval           0
+    logSyncInterval               0
+    logMinPdelayReqInterval       0
+    announceReceiptTimeout        3   
+    syncReceiptTimeout            2   
+
+    delay_mechanism               P2P
+    egressLatency                 726
+    ingressLatency                186
+    network_transport             L2
+    fault_reset_interval          0
+
+    [eth3]
+    redundancy                    2
+    redundancy_master_interface   prp0
+    redundancy_slave_number       2
+
+    logAnnounceInterval           0
+    logSyncInterval               0
+    logMinPdelayReqInterval       0
+    announceReceiptTimeout        3   
+    syncReceiptTimeout            2   
+
+    delay_mechanism               P2P
+    egressLatency                 726
+    ingressLatency                186
+    network_transport             L2
+    fault_reset_interval          0
 
 Some useful commands
 ^^^^^^^^^^^^^^^^^^^^
@@ -1465,12 +1588,10 @@ Procedure
 
 The script file
 `setup\_hsr.sh <http://processors.wiki.ti.com/images/1/18/Setup_hsr.pdf>`_
-and clock configuration files
-`dut\_1\_hsr\_oc.cfg <http://processors.wiki.ti.com/images/3/37/Dut_1_hsr_oc.pdf>`_,
-`dut\_2\_hsr\_oc.cfg <http://processors.wiki.ti.com/images/3/38/Dut_2_hsr_oc.pdf>`_
-and
-`dut\_3\_hsr\_oc.cfg <http://processors.wiki.ti.com/images/f/fe/Dut_3_hsr_oc.pdf>`_
-will be used in the setup of the tests.
+and clock configuration files e.g. dut_1_hsr_oc.cfg, dut_2_hsr_oc.cfg, 
+dut_3_hsr_oc.cfg (each identical, same as listed in 
+`PTP Redundancy <Industrial_Protocols_PTP.html#redundancy-hsr-prp>`__
+section for HSR) will be used in the setup of the tests.
 
 -  For each DUT-X, copy the setup script setup\_hsr.sh and the clock
    configuration file dut\_X\_hsr\_oc.cfg into the target filesystem of
@@ -1651,12 +1772,8 @@ Known Issues
 
 PTP Roadmap
 ===========
-The following features are not yet supported as of Processor SDK 4.2
-release, but will be added in future
+The following features are not yet supported, but will be added in the future:
 
-.. rubric:: Redundancy (HSR/PRP) Support in OC/BC
-   :name: redundancy-hsrprp-support-in-ocbc
-
-.. rubric:: Transparent Clock
-   :name: transparent-clock
+.. rubric:: Redundancy (HSR/PRP) Support in BC
+   :name: redundancy-hsrprp-support-in-bc
 
