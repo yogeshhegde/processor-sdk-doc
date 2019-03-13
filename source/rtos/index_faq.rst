@@ -823,7 +823,14 @@ bringing up your custom hardware. Users will link to the new board
 library and rebuild the diagnostics package to leverage these examples
 on the custom hardware.
 
-| 
+**How to test Keystone II serdes interface?**
+
+For Keystone II Serdes, there is also a Serdes diagnostics package which can be found in the path pdk_k2hk/k2e_x_x_x\\packages\\ti\\diag\\serdes_diag. 
+The tests run on C66x and cover BER, EYE and PRBS.
+
+For common Keystone I/II Serdes debug, please refer to `SERDES Link Commissioning on 
+KeyStone I and II Devices <http://www.ti.com/lit/an/sprac37/sprac37.pdf>`__"
+ | 
 
 Filesystem Support
 ==================

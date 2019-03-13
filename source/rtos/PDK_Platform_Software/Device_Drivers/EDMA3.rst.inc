@@ -54,6 +54,15 @@ API reference for EDMA3 Resource Management layer
 
     #include <ti/sdo/edma3/rm/edma3_rm.h>
 
+FAQ
+---
+**How to debug common EDMA issues?**
+
+Please refer to `EDMA3
+FAQ <http://www.ti.com/lit/an/sprac52/sprac52.pdf>`__ for Keystone devices.
+
+
+
 Additional References
 ---------------------
    

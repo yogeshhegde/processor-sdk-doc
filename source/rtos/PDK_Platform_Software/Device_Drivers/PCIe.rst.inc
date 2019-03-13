@@ -383,7 +383,7 @@ xds100 for two EVMs <#quick-setup-of-xds100-for-two-evms>`__
 Debug FAQ
 ---------
 
-#. If example fails to get link up
+**If example fails to get link up**
 
    #. Confirm that male/male cross cable or breakout board is correctly
       connected.
@@ -397,7 +397,7 @@ Debug FAQ
    #. Confirm that one side of the example has PcieModeGbl=PCIE_RC_MODE
       and the other is PCIE_EP_MODE.
 
-      #. Note that when changing to RC you must click somewhere outside
+      .. note:: When changing to RC you must click somewhere outside
          the expression value to make the modification for RC to "take
          effect". Simply pressing F8 after modifying the value will run
          without actually modifying the variable! The modification will
@@ -405,6 +405,12 @@ Debug FAQ
          right, except that the log will show "PCIe test start EP mode"
          twice** instead of "PCIe test start EP mode" once and "PCIe
          test start RC mode" once.
+
+**How to debug common PCIe issues**  
+ 
+Please refer to `PCI Express (PCIe) 
+FAQ <http://www.ti.com/lit/an/sprac59a/sprac59a.pdf>`__ for Keystone devices.
+
 
 Additional References
 ---------------------
