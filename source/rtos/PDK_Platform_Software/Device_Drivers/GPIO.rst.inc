@@ -153,6 +153,13 @@ Building GPIO examples
    ./pdkProjectCreate.sh [soc] [board] [endian] gpio [project type] [processor] [SECUREMODE=<yes/no>]
    Import and build CCS Project from  <pdk>/packages/MyExampleProjects/
 
+FAQ
+----------------------
+
+**Is there any example using GPIO as input**
+
+Please refer to `RTOS Customization: using an external input to trigger an interrupt 
+on AM57x <index_how_to_guides.html#rtos-customization-using-an-external-input-to-trigger-an-interrupt-on-am57x>`_ for details. 
 
 Additional References
 ---------------------
