@@ -26,6 +26,12 @@ management capabilities for RTOS applications.
 | K2G        |         | X       |        |        | X        |        |        | K2G EVM                      |
 +------------+---------+---------+--------+--------+----------+--------+--------+------------------------------+
 
+.. note::
+
+    PM on AM335x and AM437x devices supports only OPP modifications.  CPU idle
+    and other PM modes on these devices are only for reference and are not
+    validated on the EVM every release.
+
 User Interface
 --------------
 
