@@ -18,6 +18,11 @@ VIP
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Camera/VIP.rst.inc
 
+CAL
+---------------------------------
+.. include:: Foundational_Components/Kernel/Kernel_Drivers/Camera/CAL.rst.inc
+
+
 Crypto
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Crypto.rst.inc
