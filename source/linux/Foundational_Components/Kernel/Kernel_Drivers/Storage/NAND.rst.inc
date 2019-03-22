@@ -340,6 +340,12 @@ work Pin 1 (first pin on the left) must be turned on and Pin 2 must be
 turned off. Pin 1 and 2 must never be switched on at the same time.
 Doing so may cause damage to the board or SoC.
 
+.. note::
+
+	Aside from setting the correct bootmode (SYSBOOT[5:0]) for
+	NAND boot, make sure that The Bus width (SYSBOOT[13]) and
+	Muxed-device (SYSBOOT[12:11]) are set as given in the TRM.
+
 .. rubric:: Configurations (GPMC Specific)
    :name: configurations-gpmc-specific
 
