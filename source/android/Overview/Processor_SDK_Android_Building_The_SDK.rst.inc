@@ -240,18 +240,16 @@ Instructions for rebuilding the SGX kernel module.
 
 ::
 
-    cd ~/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/board-support/aosp-6AM.1.3/device/ti/proprietary-open/jacinto6/sgx_src/eurasia_km/eurasiacon/build/linux2/omap_android
-    export KERNELDIR=${HOME}/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/board-support/linux-4.4.x...
-    export CROSS_COMPILE=${HOME}/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/android-devkit/arm-linux-androideabi-4.9.x-google/bin/arm-linux-androideabi-
-    export KERNEL_CROSS_COMPILE=${HOME}/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/android-devkit/arm-linux-androideabi-4.9.x-google/bin/arm-linux-androideabi-
-    export ARCH=arm
-    make TARGET_PRODUCT="am57xevm" BUILD=release
+    cd ~/ti-processor-sdk-android-am57xx-evm-05.../board-support/aosp-.../vendor/ti/dra7xx
+    git checkout git-ti-com/sgx-km-from-source (ensure Commit ID=63998e4f98ff0122799d4e37f95a5f0c2df2204e)
+
+Then, follow the instructions above to build the android fileystem.
 
 SGX module will be generated at:
 
 ::
 
-    ~/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/board-support/aosp-6AM.1.3/device/ti/proprietary-open/jacinto6/sgx_src/eurasia_km/eurasiacon/binary2_omap_android_release/target/pvrsrvkm.ko
+    ~/ti-processor-sdk-android-am57xx-evm-05.02.00.xx/board-support/aosp-.../vendor/ti/dra7xx/sgx_km/lib/modules/pvrsrvkm.ko
 
 Use ADB to push pvrsrvkm.ko file to the **/system/lib/modules/**
 location on the AM57xx target and reboot the board.
