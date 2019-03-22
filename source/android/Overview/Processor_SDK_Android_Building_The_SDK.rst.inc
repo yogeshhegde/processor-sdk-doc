@@ -209,23 +209,6 @@ also be used to build the Linux kernel
 .. rubric:: Building Android Filesystem (AFS)
    :name: building-android-filesystem-afs
 
-Instructions for building Android file system (Processor SDK 4.0, 4.1).
-
-::
-
-    cd ~/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/board-support/aosp-.../
-    . build/envsetup.sh
-    lunch full_am57xevm-userdebug
-    make -j8 clean
-    make -j8
-
-See `Android Build
-Tricks <http://elinux.org/Android_Build_System#Build_tricks>`__ for
-tricks on building Android. Adjust -jX to match your build machine,
-where X is the number of jobs.
-
-| 
-
 Instructions for building Android file system (Processor SDK 4.2 +)
 
 .. note::
@@ -238,12 +221,17 @@ Instructions for building Android file system (Processor SDK 4.2 +)
 
     cd ~/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/board-support/aosp-.../
     export KERNELDIR=~/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/board-support/linux-.../
-    . build/envsetup.sh
-    lunch full_am57xevm-userdebug
     make -j8 clean
+    . build/envsetup.sh
+    lunch am57xevm_full-userdebug
     make -j8
 
-| 
+See `Android Build
+Tricks <http://elinux.org/Android_Build_System#Build_tricks>`__ for
+tricks on building Android. Adjust -jX to match your build machine,
+where X is the number of jobs.
+
+|
 
 .. rubric:: Building SGX Kernel Module
    :name: building-sgx-kernel-module
@@ -296,7 +284,7 @@ Rebuild AFS to generate update images
 
     cd ~/ti-processor-sdk-android-am57xx-evm-04.00.00.xx/board-support/aosp-6AM.1.3/
     . build/envsetup.sh
-    lunch full_am57xevm-userdebug
+    lunch am57xevm_full-userdebug
     rm out/target/product/am57xevm/*.img
     rm out/target/product/am57xevm/obj/PACKAGING/systemimage_intermediates/system.img
     make -j2
