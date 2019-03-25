@@ -153,7 +153,7 @@ Layers in current release of TIDL Lib have certain parameter related constraints
    - Maximum input and output Nodes supported are 4096
    - The input data has to be flattened (That is C =1 and H =1 for the input data)
    - A flatten layer can be used before this layer in C > 1 and H > 1
-   - If a global average Pooling also can be flattens the output
+   - A global average pooling also can be used to flatten the output 
    - Input size has to be multiple of 8, because DSP implementation of the layer does aligned 8-byte double word loads
 
 - Spatial Pooling Layer
@@ -444,7 +444,7 @@ User space TIDL components are included in the Folder /usr/share/ti/tidl and its
 Sub folder      Description of content 
 =============  ======================================================================================================================================================================================================  
 examples        test (file-to-file examples), imagenet classification, image segmentation and SSD multibox examples are here. Matrix GUI example which is based on imagenet one, is in folder tidl_classification.
-utils           Arm 32-bit binaries for importing models and simulation, and configuration files for running example import tool operations.
+utils           Example configuration files for running the import tool.
 viewer          Imported model parser and dot graph creator. Input is TIDL model, output is .dot file that can be converted to PNG or PDF format using dot utility (on x86).   
 tidl_api        Source of TIDL API implementation.
 =============  ======================================================================================================================================================================================================  
@@ -472,19 +472,37 @@ Output data format
 Import Process
 ----------------
 
-Import process is done in two steps. 
+TIDL import tool converts deep learning models to TI custom network format for efficient execution on TI devices. It supports the following framework/format:
+
+   - Caffe
+   - TensorFlow
+   - ONNX  
+
+The import process is done in two steps:
 
 - The first step deals with parsing of model parameters and network topology, and converting them into custom format that TIDL Lib can understand. 
 
 - The second step does calibration of dynamic quantization process by finding out ranges of activations for each layer. This is accomplished by invoking simulation (using native C implementation) which estimates initial values important for quantization process. These values are later updated on per frame basis, assuming strong temporal correlation between input frames.
 
-During import process, some of layers will be coalesced into one TIDL Layer (e.g. convolution and ReLU layer). This is done to further leverage EVE architecture which allows certain operations for free. Structure of converted (but equivalent) network can be checked using TIDL network viewer.
+During import process, some operators or layers will be coalesced into one TIDL Layer (e.g. convolution and ReLU layer). This is done to further leverage EVE architecture which allows certain operations for free. Structure of converted (but equivalent) network can be checked using TIDL network viewer.
 
-We provide a tool (Linux x86 or Arm Linux port) to import the Model and Parameters trained using either caffe frame work or tensor flow frame work in PC. \
-This tool will accept various parameters through import configuration file and generate the Model and Parameter file that the code \
+The import tool (Linux x86 or Arm Linux port) imports the Model and Parameters trained using either Caffe frame work or TensorFlow frame work in PC, \
+or written in ONNX format. This tool will accept various parameters through import configuration file and generate the Model and Parameter file that the code \
 will be executed using TIDL library across multiple EVE and DSP cores. The import configuration file is available in {TIDL_install_path}/test/testvecs/config/import
 
-Sample Usage: tidl_model_import.out ./test/testvecs/config/import/tidl_import_jseg21.txt
+
+There are two pre-built executable binaries for import tool: tidl_model_import.out and eve_test_dl_algo_ref.out. The first one is the main program to run the tool, 
+and the second one is the program to do the calibration and is specified in the configuration file. Both binaries can be referenced by the system path. For Linux x86, 
+linux-devkit/environment-setup needs to be run to setup the path. For AM57xx EVM, they will be in system path after the EVM is setup.  
+
+Sample Usage: 
+
+::
+
+       tidl_model_import.out ./test/testvecs/config/import/tidl_import_jseg21.txt
+
+Configuration Parameters for Import
+""""""""""""""""""""""""""""""""""""
 
 The list of import configuration parameters is as below:
 
@@ -492,39 +510,68 @@ The list of import configuration parameters is as below:
 Parameter            Configuration
 ==================   ======================================================================================================================================================================================
 randParams           can be either 0 or 1. Default value is 0. If it is set to 0, the tool will generate the quantization parameters from model, otherwise it will generate random quantization parameters
-modelType            can be either 0 or 1. Default value is 0. Set this to 0 to read from caffeImport frame work, and set it to 1 to read from tensor flow frame work.
+modelType            can be either 0, 1, or 2. Default value is 0. 0 - caffe frame work, 1 - tensor flow frame work, 2 - ONNX frame work.
 quantizationStyle    can be ‘0’ for fixed quantization by the training framework or ‘1’ for dynamic quantization by. Default value is 1. Currently, only dynamic quantization is supported
 quantRoundAdd        can take any value from 0 to 100. Default value is 50. quantRoundAdd/100 will be added while rounding to integer
 numParamBits         can take values from 4 to 12. Default value is 8. This is the number of bits used to quantize the parameters
-preProcType          can take values from 0 to 3. Default value is 0.
+preProcType          can take values from 0 to 6. Default value is 0. Refer to table below for more information about image preprocssing.
 Conv2dKernelType     can be either 0 or 1 for each layer. Default value is 0 for all the layers. Set it to 0 to use sparse convolution, otherwise, set it to 1 to use dense convolution
 inElementType        can be either 0 or 1. Default value is 1. Set it to 0 for 8-bit unsigned input or to 1 for 8-bit signed input
 inQuantFactor        can take values >0. Default value is -1
-rawSampleInData      can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data.
+rawSampleInData      can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data. Note that encoded input is only supported on ARM but not on x86. 
 numSampleInData      can be > 0. Default value is 1.
 foldBnInConv2D       can be either 0 or 1. Default value is 1.
 inWidth              is Width of the input image, it can be >0.
 inHeight             is Height of the input image, it can be >0
 inNumChannels        is input number of channels. It can be from 1 to 1024
 sampleInData         is Input data File name
-tidlStatsTool        is TIDL reference executable
+tidlStatsTool        is TIDL reference executable for calibration
 inputNetFile         is Input net file name (From Training frame work)
 inputParamsFile      is Input Params file name (From Training frame work)
 outputNetFile        is Output Model net file name, to be updated with stats.
 outputParamsFile     is Output Params file name
 layersGroupId        indicates group of layers that needs to be processed on a given CORE. Refer SSD import config for example usage
+inMean               is a list of mean values for input normalization. inMean = mean*255, where mean are the mean values to normalize input in range [0,1]
+inScale              is a list of scale values for input normalization. inScale = 1/(std*255), where std are the standard deviations to normalize input in range [0,1]
 ==================   ======================================================================================================================================================================================
 
-Example of import config files
-""""""""""""""""""""""""""""""""
-
-Command to convert model (specified in configuration file)
-
-::
-
-     ./tidl_model_import.out  ./import/tidl_import_j11_v2.txt
-
+Image pre-processing depends on configuration parameters rawSampleInData and preProcType as described below:
      
+=================    ================   ===================================================================================================================================================================
+rawSampleInData      preProcType        image pre-processing
+=================    ================   ===================================================================================================================================================================
+0                    0                  1. Resize the original image (WxH) to (256x256) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
+                                        2. Crop the resized image to ROI (128-W/2, 128-H/2, W, H) defined by cv::Rect.
+0                    1                  Resize and crop as preProcType 0, and then subtract pixels by (104, 117, 123) per plane.
+0                    2                  1. Change color space from BGR to RGB for the original image (WxH).
+                                        2. Crop new image to ROI (H/16, W/16, 7H/8, 7W/8) defined by cv::Rect.
+                                        3. Resize the cropped image to (WxH) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
+                                        4. Subtract pixels by (104, 117, 123) per plane. 
+0                    3                  1. Change color space from BGR to RGB for the original image (WxH).
+                                        2. Resize the original image (WxH) to (32x32) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
+                                        3. Crop the resized image to ROI (16-W/2, 16-H/2, W, H) defined by cv::Rect.
+0                    4                  No pre-processing is performed on the original image. 
+0                    5                  1. Change color space from BGR to RGB for the original image (WxH).
+                                        2. Crop new image to ROI (0, 0, H, W) defined by cv::Rect.
+                                        3. Resize the cropped image to (WxH) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
+                                        4. Subtract pixels by (128, 128, 128) per plane. 
+0                    6                  Normalize the original image in the range of [0, 255] (ONNX preprocessing):
+
+                                        - Subtract pixels by (123.68 116.28, 103.53) per plane.
+
+                                        - Divide pixels by (58.395, 57.12, 57.375) per plane.
+
+0                    7-255              Configuration error. No pre-processing to be done.
+0                    256                Take inMean and inScale from config file and do the normalization on RAW image: 
+
+                                        - Subtract pixels by (inMean[0], inMean[1], inMean[2]) per plane.
+
+                                        - Multiply pixels by (inScale[0], inScale[1], inScale[2]) per plane.
+
+0                    >256               Configuration error. No pre-processing to be done.
+1                    N/A                Raw image. No pre-processing to be done, and preProcType is ignored.
+=================    ================   ===================================================================================================================================================================
+
 Sample configuration file (tidl_import_j11_v2.txt)
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -570,7 +617,7 @@ Sample configuration file (tidl_import_j11_v2.txt)
     sampleInData = "import/test.raw"
 
     # Reference implementation executable, used in calibration (processes calibration image file)
-    tidlStatsTool = "import/eve_test_dl_algo_ref.out"
+    tidlStatsTool = "eve_test_dl_algo_ref.out"
  
 
 Import tool traces
