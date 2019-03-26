@@ -292,7 +292,7 @@ Load and run the demo
 
     ::
 
-     [SDK Install Path]/processor_sdk_rtos_[soc]_[version]/demos/gateway-demos/can-eth-gateway/binary/gatewayapp/bin/am65xx_idk/gatewayapp_mcu1_0_release.xer5f
+     [PDK Install Path]/packages/ti/binary/gatewayapp/bin/am65xx_idk/gatewayapp_mcu1_0_release.xer5f
 
 #. The application print will be displayed on the CCS and UART console. The UART console used depends on the core in which the application is run.
 #. Confirm the network connectivity of PC with board.
