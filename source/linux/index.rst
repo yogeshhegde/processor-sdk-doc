@@ -37,6 +37,13 @@ Processor SDK Linux Software Developer's Guide
    Examples_and_Demos
    How_to_Guides
 
+
+.. raw:: html
+
+    <a href="processor-sdk-linux-docs.tar.gz">Download the Documentation Tarball</a>
+
+|
+
 .. rubric:: Feedback
    :name: feedback
 

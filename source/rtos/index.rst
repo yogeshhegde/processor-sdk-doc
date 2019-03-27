@@ -17,6 +17,12 @@
    How_to_Guides
    FAQ
 
+.. raw:: html
+
+    <a href="processor-sdk-rtos-docs.tar.gz">Download the Documentation Tarball</a>
+
+|
+
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: ../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
 +--------------------------------+--------------------------------------------------------------------------------------------------+

@@ -28,6 +28,7 @@ fi
 
 ARTIFACTS="$(dirname $(readlink -m $0))/artifacts"
 OUTPUT="${ARTIFACTS}/output"
+TEMP="${ARTIFACTS}/temp"
 OS="${1:-all}"
 LOGS="${ARTIFACTS}/logs"
 
@@ -40,7 +41,8 @@ BUILD_NOTES="${ARTIFACTS}/build-notes.txt"
 UBUNTU_PACKAGES="python-sphinx"
 
 
-mkdir -pv "${ARTIFACTS}" "${OUTPUT}" "${LOGS}"
+rm -rf "${TEMP}"
+mkdir -pv "${ARTIFACTS}" "${OUTPUT}" "${LOGS}" "${TEMP}"
 
 # Set up host
 sudo apt-get -y install ${UBUNTU_PACKAGES}
@@ -91,6 +93,14 @@ build_doc()
 
     # copy repo-revs.txt to output directory
     cp $REPO_REV $BUILDDIR
+
+    rm -rf ${BUILDDIR}/${OS}/processor-sdk-${OS}-docs.tar.gz
+    cp -r ${BUILDDIR} ${TEMP}/processor-sdk-${OS}-docs-${VERSION}
+    CURRDIR=$PWD
+    cd ${TEMP}
+    tar -czvf processor-sdk-${OS}-docs.tar.gz processor-sdk-${OS}-docs-${VERSION}
+    cp processor-sdk-${OS}-docs.tar.gz ${BUILDDIR}/${OS}
+    cd ${CURRDIR}
 }
 
 if [[ ${OS} == all ]]; then
