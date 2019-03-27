@@ -799,6 +799,16 @@ then the `Program EVM Script <How_to_Guides.html#flash-bootable-images-c66x-k2h-
 enables users to program the flash on the EVM using the pre-built
 firmware images provided by TI/board manufacturer.
 
+.. rubric:: Why my SD card stopped booting with the latest Processor SDK bootloader ?
+   :name: why-my-sd-card-stopped-booting-with-the-latest-processor-sdk-bootloader
+
+The FATFS library of processor SDK expects the SD card FAT partition entry should be
+in a specific format. The SD card may be having a different partition entry than the
+FATFS library that expects to process the media. The user has to reformat the SD card.
+The documentation for formatting the SD card through windows or linux is provided from
+the wiki article **SDK Create SD Card Script** for `Windows <index_overview.html#windows-sd-card-creation-guide>`__
+and `Linux <index_overview.html#tools-create-sd-card-linux-label>`__.
+
 | 
 
 Diagnostics

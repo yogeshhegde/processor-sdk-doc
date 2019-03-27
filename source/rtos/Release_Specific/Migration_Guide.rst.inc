@@ -62,5 +62,21 @@ when needed (especially during the cases where the return was the value instead 
 Applications that use these CSL-FL calls are impacted and are needed to align to new calling conventions.
 If applicable application modification required to align to updated APIs, refer doxygen API documentation for API details.
 
+.. rubric::  DSP- TI CGT Compiler
+   :name: DSP- TI CGT Compiler
+
+**Migration:** In DSP TI CGT compiler version 8.3.2 the rts library boot object file name is changed 
+from boot.obj to boot.c.obj.
+
+**Impact Scope:** Limited only to DSP applications that explicitly uses rts library object files in linker
+command file.
+
+**Additional Details**: The DSP application which is using linker command file of CSL module should change
+boot object name from boot.obj file to boot.c.obj. If the user is using cpp version of boot object file
+then it should be mentioned as boot.cpp.obj. In general it can be also be used as boot.*.obj
+
+This can be referred from the following linker command file in the PDK package
+<PDK>/packages/ti/csl/example/lnk_dsp.cmd
+
 .. raw:: html
 
