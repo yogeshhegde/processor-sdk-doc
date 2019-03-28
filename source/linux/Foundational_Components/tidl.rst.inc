@@ -228,6 +228,7 @@ Layers in current release of TIDL Lib have certain parameter related constraints
 - Spatial Pooling Layer
    - Average and Max Pooling are supported with stride 1, 2, 4 and kernel sizes of 2x2,3x3,4x4 etc. STOCHASTIC Pooling not supported
    - Global Pooling supported for both Average and Max. The output data N=1 and H =1. The output W will be Updated with input ‘N’
+   - Global Pooling can operate on feature maps up to 64x64 size. 
 
 - BiasLayer
    - Only one scalar bias per channel is supported.
@@ -262,6 +263,47 @@ Layers in current release of TIDL Lib have certain parameter related constraints
    - Only Slim based models are validated. Please refer InceptionNetV1 and mobilenet_1.0 from below as examples for building your models.
    - TF-Slim: https://github.com/tensorflow/models/tree/master/research/slim
 
+Matching TIDL inference result
+------------------------------
+The TIDL import step runs the inference on PC and the result generates expected output (With caffe or tensorflow inference). If you observe difference at this stage please follow below steps to debug.  
+   
+   - Caffe inference input and TIDL inference input shall match. Import step dumps input of the first layer at “trace_dump_0_*”, make sure that this is same for caffe as well. 
+   - If the input is matching, then dump layer level features from caffe and match with TIDL import traces. 
+   - TDIL trace is in fixed point and can be converted to floating point (using OutQ printed in the import log). Due to quantization the results will not exactly match, but will be similar. 
+   - Check the parameters of the layer where the mismatch is observed. 
+   - Share the input and Parameter with TI for further debug. 
+ 
+We use the statistics collected from the previous process for quantizing the activation dynamically in the current processes. 
+So, results we observe during the process on target will NOT be same (but similar) for same input images compared to import steps. 
+The logic was validated with semantic segmentation application on input video sequence 
+
+Parameters controling dynamic quantization 
+------------------------------------------
+
+TIDL Inference process is not completely stateless. Information (activation min, max values) from previously executed inferences are used for quantization process.
+
+- quantMargin is margin added to the average in percentage. 
+- quantHistoryParam1 weights used for previously processed inference during application boot time 
+- quantHistoryParam2 weights used for previously processed inference during application execution (After initial few frames) 
+
+These parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
+
+To get the same result in TIDL target same as import step for an image. Please set below configuration parameters. 
+
+:: 
+  
+  quantHistoryParam1 = 0; 
+  quantHistoryParam2 = 0; 
+  quantMargin = 0; 
+  
+
+Set with below parameters for running on video sequence: 
+
+::
+
+  quantHistoryParam1 = 20; 
+  quantHistoryParam2 = 10; 
+  quantMargin = 20
 
 Important TIDL API framework features
 -------------------------------------
@@ -303,19 +345,24 @@ Classification with class filtering  tidl-matrix-gui-demo_
 
 .. _tidl-matrix-gui-demo:
 
-Matrix GUI demo
----------------
+Matrix GUI demos
+----------------
 
 Upon boot, Matrix-GUI is started with multiple button that can start many demos. In current release, PLSDK 5.0, there is sub-menu "TI Deep Learning"
-with three buttons:
+with multiple demo selection buttons. Scripts invoked via Matrix-GUI can be found in /usr/bin target folder, all named as runTidl*.sh:
 
-* ImageNet classification using Jacinto11 model with pre-recorded real-world video clip.
-* ImageNet classification using Jacinto11 model with pre-recorded video clip, synthetically created from several static video images (using ImageMagick convert tool)
-* ImageNet classification using Jacinto11 model with live camera input.
+* ImageNet dataset trained classification model, based on Jacinto11 topology; input from pre-recorded real-world video clip - runTidlStaticImg.sh, runTidlStaticImg_dsponly.sh, runTidlStaticImg_lg2.sh
+* ImageNet dataset trained classification model, based on Jacinto11 topology; input from pre-recorded video clip (synthetically created from several morphing static video images - using ImageMagick convert tool) - runTidlPnExamples.sh
+* ImageNet dataset trained classification model, based on Jacinto11 topology; input from live camera input - runTidlLiveCam.sh, runTidlLiveCam_lg2.sh
+* Custom dataset trained classification model (toy dogs), based on Jacinto11 topology; input from pre-recorded video clip - runTidlDogBreeds.sh
+* Pascal VOC dataset trained object detection model, based on JDetNet topology; input from pre-recorded video clip - runTidlObjDet.sh
+* Pascal VOC dataset trained object detection model, based on JDetNet topology; input live from camera input - runTidlObjDet_livecam.sh
+* Cityscape dataset trained image segmentation model (subset of Cityscape classes0, based on JSeg21 topology; input from pre-recorded video clip - runTidlSegment.sh
 
 Imagenet classification using Jacinto11 model `<https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained/image_classification/imagenet_jacintonet11v2/sparse>`_, with video input coming from pre-recorded clip. It is decoded in real-time via GStreamer pipeline (involving 
-IVAHD), and sent to OpenCV processing pipeline. Live camera input (default 640x480 resolution), or decoded video clip (320x320 resolution), are scaled down and central-cropped in run-time (using OpenCV API) to 224x224 before sending to TIDL API. Result of this
-processing is standard Imagenet classification output (1D vector with 1000 elements). Further there is provision to define subset of objects expected to be present in video clip or live camera input, so classification results. This allows additional decision filtering (by using list of classes provided as command line argument). Blue bounding rectangle (in main image window) is presented only when valid detection is reported. 
+IVAHD), and sent to OpenCV processing pipeline. Live camera input (default 640x480 resolution), or decoded video clip (320x320 resolution), are scaled down and central-cropped in run-time (using OpenCV API) to 224x224 before sending to TIDL API. 
+
+Result of this processing is standard Imagenet classification output (1D vector with 1000 elements). Further, there is provision to define subset of objects expected to be present in video clip or live camera input. This allows additional decision filtering by using list of permitted classes (list is provided as command line argument). Blue bounding rectangle (in main image window) is presented only when valid detection is reported. 
 Class string of last successful is preserved until next detection (so if no object is detected, blue rectangle will disappear, but last class string remains).
 
 Executable invoked from Matrix-GUI is in: /usr/share/ti/tidl/examples/tidl_classification.
@@ -399,8 +446,8 @@ If video clip is captured or prepared externally (e.g. with the smartphone), obj
 Then, it should be copied to /usr/share/ti/tidl/examples/classification/clips/ (or just overwrite test1.mp4 in that same folder).
 
 
-Description of Matrix-GUI example
-"""""""""""""""""""""""""""""""""""""
+Description of Matrix-GUI classification example
+""""""""""""""""""""""""""""""""""""""""""""""""
 
 Example is based on "imagenet" and "test" examples, with few additions related to decision filtering and visualization. There are two source files only:
 
@@ -417,6 +464,55 @@ Example is based on "imagenet" and "test" examples, with few additions related t
 * findclasses.cpp
     * Function populate_labels(), which reads all the model labels (E.g. 1000 strings for 1000-class imagenet classification model)
     * Function populate_selected_items(), which reads and verifies label names (using previous list of valid values), to be used in decision filtering.
+
+Description of Matrix-GUI object detection example
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This example is also described in ssd_multibox chapter in TIDL-API docummentation: http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#ssd
+Parameeter '-p' defines threshold percentage (0-100 range) for reporting object detections.
+Lower value is increasing number of false detections, whereas too high value would omit some objects.
+Participating cores are defined in similar way like in prevous example.
+
+::
+
+  ./ssd_multibox -p 40 -d 1 -e 2 -f 1000 -i ./clips/pexels_videos_3623.mp4
+
+Or object detection example using live camera input:
+
+::
+
+   ./ssd_multibox -p 40 -d 1 -e 2 -f 1000 -i camera1
+
+
+Recognized classes are (as defined in http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html):
+
+  - Person: person
+  - Animal: bird, cat, cow, dog, horse, sheep
+  - Vehicle: aeroplane, bicycle, boat, bus, car, motorbike, train
+  - Indoor: bottle, chair, dining table, potted plant, sofa, tv/monitor
+
+.. figure:: ../images/tidl-objdet.jpg
+    :width: 800px
+    :align: center
+    :height: 300px
+
+
+This list can be also found in (target file system): /usr/share/ti/tidl/examples/ssd_multibox/jdetnet_voc_objects.json
+
+Description of Matrix-GUI image segmentation example
+""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+This example shows pixel level image segmentation, also described in TIDL-API docummentation:  http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#segmentation
+
+::
+
+   ./segmentation -i ./clips/traffic_pixabay_298.mp4 -f 2000 -w 720
+
+
+.. figure:: ../images/tidl-segment.jpg
+    :width: 800px
+    :align: center
+    :height: 300px
 
 
 Developer's guide
@@ -1031,6 +1127,8 @@ Example of training procedure
       point is model created after "Initial" phase. We will need to repeat initial phase, but now using new data set, and using same layer names for those 
       layers that we want to pre-load with earlier model. Further, training can be tuned by reducing base_lr (in train.prototxt), and increasing lr for top one or 
       few layers. In this way bottom layers will be changed superficially, but top layers will adapt as necessary.
+      Matrix-GUI toy dog breeds classification example is created in this way. Imagenet trained Jacinto11 model is fine-tuned using custom data set of toy dogs.
+      Recrodings of toy dogs standing on turn table, were captured using AM5749 camera. They were later split into individual images and augmented for offline training.
 
 Where does the benefit of sparsification come from?
 ---------------------------------------------------
@@ -1063,9 +1161,9 @@ Computation performance of verified networks
 ==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
 Network topology     ROI size    MMAC (million MAC)     Sparsity (%)   EVE using sparse model   EVE using dense model  DSP using sparse model  DSP using dense model  EVE + DSP (optimal model)
 ==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
-MobileNet            224x224     567.70                 1.42           -                        559.18ms               -                       717.11ms               -
-SqueezeNet           227x227     390.8                  1.46           -                        237.60ms               -                       1008.92ms              -
-InceptionNetV1       224x224     1497.37                2.48           -                        643.78ms               -                       2235.99ms              -
+MobileNetV1          224x224     567.70                 1.42           -                        559.18ms               -                       717.11ms               -
+SqueezeNet           227x227     390.8                  1.46           -                        237.60ms               -                       433.73ms               -
+InceptionNetV1       224x224     1497.37                2.48           -                        643.78ms               -                       1454.91ms              -
 JacintoNet11_v2      224x224     405.81                 73.15          103.23ms                 203.23ms               115.91ms                370.64ms               61.22
 JSegNet21            1024x512    8506.5                 76.47          309.65ms                 1236.84ms              1101.12ms               3825.95ms              -
 JDetNet              768x320     2191.44                61.84          -                        -                      -                       -                      165.83ms
