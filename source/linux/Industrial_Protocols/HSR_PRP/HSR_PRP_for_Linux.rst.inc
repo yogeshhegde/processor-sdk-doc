@@ -35,7 +35,6 @@ Features supported
    -  Total 128 entries on AMICx, AM335x, AM437x
    -  Total 256 entries on AM57xx & K2G
    -  Hash Table for faster lookup
-   -  O(1) complexity
    -  Node Table statistics
 
 -  **Support for Multicast Filtering**
@@ -85,8 +84,10 @@ Features supported
    -  Ordinary Clock (GMAC/PRU port)
    -  Boundary Clock supported
    -  Two step clock supported
+.. note:: SAN PTP via PRP firmware in EMAC mode to be removed as SAN PTP supported by DualEMAC firmware
 
 - **Redundant PTP/1588**
+   -  Ordinary Clock
    -  Transparent clock as per IEC62439-3 Annex C
 
 Software Architecture
