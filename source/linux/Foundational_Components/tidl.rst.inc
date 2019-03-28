@@ -130,6 +130,75 @@ The following layer types/Inference features are supported:
 #. Split Layer
 #. Detection Output Layer
 
+During import process (described later), some operators or layers in a network model will be coalesced 
+into one TIDL Layer listed above. The supported operators/layers for Tensorflow/ONNX/Caffe are listed below.
+
+Supported TensorFlow operators:
+
+  - Placeholder
+  - Conv2D
+  - DepthwiseConv2dNative
+  - BiasAdd
+  - Add
+  - Mul
+  - FusedBatchNorm
+  - Relu
+  - Relu6
+  - MaxPool
+  - AvgPool
+  - ConcatV2
+  - Slice
+  - Squeeze
+  - Reshape
+  - Softmax
+  - Pad
+  - Mean
+  - Shape
+
+Supported ONNX operators:
+
+  - Conv
+  - MaxPool
+  - Relu
+  - Concat
+  - AveragePool
+  - GlobalAveragePool
+  - Reshape
+  - Transpose
+  - Add
+  - Sum
+  - ArgMax
+  - BatchNormalization
+  - Gemm
+  - Softmax
+  - Dropout
+
+Supported Caffe layers:
+
+  - Concat
+  - Convolution
+  - Pooling
+  - ReLU
+  - PReLU
+  - Dropout
+  - Softmax
+  - Deconvolution
+  - Argmax
+  - Bias
+  - Eltwise
+  - BatchNorm
+  - Scale
+  - InnerProduct
+  - Split
+  - Slice
+  - Crop
+  - Flatten
+  - Permute
+  - PriorBox
+  - Reshape
+  - DetectionOutput
+
+
 Constraints on layer parameters
 -------------------------------
 Layers in current release of TIDL Lib have certain parameter related constraints:
