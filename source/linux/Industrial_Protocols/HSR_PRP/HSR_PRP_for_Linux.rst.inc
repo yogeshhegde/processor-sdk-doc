@@ -76,20 +76,6 @@ Features supported
 
 -  **Run time change of Protocol at PRU-ICSS without reboot**
 
-- **SAN PTP/1588**
-   -  Supported using PRP firmware in EMAC mode
-   -  PTP Slave and Master mode
-   -  Supports P2P clock.
-   -  PTP over 802.3 (Annex F)
-   -  Ordinary Clock (GMAC/PRU port)
-   -  Boundary Clock supported
-   -  Two step clock supported
-.. note:: SAN PTP via PRP firmware in EMAC mode to be removed as SAN PTP supported by DualEMAC firmware
-
-- **Redundant PTP/1588**
-   -  Ordinary Clock
-   -  Transparent clock as per IEC62439-3 Annex C
-
 Software Architecture
 ----------------------
 
