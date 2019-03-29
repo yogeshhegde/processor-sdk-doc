@@ -7,95 +7,46 @@ Migration Guide
 .. rubric::  Overview
    :name: overview
 
-This page covers migration information for applications built on top of
-the last Processor SDK for RTOS release.
-| 
+This page covers migration information from last Processor SDK RTOS release.
 
-.. rubric::  Processor SDK RTOS 05.02.00
-   :name: processor-sdk-rtos-05.02.00
+.. rubric::  Processor SDK RTOS 05.03.00
+   :name: processor-sdk-rtos-05.03.00
 
+.. rubric::  EMAC
+   :name: EMAC
 
-.. rubric::  SBL
-   :name: SBL
+**Migration:** ICSS-G EMAC firmware binary directory location update for future extension
 
-**Migration:** Image integration and memory map changes
-
-**Additional Details**: Release supports optimized boot times for booting MCU1_0 core
-from OSPI flash. To reduce the size of the SBL,  the system firmware image, which was
-earlier embedded in the SBL, is now a separate binary. The system firmware image can
-be found at <PDK>/packages/ti/drv/sciclient/soc/V0/sysfw.bin
-
-For MMC/SD boot, if the steps followed in `Creating bootable SD card in windows 
-<http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Creating_a_SD_Card_with_Windows>`__ 
-or `Creating bootable SD card in Linux <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_create_SD_card_script>`__
-are used, no additional steps are need. If the SD card is being created manually, then the
-"sysfw.bin" file also needs to be copied into the root directory of the MMC SD card, along with
-"tiboot3.bin" and "app"
-
-For OSPI boot, the flash offsets have changed. "sysfw.bin" needs to be programmed into OSPI flash at 
-offset 0x40000 (new for this release), along with "sbl_ospi_img_mcu1_0_release.tiimage" at offset 0x0 
-(no change from previous release) and the "app" at offset **0xA0000** (was 0x80000 previous release). 
-For details please refer `Programming the OSPI flash <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Board_EVM_Abstration.html#uniflash>`__
-
-Applications that the SBL loads must co-exist with the SBL's memory usage.In the application's linker command file, 
-care must be taken to not use the first 0x100 bytes of  MCU1_0's ATCM memory and SBL reserved memory from 0x41C00100 
-to 0x41C28000. If the applications violate the SBL memory usage, then apps that were working with the last release 
-might not work any more, as the memory constraints are tighter. For details, refer the `SBL Memory Utilization
-<http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Foundational_Components.html#am655x-sbl-memory-usage>`__
-
-
-.. rubric::  PDK
-   :name: PDK
-   
-**Migration:** AM65xx PDK component dependency on sciclient module.
-
-**Impact Scope:** Applications will need to link to sciclient module library. 
-No migration impact if application is already linking the library.
-
-**Additional Details**: 
-All application using PDK components on AM65xx platform will need to link sciclient library 
-as components internally will be using sciclient API for PLL and interrupt configuration. 
-In this release, requirement for application will be more mandated as more components
-are using common infrastructure.
-
-DMSC firmware should be loaded onto Cortex-M4 core using SBL or 
-`CCS GEL script <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`_
-before calling the Board Init API with 'BOARD_INIT_PLL' flag.
-
-
-.. rubric::  Board
-   :name: Board
-
-**Migration:** New APIs for EEPROM Board ID Information
-
-**Impact Scope:** Applications using Board ID info APIs on AM65xx platform. 
-No migration impact for existing applications and boards using version 1 API.
-
-**Additional Details**: 
-TI Board ID information format has been updated to new version on AM65xx.
-New board library APIs 'Board_getIDInfo_v2' and 'Board_writeIDInfo_v2' are added
-to support new Board ID information format. Old Board ID info APIs are still avaialble
-to retain the backward build compatibility but returns error when used on AM65xx platform.
-
-
-  
-.. rubric::  FATFS
-   :name: FATFS
-
-**Migration:** FATFS module in this release includes multipartition support and capability of 
-detecting single vs multiple partitions run time.
-
-**Impact Scope:** Limited to the case if user had used MS-DOS Floppy disk format for formatting the SD/eMMC memory. No impact if the SD/eMMC is formatted using the steps provided by `Windows SD Card Creation Guide <index_overview.html#windows-sd-card-creation-guide>`_/
-`Linux SD Card Creation Guide <index_overview.html#tools-create-sd-card-linux-label>`_
+**Impact Scope:** Applicable for all applications using EMAC driver with ICSS-G dual EMAC firmware 
 
 **Additional Details**:
-Partition entry information may be wrongly detected for the storage media formated to 
-MS-DOS Floppy disk format. FATFS APIs fail to access the disk in this case.
+Applications will need to update the include path to location of firmware header files for ICSSG use case
+    prevous location: ti/drv/emac/firmeare/icss_eth/src/dm
+    new location:     ti/drv/emac/firmware/icss_dualmac/bin
 
-**Workaround**:
-Format the storage media using the steps provided by `Windows SD Card Creation Guide <index_overview.html#windows-sd-card-creation-guide>`_/
-`Linux SD Card Creation Guide <index_overview.html#tools-create-sd-card-linux-label>`_
-in case this issue is observed.
+
+**Migration:** Release introduces support for additional firmware specific configuration files. Added for future extension to support multiple firmwares using same EMAC driver 
+
+**Impact Scope:** Applicable for all applications using EMAC driver with ICSS-G dual EMAC firmware 
+
+**Additional Details**:
+Firmware configuration has been moved to firmware specific configuration files, emac_fw_config_dual_mac.h and emac_fw_config_dual_mac.c.
+Previously the firmware configuration was specified in the test application 
+It is not expected that applicatons will need to modify these files as the are closely tied to the firmware. 
+   previous location: firmware specific configuration was specified in the text application (ti/drv/emac/test/EmacLoopbackTest/test_utils_k3.c)
+   
+   new location:      'ti/drv/emac/firmware/icss_dualmac/config/'
+
+Applications will need to update their makefiles to include c source file emac_fw_config_dual_mac.c 
+At time of emac_open API call, applications need to udpate configuruation parameters to pass get firmware configuration pointer :
+    
+    EMAC_HwAttrs_V5 emac_cfg;
+
+    EMAC_socGetInitCfg(0, &emac_cfg);
+    
+    emac_cfg.portCfg[port_num].getFwCfg = &emacGetDualMacFwConfig;
+    
+    EMAC_socSetInitCfg(0, &emac_cfg);
 
 .. raw:: html
 
