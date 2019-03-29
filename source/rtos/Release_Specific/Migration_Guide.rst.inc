@@ -48,5 +48,19 @@ At time of emac_open API call, applications need to udpate configuruation parame
     
     EMAC_socSetInitCfg(0, &emac_cfg);
 
+.. rubric::  CSL
+   :name: CSL
+
+**Migration:** API changes on CSL-FL of AM65xx on ecc aggregator, vim, esm modules
+
+**Impact Scope**: Limited to the case if application is using the CSL-FL APIs
+
+**Additional Details**: The CSL-FL for ECC aggregator, ESM and VIM are modified to
+return API functionality success/failures and additional arguments are added as and
+when needed (especially during the cases where the return was the value instead of API success/failure).
+
+Applications that use these CSL-FL calls are impacted and are needed to align to new calling conventions.
+If applicable application modification required to align to updated APIs, refer doxygen API documentation for API details.
+
 .. raw:: html
 
