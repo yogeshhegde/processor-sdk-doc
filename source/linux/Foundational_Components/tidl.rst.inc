@@ -935,6 +935,26 @@ Set with below parameters for running on video sequence:
   quantMargin = 20
 
 
+Importing Tensorflow Models
+---------------------------
+
+TIDL supports slim based tensorflow models and only accepts optimized frozen graphs.
+Following models have been validated:
+
+- MobileNet v1:
+   - Obtain frozen graph from `here <http://download.tensorflow.org/models/mobilenet_v1_2018_08_02/mobilenet_v1_1.0_224.tgz>`_
+   - Optimze the graph using TensorFlow tool:
+
+::
+
+   python "tensorflow\python\tools\optimize_for_inference.py"  --input=mobilenet_v1_1.0_224_frozen.pb  --output=mobilenet_v1_1.0_224_final.pb --input_names=input  --output_names="MobilenetV1/Predictions/Softmax"
+
+- InceptionNet v1 (googleNet):
+   - Refer to `export_inference_graph <https://github.com/tensorflow/models/blob/f505cecde2d8ebf6fe15f40fb8bc350b2b1ed5dc/research/slim/export_inference_graph.py>`_ for generating frozen graph from checkpoint.
+   - Generate frozen graph from `this checkpoint link <http://download.tensorflow.org/models/inception_v1_2016_08_28.tar.gz>`_
+   - Optimze the graph using TensorFlow tool similarly to MobileNet v1.
+
+
 Viewer tool
 -----------  
 Viewer tool does visualization of **imported** network model. More details available at http://downloads.ti.com/mctools/esd/docs/tidl-api/viewer.html
