@@ -1803,7 +1803,24 @@ Copy the below images to an SD card and boot:
 Supported Boot Modes
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The boot media supported for AM65x devices include OSPI, eMMC, and UART.
+The boot media supported for AM65x devices include SD card, OSPI, eMMC, and UART.
+
+.. rubric:: SD card
+
+ROM supports booting from a FAT partitioned SD card.
+
+**Bootmode Switch Settings**
+
+After partitioning the SD card and writing images, change the bootmode switches
+to the following:
+
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| Switch No. | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| SW3        | OFF | ON  | ON  | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+| SW2        | OFF | OFF | ON  | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
++------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 
 .. rubric:: OSPI
 
