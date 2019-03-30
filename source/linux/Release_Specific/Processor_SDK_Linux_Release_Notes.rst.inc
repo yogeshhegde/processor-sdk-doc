@@ -51,31 +51,14 @@ Released April 2019
 .. rubric:: What's New
    :name: whats-new
 
-- AM654x
-    - DDR @ 1666 MT/s
-    - IPC: Support IPC between A53 running Linux with R5F running in split mode
-    - Driver and API to access AM654x internal temp sensors
-    - Add ARMNN and ARM Compute Library
-    - Early Access: DisplayPort driver for TC358867 DPI-DP bridge
-    - IPSec sideband support 
-    - Kernel: OSPI Performance Improvement w/ DMA mode
-    - MCAN Support
-    - Rotary Encoder support
-    - Support SPI Flash as mtd device
-    - PCIe Gen3 RC and EP mode support
-- `Support Docker containerization <Foundational_Components_Virtualization.html#docker-linux-container-runtime>`__
-- `Integrate OPCUA open source stack (Open65241) <Industrial_Protocols_OPCUA.html>`__
-- Add Tiny Filesystem to PLSDK to support on board flashing of eMMC and QSPI from an initramfs
 - HSR/PRP/EMAC/PTP
-    - `EMAC: Multicast, VLAN and Storm prevention feature <Industrial_Protocols_HSR_PRP.html#linux-software>`__
-    - `EMAC: PTP Support for SAN mode <Industrial_Protocols_PTP.html>`__
-    - HSR: Add support of PTP 1-step to 2-step conversion on ingress
-    - HSR: PTP OC Master or Slave (with redundancy)
-    - PRP: PTP OC Master or Slave (with redundancy)
+    - Linux Boundary Clock should also synchronize the Linux system clock
+    - Support Rx interrupt pacing in Linux PRUETH driver with Dual EMAC firmware 
 - Deep Learning
-   - `Port ARM NN inference engine to AM65x <Foundational_Components_ArmNN.html>`__
-   - `Add Arm NN MobileNet demo <Foundational_Components_ArmNN.html#arm-nn-mobilenet-demo>`__
-   - Publish TIDL import tool source files
+    - Upgrade ARMNN to latest available version
+    - Add Object Detection and Image Segmentation TIDL demos to Matrix GUI
+    - Add support in TIDL to import TF model created with recent releases of Tensorflow (>1.7)
+    - Optimize Concat Layer on C66x for SqueezeNet and InceptionNet
 - mmWave Gesture Demo for AM3/AM4/AM5/AM6 `TI design TIDEP-01013 (TBA) <http://www.ti.com/tool/TIDEP-01013>`__
 
 .. rubric:: SDK Components & Versions
@@ -94,7 +77,7 @@ Released April 2019
 +--------------------------+----------------------------+
 | Qt                       | 5.9.7                      |
 +--------------------------+----------------------------+
-| OpenCL                   | 1.1.17                     |
+| OpenCL                   | 1.1.18                     |
 +--------------------------+----------------------------+
 | OpenCV                   | 3.1                        |
 +--------------------------+----------------------------+
