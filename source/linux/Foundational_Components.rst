@@ -21,3 +21,5 @@ Foundational Components
    Foundational_Components_Virtualization
    Foundational_Components_TIDL
    Foundational_Components_ArmNN
+   Foundational_Components_ATF
+   Foundational_Components_OPTEE
