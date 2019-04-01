@@ -18,9 +18,9 @@ Communication (IPC) User's Guide*
 (`SPRUGO6 <http://www.ti.com/lit/pdf/sprugo6>`__). That PDF-based
 document will no longer be updated.
         
-.. |ipcCfg_Img| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img| Image:: ../images/Book_cfg.png
 
-.. |ipcRun_Img| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img| Image:: ../images/Book_run.png
 
 This user's guide contains the topics in the following list. It also
 links to API reference documentation for static configuration (|ipcCfg_Img|)
@@ -35,79 +35,79 @@ and run-time C processing (|ipcRun_Img|) for each module.
    Package <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.ipc_Package>`__
    describes the modules in the ti.sdo.ipc package.
 
-.. |ipcWiki_Img1| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img1| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Ipc_Module
 
-.. |ipcCfg_Img1| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img1| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img1| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_ipc_8h.html
 
 
-.. |ipcWiki_Img2| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img2| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/MessageQ_Module
 
-.. |ipcCfg_Img2| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img2| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img2| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img2| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_message_q_8h.html
 
 
-.. |ipcWiki_Img3| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img3| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_User%27s_Guide/ListMP_Module
 
-.. |ipcCfg_Img3| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img3| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img3| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img3| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_list_m_p_8h.html
 
 
-.. |ipcWiki_Img4| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img4| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/HeapMP_Modules
 
-.. |ipcCfg_Img4| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img4| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img4a| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img4a| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_heap_buf_m_p_8h.html
 
-.. |ipcRun_Img4b| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img4b| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_heap_mem_m_p_8h.html
 
-.. |ipcRun_Img4c| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img4c| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_heap_multi_buf_m_p_8h.html
 
 
-.. |ipcWiki_Img5| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img5| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/GateMP_Module
 
-.. |ipcCfg_Img5| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img5| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img5| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img5| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_gate_m_p_8h.html
 
 
-.. |ipcWiki_Img6| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img6| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Notify_Module
 
-.. |ipcCfg_Img6| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img6| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img6| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img6| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_notify_8h.html
 
 
-.. |ipcWiki_Img7| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img7| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/SharedRegion_Module
 
-.. |ipcCfg_Img7| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img7| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img7| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img7| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_shared_region_8h.html
 |
 
@@ -139,31 +139,31 @@ and run-time C processing (|ipcRun_Img|) for each module.
    Package <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.utils_Package>`__
    describes the modules in the ti.sdo.utils package.
 
-.. |ipcWiki_Img8| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img8| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/List_Module
 
-.. |ipcCfg_Img8| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img8| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img8| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img8| Image:: ../images/Book_run.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/latest/docs/html/_list_8h.html
 
-.. |ipcWiki_Img9| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img9| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/MultiProc_Module
 
-.. |ipcCfg_Img9| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img9| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img9| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img9| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html 
 
-.. |ipcWiki_Img10| Image:: ../images/Book_wiki_small.png
+.. |ipcWiki_Img10| Image:: ../images/Book_wiki.png
                  :target: http://processors.wiki.ti.com/index.php/IPC_Users_Guide/NameServer_Module
 
-.. |ipcCfg_Img10| Image:: ../images/Book_cfg_small.png
+.. |ipcCfg_Img10| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img10| Image:: ../images/Book_run_small.png
+.. |ipcRun_Img10| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_shared_region_8h.html
 
 |
@@ -180,26 +180,26 @@ and run-time C processing (|ipcRun_Img|) for each module.
    +-------------------------+----------------+---------------+---------------+
 |
 
--  `Porting IPC </index.php/IPC_Users_Guide/Porting_IPC>`__ provides
+-  `Porting IPC <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Porting_IPC>`__ provides
    an overview of the steps required to port IPC to new devices or
    systems.
 -  `Optimizing IPC
-   Applications </index.php/IPC_Users_Guide/Optimizing_IPC_Applications>`__
+   Applications <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Optimizing_IPC_Applications>`__
    provides hints for improving the runtime performance and shared
    memory usage of applications that use IPC.
--  `Rebuilding IPC </index.php/IPC_Users_Guide/Rebuilding_IPC>`__
+-  `Rebuilding IPC <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Rebuilding_IPC>`__
    explains how to rebuild the IPC libraries if you modify the source
    files.
 -  `Using IPC on Concerto
-   Devices </index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices>`__
+   Devices <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices>`__
    explains how to use IPC if you are designing applications for
    Concerto F28M35x devices.
--  `Examples </index.php/IPC_Users_Guide/Examples>`__ explains how
+-  `Examples <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Examples>`__ explains how
    to build and generate the IPC examples.
--  `Tests </index.php/IPC_Users_Guide/Tests>`__ explains details of
+-  `Tests <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Tests>`__ explains details of
    unit tests part of IPC
 -  `RTOS IPC
-   Transports </index.php/Processor_SDK_RTOS_IPC_Transports>`__
+   Transports <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_IPC_Transports>`__
    explains details of the additional RTOS IPC transports provided via
    the Processor SDK PDK component.
 
