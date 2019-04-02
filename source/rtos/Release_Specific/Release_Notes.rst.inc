@@ -52,9 +52,9 @@ Processor SDK v05.03.00
 ========================
 
 .. warning::
-   Big-endian platform support shall be deprecated in Processor SDK RTOS from the Release 6.0 (2Q-2019)
+   Big-endian support for C66x and C674x platforms shall be deprecated in Processor SDK RTOS from the Release 6.0 (2Q-2019)
 
-Released March 2018
+Released March 2019
 
 .. rubric::  What's New
    :name: whats-new
@@ -64,11 +64,21 @@ Released March 2018
 
 - AM65x
 	- Additional Features
-		-  UART Load support for `Uniflash <index_board.html#uniflash>`_ flash programmer
+        - EA support for AM65x HS SOC
+        - SBL Example app with XIP support
+        - Additional SPI driver support for XIP mode
+   		- `Uniflash <index_board.html#uniflash>`_ image load support over UART
+        - PCIe driver update for Multiple interfaces, DMA and Interrupt Support
+        - CAN to Ethernet Gateway Demo
 	- Features not (yet) supported: USB 3.0, MPU TI-RTOS SMP Support,CTOOLSLIB
--  PRU-ICSS Soft UART support
--  OMAPL13x SOC
-    - DMA mode support for `SPI <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_device_drv.html#mcspi-qspi-ospi>`_ driver
+- OMAPL13x
+    - DMA mode support for `SPI <index_device_drv.html#mcspi-qspi-ospi>`_ driver
+- AM437x
+    - IOLink driver and sample application support
+- AM574x 
+    - Support for C66x 1Ghz
+- AM335x
+    - PRU-ICSS Soft UART support
 - Rx interrupt pacing support in EMAC firmware
 
 .. rubric::  Component Version
@@ -156,7 +166,7 @@ environment (IDE) for all devices and EVMs:
 |           |Device    |      |      |      |      |       |     |     |     |     |     |         |         |
 |           |1.4.4     |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-|    TI     |8.0.903.4 |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |     X   |     X   |
+|    TI     |8.0.903.2 |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |     X   |     X   |
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
