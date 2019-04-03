@@ -166,7 +166,7 @@ build information, and examples to use as a template to start development.
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 | `GPMC`_                     | `VPS Drivers`_             | `DSS`_                     | `CAL`_                     |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `UDMA`_                     | `SCICLIENT`_               |                            |                            |
+| `UDMA`_                     | `SCICLIENT`_               |  `IOLINK`_                 |                            |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 
 .. _CSL: index_device_drv.html#csl
@@ -199,6 +199,7 @@ build information, and examples to use as a template to start development.
 .. _CAL: index_device_drv.html#cal
 .. _UDMA: index_device_drv.html#udma
 .. _SCICLIENT: index_device_drv.html#sciclient
+.. _IOLINK: index_device_drv.html#iolink
 
 
 +-----------------------------+----------------------------+----------------------------+----------------------------+
@@ -214,12 +215,13 @@ build information, and examples to use as a template to start development.
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 | **PRU-ICSS Firmware**                                                                                              |
 +=============================+============================+============================+============================+
-| `Dual EMAC and Switch`_     | `PRU-ICSS SORTE`_          | `PRU-ICSS I2C`_            |                            |
+| `Dual EMAC and Switch`_     | `PRU-ICSS SORTE`_          | `PRU-ICSS I2C`_            | `PRU-ICSS IOLINK`_         |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 
 .. _Dual EMAC and Switch: index_pru_icss_fw.html#dual-emac-and-switch
 .. _PRU-ICSS SORTE: index_pru_icss_fw.html#pru-icss-sorte
 .. _PRU-ICSS I2C: index_pru_icss_fw.html#pru-icss-i2c
+.. _PRU-ICSS IOLINK: index_pru_icss_fw.html#pru-icss-iolink
 
 
 +-----------------------------+----------------------------+----------------------------+----------------------------+

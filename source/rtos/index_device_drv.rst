@@ -179,6 +179,12 @@ VPS Drivers
 
 
 ***********
+IOLINK
+***********
+.. include:: PDK_Platform_Software/Device_Drivers/IOLINK.rst.inc
+
+
+***********
 OSAL
 ***********
 .. include:: PDK_Platform_Software/Device_Driver_Utilities/OSAL.rst.inc
