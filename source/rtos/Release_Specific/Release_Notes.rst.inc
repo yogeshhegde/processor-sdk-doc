@@ -220,7 +220,7 @@ release and any known workaround.
    :header: "Record ID","Board/s", "Component/s", "Summary","Workaround"
    :widths: 15, 20,20,30,70
 
-	PRSDK-5635,,Optimized Libraries,DSPLIB and MATHLIB performance degrades with C6000 8.3.x code gen tools,"To get better performance, can use the C6000 Codegen tools v7.4.2. Here are the details. 
+	PRSDK-5635,,"Optimized Libraries,DSPLIB and MATHLIB performance degrades with C6000 8.3.x code gen tools","To get better performance, can use the C6000 Codegen tools v7.4.2. Here are the details. 
 
 1. Download C6000 Code Generation Tools v7.4.2 http://software-dl.ti.com/codegen/non-esd/downloads/download.htm 
 2. Clone DSPLIB from https://git.ti.com/ep-processor-libraries/dsplib, and follow readme.txt in root folder to recompile DSPLIB. 
