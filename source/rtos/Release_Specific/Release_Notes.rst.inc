@@ -221,18 +221,24 @@ release and any known workaround.
    :widths: 15, 20,20,30,70
 
 	PRSDK-5635,,"Optimized Libraries,DSPLIB and MATHLIB performance degrades with C6000 8.3.x code gen tools","To get better performance, can use the C6000 Codegen tools v7.4.2. Here are the details. 
-
-1. Download C6000 Code Generation Tools v7.4.2 http://software-dl.ti.com/codegen/non-esd/downloads/download.htm 
-2. Clone DSPLIB from https://git.ti.com/ep-processor-libraries/dsplib, and follow readme.txt in root folder to recompile DSPLIB. 
-3. Clone MATHLIB from https://git.ti.com/ep-processor-libraries/mathlib, and follow readme.txt in root folder to recompile MATHLIB. 
-"
+|
+Download C6000 Code Generation Tools v7.4.2 http://software-dl.ti.com/codegen/non-esd/downloads/download.htm 
+|
+Clone DSPLIB from https://git.ti.com/ep-processor-libraries/dsplib, and follow readme.txt in root folder to recompile DSPLIB. 
+|
+Clone MATHLIB from https://git.ti.com/ep-processor-libraries/mathlib, and follow readme.txt in root folder to recompile MATHLIB. 
+|"
 	PRSDK-5645,am654x-evm,Emupack,GEL file not working properly for AM654x-EVM platform causing DDR not to be configured properly,"Processor SDK RTOS v5.03 users will need to use Device support package 1.4.4. and TI emulation driver 8.0.903.2 
 Customers are required to disable Automatic updates to prevent auto update to latest 1.4.5."
-	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,"The SBL currently cannot reset the MCU1 subsystem to restart the cores in split mode. To workaround this, the MPU needs to reset the MCU1 sub-system. To configure the MCU1 susb-system in split mode, do the following. a) Create a multi-core image with a MCU1_0 image, a MCU1_1 image and an MPU image. 
-b) The MPU1 image must contain code to reset the MCU sub-system. Refer the function sblTestResetMcu in sbl/example/k3MulticoreApp/sbl_amp_multicore.c for example code on how to reset the MCU subsystem 
-c) Before resetting the MCU, the MPU must wait for the SBL to boot MCU1_0"
-	PRSDK-2892,"am571x-idk, am572x-evm, am572x-idk",PDK,Incorrect A15 MMU configurations in default config file,"Set MMU attribute to not executable for device memory 
-attrs0.noExecute = true; // Not executable"
+	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,"The SBL currently cannot reset the MCU1 subsystem to restart the cores in split mode. To workaround this, the MPU needs to reset the MCU1 sub-system. To configure the MCU1 susb-system in split mode, do the following. 
+|
+Create a multi-core image with a MCU1_0 image, a MCU1_1 image and an MPU image. 
+|
+The MPU1 image must contain code to reset the MCU sub-system. Refer the function sblTestResetMcu in sbl/example/k3MulticoreApp/sbl_amp_multicore.c for example code on how to reset the MCU subsystem 
+|
+Before resetting the MCU, the MPU must wait for the SBL to boot MCU1_0
+|"
+	PRSDK-2892,"am571x-idk, am572x-evm, am572x-idk",PDK,Incorrect A15 MMU configurations in default config file,"Set MMU attribute to not executable for device memory attrs0.noExecute = true; // Not executable "
 	PRSDK-5612,am437x-idk,"OSAL, PDK",Missing interrupt enable/disable option in OSAL HwiP_Params,
 	PRSDK-5539,"c6748-lcdk, omapl138-lcdk",Control Drivers,SPI loopback example not working in interrupt mode on OMAPL138,Polling mode can be used instead.
 	PRSDK-5624,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, c6678-evm, k2h-evm",Optimized Libraries,FFTLIB documentation for AM57xx and K2H devices is missing,
@@ -240,8 +246,7 @@ attrs0.noExecute = true; // Not executable"
 	PRSDK-5473,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Networking,NDK TCP packet re-transmission timeout when running ARM at a lower speed,
 	PRSDK-5667,"am654x-evm, am654x-idk",Board Support,AM65xx diagnostic test hang on R5 core,Use the diagnostic tests built for A53 core.
 	PRSDK-5620,am572x-idk,PDK,I2C_BasicExample_TestProject: I2C EEPROM test failure UT0,Same test passed on AM571x IDK and AM572x-EVM platforms but only failed on AM572x IDK platform.
-	PRSDK-5272,k2g-hsevm,Networking,EMAC_BasicExample: error #10099-D: program will not fit into available memory,"Move .stack and .cinit sections to L2SRAM to MSMCSRAM in 
-ti\drv\emac\test\EmacLoopbackTest\k2g\c66\bios\emac_example_k2g.cfg."
+	PRSDK-5272,k2g-hsevm,Networking,EMAC_BasicExample: error #10099-D: program will not fit into available memory,"Move .stack and .cinit sections to L2SRAM to MSMCSRAM in ti\drv\emac\test\EmacLoopbackTest\k2g\c66\bios\emac_example_k2g.cfg."
 	PRSDK-5638,am654x-evm,Diagnostics,AM65xx diag self test hangs during memory test on R5 core,The similar test can be run from A53 instead
 	PRSDK-5655,am654x-hsevm,Boot,Allow windows users to selectively enable JTAG for AM65x HS,
 	PRSDK-5448,"am654x-evm, am654x-idk",Boot,SBL boot from MMCSD fails intermittently,
@@ -257,14 +262,18 @@ ti\drv\emac\test\EmacLoopbackTest\k2g\c66\bios\emac_example_k2g.cfg."
 | 
 Commands to rebuild MLO with DDRECC disabled: 
 | 
-cd $(PDK_INSTALL_PATH)\ti\boot\sbl 
+- cd $(PDK_INSTALL_PATH)\ti\boot\sbl 
 | 
-gmake all BOARD=idkAM574x SOC=AM574x BOOTMODE=qspi"
+- gmake all BOARD=idkAM574x SOC=AM574x BOOTMODE=qspi
+|"
 	PRSDK-1975,am572x-evm,Diagnostics,timer_DiagExample_evmAM572x_arm7.out doesn't work on ARM1 core,Example can run on ARM Core 0
 	PRSDK-1682,"am571x-idk, am572x-idk",Diagnostics,Board diagnostics LCD Touchscreen test does not work with new version of LCD TSC,For LCD/Display checkout example under VPS component could be used
 	PRSDK-2336,"am335x-evm, am437x-evm",Power,AM3 & AM4 PM Examples experience I2C bus lockup when communicating with PMIC,"The debug versions of the PM apps are still functional. To build them: 
-From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm"" 
-This will build the debug versions of the PM RTOS and measurement apps."
+|
+- From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm""
+| 
+- This will build the debug versions of the PM RTOS and measurement apps.
+|"
 	PRSDK-2166,am572x-idk,High-Speed Drivers,USB3.0 host problem with Sandisk Extreme USB3.0 stick,"Start the example without the USB plugged in. Once the example is up and waiting for USB stick, plug the USB stick in and it will enumerate properly."
 	PRSDK-4214,k2g-hsevm,System,create-sdcard script does not boot OOB,Default generated App image is not signed follow the steps mentioned in User Guide of the Processor SDK Secdev Build and Install Guide to sign the app
 	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package,"| 
