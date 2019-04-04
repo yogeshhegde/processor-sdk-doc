@@ -35,7 +35,6 @@ Features supported
    -  Total 128 entries on AMICx, AM335x, AM437x
    -  Total 256 entries on AM57xx & K2G
    -  Hash Table for faster lookup
-   -  O(1) complexity
    -  Node Table statistics
 
 -  **Support for Multicast Filtering**
@@ -76,18 +75,6 @@ Features supported
 -  **VLAN tag support in Supervision frames**
 
 -  **Run time change of Protocol at PRU-ICSS without reboot**
-
-- **SAN PTP/1588**
-   -  Supported using PRP firmware in EMAC mode
-   -  PTP Slave and Master mode
-   -  Supports P2P clock.
-   -  PTP over 802.3 (Annex F)
-   -  Ordinary Clock (GMAC/PRU port)
-   -  Boundary Clock supported
-   -  Two step clock supported
-
-- **Redundant PTP/1588**
-   -  Transparent clock as per IEC62439-3 Annex C
 
 Software Architecture
 ----------------------
