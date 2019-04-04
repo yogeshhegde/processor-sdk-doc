@@ -13,6 +13,12 @@ of the Processor SDK for Linux.
 Processor SDK 05.xx Releases
 ============================
 
+Processor SDK 05.03
+----------------------
+
+- No changes from the previous release
+
+
 Processor SDK 05.02
 ----------------------
 
