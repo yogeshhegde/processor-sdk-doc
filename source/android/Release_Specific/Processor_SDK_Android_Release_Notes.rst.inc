@@ -54,19 +54,17 @@ Documentation
 
 | 
 
-Release 05.02.00
+Release 05.03.00
 =====================
 
-Released December 2018
+Released April 2019
 
 .. rubric:: What's New
    :name: whats-new
 
 
-- This is an "O-Pastry" based release of Processor SDK Android for AM57x
-- PRU-Ethernet support
-- Android Treble support
-- Full CTS/VTS execution
+- This is an "O-Pastry" based release of Processor SDK Android
+- Added support for AM65x besides the existing AM57x
 
 |
 
