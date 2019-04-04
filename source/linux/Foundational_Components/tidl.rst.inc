@@ -66,8 +66,27 @@ TIDL software is intended for AM57xx Sitara devices, that either have DSP or EVE
 - AM5706 (1xC66x DSP)
 - AM5708 (1xC66x DSP)
 
+TIDL API framework abstracts multicore operation
+-------------------------------------------------
+
+Current implementation of TIDL API provides following important features:
+
+- Multiple networks on different EVEs/DSPs can run concurrently
+    We can run concurrently as many different networks as we have available accelerators. In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP) - may need increase in default CMEM block size (~64MB per accelerator are advices - default setting is 192MB).
+    Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP, but we can start one network with its own output
+    in one EVE, and in parallel same or different network with its own input on second EVE.
+
+- Same TIDL API based application code can run on EVE or DSP accelerator
+    This can be achieved just by modifying a `device type parameter <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#_CPPv2N4tidl10DeviceTypeE>`_
+    More details in `Introduction to Programming Model`_
+
+- Certain networks could be split between EVE and DSP
+    For certain networks (JDetNet is one example), it is beneficial to use concept of layer groups.
+    One layer group runs on EVE and another on DSP. There are few layers which runs faster on DSP: SoftMax, Flatten and Concat layers.
+    So in this case we are using DSP+EVE for single network.
+
 Verified networks topologies
-----------------------------
+============================
 
 It is necessary to understand that TIDL is not verified against arbitrary network topology
 that can run in Caffe or TF. Instead, we were focused on verification of layers and network
@@ -262,67 +281,6 @@ Layers in current release of TIDL Lib have certain parameter related constraints
 - Tensorflow
    - Only Slim based models are validated. Please refer InceptionNetV1 and mobilenet_1.0 from below as examples for building your models.
    - TF-Slim: https://github.com/tensorflow/models/tree/master/research/slim
-
-Matching TIDL inference result
-------------------------------
-The TIDL import step runs the inference on PC and the result generates expected output (With caffe or tensorflow inference). If you observe difference at this stage please follow below steps to debug.  
-   
-   - Caffe inference input and TIDL inference input shall match. Import step dumps input of the first layer at “trace_dump_0_*”, make sure that this is same for caffe as well. 
-   - If the input is matching, then dump layer level features from caffe and match with TIDL import traces. 
-   - TDIL trace is in fixed point and can be converted to floating point (using OutQ printed in the import log). Due to quantization the results will not exactly match, but will be similar. 
-   - Check the parameters of the layer where the mismatch is observed. 
-   - Share the input and Parameter with TI for further debug. 
- 
-We use the statistics collected from the previous process for quantizing the activation dynamically in the current processes. 
-So, results we observe during the process on target will NOT be same (but similar) for same input images compared to import steps. 
-The logic was validated with semantic segmentation application on input video sequence 
-
-Parameters controling dynamic quantization 
-------------------------------------------
-
-TIDL Inference process is not completely stateless. Information (activation min, max values) from previously executed inferences are used for quantization process.
-
-- quantMargin is margin added to the average in percentage. 
-- quantHistoryParam1 weights used for previously processed inference during application boot time 
-- quantHistoryParam2 weights used for previously processed inference during application execution (After initial few frames) 
-
-These parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
-
-To get the same result in TIDL target same as import step for an image. Please set below configuration parameters. 
-
-:: 
-  
-  quantHistoryParam1 = 0; 
-  quantHistoryParam2 = 0; 
-  quantMargin = 0; 
-  
-
-Set with below parameters for running on video sequence: 
-
-::
-
-  quantHistoryParam1 = 20; 
-  quantHistoryParam2 = 10; 
-  quantMargin = 20
-
-Important TIDL API framework features
--------------------------------------
-
-Current implementation of TIDL API provides following important features:
-
-- Multiple networks on different EVEs/DSPs can run concurrently
-    We can run concurrently as many different networks as we have available accelerators. In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP) - may need increase in default CMEM block size (~64MB per accelerator are advices - default setting is 192MB).
-    Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP, but we can start one network with its own output
-    in one EVE, and in parallel same or different network with its own input on second EVE.
-
-- Same TIDL API based application code can run on EVE or DSP accelerator
-    This can be achieved just by modifying a `device type parameter <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#_CPPv2N4tidl10DeviceTypeE>`_
-    More details in `Introduction to Programming Model`_
-
-- Certain networks could be split between EVE and DSP
-    For certain networks (JDetNet is one example), it is beneficial to use concept of layer groups.
-    One layer group runs on EVE and another on DSP. There are few layers which runs faster on DSP: SoftMax, Flatten and Concat layers.
-    So in this case we are using DSP+EVE for single network.
 
 Examples and Demos
 ===================
@@ -843,7 +801,6 @@ Here is a sample list of files with intermediate activations:
        * trace_dump_13_9x1.y
        * trace_dump_14_9x1.y
 
-
 Splitting layers between layers groups
 """"""""""""""""""""""""""""""""""""""""
 
@@ -937,6 +894,49 @@ One or two layers are implemented on EVE local RISC CPU which is used primarily 
 rare cases EVE CPU is used as fully programmable, but slow compute engine. SoftMax layer is implemented using 
 general purpose CPU, and significantly slower than DSP or A15 implementation. As SoftMax layer is terminal layer it is advised to
 do SoftMax either on A15 (in user space) or using DSP (layergroup2, as implemented in JDetNet examples).
+
+Verifying TIDL inference result
+-------------------------------
+
+The TIDL import step runs the inference on PC and the result generates expected output (with caffe or tensorflow inference). If you observe difference at this stage please follow below steps to debug.  
+   
+   - Caffe inference input and TIDL inference input shall match. Import step dumps input of the first layer at “trace_dump_0_*”, make sure that this is same for caffe as well. This is important to verify to avoid mismatch in image pre-processing steps.
+   - If the input is matching, then dump layer level features from caffe and match with TIDL import traces. 
+   - TIDL trace is in fixed point and can be converted to floating point (using OutQ printed in the import log). Due to quantization the results will not exactly match, but will be similar. 
+   - Check the parameters of the layer where the mismatch is observed. 
+   - Share the input and Parameter with TI for further debug. 
+ 
+We use the statistics collected from the previous process for quantizing the activation dynamically in the current processes. 
+So, results we observe during the process on target will NOT be same (but similar) for same input images compared to import steps. 
+The logic was validated with semantic segmentation application on input video sequence 
+
+Parameters controling dynamic quantization 
+------------------------------------------
+
+TIDL Inference process is not completely stateless. Information (activation min, max values) from previously executed inferences are used for quantization process.
+
+- quantMargin is margin added to the average in percentage. 
+- quantHistoryParam1 weights used for previously processed inference during application boot time 
+- quantHistoryParam2 weights used for previously processed inference during application execution (After initial few frames) 
+
+These parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
+
+To get the same result in TIDL target same as import step for an image. Please set below configuration parameters. 
+
+:: 
+  
+  quantHistoryParam1 = 0; 
+  quantHistoryParam2 = 0; 
+  quantMargin = 0; 
+  
+
+Set with below parameters for running on video sequence: 
+
+::
+
+  quantHistoryParam1 = 20; 
+  quantHistoryParam2 = 10; 
+  quantMargin = 20
 
 
 Viewer tool
