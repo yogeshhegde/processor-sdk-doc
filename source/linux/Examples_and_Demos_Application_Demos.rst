@@ -35,6 +35,11 @@ Protection Relay Demo
 Matrix UI provides out of box demo to showcase Human Machine Interface (HMI) for Protection Relays. More details can be found at http://www.ti.com/tool/TIDEP-0102
 
 
+mmWave Gesture Controlled HMI
+=============================
+This demo showcases gesture controlled HMI, where the mmWave sensor detects presence and classifies natural hand gestures, and sends them to the Sitara processor to drive the Qt GUI display.
+More details can be found at http://www.ti.com/tool/TIDEP-01013.
+
 Qt5 Thermostat HMI Demo
 ========================
 .. include:: Examples_and_Demos/Thermostat.rst.inc

@@ -59,7 +59,7 @@ Released April 2019
     - Add Object Detection and Image Segmentation TIDL demos to Matrix GUI
     - Add support in TIDL to import TF model created with recent releases of Tensorflow (>1.7)
     - Optimize Concat Layer on C66x for SqueezeNet and InceptionNet
-- mmWave Gesture Demo for AM3/AM4/AM5/AM6: `TI design TIDEP-01013 <http://www.ti.com/tool/TIDEP-01013>`__
+- `mmWave Gesture Demo for AM3/AM4/AM5/AM6 <Examples_and_Demos_Application_Demos.html#mmwave-gesture-controlled-hmi>`__
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
