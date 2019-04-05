@@ -449,10 +449,8 @@ Recognized classes are (as defined in http://host.robots.ox.ac.uk/pascal/VOC/voc
   - Vehicle: aeroplane, bicycle, boat, bus, car, motorbike, train
   - Indoor: bottle, chair, dining table, potted plant, sofa, tv/monitor
 
-.. figure:: ../images/tidl-objdet.jpg
-    :width: 800px
+.. figure:: ../images/tidl-objdet.png
     :align: center
-    :height: 300px
 
 
 This list can be also found in (target file system): /usr/share/ti/tidl/examples/ssd_multibox/jdetnet_voc_objects.json
@@ -467,10 +465,8 @@ This example shows pixel level image segmentation, also described in TIDL-API do
    ./segmentation -i ./clips/traffic_pixabay_298.mp4 -f 2000 -w 720
 
 
-.. figure:: ../images/tidl-segment.jpg
-    :width: 800px
+.. figure:: ../images/tidl-segment.png
     :align: center
-    :height: 300px
 
 
 Developer's guide
