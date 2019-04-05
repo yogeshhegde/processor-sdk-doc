@@ -1,0 +1,1458 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7.1. Dual EMAC and Switch &mdash; Processor SDK RTOS Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Processor SDK RTOS Documentation" href="../index.html"/>
+        <link rel="up" title="7. PRU-ICSS Firmware" href="PRU_ICSS.html"/>
+        <link rel="next" title="8. Compilers" href="Compilers.html"/>
+        <link rel="prev" title="7. PRU-ICSS Firmware" href="PRU_ICSS.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                05_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board_EVM_Abstration.html">3. Board/EVM Abstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Foundational_Components.html">4. Foundational Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DSP_Software.html">5. DSP Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Device_Drivers.html">6. Device Drivers</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="PRU_ICSS.html">7. PRU-ICSS Firmware</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">7.1. Dual EMAC and Switch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">7.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dual-emac">7.1.2. DUAL_EMAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#switch">7.1.3. SWITCH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-organization">7.1.4. Code Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-build-instruction">7.1.5. Firmware Build Instruction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-instruction-from-processor-sdk-release-package">7.1.5.1. Build instruction from Processor SDK Release package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-instruction-from-git">7.1.5.2. Build instruction from GIT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-evms">7.1.6. Supported EVMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-icss-emac-firmwares-example">7.1.7. Running ICSS-EMAC FIRMWARES Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#icss-g-dual-emac">7.2. ICSS-G Dual EMAC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">7.2.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">7.2.2. DUAL_EMAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-code-location-and-build-instruction">7.2.3. Firmware Code Location and Build Instruction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pru-icss-sorte">7.3. PRU-ICSS SORTE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">7.3.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocol-overview">7.3.2. Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">7.3.3. Code Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-examples">7.3.4. Building the Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">7.3.4.1. Pre-requisites to Building</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-the-pruss-sorte-firmware">7.3.4.2. Compiling the PRUSS SORTE Firmware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#compiling-the-pruss-sorte-application">7.3.4.3. Compiling the PRUSS SORTE Application</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">7.3.5. Supported EVMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-pruss-sorte-example">7.3.6. Running the PRUSS SORTE Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-reference">7.3.7. Additional Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pru-icss-i2c">7.4. PRU-ICSS I2C</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">7.4.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-features">7.4.2. FIRMWARE FEATURES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-organization">7.4.3. Firmware Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">7.4.4. Firmware Build Instruction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">7.4.4.1. Build instruction from Processor SDK Release package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-instruction-for-git">7.4.4.2. Build instruction for GIT</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">7.4.5. Supported EVMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#i2c-firmware-example">7.4.6. I2C FIRMWARE Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PRU_ICSS.html#pru-icss-espi">7.5. PRU-ICSS ESPI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Compilers.html">8. Compilers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_and_Demonstrations.html">9. Examples and Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_Guides.html">10. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">11. Frequently Asked Questions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="PRU_ICSS.html">7. PRU-ICSS Firmware</a> &raquo;</li>
+      
+    <li>7.1. Dual EMAC and Switch</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dual-emac-and-switch">
+<h1>7.1. Dual EMAC and Switch<a class="headerlink" href="#dual-emac-and-switch" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>7.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">The ICSS FIRMWARES serves as example to implement various network
+functionalities. Package includes source release for Dual_emac and
+basic switch firmwares.</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="dual-emac">
+<h2>7.1.2. DUAL_EMAC<a class="headerlink" href="#dual-emac" title="Permalink to this headline">¶</a></h2>
+<p>ICSS DUAL EMAC FIRMWARE is a single port Ethernet MAC (Media Access
+Control) i.e. Layer 2 of OSI Model. It implements a 2 port ethernet mac
+supporting 10/100 Mbps. DUAL EMAC FIRMWARE is standardized to IEEE 802.1
+Ethernet Standards. Primary use case of the protocol is to demonstrate
+basic ethernet functionality via both PRU cores on 10/100 Mbit Ethernet
+cable. ICSS DUAL EMAC FIRMWARE can be used independently on two PRU&#8217;s to
+implement two independent MAC&#8217;s with two different MAC addresses and two
+different IP addresses. To provide an analogy, this is somewhat similar
+to a two port Ethernet PCIe NIC card on a PC.Ethernet interface in this
+case is available along with Host processor on a single SoC. Following
+are high level features:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Requirements</strong></td>
+<td><strong>Remarks</strong></td>
+</tr>
+<tr class="row-even"><td>1 ms buffering per port</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Host IRQ</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Ethernet QoS</td>
+<td>With 2 queues instead of 8. So,
+it is not a standard Ethernet QoS
+implementation.</td>
+</tr>
+<tr class="row-odd"><td>Statistics</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Storm Prevention</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Promiscuous Mode</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>TTS (Time Triggered Send)</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Error Handling</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Multicast filtering</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>VLAN filtering</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>PTP Handling</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="switch">
+<h2>7.1.3. SWITCH<a class="headerlink" href="#switch" title="Permalink to this headline">¶</a></h2>
+<p>ICSS SWITCH FIRMWARE is a three port learning Ethernet switch i.e. Layer
+2 of OSI Model. It implements a 2 port cut through ethernet switch
+supporting at 100 Mbps. SWITCH FIRMWARE is standardized to IEEE 802.1
+Ethernet Standards. The primary use case of the protocol is to use
+Ethernet to automate applications which require short cut-through
+latency and low hardware costs. ICSS SWITCH FIRMWARE uses two PRU to
+implement three port Ethernet switch with one single MAC and IP address.
+To provide an analogy, this is somewhat standard network switch only
+here the network functionality is available to the host core within the
+single SOC. The following are the high level features it supports.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Requirements</strong></td>
+<td><strong>Remarks</strong></td>
+</tr>
+<tr class="row-even"><td>Cut-Through</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Store and Forward</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>1 ms buffering per port</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Host IRQ</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Ethernet QoS</td>
+<td>With 4 queues instead of 8. So,
+it is not a standard Ethernet QoS
+implementation.</td>
+</tr>
+<tr class="row-odd"><td>802.1 learning switch</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Statistics</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Queue-Contention Handling on each
+port</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Three-Port Switch</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Storm Prevention</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Error Handling</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="code-organization">
+<h2>7.1.4. Code Organization<a class="headerlink" href="#code-organization" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="43%" />
+<col width="28%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Requirements</strong></td>
+<td><strong>Location in SDK</strong></td>
+<td><strong>Remarks</strong></td>
+</tr>
+<tr class="row-even"><td>Common baseline code</td>
+<td>&lt;PDK&gt;/packages/ti/drv
+/icss_emac/firmware/icss_dualemac</td>
+<td>common code for
+dual_emac and switch</td>
+</tr>
+<tr class="row-odd"><td>DUAL_EMAC</td>
+<td>&lt;PDK&gt;/packages/ti/drv
+/icss_emac/firmware/icss_dualemac</td>
+<td>dual_emac firmware
+specific code</td>
+</tr>
+<tr class="row-even"><td>SWITCH</td>
+<td>&lt;PDK&gt;/packages/ti/drv
+/icss_emac/firmware/icss_switch</td>
+<td>switch firmware
+specific code</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="firmware-build-instruction">
+<h2>7.1.5. Firmware Build Instruction<a class="headerlink" href="#firmware-build-instruction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="build-instruction-from-processor-sdk-release-package">
+<h3>7.1.5.1. Build instruction from Processor SDK Release package<a class="headerlink" href="#build-instruction-from-processor-sdk-release-package" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="pre-requisites-to-building">Pre-requisites to Building</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">Refer</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Processor</span> <span class="n">SDK</span> <span class="n">RTOS</span> <span class="n">Building</span> <span class="n">page</span> <span class="k">for</span> <span class="n">information</span> <span class="n">on</span> <span class="n">setting</span> <span class="n">up</span> <span class="n">build</span> <span class="n">environment</span><span class="p">.</span>
+</pre></div>
+</div>
+<p class="rubric" id="compiling-icss-emac-firmwares">Compiling ICSS-EMAC FIRMWARES</p>
+<ul class="simple">
+<li>cd &lt;PDK&gt;/packages/ti/drv/icss_emac</li>
+<li>make firm</li>
+</ul>
+<p>Firmware binaries at the end of the build will be located at:</p>
+<ul class="simple">
+<li>&lt;PDK&gt;/packages/ti/drv/icss_emac/firmware/&lt;FIRMWARE_TYPE&gt;/bin/&lt;SOC&gt;/&lt;HOST_CORE&gt;/&lt;REVISION&gt;</li>
+<li>&lt;FIRMWARE_TYPE&gt; indicates the firmware type i.e. icss_dualemac for
+DUAL_EMAC or icss_switch for SWITCH</li>
+<li>&lt;SOC&gt; indicates the SOC type.</li>
+<li>&lt;HOST_CORE&gt; indicates the Host core type on which the built binary
+can be loaded.</li>
+<li>&lt;REVISION&gt; indicates the revision of the firmware binary based on
+core. (There are 2 revision of PRU ICSS core)</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="build-instruction-from-git">
+<h3>7.1.5.2. Build instruction from GIT<a class="headerlink" href="#build-instruction-from-git" title="Permalink to this headline">¶</a></h3>
+<p>Following are the steps for building firmware from any external
+environment outside PROC SDK RTOS.</p>
+<ul class="simple">
+<li>Creation of directories<ul>
+<li>Create a working directory e.g. &lt;WORK_DIR&gt;</li>
+<li>Create a new directory named ti inside working directory. i.e.
+&lt;WORK_DIR/ti&gt;</li>
+<li>Create a new directory called drv inside ti. i.e.
+&lt;WORK_DIR/ti/drv&gt;</li>
+</ul>
+</li>
+<li>Clone of Repos<ul>
+<li>Git clone pdk build repo into ti directory. i.e.
+&lt;WORK_DIR/ti/build&gt;</li>
+<li>Git clone icss_emac repo into ti/drv directory. i.e.
+&lt;WORK_DIR/ti/drv/icss_emac&gt;</li>
+</ul>
+</li>
+<li>Setting Environment Variables<ul>
+<li>Export CLPRU install path. i.e. export CL_PRU_INSTALL_PATH=clpru
+toolchain directory</li>
+<li>Export pdk install path. i.e. export PDK_INSTALL_PATH=&lt;WORK_DIR&gt;</li>
+<li>Export LIMIT_SOCS Variable i.e. LIMIT_SOCS=&lt;SOC&gt; [Optional for
+limiting to some SOCs]</li>
+</ul>
+</li>
+<li>Build command<ul>
+<li>Run make firm/firm_clean to build/clean firmware from icss_emac
+directory i.e. &lt;WORK_DIR/ti/drv/icss_emac&gt;</li>
+</ul>
+</li>
+<li>Generated binaries<ul>
+<li>the firmware binaries which will be located in
+&lt;WORK_DIR/ti/drv/icss_emac/firmware/&lt;FIRMWARE_TYPE&gt;/bin/&lt;SOC&gt;/&lt;HOST_CORE&gt;/&lt;REVISION&gt;&gt;</li>
+</ul>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="supported-evms">
+<h2>7.1.6. Supported EVMs<a class="headerlink" href="#supported-evms" title="Permalink to this headline">¶</a></h2>
+<p>The following is a list of EVMS supported and the PRU-ICSS ethernet
+ports to be used:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>EVM Name</td>
+<td>PRU-ICSS Instance</td>
+<td>Supported PRU ICSS
+core revision</td>
+</tr>
+<tr class="row-even"><td>icev2AM335x</td>
+<td>PRU-ICSS instance 1</td>
+<td>REV1</td>
+</tr>
+<tr class="row-odd"><td>idkAM437x</td>
+<td>PRU-ICSS instance 2</td>
+<td>REV1</td>
+</tr>
+<tr class="row-even"><td>idkAM571x</td>
+<td>PRU-ICSS instance 2</td>
+<td>REV2</td>
+</tr>
+<tr class="row-odd"><td>idkAM572x</td>
+<td>PRU-ICSS instance 2</td>
+<td>REV1 &amp; REV2 (Earlier
+version of AM572x soc
+had REV1 pru cores
+while later had REV2
+pru cores)</td>
+</tr>
+<tr class="row-even"><td>iceK2G</td>
+<td>PRU-ICSS instance 2</td>
+<td>REV2</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="running-icss-emac-firmwares-example">
+<h2>7.1.7. Running ICSS-EMAC FIRMWARES Example<a class="headerlink" href="#running-icss-emac-firmwares-example" title="Permalink to this headline">¶</a></h2>
+<p>Please go through the following page for example demonstrating the use
+of the firmware via icss-emac driver.
+<a class="reference external" href="index_device_drv.html#icss-emac">[1]</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="firmware-design-guide">Firmware Design Guide</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Document</strong></td>
+<td><strong>Location</strong></td>
+</tr>
+<tr class="row-even"><td>ICSS DUAL EMAC FIRMWARE Design
+Guide</td>
+<td>&lt;PDK&gt;/packages/ti/drv/icss_emac/f
+irmware/icss_dualemac/docs/ICSS_D
+UAL_EMAC_Firmware_Design_Guide.pd
+f</td>
+</tr>
+<tr class="row-odd"><td>ICSS SWITCH FIRMWARE Design Guide</td>
+<td>&lt;PDK&gt;/packages/ti/drv/icss_emac/f
+irmware/icss_switch/docs/ICSS_SWI
+TCH_Firmware_Design_Guide.pdf</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE: For normal use case, there is no need to refer this document.
+Unless you wish to go through the internal working for firmware and/or
+wanted to modify it.</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="icss-g-dual-emac">
+<h1>7.2. ICSS-G Dual EMAC<a class="headerlink" href="#icss-g-dual-emac" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>7.2.1. Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">The ICSS-G FIRMWARE serves as example to implement various network
+functionalities. Package includes source release for DUAL EMAC</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>7.2.2. DUAL_EMAC<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>ICSS DUAL EMAC FIRMWARE is a single port Ethernet MAC (Media Access
+Control) i.e. Layer 2 of OSI Model. It implements a 2 port Ethernet
+mac supporting 100Mbps and 1Gbps. DUAL MAC FIRMWARE is standardized
+to IEEE 802.1 Ethernet Standards. Primary use case of the protocol
+is to demonstrate basic Ethernet functionality via both PRU/RTU cores.
+ICSS-G DUAL EMAC FIRMWARE can be used independently on two PRUs to
+implement two independent MACs with two different MAC addresses
+and two different IP addresses.</p>
+<p>Following are high level features:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Requirements</strong></td>
+<td><strong>Remarks</strong></td>
+</tr>
+<tr class="row-even"><td>4 egress DMA threads per port</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>4 ingress “buckets” per port</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Statistics</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Storm Prevention</td>
+<td>Future</td>
+</tr>
+<tr class="row-even"><td>Promiscuous Mode</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>TTS (Time Triggered Send)</td>
+<td>Future</td>
+</tr>
+<tr class="row-even"><td>Error Handling</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Multicast filtering</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>VLAN filtering</td>
+<td>Future</td>
+</tr>
+<tr class="row-odd"><td>PTP Handling</td>
+<td>Supported</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="firmware-code-location-and-build-instruction">
+<h2>7.2.3. Firmware Code Location and Build Instruction<a class="headerlink" href="#firmware-code-location-and-build-instruction" title="Permalink to this headline">¶</a></h2>
+<p>Firmware is located at &lt;PDK&gt;packages/ti/drv/emac/firmware/icss_eth/src directory.</p>
+<p>The CLPRU toolchain has to be used to build the firmware. The toolchain can be
+downloaded from &lt;<a class="reference external" href="http://software-dl.ti.com/codegen/esd/cgt_public_sw/PRU/2.2.1/ti_cgt_pru_2.2.1_linux_installer_x86.bin">http://software-dl.ti.com/codegen/esd/cgt_public_sw/PRU/2.2.1/ti_cgt_pru_2.2.1_linux_installer_x86.bin</a>&gt;</p>
+<p>To build the firmware:</p>
+<ul class="simple">
+<li>cd to &lt;PDK&gt;packages/ti/drv/emac/firmware/icss_eth/src directory</li>
+<li>make CLPRU_INSTALL_PATH=&lt;dir_where_the_toolchain_installed&gt;.</li>
+</ul>
+<p>The firmware will be located in the &lt;PDK&gt;packages/ti/drv/emac/firmware/icss_eth/src/dm directory.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="pru-icss-sorte">
+<h1>7.3. PRU-ICSS SORTE<a class="headerlink" href="#pru-icss-sorte" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id3">
+<h2>7.3.1. Introduction<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">The Simple Open Real-time Ethernet protocol (SORTE) serves as an
+example for Texas Instruments programmable approach to real-time
+communication for input/output (IO) networks with a maximum of 254
+devices. This protocol is fully documented and released in source
+code. It is open to customers to learn, adapt and enhance the protocol
+for their application requirements. SORTE is not bound to a given
+communication standard and breaks some of the limits of existing
+standards such as minimum Ethernet frame size, addressing and error
+detection. The primary use case of the protocol is to connect
+different end-equipment using Ethernet physical layer devices and 100
+Mbit Ethernet cable.</div>
+</div>
+</div>
+<div class="section" id="protocol-overview">
+<h2>7.3.2. Protocol Overview<a class="headerlink" href="#protocol-overview" title="Permalink to this headline">¶</a></h2>
+<p>The SORTE protocol is a TI-developed industrial Ethernet protocol that
+supports 4-µs cycle time. The SORTE protocol operates on the PRU-ICSS,
+which is an industrial peripheral within Sitara and KeyStone processors
+from Texas Instruments. SORTE protocol operates exclusively on the
+PRU-ICSS; therefore, the ARM Cortex-A8, A9 or A15 processors – depending
+on the device family – are available for industrial applications. The
+SORTE protocol differentiate between two network components: the master
+and one or more slave devices. For in depth details of the protocol
+please refer to the the design documents as listed in the References
+section below.</p>
+</div>
+<div class="section" id="id4">
+<h2>7.3.3. Code Organization<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>THE SORTE ARM application and firmware sources can be found under the
+following directory&nbsp;:</p>
+<p><strong>&lt;PDK&gt;/packages/ti/drv/pruss/example/apps/sorte/</strong></p>
+<p>Refer to the README.txt in this directory for details of directory
+layout.</p>
+<p>In addition, there is a README.txt which provides high-level over of how
+the protocol is implmented for master and slave device network
+compoments which can be found at:</p>
+<p><strong>&lt;PDK&gt;/packages/ti/drv/pruss/example/apps/sorte/firmware/src/master/README.txt</strong></p>
+<p><strong>&lt;PDK&gt;/packages/ti/drv/pruss/example/apps/sorte/firmware/src/slave/README.txt</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="building-the-examples">
+<h2>7.3.4. Building the Examples<a class="headerlink" href="#building-the-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>7.3.4.1. Pre-requisites to Building<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Set your environment using pdksetupenv.sh. Building the Firmware
+binaries and ARM application uses the same environment variables as
+the pruss driver library build. Refer to the <a class="reference external" href="index_overview.html#building-the-sdk">Processor SDK RTOS
+Building</a> page for
+information on setting up your build environment.</li>
+</ol>
+</div>
+<div class="section" id="compiling-the-pruss-sorte-firmware">
+<h3>7.3.4.2. Compiling the PRUSS SORTE Firmware<a class="headerlink" href="#compiling-the-pruss-sorte-firmware" title="Permalink to this headline">¶</a></h3>
+<p>To build the SORTE firmware binaries:</p>
+<ol class="arabic simple">
+<li><strong>cd &lt;PDK&gt;/packages/ti/drv/pruss</strong></li>
+<li><strong>make firm</strong></li>
+</ol>
+<p>This will make the firmware binaries which will be located in:</p>
+<p><strong>&lt;PDK&gt;/packages/ti/drv/pruss/example/apps/sorte/firmware/bin/&lt;BOARD&gt;</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="compiling-the-pruss-sorte-application">
+<h3>7.3.4.3. Compiling the PRUSS SORTE Application<a class="headerlink" href="#compiling-the-pruss-sorte-application" title="Permalink to this headline">¶</a></h3>
+<p>To build the SORTE ARM applications:</p>
+<ol class="arabic simple">
+<li><strong>cd &lt;PDK&gt;/packages/ti/drv/pruss</strong></li>
+<li><strong>make apps</strong></li>
+</ol>
+<p>This will make the ARM applications for both master and slave device
+which will be located in:</p>
+<p><strong>&lt;PDK&gt;/packages/ti/drv/pruss/example/apps/sorte/slave&lt;BOARD&gt;</strong></p>
+<p><strong>&lt;PDK&gt;/packages/ti/drv/pruss/example/apps/sorte/master&lt;BOARD&gt;</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>7.3.5. Supported EVMs<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>The following is a list of EVMS supported and the PRU-ICSS ethernet
+ports to be used:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="39%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>EVM Name</strong></td>
+<td><strong>PRU-ICSS Instance</strong></td>
+<td><strong>Port0</strong></td>
+<td><strong>Port1</strong></td>
+</tr>
+<tr class="row-even"><td>icev2AM335x</td>
+<td>PRU-ICSS instance 1</td>
+<td>J1</td>
+<td>J2</td>
+</tr>
+<tr class="row-odd"><td>idkAM437x</td>
+<td>PRU-ICSS instance 2</td>
+<td>J6</td>
+<td>J9</td>
+</tr>
+<tr class="row-even"><td>idkAM571x</td>
+<td>PRU-ICSS instance 2</td>
+<td>J6</td>
+<td>J8</td>
+</tr>
+<tr class="row-odd"><td>idkAM572x</td>
+<td>PRU-ICSS instance 2</td>
+<td>J6</td>
+<td>J8</td>
+</tr>
+<tr class="row-even"><td>iceK2G</td>
+<td>PRU-ICSS instance 2</td>
+<td>J8A</td>
+<td>J8B</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="running-the-pruss-sorte-example">
+<h2>7.3.6. Running the PRUSS SORTE Example<a class="headerlink" href="#running-the-pruss-sorte-example" title="Permalink to this headline">¶</a></h2>
+<p>In order to run the SORTE applications, you will require 1 EVM running
+as master and 2 EVMs running as slave(slave1/slave2). Use CCS to load
+and run the master and slave applications respectively.</p>
+<p>Prior to running the applications its best to connect the EVMS as
+follows:</p>
+<p>Connect master Port0 to slave1 Port0. Connect slave1 Port1 to slave2
+Port0.</p>
+<p>After loading the application binaries from CCS, run the master first,
+then run the slave2, finally run the slave1 with Port0 connecting to the
+the master Port 0.</p>
+<p>Note that the master device will wait until it discovers 2 slave devices
+in the network. UART console on the master will print the following
+until 2 slave devices are detected:</p>
+<p><strong>sorte master: waiting for atleast 2 SLAVE devices connected</strong></p>
+<p>Once 2 slave devices are detected by the master, the following print
+will be seen on UART console and master will continue with state machine
+and protocol processing:</p>
+<p><strong>sorte master: 2 SLAVE devices connected</strong></p>
+<p>The slave device via the UART console will continuosly display the
+number of packets its received during input output exchange state of the
+protocol until pass criteria is reached as follows(as an example):</p>
+<p><strong>sorte slave: test in progress: current receive packet count: 35000</strong></p>
+<p><strong>sorte slave: test in progress: current receive packet count: 40000</strong></p>
+<p>Once pass criteria number of packets have been received, the following
+print will be displayed on UART console:</p>
+<p><strong>All tests have passed</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="additional-reference">
+<h2>7.3.7. Additional Reference<a class="headerlink" href="#additional-reference" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Document</strong></td>
+<td><strong>Location</strong></td>
+</tr>
+<tr class="row-even"><td>SORTE Master with PRU-ICSS
+Reference Design</td>
+<td><a class="reference external" href="http://www.ti.com/tool/TIDEP-0085">http://www.ti.com/tool/TIDEP-0085</a></td>
+</tr>
+<tr class="row-odd"><td>SORTE Slave Device with PRU-ICSS
+Reference Design</td>
+<td><a class="reference external" href="http://www.ti.com/tool/TIDEP-0086">http://www.ti.com/tool/TIDEP-0086</a></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="pru-icss-i2c">
+<h1>7.4. PRU-ICSS I2C<a class="headerlink" href="#pru-icss-i2c" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="pru-icss-i2c-firmware-label"></span><div class="section" id="id7">
+<h2>7.4.1. Introduction<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">PRU-ICSS I2C serves as an example for firmware-based I2C peripheral
+support. The I2C firmware (I2C FW) allows additional I2C instances for SOCs
+beyond those supported by SOC hardware. The Processor SDK package includes
+full source code for I2C FW.</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="firmware-features">
+<h2>7.4.2. FIRMWARE FEATURES<a class="headerlink" href="#firmware-features" title="Permalink to this headline">¶</a></h2>
+<p>I2C FW supports the standard two pin I2C interface through three GPIO pins
+from the PRU-ICSS module. The I2C SCL pin is implemented using a single
+GPIO configured in GPO mode. The I2C SDA pin is implemented using two GPIO
+pins: one pin configured in GPI mode for sampling SDA, and a second pin
+configured in GPO mode for driving the SDA. Depending on the I2C clock
+speed, I2C FW can emulate multiple I2C instances from a single PRU core.
+Following are high-level I2C FW features:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Feature</strong></td>
+<td><strong>Remarks</strong></td>
+</tr>
+<tr class="row-even"><td>No. of instances</td>
+<td><p class="first">4 (Standard mode)</p>
+<p class="last">1 (Fast mode)</p>
+</td>
+</tr>
+<tr class="row-odd"><td>SMBus support</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Addressing modes</td>
+<td>7/10-bit</td>
+</tr>
+<tr class="row-odd"><td>Master mode</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>I2C data transfer rate from
+100 kbps up to 400 kbps</td>
+<td>100 kHz / 400 kHz</td>
+</tr>
+<tr class="row-odd"><td>Bit format transfer</td>
+<td>8 bit</td>
+</tr>
+<tr class="row-even"><td>Number of host interrupts</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>Peripheral enable/disable
+capability</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Start/Restart/Stop</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Built-in configurable FIFOs (8,
+16, 32, 64 bytes) for buffered
+read/write</td>
+<td>8/16/32/64/128/256</td>
+</tr>
+<tr class="row-even"><td>8-bit-wide data access</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Slave reset feature</td>
+<td>Supported</td>
+</tr>
+<tr class="row-even"><td>Internal loopback feature</td>
+<td>Supported</td>
+</tr>
+<tr class="row-odd"><td>Slave mode</td>
+<td>Not Supported</td>
+</tr>
+<tr class="row-even"><td>Combined Master-Slave
+mode/transaction</td>
+<td>Not Supported</td>
+</tr>
+<tr class="row-odd"><td>DMA support</td>
+<td>Not Supported</td>
+</tr>
+<tr class="row-even"><td>Programmable clock generation</td>
+<td>Not Supported</td>
+</tr>
+<tr class="row-odd"><td>Implement Auto Idle mechanism
+(SOC specific feature)</td>
+<td>Not Supported</td>
+</tr>
+<tr class="row-even"><td>Implement Idle Request/Idle
+Acknowledge handshake mechanism
+(SOC specific feature)</td>
+<td>Not Supported</td>
+</tr>
+<tr class="row-odd"><td>Support for asynchronous wakeup
+mechanism</td>
+<td>Not Supported</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="firmware-organization">
+<h2>7.4.3. Firmware Organization<a class="headerlink" href="#firmware-organization" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>FW Item</strong></td>
+<td><strong>Directory</strong></td>
+</tr>
+<tr class="row-even"><td>Source code</td>
+<td>&lt;PDK&gt;/packages/ti/drv/i2c/firmware/icss_i2c/src</td>
+</tr>
+<tr class="row-odd"><td>Design Guide</td>
+<td>&lt;PDK&gt;/packages/ti/drv/i2c/firmware/icss_i2c/docs</td>
+</tr>
+<tr class="row-even"><td>Firmware binaries</td>
+<td>&lt;PDK&gt;/packages/ti/drv/i2c/firmware/icss_i2c/bin</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>7.4.4. Firmware Build Instruction<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>7.4.4.1. Build instruction from Processor SDK Release package<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="id10">Pre-requisites to Building</p>
+<p>Refer to the Processor SDK RTOS Building page for information on setting up the build environment.</p>
+<p class="rubric" id="compiling-i2c-firmware">Compiling I2C FIRMWARE</p>
+<ul class="simple">
+<li>cd &lt;PDK&gt;/packages/ti/drv/i2c</li>
+<li>make firm</li>
+</ul>
+<p>Firmware binaries at the end of the build will be located at:</p>
+<ul class="simple">
+<li>&lt;PDK&gt;/packages/ti/drv/i2c/firmware/&lt;FIRMWARE_TYPE&gt;/bin/&lt;SOC&gt;/&lt;HOST_CORE&gt;/&lt;REVISION&gt;</li>
+<li>&lt;FIRMWARE_TYPE&gt; indicates the firmware type i.e. icss_i2c</li>
+<li>&lt;SOC&gt; indicates the SOC type, e.g. am437x</li>
+<li>&lt;HOST_CORE&gt; indicates the Host core type on which the built binary
+can be loaded, e.g. a9host</li>
+<li>&lt;REVISION&gt; indicates the revision of the firmware binary based on
+core (there are 2 revision of PRU-ICSS core), e.g. REV1.</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="build-instruction-for-git">
+<h3>7.4.4.2. Build instruction for GIT<a class="headerlink" href="#build-instruction-for-git" title="Permalink to this headline">¶</a></h3>
+<p>Following are the steps for building firmware from any external
+environment outside Processor SDK RTOS package.</p>
+<ul class="simple">
+<li>Creation of directories<ul>
+<li>Create a working directory e.g. &lt;WORK_DIR&gt;</li>
+<li>Create a new directory named ti inside working directory. i.e.
+&lt;WORK_DIR/ti&gt;</li>
+<li>Create a new directory called drv inside ti. i.e.
+&lt;WORK_DIR/ti/drv&gt;</li>
+</ul>
+</li>
+<li>Clone of Repos<ul>
+<li>Git clone pdk build repo into ti directory. i.e.
+&lt;WORK_DIR/ti/build&gt;</li>
+<li>Git clone i2c repo into ti/drv directory. i.e.
+&lt;WORK_DIR/ti/drv/i2c&gt;</li>
+</ul>
+</li>
+<li>Setting Environment Variables<ul>
+<li>Export CLPRU install path. i.e. export CL_PRU_INSTALL_PATH=clpru
+toolchain directory</li>
+<li>Export pdk install path. i.e. export PDK_INSTALL_PATH=&lt;WORK_DIR&gt;</li>
+<li>Export LIMIT_SOCS Variable i.e. LIMIT_SOCS=&lt;SOC&gt; [Optional for
+limiting to some SOCs]</li>
+</ul>
+</li>
+<li>Build command<ul>
+<li>Run make firm_clean/firm to clean/build firmware from i2c
+directory i.e. &lt;WORK_DIR/ti/drv/i2c&gt;</li>
+</ul>
+</li>
+<li>Generated binaries<ul>
+<li>the firmware binaries which will be located in
+&lt;WORK_DIR/ti/drv/i2c/firmware/&lt;FIRMWARE_TYPE&gt;/bin/&lt;SOC&gt;/&lt;HOST_CORE&gt;/&lt;REVISION&gt;&gt;</li>
+</ul>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>7.4.5. Supported EVMs<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>Supported EVMs and pin configurations for these EVMs are listed below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="40%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">EVM Name</th>
+<th class="head">PRU-ICSS Instances</th>
+<th class="head">PRU-ICSS Revision</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>icev2AM335x</td>
+<td>1</td>
+<td>REV1</td>
+</tr>
+<tr class="row-odd"><td>idkAM437x</td>
+<td>2</td>
+<td>REV1</td>
+</tr>
+<tr class="row-even"><td>idkAM574x</td>
+<td>2</td>
+<td>REV2</td>
+</tr>
+<tr class="row-odd"><td>idkAM572x</td>
+<td>2</td>
+<td>REV2</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="icev2am335x">icev2AM335x</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="13%" />
+<col width="18%" />
+<col width="28%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ICSS</th>
+<th class="head">PRU</th>
+<th class="head">Instance</th>
+<th class="head">Functional Pin</th>
+<th class="head">PRU GPIO Pins</th>
+<th class="head">EVM Port</th>
+<th class="head">EVM Pin</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="3">ICSS1</td>
+<td rowspan="3">PRU0</td>
+<td rowspan="3">I2C0</td>
+<td>SCL</td>
+<td>pr1_pru0_pru_r30_1</td>
+<td>J3</td>
+<td>14</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">SDA</td>
+<td>pr1_edio_data_out7</td>
+<td>J4</td>
+<td>21</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r31_0</td>
+<td>J3</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="idkam437x">idkAM437x</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="13%" />
+<col width="18%" />
+<col width="28%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ICSS</th>
+<th class="head">PRU</th>
+<th class="head">Instance</th>
+<th class="head">Functional Pin</th>
+<th class="head">PRU GPIO Pins</th>
+<th class="head">EVM Port</th>
+<th class="head">EVM Pin</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="6">ICSS1</td>
+<td rowspan="6">PRU0</td>
+<td rowspan="3">I2C0</td>
+<td>SCL</td>
+<td>pr1_pru0_pru_r30_8</td>
+<td>J3</td>
+<td>6</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">SDA</td>
+<td>pr1_edio_data_out0</td>
+<td>J3</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r31_9</td>
+<td>J3</td>
+<td>8</td>
+</tr>
+<tr class="row-odd"><td rowspan="3">I2C1</td>
+<td>SCL</td>
+<td>pr1_pru0_pru_r30_10</td>
+<td>J16</td>
+<td>46</td>
+</tr>
+<tr class="row-even"><td rowspan="2">SDA</td>
+<td>pr1_edio_data_out1</td>
+<td>J3</td>
+<td>7</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r31_11</td>
+<td>J16</td>
+<td>48</td>
+</tr>
+<tr class="row-even"><td rowspan="6">ICSS0</td>
+<td rowspan="6">PRU0</td>
+<td rowspan="3">I2C0</td>
+<td>SCL</td>
+<td>pr0_pru0_pru_r30_8</td>
+<td>J16</td>
+<td>56</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">SDA</td>
+<td>pr1_edio_data_out0</td>
+<td>J3</td>
+<td>5</td>
+</tr>
+<tr class="row-even"><td>pr0_pru0_pru_r31_9</td>
+<td>J16</td>
+<td>37</td>
+</tr>
+<tr class="row-odd"><td rowspan="3">I2C1</td>
+<td>SCL</td>
+<td>pr0_pru0_pru_r30_10</td>
+<td>J16</td>
+<td>38</td>
+</tr>
+<tr class="row-even"><td rowspan="2">SDA</td>
+<td>pr1_edio_data_out1</td>
+<td>J3</td>
+<td>7</td>
+</tr>
+<tr class="row-odd"><td>pr0_pru0_pru_r31_11</td>
+<td>J16</td>
+<td>58</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="idkam572x-idkam574x">idkAM572x/idkAM574x</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="9%" />
+<col width="13%" />
+<col width="18%" />
+<col width="28%" />
+<col width="11%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">ICSS</th>
+<th class="head">PRU</th>
+<th class="head">Instance</th>
+<th class="head">Functional Pin</th>
+<th class="head">PRU GPIO Pins</th>
+<th class="head">EVM Port</th>
+<th class="head">EVM Pin</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="3">ICSS1</td>
+<td rowspan="3">PRU0</td>
+<td rowspan="3">I2C0</td>
+<td>SCL</td>
+<td>pr1_pru1_gpo1</td>
+<td>J21</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">SDA</td>
+<td>pr1_edio_data_out1</td>
+<td>J46</td>
+<td>4</td>
+</tr>
+<tr class="row-even"><td>pr1_pru1_gpi0</td>
+<td>J21</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="i2c-firmware-example">
+<h2>7.4.6. I2C FIRMWARE Example<a class="headerlink" href="#i2c-firmware-example" title="Permalink to this headline">¶</a></h2>
+<p>Sample code for I2C transaction:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/* Refer to I2C FW Example for details */</span>
+<span class="p">...</span>
+
+<span class="cm">/* Initialize the I2C FW configuration */</span>
+<span class="n">I2C_socInitFwCfg</span><span class="p">();</span>
+
+<span class="cm">/* Get the default I2C init configuration */</span>
+<span class="n">I2C_socGetFwCfg</span><span class="p">(</span><span class="n">I2C_TEST_INSTANCE1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i2c_cfg</span><span class="p">);</span>
+
+<span class="cm">/* Modify the default I2C configurations if necessary */</span>
+
+<span class="cm">/* Set the default I2C init configurations */</span>
+<span class="n">I2C_socSetFwCfg</span><span class="p">(</span><span class="n">I2C_TEST_INSTANCE1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i2c_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+<span class="p">...</span>
+
+<span class="n">I2C_init</span><span class="p">();</span>
+
+<span class="n">handle</span> <span class="o">=</span> <span class="n">I2C_open</span><span class="p">(</span><span class="n">I2C_TEST_INSTANCE1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i2cParams</span><span class="p">);</span>
+<span class="p">...</span>
+
+<span class="cm">/* Initiate I2C transfers */</span>
+<span class="n">I2C_transactionInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i2cTransaction</span><span class="p">);</span>
+<span class="n">i2cTransaction</span><span class="p">.</span><span class="n">slaveAddress</span> <span class="o">=</span> <span class="n">I2C_EEPROM_ADDR</span><span class="p">;</span>
+<span class="p">...</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="n">I2C_transfer</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i2cTransaction</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">status</span><span class="o">!=</span> <span class="n">I2C_STS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* I2C transaction failed */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Sample code for SMBus transaction:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cm">/* Refer to I2C FW Test for details */</span>
+<span class="p">...</span>
+
+<span class="n">testCmd</span><span class="p">.</span><span class="n">transferCmd</span> <span class="o">=</span> <span class="n">SMBUS_WRITE_BYTE_CMD</span><span class="p">;</span>
+<span class="n">testCmd</span><span class="p">.</span><span class="n">cmdCode</span> <span class="o">=</span> <span class="n">WRITE_SMBUS_COMMAND_CODE</span><span class="p">;</span>
+<span class="n">controlStatus</span> <span class="o">=</span> <span class="n">I2C_control</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">I2C_CMD_SMBUS_TYPE</span><span class="p">,</span> <span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">testCmd</span><span class="p">));</span>
+<span class="n">I2C_transactionInit</span><span class="p">(</span><span class="o">&amp;</span><span class="n">i2cTransaction</span><span class="p">);</span>
+<span class="p">...</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="n">I2C_transfer</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">i2cTransaction</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">I2C_STS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* I2C transaction failed */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="examples-list">Examples List</p>
+<p>Refer to the Release Notes for details concerning I2C support across different EVMs.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Expected Results</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>I2C_FwExample</td>
+<td>Driver Firmware
+example application
+for I2C FW instances</td>
+<td><p class="first">Status messages will
+be displayed on
+console based based
+on pass/fail criteria:</p>
+<p><strong>Pass criteria:</strong></p>
+<p>I2C Test: Instance:
+Baud Rate 100KHz:</p>
+<p class="last">All tests have
+passed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="id12">Firmware Design Guide</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Document</strong></td>
+<td><strong>Location</strong></td>
+</tr>
+<tr class="row-even"><td>I2C FIRMWARE Design Guide</td>
+<td>&lt;PDK&gt;/packages/ti/drv/i2c/firmware/icss_i2c/docs/I2C_FW_DESIGN_GUIDE.pdf</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE: For normal use of I2C FW, there is no need to refer to the design guide.
+This document can be cosulted in case of interest in details of internal firmware
+operation, or a desire to modify the firmware.</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Compilers.html" class="btn btn-neutral float-right" title="8. Compilers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="PRU_ICSS.html" class="btn btn-neutral" title="7. PRU-ICSS Firmware" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyight 1995-2018</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'05_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. PRU-ICSS Firmware &mdash; Processor SDK RTOS Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Processor SDK RTOS Documentation" href="../index.html"/>
+        <link rel="next" title="7.1. Dual EMAC and Switch" href="index_pru_icss_fw.html"/>
+        <link rel="prev" title="6.1. CSL" href="index_device_drv.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                05_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board_EVM_Abstration.html">3. Board/EVM Abstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Foundational_Components.html">4. Foundational Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DSP_Software.html">5. DSP Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Device_Drivers.html">6. Device Drivers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">7. PRU-ICSS Firmware</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html">7.1. Dual EMAC and Switch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#icss-g-dual-emac">7.2. ICSS-G Dual EMAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#pru-icss-sorte">7.3. PRU-ICSS SORTE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#pru-icss-i2c">7.4. PRU-ICSS I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pru-icss-espi">7.5. PRU-ICSS ESPI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">7.5.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-organization">7.5.2. Firmware Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#firmware-build-instruction">7.5.3. Firmware Build Instruction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#build-instruction-from-processor-sdk-release-package">7.5.3.1. Build instruction from Processor SDK Release package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-evms">7.5.4. Supported EVMs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#espi-applications">7.5.5. eSPI Applications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Compilers.html">8. Compilers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_and_Demonstrations.html">9. Examples and Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_Guides.html">10. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">11. Frequently Asked Questions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>7. PRU-ICSS Firmware</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pru-icss-firmware">
+<h1>7. PRU-ICSS Firmware<a class="headerlink" href="#pru-icss-firmware" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index_pru_icss_fw.html">7.1. Dual EMAC and Switch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#introduction">7.1.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#dual-emac">7.1.2. DUAL_EMAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#switch">7.1.3. SWITCH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#code-organization">7.1.4. Code Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#firmware-build-instruction">7.1.5. Firmware Build Instruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_pru_icss_fw.html#build-instruction-from-processor-sdk-release-package">7.1.5.1. Build instruction from Processor SDK Release package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_pru_icss_fw.html#build-instruction-from-git">7.1.5.2. Build instruction from GIT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#supported-evms">7.1.6. Supported EVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#running-icss-emac-firmwares-example">7.1.7. Running ICSS-EMAC FIRMWARES Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_pru_icss_fw.html#icss-g-dual-emac">7.2. ICSS-G Dual EMAC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#id1">7.2.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#id2">7.2.2. DUAL_EMAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#firmware-code-location-and-build-instruction">7.2.3. Firmware Code Location and Build Instruction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_pru_icss_fw.html#pru-icss-sorte">7.3. PRU-ICSS SORTE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#id3">7.3.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#protocol-overview">7.3.2. Protocol Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#id4">7.3.3. Code Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#building-the-examples">7.3.4. Building the Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_pru_icss_fw.html#id5">7.3.4.1. Pre-requisites to Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_pru_icss_fw.html#compiling-the-pruss-sorte-firmware">7.3.4.2. Compiling the PRUSS SORTE Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_pru_icss_fw.html#compiling-the-pruss-sorte-application">7.3.4.3. Compiling the PRUSS SORTE Application</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#id6">7.3.5. Supported EVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#running-the-pruss-sorte-example">7.3.6. Running the PRUSS SORTE Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#additional-reference">7.3.7. Additional Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_pru_icss_fw.html#pru-icss-i2c">7.4. PRU-ICSS I2C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#id7">7.4.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#firmware-features">7.4.2. FIRMWARE FEATURES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#firmware-organization">7.4.3. Firmware Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#id8">7.4.4. Firmware Build Instruction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_pru_icss_fw.html#id9">7.4.4.1. Build instruction from Processor SDK Release package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_pru_icss_fw.html#build-instruction-for-git">7.4.4.2. Build instruction for GIT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#id11">7.4.5. Supported EVMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_pru_icss_fw.html#i2c-firmware-example">7.4.6. I2C FIRMWARE Example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="pru-icss-espi">
+<h2>7.5. PRU-ICSS ESPI<a class="headerlink" href="#pru-icss-espi" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="pru-icss-espi-firmware-label"></span><div class="section" id="introduction">
+<h3>7.5.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">PRU-ICSS eSPI serves as an example for firmware-based eSPI peripheral
+support. The Processor SDK package includes full source code for eSPI FW.</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="firmware-organization">
+<h3>7.5.2. Firmware Organization<a class="headerlink" href="#firmware-organization" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>FW Item</strong></th>
+<th class="head"><strong>Directory</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Source code</td>
+<td>&lt;PDK&gt;/packages/ti/drv/spi/firmware/icss_espi/src/</td>
+</tr>
+<tr class="row-odd"><td>Design Guide</td>
+<td>&lt;PDK&gt;/packages/ti/drv/spi/docs/</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="firmware-build-instruction">
+<h3>7.5.3. Firmware Build Instruction<a class="headerlink" href="#firmware-build-instruction" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="build-instruction-from-processor-sdk-release-package">
+<h4>7.5.3.1. Build instruction from Processor SDK Release package<a class="headerlink" href="#build-instruction-from-processor-sdk-release-package" title="Permalink to this headline">¶</a></h4>
+<p class="rubric" id="espi-pre-requisites-to-building">Pre-requisites to Building</p>
+<p>Refer to the Processor SDK RTOS Building page for information on setting up the build environment.</p>
+<p class="rubric" id="espi-compiling-driver-firmware">Compiling Driver/Firmware</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">make</span> <span class="pre">spi</span></tt></li>
+</ol>
+<p class="rubric" id="espi-run-app">Running CCS Application</p>
+<p>CCS applications will be build and run just like any other project with one exception. Before loading the binary, from the menu-bar run <tt class="docutils literal"><span class="pre">Scripts</span> <span class="pre">&gt;</span> <span class="pre">PRU_ICSS</span> <span class="pre">&gt;</span> <span class="pre">PRU_ICSS_Init</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="supported-evms">
+<h3>7.5.4. Supported EVMs<a class="headerlink" href="#supported-evms" title="Permalink to this headline">¶</a></h3>
+<p>Supported EVMs and pin configurations for these EVMs are listed below. See the design document in <tt class="docutils literal"><span class="pre">&lt;PDK&gt;/packages/ti/drv/spi/docs/</span></tt> for more information.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="40%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">EVM Name</th>
+<th class="head">PRU-ICSS Instances</th>
+<th class="head">PRU-ICSS Revision</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>bbbAM335x</td>
+<td>1</td>
+<td>REV1</td>
+</tr>
+<tr class="row-odd"><td>idkAM437x</td>
+<td>2</td>
+<td>REV1</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="espi-bbbam335x">bbbAM335x</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="11%" />
+<col width="21%" />
+<col width="32%" />
+<col width="12%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Core</th>
+<th class="head">PRU</th>
+<th class="head">Functional Pin</th>
+<th class="head">GPIO Pins</th>
+<th class="head">EVM Port</th>
+<th class="head">EVM Pin</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="12">ICSS1</td>
+<td rowspan="12">PRU1</td>
+<td rowspan="12"><blockquote class="first">
+<div>OUT[0]</div></blockquote>
+<blockquote>
+<div>OUT[1]</div></blockquote>
+<blockquote>
+<div>OUT[2]</div></blockquote>
+<blockquote>
+<div>OUT[3]</div></blockquote>
+<blockquote>
+<div>Alert</div></blockquote>
+<blockquote>
+<div>EN</div></blockquote>
+<blockquote>
+<div>IN[0]</div></blockquote>
+<blockquote>
+<div>IN[1]</div></blockquote>
+<blockquote>
+<div>IN[2]</div></blockquote>
+<blockquote>
+<div>IN[3]</div></blockquote>
+<blockquote>
+<div>SCL</div></blockquote>
+<blockquote class="last">
+<div>CS</div></blockquote>
+</td>
+<td>pr1_pru0_pru_r30_4</td>
+<td>J3</td>
+<td>41</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_5</td>
+<td>J3</td>
+<td>42</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r30_6</td>
+<td>J3</td>
+<td>39</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_7</td>
+<td>J3</td>
+<td>40</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r30_9</td>
+<td>J3</td>
+<td>29</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_10</td>
+<td>J3</td>
+<td>28</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r30_0</td>
+<td>J3</td>
+<td>45</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_1</td>
+<td>J3</td>
+<td>46</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r30_2</td>
+<td>J3</td>
+<td>43</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_3</td>
+<td>J3</td>
+<td>44</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r30_8</td>
+<td>J3</td>
+<td>27</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_11</td>
+<td>J3</td>
+<td>30</td>
+</tr>
+<tr class="row-even"><td>A8</td>
+<td>n/a</td>
+<td>Reset</td>
+<td>GPIO_3_19</td>
+<td>J9</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric" id="espi-idkam437x">idkAM437x</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="11%" />
+<col width="21%" />
+<col width="32%" />
+<col width="12%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Core</th>
+<th class="head">PRU</th>
+<th class="head">Functional Pin</th>
+<th class="head">GPIO Pins</th>
+<th class="head">EVM Port</th>
+<th class="head">EVM Pin</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="6">ICSS1</td>
+<td rowspan="6">PRU0</td>
+<td rowspan="6"><blockquote class="first">
+<div>OUT[0]</div></blockquote>
+<blockquote>
+<div>Alert</div></blockquote>
+<blockquote>
+<div>EN</div></blockquote>
+<blockquote>
+<div>IN[0]</div></blockquote>
+<blockquote>
+<div>SCL</div></blockquote>
+<blockquote class="last">
+<div>CS</div></blockquote>
+</td>
+<td>pr1_pru0_pru_r30_6</td>
+<td>P16</td>
+<td>49</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_11</td>
+<td>P16</td>
+<td>48</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r30_8</td>
+<td>P16</td>
+<td>6</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_16</td>
+<td>P16</td>
+<td>42</td>
+</tr>
+<tr class="row-even"><td>pr1_pru0_pru_r30_10</td>
+<td>P16</td>
+<td>46</td>
+</tr>
+<tr class="row-odd"><td>pr1_pru0_pru_r30_9</td>
+<td>P16</td>
+<td>8</td>
+</tr>
+<tr class="row-even"><td>A9</td>
+<td>n/a</td>
+<td>Reset</td>
+<td>GPIO_5_9</td>
+<td>P16</td>
+<td>32</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="espi-applications">
+<h3>7.5.5. eSPI Applications<a class="headerlink" href="#espi-applications" title="Permalink to this headline">¶</a></h3>
+<p>We have included a simple example test application which handles PUT_IORD_SHORT, PUT_IOWR_SHORT, PUT_MEMRD32_SHORT, and PUT_MEMWR32_SHORT packets with expected address/data values. This can be used as a starting point to build your own applications, along with the following:
+- eSPI uses the MCSPI API</p>
+<blockquote>
+<div><ul class="simple">
+<li>Open as MCSPI instance 2</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt>HW interrupts must be enabled</dt>
+<dd><ul class="first last simple">
+<li>i.e. HwiP_enableInterrupt(espi_cfg.intNum)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>MCSPI_transfer() is blocking and takes a SPI_Transaction parameter which is used as follows:</dt>
+<dd><ul class="first last simple">
+<li>RX Transfer:
+- transaction.rxBuf = &lt;some pre-allocated buffer&gt;
+- transaction.txBuf = Null
+- transaction.count = max packet size</li>
+<li>TX Transfer:
+- transaction.rxBuf = Null
+- transaction.txBuf = &lt;some pre-allocated buffer&gt;
+- transaction.count = &lt;size of packet&gt;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">The application must parse the full eSPI packet, and must respond with the full proper eSPI packet (the RSP code and CRC will be taken care of by the firmware)</p>
+</li>
+</ul>
+<p class="rubric" id="espi-example-application">example-application</p>
+<div class="highlight-c"><div class="highlight"><pre><span class="cm">/* Refer to eSPI FW Example for details */</span>
+
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+
+<span class="p">...</span>
+
+<span class="cm">/* Initialize the ESPI fw configuration */</span>
+<span class="n">ESPI_socInitFwCfg</span><span class="p">();</span>
+
+<span class="cm">/* Get the default ESPI init configurations */</span>
+<span class="n">ESPI_socGetFwCfg</span><span class="p">(</span><span class="n">ESPI_INSTANCE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">espi_cfg</span><span class="p">);</span>
+
+<span class="cm">/* Modify the default eSPI configurations if necessary */</span>
+
+<span class="cm">/* Set the default ESPI init configurations */</span>
+  <span class="n">ESPI_socSetFwCfg</span><span class="p">(</span><span class="n">ESPI_INSTANCE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">espi_cfg</span><span class="p">);</span>
+
+<span class="cm">/* Set GPIO pin configurations */</span>
+<span class="n">GPIO_setConfig</span><span class="p">(</span><span class="n">ESPI_GPIO_PIN_RESET</span><span class="p">,</span> <span class="n">GPIO_DEVICE_CONFIG</span><span class="p">(</span><span class="n">espi_cfg</span><span class="p">.</span><span class="n">resetPin</span><span class="p">.</span><span class="n">port</span><span class="p">,</span>
+                                                <span class="n">espi_cfg</span><span class="p">.</span><span class="n">resetPin</span><span class="p">.</span><span class="n">pinNum</span><span class="p">)</span> <span class="o">|</span>
+             <span class="n">GPIO_CFG_IN_INT_RISING</span> <span class="o">|</span> <span class="n">GPIO_CFG_INPUT</span><span class="p">);</span>
+
+<span class="cm">/* Initialize GPIO */</span>
+<span class="n">GPIO_init</span><span class="p">();</span>
+
+<span class="cm">/* Initialize the MCSPI paramters */</span>
+<span class="n">MCSPI_Params_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mcspiParams</span><span class="p">);</span>
+
+<span class="cm">/* Init SPI driver */</span>
+<span class="n">MCSPI_init</span><span class="p">();</span>
+
+<span class="cm">/* Enable interrupts (necessary for  */</span>
+<span class="n">HwiP_enableInterrupt</span><span class="p">(</span><span class="n">espi_cfg</span><span class="p">.</span><span class="n">intNum</span><span class="p">);</span>
+
+<span class="cm">/* Grab ESPI handle from SoC config list */</span>
+<span class="n">fwHandle</span> <span class="o">=</span> <span class="p">(</span><span class="n">MCSPI_Handle</span><span class="p">)</span><span class="n">MCSPI_open</span><span class="p">(</span><span class="n">ESPI_INSTANCE</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mcspiParams</span><span class="p">);</span>
+
+<span class="p">...</span>
+
+<span class="cm">/* Read ESPI Packet */</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">txBuf</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="cm">/* indicates we want RX */</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">rxBuf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="n">rxBuf</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">ESPI_PACKET_MAX_SIZE</span><span class="p">;</span>
+<span class="n">retVal</span> <span class="o">=</span> <span class="n">MCSPI_transfer</span><span class="p">(</span><span class="n">fwHandle</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">transaction</span><span class="p">);</span>  <span class="cm">/* blocking */</span>
+
+<span class="p">...</span>
+
+<span class="cm">/* Prepare TX response */</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">txBuf</span> <span class="o">=</span> <span class="p">(</span><span class="kt">uint8_t</span><span class="o">*</span><span class="p">)</span> <span class="n">txBuf</span><span class="p">;</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">rxBuf</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="cm">/* indicates we want TX */</span>
+<span class="n">transaction</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">ESPI_PACKET_MAX_SIZE</span><span class="p">;</span>
+
+<span class="p">...</span>
+
+<span class="cm">/* Put response in TX queue */</span>
+<span class="n">retVal</span> <span class="o">=</span> <span class="n">MCSPI_transfer</span><span class="p">(</span><span class="n">fwHandle</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">transaction</span><span class="p">);</span>
+
+<span class="p">...</span>
+</pre></div>
+</div>
+<p class="rubric" id="examples-list">Examples List</p>
+<p>Refer to the Release Notes for details concerning eSPI support across different EVMs.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="32%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Expected Results</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ESPI_FwExample</td>
+<td>Driver Firmware
+example application
+for ESPI FW instances</td>
+<td>A short write to 0xDEAD
+or 0x0D0E0A0D will not
+print or return anything.
+A short read from 0xDEAD
+or 0x0D0E0A0D will return
+the command opcode + the
+byte-number of the
+response. A read from any
+other address will return
+the opcode minus the
+byte-number of the
+response.</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="firmware-design-guide">Firmware Design Guide</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>Document</strong></th>
+<th class="head"><strong>Location</strong></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>eSPI FIRMWARE Design Guide</td>
+<td>&lt;PDK&gt;/packages/ti/drv/spi/docs/ESPI_FW_DESIGN_GUIDE.doc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE: For normal use of eSPI FW, there is no need to refer to the design guide.
+This document can be cosulted in case of interest in details of internal firmware
+operation, or a desire to modify the firmware.</strong></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="index_pru_icss_fw.html" class="btn btn-neutral float-right" title="7.1. Dual EMAC and Switch" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_device_drv.html" class="btn btn-neutral" title="6.1. CSL" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyight 1995-2018</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'05_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

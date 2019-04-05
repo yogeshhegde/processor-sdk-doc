@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Board/EVM Abstration &mdash; Processor SDK RTOS Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Processor SDK RTOS Documentation" href="../index.html"/>
+        <link rel="next" title="3.1. Board Support" href="index_board.html"/>
+        <link rel="prev" title="2.1. Release Notes" href="index_release_specific.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                05_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">3. Board/EVM Abstration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html">3.1. Board Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#diagnostics">3.2. Diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#diagnostics-execution">3.3. Diagnostics Execution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#power-on-self-test">3.4. Power-On Self Test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#board-utils">3.5. Board Utils</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Foundational_Components.html">4. Foundational Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DSP_Software.html">5. DSP Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Device_Drivers.html">6. Device Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRU_ICSS.html">7. PRU-ICSS Firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compilers.html">8. Compilers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_and_Demonstrations.html">9. Examples and Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_Guides.html">10. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">11. Frequently Asked Questions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>3. Board/EVM Abstration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="board-evm-abstration">
+<h1>3. Board/EVM Abstration<a class="headerlink" href="#board-evm-abstration" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index_board.html">3.1. Board Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#introduction">3.1.1. Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#board-apis">3.1.1.1. Board APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#lld-dependencies">3.1.1.2. LLD Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#application-integration-for-am5x-dra7xx">3.1.2. Application Integration for AM5x/DRA7xx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#considerations-for-dra7xx-devices">3.1.2.1. Considerations for DRA7xx devices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#custom-board-addition">3.1.3. Custom Board Addition</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#board-configurations">3.1.3.1. Board Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#creating-board-configurations">3.1.3.2. Creating Board Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#updating-board-configurations">3.1.3.3. Updating Board Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#platform-specific-configurations">3.1.3.4. Platform Specific Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#custom-board-validation">3.1.3.5. Custom Board Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#creating-board-library-with-custom-name">3.1.3.6. Creating Board Library with Custom Name</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_board.html#diagnostics">3.2. Diagnostics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#overview">3.2.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#building-the-examples">3.2.2. Building the Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#pre-requisites-to-building">3.2.2.1. Pre-requisites to Building</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#compiling-the-diagnostic-applications">3.2.2.2. Compiling the Diagnostic Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#creating-the-sd-card-loadable-files">3.2.2.3. Creating the SD Card Loadable Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#creating-the-spi-flash-loadable-files">3.2.2.4. Creating the SPI Flash Loadable Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#make-targets">3.2.2.5. Make targets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#running-the-diagnostic-examples">3.2.3. Running the Diagnostic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#loading-through-sd-card-default-method">3.2.3.1. Loading through SD Card (Default Method)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#loading-through-spi-flash">3.2.3.2. Loading through SPI Flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#running-or-debugging-on-ccs">3.2.3.3. Running or debugging on CCS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#running-on-a-different-arm-core">3.2.3.4. Running on a different ARM core</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#diagnostic-applications">3.2.4. Diagnostic Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#additional-jumper-or-hardware-settings">3.2.5. Additional Jumper or Hardware Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#current-monitor">3.2.5.1. Current Monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#gmac">3.2.5.2. GMAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#icss-emac">3.2.5.3. ICSS EMAC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#lcd-touchscreen">3.2.5.4. LCD Touchscreen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#mcspi">3.2.5.5. McSPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#pwm">3.2.5.6. PWM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_board.html#diagnostics-execution">3.3. Diagnostics Execution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#id7">3.3.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#functional-tests">3.3.2. Functional Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#accelerometer-test">3.3.2.1. Accelerometer Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#adc-test">3.3.2.2. ADC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#boot-eeprom-test">3.3.2.3. Boot EEPROM Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#boot-switch-test">3.3.2.4. Boot Switch Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#button-test">3.3.2.5. Button Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#buzzer-test">3.3.2.6. Buzzer Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#clock-generator-test">3.3.2.7. Clock Generator Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#current-monitor-test">3.3.2.8. Current Monitor Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#dcan-test">3.3.2.9. DCAN Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#eeprom-test">3.3.2.10. EEPROM Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#emac-test">3.3.2.11. EMAC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#emmc-test">3.3.2.12. eMMC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#external-rtc-test">3.3.2.13. External RTC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#gmac-test">3.3.2.14. GMAC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#haptics-test">3.3.2.15. Haptics Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#hdmi-test">3.3.2.16. HDMI Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#icss-emac-test">3.3.2.17. ICSS EMAC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#icssg-emac-test">3.3.2.18. ICSSG EMAC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#lcd-test">3.3.2.19. LCD Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#lcd-touchscreen-test">3.3.2.20. LCD Touchscreen Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#icss-led-test">3.3.2.21. ICSS LED Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#industrial-led-test">3.3.2.22. Industrial LED Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#led-test">3.3.2.23. LED Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#light-sensor-test">3.3.2.24. Light Sensor Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#mcan-test">3.3.2.25. MCAN Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#mcasp-audio-test">3.3.2.26. McASP Audio Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#mcasp-audiodc-test">3.3.2.27. McASP AudioDC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#mcspi-test">3.3.2.28. McSPI Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#memory-ddr-test">3.3.2.29. Memory (DDR) Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#mmcsd-test">3.3.2.30. MMCSD Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#nand-test">3.3.2.31. Nand Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#nor-flash-test">3.3.2.32. NOR Flash Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#oled-display-test">3.3.2.33. OLED Display Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#ospi-flash-test">3.3.2.34. OSPI Flash Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#pcie-2-lane-test">3.3.2.35. PCIe (2-lane) Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#pcie-1-lane-test">3.3.2.36. PCIe (1-lane) Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#pmic-test">3.3.2.37. PMIC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#pwm-test">3.3.2.38. PWM Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#qspi-test">3.3.2.39. QSPI Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#rotary-switch-test">3.3.2.40. Rotary Switch Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#rs485-uart-test">3.3.2.41. RS485 UART Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#rtc-test">3.3.2.42. RTC Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#temperature-sensor-test">3.3.2.43. Temperature Sensor Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#timer-test">3.3.2.44. Timer Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#uart-test">3.3.2.45. UART Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#uart2usb-test">3.3.2.46. UART2USB Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#usb-device-test">3.3.2.47. USB Device Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#usb-host-test">3.3.2.48. USB Host Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#stress-tests">3.3.3. Stress Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#boot-eeprom-stress-test">3.3.3.1. Boot EEPROM Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#current-monitor-stress-test">3.3.3.2. Current Monitor Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#emac-stress-test">3.3.3.3. EMAC Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#emmc-stress-test">3.3.3.4. eMMC Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#external-rtc-stress-test">3.3.3.5. External RTC Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#icssg-emac-stress-test">3.3.3.6. ICSSG EMAC Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#icss-led-stress-test">3.3.3.7. ICSS LED Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#industrial-led-stress-test">3.3.3.8. Industrial LED Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#led-stress-test">3.3.3.9. LED Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#memory-ddr-stress-test">3.3.3.10. Memory (DDR) Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#mmcsd-stress-test">3.3.3.11. MMCSD Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#nor-flash-stress-test">3.3.3.12. NOR Flash Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#ospi-flash-stress-test">3.3.3.13. OSPI Flash Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#temperature-sensor-stress-test">3.3.3.14. Temperature Sensor Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#usb-host-stress-test">3.3.3.15. USB Host Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#mcan-stress-test">3.3.3.16. MCAN Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#uart-stress-test">3.3.3.17. UART Stress Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#rs485-uart-stress-test">3.3.3.18. RS485 UART Stress Test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_board.html#power-on-self-test">3.4. Power-On Self Test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_board.html#board-utils">3.5. Board Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#uniflash">3.5.1. Uniflash</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#id269">3.5.1.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#supported-platforms">3.5.1.2. Supported Platforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#pre-requisites">3.5.1.3. Pre-Requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#binaries">3.5.1.4. Binaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#display-help">3.5.1.5. Display Help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#programming-flashwriter">3.5.1.6. Programming FlashWriter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#programming-flashwriter-on-am65xx-platform">3.5.1.7. Programming FlashWriter on AM65xx Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#programming-binaries-to-flash-device">3.5.1.8. Programming binaries to Flash Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#erasing-flash-device-on-the-target-platform">3.5.1.9. Erasing Flash Device on the Target Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_board.html#rebuilding-board-utils">3.5.1.10. Rebuilding Board-utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_board.html#uart-apploader">3.5.2. UART Apploader</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="index_board.html" class="btn btn-neutral float-right" title="3.1. Board Support" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_release_specific.html" class="btn btn-neutral" title="2.1. Release Notes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyight 1995-2018</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'05_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

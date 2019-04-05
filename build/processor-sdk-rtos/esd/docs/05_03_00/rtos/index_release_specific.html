@@ -1,0 +1,3595 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2.1. Release Notes &mdash; Processor SDK RTOS Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Processor SDK RTOS Documentation" href="../index.html"/>
+        <link rel="up" title="2. Release Specific" href="Release_Specific.html"/>
+        <link rel="next" title="3. Board/EVM Abstration" href="Board_EVM_Abstration.html"/>
+        <link rel="prev" title="2. Release Specific" href="Release_Specific.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                05_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">1. Overview</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="">2.1. Release Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">2.1.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#licensing">2.1.2. Licensing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#documentation">2.1.3. Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processor-sdk-v05-03-00">2.1.4. Processor SDK v05.03.00</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixed-issues">2.1.5. Fixed Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">2.1.6. Known Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-platforms">2.1.7. Supported Platforms</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#devices">2.1.7.1. Devices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evaluation-modules">2.1.7.2. Evaluation Modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#demonstrations">2.1.7.3. Demonstrations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drivers">2.1.7.4. Drivers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-features">2.1.7.5. Other Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-and-usage">2.1.8. Installation and Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-support">2.1.9. Host Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-support-and-product-updates">2.1.10. Technical Support and Product Updates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archived">2.1.11. Archived</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-platforms-and-versions">2.2. Supported Platforms and Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#migration-guide">2.3. Migration Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Board_EVM_Abstration.html">3. Board/EVM Abstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Foundational_Components.html">4. Foundational Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DSP_Software.html">5. DSP Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Device_Drivers.html">6. Device Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRU_ICSS.html">7. PRU-ICSS Firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compilers.html">8. Compilers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_and_Demonstrations.html">9. Examples and Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_Guides.html">10. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">11. Frequently Asked Questions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="Release_Specific.html">2. Release Specific</a> &raquo;</li>
+      
+    <li>2.1. Release Notes</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="release-notes">
+<span id="processor-sdk-rtos-release-notes"></span><h1>2.1. Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>2.1.1. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Processor Software Development Kit (Processor-SDK)</strong> provides the
+core foundation and building blocks that facilitate application software
+development on TI&#8217;s embedded processors. This <em>Release Notes</em> focuses on
+the Real-time operating system (RTOS).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="licensing">
+<h2>2.1.2. Licensing<a class="headerlink" href="#licensing" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the software manifest, which outlines the licensing
+status for all packages included in this release. The manifest can be
+found on the SDK download page or in the installed directory as
+indicated below.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>2.1.3. Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="index_overview.html#processor-sdk-rtos-getting-started-guide-label"><em>Getting Started Guide</em></a>:
+Provides information on getting the software and running basic
+examples/demonstrations bundled in the SDK.</li>
+<li><a class="reference internal" href="#rtos-sdk-migration-guide-label"><em>Migration Guide</em></a> Provides
+migration information for applications built on top of the Processor
+SDK for RTOS.</li>
+<li><em class="xref std std-ref">Software Developer Guide</em>
+Provides information on features, functions, delivery package and,
+compile tools for the Processor SDK RTOS release. This also provides
+detailed information regarding software elements and software
+infrastructure to allow developers to start creating applications.</li>
+<li><strong>Software Manifest</strong>: Provides license information on software
+included in the SDK release. This document is in the release at
+<tt class="docutils literal"><span class="pre">/processor_sdk_rtos_&lt;SOC&gt;_&lt;version&gt;/docs</span></tt> and available to view
+from the software download page.</li>
+<li><strong>EVM Quick Start Guide</strong>: Provides information on hardware setup and
+running the demonstration application that is loaded on flash. This
+document is provided as part of the EVM kit.</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="processor-sdk-v05-03-00">
+<h2>2.1.4. Processor SDK v05.03.00<a class="headerlink" href="#processor-sdk-v05-03-00" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Big-endian support for C66x and C674x platforms shall be deprecated in Processor SDK RTOS from the Release 6.0 (2Q-2019)</p>
+</div>
+<p>Released March 2019</p>
+<p class="rubric" id="whats-new">What&#8217;s New</p>
+<p class="rubric" id="new-features">New Features</p>
+<ul>
+<li><dl class="first docutils">
+<dt>AM65x</dt>
+<dd><ul class="first last">
+<li><p class="first">EA for AM65x HS SOC</p>
+</li>
+<li><p class="first">SBL Example app with XIP</p>
+</li>
+<li><p class="first">XIP mode support in OSPI driver</p>
+</li>
+<li><p class="first"><a class="reference external" href="index_board.html#uniflash">Uniflash</a> image load over UART</p>
+</li>
+<li><p class="first">PCIe driver update for Multiple interfaces, DMA and Interrupt Support</p>
+</li>
+<li><dl class="first docutils">
+<dt>CAN to Ethernet Gateway Demo</dt>
+<dd><ul class="first last simple">
+<li>Features not (yet) supported: USB 3.0, MPU TI-RTOS SMP,CTOOLSLIB</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>OMAPL13x</dt>
+<dd><ul class="first last simple">
+<li>DMA mode support for <a class="reference external" href="index_device_drv.html#mcspi-qspi-ospi">SPI</a> driver</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AM437x</dt>
+<dd><ul class="first last simple">
+<li>IOLink driver and sample application</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AM574x</dt>
+<dd><ul class="first last simple">
+<li>Support for C66x 1Ghz</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AM335x</dt>
+<dd><ul class="first last simple">
+<li>PRU-ICSS Soft UART</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Rx interrupt pacing support in EMAC firmware</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line">C64P big endian targets are no longer supported since this release.</div>
+</div>
+</div>
+<p class="rubric" id="component-version">Component Version</p>
+<p>The following software components and host tools are bundled with the
+SDK installer. See the <em class="xref std std-ref">Software Developer Guide</em> for
+more information on each item.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line">This release has been tested with the following component and tool versions. It is recommended to use the versions listed here to avoid compatibility issues.</div>
+</div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="12%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="7%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Version</th>
+<th class="head">AM335x</th>
+<th class="head">AM437x</th>
+<th class="head">AM57x</th>
+<th class="head">AM65x</th>
+<th class="head">K2H/K2K</th>
+<th class="head">K2E</th>
+<th class="head">K2L</th>
+<th class="head">K2G</th>
+<th class="head">C665x</th>
+<th class="head">C667x</th>
+<th class="head">OMAP-L137</th>
+<th class="head">OMAP-L138</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CG_XML</td>
+<td>2.61.0</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>CTOOLSLIB</td>
+<td>2.2.0.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>DSPLIB</td>
+<td>3.4.0.3</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>EDMA3 LLD</td>
+<td>2.12.5.30</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>FC</td>
+<td>3.40.2.7</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>FFTLIB</td>
+<td>3.1.0.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>IMGLIB</td>
+<td>3.1.1.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>IPC</td>
+<td>3.50.3</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>LIBARCH</td>
+<td>1.0.0.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>LINALG</td>
+<td>1.2.0.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>MATHLIB</td>
+<td>3.1.2.3</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>MPM</td>
+<td>3.0.4.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>NDK</td>
+<td>3.40.1</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>NS</td>
+<td>2.40.1</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>OPENCL</td>
+<td>1.1.18.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>OPENMP</td>
+<td>2.6.3.0</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>PDK</td>
+<td>&nbsp;</td>
+<td>1.0.14</td>
+<td>1.0.14</td>
+<td>1.0.14</td>
+<td>1.0.4</td>
+<td>4.0.13</td>
+<td>4.0.13</td>
+<td>4.0.13</td>
+<td>1.0.13</td>
+<td>2.0.13</td>
+<td>2.0.13</td>
+<td>1.0.8</td>
+<td>1.0.8</td>
+</tr>
+<tr class="row-odd"><td>SYS/BIOS</td>
+<td>6.75.2</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>UIA</td>
+<td>2.30.1.2</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>XDAIS</td>
+<td>7.24.0.4</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>XDCTOOLS</td>
+<td>3.51.01</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<p>The following compilers are bundled with the SDK installer:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="9%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="7%" />
+<col width="5%" />
+<col width="8%" />
+<col width="8%" />
+<col width="5%" />
+<col width="5%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Compiler</th>
+<th class="head">Version</th>
+<th class="head">AM335x</th>
+<th class="head">AM437x</th>
+<th class="head">AM57x</th>
+<th class="head">AM65x</th>
+<th class="head">K2H/K2K</th>
+<th class="head">K2E</th>
+<th class="head">K2L</th>
+<th class="head">K2G</th>
+<th class="head">C665x</th>
+<th class="head">C667x</th>
+<th class="head">OMAP-L137</th>
+<th class="head">OMAP-L138</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>GNU ARM Embedded</td>
+<td>7-2018-q2</td>
+<td>A8</td>
+<td>A9</td>
+<td>A15</td>
+<td>&nbsp;</td>
+<td>A15</td>
+<td>A15</td>
+<td>A15</td>
+<td>A15</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>GNU Linaro GCC</td>
+<td>7.2.1</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>A53</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>TI ARM CGT</td>
+<td>18.1.5</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>M4</td>
+<td>R5</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>A15(SBL)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>ARM9</td>
+<td>ARM9</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>TI C6000 CGT</td>
+<td>8.3.2</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>C66x</td>
+<td>&nbsp;</td>
+<td>C66x</td>
+<td>C66x</td>
+<td>C66x</td>
+<td>C66x</td>
+<td>C66x</td>
+<td>C66x</td>
+<td>C74x</td>
+<td>C74x</td>
+</tr>
+<tr class="row-even"><td>TI PRU CGT</td>
+<td>2.2.1</td>
+<td>PRU</td>
+<td>PRU</td>
+<td>PRU</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>PRU</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>The SDK uses Code Composer Studio (CCS) as the integrated development
+environment (IDE) for all devices and EVMs:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="11%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="7%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="9%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Component</th>
+<th class="head">Version</th>
+<th class="head">AM335x</th>
+<th class="head">AM437x</th>
+<th class="head">AM57x</th>
+<th class="head">AM65x</th>
+<th class="head">K2H/K2K</th>
+<th class="head">K2E</th>
+<th class="head">K2L</th>
+<th class="head">K2G</th>
+<th class="head">C665x</th>
+<th class="head">C667x</th>
+<th class="head">OMAP-L137</th>
+<th class="head">OMAP-L138</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CCS</td>
+<td>8.3.0</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>EMU Pack</td>
+<td>Sitara
+Device
+1.4.4</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><blockquote class="first">
+<div>TI</div></blockquote>
+<p class="last">Emulators</p>
+</td>
+<td>8.0.903.2</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<p>If you need to install CCS, see the <a class="reference external" href="Overview.html#code-composer-studio">CCS installation section</a>
+in the <em>Getting Started Guide</em> for options to select for Processor-SDK.</p>
+</div>
+<div class="section" id="fixed-issues">
+<h2>2.1.5. Fixed Issues<a class="headerlink" href="#fixed-issues" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="24%" />
+<col width="24%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Record ID</th>
+<th class="head">Board/s</th>
+<th class="head">Component/s</th>
+<th class="head">Summary</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PRSDK-3482</td>
+<td>am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, amic110-ice, beagleboneblack, c6657-evm, c6678-evm, c6748-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-lcdk</td>
+<td>CCS</td>
+<td>CCSV8.1: Intermittent issue not able to connect target while using DSS script</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5094</td>
+<td>am437x-idk, am571x-idk, am572x-idk, am574x-idk</td>
+<td>Control Drivers</td>
+<td>QSPI flash R/W performance issue in MMAP (DAC) mode</td>
+</tr>
+<tr class="row-even"><td>PRSDK-4994</td>
+<td>am572x-evm, am572x-idk, am574x-idk</td>
+<td>PDK</td>
+<td>CSL CPTS spec mismatch with TRM spec</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-4108</td>
+<td>omapl138-lcdk</td>
+<td>High-Speed Drivers</td>
+<td>USB Audio: Lag when trying to adjust volume</td>
+</tr>
+<tr class="row-even"><td>PRSDK-4950</td>
+<td>am654x-evm, am654x-idk</td>
+<td>Networking</td>
+<td>am65xx: icssg-fw: TX lockup observed when trying to transmit and maintain 96ns IPG.</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-4464</td>
+<td>am654x-evm, am654x-idk</td>
+<td>Networking</td>
+<td>ICSS-G-FW: Dual-emac: ping with 16K packet size fails</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5179</td>
+<td>am571x-idk, am572x-evm, am572x-idk, am574x-idk</td>
+<td>Control Drivers</td>
+<td>FATFS multi-partition fails to load file from windows formatted SD card with only Boot Record</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-4725</td>
+<td>am335x-ice, am437x-idk</td>
+<td>PDK</td>
+<td>PTP: ICSS-EMAC LLD Master Mode config does not sync with slave</td>
+</tr>
+<tr class="row-even"><td>PRSDK-4462</td>
+<td>am654x-evm</td>
+<td>System</td>
+<td>IPC A53 ROV log won&#8217;t show correctly because of XDCtools bug</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-4965</td>
+<td>am335x-ice</td>
+<td>Networking</td>
+<td>PRU-ICSS EMAC TX queuing performance issue</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5489</td>
+<td>am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-hsevm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, am654x-evm, am654x-hsevm, am654x-idk</td>
+<td>High-Speed Drivers</td>
+<td>USB bulk in wrong state when task preempted</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5533</td>
+<td>am335x-evm, am335x-ice, am335x-sk</td>
+<td>High-Speed Drivers</td>
+<td>USB enumeration failure intermittently with unplug/plug test</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5248</td>
+<td>am654x-idk</td>
+<td>Networking, PDK</td>
+<td>packet loss with ICSSG emac driver</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5522</td>
+<td>&nbsp;</td>
+<td>Chip Support</td>
+<td>Typo in hw_control_am437x.h file for PWM SS mask and shift</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5021</td>
+<td>am654x-evm, am654x-idk</td>
+<td>Boot</td>
+<td>SBL Needs to set CTRLMMR_MCU_TIMER0_CLKSEL to 0x0 for timer to work in RTOS applications</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5461</td>
+<td>omapl138-lcdk</td>
+<td>Audio, Video, &amp; Display</td>
+<td>McBSP driver does not account for TX data delay</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5559</td>
+<td>am572x-evm, am572x-idk, am574x-idk</td>
+<td>Control Drivers</td>
+<td>QSPI clock doesn`t change when bitrate field in SPI driver Params is setup</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5029</td>
+<td>am437x-evm, am437x-idk, am571x-idk, am572x-evm, am572x-idk, am574x-idk</td>
+<td>Board Support</td>
+<td>Incorrect placement of dummy read cycles in SPI LLD test code</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5234</td>
+<td>k2g-evm, k2g-ice</td>
+<td>Board Support</td>
+<td>Invalid DDR_PHY_MR2 setting in K2G board library</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-4972</td>
+<td>am572x-idk, k2g-evm</td>
+<td>Control Drivers</td>
+<td>Inconsistent TCC handling for UART Rx and Tx in DMA mode.</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5414</td>
+<td>am654x-evm, am654x-idk</td>
+<td>Board Support</td>
+<td>Board library VTT Enable for DDR config is missing RMW in GPIO setup</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-4911</td>
+<td>am571x-idk, am572x-idk</td>
+<td>Networking</td>
+<td>Poll IEEE defined register for speed and duplexity instead of PHYSTS</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5126</td>
+<td>am335x-evm</td>
+<td>OSAL</td>
+<td>Add error block in TaskP OSAL implementation</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5288</td>
+<td>am437x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk</td>
+<td>Control Drivers</td>
+<td>Redundant OSAL_pendLock code in QSPI_transfer_v1 API that needs to be removed</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5207</td>
+<td>am335x-evm</td>
+<td>Audio, Video, &amp; Display</td>
+<td>AM335x LCDC_RasterExample build failure</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5217</td>
+<td>am572x-idk</td>
+<td>Chip Support</td>
+<td>Need add L1/L2 ECC functions into CSL</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5157</td>
+<td>am572x-evm, am572x-idk</td>
+<td>Control Drivers</td>
+<td>AM57x UART DMA test linked with wrong library</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="known-issues">
+<h2>2.1.6. Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<p>This section contains the list of known issues at the time of making the
+release and any known workaround.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="13%" />
+<col width="13%" />
+<col width="19%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Record ID</th>
+<th class="head">Board/s</th>
+<th class="head">Component/s</th>
+<th class="head">Summary</th>
+<th class="head">Workaround</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PRSDK-5635</td>
+<td>am572x-evm,am572x-idk,am574x-idk,c6657-evm,c6678-evm,c6748-lcdk,k2e-evm,k2g-evm,k2g-hsevm,k2g-ice,k2h-evm,k2k-evm,k2l-evm</td>
+<td>Optimized Libraries</td>
+<td>DSPLIB and MATHLIB performance degrades with C6000 8.3.x code gen tools</td>
+<td>To get better performance, can use the C6000 Codegen tools v7.4.2. Here are the details. 1) Download C6000 Code Generation Tools v7.4.2 <a class="reference external" href="http://software-dl.ti.com/codegen/non-esd/downloads/download.htm">http://software-dl.ti.com/codegen/non-esd/downloads/download.htm</a>. 2) Clone DSPLIB from <a class="reference external" href="https://git.ti.com/ep-processor-libraries/dsplib">https://git.ti.com/ep-processor-libraries/dsplib</a>, and follow readme.txt in root folder to recompile DSPLIB. 3) Clone MATHLIB from <a class="reference external" href="https://git.ti.com/ep-processor-libraries/mathlib">https://git.ti.com/ep-processor-libraries/mathlib</a>, and follow readme.txt in root folder to recompile MATHLIB.</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5645</td>
+<td>am654x-evm</td>
+<td>Emupack</td>
+<td>GEL file not working properly for AM654x-EVM platform causing DDR not to be configured properly</td>
+<td>Processor SDK RTOS v5.03 users will need to use Device support package 1.4.4. and TI emulation driver 8.0.903.2 Customers are required to disable Automatic updates to prevent auto update to latest 1.4.5.</td>
+</tr>
+<tr class="row-even"><td>PRSDK-4706</td>
+<td>am654x-evm, am654x-idk</td>
+<td>Boot</td>
+<td>SBL: MCU0 Boot in R5 Split Mode not supported in SBL</td>
+<td>The SBL currently cannot reset the MCU1 subsystem to restart the cores in split mode. To workaround this, the MPU needs to reset the MCU1 sub-system. To configure the MCU1 susb-system in split mode, do the following. 1) Create a multi-core image with a MCU1_0 image, a MCU1_1 image and an MPU image. 2) The MPU1 image must contain code to reset the MCU sub-system. Refer the function sblTestResetMcu in sbl/example/k3MulticoreApp/sbl_amp_multicore.c for example code on how to reset the MCU subsystem 3) Before resetting the MCU, the MPU must wait for the SBL to boot MCU1_0</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-2892</td>
+<td>am571x-idk, am572x-evm, am572x-idk</td>
+<td>PDK</td>
+<td>Incorrect A15 MMU configurations in default config file</td>
+<td>Set MMU attribute to not executable for device memory attrs0.noExecute = true; // Not executable</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5612</td>
+<td>am437x-idk</td>
+<td>OSAL, PDK</td>
+<td>Missing interrupt enable/disable option in OSAL HwiP_Params</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5539</td>
+<td>c6748-lcdk, omapl138-lcdk</td>
+<td>Control Drivers</td>
+<td>SPI loopback example not working in interrupt mode on OMAPL138</td>
+<td>Polling mode can be used instead.</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5624</td>
+<td>am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, c6678-evm, k2h-evm</td>
+<td>Optimized Libraries</td>
+<td>FFTLIB documentation for AM57xx and K2H devices is missing</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5485</td>
+<td>am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk</td>
+<td>Networking</td>
+<td>Intermittent ping packet loss when running AM57x EMAC at 10 mbps</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5473</td>
+<td>am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk</td>
+<td>Networking</td>
+<td>NDK TCP packet re-transmission timeout when running ARM at a lower speed</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5667</td>
+<td>am654x-evm, am654x-idk</td>
+<td>Board Support</td>
+<td>AM65xx diagnostic test hang on R5 core</td>
+<td>Use the diagnostic tests built for A53 core.</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5620</td>
+<td>am572x-idk</td>
+<td>PDK</td>
+<td>I2C_BasicExample_TestProject: I2C EEPROM test failure UT0</td>
+<td>Same test passed on AM571x IDK and AM572x-EVM platforms but only failed on AM572x IDK platform.</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5272</td>
+<td>k2g-hsevm</td>
+<td>Networking</td>
+<td>EMAC_BasicExample: error #10099-D: program will not fit into available memory</td>
+<td>Move .stack and .cinit sections to L2SRAM to MSMCSRAM in tidrvemactestEmacLoopbackTestk2gc66biosemac_example_k2g.cfg.</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5638</td>
+<td>am654x-evm</td>
+<td>Diagnostics</td>
+<td>AM65xx diag self test hangs during memory test on R5 core</td>
+<td>The similar test can be run from A53 instead</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5655</td>
+<td>am654x-hsevm</td>
+<td>Boot</td>
+<td>Allow windows users to selectively enable JTAG for AM65x HS</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5448</td>
+<td>am654x-evm, am654x-idk</td>
+<td>Boot</td>
+<td>SBL boot from MMCSD fails intermittently</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5403</td>
+<td>am437x-idk</td>
+<td>Control Drivers</td>
+<td>iolink: channel 7 has ISDN read/write response error</td>
+<td>Increase the cycle time will reduce the read/write response error</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5470</td>
+<td>am654x-hsevm, am654x-idk</td>
+<td>Boot</td>
+<td>R5 cannot boot an app if entry point is in DDR</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5626</td>
+<td>am654x-hsevm</td>
+<td>Boot, DMA</td>
+<td>OSPI Read using UDMA fails on AM65x HS devices.</td>
+<td>Non-DMA mode could be used for the read operation</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5080</td>
+<td>am654x-evm, am654x-idk</td>
+<td>Board Support</td>
+<td>AM65xx diag failures on R5 core</td>
+<td>Can run failing test from A53 cores</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-3344</td>
+<td>am572x-idk, am574x-idk</td>
+<td>Diagnostics</td>
+<td>Diagnostics icssEmac_TEST idkAM57{2/4}x : LINK IS DOWN, pluggin loopback cable</td>
+<td>ICSS-EMAC LLD TI-RTOS example can be used for similar test.</td>
+</tr>
+<tr class="row-even"><td>PRSDK-3383</td>
+<td>am574x-idk</td>
+<td>Diagnostics</td>
+<td>Diagnostics: lcdTouchscreen_TEST hangs</td>
+<td>Issue expected to be specific to TI EVM. For TI EVM, test need to be bypassed from the diagnostic menu.</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-4667</td>
+<td>am572x-evm</td>
+<td>Demonstrations, Networking</td>
+<td>Image Processing Demo lock up on AM572x GP EVM</td>
+<td>Issue seen using 1Gig router on ETH0. Replace with 100Mbps</td>
+</tr>
+<tr class="row-even"><td>PRSDK-335</td>
+<td>AM4X, k2g-evm</td>
+<td>High-Speed Drivers</td>
+<td>USB host MSC fails to re-enumerate</td>
+<td>Re-enumeration support for the case of device unplugged and plugged back currently fails for the example. Workaround is to avoid disconnecting drive while running example.</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-5177</td>
+<td>am574x-idk</td>
+<td>Board Support</td>
+<td>Uniflash: Flash programmer hangs when qspi flash is programmed with DDRECC enabled MLO</td>
+<td>Issue will be seen while flashing with prebuilt MLO image. Workaround will be to rebuild MLO with DDRECC disabled and program the flash device. Commands to rebuild MLO with DDRECC disabled: 1) cd $(PDK_INSTALL_PATH)tibootsbl 2) gmake all BOARD=idkAM574x SOC=AM574x BOOTMODE=qspi</td>
+</tr>
+<tr class="row-even"><td>PRSDK-1975</td>
+<td>am572x-evm</td>
+<td>Diagnostics</td>
+<td>timer_DiagExample_evmAM572x_arm7.out doesn&#8217;t work on ARM1 core</td>
+<td>Example can run on ARM Core 0</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-1682</td>
+<td>am571x-idk, am572x-idk</td>
+<td>Diagnostics</td>
+<td>Board diagnostics LCD Touchscreen test does not work with new version of LCD TSC</td>
+<td>For LCD/Display checkout example under VPS component could be used</td>
+</tr>
+<tr class="row-even"><td>PRSDK-2336</td>
+<td>am335x-evm, am437x-evm</td>
+<td>Power</td>
+<td>AM3 &amp; AM4 PM Examples experience I2C bus lockup when communicating with PMIC</td>
+<td>The debug versions of the PM apps are still functional. To build them: 1) From the top-level makefile in pdk.../packages folder run &#8220;make BUILD_PROFILE=debug pm&#8221; 2) This will build the debug versions of the PM RTOS and measurement apps.</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-2166</td>
+<td>am572x-idk</td>
+<td>High-Speed Drivers</td>
+<td>USB3.0 host problem with Sandisk Extreme USB3.0 stick</td>
+<td>Start the example without the USB plugged in. Once the example is up and waiting for USB stick, plug the USB stick in and it will enumerate properly.</td>
+</tr>
+<tr class="row-even"><td>PRSDK-4214</td>
+<td>k2g-hsevm</td>
+<td>System</td>
+<td>create-sdcard script does not boot OOB</td>
+<td>Default generated App image is not signed follow the steps mentioned in User Guide of the Processor SDK Secdev Build and Install Guide to sign the app</td>
+</tr>
+<tr class="row-odd"><td>PRSDK-4121</td>
+<td>am654x-evm</td>
+<td>Boot</td>
+<td>make all fails for Windows due to missing openSSL package</td>
+<td>For Windows : Download and install <a class="reference external" href="http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi">Strawberry Perl</a>. The Strawberry Perl installer automatically installs and sets up OpenSSL. For Linux : Execute the command &#8220;sudo apt-get install openssl&#8221; at the linux command prompt. Check if OpenSSL is installed by typing &#8220;openssl version&#8221; at the command prompt.</td>
+</tr>
+<tr class="row-even"><td>PRSDK-5267</td>
+<td>am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm</td>
+<td>DMA</td>
+<td>AM57x A15 EDMA library doesn&#8217;t support SMP mode</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="supported-platforms">
+<h2>2.1.7. Supported Platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="devices">
+<h3>2.1.7.1. Devices<a class="headerlink" href="#devices" title="Permalink to this headline">¶</a></h3>
+<p>The following table lists all supported devices for a given installer.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="6%" />
+<col width="5%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Installer</th>
+<th class="head" colspan="2">Platform/SOC</th>
+<th class="head">Supported Devices</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td rowspan="2"><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/AM335X/latest/index_FDS.html">RTOS-AM335X</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/am335x">AM335x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/am3351">AM3351</a>, <a class="reference external" href="http://www.ti.com/product/am3352">AM3352</a>, <a class="reference external" href="http://www.ti.com/product/am3354">AM3354</a>, <a class="reference external" href="http://www.ti.com/product/am3356">AM3356</a>, <a class="reference external" href="http://www.ti.com/product/am3357">AM3357</a>, <a class="reference external" href="http://www.ti.com/product/am3358">AM3358</a>, <a class="reference external" href="http://www.ti.com/product/am3359">AM3359</a></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/sitara/industrial-ethernet/amic11x/amic11x-overview.page&gt;`__">AMIC11x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/amic110">AMIC110</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/AM437X/latest/index_FDS.html">RTOS-AM437X</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/am437x">AM437x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/am4376">AM4376</a>, <a class="reference external" href="http://www.ti.com/product/am4377">AM4377</a>, <a class="reference external" href="http://www.ti.com/product/am4378">AM4378</a>, <a class="reference external" href="http://www.ti.com/product/am4379">AM4379</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/AM57X/latest/index_FDS.html">RTOS-AM57X</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/am57x">AM57x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/am5706">AM5706</a>, <a class="reference external" href="http://www.ti.com/product/am5708">AM5708</a>, <a class="reference external" href="http://www.ti.com/product/am5716">AM5716</a>, <a class="reference external" href="http://www.ti.com/product/am5718">AM5718</a>, <a class="reference external" href="http://www.ti.com/product/am5726">AM5726</a>, <a class="reference external" href="http://www.ti.com/product/am5728">AM5728</a>,
+<a class="reference external" href="http://www.ti.com/product/am5746">AM5746</a>, <a class="reference external" href="http://www.ti.com/product/am5748">AM5748</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/AM65X/latest/index_FDS.html">RTOS-AM65X</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/am65x">AM65x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/am6526">AM6526</a>, <a class="reference external" href="http://www.ti.com/product/am6527">AM6527</a>, <a class="reference external" href="http://www.ti.com/product/am6528">AM6528</a>, <a class="reference external" href="http://www.ti.com/product/am6546">AM6546</a>, <a class="reference external" href="http://www.ti.com/product/am6548">AM6548</a>, DRA80xM</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/C665x/latest/index_FDS.html">RTOS-C665X</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page">C665x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/tms320c6652">C6652</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6654">C6654</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6655">C6655</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6657">C6657</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/C667x/latest/index_FDS.html">RTOS-C667X</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page">C667x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/tms320c6671">C6671</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6672">C6672</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6674">C6674</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6678">C6678</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/K2E/latest/index_FDS.html">RTOS-K2E</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page">K2E</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/66ak2e02">66AK2E02</a>, <a class="reference external" href="http://www.ti.com/product/66ak2e05">66AK2E05</a>, <a class="reference external" href="http://www.ti.com/product/am5k2e02">AM5K2E02</a>, <a class="reference external" href="http://www.ti.com/product/am5k2e04">AM5K2E04</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/K2G/latest/index_FDS.html">RTOS-K2G</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/processors/dsp/c6000-dsp-arm/66ak2x/overview.html">K2G</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/66ak2g02">66AK2G02</a>, <a class="reference external" href="http://www.ti.com/product/66ak2g12">66AK2G12</a></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/K2HK/latest/index_FDS.html">RTOS-K2HK</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page">K2H</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/66ak2h06">66AK2H06</a>, <a class="reference external" href="http://www.ti.com/product/66ak2h12">66AK2H12</a>, <a class="reference external" href="http://www.ti.com/product/66ak2h14">66AK2H14</a></td>
+</tr>
+<tr class="row-even"><td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page">K2K</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/tci6638k2k">TCI6638K2K</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/K2L/latest/index_FDS.html">RTOS-K2L</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page">K2L</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/66ak2l06">66AK2L06</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/tool/processor-sdk-omapl137">RTOS-OMAPL137</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/omap-l1x/overview.page">OMAP-L1x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/OMAP-L137">OMAP-L137</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6743">C6743</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6745">C6745</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6747">C6747</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/tool/processor-sdk-omapl138">RTOS-OMAPL138</a></td>
+<td colspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/omap-l1x/overview.page">OMAP-L1x</a></td>
+<td><a class="reference external" href="http://www.ti.com/product/OMAP-L138">OMAP-L138</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6742">C6742</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6746">C6746</a>, <a class="reference external" href="http://www.ti.com/product/tms320c6748">C6748</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="evaluation-modules">
+<h3>2.1.7.2. Evaluation Modules<a class="headerlink" href="#evaluation-modules" title="Permalink to this headline">¶</a></h3>
+<p>See <a class="reference external" href="Release_Specific.html#supported-platforms-and-versions">Processor SDK Supported Platforms</a>
+page for a list of supported EVMs per platform and links to more
+information.</p>
+</div>
+<div class="section" id="demonstrations">
+<h3>2.1.7.3. Demonstrations<a class="headerlink" href="#demonstrations" title="Permalink to this headline">¶</a></h3>
+<p>See <a class="reference external" href="Examples_and_Demonstrations.html">Examples and Demonstrations</a>
+page for a list of demonstrations per platform and EVM.</p>
+</div>
+<div class="section" id="drivers">
+<h3>2.1.7.4. Drivers<a class="headerlink" href="#drivers" title="Permalink to this headline">¶</a></h3>
+<p>The following tables show RTOS driver availability per platform and EVM.
+A shaded box implies that the feature is not applicable for that
+platform/EVM.</p>
+<p><strong>Sitara devices</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="9%" />
+<col width="8%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head" colspan="3">Platform/SOC</th>
+<th class="head" colspan="4">AM335x EVM</th>
+<th class="head" colspan="3">AM437x EVM</th>
+<th class="head" colspan="2">AM57x EVM</th>
+<th class="head" colspan="2">AM65x EVM</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>AM335x</td>
+<td>AM437x</td>
+<td>AM57x</td>
+<td>GP</td>
+<td>ICE</td>
+<td>SK</td>
+<td>BBB</td>
+<td>GP</td>
+<td>IDK</td>
+<td>SK</td>
+<td>GP</td>
+<td>IDK</td>
+<td>GP</td>
+<td>IDK</td>
+</tr>
+<tr class="row-odd"><td>CSL</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>EMAC</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>EDMA3</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>GPIO</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>GPMC</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>I2C</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>PRUSS-I2C f/w</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>PRUSS-eSPI f/w</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>ICSS-EMAC</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>McASP</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>McSPI</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>MMC-SD</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>PCIe</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>PM</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>PRUSS</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>QSPI</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>OSPI</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>UART</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>USB</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>USB Device Audio</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>USB Device Bulk</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>VPS</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>UDMA</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>OSPI</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>SCICLIENT</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>SA</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>CAL</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>DSS</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DSP devices - K2x, C66x</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="10%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="7%" />
+<col width="7%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="10%" />
+<col width="7%" />
+<col width="7%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head" colspan="6">Platform/SOC</th>
+<th class="head" colspan="5">K2 EVM</th>
+<th class="head" colspan="2">C66x EVM</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>K2H/K2K</td>
+<td>K2E</td>
+<td>K2L</td>
+<td>K2G</td>
+<td>C665x</td>
+<td>C667x</td>
+<td>K2H</td>
+<td>K2E</td>
+<td>K2L</td>
+<td>K2G</td>
+<td>K2G-ICE</td>
+<td>C665x</td>
+<td>C667x</td>
+</tr>
+<tr class="row-odd"><td>CSL</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>AIF2</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>BCP</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>CPPI</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>DFE</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>EDMA3</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>EMAC</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>FFTC</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>GPIO</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>HYPLNK</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>ICSS-EMAC</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>I2C</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>IQN2</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>McASP</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>McBSP</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>MMAP</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>MMC-SD</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>NWAL</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>PA</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>PCIe</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>QMSS</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>RM</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>SA</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>SPI</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>SRIO</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>TCP3D</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>TSIP</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>UART</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>USB</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>USB Device Audio</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>USB Device Bulk</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DSP devices - OMAP-L13x, C674x</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="15%" />
+<col width="15%" />
+<col width="21%" />
+<col width="11%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head" colspan="2">Platform/SOC</th>
+<th class="head">OMAP-L137 EVM</th>
+<th class="head" colspan="2">OMAP-L138 EVM</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>OMAP-L137</td>
+<td>OMAP-L138</td>
+<td>L137/6747 SK</td>
+<td>LCDK138</td>
+<td>LCDK6748</td>
+</tr>
+<tr class="row-odd"><td>CSL</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>EDMA3</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>EMAC</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>GPIO</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>I2C</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>McASP</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>MMC-SD</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>SPI</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>UART</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>USB</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>USB Device Audio</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>USB Device Bulk</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Unsupported Features</strong></p>
+<ul class="simple">
+<li>In general driver support is available across all cores within an SOC
+with following exceptions</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="47%" />
+<col width="26%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head" colspan="2">Not supported</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>SOC</td>
+<td>CPU/Core</td>
+</tr>
+<tr class="row-odd"><td>McASP</td>
+<td>AM57x</td>
+<td>M4</td>
+</tr>
+<tr class="row-even"><td>USB</td>
+<td>AM57x</td>
+<td>C66x</td>
+</tr>
+<tr class="row-odd"><td>USB</td>
+<td>AM57x</td>
+<td>M4</td>
+</tr>
+<tr class="row-even"><td>USB</td>
+<td>K2G</td>
+<td>C66x</td>
+</tr>
+<tr class="row-odd"><td>McBSP</td>
+<td>K2G</td>
+<td>A15</td>
+</tr>
+<tr class="row-even"><td>McBSP</td>
+<td>OMAP-L13x</td>
+<td>ARM9</td>
+</tr>
+<tr class="row-odd"><td>All Drivers</td>
+<td>K2E/L/K</td>
+<td>A15</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="other-features">
+<h3>2.1.7.5. Other Features<a class="headerlink" href="#other-features" title="Permalink to this headline">¶</a></h3>
+<p>The following table shows other feature availability per platform and
+EVM:</p>
+<p><strong>Sitara devices</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="8%" />
+<col width="7%" />
+<col width="6%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="3%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head" colspan="3">Platform/SOC</th>
+<th class="head" colspan="4">AM335x EVM</th>
+<th class="head" colspan="3">AM437x EVM</th>
+<th class="head" colspan="2">AM57x EVM</th>
+<th class="head" colspan="2">AM65x EVM</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>AM335x</td>
+<td>AM437x</td>
+<td>AM57x</td>
+<td>GP</td>
+<td>ICE</td>
+<td>SK</td>
+<td>BBB</td>
+<td>GP</td>
+<td>IDK</td>
+<td>SK</td>
+<td>GP</td>
+<td>IDK</td>
+<td>GP</td>
+<td>IDK</td>
+</tr>
+<tr class="row-odd"><td>Board Support</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>Boot (SBL)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>Diagnostics</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>FATFS</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>NDK-NIMU(CPSW)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>NDK-NIMU(ICSS)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>CC-LINK IE Field Basic(CPSW)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>CC-Link IE Field Basic(ICSS)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DSP devices - K2x, C66x</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="8%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="6%" />
+<col width="6%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="4%" />
+<col width="8%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head" colspan="6">Platform/SOC</th>
+<th class="head" colspan="5">K2 EVM</th>
+<th class="head" colspan="2">C66x EVM</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>K2H/K2K</td>
+<td>K2E</td>
+<td>K2L</td>
+<td>K2G</td>
+<td>C665x</td>
+<td>C667x</td>
+<td>K2H</td>
+<td>K2E</td>
+<td>K2L</td>
+<td>K2G</td>
+<td>K2G-ICE</td>
+<td>C665x</td>
+<td>C667x</td>
+</tr>
+<tr class="row-odd"><td>Board Support</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>Boot (IBL/SBL)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>Diagnostics</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>FATFS</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Fault Management</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>IPC Transport (QMSS)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>IPC Transport (SRIO)</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>MAD-UTIL</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>Network (CPSW)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>Network (ICSS)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>CC-Link IE Field Basic(ICSS)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Platform Library (obsolete)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>PKTLIB</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>POST</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>SERDES Diagnostics</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Trace Framework</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DSP devices - OMAP-L13x, C674x</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="15%" />
+<col width="15%" />
+<col width="22%" />
+<col width="12%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature</th>
+<th class="head" colspan="2">Platform/SOC</th>
+<th class="head">OMAP-L137 EVM</th>
+<th class="head" colspan="2">OMAP-L138 EVM</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>OMAP-L137</td>
+<td>OMAP-L138</td>
+<td>137/6747 SK</td>
+<td>LCDK138</td>
+<td>LCDK6748</td>
+</tr>
+<tr class="row-odd"><td>Board Support</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>Boot (SBL)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>Diagnostics</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>FATFS</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td>Network (CPSW)</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="installation-and-usage">
+<h2>2.1.8. Installation and Usage<a class="headerlink" href="#installation-and-usage" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="index_overview.html#processor-sdk-rtos-getting-started-guide-label"><em>Getting Started Guide</em></a> provides
+instructions on how to setup up your development environment, install
+the SDK and start your development.</p>
+<p>To uninstall the SDK, remove the individual component directories from
+the installed path. This is safe to do even in Windows since these
+components do not modify the Windows registry.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="host-support">
+<h2>2.1.9. Host Support<a class="headerlink" href="#host-support" title="Permalink to this headline">¶</a></h2>
+<p>The recommended development host is</p>
+<ul class="simple">
+<li><strong>Windows</strong>: Windows 10 on 64-bit machine</li>
+<li><strong>Linux</strong>: Ubuntu 14.04, 16.04 on 64-bit machine</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Windows installer is a 32-bit binary, but is compatibile with
+64-bit machine.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="technical-support-and-product-updates">
+<h2>2.1.10. Technical Support and Product Updates<a class="headerlink" href="#technical-support-and-product-updates" title="Permalink to this headline">¶</a></h2>
+<p>For further information or to report any problems, contact:
+-  <a class="reference external" href="https://e2e.ti.com/support/processors/">TI E2E Processor Support</a> for all supported platforms</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="archived">
+<h2>2.1.11. Archived<a class="headerlink" href="#archived" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_02_00_10/rtos/Release_Specific.html#processor-sdk-rtos-release-notes">Processor-SDK RTOS
+5.2.0</a></li>
+<li><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_01_00_11/rtos/Release_Specific.html#processor-sdk-rtos-release-notes">Processor-SDK RTOS
+5.1.0</a></li>
+<li><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_15/rtos/Release_Specific.html#processor-sdk-rtos-release-notes">Processor-SDK RTOS
+5.0.0</a></li>
+<li><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_00_00_09/rtos/Release_Specific.html#processor-sdk-rtos-release-notes">Processor-SDK RTOS
+5.0.0 AM65x EA Release</a></li>
+<li><a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/docs/04_03_00_05/rtos/Release_Specific.html#processor-sdk-rtos-release-notes">Processor-SDK RTOS
+4.3.0</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=232579">Processor-SDK RTOS
+4.2.0</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=231132">Processor-SDK RTOS
+4.1.0</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=229408">Processor-SDK RTOS
+4.0.0</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=227097">Processor-SDK RTOS
+3.3.0</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=223820">Processor-SDK RTOS
+3.2.0</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=222796">Processor-SDK RTOS
+3.1.0</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=220543">Processor-SDK RTOS
+3.0.0</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=216065">Processor-SDK RTOS
+2.0.2</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=211983">Processor-SDK RTOS
+2.0.1</a></li>
+<li><a class="reference external" href="http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_Release_Notes&amp;oldid=208435">Processor-SDK RTOS
+2.0.0</a></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="supported-platforms-and-versions">
+<span id="rtos-sdk-supported-platforms"></span><h1>2.2. Supported Platforms and Versions<a class="headerlink" href="#supported-platforms-and-versions" title="Permalink to this headline">¶</a></h1>
+<p class="rubric" id="supported-host-operating-systems">Supported Host Operating Systems</p>
+<p>The following operating systems have been validated to work with our
+SDK.</p>
+<ul class="simple">
+<li><strong>Linux SDK</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Operating System</strong></td>
+<td><div class="first last line-block">
+<div class="line"><strong>Version</strong></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Ubuntu</td>
+<td><div class="first last line-block">
+<div class="line">14.04 (64-bit)</div>
+<div class="line">16.04 (64-bit)</div>
+<div class="line">18.04 (64-bit)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><strong>RTOS SDK</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Operating System</strong></td>
+<td><div class="first last line-block">
+<div class="line"><strong>Version</strong></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Windows</td>
+<td><div class="first last line-block">
+<div class="line">7 (64-bit)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td>Ubuntu</td>
+<td><div class="first last line-block">
+<div class="line">14.04 (64-bit)</div>
+<div class="line">16.04 (64-bit)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><strong>Android SDK</strong></li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Operating System</strong></td>
+<td><div class="first last line-block">
+<div class="line"><strong>Version</strong></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Ubuntu</td>
+<td><div class="first last line-block">
+<div class="line">14.04 (64-bit)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p class="rubric" id="supported-platforms-and-evms">Supported Platforms and EVMs</p>
+<p>The following platforms and EVMs are supported with Processor SDK</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="5%" />
+<col width="23%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Platform</strong></td>
+<td><strong>EVM</strong></td>
+<td><strong>Tested
+Version</strong></td>
+<td><strong>Document</strong></td>
+<td><strong>Processor SDK
+Linux</strong></td>
+<td><strong>Processor SDK
+RT Linux</strong></td>
+<td><strong>Processor SDK
+RTOS</strong></td>
+<td><strong>Processor SDK
+Android</strong></td>
+</tr>
+<tr class="row-even"><td rowspan="2"><a class="reference external" href="http://www.ti.com/AM65x">AM65x/DRA80xM</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/tmdx654gpevm">AM65x/DRA80xM EVM</a></td>
+<td>Beta</td>
+<td>Hardware User&#8217;s Guide
+<a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#am65x-evm">Hardware Setup with CCS</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/tool/tmdx654idkevm">AM65x/DRA80xM IDK</a></td>
+<td>Beta</td>
+<td>Hardware User&#8217;s Guide
+<a class="reference external" href="http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#am65x-evm">Hardware Setup with CCS</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td rowspan="4"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/sitara/arm_cortex-a15/am57x/overview.page">AM57x</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/TMDSEVM572X">AM572x EVM</a></td>
+<td>A3</td>
+<td><a class="reference external" href="http://www.ti.com/lit/pdf/spruig1">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/tool/TMDXIDK5728">AM572x IDK</a></td>
+<td>1.3A</td>
+<td><a class="reference external" href="http://www.ti.com/lit/pdf/sprui64">Hardware User&#8217;s Guide</a>
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/TMDXIDK5728_Hardware_Setup">Hardware Setup with CCS</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/tool/tmdxidk5718">AM571x IDK</a></td>
+<td>1.3A</td>
+<td><a class="reference external" href="http://www.ti.com/lit/pdf/sprui97">Hardware User&#8217;s Guide</a>
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/TMDXIDK5728_Hardware_Setup">Hardware Setup with CCS</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/tool/TMDSIDK574">AM574x IDK</a></td>
+<td>1.0A</td>
+<td><a class="reference external" href="http://www.ti.com/lit/pdf/spruij9">Hardware User&#8217;s Guide</a>
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/TMDXIDK5728_Hardware_Setup">Hardware Setup with CCS</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td rowspan="3"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/sitara/arm_cortex-a9/am437x/overview.page">AM437x</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/TMDXEVM437X">AM437x EVM</a></td>
+<td>1.5B</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/AM437x_General_Purpose_EVM_HW_User_Guide">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/tool/TMDXSK437X">AM437x SK</a></td>
+<td>1.1A</td>
+<td><a class="reference external" href="http://www.ti.com/lit/pdf/spruhw8">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/tool/tmdsidk437x">AM437x IDK</a></td>
+<td>1.4A</td>
+<td><a class="reference external" href="http://www.ti.com/lit/pdf/sprw259">Hardware User&#8217;s Guide</a></td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/sitara/arm_cortex-a8/am335x/overview.page">AM335x</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/tmdxevm3358">AM335x EVM</a></td>
+<td>1.6A</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/AM335x_General_Purpose_EVM_HW_User_Guide">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/tool/tmdssk3358">AM335x SK</a></td>
+<td>1.2</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/AM335xStarterKitHardwareUsersGuide">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://beagleboard.org/Products/BeagleBone%20Black">BeagleBone Black</a></td>
+<td>B6</td>
+<td><a class="reference external" href="https://github.com/CircuitCo/BeagleBone-Black/blob/master/BBB_SRM.pdf?raw=true">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/tool/TMDSICE3359">AM335x ICE</a></td>
+<td>2.1A</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_%28ICE%29_EVM_HW_User_Guide">Hardware User&#8217;s Guide</a>
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/ICE_AM335x_Hardware_Setup">Hardware Setup with CCS</a></td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td rowspan="2"><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page">K2H/K2K</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/evmk2h">66AK2Hx EVM</a></td>
+<td>4.0</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/EVMK2H_Hardware_Setup">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/tool/tci6638k2k">TCI6638K2K EVM</a></td>
+<td>4.0</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/EVMK2H_Hardware_Setup">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page">K2E</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/xevmk2ex">AK2Ex EVM</a></td>
+<td>1.0.3.0</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/EVMK2E_Hardware_Setup">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/66ak2x/overview.page">K2L</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/xevmk2lx">66AK2L06 EVM</a></td>
+<td>1.0.3.0</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/TCIEVMK2L_Hardware_Setup">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td rowspan="4"><a class="reference external" href="http://www.ti.com/processors/dsp/c6000-dsp-arm/66ak2x/overview.html">K2G</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/EVMK2G">K2G EVM</a></td>
+<td>1.3D</td>
+<td rowspan="2"><p class="first"><a class="reference external" href="http://www.ti.com/lit/pdf/sprui65a">Hardware User&#8217;s Guide</a></p>
+<p class="last"><a class="reference external" href="http://processors.wiki.ti.com/index.php/66AK2G02_GP_EVM_Hardware_Setup">Hardware Setup with CCS</a></p>
+</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/tool/EVMK2GX">K2G 1G EVM</a></td>
+<td>1.5D</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/tool/audk2g">K2G Audio Daughtercard</a></td>
+<td>D</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_AUDK2G_AddOn">Software Support</a></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/tool/k2gice">K2G ICE EVM</a></td>
+<td>1.0C Beta</td>
+<td><a class="reference external" href="http://www.ti.com/lit/pdf/spruie0">Hardware User&#8217;s Guide</a>
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/66AK2G02_ICE_EVM_Hardware_Setup">Hardware Setup with CCS</a></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page">C665x</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/tmdsevm6657">C665x EVM</a></td>
+<td>1.1-44</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/TMDSEVM6657L_EVM_Hardware_Setup">Hardware User&#8217;s Guide</a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp/c66x/overview.page">C667x</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/tmdsevm6678">C667x EVM</a></td>
+<td>3B</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/TMDXEVM6678L_EVM_Hardware_Setup">Hardware User&#8217;s Guide</a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/omap-l1x/overview.page">OMAPL137/C6747</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/tmdsoskl137">OMAP-L137/C6747 Starter kit EVM</a></td>
+<td>J</td>
+<td><a class="reference external" href="http://support.spectrumdigital.com/boards/evmomapl137/revd/">Hardware User&#8217;s Guide</a>
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/OMAP-L137_EVM_Hardware_Setup#Connecting_to_CCS">Hardware Setup with CCS</a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://www.ti.com/lsds/ti/processors/dsp/c6000_dsp-arm/omap-l1x/overview.page">OMAPL138/C6748</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/tmdslcdk138">OMAP-L138/C6748 LCDK</a></td>
+<td>A7A</td>
+<td><a class="reference external" href="http://processors.wiki.ti.com/index.php/L138/C6748_Development_Kit_%28LCDK%29">Hardware User&#8217;s Guide</a></td>
+<td>X</td>
+<td>N/A</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.ti.com/product/AMIC110">AMIC110</a></td>
+<td><a class="reference external" href="http://www.ti.com/tool/tmdxice110">AMIC110 ICE</a></td>
+<td>1.1</td>
+<td><a class="reference external" href="http://www.ti.com/lit/pdf/spruie6">Hardware User&#8217;s Guide</a>
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/ICE_AMIC110_Hardware_Setup">Hardware Setup with CCS</a></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>X</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="migration-guide">
+<span id="rtos-sdk-migration-guide-label"></span><h1>2.3. Migration Guide<a class="headerlink" href="#migration-guide" title="Permalink to this headline">¶</a></h1>
+<p class="rubric" id="id2">Overview</p>
+<p>This page covers migration information from last Processor SDK RTOS release.</p>
+<p class="rubric" id="processor-sdk-rtos-05-03-00">Processor SDK RTOS 05.03.00</p>
+<p class="rubric" id="emac">EMAC</p>
+<p><strong>Migration:</strong> ICSS-G EMAC firmware binary directory location update for future extension</p>
+<p><strong>Impact Scope:</strong> Applicable for all applications using EMAC driver with ICSS-G dual EMAC firmware</p>
+<p><strong>Additional Details</strong>:
+Applications will need to update the include path to location of firmware header files for ICSSG use case</p>
+<blockquote>
+<div>prevous location: ti/drv/emac/firmeare/icss_eth/src/dm
+new location:     ti/drv/emac/firmware/icss_dualmac/bin</div></blockquote>
+<p><strong>Migration:</strong> Release introduces support for additional firmware specific configuration files. Added for future extension to support multiple firmwares using same EMAC driver</p>
+<p><strong>Impact Scope:</strong> Applicable for all applications using EMAC driver with ICSS-G dual EMAC firmware</p>
+<p><strong>Additional Details</strong>:
+Firmware configuration has been moved to firmware specific configuration files, emac_fw_config_dual_mac.h and emac_fw_config_dual_mac.c.
+Previously the firmware configuration was specified in the test application
+It is not expected that applicatons will need to modify these files as the are closely tied to the firmware.</p>
+<blockquote>
+<div><p>previous location: firmware specific configuration was specified in the text application (ti/drv/emac/test/EmacLoopbackTest/test_utils_k3.c)</p>
+<p>new location:      &#8216;ti/drv/emac/firmware/icss_dualmac/config/&#8217;</p>
+</div></blockquote>
+<p>Applications will need to update their makefiles to include c source file emac_fw_config_dual_mac.c
+At time of emac_open API call, applications need to udpate configuruation parameters to pass get firmware configuration pointer :</p>
+<blockquote>
+<div><p>EMAC_HwAttrs_V5 emac_cfg;</p>
+<p>EMAC_socGetInitCfg(0, &amp;emac_cfg);</p>
+<p>emac_cfg.portCfg[port_num].getFwCfg = &amp;emacGetDualMacFwConfig;</p>
+<p>EMAC_socSetInitCfg(0, &amp;emac_cfg);</p>
+</div></blockquote>
+<p class="rubric" id="csl">CSL</p>
+<p><strong>Migration:</strong> API changes on CSL-FL of AM65xx on ecc aggregator, vim, esm modules</p>
+<p><strong>Impact Scope</strong>: Limited to the case if application is using the CSL-FL APIs</p>
+<p><strong>Additional Details</strong>: The CSL-FL for ECC aggregator, ESM and VIM are modified to
+return API functionality success/failures and additional arguments are added as and
+when needed (especially during the cases where the return was the value instead of API success/failure).</p>
+<p>Applications that use these CSL-FL calls are impacted and are needed to align to new calling conventions.
+If applicable application modification required to align to updated APIs, refer doxygen API documentation for API details.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Board_EVM_Abstration.html" class="btn btn-neutral float-right" title="3. Board/EVM Abstration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Release_Specific.html" class="btn btn-neutral" title="2. Release Specific" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyight 1995-2018</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'05_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

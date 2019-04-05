@@ -1,0 +1,859 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. Device Drivers &mdash; Processor SDK RTOS Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Processor SDK RTOS Documentation" href="../index.html"/>
+        <link rel="next" title="6.1. CSL" href="index_device_drv.html"/>
+        <link rel="prev" title="5.1. DSP Optimized Libraries" href="index_dsp_sw.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                05_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board_EVM_Abstration.html">3. Board/EVM Abstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Foundational_Components.html">4. Foundational Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DSP_Software.html">5. DSP Software</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">6. Device Drivers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html">6.1. CSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#uart">6.2. UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#usb">6.3. USB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#pcie">6.4. PCIe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#gpio">6.5. GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#i2c">6.6. I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#mcspi-qspi-ospi">6.7. McSPI-QSPI-OSPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#edma3">6.8. EDMA3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#icss-emac">6.9. ICSS-EMAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#pruss">6.10. PRUSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#fatfs">6.11. FATFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#mmcsd">6.12. MMCSD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#qmss">6.13. QMSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#cppi">6.14. CPPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#pa">6.15. PA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#sa">6.16. SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#srio">6.17. SRIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#hyplnk">6.18. HYPLNK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#tsip">6.19. TSIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#mcbsp">6.20. MCBSP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#emac">6.21. EMAC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#mcasp">6.22. MCASP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#dss">6.23. DSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#cal">6.24. CAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#udma">6.25. UDMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#pm">6.26. PM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#rm">6.27. RM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#gpmc">6.28. GPMC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#sciclient">6.29. SCICLIENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#vps-drivers">6.30. VPS Drivers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#osal">6.31. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#profiling">6.32. Profiling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PRU_ICSS.html">7. PRU-ICSS Firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compilers.html">8. Compilers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_and_Demonstrations.html">9. Examples and Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_Guides.html">10. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">11. Frequently Asked Questions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>6. Device Drivers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="device-drivers">
+<h1>6. Device Drivers<a class="headerlink" href="#device-drivers" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html">6.1. CSL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#am57x-k2x-c66x-c674x">6.1.1. AM57x/K2x/C66x/C674x</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#application-integration">6.1.1.1. Application Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#csl-fl-examples">6.1.2. CSL-FL EXAMPLES</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#uart">6.2. UART</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#overview">6.2.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#introduction">6.2.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#user-interface">6.2.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#driver-configuration">6.2.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#apis">6.2.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#application">6.2.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#examples">6.2.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-uart-examples">6.2.4. Building UART examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#additional-references">6.2.5. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#usb">6.3. USB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id1">6.3.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#driver-overview">6.3.1.1. Driver Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id3">6.3.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id4">6.3.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#api-call-flow">6.3.2.2. API Call Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id5">6.3.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id6">6.3.3.1. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#test-application">6.3.3.2. Test Application</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#benchmark-tool">6.3.4. Benchmark tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#usb-host-msc">6.3.4.1. USB host MSC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#usb-device-msc">6.3.4.2. USB device MSC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#hardware-setup">6.3.5. Hardware Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#pcie">6.4. PCIe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id7">6.4.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id9">6.4.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id10">6.4.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id12">6.4.2.2. API Call Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id13">6.4.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id14">6.4.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#debug-faq">6.4.4. Debug FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id15">6.4.5. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#gpio">6.5. GPIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id16">6.5.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id17">6.5.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id20">6.5.1.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id21">6.5.2. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id22">6.5.2.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-gpio-examples">6.5.3. Building GPIO examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#faq">6.5.4. FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id23">6.5.5. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#i2c">6.6. I2C</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id24">6.6.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id25">6.6.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id26">6.6.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id27">6.6.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id29">6.6.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id30">6.6.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id31">6.6.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-i2c-examples">6.6.4. Building I2C examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id32">6.6.5. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#mcspi-qspi-ospi">6.7. McSPI-QSPI-OSPI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id33">6.7.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id34">6.7.2. Modes of Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id35">6.7.3. Driver Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id36">6.7.3.1. Board Specific Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#soc-specific-configuration">6.7.3.2. SoC Specific Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#spi-configuration-structure">6.7.3.3. SPI Configuration Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id37">6.7.4. APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#open-spi">6.7.4.1. Open SPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id38">6.7.5. Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#spi">6.7.5.1. SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#qspi">6.7.5.2. QSPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#ospi">6.7.5.3. OSPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#mcspi">6.7.5.4. MCSPI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-spi-examples">6.7.6. Building SPI examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#support-for-benchmark-testing">6.7.7. Support for Benchmark Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id45">6.7.8. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#edma3">6.8. EDMA3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id46">6.8.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id47">6.8.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id48">6.8.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id49">6.8.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id50">6.8.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id51">6.8.3. FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id52">6.8.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#icss-emac">6.9. ICSS-EMAC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id53">6.9.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id54">6.9.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id55">6.9.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id56">6.9.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id59">6.9.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id60">6.9.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#debug-guide">6.9.4. Debug Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id61">6.9.5. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#pruss">6.10. PRUSS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id62">6.10.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id63">6.10.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id66">6.10.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id67">6.10.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id69">6.10.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id71">6.10.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id72">6.10.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id73">6.10.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#fatfs">6.11. FATFS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id74">6.11.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id75">6.11.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id76">6.11.2. Driver Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id77">6.11.3. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id78">6.11.3.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id80">6.11.3.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id82">6.11.4. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id83">6.11.4.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-ccs-projects-based-examples">6.11.5. Building CCS projects based examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-fatfs-test-applications-via-makefiles">6.11.6. Building FATFS Test applications via makefiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id84">6.11.7. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#mmcsd">6.12. MMCSD</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id85">6.12.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id86">6.12.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id87">6.12.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id88">6.12.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id90">6.12.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id92">6.12.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#examples-unit-tests">6.12.3.1. Examples &amp; Unit tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#benchmarking-read-write-performance-on-am65x">6.12.4. Benchmarking Read/Write Performance (on AM65x)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#benchmarking-steps">6.12.5. Benchmarking Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id93">6.12.6. Building CCS projects based examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-mmcsd-test-applications-via-makefiles">6.12.7. Building MMCSD Test applications via makefiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id94">6.12.8. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#qmss">6.13. QMSS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id95">6.13.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id96">6.13.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id98">6.13.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id99">6.13.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id100">6.13.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id101">6.13.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id102">6.13.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id104">6.13.4. Debug FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id105">6.13.5. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#cppi">6.14. CPPI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id106">6.14.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id107">6.14.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id108">6.14.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id109">6.14.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id110">6.14.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id111">6.14.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id112">6.14.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id115">6.14.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#pa">6.15. PA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id116">6.15.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id117">6.15.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id118">6.15.1.2. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id119">6.15.1.3. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id120">6.15.2. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id121">6.15.2.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id122">6.15.3. FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id123">6.15.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#sa">6.16. SA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id124">6.16.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id125">6.16.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id127">6.16.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id128">6.16.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id129">6.16.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id130">6.16.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id131">6.16.3.1. Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#building-sa-examples-unit-test">6.16.3.2. Building SA Examples/Unit Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id132">6.16.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#srio">6.17. SRIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id133">6.17.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id134">6.17.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id136">6.17.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id137">6.17.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id139">6.17.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id140">6.17.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id141">6.17.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id142">6.17.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#hyplnk">6.18. HYPLNK</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id143">6.18.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id144">6.18.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id147">6.18.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id148">6.18.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id149">6.18.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id151">6.18.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id152">6.18.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id154">6.18.4. Debug FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id155">6.18.5. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#tsip">6.19. TSIP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id156">6.19.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id157">6.19.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id158">6.19.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id159">6.19.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id160">6.19.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id161">6.19.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id162">6.19.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id163">6.19.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#mcbsp">6.20. MCBSP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id164">6.20.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id165">6.20.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id166">6.20.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id167">6.20.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id168">6.20.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id169">6.20.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id170">6.20.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id171">6.20.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#emac">6.21. EMAC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id172">6.21.1. Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id173">6.21.2. Driver Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id174">6.21.2.1. Board Specific Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id175">6.21.3. APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#interposer-card-support">6.21.4. Interposer Card Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#example-and-test-applications">6.21.5. Example and Test Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id177">6.21.6. Support for Benchmark Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-emac-test-applications-via-makefiles">6.21.7. Building EMAC Test applications via makefiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#running-emac-examples-and-test-applications">6.21.8. Running EMAC Examples and Test applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id178">6.21.9. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#mcasp">6.22. MCASP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id179">6.22.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id180">6.22.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id181">6.22.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id182">6.22.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id183">6.22.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id184">6.22.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id185">6.22.3.1. Examples &amp; Unit tests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id186">6.22.4. Building CCS projects based examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-mcasp-test-applications-via-makefiles">6.22.5. Building MCASP Test applications via makefiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id187">6.22.6. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#dss">6.23. DSS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id188">6.23.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id189">6.23.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id190">6.23.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id191">6.23.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id192">6.23.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id193">6.23.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id194">6.23.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id195">6.23.4. Additional References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-dss-examples">6.23.5. Building DSS examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#dss-examples">6.23.6. DSS examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#cal">6.24. CAL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id197">6.24.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id198">6.24.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id199">6.24.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id200">6.24.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id201">6.24.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id202">6.24.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id203">6.24.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id204">6.24.4. Additional References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-cal-examples">6.24.5. Building CAL examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#cal-examples">6.24.6. CAL examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#udma">6.25. UDMA</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id206">6.25.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id207">6.25.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id208">6.25.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id209">6.25.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id210">6.25.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id211">6.25.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id212">6.25.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id213">6.25.4. Additional References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-udma-examples">6.25.5. Building UDMA examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#udma-examples">6.25.6. UDMA examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#pm">6.26. PM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id215">6.26.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id216">6.26.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id217">6.26.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id218">6.26.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id220">6.26.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id221">6.26.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id222">6.26.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id223">6.26.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#rm">6.27. RM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id224">6.27.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id225">6.27.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id226">6.27.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id227">6.27.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id228">6.27.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id229">6.27.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id230">6.27.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id231">6.27.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#gpmc">6.28. GPMC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id232">6.28.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id233">6.28.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id234">6.28.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id235">6.28.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id237">6.28.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id238">6.28.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id239">6.28.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id240">6.28.4. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#sciclient">6.29. SCICLIENT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id241">6.29.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#terms-and-abbreviation">6.29.2. Terms and Abbreviation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#directory-structure">6.29.3. Directory Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#build-and-run">6.29.4. Build and Run</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#build-targets">6.29.4.1. Build targets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#load-using-a-boot-media">6.29.4.2. Load using a boot-media</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#load-using-ccs">6.29.4.3. Load using CCS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#api-descriptions">6.29.5. API descriptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#sciclient-core">6.29.5.1. SCIClient Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#sciclient-shim-layer">6.29.5.2. SCIClient Shim Layer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#vps-drivers">6.30. VPS Drivers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id242">6.30.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id243">6.30.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id244">6.30.2. User Interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id245">6.30.2.1. Driver Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id247">6.30.2.2. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id248">6.30.3. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id249">6.30.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id250">6.30.4. Additional References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#building-vps-examples">6.30.5. Building VPS examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#vps-examples">6.30.6. VPS examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#display-dss-example">6.30.6.1. Display DSS Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#display-dss-wb-example">6.30.6.2. Display DSS WB example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id252">6.30.7. FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#osal">6.31. OSAL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id253">6.31.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id254">6.31.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#operating-system-extension">6.31.2. Operating System Extension</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id255">6.31.2.1. APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#application-integration-details">6.31.3. Application Integration Details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id256">6.31.4. Application</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id257">6.31.4.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id261">6.31.5. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_device_drv.html#profiling">6.32. Profiling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#id262">6.32.1. Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_device_drv.html#id263">6.32.1.1. Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#integration">6.32.2. Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_device_drv.html#rebuild-the-project">6.32.3. Rebuild the project</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="index_device_drv.html" class="btn btn-neutral float-right" title="6.1. CSL" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_dsp_sw.html" class="btn btn-neutral" title="5.1. DSP Optimized Libraries" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyight 1995-2018</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'05_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

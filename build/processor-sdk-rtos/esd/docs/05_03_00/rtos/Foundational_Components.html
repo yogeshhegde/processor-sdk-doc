@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Foundational Components &mdash; Processor SDK RTOS Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Processor SDK RTOS Documentation" href="../index.html"/>
+        <link rel="next" title="4.1. TI-RTOS Kernel" href="index_Foundational_Components.html"/>
+        <link rel="prev" title="3.1. Board Support" href="index_board.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                05_03_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board_EVM_Abstration.html">3. Board/EVM Abstration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">4. Foundational Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html">4.1. TI-RTOS Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#xdais">4.2. XDAIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#fc">4.3. FC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#ipc">4.4. IPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#opencl">4.5. OpenCL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#boot">4.6. Boot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#mpm">4.7. MPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#openmp">4.8. OpenMP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#pktlib">4.9. PKTLIB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#network">4.10. Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#transport">4.11. Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#tools">4.12. Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="DSP_Software.html">5. DSP Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Device_Drivers.html">6. Device Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRU_ICSS.html">7. PRU-ICSS Firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compilers.html">8. Compilers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_and_Demonstrations.html">9. Examples and Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_Guides.html">10. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">11. Frequently Asked Questions</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>4. Foundational Components</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="foundational-components">
+<h1>4. Foundational Components<a class="headerlink" href="#foundational-components" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html">4.1. TI-RTOS Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#xdais">4.2. XDAIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#fc">4.3. FC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#ipc">4.4. IPC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#ipc-examples">4.4.1. IPC Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#id1">4.4.1.1. IPC RTOS Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#opencl">4.5. OpenCL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#boot">4.6. Boot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#overview">4.6.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#boot-modes">4.6.2. Boot Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#mmcsd">4.6.2.1. MMCSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#qspi">4.6.2.2. QSPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#uart">4.6.2.3. UART</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#mcspi-spi">4.6.2.4. MCSPI/SPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#nand">4.6.2.5. NAND</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#platforms">4.6.3. Platforms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#am335x-am437x">4.6.3.1. AM335x/AM437x</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id2">4.6.3.1.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#source-reference">4.6.3.1.2. Source Reference</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#bootloader-build-files-for-am335x-am437x">4.6.3.1.2.1. Bootloader build files for AM335x/AM437x</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#bootloader-execution-sequence">4.6.3.1.3. Bootloader execution sequence</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#boot-sequence">4.6.3.1.3.1. Boot Sequence</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#tools-and-binary-formats">4.6.3.1.4. Tools and Binary formats</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#binary-format-conversion-procedure">4.6.3.1.4.1. Binary format conversion procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#boot-modes-supported">4.6.3.1.5. Boot Modes supported</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#building-the-bootloader">4.6.3.1.6. Building the Bootloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#boot-mode-settings">4.6.3.1.7. Boot Mode settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id3">4.6.3.1.8. Boot Modes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#booting-via-sd-card">4.6.3.1.8.1. Booting Via SD Card</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#booting-via-qspi">4.6.3.1.8.2. Booting Via QSPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#booting-via-uart">4.6.3.1.8.3. Booting Via UART</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#booting-via-mcspi">4.6.3.1.8.4. Booting Via McSPI</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#booting-via-nand">4.6.3.1.8.5. Booting Via NAND</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#test-application">4.6.3.1.9. Test Application</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#test-application-image-creation">4.6.3.1.9.1. Test Application Image Creation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#loading-test-application">4.6.3.1.9.2. Loading Test application</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#usage-notes">4.6.3.1.10. Usage Notes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#debugging-application-boot">4.6.3.1.11. Debugging application boot</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#am57x">4.6.3.2. AM57x</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id5">4.6.3.2.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id6">4.6.3.2.2. Bootloader Execution Sequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#directory-structure">4.6.3.2.3. Directory structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id7">4.6.3.2.4. Tools and Binary Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#building-the-sbl">4.6.3.2.5. Building the SBL</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#id9">4.6.3.2.5.1. Booting Via SD Card</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#booting-via-emmc">4.6.3.2.5.2. Booting Via eMMC</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#id12">4.6.3.2.5.3. Booting Via QSPI</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id14">4.6.3.2.6. Test Application</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#application-image-creation">4.6.3.2.6.1. Application Image Creation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#linux-environment">4.6.3.2.6.2. Linux Environment</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#windows-environment">4.6.3.2.6.3. Windows environment</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#application-integration">4.6.3.2.7. Application Integration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#memory-map">4.6.3.2.7.1. Memory Map</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#sbl-customization">4.6.3.2.8. SBL Customization</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#changing-boot-media-offsets">4.6.3.2.8.1. Changing boot media offsets</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#speeding-up-boot-by-increasing-speed-of-the-boot-interface">4.6.3.2.8.2. Speeding up boot by increasing speed of the boot interface</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#reducing-size-of-sbl-and-application">4.6.3.2.8.3. Reducing size of SBL and application</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id15">4.6.3.2.9. Usage Notes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#sbl-avs-and-abb-setup">4.6.3.2.9.1. SBL AVS and ABB setup</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#configuring-entry-point-for-sbl">4.6.3.2.9.2. Configuring entry point for SBL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#id16">4.6.3.2.9.3. Debugging application boot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#am65x">4.6.3.3. AM65x</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id17">4.6.3.3.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#block-diagram">4.6.3.3.2. Block Diagram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#am655x-sbl-memory-usage">4.6.3.3.3. Memory Map</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#am655x-sbl-directory-structure">4.6.3.3.4. Directory structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#image-formats">4.6.3.3.5. Image Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#building-the-sbl-and-its-components">4.6.3.3.6. Building the SBL and its components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#testing-the-sbl">4.6.3.3.7. Testing the SBL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id21">4.6.3.3.8. Boot Modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#evm-setup-for-testing-sbl">4.6.3.3.9. EVM Setup for testing SBL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#c66x">4.6.3.4. C66x</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id22">4.6.3.4.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#flashing-the-bootloader">4.6.3.4.2. Flashing the Bootloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id23">4.6.3.4.3. Bootloader Execution Sequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#compilation">4.6.3.4.4. Compilation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#flash-writers">4.6.3.4.5. Flash Writers</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#eeprom-writer">4.6.3.4.5.1. EEPROM Writer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#nor-writer">4.6.3.4.5.2. NOR Writer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#nand-writer">4.6.3.4.5.3. NAND Writer</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id29">4.6.3.4.6. Boot Modes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#nand-boot">4.6.3.4.6.1. NAND Boot</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#nor-boot">4.6.3.4.6.2. NOR Boot</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#tftp-boot">4.6.3.4.6.3. TFTP Boot</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#post-boot">4.6.3.4.6.4. POST Boot</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#ethernet-boot">4.6.3.4.6.5. ETHERNET Boot</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#srio-boot">4.6.3.4.6.6. SRIO Boot</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#pcie-boot">4.6.3.4.6.7. PCIE Boot</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#k2g">4.6.3.5. K2G</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id40">4.6.3.5.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id41">4.6.3.5.2. Bootloader Execution Sequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id42">4.6.3.5.3. Tools and Binary Formats</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#making-bootable-sbl-image-mlo">4.6.3.5.4. Making Bootable SBL image (MLO)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#making-loadable-user-application-image-app">4.6.3.5.5. Making Loadable User Application image (app)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id43">4.6.3.5.6. Boot Modes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#mmcsd-boot-mode">4.6.3.5.6.1. MMCSD Boot Mode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#qspi-boot-mode">4.6.3.5.6.2. QSPI Boot Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#memory-usage">4.6.3.5.7. Memory Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#k2h-k2e-k2l">4.6.3.6. K2H/K2E/K2L</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id47">4.6.3.6.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id48">4.6.3.6.2. Flashing the Bootloader</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id49">4.6.3.6.3. Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id50">4.6.3.6.4. Compilation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id51">4.6.3.6.5. Making Loadable User Application image (app)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id52">4.6.3.6.6. Flash Writers</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#spi-writer">4.6.3.6.6.1. SPI Writer</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#boot-example">4.6.3.6.7. Boot Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#omapl137-omapl138-c6748">4.6.3.7. OMAPL137/OMAPL138/C6748</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id55">4.6.3.7.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id56">4.6.3.7.2. Bootloader Execution Sequence</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id57">4.6.3.7.3. Tools and Binary Formats</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#id58">4.6.3.7.3.1. Making Bootable SBL image (MLO)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#id59">4.6.3.7.3.2. Making Loadable User Application image (app)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id60">4.6.3.7.4. Boot Modes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#spi-boot-mode">4.6.3.7.4.1. SPI Boot Mode</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#id61">4.6.3.7.4.2. MMCSD Boot Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id63">4.6.3.7.5. Memory Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#additional-details">4.6.3.7.6. Additional Details</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#initial-steps">4.6.3.7.6.1. Initial Steps</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#cleaning-sbl">4.6.3.7.6.2. Cleaning SBL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#building-sbl">4.6.3.7.6.3. Building SBL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#cleaning-flash-writer">4.6.3.7.6.4. Cleaning Flash Writer</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#building-flash-writer">4.6.3.7.6.5. building-flash-writer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#bootloader-debugging">4.6.4. Bootloader Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#common-steps-to-debug-application-boot">4.6.4.1. Common Steps to debug application boot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#hardware-debug-steps">4.6.4.1.1. Hardware Debug Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#software-debug-steps">4.6.4.1.2. Software Debug Steps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#uart-apploader">4.6.5. UART AppLoader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#id64">4.6.5.1. Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#supported-platforms">4.6.5.2. Supported Platforms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#apploader-load-address">4.6.5.3. Apploader Load Address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#pre-requisites">4.6.5.4. Pre-Requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#apploader-usage">4.6.5.5. AppLoader Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#rebuilding-apploader">4.6.5.6. Rebuilding AppLoader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#mpm">4.7. MPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#openmp">4.8. OpenMP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#pktlib">4.9. PKTLIB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#network">4.10. Network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#cclink">4.10.1. CCLink</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#id69">4.10.1.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#protocol-overview">4.10.1.2. Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#code-organization">4.10.1.3. Code Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#building-the-examples">4.10.1.4. Building the Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#cc-link-ie-field-network-basic-example-description">4.10.1.4.1. CC-Link IE Field Network Basic Example Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#running-cc-link-ie-field-network-basic-example">4.10.1.4.2. Running CC-Link IE Field Network Basic example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#ndk">4.10.2. NDK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#ndk-overview">4.10.2.1. NDK Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#nimu-transport">4.10.2.2. NIMU Transport</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#nimu-for-cpsw">4.10.2.3. NIMU for CPSW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#nimu-for-icss">4.10.2.4. NIMU for ICSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#examples">4.10.2.5. Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#ping-example">4.10.2.5.1. PING Example</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#building-the-ndk-examples">4.10.2.5.1.1. Building the NDK examples</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#ndk-example-description">4.10.2.5.1.2. NDK Example Description</a></li>
+<li class="toctree-l5"><a class="reference internal" href="index_Foundational_Components.html#running-ndk-example-on-arm-core-of-keystone-ii-devices">4.10.2.5.1.3. Running NDK example on ARM core of Keystone II devices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#cclink-example">4.10.2.6. CCLink Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#faq">4.10.2.7. FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#how-to-check-which-versions-of-nimu-driver-is-for-my-soc">4.10.2.7.1. How to check which versions of NIMU driver is for my SOC?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#is-there-any-multicast-streams-limitation-using-the-ndk">4.10.2.7.2. Is there any multicast streams limitation using the NDK?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#additional-documentation-references">4.10.2.8. Additional Documentation References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#transport">4.11. Transport</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index_Foundational_Components.html#timesync-ptp">4.11.1. TimeSync (PTP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#id75">4.11.1.1. Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#terms-and-abbreviations">4.11.1.1.1. Terms and Abbreviations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id76">4.11.1.1.2. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#id77">4.11.1.1.3. APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#tasks-internally-created-from-timesync-drvinit">4.11.1.1.4. Tasks Internally created from TimeSync_drvInit()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#building-timesync-examples-unit-test">4.11.1.1.5. Building timeSync Examples/Unit Test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index_Foundational_Components.html#sample-examples">4.11.1.1.6. Sample Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index_Foundational_Components.html#id78">4.11.1.2. Additional References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_Foundational_Components.html#tools">4.12. Tools</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="index_Foundational_Components.html" class="btn btn-neutral float-right" title="4.1. TI-RTOS Kernel" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index_board.html" class="btn btn-neutral" title="3.1. Board Support" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyight 1995-2018</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'05_03_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>
