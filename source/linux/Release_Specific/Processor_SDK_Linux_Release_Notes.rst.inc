@@ -59,7 +59,7 @@ Released April 2019
     - Add Object Detection and Image Segmentation TIDL demos to Matrix GUI
     - Add support in TIDL to import TF model created with recent releases of Tensorflow (>1.7)
     - Optimize Concat Layer on C66x for SqueezeNet and InceptionNet
-- mmWave Gesture Demo for AM3/AM4/AM5/AM6 `TI design TIDEP-01013 (TBA) <http://www.ti.com/tool/TIDEP-01013>`__
+- `mmWave Gesture Demo for AM3/AM4/AM5/AM6 <Examples_and_Demos_Application_Demos.html#mmwave-gesture-controlled-hmi>`__
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -266,22 +266,19 @@ SDK Known Issues
    PLSDK-2178,"am335x-ice, am437x-idk",ICSS EMAC intermittent error in received acyclic packet content,None
    PLSDK-2186,am572x-evm,video-analytic-demo should run on top of Weston instead of qwindow-compistor,"Run the demo on top of qwindow-compositor, as available from Matrix GUI"
    PLSDK-2220,k2e-evm,UBI Image for K2E exceeds the available size limit,None
-   PLSDK-2355,"am572x-idk, am572x-evm",Openvx: openvx_tiovx_application hangs on am572x evm,
+   PLSDK-2355,"am572x-idk, am572x-evm",Openvx: openvx_tiovx_application hangs on am572x evm, None
    PLSDK-2466,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, k2g-ice",Fix Race condition in updating NSP credit value,None
    PLSDK-2473,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice","DualEMAC PTP ""invalid timestamp"" warning messages when starting ptp4l",None
    PLSDK-2474,am572x-evm,soc-performance-monitor table display problem (missing texts),None
    PLSDK-2514,"k2e-evm, k2l-evm",K2L:Observed failure messages in boot log,
    PLSDK-2530,"am335x-ice, am437x-idk",AM3/4 PTP PPS fails intermittently,No complete workaround. Restarting the ethernet interface should reset PPS and likely resolve the issue temporarily.
-   PLSDK-2611,am572x-evm,ROS navigation demo: robot jumps up and down in RViz,This is a baseline issue with ROS indigo. No workaround.
    PLSDK-2642,am654x-idk,PRU Ethernet links on IDK Application board are unstable,
-   PLSDK-2658,am437x-idk,AM437x IDK 10 min reboot,
-   PLSDK-2659,am574x-idk,TIDL inference reporting same classification output for all input images,
-   PLSDK-2662,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",HSR/PRP: Bringing down one slave port stops HSR/PRP interface,
-   PLSDK-2670,"am570x-evm, am572x-evm, am572x-hsevm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm",OpenMPacc test hangs on k2 platorms,
-   PLSDK-2699,am574x-idk,TIDL: Accuracy problem using UNET3 topology with 160x120x1 input,
+   PLSDK-2658,am437x-idk,AM437x IDK 10 min reboot,"Stop Weston first if it is enabled '/etc/init.d/Weston stop'. Then,issue '/etc/init.d/rc.pvr stop' or 'systemctl stop rc.pvr.servic' to stop pvr prior to reboot"
+   PLSDK-2659,am574x-idk,TIDL inference reporting same classification output for all input images,Input size to AvePooling layer may go up to 64x64 only
+   PLSDK-2662,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",HSR/PRP: Bringing down one slave port stops HSR/PRP interface,None
+   PLSDK-2670,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",OpenMPacc test hangs on k2 platorms,
    PLSDK-2700,,Jailhouse Linux/RTOS issue observed when CPU freq changed,
-   PLSDK-2722,am335x-ice,HSR Incorrect ARP Answer,
-   PLSDK-2724,dra76x-evm,Big_Data_IPC test failing on dra76x-evm platform,
+   PLSDK-2732,am574x-idk,TIDL_Arm_Emulation test failing on am574x-idk,
 
 
 |

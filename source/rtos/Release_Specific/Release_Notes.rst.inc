@@ -48,10 +48,13 @@ Documentation
 
 | 
 
-Processor SDK v05.02.00
+Processor SDK v05.03.00
 ========================
 
-Released December 2018
+.. warning::
+   Big-endian support for C66x and C674x platforms shall be deprecated in Processor SDK RTOS from the Release 6.0 (2Q-2019)
+
+Released March 2019
 
 .. rubric::  What's New
    :name: whats-new
@@ -60,21 +63,23 @@ Released December 2018
    :name: new-features
 
 - AM65x
-	- Updated `ICSS-G Dual EMAC firmware <index_pru_icss_fw.html#icss-g-dual-emac>`__ and `EMAC driver  <index_device_drv.html#emac>`__ to support
-		- PTP slave and Dynamic configuration interface support between firmware and driver
 	- Additional Features
-		- `Board Diagnostic <index_board.html#diagnostics>`__  testcases extension to R5 core and support for ICSS-G interposer card
-		- `SBL <index_Foundational_Components.html#am65x>`__  enhancements for reduced size.SYSFW binary being exposed as separate binary for reduced boot time
-		- `Uniflash <index_board.html#uniflash>`__ flash writer support for OSPI with writer being loaded from CCS/JTAG
-		- `OSPI <index_device_drv.html#mcspi-qspi-ospi>`__ Driver update to support higher 133Mhz/166Mhz support
+        - EA support for AM65x HS SOC
+        - SBL Example app with XIP support
+        - Additional SPI driver support for XIP mode
+   		- `Uniflash <index_board.html#uniflash>`_ image load support over UART
+        - PCIe driver update for Multiple interfaces, DMA and Interrupt Support
+        - CAN to Ethernet Gateway Demo
 	- Features not (yet) supported: USB 3.0, MPU TI-RTOS SMP Support,CTOOLSLIB
--  `PRU-ICSS eSPI Firmware <PRU_ICSS.html#pru-icss-espi>`__
-	- Additional support for eSPI protocol offload for AM335x and AM437x SOC
--  AM57x SOC
-	- `SBL <index_Foundational_Components.html#boot-modes>`__  eMMC boot support
-	- `USB <index_device_drv.html#usb>`__ device MSC example with eMMC exposed as storage. Example allows eMMC exposed as mass storage drive on USB host with option to format using host utilities
--  `FATFS <index_device_drv.html#fatfs>`__ module multipartition support extension across all supported SOC targets
--  Updated `Performance Audio Framework <index_examples_demos.html#performance-audio-demo>`__ framework verified for Dolby ATMOS for AVRs V1.3 silicon certification tests
+- OMAPL13x
+    - DMA mode support for `SPI <index_device_drv.html#mcspi-qspi-ospi>`_ driver
+- AM437x
+    - IOLink driver and sample application support
+- AM574x 
+    - Support for C66x 1Ghz
+- AM335x
+    - PRU-ICSS Soft UART support
+- Rx interrupt pacing support in EMAC firmware
 
 .. rubric::  Component Version
    :name: component-version
@@ -89,11 +94,11 @@ more information on each item.
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  Component  |   Version  |AM335x|AM437x|AM57x |AM65x |K2H/K2K| K2E  | K2L  | K2G  |C665x |C667x |OMAP-L137|OMAP-L138|
 +=============+============+======+======+======+======+=======+======+======+======+======+======+=========+=========+
-| CG_XML      | 2.41.0     |   X  |  X   |  X   |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
+| CG_XML      | 2.61.0     |   X  |  X   |  X   |  X   |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 | CTOOLSLIB   | 2.2.0.0    |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  DSPLIB     | 3.4.0.0    |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
+|  DSPLIB     | 3.4.0.3    |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  EDMA3 LLD  | 2.12.5.30  |   X  |  X   |  X   |      |       |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
@@ -117,19 +122,19 @@ more information on each item.
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  NS         | 2.40.1     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  OPENCL     | 1.1.17.1   |      |      |  X   |      |       |      |      |      |      |      |         |         |
+|  OPENCL     | 1.1.18.0   |      |      |  X   |      |       |      |      |      |      |      |         |         |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  OPENMP     |2.6.2.1     |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
+|  OPENMP     | 2.6.3.0    |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  PDK        |            |1.0.13|1.0.13|1.0.13| 1.0.3| 4.0.12|4.0.12|4.0.12|1.0.12|2.0.12|2.0.12|  1.0.7  |  1.0.7  |
+|  PDK        |            |1.0.14|1.0.14|1.0.14| 1.0.4| 4.0.13|4.0.13|4.0.13|1.0.13|2.0.13|2.0.13|  1.0.8  |  1.0.8  |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  SYS/BIOS   | 6.73.1     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
+|  SYS/BIOS   | 6.75.2     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  UIA        | 2.30.1.2   |      |      |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  XDAIS      | 7.24.0.4   |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  XDCTOOLS   | 3.50.08    |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
+|  XDCTOOLS   | 3.51.01    |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 
 
@@ -138,13 +143,13 @@ The following compilers are bundled with the SDK installer:
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
 |    Compiler    | Version |AM335x|AM437x|AM57x |AM65x |K2H/K2K| K2E | K2L    |  K2G   |C665x|C667x|OMAP-L137|OMAP-L138|
 +================+=========+======+======+======+======+=======+=====+========+========+=====+=====+=========+=========+
-|GNU ARM Embedded|6-2017-q1|   A8 |  A9  |  A15 |      |  A15  | A15 | A15    |  A15   |     |     |         |         |
+|GNU ARM Embedded|7-2018-q2|   A8 |  A9  |  A15 |      |  A15  | A15 | A15    |  A15   |     |     |         |         |
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
-|GNU Linaro GCC  |7.2.1    |      |      |      | A53  |       |     |        |        |     |     |         |         |
+|GNU Linaro GCC  | 7.2.1   |      |      |      | A53  |       |     |        |        |     |     |         |         |
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
-|TI ARM CGT      | 16.9.9  |      |      |  M4  |  R5  |       |     |A15(SBL)|        |     | ARM9|   ARM9  |         |
+|TI ARM CGT      | 18.1.5  |      |      |  M4  |  R5  |       |     |A15(SBL)|        |     | ARM9|   ARM9  |         |
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
-|TI C6000 CGT    | 8.2.2   |      |      | C66x |      |C66x   |C66x | C66x   |  C66x  |C66x |C66x |   C74x  |   C74x  |
+|TI C6000 CGT    | 8.3.2   |      |      | C66x |      |C66x   |C66x | C66x   |  C66x  |C66x |C66x |   C74x  |   C74x  |
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
 |TI PRU CGT      | 2.2.1   | PRU  | PRU  | PRU  |      |       |     |  PRU   |        |     |     |         |         |
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
@@ -155,13 +160,13 @@ environment (IDE) for all devices and EVMs:
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 | Component | Version  |AM335x|AM437x|AM57x |AM65x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
 +===========+==========+======+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
-|   CCS     | 8.2.0    |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
+|   CCS     | 8.3.0    |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 |   EMU Pack|Sitara    |   X  |  X   |  X   |  X   |       |     |     |     |     |     |         |         |
 |           |Device    |      |      |      |      |       |     |     |     |     |     |         |         |
 |           |1.4.4     |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-|    TI     |8.0.903.4 |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |     X   |     X   |
+|    TI     |8.0.903.2 |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |     X   |     X   |
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
@@ -613,11 +618,13 @@ platform/EVM.
 +----------------+---------+---------+
 |USB             |  AM57x  |    M4   |
 +----------------+---------+---------+
+|USB             |  K2G    |    C66x |
++----------------+---------+---------+
 |McBSP           |  K2G    |    A15  |
 +----------------+---------+---------+
 |McBSP           |OMAP-L13x|    ARM9 |
 +----------------+---------+---------+
-|All Drivers     |  K2x    |    A15  |
+|All Drivers     | K2E/L/K |    A15  |
 +----------------+---------+---------+
 
 Other Features 
@@ -730,19 +737,9 @@ The recommended development host is
 -  **Windows**: Windows 10 on 64-bit machine
 -  **Linux**: Ubuntu 14.04, 16.04 on 64-bit machine
 
-.. raw:: html
-
-   <div
-   style="margin: 5px 25px; padding: 2px 10px; background-color: #ecffff; border-top: 1px solid #3399ff; border-bottom: 1px solid #3399ff;">
-
-**NOTE**
-
-The Windows installer is a 32-bit binary, but is compatibile with
-64-bit machine.
-
-.. raw:: html
-
-   </div>
+.. note::
+   The Windows installer is a 32-bit binary, but is compatibile with
+   64-bit machine.
 
 | 
 
@@ -750,14 +747,15 @@ Technical Support and Product Updates
 =======================================
 
 For further information or to report any problems, contact:
--  TI E2E Processor Support <https://e2e.ti.com/support/processors/>`__
-   for all supported platforms
+-  `TI E2E Processor Support <https://e2e.ti.com/support/processors/>`__ for all supported platforms
 
 
 | 
 
 Archived 
 ==========
+-  `Processor-SDK RTOS
+   5.2.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_02_00_10/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
    5.1.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_01_00_11/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS

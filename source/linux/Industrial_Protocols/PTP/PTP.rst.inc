@@ -16,6 +16,21 @@ following sections provide details about the Software Architecture,
 Supported platforms, test setup and details about the support for
 Ordinary Clock (OC), Boundary Clock (BC) And Transparent Clock (TC)
 
+Features supported
+
+- **SAN PTP/1588**
+   -  PTP Slave and Master mode
+   -  Supports P2P clock.
+   -  PTP over 802.3 (Annex F)
+   -  Ordinary Clock (GMAC/PRU port)
+   -  Boundary Clock supported
+   -  Two step clock supported
+
+- **DAN PTP/1588**
+   -  Ordinary Clock (HSR/PRP port)
+   -  Transparent clock as per IEC62439-3 Annex C
+   -  Transparent clock one-step to two-step conversion (HSR node)
+
 Software Overview
 =================
 
@@ -91,11 +106,11 @@ in the table below.
 +--------------------------+--------------------------+--------------------------+-----------------------+
 | AM437x                   | 0                        | 1(at 100Mbps)            | Dual EMAC             |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| AM571x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / PRP (SAN) |
+| AM571x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| AM572x                   | 1                        | 1(at 100Mbps)            | Dual EMAC / PRP (SAN) |
+| AM572x                   | 1                        | 1(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| AM574x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / PRP (SAN) |
+| AM574x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
 | K2G                      | 0                        | 2(at 100Mbps)            | Dual EMAC             |
 +--------------------------+--------------------------+--------------------------+-----------------------+
@@ -104,7 +119,8 @@ GMAC
 -----
 
 GMAC interface can be configured to run at either 100 Mbps or 1 Gbps.
-CPTS hardware block helps with timestamping of packets. Refer to :ref:`PLSDK_CPTS_Module-label`
+CPTS hardware block helps with timestamping of packets. Refer to
+`here <Foundational_Components_Kernel_Drivers.html#common-platform-time-sync-cpts>`__
 for details.
 
 PRU-ICSS
@@ -177,8 +193,8 @@ the relevant boot command (e.g. 'bootcmd', mmcboot' or 'netboot')
  setenv fdtfile <PPS dtb>
 
 
-PRU-ICSS
----------
+PRU-ICSS IEP
+-------------
 
 IEP has an additional hardware to generate a programmable sync output
 which is tied to the IEP counter. This is called the SYNC unit. For this
@@ -359,7 +375,7 @@ properly configured, to run linuxptp over the PRU-ICSS Ethernet ports, do
 
 ::
 
-    ptp4l -2 -P -f oc.cfg
+    ptp4l -f oc.cfg
 
 oc.cfg is a ptp4l configuration file.
 
@@ -376,6 +392,8 @@ Example oc.cfg for OC,
     [eth2]
     egressLatency 726
     ingressLatency 186
+    delay_mechanism P2P
+    network_transport L2
 
 where **eth2** is the intended PRU-ICSS Ethernet port over which the OC
 functionality is provided.
@@ -389,7 +407,7 @@ PTP/OC in slave mode:
 
 ::
 
-    ptp4l -2 -P -f oc_eth2.txt -s -m &
+    ptp4l -f oc.txt -s -m &
     [1] 1153
     root@am57xx-evm:~# ptp4l[3777.676]: selected /dev/ptp1 as PTP clock
     ptp4l[3777.740]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
@@ -694,8 +712,9 @@ the same ICSS-PRU simultaneously.
 
 PTP Ordinary Clock on GMAC
 ---------------------------
-Refer to :ref:`PLSDK_CPTS_Module-label` for more details about the CPTS driver 
-and how to run **linuxptp** over the CPSW GMAC port for providing the PTP OC functionality.
+Refer to `here <Foundational_Components_Kernel_Drivers.html#common-platform-time-sync-cpts>`__
+for more details about the CPTS driver and how to run **linuxptp** over the CPSW GMAC port
+for providing the PTP OC functionality.
 
 For example, once the AM57xx IDK is boot into Linux kernel prompt and
 the CPSW GMAC ports are properly configured, to run linuxptp over the
@@ -853,7 +872,7 @@ Follow the steps at :ref:`PLSDK_PRP_EMAC_Mode-label`
 to boot up the AM57xx IDK and configure the PRU-PRP firmware to run in
 PRP\_EMAC mode if using PRP firmware.
 
-Use the fconfig command to configure the desired IP address, for example
+Use the ifconfig command to configure the desired IP address, for example
 
 ::
 
@@ -878,7 +897,7 @@ port
 .. rubric:: GMAC Port Configurations
    :name: gmac-port-configurations
 
-Use the fconfig command to configure the desired IP address, for example
+Use the ifconfig command to configure the desired IP address, for example
 
 ::
 
@@ -1239,10 +1258,10 @@ If using PRP firmware, enable SAN mode on each of the ICSS PRU interfaces
 
 ::
 
-    $ echo 1 > /sys/kernel/debug/prueth-eth2/prp_emac_mode
-    $ echo 1 > /sys/kernel/debug/prueth-eth3/prp_emac_mode
-    $ echo 1 > /sys/kernel/debug/prueth-eth4/prp_emac_mode
-    $ echo 1 > /sys/kernel/debug/prueth-eth5/prp_emac_mode
+    $ echo 1 > /sys/devices/platform/pruss2_eth/net/eth2/prp_emac_mode
+    $ echo 1 > /sys/devices/platform/pruss2_eth/net/eth3/prp_emac_mode
+    $ echo 1 > /sys/devices/platform/pruss1_eth/net/eth4/prp_emac_mode
+    $ echo 1 > /sys/devices/platform/pruss1_eth/net/eth5/prp_emac_mode
 
 Next, configure each BC interface with a proper IP address. For example,
 
@@ -1267,6 +1286,8 @@ file)
 ::
 
     [global]
+    sanity_freq_limit 0
+    step_threshold 0.000002
     tx_timestamp_timeout 10
     logMinPdelayReqInterval -3
     logSyncInterval -3
@@ -1306,7 +1327,7 @@ background
 
 ::
 
-    $ phc2sys -a -X -g eth1 -m &
+    $ phc2sys -a -X -g eth1 -S 0.00002 -L 0 -m  &
 
 where the new options added in this implementation are
 
@@ -1314,6 +1335,8 @@ where the new options added in this implementation are
 
     -X: use extts (pps) to perform BC internal clock synchronization.
     -g: specify which interface is the GMAC port interface
+    -S: specify step threshold
+    -L: specify sanity frequency limit in ppb
 
 Lines similar to the following should be displayed after a few seconds
 (mixed with the "ptp4l[304.713]: rms ..." lines from ptp4l) :
@@ -1649,13 +1672,13 @@ section for HSR) will be used in the setup of the tests.
 
 ::
 
-    $ echo 1 > /sys/class/ptp/ptp1/pps_enable
+    $ echo 1 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_enable
 
 -  Open a telnet terminal to DUT-3 and enable PPS:
 
 ::
 
-    $ echo 1 > /sys/class/ptp/ptp1/pps_enable
+    $ echo 1 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_enable
 
 -  Measure PPS jitter between DUT-2 (master) and DUT-3 (slave)
 
@@ -1742,33 +1765,6 @@ limitations
 
 Known Issues
 ------------
-
--  Once a while the HSR master OC reports "send XYZ failed" which can
-   cause an OC downstream to restart its state machine.
-
-::
-
-    root@am57xx-evm:~# ./ptp4l -2 -P -f och.cfg -m
-    ptp4l[90599.734]: selected /dev/ptp1 as PTP clock
-    ptp4l[90599.734]: hsr0: red port A is set to ACTIVE
-    ptp4l[90599.734]: hsr0: red port B is set to ACTIVE
-    ptp4l[90599.820]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
-    ptp4l[90599.820]: 1port_dispatch: p=A state=LISTENING, pp=B state=INITIALIZING
-    ptp4l[90599.820]: port 0: INITIALIZING to LISTENING on INIT_COMPLETE
-    ptp4l[90607.417]: port 1: LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
-    ptp4l[90607.417]: 1port_dispatch: p=A state=MASTER, pp=B state=MASTER
-    ptp4l[90607.417]: selected best master clock 70ff76.fffe.1c0fab
-    ptp4l[90607.417]: assuming the grand master role
-    ptp4l[98211.790]: port 1: send sync failed
-    ptp4l[98211.790]: port 1: MASTER to FAULTY on FAULT_DETECTED (FT_UNSPECIFIED)
-    ptp4l[98211.870]: 1port_dispatch: p=A state=FAULTY, pp=B state=MASTER
-    ptp4l[98227.950]: port 1: FAULTY to LISTENING on INIT_COMPLETE
-    ptp4l[98227.950]: 1port_dispatch: p=A state=LISTENING, pp=B state=MASTER
-    ptp4l[98234.535]: port 1: LISTENING to MASTER on ANNOUNCE_RECEIPT_TIMEOUT_EXPIRES
-    ptp4l[98234.535]: 1port_dispatch: p=A state=MASTER, pp=B state=MASTER
-    ptp4l[98234.535]: selected best master clock 70ff76.fffe.1c0fab
-    ptp4l[98234.535]: assuming the grand master role
-
 
 PTP Roadmap
 ===========

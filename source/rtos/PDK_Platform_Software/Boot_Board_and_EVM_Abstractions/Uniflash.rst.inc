@@ -32,9 +32,9 @@ Supported Platforms
 |                +------------------+-------+-------+------+------+------+-------+
 |                | K2G ICE          |       |   X   |      |      |      |   X   |
 +----------------+------------------+-------+-------+------+------+------+-------+
-| AM65XX         | AM65xx EVM       |       |       |   X  |   X  |      |   X   |
+| AM65XX         | AM65xx EVM       |       |       |   X  |   X  |   X  |   X   |
 |                +------------------+-------+-------+------+------+------+-------+
-|                | AM65xx IDK       |       |       |   X  |   X  |      |   X   |
+|                | AM65xx IDK       |       |       |   X  |   X  |   X  |   X   |
 +----------------+------------------+-------+-------+------+------+------+-------+
 
 where,
@@ -95,8 +95,8 @@ Following is the sample output on Windows.
 
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
-        Copyright (C) 2017-2018 Texas Instruments Incorporated - http://www.ti.com/
-        Version 1.0.0.5
+        Copyright (C) 2017-2019 Texas Instruments Incorporated - http://www.ti.com/
+        Version 1.0.0.6
         ----------------------------------------------------------------------------
         Displaying Help..
 
@@ -116,7 +116,8 @@ Following is the sample output on Windows.
         1 - MLO
         2 - Uboot
         3 - UImage
-        4 - Custom Inteface
+        4 - Firmware
+        5 - Custom Inteface
 
 
         erase_length:Length in Bytes
@@ -131,7 +132,7 @@ Following is the sample output on Windows.
         Erase Example:ProcessorSDKSerialFlash.exe -c COM7 -d 2 -e 1000 -o 20000
     
 
-.. note::  Currently Image_Type(option -i) is not supported.
+.. note::
 
            Offset option(option -o) receives hexadecimal value by default.
            The offset value(hexadecimal) can be preceded with or without "0x"
@@ -149,12 +150,9 @@ There are two ways of loading and executing the Flash Writer on to the target pl
 1. Loading Flash Writer via ROM boot (over UART interface), for the target platforms that support UART Boot mode
 2. Loading Flash Writer over JTAG interface, for the target platforms that do not support UART Boot mode
 
-.. note:: This Section does not apply for AM65xx platform.
-          Refer Section :ref:`program-flashwriter-am65xx` to load FlashWriter on AM65xx platform
-
 
 Loading Flash Writer via ROM boot
-+++++++++++++++++++++++++++++++++
+""""""""""""""""""""""""""""""""""
 
 For the target platforms that support UART Boot mode, use the following
 procedure to transfer flash writer
@@ -165,6 +163,7 @@ procedure to transfer flash writer
 2. Make sure the Serial connections between the Host PC and the target platform are established.
 3. Power cycle the board
 4. Issue the following commands on the Host PC
+
 
 For Windows
 ::
@@ -186,6 +185,8 @@ For Linux
         # sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f /home/user/pdk/ti/board/utils/uniflash/bin/uart_iceAMIC110_flash_programmer.bin
         
 
+.. note::
+            In case of AM65xx platforms, use the first COM port out of four COM ports detected.
 
 The application will output the progress of file transfer on the Host PC.
 Following is the sample output on Windows.
@@ -202,8 +203,8 @@ Following is the sample output on Windows.
 
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
-        Copyright (C) 2017-2018 Texas Instruments Incorporated - http://www.ti.com/
-        Version 1.0.0.5
+        Copyright (C) 2017-2019 Texas Instruments Incorporated - http://www.ti.com/
+        Version 1.0.0.6
         ----------------------------------------------------------------------------
         Flashing Flash Writer to RBL..
 
@@ -220,10 +221,15 @@ This can be verified on the serial console utility.
             Verified utilities are Teraterm (in Windows) and Minicom (in Linux)
 
 Loading Flash Writer over JTAG interface
-++++++++++++++++++++++++++++++++++++++++
+""""""""""""""""""""""""""""""""""""""""
 
 For the target platforms that does not support UART Boot mode, use the following
 procedure to load and execute flash writer over JTAG interface.
+
+.. note:: This Section does not apply for AM65xx platform.
+          Refer Section :ref:`program-flashwriter-am65xx` to load FlashWriter over JTAG interface
+          on AM65xx platform
+
 
 **Steps**
 
@@ -442,8 +448,8 @@ Following is the sample output on Windows.
 
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
-        Copyright (C) 2017-2018 Texas Instruments Incorporated - http://www.ti.com/
-        Version 1.0.0.5
+        Copyright (C) 2017-2019 Texas Instruments Incorporated - http://www.ti.com/
+        Version 1.0.0.6
         ----------------------------------------------------------------------------
         Flashing Image to Flash Writer..
 
@@ -504,8 +510,8 @@ Following is the sample output on Windows.
 
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
-        Copyright (C) 2017-2018 Texas Instruments Incorporated - http://www.ti.com/
-        Version 1.0.0.5
+        Copyright (C) 2017-2019 Texas Instruments Incorporated - http://www.ti.com/
+        Version 1.0.0.6
         ----------------------------------------------------------------------------
         Erasing Flash....
 

@@ -14,7 +14,9 @@ Taking the C66x Out Of Reset with Linux Running on the ARM A15
 ===============================================================
 .. include:: How_to_Guides/Target/C66x_Reset_from_A15_Running_Linux.rst.inc
 
-
+RTOS Customization: using an external input to trigger an interrupt on AM57x
+=======================================================================================================
+.. include:: How_to_Guides/Target/External_Input_Trigger_Interrupt_AM57x.rst.inc
 
 *************
 Host

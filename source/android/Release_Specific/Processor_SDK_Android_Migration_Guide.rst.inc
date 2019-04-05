@@ -7,6 +7,18 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Android.
 
+.. rubric:: Processor SDK Android 05.03.00
+   :name: processor-sdk-android-05.03.00
+
+-  This release includes the first version of the Processor SDK Android for AM65x with Oreo
+-  This release includes maintenance update of the Processor SDK Android for AM57xx
+   with Oreo.
+-  More details about Oreo can be obtained from
+   `here <https://developer.android.com/about/versions/oreo/index.html>`__.
+-  See `05.03.00 Release
+   Notes <http://software-dl.ti.com/processor-sdk-android/esd/docs/05_03_00_07/android/Release_Specific_Supported_Platforms_and_Versions.html>`__
+   for full list of modifications.
+
 
 .. rubric:: Processor SDK Android 05.02.00
    :name: processor-sdk-android-05.02.00
