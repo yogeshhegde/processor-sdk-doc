@@ -16,7 +16,7 @@ Processor SDK 05.xx Releases
 Processor SDK 05.03
 ----------------------
 
-- No changes from the previous release
+- This release is backwards compatible with 05.02 release.
 
 
 Processor SDK 05.02
