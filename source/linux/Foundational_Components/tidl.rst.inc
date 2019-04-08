@@ -69,21 +69,21 @@ TIDL software is intended for AM57xx Sitara devices, that either have DSP or EVE
 TIDL API framework abstracts multicore operation
 -------------------------------------------------
 
-Current implementation of TIDL API provides following important features:
+Running a network on individual EVE subsystem or C66x DSP core:
 
 - Multiple networks on different EVEs/DSPs can run concurrently
-    We can run concurrently as many different networks as we have available accelerators. In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP) - may need increase in default CMEM block size (~64MB per accelerator are advices - default setting is 192MB).
+    We can run concurrently as many different networks as we have available accelerators. In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP) - may need increase in default CMEM block size (~64MB per accelerator are advices - default setting is 192MB). More information about CMEM can be found at http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_CMEM.html
     Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP, but we can start one network with its own output
     in one EVE, and in parallel same or different network with its own input on second EVE.
+
+- Splitting the network layers between available accelerators (EVE subsystem and/or C66x cores)
+    For certain networks (JDetNet is one example), it is beneficial to use concept of layer groups.
+    One layer group runs on EVE and another on DSP. There are few layers which runs faster on DSP: SoftMax, Flatten and Concat layers.
+    So in this case we are using DSP+EVE for single network.
 
 - Same TIDL API based application code can run on EVE or DSP accelerator
     This can be achieved just by modifying a `device type parameter <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#_CPPv2N4tidl10DeviceTypeE>`_
     More details in `Introduction to Programming Model`_
-
-- Certain networks could be split between EVE and DSP
-    For certain networks (JDetNet is one example), it is beneficial to use concept of layer groups.
-    One layer group runs on EVE and another on DSP. There are few layers which runs faster on DSP: SoftMax, Flatten and Concat layers.
-    So in this case we are using DSP+EVE for single network.
 
 Verified networks topologies
 ============================
@@ -912,12 +912,21 @@ Parameters controling dynamic quantization
 TIDL Inference process is not completely stateless. Information (activation min, max values) from previously executed inferences are used for quantization process.
 
 - quantMargin is margin added to the average in percentage. 
-- quantHistoryParam1 weights used for previously processed inference during application boot time 
-- quantHistoryParam2 weights used for previously processed inference during application execution (After initial few frames) 
+- quantHistoryParam1 weights used for previously processed inference during application boot time (for initial few frames)
+- quantHistoryParam2 weights used for previously processed inference during application execution (after initial few frames) 
 
-These parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
+Default settings are:
 
-To get the same result in TIDL target same as import step for an image. Please set below configuration parameters. 
+::
+
+  quantHistoryParam1 = 20;
+  quantHistoryParam2 = 5;
+  quantMargin = 0;
+
+Sometimes these parameters need further tuning (via trial and error with similar image sequences).
+
+
+In order to get the same result in TIDL target like during import step for an image: 
 
 :: 
   
@@ -926,7 +935,7 @@ To get the same result in TIDL target same as import step for an image. Please s
   quantMargin = 0; 
   
 
-Set with below parameters for running on video sequence: 
+For video sequence, below settings can be also tested: 
 
 ::
 
@@ -934,6 +943,7 @@ Set with below parameters for running on video sequence:
   quantHistoryParam2 = 10; 
   quantMargin = 20
 
+Quantization parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
 
 Importing Tensorflow Models
 ---------------------------
@@ -1003,8 +1013,17 @@ For networks with two layer groups, viewer generated graph clearly depicts layer
 Simulation Tool
 ----------------
 
-We provide simulation tool both in PLSDK Arm filesystem, and Linux x86 simulation tool.
-This is bit-exact simulation, so output of simulation tool is expected to be identical to the output of A5749 or AM57xx target.
+We provide simulation tool both in PLSDK Arm filesystem:
+
+  - /usr/bin/eve_test_dl_algo.out, bit-exact emulation (of the target execution)
+  - /usr/bin/eve_test_dl_algo_ref.out, simulation (faster execution)
+
+and Linux x86 simulation tool (added to the path, after enabling linux-devkit with source environment-setup):
+
+  - <PLSDK>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/eve_test_dl_algo.out, bit-exact emulation (of the target execution)
+  - <PLSDK>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/eve_test_dl_algo_ref.out, simulation (faster exeectuion)
+
+For bit-exact simulation, output of simulation tool is expected to be identical to the output of A5749 or AM57xx target.
 Please use this tool as convenience tool only (E.g. testing model on setup without target EVM).
 
 Simulation tool can be used also to verify converted model accuracy (FP32 vs 8-bit implementation). 
