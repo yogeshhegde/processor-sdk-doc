@@ -67,17 +67,17 @@ Released March 2019
     - SBL Example app with XIP
     - XIP mode support in OSPI driver
     - `Uniflash <index_board.html#uniflash>`_ image load over UART
-    - PCIe driver update for Multiple interfaces, DMA and Interrupt Support
-    - CAN to Ethernet Gateway Demo
-	- Features not (yet) supported: USB 3.0, MPU TI-RTOS SMP,CTOOLSLIB
+    - `PCIe driver <index_device_drv.html#pcie>`_ image load over UART
+    - `PCIe driver <index_device_drv.html#pcie>`_ update for Multiple interfaces, DMA and Interrupt Support
+    - `CAN to Ethernet Gateway Demo <index_examples_demos.html#can-eth-gatway-demo>`_
 - OMAPL13x
     - DMA mode support for `SPI <index_device_drv.html#mcspi-qspi-ospi>`_ driver
 - AM437x
-    - IOLink driver and sample application 
+    - `IOLink driver and sample application <index_device_drv.html#iolink>`_  
 - AM574x 
     - Support for C66x 1Ghz
 - AM335x
-    - PRU-ICSS Soft UART
+    - `PRU-ICSS Soft UART <PRU_ICSS.html#pru-icss-uart>`_ 
 - Rx interrupt pacing support in EMAC firmware
 
 .. note::
@@ -222,10 +222,13 @@ release and any known workaround.
    :header: "Record ID","Board/s", "Component/s", "Summary","Workaround"
    :widths: 15, 20,20,30,70
     
-	PRSDK-5635,"am572x-evm,am572x-idk,am574x-idk,c6657-evm,c6678-evm,c6748-lcdk,k2e-evm,k2g-evm,k2g-hsevm,k2g-ice,k2h-evm,k2k-evm,k2l-evm",Optimized Libraries,"DSPLIB and MATHLIB performance degrades with C6000 8.3.x code gen tools","To get better performance, can use the C6000 Codegen tools v7.4.2. Here are the details. 1) Download C6000 Code Generation Tools v7.4.2 http://software-dl.ti.com/codegen/non-esd/downloads/download.htm. 2) Clone DSPLIB from https://git.ti.com/ep-processor-libraries/dsplib, and follow readme.txt in root folder to recompile DSPLIB. 3) Clone MATHLIB from https://git.ti.com/ep-processor-libraries/mathlib, and follow readme.txt in root folder to recompile MATHLIB. "
-	PRSDK-5645,am654x-evm,Emupack,GEL file not working properly for AM654x-EVM platform causing DDR not to be configured properly,"Processor SDK RTOS v5.03 users will need to use Device support package 1.4.4. and TI emulation driver 8.0.903.2 Customers are required to disable Automatic updates to prevent auto update to latest 1.4.5."
-	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,"The SBL currently cannot reset the MCU1 subsystem to restart the cores in split mode. To workaround this, the MPU needs to reset the MCU1 sub-system. To configure the MCU1 susb-system in split mode, do the following. 1) Create a multi-core image with a MCU1_0 image, a MCU1_1 image and an MPU image. 2) The MPU1 image must contain code to reset the MCU sub-system. Refer the function sblTestResetMcu in sbl/example/k3MulticoreApp/sbl_amp_multicore.c for example code on how to reset the MCU subsystem 3) Before resetting the MCU, the MPU must wait for the SBL to boot MCU1_0"
-	PRSDK-2892,"am571x-idk, am572x-evm, am572x-idk",PDK,Incorrect A15 MMU configurations in default config file,"Set MMU attribute to not executable for device memory attrs0.noExecute = true; // Not executable "
+	PRSDK-1760,am437x-idk,Board Support,Support for Sector erase function in QSPI library for AM437x in Starterware,Use sector erase command 0x20 instead of block erase command 0xD8 (QSPI_LIB_CMD_BLOCK_ERASE) for erase operation in S25FLFlash_BlockErase function (packages\ti\board\src\idkAM437x\device\qspi_flash.c)
+	PRSDK-5247,am654x-evm,Unknown,RTOS builds are very slow on Windows machines,No Workaround is presently available on Windows. However we have found that building on linux is much faster. Customers are encouraged to build on linux if possible while this issue on windows is being worked on.
+	PRSDK-4654,am654x-idk,System Integration,CCS fails to see symbols from *.out,"This issue is seen only if the sysbios based applications build using a CCS project file via CCS. This issue is not seen if the projects are built using makefile. A workaround to this issue would be to use makefile based projects."
+	PRSDK-5635,"am572x-evm, am572x-idk, am574x-idk, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-lcdk",Optimized Libraries,DSPLIB and MATHLIB performance degrades with C6000 8.3.x code gen tools,"To get better performance, can use the C6000 Codegen tools v7.4.2. Here are the details. 1. Download C6000 Code Generation Tools v7.4.2 http://software-dl.ti.com/codegen/non-esd/downloads/download.htm 2. Clone DSPLIB from https://git.ti.com/ep-processor-libraries/dsplib, and follow readme.txt in root folder to recompile DSPLIB. 3. Clone MATHLIB from https://git.ti.com/ep-processor-libraries/mathlib, and follow readme.txt in root folder to recompile MATHLIB. "
+	PRSDK-5645,am654x-evm,Emupack,GEL file not working properly for AM654x-EVM platform causing DDR not to be configured properly,"Processor SDK RTOS v5.03 users will need to use Device support package 1.4.4. and TI emulation driver 8.0.903.2 . Customers are required to disable Automatic updates to prevent auto update to latest 1.4.5."
+	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,"The SBL currently cannot reset the MCU1 subsystem to restart the cores in split mode. To workaround this, the MPU needs to reset the MCU1 sub-system. To configure the MCU1 susb-system in split mode, do the following. a) Create a multi-core image with a MCU1_0 image, a MCU1_1 image and an MPU image. b) The MPU1 image must contain code to reset the MCU sub-system. Refer the function sblTestResetMcu in sbl/example/k3MulticoreApp/sbl_amp_multicore.c for example code on how to reset the MCU subsystem c) Before resetting the MCU, the MPU must wait for the SBL to boot MCU1_0"
+	PRSDK-2892,"am571x-idk, am572x-evm, am572x-idk",PDK,Incorrect A15 MMU configurations in default config file,"Set MMU attribute to not executable for device memory attrs0.noExecute = true; // Not executable"
 	PRSDK-5612,am437x-idk,"OSAL, PDK",Missing interrupt enable/disable option in OSAL HwiP_Params,
 	PRSDK-5539,"c6748-lcdk, omapl138-lcdk",Control Drivers,SPI loopback example not working in interrupt mode on OMAPL138,Polling mode can be used instead.
 	PRSDK-5624,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, c6678-evm, k2h-evm",Optimized Libraries,FFTLIB documentation for AM57xx and K2H devices is missing,
@@ -233,25 +236,25 @@ release and any known workaround.
 	PRSDK-5473,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Networking,NDK TCP packet re-transmission timeout when running ARM at a lower speed,
 	PRSDK-5667,"am654x-evm, am654x-idk",Board Support,AM65xx diagnostic test hang on R5 core,Use the diagnostic tests built for A53 core.
 	PRSDK-5620,am572x-idk,PDK,I2C_BasicExample_TestProject: I2C EEPROM test failure UT0,Same test passed on AM571x IDK and AM572x-EVM platforms but only failed on AM572x IDK platform.
-	PRSDK-5272,k2g-hsevm,Networking,EMAC_BasicExample: error #10099-D: program will not fit into available memory,"Move .stack and .cinit sections to L2SRAM to MSMCSRAM in ti\drv\emac\test\EmacLoopbackTest\k2g\c66\bios\emac_example_k2g.cfg."
+	PRSDK-5272,k2g-hsevm,Networking,EMAC_BasicExample: error #10099-D: program will not fit into available memory,"Move .stack and .cinit sections to L2SRAM to MSMCSRAM in  ti\drv\emac\test\EmacLoopbackTest\k2g\c66\bios\emac_example_k2g.cfg."	
 	PRSDK-5638,am654x-evm,Diagnostics,AM65xx diag self test hangs during memory test on R5 core,The similar test can be run from A53 instead
 	PRSDK-5655,am654x-hsevm,Boot,Allow windows users to selectively enable JTAG for AM65x HS,
 	PRSDK-5448,"am654x-evm, am654x-idk",Boot,SBL boot from MMCSD fails intermittently,
 	PRSDK-5403,am437x-idk,Control Drivers,iolink: channel 7 has ISDN read/write response error,Increase the cycle time will reduce the read/write response error
-	PRSDK-5470,"am654x-hsevm, am654x-idk",Boot,R5 cannot boot an app if entry point is in DDR,
+	PRSDK-5470,"am654x-hsevm, am654x-idk",Boot,R5 cannot boot an app if entry point is in DDR,"a) Right out of reset, the R5 defaults to no execute permissions for the DDR memory space. However this also implies that all code, from entry point till the code that sets up the mpu, has to be run from internal memory. b) In BIOS, the application setus up the MPU, as per the memory configuration specified in the *.xs file (that is referred to in the applications bios config file).  Once the MPU is setup by the app, the rest of the code can run from DDR.   (c)To ensure that all code from entry point to mpu setup is run from internal memory, the text sections of the following libs must be placed in internal memory in application's linker command file (Refer https://git.ti.com/keystone-rtos/emac-lld/blobs/master/test/EmacLoopbackTest/am65xx/emac_linker_r5.lds for an eg)     1) *sysbios.aer5f(.text)     2) *boot.aer5f(.text)   3) *auto_init.aer5f(.text)  4) *<app>_per5f.oer5f(.text) Please note that you need to replace *<app>_per5f.oer5f with the corresponding file for your application. For eg, if the application's .cfg file is emacUnitTest_r5.cfg, then the .oer5f file will be named emacUnitTest_r5__per5f.oer5f.     (d)You also need to update the *.xs file referred to by the applications .cfg file to make sure that the DDR has execute privileges.  Please refer  <PDK>/ti/build/am65xx/r5_mpu.xs for examples on how to do this. You could also make the application''s .cfg file refer to the common .xs file, as shown in the example https://git.ti.com/keystone-rtos/emac-lld/blobs/master/test/EmacLoopbackTest/am65xx/emacUnitTest_r5.cfg. Once you update the .xs file, please note that you also need to delete *<app>_per5f.oer5f from the applications *configuro directory, so that it is autogenerated again."
 	PRSDK-5626,am654x-hsevm,"Boot, DMA",OSPI Read using UDMA fails on AM65x HS devices.,Non-DMA mode could be used for the read operation
 	PRSDK-5080,"am654x-evm, am654x-idk",Board Support,AM65xx diag failures on R5 core,Can run failing test from A53 cores
 	PRSDK-3344,"am572x-idk, am574x-idk",Diagnostics,"Diagnostics icssEmac_TEST idkAM57{2/4}x : LINK IS DOWN, pluggin loopback cable",ICSS-EMAC LLD TI-RTOS example can be used for similar test.
 	PRSDK-3383,am574x-idk,Diagnostics,Diagnostics: lcdTouchscreen_TEST hangs,"Issue expected to be specific to TI EVM. For TI EVM, test need to be bypassed from the diagnostic menu."
 	PRSDK-4667,am572x-evm,"Demonstrations, Networking",Image Processing Demo lock up on AM572x GP EVM,Issue seen using 1Gig router on ETH0. Replace with 100Mbps
 	PRSDK-335,"AM4X, k2g-evm",High-Speed Drivers,USB host MSC fails to re-enumerate,Re-enumeration support for the case of device unplugged and plugged back currently fails for the example. Workaround is to avoid disconnecting drive while running example.
-	PRSDK-5177,am574x-idk,Board Support,Uniflash: Flash programmer hangs when qspi flash is programmed with DDRECC enabled MLO,"Issue will be seen while flashing with prebuilt MLO image. Workaround will be to rebuild MLO with DDRECC disabled and program the flash device. Commands to rebuild MLO with DDRECC disabled: 1) cd $(PDK_INSTALL_PATH)\ti\boot\sbl 2) gmake all BOARD=idkAM574x SOC=AM574x BOOTMODE=qspi"
+	PRSDK-5177,am574x-idk,Board Support,Uniflash: Flash programmer hangs when qspi flash is programmed with DDRECC enabled MLO,"Issue will be seen while flashing with prebuilt MLO image. Workaround will be to rebuild MLO with DDRECC disabled and program the flash device. Commands to rebuild MLO with DDRECC disabled:  cd $(PDK_INSTALL_PATH)\ti\boot\sbl  gmake all BOARD=idkAM574x SOC=AM574x BOOTMODE=qspi"
 	PRSDK-1975,am572x-evm,Diagnostics,timer_DiagExample_evmAM572x_arm7.out doesn't work on ARM1 core,Example can run on ARM Core 0
 	PRSDK-1682,"am571x-idk, am572x-idk",Diagnostics,Board diagnostics LCD Touchscreen test does not work with new version of LCD TSC,For LCD/Display checkout example under VPS component could be used
-	PRSDK-2336,"am335x-evm, am437x-evm",Power,AM3 & AM4 PM Examples experience I2C bus lockup when communicating with PMIC,"The debug versions of the PM apps are still functional. To build them: 1) From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm"" 2) This will build the debug versions of the PM RTOS and measurement apps."
+	PRSDK-2336,"am335x-evm, am437x-evm",Power,AM3 & AM4 PM Examples experience I2C bus lockup when communicating with PMIC,"The debug versions of the PM apps are still functional. To build them: From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm"" This will build the debug versions of the PM RTOS and measurement apps."
 	PRSDK-2166,am572x-idk,High-Speed Drivers,USB3.0 host problem with Sandisk Extreme USB3.0 stick,"Start the example without the USB plugged in. Once the example is up and waiting for USB stick, plug the USB stick in and it will enumerate properly."
 	PRSDK-4214,k2g-hsevm,System,create-sdcard script does not boot OOB,Default generated App image is not signed follow the steps mentioned in User Guide of the Processor SDK Secdev Build and Install Guide to sign the app
-	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package,"For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. The Strawberry Perl installer automatically installs and sets up OpenSSL. For Linux : Execute the command ""sudo apt-get install openssl"" at the linux command prompt. Check if OpenSSL is installed by typing ""openssl version"" at the command prompt. "
+	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package," 1) For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. The Strawberry Perl installer automatically installs and sets up OpenSSL.  2) For Linux : Execute the command ""sudo apt-get install openssl"" at the linux command prompt. 3) Check if OpenSSL is installed by typing ""openssl version"" at the command prompt."
 	PRSDK-5267,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm",DMA,AM57x A15 EDMA library doesn't support SMP mode,
 
 .. RN_Supported-Platforms-label:
