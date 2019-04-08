@@ -69,7 +69,9 @@ TIDL software is intended for AM57xx Sitara devices, that either have DSP or EVE
 TIDL API framework abstracts multicore operation
 -------------------------------------------------
 
-Running a network on individual EVE subsystem or C66x DSP core:
+Current implementation of TIDL API provides following important features:
+
+- Running a network on individual EVE subsystem or C66x DSP core
 
 - Multiple networks on different EVEs/DSPs can run concurrently
     We can run concurrently as many different networks as we have available accelerators. Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP. 
@@ -83,7 +85,7 @@ Running a network on individual EVE subsystem or C66x DSP core:
     This can be achieved just by modifying a `device type parameter <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#_CPPv2N4tidl10DeviceTypeE>`_
     More details in `Introduction to Programming Model`_
 
-Maximum number of inference tasks on AM5749 is 4 (2xEVE and 2xDSP), whereas on AM5728 maximum number of tasks is 2 (2xDSP). Memory buffers (~64MB per core: network configuration parameters, layer activations, input/output buffers) must fit into `CMEM section <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_CMEM.html>`_ .
+Maximum number of inference tasks on AM5749 is 4 (2xEVE and 2xDSP), whereas on AM5728 maximum number of tasks is 2 (2xDSP). All TIDL related memory buffers (~64MB per core: network configuration parameters, layer activations, input/output buffers) must fit into `CMEM section <Foundational_Components_CMEM.html>`__
 
 Verified networks topologies
 ============================
