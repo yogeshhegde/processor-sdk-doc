@@ -210,7 +210,6 @@ Fixed Issues
 	PRSDK-5207,am335x-evm,"Audio, Video, & Display",AM335x LCDC_RasterExample build failure
 	PRSDK-5217,am572x-idk,Chip Support,Need add L1/L2 ECC functions into CSL
 	PRSDK-5157,"am572x-evm, am572x-idk",Control Drivers,AM57x UART DMA test linked with wrong library
-
 Known Issues 
 ==============
 
@@ -255,6 +254,7 @@ release and any known workaround.
 	PRSDK-4214,k2g-hsevm,System,create-sdcard script does not boot OOB,Default generated App image is not signed follow the steps mentioned in User Guide of the Processor SDK Secdev Build and Install Guide to sign the app
 	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package," 1) For Windows : Download and install `Strawberry Perl <http://strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. The Strawberry Perl installer automatically installs and sets up OpenSSL.  2) For Linux : Execute the command ""sudo apt-get install openssl"" at the linux command prompt. 3) Check if OpenSSL is installed by typing ""openssl version"" at the command prompt."
 	PRSDK-5267,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm",DMA,AM57x A15 EDMA library doesn't support SMP mode,
+	SYSFW-2239,"am654x-evm, am654x-idk",Boot,"Boot time degradation in AM65x","Boot time has increased due to an overall increase in the system firmware init, mainly caused due to an increase in resource manager initialization. To work around this, Sciclient_boardCfgRm must be invoked from the application rather than the SBL. UDMA relies on the resource manager, so when the SBL skips Sciclient_boardCfgRm, it must make sure that it does not use DMA.  To build the SBL so that it skips the call to Sciclient_boardCfgRm and does not use DMA, in sbl_component.mk, uncomment the line SBL_CFLAGS += -DSBL_SKIP_BRD_CFG_RM and update the line SBL_CFLAGS = -DSBL_USE_DMA=1 to SBL_CFLAGS = -DSBL_USE_DMA=0"
 
 .. RN_Supported-Platforms-label:
 
