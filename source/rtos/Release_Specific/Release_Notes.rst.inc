@@ -67,7 +67,6 @@ Released March 2019
     - SBL Example app with XIP
     - XIP mode support in OSPI driver
     - `Uniflash <index_board.html#uniflash>`_ image load over UART
-    - `PCIe driver <index_device_drv.html#pcie>`_ image load over UART
     - `PCIe driver <index_device_drv.html#pcie>`_ update for Multiple interfaces, DMA and Interrupt Support
     - `CAN to Ethernet Gateway Demo <index_examples_demos.html#can-eth-gatway-demo>`_
 - OMAPL13x
