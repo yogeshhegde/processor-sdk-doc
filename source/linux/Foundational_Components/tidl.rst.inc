@@ -72,9 +72,7 @@ TIDL API framework abstracts multicore operation
 Running a network on individual EVE subsystem or C66x DSP core:
 
 - Multiple networks on different EVEs/DSPs can run concurrently
-    We can run concurrently as many different networks as we have available accelerators. In case of AM5749 maximum number would be 4 (2 on 2xEVE and 2 on 2xDSP) - may need increase in default CMEM block size (~64MB per accelerator are advices - default setting is 192MB). More information about CMEM can be found at http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_CMEM.html
-    Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP, but we can start one network with its own output
-    in one EVE, and in parallel same or different network with its own input on second EVE.
+    We can run concurrently as many different networks as we have available accelerators. Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP. 
 
 - Splitting the network layers between available accelerators (EVE subsystem and/or C66x cores)
     For certain networks (JDetNet is one example), it is beneficial to use concept of layer groups.
@@ -84,6 +82,8 @@ Running a network on individual EVE subsystem or C66x DSP core:
 - Same TIDL API based application code can run on EVE or DSP accelerator
     This can be achieved just by modifying a `device type parameter <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#_CPPv2N4tidl10DeviceTypeE>`_
     More details in `Introduction to Programming Model`_
+
+Maximum number of inference tasks on AM5749 is 4 (2xEVE and 2xDSP), whereas on AM5728 maximum number of tasks is 2 (2xDSP). Memory buffers (~64MB per core: network configuration parameters, layer activations, input/output buffers) must fit into `CMEM section <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_CMEM.html>`_ .
 
 Verified networks topologies
 ============================
