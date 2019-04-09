@@ -993,6 +993,21 @@ Diagnostic Applications
 |                                                 | SD boot support is|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 |                                                 | not available.    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
 +-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
+|                                                 | Verifies basic    |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|    Power On Self Test                           | memory devices    |   x    |    x   |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | on the board and  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | displays the      |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | board ID details. |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Executed on boot  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | automatically     |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | before displaying |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | diag main menu.   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | Can be skipped by |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | entering 'b' in   |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | the serial console|        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | within 5 secs of  |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
+|                                                 | diag boot.        |        |        |        |               |        |     |     |        |        |        |        |        |        |        |          |         |
++-------------------------------------------------+-------------------+--------+--------+--------+---------------+--------+-----+-----+--------+--------+--------+--------+--------+--------+--------+----------+---------+
 
 | Some diagnostic applications expect additional jumpers or hardware
   settings to complete. Refer to below section.

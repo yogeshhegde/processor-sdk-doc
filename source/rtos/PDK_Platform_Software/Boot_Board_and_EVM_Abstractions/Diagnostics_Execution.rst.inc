@@ -7204,7 +7204,280 @@ Sample RS485 UART stress test log is shown below
     0123456789:
     
     PRU-ICSS UART Stress Test Passed
+| 
+
+Power On Self Test (POST)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+This test runs automatically when diagnostic tests are booted. 
+Verifies the basic memories on the board and displays the test results.
+It also displays the board ID content programmed onto the Board ID EEPROM.
+After the diag boot, POST waits for 5 secs during which entering character 'b'
+in the serial console skips the POST execution.
+After the POST is executed, default diagnostic menu shall be displayed.
+
+Test Accessories
+"""""""""""""""""
+No additional accessories are required for running this test.
+
+Test Setup
+"""""""""""
+No specific test setup is needed. Use the default HW setup recommended in HW user manual.
+
+Test Execution
+"""""""""""""""
+Test runs automatically. No execution steps needed.
+ 
+Test Log
+"""""""""""
+Sample log for LED stress test is shown below
+
+::
+	
+	DIAGNOSTIC TEST FRAMEWORK
+	Version - 01.00.00.01
+	Build Date - Apr  6 2019, Time - 03:47:24
+	
+	
+	Command options:
+		help - displays this help menu again
+		run - run a diagnostic application
+		status - prints the test status
+	
+	
+	Running Power On Self Tests...
+	Press 'b' to Skip the Test
+	Parsing bootEepromCompliance_TEST
+	Running bootEepromCompliance_TEST
+	
+	*********************************************
+	*              Boot EEPROM Test                  *
+	*********************************************
+	
+	Running Boot EEPROM test
+	
+	Detecting the Boot EEPROM device...
+	
+	Boot EEPROM device detection successful
+	
+	Boot EEPROM boundary verification test...
+	
+	Verifying the Boot EEPROM first page...
+
+	Verifying the Boot EEPROM last page...
+	
+	Boot EEPROM boundary verification test successful
+	
+	Boot EEPROM test Passed
+	
+	Finished running bootEepromCompliance_TEST, result passed!
+	Parsing memCompliance_TEST
+	Running memCompliance_TEST
+	
+	*********************************************
+	*              DDR Memory Test              *
+	*********************************************
+	
+	Testing writing and reading memory
+	board_external_memory_test: Start address (0x80000000),            end address (0xffffffff)
+	Address Bus Test Started
+	Writing to test area...
+		Writing Memory 0x80000000
+		Writing Memory 0x80000004
+		Writing Memory 0x80000008
+		Writing Memory 0x80000010
+		Writing Memory 0x80000020
+		Writing Memory 0x80000040
+		Writing Memory 0x80000080
+		Writing Memory 0x80000100
+		Writing Memory 0x80000200
+		Writing Memory 0x80000400
+		Writing Memory 0x80000800
+		Writing Memory 0x80001000
+		Writing Memory 0x80002000
+		Writing Memory 0x80004000
+		Writing Memory 0x80008000
+		Writing Memory 0x80010000
+		Writing Memory 0x80020000
+		Writing Memory 0x80040000
+		Writing Memory 0x80080000
+		Writing Memory 0x80100000
+		Writing Memory 0x80200000
+		Writing Memory 0x80400000
+		Writing Memory 0x80800000
+		Writing Memory 0x81000000
+		Writing Memory 0x82000000
+		Writing Memory 0x84000000
+		Writing Memory 0x88000000
+		Writing Memory 0x90000000
+		Writing Memory 0xa0000000
+		Writing Memory 0xc0000000
+	Write finished!
+	Checking values...
+		Reading Memory 0x80000000
+		Reading Memory 0x80000004
+		Reading Memory 0x80000008
+		Reading Memory 0x80000010
+		Reading Memory 0x80000020
+		Reading Memory 0x80000040
+		Reading Memory 0x80000080
+		Reading Memory 0x80000100
+		Reading Memory 0x80000200
+		Reading Memory 0x80000400
+		Reading Memory 0x80000800
+		Reading Memory 0x80001000
+		Reading Memory 0x80002000
+		Reading Memory 0x80004000
+		Reading Memory 0x80008000
+		Reading Memory 0x80010000
+		Reading Memory 0x80020000
+		Reading Memory 0x80040000
+		Reading Memory 0x80080000
+		Reading Memory 0x80100000
+		Reading Memory 0x80200000
+		Reading Memory 0x80400000
+		Reading Memory 0x80800000
+		Reading Memory 0x81000000
+		Reading Memory 0x82000000
+		Reading Memory 0x84000000
+		Reading Memory 0x88000000
+		Reading Memory 0x90000000
+		Reading Memory 0xa0000000
+		Reading Memory 0xc0000000
+	Board memory test passed!
+	Memory test passed!
+	
+	Finished running memCompliance_TEST, result passed!
+	Parsing emmcCompliance_TEST
+	Running emmcCompliance_TEST
+	
+	*********************************************
+	*                 eMMC Test                 *
+	*********************************************
+
+	PASS: Read/Write Success for this block-0x300000
+	
+	PASS: Read/Write Success for this pattern
+	
+	Finished running emmcCompliance_TEST, result passed!
+	Parsing norflashCompliance_TEST
+	Running norflashCompliance_TEST
+	
+	***************************************
+	*            SPI FlASH Test           *
+	***************************************
+	Reading Flash Device ID...
+	Device ID 0 - 0x20
+	Device ID 1 - 0xba
+	Device ID 2 - 0x18
+	Flash Device ID Match!
+	
+	Flash Device ID Read Passed!
+	
+	Verifying Sector - 0
+	Data Read matches with Data written
+	SPI Flash Test Passed!
+	
+	SPI NOR Flash Test Passed
+	
+	Finished running norflashCompliance_TEST, result passed!
+	Parsing ospiCompliance_TEST
+	Running ospiCompliance_TEST
+	
+	*********************************************
+	*            OSPI FLASH Test                *
+	*********************************************
+	
+	OSPI NOR device ID: 0x5b1a, manufacturer ID: 0x2c 
+	
+	 Verifying the OSPI Flash first page...
+	OSPI NOR Flash first page verification Successful
+	
+	OSPI NOR Flash verification Successful
+	
+	OSPI Flash Test Passed!
+	
+	Finished running ospiCompliance_TEST, result passed!
+	Parsing ledCompliance_TEST
+	Running ledCompliance_TEST
+	
+	*********************************************
+	*                 LED Test                  *
+	*********************************************
+	
+	Testing LED
+	Blinking LEDs...
+	Received: y
+	
+	Test PASSED!
+	
+	LED Test Passed
+	
+	Finished running ledCompliance_TEST, result passed!
+	Parsing bootSwitchCompliance_TEST
+	Running bootSwitchCompliance_TEST
+	
+	*********************************************
+	*             Boot Switch Test              *
+	*********************************************
+	Boot Switch SW3 Value - OFF ON ON OFF OFF OFF OFF OFF OFF OFF 
+	Boot Switch SW2 Value - OFF OFF ON OFF OFF OFF OFF OFF OFF 
+	Boot Switch SW4 Value - OFF OFF 
+	
+	Test Passed
+	
+	Finished running bootSwitchCompliance_TEST, result passed!
+	Parsing eepromCompliance_TEST
+	Running eepromCompliance_TEST
+	
+	*********************************************
+	*              EEPROM Test                  *
+	*********************************************
+	
+	CP Board:
+	Displaying Header Fields
+	========================
+		Header ID: 0xee3355aa
+	
+	Displaying Board Info Fields
+	============================
+		Board Name: AM6-COMPROCEVM
+		Design Revision: E3
+		PROC Number: 0062
+		Variant: 03
+	PCB Revision: E3
+	Schematic and BOM Revision: E3
+	Software Revision: 01
+	Vendor ID: 01
+	Build Week: 30
+	Build Year: 18
+	Board ID: 4P0081
+	Serial Number: 0017
+	Displaying DDR Fields
+	=====================	DDR Control Word: 5850
+	
+	Displaying MAC Info Fields
+	==========================
+		MAC Control Word: 08
+		MAC ADDR0: 70-ff-76-1d-4c-40
+		MAC ADDR1: 70-ff-76-1d-4c-41
+	Test Passed
+	Finished running eepromCompliance_TEST, result passed!
+	
+	
+	Power On Self Test Result
+	All Tests Passed
+	
 |  
 
+Compliance Tests
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Diagnostic tests include support for CE compliance verication for some of the
+platforms. Compliance tests can be executed by selecting the menu option '0'
+from the diagnostic test menu. These tests are intended for use by board vendor.
+
 .. raw:: html
+
+
+
+
 
