@@ -163,7 +163,11 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 20, 70
 
+   PLSDK-1953,"am571x-idk, am572x-idk",Linux PRP: lreTransparentReception - passRCT doesn't work as expected
+   PLSDK-2319,am654x-evm,QT5 Touch Screen demo: characters are corrupted
+   PLSDK-2456,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, k2g-ice",hsr: Node is not removed from node table after forget time.
    PLSDK-2465,"am571x-idk, am572x-idk, am574x-idk",Isolated BC stopped internal sync after about 9 hours
+   PLSDK-2472,am335x-ice,PRP Link Doesn't Re-establish Corrctly
    PLSDK-2515,"am571x-idk, am572x-evm, am572x-idk, am574x-idk","TIDL import tool should link with OpenCV to allow use of JPG, PNG"
    PLSDK-2545,"am574x-hsidk, am574x-idk",Caffe-Jacinto trained SSD model hangs when running the inference using TIDL on AM5749
    PLSDK-2548,am572x-evm,Top level make AM5: fatal error: stdlib.h: No such file or directory
@@ -187,7 +191,7 @@ Issues found and closed on this release that may be applicable to prior releases
    PLSDK-2672,"am654x-evm, am654x-idk",Maxwell Linux kernel crashes with DSS enabled by k3-am654-evm-oldi-lcd1evm.dtbo
    PLSDK-2629,am437x-evm,Simple People tracking demo: Need support to print output on UART
    PLSDK-2694,"am335x-ice, am437x-idk, k2g-ice",Enable ECAP mem access on AM3/4/K2G
-
+   PLSDK-2707,"am571x-idk, am572x-idk, am574x-idk",Linuxptp: phc2sys log shows some error messages with option -r is selected
 
 |
 
@@ -250,7 +254,6 @@ SDK Known Issues
 
    LCPD-8345,"am335x-evm, am437x-idk, k2e-evm, k2hk-evm, k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)",Restart the EVM
    LCPD-8352,"am43xx-gpevm, am57xx-evm",weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory,1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer
-   LCPD-9006,"am57xx-evm",Some GLBenchmark tests fail to run,
    LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
    LCPD-11010,am574x-idk,AM574x-idk graphics performance is lower than am572x-idk,"Performance issue, no workaround"
    LCPD-13470,am335x-evm,klogd and syslog are not needed when using systemd,
@@ -260,7 +263,7 @@ SDK Known Issues
    PLSDK-1720,am437x-evm,Simple people tracking demo: Tracking Incorrect Number of People,None
    PLSDK-1909,am572x-evm,DLP SDK demo: Assertion `ctx->pollfds_cnt >= internal_nfds' failed,None
    PLSDK-1924,"am335x-ice, am335x-sk, beagleboneblack",AM3: Observed unwanted failure message in boot log.,No functionality affected except the log message
-   PLSDK-2095,"am571x-idk, am572x-idk","kernel: EXPORT symbol ""__hyp_stub_vectors seen during kernel build", "it is just a warning message, and can be ignored"
+   PLSDK-2095,"am571x-idk, am572x-idk","kernel: EXPORT symbol ""__hyp_stub_vectors seen during kernel build", "It is just a warning message, and can be ignored"
    PLSDK-2107,k2g-ice,sorte for K2G: master is not working,None
    PLSDK-2109,"am437x-evm, am572x-evm",QtWebengine demobrowser shows problems at LTS2018 on EGLFS QPA,None
    PLSDK-2178,"am335x-ice, am437x-idk",ICSS EMAC intermittent error in received acyclic packet content,None
@@ -270,15 +273,13 @@ SDK Known Issues
    PLSDK-2466,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, k2g-ice",Fix Race condition in updating NSP credit value,None
    PLSDK-2473,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice","DualEMAC PTP ""invalid timestamp"" warning messages when starting ptp4l",None
    PLSDK-2474,am572x-evm,soc-performance-monitor table display problem (missing texts),None
-   PLSDK-2514,"k2e-evm, k2l-evm",K2L:Observed failure messages in boot log,
    PLSDK-2530,"am335x-ice, am437x-idk",AM3/4 PTP PPS fails intermittently,No complete workaround. Restarting the ethernet interface should reset PPS and likely resolve the issue temporarily.
-   PLSDK-2642,am654x-idk,PRU Ethernet links on IDK Application board are unstable,
+   PLSDK-2642,am654x-idk,PRU Ethernet links on IDK Application board are unstable, Hardware limitation
    PLSDK-2658,am437x-idk,AM437x IDK 10 min reboot,"Stop Weston first if it is enabled '/etc/init.d/Weston stop'. Then,issue '/etc/init.d/rc.pvr stop' or 'systemctl stop rc.pvr.servic' to stop pvr prior to reboot"
    PLSDK-2659,am574x-idk,TIDL inference reporting same classification output for all input images,Input size to AvePooling layer may go up to 64x64 only
    PLSDK-2662,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",HSR/PRP: Bringing down one slave port stops HSR/PRP interface,None
-   PLSDK-2670,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",OpenMPacc test hangs on k2 platorms,
-   PLSDK-2700,,Jailhouse Linux/RTOS issue observed when CPU freq changed,
-   PLSDK-2732,am574x-idk,TIDL_Arm_Emulation test failing on am574x-idk,
+   PLSDK-2670,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",OpenMPacc test hangs on k2 platorms,Intermittent issue and no workaround
+   PLSDK-2700,,Jailhouse Linux/RTOS issue observed when CPU freq changed,"Set CPU MAX and MIN frequency to a fix value, e.g., 1500000"
 
 
 |
