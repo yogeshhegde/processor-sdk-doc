@@ -33,9 +33,5 @@ Processor SDK Android Software Developer's Guide
    Overview
    Release_Specific
    How_To_Guides
-
-.. raw:: html
-
-    <a href="processor-sdk-android-docs.tar.gz">Download the Documentation Tarball</a>
-
+   Documentation_Tarball
 |

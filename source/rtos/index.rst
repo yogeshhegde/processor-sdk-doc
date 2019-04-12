@@ -16,10 +16,7 @@
    Examples_and_Demonstrations
    How_to_Guides
    FAQ
-
-.. raw:: html
-
-    <a href="processor-sdk-rtos-docs.tar.gz">Download the Documentation Tarball</a>
+   Documentation_Tarball
 
 |
 
