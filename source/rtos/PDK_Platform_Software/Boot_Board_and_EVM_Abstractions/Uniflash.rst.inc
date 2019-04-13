@@ -359,7 +359,7 @@ Programming FlashWriter on AM65xx Platform
 - Run the program and confirm that character 'C' is getting printed on the host PC serial console. Make a note of the COM port number.
 - Close the serial console, disconnect and reconnect the serial cable to USB2UART port (J42) of the board.
 - Refer Section :ref:`erasing_target` for erasing the flash device on the target platform.
-- Run the below commands to program the OSPI/eMMC flash device.
+- Run the below commands to program the OSPI flash device.
 
 ::
 
@@ -368,7 +368,9 @@ Programming FlashWriter on AM65xx Platform
     .\dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
 
     Example:
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\binary\ospi\am65xx_evm\sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 0
+    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\binary\am65xx_evm\ospi\sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 0
+    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\drv\sciclient\V0\sysfw.bin -d 3 -o 40000
+    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\example\k3MulticoreApp\binary\am65xx\sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o A0000
 
 ::
 
@@ -377,7 +379,9 @@ Programming FlashWriter on AM65xx Platform
     sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
 
     Example:
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/binary/ospi/am65xx_evm/sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 0
+    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/binary/am65xx_evm/ospi/sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 0
+    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>packages/ti/drv/sciclient/soc/V0/sysfw.bin -d 3 -o 40000
+    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/example/k3MulticoreApp/binary/am65xx/sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o A0000
 
 
 where,
@@ -392,6 +396,7 @@ COM port - COM port number on which MAIN UART0 port is connected
 .. note:: When using the dslite scripts for the AM65xx platform:
 
             - Specify the <device_type> as 3 (for OSPI flash) and 4 (for eMMC)
+            - On AM65xx, booting from eMMC is not currently supported for RTOS
 
 .. warning::   If you open the SoC Main Uart0 on a terminal application like minicom or hyperterm to see if the
                'CCCC' is being output, make sure to close the application before executing dslite. Disconnect
