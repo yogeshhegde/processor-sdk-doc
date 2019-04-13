@@ -239,7 +239,7 @@ release and any known workaround.
 	PRSDK-5655,am654x-hsevm,Boot,Allow windows users to selectively enable JTAG for AM65x HS,
 	PRSDK-5448,"am654x-evm, am654x-idk",Boot,SBL boot from MMCSD fails intermittently,
 	PRSDK-5403,am437x-idk,Control Drivers,iolink: channel 7 has ISDN read/write response error,Increase the cycle time will reduce the read/write response error
-	PRSDK-5470,"am654x-hsevm, am654x-idk",Boot,R5 cannot boot an app if entry point is in DDR,"Please refer to http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html#run-app-from-ddr-on-r5"
+	PRSDK-5470,"am654x-hsevm, am654x-idk",Boot,R5 cannot boot an app if entry point is in DDR,"Please refer the How To Guide `Run applications from DDR on R5 cores <index_how_to_guides.html#run-applications-from-ddr-on-r5-cores>`__ "
 	PRSDK-5626,am654x-hsevm,"Boot, DMA",OSPI Read using UDMA fails on AM65x HS devices.,Non-DMA mode could be used for the read operation
 	PRSDK-5080,"am654x-evm, am654x-idk",Board Support,AM65xx diag failures on R5 core,Can run failing test from A53 cores
 	PRSDK-3344,"am572x-idk, am574x-idk",Diagnostics,"Diagnostics icssEmac_TEST idkAM57{2/4}x : LINK IS DOWN, pluggin loopback cable",ICSS-EMAC LLD TI-RTOS example can be used for similar test.
