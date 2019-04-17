@@ -1636,7 +1636,6 @@ Measurements were taken while Linux was idle at command prompt.
     "vdda_1p8v_usb0_1_power","33.22 (min 32.89, max 33.35)","32.85 (min 32.82, max 32.87)","32.85 (min 32.83, max 32.87)","32.89 (min 32.88, max 32.90)","32.90 (min 32.89, max 32.92)"
     "vddshv3_power","0.15 (min 0.15, max 0.16)","0.15","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)"
     "vddshv5_power","50.97 (min 50.86, max 51.87)","50.99 (min 50.89, max 51.82)","51.05 (min 50.89, max 51.95)","51.07 (min 50.93, max 51.79)","51.05 (min 50.97, max 51.41)"
-    "total_power","566.14 (min 564.94, max 566.99)","599.86 (min 597.23, max 604.15)","637.90 (min 622.41, max 702.83)","640.94 (min 634.10, max 645.55)","680.36 (min 665.87, max 735.20)"
     "vddshv6_power","35.92 (min 35.91, max 35.92)","35.92 (min 35.91, max 35.92)","35.92 (min 35.91, max 35.92)","35.93","35.93 (min 35.93, max 35.94)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.23"
     "vdds_ddr_power","142.72 (min 142.12, max 143.24)","143.20 (min 142.56, max 143.61)","143.10 (min 142.40, max 143.52)","142.61 (min 142.10, max 143.75)","143.05 (min 142.59, max 143.52)"
@@ -1651,6 +1650,7 @@ Measurements were taken while Linux was idle at command prompt.
     "vdd_core_power","206.96 (min 206.70, max 207.40)","207.26 (min 207.16, max 207.34)","207.43 (min 207.23, max 207.82)","207.50 (min 207.34, max 207.65)","207.73 (min 207.60, max 207.83)"
     "vdda_adc_power","7.45 (min 7.35, max 7.52)","7.48 (min 7.37, max 7.53)","7.53 (min 7.49, max 7.56)","7.51 (min 7.47, max 7.56)","7.51 (min 7.46, max 7.52)"
     "vdds_pll_mpu_power","2.03","3.71","4.33","4.56","5.62"
+    "total_power","566.14 (min 564.94, max 566.99)","599.86 (min 597.23, max 604.15)","637.90 (min 622.41, max 702.83)","640.94 (min 634.10, max 645.55)","680.36 (min 665.87, max 735.20)"
 
 Table: **Active Power Consumption at various OPPs with idle system**
 
@@ -1665,7 +1665,6 @@ Table: **Active Power Consumption at various OPPs with idle system**
     "vdda_1p8v_usb0_1_power","32.89 (min 32.86, max 32.91)","32.91 (min 32.88, max 32.92)","32.90 (min 32.89, max 32.91)","7.30 (min 7.28, max 7.31)","32.89 (min 32.88, max 32.90)"
     "vddshv3_power","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15","0.15 (min 0.15, max 0.16)"
     "vddshv5_power","51.13 (min 50.92, max 52.12)","51.07 (min 50.98, max 51.43)","51.19 (min 50.96, max 52.12)","51.33 (min 50.96, max 52.15)","51.19 (min 51.00, max 51.96)"
-    "total_power","619.76 (min 612.97, max 623.54)","667.54 (min 660.46, max 676.70)","721.69 (min 703.28, max 768.43)","707.59 (min 699.00, max 719.19)","776.83 (min 755.83, max 792.66)"
     "vddshv6_power","35.93","35.93 (min 35.93, max 35.94)","35.93 (min 35.92, max 35.93)","34.83 (min 34.82, max 34.83)","35.92 (min 35.92, max 35.93)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.23"
     "vdds_ddr_power","150.86 (min 149.10, max 152.06)","150.20 (min 149.55, max 150.96)","150.91 (min 150.36, max 151.94)","151.00 (min 149.70, max 152.08)","150.60 (min 149.83, max 151.81)"
@@ -1680,6 +1679,7 @@ Table: **Active Power Consumption at various OPPs with idle system**
     "vdd_core_power","243.26 (min 239.69, max 247.47)","243.22 (min 240.57, max 248.59)","245.02 (min 239.33, max 249.76)","245.39 (min 241.48, max 247.59)","243.57 (min 240.57, max 248.06)"
     "vdda_adc_power","7.06 (min 7.00, max 7.16)","7.16 (min 7.06, max 7.25)","7.19 (min 7.12, max 7.24)","7.27 (min 7.22, max 7.32)","7.31 (min 7.26, max 7.35)"
     "vdds_pll_mpu_power","2.03","3.71","4.33","4.56","5.62"
+    "total_power","619.76 (min 612.97, max 623.54)","667.54 (min 660.46, max 676.70)","721.69 (min 703.28, max 768.43)","707.59 (min 699.00, max 719.19)","776.83 (min 755.83, max 792.66)"
 
 Table: **Active Power Consumption at various OPPs with 3D Graphics**
 
@@ -1694,7 +1694,6 @@ Table: **Active Power Consumption at various OPPs with 3D Graphics**
     "vdda_1p8v_usb0_1_power","32.90 (min 32.89, max 32.91)","32.91 (min 32.90, max 32.92)","33.23 (min 33.02, max 33.35)","32.91 (min 32.89, max 32.93)","32.90 (min 32.88, max 32.91)"
     "vddshv3_power","0.15 (min 0.14, max 0.15)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15","0.15"
     "vddshv5_power","51.04 (min 50.92, max 51.97)","51.10 (min 50.97, max 51.35)","51.25 (min 51.01, max 52.22)","51.20 (min 50.99, max 52.01)","51.01 (min 50.96, max 51.15)"
-    "total_power","571.66 (min 566.71, max 604.82)","602.50 (min 597.44, max 612.16)","640.17 (min 620.42, max 712.19)","638.00 (min 634.28, max 641.47)","661.99 (min 658.83, max 666.65)"
     "vddshv6_power","30.77 (min 30.55, max 30.93)","35.94 (min 35.93, max 35.94)","30.75 (min 30.45, max 30.93)","30.64 (min 30.50, max 30.80)","30.73 (min 30.45, max 30.88)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.23"
     "vdds_ddr_power","142.07 (min 141.76, max 142.73)","142.87 (min 142.36, max 143.73)","142.39 (min 142.19, max 142.78)","142.57 (min 142.01, max 143.23)","142.68 (min 142.33, max 143.03)"
@@ -1709,6 +1708,7 @@ Table: **Active Power Consumption at various OPPs with 3D Graphics**
     "vdd_core_power","208.26 (min 207.78, max 210.51)","207.98 (min 207.53, max 209.12)","208.64 (min 208.57, max 208.69)","208.55 (min 208.46, max 208.70)","208.56 (min 208.49, max 208.69)"
     "vdda_adc_power","7.42 (min 7.23, max 7.51)","7.50 (min 7.40, max 7.54)","7.51 (min 7.49, max 7.52)","7.52 (min 7.51, max 7.53)","7.51 (min 7.49, max 7.51)"
     "vdds_pll_mpu_power","2.03","3.71","4.33","4.56","5.62"
+    "total_power","571.66 (min 566.71, max 604.82)","602.50 (min 597.44, max 612.16)","640.17 (min 620.42, max 712.19)","638.00 (min 634.28, max 641.47)","661.99 (min 658.83, max 666.65)"
 
 Table: **Active Power Consumption at various OPPs with video+audio**
 
@@ -1723,7 +1723,6 @@ Table: **Active Power Consumption at various OPPs with video+audio**
     "vdda_1p8v_usb0_1_power","32.88 (min 32.87, max 32.89)","32.90 (min 32.89, max 32.92)","32.86 (min 32.83, max 32.89)","33.37 (min 33.32, max 33.41)","33.35 (min 33.22, max 33.43)"
     "vddshv3_power","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15"
     "vddshv5_power","51.14 (min 50.94, max 52.06)","50.98 (min 50.95, max 51.07)","50.98 (min 50.92, max 51.18)","51.13 (min 51.01, max 51.56)","51.04 (min 50.99, max 51.19)"
-    "total_power","568.58 (min 566.76, max 569.51)","600.43 (min 598.59, max 602.28)","650.78 (min 620.00, max 764.36)","639.04 (min 636.42, max 640.84)","667.73 (min 658.08, max 675.85)"
     "vddshv6_power","30.80 (min 30.45, max 30.96)","30.74 (min 30.60, max 30.90)","30.78 (min 30.48, max 30.89)","30.70 (min 30.47, max 30.90)","30.64 (min 30.47, max 30.99)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.23"
     "vdds_ddr_power","141.90 (min 141.57, max 142.08)","142.69 (min 142.55, max 143.07)","142.93 (min 142.30, max 143.46)","143.14 (min 142.61, max 144.82)","142.84 (min 141.90, max 144.54)"
@@ -1738,6 +1737,7 @@ Table: **Active Power Consumption at various OPPs with video+audio**
     "vdd_core_power","208.06 (min 207.87, max 208.21)","208.34 (min 208.24, max 208.44)","208.30 (min 208.22, max 208.40)","208.76 (min 208.65, max 208.86)","208.78 (min 208.66, max 208.86)"
     "vdda_adc_power","7.46 (min 7.36, max 7.51)","7.53 (min 7.51, max 7.58)","7.52 (min 7.51, max 7.54)","7.54 (min 7.50, max 7.58)","7.51 (min 7.50, max 7.52)"
     "vdds_pll_mpu_power","2.03","3.71","4.33","4.56","5.62"
+    "total_power","568.58 (min 566.76, max 569.51)","600.43 (min 598.59, max 602.28)","650.78 (min 620.00, max 764.36)","639.04 (min 636.42, max 640.84)","667.73 (min 658.08, max 675.85)"
 
 Table: **Active Power Consumption at various OPPs with network load**
 
@@ -1752,7 +1752,6 @@ Table: **Active Power Consumption at various OPPs with network load**
     "vdda_1p8v_usb0_1_power","32.92 (min 32.91, max 32.94)","32.93 (min 32.92, max 32.94)","32.93 (min 32.92, max 32.94)","32.93 (min 32.91, max 32.94)","33.17 (min 32.91, max 33.36)"
     "vddshv3_power","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15","0.15 (min 0.15, max 0.16)","0.15"
     "vddshv5_power","51.11 (min 50.99, max 51.58)","51.10 (min 51.09, max 51.10)","51.37 (min 51.15, max 52.19)","51.64 (min 51.25, max 52.47)","51.51 (min 51.31, max 52.22)"
-    "total_power","635.66 (min 627.73, max 639.64)","833.14 (min 832.77, max 833.52)","970.11 (min 960.37, max 973.90)","1078.21 (min 1076.68, max 1079.44)","1264.54 (min 1203.05, max 1281.89)"
     "vddshv6_power","30.77 (min 30.46, max 30.93)","30.78 (min 30.56, max 31.01)","30.86 (min 30.74, max 31.02)","30.84 (min 30.66, max 30.96)","30.74 (min 30.46, max 30.94)"
     "vdds_osc_power","1.23","1.23","1.23","1.22 (min 1.22, max 1.23)","1.22"
     "vdds_ddr_power","143.03 (min 142.59, max 143.34)","143.60 (min 143.46, max 143.74)","143.32 (min 143.21, max 143.53)","143.14 (min 142.52, max 145.24)","142.87 (min 142.33, max 143.06)"
@@ -1767,6 +1766,7 @@ Table: **Active Power Consumption at various OPPs with network load**
     "vdd_core_power","206.09 (min 205.70, max 209.20)","206.68 (min 206.62, max 206.74)","207.84 (min 207.21, max 210.31)","207.84 (min 207.73, max 207.94)","208.57 (min 208.35, max 208.74)"
     "vdda_adc_power","7.56 (min 7.53, max 7.61)","7.59 (min 7.56, max 7.62)","7.59 (min 7.58, max 7.62)","7.56 (min 7.55, max 7.61)","7.60 (min 7.54, max 7.62)"
     "vdds_pll_mpu_power","2.03","3.71","4.33","4.56 (min 4.55, max 4.56)","5.62 (min 5.61, max 5.62)"
+    "total_power","635.66 (min 627.73, max 639.64)","833.14 (min 832.77, max 833.52)","970.11 (min 960.37, max 973.90)","1078.21 (min 1076.68, max 1079.44)","1264.54 (min 1203.05, max 1281.89)"
 
 Table: **Active Power Consumption at various OPPs with Dhrystone**
 
@@ -1781,7 +1781,6 @@ Table: **Active Power Consumption at various OPPs with Dhrystone**
     "vdda_1p8v_usb0_1_power","32.92 (min 32.91, max 32.94)","32.92 (min 32.91, max 32.93)","32.92 (min 32.92, max 32.93)","32.92 (min 32.92, max 32.93)","32.92 (min 32.90, max 32.92)"
     "vddshv3_power","0.15 (min 0.14, max 0.15)","0.15","0.15 (min 0.15, max 0.16)","0.15","0.15"
     "vddshv5_power","51.11 (min 50.99, max 51.66)","51.07 (min 51.06, max 51.07)","51.12 (min 51.12, max 51.13)","51.12 (min 51.11, max 51.13)","51.34 (min 51.16, max 52.03)"
-    "total_power","622.23 (min 615.01, max 633.15)","752.51 (min 745.00, max 763.67)","838.17 (min 835.01, max 842.97)","898.50 (min 889.34, max 901.37)","1014.27 (min 1003.99, max 1023.10)"
     "vddshv6_power","30.76 (min 30.48, max 31.01)","30.72 (min 30.46, max 30.86)","30.73 (min 30.46, max 31.03)","30.80 (min 30.46, max 30.96)","30.73 (min 30.46, max 30.90)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.23"
     "vdds_ddr_power","148.08 (min 143.33, max 151.80)","149.52 (min 144.31, max 157.93)","151.71 (min 144.32, max 156.78)","152.22 (min 144.49, max 157.99)","149.70 (min 144.69, max 158.09)"
@@ -1796,6 +1795,7 @@ Table: **Active Power Consumption at various OPPs with Dhrystone**
     "vdd_core_power","213.93 (min 210.94, max 217.39)","218.05 (min 214.64, max 221.89)","218.90 (min 216.27, max 222.71)","221.68 (min 216.65, max 223.27)","221.85 (min 218.52, max 224.14)"
     "vdda_adc_power","7.51 (min 7.51, max 7.52)","7.54 (min 7.52, max 7.56)","7.53 (min 7.51, max 7.57)","7.53 (min 7.51, max 7.55)","7.53 (min 7.51, max 7.56)"
     "vdds_pll_mpu_power","2.03","3.71","4.33","4.56","5.62"
+    "total_power","622.23 (min 615.01, max 633.15)","752.51 (min 745.00, max 763.67)","838.17 (min 835.01, max 842.97)","898.50 (min 889.34, max 901.37)","1014.27 (min 1003.99, max 1023.10)"
 
 Table: **Active Power Consumption at various OPPs with Memory Tester**
 
@@ -1816,7 +1816,6 @@ in suspended state (via suspend-to-ram) and in standby state.
     "vdda_1p8v_usb0_1_power","0.00","0.00"
     "vddshv3_power","0.12 (min 0.11, max 0.13)","0.16"
     "vddshv5_power","0.11 (min 0.11, max 0.12)","0.11 (min 0.11, max 0.12)"
-    "total_power","5.68 (min 5.63, max 5.82)","19.94 (min 19.83, max 20.10)"
     "vddshv6_power","0.54 (min 0.54, max 0.55)","0.54 (min 0.54, max 0.55)"
     "vdds_osc_power","0.00","1.24"
     "vdds_ddr_power","0.75 (min 0.74, max 0.76)","0.75 (min 0.75, max 0.76)"
@@ -1831,7 +1830,7 @@ in suspended state (via suspend-to-ram) and in standby state.
     "vdd_core_power","1.19 (min 1.16, max 1.25)","13.34 (min 13.25, max 13.46)"
     "vdda_adc_power","0.00","0.00 (min 0.00, max 0.01)"
     "vdds_pll_mpu_power","0.00","0.00"
-
+    "total_power","5.68 (min 5.63, max 5.82)","19.94 (min 19.83, max 20.10)"
 
 
 .. rubric:: Wakeup Times
@@ -1864,7 +1863,6 @@ This section indicates the power measured for all power rails with different pow
     "vdda_1p8v_usb0_1_power","32.90 (min 32.88, max 32.92)","32.91","32.89 (min 32.86, max 32.90)","32.90 (min 32.88, max 32.91)","33.30 (min 33.20, max 33.34)","32.88 (min 32.87, max 32.89)"
     "vddshv3_power","0.15 (min 0.14, max 0.15)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15","0.15 (min 0.15, max 0.16)","0.15"
     "vddshv5_power","51.17 (min 50.94, max 52.13)","51.15 (min 50.97, max 51.87)","50.95 (min 50.94, max 50.96)","51.14 (min 50.98, max 51.77)","51.56 (min 51.30, max 52.51)","51.34 (min 51.15, max 51.68)"
-    "total_power","586.91 (min 583.83, max 592.63)","672.87 (min 663.94, max 681.94)","629.83 (min 584.76, max 799.72)","588.31 (min 584.31, max 591.50)","1275.24 (min 1263.88, max 1281.38)","1013.77 (min 1003.00, max 1024.03)"
     "vddshv6_power","30.74 (min 30.53, max 30.95)","30.75 (min 30.54, max 30.96)","30.83 (min 30.63, max 30.98)","30.70 (min 30.46, max 31.00)","30.92 (min 30.75, max 31.00)","30.75 (min 30.44, max 30.90)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.22","1.23"
     "vdds_ddr_power","142.14 (min 141.39, max 142.43)","150.21 (min 149.09, max 151.70)","142.16 (min 141.92, max 142.38)","142.09 (min 141.53, max 142.49)","142.54 (min 142.32, max 142.89)","149.76 (min 144.75, max 158.04)"
@@ -1879,6 +1877,7 @@ This section indicates the power measured for all power rails with different pow
     "vdd_core_power","208.59 (min 208.43, max 208.94)","245.03 (min 242.19, max 249.35)","208.56 (min 208.35, max 208.70)","208.57 (min 208.43, max 208.74)","208.89 (min 208.44, max 210.18)","221.81 (min 218.49, max 224.01)"
     "vdda_adc_power","7.47 (min 7.38, max 7.53)","7.10 (min 7.05, max 7.19)","7.48 (min 7.39, max 7.51)","7.40 (min 7.29, max 7.51)","7.57 (min 7.55, max 7.62)","7.53 (min 7.51, max 7.56)"
     "vdds_pll_mpu_power","3.00 (min 2.79, max 3.30)","3.42 (min 3.12, max 3.71)","3.06 (min 2.81, max 3.29)","2.97 (min 2.80, max 3.13)","5.62","5.62"
+    "total_power","586.91 (min 583.83, max 592.63)","672.87 (min 663.94, max 681.94)","629.83 (min 584.76, max 799.72)","588.31 (min 584.31, max 591.50)","1275.24 (min 1263.88, max 1281.38)","1013.77 (min 1003.00, max 1024.03)"
 
 Table: **Power Consumption with ondemand governor**
 
@@ -1893,7 +1892,6 @@ Table: **Power Consumption with ondemand governor**
     "vdda_1p8v_usb0_1_power","32.90 (min 32.85, max 32.93)","32.93 (min 32.92, max 32.93)","32.91 (min 32.90, max 32.92)","33.26 (min 33.14, max 33.34)","33.30 (min 33.20, max 33.34)","32.88 (min 32.87, max 32.89)"
     "vddshv3_power","0.15 (min 0.14, max 0.15)","0.15","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15"
     "vddshv5_power","51.09 (min 50.99, max 51.97)","51.27 (min 51.05, max 51.88)","51.21 (min 50.98, max 52.09)","50.99 (min 50.99, max 51.00)","51.56 (min 51.30, max 52.51)","51.34 (min 51.15, max 51.68)"
-    "total_power","663.39 (min 657.30, max 672.52)","776.30 (min 768.32, max 780.37)","664.18 (min 660.73, max 670.41)","670.75 (min 663.86, max 681.76)","1275.24 (min 1263.88, max 1281.38)","1013.77 (min 1003.00, max 1024.03)"
     "vddshv6_power","30.72 (min 30.44, max 30.91)","30.72 (min 30.45, max 30.96)","30.79 (min 30.50, max 30.98)","30.82 (min 30.64, max 30.97)","30.92 (min 30.75, max 31.00)","30.75 (min 30.44, max 30.90)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.22","1.23"
     "vdds_ddr_power","142.43 (min 142.21, max 142.62)","150.17 (min 149.27, max 151.37)","142.85 (min 142.66, max 142.94)","143.03 (min 142.64, max 143.45)","142.54 (min 142.32, max 142.89)","149.76 (min 144.75, max 158.04)"
@@ -1908,6 +1906,7 @@ Table: **Power Consumption with ondemand governor**
     "vdd_core_power","208.55 (min 208.46, max 208.68)","246.02 (min 242.06, max 249.88)","208.61 (min 208.52, max 208.73)","208.60 (min 208.55, max 208.70)","208.89 (min 208.44, max 210.18)","221.81 (min 218.49, max 224.01)"
     "vdda_adc_power","7.51 (min 7.50, max 7.55)","7.32 (min 7.26, max 7.35)","7.51 (min 7.50, max 7.52)","7.51 (min 7.51, max 7.52)","7.57 (min 7.55, max 7.62)","7.53 (min 7.51, max 7.56)"
     "vdds_pll_mpu_power","5.62","5.62","5.62","5.62","5.62","5.62"
+    "total_power","663.39 (min 657.30, max 672.52)","776.30 (min 768.32, max 780.37)","664.18 (min 660.73, max 670.41)","670.75 (min 663.86, max 681.76)","1275.24 (min 1263.88, max 1281.38)","1013.77 (min 1003.00, max 1024.03)"
 
 Table: **Power Consumption with performance governor**
 
@@ -1922,7 +1921,6 @@ Table: **Power Consumption with performance governor**
     "vdda_1p8v_usb0_1_power","32.89 (min 32.87, max 32.92)","32.88 (min 32.87, max 32.90)","32.91 (min 32.89, max 32.91)","32.90 (min 32.89, max 32.91)","32.89 (min 32.88, max 32.90)","32.92"
     "vddshv3_power","0.15 (min 0.14, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.15, max 0.16)","0.15 (min 0.14, max 0.15)"
     "vddshv5_power","50.96 (min 50.91, max 51.30)","50.92 (min 50.91, max 50.93)","51.13 (min 50.95, max 51.74)","50.94 (min 50.93, max 50.95)","51.19 (min 50.94, max 52.15)","51.13 (min 51.00, max 51.65)"
-    "total_power","568.09 (min 566.44, max 569.05)","620.60 (min 615.56, max 624.76)","575.69 (min 567.60, max 605.08)","571.57 (min 567.83, max 580.65)","631.02 (min 630.41, max 632.19)","621.61 (min 615.02, max 631.91)"
     "vddshv6_power","30.80 (min 30.44, max 30.99)","30.78 (min 30.54, max 30.90)","30.66 (min 30.44, max 30.91)","30.76 (min 30.50, max 31.00)","30.75 (min 30.52, max 30.98)","30.74 (min 30.46, max 30.99)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.23","1.23"
     "vdds_ddr_power","141.88 (min 141.67, max 142.25)","149.93 (min 149.21, max 150.61)","142.31 (min 141.86, max 142.90)","142.21 (min 141.95, max 142.53)","142.77 (min 142.51, max 143.03)","147.69 (min 143.23, max 151.59)"
@@ -1937,6 +1935,7 @@ Table: **Power Consumption with performance governor**
     "vdd_core_power","208.04 (min 207.90, max 208.24)","244.46 (min 239.25, max 247.40)","208.59 (min 208.08, max 210.34)","207.99 (min 207.84, max 208.12)","205.68 (min 205.64, max 205.71)","213.94 (min 211.07, max 216.71)"
     "vdda_adc_power","7.44 (min 7.38, max 7.51)","7.04 (min 6.94, max 7.12)","7.42 (min 7.38, max 7.50)","7.46 (min 7.38, max 7.50)","7.56 (min 7.54, max 7.58)","7.52 (min 7.52, max 7.53)"
     "vdds_pll_mpu_power","2.03","2.03","2.03","2.03","2.03","2.03"
+    "total_power","568.09 (min 566.44, max 569.05)","620.60 (min 615.56, max 624.76)","575.69 (min 567.60, max 605.08)","571.57 (min 567.83, max 580.65)","631.02 (min 630.41, max 632.19)","621.61 (min 615.02, max 631.91)"
 
 Table: **Power Consumption with powersave governor**
 
@@ -1951,7 +1950,6 @@ Table: **Power Consumption with powersave governor**
     "vdda_1p8v_usb0_1_power","32.88 (min 32.87, max 32.90)","32.89 (min 32.88, max 32.90)","32.90 (min 32.89, max 32.92)","32.92 (min 32.91, max 32.95)","32.81 (min 32.80, max 32.83)","32.89 (min 32.87, max 32.91)"
     "vddshv3_power","0.15 (min 0.15, max 0.16)","0.15","0.16 (min 0.15, max 0.16)","0.15","0.15","0.15"
     "vddshv5_power","50.97 (min 50.90, max 51.43)","51.18 (min 50.94, max 52.11)","51.35 (min 50.95, max 52.16)","50.99 (min 50.97, max 51.00)","51.54 (min 51.27, max 52.49)","51.16 (min 51.14, max 51.17)"
-    "total_power","571.11 (min 568.38, max 584.61)","639.74 (min 619.84, max 677.18)","573.93 (min 568.88, max 592.17)","568.95 (min 567.60, max 570.29)","1274.77 (min 1260.97, max 1279.65)","1011.39 (min 1004.95, max 1023.28)"
     "vddshv6_power","30.83 (min 30.63, max 30.99)","30.67 (min 30.43, max 30.88)","30.71 (min 30.54, max 30.98)","30.79 (min 30.45, max 30.99)","30.75 (min 30.56, max 30.93)","30.77 (min 30.66, max 30.88)"
     "vdds_osc_power","1.23","1.23","1.23","1.23","1.22","1.23 (min 1.22, max 1.23)"
     "vdds_ddr_power","142.20 (min 141.97, max 142.52)","149.10 (min 148.56, max 149.86)","142.06 (min 141.84, max 142.25)","141.89 (min 141.18, max 142.14)","142.05 (min 141.91, max 142.31)","152.12 (min 144.79, max 157.41)"
@@ -1966,6 +1964,7 @@ Table: **Power Consumption with powersave governor**
     "vdd_core_power","208.02 (min 207.81, max 208.30)","245.02 (min 239.84, max 249.43)","208.30 (min 208.08, max 208.52)","208.55 (min 208.24, max 209.13)","209.18 (min 208.42, max 211.97)","222.88 (min 218.50, max 224.19)"
     "vdda_adc_power","7.38 (min 7.24, max 7.46)","6.97 (min 6.86, max 7.10)","7.45 (min 7.41, max 7.49)","7.37 (min 7.24, max 7.47)","7.58 (min 7.55, max 7.61)","7.54 (min 7.51, max 7.57)"
     "vdds_pll_mpu_power","2.20 (min 2.03, max 3.71)","2.49 (min 2.03, max 4.33)","2.03","2.03","5.62 (min 5.61, max 5.62)","5.62"
+    "total_power","571.11 (min 568.38, max 584.61)","639.74 (min 619.84, max 677.18)","573.93 (min 568.88, max 592.17)","568.95 (min 567.60, max 570.29)","1274.77 (min 1260.97, max 1279.65)","1011.39 (min 1004.95, max 1023.28)"
 
 Table: **Power Consumption with conservative governor**
 
