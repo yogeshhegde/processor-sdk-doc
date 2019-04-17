@@ -121,9 +121,9 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/           |                |                |                |                |
 |                                      |tci6638k2k>`__                        |          |EVMK2H_Hardware_Setup>`__                   |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`K2E <http://www.ti.com/lsds/ti/      |`AK2Ex EVM                            | 1.0.3.0  |`Hardware User's Guide <http://             | X              | X              | X              |                |
+|`K2E <http://www.ti.com/lsds/ti/      |`66AK2Ex EVM                          | 1.0.3.0  |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |processors/dsp/c6000_dsp-arm/66ak2x/  |<http://www.ti.com/tool               |          |processors.wiki.ti.com/index.php/           |                |                |                |                |
-|overview.page>`__                     |/xevmk2ex>`__                         |          |EVMK2E_Hardware_Setup>`__                   |                |                |                |                |
+|overview.page>`__                     |/evmk2ex>`__                          |          |EVMK2E_Hardware_Setup>`__                   |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`K2L <http://www.ti.com/lsds/ti/      |`66AK2L06 EVM                         | 1.0.3.0  |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |processors/dsp/c6000_dsp-arm/66ak2x/  |<http://www.ti.com/tool               |          |processors.wiki.ti.com/index.php/           |                |                |                |                |
@@ -133,9 +133,9 @@ The following platforms and EVMs are supported with Processor SDK
 |dsp/c6000-dsp-arm/66ak2x/             |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui65a>`__             |                |                |                |                |
 |overview.html>`__                     |EVMK2G>`__                            |          |                                            |                |                |                |                |
 |                                      +--------------------------------------+----------+                                            +----------------+----------------+----------------+----------------+
-|                                      |`K2G 1G EVM                           | 1.5D     |`Hardware Setup with CCS <http://processors | X              | X              | X              |                |
-|                                      |<http://www.ti.com/tool/              |          |.wiki.ti.com/index.php/66AK2G02_GP_EVM_     |                |                |                |                |
-|                                      |EVMK2GX>`__                           |          |Hardware_Setup>`__                          |                |                |                |                |
+|                                      |`K2G 1G EVM                           | 1.5D     |`Hardware User's Guide <http://             | X              | X              | X              |                |
+|                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui65a>`__             |                |                |                |                |
+|                                      |EVMK2GX>`__                           |          |                                            |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |                                      |`K2G Audio Daughtercard               | D        |`Software Support <http://                  |                |                | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/           |                |                |                |                |
