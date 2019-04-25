@@ -28,13 +28,13 @@ Troubleshooting
 
 Check if one of the cases below applies:
 
-- Not resetting U-boot environment variables after upgrade/downgrade u-boot version 
+- Not resetting U-boot environment variables after upgrading/downgrading u-boot version
 
   From release to release, some of the u-boot environment variables may be changed.
-  To guarantee the environment variables are correctly match the version used,
+  To guarantee the environment variables are correctly matching the version used,
   it is required to reset the u-boot environment variables When upgrading/downgrading u-boot version.
   When booting up a different version of u-boot, the u-boot boot process can be
-  interruptted by hitting any key to get the u-boot prompt.Then, the following command needs
+  interruptted by hitting any key to get the u-boot prompt. Then, the following command needs
   to issue to reset the u-boot environment variables.
    
     |   # env default -f -a
@@ -57,7 +57,7 @@ Check if one of the cases below applies:
 | For Sitara family devices (AM3/4/5), please follow instructions in `U-boot User's Guide 
     <Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__ 
 |
-| Keystone-2 platforms supports the following boot modes:
+| Keystone-2 platforms support the following boot modes:
 
   - SPI NOR boot
   - EMIF NAND boot
@@ -71,5 +71,5 @@ Check if one of the cases below applies:
   - u-boot.bin
   - MLO
 
-  U-boot can also be brought up using CCS. The step-by-step instruction on booting up u-boot
-  with one of the boot modes or using CCS are documented in PLSDK u-boot/board/ti/ks2_evm/README file. 
+  For Keystone-2 platforms, U-boot can also be brought up using CCS. The step-by-step instruction on booting up u-boot
+  with one of the boot modes or using CCS are documented in <Processor_SDK_install_dir>/board-support/u-boot-<ver>/board/ti/ks2_evm/README file.
