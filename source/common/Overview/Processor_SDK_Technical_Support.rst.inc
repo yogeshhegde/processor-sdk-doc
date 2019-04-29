@@ -17,3 +17,163 @@ not, a quick post will likely provide you the answers you need.
 
 -  `E2E Processor Support
    <https://e2e.ti.com/support/processors/>`__
+
+Open Source Software Support Disclaimer
+=======================================
+
+Processor SDK Linux integrates various free and open source software (FOSS) to demonstrate the hardware capabilities of Sitara devices. The FOSS offers many advantages to the customers such as flexibility, interoperability, robustness, reduced development time and support from the respective FOSS community.
+
+TI uses Yocto project to integrate various software components and to build Processor SDK Linux. Yocto Project makes 2 releases per year: April and October. TI’s Long Term Support (LTS) build for next year is based on current year October release of the Yocto Project. The version number of the individual open source software package is determined by the October release. TI migrates to a newer version of the component in next LTS build. Therefore, the components are updated once a year.
+
+While TI integrates the FOSS in Processor SDK Linux, TI does not own, maintain and support all of the FOSS. If users have educational queries, feature enhancement requests or discovered a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. 
+
+**Gstreamer Framework**
+
+- https://gstreamer.freedesktop.org/documentation/
+- Gstreamer application tutorials: https://gstreamer.freedesktop.org/documentation/tutorials/
+
+**QT framework**
+
+- https://www.qt.io
+- https://doc.qt.io
+- https://forum.qt.io
+
+**Wayland Weston**
+
+- https://wayland.freedesktop.org
+
+**Robot Operating system (ROS)**
+
+- http://www.ROS.org
+- For meta-ros (embedded version of ROS, that runs on our ARM): https://github.com/bmwcarit/meta-ros
+
+**V4L2**
+
+For programming external video devices, a V4L2 sub-device driver is needed to be used in conjunction with the V4L2 driver. It also uses some of the helper kernel libraries videobuf2 (VB2) for common buffer operations, queue management and memory management.
+
+- https://linuxtv.org/downloads/v4l-dvb-apis/
+- https://linuxtv.org/downloads/v4l-dvb-apis-new/uapi/v4l/v4l2.html
+- https://linuxtv.org/downloads/v4l-dvb-apis/kapi/v4l2-videobuf2.html
+- https://linuxtv.org/downloads/v4l-dvb-apis-new/kapi/v4l2-subdev.html
+
+**DRM**
+
+What is DRM: http://dri.freedesktop.org/wiki/DRM/
+
+What do the abbreviations KMS/GEM/DRM actually stand for: Kernel Mode Setting, Graphics Execution Manager, Direct Rendering Manager.
+
+DRM (dri/kms/gem) documentation is available here: http://dri.freedesktop.org/wiki/Documentation/
+
+Example applications:
+
+- https://github.com/tomba/kmsxx
+- https://git.ti.com/glsdk/example-applications/trees/master/drm-tests
+- http://git.ti.com/sitara-linux/dual-camera-demo/trees/master
+- ‘modetest’ tool inside git://anongit.freedesktop.org/git/mesa/drm
+
+**OpenCV**
+
+- OpenCV: https://opencv.org/
+- Documentation, tutorials and examples of how to use OpenCV 3.1: https://docs.opencv.org/3.1.0/#gsc.tab=0
+- OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/platforms/opencl.html
+
+FAQ
+===
+
+**How do I integrate a different version of open source software than what is packaged in Processor SDK Linux?**
+
+If users have a need to move to a different component version (older or newer) because of an existing bug, feature limitations or other reasons, TI will not support the version migration. As a reference, TI provides the list of a few recipes that were updated while integrating the components to the PSDK Linux. 
+
+::
+
+
+		├── QT5:  
+		│    ├──Baseline:
+		│    │     └──meta-qt5:recipes-qt/qt5/: recipes and patches from community
+		│    │      
+		│    └──Arago (TI) updates:
+		│         ├──meta-arago:
+		│    	  │	├──meta-arago-distro/recipes-qt/qt5: recipes update and additional patches
+		│         │	├──meta-arago-extra/recipes-qt/examples:local qt5 examples
+		│         │	├──meta-arago-distro/recipes-qt/examples:local qt5 examples recipe update and patches
+		│         │	├──meta-arago-distro/recipes-core/packagegroups: no changes are expected
+		│         │	│	├──packagegroup-arago-qte.bb
+		│         │	│	├──packagegroup-arago-tisdk-qte.bb
+		│    	  │	│	└──packagegroup-arago-tisdk-qte-sdk-host.bb
+		│    	  │	├──meta-arago-extras\recipes-core\packagegroups: no changes are expected
+		│    	  │	│	└──packagegroup-arago-qte-toolchain-target.bb
+		│    	  │	│								    
+		│         │	├──meta-arago-distro/conf/layer.conf: No changes needed for QT configurations
+		│         │	└──meta-arago-distro/conf/distro/arago.conf
+		│         └──meta-processor-sdk:
+		│         		└──recipes-qt/qt5: additional recipe updates and patches
+
+::
+
+
+		├──Wayland/Weston:
+		│    ├──Baseline:
+		│    │     └──oe-core/meta/recipes-graphics/wayland: recipes and patches from community
+		│    │      
+		│    └──Arago (TI) updates:
+		│         ├──meta-arago:
+		│         │	├──meta-arago-distro/recipes-graphics/wayland: recipes update and additional patches
+		│         │	├──meta-arago-extras/recipes-graphics/wayland/wayland-protocols
+		│         │	├──meta-arago-distro/recipes-graphics/wayland/wayland-ivi-extension: wayland-ivi recipes
+		│         │	├──meta-arago-distro/recipes-graphics/wayland/weston-conf: weston configuration
+		│    	  │	└──meta-arago-distro/conf/distro/arago.conf: DISTRO_FEATURES
+		
+		Note: There are many modules that depend on wayland. For example: chromium-wayland, qt5/qtwayland, gstreamer1.0-plugins-bad(waylandsink), glmark2 and gtk+3
+
+::
+
+
+		├──SGX (Not recommended to modify):
+		│    ├──Baseline:
+		│    │      
+		│    ├──meta-ti:
+		│    │	├──recipes-graphics/libgles/ti-sgx-ddk-um_<version>  
+		│    │	└──recipes-bsp/powervr-drivers/ti-sgx-ddk-km_<version>
+		│    │
+		│    ├──meta-arago:
+		│    │	├──meta-arago-extras/recipes-graphics/img-pvr-sdk
+		│    │	├──meta-arago-distro/recipes-tisdk/ti-tisdk-makefile/ti-tisdk-makefile/Makefile_ti-sgx-ddk-km
+		│    │	└──meta-arago-distro/conf/distro/include/arago-prefs.inc: define virtual/egl, virtual/libgles1 and virtual/libgles2
+		│    │
+		│    │ Note: There are many modules that depend on sgx, but that does not affect sgx update.      
+		│    │	      
+		│    └──Arago (TI) updates: 
+		│    	└──meta-processor-sdk:
+		│   		└──recipes-graphics/libgles/ti-sgx-ddk-um_version: for non-sgx build only
+
+::
+
+
+			├──Gstreamer:
+			│    ├──Baseline:
+			│    │      
+			│    ├──meta-openembedded:
+			│    │	└──meta-multimedia/recipes-multimedia/gstreamer-0.10: recipes and patches from community 
+			│    │     
+			│    │
+			│    ├──oe-core:
+			│    │	└──meta/recipes-multimedia/gstreamer: recipes and patches from community
+			│    │		├──gstreamer1.0-plugins-base
+			│    │		├──gstreamer1.0-plugins-bad
+			│    │		├──gstreamer1.0-plugins-good
+			│    │		├──gstreamer1.0-plugins-ugly
+			│    │		└──gstreamer1.0-libav	   
+			│    │	      
+			│    └──Arago (TI) updates: 
+			│    	└──meta-arago:
+			│		├──meta-arago-extras/recipes-multimedia/gst-plugins-ti: TI-specific recipes for TI plugins
+			│		├──meta-arago-extras/recipes-multimedia/gstreamer/gstreamer1.0-plugins-bad: recipes update and additional patches
+			│		├──meta-arago-distro/conf/distro/arago.conf: configuration
+			│		└──meta-arago-distro/recipes-core/packagegroups/packagegroup-arago-tisdk-multimedia-sdk-target.bb: package
+
+
+If users wishes to learn more about Yocto project or Arago build, please refer to the below video link and the documentation on building Processor SDK Linux through Yocto.
+    
+- https://training.ti.com/customizing-yocto-for-production-introduction
+
+- http://software-dl.ti.com/processor-sdk-linux/esd/docs/05_01_00_11/linux/Overview_Building_the_SDK.html
