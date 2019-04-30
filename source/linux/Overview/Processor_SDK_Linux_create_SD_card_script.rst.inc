@@ -52,8 +52,8 @@ Due to a limitation in automatically detecting the specific board, the script
 for AM65x/DRA80xM will request this information from the user. The following
 options are available:
 
-#. **am65x_evm** : AM654x EVM (`TMDSEVM654X <http://www.ti.com/tool/TMDSEVM654X>`__)
-#. **am65x_idk** : AM654x Industrial Development Kit (`TMDXIDK654X <http://www.ti.com/tool/TMDXIDK654X>`__)
+#. **am65x_evm** : AM654x EVM (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__)
+#. **am65x_idk** : AM654x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
 #. **unknown**
 
 This information is used to determine which board features are required to be
