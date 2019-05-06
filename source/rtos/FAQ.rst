@@ -1107,3 +1107,116 @@ PHY Link Status Register (LINK) can be read to monitor this status of
 the PHY and link (please refer to the TI KeyStone Architecture Gigabit
 Ethernet (GbE) Switch Subsystem User Guide, section 3.4).
 
+DMSC/SYSFW
+==========
+
+Questions and answers found in this section expand on information found in the
+`System Firmware Public Documentation
+<http://software-dl.ti.com/tisci/esd/latest/1_intro/index.html>`__
+
+.. rubric:: How do I configure the AM65x MMU to preemptively restrict write
+   access to memory regions protected by SYSFW controlled firewalls?
+
+Device Management & Security Controller (DMSC) uses device firewalls
+to prevent applications from directly manipulating non-real-time registers.  The
+MMU can optionally be used to mimic the firewall access restrictions enforced by
+DMSC.  Programming the MMU in such a manner allows applications to be compatible
+with firewall configurations whether or not DMSC firewall support is enabled.
+Therefore, it is highly recommended that applications configure the MMU to
+prevent write accesses to these regions as detailed below.
+
+The recommendation to keep MMU configuration as restrictive (or more
+restrictive) than the firewalls always stands as the MMU will give a
+precise exception at the time the offending instruction is executed. The
+firewall will give an imprecise data abort that will happen some time after
+the offending memory access lands.
+
+The following table describes all AM65x MMR regions which must be
+configured for read only using the MMU.
+
++------------------------+------------+------------+------------+---------------+--------------+
+| IP Block               | MMR Region | Start      | End        | MMU Page      | MMU Page     |
+|                        | Name       | Address    | Address    | Start Address | End Address  |
++========================+============+============+============+===============+==============+
+| MCU Navigator UDMASS   | cfg        | 0x283C0000 | 0x283C001F | 0x00283C0000  | 0x00283D0000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMAP   | rflow      | 0x28400000 | 0x28401FFF | 0x0028400000  | 0x0028410000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| MCU Navigator Ring     | cfg        | 0x28440000 | 0x2847FFFF | 0x0028440000  | 0x0028450000 |
+| Accelerator            |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| MCU Navigator UDMASS   | gcntcfg    | 0x28480000 | 0x28481FFF | 0x0028480000  | 0x0028490000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMAP   | tchan      | 0x284A0000 | 0x284A3FFF | 0x00284A0000  | 0x00284B0000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMAP   | rchan      | 0x284C0000 | 0x284C3FFF | 0x00284C0000  | 0x00284D0000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| MCU Navigator UDMASS   | imap       | 0x28560000 | 0x2856FFFF | 0x0028560000  | 0x0028570000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| MCU Navigator UDMASS   | l2g        | 0x28570000 | 0x2857007F | 0x0028570000  | 0x0028580000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| MCU Navigator UDMASS   | mcast      | 0x28580000 | 0x28580FFF | 0x0028580000  | 0x0028590000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMAP   | gcfg       | 0x285C0000 | 0x285C00FF | 0x00285C0000  | 0x00285D0000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| MCU Navigator Ring     | gcfg       | 0x285D0000 | 0x285D03FF | 0x00285D0000  | 0x00285E0000 |
+| Accelerator            |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator MODSS   | cfg        | 0x30800000 | 0x3080001F | 0x0030800000  | 0x0030810000 |
+| Interrupt Aggregator 0 |            |            |            |               |              |
++------------------------+------------+------------+------------+               |              +
+| Main Navigator MODSS   | cfg        | 0x30801000 | 0x3080101F |               |              |
+| Interrupt Aggregator 1 |            |            |            |               |              |
++------------------------+------------+------------+------------+               |              +
+| Main Navigator UDMASS  | cfg        | 0x30802000 | 0x3080201F |               |              |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator MODSS   | imap       | 0x30900000 | 0x30907FFF | 0x0030900000  | 0x0030910000 |
+| Interrupt Aggregator 0 |            |            |            |               |              |
++------------------------+------------+------------+------------+               |              +
+| Main Navigator MODSS   | imap       | 0x30908000 | 0x3090FFFF |               |              |
+| Interrupt Aggregator 1 |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMASS  | imap       | 0x30940000 | 0x3097FFFF | 0x0030940000  | 0x0030950000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++                        +            +            +            +---------------+--------------+
+|                        |            |            |            | 0x0030950000  | 0x0030960000 |
++                        +            +            +            +---------------+--------------+
+|                        |            |            |            | 0x0030960000  | 0x0030970000 |
++                        +            +            +            +---------------+--------------+
+|                        |            |            |            | 0x0030970000  | 0x0030980000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator         | tchan      | 0x30B00000 | 0x30B0FFFF | 0x0030B00000  | 0x0030B10000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator         | rchan      | 0x30C00000 | 0x30C0FFFF | 0x0030C00000  | 0x0030C10000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator         | rflow      | 0x30D00000 | 0x30D07fff | 0x0030D00000  | 0x0030D10000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMASS  | gcntcfg    | 0x31040000 | 0x31043FFF | 0x0031040000  | 0x0031050000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator Ring    | cfg        | 0x31080000 | 0x310BFFFF | 0x0031080000  | 0x0031090000 |
+| Accelerator            |            |            |            |               |              |
++                        +            +            +            +---------------+--------------+
+|                        |            |            |            | 0x0031090000  | 0x00310A0000 |
++                        +            +            +            +---------------+--------------+
+|                        |            |            |            | 0x00310A0000  | 0x00310B0000 |
++                        +            +            +            +---------------+--------------+
+|                        |            |            |            | 0x00310B0000  | 0x00310C0000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMASS  | l2g        | 0x3110007F | 0x3110007F | 0x0031100000  | 0x0031110000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMASS  | mcast      | 0x31110000 | 0x31113FFF | 0x0031110000  | 0x0031120000 |
+| Interrupt Aggregator   |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator UDMAP   | gcfg       | 0x31150000 | 0x311500FF | 0x0031150000  | 0x0031160000 |
++------------------------+------------+------------+------------+---------------+--------------+
+| Main Navigator Ring    | gcfg       | 0x31160000 | 0x311603FF | 0x0031160000  | 0x0031170000 |
+| Accelerator            |            |            |            |               |              |
++------------------------+------------+------------+------------+---------------+--------------+
