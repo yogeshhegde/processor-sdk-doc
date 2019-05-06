@@ -151,74 +151,163 @@ The following layer types/Inference features are supported:
 #. Split Layer
 #. Detection Output Layer
 
-During import process (described later), some operators or layers in a network model will be coalesced 
-into one TIDL Layer listed above. The supported operators/layers for Tensorflow/ONNX/Caffe are listed below.
+During import process (described later), some operators or layers in a network model 
+will be coalesced or converted into TIDL layers listed above. The supported 
+operators/layers for Tensorflow/ONNX/Caffe are listed below.
 
-Supported TensorFlow operators:
+**Supported TensorFlow operators and the corresponding TIDL layers:**
 
-  - Placeholder
-  - Conv2D
-  - DepthwiseConv2dNative
-  - BiasAdd
-  - Add
-  - Mul
-  - FusedBatchNorm
-  - Relu
-  - Relu6
-  - MaxPool
-  - AvgPool
-  - ConcatV2
-  - Slice
-  - Squeeze
-  - Reshape
-  - Softmax
-  - Pad
-  - Mean
-  - Shape
++-----------------------+------------------------+
+| TensorFlow Operator   | TIDL Layer             |
++=======================+========================+
+| Placeholder           | TIDL_DataLayer         |
++-----------------------+------------------------+
+| Conv2D                | TIDL_ConvolutionLayer  |
++-----------------------+------------------------+
+| DepthwiseConv2dNative | TIDL_ConvolutionLayer  |
++-----------------------+------------------------+
+| BiasAdd               | TIDL_BiasLayer         |
++-----------------------+------------------------+
+| Add                   | TIDL_EltWiseLayer      |
++-----------------------+------------------------+
+| Mul                   | TIDL_ScaleLayer        |
++-----------------------+------------------------+
+| FusedBatchNorm        | TIDL_BatchNormLayer    |
++-----------------------+------------------------+
+| Relu                  | TIDL_ReLULayer         |
++-----------------------+------------------------+
+| Relu6                 | TIDL_ReLULayer         |
++-----------------------+------------------------+
+| MaxPool               | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+| AvgPool               | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+| ConcatV2              | TIDL_ConcatLayer       |
++-----------------------+------------------------+
+| Slice                 | TIDL_SliceLayer        |
++-----------------------+------------------------+
+| Squeeze               | See note below         |
++-----------------------+------------------------+
+| Reshape               | See note below         |
++-----------------------+------------------------+
+| Softmax               | TIDL_SoftMaxLayer      |
++-----------------------+------------------------+
+| Pad                   | TIDL_PadLayer          |
++-----------------------+------------------------+
+| Mean                  | TIDL_PoolingLayer      |
++-----------------------+------------------------+
 
-Supported ONNX operators:
+**Note:**
 
-  - Conv
-  - MaxPool
-  - Relu
-  - Concat
-  - AveragePool
-  - GlobalAveragePool
-  - Reshape
-  - Transpose
-  - Add
-  - Sum
-  - ArgMax
-  - BatchNormalization
-  - Gemm
-  - Softmax
-  - Dropout
+  - If "Reshape" immediately follows "Squeeze", they both are coalesced into TIDL_FlattenLayer.
+  - If "Reshape" immediately follows "AvgPool", "Reshape" is coalesced into TIDL_PoolingLayer.
+  - If "Reshape" immediately follows TIDL_InnerProductLayer, it is coalesced into TIDL_InnerProductLayer.
+  - "Conv2D" is converted to TIDL_InnerProductLayer if:
+     - convolution kernel is 1x1 and input is one dimension vector,
+     - input is TIDL_PoolingLayer with average pooling, and
+     - output is TIDL_SoftMaxLayer or TIDL_FlattenLayer.
 
-Supported Caffe layers:
+**Supported ONNX operators and the corresponding TIDL layers:**
 
-  - Concat
-  - Convolution
-  - Pooling
-  - ReLU
-  - PReLU
-  - Dropout
-  - Softmax
-  - Deconvolution
-  - Argmax
-  - Bias
-  - Eltwise
-  - BatchNorm
-  - Scale
-  - InnerProduct
-  - Split
-  - Slice
-  - Crop
-  - Flatten
-  - Permute
-  - PriorBox
-  - Reshape
-  - DetectionOutput
++-----------------------+------------------------+
+| ONNX Operator         | TIDL Layer             |
++=======================+========================+
+| Conv                  | TIDL_ConvolutionLayer  |
++-----------------------+------------------------+
+| MaxPool               | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+| AveragePool           | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+| GlobalAveragePool     | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+| Relu                  | TIDL_ReLULayer         |
++-----------------------+------------------------+
+| Concat                | TIDL_ConcatLayer       |
++-----------------------+------------------------+
+| Reshape               | See note below         |
++-----------------------+------------------------+
+| Transpose             | See note below         |
++-----------------------+------------------------+
+| Add                   | TIDL_EltWiseLayer      |
++-----------------------+------------------------+
+| Sum                   | TIDL_EltWiseLayer      |
++-----------------------+------------------------+
+| ArgMax                | TIDL_ArgMaxLayer       |
++-----------------------+------------------------+
+| BatchNormalization    | TIDL_BatchNormLayer    |
++-----------------------+------------------------+
+| Gemm                  | TIDL_InnerProductLayer |
++-----------------------+------------------------+
+| Softmax               | TIDL_SoftMaxLayer      |
++-----------------------+------------------------+
+| Dropout               | TIDL_DropOutLayer      |
++-----------------------+------------------------+
 
+**Note:**
+
+  - If "Reshape" is followed by "Transpose" and then followed by "Reshape",
+    then they are coalesced into TIDL_FlattenLayer.
+  - If "Reshape" immediately follows "AvgPool", "Reshape" is coalesced into TIDL_PoolingLayer.
+  - If "Reshape" immediately follows inner product layer, "Reshape" is coalesced into TIDL_InnerProductLayer.
+
+**Supported Caffe layer types and the corresponding TIDL layers:**
+
++-----------------------+----------------------------+
+| Caffe Layer Type      | TIDL Layer                 |
++=======================+============================+
+| Concat                | TIDL_ConcatLayer           |
++-----------------------+----------------------------+
+| Convolution           | TIDL_ConvolutionLayer      |
++-----------------------+----------------------------+
+| Pooling               | TIDL_PoolingLayer          |
++-----------------------+----------------------------+
+| ReLU/LRN              | See note below             |
++-----------------------+----------------------------+
+| PReLU                 | TIDL_BatchNormLayer        |
++-----------------------+----------------------------+
+| Dropout               | TIDL_DropOutLayer          |
++-----------------------+----------------------------+
+| Softmax               | TIDL_SoftMaxLayer          |
++-----------------------+----------------------------+
+| Deconvolution         | TIDL_Deconv2DLayer         |
++-----------------------+----------------------------+
+| Argmax                | TIDL_ArgMaxLayer           |
++-----------------------+----------------------------+
+| Bias                  | TIDL_ConvolutionLayer      |
++-----------------------+----------------------------+
+| Eltwise               | TIDL_EltWiseLayer          |
++-----------------------+----------------------------+
+| BatchNorm             | TIDL_BatchNormLayer        |
++-----------------------+----------------------------+
+| Scale                 | TIDL_BatchNormLayer        |
++-----------------------+----------------------------+
+| InnerProduct          | TIDL_InnerProductLayer     |
++-----------------------+----------------------------+
+| Split                 | TIDL_SplitLayer            |
++-----------------------+----------------------------+
+| Slice                 | TIDL_SliceLayer            |
++-----------------------+----------------------------+
+| Crop                  | TIDL_CropLayer             |
++-----------------------+----------------------------+
+| Flatten               | TIDL_FlattenLayer          |
++-----------------------+----------------------------+
+| Permute               | See note                   |
++-----------------------+----------------------------+
+| PriorBox              | See note                   |
++-----------------------+----------------------------+
+| Reshape               | See note                   |
++-----------------------+----------------------------+
+| DetectionOutput       | TIDL_DetectionOutputLayer  |
++-----------------------+----------------------------+
+
+**Note:**
+
+  - "ReLU/LRN" can be merged into TIDL_ConvolutionLayer, TIDL_EltWiseLayer,
+    TIDL_InnerProductLayer, or TIDL_BatchNormLayer.
+  - "Permute" is merged into TIDL_FlattenLayer for SSD network only.
+  - If "PriorBox" is followed by TIDL_DetectionOutputLayer or TIDL_ConcatLayer,
+    it is merged into that layer.
+  - "Reshape" is merged into TIDL_SoftMaxLayer for SSD network only.
 
 Constraints on layer parameters
 -------------------------------
