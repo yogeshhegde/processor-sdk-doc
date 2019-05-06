@@ -1220,3 +1220,19 @@ configured for read only using the MMU.
 | Main Navigator Ring    | gcfg       | 0x31160000 | 0x311603FF | 0x0031160000  | 0x0031170000 |
 | Accelerator            |            |            |            |               |              |
 +------------------------+------------+------------+------------+---------------+--------------+
+
+.. rubric:: What AM65x memory areas are reserved for use by DMSC?
+
+DMSC reserves a portion of the AM65x MSMC memory for the communication path
+between itself and the A53.  Applications must not use the reserved region of
+MSMC or communication with DMSC will be compromised.
+
+The size of the MSMC region used by DMSC is both configurable and discoverable.
+The size of the region can be configured through the DMSC board configuration's
+`msmc_cache_size parameter
+<http://software-dl.ti.com/tisci/esd/latest/3_boardcfg/BOARDCFG.html#design-for-boardcfg-msmc>`__.
+The useable MSMC memory after DMSC reservations can be discovered by sending
+the `TISCI_MSG_QUERY_MSMC message
+<http://software-dl.ti.com/tisci/esd/latest/2_tisci_msgs/general/core.html#tisci-msg-query-msmc>`__
+to DMSC.  The message response contains the range of MSMC memory useable by the
+application.
