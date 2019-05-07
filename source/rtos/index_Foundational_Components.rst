@@ -104,11 +104,6 @@ NameServer Module
 -------------------
 .. include:: PDK_Platform_Software/IPC/NameServer_Module.inc
 
-
-
-
-
-
 Use Cases for IPC
 =============================
 .. include:: PDK_Platform_Software/IPC/Use_Cases_for_IPC.rst.inc
@@ -121,19 +116,31 @@ IPC Examples
 
 IPC Tests
 =============
-.. include:: PDK_Platform_Software/IPC/Tests.rst.inc
+.. include:: PDK_Platform_Software/IPC/IPC_Tests.rst.inc
 
 IPC Daemon
 =============
 .. include:: PDK_Platform_Software/IPC/IPC_Daemon.rst.inc
 
-IPC Transport
-==============
-.. include:: PDK_Platform_Software/IPC/Processor_SDK_RTOS_IPC_Transports.rst.inc
+IPC Transports
+===============
+.. include:: PDK_Platform_Software/IPC/IPC_Transports.rst.inc
+
+IPC Benchmarking
+==================
+.. include:: PDK_Platform_Software/IPC/IPC_BenchMarking.rst.inc
+
+IPC 3.x
+========
+.. include:: PDK_Platform_Software/IPC/IPC_3.x.rst.inc
 
 IPC FAQ
 ========
 .. include:: PDK_Platform_Software/IPC/IPC_3.x_FAQ.rst.inc
+
+FAQ For Keystone Devices
+-------------------------
+.. include:: PDK_Platform_Software/IPC/IPC_FAQ_for_Keystone_Devices.rst.inc
 
 ***************
 OpenCL
