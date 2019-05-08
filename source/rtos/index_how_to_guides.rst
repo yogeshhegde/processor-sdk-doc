@@ -106,35 +106,30 @@ EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/TMDXIDK5728_Hardware_Setup.rst.inc
 
-.. 66AK2G02 GP EVM Hardware Setup 
+.. 66AK2G02 GP EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/66AK2G02_GP_EVM_Hardware_Setup.rst.inc
 
-.. EVMK2E Hardware Setup            
+.. EVMK2E Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/EVMK2E_Hardware_Setup.rst.inc
 
-.. EVMK2H Hardware Setup            
+.. EVMK2H Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/EVMK2H_Hardware_Setup.rst.inc
 
-.. TMDSEVM6657L EVM Hardware Setup  
+.. TMDSEVM6657L EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/TMDSEVM6657L_EVM_Hardware_Setup.rst.inc
 
-.. TMDXEVM6670L EVM Hardware Setup  
+.. TMDXEVM6670L EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/TMDXEVM6670L_EVM_Hardware_Setup.rst.inc
 
-.. TMDXEVM6678L EVM Hardware Setup 
+.. TMDXEVM6678L EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/TMDXEVM6678L_EVM_Hardware_Setup.rst.inc
 
-.. AUDK2G AddOn 
-.. ====================================================
-.. include:: ../common/EVM_Hardware_Setup/AUDK2G_AddOn.rst.inc
-
-                                                                                                                                                     132,1         Bot
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: ../../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
