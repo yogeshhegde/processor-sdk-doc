@@ -37,8 +37,3 @@ EVM Hardware Setup
 .. TMDXEVM6678L EVM Hardware Setup 
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/TMDXEVM6678L_EVM_Hardware_Setup.rst.inc
-
-.. AUDK2G AddOn 
-.. ====================================================
-.. include:: ../common/EVM_Hardware_Setup/AUDK2G_AddOn.rst.inc
-
