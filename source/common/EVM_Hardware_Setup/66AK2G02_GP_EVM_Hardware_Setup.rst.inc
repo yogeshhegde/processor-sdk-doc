@@ -350,7 +350,7 @@ in the previous section ConfiguringTargetConfigFile_
 
 .. Image:: ../images/K2G_Launch_targetConfig.png
 
- **Step6**:K2G can be a DSP or an ARM master boot device so connect to
+**Step6**:K2G can be a DSP or an ARM master boot device so connect to
   the C66x or the A15\_0.
 
 **GEL Log**
