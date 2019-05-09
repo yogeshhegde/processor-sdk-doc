@@ -81,7 +81,7 @@ Where does TI RTOS application get the Platform definition and memory sections o
 When creating a TI RTOS project, the user is required to specify the Platform and target core as part of their RTSC setup as shown below. This shows an example that is created for evmAM335x platform.
 
 .. Image:: ../images/Platfrom_configuration.png
-:scale: 50 %
+	:scale: 50 %
 
 Selection of the platform essentially tell the build tools that the platform defintion should be picked up from the platform for evmAM335x from the directory path bios_x_xx_xx_xx\packages\ti\platforms\evmAM3359. If you open the Platform.xdc file under the folder path, you can see the default settings provided for this platform. This file combines the baseline AM335x SOC definition under bios_x_xx_xx_xx\packages\ti\catalog\arm\cortexa with the board specific setting like clockrate, DDR memory range.
 
@@ -456,12 +456,12 @@ Real Time analysis(RTA) agent
 #. Run the application. 
 #. In the Raw Logs window, you can see the informational, warning, and error messages sent by the calls to Log module APIs in log.c. The messages that begin with **LM** are diagnostics provided by XDCtools. Messages that begin with “WARNING” come from calls to Log_warning2. Messages that begin with “ERROR” come from calls to Log_error2. Messages that begin with “../log.c” come from calls to Log_info0 and Log_info2 (depending on the number of arguments).</li>
 
-.. Image:: ../images/SYSBIOS_Diag.JPG
+.. Image:: ../images/SYSBIOS_Diag.jpg
 	:scale: 50 %
-.. Image:: ../images/SYSBIOS_Rawlog.JPG
+.. Image:: ../images/SYSBIOS_Rawlog.jpg
 	:scale: 50 %
 .. Image:: ../images/Rta_exec2.png
-.. Image:: ../images/SYSBIOS_CPUload.JPG
+.. Image:: ../images/SYSBIOS_CPUload.jpg
 	:scale: 50 %
 
 For advanced debugging options we recommend following the instructions on the `BIOS_6_Real-Time_Analysis_(RTA)_in_CCSv4 <http://processors.wiki.ti.com/index.php/BIOS_6_Real-Time_Analysis_(RTA)_in_CCSv4>`__ wiki
@@ -473,7 +473,7 @@ RTOS Object View(ROV)
 #. Load your application for debugging. Select the device you want to debug before opening ROV.
 #. In the ROV window, expand the tree to see the ti.sysbios.knl.Task module. The right pane shows a list of the Task threads in the application. As you advance from breakpoint to breakpoint, you see the run mode of the threads change.</li></ol> 
 
-.. Image:: ../images/1.7.6_Image.PNG
+.. Image:: ../images/1.7.6_Image.png
 :scale: 50 %
 
 For more details on ROV tools, refer to the `Runtime Object Viewer(ROV) <http://rtsc.eclipse.org/docs-tip/Runtime_Object_Viewer>`__ article on RTSC website.
