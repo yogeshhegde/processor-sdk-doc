@@ -51,6 +51,9 @@ Rebuild drivers from PDK directory
 ------------------------------------
 Refer `Rebuilding the PDK <Overview.html#rebuild-pdk>`__ for details on rebuilding the PDK components.
 
+TI RTOS Basics
+===============
+.. include:: How_to_Guides/Host/Setup/TI_RTOS_Tips_and_Tricks.rst.inc
 
 
 Flashing and Boot
