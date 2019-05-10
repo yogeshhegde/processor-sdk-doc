@@ -1711,7 +1711,7 @@ written or read from the SDRAM and is enabled by programming the ECC Control reg
 8-bit ECC is calculated over 64-bit data quanta for K2H and K2E, but 4-bit ECC over 32-bit data for K2G.
 The ECC is calculated for all accesses that are within the address ranges protected by ECC.
 1-bit error is correctable by ECC and 2-bit error is not correctable and will be treated as
-unrecoverable error by sotware and trigger the reset of the device.
+unrecoverable error by software and trigger the reset of the device.
 
 DDR3 ECC Handling
 """""""""""""""""""
