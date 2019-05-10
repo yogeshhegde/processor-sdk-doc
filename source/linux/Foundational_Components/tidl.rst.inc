@@ -197,7 +197,7 @@ operators/layers for Tensorflow/ONNX/Caffe are listed below.
 | Mean                  | TIDL_PoolingLayer      |
 +-----------------------+------------------------+
 
-**Note:**
+.. note::
 
   - If "Reshape" immediately follows "Squeeze", they both are coalesced into TIDL_FlattenLayer.
   - If "Reshape" immediately follows "AvgPool", "Reshape" is coalesced into TIDL_PoolingLayer.
@@ -243,7 +243,7 @@ operators/layers for Tensorflow/ONNX/Caffe are listed below.
 | Dropout               | TIDL_DropOutLayer      |
 +-----------------------+------------------------+
 
-**Note:**
+.. note::
 
   - If "Reshape" is followed by "Transpose" and then followed by "Reshape",
     then they are coalesced into TIDL_FlattenLayer.
@@ -300,14 +300,16 @@ operators/layers for Tensorflow/ONNX/Caffe are listed below.
 | DetectionOutput       | TIDL_DetectionOutputLayer  |
 +-----------------------+----------------------------+
 
-**Note:**
+.. note::
 
   - "ReLU/LRN" can be merged into TIDL_ConvolutionLayer, TIDL_EltWiseLayer,
     TIDL_InnerProductLayer, or TIDL_BatchNormLayer.
-  - "Permute" is merged into TIDL_FlattenLayer for SSD network only.
-  - If "PriorBox" is followed by TIDL_DetectionOutputLayer or TIDL_ConcatLayer,
-    it is merged into that layer.
-  - "Reshape" is merged into TIDL_SoftMaxLayer for SSD network only.
+  - If "Permute" is followed by "Flatten", "Permute" is merged into TIDL_FlattenLayer.
+    This is only applicable for SSD network.
+  - If "PriorBox" is followed by "DetectionOutput" or "Concat", "PriorBox" is merged
+    into TIDL_DetectionOutputLayer or TIDL_ConcatLayer.
+  - If "Reshape" is followed by "Softmax", "Reshape" is merged into TIDL_SoftMaxLayer.
+    This is only applicable for SSD network.
 
 Constraints on layer parameters
 -------------------------------
