@@ -256,9 +256,9 @@ both variable and updated continuously.
 
 X
 
-`RTOS Template Application <index_examples_demos.html#rtos-template-application>`__
+`Template Application <index_examples_demos.html#rtos-template-application>`__
 
-The RTOS template application is intended for customers to use as a
+The Template Application is intended for customers to use as a
 starting point during software development using Processor SDK RTOS
 software. The template application can be quickly brought up by
 importing the included CCS project into CCS development environment.

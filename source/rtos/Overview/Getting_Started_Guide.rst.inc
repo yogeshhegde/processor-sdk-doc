@@ -146,19 +146,19 @@ Application development
 We now take the leap to put together parts of the SDK and create a more
 complex application.
 
-RTOS Template Application Workshop
+Template Application Workshop
 ----------------------------------
-Take a look at the `workshop`__ for the RTOS Template Application. This
+Take a look at the `workshop`__ for the RTOS/Bare-metal Template Application. This
 workshop will cover the basics of navigating the SDK and its documentation and
-using CCS. The RTOS Template Application is a good 
+using CCS. The Template Application is a good 
 starting point to learn how to use drivers, the OSAL layer, and Board Library.
-It pulls portions of the RTOS software into one application which can serve
+It pulls portions of the SDK software into one application which can serve
 as the starting point for creating your first application.
 
 __ index_examples_demos.html#rtos-template-application
 
 .. note::
-   The RTOS template application currently supports Sitara EVMs (AM335x EVM,
+   The template application currently supports Sitara EVMs (AM335x EVM,
    AM437x EVM, AM572x EVM, and AM654x EVM) only.
 
 Demonstrations in Processor SDK RTOS

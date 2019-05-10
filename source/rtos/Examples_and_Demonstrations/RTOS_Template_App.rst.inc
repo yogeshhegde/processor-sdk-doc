@@ -12,10 +12,10 @@ Processor SDK RTOS and introduce you to using Sitara Evaluation Modules (EVMs)
 and TI tools.
 
 To accomplish this goal, we will work through an interactive lab using the
-RTOS Template Application. This application will introduce key concepts of
+RTOS/Bare-metal Template Application. This application will introduce key concepts of
 the SDK and serves as the starting point for creating your own application.
 
-Here's what we'll learn over the course of this lab:
+Here's what we will learn over the course of this lab:
 
 - Basic usage of Code Composer Studio (CCS)
 
@@ -97,7 +97,7 @@ __ https://training.ti.com/am6x
 
 Template Application Overview
 =============================
-The RTOS Template Application is intended for
+The Template Application is intended for
 customers to use as a starting point during software development using
 Processor SDK RTOS software. The Template Application can be quickly brought up
 by importing the included Code Composer Studio (CCS) project into the CCS
@@ -109,8 +109,8 @@ package.
 Components Used
 ---------------
 
--  SYS/BIOS
--  XDCTools
+-  SYS/BIOS (RTOS only)
+-  XDCTools (RTOS only)
 -  Processor SDK RTOS PDK
 
    - Drivers, OSAL, etc.
@@ -127,13 +127,22 @@ achieved by splitting the "main" and "app" submodules into different files.
 The source files are organized as follows::
 
     └── template_app
-        ├── main.c --> Main file including startup and init code
-        ├── main.cfg --> Main BIOS config file
-        ├── app.c  --> Application tasks are here
-        ├── app.h  --> Application header file
-        ├── app.cfg --> Application specific config file
-        ├── app.defs --> Definitions (Currently empty)
-        ├── rtos_template_app_<SOC>_<core>_<board>.projectspec --> Project spec file
+        ├── baremetal
+        │   ├── app.c --> Application tasks are here
+        │   ├── app.h --> Application header file
+        │   ├── baremetal_template_app_am572x_a15_evmAM572X.projectspec --> Project spec file
+        |   ├── main.c --> Main file which has board and driver init code
+        │   ├── lnk_a15.cmd --> Linker command file.
+        ├── GPIO_board.h --> Gpio board header
+        ├── GPIO_evmAM572x_board.c --> Gpio board configuration
+        └── rtos
+            ├── app.c --> Application tasks are here
+            ├── app.cfg --> Application specific config file
+            ├── app.defs --> Definitions (Currently empty)
+            ├── app.h --> Application header file
+            ├── main.c --> Main file which has board and driver init cod
+            ├── main.cfg --> Main BIOS config file
+            └── rtos_template_app_am572x_a15_evmAM572X.projectspec --> Project spec file
 
 In general, to write a new application **app.c** and **app.h** can be
 modified, recompiled, and run.
@@ -169,9 +178,9 @@ For more info on setting up CCS. Check out
 `Setup CCS for EVM and Processor-SDK RTOS <index_how_to_guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
 in the How To Guides.
 
-Task 2 - Importing and Building the RTOS Template Application
--------------------------------------------------------------
-We begin the lab by importing the RTOS Template Application into CCS. The
+Task 2 - Importing and Building the  Template Application
+---------------------------------------------------------
+We begin the lab by importing the RTOS or Bare-metal Template Application into CCS. The
 Template Application is delivered as a preconfigured CCS Project, making this
 process very simple. We will also use this as an opportunity to briefly dive
 into the structure of the SDK.
@@ -183,7 +192,7 @@ directories. The **pdk_<platform>_<version>** directory contains Chip Support
 Library (CSL), Low Level Drivers (LLDs), Boot, Diagnostics, and other
 functions. It is also where LLD example projects are created. The
 **processor_sdk_rtos_<platform>_<version>** directory contains demos
-(including the RTOS Template App), documentation, and resources for creating
+(including the Template App), documentation, and resources for creating
 bootable SD cards.
 
 Now that you have an understanding of these directories, let us move on to
@@ -253,8 +262,8 @@ Back
 .. image:: ../images/am572x-evm-hw-setup-back.jpg
    :scale: 44 %
 
-Task 4 - Loading and Running the RTOS Template Application
-----------------------------------------------------------
+Task 4 - Loading and Running the Template Application
+-----------------------------------------------------
 
 Creating a Target Configuration File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -324,13 +333,16 @@ Primary cores for each target:
    attempt to load and run the template application on two cores simultaneously
    as the Template Application is not designed to run this way.
 
+   Similar instructions apply to AM654x EVM, where you should connect to the M3
+   core first before running on your application core.
+
 Running the Application
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Now that we are connected to the target, it is time to load the application.
 To do this, go to the *Run --> Load --> Load Program* menu in CCS. Then, click
 the *Browse project...* button and choose the
-**rtos_template_app_<board>_<core>.out** executable. Then click *OK* to load
+**[rtos or baremetal]_template_app_<board>_<core>.out** executable. Then click *OK* to load
 the executable.
 
 .. image:: ../images/load-executable.png
@@ -390,7 +402,7 @@ Application.
 
 .. |terminate| image:: ../images/terminate-button.png
 
-Task 5 - Examining the RTOS Template Application
+Task 5 - Examining the Template Application
 ------------------------------------------------
 Now that you're familiar with using the Template Application, let us look into
 the code to see how it all works.
@@ -406,13 +418,13 @@ the necessary header files for the application:
     /* Standard header files */
     #include <string.h>
 
-    /* XDCtools Header files */
+    /* XDCtools Header files (RTOS only) */
     #include <xdc/std.h>
     #include <xdc/cfg/global.h>
     #include <xdc/runtime/System.h>
     #include <xdc/runtime/Error.h>
 
-    /* BIOS Header files */
+    /* BIOS Header files (RTOS only) */
     #include <ti/sysbios/BIOS.h>
     #include <ti/sysbios/knl/Task.h>
 
@@ -422,10 +434,10 @@ the necessary header files for the application:
     /* Local template app header file */
     #include "app.h"
 
-- XDCtools provides configuration tools to create and build a static
+- (RTOS only) XDCtools provides configuration tools to create and build a static
   configuration as part of your application. These headers are necessary
   for the ``*.cfg`` configuration files.
-- BIOS is a synonym for TI-RTOS. These headers are necessary for accessing
+- (RTOS only) BIOS is a synonym for TI-RTOS. These headers are necessary for accessing
   common RTOS features such as tasks.
 - The Board Library is a thin utility
   layer on top of  CSL and other board utilities. It provides uniform
@@ -449,7 +461,7 @@ the necessary header files for the application:
         #include <ti/drv/spi/MCSPI.h>
 
 Next, we come across the ``main()`` function which demonstrates the common
-procedure for initializing an RTOS application. You can read the comments in
+procedure for initializing an RTOS or bare-metal application. You can read the comments in
 the code for further clarification. Let's break down the steps:
 
 1) Initialize the board::
@@ -468,15 +480,22 @@ the code for further clarification. Let's break down the steps:
     GPIO_init();
     MCSPI_init();
 
-3) Create the application tasks. We will discuss this further in the section
+3) (RTOS only) Create the application tasks. We will discuss this further in the section
    covering the ``app.c`` file.
 
-4) Start BIOS (TI-RTOS)::
+4) Start BIOS (RTOS) or start the application tasks directly (Bare-metal)::
 
     BIOS_start();
 
+    or
+
+    appRunTasks();
+
 The app.c File
 ^^^^^^^^^^^^^^
+
+**RTOS**
+
 Open the **app.c** file and take a look at the ``appTasksCreate()``
 function. You should recall that this function was called in step three
 of ``main()``. Inside of ``appTasksCreate()`` there are ``biosTaskCreate()``
@@ -522,6 +541,18 @@ below:
 
     void myTaskFunc(UArg arg0, UArg arg1)
 
+**Bare-metal**
+
+Open the **app.c** file and take a look at the ``appRunTasks()`` function. 
+Inside of ``appRunTasks()`` there are function calls for each peripheral task.
+This file also contains setup code for a timer interrupt that controls
+the LED blink task.
+
+.. note::
+   The application functions are called "tasks" for naming consistency
+   with the RTOS template application, but they are not actual SYS/BIOS
+   tasks.
+
 Next, let's take a look at ``i2c_eeprom_read_and_display_task()`` to
 see how to use TI Drivers. The procedure for opening a TI Driver generally
 follows these steps:
@@ -557,8 +588,11 @@ each driver at **pdk_<platform>_<version>/packages/ti/drv/<driver>/docs**.
 For more infomation on SYS/BIOS, check out the  User Guide at
 **bios_<version>/docs**.
 
-Task 6 - Modifying the Template Application
--------------------------------------------
+Task 6 - Modifying the RTOS Template Application
+------------------------------------------------
+.. note::
+   The instructions below apply to the RTOS Template Application only.
+
 Now that you have an understanding of how to use the drivers and create RTOS
 tasks, let us make some simple modifications to create our own application.
 
