@@ -71,7 +71,7 @@ TIDL API framework abstracts multicore operation
 
 Current implementation of TIDL API provides following important features:
 
-- Running a network on individual EVE subsystem or C66x DSP core
+- **Running a network on individual EVE subsystem or C66x DSP core**
 
 - Multiple networks on different EVEs/DSPs can run concurrently
     We can run concurrently as many different networks as we have available accelerators. Single unit of task execution is complete network, i.e. it is typically executed from start to end on only one EVE or DSP. 
@@ -199,9 +199,10 @@ operators/layers for Tensorflow/ONNX/Caffe are listed below.
 
 .. note::
 
-  - If "Reshape" immediately follows "Squeeze", they both are coalesced into TIDL_FlattenLayer.
-  - If "Reshape" immediately follows "AvgPool", "Reshape" is coalesced into TIDL_PoolingLayer.
-  - If "Reshape" immediately follows TIDL_InnerProductLayer, it is coalesced into TIDL_InnerProductLayer.
+  - "Reshape" and "Squeeze" are supported by being coalesced into other layers:
+     - If "Reshape" immediately follows "Squeeze", they both are coalesced into TIDL_FlattenLayer.
+     - If "Reshape" immediately follows "AvgPool", "Reshape" is coalesced into TIDL_PoolingLayer.
+     - If "Reshape" immediately follows TIDL_InnerProductLayer, it is coalesced into TIDL_InnerProductLayer.
   - "Conv2D" is converted to TIDL_InnerProductLayer if:
      - convolution kernel is 1x1 and input is one dimension vector,
      - input is TIDL_PoolingLayer with average pooling, and
