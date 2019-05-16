@@ -294,6 +294,51 @@ Examples
 |                 |                 | as present in   |                 |
 |                 |                 | each device.    |                 |
 +-----------------+-----------------+-----------------+-----------------+
+| PCIE_Qos_Examp\ | 2-device PCIe   | **IMPORTANT:**  | **AM65xx IDK**  |
+| leProject       | connection      | Cable must be   | One board is EP/|
+|                 |                 | `MODIFIED`_     | other           |
+| (for AM65xx IDK)|                 | in order to     | is              |
+|                 |                 | avoid damaging  | RC;             |
+|                 |                 | the clock       | link is         |
+|                 |                 | drivers in the  | established and |
+|                 |                 | SoC!            | data            |
+|                 |                 |                 | exchanged with  |
+|                 |                 |                 | TC0/TC1/TC2(DDR)|
+|                 |                 | Connect two     | /TC3(MSMC).     |
+|                 |                 | like AM65xx     | Then PCIE CPU   |
+|                 |                 | IDK EVMs PCIe   | read latency    |
+|                 |                 | using a         | with TC3 is     |
+|                 |                 | `MODIFIED`_     | measured with   |
+|                 |                 | male-male       | background PCIE |
+|                 |                 | crossover       | read traffic    |
+|                 |                 | PCIe x1 or x4   | over TC0 using  |
+|                 |                 | cable and       | DMA.            |
+|                 |                 | optional        | All printed     |
+|                 |                 | straight-through| output goes to  |
+|                 |                 | extender.       | serial console. |
+|                 |                 |                 |                 |
+|                 |                 | We used a       |                 |
+|                 |                 | one-lane        |                 |
+|                 |                 | cross cable.    |                 |
+|                 |                 |                 |                 |
+|                 |                 | Executables     |                 |
+|                 |                 | for A53 (mpu)   |                 |
+|                 |                 | and R5 (mcu)    |                 |
+|                 |                 | available.      |                 |
+|                 |                 |                 |                 |
+|                 |                 | Note: this is   |                 |
+|                 |                 | NOT a CCS       |                 |
+|                 |                 | project.  It    |                 |
+|                 |                 | is built from   |                 |
+|                 |                 | running         |                 |
+|                 |                 | ``make pcie``   |                 |
+|                 |                 | from $(TI_PDK\  |                 |
+|                 |                 | _INSTALL_DIR)/\ |                 |
+|                 |                 | packages.       |                 |
+|                 |                 | Result is in    |                 |
+|                 |                 | ti/binary.      |                 |
+|                 |                 |                 |                 |
++-----------------+-----------------+-----------------+-----------------+
 
 .. _MODIFIED: http://processors.wiki.ti.com/index.php/PCIe_CableMod
 
