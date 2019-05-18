@@ -70,6 +70,10 @@ PRUSS
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/Network/PRUSS.rst.inc
 
+AM65x CPSW2g
+---------------------------------
+.. include:: Foundational_Components/Kernel/Kernel_Drivers/Network/K3_CPSW2g.rst.inc
+
 
 PCIe End Point
 ---------------------------------
