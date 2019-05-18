@@ -37,3 +37,10 @@ EVM Hardware Setup
 .. TMDXEVM6678L EVM Hardware Setup 
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/TMDXEVM6678L_EVM_Hardware_Setup.rst.inc
+
+66AK2G Audio DC AddOn             
+====================================================
+
+Please refer to `K2G Audio DC AddOn <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_examples_demos.html#k2g-audio-dc-addon>`__
+
+
