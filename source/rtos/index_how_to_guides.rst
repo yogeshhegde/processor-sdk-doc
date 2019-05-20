@@ -130,6 +130,12 @@ EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/TMDXEVM6678L_EVM_Hardware_Setup.rst.inc
 
+66AK2G Audio DC AddOn             
+====================================================
+
+Please refer to `K2G Audio DC AddOn 
+<index_examples_demos.html#k2g-audio-dc-addon>`__
+
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: ../../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
