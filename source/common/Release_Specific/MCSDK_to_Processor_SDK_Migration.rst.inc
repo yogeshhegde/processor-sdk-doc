@@ -127,13 +127,14 @@ further development. There are additional helper/setup scripts to help
 with getting started with the EVMs. For an overview of the directory
 structure and a brief description of the contents of the folders, refer
 to
-`Processor\_SDK\_Linux\_Directory\_Structure <../linux/Processor_SDK_Linux_Directory_Structure.html>`__
+`Processor\_SDK\_Linux\_Directory\_Structure 
+<http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Overview_Directory_Structure_Overview.html>`__.
 
 .. rubric:: Getting Started
    :name: getting-started
 
 The Getting Started Guide for Processor SDK Linux is
-`here <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide>`__.
+`here <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Overview_Getting_Started_Guide.html>`__.
 Processor SDK Linux includes a set up script that scripts the necessary
 steps to setup the development environment on the host machine. The
 setup script verifies that the Linux host is the recommended Ubuntu LTS
@@ -144,12 +145,13 @@ installation of the SDK on the Linux host, the setup script should be
 run to prepare the host for software development. Some of the tasks
 require administrator privileges. The script will prompt you when these
 administrator privileges are required. For more details, see
-`Processor\_SDK\_Linux\_Setup\_Script <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Setup_Script>`__.
+`Processor\_SDK\_Linux\_Setup\_Script
+<http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Overview_Getting_Started_Guide.html#run-setup-scripts>`__.
 
 The procedure to flash the U-Boot, Kernel and filesystem into the flash
 memory on EVM, also known-as program\_evm, is still available, and
 documented
-`here <http://processors.wiki.ti.com/index.php/Program_EVM_UG>`__
+`here <Overview_Getting_Started_Guide.html#program-evm-user-guide>`__.
 
 .. rubric:: U-Boot
    :name: u-boot
@@ -188,7 +190,8 @@ differences from MCSDK.
 -  A copy of Kernel GIT repo is included in the "board-support" folder
    of the Processor SDK Installation
 -  For more details, refer to the
-   `Processor\_SDK\_Linux\_U-Boot\_Release\_Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_U-Boot_Release_Notes>`__
+   `Processor\_SDK\_Linux\_U-Boot\_Release\_Notes
+   <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_U-Boot.html#u-boot-release-notes>`__
 
 .. rubric:: Linux Kernel
    :name: linux-kernel
@@ -207,9 +210,9 @@ major differences from MCSDK (3.10 Kernel).
 -  A copy of Kernel GIT repo is included in the "board-support" folder
    of the Processor SDK Installation
 -  For more details, refer to the
-   `Processor\_SDK\_Linux\_Kernel\_Release\_Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Kernel_Release_Notes>`__
+   `Processor\_SDK\_Linux\_Kernel\_Release\_Notes <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_Kernel_Release_Notes.html>`__
    and
-   `Processor\_SDK\_Linux\_Kernel\_Performance\_Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Kernel_Performance_Guide>`__
+   `Processor\_SDK\_Linux\_Kernel\_Performance\_Guide <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Release_Specific_Performance_Guide.html>`__
 
 .. rubric:: Roadmap
    :name: roadmap
@@ -302,7 +305,7 @@ sources, via Yocto. This gives the ability for customers to easily add
 or remove components from the default filesystem(s) provided in the
 Processor SDK Linux Installer. The instructions on how to build the
 Processor SDK Linux are available
-`here <http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK>`__
+`here <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Overview_Building_the_SDK.html>`__
 
 | 
 
@@ -313,7 +316,7 @@ Processor SDK Linux are available
    :name: directory-structure-1
 
 Information on the Processor-SDK RTOS directory structre is
-`here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Directory_Structure>`__.
+`here <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html?highlight=directory%20structure#directory-structure>`__.
 Some modifications were made to be consistent across all devices:
 
 C66x
@@ -338,11 +341,11 @@ K2x
    :name: getting-started-1
 
 The Processor-SDK RTOS Getting Started Guide is located
-`here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__.
+`here <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html?highlight=directory%20structure#directory-structure>`__.
 As in MCSDK, this is the page to quickly find links for software and
 information on setting up hardware. Further information can be found in
 the `Developer
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__.
+Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index.html>`__.
 This will look different from the MCSDK documentation since we are now
 focusing on how to use the SDK software to quickly create an embedded
 application rather than the design of the software.
@@ -465,6 +468,8 @@ Processor-SDK.
 .. rubric:: MCSDK1.1 to Processor SDK Migration for OMAPL13x devices
    :name: mcsdk1.1-to-processor-sdk-migration-for-omapl13x-devices
 
-For OMAPL13x devices, you can refer to the **`MCSDK1.1 to Processor SDK
-Migration <http://processors.wiki.ti.com/index.php/MCSDK1.1_to_Processor_SDK_Migration_Guide_for_OMAPL13x/C674x_devices>`__**
+For OMAPL13x devices, you can refer to the `MCSDK1.1 to Processor SDK
+Migration 
+<http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/
+Release_Specific_Migration_Guide.html#mcsdk1-1-to-processor-sdk-linux-migration-guide-for-omapl13x-devices>`__ 
 link
