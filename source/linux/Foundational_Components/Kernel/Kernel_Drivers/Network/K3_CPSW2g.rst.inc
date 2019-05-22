@@ -2,18 +2,18 @@
 Introduction
 """""""""""""
 
-The TI am654 SoC Gigabit Ethernet Switch subsystem (CPSW NUSS) has two ports and
+The TI AM654 SoC Gigabit Ethernet Switch subsystem (CPSW NUSS) has two ports and
 provides Ethernet packet communication for the device. It supports MII interfaces
 the Reduced Gigabit Media Independent Interface (RGMII), Reduced Media Independent
 Interface (RMII), and the Management Data Input/Output (MDIO) interface for
 physical layer device (PHY) management.
 
-The TI am654 SoC has integrated two-port Gigabit Ethernet Switch subsystem
+The TI AM654 SoC has integrated two-port Gigabit Ethernet Switch subsystem
 into device MCU domain named MCU_CPSW0 and has only one external Ethernet port (port 1)
 with selectable RGMII and RMII interfaces and an internal Communications
 Port Programming Interface (CPPI) port (Host port 0). Host Port 0 CPPI Packet
 Streaming Interface interface supports 8 TX channels and one RX channel
-operating by TI am654 NAVSS Unified DMA Peripheral Root Complex (UDMA-P) controller.
+operating by TI AM654 NAVSS Unified DMA Peripheral Root Complex (UDMA-P) controller.
 
 The driver follows the standard Linux network interface architecture and
 supports the following features:
@@ -27,12 +27,14 @@ supports the following features:
 
 *Not supported*:
 
-- Interrupt Pacing 
+- Interrupt Pacing is not supported by HW. NAPI is used by driver.
 
 .. rubric:: **Driver Configuration**
    :name: k3-driver-configuration-cpsw
 
-To enable/disable Networking support, start the *Linux Kernel Configuration*
+The TI Processor SDK has AM65x MCU CPSW2g driver enabled by default.
+
+To enable/disable Networking support manually, start the *Linux Kernel Configuration*
 tool:
 
 ::
@@ -815,7 +817,9 @@ Once enabled, PPS can be tested using testptp and ppstest tools::
 .. rubric:: TI AM65x switch-config tool
    :name: k3-am65x-switch-config
 
-The TI AM65x switch-config tool version for AM65x SoC can be found at::
+The TI Processor SDK includes precompiled correct version of AM65x switch-config tool.
+
+The TI AM65x switch-config tool sources for AM65x SoC can be found at::
 
        git@git.ti.com:switch-config/switch-config.git
 
