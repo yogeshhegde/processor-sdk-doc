@@ -159,7 +159,8 @@ the target configuration, and verify the connection to the ARM and DSP
 through JTAG.
 
 After the CCS connection is verified, disconnect the target connection,
-exit CCS and continue to SetTheEnvironmentVariables_ 
+exit CCS and continue to `Set the Environment Variables
+<Overview_Getting_Started_Guide.html#set-the-environment-variables>`__
 
 .. rubric:: Update firmware on xd200 pod for USB3 Ports
    :name: update-firmware-on-xd200-pod-for-usb3-ports
@@ -210,10 +211,9 @@ alternative programming method:
 | Rev 1.x            | No                     | Program\_evm                 |
 +--------------------+------------------------+------------------------------+
 
-For Rev 2.0 and 3.0 EVM using alternative U-Boot command to program
-NAND, please follow the steps in section 6.3.6.1.6 to Set the boot mode to `SPI Little Endian boot mode
-<How_to_Guides_Hardware_Setup_with_CCS.html#evmk2h-hardware-setup-guide>`__
-
+For Rev 2.0 and 3.0 EVM using alternative U-Boot command to program NAND, please follow the steps below:
+Set the boot mode to `SPI Little Endian boot mode
+<How_to_Guides_Hardware_Setup_with_CCS.html#k2h-spi-le-boot-mode>`__
 
 ::
 
@@ -246,8 +246,8 @@ and continue.
 +--------------+------------+------------+------------+------------+
 
 See instruction `here
-<How_to_Guides_Hardware_Setup_with_CCS.html#evmk2h-hardware-setup-guide>`__
-in section 6.3.6.1.6 for K2H no boot mode for reference
+<How_to_Guides_Hardware_Setup_with_CCS.html#k2h-set-no-boot-mode>`__
+for K2H no boot mode for reference
 
 | 
 
@@ -264,8 +264,8 @@ no-boot mode, and continue.
 +--------------+------------+------------+------------+------------+
 
 See instruction `here
-<How_to_Guides_Hardware_Setup_with_CCS.html#evmk2e-hardware-setup-guide>`__
-in section 6.3.5.1.3 for K2E no boot mode for reference:
+<How_to_Guides_Hardware_Setup_with_CCS.html#k2e-set-no-boot-mode>`__
+for K2E no boot mode for reference:
 
 | 
 
@@ -284,8 +284,6 @@ See instructions here for K2L no boot mode for reference:
 `K2L\_NoBoot <http://processors.wiki.ti.com/index.php/TCIEVMK2L_Hardware_Setup#No_Boot.2FJTAG_DSP_Little_Endian_Boot_mode>`__
 
 | 
-
-.. _SetTheEnvironmentVariables: 
 
 .. rubric:: Set the Environment Variables
    :name: set-the-environment-variables
@@ -358,7 +356,10 @@ Linux:
    :name: executing-the-dss-script-to-restore-factory-default-images
 
 1. cd "bin/program\_evm" directory
-2. Set the necessary environment variables as described under SetTheEnvironmentVariables_
+2. Set the necessary environment variables as described under `Set the Environment Variables
+<Overview_Getting_Started_Guide.html#set-the-environment-variables>`__
+
+SetTheEnvironmentVariables_
 3. Run the "program\_evm.js" script command from program\_evm directory.
 
 |

@@ -145,8 +145,8 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |                                      |`K2G Audio Daughtercard               | D        |`Software Support <http://                  |                |                | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |software-dl.ti.com/processor-sdk-rtos       |                |                |                |                |
-|                                      |audk2g>`__                            |          |/esd/docs/latest/rtos/index_examples_       |                |                |                |                |
-|                                      |                                      |          |demos.html#k2g-audio-dc-addon>`__           |                |                |                |                |
+|                                      |audk2g>`__                            |          |/esd/docs/latest/rtos/index_how_to_         |                |                |                |                |
+|                                      |                                      |          |guides.html#ak2g-audio-dc-addon>`__         |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |                                      |`K2G ICE EVM                          |1.0C Beta |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruie0>`__              |                |                |                |                |

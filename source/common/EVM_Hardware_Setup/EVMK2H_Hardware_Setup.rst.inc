@@ -80,12 +80,11 @@ the EVM, and the USB connector to your PC. This enables XDS-2xx
 emulation and is directly useable by CCS. If you are using a different
 JTAG, connect it now.
 
-Set the boot mode switch SW1
+K2H Set the boot mode switch SW1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. _NoBootLittleEndian:
-
-**No Boot/JTAG DSP Little Endian Boot mode**
+.. rubric:: K2H No Boot/JTAG DSP Little Endian Boot mode
+   :name: k2h-set-no-boot-mode
 
 For **Rev 0B EVM**, the setting is as follows
 
@@ -101,7 +100,8 @@ For **Rev 1.0 EVM**, the setting is as follows:
 
 | 
 
-**SPI Little Endian Boot mode**
+.. rubric:: K2H SPI Little Endian Boot mode
+   :name: k2h-spi-le-boot-mode
 
 For **Rev 0B EVM**, the setting is as follows:
 

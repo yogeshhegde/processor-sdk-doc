@@ -25,10 +25,12 @@ button on the EVM, and the USB connector to your PC. This enables
 XDS-2xx emulation and is directly useable by CCS. If you are using a
 different JTAG, you can connect it at MIPI60 connector (EMU1).
 
-Set the boot mode switch SW1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**SPI Little Endian Boot mode (Default factory setting)**
+K2E Set the boot mode switch SW1
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. rubric:: K2E SPI Little Endian Boot mode (Default factory setting)
+   :name: k2e-spi-le-boot-mode
 
 ::
 
@@ -39,7 +41,9 @@ Set the boot mode switch SW1
 
 .. note:: Here a switch on “ON” position should be considered as “1”.
 
-**No Boot/JTAG DSP Little Endian Boot mode**
+
+.. rubric:: K2E No Boot/JTAG DSP Little Endian Boot mode
+   :name: k2e-set-no-boot-mode
 
 ::
 
