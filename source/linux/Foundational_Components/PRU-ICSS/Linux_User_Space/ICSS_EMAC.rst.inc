@@ -94,7 +94,7 @@ directories, respectively.
    :name: running-icss-emac-unit-test-in-linux-user-space
 
 ICSS-EMAC unit test demonstrates loopback capability by sending dummy
-broadcast packets, which are then looped back with loopback cables.
+broadcast packets, which are then looped back with loopback plugs (aka loopback cables).
 Unit test registers receive packet callback routine with LLD to be
 called for RX packet. Call back routine will extract packet received,
 perform simple memory comparison against packet sent for integrity
@@ -131,7 +131,7 @@ the two CPSW/ICSS Jumpers are connected. Location of these two jumpers
 can be found from
 http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_EVM_Rev2_1_HW_User_Guide#Component_Positions.
 
-#. Plug in loopback cables to the two ICSS-EMAC ports of AM335x ICEv2
+#. Plug in loopback plugs (aka loopback cables) to the two ICSS-EMAC ports of AM335x ICEv2
    EVM
 #. On the filesystem under /boot directory, link
    am335x-icev2-pru-excl-uio.dtb as the default dtb to support PRUSS Ethernet ports, i.e.,
@@ -144,7 +144,7 @@ http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_E
 .. rubric:: AM437x IDK
    :name: am437x-idk
 
-#. Plug in loopback cables to the two ICSS-EMAC ports of AM4 IDK EVM
+#. Plug in loopback plugs (aka loopback cables) to the two ICSS-EMAC ports of AM4 IDK EVM
 #. On the filesystem under /boot directory, link
    am437x-idk-pru-excl-uio.dtb as the default dtb file, i.e.,
    am437x-idk-evm.dtb
@@ -161,7 +161,7 @@ function (J51 placed) and ICSS1 Ethernet (J51 removed). This also
 indicates that ICSS-EMAC unit test cannot run with LCD connected on the
 AM571x IDK board.
 
-#. Plug in four loopback cables to the four ICSS-EMAC ports
+#. Plug in four loopback plugs (aka loopback cables) to the four ICSS-EMAC ports
 #. On the filesystem under /boot directory, link
    am571x-idk-pru-excl-uio.dtb as the default dtb file, e.g.,
    am571x-idk.dtb when using AM571x IDK without LCD display
@@ -193,7 +193,7 @@ AM571x IDK board.
 .. rubric:: K2G ICE
    :name: k2g-ice
 
-#. Plug in loopback cables to the four ICSS-EMAC ports of K2G ICE EVM
+#. Plug in loopback plugs (aka loopback cables) to the four ICSS-EMAC ports of K2G ICE EVM
 #. On the filesystem under /boot directory, link
    keystone-k2g-ice-pru-excl-uio.dtb as the default dtb file, i.e.,
    keystone-k2g-ice.dtb
