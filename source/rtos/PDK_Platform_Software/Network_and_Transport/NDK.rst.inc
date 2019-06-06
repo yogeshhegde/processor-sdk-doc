@@ -301,6 +301,50 @@ In the NDK, the limit is defined by a macro at ti/ndk/stack/igmp/igmp.c:
 records: static IGMP_REC igmp[IGMP_MAX_GROUP]; The IGMP_MAX_GROUP value
 can be increased, then rebuild the NDK stack.
 
+
+How to share a TCP/IP socket across tasks?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The basic building block of NDK stack code internally is an object handle.
+Internally to the stack, both sockets and pipes are addressed by object handles.
+However, at the application level, sockets and pipes are treated as file
+descriptors. To share a SOCKET, i.e. a file descriptor, a task must first
+allocate a file descriptor table by calling the function fdOpenSession(), then
+use the function fdShare() to share the file descriptor among multiple tasks.
+As described in NDK API reference guide, fdShare() is useful in a case where
+Task A opens a session and calls recv() in a loop on a socket. Task B has a
+loop that calls send() on the same socket. The call to send() from Task B will
+fail and then fdError() will return -1 if you do not call fdOpenSession() and
+then fdShare() from the second Task after the first Task has opened the socket.
+For an example that calls fdShare(), see the contest.c file in the
+<NDK_INSTALL_DIR>/packages/ti/ndk/tools/console directory.
+
+
+How to tune TCP buffer size for an optimal throughput?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The default TCP buffer size, CFGITEM_IP_SOCKTCPTXBUF/CFGITEM_IP_SOCKTCPRXBUF
+is 8192 defined in packages/ti/ndk/inc/stack/inc/resif.h of NDK package and
+can be re-configured in RTOS config file,e.g.
+Tcp.transmitBufSize = 16384;
+Tcp.receiveBufSize = 65536;
+NDK also provides a global TCP statistics counter structure NDK_tcps
+(ti/ndk/inc/stack/inc/tcpif.h) that can be analyzed in CCS View Expressions
+window, similaly, there is a global IP statistics counter structure NDK_ips
+(ti/ndk/inc/stack/inc/ipif.h).
+
+
+Why a pipe creation fails and fdError() returns -1?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Although sockets can be used for inter-task communications, it is not the most
+efficient method. The stack provides a second data communications model called
+pipes, which allow for local connection oriented communications.
+As a pipe is a full duplex connection oriented file descriptor, fdOpenSession()
+needs to be called, which opens a file descriptor session on a task thread so
+that the task can begin using file descriptor and other stream IO functions.
+
+
 Additional Documentation References
 --------------------------------------
 
