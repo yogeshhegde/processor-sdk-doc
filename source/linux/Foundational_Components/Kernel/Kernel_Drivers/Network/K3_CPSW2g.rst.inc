@@ -100,7 +100,7 @@ Eth0 can be up by-default or configured manually:
 .. rubric:: Get driver information
    :name: k3-ethtool-i-driver
 
-The MCU_CPSW0 interface can be identified by using ``ethtool -i\|--driver`` command.
+The MCU_CPSW0 interface can be identified by using ``ethtool -i|--driver`` command.
 It also provides some information about supported features.
 
 ::
@@ -261,7 +261,7 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 
 | 
 
-.. rubric:: ``ethtool -P\|--show-permaddr DEVNAME`` Show permanent hardware
+.. rubric:: ``ethtool -P|--show-permaddr DEVNAME`` Show permanent hardware
    address
    :name: k3-ethtool-show-permaddr
 
@@ -270,7 +270,7 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
            # ethtool -P eth0
            Permanent address: a0:f6:fd:a6:46:6e"
 
-.. rubric:: ``ethtool -s\|--change DEVNAME`` Change generic options
+.. rubric:: ``ethtool -s|--change DEVNAME`` Change generic options
    :name: k3-ethtool-change-generic-options
 
 Below commands will be redirected to the phy driver:
@@ -307,7 +307,7 @@ Sets the driver message type flags by name or number
            Current message level: 0x00000031 (49)
                                   drv ifdown ifup
 
-.. rubric:: ``ethtool -r\|--negotiate DEVNAME`` Restart N-WAY negotiation
+.. rubric:: ``ethtool -r|--negotiate DEVNAME`` Restart N-WAY negotiation
    :name: k3-ethtool-restart-n-way-negotiation
 
 ::
@@ -316,7 +316,7 @@ Sets the driver message type flags by name or number
            [ 4338.167685] cpsw 48484000.ethernet eth0: Link is Down
            [ 4341.288695] cpsw 48484000.ethernet eth0: Link is Up - 1Gbps/Full - flow control rx/tx"
 
-.. rubric:: ``ethtool -a\|--show-pause DEVNAME`` Show pause options
+.. rubric:: ``ethtool -a|--show-pause DEVNAME`` Show pause options
    :name: k3-ethtool-show-pause-options
 
 ::
@@ -327,7 +327,7 @@ Sets the driver message type flags by name or number
            RX:             off
            TX:             off
 
-.. rubric:: ``ethtool -A\|--pause DEVNAME`` Set pause options
+.. rubric:: ``ethtool -A|--pause DEVNAME`` Set pause options
    :name: k3-ethtool-set-pause-options
 
 ::
@@ -340,7 +340,7 @@ Sets the driver message type flags by name or number
            RX:             on
            TX:             on
 
-.. rubric:: ``ethtool -g\|--show-ring DEVNAME`` Query RX/TX ring parameters
+.. rubric:: ``ethtool -g|--show-ring DEVNAME`` Query RX/TX ring parameters
    :name: k3-ethtool-query-rxtx-ring-parameters
 
 ::
@@ -358,7 +358,7 @@ Sets the driver message type flags by name or number
            RX Jumbo:       0
            TX:             512
 
-.. rubric:: ``ethtool -S\|--statistics DEVNAME`` Show adapter statistics
+.. rubric:: ``ethtool -S|--statistics DEVNAME`` Show adapter statistics
    :name: k3-ethtool-show-adapter-statistics
 
 "ethtool -S" command displays statistic for both external Port 1 and Host port 0.
@@ -409,7 +409,7 @@ Host port 0 statistics prefixed with *p0_*.
          tx_late_collisions: 0
          ...
 
-.. rubric:: ``ethtool -T\|--show-time-stamping DEVNAME`` Show time stamping
+.. rubric:: ``ethtool -T|--show-time-stamping DEVNAME`` Show time stamping
    capabilities.
    :name: k3-ethtool-show-time-stamping-capabilities.
 
@@ -434,7 +434,7 @@ Accessible when CPTS is enabled.
                  none                  (HWTSTAMP_FILTER_NONE)
                  all                   (HWTSTAMP_FILTER_ALL)
 
-.. rubric:: ``ethtool-l\|--show-channels DEVNAME`` Query Channels
+.. rubric:: ``ethtool-l|--show-channels DEVNAME`` Query Channels
    :name: k3-ethtool-query-channels
 
 ::
@@ -470,7 +470,7 @@ Accessible when CPTS is enabled.
     and writing of EEE advertising settings in Ethernet PHY. This way one
     can disable advertising EEE for certain speeds.
 
-.. rubric:: ``ethtool -d\|--register-dump DEVNAME`` Do a register dump
+.. rubric:: ``ethtool -d|--register-dump DEVNAME`` Do a register dump
    :name: k3-ethtool-do-a-register-dump
 
 This command dumps all CPSW MMIO regions in the below format.
