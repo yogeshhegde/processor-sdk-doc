@@ -171,8 +171,8 @@ The following platforms and EVMs are supported with Processor SDK
 |omap-l1x/overview.page>`__            |/tmdsoskl137>`__                      |          |evmomapl137/revd/>`__                       |                |                |                |                |
 |                                      |                                      |          |`Hardware Setup with CCS <http://software-dl|                |                |                |                |
 |                                      |                                      |          |.ti.com/processor-sdk-rtos/esd/docs/latest/r|                |                |                |                |
-|                                      |                                      |          |tos/index_how_to_guides.html#omap-l137-evm-h|                |                |                |                |
-|                                      |                                      |          |ardware-setup-guide>`__                     |	               |                |                |                |
+|                                      |                                      |          |tos/index_how_to_guides.html#omap-l137-c6747|                |                |                |                |
+|                                      |                                      |          |-evm-hardware-setup-guide>`__               |	               |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`OMAPL138/C6748 <http://www.ti.com/   |`OMAP-L138/C6748 LCDK                 | A7A      |`Hardware User's Guide <http://             | X              | N/A            | X              |                |
 |lsds/ti/processors/dsp/c6000_dsp-arm/ |<http://www.ti.com/tool               |          |processors.wiki.ti.com/index.php/L138/      |                |                |                |                |
