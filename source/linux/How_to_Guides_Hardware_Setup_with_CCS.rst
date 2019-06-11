@@ -26,3 +26,6 @@ EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/EVMK2H_Hardware_Setup.rst.inc
 
+.. OMAP-L137 EVM Hardware Setup
+.. ====================================================
+.. include:: ../common/EVM_Hardware_Setup/OMAPL137_EVM_Hardware_Setup.rst.inc
