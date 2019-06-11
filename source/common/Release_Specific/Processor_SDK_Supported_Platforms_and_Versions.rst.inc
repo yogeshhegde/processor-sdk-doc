@@ -169,9 +169,10 @@ The following platforms and EVMs are supported with Processor SDK
 |`OMAPL137/C6747 <http://www.ti.com/   |`OMAP-L137/C6747 Starter kit EVM      | J        |`Hardware User's Guide <http://             | N/A            | N/A            | X              |                |
 |lsds/ti/processors/dsp/c6000_dsp-arm/ |<http://www.ti.com/tool               |          |support.spectrumdigital.com/boards/         |                |                |                |                |
 |omap-l1x/overview.page>`__            |/tmdsoskl137>`__                      |          |evmomapl137/revd/>`__                       |                |                |                |                |
-|                                      |                                      |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
-|                                      |                                      |          |.wiki.ti.com/index.php/OMAP-L137_EVM_       |                |                |                |                |
-|                                      |                                      |          |Hardware_Setup#Connecting_to_CCS>`__        |                |                |                |                |
+|                                      |                                      |          |`Hardware Setup with CCS <http://software-dl|                |                |                |                |
+|                                      |                                      |          |.ti.com/processor-sdk-rtos/esd/docs/latest/r|                |                |                |                |
+|                                      |                                      |          |tos/index_how_to_guides.html#omap-l137-evm-h|                |                |                |                |
+|                                      |                                      |          |ardware-setup-guide>`__                     |	               |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`OMAPL138/C6748 <http://www.ti.com/   |`OMAP-L138/C6748 LCDK                 | A7A      |`Hardware User's Guide <http://             | X              | N/A            | X              |                |
 |lsds/ti/processors/dsp/c6000_dsp-arm/ |<http://www.ti.com/tool               |          |processors.wiki.ti.com/index.php/L138/      |                |                |                |                |

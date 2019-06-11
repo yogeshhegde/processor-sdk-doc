@@ -1,5 +1,5 @@
 
-OMAP-L137 EVM Hardware Setup Guide
+OMAP-L137/C6747 EVM Hardware Setup Guide
 ======================================
 
 Setting up the Hardware (For Linux)
@@ -111,3 +111,7 @@ Loading Program
 -  Running Program
 
    -  Go to "Run -> Resume"
+
+Additional References
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+EVM Design and Support Files: http://support.spectrumdigital.com/boards/evmomapl137/revg/
