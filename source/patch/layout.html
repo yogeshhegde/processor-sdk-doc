@@ -228,15 +228,6 @@
         $(window).scroll(function () {
           setNavbarTop();
         });
-
-        $('body').on("mousewheel", function () {
-            // Remove default behavior
-            event.preventDefault();
-            // Scroll without smoothing
-            var wheelDelta = event.wheelDelta;
-            var currentScrollPosition = window.pageYOffset;
-            window.scrollTo(0, currentScrollPosition - wheelDelta);
-        });
       });
   </script>
   {% endif %}
