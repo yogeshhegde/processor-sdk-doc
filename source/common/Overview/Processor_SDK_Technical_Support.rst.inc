@@ -23,9 +23,9 @@ Open Source Software Support Disclaimer
 
 Processor SDK Linux integrates various free and open source software (FOSS) to demonstrate the hardware capabilities of Sitara devices. The FOSS offers many advantages to the customers such as flexibility, interoperability, robustness, reduced development time and support from the respective FOSS community.
 
-TI uses Yocto project to integrate various software components and to build Processor SDK Linux. Yocto Project makes 2 releases per year: April and October. TI’s Long Term Support (LTS) build for next year is based on current year October release of the Yocto Project. The version number of the individual open source software package is determined by the October release. TI migrates to a newer version of the component in next LTS build. Therefore, the components are updated once a year.
+TI uses Yocto Project to integrate various software components and to build Process SDK Linux. Yocto Project has two releases per year in April and October. TI’s Long-term Support (LTS) build for next year is based on current year’s October release of the Yocto Project. During a given year, TI’s LTS version migration only happens once per year and it occurs towards the end of the second quarter. The LTS migration usually signifies newer version of Kernel, U-boot, Toolchain, Yocto Project and etc. For more information on the current release, please refer to the `Release Notes <Release_Specific_Release_Notes.html>`__. Therefore, the various open source components included in the Processor SDK are only updated once per year.
 
-While TI integrates the FOSS in Processor SDK Linux, TI does not own, maintain and support all of the FOSS. If users have educational queries, feature enhancement requests or discovered a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. 
+While TI integrates the FOSS in Processor SDK Linux, TI does not own, maintain and support the entire FOSS. If users have educational queries, feature enhancement requests or discover a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. Please keep in mind that we are only showing a few of the components below but the same concept applies to the all of the FOSS integrated in the PSDK. 
 
 **Gstreamer Framework**
 
@@ -77,8 +77,8 @@ Example applications:
 - Documentation, tutorials and examples of how to use OpenCV 3.1: https://docs.opencv.org/3.1.0/#gsc.tab=0
 - OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/platforms/opencl.html
 
-FAQ
-===
+Troubleshooting Tips
+=====================
 
 **How do I integrate a different version of open source software than what is packaged in Processor SDK Linux?**
 
@@ -172,8 +172,7 @@ If users have a need to move to a different component version (older or newer) b
 			│		└──meta-arago-distro/recipes-core/packagegroups/packagegroup-arago-tisdk-multimedia-sdk-target.bb: package
 
 
-If users wishes to learn more about Yocto project or Arago build, please refer to the below video link and the documentation on building Processor SDK Linux through Yocto.
+If users wishes to learn more about Yocto project or Arago build, please refer to the below video link and the documentation on `Building Processor SDK Linux through Yocto <Overview_Building_the_SDK.html>`__
     
 - https://training.ti.com/customizing-yocto-for-production-introduction
 
-- http://software-dl.ti.com/processor-sdk-linux/esd/docs/05_01_00_11/linux/Overview_Building_the_SDK.html
