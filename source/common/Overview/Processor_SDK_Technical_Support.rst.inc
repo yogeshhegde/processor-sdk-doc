@@ -23,16 +23,16 @@ Open Source Software Support Disclaimer
 
 Processor SDK Linux integrates various free and open source software (FOSS) to demonstrate the hardware capabilities of Sitara devices. The FOSS offers many advantages to the customers such as flexibility, interoperability, robustness, reduced development time and support from the respective FOSS community.
 
-TI uses Yocto Project to integrate various software components and to build Process SDK Linux. Yocto Project has two releases per year in April and October. TI’s Long-term Support (LTS) build for next year is based on current year’s October release of the Yocto Project. During a given year, TI’s LTS version migration only happens once per year and it occurs towards the end of the second quarter. The LTS migration usually signifies newer version of Kernel, U-boot, Toolchain, Yocto Project and etc. For more information on the current release, please refer to the `Release Notes <Release_Specific_Release_Notes.html>`__. Therefore, the various open source components included in the Processor SDK are only updated once per year.
+TI uses Yocto Project to integrate various software components and to build Processor SDK Linux. Yocto Project has two releases per year in April and October. TI’s Long-term Support (LTS) build for next year is based on current year’s October release of the Yocto Project. During a given year, TI’s LTS version migration only happens once per year and it occurs towards the end of the second quarter. The LTS migration usually signifies newer version of Kernel, U-boot, Toolchain, Yocto Project and etc. For more information on the current release, please refer to the `Release Notes <Release_Specific_Release_Notes.html>`__. Therefore, the various open source components included in the Processor SDK Linux are only updated once per year.
 
-While TI integrates the FOSS in Processor SDK Linux, TI does not own, maintain and support the entire FOSS. If users have educational queries, feature enhancement requests or discover a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. Please keep in mind that we are only showing a few of the components below but the same concept applies to the all of the FOSS integrated in the PSDK. 
+While TI integrates the FOSS in Processor SDK Linux, TI does not own, maintain and support the entire FOSS. If users have educational queries, feature enhancement requests or discover a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. Please keep in mind that we are only showing a few of the components below but the same concept applies to all of the FOSS integrated in the Processor SDK Linux. 
 
 **Gstreamer Framework**
 
 - https://gstreamer.freedesktop.org/documentation/
 - Gstreamer application tutorials: https://gstreamer.freedesktop.org/documentation/tutorials/
 
-**QT framework**
+**QT Framework**
 
 - https://www.qt.io
 - https://doc.qt.io
@@ -42,7 +42,7 @@ While TI integrates the FOSS in Processor SDK Linux, TI does not own, maintain a
 
 - https://wayland.freedesktop.org
 
-**Robot Operating system (ROS)**
+**Robot Operating System (ROS)**
 
 - http://www.ROS.org
 - For meta-ros (embedded version of ROS, that runs on our ARM): https://github.com/bmwcarit/meta-ros
@@ -60,16 +60,14 @@ For programming external video devices, a V4L2 sub-device driver is needed to be
 
 What is DRM: http://dri.freedesktop.org/wiki/DRM/
 
-What do the abbreviations KMS/GEM/DRM actually stand for: Kernel Mode Setting, Graphics Execution Manager, Direct Rendering Manager.
-
-DRM (dri/kms/gem) documentation is available here: http://dri.freedesktop.org/wiki/Documentation/
+What do the abbreviations KMS/GEM/DRM actually stand for: Kernel Mode Setting, Graphics Execution Manager, Direct Rendering Manager. DRM (dri/kms/gem) documentation is available here: http://dri.freedesktop.org/wiki/Documentation/
 
 Example applications:
 
 - https://github.com/tomba/kmsxx
 - https://git.ti.com/glsdk/example-applications/trees/master/drm-tests
 - http://git.ti.com/sitara-linux/dual-camera-demo/trees/master
-- ‘modetest’ tool inside git://anongit.freedesktop.org/git/mesa/drm
+- The modetest tool is available inside git://anongit.freedesktop.org/git/mesa/drm
 
 **OpenCV**
 
@@ -77,12 +75,10 @@ Example applications:
 - Documentation, tutorials and examples of how to use OpenCV 3.1: https://docs.opencv.org/3.1.0/#gsc.tab=0
 - OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/platforms/opencl.html
 
-Troubleshooting Tips
-=====================
+How do I integrate a different version of open source software than what is packaged in Processor SDK Linux?
+=============================================================================================================
 
-**How do I integrate a different version of open source software than what is packaged in Processor SDK Linux?**
-
-If users have a need to move to a different component version (older or newer) because of an existing bug, feature limitations or other reasons, TI will not support the version migration. As a reference, TI provides the list of a few recipes that were updated while integrating the components to the PSDK Linux. 
+If users have a need to move to a different component version (older or newer) because of an existing bug, feature limitations or other reasons, TI will not support the version migration. As a reference, TI provides the list of a few recipes that were updated while integrating the components to the Processor SDK Linux.
 
 ::
 
