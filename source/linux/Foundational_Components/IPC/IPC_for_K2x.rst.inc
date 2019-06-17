@@ -1,10 +1,10 @@
-.. rubric:: Introduction
-   :name: introduction-linux-ipc-on-k2x
+Introduction
+############
 
-This article is geared toward 66AK2x users that are running Linux on the Cortex A15. The goal is to help users understand how to gain access to the DSP (c66x) subsystem of the 66AK2G. While the examples used in this guide are specific to K2G, the information provided here applies to all K2x platforms.
+This article is geared toward 66AK2x users that are running Linux on the Cortex A15. The goal is to help users understand how to gain access to the DSP (c66x) subsystem of the 66AK2x. While the examples used in this guide are specific to K2G, the information provided here applies to all K2x platforms.
 
-.. rubric:: Software Dependencies to Get Started
-   :name: ipc-k2x-software-dependencies-to-get-started
+Software Dependencies to Get Started
+####################################
 
 Prerequisites
 
@@ -65,8 +65,8 @@ The RTOS SDK is installed at the following location:
 
 | 
 
-.. rubric:: Multiple Processor Manager
-   :name: multiple-processor-manager
+Multiple Processor Manager
+##########################
 
 The Multiple Processor Manager (MPM) module is used to load and run DSP images from the ARM. The following section provides some more detail on the MPM.
 
@@ -94,8 +94,8 @@ The Multiple Processor Manager (MPM) module is used to load and run DSP images f
 
 .. Image:: ../images/MPM_Structure.png
 
-.. rubric:: Methods to load and run ELF images using MPM
-   :name: methods-to-load-and-run-elf-images-using-mpm
+Methods to load and run ELF images using MPM
+*********************************************
    
 **Using mpmcl utility to manage slave processors**
 
@@ -187,8 +187,8 @@ The segment mapping can be changed using the mpm_config.json and Linux kernel de
 
 |
 
-.. rubric:: Getting Started with IPC Linux Examples
-   :name: ipc-k2x-getting-started-with-ipc-linux-examples
+Getting Started with IPC Linux Examples
+#######################################
 
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. DSP) running RTOS.
@@ -202,8 +202,8 @@ point for this effort.
 
 |
 
-.. rubric:: Building the Bundled IPC Examples
-   :name: ipc-k2x-building-the-bundled-ipc-examples
+Building the Bundled IPC Examples
+*********************************
 
 The instructions to build IPC examples found under ipc_3_xx_xx_xx/examples/66AK2G_linux_elf have been provided in the
 `Processor SDK IPC Quick Start Guide <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_IPC.html#ipc-quick-start-guide>`__.
@@ -231,8 +231,8 @@ Here are the key files that you should see after a successful build:
 
 | 
 
-.. rubric:: Running the Bundled IPC Examples
-   :name: ipc-k2x-running-the-bundled-ipc-examples
+Running the Bundled IPC Examples
+********************************
 
 
 You will need to copy the ex02\_messageq executable binaries onto the target (through SD card, NFS export, SCP, etc.).
@@ -308,11 +308,11 @@ The following is the expected output:
 
 |
 
-.. rubric:: Understanding the Memory Map
-   :name: ipc-k2x-understanding-the-memory-map
+Understanding the Memory Map
+############################
 
-.. rubric:: Overall Linux Memory Map
-   :name: ipc-k2x-overall-linux-memory-map
+Overall Linux Memory Map
+************************
    
 ::
 
@@ -361,11 +361,11 @@ linux/arch/arm/boot/dts/k2g-evm-cmem.dtsi
 
 |
 
-.. rubric:: Changing the DSP Memory Map
-   :name: changing-the-dsp-memory-map
+Changing the DSP Memory Map
+###########################
 
-.. rubric:: Linux Device Tree
-   :name: linux-device-tree
+Linux Device Tree
+*****************
 
 The carveouts for the DSP are defined in the Linux dts file. For the K2G EVM, these definitions are located in linux/arch/arm/boot/dts/keystone-k2g-evm.dts
 
@@ -398,15 +398,15 @@ Virtque region and Rpmsg vring buffers.
 As of Processor SDK 5.2, the Virtque and vring buffers are allocated by the remoteproc driver from this region and communicated to the slave by update to the resource table.
 
 
-.. rubric:: Resource Table
-   :name: resource-table
+Resource Table
+**************
 
 The default resource table for K2G is located at ipc_3_xx_xx_xx/packages/ti/ipc/remoteproc/rsc_table_tci6638.h
 
 The resource table contains the definitions of the CMA carveout for the Rpmsg vring buffers.
 
-.. rubric:: MPM Config File
-   :name: mpm-config-file
+MPM Config File
+***************
    
 The MPM configuration file is a JSON format configuration file and is located in the default root file system release as part of Processor SDK Linux. It is labeled “mpm_config.json” and is located in /etc/mpm.
 
@@ -439,16 +439,16 @@ The following are some details regarding the MPM configuration file:
 			"devicename": "/dev/dspmem"
 		},
 
-.. rubric:: Config.bld
-   :name: config-bld
+Config.bld
+**********
    
 The config.bld file is used by the IPC examples to configure the external memory map at the application level. It is located in /ipc_3_x_x_x/examples/66AK2G_linux_elf/ex02_messageq/shared/. A linker command file can be used as well, in place of a config.bld file, to place sections into memory.
 
 By default, the ex02_messageq runs from MSMC memory so the config.bld file is not used. In the next section, we will show how to modify the config.bld to place the DSP code in DDR.
 
 
-.. rubric:: Modifying ex02_messageQ example to run from DDR
-   :name: modifying-ex02_messageq-example-to-run-from-ddr
+Modifying ex02_messageQ example to run from DDR
+###############################################
    
 As an example, the following section shows how to modify the IPC memory map to run the ex02_messageq example from DDR instead of MSMC.
 
@@ -577,8 +577,8 @@ After power-cycling the EVM, we can now load and run the example:
 	./app_host CORE0
 
 	
-.. rubric:: Loading DSP images from CCS (without using MPM)
-   :name: loading-dsp-images-from-ccs
+Loading DSP images from CCS (without using MPM)
+###############################################
    
 By default, the DSP cores are powered down by u-boot at the time of EVM boot. After kernel is running, MPM can be used to load and run DSP images from Linux command-line/utility.
 
@@ -594,8 +594,8 @@ This will not power down DSPs at startup and CCS/JTAG can connect to the DSP for
  
 .. note:: The above step is not needed if you want to load DSP cores using MPM and subsequently use CCS to connect to DSP.
 
-.. rubric:: MPM Debugging
-   :name: mpm-debugging
+MPM Debugging
+#############
    
 The following are some pointers for MPM debugging.
 
@@ -648,8 +648,8 @@ Where # is the core id starting from 0.
   ....
   root@keystone-evm:~#
 
-.. Rubric:: Detecting crash event in MPM
-   :name: detecting-crash-event-in-mpm
+Detecting crash event in MPM
+****************************
    
 In the case of a DSP exception, the MPM calls the script provided in JSON config file. The Processor SDK Linux filesystem has a sample script /etc/mpm/crash_callback.sh that sends message to syslog indicating which core crashed. This script can be customized to suit notification needs.
 
@@ -672,8 +672,8 @@ The above command will generate a coredump file with name coredump.out for the D
 .. note:: The coredump can be captured from a running system that is not crashed, in this case the register information won't be available in the coredump.
  
 
-.. Rubric:: Frequently Asked Questions
-   :name: frequently-asked-questions
+Frequently Asked Questions
+##########################
    
 Q: How to maintain cache coherency
 
