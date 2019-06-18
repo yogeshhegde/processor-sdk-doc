@@ -56,11 +56,12 @@ For programming external video devices, a V4L2 sub-device driver is needed to be
 - https://linuxtv.org/downloads/v4l-dvb-apis/kapi/v4l2-videobuf2.html
 - https://linuxtv.org/downloads/v4l-dvb-apis-new/kapi/v4l2-subdev.html
 
-**DRM**
+**Graphics**
 
-What is DRM: http://dri.freedesktop.org/wiki/DRM/
-
-What do the abbreviations KMS/GEM/DRM actually stand for: Kernel Mode Setting, Graphics Execution Manager, Direct Rendering Manager. DRM (dri/kms/gem) documentation is available here: http://dri.freedesktop.org/wiki/Documentation/
+- Direct Rendering Infrastructure (DRI): https://dri.freedesktop.org/wiki/Documentation/
+- Direct Rendering Manager (DRM): http://dri.freedesktop.org/wiki/DRM/
+- Kernel Mode Setting (KMS): https://www.kernel.org/doc/html/v4.14/gpu/drm-kms.html
+- Graphics Execution Manager (GEM): https://www.kernel.org/doc/html/v4.14/gpu/drm-mm.html#the-graphics-execution-manager-gem
 
 Example applications:
 
