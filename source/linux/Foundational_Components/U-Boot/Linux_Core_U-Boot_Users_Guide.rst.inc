@@ -1793,63 +1793,41 @@ is designed as below:
 Here DMSC acts as master and provides all the critical services. R5/A53
 requests DMSC to get these services done as shown in the above diagram.
 
-
 Sources
 ^^^^^^^^^^^
-* SYSFW:
-        System Firmware repo is closed source and the binaries are delivered
-        to users as part of the SDK.
-
-* ATF:
-        Tree: git://git.ti.com/atf/arm-trusted-firmware.git; Branch: ti-atf
-
-* OPTEE:
-        Tree: git://git.ti.com/optee/ti-optee-os.git; Branch: ti_optee_os
+* TI Processor SDK
+        Several prebuilt images are required from the TI Processor SDK.
+        Please refer `here <Download_and_Install_the_SDK.rst.html>`__ to download and install the SDK.
 
 * U-Boot:
-        Tree: git://git.ti.com/ti-u-boot/ti-u-boot.git; Branch: ti-u-boot-2018.03
+        Tree: git://git.ti.com/ti-u-boot/ti-u-boot.git; Branch: ti-u-boot-2019.01
 
+* Compile Tools
+    Ensure that arm-linux-gnueabihf-gcc and aarch64-linux-gnu-gcc are installed
 
 Build Procedure
 ^^^^^^^^^^^^^^^^^^^^^^
-
-* SYSFW
-ROM expects a signed binary that contains the X509 certificate. So
-the binary ti-sci-firmware-am6x.bin cannot be uses as-is and needs to be signed.
-Contact TI on the procedure to sign the system firmware binary.
-
-* ATF
-.. code-block:: console
-
-  $ make CROSS_COMPILE=aarch64-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed
-
-* OPTEE
-.. code-block:: console
-
-  $ make PLATFORM=k3-am65x CFG_ARM64_core=y
-
-* U-Boot
 **R5**
 
 .. code-block:: console
 
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=/tmp/r5
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- SYSFW=<path to signed system firmware binary sysfw.bin> O=/tmp/r5
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- SYSFW=<path to tisdk>/board-support/prebuilt-images/sysfw.itb O=<output directory>/r5
 
 **A53**
 
 .. code-block:: console
 
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=/tmp/a53
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to ATF dir>/build/k3/generic/release/bl31.bin TEE=<path to OPTEE OS dir>/out/arm-plat-k3/core/tee-pager.bin O=/tmp/a53
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
 
 .. rubric:: Target Images
 
 Copy the below images to an SD card and boot:
 
-- tiboot3.bin from step 4.1
-- tispl.bin, u-boot.img from 4.2
-- sysfw.itb (blob containing signed binary system firmware image and config)
+- tiboot3.bin from /tmp/r5
+- tispl.bin, u-boot.img from /tmp/a53
+- sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
 
 .. rubric:: Image Formats
 
