@@ -1797,13 +1797,13 @@ Sources
 ^^^^^^^^^^^
 * TI Processor SDK
         Several prebuilt images are required from the TI Processor SDK.
-        Please refer `here <Download_and_Install_the_SDK.rst.html>`__ to download and install the SDK.
+        Go `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__ to download and install the SDK.
 
 * U-Boot:
         Tree: git://git.ti.com/ti-u-boot/ti-u-boot.git; Branch: ti-u-boot-2019.01
 
 * Compile Tools
-    Ensure that arm-linux-gnueabihf-gcc and aarch64-linux-gnu-gcc are installed
+    Ensure that arm-linux-gnueabihf-gcc and aarch64-linux-gnu-gcc are installed.
 
 Build Procedure
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -1823,10 +1823,11 @@ Build Procedure
 
 .. rubric:: Target Images
 
-Copy the below images to an SD card and boot:
+Copy the below images to the boot partition of an SD card and boot.
+Instructions to format the SD card can be found `here <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__.
 
-- tiboot3.bin from /tmp/r5
-- tispl.bin, u-boot.img from /tmp/a53
+- tiboot3.bin from <output directory>/r5
+- tispl.bin, u-boot.img from <output directory>/a53
 - sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
 
 .. rubric:: Image Formats
