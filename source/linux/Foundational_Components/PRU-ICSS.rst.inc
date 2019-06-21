@@ -18,6 +18,9 @@ PRU-ICSS Ethernet
 -----------------------------------------
 .. include:: Foundational_Components/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet.rst.inc
 
+PRU_ICSSG Ethernet
+-----------------------------------------
+.. include:: Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet.rst.inc
 
 Linux User Space
 ==================================

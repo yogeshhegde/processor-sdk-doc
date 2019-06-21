@@ -608,6 +608,40 @@ then in turn **printenv** other sub-sections of the command. The most
 important variables in AM57x/DRA7x are **rootpath** and **nfsopts**, and
 **tftp\_root** and **nfs\_root** in K2H/K/E/L/G.
 
+On AM65x GP and IDK boards, Linux kernel can be booted over PRU-ICSSG
+Ethernet port as well. Only PRU-ICSSG port of the base board (ICSSG2)
+is supported for net boot. This port is marked as Eth0 on the AM65x
+base board. User needs to load and run pru/rtu firmware on ICSSG2 to do
+this. The firmware is loaded from the rootfs/lib/firmware/
+ti-pruss/ folder for this purpose. A sample script for AM65x EVM/IDK is
+shown below. User needs to customize the serverip and bootdir env
+variable to that of the tftp server used in the setup.
+
+.. note:: Linux Kernel boot with NFS rootfs over PRUETH Ethernet interface has not been validated.
+
+::
+
+ setenv start_icssg2 'rproc start 8; rproc start 9'
+ setenv stop_icssg2 'rproc stop 8; rproc stop 9'
+ setenv firmware_dir '/lib/firmware/ti-pruss'
+ setenv get_fdt_net 'run start_icssg2; tftp ${fdtaddr} ${serverip}:${bootdir}/${name_fdt}; run stop_icssg2'
+ setenv get_kern_net 'run start_icssg2; tftp ${loadaddr} ${serverip}:${bootdir}/${name_kern}; run stop_icssg2'
+ setenv get_overlay_net 'fdt address ${fdtaddr};fdt resize 0x0fffff;for overlay in $overlay_files;do; run start_icssg2; \
+       tftp ${overlayaddr} ${bootdir}/${overlay};fdt apply ${overlayaddr}; run stop_icssg2; done;'
+ setenv get_firmware_mmc 'load mmc ${bootpart} ${loadaddr} ${firmware_dir}/${firmware_file}'
+ setenv serverip 158.218.117.39
+ setenv bootdir 06.00.00.05-am6
+ setenv name_fdt k3-am654-base-board.dtb
+ setenv name_kern Image-am65xx-evm.bin
+ setenv overlay_files 'k3-am654-idk.dtbo k3-am654-pcie-usb2.dtbo'
+ setenv init_icssg2 'setenv ethact pruss2_eth; setenv autoload no; rproc init; setenv loadaddr 0x89000000; \
+       setenv firmware_file 'am65x-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 8 0x89000000 13040; rproc start 8; \
+       setenv loadaddr 0x8a000000; setenv firmware_file am65x-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 9 0x8a000000 5676; \
+       rproc start 9; dhcp; run stop_icssg2;'
+ setenv bootcmd 'run init_mmc; run init_icssg2; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
+ saveenv
+ boot
+
 | 
 
 NAND
