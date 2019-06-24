@@ -168,9 +168,11 @@ used for the ID based on the SoC and the PRU-ICSS instance.
 +---------------------------+------+-----------+--------------------+
 | AM4                       |  0   | eth1/2    | PRU-ICSS0          |
 +---------------------------+------+-----------+--------------------+
-| AM5                       |  1   | eth4/5    | PRU-ICSS1          |
+| AM571                     |  1   | eth2/3    | PRU-ICSS1          |
 +---------------------------+------+-----------+--------------------+
-| AM5                       |  2   | eth2/3    | PRU-ICSS2          |
+| AM571                     |  2   | eth4/5    | PRU-ICSS2          |
++---------------------------+------+-----------+--------------------+
+| AM572/4                   |  2   | eth2/3    | PRU-ICSS2          |
 +---------------------------+------+-----------+--------------------+
 | K2G                       |  0   | eth1/2    | PRU-ICSS0          |
 +---------------------------+------+-----------+--------------------+
@@ -180,6 +182,21 @@ used for the ID based on the SoC and the PRU-ICSS instance.
 In the following section, the PRU-ICSS ID is used in the debugfs or
 sysfs file path and the same can be obtained from the table above to
 know which PRU-ICSS the file refers to.
+
+You can also check which PRU-ICSS an ethernet interface belongs to via command
+line, e.g. eth2 on different platforms:
+
+AM571x:
+::
+
+ root@am57xx-evm:~# ls -l /sys/class/net/eth2 | grep device
+ lrwxrwxrwx    1 root     root             0 Jun 10 11:29 device -> ../../../pruss1_eth
+
+AM572x:
+::
+
+ root@am57xx-evm:~# ls -l /sys/class/net/eth2 | grep device
+ lrwxrwxrwx    1 root     root             0 Jun 10 11:29 device -> ../../../pruss2_eth
 
 PRU Ethernet Driver (EMAC/HSR/PRP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1129,7 +1146,7 @@ Net-SNMP
 --------
 
 The TI SDK release ships tisdk-rootfs-image-am57xx-evm.tar.xz with
-Net-SNMP 5.7.3 binaries pre-installed and snmpd is started as part of
+Net-SNMP 5.8 binaries pre-installed and snmpd is started as part of
 the user space initialization. TI has developed a Net-SNMP module to
 support IEC-62439-3 related MIB access at the DAN using snmp commands
 such as snmpwalk, snmpget etc. **NOTE:** IEC-62439-3 MIB is supported
@@ -1722,8 +1739,8 @@ string in the command line of the script as documented in the script.
  	exit
  fi
 
- if_a=eth4
- if_b=eth5
+ if_a=eth2
+ if_b=eth3
  if_name=$4
  vl=$5
  #change this as needed
@@ -1782,8 +1799,8 @@ string in the command line of the script as documented in the script.
  	exit
  fi
  
- if_a=eth2
- if_b=eth3
+ if_a=eth4
+ if_b=eth5
  if_name=$4
  vl=$5
  #change this as needed
@@ -2656,7 +2673,7 @@ Also
 
 -  cat /sys/kernel/debug/prueth-<hsr/prp-<ID>/new\_nt\_bins
 
-In the above commands ID and if_nubers are chosen as described
+In the above commands ID and if_numbers are chosen as described
 in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
 
 FAQ

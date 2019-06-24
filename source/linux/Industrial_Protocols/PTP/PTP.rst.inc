@@ -102,18 +102,24 @@ in the table below.
 +--------------------------+--------------------------+--------------------------+-----------------------+
 | SoC                      | # of GMAC ports          | # of PRU-ICSS ports      | PRU Firmware Supported|
 +==========================+==========================+==========================+=======================+
-| AM335x                   | 0                        | 1(at 100Mbps)            | Dual EMAC             |
+| AM335x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| AM437x                   | 0                        | 1(at 100Mbps)            | Dual EMAC             |
+| AM437x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| AM571x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
+| AM571x                   | 1                        | 4(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| AM572x                   | 1                        | 1(at 100Mbps)            | Dual EMAC / HSR / PRP |
+| AM572x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
 | AM574x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| K2G                      | 0                        | 2(at 100Mbps)            | Dual EMAC             |
+| K2G                      | 1                        | 4(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
+
+When using PTP as SAN port, only 1 port of each PRU-ICSS can independently
+support PTP at a time e.g. on AM571x, there are 4 PRU-ICSS ports, but only 1
+from each of the 2 PRU-ICSS can be used as SAN PTP ports independently (as
+OC slaves) for a total of 2 ports since each PRU-ICSS functions as a single PTP
+clock entity.
 
 GMAC
 -----
@@ -239,7 +245,8 @@ assigned PTP ports.
     This appears as the slave PPS being offset from the master PPS signal on
     an order of 40-100ms either on starting PPS or after running for an
     extended period of time. As a workaround, if PPS output is observed to be
-    offset, bring down and then bring back up the ethernet interface in use to
+    offset, then to temporarily stabilize PPS output for measurement,
+    bring down and then bring back up the ethernet interface in use to
     reset PTP/PPS (e.g. ifconfig eth1 down/ifconfig eth1 up). If the PPS
     output is successful, then the output is valid and can be used to
     measure jitter.
@@ -1770,6 +1777,4 @@ PTP Roadmap
 ===========
 The following features are not yet supported, but will be added in the future:
 
-.. rubric:: Redundancy (HSR/PRP) Support in BC
-   :name: redundancy-hsrprp-support-in-bc
 
