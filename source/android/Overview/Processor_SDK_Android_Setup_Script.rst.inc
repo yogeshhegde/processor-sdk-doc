@@ -1,8 +1,10 @@
 Run Setup Scripts
 ======================================
 
-.. rubric:: Overview
-   :name: run-setup-scripts-overview
+.. _run-setup-scripts-overview:
+
+Overview
+-----------
 
 After installation of the SDK on the Linux host, the setup script can
 be run to flash the prebuilt images to the onboard eMMC. Some of the
@@ -16,8 +18,8 @@ does the following things:
 -  Flashes the prebuilt images to the onboard eMMC (to allow you to boot
    the board from the eMMC)
 
-.. rubric:: Prerequisites
-   :name: run-setup-scripts-prerequisites
+Prerequisites
+--------------
 
 To run the SDK's setup script the following steps should be taken first:
 
@@ -33,7 +35,7 @@ To run the SDK's setup script the following steps should be taken first:
 
 #. Run the **create-sdcard.sh** script provided in the SDK's **bin/**
    directory
-   This will create an SD card using the prebuilt images, including a
+   This will create an SD card using the prebuilt boot files, including a
    fastboot enabled u-boot.
 #. Put the newly created SD card into your EVM
 #. Connect a serial cable from your Linux host machine (the one from
@@ -64,20 +66,20 @@ To run the SDK's setup script the following steps should be taken first:
 #. Note down the serial connection device path, for instance
    /dev/ttyUSB1
 
-.. rubric:: How to run the setup script
-   :name: how-to-run-the-setup-script
+How to run the setup script
+-----------------------------
 
 The Setup Script is located in the Processor SDK Android installation
 directory. By default, this directory has a name that has the form
-ti-processor-sdk-android-am57xx;-<Version>. Navigate to that
+ti-processor-sdk-android-am57xx-<Version>. Navigate to that
 ti-processor-sdk-android install directory. Then run the script:
 
 .. code-block:: bash
 
    ./setup.sh
 
-.. rubric:: Detailed description of what the script is doing
-   :name: detailed-description-of-what-the-script-is-doing
+Detailed description of what the script is doing is provided in the
+subsections below.
 
 .. rubric:: Minicom Setup
    :name: minicom-setup

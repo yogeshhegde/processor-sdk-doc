@@ -1,8 +1,10 @@
 Install the Android SDK
 ======================================
 
-.. rubric:: Overview
-   :name: install-the-android-sdk-overview
+.. _install-the-android-sdk-overview:
+
+Overview
+-------------
 
 The Processor SDK Installer
 (ti-processor-sdk-android-am57xx-evm-xx.xx.xx.xx-Linux-x86-Install.bin)
@@ -12,14 +14,14 @@ bootloader (u-boot), the Linux kernel, toolchain and board support
 package, ease of use scripts and documentation. The Android file
 system sources can also be cloned to the SDK using the provided repo
 tool and manifest file.
-The Processor SDK was built and tested against a specific Linux
-Distribution name and version, Ubuntu 14.04. Note this **does not**
-prevent the user from installing the SDK on other Linux distributions.
+The Processor SDK was built and tested against a specific `Linux
+Distribution name and version <Release_Specific_Supported_Platforms_and_Versions.html>`__.
+Note this **does not** prevent the user from installing the SDK on other Linux distributions.
 
 | 
 
-.. rubric:: How to Get the SDK Installer
-   :name: how-to-get-the-sdk-installer
+How to Get the SDK Installer
+------------------------------
 
 Download from the `Android SDK download
 page <http://software-dl.ti.com/processor-sdk-android/esd/AM57X/latest/index_FDS.html>`__.
@@ -27,8 +29,8 @@ This will always host the latest version of SDK.
 
 | 
 
-.. rubric:: How to Run the SDK Installer
-   :name: how-to-run-the-sdk-installer
+How to Run the SDK Installer
+------------------------------
 
 Make sure that the execute permissions are set. Bring up a terminal
 window and change directories to the where the installer is located
@@ -49,8 +51,8 @@ Installer by double clicking on it within your Linux host PC.
 
 | 
 
-.. rubric:: Additional Installer Options
-   :name: additional-installer-options
+Additional Installer Options
+-----------------------------
 
 Invoking the installer with argument --help will list available options
 for the installer (e.g. text installer, etc.):
@@ -60,8 +62,8 @@ for the installer (e.g. text installer, etc.):
    ./ti-processor-sdk-linux-[platformName]-evm-xx.xx.xx.xx-Linux-x86-Install.bin --help
 
 
-.. rubric:: SDK Installer Execution Steps
-   :name: sdk-installer-execution-steps
+SDK Installer Execution Steps
+------------------------------
 
 #. **Environment Support Message**
    User is to acknowledge the host operating system recommendations.
