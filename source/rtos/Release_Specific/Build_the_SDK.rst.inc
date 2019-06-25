@@ -53,9 +53,12 @@ folder.
       is installed by typing "openssl version" at the comamnd prompt. If OpenSSL
       is not installed, download and install OpenSSL for your OS.
 
-      -  For Windows : Download and install `Strawberry Perl <http://strawberryperl.
-         com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. 
+      -  For Windows : The easiest way is to download and install `Strawberry Perl <http:
+         //strawberryperl.com/download/5.28.0.1/strawberry-perl-5.28.0.1-64bit.msi>`__. 
          The Strawberry Perl installer automatically installs and sets up OpenSSL.
+         Alternately, users can also use any of these `Third Party OpenSSL Distributions
+         <https://wiki.openssl.org/index.php/Binaries>`__ for Windows. Refer individual
+         links for instructions on how to setup OpensSSL using a particular distribution.
       -  For Linux : Execute the command "sudo apt-get install openssl" at the linux
          command prompt.
 |
