@@ -2,8 +2,8 @@
 OMAP-L137/C6747 EVM Hardware Setup Guide
 ======================================
 
-Setting up the Hardware (For Linux)
--------------------------------------
+Setting up the Hardware
+-----------------------
 
 Follow the steps below to setup the hardware and enable communication
 with the EVM.
@@ -18,6 +18,8 @@ with the EVM.
 +================+=====+=====+=====+=====+=====+
 | **Position**   | 0   | 1   | 0   | 1   | X   |
 +----------------+-----+-----+-----+-----+-----+
+
+.. Note:: All boot switch modes can be found in the EVM Technical Reference Manual at the link provided under the Additional Resources section.
 
 -  If you want to use networking, connect the Ethernet cable to one of
    the Ethernet ports on the EVM board and to an Ethernet network port.
@@ -45,12 +47,13 @@ console messages by following these steps:
 2. Run a terminal session (such as Minicom on Linux or TeraTerm on
    Windows) on the workstation and configure it to connect to that
    serial port with the following characteristics:
-   Bits per Second: 115200
-   Data Bits: 8
-   Parity: None
-   Stop Bits: 1
-   Flow Control: None
-   Transmit delay: 0 msec/char, 100 msec/line
+
+   -  Bits per Second: 115200
+   -  Data Bits: 8
+   -  Parity: None
+   -  Stop Bits: 1
+   -  Flow Control: None
+   -  Transmit delay: 0 msec/char, 100 msec/line
 
 **For Linux**
 
@@ -69,20 +72,22 @@ Target Configuration
 
 -  Open CCS and select New->Target Configuration File.
 -  Specify a file name or use default.
--  Select "Spectrum Digital XDS510USB Emulator" as Connection. If using CCS 9.0 or later, you will need an external emulator as noted above.
--  Check "OMAPL137" or "C6747" as Device and save. 
+-  Select "Spectrum Digital XDS510USB Emulator" as Connection. **If using CCS 9.0 or later, you will need an external emulator as noted above.**
 
 .. Image:: ../images/OMAPL137_targetConfig.png
+
+
+-  Check "OMAPL137" or "C6747" as Device and save. 
 
 .. Tip:: If you don't see "OMAPL137", ensure that you have installed CCS and selected Single Core DSP devices in the installation.
 
 -  Open Target Configuration view in CCS by selecting "Window -> Show
-   view -> Target Configurations" from menu.
+   View -> Target Configurations" from menu.
 -  Select newly created configuration, right-click on it and set it as
    default.
 -  Launch Target configuration file
 
-.. Image:: ../images/Ccs4_targetConfig2.jpg
+
 
 Connect Target and Load/Run Program
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -90,23 +95,19 @@ Connect Target and Load/Run Program
 -  Connecting Target
 
    -  Select "View -> Debug" from menu to start a debug session.
-   -  CCS will switch to Debug perspective with devices DSP and ARM .
+   -  CCS will switch to Debug perspective with devices DSP and ARM.
    -  Select device to connect and then go to "Run -> Connect Target"
       from menu.
 
 .. Note:: OMAPL137 is a DSP boot master device. Hence to connect to the ARM, you need to connect the DSP first (even if you do not load anything to DSP), then connect ARM (Reason: DSP’s GEL file enables and wakes up the ARM).
 
-.. Image:: ../images/Ccs5_Target_Connect_image.jpg
+-  Loading Program
 
-Loading Program
+   -  Choose desired device (DSP or ARM).
+   -  Go to "Run -> Load -> Load Program" from menu.
+   -  Click “Browse” to choose a prebuilt \*.out or click “Browse project..” to choose \*.out of the open projects.
+   -  Choose desired \*.out and click OK.
 
--  Choose desired device (DSP or ARM)
--  Go to "Run -> Load -> Load Program" from menu.
--  Click “Browse” to choose a prebuilt \*.out or click “Browse
-   project..” to choose \*.out of the open projects.
--  Choose desired \*.out and click OK.
-
-.. Image:: ../images/Ccs4_loadProgram.jpg
 
 -  Running Program
 
