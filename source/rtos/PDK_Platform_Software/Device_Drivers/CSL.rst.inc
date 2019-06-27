@@ -140,6 +140,7 @@ supported with the CSL library:
 -  SPINLOCK
 -  UART
 -  ECC : Limited to applicable SOC's/Boards:idkAM574x
+-  GPMC : Limited to a15 core on idkAM572 and evmAM572x
 
 In order build the projects:
 
