@@ -149,220 +149,254 @@ Note that prior to running these tests on Maxwell with interposer card, please h
 Example and Test Applications
 ------------------------------
 
-+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
-| Name                  | Description           | Expected Results      | SOC Suppported        | Build Type            |
-+=======================+=======================+=======================+=======================+=======================+                                              
-| EMAC_BasicExample     | EMAC Loopback test    | Unit Test will        |    AM335x,            |  CCS project          |
-|                       | at CPSW switch        | print "All tests      |    AM437x,            |                       |
-|                       | interface.            | have passed" via      |    AM572x,            |                       |
-|                       | Reference example     | UART console.         |    AM571x,            |                       |
-|                       | for developers        |                       |    AM574x,            |                       |
-|                       |                       |                       |    K2G                |                       |
-|                       | Example demonstrates  |                       |                       |                       |
-|                       | loopback capability   |                       |                       |                       |
-|                       | by sending dummy      |                       |                       |                       |
-|                       | broadcast packet to   |                       |                       |                       |
-|                       | CPSW switch. Unit     |                       |                       |                       |
-|                       | test registers        |                       |                       |                       |
-|                       | receive packet        |                       |                       |                       |
-|                       | callback routine with |                       |                       |                       |
-|                       | LLD to be called for  |                       |                       |                       |
-|                       | RX packet. Call back  |                       |                       |                       |
-|                       | routine will extract  |                       |                       |                       |
-|                       | packet received,      |                       |                       |                       |
-|                       | perform simple memory |                       |                       |                       |
-|                       | comparison against    |                       |                       |                       |
-|                       | packet sent for       |                       |                       |                       |
-|                       | integrity check. Unit |                       |                       |                       |
-|                       | test will iterate     |                       |                       |                       |
-|                       | over configured       |                       |                       |                       |
-|                       | packet count for      |                       |                       |                       |
-|                       | packet transmission   |                       |                       |                       |
-|                       | and reception check.  |                       |                       |                       |
-+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
-| EMACLoopback_testProj | EMAC Loopback test    | Unit Test will        |  C6657,               | CCS project           |
-| ect                   | at CPSW switch        | print "Loopback       |  DRA7xx,              |                       |
-|                       | interface.            | Test completed        |  OMAPL137,            |                       |
-|                       | Reference example     | successfully on       |  OMAPL138             |                       |
-|                       | for developers        | core 0" via CCS       |                       |                       |
-|                       |                       | console for C6657     |                       |                       |
-|                       | Example demonstrates  | and on UART serial    |                       |                       |
-|                       | loopback capability   | console for           |                       |                       |
-|                       | by sending dummy      | OMAPL13x.             |                       |                       |
-|                       | broadcast packet to   |                       |                       |                       |
-|                       | CPSW switch. Unit     |                       |                       |                       |
-|                       | test registers        |                       |                       |                       |
-|                       | receive packet        |                       |                       |                       |
-|                       | callback routine with |                       |                       |                       |
-|                       | LLD to be called for  |                       |                       |                       |
-|                       | RX packet. Call back  |                       |                       |                       |
-|                       | routine will extract  |                       |                       |                       |
-|                       | packet received,      |                       |                       |                       |
-|                       | perform simple memory |                       |                       |                       |
-|                       | comparison against    |                       |                       |                       |
-|                       | packet sent for       |                       |                       |                       |
-|                       | integrity check. Unit |                       |                       |                       |
-|                       | test will iterate     |                       |                       |                       |
-|                       | over configured       |                       |                       |                       |
-|                       | packet count for      |                       |                       |                       |
-|                       | packet transmission   |                       |                       |                       |
-|                       | and reception check.  |                       |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | This example needs to |                       |                       |                       |
-|                       | be run on the         |                       |                       |                       |
-|                       | OMAPL137 and OMAPL138 |                       |                       |                       |
-|                       | platforms using       |                       |                       |                       |
-|                       | external loopback     |                       |                       |                       |
-|                       | cable. OMAPL137 EVM   |                       |                       |                       |
-|                       | is having two         |                       |                       |                       |
-|                       | Ethernet ports.       |                       |                       |                       |
-|                       | Connect the loopback  |                       |                       |                       |
-|                       | cable to the port 1   |                       |                       |                       |
-|                       | (ENET-P1) while       |                       |                       |                       |
-|                       | running the loopback  |                       |                       |                       |
-|                       | example.              |                       |                       |                       |
-+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
-| EMAC_PktInspectionExa | This demonstrates how | Pass criteria:        |  DRA7xx               | CCS project           |
-| mple                  | to write an           |                       |                       |                       |
-|                       | application to filter | -  The total packet   |                       |                       |
-|                       | Ethernet packets      |    sent for each      |                       |                       |
-|                       | based on IP address   |    stream is shown at |                       |                       |
-|                       |                       |    the bottom of the  |                       |                       | 
-|                       |                       |                       |                       |                       | 
-|                       | Prerequisites:        |    packETH widow. The |                       |                       |
-|                       |                       |    packet stream      |                       |                       |
-|                       | -  Install the        |    statistics must    |                       |                       |
-|                       |    packETH utility (v |    match the packet   |                       |                       |
-|                       |    1.8.1) on a Linux  |    statistics printed |                       |                       |
-|                       |    PC. The packETH    |    by the DUT via     |                       |                       |
-|                       |    tool is available  |    serial port        |                       |                       |
-|                       |    for Windows as     | -  The packet         |                       |                       |
-|                       |    well, but not all  |    inspection utility |                       |                       |
-|                       |    features are       |    periodically       |                       |                       |
-|                       |    supported          |    prints the EMAC    |                       |                       |
-|                       | -  Download the test  |    statistics, which  |                       |                       |
-|                       |    PCAP `files`_      |    include DMA        |                       |                       |
-|                       |                       |    overruns,          |                       |                       |
-|                       |                       |    underruns and      |                       |                       |
-|                       |    and update the     |    other error. No    |                       |                       |
-|                       |    source and dest    |    errors should be   |                       |                       |
-|                       |    MAC address of the |    seen during the    |                       |                       |
-|                       |    PC and EVM to be   |    transfer.          |                       |                       |
-|                       |    used in the test.  |                       |                       |                       |
-|                       |    The tcprewrite     | Fail criteria:        |                       |                       |
-|                       |    utility can be     |                       |                       |                       |
-|                       |    used to set the    | -  Packet count       |                       |                       |
-|                       |    new MAC addresses  |    mismatch between   |                       |                       |
-|                       |    (i.e. tcprewrite   |    packETH utility    |                       |                       |
-|                       |    --enet-smac=<PC-MA |    and counters from  |                       |                       |
-|                       | C-address>            |    the IPU1           |                       |                       |
-|                       |    --enet-dmac=<EVM-M |    application        |                       |                       |
-|                       | AC-address>           | -  Any EMAC errors    |                       |                       |
-|                       |    -i ./ip1_test.pcap |    reported by the    |                       |                       |
-|                       |    -o                 |    IPU1 application   |                       |                       |
-|                       |    ./ip1_test.pcap)   |                       |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | Steps:                |                       |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | -  Launch the packETH |                       |                       |                       |
-|                       |    utility on the     |                       |                       |                       |
-|                       |    Linux PC with root |                       |                       |                       |
-|                       |    permissions        |                       |                       |                       |
-|                       | -  Go to the "Gen-S"  |                       |                       |                       |
-|                       |    tab of the packETH |                       |                       |                       |
-|                       |    utility and select |                       |                       |                       |
-|                       |    the PCAP files to  |                       |                       |                       |
-|                       |    be used            |                       |                       |                       |
-|                       | -  Set the transfer   |                       |                       |                       |
-|                       |    rate for each PCAP |                       |                       |                       |
-|                       |    file (i.e. 200     |                       |                       |                       |
-|                       |    Mbit/s and 150     |                       |                       |                       |
-|                       |    Mbit/s)            |                       |                       |                       |
-|                       | -  Set the total      |                       |                       |                       |
-|                       |    packets to         |                       |                       |                       |
-|                       |    transfer to 500000 |                       |                       |                       |
-|                       | -  Load and run the   |                       |                       |                       |
-|                       |    EMAC packet        |                       |                       |                       |
-|                       |    inspection         |                       |                       |                       |
-|                       |    application to the |                       |                       |                       |
-|                       |    IPU1 core          |                       |                       |                       |
-|                       | -  Hit the "Send"     |                       |                       |                       |
-|                       |    button on the      |                       |                       |                       |
-|                       |    packETH utility to |                       |                       |                       |
-|                       |    start streaming    |                       |                       |                       |
-|                       | -  The packet         |                       |                       |                       |
-|                       |    streaming should   |                       |                       |                       |
-|                       |    last for few       |                       |                       |                       |
-|                       |    seconds            |                       |                       |                       |
-+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
-| Emac_Cpsw_TestApp     | EMAC Loopback test    | Unit Test will        | AM65xx                | makefile              |
-|                       | at CPSW switch        | print "All tests      |                       |                       |                
-|                       | interface.            | have passed" via      |                       |                       |
-|                       | Reference application | UART console.         |                       |                       |
-|                       | for developers        |                       |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | TestApp demonstrates  |                       |                       |                       |
-|                       | loopback capability   |                       |                       |                       |
-|                       | by sending packets to |                       |                       |                       |
-|                       | CPSW switch. Unit     |                       |                       |                       |
-|                       | test registers        |                       |                       |                       |
-|                       | receive packet        |                       |                       |                       |
-|                       | callback routine with |                       |                       |                       |
-|                       | LLD to be called for  |                       |                       |                       |
-|                       | RX packet. Call back  |                       |                       |                       |
-|                       | routine will extract  |                       |                       |                       |
-|                       | packet received,      |                       |                       |                       |
-|                       | perform simple memory |                       |                       |                       |
-|                       | comparison against    |                       |                       |                       |
-|                       | packet sent for       |                       |                       |                       |
-|                       | integrity check. Unit |                       |                       |                       |
-|                       | test will iterate     |                       |                       |                       |
-|                       | over configured       |                       |                       |                       |
-|                       | packet count for      |                       |                       |                       |
-|                       | packet transmission   |                       |                       |                       |
-|                       | and reception check.  |                       |                       |                       |
-+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
-| Emac_Icssg_TestApp    | EMAC port 2 port test | Unit Test will        | AM65xx                | makefile              |
-|                       | between ICSSG ports.  | print "All tests      |                       |                       |
-|                       | Reference application | have passed" via      |                       |                       |
-|                       | for developers        | UART console          |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | Prior to running this |                       |                       |                       |
-|                       | test, please connect  |                       |                       |                       |
-|                       | the ICSSG ports as    |                       |                       |                       |
-|                       | follows with          |                       |                       |                       |
-|                       | ethernet cables:      |                       |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | PHY0 to PHY1          |                       |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | PHY2 to PHY3          |                       |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | PHY4 to PHY5          |                       |                       |                       |
-|                       |                       |                       |                       |                       |
-|                       | Test app demonstrates |                       |                       |                       |
-|                       | packet TX/RX between  |                       |                       |                       |
-|                       | 2 ICSSG ports. All 6  |                       |                       |                       |
-|                       | ICSSG ports will be   |                       |                       |                       |
-|                       | tested for am65xx-idk.|                       |                       |                       |
-|                       | PRU2 ports will be    |                       |                       |                       |
-|                       | tested for am65xx-evm.|                       |                       |                       |
-|                       | Unit test registers   |                       |                       |                       |
-|                       | receive packet        |                       |                       |                       |
-|                       | callback routine with |                       |                       |                       |
-|                       | LLD to be called for  |                       |                       |                       |
-|                       | RX packet. Call back  |                       |                       |                       |
-|                       | routine will extract  |                       |                       |                       |
-|                       | packet received,      |                       |                       |                       |
-|                       | perform simple memory |                       |                       |                       |
-|                       | comparison against    |                       |                       |                       |
-|                       | packet sent for       |                       |                       |                       |
-|                       | integrity check. Unit |                       |                       |                       |
-|                       | test will iterate     |                       |                       |                       |
-|                       | over configured       |                       |                       |                       |
-|                       | packet count for      |                       |                       |                       |
-|                       | packet transmission   |                       |                       |                       |
-|                       | and reception check.  |                       |                       |                       |
-+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| Name                         | Description           | Expected Results      | SOC Suppported        | Build Type            |
++==============================+=======================+=======================+=======================+=======================+
+| EMAC_BasicExample            | EMAC Loopback test    | Unit Test will        |    AM335x,            |  CCS project          |
+|                              | at CPSW switch        | print "All tests      |    AM437x,            |                       |
+|                              | interface.            | have passed" via      |    AM572x,            |                       |
+|                              | Reference example     | UART console.         |    AM571x,            |                       |
+|                              | for developers        |                       |    AM574x,            |                       |
+|                              |                       |                       |    K2G                |                       |
+|                              | Example demonstrates  |                       |                       |                       |
+|                              | loopback capability   |                       |                       |                       |
+|                              | by sending dummy      |                       |                       |                       |
+|                              | broadcast packet to   |                       |                       |                       |
+|                              | CPSW switch. Unit     |                       |                       |                       |
+|                              | test registers        |                       |                       |                       |
+|                              | receive packet        |                       |                       |                       |
+|                              | callback routine with |                       |                       |                       |
+|                              | LLD to be called for  |                       |                       |                       |
+|                              | RX packet. Call back  |                       |                       |                       |
+|                              | routine will extract  |                       |                       |                       |
+|                              | packet received,      |                       |                       |                       |
+|                              | perform simple memory |                       |                       |                       |
+|                              | comparison against    |                       |                       |                       |
+|                              | packet sent for       |                       |                       |                       |
+|                              | integrity check. Unit |                       |                       |                       |
+|                              | test will iterate     |                       |                       |                       |
+|                              | over configured       |                       |                       |                       |
+|                              | packet count for      |                       |                       |                       |
+|                              | packet transmission   |                       |                       |                       |
+|                              | and reception check.  |                       |                       |                       |
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| EMACLoopback_testProj        | EMAC Loopback test    | Unit Test will        |  C6657,               | CCS project           |
+| ect                          | at CPSW switch        | print "Loopback       |  DRA7xx,              |                       |
+|                              | interface.            | Test completed        |  OMAPL137,            |                       |
+|                              | Reference example     | successfully on       |  OMAPL138             |                       |
+|                              | for developers        | core 0" via CCS       |                       |                       |
+|                              |                       | console for C6657     |                       |                       |
+|                              | Example demonstrates  | and on UART serial    |                       |                       |
+|                              | loopback capability   | console for           |                       |                       |
+|                              | by sending dummy      | OMAPL13x.             |                       |                       |
+|                              | broadcast packet to   |                       |                       |                       |
+|                              | CPSW switch. Unit     |                       |                       |                       |
+|                              | test registers        |                       |                       |                       |
+|                              | receive packet        |                       |                       |                       |
+|                              | callback routine with |                       |                       |                       |
+|                              | LLD to be called for  |                       |                       |                       |
+|                              | RX packet. Call back  |                       |                       |                       |
+|                              | routine will extract  |                       |                       |                       |
+|                              | packet received,      |                       |                       |                       |
+|                              | perform simple memory |                       |                       |                       |
+|                              | comparison against    |                       |                       |                       |
+|                              | packet sent for       |                       |                       |                       |
+|                              | integrity check. Unit |                       |                       |                       |
+|                              | test will iterate     |                       |                       |                       |
+|                              | over configured       |                       |                       |                       |
+|                              | packet count for      |                       |                       |                       |
+|                              | packet transmission   |                       |                       |                       |
+|                              | and reception check.  |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | This example needs to |                       |                       |                       |
+|                              | be run on the         |                       |                       |                       |
+|                              | OMAPL137 and OMAPL138 |                       |                       |                       |
+|                              | platforms using       |                       |                       |                       |
+|                              | external loopback     |                       |                       |                       |
+|                              | cable. OMAPL137 EVM   |                       |                       |                       |
+|                              | is having two         |                       |                       |                       |
+|                              | Ethernet ports.       |                       |                       |                       |
+|                              | Connect the loopback  |                       |                       |                       |
+|                              | cable to the port 1   |                       |                       |                       |
+|                              | (ENET-P1) while       |                       |                       |                       |
+|                              | running the loopback  |                       |                       |                       |
+|                              | example.              |                       |                       |                       |
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| EMAC_PktInspectionExa        | This demonstrates how | Pass criteria:        |  DRA7xx               | CCS project           |
+| mple                         | to write an           |                       |                       |                       |
+|                              | application to filter | -  The total packet   |                       |                       |
+|                              | Ethernet packets      |    sent for each      |                       |                       |
+|                              | based on IP address   |    stream is shown at |                       |                       |
+|                              |                       |    the bottom of the  |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | Prerequisites:        |    packETH widow. The |                       |                       |
+|                              |                       |    packet stream      |                       |                       |
+|                              | -  Install the        |    statistics must    |                       |                       |
+|                              |    packETH utility (v |    match the packet   |                       |                       |
+|                              |    1.8.1) on a Linux  |    statistics printed |                       |                       |
+|                              |    PC. The packETH    |    by the DUT via     |                       |                       |
+|                              |    tool is available  |    serial port        |                       |                       |
+|                              |    for Windows as     | -  The packet         |                       |                       |
+|                              |    well, but not all  |    inspection utility |                       |                       |
+|                              |    features are       |    periodically       |                       |                       |
+|                              |    supported          |    prints the EMAC    |                       |                       |
+|                              | -  Download the test  |    statistics, which  |                       |                       |
+|                              |    PCAP `files`_      |    include DMA        |                       |                       |
+|                              |                       |    overruns,          |                       |                       |
+|                              |                       |    underruns and      |                       |                       |
+|                              |    and update the     |    other error. No    |                       |                       |
+|                              |    source and dest    |    errors should be   |                       |                       |
+|                              |    MAC address of the |    seen during the    |                       |                       |
+|                              |    PC and EVM to be   |    transfer.          |                       |                       |
+|                              |    used in the test.  |                       |                       |                       |
+|                              |    The tcprewrite     | Fail criteria:        |                       |                       |
+|                              |    utility can be     |                       |                       |                       |
+|                              |    used to set the    | -  Packet count       |                       |                       |
+|                              |    new MAC addresses  |    mismatch between   |                       |                       |
+|                              |    (i.e. tcprewrite   |    packETH utility    |                       |                       |
+|                              |    --enet-smac=<PC-MA |    and counters from  |                       |                       |
+|                              | C-address>            |    the IPU1           |                       |                       |
+|                              |    --enet-dmac=<EVM-M |    application        |                       |                       |
+|                              | AC-address>           | -  Any EMAC errors    |                       |                       |
+|                              |    -i ./ip1_test.pcap |    reported by the    |                       |                       |
+|                              |    -o                 |    IPU1 application   |                       |                       |
+|                              |    ./ip1_test.pcap)   |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | Steps:                |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | -  Launch the packETH |                       |                       |                       |
+|                              |    utility on the     |                       |                       |                       |
+|                              |    Linux PC with root |                       |                       |                       |
+|                              |    permissions        |                       |                       |                       |
+|                              | -  Go to the "Gen-S"  |                       |                       |                       |
+|                              |    tab of the packETH |                       |                       |                       |
+|                              |    utility and select |                       |                       |                       |
+|                              |    the PCAP files to  |                       |                       |                       |
+|                              |    be used            |                       |                       |                       |
+|                              | -  Set the transfer   |                       |                       |                       |
+|                              |    rate for each PCAP |                       |                       |                       |
+|                              |    file (i.e. 200     |                       |                       |                       |
+|                              |    Mbit/s and 150     |                       |                       |                       |
+|                              |    Mbit/s)            |                       |                       |                       |
+|                              | -  Set the total      |                       |                       |                       |
+|                              |    packets to         |                       |                       |                       |
+|                              |    transfer to 500000 |                       |                       |                       |
+|                              | -  Load and run the   |                       |                       |                       |
+|                              |    EMAC packet        |                       |                       |                       |
+|                              |    inspection         |                       |                       |                       |
+|                              |    application to the |                       |                       |                       |
+|                              |    IPU1 core          |                       |                       |                       |
+|                              | -  Hit the "Send"     |                       |                       |                       |
+|                              |    button on the      |                       |                       |                       |
+|                              |    packETH utility to |                       |                       |                       |
+|                              |    start streaming    |                       |                       |                       |
+|                              | -  The packet         |                       |                       |                       |
+|                              |    streaming should   |                       |                       |                       |
+|                              |    last for few       |                       |                       |                       |
+|                              |    seconds            |                       |                       |                       |
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| Emac_Cpsw_TestApp            | EMAC Loopback test    | Unit Test will        | AM65xx                | makefile              |
+|                              | at CPSW switch        | print "All tests      |                       |                       |
+|                              | interface.            | have passed" via      |                       |                       |
+|                              | Reference application | UART console.         |                       |                       |
+|                              | for developers        |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | TestApp demonstrates  |                       |                       |                       |
+|                              | loopback capability   |                       |                       |                       |
+|                              | by sending packets to |                       |                       |                       |
+|                              | CPSW switch. Unit     |                       |                       |                       |
+|                              | test registers        |                       |                       |                       |
+|                              | receive packet        |                       |                       |                       |
+|                              | callback routine with |                       |                       |                       |
+|                              | LLD to be called for  |                       |                       |                       |
+|                              | RX packet. Call back  |                       |                       |                       |
+|                              | routine will extract  |                       |                       |                       |
+|                              | packet received,      |                       |                       |                       |
+|                              | perform simple memory |                       |                       |                       |
+|                              | comparison against    |                       |                       |                       |
+|                              | packet sent for       |                       |                       |                       |
+|                              | integrity check. Unit |                       |                       |                       |
+|                              | test will iterate     |                       |                       |                       |
+|                              | over configured       |                       |                       |                       |
+|                              | packet count for      |                       |                       |                       |
+|                              | packet transmission   |                       |                       |                       |
+|                              | and reception check.  |                       |                       |                       |
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| Emac_Icssg_TestApp           | EMAC port 2 port test | Unit Test will        | AM65xx                | makefile              |
+|                              | between ICSSG ports.  | print "All tests      |                       |                       |
+|                              | Reference application | have passed" via      |                       |                       |
+|                              | for developers        | UART console          |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | Prior to running this |                       |                       |                       |
+|                              | test, please connect  |                       |                       |                       |
+|                              | the ICSSG ports as    |                       |                       |                       |
+|                              | follows with          |                       |                       |                       |
+|                              | ethernet cables:      |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | PHY0 to PHY1          |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | PHY2 to PHY3          |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | PHY4 to PHY5          |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | Test app demonstrates |                       |                       |                       |
+|                              | packet TX/RX between  |                       |                       |                       |
+|                              | 2 ICSSG ports. All 6  |                       |                       |                       |
+|                              | ICSSG ports will be   |                       |                       |                       |
+|                              | tested for am65xx-idk.|                       |                       |                       |
+|                              | PRU2 ports will be    |                       |                       |                       |
+|                              | tested for am65xx-evm.|                       |                       |                       |
+|                              | Unit test registers   |                       |                       |                       |
+|                              | receive packet        |                       |                       |                       |
+|                              | callback routine with |                       |                       |                       |
+|                              | LLD to be called for  |                       |                       |                       |
+|                              | RX packet. Call back  |                       |                       |                       |
+|                              | routine will extract  |                       |                       |                       |
+|                              | packet received,      |                       |                       |                       |
+|                              | perform simple memory |                       |                       |                       |
+|                              | comparison against    |                       |                       |                       |
+|                              | packet sent for       |                       |                       |                       |
+|                              | integrity check. Unit |                       |                       |                       |
+|                              | test will iterate     |                       |                       |                       |
+|                              | over configured       |                       |                       |                       |
+|                              | packet count for      |                       |                       |                       |
+|                              | packet transmission   |                       |                       |                       |
+|                              | and reception check.  |                       |                       |                       |
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| Emac_Icssg_Switch_TestApp    | Switch port 2 port    | Unit Test will        | AM65xx                | makefile              |
+|                              | test between ICSSG    | print "All tests      |                       |                       |
+|                              | ports.                |                       |                       |                       |
+|                              | Reference application | have passed" via      |                       |                       |
+|                              | for developers        | UART console          |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | Prior to running this |                       |                       |                       |
+|                              | test, please connect  |                       |                       |                       |
+|                              | the ICSSG ports as    |                       |                       |                       |
+|                              | follows with          |                       |                       |                       |
+|                              | ethernet cables:      |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | PHY0 to PHY1          |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              | Test app demonstrates |                       |                       |                       |
+|                              | packet TX/RX between  |                       |                       |                       |
+|                              | 2 ICSSG Switch ports. |                       |                       |                       |
+|                              | Unit test registers   |                       |                       |                       |
+|                              | receive packet        |                       |                       |                       |
+|                              | callback routine with |                       |                       |                       |
+|                              | LLD to be called for  |                       |                       |                       |
+|                              | RX packet. Call back  |                       |                       |                       |
+|                              | routine will extract  |                       |                       |                       |
+|                              | packet received,      |                       |                       |                       |
+|                              | perform simple memory |                       |                       |                       |
+|                              | comparison against    |                       |                       |                       |
+|                              | packet sent for       |                       |                       |                       |
+|                              | integrity check. Unit |                       |                       |                       |
+|                              | test will iterate     |                       |                       |                       |
+|                              | over configured       |                       |                       |                       |
+|                              | packet count for      |                       |                       |                       |
+|                              | packet transmission   |                       |                       |                       |
+|                              | and reception check.  |                       |                       |                       |
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
 
 
 Support for Benchmark Testing
