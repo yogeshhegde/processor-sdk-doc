@@ -157,13 +157,6 @@ also be used to build the Linux kernel
     make linux
     make linux-dtbs
 
-
-.. note::
-
-   If you are making changes to kernel defconfig and need
-   to rebuild SGX kernel module, refer
-   `here <Overview_Building_the_SDK.html#building-sgx-kernel-module>`__
-
 | 
 
 Building Android Filesystem (AFS)
@@ -204,35 +197,6 @@ tricks on building Android. Adjust -jX to match your build machine,
 where X is the number of jobs.
 
 |
-
-Building SGX Kernel Module
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**Instructions for rebuilding the SGX kernel module for AM5:**
-
-::
-
-    cd ~/ti-processor-sdk-android-am57xx-evm-<ver>/board-support/aosp-<ver>/vendor/ti/dra7xx
-    git checkout git-ti-com/sgx-km-from-source (ensure Commit ID=63998e4f98ff0122799d4e37f95a5f0c2df2204e)
-
-Then, follow the instructions above to build the android fileystem.
-
-SGX module will be generated at:
-
-::
-
-    ~/ti-processor-sdk-android-am57xx-evm-<ver>/board-support/aosp-<ver>/vendor/ti/dra7xx/sgx_km/lib/modules/pvrsrvkm.ko
-
-Use ADB to push pvrsrvkm.ko file to the **/system/lib/modules/**
-location on the AM57xx target and reboot the board.
-
-.. note::
-
-   If you get an error about the kernel configuration
-   then you may need to go through the steps mentioned above to build the
-   kernel before completing these steps.
-
-| 
 
 Preparing Android Image
 ------------------------
