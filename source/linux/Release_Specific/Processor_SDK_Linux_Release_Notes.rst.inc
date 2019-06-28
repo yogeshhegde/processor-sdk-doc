@@ -43,24 +43,32 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 05.03.00
+Release 06.00.00
 ==================
 
-Released April 2019
+Released July 2019
 
 .. rubric:: What's New
    :name: whats-new
 
+- 2019 LTS Update: First release in 2019 LTS (Kernel 4.19, U-boot: 2019.01, gcc: 8.3 2019.03 hf, Yocto 2.6 (thud). For more details, see the migration guide
 - HSR/PRP/EMAC/PTP
-    - Linux Boundary Clock should also synchronize the Linux system clock
-    - Support Rx interrupt pacing in Linux PRUETH driver with Dual EMAC firmware 
-- Deep Learning
-    - Upgrade ARMNN to latest available version
-    - Add Object Detection and Image Segmentation TIDL demos to Matrix GUI
-    - Add support in TIDL to import TF model created with recent releases of Tensorflow (>1.7)
-    - Optimize Concat Layer on C66x for SqueezeNet and InceptionNet
-    - Add support for models in ONNX format, using operators available in TIDL
-- `mmWave Gesture Demo for AM3/AM4/AM5/AM6 <Examples_and_Demos_Application_Demos.html#mmwave-gesture-controlled-hmi>`__
+    - Implement boundary clock with all 3 legs or 5 legs on AM57xx, with redundancy (HSR/PRP)
+       - 3 legs: 1xCPSW and 1x per PRU-ICSS (HSR/PRP/EMAC running on 2x PRU-ICSS)
+       - 5 legs: 1xCPSW and 2x per PRU-ICSS (Dual-EMAC on 2xPRU-ICSS)
+    - Upgrade linuxptp to v2.0
+    - Driver enhancements to deliver packets across two ports in-order to the host
+- Analytics
+    - Upgrade ARMNN to latest available version (2019.05)
+    - Remove restriction of number of nodes for inner product layer in TIDL Library
+    - Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control
+- AM65x
+    - U-boot: support networking over ICSS-G
+    - U-boot: USB hub and USB mass storage
+    - Watchdog support
+    - DisplayPort driver enhancements for TC358867 DPI-DP bridge
+    - AVS Class 0 support
+- AM335x: Support PTP 1588 in DAN mode
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -68,29 +76,27 @@ Released April 2019
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.14.79+ (2018 LTS)        |
+| Linux Kernel             | 4.19.38+ (2019 LTS)        |
 +--------------------------+----------------------------+
-| U-Boot                   | 2018.01                    |
+| U-Boot                   | 2019.01                    |
 +--------------------------+----------------------------+
-| Yocto Project            | 2.4 (rocko)                |
+| Yocto Project            | 2.6 (thud)                 |
 +--------------------------+----------------------------+
-| Linaro Toolchain (gcc)   | 7.2-2017.11 hard-float     |
+| Linaro Toolchain (gcc)   | 8.3 2019.03 hard-float     |
 +--------------------------+----------------------------+
-| Qt                       | 5.9.7                      |
+| Qt                       | 5.11.3                     |
 +--------------------------+----------------------------+
 | OpenCL                   | 1.1.18                     |
 +--------------------------+----------------------------+
 | OpenCV                   | 3.1                        |
 +--------------------------+----------------------------+
-| Wayland                  | 1.13                       |
+| Wayland                  | 1.16                       |
 +--------------------------+----------------------------+
-| GStreamer                | 1.12.2                     |
-+--------------------------+----------------------------+
-| Chromium                 | v53                        |
+| GStreamer                | 1.14.4                     |
 +--------------------------+----------------------------+
 | TI PRU Compiler          | 2.2.1                      |
 +--------------------------+----------------------------+
-| TI C66x CGT Compiler     | 8.2.2                      |
+| TI C66x CGT Compiler     | 8.3.2                      |
 +--------------------------+----------------------------+
 
 |
