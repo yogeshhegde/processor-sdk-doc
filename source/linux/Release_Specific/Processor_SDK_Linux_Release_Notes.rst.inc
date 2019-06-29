@@ -323,7 +323,7 @@ SDK Known Issues
    PLSDK-2886,,SDK Makefile: omapconf fails to build,
    PLSDK-2887,am574x-idk,TIDL ARM/HOST Emulation: Floating point exception (core dumped),
    PLSDK-2888,am574x-idk,TIDL_LiveCamera (DSP and EVE): hangs at About to start ProcessFrame loop,
-   PLSDK-2891,"am335x-evm, am437x-evm, am570x-evm, am571x-idk, am572x-evm, am574x-idk",glow: image-classifier converter cannot locate devkit shared libraries,"Use LD_LIBRARY_PATH when running glow package executables in devkit usr/share/glow/bin folder. 
+   PLSDK-2891,"am335x-evm, am437x-evm, am570x-evm, am571x-idk, am572x-evm, am574x-idk",glow: image-classifier converter cannot locate devkit shared libraries,Use LD_LIBRARY_PATH when running glow package executables in devkit usr/share/glow/bin folder.For example LD_LIBRARY_PATH=${SDK_PATH_NATIVE}/usr/lib ${SDK_PATH_NATIVE}/usr/share/glow/bin/image-classifier ${SDK_PATH_NATIVE}/usr/share/glow/tests/images/mnist/1_1008.png -m=mnist.onnx -image-mode=0to1 -model-input-name=data_0 -emit-bundle ./ -cpu -target armv7l-unknown-linux-gnueabihf -network-name="lenet_mnist".  
    PLSDK-2892,"am571x-idk, am572x-idk, am574x-idk",linuxptp: phc2sys does not process BC state updates with -r option,
   
 |
