@@ -180,13 +180,6 @@ Issues found and closed on this release that may be applicable to prior releases
    :widths: 15, 20, 70
 
    PLSDK-2783,omapl138-lcdk,omapl138-lcdk - uboot does not load from mmc
-   PLSDK-2803,"am572x-evm, am574x-idk",TIDL import tool in Linux devkit not working in PLSDK 6.0
-   PLSDK-2782,omapl138-lcdk,Internal toolchain in OMAL138 devkit is broken
-   PLSDK-2786,,PLSDK non-public build is failing
-   PLSDK-2832,,tidl-utils: broken with 2019LTS
-   PLSDK-2806,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Matrix Luancher: OpenCL demo missing on K2 plaforms
-   PLSDK-2837,am654x-idk,ICSSG PRUETH probe fails in SDK 06.00.00.04 nightly
-   PLSDK-2831,,point-cloud-viewer: broken with 2019LTS
 
 |
 
@@ -480,7 +473,7 @@ Linux Kernel Known Issues
    LCPD-5362,P3-Medium,MUSB: Isoch IN only utilises 50% bandwidth,Connectivity,USB,AM335x,,
    LCPD-4849,P3-Medium,K2hk: Connectivity: UART data corruption observed sometimes in loopback mode,Connectivity,,,,
    LCPD-4503,P3-Medium,ALL: 8250 UART driver not enabeld as wake source by default,Connectivity,UART,,,
-   LCPD-1239,P3-Medium,J6: Connectivity: J6 could not resume when PCI-SATA card is in,Connectivity,PCIe,"am572x-idk, am57xx-evm, dra72x-evm, dra7xx-evm",,
+   LCPD-1239,P3-Medium, Connectivity: DUT could not resume when PCI-SATA card is in,Connectivity,PCIe,"am572x-idk, am57xx-evm, dra72x-evm, dra7xx-evm",,
    LCPD-1198,P3-Medium,"am43xx-gpevm:Connectivity: when kmemleak debug is enabled and mmc stress test is run, OOM killer is seen to kick in. Does not happen without kernel debug.",Connectivity,,,,
    LCPD-1144,P3-Medium,Logitech USB-PS/2 Optical Mouse cannot be detected every other time the system is suspended/resumed (AM335x-EVM),Connectivity,,,,
    LCPD-932,P3-Medium,AM33X: CONNECTIVITY: MUSB MSC read numbers are lower in 3.14 compared to 3.12,Connectivity,USB,,,
