@@ -170,6 +170,42 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 20, 70
 
+   LCPD-15630,am654x-evm,firewall exception at boot due to UDMA channel configuration
+   LCPD-15636,"am335x-evm, am43xx-gpevm, am571x-idk, am572x-idk, am574x-idk, am57xx-evm, am654x-evm, beaglebone-black, dra71x-evm, dra72x-evm, dra76x-evm, dra7xx-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm",C++ compilation is not working
+   LCPD-15581,"am654x-evm, am654x-idk",pcie ep pcitest read write tests failed
+   LCPD-15543,"k2e-evm, k2hk-evm, k2l-evm",U-Boot: USB support in k2E/L/HK evms is completely broken
+   LCPD-15378,"am57xx-beagle-x15, dra7xx-evm",U-Boot: SATA RX PHY config - update to match the DPLL output configuration
+   LCPD-15262,"k2e-hsevm, k2g-hsevm, k2hk-hsevm, k2l-hsevm",k2-hsevm could not boot
+   LCPD-14189,"am654x-evm, am654x-idk",ICSSG Ethernet Kernel Panic
+   LCPD-14954,"am57xx-beagle-x15, dra7xx-evm",Kernel: SATA RX PHY config - update to match the DPLL output configuration
+   LCPD-13766,am654x-idk,am654x: RT latency numbers are 60 us versus ~25 in am574x
+   LCPD-15605,"am654x-evm, am654x-idk",Board reboots after running tcrypt aes test
+   LCPD-14920,,Source IPKs can no longer be installed/used
+   LCPD-12244,"am437x-idk, am437x-sk, am43xx-epos, am43xx-gpevm",AM43xx u-boot needs to support PHY_INVERT_CLKOUT=1
+   LCPD-15541,am57xx-evm,eMMC is not at expected speed on am57xx-evm
+   LCPD-15494,"dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm",dra7: pcie: PHY driver doesn't follow TRM power up sequence
+   LCPD-15457,"am57xx-evm, dra71x-evm, dra7xx-evm",pcie sata test failed on am57xx-evm
+   LCPD-15454,am654x-evm,CRTC sync lost reported while testing mode
+   LCPD-15450,,chromium binary got corrupted and huge
+   LCPD-15429,,tidss: bridge_timings don't work
+   LCPD-15418,,SMP I2C failures
+   LCPD-15384,"am335x-evm, am574x-idk, am57xx-evm, am654x-evm, dra71x-evm",Segmentation Fault and bad alloc errors observed when running GLMark2
+   LCPD-14871,"am654x-evm, am654x-idk",ti-sgx-ddk-km is hardcoded for Linaro arm64 toolchain
+   LCPD-14136,am654x-idk,PCIe x2 usb tests failed on am654x-idk
+   LCPD-13354,"am654x-evm, am654x-idk",PRU Ethernet ping fails with packet size > 4096 bytes
+   LCPD-13709,am654x-evm,USB camera gadget does not work on am6
+   LCPD-13711,"am654x-evm, am654x-idk",U-Boot: EEPROM-based board detection support not available
+   LCPD-13710,"am654x-evm, am654x-idk",KS3M: ICSSG: 100M link doesn't work
+   LCPD-15260,dra7xx-evm,Video on display repeated when Fast Forward done with gst-play
+   LCPD-15259,dra7xx-evm,Gst-ducati fails to decode few interlaced streams
+   LCPD-14860,"am574x-idk, am57xx-evm, am654x-evm, am654x-idk",qt-opencv-opencl-opengl-multithreaded fails with gcc8
+   LCPD-14559,,opencl failure with gcc8
+   PLSDK-2754,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",kernel 1PPS devicetree documentation
+   PLSDK-2750,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",CPTS 1PPS pps-enable-gpios should be optional
+   PLSDK-2749,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",CPTS 1PPS should allow selection of any timer (Timer13-Timer16)
+   PLSDK-2670,"am570x-evm, am572x-evm, am572x-hsevm, k2e-evm, k2g-hsevm, k2hk-evm, k2l-evm",OpenMPacc test hangs on k2 platorms
+   PLSDK-2751,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",1PPS output needs pulldown for pwm_off
+   PLSDK-2854,,Make tisdk-rootfs-image first option in create-sdcard.sh
 |
 
 
