@@ -61,6 +61,9 @@ Arm NN Classification Demo
 
 Refer to `Arm NN MobileNet Demo <Foundational_Components_ArmNN.html#arm-nn-mobilenet-demo>`__
 
+Predictive Maintenance Demo
+=============================
+.. include:: Examples_and_Demos/PdM_Anomaly_Detection.rst.inc
 
 PRU-ADC Demo
 ========================
