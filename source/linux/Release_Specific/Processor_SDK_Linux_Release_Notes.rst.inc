@@ -246,52 +246,54 @@ SDK Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 25, 30, 50, 60
 
-   LCPD-15588,"am335x-evm, am43xx-gpevm, am57xx-evm, am654x-evm",QtWebkit does not build,
    LCPD-14263,am43xx-epos,Hardware RNG module not getting probed in Linux for AM438x,
    LCPD-15587,"am335x-evm, am43xx-gpevm, am57xx-evm",QtWebengine-based browser does not work,
-   LCPD-12027,"am335x-evm, am437x-sk, am43xx-gpevm, am57xx-evm",glReadPixels returns error with nulldrm client,
-   LCPD-15553,"am335x-evm, am43xx-gpevm, am57xx-evm, am654x-evm",Segmentation Fault observed when running weston-simple-egl,
-   LCPD-15434,am335x-evm,Performance drop on GLBenchmark test Egypt-HD-C24Z24MS4-EgyptTestC24Z24MS4,
-   LCPD-15386,"am57xx-evm, dra7xx-evm",Segmentation fault reported while running GC320,
+   LCPD-16096,"am574x-idk, am57xx-evm, dra7xx-evm",Instability observed while trying to capture video with USB camera via Gstreamer,
+   LCPD-8352,"am43xx-gpevm, am57xx-evm, dra7xx-evm",weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory,1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer
    LCPD-15863,"am335x-evm, am43xx-gpevm, am57xx-evm, am654x-evm",Weston IVI-shell is not supported,
    LCPD-15864,am57xx-evm,SoC Performance Monitoring tool is still not enabled,
-   LCPD-14419,"am335x-evm, am43xx-gpevm, am57xx-evm",SGX DDK gbm wsegl: Close Weston may cause SGX crash,
-   LCPD-11010,am574x-idk,AM574x-idk graphics performance is lower than am572x-idk,
-   LCPD-9819,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",drmextended app cannot enable plane,
-   LCPD-8887,beaglebone-black,kmscube does not work on AM3 Beagle Bone Black,
-   LCPD-9006,"am57xx-evm, dra72x-evm, dra7xx-evm",Some GLBenchmark tests fail to run,
-   LCPD-8352,"am43xx-gpevm, am57xx-evm, dra7xx-evm",weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory,1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer
-   LCPD-14175,am335x-evm,GLMark2 drm based test fails,
+   LCPD-15553,"am335x-evm, am43xx-gpevm, am57xx-evm, am654x-evm",Segmentation Fault observed when running weston-simple-egl,
+   LCPD-15386,"am57xx-evm, dra7xx-evm",Segmentation fault reported while running GC320,
+   LCPD-15647,am574x-idk,Performance drop observed for several GLBenchmark tests,
    LCPD-14201,"am654x-evm, am654x-idk",PVR out of memory error reported while running GLMark2,"There is more SPM memory required for this test on ARM64. It can be resolved by allocating more memory for Parameter Buffer at powervr.ini For AM65x: set ParamBufferSize to 8388608 (8M). Besides, this test will fail if the FrameTime exceeds 1 second and which is proportional to the screen resolution size. To run this test on AM654x, we can reduce the screen size by using option s ""-s 800x480"""
+   LCPD-14175,am335x-evm,GLMark2 drm based test fails,
    LCPD-13429,,Init/exit sequence in GBM leads to error,
    LCPD-13501,am654x-evm,"Kmscube: need to support the new display ""tidss""",
-   LCPD-13795,"am571x-idk, am57xx-evm, am57xx-beagle-x15","Android: Graphics service failure with ""stop"" and ""start"" command",
-   LCPD-15647,am574x-idk,Performance drop observed for several GLBenchmark tests,
-   LCPD-15794,"am57xx-evm, dra71x-evm, dra72x-evm, dra76x-evm, dra7xx-evm",Allow non-root user access to graphics resources to enable graphics use case,
-   LCPD-9782,k2e-hsevm,CPU hotplug generates an exception and system crashes,
-   LCPD-9364,am57xx-hsevm,There are SCM FW warnings during the am57xx-hsevm boot,
-   LCPD-9254,am43xx-hsevm,Kernel warnings in boot for am437x-hsevm,
+   LCPD-12027,"am335x-evm, am43xx-gpevm, am437x-sk, am57xx-evm",glReadPixels returns error with nulldrm client,
+   LCPD-11010,am574x-idk,AM574x-idk graphics performance is lower than am572x-idk,"Performance issue, no workaround"
+   LCPD-9006,"am57xx-evm, dra72x-evm, dra7xx-evm",Some GLBenchmark tests fail to run,
+   LCPD-7130,dra7xx-evm,KMSCube with video does not work,
+   LCPD-15810,"am335x-evm, am43xx-gpevm, k2g-evm",Illegal instruction reported when trying to decode h264 stream with gstreamer,
+   LCPD-13817,am654x-evm,Qt5 Webengine-based broswer does not work on AM654x,
+   LCPD-13816,am654x-evm,Chromium-wayland broswer does not work on AM654x,
+   LCPD-13443,am57xx-hsevm,Camera is not detected on AM572x-HSEVM,
+   LCPD-12928,am57xx-evm,Periodic frame freezes observed while decoding H264 video,
+   LCPD-11846,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",libdce2 omapdrm API call with bus-version style,
+   LCPD-9754,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",GLSDK Sometimes capture + encode fails,
+   LCPD-9753,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",GLSDK gst test suite waylandsink and 1080i kmssink tests fail,
+   LCPD-5654,AM335x,AM3 Beaglebone black: MPEG4+AAC Dec does not play out any audio for some HDMI monitors,
    LCPD-12709,am43xx-hsevm,Boards resets when standby state is attempted,
-   LCPD-13437,am57xx-hsevm,Multimedia:ducatih264enc0: Could not initialize supporting library,
+   LCPD-8345,"am335x-evm, am437x-idk, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2e-hsevm, k2hk-evm, k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)",Restart the EVM
+   LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
+   LCPD-16114,"am335x-evm, am335x-ice, am335x-sk",RTC Init Script Needs to Wait for Module Load,
+   LCPD-15945,,armnn fails to build in 2019LTS,
    LCPD-15562,,OpenSSL1.1 does not have hooks for using hw crypto,
    LCPD-14560,,gdbc6x fails with gcc8,
-   LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
-   LCPD-9415,,File system is missing resource visualization tool,
-   LCPD-9072,"k2e-evm, k2e-hsevm, k2hk-evm, k2hk-hsevm, k2l-evm, k2l-hsevm",netapi requires changes due to new libnl and xfrm,
-   LCPD-9071,"k2e-evm, k2e-hsevm, k2g-evm, k2g-ice, k2hk-evm, k2hk-hsevm, k2l-evm, k2l-hsevm",ipsecmgr requires changes due to new libnl and xfrm,
-   LCPD-8345,"am335x-evm, am437x-idk, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2e-hsevm, k2hk-evm, k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)",Restart the EVM
-   LCPD-9923,"am335x-evm, am43xx-gpevm, am57xx-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Error message in boot log for K2 and AM platforms,
    LCPD-13947,am335x-evm,nativesdk-opkg is broken in the devkit,
-   LCPD-13633,"am335x-evm, am335x-hsevm, am335x-ice, am335x-sk, am437x-idk, am437x-sk, am43xx-gpevm, am43xx-hsevm, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",IMG wayland based demos are missing from the fs,N/A
+   LCPD-13633,"am335x-evm, am335x-hsevm, am335x-ice, am335x-sk, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",IMG wayland based demos are missing from the fs,N/A
+   LCPD-13437,am57xx-hsevm,Multimedia:ducatih264enc0: Could not initialize supporting library,
    LCPD-12443,omapl138-lcdk,SD boot time with coresdk rootfs increases ~30% on omapl138-lcdk,
-   LCPD-12405,"am335x-evm, am335x-ice, am43xx-epos, am43xx-gpevm, am57xx-evm, dra71x-evm, k2e-evm, k2e-hsevm, k2g-evm, k2g-hsevm, k2l-evm",Openssl certgen fails due to coredump in openssl_gen_cert.sh,
    LCPD-12383,omapl138-lcdk,Umount failed if sata is mounted as vfat after boot without enough delay before umount,
-   LCPD-7255,"am335x-evm, am335x-ice, am335x-sk, am437x-idk, am437x-sk, am43xx-gpevm, am43xx-hsevm, am571x-idk, am572x-idk, am57xx-evm, beaglebone, beaglebone-black, beaglebone-black-ice, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2g-evm, k2g-ice, k2hk-evm, k2l-evm",Telnet login takes too long (~40 seconds),"Booting with rootfs mounted over NFS might cause ~40 seconds delay on telnet login because DNS entries might not be properly populated. To work around this issue, enter appropriate DNS server IP in resolv.conf. For example: echo 'nameserver 192.0.2.2' > /etc/resolv.conf;"
+   LCPD-9923,"am335x-evm, am43xx-gpevm, am57xx-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Error message in boot log for K2 and AM platforms,
+   LCPD-7255,"am335x-evm, am335x-ice, am335x-sk, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am57xx-evm, beaglebone, beaglebone-black, beaglebone-black-ice, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2g-evm, k2g-ice, k2hk-evm, k2l-evm",Telnet login takes too long (~40 seconds),"Booting with rootfs mounted over NFS might cause ~40 seconds delay on telnet login because DNS entries might not be properly populated, Enter appropriate DNS server IP in resolv.conf. For example: echo 'nameserver 192.0.2.2' > /etc/resolv.conf" 
    LCPD-7025,am43xx-gpevm,System takes more than 10 seconds to go from login prompt to system prompt,Automated tests need to account for this boot delay
-   LCPD-4952,"K2E, K2G, K2HK, K2L",tisdk-image.bbclass limitation on TARGET_IMAGES,
    LCPD-5649,"K2E, K2HK, K2L",Integration: Release content for core-sdk should not be the content of SD card for k2 platform,
-   LCPD-12536,"am335x-evm, am335x-ice, am335x-sk, am437x-idk, am437x-sk, am43xx-gpevm, am571x-idk, am572x-idk, am574x-idk, am57xx-evm",AM4 SK/IDK: iperf3: error - control socket has closed unexpectedly for ETH test,
+   LCPD-12405,"am335x-evm, am335x-ice, am43xx-epos, am43xx-gpevm, am57xx-evm, dra71x-evm, k2e-evm, k2e-hsevm, k2g-evm, k2g-hsevm, k2l-evm",Openssl certgen fails due to coredump in openssl_gen_cert.sh,
+   LCPD-12536,"am335x-evm, am335x-ice, am335x-sk, am43xx-gpevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am574x-idk, am57xx-evm",AM4 SK/IDK: iperf3: error - control socket has closed unexpectedly for ETH test,
+   LCPD-6377,"am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am57xx-evm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm, k2g-evm",OMAP_BO_CACHED feature not functional,
    LCPD-8210,"am571x-idk, am572x-idk, am57xx-evm",QT Touchscreen interaction (Bear Whack) crash,
+   LCPD-8398,"dra7xx-evm, dra7xx-hsevm",gsttestplayer: Reverse playback stops after next seek,
+   LCPD-9423,,kmscube with video: viddec3test sometimes return error 139,None
    LCPD-8278,k2e-hsevm,Secure boot takes more than 10 minutes,
    LCPD-15367,"am335x-evm, am574x-idk",Boot time increased about 15s,
    PLSDK-1398,"k2e-evm, k2e-hsevm, k2g-hsevm, k2hk-hsevm",Document workaround for IPC demo hangs if run after OpenCL demos,Run IPC demo w/o running OpenCL first
