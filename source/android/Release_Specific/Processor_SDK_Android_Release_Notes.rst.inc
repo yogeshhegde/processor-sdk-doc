@@ -131,9 +131,7 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 10, 20, 70
 
-   LCPD-13602,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Android: Treble: Selinux warnings and enforcing mode errors
-   LCPD-12491,am57xx-evm,Android: Selinux warnings during bootup
-
+   LCPD-15227,"am57xx-evm, am654x-evm",Android: Android System Internal error reported at boot_complete
 | 
 
 Issues found and closed on this release that may be applicable to prior releases
@@ -143,11 +141,14 @@ Issues found and closed on this release that may be applicable to prior releases
    :header: "Record ID", "Platform", "Title"
    :widths: 10, 20, 70
 
-   LCPD-14172,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Android: am57xevm: ADB Broken
-   LCPD-14267,"am57xx-evm",Android: Android System Internal error reported at boot_complete
-   LCPD-14222,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Android: 4.14.77 PVR Mismatch: Boot failure
-   LCPD-13894,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Android: 4.14.71 PVR Mismatch: Boot failure
-   LCPD-14095,,[Android] allmodconfig warning on linux 4.14
+   LCPD-15563,am57xx-evm,omapdrm: display ordering based on alias is broken
+   LCPD-15593,"am571x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15, am654x-evm, am654x-idk",Android: Compliance tests fail to execute on all supported platforms
+   LCPD-15560,"am571x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15",Android: GPEVM fails to boot with LCD configuration
+   LCPD-15542,am654x-evm,Android: Core services continually restarted
+   LCPD-15521,"am571x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15, am654x-evm, am654x-idk",Android: modetest missing from file system
+   LCPD-15595,"am571x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15, am654x-evm, am654x-idk",Android: failure in loading firmware from vendor/firmware/
+   LCPD-15468,"am571x-idk, am574x-idk",Android: IDK boards fails to boot
+   LCPD-15395,am654x-evm,Android: AM6: Binder Errors due to continual audio services crashing
 |
 
 Known Issues
@@ -157,6 +158,22 @@ Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 10, 20, 70, 50
 
+   LCPD-16140,am571x-idk,Video is jerky when LCD and HDMI are connected,
+   LCPD-15644,"am57xx-evm, am57xx-beagle-x15",Android: Unable to set the HDMI mode via ro.hwc.hdmiedid,
+   LCPD-15643,"am57xx-evm, am654x-evm",Android: Monkey test fails to run,
+   LCPD-15642,am57xx-evm,Android: kernel errors observed while trying to run cts,
+   LCPD-15522,"am57xx-evm, am57xx-beagle-x15",Android: Pixel degradation observed in captured frame,
+   LCPD-15514,am57xx-evm,Android boot time is noticeable higher than previous releases,
+   LCPD-15501,am654x-evm,Android : AM6: Selinux: Permissive mode denial warnings in boot up,
+   LCPD-15442,"am574x-idk, am57xx-evm",Android: Application icons not showing correctly is second boot,
+   LCPD-14444,am654x-evm,VTS tests time-out with kernel warning,
+   LCPD-14443,am654x-evm,CTS failures detected,
+   LCPD-14442,am654x-evm,Ethernert port does not obtain ip address,
+   LCPD-13797,am57xx-evm,Android:CTS Failures,
+   LCPD-13796,"am57xx-evm, am654x-evm",Android: monkey test causes system crash after 10 mins of execution,
+   LCPD-13723,,[android] allmodconfig fails to build on kernel build redirect,
+   LCPD-13409,"am571x-idk, am574x-idk",Android: IDK: Bootloader images fail to boot from eMMC,
+   LCPD-12928,am57xx-evm,Periodic frame freezes observed while decoding H264 video,
    LCPD-14325,,U-boot fails to read tispl.bin during android boot on some boards,
    LCPD-12513,am57xx-evm,Android O: Board takes longer to boot compared to MM,
    LCPD-12928,am57xx-evm,Periodic frame freezes observed while decoding H264 video,
