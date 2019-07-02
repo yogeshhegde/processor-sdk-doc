@@ -1812,7 +1812,7 @@ Build Procedure
 .. code-block:: console
 
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- SYSFW=<path to tisdk>/board-support/prebuilt-images/sysfw.itb O=<output directory>/r5
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
 
 **A53**
 
