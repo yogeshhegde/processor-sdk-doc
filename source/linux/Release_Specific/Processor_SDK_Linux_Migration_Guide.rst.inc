@@ -10,6 +10,27 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
+Processor SDK 06.xx Releases
+============================
+
+Processor SDK 06.00
+----------------------
+- Resistive Touchscreen TSCADC (resistive touchscreen) wakeup control on AM335x and AM437x has moved from TSCADC MFD device node to TSC input device node.
+   - Disable touchscreen as wakeup source use: echo disabled > /sys/devices/platform/ocp/44e0d000.tscadc/TI-am335x-tsc.0.auto/power/wakeup
+   - Enable touchscreen as wakeup source use: echo enabled > /sys/devices/platform/ocp/44e0d000.tscadc/TI-am335x-tsc.0.auto/power/wakeup
+- IPC
+   - Remoteproc core
+      - Error recovery with virtio-rpmsg-bus stack is broken on Upstream vanilla 4.19 kernel. Error recovery is supported only on TI kernels.
+   - PRUSS remoteproc
+      - The PRUSS remoteproc bindings and drivers have been split up into three separate folders
+      - New bindings are defined in soc/ti/ti,pruss.txt, interrupt-controller/ti,pruss-intc.txt and remoteproc/ti,pru-rproc.txt under the Documentation/devicetree/bindings folder and replaces remoteproc/ti,pruss-remoteproc.txt
+      - PRUSS INTC module pruss_intc.ko is now irq-pruss-intc.ko and is built in drivers/irqchip folder
+      - pruss_soc_bus and pruss platform drivers are now built in drivers/soc/ti folder.
+   - Userspace
+      - New IPC and CMEM releases are needed to use with 4.19 kernel due to difference in AF_RPMSG family number and other kernel API changes. Minimum required versions are IPC 3.50.03.05 and CMEM 4.16.00.00
+- PRUETH: on AM571x IDK boards, the naming of the PRUETH supported ethernet ports has changed. In previous releases, PRU-ICSS1 (J3, J5 on IDK) corresponded to eth4/5, and PRU-ICSS2 (J6, J8 on IDK) corresponded to eth2/3. As of 06.00, this has swapped, and now PRU-ICSS1 corresponds to eth2/3, and PRU-ICSS2 corresponds to eth4/5.
+
+
 Processor SDK 05.xx Releases
 ============================
 
