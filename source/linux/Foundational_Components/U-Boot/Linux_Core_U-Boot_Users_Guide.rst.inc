@@ -1793,17 +1793,13 @@ is designed as below:
 Here DMSC acts as master and provides all the critical services. R5/A53
 requests DMSC to get these services done as shown in the above diagram.
 
-Sources
-^^^^^^^^^^^
-* TI Processor SDK
-        Several prebuilt images are required from the TI Processor SDK.
-        Go `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__ to download and install the SDK.
+TI Processor SDK
+^^^^^^^^^^^^^^^^^^^^
+Several prebuilt images are required from the TI Processor SDK.
+Go `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__ to download and install the SDK.
 
-* U-Boot:
-        Tree: git://git.ti.com/ti-u-boot/ti-u-boot.git; Branch: ti-u-boot-2019.01
-
-* Compile Tools
-    Ensure that arm-linux-gnueabihf-gcc and aarch64-linux-gnu-gcc are installed.
+TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
+`build information <Release_Specific_Release_Notes.html#build-information>`__.
 
 Build Procedure
 ^^^^^^^^^^^^^^^^^^^^^^
