@@ -92,6 +92,16 @@ repo tool along with the provided manifest file.
     cd ~/ti-processor-sdk-android-<platform>-<ver>/board-support/aosp-<ver>/
     ./repo sync
 
+
+If it is desired to pull in changes and fixes made after the release,
+please run "./repo init" prior to "./repo sync".
+
+::
+
+    cd ~/ti-processor-sdk-android-<platform>-<ver>/board-support/aosp-<ver>/
+    ./repo init
+    ./repo sync
+
 This command may take several hours as it is cloning hundreds of
 repositories and checking them out to a specific commit. This will also
 take up considerable space on your development machine's hard drive
@@ -124,13 +134,6 @@ the **board-support/linux-<ver>/** directory.
 
 Build Instructions
 --------------------
-
-Setting up build environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-    export CROSS_COMPILE=${HOME}/ti-processor-sdk-android-<platform>-<ver>/android-devkit/arm-linux-gnueabihf-<ver>/bin/arm-linux-gnueabihf-
 
 Building U-boot sources
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -249,8 +252,7 @@ Make a copy of the prebuilt-images directory, and then copy over the rebuilt fil
     cp -r prebuilt-images prebuilt-images-psdk
     cp -v ./aosp-<ver>/out/target/product/am57xevm/*img prebuilt-images
     cp -v ./aosp-<ver>/device/ti/am57xevm/fastboot.sh prebuilt-images
-    cp -v ./aosp-<ver>/out/host/linux-x86/bin/{simg2img,make_ext4fs,mkbootimg,fastboot,adb} prebuilt-images
-    cp -v ./aosp-<ver>/out/host/linux-x86/lib64/{libc++.so,libcutils.so,liblog.so,libselinux.so} prebuilt-images
+    cp -v ./aosp-<ver>/out/host/linux-x86/bin/{simg2img,mkbootimg,fastboot,adb} prebuilt-images
     cp -v ./linux-<ver>/arch/arm/boot/zImage prebuilt-images/zImage-am57xx-evm.bin
     cp -v ./linux-<ver>/arch/arm/boot/dts/am57*.dtb prebuilt-images
     cp -v ./u-boot-<ver>/MLO prebuilt-images
