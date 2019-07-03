@@ -2008,6 +2008,8 @@ u-boot.img over tftp and then flash it to OSPI at respective addresses.
   => sf update $loadaddr 0x80000 $filesize
   => tftp ${loadaddr} u-boot.img
   => sf update $loadaddr 0x280000 $filesize
+  => tftp ${loadaddr} sysfw.itb
+  => sf update $loadaddr 0x6C0000 $filesize
 
 **Bootmode Switch Settings**
 
@@ -2024,7 +2026,32 @@ following in order to boot from OSPI flash:
 
 **Flash Layout for OSPI**
 
-.. Image:: ../images/u-boot-flash-layout-ospi-am65x.png
+.. code-block:: console
+
+         0x0 +----------------------------+
+             |     ospi.tiboot3(512K)     |
+             |                            |
+     0x80000 +----------------------------+
+             |     ospi.tispl(2M)         |
+             |                            |
+    0x280000 +----------------------------+
+             |     ospi.u-boot(4M)        |
+             |                            |
+    0x680000 +----------------------------+
+             |     ospi.env(128K)         |
+             |                            |
+    0x6A0000 +----------------------------+
+             |   ospi.env.backup (128K)   |
+             |                            |
+    0x6C0000 +----------------------------+
+             |      ospi.sysfw(1M)        |
+             |                            |
+    0x7C0000 +----------------------------+
+             |      padding (256k)        |
+    0x800000 +----------------------------+
+             |     ospi.rootfs(UBIFS)     |
+             |                            |
+             +----------------------------+
 
 Kernel Image and DT are expected to be present in the /boot folder of UBIFS
 ospi.rootfs just like in SD card case. U-Boot looks for UBI volume named
@@ -2056,7 +2083,9 @@ respective addresses.
   => fatload mmc 1 ${loadaddr} tispl.bin
   => mmc write ${loadaddr} 0x400 0x1000
   => fatload mmc 1 ${loadaddr} u-boot.img
-  => mmc write ${loadaddr} 0x1400 0x2800
+  => mmc write ${loadaddr} 0x1400 0x2000
+  => fatload mmc 1 ${loadaddr} sysfw.itb
+  => mmc write ${loadaddr} 0x3600 0x800
 
 To give the ROM access to the boot partition, the following commands must be
 used for the first time:
@@ -2089,7 +2118,22 @@ used:
 
 **eMMC Layout**
 
-.. Image:: ../images/u-boot-flash-layout-emmc-am65x.png
+.. code-block:: console
+
+               boot0 partition (8 MB)                        user partition
+       0x0+----------------------------------+      0x0+-------------------------+
+          |     tiboot3.bin (512 KB)         |         |                         |
+     0x400+----------------------------------+         |                         |
+          |       tispl.bin (2 MB)           |         |                         |
+    0x1400+----------------------------------+         |        rootfs           |
+          |       u-boot.img (4 MB)          |         |                         |
+    0x3400+----------------------------------+         |                         |
+          |      environment (128 KB)        |         |                         |
+    0x3500+----------------------------------+         |                         |
+          |   backup environment (128 KB)    |         |                         |
+    0x3600+----------------------------------+         |                         |
+          |          sysfw (1 MB)            |         |                         |
+    0x3E00+----------------------------------+         +-------------------------+
 
 Kernel image and DT are expected to be present in the /boot folder of rootfs.
 To boot kernel from eMMC, use the following commands:
@@ -2099,3 +2143,40 @@ To boot kernel from eMMC, use the following commands:
   => setenv mmcdev 0
   => setenv bootpart 0
   => boot
+
+.. rubric:: UART
+
+ROM supports booting from MCU_UART0 via X-Modem protocol. The entire UART-based
+boot process up to U-Boot (proper) prompt goes through different stages and uses
+different UART peripherals as follows:
+
++-----------+---------------+-------------+------------+
+|   WHO     | Loading WHAT  |  HW Module  |  Protocol  |
++-----------+---------------+-------------+------------+
+| Boot ROM  |  tiboot3.bin  |  MCU_UART0  |  X-Modem   |
++-----------+---------------+-------------+------------+
+| R5 SPL    |  sysfw.itb    |  MCU_UART0  |  Y-Modem   |
++-----------+---------------+-------------+------------+
+| R5 SPL    |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
++-----------+---------------+-------------+------------+
+| A53 SPL   |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
++-----------+---------------+-------------+------------+
+
+In addition to X/Y-Modem related protocol timeouts the DMSC
+watchdog timeout of 3min (typ.) needs to be observed until System Firmware
+is fully loaded (from sysfw.itb) and started.
+
+**Flashing Images to UART**
+
+UART_BOOT_MAIN_UART and UART_BOOT_MCU_UART should be set to serial ports such as /dev/ttyUSBx.
+
+.. code-block:: console
+
+    echo "Downloading tiboot3.bin via X-Modem to $UART_BOOT_MCU_UART..."
+    sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
+    echo "Downloading $SYSFW_ITB via Y-Modem to $UART_BOOT_MCU_UART..."
+    sb --ymodem $SYSFW_ITB > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
+    echo "Downloading tispl.bin via Y-Modem to $UART_BOOT_MAIN_UART..."
+    sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+    echo "Downloading u-boot.img via Y-Modem to $UART_BOOT_MAIN_UART..."
+    sb --xmodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
