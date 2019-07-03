@@ -53,7 +53,7 @@ following components, which are prebuilt and copied to the target
 filesystem:
 
 #. jailhouse.ko kernel module located at
-   /lib/modules/4.9.28-<gitid>/extra/driver directory;
+   /lib/modules/4.19.38-<gitid>/extra/driver directory;
 #. jailhouse.bin - hypervisor itself located at /lib/firmware directory;
 #. Jailhouse management tools are located at
    /usr/local/libexec/jailhouse and /usr/sbin directories;
@@ -91,10 +91,17 @@ where
    inmate example and its cell configuration (icss\_emac.bin can be run
    on AM572x-IDK only);
 -  **linux-loader.bin** - loader required to run inmates, which start
-   address is not 0x0;
+   address is not 0x0. Not required at current and above versions of Jailhouse.
+   Cell configuration can define starting address.
 
 .. rubric:: Running the Demo on AM572x-EVM
    :name: running-the-demo-on-am572x-evm
+
+**NOTE** Starting from this version of Jaihlouse Inmate library stratup code
+enables MMU. The library initializes only GIC controller and debug UART
+memory. Memory for all other regions has to be initialized by inmate itself.
+At this release the ti-app is not updated. All RTOS examples don't use the
+inmate library and initilizes their MMU regions by themselves.
 
 .. rubric:: Running bare-metal ti-app.bin
    :name: running-bare-metal-ti-app.bin
@@ -157,7 +164,7 @@ Here are the steps to run the demo:
     min 00000017; avr 0000001b; max 000002d4
     min 00000017; avr 0000001b; max 00000158
 
-**NOTE**: becase all of the components: root-cell, hypervisor and demo
+**NOTE**: because all of the components: root-cell, hypervisor and demo
 inmate use the same UART, there is a conflict. Once the inmate started
 to use the UART, Linux stops getting any input from console. To
 workaround this and continue to control the hypervisor, you may telnet
@@ -263,12 +270,13 @@ Two TI-RTOS example applications were ported for Jailhouse hypervisor:
 pruss.bin and icss\_emac.bin. In contrast to led\_test.bin, which has
 its own startup code, linker script and was linked to start from address
 0x0, the pruss.bin and icss\_emac.bin used the TI-RTOS building
-infrustructure as much as possible. Therefore they are linked to EVM's
-DDR address space (starting from 0x80000000 ) and their entry points are
-not 0x0. To support loading and running such applicaiton a special
-command shell be used.
+infrastructure as much as possible. **At the previous Processor SDK
+pruss.bin and icss\_emac.bin were linked to the default 0x80000000 address.
+Because the new Jailhouse version uses that address for debug URAT
+communication region, the RTOS application are linked to the 0x90000000
+address**. 
 
-To run the pruss.bin applicaton enable the hypervisor the same way as
+To run the pruss.bin application enable the hypervisor the same way as
 for other examples.
 
 ::
@@ -302,19 +310,14 @@ Use cell load command to load several required components:
 
 ::
 
-    root@am57xx-evm:/usr/share/jailhouse/examples# jailhouse cell load 1 linux-loader.bin -a 0 -s "kernel=0x80005128" -a 0x100 pruss.bin -a 0x80000000
+    root@am57xx-evm:/usr/share/jailhouse/examples# jailhouse cell load 1 pruss.bin -a 0x90000000
     Cell "AM572X-IDK-PRUSS" can be loaded
 
 where
 
--  linux-loader.bin is a small application provided and built by
-   jailhouse source tree. As you can see (-a 0) it is loaded to virtual
-   address 0x0;
--  "-s "kernel=0x80005128" -a 0x100" - is the linux\_loader argument
-   loaded as string to virtual address 0x100, which instructs the
-   linux-loader to branch to the pruss.bin 0x80005128 entry point;
--  pruss.bin itself, loaded to the virtual address 0x80000000 - the
-   address where this application is lined to;
+-  pruss.bin itself, loaded to the virtual address 0x90000000 - the
+   address where this application is linked to; **The cell configuration MUST
+   set the .cpu_reset_address = 0x90000000 at cell configuration** 
 
 
 After loading run the inmate as usual:
@@ -395,8 +398,7 @@ After loading run the inmate as usual:
 
 
 You may run the **icss\_emac.bin** in similar way using appropriate
-cell configuration. **Note that icss\_emac has different entry point -
-0x80000000**.
+cell configuration.
 
 .. rubric:: Jailhouse Performance on AM5728
    :name: jailhouse-performance-on-am5728
@@ -416,7 +418,7 @@ column Linux on core 0 is running STREAM. STREAM is an external memory
 access benchmark that fully utilizes the number of outstanding reads and
 writes to memory. It is scalable from individual processors to clusters
 supercomputers, here it is used at the processor level. It was chosen as
-representative of a worst case memory access behaviour of a Linux based
+representative of a worst case memory access behavior of a Linux based
 application on a Cortex A15, essentially with a memory access profile
 like an optimized memorytomemory copy. In AM5728 the two Cortex A15
 cores share L2 cache and access to the rest of the SoC, which the STREAM
@@ -427,20 +429,20 @@ to respond to the interrupt.
 |                          | Unloaded Linux on core 0 | Linux Running STREAM     |
 |                          |                          | benchmark on core 0      |
 +==========================+==========================+==========================+
-| | Interrutp count        | 99.3756%                 | 33.9323%                 |
+| | Interrupt count        | 99.3756%                 | 33.9323%                 |
 | | Bucket 1.6 us - 3.2 us |                          |                          |
 +--------------------------+--------------------------+--------------------------+
-| | Interrutp count        | 0.6244%                  | 66.0632%                 |
+| | Interrupt count        | 0.6244%                  | 66.0632%                 |
 | | Bucket 3.2 us - 6.4 us |                          |                          |
 +--------------------------+--------------------------+--------------------------+
-| | Interrutp count        | none                     | 0.0045%                  |
+| | Interrupt count        | none                     | 0.0045%                  |
 | | Bucket 6.4 us - 12.8   |                          |                          |
 |   us                     |                          |                          |
 +--------------------------+--------------------------+--------------------------+
 | Minimum interrupt        | 2.2 microseconds         | 1.8 microseconds         |
 | latency                  |                          |                          |
 +--------------------------+--------------------------+--------------------------+
-| Maximim interrupt        | 5.0 microseconds         | 8.8 microseconds         |
+| Maximum interrupt        | 5.0 microseconds         | 8.8 microseconds         |
 | latency                  |                          |                          |
 +--------------------------+--------------------------+--------------------------+
 
@@ -518,12 +520,12 @@ After the steps above, copy ethercat\_slave\_demo.bin to target under
 
 To run the inmate refer to the instructions for `**Running the Demo on
 AM572x-IDK** <#running-the-demo-on-am572x-idk>`__ . Be aware that the
-inmate start address is 0x80000000. So, you need to use it as a
-parameter at the "jailhouse cell load" command:
+inmate start address is 0x90000000. So, it has to be set at the cell
+configuration and also used as a parameter at the "jailhouse cell load" command:
 
 ::
 
-    jailhouse cell load 1 linux-loader.bin -a 0 -s "kernel=0x80000000" -a 0x100 ethercat_slave_demo.bin -a 0x80000000
+    jailhouse cell load 1 ethercat_slave_demo.bin -a 0x90000000
 
 
 Procedure to check two-way communication between the slave inmate and
@@ -1132,4 +1134,76 @@ sense and previous porting experience.
    disable an entire GPIO bank from using by Linux and use it for the
    Inmate. But it is not practical to share the same bank by the both
    Linux and Inmate.
+
+-  Even if it is possible to dedicate a timer for an inmate, the source
+   clock for that timer still comes from the SOC clock tree. That means
+   the parent clock for that timer will be controlled by Linux. So, if Linux
+   has enabled clock frequency scaling it may change the frequency of the timer's
+   source clock and that affects the timer. The inmate will not have any means to
+   disable that behavior. To avoid that Linux should run at a fixed OOP.
+
+::
+
+   root@am57xx-evm:cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+   1500000
+
+   root@am57xx-evm:echo 1500000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 
+
+  
+.. rubric:: Migration from Jailhouse v0.8 to v0.10
+   :name: migration from jailhouse v0.8 to v0.10
+
+-  The v0.10 Jailhouse has common debug UART that is shared between root-cell,
+   hypervisor and an inmate compiled with the inmate library. A cell
+   configuration for each inmate. 
+
+shall have ".console" subnode in the
+   ".cell" node
+
+::
+
+		.console = {
+			.address = 0x48020000,
+			/* .divider = 0x0d, */
+			.type = JAILHOUSE_CON_TYPE_8250,
+			.flags = JAILHOUSE_CON_ACCESS_MMIO |
+				 JAILHOUSE_CON_REGDIST_4,
+		},
+
+**must have** /* communication region */ in the ".mem_region" node
+
+::
+
+		/* communication region */ {
+			.virt_start = 0x80000000,
+			.size = 0x00001000,
+			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				JAILHOUSE_MEM_COMM_REGION,
+		},
+
+-  all inmates that uses jailhouse inmate library shall add their memory
+   regions to MMU table. This SDK doesn't provide examples to show that.
+
+-  for inmates are not started from 0x0 set the cpu_reset_address at cell
+configuration file
+
+::
+
+	.cpu_reset_address = 0x90000000,
+
+-  The new Jailhouse version uses shared communincation regions started at VA
+   0x80000000, which conflicts with the default RTOS memory configuration.
+   All RTOS based inmate memory configuration has to be updated:
+
+#. DDR start address at linker script changed from 0x80000000 to 0x90000000
+#. Also update all RTOS inmate MMU congiration to reflect the new starting
+   address
+#. As far as we don't use linux_loader anymore the RTOS imate has to start
+   from address set at cpu_reset_address. You may need to set the application
+   entry point explicitly at application configuration file
+
+::
+
+	Program.sectMap[".c_int00"] = new Program.SectionSpec();
+	Program.sectMap[".c_int00"].loadAddress = 0x90000000;
 
