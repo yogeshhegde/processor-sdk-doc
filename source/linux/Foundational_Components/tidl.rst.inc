@@ -785,8 +785,11 @@ rawSampleInData      preProcType        image pre-processing
 1                    N/A                Raw image. No pre-processing to be done, and preProcType is ignored.
 =================    ================   ===================================================================================================================================================================
 
-Sample configuration file (tidl_import_j11_v2.txt)
+Sample configuration file 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
+
+Sample configuration files for TIDL import can be found in folder /usr/share/ti/tidl/utils/test/testvecs/config/import. 
+One specific example, tidl_import_j11_v2.txt, is listed below:
 
 ::
 
@@ -1039,6 +1042,8 @@ For video sequence, below settings can be also tested:
 
 Quantization parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
 
+.._importing_tf:
+
 Importing Tensorflow Models
 ---------------------------
 
@@ -1057,6 +1062,28 @@ Following models have been validated:
    - Refer to `export_inference_graph <https://github.com/tensorflow/models/blob/f505cecde2d8ebf6fe15f40fb8bc350b2b1ed5dc/research/slim/export_inference_graph.py>`_ for generating frozen graph from checkpoint.
    - Generate frozen graph from `this checkpoint link <http://download.tensorflow.org/models/inception_v1_2016_08_28.tar.gz>`_
    - Optimze the graph using TensorFlow tool similarly to MobileNet v1.
+
+.._importing_caffe:
+
+Importing Caffe Models
+---------------------------
+
+Caffe models are descibed in two files:
+
+- Network topology definition file in text format
+- Network parameter file in binary format
+
+The input layer in network topology file may be defined with various formats, but TIDL import tool only supports the "input_shape" format, for example:
+
+::
+
+   input: "data"
+   input_shape {
+     dim: 1
+     dim: 3
+     dim: 224
+     dim: 224
+   }
 
 
 Viewer tool
@@ -1415,3 +1442,17 @@ Troubleshooting
 
   ... inc/executor.h:199: T* tidl::malloc_ddr(size_t) [with T = char; size_t = unsigned int]: Assertion `val != nullptr' failed.
   This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
+
+- Caffe import crashes with error message
+
+::
+
+    [libprotobuf FATAL <protobuf path>/protobuf/repeated_field.h:1478] CHECK failed: (index) < (current_size_):
+    terminate called after throwing an instance of 'google::protobuf::FatalException'
+    what():  CHECK failed: (index) < (current_size_):
+    Aborted (core dumped)
+
+This is usually caused by unsupported Caffe input layer format. Refer `Importing Caffe Models <Foundational_Components_TIDL.html#importing-caffe-models>`__ for more details.
+
+- TensorFlow import failed with error "Could not find the requested input Data:"
+     This is likely due to unoptimized frozen graphs. Refer `Importing Tensorflow Models <Foundational_Components_TIDL.html#importing-tensorflow-models>`__ for more details. 
