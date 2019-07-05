@@ -72,3 +72,7 @@ PRU-ADC Demo
 Video Graphics Test
 =======================
 .. include:: Examples_and_Demos/Video_Graphics_Test.rst.inc
+
+Watchdog Demo on AM654x PG 1.0
+==============================
+.. include:: Examples_and_Demos/Watchdog_demo.rst.inc
