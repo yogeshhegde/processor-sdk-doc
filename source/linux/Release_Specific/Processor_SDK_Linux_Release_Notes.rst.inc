@@ -118,7 +118,7 @@ U-Boot
 | Based on verson: 2019.01
 | URL: git.ti.com/processor-sdk/processor-sdk-u-boot.git
 | Branch: processor-sdk-u-boot-2019.01
-| Commit ID: 859e7bb93e6c5301feb48033e4b4114d444cda30
+| Commit ID: 8b90adfb1630ed19959f89d39a5100573bca90fa
 
 |
 
@@ -132,7 +132,7 @@ Kernel
 | Based on Version: 4.19.38
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-4.19.y
-| Commit ID: ed81c3db076589c592c98859a3b034ef07d680c6
+| Commit ID: 4dae378bbe721277b08699d1d88ffae12acc9b09
 
 |
 
@@ -146,7 +146,7 @@ Kernel
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-rt-4.19.y
-| Commit ID: 277c6c60137acac18a95b9185df15b178c5d3182
+| Commit ID: 1224cd679eca53e29bd3755a22dd48797d6beb92
 
 |
 
