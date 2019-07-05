@@ -1042,7 +1042,6 @@ For video sequence, below settings can be also tested:
 
 Quantization parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
 
-.._importing_tf:
 
 Importing Tensorflow Models
 ---------------------------
@@ -1063,7 +1062,6 @@ Following models have been validated:
    - Generate frozen graph from `this checkpoint link <http://download.tensorflow.org/models/inception_v1_2016_08_28.tar.gz>`_
    - Optimze the graph using TensorFlow tool similarly to MobileNet v1.
 
-.._importing_caffe:
 
 Importing Caffe Models
 ---------------------------
