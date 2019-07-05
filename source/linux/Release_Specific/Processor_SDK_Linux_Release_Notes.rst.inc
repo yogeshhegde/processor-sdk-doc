@@ -61,7 +61,7 @@ Released July 2019
 - Analytics
     - Upgrade ARMNN to latest available version (2019.05)
     - Remove restriction of number of nodes for inner product layer in TIDL Library
-    - Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control
+    - `Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control <Examples_and_Demos_Application_Demos.html#predictive-maintenance-demo>`__ 
 - AM65x
     - U-boot: support networking over ICSS-G
     - U-boot: USB hub and USB mass storage

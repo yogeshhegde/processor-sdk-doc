@@ -28,11 +28,13 @@ Processor SDK 06.00
       - pruss_soc_bus and pruss platform drivers are now built in drivers/soc/ti folder.
    - Userspace
       - New IPC and CMEM releases are needed to use with 4.19 kernel due to difference in AF_RPMSG family number and other kernel API changes. Minimum required versions are IPC 3.50.03.05 and CMEM 4.16.00.00
-- PRUETH: on AM571x IDK boards, the naming of the PRUETH supported ethernet ports has changed. In previous releases, PRU-ICSS1 (J3, J5 on IDK) corresponded to eth4/5, and PRU-ICSS2 (J6, J8 on IDK) corresponded to eth2/3. As of 06.00, this has swapped, and now PRU-ICSS1 corresponds to eth2/3, and PRU-ICSS2 corresponds to eth4/5.
+
+- PRUETH
+   - On AM571x IDK boards, the naming of the PRUETH supported ethernet ports has changed. In previous releases, PRU-ICSS1 (J3, J5 on IDK) corresponded to eth4/5, and PRU-ICSS2 (J6, J8 on IDK) corresponded to eth2/3. As of 06.00, this has swapped, and now PRU-ICSS1 corresponds to eth2/3, and PRU-ICSS2 corresponds to eth4/5.
 
 - Jailhouse AM57xx support rebased to v0.10 version
-   - added shared between Linux, hypervisor and inmate console
-   - startup code of the imate library enables MMU. An inmate has to initialize its MMU table by itself.
+   - Added shared memory region between Linux, hypervisor, and inmate console
+   - Startup code of the inmate library enables MMU. An inmate has to initialize its MMU table by itself.
 
 
 
