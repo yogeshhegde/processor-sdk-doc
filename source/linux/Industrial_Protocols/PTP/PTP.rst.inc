@@ -950,40 +950,41 @@ signal between master and slave OC clock.
 PTP Boundary Clock
 ==================
 
-PTP boundary clock (BC) is supported on AM571x and AM572x IDKs. In the
-case of AM571x IDK, BC with two or three ports is supported. These two
-or three ports can be any combination of the three ports, i.e., GMAC
-port, one ICSS1 PRU port and one ICSS2 PRU port. In the case of AM572x
-IDK, BC with two ports, i.e., GMAC port and one ICSS2 PRU port, is
-supported.
+PTP boundary clock (BC) is supported on AM571x, AM572x and AM574x IDKs.
+In the case of AM571x IDK, BC with two to five ports is supported. These
+five ports can be any combination of GMAC and PRU ports, i.e., GMAC
+port, one or two ICSS1 PRU ports and one or two ICSS2 PRU ports. In the
+case of AM572x or AM574x IDK, BC with three ports, i.e., GMAC port and
+one or two ICSS2 PRU port, is supported.
 
 Software Overview
----------------------
+-----------------
 
 There are four main components to the software together to provide the
 boundary clock functionality. These are, from low to high level, the
 ICSS PRU firmware, the related kernel ethernet drivers, the linuxptp
 ptp4l application and the linuxptp phc2sys application.
 
-.. rubric:: ICSS PRU Firmware
-   :name: icss-pru-firmware
+ICSS PRU Firmware
+^^^^^^^^^^^^^^^^^
 
 The ICSS PRU firmware used in BC is the PRP firmware (with PTP
 timestamping capability enabled) configured to run in Single Attached
-Node (SAN) mode, or the Dual EMAC firmware.
+Node (SAN) mode or Dual Attached Node (DAN), the HSR firmware or the
+Dual EMAC firmware.
 
-.. rubric:: CPSW/CPTS Ethernet Driver
-   :name: cpswcpts-ethernet-driver
+CPSW/CPTS Ethernet Driver
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is the same CPSW/CPTS Ethernet driver implemented for GMAC PTP OC.
 
-.. rubric:: ICSS-PRU/IEP Ethernet Driver
-   :name: icss-pruiep-ethernet-driver
+ICSS-PRU/IEP Ethernet Driver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is the same ICSS PRU Ethernet driver implemented for PTP OC.
 
-.. rubric:: BC Internal Clock Sync Monitoring Driver
-   :name: bc-internal-clock-sync-monitoring-driver
+BC Internal Clock Sync Monitoring Driver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A thin PTP BC driver layer is added on top of the ICSS-PRU/IEP and
 CPSW/CPTS Ethernet drivers in order to support the BC internal clock
@@ -994,16 +995,16 @@ PPS enablement is necessary because, at any instance of time, at most
 one clock can enable its PPS. For otherwise the SoC may be permanently
 damaged.
 
-.. rubric:: Application linuxptp ptp4l
-   :name: application-linuxptp-ptp4l
+Application linuxptp ptp4l
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is the application provides the BC PTP functionality. In the AM57xx
 BC, the linuxptp ptp4l program is configured to run in jbod (just a
 bunch of device) mode, i.e., the BC PTP clock is modelled on more than
 one internal clocks instead of one single clock.
 
-.. rubric:: Application linuxptp phc2sys
-   :name: application-linuxptp-phc2sys
+Application linuxptp phc2sys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The linuxptp phc2sys is used to perform synchronization of the internal
 clocks of a BC in jbod mode. For AM57xx BC, the phc2sys is enhanced to
@@ -1015,8 +1016,8 @@ clock adjustment, usually in ppb of the nominal clock frequency, which
 is then passed to the kernel driver for clock adjustment by calling
 Linux PTP subsystem's standard API.
 
-.. rubric:: Internal Clock Synchronization
-   :name: internal-clock-synchronization
+Internal Clock Synchronization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Although the PTP clock time in the PTP network of the BC appears coming
 from one clock source, the PTP clock time available on the AM57xx
@@ -1061,13 +1062,12 @@ Refer to the :ref:`PLSDK_PTP_HW_Mods-label`
 Test Setup/Procedure
 --------------------
 
-.. rubric:: A Sample BC Setup
-   :name: a-sample-bc-setup
+Sample BC Setups
+^^^^^^^^^^^^^^^^
 
-A sample set up for testing purpose is shown below.
+A sample set up for 3-port BC for testing purpose is shown below.
 
 .. Image:: ../images/Bc_connect.jpg
-
 
 In this scenario, the BC ICSS2 PRU port (interface eth2) is in PTP
 slave state (ICSS2-IEP is the BC internal master clock). The other two
@@ -1075,12 +1075,23 @@ ports, BC ICSS1 (interface eth4) and BC CPSW/CPTS (interface eth1) are
 in PTP master state (ICSS1-IEP and CPTS are the BC internal slave
 clocks).
 
+A sample set up for BC with HSR/PRP ports for testing purpose is shown
+below.
+
+.. Image:: ../images/Bc_dan_connect.jpg
+
+In this scenario, the BC CPSW/CPTS (interface eth1) is in PTP
+slave state (CPTS is the BC internal master clock). The other two
+ports, BC ICSS1 (interface eth4/eth5) and BC ICSS2 (interface eth2/3) are
+in PTP master state (ICSS1-IEP and ICSS2-IEP are the BC internal slave
+clocks).
+
 
 .. rubric:: Getting a PTP master clock ready
    :name: getting-a-ptp-master-clock-ready
 
 Start a reference PTP master clock that is connected in the PTP network
-as shown in the `sample setup <#a-sample-bc-setup>`__.
+as shown in the `sample setup <#sample-bc-setups>`__.
 
 If the PTP master clock is an AM572x OC running linuxptp ptp4l, and for
 testing purpose, a line such as
@@ -1102,8 +1113,8 @@ This section assumes that an AM571x is used. It should be similar for
 AM572x (or AM574x IDK) except that information about ICSS1 PRU (PRUSS1), eth4 and eth5
 are not applicable.
 
-.. rubric:: Hardware
-   :name: hardware
+Hardware
+^^^^^^^^
 
 .. rubric:: AM571x IDK
    :name: am571x-1 idk
@@ -1214,8 +1225,8 @@ and this more J21 focused of the same picture above
 
 .. Image:: ../images/Am574x_j21.png
 
-.. rubric:: Software
-   :name: software-1
+Software
+^^^^^^^^
 
 See a complete sample log for AM571x BC log
 `here <http://processors.wiki.ti.com/images/2/20/Bc_20180112.pdf>`__. As
@@ -1224,8 +1235,7 @@ shell scripts are displayed. Some of the scrits are for retrieving
 system information while others are for performing configurations. These
 sample scripts are for informational purpose only.
 
-If using the PRP firmware configured to
-run in SAN mode, make sure to boot up the kernel with the parameters
+If using the PRP firmware, make sure to boot up the kernel with the parameters
 
 -  ti\_prueth.pruss1\_ethtype=2
 -  ti\_prueth.pruss2\_ethtype=2
@@ -1260,7 +1270,8 @@ the command
     $ ls /sys/devices/platform/44000000.ocp/48484000.ethernet/net
       eth0/ eth1/
 
-If using PRP firmware, enable SAN mode on each of the ICSS PRU interfaces
+If using PRP firmware configured to run in SAN mode, enable EMAC mode on
+each of the ICSS PRU interfaces
 (assuming eth2 and eth3 are on ICSS2, eth4 and eth5 are on ICSS1):
 
 ::
@@ -1284,41 +1295,339 @@ Next, configure each BC interface with a proper IP address. For example,
 
     $ ifconfig eth4 192.168.4.1
 
+If using PRP firmware configured to run in DAN mode, configure each BC interface
+with a proper IP address. For example,
+
+::
+
+    $ ifconfig eth1 192.168.1.1
+
+::
+
+    $ ifconfig eth2 hw ether 70:FF:76:1C:0E:8C
+    $ ifconfig eth3 hw ether 70:FF:76:1C:0E:8C
+    $ ethtool -K eth2 prp-rx-offload on
+    $ ethtool -K eth3 prp-rx-offload on
+    $ ifconfig eth2 up
+    $ ifconfig eth3 up
+    $ ip link add name prp0 type prp slave1 eth2 slave2 eth3 supervision 45 version 1
+    $ ifconfig prp0 192.168.2.1
+
+::
+
+    $ ifconfig eth4 hw ether 70:FF:76:1C:0E:90
+    $ ifconfig eth5 hw ether 70:FF:76:1C:0E:90
+    $ ethtool -K eth4 prp-rx-offload on
+    $ ethtool -K eth5 prp-rx-offload on
+    $ ifconfig eth4 up
+    $ ifconfig eth5 up
+    $ ip link add name prp1 type prp slave1 eth4 slave2 eth5 supervision 45 version 1
+    $ ifconfig prp1 192.168.4.1
+
+
+If using the HSR firmware, make sure to boot up the kernel with the parameters
+
+-  ti\_prueth.pruss1\_ethtype=1
+-  ti\_prueth.pruss2\_ethtype=1
+
+in the bootargs. The firmware
+
+-  am57xx-pru0-pruhsr-fw.elf
+-  am57xx-pru1-pruhsr-fw.elf
+
+will be loaded.
+
+Make sure the following two lines appear in the start up log:
+
+::
+
+    prueth pruss2_eth: TI PRU ethernet (type 1) driver initialized
+    prueth pruss1_eth: TI PRU ethernet (type 1) driver initialized
+
+Once the AM57xx IDK is boot into kernel prompt, use command, for
+example,
+
+::
+
+    $ ls /sys/devices/platform/pruss1_eth/net
+      eth4/  eth5/
+
+to see which interface is available on which ICSS. For GMAC port, use
+the command
+
+::
+
+    $ ls /sys/devices/platform/44000000.ocp/48484000.ethernet/net
+      eth0/ eth1/
+
+
+Next, configure each BC interface with a proper IP address. For example,
+
+::
+
+    $ ifconfig eth1 192.168.1.1
+
+::
+
+    $ ifconfig eth2 hw ether 70:FF:76:1C:0E:8C
+    $ ifconfig eth3 hw ether 70:FF:76:1C:0E:8C
+    $ ethtool -K eth2 hsr-rx-offload on
+    $ ethtool -K eth3 hsr-rx-offload on
+    $ ifconfig eth2 up
+    $ ifconfig eth3 up
+    $ ip link add name hsr0 type hsr slave1 eth2 slave2 eth3 supervision 45 version 1
+    $ ifconfig hsr0 192.168.2.1
+
+::
+
+    $ ifconfig eth4 hw ether 70:FF:76:1C:0E:90
+    $ ifconfig eth5 hw ether 70:FF:76:1C:0E:90
+    $ ethtool -K eth4 hsr-rx-offload on
+    $ ethtool -K eth5 hsr-rx-offload on
+    $ ifconfig eth4 up
+    $ ifconfig eth5 up
+    $ ip link add name hsr1 type hsr slave1 eth4 slave2 eth5 supervision 45 version 1
+    $ ifconfig hsr1 192.168.4.1
+
+
 .. rubric:: Starting the BC applications
    :name: starting-the-bc-applications
 
-Make sure the linuxptp BC configuration file bc.cfg (included in zip
-file)
+Refer to the sample linuxptp BC configuration files bc.cfg, bc_hsr.cfg and bc_prp.cfg
+as described below:
 
+bc.cfg: BC with GMAC and four ICSS ports
 ::
 
     [global]
-    sanity_freq_limit 0
-    step_threshold 0.000002
-    tx_timestamp_timeout 10
-    logMinPdelayReqInterval -3
-    logSyncInterval -3
-    twoStepFlag 1
-    summary_interval 0
-    [eth1]
-    boundary_clock_jbod 1
-    egressLatency 146
-    ingressLatency 346
-    [eth2]
-    boundary_clock_jbod 1
-    egressLatency 726
-    ingressLatency 186
-    [eth4]
-    boundary_clock_jbod 1
-    egressLatency 726
-    ingressLatency 186
+    sanity_freq_limit            0
+    step_threshold               0.000002
+    tx_timestamp_timeout         10
+    logMinPdelayReqInterval      0
+    logSyncInterval              0
+    logAnnounceInterval          0
+    announceReceiptTimeout       3
+    syncReceiptTimeout           2
+    twoStepFlag                  1
+    summary_interval             0
+    doubly_attached_clock        2
 
-is available in the filesystem. Start ptp4l in the background and with
-display log to stdout enabled:
+    [eth1]
+    boundary_clock_jbod          1
+    egressLatency                146
+    ingressLatency               346
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [eth2]
+    boundary_clock_jbod          1
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+    [eth3]
+    boundary_clock_jbod          1
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+
+    [eth4]
+    boundary_clock_jbod          1
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+    [eth5]
+    boundary_clock_jbod          1
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+bc_prp.cfg: BC with GMAC and two PRP ports:
+::
+
+    [global]
+    sanity_freq_limit            0
+    step_threshold               0.000002
+    tx_timestamp_timeout         10
+    logMinPdelayReqInterval      0
+    logSyncInterval              0
+    logAnnounceInterval          0
+    announceReceiptTimeout       3
+    syncReceiptTimeout           2
+    twoStepFlag                  1
+    summary_interval             0
+    doubly_attached_clock        2
+
+    [eth1]
+    boundary_clock_jbod          1
+    egressLatency                146
+    ingressLatency               346
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [prp0]
+    boundary_clock_jbod          1
+    redundancy                   2
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [eth2]
+    boundary_clock_jbod          1
+    redundancy                   2
+    redundancy_master_interface  prp0
+    redundancy_slave_number      1
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+    [eth3]
+    boundary_clock_jbod          1
+    redundancy                   2
+    redundancy_master_interface  prp0
+    redundancy_slave_number      2
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+
+    [prp1]
+    boundary_clock_jbod          1
+    redundancy                   2
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [eth4]
+    boundary_clock_jbod          1
+    redundancy                   2
+    redundancy_master_interface  prp1
+    redundancy_slave_number      1
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+    [eth5]
+    boundary_clock_jbod          1
+    redundancy                   2
+    redundancy_master_interface  prp1
+    redundancy_slave_number      2
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+
+bc_hsr.cfg: BC with GMAC and two HSR ports:
+::
+
+    [global]
+    sanity_freq_limit            0
+    step_threshold               0.000002
+    tx_timestamp_timeout         10
+    logMinPdelayReqInterval      0
+    logSyncInterval              0
+    logAnnounceInterval          0
+    announceReceiptTimeout       3
+    syncReceiptTimeout           2
+    twoStepFlag                  1
+    summary_interval             0
+    doubly_attached_clock        2
+
+    [eth1]
+    boundary_clock_jbod          1
+    egressLatency                146
+    ingressLatency               346
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [hsr0]
+    boundary_clock_jbod          1
+    redundancy                   1
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [eth2]
+    boundary_clock_jbod          1
+    redundancy                   1
+    redundancy_master_interface  hsr0
+    redundancy_slave_number      1
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+    [eth3]
+    boundary_clock_jbod          1
+    redundancy                   1
+    redundancy_master_interface  hsr0
+    redundancy_slave_number      2
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+
+    [hsr1]
+    boundary_clock_jbod          1
+    redundancy                   1
+    delay_mechanism              P2P
+    network_transport            L2
+
+    [eth4]
+    boundary_clock_jbod          1
+    redundancy                   1
+    redundancy_master_interface  hsr1
+    redundancy_slave_number      1
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+    [eth5]
+    boundary_clock_jbod          1
+    redundancy                   1
+    redundancy_master_interface  hsr1
+    redundancy_slave_number      2
+
+    delay_mechanism              P2P
+    network_transport            L2
+    egressLatency                726
+    ingressLatency               186
+    fault_reset_interval         0
+
+
+
+Start ptp4l in the background and with display log to stdout enabled:
 
 ::
 
-    $ ptp4l -2 -P -f bc.cfg -m &
+    $ ptp4l -f bc.cfg -m &
 
 Wait to see the PTP slave port clock is sync and stabilized, for
 example, seeing similar lines:
@@ -1334,7 +1643,7 @@ background
 
 ::
 
-    $ phc2sys -a -X -g eth1 -S 0.00002 -L 0 -m  &
+    $ phc2sys -a -X -g eth1 -S 0.000002 -L 0 -m  &
 
 where the new options added in this implementation are
 
@@ -1355,7 +1664,7 @@ Lines similar to the following should be displayed after a few seconds
 
 Start an AM57xx OC in slave only mode connected to a BC's master port,
 for example, the AM572x OC-3 in the `sample
-setup <#a-sample-bc-setup>`__. To make sure the OC is started in slave
+setup <#sample-bc-setups>`__. To make sure the OC is started in slave
 only mode, the ptp4l command
 
 ::
@@ -1371,9 +1680,9 @@ reference PTP master clock's PPS.
 To force a port state change on the BC ports for testing purpose, one
 can bring down the current reference PTP master clock and bring up
 another reference PTP master clock connected to, for example, the BC's
-eth1 interface in the `sample setup <#a-sample-bc-setup>`__. Or simply
+eth1 interface in the `sample setup <#sample-bc-setups>`__. Or simply
 rearrange the cable connections in the `sample
-setup <#a-sample-bc-setup>`__ as shown below.
+setup <#sample-bc-setups>`__ as shown below.
 
 .. Image:: ../images/Bc_reconnect.jpg
 
@@ -1381,7 +1690,7 @@ See
 `here <http://processors.wiki.ti.com/images/8/83/Bc_reconnect_20180112.pdf>`__
 for a sample log when the BC's cables are reconnected. The sample log
 starts right before when the cable is disconnected from eth2 on BC's
-ICSS2 in the `sample setup <#a-sample-bc-setup>`__.
+ICSS2 in the `sample setup <#sample-bc-setups>`__.
 
 Test Results
 -------------
@@ -1430,11 +1739,24 @@ Test Results
 
 .. Image:: ../images/Pic_ptp_bc_eth4_eth2.png
 
+.. rubric:: BC (GMAC ICSS1-HSR)
+   :name: bc-gmac-icss1-hsr
+
+| Oregano <==> BC-GMAC-eth1 <==> BC-ICSS1-eth4/5(HSR) <==> OC-ICSS2-eth2/3(HSR)
+
+.. Image:: ../images/Pic_ptp_bc_eth1_eth4_hsr.png
+
+
+.. rubric:: BC (GMAC ICSS1-PRP)
+   :name: bc-gmac-icss1-prp
+
+| Oregano <==> BC-GMAC-eth1 <==> BC-ICSS1-eth4/5(PRP) <==> OC-ICSS2-eth2/3(PRP)
+
+.. Image:: ../images/Pic_ptp_bc_eth1_eth4_prp.png
+
+
 Limitations
 -----------
-
--  At most one port from each of the three modules, CPSW, ICSS1 and
-   ICSS2, can be as a BC interface.
 
 -  In the current implementation, when running more than one OC, for
    example, ICSS1 OC and ICSS2 OC, only one pps can be enabled through
