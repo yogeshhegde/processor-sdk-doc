@@ -28,7 +28,7 @@ in the Processor SDK for Linux will be built for hard-fp.
 
 The name of the toolchain binaries have also been updated from older
 versions of the SDK. Previous versions may have used a prefix of
-"**arm-arago-linux-gnueabi-**". Current SDK toolchains uses a prefix of
+"**arm-arago-linux-gnueabi-**". Current SDK ARMv7 toolchains use a prefix of
 "**arm-linux-gnueabihf-**" For example, the new toolchain's gcc compiler
 is named **arm-linux-gnueabihf-gcc**.
 
@@ -58,18 +58,42 @@ components of the toolchain.
    :name: cross-compilerstools
 
 The cross-compilers and tools such as qmake2 can be found the the
-**<SDK INSTALL DIR>/linux-devkit/bin** directory. Adding this
+**<SDK INSTALL DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin** directory. Adding this
 directory to your PATH will allow using these tools. For example:
 
 **host# export PATH="<SDK INSTALL
 DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin:$PATH"**
 
-The cross-compile tools are prefixed with the **arm-linux-gnueabihf-**
-prefix. i.e. the GCC cross compiler is called
-**arm-linux-gnueabihf-gcc**. Additional tools are also located here
-such as the **qmake2, rcc, uic** tools used by Qt. In addition there
-is a qt.conf file that can be used by tools such as Qt creator to use
-the pre-built libraries found in the Linux SDK.
+Additional tools are also located here such as the **qmake2, rcc, uic** tools
+used by Qt. In addition there is a qt.conf file that can be used by tools such
+as Qt creator to use the pre-built libraries found in the Linux SDK.
+
+.. rubric:: Toolchain Prefix
+   :name: toolchain-prefix
+
+The cross-compile tools are prefixed with a unique target triplet which
+indicates the architecture and OS of the output executable code. For example,
+the prefix **arm-linux-gnueabihf-** indicates the ARMv7 achitecture running the
+Linux OS, and thus the corresponding GCC cross compiler is called
+**arm-linux-gnueabihf-gcc**.
+
+Reference the table below for all toolchain prefixes and their corresponding
+architectures found in Processor SDK.
+
++-----------------------+--------------+-------------------------------------------------------------------------+
+| Toolchain Prefix      | Architecture | Processor SDK Device                                                    |
++-----------------------+--------------+-------------------------------------------------------------------------+
+| arm-oe-linux-gnueabi- | ARMv5        | omapl138-lcdk                                                           |
++-----------------------+--------------+-------------------------------------------------------------------------+
+| arm-linux-gnueabihf-  | ARMv7        | am335x-evm, am437x-evm, am57xx-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm |
++-----------------------+--------------+-------------------------------------------------------------------------+
+| aarch64-linux-gnu-    | ARMv8        | am65xx-evm                                                              |
++-----------------------+--------------+-------------------------------------------------------------------------+
+
+In an effort to be succient, the specific toolchain prefix will be replaced with
+${TOOLCHAIN_PREFIX} in the examples below. In fact, the
+`environment-setup script <#environment-setup-script>`__, described below, will
+set this variable in your environment.
 
 .. rubric:: Cross-Compiled Libraries
    :name: cross-compiled-libraries
@@ -93,7 +117,7 @@ an example if your application wants access to the alsa asound library
 then you can now do the following command (assuming you have added the
 cross compiler to your PATH):
 
-**host# arm-linux-gnueabihf-gcc -lasound app.c -o app.out**
+**host# ${TOOLCHAIN_PREFIX}gcc -lasound app.c -o app.out**
 | 
 
 .. rubric:: environment-setup script
@@ -181,7 +205,7 @@ having been added to our PATH.
 | 
 
 **host# <SDK INSTALL
-DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin/arm-linux-gnueabihf-gcc
+DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin/${TOOLCHAIN_PREFIX}gcc
 helloworld.c -o helloworld**
 
 | 
@@ -291,7 +315,7 @@ DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin/:$PATH"**
 
 | 
 
-**arm-linux-gnueabihf-gcc '**\ **-lpthread'** **thread-ex.c -o thread-ex**
+**${TOOLCHAIN_PREFIX}gcc '**\ **-lpthread'** **thread-ex.c -o thread-ex**
 
 | 
 
