@@ -66,7 +66,6 @@ Released July 2019
     - SMP mode support for PDK Drivers along with examples on A15/A53 cores
     - Support for parallel make (-j) for all targets except k2h/k2k
 - AM65x
-    - SBL Example app with XIP
     - Serdes Diagnostic application
     - PCIE QoS example
     - EMAC LLD: ICSS-G SWITCH enhancements below
@@ -84,8 +83,7 @@ Released July 2019
     
     
 - AM57xx
-    - SMP mode support for PDK Drivers along with examples
-    - GPMC + FPGA SW example
+    - GPMC + FPGA SW example on CSL-FL
 
 .. note::
    | C64P big endian targets are no longer supported since this release. 
@@ -344,6 +342,8 @@ release and any known workaround.
 	PRSDK-3864,"am571x-idk, am572x-idk, am574x-idk",High-Speed Drivers,Missing USB disconnect event on USB device mode on AM5xx
 	PRSDK-6158,"am335x-evm,	am335x-ice,	am335x-sk,am437x-evm,am437x-hsevm,am437x-idk,amic110-ice,beagleboneblack",Control Drivers,"UART_BasicExample_TestProject: task creation fails","Use the default task stack size. In the test/src/main_uart_test.c, comment out the lines which increases the task stack size. i.e comment out the following line in the test code - taskParams.stackSize = 0x20000; This will restore the task stack size to default and workarounds the issue"
 	PRSDK-6152,"am654x-evm,	am654x-idk",Control Drivers,"UART BasicExample_DMA: ti.sysbios.heaps.HeapMem: line 221: out of memory: handle=0x7003190c, size=8192","Increase the sysbios heapSize to 64K in the ti/drv/uart/test/am65xx/uartUnitTest_r5.cfg. Please refer to the fix which is available in http://git.ti.com/keystone-rtos/uart-lld/commit/8976c817fee427acc72447028ae47c3c7c3dca93"
+	PRSDK-6109,"am654x-evm,	am654x-hsevm,am654x-idk",Boot,"ROM load time of SBL increased on GP devices","Use ROM degenrate key on GP devices for signing the SBL. To do this, overwrite ti/build/k3_dev_mpk.pem with ti/build/rom_degenerateKey.pem before building the SBL"
+
 .. RN_Supported-Platforms-label:
 
 Supported Platforms 
