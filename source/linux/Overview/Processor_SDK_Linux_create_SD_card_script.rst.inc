@@ -43,24 +43,6 @@ If you fail to execute the script without root permissions you will
 receive a message that root permissions are required and the script will
 exit.
 
-| 
-
-.. rubric:: Select the Target Board [AM65x/DRA80xM Only]
-   :name: select-am65x-target-board
-
-Due to a limitation in automatically detecting the specific board, the script
-for AM65x/DRA80xM will request this information from the user. The following
-options are available:
-
-#. **am65x_evm** : AM654x EVM (`TMDX654GPEVM <http://www.ti.com/tool/TMDX654GPEVM>`__)
-#. **am65x_idk** : AM654x Industrial Development Kit (`TMDX654IDKEVM <http://www.ti.com/tool/TMDX654IDKEVM>`__)
-#. **unknown**
-
-This information is used to determine which board features are required to be
-enabled in the Linux kernel. Therefore, if unsure, **unknown** is a valid
-option. The resulting SD card will be capable of booting Linux, but minimal
-board support will be available.
-
 |
 
 .. rubric:: Select the SD Card Device
