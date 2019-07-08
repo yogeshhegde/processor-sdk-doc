@@ -94,6 +94,8 @@ source/rtos/PDK_Platform_Software/Device_Drivers/FATFS.rst
 http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_FATFS
 source/rtos/PDK_Platform_Software/Device_Drivers/I2C.rst
 http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_I2C
+source/rtos/PDK_Platform_Software/Device_Drivers/Serdes_Diag.rst
+http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Serdes_Diag
 source/rtos/PDK_Platform_Software/Device_Drivers/ICSS_EMAC_LLD_FW.rst
 http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_ICSS-EMAC(DRIVER,FIRMWARE)
 source/rtos/PDK_Platform_Software/Device_Drivers/TSIP.rst
