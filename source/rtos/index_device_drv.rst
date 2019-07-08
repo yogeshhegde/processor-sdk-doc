@@ -185,6 +185,12 @@ IOLINK
 
 
 ***********
+Serdes Diag
+***********
+.. include:: PDK_Platform_Software/Device_Drivers/Serdes_Diag.rst.inc
+
+
+***********
 OSAL
 ***********
 .. include:: PDK_Platform_Software/Device_Driver_Utilities/OSAL.rst.inc
@@ -193,7 +199,7 @@ OSAL
 ***********
 Profiling
 ***********
-.. include:: PDK_Platform_Software/Device_Driver_Utilities/Profiling.rst.inc  
+.. include:: PDK_Platform_Software/Device_Driver_Utilities/Profiling.rst.inc 
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
 | .. Image:: ../../../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
