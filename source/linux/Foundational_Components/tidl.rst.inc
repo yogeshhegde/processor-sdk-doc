@@ -1368,10 +1368,10 @@ Sparse fine tuned (~61% zero coefficients)    65.77%
 Troubleshooting
 ===============
 - Validate OpenCL stack is running
-  Upon Linux boot, OpenCL firmwares are downloaded to DSP and EVE.
-  As OpenCL monitor for IPU1 (which controls EVEs) is new addition, here is expected trace:
-  Enter following command on target: cat /sys/kernel/debug/remoteproc/remoteproc0/trace0
-  Following output is expected, indicating number of available EVE accelerators (below AM5729 trace indicates 4 EVEs):
+      Upon Linux boot, OpenCL firmwares are downloaded to DSP and EVE.
+      As OpenCL monitor for IPU1 (which controls EVEs) is new addition, here is expected trace:
+      Enter following command on target: cat /sys/kernel/debug/remoteproc/remoteproc0/trace0
+      Following output is expected, indicating number of available EVE accelerators (below AM5729 trace indicates 4 EVEs):
 
 ::
 
@@ -1397,12 +1397,12 @@ Troubleshooting
 [0][      4.027] [t=0x0260edc5] xdc.runtime.Main: Done OpenCL runtime initialization. Waiting for messages...
 
 
-- Please verify that CMEM is active and running:
+- Verify that CMEM is active and running:
     - cat /proc/cmem
     - lsmod | grep "cmem"
     - Default CMEM size is not sufficient for devices with more than 2 EVEs (make ~56-64MB available per EVE).
 
-- Verify model preparation procedure
+- **Verify model preparation procedure**
 
 - Import process may not give enough information if it fails to import external model.
     E.g. following report can be seen if format is not recognized (in this case, an attempt to import Keras model was made):
@@ -1434,14 +1434,15 @@ Troubleshooting
      Still features maps (of intermediate layers) are supposed to be rather similar. If something is significantly different, please try to change
      number of bits for weights, or repeat import processing with more representative image. Problems of this sort should be rarely encountered. 
 
-- Typical errors in runtime (when to reboot the platform)
+- **Typical errors in runtime (when to reboot the platform)**
 
 ::
 
   ... inc/executor.h:199: T* tidl::malloc_ddr(size_t) [with T = char; size_t = unsigned int]: Assertion `val != nullptr' failed.
-  This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
 
-- Caffe import crashes with error message
+This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
+
+- **Caffe import crashes with error message**
 
 ::
 
