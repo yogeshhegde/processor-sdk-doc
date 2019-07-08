@@ -83,7 +83,7 @@ Refer Release Note for Serdes Diag support across different EVMs
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 || Name                 || Description          ||  Expected Results    | SoC Supported       | Build Type          |
 +=======================+=======================+=======================+=====================+=====================+
-| serdes_diag_BER_app   || Runs BER test        || Following prints will|    AM65xx,          | makefile            |
+| serdes_diag_BER_app   || BER example          || Following prints will|    am65xx           | makefile            |
 |                       |                       |  come on console based|                     |                     |
 |                       |                       |  on pass/fail         |                     |                     |
 |                       |                       |  criteria:            |                     |                     |
@@ -91,19 +91,27 @@ Refer Release Note for Serdes Diag support across different EVMs
 |                       |                       || **Pass criteria:**   |                     |                     |
 |                       |                       ||                      |                     |                     |
 |                       |                       || The sweep results are|                     |                     |
-|                       |                       |  printed into file    |                     |                     |
-|                       |                       |                       |                     |                     |
+|                       |                       |  printed into a text  |                     |                     |
+|                       |                       |  file                 |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
-| serdes_diag_EYE_app   || Runs EYE test        || Following prints will|    AM65xx,          | makefile            |
+| serdes_diag_EYE_app   || EYE example          || Following prints will|    am65xx           | makefile            |
 |                       |                       |  come on console based|                     |                     |
 |                       |                       |  on pass/fail         |                     |                     |
 |                       |                       |  criteria:            |                     |                     |
 |                       |                       ||                      |                     |                     |
 |                       |                       || **Pass criteria:**   |                     |                     |
 |                       |                       ||                      |                     |                     |
-|                       |                       || The sweep results are|                     |                     |
-|                       |                       |  printed into file    |                     |                     |
-|                       |                       |                       |                     |                     |
+|                       |                       || I2C Test: 100Kbps:   |                     |                     |
+|                       |                       |  PASS                 |                     |                     |
+|                       |                       ||                      |                     |                     |
+|                       |                       || I2C Test: 400Kbps:   |                     |                     |
+|                       |                       |  PASS                 |                     |                     |
+|                       |                       ||                      |                     |                     |
+|                       |                       || I2C Test: timeout    |                     |                     |
+|                       |                       |  test passed          |                     |                     |
+|                       |                       ||                      |                     |                     |
+|                       |                       || All tests have       |                     |                     |
+|                       |                       |  passed.              |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
 .. note::
@@ -142,12 +150,12 @@ Additional References
 | **Document**          |  **Location**                            |
 +-----------------------+------------------------------------------+
 | API Reference Manual  | $(TI_PDK_INSTALL_DIR)\\packages\\ti      |
-|                       | \\diag\\serdes_diag\\docs\\doxygen\\html\\index.  |
-|                       | html                                     |
+|                       | \\diag\\serdes_diag\\docs\\doxygen\\html |
+|                       | \\index.html                             |
 +-----------------------+------------------------------------------+
 | Release Notes         | $(TI_PDK_INSTALL_DIR)\\packages\\ti      |
-|                       | \\diag\\serdes_diag\\docs\\Serdes_Diag_Release_Notes    |
-|                       | .pdf                                    |
+|                       | \\diag\\serdes_diag\\docs\\Serdes_Diag_  |
+|                       | Release_Notes.pdf                        |
 +-----------------------+------------------------------------------+
 
 | 

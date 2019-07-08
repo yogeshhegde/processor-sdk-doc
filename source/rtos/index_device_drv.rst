@@ -33,6 +33,11 @@ I2C
 ***********
 .. include:: PDK_Platform_Software/Device_Drivers/I2C.rst.inc
 
+***********
+Serdes Diag
+***********
+.. include:: PDK_Platform_Software/Device_Drivers/Serdes_Diag.rst.inc
+
 
 ***********
 McSPI-QSPI-OSPI
@@ -182,12 +187,6 @@ VPS Drivers
 IOLINK
 ***********
 .. include:: PDK_Platform_Software/Device_Drivers/IOLINK.rst.inc
-
-
-***********
-Serdes Diag
-***********
-.. include:: PDK_Platform_Software/Device_Drivers/Serdes_Diag.rst.inc
 
 
 ***********
