@@ -83,6 +83,17 @@ Rules.make file.
 The following sections cover the Makefile found in the top-level of the
 Processor Linux SDK
 
+.. rubric:: Required Host Packages
+   :name: makefile-required-packages
+
+Please run the following command to install all packages required to by the
+makefile targets.
+
+::
+
+    host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc
+
+
 .. rubric:: Target Types
    :name: target-types
 
