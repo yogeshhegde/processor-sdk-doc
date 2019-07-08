@@ -178,6 +178,12 @@ for a given device additional targets may also be defined:
 -  **ipc_examples** - Builds the IPC examples provided in the IPC
    component
 
+Support for parallelism (-j <job slots>)
+----------------------------------------
+Support for parallel make (-j) is available on the top level makefile targets 'all' and 'clean'
+and it improves the build time. This feature is available from Processor SDK RTOS 6.0 onwards 
+and has been tested with <job slots> up to 4.
+
 | 
 
 Usage Examples
@@ -193,13 +199,13 @@ Windows
 
 ::
 
-     C:\ti\processor_sdk_rtos_[soc]_[version]> gmake
+     C:\ti\processor_sdk_rtos_[soc]_[version]> gmake -j4
 
 -  Clean all
 
 ::
 
-     C:\ti\processor_sdk_rtos_[soc]_[version]> gmake clean
+     C:\ti\processor_sdk_rtos_[soc]_[version]> gmake clean -j4
 
 Linux
 ------
@@ -208,13 +214,13 @@ Linux
 
 ::
 
-     ~/ti/processor_sdk_rtos_[soc]_[version]$ make
+     ~/ti/processor_sdk_rtos_[soc]_[version]$ make -j4
 
 -  Clean all
 
 ::
 
-     ~/ti/processor_sdk_rtos_[soc]_[version]$ make clean
+     ~/ti/processor_sdk_rtos_[soc]_[version]$ make clean -j4
 
 | 
 

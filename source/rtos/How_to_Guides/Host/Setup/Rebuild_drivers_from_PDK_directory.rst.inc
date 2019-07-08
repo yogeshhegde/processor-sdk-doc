@@ -49,6 +49,14 @@ commands:
     C:\ti\pdk_[soc]_[version]\packages>gmake clean
     C:\ti\pdk_[soc]_[version]\packages>gmake all
 
+Please note that the user can specify parallelism with the make option -j to reduce 
+the build time for targets 'all' and 'clean'. For example,
+
+::
+
+    C:\ti\pdk_[soc]_[version]\packages>gmake clean -j4
+    C:\ti\pdk_[soc]_[version]\packages>gmake all -j4
+
 Individual PDK components can be cleaned and rebuilt with the following
 commands:
 
@@ -61,6 +69,10 @@ commands:
 
     C:\ti\pdk_[soc]_[version]\packages>gmake i2c_clean
     C:\ti\pdk_[soc]_[version]\packages>gmake i2c
+
+Please note that parallel make (-j4) is not supported within individual 
+PDK components. It is supported only at the top level (C:\\ti\\pdk_[soc]_[version]\\packages)
+for targets 'all' and 'clean'
 
 PDK users can invoke the build for specific core and specific platform
 using the following syntax. This will help save lot of build time on
@@ -126,8 +138,16 @@ commands:
 
 ::
 
-    ~/ti/pdk_[soc]_[version]/packages$ make clean
-    ~/ti/pdk_[soc]_[version]/packages$ make all
+    ~/ti/pdk_[soc]_[version]/packages$ make clean 
+    ~/ti/pdk_[soc]_[version]/packages$ make all 
+
+Please note that the user can specify parallelism with the make option -j to reduce 
+the build time for targets 'all' and 'clean'. For example,
+
+::
+
+    ~/ti/pdk_[soc]_[version]/packages$ make clean -j4
+    ~/ti/pdk_[soc]_[version]/packages$ make all -j4
 
 Individual PDK components can be cleaned and rebuilt with the following
 commands:
@@ -141,6 +161,10 @@ commands:
 
     ~/ti/pdk_[soc]_[version]/packages$ make i2c_clean
     ~/ti/pdk_[soc]_[version]/packages$ make i2c
+
+Please note that parallel make (-j) is not supported within individual 
+PDK components. It is supported only at the top level (~/ti/pdk_[soc]_[version]/packages)
+for targets 'all' and 'clean'
 
 PDK users can invoke the build for specific core and specific platform
 using the following syntax. This will help save lot of build time on
