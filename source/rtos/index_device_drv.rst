@@ -33,6 +33,7 @@ I2C
 ***********
 .. include:: PDK_Platform_Software/Device_Drivers/I2C.rst.inc
 
+
 ***********
 Serdes Diag
 ***********

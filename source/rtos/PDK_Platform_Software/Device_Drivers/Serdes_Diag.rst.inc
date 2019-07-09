@@ -17,7 +17,7 @@ There are 2 tests included in the package:
    the receive sequence and performs BER calculations across the desired serdes 
    using the CPU. The sweep results are printed into a text file.
 -  **Serdes Diag EYE Test** The example performs on chip eye measurement 
-   allowing the user to “see” the eye opening of the receive data after 
+   allowing the user to see the eye opening of the receive data after 
    equalization. The EVM sends the transmit pattern (for example PRBS 31) and 
    detects the sequence and performs EYE measurements across the desired serdes 
    using the CPU. The results are printed into a text file.
@@ -70,7 +70,7 @@ API reference for application:
     ...
     ...
 
-Â 
+
 
 Application
 ------------
@@ -127,7 +127,7 @@ Building Serdes Diag examples
    To build and clean libs/apps from top-level makefile:
    cd <pdk>/packages
    make serdes_diag
-   make serdes_diag
+   make serdes_diag_clean
 
    To build and clean libs/apps from module-level makefile:
    cd <pdk>/packages/ti/diag/serdes_diag
