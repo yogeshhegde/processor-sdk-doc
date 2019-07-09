@@ -64,7 +64,7 @@ Released July 2019
 
 - General
     - SMP mode support for PDK Drivers along with examples on A15/A53 cores
-    - Support for parallel make (-j) for all targets except k2h/k2k
+    - Support for parallel make (-j) for AM3/4/5/6 devices
 - AM65x
     - Serdes Diagnostic application
     - PCIE QoS example
