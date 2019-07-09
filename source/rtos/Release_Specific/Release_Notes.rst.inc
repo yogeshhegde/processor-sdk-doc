@@ -64,11 +64,11 @@ Released July 2019
 
 - General
     - SMP mode support for PDK Drivers along with examples on A15/A53 cores
-    - Support for parallel make (-j) for AM3/4/5/6 devices
+    - Support for parallel make (-j) for AM3/4/5/6 and OMAPL13x devices
 - AM65x
-    - Serdes Diagnostic application
-    - PCIE QoS example
-    - EMAC LLD: ICSS-G SWITCH enhancements below
+    - `Serdes Diagnostic application <index_device_drv.html#serdes-diag>`_   
+    - `PCIE QoS example <index_device_drv.html#id14>`_
+    -  EMAC LLD: ICSS-G SWITCH enhancements below
 		-  Support configuring the FW with base address PORT queues in MSMC/internal memory
 		-  Support Polling Mode for RX packets
 		-  Support processing the polled mode to retrieve timing events such as TX timestamp
@@ -79,8 +79,6 @@ Released July 2019
 		-  Support data plane meta data for requesting TX timestamp
 		-  Support data plane meta data for receiving RX timestamp
 		-  Support setting packet streaming interface(PSI) base flow for receive packets
-    
-    
     
 - AM57xx
     - GPMC + FPGA SW example on CSL-FL
