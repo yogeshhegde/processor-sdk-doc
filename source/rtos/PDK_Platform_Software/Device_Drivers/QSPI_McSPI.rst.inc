@@ -256,6 +256,14 @@ OSPI
 |                       | and interfaces for    | passed.               |                     |                     |
 |                       | OSPI driver           |                       |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+| OSPI_SMP_Test         |                       | Following prints on   |    am65xx           | makefile            |
+| Application           | Driver unit test      | console expected:     |                     |                     |
+|                       | application to        | **Pass criteria:**    |                     |                     |
+|                       | validate features     | All tests have        |                     |                     |
+|                       | and interfaces for    | passed.               |                     |                     |
+|                       | OSPI driver in SMP    |                       |                     |                     |
+|                       | mode. (A53 core)      |                       |                     |                     |
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
 | 
 
@@ -391,6 +399,24 @@ MCSPI
 |                 | is proper.      |                                        |                 |                     |                     |
 |                 |                 |                                        |                 |                     |                     |
 |                 |                 |                                        |                 |                     |                     |
++-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
+| MCSPI_SMP_Basic | Sample          |                                        | |               |      AM572x-EVM     | CCS project         |
+| Example         | Application     |                                        | | ** **         |                     |                     |
+| application     | demonstrating   |                                        |                 |                     |                     |
+|                 | reading data    |                                        | Following       |                     |                     |
+|                 | generated from  |                                        | prints  on      |                     |                     |
+|                 | industrial      |                                        | console         |                     |                     |
+|                 | input module.   |                                        | expected:       |                     |                     |
+|                 | Application     |                                        |                 |                     |                     |
+|                 | uses GPIO pins  |                                        | **Pass          |                     |                     |
+|                 | to assert load  |                                        | criteria:**     |                     |                     |
+|                 | signal in order |                                        |                 |                     |                     |
+|                 | to generate     |                                        | All tests have  |                     |                     |
+|                 | date from       |                                        | passed.         |                     |                     |
+|                 | industrial      |                                        |                 |                     |                     |
+|                 | input module    |                                        |                 |                     |                     |
+|                 | in SMP mode.    |                                        |                 |                     |                     |
+|                 | (A15 core)      |                                        |                 |                     |                     |
 +-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
 
 Building SPI examples

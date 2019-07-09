@@ -121,7 +121,30 @@ Examples
 |                              |   and cat (text file  |                       |                |              |
 |                              |   read operation).    |                       |                |              |
 +------------------------------+-----------------------+-----------------------+----------------+--------------+
-| FATFS_Console_TestApp        | Same as above         | Same as above         | AM65x          | Makefile     |
+| FATFS_Console_TestApp        | | Same as above       | Same as above         | AM65x          | Makefile     |
++------------------------------+-----------------------+-----------------------+----------------+--------------+
+| FATFS_Console_SMP_Example    | | Example will        | When a card is        |                |              |
+| Project                      |   initialize card and | detected with valid   |   AM572x-EVM   | CCS  Project |
+|                              |   checks for valid    | FAT partition console |   (A15 core)   |              |
+|                              |   FAT partition. When | interface output will |                |              |
+|                              |   a valid FAT         | indicate "0:> "       |                |              |
+|                              |   partition is        |                       |                |              |
+|                              |   detected console    |                       |                |              |
+|                              |   interface for       |                       |                |              |
+|                              |   command execution   |                       |                |              |
+|                              |   is provided.        |                       |                |              |
+|                              |   Supported console   |                       |                |              |
+|                              |   commands include ls |                       |                |              |
+|                              |   (to list files of   |                       |                |              |
+|                              |   directory), cd      |                       |                |              |
+|                              |   (change directory), |                       |                |              |
+|                              |   pwd (present        |                       |                |              |
+|                              |   working directory)  |                       |                |              |
+|                              |   and cat (text file  |                       |                |              |
+|                              |   read operation)     |                       |                |              |
+|                              |   with SMP enabled.   |                       |                |              |
++------------------------------+-----------------------+-----------------------+----------------+--------------+
+| FATFS_Console_SMP_TestApp    | | Same as above       | Same as above         | AM65x(A53 core)| Makefile     |
 +------------------------------+-----------------------+-----------------------+----------------+--------------+
 
 

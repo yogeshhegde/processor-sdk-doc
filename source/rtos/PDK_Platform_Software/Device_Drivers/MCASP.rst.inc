@@ -228,6 +228,14 @@ Examples & Unit tests
 |                                    |   loopback using AIC31    |   stereo output of    | K2G      |             |
 |                                    |   codec. Reference example|   the EVM             | OMAPL137 |             |
 |                                    |   for developers          |                       | OMAPL138 |             |
++------------------------------------+---------------------------+-----------------------+----------+-------------+
+| Audio_SMP_ExampleProject           | | Example                 | | Audio sent in to    | AM572x-  | CCS Project |
+|                                    |   demonstrating           |   the EVM being       | EVM      |             |
+|                                    |   sample McASP            |   played out via the  |          |             |
+|                                    |   loopback using AIC31    |   stereo output of    |          |             |
+|                                    |   codec. Reference example|   the EVM             |          |             |
+|                                    |   for developers with SMP |                       |          |             |
+|                                    |   enabled.(A15 core only) |                       |          |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+   
 | DeviceLoopback_ExampleProject      | | Example                 | | Digital ramp        | AM335X   | CCS Project |  
 |                                    |   demonstrating           |   pattern sent to     | AM437x   |             |
@@ -250,6 +258,12 @@ Examples & Unit tests
 |                                    |   demonstrating           |   pattern sent to     |          |             |
 |                                    |   sample McASP device     |   McASP and getting   |          |             |
 |                                    |   loopback .              |   looped back         |          |             |
++------------------------------------+---------------------------+-----------------------+----------+-------------+
+| DeviceLoopback_SMP_TestApp         | | Unit test               | | Digital ramp        | AM65x    | Makefile    |
+|                                    |   demonstrating           |   pattern sent to     |          |             |
+|                                    |   sample McASP device     |   McASP and getting   |          |             |
+|                                    |   loopback with SMP       |   looped back         |          |             |
+|                                    |   enabled (A53 core only).|                       |          |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
 | DeviceLoopback_Regression_TestApp  | | Regression unit test    | | Menu Driven test    | AM65x    | Makefile    |
 |                                    |   which tests various     |   sending digital ramp|          |             |

@@ -190,37 +190,53 @@ Application
 Examples
 ^^^^^^^^
 
-+-----------------------+---------------------+---------------------+---------------------+---------------------+
-|         Name          |    Description      |  Expected Results   | SoC Supported       | Build Type          |
-+=======================+=====================+=====================+=====================+=====================+
-| UART_Example          | Example             | Application prompts |    AM335x,          | CCS project         |
-| application           | demonstrating       | user to enter input |    AM437x,          |                     |
-|                       | *simple* UART use   | data in console.    |    AM571x,          |                     |
-|                       | case. Reference     |                     |    AM572x,          |                     |
-|                       | example for         | User can enter up   |    AM574x,          |                     |
-|                       | developers          | to 16 characters or |    k2g,             |                     |
-|                       |                     | terminate with      |    k2hk,k2l,k2e,k2l |                     |
-|                       |                     | enter               |    c6657,c6678      |                     |
-|                       |                     | key.Application     |    omapl137,        |                     |
-|                       |                     | echoes back         |    omapl138,        |                     |
-|                       |                     | characters.         |                     |                     |
-+-----------------------+---------------------+---------------------+---------------------+---------------------+
-| UART_TestApplication  | Unit Test           | User can enter up to| AM335x,AM437x,AM571x| CCS project         |
-|                       | application to test | 16 characters using | AM572x,AM574X       |                     |
-|                       | all APIs            | serial              | k2g,k2hk,k2l,k2e,k2l|                     |
-|                       |                     | console.Application | c6657,c6678         |                     |
-|                       |                     | echoes back         | omapl137,omapl138   |                     |
-|                       |                     |                     +---------------------+---------------------+
-|                       |                     |                     | am65xx              | makefile            |
-+-----------------------+---------------------+---------------------+---------------------+---------------------+
-| UART_DMATestApplicati | Unit Test           | User can enter up to| AM335x,AM437x,AM571x| CCS project         |
-| on                    | application with    | 16 characters using | AM572x,AM574X       |                     |
-|                       | DMA mode.           | serial              | k2g,k2hk,k2l,k2e,k2l|                     |
-|                       |                     | console.Application | c6657,c6678         |                     |
-|                       |                     | echoes back         | omapl137,omapl138   |                     |
-|                       |                     |                     +---------------------+---------------------+
-|                       |                     |                     | am65xx              | makefile            |
-+-----------------------+---------------------+---------------------+---------------------+---------------------+
++-------------------------+---------------------+---------------------+---------------------+---------------------+
+|         Name            |    Description      |  Expected Results   | SoC Supported       | Build Type          |
++=========================+=====================+=====================+=====================+=====================+
+| UART_Example            | Example             | Application prompts |    AM335x,          | CCS project         |
+| application             | demonstrating       | user to enter input |    AM437x,          |                     |
+|                         | *simple* UART use   | data in console.    |    AM571x,          |                     |
+|                         | case. Reference     |                     |    AM572x,          |                     |
+|                         | example for         | User can enter up   |    AM574x,          |                     |
+|                         | developers          | to 16 characters or |    k2g,             |                     |
+|                         |                     | terminate with      |    k2hk,k2l,k2e,k2l |                     |
+|                         |                     | enter               |    c6657,c6678      |                     |
+|                         |                     | key.Application     |    omapl137,        |                     |
+|                         |                     | echoes back         |    omapl138,        |                     |
+|                         |                     | characters.         |                     |                     |
++-------------------------+---------------------+---------------------+---------------------+---------------------+
+| UART_TestApplication    | Unit Test           | User can enter up to| AM335x,AM437x,AM571x| CCS project         |
+|                         | application to test | 16 characters using | AM572x,AM574X       |                     |
+|                         | all APIs            | serial              | k2g,k2hk,k2l,k2e,k2l|                     |
+|                         |                     | console.Application | c6657,c6678         |                     |
+|                         |                     | echoes back         | omapl137,omapl138   |                     |
+|                         |                     |                     +---------------------+---------------------+
+|                         |                     |                     | am65xx              | makefile            |
++-------------------------+---------------------+---------------------+---------------------+---------------------+
+| UART_DMATestApplication | Unit Test           | User can enter up to| AM335x,AM437x,AM571x| CCS project         |
+|                         | application with    | 16 characters using | AM572x,AM574X       |                     |
+|                         | DMA mode.           | serial              | k2g,k2hk,k2l,k2e,k2l|                     |
+|                         |                     | console.Application | c6657,c6678         |                     |
+|                         |                     | echoes back         | omapl137,omapl138   |                     |
+|                         |                     |                     +---------------------+---------------------+
+|                         |                     |                     | am65xx              | makefile            |
++-------------------------+---------------------+---------------------+---------------------+---------------------+
+| UART_SMP_TestApplication| Unit Test           | User can enter up to| AM572x-EVM          | CCS project         |
+|                         | application to test | 16 characters using |                     |                     |
+|                         | all APIs in SMP mode| serial              |                     |                     |
+|                         | *(A15 & A53 cores)* | console.Application |                     |                     |
+|                         |                     | echoes back         |                     |                     |
+|                         |                     |                     +---------------------+---------------------+
+|                         |                     |                     | am65xx              | makefile            |
++-------------------------+---------------------+---------------------+---------------------+---------------------+
+| UART_SMP_DMATestApplica | Unit Test           | User can enter up to| AM572x-EVM          | CCS project         |
+| tion                    | application         | 16 characters using |                     |                     |
+|                         | in SMP mode with DMA| serial              |                     |                     |
+|                         | enabled             | console.Application |                     |                     |
+|                         | *(A15 & A53 cores)* | echoes back         |                     |                     |
+|                         |                     |                     +---------------------+---------------------+
+|                         |                     |                     | am65xx              | makefile            |
++-------------------------+---------------------+---------------------+---------------------+---------------------+
 
 Building UART examples
 ----------------------

@@ -154,6 +154,25 @@ Refer Release Note for I2C support across different EVMs
 |                       |                       || All tests have       |                     |                     |
 |                       |                       |  passed.              |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
+| I2C_SMP_Test          || Driver Unit Test     || Following prints will|   am572x-evm        | CCS project         |
+| Application           | application for       |  come on console based|                     |                     |
+|                       | additional I2C        |  on pass/fail         |                     |                     |
+|                       | speed and other tests |  criteria:            |                     |                     |
+|                       | with SMP enabled.     ||                      |                     |                     |
+|                       | (A15 and A53 cores)   || **Pass criteria:**   |                     |                     |
+|                       |                       ||                      |                     |                     |
+|                       |                       || I2C Test: 100Kbps:   |                     |                     |
+|                       |                       |  PASS                 |                     |                     |
+|                       |                       ||                      |                     |                     |
+|                       |                       || I2C Test: 400Kbps:   |                     |                     |
+|                       |                       |  PASS                 |                     |                     |
+|                       |                       ||                      |                     |                     |
+|                       |                       || I2C Test: timeout    +---------------------+---------------------+
+|                       |                       |  test passed          |    am65xx           | makefile            |
+|                       |                       ||                      |                     |                     |
+|                       |                       || All tests have       |                     |                     |
+|                       |                       |  passed.              |                     |                     |
++-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 | I2C_TemperatureSensor || Example to get the   || Following prints will|    AM572x,          | CCS project         |
 |                       | temperature value     |  come on console based|                     |                     |
 |                       | from the temperature  |  on pass/fail         |                     |                     |

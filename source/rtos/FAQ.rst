@@ -1236,3 +1236,16 @@ the `TISCI_MSG_QUERY_MSMC message
 <http://software-dl.ti.com/tisci/esd/latest/2_tisci_msgs/general/core.html#tisci-msg-query-msmc>`__
 to DMSC.  The message response contains the range of MSMC memory useable by the
 application.
+
+| 
+
+SMP Examples
+============
+
+.. rubric:: How do I load SMP enabled example into target through CCS ?
+   :name: how-do-i-load-smp-enabled-example-into-target-through-ccs
+
+Symmetric Multi Processing requires a different approach to load
+the application into target board through CCS. The detailed documentation on loading
+and debugging the SMP enabled example is linked `here
+<http://software-dl.ti.com/ccs/esd/documents/ccs_smp-debug.html>`__.

@@ -176,6 +176,30 @@ Examples & Unit tests
 |                                  |   data pattern to             |                       |                 |              |
 |                                  |   conclude PASS/FAIL.         |                       |                 |              |
 +----------------------------------+-------------------------------+-----------------------+-----------------+--------------+
+| MMCSD_SMP_Test_Project           |                               | Prints  on  console   |  AM572x - EVM   |              |
+|                                  |   Unit Test                   | All tests have passed |                 |              |
+|                                  |   application                 |                       |                 |              |
+|                                  |   demonstrating write         |                       |                 |              |
+|                                  |   and read a fixed            |                       |                 | CCS Project  |
+|                                  |   number of bytes             |                       |                 |              |
+|                                  |   into MMCSD card.            |                       |                 |              |
+|                                  |   Verifies written            |                       |                 |              |
+|                                  |   data pattern to             |                       |                 |              |
+|                                  |   conclude PASS/FAIL in SMP   |                       +-----------------+--------------+
+|                                  |   mode.                       |                       |    am65xx       |   makefile   |
++----------------------------------+-------------------------------+-----------------------+-----------------+--------------+
+| MMCSD_SMP_DMA_Test_Project       |                               | Prints on console     |  AM572x - EVM   |              |
+|                                  |   Unit Test                   | All tests have passed |                 |              |
+|                                  |   application                 |                       |                 |              |
+|                                  |   demonstrating write         |                       |                 |              |
+|                                  |   and read a fixed            |                       |                 | CCS Project  |
+|                                  |   number of bytes             |                       |                 |              |
+|                                  |   into MMCSD card.            |                       |                 |              |
+|                                  |   Verifies written            |                       |                 |              |
+|                                  |   data pattern to             |                       |                 |              |
+|                                  |   conclude PASS/FAIL in SMP   |                       +-----------------+--------------+
+|                                  |   mode with DMA enabled.      |                       |    am65xx       |   makefile   |
++----------------------------------+-------------------------------+-----------------------+-----------------+--------------+
 | MMCSD_EMMC_TestProject           |                               | Prints on console     |  AM335x         |              |
 |                                  |   Unit Test                   | All tests have passed |  AM437x         |              |
 |                                  |   application                 |                       |  AM571x         |              |

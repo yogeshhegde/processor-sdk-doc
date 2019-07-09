@@ -180,6 +180,14 @@ Example and Test Applications
 |                              | packet transmission   |                       |                       |                       |
 |                              | and reception check.  |                       |                       |                       |
 +------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| EMAC_SMP_BasicExample        | EMAC Loopback test    | Unit Test will        |     AM572x-EVM        |  CCS project          |
+|                              | at CPSW switch        | print "All tests      |                       |                       |
+|                              | interface with SMP    | have passed" via      |                       |                       |
+|                              | enabled.              | UART console.         |                       |                       |
+|                              | (A15 core only)       |                       |                       |                       |
+|                              |                       |                       |                       |                       |
+|                              |                       |                       |                       |                       |
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
 | EMACLoopback_testProj        | EMAC Loopback test    | Unit Test will        |  C6657,               | CCS project           |
 | ect                          | at CPSW switch        | print "Loopback       |  DRA7xx,              |                       |
 |                              | interface.            | Test completed        |  OMAPL137,            |                       |
@@ -321,6 +329,13 @@ Example and Test Applications
 |                              | packet count for      |                       |                       |                       |
 |                              | packet transmission   |                       |                       |                       |
 |                              | and reception check.  |                       |                       |                       |
++------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
+| Emac_Cpsw_SMP_TestApp        | EMAC Loopback test    | Unit Test will        | AM65xx                | makefile              |
+|                              | at CPSW switch        | print "All tests      |                       |                       |
+|                              | interface with SMP    | have passed" via      |                       |                       |
+|                              | enabled               | UART console.         |                       |                       |
+|                              | (A53 core only)       |                       |                       |                       |
+|                              |                       |                       |                       |                       |
 +------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
 | Emac_Icssg_TestApp           | EMAC port 2 port test | Unit Test will        | AM65xx                | makefile              |
 |                              | between ICSSG ports.  | print "All tests      |                       |                       |
