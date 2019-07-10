@@ -8,16 +8,24 @@ The Android Automotive OS and HMI provide users with a simplified interface for 
 
 This guide will walk through the steps necessary to enable Android Automotive on your TI development board (AM57x BeagleBoard-X15).
 
-By default, the beagle_x15 lunch combo will launch with a tablet UI:
+* By default, the beagle_x15 lunch combo will launch with a tablet UI:
 
 .. Image:: ../images/Tablet_Home.png
+**Figure 1.** Home screen for Tablet configuration.
 
-After creation of the beagle_x15_auto lunch combo, the automotive UI will launch:
+* After creation of the beagle_x15_auto lunch combo, the automotive UI will launch:
 
 .. Image:: ../images/Auto_Start_Car.png
+**Figure 2.** Start screen for Automotive configuration, depicting a car with PSI information near tires.
+
 .. Image:: ../images/Auto_Car_Launcher.png
+**Figure 3.** "Let's Drive" interface for Automotive configuration, allowing user to interact with applications by selecting icon in the middle.
+
 .. Image:: ../images/Auto_Climate_Control.png
+**Figure 4.** Climate control interface for Automotive configuration, allowing user to adjust temperature, fan speed and direction, seat warmers, etc...
+
 .. Image:: ../images/Auto_Notifications.png
+**Figure 5.** Notification pane for Automotive configuration, presenting user with up-to-date notifications regarding their vehicle.
 
 Getting Started
 ===============
