@@ -206,6 +206,7 @@ Issues opened in previous releases that were closed on this release
    PLSDK-2670,"am570x-evm, am572x-evm, am572x-hsevm, k2e-evm, k2g-hsevm, k2hk-evm, k2l-evm",OpenMPacc test hangs on k2 platorms
    PLSDK-2751,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",1PPS output needs pulldown for pwm_off
    PLSDK-2854,,Make tisdk-rootfs-image first option in create-sdcard.sh
+
 |
 
 
@@ -270,7 +271,7 @@ Errata Workarounds Available in this Release
    LCPD-4647,[rpmsg 2015 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP
    LCPD-4648,[rpmsg 2014 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP
    LCPD-14186,UDMA-P Host Packet Descriptors 0x3FFFFF Packet Length Mode not Functional
-   LCPD-941,"OMAP4,5: DSS: implement workaround for errata i740"
+   LCPD-941,OMAP4 and OMAP5: DSS: implement workaround for errata i740
    LCPD-1776,"[J6 SATA Adaptation] J6 - Errata i783, SATA Lockup After SATA DPLL Unlock/Relock"
 
 
@@ -335,28 +336,24 @@ SDK Known Issues
    PLSDK-1398,"k2e-evm, k2e-hsevm, k2g-hsevm, k2hk-hsevm",Document workaround for IPC demo hangs if run after OpenCL demos,Run IPC demo w/o running OpenCL first
    PLSDK-1419,k2l-evm,Intermittent-IP address display issue on LCD for K2L RT,"Use ifconfig once Linux boots, to acquire IP address"
    PLSDK-2474,am572x-evm,soc-performance-monitor table display problem (missing texts),None
-   PLSDK-2730,"am335x-evm, am335x-ice, am437x-evm, am572x-evm, am654x-evm",Descope Chromium-Wayland browser,
-   PLSDK-2756,,SDK Makefile: linux-dtbs fails to compile,
-   PLSDK-2758,"am335x-evm, am437x-evm, am572x-evm, am572x-hsevm, am654x-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Top level make : /bin/sh: 1: flex: not found,
-   PLSDK-2790,,SDK Makefile: QT applications fail to build in Docker container,
-   PLSDK-2823,am571x-idk,"HSR: Inconsistent link, packet loss observed PRUSS2 (eth4/eth5 pair)",
-   PLSDK-2836,am572x-idk,Jailhouse is not functional on 2019 LTS,
-   PLSDK-2842,am572x-idk,SORTE: Observed Segmentation fault (core dumped) on am572x-idk platform,
-   PLSDK-2855,"am571x-idk, am574x-idk",PHC2SYS out of sync with continuous switching the master cocks from two GMC,
-   PLSDK-2861,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",K2: Crypto is not functional on 2019 LTS,
-   PLSDK-2867,"am335x-evm, am437x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",QtWebEngine based browser is not functional on 2019 LTS,Use Webkit based browser
-   PLSDK-2876,"am571x-idk, am572x-evm, k2e-evm, k2g-evm, k2g-ice, k2l-evm",OpenCL: float compute compilation failure,
-   PLSDK-2877,"am335x-evm, am437x-evm, am572x-evm, am654x-evm",Qt Webkit browser crashes at several websites,
-   PLSDK-2880,"am335x-evm, am437x-evm",ARMNN demo program crashes on AM3/4,
-   PLSDK-2881,am572x-evm,dual camera demo does not work with dual display on AM57xx EVM,
-   PLSDK-2882,"am437x-evm, am437x-sk, am572x-evm",dual camera demo: text on control buttons truncated on LCD,
-   PLSDK-2884,am571x-idk,SDK Makefile: glow fails to build,
-   PLSDK-2886,,SDK Makefile: omapconf fails to build,
-   PLSDK-2887,am574x-idk,TIDL ARM/HOST Emulation: Floating point exception (core dumped),
-   PLSDK-2888,am574x-idk,TIDL_LiveCamera (DSP and EVE): hangs at About to start ProcessFrame loop,
-   PLSDK-2891,"am335x-evm, am437x-evm, am570x-evm, am571x-idk, am572x-evm, am574x-idk",glow: image-classifier converter cannot locate devkit shared libraries,Use LD_LIBRARY_PATH when running glow package executables in devkit usr/share/glow/bin folder.For example LD_LIBRARY_PATH=${SDK_PATH_NATIVE}/usr/lib ${SDK_PATH_NATIVE}/usr/share/glow/bin/image-classifier ${SDK_PATH_NATIVE}/usr/share/glow/tests/images/mnist/1_1008.png -m=mnist.onnx -image-mode=0to1 -model-input-name=data_0 -emit-bundle ./ -cpu -target armv7l-unknown-linux-gnueabihf -network-name="lenet_mnist".  
-   PLSDK-2892,"am571x-idk, am572x-idk, am574x-idk",linuxptp: phc2sys does not process BC state updates with -r option,
-  
+   PLSDK-2730,"am335x-evm, am335x-ice, am437x-evm, am572x-evm, am654x-evm",Chromium-Wayland browser doesn't work,Use qtWebkit browser
+   PLSDK-2855,"am571x-idk, am574x-idk",PHC2SYS out of sync with continuous switching the master cocks from two GMC,"None. Need to power cycle or reset the platform and restart the PTP BC."
+   PLSDK-2861,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Crypto is not functional on 2019 LTS,None
+   PLSDK-2867,"am335x-evm, am437x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, am654x-hsevm",QtWebEngine based browser is not functional on 2019 LTS,Use Webkit based browser
+   PLSDK-2877,"am335x-evm, am437x-evm, am572x-evm, am654x-evm",Qt Webkit browser crashes at several websites,None
+   PLSDK-2881,am572x-evm,dual camera demo does not work with dual display on AM57xx EVM,Dual camera demo only requires one display so disable or remove one of the display.
+   PLSDK-2882,"am437x-evm, am437x-sk, am572x-evm",dual camera demo: text on control buttons truncated on LCD,"None. This problem does not affect the functionality because the word ""Capture"" is still recognizable."
+   PLSDK-2891,"am335x-evm, am437x-evm, am570x-evm, am571x-idk, am572x-evm, am574x-idk",glow: image-classifier converter cannot locate devkit shared libraries,"Use LD_LIBRARY_PATH when running glow package executables in devkit usr/share/glow/bin folder. Like here: LD_LIBRARY_PATH=${SDK_PATH_NATIVE}/usr/lib ${SDK_PATH_NATIVE}/usr/share/glow/bin/image-classifier ${SDK_PATH_NATIVE}/usr/share/glow/tests/images/mnist/1_1008.png -m=mnist.onnx -image-mode=0to1 -model-input-name=data_0 -emit-bundle ./ -cpu -target armv7l-unknown-linux-gnueabihf -network-name=""lenet_mnist"""
+   PLSDK-2895,am571x-idk,AM571x-IDK: Icss Emac: TTS Port 1: Packet cyclic timestamp error.,None
+   PLSDK-2896,k2e-evm,mpm_transport_hyperlink_loopback: transport arm-loopback-hyplnk-0 failed (error: -114) retval -1001,No workaround
+   PLSDK-2897,"am335x-evm, am437x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, dra76x-evm",Graphics Demo: layer-add-surfaces command not found,None. Weston IVI-shell is not supported for now.
+   PLSDK-2899,am572x-idk,Storm prevention in dual-EMAC: failed to update stormPrevCounter,"Issue only arises if only one of the two ICSS ports is up. As a workaround, bring up both ICSS ports (e.g. ""ifconfig eth<ID> up) even if only one is in use to enable storm prevention."
+   PLSDK-2900,"am335x-evm, am437x-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm","crypto examples don't build from toplevel SDK Makefile, due to OpenSSL dependency",No workaround
+   PLSDK-2905,am654x-hsevm,3D: Failed to run /usr/bin/SGX/demos/Raw/OGLES2ChameleonMan,"None. The warning messages can be ignored, there is no effect on the functionality."
+   PLSDK-2909,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, dra76x-evm",Upgrade TIDL-API converted models to the new file format,"The problem with emulation tool (for ARM or x86) only if we are using it with models deployed in target filesystem (as they are in earlier format): /usr/share/ti/tidl/examples/test/testvecs/config/tidl_models. For newly converted models, using import tool from PLSDK6.0 this problem does not exist."
+   PLSDK-2913,am572x-idk,NetJury Test Failure: TC_PRP_4_3_4_____Reception_of_a_PRP_Supervision_frame_and_Nodes_Table - test_VLAN,No workaround
+   PLSDK-2916,"am572x-evm, am572x-idk",Jailhouse_Hypervisor: JAILHOUSE_CELL_LOAD: Invalid argument,No workaround
+
 |
 
 U-Boot Known Issues
