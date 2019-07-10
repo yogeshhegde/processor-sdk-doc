@@ -53,7 +53,7 @@ Released July 2019
 
 - 2019 LTS Update: First release in 2019 LTS (Kernel 4.19, U-boot: 2019.01, gcc: 8.3 2019.03 hf, Yocto 2.6 (thud). For more details, see the migration guide
 - HSR/PRP/EMAC/PTP
-    - Implement boundary clock with all 3 legs or 5 legs on AM57xx, with redundancy (HSR/PRP)
+    - `Implement boundary clock with all 3 legs or 5 legs on AM57xx, with redundancy (HSR/PRP) <Industrial_Protocols_PTP.html>`__
        - 3 legs: 1xCPSW and 1x per PRU-ICSS (HSR/PRP/EMAC running on 2x PRU-ICSS)
        - 5 legs: 1xCPSW and 2x per PRU-ICSS (Dual-EMAC on 2xPRU-ICSS)
     - Upgrade linuxptp to v2.0
@@ -65,7 +65,7 @@ Released July 2019
 - AM65x
     - U-boot: support networking over ICSS-G
     - U-boot: USB hub and USB mass storage
-    - Watchdog support
+    - `Watchdog support <Examples_and_Demos_Application_Demos.html#watchdog-demo-on-am654x-pg-1-0>`__
     - DisplayPort driver enhancements for TC358867 DPI-DP bridge
     - AVS Class 0 support
 - AM335x: Support PTP 1588 in DAN mode
