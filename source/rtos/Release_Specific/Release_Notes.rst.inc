@@ -216,7 +216,7 @@ release and any known workaround.
 	PRSDK-5642,am335x-evm,Board Support,USB_DevBulk_ExampleProject: Failed to load/run app,Use JTAG to load and run the example
 	PRSDK-5178,"am571x-idk, am572x-idk, am574x-idk",Board Support,"Uniflash: Host tool fails to load Flash Programmer, when Flash device is programmed","In case of AM5 platform, if flash device is programmed with a valid boot image, the board boots from flash as soon as powered on. After this, attempting to connect the board over JTAG will fail. | Workaround for this issue is to insert SD card without any valid boot image( to prevent booting from SD card), and power on the board. SD boot has boot sequence priority over Flash device. This will hold the board booting out of flash device."
 	PRSDK-5667,"am654x-evm, am654x-idk",Board Support,AM65xx diagnostic tests hang on R5 core,Use the diagnostic tests built for A53 core.
-	PRSDK-5229,am654x-idk,Board Support,PCIe diagnostic test should validate both the ports on PCIe 2-lane card,
+	PRSDK-5229,am654x-idk,Board Support,PCIe diagnostic test validates only one port on PCIe 2-lane card,
 	PRSDK-4843,am654x-idk,Board Support,Pinmux support for AM654x IDK ICSS MII pin is missing,
 	PRSDK-5732,"am654x-evm, am654x-hsevm, am654x-idk","Board Support, Boot",SBL need to properly set CBIASSEL to use Bandgap references for LDOs,
 	PRSDK-5887,am572x-evm,Boot,Application hangs on non zero core using Uart apploader,
