@@ -264,7 +264,7 @@ release and any known workaround.
 	PRSDK-5793,beagleboneblack,"PDK, PRUSS-Firmware",pdkAppImageCreate script creates large binaries for PRU FW projects,
 	PRSDK-2336,"am335x-evm, am437x-evm",Power,AM3 & AM4 PM Examples experience I2C bus lockup when communicating with PMIC,"The debug versions of the PM apps are still functional. To build them: 	From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm"" This will build the debug versions of the PM RTOS and measurement apps."
 	PRSDK-4548,am335x-ice,PRUSS-Firmware,PRU-ICSS EMAC + TTS : Corrupted Rx packet at host from Firmware,n/a
-	PRSDK-5770,"am335x-ice, am437x-idk, beagleboneblack",PRUSS-Firmware,PUT_IORD_SHORT not working after issuing PUT_IOWR_SHORT,
+	PRSDK-5770,"am335x-ice, am437x-idk, beagleboneblack",PRUSS-Firmware,PUT_IORD_SHORT not working after issuing PUT_IOWR_SHORT,"Do not issue PUT_IOWR_SHORT or PUT_MEMWR32_SHORT commands as both of these may put the system into an un-ending ALERT state. Only issue reads which will read pre-populated dummy data"
 	PRSDK-4583,am437x-idk,PRUSS-Firmware,PRUSS-I2C-FW: Does not support 1Mhz mode. Incorrect STOP condition generated for HS mode,
 	PRSDK-4927,"am654x-evm, am654x-idk",SCIClient,sciclient: APIs seems to always use self host id to be core 0,
 	PRSDK-3565,am437x-hsevm,Security,AM437x-HSEVM: GPMC unit-tests fail,
@@ -306,7 +306,7 @@ release and any known workaround.
 	PRSDK-4744,"am654x-evm, am654x-idk",Networking,nimu_free_pkt() wrongly frees p_pkt_desc,
 	PRSDK-5544,"am654x-evm, am654x-idk",Networking,Maxwell EMAC LLD example doesn't work at 100Mbps,
 	PRSDK-5022,am654x-idk,Networking,am65xx: Running emac unit test on R5 core from ddrless SBL at times does not complete execution,
-	PRSDK-5851,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Optimized Libraries,Fail to run RTOS examples on non-primary A15 core,
+	PRSDK-5851,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Optimized Libraries,Fail to run RTOS examples on non-primary A15 core,"Current example can be run only on primary core"
 	PRSDK-5253,am654x-evm,OSAL,[osal] R5 OsalArch_HwiPCreate calls system enable() unconditionally,
 	PRSDK-5936,am437x-idk,PDK,IO-Link master example does not work with Balluff inductive coupler,
 	PRSDK-6059,"am654x-evm, am654x-idk",PDK,reserved area for DMSC in top level linker command file in PDK is incorrect,
