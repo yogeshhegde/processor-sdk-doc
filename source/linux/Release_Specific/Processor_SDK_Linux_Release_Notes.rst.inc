@@ -199,14 +199,23 @@ Issues opened in previous releases that were closed on this release
    LCPD-15260,dra7xx-evm,Video on display repeated when Fast Forward done with gst-play
    LCPD-15259,dra7xx-evm,Gst-ducati fails to decode few interlaced streams
    LCPD-14860,"am574x-idk, am57xx-evm, am654x-evm, am654x-idk",qt-opencv-opencl-opengl-multithreaded fails with gcc8
-   LCPD-14559,,opencl failure with gcc8
-   PLSDK-2754,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",kernel 1PPS devicetree documentation
-   PLSDK-2750,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",CPTS 1PPS pps-enable-gpios should be optional
-   PLSDK-2749,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",CPTS 1PPS should allow selection of any timer (Timer13-Timer16)
+   PLSDK-2186,am572x-evm,video-analytic-demo should run on top of Weston instead of qwindow-compistor
+   PLSDK-2355,"am572x-evm, am572x-idk, am574x-idk",Openvx: openvx_tiovx_application hangs on am572x evm
+   PLSDK-2627,beagleboneblack,run-pru-adc.sh : Unable to get expected output on UART
+   PLSDK-2659,am574x-idk,TIDL inference reporting same classification output for all input images
    PLSDK-2670,"am570x-evm, am572x-evm, am572x-hsevm, k2e-evm, k2g-hsevm, k2hk-evm, k2l-evm",OpenMPacc test hangs on k2 platorms
+   PLSDK-2700,,Jailhouse Linux/RTOS issue observed when CPU freq changed
+   PLSDK-2749,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",CPTS 1PPS should allow selection of any timer (Timer13-Timer16)
+   PLSDK-2750,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",CPTS 1PPS pps-enable-gpios should be optional
    PLSDK-2751,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",1PPS output needs pulldown for pwm_off
+   PLSDK-2754,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",kernel 1PPS devicetree documentation
+   PLSDK-2759,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",   PLSDK build needs to update EMAC firmware version (to enable RX pacing)
+   PLSDK-2774,am654x-evm,Fix ICSSG PRUETH bindings documentation
+   PLSDK-2775,"am572x-evm, am572x-idk, am574x-idk, dra76x-evm",TIDL documentation missing information about converting framework operators into TIDL layers
+   PLSDK-2778,"am654x-evm, am654x-idk",Getting Started Guide Needs to be updated for AM65x
+   PLSDK-2796,am572x-idk,HSR/PRP duplicate packets seen
+   PLSDK-2818,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",PRUETH: promiscuous mode doesn't work in Dual EMAC mode firmware
    PLSDK-2854,,Make tisdk-rootfs-image first option in create-sdcard.sh
-
 |
 
 
@@ -217,6 +226,7 @@ Issues found and closed on this release that may be applicable to prior releases
    :widths: 15, 20, 70
 
    PLSDK-2783,omapl138-lcdk,omapl138-lcdk - uboot does not load from mmc
+   PLSDK-2865,am571x-idk,icss_emacMainTest_am571x.out returns error from _int_malloc
 
 |
 
@@ -343,7 +353,6 @@ SDK Known Issues
    PLSDK-2877,"am335x-evm, am437x-evm, am572x-evm, am654x-evm",Qt Webkit browser crashes at several websites,None
    PLSDK-2881,am572x-evm,dual camera demo does not work with dual display on AM57xx EVM,Dual camera demo only requires one display so disable or remove one of the display.
    PLSDK-2882,"am437x-evm, am437x-sk, am572x-evm",dual camera demo: text on control buttons truncated on LCD,"None. This problem does not affect the functionality because the word ""Capture"" is still recognizable."
-   PLSDK-2891,"am335x-evm, am437x-evm, am570x-evm, am571x-idk, am572x-evm, am574x-idk",glow: image-classifier converter cannot locate devkit shared libraries,"Use LD_LIBRARY_PATH when running glow package executables in devkit usr/share/glow/bin folder. Like here: LD_LIBRARY_PATH=${SDK_PATH_NATIVE}/usr/lib ${SDK_PATH_NATIVE}/usr/share/glow/bin/image-classifier ${SDK_PATH_NATIVE}/usr/share/glow/tests/images/mnist/1_1008.png -m=mnist.onnx -image-mode=0to1 -model-input-name=data_0 -emit-bundle ./ -cpu -target armv7l-unknown-linux-gnueabihf -network-name=""lenet_mnist"""
    PLSDK-2895,am571x-idk,AM571x-IDK: Icss Emac: TTS Port 1: Packet cyclic timestamp error.,None
    PLSDK-2896,k2e-evm,mpm_transport_hyperlink_loopback: transport arm-loopback-hyplnk-0 failed (error: -114) retval -1001,No workaround
    PLSDK-2897,"am335x-evm, am437x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, dra76x-evm",Graphics Demo: layer-add-surfaces command not found,None. Weston IVI-shell is not supported for now.
@@ -394,7 +403,6 @@ Linux Kernel Known Issues
    LCPD-9877,P2-High,rtc alarm does not wakeup board from poweroff state,Power & Thermal,,omapl138-lcdk,,
    LCPD-16048,P2-High,UDP iperf with smaller packet sizes < 512 bytes does not complete consistently,Connectivity,,"am654x-evm, am654x-idk",,
    LCPD-15792,P2-High,am65xx: icssg: tx_teardown_timeout at prueth interface down,Connectivity,PRUSS-Ethernet,"am654x-evm, am654x-idk",,
-   LCPD-14249,P2-High,PCI kernel oops seen between rc7 and rc8 of 4.19,Connectivity,,,,
    LCPD-14188,P2-High,ICSSG PRUEth Extremely Slow,Connectivity,"ICSSG, PRUETH",am654x-evm,,
    LCPD-9972,P2-High,Soft reboot failed on k2g-evm with class 10 SD cards,Connectivity,,k2g-evm,,
    LCPD-13653,P2-High,am65x-evm could not boot from MMC/SD when MMC/SD is backup boot mode,Baseport,,"am654x-evm, am654x-idk",,
@@ -424,7 +432,6 @@ Linux Kernel Known Issues
    LCPD-15887,P3-Medium,The boot time increase ~30s on omapl138-lcdk,Connectivity,,omapl138-lcdk,,
    LCPD-15885,P3-Medium,Uboot usb start trigger the board resetting with one usb stick,Connectivity,,k2hk-evm,,
    LCPD-15874,P3-Medium,QSPI boot does not work on am574x-idk,Connectivity,,,,
-   LCPD-15857,P3-Medium,Kernel Panic with Multiple PRUETH Ports,Connectivity,,,,
    LCPD-15855,P3-Medium,Kernel Oops seen with debug options enabled,Connectivity,,am654x-evm,,
    LCPD-15787,P3-Medium,Power suspend fails due to USB (scsi_bus_suspend) failure when HDD is in use,Connectivity,,am335x-evm,,
    LCPD-15768,P3-Medium,RNDIS performance dropped in 2019 LTS,Connectivity,,,,
@@ -605,7 +612,7 @@ RT Linux Kernel Known Issues
 
    LCPD-6663 ,P3-Medium ,[RT] Kmemleak is buggy and boot is crashed randomly ,Baseport ,  ,
    LCPD-7623 ,P3-Medium ,Seeing SPI transfer failed error sometimes on k2hk when using rt kernel ,Connectivity ,k2hk-evm ,
-   LCPD-11568 ,P3-Medium ,dhcp failed to get IP address after reboot for K2G-ICE non-RT linux ,Baseport  ,"k2g-ice ",
+   LCPD-11586 ,P3-Medium ,dhcp failed to get IP address after reboot for K2G-ICE non-RT linux ,Baseport  ,"k2g-ice ",
      
 |
 
