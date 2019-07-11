@@ -132,6 +132,7 @@ Issues opened in previous releases that were closed on this release
    :widths: 10, 20, 70
 
    LCPD-15227,"am57xx-evm, am654x-evm",Android: Android System Internal error reported at boot_complete
+
 | 
 
 Issues found and closed on this release that may be applicable to prior releases
@@ -149,6 +150,7 @@ Issues found and closed on this release that may be applicable to prior releases
    LCPD-15595,"am571x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15, am654x-evm, am654x-idk",Android: failure in loading firmware from vendor/firmware/
    LCPD-15468,"am571x-idk, am574x-idk",Android: IDK boards fails to boot
    LCPD-15395,am654x-evm,Android: AM6: Binder Errors due to continual audio services crashing
+
 |
 
 Known Issues
@@ -158,33 +160,23 @@ Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 10, 20, 70, 50
 
-   LCPD-16140,am571x-idk,Video is jerky when LCD and HDMI are connected,
-   LCPD-15644,"am57xx-evm, am57xx-beagle-x15",Android: Unable to set the HDMI mode via ro.hwc.hdmiedid,
-   LCPD-15643,"am57xx-evm, am654x-evm",Android: Monkey test fails to run,
-   LCPD-15642,am57xx-evm,Android: kernel errors observed while trying to run cts,
-   LCPD-15522,"am57xx-evm, am57xx-beagle-x15",Android: Pixel degradation observed in captured frame,
+   LCPD-15886,am654x-evm,Exception observed when starting gallery,
+   LCPD-15858,am654x-evm,Android: AM6: Screen cap shows graphics cache Issue,
+   LCPD-15830,"am57xx-evm, am654x-evm",Android: CTS Execution Failure on Pie builds,
+   LCPD-15829,"am57xx-evm, am654x-evm",Android: VTS Execution Failure on Pie builds,
    LCPD-15514,am57xx-evm,Android boot time is noticeable higher than previous releases,
-   LCPD-15501,am654x-evm,Android : AM6: Selinux: Permissive mode denial warnings in boot up,
-   LCPD-15442,"am574x-idk, am57xx-evm",Android: Application icons not showing correctly is second boot,
-   LCPD-14444,am654x-evm,VTS tests time-out with kernel warning,
+   LCPD-13409,"am571x-idk, am574x-idk",Android: IDK: Bootloader images fail to boot from eMMC,
+   LCPD-13797,am57xx-evm,Android:CTS Failures,
    LCPD-14443,am654x-evm,CTS failures detected,
    LCPD-14442,am654x-evm,Ethernert port does not obtain ip address,
-   LCPD-13797,am57xx-evm,Android:CTS Failures,
-   LCPD-13796,"am57xx-evm, am654x-evm",Android: monkey test causes system crash after 10 mins of execution,
-   LCPD-13723,,[android] allmodconfig fails to build on kernel build redirect,
-   LCPD-13409,"am571x-idk, am574x-idk",Android: IDK: Bootloader images fail to boot from eMMC,
+   LCPD-15643,"am57xx-evm, am654x-evm",Android: Monkey test fails to run,
+   LCPD-15642,am57xx-evm,Android: kernel errors observed while trying to run cts,
+   LCPD-15644,"am57xx-evm, am57xx-beagle-x15",Android: Unable to set the HDMI mode via ro.hwc.hdmiedid,
+   LCPD-16140,am571x-idk,Video is jerky when LCD and HDMI are connected,
    LCPD-12928,am57xx-evm,Periodic frame freezes observed while decoding H264 video,
-   LCPD-14325,,U-boot fails to read tispl.bin during android boot on some boards,
-   LCPD-12513,am57xx-evm,Android O: Board takes longer to boot compared to MM,
-   LCPD-12928,am57xx-evm,Periodic frame freezes observed while decoding H264 video,
-   LCPD-13956,"am571x-idk, am572x-idk, am574x-idk, am57xx-evm",Graphics stack crash after HDMI hot un-plug,
-   LCPD-12511,am57xx-evm,Audio record is not working,
-   LCPD-14423,am57xx-evm,Some Am57xx EVMs board are not able to fully boot from emmc,
-   LCPD-13797,am57xx-evm,Android:CTS Failures,
-   LCPD-13796,"am57xx-evm",Android: monkey test causes system crash after 10 mins of execution,
-   LCPD-13795,"am571x-idk, am572x-idk, am57xx-evm","Android: Graphics service failure with ""stop"" and ""start"" command",
-   LCPD-13723,,[android] allmodconfig fails to build on kernel build redirect,
-   LCPD-13409,"am571x-idk, am572x-idk, am574x-idk",Android: IDK: Bootloader images fail to boot from eMMC,
+   LCPD-15742,am654x-evm,Android: AM6: PVR: Build warnings in kernel driver build,
+   PANDSDK-207,am574x-idk,Application icons not showing correctly is second boot,"AM57x:  http://git.ti.com/android/device-ti-beagle-x15/commit/aa11b36aaa11c300cbeccfa653f8efca17fe9714, http://git.ti.com/android/hardware-ti-am57x/commit/ef3412ac548a0afa97c68d00f1d494b137289a0e AM65x:  http://git.ti.com/android/vendor-ti-am65x/commit/690354778b8b70c68e5f22fbd1452402d6184285 , http://git.ti.com/android/hardware-ti-am65x/commit/8054f800d4d00897859e65f8911dd7f66bba1464"
+   PANDSDK-208,"am571x-idk, am572x-idk",sudo ./adb root command crashes OS and reboots board, 
 
 | 
 

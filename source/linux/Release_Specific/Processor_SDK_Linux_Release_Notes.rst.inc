@@ -216,6 +216,7 @@ Issues opened in previous releases that were closed on this release
    PLSDK-2796,am572x-idk,HSR/PRP duplicate packets seen
    PLSDK-2818,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",PRUETH: promiscuous mode doesn't work in Dual EMAC mode firmware
    PLSDK-2854,,Make tisdk-rootfs-image first option in create-sdcard.sh
+
 |
 
 
@@ -323,9 +324,7 @@ SDK Known Issues
    LCPD-8345,"am335x-evm, am437x-idk, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2e-hsevm, k2hk-evm, k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)",Restart the EVM
    LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
    LCPD-16114,"am335x-evm, am335x-ice, am335x-sk",RTC Init Script Needs to Wait for Module Load,
-   LCPD-15945,,armnn fails to build in 2019LTS,
-   LCPD-15562,,OpenSSL1.1 does not have hooks for using hw crypto,
-   LCPD-14560,,gdbc6x fails with gcc8,
+   LCPD-15562,,OpenSSL1.1 does not have hooks for using hw crypto, Use openssl1.0 for crypto
    LCPD-13947,am335x-evm,nativesdk-opkg is broken in the devkit,
    LCPD-13633,"am335x-evm, am335x-hsevm, am335x-ice, am335x-sk, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",IMG wayland based demos are missing from the fs,N/A
    LCPD-13437,am57xx-hsevm,Multimedia:ducatih264enc0: Could not initialize supporting library,
@@ -399,14 +398,11 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround", "Impact"
    :widths: 5, 10, 70, 10, 5, 20, 35, 20
 
-   LCPD-15950,P1-Urgent,Provide priority access to MSMC from ICSSG,Baseport,,,,
-   LCPD-9877,P2-High,rtc alarm does not wakeup board from poweroff state,Power & Thermal,,omapl138-lcdk,,
-   LCPD-16048,P2-High,UDP iperf with smaller packet sizes < 512 bytes does not complete consistently,Connectivity,,"am654x-evm, am654x-idk",,
-   LCPD-15792,P2-High,am65xx: icssg: tx_teardown_timeout at prueth interface down,Connectivity,PRUSS-Ethernet,"am654x-evm, am654x-idk",,
-   LCPD-14188,P2-High,ICSSG PRUEth Extremely Slow,Connectivity,"ICSSG, PRUETH",am654x-evm,,
-   LCPD-9972,P2-High,Soft reboot failed on k2g-evm with class 10 SD cards,Connectivity,,k2g-evm,,
-   LCPD-13653,P2-High,am65x-evm could not boot from MMC/SD when MMC/SD is backup boot mode,Baseport,,"am654x-evm, am654x-idk",,
-   LCPD-13412,P2-High,VIP camera sensor (mt9t11) is not initialized properly,Audio & Display,,am57xx-evm,,
+   LCPD-15792,P2-High,am65xx: icssg: tx_teardown_timeout at prueth interface down,Connectivity,PRUSS-Ethernet,"am654x-evm, am654x-idk",No workaround, Multiple ifdown/ifup of interface will cause interface to stop working
+   LCPD-14188,P2-High,ICSSG PRUEth Extremely Slow,Connectivity,"ICSSG, PRUETH",am654x-evm,No workaround, Low throughput
+   LCPD-9972,P2-High,Soft reboot failed on k2g-evm with class 10 SD cards,Connectivity,,k2g-evm,Do not use soft reboot, Only hard reboot works
+   LCPD-13653,P2-High,am65x-evm could not boot from MMC/SD when MMC/SD is backup boot mode,Baseport,,"am654x-evm, am654x-idk",No workaround, If UART boot times out mmc backup mode cannot work
+   LCPD-13412,P2-High,VIP camera sensor (mt9t11) is not initialized properly,Audio & Display,,am57xx-evm, Hardware issue with sensor, capture does not work with this sensor
    LCPD-15894,P3-Medium,Standby hangs sometimes after many standby/resume transitions,Power & Thermal,,am335x-evm,,
    LCPD-15422,P3-Medium,cpuhotplug03 test failed (tasks get scheduled to a newly on-lined CPU?),Power & Thermal,,"am57xx-evm, am654x-evm, dra7xx-evm",,
    LCPD-12784,P3-Medium,Board can't resume from suspend state sometimes,Power & Thermal,,omapl138-lcdk,,
