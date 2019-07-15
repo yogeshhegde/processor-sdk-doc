@@ -27,13 +27,13 @@ Prerequisites (One-time setup)
 .. rubric:: Host Setup - Ubuntu (Recommended)
    :name: Host Setup - ubuntu (Recommended)
 
-The recommended Linux distribution is Ubuntu 14.04 or Ubuntu 16.04.
+The recommended Linux distribution is Ubuntu 16.04 or Ubuntu 18.04.
 
 The following build host packages are required for Ubuntu. The following
 command will install the required tools on the Ubuntu Linux
 distribution.
 
-For Ubuntu 14.04 and 16.04, please run the following:
+For Ubuntu 16.04 and 18.04, please run the following:
 
 ::
 
@@ -81,14 +81,14 @@ Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
 .. rubric:: Cross-Compile Toolchain
    :name: Cross-Compile Toolchain
 
-Run the following commands to install the Linaro Toolchain.
+Run the following commands to install the ARM Toolchain.
 
 ::
 
-    $ wget https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/arm-linux-gnueabihf/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf.tar.xz
-    $ tar -Jxvf gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf.tar.xz -C $HOME
-    $ wget https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/aarch64-linux-gnu/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz
-    $ tar -Jxvf gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz -C $HOME
+    $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.3-2019.03/binrel/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf.tar.xz
+    $ tar -Jxvf gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf.tar.xz -C $HOME
+    $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.3-2019.03/binrel/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz
+    $ tar -Jxvf gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz -C $HOME
 
 
 Build Steps
@@ -103,8 +103,8 @@ Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for t
     $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
     $ cd build
     $ . conf/setenv
-    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
-    $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu
+    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
+    $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
     $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
 
@@ -234,8 +234,8 @@ are shown in red below:
     $ cd ..</span>
     $ cd build
     $ . conf/setenv
-    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf
-    $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu
+    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
+    $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
     $ MACHINE=<target-board> bitbake arago-core-tisdk-image
 
 
