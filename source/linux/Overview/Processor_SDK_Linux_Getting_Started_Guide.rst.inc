@@ -68,7 +68,7 @@ pieces to simplify things a bit:
 
    -  U-Boot sources and configuration files
    -  Kernel sources and configuration files
-   -  A Linaro cross-compiling toolchain as well as other host binaries
+   -  An ARM cross-compiling toolchain as well as other host binaries
       and components
    -  A Yocto/OE compliant filesystem and sources for example
       applications in Matrix
@@ -201,7 +201,7 @@ which you can start development.
 
    .. note::
       Processor SDK Installer is 64-bit, and installs only on 64-bit host
-      machine. Support for 32-bit host is dropped as Linaro toolchain is
+      machine. Support for 32-bit host is dropped as the cross-compile toolchain is
       available only for 64-bit machines
 
    .. note::

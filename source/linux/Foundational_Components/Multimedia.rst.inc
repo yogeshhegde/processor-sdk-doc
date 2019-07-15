@@ -639,7 +639,7 @@ gstreamer1.0-plugins-dsp66, i.e.,
 ``MACHINE=am57xx-evm bitbake gstreamer1.0-plugins-dsp66``
 
 After the bitbake command above is successfully done,
-./build/arago-tmp-external-linaro-toolchain/work/cortexa15hf-vfp-neon-linux-gnueabi/gstreamer1.0-plugins-dsp66/git-r<\*>
+./build/arago-tmp-external-arm-toolchain/work/armv7ahf-neon-linux-gnueabi/gstreamer1.0-plugins-dsp66/git-r<\*>
 will be created with the original source code under the git sub-folder.
 Copy the modified and/or the newly added files to the git sub-folder,
 and rebuild the plugin referring to `Rebuild

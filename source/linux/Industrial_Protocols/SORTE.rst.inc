@@ -66,7 +66,7 @@ If there is change for the SORTE firmware, the firmware will be rebuilt also.
     MACHINE=am57xx-evm bitbake pruss-lld-apps
 
 After the bitbake command above is successfully done, the rebuilt sorte application can be
-found from ./build/arago-tmp-external-linaro-toolchain/work/am57xx\_evm-linux-gnueabi/pruss-lld-apps/<ver\_number>/packages-split/pruss-lld-apps/usr/bin
+found from ./build/arago-tmp-external-arm-toolchain/work/am57xx\_evm-linux-gnueabi/pruss-lld-apps/<ver\_number>/packages-split/pruss-lld-apps/usr/bin
 directory
 
 |

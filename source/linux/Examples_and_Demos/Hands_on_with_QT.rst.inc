@@ -1460,7 +1460,7 @@ corresponding QT library will need to be installed to the
 location. The \*.ipk package can be found from the `yocto build of
 PSDK <http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK>`__
 under
-build/arago-tmp-external-linaro-toolchain/work/armv7ahf-neon-linux-gnueabi.
+build/arago-tmp-external-arm-toolchain/work/armv7ahf-neon-linux-gnueabi.
 Linux "find" command can be used to refine the search for \*.ipk file.
 For example, following steps to debug qtbase application
 

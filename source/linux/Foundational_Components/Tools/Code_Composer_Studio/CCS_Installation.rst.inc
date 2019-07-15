@@ -19,7 +19,7 @@ CCS uses the Eclipse backend and includes the following plugins:
 
 -  Remote System Explorer - provides tools which allow easy access to
    the remote target board
--  Cross-compile for GCC- allows easy access to the Linaro GCC-based
+-  Cross-compile for GCC- allows easy access to the ARM GCC-based
    compiler included in the Processor Linux SDK
 
 .. raw:: html
@@ -59,11 +59,11 @@ Guide <Overview_Getting_Started_Guide.html#start-your-linux-development>`__.
 .. rubric:: Toolchain
    :name: toolchain
 
-The Processor Linux SDK comes with an integrated Linaro GCC toolchain
+The Processor Linux SDK comes with an integrated ARM GCC toolchain
 located on your Ubuntu host. CCS is integated with the SDK allowing you
 to build, load, run and debug code on the target device. In more recent
 SDK versions (v06.00, v08.00, v01.00.00.00, v02.00.00.00, etc) for
-non-ARM 9 devices, a new Linaro based toolchain is used and the location
+non-ARM 9 devices, a new ARM based toolchain is used and the location
 of the toolchain has changed. For more information on the GCC toolchain,
 please see `Processor Linux SDK GCC
 Toolchain <Overview_Getting_Started_Guide.html#gcc-toolchain>`__.
@@ -167,7 +167,7 @@ installation options and the recommended settings when installing CCS.
 
 #. At the *Processor Support* screen make sure to select the **Sitara
    ARM 32-bit processors** option. You should not select "GCC ARM
-   Compiler" or "TI ARM Compiler", because you will be using the Linaro
+   Compiler" or "TI ARM Compiler", because you will be using the ARM
    toolchain that comes with the Processor Linux SDK installation.
 
 .. Image:: ../images/Sitara_Linux_CCS_Choose_Sitara.png

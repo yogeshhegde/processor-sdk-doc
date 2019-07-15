@@ -268,7 +268,7 @@ After finishing running the TIOVX test application, switch the firmware back to 
   http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Recipes
 | If there is a need to modify source code of TIOVX host library
   (framework) files (A15 side), please do that in:
-  tisdk/build/arago-tmp-external-linaro-toolchain/work/am57xx\_evm-linux-gnueabi/tiovx-lib-host/01.00.00.00-r1/git/
+  tisdk/build/arago-tmp-external-arm-toolchain/work/am57xx\_evm-linux-gnueabi/tiovx-lib-host/01.00.00.00-r1/git/
   folder.
 | For example, to modify list of tests executed: update file
   ./tiovx/conformance\_tests/test\_tiovx/test\_main.h, or
@@ -285,7 +285,7 @@ After finishing running the TIOVX test application, switch the firmware back to 
     MACHINE=am57xx-evm bitbake tiovx-lib-host
 
 | Similarly application code can be modified in:
-  ./tisdk/build/arago-tmp-external-linaro-toolchain/work/am57xx\_evm-linux-gnueabi/tiovx-app-host/01.00.00.00-r1/git,
+  ./tisdk/build/arago-tmp-external-arm-toolchain/work/am57xx\_evm-linux-gnueabi/tiovx-app-host/01.00.00.00-r1/git,
   and then force-recompiled and rebuilt using:
 
 ::

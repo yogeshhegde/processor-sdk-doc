@@ -6,18 +6,18 @@ GCC ToolChain
 .. rubric:: Overview
    :name: overview
 
-The Processor SDK for Linux contains a Linaro based toolchain for Cortex
-A devices. The Linaro toolchain also enables hardware floating point
+The Processor SDK for Linux contains a ARM based toolchain for Cortex
+A devices. The ARM toolchain also enables hardware floating point
 (hardfp) support. Older toolchains including arm-arago-linux-gnueabi-
 uses software floating point (softfp). This results in software built
 using a hardfp toolchain being incompatible with software built with a
 softfp toolchain.
 
-.. rubric:: Linaro Toolchain
-   :name: linaro-toolchain
+.. rubric:: ARM Toolchain
+   :name: arm-toolchain
 
-The Processor SDK for Linux uses a Linaro based tool chain. Other than
-using a newer version of GCC the Linaro tool chain also supports hard
+The Processor SDK for Linux uses a ARM based tool chain. Other than
+using a newer version of GCC the ARM tool chain also supports hard
 floating point also known as Hard-FP. Hard-FP uses the FPU on the ARM
 instead of simulating it. Older tool chains including the Arago tool
 chain uses soft floating point (Soft-FP). Binaries built using a soft-fp

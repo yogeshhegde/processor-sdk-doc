@@ -1245,7 +1245,7 @@ Frequently Asked Questions
 
 **How to compile OpenCV natively on 66AK2H platform?**
 
-    The Linaro gcc compiler is included in the ProcSDK filesystem under /usr/bin directory.
+    The ARM gcc compiler is included in the ProcSDK filesystem under /usr/bin directory.
     OpenCV is supported on Keystone2 platforms (K2H/K/E/L). However, the following OpenCV include files
     and libraries are not in the filesystem, but needed to compile natively.
 

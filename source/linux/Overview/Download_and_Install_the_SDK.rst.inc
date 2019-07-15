@@ -12,7 +12,7 @@ TI microprocessor. The SDK consists of source for the Matrix App
 launcher starting point application, a development filesystem, a
 target filesystem, example applications, toolchain and board support
 package, ease of use scripts and documentation.
-The Processor SDK now includes the Linaro GCC toolchain.  The
+The Processor SDK now includes the ARM GCC toolchain.  The
 Processor SDK was built and tested against a specific Linux
 Distribution name and version, Ubuntu 14.04 and 16.04. Note this
 **does not** prevent the user from installing the SDK on other Linux

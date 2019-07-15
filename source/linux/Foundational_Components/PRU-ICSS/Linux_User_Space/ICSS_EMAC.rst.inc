@@ -83,9 +83,9 @@ icss-emac-lld-test for AM57xx.
 
 After the bitbake commands above are successfully done, the
 icss-emac-lld lib and the icss-emac-lld-test binaries can found from
-./build/arago-tmp-external-linaro-toolchain/work/am57xx\_evm-linux-gnueabi/icss-emac-lld/<ver\_number>/packages-split/icss-emac-lld/usr/lib
+./build/arago-tmp-external-arm-toolchain/work/am57xx\_evm-linux-gnueabi/icss-emac-lld/<ver\_number>/packages-split/icss-emac-lld/usr/lib
 and
-./build/arago-tmp-external-linaro-toolchain/work/am57xx\_evm-linux-gnueabi/icss-emac-lld-test/<ver\_number>/packages-split/icss-emac-lld-test/usr/bin
+./build/arago-tmp-external-arm-toolchain/work/am57xx\_evm-linux-gnueabi/icss-emac-lld-test/<ver\_number>/packages-split/icss-emac-lld-test/usr/bin
 directories, respectively.
 
 | 

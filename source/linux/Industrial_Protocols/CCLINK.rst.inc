@@ -117,7 +117,7 @@ IEF Basic:
 
 After the bitbake commands above are successfully done, the newly built
 ccief-basic binaries can found from the folder of
-./build/arago-tmp-external-linaro-toolchain/work/armv7ahf-neon-linux-gnueabi/ccief-basic/<ver\_number>/packages-split/ccief-basic/usr/bin.
+./build/arago-tmp-external-arm-toolchain/work/armv7ahf-neon-linux-gnueabi/ccief-basic/<ver\_number>/packages-split/ccief-basic/usr/bin.
 
 | 
 
