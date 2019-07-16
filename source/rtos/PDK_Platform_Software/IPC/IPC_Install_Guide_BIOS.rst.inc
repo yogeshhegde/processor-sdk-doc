@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Install_Guide_BIOS 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^^
 
 Inter/Intra Processor Communication (IPC) is a product designed to
 enable communication between processors in a multi-processor
@@ -14,8 +14,8 @@ Operating Systems (HLOS) like Linux, as well as the SYS/BIOS RTOS. The
 breadth of IPC features supported in an HLOS environment is reduced in
 an effort to simplify the product.
 
-.. rubric:: Install
-   :name: install
+Install
+^^^^^^^^^
 
 IPC is often distributed and installed within a larger SDK. In those
 cases, no installation is required.
@@ -43,8 +43,8 @@ and version information (e.g. **c:/ti/ipc_<version>**)
      changes made to the original sources - often useful when updating to
      newer releases.
 
-.. rubric:: Build
-   :name: build
+Build
+^^^^^^^
 
 The IPC product often comes with prebuilt libraries, so rebuilding them
 isn't necessary. The IPC product downloads contain prebuilt libraries,
@@ -60,8 +60,8 @@ required to rebuild the IPC libraries.
   with most SDKs and CCS distributions) includes a pre-compiled version of
   GNU make 3.81 in $(XDC_INSTALL_DIR)/gmake.
 
-.. rubric:: products.mak
-   :name: products.mak
+products.mak
+""""""""""""""
 
 IPC contains a **products.mak** file at the root of the product that
 specifies the necessary paths and options to build IPC for the various
@@ -96,8 +96,8 @@ Edit **products.mak** and set the following variables:
   The versions used during validation can be found in the IPC Release
   Notes provided in the product.
 
-.. rubric:: ipc-bios.mak
-   :name: ipc-bios.mak
+ipc-bios.mak
+"""""""""""""
 
 IPC is built with a GNU makefile. After editing **products.mak**, issue
 the following command:
@@ -109,8 +109,8 @@ the following command:
 Based on the number of targets you're building for, this may take some
 time.
 
-.. rubric:: Examples
-   :name: examples
+Examples
+^^^^^^^^^^
 
 The IPC product contains an examples/archive directory with
 device-specific examples. Once identifying your device, the examples can
@@ -128,8 +128,8 @@ invokes **make**.
 
 Each example contains a **readme.txt** with example-specific details.
 
-.. rubric:: See Also
-   :name: see-also
+See Also
+^^^^^^^^^^
 
 -  `IPC 3.x <index_Foundational_Components.html#ipc-3-x>`__
 -  `IPC Users Guide <index_Foundational_Components.html#ipc-user-guide>`__

@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_IPC_Transports 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+-----------------
 
 IPC transports are the underlying configurable data paths over shared
 memory and hardware resources, which implement the IPC MessageQ APIs.
@@ -365,11 +365,11 @@ ARMv7 source is packaged in a Yocto/bitbake recipe. A user can develop
 ARMv7 Linux user-space applications with IPC on Keystone I and KeyStone
 II devices by building the ti-ipc package in Yocto.
 
-.. rubric:: Modes of Operation
-   :name: modes-of-operation
+Modes of Operation
+--------------------
 
-.. rubric:: **SYS/BIOS DSP TransportSrio**
-   :name: sysbios-dsp-transportsrio
+SYS/BIOS DSP TransportSrio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following SRIO socket types are supported:
 
@@ -381,8 +381,8 @@ transport endpoints.
 transport will use Type 11 sockets to communicate with other SRIO IPC
 transport endpoints.
 
-.. rubric:: **ARM Linux TransportSrio**
-   :name: arm-linux-transportsrio
+ARM Linux TransportSrio
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following SRIO socket types are supported:
 
@@ -393,8 +393,8 @@ Type 9 sockets to communicate with other SRIO IPC transport endpoints.
 use Type 11 sockets to communicate with other SRIO IPC transport
 endpoints.
 
-.. rubric:: **SYS/BIOS DSP TransportQmss**
-   :name: sysbios-dsp-transportqmss
+SYS/BIOS DSP TransportQmss
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following QMSS receive queue types are supported:
 
@@ -406,20 +406,20 @@ Transport.
 interrupt) queue is used as the reception mechanism for the QMSS
 Transport.
 
-.. rubric:: **ARM Linux TransportQmss**
-   :name: arm-linux-transportqmss
+ARM Linux TransportQmss
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A QMSS QPEND queue will always be used as the reception mechanism for
 the ARM Linux QMSS Transport.
 
-.. rubric:: Transport Configuration
-   :name: transport-configuration
+Transport Configuration
+------------------------
 
-.. rubric:: **SYS/BIOS DSP TransportSrio**
-   :name: sysbios-dsp-transportsrio-1
+SYS/BIOS DSP TransportSrio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: **SRIO SERDES and Lane Configuration**
-   :name: srio-serdes-and-lane-configuration
+SRIO SERDES and Lane Configuration
+""""""""""""""""""""""""""""""""""""
 
 Configuration of the SRIO SERDES and lanes are required before calling
 any driver APIs. Examples of the initialization sequences for supported
@@ -428,15 +428,15 @@ the SrioDevice_init() API prior to configuring the transport.
 SrioDevice_init() reference:
 
 ::
-
+  
     ti/transport/ipc/c66/srio/example/src/device_srio.c
 
 Developers can modify the configurations made in the stock device_srio.c
 to change SRIO endpoint IDs, routing information, lane rates, loopback
 modes, etc.
 
-.. rubric:: **APIs**
-   :name: apis
+APIs
+""""""
 
 API reference for application:
 
@@ -444,11 +444,11 @@ API reference for application:
 
     #include <ti/transport/ipc/c66/srio/TransportSrio.h>
 
-.. rubric:: **ARM Linux TransportSrio**
-   :name: arm-linux-transportsrio-1
+ARM Linux TransportSrio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: **SRIO SERDES and Lane Configuration**
-   :name: srio-serdes-and-lane-configuration-1
+SRIO SERDES and Lane Configuration
+""""""""""""""""""""""""""""""""""""
 
 Configuration of the SRIO SERDES and lanes are required before calling
 any driver APIs. Examples of the initialization sequences for supported
@@ -465,8 +465,8 @@ Developers can modify the configurations made in the stock device_srio.c
 to change SRIO endpoint IDs, routing information, lane rates, loopback
 modes, etc.
 
-.. rubric:: **MPM Transport SRIO Configuration**
-   :name: mpm-transport-srio-configuration
+MPM Transport SRIO Configuration
+"""""""""""""""""""""""""""""""""
 
 TransportSrio leverages MPM Transport in order to manage configuration
 of the QMSS, CPPI, and SRIO LLDs. As a result, the transport's
@@ -478,8 +478,8 @@ related parameters.
 The MPM Transport JSON configuration file is located in the Linux file
 system at /etc/mpm/mpm_config.json
 
-.. rubric:: **APIs**
-   :name: apis-1
+APIs
+"""""
 
 API reference for application from keystone-linux/ipc-transport git
 repository:
@@ -488,11 +488,11 @@ repository:
 
     #include <linux/srio/TransportSrio.h>
 
-.. rubric:: **SYS/BIOS DSP TransportQmss**
-   :name: sysbios-dsp-transportqmss-1
+SYS/BIOS DSP TransportQmss
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: **APIs**
-   :name: apis-2
+APIs
+""""""
 
 API reference for application:
 
@@ -500,11 +500,11 @@ API reference for application:
 
     #include <ti/transport/ipc/c66/qmss/TransportQmss.h>
 
-.. rubric:: **ARM Linux TransportQmss**
-   :name: arm-linux-transportqmss-1
+ARM Linux TransportQmss
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: **MPM Transport QMSS Configuration**
-   :name: mpm-transport-qmss-configuration
+MPM Transport QMSS Configuration
+"""""""""""""""""""""""""""""""""
 
 TransportQmss leverages MPM Transport in order to manage configuration
 of the QMSS and CPPI LLDs. As a result, the transport's descriptor and
@@ -515,8 +515,8 @@ be modified to change QMSS descriptor and buffer related parameters.
 The MPM Transport JSON configuration file is located in the Linux file
 system at /etc/mpm/mpm_config.json
 
-.. rubric:: **APIs**
-   :name: apis-3
+APIs
+""""""
 
 API reference for application from keystone-linux/ipc-transport git
 repository:
@@ -525,11 +525,11 @@ repository:
 
     #include <linux/qmss/TransportQmss.h>
 
-.. rubric:: Source Delivery and Recompilation
-   :name: source-delivery-and-recompilation
+Source Delivery and Recompilation
+-----------------------------------
 
-.. rubric:: **SYS/BIOS DSP TransportSrio**
-   :name: sysbios-dsp-transportsrio-2
+SYS/BIOS DSP TransportSrio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SYS/BIOS DSP TransportSrio source code and examples are delivered
 within the PROCSDK RTOS PDK component. DSP TransportSrio can be rebuilt
@@ -538,8 +538,8 @@ TransportSrio example applications are created as part of the
 pdkProjectCreate scripts. They can be imported and built the same as PDK
 LLD example and test CCS projects.
 
-.. rubric:: Recompiling on Windows
-   :name: recompiling-on-windows
+Recompiling on Windows
+"""""""""""""""""""""""
 
 #. Open a Windows command terminal and navigate to
    <pdk_install_dir>/packages.
@@ -554,8 +554,9 @@ rebuilt:
 
 >gmake clean
 >gmake
-.. rubric:: Recompiling on Linux
-   :name: recompiling-on-linux
+
+Recompiling on Linux
+"""""""""""""""""""""""
 
 #. Open a Linux bash terminal and navigate to
    <pdk_install_dir>/packages.
@@ -570,17 +571,17 @@ rebuilt:
 
 $ make clean
 $ make
-.. rubric:: **ARM Linux TransportSrio Source Delivery and
-   Recompilation**
-   :name: arm-linux-transportsrio-source-delivery-and-recompilation
+
+ARM Linux TransportSrio Source Delivery and Recompilation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ARM Linux TransportSrio source code can be downloaded and built two
 ways. The transport source code is delivered and built as part of
 Yocto/bitbake. The source code can also be downloaded and built directly
 from the GIT repository.
 
-.. rubric:: Recompiling Through Yocto/bitbake
-   :name: recompiling-through-yoctobitbake
+Recompiling Through Yocto/bitbake
+""""""""""""""""""""""""""""""""""""
 
 #. Follow the instructions in the Exploring section of the user guide to
    configure the `Yocto build
@@ -594,11 +595,14 @@ from the GIT repository.
    ipc-transport-srio
    $ MACHINE=k2hk-evm TOOLCHAIN_BRAND=linaro ARAGO_BRAND=mcsdk bitbake
    ipc-transport-srio-test
-   |Note|\ **Note:** The initial build may take quite some time since
-   the kernel is built as a dependency
-   |Note|\ **Note:** Building with just the ipc-transport-srio-test
-   recipe will also build the ipc-transport-srio recipe since the test
-   recipe depends on the library recipe.
+
+.. note:: 
+   The initial build may take quite some time since the kernel is built as a dependency
+
+.. note:: 
+  Building with just the ipc-transport-srio-test recipe will also build the 
+  ipc-transport-srio recipe since the test recipe depends on the library recipe.
+
 #. The built TransportSrio static library will be located in
    <base_path>/oe-layersetup/build/arago-tmp-external-linaro-toolchain/work/cortexa15hf-vfp-neon-3.8-oe-linux-gnueabi/ipc-transport-srio/<tag-ver_recipe-ver>/packages-split/ipc-transport-srio-staticdev/usr/lib/libTransportSrio.a
    The built TransportSrio shared library will be located in
@@ -608,8 +612,8 @@ from the GIT repository.
    be located in
    base_path>/oe-layersetup/build/arago-tmp-external-linaro-toolchain/work/cortexa15hf-vfp-neon-3.8-oe-linux-gnueabi/ipc-transport-srio-test/<tag-ver_recipe-ver>/packages-split/ipc-transport-srio-test/usr/bin/
 
-.. rubric:: Recompiling Through GIT Repository
-   :name: recompiling-through-git-repository
+Recompiling Through GIT Repository
+"""""""""""""""""""""""""""""""""""""
 
 Recompiling through the ARM Linux TransportSrio GIT repository requires
 that the latest PROCSDK Linux installation. The PROCSDK Linux PDK
@@ -621,8 +625,11 @@ root>/procsdk_linux_3_XX_YY_ZZ/linux-devkit/
    $ git clone git://git.ti.com/keystone-linux/ipc-transport.git
 #. Navigate to the PROCSDK Linux installation of pdk_3_XX_YY_ZZ/packages
    and source armv7setupenv.sh.
-   |Note|\ **Note:** The armv7setupenv.sh script must be modified to
-   point to the linaro toolchain and installed devkit path
+
+.. note:: 
+  The armv7setupenv.sh script must be modified to
+  point to the linaro toolchain and installed devkit path
+
    $ source armv7setupenv.sh
 #. Navigate back to the SRIO transport directory in the ipc-transport
    GIT repository
@@ -636,13 +643,15 @@ root>/procsdk_linux_3_XX_YY_ZZ/linux-devkit/
 #. The test executables will be generated in the
    <base_repo_path>/ipc-transport/bin/<k2 device>/test/ folder. Only the
    device specified in the armv7setupenv.sh will be built.
-   |Note|\ **Note:** Setting the USEDYNAMIC_LIB environment variable to
-   "yes" will generate the shared library test executables
-   $ export USEDYNAMIC_LIB=yes
 
-.. rubric:: **SYS/BIOS DSP TransportQmss Source Delivery and
-   Recompilation**
-   :name: sysbios-dsp-transportqmss-source-delivery-and-recompilation
+.. note:: 
+  Setting the USEDYNAMIC_LIB environment variable to
+  "yes" will generate the shared library test executables
+  
+  $ export USEDYNAMIC_LIB=yes
+
+SYS/BIOS DSP TransportQmss Source Delivery and Recompilation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SYS/BIOS DSP TransportQmss source code and examples are delivered
 within the PROCSDK RTOS PDK component. DSP TransportQmss can be rebuilt
@@ -651,8 +660,8 @@ TransportQmss example applications are created as part of the
 pdkProjectCreate scripts. They can be imported and built the same as PDK
 LLD example and test CCS projects.
 
-.. rubric:: Recompiling on Windows
-   :name: recompiling-on-windows-1
+Recompiling on Windows
+"""""""""""""""""""""""
 
 #. Open a Windows command terminal and navigate to
    <pdk_install_dir>/packages.
@@ -667,8 +676,9 @@ rebuilt:
 
 >gmake clean
 >gmake
-.. rubric:: Recompiling on Linux
-   :name: recompiling-on-linux-1
+
+Recompiling on Linux
+""""""""""""""""""""""
 
 #. Open a Linux bash terminal and navigate to
    <pdk_install_dir>/packages.
@@ -683,17 +693,17 @@ rebuilt:
 
 $ make clean
 $ make
-.. rubric:: **ARM Linux TransportQmss Source Delivery and
-   Recompilation**
-   :name: arm-linux-transportqmss-source-delivery-and-recompilation
+
+ARM Linux TransportQmss Source Delivery and Recompilation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ARM Linux TransportQmss source code can be downloaded and built two
 ways. The transport source code is delivered and built as part of
 Yocto/bitbake. The source code can also be downloaded and built directly
 from the GIT repository.
 
-.. rubric:: Recompiling Through Yocto/bitbake
-   :name: recompiling-through-yoctobitbake-1
+Recompiling Through Yocto/bitbake
+""""""""""""""""""""""""""""""""""
 
 #. Follow the instructions in the Exploring section of the user guide to
    configure the `Yocto build
@@ -707,11 +717,16 @@ from the GIT repository.
    ipc-transport-qmss
    $ MACHINE=k2hk-evm TOOLCHAIN_BRAND=linaro ARAGO_BRAND=mcsdk bitbake
    ipc-transport-qmss-test
-   |Note|\ **Note:** The initial build may take quite some time since
-   the kernel is built as a dependency
-   |Note|\ **Note:** Building with just the ipc-transport-qmss-test
-   recipe will also build the ipc-transport-qmss recipe since the test
-   recipe depends on the library recipe.
+
+.. note:: 
+  The initial build may take quite some time since
+  the kernel is built as a dependency
+
+.. note:: 
+  Building with just the ipc-transport-qmss-test
+  recipe will also build the ipc-transport-qmss recipe since the test
+  recipe depends on the library recipe.
+
 #. The built TransportQmss static library will be located in
    <base_path>/oe-layersetup/build/arago-tmp-external-linaro-toolchain/work/cortexa15hf-vfp-neon-3.8-oe-linux-gnueabi/ipc-transport-qmss/<tag-ver_recipe-ver>/packages-split/ipc-transport-qmss-staticdev/usr/lib/libTransportQmss.a
    The built TransportQmss shared library will be located in
@@ -721,8 +736,8 @@ from the GIT repository.
    be located in
    base_path>/oe-layersetup/build/arago-tmp-external-linaro-toolchain/work/cortexa15hf-vfp-neon-3.8-oe-linux-gnueabi/ipc-transport-qmss-test/<tag-ver_recipe-ver>/packages-split/ipc-transport-qmss-test/usr/bin/
 
-.. rubric:: Recompiling Through GIT Repository
-   :name: recompiling-through-git-repository-1
+Recompiling Through GIT Repository
+"""""""""""""""""""""""""""""""""""
 
 Recompiling through the ARMv7 Linux TransportQmss GIT repository
 requires that the latest PROCSDK Linux installation. The PROCSDK Linux
@@ -734,9 +749,12 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
    $ git clone git://git.ti.com/keystone-linux/ipc-transport.git
 #. Navigate to the PROCSDK Linux installation of pdk_3_XX_YY_ZZ/packages
    and source armv7setupenv.sh.
-   |Note|\ **Note:** The armv7setupenv.sh script must be modified build
-   for the correct K2 device, and to point to the linaro toolchain and
-   installed devkit path
+
+.. note:: 
+  The armv7setupenv.sh script must be modified build
+  for the correct K2 device, and to point to the linaro toolchain and
+  installed devkit path
+
    $ source armv7setupenv.sh
 #. Navigate back to the QMSS transport directory in the ipc-transport
    GIT repository
@@ -750,15 +768,18 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
 #. The test executables will be generated in the
    <base_repo_path>/ipc-transport/bin/<k2 device>/test/ folder. Only the
    device specified in the armv7setupenv.sh will be built.
-   |Note|\ **Note:** Setting the USEDYNAMIC_LIB environment variable to
-   "yes" will generate the shared library test executables
+
+.. note:: 
+  Setting the USEDYNAMIC_LIB environment variable to
+  "yes" will generate the shared library test executables
+
    $ export USEDYNAMIC_LIB=yes
 
-.. rubric:: Tests & Examples
-   :name: tests-examples
+Tests & Examples
+--------------------
 
-.. rubric:: **SYS/BIOS DSP TransportSrio**
-   :name: sysbios-dsp-transportsrio-3
+SYS/BIOS DSP TransportSrio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
@@ -793,8 +814,8 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
 |                       |   configurations.     |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: **ARM Linux TransportSrio**
-   :name: arm-linux-transportsrio-2
+ARM Linux TransportSrio
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
@@ -813,8 +834,8 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
 |                       |   configurations.     |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: **SYS/BIOS DSP TransportQmss**
-   :name: sysbios-dsp-transportqmss-2
+SYS/BIOS DSP TransportQmss
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
@@ -846,8 +867,8 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
 | Processor Test        |   test for developers |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: **ARM Linux TransportQmss**
-   :name: arm-linux-transportqmss-2
+ARM Linux TransportQmss
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | Expected Results      |
@@ -866,8 +887,8 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
 | Processor Test        |   test for developers |                       |
 +-----------------------+-----------------------+-----------------------+
 
-.. rubric:: Additional References
-   :name: additional-references
+Additional References
+-----------------------
 
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |

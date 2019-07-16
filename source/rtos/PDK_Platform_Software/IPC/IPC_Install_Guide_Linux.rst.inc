@@ -499,8 +499,8 @@ The expected output on the remote processor should be:
     [t=0x00000015:7b46c4c2] ti.ipc.rpmsg.MessageQCopy: MessageQCopy_send: no object for endpoint: 53
     [t=0x00000015:7b6315fb] ti.ipc.rpmsg.MessageQCopy: MessageQCopy_send: no object for endpoint: 53
 
-.. rubric:: See Also
-   :name: see-also
+See Also
+^^^^^^^^^^
 
 -  `IPC 3.x <index_Foundational_Components.html#ipc-3-x>`__
 -  `IPC Users Guide <index_Foundational_Components.html#ipc-user-guide>`__

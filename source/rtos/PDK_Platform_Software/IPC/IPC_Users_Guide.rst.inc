@@ -10,8 +10,8 @@ IPC can be used to communicate with the following:
 
 .. image:: ../images/IPC_comm_features.JPG
 
-.. rubric:: About this User's Guide
-   :name: about-this-users-guide
+About this User's Guide
+------------------------
 
 This user's guide is the new home of the *Inter-Processor
 Communication (IPC) User's Guide*
@@ -203,8 +203,8 @@ and run-time C processing (|ipcRun_Img|) for each module.
    explains details of the additional RTOS IPC transports provided via
    the Processor SDK PDK component.
 
-.. rubric:: Other TI IPC related links for Host Running Linux
-   :name: other-ti-ipc-related-links-for-host-running-linux
+Other TI IPC related links for Host Running Linux
+--------------------------------------------------
 
 -  `IPC Custom
    ResourceTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__
@@ -222,8 +222,8 @@ and run-time C processing (|ipcRun_Img|) for each module.
    Daemon <http://processors.wiki.ti.com/index.php/IPC_Daemon>`__
    Provides details of IPC Daemon
 
-.. rubric:: Other TI IPC useful links
-   :name: other-ti-ipc-useful-links
+Other TI IPC useful links
+--------------------------
 
 -  `IPC 3.x <http://processors.wiki.ti.com/index.php/IPC_3.x>`__
    Provides details of IPC 3.x releases

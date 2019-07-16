@@ -1,12 +1,12 @@
 .. http://processors.wiki.ti.com/index.php/IPC_3.x_FAQ 
 
-.. rubric:: General
-   :name: general
+General
+---------
 
 A good place to start is the `IPC Category </index.php/Category:IPC>`__.
 
-.. rubric:: I have a question that's not answered here, what now?
-   :name: i-have-a-question-thats-not-answered-here-what-now
+I have a question that's not answered here, what now?
+-----------------------------------------------------
 
 -  There are lots of knowledgeable experts on the `E2E Embedded SW
    Forum <http://e2e.ti.com/support/embedded/default.aspx>`__ - posts
@@ -14,8 +14,8 @@ A good place to start is the `IPC Category </index.php/Category:IPC>`__.
 -  Have you tried `Google <http://www.google.com>`__? IPC's been around
    a while, and Google has lots of details about it.
 
-.. rubric:: Does IPC 3.x support SMP BIOS?
-   :name: does-ipc-3.x-support-smp-bios
+Does IPC 3.x support SMP BIOS?
+--------------------------------
 
 `SMP BIOS is described here </index.php/SMP/BIOS>`__. It is currently
 only available for dual-core ARM M-class devices, sometimes called
@@ -78,14 +78,14 @@ highlighted here:
    unicache needed to understand AMMU and cache needs for both cores,
    and often confusing and error-prone integration issue.
 
-.. rubric:: Build Questions
-   :name: build-questions
+Build Questions
+-----------------
 
-.. rubric:: BIOS-side Build
-   :name: bios-side-build
+BIOS-side Build
+^^^^^^^^^^^^^^^^
 
-.. rubric:: How do I change the Memory Map?
-   :name: how-do-i-change-the-memory-map
+How do I change the Memory Map?
+""""""""""""""""""""""""""""""""""
 
 Standard techniques for changing the memory map of any BIOS executable
 generally apply (e.g. `creating your own custom
@@ -102,9 +102,8 @@ includes the memory map.
 Obviously be sure to also ensure changes to the memory map don't collide
 with memory usage on other cores.
 
-.. rubric:: Why are the peripherals mapped to 0x6XXX:XXXX virtual memory
-   for IPU (Cortex-M4) test images?
-   :name: why-are-the-peripherals-mapped-to-0x6xxxxxxx-virtual-memory-for-ipu-cortex-m4-test-images
+Why are the peripherals mapped to 0x6XXX:XXXX virtual memory for IPU (Cortex-M4) test images?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The ARM Cortex-M4 memory map includes a bit-banding region of memory
 from 0x4000:0000 to 0x400F:FFFF and 0x4200:0000 to 0x43FF:FFFF. Here is
@@ -144,14 +143,14 @@ documented here:
 
 http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/ti/sdo/ipc/family/vayu/InterruptIpu.html#metamailbox.Base.Addr
 
-.. rubric:: Linux Build
-   :name: linux-build
+Linux Build
+^^^^^^^^^^^^^
 
 For details on the Linux build process see the `IPC Install Guide for
 Linux </index.php/IPC_Install_Guide_Linux>`__.
 
-.. rubric:: Try Cleaning First
-   :name: try-cleaning-first
+Try Cleaning First
+"""""""""""""""""""
 
 Sometimes the generated autotools makefiles can get confused, especially
 if your often switching from one platform to another, between static and
@@ -177,14 +176,14 @@ the config before running 'make':
     # make -f ipc-linux.mak
     # make
 
-.. rubric:: QNX Build
-   :name: qnx-build
+QNX Build
+^^^^^^^^^^^
 
 For details on the QNX build process see the `IPC Install Guide for
 QNX </index.php/IPC_Install_Guide_QNX>`__.
 
-.. rubric:: How do I change the Memory Map?
-   :name: how-do-i-change-the-memory-map-1
+How do I change the Memory Map?
+""""""""""""""""""""""""""""""""
 
 For the standpoint of the QNX OS, it owns all external memory by
 default. When the 'ipc' resource manager is launched and the slave cores
@@ -210,8 +209,8 @@ shmemallocator (resource table entry PHYS_MEM_IOBUFS) and/or by
 SharedRegions. After modifying the startup flags, rebuild the QNX IFS
 and use the new one to boot your board.
 
-.. rubric:: How do I configure the memory used by shmemallocator?
-   :name: how-do-i-configure-the-memory-used-by-shmemallocator
+How do I configure the memory used by shmemallocator?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 shmemallocator stands for "Shared Memory Allocator". It is a utility
 that is built alongside the core IPC driver whenever the IPC product is
@@ -235,11 +234,11 @@ the slave core's MMU, and that the memory is reserved in the QNX IFS
 startup command as per `"How do I change the Memory
 Map?" <http://processors.wiki.ti.com/index.php/IPC_3.x_FAQ#How_do_I_change_the_Memory_Map.3F_2>`__.
 
-.. rubric:: Runtime Troubleshooting
-   :name: runtime-troubleshooting
+Runtime Troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: Linux spurious "msg received with no recepient"
-   :name: linux-spurious-msg-received-with-no-recepient
+Linux spurious "msg received with no recepient"
+""""""""""""""""""""""""""""""""""""""""""""""""
 
 When a Linux-loaded slave communicates to the Linux host, it sends a msg
 using an rpmsg "channel". Sometimes there's no one listening on that
@@ -261,16 +260,16 @@ a dev_dbg().
 And yes, that's a typo - 'recepient' is really spelled 'recipient'.
 Submit a patch and get your initials into the Linux kernel.  :)
 
-.. rubric:: Disabling auto-recovery
-   :name: disabling-auto-recovery
+Disabling auto-recovery
+""""""""""""""""""""""""
 
 When the HLOS detects a fault on a slave (e.g. an MMU fault), it reloads
 and restarts the slave. Sometimes, especially when debugging slave-side
 errors, it's useful to disable this feature so the state of the crashed
 slave isn't reset and can be examined.
 
-.. rubric:: Linux
-   :name: linux
+Linux
+''''''
 
 You can disable recovery of a given remote processor using remoteproc's
 debugfs features. First, find the slave you want to disable (e.g.
@@ -283,8 +282,8 @@ For example, if "remoteproc0" is the core you want to disable:
 
     target# echo "disabled" > /debug/remoteproc/remoteproc0/recovery
 
-.. rubric:: QNX
-   :name: qnx
+QNX
+''''
 
 Starting in IPC 3.22, you can simply throw the '-d' option when
 launching the ipc resource manager to disable the recovery mechanism.
@@ -306,8 +305,8 @@ prevent the slaves from being automatically reloaded and restarted:
    IPC resource manager binary for debugging. That would prevent it from
    reloading the DSP.
 
-.. rubric:: When should Ipc_start() be called?
-   :name: when-should-ipc_start-be-called
+When should Ipc_start() be called?
+------------------------------------
 
 On a slave core, Ipc_start() should be called only if there is a need to
 initialize the SharedRegion module and/or to perform slave-to-slave IPC
@@ -330,12 +329,11 @@ On the host core, Ipc_start() always needs to be called to initialize
 IPC. Given host-side IPC code does not use SharedRegion, the function is
 strictly used to perform initialization for other IPC modules.
 
-.. rubric:: Linux Ipc_start() Failures
-   :name: linux-ipc_start-failures
+Linux Ipc_start() Failures
+----------------------------
 
-.. rubric:: LAD reports NameServer_setup: connect failed: 22, Invalid
-   argument
-   :name: lad-reports-nameserver_setup-connect-failed-22-invalid-argument
+LAD reports NameServer_setup: connect failed: 22, Invalid argument
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Internally, LAD tries to connect to sockets created by the rpmsg_proto
 kernel driver. This connection can fail for several reasons, so this is
@@ -366,8 +364,8 @@ condition are below.
    available, and the first sign of failure will be LAD trying to
    connect to the socket.
 
-.. rubric:: LAD reports LAD_connect() failed: 4
-   :name: lad-reports-lad_connect-failed-4
+LAD reports LAD_connect() failed: 4
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is a LAD_IOFAILURE = 4. The HOST OS-side application was unable to
 communicate with LAD due to an OS_level I/O failure.
@@ -389,8 +387,8 @@ stared with the correct permission.
 You can also run both LAD and user application as root(su), thus not
 requiring permission to be properly set when starting LAD.
 
-.. rubric:: LAD reports \_GateMP_TI_dGate not found
-   :name: lad-reports-_gatemp_ti_dgate-not-found
+LAD reports \_GateMP_TI_dGate not found
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When the -g option is thrown, the LAD log may show an error about not
 finding the symbol \_GateMP_TI_dGate:
@@ -413,11 +411,11 @@ not find it. On the DRA7xx, verify
 
 | 
 
-.. rubric:: HLOS loading failures
-   :name: hlos-loading-failures
+HLOS loading failures
+-----------------------
 
-.. rubric:: BIOS-side VirtQueue assertions
-   :name: bios-side-virtqueue-assertions
+BIOS-side VirtQueue assertions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The slave loads ok, but communication fails, and in the slave trace
 output you find the following assert (line number and timestamp may
@@ -434,9 +432,8 @@ HLOS side and the slave. Often this is because a `custom resource
 table </index.php/IPC_Resource_customTable>`__ was provided and the
 VRING addresses specified don't match the HLOS-side addresses.
 
-.. rubric:: QNX IPC driver takes a long time to load the slave
-   executable(s) when '-g' is thrown
-   :name: qnx-ipc-driver-takes-a-long-time-to-load-the-slave-executables-when--g-is-thrown
+QNX IPC driver takes a long time to load the slave executable(s) when '-g' is thrown
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The '-g' option to the IPC driver is used to enable optional support for
 GateMP on the host processor. During the setup of GateMP module, it
@@ -492,8 +489,8 @@ polling interval above 1 ms in modern platforms at the time of writing.
 
 | 
 
-.. rubric:: Disabling runtime auto-suspend
-   :name: disabling-runtime-auto-suspend
+Disabling runtime auto-suspend
+--------------------------------
 
 When the HLOS detects that there has been no communication with the
 slave for a defined amount of time and the slave is idled and in standby
@@ -502,8 +499,8 @@ may be performing some tasks that don't require communication with the
 HLOS and does not wish to enter suspend. Or, it may be useful to
 temporarily disable auto-suspend while debugging some errors.
 
-.. rubric:: Linux
-   :name: linux-1
+Linux
+^^^^^^^
 
 The runtime suspend feature can be enabled or disabled by writing 'auto'
 or 'on' to the device's 'control' power field. The default is enabled.
@@ -517,8 +514,8 @@ For example, if "remoteproc0" is the core you want to disable:
 
     target# echo "on" > /sys/bus/platform/devices/58820000.ipu/power/control
 
-.. rubric:: SYS/BIOS
-   :name: sysbios
+SYS/BIOS
+^^^^^^^^^
 
 Alternatively, the slave can choose to deny the runtime suspend request,
 preventing suspend. To prevent the slave from suspending, add the
@@ -539,15 +536,12 @@ from the HLOS.
 In this case, it is not necessary to also disable auto-suspend from the
 HLOS.
 
-.. rubric:: QNX
-   :name: qnx-1
+QNX
+^^^^
 
 Runtime auto-suspend is not supported in QNX.
 
 | 
-
-.. rubric:: See Also
-   :name: see-also
 
 .. raw:: html
 

@@ -1,78 +1,40 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Resource_customTable 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^^^
 
 The IPC 3.x product introduced support for loading slave images which
-include a `Linux-defined resource
-table <http://lwn.net/Articles/489009/>`__. In IPC 3.00.01, `IPC added
-the
-ability <http://git.ti.com/cgit/cgit.cgi/ipc/ipcdev.git/commit/?h=ipc-next&id=44169db6cd6f02193acf7ee97c13f956f599431d>`__
+include a `Linux-defined resource table <http://lwn.net/Articles/489009/>`__. 
+In IPC 3.00.01, `IPC added the ability <http://git.ti.com/cgit/cgit.cgi/ipc/ipcdev.git/commit/?h=ipc-next&id=44169db6cd6f02193acf7ee97c13f956f599431d>`__
 for users to override the default resource table with their own. This
 article describes the mechanics involved to do that.
 
-.. raw:: html
+.. note::
+  Although the Linux community defined the resource table, the IPC port to
+  QNX also uses the same resource table.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
+.. note::
+  This is an expert technique. Most users do not need to modify the
+  default resource table.
 
-**NOTE**
-Although the Linux community defined the resource table, the IPC port to
-QNX also uses the same resource table.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This is an expert technique. Most users do not need to modify the
-default resource table.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Config
-   :name: config
-
+Config
+^^^^^^^^^
 To indicate you want to provide your own resource table, you need to set
 the ``Resource.customTable`` config parameter ``true``.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
-
+::
+  
     /* Override the default resource table with my own */
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
     Resource.customTable = true;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 When ``Resource.customtable`` is set to ``true``, IPC will no longer
 generate a default table, and the user will be able to supply their own
 table using a specially-named C struct,
 ``ti_ipc_remoteproc_ResourceTable``.
 
-.. rubric:: C Code
-   :name: c-code
-
+C Code
+^^^^^^^^^
 The user-supplied resource table is a C structure named
 ``ti_ipc_remoteproc_ResourceTable`` that needs to be linked into the
 slave executable. The platform-specific default resource tables are
@@ -83,38 +45,21 @@ After finding the default resource table for your platform, you can copy
 the entirety of it into your own C file, compile it, and link it into
 your executable.
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-When configuring in a TYPE_TRACE element (a trace buffer) you must
-explicitly declare the symbol as an extern (as below). The trace buffer
-is generated during config, and unfortunately there is no header to
-#include that declares the name of this symbol. Also note the size of
-the trace buffer declared in the resource table must match the size
-you've specified in your .cfg script.
-
-.. raw:: html
-
-   </div>
+.. note::
+  When configuring in a TYPE_TRACE element (a trace buffer) you must
+  explicitly declare the symbol as an extern (as below). The trace buffer
+  is generated during config, and unfortunately there is no header to
+  #include that declares the name of this symbol. Also note the size of
+  the trace buffer declared in the resource table must match the size
+  you've specified in your .cfg script.
 
 For reference, here is an Vayu compatible resource table derived from
 **packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h**\ ( Disclaimer: This
 is a reference design only, and it is subject to enhancements,
 improvements and other changes without notifications).
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+  
     #include "rsc_types.h"
      
     /* IPU Memory Map */
@@ -449,13 +394,6 @@ improvements and other changes without notifications).
         },    
     };
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 You can find 3 new TYPE_DEVMEM entries added in above resource table.
 
@@ -470,16 +408,8 @@ entries.
 
 The virtual addresses #defined are:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+  
     #define IPU_MEM_TEXT            0x0
     #define IPU_MEM_DATA            0x80000000
      
@@ -488,54 +418,22 @@ The virtual addresses #defined are:
     #define IPU_MEM_IPC_DATA        0x9F000000
     #define IPU_MEM_IPC_VRING       0x60000000
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 The followings are fixed physical address to facilitate a fixed MMU
 table.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+  
     #if defined(VAYU_IPU_1)
     #define PHYS_MEM_IPC_VRING      0x9D000000
     #elif defined (VAYU_IPU_2)
     #define PHYS_MEM_IPC_VRING      0x95800000
     #endif
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 These PHYS_MEM values match exactly the physical address specified in
 the remoteproc CMA area in Linux DTS file:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+   
                     ipu2_cma_pool: ipu2_cma@95800000 {
                             compatible = "shared-dma-pool";
                             reg = <0x95800000 0x3800000>;
@@ -550,26 +448,11 @@ the remoteproc CMA area in Linux DTS file:
                             status = "okay";
                     };
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 The 1st entry in the resource table is:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+   
         /* rpmsg vdev entry */
         {
             TYPE_VDEV, VIRTIO_ID_RPMSG, 0,
@@ -580,29 +463,13 @@ The 1st entry in the resource table is:
         { IPU_MEM_RPMSG_VRING0, 4096, IPU_RPMSG_VQ0_SIZE, 1, 0 },
         { IPU_MEM_RPMSG_VRING1, 4096, IPU_RPMSG_VQ1_SIZE, 2, 0 },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 This tells remoteproc to allocate the vrings and vring buffers, and the
 remoteproc CMA area is used for this.
 
 The 2nd-4th entries are:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+   
         {
             TYPE_CARVEOUT,
             IPU_MEM_TEXT, 0,
@@ -619,14 +486,6 @@ The 2nd-4th entries are:
             IPU_MEM_IPC_DATA_SIZE, 0, 0, "IPU_MEM_IPC_DATA",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 These carveouts tell remoteproc to allocate memory from its CMA area and
 map the allocated physical address to the virtual address specified in
 the carveout (the 1st field after TYPE_CARVEOUT), in the IPU’s MMU
@@ -641,57 +500,25 @@ just creates an IPU MMU mapping for the entry. The 1st TYPE_DEVMEM entry
 corresponds to the vrings and creates the IPU MMU mapping needed to
 access them from the IPU core:
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+  
         {
             TYPE_DEVMEM,
             IPU_MEM_IPC_VRING, PHYS_MEM_IPC_VRING,
             IPU_MEM_IPC_VRING_SIZE, 0, 0, "IPU_MEM_IPC_VRING",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: New TYPE_DEVMEM entry
-   :name: new-type_devmem-entry
+New TYPE_DEVMEM entry
+^^^^^^^^^^^^^^^^^^^^^^^
 
 To add a new TYPE_DEVMEM entry, for example, to access PRU-ICSS from IPU
 
 -  1. specify the physical address of PRU-ICSS and its virutal address.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+  
         #define L3_PERIPHERAL_PRUSS     0x4B200000
         #define IPU_PERIPHERAL_PRUSS    0x6B200000
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 -  2. increase size of **offset[X]** array in struct my_resource_table.
 -  3. add new **struct fw_rsc_devmem devmemY** entry in struct
@@ -701,55 +528,23 @@ To add a new TYPE_DEVMEM entry, for example, to access PRU-ICSS from IPU
    ti_ipc_remoteproc_ResourceTable.
 -  6. add actual entry in ti_ipc_remoteproc_ResourceTable.
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+  
         {
             TYPE_DEVMEM,
             IPU_PERIPHERAL_PRUSS, L3_PERIPHERAL_PRUSS,
             SZ_1M, 0, 0, "IPU_PERIPHERAL_PRUSS",
         },
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
-
 Note, when MMU is enabled, even though it is a one-to-one mapping, you
 need to have an entry mapped in the MMU for that, e.g. to access
 PRU-ICSS from DSP, you must add the following entry in
 **rsc_table_vayu_dsp.h**
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="c source-c">
-
-.. code:: de1
-
+::
+  
     #define L3_PRU_ICSS             0x4B200000
     #define DSP_PRU_ICSS            0x4B200000
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 The MMU pagetable can be dumped through debugfs - "cat
 /sys/kernel/debug/omap_iommu/<iommu_name>/pagetable"

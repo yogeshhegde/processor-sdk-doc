@@ -79,6 +79,10 @@ GateMP Module
 -----------------
 .. include:: PDK_Platform_Software/IPC/GateMP_Module.rst.inc
 
+GateMP Support for UIO and Misc Driver 
+---------------------------------------
+.. include:: PDK_Platform_Software/IPC/IPC_GateMP_Support_for_UIO_and_Misc_Driver.rst.inc
+
 Notify Module
 -----------------
 .. include:: PDK_Platform_Software/IPC/Notify_Module.rst.inc
@@ -133,6 +137,10 @@ IPC Benchmarking
 IPC 3.x
 ========
 .. include:: PDK_Platform_Software/IPC/IPC_3.x.rst.inc
+
+Resource Custom Table
+----------------------
+.. include:: PDK_Platform_Software/IPC/IPC_Resource_customTable.rst.inc
 
 IPC FAQ
 ========

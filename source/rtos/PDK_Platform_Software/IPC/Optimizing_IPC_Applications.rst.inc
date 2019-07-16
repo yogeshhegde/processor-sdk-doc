@@ -536,8 +536,8 @@ more of the following conditions is true::
                  name: "SL2_RAM",
                });
 
-.. rubric:: Optimizing Local Memory Usage
-   :name: optimizing-local-memory-usage
+Optimizing Local Memory Usage
+--------------------------------
 
 If the Custom1 and Custom2 GateMP proxies will never be used, make sure
 they are both plugged with the ti.sdo.ipc.gates.GateMPSupportNull GateMP

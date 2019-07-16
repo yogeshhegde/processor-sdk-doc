@@ -1,7 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/IPC_GateMP_Support_for_UIO_and_Misc_Driver 
 
-.. rubric:: Introduction
-   :name: introduction
+Introduction
+^^^^^^^^^^^^^^^
 
 Starting in IPC 3.42, the GateMP module added support for accessing
 device memory without using /dev/mem. Instead of accessing /dev/mem, a
@@ -10,34 +10,17 @@ hwspinlock user interface can be used. These drivers are added in the
 Android SDK and GLSDK kernels. This feature was added because in some
 environments, /dev/mem may not be accessible to the LAD.
 
-.. raw:: html
+.. note::
+   There is no change to how LAD is launched in this case, and if the uio
+   and misc driver are not available in the kernel, it will fall back to
+   using /dev/mem.
 
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
-**NOTE**
-There is no change to how LAD is launched in this case, and if the uio
-and misc driver are not available in the kernel, it will fall back to
-using /dev/mem.
+.. note::
+   This applies only to Linux/Android IPC.
 
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-This applies only to Linux/Android IPC.
-
-.. raw:: html
-
-   </div>
-
-.. rubric:: Config
-   :name: config
+Config
+^^^^^^^
 
 Enable the uio and misc drivers in the kernel by enabling the following
 config options:
@@ -69,26 +52,10 @@ IPC HWSpinlock configuration. Configuration the BIOS-side IPC module by
 adding the following to your cfg file (where <N> is equal to the number
 of spinlocks in the dts listing):
 
-.. raw:: html
-
-   <div class="mw-geshi mw-code mw-content-ltr" dir="ltr">
-
-.. raw:: html
-
-   <div class="javascript source-javascript">
-
-.. code:: de1
+::
 
      var HWSpinlock = xdc.useModule(‘ti.sdo.ipc.gates.GateHWSpinlock’);
      HWSpinlock.numLocks = <N>;
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
 
 Update your dts file to add the UIO-based node for Shared Region 0
 (modify address and size so that it matches the Shared Region 0
@@ -112,18 +79,9 @@ Kernel 4.4-based releases:
             reg = <0x0 0xbfb00000 0x0 0x100000>;
     };
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Make sure that the "compatible" property in the sr0 dts node matches the
-UIO’s of_id string defined in the kernel command line.
-
-.. raw:: html
-
-   </div>
+.. note::
+   Make sure that the "compatible" property in the sr0 dts node matches the
+   UIO’s of_id string defined in the kernel command line.
 
 Append the following to the kernel's CONFIG_CMDLINE:
 
@@ -137,19 +95,10 @@ For example:
 
     CONFIG_CMDLINE="root=/dev/mmcblk0p2 rw console=ttyS0,119200 androidboot.console=ttyS0 init=/init rootfstype=ext4 rootwait drm.rnodes=1 snd.slots_reserved=1,1 androidboot.selinux=permissive androidboot.hardware=jacinto6evmboard uio_pdrv_genirq.of_id=generic-uio"
 
-.. raw:: html
-
-   <div
-   style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
-
-**NOTE**
-Changes for the command line are already present in the Android 6AM.1.0
-release. For GLSDK, the command line comes from the bootargs set in the
-uenv.txt file in the boot partition.
-
-.. raw:: html
-
-   </div>
+.. note::
+   Changes for the command line are already present in the Android 6AM.1.0
+   release. For GLSDK, the command line comes from the bootargs set in the
+   uenv.txt file in the boot partition.
 
 Also, specific owner/group must be set for the following files:
 

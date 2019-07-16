@@ -1,10 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/IPC_FAQ_for_Keystone_Devices 
 
-.. rubric:: IPC FAQ for Keystone Devices
-   :name: ipc-faq-for-keystone-devices
-
-.. rubric:: Overview
-   :name: overview
+Overview
+^^^^^^^^^^
 
 This wiki article is a collection of frequently asked questions (FAQ) on
 IPC on Keystone family of devices , along with some useful collateral
@@ -12,9 +9,8 @@ and software reference links. 
 
 | 
 
-.. rubric:: Guide on building and running the IPC examples of Processor
-   SDK
-   :name: guide-on-building-and-running-the-ipc-examples-of-processor-sdk
+Guide on building and running the IPC examples of Processor SDK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | This guide will give step by step instruction on how to bring up the
   target EVMs and how to run the run the IPC examples of processor SDK
@@ -34,8 +30,8 @@ and software reference links. 
 
 | 
 
-.. rubric:: Keystone IPC Frequently Asked Questions (FAQ)
-   :name: keystone-ipc-frequently-asked-questions-faq
+Keystone IPC Frequently Asked Questions (FAQ)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Q: Where do I look for the list of IPC API reference
    document?
