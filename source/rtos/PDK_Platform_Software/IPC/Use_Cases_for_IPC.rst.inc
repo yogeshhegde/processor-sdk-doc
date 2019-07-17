@@ -24,15 +24,15 @@ an event number, which is typically used by the callback function to
 determine what action it needs to perform. Optionally, a small
 "payload"? of data can also be sent.
 
-See `Notify Module </index.php/IPC_Users_Guide/Notify_Module>`__ and
-`MultiProc Module </index.php/IPC_Users_Guide/MultiProc_Module>`__.
+See `Notify Module <index_Foundational_Components.html#notify-module>`__ and
+`MultiProc Module <index_Foundational_Components.html#multiproc-module>`__.
 
 
 .. note::
 
   If you are using a Concerto F28M35x device, this scenario is supported.
   See `Using IPC on Concerto
-  Devices </index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices>`__
+  Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
   for details.
 
 Data Passing Scenario (BIOS-to-BIOS only)
@@ -64,17 +64,17 @@ name/value pairs. The ListMP module also uses a GateMP object, which
 your application must configure. The GateMP is used internally to
 synchronize access to the list elements.
 
-See `ListMP Module </index.php/IPC_Users_Guide/ListMP_Module>`__,
-`GateMP Module </index.php/IPC_Users_Guide/GateMP_Module>`__,
+See `ListMP Module <index_Foundational_Components.html#listmp-module>`__,
+`GateMP Module <index_Foundational_Components.html#gatemp-module>`__,
 `SharedRegion
-Module </index.php/IPC_Users_Guide/SharedRegion_Module>`__, and
-`NameServer Module </index.php/IPC_Users_Guide/NameServer_Module>`__.
+Module <index_Foundational_Components.html#shared-region-module>`__, and
+`NameServer Module <index_Foundational_Components.html#nameserver-module>`__.
 
 .. note::
 
   If you are using a Concerto F28M35x device, this scenario is not
   supported due to shared memory limitations. See `Using IPC on Concerto
-  Devices </index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices>`__
+  Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
   for details.
 
 Dynamic Allocation Scenario (BIOS-to-BIOS only)
@@ -92,14 +92,14 @@ In addition to the modules that you configured for the previous
 scenario, the Heap*MP modules use a GateMP that you must configure. You
 may use the same GateMP instance used by ListMP.
 
-See `Heap*MP Modules </index.php/IPC_Users_Guide/HeapMP_Modules>`__ and
-`GateMP Module </index.php/IPC_Users_Guide/GateMP_Module>`__.
+See `Heap*MP Modules <index_Foundational_Components.html#heapmp-module>`__ and
+`GateMP Module <index_Foundational_Components.html#gatemp-module>`__.
 
 .. note::
 
   If you are using a Concerto F28M35x device, this scenario is not
   supported due to shared memory limitations. See `Using IPC on Concerto
-  Devices </index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices>`__
+  Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
   for details.
 
 Powerful But Easy-to-Use Messaging with MessageQ (HLOS and BIOS)
@@ -143,7 +143,7 @@ configuration of any xdc.runtime.IHeap implementation are needed.
   If you are using a Concerto F28M35x device, this scenario is supported,
   but fewer modules are used due to shared memory limitations. See `Using
   IPC on Concerto
-  Devices </index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices>`__
+  Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
   for details.
 
 .. raw:: html

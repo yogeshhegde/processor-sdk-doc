@@ -6,14 +6,14 @@ IPC Daemon (aka LAD)
 This topic is an overview of the daemon used by IPC on Linux. The IPC
 daemon maintains any processor-wide state that's not specific to any
 process or thread on the HLOS. For example, it contains the
-`MultiProc </index.php/IPC_Users_Guide/NameServer_Module>`__
+`MultiProc <index_Foundational_Components.html#nameserver-module>`__
 configuration (small database of what cores are in the system and their
 unique IDs), the HLOS's
-`NameServer </index.php/IPC_Users_Guide/NameServer_Module>`__ database,
+`NameServer <index_Foundational_Components.html#nameserver-module>`__ database,
 among other misc.
 
 The IPC daemon was forked from the `Link Arbiter
-Daemon </index.php/Link_Arbiter_Daemon>`__, used in DSP Link systems -
+Daemon <http://processors.wiki.ti.com/index.php/Link_Arbiter_Daemon>`__, used in DSP Link systems -
 and while the daemon still contains 'lad' in it's name, LAD isn't really
 an applicable acronym for anything. (But creative suggestions are
 welcome!)

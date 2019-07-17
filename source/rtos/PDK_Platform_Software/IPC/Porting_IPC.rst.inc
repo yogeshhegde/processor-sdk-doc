@@ -28,7 +28,7 @@ Other Porting Tasks
 
 You will likely need to specify custom shared region(s) in your
 configuration file. For details, see `SharedRegion
-Module <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/SharedRegion_Module>`__.
+Module <index_Foundational_Components.html#shared-region-module>`__.
 
 Optionally, you may implement custom Heaps and hardware-specific
 versions of other IPC modules.

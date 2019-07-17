@@ -7,14 +7,12 @@ The various IPC Install Guides describe the mechanics of rebuilding IPC
 libraries. Please consult the Install Guide appropriate for your
 environment.
 
--  `IPC Install Guide BIOS </index.php/IPC_Install_Guide_BIOS>`__ - for
+-  `IPC Install Guide BIOS <index_Foundational_Components.html#bios-install-guide>`__ - for
    all-BIOS environments
--  `IPC Install Guide Linux </index.php/IPC_Install_Guide_Linux>`__ -
+-  `IPC Install Guide Linux <index_Foundational_Components.html#linux-install-guide>`__ -
    for environments with a combination of Linux and BIOS
--  `IPC Install Guide QNX </index.php/IPC_Install_Guide_QNX>`__ - for
+-  `IPC Install Guide QNX <index_Foundational_Components.html#qnx-install-guide>`__ - for
    environments with a combination of QNX and BIOS
--  `IPC Install Guide Android </index.php/IPC_Install_Guide_Android>`__
-   - for environments with a combination of Android and BIOS
 
 Pointing a CCS Project at a Rebuilt IPC
 ----------------------------------------

@@ -36,13 +36,11 @@ and/or CCS release.
 For more information about installing IPC and getting started, select an
 appropriate Install Guide:
 
--  `IPC Install Guide BIOS <http://processors.wiki.ti.com/index.php/IPC_Install_Guide_BIOS>`__ (for
+-  `IPC Install Guide BIOS <index_Foundational_Components.html#bios-install-guide>`__ (for
    homogeneous and heterogeneous all-BIOS environments)
--  `IPC Install Guide Linux <http://processors.wiki.ti.com/index.php/IPC_Install_Guide_Linux>`__ (for
+-  `IPC Install Guide Linux <index_Foundational_Components.html#linux-install-guide>`__ (for
    heterogeneous Linux+BIOS environments)
--  `IPC Install Guide Android <http://processors.wiki.ti.com/index.php/IPC_Install_Guide_Android>`__
-   (for heterogeneous Android + BIOS environments)
--  `IPC Install Guide QNX <http://processors.wiki.ti.com/index.php/IPC_Install_Guide_QNX>`__ (for
+-  `IPC Install Guide QNX <index_Foundational_Components.html#qnx-install-guide>`__ (for
    heterogeneous QNX + BIOS environments)
 
 Related Documents
@@ -90,9 +88,8 @@ configuration APIs and the other for run-time C APIs.
 The following additional documentation is available for components used
 with IPC.
 
--  *`IPC Category <http://processors.wiki.ti.com/index.php/Category:IPC>`__* on this wiki
--  *RTSC-Pedia Wiki:* http://rtsc.eclipse.org/docs-tip
--  *Texas Instruments Developer Wiki:* http://processors.wiki.ti.com
+-  `RTSC-Pedia Wiki: <http://rtsc.eclipse.org/docs-tip>`__
+-  `Texas Instruments Developer Wiki <index.html#processor-sdk-rtos-software-developer-s-guide>`__
 -  *SYS/BIOS 6 Release Notes:*
    ``BIOS_INSTALL_DIR/Bios_6_##_release_notes.html``
 -  *SYS/BIOS 6 Getting Started Guide:*

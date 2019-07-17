@@ -17,7 +17,7 @@ Linux
 """""""
 
 To build the application, follow the `Linux IPC Install
-Guide </index.php/IPC_Install_Guide_Linux>`__ to configure and build the
+Guide <index_Foundational_Components.html#linux-install-guide>`__ to configure and build the
 Linux-side applications for your device. You'll also need to build the
 corresponding BIOS side of IPC as indicated in the guide.
 
@@ -25,7 +25,7 @@ QNX
 """""
 
 To build the application, follow the `QNX IPC Install
-Guide </index.php/IPC_Install_Guide_QNX>`__ to configure and build the
+Guide <index_Foundational_Components.html#qnx-install-guide>`__ to configure and build the
 QNX-side test applications for your device. You'll also need to build
 the corresponding BIOS side of IPC as indicated in the guide.
 
@@ -53,7 +53,7 @@ the correct **lunch** target for your device).
                          libmmrpc
 
 To build the corresponding SysBios side of IPC follow the `IPC Install
-Guide </index.php/IPC_Install_Guide_Linux>`__.
+Guide <index_Foundational_Components.html#linux-install-guide>`__.
 
 Run
 ^^^^^
@@ -72,7 +72,7 @@ the $(IPC_ROOT)/packages/ti/ipc/tests/bin/<device> directory.
 | 
 | Detailed information regarding this can be found in the **Installing
   Tests** and **IPC Daemons and Drivers** section of the `IPC Install
-  Guide </index.php/IPC_Install_Guide_Linux>`__.
+  Guide <index_Foundational_Components.html#linux-install-guide>`__.
 
 | 
 
@@ -115,7 +115,7 @@ $(IPC_ROOT)/packages/ti/ipc/tests/bin/<device> directory.
 | Detailed information regarding this can be found in the **Installing
   Tests in QNX**, **IPC resource manager** and **Running Test
   Applications** sections of the `IPC Install
-  Guide </index.php/IPC_Install_Guide_QNX>`__.
+  Guide <index_Foundational_Components.html#qnx-install-guide>`__.
 
 Once the IPC resource manager is running and the slave core binary has
 been loaded. You can execute the following to run the application:

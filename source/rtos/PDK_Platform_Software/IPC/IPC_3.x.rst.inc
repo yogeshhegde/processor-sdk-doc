@@ -43,7 +43,7 @@ Changes
 
 The key changes between IPC 1.x/SysLink 2.x and IPC 3.x is the HLOS
 implementation. Note, there is a `IPC 3.x Migration
-Guide </index.php/IPC_3.x_Migration_Guide>`__ with more details.
+Guide <http://processors.wiki.ti.com/index.php/IPC_3.x_Migration_Guide>`__ with more details.
 
 This table summarizes the IPC 1.x/SysLink 2.x supported APIs against
 those provided in IPC 3.x.
@@ -129,8 +129,8 @@ IPC Training
 See Also
 ------------
 
--  `IPC 3.x Migration Guide </index.php/IPC_3.x_Migration_Guide>`__
--  `IPC User's Guide </index.php/IPC_User%27s_Guide>`__
+-  `IPC 3.x Migration Guide <http://processors.wiki.ti.com/index.php/IPC_3.x_Migration_Guide>`__
+-  `IPC User's Guide <index_Foundational_Components.html#ipc-user-guide>`__
 -  `Embedded Linux Conference Europe Presentation on
    rpmsg <http://free-electrons.com/pub/video/2011/elce/elce-2011-ben-cohen-remote-processor-messaging-450p.webm>`__
 

@@ -3,7 +3,7 @@
 General
 ---------
 
-A good place to start is the `IPC Category </index.php/Category:IPC>`__.
+A good place to start is the `IPC  <index_Foundational_Components.html#ipc>`__.
 
 I have a question that's not answered here, what now?
 -----------------------------------------------------
@@ -17,7 +17,7 @@ I have a question that's not answered here, what now?
 Does IPC 3.x support SMP BIOS?
 --------------------------------
 
-`SMP BIOS is described here </index.php/SMP/BIOS>`__. It is currently
+`SMP BIOS is described here <http://processors.wiki.ti.com/index.php/SMP/BIOS>`__. It is currently
 only available for dual-core ARM M-class devices, sometimes called
 "Benelli" or "Ducati".
 
@@ -65,7 +65,7 @@ HLOS-based or BIOS-based system.
 +-----------------------------------+-----------------------------------+
 
 Finally, there are a few notable benefits to using SMP BIOS. Many are
-described in the `SMP/BIOS </index.php/SMP/BIOS>`__ article, but two are
+described in the `SMP/BIOS <http://processors.wiki.ti.com/index.php/SMP/BIOS>`__ article, but two are
 highlighted here:
 
 -  **Free load balancing** - SMP BIOS schedules tasks to run on the
@@ -95,7 +95,7 @@ platform <http://rtsc.eclipse.org/docs-tip/Using_Targets_and_Platforms>`__,
 etc). However when building an executable which is loaded by an HLOS,
 you also need to ensure the resource table is aligned with the memory
 map. The `IPC Resource
-customTable </index.php/IPC_Resource_customTable>`__ article describes
+customTable <index_Foundational_Components.html#resource-custom-table>`__ article describes
 how to override the default resource table, which among other things,
 includes the memory map.
 
@@ -147,7 +147,7 @@ Linux Build
 ^^^^^^^^^^^^^
 
 For details on the Linux build process see the `IPC Install Guide for
-Linux </index.php/IPC_Install_Guide_Linux>`__.
+Linux <index_Foundational_Components.html#linux-install-guide>`__.
 
 Try Cleaning First
 """""""""""""""""""
@@ -180,7 +180,7 @@ QNX Build
 ^^^^^^^^^^^
 
 For details on the QNX build process see the `IPC Install Guide for
-QNX </index.php/IPC_Install_Guide_QNX>`__.
+QNX <index_Foundational_Components.html#qnx-install-guide>`__.
 
 How do I change the Memory Map?
 """"""""""""""""""""""""""""""""
@@ -232,7 +232,7 @@ is important that the memory matches a corresponding DEVMEM entry
 (PHYS_MEM_IOBUFS) in the resource table so that this memory is mapped to
 the slave core's MMU, and that the memory is reserved in the QNX IFS
 startup command as per `"How do I change the Memory
-Map?" <http://processors.wiki.ti.com/index.php/IPC_3.x_FAQ#How_do_I_change_the_Memory_Map.3F_2>`__.
+Map?" <index_Foundational_Components.html#how-do-i-change-the-memory-map>`__.
 
 Runtime Troubleshooting
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -429,7 +429,7 @@ vary):
 
 This error often indicates a mismatch in VRING addresses between the
 HLOS side and the slave. Often this is because a `custom resource
-table </index.php/IPC_Resource_customTable>`__ was provided and the
+table <index_Foundational_Components.html#resource-custom-table>`__ was provided and the
 VRING addresses specified don't match the HLOS-side addresses.
 
 QNX IPC driver takes a long time to load the slave executable(s) when '-g' is thrown

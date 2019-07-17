@@ -174,7 +174,7 @@ runtime performance of IPC applications:
 -  If shared memory has the same address on all processors, you can use
    the following configuration statement to set the
    SharedRegion.translate property to false. See `SharedRegion
-   Module </index.php/IPC_Users_Guide/SharedRegion_Module>`__ for more
+   Module <index_Foundational_Components.html#shared-region-module>`__ for more
    about SharedRegion configuration.
 
 ::
@@ -192,7 +192,7 @@ runtime performance of IPC applications:
    system GateMP instance to be used for context protection. However, in
    some cases it may be optimal to create a new GateMP instance and
    supply it to the instance creation. See `GateMP
-   Module </index.php/IPC_Users_Guide/GateMP_Module>`__ for more
+   Module <index_Foundational_Components.html#gatemp-module>`__ for more
    information. For example:
 
 ::
@@ -451,7 +451,7 @@ memory footprint of IPC applications:
 -  If some connections between processors are not needed, it is not
    necessary to attach to those cores. To selectively attach between
    cores, use pair-wise synchronization as described in `Ipc
-   Module </index.php/IPC_Users_Guide/Ipc_Module>`__. Your C code must
+   Module <index_Foundational_Components.html#ipc-module>`__. Your C code must
    call Ipc_attach() for processors you want to connect to if you are
    using pair-wise synchronization. The following configuration
    statement causes the Ipc module to expect pair-wise synchronization.
@@ -491,7 +491,7 @@ more of the following conditions is true::
 -  Configure Notify.numEvents to a lower number. The default value of 32
    is often significantly more than the total number of Notify events
    required on a system. See `Notify
-   Module </index.php/IPC_Users_Guide/Notify_Module>`__ for more
+   Module <index_Foundational_Components.html#notify-module>`__ for more
    information.
 
    For example, a simple MessageQ application may simply use two events
@@ -581,7 +581,7 @@ of a SYS/BIOS-based application that uses IPC.
    code size. However, you should be aware that, depending on how your
    application uses heaps, HeapMemMP may lead to problems with heap
    fragmentation. See `Heap*MP
-   Modules </index.php/IPC_Users_Guide/HeapMP_Modules>`__ for more about
+   Modules <index_Foundational_Components.html#heapmp-module>`__ for more about
    Heap implementations.
 
 | 
