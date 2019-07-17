@@ -303,7 +303,7 @@ Instructions for rebuilding sub-components can be found in documentation
 within the component. Here are a collection of useful pages:
 
 -  `Rebuild
-   IPC <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Rebuilding_IPC>`__
+   IPC <index_Foundational_Components.html#rebuilding-ipc>`__
    *(Starting in Release 3.0, IPC build has been integrated into the
    top-level SDK Makefile.)*
 

@@ -510,7 +510,7 @@ resource table. The resource table is a large structure that is the
 "bridge" between physical memory and virtual memory. This structure is
 utilized for configuring the MMUs that sit in front of the DSP
 subsystem. There is detailed information available in the article `IPC
-Resource customTable </index.php/IPC_Resource_customTable>`__.
+Resource customTable <index_Foundational_Components.html#resource-custom-table>`__.
 
 Once you've created your custom resource table, you must update the
 address of PHYS_MEM_IPC_VRING to be the same base address as your
@@ -540,7 +540,7 @@ You must ensure that the sizes of your sections are consistent with the
 corresponding definitions in the resource table. You should create your
 own resource table in order to modify the memory map. This is describe
 in the wiki page `IPC Resource
-customTable </index.php/IPC_Resource_customTable>`__. You can look at an
+customTable <index_Foundational_Components.html#resource-custom-table>`__. You can look at an
 existing resource table inside IPC:
 
 ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_dsp.h
@@ -822,7 +822,7 @@ resource table. The resource table is a large structure that is the
 "bridge" between physical memory and virtual memory. This structure is
 utilized for configuring the IPUx_MMU (not the Unicache MMU). There is
 detailed information available in the article `IPC Resource
-customTable </index.php/IPC_Resource_customTable>`__.
+customTable <index_Foundational_Components.html#resource-custom-table>`__.
 
 Once you've created your custom resource table, you must update the
 address of PHYS_MEM_IPC_VRING to be the same base address as your
@@ -924,7 +924,7 @@ used by the L3 interconnect. The IOMMU is programmed by the ARM based on
 the associated resource table. If you're planning any memory changes
 then you'll want to make a custom resource table as described in the
 wiki page `IPC Resource
-customTable </index.php/IPC_Resource_customTable>`__.
+customTable <index_Foundational_Components.html#resource-custom-table>`__.
 
 The default resource table (which can be adapted to make a custom table)
 can be found at this location:
