@@ -3,7 +3,7 @@
 General
 ---------
 
-A good place to start is the `IPC  <index_Foundational_Components.html#ipc>`__.
+A good place to start is the `IPC Wiki <index_Foundational_Components.html#ipc>`__.
 
 I have a question that's not answered here, what now?
 -----------------------------------------------------

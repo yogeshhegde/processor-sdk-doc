@@ -1,5 +1,26 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/MultiProc_Module 
 
+.. |mpmCfg_Img1| Image:: ../images/Book_cfg.png
+                 :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
+
+.. |mpmCfg_Img2| Image:: ../images/Book_cfg.png
+                 :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
+
+                 
+.. |mpmRun_Img1| Image:: ../images/Book_run.png
+                 :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
+
+.. |mpmRun_Img2| Image:: ../images/Book_run.png
+                 :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
+                 
+| 
+
+   +---------------+---------------+
+   |     API Reference Links       |
+   +===============+===============+
+   | |mpmCfg_Img1| | |mpmRun_Img1| |
+   +---------------+---------------+
+
 Introduction
 ^^^^^^^^^^^^^^
 Many IPC modules require the ability to uniquely specify and identify processors in a 
@@ -157,7 +178,7 @@ You could configure the second 'C6678 device as follows:
 Notice that the MultiProc.numProcessors property specifies the total number of processors in the system, while the length of the array passed to setConfig() specifies the number of processors in the cluster. (If you are not using multiple clusters, the numProcessors property is configured automatically.)
 The MultiProc.baseIdOfCluster property is set to the MultiProc ID number you want to use for the first processor in the array for this cluster. For example, if there are 8 processors in a cluster, the baseIdOfCluster property should be 0 for the first cluster and 8 for the second cluster.
 
-Book config.pngThe latest version of the MultiProc module configuration documentation 
+|mpmCfg_Img2| The latest version of the MultiProc module configuration documentation 
 is available `online <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/index.html#ti/sdo/utils/MultiProc.html>`_
 
 
@@ -173,7 +194,7 @@ Creating a connection between cores in different clusters allows you to call Mes
 
 Once the connection has been created, MessageQ can be used between different processors on different clusters just as it is used between different processors in the same cluster.
 
-Book run.pngThe latest version of the MultiProc module run-time API documentation is 
+|mpmRun_Img2| The latest version of the MultiProc module run-time API documentation is 
 available `online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html>`_
 
 

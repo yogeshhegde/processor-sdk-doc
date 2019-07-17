@@ -1,16 +1,16 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/NameServer_Module 
 
-.. |ipcCfg_Img1| Image:: ../images/Book_cfg.png
+.. |nsmCfg_Img1| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/index.html#ti/sdo/utils/NameServer.html
 
-.. |ipcCfg_Img2| Image:: ../images/Book_cfg.png
+.. |nsmCfg_Img2| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |ipcRun_Img1| Image:: ../images/Book_run.png
+.. |nsmRun_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_name_server_8h.html
 
-.. |ipcRun_Img2| Image:: ../images/Book_run.png
+.. |nsmRun_Img2| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_name_server_8h.html
                  
 | 
@@ -18,7 +18,7 @@
    +---------------+---------------+
    |     API Reference Links       |
    +===============+===============+
-   | |ipcCfg_Img1| | |ipcRun_Img1| |
+   | |nsmCfg_Img1| | |nsmRun_Img1| |
    +---------------+---------------+
 
 
@@ -73,7 +73,7 @@ The parameters include the following:
 After setting parameters, use NameServer_create() to create an instance. 
 Each NameServer instance manages its own name/value table.
 
-|ipcCfg_Img2| The latest version of the NameServer module 
+|nsmCfg_Img2| The latest version of the NameServer module 
 configuration documentation is available `online <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html>`_.
 
 Creating and Removing NameServer Instances Dynamically
@@ -111,7 +111,7 @@ This example C code adds and removes entries at run-time:
   NameServer_remove(NSHandle, "volume");
 
 
-|ipcRun_Img2| The latest version of the NameServer module run-time API 
+|nsmRun_Img2| The latest version of the NameServer module run-time API 
 documentation is available `online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_name_server_8h.html>`_.
 
 

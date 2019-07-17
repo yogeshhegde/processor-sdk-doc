@@ -1,5 +1,26 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/SharedRegion_Module 
 
+.. |srmCfg_Img1| Image:: ../images/Book_cfg.png
+                 :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
+
+.. |srmCfg_Img2| Image:: ../images/Book_cfg.png
+                 :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
+
+
+.. |srmRun_Img1| Image:: ../images/Book_run.png
+                 :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
+
+.. |srmRun_Img2| Image:: ../images/Book_run.png
+                 :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
+                 
+| 
+
+   +---------------+---------------+
+   |     API Reference Links       |
+   +===============+===============+
+   | |srmCfg_Img1| | |srmRun_Img1| |
+   +---------------+---------------+
+
 The SharedRegion module is designed to be used in a multi-processor environment where there are memory regions that are shared and accessed across different processors.
 In an environment with shared memory regions, a common problem is that these shared regions are memory mapped to different address spaces on different processors. This is shown in the following figure. The shared memory region "DDR2" is mapped into Proc0's local memory space at base address 0x80000000 and Proc1's local memory space at base address 0x90000000. Therefore, the pointers in "DDR2" need to be translated in order for them to be portable between Proc0 and Proc1. The local memory regions for Proc0 and Proc1 are not shared thus they do not need to be added to the SharedRegion module.
 
@@ -81,7 +102,8 @@ The following figure shows the configuration of a SharedRegion table for the sys
 
 If the "createHeap" field is set to true, a HeapMemMP instance is created within the SharedRegion.
 
-Book config.pngThe latest version of the SharedRegion module configuration documentation is available online.
+|srmCfg_Img2| The latest version of the SharedRegion module configuration documentation is available 
+`online <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/index.html#ti/sdo/ipc/SharedRegion.html>`__.
 
 Modifying Table Entries Dynamically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -109,7 +131,8 @@ You can use SharedRegion_getEntry() to fill the fields in a SharedRegion_Entry s
 
 If you want to reuse an index location in the SharedRegion table, you can call SharedRegion_clear() on all processors to erase the existing entry at that index location.
 
-Book run.pngThe latest version of the SharedRegion module run-time API documentation is available online.
+|srmRun_Img2| The latest version of the SharedRegion module run-time API documentation is available 
+`online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_shared_region_8h.html>`__.
 
 Using Memory in a Shared Region
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

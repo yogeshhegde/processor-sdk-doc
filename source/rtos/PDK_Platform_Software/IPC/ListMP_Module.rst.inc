@@ -1,9 +1,9 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/ListMP_Module 
 
-.. |ipcCfg_Img1| Image:: ../images/Book_cfg.png
+.. |lmpCfg_Img1| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img1| Image:: ../images/Book_run.png
+.. |lmpRun_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_list_m_p_8h.html
 
 | 
@@ -11,7 +11,7 @@
    +---------------+---------------+
    |     API Reference Links       |
    +===============+===============+
-   | |ipcCfg_Img1| | |ipcRun_Img1| |
+   | |lmpCfg_Img1| | |lmpRun_Img1| |
    +---------------+---------------+
 
 The ti.sdo.ipc.ListMP module is a linked-list based module designed to be used in a multi-processor environment. 

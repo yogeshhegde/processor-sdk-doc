@@ -1,5 +1,19 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Notify_Module 
 
+.. |notCfg_Img1| Image:: ../images/Book_cfg.png
+                 :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
+
+.. |notRun_Img1| Image:: ../images/Book_run.png
+                 :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_notify_8h.html
+
+| 
+
+   +---------------+---------------+
+   |     API Reference Links       |
+   +===============+===============+
+   | |notCfg_Img1| | |notRun_Img1| |
+   +---------------+---------------+
+
 he ti.sdo.ipc.Notify module manages the multiplexing/demultiplexing of software interrupts over hardware interrupts.
 In order to use any Notify APIs, you must first call Ipc_start(). This sets up all the necessary Notify drivers, shared memory, and interprocessor interrupts. However, note that if you've configured Ipc.setupNotify = false, you will need to explicitly call Notify_start() outside the scope of Ipc_start().
 

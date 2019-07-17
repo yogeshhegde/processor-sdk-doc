@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.ipc_Package 
 
-.. |ipcRun_Img1| Image:: ../images/Book_run.png
+.. |ipcSdoRun_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/files.html
 
 Including Header Files
@@ -47,12 +47,12 @@ You should search your applications for "ti/sdo/ipc" and "ti/sdo/utils"
 and change the header file references found as needed. Additional
 changes to API calls will be needed.
 
-|ipcRun_Img1| Documentation for all common-header APIs is provided in Doxygen format
+|ipcSdoRun_Img1| Documentation for all common-header APIs is provided in Doxygen format
 in your IPC installation at
 ``<ipc_install_dir>/docs/doxygen/html/index.html``. The latest version
 of that documentation is available
 `online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/files.html>`__.
-| 
+
 
 Standard IPC Function Call Sequence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

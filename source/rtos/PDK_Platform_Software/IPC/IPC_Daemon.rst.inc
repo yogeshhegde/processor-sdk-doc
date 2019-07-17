@@ -6,7 +6,7 @@ IPC Daemon (aka LAD)
 This topic is an overview of the daemon used by IPC on Linux. The IPC
 daemon maintains any processor-wide state that's not specific to any
 process or thread on the HLOS. For example, it contains the
-`MultiProc <index_Foundational_Components.html#nameserver-module>`__
+`MultiProc <index_Foundational_Components.html#multiproc-module>`__
 configuration (small database of what cores are in the system and their
 unique IDs), the HLOS's
 `NameServer <index_Foundational_Components.html#nameserver-module>`__ database,

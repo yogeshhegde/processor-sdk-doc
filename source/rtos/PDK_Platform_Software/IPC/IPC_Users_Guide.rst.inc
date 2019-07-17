@@ -219,7 +219,7 @@ Other TI IPC related links for Host Running Linux
    Linux <http://processors.wiki.ti.com/index.php/Early_Boot_and_Late_Attach_in_Linux>`__
    Provides details of Early Boot and Late Attach in Linux
 -  `IPC
-   Daemon <rtos/index_Foundational_Components.html#ipc-daemon>`__
+   Daemon <index_Foundational_Components.html#ipc-daemon>`__
    Provides details of IPC Daemon
 
 Other TI IPC useful links

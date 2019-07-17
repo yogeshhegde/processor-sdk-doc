@@ -295,8 +295,8 @@ Running Test Applications
 The QNX-side of the test applications are already on the target's
 filesystem in <target directory corresponding to DESTDIR>/armle-v7/bin
 and <target directory corresponding to DESTDIR>/armle-v7/bin/tests,
-assuming the `#Installing Tests in QNX <#Installing_Tests_in_QNX>`__ and
-`#IPC resource manager <#IPC_resource_manager>`__ sections have been
+assuming the `#Installing Tests in QNX <index_Foundational_Components.html#installing-tests-in-qnx>`__ and
+`#IPC resource manager <index_Foundational_Components.html#ipc-resource-manager>`__ sections have been
 followed and that the resource manager has loaded the remote core(s)
 with the executable corresponding to the test you'd like to run.
 

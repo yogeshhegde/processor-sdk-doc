@@ -88,7 +88,7 @@ configuration APIs and the other for run-time C APIs.
 The following additional documentation is available for components used
 with IPC.
 
--  `RTSC-Pedia Wiki: <http://rtsc.eclipse.org/docs-tip>`__
+-  `RTSC-Pedia Wiki <http://rtsc.eclipse.org/docs-tip>`__
 -  `Texas Instruments Developer Wiki <index.html#processor-sdk-rtos-software-developer-s-guide>`__
 -  *SYS/BIOS 6 Release Notes:*
    ``BIOS_INSTALL_DIR/Bios_6_##_release_notes.html``

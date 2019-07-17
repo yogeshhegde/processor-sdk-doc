@@ -1,16 +1,16 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/MessageQ_Module 
 
-.. |ipcCfg_Img1| Image:: ../images/Book_cfg.png
+.. |msgCfg_Img1| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcCfg_Img2| Image:: ../images/Book_cfg.png
+.. |msgCfg_Img2| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |ipcRun_Img1| Image:: ../images/Book_run.png
+.. |msgRun_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_message_q_8h.html
 
-.. |ipcRun_Img2| Image:: ../images/Book_run.png
+.. |msgRun_Img2| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_message_q_8h.html
 
 | 
@@ -18,7 +18,7 @@
    +---------------+---------------+
    |     API Reference Links       |
    +===============+===============+
-   | |ipcCfg_Img1| | |ipcRun_Img1| |
+   | |msgCfg_Img1| | |msgRun_Img1| |
    +---------------+---------------+
 
 
@@ -66,7 +66,7 @@ Configuring the MessageQ Module (BIOS only)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 On BIOS-based systems, you can configure a number of module-wide properties for MessageQ in your XDCtools configuration file.
 
-|ipcCfg_Img2| A snapshot of the MessageQ module configuration 
+|msgCfg_Img2| A snapshot of the MessageQ module configuration 
 documentation is available `online <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html>`_.
 
 To configure the MessageQ module, you must enable the module as follows:
@@ -125,7 +125,7 @@ The following code creates a MessageQ object using SyncSem as the synchronizer.
 
 In this example, the CORE0_MESSAGEQNAME constant may be defined in header shared by multiple cores.
 
-|ipcRun_Img2| A snapshot of the MessageQ module run-time 
+|msgRun_Img2| A snapshot of the MessageQ module run-time 
 API documentation is available `online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_message_q_8h.html>`_.
 
 

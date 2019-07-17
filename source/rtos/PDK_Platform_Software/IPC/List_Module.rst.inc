@@ -1,5 +1,19 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/List_Module 
 
+.. |lisCfg_Img1| Image:: ../images/Book_cfg.png
+                 :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
+
+.. |lisRun_Img1| Image:: ../images/Book_run.png
+                 :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/latest/docs/html/_list_8h.html
+
+| 
+
+   +---------------+---------------+
+   |     API Reference Links       |
+   +===============+===============+
+   | |lisCfg_Img1| | |lisRun_Img1| |
+   +---------------+---------------+
+
 The ti.sdo.utils.List module provides support for creating lists of objects. 
 A List is implemented as a doubly-linked list, so that elements can be inserted or removed 
 from anywhere in the list. Lists do not have a maximum size.

@@ -1,13 +1,13 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/GateMP_Module 
 
-.. |ipcCfg_Img1| Image:: ../images/Book_cfg.png
+.. |gpmCfg_Img1| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |ipcRun_Img1| Image:: ../images/Book_run.png
+.. |gmpRun_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_gate_m_p_8h.html
 
-.. |ipcRun_Img2| Image:: ../images/Book_run.png
+.. |gmpRun_Img2| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_gate_m_p_8h.html
 
 | 
@@ -15,7 +15,7 @@
    +---------------+---------------+
    |     API Reference Links       |
    +===============+===============+
-   | |ipcCfg_Img1| | |ipcRun_Img1| |
+   | |gpmCfg_Img1| | |gmpRun_Img1| |
    +---------------+---------------+
 
 A GateMP instance can be used to enforce both local and remote context protection. 
@@ -85,7 +85,7 @@ Other fields you are required to set in the GateMP_Params structure are:
 - name. The name of the GateMP instance.
 - regionId. The ID of the SharedRegion to use for shared memory used by this GateMP instance (BIOS-only).
 
-|ipcRun_Img2| The latest version of the GateMP module run-time API documentation is available 
+|gmpRun_Img2| The latest version of the GateMP module run-time API documentation is available 
 `online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_gate_m_p_8h.html>`_
 
 Opening a GateMP Instance

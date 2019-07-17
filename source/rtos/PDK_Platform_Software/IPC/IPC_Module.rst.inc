@@ -1,25 +1,25 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Ipc_Module 
 
-.. |ipcCfg_Img1| Image:: ../images/Book_cfg.png
+.. |ipcCfg_Ipc_Img1| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/index.html#ti/sdo/ipc/Ipc.html
 
-.. |ipcCfg_Img2| Image:: ../images/Book_cfg.png
+.. |ipcCfg_Ipc_Img2| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |ipcRun_Img1| Image:: ../images/Book_run.png
+.. |ipcRun_Ipc_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_ipc_8h.html
 
-.. |ipcRun_Img2| Image:: ../images/Book_run.png
+.. |ipcRun_Ipc_Img2| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_ipc_8h.html
 
 | 
 
-   +---------------+---------------+
-   |     API Reference Links       |
-   +===============+===============+
-   | |ipcCfg_Img1| | |ipcRun_Img1| |
-   +---------------+---------------+
+   +-------------------+-------------------+
+   |         API Reference Links           |
+   +===================+===================+
+   | |ipcCfg_Ipc_Img1| | |ipcRun_Ipc_Img1| |
+   +-------------------+-------------------+
 
 The main purpose of the Ipc module is to initialize the various subsystems of IPC. All applications that use IPC modules must call the Ipc_start() API, which does the following:
 
@@ -138,7 +138,7 @@ Each set of functions will be passed a different argument:
   fxn.detach = '&userDetachFxn2';
   Ipc.addUserFxn(fxn, 0x2);
 
-|ipcCfg_Img2| The latest version of the IPC module configuration documentation is available 
+|ipcCfg_Ipc_Img2| The latest version of the IPC module configuration documentation is available 
 `online <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html>`_
 
 Ipc Module APIs
@@ -173,7 +173,7 @@ Within Ipc_attach(), this is done for the GateMP, SharedRegion (region 0), and N
 
 You can call the Ipc_detach() API to delete internal instances created by Ipc_attach() and to free the memory used by these instances.
 
-|ipcRun_Img2| The latest version of the IPC module run-time API documentation is available 
+|ipcRun_Ipc_Img2| The latest version of the IPC module run-time API documentation is available 
 `online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_ipc_8h.html>`_
 
 .. raw:: html

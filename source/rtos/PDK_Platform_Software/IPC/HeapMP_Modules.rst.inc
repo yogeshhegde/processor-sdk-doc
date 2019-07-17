@@ -1,21 +1,21 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/HeapMP_Modules 
 
-.. |ipcCfg_Img1| Image:: ../images/Book_cfg.png
+.. |hmpCfg_Img1| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcCfg_Img2| Image:: ../images/Book_cfg.png
+.. |hmpCfg_Img2| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcCfg_Img3| Image:: ../images/Book_cfg.png
+.. |hmpCfg_Img3| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img1| Image:: ../images/Book_run.png
+.. |hmpRun_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_heap_buf_m_p_8h.html
 
-.. |ipcRun_Img2| Image:: ../images/Book_run.png
+.. |hmpRun_Img2| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_heap_mem_m_p_8h.html
 
-.. |ipcRun_Img3| Image:: ../images/Book_run.png
+.. |hmpRun_Img3| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_heap_multi_buf_m_p_8h.html
 
 | 
@@ -23,11 +23,11 @@
    +---------------+---------------+--------------+
    |     API Reference Links                      |
    +===============+===============+==============+
-   | |ipcCfg_Img1| | |ipcRun_Img1| | HeapBuf      |
+   | |hmpCfg_Img1| | |hmpRun_Img1| | HeapBuf      |
    +---------------+---------------+--------------+
-   | |ipcCfg_Img2| | |ipcRun_Img2| | HeapMem      |
+   | |hmpCfg_Img2| | |hmpRun_Img2| | HeapMem      |
    +---------------+---------------+--------------+
-   | |ipcCfg_Img3| | |ipcRun_Img3| | HeapMultiBuf |
+   | |hmpCfg_Img3| | |hmpRun_Img3| | HeapMultiBuf |
    +---------------+---------------+--------------+
 
 

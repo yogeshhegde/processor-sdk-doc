@@ -36,7 +36,7 @@ MessageQBench: Send and get back single messages and measures round trip
 delay.
 
 These unit test binaries can be built with the following commands ( See
-`IPC Linux Install <index_Foundational_Components.html#linux-install-guide>`_ for more
+`IPC Linux Install Guide <index_Foundational_Components.html#linux-install-guide>`_ for more
 details on setting up variables)
 
 ::

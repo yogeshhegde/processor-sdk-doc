@@ -373,7 +373,7 @@ into a 'lad.txt' file, start LAD like this:
 
 The kernel drivers/modules added by the Linux patches must be inserted
 into the kernel for IPC applications to run correctly. Refer to the
-`#Configuring Kernel <#Configuring_Kernel>`__ section. The required
+`#Configuring Kernel <index_Foundational_Components.html#configuring-kernel>`__ section. The required
 modules must be configured, built and loaded onto the target's
 filesystem.
 
@@ -432,7 +432,7 @@ Running Test Applications
 ''''''''''''''''''''''''''
 
 The test applications are already on the target's filesystem in /usr/bin
-assuming the `#Installing Tests <#Installing_Tests>`__ section has been
+assuming the `#Installing Tests <index_Foundational_Components.html#installing-tests>`__ section has been
 followed.
 
 To run the test application's, execute the following on the target's
