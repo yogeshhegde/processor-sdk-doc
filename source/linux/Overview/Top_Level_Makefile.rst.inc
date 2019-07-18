@@ -91,7 +91,7 @@ makefile targets.
 
 ::
 
-    host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc
+    host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools
 
 
 .. rubric:: Target Types
