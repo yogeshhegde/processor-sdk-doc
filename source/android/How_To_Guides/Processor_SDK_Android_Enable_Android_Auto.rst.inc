@@ -1,47 +1,65 @@
 **********************************************
 How to Enable Android Automotive
 **********************************************
+
+Abstract
+=========
+
+This guide will walk through the steps necessary to enable Android Automotive on your TI development board.
+
+The Android Automotive OS and Human-Machine Interface provide users with a simplified interface for accessing applications while on the road. The OS is an Android-based infotainment system that allows for a vehicle-optimized, stand-alone Android device to be placed inside the head unit. In place of the phone apps, users install driver-optimized versions of the app directly onto the console. This streamlined experience enables the driver to perform efficient tasks, such as climate control, maps, phone, audio, etc..., in the convenience of their vehicle.
+
 Introduction
 ============
 
-The Android Automotive OS and HMI provide users with a simplified interface for accessing applications while on the road. The OS is an Android-based infotainment system that allows for a vehicle-optimized, stand-alone Android device to be placed inside the head unit. In place of the phone apps, users install driver-optimized versions of the app directly onto the console. This streamlined experience enables the driver to perform efficient tasks, such as climate control, maps, phone, audio, etc..., in the convenience of their vehicle.
+In this user guide, we will show the key differences between the standard (tablet) configuration and the Android Automotive interface. The look and feel of the applications will differ in the sense that they'll be specially tuned towards an automotive experience. We will also show how to switch at build time between the different target types (tablet and automotive). The AM57xx BeagleBoard-X15 Sitara platform was used since this is the only currently supported TI platform for development in the Android Open Source Project. The same work accomplished on the AM57xx BeagleBoard-X15 can be extended to a new platform; we will use the AM65x EVM module as an example. Finally, we will discuss the future work involved when enabling these features on a more automotive-tuned platform once it's available.
 
-This guide will walk through the steps necessary to enable Android Automotive on your TI development board (AM57x BeagleBoard-X15).
-
-* By default, the beagle_x15 lunch combo will launch with a tablet UI:
+* By default, the TI development board will launch with a tablet user interface:
 
 .. Image:: ../images/Tablet_Home.png
-**Figure 1.** Home screen for Tablet configuration.
 
-* After creation of the beagle_x15_auto lunch combo, the automotive UI will launch:
+**Figure 1.** Home Screen for Tablet Configuration.
+
+* After creation of the automotive target on the TI development board, the following user interface will be available:
 
 .. Image:: ../images/Auto_Start_Car.png
-**Figure 2.** Start screen for Automotive configuration, depicting a car with PSI information near tires.
+
+**Figure 2.** Start Screen for Automotive Configuration, Depicting a Car With PSI Information Near Tires.
 
 .. Image:: ../images/Auto_Car_Launcher.png
-**Figure 3.** "Let's Drive" interface for Automotive configuration, allowing user to interact with applications by selecting icon in the middle.
+
+**Figure 3.** "Let's Drive" Interface for Automotive Configuration (allowing you to interact with applications by selecting the icon in the middle)
 
 .. Image:: ../images/Auto_Climate_Control.png
-**Figure 4.** Climate control interface for Automotive configuration, allowing user to adjust temperature, fan speed and direction, seat warmers, etc...
+
+**Figure 4.** Climate Control Interface for Automotive Configuration (allowing you to adjust temperature, fan speed and direction, seat warmers, and so forth)
 
 .. Image:: ../images/Auto_Notifications.png
-**Figure 5.** Notification pane for Automotive configuration, presenting user with up-to-date notifications regarding their vehicle.
 
-Getting Started
+**Figure 5.** Notification Pane for Automotive Configuration (presenting you with up-to-date notifications regarding your vehicle)
+
+Implementation
 ===============
+Prerequities
+-------------
+1. Check to make sure your setup meets the `hardware and software requirements <https://source.android.com/setup/build/requirements>`__ as given by Android.
 
-1. Check to make sure your setup meets the `hardware and software requirements <https://source.android.com/setup/build/requirements>`__ as given by Android
+2. Environment setup:
+	a. **Android Pastry Version**: Pie (based on http://git.ti.com/cgit/cgit.cgi/android/manifest.git/log/?h=pie-core-release)
+	b. **Linux Kernel**: ti-android-linux-4.19.y
+	c. **Toolchain**: gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
+3. Follow the steps provided in the Processor SDK Android `1.1 Getting Started Guide <http://software-dl.ti.com/processor-sdk-android/esd/docs/latest/android/Overview_Getting_Started_Guide.html>`__ to install the necessary components and `1.3 Building the SDK <http://software-dl.ti.com/processor-sdk-android/esd/docs/latest/android/Overview_Building_the_SDK.html>`__ to prepare for development on the TI microprocessor.
+4. `Establish your Build Environment for Android <https://source.android.com/setup/build/initializing>`__.
+5. Ensure that your device meets the `Automotive Requirements defined by the Android Compatibility Definition <https://source.android.com/compatibility/android-cdd#2_5_automotive_requirements>`__.
 
-2. Follow the steps provided in the Processor SDK Android `1.1 Getting Started Guide <http://software-dl.ti.com/processor-sdk-android/esd/docs/latest/android/Overview_Getting_Started_Guide.html>`__ to install necessary components and `1.3 Building the SDK <http://software-dl.ti.com/processor-sdk-android/esd/docs/latest/android/Overview_Building_the_SDK.html>`__ to prepare for development on the TI microprocessor
-3. `Establish your Build Environment for Android <https://source.android.com/setup/build/initializing>`__
-4. Ensure that your device meets the `Automotive Requirements defined by the Android Compatibility Definition <https://source.android.com/compatibility/android-cdd#2_5_automotive_requirements>`__
+Software Changes
+-----------------
 
-Modification of Source Files
-=============================
+.. note:: Please change directory to your Android File System before continuing.
 
-.. note:: Please change directory to your Android Filesystem before continuing
+1. Changes inside *device/ti/beagle_x15/AndroidProducts.mk*:
 
-1. Changes inside *device/ti/beagle_x15/AndroidProducts.mk*
+* These changes add a new lunch combo called "beagle_x15_auto-userdebug" and it's path to the relative top-level makefile.
 
 .. code-block:: console
 
@@ -54,9 +72,10 @@ Modification of Source Files
 	     beagle_x15-userdebug \
 	+    beagle_x15_auto-userdebug \
 
-* These changes add a new lunch combo called "beagle_x15_auto-userdebug" and it's path to the relative top-level makefile
+2. Changes inside *device/ti/beagle_x15/BoardConfig.mk*:
 
-2. Changes inside *device/ti/beagle_x15/BoardConfig.mk*
+* Conditional is needed to differentiate the content that is included depending on the **TARGET_PRODUCT** (macro set by lunch combo)
+* `DEVICE_MANIFEST_FILE <https://source.android.com/devices/architecture/vintf/objects#device-manifest-file>`__ adds the auto-specific manifest file to the build
 
 .. code-block:: console
 
@@ -71,14 +90,19 @@ Modification of Source Files
 	+endif
 	+
 
-* Conditional is needed to differentiate the content that is included depending on the **TARGET_PRODUCT** (macro set by lunch combo)
-* `DEVICE_MANIFEST_FILE <https://source.android.com/devices/architecture/vintf/objects#device-manifest-file>`__ adds the auto-specific manifest file to the build
+3. Create an *auto* directory inside of *device/ti/beagle_x15*.
 
-3. Create an *auto* directory inside of *device/ti/beagle_x15*
+.. note:: The following steps will all be completed inside the *device/ti/beagle_x15/auto* directory.
 
-.. note:: The following steps will all be completed inside the *device/ti/beagle_x15/auto* directory
+4. Create a top-level makefile for the "beagle_x15_auto-userdebug" lunch combo.
 
-4. Create a top-level makefile for the beagle_x15_auto-userdebug lunch combo and insert the following content
+* The top-level makefiles are inherited to include all necessary components (**PRODUCT_PACKAGES**, **PRODUCT_COPY_FILES**, **PRODUCT_PROPERTY_OVERRIDES**, and so forth) to enable desired features.
+	* *auto/device.mk* and *car.mk* are crucial to enabling all automotive-specific features.
+	* The content inside the *car.mk*, the common makefile for all car builds, can be found `here <https://android.googlesource.com/platform/packages/services/Car/+/refs/heads/pie-release/car_product/build/car.mk>`__.
+	* *car.mk* then inherits *car_base.mk*, the base platform for car builds, whose content can be found `here <https://android.googlesource.com/platform/packages/services/Car/+/refs/heads/pie-release/car_product/build/car_base.mk>`__.
+	* Inside *car_base.mk*, the `auto-specific PRODUCT_PROPERTY_OVERLAYS <https://android.googlesource.com/platform/packages/services/Car/+/refs/heads/pie-release/car_product/overlay/frameworks/base/core/res/res/values/config.xml>`__ are added to customize the product at build time.
+
+* Insert the following content:
 
 .. code-block:: html
 
@@ -94,13 +118,12 @@ Modification of Source Files
 	PRODUCT_MODEL := AOSP Auto on BeagleBoard X15
 	PRODUCT_MANUFACTURER := Texas Instruments Inc
 
-* The top-level makefiles are inherited above to include all necessary components (**PRODUCT_PACKAGES**, **PRODUCT_COPY_FILES**, **PRODUCT_PROPERTY_OVERRIDES**, etc...) to enable desired features
-	* *auto/device.mk* and *car.mk* are crucial to enabling all automotive-specific features
-	* The content inside the *car.mk*, the common makefile for all car builds, can be found `here <https://android.googlesource.com/platform/packages/services/Car/+/refs/heads/pie-release/car_product/build/car.mk>`__
-	* *car.mk* then inherits *car_base.mk*, the base platform for car builds, whose content can be found `here <https://android.googlesource.com/platform/packages/services/Car/+/refs/heads/pie-release/car_product/build/car_base.mk>`__
-	* Inside *car_base.mk*, the `auto-specific PRODUCT_PROPERTY_OVERLAYS <https://android.googlesource.com/platform/packages/services/Car/+/refs/heads/pie-release/car_product/overlay/frameworks/base/core/res/res/values/config.xml>`__ are added to customize the product at build time
+5. Create the *device.mk* to declare the auto-specific files and modules needed for the device.
 
-5. Create the *device.mk* to declare the auto-specific files and modules needed for the device and insert the following content
+* The *android.hardware.automotive.vehicle@2.0-service* **PRODUCT_PACKAGE** is the `Android Automotive hardware abstraction layer (HAL)  <https://source.android.com/devices/automotive>`__, which is the interface definition between the car and the vehicle network service.
+* The *frameworks/../../../android.hardware.type.automotive.xml* **PRODUCT_COPY_FILE** determines that the Android device implementation is classified as "Automotive".
+
+* Insert the following content:
 
 .. code-block:: html
 
@@ -117,10 +140,11 @@ Modification of Source Files
 		com.android.car.radio.demo=true \
 		com.android.car.radio.demo.dual=true \
 
-* The *android.hardware.automotive.vehicle@2.0-service* **PRODUCT_PACKAGE** is the `Android Automotive hardware abstraction layer (HAL)  <https://source.android.com/devices/automotive>`__, which is the interface definition between the car and the vehicle network service
-* The *frameworks/../../../android.hardware.type.automotive.xml* **PRODUCT_COPY_FILE** determines that the Android device implementation is classified as "Automotive"
+6. Create the *manifest.xml* to provide the HAL(s) specific to automotive.
 
-6. Create the *manifest.xml* to provide the HAL(s) specific to automotive and insert the following content
+* Beagle_x15 requires the *android.hardware.automotive.vehicle* inclusion to define the product as automotive.
+
+* Insert the following content:
 
 .. code-block:: console
 
@@ -136,18 +160,117 @@ Modification of Source Files
 	    </hal>
 	</manifest>
 
-* Beagle_x15 requires the *android.hardware.automotive.vehicle* inclusion to define the product as automotive
+Deploy Instructions
+====================
+Build Instructions
+-------------------
+
+1. Change directory to your Android File System:
+
+2. To setup your build environment, run the following script:
+
+.. code-block:: console
+	
+	$ . ./build/envsetup.sh
+
+3. To view the "lunch" menu and select a combo (TARGET_PRODUCT):
+
+.. code-block:: console
+
+	$ lunch
+
+* Select the desired TARGET_PRODUCT (<board>_auto-userdebug)
+
+4. Export the path to your Kernel directory:
+
+.. code-block:: console
+
+	$ export KERNELDIR=<path_to_kernel_directory>
+
+5. Build:
+
+.. code-block:: console
+
+	$ make -j<number_of_cores>
+
+Boot Instructions
+------------------
+
+1. Once build is complete, prepare your eMMC binaries and images:
+
+* Make a copy of the prebuilt-images directory to be used as a working directory for flashing.
+
+.. note:: Review the <Android_FS>/device/ti/<board>/fastboot.sh for exact images to copy into flashing directory.
+
+**AM5**
+
+.. code-block:: console
+
+	cd ~/ti-processor-sdk-android-beagle_x15-<version>/board-support/
+	cp -r prebuilt-images emmc_files
+	cp -v ./aosp-<version>/out/target/product/beagle_x15/boot.img emmc_files
+	cp -v ./aosp-<version>/out/target/product/beagle_x15/system.img emmc_files
+	cp -v ./aosp-<version>/out/target/product/beagle_x15/userdata.img emmc_files
+	cp -v ./aosp-<version>/out/target/product/beagle_x15/recovery.img emmc_files
+	cp -v ./aosp-<version>/out/target/product/beagle_x15/vendor.img emmc_files
+	cp -v ./aosp-<version>/out/target/product/beagle_x15/boot_fit.img emmc_files
+	cp -v ./aosp-<version>/device/ti/beagle_x15/fastboot.sh emmc_files
+	cp -v ./aosp-<version>/out/host/linux-x86/bin/{simg2img,mkbootimg,fastboot,adb} emmc_files
+	cp -v ./linux-<version>/arch/arm/boot/zImage emmc_files/zImage-beagle_x15.bin
+	cp -v ./linux-<version>/arch/arm/boot/dts/am57*.dtb emmc_files
+	cp -v ./u-boot-<version>/MLO emmc_files
+	cp -v ./u-boot-<version>/u-boot.img emmc_files
+
+**AM6**
+
+.. code-block:: console
+
+	cd ~/ti-processor-sdk-android-am65xx-evm-<version>/board-support/
+	cp -r prebuilt-images emmc_files
+	cp -v ./aosp-<version>/out/target/product/am65xevm/system.img emmc_files
+	cp -v ./aosp-<version>/out/target/product/am65xevm/userdata.img emmc_files
+	cp -v ./aosp-<version>/out/target/product/am65xevm/vendor.img emmc_files
+	cp -v ./aosp-<version>/out/target/product/am65xevm/boot_fit.img emmc_files
+	cp -v ./aosp-<version>/device/ti/am65xevm/fastboot.sh emmc_files
+	cp -v ./aosp-<version>/out/host/linux-x86/bin/{simg2img,mkbootimg,fastboot,adb} emmc_files
+	cp -v ./aosp-<version>/out/host/linux-x86/lib64/{libc++.so,libcutils.so,liblog.so,libselinux.so,libpcre2.so} emmc_files
+	cp -v ./u-boot_build/a53/u-boot.img emmc_files
+	cp -v ./u-boot_build/a53/tispl.bin emmc_files
+	cp -v ./u-boot_build/r5/tiboot3.bin emmc_files
+
+2. Ensure the device is plugged in with USB Host and Debug UART/Serial Debug
+3. Open a terminal debugger to view console output from the device (dmesg: kernel ring buffer, logcat: log of system messages)
+
+.. code-block:: console
+
+	$ sudo picocom -b 115200 /dev/ttyUSB0
+
+4. Enable fastboot on the device through the terminal debugger:
+
+.. code-block:: console
+
+	=> fastboot 0
+
+5. In a different terminal, change directory to the device tarball and run the fastboot.sh script:
+
+.. code-block:: console
+
+	cd ~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files
+	~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files$ sudo ./fastboot.sh; sudo ./fastboot reboot
 
 Testing
 ========
+Prerequisites/Setup
+--------------------
+
 Compatibility Test Suite (CTS)
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 * Runs on your desktop and executes a series of test cases on the connected device(s)
-* The intent is to reveal incompatibilities or malfunctions while developing automotive configuration and related additional software components (`Overview of CTS <https://source.android.com/compatibility/cts>`__)
+* The intent is to reveal incompatibilities or malfunctions, ensure API compatibility and CDD compliance while developing the automotive configuration and additional related software components (`Overview of CTS <https://source.android.com/compatibility/cts>`__)
 
-1. `Desktop machine setup <https://source.android.com/compatibility/cts/setup>`__
+1. `Desktop machine setup <https://source.android.com/compatibility/cts/setup>`__:
 
-* Ensure the latest versions of both Android Debug Bridge (adb) and Android Asset Packaging Tool (AAPT) are installed and those tools' location(s) are added to the system path of your machine
+* Ensure the latest versions of both Android Debug Bridge (adb) and Android Asset Packaging Tool (AAPT) are installed and those tools' location(s) are added to the system path of your machine.
 
 .. code-block:: console
 
@@ -155,38 +278,51 @@ Compatibility Test Suite (CTS)
 
 .. note:: The SDK should already come with adb and aapt so the above command will either update/upgrade them or return the message:
 
-	"aapt is already the newest version (version_number)"
+	"aapt is already the newest version <version_number>"
 
-	"adb is already the newest version (version_number)"
+	"adb is already the newest version <version_number>"
 
-* `Download the CTS packages <https://source.android.com/compatibility/cts/downloads.html>`__ matching your devices' Android version and the Application Binary Interfaces (ABIs) your devices support
-* Unzip the CTS packages inside of *<SDK_install_dir>/bin*
+* `Download the CTS packages <https://source.android.com/compatibility/cts/downloads.html>`__ matching your devices' Android version and the Application Binary Interfaces (ABIs) your devices support.
+	
+* Unzip the CTS packages inside of *~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files*.
 
 .. code-block:: console
 
-	$ cd <SDK_install_dir>/bin
-	$ unzip ~/Downloads/android-cts-<version>.zip
+	$ cd ~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files
+	$ unzip ~/Downloads/android-cts-<version>.zip .
 
-* You may need to override the `ro.product.first_api_level <https://source.android.com/compatibility/cts/setup#first-api-level>`__ property in order to ensure upgrade requirements are applied
-	* Find the valid override values on `Codenames, Tags, and Build Numbers <https://source.android.com/setup/start/build-numbers>`__
-	* This would be done inside the relative *device.mk* file
+* You may need to override the `ro.product.first_api_level <https://source.android.com/compatibility/cts/setup#first-api-level>`__ property in order to ensure upgrade requirements are applied.
+	* Find the valid override values on `Codenames, Tags, and Build Numbers <https://source.android.com/setup/start/build-numbers>`__.
+	* The following would be done inside the relative *device.mk* file:
 
 .. code-block:: console
 
 	PRODUCT_PROPERTY_OVERRIDES += ro.product.first_api_level=<Valid_Override_Value>
 
-2. `Running CTS Tests <https://source.android.com/compatibility/cts/run>`__
+Vendor Test Suite (VTS)
+^^^^^^^^^^^^^^^^^^^^^^^^
+* Used for automated HAL and OS Kernel testing
 
-* While inside the *<SDK_install_dir>/bin* directory, run the following commands
+1. Complete the steps given at `Systems Testing with VTS <https://source.android.com/compatibility/vts/systems>`__
+
+Automotive Testing
+-------------------
+
+Compatibility Test Suite (CTS)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. `Running CTS Tests <https://source.android.com/compatibility/cts/run>`__
+
+* While inside the *~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files* directory, run the following commands:
 
 .. code-block:: console
 
 	$ cd android-cts/tools
 	$ sudo ./cts-tradefed
 
-* Ensure that the Device Under Test (DUT) is found when launching cts-tradefed
+* Ensure that the Device Under Test (DUT) is found when launching cts-tradefed.
 
-The following output should be seen
+The following output should be seen:
 
 .. code-block:: console
 
@@ -195,46 +331,43 @@ The following output should be seen
 	[Date] [Time] I/DeviceManager: Detected new device #
 	cts-tf >
 
-If the above message isn't seen, inside *<SDK_install_dir>/bin*, run the following command
+If the above message isn't seen, inside *~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files*, run the following command:
 
 .. code-block:: console
 
 	$ sudo ./adb devices
 
-If your device doesn't show up here, run the following commands inside *<SDK_install_dir>/bin*
+If your device does not show up here, run the following commands inside *~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files*:
 
 .. code-block:: console
 
 	$ sudo ./adb kill-server
 	$ sudo ./adb start-server
 
-* Retry $ sudo ./adb devices
-	* If your devices still doesn't show up, reboot the device and retry the above steps
-* Once the DUT is found, continue
+* Retry $ sudo ./adb devices.
+	* If your device still does not show up, reboot the device and retry the above steps.
+* Once the DUT is found, continue:
 
 .. code-block:: console
 
 	cts-tf > run cts --module CtsCarTestCases
 
-* **cts-tf > list modules** will list all modules and **cts-tf >  list plans** will list all plans
-* **CtsCarTestCases** will run car-specific test cases
+* "cts-tf > list modules" will list all modules and "cts-tf > list plans" will list all plans.
+* **CtsCarTestCases** will run car-specific test cases.
 
-* To exit CTS, **cts-tf > exit**
+* To exit CTS, "cts-tf > exit".
 
-3. Test Results
+2. Test Results
 
-Located in *android-cts/results/<time_stamp>*
+Located in *android-cts/results/<time_stamp>*.
 
 .. code-block:: console
 
-	<SDK_install_dir>/bin/$ cd android-cts/results/<time_stamp>
+	~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files$ cd android-cts/results/<time_stamp>
 
 Vendor Test Suite (VTS)
-------------------------
-* Used for automated HAL and OS Kernel testing
-
-1. `Systems Testing with VTS <https://source.android.com/compatibility/vts/systems>`__
-2. Running VTS Tests
+^^^^^^^^^^^^^^^^^^^^^^^^
+1. Running VTS Tests
 
 .. code-block:: console
 
@@ -245,9 +378,9 @@ We are interested in the *vts-hal-auto*, described as the "VTS automotive vehicl
 
 .. code-block:: console
 
-	vts-tf > run vts --plan vts-hal-auto
+	vts-tf > run vts-hal-auto
 
-3. Test Results
+2. Test Results
 
 Path should be given on completion of test
 
@@ -255,18 +388,96 @@ Path should be given on completion of test
 
 	~$ cd <Android_FS>/out/host/linux-x86/vts/android-vts/results/<time_stamp>
 
+Open Source
+================
+* `Automotive feature enablement on AM57xx BeagleBoard-X15 is merged to Android Open Source Project <https://android.googlesource.com/device/ti/beagle-x15/+/6733fad681437d283daab7ad026d2446a89b38d2>`__.
+
+Extending to a New Platform
+============================
+The work that was completed on the AM57xxx BeagleBoard-X15 in the Implementation -> Software Changes section can be extended to new platforms. The AM65x EVM is used as an example here. The differences between what was given in Implementation -> Software Changes and what is used for AM65x EVM are as follows:
+
+* Automotive feature enablement on AM65x EVM is merged to Texas Instruments Repository
+
+1. Changes inside *device/ti/am65xevm/AndroidProducts.mk*:
+
+.. code-block:: console
+
+	 PRODUCT_MAKEFILES := \
+	+       am65xevm_auto:$(LOCAL_DIR)/auto/am65xevm_auto.mk \
+	  
+	 COMMON_LUNCH_CHOICES := \
+	+       am65xevm_auto-userdebug \
+
+2. Changes inside *device/ti/am65xevm/BoardConfig.mk*:
+
+.. code-block:: console
+			  
+	+ifeq ($(TARGET_PRODUCT), am65xevm_auto)
+	+BOARD_SEPOLICY_DIRS += \
+	+       packages/services/Car/car_product/sepolicy
+	+
+	+DEVICE_MANIFEST_FILE += device/ti/am65xevm/auto/manifest.xml
+	+endif
+
+3. Changes inside *device/ti/am65xevm/auto/am65xevm.mk*:
+
+.. code-block:: console
+
+	+$(call inherit-product, device/ti/am65xevm/auto/device.mk)
+	+$(call inherit-product, packages/services/Car/car_product/build/car.mk)
+	+
+	+PRODUCT_NAME := am65xevm_auto
+	+PRODUCT_DEVICE := am65xevm
+	+PRODUCT_BRAND := TI
+	+PRODUCT_MODEL := AOSP Auto on AM65x EVM
+	+PRODUCT_MANUFACTURER := Texas Instruments Inc
+
+4. Changes inside *device/ti/am65xevm/auto/device.mk*:
+
+.. code-block:: console
+	
+	+#Automotive
+	+PRODUCT_PACKAGES += \
+	+       android.hardware.automotive.vehicle@2.0-service \
+	+
+	+PRODUCT_COPY_FILES += \
+	+       frameworks/native/data/etc/android.hardware.type.automotive.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.type.automotive.xml \
+	+       frameworks/native/data/etc/android.hardware.screen.landscape.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.screen.landscape.xml \
+	+
+	+PRODUCT_PROPERTY_OVERRIDES += \
+	+       android.car.drawer.unlimited=true \
+	+       android.car.hvac.demo=true \
+	+       com.android.car.radio.demo=true \
+	+       com.android.car.radio.demo.dual=true \
+
+5. Content inside *device/ti/am65xevm/auto/manifest.xml*:
+
+.. code-block:: console
+
+	+<manifest version="1.0" type="device">
+	+    <hal format="hidl">
+	+        <name>android.hardware.automotive.vehicle</name>
+	+        <transport>hwbinder</transport>
+	+        <version>2.0</version>
+	+        <interface>
+	+            <name>IVehicle</name>
+	+            <instance>default</instance>
+	+        </interface>
+	+    </hal>
+	+</manifest>
+
 Known Bugs
 ===========
 
-.. note:: These are known issues and may be resolved in the future depending on their impacts
+.. note:: These are known issues and may be resolved in the future depending on their impacts.
 
 1. Sepolicy output while the device is running
 
 .. code-block:: console
 
-	~/<SDK_install_dir>/bin$ sudo ./adb shell dmesg | grep denied | audit2allow -p <Android_FS>/out/target/product/beagle_x15/obj/ETC/sepolicy_intermediates/sepolicy
+	~/ti-processor-sdk-android-<board>-<version>/board-support/emmc_files$ sudo ./adb shell dmesg | grep denied | audit2allow -p <Android_FS>/out/target/product/beagle_x15/obj/ETC/sepolicy_intermediates/sepolicy
 
-May see the following
+* You may see the following errors:
 
 .. code-block:: console
 
@@ -277,35 +488,31 @@ May see the following
 	allow hal_vehicle_default node:tcp_socket node_bind;
 	allow hal_vehicle_default self:tcp_socket { accept bind create listen };
 
-These cannot be resolved at this time due to `SEPolicy neverallow <https://source.android.com/security/selinux/customize#neverallow>`__
+* These cannot be resolved at this time due to `SEPolicy neverallow <https://source.android.com/security/selinux/customize#neverallow>`__
 
 2. Power manager service is failing
 
-You may see the following errors
+* You may see the following errors:
 
 .. code-block:: console
 
 	E CarPowerManagerNative: Received unknown bootReason = 0
 	E PowerTestService: ERROR: Could not read bootReason!!
 
-3. CTS test_result_failures.html output when tested on pie-core-release branch with an AM57x BeagleBoard-X15
+3. CTS test_result_failures.html output when tested on pie-core-release branch with an AM57xx BeagleBoard-X15 and an AM65x EVM
 
 * test_result_failures.html returned one failed test
 	* android.car.cts.CarBluetoothTest#testRequiredBluetoothProfilesExist
 * Details
 	* java.lang.NullPointerException: Attempt to invoke virtual method 'boolean android.bluetooth.BluetoothAdapter.disable()' on a null object reference
 
-This is expected since the AM57x BeagleBoard-X15 doesn't support Bluetooth at this time
-
-Upstream Status
-================
-* `Patch for AM57x BeagleBoard-X15 is ready to be merged to AOSP <https://android-review.googlesource.com/c/device/ti/beagle-x15/+/985026>`__
+* This is expected since the AM57xx BeagleBoard-X15 and AM65x EVM do not support Bluetooth at this time.
 
 Future Work
 ============
-* Enable Android Automotive on TI 64 bit platforms, including AM6 and J7
-* Migrate to Android Q
-	* Add support for 3 or more hardware displays
+* Enable Android Auto Human-Machine Interface on new automotive-tuned TI platforms
+* Migrate to Android Q Pastry Version
+	* Add multiple hardware display support
 		* **Interactive:** Individual input mapping, decorative elements and IME (soft keyboard)
 		* **Driver:** Main IVI display with all UX restrictions applied
 		* **Passenger:** Add support for more types of apps and individual launchers for each screen
@@ -313,27 +520,18 @@ Future Work
 	* Multi-zone Audio
 		* A zone is a collection of audio devices and each user device can only be in one zone
 		* Within each zone, audio usage determines which device the audio is routed to
-	* HwAudioSourcePlayer HAL, which connects the audio source device direcly to an Android mixer
-		* Broadcast radio can take advantage of this player and operate as a regular Android media application
-		* Add support for multiple applications communicating with a single tuner and a single application communicating with multiple tuners
-		* Integrate a "Lazy HAL" that is started asynchronously or on demand. Introduced to solve hardware initialization issues. (Only for Broadcast radio HAL)
 
 FAQ
 ====
 1. What is important about this topic?
-	a. This topic allows the entire Android Open Source community to benefit from an additional feature: Android Automotive on all currently supported Texas Instruments ARM32B and ARM64B platforms, including AM57x X15, AM6 and J721E.
+	a. This topic allows the entire Android Open Source community to benefit from an additional feature: Android Automotive on all currently supported Texas Instruments ARM32B and ARM64B platforms, including AM57xx BeagleBoard-X15 and AM65x EVM. Android Automotive will also be applicable to all new automotive-tuned TI platforms.
 2. Who is the intended end user?
 	a. The intended end user(s) include the Automotive Business Unit for Digital Cockpit implementation targeted at infotainment customers who need a graphically rich user interface with an Android extensive app store on a Texas Instruments digital application processor.
 3. When will this document be used?
-	a. The reader will use this document whenever they intend to implement Android Automotive on any application processor which is designed to showcase and use the functionality of Android.
-4. Why is this implementation on a Sitara device?
-	a. This is the only available device at the moment but in the future, this work will be extended to J721E Auto.
+	a. This document is intended to implement Android Automotive on any application processor that is designed to showcase and use the functionality of Android.
 
 References
 ===========
-1. `Jacinto 6 EVM on d-oreo-mr1-release <http://git.omapzoom.org/?p=device%2Fti%2Fjacinto6evm.git&a=search&h=refs%2Fheads%2Fd-oreo-mr1-release&st=commit&s=auto>`__
-	a. `Changes for defining auto platform <http://git.omapzoom.org/?p=device/ti/jacinto6evm.git;a=commit;h=d0e55148e19bb6ba3401b6ad913154697cb65af0>`__
-	b. `Initial changes for automotive configuration <http://git.omapzoom.org/?p=device/ti/jacinto6evm.git;a=commit;h=1acce155fa3d1c5925e474ecc66ba28e05f368a2>`__
-	c. `Initial changes for O MR1 <http://git.omapzoom.org/?p=device/ti/jacinto6evm.git;a=commit;h=bb52b0b3590c7f169182400bf6fc436278a07bce>`__
+1. Jacinto 6 EVM on d-oreo-mr1-release: `Changes for defining auto platform <http://git.omapzoom.org/?p=device/ti/jacinto6evm.git;a=commit;h=d0e55148e19bb6ba3401b6ad913154697cb65af0>`__
 2. `Google Cuttlefish Auto (cf_x86_64_auto-userdebug) <https://android.googlesource.com/device/google/cuttlefish/+/refs/heads/pie-release/vsoc_x86_64/auto/device.mk>`__
 3. `AOSP Generic Car (aosp_car_x86_64-userdebug) <https://android.googlesource.com/device/generic/car/+/refs/heads/pie-release>`__
