@@ -130,7 +130,7 @@ Other processors can obtain a handle to the linked list by calling ListMP_open()
 
 The following figure shows local memory and shared memory for processors Proc 0 and Proc 1, in which Proc 0 calls ListMP_create() and Proc 1 calls ListMP_open().
 
-..Image:: ../images/IpcUG_ipc_2_4_1.png
+.. Image:: ../images/IpcUG_ipc_2_4_1.png
 
 
 The cache alignment used by the list is taken from the SharedRegion on a per-region basis. The alignment must be the same across all processors and should be the worst-case cache line boundary.

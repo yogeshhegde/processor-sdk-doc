@@ -17,346 +17,157 @@ inter-SoC communication, respectively.
 The below table gives an overview of the transport offerings, their
 location, and the communication path they enable.
 
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| **Transpo | **Message | **Locatio | **Communi | **Enabled | **Special |
-| rt**      | Q         | n**       | cation    | Communica | Considera |
-|           | Interface |           | Route**   | tion      | tions**   |
-|           | Type**    |           |           | Path**    |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| Transport | MessageQ  | IPC       | Shared    | SYS/BIOS  | There are |
-| Shm...    | (priority | component | memory    | DSP to    | multiple  |
-|           | based)    | -         |           | DSP       | implement |
-|           |           | SYS/BIOS  |           |           | ations    |
-|           |           | subdirect |           |           | of        |
-|           |           | ories     |           |           | Transport |
-|           |           |           |           |           | Shm       |
-|           |           |           |           |           | delivered |
-|           |           |           |           |           | within    |
-|           |           |           |           |           | the IPC   |
-|           |           |           |           |           | component |
-|           |           |           |           |           | .         |
-|           |           |           |           |           | Please    |
-|           |           |           |           |           | see the   |
-|           |           |           |           |           | IPC       |
-|           |           |           |           |           | documenta |
-|           |           |           |           |           | tion      |
-|           |           |           |           |           | provided  |
-|           |           |           |           |           | with the  |
-|           |           |           |           |           | component |
-|           |           |           |           |           | for more  |
-|           |           |           |           |           | informati |
-|           |           |           |           |           | on        |
-|           |           |           |           |           | on these  |
-|           |           |           |           |           | shared    |
-|           |           |           |           |           | memory    |
-|           |           |           |           |           | transport |
-|           |           |           |           |           | implement |
-|           |           |           |           |           | ations.   |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| Transport | MessageQ  | -  IPC    | Shared    | -  ARMv7  | MessageQ  |
-| Rpmsg     | (priority |    compon | memory    |    Linux  | messages  |
-|           | based)    | ent       |           |    to/fro | sent over |
-|           |           |    -      |           | m         | Transport |
-|           |           |    ARMv7  |           |    SYS/BI | Rpmsg     |
-|           |           |    Linux  |           | OS        | traveling |
-|           |           |    subdir |           |    DSP    | from/to   |
-|           |           | ectories  |           |           | ARMv7     |
-|           |           | -  IPC    |           |           | user      |
-|           |           |    compon |           |           | space go  |
-|           |           | ent       |           |           | through   |
-|           |           |    -      |           |           | the Linux |
-|           |           |    SYS/BI |           |           | kernel    |
-|           |           | OS        |           |           | before    |
-|           |           |    subdir |           |           | reaching  |
-|           |           | ectories  |           |           | the DSP.  |
-|           |           | -  Yocto/ |           |           | This      |
-|           |           | bitbake   |           |           | provides  |
-|           |           |    ti-ipc |           |           | *clean*   |
-|           |           |    recipe |           |           | partition |
-|           |           |           |           |           | ing       |
-|           |           |           |           |           | between   |
-|           |           |           |           |           | user      |
-|           |           |           |           |           | memory    |
-|           |           |           |           |           | and DSP   |
-|           |           |           |           |           | memory.   |
-|           |           |           |           |           | However,  |
-|           |           |           |           |           | Transport |
-|           |           |           |           |           | Rpmsg     |
-|           |           |           |           |           | is        |
-|           |           |           |           |           | considere |
-|           |           |           |           |           | d         |
-|           |           |           |           |           | a *slow   |
-|           |           |           |           |           | path*     |
-|           |           |           |           |           | since the |
-|           |           |           |           |           | user      |
-|           |           |           |           |           | space     |
-|           |           |           |           |           | MessageQ  |
-|           |           |           |           |           | messages  |
-|           |           |           |           |           | must be   |
-|           |           |           |           |           | copied    |
-|           |           |           |           |           | from/to   |
-|           |           |           |           |           | DSP       |
-|           |           |           |           |           | memory by |
-|           |           |           |           |           | kernel    |
-|           |           |           |           |           | and DSP.  |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| SYS/BIOS  | Network   | PROCSDK   | SRIO LLD  | -  SYS/BI | -  Transp |
-| DSP       |           | RTOS PDK  |           | OS        | ortSrio   |
-| Transport |           |           |           |    DSP    |    can    |
-| Srio      |           |           |           |    to/fro |    send   |
-|           |           |           |           | m         |    Messag |
-|           |           |           |           |    SYS/BI | eQ        |
-|           |           |           |           | OS        |    messag |
-|           |           |           |           |    DSP    | es        |
-|           |           |           |           |    (intra |    to     |
-|           |           |           |           | -         |    ARMv7  |
-|           |           |           |           |    and    |    and    |
-|           |           |           |           |    inter- |    DSP    |
-|           |           |           |           | device)   |    proces |
-|           |           |           |           | -  SYS/BI | sors      |
-|           |           |           |           | OS        |    on     |
-|           |           |           |           |    DSP    |    remote |
-|           |           |           |           |    to/fro |    device |
-|           |           |           |           | m         | s         |
-|           |           |           |           |    ARMv7  |    in a   |
-|           |           |           |           |    Linux  |    multip |
-|           |           |           |           |    (intra | le        |
-|           |           |           |           | -         |    device |
-|           |           |           |           |    and    |    system |
-|           |           |           |           |    inter- | .         |
-|           |           |           |           | device)   |    IPC    |
-|           |           |           |           |           |    MultiP |
-|           |           |           |           |           | roc       |
-|           |           |           |           |           |    must   |
-|           |           |           |           |           |    be     |
-|           |           |           |           |           |    config |
-|           |           |           |           |           | ured      |
-|           |           |           |           |           |    to be  |
-|           |           |           |           |           |    aware  |
-|           |           |           |           |           |    of all |
-|           |           |           |           |           |    proces |
-|           |           |           |           |           | sors      |
-|           |           |           |           |           |    existi |
-|           |           |           |           |           | ng        |
-|           |           |           |           |           |    on all |
-|           |           |           |           |           |    device |
-|           |           |           |           |           | s         |
-|           |           |           |           |           |    and    |
-|           |           |           |           |           |    all    |
-|           |           |           |           |           |    device |
-|           |           |           |           |           | s         |
-|           |           |           |           |           |    must   |
-|           |           |           |           |           |    be     |
-|           |           |           |           |           |    connec |
-|           |           |           |           |           | ted       |
-|           |           |           |           |           |    over a |
-|           |           |           |           |           |    SRIO   |
-|           |           |           |           |           |    interc |
-|           |           |           |           |           | onnect.   |
-|           |           |           |           |           | -  The    |
-|           |           |           |           |           |    main   |
-|           |           |           |           |           |    purpos |
-|           |           |           |           |           | e         |
-|           |           |           |           |           |    of     |
-|           |           |           |           |           |    Transp |
-|           |           |           |           |           | ortSrio   |
-|           |           |           |           |           |    is for |
-|           |           |           |           |           |    multi- |
-|           |           |           |           |           | device    |
-|           |           |           |           |           |    commun |
-|           |           |           |           |           | ication   |
-|           |           |           |           |           |    over   |
-|           |           |           |           |           |    Messag |
-|           |           |           |           |           | eQ.       |
-|           |           |           |           |           |    The    |
-|           |           |           |           |           |    transm |
-|           |           |           |           |           | ission    |
-|           |           |           |           |           |    latenc |
-|           |           |           |           |           | y         |
-|           |           |           |           |           |    is     |
-|           |           |           |           |           |    greate |
-|           |           |           |           |           | r         |
-|           |           |           |           |           |    for    |
-|           |           |           |           |           |    this   |
-|           |           |           |           |           |    transp |
-|           |           |           |           |           | ort       |
-|           |           |           |           |           |    due to |
-|           |           |           |           |           |    the    |
-|           |           |           |           |           |    latter |
-|           |           |           |           |           |    capabi |
-|           |           |           |           |           | lity.     |
-|           |           |           |           |           |    Theref |
-|           |           |           |           |           | ore,      |
-|           |           |           |           |           |    it is  |
-|           |           |           |           |           |    recomm |
-|           |           |           |           |           | ended     |
-|           |           |           |           |           |    a      |
-|           |           |           |           |           |    shared |
-|           |           |           |           |           |    memory |
-|           |           |           |           |           |    or     |
-|           |           |           |           |           |    other  |
-|           |           |           |           |           |    LLD-ba |
-|           |           |           |           |           | sed       |
-|           |           |           |           |           |    transp |
-|           |           |           |           |           | ort       |
-|           |           |           |           |           |    is     |
-|           |           |           |           |           |    used   |
-|           |           |           |           |           |    for    |
-|           |           |           |           |           |    intra- |
-|           |           |           |           |           | device    |
-|           |           |           |           |           |    commun |
-|           |           |           |           |           | ication   |
-|           |           |           |           |           |    due to |
-|           |           |           |           |           |    their  |
-|           |           |           |           |           |    lower  |
-|           |           |           |           |           |    latenc |
-|           |           |           |           |           | y         |
-|           |           |           |           |           |    costs. |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| ARMv7     | Network   | Yocto/bit | SRIO LLD  | -  ARMv7  | -  Transp |
-| Linux     |           | bake      |           |    Linux  | ortSrio   |
-| Transport |           | ti-transp |           |    to/fro |    can    |
-| Srio      |           | ort-srio  |           | m         |    send   |
-|           |           | recipe    |           |    ARMv7  |    Messag |
-|           |           |           |           |    Linux  | eQ        |
-|           |           |           |           |    (intra |    messag |
-|           |           |           |           | -         | es        |
-|           |           |           |           |    and    |    to     |
-|           |           |           |           |    inter- |    ARMv7  |
-|           |           |           |           | device)   |    and    |
-|           |           |           |           | -  SYS/BI |    DSP    |
-|           |           |           |           | OS        |    proces |
-|           |           |           |           |    DSP    | sors      |
-|           |           |           |           |    to/fro |    on     |
-|           |           |           |           | m         |    remote |
-|           |           |           |           |    ARMv7  |    device |
-|           |           |           |           |    Linux  | s         |
-|           |           |           |           |    (intra |    in a   |
-|           |           |           |           | -         |    multip |
-|           |           |           |           |    and    | le        |
-|           |           |           |           |    inter- |    device |
-|           |           |           |           | device)   |    system |
-|           |           |           |           |           | .         |
-|           |           |           |           |           |    IPC    |
-|           |           |           |           |           |    MultiP |
-|           |           |           |           |           | roc       |
-|           |           |           |           |           |    must   |
-|           |           |           |           |           |    be     |
-|           |           |           |           |           |    config |
-|           |           |           |           |           | ured      |
-|           |           |           |           |           |    to be  |
-|           |           |           |           |           |    aware  |
-|           |           |           |           |           |    of all |
-|           |           |           |           |           |    proces |
-|           |           |           |           |           | sors      |
-|           |           |           |           |           |    existi |
-|           |           |           |           |           | ng        |
-|           |           |           |           |           |    on all |
-|           |           |           |           |           |    device |
-|           |           |           |           |           | s         |
-|           |           |           |           |           |    and    |
-|           |           |           |           |           |    all    |
-|           |           |           |           |           |    device |
-|           |           |           |           |           | s         |
-|           |           |           |           |           |    must   |
-|           |           |           |           |           |    be     |
-|           |           |           |           |           |    connec |
-|           |           |           |           |           | ted       |
-|           |           |           |           |           |    over a |
-|           |           |           |           |           |    SRIO   |
-|           |           |           |           |           |    interc |
-|           |           |           |           |           | onnect.   |
-|           |           |           |           |           | -  The    |
-|           |           |           |           |           |    main   |
-|           |           |           |           |           |    purpos |
-|           |           |           |           |           | e         |
-|           |           |           |           |           |    of     |
-|           |           |           |           |           |    Transp |
-|           |           |           |           |           | ortSrio   |
-|           |           |           |           |           |    is for |
-|           |           |           |           |           |    multi- |
-|           |           |           |           |           | device    |
-|           |           |           |           |           |    commun |
-|           |           |           |           |           | ication   |
-|           |           |           |           |           |    over   |
-|           |           |           |           |           |    Messag |
-|           |           |           |           |           | eQ.       |
-|           |           |           |           |           |    The    |
-|           |           |           |           |           |    transm |
-|           |           |           |           |           | ission    |
-|           |           |           |           |           |    latenc |
-|           |           |           |           |           | y         |
-|           |           |           |           |           |    is     |
-|           |           |           |           |           |    greate |
-|           |           |           |           |           | r         |
-|           |           |           |           |           |    for    |
-|           |           |           |           |           |    this   |
-|           |           |           |           |           |    transp |
-|           |           |           |           |           | ort       |
-|           |           |           |           |           |    due to |
-|           |           |           |           |           |    the    |
-|           |           |           |           |           |    latter |
-|           |           |           |           |           |    capabi |
-|           |           |           |           |           | lity.     |
-|           |           |           |           |           |    Theref |
-|           |           |           |           |           | ore,      |
-|           |           |           |           |           |    it is  |
-|           |           |           |           |           |    recomm |
-|           |           |           |           |           | ended     |
-|           |           |           |           |           |    a      |
-|           |           |           |           |           |    shared |
-|           |           |           |           |           |    memory |
-|           |           |           |           |           |    or     |
-|           |           |           |           |           |    other  |
-|           |           |           |           |           |    LLD-ba |
-|           |           |           |           |           | sed       |
-|           |           |           |           |           |    transp |
-|           |           |           |           |           | ort       |
-|           |           |           |           |           |    is     |
-|           |           |           |           |           |    used   |
-|           |           |           |           |           |    for    |
-|           |           |           |           |           |    intra- |
-|           |           |           |           |           | device    |
-|           |           |           |           |           |    commun |
-|           |           |           |           |           | ication   |
-|           |           |           |           |           |    due to |
-|           |           |           |           |           |    their  |
-|           |           |           |           |           |    lower  |
-|           |           |           |           |           |    latenc |
-|           |           |           |           |           | y         |
-|           |           |           |           |           |    costs. |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| SYS/BIOS  | Network   |           | QMSS LLD  | -  SYS/BI |           |
-| DSP       |           |           |           | OS        |           |
-| Transport |           |           |           |    DSP    |           |
-| Qmss      |           |           |           |    to/fro |           |
-|           |           |           |           | m         |           |
-|           |           |           |           |    SYS/BI |           |
-|           |           |           |           | OS        |           |
-|           |           |           |           |    DSP    |           |
-|           |           |           |           | -  SYS/BI |           |
-|           |           |           |           | OS        |           |
-|           |           |           |           |    DSP    |           |
-|           |           |           |           |    to/fro |           |
-|           |           |           |           | m         |           |
-|           |           |           |           |    ARMv7  |           |
-|           |           |           |           |    Linux  |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
-| ARMv7     | Network   | Yocto/bit | QMSS LLD  | -  ARMv7  |           |
-| Linux     |           | bake      |           |    Linux  |           |
-| Transport |           | ti-transp |           |    proces |           |
-| Qmss      |           | ort-qmss  |           | s         |           |
-|           |           | recipe    |           |    to     |           |
-|           |           |           |           |    proces |           |
-|           |           |           |           | s         |           |
-|           |           |           |           | -  ARMv7  |           |
-|           |           |           |           |    Linux  |           |
-|           |           |           |           |    to/fro |           |
-|           |           |           |           | m         |           |
-|           |           |           |           |    SYS/BI |           |
-|           |           |           |           | OS        |           |
-|           |           |           |           |    DSP    |           |
-+-----------+-----------+-----------+-----------+-----------+-----------+
++---------------+--------------+--------------+----------------+-----------------+------------------+
+| **Transport** | **MessageQ   | **Location** | **Communication| **Enabled       | **Special        |
+|               | Interface    |              | Route**        | Communication   | Considerations** |
+|               | Type**       |              |                | Path**          |                  |
++---------------+--------------+--------------+----------------+-----------------+------------------+
+| Transport     | MessageQ     | IPC          | Shared         | SYS/BIOS        | There are        |
+| Shm...        | (priority    | component    | memory         | DSP to          | multiple         |
+|               | based)       | -            |                | DSP             | implementations  |
+|               |              | SYS/BIOS     |                |                 | of Transport Shm |
+|               |              | subdirect    |                |                 | delivered within |
+|               |              | ories        |                |                 | the IPC component|
+|               |              |              |                |                 | Please see the   |
+|               |              |              |                |                 | IPC documentation|
+|               |              |              |                |                 | provided with the|
+|               |              |              |                |                 | component for    |
+|               |              |              |                |                 | more information |
+|               |              |              |                |                 | on these shared  |
+|               |              |              |                |                 | memory transport |
+|               |              |              |                |                 | implementions    |
++---------------+--------------+--------------+----------------+-----------------+------------------+
+| Transport     | MessageQ     | - IPC        | Shared         | - ARMv7         | MessageQ messages|
+| Rpmsg         | (priority    |   component -| memory         |   Linux to/from | sent over        |
+|               | based)       |   ARMv7 Linux|                |   SYS/BIOS DSP  | Transport Rpmsg  |
+|               |              |   subdirect  |                |                 | traveling        |
+|               |              |   ories      |                |                 | from/to ARMv7    |
+|               |              | - IPC        |                |                 | user space       |
+|               |              |   component -|                |                 | go through       |
+|               |              |   SYS/BIOS   |                |                 | the Linux kernel |
+|               |              |   subdirect  |                |                 | before reaching  |
+|               |              |   ories      |                |                 | the DSP.         |
+|               |              | - Yocto/     |                |                 | This provides    |
+|               |              |   bitbake    |                |                 | *clean*          |
+|               |              |   ti-ipc     |                |                 | partitioning     |         
+|               |              |   recipe     |                |                 | between user     |
+|               |              |              |                |                 | memory and DSP   |
+|               |              |              |                |                 | memory. However, |
+|               |              |              |                |                 | Transport Rpmsg  |
+|               |              |              |                |                 | is considered    |     
+|               |              |              |                |                 | a *slow path*    |
+|               |              |              |                |                 | since the user   |
+|               |              |              |                |                 | space MessageQ   |
+|               |              |              |                |                 | messages must be |
+|               |              |              |                |                 | copied from/to   |
+|               |              |              |                |                 | DSP memory by    |
+|               |              |              |                |                 | kernel and DSP.  |
++---------------+--------------+--------------+----------------+-----------------+------------------+
+| SYS/BIOS      | Network      | PROCSDK      | SRIO LLD       | - SYS/BIOS      | TransportSrio    |
+| DSP           |              | RTOS PDK     |                |   DSP to/from   | can send MessageQ|         
+| Transport     |              |              |                |   SYS/BIOS DSP  | messages to ARMv7|
+| Srio          |              |              |                |   (intra and    | and DSP          |
+|               |              |              |                |   inter-device) | processors on    |
+|               |              |              |                | - SYS/BIOS      | remote devices   |
+|               |              |              |                |   DSP to/from   | in a multiple    |
+|               |              |              |                |   ARMv7 Linux   | device system.   |
+|               |              |              |                |   (intra- and   | IPC MultiProc    |
+|               |              |              |                |   inter- device)| must be          | 
+|               |              |              |                |                 | configured to be |
+|               |              |              |                |                 | aware of all     |
+|               |              |              |                |                 | processors       | 
+|               |              |              |                |                 | existing on all  |
+|               |              |              |                |                 | devices and all  |
+|               |              |              |                |                 | devices must be  |      
+|               |              |              |                |                 | connected over a |
+|               |              |              |                |                 | SRIO             |
+|               |              |              |                |                 | interconnect.    |
+|               |              |              |                |                 |                  |
+|               |              |              |                |                 | The main         |
+|               |              |              |                |                 | purpose of       |
+|               |              |              |                |                 | TransportSrio    |
+|               |              |              |                |                 | is for           |
+|               |              |              |                |                 | multi-device     |
+|               |              |              |                |                 | communication    |
+|               |              |              |                |                 | over MessageQ.   |
+|               |              |              |                |                 | The transmission |
+|               |              |              |                |                 | latency is       |
+|               |              |              |                |                 | greater for      |
+|               |              |              |                |                 | this transport   |
+|               |              |              |                |                 | due to the       |
+|               |              |              |                |                 | latter capability|
+|               |              |              |                |                 | Therefore it is  |
+|               |              |              |                |                 | recommended a    |
+|               |              |              |                |                 | shared memory or |    
+|               |              |              |                |                 | other LLD-based  |
+|               |              |              |                |                 | transport        |
+|               |              |              |                |                 | is used for      |    
+|               |              |              |                |                 | intra-device     |
+|               |              |              |                |                 | communication    |
+|               |              |              |                |                 | due to their     |
+|               |              |              |                |                 | lower latency    |
+|               |              |              |                |                 | costs.           |
++---------------+--------------+--------------+----------------+-----------------+------------------+
+| ARMv7         | Network      | Yocto/bit    | SRIO LLD       | - ARMv7         | TransportSrio    | 
+| Linux         |              | bake         |                |   Linux to/from | can send         |
+| Transport     |              | ti-transp    |                |   ARMv7 Linux   | MessageQ messages|         
+| Srio          |              | ort-srio     |                |   (intra- and   | to ARMv7 and DSP |
+|               |              | recipe       |                |   inter-device) | processors on    |
+|               |              |              |                | - SYS/BIOS      | remote devices   |
+|               |              |              |                |   DSP to/from   | in a multiple    |
+|               |              |              |                |   ARMv7 Linux   | device system.   |
+|               |              |              |                |   (intra- and   | IPC MultiProc    |
+|               |              |              |                |   inter-device) | must be          |
+|               |              |              |                |                 | configured to be |
+|               |              |              |                |                 | aware of all     |
+|               |              |              |                |                 | processors       |
+|               |              |              |                |                 | existing on all  |          
+|               |              |              |                |                 | devices and all  |
+|               |              |              |                |                 | devices must be  |
+|               |              |              |                |                 | connected        |
+|               |              |              |                |                 | over a SRIO      |
+|               |              |              |                |                 | interconnect.    |
+|               |              |              |                |                 |                  |
+|               |              |              |                |                 | The main         |
+|               |              |              |                |                 | purpose of       |
+|               |              |              |                |                 | TransportSrio    |
+|               |              |              |                |                 | is for           |
+|               |              |              |                |                 | multi-device     |      
+|               |              |              |                |                 | communication    |
+|               |              |              |                |                 | over MessageQ.   |
+|               |              |              |                |                 | The transmission |
+|               |              |              |                |                 | latency is       |
+|               |              |              |                |                 | greater for      |
+|               |              |              |                |                 | this transport   |     
+|               |              |              |                |                 | due to the latter|
+|               |              |              |                |                 | capability.      |
+|               |              |              |                |                 | Therefore, it is |        
+|               |              |              |                |                 | recommended      |
+|               |              |              |                |                 | a shared memory  |
+|               |              |              |                |                 | or other         |  
+|               |              |              |                |                 | LLD-based        |
+|               |              |              |                |                 | transport        |      
+|               |              |              |                |                 | is used for      |
+|               |              |              |                |                 | intra-device     |
+|               |              |              |                |                 | communication    |
+|               |              |              |                |                 | due to their     |
+|               |              |              |                |                 | lower latency    | 
+|               |              |              |                |                 | costs.           |
++---------------+--------------+--------------+----------------+-----------------+------------------+
+| SYS/BIOS      | Network      |              | QMSS LLD       | - SYS/BIOS      |                  |
+| DSP           |              |              |                |   DSP to/from   |                  |
+| Transport     |              |              |                |   SYS/BIOS DSP  |                  |
+| Qmss          |              |              |                | - SYS/BIOS      |                  |
+|               |              |              |                |   DSP to/from   |                  |
+|               |              |              |                |   ARMv7 Linux   |                  |
++---------------+--------------+--------------+----------------+-----------------+------------------+
+|               |              |              |                | - ARMv7 Linux   |                  |
+|               |              |              |                |   process       |                  |
+|               |              |              |                |   to process.   |                  |
+|               |              |              |                | - ARMv7         |                  |
+|               |              |              |                |   Linux to/from |                  |
+|               |              |              |                |   SYS/BIOS DSP  |                  |
++---------------+--------------+--------------+----------------+-----------------+------------------+
 
 The IPC component (ARMv7 and SYS/BIOS) is available in PROCSDK RTOS and
 Linux installations. It will be installed in <PROCSDK RTOS or Linux

@@ -509,6 +509,6 @@ A message queue is created by a Task. An open on the same processor then occurs.
 Assume there is one message in the system. The opener allocates the message and 
 sends it to the created message queue, which gets and frees it.
 
-..Image:: ../images/IpcUG_ipc_2_3_2.png
+.. Image:: ../images/IpcUG_ipc_2_3_2.png
 
 .. raw:: html

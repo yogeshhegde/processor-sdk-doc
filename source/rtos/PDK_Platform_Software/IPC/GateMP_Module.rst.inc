@@ -181,7 +181,7 @@ Sample Runtime Program Flow (Dynamic)
 The following diagram shows the program flow for a two-processor (or two-thread) application. 
 This application creates a Gate dynamically.
 
-Image:: ../images/IpcUG_ipc_2_6_1.png
+.. Image:: ../images/IpcUG_ipc_2_6_1.png
 
 .. raw:: html
 
