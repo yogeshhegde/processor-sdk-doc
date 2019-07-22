@@ -14,7 +14,7 @@ target filesystem, example applications, toolchain and board support
 package, ease of use scripts and documentation.
 The Processor SDK now includes the ARM GCC toolchain.  The
 Processor SDK was built and tested against a specific Linux
-Distribution name and version, Ubuntu 14.04 and 16.04. Note this
+Distribution name and version, Ubuntu 16.04 and 18.04. Note this
 **does not** prevent the user from installing the SDK on other Linux
 distributions.
 

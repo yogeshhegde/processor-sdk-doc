@@ -137,7 +137,7 @@ which you can start development.
    on validating using `Ubuntu <http://www.ubuntu.com>`__ as the host
    Linux distribution, running natively. We validate the Long-term
    Support (LTS) versions of Ubuntu at the time of a SDK release (Ubuntu
-   14.04 is the currently supported LTS version).
+   16.04 and Ubuntu 18.04 are the currently supported LTS version).
    Can you use other versions of Ubuntu or even other distributions?
    Theoretically, yes, as long as you can get it to work and there may
    be more “assembly” required. If you can use the Ubuntu version

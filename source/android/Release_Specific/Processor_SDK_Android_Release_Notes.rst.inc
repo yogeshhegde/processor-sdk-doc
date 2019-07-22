@@ -193,7 +193,7 @@ environment, install the SDK and start your development.
 Host Support
 ==============
 
-The Processor SDK is developed, built and verified on Ubuntu 14.04, 16.04, and 18.04.
+The Processor SDK is developed, built and verified on Ubuntu 16.04, and 18.04.
 
 .. note::
    Processor SDK Installer is 64-bit, and installs only on 64-bit host

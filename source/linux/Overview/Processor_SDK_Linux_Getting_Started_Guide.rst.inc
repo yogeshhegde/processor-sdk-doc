@@ -168,7 +168,7 @@ which you can start development.
    on validating using `Ubuntu <http://www.ubuntu.com/>`__ as the host
    Linux distribution, running natively. We validate the Long-term
    Support (LTS) versions of Ubuntu at the time of a SDK release (for
-   example, at the time of this writing, Ubuntu 14.04 and Ubuntu 16.04
+   example, at the time of this writing, Ubuntu 16.04 and Ubuntu 18.04
    are the currently supported LTS versions).
 
    Can you use other versions of Ubuntu or even other distributions?
