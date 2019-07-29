@@ -22,6 +22,10 @@ PRU_ICSSG Ethernet
 -----------------------------------------
 .. include:: Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet.rst.inc
 
+PRU-ICSS Soft UART
+-----------------------------------------
+.. include:: Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart.rst.inc
+
 Linux User Space
 ==================================
 
