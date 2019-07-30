@@ -1367,45 +1367,44 @@ Sparse fine tuned (~61% zero coefficients)    65.77%
 
 Troubleshooting
 ===============
-- Validate OpenCL stack is running
-      Upon Linux boot, OpenCL firmwares are downloaded to DSP and EVE.
-      As OpenCL monitor for IPU1 (which controls EVEs) is new addition, here is expected trace:
-      Enter following command on target: cat /sys/kernel/debug/remoteproc/remoteproc0/trace0
-      Following output is expected, indicating number of available EVE accelerators (below AM5729 trace indicates 4 EVEs):
+- Application with TIDL doesn't run at all
+   - Verify that CMEM is active and running:
+      - cat /proc/cmem
+      - lsmod | grep "cmem"
+      - Default CMEM size is not sufficient for devices with more than 2 EVEs (make ~56-64MB available per EVE).
 
-::
+   - Validate OpenCL stack is running
+         Upon Linux boot, OpenCL firmwares are downloaded to DSP and EVE.
+         As OpenCL monitor for IPU1 (which controls EVEs) is new addition, here is expected trace:
+         Enter following command on target: cat /sys/kernel/debug/remoteproc/remoteproc0/trace0
+         Following output is expected, indicating number of available EVE accelerators (below AM5729 trace indicates 4 EVEs):
 
-[0][      0.000] 17 Resource entries at 0x3000
-[0][      0.000] [t=0x000aa3b3] xdc.runtime.Main: 4 EVEs Available
-[0][      0.000] [t=0x000e54bf] xdc.runtime.Main: Creating msg queue...
-[0][      0.000] [t=0x000fb885] xdc.runtime.Main: OCL:EVEProxy:MsgQ ready
-[0][      0.000] [t=0x0010a1a1] xdc.runtime.Main: Heap for EVE ready
-[0][      0.000] [t=0x00116903] xdc.runtime.Main: Booting EVEs...
-[0][      0.000] [t=0x00abf9a9] xdc.runtime.Main: Starting BIOS...
-[0][      0.000] registering rpmsg-proto:rpmsg-proto service on 61 with HOST
-[0][      0.000] [t=0x00b23903] xdc.runtime.Main: Attaching to EVEs...
-[0][      0.007] [t=0x00bdf757] xdc.runtime.Main: EVE1 attached
-[0][      0.010] [t=0x00c7eff5] xdc.runtime.Main: EVE2 attached
-[0][      0.013] [t=0x00d1b41d] xdc.runtime.Main: EVE3 attached
-[0][      0.016] [t=0x00db9675] xdc.runtime.Main: EVE4 attached
-[0][      0.016] [t=0x00dc967f] xdc.runtime.Main: Opening MsgQ on EVEs...
-[0][      1.017] [t=0x013b958a] xdc.runtime.Main: OCL:EVE1:MsgQ opened
-[0][      2.019] [t=0x019ae01a] xdc.runtime.Main: OCL:EVE2:MsgQ opened
-[0][      3.022] [t=0x01fa62bf] xdc.runtime.Main: OCL:EVE3:MsgQ opened
-[0][      4.026] [t=0x025a4a1f] xdc.runtime.Main: OCL:EVE4:MsgQ opened
-[0][      4.026] [t=0x025b4143] xdc.runtime.Main: Pre-allocating msgs to EVEs...
-[0][      4.027] [t=0x0260edc5] xdc.runtime.Main: Done OpenCL runtime initialization. Waiting for messages...
+         ::
 
+            [0][      0.000] 17 Resource entries at 0x3000
+            [0][      0.000] [t=0x000aa3b3] xdc.runtime.Main: 4 EVEs Available
+            [0][      0.000] [t=0x000e54bf] xdc.runtime.Main: Creating msg queue...
+            [0][      0.000] [t=0x000fb885] xdc.runtime.Main: OCL:EVEProxy:MsgQ ready
+            [0][      0.000] [t=0x0010a1a1] xdc.runtime.Main: Heap for EVE ready
+            [0][      0.000] [t=0x00116903] xdc.runtime.Main: Booting EVEs...
+            [0][      0.000] [t=0x00abf9a9] xdc.runtime.Main: Starting BIOS...
+            [0][      0.000] registering rpmsg-proto:rpmsg-proto service on 61 with HOST
+            [0][      0.000] [t=0x00b23903] xdc.runtime.Main: Attaching to EVEs...
+            [0][      0.007] [t=0x00bdf757] xdc.runtime.Main: EVE1 attached
+            [0][      0.010] [t=0x00c7eff5] xdc.runtime.Main: EVE2 attached
+            [0][      0.013] [t=0x00d1b41d] xdc.runtime.Main: EVE3 attached
+            [0][      0.016] [t=0x00db9675] xdc.runtime.Main: EVE4 attached
+            [0][      0.016] [t=0x00dc967f] xdc.runtime.Main: Opening MsgQ on EVEs...
+            [0][      1.017] [t=0x013b958a] xdc.runtime.Main: OCL:EVE1:MsgQ opened
+            [0][      2.019] [t=0x019ae01a] xdc.runtime.Main: OCL:EVE2:MsgQ opened
+            [0][      3.022] [t=0x01fa62bf] xdc.runtime.Main: OCL:EVE3:MsgQ opened
+            [0][      4.026] [t=0x025a4a1f] xdc.runtime.Main: OCL:EVE4:MsgQ opened
+            [0][      4.026] [t=0x025b4143] xdc.runtime.Main: Pre-allocating msgs to EVEs...
+            [0][      4.027] [t=0x0260edc5] xdc.runtime.Main: Done OpenCL runtime initialization. Waiting for messages...
 
-- Verify that CMEM is active and running:
-    - cat /proc/cmem
-    - lsmod | grep "cmem"
-    - Default CMEM size is not sufficient for devices with more than 2 EVEs (make ~56-64MB available per EVE).
-
-- **Verify model preparation procedure**
-
-- Import process may not give enough information if it fails to import external model.
-    E.g. following report can be seen if format is not recognized (in this case, an attempt to import Keras model was made):
+- TIDL import tool doesn't give enough information
+    The import tool will fail to import a model if it is not in supported format (Caffe/TensorFlow/ONNX).
+    E.g. following report can be seen if format is not recognized:
   
     ::
 
@@ -1421,37 +1420,32 @@ Troubleshooting
 
        End of config list found !
 
-
-- Data set preparation concerns
-    - Good lighting is very desirable while preparing training set.
-    - Augmentation
-
-- Equivalence between desktop Caffe execution and target execution
-     For this purpose, we can use simulation tool as it is bit-exact with EVE or DSP execution.
+- Target execution is different from desktop Caffe execution 
+     To debug this, we can use simulation tool as it is bit-exact with EVE or DSP execution.
      Traces that are generated by simulation tool can be visually compared against data blobs that are saved after desktop Caffe inference.
      If all the rest is correct, it is worth comparing intermediate results. Please keep in mind that numerical equivalence between Caffe desktop
      computation (using single precision FP32) and target computation (using 8-bit activations, and 8-12 bit weights) are not expected.
      Still features maps (of intermediate layers) are supposed to be rather similar. If something is significantly different, please try to change
      number of bits for weights, or repeat import processing with more representative image. Problems of this sort should be rarely encountered. 
 
-- **Typical errors in runtime (when to reboot the platform)**
+- Following error is seen in runtime 
+     ::
 
-::
+       ... inc/executor.h:199: T* tidl::malloc_ddr(size_t) [with T = char; size_t = unsigned int]: Assertion `val != nullptr' failed.
 
-  ... inc/executor.h:199: T* tidl::malloc_ddr(size_t) [with T = char; size_t = unsigned int]: Assertion `val != nullptr' failed.
+     This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
 
-This means that previous run failed to de-allocate CMEM memory. Reboot is one option, restarting ti-mctd deamon is another option. 
 
-- **Caffe import crashes with error message**
+- Caffe import crashes with error message 
+     ::
 
-::
+       [libprotobuf FATAL <protobuf path>/protobuf/repeated_field.h:1478] CHECK failed: (index) < (current_size_):
+       terminate called after throwing an instance of 'google::protobuf::FatalException'
+       what():  CHECK failed: (index) < (current_size_):
+       Aborted (core dumped)
 
-    [libprotobuf FATAL <protobuf path>/protobuf/repeated_field.h:1478] CHECK failed: (index) < (current_size_):
-    terminate called after throwing an instance of 'google::protobuf::FatalException'
-    what():  CHECK failed: (index) < (current_size_):
-    Aborted (core dumped)
+     This is usually caused by unsupported Caffe input layer format. Refer `Importing Caffe Models <Foundational_Components_TIDL.html#importing-caffe-models>`__ for more details.
 
-This is usually caused by unsupported Caffe input layer format. Refer `Importing Caffe Models <Foundational_Components_TIDL.html#importing-caffe-models>`__ for more details.
 
-- TensorFlow import failed with error "Could not find the requested input Data:"
+- TensorFlow import failed with error "Could not find the requested input Data:" 
      This is likely due to unoptimized frozen graphs. Refer `Importing Tensorflow Models <Foundational_Components_TIDL.html#importing-tensorflow-models>`__ for more details. 
