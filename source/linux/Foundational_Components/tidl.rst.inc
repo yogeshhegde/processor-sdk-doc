@@ -317,7 +317,7 @@ Constraints on layer parameters
 Layers in current release of TIDL Lib have certain parameter related constraints:
 
 - Convolution Layer
-   - Verified for kernel size up to 7x7 (Shall work for higher values also, but not validated)
+   - Kernel size up to 7x7 
    - Dilation vaild for parameter values of: 1,2,4
    - Stride values of 1 and 2 are supported.
    - Dense convolution flow is supported for only 1x1 and 3x3 kernels with stride = 1 and dilation =1
