@@ -113,6 +113,10 @@ EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/66AK2G02_GP_EVM_Hardware_Setup.rst.inc
 
+.. 66AK2G02 ICE EVM Hardware Setup
+.. ====================================================
+.. include:: ../common/EVM_Hardware_Setup/66AK2G02_ICE_EVM_Hardware_setup.rst.inc
+
 .. EVMK2E Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/EVMK2E_Hardware_Setup.rst.inc
@@ -136,6 +140,14 @@ EVM Hardware Setup
 .. OMAP-L137 EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/OMAPL137_EVM_Hardware_Setup.rst.inc
+
+.. AM335x ICE EVM Hardware Setup
+.. ====================================================
+.. include:: ../common/EVM_Hardware_Setup/ICE_AM335x_Hardware_Setup.rst.inc
+
+.. AMIC110 ICE EVM Hardware Setup
+.. ====================================================
+.. include:: ../common/EVM_Hardware_Setup/ICE_AMIC110_EVM_Hardware_Setup.rst.inc
 
 66AK2G Audio DC AddOn             
 ====================================================
