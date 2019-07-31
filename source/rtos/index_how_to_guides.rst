@@ -145,9 +145,10 @@ EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/ICE_AM335x_Hardware_Setup.rst.inc
 
-.. AMIC110 ICE EVM Hardware Setup
+.. AMIC110 ICE EVM Hardware Setu
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/ICE_AMIC110_EVM_Hardware_Setup.rst.inc
+
 
 66AK2G Audio DC AddOn             
 ====================================================
