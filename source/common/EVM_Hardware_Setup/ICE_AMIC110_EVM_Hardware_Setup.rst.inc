@@ -59,7 +59,7 @@ Boot Configuration
 ---------------------
 
 The various boot configurations are discussed in the `Hardware User
-Guide. <http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_EVM_Rev2_1_HW_User_Guide#Boot_Configuration>`__
+Guide. <http://www.ti.com/lit/spruip3>`__
 
 Connecting the AMIC110 ICE to Code Composer Studio
 ----------------------------------------------------

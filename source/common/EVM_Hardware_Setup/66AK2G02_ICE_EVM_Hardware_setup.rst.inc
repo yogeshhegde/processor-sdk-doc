@@ -8,7 +8,7 @@ Description
 The K2G ICE EVM is a high performance, cost-efficient, standalone
 development platform that enables users to evaluate and develop
 industrial communications applications for the Texas Instrument’s
-Keystone2 System-on-Chip (SoC) 66AK2G02.K2G SOC (66AK2G02) is the new
+Keystone2 System-on-Chip (SoC) 66AK2G02. The K2G SOC (66AK2G02) is the new
 device from TI’s Keystone II architecture with
 
 -  ARM® Cortex® -A15 Microprocessor Unit (ARM A15) Subsystem at up to
@@ -25,7 +25,7 @@ device from TI’s Keystone II architecture with
 -  Multichannel Buffered Serial Port (McBSP)
 -  Six Enhanced High Resolution Pulse Width Modulation (eHRPWM)
 
-The Key features of EVM are:
+The key features of the EVM are:
 
 -  K2G SoC 66AK2G02 is based on keystone II architecture with ARM cortex
    A15 @600MHz and C66x DSP @600MHz
@@ -51,17 +51,14 @@ EVM Layout and Key Components
 
 .. Image:: ../images/TI_K2G_ICE_EVM_BOTTOM.png
 
-JTAG Debug Probes (Emulators) Supported
+Supported JTAG Debug Probes (Emulators)
 ---------------------------------------------
 
-List of standalone JTAG debug probes supported:
 
--  XDS100-class JTAG debug probes (low cost, low performance). XDS100v1
-   is not supported.
+-  XDS100-class JTAG debug probes (low cost, low performance). The XDS100v1 is not supported.
 -  XDS200-class JTAG debug probes (recommended)
 -  XDS560v2-class JTAG debug probes (high performance)
 
-| 
 
 Minimal EVM setup
 -------------------
@@ -69,38 +66,37 @@ Minimal EVM setup
 Setting Boot Switches
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The DIP Switch /Boot mode switch (SW3) is used for selecting the boot
+The DIP switch (SW3) is used for selecting the boot
 mode.
 
-**For EVM Out of Box experience, use SD/MMC boot as shown in the image**: 
+**For the EVM Out-of-Box experience, use SD/MMC boot mode as shown in the image below**: 
   
 .. Image:: ../images/K2GICE_Boot_MODE.png
 
+|
 
-The table below provides the list of all the boot modes supported on the ICE EVM
+The table below lists all of the boot modes supported on the ICE EVM.
 
 .. Image:: ../images/K2G_ICE_BOOTSW.png
 
-Connecting Emulator
+Connecting an Emulator
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. Note:: This EVM setup is only required for developers who need to connect to cores using Code Composer studio to load application.
+.. Note:: This EVM setup is only required for developers who need to connect to cores using Code Composer Studio (CCS) to load their application.
 
 
-The EVM supports two types of Emulation - “On-Board-XDS100 emulator” and “20-pin JTAG Header”
+The EVM supports two types of emulation via the on-board XDS100 emulator or the 20-pin JTAG header.
 
-When external emulator is not connected to 20-pin JTAG Header, On-board
+When an external emulator is not connected to the 20-pin JTAG Header, the on-board
 XDS100 embedded JTAG emulator is the default type of emulation (SoC JTAG
-signals are routed to XDS100 on-board emulator). When external emulator
-is connected to 20-pin JTAG Header, it is automatically detected and SoC
-JTAG signals are routed to external emulator.
+signals are routed to the XDS100 on-board emulator). When an external emulator
+is connected to the 20-pin JTAG Header, it is automatically detected and the SoC
+JTAG signals are routed to the external emulator.
 
-**On Board XDS100 emulator**
+**On-board XDS100 Emulator**
 
-K2G ICE EVM has on-board XDS100 embedded JTAG emulation circuitry. Hence
-user does not require any external emulator to connect ICE EVM with Code
-Composer Studio (CCS). User can connect target SoC in EVM to CCS through
-USB cable supplied in the ICE EVM kit.
+The K2G ICE EVM has on-board XDS100 embedded JTAG emulation circuitry so an external emulator is not required. 
+Users can connect to the target SoC via CCS by connecting the USB cable, supplied in the ICE EVM kit, as shown in the image below. 
 
 | 
 
@@ -108,9 +104,9 @@ USB cable supplied in the ICE EVM kit.
 
 | 
 
-**20-pin JTAG Header for connecting External emulator**
+**20-pin JTAG Header for Connecting an External Emulator**
 
-If you are using a different JTAG, you can connect it at 20-pin JTAG
+Users have the option of connecting an external at the 20-pin JTAG
 Header connector (EMU1). The 20-pin JTAG Header is provided on-board for
 high speed real-time emulation. All JTAG and EMUxx signals are
 terminated on 20-pin JTAG Header.
@@ -151,7 +147,7 @@ All revisions of the board require this step to be performed in order to
 get the latest GEL files and the target content for the K2G if you are
 using CCSv7.0 and earlier. This step will not be required for CCS
 versions higher than version 7.1. CCSv7.0 or CCSv6.1.3 package contain
-KeystoneII device support package v1.1.6 which doesn\`t contain K2GICE
+KeystoneII device support package v1.1.6 which doesn't contain K2GICE
 specific target files hence we recommend this update.
 
 1. All CCS v6.1.3 or CCSv7.0 and earlier version users are
@@ -161,18 +157,18 @@ Help->Check For Updates
 .. Image:: ../images/Check_for_Updates.png
 
 2. Select Keystone2 device support package. Follow menu options
-to continue with the update
+to continue with the update.
 
 3. After the update is complete go to Help->Installation details
 and check that Keystone2 device support package v1.1.9 or later are
-installed as shown below
+installed as shown below.
 
 .. Image:: ../images/KeystoneII_device_support_package.png
 
 .. Note:: The package can be downloaded separately from the link below and manually unzipped into CCS installation.
 
 -  `Device Support
-   Files <http://processors.wiki.ti.com/index.php/Device_support_files>`__
+   Files <https://software-dl.ti.com/ccs/esd/documents/ccs_device_support_files.html>`__
 
 
 .. Note:: For K2G Devices, if using CCS v6.1.2 and Keystone2 device support v1.1.7, 66AK2G02 would not show up in the list of devices when creating the target configuration. This is due to an incompatibility in the XML parser in CCS v6.1.2 with the K2G device xml. In order to work-around this issue, make the change in 66AK2G02.xml as illustrated below in order to have 66AK2G02 display in the device list. This problem does not exist in CCS v6.1.3 onwards as the XML parser has been updated.
@@ -181,29 +177,33 @@ C:\\ti\\ccsv6\\ccs\_base\\common\\targetdb\\devices\\66AK2G02.xml
 
 Line #1
 
-<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+::
+
+    <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 
 to 
 
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+::
 
-Connect without a SD card boot image
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+Connect without an SD Card Boot Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Configuring target configuration files
    :name: configuring-target-configuration-files
 
-Launch CCS and create new target configuration(File->New->Target Configuration file) as shown in the images below
+Launch CCS and create a new target configuration (File->New->Target Configuration file) as shown in the images below.
 
 .. Image:: ../images/CCS_target_configuration.png
 
-Provide appropriate name to the configuration. Select Spectrum Digital XDS100 emulator and target as K2G ICE EVM.
+Provide an appropriate name to the configuration. Select Spectrum Digital XDS100 emulator and target as K2G ICE EVM.
 
-.. Note:: If you don\`t find the K2GICE target make sure you have installed the CCSv7.1 or for CCSv 7.0/ CCSv6.1.x and earlier ensure that you have done the software update correctly as shown in the how to section below.
+.. Note:: If you don't find the K2GICE target make sure you have installed CCSv7.1 or higher. If using CCSv 7.0 or CCSv6.1.x and earlier, ensure that you have done the software update correctly as shown in the how to section below.
 
 .. Image:: ../images/K2G_ICE_target_configuration.png
 
-In advance settings, make sure that the gel files are populated correctly. The following GEL files and their corresponding cores are provided below:
+In advanced settings, make sure that the GEL files are populated correctly. The following GEL files and their corresponding cores are provided below.
 
 -  C66X Core: icek2g.gel
 -  A15 Core: icek2g\_arm.gel
@@ -211,16 +211,16 @@ In advance settings, make sure that the gel files are populated correctly. The f
 .. rubric:: Connecting to target
    :name: connecting-to-target
 
-1. Download Code composer Studio v7.1 or for CCSv7.0 and earlier, ensure it contains Keystone device support package version 1.1.9 as described in the 
+1. Download Code composer Studio or for CCSv7.0 and earlier, ensure it contains Keystone device support package version 1.1.9 as described in the 
 how to guide "Update CCS to Install Keystone II Device Support Package."
 
-2. 66AK2G02 ICE EVM contains boot switches to configure for "No boot/sleep" mode. So configure the boot switches to No Boot Mode as described in 
-the "Setting Boot Switches."
+2. 66AK2G02 ICE EVM contains boot switches to configure for "No boot/sleep" mode. So configure the boot switches to "No Boot Mode" as described in 
+the "Setting Boot Switches" section.
 
-3. Connect an XDS100 Emulator to XDS USB of the ICE EVM as shown in the 
+3. Connect an XDS100 Emulator to the XDS USB port of the ICE EVM as shown in the 
 section "Connecting Emulator."
 
-4. Launch CCS and create new target configuration as discussed in 
+4. Launch CCS and create a new target configuration as discussed in 
 the previous section "Configuring target configuration files."
 
 5. Launch the newly created 
@@ -248,33 +248,33 @@ so connect to the C66x or the A15\_0.
     A15_0: GEL Output: DDR3 PLL Setup complete, DDR3A clock now running at 400MHz. 
     A15_0: GEL Output: DDR3A initialization complete
 
-Connect With an SD Card Boot Image
+Connect with an SD Card Boot Image
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.  Launch CCS and create new target configuration(File->New->Target
-Configuration file) as shown in the images below
+1.  Launch CCS and create a new target configuration (File->New->Target
+Configuration file) as shown in the images below.
 
 .. Image:: ../images/CCS_target_configuration.png
 
-Provide appropriate name to the configuration. Select Spectrum digital XDS100 emulator and target as 66AK2G02.
+Provide an appropriate name to the configuration. Select Spectrum digital XDS100 emulator and target as 66AK2G02.
 
-.. Note:: If you don\`t find the 66AK2G02 target make sure you have installed the CCSv6.1.3 package or for CCSv6.1.2 and earlier ensure that you have done the software update correctly as shown in the how to section below.
+.. Note:: If you don't find the K2GICE target make sure you have installed CCSv7.1 or higher. If using CCSv 7.0 or CCSv6.1.x and earlier, ensure that you have done the software update correctly as shown in the how to section below.
 
 .. Image:: ../images/K2G_GPEVM_Target_configuration_alternate.jpg
 
-In advance settings, make sure that the no gel files are populated.
+In advanced settings, make sure that no GEL files are populated.
 
-2. 66AK2G02 GP EVM contains boot switches to configure for "SD/MMC boot" mode. So configure the boot switches to SD/MMC boot Mode as described in 
+2. 66AK2G02 GP EVM contains boot switches to configure for "SD/MMC boot" mode. So configure the boot switches to "SD/MMC Boot" as described in 
 the section "Setting Boot Switches."
 
-3. Connect an XDS100 Emulator to XDS USB of the GP EVM as shown in the
+3. Connect an XDS100 Emulator to the XDS USB port of the GP EVM as shown in the
 section "Connecting Emulator."
 
-4. Launch CCS and create new target configuration as discussed in the previous 
+4. Launch CCS and create a new target configuration as discussed in the previous 
 section "Configuring target configuration files".
 
-5. Launch Target configuration you 
-just created.
+5. Launch the newly created 
+target configuration.
 
 .. Image:: ../images/K2G_Launch_targetConfig.png
 
@@ -284,7 +284,7 @@ connect to the core.
 7. SD card boot image will typically load a secondary bootloader like u-boot that will put the DSP in reset so users will need to follow 
 the instructions in the guide `How to take the C66x DSP out of reset with Linux running on A15 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#taking-the-c66x-out-of-reset-with-linux-running-on-the-arm-a15>`__
 
-.. Note:: RTOS users don\`t need to follow this step as the Secondary bootloader (SBL) will put the DSP in idle state and not in reset if there is no code running on the DSP.
+.. Note:: RTOS users do not need to follow this step as the Secondary Bootloader (SBL) will put the DSP in idle state and not in reset if there is no code running on the DSP.
 
 Useful Resources and Support
 --------------------------------
