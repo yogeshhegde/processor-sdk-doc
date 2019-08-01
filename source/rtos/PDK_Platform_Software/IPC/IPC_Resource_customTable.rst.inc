@@ -549,5 +549,4 @@ PRU-ICSS from DSP, you must add the following entry in
 The MMU pagetable can be dumped through debugfs - "cat
 /sys/kernel/debug/omap_iommu/<iommu_name>/pagetable"
 
-.. raw:: html
 

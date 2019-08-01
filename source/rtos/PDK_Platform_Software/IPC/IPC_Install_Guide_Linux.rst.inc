@@ -276,8 +276,8 @@ location needs to be set.
 
     bootargs console=ttyS2,115200n8 root=/dev/nfs nfsroot=HOST:nfs_root,nolock rw ip=dhcp rproc_mem=16M@0xC3000000 
 
-*This is just an example, bootargs may vary depending on available setup
-* Depending on the memory map used in the final system configuration,
+*This is just an example, bootargs may vary depending on available setup*
+Depending on the memory map used in the final system configuration,
 the memory to be reserved for rproc usage may differ.
 
 Installing Tests
@@ -304,6 +304,7 @@ required to run **sudo make install** to properly install the files
   ::
   
     buildhost$ sudo make install prefix=<target filesystem>/usr
+
 |
 
 The remote processor's applications will be loaded via the remote_proc
@@ -508,5 +509,4 @@ See Also
 -  `IPC Install Guide QNX <index_Foundational_Components.html#qnx-install-guide>`__
 -  `IPC Install Guide BIOS <index_Foundational_Components.html#bios-install-guide>`__
 
-.. raw:: html
 

@@ -511,4 +511,3 @@ sends it to the created message queue, which gets and frees it.
 
 .. Image:: ../images/IpcUG_ipc_2_3_2.png
 
-.. raw:: html

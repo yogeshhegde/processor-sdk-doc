@@ -18,9 +18,12 @@ Communication (IPC) User's Guide*
 (`SPRUGO6 <http://www.ti.com/lit/pdf/sprugo6>`__). That PDF-based
 document will no longer be updated.
         
-.. |ipcCfg_Img| Image:: ../images/Book_cfg.png
+.. |ipcCfg_Img| Image::  ../images/Book_cfg.png
+               :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img| Image:: ../images/Book_run.png
+.. |ipcRun_Img| Image::  ../images/Book_run.png
+               :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/index.html
+
 
 This user's guide contains the topics in the following list. It also
 links to API reference documentation for static configuration (|ipcCfg_Img|)
@@ -36,7 +39,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
    describes the modules in the ti.sdo.ipc package.
 
 .. |ipcWiki_Img1| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#ipc-module
+                 :target: index_Foundational_Components.html#ipc-module
 
 .. |ipcCfg_Img1| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -46,7 +49,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
 
 
 .. |ipcWiki_Img2| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#messageq-module
+                 :target: index_Foundational_Components.html#messageq-module
 
 .. |ipcCfg_Img2| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -56,7 +59,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
 
 
 .. |ipcWiki_Img3| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#listmp-module
+                 :target: index_Foundational_Components.html#listmp-module
 
 .. |ipcCfg_Img3| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -66,7 +69,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
 
 
 .. |ipcWiki_Img4| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#heapmp-module
+                 :target: index_Foundational_Components.html#heapmp-module
 
 .. |ipcCfg_Img4| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -82,7 +85,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
 
 
 .. |ipcWiki_Img5| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#gatemp-module
+                 :target: index_Foundational_Components.html#gatemp-module
 
 .. |ipcCfg_Img5| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -92,7 +95,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
 
 
 .. |ipcWiki_Img6| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#notify-module
+                 :target: index_Foundational_Components.html#notify-module
 
 .. |ipcCfg_Img6| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -102,17 +105,18 @@ and run-time C processing (|ipcRun_Img|) for each module.
 
 
 .. |ipcWiki_Img7| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#shared-region-module
+                 :target: index_Foundational_Components.html#shared-region-module
 
 .. |ipcCfg_Img7| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
 .. |ipcRun_Img7| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_shared_region_8h.html
+
 |
 
    +-------------------------+----------------+---------------+---------------+
-   |         Module          |    Wiki doc    |   Config API  |     C API     |
+   |         Module          |      doc       |   Config API  |     C API     |
    +=========================+================+===============+===============+
    |**Ipc Module**           | |ipcWiki_Img1| | |ipcCfg_Img1| | |ipcRun_Img1| |
    +-------------------------+----------------+---------------+---------------+
@@ -140,7 +144,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
    describes the modules in the ti.sdo.utils package.
 
 .. |ipcWiki_Img8| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#list-module
+                 :target: index_Foundational_Components.html#list-module 
 
 .. |ipcCfg_Img8| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -149,7 +153,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/latest/docs/html/_list_8h.html
 
 .. |ipcWiki_Img9| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#multiproc-module
+                 :target: index_Foundational_Components.html#multiproc-module
 
 .. |ipcCfg_Img9| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -158,7 +162,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html 
 
 .. |ipcWiki_Img10| Image:: ../images/Book_wiki.png
-                 :target: http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#nameserver-module
+                 :target: index_Foundational_Components.html#nameserver-module
 
 .. |ipcCfg_Img10| Image:: ../images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
@@ -169,7 +173,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
 |
 
    +-------------------------+----------------+---------------+---------------+
-   |         Module          |    Wiki doc    |   Config API  |     C API     |
+   |         Module          |      doc       |   Config API  |     C API     |
    +=========================+================+===============+===============+
    |**List Module**          | |ipcWiki_Img8| | |ipcCfg_Img8| | |ipcRun_Img8| |
    |(BIOS only)              |                |               |               |
@@ -178,6 +182,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
    +-------------------------+----------------+---------------+---------------+
    |**NameServer Module**    | |ipcWiki_Img10|| |ipcCfg_Img10|| |ipcRun_Img10||
    +-------------------------+----------------+---------------+---------------+
+
 |
 
 -  `Porting IPC <index_Foundational_Components.html#porting-ipc>`__ provides
@@ -255,5 +260,4 @@ IPC Install Guides
 
 | 
 
-.. raw:: html
 

@@ -107,5 +107,4 @@ Also, specific owner/group must be set for the following files:
 -  **Android:** /data/lad, /data/lad/LAD
 -  **Linux:** /tmp/LAD
 
-.. raw:: html
 

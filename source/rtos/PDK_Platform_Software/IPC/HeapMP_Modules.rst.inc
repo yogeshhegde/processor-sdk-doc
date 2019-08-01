@@ -197,4 +197,3 @@ This application creates a Heap*MP instance dynamically.
 
 .. Image:: ../images/heapmp_bigfig.png
 
-.. raw:: html

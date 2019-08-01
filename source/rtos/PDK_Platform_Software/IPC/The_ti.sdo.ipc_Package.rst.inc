@@ -3,8 +3,84 @@
 .. |ipcSdoRun_Img1| Image:: ../images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/files.html
 
+This page introduces the modules in the ti.sdo.ipc package.
+
+**NOTE**
+
+This package is not used on HLOS-based cores. Although this is a
+BIOS-only package, note that the BIOS-side of a HLOS<->BIOS IPC-using
+application will need to bring in a subset of these packages into the
+BIOS-side configuration scripts.
+
+The ``ti.sdo.ipc`` package contains the following modules that you may
+use in your applications:
+
+
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Module                                                                            | Module Path                                 | Description                                                                                                                                                                                                  |
++===================================================================================+=============================================+==============================================================================================================================================================================================================+
+|`GateMP Module <index_Foundational_Components.html#gatemp-module>`__               | GateMP                                      | Manages gates for mutual exclusion of shared resources by multiple processors and threads. See `GateMP Module <index_Foundational_Components.html#gatemp-module>`__                                          |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|`HeapBufMP Module <index_Foundational_Components.html#heapmp-module>`__            | ti.sdo.ipc.heaps.HeapBufMP                  | Fixed-sized shared memory Heaps. Similar to SYS/BIOS's ti.sysbios.heaps.HeapBuf module, but with some configuration differences. See `HeapBufMP Module <index_Foundational_Components.html#heapmp-module>`__ |
++------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|`HeapMemMP Module <index_Foundational_Components.html#heapmp-module>`__            | ti.sdo.ipc.heaps.HeapMemMP                  | Variable-sized shared memory Heaps. See `HeapMemMP Module <index_Foundational_Components.html#heapmp-module>`__                                                                                              |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|`HeapMultiBufMP Module <index_Foundational_Components.html#heapmp-module>`__       | ti.sdo.ipc.heaps.HeapMultiBufMP             | Multiple fixed-sized shared memory Heaps. See `HeapMultiBufMP Module <index_Foundational_Components.html#heapmp-module>`__                                                                                   |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|`Ipc Module <index_Foundational_Components.html#ipc-module>`__                     | ti.sdo.ipc.Ipc                              | Provides Ipc\_start() function and allows startup sequence configuration. See `Ipc Module <index_Foundational_Components.html#ipc-module>`__                                                                 |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|`ListMP Module <index_Foundational_Components.html#listmp-module>`__               | ti.sdo.ipc.ListMP                           | Doubly-linked list for shared-memory, multi-processor applications. Very similar to the ti.sdo.utils.List module. See `ListMP Module <index_Foundational_Components.html#listmp-module>`__                   |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|`MessageQ Module <index_Foundational_Components.html#messageq-module>`__           | ti.sdo.ipc.MessageQ                         | Variable size messaging module. See `MessageQ Module <index_Foundational_Components.html#messageq-module>`__                                                                                                 |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|TransportShm                                                                       | ti.sdo.ipc.transports.TransportShm          | Transport used by MessageQ for remote communication with other processors via shared memory. See `MessageQ Module <index_Foundational_Components.html#messageq-module>`__                                    |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|`Notify Module <index_Foundational_Components.html#notify-module>`__               | ti.sdo.ipc.Notify                           | Low-level interrupt mux/demuxer module. See `Notify Module <index_Foundational_Components.html#notify-module>`                                                                                               |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|NotifyDriverShm                                                                    | ti.sdo.ipc.notifyDrivers. NotifyDriverShm   | Shared memory notification driver used by the Notify module to communicate between a pair of processors. See `Notify Module <index_Foundational_Components.html#notify-module>`                              |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|`SharedRegion Module <index_Foundational_Components.html#shared-region-module>`__  | ti.sdo.ipc.SharedRegion                     | Maintains shared memory for multiple shared regions. See `SharedRegion Module <index_Foundational_Components.html#shared-region-module>`__                                                                   |
++-----------------------------------------------------------------------------------+---------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Additional modules in the subfolders of the ti.sdo.ipc package contain
+specific implementations of gates, heaps, notify drivers, transports,
+and various device family-specific modules.
+
+In addition, the ti.sdo.ipc package defines the following interfaces
+that you may implement as your own custom modules:
+
++----------------------+--------------------------------------------+
+| Module               | Module Path                                |
++======================+============================================+
+| GateMPSupport        | ti.sdo.ipc.interfaces.IGateMPSupport       |
++----------------------+--------------------------------------------+
+| Interrupt            | ti.sdo.ipc.notifyDrivers.IInterrupt        |
++----------------------+--------------------------------------------+
+| MessageQTransport    | ti.sdo.ipc.interfaces.IMessageQTransport   |
++----------------------+--------------------------------------------+
+| NotifyDriver         | ti.sdo.ipc.interfaces.INotifyDriver        |
++----------------------+--------------------------------------------+
+| NotifySetup          | ti.sdo.ipc.interfaces.INotifySetup         |
++----------------------+--------------------------------------------+
+
+
+The ``<ipc_install_dir>/packages/ti/sdo/ipc`` directory contains the
+following packages that you may need to know about:
+
+-  **examples.** Contains examples.
+-  **family.** Contains device-specific support modules (used
+   internally).
+-  **gates.** Contains GateMP implementations (used internally).
+-  **heaps.** Contains multiprocessor heaps.
+-  **interfaces.** Contains interfaces.
+-  **notifyDrivers.** Contains NotifyDriver implementations (used
+   internally).
+-  **transports.** Contains MessageQ transport implementations that are
+   used internally.
+
+
 Including Header Files
-^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------
 
 BIOS applications that use modules in the ti.sdo.ipc or ti.sdo.utils
 package should include the common header files provided in
@@ -55,7 +131,7 @@ of that documentation is available
 
 
 Standard IPC Function Call Sequence
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 For instance-based modules in IPC, the standard IPC methodology when
 creating object dynamically (that is, in C code) is to have the creator
@@ -92,7 +168,7 @@ calls *MODULE*\ \_create() cannot call *MODULE*\ \_close(). Likewise, a
 thread that calls *MODULE\_*\ open() cannot call *MODULE*\ \_delete().
 
 Error Handling in IPC
-^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 Many of the APIs provided by IPC return an integer as a status code.
 Your application can test the status value returned against any of the
@@ -133,5 +209,4 @@ handle is NULL, an error occurred when creating the object. For example:
 Refer to the Doxygen documentation for status codes returned by IPC
 functions.
 
-.. raw:: html
 

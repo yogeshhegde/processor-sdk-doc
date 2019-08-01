@@ -221,7 +221,7 @@ runtime performance of IPC applications:
    in region 1.
 
    The following configuration statements create a SharedRegion with the
-   cache disabled (on OMAP4430)::
+   cache disabled (on OMAP4430):
 
 ::
 
@@ -281,6 +281,7 @@ the NotifyDriverCirc driver for that device:
 
     var Notify = xdc.useModule('ti.sdo.ipc.Notify');
     Notify.SetupProxy = xdc.useModule('ti.sdo.ipc.family.dm6446.NotifyCircSetup');
+
 | 
 
 
@@ -458,7 +459,8 @@ memory footprint of IPC applications:
 
 ::
 
-           Ipc.procSync = Ipc.ProcSync_PAIR;
+   Ipc.procSync = Ipc.ProcSync_PAIR;
+
 | 
 
 At run-time, only call Ipc_attach() to a remote processor if one or
@@ -496,20 +498,20 @@ more of the following conditions is true::
 
    For example, a simple MessageQ application may simply use two events
    (one for NameServer and one for the MessageQ transport). In this
-   case, we can optimize memory use with the following configuration::
+   case, we can optimize memory use with the following configuration:
 
 ::
 
-           var Notify = xdc.useModule('ti.sdo.ipc.Notify');
-        
-           /* Reduce the total number of supported events from 32 to 2 */
-           Notify.numEvents = 2;
-        
-           var NameServerRemoteNotify = xdc.useModule('ti.sdo.ipc.NameServerRemoteNotify');
-           NameServerRemoteNotify.notifyEventId = 1;
-        
-           var TransportShm = xdc.useModule('ti.sdo.ipc.transports.TransportShm');
-           TransportShm.notifyEventId = 0;
+    var Notify = xdc.useModule('ti.sdo.ipc.Notify');
+    
+    /* Reduce the total number of supported events from 32 to 2 */
+    Notify.numEvents = 2;
+    
+    var NameServerRemoteNotify = xdc.useModule('ti.sdo.ipc.NameServerRemoteNotify');
+    NameServerRemoteNotify.notifyEventId = 1;
+    
+    var TransportShm = xdc.useModule('ti.sdo.ipc.transports.TransportShm');
+    TransportShm.notifyEventId = 0;
 
 -  Reduce the cacheLineSize property of a SharedRegion to reflect the
    actual size of the cache line. IPC uses the cacheLineSize setting to
@@ -586,5 +588,4 @@ of a SYS/BIOS-based application that uses IPC.
 
 | 
 
-.. raw:: html
 

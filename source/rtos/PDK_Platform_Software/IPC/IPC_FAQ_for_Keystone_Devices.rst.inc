@@ -16,8 +16,7 @@ Guide on building and running the IPC examples of Processor SDK
   target EVMs and how to run the run the IPC examples of processor SDK
   on target EVM.
 
-| Download the guide from
-.. Image:: ../images/Guide_Keystone_II_IPC_examples_.zip
+| Download the guide from :download:`Keystone II IPC Examples <../files/Guide_Keystone_II_IPC_examples_.zip>`
 
 | This guide will have steps on
 | 1. Flashing the u-boot and boot u-boot.
@@ -170,11 +169,11 @@ tested multiple times with this version and it works fine.
 
 The image processing demo source code can be found in below path.
 
-*PATH:* C:\ti\mcsdk_bios_3_0x_0x_0x\demos\image_processing\ipc (master,
+**PATH:** C:\ti\mcsdk_bios_3_0x_0x_0x\demos\image_processing\ipc (master,
 slave and common directories)
 
-**Building Slave Code:
-**\ The project can be imported into CCS and can be rebuilt.
+**Building Slave Code:**
+The project can be imported into CCS and can be rebuilt.
 
 *For K2E:*
 “~\mcsdk_bios_3_0x_0x_0x\demos\image_processing\ipc\evm66ak2e\slave”
@@ -266,7 +265,7 @@ as below,
   /opt/ti/ipc_3_35_01_07/examples/TCI6638_linux_elf
   /ex44_compute_bkp/lib//libtitransportrpmsg.a when searching for
   -ltitransportrpmsg
-  * /usr/bin/ld: cannot find –ltitransportrpmsg
+  /usr/bin/ld: cannot find –ltitransportrpmsg*
 | usr/bin/ld: cannot find -ltiipcutils
 | collect2: error: ld returned 1 exit status
 | make: \**\* [../../master/image_processing_master.out] Error 1
@@ -321,15 +320,14 @@ as below,
 
 **Ans:**
 
-**Hardware set up:
-**
+**Hardware set up:**
 
 ::
 
       Set the boot mode dip switch to no boot/EMIF16 mode, Connect power and emulator to C6678 EVM.
 
-**Software setup:
-** 1. After power ON the EVM, create and launch the target configuration
+**Software setup:**
+1. After power ON the EVM, create and launch the target configuration
 file(.ccxml) for CCS debugging.
 
 2. Group Core 0 and Core 1 in CCS.
@@ -362,9 +360,8 @@ after the throughput (msg/s) has been calculated.
 **Ans:**
 
 | Actually the option, "-mo -o3 -q -k -eo.o" works for building the
-  IPC-QMSS transport library in release mode and the option "-mo -g -q
-  -k -eo.o" works for building the IPC-QMSS transport library in debug
-  mode.
+  IPC-QMSS transport library in release mode and the option "-mo -g -q -k -eo.o"
+  works for building the IPC-QMSS transport library in debug mode.
 | But the common.bld script of IPC doesnot create a "release" folder. By
   default it always creates the "debug" folder and dumps all the
   binaries.
@@ -446,5 +443,4 @@ file BIOS.libType = BIOS.LibType_Debug; <--- here.
 
 .. Image:: ../images/Qmss_transports.png
 
-.. raw:: html
 

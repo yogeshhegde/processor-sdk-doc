@@ -156,7 +156,7 @@ simplify the execution of the applications. The details can vary across
 OS's, so this description has been separated into OS-specific sections.
 
 Configuring the BSP
-"""""""""""""""""""""
+""""""""""""""""""""
 
 Some of the provided IPC tests that use a utility called
 SharedMemoryAllocator require a carveout to be created in the QNX-owned
@@ -167,13 +167,13 @@ BSP. E.g.
 
 ::
 
-       startup-omap5432uevm -r 0xBA300000,0x5A00000 -vvvvv -P2 -W
+   startup-omap5432uevm -r 0xBA300000,0x5A00000 -vvvvv -P2 -W
 
 Save the file, then rebuild the QNX OS image (ifs-*.bin) and replace
 your existing one with the new one.
 
 Installing Tests in QNX
-"""""""""""""""""""""""""
+""""""""""""""""""""""""
 
 To assemble the IPC resource manager, shared libraries and test
 executables into a directory structure suitable for running on the
@@ -643,5 +643,4 @@ See Also
 -  `IPC Install Guide Linux <index_Foundational_Components.html#linux-install-guide>`__
 -  `IPC Install Guide BIOS <index_Foundational_Components.html#bios-install-guide>`__
 
-.. raw:: html
 

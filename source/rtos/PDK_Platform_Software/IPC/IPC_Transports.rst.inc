@@ -396,10 +396,10 @@ Recompiling Through Yocto/bitbake
 
 #. Follow the instructions in the Exploring section of the user guide to
    configure the `Yocto build
-   environment <http://processors.wiki.ti.com/index.php/MCSDK_UG_Chapter_Exploring#Yocto>`__.
+   environment <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Overview_Building_the_SDK.html>`__.
    The tisdk-server-rootfs-image does not need to be built. Instead look
    at the section for `building other
-   components <http://processors.wiki.ti.com/index.php/MCSDK_UG_Chapter_Exploring#Building_other_components_in_Yocto>`__
+   components <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Overview_Building_the_SDK.html#recipes>`__
 #. Build the TransportSrio libraries, ipc-transport-srio recipe, and
    user-space tests, ipc-transport-srio-test recipe:
    $ MACHINE=k2hk-evm TOOLCHAIN_BRAND=linaro ARAGO_BRAND=mcsdk bitbake
@@ -407,12 +407,12 @@ Recompiling Through Yocto/bitbake
    $ MACHINE=k2hk-evm TOOLCHAIN_BRAND=linaro ARAGO_BRAND=mcsdk bitbake
    ipc-transport-srio-test
 
-.. note:: 
-   The initial build may take quite some time since the kernel is built as a dependency
+   .. note:: 
+      The initial build may take quite some time since the kernel is built as a dependency
 
-.. note:: 
-  Building with just the ipc-transport-srio-test recipe will also build the 
-  ipc-transport-srio recipe since the test recipe depends on the library recipe.
+   .. note:: 
+     Building with just the ipc-transport-srio-test recipe will also build the 
+     ipc-transport-srio recipe since the test recipe depends on the library recipe.
 
 #. The built TransportSrio static library will be located in
    <base_path>/oe-layersetup/build/arago-tmp-external-linaro-toolchain/work/cortexa15hf-vfp-neon-3.8-oe-linux-gnueabi/ipc-transport-srio/<tag-ver_recipe-ver>/packages-split/ipc-transport-srio-staticdev/usr/lib/libTransportSrio.a
@@ -437,11 +437,12 @@ root>/procsdk_linux_3_XX_YY_ZZ/linux-devkit/
 #. Navigate to the PROCSDK Linux installation of pdk_3_XX_YY_ZZ/packages
    and source armv7setupenv.sh.
 
-.. note:: 
-  The armv7setupenv.sh script must be modified to
-  point to the linaro toolchain and installed devkit path
+   .. note:: 
+      The armv7setupenv.sh script must be modified to
+      point to the linaro toolchain and installed devkit path
 
-   $ source armv7setupenv.sh
+      $ source armv7setupenv.sh
+
 #. Navigate back to the SRIO transport directory in the ipc-transport
    GIT repository
    $ cd <repo_root_path>/ipc-transport/linus/srio
@@ -529,14 +530,14 @@ Recompiling Through Yocto/bitbake
    $ MACHINE=k2hk-evm TOOLCHAIN_BRAND=linaro ARAGO_BRAND=mcsdk bitbake
    ipc-transport-qmss-test
 
-.. note:: 
-  The initial build may take quite some time since
-  the kernel is built as a dependency
+   .. note:: 
+     The initial build may take quite some time since
+     the kernel is built as a dependency
 
-.. note:: 
-  Building with just the ipc-transport-qmss-test
-  recipe will also build the ipc-transport-qmss recipe since the test
-  recipe depends on the library recipe.
+   .. note:: 
+     Building with just the ipc-transport-qmss-test
+     recipe will also build the ipc-transport-qmss recipe since the test
+     recipe depends on the library recipe.
 
 #. The built TransportQmss static library will be located in
    <base_path>/oe-layersetup/build/arago-tmp-external-linaro-toolchain/work/cortexa15hf-vfp-neon-3.8-oe-linux-gnueabi/ipc-transport-qmss/<tag-ver_recipe-ver>/packages-split/ipc-transport-qmss-staticdev/usr/lib/libTransportQmss.a
@@ -561,12 +562,13 @@ root>/processor_sdk_linux_3_XX_YY_ZZ/linux-devkit/
 #. Navigate to the PROCSDK Linux installation of pdk_3_XX_YY_ZZ/packages
    and source armv7setupenv.sh.
 
-.. note:: 
-  The armv7setupenv.sh script must be modified build
-  for the correct K2 device, and to point to the linaro toolchain and
-  installed devkit path
+   .. note:: 
+     The armv7setupenv.sh script must be modified build
+     for the correct K2 device, and to point to the linaro toolchain and
+     installed devkit path
 
-   $ source armv7setupenv.sh
+     $ source armv7setupenv.sh
+
 #. Navigate back to the QMSS transport directory in the ipc-transport
    GIT repository
    $ cd <repo_root_path>/ipc-transport/linus/qmss
@@ -721,5 +723,4 @@ Additional References
 |                                   | aseNotes_TransportSrio.pdf        |
 +-----------------------------------+-----------------------------------+
 
-.. raw:: html
 

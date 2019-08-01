@@ -133,5 +133,4 @@ message. The following shows the usage parameters for the application.
     Syntax:
       MessageQBench [<numLoops>] [<payloadSize>] [<procId>]
 
-.. raw:: html
 

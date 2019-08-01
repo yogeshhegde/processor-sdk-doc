@@ -8,4 +8,3 @@ The ti.sdo.utils package contains modules that are used as utilities by other mo
 - MultiProc. This module stores processor IDs in a centralized location for multi-processor applications. See MultiProc Module.
 - NameServer. This module manages name/value pairs for use by other modules. See NameServer Module.
 
-.. raw:: html

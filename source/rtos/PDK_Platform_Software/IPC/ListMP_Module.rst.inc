@@ -138,5 +138,4 @@ The cache alignment used by the list is taken from the SharedRegion on a per-reg
 .. note::
   The ListMP module is not supported for Concerto F28M35x devices.
 
-.. raw:: html
 

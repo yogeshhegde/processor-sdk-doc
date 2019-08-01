@@ -1,5 +1,18 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Rebuilding_IPC 
 
+This page describes how to rebuild the IPC source code.
+
+The IPC product includes source files and build scripts that allow you to modify the IPC sources and rebuild its libraries. You can do this in order to modify, update, or add functionality. If you edit the IPC source code and/or corresponding build scripts, you must also rebuild IPC in order to create new libraries containing these modifications.
+
+Note that you can cause the BIOS-side IPC (and BIOS) libraries to be rebuilt as part of the application build - this is called a 'Custom Build'. The custom-built libraries will be stored with other output from executing your config script, and will contain only modules and APIs that your application needs to access. You can cause such a Custom Build to occur using the BIOS.libType config param as follows.
+
+.. code:: c
+
+   var BIOS = xdc.useModule('ti.sysbios.BIOS');
+   BIOS.libType = BIOS.LibType_Custom;
+
+.. note:: This page provides details about rebuilding the IPC source code. We strongly recommend that you copy the IPC installation to a directory with a different name and rebuild that copy, rather than rebuilding the original installation.
+
 Build Procedure
 ------------------
 
@@ -30,7 +43,7 @@ steps:
 #. Under the **Products and Repositories** tab, uncheck *all* the boxes
    for IPC. This ensures that no version is selected.
 
-.. image:: ../images/Rebuild_deselect.png
+   .. image:: ../images/Rebuild_deselect.png
 
 #. Click the **Add** button next to the **Products and Repositories**
    tab.
@@ -39,12 +52,11 @@ steps:
    IPC. For example, the location may be
    C:\myIpcBuilds\custom_ipc_1_22_##-##\packages.
 
-.. image:: ../images/Rebuild_addrep.png
+   .. image:: ../images/Rebuild_addrep.png
 
 #. Click **OK** to apply these changes to the project.
 #. You may now rebuild your project using the re-built version of IPC.
 
 | 
 
-.. raw:: html
 

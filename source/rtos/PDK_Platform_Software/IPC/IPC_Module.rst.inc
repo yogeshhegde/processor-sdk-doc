@@ -46,6 +46,7 @@ before any calls to IPC modules. Here is a BIOS-side example:
      BIOS_start();
       return (0);
  }
+
 |
 
 By default, the BIOS implementation of Ipc_start() internally calls Notify_start() if it has not already been called, 
@@ -103,12 +104,14 @@ The options are:
   If you use this option, your application should never call Ipc_attach(). 
   Use this option if all IPC processors on a device start up at the same time and connections should be established between every possible pair of processors.
 - Ipc.ProcSync_PAIR. (Default) If you use this option, you must explicitly call Ipc_attach() to attach to a specific remote processor. 
+
    If you use this option, Ipc_start() performs system-wide IPC initialization, but does not make connections to remote processors. 
    Use this option if any or all of the following are true:
- - You need to control when synchronization with each remote processor occurs.
- - Useful work can be done while trying to synchronize with a remote processor by yielding a thread after each attempt to Ipc_attach() to the processor.
- - Connections to some remote processors are unnecessary and should be made selectively to save memory.
-- Ipc.ProcSync_NONE. If you use this option, Ipc_start() doesn't synchronize any processors before setting up the objects needed by other modules. 
+   - You need to control when synchronization with each remote processor occurs.
+   - Useful work can be done while trying to synchronize with a remote processor by yielding a thread after each attempt to Ipc_attach() to the processor.
+   - Connections to some remote processors are unnecessary and should be made selectively to save memory.
+   - Ipc.ProcSync_NONE. If you use this option, Ipc_start() doesn't synchronize any processors before setting up the objects needed by other modules. 
+
   Use this option with caution. It is intended for use in cases where the application performs its own synchronization and you want to avoid a potential 
   deadlock situation with the IPC synchronization.
 
@@ -139,7 +142,7 @@ Each set of functions will be passed a different argument:
   Ipc.addUserFxn(fxn, 0x2);
 
 |ipcCfg_Ipc_Img2| The latest version of the IPC module configuration documentation is available 
-`online <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html>`_
+`here <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html>`_
 
 Ipc Module APIs
 ^^^^^^^^^^^^^^^^
@@ -176,4 +179,3 @@ You can call the Ipc_detach() API to delete internal instances created by Ipc_at
 |ipcRun_Ipc_Img2| The latest version of the IPC module run-time API documentation is available 
 `online <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_ipc_8h.html>`_
 
-.. raw:: html

@@ -18,9 +18,7 @@ the scope of previous generations.
 -  The IPC 1.x product includes implementations of those interfaces for
    the SYS/BIOS RTOS. It supports communicating between cores running
    SYS/BIOS, as well to HLOS processors running SysLink 2.x.
--  `The SysLink 2.x
-   product <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/index.html>`__
-   provides services to control slave processors (e.g. load, start,
+-  The SysLink 2.x provides services to control slave processors (e.g. load, start,
    stop). It also provides an implementation of the IPC interfaces for
    High Level OSs (HLOS) like Linux and QNX. SysLink 2.x supports
    communicating with slave processors running SYS/BIOS and IPC 1.x.
@@ -30,22 +28,16 @@ product that defines multiprocessor communication APIs and provides
 implementations for several OS's, including SYS/BIOS and HLOS's.
 
 .. note::
-  The SysLink name is being retired. The SysLink 2.x product will continue
-  to be supported on existing devices, but development has stopped and
+  The SysLink name is being retired. The SysLink 2.x product will not
+  be supported on existing devices, and development has stopped and
   support for new devices will not be added.
-
-Overview Presentation
-----------------------
 
 
 Changes
 -----------
 
 The key changes between IPC 1.x/SysLink 2.x and IPC 3.x is the HLOS
-implementation. Note, there is a `IPC 3.x Migration
-Guide <http://processors.wiki.ti.com/index.php/IPC_3.x_Migration_Guide>`__ with more details.
-
-This table summarizes the IPC 1.x/SysLink 2.x supported APIs against
+implementation. This table summarizes the IPC 1.x/SysLink 2.x supported APIs against
 those provided in IPC 3.x.
 
 +-----------------------+-----------------------+-----------------------+
@@ -110,29 +102,21 @@ IPC Training
 
 | IPC training material is updated from time to time. Check back for new
   updates.
-| **IPC Training** v2.21 - IPC 3.x Full Training Material
-  `(PowerPoint) </images/c/c7/IPC_Training_2_21.pptx>`__ `(PowerPoint
-  Show) </images/7/7d/IPC_Training_2_21.ppsx>`__
-  `(PDF) </images/6/69/IPC_Training_2_21.pdf>`__
-| IPC Lab 1 - Hello `(PowerPoint) </images/4/4c/IPC_Lab_1_Hello.pptx>`__
-  `(PowerPoint Show) </images/4/48/IPC_Lab_1_Hello.ppsx>`__
-  `(PDF) </images/a/a4/IPC_Lab_1_Hello.pdf>`__
-| IPC Lab 2 - MessageQ
-  `(PowerPoint) </images/f/f2/IPC_Lab_2_MessageQ.pptx>`__ `(PowerPoint
-  Show) </images/5/54/IPC_Lab_2_MessageQ.ppsx>`__
-  `(PDF) </images/5/5e/IPC_Lab_2_MessageQ.pdf>`__
-| IPC Lab 3 - Scalability
-  `(PowerPoint) </images/5/5a/IPC_Lab_3_Scalability.pptx>`__
-  `(PowerPoint Show) </images/c/cd/IPC_Lab_3_Scalability.ppsx>`__
-  `(PDF) </images/1/19/IPC_Lab_3_Scalability.pdf>`__
+
+| **IPC Training** v2.21 - IPC 3.x Full Training Material :download:`(PowerPoint) <../files/IPC_Training_2_21.pptx>` :download:`(PowerPointShow) <../files/IPC_Training_2_21.ppsx>` :download:`(PDF) <../files/IPC_Training_2_21.pdf>`
+
+| IPC Lab 1 - Hello :download:`(PowerPoint) <../files/IPC_Lab_1_Hello.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_1_Hello.ppsx>` :download:`(PDF) <../files/IPC_Lab_1_Hello.pdf>`
+
+| IPC Lab 2 - MessageQ :download:`(PowerPoint) <../files/IPC_Lab_2_MessageQ.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_2_MessageQ.ppsx>` :download:`(PDF) <../files/IPC_Lab_2_MessageQ.pdf>`
+
+| IPC Lab 3 - Scalability :download:`(PowerPoint) <../files/IPC_Lab_3_Scalability.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_3_Scalability.ppsx>` :download:`(PDF) <../files/IPC_Lab_3_Scalability.pdf>`
+
+|
 
 See Also
 ------------
-
--  `IPC 3.x Migration Guide <http://processors.wiki.ti.com/index.php/IPC_3.x_Migration_Guide>`__
 -  `IPC User's Guide <index_Foundational_Components.html#ipc-user-guide>`__
 -  `Embedded Linux Conference Europe Presentation on
    rpmsg <http://free-electrons.com/pub/video/2011/elce/elce-2011-ben-cohen-remote-processor-messaging-450p.webm>`__
 
-.. raw:: html
 

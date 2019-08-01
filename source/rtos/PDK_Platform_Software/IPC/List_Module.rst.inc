@@ -67,6 +67,7 @@ The example prints the following:
 
   rec: 100
   rec: 200
+
 |  
 
 Iterating Over a List
@@ -100,6 +101,7 @@ once from beginning to end. In this example, "myList" is a List_Handle.
   }
   /* End protection against modification of the List */
   Gate_leaveSystem(key);
+
 | 
 
 Inserting and Removing List Elements
@@ -122,6 +124,7 @@ Note that List does not provide any APIs for inserting or removing elements at a
    
   /* Remove r1 from the List. */
   List_remove(myList, &(r1.elem));
+
 | 
 
 **Run-time example:** The following example treats the List as a LIFO stack using List_putHead() and List_get():
@@ -140,6 +143,7 @@ Note that List does not provide any APIs for inserting or removing elements at a
   while((tmpElem = List_get(listHandle)) != NULL) {
       // process tmpElem
   }
+
 | 
 
 Atomic List Operations
@@ -156,5 +160,4 @@ The threads do not have to manage the synchronization.
 
 Other APIs--List_prev(), List_next(), List_insert(), and List_remove()--should be protected by the application.
 
-.. raw:: html
 

@@ -61,5 +61,4 @@ have to modify this struct and rebuild the daemon. And be sure to be
 consistent with that MultiProc configuration in each of the slave images
 as well.
 
-.. raw:: html
 

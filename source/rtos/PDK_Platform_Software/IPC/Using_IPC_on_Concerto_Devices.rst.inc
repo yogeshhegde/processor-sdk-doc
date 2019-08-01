@@ -1,5 +1,45 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Using_IPC_on_Concerto_Devices 
 
+This page provides target-specific information about using IPC on Concerto devices.
+
+SYS/BIOS supports both the ARM M3 and the 'C28x cores on Concerto F28M35x devices. This allows you to use the same SYS/BIOS and IPC APIs on both processors and to use IPC for communication between the two cores. The following table identifies which IPC modules are used and not used with Concerto devices:
+
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| Modules Used with Concerto                        | Modules Not Used or Supported      | Notes                                                                                            |
++===================================================+====================================+==================================================================================================+
+| MessageQ                                          |                                    | MessageQ usage is the same.                                                                      |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| Notify                                            |                                    | Notify usage is the same.                                                                        |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| MultiProc                                         |                                    | MultiProc configuration is the same.                                                             |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| IpcMgr (in ti.sdo.ipc.family.f28m35x)             | Ipc                                | IpcMgr must be configured in place of the Ipc module when using Concerto.                        |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| NotifyDriverCirc (in ti.sdo.ipc.family.f28m35x)   | NotifyDriverShm, NotifyDriverMbx   | See [[../Optimizing IPC Applications\|Optimizing IPC Applications]].                             |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| TransportCirc (in ti.sdo.ipc.family.f28m35x)      | TransportShm, TransportShmNotify   | See [[../Optimizing IPC Applications\|Optimizing IPC Applications]].                             |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| List                                              |                                    | List usage is the same.                                                                          |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| NameServer                                        |                                    | NameServer usage is the same.                                                                    |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+|                                                   | GateMP                             | Shared gates are not supported with Concerto.                                                    |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+| HeapBuf (from SYS/BIOS)                           | Heap\*MP                           | Shared heaps are not supported with Concerto.                                                    |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+|                                                   | ListMP                             | Shared lists are not supported with Concerto.                                                    |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+|                                                   | SharedRegion                       | IpcMgr is used instead of SharedRegion to specify the location of shared memory with Concerto.   |
++---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
+
++-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+In addition, you should be aware of the following special issues:
+
+* No caching is performed on Concerto devices. Ignore any information about caching in the IPC documentation.
+* Concerto provides a shared timestamp counter that can be read by either core. SYS/BIOS manages this counter with the ti.sysbios.family.[c28|arm].f28m35x.TimestampProvider modules. The Timestamp_get32() APIs use this counter to provide a common timestamp on both M3 and C28x cores. This is useful when logging on both cores and debugging multi-core issues.
+
+
 Configuring Applications with IpcMgr
 -------------------------------------
 
@@ -36,6 +76,7 @@ follows:
     var IpcMgr = xdc.useModule('ti.sdo.ipc.family.f28m35x.IpcMgr');
     IpcMgr.readAddr  = 0x12000;     /* S6 RAM */
     IpcMgr.writeAddr = 0x13000;     /* S7 RAM */
+
 | 
 
 The corresponding configuration for the M3 application would be:
@@ -46,6 +87,7 @@ The corresponding configuration for the M3 application would be:
     IpcMgr.readAddr  = 0x20016000;  /* S7 RAM */
     IpcMgr.writeAddr = 0x20014000;  /* S6 RAM */
     IpcMgr.sharedMemoryOwnerMask = 0x80;
+
 | 
 
 The readAddr and writeAddr segments specified for a processor must be
@@ -174,5 +216,4 @@ differences:
 
 | 
 
-.. raw:: html
 

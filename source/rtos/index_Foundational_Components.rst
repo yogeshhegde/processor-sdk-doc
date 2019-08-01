@@ -142,10 +142,6 @@ Resource Custom Table
 ----------------------
 .. include:: PDK_Platform_Software/IPC/IPC_Resource_customTable.rst.inc
 
-Migration Guide
-----------------------
-.. include:: PDK_Platform_Software/IPC/IPC_3.x_Migration_Guide.rst.inc
-
 IPC FAQ
 ========
 .. include:: PDK_Platform_Software/IPC/IPC_3.x_FAQ.rst.inc

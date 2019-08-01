@@ -183,5 +183,4 @@ This application creates a Gate dynamically.
 
 .. Image:: ../images/IpcUG_ipc_2_6_1.png
 
-.. raw:: html
 

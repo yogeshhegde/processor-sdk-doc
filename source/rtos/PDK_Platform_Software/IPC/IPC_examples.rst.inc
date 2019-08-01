@@ -2,6 +2,7 @@
 
 Overview
 ---------
+
 The IPC product contains an examples/archive directory with device-specific examples. 
 Once identifying your device, the examples can be unzipped anywhere on your build host. 
 Typically once unzipped, the user edits the example's individual **products.mak** file and simply invokes **make**.
@@ -16,6 +17,7 @@ Each example contains a **readme.txt** with example-specific details.
 
 Generating Examples
 -----------------------
+
 The IPC product will come with the generated examples directory. 
 The IPC product is what is typically delivered with SDKs such as Processor SDK. 
 However, some SDKs point directly to the IPC git tree for the IPC source. 
@@ -23,11 +25,13 @@ In this case, the IPC Examples can be generated separately.
 
 Tools
 ------
+
 The following tools need to be installed:
  - `XDC tools <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/rtsc/>`__(check the IPC release notes for compatible version)
 
 Source Code
 ----------------
+
 ::
   
   mkdir ipc
@@ -43,6 +47,7 @@ Then checkout the IPC release tag that is associated with the IPC version being 
 
 Build
 -------
+
 ::
   
   cd ipc-examples/src
@@ -60,6 +65,7 @@ The "examples" director will be generated in the path "ipc-examples/src/":
 
 IPC examples: Details
 ----------------------
+
 This section explains some of the common details about IPC examples.
 The sub-directories under the examples are organised into the code for each of the cores in the SOC.
 For example
@@ -225,4 +231,3 @@ For example the following sections shows the sections used to enable device exce
    Idle.addFunc('&ti_deh_Deh_idleBegin');
 
 
-.. raw:: html

@@ -35,5 +35,3 @@ versions of other IPC modules.
 
 | 
 
-.. raw:: html
-

@@ -44,6 +44,7 @@ The lookup table contains the following information about each shared region:
  - cacheLineSize. The cache line size for the region. It is crucial that the value specified here be the same on all processors.
  - createHeap. Boolean to specify if a heap is created for the region.
  - name. The name associated with the region.
+
 The maximum number of entries in the lookup table is statically configurable using the SharedRegion.numEntries property. Entries can be added during static configuration or at runtime. When you add or remove an entry in one processor's table, you must update all of the remaining processors' tables to keep them consistent. The larger the maximum number of entries, the longer it will take to traverse the lookup table when searching for the index. Therefore, keep the lookup table small for better performance and footprint.
 
 Because each processor stores information about the caching of a shared memory region in the SharedRegion lookup table, other modules can (and do) make use of this caching information to maintain coherency and alignment when using items stored in shared memory.
@@ -55,6 +56,7 @@ In order to use the SharedRegion module, the following must be true:
  - The SharedRegion lookup table must contain at least 1 entry for address translation to occur.
  - Shared memory regions must not overlap each other from a single processor's viewpoint.
  - Regions are not allowed to overlap from a single processor's view.
+
 The SharedRegion with an index of 0 (zero) is used by IPC_start() to create resource management tables for internal use by other IPC modules. Thus SharedRegion "0" must be accessible by all processors. Your applications can also make use of SharedRegion "0", but must be aware of memory limitations.
 
 .. note::
@@ -174,5 +176,4 @@ You can retrieve a specific shared region's cache configuration from the SharedR
 .. note::
    The SharedRegion Module is only supported in SYS/BIOS environments. It is not provided on HLOS's. For HLOS environments, we suggest using native shared memory APIs when available, for example ION on Android. Other alternatives include CMEM (for Linux) and the QNX-specific SharedMemoryAlloctor, provided in IPC's qnx/ directory.
 
-.. raw:: html
 

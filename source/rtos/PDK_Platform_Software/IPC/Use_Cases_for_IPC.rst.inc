@@ -1,5 +1,38 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Use_Cases_for_IPC 
 
+You can use IPC modules in a variety of combinations. From the simplest
+setup to the setup with the most functionality, the use case options are
+as follows. A number of variations of these cases are also possible:
+
+-  **Minimal use of IPC. (BIOS-to-BIOS only)** This scenario performs
+   inter-processor notification. The amount of data passed with a
+   notification is minimal--typically on the order of 32 bits. This
+   scenario is best used for simple synchronization between processors
+   without the overhead and complexity of message-passing
+   infrastructure.
+-  **Add data passing. (BIOS-to-BIOS only)** This scenario adds the
+   ability to pass linked list elements between processors to the
+   previous minimal scenario. The linked list implementation may
+   optionally use shared memory and/or gates to manage synchronization.
+-  **Add dynamic allocation. (BIOS-to-BIOS only)** This scenario adds
+   the ability to dynamically allocate linked list elements from a heap.
+-  **Powerful but easy-to-use messaging. (HLOS and BIOS)** This scenario
+   uses the MessageQ module for messaging. The application configures
+   other modules. However, the APIs for other modules are then used
+   internally by MessageQ, rather than directly by the application.
+
+In the following sections, figures show modules used by each scenario.
+
+-  **Blue boxes** identify modules for which your application will call
+   C API functions other than those used to dynamically create objects.
+-  **Red boxes** identify modules that require only configuration by
+   your application. Static configuration is performed in an XDCtools
+   configuration script (.cfg). Dynamic configuration is performed in C
+   code.
+-  **Grey boxes** identify modules that are used internally but do not
+   need to be configured or have their APIs called.
+
+
 Minimal Use Scenario (BIOS-to-BIOS only)
 -----------------------------------------
 
@@ -146,4 +179,3 @@ configuration of any xdc.runtime.IHeap implementation are needed.
   Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
   for details.
 
-.. raw:: html

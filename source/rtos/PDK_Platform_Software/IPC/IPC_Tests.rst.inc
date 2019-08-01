@@ -495,5 +495,4 @@ Syntax:
 
        mmrpc_test 1
 
-.. raw:: html
 

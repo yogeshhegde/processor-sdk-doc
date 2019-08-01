@@ -543,5 +543,4 @@ Runtime auto-suspend is not supported in QNX.
 
 | 
 
-.. raw:: html
 
