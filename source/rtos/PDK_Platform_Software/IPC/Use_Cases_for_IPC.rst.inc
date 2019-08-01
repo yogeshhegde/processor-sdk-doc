@@ -23,14 +23,11 @@ as follows. A number of variations of these cases are also possible:
 
 In the following sections, figures show modules used by each scenario.
 
--  **Blue boxes** identify modules for which your application will call
-   C API functions other than those used to dynamically create objects.
--  **Red boxes** identify modules that require only configuration by
-   your application. Static configuration is performed in an XDCtools
-   configuration script (.cfg). Dynamic configuration is performed in C
-   code.
--  **Grey boxes** identify modules that are used internally but do not
-   need to be configured or have their APIs called.
+.. role:: raw-html(raw)
+   :format: html
+- :raw-html:`<font color="blue">Blue boxes,</font>` identify modules for which your application will call C API functions other than those used to dynamically create objects.
+- :raw-html:`<font color="red">Red boxes,</font>` identify modules that require only configuration by your application. Static configuration is performed in an XDCtools configuration script (.cfg). Dynamic configuration is performed in C code.
+- :raw-html:`<font color="grey">Grey boxes,</font>` identify modules that are used internally but do not need to be configured or have their APIs called.
 
 
 Minimal Use Scenario (BIOS-to-BIOS only)

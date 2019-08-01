@@ -32,8 +32,6 @@ SYS/BIOS supports both the ARM M3 and the 'C28x cores on Concerto F28M35x device
 |                                                   | SharedRegion                       | IpcMgr is used instead of SharedRegion to specify the location of shared memory with Concerto.   |
 +---------------------------------------------------+------------------------------------+--------------------------------------------------------------------------------------------------+
 
-+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 In addition, you should be aware of the following special issues:
 
 * No caching is performed on Concerto devices. Ignore any information about caching in the IPC documentation.
