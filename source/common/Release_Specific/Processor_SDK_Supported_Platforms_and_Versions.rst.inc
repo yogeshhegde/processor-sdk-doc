@@ -153,8 +153,8 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruie0>`__              |                |                |                |                |
 |                                      |k2gice>`__                            |          |`Hardware Setup with CCS <http://software-dl|                |                |                |                |
 |                                      |                                      |          |.ti.com/processor-sdk-rtos/esd/docs/latest/r|                |                |                |                |
-|                                      |                                      |          |tos/index_how_to_guides.html#ak2gx-ice-evm-h|                |                |                |                |
-|                                      |                                      |          |ardware-setup>`__                           |                |                |                |                |
+|                                      |                                      |          |tos/index_how_to_guides.html#ak2g02-ice-evm-|                |                |                |                |
+|                                      |                                      |          |hardware-setup>`__                          |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`C665x <http://www.ti.com/lsds/ti/    |`C665x EVM                            | 1.1-44   |`Hardware User's Guide <http://             | N/A            | N/A            | X              |                |
 |processors/dsp/c6000_dsp/c66x/        |<http://www.ti.com/tool               |          |software-dl.ti.com/processor-sdk-rtos       |                |                |                |                |
