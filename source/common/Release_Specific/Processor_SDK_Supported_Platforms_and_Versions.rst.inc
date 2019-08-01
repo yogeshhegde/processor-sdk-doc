@@ -109,9 +109,10 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |<http://www.ti.com/tool/              |          |wiki.ti.com/index.php/AM335x_Industrial_    |                |                |                |                |
 |                                      |TMDSICE3359>`__                       |          |Communication_Engine_%28ICE%29_EVM_HW_      |                |                |                |                |
 |                                      |                                      |          |User_Guide>`__                              |                |                |                |                |
-|                                      |                                      |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
-|                                      |                                      |          |.wiki.ti.com/index.php/ICE_AM335x_          |                |                |                |                |
-|                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
+|                                      |                                      |          |`Hardware Setup with CCS <http://software-dl|                |                |                |                |
+|                                      |                                      |          |.ti.com/processor-sdk-rtos/esd/docs/latest/r|                |                |                |                |
+|                                      |                                      |          |tos/index_how_to_guides.html#am335x-ice-evm-|                |                |                |                |
+|                                      |                                      |          |hardware-setup>`__                          |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`K2H/K2K <http://www.ti.com/lsds/ti/  |`66AK2Hx EVM                          | 4.0      |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |processors/dsp/c6000_dsp-arm/66ak2x/  |<http://www.ti.com/tool               |          |software-dl.ti.com/processor-sdk-linux      |                |                |                |                |
@@ -150,9 +151,10 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |                                      |`K2G ICE EVM                          |1.0C Beta |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruie0>`__              |                |                |                |                |
-|                                      |k2gice>`__                            |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
-|                                      |                                      |          |.wiki.ti.com/index.php/66AK2G02_ICE_EVM_    |                |                |                |                |
-|                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
+|                                      |k2gice>`__                            |          |`Hardware Setup with CCS <http://software-dl|                |                |                |                |
+|                                      |                                      |          |.ti.com/processor-sdk-rtos/esd/docs/latest/r|                |                |                |                |
+|                                      |                                      |          |tos/index_how_to_guides.html#ak2gx-ice-evm-h|                |                |                |                |
+|                                      |                                      |          |ardware-setup>`__                           |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`C665x <http://www.ti.com/lsds/ti/    |`C665x EVM                            | 1.1-44   |`Hardware User's Guide <http://             | N/A            | N/A            | X              |                |
 |processors/dsp/c6000_dsp/c66x/        |<http://www.ti.com/tool               |          |software-dl.ti.com/processor-sdk-rtos       |                |                |                |                |
@@ -180,8 +182,9 @@ The following platforms and EVMs are supported with Processor SDK
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`AMIC110 <http://www.ti.com/          |`AMIC110 ICE                          | 1.1      |`Hardware User's Guide <http://             |                |                | X              |                |
 |product/AMIC110>`__                   |<http://www.ti.com/tool               |          |www.ti.com/lit/pdf/spruie6>`__              |                |                |                |                |
-|                                      |/tmdxice110>`__                       |          |`Hardware Setup with CCS <http://processors |                |                |                |                |
-|                                      |                                      |          |.wiki.ti.com/index.php/ICE_AMIC110_         |                |                |                |                |
-|                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |                |
+|                                      |/tmdxice110>`__                       |          |`Hardware Setup with CCS <http://software-dl|                |                |                |                |
+|                                      |                                      |          |.ti.com/processor-sdk-rtos/esd/docs/latest/r|                |                |                |                |
+|                                      |                                      |          |tos/index_how_to_guides.html#amic110-ice-evm|                |                |                |                |
+|                                      |                                      |          |-hardware-setup>`__                         |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 
