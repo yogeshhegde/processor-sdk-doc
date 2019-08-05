@@ -51,10 +51,6 @@ Rebuilding IPC
 ================
 .. include:: PDK_Platform_Software/IPC/Rebuilding_IPC.rst.inc
 
-Using IPC on Concerto Devices
-============================== 
-.. include:: PDK_Platform_Software/IPC/Using_IPC_on_Concerto_Devices.rst.inc
-
 TI SDO IPC Package
 ====================
 .. include:: PDK_Platform_Software/IPC/The_ti.sdo.ipc_Package.rst.inc
