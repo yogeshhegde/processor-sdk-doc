@@ -275,8 +275,8 @@ be located in
 
 **/etc/weston.ini**
 
-.. rubric:: Running weston clients
-   :name: running-weston-clients
+Running weston clients
+^^^^^^^^^^^^^^^^^^^^^^
 
 | Weston client examples can run from the command line on serial port
   console or SSH console. After launching weston, the user should be
@@ -299,8 +299,8 @@ be located in
            # /usr/bin/weston-info
            # /usr/bin/weston-terminal
 
-.. rubric:: Running multimedia with Wayland sink
-   :name: running-multimedia-with-wayland-sink
+Running multimedia with Wayland sink
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The GStreamer video sink for Wayland is the waylandsink. To use this
 video-sink for video playback:
@@ -309,8 +309,8 @@ video-sink for video playback:
 
       target # gst-launch-1.0 playbin uri=file://<path-to-file-name> video-sink=waylandsink
 
-.. rubric:: Exiting weston
-   :name: exiting-weston
+Exiting weston
+^^^^^^^^^^^^^^
 
 Terminate all Weston clients before exiting Weston. If you have invoked
 Weston from the serial console, exit Weston by pressing Ctrl-C.
@@ -318,10 +318,138 @@ Weston from the serial console, exit Weston by pressing Ctrl-C.
 It is also possible to invoke Weston from the native console, exit
 Weston by using pressing Ctrl-Alt-Backspace.
 
+Using IVI shell feature
+-----------------------
 
-.. rubric:: IMG PowerVR Demos
-   :name: img-powervr-demos
+The SDK also has support for configuring weston ivi-shell. The default
+shell that is configured in the SDK is the desktop-shell.
 
+To change the shell to ivi-shell, the user will have to add the
+following lines into the /etc/weston.ini.
+
+To switch back to the desktop-shell can be done by commenting these
+lines in the /etc/weston.ini (comments begin with a '#' at the start of
+line).
+
+::
+
+    [core]
+    shell=ivi-shell.so
+    ivi-module=ivi-controller.so
+
+    [ivi-shell]
+    ivi-input-module=ivi-input-controller.so
+
+After the above configuration is completed, we can restart weston by
+running the following commands
+
+::
+
+    target# /etc/init.d/weston stop
+    target# /etc/init.d/weston start
+
+**NOTE:** When weston starts with ivi-shell, the default background is
+black, this is different from the desktop-shell that brings up a window
+with background.
+
+With ivi-shell configured for weston, wayland client applications use
+ivi-application protocol to be managed by a central HMI window
+management. The wayland-ivi-extension provides ivi-controller.so to
+manage properties of surfaces/layers/screens and it also provides the
+ivi-input-controller.so to manage the input focus on a surface.
+
+Applications must support the ivi-application protocol to be managed
+by the HMI central controller with an unique numeric ID.
+
+Some important references to wayland-ivi-extension can be found at the
+following links:
+
+-   https://at.projects.genivi.org/wiki/display/WIE/01.+Quick+start
+-   https://at.projects.genivi.org/wiki/display/PROJ/Wayland+IVI+Extension+Design
+
+Running weston's sample client applications with IVI shell
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All the sample client applications in the weston package like
+weston-simple-egl, weston-simple-shm, weston-flower etc also have
+support for ivi-shell. The SDK includes the application called
+layer-add-surfaces which is part of the wayland-ivi-extension. This
+application allows the user to invoke the various functionalities of the
+ivi-shell and control the applications.
+
+The following is an example sequence of commands and the corresponding
+effect on the target.
+
+After launching the weston with the ivi-shell, please run the below
+sequence of commands:
+
+::
+
+    target# weston-simple-shm &
+
+At this point nothing is displayed on the screen, some additional
+commands are required.
+
+::
+
+    target# layer-add-surfaces -l 1000 -s 2 &
+
+This command creates a layer with ID 1000 and to add maximum 2
+surfaces to this layer on the default screen (which is usually the LCD).
+
+At this point, the user can see weston-simple-shm running on LCD. This
+also prints the numericID (surfaceID) to which client’s surface is
+mapped as shown below:
+
+::
+
+    layer-add-surfaces: surface (10507) created
+    layer-add-surfaces: surface (10507) configured with:
+        dst region: x:0 y:0 w:250 h:250
+        src region: x:0 y:0 w:250 h:250
+        visibility: TRUE
+        added to layer (1000)
+    layer-add-surfaces: surface (10507) configured with:
+        dst region: x:0 y:0 w:250 h:250
+        src region: x:0 y:0 w:250 h:250
+        visibility: TRUE
+        added to layer (1000)
+
+Here 10507 is the number to which weston-simple-shm application’s
+surface is mapped.
+
+User can launch one more client application which allows
+layer\_add\_surfaces to add second surface to the layer 1000 as shown
+below.
+
+::
+
+    target# weston-flower &
+
+User can control the properties of the above surfaces using
+LayerManagerControl as shown below to set the position, resize,
+opacity and visibility respectively.
+
+::
+
+    target# LayerManagerControl set surface 10507 destination region 150 150 300 300
+    target# LayerManagerControl set surface 10507 opacity 0.5
+    target# LayerManagerControl set surface 10507 visibility 1
+
+::
+
+    target# LayerManagerControl  help
+
+The help option prints all possible control operations with the
+LayerManagerControl binary, please refer to the available options.
+
+Running QT applications with IVI shell
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To run the QT application withs ivi shell, set the
+QT\_WAYLAND\_SHELL\_INTEGRATION environment variable to ivi-shell.
+
+#. export QT\_WAYLAND\_SHELL\_INTEGRATION=ivi-shell
 
 Using the PowerVR Tools
 =======================
@@ -495,7 +623,7 @@ on top of Weston. To run QT application without Weston, the user can use
 “- platform” option to specify the desired QPA as “linuxfb” or “eglfs".
 
 GTK+ Graphics Framework
-=====================
+=======================
 
 GTK+, or the GIMP Toolkit, is a multi-platform toolkit for creating graphical user interfaces.
 Offering a complete set of widgets, GTK+ is suitable for projects ranging from small one-off
@@ -669,8 +797,8 @@ one of the kernel boot parameters for non-Weston application and at
 SOC Performance monitoring tools on AM5 Devices
 ================================================
 
-.. rubric:: Introduction
-   :name: introduction-linux-sgx-soc-perf-monitor
+Introduction
+------------
 
 The SOC Performance monitoring tools are a set of tools that are
 included in the default filesystem that allow the user to visualize
@@ -704,8 +832,8 @@ These tools bring in the capability to visualize the following:
 
 |
 
-.. rubric:: Getting started
-   :name: getting-started
+Getting started
+---------------
 
 -  Prepare the card with PLSDK 3.0.0 or later.
 -  Boot up
@@ -775,8 +903,8 @@ These tools bring in the capability to visualize the following:
 The following sections will talk about the how to populate the data into
 tools and further controls that are possible.
 
-.. rubric:: Quick guide to available plugins
-   :name: quick-guide-to-available-plugins
+Quick guide to available plugins
+--------------------------------
 
 Plugins are the entities (scripts/native binaries) that can be used to
 send commands to the SOC Performance Monitoring tools.
@@ -788,8 +916,8 @@ When the application (soc-performance-monitor) is invoked, it starts up
 with the default data which is set to zero. To populate the real values,
 the user can use the scripts provided in the prebuilt filesystem.
 
-.. rubric:: Temperature data
-   :name: temperature-data
+Temperature data
+^^^^^^^^^^^^^^^^
 
 The temperature data is read from the on-die temperature registers and
 sent to the visualization tool. The file system comes with a script that
@@ -802,8 +930,8 @@ does this functionality.
 Invoking the above command will populate the temperature table with the
 current temperature.
 
-.. rubric:: Voltage data
-   :name: voltage-data
+Voltage data
+^^^^^^^^^^^^
 
 The voltage data is read from the omapconf utility and then parsing out
 the required information to be later sent to the visualization tool. The
@@ -816,8 +944,8 @@ file system comes with a script that does this functionality.
 Invoking the above command will populate the Temperature table with the
 configured voltage for the various rails.
 
-.. rubric:: Frequency data
-   :name: frequency-data
+Frequency data
+^^^^^^^^^^^^^^
 
 The frequency data is read from the omapconf utility and then parsing
 out the required information to be later sent to the visualization tool.
@@ -830,8 +958,8 @@ The file system comes with a script that does this functionality.
 Invoking the above command will populate the Frequency table with the
 configured frequency for the various cores.
 
-.. rubric:: CPU Load information
-   :name: cpu-load-information
+CPU Load information
+^^^^^^^^^^^^^^^^^^^^
 
 The CPU load information need individual plugin modules for each of the
 cores. This is envisioned to be different for different systems. The
@@ -839,8 +967,8 @@ default filesystem contains the plugins required for reading the
 MPU(A15) and the GPU(SGX544 MP2). Other plugins for measuring the loads
 for the IPU1, IPU2, DSP1 and DSP2 will be available at a later time.
 
-.. rubric:: Measuring the MPU load
-   :name: measuring-the-mpu-load
+Measuring the MPU load
+""""""""""""""""""""""
 
 The filesystem is populated with a binary which is called "mpuload" that
 reads the /proc/stat interface and derives the load. The user can run
@@ -857,8 +985,8 @@ the utility in the background with the
 After running this binary the MPU load in the Bar Graph of the CPU load
 will be updated dynamically at an interval of 1 second.
 
-.. rubric:: Measuring the GPU load
-   :name: measuring-the-gpu-load
+Measuring the GPU load
+""""""""""""""""""""""
 
 The filesystem is populated with a binary called as "pvrscope" that
 reads the SGX registers via a library called libPVRScopeDeveloper.a This
@@ -882,8 +1010,8 @@ Usage instructions:
 After running this utility, the GPU load in the BAR Graph of the CPU
 load area will be updated at an interval of 1 second.
 
-.. rubric:: Measuring the DSP load
-   :name: measuring-the-dsp-load
+Measuring the DSP load
+""""""""""""""""""""""
 
 The filesystem is populated with a binary which is called "dsptop" that
 collects DSP usage info and then populates the required FIFO.
@@ -902,13 +1030,13 @@ After running this binary the DSP load in the Bar Graph of the CPU load
 will be updated at an interval specified by “-r, -d”, for example “-r 1
 –d 1” means at an interval of 1 second.
 
-.. rubric:: Boot time measurement
-   :name: boot-time-measurement
+Boot time measurement
+^^^^^^^^^^^^^^^^^^^^^
 
 This feature will be provided at future release.
 
-.. rubric:: Order of execution
-   :name: order-of-execution
+Order of execution
+------------------
 
 The performance visualization tools have to be executed in the following
 order.
@@ -919,8 +1047,8 @@ order.
 -  Run the soc-performance-monitor and/or soc-ddr-bw-visualizer
 -  Run the plugins to populate data
 
-.. rubric:: Config file format
-   :name: config-file-format
+Config file format
+------------------
 
 The config file has the following format.
 There are 3 different kinds of sections that can be defined, please
@@ -945,8 +1073,8 @@ Types of sections
 #. TABLE
 #. BAR GRAPH
 
-.. rubric:: GLOBAL section:
-   :name: global-section
+GLOBAL section
+^^^^^^^^^^^^^^
 
 The SECTION\_NAME is specified as GLOBAL followed by a sequence of key
 value pairs.
@@ -999,8 +1127,8 @@ The list of recognized global values are:
 -  Note that there are commands to move the application (Refer commands
    section).
 
-.. rubric:: TABLE section:
-   :name: table-section
+TABLE section
+^^^^^^^^^^^^^
 
 The section name can be one of the following:
 
@@ -1023,8 +1151,8 @@ The section name can be one of the following:
 NOTE: The TITLE=list is a list of comma separated values and TITLE and
 UNIT are the only supported values.
 
-.. rubric:: BAR GRAPH section:
-   :name: bar-graph-section
+BAR GRAPH section
+^^^^^^^^^^^^^^^^^
 
 | This section is the simplest section and does not allow much
   configuration other than the names and the title.
@@ -1041,8 +1169,8 @@ UNIT are the only supported values.
      TITLE OF THE GRAPH
      <blank line>
 
-.. rubric:: Commands:
-   :name: commands
+Commands
+--------
 
 The **FIFO** can be used to communicate with the
 soc-performance-monitor application and pass data from the command
@@ -1071,8 +1199,8 @@ The currently supported list of supported commands are:
 **NOTE: To execute a sequence of commands in a sequence, it is advised
 that a delay of REFRESH\_TIME\_USECS be inserted between two commands.**
 
-.. rubric:: TABLE command
-   :name: table-command
+TABLE command
+^^^^^^^^^^^^^
 
 The format of the TABLE command is:
 
@@ -1097,8 +1225,8 @@ following command:
 
     echo "TABLE: FREQ_MPU 1500 MHz" > /tmp/socfifo
 
-.. rubric:: CPULOAD command
-   :name: cpuload-command
+CPULOAD command
+^^^^^^^^^^^^^^^
 
 The format of the CPULOAD command is:
 
@@ -1123,8 +1251,8 @@ following command:
 
     echo "CPULOAD: GPU 87" > /tmp/socfifo
 
-.. rubric:: Executing in debug mode
-   :name: executing-in-debug-mode
+Executing in debug mode
+-----------------------
 
 To launch the application in debug mode for very verbose data on the
 internal working of the tool, launch the tool with the following option:
@@ -1133,8 +1261,8 @@ internal working of the tool, launch the tool with the following option:
 
     # soc-performance-monitor 1
 
-.. rubric:: Build instructions
-   :name: build-instructions
+Build instructions
+------------------
 
 The full source of the tool is available and the required recipes have
 been updated as part of the recipes and upstreamed to meta-arago.
@@ -1142,11 +1270,10 @@ been updated as part of the recipes and upstreamed to meta-arago.
 Essentially, if the user builds the Yocto filesystem as documented in
 the SDG, the tool will get recompiled as part of it.
 
-.. rubric:: Configuration of the soc-ddr-bw-visualizer
-   :name: configuration-of-the-soc-ddr-bw-visualizer
+Configuration of the soc-ddr-bw-visualizer
+------------------------------------------
 
-Refer to
-`#Using\_the\_statistics\_collector\_.28bandwidth\_application.29 <#using-the-statistics-collector-.28bandwidth-application.29>`__
+There are two levels of configuration that the tool allows:
 
 -  The total time that the tool runs is configured using config.ini.
 -  To allow finer granularity of control to choose the initiators of
