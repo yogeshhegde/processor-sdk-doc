@@ -138,6 +138,10 @@ Resource Custom Table
 ----------------------
 .. include:: PDK_Platform_Software/IPC/IPC_Resource_customTable.rst.inc
 
+Resource Usage
+---------------
+.. include:: PDK_Platform_Software/IPC/IPC_Resource_Usage.rst.inc
+
 IPC FAQ
 ========
 .. include:: PDK_Platform_Software/IPC/IPC_3.x_FAQ.rst.inc
