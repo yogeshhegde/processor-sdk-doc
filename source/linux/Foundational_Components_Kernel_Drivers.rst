@@ -112,6 +112,9 @@ UART
 ---------------------------------
 .. include:: Foundational_Components/Kernel/Kernel_Drivers/UART.rst.inc
 
+UFS
+---------------------------------
+.. include:: Foundational_Components/Kernel/Kernel_Drivers/UFS.rst.inc
 
 MUSB
 ---------------------------------
