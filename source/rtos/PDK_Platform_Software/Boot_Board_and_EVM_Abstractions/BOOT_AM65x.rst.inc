@@ -708,9 +708,9 @@ all the am65xx boards is tabulated below.
 +-----------------------+--------+------+------+------+------+
 |                       | MMCSD  | OSPI | UART | PCIe | ETH  |
 +-----------------------+--------+------+------+------+------+
-| AM65xx EVM            |  YES   | YES  |  NO  |  NO  |  NO  |
+| AM65xx EVM            |  YES   | YES  | YES  |  NO  |  NO  |
 +-----------------------+--------+------+------+------+------+
-| AM65xx IDK            |  YES   | YES  |  NO  |  NO  |  NO  |
+| AM65xx IDK            |  YES   | YES  | YES  |  NO  |  NO  |
 +-----------------------+--------+------+------+------+------+
 
 **Booting Via SD Card**
@@ -738,7 +738,7 @@ all the am65xx boards is tabulated below.
    <http://www.ti.com/lit/pdf/spruim7>`__  to setup EVM to boot from MMCSD.
 #. Open a serial communication terminal like TeraTerm, MiniCom on host
    PC and connect to the MCU UART console port
-#. Power cycle the board to boot the appliation from the SD card.
+#. Power cycle the board to boot the application from the SD card.
 #. The test logs will be displayed on the MCU UART
    
 **Booting Via OSPI flash**
@@ -753,13 +753,24 @@ all the am65xx boards is tabulated below.
    <http://www.ti.com/lit/pdf/spruim7>`__  to setup EVM to boot from OSPI.
 #. Open a serial communication terminal like TeraTerm, MiniCom on host
    PC and connect to the MCU UART console port
-#. Power cycle  the board to boot the appliation from the OSPI flash.
+#. Power cycle  the board to boot the application from the OSPI flash.
 #. The test logs will be displayed on the MCU UART
+
+
+**Booting the testcase from UART**
+
+#. Refer Boot Modes section in the `AM6x EVM Hardware Users Guide 
+   <http://www.ti.com/lit/pdf/spruim7>`__  to setup EVM to boot from UART.
+#. Open a serial communication terminal like TeraTerm, MiniCom on host
+   PC and connect to the MCU UART console port
+#. Power cycle the board, the console should show a sequence of CCC being printed
+#. Choose the X-Modem interface and send the SBL that was built for UART. After the transfer is completed,
+   repeat the same step for sysfw.bin and the application. You will see notifications to perform these
+   actions.
 
 .. warning::   If sysfw.bin is not present in the boot media, the boot will fail without displaying any
                logs on the MCU UART. SBL enables UART logging only after successfully starting the system
                firmware image. If the system firmware load fails, the RBL will eventually reset the system.
-               
                
 EVM Setup for testing SBL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
