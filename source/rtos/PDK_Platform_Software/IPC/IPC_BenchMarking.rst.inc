@@ -158,16 +158,16 @@ The average round trip time is measured using MessageQBench which calculates
 the time for sending 1000 messages from the main processor to slave core and
 divided by the number of messages sent (1000).
 
-Average Round Trip Time for Keystone-2 and OMAP-L138 EVMs
+Average Round Trip Time (ARTT) for K2H/E/G and OMAP-L138 EVMs
 
 .. csv-table::
-    :header: "PLSDK 5.2","K2H","K2E","K2G","Omap-L138"
+    :header: "PLSDK 5.2","K2H","K2E","K2G","OMAP-L138"
 
     "CPU Speed","1.2GHz","1.4GHz","1GHz","456MHz"
     "ARTT (us)","115","68","81","904"
-    "ARTT@1GHz","121","94","81","N/A"
+    "ARTT @ 1GHz (us)","121","94","81","N/A"
 
-Table: IPC Average Round Trip Time
+Table: IPC Average Round Trip Time (ARTT)
 
 .. note::
    The MessageQBench is a user space application which needs to call into
@@ -187,10 +187,10 @@ benchmark application will fail to run. Different payload sizes from 8 bytes
 to max of 448 bytes are measured for each direction, and the numbers apply to
 either direction. The throughput are measured with ARM/DSP running at 1 GHz.
 
-Throughput for Keystone-2 and Omap-L138 EVMs
+Throughput for K2H/E/G and OMAP-L138 EVMs
 
 .. csv-table::
-    :header: "Payload (Bytes)","K2H (MB/s)","K2E (MB/s)","K2G (MB/s)","Omap-L138 (MB/s)"
+    :header: "Payload (Bytes)","K2H (MB/s)","K2E (MB/s)","K2G (MB/s)","OMAP-L138 (MB/s)"
 
     "8","0.234","0.442","0.265","0.065"
     "16","0.362","0.681","0.333","0.099"
@@ -209,7 +209,7 @@ The CPU utilization is measured using max payload size of 448 bytes with
 transmit window of 130 messages.
 
 .. csv-table::
-    :header: "","K2H (1.2GHz)","K2E (1.4GHz)","K2H (1GHz)","K2E (1GHz)","K2G","Omap-L138"
+    :header: "","K2H (1.2GHz)","K2E (1.4GHz)","K2H (1GHz)","K2E (1GHz)","K2G","OMAP-L138"
 
     "CPU Utilization","42%","47%","44%","49%","89.5%","100%"
 
