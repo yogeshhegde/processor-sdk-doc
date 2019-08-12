@@ -186,6 +186,62 @@ Update the second launch.js as below:
     }
 Notice the addition of "*_0" and "*_1"
 
+System Firmware Logs Parse
+--------------------------
+
+In many cases you may need to understand and debug if a System Firmware API fails due to incorrect parameters or some genuine issue in the firmware. In order to debug when the API is failing, you need to follow the steps below:
+
+- Enable logs in the system firmware by modifying the below structure:
+File: sciclient\soc\Vx\sciclient_defaultBoardcfg.c
+Structure: const struct tisci_boardcfg gBoardConfigLow
+Update the structure to have trace enabled:
+:: 
+    /* This enables the trace for DMSC logging. Should be used only for
+     * debug.
+     */
+    .trace_dst_enables = (TISCI_BOARDCFG_TRACE_DST_UART0 |
+                          TISCI_BOARDCFG_TRACE_DST_ITM |
+                          TISCI_BOARDCFG_TRACE_DST_MEM),
+    .trace_src_enables = (TISCI_BOARDCFG_TRACE_SRC_PM |
+                          TISCI_BOARDCFG_TRACE_SRC_RM |
+                          TISCI_BOARDCFG_TRACE_SRC_SEC |
+                          TISCI_BOARDCFG_TRACE_SRC_BASE |
+                          TISCI_BOARDCFG_TRACE_SRC_USER |
+                          TISCI_BOARDCFG_TRACE_SRC_SUPR)
+- Capture the System firmware logs from the WKUP_USART0. 
+- Get the parsed logs from **sciclient\tools\sysfw_trace_parser\sysfw_trace_parser.py**
+:: 
+    usage: python ./sysfw_trace_parser.py [-h] (-l LOG_FILE | -d SERIAL_PORT)
+                                (-o OUTPUT_FILE | -O) [-t] [-r RULES_FILE]
+                                [-Pm]
+    
+    System Firmware Log Parse utility URL: http://software-
+    dl.ti.com/tisci/esd/latest/4_trace/trace.html
+    
+    Required arguments - Choose one of the inputs:
+    -l LOG_FILE, --log_file LOG_FILE
+                            Log File provided as input (default: None)
+    -d SERIAL_PORT, --serial_port SERIAL_PORT
+                            Provide Device as input: Requires pyserial package
+                            installed: See https://pyserial.readthedocs.io/
+                            (default: None)
+    
+    Required arguments - Choose one of the outputs:
+    -o OUTPUT_FILE, --output_file OUTPUT_FILE
+                            Parse out the output to a file (default: None)
+    -O, --output_console  Log File to parse and report results to console
+                            (default: False)
+    
+    optional arguments:
+    -h, --help            show this help message and exit
+    -t, --time_stamp_relative
+                            Add TimeStamp to output in relative milliseconds(this
+                            is approximation ONLY) (default: False)
+    -r RULES_FILE, --rules_file RULES_FILE
+                            Alternate Rules file (default: ./sysfw_trace_rules.json)
+    -Pm, --print_match_only
+                            Print just decoded data, (default: False)
+
 API descriptions
 ------------------
 API reference for application:
