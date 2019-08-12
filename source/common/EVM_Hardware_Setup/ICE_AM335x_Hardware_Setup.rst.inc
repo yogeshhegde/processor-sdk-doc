@@ -69,7 +69,7 @@ Boot Configuration
 --------------------
 
 The various boot configurations are discussed in the `Hardware User
-Guide. <http://www.ti.com/lit/ug/spruie6/spruie6.pdf#page=5>`__
+Guide. <http://www.ti.com/lit/spruip3>`__
 
 |
 

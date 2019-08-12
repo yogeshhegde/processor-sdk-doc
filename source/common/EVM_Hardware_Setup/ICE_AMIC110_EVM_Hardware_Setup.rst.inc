@@ -22,7 +22,7 @@ Quick Start Guide
 --------------------
 
 This quick start guide can be found in the `Hardware User's
-Guide <http://www.ti.com/lit/ug/spruie6/spruie6.pdf#page=3>`_.
+Guide <http://www.ti.com/lit/spruie6a>`_.
 
 
 1. Unbox the board and identify the various components 
@@ -144,4 +144,4 @@ testing on peripherals.
 
 To run diagnostics on the AMIC110 ICE, follow the procedure given in the
 `RTOS Software Developer
-Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/Board_EVM_Abstration.html#diagnostics>`__
+Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_board.html#diagnostics>`__
