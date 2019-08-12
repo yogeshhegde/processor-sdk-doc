@@ -158,6 +158,34 @@ For J721E:
     Running the DDR configuration... Wait till it completes!
     Okay you are good to go.. Happy Debugging!
 
+Handling Two or more ccxml files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In case you need to connect two or more board to the same CCS session and use the launch script, please follow the steps below:
+
+- When you use 2 or more CCXML files with similar debugger (e.g. connect 2 boards XDS110 on-board debugger to the PC), CCS would enumerate the debuggers as below:
+:: 
+    Texas Instruments XDS110 USB Debug Probe_0
+    Texas Instruments XDS110 USB Debug Probe_1
+Notice the suffix "_0" and "_1".
+- In order to use the same launch.js file with this, please create a second copy of the launch.js file. Update the first launch.js files as below:
+:: 
+    function updateScriptVars()
+    {
+        //Open a debug session
+        dsMCU1_0 = debugServer.openSession( "*_0.*MCU_PULSAR_Cortex_R5_0" );
+        dsDMSC_0 = debugServer.openSession( "*_0.*DMSC_Cortex_M3_0" );
+    }
+Update the second launch.js as below:
+:: 
+    function updateScriptVars()
+    {
+        //Open a debug session
+        dsMCU1_0 = debugServer.openSession( "*_1.*MCU_PULSAR_Cortex_R5_0" );
+        dsDMSC_0 = debugServer.openSession( "*_1.*DMSC_Cortex_M3_0" );
+    }
+Notice the addition of "*_0" and "*_1"
+
 API descriptions
 ------------------
 API reference for application:
