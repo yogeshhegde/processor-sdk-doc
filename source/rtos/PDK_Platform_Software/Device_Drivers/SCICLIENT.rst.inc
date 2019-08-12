@@ -45,15 +45,13 @@ Directory Structure
 --------------------
 
 The directory structure of SCIClient is as follows:
-    .. image:: ../images/sciclient_dirTree.png
-                :height: 600
-                :width: 900
 
 =================================  =============================
-docs/                               Contains SCIClient design documentation and SYSFW documentation.
+docs/                               Contains SCIClient design documentation and System Firmware public documentation.
 include/                            This folder contains the files user needs to refer in order to communicate with SYSFW using `Sciclient_service`_ . The files in this folder define the request and response structures for communicating with SYSFW .
-src/                                Contains source(.c) files for the driver .
-examples/sciclient_firmware_boot    Contains unit tests for the driver with functions definitions in examples/sciclient_firmware_boot/sciclient_firmware_boot_tests.c"
+src/                                Contains source(.c) files for the driver.
+soc/                                Contains SoC specific header files and firmware binary image. Refer to this folder for SoC sepcific parameters and board configuration. V0 - AM65xx, V1 - J721E.
+examples                            Contains examples for utilizing sciclient interfaces. For Sciclient shim layer examples kindly refer the PM, UDMA driver code.
 =================================  =============================
 
 Build and Run
@@ -85,39 +83,34 @@ Note
 :: 
      For building the example "sciclient_firmware_boot" or "your application" using SCIClient lib, make sure you have a section "boardcfg_data" defined in your linker cmd file which resides in OC-MSRAM .  
 
-The next sections will explain how to run the example **sciclient_firmware_boot**.
+The next sections will explain how to load the system firmware using sciclient.
 
 Load using a boot-media
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 Follow these steps to load the **sciclient_firmware_boot** application through a boot media:
 
-- Update the file sciclient_firmware_boot_tests.h to enable the first test **SCIClient DMSC load firmware** . Set the parameter **enableTest** as TEST_ENABLE .
-Code
-:: 
-    /** \brief Defines the various SCICLIENT test cases. */
-    App_sciclientTestParams_t gSciclientTestcaseParams[] =
-    {
-        {
-            /** enableTest **/
-            TEST_ENABLE,
-    
-            /** testCaseId **/
-            0U,
+- Build the example: sciclient_firmware_boot_TestApp
+- The test case works with MMCSD boot mode where it loads the sysfw.bin file from the mmcsd card. Ensure to create a tiboot3.bin file from the sciclient application. Copy the SoC specific sysfw.bin in the SD card along with the tiboot3.bin file.
 - Refer the section `Boot-Modes <index_Foundational_Components.html#boot-modes>`_ for details on how to use a bootmedia.
+- You can also use the SBL to load the system firmware and initialize the SoC. Refer to the SBL user guide for more details.
 
 
 Load using CCS
 ^^^^^^^^^^^^^^^^^^^^
-Follow these steps to load the **sciclient_firmware_boot** application through CCS
+Follow these steps to load the **sciclient_ccs_init** application through CCS
 
-- Update the File SCICLIENT_PATH/tools/ccsLoadDmsc/launch_am65xx.js for the following variables to your PC location .
-Modify:
+- Update the File SCICLIENT_PATH/sciclient/tools/ccsLoadDmsc/<soc>/launch.js for the following variables to your PC location .
+Modify for AM65xx:
 :: 
             //Path to GEL files
             gelFilePath = "<Your CCS Path>/ccs_base/emulation/gel/AM65xEVM/"; → GEL path location
             // Path to the directory in which this file would be residing. CCS expects
             // absolute paths to load the binaries.
             thisJsFileDirectory = "PDK_INSTALL_DIR/packages/ti/drv/sciclient/tools/ccsLoadDmsc";
+Modify for J721E:
+:: 
+            //PDK path. Edit this
+            pdkPath = "PDK_INSTALL_DIR";
 
 - Connect the Javascript to the CCXML file with the steps shown below: (Note: this step needs to be repeated if you switch workspaces or clean your workspace).The Javascript is run on re-launch of the ccxml. If you would like to run the Javascript without relaunch then you can look ahead to the section: "Re-running the script once ccxml is already launched." Click on Debug Configurations from the button as follows:
 
@@ -138,16 +131,32 @@ Modify:
 In the CCS window open the "View → Scripting Console.." 
 In the CCS Scripting Console type:
 :: 
-    load("SCICLIENT_PATH\\tools\\ccsLoadDmsc\\launch_am65xx.js")
+    load("SCICLIENT_PATH\\tools\\ccsLoadDmsc\\am65xx\\launch.js")
+or
+:: 
+    load("SCICLIENT_PATH\\tools\\ccsLoadDmsc\\j721e\\launch.js")
 
 This would give the following output on the scripting console
+
+For AM65xx:
 :: 
-    js:> load("SCICLIENT_PATH\\tools\\ccsLoadDmsc\\launch_am65xx.js")
+    js:> load("SCICLIENT_PATH\\tools\\ccsLoadDmsc\\am65xx\\launch.js")
     Connecting to DMSC_Cortex_M3_0!
     Loading DMSC Firmware...
     DMSC Firmware Load Done...
     DMSC Firmware run starting now...
     Connecting to MCU Cortex_R5_0!
+For J721E:
+:: 
+    js:> load("SCICLIENT_PATH\\tools\\ccsLoadDmsc\\j721e\\launch.js")
+    Connecting to DMSC_Cortex_M3_0!
+    Loading DMSC Firmware...
+    DMSC Firmware Load Done...
+    DMSC Firmware run starting now...
+    Connecting to MCU Cortex_R5_0!
+    Running the board configuration initialization from R5!
+    Running the DDR configuration... Wait till it completes!
+    Okay you are good to go.. Happy Debugging!
 
 API descriptions
 ------------------
@@ -165,7 +174,7 @@ The driver is split into 2 parts :
 SCIClient Core
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The following core APIs for SCIClient are declared in sciclient.h and include/V0/sciclient_boardcfg.h .
+The following core APIs for SCIClient are declared in sciclient.h.
 
 .. rubric:: Firmware Load
 .. _Sciclient_loadFirmware:
