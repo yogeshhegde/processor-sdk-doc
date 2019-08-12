@@ -114,13 +114,13 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |                                      |          |tos/index_how_to_guides.html#am335x-ice-evm-|                |                |                |                |
 |                                      |                                      |          |hardware-setup>`__                          |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`K2H/K2K <http://www.ti.com/lsds/ti/  |`66AK2Hx EVM                          | 4.0      |`Hardware User's Guide <http://             | X              | X              | X              |                |
+|`K2H/K2K <http://www.ti.com/lsds/ti/  |`66AK2Hx EVM                          | 4.0      |`Hardware Setup with CCS <http://           | X              | X              | X              |                |
 |processors/dsp/c6000_dsp-arm/66ak2x/  |<http://www.ti.com/tool               |          |software-dl.ti.com/processor-sdk-linux      |                |                |                |                |
 |overview.page>`__                     |/evmk2h>`__                           |          |/esd/docs/latest/linux/How_to_Guides_       |                |                |                |                |
 |                                      |                                      |          |Hardware_Setup_with_CCS.html#evmk2h-        |                |                |                |                |
 |                                      |                                      |          |hardware-setup-guide>`__                    |                |                |                |                |
 |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|                                      |`TCI6638K2K EVM                       | 4.0      |`Hardware User's Guide <http://             | X              | X              | X              |                |
+|                                      |`TCI6638K2K EVM                       | 4.0      |`Hardware Setup with CCS <http://           | X              | X              | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |software-dl.ti.com/processor-sdk-linux      |                |                |                |                |
 |                                      |tci6638k2k>`__                        |          |/esd/docs/latest/linux/How_to_Guides_       |                |                |                |                |
 |                                      |                                      |          |Hardware_Setup_with_CCS.html#evmk2h-        |                |                |                |                |
@@ -138,8 +138,11 @@ The following platforms and EVMs are supported with Processor SDK
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`K2G <http://www.ti.com/processors/   |`K2G EVM                              | 1.3D     |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |dsp/c6000-dsp-arm/66ak2x/             |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui65a>`__             |                |                |                |                |
-|overview.html>`__                     |EVMK2G>`__                            |          |                                            |                |                |                |                |
-|                                      +--------------------------------------+----------+                                            +----------------+----------------+----------------+----------------+
+|overview.html>`__                     |EVMK2G>`__                            |          |`Hardware Setup with CCS <http://software-dl|                |                |                |                |
+|                                      |                                      |          |.ti.com/processor-sdk-rtos/esd/docs/latest/r|                |                |                |                |
+|                                      |                                      |          |tos/index_how_to_guides.html#ak2gx-gp-evm-ha|                |                |                |                |
+|                                      |                                      |          |rdware-setup>`__                            |                |                |                |                |
+|                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |                                      |`K2G 1G EVM                           | 1.5D     |`Hardware User's Guide <http://             | X              | X              | X              |                |
 |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprui65a>`__             |                |                |                |                |
 |                                      |EVMK2GX>`__                           |          |                                            |                |                |                |                |
@@ -156,13 +159,13 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |                                      |          |tos/index_how_to_guides.html#ak2g02-ice-evm-|                |                |                |                |
 |                                      |                                      |          |hardware-setup>`__                          |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`C665x <http://www.ti.com/lsds/ti/    |`C665x EVM                            | 1.1-44   |`Hardware User's Guide <http://             | N/A            | N/A            | X              |                |
+|`C665x <http://www.ti.com/lsds/ti/    |`C665x EVM                            | 1.1-44   |`Hardware Setup with CCS <http://           | N/A            | N/A            | X              |                |
 |processors/dsp/c6000_dsp/c66x/        |<http://www.ti.com/tool               |          |software-dl.ti.com/processor-sdk-rtos       |                |                |                |                |
 |overview.page>`__                     |/tmdsevm6657>`__                      |          |/esd/docs/latest/rtos/index_how_to_         |                |                |                |                |
 |                                      |                                      |          |guides.html#tmdsevm6657l-evm-hardware-      |                |                |                |                |
 |                                      |                                      |          |setup-guide>`__                             |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
-|`C667x <http://www.ti.com/lsds/ti/    |`C667x EVM                            | 3B       |`Hardware User's Guide <http://             | N/A            | N/A            | X              |                |
+|`C667x <http://www.ti.com/lsds/ti/    |`C667x EVM                            | 3B       |`Hardware Setup with CCS <http://           | N/A            | N/A            | X              |                |
 |processors/dsp/c6000_dsp/c66x/        |<http://www.ti.com/tool               |          |software-dl.ti.com/processor-sdk-rtos       |                |                |                |                |
 |overview.page>`__                     |/tmdsevm6678>`__                      |          |/esd/docs/latest/rtos/index_how_to_         |                |                |                |                |
 |                                      |                                      |          |guides.html#tmdxevm6678l-                   |                |                |                |                |
@@ -177,8 +180,8 @@ The following platforms and EVMs are supported with Processor SDK
 |                                      |                                      |          |-evm-hardware-setup-guide>`__               |	               |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`OMAPL138/C6748 <http://www.ti.com/   |`OMAP-L138/C6748 LCDK                 | A7A      |`Hardware User's Guide <http://             | X              | N/A            | X              |                |
-|lsds/ti/processors/dsp/c6000_dsp-arm/ |<http://www.ti.com/tool               |          |processors.wiki.ti.com/index.php/L138/      |                |                |                |                |
-|omap-l1x/overview.page>`__            |/tmdslcdk138>`__                      |          |C6748_Development_Kit_%28LCDK%29>`__        |                |                |                |                |
+|lsds/ti/processors/dsp/c6000_dsp-arm/ |<http://www.ti.com/tool               |          |www.ti.com/lit/spruil2>`__                  |                |                |                |                |
+|omap-l1x/overview.page>`__            |/tmdslcdk138>`__                      |          |                                            |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`AMIC110 <http://www.ti.com/          |`AMIC110 ICE                          | 1.1      |`Hardware User's Guide <http://             |                |                | X              |                |
 |product/AMIC110>`__                   |<http://www.ti.com/tool               |          |www.ti.com/lit/pdf/spruie6>`__              |                |                |                |                |

@@ -1,6 +1,6 @@
 
 AM335x ICE EVM Hardware Setup
-====================================================
+=============================
 
 Description
 ------------
@@ -23,6 +23,7 @@ EVM Layout and Key Components
 ------------------------------
 
 .. Image:: ../images/ICE_V2_marked.png
+	:scale: 50%
 
 Quick Start Guide
 --------------------
@@ -36,7 +37,8 @@ shown above.
 into an AC power source.
 
 .. Image:: ../images/ICE335924V.png
-
+	:scale: 50%
+	
 Once powered on, the POWER ON LED (D16) and Industrial Output LEDs
 (D6-D10, D12, D14, and D15) will turn on.
 
@@ -47,7 +49,8 @@ Once powered on, the POWER ON LED (D16) and Industrial Output LEDs
 ETH0 if network connectivity is required.
 
 .. Image:: ../images/ICE3359USB.png
-
+	:scale: 50%
+	
 .. Note:: The serial port will not show up on the host PC until the board is powered on.
 
 4. Users can now connect to UART and the on-board XDS100v2 emulator from 
@@ -57,9 +60,10 @@ target using the on-board emulator is discussed in the section below.
 
 
 .. Image:: ../images/Serial_connect.jpg
-
+	:scale: 50%
+	
 .. Image:: ../images/Baudrate.jpg
-
+	:scale: 50%
 
 Boot Configuration
 --------------------
@@ -87,12 +91,14 @@ Instruments XDS100v2 USB Debug Probe and the ICE\_AM3359 as shown below.
 .. Note:: If the ICE\_AM3359 target is not listed, make sure the latest Sitara Device Support package is installed by going to Help->Check for Updates.
 
 .. Image:: ../images/ICE3359TargetConfig.png
-
+	:scale: 50%
+	
 4. Click Save to save the target configuration. Then press Test
 Connection to test the connection. If successful, a message should be
 seen similar to the one below.
 
 .. Image:: ../images/ICE3359Test.png
+	:scale: 50%
 
 5. Launch the target configuration and connect 
 to the ARM Cortex-A8.

@@ -1,6 +1,6 @@
 
 66AK2G02 ICE EVM Hardware Setup
-====================================================
+================================
 
 Description
 --------------
@@ -48,8 +48,10 @@ EVM Layout and Key Components
 -----------------------------------
 
 .. Image:: ../images/TI_K2G_ICE_EVM_TOP.png
+	:scale: 50%
 
 .. Image:: ../images/TI_K2G_ICE_EVM_BOTTOM.png
+	:scale: 50%
 
 Supported JTAG Debug Probes (Emulators)
 ---------------------------------------------
@@ -72,12 +74,14 @@ mode.
 **For the EVM Out-of-Box experience, use SD/MMC boot mode as shown in the image below**: 
   
 .. Image:: ../images/K2GICE_Boot_MODE.png
+	:scale: 50%
 
 |
 
 The table below lists all of the boot modes supported on the ICE EVM.
 
 .. Image:: ../images/K2G_ICE_BOOTSW.png
+	:scale: 50%
 
 Connecting an Emulator
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -101,6 +105,7 @@ Users can connect to the target SoC via CCS by connecting the USB cable, supplie
 | 
 
 .. Image:: ../images/ICE_K2G_connect.png
+	:scale: 50%
 
 | 
 
@@ -155,6 +160,7 @@ required to update the Keystone Device Support package by going into the
 Help->Check For Updates
 
 .. Image:: ../images/Check_for_Updates.png
+	:scale: 50%
 
 2. Select Keystone2 device support package. Follow menu options
 to continue with the update.
@@ -164,6 +170,7 @@ and check that Keystone2 device support package v1.1.9 or later are
 installed as shown below.
 
 .. Image:: ../images/KeystoneII_device_support_package.png
+	:scale: 50%
 
 .. Note:: The package can be downloaded separately from the link below and manually unzipped into CCS installation.
 
@@ -196,12 +203,14 @@ Connect without an SD Card Boot Image
 Launch CCS and create a new target configuration (File->New->Target Configuration file) as shown in the images below.
 
 .. Image:: ../images/CCS_target_configuration.png
+	:scale: 50%
 
 Provide an appropriate name to the configuration. Select Spectrum Digital XDS100 emulator and target as K2G ICE EVM.
 
 .. Note:: If you don't find the K2GICE target make sure you have installed CCSv7.1 or higher. If using CCSv 7.0 or CCSv6.1.x and earlier, ensure that you have done the software update correctly as shown in the how to section below.
 
 .. Image:: ../images/K2G_ICE_target_configuration.png
+	:scale: 50%
 
 In advanced settings, make sure that the GEL files are populated correctly. The following GEL files and their corresponding cores are provided below.
 
@@ -227,6 +236,7 @@ the previous section "Configuring target configuration files."
 target configuration.
 
 .. Image:: ../images/K2G_Launch_targetConfig.png
+	:scale: 50%
 
 6. K2G can be a DSP or an ARM master boot device 
 so connect to the C66x or the A15\_0.
@@ -255,12 +265,14 @@ Connect with an SD Card Boot Image
 Configuration file) as shown in the images below.
 
 .. Image:: ../images/CCS_target_configuration.png
+	:scale: 50%
 
 Provide an appropriate name to the configuration. Select Spectrum digital XDS100 emulator and target as 66AK2G02.
 
 .. Note:: If you don't find the K2GICE target make sure you have installed CCSv7.1 or higher. If using CCSv 7.0 or CCSv6.1.x and earlier, ensure that you have done the software update correctly as shown in the how to section below.
 
 .. Image:: ../images/K2G_GPEVM_Target_configuration_alternate.jpg
+	:scale: 50%
 
 In advanced settings, make sure that no GEL files are populated.
 
@@ -277,6 +289,7 @@ section "Configuring target configuration files".
 target configuration.
 
 .. Image:: ../images/K2G_Launch_targetConfig.png
+	:scale: 50%
 
 6. K2G will boot with ARM master boot from the SD card so connect to the A15\_0. There will be no output on the console when you 
 connect to the core.
