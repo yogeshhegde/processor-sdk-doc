@@ -18,8 +18,6 @@ The ti.sdo.utils.List module provides support for creating lists of objects.
 A List is implemented as a doubly-linked list, so that elements can be inserted or removed 
 from anywhere in the list. Lists do not have a maximum size.
 
-.. note::
-   List module use is the same for Concerto F28M35x devices as for other devices.
    
 Basic FIFO Operation of a List
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

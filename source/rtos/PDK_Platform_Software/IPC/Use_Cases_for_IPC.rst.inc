@@ -58,13 +58,6 @@ See `Notify Module <index_Foundational_Components.html#notify-module>`__ and
 `MultiProc Module <index_Foundational_Components.html#multiproc-module>`__.
 
 
-.. note::
-
-  If you are using a Concerto F28M35x device, this scenario is supported.
-  See `Using IPC on Concerto
-  Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
-  for details.
-
 Data Passing Scenario (BIOS-to-BIOS only)
 --------------------------------------------
 
@@ -100,12 +93,6 @@ See `ListMP Module <index_Foundational_Components.html#listmp-module>`__,
 Module <index_Foundational_Components.html#shared-region-module>`__, and
 `NameServer Module <index_Foundational_Components.html#nameserver-module>`__.
 
-.. note::
-
-  If you are using a Concerto F28M35x device, this scenario is not
-  supported due to shared memory limitations. See `Using IPC on Concerto
-  Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
-  for details.
 
 Dynamic Allocation Scenario (BIOS-to-BIOS only)
 -------------------------------------------------
@@ -125,12 +112,6 @@ may use the same GateMP instance used by ListMP.
 See `Heap*MP Modules <index_Foundational_Components.html#heapmp-module>`__ and
 `GateMP Module <index_Foundational_Components.html#gatemp-module>`__.
 
-.. note::
-
-  If you are using a Concerto F28M35x device, this scenario is not
-  supported due to shared memory limitations. See `Using IPC on Concerto
-  Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
-  for details.
 
 Powerful But Easy-to-Use Messaging with MessageQ (HLOS and BIOS)
 -----------------------------------------------------------------
@@ -166,13 +147,4 @@ varies from environment to environment.
 It is possible to use MessageQ in a single-processor SYS/BIOS
 application. In such a case, only API calls to MessageQ and
 configuration of any xdc.runtime.IHeap implementation are needed.
-
-
-.. note::
-
-  If you are using a Concerto F28M35x device, this scenario is supported,
-  but fewer modules are used due to shared memory limitations. See `Using
-  IPC on Concerto
-  Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
-  for details.
 

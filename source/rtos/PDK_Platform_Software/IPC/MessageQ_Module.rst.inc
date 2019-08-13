@@ -59,9 +59,6 @@ The following figure shows the flow in which applications typically use the main
 
 Conceptually, the reader thread creates and owns the message queue. Writer threads then open a created message queue to get access to them.
 
-.. note::
-   MessageQ use is the same with Concerto F28M35x devices as for other devices. See Optimizing IPC Applications for information about the TransportCirc driver used with the MessageQ module when you are using Concerto devices.
-
 Configuring the MessageQ Module (BIOS only)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 On BIOS-based systems, you can configure a number of module-wide properties for MessageQ in your XDCtools configuration file.

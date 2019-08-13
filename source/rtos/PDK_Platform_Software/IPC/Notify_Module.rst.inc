@@ -70,7 +70,4 @@ A specific event may be disabled or enabled using Notify_disableEvent() and Noti
 
 .. note::
   The Notify Module is only supported in SYS/BIOS environments. It is not provided on HLOS's.
-  
-.. note::
-   Notify use is the same with Concerto F28M35x devices as for other devices. See Optimizing IPC Applications for information about the NotifyDriverCirc driver used with the Notify module when you are using Concerto devices.  
 

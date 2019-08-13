@@ -55,9 +55,6 @@ The following subsections use "Heap*MP" to refer to the HeapBufMP, HeapMultiBufM
   There are limitations (e.g. you cannot alloc on HLOS and free on RTOS), but these are in line with using the HLOS as a master (owning all resources) and 
   RTOS as a slave (using resources provided by the master).
 
-.. note::
-  The Heap*MP modules are not supported for Concerto F28M35x devices because Concerto does not support shared memory heaps.
-  
 Configuring a Heap*MP Module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In addition to configuring Heap*MP instances, you can set module-wide configuration properties. 

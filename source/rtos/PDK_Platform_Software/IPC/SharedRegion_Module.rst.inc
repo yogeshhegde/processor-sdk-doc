@@ -59,9 +59,6 @@ In order to use the SharedRegion module, the following must be true:
 
 The SharedRegion with an index of 0 (zero) is used by IPC_start() to create resource management tables for internal use by other IPC modules. Thus SharedRegion "0" must be accessible by all processors. Your applications can also make use of SharedRegion "0", but must be aware of memory limitations.
 
-.. note::
-
-  The SharedRegion module is not used on Concerto F28M35x devices. Instead, the IpcMgr module (in the ti.sdo.ipc.family.f28m35x package) is used to configure access to shared memory by Concerto devices. See Using IPC on Concerto Devices.
   
 Adding Table Entries Statically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

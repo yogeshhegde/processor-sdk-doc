@@ -195,10 +195,6 @@ and run-time C processing (|ipcRun_Img|) for each module.
 -  `Rebuilding IPC <index_Foundational_Components.html#rebuilding-ipc>`__
    explains how to rebuild the IPC libraries if you modify the source
    files.
--  `Using IPC on Concerto
-   Devices <index_Foundational_Components.html#using-ipc-on-concerto-devices>`__
-   explains how to use IPC if you are designing applications for
-   Concerto F28M35x devices.
 -  `Examples <index_Foundational_Components.html#ipc-examples>`__ explains how
    to build and generate the IPC examples.
 -  `Tests <index_Foundational_Components.html#ipc-tests>`__ explains details of

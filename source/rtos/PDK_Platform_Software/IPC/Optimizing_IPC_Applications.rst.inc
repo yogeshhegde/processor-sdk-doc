@@ -299,8 +299,8 @@ setup module that should be used as the Notify.SetupProxy module.
 |                                               |                       |                       |
 | This shared-memory Notify driver offers       |                       |                       |
 | room for a single pending notification        |                       |                       |
-| in shared memory per event. This is the       |                       |                       |
-| default driver on non-F28M35x devices.        |                       |                       |
+| in shared memory per event.                   |                       |                       |
+|                                               |                       |                       |
 +-----------------------------------------------+-----------------------+-----------------------+
 | ti.sdo.ipc.notifyDrivers.NotifyDriverCirc     | No                    | Better than           |
 | ti.sdo.ipc.family.<family>.NotifyCircSetup    |                       | NotifyDriverShm       |
@@ -338,25 +338,6 @@ setup module that should be used as the Notify.SetupProxy module.
 | mailbox queues                                |                       |                       |
 | present on TI81xx                             |                       |                       |
 | devices.                                      |                       |                       |
-+-----------------------------------------------+-----------------------+-----------------------+
-| ti.sdo.ipc.family.f28                         | No                    | only Notify driver    |
-| m35x.\ **NotifyDriver                         |                       | for F28M35x           |
-| Circ**                                        |                       |                       |
-| ti.sdo.ipc.family.f28                         |                       |                       |
-| m35x.NotifyCircSetup                          |                       |                       |
-|                                               |                       |                       |
-| |                                             |                       |                       |
-|                                               |                       |                       |
-| This F28M35x-only                             |                       |                       |
-| (Concerto)                                    |                       |                       |
-| shared-memory Notify                          |                       |                       |
-| driver uses a                                 |                       |                       |
-| circular buffer to                            |                       |                       |
-| store notifications.                          |                       |                       |
-| This is the only                              |                       |                       |
-| Notify driver that                            |                       |                       |
-| works with the                                |                       |                       |
-| F28M35x device.                               |                       |                       |
 +-----------------------------------------------+-----------------------+-----------------------+
 
 Choosing and Configuring MessageQ Transports
@@ -398,8 +379,8 @@ module for use as the MessageQ.SetupTransportProxy module.
 | typically slowest because of the  |                                   |
 | overhead of queuing messages      |                                   |
 | using a linked list. This is the  |                                   |
-| default MessageQ transport on     |                                   |
-| non-F28M35x devices.              |                                   |
+| default MessageQ transport.       |                                   |
+|                                   |                                   |
 +-----------------------------------+-----------------------------------+
 | ti.sdo.ipc.transports.\ **Transpo | Medium                            |
 | rtShmCirc**                       |                                   |

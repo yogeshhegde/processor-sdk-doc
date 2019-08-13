@@ -22,10 +22,7 @@ A GateMP instance can be used to enforce both local and remote context protectio
 That is, entering a GateMP can prevent preemption by another thread/process running on the 
 same processor and simultaneously prevent a remote processor from entering the same gate. 
 GateMP's are typically used to protect reads/writes to a shared resource, such as shared memory.
-
-.. note::
-  The GateMP module is not supported for Concerto F28M35x devices.
-  
+ 
 .. note::
   Initial IPC 3.x releases only supported GateMP on BIOS. It was introduced on QNX in IPC 3.10, and on Linux/Android in 3.21.
 

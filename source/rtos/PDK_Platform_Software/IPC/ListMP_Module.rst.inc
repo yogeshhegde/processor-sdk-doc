@@ -135,7 +135,4 @@ The following figure shows local memory and shared memory for processors Proc 0 
 
 The cache alignment used by the list is taken from the SharedRegion on a per-region basis. The alignment must be the same across all processors and should be the worst-case cache line boundary.
 
-.. note::
-  The ListMP module is not supported for Concerto F28M35x devices.
-
 

@@ -57,12 +57,6 @@ The SharedRegion with an index of 0 (zero) is often used by BIOS-side IPC_start(
 for internal use by other IPC modules. Thus SharedRegion "0" must be accessible by all processors. 
 See SharedRegion Module for more about the SharedRegion module.
 
-.. note:
-   The Ipc module is not used on Concerto F28M35x devices. 
-   Instead, the IpcMgr module (in the ti.sdo.ipc.family.f28m35x package) is used to configure 
-   the devices as described in Using IPC on Concerto Devices. 
-   Concerto applications should not call any Ipc or IpcMgr APIs at runtime.
-
 Ipc Module Configuration (BIOS-side only)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In an XDCtools configuration file, you configure the Ipc module for use as follows:
