@@ -19,7 +19,17 @@ FC
 IPC
 *******
 
-IPC User Guide
+Inter-Processor Communication (IPC) provides a processor-agnostic API which can be used for communication between processors in a multi-processor environment (inter-core), communication to other threads on same processor (inter-process), and communication to peripherals (inter-device). 
+The API supports message passing, streams, and linked lists.
+IPC can be used to communicate with the following:
+
+- Other threads on the same processor
+- Threads on other processors running SYS/BIOS
+- Threads on other processors running an HLOS (e.g., Linux, QNX, Android)
+
+.. image:: ../images/IPC_comm_features.JPG
+
+IPC User's Guide
 ================
 .. include:: PDK_Platform_Software/IPC/IPC_Users_Guide.rst.inc
 

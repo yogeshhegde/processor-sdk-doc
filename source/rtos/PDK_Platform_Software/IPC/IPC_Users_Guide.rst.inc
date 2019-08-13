@@ -1,18 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide 
 
-Inter-Processor Communication (IPC) provides a processor-agnostic API which can be used for communication between processors in a multi-processor environment (inter-core), communication to other threads on same processor (inter-process), and communication to peripherals (inter-device). 
-The API supports message passing, streams, and linked lists.
-IPC can be used to communicate with the following:
-
-- Other threads on the same processor
-- Threads on other processors running SYS/BIOS
-- Threads on other processors running an HLOS (e.g., Linux, QNX, Android)
-
-.. image:: ../images/IPC_comm_features.JPG
-
-About this User's Guide
-------------------------
-
 This user's guide is the new home of the *Inter-Processor
 Communication (IPC) User's Guide*
 (`SPRUGO6 <http://www.ti.com/lit/pdf/sprugo6>`__). That PDF-based
