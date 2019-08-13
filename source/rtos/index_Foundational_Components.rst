@@ -23,10 +23,6 @@ IPC User Guide
 ================
 .. include:: PDK_Platform_Software/IPC/IPC_Users_Guide.rst.inc
 
-About IPC
-================
-.. include:: PDK_Platform_Software/IPC/About_IPC.rst.inc
-
 IPC Install Guides
 ====================
 BIOS Install Guide
