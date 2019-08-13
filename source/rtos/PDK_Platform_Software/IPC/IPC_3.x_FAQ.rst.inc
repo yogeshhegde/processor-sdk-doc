@@ -1,15 +1,10 @@
 .. http://processors.wiki.ti.com/index.php/IPC_3.x_FAQ 
 
-General
----------
-
-A good place to start is the `IPC Wiki <index_Foundational_Components.html#ipc>`__.
 
 I have a question that's not answered here, what now?
 -----------------------------------------------------
 
--  There are lots of knowledgeable experts on the `E2E Embedded SW
-   Forum <http://e2e.ti.com/support/embedded/default.aspx>`__ - posts
+-  There are lots of knowledgeable experts on the `TI E2E Support Forums <http://e2e.ti.com/>`__ - posts
    welcome!
 -  Have you tried `Google <http://www.google.com>`__? IPC's been around
    a while, and Google has lots of details about it.
