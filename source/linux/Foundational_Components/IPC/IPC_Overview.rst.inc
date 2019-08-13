@@ -34,7 +34,8 @@
 +----------------------------------------------------------------------------------+-----------------------+
 | Links                                                                            | Description           |
 +==================================================================================+=======================+
-| `IPC User's Guide <http://processors.wiki.ti.com/index.php/IPC_Users_Guide>`__   | TI IPC User's Guide   |
+| `IPC User's Guide <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/ | TI IPC User's Guide   |
+| rtos/index_Foundational_Components.html#ipc>`__                                  |                       |
 +----------------------------------------------------------------------------------+-----------------------+
 
 | 
@@ -51,7 +52,8 @@
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 | `Linux IPC on K2x <Foundational_Components_IPC.html#ipc-for-k2x>`__                                                        | General info on IPC under Linux environment for K2x                                |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
-| `Running IPC example on DRA7xx/AM572x <http://processors.wiki.ti.com/index.php/Running_IPC_Examples_on_DRA7xx/AM572x>`__   | Info on running RTOS IPC examples on DRA7xx/AM572x                                 |
+| `Running IPC example on DRA7xx/AM572x <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/                       | Info on running RTOS IPC examples on DRA7xx/AM572x                                 |                                             
+| rtos/index_how_to_guides.html#run-ipc-examples-on-am572x>`__                                                               |                                                                                    |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
 | `Training video on how to Run IPC example on AM572x <https://training.ti.com/am572x-build-run-ipc-examples>`__             | Step-by-step Video on running the IPC examples under Linux environment on AM572x   |
 +----------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------+
