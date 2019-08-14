@@ -121,8 +121,6 @@ In AM57xx, the hardware accelerators are capable of the following
 
 For more info, please refer to the `DCE Developer’s
 Guide <http://processors.wiki.ti.com/index.php/DRA7xx_GLSDK_Software_Developers_Guide>`__
-or `DCE for
-Multimedia <http://processors.wiki.ti.com/index.php/Processor_Training:_Multimedia>`__
 
 .. rubric:: Use Cases
    :name: use-cases-1
@@ -170,8 +168,9 @@ buffers
 .. rubric:: Examples
    :name: examples-2
 
--  Please see `Big Data IPC
-   example <http://processors.wiki.ti.com/index.php/Processor_SDK_Big_Data_IPC_Examples>`__
+-  Please see `Big Data IPC example 
+   <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/
+   index_examples_demos.html#big-data-ipc-example>`__
 
 .. rubric:: Benefits
    :name: benefits-2
@@ -203,10 +202,7 @@ and DSP processors in a multi-processor environment.
 -  ListMP Module is a linked-list based module designed to provide a
    mean of communication between different processors. It uses shared
    memory to provide a way for multiple processors to share, pass or
-   store data buffers, messages,
-
-or state information.
-
+   store data buffers, messages, or state information.
 -  HeapMP Module provides 3 types of memory management, fixed-size
    buffers, multiple different fixed-size buffers, and variable-size
    buffers.
@@ -225,10 +221,11 @@ or state information.
    application and other modules to sotre and retrieve values based on a
    name.
 
-| 
-| For more info, please refer to `IPC User's
-  Guide <http://processors.wiki.ti.com/index.php/IPC_Users_Guide>`__
+| For more info, please refer to `IPC User's Guide 
+  <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/
+  rtos/index_Foundational_Components.html#ipc>`__
 
+|
 .. rubric:: User Cases
    :name: user-cases
 
@@ -237,8 +234,8 @@ or state information.
 .. rubric:: Examples
    :name: examples-3
 
--  Please see `IPC
-   Examples <http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Examples>`__
+-  Please see `IPC Examples
+   <Foundational_Components_IPC.html#build-ipc-linux-examples>`__
 
 .. rubric:: Benefits
    :name: benefits-3

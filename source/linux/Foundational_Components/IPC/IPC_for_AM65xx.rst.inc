@@ -28,7 +28,7 @@ Prerequisites
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
-For reference within the context of this wiki page, the Linux SDK is
+For reference within the context of this page, the Linux SDK is
 installed at the following location:
 
 ::
@@ -99,7 +99,7 @@ point for this effort.
 
 The instructions to build IPC examples found under
 ipc\_3\_xx\_xx\_xx/examples/AM65XX\_linux\_elf have been provided in the
-`Processor SDK IPC Quick Start Guide <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_IPC.html#ipc-quick-start-guide>`__.
+`Processor SDK IPC Quick Start Guide <Foundational_Components_IPC.html#build-ipc-linux-examples>`__.
 
 Let's focus on one example in particular, ex02\_messageq, which is
 located at
@@ -315,8 +315,10 @@ Additionally, when you change the carveout location, there is a
 corresponding change that must be made to the resource table. For
 starters, if you're making a memory change you will need a **custom**
 resource table. The resource table is a large structure that is the
-"bridge" between physical memory and virtual memory.  There is detailed information available in the article `IPC
-Resource customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__.
+"bridge" between physical memory and virtual memory.
+There is detailed information available in the article `IPC
+Resource customTable <http://software-dl.ti.com/processor-sdk-rtos/esd/
+docs/latest/rtos/index_Foundational_Components.html#resource-custom-table>`__.
 
 Once you've created your custom resource table, you must update the
 address of PHYS\_MEM\_IPC\_VRING to be the same base address as your
@@ -348,9 +350,10 @@ be the addresses in your linker command files, etc.
 You must ensure that the sizes of your sections are consistent with the
 corresponding definitions in the resource table. You should create your
 own resource table in order to modify the memory map. This is describe
-in the wiki page `IPC Resource
-customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__. You can look at an
-existing resource table inside IPC:
+in the page `IPC Resource
+customTable <http://software-dl.ti.com/processor-sdk-rtos/esd/
+docs/latest/rtos/index_Foundational_Components.html#resource-custom-table>`__.
+You can look at an existing resource table inside IPC:
 
 ipc/packages/ti/ipc/remoteproc/rsc\_table\_am65xx\_r5f.h
 

@@ -34,7 +34,7 @@ Prerequisites
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
-For reference within the context of this wiki page, the Linux SDK is
+For reference within the context of this page, the Linux SDK is
 installed at the following location:
 
 ::
@@ -148,7 +148,7 @@ point for this effort.
 The instructions to build IPC examples found under
 ipc\_3\_xx\_xx\_xx/examples/DRA7XX\_linux\_elf have been provided in the
 **`Processor\_SDK IPC Quick Start
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_IPC_Quick_Start_Guide#Build_IPC_Linux_examples>`__.**
+Guide <Foundational_Components_IPC.html#ipc-quick-start-guide>`__.**
 
 Let's focus on one example in particular, ex02\_messageq, which is
 located at
@@ -504,7 +504,8 @@ resource table. The resource table is a large structure that is the
 "bridge" between physical memory and virtual memory. This structure is
 utilized for configuring the MMUs that sit in front of the DSP
 subsystem. There is detailed information available in the article `IPC
-Resource customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__.
+Resource customTable <http://software-dl.ti.com/processor-sdk-rtos/esd/
+docs/latest/rtos/index_Foundational_Components.html#resource-custom-table>`__.
 
 Once you've created your custom resource table, you must update the
 address of PHYS\_MEM\_IPC\_VRING to be the same base address as your
@@ -531,8 +532,10 @@ be the addresses in your linker command files, etc.
 You must ensure that the sizes of your sections are consistent with the
 corresponding definitions in the resource table. You should create your
 own resource table in order to modify the memory map. This is describe
-in the wiki page `IPC Resource
-customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__. You can look at an
+in the page `IPC Resource
+customTable <http://software-dl.ti.com/processor-sdk-rtos/esd/
+docs/latest/rtos/index_Foundational_Components.html#resource-custom-table>`__.
+You can look at an
 existing resource table inside IPC:
 
 ipc/packages/ti/ipc/remoteproc/rsc\_table\_vayu\_dsp.h
@@ -808,7 +811,8 @@ Linux dts file.** For example for the AM57xx EVM:
   "bridge" between physical memory and virtual memory. This structure is
   utilized for configuring the IPUx\_MMU (not the Unicache MMU). There
   is detailed information available in the article `IPC Resource
-  customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__.
+  customTable <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/
+  latest/rtos/index_Foundational_Components.html#resource-custom-table>`__.
 
 Once you've created your custom resource table, you must update the
 address of PHYS\_MEM\_IPC\_VRING to be the same base address as your
@@ -906,8 +910,9 @@ address output from the AMMU and translates it to the physical address
 used by the L3 interconnect. The IOMMU is programmed by the ARM based on
 the associated resource table. If you're planning any memory changes
 then you'll want to make a custom resource table as described in the
-wiki page `IPC Resource
-customTable <http://processors.wiki.ti.com/index.php/IPC_Resource_customTable>`__.
+page `IPC Resource
+customTable <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/
+latest/rtos/index_Foundational_Components.html#resource-custom-table>`__.
 
 The default resource table (which can be adapted to make a custom table)
 can be found at this location:
@@ -1495,7 +1500,8 @@ No longer have shared folder so change include path
 .. rubric:: Download the Full CCS Project
    :name: download-the-full-ccs-project
 
-`GPIO\_LedBlink\_evmAM572x\_c66xExampleProject\_with\_ipc.zip <http://processors.wiki.ti.com/images/c/c9/GPIO_LedBlink_evmAM572x_c66xExampleProject_with_ipc.zip>`__
+:download:`GPIO\_LedBlink\_evmAM572x\_c66xExampleProject\_with\_ipc.zip <../files/GPIO_LedBlink_evmAM572x_c66xExampleProject_with_ipc.zip>`
+
 
 .. rubric:: Adding IPC to an existing TI RTOS application on the IPU
    :name: adding-ipc-to-an-existing-ti-rtos-application-on-the-ipu
@@ -1535,8 +1541,9 @@ which will be described in following sections
    :name: running-uart-readwrite-pdk-example-from-ccs
 
 Developers are required to run pdkProjectCreate script to generate this
-example as described in the `Processor SDK RTOS wiki
-article <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__.
+example as described in the `Processor SDK RTOS 
+article <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/
+latest/rtos/index_overview.html#rebuilding-components>`__.
 
 For the UART M4 example run the script with the following arguments:
 
@@ -1550,8 +1557,8 @@ After you run the script, you can find the UART M4 example project at
 <SDK\_INSTALL\_PATH>\\pdk\_am57xx\_1\_0\_4\\packages\\MyExampleProjects\\UART\_BasicExample\_evmAM572x\_m4ExampleProject.
 
 Import the project in CCS and build the example. You can now connect to
-the EVM using an emulator and CCS using the instructions provided here:
-http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup
+the EVM using an emulator and CCS using the instructions provided in `AM572x GP EVM Hardware Setup 
+<How_to_Guides_Hardware_Setup_with_CCS.html#am572x-gp-evm-hardware-setup>`__
 
 Connect to the ARM core and make sure GEL runs multicore initialization
 and brings the IPUSS out of reset. Connect to IPU2 core0 and load and
@@ -1574,7 +1581,7 @@ following log on the serial IO console:
    :name: build-and-run-ex02_messageq-ipc-example
 
 Follow instructions described in Article `Run IPC Linux
-Examples <http://processors.wiki.ti.com/index.php/Processor_SDK_IPC_Quick_Start_Guide#Run_IPC_Linux_examples>`__
+Examples <Foundational_Components_IPC.html#ipc-quick-start-guide>`__
 
 .. rubric:: Update Linux Kernel device tree to remove UART that will be
    controlled by M4
@@ -1945,7 +1952,7 @@ There are two MMUs inside each of the IPU1, and IPU2 subsystems. The L1
 MMU is referred to as IPU\_UNICACHE\_MMU or AMMU and L2 MMU. The
 description of how this is configured in IPC-remoteproc has been
 described in section
-`Changing\_Cortex\_M4\_IPU\_Memory\_Map <http://processors.wiki.ti.com/index.php/Linux_IPC_on_AM57xx#Changing_Cortex_M4_IPU_Memory_Map>`__.
+`Changing\_Cortex\_M4\_IPU\_Memory\_Map <Foundational_Components_IPC.html#ipc-for-am57xx>`__.
 IPC handling of L1 and L2 MMU is different from how the PDK driver
 examples setup the memory access using these MMUs which the users need
 to manage when integrating the components. This difference is
@@ -2015,5 +2022,5 @@ filesystem that is used to load M4 firmware.
 .. rubric:: Download the Full CCS Project
    :name: download-the-full-ccs-project-1
 
-`UART\_BasicExample\_evmAM572x\_m4ExampleProject\_with\_ipc.zip <http://processors.wiki.ti.com/index.php/File:UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip>`__
+:download:`UART\_BasicExample\_evmAM572x\_m4ExampleProject\_with\_ipc.zip <../files/UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip>`
 

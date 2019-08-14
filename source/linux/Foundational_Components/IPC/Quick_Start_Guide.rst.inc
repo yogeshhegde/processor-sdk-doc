@@ -2,7 +2,7 @@
 .. rubric:: Overview
    :name: overview-ipc
 
-This wiki page is meant to be a Quick Start Guide for applications using
+This page is meant to be a Quick Start Guide for applications using
 IPC (Inter Processor Communication) in Processor SDK.
 
 It begins with details about the out-of-box demo provided in the
@@ -27,7 +27,7 @@ The out of box demo is only available on Keystone-2 EVMs.
 
     This assumes the release images are loaded in the
     flash/SD Card. If needed to update to latest release follow the
-    http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide
+    `Linux Getting Started Guide <Overview_Getting_Started_Guide.html>`__
     to update the release images on flash memory/SD card on the EVM using
     Program-evm or using the procedures for SD Card.
 
@@ -94,7 +94,7 @@ The source code are located in:
 .. note::
 
     Please follow the build instruction in `Linux Kernel User Guide
-    <http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide>`__
+    <Foundational_Components_Kernel_Users_Guide.html>`__
     to set up the build environment.
 
 | 
@@ -153,13 +153,13 @@ RTOS processor SDKs need to be installed. They can be downloaded from
 `SDK download
 page <http://www.ti.com/lsds/ti/tools-software/processor_sw.page>`__
 
-To install Linux Proc SDK, please follow the instruction in `Linux SDK
-Getting Started
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Getting_Started_Guide>`__
+To install Linux Proc SDK, please follow the instruction in `Download 
+and Install the SDK 
+<Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__
 
-To Install RTOS Proc SDK, please follow the instructions in `RTOS SDK
-Getting Started
-Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__
+To Install RTOS Proc SDK, please see `Processor SDK for RTOS
+<http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/
+index_overview.html#processor-sdk-for-rtos>`__
 
 Once the Linux and RTOS Processor SDKs are installed at their default
 locations, the IPC Linux library, not included in the Linux Proc SDK,
@@ -181,7 +181,7 @@ with the following commands:
 .. note::
 
     Please follow the build instruction in `Linux Kernel User Guide
-    <http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide>`__
+    <Foundational_Components_Kernel_Users_Guide.html>`__
     to set up the build environment.
 
 .. note::
@@ -304,8 +304,8 @@ SDK RTOS package.
 .. note::
 
     To Install RTOS Proc SDK, please follow the
-    instructions in `RTOS SDK Getting Started
-    Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide>`__
+    instructions in `RTOS SDK Getting Started Guide
+    <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_overview.html>`__
     In the RTOS Processor SDK, the ipc examples are located under
     <RTOS\_SDK\_INSTALL\_DIR>/processor\_sdk\_rtos\_<platform>\_x\_xx\_xx\_xx/ipc\_<version>/examples/<platform>\_bios\_elf.
 

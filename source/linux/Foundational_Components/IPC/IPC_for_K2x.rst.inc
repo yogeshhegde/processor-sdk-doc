@@ -105,11 +105,11 @@ Use mpmcl --help for details on the supported commands. The following is the out
 
 	Usage: mpmcl <command> [slave name] [options]
 	Multiproc manager CLI to manage slave processors
-	<command>           Commands for the slave processor
+	<command>    Commands for the slave processor
                      Supported commands: ping, load, run, reset, status, coredump, transport
-                                         load_withpreload, run_withpreload
-	[slave name]        Name of the slave processor as specified in MPM config file
-	[options]           In case of load, the option field need to have image file name
+                     load_withpreload, run_withpreload
+	[slave name] Name of the slave processor as specified in MPM config file
+	[options]    In case of load, the option field need to have image file name
 	
 
 The following is a sample set of mpmcl commands for managing slave processors:
@@ -206,7 +206,7 @@ Building the Bundled IPC Examples
 *********************************
 
 The instructions to build IPC examples found under ipc_3_xx_xx_xx/examples/66AK2G_linux_elf have been provided in the
-`Processor SDK IPC Quick Start Guide <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_IPC.html#ipc-quick-start-guide>`__.
+`Processor SDK IPC Quick Start Guide <Foundational_Components_IPC.html#build-ipc-linux-examples>`__.
 
 Let's focus on one example in particular, ex02\_messageq, which is located at **<rtos-sdk-install-dir>/ipc\_3\_xx\_xx\_xx/examples/66AK2G\_linux\_elf/ex02\_messageq**.
 
