@@ -86,3 +86,8 @@ SimpleLink WiFi Demo
 CAN-Eth Gatway Demo
 ***************************
 .. include:: Examples_and_Demonstrations/Can_Eth_Gateway_Demo.rst.inc
+
+**********************
+Interrupt Latency Benchmark
+**********************
+.. include:: Examples_and_Demonstrations/Interrupt_Latency_Benchmark.rst.inc
