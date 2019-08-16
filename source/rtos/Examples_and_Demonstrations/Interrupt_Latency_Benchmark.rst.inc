@@ -98,6 +98,7 @@ UART port, and begin a UART console.
     
 
 CCS
+---
 
 To run the benchmark on AM572xx using CCS, use the following steps.
 
@@ -138,6 +139,7 @@ To run the benchmark on AM65x using CCS, use the following steps.
       Only load and run the binary on the A53_0 core
 
 Secondary Bootloader (SBL)
+--------------------------
 
 To run the benchmark on a micro-SD card, follow the 
 corresponding steps for AM57x (http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#am57x)
