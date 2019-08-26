@@ -16,10 +16,7 @@ This user's guide contains the topics in the following list. It also
 links to API reference documentation for static configuration (|ipcCfg_Img|)
 and run-time C processing (|ipcRun_Img|) for each module.
 
--  `About IPC <index_Foundational_Components.html#about-ipc>`__ provides an
-   overview of the IPC component.
-
-   -  `Use Cases for IPC <index_Foundational_Components.html#use-cases-for-ipc>`__
+-  `Use Cases for IPC <index_Foundational_Components.html#use-cases-for-ipc>`__
 
 -  `The ti.sdo.ipc
    Package <index_Foundational_Components.html#ti-sdo-ipc-package>`__
