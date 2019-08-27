@@ -58,27 +58,27 @@ Software
 ::
 
       source pdksetupenv.sh
-      cd pdk_k2g_<version>/packages/ti/addon/audk2g/
+      cd pdk_k2g_<version>/packages/ti/addon/aud/
       make clean
       make all
 
 -  The OUT file (audioAnalogLoopbackTest.out) for DSP will be built at
-   pdk_k2g_<version>/packages/ti/addon/audk2g/test/analog/loopback/build/make
+   pdk_k2g_<version>/packages/ti/addon/aud/test/analog/loopback/build/make
 
 **For Windows:**
 
--  Under pdk_k2g_<version>\packages directory, run the following
+-  Under pdk_k2g_<version>\\packages directory, run the following
    commands:
 
 ::
 
       pdksetupenv.bat
-      cd pdk_k2g_<version>\packages\ti\addon\audk2g\
+      cd pdk_k2g_<version>\packages\ti\addon\aud\
       gmake clean
       gmake all
 
 -  The OUT file (audioAnalogLoopbackTest.out) for DSP will be built at
-   pdk_k2g_<version>\packages\ti\addon\audk2g\test\analog\loopback\build\make
+   pdk_k2g_<version>\\packages\\ti\\addon\\aud\\test\\analog\\loopback\\build\\make
 
 .. rubric:: How to Run the Unit Test
    :name: how-to-run-the-unit-test
@@ -95,7 +95,7 @@ The following section provide detailed steps for K2G EVM
    Configuration" from CCS 6.1.3
 -  Then "Connect to C66xx_DSP"
 -  Load the audioAnalogLoopbackTest.out from
-   pdk_k2g_<version>/packages/ti/addon/audk2g/test/analog/loopback/build/make
+   pdk_k2g_<version>/packages/ti/addon/aud/test/analog/loopback/build/make
 -  Run the program (loaded previously) by pressing F8
 -  The program will print out the instructions on how to verify the
    loopback physically
