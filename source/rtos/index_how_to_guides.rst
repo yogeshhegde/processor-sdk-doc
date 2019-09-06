@@ -137,6 +137,10 @@ EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/TMDXEVM6678L_EVM_Hardware_Setup.rst.inc
 
+.. OMAP-L138/C6748 LCDK Hardware Setup
+.. ====================================================
+.. include:: ../common/EVM_Hardware_Setup/OMAPL138-C6748_LCDK_Hardware_Setup.rst.inc
+
 .. OMAP-L137 EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/OMAPL137_EVM_Hardware_Setup.rst.inc
