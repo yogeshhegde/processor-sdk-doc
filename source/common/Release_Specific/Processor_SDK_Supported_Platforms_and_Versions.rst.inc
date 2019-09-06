@@ -181,7 +181,10 @@ The following platforms and EVMs are supported with Processor SDK
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`OMAPL138/C6748 <http://www.ti.com/   |`OMAP-L138/C6748 LCDK                 | A7A      |`Hardware User's Guide <http://             | X              | N/A            | X              |                |
 |lsds/ti/processors/dsp/c6000_dsp-arm/ |<http://www.ti.com/tool               |          |www.ti.com/lit/spruil2>`__                  |                |                |                |                |
-|omap-l1x/overview.page>`__            |/tmdslcdk138>`__                      |          |                                            |                |                |                |                |
+|omap-l1x/overview.page>`__            |/tmdslcdk138>`__                      |          |`Hardware Setup with CCS <http://software-dl|                |                |                |                |
+|                                      |                                      |          |.ti.com/processor-sdk-rtos/esd/docs/latest/r|                |                |                |                |
+|                                      |                                      |          |tos/index_how_to_guides.html#omap-l138-c6748|                |                |                |                |
+|                                      |                                      |          |-lcdk-hardware-setup>`__                    |                |                |                |                |
 +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+----------------+
 |`AMIC110 <http://www.ti.com/          |`AMIC110 ICE                          | 1.1      |`Hardware User's Guide <http://             |                |                | X              |                |
 |product/AMIC110>`__                   |<http://www.ti.com/tool               |          |www.ti.com/lit/pdf/spruie6>`__              |                |                |                |                |
