@@ -37,3 +37,7 @@ EVM Hardware Setup
 .. AMIC110 ICE EVM Hardware Setup
 .. ====================================================
 .. include:: ../common/EVM_Hardware_Setup/ICE_AMIC110_EVM_Hardware_Setup.rst.inc
+
+.. OMAP-L138/C6748 LCDK Hardware Setup
+.. ====================================================
+.. include:: ../common/EVM_Hardware_Setup/OMAPL138-C6748_LCDK_Hardware_Setup.rst.inc
