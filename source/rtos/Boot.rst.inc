@@ -79,9 +79,9 @@ AM57x
 ---------------
 .. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM57x.rst.inc
 
-AM65x
+AM65x/J721E
 ---------------
-.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM65x.rst.inc
+.. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/BOOT_AM65x_J721E.rst.inc
 
 C66x
 ---------------

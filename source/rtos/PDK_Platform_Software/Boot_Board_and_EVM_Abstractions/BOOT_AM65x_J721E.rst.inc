@@ -1,9 +1,9 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM65x 
+.. http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_BOOT_AM65x_J721E
 
 Overview
 ^^^^^^^^^
 
-The Secondary Bootloader (SBL) for AM65xx device initializes the execution 
+The Secondary Bootloader (SBL) for AM65xx/J721E device initializes the execution
 environment for multi-core applications and this can be used to demonstrate 
 a real world product experience. This section covers additional details 
 including execution sequence, tools and additional flashing instructions.
@@ -31,7 +31,7 @@ The SBL is in turn used by the board framework to load and start diagnostics
 -  **Power On Reset**
 -  **ROM Bootloader (RBL)**
 
-   -  Software pre-programmed in AM65xx ROM memory starts executing
+   -  Software pre-programmed in AM65xx/J721E ROM memory starts executing
    -  The RBL performs platform configuration and initialization.
    -  It then checks sysboot pins and chooses booting device
    -  The RBL then configures PLL and clock settings for R5, and 
@@ -79,7 +79,8 @@ The SBL is in turn used by the board framework to load and start diagnostics
    and SHA of the bootloader image.
 -  For a detailed description of ROM bootloader and more information on the image 
    format expected by the RBL refer the initialization chapter in the `AM65xx Technical
-   Reference Manual <http://www.ti.com/lit/pdf/spruid7>`__
+   Reference Manual <http://www.ti.com/lit/pdf/spruid7>`__ and the `J721E Technical
+   Reference Manual <http://www.ti.com/lit/pdf/spruil1>`__
 -  In addition to the bootloader and application, the DMSC firmware binary is also needed
    for the SoC to complete the system boot flow.
 -  The first 256 bytes of the ATCM are reserved by SBL for its use. The SBL initializes
@@ -139,7 +140,7 @@ Directory structure
     ├── example
     │   └── k3MulticoreApp
     │       ├── binary
-    │       │   └── am65xx
+    │       │   └── [soc]
     │       │       ├── sbl_baremetal_*.appimage 		<= SBL loadable board specific sample apps for testing SBL boot flow on GP devices
     │       │       ├── sbl_baremetal_*.appimage.signed		<= SBL loadable board specific signed sample apps for testing SBL boot flow on HS devices
     │       │       └── sbl_baremetal_*_release.x*.bin		<= Binary image that can be eXecuted In Place on XIP capable boot media
@@ -163,51 +164,22 @@ Directory structure
     │       └── sbl_smp_r5.asm 					<= Provides dummy override function for __mpu_init for SMP testcase.
     │      
     ├── binary							<= ROM bootable SBL images for each board/boot media
-    │   ├── am65xx_evm
-    │   │   ├── mmcsd
-    │   │   │   └── bin
-    │   │   │       └── sbl_mmcsd_img_mcu1_0_release.tiimage
-    │   │   └── ospi
-    │   │       └── bin
-    │   │           └── sbl_ospi_img_mcu1_0_release.tiimage
-    │   └── am65xx_idk
-    │       ├── mmcsd
-    │       │   └── bin
-    │       │       └── sbl_mmcsd_img_mcu1_0_release.tiimage
-    │       └── ospi
-    │           └── bin
-    │               └── sbl_ospi_img_mcu1_0_release.tiimage
+    │   ├── [board]
+    │       └── [bootmedia]
+    │           └── bin
+    │               └── sbl_[bootmedia]_img_mcu1_0_release.tiimage
     │ 
     ├── lib							<= SBL lib for each boot media/board supported
-    │   ├── mmcsd
-    │   │   ├── am65xx_evm
-    │   │   │   └── r5f
-    │   │   │       └── release
-    │   │   │           └── sbl_lib_mmcsd.aer5f
-    │   │   └── am65xx_idk
-    │   │       └── r5f
-    │   │           └── release
-    │   │               └── sbl_lib_mmcsd.aer5f
-    │   │
-    │   ├── ospi
-    │   │   ├── am65xx_evm
-    │   │   │   └── r5f
-    │   │   │       └── release
-    │   │   │           └── sbl_lib_ospi.aer5f
-    │   │   └── am65xx_idk
-    │   │       └── r5f
-    │   │           └── release
-    │   │               └── sbl_lib_ospi.aer5f
-    │   │
+    │   ├── [bootmedia]
+    │   │   └── [board]
+    │   │       └── r5f
+    │   │           └── release
+    │   │               └── sbl_lib_[bootmedia].aer5f
     │   └── cust
-    │       ├── am65xx_evm
-    │       │   └── r5f
-    │       │       └── release
-    │       │           └── sbl_lib_cust.aer5f
-    │       └── am65xx_idk
-    │           └── r5f
-    │               └── release
-    │                   └── sbl_lib_cust.aer5f
+    │       └── [board]
+    │           └── r5f
+    │               └── release
+    │                   └── sbl_lib_cust.aer5f
     │  
     ├── soc							<= SOC specific SBL code
     │   └── k3
@@ -221,13 +193,15 @@ Directory structure
     │       ├── sbl_slave_core_boot.c				<= Code that contains the sequence to release a core from reset
     │       ├── sbl_slave_core_boot.h
     │       ├── sbl_soc.c					<= Cache Ops, PMU init, image verfication, etc & SoC specific code like RAT Init..
-    │       ├── sbl_soc_cfg.h					<= Abstraction layer for hiding K3 SoC level changes from SBL
+    │       ├── sbl_soc_cfg.h					<= Abstraction layer for hiding SoC level changes from SBL
     │       └── sbl_profile.h					<= SBL profiling framework 
     │
     ├── src							<= Common drivers used across SOCs 
     │   ├── mmcsd
+    │   ├── hyperflash
     │   ├── ospi
     │   ├── qspi
+    │   ├── uart
     │   ├── rprc						<= RPRC image parser used by SBL
     │   └── spi
     │
@@ -235,15 +209,15 @@ Directory structure
         ├── btoccs
         ├── byteswap
         ├── ccsutil
-        ├── flashWriter						<= Unused for AM65xx. AM65xx uses Uniflash to program flashes.
+        ├── flashWriter						<= Unused for AM65xx/J721E. AM65xx/J721E uses Uniflash to program flashes.
         ├── multicoreImageGen					<= Stitches multiple RPRC images for different cores into a single image
-        ├── omapl13x_boot_utils					<= Unused for AM65xx
-        ├── omapl13x_sd_card_format				<= Unused for AM65xx
+        ├── omapl13x_boot_utils					<= Unused for AM65xx/J721E
+        ├── omapl13x_sd_card_format				<= Unused for AM65xx/J721E
         ├── out2rprc						<= Converts .out into .rprc files, so that SBL can load non-continuous memory sections
         ├── scripts						<= Scripts used by .out  generated by CCS projects into SBL loadable images
         │   ├── K3ImageGen.bat
         │   └── K3ImageGen.sh
-        └── tiImageGen						<= Unused for AM65xx. Image generation is handled by PDK build framework (<prsdk_install_path>/pdk_*/packages/ti/build/)
+        └── tiImageGen						<= Unused for AM65xx/J721E. Image generation is handled by PDK build framework (<prsdk_install_path>/pdk_*/packages/ti/build/)
 
 
 .. _am655x-image-formats:
@@ -256,7 +230,8 @@ Image Formats
 To generate the a bootable image, the SBL build uses the x509CertificateGen script to
 sign the sbl binary with so that the ROM Boot Loader (RBL) can parse it. The image 
 format expected by the RBL has been described in detail in the Image Format Section 
-of the `AM65xx Technical Reference Manual <http://www.ti.com/lit/pdf/spruid7>`__
+of the `AM65xx Technical Reference Manual <http://www.ti.com/lit/pdf/spruid7>`__ and
+the `J721E Technical Reference Manual <http://www.ti.com/lit/pdf/spruil1>`__
 
 .. note::  For HS devices, the SBL and system firmware have to be signed with the MPK.
            For an easy out-of-box experience, the Processor SDK for HS devices signs the 
@@ -616,7 +591,7 @@ the different tests exercises are listed below.
    modified by changing the value of SIZE_OF_PAD in `sbl/example/k3MulticoreApp/
    sbl_mcu_0_boot_perf_benchmark.c <http://git.ti.com/keystone-rtos/sbl/blobs/master/example/k3MulticoreApp/sbl_mcu_0_boot_perf_benchmark.c#line90>`__
    to profile for different app image sizes.
--  sbl_baremetal_boot_xip_test_am65xx_evm_mcu1_0TestApp_release.xer5f.bin: A testcase
+-  sbl_baremetal_boot_xip_test_*_mcu1_0TestApp_release.xer5f.bin: A testcase
    demonstrating booting an XIP application from OSPI flash. Please refer `sbl/build/
    sbl_mcu0_boot_xip_test.mk <https://git.ti.com/keystone-rtos/sbl/blobs/master/build/
    sbl_mcu0_boot_xip_test.mk>`__ and `sbl/example/k3MulticoreApp/mcuXiplinker.lds
@@ -642,7 +617,7 @@ the different tests exercises are listed below.
 
     
 
-The test log for sbl_*_boot_test_*_all_coresTestApp_release is
+An example test log for sbl_*_boot_test_*_all_coresTestApp_release is
 ::
 
     SYSFW  ver xx.x.x-v20xx.xx (xxx xxx) running
@@ -655,7 +630,7 @@ The test log for sbl_*_boot_test_*_all_coresTestApp_release is
     MCU1_0 running
     MCU1_0 reports: All tests have passed
 
-The test log for sbl_*_smp_test_*_all_coresTestApp_release.appimage is
+An example log for sbl_*_smp_test_*_all_coresTestApp_release.appimage is
 ::
                           
     SYSFW  ver xx.x.x-v20xx.xx (xxx xxx) running
@@ -670,7 +645,7 @@ The test log for sbl_*_smp_test_*_all_coresTestApp_release.appimage is
     No of Cortex-A core(s) running: 4
     All tests have passed
 
-The test log for sbl_baremetal_boot_perf_*_mcu1_0TestApp_release.appimage, when the best boot time is reached is
+An example log for sbl_baremetal_boot_perf_*_mcu1_0TestApp_release.appimage, when the best boot time is reached is
 ::
 
     Time elapsed since start of SBL:     36665us
@@ -702,16 +677,18 @@ Boot Modes
 ^^^^^^^^^^
 
 
-The SBL supports MMCSD and OSPI Boot modes. The different boot modes supported for 
-all the am65xx boards is tabulated below.
+The SBL supports MMCSD, OSPI, UART and Hyperflash Boot modes. The different boot modes  
+supported for all the boards is tabulated below.
 
-+-----------------------+--------+------+------+------+------+
-|                       | MMCSD  | OSPI | UART | PCIe | ETH  |
-+-----------------------+--------+------+------+------+------+
-| AM65xx EVM            |  YES   | YES  | YES  |  NO  |  NO  |
-+-----------------------+--------+------+------+------+------+
-| AM65xx IDK            |  YES   | YES  | YES  |  NO  |  NO  |
-+-----------------------+--------+------+------+------+------+
++-----------------------+--------+------+------+------+------+------------+
+|                       | MMCSD  | OSPI | UART | PCIe | ETH  | HYPERFLASH |
++-----------------------+--------+------+------+------+------+------------+
+| AM65xx EVM            |  YES   | YES  | YES  |  NO  |  NO  |     NO     |
++-----------------------+--------+------+------+------+------+------------+
+| AM65xx IDK            |  YES   | YES  | YES  |  NO  |  NO  |     NO     |
++-----------------------+--------+------+------+------+------+------------+
+| J721E EVM             |  YES   | YES  | YES  |  NO  |  NO  |     YES    |
++-----------------------+--------+------+------+------+------+------------+
 
 **Booting Via SD Card**
 
@@ -771,6 +748,24 @@ all the am65xx boards is tabulated below.
 .. warning::   If sysfw.bin is not present in the boot media, the boot will fail without displaying any
                logs on the MCU UART. SBL enables UART logging only after successfully starting the system
                firmware image. If the system firmware load fails, the RBL will eventually reset the system.
+
+
+**Booting Via Hyperflash**
+
+#. `Programming the Hyperflash <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_board.html#uniflash>`__
+#. Booting the testcase from Hyperflashflash
+
+
+**Booting the testcase from Hyperflash**
+
+#. Refer Boot Modes section in the `J721E EVM Hardware Users Guide 
+   <https://cdds.ext.ti.com/ematrix/common/emxNavigator.jsp?objectId=28670.42872.4850.38306>`__ 
+   to setup EVM to boot from Hyperflash.
+#. Open a serial communication terminal like TeraTerm, MiniCom on host
+   PC and connect to the MCU UART console port
+#. Power cycle  the board to boot the application from the Hyperflash.
+#. The test logs will be displayed on the MCU UART
+
                
 EVM Setup for testing SBL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
