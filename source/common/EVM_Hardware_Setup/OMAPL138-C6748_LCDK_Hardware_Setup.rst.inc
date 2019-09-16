@@ -8,19 +8,11 @@ Overview
 The OMAP-L138/C6748 low-cost development kit (LCDK) enables fast and easy software and hardware development of everyday applications that require real-time signal processing 
 and control functional, including industrial control, medical diagnostics and communications. 
 
-Block Diagram
-^^^^^^^^^^^^^^
-The following figure shows the various components of the LCDK.
+Hardware
+^^^^^^^^
+Information on the LCDK hardware can be found in the LCDK User's Guide at the following link.
 
-.. Image:: ../images/lcdk_block_diagram2.gif
-	:scale: 75%
-	
-EVM Layout and Key Components
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The following figure shows the layout and key components of the LCDK.
-
-.. Image:: ../images/lcdk_block_diagram.gif
-	:scale: 75%
+`L138/C6748 Development Kit User's Guide <http://www.ti.com/lit/ug/spruil2/spruil2.pdf>`__
 	
 Supported JTAG Debug Probes (Emulators)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -31,8 +23,8 @@ The LCDK does not have an on-board emulator so an external emulator is required.
  - XDS200
  - XDS510
  - XDS560
+ - XDS110 - Supported only on the C6748 LCDK.
  
-The XDS110 is NOT supported with the LCDK. 
 
 .. Note:: CCS versions 9.0 and later are 64-bit applications. Due to this, 32-bit emulators like the Spectrum Digital XDS510USB emulator are not supported with CCS versions 9.0 and later.
 
@@ -79,7 +71,7 @@ There are 7 on-board LEDs which function according to the following table.
 +-----+--------------+----------------------------------------+
 | D2  | VOLT_ERR     | Input voltage is > 5.8V                |
 +-----+--------------+----------------------------------------+
-| D3  | VCC_5VD_IN   | Board is powered from either J1 or USB |
+| D3  | VCC_5VD_IN   | Board is powered from J1 connector     |
 +-----+--------------+----------------------------------------+
 | D4  | GPIO6[13]    | Signal is high                         |
 +-----+--------------+----------------------------------------+
@@ -92,8 +84,7 @@ There are 7 on-board LEDs which function according to the following table.
 
 Powering the LCDK
 ^^^^^^^^^^^^^^^^^^
-The board can be powered with 5V input through either the J1 barrel connector or the J2 mini-USB connector. 
-Current draw for the board can exceed 500 mA under normal operating conditions, so it is not recommended to use the USB power.
+The board can be powered with 5V input through the J1 barrel connector.
 
 UART Connection
 ^^^^^^^^^^^^^^^^^
@@ -121,9 +112,9 @@ The following section describes how to connect to the LCDK and load code via CCS
 Hardware Setup
 ^^^^^^^^^^^^^^^
 
-- Set the SW1 DIP switches to UART boot mode as shown in the DIP Switches section.
+- Set the SW1 DIP switches to UART boot mode as shown in the `DIP Switches`_ section.
 - Connect an external emulator to the J6 header.
-- Power on the LCDK using either the J1 barrel connector or the J2 mini-USB connector.
+- Power on the LCDK using the J1 barrel connector.
  
 Software Setup
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -236,4 +227,3 @@ The following GEL outputs should appear in the CCS Console view.
 **Running Program**
 
 - Go to “Run -> Resume”
-
