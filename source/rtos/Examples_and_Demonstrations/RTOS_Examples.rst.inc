@@ -385,6 +385,53 @@ file. You should see **Hello World** string displayed on console window.
 
 | 
 
+ARM9
+====
+
+The hello example serves as a basic sanity check program for SYS/BIOS.
+It demonstrates how to print the string 'hello world' to stdout. As a
+sample we will use the OMAP-L138 device to describe the steps.
+
+1. Create a workspace folder inside the ti
+folder to be used for the Hello Example project, and start CCS. You may be
+prompted with **New Products Discovered**, so select all and **click on
+Finish**
+
+2. On CCS click View --> Resource Explorer Classic (Examples).
+
+3. On SYS/BIOS scroll down to OMAP-L1x --> LCDKOMAPL138 --> TI Target Examples --> Generic Examples
+--> click on Hello Example.
+
+.. Image:: ../images/omapl13x_arm9_hello_rtos_tirex.png
+
+4. To import Hello Example, on the right window click on step 1. Import
+The Example to CCS Project.
+
+5. On New CCS Project window enter project name and then click Next.
+
+.. Image:: ../images/omapl13x_arm9_hello_rtos_ccs.png
+
+6. On RSTC window select platform name: **ti.platforms.evmOMAPL138** and
+check that the target is set to **ti.targets.arm.elf.Arm9**
+
+7. Click Finish. Your project should show up on Project Explorer window.
+
+8. Build Hello Example project by Right click on Hello Project and click
+Build project.
+
+9. Create new target configuration (if one doesn`t exist) as described
+in here :ref:`Create Target Configuration File for EVM <Create-Target-Configuration-File-for-EVM-label/>`
+
+10. Right click on the target configuration and Launch target
+configurations.
+
+11. Right click ARM9_0 and connect target.
+
+12. Load and run Hello Example out file. You should see **Hello World**
+string displayed on the console window.
+
+| 
+
 DSP C66x
 ========
 
