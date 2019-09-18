@@ -151,7 +151,7 @@ these files:
 The remoteproc driver is hard-coded to look for specific files when
 loading the R5F cores. Here are the files it looks for:
 
--  /lib/firmware/am65x-mcu-r5f0-fw
+-  /lib/firmware/am65x-mcu-r5f0_0-fw
 
 These are generally a soft link to the intended executable. So for
 example, let's update the r5f0 executable on the target:
@@ -159,7 +159,7 @@ example, let's update the r5f0 executable on the target:
 ::
 
     root@am65xx-evm:~# cd /lib/firmware/
-    root@am65xx-evm:/lib/firmware# ln -sf /home/root/ipc-starter/ex02_messageq/r5f-0/bin/debug/server_r5f-0.xer5f am65x-mcu-r5f0-fw
+    root@am65xx-evm:/lib/firmware# ln -sf /home/root/ipc-starter/ex02_messageq/r5f-0/bin/debug/server_r5f-0.xer5f am65x-mcu-r5f0_0-fw
 
 To reload R5F0 with this new executable, we perform the following steps:
 
@@ -178,7 +178,7 @@ then remoteproc8 is the node for the r5f core. ( Note the remoteprocx can change
     [ 6663.636529] remoteproc remoteproc4: stopped remote processor 41000000.r5f
 
     root@am65xx-evm:~# echo start > /sys/class/remoteproc/remoteproc4/state [ 6767.681165] remoteproc remoteproc4: powering up 41000000.r5f
-    [ 6767.803683] remoteproc remoteproc4: Booting fw image am65x-mcu-r5f0-fw, size 3590160
+    [ 6767.803683] remoteproc remoteproc4: Booting fw image am65x-mcu-r5f0_0-fw, size 3590160
     [ 6767.812558] platform 41000000.r5f: booting R5F core using boot addr = 0x0
     [ 6767.821345] virtio_rpmsg_bus virtio0: rpmsg host is online
     [ 6767.827147] remoteproc remoteproc4: registered virtio0 (type 7)
