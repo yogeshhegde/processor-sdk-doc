@@ -10,77 +10,9 @@ and control functional, including industrial control, medical diagnostics and co
 
 Hardware
 ^^^^^^^^
-Information on the LCDK hardware can be found in the LCDK User's Guide at the following link.
+Information on the LCDK hardware, including DIP switches, LEDs, and user bottons, can be found in the LCDK User's Guide at the following link.
 
-`L138/C6748 Development Kit User's Guide <http://www.ti.com/lit/ug/spruil2/spruil2.pdf>`__
-	
-Supported JTAG Debug Probes (Emulators)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The LCDK does not have an on-board emulator so an external emulator is required. Below are some suggested emulators.
-
- - XDS100
- - XDS200
- - XDS510
- - XDS560
- - XDS110 - Supported only on the C6748 LCDK.
- 
-
-.. Note:: CCS versions 9.0 and later are 64-bit applications. Due to this, 32-bit emulators like the Spectrum Digital XDS510USB emulator are not supported with CCS versions 9.0 and later.
-
-DIP Switches
-^^^^^^^^^^^^^
-Switches 1-4 on SW1 are used to set the boot mode as shown in the following table.
-
-+----+-------+---------+--------+
-| SW | UART2 | NAND 16 | MMCSD0 |
-+====+=======+=========+========+
-| 1  | OFF   | OFF     | OFF    |
-+----+-------+---------+--------+
-| 2  | ON    | ON      | OFF    |
-+----+-------+---------+--------+
-| 3  | OFF   | ON      | OFF    |
-+----+-------+---------+--------+
-| 4  | ON    | ON      | ON     |
-+----+-------+---------+--------+
-
-Switches 5-8 on SW1 are user switches connected to GPIOs as listed in the following table. When the switch is ON, the pin is pulled low. 
-When the switch is OFF, the pin is pulled high.
-
-+----+----------+
-| SW | Pin      |
-+====+==========+
-| 5  | GPIO0[1] |
-+----+----------+
-| 6  | GPIO0[2] |
-+----+----------+
-| 7  | GPIO0[3] |
-+----+----------+
-| 8  | GPIO0[4] |
-+----+----------+
-
-LEDs
-^^^^^
-
-There are 7 on-board LEDs which function according to the following table.
-
-+-----+--------------+----------------------------------------+
-| LED | Signal       | Lit when                               |
-+=====+==============+========================================+
-| D1  | 5V_IN        | 5V power is applied to J1              |
-+-----+--------------+----------------------------------------+
-| D2  | VOLT_ERR     | Input voltage is > 5.8V                |
-+-----+--------------+----------------------------------------+
-| D3  | VCC_5VD_IN   | Board is powered from J1 connector     |
-+-----+--------------+----------------------------------------+
-| D4  | GPIO6[13]    | Signal is high                         |
-+-----+--------------+----------------------------------------+
-| D5  | GPIO6[12]    | Signal is high                         |
-+-----+--------------+----------------------------------------+
-| D6  | GPIO2[12]    | Signal is high                         |
-+-----+--------------+----------------------------------------+
-| D7  | GPIO0[9]     | Signal is high                         |
-+-----+--------------+----------------------------------------+
+`OMAP-L138/C6748 Low-Cost Development Kit User's Guide <http://www.ti.com/lit/ug/spruil2/spruil2.pdf>`__
 
 Powering the LCDK
 ^^^^^^^^^^^^^^^^^^
@@ -95,7 +27,6 @@ Connect a mini-USB cable between UART port (J3) of the EVM and the host PC. Open
  - Parity - None
  - Stop bits - 1
  - Flow control - None
-
 
 Linux Quick Start Guide
 ------------------------
@@ -120,6 +51,8 @@ Software Setup
 ^^^^^^^^^^^^^^^^^^^^^^
 
 - Code Composer Studio IDE - `Download <http://www.ti.com/tool/CCSTUDIO>`__
+
+.. Note:: CCS versions 9.0 and later are 64-bit applications. Due to this, 32-bit emulators like the Spectrum Digital XDS510USB emulator are not supported with CCS versions 9.0 and later.
 
 - Processor SDK RTOS for OMAP-L138/C6748 - `Download <http://www.ti.com/tool/PROCESSOR-SDK-OMAPL138>`__
  
