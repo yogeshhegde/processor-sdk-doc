@@ -48,8 +48,8 @@ or RTOS, supported devices, and documentation links.
 +-------------+-------------+-------------+-------------+---------------+
 | LibArch     | Yes         | Yes         | C6678(RTOS) | `LibArch      |
 |             |             |             | /K2H(Linux) | User's        |
-|             |             |             | /AM572x(Lin | Guide <http   |
-|             |             |             | ux)         | ://processo   |
+|             |             |             | /AM572x     | Guide <http   |
+|             |             |             | (Linux)     | ://processo   |
 |             |             |             |             | rs.wiki.ti.   |
 |             |             |             |             | com/index.p   |
 |             |             |             |             | hp/Processo   |
@@ -59,18 +59,23 @@ or RTOS, supported devices, and documentation links.
 |             |             |             |             | amework>`__   |
 +-------------+-------------+-------------+-------------+---------------+
 | FFTLIB      | Yes         | Yes         | C6678(RTOS) | `FFT User's   |
-|             |             |             | /K2H(Linux) | Guide <http   |
-|             |             |             | /AM572x(Lin | ://processo   |
-|             |             |             | ux)         | rs.wiki.ti.   |
-|             |             |             |             | com/index.p   |
-|             |             |             |             | hp/Processo   |
-|             |             |             |             | r_SDK_FFT_L   |
-|             |             |             |             | ibrary>`__    |
+|             |             |             | /K2H(Linux) | Guide (Linux) |
+|             |             |             | /AM572x     | <http://proce |
+|             |             |             | (Linux)     | ssors.wiki.ti |
+|             |             |             |             | .com/index.ph |
+|             |             |             |             | p/MCSDK_HPC   |
+|             |             |             |             | _3.x_FFTW_Lib |
+|             |             |             |             | rary>`__      |
+|             |             |             |             |               |
+|             |             |             |             | FFT User's    |
+|             |             |             |             | Guide (RTOS): |
+|             |             |             |             | Refer to FFT  |
+|             |             |             |             | LIB folder    |
 +-------------+-------------+-------------+-------------+---------------+
 | LINALG      | Yes         | Yes         | C6678(RTOS) | `LINALG       |
 |             |             |             | /K2H(Linux) | User's        |
-|             |             |             | /AM572x(Lin | Guide <http   |
-|             |             |             | ux)         | ://processo   |
+|             |             |             | /AM572x     | Guide <http   |
+|             |             |             | (Linux)     | ://processo   |
 |             |             |             |             | rs.wiki.ti.   |
 |             |             |             |             | com/index.p   |
 |             |             |             |             | hp/Processo   |
@@ -103,7 +108,7 @@ High Performance or Application Specific Libraries
 -  `LibArch <http://processors.wiki.ti.com/index.php/Processor_SDK_Library_Architecture_and_Framework>`__:
    Library Architecture and Framework, an abstraction layer for
    multi-core DSP library development.
--  `FFTLIB <http://processors.wiki.ti.com/index.php/Processor_SDK_FFT_Library>`__:
+-  `FFTLIB <http://processors.wiki.ti.com/index.php/MCSDK_HPC_3.x_FFTW_Library>`__:
    optimized library for performing fast Fourier transform.
 -  `LINALG <http://processors.wiki.ti.com/index.php/Processor_SDK_Linear_Algebra_Library>`__:
    optimized library for performing dense linear algebra computations.
