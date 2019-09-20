@@ -53,7 +53,7 @@ location before you run **ts\_calibrate**. i.e.
 
 **NOTE:** If you have Matrix or any other GUI application already
 running you should stop that application (`How to Stop
-Matrix <Examples_and_Demos_Matrix_User_Guide.html>`__)
+Matrix <../../Examples_and_Demos_Matrix_User_Guide.html>`__)
 before running **ts\_calibrate** so that you can see the calibration
 screen.
 

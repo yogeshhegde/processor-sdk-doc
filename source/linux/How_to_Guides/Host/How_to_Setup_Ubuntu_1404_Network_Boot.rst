@@ -172,11 +172,11 @@ USB there are some additional steps required.
       there is a good reason not to (and the appropriate changes has been made
       throughout this guide).
 
-      ..  image::  ../images/Ubuntu_Setup_Ethernet_Connection_Choose_Interface.png
+      ..  image::  ../../../images/Ubuntu_Setup_Ethernet_Connection_Choose_Interface.png
        
       | 
        
-      ..  image::  ../images/Ubuntu_Setup_Ethernet_Connection_Manual_Address.png
+      ..  image::  ../../../images/Ubuntu_Setup_Ethernet_Connection_Manual_Address.png
        
       |
    
