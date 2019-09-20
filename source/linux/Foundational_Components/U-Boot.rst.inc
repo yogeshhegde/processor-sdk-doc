@@ -11,12 +11,26 @@ U-Boot Release Notes
 
 Build Information
 -------------------
-Please refer to `U-Boot Build Information <Release_Specific_Release_Notes.html#u-boot>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    Please refer to `U-Boot Build Information <Release_Specific_PLSDK_Release_Notes.html#u-boot>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    Please refer to Yocto build for details.
+
 
 Known Issues
 --------------
-Please refer to `U-Boot Known Issues <Release_Specific_Release_Notes.html#u-boot-known-issues>`__ for details.
 
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    Please refer to `U-Boot Known Issues <Release_Specific_PLSDK_Release_Notes.html#u-boot-known-issues>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    TODO
 
 .. include:: Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
 

@@ -9,15 +9,28 @@ meta layers. These are the <config> used in the command:
 
 ``$ ./oe-layersetup.sh -f <config>``
 
-| 
-| The following config files are located in the **configs/processor-sdk**
-  directory of the `oe-layersetup git repo <http://arago-project.org/git/projects/oe-layersetup.git>`_.
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-+----------------------------------------+---------------------------------+------------------------------------------------+
-| Config File                            | Description                     | Supported machines/platforms                   |
-+========================================+=================================+================================================+
-|                                        |                                 | am335x-evm, am437x-evm, am57xx-evm,            |
-| processor-sdk-06.00.00.07-config.txt   | Processor SDK 6.0.0.7 Release   | am65xx-evm, k2hk-evm, k2e-evm, k2l-evm,        |
-|                                        |                                 | k2g-evm, omapl138-lcdk                         |
-+----------------------------------------+---------------------------------+------------------------------------------------+
+    |
+    | The following config files are located in the **configs/processor-sdk**
+      directory of the `oe-layersetup git repo <http://arago-project.org/git/projects/oe-layersetup.git>`_.
 
+    +----------------------------------------+---------------------------------+------------------------------------------------+
+    | Config File                            | Description                     | Supported machines/platforms                   |
+    +========================================+=================================+================================================+
+    |                                        |                                 | am335x-evm, am437x-evm, am57xx-evm,            |
+    | processor-sdk-06.00.00.07-config.txt   | Processor SDK 6.0.0.7 Release   | am65xx-evm, k2hk-evm, k2e-evm, k2l-evm,        |
+    |                                        |                                 | k2g-evm, omapl138-lcdk                         |
+    +----------------------------------------+---------------------------------+------------------------------------------------+
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    |
+    | The following config files are located in the **configs/psdkla**
+      directory of the **configs** directory.
+
+    +------------------------+----------------------------------------------------+--------------------+
+    |      Config File       |                    Description                     | Supported machines |
+    +========================+====================================================+====================+
+    | psdkla-06_00_01_00.txt | Processor SDK Linux Automotive 06_00_01_00 Release | j7-evm             |
+    +------------------------+----------------------------------------------------+--------------------+

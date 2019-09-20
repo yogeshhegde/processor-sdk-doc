@@ -1,3 +1,5 @@
+.. include:: replacevars.rst.inc
+
 ********************************************
 Getting Started Guide
 ********************************************
@@ -20,12 +22,16 @@ pre-built libraries that you can use without having to rebuild them
 yourself, and some documentation to help explain how all of these
 pieces work together. We package all of this together with a working
 Linux Embedded System that has been built with all of the things
-mentioned above, and it contains a featured application called
-“Matrix” (derived from the fact that it is basically a simple
-Graphical User’s Interface (GUI) of icon’s arranged in a “matrix”).
-Matrix is a fairly simple embedded Linux system that highlights some
-of the key features of the TI Processor offering (LCD display,
-graphics, networking, etc.).
+mentioned above.
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    It contains a featured application called
+    “Matrix” (derived from the fact that it is basically a simple
+    Graphical User’s Interface (GUI) of icon’s arranged in a “matrix”).
+    Matrix is a fairly simple embedded Linux system that highlights some
+    of the key features of the TI Processor offering (LCD display,
+    graphics, networking, etc.).
 
 What it really serves as is a “known good” starting point. One of the
 big challenges with starting development on a new platform (not to
@@ -57,21 +63,41 @@ a new thread and we’ll do our best to provide some guidance.
 As described above, the SDK has a lot to it. Let’s break it down to two
 pieces to simplify things a bit:
 
--  The example `Embedded Linux System <Overview_Software_Stack.html>`__
-   starring Matrix. Essentially, a working bootloader (U-Boot), Linux
+-  The example `Embedded Linux System <Overview_Software_Stack.html>`__.
+   Essentially, a working bootloader (U-Boot), Linux
    kernel, and filesystem that can be put on an SD card and ran on a TI
-   EVM, or even one of the very popular Beaglebones (either the original
-   “white” or the newer “black”). For K2H/K2K, K2E, and K2L platforms
-   which are not using SD cards, U-Boot is loaded to NOR, Linux kernel
-   is fetched from TFTP server, and filesystem is on NFS.
+   EVMs.
+
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       It can also be used on one of the very popular Beaglebones (either the original
+       “white” or the newer “black”). For K2H/K2K, K2E, and K2L platforms
+       which are not using SD cards, U-Boot is loaded to NOR, Linux kernel
+       is fetched from TFTP server, and filesystem is on NFS.
+
 -  Everything needed to create the above embedded system from “scratch”:
 
    -  U-Boot sources and configuration files
    -  Kernel sources and configuration files
+
+   .. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+       -  Hypervisor sources and configuration files
+       -  RTOS application sources and configuration files
+
    -  An ARM cross-compiling toolchain as well as other host binaries
       and components
-   -  A Yocto/OE compliant filesystem and sources for example
-      applications in Matrix
+
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       -  A Yocto/OE compliant filesystem and sources for example
+          applications in Matrix
+
+   .. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+       -  A Yocto/OE compliant filesystem and sources for example
+          applications
+
    -  A variety of scripts and Makefiles to automate certain tasks
    -  Other components needed to build an embedded Linux system that
       don’t fit neatly into one of the above buckets
@@ -88,10 +114,12 @@ want to start with. However, it provides access to the full spectrum of
 development from rebuilding the SDK from sources to fully adapting it
 with new device drivers and applications.
 
-.. note::
-   For K2H/K2K, K2E, and K2L platforms which are not using SD cards, please
-   also go ahead and skip down to the “I want to Develop!” (or, `Developing
-   with the Linux SDK <Overview_Getting_Started_Guide.html#start-your-linux-development>`__ section.
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    .. note::
+       For K2H/K2K, K2E, and K2L platforms which are not using SD cards, please
+       also go ahead and skip down to the “I want to Develop!” (or, `Developing
+       with the Linux SDK <Overview_Getting_Started_Guide.html#start-your-linux-development>`__ section.
 
 So, if you’re not quite there yet, let’s discuss some other options.
 Maybe you’d like to evaluate the SDK a bit to see if it is how you’d
@@ -99,42 +127,51 @@ like to get started.
 
 If this is not good enough and you really want to get your hands on
 something, check out the next section which shares how to play with the
-embedded Linux system featuring Matrix, the first piece of the SDK
-mentioned earlier. All you’ll need is access to a Windows/Linux
+embedded Linux system |__FEATURINGMATRIX__|, the first piece of the SDK
+mentioned earlier. All you’ll need is access to a Linux
 computer, a SD card, a SD card reader, some free, open-source software,
 and a supported `Hardware Platform <Release_Specific_Supported_Platforms_and_Versions.html>`__.
 
-.. rubric:: Evaluating the SDK Embedded Linux System and Matrix
-   :name: evaluating-the-sdk-embedded-linux-system-and-matrix
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    .. rubric:: Evaluating the SDK Embedded Linux System and Matrix
+       :name: evaluating-the-sdk-embedded-linux-system-and-matrix
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    .. rubric:: Evaluating the SDK Embedded Linux System
+       :name: evaluating-the-sdk-embedded-linux-system
 
 If you’re a hands on person, reading documentation and looking at
 presentations gets old fast. So, if you want to see an example of what
 you can build with the SDK and actually hold it in your hands and play
 with it (or show it to someone else that needs help understanding what
 you want to do with it), with minimal effort, you can simply run the
-SDK Embedded Linux System with Matrix on a supported `Hardware platform <Release_Specific_Supported_Platforms_and_Versions.html>`__.
+SDK Embedded Linux System |__FEATURINGMATRIX__| on a supported `Hardware platform <Release_Specific_Supported_Platforms_and_Versions.html>`__.
 This will allow you to poke and prod and interact. It’s a powerful way
 to get the imagination active and engaged.
 
-If you’ve recently purchased a TI EVM or Starterkit, it should have came
-with a SD card with the SDK on it. If that is the case, simply plug the
-card in, boot it up, and let your imagination run wild. However, if
-you’re like us and the boards you are given never have all of the stuff
-they came with, or if you purchased a
-`Beaglebone <http://beagleboard.org/Products/BeagleBone>`__ or
-`Beaglebone
-Black <http://beagleboard.org/Products/BeagleBone%20Black>`__, you might
-not have a SD card with the SDK on it. Or, maybe, the SDK on your SD
-card is simply a few revisions old and you want the latest and greatest.
-If that is the case, check out the `Creating a SD Card with Windows <Overview_Getting_Started_Guide.html#windows-sd-card-creation-guide>`__
-page. Just remember, you won’t be able to build or change anything,
-simply evaluate the SDK Embedded Linux System with Matrix as delivered.
-But, even this is enough to get the imagination going and all some folks
-want to do.
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-.. note::
-   The above is not applicable to K2H/K2K, K2E, and K2L platforms, which
-   are not using SD card.
+    If you’ve recently purchased a TI EVM or Starterkit, it should have came
+    with a SD card with the SDK on it. If that is the case, simply plug the
+    card in, boot it up, and let your imagination run wild. However, if
+    you’re like us and the boards you are given never have all of the stuff
+    they came with, or if you purchased a
+    `Beaglebone <http://beagleboard.org/Products/BeagleBone>`__ or
+    `Beaglebone
+    Black <http://beagleboard.org/Products/BeagleBone%20Black>`__, you might
+    not have a SD card with the SDK on it. Or, maybe, the SDK on your SD
+    card is simply a few revisions old and you want the latest and greatest.
+    If that is the case, check out the `Creating a SD Card with Windows <Overview_Getting_Started_Guide.html#windows-sd-card-creation-guide>`__
+    page. Just remember, you won’t be able to build or change anything,
+    simply evaluate the SDK Embedded Linux System with Matrix as delivered.
+    But, even this is enough to get the imagination going and all some folks
+    want to do.
+
+    .. note::
+       The above is not applicable to K2H/K2K, K2E, and K2L platforms, which
+       are not using SD card.
 
 .. rubric:: Start your Linux Development
    :name: start-your-linux-development
@@ -153,8 +190,9 @@ to develop! Here’s a high level overview:
 After completing these steps, you’ll have a known good baseline from
 which you can start development.
 
-#. **Configure a Linux Host** - If you already have a Linux host
-   machine, go to Step 2.
+#. **Configure a Linux Host**
+
+   If you already have a Linux host machine, go to Step 2.
 
    To do Linux development with the SDK, you’ll need a host PC running
    Linux. The Linux host is generally much faster and has a lot more
@@ -167,9 +205,12 @@ which you can start development.
    can’t validate all possibilities and iterations, therefore we focus
    on validating using `Ubuntu <http://www.ubuntu.com/>`__ as the host
    Linux distribution, running natively. We validate the Long-term
-   Support (LTS) versions of Ubuntu at the time of a SDK release (for
-   example, at the time of this writing, Ubuntu 14.04 and Ubuntu 16.04
-   are the currently supported LTS versions).
+   Support (LTS) versions of Ubuntu at the time of a SDK release.
+
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       For example, at the time of this writing, Ubuntu 14.04 and Ubuntu 16.04
+       are the currently supported LTS versions).
 
    Can you use other versions of Ubuntu or even other distributions?
    Theoretically, yes, as long as you can get it to work and there may
@@ -197,7 +238,9 @@ which you can start development.
    provides a great overview for how to install natively.
 
 
-#. **Install the SDK** - Within your Linux host machine, `Install the Linux SDK <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__
+#. **Install the SDK**
+
+   Within your Linux host machine, `Install the Linux SDK <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__
 
    .. note::
       Processor SDK Installer is 64-bit, and installs only on 64-bit host
@@ -208,8 +251,17 @@ which you can start development.
       At least 20 GB of free space is required on the host machine for
       installing Processor SDK Linux
 
-#. **Create a SD Card** - using the `SDK Create SD Card Script <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__,
-   or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Overview_Getting_Started_Guide.html#program-evm-user-guide>`__
+
+#. **Create a SD Card**
+
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       Use the `SDK Create SD Card Script <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__,
+       or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Overview_Getting_Started_Guide.html#program-evm-user-guide>`__
+
+   .. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+       Use the mksdboot.sh script from the installer.
 
    .. note::
       You will need a >8GB SD Card and the capability to connect that card
@@ -220,11 +272,13 @@ which you can start development.
       the SD Card reader into your virtual machine (disconnect it from the
       host and connect it to the VM so that the Linux VM can see it).
 
-   .. note::
-      For K2H/K2K, K2E, and K2L platforms which are not using SD card,
-      one-time EVM programming is needed if u-boot has not been loaded
-      before or the previous u-boot is somehow corrupted. Please see
-      details at `Program EVM User Guide <Overview_Getting_Started_Guide.html#program-evm-user-guide>`__.
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       .. note::
+          For K2H/K2K, K2E, and K2L platforms which are not using SD card,
+          one-time EVM programming is needed if u-boot has not been loaded
+          before or the previous u-boot is somehow corrupted. Please see
+          details at `Program EVM User Guide <Overview_Getting_Started_Guide.html#program-evm-user-guide>`__.
 
 #. **Configure your development environment**
 
@@ -241,46 +295,74 @@ which you can start development.
       configuration will simplify the transfer of files to and from the
       target platform.
 
-   .. Image:: ../images/AM335x_Development_Environment.png
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       .. Image:: ../images/AM335x_Development_Environment.png
 
 #. **Use the SD Card to boot the target board** properly connected for
    your development environment
 
-   .. note::
-      This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
-      platforms, power up the EVM and stop at the U-boot prompt as
-      described in `Program EVM User Guide <Overview_Getting_Started_Guide.html#program-evm-user-guide>`__
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
+       .. note::
+          This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
+          platforms, power up the EVM and stop at the U-boot prompt as
+          described in `Program EVM User Guide <Overview_Getting_Started_Guide.html#program-evm-user-guide>`__
 
-#. **Run the Setup Script** - Once the SDK has been installed, `Run
-   the Setup.sh Script <Overview_Getting_Started_Guide.html#run-setup-scripts>`__
-   on your host to guide you through the remaining development
-   environment configuration.
+#. **Run the Setup Script**
 
-   .. note::
-      If using a virtual machine as your Linux host, you will likely need
-      to import the target board into the virtual machine as a mass storage
-      device.
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-#. **Rebuild sources** using the `top-level Makefile <Overview_Getting_Started_Guide.html#top-level-makefile>`__
-   in the SDK root directory. For example:
+       Once the SDK has been installed, `Run the Setup.sh Script <Overview_Getting_Started_Guide.html#run-setup-scripts>`__
+       on your host to guide you through the remaining development
+       environment configuration.
 
-  -  ``make all`` rebuilds all components in the SDK
-  -  ``make linux`` configures and builds the kernel
-  -  ``make u-boot-spl`` builds u-boot and u-boot-spl
+       .. note::
+           If using a virtual machine as your Linux host, you will likely need
+           to import the target board into the virtual machine as a mass storage
+           device.
 
-  The file system can be rebuilt following the instructions at `Building the SDK <Overview_Building_the_SDK.html>`__.
+   .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
-   .. note::
-      Starting with Processor SDK 3.3, some components such as Jailhouse
-      Hypervisor needs a newer make (> 3.81) that what comes by default with
-      Ubuntu 14.04. Please check your make version (make -v) and upgrade to
-      latest using following instructions. You can make it your default make
-      by prefixing /usr/local/bin to your $PATH variable in your shell startup
-      file; for instance, in .profile or .bashrc if you use the bash shell.
-      Don't try to install a self-compiled make (or anything else that doesn't
-      come from the distribution's package manager) into /bin or /usr/bin;
-      doing that will confuse your package manager.
+      No setup scripts are necessary for PSDKLA.
+
+#. **Rebuild sources**
+
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       Use the `top-level Makefile <Overview_Getting_Started_Guide.html#top-level-makefile>`__
+       in the SDK root directory. For example:
+
+       -  ``make all`` rebuilds all components in the SDK
+       -  ``make linux`` configures and builds the kernel
+       -  ``make u-boot-spl`` builds u-boot and u-boot-spl
+
+       The file system can be rebuilt following the instructions at `Building the SDK <Overview_Building_the_SDK.html>`__.
+
+       .. note::
+          Starting with Processor SDK 3.3, some components such as Jailhouse
+          Hypervisor needs a newer make (> 3.81) that what comes by default with
+          Ubuntu 14.04. Please check your make version (make -v) and upgrade to
+          latest using following instructions. You can make it your default make
+          by prefixing /usr/local/bin to your $PATH variable in your shell startup
+          file; for instance, in .profile or .bashrc if you use the bash shell.
+          Don't try to install a self-compiled make (or anything else that doesn't
+          come from the distribution's package manager) into /bin or /usr/bin;
+          doing that will confuse your package manager.
+
+   .. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+       Follow the instructions at `Building the SDK <Overview_Building_the_SDK.html>`__.
+
+       .. note::
+          Some components such as Jailhouse Hypervisor needs a newer make (> 3.81) that what comes by default with
+          Ubuntu 14.04. Please check your make version (make -v) and upgrade to
+          latest using following instructions. You can make it your default make
+          by prefixing /usr/local/bin to your $PATH variable in your shell startup
+          file; for instance, in .profile or .bashrc if you use the bash shell.
+          Don't try to install a self-compiled make (or anything else that doesn't
+          come from the distribution's package manager) into /bin or /usr/bin;
+          doing that will confuse your package manager.
 
    .. code-block:: bash
 
@@ -303,35 +385,62 @@ Now that you have a solid baseline set up, you can choose what you'd
 like to do next based on what you need to do. Here are some of the many
 possibilities:
 
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|  **Link**                                                                                                          | **Summary**                                                                                                        |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`AM335X <http://www.ti.com/tool/PROCESSOR-SDK-AM335X>`__, `AM437X <http://www.ti.com/tool/PROCESSOR-SDK-AM437X>`__, |Download the SDK                                                                                                    |
-|`AM57X <http://www.ti.com/tool/PROCESSOR-SDK-AM57X>`__, `66AK2Ex <http://www.ti.com/tool/PROCESSOR-SDK-K2E>`__,     |                                                                                                                    | 
-|`66AK2Gx <http://www.ti.com/tool/PROCESSOR-SDK-K2G>`__, `66AK2Hx <http://www.ti.com/tool/PROCESSOR-SDK-K2H>`__,     |                                                                                                                    |
-|`66AK2Lx <http://www.ti.com/tool/PROCESSOR-SDK-K2L>`__                                                              |                                                                                                                    |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Processor SDK Linux Software Developer's Guide <index.html>`__                                                     |The SDK's Homepage, a must have link for SDK users.                                                                 |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Processor SDK Training Series <http://training.ti.com/processor-sdk-training-series>`__                            |This series provides an introduction to the Processor SDK and how to use this software to start building            |
-|                                                                                                                    |applications on TI embedded processors.                                                                             |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Processor SDK Linux Training: Hands on with the Linux SDK                                                          |The next step in learning about the Processor SDK Linux. This lab walks through how to use the SDK and              |
-|<http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Training:_Hands_on_with_the_Linux_SDK>`__              |Code Composer Studio with examples applications.                                                                    |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Debugging Embedded Linux Systems Training Series                                                                   |This series teaches the techniques of debugging kernel issues that may be encountered in embedded Linux systems.    |
-|<https://training.ti.com/debugging-embedded-linux-systems-training-series>`__                                       |It explains the Linux kernel logging system and logging API, illustrates how to locate a particular device driver,  |
-|                                                                                                                    |and demonstrates how to read kernel oops logs.                                                                      |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Processor SDK Linux How-To Guides <How_to_Guides.html>`__                                                          |The SDK How-To pages. The Hands On with the SDK has some great information for developing your first                |
-|                                                                                                                    |Linux application.                                                                                                  |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Processor SDK Linux Kernel <Foundational_Components_Kernel.html>`__                                                |More information on the Linux Kernel provided with the SDK (how to build it, for example).                          |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Processor SDK Linux U-Boot <Foundational_Components_U-Boot.html>`__                                                |Everything you want to know about U-Boot, the bootloader provided with the SDK.                                     |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Processor SDK Linux Filesystem <Foundational_Components_Filesystem.html>`__                                        |Details about the various Filesystems delivered with the SDK, and their contents.                                   |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-|`Processor SDK Linux Tools <Foundational_Components_Tools.html>`__                                                  |Documentation for all of the various tools included with the SDK.                                                   |
-+--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |  **Link**                                                                                                          | **Summary**                                                                                                        |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`AM335X <http://www.ti.com/tool/PROCESSOR-SDK-AM335X>`__, `AM437X <http://www.ti.com/tool/PROCESSOR-SDK-AM437X>`__, |Download the SDK                                                                                                    |
+    |`AM57X <http://www.ti.com/tool/PROCESSOR-SDK-AM57X>`__, `66AK2Ex <http://www.ti.com/tool/PROCESSOR-SDK-K2E>`__,     |                                                                                                                    |
+    |`66AK2Gx <http://www.ti.com/tool/PROCESSOR-SDK-K2G>`__, `66AK2Hx <http://www.ti.com/tool/PROCESSOR-SDK-K2H>`__,     |                                                                                                                    |
+    |`66AK2Lx <http://www.ti.com/tool/PROCESSOR-SDK-K2L>`__                                                              |                                                                                                                    |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux Software Developer's Guide <index.html>`__                                                     |The SDK's Homepage, a must have link for SDK users.                                                                 |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Training Series <http://training.ti.com/processor-sdk-training-series>`__                            |This series provides an introduction to the Processor SDK and how to use this software to start building            |
+    |                                                                                                                    |applications on TI embedded processors.                                                                             |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux Training: Hands on with the Linux SDK                                                          |The next step in learning about the Processor SDK Linux. This lab walks through how to use the SDK and              |
+    |<http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Training:_Hands_on_with_the_Linux_SDK>`__              |Code Composer Studio with examples applications.                                                                    |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Debugging Embedded Linux Systems Training Series                                                                   |This series teaches the techniques of debugging kernel issues that may be encountered in embedded Linux systems.    |
+    |<https://training.ti.com/debugging-embedded-linux-systems-training-series>`__                                       |It explains the Linux kernel logging system and logging API, illustrates how to locate a particular device driver,  |
+    |                                                                                                                    |and demonstrates how to read kernel oops logs.                                                                      |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux How-To Guides <How_to_Guides.html>`__                                                          |The SDK How-To pages. The Hands On with the SDK has some great information for developing your first                |
+    |                                                                                                                    |Linux application.                                                                                                  |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux Kernel <Foundational_Components_Kernel.html>`__                                                |More information on the Linux Kernel provided with the SDK (how to build it, for example).                          |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux U-Boot <Foundational_Components_U-Boot.html>`__                                                |Everything you want to know about U-Boot, the bootloader provided with the SDK.                                     |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux Filesystem <Foundational_Components_Filesystem.html>`__                                        |Details about the various Filesystems delivered with the SDK, and their contents.                                   |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux Tools <Foundational_Components_Tools.html>`__                                                  |Documentation for all of the various tools included with the SDK.                                                   |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    .. Note::
+        Some of the training content below has been written for DRA809 devices.
+        Work towards making these trainings tailored for J721E is in progress.
+        Not all the trainings will be applicable for J721E.
+
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |  **Link**                                                                                                          | **Summary**                                                                                                        |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux Software Developer's Guide <index.html>`__                                                     |The SDK's Homepage, a must have link for SDK users.                                                                 |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Training Series <http://training.ti.com/processor-sdk-training-series>`__                            |This series provides an introduction to the Processor SDK and how to use this software to start building            |
+    |                                                                                                                    |applications on TI embedded processors.                                                                             |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux Training: Hands on with the Linux SDK                                                          |The next step in learning about the Processor SDK Linux. This lab walks through how to use the SDK and              |
+    |<http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Training:_Hands_on_with_the_Linux_SDK>`__              |Code Composer Studio with examples applications.                                                                    |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Debugging Embedded Linux Systems Training Series                                                                   |This series teaches the techniques of debugging kernel issues that may be encountered in embedded Linux systems.    |
+    |<https://training.ti.com/debugging-embedded-linux-systems-training-series>`__                                       |It explains the Linux kernel logging system and logging API, illustrates how to locate a particular device driver,  |
+    |                                                                                                                    |and demonstrates how to read kernel oops logs.                                                                      |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
+    |`Processor SDK Linux How-To Guides <How_to_Guides.html>`__                                                          |The SDK How-To pages. The Hands On with the SDK has some great information for developing your first                |
+    |                                                                                                                    |Linux application.                                                                                                  |
+    +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+

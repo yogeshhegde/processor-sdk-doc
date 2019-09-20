@@ -281,7 +281,7 @@ Errata Workarounds Available in this Release
    LCPD-4184,Implement workaround for errata i814 - Bandgap Temperature read Dtemp can be corrupted
    LCPD-4647,[rpmsg 2015 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP
    LCPD-4648,[rpmsg 2014 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP
-   LCPD-14186,UDMA-P Host Packet Descriptors 0x3FFFFF Packet Length Mode not Functional
+   LCPD-14186,UDMA-P Host Packet Descriptor?s ?0x3FFFFF? Packet Length Mode not Functional
    LCPD-941,OMAP4 and OMAP5: DSS: implement workaround for errata i740
    LCPD-1776,"[J6 SATA Adaptation] J6 - Errata i783, SATA Lockup After SATA DPLL Unlock/Relock"
 
@@ -635,4 +635,3 @@ are described in `this page <How_to_Guides_Host.html#how-to-build-a-ubuntu-linux
    available only for 64-bit machines
 
 | 
-

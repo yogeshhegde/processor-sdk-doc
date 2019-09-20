@@ -12,10 +12,12 @@ This wiki will cover the basic steps for building the Linux kernel.
   the kernel source code is included in the SDK's board-support
   directory. For your convenience the sources also includes the kernel's
   git repository including commit history.
-| Alternatively, Kernel sources can directly be fetched from GIT. You
-  can find the details about the git repository, branch and commit id in
-  the
-  `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_Release_Notes.html#kernel>`__
+| Alternatively, Kernel sources can directly be fetched from GIT.
+
+  .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+      You can find the details about the git repository, branch and commit id in
+      the `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_PLSDK_Release_Notes.html#kernel>`__
 
 | 
 

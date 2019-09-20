@@ -5,14 +5,35 @@ Kernel Release Notes
 
 Build Information
 -------------------
-Please refer to `Kernel Build Information <Release_Specific_Release_Notes.html#linux-kernel>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    Please refer to `Kernel Build Information <Release_Specific_PLSDK_Release_Notes.html#linux-kernel>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    Please refer to Yocto build for details.
 
 Generic Kernel Release Notes
 ------------------------------
-Please refer to `Generic Kernel Release Notes <Release_Specific_Release_Notes.html#generic-kernel-release-notes>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    Please refer to `Generic Kernel Release Notes <Release_Specific_PLSDK_Release_Notes.html#generic-kernel-release-notes>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    TODO
 
 
 Known Issues
 --------------
-Please refer to `Linux Kernel Known Issues <Release_Specific_Release_Notes.html#linux-kernel-known-issues>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    Please refer to `Linux Kernel Known Issues <Release_Specific_PLSDK_Release_Notes.html#linux-kernel-known-issues>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    TODO
 

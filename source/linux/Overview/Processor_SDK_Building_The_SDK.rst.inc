@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK
+.. include:: replacevars.rst.inc
 
 ************************************
 Building the SDK
@@ -27,13 +27,17 @@ Prerequisites (One-time setup)
 .. rubric:: Host Setup - Ubuntu (Recommended)
    :name: Host Setup - ubuntu (Recommended)
 
-The recommended Linux distribution is Ubuntu 16.04 or Ubuntu 18.04.
+.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKLA')
+
+    The recommended Linux distribution is Ubuntu 16.04 or Ubuntu 18.04.
 
 The following build host packages are required for Ubuntu. The following
 command will install the required tools on the Ubuntu Linux
 distribution.
 
-For Ubuntu 16.04 and 18.04, please run the following:
+.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKLA')
+
+    For Ubuntu 16.04 and 18.04, please run the following:
 
 ::
 
@@ -49,27 +53,29 @@ reconfigure to use bash by running the following command:
 Be sure to select "No" when you are asked to use dash as the default
 system shell.
 
-.. rubric:: Host Setup - CentOS 
-   :name: Host Setup - CentOS 
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-The build also requires that ``bash`` is configured as the default
-system shell. The following steps will configure Ubuntu to use ``bash``
-instead of the default ``dash``.
+    .. rubric:: Host Setup - CentOS
+       :name: Host Setup - CentOS
 
-::
+    The build also requires that ``bash`` is configured as the default
+    system shell. The following steps will configure Ubuntu to use ``bash``
+    instead of the default ``dash``.
 
-    $ sudo dpkg-reconfigure dash
-    (Select "no" when prompted)
+    ::
 
-The following host packages are required for CentOS. Install the
-packages using the command below:
+        $ sudo dpkg-reconfigure dash
+        (Select "no" when prompted)
 
-::
+    The following host packages are required for CentOS. Install the
+    packages using the command below:
 
-    $ yum install gawk make wget tar bzip2 gzip python unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel texinfo chrpath socat SDL-devel xterm doxygen glibc-devel.i686 glibc-devel libstdc++-devel.i686 libgcc.i686 libstdc++-devel dos2unix 
+    ::
 
-Perl’s Thread::Queue module needs to be installed also. Download and install perl-Thread-Queue-3.02-2.el7.noarch.rpm from
-https://www.rpmfind.net/linux/rpm2html/search.php?query=perl-Thread-Queue.
+        $ yum install gawk make wget tar bzip2 gzip python unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel texinfo chrpath socat SDL-devel xterm doxygen glibc-devel.i686 glibc-devel libstdc++-devel.i686 libgcc.i686 libstdc++-devel dos2unix
+
+    Perl’s Thread::Queue module needs to be installed also. Download and install perl-Thread-Queue-3.02-2.el7.noarch.rpm from
+    https://www.rpmfind.net/linux/rpm2html/search.php?query=perl-Thread-Queue.
 
 .. rubric:: Proxy Setup
    :name: Proxy Setup
@@ -81,32 +87,65 @@ Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
 .. rubric:: Cross-Compile Toolchain
    :name: Cross-Compile Toolchain
 
-Run the following commands to install the ARM Toolchain.
 
-::
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.3-2019.03/binrel/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf.tar.xz
-    $ tar -Jxvf gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf.tar.xz -C $HOME
-    $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.3-2019.03/binrel/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz
-    $ tar -Jxvf gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz -C $HOME
+    Run the following commands to install the ARM Toolchain.
 
+    ::
+
+        $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.3-2019.03/binrel/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf.tar.xz
+        $ tar -Jxvf gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf.tar.xz -C $HOME
+        $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.3-2019.03/binrel/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz
+        $ tar -Jxvf gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz -C $HOME
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    Download the toolchain compilers from the links provided in the SDK release page.
+    Keep the extracted toolchains in the $HOME directory of host Linux machine.
+    Use $HOME directory as the PATH_TO_TOOLCHAIN in following command.
+
+    .. Note::
+        For building all SDK components, you need two compilers.
+        ARMv8 for software running on A72
+        ARMv7 for software running on R5F
+        Make sure to download both of these toolchains before starting yocto build.
 
 Build Steps
 -----------
 
-Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the layer configuration for a particular release of Processor SDK Linux. The final command below will build the **arago-base-tisdk-image**, which is the minimal Processor SDK filesystem. See `Build Options`_ for a list of additional targets.
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-::
+    Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the
+    layer configuration for a particular release of Processor SDK Linux. The final command below
+    will build the **arago-base-tisdk-image**, which is the minimal Processor SDK filesystem.
+    See `Build Options`_ for a list of additional targets.
 
-    $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
-    $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
-    $ cd build
-    $ . conf/setenv
-    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
-    $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
-    $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
+    ::
 
+        $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
+        $ cd tisdk
+        $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
+        $ cd build
+        $ . conf/setenv
+        $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
+        $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
+        $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the
+    layer configuration for a particular release of Processor SDK Linux. The final command below
+    will build the **tisdk-rootfs-image**, which is the minimal Processor SDK filesystem.
+    See `Build Options`_ for a list of additional targets.
+
+    ::
+
+        cd yocto-build
+        ./oe-layertool-setup.sh -f configs/psdkla/psdkla-<version>.txt
+        cd build
+        . conf/setenv
+        TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=j7-evm bitbake -k tisdk-rootfs-image
 
 Processor SDK Build Reference
 =============================
@@ -134,78 +173,93 @@ in the command:
 The "Build Output" is given relative to the
 **arago-tmp-[toolchain]/deploy** directory.
 
-+------------------------------+---------------------------------------------------------------+----------------------------+
-| Target                       | Build Output                                                  | Description                |
-+==============================+===============================================================+============================+
-| arago-core-tisdk-image       | images/<machine>/processor-sdk-linux-image-<machine>.tar.xz   | Full SDK                   |
-+------------------------------+---------------------------------------------------------------+----------------------------+
-| tisdk-rootfs-image           | images/<machine>/tisdk-rootfs-image-<machine>.tar.xz          | Target Filesystem          |
-+------------------------------+---------------------------------------------------------------+----------------------------+
-| arago-base-tisdk-image       | images/<machine>/arago-base-tisdk-image-<machine>.tar.xz      | Minimal Target Filesytem   |
-+------------------------------+---------------------------------------------------------------+----------------------------+
-| meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
-+------------------------------+---------------------------------------------------------------+----------------------------+
 
-| 
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-.. rubric:: Platforms
-   :name: Platforms
+    +------------------------------+---------------------------------------------------------------+----------------------------+
+    | Target                       | Build Output                                                  | Description                |
+    +==============================+===============================================================+============================+
+    | arago-tisdk-image            | images/<machine>/processor-sdk-linux-image-<machine>.tar.xz   | Full SDK                   |
+    +------------------------------+---------------------------------------------------------------+----------------------------+
+    | tisdk-rootfs-image           | images/<machine>/tisdk-rootfs-image-<machine>.tar.xz          | Target Filesystem          |
+    +------------------------------+---------------------------------------------------------------+----------------------------+
+    | arago-base-tisdk-image       | images/<machine>/arago-base-tisdk-image-<machine>.tar.xz      | Minimal Target Filesytem   |
+    +------------------------------+---------------------------------------------------------------+----------------------------+
+    | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
+    +------------------------------+---------------------------------------------------------------+----------------------------+
 
-The following platforms are supported in Processor SDK. These are the
-<machine> in the command:
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
-``MACHINE=<machine> bitbake <target>``
+    +------------------------------+---------------------------------------------------------------+----------------------------+
+    | Target                       | Build Output                                                  | Description                |
+    +==============================+===============================================================+============================+
+    | arago-core-psdkla-bundle     | images/<machine>/processor-sdk-linux-image-<machine>.tar.xz   | Full SDK                   |
+    +------------------------------+---------------------------------------------------------------+----------------------------+
+    | tisdk-rootfs-image           | images/<machine>/tisdk-rootfs-image-<machine>.tar.xz          | Target Filesystem          |
+    +------------------------------+---------------------------------------------------------------+----------------------------+
 
-+--------------+---------------------------------------------------------------------------------------+
-| **MACHINE**  | **Supported EVMs**                                                                    |
-+--------------+---------------------------------------------------------------------------------------+
-| am335x-evm   | AM335x EVM, AM335x Starter Kit, Beaglebone Black                                      |
-+--------------+---------------------------------------------------------------------------------------+
-| am437x-evm   | AM437x GP EVM, AM437x Starter Kit                                                     |
-+--------------+---------------------------------------------------------------------------------------+
-| am57xx-evm   | AM572x GP EVM, AM572x Industrial Development Kit, AM571x Industrial Development Kit   |
-+--------------+---------------------------------------------------------------------------------------+
-| am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
-+--------------+---------------------------------------------------------------------------------------+
-| k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
-+--------------+---------------------------------------------------------------------------------------+
-| k2e-evm      | K2Ex EVM                                                                              |
-+--------------+---------------------------------------------------------------------------------------+
-| k2l-evm      | 66AK2L06 EVM                                                                          |
-+--------------+---------------------------------------------------------------------------------------+
-| k2g-evm      | K2G EVM                                                                               |
-+--------------+---------------------------------------------------------------------------------------+
-| omapl138-lcdk| OMAP-L138 LCDK                                                                        |
-+--------------+---------------------------------------------------------------------------------------+
+|
 
-.. rubric:: RT Support
-   :name: RT Support
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-Processor SDK Linux supports RT Linux Kernel for the following
-machines/EVMs. Use the command below to make the RT builds:
+    .. rubric:: Platforms
+       :name: Platforms
 
-``MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake <target>``
+    The following platforms are supported in Processor SDK. These are the
+    <machine> in the command:
 
-+--------------+---------------------------------------------------------------------------------------+
-| **MACHINE**  | **Supported EVMs**                                                                    |
-+--------------+---------------------------------------------------------------------------------------+
-| am335x-evm   | AM335x EVM, AM335x Industrial Communications Engine                                   |
-+--------------+---------------------------------------------------------------------------------------+
-| am437x-evm   | AM437x GP EVM, AM437x Industrial Development Kit                                      |
-+--------------+---------------------------------------------------------------------------------------+
-| am57xx-evm   | AM572x GP EVM, AM574x Industrial Development Kit,                                     |
-|              | AM572x Industrial Development Kit, AM571x Industrial Development Kit                  |
-+--------------+---------------------------------------------------------------------------------------+
-| am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
-+--------------+---------------------------------------------------------------------------------------+
-| k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
-+--------------+---------------------------------------------------------------------------------------+
-| k2e-evm      | K2Ex EVM                                                                              |
-+--------------+---------------------------------------------------------------------------------------+
-| k2l-evm      | 66AK2L06 EVM                                                                          |
-+--------------+---------------------------------------------------------------------------------------+
-| k2g-evm      | K2G EVM                                                                               |
-+--------------+---------------------------------------------------------------------------------------+
+    ``MACHINE=<machine> bitbake <target>``
+
+    +--------------+---------------------------------------------------------------------------------------+
+    | **MACHINE**  | **Supported EVMs**                                                                    |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am335x-evm   | AM335x EVM, AM335x Starter Kit, Beaglebone Black                                      |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am437x-evm   | AM437x GP EVM, AM437x Starter Kit                                                     |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am57xx-evm   | AM572x GP EVM, AM572x Industrial Development Kit, AM571x Industrial Development Kit   |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
+    +--------------+---------------------------------------------------------------------------------------+
+    | k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
+    +--------------+---------------------------------------------------------------------------------------+
+    | k2e-evm      | K2Ex EVM                                                                              |
+    +--------------+---------------------------------------------------------------------------------------+
+    | k2l-evm      | 66AK2L06 EVM                                                                          |
+    +--------------+---------------------------------------------------------------------------------------+
+    | k2g-evm      | K2G EVM                                                                               |
+    +--------------+---------------------------------------------------------------------------------------+
+    | omapl138-lcdk| OMAP-L138 LCDK                                                                        |
+    +--------------+---------------------------------------------------------------------------------------+
+
+    .. rubric:: RT Support
+       :name: RT Support
+
+    Processor SDK Linux supports RT Linux Kernel for the following
+    machines/EVMs. Use the command below to make the RT builds:
+
+    ``MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake <target>``
+
+    +--------------+---------------------------------------------------------------------------------------+
+    | **MACHINE**  | **Supported EVMs**                                                                    |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am335x-evm   | AM335x EVM, AM335x Industrial Communications Engine                                   |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am437x-evm   | AM437x GP EVM, AM437x Industrial Development Kit                                      |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am57xx-evm   | AM572x GP EVM, AM574x Industrial Development Kit,                                     |
+    |              | AM572x Industrial Development Kit, AM571x Industrial Development Kit                  |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
+    +--------------+---------------------------------------------------------------------------------------+
+    | k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
+    +--------------+---------------------------------------------------------------------------------------+
+    | k2e-evm      | K2Ex EVM                                                                              |
+    +--------------+---------------------------------------------------------------------------------------+
+    | k2l-evm      | 66AK2L06 EVM                                                                          |
+    +--------------+---------------------------------------------------------------------------------------+
+    | k2g-evm      | K2G EVM                                                                               |
+    +--------------+---------------------------------------------------------------------------------------+
 
 Using the snapshot of the source packages in Processor SDK release
 ------------------------------------------------------------------
@@ -215,29 +269,46 @@ during the build when external URLs become unavailable. To use the
 snapshot of sources distributed with a given Processor SDK release, you
 must download a script from the SDK download page and then execute it on
 your host to fetch all the packages from TI servers. For example, see
-am57xx-evm-linux-sdk-arago-src-<version>.tar.xz file in
-`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/latest/index_FDS.html>`__.
+|__SDK_INSTALL_FILE__| in |__SDK_DOWNLOAD_URL__|.
+
 Once this package is downloaded, there are just a few extra steps in the
 build process to fetch all the corresponding packages. The extra steps
 are shown in red below:
 
-::
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
-    $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
-    $ mkdir downloads
-    $ cd downloads
-    $ # Assuming src file downloaded to $HOME/Downloads
-    $ tar xvf $HOME/Downloads/<target-board>-linux-sdk-arago-src-##.##.##.##.tar.xz
-    $ <target-board>-linux-sdk-arago-src-##.##.##.##/get_build_sources.sh <target-board>-linux-sdk-arago-src-##.##.##.##/source_pkg_list.txt
-    $ cd ..</span>
-    $ cd build
-    $ . conf/setenv
-    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
-    $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
-    $ MACHINE=<target-board> bitbake arago-core-tisdk-image
+    ::
 
+        $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
+        $ cd tisdk
+        $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
+        $ mkdir downloads
+        $ cd downloads
+        $ # Assuming src file downloaded to $HOME/Downloads
+        $ tar xvf $HOME/Downloads/<target-board>-linux-sdk-arago-src-##.##.##.##.tar.xz
+        $ <target-board>-linux-sdk-arago-src-##.##.##.##/get_build_sources.sh <target-board>-linux-sdk-arago-src-##.##.##.##/source_pkg_list.txt
+        $ cd ..</span>
+        $ cd build
+        $ . conf/setenv
+        $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
+        $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
+        $ MACHINE=<target-board> bitbake arago-core-tisdk-image
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    ::
+
+        cd yocto-build
+        ./oe-layertool-setup.sh -f configs/processor-sdk/psdkla-<version>.txt
+        mkdir downloads
+        cd downloads
+        # Assuming src file downloaded to $HOME/Downloads
+        tar xvf $HOME/Downloads/<target-board>-linux-sdk-arago-src-##.##.##.##.tar.xz
+        <target-board>-linux-sdk-arago-src-##.##.##.##/get_build_sources.sh <target-board>-linux-sdk-arago-src-##.##.##.##/source_pkg_list.txt
+        cd ..
+        cd build
+        . conf/setenv
+        TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=j7-evm bitbake -k tisdk-rootfs-image
 
 
 .. _building-the-sdk-recipes:
@@ -254,16 +325,31 @@ granularity of recipe development and debug. Specifying a recipe name,
 minus the version (if the version is appended to the name), will build
 the recipe and all its dependencies.
 
-For example, the command below builds only the opencl recipe and all the
-dependencies it defines.
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-``MACHINE=am57xx-evm bitbake opencl``
+    For example, the command below builds only the opencl recipe and all the
+    dependencies it defines.
 
-After the bitbake command above is successfully done,
-**arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl** directory
-will be available including the original source code under the git
-folder, independent shared objects (.so files) under packages-split
-folder, and IPKs under deploy-ipks folder.
+    ``MACHINE=am57xx-evm bitbake opencl``
+
+    After the bitbake command above is successfully done,
+    **arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl** directory
+    will be available including the original source code under the git
+    folder, independent shared objects (.so files) under packages-split
+    folder, and IPKs under deploy-ipks folder.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    For example, the command below builds only the jailhouse recipe and all the
+    dependencies it defines.
+
+    ``MACHINE=j7-evm bitbake jailhouse``
+
+    After the bitbake command above is successfully done,
+    **arago-tmp-[toolchain]/work/j7\_evm-linux/jailhouse** directory
+    will be available including the original source code under the git
+    folder, independent shared objects (.so files) under packages-split
+    folder, and IPKs under deploy-ipks folder.
 
 .. note:: Please note that the output of a recipe can be in another folder under "arago-tmp-[toolchain]/work" directory, depending on the defines of the recipe.
 
@@ -271,26 +357,51 @@ folder, and IPKs under deploy-ipks folder.
 .. rubric:: Forced Re-compilation
    :name: Forced Re-compilation
 
-When needed, source code under the work directory (e.g.,
-**arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl**/git) can
-be modified. After the modification is done, run the following commands
-to force recompilation with the new code and rebuilding of the recipe,
-e.g.,
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-``MACHINE=am57xx-evm bitbake opencl --force -c compile``
+    When needed, source code under the work directory (e.g.,
+    **arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl**/git) can
+    be modified. After the modification is done, run the following commands
+    to force recompilation with the new code and rebuilding of the recipe,
+    e.g.,
+    ``MACHINE=am57xx-evm bitbake opencl --force -c compile`
 
-``MACHINE=am57xx-evm bitbake opencl``
+    ``MACHINE=am57xx-evm bitbake opencl``
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    When needed, source code under the work directory (e.g.,
+    **arago-tmp-[toolchain]/work/j7\_evm-linux/jailhouse**/git) can
+    be modified. After the modification is done, run the following commands
+    to force recompilation with the new code and rebuilding of the recipe,
+    e.g.,
+
+    ``MACHINE=j7-evm bitbake jailhouse --force -c compile``
+
+    ``MACHINE=j7-evm bitbake jailhouse``
 
 .. rubric:: Installing Package
    :name: installing-package
 
-To install a modified and rebuilt package, copy the new IPKs from the
-deploy-ipks folder (e.g.,
-**arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl/[version]/deploy-ipks**)
-to the target system and then run the following command to install the
-IPKs:
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-``opkg install [package_ipk].ipk``
+    To install a modified and rebuilt package, copy the new IPKs from the
+    deploy-ipks folder (e.g.,
+    **arago-tmp-[toolchain]/work/am57xx\_evm-linux-gnueabi/opencl/[version]/deploy-ipks**)
+    to the target system and then run the following command to install the
+    IPKs:
+
+    ``opkg install [package_ipk].ipk``
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    To install a modified and rebuilt package, copy the new IPKs from the
+    deploy-ipks folder (e.g.,
+    **arago-tmp-[toolchain]/work/j7\_evm-linux/jailhouse/[version]/deploy-ipks**)
+    to the target system and then run the following command to install the
+    IPKs:
+
+    ``opkg install [package_ipk].ipk``
 
 .. rubric:: Cleaning a Built Recipe
    :name: cleaning-a-built-recipe
@@ -303,70 +414,75 @@ The cleansstate task will clean recipe's work directory and remove the
 recipe's output from the dependency tree used by other recipe's during
 compilation.
 
+Common Variations 
+=================
 
-Common Variations (no SGX, X11, etc.) 
-=====================================
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-.. rubric:: Rebuilding without SGX
-   :name: rebuilding-without-sgx
+    .. rubric:: Rebuilding without SGX
+       :name: rebuilding-without-sgx
 
-In Processor SDK delivered today the graphics hardware acceleration is
-enabled by default for device families with SGX (e.g. AM335x, AM437x,
-AM57xx). As a result, some of the applications with graphics
-dependencies will not run properly on device variants in those families
-that do not contain the SGX accelerator (e.g. AM3352, AM4372, etc.). The
-Processor SDK has been enhanced to provide the same OOB experience with
-software rendering provided by QT5/Weston. The non-SGX software
-rendering build will be enabled by adding the following to the bottom of
-conf/local.conf immediately before invoking bitbake.
+    In Processor SDK delivered today the graphics hardware acceleration is
+    enabled by default for device families with SGX (e.g. AM335x, AM437x,
+    AM57xx). As a result, some of the applications with graphics
+    dependencies will not run properly on device variants in those families
+    that do not contain the SGX accelerator (e.g. AM3352, AM4372, etc.). The
+    Processor SDK has been enhanced to provide the same OOB experience with
+    software rendering provided by QT5/Weston. The non-SGX software
+    rendering build will be enabled by adding the following to the bottom of
+    conf/local.conf immediately before invoking bitbake.
 
-``MACHINE_FEATURES_remove="sgx"``
+    ``MACHINE_FEATURES_remove="sgx"``
 
-``PACKAGECONFIG_remove="wayland-egl"``
+    ``PACKAGECONFIG_remove="wayland-egl"``
 
-.. rubric:: Rebuilding without Wayland
-   :name: rebuilding-without-wayland
+    .. rubric:: Rebuilding without Wayland
+       :name: rebuilding-without-wayland
 
-If a full Window system is not needed, i.e. if you simply want apps to
-run full screen using EGLFS then you can remove Wayland by adding the
-following to the bottom of conf/local.conf immediately before invoking
-bitbake:
+    If a full Window system is not needed, i.e. if you simply want apps to
+    run full screen using EGLFS then you can remove Wayland by adding the
+    following to the bottom of conf/local.conf immediately before invoking
+    bitbake:
 
-``DISTRO_FEATURES_remove = "wayland"``
+    ``DISTRO_FEATURES_remove = "wayland"``
 
-.. rubric:: X11 Build instructions
-   :name: x11-build-instructions
+    .. rubric:: X11 Build instructions
+       :name: x11-build-instructions
 
-X11 has been validated as a build option, on top of Processor SDK 4.1 release. 
-In order to build with X11 instead of
-Wayland, please use the configuration
-processor-sdk-04.01.00.06-x11-config.txt for oe-layer-setup. One of the
-key differences between this configuration file and the
-processor-sdk-04.01.00.06 config file is the branch from
-meta-processor-sdk. For X11 build, morty-x11-experimental branch is
-used, where the DISTRO\_CONFIG is set to X11 instead of wayland.
+    X11 has been validated as a build option, on top of Processor SDK 4.1 release.
+    In order to build with X11 instead of
+    Wayland, please use the configuration
+    processor-sdk-04.01.00.06-x11-config.txt for oe-layer-setup. One of the
+    key differences between this configuration file and the
+    processor-sdk-04.01.00.06 config file is the branch from
+    meta-processor-sdk. For X11 build, morty-x11-experimental branch is
+    used, where the DISTRO\_CONFIG is set to X11 instead of wayland.
 
-.. rubric:: X11 Filesystem
-   :name: x11-filesystem
+    .. rubric:: X11 Filesystem
+       :name: x11-filesystem
 
-All the X11 related components are provided by the IMG DDK X11 package
-and located under /usr/local/XSGX directory instead of /usr/include and
-/usr/lib directories. The following applications and demos are built and
-verified with X11:
+    All the X11 related components are provided by the IMG DDK X11 package
+    and located under /usr/local/XSGX directory instead of /usr/include and
+    /usr/lib directories. The following applications and demos are built and
+    verified with X11:
 
--  SGX unitest programs: xgles1tests, xgles2test1, and etc.
--  PVR SDK 3D demo programs: ChameleonMan, ExampleUI, and etc.
--  QT5 Examples and demo programs over eglfs.x11 including
-   matrix-gui-browser
+    -  SGX unitest programs: xgles1tests, xgles2test1, and etc.
+    -  PVR SDK 3D demo programs: ChameleonMan, ExampleUI, and etc.
+    -  QT5 Examples and demo programs over eglfs.x11 including
+       matrix-gui-browser
 
-In the X11 build, the xorg (Xserver) is running and owns the DSS
-resources by default. To support switching between X11 applications and
-non-X11 applications such as DRM modetest and gstreamer pipelines, the
-following shell file is provided to stop and start the Xserver.
+    In the X11 build, the xorg (Xserver) is running and owns the DSS
+    resources by default. To support switching between X11 applications and
+    non-X11 applications such as DRM modetest and gstreamer pipelines, the
+    following shell file is provided to stop and start the Xserver.
 
-::
+    ::
 
-    /etc/init.d/xorg <start|stop>
+        /etc/init.d/xorg <start|stop>
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    N/A
 
 See also
 ========

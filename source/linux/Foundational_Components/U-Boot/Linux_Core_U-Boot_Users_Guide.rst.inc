@@ -90,9 +90,12 @@ Getting the U-Boot Source Code
   the U-Boot source code is included in the SDK's board-support
   directory. For your convenience the sources also includes the U-Boot's
   git repository including commit history.
-| Alternatively, U-Boot sources can directly be fetched from GIT. The
-  GIT repo URL, branch and commit id can be found in the
-  `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_Release_Notes.html#u-boot>`__
+| Alternatively, U-Boot sources can directly be fetched from GIT.
+
+  .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+      The GIT repo URL, branch and commit id can be found in the
+      `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_PLSDK_Release_Notes.html#u-boot>`__
 
 |
 
@@ -1901,8 +1904,11 @@ TI Processor SDK
 Several prebuilt images are required from the TI Processor SDK.
 Go `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__ to download and install the SDK.
 
-TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
-`build information <Release_Specific_Release_Notes.html#build-information>`__.
+TI-u-boot is included in the SDK in <path to tisdk>/board-support.
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    Ensure that the u-boot version matches the `build information <Release_Specific_PLSDK_Release_Notes.html#build-information>`__.
 
 Build Procedure
 ^^^^^^^^^^^^^^^^^^^^^^
