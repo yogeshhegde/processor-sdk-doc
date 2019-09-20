@@ -37,17 +37,20 @@ cd processor-sdk-doc
 *****************************
 Build instruction for Ubuntu
 *****************************
+Note that DEVFAMILY represents the Device Family.
+Possible values for <FAMILY> are "J7" (representing Jacinto 7) or "GEN" (representing General family).
+
 linux:
-make config OS=linux
-make OS=linux
+make config DEVFAMILY=<FAMILY> OS=linux
+make DEVFAMILY=<FAMILY> OS=linux
 
 rtos:
-make config OS=rtos
-make OS=rtos
+make config DEVFAMILY=<FAMILY> OS=rtos
+make DEVFAMILY=<FAMILY> OS=rtos
 
 android
-make config OS=android
-make OS=android
+make config DEVFAMILY=<FAMILY> OS=android
+make DEVFAMILY=<FAMILY> OS=android
 
 *****************************
 Build instruction for Windows

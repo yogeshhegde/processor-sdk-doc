@@ -11,6 +11,12 @@ OS            = linux
 VERSION       = $(shell cat version.txt)
 BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
 
+$(info DEVFAMILY is $(DEVFAMILY))
+TAGFILE         = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
+FAMILYSETUPFILE = source/common/family_setup.py
+$(info TAGFILE is $(TAGFILE))
+$(info ENVFILE is $(ENVFILE))
+
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
 $(error The '$(SPHINXBUILD)' command was not found. Make sure you have Sphinx installed, then set the SPHINXBUILD environment variable to point to the full path of the '$(SPHINXBUILD)' executable. Alternatively you can add the directory with the executable to your PATH. If you don't have Sphinx installed, grab it from http://sphinx-doc.org/)
@@ -59,7 +65,7 @@ clean:
 	rm -f source/${OS}/conf.py
 
 config:
-	cat source/common/conf.py source/${OS}/conf-${OS}.py > source/${OS}/conf.py
+	cat source/common/conf.py source/${OS}/conf-${OS}.py ${TAGFILE} ${FAMILYSETUPFILE} > source/${OS}/conf.py
 	sed -i 's/SDKVERSION/${VERSION}/g' source/${OS}/conf.py
 	cp source/patch/layout.html source/_themes/sphinx_rtd_theme_ti/layout.html
 

@@ -48,3 +48,6 @@ texinfo_documents = [
    'Texas Instruments Incorporated', 'ProcessorSDKLinux', 'One line description of project.',
    'Miscellaneous'),
 ]
+
+# OS for the build. Sphinx uses source/{sdk_os} when looking for doc inputs
+sdk_os = 'linux'
