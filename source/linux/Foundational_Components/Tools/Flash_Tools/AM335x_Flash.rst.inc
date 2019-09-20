@@ -18,7 +18,7 @@ further documented
 For Windows, we use `CCS UniFlash <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash>`__.
 For more information on using CCS UniFlash with Sitara Devices, please
 see the `Sitara Uniflash Quick Start
-Guide <Foundational_Components_Tools.html#sitara-uniflash>`__.
+Guide <../Foundational_Components_Tools.html#sitara-uniflash>`__.
 
 The overall process of programming the flash is broken into two parts:
 
@@ -42,5 +42,5 @@ The overall process of programming the flash is broken into two parts:
 #. Actually programming the images using Uniflash v3. This tool runs on
    a Windows PC and serves the images to the target board that is being
    programmed. This process is detailed in the `Sitara Uniflash Quick
-   Start Guide <Foundational_Components_Tools.html#sitara-uniflash>`__.
+   Start Guide <../Foundational_Components_Tools.html#sitara-uniflash>`__.
 

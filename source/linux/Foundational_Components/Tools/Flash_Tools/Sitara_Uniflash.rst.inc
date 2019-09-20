@@ -15,7 +15,7 @@ The overall process is broken into two parts:
    from the AM335x or AM437x SoC. This is usually done by the Linux
    developer responsible for creating the images. This process is
    documented
-   `here <Foundational_Components_Tools.html#am335x-flash>`__.
+   `here <../../Foundational_Components_Tools.html#am335x-flash>`__.
 #. Actually programming the images using Uniflash v3. This tool runs on
    a Windows PC and serves the images to the target board that is being
    programmed. This process is detailed below.
@@ -34,7 +34,7 @@ Ethernet to request files served by Uniflash on the Host PC and once
 transferred, executed on the target board. The below diagram should
 help.
 
-.. Image:: ../images/Flash_programming_block_diagram.png
+.. Image:: ../../../images/Flash_programming_block_diagram.png
 
 In the above diagram, take notice of the files stored on the PC. There
 are really 2 different images that will be used:
@@ -98,15 +98,15 @@ in Uniflash version 3.0 and beyond.
    **Browse** to install somewhere else.
 #. Select **Custom** under type of Setup and click **Next**.
 
-.. image:: ../images/Uniflashv3_setup_custom.png
+.. image:: ../../../images/Uniflashv3_setup_custom.png
 
 #. Select **Sitara AMxxxx processors** and click **Next**.
 
-.. image:: ../images/Uniflashv3_setup_sitara.png
+.. image:: ../../../images/Uniflashv3_setup_sitara.png
 
 #. Verify that **Sitara Flash Connection Support** is checked.
 
-.. image:: ../images/Uniflashv3_setup_sitara_flash_connection.png
+.. image:: ../../../images/Uniflashv3_setup_sitara_flash_connection.png
 
 #. Click **Next** to verify your choices.
 #. Wait while Uniflash installs.
@@ -114,7 +114,7 @@ in Uniflash version 3.0 and beyond.
    desktop, quick start, etc.)
 #. Uniflash is now installed and you should see something like this:
 
-.. image:: ../images/Uniflashv3_setup_complete.png
+.. image:: ../../../images/Uniflashv3_setup_complete.png
 
 | 
 
@@ -210,74 +210,74 @@ Here is what you will need:
 
 | Here is an example of the different connections in this set up.
 
-.. Image:: ../images/Ethernet_block_diagram.png
+.. Image:: ../../../images/Ethernet_block_diagram.png
 
 #. If Uniflash is not already running on the Host PC, start it.
 #. **Click** on **New Target Configuration**.
 
-.. Image:: ../images/UniFlash_new_target_configuration.png
+.. Image:: ../../../images/UniFlash_new_target_configuration.png
 
 #. Set **Connection** to **Sitara Flash Connections** and **Board or
    Device** to **Sitara Flash Devices**. Click **OK**.
 
-.. Image:: ../images/Uniflash_Create_CCXML_File.png
+.. Image:: ../../../images/Uniflash_Create_CCXML_File.png
 
 #. Make sure the **Flash Server Configuration** is set up properly.
 
-.. Image:: ../images/UniFlash_flash_server_configuration.png
+.. Image:: ../../../images/UniFlash_flash_server_configuration.png
 
 #. Connect the Host PC to the network switch (or directly to the target
    board if using a direct connection).
 #. **Click** on the **Open Network and Sharing Center**.
 
-.. Image:: ../images/Open_network_sharing_center.png
+.. Image:: ../../../images/Open_network_sharing_center.png
 
 #. **Click** on the Local Area Connection that corresponds to the
    ethernet connection. If you only have one, it should be the only one
    listed.
 
-.. Image:: ../images/Internet_connection.png
+.. Image:: ../../../images/Internet_connection.png
 
 #. In the Connection Dialog, **Click** on **Properties**.
 
-.. Image:: ../images/Local_Area_Connection_Status.png
+.. Image:: ../../../images/Local_Area_Connection_Status.png
 
 #. Select **Internet Protocol Version 4 (TCP/IPv4)** and choose
    **Properties**.
 
-.. Image:: ../images/Tcpipv4_properties.png
+.. Image:: ../../../images/Tcpipv4_properties.png
 
 #. Set the port to use a Static IP Address by selecting **Use the
    following IP Address:** and changing the **IP Address:** to
    192.168.2.1. This setting should correspond to the **Network
    Interface IP** setting in Uniflash.
 
-.. Image:: ../images/Ip_address.png
+.. Image:: ../../../images/Ip_address.png
 
 #. Verify that the **Subnet Mask** is set to 255.255.255.0 and click
    **OK**.
 #. Click **Close**.
 
-.. Image:: ../images/Local_Area_Connection_Properties_close.png
+.. Image:: ../../../images/Local_Area_Connection_Properties_close.png
 
 #. Click **Close** one more time to get back to the Network Manager.
 
-.. Image:: ../images/Local_Area_Connection_Status_close.png
+.. Image:: ../../../images/Local_Area_Connection_Status_close.png
 
 #. **Close** Network Manager if you'd like as it should no longer be
    needed. The network is now set up.
 #. In Uniflash, enable the flashing capability by clicking on **Start
    Flashing**.
 
-.. Image:: ../images/Uniflash_start_flashing.png
+.. Image:: ../../../images/Uniflash_start_flashing.png
 
 #. Depending on your Windows Firewall settings, you may get the below
    two warnings for the servers being used (opendhcp and opentftp). If
    so, please click **Allow access** for both.
 
-.. Image:: ../images/Windows_Security_Alert_opendhcp.png
+.. Image:: ../../../images/Windows_Security_Alert_opendhcp.png
 
-.. Image:: ../images/Windows_Security_Alert_opentftp.png
+.. Image:: ../../../images/Windows_Security_Alert_opentftp.png
 
 #. Make sure the target board is powered and connect it via ethernet to
    the network switch (or directly).
@@ -285,11 +285,11 @@ Here is what you will need:
    automatically on the board. You should see status feedback appear in
    Uniflash as the process progresses.
 
-.. image:: ../images/UniFlash_status_start.png
+.. image:: ../../../images/UniFlash_status_start.png
 
 | Until it completes:
 
-.. image:: ../images/UniFlash_status_done.png
+.. image:: ../../../images/UniFlash_status_done.png
 
 .. note::
 
@@ -323,7 +323,7 @@ Here is what you will need:
 
 | Here is an example of the different connections in this set up:
 
-.. Image:: ../images/Usb_block_diagram.png
+.. Image:: ../../../images/Usb_block_diagram.png
 
 In order to establish a USB based RNDIS connection between the host and
 target, an appropriate driver needs to be installed on the host. A RNDIS
@@ -343,16 +343,16 @@ problems are encountered.
 #. If Uniflash is not already running on the host PC, start it.
 #. **Click** on **New Target Configuration**.
 
-.. Image:: ../images/UniFlash_new_target_configuration.png
+.. Image:: ../../../images/UniFlash_new_target_configuration.png
 
 #. Set **Connection** to **Sitara Flash Connections** and **Board or
    Device** to **Sitara Flash Devices**. Click **OK**.
 
-.. Image:: ../images/Uniflash_Create_CCXML_File.png
+.. Image:: ../../../images/Uniflash_Create_CCXML_File.png
 
 #. Make sure the **Flash Server Configuration** is set up properly.
 
-.. Image:: ../images/UniFlash_flash_server_configuration.png
+.. Image:: ../../../images/UniFlash_flash_server_configuration.png
 
 #. Connect the host PC to the powered target board using an appropriate
    USB cable.
@@ -361,24 +361,24 @@ problems are encountered.
    USB port on that PC. More than likely for the AM437x devices, this
    attempt will fail.
 
-.. image:: ../images/Usb_driver_didnt_install.png
+.. image:: ../../../images/Usb_driver_didnt_install.png
 
 #. Use Device Manager to install a USB driver. To open Device Manager,
    click on **Start --> All Programs --> Right Click on Computer and
    Select Properties**.
 
-.. image:: ../images/Open_device_manager.png
+.. image:: ../../../images/Open_device_manager.png
 
 #. Click on Device Manager in the window that opens.
 
-.. image:: ../images/Device_manager.png
+.. image:: ../../../images/Device_manager.png
 
 #. Find the **AM43xx1.2** Device listed in “Other Devices” per below. It
    will have a little yellow exclamation point on it indicating there is
    currently a problem with the device. **Right click** on it and select
    **Update Driver Software…**.
 
-.. image:: ../images/Am43xx_device_properties.png
+.. image:: ../../../images/Am43xx_device_properties.png
 
 .. note::
 
@@ -389,46 +389,46 @@ problems are encountered.
 #. In the Update Driver Software dialog, choose **Browse my computer for
    driver software**.
 
-.. image:: ../images/Update_USB_Driver_search.png
+.. image:: ../../../images/Update_USB_Driver_search.png
 
 #. Click **Let me pick from a list** in the next window:
 
-.. image:: ../images/Update_Driver_Software_pick.png
+.. image:: ../../../images/Update_Driver_Software_pick.png
 
 #. Choose **Network Adapter** and click **Next**:
 
-.. image:: ../images/RNDIS_network_adapter.png
+.. image:: ../../../images/RNDIS_network_adapter.png
 
 #. Choose **Microsoft Corporation** as the Manufacturer and **Remote
    NDIS6 based Device** under adapter. Click **Next**:
 
-.. image:: ../images/RNDIS_network_adapter_RNDIS.png
+.. image:: ../../../images/RNDIS_network_adapter_RNDIS.png
 
 #. If you see the following warning, click **Yes**:
 
-.. image:: ../images/RNDIS_network_adapter_warning.png
+.. image:: ../../../images/RNDIS_network_adapter_warning.png
 
 #. You should receive a confirmation like below when the driver is
    successfully installed. Finally click **Close**.:
 
-.. image:: ../images/RNDIS_network_adapter_success.png
+.. image:: ../../../images/RNDIS_network_adapter_success.png
 
 #. When the USB Driver for RNDIS is properly installed, it will create a
    new network interface. This can typically be seen in the lower
    right-hand corner of the toolbar:
 
-   .. Image:: ../images/New_network_connection.png
+   .. Image:: ../../../images/New_network_connection.png
 
 #. This new interface needs to be configured with a static IP address.
    **Click** on the Networking icon in the toolbar, and then click on
    the **Open Network and Sharing Center** link.
 
-   .. Image:: ../images/Open_network_sharing_center.png
+   .. Image:: ../../../images/Open_network_sharing_center.png
 
 #. Inside the Network and Sharing Center, click on the new Internet
    Connection:
 
-   .. Image:: ../images/Internet_connection_2.png
+   .. Image:: ../../../images/Internet_connection_2.png
 
    **Note: The number next to the “Local Area Connection” will depend on
    the number of network connections the computer has. If this is the
@@ -440,12 +440,12 @@ problems are encountered.
    then this number could be higher.**
 #. In the Connection Dialog, **Click** on **Properties**.
 
-   .. Image:: ../images/Local_area_connection_2_properties.png
+   .. Image:: ../../../images/Local_area_connection_2_properties.png
 
 #. Select **Internet Protocol Version 4 (TCP/IPv4)** and choose
    **Properties**.
 
-   .. Image:: ../images/Tcpipv4_properties.png
+   .. Image:: ../../../images/Tcpipv4_properties.png
 
 #. Set the port to use a Static IP Address by selecting **Use the
    following IP Address:** and changing the **IP Address:** to
@@ -453,7 +453,7 @@ problems are encountered.
    Interface IP** setting in Uniflash. Verify that the **Subnet Mask**
    is set to 255.255.255.0 and click **OK**.
 
-   .. Image:: ../images/Ip_address.png
+   .. Image:: ../../../images/Ip_address.png
 
    **Note: It is possible to use other IP addresses. However, the IP
    address used needs to match the Uniflash configuration. If you prefer
@@ -461,25 +461,25 @@ problems are encountered.
    as well.**
 #. Click **Close**.
 
-   .. Image:: ../images/Local_Area_Connection_Properties_close.png
+   .. Image:: ../../../images/Local_Area_Connection_Properties_close.png
 
 #. Click **Close** one more time to get back to the Network Manager.
    Let's leave Network Manager open for now.
 
-   .. Image:: ../images/Local_Area_Connection_Status_close.png
+   .. Image:: ../../../images/Local_Area_Connection_Status_close.png
 
 #. In Uniflash, enable the flashing capability by clicking on **Start
    Flashing**.
 
-   .. Image:: ../images/Uniflash_start_flashing.png
+   .. Image:: ../../../images/Uniflash_start_flashing.png
 
 #. Depending on your Windows Firewall settings, you may get the below
    two warnings for the servers being used (opendhcp and opentftp). If
    so, please click **Allow access**.
 
-   .. Image:: ../images/Windows_Security_Alert_opendhcp.png
+   .. Image:: ../../../images/Windows_Security_Alert_opendhcp.png
 
-   .. Image:: ../images/Windows_Security_Alert_opentftp.png
+   .. Image:: ../../../images/Windows_Security_Alert_opentftp.png
 
 #. Now that the IP connection has been configured, the target board
    should request the first file from the Uniflash via TFTP over
@@ -490,7 +490,7 @@ problems are encountered.
    not complete quickly enough. Now that it is configured, you should be
    able to progress to the next steps.
 
-.. image:: ../images/UniFlash_status_start.png
+.. image:: ../../../images/UniFlash_status_start.png
 
 #. Once the first file is transferred from Host to Target, it will take
    over execution on the target board from the ROM on the Sitara device.
@@ -506,12 +506,12 @@ problems are encountered.
    interface will need to be configured like we did above. **Open the
    Network Connection and Sharing Center, if it is not already open.**
 
-   .. Image:: ../images/Open_network_sharing_center.png
+   .. Image:: ../../../images/Open_network_sharing_center.png
 
 #. Inside the Network and Sharing Center, click on the new Internet
    Connection:
 
-   .. Image:: ../images/Local_area_connection_3.png
+   .. Image:: ../../../images/Local_area_connection_3.png
 
    **Note: The number next to the “Local Area Connection” will depend on
    the number of network connections the computer has. If this is the
@@ -525,12 +525,12 @@ problems are encountered.
 
 #. In the Connection Dialog, **Click** on **Properties**.
 
-   .. Image:: ../images/Local_Area_Connection_3_Properties.png
+   .. Image:: ../../../images/Local_Area_Connection_3_Properties.png
 
 #. Select **Internet Protocol Version 4 (TCP/IPv4)** and choose
    **Properties**.
 
-   .. Image:: ../images/Tcpipv4_properties.png
+   .. Image:: ../../../images/Tcpipv4_properties.png
 
 #. Set the port to use a Static IP Address by selecting **Use the
    following IP Address:** and changing the **IP Address:** to
@@ -538,7 +538,7 @@ problems are encountered.
    Interface IP** setting in Uniflash. Verify that the **Subnet Mask**
    is set to 255.255.255.0 and click **OK**.
 
-   .. Image:: ../images/Ip_address.png
+   .. Image:: ../../../images/Ip_address.png
 
    **Note: It is possible to use other IP addresses. However, the IP
    address used needs to match the Uniflash configuration. If you prefer
@@ -551,15 +551,15 @@ problems are encountered.
    However, in this situation, the configuration ensures that both
    interfaces won’t be used at the same time.
 
-   .. Image:: ../images/Microsoft_TCP_IP.png
+   .. Image:: ../../../images/Microsoft_TCP_IP.png
 
 #. Click **Close**.
 
-   .. Image:: ../images/Local_Area_Connection_Properties_close.png
+   .. Image:: ../../../images/Local_Area_Connection_Properties_close.png
 
 #. Click **Close** one more time to get back to the Network Manager.
 
-   .. Image:: ../images/Local_Area_Connection_Status_close.png
+   .. Image:: ../../../images/Local_Area_Connection_Status_close.png
 
 #. Now that everything is configured, the process should be able to
    complete. Take a look at Uniflash and you should see the process
@@ -568,11 +568,11 @@ problems are encountered.
    up correctly on the Host PC at this point, the process should be able
    to proceed without issue.
 
-.. image:: ../images/UniFlash_status_start.png
+.. image:: ../../../images/UniFlash_status_start.png
 
 |  Until it completes:
 
-.. image:: ../images/UniFlash_status_done.png
+.. image:: ../../../images/UniFlash_status_done.png
 
 #. When the flash process is complete, simply disconnect the target
    board. It should be flashed and ready for further testing.
@@ -610,7 +610,7 @@ problems are encountered.
    :name: useful-links
 
 -  `Sitara Flash Programming Linux Development for
-   AM335x/AM437x <Foundational_Components_Tools.html#am335x-flash>`__
+   AM335x/AM437x <../../Foundational_Components_Tools.html#am335x-flash>`__
    to learn more about developing images to be flashed using this
    process.
 -  `Sitara Linux Program SPI Flash on AM335x

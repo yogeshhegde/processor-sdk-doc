@@ -7,16 +7,16 @@ prerequisites are met:
 
 #. Installed the Processor Linux SDK
 #. You have ran the `SDK's Setup
-   Scripts <Overview_Getting_Started_Guide.html#run-setup-scripts>`__
+   Scripts <../../Overview_Getting_Started_Guide.html#run-setup-scripts>`__
 #. Installed Code Composer Studio
 #. Created or imported a C/C++ Project. This project should be already
    open. For this guide a helloworld project will be used as an example.
 #. Connected your host PC and evm to the same network. Your PC and EVM
    should be on the same subnet.
 #. `Remote System
-   Explorer <Foundational_Components_Tools.html#remote-explorer-setup-with-ccs>`__
+   Explorer <../../Foundational_Components_Tools.html#remote-explorer-setup-with-ccs>`__
    has already been setup and your
-   `connected <Foundational_Components_Tools.html#connecting-to-the-target>`__
+   `connected <../../Foundational_Components_Tools.html#connecting-to-the-target>`__
    to the board.
 #. The project you want to debug is already opened. Its important that
    the debug version of the executable is built.
@@ -32,7 +32,7 @@ prerequisites are met:
 #. Select the Run -> Debug Configurations menu item.  This opens a
    dialog box as shown below.
 
-   .. Image:: ../images/Initial-debug-configurations.png
+   .. Image:: ../../../images/Initial-debug-configurations.png
 
 3. Double click C/C++ Remote Application.  You should then see a new
    debug configuration named "helloworld Debug" as shown below. 
@@ -40,19 +40,19 @@ prerequisites are met:
    Select your target connection from the Connection drop-down
    box.  In the example the target connection is called My Target EVM.
 
-   .. Image:: ../images/Hello_World_Debug_Configuration.png
+   .. Image:: ../../../images/Hello_World_Debug_Configuration.png
 
 4. Click the Search Project button to open the Program Selection dialog
    box below.  Click on the "armle - /helloworld/Debug/helloworld" item and
    click OK.
 
-   .. Image:: ../images/Debug-config-2.png
+   .. Image:: ../../../images/Debug-config-2.png
 
 5. Click the "Browse..." button for "Remote Absolute File Path for C/C++
    Application".  Navgate to the executable file on the remote file system.  
    For this example, the executable file is found at "/usr/bin/helloworld".
 
-   .. Image:: ../images/Auto-debug-config-main-tab.png
+   .. Image:: ../../../images/Auto-debug-config-main-tab.png
 
 6. Click the Debugger tab.  On the Debugger page, the Main tab should
    be selected.
@@ -69,7 +69,7 @@ GDB should be located at:
 | When you try to browse to the .gdbinit file, you will need to right
   click and select Show Hidden Files to see the file.
 
-  .. Image:: ../images/Show_Hidden_Files.png
+  .. Image:: ../../../images/Show_Hidden_Files.png
 
 | 
 
@@ -77,7 +77,7 @@ The .gdbinit file is used by GDB to locate source files and library
 files on the target. The .gdbinit file is created when the SDK
 environment script runs. Here is an example of a .gdbinit file.
 
-.. Image:: ../images/Gdbinit.png
+.. Image:: ../../../images/Gdbinit.png
 
 | 
 
@@ -104,7 +104,7 @@ You are now ready to debug the application!
    main() function. The Variables window will show the local variables and
    their current values.
 
-   .. Image:: ../images/Auto-debugging.png
+   .. Image:: ../../../images/Auto-debugging.png
 
 3. To toggle a breakpoint, highlight the line of code in the source code
    window. Then click the Run -> Toggle Breakpoint menu item.
@@ -157,7 +157,7 @@ Once setup, you can follow these steps to terminate gdbserver:
 4) Find the gdbserver process.  Right click on it and select Kill.  This
    will open a "Send a Kill Signal" dialog box.  Click the Kill button.
 
-   .. Image:: ../images/Shell-processes.png
+   .. Image:: ../../../images/Shell-processes.png
    
-   .. Image:: ../images/Kill-gdbserver.png
+   .. Image:: ../../../images/Kill-gdbserver.png
 

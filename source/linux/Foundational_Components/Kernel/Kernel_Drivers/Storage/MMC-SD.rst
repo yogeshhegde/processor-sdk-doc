@@ -1,0 +1,391 @@
+.. http://processors.wiki.ti.com/index.php/Linux_Core_MMC/SD_User%27s_Guide
+
+MMC/SD
+---------------------------------
+
+.. rubric:: **Introduction**
+   :name: introduction-linux-core-mmc
+
+The multimedia card high-speed/SDIO (MMC/SDIO) host controller provides
+an interface between a local host (LH) such as a microprocessor unit
+(MPU) or digital signal processor (DSP) and either MMC, SD® memory
+cards, or SDIO cards and handles MMC/SDIO transactions with minimal LH
+intervention.
+
+Main features of the MMC/SDIO host controllers:
+
+-  Full compliance with MMC/SD command/response sets as defined in the
+   Specification.
+
+-  Support:
+
+   -  4-bit transfer mode specifications for SD and SDIO cards
+   -  8-bit transfer mode specifications for eMMC
+   -  Built-in 1024-byte buffer for read or write
+   -  32-bit-wide access bus to maximize bus throughput
+   -  Single interrupt line for multiple interrupt source events
+   -  Two slave DMA channels (1 for TX, 1 for RX)
+   -  Designed for low power and Programmable clock generation
+   -  Maximum operating frequency of 48MHz
+   -  MMC/SD card hot insertion and removal
+
+
+.. Image:: ../../../../../images/Mmcsd_Driver.png
+
+MMC/SD Driver Architecture
+
+| 
+
+.. rubric:: **References**
+   :name: references
+
+#. JEDEC eMMC Homepage
+   [http://www.jedec.org/category/technology-focus-area/flash-memory-ssds-ufs-emmc]
+#. SD ORG Homepage [http://www.sdcard.org/home]
+
+| 
+
+.. rubric:: **Acronyms & Definitions**
+   :name: acronyms-definitions
+
++-----------+--------------------+
+| Acronym   | Definition         |
++===========+====================+
+| MMC       | Multimedia Card    |
++-----------+--------------------+
+| HS-MMC    | High Speed MMC     |
++-----------+--------------------+
+| SD        | Secure Digital     |
++-----------+--------------------+
+| SDHC      | SD High Capacity   |
++-----------+--------------------+
+| SDIO      | SD Input/Output    |
++-----------+--------------------+
+
+Table:  **HSMMC Driver: Acronyms**
+
+| 
+
+.. rubric:: **Features**
+   :name: features
+
+The SD driver supports following features
+
+-  The driver is built in-kernel (part of vmlinux)
+-  SD cards including SD High Speed and SDHC cards
+-  Uses block bounce buffer to aggregate scattered blocks
+
+.. rubric:: **Features NOT supported**
+   :name: features-not-supported
+
+| Following features are not supported currently:
+
+-  Polling I/O mode
+
+.. rubric:: **Supported High Speed Modes**
+   :name: supported-high-speed-modes
+
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| Platform           | SDR104            | DDR50             | SDR50             | SDR25             | SDR12             |
++====================+===================+===================+===================+===================+===================+
+| DRA74-EVM          | Y                 | Y                 | Y                 | Y                 | Y                 |
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| DRA72-EVM          | Y                 | Y                 | Y                 | Y                 | Y                 |
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| DRA71-EVM          | Y                 | Y                 | Y                 | Y                 | Y                 |
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| DRA72-EVM-REVC     | Y                 | Y                 | Y                 | Y                 | Y                 |
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| AM57XX-EVM         | N                 | N                 | N                 | N                 | N                 |
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| AM57XX-EVM-REVA3   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   |
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| AM572X-IDK         | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   |
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+| AM571X-IDK         | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   |
++--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
+Table:  **MMC1/SD**
+
+:sup:`*(1)*` - Does not have power cycle support. So if a card fails to
+enumerate in UHS mode, it doesn't fall back to high speed mode.
+
+**Important Info**: Certain UHS cards doesn't enumerate in UHS cards.
+Find the list of functional UHS cards here:
+http://processors.wiki.ti.com/index.php/Linux_Core_MMC/SD_User%27s_Guide#Testing_Information
+
+**Known Workaround**: For cards which doesn't enumerate in UHS mode,
+removing the PULLUP resistor in CLK line and changing the GPIO to
+PULLDOWN increases the frequency in which the card enumerates in UHS
+modes.
+
++--------------------+-------+---------+
+| Platform           | DDR   | HS200   |
++====================+=======+=========+
+| DRA74-EVM          | Y     | Y       |
++--------------------+-------+---------+
+| DRA72-EVM          | Y     | Y       |
++--------------------+-------+---------+
+| DRA71-EVM          | Y     | Y       |
++--------------------+-------+---------+
+| DRA72-EVM-REVC     | Y     | Y       |
++--------------------+-------+---------+
+| AM57XX-EVM         | Y     | N       |
++--------------------+-------+---------+
+| AM57XX-EVM-REVA3   | Y     | N       |
++--------------------+-------+---------+
+| AM572X-IDK         | Y     | N       |
++--------------------+-------+---------+
+| AM571X-IDK         | Y     | N       |
++--------------------+-------+---------+
+
+Table:  **MMC2/EMMC**
+
+.. rubric:: **Driver Configuration**
+   :name: driver-configuration-mmcsd
+
+The default kernel configuration enables support for MMC/SD(built-in to
+kernel). OMAP MMC/SD driver is used.
+
+The selection of MMC/SD/SDIO driver can be modified as follows: start
+Linux Kernel Configuration tool.
+
+::
+
+    $ make menuconfig  ARCH=arm
+
+-  Select Device Drivers from the main menu.
+
+::
+
+    ...
+    ...
+    Kernel Features  --->
+    Boot options  --->
+    CPU Power Management  --->
+    Floating point emulation  --->
+    Userspace binary formats  --->
+    Power management options  --->
+    [*] Networking support  --->
+    Device Drivers  --->
+    ...
+    ...
+
+.. rubric:: **Building into Kernel**
+   :name: building-into-kernel
+
+-  Select MMC/SD/SDIO card support from the menu.
+
+::
+
+    ...
+    ...
+    [*] USB support  --->
+    < > Ultra Wideband devices (EXPERIMENTAL)  --->
+    <*> MMC/SD/SDIO card support  --->
+    < > Sony MemoryStick card support (EXPERIMENTAL)  --->
+    ...
+    ...
+
+-  Select OMAP HSMMC driver
+
+::
+
+    ...
+    [ ] MMC debugging
+    [ ] Assume MMC/SD cards are non-removable (DANGEROUS) 
+       *** MMC/SD/SDIO Card Drivers ***
+    <*> MMC block device driver
+    [*]  Use bounce buffer for simple hosts
+    ...
+    <*>   TI OMAP High Speed Multimedia Card Interface support 
+    ...
+
+.. rubric:: **Building as Loadable Kernel Module**
+   :name: building-as-loadable-kernel-module
+
+-  To build the above components as modules, press 'M' key after
+   navigating to config entries preceded with '< >' as shown below:
+
+::
+
+    ...
+    ...
+    [*] USB support  --->
+    < > Ultra Wideband devices (EXPERIMENTAL)  --->
+    <M> MMC/SD/SDIO card support  --->
+    < > Sony MemoryStick card support (EXPERIMENTAL)  --->
+    ...
+
+-  Select OMAP HSMMC driver to be built as module
+
+::
+
+    ...
+    [ ] MMC debugging
+    [ ] Assume MMC/SD cards are non-removable (DANGEROUS) 
+       *** MMC/SD/SDIO Card Drivers ***
+    <*> MMC block device driver
+    [*]  Use bounce buffer for simple hosts
+    ...
+    <*>   TI OMAP High Speed Multimedia Card Interface support 
+    ...
+
+-  After doing module selection, exit and save the kernel configuration
+   when prompted.
+-  Now build the kernel and modules form Linux build host as
+
+::
+
+    $ make uImage
+    $ make modules
+
+-  Following modules will be built
+
+::
+
+    mmc_core.ko
+    mmc_block.ko
+    omap_hsmmc.ko
+
+-  Boot the newly built kernel and transfer the above mentioned .ko
+   files to the filesystem
+-  Navigate to the directory containing these modules and insert them
+   form type the following commands in console to insert the modules in
+   specified order:
+
+::
+
+    # insmod mmc_core.ko
+    # insmod mmc_block.ko
+    # insmod omap_hsmmc.ko
+
+-  If 'udev' is running and the SD card is already inserted, the devices
+   nodes will be created and filesystem will be automatically mounted if
+   exists on the card.
+
+.. rubric:: **Suspend to Memory support**
+   :name: suspend-to-memory-support
+
+This driver supports suspend to memory functionality. To use the same,
+the following configuration is enabled by default.
+
+-  Select Device Drivers from the main menu.
+
+::
+
+    ...
+    ...
+    Kernel Features  --->
+    Boot options  --->
+    CPU Power Management  --->
+    Floating point emulation  --->
+    Userspace binary formats  --->
+    Power management options  --->
+    [*] Networking support  --->
+    Device Drivers  --->
+    ...
+    ...
+
+-  Select MMC/SD/SDIO card support from the menu.
+
+::
+
+    ...
+    ...
+    [*] USB support  --->
+    < > Ultra Wideband devices (EXPERIMENTAL)  --->
+    <*> MMC/SD/SDIO card support  --->
+    < > Sony MemoryStick card support (EXPERIMENTAL)  --->
+    ...
+    ...
+
+-  Select Assume MMC/SD cards are non-removable option.
+
+::
+
+    ...
+    [ ] MMC debugging
+    [*] Assume MMC/SD cards are non-removable (DANGEROUS) 
+    *** MMC/SD/SDIO Card Drivers ***
+    <*> MMC block device driver
+    [*]  Use bounce buffer for simple hosts
+    ...
+    <*>   TI OMAP High Speed Multimedia Card Interface support 
+    ...
+
+.. rubric:: **Enabling eMMC Card Background operations support**
+   :name: enabling-emmc-card-background-operations-support
+
+| eMMC cards need to occasionally spend some time cleaning up garbage
+  and perform cache/buffer related operations which are strictly on the
+  card side and do not involve the host. These operations are at various
+  levels based on the importance/severity of the operation 1- Normal, 2-
+  Important and 3 - Critical. If an operation is delayed for long it
+  becomes critical and the regular read/write from host can be delayed
+  or take more time than expected.
+| To avoid such issues the MMC HW and core driver provide a framework
+  which can check for pending background operations and give the card
+  some time to clear up the same.
+| This feature is already part of the framework and to start using it
+  the User needs to enable EXT\_CSD : BKOPS\_EN [163] BIT 0.
+
+**This can be done using the "mmc-utils" tool from user space or using
+the "mmc" command in U-boot.**
+
+Command to enable bkops from userspace using mmc-utils, assuming eMMC
+instance to be mmcblk0
+
+::
+
+    root@dra7xx-evm:mmc bkops enable /dev/mmcblk0 
+
+You can find the instance of eMMC by reading the ios timing spec form
+debugfs
+
+::
+
+    root@dra7xx-evm:~# cat /sys/kernel/debug/mmc0/ios
+    ----
+    timing spec:    9 (mmc HS200)
+    ---
+
+or by looking for boot partitions, eMMC has two bootpartitions
+mmcblk<x>boot0 and mmcblk<x>boot1
+
+::
+
+    root@dra7xx-evm:/# ls /dev/mmcblk*boot*
+    /dev/mmcblk0boot0  /dev/mmcblk0boot1
+
++-------------------------------------------------------------------------------------------+
+| FUNCTIONAL UHS CARDS                                                                      |
++===========================================================================================+
+| ATP 32GB UHS CARD AF32GUD3                                                                |
++-------------------------------------------------------------------------------------------+
+| STRONTIUM NITRO 466x UHS CARD                                                             |
++-------------------------------------------------------------------------------------------+
+| SANDISK EXTREME UHS CARD                                                                  |
++-------------------------------------------------------------------------------------------+
+| SANDISK ULTRA UHS CARD                                                                    |
++-------------------------------------------------------------------------------------------+
+| SAMSUNG EVO+ UHS CARD                                                                     |
++-------------------------------------------------------------------------------------------+
+| SAMSUNG EVO UHS CARD                                                                      |
++-------------------------------------------------------------------------------------------+
+| KINGSTON UHS CARD (DDR mode)                                                              |
++-------------------------------------------------------------------------------------------+
+| TRANSCEND PREMIUM 400X UHS CARD (Non fatal error and then it re-enumerates in UHS mode)   |
++-------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------+
+| FUNCTIONAL (WITH LIMITED CAPABILITY) UHS CARD                                |
++==============================================================================+
+| SONY UHS CARD - Voltage switching fails and enumerates in high speed         |
++------------------------------------------------------------------------------+
+| GSKILL UHS CARD - Voltage switching fails and enumerates in high speed       |
++------------------------------------------------------------------------------+
+| PATRIOT 8G UHS CARD - Voltage switching fails and enumerates in high speed   |
++------------------------------------------------------------------------------+
+
+

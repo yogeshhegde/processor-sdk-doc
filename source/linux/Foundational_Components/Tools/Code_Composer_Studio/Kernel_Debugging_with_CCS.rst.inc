@@ -111,7 +111,7 @@ Capabilities tab in the Preference dialog (select **Window** -->
    Check **Use configuration specific settings** and select **GDB (DSF)
    Manual Remote Degugging Launcher**. Click **OK**.
 
-   .. Image:: ../images/Linux_debug_v5_GDB_config.png
+   .. Image:: ../../../images/Linux_debug_v5_GDB_config.png
 
 
    Note: It is possible to set up CCSv5 to automatically connect and
@@ -122,7 +122,7 @@ Capabilities tab in the Preference dialog (select **Window** -->
    **Note:** Other options like *Enable auto build*, *arguments* and others
    can be modified at this time.
 
-   .. Image:: ../images/Linux_debug_v5_tab_main.png
+   .. Image:: ../../../images/Linux_debug_v5_tab_main.png
 
 
 6. Select the **Debugger** tab and specify the GDB debugger as well
@@ -142,7 +142,7 @@ Capabilities tab in the Preference dialog (select **Window** -->
    -  The GDB init file is located:
       /home/user/AM335X/SDK/ti-sdk-am335x-evm-06.00.00.00/.gdbinit
 
-   .. Image:: ../images/Linux_debug_v5_tab_dbg_main.png
+   .. Image:: ../../../images/Linux_debug_v5_tab_dbg_main.png
 
 
 7. On the Debugger **Connection** tab, specify the IP address and
@@ -159,9 +159,9 @@ Capabilities tab in the Preference dialog (select **Window** -->
    the supplied filesystem. Check the SDK documentation for details on how
    to install it.
 
-   .. Image:: ../images/Linux_debug_v5_ifconfig.png
+   .. Image:: ../../../images/Linux_debug_v5_ifconfig.png
 
-   .. Image:: ../images/Linux_debug_v5_tab_dbg_connection.png
+   .. Image:: ../../../images/Linux_debug_v5_tab_dbg_connection.png
 
 
 8. On the target console, start the GDB server specifying the
@@ -174,7 +174,7 @@ Capabilities tab in the Preference dialog (select **Window** -->
    filesystem. This can be done in multiple ways: either copying it to the
    shared NFS directory, to the SD card being used to boot linux, etc.
 
-   .. Image:: ../images/Linux_debug_v5_gdbserver.png
+   .. Image:: ../../../images/Linux_debug_v5_gdbserver.png
 
 9. Launch the debug configuration by clicking the Debug button.
 
@@ -183,7 +183,7 @@ Capabilities tab in the Preference dialog (select **Window** -->
       and view the memory, registers and variables of the application
       process running on the target.
 
-   .. Image:: ../images/Linux_debug_v5_debugger.png
+   .. Image:: ../../../images/Linux_debug_v5_debugger.png
 
 10. You may need to set the shared library (object) search path in a
     cross compile debug enviroment.
@@ -286,16 +286,16 @@ enabled. To do it, go to:
    *Project* and select *Makefile Project with Existing Code*. Click
    *Next*.
 
-   .. Image:: ../images/Linux_debug_v5_kernel_pjt_wizard.png
+   .. Image:: ../../../images/Linux_debug_v5_kernel_pjt_wizard.png
 
 
 2. In the section *Existing Code Location*, click on *Browse...* and
    point to the root directory of the Linux kernel source tree. Leave the
    toolchain as *<none>* and click *Finish*.
 
-   .. Image:: ../images/Linux_debug_v5_kernel_pjt_new.png
+   .. Image:: ../../../images/Linux_debug_v5_kernel_pjt_new.png
 
-   .. Image:: ../images/Linux_debug_v5_kernel_pjt_tree.png
+   .. Image:: ../../../images/Linux_debug_v5_kernel_pjt_tree.png
 
 
 3. To prevent CCS from building the Linux kernel automatically
@@ -305,7 +305,7 @@ enabled. To do it, go to:
    and the tab *Behaviour*. Uncheck all the build rules boxes and click
    *OK*.
 
-   .. Image:: ../images/Linux_debug_v5_kernel_build_set.png
+   .. Image:: ../../../images/Linux_debug_v5_kernel_build_set.png
 
 **Note:** it is possible the C-syntax error checker built into Eclipse
 is also activated, which may throw errors while launching the debugger.
@@ -341,7 +341,7 @@ Guide <http://processors.wiki.ti.com/index.php/CCSv5_Getting_Started_Guide>`__.
 2. Select *Code Composer Studio - Device Debugging* and click on the
    button *New Launch configuration* at the top left.
 
-   .. Image:: ../images/Linux_debug_v5_jtag_tab_main.png
+   .. Image:: ../../../images/Linux_debug_v5_jtag_tab_main.png
 
 3. Click on the button **File System...** near the box **Target
    Configuration** to select the target configuration file (.ccxml) for your
@@ -354,7 +354,7 @@ Guide <http://processors.wiki.ti.com/index.php/CCSv5_Getting_Started_Guide>`__.
    list of cores will be shown and can be disabled to improve the debugger
    performance.
 
-   .. Image:: ../images/Linux_debug_v5_jtag_target_assign.png
+   .. Image:: ../../../images/Linux_debug_v5_jtag_target_assign.png
 
 4. Select the tab *Program* to assign the Linux kernel source code
    to the Debug configuration.
@@ -385,15 +385,15 @@ Guide <http://processors.wiki.ti.com/index.php/CCSv5_Getting_Started_Guide>`__.
 
 8. At last, check the box *Load symbols only*. Click *Apply*.
 
-   .. Image:: ../images/Linux_debug_v5_jtag_vmlinux.png
+   .. Image:: ../../../images/Linux_debug_v5_jtag_vmlinux.png
 
 9. Now the debug session is ready to be launched. At this point, the
    emulator must be connected, the target board powered up and Linux
    running (typically in the command prompt). Click on the *Debug* button.
 
-   .. Image:: ../images/Linux_debug_v5_jtag_debugger_launching.png
+   .. Image:: ../../../images/Linux_debug_v5_jtag_debugger_launching.png
 
-   .. Image:: ../images/Linux_debug_v5_jtag_debugger.png
+   .. Image:: ../../../images/Linux_debug_v5_jtag_debugger.png
 
 .. rubric:: Mixed Mode Debug
    :name: mixed-mode-debug
@@ -415,14 +415,14 @@ Studio)* then *Hardware Breakpoint*. Resume the target execution.
 ``sleep()`` function call. After launching, the *Debug* view should show
 two debug sessions as in the screen below:
 
-.. Image:: ../images/Linux_debug_v5_mixed_app_startup.png
+.. Image:: ../../../images/Linux_debug_v5_mixed_app_startup.png
 
 
 **4.** Put the target to run. When the application calls ``sleep()`` the
 Stop mode debug session should halt at the breakpoint, as shown in the
 screen below:
 
-.. Image:: ../images/Linux_debug_v5_mixed_kernel_halted.png
+.. Image:: ../../../images/Linux_debug_v5_mixed_kernel_halted.png
 
 **Important!** Keep in mind that halting the Linux kernel while
 GDB/GDBserver are running may cause communication timeouts, clock skews
