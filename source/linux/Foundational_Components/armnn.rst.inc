@@ -9,6 +9,12 @@ Arm NN and Arm Compute Library, as a set of machine learning software, tools and
 For Sitara devices without accelerators like C66x or EVE (AM3/4/6), one can use Arm provided libraries created for supporting inference only tasks on Arm CPUs.
 Arm NN and Arm Compute Library can also be used on AM57xx devices as well, as complementary approach to TIDL-API.
 
+Supported versions
+==================
+
+  - ARMNN 19.08
+  - ARM Compute Library 19.08
+
 Arm Compute Library
 ===================
 

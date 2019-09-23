@@ -1223,6 +1223,16 @@ Summary of model porting steps
   - Drop in accuracy (vs first step) should not be big (few percents).
 - Test the network on the target, using TIDL API based program and imported model.
 
+Compatibility of trained model formats
+======================================
+
+Below versions of frameworks or runtimes have been used for testing the TIDL import procedure and execution of imported models in TIDL runtime. 
+Below information should be used in addition to constraints related to operator availability in TIDL library.
+More recent versions of formats might be also supported, but not guaranteed.
+
+  - Caffe: v1.0
+  - Tensorflow: v1.12
+  - ONNX runtime: v1.4
 
 Training
 ========
