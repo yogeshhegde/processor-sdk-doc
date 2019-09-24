@@ -154,7 +154,7 @@ Kernel
    :name: generic-kernel-release-notes
 
 | Generic kernel release notes from kernelnewbies.org can be found at:
-  http://kernelnewbies.org/Linux_4.14
+  http://kernelnewbies.org/Linux_4.19
 | Archived versions can be found at:
   http://kernelnewbies.org/LinuxVersions
 
