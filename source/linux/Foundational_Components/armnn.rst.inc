@@ -45,7 +45,7 @@ Sample NN related executables (using Arm Compute Library only):
 Arm NN
 ======
 
-Arm NN is library built on top of Arm Compute Library leveraging its NEON optimized kernels. Importing of Caffe and Tensorflow inference models is significantly simplified.
+Arm NN is library built on top of Arm Compute Library leveraging its NEON optimized kernels. Importing of Caffe, ONNX, TensorFlow, and TensorFlow Lite inference models is significantly simplified.
 Library and executables are part of AM3/4/5/6 target filesystem. More information can be found at: https://developer.arm.com/products/processors/machine-learning/arm-nn
 
 Sample Arm NN executables using Caffe models:
@@ -60,43 +60,59 @@ Sample Arm NN executables using Caffe models:
    /usr/bin/CaffeVGG-Armnn
    /usr/bin/CaffeYolo-Armnn
 
-Sample executables using TF models:
+Sample executables using ONNX models:
 
 ::
 
-   /usr/bin/ArmnnExamples
+   /usr/bin/OnnxMnist-Armnn
+   /usr/bin/OnnxMobileNet-Armnn
+
+Sample executables using TensorFlow models:
+
+::
+
    /usr/bin/TfCifar10-Armnn
    /usr/bin/TfInceptionV3-Armnn
    /usr/bin/TfMnist-Armnn
    /usr/bin/TfMobileNet-Armnn
    /usr/bin/TfResNext-Armnn
+
+Sample executables using TensorFlow Lite models:
+
+::
+
+   /usr/bin/TfLiteInceptionV3Quantized-Armnn
+   /usr/bin/TfLiteInceptionV4Quantized-Armnn
+   /usr/bin/TfLiteMnasNet-Armnn
+   /usr/bin/TfLiteMobileNetQuantizedSoftmax-Armnn
+   /usr/bin/TfLiteMobileNetSsd-Armnn
+   /usr/bin/TfLiteMobilenetQuantized-Armnn
+   /usr/bin/TfLiteMobilenetV2Quantized-Armnn
+   /usr/bin/TfLiteResNetV2-50-Quantized-Armnn
+   /usr/bin/TfLiteResNetV2-Armnn
+   /usr/bin/TfLiteVGG16Quantized-Armnn
   
-Please note that these examples (Arm baseline code) use hardcoded paths, so source modification might be required (one can use Yocto based compilation - look for armnn recipe in meta-arago layer).
 
 Arm NN MobileNet Demo
 =====================
 
-Upon boot, Matrix-GUI is started with multiple buttons that can start many demos. In PLSDK 5.2, under sub-menu "Machine Learning",
-there are two Arm NN GUI buttons:
+Upon boot, Matrix-GUI is started with multiple icons that can start many out of box demos. Under sub-menu "Machine Learning",
+there are two icons to start the Arm NN demos:
 
 * Arm NN MobileNet Real Common Objects 
 * Arm NN MobileNet Camera Input
 
-These examples demonstrate Deep Learning Imagenet classification (1000 classes) with MobileNet model <http://download.tensorflow.org/models/mobilenet_v1_2018_02_22/mobilenet_v1_1.0_224.tgz> on Arm.
+These examples demonstrate Deep Learning Imagenet classification (1000 classes) with `MobileNet model <https://storage.googleapis.com/mobilenet_v2/checkpoints/mobilenet_v2_1.0_224.tgz>`__ on Arm.
 One example uses pre-recorded real-world video clip and the other uses live camera input. The pre-recorded video clip (320x320 resolution) and live camera input (default 640x480 resolution)
 are scaled down and central-cropped in run-time (using OpenCV API) to 224x224. Result of this
 processing is standard Imagenet classification output (1D vector with 1000 elements). 
 
-Executable invoked from Matrix-GUI is in: /usr/bin/ArmnnExamples.
+Executable invoked from the Matrix-GUI demos above is /usr/bin/ArmnnExamples, and the TensorFlow Lite parser is used.
+
+Options of ArmnnExamples are listed below:
 
 ::
 
-	root@am57xx-evm:/usr/bin# ArmnnExamples --help
-	Executes a neural network model using the provided input tensor.
-	Prints the resulting output tensor.
-
-	Options:
-	  --help                          Display usage information
 	  -f [ --model-format ] arg       caffe-binary, caffe-text, onnx-binary,
                                           onnx-text, tflite-binary, tensorflow-binary
                                           or tensorflow-text. E.g.: -f
@@ -125,34 +141,74 @@ Executable invoked from Matrix-GUI is in: /usr/bin/ArmnnExamples.
 
 Here is an example of classification using live camera input - stop at any time with mouse right-click on output image window.
 ::
-      ArmnnExamples -f tensorflow-binary -i input -s '1 224 224 3' -o MobilenetV1/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/camera_live_input -m /usr/share/arm/armnn/models/mobilenet_v1_1.0_224_frozen.pb -c CpuAcc --number_frame 100
+      ArmnnExamples -f tflite-binary -i input -s '1 224 224 3' -o MobilenetV2/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/camera_live_input -m /usr/share/arm/armnn/models/mobilenet_v2_1.0_224.tflite -c CpuAcc --number_frame 100
 
 Here is an example of classification using video clip - stop at any time with mouse right-click on output image window.
 ::
-      ArmnnExamples -f tensorflow-binary -i input -s '1 224 224 3' -o MobilenetV1/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/test2.mp4 -m /usr/share/arm/armnn/models/mobilenet_v1_1.0_224_frozen.pb -c CpuAcc --number_frame 100
+      ArmnnExamples -f tflite-binary -i input -s '1 224 224 3' -o MobilenetV2/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/test2.mp4 -m /usr/share/arm/armnn/models/mobilenet_v2_1.0_224.tflite -c CpuAcc --number_frame 100
 
-Here is an example of classification using JPG image - use <--number_frame> to select number of runs.
+Here is an example of classification using JPG image - use "--number_frame" to select the number of runs.
 ::
-	  root@am57xx-evm:/usr/bin# ArmnnExamples -f tensorflow-binary -i input -s '1 224 224 3' -o MobilenetV1/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/baseball.jpg -m /usr/share/arm/armnn/models/mobilenet_v1_1.0_224_frozen.pb -c CpuAcc --number_frame 10
-	  ArmNN v20180800
-
-	  Predicted: 430:baseball
-	  Performance (FPS): 3.69008
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.06392
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.0249
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.06136
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.04393
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.05345
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.07095
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.06762
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.04837
-	  Predicted: 430:baseball
-	  Performance (FPS): 4.07617
+     root@am57xx-evm:/usr/bin# ArmnnExamples -f tflite-binary -i input -s '1 224 224 3' -o MobilenetV2/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/baseball.jpg -m /usr/share/arm/armnn/models/mobilenet_v2_1.0_224.tflite -c CpuAcc --number_frame 10
+     ArmNN v20190800
+     
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 7.57426
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.48181
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.46633
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.41803
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.3029
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.45797
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.45416
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.49093
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.33742
+     Top(1) prediction is 430:baseball with confidence: 69.5592%
+     Top(2) prediction is 575:golf ball with confidence:  0.307349%
+     Top(3) prediction is 474:can opener, tin opener with confidence:  0.248897%
+     Top(4) prediction is 884:vase with confidence:  0.196634%
+     Top(5) prediction is 130:spoonbill with confidence:  0.191194%
+     Performance (FPS): 9.4193
