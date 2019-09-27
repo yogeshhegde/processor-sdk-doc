@@ -15,7 +15,7 @@ components like HLOS rendering.
 Following block diagram describes the high
 level software stack for this demo.
 
-.. Image:: ../../images/Integrated-Cockpit-Block-Diagram.png
+.. Image:: ../../../images/Integrated-Cockpit-Block-Diagram.png
 
 Integrated cockpit is realized with two virtual machines (VMs) running
 on a lightweight hypervisor `Jailhouse <https://github.com/siemens/jailhouse>`__.
@@ -83,9 +83,9 @@ Please follow the instructions in *Setting up J721E EVM with Infotainment daught
 **Optional:** To run the cockpit demo in external CAN configuration, you should connect the D-Sub interface of the `PEAK System <https://www.peak-system.com>`__'s PCAN-USB tool
 to the MCAN2 interface on the common processor board as follows:
 
-.. Image:: ../../images/Integrated-Cockpit-D-Sub.png
+.. Image:: ../../../images/Integrated-Cockpit-D-Sub.png
 
-.. Image:: ../../images/Integrated-Cockpit-MCAN2-CPB.png
+.. Image:: ../../../images/Integrated-Cockpit-MCAN2-CPB.png
  :scale: 30%
 
 PC Setup
@@ -202,7 +202,7 @@ also filters out the speed and engine-speed data and feeds them to the HLOS clus
 In emulated-CAN mode, the data is generated internally, and you should see a blinking set of tell-tales
 at bootup:
 
-.. Image:: ../../images/Integrated-Cockpit-tell-tales.jpg
+.. Image:: ../../../images/Integrated-Cockpit-tell-tales.jpg
  :scale: 50%
 
 In external-CAN mode, the data is read from MCAN2, and initially all tell-tale symbols are set to **off** state. To turn on all tell-tales, run the following command on your PC:
@@ -217,7 +217,7 @@ To turn off all tell-tales, run the following command on your PC:
 
  # cansend can0 1f0#0100000000000000
 
-.. |key inline image| image:: ../../images/Integrated-Cockpit-general-warning.png
+.. |key inline image| image:: ../../../images/Integrated-Cockpit-general-warning.png
 
 **Note:** In both emulated-CAN and external-CAN mode, the general-warning tell-tale |key inline image| will not be effected. It is a special tell-tale
 which is trigerred by crashing *Infotainment-VM*. This is documented in section :ref:`crashing-infotainment-vm`. 
@@ -234,7 +234,7 @@ and updates the rendering parameters based on this. Run this application from th
 
  $ cluster -d /dev/dri/card0
 
-.. Image:: ../../images/Integrated-Cockpit-full.jpg
+.. Image:: ../../../images/Integrated-Cockpit-full.jpg
  :scale: 50%
 
 If running in external-CAN mode, run the following command on your PC to take the speed needle to 100 KMPH:
@@ -326,7 +326,7 @@ The utility script *crash-VM.sh* can be used to read GPIO inputs and simulate VM
 
 You can crash the individual Linux VMs by pushing the buttons as shown below
 
-.. Image:: ../../images/Integrated-Cockpit-crash-gpio.png
+.. Image:: ../../../images/Integrated-Cockpit-crash-gpio.png
  :scale: 50%
 
 **Note:** If the *Infotainment VM* is crashed, the heartbeat listener application running on the *cluster VM* detects the crash and sends a notification to the remote core. The general-warning tell-tale |key inline image|

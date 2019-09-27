@@ -61,7 +61,7 @@ for the normal scenario. If prediction of the output values is good, the system 
 acts as a high-accuracy approximation of the physical system. With this system model,
 if there are significant and continuous prediction errors, it indicates anomalies are happening.
 
-.. figure:: ../../images/system-model.png
+.. figure:: ../../../images/system-model.png
     :width: 420px
     :align: center
     :height: 200px
@@ -83,7 +83,7 @@ and indicators and tune the model parameters such as the number of RNN layers an
 to deploy the model and integrate the solution into a system for machine monitoring and maintenance
 at the edge devices.
 
-.. figure:: ../../images/develop-pdm-workflow.png
+.. figure:: ../../../images/develop-pdm-workflow.png
     :width: 800px
     :align: center
     :height: 200px
@@ -109,7 +109,7 @@ To get continuous sensor data, PyAutoGUI is employed to achieve automated contro
 the motor can repeatedly move from position 1 to position 2, and then from position 2 back to position 1.
 
 
-.. figure:: ../../images/data-acquisition-motor-drive.png
+.. figure:: ../../../images/data-acquisition-motor-drive.png
     :width: 760px
     :align: center
     :height: 320px
@@ -140,7 +140,7 @@ model is in Open Neural Network Exchange (ONNX) format. The last layer, regressi
 output layer used for prediction.
 
 
-.. figure:: ../../images/training-RNN.png
+.. figure:: ../../../images/training-RNN.png
     :width: 185px
     :align: center
     :height: 220px
@@ -172,7 +172,7 @@ The python scripts supports N stacked LSTM layers, plus one FC layer. The genera
 CPP header is then compiled with the LSTM library to create the ARMv7 object file with 
 the initialization and processing APIs.
 
-.. figure:: ../../images/rnn-inference-lib.png
+.. figure:: ../../../images/rnn-inference-lib.png
     :width: 370px
     :align: center
     :height: 270px
@@ -196,7 +196,7 @@ to report anomalies: if the prediction is larger than the threshold found in the
 then anomaly is reported.
 
 
-.. figure:: ../../images/anomaly-detection.png
+.. figure:: ../../../images/anomaly-detection.png
     :width: 480px
     :align: center
     :height: 360px
@@ -218,7 +218,7 @@ Out of box demo with with pre-recorded sensor data
 The PdM demo for anomaly detection is provided from Matrix GUI under
 Analytics submenu - PdM Anomaly Detection with RNN.
 
-.. figure:: ../../images/pdm-in-matrix-gui.png
+.. figure:: ../../../images/pdm-in-matrix-gui.png
     :width: 400px
     :align: center
     :height: 130px
@@ -236,7 +236,7 @@ and the motor position in orange. The right-side panel shows the detection resul
 detection threshold found from the calibration, the orange line draws the prediction error, while the red line
 draws the time period of the detected anomaly.
 
-.. figure:: ../../images/pdm-qt-gui-anomaly-detection.png
+.. figure:: ../../../images/pdm-qt-gui-anomaly-detection.png
     :width: 960px
     :align: center
     :height: 540px

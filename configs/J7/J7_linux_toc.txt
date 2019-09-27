@@ -49,8 +49,8 @@ linux/Foundational_Components_Multimedia
 linux/Foundational_Components_Virtualization
 linux/Examples_and_Demos
 linux/Examples_and_Demos_Application_Demos
-linux/Examples_and_Demos/Integrated_Cockpit
-linux/Examples_and_Demos/Can_Eth_Gateway_Demo
+linux/Examples_and_Demos/Application_Demos/Integrated_Cockpit
+linux/Examples_and_Demos/Application_Demos/Can_Eth_Gateway_Demo
 linux/How_to_Guides
 linux/How_to_Guides_Host
 linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware

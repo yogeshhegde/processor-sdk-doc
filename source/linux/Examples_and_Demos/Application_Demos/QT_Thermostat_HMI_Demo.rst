@@ -26,31 +26,31 @@ to use as a starting point for further innovation.
 
 |
 
-.. figure:: ../../images/qt5-thermostat-Picture4.png
+.. figure:: ../../../images/qt5-thermostat-Picture4.png
 
    Figure1: three-day weather forecast
 
 |
 
-.. figure:: ../../images/qt5-thermostat-Picture2.png
+.. figure:: ../../../images/qt5-thermostat-Picture2.png
 
    Figure2: Select City for weather forecasts
 
 |
 
-.. figure:: ../../images/qt5-thermostat-Picture3.png
+.. figure:: ../../../images/qt5-thermostat-Picture3.png
 
    Figure3: Set Proxy for Internet connectivity
 
 |
 
-.. figure:: ../../images/qt5-thermostat-Picture1.png
+.. figure:: ../../../images/qt5-thermostat-Picture1.png
 
    Figure4: Weekly temperature schedule
 
 |
 
-.. figure:: ../../images/qt5-thermostat-Picture5.png
+.. figure:: ../../../images/qt5-thermostat-Picture5.png
 
    Figure5: Inside temperature, Away energy saving settings
 

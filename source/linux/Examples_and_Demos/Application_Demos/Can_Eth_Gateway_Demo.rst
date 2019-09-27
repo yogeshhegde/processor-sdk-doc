@@ -35,7 +35,7 @@ applications are used for transmitting and receiving Ethernet frames between
 PC and the J721E EVM. Similarly, any compatible CAN tool can be used for CAN
 message reception and transmission.
 
-.. Image:: ../../images/CanEth_J7GatewayArchitecture.jpg
+.. Image:: ../../../images/CanEth_J7GatewayArchitecture.jpg
    :height: 1000px
    :width: 1500px
    :scale: 50 %
@@ -211,7 +211,7 @@ modules and using CPSW9G Ethernet Switch.
 In case the J721E GESI board is not installed into the J721E EVM, attach it to
 bottom side of the J721E Common board.
 
-.. Image:: ../../images/CanEth_GESIBoard.jpg
+.. Image:: ../../../images/CanEth_GESIBoard.jpg
    :height: 1000px
    :width: 1500px
    :scale: 45 %
@@ -226,7 +226,7 @@ There are four RGMII PHYs in the J721E GESI board. They will be referred to as
 document.
 
 .. _gesi-board-side-view:
-.. Image:: ../../images/CanEth_GESIBoardSideView.png
+.. Image:: ../../../images/CanEth_GESIBoardSideView.png
    :height: 1000px
    :width: 1500px
    :scale: 40 %
@@ -236,7 +236,7 @@ document.
 #. Connect laptops/PCs as per connection shown in the diagram below.
 
     .. _eth-connection:
-    .. Image:: ../../images/CanEth_EthConnection.png
+    .. Image:: ../../../images/CanEth_EthConnection.png
        :height: 1000px
        :width: 1500px
        :scale: 35 %
@@ -289,7 +289,7 @@ is as follows:
 
 The following diagram shows the MCAN6 and MCAN9 connections on GESI board.
 
-.. Image:: ../../images/CanEth_GESIBoardMcanConnection.png
+.. Image:: ../../../images/CanEth_GESIBoardMcanConnection.png
   :height: 500px
   :width: 800px
   :scale: 70 %
@@ -299,7 +299,7 @@ The following diagram shows the MCAN6 and MCAN9 connections on GESI board.
 If using PCAN tool, the DB-9 connection is as follows:
 
 .. can-eth-pcan-connection:
-.. Image:: ../../images/CanEth_PCANConnection.png
+.. Image:: ../../../images/CanEth_PCANConnection.png
    :height: 1000px
    :width: 1500px
    :scale: 30 %
@@ -310,7 +310,7 @@ Finally, the following picture shows all connections in the demo, including MCAN
 and MAC ports.
 
 .. can-eth-demo-connections:
-.. Image:: ../../images/CanEth_GESIBoardConnections.jpg
+.. Image:: ../../../images/CanEth_GESIBoardConnections.jpg
    :height: 1000px
    :width: 1500px
    :scale: 50 %
@@ -365,7 +365,7 @@ website: https://www.peak-system.com/PCAN-USB-FD.365.0.html?&L=1
                     on MCAN configuration on the J721E side.
             * Click on **OK** button.
 
-            .. Image:: ../../images/CanEth_PCANViewDeviceSelection.png
+            .. Image:: ../../../images/CanEth_PCANViewDeviceSelection.png
                :height: 500px
                :width: 500px
                :scale: 70 %
@@ -384,7 +384,7 @@ website: https://www.peak-system.com/PCAN-USB-FD.365.0.html?&L=1
                 * **Cycle Time** as **2000**
                 * **Data** can be selected randomly
 
-            .. Image:: ../../images/CanEth_PCANViewTransmitMessageConfig.png
+            .. Image:: ../../../images/CanEth_PCANViewTransmitMessageConfig.png
                :height: 500px
                :width: 600px
                :scale: 80 %
@@ -415,7 +415,7 @@ website: https://www.peak-system.com/PCAN-USB-FD.365.0.html?&L=1
         * Click on **OK** and then again on **OK**
 
     .. _pcan-view-bit-rate-config:
-    .. Image:: ../../images/CanEth_PCANViewBitRateConfig.png
+    .. Image:: ../../../images/CanEth_PCANViewBitRateConfig.png
       :height: 500px
       :width: 800px
       :scale: 80 %
@@ -459,7 +459,7 @@ For more details about installation of CCS and J721E target creation, refer to
     * Set hardware and software flow control to "No".
     * Below figure shows serial parameters set in Minicom.
 
-   .. Image:: ../../images/CanEth_Minicom.png
+   .. Image:: ../../../images/CanEth_Minicom.png
       :scale: 100 %
       :alt: Serial Port Settings in Minicom
       :align: center
@@ -513,7 +513,7 @@ SD Card Boot
     * Set hardware and software flow control to "No".
     * Below figure shows serial parameters set in Minicom.
 
-   .. Image:: ../../images/CanEth_Minicom.png
+   .. Image:: ../../../images/CanEth_Minicom.png
       :scale: 100 %
       :alt: Serial Port Settings in Minicom
       :align: center
@@ -549,7 +549,7 @@ Plex clients can access media content via web at http://192.168.1.202:32400/web.
 
 The Plex client interface is shown in the following figure.
 
-.. Image:: ../../images/CanEth_PlexClient.png
+.. Image:: ../../../images/CanEth_PlexClient.png
    :height: 500px
    :width: 800px
    :scale: 100 %
@@ -579,7 +579,7 @@ Follow the next steps to test CAN-to-CAN routes:
 #. Connect PCAN tools to MCAN6 and MCAN9 as per connection diagram.
 #. Choose option **1** in the UART menu to enable CAN-to-CAN routing.
 
-    .. Image:: ../../images/CanEth_UartMenu.png
+    .. Image:: ../../../images/CanEth_UartMenu.png
       :height: 500px
       :width: 800px
       :scale: 65 %
@@ -609,7 +609,7 @@ The diagram below shows CAN-to-CAN routing where messages from one PCAN GUI are
 received on the another PCAN tool. The diagram also shows the transmit message
 contents along with CAN message id's **004** and **005**.
 
-.. Image:: ../../images/CanEth_PCANViewCanCan.png
+.. Image:: ../../../images/CanEth_PCANViewCanCan.png
   :height: 500px
   :width: 800px
   :scale: 120 %
@@ -640,7 +640,7 @@ Follow the next steps to test CAN-to-Eth routes:
    connect PCAN tools to MCAN6 and MCAN9.
 #. On UART console menu, select option **3** to reset the network connection.
 
-    .. Image:: ../../images/CanEth_UartMenu.png
+    .. Image:: ../../../images/CanEth_UartMenu.png
       :height: 500px
       :width: 800px
       :scale: 65 %
@@ -662,7 +662,7 @@ Follow the next steps to test CAN-to-Eth routes:
     * **Cycle Time** as **2000**
     * **Data** can be any user specified data
 
-    .. Image:: ../../images/CanEth_PCANViewNewTransmitMessage.png
+    .. Image:: ../../../images/CanEth_PCANViewNewTransmitMessage.png
       :height: 500px
       :width: 800px
       :scale: 50 %
@@ -719,7 +719,7 @@ Follow the next steps to test Eth-to-CAN routes:
    connect PCAN tools to MCAN6 and MCAN9.
 #. On UART console menu, select option **3** to reset the network connection.
 
-    .. Image:: ../../images/CanEth_UartMenu.png
+    .. Image:: ../../../images/CanEth_UartMenu.png
       :height: 500px
       :width: 800px
       :scale: 65 %

@@ -61,11 +61,11 @@ Released July 2019
 - Analytics
     - Upgrade ARMNN to latest available version (2019.05)
     - Remove restriction of number of nodes for inner product layer in TIDL Library
-    - `Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control <Examples_and_Demos/PdM_Anomaly_Detection.html>`__
+    - `Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control <Examples_and_Demos/Application_Demos/PdM_Anomaly_Detection.html>`__
 - AM65x
     - U-boot: support networking over ICSS-G
     - U-boot: USB hub and USB mass storage
-    - `Watchdog support <Examples_and_Demos/Watchdog_demo.html>`__
+    - `Watchdog support <Examples_and_Demos/Application_Demos/Watchdog_demo.html>`__
     - DisplayPort driver enhancements for TC358867 DPI-DP bridge
     - AVS Class 0 support
 - AM335x: Support PTP 1588 in DAN mode

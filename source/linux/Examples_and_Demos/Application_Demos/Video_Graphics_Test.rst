@@ -24,7 +24,7 @@ In the video graphics test application, we have demonstrated embedded applicatio
 
 **Video Graphics Test Block Diagram**
 
-.. Image:: ../../images/video_graphics_test1.png
+.. Image:: ../../../images/video_graphics_test1.png
 
 eglfs-kms QPA User Exposed APIs
 -------------------------------
@@ -45,7 +45,7 @@ As part of eglfs_kms QPA enhancement, following APIs are exposed via QPlatformNa
 
 The APIs required to achieve scaling, overlaying and alpha-blending using the DSS IP owned by eglfs_kms QPA are demonstrated inside disp_obj.cpp and video_graphics_test.cpp file. An example of the software flow is shown below:
 
-.. Image:: ../../images/video_graphics_test2.png
+.. Image:: ../../../images/video_graphics_test2.png
 
 Running the Test
 ----------------
