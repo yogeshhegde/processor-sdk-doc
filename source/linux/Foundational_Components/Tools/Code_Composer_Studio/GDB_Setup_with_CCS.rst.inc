@@ -14,9 +14,9 @@ prerequisites are met:
 #. Connected your host PC and evm to the same network. Your PC and EVM
    should be on the same subnet.
 #. `Remote System
-   Explorer <../../Foundational_Components_Tools.html#remote-explorer-setup-with-ccs>`__
+   Explorer <../../Foundational_Components/Tools/Code_Composer_Studio.html#remote-explorer-setup-with-ccs>`__
    has already been setup and your
-   `connected <../../Foundational_Components_Tools.html#connecting-to-the-target>`__
+   `connected <../../Foundational_Components/Tools/Code_Composer_Studio.html#connecting-to-the-target>`__
    to the board.
 #. The project you want to debug is already opened. Its important that
    the debug version of the executable is built.

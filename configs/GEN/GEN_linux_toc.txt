@@ -90,7 +90,9 @@ linux/Examples_and_Demos/Dual_Camera_Demo
 linux/Examples_and_Demos/Video_Analytics
 linux/Examples_and_Demos/Barcode
 linux/Examples_and_Demos/QT_Thermostat_HMI_Demo
+linux/Examples_and_Demos/Optical_Flow_with_OpenVX
 linux/Examples_and_Demos/ROS_Radar
+linux/Examples_and_Demos/PdM_Anomaly_Detection
 linux/Examples_and_Demos/PRU_ADC
 linux/Examples_and_Demos/Video_Graphics_Test
 linux/Examples_and_Demos/Watchdog_demo

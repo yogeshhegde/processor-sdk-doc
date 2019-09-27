@@ -52,7 +52,7 @@ Common Processor Board with BETA-SOM
 
 Contents of the board
 
-Refer to `EVM connections <How_to_Guides_Hardware_Setup_with_CCS.html#evm-connections>`__
+Refer to `EVM connections <J721E_EVM_Hardware_Setup.html#evm-connections>`__
 for detail information regarding connecting peripherals to Common Processor Board
 
 - 12V Power input

@@ -15,7 +15,7 @@ The overall process is broken into two parts:
    from the AM335x or AM437x SoC. This is usually done by the Linux
    developer responsible for creating the images. This process is
    documented
-   `here <../../Foundational_Components_Tools.html#am335x-flash>`__.
+   `here <../../Foundational_Components/Tools/Flash_Tools.html#am335x-am437x-flash-programming>`__.
 #. Actually programming the images using Uniflash v3. This tool runs on
    a Windows PC and serves the images to the target board that is being
    programmed. This process is detailed below.
@@ -610,7 +610,7 @@ problems are encountered.
    :name: useful-links
 
 -  `Sitara Flash Programming Linux Development for
-   AM335x/AM437x <../../Foundational_Components_Tools.html#am335x-flash>`__
+   AM335x/AM437x <../../Foundational_Components/Tools/Flash_Tools.html#am335x-am437x-flash-programming>`__
    to learn more about developing images to be flashed using this
    process.
 -  `Sitara Linux Program SPI Flash on AM335x

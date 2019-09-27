@@ -1,1 +1,1 @@
-.. include:: ../../../common/EVM_Hardware_Setup/TMDXIDK5728_Hardware_Setup.rst.inc
+.. include:: ../../../common/EVM_Hardware_Setup/TMDX654_EVM_Hardware_Setup.rst.inc

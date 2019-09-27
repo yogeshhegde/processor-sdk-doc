@@ -213,7 +213,7 @@ alternative programming method:
 
 For Rev 2.0 and 3.0 EVM using alternative U-Boot command to program NAND, please follow the steps below:
 Set the boot mode to `SPI Little Endian boot mode
-<How_to_Guides_Hardware_Setup_with_CCS.html#k2h-spi-le-boot-mode>`__
+<How_to_Guides/Hardware_Setup_with_CCS/EVMK2H_Hardware_Setup.html#k2h-spi-le-boot-mode>`__
 
 ::
 
@@ -246,7 +246,7 @@ and continue.
 +--------------+------------+------------+------------+------------+
 
 See instruction `here
-<How_to_Guides_Hardware_Setup_with_CCS.html#k2h-set-no-boot-mode>`__
+<How_to_Guides/Hardware_Setup_with_CCS/EVMK2H_Hardware_Setup.html#k2h-set-no-boot-mode>`__
 for K2H no boot mode for reference
 
 | 
@@ -264,7 +264,7 @@ no-boot mode, and continue.
 +--------------+------------+------------+------------+------------+
 
 See instruction `here
-<How_to_Guides_Hardware_Setup_with_CCS.html#k2e-set-no-boot-mode>`__
+<How_to_Guides/Hardware_Setup_with_CCS/EVMK2E_Hardware_Setup.html#k2e-set-no-boot-mode>`__
 for K2E no boot mode for reference:
 
 | 

@@ -242,7 +242,7 @@ CAN FD adapter PCAN-USB FD allows the connection of CAN FD and CAN networks to a
                 * Cycle Time as ‘2000’
                 * Data: as use-case needs
 
-            .. Image:: ../images/pcan_view_transmit_message_config.png
+            .. Image:: ../images/CanEth_PCANViewTransmitMessageConfig.png
                :height: 500px
                :width: 600px
                :scale: 50 %
@@ -262,7 +262,7 @@ CAN FD adapter PCAN-USB FD allows the connection of CAN FD and CAN networks to a
         * Bit Rate text box shall show ‘5 Mbit/s’ after programming above values.
         * Click on ‘Ok’ and then again on ‘Ok’
 
-    .. Image:: ../images/pcan_view_different_bit_rate_config.png
+    .. Image:: ../images/CanEth_PCANViewBitRateConfig.png
       :height: 500px
       :width: 800px
       :scale: 50 %

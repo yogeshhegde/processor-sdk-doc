@@ -284,7 +284,7 @@ disabling Matrix at start up.
 
 Please see this wiki page to recalibrate the touch screen: `**How to
 Recalibrate the
-Touchscreen** <How_to_Guides_Target.html#how-to-recalibrate-the-touchscreen>`__
+Touchscreen** <How_to_Guides/Target/How_to_Recalibrate_the_Touchscreen.html#how-to-recalibrate-the-touchscreen>`__
 
 .. rubric:: Matrix is running but I don't want it running
    :name: matrix-is-running-but-i-dont-want-it-running
@@ -317,7 +317,7 @@ From the console type the following commands:
 
 You can enable mouse by referring to the following: `**How to Enable
 Mouse for the Matrix
-GUI** <How_to_Guides_Target.html#how-to-use-a-mouse-instead-of-the-touchscreen-with-matrix>`__\ ***
+GUI** <How_to_Guides/Target/How_to_use_a_Mouse_instead_of_the_Touchscreen_with_Matrix.html>`__\ ***
 ***
 
 .. rubric:: How to Switch Display from LCD to DVI out for the Matrix

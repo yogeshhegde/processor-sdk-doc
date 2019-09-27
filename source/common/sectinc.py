@@ -15,16 +15,22 @@ all_rst_files   = []
 #
 # Parameters: app               - Application calling this Python function
 #             family_configlist - Device family Table-of-Contents file input
+#             verbosity         - Flag to determine if function will print names for all
+#                                 documents that are to be included
 
-def fill_docs_to_keep(app, family_configlist):
+def fill_docs_to_keep(app, family_configlist, verbosity):
     for config in family_configlist:
         with open("configs" + os.sep + config, 'r') as docconfigfile:
             for line in docconfigfile:
                 if line.strip():
                     # Only add line to docs_to_keep[] if it is not a blank line
                     docs_to_keep.append(re.sub(r"[\n\t\s]*", "", line))
-    #print("Filled docs_to_keep")
-    #print(docs_to_keep)
+    if verbosity == 1:
+        print("The following .rst files will be included in the build:")
+        print('[')
+        for elem in docs_to_keep:
+            print elem
+        print(']')
 
 # set_excluded_docs
 # -----------------

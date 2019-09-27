@@ -480,7 +480,7 @@ CCS as installed with this SDK includes the Remote System Explorer (RSE)
 plugin. RSE provides drag-and-drop access to the target file system as
 well as remote shell and remote terminal views within CCS. Refer to
 `Processor Linux SDK CCS Remote System Explorer
-Setup <../../Foundational_Components_Tools.html#remote-explorer-setup-with-ccs>`__
+Setup <../../Foundational_Components/Tools/Code_Composer_Studio.html#remote-explorer-setup-with-ccs>`__
 to establish a connection to your target EVM and start using RSE. There
 is also a more detailed training using RSE with the SDK at `Processor
 SDK Linux Training: Hands on with the Linux
@@ -495,6 +495,6 @@ In order to debug Linux code using Code Composer Studio, you first need
 to configure the GDB server on both the host and target EVM side.
 
 Please refer to `Processor Linux SDK CCS GDB
-Setup <../../Foundational_Components_Tools.html#gdb-setup-with-ccs>`__ for more
+Setup <../../Foundational_Components/Tools/Code_Composer_Studio.html#gdb-setup-with-ccs>`__ for more
 information.
 

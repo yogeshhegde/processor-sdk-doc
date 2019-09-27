@@ -188,7 +188,7 @@ file system:
    system
 -  Using Code Composer Studio to automatically copy the executable to
    the target evm using `Remote System
-   Explorer <../../Foundational_Components_Tools.html#remote-explorer-setup-with-ccs>`__
+   Explorer <../../Foundational_Components/Tools/Code_Composer_Studio.html#remote-explorer-setup-with-ccs>`__
 
 | 
 
@@ -201,7 +201,7 @@ remote shell and remote terminal views within CCS. It also provides a
 way for Code Composer Studio to automatically copy and run or debug an
 executable using a single button. Refer to `How to Setup and Use Remote
 System
-Explorer <../../Foundational_Components_Tools.html#remote-explorer-setup-with-ccs>`__ to
+Explorer <../../Foundational_Components/Tools/Code_Composer_Studio.html#remote-explorer-setup-with-ccs>`__ to
 learn how to use this feature.
 
 | 
@@ -214,6 +214,6 @@ you first need to configure your project to use gdb and gdbserver
 included within the SDK.
 
 Please refer to `Debugging using GDB with Code Composer
-Studio <../../Foundational_Components_Tools.html#gdb-setup-with-ccs>`__ for more
+Studio <../../Foundational_Components/Tools/Code_Composer_Studio.html#gdb-setup-with-ccs>`__ for more
 information.
 

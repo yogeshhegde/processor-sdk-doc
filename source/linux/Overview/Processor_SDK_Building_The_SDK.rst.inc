@@ -364,7 +364,7 @@ the recipe and all its dependencies.
     be modified. After the modification is done, run the following commands
     to force recompilation with the new code and rebuilding of the recipe,
     e.g.,
-    ``MACHINE=am57xx-evm bitbake opencl --force -c compile`
+    ``MACHINE=am57xx-evm bitbake opencl --force -c compile``
 
     ``MACHINE=am57xx-evm bitbake opencl``
 

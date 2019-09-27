@@ -864,7 +864,7 @@ the kernel what type of file system to use.
 By default for our evms properly loading, setting bootargs and booting
 the kernel is handled by running "run nandboot" in U-boot. Information
 on creating a UBIFS can be found
-`here <Foundational_Components_Kernel_Drivers.html#building-ubi-file-system>`__.
+`here <Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND.html#building-ubi-file-system>`__.
 
 | 
 

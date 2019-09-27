@@ -1,6 +1,7 @@
 #############################################
 # Device family build setup
 #############################################
+import pprint
 import replacevars
 import sectinc
 import interpretvalues
@@ -24,15 +25,22 @@ family_configvals = {}
 def setup(app):
     app.add_stylesheet("theme_overrides.css")
     # Read the replacement variables and the configuration values
+    print("Device Family Build setup started")
     interpretvalues.read_familyvals(app, family_config_inputfile, family_replacevars, family_configvals)
-    print("Build setup: Filled replacevars and configvals hash tables")
-    print(family_replacevars)
-    print(family_configvals)
+    print("Build setup: Filled Replacement Variables (family_replacevars) and Configuration Values (family_configvals) hash tables")
+    print("family_replacevars = ")
+    pprint.pprint(family_replacevars)
+    print("family_configvals = ")
+    pprint.pprint(family_configvals)
     # Determine which sections need to be excluded
     sectinc.create_master_rst_list(app, sdk_os)
-    sectinc.fill_docs_to_keep(app, family_tocfiles)
+    sectinc.fill_docs_to_keep(app, family_tocfiles, 0)
     sectinc.set_excluded_docs(app, exclude_patterns)
-    print("J7 exclude_patterns is:")
-    print(exclude_patterns)
+    print(fam_name + " exclude_patterns is:")
+    print('[')
+    for elem in exclude_patterns:
+        print(elem)
+    print(']')
     # Write to the replacevars.rst.inc file for usage by Sphinx
     replacevars.write_replacevars(app, sdk_os, family_replacevars)
+    print("Device Family Build setup completed")

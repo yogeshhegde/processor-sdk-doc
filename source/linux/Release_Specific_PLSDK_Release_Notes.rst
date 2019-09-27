@@ -61,11 +61,11 @@ Released July 2019
 - Analytics
     - Upgrade ARMNN to latest available version (2019.05)
     - Remove restriction of number of nodes for inner product layer in TIDL Library
-    - `Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control <Examples_and_Demos_Application_Demos.html#predictive-maintenance-demo>`__ 
+    - `Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control <Examples_and_Demos/PdM_Anomaly_Detection.html>`__
 - AM65x
     - U-boot: support networking over ICSS-G
     - U-boot: USB hub and USB mass storage
-    - `Watchdog support <Examples_and_Demos_Application_Demos.html#watchdog-demo-on-am654x-pg-1-0>`__
+    - `Watchdog support <Examples_and_Demos/Watchdog_demo.html>`__
     - DisplayPort driver enhancements for TC358867 DPI-DP bridge
     - AVS Class 0 support
 - AM335x: Support PTP 1588 in DAN mode
@@ -626,7 +626,7 @@ Composer Studio.
    :name: host-support
 
 The Processor SDK is developed, built and verified on Ubuntu 14.04, 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu 14.04
-are described in `this page <How_to_Guides_Host.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
+are described in `this page <How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware.html>`__.
 
 
 .. note::

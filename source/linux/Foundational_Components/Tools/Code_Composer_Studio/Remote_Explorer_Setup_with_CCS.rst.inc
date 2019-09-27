@@ -267,7 +267,7 @@ you first need to configure your project to use gdb and gdbserver
 included within the SDK.
 
 Please refer to `Debugging using GDB with Code Composer
-Studio <../../Foundational_Components_Tools.html#gdb-setup-with-ccs>`__ for more
+Studio <../../Foundational_Components/Tools/Code_Composer_Studio.html#gdb-setup-with-ccs>`__ for more
 information.
 
 | 

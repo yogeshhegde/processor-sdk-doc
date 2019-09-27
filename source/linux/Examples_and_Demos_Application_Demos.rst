@@ -11,6 +11,7 @@ Application Demos
    Examples_and_Demos/Video_Analytics
    Examples_and_Demos/Barcode
    Examples_and_Demos/QT_Thermostat_HMI_Demo
+   Examples_and_Demos/Optical_Flow_with_OpenVX
    Examples_and_Demos/ROS_Radar
    Examples_and_Demos/PdM_Anomaly_Detection   
    Examples_and_Demos/PRU_ADC

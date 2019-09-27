@@ -15,7 +15,6 @@ $(info DEVFAMILY is $(DEVFAMILY))
 TAGFILE         = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
 FAMILYSETUPFILE = source/common/family_setup.py
 $(info TAGFILE is $(TAGFILE))
-$(info ENVFILE is $(ENVFILE))
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
