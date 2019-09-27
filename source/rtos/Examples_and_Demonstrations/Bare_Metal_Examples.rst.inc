@@ -22,13 +22,20 @@ In this article, we take a look at creating bare-metal hello world examples for 
 1. Start CCS and create a workspace for 
 generating the project.
 
-2. Navigate to File -> New -> 
+2. Configure the CCS Tools discovery path 
+to allow CCS to use the code generation tools supplied with Processor-SDK-RTOS.
+
+	- Select the menu Window->Preferences
+	- On the left-hand side of the Preferences window, select Code Composer Studio->Build->Compilers
+	- On the right-hand side of the Preferences window, click the "Add" button. Select the Processor-SDK-RTOS root install folder, then click "Apply and Close".
+
+3. Navigate to File -> New -> 
 CCS Project.
 
-3. Select Target as AM65x - Cortex A53 and GPEVM_AM65x as 
+4. Select Target as AM65x - Cortex A53 and GPEVM_AM65x as 
 shown in the image below.
 
-4. Select **Cortex A setting** in the options below and provide a name for the project. Use the default advanced settings 
+5. Select **Cortex A setting** in the options below and provide a name for the project. Use the default advanced settings 
 for the project. Select **GNU v7.2.1 (Linaro aarch64)** (or higher) for the Compiler Version. Under Tool-chain, for the Linker Command file, select the file (PDK INSTALL PATH)/packages/ti/build/am65xx/**linker_a53.lds**.  
 
 Under Project templates and examples, select **Empty Project (with main.c).**
@@ -40,11 +47,11 @@ project from the template.
 .. Image:: ../images/AM65x_Create_CCS_Project.png
 
 
-5. The generated CCS project contains source file **main.c**, ARM assembly code **startup_ARMCA53.S** and a linker command file **AM65X.lds**. 
+6. The generated CCS project contains source file **main.c**, ARM assembly code **startup_ARMCA53.S** and a linker command file **AM65X.lds**. 
 Remove startup_ARMCA53.S and AM65X.lds from the project.
 
 
-6. Add the following linker command file to the project. 
+7. Add the following linker command file to the project. 
 ::
 
 	(PDK INSTALL PATH)/packages/ti/build/am65xx/linker_a53.lds
@@ -52,7 +59,7 @@ Remove startup_ARMCA53.S and AM65X.lds from the project.
 
 |
 	
-7. Modify main.c to include the 
+8. Modify main.c to include the 
 following::
 	
 	/* Header files */
@@ -65,10 +72,10 @@ following::
 		while(1);
 	}
 
-8. Navigate to Project Properties -> CCS Build -> GNU Linker and add "Entry" to the "Set start address" field.
+9. Navigate to Project Properties -> CCS Build -> GNU Linker and add "Entry" to the "Set start address" field.
 
 	
-9. Navigate to CCS Build -> GNU Linker -> Libraries and add the 
+10. Navigate to CCS Build -> GNU Linker -> Libraries and add the 
 following libraries.
 ::
  
@@ -80,23 +87,23 @@ following libraries.
 	c
 	m
 
-10. Add the following library search 
+11. Add the following library search 
 path.
 ::
 
 	(PDK INSTALL PATH)/ti/csl/lib/am65xx/a53/release
 	
 
-11. Save all changes, and right click on the project and select Build Project to 
+12. Save all changes, and right click on the project and select Build Project to 
 build the project and generate hello_world.out. 
 
-12. Launch the target configuration using your emulator to connect to the AM65x EVM as 
+13. Launch the target configuration using your emulator to connect to the AM65x EVM as 
 described in the :ref:`Processor-SDK-RTOS-Getting-Started-Guide-label`.
 
-13. Right click on **DMSC_Cortex_M3_0** and click connect to target. 
+14. Right click on **DMSC_Cortex_M3_0** and click connect to target. 
 After connecting to the M3, right click on **CortexA53_0_0** and connect to it. 
 
-14. Load and run hello_world.out example file on the Cortex-A53. 
+15. Load and run hello_world.out example file on the Cortex-A53. 
 You should see a Hello_world string displayed in the CCS console window.
 
 .. Image:: ../images/AM65x_CCS_Hello_World.PNG
