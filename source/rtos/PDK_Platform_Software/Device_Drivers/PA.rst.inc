@@ -132,6 +132,36 @@ with pa_DEST_HOST can be passed. Please refer to Pa_addMac and
 Pa_addMac2() API explanations as provided under the doxygen folder of PA
 (Or refer to Pa.h interface header file).
 
+.. rubric:: What are the right PA/NETCP/Ethernet user guides to use for different keystone devices? 
+   :name: what are the right PA/NETCP/Ethernet user guides to use for different keystone devices
+
+-	All Keystone I (C665x, C667x) devices use the same Serdes and documented in respective datasheets (See Device State Control Registers)
+-   All Keystone II (K2H, K2K, K2G, K2E, K2L) device use the same Serdes and documented in http://www.ti.com/lit/pdf/SPRUHO3
+-	For Keystone I, C667x has PA and NETCP GEN1, C665x has neither
+-	For Keystone II, K2H/K2K use the same PA and NETCP GEN1 as C667x, K2E/K2L uses a different PA2 and NETCP GEN2
+-	For Keystone II, K2G has neither PA nor NETCP
+
+To summarize:
+
++--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
+| SOC    | Serdes             | Ethernet                         | PA                               | Netcp                            |
++--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
+|C665x   |See datasheet       |http://www.ti.com/lit/pdf/SPRUHH1 |N/A                               |N/A                               | 
++--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
+|C667x   |See datasheet       |http://www.ti.com/lit/pdf/SPRUGV9 |http://www.ti.com/lit/pdf/SPRUGS4 |http://www.ti.com/lit/pdf/SPRUGZ6 | 
+|        |                    |                                  |Driver: lib\<CPU>\ti.drv.pa       |                                  |   
++--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
+|K2H/K2K |http://www.ti.com/  |Same as C667x                     |Same as C667x	                    |Same as C667x                     |
+|        |lit/pdf/SPRUHO3     |                                  |                                  |                                  |  
++--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
+|K2G     |Same as K2H/K2K     |http://www.ti.com/lit/pdf/SPRUHY8 |N/A                               |N/A                               |  
++--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
+|K2E/K2L |Same as K2H/K2K     |http://www.ti.com/lit/pdf/SPRUHZ3 |http://www.ti.com/lit/pdf/SPRUHZ2 |http://www.ti.com/lit/pdf/SPRUHZ0 |
+|        |                    |                                  |Driver: lib\<CPU>\ti.drv.pa2      |                                  |   
++--------+--------------------+----------------------------------+----------------------------------+----------------------------------+
+
+
+
 Additional References
 ---------------------
 
