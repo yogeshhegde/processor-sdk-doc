@@ -976,26 +976,22 @@ To disable do
 Receive Interrupt Pacing
 ------------------------
 
-Currently PRUETH driver receives one interrupt per frame from each
-port. This results in lesser performance due to interrupt handling
-overhead in the Linux kernel especially for small size frames such
-as that used in grid infrastructure networks.
+Receive interrupt pacing is a firmware feature to decrease the number of
+interrupts that need to be handled by the host. Without interrupt pacing,
+one interrupt is triggered per frame received. This can result in decreased
+performance due to interrupt handling overhead in the Linux kernel,
+especially for small sized frames (as are often used in grid infrastructure
+networks).
 
-A well-known technique used in rx packet processing of a network driver
-is to use rx interrupt pacing to accumulate the Ethernet frames at the
-hardware or underlying network device’s buffer so as to generate less
-number of interrupts per packet to the host. This reduces the overhead
-in Linux kernel associated with interrupt handling by distributing the
-same over muliple packets, thereby reducing CPU usage. In this case
-PRUETH firmware accumulates the frames in the ingress ring buffer
-between host and PRU for a configurable period of time and raise an
-interrupt on timeout expiry (timeout equals to the configured period)
-there by resulting in lesser number of interrupts per frame. PRUETH
-firmware implements a Rx Pacing timer and the same gets configured by
-the PRUETH driver for HSR/PRP Ethernet types when the network device
-is opened and stopped when the device is closed. This timer is
-implemented per interface since driver has separate interrupts per
-PRU or interface.
+This receive interrupt pacing allows Ethernet frames to accumulate
+in the ingress ring buffer between the host and PRU for a configurable
+time, and triggers an interrupt on timeout expiry. The driver processes all
+queued frames upon receiving an RX interrupt. The firmware implements
+this RX pacing timer, which is configured by the PRUETH driver when the
+network device is opened and stopped when the device is closed. For HSR/PRP,
+one RX pacing timer is shared between ports. One timer is used because
+the HSR/PRP ports trigger common priority-based interrupts. For EMAC,
+there is one RX pacing timer per port.
 
 The user may show the timer value using the ethtool –c option which
 is a standard Linux command to show different coalesce parameters at
@@ -1007,15 +1003,25 @@ and PRU and using a bigger value can result in packet loss. However
 ethtool –c option is implemented in the PRUETH driver to show current
 setting in the driver and -C to change it if needed. Driver supports
 rx-usecs and adaptive-rx parameters from the available list of
-parameters and can be changed using –C option. When adaptive-rx is
-turned ON, every time a frame is received at the PRU and the buffer
-is empty, the PRU firmware raises an interrupt. However if the buffer
-is already occupied with some frames and the timer is already running,
-it will wait until timer expiry to raise the next interrupt. This would
-be useful to improve latency when using interrupts pacing. Currently
-this is disabled by default as enabling the same result in a lower
-throughput. However user may enable the same through ethtool –C
-command if needed.
+parameters and can be changed using –C option. There are 3 modes
+of pacing available:
+
+**Pacing enabled (default):**
+At each timer expiry, firmware checks if any frames were received during the
+interval, and if so triggers an interrupt. Frames received during timer interval
+set a flag but do not trigger an interrupt. Default timer interval is 123 us.
+
+**Adaptive pacing enabled:**
+At each timer expiry, firmware checks if any frames were received during the
+interval, and if so triggers an interrupt. Frames received during timer interval
+in an *empty* queue trigger an interrupt immediately, frames received to a
+non-empty queue set a flag but do not trigger an interrupt. (This can help
+improve latency when using pacing, but is disabled by default because as it
+results in lower throughput.)
+
+**Pacing disabled:**
+An interrupt is triggered for each frame received.
+
 
 Example
 
