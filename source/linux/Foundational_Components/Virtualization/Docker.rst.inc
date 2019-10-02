@@ -1,5 +1,5 @@
-Overview
------------
+Docker Overview
+------------------
 
 Docker complements kernel namespacing with a high-level API which
 operates at the process level. It runs unix processes with strong
@@ -66,7 +66,7 @@ World" demo and confirm that docker is properly configured.
 
 
 
-References
--------------
+Docker References
+--------------------
 * https://docker.com/
 * https://hub.docker.com/

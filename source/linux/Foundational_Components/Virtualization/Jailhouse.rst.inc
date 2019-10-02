@@ -1,6 +1,5 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Jailhouse_Hypervisor
-.. rubric:: Overview
-   :name: overview-virtualization
+Jailhouse Overview
+---------------------
 
 Jailhouse is a static partitioning hypervisor that runs bare metal
 binaries. It cooperates closely with Linux. Jailhouse doesn't emulate
@@ -30,8 +29,9 @@ the cell configuration file.
 Jailhouse is an open source project, which can be found on
 https://github.com/siemens/jailhouse.
 
-.. rubric:: Demo
-   :name: demo
+
+AM572x Jailhouse Demo
+------------------------
 
 Processor Linux SDK delivers Jailhouse’s prebuilt binaries. You may
 try it immediately after installation. This section assumes that you
@@ -94,8 +94,8 @@ where
    address is not 0x0. Not required at current and above versions of Jailhouse.
    Cell configuration can define starting address.
 
-.. rubric:: Running the Demo on AM572x-EVM
-   :name: running-the-demo-on-am572x-evm
+Running the Demo on AM572x-EVM
+---------------------------------
 
 **NOTE** Starting from this version of Jaihlouse Inmate library stratup code
 enables MMU. The library initializes only GIC controller and debug UART
@@ -263,8 +263,8 @@ that were built outside of jailhouse source tree. This and other RTOS
 examples were ported for this purpose. Look to RTOS SDK documentation
 for description of the examples functionality.  
 
-.. rubric:: Running the Demo on AM572x-IDK
-   :name: running-the-demo-on-am572x-idk
+Running the Demo on AM572x-IDK
+---------------------------------
 
 Two TI-RTOS example applications were ported for Jailhouse hypervisor:
 pruss.bin and icss\_emac.bin. In contrast to led\_test.bin, which has
@@ -400,8 +400,8 @@ After loading run the inmate as usual:
 You may run the **icss\_emac.bin** in similar way using appropriate
 cell configuration.
 
-.. rubric:: Jailhouse Performance on AM5728
-   :name: jailhouse-performance-on-am5728
+Jailhouse Performance on AM5728
+----------------------------------
 
 To verify the real-time performance of Jailhouse Sitara AM5728 was setup
 to run Linux on one of the ARM Cortex A15 cores, and a TI-RTOS inmate on
@@ -448,8 +448,9 @@ to respond to the interrupt.
 
 Table:  **Interrupt latency of a bare metal inmate (core 1)**
 
-.. rubric:: Building Jailhouse from Sources
-   :name: building-jailhouse-from-sources
+
+Building Jailhouse from Sources
+----------------------------------
 
 Jailhouse sources are located at
 $TI\_SDK\_PATH/board-support/extra-drivers/jailhouse-0.7 directory. The
@@ -471,8 +472,8 @@ The top level SDK Makefile has the **jailhouse\_clean**, **jailhouse** and
 **jailhouse\_install** targets which can be used to clean, build and
 install jailhouse to the target file system.
 
-.. rubric:: Building and Running the Ethercat Slave Demo
-   :name: building-and-running-the-ethercat-slave-demo
+Building and Running the Ethercat Slave Demo
+-----------------------------------------------
 
 To build and run the Ethercat Slave Demo, you need to install the
 PLSDK-RT, PRSDK and PRU-ICSS-ETHERCAT-SLAVE builds. We assume that you
@@ -540,8 +541,8 @@ the master station:
 -  Slave: devmem2 0xeef00004 b [data]. After this, Master should display
    the corresponding value in TXPDO 32Bit Input.
 
-.. rubric:: Jailhouse Internals
-   :name: jailhouse-internals
+Jailhouse Internals
+----------------------
 
 This section gives some Jailhouse details and required kernel
 modifications.
