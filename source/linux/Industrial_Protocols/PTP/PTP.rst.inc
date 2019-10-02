@@ -593,6 +593,17 @@ PRP:
     network_transport             L2
     fault_reset_interval          0
 
+VLAN
+^^^^
+PTP can also operate over VLAN interfaces, which can either be standard
+ethernet or HSR/PRP VLAN interfaces. In both cases, the only change needed is
+to specify the VLAN interface as the PTP interface in the PTP config file. In
+the case of HSR/PRP VLAN, the HSR/PRP interface will be the VLAN enabled
+interface (not the slave interfaces) and is the only interface that would need
+to be changed in the config file. For example, in the above HSR/PRP PTP config
+files, the only change needed would to change "[hsr0]" or "[prp0]" to
+appropriate VLAN interfaces e.g. "[hsr0.2]" or "[prp0.2]"
+
 Some useful commands
 ^^^^^^^^^^^^^^^^^^^^
 
