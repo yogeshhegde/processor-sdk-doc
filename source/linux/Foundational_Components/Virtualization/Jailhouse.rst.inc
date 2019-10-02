@@ -30,6 +30,176 @@ Jailhouse is an open source project, which can be found on
 https://github.com/siemens/jailhouse.
 
 
+Keystone3 Jailhouse Demo
+---------------------------
+
+The goal of this demo is to partition the CPU cores and run a second instance of
+the Linux kernel with a ramfs root filesystem. The inmate kernel will use the
+secondary UART to provide a login shell to the user. The AM654x IDK will be used
+in this demonstration.
+
+.. rubric:: Step 0: Create SD card with default images
+   :name: keystone3-jailhouse-demo-step0
+
+Please follow the instructions for the `Create SD Card Script <Overview_Getting_Started_Guide.html#sd-card-using-default-images>`__
+and when prompted to select the root filesystem image, select the default 'tisdk-rootfs-image'
+image.
+
+.. rubric:: Step 1: Host Setup
+   :name: keystone3-jailhouse-demo-step1
+
+As we will be running two instances of the Linux kernel, two terminals are
+required. Connect one terminal to the primary UART (e.g. /dev/ttyUSB0) and the
+other to the secondary UART (e.g. /dev/ttyUSB1).
+
+.. rubric:: Step 2: Configure U-Boot
+   :name: keystone3-jailhouse-demo-step2
+
+The default boot configuration does not reserve any resources for the Jailhouse
+hypervisor nor the inmates. However, the root filesystem contains a device tree
+overlay that will carve out these requirements. U-Boot must be configured to
+apply this device tree overlay.
+
+For this step, we will be using the terminal connected to the primary UART.
+
+Power up the board and stop the boot process within U-Boot.
+
+We will need to add the jailhouse device tree overlay to the list of overlays to
+apply. By default, U-Boot uses the "name_overlays" environment variable to
+provide the list of overlays. However, this variable is automatically set by
+U-Boot based on the board, and as such, anything saved to this variable will be
+overwritten upon the next boot. Therefore we will define a new variable
+"extra_overlays" and modify the "findfdt" function for it to take effect.
+
+In U-Boot, type the following to enable to use of this new variable.
+
+::
+
+    => printenv findfdt
+    setenv name_fdt k3-am654-base-board.dtb;setenv fdtfile ${name_fdt};setenv overlay_files ${name_overlays}
+
+    => setenv findfdt 'setenv name_fdt k3-am654-base-board.dtb;setenv fdtfile ${name_fdt};setenv overlay_files ${name_overlays} ${extra_overlays}'
+
+    =>
+
+
+Now add the jailhouse device tree overlay to the "extra_overlays" variable and
+save the environment.
+
+::
+
+    => setenv extra_overlays k3-am654-base-board-jailhouse.dtbo
+
+    => saveenv
+
+    => 
+
+
+.. rubric:: Step 3: Boot Linux and login
+   :name: keystone3-jailhouse-demo-step3
+
+Now boot the kernel and log in to the shell
+
+::
+
+    => boot
+
+       ...
+
+     _____                    _____           _         _
+    |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
+    |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+    |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
+                  |___|                    |___|
+
+    Arago Project http://arago-project.org am65xx-evm ttyS2
+
+    Arago 2019.07 am65xx-evm ttyS2
+
+    am65xx-evm login: root
+    root@am65xx-evm:~# 
+
+
+.. rubric:: Step 4: Run the Jailhouse linux-demo
+   :name: keystone3-jailhouse-demo-step4
+
+The jailhosue package contains a single script to reun the linux inmate demo.
+This script combines the typical jailhouse commands to simplify running the demo
+for the first time. This script performs the following steps.
+
+1. Enables jailhouse by loading and running the hypervisor firmware and
+   configuring the root cell.
+2. Creates the inmate cell, providing it with its resources.
+3. Loads the inmate into memory.
+4. Starts the inmate.
+
+To run the demo, run the linux-demo.sh script.
+
+::
+
+    root@am65xx-evm:~# /usr/share/jailhouse/linux-demo.sh
+
+    Initializing Jailhouse hypervisor v0.10 (152-g6dce20f) on CPU 2
+    Code location: 0x0000ffffc0200800
+    Page pool usage after early setup: mem 39/991, remap 0/131072
+    Initializing processors:
+     CPU 2... OK
+     CPU 3... OK
+     CPU 1... OK
+     CPU 0... OK
+    Initializing unit: irqchip
+    Initializing unit: PVU IOMMU
+    Initializing unit: ARM SMMU v3
+    Initializing unit: PCI
+    Adding virtual PCI device 00:00.0 to cell "k3-am654-idk"
+    Initializing unit: regmap
+    Page pool usage after late setup: mem 71/991, remap 144/131072
+    Activating hypervisor
+    [   63.162406] jailhouse: CONFIG_OF_OVERLAY disabled
+    [   63.167261] jailhouse: failed to add virtual host controller
+    [   63.172978] The Jailhouse is opening.
+    [   63.251354] CPU2: shutdown
+    [   63.254071] psci: CPU2 killed.
+    [   63.303312] CPU3: shutdown
+    [   63.306033] psci: CPU3 killed.
+    Adding virtual PCI device 00:00.0 to cell "k3-am654-idk-linux-demo"
+    Shared memory connection established: "k3-am654-idk-linux-demo" <--> "k3-am654-idk"
+    Created cell "k3-am654-idk-linux-demo"
+    Page pool usage after cell creation: mem 93/991, remap 144/131072
+    [   63.355266] Created Jailhouse cell "k3-am654-idk-linux-demo"
+    Cell "k3-am654-idk-linux-demo" can be loaded
+    Started cell "k3-am654-idk-linux-demo"
+    root@am65xx-evm:~#
+
+
+Now, on the secondary terminal, verify that the inmate kernel has booted with ramfs. Also check that the inmate kernel is using /dev/ttyS1 while the root cell kernel is using /dev/ttyS2.
+
+::
+
+     _____                    _____           _         _
+    |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
+    |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+    |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
+                  |___|                    |___|
+    
+    Arago Project http://arago-project.org am65xx-evm /dev/ttyS1
+    
+    Arago 2019.07 am65xx-evm /dev/ttyS1
+    
+    am65xx-evm login: root
+    root@am65xx-evm:~# mount
+    rootfs on / type rootfs (rw,size=230400k,nr_inodes=3600)
+    proc on /proc type proc (rw,relatime)
+    sysfs on /sys type sysfs (rw,relatime)
+    debugfs on /sys/kernel/debug type debugfs (rw,relatime)
+    configfs on /sys/kernel/config type configfs (rw,relatime)
+    devtmpfs on /dev type devtmpfs (rw,relatime,size=230400k,nr_inodes=3600,mode=755
+    )
+    tmpfs on /run type tmpfs (rw,nosuid,nodev,mode=755)
+    tmpfs on /var/volatile type tmpfs (rw,relatime,size=51200k)
+    devpts on /dev/pts type devpts (rw,relatime,gid=5,mode=620,ptmxmode=000)
+
+
 AM572x Jailhouse Demo
 ------------------------
 
