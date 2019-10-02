@@ -35,5 +35,5 @@ There are a number of Example Applications provided within the Processor SDK for
     mmWave Gesture Controlled HMI,X,,X,X,X,X,X,X,X,X,X,X,X,,,,,,`Gesture controlled HMI based on mmWave gesture recognition and presence detection <Examples_and_Demos_Application_Demos.html#mmwave-gesture-controlled-hmi>`__ ,Provides out of box demo to showcase gesture controlled Human Machine Interface (HMI).
     Predictive Maintenance (PdM) demo,X,,X,X,X,X,X,X,X,X,X,X,X,,,,,,`PdM using RNN for Anomaly Detection <Examples_and_Demos_Application_Demos.html#predictive-maintenance-demo>`__ ,Provides out of box demo for Predictive Maintenance using Recurrent Neural Network (RNN) for anomaly detection.
     Qt5 Thermostat HMI Demo,X,,X,X,X,X,X,X,X,X,X,X,X,,,,,,`Qt5 Thermostat HMI Demo <Examples_and_Demos_Application_Demos.html#qt5-thermostat-hmi-demo>`__,Provides out of box Qt5-based HMI for Thermostat
-    Deep Learning,,,,,,,,X,X,X,X,,,X,X,X,X,,`Vision Deep Learning Examples <Examples_and_Demos_Applicati
-    Arm NN,X,X,X,X,X,X,X,X,X,X,X,X,X,,,,,,`Arm NN Examples <Foundational_Components_ArmNN.html#Arm-NN-MobileNet-Demo>`__,Demonstrates Deep Learning Imagenet classification with MobileNet model
+    TI Deep Learning,,,,,,,,X,X,X,X,,,X,X,X,X,,`TI Deep Learning Examples <Examples_and_Demos_Application_Demos.html#tidl-demo>`__,Provides TI Deep Learning examples
+    Arm NN,X,X,X,X,X,X,X,X,X,X,X,X,X,,,,,,`Arm NN Examples <Examples_and_Demos_Application_Demos.html#arm-nn-classification-demo>`__,Demonstrates Arm NN classification with MobileNet model

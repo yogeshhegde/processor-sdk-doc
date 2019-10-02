@@ -19,7 +19,6 @@ Foundational Components
    Foundational_Components_OpenCV
    Foundational_Components_OpenVX
    Foundational_Components_Virtualization
-   Foundational_Components_TIDL
-   Foundational_Components_ArmNN
+   Foundational_Components_Machine_Learning
    Foundational_Components_ATF
    Foundational_Components_OPTEE

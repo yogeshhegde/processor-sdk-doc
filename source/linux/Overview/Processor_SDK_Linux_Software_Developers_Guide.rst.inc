@@ -59,9 +59,9 @@ suggestions <Feedback>`.
 +---------------+--------------------+-------------------------+----------------------------+
 | `Multimedia`_ | `Examples, Demos`_ | `PRU-ICSS / PRU_ICSSG`_ | `Virtualization`_          |
 +---------------+--------------------+-------------------------+----------------------------+
-| `IPC`_        | `OpenVX`_          | `CMEM`_                 | `TIDL`_                    |
+| `IPC`_        | `OpenVX`_          | `CMEM`_                 | `Machine Learning`_        |
 +---------------+--------------------+-------------------------+----------------------------+
-| `Arm NN`_     | `ATF`_             | `OPTEE`_                |                            |
+| `ATF`_        | `OPTEE`_           |                         |                            |
 +---------------+--------------------+-------------------------+----------------------------+
 
 .. _U-Boot: Foundational_Components_U-Boot.html
@@ -83,8 +83,7 @@ suggestions <Feedback>`.
 .. _IPC: Foundational_Components_IPC.html
 .. _OpenVX: Foundational_Components_OpenVX.html
 .. _CMEM: Foundational_Components_CMEM.html
-.. _TIDL: Foundational_Components_TIDL.html
-.. _Arm NN: Foundational_Components_ArmNN.html
+.. _Machine Learning: Foundational_Components_Machine_Learning.html
 .. _ATF: Foundational_Components_ATF.html
 .. _OPTEE: Foundational_Components_OPTEE.html
 

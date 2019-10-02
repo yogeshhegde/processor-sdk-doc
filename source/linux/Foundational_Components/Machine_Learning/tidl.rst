@@ -1,12 +1,11 @@
-***********************
 TI Deep Learning (TIDL)
-***********************
+=======================
 
 Introduction
-=============
+-------------
 
 Deep Learning Inference in Embedded Device
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TIDL brings deep learning to the edge by enabling applications to leverage TI’s proprietary, \
 highly optimized CNN/DNN implementation on the EVE and C66x DSP compute engines. TIDL initially targets use cases with 2D (typically vision) data on AM57x SoCs.
@@ -26,7 +25,7 @@ imported and converted (with provided import tool) for efficient execution on TI
 Additional performance benefits can be achieved by doing training using Caffe-Jacinto fork of Caffe, which includes functions for
 making convolution weight tensor sparse, thus giving opportunity for 3x-4x performance boost of convolutions layers.
 
-.. figure:: ../images/tidl-flow.png
+.. figure:: ../../../images/tidl-flow.png
     :width: 800px
     :align: center
     :height: 300px
@@ -36,7 +35,7 @@ making convolution weight tensor sparse, thus giving opportunity for 3x-4x perfo
 |
 
 Application space
------------------
+^^^^^^^^^^^^^^^^^
 
 Current version of TIDL software is targeting Computer Vision Deep Learning applications. Example applications include vision computers, barcode readers, machine vision cameras, industrial automation systems, optical inspection systems, industrial robots, currency counters, occupancy detectors, smart appliances and unmanned vehicles.
 In these cases color image tensors (Width x Height x 3, for BGR planes) are typically used, but it is possible to use other data types (E.g. gray scale and depth plane: Width x Height x 2 tensor)
@@ -55,7 +54,7 @@ Additional examples covering other application areas (speech, audio, predictive 
 Apart from Convolution Network topologies, support for RNN/LSTM layers and topologies, targetting processing of sequential data, are planned in future releases.
 
 Supported Devices
------------------
+^^^^^^^^^^^^^^^^^
 
 TIDL software is intended for AM57xx Sitara devices, that either have DSP or EVE, or both accelerators:
 
@@ -67,7 +66,7 @@ TIDL software is intended for AM57xx Sitara devices, that either have DSP or EVE
 - AM5708 (1xC66x DSP)
 
 TIDL API framework abstracts multicore operation
--------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Current implementation of TIDL API provides following important features:
 
@@ -88,7 +87,7 @@ Current implementation of TIDL API provides following important features:
 Maximum number of inference tasks on AM5749 is 4 (2xEVE and 2xDSP), whereas on AM5728 maximum number of tasks is 2 (2xDSP). All TIDL related memory buffers (~64MB per core: network configuration parameters, layer activations, input/output buffers) must fit into `CMEM section <Foundational_Components_CMEM.html>`__
 
 Verified networks topologies
-============================
+----------------------------
 
 It is necessary to understand that TIDL is not verified against arbitrary network topology
 that can run in Caffe or TF. Instead, we were focused on verification of layers and network
@@ -106,19 +105,19 @@ The following topologies have been verified with TIDL software:
 
 Here are the graphs (created using TIDL viewer tool) of first three:
 
-.. figure:: ../images/j11v2.png
+.. figure:: ../../../images/j11v2.png
 
    Figure Jacinto11 (resnet10 motivated)
 
 |
 
-.. figure:: ../images/jseg21.png
+.. figure:: ../../../images/jseg21.png
 
    Figure JSeg21 (SegNet motivated)
 
 |
 
-.. figure:: ../images/jdetnet.png
+.. figure:: ../../../images/jdetnet.png
 
    Figure JDetNet (SSD-300/512 motivated)
 
@@ -128,7 +127,7 @@ Other network topologies are possible but they need to be verified. Majority of 
 tasks are implemented, though in some cases with certain parameter related constraints.
 
 Neural network layers supported by TIDL
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The following layer types/Inference features are supported:
 
 #. Convolution Layer
@@ -313,7 +312,7 @@ operators/layers for Tensorflow/ONNX/Caffe are listed below.
     This is only applicable for SSD network.
 
 Constraints on layer parameters
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Layers in current release of TIDL Lib have certain parameter related constraints:
 
 - Convolution Layer
@@ -377,10 +376,10 @@ Layers in current release of TIDL Lib have certain parameter related constraints
    - TF-Slim: https://github.com/tensorflow/models/tree/master/research/slim
 
 Examples and Demos
-===================
+-------------------
 
 TIDL API examples
------------------
+^^^^^^^^^^^^^^^^^
 
 This TIDL release comes with 5 examples provided in source, that can be cross-compiled on Linux x86 from top level Makefile (use tidl-examples as target), or on \
 target file-system in: /usr/share/ti/tidl/examples (make).
@@ -398,7 +397,7 @@ Classification with class filtering  tidl-matrix-gui-demo_
 .. _tidl-matrix-gui-demo:
 
 Matrix GUI demos
-----------------
+^^^^^^^^^^^^^^^^
 
 Upon boot, Matrix-GUI is started with multiple button that can start many demos. In current release, PLSDK 5.0, there is sub-menu "TI Deep Learning"
 with multiple demo selection buttons. Scripts invoked via Matrix-GUI can be found in /usr/bin target folder, all named as runTidl*.sh:
@@ -503,7 +502,7 @@ Description of Matrix-GUI classification example
 
 Example is based on "imagenet" and "test" examples, with few additions related to decision filtering and visualization. There are two source files only:
 
-.. Image:: ../images/tidl-demo1.png
+.. Image:: ../../../images/tidl-demo1.png
 
 
 * main.cpp
@@ -543,7 +542,7 @@ Recognized classes are (as defined in http://host.robots.ox.ac.uk/pascal/VOC/voc
   - Vehicle: aeroplane, bicycle, boat, bus, car, motorbike, train
   - Indoor: bottle, chair, dining table, potted plant, sofa, tv/monitor
 
-.. figure:: ../images/tidl-objdet.png
+.. figure:: ../../../images/tidl-objdet.png
     :align: center
 
 
@@ -559,15 +558,15 @@ This example shows pixel level image segmentation, also described in TIDL-API do
    ./segmentation -i ./clips/traffic_pixabay_298.mp4 -f 2000 -w 720
 
 
-.. figure:: ../images/tidl-segment.png
+.. figure:: ../../../images/tidl-segment.png
     :align: center
 
 
 Developer's guide
-==================
+------------------
 
 Software Stack
---------------
+^^^^^^^^^^^^^^
 
 Complexity of software is provided for better understanding only. It is expected that
 the user does programming based on TIDL API only.
@@ -593,12 +592,12 @@ In case TIDL uses EVE as accelerator there are four software layers:
 Please note that TIDL API package APIs are identical whether we use DSP or EVE (or both).
 User only needs to specify accelerator via parameter.
 
-.. figure:: ../images/tidl-sw-stack.png
+.. figure:: ../../../images/tidl-sw-stack.png
 
    Figure TIDL Software Stack
 
 Additional public TI resources 
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Following two Caffe-related repositories (maintained by TI team) provides necessary tools for the training phase. 
 Please use them **as primary source of information for training**, for TIDL inference software.
@@ -619,7 +618,7 @@ They include modifications in Caffe source tree to enable higher compute perform
 =========================================================================      ===============================================================================================================================
 
 Introduction to Programming Model
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Public TIDL API interface is described in details at http://downloads.ti.com/mctools/esd/docs/tidl-api/intro.html
 
@@ -634,7 +633,7 @@ TIDL Lib which runs in RTOS environment, either on EVE or DSP. This software lay
 
 
 Target file-system
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 Firmware
 """""""""
@@ -663,7 +662,7 @@ tidl_api        Source of TIDL API implementation.
 =============  ======================================================================================================================================================================================================  
 
 Input data format
------------------
+^^^^^^^^^^^^^^^^^
 Current release is mainly used with 2D inputs. Most frequent 2D input tensors are color images. Format has to be prepared in same like it was used during model training.
 Typically, this is following BGR plane interlaced format (common in OpenCV). That means, first 2D array is Blue color plane, next is Green color plane and finally Red color plane. 
 
@@ -672,7 +671,7 @@ This assumes that same format was used during training.
 
 
 Output data format
-------------------
+^^^^^^^^^^^^^^^^^^
 - Image classification
      There is 1D vector at the output, one byte per class (log(softmax)). If model has 100 classes, output buffer will 100 bytes long, if model has 1000 classes, output buffer will be 1000 bytes long
 
@@ -683,7 +682,7 @@ Output data format
      Output buffer is a list of tuples including: class index, bounding box (4 parameters) and optionally probability metric.
 
 Import Process
-----------------
+^^^^^^^^^^^^^^^^
 
 TIDL import tool converts deep learning models to TI custom network format for efficient execution on TI devices. It supports the following framework/format:
 
@@ -946,7 +945,7 @@ After conversion, we can visualize the network:
 
 Here is a graph (group 1 is executed on EVE, and group 2 is executed on DSP):
 
-.. Image:: ../images/j11split.png
+.. Image:: ../../../images/j11split.png
 
 Output of layers group 1 is shared (common) with input buffer of layers group 2 so no extra buffer copy overhead. Due to this buffer allocation, sequential operation of EVE and DSP is necessary.
 
@@ -989,7 +988,7 @@ general purpose CPU, and significantly slower than DSP or A15 implementation. As
 do SoftMax either on A15 (in user space) or using DSP (layergroup2, as implemented in JDetNet examples).
 
 Verifying TIDL inference result
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The TIDL import step runs the inference on PC and the result generates expected output (with caffe or tensorflow inference). If you observe difference at this stage please follow below steps to debug.  
    
@@ -1004,7 +1003,7 @@ So, results we observe during the process on target will NOT be same (but simila
 The logic was validated with semantic segmentation application on input video sequence 
 
 Parameters controling dynamic quantization 
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TIDL Inference process is not completely stateless. Information (activation min, max values) from previously executed inferences are used for quantization process.
 
@@ -1044,7 +1043,7 @@ Quantization parameters are also discussed in `API reference <http://downloads.t
 
 
 Importing Tensorflow Models
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 TIDL supports slim based tensorflow models and only accepts optimized frozen graphs.
 Following models have been validated:
@@ -1064,7 +1063,7 @@ Following models have been validated:
 
 
 Importing Caffe Models
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Caffe models are descibed in two files:
 
@@ -1085,7 +1084,7 @@ The input layer in network topology file may be defined with various formats, bu
 
 
 Viewer tool
------------  
+^^^^^^^^^^^
 Viewer tool does visualization of **imported** network model. More details available at http://downloads.ti.com/mctools/esd/docs/tidl-api/viewer.html
 Here is an example command line:
 
@@ -1130,7 +1129,7 @@ Output file is jacinto11.dot, that can be converted to PNG or PDF file on **Linu
 For networks with two layer groups, viewer generated graph clearly depicts layer group partitioning, typically top layers in EVE and bottom layers in DSP optimal group.
 
 Simulation Tool
-----------------
+^^^^^^^^^^^^^^^^
 
 We provide simulation tool both in PLSDK Arm filesystem:
 
@@ -1215,7 +1214,7 @@ Sample confiuguration file used by simulation tool (tidl_config_j11_v2.txt):
 Results for all images in SRC_DIR will be directed to TestResults.log, and can be tested against Caffe-Jacinto desktop execution.
 
 Summary of model porting steps
-------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - After model creation using desktop framework (Caffe or TF), it is ncessary to verify accuracy of the model (using inference on desktop framework: Caffe/Caffe-Jacinto or TensorFlow).
 - Import the final model (in case of Caffe-Jacinto, at the end of "sparse" phase) using above import procedure
@@ -1224,7 +1223,7 @@ Summary of model porting steps
 - Test the network on the target, using TIDL API based program and imported model.
 
 Compatibility of trained model formats
-======================================
+--------------------------------------
 
 Below versions of frameworks or runtimes have been used for testing the TIDL import procedure and execution of imported models in TIDL runtime. 
 Below information should be used in addition to constraints related to operator availability in TIDL library.
@@ -1235,7 +1234,7 @@ More recent versions of formats might be also supported, but not guaranteed.
   - ONNX runtime: v1.4
 
 Training
-========
+--------
 
 Existing Caffe and TF-Slim models can be imported **as long as layers are supported and parameter constraints are met**.
 But, typically these models include dense weight matrices. 
@@ -1266,7 +1265,7 @@ After that training is done in 3 steps:
       desktop model is 70% (using model after initial phase), we should not see lower accuracy for sparsified and quantized model below 68%.
 
 Example of training procedure
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - Setup for data set collection of specific smaller objects.
       Apart from many publicly available image data sets, it is frequently the case that new data set need to be collected for specific use case.
       E.g. in industrial environment, is typically more predictable and often it is possible to ensure controlled environment with good illumination.
@@ -1295,7 +1294,7 @@ Example of training procedure
       Recrodings of toy dogs standing on turn table, were captured using AM5749 camera. They were later split into individual images and augmented for offline training.
 
 Where does the benefit of sparsification come from?
----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Initially Deep Learning networks were implemented using Single Precision floating-point arithmetic's (FP32). 
   During last few years, more research has been done regarding quantization impact and reduced accuracy of arithmetic operations.
@@ -1313,10 +1312,10 @@ Where does the benefit of sparsification come from?
   All computation are done using pre-loaded blocks into local L2 memory (using "shadow" EDMA transfers).
 
 Performance data
-==================
+------------------
 
 Computation performance of verified networks
---------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Results in below table are collected FOR SINGLE CORE execution (EVE or DSP). EVE running at 650MHz and DSP running at 750MHz (CCS Setup, single core).
 - J11, JSeg21, JDetNet, InceptionNetV1, Mobilenet, SqueezeNet:
@@ -1339,7 +1338,7 @@ JDetNet              768x320     2191.44                61.84          -        
 - From release PLSDK 5.1, default EVE speed is increased from 535MHz to 650MHz.
 
 Accuracy of selected networks
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Below tables are copied here for convenience, from https://github.com/tidsp/caffe-jacinto-models documents.
 
@@ -1376,7 +1375,7 @@ Sparse fine tuned (~61% zero coefficients)    65.77%
 
 
 Troubleshooting
-===============
+---------------
 - Application with TIDL doesn't run at all
    - Verify that CMEM is active and running:
       - cat /proc/cmem
@@ -1454,8 +1453,8 @@ Troubleshooting
        what():  CHECK failed: (index) < (current_size_):
        Aborted (core dumped)
 
-     This is usually caused by unsupported Caffe input layer format. Refer `Importing Caffe Models <Foundational_Components_TIDL.html#importing-caffe-models>`__ for more details.
+     This is usually caused by unsupported Caffe input layer format. Refer `Importing Caffe Models <Foundational_Components/Machine_Learning/tidl.html#importing-caffe-models>`__ for more details.
 
 
 - TensorFlow import failed with error "Could not find the requested input Data:" 
-     This is likely due to unoptimized frozen graphs. Refer `Importing Tensorflow Models <Foundational_Components_TIDL.html#importing-tensorflow-models>`__ for more details. 
+     This is likely due to unoptimized frozen graphs. Refer `Importing Tensorflow Models <Foundational_Components/Machine_Learning/tidl.html#importing-tensorflow-models>`__ for more details.
