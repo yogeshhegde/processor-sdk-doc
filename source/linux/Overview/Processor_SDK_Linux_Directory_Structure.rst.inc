@@ -50,15 +50,6 @@ Processor SDK devices.
 -  **Makefile** - Provides build targets for many of the SDK components
    from the top-level of the SDK.
 -  **Rules.make** - Sets default values used by the top-level Makefile
-   as well as sub-component Makefiles
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    -  **setup.sh** - Configures the users host system as well as the target
-       system for development
-
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
-
-    .. Note::
-        SDK release 06_00_01_00 does not package the source code for any of the
-        BSP components in the SDK. Future versions of SDKs will support this and
-        will be populated with appropiate Makefile and Rules.make files.
+   as well as sub-component Makefiles.
+-  **setup.sh** - Configures the users host system as well as the target
+   system for development.

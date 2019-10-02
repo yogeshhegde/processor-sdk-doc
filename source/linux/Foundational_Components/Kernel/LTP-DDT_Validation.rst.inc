@@ -14,7 +14,7 @@ California, 94105, USA.
 LTP-DDT is a test application used by Texas Instruments to validate
 Linux releases.
 
-| It is based on `LTP <http://ltp.sourceforge.net/>`__.
+| It is based on `LTP <https://github.com/linux-test-project/ltp>`__.
 | LTP validates many kernel areas, such as memory management, scheduler
   and system calls. LTP-DDT extends LTP's core Kernel tests with tests
   to validate Kernel drivers developed by Texas Instruments. LTP-DDT
@@ -69,7 +69,7 @@ The main additions or 'enhacements' of LTP-DDT compared to LTP are:
 
 | LTP-DDT contains tests cases that uses other open source tools such as
   iperf, evtest, rt-tests (cyclictest), lmbench and others.
-| Test suites currently available include:
+| Test suites currently available include among others:
 
 -  alsa
 -  cpu hotplug
@@ -127,11 +127,16 @@ LTP-DDT has been used on following devices:
 
 ::
 
-    am170x-evm    am335x-ice  am389x-evm    am43xx-hsevm  beagleboard         dm365-evm   dra71x-evm    dra7xx-hsevm     k2g-evm   omap3evm       ti811x-evm
-    am180x-evm    am335x-sk   am437x-idk    am571x-idk    beaglebone          dm368-evm   dra71x-hsevm  dragonboard410c  k2g-ice   omap5-evm      ti813x-evm
-    am181x-evm    am3517-evm  am437x-sk     am572x-idk    beaglebone-black    dm385-evm   dra72x-evm    hikey            k2hk-evm  omapl138-lcdk
-    am335x-evm    am37x-evm   am43xx-epos   am57xx-evm    da830-omapl137-evm  dm6467-evm  dra72x-hsevm  k2e-evm          k2l-evm   tci6614-evm
-    am335x-hsevm  am387x-evm  am43xx-gpevm  am57xx-hsevm  da850-omapl138-evm  dm813x-evm  dra7xx-evm    k2e-hsevm        
+am170x-evm    am389x-evm    am57xx-beagle-x15   da850-omapl138-evm  dra72x-hsevm     k2e-evm     omap3evm
+am180x-evm    am437x-idk    am57xx-evm          dm365-evm           dra76x-evm       k2e-hsevm   omap5-evm
+am181x-evm    am437x-sk     am57xx-hsevm        dm368-evm           dra7xx-evm       k2g-evm     omapl138-lcdk
+am335x-evm    am43xx-epos   am654x-evm          dm385-evm           dra7xx-hsevm     k2g-hsevm   pandaboard-es
+am335x-hsevm  am43xx-gpevm  am654x-hsevm        dm6467-evm          dragonboard410c  k2g-ice     sdp3430
+am335x-ice    am43xx-hsevm  am654x-idk          dm813x-evm          hikey            k2hk-evm    tci6614-evm
+am335x-sk     am571x-idk    beagleboard         dra71x-evm          j721e-evm        k2hk-hsevm  ti811x-evm
+am3517-evm    am572x-idk    beaglebone          dra71x-hsevm        j721e-evm-ivi    k2l-evm     ti813x-evm
+am37x-evm     am574x-hsidk  beaglebone-black    dra71x-lcard        j721e-idk-gw     k2l-hsevm   
+am387x-evm    am574x-idk    da830-omapl137-evm  dra72x-evm          
 
 | 
 
@@ -171,7 +176,7 @@ must be available in the target filesystem to run ltp-ddt:
 -  rt-tests (cyclictest)
 
 There is an Arago/OE recipe
-`here <http://arago-project.org/git/?p=arago.git;a=blob;f=recipes/images/arago-test-image.bb;h=99cc4a80937727759e9928e34ed22320ae1ca75c;hb=1933fa8f460ab078ee6bf560de2093fb0e9cc8a8>`__
+`here <http://arago-project.org/git/?p=arago.git;a=blob;f=recipes/images/arago-test-image.bb>`__
 that builds a filesystem image w/ the above tools plus:
 
 -  bonnie++
@@ -190,7 +195,7 @@ Clone the project
 | Installation instructions are in the README-DDT file. Check sections
   6) and 7)
 | There is also an Arago/OE recipe to build ltp-ddt
-  `here <http://arago-project.org/git/?p=arago.git;a=blob;f=recipes/ti/ltp-ddt_git.bb;h=ffd7c9de25563802315d44cf41fb260ccee9e052;hb=1933fa8f460ab078ee6bf560de2093fb0e9cc8a8>`__
+  `here <http://arago-project.org/git/?p=arago.git;a=blob;f=recipes/ti/ltp-ddt_git.bb>`__
 
 .. rubric:: Running Tests
    :name: running-tests

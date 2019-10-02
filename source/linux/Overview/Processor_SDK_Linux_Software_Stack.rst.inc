@@ -11,4 +11,10 @@ components provided with the Processor SDK for Linux.
    **Availability of certain applications are platform dependent
    and clarified in the associated User Guides.**
 
-.. Image:: ../images/Processor_SDK_linux_stack_v3.png
+.. ifconfig:: CONFIG_part_family in ('General_family')
+
+   .. Image:: ../images/Processor_SDK_linux_stack_v3.png
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+   .. Image:: ../images/Processor_SDK_Auto_linux_stack.png

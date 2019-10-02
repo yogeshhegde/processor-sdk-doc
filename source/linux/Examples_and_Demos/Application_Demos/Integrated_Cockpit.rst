@@ -34,9 +34,9 @@ TI SYSBIOS RTOS and serves several safety-critical functions like:
 - Sending IVI VM monitor service so that it can detect IVI VM crash and notify user
 
 
-Cluster VM is running a Linux kernel and a linux cluster application that uses CPU-copy to render the buffers and DRM APIs to display the rendered buffers. The cluster application
-collects vehicular parameters from the remote R5F core to render the dials and the needles in two separate
-planes. The DRM APIs internally use the remote-device service running on the remote R5F core.
+Cluster VM is running a Linux kernel and a Linux cluster application that uses OpenGL® ES APIs to render the buffers using GPU and DRM APIs to display the rendered buffers. The cluster application
+collects vehicular parameters from the remote R5F core to render the dials and the needles into a buffer.
+The DRM APIs internally use the remote-device service running on the remote R5F core.
 Cluster VM is also running a heartbeat application that keeps monitoring the IVI VM status and sending a notification to remote core
 if a crash is detected.
 
@@ -70,7 +70,7 @@ The following is the resource partitioning across different software entities in
 +---------------+--------------------+--------------+---------------------+
 | Multimedia    | X                  | D552 decoder | X                   |
 +---------------+--------------------+--------------+---------------------+
-| Graphics      | X                  | GPU          | X                   |
+| Graphics      | VGPU               | VGPU         | X                   |
 +---------------+--------------------+--------------+---------------------+
 
 **Note:** **X** represents that this resource is not available to this core / virtual machine. 
@@ -144,7 +144,7 @@ You can now set up the CAN interface by runnning the following command.
 Flashing instructions
 ---------------------
 This demo uses Jailhouse hypervisor to create 2 virtual machines.
-Refer to `How to flash eMMC device <../How_to_Guides/Target/How_to_flash_emmc_device.html>`__
+Refer to `How to flash eMMC device <../../How_to_Guides/Target/How_to_flash_emmc_device.html>`__
 for Flashing eMMC partition, so that Infotainment Virtual machine
 can use the eMMC based rootfs.
 
@@ -153,7 +153,7 @@ Running the demo
 
 For running the demo, you have to boot the board in demo mode.
 
-- Copy the uenv.txt.cockpit as uenv.txt in *boot* partition of SD card
+- Copy the uenv.txt.cockpit_demo as uenv.txt in *boot* partition of SD card
 - **Optional:** By default, the cockpit demo is configured to emulate CAN messages internally. To run the cockpit demo in external CAN
   configuration, change the firmware in the *rootfs* partition of SD card
 
@@ -180,7 +180,7 @@ For running the demo, you have to boot the board in demo mode.
 
     This will also start the *infotainment VM*.
 
-  - After the *infotainment VM* boots to prompt, run following in the *Infotainment-VM* console
+  - After the *infotainment VM* boots to prompt, run following in the *Infotainment-VM* console. You can open *Infotainment-VM* console by opening /dev/ttyUSB1 in minicom.
 
     .. code-block:: bash
 
@@ -225,8 +225,8 @@ which is trigerred by crashing *Infotainment-VM*. This is documented in section 
 Linux Cluster application
 -------------------------
 
-This is a Linux DRM-based GPU-less cluster application which uses two pipelines
-to draw needle and dials. It gets speed and RPM data from an RTOS tell-tales app
+This is a Linux OpenGL® ES based cluster application which uses GPU to render the dials and needles
+and uses a DSS pipeline to display the rendered buffer. It gets speed and RPM data from an RTOS tell-tales app
 and updates the rendering parameters based on this. Run this application from the
 *cluster-VM* console:
 
@@ -287,7 +287,7 @@ started in the *Infotainment VM*
 Graphics application
 --------------------
 
-The SDK filesystem contains the following applications to showcase the graphics capability of the system. All of these are wayland based OpenGL ES applications
+The SDK filesystem contains the following applications to showcase the graphics capability of the system. All of these are wayland based OpenGL® ES applications
 which can be run while weston is running
 
 - /usr/bin/SGX/demos/Wayland/OpenGLESDeferredShading

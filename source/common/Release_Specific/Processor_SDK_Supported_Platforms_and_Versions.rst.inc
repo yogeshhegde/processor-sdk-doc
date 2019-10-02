@@ -64,7 +64,7 @@ SDK.
 .. rubric:: Supported Platforms and EVMs
    :name: supported-platforms-and-evms
 
-The following platforms and EVMs are supported with Processor SDK 
+The following platforms and EVMs are supported with Processor SDK.
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -199,11 +199,11 @@ The following platforms and EVMs are supported with Processor SDK
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-    +--------------+-----------+-----------+-----------------------+-----------------+-----------------+
-    | **Platform** | **EVM**   | **Tested  | **Document**          | **Processor SDK | **Processor SDK |
-    |              |           | Version** |                       | Linux**         | RTOS**          |
-    +--------------+-----------+-----------+-----------------------+-----------------+-----------------+
-    | J721e/DRA82x | J721e EVM | Alpha     | Hardware User's Guide | Y               | Y               |
-    +--------------+-----------+-----------+-----------------------+-----------------+-----------------+
-    | J721e/DRA82x | J721e EVM | Beta      | Hardware User's Guide | Y               | Y               |
-    +--------------+-----------+-----------+-----------------------+-----------------+-----------------+
+    +--------------+-----------+-----------+-----------------------+-------------------+------------------+---------------------+
+    | **Platform** | **EVM**   | **Tested  | **Document**          | **Processor SDK   | **Processor SDK  | **Processor SDK     |
+    |              |           | Version** |                       | Linux Automotive**| RTOS Automotive**| Android Automotive**|
+    +--------------+-----------+-----------+-----------------------+-------------------+------------------+---------------------+
+    | J721e/DRA82x | J721e EVM | Alpha     | Hardware User's Guide | Y                 | Y                | Y                   |
+    +--------------+-----------+-----------+-----------------------+-------------------+------------------+---------------------+
+    | J721e/DRA82x | J721e EVM | Beta      | Hardware User's Guide | Y                 | Y                | Y                   |
+    +--------------+-----------+-----------+-----------------------+-------------------+------------------+---------------------+

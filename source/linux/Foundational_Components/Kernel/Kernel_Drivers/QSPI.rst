@@ -1,169 +1,76 @@
-.. http://processors.wiki.ti.com/index.php/Linux_Core_QSPI_User%27s_Guide
+.. include:: ../../../replacevars.rst.inc
 
-QSPI
+OSPI/QSPI
 ---------------------------------
 
 .. rubric:: Introduction
    :name: introduction-linux-qspi-ug
 
-Quad Serial Peripheral Interface(QSPI) is a SPI module that allows
-single, dual and quad read access to external SPI devices. This module
-has a memory mapped register interface, which provides a direct
-interface for accessing data from external SPI devices and thus
-simplifying software requirements. The QSPI works as a master only.
-The one QSPI in the device is primarily intended for fast booting from
-quad-SPI flash memories.
+Octal Serial Peripheral Interface (OSPI) is a SPI module that has x8 IO
+lines. Quad Serial Peripheral Interface (QSPI) has x4 IO lines. These
+controllers are mainly used to interface with Octal or Quad SPI flashes. OSPI
+is backward compatible with QSPI. These modules can also work in dual
+(x2) and single (x1) modes.
 
-This user guide applies to kernel v4.9 and higher.
-
-Top level kernel user's guide can be found at:
-  http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
+OSPI and QSPI controllers on TI SoCs support memory mapped IO interfaces,
+which provide a direct interface for accessing data from the external SPI
+flash, thereby simplifying software requirements. These controllers work
+only in master mode.
 
 .. rubric:: Supported Devices
    :name: supported-devices
 
--  AM437x SK and AM437x IDK
--  DRA74x/DRA72x/DRA71x EVM
--  AM57x IDK
+There are two variants of OSPI/QSPI controller IPs on various TI SoCs.
+The table below provides a mapping of driver and capabilities for
+different TI SoCs:
 
-.. rubric:: Hardware features
-   :name: hardware-features
-
-The QSPI supports the following features:
-
-::
-
-      • General SPI features:
-         – Programmable clock divider
-         – Six pin interface
-         – Programmable length (from 1 to 128 bits) of the words transferred
-         – Programmable number (from 1 to 4096) of the words transferred
-         – 4 external chip-select signals
-         – Support for 3-, 4-, or 6-pin SPI interface
-         – Optional interrupt generation on word or frame (number of words) completion
-         – Programmable delay between chip select activation and output data from 0 to 3 QSPI clock cycles
-         – Programmable signal polarities
-         – Programmable active clock edge
-         – Software-controllable interface allowing for any type of SPI transfer
-         – Control through L3_MAIN configuration port
-       • Serial flash interface (SFI) features:
-         – Serial flash read/write interface
-         – Additional registers for defining read and write commands to the external serial flash device
-         – 1 to 4 address bytes
-         – Fast read support, where fast read requires dummy bytes after address bytes; 0 to 3 dummy bytes
-           can be configured.
-         – Dual read support
-         – Quad read support
-         – Little-endian support only
-         – Linear increment addressing mode only
++---------------+-----------+--------------------------------------+
+| SoC Family    | capability| Driver                               |
++===============+===========+======================================+
+| AM437x        | QSPI      | drivers/spi/spi-ti-qspi.c            |
++---------------+-----------+--------------------------------------+
+| DRA7xx/AM57xx | QSPI      | drivers/spi/spi-ti-qspi.c            |
++---------------+-----------+--------------------------------------+
+| 66AK2Gx       | QSPI      | drivers/mtd/spi-nor/cadence-quadspi.c|
++---------------+-----------+--------------------------------------+
+| AM654/J721e   | 1x OSPI,  | drivers/mtd/spi-nor/cadence-quadspi.c|
+|               | 1x QSPI   |                                      |
++---------------+-----------+--------------------------------------+
 
 .. rubric:: Driver Features
    :name: driver-features
 
-.. rubric:: Supported Features
-   :name: supported-features
+OSPI controllers support Double Data Rate (DDR) mode in Octal
+configuration wherein data can be read on both edges of the clock.
 
-Following features are supported by QSPI driver:
+.. note::
+    Driver does not support Octal or Quad mode writes.
 
 .. rubric:: Memory mapped read support
    :name: memory-mapped-read-support
 
-TI QSPI controller provides memory map port to read data from SPI
-flashes. Memory map port is enabled in QSPI\_SPI\_SWITCH\_REG register.
-Control module register may also need to be accessed for DRA7xx. The
-QSPI\_SPI\_SETUP\_REGx needs to be populated with flash specific
-information like read opcode, read mode(quad, dual, normal), address
-width and dummy bytes. Once, controller is in memory map mode, the whole
+Once the controller is configured in memory map mode, the whole
 flash memory is available as a memory region at SoC specific address.
 This region can be accessed using normal memcpy() (or mem-to-mem dma
-copy). The ti-qspi controller hardware will internally communicate with
-SPI flash over SPI bus and get the requested data.
-
-.. rubric:: Supported bus widths
-   :name: supported-bus-widths
-
--  Single bit write mode
--  Single bit read mode
--  Dual bit read mode
--  Quad bit read mode
+copy). Controller hardware will internally communicate with
+SPI flash over SPI bus and get the requested data. This mode provides
+the best throughput and is the default mode in the SDK.
 
 .. rubric:: Supported SPI modes
    :name: supported-spi-modes
 
-QSPI supportes all clock and polarity modes defined in table SPI Clock
-Modes Definition of particular SoC's TRM. But make sure that the
-selected mode is supported by the clocking requirements of the device as
-per the device's datasheet.
+spi-ti-qspi.c driver supports all clock and polarity modes defined in
+the table "SPI Clock Modes Definition" of particular SoC's TRM. But make
+sure that the selected mode is supported by the clocking requirements of
+the device as per the device's datasheet.
+
+cadence-quadspi.c driver supports standard SPI mode 0 only.
 
 .. rubric:: DMA support
    :name: dma-support
 
-Driver uses mem-to-mem DMA copy on top QSPI memory mapped port during
+Driver uses mem-to-mem DMA copy on top of OSPI/QSPI memory mapped port during
 read from flash for maximum throughput and reduced CPU load.
-
-.. rubric:: Hardware Architecture
-   :name: hardware-architecture
-
-The QSPI is composed of two blocks. The first one is the SFI
-memory-mapped interface (SFI\_MM\_IF) and the second one is the SPI
-core (SPI\_CORE). The SFI\_MM\_IF block is associated only with SPI
-flash memories and is used for specifying typical for the SPI flash
-memories settings (read or write command, number of address and dummy
-bytes, and so on) unlike the SPI\_CORE block, which is associated with
-the SPI interface itself and is used to configure typical SPI settings
-(chip-select polarity, serial clock inactive state, SPI clock mode,
-length of the words transferred, and so on).
-
-The SFI\_MM\_IF comprises the following two subblocks:
-
--  SFI register control
--  SFI translator
-
-The SPI\_CORE comprises the following four subblocks:
-
--  SPI control interface (SPI\_CNTIF)
--  SPI clock generator (SPI\_CLKGEN)
--  SPI control state machine (SPI\_MACHINE)
--  SPI data shifter (SPI\_SHIFTER)
-
-In addition, an interface bridge connects the two ports (configuration
-port and memory-mapped port) of the SFI\_MM\_IF block to the L3\_MAIN
-interconnect. There are no software controls associated with this
-interface bridge. The QSPI supports long transfers through a frame-style
-sequence. In its generic SPI use mode, a word can be defined up to 128
-bits and multiple words can be transferred during a single access. For
-each word, a device initiator must read or write the new data and then
-tell the QSPI to continue the current operation. Using this sequence, a
-maximum of 4096 128-bit words can be transferred in a single SPI read or
-write operation. This allows great flexibility when connecting the QSPI
-to various types of devices.
-
-As opposed to the generic SPI use mode, the communication with serial
-flash-type devices requires sending a byte command, followed by sending
-bytes of data. Commands can be sent through the SPI\_CORE block to
-communicate with a serial flash device; however, it is easier to do this
-using the SFI\_MM\_IF block because it is intended to ease the
-communication with serial flash devices. If the SPI\_CORE is used to
-communicate with a serial flash device, software must load the command
-into the SPI data transfer register with additional configuration
-fields, perform the byte transfer, then place the data to be sent (or
-configure for receive) along with additional configuration fields, and
-perform that transfer. Reads and writes to serial flash devices are more
-specific. First, the read or write command byte is sent, followed by 1
-to 4 bytes of address (corresponding to the address to read/write), then
-followed by the data write/receive phase. Data is always sent byte
-oriented. When the address is loaded, data can be continuously read or
-written, and the address will automatically increment to each byte
-address internally to the serial flash device. See memory mapped read
-for more info
-
-| 
-
-.. figure:: ../../../../images/QSPI_block_diagram.png
-
-    QSPI Block Diagram
-
-|
 
 .. rubric:: Driver Architecture
    :name: driver-architecture
@@ -172,13 +79,19 @@ Following diagram shows the QSPI driver stack:
 
 .. figure:: ../../../../images/QSPI_architecture.png
 
-    QSPI software stack
+    QSPI driver software stack
 
-|
-
-QSPI driver can be use both to access SPI flash devices via mtd
+The QSPI driver can be used both to access SPI flash devices via mtd
 subsystem or access generic SPI devices (like SPI touchscreen) via SPI
 framework.
+
+The OSPI driver stack is shown in the following diagram:
+
+.. figure:: ../../../../images/linux-ospi.png
+
+    OSPI driver software stack
+
+OSPI does not support interfacing with non flash SPI slaves.
 
 .. rubric:: Driver Configuration
    :name: driver-configuration-qspi
@@ -186,8 +99,10 @@ framework.
 .. rubric:: Source Location
    :name: source-location-qspi
 
-The source file for QSPI driver can be found at:
-drivers/spi/spi-ti-qspi.c under Linux kernel source tree.
+The source file for the QSPI driver can be found at: drivers/spi/spi-ti-qspi.c under Linux kernel source tree.
+
+OSPI driver is at: drivers/mtd/spi-nor/cadence-quadspi.c under Linux kernel source tree.
+This driver also supports QSPI version of the same IP.
 
 .. rubric:: Kernel Configuration Options
    :name: kconfig-options-qspi
@@ -195,14 +110,18 @@ drivers/spi/spi-ti-qspi.c under Linux kernel source tree.
 The driver can be built into the kernel or can be compiled as module and
 loaded into the kernel dynamically.
 
-.. rubric:: Enabling QSPI Driver Configurations
+.. rubric:: Enabling OSPI/QSPI Driver Configurations
    :name: enabling-qspi-driver-configurations
 
-Following needs to be enabled to access QSPI flash: TI QSPI controller
+Following needs to be enabled to access OSPI/QSPI flash: TI QSPI controller
 driver, SPI NOR framework and MTD M25P80 generic serial flash driver in
 the kernel via menuconfig.
 
-start Linux Kernel Configuration tool.
+.. note::
+    OSPI/QSPI drivers and their dependencies are enabled by default in
+    the SDK images. So this section can be skipped in that case.
+
+Start the Linux Kernel Configuration tool:
 
 ::
 
@@ -210,7 +129,7 @@ start Linux Kernel Configuration tool.
 
 To enable QSPI controller driver:
 
-::
+.. code-block:: text
 
               Device Drivers  --->
                [*] SPI support  --->
@@ -218,7 +137,7 @@ To enable QSPI controller driver:
 
 To enable SPI NOR framework:
 
-::
+.. code-block:: text
 
               Device Drivers  --->
                 <*> Memory Technology Device (MTD) support  --->
@@ -226,18 +145,27 @@ To enable SPI NOR framework:
 
 To enable M25P80 generic SPI flash driver:
 
-::
+.. code-block:: text
 
               Device Drivers  --->
                 <*> Memory Technology Device (MTD) support  --->
                   Self-contained MTD device drivers  ---> 
                     <*> Support most SPI Flash chips (AT26DF, M25P, W25X, ...)
 
-To enable them as module make <\*> as <M>
+To enable cadence-quadspi driver:
+
+.. code-block:: text
+
+              Device Drivers  --->
+                <*> Memory Technology Device (MTD) support  --->
+                  <*>   SPI-NOR device support  --->
+		    <*>   Cadence Quad SPI controller
+
+To enable them as modules, make <\*> as <M>.
 
 Enabling UBIFS filesystem support:
 
-::
+.. code-block:: text
 
               File systems  --->
                 [*] Miscellaneous filesystems  --->
@@ -247,33 +175,56 @@ Enabling UBIFS filesystem support:
    :name: dt-configuration
 
 Refer to Documentation/devicetree/bindings/spi/ti\_qspi.txt under
-kernel source tree for QSPI controller driver's DT bindings and their
-usage.
+kernel source tree for spi-ti-qspi controller driver's DT bindings and
+their usage.
 
-For generic SPI bus related DT bindings refer to:
-Documentation/devicetree/bindings/spi/ti\_qspi.txt
+For cadence-quadspi controller refer to Documentation/devicetree/bindings/mtd/cadence-quadspi.txt
+for DT bindings and their usage.
 
-To configure QSPI flash partitions and flash related DT bindings refer
-to: Documentation/devicetree/bindings/mtd/jedec,spi-nor.txt and
-Documentation/devicetree/bindings/mtd/partition.txt
+To configure OSPI/QSPI flash partitions and flash related DT bindings refer
+to Documentation/devicetree/bindings/mtd/jedec,spi-nor.txt and
+Documentation/devicetree/bindings/mtd/partition.txt.
 
 .. rubric:: Driver Usage
    :name: driver-usage-qspi
 
-Load QSPI module using modprobe (this will take care of dependencies and
-load those modules as well)
+.. note::
+    Although OSPI and QSPI are different at hardware level, from
+    Linux point of view, both OSPI and QSPI are managed in the same way and
+    are exposed as /dev/mtdX devices to the user space. Therefore, there is
+    virtually no difference to end user even though OSPI and QSPI use
+    different drivers underneath. Therefore this section applies to both
+    OSPI and QSPI.
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    .. note::
+        On J721E EVM, switch SW3.1 should be in OFF position at the time
+	of powering on the board to access OSPI flash.
+
+Load QSPI or OSPI module as required using modprobe (this will take care
+of dependencies and load those modules as well):
 
 ::
 
        $modprobe spi-ti-qspi
+       $modprobe cadence-quadspi
 
-This should create /dev/mtdX entries for every partitions defined in DT
-or via command line arguments. To see all MTD partitions in the system
-run:
+
+This should create /dev/mtdX entries for every partition defined in DT
+or via command line arguments. MTD abstracts all types of flashes and,
+therefore, both OSPI and QSPI appear as MTD devices. To see all MTD
+partitions in the system run:
 
 ::
 
        $cat /proc/mtd
+
+Here is an example output (name varies depending on what is passed in DT
+or via command line arguments):
+
+.. code-block:: text
+
         dev:    size   erasesize  name
         mtd0: 00080000 00010000 "QSPI.U_BOOT"
         mtd1: 00080000 00010000 "QSPI.U_BOOT.backup"
@@ -313,8 +264,8 @@ run:
 .. rubric:: Using UBIFS on flash
    :name: using-ubifs-on-flash
 
-Make sure UBIFS filesystem is enabled in the kernel refer to `this
-section <#enabling-qspi-driver-configurations>`__.
+Make sure UBIFS filesystem is enabled in the kernel (refer to `this
+section <#enabling-qspi-driver-configurations>`__ for more information).
 
 ::
 
@@ -349,24 +300,4 @@ section <#enabling-qspi-driver-configurations>`__.
          [  326.061610] UBIFS (ubi0:0): media format: w4/r0 (latest is w4/r0), UUID 828AA98E-3A51-4B35-AD50-9E90144AD4C7, small LPT model
          root:~#
 
-Now you can access filesystem at /mnt/flash/
-
-.. rubric:: Limitations
-   :name: limitations
-
--  The QSPI supports only dual and quad reads. Dual or quad writes are
-   not supported. In addition, there is no "pass through" mode supported
-   where the data present on the QSPI input is sent to its output
--  QSPI IP is designed in such a way that after 4096 word transfer, chip
-   select automatically gets de asserted. As a result of which, the
-   entire flash cannot be read in a single chip select using
-   (Single/Dual/Quad) bit read mode feature. While the serial flash
-   linux framework and flash specification expects the entire read to
-   happen with a single read command in a single chip select. This
-   limitation is not applicable when QSPI is used in memory mapped mode
-   for reads. The QSPI driver by default uses memory mapped reads.
--  For writes QSPI uses normal SPI interface instead of memory mapped
-   mode, this is because there is an explicit write enable command that
-   needs to be sent to flash for every page write (256 bytes) which is
-   not handled by SPI\_MM\_IF.
-
+Now you can access filesystem at /mnt/flash/.

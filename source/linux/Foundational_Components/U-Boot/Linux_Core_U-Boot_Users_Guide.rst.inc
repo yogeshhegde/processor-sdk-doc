@@ -9,75 +9,38 @@ Overview
 This document covers the general use of Linux Core Release of U-Boot on
 following platforms:
 
--  `AM335x GP EVM <http://www.ti.com/tool/tmdxevm3358>`__
--  `AM335x EVM-SK <http://www.ti.com/tool/tmdssk3358>`__
--  `AM335x ICE <http://www.ti.com/tool/tmdsice3359>`__
--  `BeagleBone White <http://beagleboard.org/bone>`__
--  `BeagleBone Black <https://beagleboard.org/black>`__
--  `DRA74x EVM <http://www.ti.com/tool/j6evm5777>`__
--  `DRA72x EVM <http://www.ti.com/tool/dra72xevm>`__
--  `DRA71x EVM <http://www.ti.com/product/DRA718>`__
--  `AM437x GP EVM <http://www.ti.com/tool/tmdsevm437x>`__
--  AM43xx ePOS EVM
--  `AM437x EVM-SK <http://www.ti.com/tool/tmdxsk437x>`__
--  `AM437x IDK <http://www.ti.com/tool/TMDSIDK437X>`__
--  `AM572x GP EVM <http://www.ti.com/tool/tmdsevm572x>`__
--  `AM572x IDK <http://www.ti.com/tool/TMDXIDK5728>`__
--  `AM571x IDK <http://www.ti.com/tool/tmdxidk5718>`__
--  `66AK2H EVM <http://www.ti.com/tool/EVMK2H>`__
--  K2K EVM
--  `K2Ex EVM <http://www.ti.com/tool/xevmk2ex>`__
--  `K2L EVM <http://www.ti.com/tool/xevmk2lx>`__
--  `K2G GP EVM <http://www.ti.com/tool/evmk2g>`__
--  `K2G ICE EVM <http://www.ti.com/tool/k2gice>`__
--  `OMAP-L138 LCDK <http://www.ti.com/product/omap-l138>`__
--  `AM65x EVM <http://www.ti.com/tool/TMDX654GPEVM>`__
--  `AM65x IDK <http://www.ti.com/tool/TMDX654IDKEVM>`__
+**32-bit platforms**
 
+	-  `AM335x GP EVM <http://www.ti.com/tool/tmdxevm3358>`__
+	-  `AM335x EVM-SK <http://www.ti.com/tool/tmdssk3358>`__
+	-  `AM335x ICE <http://www.ti.com/tool/tmdsice3359>`__
+	-  `BeagleBone White <http://beagleboard.org/bone>`__
+	-  `BeagleBone Black <https://beagleboard.org/black>`__
+	-  `DRA76x EVM <http://www.ti.com/tool/J6PEVM577P>`__
+	-  `DRA74x EVM <http://www.ti.com/tool/j6evm5777>`__
+	-  `DRA72x EVM <http://www.ti.com/tool/dra72xevm>`__
+	-  `DRA71x EVM <http://www.ti.com/product/DRA718>`__
+	-  `AM437x GP EVM <http://www.ti.com/tool/tmdsevm437x>`__
+	-  AM43xx ePOS EVM
+	-  `AM437x EVM-SK <http://www.ti.com/tool/tmdxsk437x>`__
+	-  `AM437x IDK <http://www.ti.com/tool/TMDSIDK437X>`__
+	-  `AM574x IDK <http://www.ti.com/tool/TMDSIDK574>`__
+	-  `AM572x GP EVM <http://www.ti.com/tool/tmdsevm572x>`__
+	-  `AM572x IDK <http://www.ti.com/tool/TMDXIDK5728>`__
+	-  `AM571x IDK <http://www.ti.com/tool/tmdxidk5718>`__
+	-  `66AK2H EVM <http://www.ti.com/tool/EVMK2H>`__
+	-  K2K EVM
+	-  `K2Ex EVM <http://www.ti.com/tool/xevmk2ex>`__
+	-  `K2L EVM <http://www.ti.com/tool/xevmk2lx>`__
+	-  `K2G GP EVM <http://www.ti.com/tool/evmk2g>`__
+	-  `K2G ICE EVM <http://www.ti.com/tool/k2gice>`__
+	-  `OMAP-L138 LCDK <http://www.ti.com/product/omap-l138>`__
 
-Supported Features in U-Boot
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**64-bit platforms**
 
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| Board                    | Wired Ethernet   | USB gadget ethernet   | DFU   | NAND   | SD/eMMC              | USB Host (mass storage)   | SPI flash    |
-+==========================+==================+=======================+=======+========+======================+===========================+==============+
-| AM335x EVM               | yes              | yes                   | yes   | yes    | yes                  | yes                       | yes          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM335x EVM-SK            | yes              | yes                   | yes   | N/A    | yes                  | yes                       | N/A          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| Beaglebone White/Black   | yes              | yes                   | yes   | N/A    | yes                  | yes                       | N/A          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| DRA7xx EVM               | yes              | no                    | yes   | yes    | yes (both)           | yes                       | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM43xx GP EVM            | yes              | no                    | yes   | yes    | yes (both)           | yes                       | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM43xx ePOS EVM          | yes              | no                    | yes   | N/A    | yes (both)           | yes                       | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM43xx EVM-SK            | yes              | no                    | yes   | N/A    | yes (both)           | yes                       | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM57xx GP EVM            | yes              | no                    | no    | N/A    | yes (both)           | yes                       | N/A          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| K2H/K/E/L EVM            | yes              | no                    | no    | yes    | no                   | no                        | yes          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| K2G EVM                  | yes              | no                    | no    | no     | yes (both)           | no                        | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| OMAP-L138 LCDK           | yes              | no                    | no    | yes    | yes (SD card only)   | no                        | no           |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM65x EVM                | yes              | no                    | yes   | no     | yes                  | yes                       | yes          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-
-We assume that a GCC-based toolchain has already been installed and the
-serial port for the board has been configured. We also assume that a
-Linux Kernel has already been built (or has been provided) as well as an
-appropriate filesystem image. Installing and setting up DHCP or TFTP
-servers is also outside of the scope of this document, but snippets of
-information are provided to show how to use a specific feature, when
-needed.
-
-Finally, please note that not all boards have all of the interfaces
-documented here.
-
-| 
+	-  `AM65x EVM <http://www.ti.com/tool/TMDX654GPEVM>`__
+	-  `AM65x IDK <http://www.ti.com/tool/TMDX654IDKEVM>`__
+	-  J721E EVM
 
 General Information
 -----------------------------------
@@ -99,20 +62,8 @@ Getting the U-Boot Source Code
 
 |
 
-Device Trees
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A note about device trees. With this LCPD release all boards are
-required to use a device tree to boot. To facilitate this in Sitara
-family devices, within U-Boot we have a command in the environment named
-**findfdt** that will set the **fdtfile** variable to the name of the
-device tree to use, as found with the kernel sources. In the Keystone-2
-family devices (K2H/K/E/L/G), it is specified by **name\_fdt** variable
-for each platform. The device tree is expected to be loaded from the
-same media as the kernel, and from the same relative path.
-
-Building MLO and u-boot
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Build and Boot Flow on 32-bit platforms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We strongly recommend the use of separate object directories when
 building. This is done with O= parameter to make. We also recommend that
@@ -211,14 +162,261 @@ the build target listed above. And please note that the main config file
 will leverage other files under include/configs, as seen by #include
 statements.
 
+.. rubric:: Boot Flow
+   :name: boot-flow
+
+.. code-block:: console
+
+	+------------------------+
+	|     Cortex-A9/A15      |
+	+------------------------+
+	|    +--------+          |
+	|    |  Reset |          |
+	|    +--------+          |
+	|         :              |
+	|    +--------+          |
+	|    | *ROM*  |          |
+	|    +--------+          |
+	|    |        |          |
+	|    |Load MLO|          |
+	|    |        |          |
+	|    +--------+          |
+	|        :               |
+	|    +---------+         |
+	|    |  *SPL*  |         |
+	|    +---------+         |
+	|    |  Init   |         |
+	|    |  DDR    |         |
+	|    +---------+         |
+	|    |  Load   |         |
+	|    | u-boot  |         |
+	|    +---------+         |
+	|        :               |
+	|    +---------+         |
+	|    |*U-Boot* |         |
+	|    +---------+         |
+	|    | Prompt  |         |
+	|    |         |         |
+	|    +---------+         |
+	+-------------------------
+
 |
 
-U-Boot Details for AM65x
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The AM65x family of SoCs is the first device family from K3 Multicore
-SoC architecture. Please see `here <Foundational_Components_U-Boot.html#u-boot-for-am65x-family-of-socs>`__ for AM65x U-boot details.
+Build and Boot Flow on 64-bit platforms (based on K3 architecture)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-| 
+Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
+Go `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__ to download and install the SDK.
+
+TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
+`build information <Release_Specific_Release_Notes.html#build-information>`__.
+
+.. rubric:: Setting the tool chain path
+   :name: setting-the-full-tool-chain-path
+
+We strongly recommend using the toolchain that came with the Linux Core
+release that corresponds to this U-Boot release. For e.g:
+
+::
+
+    export PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin:$PATH
+    export PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin:$PATH
+
+.. rubric:: Compiling R5 and ARM64 images
+   :name: compiling-r5-and-arm64-images
+
+Use the following table to determine what defconfig to use to configure with:
+
++----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+|  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |         Hyper Flash            |           USB DFU              |
++============================+=================================+================================+================================+================================+================================+
+|    AM65x EVM/IDK           |    am65x\_evm\_r5\_defconfig    |   am65x\_evm\_r5\_defconfig    |   am65x\_evm\_r5_defconfig     |                                |                                |
+|                            |    am65x\_evm\_a53\_defconfig   |   am65x\_evm\_a53\_defconfig   |   am65x\_evm\_a53\_defconfig   |                                |                                |
++----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+|    J721E EVM               |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |
+|                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |
++----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+
+
+Below are the steps for building images for AM65x IDK (substitute with the right config for the board that you are building for).
+
+**R5**
+
+.. code-block:: console
+
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+
+**ARM64**
+
+.. code-block:: console
+
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
+
+.. rubric:: Target Images
+
+Copy the below images to the boot partition of an SD card and boot.
+Instructions to format the SD card can be found `here <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__.
+
+- tiboot3.bin from <output directory>/r5
+- tispl.bin, u-boot.img from <output directory>/a53
+- sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
+
+.. rubric:: Image Formats
+
+- tiboot3.bin
+
+.. code-block:: console
+
+    +-----------------------+
+    |        X.509          |
+    |      Certificate      |
+    | +-------------------+ |
+    | |                   | |
+    | |        R5         | |
+    | |   u-boot-spl.bin  | |
+    | |                   | |
+    | +-------------------+ |
+    | |                   | |
+    | |     FIT header    | |
+    | | +---------------+ | |
+    | | |               | | |
+    | | |   DTB 1...N   | | |
+    | | +---------------+ | |
+    | +-------------------+ |
+    +-----------------------+
+
+
+- tispl.bin
+
+.. code-block:: console
+
+    +-----------------------+
+    |                       |
+    |       FIT HEADER      |
+    | +-------------------+ |
+    | |                   | |
+    | |      ARM64 ATF    | |
+    | +-------------------+ |
+    | |                   | |
+    | |     ARM64 OPTEE   | |
+    | +-------------------+ |
+    | |                   | |
+    | |      ARM64 SPL    | |
+    | +-------------------+ |
+    | |                   | |
+    | |   SPL DTB 1...N   | |
+    | +-------------------+ |
+    +-----------------------+
+
+- sysfw.itb
+
+.. code-block:: console
+
+    +-----------------------+
+    |                       |
+    |       FIT HEADER      |
+    | +-------------------+ |
+    | |                   | |
+    | |     sysfw.bin     | |
+    | +-------------------+ |
+    | |                   | |
+    | |    board config   | |
+    | +-------------------+ |
+    | |                   | |
+    | |     PM config     | |
+    | +-------------------+ |
+    | |                   | |
+    | |     RM config     | |
+    | +-------------------+ |
+    | |                   | |
+    | |    Secure config  | |
+    | +-------------------+ |
+    +-----------------------+
+
+.. rubric:: Boot Flow
+   :name: k3-boot-flow
+
+On K3 architecture based devices, ROM supports boot only via MCU(R5). This means that
+bootloader has to run on R5 core. In order to meet this constraint, keeping
+safety in picture and to have faster boot time, the software boot architecture
+is designed as below:
+
+.. code-block:: console
+
+    +------------------------------------------------------------------------+
+    |        DMSC            |         R5            |        ARM64          |
+    +------------------------------------------------------------------------+
+    |    +--------+          |                       |                       |
+    |    |  Reset |          |                       |                       |
+    |    +--------+          |                       |                       |
+    |         :              |                       |                       |
+    |    +--------+          |   +-----------+       |                       |
+    |    | *ROM*  |----------|-->| Reset rls |       |                       |
+    |    +--------+          |   +-----------+       |                       |
+    |    |        |          |         :             |                       |
+    |    |  ROM   |          |         :             |                       |
+    |    |services|          |         :             |                       |
+    |    |        |          |   +-------------+     |                       |
+    |    |        |          |   |  *R5 ROM*   |     |                       |
+    |    |        |          |   +-------------+     |                       |
+    |    |        |<---------|---|Load and auth|     |                       |
+    |    |        |          |   | tiboot3.bin |     |                       |
+    |    |        |          |   +-------------+     |                       |
+    |    |        |          |         :             |                       |
+    |    |        |          |         :             |                       |
+    |    |        |          |         :             |                       |
+    |    |        |          |   +-------------+     |                       |
+    |    |        |          |   |  *R5 SPL*   |     |                       |
+    |    |        |          |   +-------------+     |                       |
+    |    |        |          |   |    Load     |     |                       |
+    |    |        |          |   |  sysfw.itb  |     |                       |
+    |    | Start  |          |   +-------------+     |                       |
+    |    | System |<---------|---|    Start    |     |                       |
+    |    |Firmware|          |   |    SYSFW    |     |                       |
+    |    +--------+          |   +-------------+     |                       |
+    |        :               |   |             |     |                       |
+    |    +---------+         |   |   Load      |     |                       |
+    |    | *SYSFW* |         |   |   system    |     |                       |
+    |    +---------+         |   | Config data |     |                       |
+    |    |         |<--------|---|             |     |                       |
+    |    |         |         |   +-------------+     |                       |
+    |    |         |         |   |             |     |                       |
+    |    |         |         |   |    DDR      |     |                       |
+    |    |         |         |   |   config    |     |                       |
+    |    |         |         |   +-------------+     |                       |
+    |    |         |         |   |             |     |                       |
+    |    |         |<--------|---| Start A53   |     |                       |
+    |    |         |         |   |  and Reset  |     |                       |
+    |    |         |         |   +-------------+     |                       |
+    |    |         |         |                       |     +-----------+     |
+    |    |         |---------|-----------------------|---->| Reset rls |     |
+    |    |         |         |                       |     +-----------+     |
+    |    |  DMSC   |         |                       |          :            |
+    |    |Services |         |                       |     +-----------+     |
+    |    |         |<--------|-----------------------|---->|*ATF/OPTEE*|     |
+    |    |         |         |                       |     +-----------+     |
+    |    |         |         |                       |          :            |
+    |    |         |         |                       |     +-----------+     |
+    |    |         |<--------|-----------------------|---->| *A53 SPL* |     |
+    |    |         |         |                       |     +-----------+     |
+    |    |         |         |                       |     |   Load    |     |
+    |    |         |         |                       |     | u-boot.img|     |
+    |    |         |         |                       |     +-----------+     |
+    |    |         |         |                       |          :            |
+    |    |         |         |                       |     +-----------+     |
+    |    |         |<--------|-----------------------|---->| *U-Boot*  |     |
+    |    |         |         |                       |     +-----------+     |
+    |    |         |         |                       |     |  prompt   |     |
+    |    |         |         |                       |     +-----------+     |
+    |    +---------+         |                       |                       |
+    |                        |                       |                       |
+    +------------------------------------------------------------------------+
+
+Here DMSC acts as master and provides all the critical services. R5/ARM64
+requests DMSC to get these services done as shown in the above diagram.
+
 
 U-Boot Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -319,7 +517,16 @@ reserve at least about 1MB for stack, so in the example output above,
 RAM in the range of ``[0x80000000, 0xFCE00000]`` is safely available for
 use.
 
-| 
+Device Trees
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A note about device trees. Now all supported boards are required to use a
+device tree to boot. To facilitate this in supported platforms, a command
+in U-Boot environment **findfdt** is available that will set the **fdtfile**
+variable to the name of the device tree to use, as found with the kernel
+sources. In the Keystone-2 family devices (K2H/K/E/L/G), it is specified
+by **name\_fdt** variable for each platform. The device tree is expected
+to be loaded from the same media as the kernel, and from the same relative path.
 
 USB Device Firmware Upgrade (DFU)
 -----------------------------------
@@ -336,11 +543,11 @@ specifying a single device to work with. Finally, to program via DFU for
 a given storage device see the section for the storage device you are
 working with.
 
-USB Peripheral boot mode on DRA7x/AM57x (SPL-DFU support)
+USB Peripheral boot mode (SPL-DFU support)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The USB Peripheral boot mode is used to boot DRA7x EVM using USB
-interface using SPL-DFU feature. Same steps could be used on an AM57x
-SoC where board support USB peripheral boot mode.
+The USB Peripheral boot mode is used to boot using USB
+interface using SPL-DFU feature. Steps outlined here can be used on
+platform that support USB Peripheral boot mode.
 
 #. Enable the SPL-DFU feature in u-boot and build MLO/u-boot binaries.
 #. Load the MLO and u-boot.img using the dfu-util from host PC.
@@ -374,60 +581,109 @@ SoC where board support USB peripheral boot mode.
         [*] Support U-boot commands
         [ ]   Use hush shell
 
+
 -  Build spl/u-boot-spl.bin and u-boot.img
 
 ::
 
      host$ make
 
--  Set SYSBOOT SW2 switch to USB Peripheral boot mode
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
-::
+   -  Set SYSBOOT SW2 switch to USB Peripheral boot mode
 
-     SW2[7..0] = 00010000 (refer to TRM for various booting order)
+   ::
 
--  Connect EVM Superspeed port (USB1 port) to PC (Ubuntu) through USB
-   cable.
--  From Ubuntu (or the host) PC, fetch and build usbboot application.
-   usbboot pre-built binaries for particular distributions may be
-   available in `Processor
-   SDK <index.html>`__
-   already. Here are the steps to build usbboot application.
+        SW2[7..0] = 00010000 (refer to TRM for various booting order)
 
-::
+   -  Connect EVM Superspeed port (USB1 port) to PC (Ubuntu) through USB
+      cable.
+   -  From Ubuntu (or the host) PC, fetch and build usbboot application.
+      usbboot pre-built binaries for particular distributions may be
+      available in `Processor
+      SDK <index.html>`__
+      already. Here are the steps to build usbboot application.
 
-    host$ git clone git://git.omapzoom.org/repo/omapboot.git
-    host$ cd omapboot
-    host$ checkout 609ac271d9f89b51c133fd829dc77e8af4e7b67e
-    host$ make -C host/tools 
+   ::
 
-This results in host side tool called ``usbboot-stand-alone``
+       host$ git clone git://git.omapzoom.org/repo/omapboot.git
+       host$ cd omapboot
+       host$ checkout 609ac271d9f89b51c133fd829dc77e8af4e7b67e
+       host$ make -C host/tools 
 
-For loading spl/u-boot-spl.bin to EVM, issue the command below and reset
-the board.
+   This results in host side tool called ``usbboot-stand-alone``
 
-::
+   For loading spl/u-boot-spl.bin to EVM, issue the command below and reset
+   the board.
 
-    host$ sudo usbboot-stand-alone -S spl/u-boot-spl.bin
+   ::
 
--  Load the u-boot.img to RAM.
+       host$ sudo usbboot-stand-alone -S spl/u-boot-spl.bin
 
-::
+   -  Load the u-boot.img to RAM.
 
-    host$ sudo dfu-util -l
+   ::
 
-::
+       host$ sudo dfu-util -l
 
-    Found DFU: [0451:d022] devnum=0, cfg=1, intf=0, alt=0, name="kernel"
-    Found DFU: [0451:d022] devnum=0, cfg=1, intf=0, alt=1, name="fdt"
-    Found DFU: [0451:d022] devnum=0, cfg=1, intf=0, alt=2, name="ramdisk"
+   ::
 
-::
+       Found DFU: [0451:d022] devnum=0, cfg=1, intf=0, alt=0, name="kernel"
+       Found DFU: [0451:d022] devnum=0, cfg=1, intf=0, alt=1, name="fdt"
+       Found DFU: [0451:d022] devnum=0, cfg=1, intf=0, alt=2, name="ramdisk"
 
-    host$ sudo dfu-util c 1 -i 0 -a 0 -D "u-boot.img" -R
+   ::
 
--  Now EVM will boot to u-boot prompt.
+       host$ sudo dfu-util c 1 -i 0 -a 0 -D "u-boot.img" -R
 
+   -  Now EVM will boot to u-boot prompt.
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+
+    .. rubric:: USB Peripheral boot mode on J721E EVM (SPL-DFU boot mode)
+       :name: dfu-j721e
+
+    -  Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of J721E TRM for boot switch details)
+    -  Make sure USB0 port in UFP/DRP mode: SW3[3:4] = 01 or 1x
+    -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
+    -  Power on the board
+
+    On host side:
+
+    .. code-block:: text
+
+        host$ sudo dfu-util -l
+
+    This will show the following DFU entities:
+
+    .. code-block:: text
+
+		Found DFU: [0451:6163] ver=0200, devnum=50, cfg=1, intf=0, path="3-2", alt=1, name="SocId", serial="01.00.00.00"
+		Found DFU: [0451:6163] ver=0200, devnum=50, cfg=1, intf=0, path="3-2", alt=0, name="bootloader", serial="01.00.00.00"
+
+    Send boot images in this order: tiboot3.bin -> sysfw.itb -> tispl.bin -> u-boot.img.
+
+    .. code-block:: text
+
+	    host$  sudo dfu-util -R -a bootloader -D tiboot3.bin
+	    host$ sudo dfu-util -l
+
+	    Found DFU: [0451:6163] ver=0224, devnum=51, cfg=1, intf=0, path="3-2", alt=0, name="sysfw.itb", serial="UNKNOWN"
+
+	    host$ sudo dfu-util -R -a sysfw.itb -D sysfw.itb
+	    host$ sudo dfu-util -l
+
+	    Found DFU: [0451:6163] ver=0224, devnum=52, cfg=1, intf=0, path="3-2", alt=1, name="u-boot.img", serial="UNKNOWN"
+	    Found DFU: [0451:6163] ver=0224, devnum=52, cfg=1, intf=0, path="3-2", alt=0, name="tispl.bin", serial="UNKNOWN"
+
+	    host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
+	    host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
+
+    At this point, the board should boot to the U-Boot prompt.
+
+    .. note::
+        This mode is not supported on J721E Rev E2 and earlier boards.
 
 Network (Wired or USB Client)
 -----------------------------------
@@ -447,6 +703,9 @@ with the file to fetch via tftp. In order to facilitate this, the
 **vendor-class-identifier** DHCP field is filled out by the ROM and the
 values are listed in the table below. Finally, you will need to use the
 **spl/u-boot-spl.bin** and **u-boot.img** files to boot.
+
+.. note::
+    Booting U-Boot/SPL from network is supported only on the following platforms.
 
 +-----------------------------------+---------------+--------------------------------------+------------------------------------------------------+-------------------------------------+
 | Board                             | make target   | Supported interfaces                 | ROM vendor-class-identifier value                    | SPL vendor-class-identifier value   |
@@ -649,6 +908,9 @@ variable to that of the tftp server used in the setup.
 
 NAND
 -----------------------------------
+
+.. note::
+    NAND is not supported on J721E platform.
 
 This section documents how to write files to the NAND device and use it
 to load and then boot the Linux Kernel using a root filesystem also
@@ -910,9 +1172,10 @@ This section assume that you have created an SD card following the
 instructions on `Processor SDK Linux Create SD Card
 Script <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__ or have
 made a compatible layout by hand. In this case, you will need to copy
-the **MLO** and **u-boot.img** files to the *boot* partition. At this
-point, the card is now bootable in the SD card slot. We default to using
-**/boot/zImage** on the *rootfs* partition and the device tree file
+the all the boot images (**MLO** and **u-boot.img** for 32-bit platforms,
+**tiboot3.bin**, **sysfw.itb**, **tispl.bin**, **u-boot.img** for K3 based platforms)
+files to the *boot* partition. At this point, the card is now bootable in the SD card slot.
+We default to using **/boot/${bootfile}** on the *rootfs* partition and the device tree file
 loaded from **/boot** with the same name as in the kernel.
 
 However, if you are using OMAP-L138 based board (like the LCDK), then
@@ -1044,6 +1307,36 @@ We also need to configure the eMMC using the bootbus and partconf commands. The 
 
 | 
 
+Booting tiboot3.bin, tispl.bin and u-boot.img from eMMC boot partition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The K3 based processors support booting from the eMMC boot partition.
+The following commands can be used to download tiboot3.bin, tispl.bin and
+u-boot.img from an SD card and write them to the eMMC boot0 partition at
+respective addresses.
+
+.. code-block:: console
+
+  => mmc dev 0 1
+  => fatload mmc 1 ${loadaddr} tiboot3.bin
+  => mmc write ${loadaddr} 0x0 0x400
+  => fatload mmc 1 ${loadaddr} tispl.bin
+  => mmc write ${loadaddr} 0x400 0x1000
+  => fatload mmc 1 ${loadaddr} u-boot.img
+  => mmc write ${loadaddr} 0x1400 0x2000
+  => fatload mmc 1 ${loadaddr} sysfw.itb
+  => mmc write ${loadaddr} 0x3600 0x800
+
+To give the ROM access to the boot partition, the following commands must be
+used for the first time:
+
+.. code-block:: console
+
+  => mmc partconf 0 1 1 1
+  => mmc bootbus 0 2 0 0
+
+|
+
 Booting Linux from USB storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    :name: booting-linux-from-usb-storage
@@ -1119,6 +1412,41 @@ Set up the following u-boot environment variables:
     boot
 
 **Note:**: <hex\_len> must be at least the hex size of the k2-fw-initrd.cpio.gz file size.
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+
+	.. rubric:: Enabling USB 3.0 host port on J721e EVM
+	   :name: j721e-evm-usb-30-host
+
+	.. note::
+	    J721e SoC does not support booting from USB mass storage devices. But can be used as storage device at U-Boot prompt.
+
+	USB0 instance on J721e base board is connected to TypeC port that can be
+	used both as host port and device port. By default, USB0 is port is
+	configured to be in **peripheral mode**. Since U-Boot does not support
+	dynamic switching of USB roles, below DT fragment needs to be
+	applied and U-Boot image needs to be rebuilt to make USB0 port to be
+	USB 3.0 host port.
+
+	::
+
+		diff --git a/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi b/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
+		index 50effb4812b2..28986c4d2c2a 100644
+		--- a/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
+		+++ b/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
+		@@ -184,11 +184,10 @@
+
+		 &usbss0 {
+		        u-boot,dm-spl;
+		-       ti,usb2-only;
+		 };
+
+		 &usb0 {
+		-       dr_mode = "peripheral";
+		+       dr_mode = "host";
+		        u-boot,dm-spl;
+		 };
 
 Booting from SD/eMMC from SPL (Single stage or Falcon mode)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1217,6 +1545,8 @@ SPL directly boots the kernel image from SD (or eMMC).
 SPI
 ------------------------------------
 
+.. note::
+    SPI  is not supported on J721E platform (not be confused with QSPI/OSPI)
 
 This section documents how to write files to the SPI device and use it
 to load and then boot the Linux Kernel using a root filesystem also
@@ -1291,11 +1621,11 @@ Hardware Setup of each Keystone-2 EVM.
 
 | 
 
-QSPI
+OSPI/QSPI
 ------------------------------------
 
-QSPI is a serial peripheral interface like SPI the major difference
-being the support for Quad read, uses 4 data lines for read compared to
+OSPI/QSPI is a serial peripheral interface like SPI the major difference
+being the support for Octal/Quad read, uses 8/4 data lines for read compared to
 2 lines used by the traditional SPI. This section documents how to write
 files to the QSPI device and use it to load and then boot the Linux
 Kernel using a root filesystem also found on QSPI. At this time, no
@@ -1303,6 +1633,68 @@ special builds of U-Boot are required to perform these operations on the
 supported hardware. For simplicity we assume the files are being loaded
 from an SD card. Using the network interface (if applicable) is
 documented above.
+
+AM654/J721E Support
+^^^^^^^^^^^^^^^^^^^^
+ROM supports booting from OSPI from offset 0x0.
+
+**Flashing Images to OSPI**
+
+Below commands can be used to download tiboot3.bin, tispl.bin and
+u-boot.img over tftp and then flash it to OSPI at respective addresses.
+
+.. code-block:: console
+
+  => sf probe
+  => tftp ${loadaddr} tiboot3.bin
+  => sf update $loadaddr 0x0 $filesize
+  => tftp ${loadaddr} tispl.bin
+  => sf update $loadaddr 0x80000 $filesize
+  => tftp ${loadaddr} u-boot.img
+  => sf update $loadaddr 0x280000 $filesize
+  => tftp ${loadaddr} sysfw.itb
+  => sf update $loadaddr 0x6C0000 $filesize
+
+**Flash Layout for OSPI**
+
+.. code-block:: console
+
+         0x0 +----------------------------+
+             |     ospi.tiboot3(512K)     |
+             |                            |
+     0x80000 +----------------------------+
+             |     ospi.tispl(2M)         |
+             |                            |
+    0x280000 +----------------------------+
+             |     ospi.u-boot(4M)        |
+             |                            |
+    0x680000 +----------------------------+
+             |     ospi.env(128K)         |
+             |                            |
+    0x6A0000 +----------------------------+
+             |   ospi.env.backup (128K)   |
+             |                            |
+    0x6C0000 +----------------------------+
+             |      ospi.sysfw(1M)        |
+             |                            |
+    0x7C0000 +----------------------------+
+             |      padding (256k)        |
+    0x800000 +----------------------------+
+             |     ospi.rootfs(UBIFS)     |
+             |                            |
+             +----------------------------+
+
+Kernel Image and DT are expected to be present in the /boot folder of UBIFS
+ospi.rootfs just like in SD card case. U-Boot looks for UBI volume named
+"rootfs" for rootfs.
+
+To boot kernel from OSPI, at the U-Boot prompt:
+
+.. code-block:: console
+
+  => setenv boot ubi
+  => boot
+
 
 DRA7xx support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1539,6 +1931,8 @@ following example uses the partition table found in the kernel.
 NOR
 ---------------------------------------
 
+.. note::
+    Parallel NOR is not supported on J721E platform.
 
 This section documents how to write files to the NOR device and use it
 to load and then boot the Linux Kernel using a root filesystem also
@@ -1612,11 +2006,36 @@ is installed
     $ sx -kb /path/to/u-boot-spl.bin < /dev/ttyUSB0 > /dev/ttyUSB0
     $ sx -kb --ymodem /path/to/u-boot.img < /dev/ttyUSB0 > /dev/ttyUSB0
 
-|
+In K3 based platforms, ROM supports booting from MCU_UART0 via X-Modem protocol.
+The entire UART-based boot process up to U-Boot (proper) prompt goes through
+different stages and uses different UART peripherals as follows:
+
++---------------+---------------+-------------+------------+
+|   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
++===============+===============+=============+============+
+| Boot ROM      |  tiboot3.bin  |  MCU_UART0  |  X-Modem   |
++---------------+---------------+-------------+------------+
+| R5 SPL        |  sysfw.itb    |  MCU_UART0  |  Y-Modem   |
++---------------+---------------+-------------+------------+
+| R5 SPL        |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
++---------------+---------------+-------------+------------+
+| A53/A72 SPL   |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
++---------------+---------------+-------------+------------+
+
+UART_BOOT_MAIN_UART and UART_BOOT_MCU_UART should be set to serial ports such as /dev/ttyUSBx.
+
+::
+
+    $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
+    $ sb --ymodem $SYSFW_ITB > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
+    $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+    $ sb --xmodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
 
 SATA
 ------------------------------------
 
+.. note::
+    SATA is not supported on J721E platform.
 
 SATA and eSATA devices show up as SCSI devices in U-boot.
 
@@ -1739,6 +2158,9 @@ memory onto a EXT4 partition
 DDR3 ECC
 -------------
 
+.. note::
+    DDR3 ECC feature described below is enabled for Keystone-II devices.
+
 DDR3 ECC in Keystone-II
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1798,425 +2220,84 @@ A new environment variable "ecc_test" is also introduced to test ECC. By default
 
 |
 
-U-Boot for AM65x Family of SoCs
------------------------------------
-
-The AM65x family of SoCs is the first device family from K3 Multicore
-SoC architecture, targeted for broad market and industrial control with
-aim to meet the complex processing needs of modern embedded products.
-
-This section describes the boot flow, sources, build procedure, and supported boot modes
-specific to AM65x family of SoCs.
-
-The device is built over three domains, each containing specific processing
-cores, voltage domains and peripherals:
-
-#. Wake-up (WKUP) domain: Device Management and Security Controller (DMSC)
-#. Microcontroller (MCU) domain:  Dual Core ARM Cortex-R5F processor
-#. MAIN domain: Quad core 64-bit ARM Cortex-A53
-
-More info can be found in TRM: http://www.ti.com/lit/pdf/spruid7
-
-
-Boot Flow
-^^^^^^^^^^^
-On AM65x family devices, ROM supports boot only via MCU(R5). This means that
-bootloader has to run on R5 core. In order to meet this constraint, keeping
-safety in picture and to have faster boot time, the software boot architecture
-is designed as below:
-
-.. code-block:: console
-
-    +------------------------------------------------------------------------+
-    |        DMSC            |         R5            |        A53            |
-    +------------------------------------------------------------------------+
-    |    +--------+          |                       |                       |
-    |    |  Reset |          |                       |                       |
-    |    +--------+          |                       |                       |
-    |         :              |                       |                       |
-    |    +--------+          |   +-----------+       |                       |
-    |    | *ROM*  |----------|-->| Reset rls |       |                       |
-    |    +--------+          |   +-----------+       |                       |
-    |    |        |          |         :             |                       |
-    |    |  ROM   |          |         :             |                       |
-    |    |services|          |         :             |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |          |   |  *R5 ROM*   |     |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |<---------|---|Load and auth|     |                       |
-    |    |        |          |   | tiboot3.bin |     |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |          |         :             |                       |
-    |    |        |          |         :             |                       |
-    |    |        |          |         :             |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |          |   |  *R5 SPL*   |     |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |          |   |    Load     |     |                       |
-    |    |        |          |   |  sysfw.itb  |     |                       |
-    |    | Start  |          |   +-------------+     |                       |
-    |    | System |<---------|---|    Start    |     |                       |
-    |    |Firmware|          |   |    SYSFW    |     |                       |
-    |    +--------+          |   +-------------+     |                       |
-    |        :               |   |             |     |                       |
-    |    +---------+         |   |   Load      |     |                       |
-    |    | *SYSFW* |         |   |   system    |     |                       |
-    |    +---------+         |   | Config data |     |                       |
-    |    |         |<--------|---|             |     |                       |
-    |    |         |         |   +-------------+     |                       |
-    |    |         |         |   |             |     |                       |
-    |    |         |         |   |    DDR      |     |                       |
-    |    |         |         |   |   config    |     |                       |
-    |    |         |         |   +-------------+     |                       |
-    |    |         |         |   |             |     |                       |
-    |    |         |<--------|---| Start A53   |     |                       |
-    |    |         |         |   |  and Reset  |     |                       |
-    |    |         |         |   +-------------+     |                       |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |---------|-----------------------|---->| Reset rls |     |
-    |    |         |         |                       |     +-----------+     |
-    |    |  DMSC   |         |                       |          :            |
-    |    |Services |         |                       |     +-----------+     |
-    |    |         |<--------|-----------------------|---->|*ATF/OPTEE*|     |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |         |                       |          :            |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |<--------|-----------------------|---->| *A53 SPL* |     |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |         |                       |     |   Load    |     |
-    |    |         |         |                       |     | u-boot.img|     |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |         |                       |          :            |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |<--------|-----------------------|---->| *U-Boot*  |     |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |         |                       |     |  prompt   |     |
-    |    |         |         |                       |     +-----------+     |
-    |    +---------+         |                       |                       |
-    |                        |                       |                       |
-    +------------------------------------------------------------------------+
-
-Here DMSC acts as master and provides all the critical services. R5/A53
-requests DMSC to get these services done as shown in the above diagram.
-
-TI Processor SDK
-^^^^^^^^^^^^^^^^^^^^
-Several prebuilt images are required from the TI Processor SDK.
-Go `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__ to download and install the SDK.
-
-TI-u-boot is included in the SDK in <path to tisdk>/board-support.
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    Ensure that the u-boot version matches the `build information <Release_Specific_PLSDK_Release_Notes.html#build-information>`__.
-
-Build Procedure
-^^^^^^^^^^^^^^^^^^^^^^
-**R5**
-
-.. code-block:: console
-
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+REMOTEPROC
+------------
 
-**A53**
+This section documents how to initialize, load, start and stop remote cores from U-Boot prompt.
+Following remotecores support is available in U-boot:
 
-.. code-block:: console
+-  Cortex-R5F in Lockstep more
+-  Cortex-R5F in split mode
+-  C66x DSP
+-  C71x DSP
 
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
+Initialization
+^^^^^^^^^^^^^^^
 
-.. rubric:: Target Images
-
-Copy the below images to the boot partition of an SD card and boot.
-Instructions to format the SD card can be found `here <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__.
+U-Boot supports for initializing all the available remotecores in one go or
+initialize individual core based on the DT alias id.
 
-- tiboot3.bin from <output directory>/r5
-- tispl.bin, u-boot.img from <output directory>/a53
-- sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
+The below command will initialize all the available remote cores:
 
-.. rubric:: Image Formats
+::
 
-- tiboot3.bin
+    => rproc init
 
-.. code-block:: console
+The below command will initialize just the given remote core
 
-    +-----------------------+
-    |        X.509          |
-    |      Certificate      |
-    | +-------------------+ |
-    | |                   | |
-    | |        R5         | |
-    | |   u-boot-spl.bin  | |
-    | |                   | |
-    | +-------------------+ |
-    | |                   | |
-    | |     FIT header    | |
-    | | +---------------+ | |
-    | | |               | | |
-    | | |   DTB 1...N   | | |
-    | | +---------------+ | |
-    | +-------------------+ |
-    +-----------------------+
+::
 
+   => rproc init <id>
 
-- tispl.bin
+The below command lists all the available/initialized remotecores in the system.
 
-.. code-block:: console
-
-    +-----------------------+
-    |                       |
-    |       FIT HEADER      |
-    | +-------------------+ |
-    | |                   | |
-    | |      A53 ATF      | |
-    | +-------------------+ |
-    | |                   | |
-    | |     A53 OPTEE     | |
-    | +-------------------+ |
-    | |                   | |
-    | |      A53 SPL      | |
-    | +-------------------+ |
-    | |                   | |
-    | |   SPL DTB 1...N   | |
-    | +-------------------+ |
-    +-----------------------+
-
-- sysfw.itb
-
-.. code-block:: console
-
-    +-----------------------+
-    |                       |
-    |       FIT HEADER      |
-    | +-------------------+ |
-    | |                   | |
-    | |     sysfw.bin     | |
-    | +-------------------+ |
-    | |                   | |
-    | |    board config   | |
-    | +-------------------+ |
-    | |                   | |
-    | |     PM config     | |
-    | +-------------------+ |
-    | |                   | |
-    | |     RM config     | |
-    | +-------------------+ |
-    | |                   | |
-    | |    Secure config  | |
-    | +-------------------+ |
-    +-----------------------+
-
-
-Supported Boot Modes
-^^^^^^^^^^^^^^^^^^^^^^
-
-The boot media supported for AM65x devices include SD card, OSPI, eMMC, and UART.
-
-.. rubric:: SD card
-
-ROM supports booting from a FAT partitioned SD card.
-
-**Bootmode Switch Settings**
+::
 
-After partitioning the SD card and writing images, change the bootmode switches
-to the following:
-
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| Switch No. | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| SW3        | OFF | ON  | ON  | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| SW2        | OFF | OFF | ON  | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-
-.. rubric:: OSPI
-
-ROM supports booting from OSPI from offset 0x0.
-
-**Flashing Images to OSPI**
-
-Below commands can be used to download tiboot3.bin, tispl.bin and
-u-boot.img over tftp and then flash it to OSPI at respective addresses.
+   => rproc list
+   0 - Name:'r5f@41000000' type:'internal memory mapped' supports: load start stop reset
+   1 - Name:'r5f@41400000' type:'internal memory mapped' supports: load start stop reset
+   2 - Name:'r5f@5c00000' type:'internal memory mapped' supports: load start stop reset
+   3 - Name:'r5f@5d00000' type:'internal memory mapped' supports: load start stop reset
+   4 - Name:'r5f@5e00000' type:'internal memory mapped' supports: load start stop reset
+   5 - Name:'r5f@5f00000' type:'internal memory mapped' supports: load start stop reset
+   6 - Name:'dsp@4d80800000' type:'internal memory mapped' supports: load start stop reset
+   7 - Name:'dsp@4d81800000' type:'internal memory mapped' supports: load start stop reset
+   8 - Name:'dsp@64800000' type:'internal memory mapped' supports: load start stop reset
 
-.. code-block:: console
 
-  => sf probe
-  => tftp ${loadaddr} tiboot3.bin
-  => sf update $loadaddr 0x0 $filesize
-  => tftp ${loadaddr} tispl.bin
-  => sf update $loadaddr 0x80000 $filesize
-  => tftp ${loadaddr} u-boot.img
-  => sf update $loadaddr 0x280000 $filesize
-  => tftp ${loadaddr} sysfw.itb
-  => sf update $loadaddr 0x6C0000 $filesize
+Loading
+^^^^^^^^
 
-**Bootmode Switch Settings**
+Once Initialized, remotecores can be loaded with a relevant image. Make sure
+image is loaded only after initializing the core.
 
-After writing the images, change the bootmode switches on the EVM to the
-following in order to boot from OSPI flash:
+::
 
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| Switch No. | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| SW3        | ON  | OFF | OFF | OFF | OFF | OFF | OFF | ON  | OFF | OFF |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| SW2        | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
+    => load mmc 1:2 0x90000000 /lib/firmware/j7-main-r5f0_0-fw
+    2536540 bytes read in 112 ms (21.6 MiB/s)
+    => rproc load 2 0x90000000 0x${filesize}
+    Load Remote Processor 2 with data@addr=0x90000000 2536540 bytes: Success!
 
-**Flash Layout for OSPI**
 
-.. code-block:: console
+Starting
+^^^^^^^^^
 
-         0x0 +----------------------------+
-             |     ospi.tiboot3(512K)     |
-             |                            |
-     0x80000 +----------------------------+
-             |     ospi.tispl(2M)         |
-             |                            |
-    0x280000 +----------------------------+
-             |     ospi.u-boot(4M)        |
-             |                            |
-    0x680000 +----------------------------+
-             |     ospi.env(128K)         |
-             |                            |
-    0x6A0000 +----------------------------+
-             |   ospi.env.backup (128K)   |
-             |                            |
-    0x6C0000 +----------------------------+
-             |      ospi.sysfw(1M)        |
-             |                            |
-    0x7C0000 +----------------------------+
-             |      padding (256k)        |
-    0x800000 +----------------------------+
-             |     ospi.rootfs(UBIFS)     |
-             |                            |
-             +----------------------------+
+Successfully loaded remotecore can be started using the following command.
 
-Kernel Image and DT are expected to be present in the /boot folder of UBIFS
-ospi.rootfs just like in SD card case. U-Boot looks for UBI volume named
-"rootfs" for rootfs.
-
-To boot kernel from OSPI, at the U-Boot prompt:
-
-.. code-block:: console
-
-  => setenv boot ubi
-  => boot
-
-
-.. rubric:: eMMC
-
-ROM supports booting from eMMC from boot0 partition offset 0x0
-
-**Flashing Images to eMMC**
+::
 
-The following commands can be used to download tiboot3.bin, tispl.bin and
-u-boot.img from an SD card and write them to the eMMC boot0 partition at
-respective addresses.
+    => rproc start 2
 
-.. code-block:: console
-
-  => mmc dev 0 1
-  => fatload mmc 1 ${loadaddr} tiboot3.bin
-  => mmc write ${loadaddr} 0x0 0x400
-  => fatload mmc 1 ${loadaddr} tispl.bin
-  => mmc write ${loadaddr} 0x400 0x1000
-  => fatload mmc 1 ${loadaddr} u-boot.img
-  => mmc write ${loadaddr} 0x1400 0x2000
-  => fatload mmc 1 ${loadaddr} sysfw.itb
-  => mmc write ${loadaddr} 0x3600 0x800
-
-To give the ROM access to the boot partition, the following commands must be
-used for the first time:
-
-.. code-block:: console
-
-  => mmc partconf 0 1 1 1
-  => mmc bootbus 0 2 0 0
-
-**Bootmode Switch Settings**
-
-After writing the images, change the bootmode switches on the evm to the following:
-
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| Switch No. | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| SW3        | ON  | OFF | ON  | ON  | OFF | OFF | OFF | OFF | OFF | ON  |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-| SW2        | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF | OFF |
-+------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
-
-**Booting Kernel from eMMC**
-
-To create a software partition for the rootfs, the following command can be
-used:
-
-.. code-block:: console
-
-  => gpt write mmc 0 ${partitions}
-
-**eMMC Layout**
-
-.. code-block:: console
-
-               boot0 partition (8 MB)                        user partition
-       0x0+----------------------------------+      0x0+-------------------------+
-          |     tiboot3.bin (512 KB)         |         |                         |
-     0x400+----------------------------------+         |                         |
-          |       tispl.bin (2 MB)           |         |                         |
-    0x1400+----------------------------------+         |        rootfs           |
-          |       u-boot.img (4 MB)          |         |                         |
-    0x3400+----------------------------------+         |                         |
-          |      environment (128 KB)        |         |                         |
-    0x3500+----------------------------------+         |                         |
-          |   backup environment (128 KB)    |         |                         |
-    0x3600+----------------------------------+         |                         |
-          |          sysfw (1 MB)            |         |                         |
-    0x3E00+----------------------------------+         +-------------------------+
-
-Kernel image and DT are expected to be present in the /boot folder of rootfs.
-To boot kernel from eMMC, use the following commands:
-
-.. code-block:: console
-
-  => setenv mmcdev 0
-  => setenv bootpart 0
-  => boot
-
-.. rubric:: UART
-
-ROM supports booting from MCU_UART0 via X-Modem protocol. The entire UART-based
-boot process up to U-Boot (proper) prompt goes through different stages and uses
-different UART peripherals as follows:
-
-+-----------+---------------+-------------+------------+
-|   WHO     | Loading WHAT  |  HW Module  |  Protocol  |
-+-----------+---------------+-------------+------------+
-| Boot ROM  |  tiboot3.bin  |  MCU_UART0  |  X-Modem   |
-+-----------+---------------+-------------+------------+
-| R5 SPL    |  sysfw.itb    |  MCU_UART0  |  Y-Modem   |
-+-----------+---------------+-------------+------------+
-| R5 SPL    |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
-+-----------+---------------+-------------+------------+
-| A53 SPL   |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
-+-----------+---------------+-------------+------------+
-
-In addition to X/Y-Modem related protocol timeouts the DMSC
-watchdog timeout of 3min (typ.) needs to be observed until System Firmware
-is fully loaded (from sysfw.itb) and started.
-
-**Flashing Images to UART**
-
-UART_BOOT_MAIN_UART and UART_BOOT_MCU_UART should be set to serial ports such as /dev/ttyUSBx.
-
-.. code-block:: console
-
-    echo "Downloading tiboot3.bin via X-Modem to $UART_BOOT_MCU_UART..."
-    sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
-    echo "Downloading $SYSFW_ITB via Y-Modem to $UART_BOOT_MCU_UART..."
-    sb --ymodem $SYSFW_ITB > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
-    echo "Downloading tispl.bin via Y-Modem to $UART_BOOT_MAIN_UART..."
-    sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
-    echo "Downloading u-boot.img via Y-Modem to $UART_BOOT_MAIN_UART..."
-    sb --xmodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+Stop
+^^^^^
+
+A running remotecore can be stopped using the following command.
+
+::
+
+    => rproc stop 2
+
+Make sure all the commands are run in the above given sequence. Currently IPC
+is not supported in U-boot.
+
+|

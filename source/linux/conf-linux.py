@@ -4,7 +4,7 @@
 master_doc = 'linux/index'
 
 # General information about the project.
-project = u'Processor SDK Linux'
+project = u'Processor SDK Linux Automotive'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -12,7 +12,7 @@ exclude_patterns = ['rtos', 'android', 'swtoolsdev']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = 'Processor SDK Linux Documentation'
+html_title = 'Processor SDK Linux Automotive Documentation'
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ProcessorSDKLinuxdoc'
@@ -21,7 +21,7 @@ htmlhelp_basename = 'ProcessorSDKLinuxdoc'
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'ProcessorSDKLinux.tex', u'Processor SDK Linux Documentation',
+  (master_doc, 'ProcessorSDKLinux.tex', u'Processor SDK Linux Automotive Documentation',
    u'Texas Instruments Incorporated', u'manual'),
 ]
 
@@ -30,7 +30,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ProcessorSDKLinux', u'Processor SDK Linux Documentation',
+    (master_doc, 'ProcessorSDKLinux', u'Processor SDK Linux Automotive Documentation',
      ['Texas Instruments Incorporated'], 1)
 ]
 
@@ -44,7 +44,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'ProcessorSDKLinux', u'Processor SDK Linux Documentation',
+  (master_doc, 'ProcessorSDKLinux', u'Processor SDK Linux Automotive Documentation',
    'Texas Instruments Incorporated', 'ProcessorSDKLinux', 'One line description of project.',
    'Miscellaneous'),
 ]

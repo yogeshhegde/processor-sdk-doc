@@ -4,7 +4,7 @@ Please refer to `Graphics & Display <../../Foundational_Components_Graphics.html
 
 How to Develop accelerated Multimedia using GStreamer on AM57xx
 ===============================================================
-Please refer to `Multimedia <../../Foundational_Components_Multimedia.html>`__ chapter for details.
+Please refer to `Multimedia <../../Foundational_Components_Multimedia_IVAHD.html>`__ chapter for details.
 
 Preventing BeagleBone board reset on JTAG Connect
 =================================================

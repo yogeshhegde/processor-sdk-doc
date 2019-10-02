@@ -11,7 +11,7 @@ drivers (omapdss and omapdrm) and various TI boards that use DSS. The
 technical reference manual (TRM) for the SoC in question, and the board
 documentation give more detailed descriptions.
 
-This page applies to TI's v4.9 kernel, but most of it is also valid for
+This page applies to TI's v4.19 kernel, but most of it is also valid for
 mainline and for older kernels. Some features may be missing from
 mainline.
 
@@ -23,11 +23,11 @@ set of features. All the DSS IP versions are supported by the same
 driver.
 
 This page applies to the following TI SoCs or SoC families: OMAP2,
-OMAP3, OMAP4, OMAP5, AM5, AM4, DRA7, K2G.
+OMAP3, OMAP4, OMAP5, AM5, AM4, DRA7.
 
-| 
+|
 
-| 
+|
 
 .. rubric:: Hardware Architecture
    :name: hardware-architecture
@@ -116,7 +116,7 @@ encoder.
 The number of overlay managers within DSS varies with the DSS IP version
 used in the SoC.
 
-| 
+|
 
 .. rubric:: Display Encoders (or interfaces)
    :name: display-encoders-or-interfaces
@@ -215,7 +215,7 @@ version used in the SoC.
 -  3 MIPI DPI outputs
 -  1 HDMI output
 
-| 
+|
 
 .. rubric:: Driver Architecture
    :name: driver-architecture
@@ -245,7 +245,7 @@ The mapping of DRM entities to DSS hardware is roughly as follows:
     encoder   -> DSS output, encoder, display
     connector -> DSS output, encoder, display
 
-| 
+|
 
 .. rubric:: Driver Features
    :name: driver-features
@@ -281,7 +281,7 @@ DRM CRTC Features:
 -  Transparency color keying
 -  Color Phase Rotation
 
-| 
+|
 
 .. rubric:: Unsupported Features/Limitations
    :name: unsupported-featureslimitations
@@ -332,11 +332,10 @@ enable omapdrm (CONFIG\_DRM\_OMAP).
 
    -  From the submenu, select the DSS outputs you need
 
--  Enable TI DSS6 support (CONFIG\_TI\_DSS6) for K2G SoC
 -  Enable the encoders and panels under OMAPDRM External Display Device
    Drivers
 
-| 
+|
 
 .. rubric:: Driver Usage
    :name: driver-usage-dss
@@ -431,9 +430,9 @@ standard, but some are omapdrm specific.
 +--------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | CTM                | crtc     | OMAP4+: Color Transformation Matrix blob property. Implemented trough Color phase rotation matrix in DSS IP. Applied after gamma table. Not available on OMAP4+ TV output.        |
 +--------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| GAMMA\_LUT         | crtc     | OMAP4+ & DSS6: Blob property to set the gamma lookup table (LUT) mapping pixel data sent to the connector.                                                                        |
+| GAMMA\_LUT         | crtc     | OMAP4+: Blob property to set the gamma lookup table (LUT) mapping pixel data sent to the connector.                                                                        |
 +--------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| GAMMA\_LUT\_SIZE   | crtc     | OMAP4+ & DSS6: Number of elements in gammma lookup table.                                                                                                                         |
+| GAMMA\_LUT\_SIZE   | crtc     | OMAP4+: Number of elements in gammma lookup table.                                                                                                                         |
 +--------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rubric:: Buffers
@@ -495,7 +494,7 @@ then:
     omapdrm.displays=1 - only the HDMI is enabled
     omapdrm.displays=-1 - disable all displays
 
-| 
+|
 
 .. rubric:: TI Board Specific Information
    :name: ti-board-specific-information

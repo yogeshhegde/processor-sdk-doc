@@ -18,6 +18,7 @@ Replacement Variables
 '__SDK_FULL_NAME__'              : 'Processor SDK RTOS Automotive'
 '__SDK_SHORT_NAME__'             : 'PSDKRA'
 '__SDK_INSTALL_FILE__'           : 'TODO - INSTALLATION FILE GOES HERE'
+'__SDK_INSTALL_DIR__'            : 'TODO - INSTALLATION DIRECTORY GOES HERE'
 '__SDK_DOWNLOAD_URL__'           : 'TODO - DOWNLOAD LINK OR TEXT MENTION OF DOWNLOAD PAGE (IF PRIVATE) GOES HERE'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
@@ -31,4 +32,5 @@ Configuration Values
 'CONFIG_sdk'              : 'PSDKRA'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'no'
+'CONFIG_gpu_ip'           : 'Rogue_8XE'
 

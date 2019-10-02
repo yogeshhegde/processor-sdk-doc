@@ -16,6 +16,19 @@ may need to read a GPIO as in input to determine if a card is present.
 The H/W GPIO controllers available will vary by SoC and system
 configuration.
 
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    .. rubric:: AM65/J721E specifics
+       :name: am65/j721e specifics
+
+    AM65/J721E SoCs host DAVINCI GPIO IP.
+    Current software supports banked GPIO interrupt only. 16 GPIOs form a bank.
+    Each bank can produce an interrupt; this is done to save the number of interrupt
+    lines reaching the CPU.
+    CONFIG_GPIO_DAVINCI=y should be part of the defconfig.
+    Driver source code: drivers/gpio/gpio-davinci.c
+
+
 .. rubric:: Overview
    :name: overview-gpio-driver
 
@@ -32,10 +45,10 @@ other drivers that may need to access pins as either input/outputs or
 interrupts. More information about this driver and GPIO usage in Linux
 can be found in the kernel documentation:
 
--  `GPIO Interface
-   Documentation <http://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/linux-3.14.y/Documentation/gpio/gpio.txt>`__
--  `GPIO Driver
-   Documentation <http://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/linux-3.14.y/Documentation/gpio/driver.txt>`__
+-  GPIO Interface:
+   Under Kernel directory Documentation/gpio/gpio.txt
+-  GPIO Driver:
+   Under Kernel directory Documentation/gpio/driver.txt
 
 .. rubric:: sysfs
    :name: sysfs
@@ -44,8 +57,8 @@ The sysfs interface is for GPIO is located in the kernel at
 /sys/class/gpio. More information about this interface can also be found
 in the kernel sources:
 
--  `GPIO sysfs
-   Documentation <http://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/linux-3.14.y/Documentation/gpio/sysfs.txt>`__
+-  GPIO sysfs:
+   Under Kernel directory Documentation/gpio/sysfs.txt
 
 For controlling LEDs and Buttons, the kernel has standard drivers,
 "leds-gpio" and "gpio\_keys", respectively, that should be used instead
@@ -57,12 +70,12 @@ of GPIO directly.
 The GPIO Driver can also be easily leveraged by other drivers to
 "consume" a GPIO.
 
--  `GPIO Consumer
-   Documentation <http://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/linux-3.14.y/Documentation/gpio/consumer.txt>`__
+-  GPIO Consumer:
+   Under Kernel directory Documentation/gpio/consumer.txt
 
 For an example of a driver using a GPIO pin, examine this entry in a dts
 file for how the MMC/SD interface could use a GPIO as a card detect pin
-`here <http://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/linux-3.14.y/arch/arm/boot/dts/am335x-bone-common.dtsi#line293>`__.
+Under Kernel directory arch/arm/boot/dts/am335x-bone-common.dtsi line 401
 
 | 
 
@@ -74,48 +87,49 @@ file for how the MMC/SD interface could use a GPIO as a card detect pin
 
 |
 
-.. rubric:: Power Management
-   :name: power-management
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
-| GPIO pins to be used to wake the system from low-power sleep states
-  must be configured as a wake source in the device tree. Verify
-  low-power wake capability in the device Technical Reference Manual.
-  Some devices maps specific wake capabilities to each GPIO bank.
+    .. rubric:: Power Management
+       :name: power-management
 
-| To configure a GPIO pin as a wake up source, setup a gpio-key instance
-  in the device tree. This will associate a GPIO pin with wake up
-  capability and an interrupt.
+    | GPIO pins to be used to wake the system from low-power sleep states
+      must be configured as a wake source in the device tree. Verify
+      low-power wake capability in the device Technical Reference Manual.
+      Some devices map specific wake capabilities to each GPIO bank.
 
-| For example, look at the ``gpio_keys: volume_keys@0`` node in the
-  device tree ``LINUX/arch/arm/boot/dts/am335x-evm.dts`` as a reference.
-  GPIO0\_31 is configured as a wake source below:
+    | To configure a GPIO pin as a wake up source, setup a gpio-key instance
+      in the device tree. This will associate a GPIO pin with wake up
+      capability and an interrupt.
 
-`` @am33xx_pinmux { ``
+    | For example, look at the ``gpio_keys: volume_keys@0`` node in the
+      device tree ``LINUX/arch/arm/boot/dts/am335x-evm.dts`` as a reference.
+      GPIO0\_31 is configured as a wake source below:
 
-::
+    `` @am33xx_pinmux { ``
 
-     pinctrl-names = "default";
-     pinctrl-0 = <&test_keys>;
-     ...
-     test_keys: test_keys {
-       0x74 (PIN_INPUT_PULLDOWN | MUX_MODE7);  /* gpmc_wpn.gpio0_31 */
-     };
-     ...
-     keys: test_keys@0 {
-       compatible = "gpio-keys";
-       #address-cells = <1>;
-       #size-cells = <0>;
-       autorepeat;
-       test@0 {
-         label = "J4-pin21";
-         linux,code = <155>;
-         gpios = <&gpio0 31 GPIO_ACTIVE_LOW>;
-         gpio-key,wakeup;
-       };
-     };
-     ...
+    ::
 
-};
+         pinctrl-names = "default";
+         pinctrl-0 = <&test_keys>;
+         ...
+         test_keys: test_keys {
+           0x74 (PIN_INPUT_PULLDOWN | MUX_MODE7);  /* gpmc_wpn.gpio0_31 */
+         };
+         ...
+         keys: test_keys@0 {
+           compatible = "gpio-keys";
+           #address-cells = <1>;
+           #size-cells = <0>;
+           autorepeat;
+           test@0 {
+             label = "J4-pin21";
+             linux,code = <155>;
+             gpios = <&gpio0 31 GPIO_ACTIVE_LOW>;
+             gpio-key,wakeup;
+           };
+          };
+         ...
 
-| 
+    };
 
+    |

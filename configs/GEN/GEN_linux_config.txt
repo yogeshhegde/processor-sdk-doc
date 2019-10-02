@@ -18,6 +18,7 @@ Replacement Variables
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux'
 '__SDK_SHORT_NAME__'             : 'PLSDK'
 '__SDK_INSTALL_FILE__'           : 'am57xx-evm-linux-sdk-arago-src-<version>.tar.xz'
+'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-[platformName]-evm-<version>'
 '__SDK_DOWNLOAD_URL__'           : '`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/latest/index_FDS.html>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '14.04 (64-bit), 16.04 (64-bit), 18.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '14.04, 16.04, or 18.04'
@@ -31,4 +32,5 @@ Configuration Values
 'CONFIG_sdk'              : 'PLSDK'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
+'CONFIG_gpu_ip'           : 'SGX'
 

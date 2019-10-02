@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_File_System_Optimization/Customization
+.. include:: ../../replacevars.rst.inc
 
 SDK File System Optimization/Customization
 ==========================================
@@ -6,32 +6,58 @@ SDK File System Optimization/Customization
 .. rubric:: Purpose
    :name: purpose
 
-The purpose of this article is to explain the file systems that are
-delivered as part of the Processor SDK Linux and how those file systems
-can be modified to customize them for your use case. The tools discussed
-in this article are installed by default in the Processor SDK Linux file
-system for your convenience.
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    The purpose of this article is to explain the file systems that are
+    delivered as part of the Processor SDK Linux and how those file systems
+    can be modified to customize them for your use case. The tools discussed
+    in this article are installed by default in the Processor SDK Linux file
+    system for your convenience.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    The purpose of this article is to explain the file system that is
+    delivered as part of the |__SDK_FULL_NAME__| and how this file system
+    can be modified to customize it for your use case. The tools discussed
+    in this article are installed by default in the |__SDK_FULL_NAME__| file
+    system for your convenience.
 
 | 
 
 .. rubric:: Pre-built File Systems
    :name: pre-built-file-systems
 
-The Processor SDK Linux ships with two default file systems. They are:
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-#. base-rootfs-<machine>.tar.gz - This file system is the simple file
-   system that forms the base of the SDK file system. It has some basic
-   utilities installed but is intended to be rather small and light
-   weight.
-#. tisdk-rootfs-<machine>.tar.gz - This file system is created by taking
-   the base file system and adding all the additional SDK components
-   such as 3D graphics, matrix, profiling tools, etc. It is a larger
-   file system but is meant to have most of the tools developers would
-   need when working with TI processors.
+    The Processor SDK Linux ships with two default file systems. They are:
 
-Both of these file systems contain the **opkg** package manager and can
-be used as a starting point for system optimization as discussed in the
-next sections.
+    #. base-rootfs-<machine>.tar.gz - This file system is the simple file
+       system that forms the base of the SDK file system. It has some basic
+       utilities installed but is intended to be rather small and light
+       weight.
+    #. tisdk-rootfs-<machine>.tar.gz - This file system is created by taking
+       the base file system and adding all the additional SDK components
+       such as 3D graphics, matrix, profiling tools, etc. It is a larger
+       file system but is meant to have most of the tools developers would
+       need when working with TI processors.
+
+    Both of these file systems contain the **opkg** package manager and can
+    be used as a starting point for system optimization as discussed in the
+    next sections.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    The |__SDK_FULL_NAME__| ships with a default file system:
+
+    #. tisdk-rootfs-image-<machine>.tar.gz - This file system is created by taking
+       a base file system and adding all the additional SDK components
+       such as 3D graphics, matrix, profiling tools, etc. It is somewhat larger than
+       a base file system, but is meant to have most of the tools developers would
+       need when working with TI processors.
+
+    This file system contains the **opkg** package manager and can
+    be used as a starting point for system optimization as discussed in the
+    next sections.
 
 | 
 
@@ -41,7 +67,7 @@ next sections.
 .. rubric:: opkg - list commands
    :name: opkg---list-commands
 
-**opkg** is the package manager used in the SDK file systems to install
+**opkg** is the package manager used in the SDK file system to install
 and remove packages. You can get a list of the full commands supported
 by **opkg** by running the following command on the target device:
 

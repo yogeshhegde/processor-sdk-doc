@@ -18,15 +18,25 @@ common processor board.
 System on Module is a small board which has the SoC specific socket and
 other important platform specific hardware like PMIC, DDR memory, etc
 
-There are 2 variants
+There are 2 variants. Following are the images of EVMs with different versions
+of SoM:
 
 1. Alpha board
 
-.. Image:: ../../../images/K3-J7ES-ALPHA-SOM.png
+.. note::
+    Alpha EVMs have "Interim PMIC" sticker on the SoM board.
+
+.. Image:: ../../../images/J721E_Alpha_Board_1.jpg
+
+.. Image:: ../../../images/J721E_Alpha_Board_2.jpg
 
 2. Beta board
 
-.. Image:: ../../../images/K3-J7ES-BETA-SOM.png
+.. note::
+    Beta EVMs don't have a "Interim PMIC" sticker on the SoM board.
+
+.. Image:: ../../../images/J721E_Beta_Board.jpg
+
 
 Contents of the board
 

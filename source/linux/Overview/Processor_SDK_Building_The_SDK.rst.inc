@@ -144,6 +144,9 @@ Build Steps
         cd yocto-build
         ./oe-layertool-setup.sh -f configs/psdkla/psdkla-<version>.txt
         cd build
+	echo "INHERIT += \"own-mirrors\"" >> conf/local.conf
+	echo "SOURCE_MIRROR_URL = \"http://software-dl.ti.com/processor-sdk-mirror/sources/\"" >> conf/local.conf
+	echo "ARAGO_BRAND  = \"psdkla\"" >> conf/local.conf
         . conf/setenv
         TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=j7-evm bitbake -k tisdk-rootfs-image
 
@@ -261,21 +264,21 @@ The "Build Output" is given relative to the
     | k2g-evm      | K2G EVM                                                                               |
     +--------------+---------------------------------------------------------------------------------------+
 
-Using the snapshot of the source packages in Processor SDK release
-------------------------------------------------------------------
-
-Using the snapshot of the arago source packages can avoid fetch errors
-during the build when external URLs become unavailable. To use the
-snapshot of sources distributed with a given Processor SDK release, you
-must download a script from the SDK download page and then execute it on
-your host to fetch all the packages from TI servers. For example, see
-|__SDK_INSTALL_FILE__| in |__SDK_DOWNLOAD_URL__|.
-
-Once this package is downloaded, there are just a few extra steps in the
-build process to fetch all the corresponding packages. The extra steps
-are shown in red below:
-
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    .. rubric:: Using source package snapshot
+       :name: Using source package snapshot
+
+    Using the snapshot of the arago source packages can avoid fetch errors
+    during the build when external URLs become unavailable. To use the
+    snapshot of sources distributed with a given Processor SDK release, you
+    must download a script from the SDK download page and then execute it on
+    your host to fetch all the packages from TI servers. For example, see
+    |__SDK_INSTALL_FILE__| in |__SDK_DOWNLOAD_URL__|.
+    
+    Once this package is downloaded, there are just a few extra steps in the
+    build process to fetch all the corresponding packages. The extra steps
+    are shown in red below:
 
     ::
 
@@ -293,23 +296,6 @@ are shown in red below:
         $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
         $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
         $ MACHINE=<target-board> bitbake arago-core-tisdk-image
-
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
-
-    ::
-
-        cd yocto-build
-        ./oe-layertool-setup.sh -f configs/processor-sdk/psdkla-<version>.txt
-        mkdir downloads
-        cd downloads
-        # Assuming src file downloaded to $HOME/Downloads
-        tar xvf $HOME/Downloads/<target-board>-linux-sdk-arago-src-##.##.##.##.tar.xz
-        <target-board>-linux-sdk-arago-src-##.##.##.##/get_build_sources.sh <target-board>-linux-sdk-arago-src-##.##.##.##/source_pkg_list.txt
-        cd ..
-        cd build
-        . conf/setenv
-        TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=j7-evm bitbake -k tisdk-rootfs-image
-
 
 .. _building-the-sdk-recipes:
 

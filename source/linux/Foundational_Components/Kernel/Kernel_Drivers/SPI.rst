@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/Linux_Core_SPI_User%27s_Guide
+.. include:: ../../../replacevars.rst.inc
 
 SPI
 ---------------------------------
@@ -38,20 +38,12 @@ SPI
 .. rubric:: Features Not Supported
    :name: features-not-supported
 
-| Below contains a list of features not supported by the Linux driver.
-| Note this isn't meant to be an exhaustive list and only takes into
-  account features the SPI peripheral in the SoC is capable of but is
-  currently not supported in the Linux driver.
+Below contains a list of features not supported by the Linux driver.
+Note this isn't meant to be an exhaustive list and only takes into
+account features the SPI peripheral in the SoC is capable of but is
+currently not supported in the Linux driver.
 
-.. rubric:: SoCs using McSPI driver
-   :name: socs-using-mcspi-driver
-
-SPI slave mode isn't supported
-
-.. rubric:: SoCs using Davinci Driver
-   :name: socs-using-davinci-driver
-
-SPI slave mode isn't supported
+- SPI slave mode isn't supported
 
 .. rubric:: Kernel Configuration
    :name: kernel-configuration
@@ -61,7 +53,7 @@ The specific peripheral driver to enable depends on the SoC being used.
 .. rubric:: Enabling McSPI Driver
    :name: enabling-mcspi-driver
 
-::
+.. code-block:: text
 
     Device Drivers  --->
        [*] SPI support
@@ -70,7 +62,7 @@ The specific peripheral driver to enable depends on the SoC being used.
 .. rubric:: Enabling DaVinci Driver
    :name: enabling-davinci-driver
 
-::
+.. code-block:: text
 
     Device Drivers  --->
        [*] SPI support
@@ -87,6 +79,10 @@ chips that are located on TI's evms.
 
 .. rubric:: Flash Storage
    :name: flash-storage
+
+.. note::
+    This section is not to be confused with flash storage through
+    the QSPI/OSPI modules.
 
 .. rubric:: Boards with SPI Flash
    :name: boards-with-spi-flash
@@ -106,7 +102,7 @@ chips that are located on TI's evms.
 .. rubric:: Kernel Configuration
    :name: kernel-configuration-1
 
-::
+.. code-block:: text
 
     Device Drivers  --->
        <*> Memory Technology Device (MTD) support  ---> 
@@ -116,22 +112,20 @@ chips that are located on TI's evms.
 .. rubric:: Reading/Writing to Flash
    :name: readingwriting-to-flash
 
-.. rubric:: Determine SPI NOR Partition MTD Identifier
-   :name: determine-spi-nor-partition-mtd-identifier
+**Determine SPI NOR Partition MTD Identifier**
 
 Within the kernel figuring out the mtd device number that is for a
 particular SPI NOR partition is simple. A user simply needs to view the
 list of mtd devices along with its name. Below command will provide this
 information:
 
-::
+.. code-block:: text
 
     cat /proc/mtd
 
-An example of this output performed on the AM571x IDK EVM can be seen
-below.
+An example of this output performed on the AM571x IDK EVM can be seen below.
 
-::
+.. code-block:: text
 
     dev:    size   erasesize  name
     mtd0: 00040000 00010000 "QSPI.SPL"
@@ -145,24 +139,26 @@ below.
 Note the names of these partitions, their sizes (in hex) and offsets (in
 hex) are determined within the specific board's device tree file.
 
-| **Erasing**
-| Erasing a NOR partition can be performed by using the below command:
+**Erasing**
 
-::
+Erasing a NOR partition can be performed by using the below command:
+
+.. code-block:: text
 
     flash_erase /dev/mtdX 0 0
 
 Where X is the partition number.
 
-| **Reading/Writing**
-| Use the MTD interface provided for SPI flash on the EVM to validate
-  the SPI driver interface.
-| The below step copies 8KiB from /dev/mtd2 partition (u-boot env) to
-  /dev/mtd4 partition and reads
-| the 8KiB image from /dev/mtd4 to a file and checks the md5sum. The
-  md5sum of test.img and test1.img should be same.
+**Reading/Writing**
 
-::
+Use the MTD interface provided for SPI flash on the EVM to validate
+the SPI driver interface.
+
+The below step copies 8KiB from /dev/mtd2 partition (u-boot env) to
+/dev/mtd4 partition and reads the 8KiB image from /dev/mtd4 to a file
+and checks the md5sum. The md5sum of test.img and test1.img should be same.
+
+.. code-block:: text
 
     cd /tmp
     dd if=/dev/mtd2 of=test.img bs=8k count=1
@@ -188,7 +184,7 @@ programming languages that can communicate with kernel ioctls.
 .. rubric:: Kernel Configuration
    :name: kernel-configuration-2
 
-::
+.. code-block:: text
 
     Device Drivers  --->
        [*] SPI support
@@ -201,7 +197,7 @@ Below is an example of the device tree settings a user would use to
 enable the spidev driver. Like most drivers for a peripheral, the spidev
 driver is listed as a subnode of the main SPI peripheral driver.
 
-::
+.. code-block:: text
 
     &spi1 {
             status = "okay";

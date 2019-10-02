@@ -97,7 +97,7 @@ suggestions <Feedback>`.
     .. _OpenCL: http://downloads.ti.com/mctools/esd/docs/opencl/index.html
     .. _OpenCV: Foundational_Components_OpenCV.html
     .. _Graphics & Display: Foundational_Components_Graphics.html
-    .. _Multimedia: Foundational_Components_Multimedia.html
+    .. _Multimedia: Foundational_Components_Multimedia_IVAHD.html
     .. _Examples, Demos: Examples_and_Demos.html
     .. _PRU-ICSS / PRU_ICSSG: Foundational_Components_PRU-ICSS_PRU_ICSSG.html
     .. _Virtualization: Foundational_Components_Virtualization.html

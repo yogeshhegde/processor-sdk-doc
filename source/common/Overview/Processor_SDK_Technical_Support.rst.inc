@@ -21,11 +21,18 @@ not, a quick post will likely provide you the answers you need.
 Open Source Software Support Disclaimer
 =======================================
 
-Processor SDK Linux integrates various free and open source software (FOSS) to demonstrate the hardware capabilities of Sitara devices. The FOSS offers many advantages to the customers such as flexibility, interoperability, robustness, reduced development time and support from the respective FOSS community.
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-TI uses Yocto Project to integrate various software components and to build Processor SDK Linux. Yocto Project has two releases per year in April and October. TI’s Long-term Support (LTS) build for next year is based on current year’s October release of the Yocto Project. During a given year, TI’s LTS version migration only happens once per year and it occurs towards the end of the second quarter. The LTS migration usually signifies newer version of Kernel, U-boot, Toolchain, Yocto Project and etc. For more information on the current release, please refer to the `Release Notes <Release_Specific_Release_Notes.html>`__. Therefore, the various open source components included in the Processor SDK Linux are only updated once per year.
+    Processor SDK Linux integrates various free and open source software (FOSS) to demonstrate the hardware capabilities of Sitara devices. The FOSS offers many advantages to the customers such as flexibility, interoperability, robustness, reduced development time and support from the respective FOSS community.
 
-While TI integrates the FOSS in Processor SDK Linux, TI does not own, maintain and support the entire FOSS. If users have educational queries, feature enhancement requests or discover a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. Please keep in mind that we are only showing a few of the components below but the same concept applies to all of the FOSS integrated in the Processor SDK Linux. 
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    Processor SDK Linux Automotive integrates various free and open source software (FOSS) to demonstrate the hardware capabilities of Jacinto devices. The FOSS offers many advantages to the customers such as flexibility, interoperability, robustness, reduced development time and support from the respective FOSS community.
+
+
+TI uses Yocto Project to integrate various software components and to build |__SDK_FULL_NAME__|. Yocto Project has two releases per year in April and October. TI’s Long-term Support (LTS) build for next year is based on current year’s October release of the Yocto Project. During a given year, TI’s LTS version migration only happens once per year and it occurs towards the end of the second quarter. The LTS migration usually signifies newer version of Kernel, U-boot, Toolchain, Yocto Project and etc. For more information on the current release, please refer to the Release Notes in the `Release Specific section  <Release_Specific.html>`__. Therefore, the various open source components included in the |__SDK_FULL_NAME__| are only updated once per year.
+
+While TI integrates the FOSS in |__SDK_FULL_NAME__|, TI does not own, maintain and support the entire FOSS. If users have educational queries, feature enhancement requests or discover a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. Please keep in mind that we are only showing a few of the components below but the same concept applies to all of the FOSS integrated in the |__SDK_FULL_NAME__|. 
 
 **Gstreamer Framework**
 
@@ -76,10 +83,15 @@ Example applications:
 - Documentation, tutorials and examples of how to use OpenCV 3.1: https://docs.opencv.org/3.1.0/#gsc.tab=0
 - OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/platforms/opencl.html
 
-How do I integrate a different version of open source software than what is packaged in Processor SDK Linux?
+**Hypervisor**
+
+- Jailhouse: https://github.com/siemens/jailhouse
+- IVshmem based UIO driver: https://github.com/henning-schild-work/ivshmem-guest-code
+
+How do I integrate a different version of open source software than what is packaged in |__SDK_FULL_NAME__|?
 =============================================================================================================
 
-If users have a need to move to a different component version (older or newer) because of an existing bug, feature limitations or other reasons, TI will not support the version migration. As a reference, TI provides the list of a few recipes that were updated while integrating the components to the Processor SDK Linux.
+If users have a need to move to a different component version (older or newer) because of an existing bug, feature limitations or other reasons, TI will not support the version migration. As a reference, TI provides the list of a few recipes that were updated while integrating the components to the |__SDK_FULL_NAME__|.
 
 ::
 
@@ -169,7 +181,7 @@ If users have a need to move to a different component version (older or newer) b
 			│		└──meta-arago-distro/recipes-core/packagegroups/packagegroup-arago-tisdk-multimedia-sdk-target.bb: package
 
 
-If users wishes to learn more about Yocto project or Arago build, please refer to the below video link and the documentation on `Building Processor SDK Linux through Yocto <Overview_Building_the_SDK.html>`__
+If users wish to learn more about Yocto project or Arago build, please refer to the below video link and the documentation on `Building Processor SDK Linux through Yocto <Overview_Building_the_SDK.html>`__.
     
 - https://training.ti.com/customizing-yocto-for-production-introduction
 

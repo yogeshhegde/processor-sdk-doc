@@ -1,22 +1,23 @@
+.. include:: ../../../../replacevars.rst.inc
 
-AM65x CPSW2g
+|__PART_FAMILY_NAME__|  CPSW2g
 ---------------------------------
 
 Introduction
 """""""""""""
 
-The TI AM654 SoC Gigabit Ethernet Switch subsystem (CPSW NUSS) has two ports and
+The TI |__PART_FAMILY_DEVICE_NAMES__| SoC Gigabit Ethernet Switch subsystem (CPSW NUSS) has two ports and
 provides Ethernet packet communication for the device. It supports MII interfaces
 the Reduced Gigabit Media Independent Interface (RGMII), Reduced Media Independent
 Interface (RMII), and the Management Data Input/Output (MDIO) interface for
 physical layer device (PHY) management.
 
-The TI AM654 SoC has integrated two-port Gigabit Ethernet Switch subsystem
+The TI |__PART_FAMILY_DEVICE_NAMES__| SoC has integrated two-port Gigabit Ethernet Switch subsystem
 into device MCU domain named MCU_CPSW0 and has only one external Ethernet port (port 1)
 with selectable RGMII and RMII interfaces and an internal Communications
 Port Programming Interface (CPPI) port (Host port 0). Host Port 0 CPPI Packet
 Streaming Interface interface supports 8 TX channels and one RX channel
-operating by TI AM654 NAVSS Unified DMA Peripheral Root Complex (UDMA-P) controller.
+operating by TI |__PART_FAMILY_DEVICE_NAMES__| NAVSS Unified DMA Peripheral Root Complex (UDMA-P) controller.
 
 The driver follows the standard Linux network interface architecture and
 supports the following features:
@@ -35,7 +36,7 @@ supports the following features:
 .. rubric:: **Driver Configuration**
    :name: k3-driver-configuration-cpsw
 
-The TI Processor SDK has AM65x MCU CPSW2g driver enabled by default.
+The TI Processor SDK has |__PART_FAMILY_NAME__|  MCU CPSW2g driver enabled by default.
 
 To enable/disable Networking support manually, start the *Linux Kernel Configuration*
 tool:
@@ -781,7 +782,7 @@ Then execute::
 .. rubric:: PPS Pulse Per Second support
    :name: k3-cpts-pps-support
 
-By default, PPS support for AM65x is implemented and enabled in TI SDK by wiring
+By default, PPS support for |__PART_FAMILY_DEVICE_NAMES__| is implemented and enabled in TI SDK by wiring
 GENF1 output to HW3_TS_PUSH_EN input::
 
        k3-am654-base-board.dts
@@ -821,9 +822,9 @@ Once enabled, PPS can be tested using testptp and ppstest tools::
 .. rubric:: TI AM65x switch-config tool
    :name: k3-am65x-switch-config
 
-The TI Processor SDK includes precompiled correct version of AM65x switch-config tool.
+The TI Processor SDK includes precompiled correct version of |__PART_FAMILY_NAME__| switch-config tool.
 
-The TI AM65x switch-config tool sources for AM65x SoC can be found at::
+The TI |__PART_FAMILY_NAME__| switch-config tool sources for |__PART_FAMILY_DEVICE_NAMES__|  SoC can be found at::
 
        git@git.ti.com:switch-config/switch-config.git
 

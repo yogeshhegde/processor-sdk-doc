@@ -187,7 +187,7 @@ then remoteproc8 is the node for the r5f core. ( Note the remoteprocx can change
 
 
 More info related to loading firmware to the various cores can be found
-`here <Foundational_Components_Multimedia.html#firmware-loading-and-unloading>`__.
+`here <Foundational_Components_Multimedia_IVAHD.html#firmware-loading-and-unloading>`__.
 
 Finally, we can run the example on R5 core::
 

@@ -91,9 +91,9 @@ How to change dtb files
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
     | No  |                         Name of file                         |                       Description                       |                   dependencies                    |
     +=====+==============================================================+=========================================================+===================================================+
-    | 1   | k3-j721e-common-proc-board.dtb                               | Base DTB for J721e EVM alpha version                    | N/A                                               |
+    | 1   | k3-j721e-common-proc-board.dtb                               | Base DTB for J721e EVM beta version                     | N/A                                               |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
-    | 2   | k3-j721e-proc-board-beta.dtb                                 | Base DTB for J721e EVM beta version                     | N/A                                               |
+    | 2   | k3-j721e-proc-board-tps65917.dtb                             | Base DTB for J721e EVM alpha version                    | N/A                                               |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
     | 3   | k3-j721e-common-proc-board-infotainment.dtbo                 | Overlay for IVI adapter card                            | IVI card needs to be connected                    |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
@@ -117,7 +117,9 @@ How to change dtb files
     application demos.
 
     Following table describes usage of uenv.txt and associated dependencies
-    for booting the **alpha** board in different scenarios.
+    for booting the board in different scenarios. Note that the u-boot supports
+    detecting the right version of the board (alpha/beta) and can load the required
+    base dtb file correctly. There is no need to specify the fdtfile in the uenv.txt.
 
     +-----------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
     |     Name of file      |                                Usage scenario                                 |                        Dependencies                        |
@@ -140,26 +142,3 @@ How to change dtb files
     | uenv.psdkra           | Use for running Processor SDK RTOS Automotive demos.                          | All the R5 and C6x firmware symlinks updated in filesystem |
     +-----------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
 
-    Following table describes usage of uenv.txt and associated dependencies
-    for booting the **beta** board in different scenarios.
-
-    +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
-    |        Name of file        |                                Usage scenario                                 |                        Dependencies                        |
-    +============================+===============================================================================+============================================================+
-    | uenv.txt.base.beta         | Use for booting the common processor board without support for daugter cards. |                                                            |
-    |                            | Even if you have daughter cards connected, you can boot using this,           |                                                            |
-    |                            | kernel will not use the extra device functionality.                           | N/A                                                        |
-    +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
-    | uenv.txt.jailhouse.beta    | Use for running hypervisor use cases.                                         | HDMI monitor connected via infotainment daughter card.     |
-    |                            |                                                                               | DP monitor connected to DISPLAY0 Display Port.             |
-    +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
-    | uenv.txt.cockpit_demo.beta | Use for running the cockpit demo.                                             | HDMI monitor connected via infotainment daughter card.     |
-    |                            |                                                                               | DP monitor connected to DISPLAY0 Display Port.             |
-    |                            |                                                                               | Display sharing firmware symlink in filesystem.            |
-    +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
-    | uenv.txt.gateway.beta      | Use for running gateway demos.                                                | Ethernet connected via GESI adapter card.                  |
-    |                            |                                                                               | CAN connected via GESI card                                |
-    |                            |                                                                               | Ethernet firmware symlink updated in filesystem.           |
-    +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
-    | uenv.psdkra.beta           | Use for running Processor SDK RTOS Automotive demos.                          | All the R5 and C6x firmware symlinks updated in filesystem |
-    +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+

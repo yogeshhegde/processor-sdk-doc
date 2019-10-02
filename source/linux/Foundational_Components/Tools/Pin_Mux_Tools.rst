@@ -35,10 +35,21 @@ it isn't guarunteed.
 .. rubric:: Software User's Guide
    :name: software-users-guide
 
-A quick overview of the TI PinMux Tool's UI and usage is available on
-the main `PinMux Tool
-Wiki <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool_v4>`__. The
-rest of this guide will focus on usage for the Sitara Processors.
+.. ifconfig:: CONFIG_part_family in ('General_family')
+
+    A quick overview of the TI PinMux Tool's UI and usage is available on
+    the main `PinMux Tool
+    Wiki <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool_v4>`__. The
+    rest of this guide will focus on usage for the Sitara Processors.
+
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    A quick overview of the TI PinMux Tool's UI and usage is available on
+    the main `PinMux Tool
+    Wiki <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool_v4>`__. The
+    rest of this guide will focus on usage for the Jacinto Processors.
+
 
 .. rubric:: Release Notes
    :name: release-notes
@@ -59,8 +70,17 @@ compatibility between PinMux Tool versions it isn't guarunteed.
 .. rubric:: IOSETs
    :name: iosets
 
-Timing restrictions make the concept of IOSETs an important subject for
-Sitara Processors. The device datasheet timing specifications define the
+.. ifconfig:: CONFIG_part_family in ('General_family')
+
+    Timing restrictions make the concept of IOSETs an important subject for
+    Sitara Processors. 
+    
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    Timing restrictions make the concept of IOSETs an important subject for
+    Jacinto Processors. 
+    
+The device datasheet timing specifications define the
 relationship between clock lines and data lines. A peripheral instance
 like McASP may be available on any number of pins but not all
 combinations of clock and data pins may be available. We only define
@@ -77,22 +97,24 @@ first before any schematic or board design is started.**
 Some peripherals may expose Use Cases to allow you to quickly eliminate
 the signals you won't need.
 
-.. rubric:: AM57xx and MCASP
-   :name: am57xx-and-mcasp
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
-On the AM57xx series of devices there is a concept of IODELAY. It is a
-module in the IO of the SoC that makes it possible to ensure valid IO
-timings on data interfaces with a clock signal. On some peripherals the
-use case selected can change the IODELAY setting for an IO. MCASP is an
-advanced audio interface that allows each AXR pin to be an audio source
-or audio sink, it also allows the SoC to be the clock master or slave,
-and these configuration can be independently mixed and matched. This
-makes it important to select the correct use case and pin configurations
-since the IODELAY configuration changes depending on the options chosen.
-See the "Virtual Mode Case Details" tables in the datasheet for more
-information.
+    .. rubric:: AM57xx and MCASP
+       :name: am57xx-and-mcasp
 
-|
+    On the AM57xx series of devices there is a concept of IODELAY. It is a
+    module in the IO of the SoC that makes it possible to ensure valid IO
+    timings on data interfaces with a clock signal. On some peripherals the
+    use case selected can change the IODELAY setting for an IO. MCASP is an
+    advanced audio interface that allows each AXR pin to be an audio source
+    or audio sink, it also allows the SoC to be the clock master or slave,
+    and these configuration can be independently mixed and matched. This
+    makes it important to select the correct use case and pin configurations
+    since the IODELAY configuration changes depending on the options chosen.
+    See the "Virtual Mode Case Details" tables in the datasheet for more
+    information.
+
+    |
 
 .. rubric:: Power Domain Checking
    :name: power-domain-checking
@@ -104,10 +126,12 @@ rails. With this information the PinMux Tool can raise a voltage
 conflict warning if a peripheral's IO requires a different voltage than
 is applied to the dual-voltage IO rail.
 
-Example: On the AM57xx pin B14 is supplied by VDDSHV3. If gpio5\_0 is
-used on this pin, the IO will be either 1.8V or 3.3V depending on the
-supply level applied to VDDSHV3. Damage may occur to the SoC pin if a
-3.3V signal was driven into gpio5\_0 while it is operating at 1.8V.
+.. ifconfig:: CONFIG_part_family in ('General_family')
+
+    Example: On the AM57xx pin B14 is supplied by VDDSHV3. If gpio5\_0 is
+    used on this pin, the IO will be either 1.8V or 3.3V depending on the
+    supply level applied to VDDSHV3. Damage may occur to the SoC pin if a
+    3.3V signal was driven into gpio5\_0 while it is operating at 1.8V.
 
 .. rubric:: Changing Pad Configuration Parameters
    :name: changing-pad-configuration-parameters
@@ -118,14 +142,16 @@ for internal resistor pull and a check box for enabling receive
 functionality. These configuration parameters are SoC specific and may
 vary.
 
-.. rubric:: K2Gxx
-   :name: k2gxx
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
-The pins on this device have a "buffer class" feature that lets you fine
-tune the output driver characteristics. For most I/Os the options are
-"Class B - Up to 100MHz" or "Class D - Up to 200MHz". The PinMux Tool
-gives you the option to select the buffer class for pins that support
-this feature (differential or SerDes I/Os for example don't support it).
+    .. rubric:: K2Gxx
+       :name: k2gxx
+
+    The pins on this device have a "buffer class" feature that lets you fine
+    tune the output driver characteristics. For most I/Os, the options are
+    "Class B - Up to 100MHz" or "Class D - Up to 200MHz". The PinMux Tool
+    gives you the option to select the buffer class for pins that support
+    this feature (differential or SerDes I/Os, for example, don't support it).
 
 .. rubric:: RX Enable / Input Enable
    :name: rx-enable-input-enable
@@ -150,39 +176,43 @@ Support <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Board_Suppor
 page for more details. A partial devicetree format is generated for
 Processor SDK Linux and that should be manually patched into the
 reference devicetree file included with the `Linux
-kernel <http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide>`__.
+kernel  <../../Foundational_Components_Kernel_Users_Guide.html>`__.
 
 Some devices will have a generic format that is intended for use with
-`U-boot <http://processors.wiki.ti.com/index.php/Linux_Core_U-Boot_User's_Guide>`__.
+`U-Boot <../../Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__.
 These devices require pin multiplexing to be done once, in isolation,
 and while executing from SRAM. U-boot takes care of this by applying pin
 configurations while the MLO file (secondary bootloader) executes from
 OCMC RAM. This guide will include how to convert the generic format for
 U-boot.
 
-.. rubric:: Processor SDK RTOS
-   :name: processor-sdk-rtos
 
-After updating the files in the directories below you will need to
-recompile the **board\_lib** and **sbl** components of the Processor SDK
-Platform Development Kit (PDK). Follow this guide on `Rebuilding The
-PDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__.
+.. ifconfig:: CONFIG_sdk in ('PLSDK') 
 
-.. rubric:: AM3, AM4, AMIC
-   :name: am3-am4-amic
+    .. rubric:: Processor SDK RTOS
+       :name: processor-sdk-rtos
 
-Replace files in this directory
+    After updating the files in the directories below you will need to
+    recompile the **board\_lib** and **sbl** components of the Processor SDK
+    Platform Development Kit (PDK). Follow this guide on `Rebuilding The
+    PDK <http://processors.wiki.ti.com/index.php/Rebuilding_The_PDK>`__.
 
-${PDK\_INSTALL\_DIR}\\packages\\ti\\starterware\\board\\${SOC}\\
-File names will need to be prefixed by "${SOC}\_". Pinmux header file is
-common for each SOC here, and may need to be updated manually.
+    .. rubric:: AM3, AM4, AMIC
+       :name: am3-am4-amic
 
-.. rubric:: Everything Else (AM5, K2G)
-   :name: everything-else-am5-k2g
+    Replace files in this directory
 
-Replace files in this directory
+    ${PDK\_INSTALL\_DIR}\\packages\\ti\\starterware\\board\\${SOC}\\
+    File names will need to be prefixed by "${SOC}\_". Pinmux header file is
+    common for each SOC here, and may need to be updated manually.
 
-${PDK\_INSTALL\_DIR}\\packages\\ti\\board\\src\\${BOARD}\\
+    .. rubric:: Everything Else (AM5, K2G)
+       :name: everything-else-am5-k2g
+
+    Replace files in this directory
+
+    ${PDK\_INSTALL\_DIR}\\packages\\ti\\board\\src\\${BOARD}\\
+
 
 .. rubric:: Processor SDK Linux
    :name: processor-sdk-linux
@@ -192,42 +222,51 @@ available in the
 `Linux\_Core\_U-Boot\_User's\_Guide <../../Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__.
 Compiling the devicetree dts to dtb is also required after making
 updates. Instructions are available in the `Linux Kernel Users
-Guide <../../Foundational_Components_Kernel_Users_Guide.html#compiling-the-sources>`__
+Guide <../../Foundational_Components_Kernel_Users_Guide.html#compiling-the-sources>`__.
 
 .. rubric:: devicetree
    :name: devicetree
 
-Edit the appropriate file in this directory/
+Edit the appropriate file in this directory:
 
-${SDK\_INSTALL\_DIR}\\board\_support\\linux-\*\\arch\\arm\\boot\\dts\\${BOARD}.dts
+.. ifconfig:: CONFIG_part_family in ('J7_family')
 
-.. rubric:: AM57xx u-boot
-   :name: am57xx-u-boot
+    ${SDK\_INSTALL\_DIR}\\board\_support\\linux-\*\\arch\\arm64\\boot\\dts\\${BOARD}.dts
 
-The PinMux tool will provide two files: genericFileFormatIOdelay.txt and
-genericFileFormatPadConf.txt. A perl script is provided to convert the
-generic formats and provide a format that can be used in u-boot. The
-script and the instructions to run the script are on
-`git.ti.com <https://git.ti.com/pmt-generic-converter-tool/am57xx_uboot_pin_config>`__.
-The output from the script is used to edit the file in this directory.
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
-${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\am57xx\\mux\_data.h
+    ${SDK\_INSTALL\_DIR}\\board\_support\\linux-\*\\arch\\arm\\boot\\dts\\${BOARD}.dts
 
-.. rubric:: K2G u-boot
-   :name: k2g-u-boot
 
-Replace the file in this directory.
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
-${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\ks2\_evm\\mux-k2g.h
+    .. rubric:: AM57xx u-boot
+       :name: am57xx-u-boot
 
-.. rubric:: AM3 and AM4 u-boot
-   :name: am3-and-am4-u-boot
+    The PinMux tool will provide two files: genericFileFormatIOdelay.txt and
+    genericFileFormatPadConf.txt. A perl script is provided to convert the
+    generic formats and provide a format that can be used in u-boot. The
+    script and the instructions to run the script are on
+    `git.ti.com <https://git.ti.com/pmt-generic-converter-tool/am57xx_uboot_pin_config>`__.
+    The output from the script is used to edit the file in this directory.
 
-The PinMux Tool does not export any u-boot files for these devices. But
-the file below may still need to be modified.
+    ${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\am57xx\\mux\_data.h
 
-${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\am335x\\mux.c
+    .. rubric:: K2G u-boot
+       :name: k2g-u-boot
 
-${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\am43xx\\mux.c
+    Replace the file in this directory.
+
+    ${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\ks2\_evm\\mux-k2g.h
+
+    .. rubric:: AM3 and AM4 u-boot
+       :name: am3-and-am4-u-boot
+
+    The PinMux Tool does not export any u-boot files for these devices. But
+    the file below may still need to be modified.
+
+    ${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\am335x\\mux.c
+
+    ${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\am43xx\\mux.c
 
 
