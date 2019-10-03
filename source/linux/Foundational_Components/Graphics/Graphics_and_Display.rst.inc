@@ -335,7 +335,7 @@ line).
 
     [core]
     shell=ivi-shell.so
-    ivi-module=ivi-controller.so
+    modules=ivi-controller.so
 
     [ivi-shell]
     ivi-input-module=ivi-input-controller.so
