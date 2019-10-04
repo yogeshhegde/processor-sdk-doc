@@ -29,7 +29,7 @@ def fill_docs_to_keep(app, family_configlist, verbosity):
         print("The following .rst files will be included in the build:")
         print('[')
         for elem in docs_to_keep:
-            print elem
+            print(elem)
         print(']')
 
 # set_excluded_docs
