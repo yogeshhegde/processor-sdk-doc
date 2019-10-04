@@ -1317,25 +1317,49 @@ Performance data
 Computation performance of verified networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Results in below table are collected FOR SINGLE CORE execution (EVE or DSP). EVE running at 650MHz and DSP running at 750MHz (CCS Setup, single core).
-- J11, JSeg21, JDetNet, InceptionNetV1, Mobilenet, SqueezeNet:
+- Results in below table are collected FOR SINGLE CORE execution (EVE or DSP), with AM5729. EVE running at 650MHz and DSP running at 750MHz (CCS Setup, single core).
 
+==================   ==========    =====================  =============  ======================   =====================  ======================  =====================  ==========================
+Network topology     ROI size      MMAC (million MAC)     Sparsity (%)   EVE using sparse model   EVE using dense model  DSP using sparse model  DSP using dense model  EVE + DSP (optimal model)
+==================   ==========    =====================  =============  ======================   =====================  ======================  =====================  ==========================
+MobileNetV1          224x224x3     567.70                 1.42           -                        155ms                  -                       717.11ms               -
+MobileNetV2          224x224x3     -                      -              -                        146ms                  -                       409ms                  78.1ms
+SqueezeNet1.1        227x227x3     390.8                  1.46           -                        180ms                  -                       433.73ms               -
+InceptionNetV1       224x224x3     1497.37                2.48           -                        362ms                  -                       1454.91ms              -
+JacintoNet11_v2      224x224x3     405.81                 73.15          92.23ms                  181ms                  115.91ms                370.64ms               58.16
+JSegNet21            1024x512x3    8506.5                 76.47          299.ms                   1005.49ms              1101.12ms               3825.95ms              -
+JDetNet              768x320x3     2191.44                61.84          -                        -                      -                       -                      158.60ms
+==================   ==========    =====================  =============  ======================   =====================  ======================  =====================  ==========================
 
-==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
-Network topology     ROI size    MMAC (million MAC)     Sparsity (%)   EVE using sparse model   EVE using dense model  DSP using sparse model  DSP using dense model  EVE + DSP (optimal model)
-==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
-MobileNetV1          224x224     567.70                 1.42           -                        559.18ms               -                       717.11ms               -
-SqueezeNet           227x227     390.8                  1.46           -                        237.60ms               -                       433.73ms               -
-InceptionNetV1       224x224     1497.37                2.48           -                        643.78ms               -                       1454.91ms              -
-JacintoNet11_v2      224x224     405.81                 73.15          103.23ms                 203.23ms               115.91ms                370.64ms               61.22
-JSegNet21            1024x512    8506.5                 76.47          309.65ms                 1236.84ms              1101.12ms               3825.95ms              -
-JDetNet              768x320     2191.44                61.84          -                        -                      -                       -                      165.83ms
-==================   ==========  =====================  =============  ======================   =====================  ======================  =====================  ==========================
-
+   * Models for TI defined topologies: JacintoNet11, JSeg21 and JDetNet can be obtained from: https://github.com/tidsp/caffe-jacinto-models/tree/caffe-0.17/trained
    * Sparsity provided in above table is average sparsity across all convolution layers.
    * Optimal Model – with optimal placement of layers between EVE and DSP (certain NN layers run faster on DSP, like SoftMax; ARP32 in EVE emulates float operation in software, so this can be rather slow).
 
-- From release PLSDK 5.1, default EVE speed is increased from 535MHz to 650MHz.
+Multi core performance (EVE and DSP cores only)
+-----------------------------------------------
+
+- Results in below table are collected FOR MULTI CORE execution, with AM5729 device and using various sets of EVE and DSP cores.
+- Test script used for collecting below statistics can be found in target file system: /usr/share/ti/tidl/examples/mcbench/ (e.g.: source ./scripts/all_5749.sh)
+
+========================  =========  ===========  ======================  ====================== =====================================
+Network topology          Mode       ROI size     2xEVE (1 layers group)  2xDSP (1 layers group) Optimal: 2xEVE+1xDSP (2 layers group) 
+========================  =========  ===========  ======================  ====================== =====================================
+MobileNetV1               Classif.   224x224x3    13.1 roi/s              2.69 roi/s             21.57 roi/s                 
+MobileNetV2               Classif.   224x224x3    13.4 roi/s              4.88 roi/s             24.27 roi/s
+SqueezeNet1.1             Classif.   224x224x3    11   roi/s              4.46 roi/s             14.7 roi/s
+InceptionNetV1            Classif.   224x224x3    5.46 roi/s              1.34 roi/s             6.62 roi/s
+JacintoNet11_v2, dense    Classif.   224x224x3    10.2 roi/s              5.32 roi/s             13.6 roi/s
+JacintoNet11_v2, sparse   Classif.   224x224x3    19.1 roi/s              16.9 roi/s             34.7 roi/s
+JSegNet21, dense          Segment.   1024x512x3   0.47 roi/s              1.76 roi/s             -   
+JSegNet21, sparse         Segment.   1024x512x3   6.32 roi/s              2.43 roi/s             -
+JDetNet                   Obj.Det.   768x320x3    -                       -                      12.98 roi/s
+========================  =========  ===========  ======================  ====================== =====================================
+
+   * Optimal Model (as discussed in previous paragraph) typically requires last 2-3 layers to be executed on DSP, especially if they involve FP32 calculations (like SoftMax). 
+   * Layers groups can be defined in runtime using 2 layers group configuration: first layers group is executed on EVE and second on DSP. TIDL-API takes care of execution pipelining.
+   * Properly setting configuration for conv2dkernelype parameter is very important for execution performance of layers with feature map <64x64: dense type is required (indicated with '1').
+   * In upcoming releases conv2dkernelytype setting will be done automatically during import process.
+   * From release PLSDK 5.1, default EVE speed is increased from 535MHz to 650MHz.
 
 Accuracy of selected networks
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
