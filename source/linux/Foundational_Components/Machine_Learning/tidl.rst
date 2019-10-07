@@ -1341,19 +1341,19 @@ Multi core performance (EVE and DSP cores only)
 - Results in below table are collected FOR MULTI CORE execution, with AM5729 device and using various sets of EVE and DSP cores.
 - Test script used for collecting below statistics can be found in target file system: /usr/share/ti/tidl/examples/mcbench/ (e.g.: source ./scripts/all_5749.sh)
 
-========================  =========  ===========  ======================  ====================== =====================================
-Network topology          Mode       ROI size     2xEVE (1 layers group)  2xDSP (1 layers group) Optimal: 2xEVE+1xDSP (2 layers group) 
-========================  =========  ===========  ======================  ====================== =====================================
-MobileNetV1               Classif.   224x224x3    13.1 roi/s              2.69 roi/s             21.57 roi/s                 
-MobileNetV2               Classif.   224x224x3    13.4 roi/s              4.88 roi/s             24.27 roi/s
-SqueezeNet1.1             Classif.   224x224x3    11   roi/s              4.46 roi/s             14.7 roi/s
-InceptionNetV1            Classif.   224x224x3    5.46 roi/s              1.34 roi/s             6.62 roi/s
-JacintoNet11_v2, dense    Classif.   224x224x3    10.2 roi/s              5.32 roi/s             13.6 roi/s
-JacintoNet11_v2, sparse   Classif.   224x224x3    19.1 roi/s              16.9 roi/s             34.7 roi/s
-JSegNet21, dense          Segment.   1024x512x3   0.47 roi/s              1.76 roi/s             -   
-JSegNet21, sparse         Segment.   1024x512x3   6.32 roi/s              2.43 roi/s             -
-JDetNet                   Obj.Det.   768x320x3    -                       -                      12.98 roi/s
-========================  =========  ===========  ======================  ====================== =====================================
+========================  =========  ===========  ======================  ====================== ====================================== ====================== ======================================
+Network topology          Mode       ROI size     2xEVE (1 layers group)  2xDSP (1 layers group) Optimal: 2xEVE+1xDSP (2 layers groups) 4xEVE (1 layers group) Optimal: 4xEVE+1xDSP (2 layers groups)
+========================  =========  ===========  ======================  ====================== ====================================== ====================== ======================================
+MobileNetV1               Classif.   224x224x3    13.7 roi/s              2.69 roi/s             21.57 roi/s                            25.05 roi/s            39.1 roi/s
+MobileNetV2               Classif.   224x224x3    13.5 roi/s              4.88 roi/s             24.27 roi/s                            24.8 roi/s             42.2 roi/s
+SqueezeNet1.1             Classif.   224x224x3    11   roi/s              4.46 roi/s             14.7 roi/s                             21.64 roi/s            32.4 roi/s
+InceptionNetV1            Classif.   224x224x3    5.46 roi/s              1.34 roi/s             6.62 roi/s                             10.73 roi/s            12.93 roi/s
+JacintoNet11_v2, dense    Classif.   224x224x3    10.2 roi/s              5.32 roi/s             13.6 roi/s                             20.2 roi/s             26.8 roi/s
+JacintoNet11_v2, sparse   Classif.   224x224x3    19.1 roi/s              16.9 roi/s             34.7 roi/s                             36.1 roi/s             64.6 roi/s
+JSegNet21, dense          Segment.   1024x512x3   0.47 roi/s              1.76 roi/s             -                                      3.37 roi/s             -
+JSegNet21, sparse         Segment.   1024x512x3   6.32 roi/s              2.43 roi/s             -                                      11.8 roi/s             -
+JDetNet, sparse           Obj.Det.   768x320x3    -                       -                      12.98 roi/s                            -                      22.56 roi/s
+========================  =========  ===========  ======================  ====================== ====================================== ====================== ======================================
 
    * Optimal Model (as discussed in previous paragraph) typically requires last 2-3 layers to be executed on DSP, especially if they involve FP32 calculations (like SoftMax). 
    * Layers groups can be defined in runtime using 2 layers group configuration: first layers group is executed on EVE and second on DSP. TIDL-API takes care of execution pipelining.
