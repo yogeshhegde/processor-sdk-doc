@@ -18,15 +18,19 @@ Ordinary Clock (OC), Boundary Clock (BC) And Transparent Clock (TC)
 
 Features supported
 
-- **SAN PTP/1588**
+- PTP/1588
    -  PTP Slave and Master mode
-   -  Supports P2P clock.
+   -  Supports P2P delay measurement
+   -  Supports E2E delay measurement (GMAC only)
+   -  PTP over IPv4 (Annex D) (GMAC only)
    -  PTP over 802.3 (Annex F)
+
+- SAN Clock
    -  Ordinary Clock (GMAC/PRU port)
    -  Boundary Clock supported
-   -  Two step clock supported
+   -  Two-step clock only
 
-- **DAN PTP/1588**
+- DAN Clock
    -  Ordinary Clock (HSR/PRP port)
    -  Transparent clock as per IEC62439-3 Annex C
    -  Transparent clock one-step to two-step conversion (HSR node)
