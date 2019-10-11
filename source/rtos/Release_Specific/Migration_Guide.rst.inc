@@ -7,30 +7,19 @@ Migration Guide
 Overview
 ========
 
-This page covers migration information from last Processor SDK RTOS release (Processor SDK RTOS 05.03.00) to the present release (Processor SDK RTOS 06.00.00)
+This page covers migration information from last Processor SDK RTOS release (Processor SDK RTOS 06.00.00) to the present release (Processor SDK RTOS 06.01.00)
 
 
-PRUSS
-=====
+NIMU
+====
 
-**Migration-1:** Calls that passed PRUICCSS_INSTANCE_MAX as a parameter to PRUSS driver API calls will now pass PRUICCSS_INSTANCE_THREE instead.
+**Migration-1:** Udma init sequence call has been moved from NIMU library to NIMU example for AM65xx andd J721E SOC's.
 
-**Impact Scope:** Applicable for all AM65xx applications using PRUSS driver for ICSSG use case
+**Impact Scope:** Applicable for all NIMU applications using NIMU tranport library for AM65xx and J721E SOC's.
  
 **Additional Details**:
-The following new enumeration, PRUICCSS_INSTANCE_THREE, for PRU-ICSS instance 3 has been added to PRUICSS_MaxInstances enumeration list as PRUICCSS_INSTANCE_MAX is not longer valid when making PRUSS driver API calls.
+Applications will need to implement the following function to provide UDMA drive handle which will be called by the NIMU driver at startup
 
+ Udma_DrvHandle nimu_app_get_udma_handle(void)
 
-Board Library
-==============
-
-**Migration:** MMU configuration is needed to enable NBO CFG registers access on A53 core
-
-**Impact Scope:** Applicable for all AM65xx RTOS applications calling Board_init with 'BOARD_INIT_ICSS_ETH_PHY' flag
- 
-**Additional Details**:
-Board library is setting NAVSS THREADMAP register to give higher priority for MSMC access from ICSSG
-which requires access to NBO CFG registers.
-
-.. raw:: html
 
