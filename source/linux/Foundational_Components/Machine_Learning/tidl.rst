@@ -1359,7 +1359,7 @@ JDetNet, sparse           Obj.Det.   768x320x3    -                       -     
 
    * Optimal Model (as discussed in previous paragraph) typically requires last 2-3 layers to be executed on DSP, especially if they involve FP32 calculations (like SoftMax). 
    * Layers groups can be defined in runtime using 2 layers group configuration: first layers group is executed on EVE and second on DSP. TIDL-API takes care of execution pipelining.
-   * Properly setting configuration for conv2dkernelype parameter is very important for execution performance of layers with feature map <64x64: dense type is required (indicated with '1').
+   * Properly setting configuration for conv2dkernelype parameter is very important for execution performance of layers with feature map size smaller than 64x64: dense type is mandatory for layers with small feature maps (dense is '1', sparese is '0'). This parameter is applicable on per layer basis (multiple values are expected - as many as there are layers).
    * In upcoming releases conv2dkernelytype setting will be done automatically during import process.
    * From release PLSDK 5.1, default EVE speed is increased from 535MHz to 650MHz.
 
