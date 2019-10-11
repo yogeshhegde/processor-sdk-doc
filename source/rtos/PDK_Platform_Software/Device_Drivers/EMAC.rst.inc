@@ -304,7 +304,7 @@ Example and Test Applications
 |                              |    seconds            |                       |                       |                       |
 +------------------------------+-----------------------+-----------------------+-----------------------+-----------------------+
 | Emac_Cpsw_TestApp            | EMAC Loopback test    | Unit Test will        | AM65xx                | makefile              |
-|                              | at CPSW switch        | print "All tests      |                       |                       |
+|                              | at CPSW switch        | print "All tests      | J721E                 |                       |
 |                              | interface.            | have passed" via      |                       |                       |
 |                              | Reference application | UART console.         |                       |                       |
 |                              | for developers        |                       |                       |                       |
