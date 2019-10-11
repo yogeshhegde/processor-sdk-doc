@@ -43,32 +43,25 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 06.00.00
+Release 06.01.00
 ==================
 
-Released July 2019
+Released October 2019
 
 .. rubric:: What's New
    :name: whats-new
 
-- 2019 LTS Update: First release in 2019 LTS (Kernel 4.19, U-boot: 2019.01, gcc: 8.3 2019.03 hf, Yocto 2.6 (thud). For more details, see the migration guide
-- HSR/PRP/EMAC/PTP
-    - `Implement boundary clock with all 3 legs or 5 legs on AM57xx, with redundancy (HSR/PRP) <Industrial_Protocols_PTP.html>`__
-       - 3 legs: 1xCPSW and 1x per PRU-ICSS (HSR/PRP/EMAC running on 2x PRU-ICSS)
-       - 5 legs: 1xCPSW and 2x per PRU-ICSS (Dual-EMAC on 2xPRU-ICSS)
-    - Upgrade linuxptp to v2.0
-    - Driver enhancements to deliver packets across two ports in-order to the host
-- Analytics
-    - Upgrade ARMNN to latest available version (2019.05)
-    - Remove restriction of number of nodes for inner product layer in TIDL Library
-    - `Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control <Examples_and_Demos_Application_Demos.html#predictive-maintenance-demo>`__ 
-- AM65x
-    - U-boot: support networking over ICSS-G
-    - U-boot: USB hub and USB mass storage
-    - `Watchdog support <Examples_and_Demos_Application_Demos.html#watchdog-demo-on-am654x-pg-1-0>`__
-    - DisplayPort driver enhancements for TC358867 DPI-DP bridge
-    - AVS Class 0 support
-- AM335x: Support PTP 1588 in DAN mode
+- Analytics: 
+    - Add support for TFLite. For more details, see `here <Foundational_Components/Machine_Learning/tflite.html>`__ 
+    - Upgraded ARMNN to 2019.08
+- Added avahi-daemon and avahi-tools towards enabling mDNS support on TI platforms
+- AM57x: Feature parity in Dual EMAC firmware compared to PRP EMAC mode, for Single Attached Nodes (SAN)
+- AM65x: 
+    - Support Jailhouse Hypervisor
+    - Uboot support to load non-lockstep MCU R5F Firmware.
+    - Support AVS Class 0
+    - Ethernet throughput enhancements
+- BeagleboneBlack: Increase number of UART ports via Soft UART with PRU
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -76,7 +69,7 @@ Released July 2019
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.19.38+ (2019 LTS)        |
+| Linux Kernel             | 4.19.59+ (2019 LTS)        |
 +--------------------------+----------------------------+
 | U-Boot                   | 2019.01                    |
 +--------------------------+----------------------------+
@@ -86,7 +79,7 @@ Released July 2019
 +--------------------------+----------------------------+
 | Qt                       | 5.11.3                     |
 +--------------------------+----------------------------+
-| OpenCL                   | 1.1.18                     |
+| OpenCL                   | 1.1.19                     |
 +--------------------------+----------------------------+
 | OpenCV                   | 3.1                        |
 +--------------------------+----------------------------+
@@ -118,7 +111,7 @@ U-Boot
 | Based on verson: 2019.01
 | URL: git.ti.com/processor-sdk/processor-sdk-u-boot.git
 | Branch: processor-sdk-u-boot-2019.01
-| Commit ID: 8b90adfb1630ed19959f89d39a5100573bca90fa
+| Commit ID: 029e4c009aaeaee2d06aa8271dbd3a9e73a28aa7
 
 |
 
@@ -129,10 +122,10 @@ Kernel
    :name: linux-kernel
 
 | The kernel git repository, branch and commit id can be found below:
-| Based on Version: 4.19.38
+| Based on Version: 4.19.59
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-4.19.y
-| Commit ID: 4dae378bbe721277b08699d1d88ffae12acc9b09
+| Commit ID: 5f8c1c6121da785bbe7ecc5896877a2537b5d6eb 
 
 |
 
@@ -141,12 +134,12 @@ Kernel
 
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
-| Kernel Version: 4.19.38
-| RT Kernel Version: 4.19.38-rt19
+| Kernel Version: 4.19.59
+| RT Kernel Version: 4.19.59-rt21
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-rt-4.19.y
-| Commit ID: 1224cd679eca53e29bd3755a22dd48797d6beb92
+| Commit ID: 4203cb8c96070a94158d7b2b8e77edf1709ef3f7 
 
 |
 
