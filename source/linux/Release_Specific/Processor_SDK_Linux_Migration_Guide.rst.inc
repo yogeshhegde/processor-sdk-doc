@@ -13,6 +13,12 @@ of the Processor SDK for Linux.
 Processor SDK 06.xx Releases
 ============================
 
+Processor SDK 06.01
+---------------------
+- This is a quarterly update release on 2019 LTS stream. 
+- EMAC firmware
+  - PRP Firmware in EMAC mode can be obsolete, as EMAC firmware has been made to be feature parity for SAN
+
 Processor SDK 06.00
 ----------------------
 - This is the first release in 2019 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch. Please see `SDK Components & Versions <Release_Specific_Release_Notes.html#sdk-components-versions>`__.
