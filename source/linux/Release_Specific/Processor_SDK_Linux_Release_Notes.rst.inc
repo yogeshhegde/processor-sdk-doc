@@ -161,7 +161,7 @@ Issues opened in previous releases that were closed on this release
 
 .. csv-table::
    :header: "Record ID", "Platform", "Title"
-   :widths: 15, 300, 100
+   :widths: 15, 30, 100
 
     LCPD-14188,am654x-evm,ICSSG PRUEth Extremely Slow when board to board tests are run
     LCPD-15792,"am654x-evm, am654x-idk",am65xx: icssg: tx_teardown_timeout at prueth interface down
