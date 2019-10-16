@@ -161,54 +161,26 @@ Issues opened in previous releases that were closed on this release
 
 .. csv-table::
    :header: "Record ID", "Platform", "Title"
-   :widths: 15, 20, 70
+   :widths: 15, 300, 100
 
-   LCPD-15630,am654x-evm,firewall exception at boot due to UDMA channel configuration
-   LCPD-15636,"am335x-evm, am43xx-gpevm, am571x-idk, am572x-idk, am574x-idk, am57xx-evm, am654x-evm, beaglebone-black, dra71x-evm, dra72x-evm, dra76x-evm, dra7xx-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm",C++ compilation is not working
-   LCPD-15581,"am654x-evm, am654x-idk",pcie ep pcitest read write tests failed
-   LCPD-15543,"k2e-evm, k2hk-evm, k2l-evm",U-Boot: USB support in k2E/L/HK evms is completely broken
-   LCPD-15378,"am57xx-beagle-x15, dra7xx-evm",U-Boot: SATA RX PHY config - update to match the DPLL output configuration
-   LCPD-15262,"k2e-hsevm, k2g-hsevm, k2hk-hsevm, k2l-hsevm",k2-hsevm could not boot
-   LCPD-14189,"am654x-evm, am654x-idk",ICSSG Ethernet Kernel Panic
-   LCPD-14954,"am57xx-beagle-x15, dra7xx-evm",Kernel: SATA RX PHY config - update to match the DPLL output configuration
-   LCPD-13766,am654x-idk,am654x: RT latency numbers are 60 us versus ~25 in am574x
-   LCPD-15605,"am654x-evm, am654x-idk",Board reboots after running tcrypt aes test
-   LCPD-14920,,Source IPKs can no longer be installed/used
-   LCPD-12244,"am437x-idk, am437x-sk, am43xx-epos, am43xx-gpevm",AM43xx u-boot needs to support PHY_INVERT_CLKOUT=1
-   LCPD-15541,am57xx-evm,eMMC is not at expected speed on am57xx-evm
-   LCPD-15494,"dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm",dra7: pcie: PHY driver doesn't follow TRM power up sequence
-   LCPD-15457,"am57xx-evm, dra71x-evm, dra7xx-evm",pcie sata test failed on am57xx-evm
-   LCPD-15454,am654x-evm,CRTC sync lost reported while testing mode
-   LCPD-15450,,chromium binary got corrupted and huge
-   LCPD-15429,,tidss: bridge_timings don't work
-   LCPD-15418,,SMP I2C failures
-   LCPD-15384,"am335x-evm, am574x-idk, am57xx-evm, am654x-evm, dra71x-evm",Segmentation Fault and bad alloc errors observed when running GLMark2
-   LCPD-14871,"am654x-evm, am654x-idk",ti-sgx-ddk-km is hardcoded for Linaro arm64 toolchain
-   LCPD-14136,am654x-idk,PCIe x2 usb tests failed on am654x-idk
-   LCPD-13354,"am654x-evm, am654x-idk",PRU Ethernet ping fails with packet size > 4096 bytes
-   LCPD-13709,am654x-evm,USB camera gadget does not work on am6
-   LCPD-13711,"am654x-evm, am654x-idk",U-Boot: EEPROM-based board detection support not available
-   LCPD-13710,"am654x-evm, am654x-idk",KS3M: ICSSG: 100M link doesn't work
-   LCPD-15260,dra7xx-evm,Video on display repeated when Fast Forward done with gst-play
-   LCPD-15259,dra7xx-evm,Gst-ducati fails to decode few interlaced streams
-   LCPD-14860,"am574x-idk, am57xx-evm, am654x-evm, am654x-idk",qt-opencv-opencl-opengl-multithreaded fails with gcc8
-   PLSDK-2186,am572x-evm,video-analytic-demo should run on top of Weston instead of qwindow-compistor
-   PLSDK-2355,"am572x-evm, am572x-idk, am574x-idk",Openvx: openvx_tiovx_application hangs on am572x evm
-   PLSDK-2627,beagleboneblack,run-pru-adc.sh : Unable to get expected output on UART
-   PLSDK-2659,am574x-idk,TIDL inference reporting same classification output for all input images
-   PLSDK-2670,"am570x-evm, am572x-evm, am572x-hsevm, k2e-evm, k2g-hsevm, k2hk-evm, k2l-evm",OpenMPacc test hangs on k2 platorms
-   PLSDK-2700,,Jailhouse Linux/RTOS issue observed when CPU freq changed
-   PLSDK-2749,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",CPTS 1PPS should allow selection of any timer (Timer13-Timer16)
-   PLSDK-2750,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",CPTS 1PPS pps-enable-gpios should be optional
-   PLSDK-2751,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",1PPS output needs pulldown for pwm_off
-   PLSDK-2754,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",kernel 1PPS devicetree documentation
-   PLSDK-2759,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",   PLSDK build needs to update EMAC firmware version (to enable RX pacing)
-   PLSDK-2774,am654x-evm,Fix ICSSG PRUETH bindings documentation
-   PLSDK-2775,"am572x-evm, am572x-idk, am574x-idk, dra76x-evm",TIDL documentation missing information about converting framework operators into TIDL layers
-   PLSDK-2778,"am654x-evm, am654x-idk",Getting Started Guide Needs to be updated for AM65x
-   PLSDK-2796,am572x-idk,HSR/PRP duplicate packets seen
-   PLSDK-2818,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",PRUETH: promiscuous mode doesn't work in Dual EMAC mode firmware
-   PLSDK-2854,,Make tisdk-rootfs-image first option in create-sdcard.sh
+    LCPD-14188,am654x-evm,ICSSG PRUEth Extremely Slow when board to board tests are run
+    LCPD-15792,"am654x-evm, am654x-idk",am65xx: icssg: tx_teardown_timeout at prueth interface down
+    LCPD-10233,"am335x-evm, am335x-ice, am335x-sk, am43xx-gpevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am57xx-evm, beaglebone, beaglebone-black, dra71x-evm, dra72x-evm, dra7xx-evm",U-boot: Using DM_I2C in SPL is broken
+    LCPD-16194, "am654x-evm, am654x-idk, am654x-hsevm", AM65x PG1.0: certain USB hubs are failed in enumeration
+    LCPD-16195,"am654x-evm, am654x-idk, am654x-hsevm",U-Boot: AM65x PG1.0: USB D+ is pulled high without VBUS presence
+    LCPD-16096,"am57xx-evm, dra7xx-evm", Instability observed while trying to capture video with USB camera via Gstreamer
+    LCPD-16100,"k2e-evm, k2e-hsevm, k2l-evm, k2l-hsevm",NAND failures on K2 evms
+    LCPD-16132,am654x-evm, kernel dumps due to Bad of_node_put() when open/close mcu uart multiple times
+    LCPD-15537,omapl138-lcdk,remoteproc/davinci: Fix IPC with upstream 5.1 kernel
+    LCPD-15479,"am57xx-evm, dra71x-evm, dra7xx-evm",DSS-WB Inconsistent behavior observed when converting to NM12 format
+    LCPD-13940,am654x-evm, mkfs.ext2 hangs when trying to format PCIe NVMe SSD device (Samsung PM961)
+    LCPD-16176,"am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm","MMC3 does not have correct IODELAY values for DS, HS, SDR12, SDR25"
+    LCPD-16181,"am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm","U-boot: MMC3 does not have correct IODELAY values for DS, HS, SDR12, SDR25"
+    LCPD-16163,"am654x-evm, am654x-idk",IRQ not populated error message during boot
+    PLSDK-2986,am574x-idk,"TIDL: Update mobilenetV1, inceptionNetV1, squeezeNetV1, models (.bin files) in target filesystem using more optimal import configuration"
+    PLSDK-2909,"am57xx-evm,am574x-idk,dra7xx-evm",Upgrade TIDL-API converted models to the new file format
+    PLSDK-2699,am574x-idk,TIDL: Accuracy problem using UNET3 topology with 160x120x1 input
+
 
 |
 
@@ -219,8 +191,13 @@ Issues found and closed on this release that may be applicable to prior releases
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 20, 70
 
-   PLSDK-2783,omapl138-lcdk,omapl138-lcdk - uboot does not load from mmc
-   PLSDK-2865,am571x-idk,icss_emacMainTest_am571x.out returns error from _int_malloc
+   LCPD-16607,"am654x-evm, am654x-idk, am654x-hsevm","KS3 CPSW2G - kernel crashes during netif down"
+   LCPD-16608,"am654x-evm, am654x-idk, am654x-hsevm","K3 CPSW2G - hw stuck on netif down under high ingress traffic pressure"
+   LCPD-16697,am654x-evm,AM65X RM config The R5F core 1 interrupt resource host type need correction
+   LCPD-16593,"am571x-idk, am574x-idk, am57xx-evm, dra71x-evm, dra7xx-evm",Errors observed for IOCTLs with DMABuf import-export capture operation
+   LCPD-16626,am57xx-evm,USB gadget Removing g_multi makes DUT hang
+   LCPD-16550,am654x-hsevm,AM6 DT overlays not applied in u-boot when using FIT image
+   PLSDK-3077,"am335x-evm,am437x-gpevm,am57xx-evm,am654x-evm","IVI-Shell Documentation  fix typo at the Weston core section"
 
 |
 
@@ -285,103 +262,90 @@ SDK Known Issues
 -----------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 25, 30, 50, 60
+   :widths: 25, 30, 50, 600
 
-   LCPD-14263,am43xx-epos,Hardware RNG module not getting probed in Linux for AM438x,
-   LCPD-15587,"am335x-evm, am43xx-gpevm, am57xx-evm",QtWebengine-based browser does not work,
-   LCPD-16096,"am574x-idk, am57xx-evm, dra7xx-evm",Instability observed while trying to capture video with USB camera via Gstreamer,
-   LCPD-8352,"am43xx-gpevm, am57xx-evm, dra7xx-evm",weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory,1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer
-   LCPD-15863,"am335x-evm, am43xx-gpevm, am57xx-evm, am654x-evm",Weston IVI-shell is not supported,
-   LCPD-15864,am57xx-evm,SoC Performance Monitoring tool is still not enabled,
-   LCPD-15553,"am335x-evm, am43xx-gpevm, am57xx-evm, am654x-evm",Segmentation Fault observed when running weston-simple-egl,
-   LCPD-15386,"am57xx-evm, dra7xx-evm",Segmentation fault reported while running GC320,
-   LCPD-15647,am574x-idk,Performance drop observed for several GLBenchmark tests,
-   LCPD-14201,"am654x-evm, am654x-idk",PVR out of memory error reported while running GLMark2,"There is more SPM memory required for this test on ARM64. It can be resolved by allocating more memory for Parameter Buffer at powervr.ini For AM65x: set ParamBufferSize to 8388608 (8M). Besides, this test will fail if the FrameTime exceeds 1 second and which is proportional to the screen resolution size. To run this test on AM654x, we can reduce the screen size by using option s ""-s 800x480"""
-   LCPD-14175,am335x-evm,GLMark2 drm based test fails,
-   LCPD-13429,,Init/exit sequence in GBM leads to error,
-   LCPD-13501,am654x-evm,"Kmscube: need to support the new display ""tidss""",
-   LCPD-12027,"am335x-evm, am43xx-gpevm, am437x-sk, am57xx-evm",glReadPixels returns error with nulldrm client,
-   LCPD-11010,am574x-idk,AM574x-idk graphics performance is lower than am572x-idk,"Performance issue, no workaround"
-   LCPD-9006,"am57xx-evm, dra72x-evm, dra7xx-evm",Some GLBenchmark tests fail to run,
-   LCPD-7130,dra7xx-evm,KMSCube with video does not work,
-   LCPD-15810,"am335x-evm, am43xx-gpevm, k2g-evm",Illegal instruction reported when trying to decode h264 stream with gstreamer,
-   LCPD-13817,am654x-evm,Qt5 Webengine-based broswer does not work on AM654x,
-   LCPD-13816,am654x-evm,Chromium-wayland broswer does not work on AM654x,
-   LCPD-13443,am57xx-hsevm,Camera is not detected on AM572x-HSEVM,
-   LCPD-12928,am57xx-evm,Periodic frame freezes observed while decoding H264 video,
-   LCPD-11846,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",libdce2 omapdrm API call with bus-version style,
-   LCPD-9754,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",GLSDK Sometimes capture + encode fails,
-   LCPD-9753,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",GLSDK gst test suite waylandsink and 1080i kmssink tests fail,
-   LCPD-5654,AM335x,AM3 Beaglebone black: MPEG4+AAC Dec does not play out any audio for some HDMI monitors,
-   LCPD-12709,am43xx-hsevm,Boards resets when standby state is attempted,
-   LCPD-8345,"am335x-evm, am437x-idk, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2e-hsevm, k2hk-evm, k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)",Restart the EVM
-   LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
-   LCPD-16114,"am335x-evm, am335x-ice, am335x-sk",RTC Init Script Needs to Wait for Module Load,
-   LCPD-15562,,OpenSSL1.1 does not have hooks for using hw crypto, Use openssl1.0 for crypto
-   LCPD-13947,am335x-evm,nativesdk-opkg is broken in the devkit,
-   LCPD-13633,"am335x-evm, am335x-hsevm, am335x-ice, am335x-sk, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",IMG wayland based demos are missing from the fs,N/A
-   LCPD-13437,am57xx-hsevm,Multimedia:ducatih264enc0: Could not initialize supporting library,
-   LCPD-12443,omapl138-lcdk,SD boot time with coresdk rootfs increases ~30% on omapl138-lcdk,
-   LCPD-12383,omapl138-lcdk,Umount failed if sata is mounted as vfat after boot without enough delay before umount,
-   LCPD-9923,"am335x-evm, am43xx-gpevm, am57xx-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Error message in boot log for K2 and AM platforms,
-   LCPD-7255,"am335x-evm, am335x-ice, am335x-sk, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am57xx-evm, beaglebone, beaglebone-black, beaglebone-black-ice, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2g-evm, k2g-ice, k2hk-evm, k2l-evm",Telnet login takes too long (~40 seconds),"Booting with rootfs mounted over NFS might cause ~40 seconds delay on telnet login because DNS entries might not be properly populated, Enter appropriate DNS server IP in resolv.conf. For example: echo 'nameserver 192.0.2.2' > /etc/resolv.conf" 
-   LCPD-7025,am43xx-gpevm,System takes more than 10 seconds to go from login prompt to system prompt,Automated tests need to account for this boot delay
-   LCPD-5649,"K2E, K2HK, K2L",Integration: Release content for core-sdk should not be the content of SD card for k2 platform,
-   LCPD-12405,"am335x-evm, am335x-ice, am43xx-epos, am43xx-gpevm, am57xx-evm, dra71x-evm, k2e-evm, k2e-hsevm, k2g-evm, k2g-hsevm, k2l-evm",Openssl certgen fails due to coredump in openssl_gen_cert.sh,
-   LCPD-12536,"am335x-evm, am335x-ice, am335x-sk, am43xx-gpevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am574x-idk, am57xx-evm",AM4 SK/IDK: iperf3: error - control socket has closed unexpectedly for ETH test,
-   LCPD-6377,"am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am57xx-evm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm, k2g-evm",OMAP_BO_CACHED feature not functional,
-   LCPD-8210,"am571x-idk, am572x-idk, am57xx-evm",QT Touchscreen interaction (Bear Whack) crash,
-   LCPD-8398,"dra7xx-evm, dra7xx-hsevm",gsttestplayer: Reverse playback stops after next seek,
-   LCPD-9423,,kmscube with video: viddec3test sometimes return error 139,None
-   LCPD-8278,k2e-hsevm,Secure boot takes more than 10 minutes,
-   LCPD-15367,"am335x-evm, am574x-idk",Boot time increased about 15s,
-   PLSDK-1398,"k2e-evm, k2e-hsevm, k2g-hsevm, k2hk-hsevm",Document workaround for IPC demo hangs if run after OpenCL demos,Run IPC demo w/o running OpenCL first
-   PLSDK-1419,k2l-evm,Intermittent-IP address display issue on LCD for K2L RT,"Use ifconfig once Linux boots, to acquire IP address"
-   PLSDK-2474,am572x-evm,soc-performance-monitor table display problem (missing texts),None
+   LCPD-15810,"am335x-evm, am43xx-gpevm, k2g-evm",Illegal instruction reported when trying to decode h264 stream with gstreamer,None
+   LCPD-15587,"am335x-evm, am43xx-gpevm, am57xx-evm",QtWebengine-based browser does not work,Use QTWebkit-based browser instead.
+   PLSDK-3039,"am571x-idk, am572x-idk, am574x-idk",OC PPS on GMAC port does not follow PTP sync in BC test,"Re-enable PPS with echo 0 > /sys/class/ptp/ptp0/pps_enable echo 1 > /sys/class/ptp/ptp0/pps_enable"
+   PLSDK-2662,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",HSR/PRP: Bringing down one slave port stops HSR/PRP interface,None
+   PLSDK-2642,am654x-idk,PRU Ethernet links on IDK Application board are unstable,Hardware limitation
+   LCPD-14450,"am654x-evm, am654x-idk",CPSW speed change with ethtool - delay when setting to 100Mbps,
+   PLSDK-2900,"am335x-evm, am437x-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm","crypto examples are skipped from toplevel SDK Makefile, due to OpenSSL dependency",No workaround
    PLSDK-2730,"am335x-evm, am335x-ice, am437x-evm, am572x-evm, am654x-evm",Chromium-Wayland browser doesn't work,Use qtWebkit browser
-   PLSDK-2855,"am571x-idk, am574x-idk",PHC2SYS out of sync with continuous switching the master cocks from two GMC,"None. Need to power cycle or reset the platform and restart the PTP BC."
-   PLSDK-2861,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Crypto is not functional on 2019 LTS,None
-   PLSDK-2867,"am335x-evm, am437x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, am654x-hsevm",QtWebEngine based browser is not functional on 2019 LTS,Use Webkit based browser
-   PLSDK-2877,"am335x-evm, am437x-evm, am572x-evm, am654x-evm",Qt Webkit browser crashes at several websites,None
-   PLSDK-2881,am572x-evm,dual camera demo does not work with dual display on AM57xx EVM,Dual camera demo only requires one display so disable or remove one of the display.
-   PLSDK-2882,"am437x-evm, am437x-sk, am572x-evm",dual camera demo: text on control buttons truncated on LCD,"None. This problem does not affect the functionality because the word ""Capture"" is still recognizable."
-   PLSDK-2895,am571x-idk,AM571x-IDK: Icss Emac: TTS Port 1: Packet cyclic timestamp error.,None
-   PLSDK-2896,k2e-evm,mpm_transport_hyperlink_loopback: transport arm-loopback-hyplnk-0 failed (error: -114) retval -1001,No workaround
-   PLSDK-2897,"am335x-evm, am437x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, dra76x-evm",Graphics Demo: layer-add-surfaces command not found,None. Weston IVI-shell is not supported for now.
-   PLSDK-2899,am572x-idk,Storm prevention in dual-EMAC: failed to update stormPrevCounter,"Issue only arises if only one of the two ICSS ports is up. As a workaround, bring up both ICSS ports (e.g. ""ifconfig eth<ID> up) even if only one is in use to enable storm prevention."
-   PLSDK-2900,"am335x-evm, am437x-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm","crypto examples don't build from toplevel SDK Makefile, due to OpenSSL dependency",No workaround
-   PLSDK-2905,am654x-hsevm,3D: Failed to run /usr/bin/SGX/demos/Raw/OGLES2ChameleonMan,"None. The warning messages can be ignored, there is no effect on the functionality."
-   PLSDK-2909,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, dra76x-evm",Upgrade TIDL-API converted models to the new file format,"The problem with emulation tool (for ARM or x86) only if we are using it with models deployed in target filesystem (as they are in earlier format): /usr/share/ti/tidl/examples/test/testvecs/config/tidl_models. For newly converted models, using import tool from PLSDK6.0 this problem does not exist."
+   PLSDK-1398,"k2e-evm, k2e-hsevm, k2g-hsevm, k2hk-hsevm",IPC demo hangs if run after OpenCL demos,Run IPC demo w/o running OpenCL first
    PLSDK-2913,am572x-idk,NetJury Test Failure: TC_PRP_4_3_4_____Reception_of_a_PRP_Supervision_frame_and_Nodes_Table - test_VLAN,No workaround
-   PLSDK-2916,"am572x-evm, am572x-idk",Jailhouse_Hypervisor: JAILHOUSE_CELL_LOAD: Invalid argument,No workaround
+   PLSDK-3031,"am571x-idk, am572x-idk, am574x-idk",HSR: erroneous A-B forwarding of frames,
+   PLSDK-3074,am572x-idk,NetJury Test Failure: TC_PRP_4_2_4_____IP_addresses,None
+   PLSDK-2895,am571x-idk,AM571x-IDK: Icss Emac: TTS Port 1: Packet cyclic timestamp error.,None
+   PLSDK-2178,"am335x-ice, am437x-idk, am574x-idk",ICSS EMAC intermittent error in received acyclic packet content,None
+   LCPD-16525,"am654x-evm, am654x-idk, am654x-hsevm",Need to configure ACIOCR3 during DDR configuration,
+   PLSDK-2530,"am335x-ice, am437x-idk",AM3/4 PTP PPS fails intermittently,No complete workaround. Restarting the ethernet interface should reset PPS and likely resolve the issue temporarily
+   PLSDK-2896,"k2e-evm, k2e-hsevm, k2hk-evm",mpm_transport_hyperlink_loopback: transport arm-loopback-hyplnk-0 failed (error: -114) retval -1001,No workaround
+   PLSDK-2861,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Crypto is not functional on 2019 LTS,None
+   PLSDK-2867,"am335x-evm, am437x-evm, am437x-hsevm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, am654x-hsevm",QtWebEngine based browser is not functional on 2019 LTS,Use Webkit based browser
+   LCPD-15874,am574x-idk,QSPI boot does not work on am574x-idk, Bring in modules used in Power Management  xdc.loadPackage('ti.pm') ; var Power = xdc.useModule('ti.sysbios.family.arm.ducati.smp.Power'
+   LCPD-11846,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",libdce2 omapdrm API call with bus-version style,
+   PLSDK-2466,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, k2g-ice",Fix Race condition in updating NSP credit value,None
+   PLSDK-3095,"am571x-idk, am572x-idk","If nsp_credit is set to 0, storm prevention should be disabled",
+   PLSDK-2936,am572x-evm,jailhouse: failed in destroy cell,None
+   PLSDK-2937,am572x-evm,jailhouse: ti-app demo doesn't start,None
+   PLSDK-2942,"am335x-evm, am572x-evm",ARMNNexample: Performance on AM335x (2.5x variation) and AM57 (1.5x variation) is not stable,None
+   PLSDK-3094,k2hk-evm,"K2H booting kernel from NAND doesn't complete using Arago-base-tisdk-image.ubi from     PLSDK 6.0, but works with ubi file from     PLSDK 5.2",None
+   LCPD-16641,"am654x-evm, am654x-idk, am654x-hsevm, , -ivi",tidss: need to ensure the output width is divisible by 2,
+   PLSDK-2960,am571x-idk,HSR/PRP: Noticed 1 packet loss seen with UDP tests over 60 minute test,None
+   LCPD-17118,"am57xx-evm, dra7xx-evm",Kernel MMC/SD user's guide incorrectly refers to OMAP-HSMMC,None
+   PLSDK-3057,"am335x-evm, am437x-evm, am572x-evm, am654x-evm, am654x-idk",ARMNN with TFLite parser: performance/accuracy issue with quantized mobilenet models,Patch from arm compute library https://review.mlplatform.org/c/ml/ComputeLibrary/+/1620/.
+   PLSDK-3065,"am335x-evm, am437x-evm, am572x-evm, am654x-evm, am654x-idk",Running "ArmnnExamples --help" returns error,None
+   LCPD-14843,"am654x-evm, am654x-idk",U-boot should support default settings for netboot,"The net boot plus NFS do work with the following settings as example: setenv get_fdt_net 'tftp ${fdtaddr} ${bootdir}/${name_fdt}'... "
+   LCPD-16534,"am654x-evm, am654x-idk",remoteproc/k3-r5f: PDK IPC echo_test image fails to do IPC in remoteproc mode on second run,None
+   LCPD-16573,"am654x-evm, ",SA2UL not handling partial update tests,None
+   PLSDK-3063,"am571x-idk, am572x-evm, am574x-idk",Switching over MCs with 2 BC in between intermittently causing phc2sys inactive for a long duration,None
+   PLSDK-3086,"am571x-idk, am572x-idk",Unable to handle kernel NULL pointer dereference when disabling HSR,None
+   PLSDK-3032,"am571x-idk, am572x-idk, am574x-idk","HSR: forwarding of untagged frames in default mode H not according to IEC 62439-3:2016, “5.3.3 DANH receiving from an HSR port”.",None
+   PLSDK-3033,"am571x-idk, am572x-idk, am574x-idk","HSR mode, PRP frames not forwarded",None
+   LCPD-14816,am654x-idk,iperf UDP tests shows packet loss as low as 20 Mbps tput,None
+   LCPD-16103,am654x-evm,AM6: MMC: Probe fail warning in bootloader,
+   LCPD-16187,"am654x-evm, am654x-idk, am654x-hsevm",Linux warns that CPUs are started in inconsistent modes,
+   LCPD-13429,,Init/exit sequence in GBM leads to error,None
+   LCPD-16707,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm",DRA7x: Off-by-one error while selecting OTV in tuning algorithm,
+   LCPD-16207,am574x-hsidk,Board does not boot sometimes due to crypto crash,None
+   PLSDK-3073,k2e-evm,K2E: mpm tests failing due to missing executables,
+   PLSDK-3092,k2g-ice,icss_emacMainTest_k2g.out not included in FS,
+   LCPD-17251,am57xx-evm,IPC_S_FUNC_RPMSG_RPC test failed in 2019.04 rc4 on am57xx,
+   LCPD-1106,"am57xx-evm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",Connectivity:PCIe-SATA ext2 1G write performance is poor due to ata failed command,None
+   LCPD-17005,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Keysotne-2 PCIe memory space is set up incorrectly using OB_WIN_SIZE,Suggested change will be integrated into next release. diff --git a/drivers/pci/dwc/pci-keystone.c b/drivers/pci/dwc/pci-keystone.c. In static void ks_pcie_setup_mem_space(struct keystone_pcie *ks_pcie)  - start += OB_WIN_SIZE;  + start += (OB_WIN_SIZE << 20); 
+   LCPD-15648,am335x-evm,Uboot mmc performance decreased,
+   PLSDK-2873,k2g-ice,K2G-ICE kernel warnings when removing PRUETH module,None
 
 |
 
 U-Boot Known Issues
 ------------------------
 .. csv-table::
-   :header: "Record ID", "Priority", "Title", "Platform", "Workaround"
-   :widths: 15, 10, 70, 30, 5
+   :header: "Record ID","Platform", "Title","Workaround"
+   :widths: 15, 30, 70, 30
 
-   LCPD-15054,P3-Medium,[u-boot] AM57xx phy_ctrl structures must be board-specific,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",
-   LCPD-14843,P3-Medium,U-boot should support netboot for AM654x,"am654x-evm, am654x-idk",
-   LCPD-14638,P3-Medium,Invalid DDR_PHY_MR2 setting in K2G board library,"k2g-evm, k2g-ice",
-   LCPD-11586,P3-Medium,dhcp failed to get IP address after reboot for K2G-ICE non-RT linux,k2g-ice,
-   LCPD-10726,P3-Medium,Update DDR3 emif regs structure for EMIF2 for the beagle_x15 board in U-Boot board file,"am572x-idk, am57xx-evm",
-   LCPD-9369,P3-Medium,AM437x GP EVM older PG version Uboot UART boot fails intermittently,,
-   LCPD-8701,P3-Medium,Soft reboot broken,k2g-ice,
-   LCPD-5416,P3-Medium,"U-BOOT: K2G: ""reset"" fails for certain SD cards",K2G,
-   LCPD-15873,P3-Medium,There is no dtbo in u-boot for PCIe x1 + usb3 daughter card,am654x-evm,
-   LCPD-14628,P3-Medium,U-boot: Unable to write to eMMC,beaglebone-black,
-   LCPD-10668,P3-Medium,Ethernet boot: Sometimes the board could not boot uboot from Ethernet on k2g-evm,k2g-evm,
-   LCPD-9539,P3-Medium,dhcp does not work after soft reboot,k2g-evm,
-   LCPD-7864,P3-Medium,U-Boot: Ethernet boot fails on AM335x and AM437x,"am335x-evm, am335x-ice, am335x-sk, am437x-idk, am437x-sk, am43xx-gpevm",
-   LCPD-7547,P3-Medium,uboot nand write hangs for big size on k2g,k2g-evm,
-   LCPD-7366,P3-Medium,uboot McSPI driver drives multiple chip selects simultaneously,am335x-evm,
-   LCPD-5517,P3-Medium,Board fails to load bootloader sometimes when eSATA is connected,AM572x,
-   LCPD-5116,P3-Medium,BBB: U-Boot: Board fails to acquire dhcp address sometimes,AM335x,
-   LCPD-4817,P4-Low,am57xx-evm/dra7xx-evm: uboot: usb failed to detect Kingston DataTraveler usb msc device,AM572x,
-
+   LCPD-17185,am57xx-evm,U-Boot does not have Extended Mode Register support for the TI DP83867 PHY driver,None
+   LCPD-16937,"am43xx-epos, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk",U-Boot: usbhost boot failed on AM437x,None
+   LCPD-16592,"am654x-evm, am654x-idk",Unable to access MMC1 (SD Card) after UART-Based Boot,None
+   LCPD-16524,"am654x-evm, am654x-idk, am654x-hsevm",Need to adjust RMW bit when using enabling ECC,None
+   LCPD-16103,am654x-evm,AM6: MMC: Probe fail warning in bootloader,None
+   LCPD-15889,"am654x-evm, am654x-idk",U-boot: MMC instances need to probe independently,None
+   LCPD-15873,am654x-evm,There is no dtbo in u-boot for PCIe x1 + usb3 daughter card,None
+   LCPD-15127,am654x-evm,u-boot: net: Stop called even without start leading to crash,None
+   LCPD-15054,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",[u-boot] AM57xx phy_ctrl structures must be board-specific,None
+   LCPD-14843,"am654x-evm, am654x-idk",U-boot should support default settings for netboot,None
+   LCPD-14638,"k2g-evm, k2g-ice",Invalid DDR_PHY_MR2 setting in K2G board library,None
+   LCPD-12179,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm",U-boot: Fix IOdelay error path issue,None
+   LCPD-11586,k2g-ice,dhcp failed to get IP address after reboot for K2G-ICE non-RT linux,None
+   LCPD-10726,"am572x-idk, am57xx-evm",Update DDR3 emif regs structure for EMIF2 for the beagle_x15 board in U-Boot board file,None
+   LCPD-10668,k2g-evm,Ethernet boot: Sometimes the board could not boot uboot from Ethernet on k2g-evm,None
+   LCPD-9539,k2g-evm,dhcp does not work after soft reboot,None
+   LCPD-7366,am335x-evm,uboot McSPI driver drives multiple chip selects simultaneously,None
+   LCPD-5517,AM572x,Board fails to load bootloader sometimes when eSATA is connected,None
+   LCPD-5416,K2G,"U-BOOT: K2G: ""reset"" fails for certain SD cards",None
+   LCPD-5116,AM335x,BBB: U-Boot: Board fails to acquire dhcp address sometimes,None
+   LCPD-4817,AM572x,am57xx-evm/dra7xx-evm: uboot: usb failed to detect Kingston DataTraveler usb msc device,None
 |
 
 
