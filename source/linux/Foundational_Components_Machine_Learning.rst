@@ -1,7 +1,7 @@
 ********************
 Machine Learning
 ********************
-Sitara Machine Learning toolkit brings machine learning to the edge by enabling machine learning inference on all Sitara devices (Arm only, Arm + specialized hardware accelerators). It is provided as part of TI's Processor SDK Linux, free to download and use. Sitara machine learning today consists of TI Deep Learning (TIDL), Arm NN, TensorFlow Lite, and RNN bare metal library.
+Sitara Machine Learning toolkit brings machine learning to the edge by enabling machine learning inference on all Sitara devices (Arm only, Arm + specialized hardware accelerators). It is provided as part of TI's Processor SDK Linux, free to download and use. Sitara machine learning today consists of TI Deep Learning (TIDL), Arm NN, TensorFlow Lite, and RNN library.
 
 .. figure:: ../images/Sitara_machine_learning_stack_diagram.png
     :width: 1120px
@@ -28,7 +28,7 @@ Sitara Machine Learning toolkit brings machine learning to the edge by enabling 
 * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
 * Integrated into TI's Processor SDK Linux.
 
-.. rubric:: `RNN Bare Metal Library <Examples_and_Demos_Application_Demos.html#deploy-and-integration>`__
+.. rubric:: `RNN Library <Examples_and_Demos_Application_Demos.html#deploy-and-integration>`__
 
 * The LSTM (Long Short-Term Memory) and fully connected layers have been provided in a standalone library to allow for rapid prototyping of inference applications that require recurrent neural networks.
 * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
