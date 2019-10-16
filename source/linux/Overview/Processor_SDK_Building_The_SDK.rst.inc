@@ -137,7 +137,7 @@ The "Build Output" is given relative to the
 +------------------------------+---------------------------------------------------------------+----------------------------+
 | Target                       | Build Output                                                  | Description                |
 +==============================+===============================================================+============================+
-| arago-core-tisdk-image       | images/<machine>/processor-sdk-linux-image-<machine>.tar.xz   | Full SDK                   |
+| arago-core-tisdk-bundle      | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
 +------------------------------+---------------------------------------------------------------+----------------------------+
 | tisdk-rootfs-image           | images/<machine>/tisdk-rootfs-image-<machine>.tar.xz          | Target Filesystem          |
 +------------------------------+---------------------------------------------------------------+----------------------------+
@@ -236,7 +236,7 @@ are shown in red below:
     $ . conf/setenv
     $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
     $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
-    $ MACHINE=<target-board> bitbake arago-core-tisdk-image
+    $ MACHINE=<target-board> bitbake arago-core-tisdk-bundle
 
 
 

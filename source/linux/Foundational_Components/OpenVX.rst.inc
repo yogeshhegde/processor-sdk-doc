@@ -262,7 +262,7 @@ After finishing running the TIOVX test application, switch the firmware back to 
 
 ::
 
-    MACHINE=am57xx-evm bitbake arago-core-tisdk-image
+    MACHINE=am57xx-evm bitbake arago-core-tisdk-bundle
 
 | For modifying individual components in PLSDK, please refer to: to
   http://processors.wiki.ti.com/index.php/Processor_SDK_Building_The_SDK#Recipes
