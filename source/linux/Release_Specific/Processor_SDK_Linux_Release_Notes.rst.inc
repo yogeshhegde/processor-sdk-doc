@@ -210,7 +210,11 @@ Issues opened in previous releases that were closed on this release
     PLSDK-2702,"am335x-evm, am335x-hsevm, am335x-ice, am335x-sk, am437x-evm, am437x-hsevm, am437x-idk, am437x-sk, am438x-epos-evm, am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk, am654x-evm, am654x-idk, beagleboneblack, k2e-evm, k2e-hsevm, k2g-evm, k2g-hsevm, k2g-ice, k2hk-evm, k2hk-hsevm, k2l-evm, k2l-hsevm, omapl138-lcdk, dra76x-evm, am654x-hsevm",Documentation: Benchmarks in the Performance Guide should be sorted alphabetically
     PLSDK-2473,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice","DualEMAC PTP ""invalid timestamp"" warning messages when starting ptp4l"
     PLSDK-2220,k2e-evm,UBI Image for K2E exceeds the available size limit
-    
+    PLSDK-2986,am574x-idk,"TIDL: Update mobilenetV1, inceptionNetV1, squeezeNetV1, models (.bin files) in target filesystem using more optimal import configuration"
+    PLSDK-2909,"am57xx-evm,am574x-idk,dra7xx-evm",Upgrade TIDL-API converted models to the new file format
+    PLSDK-2699,am574x-idk,TIDL: Accuracy problem using UNET3 topology with 160x120x1 input
+
+
 |
 
 
