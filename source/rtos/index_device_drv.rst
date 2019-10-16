@@ -179,6 +179,12 @@ SCICLIENT
 
 
 ***********
+IPCLLD
+***********
+.. include:: PDK_Platform_Software/Device_Drivers/IPCLLD.rst.inc
+
+
+***********
 VPS Drivers
 ***********
 .. include:: PDK_Platform_Software/Device_Drivers/VPS_Drivers.rst.inc

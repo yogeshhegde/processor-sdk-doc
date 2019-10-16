@@ -1471,6 +1471,14 @@ Common Platform Time Sync (CPTS) module
 The Common Platform Time Sync (CPTS) module is used to facilitate host
 control of time sync operations. It enables compliance with the IEEE
 1588-2008 standard for a precision clock synchronization protocol.
+The following PTP Features are supported:
+
+-  PTP Slave and Master mode
+-  P2P delay measurement
+-  E2E delay measurement
+-  PTP over IPv4 (L4) (Annex D)
+-  PTP over 802.3 (L2) (Annex F)
+
 
 The support for CPTS module can be enabled by Kconfig option
 CONFIG\_TI\_CPTS=y or through menuconfig tool. The PTP packet
