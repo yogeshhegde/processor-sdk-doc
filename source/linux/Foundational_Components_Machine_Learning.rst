@@ -12,25 +12,25 @@ Sitara Machine Learning toolkit brings machine learning to the edge by enabling 
 
 .. rubric:: `TI Deep Learning (TIDL) <Foundational_Components/Machine_Learning/tidl.html>`__
 
-* Available on AM57x device only, runs on C66x DSP cores and/or on Embedded Vision Engine (EVE) subsystems.
-* Supports CNN models only.
-* Provides acceleration of NNs.
+* Accelerates deep learning inference on C66x DSP cores and/or on Embedded Vision Engine (EVE) subsystems.
+* Available on AM57x device only.
+* Supports CNN at the moment, and imports Caffe, ONNX, and Tensorflow models.
 
 .. rubric:: `Arm NN <Foundational_Components/Machine_Learning/armnn.html>`__
 
-* Open-source Linux software available from Arm.
+* Open source inference engine available from Arm.
 * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
-* Integrated into TI's Processor SDK Linux.
+* Imports Caffe, ONNX, TensorFlow, and TensorFlow Lite models.
 
 .. rubric:: `TensorFlow Lite <Foundational_Components/Machine_Learning/tflite.html>`__
 
-* Open source deep learning runtime for on-device inference. It was created based on TensorFlow primarily to help with implementing machine learning on mobile and IoT devices.
+* Open source deep learning runtime for on-device inference.
 * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
-* Integrated into TI's Processor SDK Linux.
+* Imports Tensorflow Lite models.
 
 .. rubric:: `RNN Library <Examples_and_Demos_Application_Demos.html#deploy-and-integration>`__
 
-* The LSTM (Long Short-Term Memory) and fully connected layers have been provided in a standalone library to allow for rapid prototyping of inference applications that require recurrent neural networks.
+* Provides Long Short-Term Memory (LSTM) and fully connected layers in a standalone library to allow for rapid prototyping of inference applications that require Recurrent Neural Networks.
 * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
 * Integrated into TI's Processor SDK Linux in an OOB demo for `Predictive Maintenance <Examples_and_Demos_Application_Demos.html#predictive-maintenance-demo>`__.
 
