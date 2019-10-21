@@ -14,8 +14,8 @@ of the Processor SDK for Android.
 -  This release includes updates to Processor SDK Android for AM65x amd AM57x with Pie
 -  More details about Pie can be obtained from
    `here <https://developer.android.com/about/versions/pie/index.html>`__.
--  See `06.00.00 Release
-   Notes <http://software-dl.ti.com/processor-sdk-android/esd/docs/06_00_00_07/android/Release_Specific_Supported_Platforms_and_Versions.html>`__
+-  See `06.01.00 Release
+   Notes <http://software-dl.ti.com/processor-sdk-android/esd/docs/06_01_00_08/android/Release_Specific_Supported_Platforms_and_Versions.html>`__
    for full list of modifications.
 
 .. rubric:: Processor SDK Android 06.00.00
@@ -25,7 +25,7 @@ of the Processor SDK for Android.
 -  More details about Pie can be obtained from
    `here <https://developer.android.com/about/versions/pie/index.html>`__.
 -  See `06.00.00 Release
-   Notes <http://software-dl.ti.com/processor-sdk-android/esd/docs/06_00_00_00/android/Release_Specific_Supported_Platforms_and_Versions.html>`__
+   Notes <http://software-dl.ti.com/processor-sdk-android/esd/docs/06_00_00_07/android/Release_Specific_Supported_Platforms_and_Versions.html>`__
    for full list of modifications.
 
 
