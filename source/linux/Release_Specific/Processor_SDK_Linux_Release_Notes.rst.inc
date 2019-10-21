@@ -213,6 +213,7 @@ Issues opened in previous releases that were closed on this release
     PLSDK-2986,am574x-idk,"TIDL: Update mobilenetV1, inceptionNetV1, squeezeNetV1, models (.bin files) in target filesystem using more optimal import configuration"
     PLSDK-2909,"am57xx-evm,am574x-idk,dra7xx-evm",Upgrade TIDL-API converted models to the new file format
     PLSDK-2699,am574x-idk,TIDL: Accuracy problem using UNET3 topology with 160x120x1 input
+    LCPD-14816,am654x-idk,iperf UDP tests shows packet loss as low as 20 Mbps tput
 
 
 |
