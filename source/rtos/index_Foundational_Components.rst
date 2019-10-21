@@ -19,6 +19,8 @@ FC
 IPC
 *******
 
+.. note:: This section mainly provides details of the software distributed part of the IPC 3.x package (installed under ipc_<version>). The IPC package provides the IPC APIs with higher level software abstraction. In addition,starting from  Processor SDK 6.1 release, a lower level IPC driver (IPC LLD) using rpmsg based transport is included specifically for AM6x/J7 platforms. See the following link for additional details `IPC 3.x vs IPC LLD`_
+
 Inter-Processor Communication (IPC) provides a processor-agnostic API which can be used for communication between processors in a multi-processor environment (inter-core), communication to other threads on same processor (inter-process), and communication to peripherals (inter-device). 
 The API supports message passing, streams, and linked lists.
 IPC can be used to communicate with the following:
@@ -147,6 +149,21 @@ Resource Custom Table
 Resource Usage
 ---------------
 .. include:: PDK_Platform_Software/IPC/IPC_Resource_Usage.rst.inc
+
+IPC 3.x vs IPC LLD
+==================
+
+IPC 3.x APIs provide High level IPC APIs that scale across all TI platforms.
+
+Instead of the IPC 3.x APIs, in certain cases customers can choose to use the IPC Low level Driver (IPC LLD).
+
+In general, the IPC LLD can be used, if the customer application falls under the following categories.
+
+a) Non-RTOS bare metal applications (Note: IPC 3.x is closely coupled with  SYSBIOS and XDC tools)
+b) Applications does not need the high level API abstraction and all the features (like GateMP etc) and would like to call the low level driver to just establish basic communication between the cores.
+c) Application needs the same RPMSG/Virtio transport mechanism to communicate with a core running linux and other cores running other operating systems.
+
+Please refer to the following page for details on the IPC LLD: `IPC LLD for AM65x/J721E <index_device_drv.html#ipclld>`_
 
 IPC FAQ
 ========
