@@ -181,6 +181,7 @@ Issues opened in previous releases that were closed on this release
     PLSDK-2986,am574x-idk,"TIDL: Update mobilenetV1, inceptionNetV1, squeezeNetV1, models (.bin files) in target filesystem using more optimal import configuration"
     PLSDK-2909,"am57xx-evm,am574x-idk,dra7xx-evm",Upgrade TIDL-API converted models to the new file format
     PLSDK-2699,am574x-idk,TIDL: Accuracy problem using UNET3 topology with 160x120x1 input
+    LCPD-14816,am654x-idk,iperf UDP tests shows packet loss as low as 20 Mbps tput
 
 
 |
@@ -199,6 +200,8 @@ Issues found and closed on this release that may be applicable to prior releases
    LCPD-16626,am57xx-evm,USB gadget Removing g_multi makes DUT hang
    LCPD-16550,am654x-hsevm,AM6 DT overlays not applied in u-boot when using FIT image
    PLSDK-3077,"am335x-evm,am437x-gpevm,am57xx-evm,am654x-evm","IVI-Shell Documentation  fix typo at the Weston core section"
+   PLSDK-3073,k2e-evm,K2E: mpm tests failing due to missing executables
+   PLSDK-3092,k2g-ice,icss_emacMainTest_k2g.out not included in FS
 
 |
 
@@ -269,7 +272,7 @@ SDK Known Issues
    LCPD-15587,"am335x-evm, am43xx-gpevm, am57xx-evm",QtWebengine-based browser does not work,Use QTWebkit-based browser instead.
    PLSDK-3039,"am571x-idk, am572x-idk, am574x-idk",OC PPS on GMAC port does not follow PTP sync in BC test,"Re-enable PPS with echo 0 > /sys/class/ptp/ptp0/pps_enable echo 1 > /sys/class/ptp/ptp0/pps_enable"
    PLSDK-2662,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",HSR/PRP: Bringing down one slave port stops HSR/PRP interface,None
-   PLSDK-2642,am654x-idk,PRU Ethernet links on IDK Application board are unstable,Hardware limitation
+   PLSDK-2642,am654x-idk,PRU Ethernet links on IDK Application board are unstable,IDK Limitation and requires re-work
    LCPD-14450,"am654x-evm, am654x-idk",CPSW speed change with ethtool - delay when setting to 100Mbps,
    PLSDK-2900,"am335x-evm, am437x-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm","crypto examples are skipped from toplevel SDK Makefile, due to OpenSSL dependency",No workaround
    PLSDK-2730,"am335x-evm, am335x-ice, am437x-evm, am572x-evm, am654x-evm",Chromium-Wayland browser doesn't work,Use qtWebkit browser
@@ -283,7 +286,6 @@ SDK Known Issues
    PLSDK-2530,"am335x-ice, am437x-idk",AM3/4 PTP PPS fails intermittently,No complete workaround. Restarting the ethernet interface should reset PPS and likely resolve the issue temporarily
    PLSDK-2896,"k2e-evm, k2e-hsevm, k2hk-evm",mpm_transport_hyperlink_loopback: transport arm-loopback-hyplnk-0 failed (error: -114) retval -1001,No workaround
    PLSDK-2861,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Crypto is not functional on 2019 LTS,None
-   PLSDK-2867,"am335x-evm, am437x-evm, am437x-hsevm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, am654x-hsevm",QtWebEngine based browser is not functional on 2019 LTS,Use Webkit based browser
    LCPD-15874,am574x-idk,QSPI boot does not work on am574x-idk, Bring in modules used in Power Management  xdc.loadPackage('ti.pm') ; var Power = xdc.useModule('ti.sysbios.family.arm.ducati.smp.Power'
    LCPD-11846,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",libdce2 omapdrm API call with bus-version style,
    PLSDK-2466,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, k2g-ice",Fix Race condition in updating NSP credit value,None
@@ -304,15 +306,11 @@ SDK Known Issues
    PLSDK-3086,"am571x-idk, am572x-idk",Unable to handle kernel NULL pointer dereference when disabling HSR,None
    PLSDK-3032,"am571x-idk, am572x-idk, am574x-idk","HSR: forwarding of untagged frames in default mode H not according to IEC 62439-3:2016, “5.3.3 DANH receiving from an HSR port”.",None
    PLSDK-3033,"am571x-idk, am572x-idk, am574x-idk","HSR mode, PRP frames not forwarded",None
-   LCPD-14816,am654x-idk,iperf UDP tests shows packet loss as low as 20 Mbps tput,None
    LCPD-16103,am654x-evm,AM6: MMC: Probe fail warning in bootloader,
    LCPD-16187,"am654x-evm, am654x-idk, am654x-hsevm",Linux warns that CPUs are started in inconsistent modes,
    LCPD-13429,,Init/exit sequence in GBM leads to error,None
    LCPD-16707,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm",DRA7x: Off-by-one error while selecting OTV in tuning algorithm,
    LCPD-16207,am574x-hsidk,Board does not boot sometimes due to crypto crash,None
-   PLSDK-3073,k2e-evm,K2E: mpm tests failing due to missing executables,
-   PLSDK-3092,k2g-ice,icss_emacMainTest_k2g.out not included in FS,
-   LCPD-17251,am57xx-evm,IPC_S_FUNC_RPMSG_RPC test failed in 2019.04 rc4 on am57xx,
    LCPD-1106,"am57xx-evm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",Connectivity:PCIe-SATA ext2 1G write performance is poor due to ata failed command,None
    LCPD-17005,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Keysotne-2 PCIe memory space is set up incorrectly using OB_WIN_SIZE,Suggested change will be integrated into next release. diff --git a/drivers/pci/dwc/pci-keystone.c b/drivers/pci/dwc/pci-keystone.c. In static void ks_pcie_setup_mem_space(struct keystone_pcie *ks_pcie)  - start += OB_WIN_SIZE;  + start += (OB_WIN_SIZE << 20); 
    LCPD-15648,am335x-evm,Uboot mmc performance decreased,
@@ -356,8 +354,6 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround", "Impact"
    :widths: 5, 10, 70, 10, 5, 20, 35, 20
 
-   LCPD-15792,P2-High,am65xx: icssg: tx_teardown_timeout at prueth interface down,Connectivity,PRUSS-Ethernet,"am654x-evm, am654x-idk",No workaround, Multiple ifdown/ifup of interface will cause interface to stop working
-   LCPD-14188,P2-High,ICSSG PRUEth Extremely Slow,Connectivity,"ICSSG, PRUETH",am654x-evm,No workaround, Low throughput
    LCPD-9972,P2-High,Soft reboot failed on k2g-evm with class 10 SD cards,Connectivity,,k2g-evm,Do not use soft reboot, Only hard reboot works
    LCPD-13653,P2-High,am65x-evm could not boot from MMC/SD when MMC/SD is backup boot mode,Baseport,,"am654x-evm, am654x-idk",No workaround, If UART boot times out mmc backup mode cannot work
    LCPD-13412,P2-High,VIP camera sensor (mt9t11) is not initialized properly,Audio & Display,,am57xx-evm, Hardware issue with sensor, capture does not work with this sensor
@@ -376,7 +372,6 @@ Linux Kernel Known Issues
    LCPD-16125,P3-Medium,PRU RemoteProc INTC Initialization Wrong,IPC,PRUSS_remoteproc,"am335x-evm, am335x-ice, am335x-sk, am43xx-epos, am43xx-gpevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am574x-idk, am57xx-evm, am57xx-beagle-x15, am654x-evm, am654x-idk, beaglebone, beaglebone-black, k2g-evm, k2g-ice",,
    LCPD-16100,P3-Medium,NAND failures on K2 evms,Connectivity,,"k2e-evm, k2e-hsevm, k2l-evm, k2l-hsevm",,
    LCPD-16096,P3-Medium,Instability observed while trying to capture video with USB camera via Gstreamer,"Audio & Display, Connectivity, Multimedia",,"am574x-idk, am57xx-evm, dra7xx-evm",,
-   LCPD-16095,P3-Medium,M4: linux: failed to set rgmii-rxid mode,Connectivity,"CPSW2G, Networking, RGMII","am654x-evm, am654x-idk, am654x-hsevm",,
    LCPD-16029,P3-Medium,AM65: icssg: PRU ethernet links might be unstable with new PHY package,Connectivity,PRUSS-Ethernet,"am654x-evm, am654x-idk, am654x-hsevm",,
    LCPD-15955,P3-Medium,QSPI boot does not work on am437x-sk,Connectivity,,"am437x-idk, am437x-sk",,
    LCPD-15952,P3-Medium,DCAN Documentation incorrect,Connectivity,,,,
@@ -466,9 +461,6 @@ Linux Kernel Known Issues
    LCPD-869,P3-Medium,AM335x: Connectivity: USB data transfer fails if board is suspended/resumed,Connectivity,,,,
    LCPD-662,P3-Medium,CONNECTIVITY: AM335X: distortion in USB audio when msc connect/disconnect happens in parallel,Connectivity,,,,
    LCPD-16132,P3-Medium,kernel dumps due to Bad of_node_put() when open/close mcu uart multiple times,Baseport,,am654x-evm,,
-   LCPD-16104,P3-Medium,Revert 1.1G enabling for AM6,Baseport,POWER,am654x-evm,,
-   LCPD-16077,P3-Medium,sa2ul ipsec - iperf - server side report is not present,Baseport,,am654-evm,,
-   LCPD-14517,P3-Medium,Cryptos: SHA1 Hash test failing on am335x_sk platform,Baseport,,am335x-sk,,
    LCPD-14191,P3-Medium,IPSec hardware-based throughput is 30% lower than 2018.03,Baseport,,"am335x-evm, am57xx-evm",,
    LCPD-13410,P3-Medium,Reboot command is not operational,Baseport,,"am654x-evm, am654x-idk",,
    LCPD-9981,P3-Medium,Some LTP's memory management tests fail due to low amount of free memory,Baseport,,"omapl138-lcdk",,
