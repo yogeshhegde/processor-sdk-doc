@@ -1,0 +1,1707 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1. DSP Optimized Libraries &mdash; Processor SDK RTOS Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Processor SDK RTOS Documentation" href="../index.html"/>
+        <link rel="up" title="5. DSP Software" href="DSP_Software.html"/>
+        <link rel="next" title="6. Device Drivers" href="Device_Drivers.html"/>
+        <link rel="prev" title="5. DSP Software" href="DSP_Software.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Processor SDK RTOS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                06_01_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board_EVM_Abstration.html">3. Board/EVM Abstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Foundational_Components.html">4. Foundational Components</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="DSP_Software.html">5. DSP Software</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1. DSP Optimized Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#available-libraries">5.1.1. Available Libraries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-purpose-libraries">5.1.1.1. General Purpose Libraries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#high-performance-or-application-specific-libraries">5.1.1.2. High Performance or Application Specific Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#library-usage">5.1.2. Library Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-libraries-in-processor-sdk-rtos">5.1.2.1. Using Libraries in Processor-SDK RTOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-libraries-in-processor-sdk-linux">5.1.2.2. Using Libraries in Processor-SDK Linux</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#delivery-format">5.1.3. Delivery Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-benchmark-comparison">5.1.4. Core benchmark comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dsp-debug-and-trace">5.2. DSP Debug and Trace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ctoolslib">5.2.1. CToolsLib</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">5.2.1.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overview">5.2.1.2. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">5.2.1.3. Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documentation">5.2.1.4. Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download">5.2.1.5. Download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trace-decoding">5.2.1.6. Trace Decoding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#support">5.2.1.7. Support</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#uia">5.2.2. UIA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">5.2.2.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unified-instrumentation-architecture-uia">5.2.2.2. Unified Instrumentation Architecture (UIA)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documents-and-tutorials">5.2.2.3. Documents and Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#system-analyzer-and-the-mcsdk-demo">5.2.2.4. System Analyzer and the MCSDK Demo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues-errata">5.2.2.5. Known Issues/Errata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#faqs">5.2.2.6. FAQs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#trouble-shooting">5.2.2.7. Trouble Shooting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#technical-support-and-product-updates">5.2.2.8. Technical Support and Product Updates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#trace">5.2.3. Trace</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">5.2.3.1. Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#driver-configuration">5.2.3.2. Driver Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apis">5.2.3.3. APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">5.2.3.4. Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#application-integration-details">5.2.3.5. Application Integration Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-references">5.2.3.6. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#fault-management">5.2.4. Fault Management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">5.2.4.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fm-dsp-exception-apis-usage">5.2.4.2. FM DSP Exception APIs &amp; Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instrumenting-a-dsp-application-with-fm-exception-apis">5.2.4.3. Instrumenting a DSP Application with FM Exception APIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fm-global-configuration-parameters">5.2.4.4. FM Global Configuration Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fm-tests">5.2.4.5. FM Tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">5.2.4.6. Additional References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#wdt">5.2.5. WDT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">5.2.5.1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modes-of-operation">5.2.5.2. Modes of Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">5.2.5.3. Driver Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">5.2.5.4. Additional References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Device_Drivers.html">6. Device Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRU_ICSS.html">7. PRU-ICSS Firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compilers.html">8. Compilers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_and_Demonstrations.html">9. Examples and Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_Guides.html">10. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">11. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation_Tarball.html">12. Documentation Tarball</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Processor SDK RTOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="DSP_Software.html">5. DSP Software</a> &raquo;</li>
+      
+    <li>5.1. DSP Optimized Libraries</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dsp-optimized-libraries">
+<h1>5.1. DSP Optimized Libraries<a class="headerlink" href="#dsp-optimized-libraries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="available-libraries">
+<h2>5.1.1. Available Libraries<a class="headerlink" href="#available-libraries" title="Permalink to this headline">¶</a></h2>
+<p>The table below lists currently available libraries and the
+corresponding information - whether they are included in Proc-SDK Linux
+or RTOS, supported devices, and documentation links.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Proc-SDK
+Linux</p></th>
+<th class="head"><p>Proc-SDK
+RTOS</p></th>
+<th class="head"><p>Supported
+Devices</p></th>
+<th class="head"><p>Documentation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MATHLIB</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>K1/K2/AM57x</p></td>
+<td><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/Software_libraries#MathLIB">MATHLIB
+Documentation</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DSPLIB</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>K1/K2/AM57x</p></td>
+<td><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/Software_libraries#DSPLIB">DSPLIB
+Documentation</a></p></td>
+</tr>
+<tr class="row-even"><td><p>IMGLIB</p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+<td><p>K1/K2/AM57x</p></td>
+<td><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/Software_libraries#IMGLIB">IMGLIB
+Documentation</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>LibArch</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>C6678(RTOS)
+/K2H(Linux)
+/AM572x
+(Linux)</p></td>
+<td><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/Processor_SDK_Library_Architecture_and_Framework">LibArch
+User’s
+Guide</a></p></td>
+</tr>
+<tr class="row-even"><td><p>FFTLIB</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>C6678(RTOS)
+/K2H(Linux)
+/AM572x
+(Linux)</p></td>
+<td><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/MCSDK_HPC_3.x_FFTW_Library">FFT User’s
+Guide (Linux)</a></p>
+<p>FFT User’s
+Guide (RTOS):
+Refer to FFT
+LIB folder</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>LINALG</p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+<td><p>C6678(RTOS)
+/K2H(Linux)
+/AM572x
+(Linux)</p></td>
+<td><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/Processor_SDK_Linear_Algebra_Library">LINALG
+User’s
+Guide</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Processor SDK libraries can be categorized into two groups, general
+purpose libraries and high performance or application specific
+libraries.</p>
+<div class="section" id="general-purpose-libraries">
+<h3>5.1.1.1. General Purpose Libraries<a class="headerlink" href="#general-purpose-libraries" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>MATHLIB:<a class="reference external" href="http://www.ti.com/tool/mathlib">Standalone download
+page</a></p></li>
+<li><p>DSPLIB: <a class="reference external" href="http://www.ti.com/tool/sprc265">Standalone download page</a></p></li>
+<li><p>IMGLIB: <a class="reference external" href="http://www.ti.com/tool/sprc264">Standalone download page</a></p></li>
+</ul>
+<p>These libraries are delivered with TI C66x object code and included in
+Processor-SDK ROTS. For development in Processor-SDK Linux, they can be
+downloaded from the links listed above and used in any C66x DSP code.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="high-performance-or-application-specific-libraries">
+<h3>5.1.1.2. High Performance or Application Specific Libraries<a class="headerlink" href="#high-performance-or-application-specific-libraries" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/Processor_SDK_Library_Architecture_and_Framework">LibArch</a>:
+Library Architecture and Framework, an abstraction layer for
+multi-core DSP library development.</p></li>
+<li><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/MCSDK_HPC_3.x_FFTW_Library">FFTLIB</a>:
+optimized library for performing fast Fourier transform.</p></li>
+<li><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/Processor_SDK_Linear_Algebra_Library">LINALG</a>:
+optimized library for performing dense linear algebra computations.</p></li>
+</ul>
+<p>These libraries are available in both Processor-SDK RTOS and
+Processor-SDK Linux.</p>
+</div>
+</div>
+<div class="section" id="library-usage">
+<h2>5.1.2. Library Usage<a class="headerlink" href="#library-usage" title="Permalink to this headline">¶</a></h2>
+<p>Libraries can be used in either Processor-SDK RTOS or Processor-SDK
+Linux.</p>
+<div class="section" id="using-libraries-in-processor-sdk-rtos">
+<h3>5.1.2.1. Using Libraries in Processor-SDK RTOS<a class="headerlink" href="#using-libraries-in-processor-sdk-rtos" title="Permalink to this headline">¶</a></h3>
+<p>The following diagram illustrates the software stack of various
+components including libraries provided with the Processor-SDK RTOS.</p>
+<img alt="../_images/Lib_sw_stack_rtos.jpg" src="../_images/Lib_sw_stack_rtos.jpg" />
+</div>
+<div class="section" id="using-libraries-in-processor-sdk-linux">
+<h3>5.1.2.2. Using Libraries in Processor-SDK Linux<a class="headerlink" href="#using-libraries-in-processor-sdk-linux" title="Permalink to this headline">¶</a></h3>
+<p>The following diagram illustrates the software stack in Processor-SDK
+Linux environment, taking LINALG as an example. Applications access the
+libraries on the host (ARM) side, and the actual computation may be
+executed on ARM or DSP according to configuration and problem size. This
+is explained in detail in each library’s documentation page.</p>
+<img alt="../_images/Linalg.jpg" src="../_images/Linalg.jpg" />
+</div>
+</div>
+<div class="section" id="delivery-format">
+<h2>5.1.3. Delivery Format<a class="headerlink" href="#delivery-format" title="Permalink to this headline">¶</a></h2>
+<p>All libraries are delivered with both source code and object code. The
+source code can be recompiled according to the instructions given in
+each individual library’s documentation.</p>
+</div>
+<div class="section" id="core-benchmark-comparison">
+<h2>5.1.4. Core benchmark comparison<a class="headerlink" href="#core-benchmark-comparison" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to <a class="reference external" href="http://www.ti.com/processors/digital-signal-processors/core-benchmarks/core-benchmarks.html">Core Benchmarks</a>
+for DSP vs A15 core benchmark comparison for computation intensive tasks.</p>
+</div>
+</div>
+<div class="section" id="dsp-debug-and-trace">
+<h1>5.2. DSP Debug and Trace<a class="headerlink" href="#dsp-debug-and-trace" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ctoolslib">
+<h2>5.2.1. CToolsLib<a class="headerlink" href="#ctoolslib" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction">
+<h3>5.2.1.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>See <a class="reference external" href="http://processors.wiki.ti.com/index.php/CToolsLib_Article">CToolsLib Article</a> for a
+comprehensive article on cToolsLibs and the hardware modules supported.</p>
+</div>
+<div class="section" id="overview">
+<h3>5.2.1.2. Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>CToolsLib is collection of embedded target APIs/library focused to
+enable easy programmatic access to <a class="reference external" href="http://processors.wiki.ti.com/index.php/CTools">CTools</a>
+debug capabilities</p></li>
+<li><p>CToolsLib purpose is provided in source code for easy integration
+into applications</p></li>
+<li><p>CToolsLib consists of several libraries</p></li>
+</ul>
+<div class="section" id="aetlib">
+<h4>5.2.1.2.1. AETLib<a class="headerlink" href="#aetlib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The <a class="reference external" href="http://processors.wiki.ti.com/index.php/AETLIB">AETLIB</a> library provides programmatic
+access to the <a class="reference external" href="http://processors.wiki.ti.com/index.php/Advanced_Event_Triggering">Advanced Event
+Triggering</a> capability on
+64x and 64x+ processor cores.</p></li>
+</ul>
+</div>
+<div class="section" id="etblib">
+<h4>5.2.1.2.2. ETBLib<a class="headerlink" href="#etblib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>This library provides the ability to program and read trace data from
+an Embedded Trace Buffer (ETB). The ETB can be used with other
+libraries to setup and capture DSP core trace data, ARM core trace
+data, or STM data sources.</p></li>
+<li><p>In some devices each core has a dedicated ETB, while others have a
+single ETB shared between trace sources.</p></li>
+<li><p>After the ETB data is read into local memory, the user must transport
+the binary trace data back to a host where the binary trace data can
+be converted to text, csv or a .tdf file that can be imported into
+CCS for display. The GettingStarted.htm file (available at
+<a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/GettingStarted.htm">[1]</a>
+)provides instructions for generating these files from utilities
+provided with CCS.</p></li>
+<li><p>The Examples projects are also a good source of information on using
+ETBLib for different cases.</p></li>
+<li><p>Instructions for <a class="reference external" href="http://processors.wiki.ti.com/index.php/STM_EDMA_Example">STM EDMA Example</a>
+to extend ETB using target memory</p></li>
+<li><p>Instructions for <a class="reference external" href="http://processors.wiki.ti.com/index.php/DSPTrace_EDMA_Example">DSPTrace EDMA
+Example</a> to extend ETB using
+target memory</p></li>
+</ul>
+</div>
+<div class="section" id="dsptracelib">
+<h4>5.2.1.2.3. DSPTraceLib<a class="headerlink" href="#dsptracelib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>This library provides the ability to programmaticly setup 64x+ DSP
+trace export.</p></li>
+</ul>
+</div>
+<div class="section" id="etmlib">
+<h4>5.2.1.2.4. ETMLib<a class="headerlink" href="#etmlib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The ETM Library provides the interface to configure and control
+instruction and data tracing during program execution. A trace
+session is defined as the time frame from the trace system getting
+armed(enabled and waiting for a start trace condition), to the time
+when the trace completes, either from an end trace condition that has
+been configured or a manual call to stop tracing.</p></li>
+<li><p>Developed and tested for the CortexA8 on TCI6614 and C6A816x devices.</p></li>
+<li><p>The <a class="reference external" href="http://processors.wiki.ti.com/index.php/ETMLib_Examples">ETMLib Examples</a> page provides
+instructions on how to run the examples and display the results.</p></li>
+</ul>
+</div>
+<div class="section" id="stmlib">
+<h4>5.2.1.2.5. STMLib<a class="headerlink" href="#stmlib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>This library provides “C” printf and binary APIs for hardware
+assisted (System Trace software messages) instrumentation in your
+code. STM messages are captured via an ETB or with an external
+XDS560v2 System Trace receiver.</p></li>
+<li><p>For instructions on setting up CCS to capture STM data see <a class="reference external" href="http://processors.wiki.ti.com/index.php/Using_System_Trace_(STM)">Using
+System Trace(STM)</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="itmlib">
+<h4>5.2.1.2.6. ITMLib<a class="headerlink" href="#itmlib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The ITMLib provides “C” string amd binary value logging APIs for TI
+M3/M4 devices that includes an ITM module and supports SWD (Serial
+Wire Debug) with SWO (Serial Wire Output) Trace. ITM requires at a
+minimum CCSv5.5 and emupack 5.1.340.0 with an XDS2xx or XDS110 (Note:
+your XDS may need a firmware update to work with “SWD with SWO
+Trace”. See your XDS vendor for firmware update instructions).</p></li>
+</ul>
+</div>
+<div class="section" id="cptlib">
+<h4>5.2.1.2.7. CPTLib<a class="headerlink" href="#cptlib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The Common Platform Tracer modules provides profile information via
+STM messages for critical buses within the device. CPTLib provides
+low level CP Tracer module setup. The provided use case based helper
+file combined with CPTLib makes for an easy to use environment. For
+examples see <a class="reference external" href="http://processors.wiki.ti.com/index.php/Common_Platform_Tracer_Examples">Common platform Tracer
+Examples</a>. For debug
+help see <a class="reference external" href="http://processors.wiki.ti.com/index.php/Debugging_With_Common_Platform_Tracer">Debugging with Common Platform
+Tracer</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="ctools-uclib">
+<h4>5.2.1.2.8. cTools_UCLib<a class="headerlink" href="#ctools-uclib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The cTools_UCLib is a library for Keystone family devices (C66xx,
+TCI66xx, 66AK2Hxx, 66AK2Exx and TCI6630K2L) that consolidates the
+most common CP Tracer and AET/DSP Trace uses cases into a single
+library. The Library also consolidates ETB setup and operation into a
+few easy to use functions.</p></li>
+<li><p>Use cases supported include:</p>
+<ul>
+<li><p>Exception tracking with DSP Trace</p></li>
+<li><p>Application Program Counter Trace</p></li>
+<li><p>Illegal Memory Access Watching with DSP Trace</p></li>
+<li><p>CP Tracer Strategic Bus Throughput and Latency profiling</p></li>
+<li><p>Function Statistical Profiling with DSP Trace</p></li>
+</ul>
+</li>
+<li><p>Keystone Ctools_UCLib examples (platform specific CCS projects) are
+available as a separate zip package in the file repository listed
+below.</p></li>
+<li><p>Keystone Ctools_UCLib examples are also available as a part of
+Keystone MCSDK instrumentation. For more details please refer to
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/BIOS_MCSDK_2.0_User_Guide#cToolsLibrary">Keystone MCSDK instrumentation
+examples</a></p></li>
+<li><p>For more information about Ctools use-cases, please refer to
+Ctools_UCLib doxygen at Ctools_UCLib/doc/Ctools_UCLib.html/index.html</p></li>
+</ul>
+</div>
+<div class="section" id="pmicmilib">
+<h4>5.2.1.2.9. PMICMILib<a class="headerlink" href="#pmicmilib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The PMI and CMI units provide power and clock state profiling via STM
+messages. The PMICMILib provides a common programming and control API
+for both units. For more details see <a class="reference external" href="http://processors.wiki.ti.com/index.php/OMAP4_Power_and_Clock_Management_Profiling">OMAP4 Power and Clock
+management
+Profiling</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="linux-kernel-driver-for-stm-printf">
+<h4>5.2.1.2.10. Linux Kernel Driver for STM printf<a class="headerlink" href="#linux-kernel-driver-for-stm-printf" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Linux kernel module device driver enables applications to use MIPI
+STM as a standard character device driver. Users can redirect output
+(from printf) to a STM device, or directly write() to the STM device
+from their application. For details and examples see <a class="reference external" href="http://processors.wiki.ti.com/index.php/STM_Linux_Device_Driver">STM Linux
+Device Driver</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="scilib">
+<h4>5.2.1.2.11. SCILib<a class="headerlink" href="#scilib" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>The OMAP44xx and OMAP54xx Statistic Collectors provides profile data
+for SDRAM load monitoring and Master load and Latency monitoring.
+Data is exported as STM messages. SCILib provides a use case based
+API for configuring and controlling bus profile data for all the
+statistic collectors on a device.</p></li>
+<li><p>Use cases supported include:</p>
+<ul>
+<li><p>Average Throughput (for SDRAM and Master SC Modules)</p></li>
+<li><p>Link Occupancy (for SDRAM and Master SC Modules)</p></li>
+<li><p>Average Burst Length (for SDRAM and Master SC Modules)</p></li>
+<li><p>Average Latentcy (For Master SC Module only)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>5.2.1.3. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The CToolsLib examples package contains device or platform specific
+CCSv5 examples, which portrays typical use case scenarios involving
+individual or multiple CTools libraries. These examples also show how
+to integrate various CTools libraries into one’s application SW.</p></li>
+<li><p>The following are the various supported devices or platforms:</p>
+<ul>
+<li><p>Keystone1 family of devices (C667x, C665x and TCI661x)</p></li>
+<li><p>Keystone2 family of devices (66AK2Hxx, 66AK2Exx and TCI6630K2L)</p></li>
+<li><p>TCI648x family of devices</p></li>
+<li><p>OMAP family of devices (OMAP44xx and OMAP54xx)</p></li>
+<li><p>C6A816x family of devices</p></li>
+<li><p>DRA7xx family of devices</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="documentation">
+<h3>5.2.1.4. Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>There is a generated Doxygen API description included with each
+CToolsLib.</p></li>
+</ul>
+</div>
+<div class="section" id="download">
+<h3>5.2.1.5. Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h3>
+<p>All cToolsLib libraries and example source are available in the links
+below. After downloading the zips you need, simply expand each zip under
+the same top level directory. All library and example projects are
+compatible with CCSv6.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>File Repository</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GettingStarted</p></td>
+<td><p>Provides processor
+specific notes for
+libraries and
+examples</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/GettingStarted.htm">GettingStarted</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>STMLib</p></td>
+<td><p>Software Message
+Library</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/STMLib_5.2.zip">STMLib_5.2</a></p></td>
+</tr>
+<tr class="row-even"><td><p>AETLib</p></td>
+<td><p>Software library for
+programmatically
+using the 64x+ AET
+hardware breakpoint
+and watchpoint units.
+Also useful for
+triggering/halting
+trace.</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/aet_4.18.zip">aet_4.18</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>ETBLib</p></td>
+<td><p>Software Library for
+configuring and
+retrieving the ETB
+contents.</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/ETBLib_1.22.zip">ETBLib_1.22</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ETMLib</p></td>
+<td><p>Software Library for
+configuring ARM
+CortexA8 Core Trace
+triggering.</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/ETMLib_0.6.zip">ETMLib_0.6</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>DSPTraceLib</p></td>
+<td><p>Software Library to
+configure DSP Trace
+export</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/DSPTraceLib_1.14.zip">DSPTraceLib_1.14</a></p></td>
+</tr>
+<tr class="row-even"><td><p>cTools_UCLib</p></td>
+<td><p>Library that
+configures key
+Keystone CP Tracer
+and DSP Trace Use
+Case</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/Ctools_UCLib_1.5.zip">Ctools_UCLib_1.5</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>PMICMILib</p></td>
+<td><p>Power and Clock
+management
+Instrumentation
+Library</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/PMICMILib_1.3.zip">PMICMILib_1.3</a>
+_</p></td>
+</tr>
+<tr class="row-even"><td><p>SCILib</p></td>
+<td><p>Statistic Collector
+Instrumentation
+Library</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/SCILib_1.5.zip">SCILib_1.5</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>CPTLib</p></td>
+<td><p>CP Tracer
+Instrumentation
+Library</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/CPTLib_0.15.zip">CPTLib_0.15</a></p></td>
+</tr>
+<tr class="row-even"><td><p>ITMLib</p></td>
+<td><p>Instrumentation Trace
+Macrocell Library</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/ITMLib_1.1.zip">ITMLib_1.1</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Examples</p></td>
+<td><p>CToolsLib Examples</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/Examples_5.9.zip">Examples_5.9</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Ctools_UCLib_Examples</p></td>
+<td><p>CTools Use-Case
+Library Examples</p></td>
+<td><p><a class="reference external" href="http://downloads.ti.com/emulation/esd/ctoolslib/Ctools_UCLib_Examples_1.3.zip">Ctools_UCLib_
+Examples_1.3</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The latest release of all libraries now come with CCS projects. Please
+refer GettingStarted.htm for more details.</p>
+</div>
+<div class="section" id="trace-decoding">
+<h3>5.2.1.6. Trace Decoding<a class="headerlink" href="#trace-decoding" title="Permalink to this headline">¶</a></h3>
+<p>To decoder trace from a binary dump of the ETB memory, two tools are
+avaialble:</p>
+<p><strong>Bin2TDF utility</strong></p>
+<p>Refer here for the detail on using <a class="reference external" href="http://processors.wiki.ti.com/index.php/BIN2TDF">BIN2TDF.</a></p>
+<p><strong>TD utility</strong></p>
+<p>Refer here for the detail on using
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/TD">TD</a> .</p>
+</div>
+<div class="section" id="support">
+<h3>5.2.1.7. Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://e2e.ti.com/support/development_tools/code_composer_studio/f/81.aspx">Support Forum - Please put CToolsLib in
+title</a></p></li>
+</ul>
+<p class="rubric" id="frequent-asked-questions-faq">Frequent Asked Questions (FAQ)</p>
+<p class="rubric" id="q-can-i-get-the-source-code">Q: Can I get the source code?</p>
+<ul class="simple">
+<li><p>A: The source code is included with each library.</p></li>
+</ul>
+<p class="rubric" id="q-how-do-i-know-if-my-device-supports-ctools">Q: How do I know if my device supports CTools?</p>
+<ul class="simple">
+<li><p>A: The datasheet or Technical Reference Manual (TRM) will usually
+contain details on the features support and avaialble on your device.
+If you are unsure, you may wish to ask in the support forum.</p></li>
+</ul>
+<p class="rubric" id="q-do-i-have-to-use-ctoolslib-with-code-composer-studio">Q: Do I have to use CToolsLib with <a class="reference external" href="http://processors.wiki.ti.com/index.php/Code_Composer_Studio">Code Composer
+Studio</a>?</p>
+<ul class="simple">
+<li><p>A: No, other tools such as Lauterbach Trace32 can be used with the
+CToolsLib. Please contact your tools vendor regarding support.</p></li>
+</ul>
+<p class="rubric" id="q-do-you-have-approximate-cycle-counts-for-each-library">Q: Do you have approximate cycle counts for each library?</p>
+<ul class="simple">
+<li><p>A: For <a class="reference external" href="http://processors.wiki.ti.com/index.php/AETlib">AETlib</a> there is a file called
+“aetlib_profiling_stats.txt” that gives this information</p></li>
+<li><p>A: For ETBLib, on the TI c6x compiler on a 64x+ device, it takes
+approximately 1000 cycles per call at the “-o2” optimization level.</p></li>
+</ul>
+<p class="rubric" id="q-do-you-have-the-code-size-for-each-library">Q: Do you have the code size for each library?</p>
+<ul class="simple">
+<li><p>A: For <a class="reference external" href="http://processors.wiki.ti.com/index.php/AETlib">AETlib</a> there is a file called
+“aetlib_size_stats.txt” that gives this information</p></li>
+<li><p>A: For ETBLib, on the TI c6x compiler on a 64x+ device, it is
+approximately 4KB at the “-o2” optimization level.</p></li>
+</ul>
+<p class="rubric" id="q-what-license-is-this-code-provided-under-is-the-code-gpl-compatible">Q: What license is this code provided under? / Is the code
+GPL compatible?</p>
+<ul class="simple">
+<li><p>A: The header files in CToolsLib will have the relevant licenses.
+Generally, CToolsLib is licnesed under modified BSD license which is
+GPL compatible. Please see <a class="reference external" href="http://en.wikipedia.org/wiki/BSD_License#3-clause_license_.28.22New_BSD_License.22_or_.22Modified_BSD_License.22.29">this wikipedia
+article.</a></p></li>
+</ul>
+<p class="rubric" id="related">Related</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.ti.com/tool/TMDSEMU560V2STM-U">TI.com XDS560 Product Page</a></p></li>
+<li><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace">XDS560v2 System Trace</a></p></li>
+<li><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/CTools">CTools</a></p></li>
+<li><p><a class="reference external" href="http://e2e.ti.com/blogs_/b/mobile_momentum/archive/2011/01/03/how-omap-software-developers-use-system-trace-to-boost-performance.aspx">How OMAP software developers use System Trace to boost
+performance</a></p></li>
+<li><p><a class="reference external" href="http://processors.wiki.ti.com/index.php/Using_System_Trace_(STM)">Using System Trace (STM)</a></p></li>
+<li><p>Etblib Example
+<a class="reference external" href="http://processors.wiki.ti.com/index.php/Capturing_ETB_Trace_Data_With_ETBLib">Here</a></p></li>
+</ul>
+<hr class="docutils" />
+</div>
+</div>
+<div class="section" id="uia">
+<h2>5.2.2. UIA<a class="headerlink" href="#uia" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>5.2.2.1. Overview<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>System Analyzer is a real-time tool for analyzing, visualizing and
+profiling application running on single or multi core systems. Data is
+collected using UIA (Unified Instrumentation Architecture) software
+instrumentation on the target and transported via Ethernet, run-mode
+JTAG, stop-mode JTAG, USB or UART to the host PC for analysis and
+visualization in Code Composer Studio.</p>
+<p>In a multi core system, data from all cores are correlated to a single
+timeline.</p>
+<img alt="../_images/SA.png" src="../_images/SA.png" />
+</div>
+<div class="section" id="unified-instrumentation-architecture-uia">
+<h3>5.2.2.2. Unified Instrumentation Architecture (UIA)<a class="headerlink" href="#unified-instrumentation-architecture-uia" title="Permalink to this headline">¶</a></h3>
+<p>UIA is the target-side package which defines the APIs, transports,
+interfaces and guidelines that enable developers to instrument embedded
+software in a way that is portable and flexible. It enables the creation
+of advanced tooling that can be used both in the lab and in the field.
+The framework includes:</p>
+<ul class="simple">
+<li><p>a messaging infrastructure that allows instrumentation clients to
+interact with instrumentation endpoints on a target device while the
+target is running</p></li>
+<li><p>an extensible set of commands and messages that can be sent over the
+messaging infrastructure</p></li>
+<li><p>protocols to be used by the target-side instrumentation framework and
+the host-side instrumentation client</p></li>
+<li><p>built-in instrumentation for DSP/BIOS for ‘out of the box’ real-time
+visibility into the operation of the O/S</p></li>
+<li><p>guidelines on how to instrument other RTOSes</p></li>
+</ul>
+<div class="section" id="portable-and-flexible">
+<h4>5.2.2.2.1. Portable and Flexible<a class="headerlink" href="#portable-and-flexible" title="Permalink to this headline">¶</a></h4>
+<p>System Analyzer and UIA are designed to be portable and flexible:</p>
+<ul class="simple">
+<li><p>ISA independent: UIA can be re-used across a wide range of TI
+platforms, single-core devices and multi-core devices</p></li>
+<li><p>O/S independent: UIA not tied to any specific operating system</p></li>
+<li><p>Transport independent: can use a wide variety of different transports
+to upload software events from the target to the host, without having
+to change the source code</p></li>
+<li><p>Platform independent: Host-side tooling works on both Windows and
+Linux platforms</p></li>
+<li><p>IDE independent: Host-side tooling will support both tight
+integration with Code Composer Studio and stand-alone operation for
+use with other IDEs.</p></li>
+</ul>
+<p>System Analyzer together with it’s UIA packages define an
+instrumentation framework that enables the development of
+instrumentation client tools, instrumented target content,
+infrastructure components, and instrumentation middleware components
+that interoperate and can be re-used across TI platforms and devices.</p>
+</div>
+<div class="section" id="available-analysis">
+<h4>5.2.2.2.2. Available Analysis<a class="headerlink" href="#available-analysis" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>RTOS Execution Graph</p></li>
+<li><p>CPU Load</p></li>
+<li><p>Task Load</p></li>
+<li><p>Duration Analysis</p></li>
+<li><p>Context-aware Function Profiler</p></li>
+<li><p>Concurrency Analysis</p></li>
+<li><p>Task Profiler</p></li>
+<li><p>Count/Statistical Analysis</p></li>
+</ul>
+<p class="rubric" id="execution-graph">Execution Graph</p>
+<p>Graphical representation of RTOS context switches, events, semaphores,
+HWIs and SWIs. Start/Stop events logged for Duration Analysis and
+Enter/Exit events logged for Function Profiler are also shown in graph.
+In a multi core system all cores are shown in the same graph on the same
+timeline.</p>
+<p class="rubric" id="cpu-load">CPU Load</p>
+<p>Graphical representation and min, max, average statistics of CPU loading
+data collected from RTOS.
+In a multi core system loading and statistics for all cores are shown.</p>
+<p class="rubric" id="task-load">Task Load</p>
+<p>Graphical representation and min, max, average statistics of task
+loading data collected from RTOS.
+In a multi core system different instance of analysis can be opened for
+each core.</p>
+<p class="rubric" id="duration-analysis">Duration Analysis</p>
+<p>Analyze time to perform operations. Start/Stop events logged for each
+operation is used to calculate and graph the time for each instance of
+each operation. Summary statistics (including count, min, max and
+average) is also shown for each operation.</p>
+<p class="rubric" id="context-aware-function-profiler">Context Aware Function Profiler</p>
+<p>Min, max and average inclusive time (includes time spend in called
+functions) and exclusive time (excludes time spent in called functions)
+for functions. Functions to be profiled must have their entry and exit
+instrumented. See FAQ below on how to leverage compiler entry/exit hook
+functions. For context awareness, RTOS context switch logging must also
+be enabled.</p>
+<p class="rubric" id="concurrency-analysis">Concurrency Analysis</p>
+<p>This is a multi-core tool to analyze parallel execution of application
+across multiple cores. RTOS Idle task is use to determine when the core
+is not in use. Task switch logging must be enabled for this analysis.</p>
+<p class="rubric" id="task-profiler">Task Profiler</p>
+<p>The task profiler analyzes what percent of time tasks are spending in
+their different states. RTOS context switch events are required for this
+analysis.</p>
+<p class="rubric" id="countstatistical-analysis">Count/Statistical Analysis</p>
+<p>Graphical representation of any counter/variable that is being logger.
+Also calculates number of occurrences and min, max, average value for
+each counter/variable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TIRTOS/SYSBIOS instrumentation is not enabled by default.
+See User Guide or Tutorials on how to enable this.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More information on the analysis features is available in the
+<a class="reference external" href="http://www.ti.com/lit/pdf/spruh43">System Analyzer User’s Guide</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="documents-and-tutorials">
+<h3>5.2.2.3. Documents and Tutorials<a class="headerlink" href="#documents-and-tutorials" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://processors.wiki.ti.com/images/7/7b/MCSA1.1_Getting_Started_Guide.pdf">System Analyzer Getting Started
+Guide</a> - Get familar
+with System Analyzer features using a data file shipped with CCStudio.</p>
+<p><a class="reference external" href="http://processors.wiki.ti.com/images/b/bc/MCSA1.1_User_Guide.pdf">System Analyzer User’s Guide</a> -
+Detail guide on configuring and using System Analyzer and UIA.</p>
+<p><a class="reference external" href="http://processors.wiki.ti.com/index.php/System_Analyzer_Tutorials_(CCSv5)">System Analyzer Tutorials
+(CCSv5)</a> - Includes a
+series of projects that can be built and use, along with step-by-step
+walkthroughs of how to configure code, set up System Analyzer, work with
+Analysis Features, etc.</p>
+</div>
+<div class="section" id="system-analyzer-and-the-mcsdk-demo">
+<h3>5.2.2.4. System Analyzer and the MCSDK Demo<a class="headerlink" href="#system-analyzer-and-the-mcsdk-demo" title="Permalink to this headline">¶</a></h3>
+<p>System Analyzer provides visibility into the real-time behavior and
+performance of the <a class="reference external" href="http://processors.wiki.ti.com/index.php/BIOS_MCSDK_2.0_User_Guide">BIOS MCSDK
+2.0</a>
+Image Processing Demo. The <a class="reference external" href="http://processors.wiki.ti.com/index.php/MCSA_and_the_MCSDK_Demo">System Analyzer and the MCSDK
+Demo</a>
+page provides more information about how to use System Analyzer with the
+MCSDK.</p>
+</div>
+<div class="section" id="known-issues-errata">
+<h3>5.2.2.5. Known Issues/Errata<a class="headerlink" href="#known-issues-errata" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="ccs-crash-when-opening-graph-in-system-analyzer">CCS Crash when opening Graph in System Analyzer</p>
+<ul class="simple">
+<li><p>It appears that some graphics card drivers are not compatible with
+Eclipse support for text rotation. This may result in a CCS crash
+(inside the graphics driver) when opening graphs in System Analyzer
+(graphs use text rotation for y-axis label). If you encounter this
+problem, try updating the graphics card driver. This has resolved the
+occurrences of this problem we’ve seen so far.</p></li>
+</ul>
+<p class="rubric" id="multicore-correlation-not-working">Multicore correlation not working</p>
+<ul class="simple">
+<li><p>Multicore event correlation is not automatically supported for JTAG
+transports (it is supported for Ethernet). User can explicitly add
+synchronization logs to enable correlation. (See <a class="reference external" href="http://processors.wiki.ti.com/index.php/System_Analyzer_Tutorial_4B">Tutorial
+4B</a>
+for details)</p></li>
+<li><p>if the target is halted (either by explict halt or implicit halts
+such as Console I/O / CIO) while data is being collected via Ethernet
+then correlation will not work.</p></li>
+<li><p>if some target is generating data very infrequently then correlation
+may timeout resulting in uncorrelated data. In this case the data can
+be saved to a binary file and post process for correlation to work.</p></li>
+</ul>
+<p class="rubric" id="uia-1-00-04-35-tutorial-1-and-tutorial-2-do-not-build-properly">uia_1_00_04_35 : Tutorial 1 and Tutorial 2 do not build properly.</p>
+<ul class="simple">
+<li><p>The build fails with the error <em>“dc.services.global.XDCException:
+xdc.PACKAGE_NOT_FOUND: can’t locate the package ‘ti.sysbios.knl’”</em></p></li>
+<li><p>To overcome this, please unzip <a class="reference external" href="./images/UIAMetaData.zip">UIAMetaData.zip</a>
+&lt;uia_1_00_04_35 install folder&gt;/packages/ti/uia/runtime/ to update
+the UIAMetaData.xs file. Then delete the &lt;Debug&gt; folder from your
+project and rebuild.</p></li>
+</ul>
+<p class="rubric" id="uia-1-03-00-02-jtag-transport-does-not-work-properly-on-some-devices">uia_1_03_00_02 : JTAG Transport does not work properly on
+some devices.</p>
+<ul class="simple">
+<li><p>Project builds cleanly, System Analyzer starts normally, but no
+events are captured.</p></li>
+<li><p>To overcome this, please use
+<a class="reference external" href="http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/uia/1_03_01_08/index_FDS.html">uia_1_03_01_08</a>
+or later.</p></li>
+</ul>
+</div>
+<div class="section" id="faqs">
+<h3>5.2.2.6. FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="q-when-can-i-use-system-analyzer-auto-configuration">Q: When can I use System Analyzer auto configuration</p>
+<p>When launching a Live or Binary File session users can choose to let
+System Analyzer auto configure itself. For this to work you must:</p>
+<ul class="simple">
+<li><p>have a debug session running with the symbol/program file loaded</p></li>
+<li><p>generated rta and uia xml file (<em>program</em>.rta.xml and
+<em>program</em>.uia.xml) files should be located where the project
+generated them or in the same folder as the .out file</p></li>
+<li><p>if using Ethernet transport it is expected that IP address is output
+in the console</p></li>
+</ul>
+<p class="rubric" id="q-configuring-system-analyzer-when-auto-configuration-is-not-possible">Q: Configuring System Analyzer when auto configuration is
+not possible</p>
+<p>See <strong>Configuring System Analyzer Transport and Endpoints</strong> in Chapter 4
+of the <a class="reference external" href="http://www.ti.com/lit/pdf/spruh43">System Analyzer User’s
+Guide</a>.</p>
+<p class="rubric" id="q-can-i-launch-system-analyzer-before-the-target-if-running">Q: Can I launch System Analyzer before the target if running</p>
+<p>If using Ethernet transport, System Analyzer expects that the target is
+up and running and the Ethernet connection is established before it is
+started. For JTAG transport the target does not have to be running.</p>
+<p class="rubric" id="q-what-happens-if-the-target-is-halted-while-collecting-data-using-ethernet-transport">Q: What happens if the target is halted while collecting
+data using Ethernet transport</p>
+<p>Halting the target may result in the ethenet connection getting
+disconnected. The connection can be re-established using the <strong>connect</strong>
+button.</p>
+<p class="rubric" id="q-how-to-profile-functions-using-enter-and-exit-hook-functions">Q: How to Profile functions using enter and exit hook
+functions</p>
+<p>In order to do inclusive and exclusive profiling of functions(using
+Context Aware Profiler of System Analyzer), a UIA log is needed at the
+entry and exit point of functions. One can add entry and exit hook
+functions to every function in the source by doing the following</p>
+<p>Use the following compiler options when compiling the source</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">--</span><span class="n">entry_hook</span><span class="o">=</span><span class="n">functionEntryHook</span>
+<span class="o">--</span><span class="n">entry_parm</span><span class="o">=</span><span class="n">address</span>
+<span class="o">--</span><span class="n">exit_hook</span><span class="o">=</span><span class="n">functionExitHook</span>
+<span class="o">--</span><span class="n">exit_parm</span><span class="o">=</span><span class="n">address</span>
+</pre></div>
+</div>
+<p>To use the required UIA events, need this include</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;ti/uia/events/UIABenchmark.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Add entry and exit hook functions to the source (The below one is for
+Context aware function profiling)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">functionEntryHook</span><span class="p">(</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">addr</span><span class="p">)()</span> <span class="p">){</span>
+    <span class="n">Log_write3</span><span class="p">(</span><span class="n">UIABenchmark_startInstanceWithAdrs</span><span class="p">,</span> <span class="p">(</span><span class="n">IArg</span><span class="p">)</span><span class="s">&quot;context=0x%x, fnAdrs=0x%x:&quot;</span><span class="p">,(</span><span class="n">IArg</span><span class="p">)</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">IArg</span><span class="p">)</span><span class="n">addr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">functionExitHook</span><span class="p">(</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">addr</span><span class="p">)()</span> <span class="p">){</span>
+    <span class="n">Log_write3</span><span class="p">(</span><span class="n">UIABenchmark_stopInstanceWithAdrs</span><span class="p">,</span>  <span class="p">(</span><span class="n">IArg</span><span class="p">)</span><span class="s">&quot;context=0x%x, fnAdrs=0x%x:&quot;</span><span class="p">,(</span><span class="n">IArg</span><span class="p">)</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">IArg</span><span class="p">)</span><span class="n">addr</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For CCS 5.5 and later</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">functionEntryHook</span><span class="p">(</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">addr</span><span class="p">)()</span> <span class="p">){</span>
+    <span class="n">Log_write2</span><span class="p">(</span><span class="n">UIAProfile_enterFunctionAdrs</span><span class="p">,</span> <span class="p">(</span><span class="n">IArg</span><span class="p">)</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">IArg</span><span class="p">)</span><span class="n">addr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">functionExitHook</span><span class="p">(</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">addr</span><span class="p">)()</span> <span class="p">){</span>
+    <span class="n">Log_write2</span><span class="p">(</span><span class="n">UIAProfile_exitFunctionAdrs</span><span class="p">,</span>  <span class="p">(</span><span class="n">IArg</span><span class="p">)</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">IArg</span><span class="p">)</span><span class="n">addr</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The 1st parameter after the message string( 3rd parameter to
+Log_write3) is a context parameter (For CCS 5.5 and later is the 2nd
+parameter to Log_write2) and can be used to specify an additional
+level of qualification (e.g. Task Context). For our purpose out here
+we can ignore this and just set it to 0.</p>
+<p>If task aware profiling is needed, the Task context has to be logged.
+SYS/BIOS automatically logs events for task switches and SWI and HWI
+Start and Stop events. See Enabling and Disabling logging Sec 5.2.2 in
+the <a class="reference external" href="http://www.ti.com/lit/pdf/spruh43">System Analyzer User’s
+Guide</a>. Context change can also be
+explicitly logged by the application. For more on Profiling using system
+analyzer refer to Section 3.5,4.12 of the user’s guide.</p>
+<p><strong>Profiling Results when using Libraries:</strong> Hook functions will not be
+added and hence called from functions in libraries that have been linked
+in. This will cause the Exclusive counts of the functions making calls
+to the Library, to include the Library functions duration.</p>
+</div>
+<div class="section" id="trouble-shooting">
+<h3>5.2.2.7. Trouble Shooting<a class="headerlink" href="#trouble-shooting" title="Permalink to this headline">¶</a></h3>
+<p class="rubric" id="system-analyzer-events-or-packets-are-being-dropped">System Analyzer Events or Packets are being dropped</p>
+<p>See <strong>Troubleshooting System Analyzer Connections</strong> section in the
+<a class="reference external" href="http://www.ti.com/lit/pdf/spruh43">System Analyzer User’s Guide</a>.</p>
+<p class="rubric" id="no-events-showing-up-in-system-analyzer-views">No Events showing up in System Analyzer Views</p>
+<p>See <strong>Troubleshooting System Analyzer Connections</strong> section in the
+<a class="reference external" href="http://www.ti.com/lit/pdf/spruh43">System Analyzer User’s Guide</a>.</p>
+<p class="rubric" id="system-analyzer-cannot-connect-to-the-target-to-retrieve-logs">System Analyzer cannot connect to the target to retrieve
+logs</p>
+<p>See <strong>Troubleshooting System Analyzer Connections</strong> section in the
+<a class="reference external" href="http://www.ti.com/lit/pdf/spruh43">System Analyzer User’s Guide</a>.</p>
+<p class="rubric" id="system-analyzer-events-do-not-make-sense">System Analyzer Events do not make sense</p>
+<p>See <strong>Troubleshooting System Analyzer Connections</strong> section in the
+<a class="reference external" href="http://www.ti.com/lit/pdf/spruh43">System Analyzer User’s Guide</a>.</p>
+<p class="rubric" id="time-values-in-the-logs-are-too-large">Time values in the logs are too large</p>
+<p>See <strong>Troubleshooting System Analyzer Connections</strong> section in the
+<a class="reference external" href="http://www.ti.com/lit/pdf/spruh43">System Analyzer User’s Guide</a>.</p>
+</div>
+<div class="section" id="technical-support-and-product-updates">
+<h3>5.2.2.8. Technical Support and Product Updates<a class="headerlink" href="#technical-support-and-product-updates" title="Permalink to this headline">¶</a></h3>
+<p>For technical discussions and issues, please visit</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://e2e.ti.com/support/processors/">E2E Processor Support:
+https://e2e.ti.com/support/processors/</a></p></li>
+<li><p><a class="reference external" href="http://e2e.ti.com/support/embedded/f/355.aspx">BIOS Embedded Software forum:
+http://e2e.ti.com/support/embedded/f/355.aspx</a></p></li>
+<li><p><span class="xref std std-ref">Embedded Processors Documentation:</span></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When asking for help in the forum you should tag your posts in the
+Subject with “System Analyzer”, the part number (e.g. “C6678”), and
+component (e.g. “UIA”).</p>
+</div>
+<p>For product updates,
+-  Use the CCS/Eclipse Update Manager (see the Getting Started Guide above)</p>
+</div>
+</div>
+<div class="section" id="trace">
+<h2>5.2.3. Trace<a class="headerlink" href="#trace" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>5.2.3.1. Overview<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>In a multicore environment there would be data generated by a producer
+in one core and would need to be consumed by multiple consumers in other
+cores/same core. For example, a target log information to be consumed by
+ARM and CCS System Analyzer.</p>
+<p>The trace framework (TF) provides a mechanism to send the information to
+multiple consumers for a given producer. In trace framework, Producer
+populates the associated Ring buffer. Consumers consume the ring buffer
+and send the data to external actual consumers (like System Analyzer in
+CCS). The hand shake between producers and consumers happen using shared
+memory area known as contract memory between producers and consumers.</p>
+<p>It is upto the consumer application to either send the data to final
+consumers (using ethernet for System Analyzer) or local consuption for
+any OAM (Operations and maintenance) features on ARM.</p>
+</div>
+<div class="section" id="driver-configuration">
+<h3>5.2.3.2. Driver Configuration<a class="headerlink" href="#driver-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Traceframework requires Producer, Consumer and Contract shared memory to
+be configured using tf_contractInit(), tf_contractCreate(),
+tf_prodCreate() and tf_consCreate() functions. For details about
+individual fields of this structure, see the Doxygen help by opening
+PDK_INSTALL_DIR\Traceframeworkckages\ti\drv\Traceframework\docs\doxygen\html\index.html.</p>
+</div>
+<div class="section" id="apis">
+<h3>5.2.3.3. APIs<a class="headerlink" href="#apis" title="Permalink to this headline">¶</a></h3>
+<p>API reference for application:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;ti/instrumentation/traceframework/traceframework.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="example">
+<h3>5.2.3.4. Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Expected Results</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Traceframework_UnitTe
+stApplication</p></td>
+<td><div class="line-block">
+<div class="line">Unit Test
+application to test
+all APIs</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">User observes the
+output printed over
+the CCS console</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="application-integration-details">
+<h3>5.2.3.5. Application Integration Details<a class="headerlink" href="#application-integration-details" title="Permalink to this headline">¶</a></h3>
+<p><strong>Sys BIOS DSP (C66) Use case</strong></p>
+<p>Reference library path to be included in application build environment:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ti</span><span class="o">/</span><span class="n">instrumentation</span><span class="o">/</span><span class="n">traceframework</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">c66</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><strong>SysBIOS based application</strong></p>
+<p>Any RTSC application that needs to use trace framework library, should
+have a RTSC configuration file. Please refer to
+&lt;ti/instrumentation/traceframework/test/TFUnitTest/&lt;soc&gt;/c66/bios/tfw_Uia_utest.cfg&gt;
+sample RTSC cfg file for reference.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="additional-references">
+<h3>5.2.3.6. Additional References<a class="headerlink" href="#additional-references" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>Traceframework Library Summary</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Component Type</p></td>
+<td><p>Library</p></td>
+</tr>
+<tr class="row-odd"><td><p>Install Package</p></td>
+<td><p>PDK</p></td>
+</tr>
+<tr class="row-even"><td><p>Install Directory</p></td>
+<td><p>pdk_keystone_&lt;version&gt;\packages\ti\
+instrumentation\traceframework</p></td>
+</tr>
+<tr class="row-odd"><td><p>Project Type</p></td>
+<td><p><a class="reference external" href="http://www.eclipse.org/rtsc/">Eclipse RTSC</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Endian Support</p></td>
+<td><p>Little</p></td>
+</tr>
+<tr class="row-odd"><td><p>Linker Path</p></td>
+<td><p>$(TI_PDK_INSTALL_DIR)/packages/ti/
+instrumentation/traceframework</p></td>
+</tr>
+<tr class="row-even"><td><p>Linker Sections</p></td>
+<td><p>.vecs , .switch, .args, .cio</p></td>
+</tr>
+<tr class="row-odd"><td><p>Include Paths</p></td>
+<td><p>$(TI_PDK_INSTALL_DIR)/packages/ti/
+instrumentation/traceframework</p></td>
+</tr>
+<tr class="row-even"><td><p>Reference Guides</p></td>
+<td><p>$(TI_PDK_INSTALL_DIR)/packages/ti/
+instrumentation/traceframework/docs/
+doxygen/html/index.html</p></td>
+</tr>
+<tr class="row-odd"><td><p>Release Notes
+Resources</p></td>
+<td><p>$(TI_PDK_INSTALL_DIR)/packages/ti/
+instrumentation/traceframework/docs/
+ReleaseNotes_traceframework.pdf</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="fault-management">
+<h2>5.2.4. Fault Management<a class="headerlink" href="#fault-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>5.2.4.1. Introduction<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>This section describes the Fault Management APIs and provides
+information on how to instrument a DSP image for exception. This library
+is currently supported for K2x devices only.</p>
+</div>
+<div class="section" id="fm-dsp-exception-apis-usage">
+<h3>5.2.4.2. FM DSP Exception APIs &amp; Usage<a class="headerlink" href="#fm-dsp-exception-apis-usage" title="Permalink to this headline">¶</a></h3>
+<p>A DSP application can create and install an exception hook configured
+with the following features using the APIs provided by FM:</p>
+<ul class="simple">
+<li><p>Retrieve DSP register status for a core dump</p></li>
+<li><p>Halt system IO, such as DMAs</p></li>
+<li><p>Inform remote DSPs an exception has occurred</p></li>
+<li><p>Inform ARM/Host a DSP exception has occurred</p></li>
+</ul>
+<p class="rubric" id="retrieving-last-register-status">Retrieving Last Register Status</p>
+<p>An exception hook function that intends to create a core dump must call
+the following API:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Fault_Mgmt_getLastRegStatus(void);</span></code></p>
+<p>The API stores relevant DSP core register values into the memory region
+mapped to the fault_mgmt_data data array for the core dump that is
+provided to the ARM/Host.</p>
+<p class="rubric" id="halting-system-io">Halting System IO</p>
+<p>When a DSP exception is detected, invoking the FM instrumented exception
+hook function, system IO that offload data transfers can be stopped
+using the following API:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Fault_Mgmt_haltIoProcessing(Fm_GlobalConfigParams</span> <span class="pre">*fmGblCfgParams,</span> <span class="pre">Fm_HaltCfg</span> <span class="pre">*haltCfg)</span></code></p>
+<p>The API provides the ability to disable all or subsets of the following
+system IO:</p>
+<ul class="simple">
+<li><p>AIF2 PE (Tx) and PD (Rx) channels</p></li>
+<li><p>EDMA3 DMA, QDMA, and INT channels</p></li>
+<li><p>CPDMA Tx/Rx channels</p></li>
+<li><p>SGMII switch</p></li>
+</ul>
+<p>The exception hook can invoke this function in order to stop DSP enabled
+IO from continuing data transfers that may wipe out data important to
+deciphering the source of the DSP exception. However, care must be taken
+to not disable resources in use by the ARM/Host. If this occurs the
+ARM/Host may experience unstable behavior preventing it from properly
+receiving and handling the DSP core dump.</p>
+<p class="rubric" id="io-halt-configuration-parameters">IO Halt Configuration Parameters</p>
+<p>The Fm_HaltCfg structure is used to define which system IO will be
+disabled upon invocation of the IO halt API. A user can specify that an
+entire IO be disabled or a subset of an IO be disabled. The Fm_HaltCfg
+structure has the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">haltAif</span></code> If set to a non-zero value, will halt all AIF2 PE
+and PD channels except those specified within the
+Fm_ExcludedResource’s list. All AIF2 PE and PD channels will be
+disabled if the Fm_ExcludedResource’s list is NULL.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">haltSGMII</span></code> If set to a non-zero value, will halt the SGMII
+ethernet switch.
+<strong>Note:</strong> This will prevent ARM Linux ethernet from working properly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">haltEdma3</span></code> If set to a non-zero value, will halt all EMDA3
+DMA, QDMA, and INT channels except those specified within the
+Fm_ExcludedResource’s list. All EDMA3 DMA, QDMA, and INT channels
+will be disabled if the Fm_ExcludedResource’s list is NULL.
+<strong>Note:</strong> Some EDMA3 channels are used by ARM Linux to access
+NAND in UBIFS. UBIFS will not work correctly if these channels are
+halted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">int32_t</span> <span class="pre">haltCpdma</span></code> If set to a non-zero value, will halt all CPDMA
+channels except those specified within the Fm_ExcludedResource’s
+list. All CPDMA channels will be disabled if the
+Fm_ExcludedResource’s list is NULL.
+<strong>Note:</strong> Some CPDMA channels are used by ARM Linux which will exhibit
+unknown behavior if the relevant CPDMA channels are halted.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Fm_ExcludedResource</span> <span class="pre">*excludedResources;</span></code> List of specific system
+IO values that should not be disabled.</p></li>
+</ul>
+<p>A customized version of the Fm_ExcludedResource’s list can be created.
+However, a version has been created and supplied in
+<em>pdk_#_##_##_##\packages\ti\instrumentation\fault_mgmt\device\k2x\src\fm_device.c</em>
+which already accounts for all resources used the ARM Linux kernel
+delivered with the latest PROCSDK release.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Following the IO halt configuration defined in the FM test source code
+will diable all IO except that used by ARM Linux UBIFS and NFS.</p>
+</div>
+<p class="rubric" id="informing-remote-dsp-cores-of-exception">Informing Remote DSP Core’s of Exception</p>
+<p>Remote DSP cores can be informed of a DSP exception and told to halt
+functioning using the following API:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Fault_Mgmt_notify_remote_core(uint32_t</span> <span class="pre">core_id);</span></code></p>
+<p>The DSP local to the exception will interrupt remote cores via their NMI
+causing them to enter their own exception handling routine. This allows
+all DSPs to be brought down when a single DSP exception occurs. In
+multi-core application this may help preserve information relevant to
+deciphering the root cause of the original DSP exception.</p>
+<p class="rubric" id="informing-armhost-of-dsp-exception">Informing ARM/Host of DSP Exception</p>
+<p>A DSP core can inform the ARM/Host an exception has occurred via the
+following API:</p>
+<p><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">Fault_Mgmt_notify(void);</span></code></p>
+<p>This function will notify the ARM/Host an exception has occurred via
+Remoteproc and should be the last FM API called within the instrumented
+exception hook function.</p>
+</div>
+<div class="section" id="instrumenting-a-dsp-application-with-fm-exception-apis">
+<h3>5.2.4.3. Instrumenting a DSP Application with FM Exception APIs<a class="headerlink" href="#instrumenting-a-dsp-application-with-fm-exception-apis" title="Permalink to this headline">¶</a></h3>
+<p>Create and install an exception hook in the DSP application that
+utilizes the DSP FM APIs.</p>
+<ul class="simple">
+<li><p>In the .cfg (Configuro Script) file of the application add following
+commands to create a section</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>var devType = &quot;k2?&quot;;  /* Replace k2? with the k2 device in use k2e, k2h, k2k, or k2l */
+/* Load and use the Fault Management package */
+var Fault_mgmt = xdc.useModule(&#39;ti.instrumentation.fault_mgmt.Settings&#39;)
+Fault_mgmt.deviceType = devType;
+
+/*
+ * The SysMin used here vs StdMin, as trace buffer address is required for
+ * Linux trace debug driver, plus provides better performance.
+ */
+Program.global.sysMinBufSize = 0x8000;
+var System = xdc.useModule(&#39;xdc.runtime.System&#39;);
+var SysMin = xdc.useModule(&#39;xdc.runtime.SysMin&#39;);
+System.SupportProxy = SysMin;
+SysMin.bufSize = Program.global.sysMinBufSize;
+
+/* Configure resource table for trace only.
+   Note that traceOnly parameter should not
+   be set if application is using MessageQ based IPC
+   to communicate between cores.
+ */
+var Resource = xdc.useModule(&#39;ti.ipc.remoteproc.Resource&#39;);
+Resource.loadSegment = Program.platform.dataMemory;
+Resource.traceOnly = true;
+
+/* Load the Exception and register a exception hook */
+var Exception = xdc.useModule(&#39;ti.sysbios.family.c64p.Exception&#39;);
+Exception.exceptionHook = &#39;&amp;myExceptionHook&#39;;
+Exception.enablePrint = true;
+
+/* Add note section for coredump */
+Program.sectMap[&quot;.note&quot;] = new Program.SectionSpec();
+Program.sectMap[&quot;.note&quot;] = Program.platform.dataMemory;
+Program.sectMap[&quot;.note&quot;].loadAlign = 128;
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In a source/header file, create a exception hook function as follows</p></li>
+</ul>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Fault Management Include File */</span>
+<span class="cp">#include</span> <span class="cpf">&lt;ti/instrumentation/fault_mgmt/fault_mgmt.h&gt;</span><span class="cp"></span>
+
+<span class="n">Void</span> <span class="nf">myExceptionHook</span><span class="p">(</span><span class="n">Void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">uint32_t</span>   <span class="n">i</span><span class="p">;</span>
+    <span class="n">Fm_HaltCfg</span> <span class="n">haltCfg</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>   <span class="n">efr_val</span><span class="p">;</span>
+
+    <span class="cm">/* Copy register status into fault management data region for ARM/Host */</span>
+    <span class="n">Fault_Mgmt_getLastRegStatus</span><span class="p">();</span>
+
+    <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">haltCfg</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">haltCfg</span><span class="p">));</span>
+    <span class="n">efr_val</span> <span class="o">=</span> <span class="n">CSL_chipReadEFR</span><span class="p">();</span>
+
+    <span class="cm">/* If triggered exception originates from another core through</span>
+<span class="cm">     * NMI exception don&#39;t need to halt processing and notify other cores</span>
+<span class="cm">     * since the parent core where the exception originally triggered via</span>
+<span class="cm">     * event would notify them.  This eliminates recursive exceptions */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">efr_val</span> <span class="o">&amp;</span> <span class="mh">0x80000000</span><span class="p">))</span> <span class="p">{</span>
+        <span class="cm">/* Halt all processing - Only need to be done on one core */</span>
+        <span class="n">haltCfg</span><span class="p">.</span><span class="n">haltAif</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">haltCfg</span><span class="p">.</span><span class="n">haltCpdma</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="cp">#if EXCLUDE_LINUX_RESOURCES_FROM_HALT</span>
+        <span class="n">haltCfg</span><span class="p">.</span><span class="n">haltSGMII</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="cm">/* EDMA used by kernel to copy data to/from NAND in UBIFS */</span>
+        <span class="n">haltCfg</span><span class="p">.</span><span class="n">haltEdma3</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">haltCfg</span><span class="p">.</span><span class="n">excludedResources</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">linuxResources</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="cp">#else</span>
+        <span class="n">haltCfg</span><span class="p">.</span><span class="n">haltSGMII</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">haltCfg</span><span class="p">.</span><span class="n">haltEdma3</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">haltCfg</span><span class="p">.</span><span class="n">excludedResources</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="cp">#endif</span>
+
+        <span class="n">Fault_Mgmt_haltIoProcessing</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fmGblCfgParams</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">haltCfg</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">fmGblCfgParams</span><span class="p">.</span><span class="n">maxNumCores</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="cm">/* Notify remote DSP cores of exception - WARNING: This will generate NMI</span>
+<span class="cm">             * pulse to the remote DSP cores */</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="n">CSL_chipReadDNUM</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">Fault_Mgmt_notify_remote_core</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Notify ARM/Host of crash */</span>
+    <span class="n">Fault_Mgmt_notify</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A sample test application is provided in
+<em>pdk_#_##_##_##\packages\ti\instrumentation\fault_mgmt\test\k2x\c66\bios\fmCoreDumpK2XC66TestProject</em>.
+The test application uses the default resource exclusion list provided
+with FM in
+<em>pdk_#_##_##_##\packages\ti\instrumentation\fault_mgmt\device\k2x\src</em>.
+The default list has been configured to exclude all Linux owned IO from
+the halting on exception. This allows the Linux kernel to remain
+operational after DSP exception so that the core dump can be processed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended that the IO halt configuration defined within #if
+EXCLUDE_LINUX_RESOURCES_FROM_HALT be used in addition to halting AIF and
+CPDMA if Linux must remain active after a DSP exception occurs. This IO
+halt configuration has been tested with both UBIFS and NFS. The
+documented configuration shuts down all IO except those needed by Linux
+to operate, such as EDMA3 (for access to NAND), the SGMII (for
+Ethernet), and Linux owned CPPI DMAs.</p>
+</div>
+</div>
+<div class="section" id="fm-global-configuration-parameters">
+<h3>5.2.4.4. FM Global Configuration Parameters<a class="headerlink" href="#fm-global-configuration-parameters" title="Permalink to this headline">¶</a></h3>
+<p>The Fm_GlobalConfigParams structure informs the IO halt and cleanup
+features of the system peripheral resource ranges that could not be
+pulled from CSL. The user should not create their own version of this
+structure. Instead, the version of the structure provided within
+<em>pdk_#_##_##_##\packages\ti\instrumentation\fault_mgmt\device\k2x\src\fm_device.c</em>
+should be used. This structure has been statically created based on
+device peripheral parameters.</p>
+</div>
+<div class="section" id="fm-tests">
+<h3>5.2.4.5. FM Tests<a class="headerlink" href="#fm-tests" title="Permalink to this headline">¶</a></h3>
+<p>The Fault Management module comes with a single test application,
+fmCoreDumpK2HC66TestProject. The fmCoreDumpK2HC66TestProject forces a
+DSP exception which causes the FM core dump logic to execute. The
+example can be run from CCS or downloaded from Linux via MPM. After
+executing the application, from the Linux shell, check /var/log/syslog
+for a message saying a crash event was detected on the DSP to which the
+core dump test was loaded and run.</p>
+</div>
+<div class="section" id="id4">
+<h3>5.2.4.6. Additional References<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Document</strong></p></td>
+<td><p><strong>Location</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Fault Management API Reference
+Manual</p></td>
+<td><p>$(TI_PDK_INSTALL_DIR)\packages\
+ti\instrumentation\fault_mgmt\
+docs\doxygenhtmlindex.html</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fault Management Release Notes</p></td>
+<td><p>$(TI_PDK_INSTALL_DIR)\packages\
+ti\instrumentation\fault_mgmt\
+docs\ReleaseNotes_fault_mgmt.pdf</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="wdt">
+<h2>5.2.5. WDT<a class="headerlink" href="#wdt" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>5.2.5.1. Introduction<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>The Watchdog Timer Module provides configuration and use of the watchdog
+timer mode for the DSP local timers. The watchdog mode is a 64-bit timer
+mode for the local timers.</p>
+</div>
+<div class="section" id="modes-of-operation">
+<h3>5.2.5.2. Modes of Operation<a class="headerlink" href="#modes-of-operation" title="Permalink to this headline">¶</a></h3>
+<p>Following modes of operations are supported</p>
+<ul class="simple">
+<li><p><strong>DEFAULT_NO_OUTPUT_EVENT</strong>: Default on system reset, WD timeout
+causes no output event</p></li>
+<li><p><strong>LOCAL_RESET_INPUT</strong>: WD timeout causes local reset input to CorePac</p></li>
+<li><p><strong>NMI_INPUT</strong>: WD timeout causes NMI input to CorePac</p></li>
+<li><p><strong>NMI_INPUT_PLUS_LOCAL_RESET_INPUT</strong>: WD timeout causes an NMI input
+followed by a local reset input. The delay between the NMI and the
+local reset is configurable.</p></li>
+<li><p><strong>DEVICE_RESET</strong>: WD timeout event causes a device reset.</p></li>
+</ul>
+<p>Resets can be configured as a hard or soft reset.</p>
+</div>
+<div class="section" id="id6">
+<h3>5.2.5.3. Driver Configuration<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="watchdog-timer-configuration-structure">
+<h4>5.2.5.3.1. Watchdog Timer Configuration Structure<a class="headerlink" href="#watchdog-timer-configuration-structure" title="Permalink to this headline">¶</a></h4>
+<p>The watchdog timer configuration is passed at the time of the
+WatchdogTimer_Init() function call and cannot be changed afterwards. For
+details about individual fields of the configuration structure,
+WatchdogTimer_InitCfg, see the Watchdog Timer XDC by opening
+<code class="docutils literal notranslate"><span class="pre">[PDK_INSTALL_DIR]\packages\ti\instrumentation\wdtimer\WatchdogTimer.xdc</span></code>.</p>
+</div>
+<div class="section" id="id7">
+<h4>5.2.5.3.2. APIs<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>API reference for application:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;ti/instrumentation/wdtimer/WatchdogTimer.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="initialize-a-watchdog-timer">
+<h4>5.2.5.3.3. Initialize a Watchdog Timer<a class="headerlink" href="#initialize-a-watchdog-timer" title="Permalink to this headline">¶</a></h4>
+<div class="mw-geshi mw-code mw-content-ltr" dir="ltr"><div class="c source-c">
+
+  ...
+  memset((void *)&wdCfg, 0, sizeof(WatchdogTimer_InitCfg));
+
+  wdCfg.wdPeriodLo = ...;
+  wdCfg.wdPeriodHi = ...;
+  ...
+  /* Initialize and start the timer */
+  WatchdogTimer_Init(&wdCfg);</div><p>At this point the watchdog timer is enabled and running.</p>
+</div>
+<div class="section" id="service-watchdog-timer">
+<h4>5.2.5.3.4. Service Watchdog Timer<a class="headerlink" href="#service-watchdog-timer" title="Permalink to this headline">¶</a></h4>
+<p>The watchdog timer must be serviced prior to the configured period in
+order to avoid a timeout. The following API is used to service the
+watchdog timer, resetting the count back to zero.</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">WatchdogTimer_ResetTimer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tests">
+<h4>5.2.5.3.5. Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Expected Results</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Watchdog Timer Test
+Application</p></td>
+<td><div class="line-block">
+<div class="line">Tests configuration
+and expiration of
+DSP watchdog
+timers. Reference
+test for
+developers.</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Watchdog timer
+expires on all DSP
+cores.</div>
+</div>
+<div class="line-block">
+<div class="line">See
+ti/instrumentation/
+wdtimer/test/
+README.t xt
+for more details.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>5.2.5.4. Additional References<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Document</strong></p></td>
+<td><p><strong>Location</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>API Reference Manual</p></td>
+<td><p>$(TI_PDK_INSTALL_DIR)\packages\
+ti\instrumentation\wdtimer\
+docs\doxygen\html\index.html</p></td>
+</tr>
+<tr class="row-odd"><td><p>Release Notes</p></td>
+<td><p>$(TI_PDK_INSTALL_DIR)\packages\
+ti\instrumentation\wdtimer\do
+cs\ReleaseNotes_WatchdogTimer.pdf</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Device_Drivers.html" class="btn btn-neutral float-right" title="6. Device Drivers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="DSP_Software.html" class="btn btn-neutral" title="5. DSP Software" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2019</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'06_01_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

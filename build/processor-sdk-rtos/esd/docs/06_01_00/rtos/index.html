@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Processor SDK RTOS Software Developer’s Guide &mdash; Processor SDK RTOS Documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Processor SDK RTOS Documentation" href="../index.html"/>
+        <link rel="next" title="1. Overview" href="Overview.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="#" class="icon icon-home"> Processor SDK RTOS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                06_01_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="Overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Release_Specific.html">2. Release Specific</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board_EVM_Abstration.html">3. Board/EVM Abstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Foundational_Components.html">4. Foundational Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DSP_Software.html">5. DSP Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Device_Drivers.html">6. Device Drivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRU_ICSS.html">7. PRU-ICSS Firmware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Compilers.html">8. Compilers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Examples_and_Demonstrations.html">9. Examples and Demonstrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="How_to_Guides.html">10. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FAQ.html">11. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Documentation_Tarball.html">12. Documentation Tarball</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="#">Processor SDK RTOS</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="#">Docs</a> &raquo;</li>
+      
+    <li>Processor SDK RTOS Software Developer’s Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="processor-sdk-rtos-software-developer-s-guide">
+<h1>Processor SDK RTOS Software Developer’s Guide<a class="headerlink" href="#processor-sdk-rtos-software-developer-s-guide" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<div class="line-block">
+<div class="line">Processor SDK documentation is now created from reStructuredText sources using
+Sphinx, and hosted on ti.com instead of processors wiki - starting
+4.3 release.</div>
+<div class="line"><br /></div>
+<div class="line">We intend to retain the look and feel of the content
+to make this transition seamless, and yet provide the users with the benefits of
+consuming the content generated with emergent documentation tools.</div>
+<div class="line"><br /></div>
+<div class="line">Wiki content will be left for reference during this migration process to find any missing old content. Feel free to drop us a note using the
+forums listed at <a class="reference external" href="index_overview.html#technical-support">Technical Support</a>, and we would love to hear from you.</div>
+<div class="line"><br /></div>
+<div class="line">Old Wiki Documentation links from previous releases:</div>
+<div class="line-block">
+<div class="line">- <a class="reference external" href="http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide">Wiki Software Developer’s Guide</a>.</div>
+<div class="line">- <a class="reference external" href="http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Getting_Started_Guide">Wiki Getting Started Guide</a>.</div>
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<p class="rubric" id="introduction">Introduction</p>
+<p>The Texas Instruments Processor Software Development Kit (Processor-SDK)
+is a single scalable software platform that offers streamlined development
+across different TI <a class="reference external" href="http://www.ti.com/lsds/ti/processors/overview.page">Sitara/DSP Processors</a>.
+The Processor-SDK for RTOS provides fundamental platform software and tools
+for development, deployment and execution of RTOS-based applications.
+It includes the following, though not all features are applicable across
+all supported platforms:</p>
+<ul class="simple">
+<li><p>TI-RTOS kernel, a light-weight real-time embedded operating system for TI devices</p></li>
+<li><p>Chip support libraries, drivers, and basic board-support utilities</p></li>
+<li><p>Interprocessor communication for communication across cores and devices</p></li>
+<li><p>Basic networking stack and protocols</p></li>
+<li><p>Optimized C66x algorithm libraries</p></li>
+<li><p>Debug and instrumentation utilities</p></li>
+<li><p>Bootloaders and boot utilities</p></li>
+<li><p>Demonstrations and examples</p></li>
+</ul>
+<p>Combined with TI Code Composer Studio integrated development environment (IDE),
+the Processor-SDK provides the core foundational building blocks that facilitate
+application software development on TI’s embedded processors.</p>
+<p class="rubric" id="scope">Scope</p>
+<p>The purpose of this guide is to quickly provide the information you need most while
+evaluating and developing applications on a TI embedded processor, specifically
+running embedded real-time operating system. It is not intended to be a thorough
+design document. As such, the focus is on application programming interfaces (API),
+build information, and examples to use as a template to start development.</p>
+<p class="rubric" id="guides">Guides</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="2"><p><strong>Processor SDK RTOS</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="index_overview.html#getting-started-guide">Getting Started Guide</a>  &lt;– <strong>Start Here</strong></p></td>
+<td><p><a class="reference external" href="Release_Specific.html#release-notes">Release Notes</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_examples_demos.html">Examples and Demonstrations</a></p></td>
+<td><p><a class="reference external" href="index_overview.html#rtos-software-stack">RTOS Software Stack</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="index_overview.html#directory-structure">Directory Structure Overview</a></p></td>
+<td><p><a class="reference external" href="index_overview.html#building-the-sdk">Building the SDK</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://training.ti.com/processor-sdk-training-series">Training</a></p></td>
+<td><p><a class="reference external" href="Release_Specific.html#migration-guide">Migration Guide</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="index_overview.html#technical-support">Technical Support</a></p></td>
+<td><p><a class="reference external" href="index_how_to_guides.html">How To Guides</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_overview.html#related-software">Related Software</a></p></td>
+<td><p><a class="reference external" href="index_faq.html">Frequently Asked Questions (FAQ)</a></p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p><a class="reference external" href="Release_Specific.html#supported-platforms-and-versions">Supported Platforms and Versions</a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 26%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p><strong>Board/EVM Abstration</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="index_board.html#diagnostics">Diagnostics</a></p></td>
+<td><p><a class="reference external" href="index_board.html#board-support">Board Support</a></p></td>
+<td><p><a class="reference external" href="index_board.html#power-on-self-test">Power-On Self Test</a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p><strong>Foundational Components</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="index_Foundational_Components.html#ti-rtos-kernel">TI-RTOS Kernel</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#boot">Boot</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#IPC">IPC</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#mpm">MPM</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_Foundational_Components.html#openmp">OpenMP</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#fc">FC</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#opencl">OpenCL</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#ndk">Network</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="index_Foundational_Components.html#xdais">XDAIS</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#pktlib">PKTLIB</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#nwal">NWAL</a></p></td>
+<td><p><a class="reference external" href="index_Foundational_Components.html#tools">Tools</a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p><strong>DSP Optimized Libraries</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="index_dsp_sw.html#dsp-optimized-libraries">MATHLIB</a></p></td>
+<td><p><a class="reference external" href="index_dsp_sw.html#dsp-optimized-libraries">IMGLIB</a></p></td>
+<td><p><a class="reference external" href="index_dsp_sw.html#dsp-optimized-libraries">DSPLIB</a></p></td>
+<td><p><a class="reference external" href="index_dsp_sw.html#dsp-optimized-libraries">FFTLIB</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_dsp_sw.html#dsp-optimized-libraries">LINALG</a></p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 24%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p><strong>DSP Debug and Trace</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="index_dsp_sw.html#ctoolslib">CToolsLib</a></p></td>
+<td><p><a class="reference external" href="index_dsp_sw.html#uia">UIA</a></p></td>
+<td><p><a class="reference external" href="index_dsp_sw.html#trace">Trace</a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_dsp_sw.html#fault-management">Fault Mgt</a></p></td>
+<td><p><a class="reference external" href="index_dsp_sw.html#wdt">WDT</a></p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p><strong>Device Drivers</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="index_device_drv.html#csl">CSL</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#uart">UART</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#usb">USB</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#pcie">PCIe</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_device_drv.html#gpio">GPIO</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#i2c">I2C</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#mcspi-qspi-ospi">McSPI-QSPI-OSPI</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#edma3">EDMA3</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="index_device_drv.html#icss-emac-driver-firmware">ICSS-EMAC(DRIVER,FIRMWARE)</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#pruss">PRUSS</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#fatfs">FATFS</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#mmcsd">MMCSD</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_device_drv.html#qmss">QMSS</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#cppi">CPPI</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#pa">PA</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#sa">SA</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="index_device_drv.html#srio">SRIO</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#hyplnk">HYPLNK</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#tsip">TSIP</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#mcbsp">MCBSP</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_device_drv.html#emac">EMAC</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#mcasp">MCASP</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#pm">PM</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#rm">RM</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="index_device_drv.html#gpmc">GPMC</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#vps-drivers">VPS Drivers</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#dss">DSS</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#cal">CAL</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="index_device_drv.html#udma">UDMA</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#sciclient">SCICLIENT</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#iolink">IOLINK</a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p><strong>Device Driver Utilities</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="index_device_drv.html#osal">OSAL</a></p></td>
+<td><p><a class="reference external" href="index_device_drv.html#profiling">Profiling</a></p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p><strong>PRU-ICSS Firmware</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="index_pru_icss_fw.html#dual-emac-and-switch">Dual EMAC and Switch</a></p></td>
+<td><p><a class="reference external" href="index_pru_icss_fw.html#pru-icss-sorte">PRU-ICSS SORTE</a></p></td>
+<td><p><a class="reference external" href="index_pru_icss_fw.html#pru-icss-i2c">PRU-ICSS I2C</a></p></td>
+<td><p><a class="reference external" href="index_pru_icss_fw.html#pru-icss-iolink">PRU-ICSS IOLINK</a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p><strong>Compilers</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="Compilers.html#ti-c6000">TI C6000</a></p></td>
+<td><p><a class="reference external" href="Compilers.html#ti-arm">TI ARM</a></p></td>
+<td><p><a class="reference external" href="Compilers.html#ti-pru">TI PRU</a></p></td>
+<td><p><a class="reference external" href="Compilers.html#linaro-gcc-arm">Linaro GCC ARM</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="toctree-wrapper compound">
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><img alt="../_images/E2e.jpg" src="../_images/E2e.jpg" />
+</td>
+<td><p>For technical support please post your questions at <a class="reference external" href="http://e2e.ti.com/">http://e2e.ti.com</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Overview.html" class="btn btn-neutral float-right" title="1. Overview" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2019</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'06_01_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>
