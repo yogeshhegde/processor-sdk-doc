@@ -178,12 +178,39 @@ Issues opened in previous releases that were closed on this release
     LCPD-16176,"am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm","MMC3 does not have correct IODELAY values for DS, HS, SDR12, SDR25"
     LCPD-16181,"am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm","U-boot: MMC3 does not have correct IODELAY values for DS, HS, SDR12, SDR25"
     LCPD-16163,"am654x-evm, am654x-idk",IRQ not populated error message during boot
+    LCPD-14816,am654x-idk,iperf UDP tests shows packet loss as low as 20 Mbps tput
     PLSDK-2986,am574x-idk,"TIDL: Update mobilenetV1, inceptionNetV1, squeezeNetV1, models (.bin files) in target filesystem using more optimal import configuration"
     PLSDK-2909,"am57xx-evm,am574x-idk,dra7xx-evm",Upgrade TIDL-API converted models to the new file format
     PLSDK-2699,am574x-idk,TIDL: Accuracy problem using UNET3 topology with 160x120x1 input
-    LCPD-14816,am654x-idk,iperf UDP tests shows packet loss as low as 20 Mbps tput
-
-
+    PLSDK-3035,am572x-evm,opencv: C6x intrinsics do not support _min2/_max2 for uchar3 type
+    PLSDK-3005,"am654x-evm, am654x-idk","IPC documentation error, wrong firmware names"
+    PLSDK-3001,,PTP Documentation: e2e vs p2p
+    PLSDK-2996,"am572x-evm, am574x-idk, dra76x-evm",TIDL import tool incorrectly configures EltWise layer
+    PLSDK-2981,"am654x-evm, am654x-idk",K3-Watchdog: extra delay to reboot after watchdog daemon is terminated
+    PLSDK-2952,,WebGen: incorrect version of secdev
+    PLSDK-2948,am654x-evm,"""power-domain"" property is not in it's correct format, for watchdog timer"
+    PLSDK-2945,am572x-idk,ti-sgx-ddk-km install error
+    PLSDK-2943,am572x-idk,Browser app crashes if EVM is connected to Internet
+    PLSDK-2938,am437x-evm,[top level makefile error] make pru-icss_install_am437x
+    PLSDK-2929,"am572x-evm, am574x-idk",ex02_messageq example crashes on DSP2
+    PLSDK-2928,am572x-idk,top level makefile ti-ipc broken
+    PLSDK-2919,"am654x-evm, am654x-idk",[top level makefile] error running make system-firmware-image
+    PLSDK-2917,"am572x-evm, am572x-idk, am574x-idk",TIDL import tool doesn't support non-square padding for Caffe models
+    PLSDK-2914,"am572x-idk, am574x-idk",ICSS_EMAC: Fix access to possibly uninitialized variable
+    PLSDK-2905,am654x-hsevm,3D: Failed to run /usr/bin/SGX/demos/Raw/OGLES2ChameleonMan
+    PLSDK-2899,am572x-idk,Storm prevention in dual-EMAC: failed to update stormPrevCounter
+    PLSDK-2883,am572x-idk,"Make ""request for sync latch pins failed"" debug info"
+    PLSDK-2882,"am437x-evm, am437x-sk, am572x-evm",dual camera demo: text on control buttons truncated on LCD
+    PLSDK-2877,"am335x-evm, am437x-evm, am572x-evm, am654x-evm",Qt Webkit browser crashes at several websites
+    PLSDK-2855,"am571x-idk, am574x-idk",PHC2SYS out of sync with continuous switching the master clocks from two GMC
+    PLSDK-2801,"am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",JDetNet model doesn't run on DSP only Sitara devcies
+    PLSDK-2797,am574x-idk,TIDL import tool crashes when importing Caffe model with unsupported input layer format
+    PLSDK-2768,am572x-idk,HSR forwarding path - packet reordering
+    PLSDK-2753,"am571x-idk, am572x-idk, am574x-hsidk, am574x-idk",1PPS output should be available for OC (bc_clk disabled)
+    PLSDK-2702,"am335x-evm, am335x-hsevm, am335x-ice, am335x-sk, am437x-evm, am437x-hsevm, am437x-idk, am437x-sk, am438x-epos-evm, am570x-evm, am571x-idk, am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk, am654x-evm, am654x-idk, beagleboneblack, k2e-evm, k2e-hsevm, k2g-evm, k2g-hsevm, k2g-ice, k2hk-evm, k2hk-hsevm, k2l-evm, k2l-hsevm, omapl138-lcdk, dra76x-evm, am654x-hsevm",Documentation: Benchmarks in the Performance Guide should be sorted alphabetically
+    PLSDK-2473,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice","DualEMAC PTP ""invalid timestamp"" warning messages when starting ptp4l"
+    PLSDK-2220,k2e-evm,UBI Image for K2E exceeds the available size limit
+    
 |
 
 
