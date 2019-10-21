@@ -102,7 +102,7 @@ Refer SDK Release Note for GPIO support across different EVMs.
 |                   |                       || **AM572x IDK** :     |                     |                     |
 |                   |                       | STATUS LED 1 Yellow   +---------------------+---------------------+
 |                   |                       | **AM572x GP           |    am65xx           | makefile            |
-|                   |                       | EVM** : USER LED1     |                     |                     |
+|                   |                       | EVM** : USER LED1     |    j721e            |                     |
 |                   |                       | **AM574x IDK** :      |                     |                     |
 |                   |                       | STATUS LED 1 Yellow   |                     |                     |
 |                   |                       | **AM572x GP           |                     |                     |
@@ -122,6 +122,9 @@ Refer SDK Release Note for GPIO support across different EVMs.
 |                   |                       |                       |                     |                     |
 |                   |                       || **AM65xx EVM:**      |                     |                     |
 |                   |                       | USER LD16, LD17       |                     |                     |
+|                   |                       |                       |                     |                     |
+|                   |                       || **J721E EVM:**       |                     |                     |
+|                   |                       | USER LED 1            |                     |                     |
 |                   |                       |                       |                     |                     |
 +-------------------+-----------------------+-----------------------+---------------------+---------------------+
 

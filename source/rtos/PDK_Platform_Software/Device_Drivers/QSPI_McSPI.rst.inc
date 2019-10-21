@@ -250,14 +250,14 @@ OSPI
 | Name                  | Description           | Expected Results      | SoC Supported       | Build Type          |
 +=======================+=======================+=======================+=====================+=====================+
 | OSPI_TestApplication  |                       | Following prints on   |    am65xx           | makefile            |
-|                       | Driver unit test      | console expected:     |                     |                     |
+|                       | Driver unit test      | console expected:     |    j721e            |                     |
 |                       | application to        | **Pass criteria:**    |                     |                     |
 |                       | validate features     | All tests have        |                     |                     |
 |                       | and interfaces for    | passed.               |                     |                     |
 |                       | OSPI driver           |                       |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 | OSPI_SMP_Test         |                       | Following prints on   |    am65xx           | makefile            |
-| Application           | Driver unit test      | console expected:     |                     |                     |
+| Application           | Driver unit test      | console expected:     |    j721e            |                     |
 |                       | application to        | **Pass criteria:**    |                     |                     |
 |                       | validate features     | All tests have        |                     |                     |
 |                       | and interfaces for    | passed.               |                     |                     |
@@ -330,7 +330,7 @@ MCSPI
 |                 | Application use | | J21-Pin24(CLK)---J21-Pin24(CLK)      |   Txd from      |                     |                     |
 |                 | case requires   | | J21-Pin26(MISO)---J21-Pin28(MISO)    |   master SPI    +---------------------+---------------------+
 |                 | two EVMs. One   | | J21-Pin28(MOSI)---J21-Pin26(MOSI)    |                 |    am65xx           | makefile            |
-|                 | acts as Master  | | J21-Pin30(CS)------J21-Pin30(CS)     | |               |                     |                     |
+|                 | acts as Master  | | J21-Pin30(CS)------J21-Pin30(CS)     | |               |    j721e            |                     |
 |                 | and Another as  | | J21-Pin22(DGND)--J21-Pin22(DGND)     | | **On Master   |                     |                     |
 |                 | slave. McSPI    | |                                      |   EVM console:  |                     |                     |
 |                 | connections     | | **IDK AM437x:**                      |                 |                     |                     |
@@ -452,8 +452,8 @@ Support for Benchmark Testing
 +=======================+=======================+=========================================+=======================+=======================+
 | OSPI flash Test App   | Test application used | Test application                        |  am65xx/A53           | make                  |  
 |                       | for performance       | will print on the UART console:         |  am65xx/R5            |                       | 
-|                       | benchmarking          |                                         |                       |                       |
-|                       |                       | Board_flashWrite ### bytes at transfer  |                       |                       |
+|                       | benchmarking          |                                         |  j721e/mpu1_0         |                       |
+|                       |                       | Board_flashWrite ### bytes at transfer  |  j721e/mcu1_0         |                       |
 |                       |                       | rate #### Kbps                          |                       |                       |
 |                       |                       |                                         |                       |                       |
 |                       |                       | Board_flashRead ### bytes at transfer   |                       |                       |

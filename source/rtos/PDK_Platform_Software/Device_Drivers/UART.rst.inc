@@ -211,7 +211,7 @@ Examples
 |                         |                     | console.Application | c6657,c6678         |                     |
 |                         |                     | echoes back         | omapl137,omapl138   |                     |
 |                         |                     |                     +---------------------+---------------------+
-|                         |                     |                     | am65xx              | makefile            |
+|                         |                     |                     | am65xx,j721e        | makefile            |
 +-------------------------+---------------------+---------------------+---------------------+---------------------+
 | UART_DMATestApplication | Unit Test           | User can enter up to| AM335x,AM437x,AM571x| CCS project         |
 |                         | application with    | 16 characters using | AM572x,AM574X       |                     |
@@ -219,7 +219,7 @@ Examples
 |                         |                     | console.Application | c6657,c6678         |                     |
 |                         |                     | echoes back         | omapl137,omapl138   |                     |
 |                         |                     |                     +---------------------+---------------------+
-|                         |                     |                     | am65xx              | makefile            |
+|                         |                     |                     | am65xx,j721e        | makefile            |
 +-------------------------+---------------------+---------------------+---------------------+---------------------+
 | UART_SMP_TestApplication| Unit Test           | User can enter up to| AM572x-EVM          | CCS project         |
 |                         | application to test | 16 characters using |                     |                     |
@@ -227,7 +227,7 @@ Examples
 |                         | *(A15 & A53 cores)* | console.Application |                     |                     |
 |                         |                     | echoes back         |                     |                     |
 |                         |                     |                     +---------------------+---------------------+
-|                         |                     |                     | am65xx              | makefile            |
+|                         |                     |                     | am65xx,j721e        | makefile            |
 +-------------------------+---------------------+---------------------+---------------------+---------------------+
 | UART_SMP_DMATestApplica | Unit Test           | User can enter up to| AM572x-EVM          | CCS project         |
 | tion                    | application         | 16 characters using |                     |                     |
@@ -235,7 +235,7 @@ Examples
 |                         | enabled             | console.Application |                     |                     |
 |                         | *(A15 & A53 cores)* | echoes back         |                     |                     |
 |                         |                     |                     +---------------------+---------------------+
-|                         |                     |                     | am65xx              | makefile            |
+|                         |                     |                     | am65xx,j721e        | makefile            |
 +-------------------------+---------------------+---------------------+---------------------+---------------------+
 
 Building UART examples

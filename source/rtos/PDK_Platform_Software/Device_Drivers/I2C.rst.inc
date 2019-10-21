@@ -150,7 +150,7 @@ Refer Release Note for I2C support across different EVMs
 |                       |                       ||                      |                     |                     |
 |                       |                       || I2C Test: timeout    +---------------------+---------------------+
 |                       |                       |  test passed          |    am65xx           | makefile            |
-|                       |                       ||                      |                     |                     |
+|                       |                       ||                      |    j721e            |                     |
 |                       |                       || All tests have       |                     |                     |
 |                       |                       |  passed.              |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
@@ -169,7 +169,7 @@ Refer Release Note for I2C support across different EVMs
 |                       |                       ||                      |                     |                     |
 |                       |                       || I2C Test: timeout    +---------------------+---------------------+
 |                       |                       |  test passed          |    am65xx           | makefile            |
-|                       |                       ||                      |                     |                     |
+|                       |                       ||                      |    j721e            |                     |
 |                       |                       || All tests have       |                     |                     |
 |                       |                       |  passed.              |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
