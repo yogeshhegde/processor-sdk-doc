@@ -1,7 +1,136 @@
 .. http://processors.wiki.ti.com/index.php/IPC_BenchMarking 
 
-MessageQBench
------------------
+
+RTOS IPC Benchmark applications in SDK
+--------------------------------------
+
+Processor SDK RTOS includes a ping_benchmark_example under processor_sdk_rtos_<platform>_<version>/demos/ipc-examples/ping_benchmark_example.
+This example shows multiple cores running RTOS communicating with each other through the IPC MessageQ API.
+The example measures and displays the round trip delay numbers for the IPC. Note the main example sends multiple messages from each of the cores, with all the cores sending messages simultaneously.
+The example can be built with option to just R5F0 as the originator and all the other cores just respond back with reply.
+
+Build
+^^^^^^^
+The example can be built by running the top level make from the processor_sdk_rtos_<platform>_<version> directory.
+
+Linux Host
+""""""""""
+::
+
+	cd processor_sdk_rtos_<platform>_<version>
+	make sdk_ipc_examples_all
+
+Windows Host
+""""""""""""
+
+cd processor_sdk_rtos_<platform>_<version>
+setupenv.bat
+gmake sdk_ipc_examples_all
+
+Once the build commands are executed, the binaries will be in their respective directories as follows.
+
+AM65X:
+
+::
+
+	Host A53: ./demos/ipc-examples/ping_benchmark_example/hosta53/bin/am65xx_evm/release/server_host.xa53fg
+	R5F-0:    ./demos/ipc-examples/ping_benchmark_example/r5f-0/bin/am65xx_evm/release/server_r5f-0.xer5f
+	R5F-1:    ./demos/ipc-examples/ping_benchmark_example/r5f-1/bin/am65xx_evm/release/server_r5f-1.xer5f
+
+
+And also the R5F0 only as sender images are here:
+
+::
+
+	Host A53: ./demos/ipc-examples/ping_benchmark_example/hosta53/bin/am65xx_evm/app_r5f0_only/release/server_host.xa53fg
+	R5F-0:    ./demos/ipc-examples/ping_benchmark_example/r5f-0/bin/am65xx_evm/app_r5f0_only/release/server_r5f-0.xer5f
+	R5F-1:    ./demos/ipc-examples/ping_benchmark_example/r5f-1/bin/am65xx_evm/app_r5f0_only/release/server_r5f-1.xer5f
+
+
+Also the SBL bootable images can be created by using the following commands
+
+Linux Host:
+
+::
+
+	make sdk_ipc_examples_app
+	make sdk_ipc_examples_app_r5f0_only
+
+Windows host:
+
+::
+	gmake sdk_ipc_examples_app
+	gmake sdk_ipc_examples_app_r5f0_only
+
+The application images will be located under:
+
+::
+
+	demos/ipc-examples/ping_benchmark_example/output.appimage
+	demos/ipc-examples/ping_benchmark_example/am65xx_evm/app_r5f0_only/output.appimage
+
+Run
+^^^^
+
+Pre-requisites: Bootable SD card loaded with SBL.
+
+AM65x
+""""""""""
+
+Load the app from this directory into the SD card with filename "app" and load into the EVM to boot.
+(Note: Make sure the UART port is connected to the terminal to observe the application prints)
+
+On running the application the benchmark data will be displayed on the UART port.
+
+For the main application the benchmark data will be displayed on UART port0:
+
+::
+
+	 Overhead:34
+
+	 Payload Size: 176 
+
+	 Proc id 0, Delta count: 3829025 
+
+	 Proc id 0 to Proc Id 0: Average Roundtrip time is: 19 us 
+
+	 Proc id 1, Delta count: 8920087 
+
+	 Proc id 0 to Proc Id 1: Average Roundtrip time is: 44 us 
+
+	 Proc id 2, Delta count: 7091251 
+
+	 Proc id 0 to Proc Id 2: Average Roundtrip time is: 35 us 
+
+	 AppHost_run: Test Passed 
+
+	 MainHost_appTskFxn: Test Passed
+
+
+For the R5F0 app only build, the benchmark data will be displayed on UART port1:
+
+::
+
+	 Overhead:144
+
+	 Payload Size: 176 
+
+	 Proc id 0, Delta count: 8460883 
+
+	 Proc id 1 to Proc Id 0: Average Roundtrip time is: 42 us 
+
+	 Proc id 1, Delta count: 1046906 
+
+	 Proc id 1 to Proc Id 1: Average Roundtrip time is: 5 us 
+
+	 Proc id 2, Delta count: 6297313 
+
+	 Proc id 1 to Proc Id 2: Average Roundtrip time is: 31 us 
+
+	 AppR5f_0_run: Test Passed
+
+Linux Benchmark test: MessageQBench
+-----------------------------------
 
 The application utilizes the IPC 3.x stack to communicate from the main
 processor to the slave core via the MessageQ interface. The application
