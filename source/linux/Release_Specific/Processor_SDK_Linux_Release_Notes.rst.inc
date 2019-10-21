@@ -54,6 +54,7 @@ Released October 2019
 - Analytics: 
     - Add support for TFLite. For more details, see `here <Foundational_Components/Machine_Learning/tflite.html>`__ 
     - Upgraded ARMNN to 2019.08
+    - TensorFlow Lite parser support in ARMNN
 - Added avahi-daemon and avahi-tools towards enabling mDNS support on TI platforms
 - AM57x: Feature parity in Dual EMAC firmware compared to PRP EMAC mode, for Single Attached Nodes (SAN)
 - AM65x: 
@@ -385,13 +386,10 @@ Linux Kernel Known Issues
    LCPD-15737,P3-Medium,AM65x: MMC OTAPDLY values must match values in the Data Manual,Connectivity,MMCSD,"am654x-evm, am654x-idk",,
    LCPD-15672,P3-Medium,eMMC boot failed on BBB,Connectivity,,beaglebone-black,,
    LCPD-15649,P3-Medium,Uboot: sata could not be detected,Connectivity,,am57xx-evm,,
-   LCPD-15634,P3-Medium,pcie ethernet perf tests fail,Connectivity,,"dra71x-evm, dra7xx-evm",,
    LCPD-15633,P3-Medium,Uboot: Could not write to USB msc device,Connectivity,,"am335x-evm, am43xx-gpevm",,
    LCPD-15540,P3-Medium,uvc-gadget results in segmentation fault,Connectivity,,"am57xx-evm, am654x-evm, dra71x-evm, dra7xx-evm",,
    LCPD-15538,P3-Medium,Nand cpuload 100% and it seems like not using DMA,Connectivity,,am335x-evm,,
    LCPD-15515,P3-Medium,PCI: Endpoint: MSIX interrupts do not work on AM654,Connectivity,PCIe,am654x-evm,,
-   LCPD-15481,P3-Medium,MCAN TX does not work with CAN tool,Connectivity,,"am654x-idk, dra76x-evm",,
-   LCPD-15461,P3-Medium,pcie usb failed to enumerate sometimes on dra7xx,Connectivity,,dra7xx-evm,,
    LCPD-15405,P3-Medium,DFU: could not update eMMC bootloaders when using dfu_alt_info_emmc set in uboot env,Connectivity,,"am57xx-evm, dra71x-evm, dra7xx-evm",,
    LCPD-15365,P3-Medium,warning dump in fs/nfs/inode.c seen sometimes,Connectivity,CPSW,am654x-evm,,
    LCPD-15244,P3-Medium,"When 'allmulti' and 'promisc' are disabled, PRUeth should not receive multicast packets",Connectivity,,,,
@@ -403,7 +401,6 @@ Linux Kernel Known Issues
    LCPD-14497,P3-Medium,PCIe Gen3 problems on AM654x,Connectivity,,"am654x-evm, am654x-idk",,
    LCPD-14460,P3-Medium,am654x-idk failed to boot to kernel prompt occasionally,Connectivity,,am654x-idk,,
    LCPD-14450,P3-Medium,CPSW speed change with ethtool - delay when setting to 100Mbps,Connectivity,,"am654x-evm, am654x-idk",,
-   LCPD-14372,P3-Medium,"Uboot mmc command shows ""omap_hsmmc_send_cmd: timedout"" error",Connectivity,,dra7xx-evm,,
    LCPD-14184,P3-Medium,USB: SuperSpeed USB Non-Functional,Connectivity,,am654x-evm,,
    LCPD-14183,P3-Medium,am654x-idk failed to login to kernel a few times (7/1000),"Connectivity, IPC",,am654x-idk,,
    LCPD-14171,P3-Medium,Failed to read uboot from SD card 1/1000 times,Connectivity,,"am57xx-evm, dra7xx-evm",,
@@ -413,19 +410,16 @@ Linux Kernel Known Issues
    LCPD-13720,P3-Medium,SPI DMA TX Mode Halts During Continuous 16/32/64 bit Transfers,Connectivity,,beaglebone-black,,
    LCPD-13603,P3-Medium,One board could not boot rootfs from more than one SDHC card,Connectivity,,am654x-evm,,
    LCPD-13587,P3-Medium,dwc3: g_audio can only record once,Connectivity,USB,am57xx-evm,,
-   LCPD-13506,P3-Medium,Updating boot0 partition through dfu causes timeouts in eMMC,Connectivity,MMCSD,"dra71x-evm, dra72x-evm, dra76x-evm, dra7xx-evm",,
    LCPD-13452,P3-Medium,USB Gadget Camera Capture - guvcview causes kernel oops,Connectivity,,k2g-evm,,
    LCPD-13445,P3-Medium,Seldom kernel oops triggered by prueth_netdev_init,Connectivity,,am654x-evm,,
    LCPD-13330,P3-Medium,Uboot: usb storage device could not be found at second usb reset,Connectivity,,k2g-evm,,
    LCPD-12673,P3-Medium,Board refuses to suspend on setup with SATA device,Connectivity,,omapl138-lcdk,,
-   LCPD-12423,P3-Medium,PCIe fails to reach suspend target state sometimes,Connectivity,PCIE,dra72x-evm,,
    LCPD-12226,P3-Medium,mmcsd first write perf decreased on some platforms,Connectivity,,"am43xx-gpevm, am574x-idk, am57xx-evm, omapl138-lcdk",,
    LCPD-11952,P3-Medium,AM57x: disabling USB super-speed phy in DT causes kernel crash,Connectivity,USB,"am571x-idk, dra72x-evm",,
    LCPD-11564,P3-Medium,AM57xx-evm: eth1 1G connection failure to netgear switch,Connectivity,"CPSW, ETHERNET, PHYIF",am57xx-evm,,
    LCPD-10974,P3-Medium,am43xx-gpevm - usb camera gadget shows halting frames,Connectivity,USB,,,
    LCPD-10781,P3-Medium,NetCP module removal results in backtrace and kernel panic,Connectivity,NETCP,k2g-evm,,
    LCPD-10777,P3-Medium,mtd_stresstest failed on omapl138,Connectivity,NAND,omapl138-lcdk,,
-   LCPD-10707,P3-Medium,Few PCIe cards could not enumerated on dra7xx and dra76x,Connectivity,PCIe,"dra76x-evm, dra7xx-evm",,
    LCPD-10551,P3-Medium,"K2E eth0 does down when running udp traffic, eth1 stops working",Connectivity,NETCP,k2e-evm,,
    LCPD-10221,P3-Medium,Longer resume times observed on setup with usb device cable,Connectivity,USB,am335x-evm,,
    LCPD-9974,P3-Medium,PCIe x2 width is not at expected width on am571x-idk,Connectivity,PCIe,am571x-idk,,
@@ -457,7 +451,6 @@ Linux Kernel Known Issues
    LCPD-6300,P3-Medium,am57xx-evm: A few UHS cards could not be numerated in kernel and mmc as rootfs failed.,Connectivity,,am57xx-evm,,
    LCPD-5699,P3-Medium,pci: am572x-idk: pci broadcom card doesn't enumerate,Connectivity,,"AM571x, AM572x",,
    LCPD-5677,P3-Medium,K2E-evm: Marvel SATA controller could not be detected sometimes when Power On Reset is involved,Connectivity,,K2E,,
-   LCPD-5566,P3-Medium,Suspend failed when running pcie-usb test,Connectivity,,"DRA72x, DRA74x",,
    LCPD-5522,P3-Medium,pcie-usb sometimes the usb drive/stick could not be enumerated,Connectivity,,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",,
    LCPD-5362,P3-Medium,MUSB: Isoch IN only utilises 50% bandwidth,Connectivity,USB,AM335x,,
    LCPD-4849,P3-Medium,K2hk: Connectivity: UART data corruption observed sometimes in loopback mode,Connectivity,,,,
@@ -480,7 +473,6 @@ Linux Kernel Known Issues
    LCPD-8336,P3-Medium,Soft reboot does not work on am43xx-hsevm rev1.5b,Baseport,,am43xx-hsevm,,
    LCPD-8257,P3-Medium,Boot failed 1 of 1000 times on k2g,Baseport,,k2g-evm,,
    LCPD-7486,P3-Medium,uboot debug with ccs is failing for K2,Baseport,,k2hk-evm,,
-   LCPD-7293,P3-Medium,[rpmsg 2016 LTS] ALL: iommu/remoteproc: _wait_target_disable failed trace,"Baseport, IPC, Power & Thermal",,dra7xx-evm,,
    LCPD-6998,P3-Medium,K2G sometimes boot failed with kernel oops error,Baseport,,k2g-evm,None,
    LCPD-6663,P3-Medium,[RT] Kmemleak is buggy and boot is crashed randomly,Baseport,,,,
    LCPD-15821,P3-Medium,AM6 tidss: 1680x1050 does not work with TC358767,Audio & Display,Display,am654x-evm,,
@@ -491,11 +483,8 @@ Linux Kernel Known Issues
    LCPD-15455,P3-Medium,FIFO underflow reported during mode setting test,Audio & Display,Display,am654x-evm,,
    LCPD-12680,P3-Medium,Seeing i2c timeout error and board failed to boot,Audio & Display,,k2g-evm,,
    LCPD-11138,P3-Medium,VIP driver multi-channel capture issue with TVP5158,Audio & Display,"Capture, VIP","am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra7, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm",,
-   LCPD-9402,P3-Medium,DRA72x: HDMI display EDID read fails on Rev B EVM,Audio & Display,"Display, HDMI",dra72x-evm,Add the required HDMI modes into the kernel binary as per instructions in http://lxr.free-electrons.com/source/Documentation/EDID/,"When using Rev B EVM, EDID read will not work. This will result in the HDMI driver using the builtin modes in the kernel. HDMI will work at maximum of 1024x768 resolution."
-   LCPD-9284,P3-Medium,DRA7xx: HDMI starting with non-preferred mode on boot,Audio & Display,Display,dra7xx-evm,,
    LCPD-7735,P3-Medium,Powerdomain (vpe_pwrdm) didn't enter target state 0,"Audio & Display, Power & Thermal",,"am57xx-evm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra7xx-evm",,
    LCPD-7696,P3-Medium,DRA7xx: VPE: File2File checksum changes across multiple runs,Audio & Display,,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",There is no workaround for this issue yet,"No visual artifacts, but checksum on initial frame differs as couple of bytes are incorrect"
-   LCPD-7695,P3-Medium,DRA7xx: building Ov1603x as a module causes a green tint in captured image,Audio & Display,Capture,dra7xx-evm,"The workround is to use the camera driver as builtin. Also, a delay of 1s can stop this issue from occuring",As this is only related to starting the capture within one second of insertine module. The impact is on the early video use cases.
    LCPD-7693,P3-Medium,VIP: OV1063x: Video artifacts in LVDS cameras,Audio & Display,Capture,,,
    LCPD-5380,P3-Medium,omapdss error: HDMI I2C Master Error,Audio & Display,,AM572x,Occurs only with this monitor - http://www.amazon.com/gp/product/B00PFLZV2G,
    LCPD-1191,P4-Low,AM335x: Power: System resumes due to wakeup source USB1_PHY without any external trigger,Power & Thermal,,,Use GPIO interrupt instead of USB PHY for wakeup source.,
@@ -508,13 +497,10 @@ Linux Kernel Known Issues
    LCPD-9801,P4-Low,remoteproc/davinci: DSP boot is broken after a suspend/resume cycle,IPC,DSP_remoteproc,omapl138-lcdk,,
    LCPD-9481,P4-Low,Sometime the system hangs while loading the rpmsg rpc modules,IPC,RPMSG-RPC,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm",,
    LCPD-7495,P4-Low,Sometimes a Kernel Warning + Oops is seen when removing keystone_remoteproc module,IPC,,k2hk-evm,,
-   LCPD-4699,P4-Low,[rpmsg 2015 LTS] rpmsg-rpc: kernel crash during error recovery with dynamic debug traces enabled,IPC,,"am571x-idk, am572x-idk, am57xx-evm, dra72x-evm, dra7xx-evm",,
    LCPD-15660,P4-Low,pcie sata or usb drive no device node being created,Connectivity,,k2g-evm,,
    LCPD-15648,P4-Low,Uboot mmc performance decreased,Connectivity,,am335x-evm,,
-   LCPD-15635,P4-Low,mmc hotplug causes one board reboot,Connectivity,,dra71x-evm,,
    LCPD-14169,P4-Low,K2E:Observed unwanted failure messages in boot log,Connectivity,,k2e-evm,"No functionality affected except the log message. If not needed, do not connect anything to the PCIe slot.",
    LCPD-13794,P4-Low,Usb stick could not be detected in Uboot at the second time on k2g-evm,Connectivity,,k2g-evm,,
-   LCPD-12783,P4-Low,Missing instruction for pcie-ep config on k2g-evm for 4.14 kernel,Connectivity,,k2g-evm,,
    LCPD-12392,P4-Low,USBhost video: higher resolution tests fail with some cameras,Connectivity,,am335x-evm,,
    LCPD-11570,P4-Low,Base ubi filesystem could not be mounted as ubifs on k2g-evm,Connectivity,,k2g-evm,,
    LCPD-9589,P4-Low,I2C: Sometimes i2c read write failed on farm01 and farm02,Connectivity,,am335x-evm,,
@@ -537,7 +523,6 @@ Linux Kernel Known Issues
    LCPD-9098,P4-Low,Writeback: error prints seen when doing wb capture,Audio & Display,"Capture, Display, Writeback","am571x-idk, am572x-idk, am57xx-evm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",,
    LCPD-8884,P4-Low,VIP does not work after incorrectly configuring captured YUYV frame as NV12,Audio & Display,"Capture, VIP",,,
    LCPD-8000,P4-Low,VIP: RGB: RGB capture error due to wrong data path setting,Audio & Display,Capture,"dra7xx-evm, dra7xx-hsevm",,
-   LCPD-7697,P4-Low,OV1063x configuration breaks if kernel is compiled with CONFIG_DEBUG_GPIO=n,Audio & Display,,"dra7xx-evm, dra7xx-hsevm",Enable the CONFIG_DEBUG_GPIO,Little extra time in the bootup sequence because of GPIO debug
    LCPD-6377,P4-Low,OMAP_BO_CACHED feature not functional,"Audio & Display, Multimedia",Display,"am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am57xx-evm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm, k2g-evm",,
    LCPD-5059,P4-Low,omapdrm: moving plane from one enabled display to another causes errors,Audio & Display,Display,,,
    LCPD-1171,P4-Low,: DMM errata i878 (framebuffer part),Audio & Display,"Display, TILER","am571x-idk, am572x-idk, am57xx-evm, dra72x-evm, dra72x-evm-hsevm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",,
