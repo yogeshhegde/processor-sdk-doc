@@ -54,7 +54,7 @@ Released October 2019
 - Analytics: 
     - Add support for TFLite. For more details, see `here <Foundational_Components/Machine_Learning/tflite.html>`__ 
     - Upgraded ARMNN to 2019.08
-    - TensorFlow Lite parser support
+    - TensorFlow Lite parser support in ARMNN
 - Added avahi-daemon and avahi-tools towards enabling mDNS support on TI platforms
 - AM57x: Feature parity in Dual EMAC firmware compared to PRP EMAC mode, for Single Attached Nodes (SAN)
 - AM65x: 
