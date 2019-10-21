@@ -255,18 +255,18 @@ Examples & Unit tests
 |                                    |   `TIDEP0069`_            |                       |          |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
 | DeviceLoopback_TestApp             | | Unit test               | | Digital ramp        | AM65x    | Makefile    |
-|                                    |   demonstrating           |   pattern sent to     |          |             |
+|                                    |   demonstrating           |   pattern sent to     | J721e    |             |
 |                                    |   sample McASP device     |   McASP and getting   |          |             |
 |                                    |   loopback .              |   looped back         |          |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
 | DeviceLoopback_SMP_TestApp         | | Unit test               | | Digital ramp        | AM65x    | Makefile    |
-|                                    |   demonstrating           |   pattern sent to     |          |             |
+|                                    |   demonstrating           |   pattern sent to     | J721e    |             |
 |                                    |   sample McASP device     |   McASP and getting   |          |             |
 |                                    |   loopback with SMP       |   looped back         |          |             |
 |                                    |   enabled (A53 core only).|                       |          |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
 | DeviceLoopback_Regression_TestApp  | | Regression unit test    | | Menu Driven test    | AM65x    | Makefile    |
-|                                    |   which tests various     |   sending digital ramp|          |             |
+|                                    |   which tests various     |   sending digital ramp| J721e    |             |
 |                                    |   features/configurations |   and getting looped  |          |             |
 |                                    |   of the MCASP driver     |   back in various     |          |             |
 |                                    |   This is a menu based    |   configurations      |          |             |
