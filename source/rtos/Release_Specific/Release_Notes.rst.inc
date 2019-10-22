@@ -48,13 +48,10 @@ Documentation
 
 | 
 
-Processor SDK v06.00.00
+Processor SDK v06.01.00
 ========================
 
-.. warning::
-   Big-endian support for C66x and C674x platforms shall be deprecated in Processor SDK RTOS from the Release 6.1 (3Q-2019)
-
-Released July 2019
+Released Oct 2019
 
 .. rubric::  What's New
    :name: whats-new
@@ -62,15 +59,11 @@ Released July 2019
 .. rubric::  New Features
    :name: new-features
 
-- General
-    - PDK Drivers- SMP mode support with examples for A15/A53 cores. Support applicable for AM57x and AM65x SOCs
-    - `Build time optimization through parallel make : make (-j). Support currently available for AM3/4/5/6 and OMAPL13x SOCs <index_overview.html#support-for-parallelism-j-job-slots>`_
 - AM65x
-    - `Serdes Diagnostic application <index_device_drv.html#serdes-diag>`_   
-    - `PCIE QoS example <index_device_drv.html#id14>`_
+    - `IPC Low level driver support <index_device_drv.html#ipclld>`_
     
-- AM57xx
-    - CSL-FL example support for GPMC
+- AM335x
+    - `Sercos-III Softmaster Demo on AM335x ICEv2 <index_examples_demos.html#sercos-iii-softmaster>`_
 
 .. note::
    | C64P big endian targets are no longer supported since this release. 
@@ -102,7 +95,7 @@ more information on each item.
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  IMGLIB     | 3.1.1.0    |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  IPC        | 3.50.3     |      |      |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |         |    X    |
+|  IPC        | 3.50.4     |      |      |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |         |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  LIBARCH    | 1.0.0.0    |      |      |      |      |   X   |      |      |      |      |  X   |         |         |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
@@ -112,23 +105,23 @@ more information on each item.
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  MPM        | 3.0.4.0    |      |      |      |      |   X   |  X   |  X   |  X   |      |      |         |         |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  NDK        | 3.60.0     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
+|  NDK        | 3.61.1     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  NS         | 2.60.0     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
+|  NS         | 2.60.1     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  OPENCL     | 1.1.18.0   |      |      |  X   |      |       |      |      |      |      |      |         |         |
+|  OPENCL     | 1.1.19.2   |      |      |  X   |      |       |      |      |      |      |      |         |         |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  OPENMP     | 2.6.3.0    |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |         |         |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  PDK        |            |1.0.15|1.0.15|1.0.15| 1.0.5| 4.0.14|4.0.14|4.0.14|1.0.14|2.0.14|2.0.14|  1.0.9  |  1.0.9  |
+|  PDK        |            |1.0.16|1.0.16|1.0.16| 1.0.6| 4.0.15|4.0.15|4.0.15|1.0.15|2.0.15|2.0.15|  1.0.10 |  1.0.10 |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  SYS/BIOS   | 6.75.2     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
+|  SYS/BIOS   | 6.76.2     |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  UIA        | 2.30.1.2   |      |      |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  XDAIS      | 7.24.0.4   |      |      |  X   |      |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
-|  XDCTOOLS   | 3.51.01    |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
+|  XDCTOOLS   | 3.55.02    |   X  |  X   |  X   |   X  |   X   |  X   |  X   |  X   |  X   |  X   |    X    |    X    |
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 
 
@@ -143,9 +136,9 @@ The following compilers are bundled with the SDK installer:
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
 |TI ARM CGT      | 18.12.1 |      |      |  M4  |  R5  |       |     |A15(SBL)|        |     | ARM9|   ARM9  |         |
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
-|TI C6000 CGT    | 8.3.2   |      |      | C66x |      |C66x   |C66x | C66x   |  C66x  |C66x |C66x |   C74x  |   C74x  |
+|TI C6000 CGT    | 8.3.2   |      |      | C66x |      | C66x  |C66x | C66x   |  C66x  |C66x |C66x |   C674x |   C674x |
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
-|TI PRU CGT      | 2.2.1   | PRU  | PRU  | PRU  |      |       |     |  PRU   |        |     |     |         |         |
+|TI PRU CGT      | 2.3.2   | PRU  | PRU  | PRU  |  PRU |       |     |  PRU   |        |     |     |         |         |
 +----------------+---------+------+------+------+------+-------+-----+--------+--------+-----+-----+---------+---------+
 
 The SDK uses Code Composer Studio (CCS) as the integrated development
@@ -154,13 +147,13 @@ environment (IDE) for all devices and EVMs:
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 | Component | Version  |AM335x|AM437x|AM57x |AM65x |K2H/K2K| K2E | K2L | K2G |C665x|C667x|OMAP-L137|OMAP-L138|
 +===========+==========+======+======+======+======+=======+=====+=====+=====+=====+=====+=========+=========+
-|   CCS     | 9.0.1    |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
+|   CCS     | 9.1.0    |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |    X    |    X    |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 |   EMU Pack|Sitara    |   X  |  X   |  X   |  X   |       |     |     |     |     |     |         |         |
 |           |Device    |      |      |      |      |       |     |     |     |     |     |         |         |
 |           |1.4.5     |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
-|    TI     |8.1.0.7   |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |     X   |     X   |
+|    TI     |8.3.0.0   |   X  |  X   |  X   |  X   |   X   |  X  |  X  |  X  |  X  |  X  |     X   |     X   |
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
@@ -176,31 +169,59 @@ Fixed Issues
    :header: "Record ID","Board/s", "Component/s", "Summary"
    :widths: 15, 20,20,30
 
-	PRSDK-1760,am437x-idk,Board Support,Support for Sector erase function in QSPI library for AM437x in Starterware
-	PRSDK-5691,"am654x-evm, am654x-hsevm, am654x-idk",Networking,am65xx: interface locks up on bi-directional tcp iperf test
-	PRSDK-4121,am654x-evm,Boot,make all fails for Windows due to missing openSSL package
-	PRSDK-5645,am654x-evm,Emupack,GEL file not working properly for AM654x-EVM platform causing DDR not to be configured properly
-	PRSDK-5247,am654x-evm,PDK,RTOS builds are very slow on Windows machines
-	PRSDK-4654,am654x-idk,System Integration,CCS fails to see symbols from *.out
-	PRSDK-5986,,PDK,Autopadding of Frames <60 byte did not work correctly (Etherleak)
-	PRSDK-5635,"am572x-evm, am572x-idk, am574x-idk, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-lcdk",Optimized Libraries,DSPLIB and MATHLIB had kernel failures with C6000 8.3.x code gen tools
-	PRSDK-5258,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Control Drivers,AM3/4/5 add UART test case to support more than 1 instances using EDMA
-	PRSDK-5801,"am654x-evm, am654x-hsevm, am654x-idk",UNIFLASH,Uniflash tool - stability and OOB issues
-	PRSDK-5665,am654x-idk,PDK,EMAC should configure context for Host Egress Queues
-	PRSDK-5473,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Networking,NDK TCP packet re-transmission timeout when running ARM at a lower speed
-	PRSDK-4321,"am654x-evm, am654x-idk",PRUSS,PRUICSS_pinMuxConfig function crashes for PRUICSS3 in AM654x
-	PRSDK-5850,am654x-idk,Networking,NIMU_FtpCpsw_am65xx_idk_mcu1_0ExampleApp fails with SBL boot
-	PRSDK-5539,"c6748-lcdk, omapl138-lcdk",Control Drivers,SPI loopback example not working in interrupt mode on OMAPL138
-	PRSDK-5470,"am654x-evm, am654x-idk",Boot,R5 cannot boot an app if entry point is in DDR
-	PRSDK-5272,k2g-hsevm,Networking,EMAC_BasicExample: error #10099-D: program will not fit into available memory
-	PRSDK-5246,"am572x-idk, am574x-idk, am654x-evm",OSAL,OSAL cache APIs for AM57x incompatible with SMP aware Cache rtos module
-	PRSDK-5684,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-hsevm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, amic110-ice",High-Speed Drivers,Incorrect buffer reset code in MMCSD V1 driver
-	PRSDK-5874,am654x-idk,High-Speed Drivers,Second pcie lane not properly enabled on IDK
-	PRSDK-5267,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm",DMA,AM57x A15 EDMA library doesn't support SMP mode
-	PRSDK-5812,"k2g-evm, k2g-hsevm, k2g-ice",Networking,NDK NIMU ping failure when packet receive buffer put into DDR on K2G C66x
-	PRSDK-5332,"am335x-evm, am335x-ice, am335x-sk",Control Drivers,AM335x NAND ECC issue in Starterware library
-	PRSDK-5692,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",High-Speed Drivers,Incorrect AM57x MMCSD clock setting for SDR 104 mode
-	PRSDK-5592,"am335x-evm, am335x-ice, am335x-sk",DMA,Missing parenthesis in AM335x Starterware EDMA marco
+	PRSDK-5916,"*Multiple platforms",High-Speed Drivers,Sitara EMMC driver does not support data bus width other than 8 bit
+	PRSDK-4764,"*Multiple platforms",PDK,icss_dual emac firmware: PTP frames are all put under queue 0 for both ports
+	PRSDK-5789,"*Multiple platforms",System Integration,Top level make windows fails intermittently with: fork: can't reserve memory for stack
+	PRSDK-5624,"*Multiple platforms","Collateral, Optimized Libraries",FFTLIB documentation for AM57xx and K2H devices is missing
+	PRSDK-5303,"am335x-evm, am335x-ice, am335x-sk, amic110-ice",Networking,APP image for NIMU CCLINK examples on AM335x/AMIC110 exceeds the SPI flash size
+	PRSDK-5683,am335x-ice,Boot,OOB MLO from PSDK doesn't work with PRU-ICSS Ethernet/IP
+	PRSDK-5770,"am335x-ice, am437x-idk, beagleboneblack",PRUSS-Firmware,PUT_IORD_SHORT not working after issuing PUT_IOWR_SHORT
+	PRSDK-5403,am437x-idk,Control Drivers,iolink: channel 7 has ISDN read/write response error
+	PRSDK-5612,am437x-idk,OSAL,Missing interrupt enable/disable option in OSAL HwiP_Params
+	PRSDK-5690,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",High-Speed Drivers,Improper test of MMCSD driver with power switch from 3.3V to 1.8V
+	PRSDK-5730,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",High-Speed Drivers,Need to implement AM57x errata i926 in PCIE RX PHY setting sample code
+	PRSDK-6055,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",High-Speed Drivers,FATFS example crash when insert/remove MMCSD cards
+	PRSDK-5611,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Networking,NDK HTTP server memory leak
+	PRSDK-5851,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Optimized Libraries,Fail to run RTOS examples on non-primary A15 core
+	PRSDK-4850,"am571x-idk, am572x-evm, am572x-idk","Audio, Video, & Display","RTOS: VPS test fails using MMCSD/UARTApploader on am571x-idk, am572x-evm and am572x-idk platforms"
+	PRSDK-5466,am654x-evm,Boot,AM65xx/OSPI/XIP: OSPI driver re-open() fails on XIP mode
+	PRSDK-5000,am654x-evm,Chip Support,Incorrect DMSC IRAM size in CSL-RL
+	PRSDK-5638,am654x-evm,Diagnostics,AM65xx diag self test hangs during memory test on R5 core
+	PRSDK-5253,am654x-evm,OSAL,[osal] R5 OsalArch_HwiPCreate calls system enable() unconditionally
+	PRSDK-6056,"am654x-evm, am654x-hsevm, am654x-idk",Board Support,make clean board fails when run from <pdk>packages
+	PRSDK-5952,"am654x-evm, am654x-hsevm, am654x-idk",Networking,am65xx: icssg: fw: shutdown command doesn't work
+	PRSDK-6259,"am654x-evm, am654x-idk",Board Support,AM65xx Board lib build failure with PMT output files
+	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL
+	PRSDK-6040,"am654x-evm, am654x-idk",Boot,Uniflash 5.0.0 hangs at 99% while flashing sbl_baremetal_boot_{xip/smp} appimage
+	PRSDK-5669,"am654x-evm, am654x-idk",Diagnostics,Maxwell DIAG: OSPI stress test hangs
+	PRSDK-5535,"am654x-evm, am654x-idk",KeyStone Drivers,SA UnitTest MPU failure: Did not find SA reply in rx ring 305 from SYSFW
+	PRSDK-4744,"am654x-evm, am654x-idk",Networking,nimu_free_pkt() wrongly frees p_pkt_desc
+	PRSDK-6059,"am654x-evm, am654x-idk",PDK,reserved area for DMSC in top level linker command file in PDK is incorrect
+	PRSDK-4739,"am654x-evm, am654x-idk",SCIClient,ccsLoadDmsc fails if 2 or more boards configured
+	PRSDK-4927,"am654x-evm, am654x-idk",SCIClient,sciclient: APIs seems to always use self host id to be core 0
+	PRSDK-6047,am654x-idk,Board Support,CPSWHSDIV_CLKOUT2 should be initialized to 250MHz
+	PRSDK-6445,am654x-idk,Example,"Invalid ""project_detected"" variable in pdkProjectCreate.bat"
+	PRSDK-5340,am654x-idk,"Example, Networking",mis-matched number of channels and allocated memory arrays with EmacLoopbackTest
+	PRSDK-5947,am654x-idk,PDK,EMAC fails to remove CRC from Locally received frame in TSN Switch
+	PRSDK-6254,am654x-idk,PDK,emac_poll function takes ~1ms time during link change
+	PRSDK-5793,beagleboneblack,"PDK, PRUSS-Firmware",pdkAppImageCreate script creates large binaries for PRU FW projects
+	PRSDK-5675,c6657-evm,Boot,To bring back bootloader utilities into Processor SDK RTOS
+	PRSDK-5766,"c6657-evm, c6678-evm",Boot,IBL external GIT and release source don`t match
+	PRSDK-6027,c6678-evm,Demonstrations,Image processing demo doesn't work on C6678
+	PRSDK-6301,c6678-evm,Networking,NDK NIMU driver memory double free error
+	PRSDK-5307,c6748-lcdk,Control Drivers,SPI_transferCancel function not implemented in SPI v0 driver
+	PRSDK-5920,"c6748-lcdk, k2g-evm, k2g-ice, k2h-evm, omapl137-evm, omapl138-lcdk",OSAL,OSAL DSP test hangs after 'HWI tests have passed'
+	PRSDK-5981,"c6748-lcdk, omapl137-evm, omapl138-lcdk",High-Speed Drivers,MMCSD DMA test projects hangs on OMAPL138/137
+	PRSDK-5799,"c6748-lcdk, omapl138-lcdk",High-Speed Drivers,Setting RMIISPEED bit in EMAC HwAttrs structure has no effect
+	PRSDK-5701,j721e-evm,PDK,NIMU: NIMU should not call Udma_init
+	PRSDK-5915,"k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm",Chip Support,Incorrect Keystone II Serdes Rx valid signal for PCIE interface using CSL
+	PRSDK-5388,"k2e-evm, k2h-evm, k2k-evm",PDK,mmap_TestProject DSP LE/BE: error #3188: Object size is greater than maximum supported size
+	PRSDK-5959,"k2g-evm, k2g-hsevm, k2g-ice",Diagnostics,Incorrect GPMC register access on K2G NAND diagnostics
+	PRSDK-5727,k2g-hsevm,Boot,K2G HS SBL fails out of the box in SBL_initSK
+	PRSDK-4214,k2g-hsevm,System,create-sdcard script does not boot OOB
+	PRSDK-5811,k2k-evm,System Integration,K2K: top level parallel make fails due to package interdependency
+	PRSDK-5992,omapl138-lcdk,Chip Support,Incorrect definitions in CSLR header for OMAPL138
+	PRSDK-6204,omapl138-lcdk,Chip Support,Corrections needed to EPWM CSL header for OMAP-L138
 
 Known Issues 
 ==============
@@ -210,109 +231,88 @@ release and any known workaround.
 
 .. csv-table::
    :header: "Record ID","Board/s","Component/s","Summary","Workaround"
-   :widths: 15, 20,20,30,70
+   :widths: 15,100,20,30,70
 
-	PRSDK-5064,"am654x-evm, am654x-idk","Audio, Video, & Display",RTOS: Maxwell MCASP Device Loopback Regression test 7 and 9 fail,
+	PRSDK-5186,"*Multiple platforms",Board Support,PDK Driver examples wrongly puts libgcc in to DDR invalidating IO delay configuration,"The user application could explicitly place the libgcc.a in to OCMC RAM along with BOARD_IO_DELAY_DATA/CODE sections so that there is no DDR access while calling IO Delay functions "
+	PRSDK-6043,"*Multiple platforms",CCS,TI-RTOS Kernel Example does not work with Resource Explorer in CCS 9.x,
+	PRSDK-769,"*Multiple platforms",Demonstrations,Posix-SMP Demo DMIPS are wrong,
+	PRSDK-5821,"*Multiple platforms",High-Speed Drivers,Failure to support file system with unicode string,ASCII string file names should be used instead of Unicode strings
+	PRSDK-6184,"*Multiple platforms",System Integration,BIOS 6.75 newlib-nano and header incompatibility with GCCv7.3.1 toolchain in SDK,
 	PRSDK-5642,am335x-evm,Board Support,USB_DevBulk_ExampleProject: Failed to load/run app,Use JTAG to load and run the example
+	PRSDK-3541,am335x-evm,High-Speed Drivers,"USB MSC device mode doesn't handle ""safely remove"" command well.",
+	PRSDK-6639,am335x-evm,OSAL,AM335x Osal baremetal test fails when loaded through SBL,Please load/run the test via JTAG instead of SBL
+	PRSDK-6653,"am335x-evm, am437x-evm",Diagnostics,"Diagnostics accelerometer, adc, temperature and ambient_light_sensor hangs on evmAM335x/AM437x",
+	PRSDK-2336,"am335x-evm, am437x-evm",Power,AM3 & AM4 PM Examples experience I2C bus lockup when communicating with PMIC,"The debug versions of the PM apps are still functional. To build them: From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm"" This will build the debug versions of the PM RTOS and measurement apps."
+	PRSDK-5164,"am335x-evm, omapl137-evm, omapl138-lcdk",High-Speed Drivers,AM3/OMAP USB driver sends NYET response to BULK OUT transfer request causing unnecessary USB traffic,
+	PRSDK-4548,am335x-ice,PRUSS-Firmware,PRU-ICSS EMAC + TTS : Corrupted Rx packet at host from Firmware,"Rebuild the firmware using the following changes to prioritize Rx packets over Tx packets during non realtime packet reception. Please make the following changes to firmware/icss_dualemac/src/emac_tts.h scheduler. In the M_TTS_XMT_SCHEDULER macro, add the following instruction after the label NOT_Queue1?: at line 149.      'QBBS TASK_EXECUTION_FINISHED, R23, Rcv_active'     .With the above changes, clean and rebuild the icss-emac firmware using the steps mentioned in http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_pru_icss_fw.html#firmware-build-instruction.Please note that there will be significant reduction in throughput due to the above change."
+	PRSDK-6652,"am335x-ice, am437x-evm",Diagnostics,"Diagnostics LED test hangs at ""Jumping to user application""",
+	PRSDK-7120,"am335x-ice, am571x-idk",PDK,SPI master slave test fails in non-dma callback mode,
+	PRSDK-3565,am437x-hsevm,Security,AM437x-HSEVM: GPMC unit-tests fail,
+	PRSDK-3564,am437x-hsevm,System,"I2C unit tests on AM437x-HSEVM fail with the message ""Some tests have failed.""",
+	PRSDK-6161,am437x-idk,Networking,ICSS_EMAC_BasicExample fails on AM437x IDK with errors in received acyclic pkt content,
+	PRSDK-5936,am437x-idk,PDK,IO-Link master example does not work with Balluff inductive coupler,
+	PRSDK-4583,am437x-idk,PRUSS-Firmware,PRUSS-I2C-FW: Does not support 1Mhz mode. Incorrect STOP condition generated for HS mode,
+	PRSDK-7085,"am437x-idk, am437x-sk",Diagnostics,Diagnostics: 'mem test' hangs on AM4 boards,
+	PRSDK-5938,"am437x-idk, am571x-idk, am572x-idk",PDK,MCSPI/I2C Master Slave Example: SPI TX/RX FIFO trigger level test failure (UT1),
+	PRSDK-335,"am437x-idk, k2g-evm",High-Speed Drivers,USB host MSC fails to re-enumerate,Re-enumeration support for the case of device unplugged and plugged back currently fails for the example. Workaround is to avoid disconnecting drive while running example.
+	PRSDK-5871,am570x-evm,PDK,"EMAC_BasicExample MPU LE test fails at ""Clock synthesizer: Write: Failed""",
+	PRSDK-6766,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",High-Speed Drivers,USB driver TRB data buffer placement caused the bulk test failure,
+	PRSDK-2892,"am571x-idk, am572x-evm, am572x-idk",PDK,Incorrect A15 MMU configurations in default config file,"Set MMU attribute to not executable for device memory attrs0.noExecute = true; // Not executable"
 	PRSDK-5178,"am571x-idk, am572x-idk, am574x-idk",Board Support,"Uniflash: Host tool fails to load Flash Programmer, when Flash device is programmed","In case of AM5 platform, if flash device is programmed with a valid boot image, the board boots from flash as soon as powered on. After this, attempting to connect the board over JTAG will fail. | Workaround for this issue is to insert SD card without any valid boot image( to prevent booting from SD card), and power on the board. SD boot has boot sequence priority over Flash device. This will hold the board booting out of flash device."
-	PRSDK-5667,"am654x-evm, am654x-idk",Board Support,AM65xx diagnostic tests hang on R5 core,Use the diagnostic tests built for A53 core.
-	PRSDK-5229,am654x-idk,Board Support,PCIe diagnostic test validates only one port on PCIe 2-lane card,
-	PRSDK-4843,am654x-idk,Board Support,Pinmux support for AM654x IDK ICSS MII pin is missing,
-	PRSDK-5732,"am654x-evm, am654x-hsevm, am654x-idk","Board Support, Boot",SBL need to properly set CBIASSEL to use Bandgap references for LDOs,
-	PRSDK-5887,am572x-evm,Boot,Application hangs on non zero core using Uart apploader,
-	PRSDK-6109,"am654x-evm, am654x-hsevm, am654x-idk",Boot,ROM load time of SBL increased on GP devices,"Use ROM degenrate key on GP devices for signing the SBL. To do this, overwrite ti/build/k3_dev_mpk.pem with ti/build/rom_degenerateKey.pem before building the SBL "
-	PRSDK-4706,"am654x-evm, am654x-idk",Boot,SBL: MCU0 Boot in R5 Split Mode not supported in SBL,"The SBL currently cannot reset the MCU1 subsystem to restart the cores in split mode. To workaround this, the MPU needs to reset the MCU1 sub-system. To configure the MCU1 susb-system in split mode, do the following. a) Create a multi-core image with a MCU1_0 image, a MCU1_1 image and an MPU image. b) The MPU1 image must contain code to reset the MCU sub-system. Refer the function sblTestResetMcu in sbl/example/k3MulticoreApp/sbl_amp_multicore.c for example code on how to reset the MCU subsystem c) Before resetting the MCU, the MPU must wait for the SBL to boot MCU1_0"
-	PRSDK-5448,"am654x-evm, am654x-idk",Boot,SBL boot from MMCSD fails intermittently,
-	PRSDK-5766,"c6657-evm, c6678-evm",Boot,IBL external GIT and released source don`t match,
-	PRSDK-5727,k2g-hsevm,Boot,K2G HS SBL fails out of the box in SBL_initSK,
-	PRSDK-3371,omapl137-evm,Boot,Slave boot is failing on evmOMAPL137,
-	PRSDK-5626,am654x-hsevm,"Boot, DMA",OSPI Read using UDMA fails on AM65x HS devices.,Non-DMA mode could be used for the read operation
+	PRSDK-3864,"am571x-idk, am572x-idk, am574x-idk",High-Speed Drivers,Missing USB disconnect event on USB device mode on AM5xx,
+	PRSDK-5087,"am571x-idk, am572x-idk, am574x-idk",Networking,ICSS_EMAC_BasicExample fails on AM57xx-IDK with Packet cyclic timestamp error,
 	PRSDK-3876,am572x-evm,Chip Support,CM_EMU_CLKSTCTRL=0x2 needed for reliable low power exit if EMU[1:0] pins are used as GPIOs,
-	PRSDK-5992,omapl138-lcdk,Chip Support,Incorrect definitions in CSLR header for OMAPL138,
-	PRSDK-5624,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, c6678-evm, k2h-evm","Collateral, Optimized Libraries",FFTLIB documentation for AM57xx and K2H devices is missing,
-	PRSDK-5662,"am654x-evm, am654x-idk",Control Drivers,Baremetal & OSPI RTOS flash unit tests hang when running INDAC mode on R5,
-	PRSDK-5307,c6748-lcdk,Control Drivers,SPI_transferCancel function not implemented in SPI v0 driver,
-	PRSDK-5942,k2g-hsevm,Control Drivers,UART DMA TX/RX FIFO trigger level test failure (UT12) failed,
-	PRSDK-6052,"am654x-evm, am654x-hsevm","Control Drivers, DMA, High-Speed Drivers, Networking",AM654x: many of the unit-tests are failing when run using SBL.,
-	PRSDK-769,"AM335X, AM437x, AM572x, C66X, K2",Demonstrations,Posix-SMP Demo DMIPS are wrong,
-	PRSDK-5493,am572x-idk,Demonstrations,Gravit Graphics demo: Error: File io init failed!!,
+	PRSDK-5987,am572x-evm,Control Drivers,UART Rx/TX trigger level test fails in SMP mode for AM572x EVM (DMA),
 	PRSDK-4667,am572x-evm,"Demonstrations, Networking",Image Processing Demo lock up on AM572x GP EVM,Issue seen using 1Gig router on ETH0. Replace with 100Mbps
 	PRSDK-1975,am572x-evm,Diagnostics,timer_DiagExample_evmAM572x_arm7.out doesn't work on ARM1 core,Example can run on ARM Core 0
-	PRSDK-3344,"am572x-idk, am574x-idk",Diagnostics,"Diagnostics icssEmac_TEST idkAM57{2/4}x : LINK IS DOWN, pluggin loopback cable",ICSS-EMAC LLD TI-RTOS example can be used for similar test.
-	PRSDK-3383,am574x-idk,Diagnostics,Diagnostics: lcdTouchscreen_TEST hangs,"Issue expected to be specific to TI EVM. For TI EVM, test need to be bypassed from the diagnostic menu."
-	PRSDK-5638,am654x-evm,Diagnostics,AM65xx diag self test hangs during memory test on R5 core,The similar test can be run from A53 instead
-	PRSDK-5669,"am654x-evm, am654x-idk",Diagnostics,Maxwell DIAG: OSPI stress test hangs,
-	PRSDK-5340,am654x-idk,"Example, Networking",mis-matched number of channels and allocated memory arrays with EmacLoopbackTest,
-	PRSDK-3862,am437x-hsevm,High-Speed Drivers,MMCSD_EMMC_{DMA}_Testproject ARM LE: hangs on AM437x-HSEVM,
-	PRSDK-335,"AM4X, k2g-evm",High-Speed Drivers,USB host MSC fails to re-enumerate,Re-enumeration support for the case of device unplugged and plugged back currently fails for the example. Workaround is to avoid disconnecting drive while running example.
-	PRSDK-2166,am572x-idk,High-Speed Drivers,USB3.0 host problem with Sandisk Extreme USB3.0 stick,"Start the example without the USB plugged in. Once the example is up and waiting for USB stick, plug the USB stick in and it will enumerate properly."
-	PRSDK-5751,am654x-idk,Diagnostics,AM65xx IDK PCIe diagnostic test failure,
-	PRSDK-5981,"c6748-lcdk, omapl137-evm, omapl138-lcdk",High-Speed Drivers,MMCSD DMA test projects hangs on OMAPL138/137,
-	PRSDK-5799,"c6748-lcdk, omapl138-lcdk",High-Speed Drivers,Setting RMIISPEED bit in EMAC HwAttrs structure has no effect,
-	PRSDK-5535,"am654x-evm, am654x-idk",KeyStone Drivers,SA UnitTest MPU failure: Did not find SA reply in rx ring 305 from SYSFW,
-	PRSDK-5303,"am335x-evm, am335x-ice, am335x-sk, amic110-ice",Networking,APP image for NIMU CCLINK examples on AM335x/AMIC110 exceeds the SPI flash size,
-	PRSDK-5952,"am654x-evm, am654x-hsevm, am654x-idk",Networking,am65xx: icssg: fw: shutdown command doesn't work,
-	PRSDK-5933,amic110-ice,Networking,NIMU_ICSS iceAMIC110: ping failed at J7 port,
-	PRSDK-5903,k2g-hsevm,Networking,EMAC_BasicExample DSP LE: Exception at 0xc00fde4,
-	PRSDK-5612,am437x-idk,OSAL,Missing interrupt enable/disable option in OSAL HwiP_Params,
-	PRSDK-5920,"c6748-lcdk, k2g-evm, k2g-ice, k2h-evm",OSAL,OSAL DSP test hangs after 'HWI tests have passed',
-	PRSDK-5938,"am437x-idk, am571x-idk, am572x-idk",PDK,MCSPI/I2C Master Slave Example: SPI TX/RX FIFO trigger level test failure (UT1),
-	PRSDK-5871,am570x-evm,PDK,"EMAC_BasicExample MPU LE test fails at ""Clock synthesizer: Write: Failed""",
-	PRSDK-2892,"am571x-idk, am572x-evm, am572x-idk",PDK,Incorrect A15 MMU configurations in default config file,"Set MMU attribute to not executable for device memory attrs0.noExecute = true; // Not executable"
-	PRSDK-5074,am654x-evm,PDK,McASP driver hangs with small buffer size,
-	PRSDK-4493,"am654x-evm, am654x-idk",PDK,CSLR: Missing interrupt number for peripherals in cslr_intr_mcu0.h (R5F/MCU in AM65x),
-	PRSDK-5793,beagleboneblack,"PDK, PRUSS-Firmware",pdkAppImageCreate script creates large binaries for PRU FW projects,
-	PRSDK-2336,"am335x-evm, am437x-evm",Power,AM3 & AM4 PM Examples experience I2C bus lockup when communicating with PMIC,"The debug versions of the PM apps are still functional. To build them: 	From the top-level makefile in pdk.../packages folder run ""make BUILD_PROFILE=debug pm"" This will build the debug versions of the PM RTOS and measurement apps."
-	PRSDK-4548,am335x-ice,PRUSS-Firmware,PRU-ICSS EMAC + TTS : Corrupted Rx packet at host from Firmware,n/a
-	PRSDK-5770,"am335x-ice, am437x-idk, beagleboneblack",PRUSS-Firmware,PUT_IORD_SHORT not working after issuing PUT_IOWR_SHORT,"Do not issue PUT_IOWR_SHORT or PUT_MEMWR32_SHORT commands as both of these may put the system into an un-ending ALERT state. Only issue reads which will read pre-populated dummy data"
-	PRSDK-4583,am437x-idk,PRUSS-Firmware,PRUSS-I2C-FW: Does not support 1Mhz mode. Incorrect STOP condition generated for HS mode,
-	PRSDK-4927,"am654x-evm, am654x-idk",SCIClient,sciclient: APIs seems to always use self host id to be core 0,
-	PRSDK-3565,am437x-hsevm,Security,AM437x-HSEVM: GPMC unit-tests fail,
-	PRSDK-3564,am437x-hsevm,System,"AM437x-HSEVM: I2C unit tests get ""Some tests have failed."" when run",
-	PRSDK-4214,k2g-hsevm,System,create-sdcard script does not boot OOB,Default generated App image is not signed follow the steps mentioned in User Guide of the Processor SDK Secdev Build and Install Guide to sign the app
-	PRSDK-5789,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-hsevm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk, am654x-evm, am654x-hsevm, am654x-idk, am75x-evm, amic110-ice, beagleboneblack, c6657-evm, c6678-evm, c6748-lcdk, k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm, omapl137-evm, omapl138-lcdk, am64x-evm",System Integration,Top level make windows fails intermittently with: fork: can't reserve memory for stack,
-	PRSDK-5919,"am572x-evm, k2g-evm",System Integration,"Make cplusplus: error: identifier ""EMAC_DRV_ERR_E"" is undefined",
-	PRSDK-5811,k2k-evm,System Integration,K2K: top level parallel make fails due to package interdependency,Issue make all without -j option
+	PRSDK-6958,am572x-evm,Power,pm_rtos_testapp DSP/M4: shutdown test failed,
+	PRSDK-3656,am572x-evm,Unknown,PM: shutdown test failed on DSP core for am572x-evm,
+	PRSDK-3408,am572x-evm,PDK,AM572x GP EVM - camera sysbios loopback example fails for M4,
+	PRSDK-6361,am572x-idk,Chip Support,Cycle-intensive interrupt handler breaks timer function,
+	PRSDK-5493,am572x-idk,Demonstrations,Gravit Graphics demo: Error: File io init failed!!,
+	PRSDK-7174,am572x-idk,PDK,Double interrupt with GPIO level triggering,
+	PRSDK-3344,"am572x-idk, am574x-idk",Diagnostics,Diagnostics: icssEmac_TEST on idkAM57{2/4}x fails due to link status being down,ICSS-EMAC LLD TI-RTOS example can be used for similar test.
 	PRSDK-5397,am574x-idk,Chip Support,"CSL ECC EMIF test hangs at ""OCMC FULL ECC Mode"" on ARM",
-	PRSDK-5388,"k2e-evm, k2h-evm, k2k-evm",PDK,mmap_TestProject DSP LE/BE: error #3188: Object size is greater than maximum supported size,
-	PRSDK-4043,"omapl137-evm, omapl138-lcdk",High-Speed Drivers,OMAPL13x: USB Baremetal project binaries not built via top level make,
-	PRSDK-6043,,CCS,Missing Resource Explorer Classic option from the CCSv9.0,
-	PRSDK-5186,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-hsevm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Board Support,Libgcc code placement for IO delay configuration,
-	PRSDK-6056,"am654x-evm, am654x-hsevm, am654x-idk, am75x-evm, am64x-evm",Board Support,make clean board fails when run from <pdk>packages,"While doing a clean build of board from the top level PDK make file, use the following sequence. make clean make udma sciclient fatfs make board"
-	PRSDK-5080,"am654x-evm, am654x-idk",Board Support,"AM65xx diag failures on R5 core (USB, PCIE, MCASP and UART)",Can run failing test from A53 cores
-	PRSDK-5683,am335x-ice,Boot,OOB MLO from PSDK doesn't work with PRU-ICSS Ethernet/IP,
-	PRSDK-5466,am654x-evm,Boot,AM65xx/OSPI/XIP: OSPI driver re-open() fails on XIP mode,
-	PRSDK-5966,"am654x-evm, am654x-hsevm, am654x-idk",Boot,Optimized PLL settings for Maxwell,
-	PRSDK-5000,am654x-evm,Chip Support,Incorrect DMSC IRAM size in CSL-RL,
-	PRSDK-5915,"k2e-evm, k2g-evm, k2g-hsevm, k2g-ice, k2h-evm, k2k-evm, k2l-evm",Chip Support,Incorrect Keystone II Serdes Rx valid signal for PCIE interface using CSL,
-	PRSDK-5987,am572x-evm,Control Drivers,UART Rx/TX trigger level test fails in SMP mode for AM572x EVM (DMA),
-	PRSDK-5989,am654x-idk,Control Drivers,USB Host MSC test hangs in SMP mode on AM65xx IDK board,
-	PRSDK-5988,am654x-idk,Control Drivers,OSPI SMP unit test fails in 133MHz speed for AM65xx IDK,
-	PRSDK-6027,c6678-evm,Demonstrations,Image processing demo doesn't work on C6678,
-	PRSDK-4331,"am654x-evm, am654x-idk",Diagnostics,Incorrect Counter Values in DCC Operation,
-	PRSDK-5959,"k2g-evm, k2g-hsevm, k2g-ice",Diagnostics,Incorrect GPMC register access on K2G NAND diagnostics,
-	PRSDK-3541,am335x-evm,High-Speed Drivers,"USB MSC device mode doesn't handle ""safely remove"" command well.",
-	PRSDK-5916,"am335x-evm, am335x-ice, am335x-sk, am437x-evm, am437x-hsevm, am437x-idk, am437x-sk, am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",High-Speed Drivers,Sitara EMMC driver does not support data bus width other than 8 bit,
-	PRSDK-5730,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",High-Speed Drivers,Need to implement AM57x errata i926 in PCIE RX PHY setting sample code,
-	PRSDK-5690,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",High-Speed Drivers,Improper test of MMCSD driver with power switch from 3.3V to 1.8V,
-	PRSDK-3864,"am571x-idk, am572x-idk, am574x-idk",High-Speed Drivers,Missing USB disconnect event on USB device mode on AM5xx,
+	PRSDK-3383,am574x-idk,Diagnostics,Diagnostics: lcdTouchscreen_TEST hangs,"Issue expected to be specific to TI EVM. For TI EVM, test need to be bypassed from the diagnostic menu."
+	PRSDK-5879,am654x-evm,Board Support,Board: Board library needs to cover entire DDR region connected to EMIF1,
+	PRSDK-6382,am654x-evm,Boot,SBL: R5F: Core 1 boot is not working with unsigned binary with ipc images,
+	PRSDK-6341,am654x-evm,Control Drivers,UART SMP test application hangs in SMP mode on AM65xx board,
+	PRSDK-6342,am654x-evm,Debug & Instrumentation,Interrupt latency benchmark hangs in SMP mode on AM65xx board,
+	PRSDK-5638,am654x-evm,Diagnostics,AM65xx diag self test hangs during memory test on R5 core,
+	PRSDK-6109,"am654x-evm, am654x-hsevm, am654x-idk",Boot,ROM load time of SBL increased on GP devices,"Use ROM degenrate key on GP devices for signing the SBL. To do this, overwrite ti/build/k3_dev_mpk.pem with ti/build/rom_degenerateKey.pem before building the SBL "
+	PRSDK-5966,"am654x-evm, am654x-hsevm, am654x-idk",Boot,PLL settings for Maxwell are not optimal,
+	PRSDK-4661,"am654x-evm, am654x-hsevm, am654x-idk",Diagnostics,Maxwell: Board diagnostics LCD touchscreen test reports incorrect number of touch events,
+	PRSDK-6364,"am654x-evm, am654x-hsevm, am654x-idk",Demonstrations,CAN-GATEWAY-DEMO not present on am65xx installer,
+	PRSDK-6054,"am654x-evm, am654x-hsevm, am654x-idk",High-Speed Drivers,Bare-metal USB application performance degradation on Am65xx R5 core as compared to SYSBIOS benchmark,
 	PRSDK-4886,"am654x-evm, am654x-hsevm, am654x-idk",High-Speed Drivers,UDMA-P Real-time Remote Peer Registers not Functional Across UDMA-P Domains,
-	PRSDK-5654,"am654x-evm, am654x-hsevm, am654x-idk",High-Speed Drivers,"UART_config mismatch when removing ""--diag_supress=2300"" linker flag",
-	PRSDK-2989,omapl137-evm,High-Speed Drivers,Enable 1024 byte block size support for MMCSD LLD,
-	PRSDK-3412,"omapl137-evm, omapl138-evm",High-Speed Drivers,USB audio class example noise issue on OMAPL13x,
-	PRSDK-6054,,High-Speed Drivers,Bare-metal USB application performance degradation on Am65xx R5 core as compared to SYSBIOS benchmark,
-	PRSDK-5611,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Networking,NDK HTTP server memory leak,
 	PRSDK-5755,"am654x-evm, am654x-hsevm, am654x-idk",Networking,ICSS-G-FW: Firmware should not configure ICSSG clock mux,
-	PRSDK-4744,"am654x-evm, am654x-idk",Networking,nimu_free_pkt() wrongly frees p_pkt_desc,
+	PRSDK-5064,"am654x-evm, am654x-idk","Audio, Video, & Display",RTOS: Maxwell MCASP Device Loopback Regression test 7 and 9 fail,
+	PRSDK-2951,"am654x-evm, am654x-idk","Board Support, Diagnostics",Maxwell_M4_Diag: LCD Display Diagnostic Stress Test,
+	PRSDK-5448,"am654x-evm, am654x-idk",Boot,SBL boot from MMCSD fails intermittently,
+	PRSDK-5648,"am654x-evm, am654x-idk",Diagnostics,Maxwell DIAG: UART stress test only runs over JTAG,
+	PRSDK-7118,"am654x-evm, am654x-idk",Diagnostics,Diagnostics ICSSG EMAC STRESS: Port 4 Send to Port 5 Receive Test Failed for 10240 packets,
+	PRSDK-5097,"am654x-evm, am654x-idk",High-Speed Drivers,USB Dev MSC performance is not on par with Linux driver,
 	PRSDK-5544,"am654x-evm, am654x-idk",Networking,Maxwell EMAC LLD example doesn't work at 100Mbps,
-	PRSDK-5022,am654x-idk,Networking,am65xx: Running emac unit test on R5 core from ddrless SBL at times does not complete execution,
-	PRSDK-5851,"am570x-evm, am571x-idk, am572x-evm, am572x-idk, am574x-idk",Optimized Libraries,Fail to run RTOS examples on non-primary A15 core,"Current example can be run only on primary core"
-	PRSDK-5253,am654x-evm,OSAL,[osal] R5 OsalArch_HwiPCreate calls system enable() unconditionally,
-	PRSDK-5936,am437x-idk,PDK,IO-Link master example does not work with Balluff inductive coupler,
-	PRSDK-6059,"am654x-evm, am654x-idk",PDK,reserved area for DMSC in top level linker command file in PDK is incorrect,
+	PRSDK-5074,"am654x-evm, j721e-evm",PDK,McASP driver hangs with small buffer size,Use packet size 32 samples or greater
 	PRSDK-4680,"am654x-evm, omapl137-evm",PDK,Processor SDK RTOS Post Installer script fails in case cygwin/mingw is overriding Windows default find utility,
+	PRSDK-5626,am654x-hsevm,"Boot, DMA",OSPI Read using UDMA fails on AM65x HS devices.,Non-DMA mode could be used for the read operation
+	PRSDK-5229,am654x-idk,Board Support,PCIe diagnostic test validates only one port on PCIe 2-lane card,
+	PRSDK-4843,am654x-idk,Board Support,Pinmux support for AM654x IDK ICSS MII pin is missing,
+	PRSDK-5988,am654x-idk,Control Drivers,OSPI SMP unit test fails in 133MHz speed for AM65xx IDK,
+	PRSDK-5989,am654x-idk,Control Drivers,USB Host MSC test hangs in SMP mode on AM65xx IDK board,
+	PRSDK-5751,am654x-idk,Diagnostics,AM65xx IDK PCIe diagnostic test failure,
+	PRSDK-5022,am654x-idk,Networking,am65xx: Running emac unit test on R5 core from ddrless SBL at times does not complete execution,
+	PRSDK-7121,am654x-idk,PDK,OSPI flash test slave in DAC mode at 166MHz RCLK have failed,
+	PRSDK-5933,amic110-ice,Networking,NIMU_ICSS iceAMIC110: ping failed at J7 port,
 	PRSDK-3727,"c6748-evm, c6748-lcdk",PDK,C6748 is missing from SOC description list in pdkProjectCreate,
-	PRSDK-6151,"am571x-idk, am572x-idk, am574x-idk",Networking,ICSS_EMAC hangs at ICSS_EMAC_testTaskPruss2: Testing NonPromiscuous Mode,Update bios cfg file used by the ICSSG-EMAC examples to add MMU configurations for address starting from 0x40000000 to 0x40600000 without settings 'noExecute' flag
+	PRSDK-6399,"j721e-evm, k2g-evm",Control Drivers,SPI Master Slave example fails at the UT0,
+	PRSDK-7177,"k2e-evm, k2h-evm, k2k-evm",PDK,mmap_TestProject DSP LE: keystone_mmap_init() returned error,
+	PRSDK-3114,"k2g-evm, k2g-hsevm, k2g-ice",Diagnostics,K2G: RTOS ECC support broken on ARM core,
+	PRSDK-5903,k2g-hsevm,Networking,EMAC_BasicExample DSP LE: Exception at 0xc00fde4,
+	PRSDK-3371,omapl137-evm,Boot,Slave boot is failing on evmOMAPL137,
+	PRSDK-2989,omapl137-evm,High-Speed Drivers,MMCSD LLD fails on OMAPl137 with 1024 byte block size,
+	PRSDK-3412,"omapl137-evm, omapl138-evm",High-Speed Drivers,USB audio class example noise issue on OMAPL13x,
+	PRSDK-4043,"omapl137-evm, omapl138-lcdk",High-Speed Drivers,OMAPL13x: USB Baremetal project binaries not built via top level make,
 
 .. RN_Supported-Platforms-label:
 
@@ -475,7 +475,7 @@ platform/EVM.
 +------------------+--------------------+---------------+-----------+-----------+-----------+
 |     Feature      |    Platform/SOC    |  AM335x EVM   |AM437x EVM | AM57x EVM | AM65x EVM |
 +==================+=======+======+=====+===+===+===+===+===+===+===+=====+=====+=====+=====+
-|                  |AM335x |AM437x|AM57x|GP |ICE|SK |BBB|GP |IDK|SK | GP  | IDK | GP  | IDK |
+|                  |AM335x |AM437x|AM57x|GP |ICE|SK |BBB|GP |IDK|SK | GP  | IDK | GP  | IDK | 
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
 | CSL              |   X   |   X  |  X  | X | X | X | X | X | X | X |  X  |  X  |  X  |  X  |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
@@ -522,8 +522,6 @@ platform/EVM.
 | VPS              |       |      |  X  |   |   |   |   |   |   |   |  X  |  X  |     |     |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
 | UDMA             |       |      |     |   |   |   |   |   |   |   |     |     |  X  |  X  |
-+------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
-| OSPI             |       |      |     |   |   |   |   |   |   |   |     |     |  X  |  X  |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
 | SCICLIENT        |       |      |     |   |   |   |   |   |   |   |     |     |  X  |  X  |
 +------------------+-------+------+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+
@@ -776,6 +774,8 @@ For further information or to report any problems, contact:
 
 Archived 
 ==========
+-  `Processor-SDK RTOS
+   6.0.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/06_00_00_07/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS
    5.3.0 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/05_03_00_07/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
 -  `Processor-SDK RTOS

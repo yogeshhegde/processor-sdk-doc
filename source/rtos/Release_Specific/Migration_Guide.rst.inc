@@ -17,9 +17,9 @@ Processor SDK 06.01
 NIMU
 ====
 
-**Migration-1:** Udma init sequence call has been moved from NIMU library to NIMU example for AM65xx andd J721E SOC's.
+**Migration:** Udma init sequence call has been moved from NIMU library to NIMU example for AM65xx
 
-**Impact Scope:** Applicable for all NIMU applications using NIMU tranport library for AM65xx and J721E SOC's.
+**Impact Scope:** Applicable for all NIMU applications using NIMU tranport library for AM65xx
  
 **Additional Details**:
 Applications will need to implement the following function to provide UDMA drive handle which will be called by the NIMU driver at startup
