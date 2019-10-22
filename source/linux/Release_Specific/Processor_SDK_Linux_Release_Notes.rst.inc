@@ -345,14 +345,11 @@ SDK Known Issues
    PLSDK-2989,"am335x-evm,am437x-evm,am437x-hsevm,am572x-evm,am572x-hsevm,k2e-evm,k2g-evm,k2l-evm,k2l-hsevm",defconfig build failure: reported diff,None
    PLSDK-3067,am574x-idk,M4 Bind/Unbind Causes Hang,"Work around is to add code in the IPU config files that will put the cpu in WFI during idle and this avoids the problem."
    PLSDK-3071,"am571x-idk, am572x-evm, am572x-idk, am574x-idk",Dual camera demo - Overlapping of camera and stats panel due to big font size",None
-   PLSDK-3082,"am335x-evm","Document NFS details when using Ubuntu 1804","NFS boot "root=/dev/nfs nfsroot=<your server ip>:<exported root path>,v3 rw ip=dhcp""
+   PLSDK-3082,"am335x-evm","Document NFS details when using Ubuntu 1804","NFS boot root=/dev/nfs nfsroot=<your server ip>:<exported root path>,v3 rw ip=dhcp"
    PLSDK-3089,"am572x-evm,k2l-evm","openmpacc example test failed on am572x-evm and k2l-evm",None
    PLSDK-3091,am572x-idk,"Jailhouse - ICSS_EMAC_LLD test hangs during TTS tests on ICSS_EMAC_TEST_PRU2ETH0 and ICSS_EMAC_TEST_PRU2ETH1",None
    PLSDK-3093,am437x-idk,ICSS Emac unittest failing on am437xidk,None
-   PLSDK-3102,"am654x-evm,am654x-idk","ProcSDK Linux installer script fails to create targetNFS",None
-   PLSDK-3103,"am654x-evm,am654x-idk","ProcSDK Linux installer script fails to acquire IP address",None
-   PLSDK-3104,"am654x-evm,am654x-idk","create-ubifs.sh UBI image creation script missing critical parameters", None
-   PLSDK-3105,"am654x-evm,am654x-idk,am654x-hsevm","setup-uboot-env.sh script configures incorrect environment for network boot resulting in duplicated Kernel log",None
+
 |
 
 U-Boot Known Issues
@@ -382,6 +379,7 @@ U-Boot Known Issues
    LCPD-5416,K2G,"U-BOOT: K2G: ""reset"" fails for certain SD cards",None
    LCPD-5116,AM335x,BBB: U-Boot: Board fails to acquire dhcp address sometimes,None
    LCPD-4817,AM572x,am57xx-evm/dra7xx-evm: uboot: usb failed to detect Kingston DataTraveler usb msc device,None
+
 |
 
 
