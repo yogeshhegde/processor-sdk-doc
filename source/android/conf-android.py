@@ -3,16 +3,9 @@
 # The master toctree document.
 master_doc = 'android/index'
 
-# General information about the project.
-project = u'Processor SDK Android'
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = ['rtos', 'linux', 'swtoolsdev']
-
-# The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
-html_title = 'Processor SDK Android Documentation'
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ProcessorSDKAndroiddoc'

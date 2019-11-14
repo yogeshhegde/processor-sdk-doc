@@ -1,4 +1,34 @@
 #############################################
+# Sphinx build setup
+#############################################
+
+# Set 'project'    = General information about the Sphinx project
+# Set 'html_title' = The name for this set of Sphinx documents.
+#                    If None, it defaults to "<project> v<release> documentation".
+
+if (sdk_os is 'linux'):
+    if (sdk_product is 'general'):
+        project = u'Processor SDK Linux'
+        html_title = 'Processor SDK Linux Documentation'
+    if (sdk_product is 'automotive'):
+        project = u'Processor SDK Linux Automotive'
+        html_title = 'Processor SDK Linux Automotive Documentation'
+if (sdk_os is 'rtos'):
+    if (sdk_product is 'general'):
+        project = u'Processor SDK RTOS'
+        html_title = 'Processor SDK RTOS Documentation'
+    if (sdk_product is 'automotive'):
+        project = u'Processor SDK RTOS Automotive'
+        html_title = 'Processor SDK RTOS Automotive Documentation'
+if (sdk_os is 'android'):
+    if (sdk_product is 'general'):
+        project = u'Processor SDK Android'
+        html_title = 'Processor SDK Android Documentation'
+    if (sdk_product is 'automotive'):
+        project = u'Processor SDK Android Automotive'
+        html_title = 'Processor SDK Android Automotive Documentation'
+
+#############################################
 # Device family build setup
 #############################################
 import pprint
