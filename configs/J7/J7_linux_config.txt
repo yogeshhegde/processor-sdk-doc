@@ -15,6 +15,7 @@ Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'Jacinto 7'
 '__PART_FAMILY_DEVICE_NAMES__'   : 'J721E'
+'__PRODUCT_LINE_NAME__'          : 'Jacinto'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux Automotive'
 '__SDK_SHORT_NAME__'             : 'PSDKLA'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-automotive-j7-evm-<version>-Linux-x86-Install.bin'

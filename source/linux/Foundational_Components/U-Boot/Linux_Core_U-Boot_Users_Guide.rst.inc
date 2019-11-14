@@ -909,8 +909,10 @@ variable to that of the tftp server used in the setup.
 NAND
 -----------------------------------
 
-.. note::
-    NAND is not supported on J721E platform.
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    .. note::
+        NAND is not supported on J721E platform.
 
 This section documents how to write files to the NAND device and use it
 to load and then boot the Linux Kernel using a root filesystem also
@@ -1545,8 +1547,10 @@ SPL directly boots the kernel image from SD (or eMMC).
 SPI
 ------------------------------------
 
-.. note::
-    SPI  is not supported on J721E platform (not be confused with QSPI/OSPI)
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    .. note::
+        SPI is not supported on J721E platform (not be confused with QSPI/OSPI).
 
 This section documents how to write files to the SPI device and use it
 to load and then boot the Linux Kernel using a root filesystem also
@@ -1931,8 +1935,10 @@ following example uses the partition table found in the kernel.
 NOR
 ---------------------------------------
 
-.. note::
-    Parallel NOR is not supported on J721E platform.
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    .. note::
+        Parallel NOR is not supported on J721E platform.
 
 This section documents how to write files to the NOR device and use it
 to load and then boot the Linux Kernel using a root filesystem also

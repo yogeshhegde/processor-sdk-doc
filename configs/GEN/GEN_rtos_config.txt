@@ -15,6 +15,7 @@ Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'TODO'
 '__PART_FAMILY_DEVICE_NAMES__'   : 'TODO'
+'__PRODUCT_LINE_NAME__'          : 'Sitara'
 '__SDK_FULL_NAME__'              : 'Processor SDK RTOS'
 '__SDK_SHORT_NAME__'             : 'PSDKR'
 '__SDK_INSTALL_FILE__'           : 'TODO - INSTALLATION FILE GOES HERE'

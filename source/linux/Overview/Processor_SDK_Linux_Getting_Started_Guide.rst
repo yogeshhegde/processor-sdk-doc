@@ -163,7 +163,7 @@ to get the imagination active and engaged.
     Black <http://beagleboard.org/Products/BeagleBone%20Black>`__, you might
     not have a SD card with the SDK on it. Or, maybe, the SDK on your SD
     card is simply a few revisions old and you want the latest and greatest.
-    If that is the case, check out the `Creating a SD Card with Windows <Processor_SDK_Linux_Creating_a_SD_Card_with_Windows.html#windows-sd-card-creation-guide>`__
+    If that is the case, check out the `Creating a SD Card with Windows <Processor_SDK_Linux_Creating_a_SD_Card_with_Windows.html>`__
     page. Just remember, you won’t be able to build or change anything,
     simply evaluate the SDK Embedded Linux System with Matrix as delivered.
     But, even this is enough to get the imagination going and all some folks
@@ -240,7 +240,7 @@ which you can start development.
 
 #. **Install the SDK**
 
-   Within your Linux host machine, `Install the Linux SDK <Download_and_Install_the_SDK.html#download-and-install-the-sdk>`__.
+   Within your Linux host machine, `Install the Linux SDK <Download_and_Install_the_SDK.html>`__.
 
    .. note::
       Processor SDK Installer is 64-bit, and installs only on 64-bit host
@@ -255,8 +255,8 @@ which you can start development.
 
    .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-       Use the `SDK Create SD Card Script <Processor_SDK_Linux_create_SD_card_script.html#linux-sd-card-creation-guide>`__,
-       or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Program_EVM.html#program-evm-user-guide>`__
+       Use the `SDK Create SD Card Script <Processor_SDK_Linux_create_SD_card_script.html>`__,
+       or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Program_EVM.html>`__
 
    .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
@@ -277,7 +277,7 @@ which you can start development.
           For K2H/K2K, K2E, and K2L platforms which are not using SD card,
           one-time EVM programming is needed if u-boot has not been loaded
           before or the previous u-boot is somehow corrupted. Please see
-          details at `Program EVM User Guide <Program_EVM.html#program-evm-user-guide>`__.
+          details at `Program EVM User Guide <Program_EVM.html>`__.
 
 #. **Configure your development environment**
 
@@ -306,7 +306,7 @@ which you can start development.
        .. note::
           This is not applicable to K2H/K2K, K2E, and K2L platforms. For those
           platforms, power up the EVM and stop at the U-boot prompt as
-          described in `Program EVM User Guide <Program_EVM.html#program-evm-user-guide>`__
+          described in `Program EVM User Guide <Program_EVM.html>`__
 
 #. **Run the Setup Script**
 

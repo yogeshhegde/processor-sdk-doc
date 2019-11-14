@@ -1,3 +1,5 @@
+.. include:: ../../replacevars.rst.inc
+
 .. http://processors.wiki.ti.com/index.php/Pin_Mux_Utility_for_ARM_MPU_Processors
 
 Pin Mux Tools
@@ -35,21 +37,10 @@ it isn't guarunteed.
 .. rubric:: Software User's Guide
    :name: software-users-guide
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    A quick overview of the TI PinMux Tool's UI and usage is available on
-    the main `PinMux Tool
-    Wiki <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool_v4>`__. The
-    rest of this guide will focus on usage for the Sitara Processors.
-
-
-.. ifconfig:: CONFIG_part_family in ('J7_family')
-
-    A quick overview of the TI PinMux Tool's UI and usage is available on
-    the main `PinMux Tool
-    Wiki <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool_v4>`__. The
-    rest of this guide will focus on usage for the Jacinto Processors.
-
+A quick overview of the TI PinMux Tool's UI and usage is available on
+the main `PinMux Tool
+Wiki <http://processors.wiki.ti.com/index.php/TI_PinMux_Tool_v4>`__. The
+rest of this guide will focus on usage for the |__PRODUCT_LINE_NAME__| Processors.
 
 .. rubric:: Release Notes
    :name: release-notes
@@ -65,22 +56,13 @@ open an existing design. To start a new design use the drop-down menu
 indicating which devices are supported by this installation of the
 PinMux Tool. Select your device and click **Start**. Previously saved
 designs can be opened too. Although we try to maintain backwards
-compatibility between PinMux Tool versions it isn't guarunteed.
+compatibility between PinMux Tool versions, it isn't guaranteed.
 
 .. rubric:: IOSETs
    :name: iosets
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
-
-    Timing restrictions make the concept of IOSETs an important subject for
-    Sitara Processors. 
-    
-.. ifconfig:: CONFIG_part_family in ('J7_family')
-
-    Timing restrictions make the concept of IOSETs an important subject for
-    Jacinto Processors. 
-    
-The device datasheet timing specifications define the
+Timing restrictions make the concept of IOSETs an important subject for
+|__PRODUCT_LINE_NAME__| Processors. The device datasheet timing specifications define the
 relationship between clock lines and data lines. A peripheral instance
 like McASP may be available on any number of pins but not all
 combinations of clock and data pins may be available. We only define

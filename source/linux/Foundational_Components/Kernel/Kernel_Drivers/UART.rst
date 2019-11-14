@@ -281,16 +281,16 @@ Run only serialstats on the RX side without starting RX receiver process.
 If cts is non zero and ovr and buf_ovrr are not reported,
 then HW flow control is working.
 
-**Note**
+.. note::
 
-- Make sure to start the RX side before starting TX.
+    - Make sure to start the RX side before starting TX.
 
-- RX side waits for 100s before reporting timeout. Make sure TX side
-  starts sending data before 100s.
+    - RX side waits for 100s before reporting timeout. Make sure TX side
+      starts sending data before 100s.
 
-- serialcheck tool does not support duplex mode(-m d -> simulatenous
-  RX and TX). Workaround would be to start second send/receive pair in
-  reverse direction.
+    - serialcheck tool does not support duplex mode(-m d -> simulatenous
+      RX and TX). Workaround would be to start second send/receive pair in
+      reverse direction.
 
 .. rubric:: Probable reason for different errors
 
@@ -317,8 +317,8 @@ uart_throttle() function if the receiver is overwhelmed to avoid buf_ovrr.
   baudrate, and change other tty settings:
   https://github.com/nsekhar/serialcheck/blob/master/serialcheck.c
 
-**Note**
+.. note::
 
-- It is always recommended to connect HW flow control lines for UART
-  communication. Also, software should enable HW flow control explicitly.
-  Otherwise, there will be data loss and data corruption.
+    It is always recommended to connect HW flow control lines for UART
+    communication. Also, software should enable HW flow control explicitly.
+    Otherwise, there will be data loss and data corruption.

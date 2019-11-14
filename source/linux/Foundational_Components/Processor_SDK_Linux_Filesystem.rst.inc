@@ -54,7 +54,7 @@ binaries and out of box examples.
        :name: tisdk-docker-rootfs-image
 
     This is a minimal image with support for Docker.
-    See `Docker Linux Container Runtime <Foundational_Components_Virtualization.html#docker-linux-container-runtime>`__ for more information.
+    See `Docker Linux Container Runtime <Foundational_Components/Virtualization/Docker.html>`__ for more information.
 
     .. rubric:: arago-tiny-image
        :name: arago-tiny-image
