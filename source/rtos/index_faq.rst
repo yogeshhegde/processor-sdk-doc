@@ -858,6 +858,14 @@ driver in the SDK that you can use for reference. The FATFS-specific
 documentation for Processor SDK RTOS is available in the `FATFS wiki
 section of the Processor SDK RTOS <Device_Drivers.html#fatfs>`__.
 
+.. rubric:: Is Unicode string supported in FATFS?
+   :name: is-unicode-string-supported-in-fatfs
+
+Processor SDK RTOS only supports ANSI string for the path and file names. 
+To switch to Unicode support, please: set the _LFN_UNICODE to 1 in the FATFS (ffconf.h) 
+and rebuild the FATFS library. Also, Unicode support uses 16-bit WCHAR for CHAR. 
+When calling the FATFS APIs (in ff.h), the application needs to pass WCHAR. 
+
 | 
 
 TI RTOS
