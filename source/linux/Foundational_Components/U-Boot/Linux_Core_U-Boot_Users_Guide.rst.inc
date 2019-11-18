@@ -2521,3 +2521,6 @@ If a user is working with AM335x/AM437x/AM57xx, the test code could be added in 
 	.. Image:: ../images/Uboot_Image12.png
 
 At this point, the user has the ability to step through the SPL code and debug issues in the SPL.
+
+**NOTE**: On K3 family of devices such as AM654x, a watchdog timer part of the DMSC is enabled by default by the ROM bootcode with a timeout of 3 minutes. The watchdog timer is serviced by System Firmware (SYSFW) during normal operation. If one is debugging SPL before the SYSFW is loaded, the watchdog timer will not get serviced automatically and the debug session will reset after 3 minutes. Therefore, it is recommended to start debugging SPL code only after the startup of SYSFW to avoid running into the watchdog timer reset.
+
