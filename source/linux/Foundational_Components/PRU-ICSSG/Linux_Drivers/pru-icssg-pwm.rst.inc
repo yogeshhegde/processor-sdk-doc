@@ -15,7 +15,7 @@ Up to 24 PWMs are supported per PRU-ICSSG with the following features:
 
   - Each pwmchip (IEP) supports up to 12 PWMs
   - support Single-Ended mode
-  - PWM period range: 10us ~ 2sec
+  - PWM period range: 40us ~ 2sec
   - PWM duty-cycle range: 400ns ~ (period - 400ns)
 
 
