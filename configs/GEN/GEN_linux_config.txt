@@ -1,0 +1,37 @@
+# General family replacement variables and configuration values for Linux build
+
+# This file is processed by Python scripts to define both replacement
+# variable and configuration values for a device family build.
+# For replacement variables, all variables should be listed on a single
+# line, and all the variables should be listed on consecutive lines
+# (i.e. no additional blank lines between the replacement variables).
+# Similarly, all the configuration values should be listed on individual,
+# consecutive lines (with no blank linues between the configuration values).
+#
+# Note that neither replacement variables nor configuration values may contain
+# a colon (i.e. ":") in their name.  However, values may contain colons.
+
+Replacement Variables
+---------------------
+'__PART_FAMILY_NAME__'           : 'TODO'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'TODO'
+'__PRODUCT_LINE_NAME__'          : 'Sitara'
+'__SDK_FULL_NAME__'              : 'Processor SDK Linux'
+'__SDK_SHORT_NAME__'             : 'PLSDK'
+'__SDK_INSTALL_FILE__'           : 'am57xx-evm-linux-sdk-arago-src-<version>.tar.xz'
+'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-[platformName]-evm-<version>'
+'__SDK_DOWNLOAD_URL__'           : '`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/latest/index_FDS.html>`__'
+'__LINUX_UBUNTU_VERSION_LONG__'  : '14.04 (64-bit), 16.04 (64-bit), 18.04 (64-bit)'
+'__LINUX_UBUNTU_VERSION_SHORT__' : '14.04, 16.04, or 18.04'
+'__RTOS_UBUNTU_VERSION_LONG__'   : '14.04 (64-bit), 16.04 (64-bit)'
+'__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
+'__FEATURINGMATRIX__'            : 'featuring Matrix'
+
+Configuration Values
+--------------------
+'CONFIG_part_family'      : 'General_family'
+'CONFIG_sdk'              : 'PLSDK'
+'CONFIG_icss_support'     : 'yes'
+'CONFIG_rt_linux_support' : 'yes'
+'CONFIG_gpu_ip'           : 'SGX'
+

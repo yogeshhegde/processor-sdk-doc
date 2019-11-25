@@ -176,7 +176,7 @@ Processor SDK 05.00
 - Keystone-2: PA/PA2 is not supported in NetCP driver.
 - Keystone-2: NWAL is not supported
 - MMC: AM57x uses sdhci-omap.c driver instead of omap_hsmmc.c driver
-- PCIe: The way in which PCIe endpoint is configured has changed. More details can be found from `PCIe End Point Driver <Foundational_Components_Kernel_Drivers.html#pcie-end-point-4-14-kernel>`__.
+- PCIe: The way in which PCIe endpoint is configured has changed. More details can be found from `PCIe End Point Driver <Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point.html#pcie-end-point-4-14-kernel>`__.
 - AM335x ICE v2: A new DT file (am335x-ice-v2-prueth.dts) is added to support PRUSS Ethernet ports. The following configurations are supported.
 
 :: 

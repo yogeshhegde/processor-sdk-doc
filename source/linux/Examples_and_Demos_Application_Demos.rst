@@ -2,10 +2,24 @@
 Application Demos
 **********************************
 
-Dual Camera
-======================
-.. include:: Examples_and_Demos/Dual_Camera_Demo.rst.inc
+.. toctree::
+   :maxdepth: 5
 
+   Examples_and_Demos/Application_Demos/Integrated_Cockpit
+   Examples_and_Demos/Application_Demos/Can_Eth_Gateway_Demo
+   Examples_and_Demos/Application_Demos/Dual_Camera_Demo
+   Examples_and_Demos/Application_Demos/Video_Analytics
+   Examples_and_Demos/Application_Demos/Barcode
+   Examples_and_Demos/Application_Demos/QT_Thermostat_HMI_Demo
+   Examples_and_Demos/Application_Demos/Optical_Flow_with_OpenVX
+   Examples_and_Demos/Application_Demos/ROS_Radar
+   Examples_and_Demos/Application_Demos/PdM_Anomaly_Detection
+   Examples_and_Demos/Application_Demos/PRU_ADC
+   Examples_and_Demos/Application_Demos/Video_Graphics_Test
+   Examples_and_Demos/Application_Demos/Watchdog_demo
+   Examples_and_Demos/Application_Demos/Additional_Application_Demo_Links
+
+<<<<<<< HEAD
 Video Analytics
 ======================
 .. include:: Examples_and_Demos/Video_Analytics.rst.inc
@@ -76,3 +90,5 @@ Video Graphics Test
 Watchdog Demo on AM654x PG 1.0
 ==============================
 .. include:: Examples_and_Demos/Watchdog_demo.rst.inc
+=======
+>>>>>>> origin/processor-sdk-06.02

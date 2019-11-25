@@ -22,7 +22,7 @@ by just using the supplied USB cable.
 .. rubric:: EVM Layout and key components
    :name: evm-layout-and-key-components
 
-.. Image:: ../images/AM572x_IDK_layout.png
+.. Image:: ../../../images/AM572x_IDK_layout.png
 
 -  PRU1ETH0 and PRU2ETH0 are not enabled by default
 
@@ -56,7 +56,7 @@ designed to help you through the initial setup of the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| .. Image:: ../images/IDK_uSD.png                                         |
+| .. Image:: ../../../images/IDK_uSD.png                                   |
 +--------------------------------------------------------------------------+
 
 +--------------------------------------------------------------------------+
@@ -79,7 +79,7 @@ designed to help you through the initial setup of the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| .. Image:: ../images/Power_cord_connect.png                              |
+| .. Image:: ../../../images/Power_cord_connect.png                        |
 |                                                                          |
 +--------------------------------------------------------------------------+
 
@@ -113,7 +113,7 @@ VDE, CCC, PSE, etc.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| .. Image:: ../images/JTAGUSB_UART.png                                    |
+| .. Image:: ../../../images/JTAGUSB_UART.png                              |
 +--------------------------------------------------------------------------+
 
 **Note:** The serial port will not show up on the host PC until you
@@ -138,47 +138,47 @@ power on the EVM.
 |                                                                          |
 |    <div class="magnify">                                                 |
 |                                                                          |
-| .. Image:: ../images/PowerON.png                                         |
+| .. Image:: ../../../images/PowerON.png                                   |
 +--------------------------------------------------------------------------+
 
 After, you power on the EVM the Status, Industrial LED2, Industrial LED3
 will turn on. If the microUSB cable is pluged in then the LED
 corresponding to FTDI UARTtoUSB will be turned on.
 
-+---------------------------------------------+---------------------------------------------+
-| **5.** **Users can now connect to UART and the on board XDS100 emulator                   |
-| from the host machine.For UART port connections set the serial terminal                   |
-| software Tera term/minicom/hyperterminal to baudrate 115200 to see log                    |
-| messages. Connecting to target using emulator has been discussed in the                   |
-| section below.**                                                                          |
-+---------------------------------------------+---------------------------------------------+
-| .. raw:: html                               | .. raw:: html                               |
-|                                             |                                             |
-|    <div class="center">                     |    <div class="center">                     |
-|                                             |                                             |
-| .. raw:: html                               | .. raw:: html                               |
-|                                             |                                             |
-|    <div                                     |    <div                                     |
-|    class="thumb tnone">                     |    class="thumb tnone">                     |
-|                                             |                                             |
-| .. raw:: html                               | .. raw:: html                               |
-|                                             |                                             |
-|    <div                                     |    <div                                     |
-|    class="thumbinner"                       |    class="thumbinner"                       |
-|    style="width:402px;">                    |    style="width:302px;">                    |
-|                                             |                                             |
-| .. Image:: ../images/Serial_connect.jpg     | .. Image:: ../images/Baudrate.jpg           |
-|                                             |                                             |
-| .. raw:: html                               | .. raw:: html                               |
-|                                             |                                             |
-|    <div                                     |    <div                                     |
-|    class="thumbcaption">                    |    class="thumbcaption">                    |
-|                                             |                                             |
-| .. raw:: html                               | .. raw:: html                               |
-|                                             |                                             |
-|    <div class="magnify">                    |    <div class="magnify">                    |
-|                                             |                                             |
-+---------------------------------------------+---------------------------------------------+
++-----------------------------------------------+---------------------------------------------+
+| **5.** **Users can now connect to UART and the on board XDS100 emulator                     |
+| from the host machine.For UART port connections set the serial terminal                     |
+| software Tera term/minicom/hyperterminal to baudrate 115200 to see log                      |
+| messages. Connecting to target using emulator has been discussed in the                     |
+| section below.**                                                                            |
++-----------------------------------------------+---------------------------------------------+
+| .. raw:: html                                 | .. raw:: html                               |
+|                                               |                                             |
+|    <div class="center">                       |    <div class="center">                     |
+|                                               |                                             |
+| .. raw:: html                                 | .. raw:: html                               |
+|                                               |                                             |
+|    <div                                       |    <div                                     |
+|    class="thumb tnone">                       |    class="thumb tnone">                     |
+|                                               |                                             |
+| .. raw:: html                                 | .. raw:: html                               |
+|                                               |                                             |
+|    <div                                       |    <div                                     |
+|    class="thumbinner"                         |    class="thumbinner"                       |
+|    style="width:402px;">                      |    style="width:302px;">                    |
+|                                               |                                             |
+| .. Image:: ../../../images/Serial_connect.jpg | .. Image:: ../../../images/Baudrate.jpg     |
+|                                               |                                             |
+| .. raw:: html                                 | .. raw:: html                               |
+|                                               |                                             |
+|    <div                                       |    <div                                     |
+|    class="thumbcaption">                      |    class="thumbcaption">                    |
+|                                               |                                             |
+| .. raw:: html                                 | .. raw:: html                               |
+|                                               |                                             |
+|    <div class="magnify">                      |    <div class="magnify">                    |
+|                                               |                                             |
++-----------------------------------------------+---------------------------------------------+
 
 .. rubric:: Connecting IDK EVM to Code Composer Studio
    :name: connecting-idk-evm-to-code-composer-studio
@@ -213,7 +213,7 @@ the Sitara Device support version 1.3.x package correctly
 
    </div>
 
-.. Image:: ../images/Target_configuration.png
+.. Image:: ../../../images/Target_configuration.png
 
 | 
 | **Step4:** In advance settings, Make sure that the corresponding IDK
@@ -297,7 +297,7 @@ connect to the core.
 
 | 
 
-.. Image:: ../images/Multicore-Enable.jpg
+.. Image:: ../../../images/Multicore-Enable.jpg
 
 .. rubric:: Related Links
    :name: related-links

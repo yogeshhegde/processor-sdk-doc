@@ -12,9 +12,11 @@ Foundational Components
    Foundational_Components_Tools
    Foundational_Components_PRU-ICSS_PRU_ICSSG
    Foundational_Components_IPC
+   Foundational_Components_IPCLLD
    Foundational_Components_CMEM
    Foundational_Components_Graphics
-   Foundational_Components_Multimedia
+   Foundational_Components_Multimedia_IVAHD
+   Foundational_Components_Multimedia_D5520_VXE384
    Foundational_Components_OpenCL
    Foundational_Components_OpenCV
    Foundational_Components_OpenVX

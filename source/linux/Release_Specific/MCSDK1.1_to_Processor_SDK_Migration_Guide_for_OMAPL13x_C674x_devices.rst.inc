@@ -23,8 +23,11 @@ development.
 -  The Processor SDK Linux installer is available only for 64-bit host
    machines running Linux. Support for 32-bit machines is dropped
    primarily due to the Linzro toolchain not supporting 32-bit anymore.
-   Host support for the SDK is described in the `Release
-   Notes <Release_Specific_Release_Notes.html#host_support>`__
+
+   .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+       Host support for the SDK is described in the `Release
+       Notes <Release_Specific_PLSDK_Release_Notes.html#host_support>`__
 
 .. rubric:: Tool Chain
    :name: tool-chain

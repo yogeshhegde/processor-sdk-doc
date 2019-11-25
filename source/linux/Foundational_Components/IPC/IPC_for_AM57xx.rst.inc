@@ -258,7 +258,7 @@ To reload DSP1 with this new executable, we perform the following steps:
     [27646.078026] virtio_rpmsg_bus virtio2: creating channel rpmsg-proto addr 0x3d
 
 More info related to loading firmware to the various cores can be found
-`here <Foundational_Components_Multimedia.html#firmware-loading-and-unloading>`__.
+`here <Foundational_Components_Multimedia_IVAHD.html#firmware-loading-and-unloading>`__.
 
 Finally, we can run the example on DSP1:
 

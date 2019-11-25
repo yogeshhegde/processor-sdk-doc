@@ -1,3 +1,5 @@
+.. include:: replacevars.rst.inc
+
 .. http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
 .. rubric:: Overview
    :name: overview-linux-kernel-ug
@@ -8,14 +10,16 @@ This wiki will cover the basic steps for building the Linux kernel.
    :name: getting-the-kernel-source-code
 
 | The easiest way to get access to the kernel source code is by
-  downloading and installing the Processor SDK Linux. Once installed,
+  downloading and installing the |__SDK_FULL_NAME__| Once installed,
   the kernel source code is included in the SDK's board-support
   directory. For your convenience the sources also includes the kernel's
   git repository including commit history.
-| Alternatively, Kernel sources can directly be fetched from GIT. You
-  can find the details about the git repository, branch and commit id in
-  the
-  `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_Release_Notes.html#kernel>`__
+| Alternatively, Kernel sources can directly be fetched from GIT.
+
+  .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+      You can find the details about the git repository, branch and commit id in
+      the `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_PLSDK_Release_Notes.html#kernel>`__
 
 | 
 
@@ -246,6 +250,8 @@ matching device tree file.
 | K2G ICE EVM                               | keystone-k2g-ice.dts                 |
 +-------------------------------------------+--------------------------------------+
 | OMAP-L138 LCDK                            | da850-lcdk.dts                       |
++-------------------------------------------+--------------------------------------+
+| J721e EVM                                 | k3-j721e-common-proc-board.dts       |
 +-------------------------------------------+--------------------------------------+
 
 Table:  Device Tree File Name Per Board

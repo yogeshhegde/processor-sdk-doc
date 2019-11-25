@@ -26,6 +26,10 @@ PRU-ICSS Soft UART
 -----------------------------------------
 .. include:: Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart.rst.inc
 
+PRU-ICSSG PWM
+-----------------------------------------
+.. include:: Foundational_Components/PRU-ICSSG/Linux_Drivers/pru-icssg-pwm.rst.inc
+
 Linux User Space
 ==================================
 

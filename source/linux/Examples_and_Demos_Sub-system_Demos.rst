@@ -12,7 +12,7 @@ Power Management
 
 Accelerated Multimedia
 ======================
-Refer to various GStreamer pipelines documented at `Multimedia <Foundational_Components_Multimedia.html>`__ chapter.
+Refer to various GStreamer pipelines documented at `Multimedia <Foundational_Components_Multimedia_IVAHD.html>`__ chapter.
 
 Graphics and Display
 ====================

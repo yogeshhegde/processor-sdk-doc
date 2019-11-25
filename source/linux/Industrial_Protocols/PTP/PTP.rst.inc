@@ -130,7 +130,7 @@ GMAC
 
 GMAC interface can be configured to run at either 100 Mbps or 1 Gbps.
 CPTS hardware block helps with timestamping of packets. Refer to
-`here <Foundational_Components_Kernel_Drivers.html#common-platform-time-sync-cpts>`__
+`here <Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW.html#common-platform-time-sync-cpts>`__
 for details.
 
 PRU-ICSS
@@ -734,7 +734,7 @@ the same ICSS-PRU simultaneously.
 
 PTP Ordinary Clock on GMAC
 ---------------------------
-Refer to `here <Foundational_Components_Kernel_Drivers.html#common-platform-time-sync-cpts>`__
+Refer to `here <Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW.html#common-platform-time-sync-cpts>`__
 for more details about the CPTS driver and how to run **linuxptp** over the CPSW GMAC port
 for providing the PTP OC functionality.
 

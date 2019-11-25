@@ -11,6 +11,7 @@ Overview
    Overview_Building_the_SDK
    Overview_Directory_Structure_Overview
    Overview_Software_Stack
+   Overview_PSDKLA_PSDKRA_Summary
    Overview_Technical_Support
    Overview_Training
    Overview_GPLv3_Disclaimer

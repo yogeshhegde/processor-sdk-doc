@@ -1,15 +1,17 @@
-.. include:: Overview/Processor_SDK_Linux_Getting_Started_Guide.rst.inc
+**********************************
+Overview Getting Started Guide
+**********************************
 
-.. include:: Overview/Processor_SDK_Linux_create_SD_card_script.rst.inc
+.. toctree::
+   :maxdepth: 5
 
-.. include:: Overview/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows.rst.inc
+   Overview/Processor_SDK_Linux_Getting_Started_Guide
+   Overview/Processor_SDK_Linux_create_SD_card_script
+   Overview/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows
+   Overview/Download_and_Install_the_SDK
+   Overview/Program_EVM
+   Overview/Run_Setup_Scripts
+   Overview/PSDKLA_Formatting_SD_Card
+   Overview/Top_Level_Makefile
+   Overview/GCC_ToolChain
 
-.. include:: Overview/Download_and_Install_the_SDK.rst.inc
-
-.. include:: Overview/Program_EVM.rst.inc
-
-.. include:: Overview/Run_Setup_Scripts.rst.inc
-
-.. include:: Overview/Top_Level_Makefile.rst.inc
-
-.. include:: Overview/GCC_ToolChain.rst.inc

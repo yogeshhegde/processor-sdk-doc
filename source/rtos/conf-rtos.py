@@ -3,16 +3,9 @@
 # The master toctree document.
 master_doc = 'rtos/index'
 
-# General information about the project.
-project = u'Processor SDK RTOS'
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 exclude_patterns = ['linux', 'android', 'swtoolsdev']
-
-# The name for this set of Sphinx documents.  If None, it defaults to
-# "<project> v<release> documentation".
-html_title = 'Processor SDK RTOS Documentation'
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ProcessorSDKRTOSdoc'
@@ -48,3 +41,6 @@ texinfo_documents = [
    'Texas Instruments Incorporated', 'ProcessorSDKRTOS', 'One line description of project.',
    'Miscellaneous'),
 ]
+
+# OS for the build. Sphinx uses source/{sdk_os} when looking for doc inputs
+sdk_os = 'rtos'

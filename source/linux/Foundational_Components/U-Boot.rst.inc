@@ -11,14 +11,28 @@ U-Boot Release Notes
 
 Build Information
 -------------------
-Please refer to `U-Boot Build Information <Release_Specific_Release_Notes.html#u-boot>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    Please refer to `U-Boot Build Information <Release_Specific_PLSDK_Release_Notes.html#u-boot>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    Please refer to Yocto build for details.
+
 
 Known Issues
 --------------
-Please refer to `U-Boot Known Issues <Release_Specific_Release_Notes.html#u-boot-known-issues>`__ for details.
 
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-.. include:: Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
+    Please refer to `U-Boot Known Issues <Release_Specific_PLSDK_Release_Notes.html#u-boot-known-issues>`__ for details.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    Please refer to `Known Issues <Release_Specific_PSDKLA_Release_Notes.html#issues-tracker>`__ for details.
+
+    .. include:: Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
 
 
 Troubleshooting
@@ -54,15 +68,9 @@ Check if one of the cases below applies:
 
 - Check if the instruction for supported u-boot boot modes is followed.
 
-| For Sitara family devices (AM3/4/5), please follow instructions in `U-boot User's Guide 
+| Please follow instructions in `U-boot User's Guide 
     <Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__ 
 |
-| Keystone-2 platforms support the following boot modes:
-
-  - SPI NOR boot
-  - EMIF NAND boot
-  - UART boot
-  - MMC boot (only on K2G)
 
 | Different boot modes ues diferent image formats. They are:
 
@@ -71,5 +79,7 @@ Check if one of the cases below applies:
   - u-boot.bin
   - MLO
 
-  For Keystone-2 platforms, U-boot can also be brought up using CCS. The step-by-step instruction on booting up u-boot
-  with one of the boot modes or using CCS are documented in <Processor_SDK_install_dir>/board-support/u-boot-<ver>/board/ti/ks2_evm/README file.
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    For Keystone-2 platforms, U-boot can also be brought up using CCS. The step-by-step instruction on booting up u-boot
+    with one of the boot modes or using CCS are documented in <Processor_SDK_install_dir>/board-support/u-boot-<ver>/board/ti/ks2_evm/README file.

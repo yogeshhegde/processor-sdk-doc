@@ -239,7 +239,7 @@ Here are the steps needed to test out the new Ethernet interfaces:
       .. note::
           You'll need to clear the SPI flash on the AM3359 ICE board before
           you can boot from an SD card: `AM3359 ICE clear SPI
-          flash <How_to_Guides_Host.html#am335x-icev2-flash-erase>`__
+          flash <How_to_Guides/Host/AM335x_ICEv2_flash_erase.html#am335x-icev2-flash-erase>`__
 
 -  Plug an Ethernet cable into the ports supported by the PRU-ICSS
 
