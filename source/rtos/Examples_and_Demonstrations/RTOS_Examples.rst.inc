@@ -17,71 +17,47 @@ sample we will use the AM65x device to describe the steps for the Cortex-A53.
 
 .. Note:: For future Device Support Package releases, the Hello World example for the Cortex-A53 will be added to CCS as an out-of-box experience. 
 
-1. Create a work space folder (/ti/am65x_am53_hello_workspace) under ti
-folder to be used for Hello Example project, and start CCS. You may be
-prompted with **New Products Discovered**, so select all and **click on
-Finish**
+1. Create a work space folder to be used for Hello Example project 
+(e.g. /ti/am65x_am53_hello_workspace), and start CCS. If prompted with 
+**New Products Discovered**, install any desired products and restart 
+CCS if required.
 
 2. In CCS, go to File --> New --> 
-CCS Project
+CCS Project. 
 
-3. Enter a project name and configure the new CCS project as
-follows:
+3. Enter a project name and configure the new CCS project as follows:
 
  * **Target**: GPEVM_AM65x
  * **Cortex A**
- * **Compiler**: GNU v7.2.1 (Linaro aarch64) (or higher)
  * **Device Endianness**: little
- * **Linker Command File**: (PDK INSTALL PATH)/packages/ti/build/am65xx/linker_a53.lds
 
-4. Select the Empty Project (with main.c) template and 
-click Finish.
+4. Under "Project Templates and examples", select "More Examples... --> Search Using Import Wizard". 
+Select "hello" project and click "Finish".
 
-5. Remove startup_ARMCA53.S from the project. Add the file **sysbios_a53.cfg** located in the 
-folder (PDK INSTALL PATH)/packages/ti/build/am65xx/.
+5. Remove AM6548.lds from the project. Add the file **linker_a53.lds** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/ 
+to the project.
 
-You will be prompted to enable XDCtools, click yes. 
-
-6. In Project Properties --> CCS General --> Products, set Target to **gnu.targets.arm.A53F** and 
-Platform to **ti.platforms.cortexA:AM65X**. Uncheck all products except for SYS/BIOS and XDCtools. Refer to the Release Notes for the recommended package verisons. 
-Click Apply and Close.
+6. Remove hello.cfg from the project. Add the file **sysbios_a53.cfg** located in the folder (PDK INSTALL PATH)/packages/ti/build/am65xx/ 
+to the project.
 
 7. Add the file **InitMmu.c** located under (IPC INSTALL PATH)/examples/AM65XX_bios_elf/ex02_messageq/host 
 to the project. 
 
-8. In Project Properties --> CCS Build --> XDCtools --> Package Repositories, 
-add the path **${BIOS_CG_ROOT}/packages**
+8. Select Compiler: right-click on the project, select "Properites". Under "Tool-chain", 
+select "GNU v7.2.1 (Linaro aarch64)" (or higher). 
 
-9. In Project Properties --> GNU Linker --> Libraries, add the **gcc** and **rdimon** libraries, 
-and the library search path "${xdc_find:gnu/targets/arm/libs/install-native/arm-none-eabi/lib:${ProjName}}"
+9. Build the project: right-click on the project and 
+select "Build Project". 
 
-10. In Project Properties --> GNU Linker --> Basic, check the option "Do not use the standard system 
-startup files when linking (-nostartfiles)."
-
-11. Navigate to Project Properties --> GNU Compiler --> Debugging and 
-uncheck "Do not emit DWARF additions beyong selected version" and set the gdwarf version to 2 or lower.
-
-12. Finally, add the following code to main.c and 
-build the project.
-::
-
-	#include "stdio.h"
-	
-	int main(void)
-	{
-		printf("hello world");
-		return 0;
-	}
-	
-13. Launch the target configuration using the appropriate emulator to connect to AM65x EVM 
+10. Launch the target configuration using the appropriate emulator to connect to AM65x EVM 
 as described in the AM65x EVM Hardware Setup Guide.
 
-14. Right click on DMSC_Cortex_M3_0 and click 
-Connect Target. 
+11. Right click on DMSC_Cortex_M3_0 and click Connect Target. 
 
-15. Connect to the CortexA53_0_0 core. Load and run Hello Example out file. You should 
-see Hello World string displayed on console window.
+12. Connect to the CortexA53_0_0 core. Load and run Hello Example out file. 
+You should see Hello World string displayed on console window.
 
+| 
    
 ARM Cortex-A15
 ==============
