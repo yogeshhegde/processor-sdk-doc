@@ -9,21 +9,7 @@ meta layers. These are the <config> used in the command:
 
 ``$ ./oe-layersetup.sh -f <config>``
 
-<<<<<<< HEAD
-| 
-| The following config files are located in the **configs/processor-sdk**
-  directory of the `oe-layersetup git repo <http://arago-project.org/git/projects/oe-layersetup.git>`_.
-
-+----------------------------------------+---------------------------------+------------------------------------------------+
-| Config File                            | Description                     | Supported machines/platforms                   |
-+========================================+=================================+================================================+
-|                                        |                                 | am335x-evm, am437x-evm, am57xx-evm,            |
-| processor-sdk-06.01.00.08-config.txt   | Processor SDK 6.1.0.8 Release   | am65xx-evm, k2hk-evm, k2e-evm, k2l-evm,        |
-|                                        |                                 | k2g-evm, omapl138-lcdk                         |
-+----------------------------------------+---------------------------------+------------------------------------------------+
-=======
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
->>>>>>> origin/processor-sdk-06.02
 
     |
     | The following config files are located in the **configs/processor-sdk**
@@ -33,7 +19,7 @@ meta layers. These are the <config> used in the command:
     | Config File                            | Description                     | Supported machines/platforms                   |
     +========================================+=================================+================================================+
     |                                        |                                 | am335x-evm, am437x-evm, am57xx-evm,            |
-    | processor-sdk-06.00.00.07-config.txt   | Processor SDK 6.0.0.7 Release   | am65xx-evm, k2hk-evm, k2e-evm, k2l-evm,        |
+    | processor-sdk-06.01.00.08-config.txt   | Processor SDK 6.1.0.8 Release   | am65xx-evm, k2hk-evm, k2e-evm, k2l-evm,        |
     |                                        |                                 | k2g-evm, omapl138-lcdk                         |
     +----------------------------------------+---------------------------------+------------------------------------------------+
 
