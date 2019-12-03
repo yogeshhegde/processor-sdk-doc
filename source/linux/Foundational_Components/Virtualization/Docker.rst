@@ -1,13 +1,8 @@
-<<<<<<< HEAD:source/linux/Foundational_Components/Virtualization/Docker.rst.inc
-Docker Overview
-------------------
-=======
 Docker Linux Container Runtime
 =================================
 
 Overview
 -----------
->>>>>>> origin/processor-sdk-06.02:source/linux/Foundational_Components/Virtualization/Docker.rst
 
 Docker complements kernel namespacing with a high-level API which
 operates at the process level. It runs unix processes with strong
