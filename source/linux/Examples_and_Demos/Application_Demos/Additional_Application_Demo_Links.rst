@@ -25,13 +25,13 @@ mmWave Gesture Controlled HMI
 This demo showcases gesture controlled HMI, where the mmWave sensor detects presence and classifies natural hand gestures, and sends them to the Sitara processor to drive the Qt GUI display.
 More details can be found at http://www.ti.com/tool/TIDEP-01013.
 
-TIDL Classification Demo
+TIDL Demo
 ========================
 
-Refer to various TIDL demos documented at  `Examples and Demos <Foundational_Components_TIDL.html#examples-and-demos>`__
+Refer to various TIDL demos documented at  `TIDL Examples and Demos <Foundational_Components/Machine_Learning/tidl.html#examples-and-demos>`__
 
 Arm NN Classification Demo
 ==========================
 
-Refer to `Arm NN MobileNet Demo <Foundational_Components_ArmNN.html#arm-nn-mobilenet-demo>`__
+Refer to `Arm NN MobileNet Demo <Foundational_Components/Machine_Learning/armnn.html#arm-nn-mobilenet-demo>`__
 
