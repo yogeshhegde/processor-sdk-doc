@@ -84,8 +84,8 @@ build_doc()
     echo "processor-sdk-${OS}/esd/docs/${VERSION}/${OS}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
-    make config OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
-    make BUILDDIR="${BUILDDIR}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
+    make config DEVFAMILY="GEN" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
+    make BUILDDIR="${BUILDDIR}" DEVFAMILY="GEN" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
 
     # provide link to output
     echo "${BUILDDIR}" | sed -e "s|^${ARTIFACTS}|${BUILD_URL}/artifacts/|g" | \
