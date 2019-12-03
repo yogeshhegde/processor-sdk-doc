@@ -9,77 +9,6 @@ Overview
 This document covers the general use of Linux Core Release of U-Boot on
 following platforms:
 
-<<<<<<< HEAD
--  `AM335x GP EVM <http://www.ti.com/tool/tmdxevm3358>`__
--  `AM335x EVM-SK <http://www.ti.com/tool/tmdssk3358>`__
--  `AM335x ICE <http://www.ti.com/tool/tmdsice3359>`__
--  `BeagleBone White <http://beagleboard.org/bone>`__
--  `BeagleBone Black <https://beagleboard.org/black>`__
--  `DRA74x EVM <http://www.ti.com/tool/j6evm5777>`__
--  `DRA72x EVM <http://www.ti.com/tool/dra72xevm>`__
--  `DRA71x EVM <http://www.ti.com/product/DRA718>`__
--  `AM437x GP EVM <http://www.ti.com/tool/tmdsevm437x>`__
--  AM43xx ePOS EVM
--  `AM437x EVM-SK <http://www.ti.com/tool/tmdxsk437x>`__
--  `AM437x IDK <http://www.ti.com/tool/TMDSIDK437X>`__
--  `AM572x GP EVM <http://www.ti.com/tool/tmdsevm572x>`__
--  `AM572x IDK <http://www.ti.com/tool/TMDXIDK5728>`__
--  `AM571x IDK <http://www.ti.com/tool/tmdxidk5718>`__
--  `66AK2H EVM <http://www.ti.com/tool/EVMK2H>`__
--  K2K EVM
--  `K2Ex EVM <http://www.ti.com/tool/xevmk2ex>`__
--  `K2L EVM <http://www.ti.com/tool/xevmk2lx>`__
--  `K2G GP EVM <http://www.ti.com/tool/evmk2g>`__
--  `K2G ICE EVM <http://www.ti.com/tool/k2gice>`__
--  `OMAP-L138 LCDK <http://www.ti.com/product/omap-l138>`__
--  `AM65x EVM <http://www.ti.com/tool/TMDX654GPEVM>`__
--  `AM65x IDK <http://www.ti.com/tool/TMDX654IDKEVM>`__
-
-
-Supported Features in U-Boot
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| Board                    | Wired Ethernet   | USB gadget ethernet   | DFU   | NAND   | SD/eMMC              | USB Host (mass storage)   | SPI flash    |
-+==========================+==================+=======================+=======+========+======================+===========================+==============+
-| AM335x EVM               | yes              | yes                   | yes   | yes    | yes                  | yes                       | no           |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM335x EVM-SK            | yes              | yes                   | yes   | N/A    | yes                  | yes                       | N/A          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| Beaglebone White/Black   | yes              | yes                   | yes   | N/A    | yes                  | yes                       | N/A          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| DRA7xx EVM               | yes              | no                    | yes   | yes    | yes (both)           | yes                       | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM43xx GP EVM            | yes              | no                    | yes   | yes    | yes (both)           | yes                       | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM43xx ePOS EVM          | yes              | no                    | yes   | N/A    | yes (both)           | yes                       | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM43xx EVM-SK            | yes              | no                    | yes   | N/A    | yes (both)           | yes                       | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM57xx GP EVM            | yes              | no                    | no    | N/A    | yes (both)           | yes                       | N/A          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| K2H/K/E/L EVM            | yes              | no                    | no    | yes    | no                   | no                        | yes          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| K2G EVM                  | yes              | no                    | no    | no     | yes (both)           | no                        | yes (QSPI)   |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| OMAP-L138 LCDK           | yes              | no                    | no    | yes    | yes (SD card only)   | no                        | no           |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-| AM65x EVM                | yes              | no                    | yes   | no     | yes                  | yes                       | yes          |
-+--------------------------+------------------+-----------------------+-------+--------+----------------------+---------------------------+--------------+
-
-We assume that a GCC-based toolchain has already been installed and the
-serial port for the board has been configured. We also assume that a
-Linux Kernel has already been built (or has been provided) as well as an
-appropriate filesystem image. Installing and setting up DHCP or TFTP
-servers is also outside of the scope of this document, but snippets of
-information are provided to show how to use a specific feature, when
-needed.
-
-Finally, please note that not all boards have all of the interfaces
-documented here.
-
-| 
-=======
 **32-bit platforms**
 
 	-  `AM335x GP EVM <http://www.ti.com/tool/tmdxevm3358>`__
@@ -112,7 +41,6 @@ documented here.
 	-  `AM65x EVM <http://www.ti.com/tool/TMDX654GPEVM>`__
 	-  `AM65x IDK <http://www.ti.com/tool/TMDX654IDKEVM>`__
 	-  J721E EVM
->>>>>>> origin/processor-sdk-06.02
 
 General Information
 -----------------------------------
@@ -2429,22 +2357,8 @@ following in order to boot from HyperFlash at 83MHz:
 | SW3        | ON  | ON  | ON  | ON  | OFF | OFF | ON  | OFF | ON  | OFF |
 +------------+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 
-U-Boot for AM65x Family of SoCs
------------------------------------
-
-The AM65x family of SoCs is the first device family from K3 Multicore
-SoC architecture, targeted for broad market and industrial control with
-aim to meet the complex processing needs of modern embedded products.
-
-This section describes the boot flow, sources, build procedure, and supported boot modes
-specific to AM65x family of SoCs.
-
-The device is built over three domains, each containing specific processing
-cores, voltage domains and peripherals:
-=======
 REMOTEPROC
 ------------
->>>>>>> origin/processor-sdk-06.02
 
 This section documents how to initialize, load, start and stop remote cores from U-Boot prompt.
 Following remotecores support is available in U-boot:
