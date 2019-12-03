@@ -176,120 +176,13 @@ in the command:
 The "Build Output" is given relative to the
 **arago-tmp-[toolchain]/deploy** directory.
 
-<<<<<<< HEAD
-+------------------------------+---------------------------------------------------------------+----------------------------+
-| Target                       | Build Output                                                  | Description                |
-+==============================+===============================================================+============================+
-| arago-core-tisdk-bundle      | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
-+------------------------------+---------------------------------------------------------------+----------------------------+
-| tisdk-rootfs-image           | images/<machine>/tisdk-rootfs-image-<machine>.tar.xz          | Target Filesystem          |
-+------------------------------+---------------------------------------------------------------+----------------------------+
-| arago-base-tisdk-image       | images/<machine>/arago-base-tisdk-image-<machine>.tar.xz      | Minimal Target Filesytem   |
-+------------------------------+---------------------------------------------------------------+----------------------------+
-| meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
-+------------------------------+---------------------------------------------------------------+----------------------------+
-
-| 
-
-.. rubric:: Platforms
-   :name: Platforms
-
-The following platforms are supported in Processor SDK. These are the
-<machine> in the command:
-
-``MACHINE=<machine> bitbake <target>``
-
-+--------------+---------------------------------------------------------------------------------------+
-| **MACHINE**  | **Supported EVMs**                                                                    |
-+--------------+---------------------------------------------------------------------------------------+
-| am335x-evm   | AM335x EVM, AM335x Starter Kit, Beaglebone Black                                      |
-+--------------+---------------------------------------------------------------------------------------+
-| am437x-evm   | AM437x GP EVM, AM437x Starter Kit                                                     |
-+--------------+---------------------------------------------------------------------------------------+
-| am57xx-evm   | AM572x GP EVM, AM572x Industrial Development Kit, AM571x Industrial Development Kit   |
-+--------------+---------------------------------------------------------------------------------------+
-| am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
-+--------------+---------------------------------------------------------------------------------------+
-| k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
-+--------------+---------------------------------------------------------------------------------------+
-| k2e-evm      | K2Ex EVM                                                                              |
-+--------------+---------------------------------------------------------------------------------------+
-| k2l-evm      | 66AK2L06 EVM                                                                          |
-+--------------+---------------------------------------------------------------------------------------+
-| k2g-evm      | K2G EVM                                                                               |
-+--------------+---------------------------------------------------------------------------------------+
-| omapl138-lcdk| OMAP-L138 LCDK                                                                        |
-+--------------+---------------------------------------------------------------------------------------+
-
-.. rubric:: RT Support
-   :name: RT Support
-
-Processor SDK Linux supports RT Linux Kernel for the following
-machines/EVMs. Use the command below to make the RT builds:
-
-``MACHINE=<machine> ARAGO_RT_ENABLE=1 bitbake <target>``
-
-+--------------+---------------------------------------------------------------------------------------+
-| **MACHINE**  | **Supported EVMs**                                                                    |
-+--------------+---------------------------------------------------------------------------------------+
-| am335x-evm   | AM335x EVM, AM335x Industrial Communications Engine                                   |
-+--------------+---------------------------------------------------------------------------------------+
-| am437x-evm   | AM437x GP EVM, AM437x Industrial Development Kit                                      |
-+--------------+---------------------------------------------------------------------------------------+
-| am57xx-evm   | AM572x GP EVM, AM574x Industrial Development Kit,                                     |
-|              | AM572x Industrial Development Kit, AM571x Industrial Development Kit                  |
-+--------------+---------------------------------------------------------------------------------------+
-| am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
-+--------------+---------------------------------------------------------------------------------------+
-| k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
-+--------------+---------------------------------------------------------------------------------------+
-| k2e-evm      | K2Ex EVM                                                                              |
-+--------------+---------------------------------------------------------------------------------------+
-| k2l-evm      | 66AK2L06 EVM                                                                          |
-+--------------+---------------------------------------------------------------------------------------+
-| k2g-evm      | K2G EVM                                                                               |
-+--------------+---------------------------------------------------------------------------------------+
-
-Using the snapshot of the source packages in Processor SDK release
-------------------------------------------------------------------
-
-Using the snapshot of the arago source packages can avoid fetch errors
-during the build when external URLs become unavailable. To use the
-snapshot of sources distributed with a given Processor SDK release, you
-must download a script from the SDK download page and then execute it on
-your host to fetch all the packages from TI servers. For example, see
-am57xx-evm-linux-sdk-arago-src-<version>.tar.xz file in
-`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/latest/index_FDS.html>`__.
-Once this package is downloaded, there are just a few extra steps in the
-build process to fetch all the corresponding packages. The extra steps
-are shown in red below:
-
-::
-
-    $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
-    $ cd tisdk
-    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
-    $ mkdir downloads
-    $ cd downloads
-    $ # Assuming src file downloaded to $HOME/Downloads
-    $ tar xvf $HOME/Downloads/<target-board>-linux-sdk-arago-src-##.##.##.##.tar.xz
-    $ <target-board>-linux-sdk-arago-src-##.##.##.##/get_build_sources.sh <target-board>-linux-sdk-arago-src-##.##.##.##/source_pkg_list.txt
-    $ cd ..</span>
-    $ cd build
-    $ . conf/setenv
-    $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
-    $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
-    $ MACHINE=<target-board> bitbake arago-core-tisdk-bundle
-
-=======
->>>>>>> origin/processor-sdk-06.02
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
     +------------------------------+---------------------------------------------------------------+----------------------------+
     | Target                       | Build Output                                                  | Description                |
     +==============================+===============================================================+============================+
-    | arago-tisdk-image            | images/<machine>/processor-sdk-linux-image-<machine>.tar.xz   | Full SDK                   |
+    | arago-core-tisdk-bundle      | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
     +------------------------------+---------------------------------------------------------------+----------------------------+
     | tisdk-rootfs-image           | images/<machine>/tisdk-rootfs-image-<machine>.tar.xz          | Target Filesystem          |
     +------------------------------+---------------------------------------------------------------+----------------------------+
@@ -402,7 +295,7 @@ are shown in red below:
         $ . conf/setenv
         $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
         $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
-        $ MACHINE=<target-board> bitbake arago-core-tisdk-image
+        $ MACHINE=<target-board> bitbake arago-core-tisdk-bundle
 
 .. _building-the-sdk-recipes:
 
