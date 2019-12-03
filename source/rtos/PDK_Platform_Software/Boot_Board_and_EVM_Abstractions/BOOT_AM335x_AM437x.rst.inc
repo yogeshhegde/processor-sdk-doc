@@ -233,6 +233,9 @@ Building the Bootloader
 **Pre-requisite:** Setup SDK build environment as described in article
  `Setup_Environment <index_overview.html#setup-environment>`__
 
+Change working directory to the packages/ti/starterware directory
+    cd <procsdk_install_dir>/pdk_<soc>_<version>/packages/ti/starterware
+  
 .. rubric:: Normal Operation of Bootloader:
    :name: normal-operation-of-bootloader
 
