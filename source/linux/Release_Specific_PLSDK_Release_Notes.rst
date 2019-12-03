@@ -51,7 +51,6 @@ Released October 2019
 .. rubric:: What's New
    :name: whats-new
 
-<<<<<<< HEAD:source/linux/Release_Specific/Processor_SDK_Linux_Release_Notes.rst.inc
 - Analytics: 
     - Add support for TFLite. For more details, see `here <Foundational_Components/Machine_Learning/tflite.html>`__ 
     - Upgraded ARMNN to 2019.08
@@ -64,26 +63,6 @@ Released October 2019
     - Support AVS Class 0
     - Ethernet throughput enhancements
 - BeagleboneBlack: Increase number of UART ports via Soft UART with PRU
-=======
-- 2019 LTS Update: First release in 2019 LTS (Kernel 4.19, U-boot: 2019.01, gcc: 8.3 2019.03 hf, Yocto 2.6 (thud). For more details, see the migration guide
-- HSR/PRP/EMAC/PTP
-    - `Implement boundary clock with all 3 legs or 5 legs on AM57xx, with redundancy (HSR/PRP) <Industrial_Protocols_PTP.html>`__
-       - 3 legs: 1xCPSW and 1x per PRU-ICSS (HSR/PRP/EMAC running on 2x PRU-ICSS)
-       - 5 legs: 1xCPSW and 2x per PRU-ICSS (Dual-EMAC on 2xPRU-ICSS)
-    - Upgrade linuxptp to v2.0
-    - Driver enhancements to deliver packets across two ports in-order to the host
-- Analytics
-    - Upgrade ARMNN to latest available version (2019.05)
-    - Remove restriction of number of nodes for inner product layer in TIDL Library
-    - `Predictive Maintenance (PdM) demo on AM57x - using data from AM437x single-chip motor control <Examples_and_Demos/Application_Demos/PdM_Anomaly_Detection.html>`__
-- AM65x
-    - U-boot: support networking over ICSS-G
-    - U-boot: USB hub and USB mass storage
-    - `Watchdog support <Examples_and_Demos/Application_Demos/Watchdog_demo.html>`__
-    - DisplayPort driver enhancements for TC358867 DPI-DP bridge
-    - AVS Class 0 support
-- AM335x: Support PTP 1588 in DAN mode
->>>>>>> origin/processor-sdk-06.02:source/linux/Release_Specific_PLSDK_Release_Notes.rst
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
