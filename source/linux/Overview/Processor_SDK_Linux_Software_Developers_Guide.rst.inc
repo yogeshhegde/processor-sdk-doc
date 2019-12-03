@@ -67,45 +67,6 @@ suggestions <Feedback>`.
 .. _SD Card using default images: Overview_Getting_Started_Guide.html#sd-card-using-default-images
 .. _SD Card using custom images: Overview_Getting_Started_Guide.html#sd-card-using-custom-images
 .. _SD Card using parition tarballs: Overview_Getting_Started_Guide.html#sd-card-using-partition-tarballs
-<<<<<<< HEAD
- 
-+---------------+--------------------+-------------------------+----------------------------+
-| **Foundational Components** (more information on each piece of the distribution)          |
-+===============+====================+=========================+============================+
-| `U-Boot`_     | `Boot Monitor`_    | `Kernel`_               | `Filesystem`_              |
-+---------------+--------------------+-------------------------+----------------------------+
-| `Tools`_      | `OpenCL`_          | `OpenCV`_               | `Graphics & Display`_      |
-+---------------+--------------------+-------------------------+----------------------------+
-| `Multimedia`_ | `Examples, Demos`_ | `PRU-ICSS / PRU_ICSSG`_ | `Virtualization`_          |
-+---------------+--------------------+-------------------------+----------------------------+
-| `IPC`_        | `OpenVX`_          | `CMEM`_                 | `Machine Learning`_        |
-+---------------+--------------------+-------------------------+----------------------------+
-| `ATF`_        | `OPTEE`_           |                         |                            |
-+---------------+--------------------+-------------------------+----------------------------+
-
-.. _U-Boot: Foundational_Components_U-Boot.html
-.. _Processor SDK Linux U-Boot: Foundational_Components_U-Boot.html
-.. _Boot Monitor: Foundational_Components_Boot_Monitor.html
-.. _Kernel: Foundational_Components_Kernel.html
-.. _Processor SDK Linux Kernel: Foundational_Components_Kernel.html
-.. _Filesystem: Foundational_Components_Filesystem.html
-.. _Processor SDK Linux Filesystem: Foundational_Components_Filesystem.html
-.. _Tools: Foundational_Components_Tools.html
-.. _Processor SDK Linux Tools: Foundational_Components_Tools.html
-.. _OpenCL: http://downloads.ti.com/mctools/esd/docs/opencl/index.html
-.. _OpenCV: Foundational_Components_OpenCV.html
-.. _Graphics & Display: Foundational_Components_Graphics.html
-.. _Multimedia: Foundational_Components_Multimedia.html
-.. _Examples, Demos: Examples_and_Demos.html
-.. _PRU-ICSS / PRU_ICSSG: Foundational_Components_PRU-ICSS_PRU_ICSSG.html
-.. _Virtualization: Foundational_Components_Virtualization.html
-.. _IPC: Foundational_Components_IPC.html
-.. _OpenVX: Foundational_Components_OpenVX.html
-.. _CMEM: Foundational_Components_CMEM.html
-.. _Machine Learning: Foundational_Components_Machine_Learning.html
-.. _ATF: Foundational_Components_ATF.html
-.. _OPTEE: Foundational_Components_OPTEE.html
-=======
 .. _Examples and Demos: Examples_and_Demos.html
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
@@ -119,9 +80,9 @@ suggestions <Feedback>`.
     +---------------+--------------------+-------------------------+----------------------------+
     | `Multimedia`_ | `Examples, Demos`_ | `PRU-ICSS / PRU_ICSSG`_ | `Virtualization`_          |
     +---------------+--------------------+-------------------------+----------------------------+
-    | `IPC`_        | `OpenVX`_          | `CMEM`_                 | `TIDL`_                    |
+    | `IPC`_        | `OpenVX`_          | `CMEM`_                 | `Machine Learning`_        |
     +---------------+--------------------+-------------------------+----------------------------+
-    | `Arm NN`_     |                    |                         |                            |
+    | `ATF`_        | `OPTEE`_           |                         |                            |
     +---------------+--------------------+-------------------------+----------------------------+
 
     .. _U-Boot: Foundational_Components_U-Boot.html
@@ -136,19 +97,19 @@ suggestions <Feedback>`.
     .. _OpenCL: http://downloads.ti.com/mctools/esd/docs/opencl/index.html
     .. _OpenCV: Foundational_Components_OpenCV.html
     .. _Graphics & Display: Foundational_Components_Graphics.html
-    .. _Multimedia: Foundational_Components_Multimedia_IVAHD.html
+    .. _Multimedia: Foundational_Components_Multimedia.html
     .. _Examples, Demos: Examples_and_Demos.html
     .. _PRU-ICSS / PRU_ICSSG: Foundational_Components_PRU-ICSS_PRU_ICSSG.html
     .. _Virtualization: Foundational_Components_Virtualization.html
     .. _IPC: Foundational_Components_IPC.html
     .. _OpenVX: Foundational_Components_OpenVX.html
     .. _CMEM: Foundational_Components_CMEM.html
-    .. _TIDL: Foundational_Components_TIDL.html
-    .. _Arm NN: Foundational_Components_ArmNN.html
+    .. _Machine Learning: Foundational_Components_Machine_Learning.html
+    .. _ATF: Foundational_Components_ATF.html
+    .. _OPTEE: Foundational_Components_OPTEE.html
 
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
->>>>>>> origin/processor-sdk-06.02
 
     +----------------+-------------------------+------------------+-----------------------------------+
     | **PRU-ICSS / PRU_ICSSG Protocols** (more information on each piece of the distribution)         |
