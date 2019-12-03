@@ -1,69 +1,81 @@
 
-Overview
-^^^^^^^^
+Introduction
+^^^^^^^^^^^^^^
+Uniflash is an Unified Flashing tool which provides utilities for flashing the application software 
+images to non-removable flash devices on TI hardware platforms. 
 
-Uniflash is a standalone tool used to download application image over UART/JTAG serial interface
-and flash it on to the flash device on the target platform.
-This section explains on how to use Uniflash CLI tool to flash images to the TI's MPU platform.
+Uniflash for TI processors platform includes two components
+
+ - Flash Programmer
+ - Host utility
+
+Flash porgrammer runs on target platform which takes care of receiving the images from Uniflash host
+utility and programming them onto flash devices. Flash programmer communicates with Uniflash host utility
+over the UART interface.
+
+Default flash programmer which is part of the Uniflash release can be found at - "<Uniflash Root>\processors\FlashWriter\<Board Name>"
+
+Host utility runs on host machine which provides Command-line Interface (CLI) to communicate with flash programmer.
+Windows and Linux are supported OS platforms for running Uniflash host utility. Host utility uses UART or JTAG
+interface to download the flash programmer to the target platform. All data transfers between
+Uniflash host utility and Flash programmer happens over UART interface.
+
+Refer to `Uniflash Documentation <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash>`__ 
+for more details on Uniflash tool.
+
 
 Supported Platforms
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
+Below table shows the platforms supported by Uniflash and flash devices supported on each platform.
+Download mode indicates the mode of communication for downloading flash programmer to target platform.
 
-+----------------+------------------+---------------+------+------+--------------+
-|      SOC       |      PLATFORM    |    FLASH DEVICE             |    MODES     |
-|                |                  +-------+-------+------+------+------+-------+
-|                |                  | SPI   | QSPI  | OSPI | EMMC | UART | JTAG  |
-+================+==================+=======+=======+======+======+======+=======+
-| AM335x         | AM335x GP EVM    |   X   |       |      |      |   X  |   X   |
-|                +------------------+-------+-------+------+------+------+-------+
-|                | AM335x ICEv2     |   X   |       |      |      |      |   X   |
-|                +------------------+-------+-------+------+------+------+-------+
-|                | AMIC110 ICE      |   X   |       |      |      |   X  |   X   |
-+----------------+------------------+-------+-------+------+------+------+-------+
-| AM437x         | AM437x IDK       |       |   X   |      |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+------+-------+
-| AM571x         | AM571x IDK       |       |   X   |      |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+------+-------+
-| AM572x         | AM572x IDK       |       |   X   |      |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+------+-------+
-| AM574x         | AM574x IDK       |       |   X   |      |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+------+-------+
-| K2G            | K2G GP EVM       |       |   X   |      |      |      |   X   |
-|                +------------------+-------+-------+------+------+------+-------+
-|                | K2G ICE          |       |   X   |      |      |      |   X   |
-+----------------+------------------+-------+-------+------+------+------+-------+
-| AM65XX         | AM65xx EVM       |       |       |   X  |   X  |   X  |   X   |
-|                +------------------+-------+-------+------+------+------+-------+
-|                | AM65xx IDK       |       |       |   X  |   X  |   X  |   X   |
-+----------------+------------------+-------+-------+------+------+------+-------+
++----------------+----------------+------------------+---------------+------+------+--------------+
+|      SOC       |    SOC Core    |    PLATFORM      |    FLASH DEVICE             |DOWNLOAD MODE |
+|                |                |                  +-------+-------+------+------+------+-------+
+|                |                |                  | SPI   | QSPI  | OSPI | EMMC | UART | JTAG  |
++================+================+==================+=======+=======+======+======+======+=======+
+| AM335x         | Cortex-A8      | AM335x GP EVM    |   X   |       |      |      |   X  |   X   |
+|                |                +------------------+-------+-------+------+------+------+-------+
+|                |                | AM335x ICEv2     |   X   |       |      |      |      |   X   |
+|                |                +------------------+-------+-------+------+------+------+-------+
+|                |                | AMIC110 ICE      |   X   |       |      |      |   X  |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------+-------+
+| AM437x         | Cortex-A9      | AM437x IDK       |       |   X   |      |      |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------+-------+
+| AM571x         | Cortex-A15     | AM571x IDK       |       |   X   |      |      |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------+-------+
+| AM572x         | Cortex-A15     | AM572x IDK       |       |   X   |      |      |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------+-------+
+| AM574x         | Cortex-A15     | AM574x IDK       |       |   X   |      |      |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------+-------+
+| K2G            | Cortex-A15     | K2G GP EVM       |       |   X   |      |      |      |   X   |
+|                |                +------------------+-------+-------+------+------+------+-------+
+|                |                | K2G ICE          |       |   X   |      |      |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------+-------+
+| AM65XX         | Cortex-R5      | AM65xx EVM       |       |       |   X  |   X  |   X  |       |
+|                |                +------------------+-------+-------+------+------+------+-------+
+|                |                | AM65xx IDK       |       |       |   X  |   X  |   X  |       |
++----------------+----------------+------------------+-------+-------+------+------+------+-------+
+
 
 where,
 
-X - supported
+X  - Supported
+XX - Manual JTAG mode
 
-Pre-Requisites
-^^^^^^^^^^^^^^
 
-Download and install the desktop version of `Uniflash tool <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash#UniFlash_v4>`__
+Getting Started with Uniflash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Binaries
-^^^^^^^^
-**Host**
+Downloads
+"""""""""""
+Latest version of Uniflash can be downloaded `here <http://processors.wiki.ti.com/index.php/Category:CCS_UniFlash#UniFlash_v4>`__
 
-The dslite script file in Uniflash tool provides an option(- -mode) to execute
-the Uniflash CLI tool for TI's MPU platforms.
 
-The *processors* mode shall execute the Uniflash CLI binary to flash images
-to the TI's MPU platforms. This mode will execute the Uniflash CLI binary <path_to_the_uniflash>/processors/ProcessorSDKSerialFlash.exe
-
-**Target**
-
-Get the Flash Writer binaries from <path_to_the_uniflash>/processors/FlashWriter/<board_name>/
-
-Display Help
-^^^^^^^^^^^^
-
-Use the following command to display Help
+Command Options
+""""""""""""""""
+Uniflash CLI supports set of commands and configuration flags which are provided through dslite script. 
+Run the help command as described below to see all the options supported by Uniflash. 
 
 For Windows
 ::
@@ -85,31 +97,29 @@ For Linux
 This will display help menu.
 Following is the sample output on Windows.
 ::
-
-        Executing the following command:
-        > C:\ti\uniflash_[Version Num]\processors\ProcessorSDKSerialFlash.exe -h
-
-        For more details and examples, please visit http://processors.wiki.ti.com/index.
-        php/UniFlash_[Version Num]_Quick_Guide#Command_Line_Interface
-
-
+   
+    For more details and examples, please refer to the UniFlash Quick Start guide.
+    
+    
         ----------------------------------------------------------------------------
         ProcessorSDKSerialFlash CLI Tool
         Copyright (C) 2017-2019 Texas Instruments Incorporated - http://www.ti.com/
-        Version 1.0.0.6
+        Version 1.2.0.0
         ----------------------------------------------------------------------------
+    
         Displaying Help..
-
+     
         Usage:
-        ProcessorSDKSerialFlash.exe -c <COM_Port> -f <Path_to_the_file_to_be_transfered>
-         -d <Device_Type> -i <Image_Type> -e <erase_length -o <Offset>
-
+        dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_file_to_be_transfered> -d <Device_Type> -i <Image_Type> -e <erase_length> -o <Offset>                                                                    
+    
         Device_Type:
         0 - NAND
         1 - SPI
         2 - QSPI
         3 - OSPI
         4 - eMMC
+        5 - HyperFlash
+        6 - UFS
 
         Image_Type:
         0 - Flash
@@ -117,76 +127,65 @@ Following is the sample output on Windows.
         2 - Uboot
         3 - UImage
         4 - Firmware
-        5 - Custom Inteface
-
-
-        erase_length:Length in Bytes
-
-
-        Note: File Path should not be specified in case of Flash Erase
-
-        Program Example:
-        ProcessorSDKSerialFlash.exe -c COM7 -f C:/Users/Documents/test.bin -d 0 -i 0 -o
-        20000
-
-        Erase Example:ProcessorSDKSerialFlash.exe -c COM7 -d 2 -e 1000 -o 20000
+        5 - Custom Image
     
+        erase_length:Length in Bytes
+    
+        Note: File Path should not be specified for Flash Erase command
+     
 
 .. note::
 
-           Offset option(option -o) receives hexadecimal value by default.
-           The offset value(hexadecimal) can be preceded with or without "0x"
+           Offset option(-o) expects hexadecimal value by default.
+           The offset value can be provided with or without "0x"
 
 
-.. _program-flashwriter:
+Uniflash Execution Steps
+"""""""""""""""""""""""""
+Uniflash provides two modes of communication for downloading the flash programmer - UART and/or JTAG.
+In JTAG mode Uniflash commnad-line interface is supported for most of the platforms.
+Manual loading of the flash programmer through CCS is required for few cases.
+Below diagram shows the execution steps for flashing the application images based on the Uniflash
+supported mode for downloading the flash programmer.
 
-Programming FlashWriter
-^^^^^^^^^^^^^^^^^^^^^^^^
-Flash Writer binary is the target software, used to program the binaries on to the flash devices
-of the target platform.
+.. Image:: ../images/Uniflash_Execution_Steps.png
 
-There are two ways of loading and executing the Flash Writer on to the target platform:
-
-1. Loading Flash Writer via ROM boot (over UART interface), for the target platforms that support UART Boot mode
-2. Loading Flash Writer over JTAG interface, for the target platforms that do not support UART Boot mode
+Check the `Supported Platforms <index_board.html#supported-platforms>`__ for details of the mode of communication supported for
+downloading the flash programmer on each platform.
 
 
-Loading Flash Writer via ROM boot
-""""""""""""""""""""""""""""""""""
+Flashing Binaries with Uniflash
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Downloading Flash Programmer
+""""""""""""""""""""""""""""""
+UART Load
+'''''''''''
+Follow below steps for downloading the flash programer over UART
 
-For the target platforms that support UART Boot mode, use the following
-procedure to transfer flash writer
-
-**Steps**
-
-1. Set the sysboot pins in UART boot mode.
-2. Make sure the Serial connections between the Host PC and the target platform are established.
-3. Power cycle the board
-4. Issue the following commands on the Host PC
+ - Confgure boot mode of the target platform to UART boot.
+ - Connect UART serial port of the target platform to host PC
+ - Power cycle the target platform
+ - Run below commands on the Host PC from Uniflash root folder
 
 
 For Windows
 ::
 
-        # cd <path_to_the_uniflash>
-        # dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_flash_writer_to_be_transfered>
+        # cd <Path to Uniflash Root Folder>
+        # dslite.bat --mode processors -c <COM Port> -f <Flash Programmer Binary with Full Path> -i 0
         Example:
-        # dslite.bat --mode processors -c COM1 -f C:\ti\pdk\ti\board\utils\uniflash\bin\uart_iceAMIC110_flash_programmer.bin
-        
+        # dslite.bat --mode processors -c COM1 -f <Uniflash Root>\processors\FlashWriter\am65xx_evm\uart_am65xx_evm_flash_programmer.tiimage -i 0
 
 
 For Linux
 
 ::
 
-        # cd <path_to_the_uniflash>
-        # sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_flash_writer_to_be_transfered>
+        # cd <Path to Uniflash Root Folder>
+        # sudo ./dslite.sh --mode processors -c <COM Port> -f <Flash Programmer Binary with Full Path>
         Example:
-        # sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f /home/user/pdk/ti/board/utils/uniflash/bin/uart_iceAMIC110_flash_programmer.bin
-        
+        # sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <Uniflash Root>/processors/FlashWriter/am65xx_evm/uart_am65xx_evm_flash_programmer.tiimage
 
-.. note::
-            In case of AM65xx platforms, use the first COM port out of four COM ports detected.
 
 The application will output the progress of file transfer on the Host PC.
 Following is the sample output on Windows.
@@ -220,30 +219,27 @@ This can be verified on the serial console utility.
 .. note::   Any Serial Console utility that supports xmodem protocol can be used.
             Verified utilities are Teraterm (in Windows) and Minicom (in Linux)
 
-Loading Flash Writer over JTAG interface
-""""""""""""""""""""""""""""""""""""""""
 
-For the target platforms that does not support UART Boot mode, use the following
-procedure to load and execute flash writer over JTAG interface.
+JTAG Load
+'''''''''''
 
-.. note:: This Section does not apply for AM65xx platform.
-          Refer Section :ref:`program-flashwriter-am65xx` to load FlashWriter over JTAG interface
-          on AM65xx platform
+Uniflash CLI JTAG Load
+~~~~~~~~~~~~~~~~~~~~~~~
+Follow below steps for downloading the flash programer over JTAG using Uniflash CLI
 
-
-**Steps**
-
-1. Make sure the Serial and JTAG connections between the Host PC and the target platform are established.
-2. Power cycle the board
-3. Issue the following commands on the Host PC
+ - Confgure boot mode of the target platform to 'No Boot' or 'JTAG mode'
+ - Connect UART serial port of the target platform to host PC
+ - Power cycle the target platform
+ - Run below commands on the Host PC from Uniflash root folder
+ 
 
 For Windows
 
 ::
 
-        # cd <path_to_the_uniflash>
-        # dslite.bat --mode load --config=<Path_to_ccxml_file>
-        -f <Path_to_the_flash_writer_to_be_transfered> -n <core_to_be_connected_on_the_target_platform>
+        # cd <Path to Uniflash Root Folder>
+        # dslite.bat --mode load --config=<CCS Target Config file (ccxml) with Full Path>
+        -f <Flash Programmer Binary with Full Path> -n <Core ID to be Connected to JTAG on the Target Platform>
         Example:
         # dslite.bat --mode load --config=C:\Users\username\ti\CCSTargetConfigurations\iceAMIC110.ccxml -f C:\ti\pdk\packages\ti\board\utils\uniflash\bin\iceAMIC110\uart_iceAMIC110_flash_programmer.out -n 1
         
@@ -253,11 +249,11 @@ For Linux
 
 ::
 
-        # cd <path_to_the_uniflash>
-        # sudo ./dslite.sh --mode load --config=<Path_to_ccxml_file> -f <Path_to_the_flash_writer_to_be_transfered> -n <core_to_be_connected_on_the_target_platform>
+        # cd <Path to Uniflash Root Folder>
+        # sudo ./dslite.sh --mode load --config=<CCS Target Config file (ccxml) with Full Path>
+        -f <Flash Programmer Binary with Full Path> -n <Core ID to be Connected to JTAG on the Target Platform>
         Example:
         # sudo ./dslite.sh --mode load --config=/home/ti/CCSTargetConfigurations/iceAMIC110.ccxml -f /home/user/pdk/ti/board/utils/uniflash/bin/uart_iceAMIC110_flash_programmer.out -n 1
-
 
 
 
@@ -341,74 +337,20 @@ Following is the sample output on Windows.
         Success
 
 
-The Flash Writer will be loaded and executed. The Flash Writer starts sending character 'C'(xmodem protocol).
+The Flash Programmer will be loaded and executed. The Flash Programmer starts sending character 'C'(xmodem protocol).
 This can be verified on the serial console utility.
 
-.. _program-flashwriter-am65xx:
-
-Programming FlashWriter on AM65xx Platform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- Launch and setup CCS for AM65xx to configure DDR and load the DMSC firmware. Refer below link for detailed instructions
-  http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#ccs-host-setup
-- Connect the USB cable between USB2UART port (J42) of the board and host PC
-- Configure the board to "no boot" mode
-- Configure the serial console application on host PC to connect to MAIN UART0 port. Connect to the first COM port
-  out of four COM ports detected.
-- Launch target config file for AM65xx platform and connect to A53 core.
-- Load the flash writer binary <path_to_the_uniflash>/processors/FlashWriter/am65xx_evm/uart_am65xx_evm_flash_programmer.out to A53 core.
-- Run the program and confirm that character 'C' is getting printed on the host PC serial console. Make a note of the COM port number.
-- Close the serial console, disconnect and reconnect the serial cable to USB2UART port (J42) of the board.
-- Refer Section :ref:`erasing_target` for erasing the flash device on the target platform.
-- Run the below commands to program the OSPI flash device.
-
-::
-
-    For Windows:
-    cd <path_to_the_uniflash>
-    .\dslite.bat --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
-
-    Example:
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\binary\am65xx_evm\ospi\sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 0
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\drv\sciclient\V0\sysfw.bin -d 3 -o 40000
-    .\dslite.bat --mode processors -c COM9 -f <PDK>\packages\ti\boot\sbl\example\k3MulticoreApp\binary\am65xx\sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o A0000
-
-::
-
-    For Linux:
-    cd <path_to_the_uniflash>
-    sudo ./dslite.sh --mode processors -c <COM_Port> -f <Path_to_the_binary_to_be_flashed> -d  <device_type> -o <offset>
-
-    Example:
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/binary/am65xx_evm/ospi/sbl_ospi_img_mcu1_0_release.tiimage -d 3 -o 0
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>packages/ti/drv/sciclient/soc/V0/sysfw.bin -d 3 -o 40000
-    sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <PDK>/packages/ti/boot/sbl/example/k3MulticoreApp/binary/am65xx/sbl_baremetal_boot_test_am65xx_evm_all_coresTestApp_release.appimage -d 3 -o A0000
 
 
-where,
+Manual JTAG Load
+~~~~~~~~~~~~~~~~~
+This section to be updated
 
-COM port - COM port number on which MAIN UART0 port is connected
 
-- After successful flashing, power OFF the board and change the boot setting to configure the respective boot mode. 
-- Configure the serial console application on host PC to connect to MCU UART port. Connect to the second COM port
-  out of four COM ports detected.
-- Power ON the board and confirm that SBL is booting.
-
-.. note:: When using the dslite scripts for the AM65xx platform:
-
-            - Specify the <device_type> as 3 (for OSPI flash) and 4 (for eMMC)
-            - On AM65xx, booting from eMMC is not currently supported for RTOS
-
-.. warning::   If you open the SoC Main Uart0 on a terminal application like minicom or hyperterm to see if the
-               'CCCC' is being output, make sure to close the application before executing dslite. Disconnect
-               and re-connect the Serial cable to reset the connection. If a terminal program like minicom or
-               hyperterminal is run first, the dslite script might not run successfully.
-
-.. _program_target:
-
-Programming binaries to Flash Device
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Follow the procedure explained in Section :ref:`program-flashwriter` to load Flash Writer binary to the target platform.
-Once the Flash Writer is loaded and executed, use the following commands to program binaries on to the Flash Device.
+Programming Binaries to the Flash Device
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Follow the procedure explained in Section :ref:`program-flashwriter` to load Flash Programmer binary to the target platform.
+Once the Flash Programmer is loaded and executed, use the following commands to program binaries on to the Flash Device.
 
 For Windows
 ::
@@ -468,16 +410,12 @@ Following is the sample output on Windows.
         Flash Programming Success!
 
 
-.. note::  Make sure the Profile Selection switch in AM335x GP EVM is set to Profile#2
-           to support SPI flash programming
 
-.. _erasing_target:
-
-Erasing Flash Device on the Target Platform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Erasing the Flash Device
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow the procedure explained in Section :ref:`program-flashwriter` (:ref:`program-flashwriter-am65xx` in case of AM65xx platform)
-to load Flash Writer binary to the target platform.
+to load Flash Programmer binary to the target platform.
 Once the Flash Writer is loaded and executed, use the following commands to erase the Flash Device on the target platform
 
 For Windows
@@ -524,11 +462,23 @@ Following is the sample output on Windows.
         Header Transfer Complete!!
         Flash Erase Success!
 
+
+Platform Specific Information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AM335x
+""""""""
+ - Make sure the Profile Selection switch in AM335x GP EVM is set to Profile#2 while programming SPI flash
+
+AM65xx
+"""""""
+ - To be updated
+
+
 .. _rebuild-board_utils:
 
 Rebuilding Board-utils
 ^^^^^^^^^^^^^^^^^^^^^^
-- Use the following commands to rebuild Flash Writer/Apploader
+- Use the following commands to rebuild Uniflash and Apploader supported as part of board utils
 
 - For Windows
 ::
@@ -550,5 +500,27 @@ Rebuilding Board-utils
         
 - Uniflash binaries will be created under the folder <pdk_install_path>/packages/ti/board/utils/uniflash/bin/<board_name>/
 - Apploader binaries will be created under the folder <pdk_install_path>/packages/ti/board/utils/uartAppLoader/bin/<board_name>/
+
+
+
+Porting Uniflash to Custom Platforms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Uniflash is validated and delivered for TI EVM but it can be ported to custom boards provided SoC device support is available in the Uniflash.
+This section provides step by step guidelines for porting the Uniflash to custom boards.
+| 
+<To be updated>
+
+
+Uniflash FAQ
+^^^^^^^^^^^^^
+1. How do I confirm my HW setup is proper for image download over UART?
+
+2. How do I verify which COM number to be used for Uniflash image download?
+
+3. I am running Uniflash on Windows and Uniflash CLI is not able to open COM port. What could be the reason?
+
+4. Should the flash device need to be erased using Uniflash erase command before flashing the images?
+
+5. . . .
 
 .. raw:: html
