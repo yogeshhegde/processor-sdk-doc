@@ -250,6 +250,8 @@ built using the following command in starterware.
 -  EVM: am335x-evm, am43xx-evm, amic110-ddrless
 -  BUILD_PROFILE: debug, release
 
+NOTE: For the starterware build targets below, the parallel make option (-j) is not supported. Please ensure that the below are built without parallel make option.
+
 .. rubric:: Additional Build options (currently support only for
    AMIC110/AM335x ICE Users)
    :name: additional-build-options-currently-support-only-for-amic110am335x-ice-users
@@ -298,6 +300,7 @@ using **BUILD_ICSS_DDRLESS_BOOT=yes** as shown below:
 
     gmake bootloader BUILDCFG=boot BOOTMODE=mcspi PLATFORM=amic110-ddrless PROFILE=debug -s KW_BUILD=no BUILD_ICSS_DDRLESS_BOOT=yes
     gmake bootloader BUILDCFG=boot BOOTMODE=mcspi PLATFORM=amic110-ddrless PROFILE=release -s KW_BUILD=no BUILD_ICSS_DDRLESS_BOOT=yes
+
 
 Prebuilt binaries inside the Processor SDK RTOS for AMIC110-DDRLESS will
 be configured using this option to allow for testing of cost optimized
