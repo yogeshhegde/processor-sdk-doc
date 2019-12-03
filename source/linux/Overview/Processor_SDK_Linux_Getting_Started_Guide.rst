@@ -209,7 +209,7 @@ which you can start development.
 
    .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-       For example, at the time of this writing, Ubuntu 14.04 and Ubuntu 16.04
+       For example, at the time of this writing, Ubuntu 16.04 and Ubuntu 18.04
        are the currently supported LTS versions).
 
    Can you use other versions of Ubuntu or even other distributions?
