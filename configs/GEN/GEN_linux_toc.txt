@@ -70,6 +70,7 @@ linux/Foundational_Components_IPC
 linux/Foundational_Components_CMEM
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Graphics_and_Display
+linux/Foundational_Components/Graphics/SOC_Performance_Monitor
 linux/Foundational_Components/Graphics/QT_Graphics_Framework
 linux/Foundational_Components/Graphics/GTK+_Graphics_Framework
 linux/Foundational_Components/Graphics/Migration_From_Prior_Releases
