@@ -2251,7 +2251,6 @@ A new environment variable "ecc_test" is also introduced to test ECC. By default
 
 |
 
-<<<<<<< HEAD
 HyperBus and HyperFlash
 -----------------------------------
 HyperBus is Low Signal Count, High Performance Double Data Rate (DDR) Bus interface between a host system master and one or more slave interfaces. Its a 8-bit data bus (DQ[7:0]) with  Read-Write Data Strobe (RWDS) signal and either Single-ended clock(3.0V parts) or Differential clock (1.8V parts). It uses ChipSelect lines to select b/w multiple slaves. At bus level, it follows a separate protocol described in HyperBus specification.
