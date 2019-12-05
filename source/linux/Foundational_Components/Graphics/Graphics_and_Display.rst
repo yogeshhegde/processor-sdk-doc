@@ -590,7 +590,7 @@ be located in
 **/etc/weston.ini**
 
 Running Weston clients
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 | Weston client examples can run from the command line on a serial port
   console or an SSH console. After launching Weston, the user should be
@@ -614,7 +614,7 @@ Running Weston clients
            # /usr/bin/weston-terminal
 
 Running multimedia with Wayland sink
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 The GStreamer video sink for Wayland is the waylandsink. To use this
 video-sink for video playback:
@@ -624,7 +624,7 @@ video-sink for video playback:
       target # gst-launch-1.0 playbin uri=file://<path-to-file-name> video-sink=waylandsink
 
 Exiting Weston
-^^^^^^^^^^^^^^
+--------------
 
 Terminate all Weston clients before exiting Weston. If you have invoked
 Weston from the serial console, exit Weston by pressing Ctrl-C.
@@ -635,7 +635,7 @@ Weston by pressing Ctrl-Alt-Backspace.
 Using IVI shell feature
 -----------------------
 
-The SDK also has support for configuring weston ivi-shell. The default
+The SDK also has support for configuring Weston ivi-shell. The default
 shell that is configured in the SDK is the desktop-shell.
 
 To change the shell to ivi-shell, the user will have to add the
@@ -654,7 +654,7 @@ line).
     [ivi-shell]
     ivi-input-module=ivi-input-controller.so
 
-After the above configuration is completed, we can restart weston by
+After the above configuration is completed, we can restart Weston by
 running the following commands
 
 ::
@@ -662,11 +662,11 @@ running the following commands
     target# /etc/init.d/weston stop
     target# /etc/init.d/weston start
 
-**NOTE:** When weston starts with ivi-shell, the default background is
-black, this is different from the desktop-shell that brings up a window
-with background.
+.. note:: When Weston starts with ivi-shell, the default background is
+          black, this is different from the desktop-shell that brings up a window
+          with background.
 
-With ivi-shell configured for weston, wayland client applications use
+With ivi-shell configured for Weston, Wayland client applications use
 ivi-application protocol to be managed by a central HMI window
 management. The wayland-ivi-extension provides ivi-controller.so to
 manage properties of surfaces/layers/screens and it also provides the
@@ -681,37 +681,37 @@ following links:
 -   https://at.projects.genivi.org/wiki/display/WIE/01.+Quick+start
 -   https://at.projects.genivi.org/wiki/display/PROJ/Wayland+IVI+Extension+Design
 
-Running weston's sample client applications with IVI shell
+Running Weston's sample client applications with IVI shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All the sample client applications in the weston package like
-weston-simple-egl, weston-simple-shm, weston-flower etc also have
+All the sample client applications in the Weston package, such as
+weston-simple-egl, weston-simple-shm, weston-flower, etc also have
 support for ivi-shell. The SDK includes the application called
-layer-add-surfaces which is part of the wayland-ivi-extension. This
+layer-add-surfaces, which is part of the wayland-ivi-extension. This
 application allows the user to invoke the various functionalities of the
 ivi-shell and control the applications.
 
 The following is an example sequence of commands and the corresponding
 effect on the target.
 
-After launching the weston with the ivi-shell, please run the below
+After launching Weston with the ivi-shell, please run the below
 sequence of commands:
 
 ::
 
     target# weston-simple-shm &
 
-At this point nothing is displayed on the screen, some additional
+At this point nothing is displayed on the screen; some additional
 commands are required.
 
 ::
 
     target# layer-add-surfaces -l 1000 -s 2 &
 
-This command creates a layer with ID 1000 and to add maximum 2
+This command creates a layer with ID 1000 and adds a maximum of 2
 surfaces to this layer on the default screen (which is usually the LCD).
 
-At this point, the user can see weston-simple-shm running on LCD. This
+At this point, the user can see weston-simple-shm running on the LCD. This
 also prints the numericID (surfaceID) to which client’s surface is
 mapped as shown below:
 
@@ -729,11 +729,11 @@ mapped as shown below:
         visibility: TRUE
         added to layer (1000)
 
-Here 10507 is the number to which weston-simple-shm application’s
+Here, 10507 is the number to which weston-simple-shm application’s
 surface is mapped.
 
 User can launch one more client application which allows
-layer\_add\_surfaces to add second surface to the layer 1000 as shown
+layer\_add\_surfaces to add a second surface to the layer 1000 as shown
 below.
 
 ::
@@ -741,7 +741,7 @@ below.
     target# weston-flower &
 
 User can control the properties of the above surfaces using
-LayerManagerControl as shown below to set the position, resize,
+LayerManagerControl as shown below to set the position/resize,
 opacity and visibility respectively.
 
 ::
@@ -755,12 +755,12 @@ opacity and visibility respectively.
     target# LayerManagerControl  help
 
 The help option prints all possible control operations with the
-LayerManagerControl binary, please refer to the available options.
+LayerManagerControl binary. Please refer to the available options.
 
 Running QT applications with IVI shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To run the QT application withs ivi shell, set the
+To run the QT application with ivi-shell, set the
 QT\_WAYLAND\_SHELL\_INTEGRATION environment variable to ivi-shell.
 
 #. export QT\_WAYLAND\_SHELL\_INTEGRATION=ivi-shell
@@ -876,9 +876,9 @@ These tools bring in the capability to visualize the following:
 Getting started
 ---------------
 
--  Prepare the card with PLSDK 3.0.0 or later.
+-  Prepare the card with |__SDK_SHORT_NAME__| 3.0.0 or later.
 -  Boot up
--  Start weston
+-  Start Weston
 
 ::
 
@@ -918,7 +918,7 @@ Getting started
    pre-requisites.
 
 #. The name of the fifo configured in the file
-   soc\_performance\_monitor.cfg needs to be created
+   soc\_performance\_monitor.cfg needs to be created.
 #. The file soc\_performance\_monitor.cfg should be present in the
    current directory. This should be done in the above steps.
 
@@ -934,7 +934,7 @@ Getting started
 
     target # soc-performance-monitor &
 
--  Run the tool for DDR BW Visualization
+-  Run the tool for DDR BW visualization
 
 ::
 
@@ -954,7 +954,7 @@ The main intent of this is to separate the visualization engine from the
 data collection part and allow full configuration of the application.
 
 When the application (soc-performance-monitor) is invoked, it starts up
-with the default data which is set to zero. To populate the real values,
+with the default data, which is set to zero. To populate the real values,
 the user can use the scripts provided in the prebuilt filesystem.
 
 Temperature data
@@ -974,7 +974,7 @@ current temperature.
 Voltage data
 ^^^^^^^^^^^^
 
-The voltage data is read from the omapconf utility and then parsing out
+The voltage data is read from the omapconf utility and then parses out
 the required information to be later sent to the visualization tool. The
 file system comes with a script that does this functionality.
 
@@ -982,13 +982,13 @@ file system comes with a script that does this functionality.
 
     target # sh getVoltage.sh
 
-Invoking the above command will populate the Temperature table with the
+Invoking the above command will populate the temperature table with the
 configured voltage for the various rails.
 
 Frequency data
 ^^^^^^^^^^^^^^
 
-The frequency data is read from the omapconf utility and then parsing
+The frequency data is read from the omapconf utility and then parses
 out the required information to be later sent to the visualization tool.
 The file system comes with a script that does this functionality.
 
@@ -996,16 +996,16 @@ The file system comes with a script that does this functionality.
 
     target # sh getFrequency.sh
 
-Invoking the above command will populate the Frequency table with the
+Invoking the above command will populate the frequency table with the
 configured frequency for the various cores.
 
 CPU Load information
 ^^^^^^^^^^^^^^^^^^^^
 
-The CPU load information need individual plugin modules for each of the
+The CPU load information needs individual plugin modules for each of the
 cores. This is envisioned to be different for different systems. The
 default filesystem contains the plugins required for reading the
-MPU(A15) and the GPU(SGX544 MP2). Other plugins for measuring the loads
+MPU and the GPU. Other plugins for measuring the loads
 for the IPU1, IPU2, DSP1 and DSP2 will be available at a later time.
 
 Measuring the MPU load
@@ -1013,7 +1013,7 @@ Measuring the MPU load
 
 The filesystem is populated with a binary which is called "mpuload" that
 reads the /proc/stat interface and derives the load. The user can run
-the utility in the background with the
+the utility in the background with the following commands:
 
 ::
 
@@ -1023,14 +1023,14 @@ the utility in the background with the
 
     target # mpuload /tmp/socfifo 1000 &
 
-After running this binary the MPU load in the Bar Graph of the CPU load
+After running this binary, the MPU load in the bar graph of the CPU load
 will be updated dynamically at an interval of 1 second.
 
 Measuring the GPU load
 """"""""""""""""""""""
 
-The filesystem is populated with a binary called as "pvrscope" that
-reads the SGX registers via a library called libPVRScopeDeveloper.a This
+The filesystem is populated with a binary called "pvrscope" that
+reads the SGX registers via a library called libPVRScopeDeveloper.a. This
 utility invokes the APIs provided by IMG as part of the Imagination
 PowerVR SDK and then populates the required FIFO.
 
@@ -1048,16 +1048,16 @@ Usage instructions:
               1-n   specified in seconds
               0     run forever
 
-After running this utility, the GPU load in the BAR Graph of the CPU
+After running this utility, the GPU load in the bar graph of the CPU
 load area will be updated at an interval of 1 second.
 
 Measuring the DSP load
 """"""""""""""""""""""
 
 The filesystem is populated with a binary which is called "dsptop" that
-collects DSP usage info and then populates the required FIFO.
+collects DSP usage information and then populates the required FIFO.
 
-The user can run the utility in the background with the
+The user can run the utility in the background with the following commands:
 
 ::
 
@@ -1067,14 +1067,14 @@ The user can run the utility in the background with the
 
     target # dsptop –r 1 –f fifo –o /tmp/socfifo –d 1 –n 100  &
 
-After running this binary the DSP load in the Bar Graph of the CPU load
-will be updated at an interval specified by “-r, -d”, for example “-r 1
-–d 1” means at an interval of 1 second.
+After running this binary the DSP, load in the bar graph of the CPU load
+will be updated at an interval specified by the -r and -d directives. As an
+example, "-r 1 -d 1" means at an interval of 1 second.
 
 Boot time measurement
 ^^^^^^^^^^^^^^^^^^^^^
 
-This feature will be provided at future release.
+This feature will be provided in a future release.
 
 Order of execution
 ------------------
@@ -1082,7 +1082,7 @@ Order of execution
 The performance visualization tools have to be executed in the following
 order.
 
--  Launch weston
+-  Launch Weston
 -  Create required FIFOs
 -  Configure the .cfg file to suit the required settings
 -  Run the soc-performance-monitor and/or soc-ddr-bw-visualizer
@@ -1092,7 +1092,7 @@ Config file format
 ------------------
 
 The config file has the following format.
-There are 3 different kinds of sections that can be defined, please
+There are 3 different kinds of sections that can be defined. Please
 refer to the particular section for more details.
 
 The generic format is:
@@ -1165,7 +1165,7 @@ The list of recognized global values are:
 **X\_POS, Y\_POS:**
 
 -  Decide the starting offset of the application.
--  Note that there are commands to move the application (Refer commands
+-  Note that there are commands to move the application (Refer to the commands
    section).
 
 TABLE section
@@ -1189,8 +1189,8 @@ The section name can be one of the following:
     TITLE="TABLE TITLE",UNIT="unit to be displayed"
     <blank line>
 
-NOTE: The TITLE=list is a list of comma separated values and TITLE and
-UNIT are the only supported values.
+.. note:: The TITLE=list is a list of comma separated values, and TITLE and
+          UNIT are the only supported values.
 
 BAR GRAPH section
 ^^^^^^^^^^^^^^^^^
@@ -1237,8 +1237,8 @@ The currently supported list of supported commands are:
 #. TABLE
 #. CPULOAD
 
-**NOTE: To execute a sequence of commands in a sequence, it is advised
-that a delay of REFRESH\_TIME\_USECS be inserted between two commands.**
+.. note:: To execute a sequence of commands in a sequence, it is advised
+          that a delay of REFRESH\_TIME\_USECS be inserted between two commands.**
 
 TABLE command
 ^^^^^^^^^^^^^
