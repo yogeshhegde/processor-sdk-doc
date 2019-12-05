@@ -224,13 +224,13 @@ The user can run the utility in the background with the following commands:
 
 ::
 
-    target # dsptop –r <update_freq> –f fifo –o /tmp/socfifo –d <update_freq> -n <# of updates>
+    target # dsptop -r <plot_resolution> -f fifo -o /tmp/socfifo -d <refresh_resolution> -n <# of updates>
 
     Example usage:
 
-    target # dsptop –r 1 –f fifo –o /tmp/socfifo –d 1 –n 100  &
+    target # dsptop -r 1 -f fifo -o /tmp/socfifo -d 1 -n 100  &
 
-After running this binary the DSP, load in the bar graph of the CPU load
+After running this binary, the DSP load in the bar graph of the CPU load
 will be updated at an interval specified by the -r and -d directives. As an
 example, "-r 1 -d 1" means at an interval of 1 second.
 

@@ -201,11 +201,11 @@ The rest of this page will cover the following topics:
     - Instructions on how to run DSS application
     - Instructions on how launch Weston
     - Instructions on how to run PVR tools
+    - SoC Performance Monitoring Tools
     - QT and GTK+ graphics frameworks
     - Migration Guide
     - AM3 Beagle Bone Black Board Configuration
     - SGX Debugging Tips
-    - SoC Performance Monitoring Tools
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE')
 
