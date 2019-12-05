@@ -591,13 +591,8 @@ Composer Studio.
 .. rubric:: Host Support
    :name: host-support
 
-<<<<<<< HEAD:source/linux/Release_Specific/Processor_SDK_Linux_Release_Notes.rst.inc
 The Processor SDK is developed, built and verified on Ubuntu 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu
 are described in `this page <How_to_Guides_Host.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
-=======
-The Processor SDK is developed, built and verified on Ubuntu 14.04, 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu 14.04
-are described in `this page <How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware.html>`__.
->>>>>>> origin/processor-sdk-06.02:source/linux/Release_Specific_PLSDK_Release_Notes.rst
 
 
 .. note::
