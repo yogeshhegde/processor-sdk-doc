@@ -34,7 +34,7 @@ These tools bring in the capability to visualize the following:
 #. Power plot (Will be available soon. Note that this requires board
    modification on the EVM)
   
-  .. Image ../../../images/Updated_screen_shot_of_soc_performance_monitoring_tools.png
+.. Image:: ../../../images/Updated_screen_shot_of_soc_performance_monitoring_tools.png
 
 |
 
