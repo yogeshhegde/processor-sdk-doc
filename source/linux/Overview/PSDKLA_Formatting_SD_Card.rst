@@ -1,4 +1,4 @@
-Formatting SD card on Linux
+Creating SD card on Linux
 ===========================
 
 Overview

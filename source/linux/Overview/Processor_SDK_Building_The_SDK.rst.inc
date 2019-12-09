@@ -1,7 +1,7 @@
 .. include:: replacevars.rst.inc
 
 ************************************
-Building the SDK
+Building filesystem using yocto
 ************************************
 
 Introduction

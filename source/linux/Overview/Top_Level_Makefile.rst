@@ -1,6 +1,6 @@
 .. include:: ../replacevars.rst.inc
 
-Top-Level Makefile
+Building baseport components
 ======================================
 
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_Top-Level_Makefile

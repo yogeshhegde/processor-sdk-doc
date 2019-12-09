@@ -1,6 +1,6 @@
 .. include:: ../replacevars.rst.inc
 
-Run Setup Scripts
+Setting up host environment
 ======================================
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Setup_Script
