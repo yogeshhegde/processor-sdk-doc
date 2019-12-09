@@ -131,10 +131,6 @@ How to change dtb files
     | uenv.txt.jailhouse    | Use for running hypervisor use cases.                                         | HDMI monitor connected via infotainment daughter card.     |
     |                       |                                                                               | DP monitor connected to DISPLAY0 Display Port.             |
     +-----------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
-    | uenv.txt.cockpit_demo | Use for running the cockpit demo.                                             | HDMI monitor connected via infotainment daughter card.     |
-    |                       |                                                                               | DP monitor connected to DISPLAY0 Display Port.             |
-    |                       |                                                                               | Display sharing firmware symlink in filesystem.            |
-    +-----------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
     | uenv.txt.gateway      | Use for running gateway demos.                                                | Ethernet connected via GESI adapter card.                  |
     |                       |                                                                               | CAN connected via GESI card                                |
     |                       |                                                                               | Ethernet firmware symlink updated in filesystem.           |

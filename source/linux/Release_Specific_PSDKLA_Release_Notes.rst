@@ -106,11 +106,6 @@ What's New
 -  Audio:
 
    -  Multi-codec support with separate serializer per codec
--  Demos:
-
-   -  Integrated cockpit with jailhouse hypervisor
-
-      -  GPU usage by cluster VM for dials and needles rendering
 
 Release features
 ----------------
@@ -176,19 +171,10 @@ Release features
 -  Virtualisation:
 
    -  Jailhouse hypervisor support
-   -  Static system partitioning: VM config illustration with IVI and Cluster VMs for cockpit Use case
+   -  Static system partitioning: SD/eMMC, Display pipes, sproxy threads, UARTs, etc.
    -  IO isolation between VMs
    -  PVU and SMMU backed IO isolation support
    -  SMMU emulation in Jailhouse hypervisor
--  Demos:
-
-   -  Integrated cockpit with jailhouse hypervisor
-
-      -  IVI VM with Multimedia playback and GPU accelerated windowing system, graphics application
-      -  Cluster VM with 2D cluster application with CAN data from R5 (RTOS)
-      -  Tell-tales from R5 (RTOS)
-      -  Safety isolation for tell-tales: IVI VM, Cluster VM crash does not impact R5 tell-tale application
-      -  VM isolation: IVI VM crash does not impact the Cluster application (Cluster VM, Tell-tale from R5)
 
 Component versions
 ------------------

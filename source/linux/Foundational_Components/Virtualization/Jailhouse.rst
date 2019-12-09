@@ -107,7 +107,7 @@ For this step, we will be using the terminal connected to the primary UART.
     We will need to add the jailhouse device tree overlay to the list of overlays to
     apply in u-boot.This is controlled by the environment variable "overlay_files".
     |__SDK_FULL_NAME__| comes with readymade uenv.txt where this variable is set to
-    define the list of DTBO files for running the cockpit demo. Refer to the section
+    define the list of DTBO files for running the jailhouse demo. Refer to the section
     `How to Change dtb File <How_to_Guides/Target/How_to_Change_dtb_File.html>`__
     for more details on this.
 
