@@ -96,6 +96,21 @@ makefile targets.
     host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools
 
 
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+
+    .. rubric:: Compiler toolchain
+    :name: compiler-toolchain
+
+    On the download page, you will find links to the recommended compiler toolchains.
+    Download and extract them into your home directory. Note that you have to download
+    both the toolchains for ARMv8 and ARMv7. Make sure to update your PATH to
+    include the path to toolchain.
+
+    ::
+
+        GCC83PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin:$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin
+        export PATH=$GCC83PATH:$PATH
+
 .. rubric:: Target Types
    :name: target-types
 
@@ -129,6 +144,7 @@ package:
 
 -  **linux** - Compiles the Linux kernel using the default
    tisdk\_<PLATFORM>\_defconfig configuration.
+-  **linux-dtbs** - Compiles and creates the device tree blobs.
 -  **am-benchmarks** - Builds the ARM Benchmarks for the ARCH defined in
    Rules.make.
 -  **am-sysinfo** - Build the helper applications used by the system
@@ -224,6 +240,36 @@ the Makefile from the top-level of the SDK.
 ::
 
     host# make am-benchmarks_install
+
+.. rubric:: Installing to SD card rootfs
+   :name: installing-to-sd-card
+
+All the install targets copy the files in the rootfs pointed by the DESTDIR variable.
+By default, Rules.make points the DESTDIR to the NFS path for filesystem.
+If you want to install the files to the SD card, you should be able to specify
+different path to DESTDIR on commandline. e.g. run following for installing
+everything in the SD card rootfs.
+
+::
+
+    host# sudo DESTDIR=/media/$USER/rootfs make install
+    #Replace the path to SD card rootfs partition as appropriate
+
+.. rubric:: Installing boot binaries
+   :name: installing-boot-binaries
+
+All the install targets copy the files in the rootfs pointed by the DESTDIR variable.
+*make install* command only copies the files in rootfs. If you have built either of
+system firmware or u-boot, you should copy these binaries in the boot partition of
+the SD card. e.g. run following to copy boot binaries in SD card boot partition.
+
+::
+
+    host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+    #Replace the path to SD card boot partition as appropriate
+
+    host# cp board-support/system-firmware-image-gen*/sysfw-j721e-evm.itb /media/$USER/boot/sysfw.itb
+    #Replace the path to SD card boot partition as appropriate
 
 .. rubric:: A Note about Out-of-tree Kernel Modules
    :name: a-note-about-out-of-tree-kernel-modules
