@@ -13,12 +13,12 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'TODO'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'TODO'
+'__PART_FAMILY_NAME__'           : 'Sitara'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'Sitara devices'
 '__PRODUCT_LINE_NAME__'          : 'Sitara'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux'
 '__SDK_SHORT_NAME__'             : 'PLSDK'
-'__SDK_INSTALL_FILE__'           : 'am57xx-evm-linux-sdk-arago-src-<version>.tar.xz'
+'__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-[platform]-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-[platformName]-evm-<version>'
 '__SDK_DOWNLOAD_URL__'           : '`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/latest/index_FDS.html>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '16.04 (64-bit), 18.04 (64-bit)'

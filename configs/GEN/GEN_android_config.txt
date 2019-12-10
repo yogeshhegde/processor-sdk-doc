@@ -13,14 +13,14 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'TODO'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'TODO'
+'__PART_FAMILY_NAME__'           : 'Sitara'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'Sitara devices'
 '__PRODUCT_LINE_NAME__'          : 'Sitara'
 '__SDK_FULL_NAME__'              : 'Processor SDK Android'
-'__SDK_SHORT_NAME__'             : 'PSDKA'
-'__SDK_INSTALL_FILE__'           : 'TODO - INSTALLATION FILE GOES HERE'
-'__SDK_INSTALL_DIR__'            : 'TODO - INSTALLATION DIRECTORY GOES HERE'
-'__SDK_DOWNLOAD_URL__'           : 'TODO - DOWNLOAD LINK OR TEXT MENTION OF DOWNLOAD PAGE (IF PRIVATE) GOES HERE'
+'__SDK_SHORT_NAME__'             : 'PASDK'
+'__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-[platform]-<version>-Linux-x86-Install.bin'
+'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-[platformName]-evm-<version>'
+'__SDK_DOWNLOAD_URL__'           : '`AM57xx-Android-SDK-Download-page <http://software-dl.ti.com/processor-sdk-android/esd/AM57X/latest/index_FDS.html>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '18.04 (64-bit)'
