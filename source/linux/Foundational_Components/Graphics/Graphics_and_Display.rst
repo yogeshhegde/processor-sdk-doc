@@ -685,7 +685,7 @@ Running Weston's sample client applications with IVI shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All the sample client applications in the Weston package, such as
-weston-simple-egl, weston-simple-shm, weston-flower, etc also have
+weston-simple-egl, weston-simple-shm, weston-flower, etc. also have
 support for ivi-shell. The SDK includes the application called
 layer-add-surfaces, which is part of the wayland-ivi-extension. This
 application allows the user to invoke the various functionalities of the
@@ -763,7 +763,9 @@ Running QT applications with IVI shell
 To run the QT application with ivi-shell, set the
 QT\_WAYLAND\_SHELL\_INTEGRATION environment variable to ivi-shell.
 
-#. export QT\_WAYLAND\_SHELL\_INTEGRATION=ivi-shell
+::
+
+    export QT\_WAYLAND\_SHELL\_INTEGRATION=ivi-shell
 
 Using the PowerVR Tools
 =======================

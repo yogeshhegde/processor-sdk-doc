@@ -21,16 +21,17 @@ invoked after running Weston.
 These tools bring in the capability to visualize the following:
 
 #. DDR BW Utilization
-   #. Overall DDR BW Usage
-   #. Split of the traffic between the two EMIF's
-   #. A real time "top" like functionality that depicts the list of "Top 6" initiators generating the traffic.
+
+   a. Overall DDR BW Usage
+   b. Split of the traffic between the two EMIF's
+   c. A real time "top" like functionality that depicts the list of "Top 6" initiators generating the traffic.
 #. Voltage of the various rails
 #. Frequency of the various cores
-#. Temperature (read from on die temperature sensors)
-#. CPU Load information of the various processor cores including the GPU
-   and DSP.
-#. Boot time results (requires rebuild of u-boot and kernel), refer
-   instructions below.
+#. Temperature (read from on-die temperature sensors)
+#. CPU Load information of the various processor cores, including the GPU
+   and DSP
+#. Boot time results, which requires rebuild of u-boot and kernel (refer
+   instructions below)
 #. Power plot (Will be available soon. Note that this requires board
    modification on the EVM)
   
