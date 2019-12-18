@@ -1,5 +1,5 @@
 **********************************
-Overview Getting Started Guide
+Getting Started Guide
 **********************************
 
 .. toctree::

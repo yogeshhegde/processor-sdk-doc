@@ -25,7 +25,7 @@ setup steps required before you attempt to install and run CCS.
       sharing capabilities
 
 See this link to meet the above requirements:
-`Sitara\_Linux\_SDK\_Getting\_Started\_Guide#Start\_your\_Linux\_Development <../../Overview_Getting_Started_Guide.html#start-your-linux-development>`__
+`Sitara\_Linux\_SDK\_Getting\_Started\_Guide#Start\_your\_Linux\_Development <../../Overview/Processor_SDK_Linux_Getting_Started_Guide.html#start-your-linux-development>`__
 
 .. rubric:: Building Qt Applications
    :name: building-qt-applications

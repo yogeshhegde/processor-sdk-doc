@@ -57,16 +57,9 @@ suggestions <Feedback>`.
 .. _Processor SDK Linux How-To Guides: How_to_Guides.html
 .. _Linux SDK Software Developer's Guide: index.html
 .. _Processor SDK Linux Software Developer's Guide: index.html
-.. _Developing with the Linux SDK: Overview_Getting_Started_Guide.html#start-your-linux-development
-.. _Creating a SD Card with Windows: Overview_Getting_Started_Guide.html#windows-sd-card-creation-guide
-.. _Install the Linux SDK: Overview_Getting_Started_Guide.html#download-and-install-the-sdk
-.. _SDK Create SD Card Script: Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide
-.. _Program EVM User Guide: Overview_Getting_Started_Guide.html#program-evm-user-guide
-.. _Run the Setup.sh Script: Overview_Getting_Started_Guide.html#run-setup-scripts
-.. _top-level Makefile: Overview_Getting_Started_Guide.html#top-level-makefile
-.. _SD Card using default images: Overview_Getting_Started_Guide.html#sd-card-using-default-images
-.. _SD Card using custom images: Overview_Getting_Started_Guide.html#sd-card-using-custom-images
-.. _SD Card using parition tarballs: Overview_Getting_Started_Guide.html#sd-card-using-partition-tarballs
+.. _SD Card using default images: Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-default-images
+.. _SD Card using custom images: Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-custom-images
+.. _SD Card using parition tarballs: Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-partition-tarballs
 .. _Examples and Demos: Examples_and_Demos.html
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')

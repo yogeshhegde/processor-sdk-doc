@@ -7,7 +7,7 @@ prerequisites are met:
 
 #. Installed the Processor Linux SDK
 #. You have ran the `SDK's Setup
-   Scripts <../../Overview_Getting_Started_Guide.html#run-setup-scripts>`__
+   Scripts <../../Overview/Run_Setup_Scripts.html>`__
 #. Installed Code Composer Studio
 #. Created or imported a C/C++ Project. This project should be already
    open. For this guide a helloworld project will be used as an example.

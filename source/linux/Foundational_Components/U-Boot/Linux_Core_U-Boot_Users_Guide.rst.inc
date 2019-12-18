@@ -206,7 +206,7 @@ Build and Boot Flow on 64-bit platforms (based on K3 architecture)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
-Go `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__ to download and install the SDK.
+Go `here <Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
 TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
 `build information <Release_Specific_Release_Notes.html#build-information>`__.
@@ -257,7 +257,7 @@ Below are the steps for building images for AM65x IDK (substitute with the right
 .. rubric:: Target Images
 
 Copy the below images to the boot partition of an SD card and boot.
-Instructions to format the SD card can be found `here <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__.
+Instructions to format the SD card can be found `here <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__.
 
 - tiboot3.bin from <output directory>/r5
 - tispl.bin, u-boot.img from <output directory>/a53
@@ -1172,7 +1172,7 @@ Updating an SD card from a host PC
 
 This section assume that you have created an SD card following the
 instructions on `Processor SDK Linux Create SD Card
-Script <Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__ or have
+Script <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__ or have
 made a compatible layout by hand. In this case, you will need to copy
 the all the boot images (**MLO** and **u-boot.img** for 32-bit platforms,
 **tiboot3.bin**, **sysfw.itb**, **tispl.bin**, **u-boot.img** for K3 based platforms)

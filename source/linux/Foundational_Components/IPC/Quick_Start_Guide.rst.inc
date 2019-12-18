@@ -159,7 +159,7 @@ page <http://www.ti.com/lsds/ti/tools-software/processor_sw.page>`__
 
 To install Linux Proc SDK, please follow the instruction in `Download 
 and Install the SDK 
-<Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__
+<Overview/Download_and_Install_the_SDK.html>`__
 
 To Install RTOS Proc SDK, please see `Processor SDK for RTOS
 <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/

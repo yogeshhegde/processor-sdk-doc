@@ -10,9 +10,9 @@ By default, BeagleBone Black EVM boots with the Debian image on eMMC.
 This page describes two ways to boot a BeagleBone Black EVM with
 Processor SDK Linux. First, create an SD card with processor SDK Linux
 (`SDK Create SD Card
-Script <../../Overview_Getting_Started_Guide.html#linux-sd-card-creation-guide>`__,
+Script <../../Overview/Processor_SDK_Linux_create_SD_card_script.html>`__,
 `Creating a SD Card with
-Windows <../../Overview_Getting_Started_Guide.html#windows-sd-card-creation-guide>`__).
+Windows <../../Overview/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows.html>`__).
 Then, choose either of the two procedures below to boot with Processor
 SDK Linux.
 

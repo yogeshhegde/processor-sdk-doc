@@ -1,12 +1,10 @@
 .. include:: ../replacevars.rst.inc
 
-********************************************
-Getting Started Guide
-********************************************
+Getting Started Here
+====================
 
-.. rubric:: Welcome to the Linux Getting Started Guide
-   :name: welcome-to-the-linux-getting-started-guide
-
+Welcome to the Linux Getting Started Guide
+------------------------------------------
 
 Thanks for your interest in learning more about the Linux Software
 Development Kit (SDK). The SDK as we affectionately call it is our
@@ -57,8 +55,8 @@ a new thread and we’ll do our best to provide some guidance.
 
 | 
 
-.. rubric:: What would you like to do with the SDK?
-   :name: what-would-you-like-to-do-with-the-sdk
+What would you like to do with the SDK?
+---------------------------------------
 
 As described above, the SDK has a lot to it. Let’s break it down to two
 pieces to simplify things a bit:
@@ -355,8 +353,8 @@ which you can start development.
 
 |
 
-.. rubric:: What Would You Like to do Next?
-   :name: what-would-you-like-to-do-next
+What Would You Like to do Next?
+-------------------------------
 
 Now that you have a solid baseline set up, you can choose what you'd
 like to do next based on what you need to do. Here are some of the many

@@ -27,7 +27,7 @@ BMC Version Check and Update
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Read
-`BMC\_In-Field\_Update <How_to_Guides/Hardware_Setup_with_CCS/EVMK2H_Hardware_Setup.html#bmc-in-field-update>`__
+`BMC\_In-Field\_Update <EVMK2H_Hardware_Setup.html#bmc-in-field-update>`__
 to check BMC version and update if necessary.
 
 UCD Power Management Modules In-Field Update

@@ -23,7 +23,7 @@ runtime may not be located on an NFS mount. While it is possible to use Docker
 on a NFS root, extra configuration is required to modify the default rocker
 runtime directory.
 
-Please follow the instructions for the `Create SD Card Script <Overview_Getting_Started_Guide.html#sd-card-using-default-images>`__
+Please follow the instructions for the `Create SD Card Script <../../Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-default-images>`__
 and when prompted to select the root filesystem image, select the 'tisdk-docker-rootfs'
 image.
 
