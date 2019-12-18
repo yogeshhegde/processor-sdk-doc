@@ -32,7 +32,8 @@ Known Issues
 
     Please refer to `Known Issues <Release_Specific_PSDKLA_Release_Notes.html#issues-tracker>`__ for details.
 
-    .. include:: Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
+
+.. include:: Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
 
 
 Troubleshooting
