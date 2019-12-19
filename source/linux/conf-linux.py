@@ -14,7 +14,7 @@ htmlhelp_basename = 'ProcessorSDKLinuxdoc'
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'ProcessorSDKLinux.tex', u'Processor SDK Linux Automotive Documentation',
+  (master_doc, 'ProcessorSDKLinux.tex', u'Processor SDK Linux Documentation',
    u'Texas Instruments Incorporated', u'manual'),
 ]
 
@@ -23,7 +23,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ProcessorSDKLinux', u'Processor SDK Linux Automotive Documentation',
+    (master_doc, 'ProcessorSDKLinux', u'Processor SDK Linux Documentation',
      ['Texas Instruments Incorporated'], 1)
 ]
 
@@ -37,7 +37,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'ProcessorSDKLinux', u'Processor SDK Linux Automotive Documentation',
+  (master_doc, 'ProcessorSDKLinux', u'Processor SDK Linux Documentation',
    'Texas Instruments Incorporated', 'ProcessorSDKLinux', 'One line description of project.',
    'Miscellaneous'),
 ]
