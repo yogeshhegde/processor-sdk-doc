@@ -300,11 +300,6 @@ evmAM572x) to DPI1 LCD output.
 #. Run the application, Select any of the option.
 #. Captured Content will be displayed on the LCD panel connected to EVM
 
-.. note::
-   The camera driver support is not added for
-   evmAM572x boards (GP AM572x EVM) - and hence all the tests related to
-   camera are skipped for evmAM572x board.
-
 | 
 
 FAQ
