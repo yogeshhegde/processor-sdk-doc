@@ -27,6 +27,10 @@ runtime, Arm NN, TensorFlow Lite, TVM runtime, and RNN library.
 * Supports all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
 * On AM5729 and AM5749 devices, uses TIDL to accelerate supported models automatically.
 
+.. rubric:: `TVM Runtime <Foundational_Components/Machine_Learning/tvm.html>`__
+* TVM runtime provides device agnostic call into the functions compiled by TVM compiler (https://docs.tvm.ai/dev/runtime.html).
+* Available on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
+
 .. rubric:: `Arm NN <Foundational_Components/Machine_Learning/armnn.html>`__
 
 * Open source inference engine available from Arm.
@@ -45,15 +49,11 @@ runtime, Arm NN, TensorFlow Lite, TVM runtime, and RNN library.
 * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
 * Integrated into TI's Processor SDK Linux in an OOB demo for `Predictive Maintenance <Examples_and_Demos_Application_Demos.html#predictive-maintenance-demo>`__.
 
-.. rubric:: `TVM Runtime <Foundational_Components/Machine_Learning/tvm.html>`__
-* TVM runtime provides device agnostic call into the functions compiled by TVM compiler (https://docs.tvm.ai/dev/runtime.html).
-* Available on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
-
 .. toctree::
    :hidden:
 
    Foundational_Components/Machine_Learning/tidl
    Foundational_Components/Machine_Learning/neo
+   Foundational_Components/Machine_Learning/tvm
    Foundational_Components/Machine_Learning/armnn
    Foundational_Components/Machine_Learning/tflite
-   Foundational_Components/Machine_Learning/tvm
