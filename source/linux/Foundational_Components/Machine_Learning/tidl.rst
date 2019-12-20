@@ -89,11 +89,19 @@ Maximum number of inference tasks on AM5749 is 4 (2xEVE and 2xDSP), whereas on A
 Verified networks topologies
 ----------------------------
 
-It is necessary to understand that TIDL is not verified against arbitrary network topology
-that can run in Caffe or TF. Instead, we were focused on verification of layers and network
+It is necessary to understand that TIDL is not verified against arbitrary network topology.
+Instead, we were focused on verification of layers and network
 topologies that make sense to be executed on power-constraint embedded devices.
 Some networks are too complex for power budget of few watts. So focus is put on networks that
 are not extremely computationally intensive and also not having very high memory requirements.
+
+TIDL supports topologies described in the following framework formats:
+
+- Caffe
+- TensorFlow
+- TensorFlow Lite
+- ONNX
+
 The following topologies have been verified with TIDL software:
 
 - Jacinto11 (similar to ResNet10), classification network
@@ -101,7 +109,10 @@ The following topologies have been verified with TIDL software:
 - JDetNet, (similar to SSD-300/512), object detection network
 - SqueezeNet
 - InceptionV1
+- InceptionV3
 - MobileNetV1
+- MobileNetV2
+- Resnet18V1
 
 Here are the graphs (created using TIDL viewer tool) of first three:
 
@@ -154,7 +165,7 @@ During import process (described later), some operators or layers in a network m
 will be coalesced or converted into TIDL layers listed above. The supported 
 operators/layers for Tensorflow/ONNX/Caffe are listed below.
 
-**Supported TensorFlow operators and the corresponding TIDL layers:**
+**Supported TensorFlow and TensorFlow Lite operators and the corresponding TIDL layers:**
 
 +-----------------------+------------------------+
 | TensorFlow Operator   | TIDL Layer             |
@@ -730,7 +741,9 @@ preProcType          can take values from 0 to 6. Default value is 0. Refer to t
 Conv2dKernelType     can be either 0 or 1 for each layer. Default value is 0 for all the layers. Set it to 0 to use sparse convolution, otherwise, set it to 1 to use dense convolution
 inElementType        can be either 0 or 1. Default value is 1. Set it to 0 for 8-bit unsigned input or to 1 for 8-bit signed input
 inQuantFactor        can take values >0. Default value is -1
-rawSampleInData      can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data. Note that encoded input is only supported on ARM but not on x86. 
+rawSampleInData      can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data. 
+
+                     **Note that encoded input is only supported on the target but not on x86 host.**
 numSampleInData      can be > 0. Default value is 1.
 foldBnInConv2D       can be either 0 or 1. Default value is 1.
 inWidth              is Width of the input image, it can be >0.
@@ -752,22 +765,30 @@ Image pre-processing depends on configuration parameters rawSampleInData and pre
 =================    ================   ===================================================================================================================================================================
 rawSampleInData      preProcType        image pre-processing
 =================    ================   ===================================================================================================================================================================
-0                    0                  1. Resize the original image (WxH) to (256x256) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
+0                    0                  Pre-processing for Caffe-Jacinto models:
+
+                                        1. Resize the original image (WxH) to (256x256) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
                                         2. Crop the resized image to ROI (128-W/2, 128-H/2, W, H) defined by cv::Rect.
-0                    1                  Resize and crop as preProcType 0, and then subtract pixels by (104, 117, 123) per plane.
-0                    2                  1. Change color space from BGR to RGB for the original image (WxH).
+0                    1                  Pre-processing for Caffe models:
+
+                                        Resize and crop as preProcType 0, and then subtract pixels by (104, 117, 123) per plane.
+0                    2                  Pre-processing for TensorFlow models:
+
+                                        1. Change color space from BGR to RGB for the original image (WxH).
                                         2. Crop new image to ROI (H/16, W/16, 7H/8, 7W/8) defined by cv::Rect.
                                         3. Resize the cropped image to (WxH) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
-                                        4. Subtract pixels by (104, 117, 123) per plane. 
-0                    3                  1. Change color space from BGR to RGB for the original image (WxH).
+                                        4. Subtract pixels by (128, 128, 128) per plane. 
+0                    3                  Pre-processing for CIFAR 10:
+
+                                        1. Change color space from BGR to RGB for the original image (WxH).
                                         2. Resize the original image (WxH) to (32x32) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
                                         3. Crop the resized image to ROI (16-W/2, 16-H/2, W, H) defined by cv::Rect.
-0                    4                  No pre-processing is performed on the original image. 
+0                    4                  For JDetNet: no pre-processing is performed on the original image. 
 0                    5                  1. Change color space from BGR to RGB for the original image (WxH).
                                         2. Crop new image to ROI (0, 0, H, W) defined by cv::Rect.
                                         3. Resize the cropped image to (WxH) with scale factors (0,0) and INTER_AREA using OpenCV function resize().
                                         4. Subtract pixels by (128, 128, 128) per plane. 
-0                    6                  Normalize the original image in the range of [0, 255] (ONNX preprocessing):
+0                    6                  Pre-processing for ONNX models: normalize the original image in the range of [0, 255]
 
                                         - Subtract pixels by (123.68 116.28, 103.53) per plane.
 
@@ -1042,6 +1063,8 @@ For video sequence, below settings can be also tested:
 Quantization parameters are also discussed in `API reference <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#api-reference>`_
 
 
+.. _Importing Tensorflow Models:
+
 Importing Tensorflow Models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1061,6 +1084,8 @@ Following models have been validated:
    - Generate frozen graph from `this checkpoint link <http://download.tensorflow.org/models/inception_v1_2016_08_28.tar.gz>`_
    - Optimze the graph using TensorFlow tool similarly to MobileNet v1.
 
+
+.. _Importing Caffe Models:
 
 Importing Caffe Models
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1479,8 +1504,8 @@ Troubleshooting
        what():  CHECK failed: (index) < (current_size_):
        Aborted (core dumped)
 
-     This is usually caused by unsupported Caffe input layer format. Refer `Importing Caffe Models <Foundational_Components/Machine_Learning/tidl.html#importing-caffe-models>`__ for more details.
+     This is usually caused by unsupported Caffe input layer format. For more details, refer to :ref:`Importing Caffe Models`.
 
 
 - TensorFlow import failed with error "Could not find the requested input Data:" 
-     This is likely due to unoptimized frozen graphs. Refer `Importing Tensorflow Models <Foundational_Components/Machine_Learning/tidl.html#importing-tensorflow-models>`__ for more details.
+     This is likely due to unoptimized frozen graphs. Refer :ref:`Importing Tensorflow Models` for more details.
