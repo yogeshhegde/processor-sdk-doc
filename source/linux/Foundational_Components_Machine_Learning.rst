@@ -4,8 +4,8 @@ Machine Learning
 Sitara Machine Learning toolkit brings machine learning to the edge by enabling 
 machine learning inference on all Sitara devices (Arm only, Arm + specialized hardware 
 accelerators). It is provided as part of TI's Processor SDK Linux, free to download 
-and use. Sitara machine learning today consists of TI Deep Learning (TIDL), Neo 
-runtime, Arm NN, TensorFlow Lite, TVM runtime, and RNN library.
+and use. Sitara machine learning today consists of TI Deep Learning (TIDL), Neo-AI-DLR, 
+TVM runtime, TensorFlow Lite, Arm NN, and RNN library.
 
 .. figure:: ../images/Sitara_machine_learning_stack_diagram.png
     :width: 1120px
@@ -20,28 +20,30 @@ runtime, Arm NN, TensorFlow Lite, TVM runtime, and RNN library.
 * Available on AM57x device only.
 * Supports CNN at the moment, and imports Caffe, ONNX, and Tensorflow models.
 
-.. rubric:: `SageMaker Neo Runtime <Foundational_Components/Machine_Learning/neo.html>`__
-* Neo runtime is a new open source machine learning runtime for on-device inference.
+.. rubric:: `Neo-AI Deep Learning Runtime (DLR) <Foundational_Components/Machine_Learning/neo.html>`__
+* Neo-AI-DLR is a new open source machine learning runtime for on-device inference.
 * Supports Keras, Tensorflow, TFLite, GluonCV, MXNet, Pytorch, ONNX, and XGBoost models optimized 
-  automatically by Amazon SageMaker Neo (https://aws.amazon.com/sagemaker/neo/).
+  automatically by `Amazon SageMaker Neo <https://aws.amazon.com/sagemaker/neo/>`__ 
+  or `TVM compiler <https://github.com/apache/incubator-tvm/>`__.
 * Supports all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
 * On AM5729 and AM5749 devices, uses TIDL to accelerate supported models automatically.
 
 .. rubric:: `TVM Runtime <Foundational_Components/Machine_Learning/tvm.html>`__
-* TVM runtime provides device agnostic call into the functions compiled by TVM compiler (https://docs.tvm.ai/dev/runtime.html).
+* Open source deep learning runtime for on-device inference, supporting models compiled by 
+  `TVM compiler <https://github.com/apache/incubator-tvm/>`__.
 * Available on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
-
-.. rubric:: `Arm NN <Foundational_Components/Machine_Learning/armnn.html>`__
-
-* Open source inference engine available from Arm.
-* Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
-* Imports Caffe, ONNX, TensorFlow, and TensorFlow Lite models.
 
 .. rubric:: `TensorFlow Lite <Foundational_Components/Machine_Learning/tflite.html>`__
 
 * Open source deep learning runtime for on-device inference.
 * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
 * Imports Tensorflow Lite models.
+
+.. rubric:: `Arm NN <Foundational_Components/Machine_Learning/armnn.html>`__
+
+* Open source inference engine available from Arm.
+* Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
+* Imports Caffe, ONNX, TensorFlow, and TensorFlow Lite models.
 
 .. rubric:: `RNN Library <Examples_and_Demos_Application_Demos.html#deploy-and-integration>`__
 
@@ -55,5 +57,5 @@ runtime, Arm NN, TensorFlow Lite, TVM runtime, and RNN library.
    Foundational_Components/Machine_Learning/tidl
    Foundational_Components/Machine_Learning/neo
    Foundational_Components/Machine_Learning/tvm
-   Foundational_Components/Machine_Learning/armnn
    Foundational_Components/Machine_Learning/tflite
+   Foundational_Components/Machine_Learning/armnn

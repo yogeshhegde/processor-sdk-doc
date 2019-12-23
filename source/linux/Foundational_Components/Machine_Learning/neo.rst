@@ -1,9 +1,9 @@
-SageMaker Neo Runtime
-=======================
+Neo-AI Deep Learning Runtime
+============================
 
 Introduction
 -------------
-Processor SDK Linux has integrated open source SageMaker Neo runtime, or 
+Processor SDK Linux has integrated open source Neo-AI deep learning runtime, or 
 `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__, for deep learning 
 inference at the edge. Currently, NEO-AI-DLR runs on ARM for Sitara devices 
 (AM3/AM4/AM5/AM6), with subgraph offload using TIDL supported compute offload 
@@ -24,6 +24,9 @@ of the target filesystem:
 
 :: 
 
+  cd /usr/share/dlr/demos
+  scp -r <artifact_folder_on_host_machine> .
+  cp /usr/share/ti/tidl/examples/mobilenet_subgraph/subgraph0.cfg .
   ./do_tidl4.sh  <artifacts folder>
 
 - tests folder: contains examples of Neo runtime for ARM cores, which can run on
@@ -32,6 +35,7 @@ of the target filesystem:
 
 ::
    
+  cd /usr/share/dlr/tests/python/integration/
   python3 load_and_run_tvm_model.py
 
 
@@ -83,11 +87,11 @@ Batch Size    TIDL MobileNetV1 (fps)    ARM MobileNetV1 (fps)    TIDL MobileNetV
    4                 30.1260                  2.2018                    30.5178                   3.6843
    16                34.8465                  2.2210                    36.0127                   3.6775
    32                35.5279                                            37.5482
-   64                36.5489                                            38.5027
 ==========    ======================    =====================    ======================    =====================
 
 .. note::
 
+   - This release only supports batch size up to 32.
    - There is no TVM auto-tuning for ARM (using default scheduling) and it is single A15 core execution.
 
 Rebuilding DLR from Source

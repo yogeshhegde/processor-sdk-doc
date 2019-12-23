@@ -3,8 +3,8 @@ TVM Runtime
 
 Introduction
 -------------
-Processor SDK Linux has integrated open source TVM runtime for deep learning 
-inference at the edge. Currently, TVM runtime is available on ARM cores for all 
+Processor SDK Linux has integrated open source `TVM runtime <https://docs.tvm.ai/dev/runtime.html>` 
+for deep learning inference at the edge. Currently, TVM runtime is available on ARM cores for all 
 Sitara devices (AM3/AM4/AM5/AM6).
 
 To run deep learning inference on Sitara devices, a network model needs to be 
