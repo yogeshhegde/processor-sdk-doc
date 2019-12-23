@@ -29,3 +29,11 @@ IPC for K2x
 Multiple Ways of ARM-DSP Communication
 =======================================
 .. include:: Foundational_Components/IPC/Multiple_Ways_of_ARM-DSP_Communication.rst.inc
+
+IPC Tests
+=======================================
+.. include:: Foundational_Components/IPC/IPC_Tests.rst.inc
+
+IPC Daemon
+=======================================
+.. include:: Foundational_Components/IPC/IPC_Daemon.rst.inc

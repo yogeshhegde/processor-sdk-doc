@@ -21,43 +21,26 @@ IPC
 
 .. note:: This section mainly provides details of the software distributed part of the IPC 3.x package (installed under ipc_<version>). The IPC package provides the IPC APIs with higher level software abstraction. In addition,starting from  Processor SDK 6.1 release, a lower level IPC driver (IPC LLD) using rpmsg based transport is included specifically for AM6x/J7 platforms. See the following link for additional details `IPC 3.x vs IPC LLD`_
 
-Inter-Processor Communication (IPC) provides a processor-agnostic API which can be used for communication between processors in a multi-processor environment (inter-core), communication to other threads on same processor (inter-process), and communication to peripherals (inter-device). 
-The API supports message passing, streams, and linked lists.
-IPC can be used to communicate with the following:
-
-- Other threads on the same processor
-- Threads on other processors running SYS/BIOS
-- Threads on other processors running an HLOS (e.g., Linux, QNX, Android)
-
-.. image:: ../images/IPC_comm_features.JPG
 
 IPC User's Guide
 ================
 .. include:: PDK_Platform_Software/IPC/IPC_Users_Guide.rst.inc
 
-IPC Install Guides
-====================
-BIOS Install Guide
--------------------
-.. include:: PDK_Platform_Software/IPC/IPC_Install_Guide_BIOS.rst.inc
-Linux Install Guide
--------------------
-.. include:: PDK_Platform_Software/IPC/IPC_Install_Guide_Linux.rst.inc
-QNX Install Guide
--------------------
-.. include:: PDK_Platform_Software/IPC/IPC_Install_Guide_QNX.rst.inc
-
-Porting IPC
-================
-.. include:: PDK_Platform_Software/IPC/Porting_IPC.rst.inc
-
-Optimizing IPC Applications
+Use Cases for IPC
 =============================
-.. include:: PDK_Platform_Software/IPC/Optimizing_IPC_Applications.rst.inc
+.. include:: PDK_Platform_Software/IPC/Use_Cases_for_IPC.rst.inc
 
-Rebuilding IPC
-================
-.. include:: PDK_Platform_Software/IPC/Rebuilding_IPC.rst.inc
+
+
+IPC Examples
+=============
+	
+.. include:: PDK_Platform_Software/IPC/IPC_examples.rst.inc
+
+IPC Training
+=============
+	
+.. include:: ../common/IPC/IPC_Training.rst.inc
 
 TI SDO IPC Package
 ====================
@@ -96,6 +79,7 @@ Shared Region Module
 .. include:: PDK_Platform_Software/IPC/SharedRegion_Module.rst.inc
 
 
+
 TI SDO Utils Package
 =====================
 .. include:: PDK_Platform_Software/IPC/The_ti.sdo.utils_Package.rst.inc
@@ -112,27 +96,21 @@ NameServer Module
 -------------------
 .. include:: PDK_Platform_Software/IPC/NameServer_Module.inc
 
-Use Cases for IPC
+
+Optimizing IPC Applications
 =============================
-.. include:: PDK_Platform_Software/IPC/Use_Cases_for_IPC.rst.inc
+.. include:: PDK_Platform_Software/IPC/Optimizing_IPC_Applications.rst.inc
+
+Rebuilding IPC
+================
+.. include:: PDK_Platform_Software/IPC/Rebuilding_IPC.rst.inc
+
 
 | 
 
-IPC Examples
-=============
-.. include:: PDK_Platform_Software/IPC/IPC_examples.rst.inc
-
-IPC Tests
-=============
-.. include:: PDK_Platform_Software/IPC/IPC_Tests.rst.inc
-
-IPC Daemon
-=============
-.. include:: PDK_Platform_Software/IPC/IPC_Daemon.rst.inc
-
 IPC Transports
 ===============
-.. include:: PDK_Platform_Software/IPC/IPC_Transports.rst.inc
+.. include:: ../common/IPC/IPC_Transports.rst.inc
 
 IPC Benchmarking
 ==================
@@ -172,6 +150,23 @@ IPC FAQ
 FAQ For Keystone Devices
 -------------------------
 .. include:: PDK_Platform_Software/IPC/IPC_FAQ_for_Keystone_Devices.rst.inc
+
+IPC Install Guides
+====================
+The IPC package now comes bundled with Processor SDK RTOS and can be built using the top-level makefile located in the Processor SDK RTOS folder. These install guides have been kept here for those using older, legacy versions of IPC.
+
+BIOS Install Guide
+-------------------
+.. include:: PDK_Platform_Software/IPC/IPC_Install_Guide_BIOS.rst.inc
+
+Linux Install Guide
+-------------------
+.. include:: PDK_Platform_Software/IPC/IPC_Install_Guide_Linux.rst.inc
+
+QNX Install Guide
+-------------------
+.. include:: PDK_Platform_Software/IPC/IPC_Install_Guide_QNX.rst.inc
+
 
 ***************
 OpenCL

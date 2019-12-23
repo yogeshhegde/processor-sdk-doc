@@ -92,31 +92,3 @@ Development
 
 IPC 3.x development is being managed at https://git.ti.com/ipc.
 
-There is an `open mailing
-list <https://gforge.ti.com/mailman/listinfo/ipc-developers>`__ where
-active discussion about the code base takes place. Patches are also
-submitted there for review.
-
-IPC Training
---------------
-
-| IPC training material is updated from time to time. Check back for new
-  updates.
-
-| **IPC Training** v2.21 - IPC 3.x Full Training Material :download:`(PowerPoint) <../files/IPC_Training_2_21.pptx>` :download:`(PowerPointShow) <../files/IPC_Training_2_21.ppsx>` :download:`(PDF) <../files/IPC_Training_2_21.pdf>`
-
-| IPC Lab 1 - Hello :download:`(PowerPoint) <../files/IPC_Lab_1_Hello.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_1_Hello.ppsx>` :download:`(PDF) <../files/IPC_Lab_1_Hello.pdf>`
-
-| IPC Lab 2 - MessageQ :download:`(PowerPoint) <../files/IPC_Lab_2_MessageQ.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_2_MessageQ.ppsx>` :download:`(PDF) <../files/IPC_Lab_2_MessageQ.pdf>`
-
-| IPC Lab 3 - Scalability :download:`(PowerPoint) <../files/IPC_Lab_3_Scalability.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_3_Scalability.ppsx>` :download:`(PDF) <../files/IPC_Lab_3_Scalability.pdf>`
-
-|
-
-See Also
-------------
--  `IPC User's Guide <index_Foundational_Components.html#ipc-user-guide>`__
--  `Embedded Linux Conference Europe Presentation on
-   rpmsg <http://free-electrons.com/pub/video/2011/elce/elce-2011-ben-cohen-remote-processor-messaging-450p.webm>`__
-
-
