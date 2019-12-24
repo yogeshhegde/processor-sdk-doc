@@ -21,8 +21,8 @@ Features supported
 - PTP/1588
    -  PTP Slave and Master mode
    -  Supports P2P delay measurement
-   -  Supports E2E delay measurement (GMAC only)
-   -  PTP over IPv4 (Annex D) (GMAC only)
+   -  Supports E2E delay measurement (GMAC, DualEMAC (slave only))
+   -  PTP over IPv4 (Annex D) (GMAC, DualEMAC (slave only))
    -  PTP over 802.3 (Annex F)
 
 - SAN Clock
@@ -592,6 +592,48 @@ PRP:
     ingressLatency                186
     network_transport             L2
     fault_reset_interval          0
+
+E2E/IPv4 (Telecom Profile)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Support for E2E message types, IPv4 transport, and unicast negotation enables
+use of the Telecom profile. This is also supported by LinuxPTP, and may be
+configured using a configuration file similar to the one below:
+(Note: only supported on PRU-ICSS ports using DualEMAC, and supports slave side only)
+
+Telecom:
+::
+
+    # Telecom Profile (G.8275.x) PTP Config File
+    [global]
+    tx_timestamp_timeout            10
+    logMinPdelayReqInterval         -4
+    logSyncInterval                 -4
+    twoStepFlag                     1
+
+    logMinDelayReqInterval          -4
+    logAnnounceInterval             -3
+
+    dataset_comparison              G.8275.x
+    G.8275.defaultDS.localPriority  128
+    G.8275.portDS.localPriority     128
+    hybrid_e2e                      1
+    inhibit_multicast_service       1
+    unicast_listen                  1
+    unicast_req_duration            60
+
+    [unicast_master_table]
+    table_id                        94
+    logQueryInterval                2
+    UDPv4                           192.168.1.94
+
+    [eth3]
+    egressLatency                   726
+    ingressLatency                  186
+    unicast_master_table            94
+
+In above example config, 192.168.1.94 is the IP of the PTP master for this device.
+
 
 VLAN
 ^^^^
