@@ -310,8 +310,8 @@ Set the bit-rate to 50Kbits/sec using the following command:
 
 -  Set bit-timing (loopback mode)
 
-Set the bit-rate to 50Kbits/sec with triple sampling in the loopback
-mode using the following command
+Set the bit-rate to 50Kbits/sec in the loopback mode using the following
+command
 
 ::
 
