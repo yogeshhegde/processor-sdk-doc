@@ -3,12 +3,17 @@ Neo-AI Deep Learning Runtime
 
 Introduction
 -------------
-Processor SDK Linux has integrated open source Neo-AI deep learning runtime, or 
-`Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__, for deep learning 
-inference at the edge. Currently, NEO-AI-DLR runs on ARM for Sitara devices 
-(AM3/AM4/AM5/AM6), with subgraph offload using TIDL supported compute offload 
-on AM5729 and AM5749. In this release, only TensorFlow models can be offloaded, 
-and all operators in the network need to be supported by TIDL to utilize the offload.
+`Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__ is an open source common runtime 
+for deep learning models and decision tree models compiled by TVM, AWS SageMaker Neo, 
+or Treelite. Processor SDK Linux has integrated Neo-AI-DLR. DLR stands for Deep Learning 
+Runtime. With this integration, the models compiled by AWS SageMaker Neo and TVM can run 
+on all Arm core of all Sitara devices (AM3/AM4/AM5/AM6).
+
+On A5729 and AM5749, TensorFlow models compiled by Neo, if supported by TIDL, are fully 
+offloaded to EVE and DSP cores. If not, then they run on Arm core. In future release, 
+a graph of any model supported by Neo compiler can be split into sub-graphs, where TIDL 
+supported sub-graph will run on EVE/DSP cores, while unsupported layer sub-graph will 
+run on Arm core.
 
 Examples
 --------
@@ -65,15 +70,19 @@ Follow instructions at https://docs.tvm.ai/install/from_source.html#python-packa
 
 - Compile Neural Network Models
 
-Currently Neo compiler with Sitara support can compile any models supported by Neo, 
-but only TensorFlow models can be compiled to run on TIDL for acceleration if the model
-can be supported by TIDL. Follow instructions at https://github.com/TexasInstruments/tvm/tree/dev/apps/tidl_deploy to 
+Follow instructions at https://github.com/TexasInstruments/tvm/tree/dev/apps/tidl_deploy to 
 compile neural network models. A simple example generating the artifacts needed 
 to run the demo above is shown below:
 
 ::
 
   python3 NeoTvmCodeGen.py mobileNet1
+
+.. note::
+
+  - Currently Neo compiler with Sitara support can compile any models supported by Neo, 
+    but only TensorFlow models can be compiled to run on TIDL for acceleration if the model
+    can be supported by TIDL. 
 
 Benchmarking
 ------------
