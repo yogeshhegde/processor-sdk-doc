@@ -43,26 +43,37 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 06.01.00
+Release 06.02.00
 ==================
 
-Released October 2019
+Released January 2020
 
 .. rubric:: What's New
    :name: whats-new
 
-- Analytics: 
-    - Add support for TFLite. For more details, see `here <Foundational_Components/Machine_Learning/tflite.html>`__ 
-    - Upgraded ARMNN to 2019.08
-    - TensorFlow Lite parser support in ARMNN
-- Added avahi-daemon and avahi-tools towards enabling mDNS support on TI platforms
-- AM57x: Feature parity in Dual EMAC firmware compared to PRP EMAC mode, for Single Attached Nodes (SAN)
-- AM65x: 
-    - Support Jailhouse Hypervisor
-    - Uboot support to load non-lockstep MCU R5F Firmware.
-    - Support AVS Class 0
-    - Ethernet throughput enhancements
-- BeagleboneBlack: Increase number of UART ports via Soft UART with PRU
+- Analytics
+    - Support new platform Beaglebone-AI (BB-AI)
+    - Support AM5729 IDK, with 4xEVE
+    - Neo-AI Deep Learning Runtime (DLR) Support. For more details see `here <Foundational_Components/Machine_Learning/neo.html>`__
+    - TVM Runtime Support. For more details see `here <Foundational_Components/Machine_Learning/tvm.html>`__
+    - Benchmarks for various Deep Learning Networks
+
+- AM57x Networking:
+    - Support Standard Ethernet Switch over ICSS
+    - Support Rapid Spanning Tree Protocol (RSTP) w/ cut-through offloaded to ICSS Switch
+    - Support Telecomm profile (G.8275.2) Slave Mode on ICSS EMAC interface
+    - Support Early boot of IPUs, and late attach from ARM core
+
+- AM65x:
+    - ICSSG PRUETH: Support 10M/100M Link Speed & half/full duplex operation, in addition to 1G
+    - Support SOC PRU PWM Interface
+
+- Graphics
+    - Re-enable qtWebengine and Chromium browser support
+    - Upgrade SGX DDK to support all required EGL 1.5-based extensions with Mesa-EGL instead of the traditional IMG WSEGL. 
+    - Both Wayland and GBM(DRM) window systems are supported by Mesa-based EGL while the nullDRM window system is dropped
+    - All the full-screen (EGLFS)-based applications have been updated to use GBM-based window system. 
+    - Please refer to the Graphics and Display section at the developer guide for details.
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -70,7 +81,7 @@ Released October 2019
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.19.59+ (2019 LTS)        |
+| Linux Kernel             | 4.19.79+ (2019 LTS)        |
 +--------------------------+----------------------------+
 | U-Boot                   | 2019.01                    |
 +--------------------------+----------------------------+
