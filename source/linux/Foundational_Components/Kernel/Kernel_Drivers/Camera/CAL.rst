@@ -29,7 +29,13 @@ The CAL IP is only available on the following TI SoCs or SoC families:
 -  DRA76x
 -  AM654x
 
-| 
+|
+
+The Device Tree bindings will always have the most current details
+on supported devices
+
+- Documentation/devicetree/bindings/media/ti-cal.txt or
+- Documentation/devicetree/bindings/media/ti,cal.yaml
 
 Hardware Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
