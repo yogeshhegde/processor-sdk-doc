@@ -15,7 +15,7 @@ documentation give more detailed descriptions.
 Release Applicable
 """"""""""""""""""""
 
-This page applies to TI's v4.4, v4.1 and v3.14 kernel. Also CAL was
+This page applies to TI's kernel since v3.14. Also CAL was
 merged upstream in v4.6 kernel.
 
 Supported Devices
@@ -25,6 +25,9 @@ The CAL IP is only available on the following TI SoCs or SoC families:
 
 -  AM571x
 -  DRA72x
+-  DRA71x
+-  DRA76x
+-  AM654x
 
 | 
 
@@ -60,12 +63,24 @@ CAL provides up to two MIPI CSI-2 interfaces:
 SoC Hardware Feature
 """"""""""""""""""""
 
--  AM571x/DRA72x
+-  AM571x/DRA72x/DRA76x
 
    -  CAL provides two MIPI CSI-2 interfaces
 
       -  CSI2\_PHY1 with 4 data lanes / 1 clock lane
       -  CSI2\_PHY2 with 2 data lanes / 1 clock lane
+
+-  DRA71x
+
+   -  CAL provides one MIPI CSI-2 interface
+
+      -  CSI2\_PHY1 with 2 data lanes / 1 clock lane
+
+-  AM654x
+
+   -  CAL provides one MIPI CSI-2 interface
+
+      -  CSI2\_PHY1 with 4 data lanes / 1 clock lane
 
 Driver Architecture
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
