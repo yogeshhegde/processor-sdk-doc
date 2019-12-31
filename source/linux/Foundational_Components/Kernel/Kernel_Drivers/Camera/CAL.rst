@@ -189,6 +189,11 @@ driver to work properly:
 
 | 
 
+In addition the subdevice driver **must** also calculate and make the current
+pixel rate (based on clocks, lanes and bits per pixels) available through the
+V4L2_CID_PIXEL_RATE control.  This value is required by the CAL driver to
+properly configure the DPHY.
+
 Driver Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -375,6 +380,10 @@ usually means that the CAL engine does not detect video data. This might
 be cause by a handshake failure between the CSI2 D-PHY and the actual
 sensor or the sensor is not generating any data at all. Verifying that
 the clock pins or data pins are properly toggling might be necessary.
+
+An other cause maybe that the currently provided V4L2_CID_PIXEL_RATE is not
+accurate and therefore the DPHY handshake with the sensor failed. In this case
+it is worth checking the calculated pixel rate.
 
 **Camera isn't started, clock, data lanes are dead**
 
