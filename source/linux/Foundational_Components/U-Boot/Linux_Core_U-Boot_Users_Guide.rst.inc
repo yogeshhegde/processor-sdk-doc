@@ -867,43 +867,109 @@ there is a boot command called **netboot** in AM EVMs and **boot=net**
 in KS2 EVMs that will automatically load the kernel and boot. For the
 exact details of each use **printenv** on the **netboot** variable and
 then in turn **printenv** other sub-sections of the command. The most
-important variables in AM57x/DRA7x are **rootpath** and **nfsopts**, and
-**tftp\_root** and **nfs\_root** in K2H/K/E/L/G.
+important variables in AM57x/DRA7x are **rootpath** and **nfsopts**,
+and **tftp\_root** and **nfs\_root** in K2H/K/E/L/G.
 
 On AM65x GP and IDK boards, Linux kernel can be booted over PRU-ICSSG
-Ethernet port as well. Only PRU-ICSSG port of the base board (ICSSG2)
-is supported for net boot. This port is marked as Eth0 on the AM65x
-base board. User needs to load and run pru/rtu firmware on ICSSG2 to do
-this. The firmware is loaded from the rootfs/lib/firmware/
-ti-pruss/ folder for this purpose. A sample script for AM65x EVM/IDK is
-shown below. User needs to customize the serverip and bootdir env
-variable to that of the tftp server used in the setup.
+Ethernet port as well. In the release u-boot image, only first port
+(MII port 0)	of ICSSG0, ICSSG1 and ICSSG2 are enabled. To use
+second port (MII port 1), user needs to edit the DTS file to enable
+second port instead of first port and rebuild u-boot images using the
+updated DTS file.  First port is marked as Eth0 on base board (ICSSG2),
+Eth0 (ICSSG0) and Eth2 (ICSSG1) on IDK Application board. User needs
+to load and run pru/rtu firmware on ICSSG using env script as shown
+below before doing network operations such as dhcp, tftp over ICSSG
+ports. The firmware is loaded from the rootfs/lib/firmware/ti-pruss/
+folder for this purpose. For more information on using rproc/RemoteProc
+in Uboot, see section `here <Foundational_Components_U-Boot.html#remoteproc>`__.
+A sample U-Boot env script for AM65x EVM/IDK is shown below for ICSSG0,
+ICSSG1 and ICSSG2. User needs to customize the serverip and bootdir
+env variable to that of the tftp server used in the setup.
 
-.. note:: Linux Kernel boot with NFS rootfs over PRUETH Ethernet interface has not been validated.
+.. note:: Currently only 100Mbps and 1Gbps Full Duplex (FD) links are supported for ICSSG ports. Linux Kernel boot with NFS rootfs over PRUETH Ethernet interface has not been validated.
 
 ::
 
- setenv start_icssg2 'rproc start 8; rproc start 9'
- setenv stop_icssg2 'rproc stop 8; rproc stop 9'
+ICSSG0 port 0
+
+::
+
+ setenv start_icssg0 'rproc start 2; rproc start 3'
+ setenv stop_icssg0 'rproc stop 2; rproc stop 3'
+ setenv firmware_dir '/lib/firmware/ti-pruss'
+ setenv get_fdt_net 'run start_icssg0; tftp ${fdtaddr} ${serverip}:${bootdir}/${name_fdt}; run stop_icssg0'
+ setenv get_kern_net 'run start_icssg0; tftp ${loadaddr} ${serverip}:${bootdir}/${name_kern}; run stop_icssg0'
+ setenv get_overlay_net 'fdt address ${fdtaddr};fdt resize 0x0fffff;for overlay in $overlay_files;do; run start_icssg0; \
+	 tftp ${overlayaddr} ${bootdir}/${overlay};fdt apply ${overlayaddr}; run stop_icssg0; done;'
+ setenv get_firmware_mmc 'load mmc ${bootpart} ${loadaddr} ${firmware_dir}/${firmware_file}'
+ setenv serverip 158.218.113.14
+ setenv bootdir 06.02.00.58-am6
+ setenv name_fdt k3-am654-base-board.dtb
+ setenv name_kern Image-am65xx-evm.bin
+ setenv overlay_files 'k3-am654-idk.dtbo k3-am654-pcie-usb2.dtbo'
+ setenv init_icssg0 'setenv ethact pruss0_eth; setenv autoload no; rproc init; setenv loadaddr 0x80000000; \
+	 setenv firmware_file 'am65x-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 2 0x80000000 13040; rproc start 2; \
+	 setenv loadaddr 0x89000000; setenv firmware_file am65x-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 3 0x89000000 5676; \
+	 rproc start 3; dhcp; run stop_icssg0;'
+ setenv bootcmd 'run init_mmc; run init_icssg0; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
+ saveenv
+ boot
+
+::
+
+ICSSG1 port 0
+
+::
+
+ setenv start_icssg1 'rproc start 6; rproc start 7'
+ setenv stop_icssg1 'rproc stop 6; rproc stop 7'
+ setenv firmware_dir '/lib/firmware/ti-pruss'
+ setenv get_fdt_net 'run start_icssg1; tftp ${fdtaddr} ${serverip}:${bootdir}/${name_fdt}; run stop_icssg1'
+ setenv get_kern_net 'run start_icssg1; tftp ${loadaddr} ${serverip}:${bootdir}/${name_kern}; run stop_icssg1'
+ setenv get_overlay_net 'fdt address ${fdtaddr};fdt resize 0x0fffff;for overlay in $overlay_files;do; run start_icssg1; \
+       tftp ${overlayaddr} ${bootdir}/${overlay};fdt apply ${overlayaddr}; run stop_icssg1; done;'
+ setenv get_firmware_mmc 'load mmc ${bootpart} ${loadaddr} ${firmware_dir}/${firmware_file}'
+ setenv serverip 158.218.113.14
+ setenv bootdir 06.02.00.58-am6
+ setenv name_fdt k3-am654-base-board.dtb
+ setenv name_kern Image-am65xx-evm.bin
+ setenv overlay_files 'k3-am654-idk.dtbo k3-am654-pcie-usb2.dtbo'
+ setenv init_icssg1 'setenv ethact pruss1_eth; setenv autoload no; rproc init; setenv loadaddr 0x80000000; \
+       setenv firmware_file 'am65x-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 6 0x80000000 13040; rproc start 6; \
+       setenv loadaddr 0x89000000; setenv firmware_file am65x-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 7 0x89000000 5676; \
+       rproc start 7; dhcp; run stop_icssg1;'
+ setenv bootcmd 'run init_mmc; run init_icssg1; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
+ saveenv
+ boot
+
+::
+
+ICSSG2 port 0
+
+::
+
+ setenv start_icssg2 'rproc start 10; rproc start 11'
+ setenv stop_icssg2 'rproc stop 10; rproc stop 11'
  setenv firmware_dir '/lib/firmware/ti-pruss'
  setenv get_fdt_net 'run start_icssg2; tftp ${fdtaddr} ${serverip}:${bootdir}/${name_fdt}; run stop_icssg2'
  setenv get_kern_net 'run start_icssg2; tftp ${loadaddr} ${serverip}:${bootdir}/${name_kern}; run stop_icssg2'
  setenv get_overlay_net 'fdt address ${fdtaddr};fdt resize 0x0fffff;for overlay in $overlay_files;do; run start_icssg2; \
-       tftp ${overlayaddr} ${bootdir}/${overlay};fdt apply ${overlayaddr}; run stop_icssg2; done;'
+      tftp ${overlayaddr} ${bootdir}/${overlay};fdt apply ${overlayaddr}; run stop_icssg2; done;'
  setenv get_firmware_mmc 'load mmc ${bootpart} ${loadaddr} ${firmware_dir}/${firmware_file}'
- setenv serverip 158.218.117.39
- setenv bootdir 06.00.00.05-am6
+ setenv serverip 158.218.113.14
+ setenv bootdir 06.02.00.58-am6
  setenv name_fdt k3-am654-base-board.dtb
  setenv name_kern Image-am65xx-evm.bin
  setenv overlay_files 'k3-am654-idk.dtbo k3-am654-pcie-usb2.dtbo'
- setenv init_icssg2 'setenv ethact pruss2_eth; setenv autoload no; rproc init; setenv loadaddr 0x89000000; \
-       setenv firmware_file 'am65x-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 8 0x89000000 13040; rproc start 8; \
-       setenv loadaddr 0x8a000000; setenv firmware_file am65x-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 9 0x8a000000 5676; \
-       rproc start 9; dhcp; run stop_icssg2;'
+ setenv init_icssg2 'setenv ethact pruss2_eth; setenv autoload no; rproc init; setenv loadaddr 0x80000000; \
+      setenv firmware_file 'am65x-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 10 0x80000000 13040; rproc start 10; \
+      setenv loadaddr 0x89000000; setenv firmware_file am65x-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 11 0x89000000 5676; \
+      rproc start 11; dhcp; run stop_icssg2;'
  setenv bootcmd 'run init_mmc; run init_icssg2; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
  saveenv
  boot
 
+.. note:: To boot over second port (MII port 1) of ICSSG2, user needs to edit arch/arm/dts/k3-am654-base-board-u-boot.dtsi in the U-Boot source tree. See DTS file for instruction. For example, user needs to comment pruss2_emac0 DT node and uncomment pruss2_emac1 node. Similarly to enable second port for ICSSG0 and ICSSG1, user needs to edit arch/arm/dts/k3-am654-idk.dtso and enable pruss0_emac1 and pruss1_emac1 nodes respectives. After this rebuild u-boot images and use it. Port 1 is marked as by Eth1 on on base board (ICSSG2), Eth1 (ICSSG0) and Eth3 (ICSSG1) on IDK Application board.
 | 
 
 NAND
