@@ -203,7 +203,10 @@ supported.
 Supported Features
 """"""""""""""""""""
 
--  Maximum frame size limited by software to 1920x1200 pixels
+-  Maximum frame size
+
+   -  Kernel v4.19 and prior: Limited by software to 1920x1200 pixels
+   -  Kernel v5.4 and above:  Maximum frame size 65535 bytes x 16383 lines
 -  Pixel formats (output)
 
    -  Runtime pixel format availability is based on the sub-device capability
