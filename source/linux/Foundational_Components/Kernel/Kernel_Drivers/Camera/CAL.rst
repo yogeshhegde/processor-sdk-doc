@@ -134,19 +134,20 @@ its usage when interfacing with a video source.
 +=====================================================+=================================================+
 | ::                                                  | ::                                              |
 |                                                     |                                                 |
-|     cal {                                           |     ov490@24 {                                  |
-|         #address-cells = <1>;                       |         compatible = "ovti,ov490";              |
-|         #size-cells = <0>;                          |         reg = <0x24>                            |
+|     cal {                                           |     camera-sensor@3c {                          |
+|         #address-cells = <1>;                       |         compatible = "ovti,ov5640";             |
+|         #size-cells = <0>;                          |         reg = <0x3c>                            |
 |         status = "okay";                            |         ...                                     |
 |         ports {                                     |         port {                                  |
-|             #address-cells = <1>;                   |             csi2_cam0: endpoint@0 {             |
+|             #address-cells = <1>;                   |             csi2_cam0: endpoint {               |
 |             #size-cells = <0>;                      |                 clock-lanes = <0>;              |
-|                                                     |                 data-lanes = <1 2 3 4>;         |
+|                                                     |                 data-lanes = <1 2>;             |
 |             csi2_0: port@0 {                        |                 remote-endpoint = <&csi2_phy0>; |
 |                  reg = <0>;                         |             };                                  |
 |                  status = "okay";                   |         };                                      |
-|                  csi2_phy0: endpoint@0 {            |      };                                         |
-|                      slave-mode;                    |                                                 |
+|                  csi2_phy0: endpoint {              |      };                                         |
+|                      clock-lanes = <0>;             |                                                 |
+|                      data-lanes = <1 2>;            |                                                 |
 |                      remote-endpoint = <&csi2_cam0>;|                                                 |
 |                  };                                 |                                                 |
 |             };                                      |                                                 |
@@ -323,20 +324,20 @@ Check the bootlog for prints in the kernel bootlog.
 ::
 
     Check device probe status
-    dmesg | grep ov490
+    dmesg | grep ov5640
     dmesg | grep video
 
 Depending on the camera connected, the following prints can confirm the
 probe being successful.
 
-+-------------------------------------------------------+------------------------+
-| Bootlog print                                         | Result                 |
-+=======================================================+========================+
-| ov490 4-0024: ov490 Product ID 4 Manufacturer ID 99   | Camera probe success   |
-+-------------------------------------------------------+------------------------+
-| ov490 4-0024: Failed reading register 0x300a!         | Camera not connected   |
-| ov490: probe of 4-0024 failed with error -121         |                        |
-+-------------------------------------------------------+------------------------+
++---------------------------------------------------------------------+------------------------+
+| Bootlog print                                                       | Result                 |
++=====================================================================+========================+
+| cal-000: V4L2 device registered as video0                           | Camera probe success   |
++---------------------------------------------------------------------+------------------------+
+| ov5640 4-003c: ov5640_read_reg: error: reg=30                       | Camera not connected   |
+| ov5640 4-003c: ov5640_check_chip_id: failed to read chip identifier |                        |
++---------------------------------------------------------------------+------------------------+
 
 Alternatively you could also try to list all video devices:
 
@@ -383,7 +384,8 @@ perform all the I2C transactions to indicate sensor to start streaming.
 Failing to get the proper clock at this time indicates some issue in the
 camera configuration. Most cameras have a power pin driver by one of the
 GPIO, make sure that the subdev driver requests for this GPIO.
-|  One other cause maybe due to incorrect board mux or pinmux
+
+One other cause maybe due to incorrect board mux or pinmux
 configuration. It does not hurt to double check these.
 
 **Video is being captured but image is distorted**
