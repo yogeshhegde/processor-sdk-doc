@@ -163,9 +163,9 @@ The following layer types/Inference features are supported:
 
 During import process (described later), some operators or layers in a network model 
 will be coalesced or converted into TIDL layers listed above. The supported 
-operators/layers for Tensorflow/ONNX/Caffe are listed below.
+operators/layers for Tensorflow/TensorFlow Lite/ONNX/Caffe are listed below.
 
-**Supported TensorFlow and TensorFlow Lite operators and the corresponding TIDL layers:**
+**Supported TensorFlow operators and the corresponding TIDL layers:**
 
 +-----------------------+------------------------+
 | TensorFlow Operator   | TIDL Layer             |
@@ -205,6 +205,46 @@ operators/layers for Tensorflow/ONNX/Caffe are listed below.
 | Pad                   | TIDL_PadLayer          |
 +-----------------------+------------------------+
 | Mean                  | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+
+**Supported TensorFlow Lite operators and the corresponding TIDL layers:**
+
++-----------------------+------------------------+
+| TensorFlow Operator   | TIDL Layer             |
++=======================+========================+
+| Placeholder           | TIDL_DataLayer         |
++-----------------------+------------------------+
+| CONV_2D               | TIDL_ConvolutionLayer  |
++-----------------------+------------------------+
+| TRANSPOSE_CONV        | TIDL_Deconv2DLayer     |
++-----------------------+------------------------+
+| DEPTHWISE_CONV_2D     | TIDL_ConvolutionLayer  |
++-----------------------+------------------------+
+| ADD                   | TIDL_EltWiseLayer      |
++-----------------------+------------------------+
+| MUL                   | TIDL_ScaleLayer        |
++-----------------------+------------------------+
+| RELU                  | TIDL_ReLULayer         |
++-----------------------+------------------------+
+| RELU6                 | TIDL_ReLULayer         |
++-----------------------+------------------------+
+| MAX_POOL_2D           | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+| AVERAGE_POOL_2D       | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+| CONCATENATION         | TIDL_ConcatLayer       |
++-----------------------+------------------------+
+| RESHAPE               | See note below         |
++-----------------------+------------------------+
+| SOFTMAX               | TIDL_SoftMaxLayer      |
++-----------------------+------------------------+
+| ARG_MAX               | TIDL_ArgMaxLayer       |
++-----------------------+------------------------+
+| PAD                   | TIDL_PadLayer          |
++-----------------------+------------------------+
+| MEAN                  | TIDL_PoolingLayer      |
++-----------------------+------------------------+
+| FULLY_CONNECTED       | TIDL_InnerProductLayer |
 +-----------------------+------------------------+
 
 .. note::
@@ -699,6 +739,7 @@ TIDL import tool converts deep learning models to TI custom network format for e
 
    - Caffe
    - TensorFlow
+   - TensorFlow Lite
    - ONNX  
 
 The import process is done in two steps:
@@ -709,7 +750,7 @@ The import process is done in two steps:
 
 During import process, some operators or layers will be coalesced into one TIDL Layer (e.g. convolution and ReLU layer). This is done to further leverage EVE architecture which allows certain operations for free. Structure of converted (but equivalent) network can be checked using TIDL network viewer.
 
-The import tool (Linux x86 or Arm Linux port) imports the Model and Parameters trained using either Caffe frame work or TensorFlow frame work in PC, \
+The import tool (Linux x86 or Arm Linux port) imports the Model and Parameters trained using either Caffe frame work or TensorFlow frame work in PC, \ or converted from Tensorflow to TensorFlow Lite format,
 or written in ONNX format. This tool will accept various parameters through import configuration file and generate the Model and Parameter file that the code \
 will be executed using TIDL library across multiple EVE and DSP cores. The import configuration file is available in {TIDL_install_path}/test/testvecs/config/import
 
@@ -1256,6 +1297,7 @@ More recent versions of formats might be also supported, but not guaranteed.
 
   - Caffe: v1.0
   - Tensorflow: v1.12
+  - Tensorflow Lite: v1.15
   - ONNX runtime: v1.4
 
 Training
