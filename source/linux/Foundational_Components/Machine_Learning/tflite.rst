@@ -11,7 +11,7 @@ Curently, TensorFlow Lite runs on Arm for Sitara devices (AM3/AM4/AM5/AM6).
 Supported version
 ------------------
 
-  - TensorFlow Lite 1.12
+  - TensorFlow Lite 1.15
 
 TensorFlow Lite example applications
 -------------------------------------
