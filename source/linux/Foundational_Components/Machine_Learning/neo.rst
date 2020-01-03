@@ -18,10 +18,10 @@ run on Arm core.
 Examples
 --------
 
-Examples of running inference with Neo runtime are available in /usr/share/dlr
+Examples of running inference with Neo-AI-DLR are available in /usr/share/dlr
 of the target filesystem:
 
-- demos folder: contains examples of Neo runtime on top of TIDL, which can only
+- demos folder: contains examples of Neo-Ai-DLR on top of TIDL, which can only
   run on AM5729/49 devices. To run the examples, a neural network model must be
   compiled to generate runtime artifacts according to instructions in 
   :ref:`Compiling Network Models`. Once a model is compiled, copy the generated 
@@ -41,6 +41,9 @@ of the target filesystem:
       outScaleF2Q = 255.0
       outIsNCHW = 1
   ./do_tidl4.sh  <artifact_folder>
+
+For more information about running examples of Neo-Ai-DLR with TIDL, please refer
+to `Neo-ai-dlr Texas Instruments branch in github <https://github.com/TexasInstruments/neo-ai-dlr/tree/dev/examples/tidl>`__.
 
 - tests folder: contains examples of Neo runtime for ARM cores, which can run on
   any Sitara device. Go to folder python/integration and run the example (http_proxy 
