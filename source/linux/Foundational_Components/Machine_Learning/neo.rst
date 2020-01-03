@@ -30,9 +30,17 @@ of the target filesystem:
 :: 
 
   cd /usr/share/dlr/demos
-  scp -r <artifact_folder_on_host_machine> .
-  cp /usr/share/ti/tidl/examples/mobilenet_subgraph/subgraph0.cfg .
-  ./do_tidl4.sh  <artifacts folder>
+  Copy artifact, e.g. scp -r <artifact_folder_on_host_machine> .
+  Edit subgraph0.cfg and add the following lines at the end of the file:
+      inConvType = 0
+      inIsSigned = 1
+      inScaleF2Q = 128.0
+      inIsNCHW = 0
+      outConvType = 0
+      outIsSigned = 0
+      outScaleF2Q = 255.0
+      outIsNCHW = 1
+  ./do_tidl4.sh  <artifact_folder>
 
 - tests folder: contains examples of Neo runtime for ARM cores, which can run on
   any Sitara device. Go to folder python/integration and run the example (http_proxy 
