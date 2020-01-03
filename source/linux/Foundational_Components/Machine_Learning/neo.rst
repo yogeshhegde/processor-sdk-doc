@@ -21,7 +21,7 @@ Examples
 Examples of running inference with Neo-AI-DLR are available in /usr/share/dlr
 of the target filesystem:
 
-- demos folder: contains examples of Neo-Ai-DLR on top of TIDL, which can only
+- demos folder: contains examples of Neo-AI-DLR on top of TIDL, which can only
   run on AM5729/49 devices. To run the examples, a neural network model must be
   compiled to generate runtime artifacts according to instructions in 
   :ref:`Compiling Network Models`. Once a model is compiled, copy the generated 
@@ -30,7 +30,7 @@ of the target filesystem:
 :: 
 
   cd /usr/share/dlr/demos
-  Copy artifact, e.g. scp -r <artifact_folder_on_host_machine> .
+  Copy artifact, e.g. scp -r <TVM_on_host_machine>/apps/tidl_deploy/output4/mobileNet2 .
   Edit subgraph0.cfg and add the following lines at the end of the file:
       inConvType = 0
       inIsSigned = 1
@@ -40,7 +40,7 @@ of the target filesystem:
       outIsSigned = 0
       outScaleF2Q = 255.0
       outIsNCHW = 1
-  ./do_tidl4.sh  <artifact_folder>
+  ./do_tidl4.sh mobileNet2
 
 For more information about running examples of Neo-Ai-DLR with TIDL, please refer
 to `Neo-ai-dlr Texas Instruments branch in github <https://github.com/TexasInstruments/neo-ai-dlr/tree/dev/examples/tidl>`__.
@@ -87,7 +87,7 @@ to run the demo above is shown below:
 
 ::
 
-  python3 NeoTvmCodeGen.py mobileNet1
+  python3 NeoTvmCodeGen.py mobileNet2
 
 .. note::
 
