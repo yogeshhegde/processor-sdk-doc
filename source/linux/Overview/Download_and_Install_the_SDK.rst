@@ -30,10 +30,10 @@ Distribution name and version, Ubuntu |__LINUX_UBUNTU_VERSION_SHORT__|.
 Note this **does not** prevent the user from installing the SDK on other Linux
 distributions.
 
-.. rubric:: How to Get the SDK Installer
-   :name: how-to-get-the-sdk-installer
-
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    .. rubric:: How to Get the SDK Installer
+       :name: how-to-get-the-sdk-installer
 
     There are two ways you can get the installer:
 
@@ -54,14 +54,11 @@ distributions.
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
-    From a file downloaded from the `SDK download
-    page <http://www.ti.com/mysecuresoftware>`_.
-    This will always host the latest version of SDK.
+    .. rubric:: Downloading the SDK installer
+       :name: downloading-the-sdk-installer
 
-    .. note::
-       Make sure you have access to **mySecure Software** page.
-       If not, please contact TI field representative and 
-       request access to **mySecure Software** page.
+    You can download the latest |__SDK_FULL_NAME__| installer from the
+    `SDK download page <http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-jacinto7/latest/index_FDS.html>`__.
 
 .. rubric:: How to Run the SDK Installer
    :name: how-to-run-the-sdk-installer
@@ -130,3 +127,4 @@ The default selection of where to install is the user's home directory.
     .. Image:: ../../images/Processor_sdk_j7_select_directory.png
 
 
+After the installation, refer to section `Setting up host environment <Run_Setup_Scripts.html>`__ for next steps.
