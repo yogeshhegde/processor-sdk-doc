@@ -194,6 +194,42 @@ pixel rate (based on clocks, lanes and bits per pixels) available through the
 V4L2_CID_PIXEL_RATE control.  This value is required by the CAL driver to
 properly configure the DPHY.
 
+.. rubric:: How to calculate the pixel rate?
+   :name: pixel-rate
+
+.. seealso:: `MIPI CSI-2 Kernel API reference <https://www.kernel.org/doc/Documentation/media/kapi/csi2.rst>`_
+
+As you can see in the above link, typically the pixel rate is calculated as follows:
+::
+
+   pixel_rate = link_freq * 2 * nr_of_lanes / bits_per_sample
+
+The link frequency is usually computed from the sensor own PLL scheme/registers and is
+therefore sensor dependent. This is also the most accurate method.
+
+Alternatively, if you trust that your sensor is configured correctly for a
+specific resolution/pixel format and frame interval then the pixel rate can
+be calculated using this simplified formula:
+::
+
+   pixel_rate = total horizontal width * total vertical lines * frame per second
+
+Here total horizontal width and total vertical lines includes blanking.
+This information is also sensor dependent or at least configuration dependent.
+
+For example if we take a look at the ov5640 configuration for 1920x1080\@30 fps:
+::
+
+   total horizontal width = 2500
+   total vertical lines = 1120
+
+   pixel_rate = 2500 x 1120 x 30 = 84,000,000 pixels per second.
+
+Now sometime even though a "sensor config mode" is labelled as 1920x1080\@30
+there may be variation in the actual register configuration which would yield a
+slightly slower or faster frame rate.  This might be enough to make the DPHY
+handshake unsuccessful. Keep that in mind.
+
 Driver Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
