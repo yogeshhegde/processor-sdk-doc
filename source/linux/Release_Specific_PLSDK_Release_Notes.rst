@@ -177,7 +177,7 @@ Issues opened in previous releases that were closed on this release
 
    LCPD-16641,"am654x-evm, am654x-idk, am654x-hsevm, j721e-evm, j721e-evm-ivi",tidss: need to ensure the output width is divisible by 2
    LCPD-13587,am57xx-evm,dwc3: g_audio can only record once
-   LCPD-16707,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm",DRA7x: Off-by-one error while selecting OTV in tuning algorithm
+   LCPD-16707,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm", "DRA7x: Off-by-one error while selecting OTV in tuning algorithm"
    LCPD-15821,am654x-evm,AM6 tidss: 1680x1050 does not work with TC358767
    LCPD-17185,am57xx-evm,U-Boot does not have Extended Mode Register support for the TI DP83867 PHY driver
    LCPD-12470,,Analyze / fix klocwork warnings for TSCADC
@@ -193,13 +193,13 @@ Issues opened in previous releases that were closed on this release
    LCPD-15717,,[Klokworks uboot] Resolve or indicate false positives on drivers/mtd/spi/spi-nor-core.c
    LCPD-15712,,[Klokworks uboot] Resolve or indicate false positives on drivers/net/ti/cpsw.c
    LCPD-15721,,[Klokworks uboot] Resolve or indicate false positives on drivers/thermal/ti-bandgap.c
-   LCPD-15829,"am57xx-evm, am654x-evm",Android: VTS Execution Failure on Pie builds
    LCPD-16838,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am654x-idk",icss/icssg: prueth: PHY shouldn't advertise flow control
    PLSDK-3134,am572x-evm,NEO-AI DLR cannot be imported on the target
    PLSDK-2943,am572x-evm,Browser app crashes if EVM is connected to Internet
    PLSDK-3033,"am571x-idk,am572x-idk,am574x-idk",HSR mode PRP frames not forwarded
    PLSDK-3150,am654x-idk,icssg U-boot revert the interposer card related patches
-   PLSDK-3095,am571x-idk,am572x-idk,If nsp_credit is set to 0 storm prevention should be disabled
+   PLSDK-3095,"am571x-idk,am572x-idk",If nsp_credit is set to 0 storm prevention should be disabled
+
 |
 
 
@@ -335,7 +335,6 @@ U-Boot Known Issues
    :header: "Record ID","Platform", "Title","Workaround"
    :widths: 15, 30, 70, 30
 
-   LCPD-16592,"am654x-evm, am654x-idk",Unable to access MMC1 (SD Card) after UART-Based Boot,None
    LCPD-16524,"am654x-evm, am654x-idk, am654x-hsevm",Need to adjust RMW bit when using enabling ECC,None
    LCPD-16103,am654x-evm,AM6: MMC: Probe fail warning in bootloader,None
    LCPD-15873,am654x-evm,There is no dtbo in u-boot for PCIe x1 + usb3 daughter card,None
@@ -363,7 +362,6 @@ Linux Kernel Known Issues
    LCPD-17517,P3-Medium,Platform can't suspend due to IPU failing to suspend,IPC,,am57xx-evm,,
    LCPD-16534,P3-Medium,remoteproc/k3-r5f: PDK IPC echo_test image fails to do IPC in remoteproc mode on second run,IPC,Firmware,"am654x-evm, am654x-idk",None,
    LCPD-17779,P3-Medium,UART Read/Write tests fail,Connectivity,UART,"am57xx-evm, am654x-evm, dra7xx-evm, k2g-evm",,
-   LCPD-17698,P3-Medium,Am65x: Kernel: eMMC doesn't come up in the latest E4 evm,Connectivity,,"am654x-evm, am654x-idk",,
    LCPD-17529,P3-Medium,Could not access usbhost when booting from SD card,Connectivity,,am43xx-gpevm,,
    LCPD-17482,P3-Medium,Linux spi-ti-qspi driver does not properly support multiple MTD devices,Connectivity,SPI,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",,
    LCPD-17475,P3-Medium,Update PRUETH Single EMAC Bindings Documentation,Connectivity,,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am654x-idk, k2g-ice",,
@@ -399,7 +397,7 @@ Linux Kernel Known Issues
    LCPD-11952,P3-Medium,AM57x: disabling USB super-speed phy in DT causes kernel crash,Connectivity,USB,"am571x-idk, dra72x-evm",,
    LCPD-11564,P3-Medium,AM57xx-evm: eth1 1G connection failure to netgear switch,Connectivity,"CPSW, ETHERNET, PHYIF",am57xx-evm,,
    LCPD-10974,P3-Medium,am43xx-gpevm - usb camera gadget shows halting frames,Connectivity,USB,am43xx-gpevm,None,
-   LCPD-9905,P3-Medium,AM437x: UART: Implement workaround for Advisory 27 ? Spurious UART interrupts when using EDMA,Connectivity,UART,am43xx-gpevm,,
+   LCPD-9905,P3-Medium,AM437x: UART: Implement workaround for Advisory 27 - Spurious UART interrupts when using EDMA,Connectivity,UART,am43xx-gpevm,,
    LCPD-9366,P3-Medium,PCIe USB drive sometimes could not be enumerated,Connectivity,PCIe,k2g-evm,,
    LCPD-7623,P3-Medium,Seeing SPI transfer failed error sometimes on k2hk when using rt kernel,Connectivity,SPI,k2hk-evm,,
    LCPD-1106,P3-Medium,Connectivity:PCIe-SATA ext2 1G write performance is poor due to ata failed command,Connectivity,PCIe,"am57xx-evm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",None,
