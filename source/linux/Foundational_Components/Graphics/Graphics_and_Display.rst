@@ -232,7 +232,7 @@ The picture below shows the software architecture of Graphics in
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
-    .. figure:: ../../../images/Graphic_software_stacks_psdk202.png
+    .. figure:: ../../../images/Graphic_software_stacks_DRM.png
         :align: center
 
         Graphics Software Stack
@@ -297,10 +297,10 @@ Native_SDK examples.
 
     ::
 
-        target # /usr/bin/SGX/demos/Raw/OGLES2Coverflow
-        target # /usr/bin/SGX/demos/Raw/OGLES2ChameleonMan
-        target # /usr/bin/SGX/demos/Raw/OGLES2ExampleUI
-        target # /usr/bin/SGX/demos/Raw/OGLES2Navigation
+        target # /usr/bin/SGX/demos/DRM/OGLES2Coverflow
+        target # /usr/bin/SGX/demos/DRM/OGLES2ChameleonMan
+        target # /usr/bin/SGX/demos/DRM/OGLES2ExampleUI
+        target # /usr/bin/SGX/demos/DRM/OGLES2Navigation
 
     After you see the output on the display interface, hit *q* to terminate
     the application.

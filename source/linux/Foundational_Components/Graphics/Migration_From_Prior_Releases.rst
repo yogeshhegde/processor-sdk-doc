@@ -118,3 +118,30 @@ instruction at the command line or add the same at the QT environment
 configuration file qt\_env.sh at /etc/profile.d
 
 -  export QT\_QPA\_EGLFS\_INTEGRATION=none
+
+from Processor SDK 6.1 to 6.2 for AM3/4/5/6
+----------------------------------------------
+
+The SGX driver has been enhanced to replace IMG WSEGL with MESA-EGL which
+supports the essential EGL 1.5 extensions required by the latest versions
+of certain graphics applications such as Chromium browser. The System
+startup and most of the Graphics applications are backward-compatible except
+with the following changes.
+
+.. rubric:: Window System Libraries
+   :name: window-system-libraries-2
+
+With MESA-EGL, all window system modules are embedded in the libEGL.so, both
+GBM(DRM) full-screen and Wayland window systems are supposrted and dynamically
+invoked based on the application use case. The following IMG WSEGL libraries are
+no longer used and provided:
+
+-  libpvrDRMWSEGL.so
+-  libpvrGBMWSEGL.so
+-  libpvrws\_WAYLAND.so
+
+The QT QPA eglfs raw mode is no longer supported and thus should be replaced
+with eglfs_kms by setting the environment variable at the QT environment
+configuration file qt\_env.sh at /etc/profile.d
+
+-  export QT\_QPA\_EGLFS\_INTEGRATION=eglfs_kms
