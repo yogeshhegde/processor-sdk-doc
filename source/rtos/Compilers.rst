@@ -2,22 +2,26 @@
 Compilers
 ########################
 
+Compiler User's Guides are located at the links below. 
+
+Please refer to the Processor SDK `Release Notes <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_release_specific.html#release-notes>`__ to determine which version to use. 
+
 *********
 TI C6000
 *********
-- `TI C6000 Compilers <http://www.ti.com/lit/ug/sprui04b/sprui04b.pdf>`__
+- `TI C6000 Compilers <http://www.ti.com/tool/C6000-CGT>`__
 
 
 *******
 TI ARM
 *******
-- `TI ARM Compilers <http://www.ti.com/lit/ug/spnu151r/spnu151r.pdf>`__
+- `TI ARM Compilers <http://www.ti.com/tool/ARM-CGT>`__
 
 
 *******
 TI PRU
 *******
-- `TI PRU Compilers <http://www.ti.com/lit/ug/spruhv7b/spruhv7b.pdf>`__
+- `TI PRU Compilers <http://www.ti.com/tool/PRU-CGT>`__
 
 
 ***************
