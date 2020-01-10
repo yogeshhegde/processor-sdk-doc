@@ -63,7 +63,7 @@ Released January 2020
     - Support Standard Ethernet Switch over ICSS
     - Support Rapid Spanning Tree Protocol (RSTP) w/ cut-through offloaded to ICSS Switch
     - Support Telecomm profile (G.8275.2) Slave Mode on ICSS EMAC interface
-    - Support Early boot of IPUs, and late attach from ARM core. For more details see `here <Foundational_Components_IPC.html#ipc-early-boot-guide>`__
+    - Support Early boot of IPUs, and late attach from ARM core. For more details see `here <Foundational_Components_IPC.html#ipc-early-boot-for-am57xx-dra7xx>`__
 
 - AM65x:
     - ICSSG PRUETH: Support 100M Link Speed full duplex operation, in addition to 1G
