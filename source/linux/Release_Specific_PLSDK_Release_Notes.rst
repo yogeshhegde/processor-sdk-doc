@@ -124,7 +124,7 @@ U-Boot
 | Based on verson: 2019.01
 | URL: git.ti.com/processor-sdk/processor-sdk-u-boot.git
 | Branch: processor-sdk-u-boot-2019.01
-| Commit ID: 029e4c009aaeaee2d06aa8271dbd3a9e73a28aa7
+| Commit ID: a141f7abfd346f2e0e5a5864620d8f528436c860 
 
 |
 
@@ -135,10 +135,10 @@ Kernel
    :name: linux-kernel
 
 | The kernel git repository, branch and commit id can be found below:
-| Based on Version: 4.19.59
+| Based on Version: 4.19.79
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-4.19.y
-| Commit ID: 5f8c1c6121da785bbe7ecc5896877a2537b5d6eb 
+| Commit ID: 77dfab56c6029fc4bb85e3684950c54d541df110 
 
 |
 
@@ -147,12 +147,12 @@ Kernel
 
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
-| Kernel Version: 4.19.59
-| RT Kernel Version: 4.19.59-rt21
+| Kernel Version: 4.19.79
+| RT Kernel Version: 4.19.79-rt21
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-rt-4.19.y
-| Commit ID: 4203cb8c96070a94158d7b2b8e77edf1709ef3f7 
+| Commit ID: 5baf382c8f566e7ab46a144eed51b639dec32841  
 
 |
 
