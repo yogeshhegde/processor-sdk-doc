@@ -374,11 +374,11 @@ MCSPI
 |                 | "MCSPI_SlaveMod | | J5-Pin4(CS)---------J5-Pin4(CS)      |                 |                     |                     |
 |                 | e_SlaveExample_ | | J5-Pin2(DGND)-------J5-Pin2(DGND)    |                 |                     |                     |
 |                 | <BoardType><arm |                                        |                 |                     |                     |
-|                 | /c66x/m4>Exampl |                                        |                 |                     |                     |
-|                 | eProject"       |                                        |                 |                     |                     |
+|                 | /c66x/m4>Exampl | | **am65xx EVM/IDK:**                  |                 |                     |                     |
+|                 | eProject"       | | MCU1_0 (master) ====== MPU1_0(slave) |                 |                     |                     |
 |                 | first on Slave  |                                        |                 |                     |                     |
-|                 | EVM and then    |                                        |                 |                     |                     |
-|                 | "MCSPI_SlaveMode|                                        |                 |                     |                     |
+|                 | EVM and then    | | **J721e EVM:**                       |                 |                     |                     |
+|                 | "MCSPI_SlaveMode| | MCU1_0 (master) ====== MPU1_0(slave) |                 |                     |                     |
 |                 | _MasterExample  |                                        |                 |                     |                     |
 |                 | <BoardType>_<ar |                                        |                 |                     |                     |
 |                 | m/c66x/m4>Examp |                                        |                 |                     |                     |
@@ -398,7 +398,13 @@ MCSPI
 |                 | data transfer   |                                        |                 |                     |                     |
 |                 | is proper.      |                                        |                 |                     |                     |
 |                 |                 |                                        |                 |                     |                     |
-|                 |                 |                                        |                 |                     |                     |
+|                 | For AM6 or J7,  |                                        |                 |                     |                     |
+|                 | only one EVM is |                                        |                 |                     |                     |
+|                 | required. Slave |                                        |                 |                     |                     |
+|                 | is run on MPU1_0|                                        |                 |                     |                     |
+|                 | core and Master |                                        |                 |                     |                     |
+|                 | is run on MCU1_0|                                        |                 |                     |                     |
+|                 | core            |                                        |                 |                     |                     |
 +-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
 | MCSPI_SMP_Basic | Sample          |                                        | |               |      AM572x-EVM     | CCS project         |
 | Example         | Application     |                                        | | ** **         |                     |                     |
