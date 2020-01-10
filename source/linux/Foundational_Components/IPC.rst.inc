@@ -10,14 +10,13 @@ IPC Quick Start Guide
 ==================================
 .. include:: Foundational_Components/IPC/Quick_Start_Guide.rst.inc
 
-IPC Early Boot Guide
-==================================
-.. include:: Foundational_Components_Early_Boot.rst.inc
-
-
 IPC for AM57xx
 ==================================
 .. include:: Foundational_Components/IPC/IPC_for_AM57xx.rst.inc
+
+IPC Early Boot for AM57xx/DRA7xx
+==================================
+.. include:: Foundational_Components/IPC/IPC_Early_Boot.rst.inc
 
 IPC for AM65xx
 ==================================
