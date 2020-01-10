@@ -66,7 +66,7 @@ Released January 2020
     - Support Early boot of IPUs, and late attach from ARM core. For more details see `here <Foundational_Components_IPC.html#ipc-early-boot-guide>`__
 
 - AM65x:
-    - ICSSG PRUETH: Support 10M/100M Link Speed & half/full duplex operation, in addition to 1G
+    - ICSSG PRUETH: Support 100M Link Speed full duplex operation, in addition to 1G
     - Support SOC PRU PWM Interface
 
 - Graphics
