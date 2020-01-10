@@ -178,7 +178,7 @@ Building Android Filesystem (AFS)
     export KERNELDIR=~/ti-processor-sdk-android-am57xx-evm-<ver>/board-support/linux-<ver>/
     make -j8 clean
     . build/envsetup.sh
-    lunch am57xevm_full-userdebug
+    lunch beagle_x15-userdebug
     make -j8
 
 
