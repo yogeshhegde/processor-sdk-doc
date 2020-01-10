@@ -62,7 +62,7 @@ Released January 2020
     - Support Standard Ethernet Switch over ICSS
     - Support Rapid Spanning Tree Protocol (RSTP) w/ cut-through offloaded to ICSS Switch
     - Support Telecomm profile (G.8275.2) Slave Mode on ICSS EMAC interface
-    - Support Early boot of IPUs, and late attach from ARM core
+    - Support Early boot of IPUs, and late attach from ARM core. For more details see `here <Foundational_Components_IPC.html>`__
 
 - AM65x:
     - ICSSG PRUETH: Support 10M/100M Link Speed & half/full duplex operation, in addition to 1G
@@ -73,7 +73,7 @@ Released January 2020
     - Upgrade SGX DDK to support all required EGL 1.5-based extensions with Mesa-EGL instead of the traditional IMG WSEGL. 
     - Both Wayland and GBM(DRM) window systems are supported by Mesa-based EGL while the nullDRM window system is dropped
     - All the full-screen (EGLFS)-based applications have been updated to use GBM-based window system. 
-    - Please refer to the Graphics and Display section at the developer guide for details.
+    - Please refer to the Graphics and Display section at the developer guide for details. See `here <Foundational_Components_Graphics.html>`__
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -356,7 +356,7 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround", "Impact"
    :widths: 5, 10, 70, 10, 5, 20, 35, 20
 
-   LCPD-17648,P2-High,ICSSG: Periodic packet loss seen at as low as 30Mbits/sec over 100M Full Duplex Link,Connectivity,,am654x-idk,,
+   LCPD-17648,P2-High,ICSSG: Periodic packet loss seen at as low as 30Mbits/sec over 100M Full Duplex Link,Connectivity,,am654x-idk,"Use rate of 20Mbits/sec for 0 packet loss",
    LCPD-17305,P2-High,ICSSG PRUETH: kernel crash when eth1 & eth3 connected and ifconfig up/down,Connectivity,,am654x-idk,,
    LCPD-16877,P3-Medium,ti-ipc-examples-linux intermittent build failure,"IPC, System Integration",,k2hk-evm,,
    LCPD-17517,P3-Medium,Platform can't suspend due to IPU failing to suspend,IPC,,am57xx-evm,,
