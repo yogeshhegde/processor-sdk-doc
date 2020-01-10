@@ -13,6 +13,11 @@ of the Processor SDK for Linux.
 Processor SDK 06.xx Releases
 ============================
 
+Processor SDK 06.02
+---------------------
+- This is a quarterly update release on 2019 LTS stream.
+- The SGX driver has been enhanced to replace IMG WSEGL with MESA-EGL which supports the essential EGL 1.5 extensions required by the latest versions of certain graphics applications such as Chromium browser. See `here <Foundational_Components/Graphics/Migration_From_Prior_Releases.html#from-processor-sdk-6-1-to-6-2-for-am3-4-5-6>`__ for more details about compatability 
+
 Processor SDK 06.01
 ---------------------
 - This is a quarterly update release on 2019 LTS stream. 

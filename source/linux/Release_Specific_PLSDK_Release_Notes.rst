@@ -73,7 +73,7 @@ Released January 2020
     - Upgrade SGX DDK to support all required EGL 1.5-based extensions with Mesa-EGL instead of the traditional IMG WSEGL. 
     - Both Wayland and GBM(DRM) window systems are supported by Mesa-based EGL while the nullDRM window system is dropped
     - All the full-screen (EGLFS)-based applications have been updated to use GBM-based window system. 
-    - Please refer to the Graphics and Display section at the developer guide for details. See `here <Foundational_Components_Graphics.html>`__
+    - Please refer to the Graphics and Display section at the developer guide for details. See `here <Foundational_Components/Graphics/Migration_From_Prior_Releases.html#from-processor-sdk-6-1-to-6-2-for-am3-4-5-6>`__
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
