@@ -51,6 +51,7 @@ Released January 2020
 .. rubric:: What's New
    :name: whats-new
 
+- Processor SDK 6.2 Release is limited to AM5 and AM6 platforms w/ Linux OS, and has following new features:
 - Analytics
     - Support new platform Beaglebone-AI (BB-AI)
     - Support AM5729 IDK, with 4xEVE
