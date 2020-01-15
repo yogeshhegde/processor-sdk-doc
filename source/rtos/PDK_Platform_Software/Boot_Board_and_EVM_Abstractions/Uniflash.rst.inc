@@ -29,33 +29,35 @@ Supported Platforms
 Below table shows the platforms supported by Uniflash and flash devices supported on each platform.
 Download mode indicates the mode of communication for downloading flash programmer to target platform.
 
-+----------------+----------------+------------------+---------------+------+------+--------------+
-|      SOC       |    SOC Core    |    PLATFORM      |    FLASH DEVICE             |DOWNLOAD MODE |
-|                |                |                  +-------+-------+------+------+------+-------+
-|                |                |                  | SPI   | QSPI  | OSPI | EMMC | UART | JTAG  |
-+================+================+==================+=======+=======+======+======+======+=======+
-| AM335x         | Cortex-A8      | AM335x GP EVM    |   X   |       |      |      |   X  |   X   |
-|                |                +------------------+-------+-------+------+------+------+-------+
-|                |                | AM335x ICEv2     |   X   |       |      |      |      |   X   |
-|                |                +------------------+-------+-------+------+------+------+-------+
-|                |                | AMIC110 ICE      |   X   |       |      |      |   X  |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------+-------+
-| AM437x         | Cortex-A9      | AM437x IDK       |       |   X   |      |      |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------+-------+
-| AM571x         | Cortex-A15     | AM571x IDK       |       |   X   |      |      |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------+-------+
-| AM572x         | Cortex-A15     | AM572x IDK       |       |   X   |      |      |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------+-------+
-| AM574x         | Cortex-A15     | AM574x IDK       |       |   X   |      |      |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------+-------+
-| K2G            | Cortex-A15     | K2G GP EVM       |       |   X   |      |      |      |   X   |
-|                |                +------------------+-------+-------+------+------+------+-------+
-|                |                | K2G ICE          |       |   X   |      |      |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------+-------+
-| AM65XX         | Cortex-R5      | AM65xx EVM       |       |       |   X  |   X  |   X  |  XX   |
-|                |                +------------------+-------+-------+------+------+------+-------+
-|                |                | AM65xx IDK       |       |       |   X  |   X  |   X  |  XX   |
-+----------------+----------------+------------------+-------+-------+------+------+------+-------+
++----------------+----------------+------------------+---------------+------+------+------------+--------------+
+|      SOC       |    SOC Core    |    PLATFORM      |    FLASH DEVICE                          |DOWNLOAD MODE |
+|                |                |                  +-------+-------+------+------+------------+------+-------+
+|                |                |                  | SPI   | QSPI  | OSPI | EMMC | HyperFlash | UART | JTAG  |
++================+================+==================+=======+=======+======+======+============+======+=======+
+| AM335x         | Cortex-A8      | AM335x GP EVM    |   X   |       |      |      |            |   X  |   X   |
+|                |                +------------------+-------+-------+------+------+------------+------+-------+
+|                |                | AM335x ICEv2     |   X   |       |      |      |            |      |   X   |
+|                |                +------------------+-------+-------+------+------+------------+------+-------+
+|                |                | AMIC110 ICE      |   X   |       |      |      |            |   X  |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
+| AM437x         | Cortex-A9      | AM437x IDK       |       |   X   |      |      |            |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
+| AM571x         | Cortex-A15     | AM571x IDK       |       |   X   |      |      |            |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
+| AM572x         | Cortex-A15     | AM572x IDK       |       |   X   |      |      |            |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
+| AM574x         | Cortex-A15     | AM574x IDK       |       |   X   |      |      |            |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
+| K2G            | Cortex-A15     | K2G GP EVM       |       |   X   |      |      |            |      |   X   |
+|                |                +------------------+-------+-------+------+------+------------+------+-------+
+|                |                | K2G ICE          |       |   X   |      |      |            |      |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
+| AM65XX         | Cortex-R5      | AM65xx EVM       |       |       |   X  |   X  |            |   X  |  XX   |
+|                |                +------------------+-------+-------+------+------+------------+------+-------+
+|                |                | AM65xx IDK       |       |       |   X  |   X  |            |   X  |  XX   |
++----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
+| J721E          | Cortex-R5      | J721E EVM        |       |   X   |   X  |   X  |     X      |   X  |  XX   |
++----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
 
 
 where,
@@ -190,7 +192,7 @@ For Linux
 ::
 
         # cd <Path to Uniflash Root Folder>
-        # sudo ./dslite.sh --mode processors -c <COM Port> -f <Flash Programmer Binary with Full Path>
+        # sudo ./dslite.sh --mode processors -c <COM Port> -f <Flash Programmer Binary with Full Path> -i 0
         Example:
         # sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <Uniflash Root>/processors/FlashWriter/am65xx_evm/uart_am65xx_evm_flash_programmer.tiimage -i 0
 
@@ -462,16 +464,17 @@ AM335x
 """"""""
  - Make sure the Profile Selection switch on AM335x GP EVM is set to Profile#2 while programming SPI flash
 
-AM65xx
-"""""""
- - Flash programmer requires system firmware while downloading the flash programmer through UART. Uniflash host CLI
-   loads the system firmware automatically while loading the flash programmer on AM65x platform.
+AM65xx/J721E
+"""""""""""""
+ - Flash programmer requires system firmware while downloading the flash programmer through UART on AM65xx and J721E platforms. 
+   Uniflash host CLI loads the system firmware automatically while loading the flash programmer on these platforms.
    Flash programmer and system firmware binary (sysfw.bin) should be kept in the same folder for succesful downloading
    of flash programmer and system firmware.
 
  - System firmware should be loaded through CCS script while loading the flash programmer through JTAG.
-   Refer the `EVM CCS Setup Documentation <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`__
-   for details of setting up the CCS target configuration for system firmware load.
+   Refer the EVM CCS Setup Documentation section below for details of setting up the CCS target configuration with system firmware download.
+    - `AM65xx <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`__
+    - J721E
 
 
 Rebuilding Board-utils
