@@ -182,6 +182,6 @@ Rebuilding AppLoader
 Apploader pre-built binaries are currently not available for OMAPL137/L138 platforms.
 Binaries needs to be manually built for these platforms.
 
-Refer :ref:`rebuild-board_utils` section to build Apploader.
+Refer `Rebuilding Board Utils <index_board.html#rebuilding-board-utils>`__ section to build Apploader.
 
 .. raw:: html
