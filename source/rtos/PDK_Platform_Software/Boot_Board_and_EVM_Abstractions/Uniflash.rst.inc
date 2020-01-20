@@ -29,41 +29,42 @@ Supported Platforms
 Below table shows the platforms supported by Uniflash and flash devices supported on each platform.
 Download mode indicates the mode of communication for downloading flash programmer to target platform.
 
-+----------------+----------------+------------------+---------------+------+------+------------+--------------+
-|      SOC       |    SOC Core    |    PLATFORM      |    FLASH DEVICE                          |DOWNLOAD MODE |
-|                |                |                  +-------+-------+------+------+------------+------+-------+
-|                |                |                  | SPI   | QSPI  | OSPI | EMMC | HyperFlash | UART | JTAG  |
-+================+================+==================+=======+=======+======+======+============+======+=======+
-| AM335x         | Cortex-A8      | AM335x GP EVM    |   X   |       |      |      |            |   X  |   X   |
-|                |                +------------------+-------+-------+------+------+------------+------+-------+
-|                |                | AM335x ICEv2     |   X   |       |      |      |            |      |   X   |
-|                |                +------------------+-------+-------+------+------+------------+------+-------+
-|                |                | AMIC110 ICE      |   X   |       |      |      |            |   X  |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
-| AM437x         | Cortex-A9      | AM437x IDK       |       |   X   |      |      |            |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
-| AM571x         | Cortex-A15     | AM571x IDK       |       |   X   |      |      |            |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
-| AM572x         | Cortex-A15     | AM572x IDK       |       |   X   |      |      |            |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
-| AM574x         | Cortex-A15     | AM574x IDK       |       |   X   |      |      |            |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
-| K2G            | Cortex-A15     | K2G GP EVM       |       |   X   |      |      |            |      |   X   |
-|                |                +------------------+-------+-------+------+------+------------+------+-------+
-|                |                | K2G ICE          |       |   X   |      |      |            |      |   X   |
-+----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
-| AM65XX         | Cortex-R5      | AM65xx EVM       |       |       |   X  |   X  |            |   X  |  XX   |
-|                |                +------------------+-------+-------+------+------+------------+------+-------+
-|                |                | AM65xx IDK       |       |       |   X  |   X  |            |   X  |  XX   |
-+----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
-| J721E          | Cortex-R5      | J721E EVM        |       |   X   |   X  |   X  |     X      |   X  |  XX   |
-+----------------+----------------+------------------+-------+-------+------+------+------------+------+-------+
++----------------+----------------+------------------+---------------+------+------+---------------------------+
+|      SOC       |    SOC Core    |    PLATFORM      |    FLASH DEVICE             |       DOWNLOAD MODE       |
+|                |                |                  +-------+-------+------+------+------+--------------------+
+|                |                |                  | SPI   | QSPI  | OSPI | EMMC | UART |       JTAG         |
+|                |                |                  |       |       |      |      |      +------------+-------+
+|                |                |                  |       |       |      |      |      |Uniflash CLI| Manual|
++================+================+==================+=======+=======+======+======+======+============+=======+
+| AM335x         | Cortex-A8      | AM335x GP EVM    |   X   |       |      |      |   X  |     X      |       |
+|                |                +------------------+-------+-------+------+------+------+------------+-------+
+|                |                | AM335x ICEv2     |   X   |       |      |      |      |     X      |       |
+|                |                +------------------+-------+-------+------+------+------+------------+-------+
+|                |                | AMIC110 ICE      |   X   |       |      |      |   X  |     X      |       |
++----------------+----------------+------------------+-------+-------+------+------+------+------------+-------+
+| AM437x         | Cortex-A9      | AM437x IDK       |       |   X   |      |      |      |     X      |       |
++----------------+----------------+------------------+-------+-------+------+------+------+------------+-------+
+| AM571x         | Cortex-A15     | AM571x IDK       |       |   X   |      |      |      |     X      |       |
++----------------+----------------+------------------+-------+-------+------+------+------+------------+-------+
+| AM572x         | Cortex-A15     | AM572x IDK       |       |   X   |      |      |      |     X      |       |
++----------------+----------------+------------------+-------+-------+------+------+------+------------+-------+
+| AM574x         | Cortex-A15     | AM574x IDK       |       |   X   |      |      |      |     X      |       |
++----------------+----------------+------------------+-------+-------+------+------+------+------------+-------+
+| K2G            | Cortex-A15     | K2G GP EVM       |       |   X   |      |      |      |     X      |       |
+|                |                +------------------+-------+-------+------+------+------+------------+-------+
+|                |                | K2G ICE          |       |   X   |      |      |      |     X      |       |
++----------------+----------------+------------------+-------+-------+------+------+------+------------+-------+
+| AM65XX         | Cortex-R5      | AM65xx EVM       |       |       |   X  |   X  |   X  |            |   X   |
+|                |                +------------------+-------+-------+------+------+------+------------+-------+
+|                |                | AM65xx IDK       |       |       |   X  |   X  |   X  |            |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------+------------+-------+
+| J721E          | Cortex-R5      | J721E EVM        |       |   X   |   X  |   X  |   X  |            |   X   |
++----------------+----------------+------------------+-------+-------+------+------+------+------------+-------+
 
 
 where,
 
  - X  : Supported
- - XX : Manual JTAG mode
  
 .. note:: For the platforms which support both UART and JTAG mode, UART is the recommended mode for
           downloading flash programmer. JTAG mode is supported along with UART for debug purpose.
@@ -381,7 +382,13 @@ For Linux
 Refer to `Uniflash Command Options <index_board.html#command-options>`__ for more details on command parameters.
 
 Uniflash CLI shows the progress of file transfer on the command console.
-Following is the sample output on Windows.
+
+.. note::
+   Multiple images like bootloader, system firmware and application etc should be flashed to get the application
+   booting from the boot device. Refer to the bootloader documentation for more details on images and offsets for
+   each image to be flash.
+
+Following is the sample output for flashing RTOS application images on AM65xx platform.
 
 ::
 
@@ -403,6 +410,47 @@ Following is the sample output on Windows.
         Header Transfer Complete!
 
         Flashing Image of size 155614 bytes
+        Flash Programming Success!
+        
+        
+        C:\ti\uniflash_5.2.0\dslite --mode processors -c COM10 -f C:\ti\pdk_am65xx_1_0_6\packages\ti\drv\sciclient\soc\V0\sysfw.bin -d 3 -o 40000
+        Executing the following command:
+        > C:\ti\uniflash_5.2.0\processors\ProcessorSDKSerialFlash.exe -c COM10 -f C:\ti\pdk_am65xx_1_0_6\packages\ti\drv\sciclient\soc\V0\sysfw.bin -d 3 -o 40000
+
+        For more details and examples, please refer to the UniFlash Quick Start guide.
+
+
+        ----------------------------------------------------------------------------
+        ProcessorSDKSerialFlash CLI Tool
+        Copyright (C) 2017-2019 Texas Instruments Incorporated - http://www.ti.com/
+        Version 1.2.0.0
+        ----------------------------------------------------------------------------
+        Transferring the Image to Flash Programmer..
+
+        Transferring Header Information..
+        Header Transfer Complete!
+
+        Flashing Image of size 263083 bytes
+        Flash Programming Success!
+
+
+        C:\ti\uniflash_5.2.0\dslite --mode processors -c COM10 -f C:\ti\pdk_am65xx_1_0_6\packages\ti\board\bin\am65xx_evm\sd\armv8\led_TEST -d 3 -o A0000
+        > C:\ti\uniflash_5.2.0\processors\ProcessorSDKSerialFlash.exe -c COM10 -f C:\ti\pdk_am65xx_1_0_6\packages\ti\board\bin\am65xx_evm\sd\armv8\led_TEST -d 3 -o A0000
+
+        For more details and examples, please refer to the UniFlash Quick Start guide.
+
+
+        ----------------------------------------------------------------------------
+        ProcessorSDKSerialFlash CLI Tool
+        Copyright (C) 2017-2019 Texas Instruments Incorporated - http://www.ti.com/
+        Version 1.2.0.0
+        ----------------------------------------------------------------------------
+        Transferring the Image to Flash Programmer..
+
+        Transferring Header Information..
+        Header Transfer Complete!
+
+        Flashing Image of size 72360 bytes
         Flash Programming Success!
 
 
