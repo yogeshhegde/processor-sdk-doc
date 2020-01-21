@@ -357,19 +357,3 @@ Additional References
 | Software design Specification     | $(TI_PDK_INSTALL_DIR)\\packages\\ti    |
 |                                   | \\drv\\mcasp\\docs\\MCASP_LLD_SDS.pdf  |
 +-----------------------------------+----------------------------------------+
- 
-Templates used on this page:
-
-Return to Processor SDK RTOS MCASP.
-
-Navigation menu Log inRequest accountPageDiscussionReadView sourceView
-history
-
-Search Go Main Page All pages All categories Recent changes Random page
-Help Toolbox What links here Related changes Special pages Page
-information This page has been accessed 927 times. Privacy policyAbout
-Texas Instruments WikiDisclaimersTerms of UseCreative Commons
-Attribution-ShareAlike Powered by MediaWiki
-
-
-| 
