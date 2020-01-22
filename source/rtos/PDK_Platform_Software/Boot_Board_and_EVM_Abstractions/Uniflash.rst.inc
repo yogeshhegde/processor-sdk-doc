@@ -197,6 +197,7 @@ For Linux
         Example:
         # sudo ./dslite.sh --mode processors -c /dev/ttyUSB1 -f <Uniflash Root>/processors/FlashWriter/am65xx_evm/uart_am65xx_evm_flash_programmer.tiimage -i 0
 
+.. note:: Specifying the image type with -i option is mandatory while downloading the flash programmer.
 
 Uniflash CLI shows the progress of file transfer on the command console.
 Following is the sample output for downloading Flash programmer over UART.
@@ -385,8 +386,7 @@ Uniflash CLI shows the progress of file transfer on the command console.
 
 .. note::
    Multiple images like bootloader, system firmware and application etc should be flashed to get the application
-   booting from the boot device. Refer to the bootloader documentation for more details on images and offsets for
-   each image to be flash.
+   booting from the boot device. Refer to the `FAQ section <index_board.html#uniflash-faq>`__ for additional references.
 
 Following is the sample output for flashing RTOS application images on AM65xx platform.
 
@@ -524,6 +524,37 @@ AM65xx/J721E
     - `AM65xx <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`__
     - J721E
 
+Uniflash FAQ
+^^^^^^^^^^^^^
+#  How do I confirm my HW setup is proper for image download over UART?
+   Board should be configured for UART boot mode for downloading the images over UART.
+   RoM bootloader sends a character 'C' at regular intervals on serial port in UART boot mode.
+   Connect a serial console application on host PC to the UART port used for booting and veirfy 
+   the character 'C' is getting displayed, which confirms the HW setup needed for image download over UART is proper.
+
+#  How do I verify which COM number to be used for Uniflash image download?
+   There may be multiple UART ports supported on the board but Uniflash image download happens on
+   one specific UART port which is meant for UART boot.
+   RoM bootloader and Uniflash flash programmer sends a character 'C' at regular intervals
+   on the UART port used for image download. COM port number to be used for image download 
+   can be identified by checking for the character 'C' displayed on host PC.
+
+#  I am running Uniflash on Windows host and Uniflash CLI is not able to open COM port. What could be the reason?
+   Some of the serial console application like TeraTerm on Windows changes the COM port settings which
+   causes the COM port open failure from Uniflash. Disconnect the UART cable and reconnet before running 
+   the Uniflash commands everytime a serial console application is used to access the COM port on Windows.
+
+#  Should the flash device be erased using Uniflash erase command before flashing the images?
+   No, Uniflash Erase command is provided to explicity erase the images on the flash device.
+   Uniflash flash programmer erases the flash by default before flashing the images.
+
+#  What all the images that need to be flashed to get my application boot?
+   It depends on the SoC flamily and OS being used by the application.
+   In general, a secondary bootloader, any configuration files needed for system configuration and an application image
+   are the minimum images that need to be flashed for booting to happen.
+   Refer below documentation for more details
+    * `RTOS <index_Foundational_Components.html#boot>`__
+    * `Linux <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_U-Boot.html#u-boot>`__
 
 Rebuilding Board-utils
 ^^^^^^^^^^^^^^^^^^^^^^
