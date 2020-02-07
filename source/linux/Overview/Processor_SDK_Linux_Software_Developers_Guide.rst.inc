@@ -20,9 +20,9 @@ suggestions <Feedback>`.
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
     | `Release Notes <Release_Specific_PLSDK_Release_Notes.html>`_           | `Migration Guide`_                                                            |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | `GPLv3 Disclaimer`_                                                    | `MCSDK to Processor SDK Migration Guide`_                                     |
+    | `GPLv3 Disclaimer`_                                                    | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | `Technical Support`_                                                   | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
+    | `Technical Support`_                                                   |                                                                               |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
@@ -52,7 +52,6 @@ suggestions <Feedback>`.
 .. _Linux Software Stack: Overview_Software_Stack.html
 .. _Embedded Linux System: Overview_Software_Stack.html
 .. _Migration Guide: Release_Specific_Migration_Guide.html
-.. _MCSDK to Processor SDK Migration Guide: Release_Specific_Migration_Guide.html#mcsdk-to-processor-sdk-migration-guide
 .. _How To Guides: How_to_Guides.html
 .. _Processor SDK Linux How-To Guides: How_to_Guides.html
 .. _Linux SDK Software Developer's Guide: index.html
@@ -101,6 +100,29 @@ suggestions <Feedback>`.
     .. _Machine Learning: Foundational_Components_Machine_Learning.html
     .. _ATF: Foundational_Components_ATF.html
     .. _OPTEE: Foundational_Components_OPTEE.html
+
+
+.. ifconfig:: CONFIG_part_family in ('AM335X_family')
+
+    +-----------------------+-----------------------+-------------------------+------------+
+    | **Foundational Components** (more information on each piece of the distribution)     |
+    +=======================+=======================+=========================+============+
+    | `U-Boot`_             | `Kernel`_             | `Filesystem`_           | `Tools`_   |
+    +-----------------------+-----------------------+-------------------------+------------+
+    | `Graphics & Display`_ | `Examples, Demos`_    | `PRU-ICSS / PRU_ICSSG`_ |            |
+    +-----------------------+-----------------------+-------------------------+------------+
+
+    .. _U-Boot: Foundational_Components_U-Boot.html
+    .. _Processor SDK Linux U-Boot: Foundational_Components_U-Boot.html
+    .. _Kernel: Foundational_Components_Kernel.html
+    .. _Processor SDK Linux Kernel: Foundational_Components_Kernel.html
+    .. _Filesystem: Foundational_Components_Filesystem.html
+    .. _Processor SDK Linux Filesystem: Foundational_Components_Filesystem.html
+    .. _Tools: Foundational_Components_Tools.html
+    .. _Processor SDK Linux Tools: Foundational_Components_Tools.html
+    .. _Graphics & Display: Foundational_Components_Graphics.html
+    .. _Examples, Demos: Examples_and_Demos.html
+    .. _PRU-ICSS / PRU_ICSSG: Foundational_Components_PRU-ICSS_PRU_ICSSG.html
 
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')

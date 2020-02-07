@@ -11,7 +11,7 @@ components provided with the Processor SDK for Linux.
    **Availability of certain applications are platform dependent
    and clarified in the associated User Guides.**
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
 
    .. Image:: ../images/Processor_SDK_linux_stack_v3.png
 

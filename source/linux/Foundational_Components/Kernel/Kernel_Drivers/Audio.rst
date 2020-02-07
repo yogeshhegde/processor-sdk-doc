@@ -38,7 +38,7 @@ In most cases ``-Dplughw:0,0`` is the device we want to use for audio
 but in case we have several audio devices (onboard + USB for example)
 one need to specify which device to use for audio:
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
 
     ``-Dplughw:omap5uevm,0`` will use the onboard audio on OMAP5-uEVM
     board.
@@ -241,7 +241,7 @@ Board-specific instructions
         amixer -c DRA7xxEVM sset 'Right PGA Mixer Mic3R' on             # Analog mic Right enable
         amixer -c DRA7xxEVM sset 'PGA' 40                               # Adjust Capture volume
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family')
 
     .. rubric:: AM335x EVM
        :name: am335x-evm-audio
@@ -291,7 +291,7 @@ Board-specific instructions
         amixer sset 'Left Line1L Mux' differential
         amixer sset 'Right Line1R Mux' differential
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family')
 
     .. rubric:: AM335x EVM-SK
        :name: am335x-evm-sk
@@ -703,7 +703,7 @@ Additional Information
 .. rubric:: Software Help
    :name: additional-information-software-help
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
 
     #. `Tools and Techniques for Audio Debugging
        <https://www.ti.com/lit/an/sprac10/sprac10.pdf>`__
@@ -718,7 +718,7 @@ Additional Information
 .. rubric:: Audio hardware codecs
    :name: additional-information-audio-hardware-codecs
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
 
     #. `TLV320AIC31 - Low-Power Stereo CODEC with HP
        Amplifier <http://www.ti.com/lit/ds/symlink/tlv320aic31.pdf>`__

@@ -14,11 +14,13 @@ TVM runtime, TensorFlow Lite, Arm NN, and RNN library.
 
     Sitara Machine Learnining Offering
 
-.. rubric:: `TI Deep Learning (TIDL) <Foundational_Components/Machine_Learning/tidl.html>`__
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
-* Accelerates deep learning inference on C66x DSP cores and/or on Embedded Vision Engine (EVE) subsystems.
-* Available on AM57x device only.
-* Supports CNN at the moment, and imports Caffe, ONNX, and Tensorflow models.
+        .. rubric:: `TI Deep Learning (TIDL) <Foundational_Components/Machine_Learning/tidl.html>`__
+
+        * Accelerates deep learning inference on C66x DSP cores and/or on Embedded Vision Engine (EVE) subsystems.
+        * Available on AM57x device only.
+        * Supports CNN at the moment, and imports Caffe, ONNX, and Tensorflow models.
 
 .. rubric:: `Neo-AI Deep Learning Runtime (DLR) <Foundational_Components/Machine_Learning/neo.html>`__
 * Neo-AI-DLR is a new open source machine learning runtime for on-device inference.

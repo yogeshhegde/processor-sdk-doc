@@ -20,7 +20,7 @@ Replacement Variables
 '__SDK_SHORT_NAME__'             : 'PRSDK'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-rtos-[platform]-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : '<HOME>/ti'
-'__SDK_DOWNLOAD_URL__'           : '`AM57xx-RTOS-SDK-Download-page <http://software-dl.ti.com/processor-sdk-rtos/esd/AM57X/latest/index_FDS.html>`__'
+'__SDK_DOWNLOAD_URL__'           : '`AM335X-RTOS-SDK-Download-page <http://software-dl.ti.com/processor-sdk-rtos/esd/AM335X/latest/index_FDS.html>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '18.04 (64-bit)'
