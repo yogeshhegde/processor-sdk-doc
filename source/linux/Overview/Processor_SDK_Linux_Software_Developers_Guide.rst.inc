@@ -62,7 +62,8 @@ suggestions <Feedback>`.
 .. _SD Card using parition tarballs: Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-partition-tarballs
 .. _Examples and Demos: Examples_and_Demos.html
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
     +---------------+--------------------+-------------------------+----------------------------+
     | **Foundational Components** (more information on each piece of the distribution)          |
