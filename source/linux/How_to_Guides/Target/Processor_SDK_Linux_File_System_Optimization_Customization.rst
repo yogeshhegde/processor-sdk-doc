@@ -4,7 +4,7 @@ SDK File System Optimization/Customization
 ==========================================
 
 .. rubric:: Purpose
-   :name: purpose
+   :name: rootfs-optimization-purpose
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 

@@ -26,7 +26,7 @@ The following sections cover the Rules.make file found in the top-level
 of the |__SDK_FULL_NAME__| package.
 
 .. rubric:: Purpose
-   :name: purpose
+   :name: top-level-makefile-purpose
 
 The **Rules.make** file in the top-level of the |__SDK_FULL_NAME__| package is
 used not only by the top-level Makefile, but also by many of the
