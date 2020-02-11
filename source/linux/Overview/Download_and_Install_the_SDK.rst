@@ -5,7 +5,7 @@ Download and Install the SDK
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Installer
 .. rubric:: Overview
-   :name: overview
+   :name: download-and-install-sdk-overview
 
 The |__SDK_FULL_NAME__| Installer (|__SDK_INSTALL_FILE__|)
 will install the necessary components to start your development on the

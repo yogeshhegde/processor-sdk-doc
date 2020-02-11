@@ -5,7 +5,7 @@ GCC ToolChain
 
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_GCC_Toolchain
 .. rubric:: Overview
-   :name: overview
+   :name: gcc-overview
 
 The |__SDK_FULL_NAME__| package contains an ARM-based toolchain for Cortex
 A devices. The ARM toolchain also enables hardware floating point

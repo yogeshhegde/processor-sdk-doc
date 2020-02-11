@@ -5,7 +5,7 @@ Top-Level Makefile
 
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_Top-Level_Makefile
 .. rubric:: Overview
-   :name: overview
+   :name: top-level-makefile-overview
 
 Inside of the |__SDK_FULL_NAME__| package, there is a top-level Makefile that can
 be used to build some of the sub-components found within the SDK. This
