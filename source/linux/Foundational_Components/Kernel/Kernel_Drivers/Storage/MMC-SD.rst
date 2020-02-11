@@ -82,7 +82,7 @@ Features
    -  Uses block bounce buffer to aggregate scattered blocks
    
    .. rubric:: **Features NOT supported**
-      :name: features-not-supported
+      :name: MMC-features-not-supported
    
    | Following features are not supported currently:
    

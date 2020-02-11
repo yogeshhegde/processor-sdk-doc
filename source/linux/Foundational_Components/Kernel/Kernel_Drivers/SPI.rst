@@ -36,7 +36,7 @@ SPI
 +--------------+-----------+
 
 .. rubric:: Features Not Supported
-   :name: features-not-supported
+   :name: SPI-features-not-supported
 
 Below contains a list of features not supported by the Linux driver.
 Note this isn't meant to be an exhaustive list and only takes into
