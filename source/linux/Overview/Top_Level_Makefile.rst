@@ -99,7 +99,7 @@ makefile targets.
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
     .. rubric:: Compiler toolchain
-    :name: compiler-toolchain
+       :name: compiler-toolchain
 
     On the download page, you will find links to the recommended compiler toolchains.
     Download and extract them into your home directory. Note that you have to download
