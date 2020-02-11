@@ -359,6 +359,7 @@ Driver Configuration
    |__PART_FAMILY_DEVICE_NAMES__|.
 
    - Enable SDHCI support (CONFIG_MMC_SDHCI)
+
    .. code-block:: text
 
       Device Drivers -->
@@ -366,6 +367,7 @@ Driver Configuration
             <*> Secure Digital Host Controller Interface support
 
    - Enable SDHCI platform helper (CONFIG_MMC_SDHCI_PLTFM)
+
    .. code-block:: text
 
       Device Drivers -->
@@ -374,6 +376,7 @@ Driver Configuration
                <*> SDHCI platform and OF driver helper
 
    - Enable SDHCI controller for TI device (CONFIG_MMC_SDHCI_AM654)
+
    .. code-block:: text
 
       Device Drivers -->
