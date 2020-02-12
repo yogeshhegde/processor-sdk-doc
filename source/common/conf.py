@@ -79,7 +79,7 @@ language = None
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
-highlight_language = 'cpp'
+highlight_language = 'text'
 numfig = True
 
 # A list of ignored prefixes for module index sorting.
