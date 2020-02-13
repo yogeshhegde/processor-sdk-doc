@@ -522,7 +522,11 @@ AM65xx/J721E
  - System firmware should be loaded through CCS script while loading the flash programmer through JTAG.
    Refer the EVM CCS Setup Documentation section below for details of setting up the CCS target configuration with system firmware download.
     - `AM65xx <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`__
-    - J721E
+    - `J721E <http://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-jacinto7/latest/exports/docs/psdk_rtos_auto/docs/user_guide/ccs_setup_j721e.html>`__
+
+J721E
+""""""
+ - Set the dip switch SW3.1 on CP board to OFF while running the flash programmer for OSPI flashing on J721E EVM
 
 Uniflash FAQ
 ^^^^^^^^^^^^^
