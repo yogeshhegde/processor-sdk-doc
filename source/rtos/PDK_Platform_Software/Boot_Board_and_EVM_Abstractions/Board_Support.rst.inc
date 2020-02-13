@@ -67,7 +67,7 @@ functions such as UART_printf, UART_scanFmt, and etc.
 SCICLIENT
 """"""""""
 
-AM65xx Board library uses sciclient APIs for configuring the PLL clocks.
+AM65xx/J7xx Board library uses sciclient APIs for configuring the PLL clocks.
 
 
 Application Integration for AM5x/DRA7xx
@@ -190,51 +190,51 @@ Board Configurations
 Board library supports different SoC and HW board specific configuration functions. 
 Below table shows configurations supported by board library across different platforms.
 
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|         Board Configuration         |    Description          |            References               |  AM65xx   |  AM57xx   |  AM437x   |  AM335x   |   K2G   |  K2-E/H/K/L   |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+=====================================+=========================+=====================================+===========+===========+===========+===========+=========+===============+
-|                                     | Configures pinmux for   |   `Pinmux Tool`_                    |           |           |           |           |         |               |
-|    Pinmux                           | interfaces on the HW    |                                     |     x     |     x     |     x     |     x     |    x    |               |
-|                                     | board.                  |                                     |           |           |           |           |         |               |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Enables power domains   |                                     |           |           |           |           |         |               |     
-|    SoC Clock Settings               | and clocks for SoC      |   `Clock Tree Tool`_                |     x     |     x     |     x     |     x     |    x    |       x       |
-|                                     | peripherals             |                                     |           |           |           |           |         |               |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Configures DDR/EMIF     |                                     |           |           |           |           |         |               |
-|    DDR Configuration                | controller and DDR      |   `EMIF Tools Appnote`_             |     x     |     x     |           |           |    x    |       x       |
-|                                     | timing parameters.      |                                     |           |           |           |           |         |               |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Configures PLL modules  |                                     |           |           |           |           |         |               |
-|    PLL Configuration                | to generate various     |    NA                               |     x     |     x     |           |           |    x    |       x       |
-|                                     | clocks used by the SoC. |                                     |           |           |           |           |         |               |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Configures Ethernet     |                                     |           |           |           |           |         |               |
-|    Ethernet Configuration           | PHYs on the board.      |    NA                               |     x     |     x     |     x     |     x     |    x    |               |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Defines IO instances    |                                     |           |           |           |           |         |               |
-|    IO Instances                     | for HW interfaces.      |    NA                               |     x     |     x     |     x     |     x     |    x    |       x       |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | EEPROM board ID for     |                                     |           |           |           |           |         |               |
-|    Board Detection                  | board detection.        |    NA                               |     x     |     x     |     x     |     x     |    x    |               |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Provides Common APIs for|                                     |           |           |           |           |         |               |
-|    Board Flash APIs                 | accessing flash devices.|    NA                               |     x     |           |     x     |     x     |    x    |       x       |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
-|                                     | Configures SerDes       |                                     |           |           |           |           |         |               |
-|    SerDes Configuration             | interface internal      |    NA                               |     x     |           |           |           |         |               |
-|                                     | muxing and basic setup. |                                     |           |           |           |           |         |               |
-|                                     |                         |                                     |           |           |           |           |         |               |
-+-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+---------+---------------+
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|         Board Configuration         |    Description          |            References               |   J721E   |  AM65xx   |  AM57xx   |  AM437x   |  AM335x   |   K2G   |  K2-E/H/K/L   |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++=====================================+=========================+=====================================+===========+===========+===========+===========+===========+=========+===============+
+|                                     | Configures pinmux for   |   `Pinmux Tool`_                    |           |           |           |           |           |         |               |
+|    Pinmux                           | interfaces on the HW    |                                     |     x     |     x     |     x     |     x     |     x     |    x    |               |
+|                                     | board.                  |                                     |           |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Enables power domains   |                                     |           |           |           |           |           |         |               |     
+|    SoC Clock Settings               | and clocks for SoC      |   `Clock Tree Tool`_                |     x     |     x     |     x     |     x     |     x     |    x    |       x       |
+|                                     | peripherals             |                                     |           |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures DDR/EMIF     |                                     |           |           |           |           |           |         |               |
+|    DDR Configuration                | controller and DDR      |   `EMIF Tools Appnote`_             |     x     |     x     |     x     |           |           |    x    |       x       |
+|                                     | timing parameters.      |                                     |           |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures PLL modules  |                                     |           |           |           |           |           |         |               |
+|    PLL Configuration                | to generate various     |    NA                               |     x     |     x     |     x     |           |           |    x    |       x       |
+|                                     | clocks used by the SoC. |                                     |           |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures Ethernet     |                                     |           |           |           |           |           |         |               |
+|    Ethernet Configuration           | PHYs on the board.      |    NA                               |     x     |     x     |     x     |     x     |     x     |    x    |               |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Defines IO instances    |                                     |           |           |           |           |           |         |               |
+|    IO Instances                     | for HW interfaces.      |    NA                               |     x     |     x     |     x     |     x     |     x     |    x    |       x       |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | EEPROM board ID for     |                                     |           |           |           |           |           |         |               |
+|    Board Detection                  | board detection.        |    NA                               |     x     |     x     |     x     |     x     |     x     |    x    |               |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Provides Common APIs for|                                     |           |           |           |           |           |         |               |
+|    Board Flash APIs                 | accessing flash devices.|    NA                               |     x     |     x     |           |     x     |     x     |    x    |       x       |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
+|                                     | Configures SerDes       |                                     |           |           |           |           |           |         |               |
+|    SerDes Configuration             | interface internal      |    NA                               |     x     |     x     |           |           |           |         |               |
+|                                     | muxing and basic setup. |                                     |           |           |           |           |           |         |               |
+|                                     |                         |                                     |           |           |           |           |           |         |               |
++-------------------------------------+-------------------------+-------------------------------------+-----------+-----------+-----------+-----------+-----------+---------+---------------+
 
 .. _Pinmux Tool: http://processors.wiki.ti.com/index.php/TI_PinMux_Tool
 .. _Clock Tree Tool: http://www.ti.com/tool/CLOCKTREETOOL
@@ -380,12 +380,83 @@ make changes required for custom board as needed.
 Platform Specific Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+J721E
+"""""""
+
+Board File Names
+'''''''''''''''''
+Board library file names for J721E are different when compared with other platforms in processor SDK.
+This is to facilitate the easy migration of board library to custom platforms.
+Read the file name <Board>.c as board_init.c and <Board>_xxx.c/h as board_xxx.c/h in all the 
+references in above sections.
+
+Pinmux 
+'''''''
+Follow below steps to update pinmux configuration for custom board on J721E platform.
+Pinmux project files provided under j721e_evm board folder can be used as reference for pinmux configuration.
+
+* Download the pinmux files <Platform Name>_pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool 
+  and copy them to custom board folder.
+* Open 'packages/ti/board/src/j721e_evm/<Platform Name>_pinmux.h' and make below modifications.
+
+   * Change #include "pinmux.h" to #include <ti/board/src/j721e_evm/include/pinmux.h>
+   * Change #include "csl_types.h" to #include <ti/csl/csl_types.h>
+     * Modify 'j721e_evm' in above step if a different name is used for custom board.
+
+.. tip::
+
+    <Platform Name>_pinmux.h file contains the basic pin definition macros which will not change with every 
+    pin configuration change. This file generation and above step is one time configuration
+    for a given pinmux tool version.
+
+* Modify the Board_pinmuxConfig() function in 'packages/ti/board/src/j721e_evm/board_pinmux.c' file to remove 
+  pinmux configurations specific to EVM addon boards.
+  Look for the comment "Pinmux for Application cards" in the function Board_pinmuxConfig().
+  All the code after this comment till end of the function and 'i2cPinmux' variable can be removed.
+  Board_pinmuxConfig function shall look as below after the update
+
+::
+    
+    Board_STATUS Board_pinmuxConfig (void)
+    {
+        Board_STATUS status = BOARD_SOK;
+
+        /* Pinmux for baseboard */
+        Board_pinmuxUpdate(gJ721E_MainPinmuxData,
+                           BOARD_SOC_DOMAIN_MAIN);
+        Board_pinmuxUpdate(gJ721E_WkupPinmuxData,
+                           BOARD_SOC_DOMAIN_WKUP);
+
+        return status;
+    }
+|
+
+* Rebuild the board library with new pinmux configurations
+
+Follow additional steps (optional) below to clean-up the TI EVM addon board specific files.
+
+* Remove below files from SRCS_COMMON build configuration in 'packages/ti/board/src/j721e_evm/src_files_j721e_evm.mk' 
+  and remove the files from the board folder 'packages/ti/board/src/j721e_evm'
+
+   * J721E_pinmux_data_gesi.c
+   * J721E_pinmux_data_gesi_cpsw9g.c
+   * J721E_pinmux_data_info.c
+
+SerDes Configuration
+'''''''''''''''''''''
+J721E board library includes SerDes module which configures the SerDes interface internal pinmux
+to route PCIe, USB and SGMII to different interfaces on the board. If custom board uses
+similar design, SerDes configurations (board_serdes_cfg.c) can be reused.
+Otherwise this configuration can be ignored.
+
 AM65xx
 """""""
+
 Pinmux 
 '''''''
 Follow below steps to update pinmux configuration for custom board on AM65xx platforms.
- - Download the pinmux files <Platform Name>pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool
+
+ - Download the pinmux files <Platform Name>_pinmux.h and <Platform Name>_pinmux_data.c generated by pinmux tool
  - Copy the files to custom board folder and rename them to match with board name if needed.
  - Rebuild the board library with new pinmux configurations
 
