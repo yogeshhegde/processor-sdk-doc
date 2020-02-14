@@ -56,14 +56,14 @@ APIs
 
 API reference for Application:
 
-::
+.. code-block:: c
 
     #include <ti/drv/gpio/GPIO.h>
 
 Below sequence indicates API calling sequence for a simple use case of
 LED toggling
 
-::
+.. code-block:: c
 
     ...
     Board_init(boardCfg);

@@ -429,7 +429,7 @@ API reference:
 
 where CascadeBiquad_FilParam is defined as
 
-::
+.. code-block:: c
 
      CascadeBiquad_FilParam {
           float *restrict pin1;    // Input Data Channel 1 
@@ -514,7 +514,7 @@ the clock function from the library.
 The Bench mark test application, use the following functions to capture
 cycle count using the TSCH and TSCL regsiters.
 
-::
+.. code-block:: c
 
            /* ---------------------------------------------------------------- */
            /* Initialize timer for clock */
@@ -525,7 +525,6 @@ cycle count using the TSCH and TSCL regsiters.
            t_stop = _itoll(TSCH, TSCL);
            t_overhead = t_stop - t_start;
 
-::
 
            t_start = _itoll(TSCH, TSCL);
            <Algorithm to be bechmarked>

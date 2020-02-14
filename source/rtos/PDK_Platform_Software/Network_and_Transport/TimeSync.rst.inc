@@ -91,7 +91,7 @@ API reference for Application:
 Below sequence indicates API calling sequence for a simple use case of
 timeSync master operation
 
-::
+.. code-block:: c
 
     ...
     Board_init(boardCfg);
@@ -110,7 +110,7 @@ timeSync master operation
 Below sequence indicates API calling sequence for a simple use case of
 timeSync slave operation
 
-::
+.. code-block:: c
 
     ...
     Board_init(boardCfg);

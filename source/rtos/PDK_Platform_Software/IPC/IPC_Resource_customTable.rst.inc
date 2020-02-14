@@ -58,7 +58,7 @@ For reference, here is an Vayu compatible resource table derived from
 is a reference design only, and it is subject to enhancements,
 improvements and other changes without notifications).
 
-::
+.. code-block:: c
   
     #include "rsc_types.h"
      
@@ -408,7 +408,7 @@ entries.
 
 The virtual addresses #defined are:
 
-::
+.. code-block:: c
   
     #define IPU_MEM_TEXT            0x0
     #define IPU_MEM_DATA            0x80000000
@@ -421,7 +421,7 @@ The virtual addresses #defined are:
 The followings are fixed physical address to facilitate a fixed MMU
 table.
 
-::
+.. code-block:: c
   
     #if defined(VAYU_IPU_1)
     #define PHYS_MEM_IPC_VRING      0x9D000000
@@ -451,7 +451,7 @@ the remoteproc CMA area in Linux DTS file:
 
 The 1st entry in the resource table is:
 
-::
+.. code-block:: c
    
         /* rpmsg vdev entry */
         {
@@ -468,7 +468,7 @@ remoteproc CMA area is used for this.
 
 The 2nd-4th entries are:
 
-::
+.. code-block:: c
    
         {
             TYPE_CARVEOUT,
@@ -500,7 +500,7 @@ just creates an IPU MMU mapping for the entry. The 1st TYPE_DEVMEM entry
 corresponds to the vrings and creates the IPU MMU mapping needed to
 access them from the IPU core:
 
-::
+.. code-block:: c
   
         {
             TYPE_DEVMEM,
@@ -528,7 +528,7 @@ To add a new TYPE_DEVMEM entry, for example, to access PRU-ICSS from IPU
    ti_ipc_remoteproc_ResourceTable.
 -  6. add actual entry in ti_ipc_remoteproc_ResourceTable.
 
-::
+.. code-block:: c
   
         {
             TYPE_DEVMEM,

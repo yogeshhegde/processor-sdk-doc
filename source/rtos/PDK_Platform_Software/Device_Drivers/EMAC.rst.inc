@@ -55,7 +55,7 @@ APIs for a use case of an EMAC example which implements a single
 Ethernet MAC port. This example call flow is illustrated using port 
 number 0.
 
-::
+.. code-block:: c
 
     port_num = 0;
     
@@ -87,7 +87,7 @@ number 0.
 
 At this point EMAC driver is ready to send and receive packets.
 
-::
+.. code-block:: c
 
     /* Provide a context to poll the driver for received packets, showing RTOS use case */
     Task_create(app_test_task_poll_pkt, &taskParams, NULL);
@@ -102,8 +102,6 @@ At this point EMAC driver is ready to send and receive packets.
             emac_poll_pkt(port_num);
         }
     }
-
-::
 
     /* Provide a context to poll the driver for link status, showing RTOS use case */
     Task_create(app_test_task_poll_link, &taskParams, NULL);
@@ -120,8 +118,6 @@ At this point EMAC driver is ready to send and receive packets.
         
 	UART_printf("Link for port %d is UP\n", port_num);
     }
-
-::
 
     /* Close port and release all resources allocated at time of emac_open */
     retVal = emac_close(port_num);

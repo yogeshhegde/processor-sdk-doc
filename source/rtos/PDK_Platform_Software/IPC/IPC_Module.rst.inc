@@ -29,7 +29,7 @@ The main purpose of the Ipc module is to initialize the various subsystems of IP
 An application that uses IPC APIs--such as MessageQ--must include the Ipc module header file and call Ipc_start() 
 before any calls to IPC modules. Here is a BIOS-side example:
 
-::
+.. code-block:: c
   
     #include <ti/ipc/Ipc.h>
   
@@ -75,7 +75,7 @@ method in the configuration file to set the following properties:
 
 For example, the following statements from the notify example configuration turn off the setup of the MessageQ transports and connections to remote processors:
 
-::
+.. code-block:: c
   
   /* To avoid wasting shared memory for MessageQ transports */
   for (var i = 0; i < MultiProc.numProcessors; i++) {

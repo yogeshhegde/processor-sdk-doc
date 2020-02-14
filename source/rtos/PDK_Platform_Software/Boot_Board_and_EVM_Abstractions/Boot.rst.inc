@@ -302,7 +302,7 @@ will be held in the spinlock condition waiting for you to connect.
 
 Example:
 
-::
+.. code-block:: c
 
     volatile int exitSpinLock = 0;
     void Debug_spinLock(void)
@@ -318,7 +318,7 @@ use a GEL script.
 
 **Use an IO input to stall the core until user input is received:**
 
-::
+.. code-block:: c
 
     printf("Hit enter to continue:");
     getchar();

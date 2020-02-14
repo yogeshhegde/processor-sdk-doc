@@ -282,7 +282,7 @@ To use the required UIA events, need this include
 Add entry and exit hook functions to the source (The below one is for
 Context aware function profiling)
 
-::
+.. code-block:: c
 
     void functionEntryHook( void (*addr)() ){
         Log_write3(UIABenchmark_startInstanceWithAdrs, (IArg)"context=0x%x, fnAdrs=0x%x:",(IArg)0, (IArg)addr);
@@ -294,7 +294,7 @@ Context aware function profiling)
 
 For CCS 5.5 and later
 
-::
+.. code-block:: c
 
     void functionEntryHook( void (*addr)() ){
         Log_write2(UIAProfile_enterFunctionAdrs, (IArg)0, (IArg)addr);

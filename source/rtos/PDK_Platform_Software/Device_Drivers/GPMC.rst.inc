@@ -78,7 +78,7 @@ API reference for application:
 
  Sample code for initiating GPMC transaction:
 
-::
+.. code-block:: c
 
     ...
     Board_init(boardCfg);

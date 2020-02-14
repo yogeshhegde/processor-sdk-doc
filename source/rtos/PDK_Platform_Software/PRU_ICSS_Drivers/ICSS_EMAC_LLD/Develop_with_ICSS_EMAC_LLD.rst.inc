@@ -475,7 +475,7 @@ detailed description is given below.
    port/queue number and provides it to an API which copies data from L3
    to DDR. The code excerpt is shown below with explanations.
 
-::
+.. code-block:: c
 
     /*Read till all queues are empty*/
     while(allQueuesEempty != 1 && numPacketsInLoop <= ((((ICSSEMAC_Object*)icssEmacHandle->object)->emacInitcfg)->pacingThreshold))
@@ -519,7 +519,7 @@ on QoS and queues) driver decides to either forward it to NDK, done by
 The threshold for this decision is decided by the user settable
 parameter shown in the code above.
 
-::
+.. code-block:: c
 
     ((ICSSEMAC_Object*)(icssEmacHandle->object))->emacInitcfg->ethPrioQueue)
 
@@ -547,7 +547,7 @@ set an appropriate value for **ethPrioQueue** based on their
 requirements. The callback is configured in **main** like this (taken
 from *icss_eip_driver.c*)
 
-::
+.. code-block:: c
 
     /*Packet processing callback*/
     ((((ICSSEMAC_Object*)icssEmacHandle->object)->callBackHandle)->rxRTCallBack)->callBack = (ICSS_EmacCallBack)processProtocolFrames;
@@ -557,7 +557,7 @@ Where **icssEmacHandle** is the main driver handle and
 **processProtocolFrames** is the callback function whose outline is
 given below
 
-::
+.. code-block:: c
 
     void processProtocolFrames(uint32_t* queue_number, void* userArg) {
     ...
@@ -614,7 +614,7 @@ User's guide <http://www.ti.com/lit/ug/spru523i/spru523i.pdf>`__ and
 `NDK API Reference
 guide <http://www.ti.com/lit/ug/spru524i/spru524i.pdf>`__.
 
-::
+.. code-block:: c
 
     /*Transmit to System with IP Address*/
     #define DST_IP "192.168.1.64"
@@ -650,7 +650,7 @@ and calling **ICSS_EmacTxPacket** with the buffer in a task in
 **main()**. Shown below is an example of a periodic transmit being done
 in main function.
 
-::
+.. code-block:: c
 
     /**A dummy packet*/
     uint8_t dummyPkt[ETHERNET_FRAME_SIZE_60] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0x00,0x00,0x00,0x00,0x00,0x00,0x08,0x00,
@@ -981,7 +981,7 @@ Tasks
 Tasks are the Linux equivalent of processes in SysBIOS. A simple example
 to create a task from EMAC application is given below
 
-::
+.. code-block:: c
 
      Task_Params_init(&taskParams);
      taskParams.priority = 15;
@@ -1061,7 +1061,7 @@ API Guide & Data Structures
 
 A learning table has the following structure
 
-::
+.. code-block:: c
 
     typedef struct HashTable_t{
            
@@ -1074,7 +1074,7 @@ A learning table has the following structure
 The individual bucket which makes up the learning table has the
 following structure
 
-::
+.. code-block:: c
 
     typedef struct {
      
@@ -1224,7 +1224,7 @@ API Guide & Data Structures
 
 The main parent structure for Storm Prevention is
 
-::
+.. code-block:: c
 
     typedef struct {
              
@@ -1242,7 +1242,7 @@ calls. The IOCTL command for Learning/FDB modules is
 
 ***Enabling Storm Prevention***  : The corresponding API for this is
 
-::
+.. code-block:: c
 
     void ICSS_EmacEnableStormPrevention(uint8_t portnum, ICSSEMAC_Handle icssEmacHandle)
 
@@ -1634,7 +1634,7 @@ As discussed above there are two data structures for Statistics.
 Shown below are the members of Host Statistics. The members of PRU
 statistics are listed in the memory map.
 
-::
+.. code-block:: c
 
     typedef struct {
      
@@ -1870,7 +1870,7 @@ The members of the EMAC Handle are discussed in detail
 The sample code for Handle allocation and initialization (from the
 example application) is shown below
 
-::
+.. code-block:: c
 
     /*Declare the EMAC Handle*/
     ICSSEMAC_Handle emachandle; 
@@ -1922,7 +1922,7 @@ For example to disable receive functionality on a port the following
 code is used. This code is part of Link interrupt functionality where
 receive is disabled when PHY detects a link down.
 
-::
+.. code-block:: c
 
     ioctlvalue = ICSS_EMAC_IOCTL_PORT_CTRL_DISABLE;
     ioctlParams.ioctlVal = &ioctlvalue;
@@ -1941,7 +1941,7 @@ API Guide & Data Structures
 
 IOCTL Command structure
 
-::
+.. code-block:: c
 
      typedef struct ICSSEMAC_IoctlCmd {
        uint8_t command;
@@ -1950,7 +1950,7 @@ IOCTL Command structure
 
 There is only one API for IOCTL. It's defined below
 
-::
+.. code-block:: c
 
     uint8_t ICSS_EmacIoctl(ICSSEMAC_Handle icssEmacHandle, uint32_t ioctlCommand, uint8_t portNo, void *ioctlParams)
 
@@ -2023,7 +2023,7 @@ In this example the storm prevention counters are reset in PRU Data RAM
 using IOCTL. The **if/else** refers to Switch or EMAC mode, rest of the
 code is self-explanatory
 
-::
+.. code-block:: c
 
      ioctlParams.command = ICSS_EMAC_STORM_PREV_CTRL_RESET;
      /*Reset the credit values used for Storm prevention*/
@@ -2134,14 +2134,14 @@ TTS API Details and Data Structures
 TTS has the following APIs, which are accessed using EMAC IOCTL
 implementation as explained in the IOCTL section previously.
 
-::
+.. code-block:: c
 
     int8_t ICSS_EmacTTS(const ICSS_EmacTTSConfig* ttsConfig)
 
 This API is used to enable/disable time triggered send for Queue 0
 frames.
 
-::
+.. code-block:: c
 
     int8_t ICSS_EmacTTSGetStatus(ICSS_EmacTTSQuery* ttsQuery)
 
@@ -2150,7 +2150,7 @@ parameter values from PRU firmware.
 
 The TTS parameter structure is explained below:
 
-::
+.. code-block:: c
 
     typedef struct ICSS_EmacTTSConfig_s {
       ICSSEMAC_Handle icssEmacHandle;
@@ -2174,7 +2174,7 @@ The TTS parameter structure is explained below:
 
 The TTS query structure is as explained below:
 
-::
+.. code-block:: c
 
     typedef struct ICSS_EmacTTSQuery_s {
       ICSSEMAC_Handle icssEmacHandle;
@@ -2213,7 +2213,7 @@ TTS can be enabled/disabled using EMAC IOCTL as follows:
 
 For Enable:
 
-::
+.. code-block:: c
 
     ICSSEMAC_IoctlCmd ioctlParams;
     ICSS_EmacTTSConfig ttsConfig;
@@ -2244,7 +2244,7 @@ For Enable:
 
 For Disable:
 
-::
+.. code-block:: c
 
     ICSSEMAC_IoctlCmd ioctlParams2;
     ICSS_EmacTTSConfig ttsConfig;

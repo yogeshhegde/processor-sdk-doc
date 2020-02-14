@@ -107,7 +107,7 @@ the DPLL to OPP_NOM and not for OPP_OD or OPP_HIGH.
 To do this, you can invoke the Board_Init from your application using
 either
 
-::
+.. code-block:: c
 
     Board_initCfg boardCfg;
     boardCfg = BOARD_INIT_PLL_OPP_NOM;
@@ -133,7 +133,7 @@ file <BoardName>_pll.c as shown below:
 
 -  **MPU DPLL Changes:**
 
-::
+.. code-block:: c
 
       /* Default to OPP_NOM */
            /* 500MHz at 20MHz sys_clk */
@@ -144,7 +144,7 @@ file <BoardName>_pll.c as shown below:
 
 -  **DSP DPLL Changes:**
 
-::
+.. code-block:: c
 
            /* 500MHz at 20MHz sys_clk */
            dspPllcParam.mult = 130U;
@@ -157,7 +157,7 @@ file <BoardName>_pll.c as shown below:
 Since IVA and GPU modules are not available on the device, we recommend
 removing the ivaPLL and gpuPLL settings in board.
 
-::
+.. code-block:: c
 
                   /* Default to OPP_NOM */
                   /* 388.3MHz at 20MHz sys_clk */
@@ -165,7 +165,6 @@ removing the ivaPLL and gpuPLL settings in board.
     -                ivaPllcParam.div = 3U;
     -                ivaPllcParam.divM2 = 3U;
 
-::
 
                  /* Default to OPP_NOM */
                  /* 425MHz at 20MHz sys_clk */
@@ -180,12 +179,11 @@ removing the ivaPLL and gpuPLL settings in board.
 The following updates need to be made in the file <BoardName>_clock.c to
 remove IVA wakeup and clock configuration
 
-::
+.. code-block:: c
 
     -        CSL_FINST(ivaCmReg->CM_IVA_CLKSTCTRL_REG,
     -        IVA_CM_CORE_CM_IVA_CLKSTCTRL_REG_CLKTRCTRL, SW_WKUP);
 
-::
 
        /* PRCM Specialized module mode setting functions */
     -   CSL_FINST(ivaCmReg->CM_IVA_SL2_CLKCTRL_REG,
@@ -220,7 +218,7 @@ number of DDR interfaces and speed configuration.
 For AM571x and AM570x, make sure to use the code for the AM571x IDK in
 board/src/<BoardName>/<BoardName_ddr>.c to select 1 EMIF:
 
-::
+.. code-block:: c
 
           /* MA_LISA_MAP_i */
           hMampuLsm->MAP_0 = 0x80600100U;
@@ -229,7 +227,7 @@ board/src/<BoardName>/<BoardName_ddr>.c to select 1 EMIF:
 
 For AM572x, this is mapped as following
 
-::
+.. code-block:: c
 
       /* MA_LISA_MAP_i */
       hMampuLsm->MAP_0 = 0x80740300;
@@ -273,7 +271,7 @@ settings or you can use the following sequence to update the settings.
 Code below describes how the SPI driver module input clock frequency can
 be modified
 
-::
+.. code-block:: c
 
        SPI_v1_HWAttrs spi_cfg;
        /* Get the default SPI init configurations */

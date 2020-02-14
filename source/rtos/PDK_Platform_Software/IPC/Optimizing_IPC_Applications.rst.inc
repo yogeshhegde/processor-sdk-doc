@@ -195,7 +195,7 @@ runtime performance of IPC applications:
    Module <index_Foundational_Components.html#gatemp-module>`__ for more
    information. For example:
 
-::
+.. code-block:: c
 
        GateMP_Params gateParams;
        GateMP_Handle gateHandle;
@@ -223,7 +223,7 @@ runtime performance of IPC applications:
    The following configuration statements create a SharedRegion with the
    cache disabled (on OMAP4430):
 
-::
+.. code-block:: c
 
        SharedRegion.setEntryMeta(1, /* Create shared region 1 */
            {   base: 0x86000000,
@@ -239,7 +239,7 @@ runtime performance of IPC applications:
    The following C code creates a HeapBufMP instance in this
    SharedRegion::
 
-::
+.. code-block:: c
 
        HeapBufMP_Params heapParams;
        HeapBufMP_Handle heapHandle;
@@ -461,7 +461,7 @@ more of the following conditions is true::
    not MessageQ, disabling MessageQ avoids the creation of MessageQ
    transports during Ipc_attach().
 
-::
+.. code-block:: c
 
            /* To avoid wasting shared mem for MessageQ transports */
            for (var i = 0; i < MultiProc.numProcessors; i++) {
@@ -481,7 +481,7 @@ more of the following conditions is true::
    (one for NameServer and one for the MessageQ transport). In this
    case, we can optimize memory use with the following configuration:
 
-::
+.. code-block:: javascript
 
     var Notify = xdc.useModule('ti.sdo.ipc.Notify');
     
@@ -508,7 +508,7 @@ more of the following conditions is true::
    The following example (for C6472) sets the cacheLineSize property to
    64 because the shared L2 memory has this cache line size.
 
-::
+.. code-block:: c
 
            SharedRegion.setEntryMeta(0,
                { base: SHAREDMEM,
@@ -530,7 +530,7 @@ for use by GatePeterson. You can plug the Custom1 proxy with the
 GateMPSupportNull delegate by adding the following configuration
 statements to your application:
 
-::
+.. code-block:: javascript
 
     var GateMP = xdc.useModule('ti.sdo.ipc.GateMP');
     GateMP.RemoteCustom1Proxy = xdc.useModule('ti.sdo.ipc.gates.GateMPSupportNull');

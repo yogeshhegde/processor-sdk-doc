@@ -248,7 +248,7 @@ I2C FIRMWARE Example
 
 Sample code for I2C transaction:
 
-::
+.. code-block:: c
 
     /* Refer to I2C FW Example for details */
     ...
@@ -285,7 +285,7 @@ Sample code for I2C transaction:
 
 Sample code for SMBus transaction:
 
-::
+.. code-block:: c
 
     /* Refer to I2C FW Test for details */
     ...

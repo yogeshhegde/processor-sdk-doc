@@ -443,12 +443,10 @@ duration in the file
 (this code excerpt may look slightly different depending on the version
 of IPC you are looking at, but the idea is the same):
 
-::
+.. code-block:: c
 
     // Timeout duration is SETUP_TIMEOUT * polling interval
     #define SETUP_TIMEOUT         2 
-
-::
 
     Int GateMP_setup(Int32 * sr0ProcId)
     {

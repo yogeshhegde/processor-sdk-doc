@@ -43,7 +43,7 @@ The default PinMux file has to be modified for GPIO2_19 pin usage:
 
 •	Four new files should be generated, with the only difference  being a new pin configuration added in boardPadDelayInit.c file:
 
-:: 
+.. code-block:: c
 
       /* GPIO2 - gpio2_19 on T1 - MyGPIO2 */
      {0x14B4, 0x6000E, {0x0, 0, 0}, {0x0, 0, 0}, {0x0, 0, 0}},
@@ -69,7 +69,7 @@ This LED blink example uses 2 GPIO pins. The first pin is used to periodically g
 
 Also note from GPIO_idkAM572x_board.c, the rising edge is configured to generate interrupt:
 
-:: 
+.. code-block:: c
 
   GPIO_PinConfig gpioPinConfigs_1p3[] = {
     /* Input pin with interrupt enabled */
@@ -81,14 +81,15 @@ After understanding how the reference example works, the code can be modified to
 
 Code modifications:
 •	GPIO_board.h: this file defines the GPIO pins for the test, the first pin needs to be updated 
-::
+
+.. code-block:: c
 
   #define GPIO_INTR_LED_BASE_ADDR_1P3      (CSL_MPU_GPIO2_REGS)
   #define GPIO_LED_PIN_NUM_1P3             (0x13U)
 
 •	GPIO_idkAM572x_board.c: this file also defines the GPIO pins for the test, the first pin needs to be updated 
 
-::
+.. code-block:: c
 
   /* GPIO Definitions specific Rev1p3 Board */
   /* GPIO pin number connected to the green LED */
@@ -101,7 +102,7 @@ Code modifications:
 
 1) Inside void gpio_test(UArg arg0, UArg arg1) routine there is a while(1) loop that continuously triggers the interrupt by software write. Since the new example relies on the external input event to trigger it, one can simply add another while(1) in front of it to block the original loop: 
 
-::
+.. code-block:: c
 
     while(1);  //New added loop
     while(1)   
@@ -113,7 +114,7 @@ Code modifications:
 
 2) Also inside the same void gpio_test(UArg arg0, UArg arg1) routine, one may add a debounce control before the test loop: 
 
-::
+.. code-block:: c
 
     /* Write high to gpio pin to control LED1 */
     GPIO_write((USER_LED1), GPIO_PIN_VAL_HIGH);
@@ -146,4 +147,4 @@ The test setup using AM572x IDK EVM is depicted below:
 •	Connect to the A15_0 with a JTAG emulator and use the default GEL file to initialize the SOC.
 •	Load the test application (GPIO_LedBlink_idkAM572x_armTestProject.out) and run.
 •	Touch the two wires, then un-touch, the LED should flip the status and keep steady until next touch, un-touch cycle.    
-   
+

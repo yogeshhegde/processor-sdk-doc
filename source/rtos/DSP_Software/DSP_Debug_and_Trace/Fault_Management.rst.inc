@@ -168,7 +168,7 @@ utilizes the DSP FM APIs.
 
 -  In a source/header file, create a exception hook function as follows
 
-::
+.. code-block:: c
 
     /* Fault Management Include File */
     #include <ti/instrumentation/fault_mgmt/fault_mgmt.h>

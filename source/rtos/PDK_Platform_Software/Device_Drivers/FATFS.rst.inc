@@ -25,7 +25,7 @@ such as MMCSD, USB and SBL.
 FATFS file operation API's can be accessed from the application only after FATFS_open
 function is invoked.
 
-::
+.. code-block:: c
 
    FATFS_init();
    FATFS_open(0U, NULL, &fatfsHandle);
@@ -68,7 +68,7 @@ APIs
 In order to use the FATFS module APIs, the FATFS.h and ff.h header file
 should be included in an application as follows:
 
-::
+.. code-block:: c
 
     #include <ti/fs/fatfs/FATFS.h>
     #include <ti/fs/fatfs/ff.h>
@@ -78,7 +78,7 @@ should be included in an application as follows:
 
 Below sequence indicates the calling sequence of FATFS driver APIs:
 
-::
+.. code-block:: c
 
      FATFS_Handle FATFS;
      FATFS_Params FATFSParams; 

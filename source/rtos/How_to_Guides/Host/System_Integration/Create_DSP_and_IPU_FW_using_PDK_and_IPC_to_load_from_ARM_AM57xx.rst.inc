@@ -516,7 +516,7 @@ Once you've created your custom resource table, you must update the
 address of PHYS_MEM_IPC_VRING to be the same base address as your
 corresponding CMA.
 
-::
+.. code-block:: c
 
 	#if defined (VAYU_DSP_1)
 	#define PHYS_MEM_IPC_VRING      0x99000000
@@ -545,7 +545,7 @@ existing resource table inside IPC:
 
 ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_dsp.h
 
-:: 
+.. code-block:: c
 
         {
             TYPE_CARVEOUT,
@@ -587,7 +587,7 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_dsp.h
 Let's have a look at some of these to understand them better. For
 example:
 
-:: 
+.. code-block:: c
 
         {
             TYPE_CARVEOUT,
@@ -613,7 +613,7 @@ Key points to note are:
 
 Let's take another:
 
-:: 
+.. code-block:: c
 
         {
             TYPE_TRACE, TRACEBUFADDR, 0x8000, 0, "trace:dsp",
@@ -633,7 +633,7 @@ Key points are:
 
 Finally, let's look at a TYPE_DEVMEM example:
 
-:: 
+.. code-block:: c
 
         {
             TYPE_DEVMEM,
@@ -931,7 +931,7 @@ can be found at this location:
 
 ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
 
-:: 
+.. code-block:: c
 
     #define IPU_MEM_TEXT            0x0
     #define IPU_MEM_DATA            0x80000000
@@ -964,7 +964,7 @@ ipc/packages/ti/ipc/remoteproc/rsc_table_vayu_ipu.h
 
 <snip...>
 
-:: 
+.. code-block:: c
 
         {
             TYPE_CARVEOUT,
@@ -1276,14 +1276,14 @@ make edits first. These edits are listed below.
 | 
 Add the following to the beginning of your configuration file
 
-:: 
+.. code-block:: javascript
 
     var Program = xdc.useModule('xdc.cfg.Program');
 | 
 
 Comment out the Memory sections configuration as shown below
 
-:: 
+.. code-block:: javascript
 
     /* ================ Memory sections configuration ================ */
     //Program.sectMap[".text"] = "EXT_RAM";
@@ -1296,7 +1296,7 @@ Comment out the Memory sections configuration as shown below
 
 Since we are no longer using a shared folder, make the following change
 
-:: 
+.. code-block:: javascript
 
     //var ipc_cfg = xdc.loadCapsule("../shared/ipc.cfg.xs");
     var ipc_cfg = xdc.loadCapsule("../ipc.cfg.xs");
@@ -1306,7 +1306,7 @@ Since we are no longer using a shared folder, make the following change
 Comment out the following. We'll be calling this function directly from
 main.
 
-:: 
+.. code-block:: javascript
 
     //BIOS.addUserStartupFunction('&IpcMgr_ipcStartup');
 
@@ -1314,7 +1314,7 @@ main.
 
 Increase the system stack size
 
-:: 
+.. code-block:: javascript
 
     //Program.stack = 0x1000;
     Program.stack = 0x8000;
@@ -1323,7 +1323,7 @@ Increase the system stack size
 
 Comment out the entire TICK section
 
-:: 
+.. code-block:: javascript
 
     /* --------------------------- TICK --------------------------------------*/
     // var Clock = xdc.useModule('ti.sysbios.knl.Clock');
@@ -1364,7 +1364,7 @@ Comment out the entire TICK section
 Make configuration change to use custom resource table. Add to the end
 of the file.
 
-:: 
+.. code-block:: javascript
 
     /* Override the default resource table with my own */
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
@@ -1379,7 +1379,7 @@ of the file.
 
 Add the following external declarations
 
-:: 
+.. code-block:: c
 
     extern Int ipc_main();
     extern Void IpcMgr_ipcStartup(Void);
@@ -1389,7 +1389,7 @@ Add the following external declarations
 In main(), add a call to ipc_main() and IpcMgr_ipcStartup() just before
 BIOS_start()
 
-:: 
+.. code-block:: c
 
         ipc_main();
      
@@ -1408,7 +1408,7 @@ the original example because it assumes TI-RTOS is running on the Arm
 but in our case here, we are running Linux and this call is
 destructive so we comment it out.
 
-::
+.. code-block:: c
 
 	    #if defined(EVM_K2E) || defined(EVM_C6678)
 		boardCfg = BOARD_INIT_MODULE_CLOCK |
@@ -1430,7 +1430,7 @@ destructive so we comment it out.
 
 The app now has it's own main(), so rename this one and get rid of args
 
-:: 
+.. code-block:: c
 
     //Int main(Int argc, Char* argv[])
     Int ipc_main()
@@ -1821,7 +1821,7 @@ Add the following external declarations
 In main(), add a call to ipc_main() and IpcMgr_ipcStartup() just before
 BIOS_start()
 
-::
+.. code-block:: c
 
     ipc_main();
     if (callIpcStartup) {
@@ -1848,7 +1848,7 @@ needs to be performed by the M4.
 |
 **Original code**
 
-::
+.. code-block:: c
 
     #if defined(EVM_K2E) || defined(EVM_C6678)
         boardCfg = BOARD_INIT_MODULE_CLOCK | BOARD_INIT_UART_STDIO;
@@ -1862,7 +1862,7 @@ needs to be performed by the M4.
 |
 **Modified Code :**
 
-::
+.. code-block:: c
 
            boardCfg = BOARD_INIT_UART_STDIO;
 	   Board_init(boardCfg);
@@ -1889,7 +1889,7 @@ adding the following code before Board_init API call:
 
 The app now has it's own main(), so rename this one and get rid of args
 
-::
+.. code-block:: c
 
     //Int main(Int argc, Char* argv[])
     Int ipc_main()
@@ -1994,7 +1994,7 @@ The following changes were then made to the IPU application source code:
 Add UART_soc.c file to the project and modify the base addresses for all
 IPU UART register instance in the UART_HwAttrs to use alias addresses:
 
-::
+.. code-block:: c
 
     #ifdef _TMS320C6X
         CSL_DSP_UART3_REGS,
