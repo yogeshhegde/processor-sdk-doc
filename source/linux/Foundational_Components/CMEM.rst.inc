@@ -177,7 +177,7 @@ pools.
 Here is an example CMEM configuration registry entry in platform.reg for
 TI EVM3530:
 
-.. code-block:: c
+::
 
     ;-- CMEM --------------------------------------------------------------------
     IF SYSGEN_CMEM

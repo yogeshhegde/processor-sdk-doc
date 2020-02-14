@@ -1,4 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_U-Boot_Splash_Screen
+.. highlight:: c
 
 U-Boot Splash Screen
 ==========================
@@ -20,7 +21,7 @@ SPLASH to CONFIG\_SYS\_EXTRA\_OPTIONS. In this example the
 am335x\_evm\_defconfig is copied into a new one called
 am335x\_evm\_splash\_defconfig.
 
-::
+.. code-block:: text
 
     CONFIG_TARGET_AM335X_EVM=y
     CONFIG_SPL_STACK_R_ADDR=0x82000000
@@ -101,7 +102,7 @@ finally the splash screen code that registers a fat file system on mmc0.
 The gzipped bitmap is named splash.bmp.gz and is displayed with
 bmp\_display.
 
-::
+.. code-block:: text
 
     #if defined(CONFIG_LCD) && defined(CONFIG_AM335X_LCD) && \
                     !defined(CONFIG_SPL_BUILD)

@@ -1300,7 +1300,7 @@ style sheets.
 
 **terminal style sheet settings**
 
-::
+.. code-block:: cpp
 
     QWidget {
         background-color: rgb(0, 0, 0);
@@ -1346,7 +1346,7 @@ style sheets.
  
 **tab style sheet settings**
 
-::
+.. code-block:: cpp
 
     QWidget{
         background-color: red;

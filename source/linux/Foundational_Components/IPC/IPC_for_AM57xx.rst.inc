@@ -845,7 +845,7 @@ large pages. Here's a snippet showing some of the key mappings:
 
 ipc\_3\_43\_02\_04/examples/DRA7XX\_linux\_elf/ex02\_messageq/ipu1/IpuAmmu.cfg
 
-.. code-block:: c
+.. code-block:: javascript
 
     /*********************** Large Pages *************************/
     /* Instruction Code: Large page  (512M); cacheable */
@@ -1275,7 +1275,7 @@ make edits first. These edits are listed below.
  
 Add the following to the beginning of your configuration file
 
-.. code-block:: c
+.. code-block:: javascript
 
     var Program = xdc.useModule('xdc.cfg.Program');
 
@@ -1721,14 +1721,14 @@ make edits first. These edits are listed below.
 
 Add the following to the beginning(at the top) of your configuration file
 
-::
+.. code-block:: javascript
 
     var Program = xdc.useModule('xdc.cfg.Program');
 
 Since we are no longer using a shared folder, make the following
 change
 
-::
+.. code-block:: javascript
 
     //var ipc_cfg = xdc.loadCapsule("../shared/ipc.cfg.xs");
     var ipc_cfg = xdc.loadCapsule("../ipc.cfg.xs");
@@ -1738,7 +1738,7 @@ change
 Comment out the following. We'll be calling this function directly from
 main.
 
-::
+.. code-block:: javascript
 
     //BIOS.addUserStartupFunction('&IpcMgr_ipcStartup');
 
@@ -1746,7 +1746,7 @@ main.
 
 Increase the system stack size
 
-::
+.. code-block:: javascript
 
     //Program.stack = 0x1000;
     Program.stack = 0x8000;
@@ -1755,7 +1755,7 @@ Increase the system stack size
 
 Comment out the entire TICK section
 
-::
+.. code-block:: javascript
 
     /* --------------------------- TICK --------------------------------------*/
     // var Clock = xdc.useModule('ti.sysbios.knl.Clock');
@@ -1796,7 +1796,7 @@ Comment out the entire TICK section
 Make configuration change to use custom resource table. Add to the end
 of the file.
 
-::
+.. code-block:: javascript
 
     /* Override the default resource table with my own */
     var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
@@ -1808,7 +1808,7 @@ of the file.
 
 Add the following external declarations
 
-::
+.. code-block:: c
 
     extern Int ipc_main();
     extern Void IpcMgr_ipcStartup(Void);
@@ -1818,7 +1818,7 @@ Add the following external declarations
 In main(), add a call to ipc\_main() and IpcMgr\_ipcStartup() just
 before BIOS\_start()
 
-::
+.. code-block:: c
 
     ipc_main();
     if (callIpcStartup) {
@@ -1844,7 +1844,7 @@ needs to be performed by the M4.
 
 **Original code**
 
-::
+.. code-block:: c
 
     #if defined(EVM_K2E) || defined(EVM_C6678)
         boardCfg = BOARD_INIT_MODULE_CLOCK | BOARD_INIT_UART_STDIO;
@@ -1859,9 +1859,8 @@ needs to be performed by the M4.
 
 ::
 
-           boardCfg = BOARD_INIT_UART_STDIO;
-
-Board\_init(boardCfg);
+       boardCfg = BOARD_INIT_UART_STDIO;
+       Board\_init(boardCfg);
 
 We are not done yet as we still need to configure turn the clock control
 on for the UART without impacting the other clocks. We can do that by
@@ -1883,7 +1882,7 @@ adding the following code before Board\_init API call:
 
 The app now has it's own main(), so rename this one and get rid of args
 
-::
+.. code-block:: c
 
     //Int main(Int argc, Char* argv[])
     Int ipc_main()
@@ -1939,7 +1938,7 @@ Add this extern declaration prior to the symbol being used
 
 No longer have shared folder so change include path
 
-::
+.. code-block:: c
 
     /* local header files */
     //#include "../shared/AppCommon.h"
@@ -1985,7 +1984,7 @@ Add UART\_soc.c file to the project and modify the base addresses for
 all IPU UART register instance in the UART\_HwAttrs to use alias
 addresses:
 
-::
+.. code-block:: c
 
     #ifdef _TMS320C6X
         CSL_DSP_UART3_REGS,

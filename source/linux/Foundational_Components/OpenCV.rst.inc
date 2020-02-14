@@ -248,7 +248,7 @@ It is possible to make finer grained mapping of individual kernel
 execution (some kernels could be mapped to DSP, others to A15 only).
 Here is an example:
 
-::
+.. code-block:: cpp
 
      #include <opencv2/imgproc/imgproc.hpp>
      #include <opencv2/highgui/highgui.hpp>
@@ -639,7 +639,7 @@ implementation:
 to select baseline or DSP specific implementation - example in:
 modules/video/src/opencl/bgfg\_mog2.cl:
 
-::
+.. code-block:: cpp
 
      #ifdef TIDSP_MOG2
     TI DSP specific implementation
@@ -680,7 +680,7 @@ modules/video/src/opencl/bgfg\_mog2.cl:
 -  Another option is to use different kernel name, and use it
    appropriately as mentioned in previous paragraph.
 
-::
+.. code-block:: cpp
 
        TI DSP specific implementation
     __attribute__((reqd_work_group_size(1,1,1))) __kernel void tidsp_morph_erode (__global const uchar * srcptr, int src_step, int src_offset,
@@ -688,7 +688,7 @@ modules/video/src/opencl/bgfg\_mog2.cl:
                       int src_offset_x, int src_offset_y, int cols, int rows,
                       int src_whole_cols, int src_whole_rows)
 
-::
+.. code-block:: cpp
 
      ...
     __attribute__((reqd_work_group_size(1,1,1))) __kernel void tidsp_morph_dilate (__global const uchar * srcptr, int src_step, int src_offset,
@@ -698,7 +698,7 @@ modules/video/src/opencl/bgfg\_mog2.cl:
 
 | 
 
-::
+.. code-block:: cpp
 
        OpenCL generic implementation
     __kernel void morph(__global const uchar * srcptr, int src_step, int src_offset,
@@ -730,7 +730,7 @@ module. We can even use printf() in .cl files (developer does not need
 to bother with any additional hooks on Host side) which is very useful
 for development, debugging and benchmarking.
 
-::
+.. code-block:: cpp
 
      ...
     #ifdef TIDSP_OPENCL_VERBOSE
@@ -763,7 +763,7 @@ are applicable in OpenCL C:
 
 -  DSP intrinsics.
 
-::
+.. code-block:: cpp
 
            ...
           /* Convert from 8bpp to 16bpp so we can do SIMD of rows \*/
@@ -778,7 +778,7 @@ are applicable in OpenCL C:
 -  Multi-DSP core operation - splitting work load by partitioning input
    data
 
-::
+.. code-block:: cpp
 
      int   gid   = get_global_id(0); /* 1st dimension can be used to identify DSP core */
 
@@ -815,7 +815,7 @@ gauss.cl, sobel.cl, thresh.cl in tiopencv repository (http://git.ti.com/opencv/t
 
 -  Partitioning data between DSP cores
 
-::
+.. code-block:: c
 
      ...
     int   gid   = get_global_id(0);  /* Identify DSP core: gid is set to 0 for 1st DSP core, and 1 for 2nd DSP core \*/

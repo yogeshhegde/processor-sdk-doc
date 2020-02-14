@@ -94,22 +94,18 @@ expects the pluggable modules to register with it using the
 netcp\_register\_module() API. It provides a set of ops in the
 netcp\_module structure as part of the registration.
 
-::
+.. code-block:: c
 
     struct netcp_module {
             const char              *name;
             struct module           *owner;
             bool                    primary;
 
-::
-
             /* probe/remove: called once per NETCP instance */
             int     (*probe)(struct netcp_device *netcp_device,
                             struct device *device, struct device_node *node,
                             void **inst_priv);
             int     (*remove)(struct netcp_device *netcp_device, void *inst_priv);
-
-::
 
             /* attach/release: called once per network interface */
             int     (*attach)(void *inst_priv, struct net_device *ndev,
@@ -1171,7 +1167,7 @@ NOT the current frequency.
 
       Example (see Reference ii):
 
-::
+.. code-block:: c
 
          struct timex tx;
          ...
@@ -1194,7 +1190,7 @@ NOT the current frequency.
 
       Example (see Reference ii):
 
-::
+.. code-block:: c
 
          memset(&tx, 0, sizeof(tx));
          tx.modes = ADJ_SETOFFSET;
@@ -1212,7 +1208,7 @@ NOT the current frequency.
 
       Example (see Reference ii):
 
-::
+.. code-block:: c
 
          if (clock_gettime(clkid, &ts)) {
             perror("clock_gettime");
@@ -1227,7 +1223,7 @@ NOT the current frequency.
 
       Example (see Reference ii):
 
-::
+.. code-block:: c
 
          clock_gettime(CLOCK_REALTIME, &ts);
          if (clock_settime(clkid, &ts)) {
@@ -1393,19 +1389,17 @@ asserted low when the polarity bit is low.
 
       Example (Reference ii: Documentation/ptp/testptp.c):
 
-::
+.. code-block:: c
 
          fd = open("/dev/ptp0", O_RDWR);
          ...
 
-::
 
          if (ioctl(fd, PTP_ENABLE_PPS, 1))
               perror("PTP_ENABLE_PPS");
          else
               puts("pps for system time enable okay");
 
-::
 
          if (ioctl(fd, PTP_ENABLE_PPS, 0))
               perror("PTP_ENABLE_PPS");
@@ -1420,12 +1414,10 @@ asserted low when the polarity bit is low.
 
       Example (Reference iii: linuxptp-1.2/phc2sys.c)
 
-::
+.. code-block:: c
 
          ...
          struct pps_fdata pfd;
-
-::
 
          pfd.timeout.sec = 10;
          pfd.timeout.nsec = 0;
@@ -1434,8 +1426,6 @@ asserted low when the polarity bit is low.
             pr_err("failed to fetch PPS: %m");
             return 0;
          }
-
-::
 
          ...
 

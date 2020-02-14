@@ -77,7 +77,7 @@ When using "D" rated parts that run at 500 MHz, a clock table entry for
 this speed needs to be added to the U-Boot sources in
 arch/arm/cpu/armv7/omap5/hw\_data.c.
 
-::
+.. code-block:: c
 
     static const struct dpll_params mpu_dpll_params_500mhz[NUM_SYS_CLKS] = {
             {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1},       /* 12 MHz   */
@@ -151,7 +151,7 @@ arch/arm/cpu/armv7/omap5/fdt.c. In that file, there are voltage domain
 configurations for the DSP, IVA, and GPU cores. Here's an example of the
 DSP's:
 
-::
+.. code-block:: c
 
     u32 dra7_opp_dsp_clk_rates[NUM_OPPS][OPP_DSP_CLK_NUM] = {
         {}, /*OPP_LOW */

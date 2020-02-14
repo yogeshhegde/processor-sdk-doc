@@ -429,7 +429,7 @@ The following are some details regarding the MPM configuration file:
 
 -	By default, the MPM configuration file configures the MSMC region with start address at 0x0c000000 and size of 0x600000 bytes, and the DDR region with start address of 0xa0000000 and size of 0x10000000 bytes, as seen in the snippet below.
 
-::
+.. code-block:: javascript
 
 		{
 			"name": "local-msmc",
@@ -464,7 +464,7 @@ We want to place the DSP application in DDR instead of MSMC, so we need to make 
 
 Remove the following lines:
 
-::
+.. code-block:: javascript
 
 	Build.platformTable["ti.platforms.evmTCI66AK2G02:core0"] = {
     externalMemoryMap: [ ]
@@ -472,7 +472,7 @@ Remove the following lines:
 	
 and add the following:
 
-::
+.. code-block:: javascript
 
 	var evmTCI66AK2G02_ExtMemMapDsp = {
 		EXT_DDR: {
@@ -501,7 +501,7 @@ By default, mpm_config.json defines the DDR region to start at 0xa0000000 with a
 
 To do this, change the following block from:
 
-::
+.. code-block:: javascript
 
 		{
 			"name": "local-ddr",
@@ -512,7 +512,7 @@ To do this, change the following block from:
 
 To:
 
-::
+.. code-block:: javascript
 
 		{
 			"name": "local-ddr",
@@ -526,7 +526,7 @@ To:
 
 Remove the following lines: 
 
-::	
+.. code-block:: javascript
 
 	Program.sectMap[".text:_c_int00"] = new Program.SectionSpec();
 	Program.sectMap[".text:_c_int00"].loadSegment = "L2SRAM";
@@ -535,6 +535,7 @@ Remove the following lines:
 These lines above place the .text section into L2SRAM. We want it to be in DDR so it needs to be removed.
 
 Remove the following lines:
+
 ::
 
 	var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
