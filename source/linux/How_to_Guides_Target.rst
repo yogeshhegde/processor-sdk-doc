@@ -15,3 +15,4 @@ Target
    How_to_Guides/Target/How_to_Set_Display_for_AM572x_GP_EVM
    How_to_Guides/Target/How_to_Boot_Beagle_Bone_Black_with_Processor_SDK_Linux
    How_to_Guides/Target/How_to_flash_emmc_device
+   How_to_Guides/Target/How_to_visualize_statistics_data
