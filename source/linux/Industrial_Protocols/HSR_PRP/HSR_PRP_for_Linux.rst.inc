@@ -915,10 +915,10 @@ untagged frames from the network when the VLAN filtering is enabled.
 However there is no support for port VLAN which allows these frames
 to be received at a designated VLAN interface.
 
-Broadcast Storm Prevention
+Network Storm Prevention
 --------------------------
-Broadcast storm is defined as an excessive amount of Layer 2
-broadcast Ethernet frames at the ingress of a network interface
+Network storm is defined as an excessive amount of Ethernet
+frames at the ingress of a network interface
 causing resources being wasted in the device for processing
 these frames and thereby affecting the device performance.
 
@@ -926,33 +926,38 @@ PRUETH driver implements a control mechanism that user can
 enable to drop these frames if the number of frames received
 during a window (100 msec) reaches a threshold. PRUETH uses
 a credit value as the threshold which is user configurable
-on a per interface basis. There is a sysfs entry
+on a per interface and packet type (broadcast/multicast/unicast) basis.
+There are sysfs entries ``nsp_credit_bc`` (broadcast),
+``nsp_credit_mc`` (multicast), and ``nsp_credit_uc`` (unicast) located at:
 
 ::
 
-  /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/nsp_credit
+  /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/nsp_credit_bc
+  /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/nsp_credit_mc
+  /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/nsp_credit_uc
 
 Where ID and if number are obtained from the table under the section
 :ref:`PLSDK_HSR_PRP_id_if_number_mapping`. The driver writes the credit value in DRAM
 based on the sysfs entry from user. The PRU firmware uses the credit
 value as a counter. The driver refreshes the counter every 100 msec.
 i.e write the credit value to memory every 100 msec. PRU Firmware
-upon receiving a broadcast frame decrements this counter until it
-becomes zero.  Firmware forwards the broadcast frames to Host or ARM
-until the counter is non zero. PRU Firmware drops the broadcast frames
+upon receiving a frame decrements this counter until it
+becomes zero.  Firmware forwards the frames to Host or ARM
+until the counter is non zero. PRU Firmware drops the frames
 if the counter is zero. Since driver writes the credit value to DRAM
-every 100 msec, the number of broadcast frames sent to host or ARM
+every 100 msec, the number of frames sent to host or ARM
 during a 100 msec window is limited to the credit value and anything
-beyond that is dropped by the firmware. Firmware maintains a statistics
-counter, stormPrevCounter, for the number of frames dropped due to
-storm prevention control and can be seen using ethtool -S command.
+beyond that is dropped by the firmware. Firmware maintains statistics
+counters, stormPrevCounterBC/stormPrevCounterMC/stormPrevCounterUC,
+for the number of frames dropped due to storm prevention control
+for each packet type and can be seen using ethtool -S command.
 
 Note that this feature is disabled by default and user needs to
 configure it explicitely to enable the feature. A write of non zero
 value to the sysfs file enables the feature and zero disables the
 feature. The value to be used may be experimented in a particular
-network situation and configured by the user. In a typical network,
-there will be few of these per 100 msec window such as ARP broadcast,
+network situation and configured by the user. E.g. In a typical network,
+there will be few broadcast frames per 100 msec window such as ARP broadcast,
 DHCP broadcast, router advetisement etc. So user may observe the
 broadcast traffic in the network using network tools such as wireshark
 and set the credit value accordingly.
@@ -963,15 +968,16 @@ To enable do
 
 ::
 
- >echo 10 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit
+ >echo 10 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit_bc
 
-for setting credit value to 10 for eth2. Similarly for other interfaces.
+for setting broadcast credit value to 10 for eth2. Similarly for other
+interfaces and types
 
 To disable do
 
 ::
 
- >echo 0 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit
+ >echo 0 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit_bc
 
 Receive Interrupt Pacing
 ------------------------
