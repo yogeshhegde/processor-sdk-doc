@@ -45,7 +45,7 @@ then the frequency.
 Latest release this documentation applies to is Kernel v4.4
 
 .. rubric:: Supported Devices
-   :name: supported-devices
+   :name: supported-devices-kernel-pm
 
 -  DRA7xx
 -  J6
@@ -56,7 +56,7 @@ Latest release this documentation applies to is Kernel v4.4
 | 
 
 .. rubric:: Driver Features
-   :name: driver-features
+   :name: driver-features-kernel-pm
 
 Dynamic voltage and frequency scaling, or DVFS as it is commonly known,
 is the ability of a part to modify both the voltage and frequency it
@@ -432,7 +432,6 @@ runtime, such as how long each state is occupied.
     -r--r--r--    1 root     root         4096 Jan  1 00:02 usage
 
 .. rubric:: Smartreflex
-   :name: smartreflex
 
 Adaptive Voltage Scaling(AVS) is an active PM Technique and is based on
 the silicon type. SmartReflex is currently only supported on DRA7 and
@@ -771,7 +770,6 @@ power state transitions performed by the CM3 firmware.
 responsible for communicating with the CM3 firmware.
 
 .. rubric:: Suspend/Resume
-   :name: suspendresume
 
 Suspend on am335x and am437x depends on interaction between the Linux
 kernel and the wkup\_m3, so there are several requirements when building

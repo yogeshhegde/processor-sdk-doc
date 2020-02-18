@@ -168,7 +168,7 @@ Kernel Configuration tool.
     ...
 
 .. rubric:: **Building into Kernel**
-   :name: building-into-kernel
+   :name: building-into-kernel-dwc3
 
 -  Select USB support from the menu.
 
@@ -351,7 +351,7 @@ arch/arm/boot/dts/
 | 
 
 .. rubric:: Testing
-   :name: testing
+   :name: testing-kerel-dwc3
 
 .. rubric:: Host Mode
    :name: host-mode
@@ -360,7 +360,7 @@ arch/arm/boot/dts/
    :name: selecting-cables
 
 .. rubric:: OMAP5-uevm
-   :name: omap5-uevm
+   :name: omap5-uevm-kernel-dwc3
 
 OMAP5-evm has a single Super-Speed micro AB port provided by the DWC3
 controller. To use it in host mode a OTG adapter (Micro USB 3.0 9-Pin

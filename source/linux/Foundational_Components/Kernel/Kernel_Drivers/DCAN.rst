@@ -572,7 +572,6 @@ into three layers Viz user space, kernel space and hardware.
 
 
 .. rubric:: **User Space**
-   :name: user-space
 
 CAN utils are used as the application binaries for transfer/receive
 frames. These utils are very useful for debugging the driver.
@@ -608,7 +607,6 @@ can read and write application data byte streams, without having to deal
 with CAN-IDs, frames, etc.
 
 .. rubric:: **Hardware**
-   :name: hardware
 
 This layer mainly consisting of DCAN core and DCAN IO pins for packet
 Transmission or reception.

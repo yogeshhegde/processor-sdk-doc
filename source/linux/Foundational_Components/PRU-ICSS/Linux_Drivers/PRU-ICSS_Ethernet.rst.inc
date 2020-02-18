@@ -180,7 +180,6 @@ IDK) additional 100 Mbps Ethernet interfaces to be exposed to the user.
 | 
 
 .. rubric:: Block Diagram
-   :name: block-diagram
 
 | This is a high level block diagram to show how everything fits
   together. For more information see the schematics for the boards as

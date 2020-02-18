@@ -4,7 +4,6 @@ MCSDK to Processor SDK Migration Guide
 =======================================
 
 .. rubric:: Introduction
-   :name: introduction
 
 For many years, the MCSDK has been a great way to get started with
 Embedded Software development on TI's KeyStone architecture processors
@@ -112,7 +111,6 @@ to
      --prefix [INSTALL_PATH] --mode silent
 
 .. rubric:: Processor SDK Linux
-   :name: processor-sdk-linux
 
 This chapter describes what's changed from a Linux point of view, when
 migrating from MCSDK to Processor SDK
@@ -310,7 +308,6 @@ Processor SDK Linux are available
 | 
 
 .. rubric:: Processor SDK RTOS
-   :name: processor-sdk-rtos
 
 .. rubric:: Directory Structure
    :name: directory-structure-1

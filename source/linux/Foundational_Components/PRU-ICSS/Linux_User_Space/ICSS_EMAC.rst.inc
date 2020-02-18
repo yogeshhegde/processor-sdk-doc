@@ -124,7 +124,6 @@ the ICSS-EMAC unit test on these platforms.
 |
 
 .. rubric:: AM335x ICE V2
-   :name: am335x-ice-v2
 
 Before powering up the AM335x ICE V2 EVM, ensure that Pin 2 and Pin 3 of
 the two CPSW/ICSS Jumpers are connected. Location of these two jumpers
@@ -142,7 +141,6 @@ http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_E
 | 
 
 .. rubric:: AM437x IDK
-   :name: am437x-idk
 
 #. Plug in loopback plugs (aka loopback cables) to the two ICSS-EMAC ports of AM4 IDK EVM
 #. On the filesystem under /boot directory, link
@@ -154,7 +152,6 @@ http://processors.wiki.ti.com/index.php/AM335x_Industrial_Communication_Engine_E
 | 
 
 .. rubric:: AM571x IDK
-   :name: am571x-idk
 
 First ensure that Jumper J51 is not placed. That selects between LCD
 function (J51 placed) and ICSS1 Ethernet (J51 removed). This also
@@ -171,7 +168,6 @@ AM571x IDK board.
 | 
 
 .. rubric:: AM572x IDK
-   :name: am572x-idk
 
 #. Reserve core 1 for the unit test, and this can be done by adding
    "isolcpus=1" in uEnv.txt (under boot partition).

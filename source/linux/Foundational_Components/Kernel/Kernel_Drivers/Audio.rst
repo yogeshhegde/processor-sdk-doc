@@ -105,7 +105,7 @@ Board-specific instructions
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
     .. rubric:: OMAP5 uEVM
-       :name: omap5-uevm
+       :name: omap5-uevm-kernel-audio
 
     | The board uses **twl6040 codec** connected through **McPDM** for
       onboard audio and features one **Headset** connector, one **Stereo

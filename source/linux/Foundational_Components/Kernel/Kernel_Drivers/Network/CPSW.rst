@@ -244,7 +244,6 @@ added vlan will be subscribed to all the ports, in Dual EMAC mode added
 VLAN will be subscribed to host port and the respective slave ports.
 
 .. rubric:: Examples
-   :name: examples
 
 **VLAN Add**
 
@@ -345,7 +344,6 @@ implementation. Following are the assumptions made for Dual Emac mode
 implementation
 
 .. rubric:: Block Diagram
-   :name: block-diagram
 
 .. Image:: ../../../../../images/Dual-EMAC-Implementation.jpg
 

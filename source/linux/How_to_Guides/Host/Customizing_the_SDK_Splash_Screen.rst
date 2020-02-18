@@ -3,7 +3,6 @@
 Customizing the SDK Splash Screen
 =============================================
 .. rubric:: Overview
-   :name: overview
 
 This article discusses how to customize the splash screen for the Linux
 SDK. The info was derived from `this e2e forum

@@ -38,7 +38,7 @@ For all other SoCs:
 -  ELM driver (for applicable SoC) : controller driver for ELM engine.
 
 .. rubric:: **Supported Features**
-   :name: supported-features
+   :name: supported-features-kernel-nand
 
 | GPMC NAND driver supports:
 

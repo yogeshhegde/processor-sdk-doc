@@ -16,7 +16,7 @@ mainline and for older kernels. Some features may be missing from
 mainline.
 
 .. rubric:: Supported Devices
-   :name: supported-devices
+   :name: supported-devices-kernel-dss
 
 There are many DSS IP versions, all of which support slightly different
 set of features. All the DSS IP versions are supported by the same
@@ -218,7 +218,7 @@ version used in the SoC.
 |
 
 .. rubric:: Driver Architecture
-   :name: driver-architecture
+   :name: driver-architecture-kernel-pm
 
 The driver for DSS IP is omapdrm. omapdrm is a Direct Rendering Manager
 (DRM) driver, located in the directory drivers/gpu/drm/omapdrm/ in the
@@ -248,13 +248,13 @@ The mapping of DRM entities to DSS hardware is roughly as follows:
 |
 
 .. rubric:: Driver Features
-   :name: driver-features
+   :name: driver-features-kernel-dss
 
 Note: this is not a comprehensive list of features supported/not
 supported.
 
 .. rubric:: Supported Features
-   :name: supported-features
+   :name: supported-features-kernel-dss
 
 LCD Outputs:
 

@@ -13,7 +13,6 @@ will only describe how to get standard Ethernet working using the
 Kernel's PRU Ethernet driver.
 
 .. rubric:: **Acronyms & definitions**
-   :name: acronyms-definitions
 
 +-----------+-------------------------------+
 | Acronym   | Definition                    |

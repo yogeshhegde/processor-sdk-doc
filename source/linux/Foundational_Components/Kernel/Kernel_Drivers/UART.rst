@@ -15,7 +15,6 @@ framework support of Linux kernel.
 This documentation applies to Kernel v4.14 and higher.
 
 .. rubric:: Suppported Devices
-   :name: supported-devices
 
 • |__PART_FAMILY_DEVICE_NAMES__|
 
@@ -23,7 +22,6 @@ Driver Features
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. rubric:: Driver Features
-   :name: driver-features
 
 Driver supports the following features:
 

@@ -18,7 +18,7 @@ flash, thereby simplifying software requirements. These controllers work
 only in master mode.
 
 .. rubric:: Supported Devices
-   :name: supported-devices
+   :name: supported-devices-kernel-qspi
 
 There are two variants of OSPI/QSPI controller IPs on various TI SoCs.
 The table below provides a mapping of driver and capabilities for
@@ -73,7 +73,7 @@ Driver uses mem-to-mem DMA copy on top of OSPI/QSPI memory mapped port during
 read from flash for maximum throughput and reduced CPU load.
 
 .. rubric:: Driver Architecture
-   :name: driver-architecture
+   :name: driver-architecture-kernel-qspi
 
 Following diagram shows the QSPI driver stack:
 
@@ -172,7 +172,7 @@ Enabling UBIFS filesystem support:
                   <*>   UBIFS file system support
 
 .. rubric:: DT Configuration
-   :name: dt-configuration
+   :name: dt-configuration-kernel-qspi
 
 Refer to Documentation/devicetree/bindings/spi/ti\_qspi.txt under
 kernel source tree for spi-ti-qspi controller driver's DT bindings and
@@ -235,7 +235,7 @@ or via command line arguments):
         mtd6: 036d0000 00010000 "QSPI.FILESYSTEM"
 
 .. rubric:: Testing
-   :name: testing
+   :name: testing-kernel-qspi
 
 .. rubric:: Using mtd-utils
    :name: using-mtd-utils

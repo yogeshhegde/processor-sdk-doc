@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Getting_Started_Guide
 .. rubric:: Overview
-   :name: overview
+   :name: overview-pruss-getting-started
 
 .. note::
 
@@ -72,7 +72,6 @@ Tools installation paths are generally fairly arbitrary, but we do have
 a few requirements once you have installed to your preferred directory.
 
 .. rubric:: Linux
-   :name: linux
 
 #. Install Processor SDK to the directory of your choosing
    Follow the installation instructions found

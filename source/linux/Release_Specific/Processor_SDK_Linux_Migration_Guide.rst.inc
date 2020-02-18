@@ -5,7 +5,6 @@ Migration Guide
 ************************************
 
 .. rubric:: Overview
-   :name: overview
 
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
@@ -226,7 +225,6 @@ Processor SDK 04.03
 Processor SDK 04.02
 ----------------------
 .. rubric:: Linux
-   :name: linux
 
 .. rubric:: PRUETH Driver
    :name: prueth-driver
@@ -274,7 +272,6 @@ Processor SDK 04.00
    :name: ipc-1
 
 .. rubric:: remoteproc
-   :name: remoteproc
 
 -  The debugfs 'state' variable is replaced with a sysfs 'state'
    variable accepting 'start' and 'stop' to boot and shutdown a remote
@@ -292,7 +289,6 @@ Processor SDK 04.00
    onto upstream.
 
 .. rubric:: rpmsg
-   :name: rpmsg
 
 -  virtio\_rpmsg\_bus module split into a 'rpmsg\_core' and virtio-rpmsg
    transport specific 'virtio\_rpmsg\_bus' modules.

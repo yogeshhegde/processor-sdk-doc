@@ -11,7 +11,6 @@ variables stored in SPI Flash can be accessed from a Linux command line
 using a tool provided from U-Boot.
 
 .. rubric:: Assumptions
-   :name: assumptions
 
 #. This example is based on the AMSDK, AM335x GP EVM and the User is has
    the latest version of the AMSDK installed
@@ -30,7 +29,6 @@ using a tool provided from U-Boot.
 | 
 
 .. rubric:: Overview
-   :name: overview
 
 To access the environment variables from Linux one of the tools from
 u-boot must be cross compiled and copied into the file system. This tool

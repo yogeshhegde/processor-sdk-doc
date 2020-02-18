@@ -46,7 +46,6 @@ currently not supported in the Linux driver.
 - SPI slave mode isn't supported
 
 .. rubric:: Kernel Configuration
-   :name: kernel-configuration
 
 The specific peripheral driver to enable depends on the SoC being used.
 
@@ -191,7 +190,6 @@ programming languages that can communicate with kernel ioctls.
           <*> User mode SPI device driver support
 
 .. rubric:: Device Tree
-   :name: device-tree
 
 Below is an example of the device tree settings a user would use to
 enable the spidev driver. Like most drivers for a peripheral, the spidev

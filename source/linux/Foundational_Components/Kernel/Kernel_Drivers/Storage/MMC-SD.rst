@@ -209,7 +209,7 @@ Driver Configuration
        ...
    
    .. rubric:: **Building into Kernel**
-      :name: building-into-kernel
+      :name: building-into-kernel-mmcsd
    
    -  Select MMC/SD/SDIO card support from the menu.
    
@@ -239,7 +239,6 @@ Driver Configuration
        ...
    
    .. rubric:: **Building as Loadable Kernel Module**
-      :name: building-as-loadable-kernel-module
    
    -  To build the above components as modules, press 'M' key after
       navigating to config entries preceded with '< >' as shown below:

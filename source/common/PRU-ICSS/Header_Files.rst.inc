@@ -1,7 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Header_Files
 
 .. rubric:: Introduction
-   :name: introduction
 
 The header files for the PRU-ICSS were written in such a way so as to
 sit on top of the memory-mapped registers. They can be directly linked

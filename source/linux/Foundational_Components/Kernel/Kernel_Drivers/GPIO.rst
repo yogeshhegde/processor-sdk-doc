@@ -21,14 +21,12 @@ configuration.
     .. ifconfig:: CONFIG_part_family in ('J7_family')
 
         .. rubric:: J721E specifics
-           :name: j721e specifics
 
         J721E SoCs host DAVINCI GPIO IP.
 
     .. ifconfig:: CONFIG_part_family in ('General_family')
 
         .. rubric:: AM65 specifics
-           :name: am65 specifics
 
         AM65 SoCs host DAVINCI GPIO IP.
 

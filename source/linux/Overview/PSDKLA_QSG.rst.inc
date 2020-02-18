@@ -1,7 +1,6 @@
 .. include:: replacevars.rst.inc
 
 .. rubric:: Quick Start Guide
-   :name: quick-start-guide
 
 Thanks for your interest in |__SDK_FULL_NAME__|.
 In this section, we describe the basic steps needed to start development using the SDK.

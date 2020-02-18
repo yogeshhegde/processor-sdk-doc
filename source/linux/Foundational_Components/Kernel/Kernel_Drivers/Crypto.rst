@@ -34,7 +34,6 @@ the pure software implementation of OpenSSL for the crypto demos.
     .. ifconfig:: CONFIG_part_family in ('J7_family')
 
         .. rubric:: J721E specifics
-           :name: j721e specifics
 
         J721E SoCs support hardware accelerator for crypto operations
         (Security Accelerator Ultra Light).
@@ -42,7 +41,6 @@ the pure software implementation of OpenSSL for the crypto demos.
     .. ifconfig:: CONFIG_part_family in ('General_family')
 
         .. rubric:: AM65 specifics
-           :name: am65 specifics
 
         AM65 SoCs support hardware accelerator for crypto operations
         (Security Accelerator Ultra Light).

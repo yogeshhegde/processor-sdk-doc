@@ -1,6 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_CCS_Compiling_Guide
 .. rubric:: Overview
-   :name: overview
 
 Code Composer Studio (CCS) v6.0 is the IDE integrated with the Sitara
 SDK and resides on your host Ubuntu machine. This wiki article covers

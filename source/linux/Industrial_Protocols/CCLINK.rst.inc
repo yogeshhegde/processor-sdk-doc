@@ -1,6 +1,5 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_CCLINK
 .. rubric:: Overview
-   :name: overview
 
 Control and Communication Link (CC-Link) is an open network administered
 as a fully-open architecture by the CC-Link Partner Association (CLPA).

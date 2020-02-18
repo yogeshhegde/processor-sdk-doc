@@ -174,7 +174,6 @@ tools on an Intel platform. This will cause the tools to fail to run and
 the kernel to fail to compile.
 
 .. rubric:: Usage
-   :name: usage
 
 The following sections give some examples of how to use the included
 toolchain to compile simple applications such as *HelloWorld* to more
