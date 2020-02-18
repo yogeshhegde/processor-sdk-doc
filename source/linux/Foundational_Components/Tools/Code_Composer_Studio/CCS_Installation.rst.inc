@@ -41,7 +41,7 @@ training pages.
 | 
 
 .. rubric:: Prerequisites
-   :name: prerequisites
+   :name: prerequisites-ccs-install
 
 If you wish to use CCS along with the Processor Linux SDK, there are
 requirements to consider before you attempt to install and run CCS. To
@@ -377,7 +377,7 @@ file system:
 
 #. For all file system types, you can also transfer the file using the
    drag-and-drop method of Remote System Explorer. See the `Remote
-   System Explorer <#remote-system-explorer>`__ section below for more
+   System Explorer <#remote-system-explorer-ccs-install>`__ section below for more
    details.
 #. Files can also be moved from the Linux command line. Typically,
    executable files are stored in the project's Debug folder in the
@@ -386,13 +386,13 @@ file system:
 | 
 
 .. rubric:: Creating a New Project
-   :name: creating-a-new-project
+   :name: creating-a-new-project-ccs-install
 
 This section will cover how to create a new cross-compile project to
 build a simple *Hello World* application for the target.
 
 .. rubric:: Configuring the Project
-   :name: configuring-the-project
+   :name: configuring-the-project-ccs-install
 
 #. From the main CCSv6 window, select **File -> New -> Project...** menu
    item.
@@ -450,7 +450,7 @@ build a simple *Hello World* application for the target.
    .. Image:: ../../../images/CCS_pe_helloworld.png
 
 .. rubric:: Adding Sources to the Project
-   :name: adding-sources-to-the-project
+   :name: adding-sources-to-the-project-ccs-install
 
 #. From the main CCS window select **File -> New> Source File** menu
    item.
@@ -474,7 +474,7 @@ build a simple *Hello World* application for the target.
 | 
 
 .. rubric:: Remote System Explorer
-   :name: remote-system-explorer
+   :name: remote-system-explorer-ccs-install
 
 CCS as installed with this SDK includes the Remote System Explorer (RSE)
 plugin. RSE provides drag-and-drop access to the target file system as

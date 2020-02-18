@@ -4,7 +4,7 @@ AM335x Power Management User Guide
 ------------------------------------
 
 .. rubric:: Overview
-   :name: overview
+   :name: overview-am335x-pm
 
 This article provides a description of the example applications under
 the Power page of the Matrix application that comes with the Sitara

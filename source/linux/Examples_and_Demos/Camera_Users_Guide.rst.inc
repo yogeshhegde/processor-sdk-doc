@@ -17,7 +17,7 @@ be executed by selecting the "Camera" icon at the top-level matrix.
 | 
 
 .. rubric:: Supported Platforms
-   :name: supported-platforms
+   :name: supported-platforms-camera-ug
 
 -  AM37x
 

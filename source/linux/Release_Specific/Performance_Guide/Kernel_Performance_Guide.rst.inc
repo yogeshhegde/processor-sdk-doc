@@ -28,7 +28,7 @@ Table:  Evaluation Modules
 |
 
 .. rubric::  About This Manual
-   :name: about-this-manual
+   :name: about-this-manual-kernel-perf-guide
 
 This document provides performance data for each of the device drivers
 which are part of the Process SDK Linux package. This document should be
@@ -37,7 +37,7 @@ Process SDK Linux package for information on specific issues present
 with drivers included in a particular release.
 
 .. rubric::  If You Need Assistance
-   :name: if-you-need-assistance
+   :name: if-you-need-assistance-kernel-perf-guide
 
 For further information or to report any problems, contact
 http://community.ti.com/ or http://support.ti.com/
@@ -1042,7 +1042,7 @@ SATA Driver
 
 
 .. rubric::  AM57XX-EVM
-   :name: am57xx-evm
+   :name: am57xx-evm-sata
 
 
 |
@@ -1109,7 +1109,7 @@ mSATA Driver
 
 
 .. rubric::  AM57XX-EVM
-   :name: am57xx-evm
+   :name: am57xx-evm-msata
 
 
 |

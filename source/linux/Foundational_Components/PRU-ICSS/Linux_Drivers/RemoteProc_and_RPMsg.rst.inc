@@ -44,7 +44,7 @@ SDK <index.html>`__.
    :name: remoteproc
 
 .. rubric:: Overview
-   :name: overview
+   :name: overview-remoteproc
 
 Remoteproc is a framework that allows the ARM host processor(s) to load
 firmware into PRU cores, start the PRU cores, stop the PRU cores, and

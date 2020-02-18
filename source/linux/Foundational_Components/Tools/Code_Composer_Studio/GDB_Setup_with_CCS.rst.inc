@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_CCS_GDB_Setup
 .. rubric:: Prerequisites
-   :name: prerequisites
+   :name: prerequisites-ccs-gdb-setup
 
 Before you configure RSE you should make sure the following
 prerequisites are met:

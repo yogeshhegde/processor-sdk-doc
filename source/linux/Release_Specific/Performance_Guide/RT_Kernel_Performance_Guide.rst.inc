@@ -2,7 +2,7 @@
 
 
 .. rubric::  **Read This First**
-   :name: read-this-first
+   :name: read-this-first-rt-kernel-perf-guide
 
 **All performance numbers provided in this document are gathered using
 following Evaluation Modules unless otherwise specified.**
@@ -31,7 +31,7 @@ Table:  Evaluation Modules
 |
 
 .. rubric::  About This Manual
-   :name: about-this-manual
+   :name: about-this-manual-rt-kernel-perf-guide
 
 This document provides performance data for each of the device drivers
 which are part of the Process SDK Linux package. This document should be
@@ -40,7 +40,7 @@ Process SDK Linux package for information on specific issues present
 with drivers included in a particular release.
 
 .. rubric::  If You Need Assistance
-   :name: if-you-need-assistance
+   :name: if-you-need-assistance-rt-kernel-perf-guide
 
 For further information or to report any problems, contact
 http://community.ti.com/ or http://support.ti.com/

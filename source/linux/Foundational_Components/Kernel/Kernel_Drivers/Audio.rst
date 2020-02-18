@@ -627,7 +627,7 @@ Board-specific instructions
                   <*> SoC Audio support for j721e EVM
 
     .. rubric:: User space
-       :name: user-space-3
+       :name: user-space-8-kernel-audio
 
     ``NOTE: Playback volume is HIGH after boot. Do not use headset without lowering it!!!``
 

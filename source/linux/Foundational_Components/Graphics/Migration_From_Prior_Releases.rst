@@ -129,7 +129,7 @@ startup and most of the Graphics applications are backward-compatible except
 with the following changes.
 
 .. rubric:: Window System Libraries
-   :name: window-system-libraries-2
+   :name: window-system-libraries-3
 
 With MESA-EGL, all window system modules are embedded in the libEGL.so, both
 GBM(DRM) full-screen and Wayland window systems are supposrted and dynamically

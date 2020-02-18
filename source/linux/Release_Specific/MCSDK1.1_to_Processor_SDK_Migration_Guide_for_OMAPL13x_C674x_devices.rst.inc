@@ -12,13 +12,13 @@ the only software package that TI supports on these devices for new
 development.
 
 .. rubric:: Installation
-   :name: installation
+   :name: installation-mcsdk-to-procsdk-omapl1
 
 -  Processor SDK Linux is available as an installer on ti.com for
    download
 
 .. rubric:: Target Machine
-   :name: target-machine
+   :name: target-machine-mcsdk-to-procsdk-omapl1
 
 -  The Processor SDK Linux installer is available only for 64-bit host
    machines running Linux. Support for 32-bit machines is dropped
@@ -35,7 +35,7 @@ development.
 -  Processor Linux SDK is using Linaro GCC 6.2-2016.11 cross compiler.
 
 .. rubric:: Directory Structure
-   :name: directory-structure
+   :name: directory-structure-mcsdk-to-procsdk-omapl1
 
 -  The images directory in MCSDK is renamed to prebuilt\_images and
    moved under board\_support directory.
@@ -53,7 +53,7 @@ development.
    Structure <Overview_Directory_Structure_Overview.html>`__
 
 .. rubric:: U-Boot
-   :name: u-boot
+   :name: u-boot-mcsdk-to-procsdk-omapl1
 
 -  Bootz is enabled in u-boot. So use zImage instead of uImage
 -  A copy of u-boot GIT repo is included in the board-support folder of
@@ -71,7 +71,7 @@ development.
    Guide <Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__
 
 .. rubric:: Linux Kernel
-   :name: linux-kernel
+   :name: linux-kernel-mcsdk-to-procsdk-omapl1
 
 -  The Linux kernel is upgraded to 4.9.
 -  A copy of Kernel GIT repo is included in the board-support folder of
@@ -84,7 +84,7 @@ development.
    Guide <Foundational_Components_Kernel_Users_Guide.html>`__
 
 .. rubric:: Building the Linux SDK
-   :name: building-the-linux-sdk
+   :name: building-the-linux-sdk-mcsdk-to-procsdk-omapl1
 
 -  The Processor SDK Linux can be fully assembled from sources, via
    Yocto.

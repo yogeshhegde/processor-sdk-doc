@@ -9,7 +9,7 @@ including debugging through both GDB and JTAG and accessing your target
 device remotely through remote system explorer.
 
 .. rubric:: Prerequisites
-   :name: prerequisites
+   :name: prerequisites-ccs-compiling
 
 If you wish to use CCS along with the Sitara Linux SDK, there are some
 setup steps required before you attempt to install and run CCS.
@@ -79,13 +79,13 @@ excluding the Qt projects.
 .. Image:: ../../../images/Projects-imported.png
 
 .. rubric:: Creating a New Project
-   :name: creating-a-new-project
+   :name: creating-a-new-project-ccs-compiling
 
 This section will cover how to create a new cross-compile project to
 build a simple **Hello World** application for the target.
 
 .. rubric:: Configuring the Project
-   :name: configuring-the-project
+   :name: configuring-the-project-ccs-compiling
 
 #. From the main CCS window, select **File -> New -> Project...** menu
    item
@@ -123,7 +123,7 @@ build a simple **Hello World** application for the target.
 #. Click **Finish**
 
 .. rubric:: Adding Sources to the Project
-   :name: adding-sources-to-the-project
+   :name: adding-sources-to-the-project-ccs-compiling
 
 #. After completing the steps above you should now have a **helloworld**
    project in your CCS *Project Explorer* window, but the project has no
@@ -174,7 +174,7 @@ build a simple **Hello World** application for the target.
 | 
 
 .. rubric:: Next Steps
-   :name: next-steps
+   :name: next-steps-ccs-compiling
 
 .. rubric:: Copying Binaries to the File system
    :name: copying-binaries-to-the-file-system
@@ -192,7 +192,7 @@ file system:
 | 
 
 .. rubric:: Remote System Explorer
-   :name: remote-system-explorer
+   :name: remote-system-explorer-ccs-compiling
 
 CCS v6 by default includes the Remote System Explorer (RSE) plug-in. RSE
 provides drag-and-drop access to the target file system as well as
@@ -206,7 +206,7 @@ learn how to use this feature.
 | 
 
 .. rubric:: Debugging Source Code using Code Composer Studio
-   :name: debugging-source-code-using-code-composer-studio
+   :name: debugging-source-code-using-code-composer-studio-ccs-compiling
 
 In order to debug user-space Linux code using Code Composer Studio v6,
 you first need to configure your project to use gdb and gdbserver

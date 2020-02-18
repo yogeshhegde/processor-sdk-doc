@@ -5,7 +5,7 @@ ARM Multimedia Users Guide
 
 
 .. rubric:: Overview
-   :name: overview
+   :name: overview-arm-mm-ug
 
 | 
 
@@ -18,7 +18,7 @@ Cortex-A series processors. It is designed to provide acceleration for
 multimedia applications.
 
 .. rubric:: Supported Platforms
-   :name: supported-platforms
+   :name: supported-platforms-arm-mm-ug
 
 -  AM37x
 -  Beagleboard-xM

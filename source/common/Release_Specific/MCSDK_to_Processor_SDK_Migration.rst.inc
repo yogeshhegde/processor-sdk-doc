@@ -76,7 +76,7 @@ As with MCSDK, Processor SDK is also available as an installer on ti.com
 for download.
 
 .. rubric:: Target Machine
-   :name: target-machine
+   :name: target-machine-mcsdk-to-procsdk
 
 The Processor SDK Linux installer is available only for host machines
 running Linux, where as the Processor SDK RTOS installer is available
@@ -116,7 +116,7 @@ This chapter describes what's changed from a Linux point of view, when
 migrating from MCSDK to Processor SDK
 
 .. rubric:: Directory Structure
-   :name: directory-structure
+   :name: directory-structure-mcsdk-to-procsdk
 
 In addition to the pre-built images and the filesystem, the installer
 now contains a copy of the Linux Kernel and U-Boot GIT repositories, and
@@ -152,7 +152,7 @@ documented
 `here <Overview_Getting_Started_Guide.html#program-evm-user-guide>`__.
 
 .. rubric:: U-Boot
-   :name: u-boot
+   :name: u-boot-mcsdk-to-procsdk
 
 U-Boot is upgraded to be based on 2015.07. Listed below are a few major
 differences from MCSDK.
@@ -192,7 +192,7 @@ differences from MCSDK.
    <Foundational_Components_U-Boot.html#u-boot-release-notes>`__
 
 .. rubric:: Linux Kernel
-   :name: linux-kernel
+   :name: linux-kernel-mcsdk-to-procsdk
 
 The Linux Kernel is upgraded to 4.1 (2015 LTS). Listed below are a few
 major differences from MCSDK (3.10 Kernel).
@@ -296,7 +296,7 @@ Listed below are a few major differences from MCSDK (3.10 Kernel).
 
 
 .. rubric:: Building the Linux SDK
-   :name: building-the-linux-sdk
+   :name: building-the-linux-sdk-mcsdk-to-procsdk
 
 As with MCSDK, the Processor SDK Linux can be fully assembled from
 sources, via Yocto. This gives the ability for customers to easily add

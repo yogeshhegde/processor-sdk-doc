@@ -10,7 +10,7 @@ Remote System Explorer (RSE) is an Eclipse plug-in that provides:
 -  Remote process monitor
 
 .. rubric:: Prerequisites
-   :name: prerequisites
+   :name: prerequisites-ccs-remote-setup
 
 Before you configure RSE you should make sure the following
 prerequisites are met:
@@ -62,7 +62,7 @@ Connection Wizard.
 #. Click **Next**
 #. In the **Remote Linux System Connection** window enter
    **Host name:** Enter the IP address of your target EVM. This can be
-   determined as detailed in the `**Prerequisites** <#prerequisites>`__
+   determined as detailed in the `**Prerequisites** <#prerequisites-ccs-remote-setup>`__
    section above
    **Connection name:** The default value is the same as the host name,
    but this can be changed to a more human readable value like *Target
@@ -257,10 +257,10 @@ To open an SSH Terminal view
 | 
 
 .. rubric:: Next Steps
-   :name: next-steps
+   :name: next-steps-ccs-remote-setup
 
 .. rubric:: Debugging Source Code using Code Composer Studio
-   :name: debugging-source-code-using-code-composer-studio
+   :name: debugging-source-code-using-code-composer-studio-ccs-remote-setup
 
 In order to debug user-space Linux code using Code Composer Studio v6,
 you first need to configure your project to use gdb and gdbserver

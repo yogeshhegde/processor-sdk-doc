@@ -196,7 +196,7 @@ that builds a filesystem image w/ the above tools plus:
 -  ltp-ddt
 
 .. rubric:: Installation
-   :name: installation
+   :name: installation-ltp-ddt
 
 Clone the project
 

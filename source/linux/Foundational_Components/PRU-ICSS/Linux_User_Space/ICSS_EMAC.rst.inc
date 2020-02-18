@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_ICSS-EMAC_User_Space
 .. rubric:: Overview
-   :name: overview
+   :name: overview-icss-emac
 
 The ICSS\_EMAC (Industrial Communications SubSystem Ethernet Media
 Access Controller) driver provides APIs to transmit and receive packets
