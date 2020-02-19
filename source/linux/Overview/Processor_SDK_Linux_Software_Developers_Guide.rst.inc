@@ -102,7 +102,7 @@ suggestions <Feedback>`.
     .. _OPTEE: Foundational_Components_OPTEE.html
 
 
-.. ifconfig:: CONFIG_part_family in ('AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
     +-----------------------+-----------------------+-------------------------+------------+
     | **Foundational Components** (more information on each piece of the distribution)     |

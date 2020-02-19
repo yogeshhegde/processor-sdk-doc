@@ -14,7 +14,7 @@ an interface between a local host (LH) such as a microprocessor unit
 cards, or SDIO cards and handles MMC/SDIO transactions with minimal LH
 intervention.
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
    Main features of the MMC/SDIO host controllers:
    
@@ -73,7 +73,7 @@ Table:  **HSMMC Driver: Acronyms**
 Features
 ^^^^^^^^
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
    The SD driver supports the following features:
    
@@ -179,7 +179,7 @@ Supported High Speed Modes
 Driver Configuration
 ^^^^^^^^^^^^^^^^^^^^
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
    The default kernel configuration enables support for MMC/SD(built-in to
    kernel). OMAP MMC/SD driver is used.
@@ -383,7 +383,7 @@ Driver Configuration
          MMC/SD/SDIO card support -->
             <*> Support for the SDHCI Controller in TI's AM654 SOCs
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
    .. rubric:: **Enabling eMMC Card Background operations support**
       :name: enabling-emmc-card-background-operations-support

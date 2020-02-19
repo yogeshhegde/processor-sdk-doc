@@ -16,7 +16,7 @@ may need to read a GPIO as in input to determine if a card is present.
 The H/W GPIO controllers available will vary by SoC and system
 configuration.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family', 'AM335X_family', 'AM437X_family')
 
     .. ifconfig:: CONFIG_part_family in ('J7_family')
 
@@ -97,7 +97,7 @@ Under Kernel directory arch/arm/boot/dts/am335x-bone-common.dtsi line 401
 
 |
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     .. rubric:: Power Management
        :name: power-management

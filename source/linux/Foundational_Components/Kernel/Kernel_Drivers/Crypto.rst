@@ -181,7 +181,7 @@ the pure software implementation of OpenSSL for the crypto demos.
         - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
-.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'General_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
     .. rubric:: AM335x, AM43xx - AES, DES, SHA/MD5 Drivers
        :name: am335x-am43xx---aes-des-shamd5-drivers

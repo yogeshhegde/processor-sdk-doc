@@ -230,7 +230,7 @@ The picture below shows the software architecture of Graphics in
 
    <div class="floatnone">
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     .. figure:: ../../../images/Graphic_software_stacks_DRM.png
         :align: center
@@ -355,7 +355,7 @@ Finding Connector ID
 
 Run the below ``modetest`` command:
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     ::
 
@@ -392,7 +392,7 @@ Finding Plane ID
 
 To find the Plane ID, run the modetest command:
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     ::
 
@@ -419,7 +419,7 @@ which should show something like below:
      props:
      ...
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     .. rubric:: kmscube
        :name: kmscube
@@ -443,7 +443,7 @@ which should show something like below:
 
           target # kmscube -a
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     .. rubric:: Running DSS Applications
        :name: running-dss-applications

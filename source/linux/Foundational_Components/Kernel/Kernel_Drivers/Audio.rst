@@ -38,7 +38,7 @@ In most cases ``-Dplughw:0,0`` is the device we want to use for audio
 but in case we have several audio devices (onboard + USB for example)
 one need to specify which device to use for audio:
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     ``-Dplughw:omap5uevm,0`` will use the onboard audio on OMAP5-uEVM
     board.
@@ -326,7 +326,7 @@ Board-specific instructions
 
         amixer -c AM335xEVMSK sset PCM 90                            # Master Playback volume
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
     .. rubric:: AM43x-EPOS-EVM
        :name: am43x-epos-evm
@@ -401,7 +401,7 @@ Board-specific instructions
     Note: The codec on has only one channel ADC so the captured audio is
     dual channel mono signal.
 
-.. ifconfig:: CONFIG_part_family in ('General_family')
+.. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
     .. rubric:: AM437x-GP-EVM
        :name: am437x-gp-evm
@@ -703,7 +703,7 @@ Additional Information
 .. rubric:: Software Help
    :name: additional-information-software-help
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     #. `Tools and Techniques for Audio Debugging
        <https://www.ti.com/lit/an/sprac10/sprac10.pdf>`__
@@ -718,7 +718,7 @@ Additional Information
 .. rubric:: Audio hardware codecs
    :name: additional-information-audio-hardware-codecs
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     #. `TLV320AIC31 - Low-Power Stereo CODEC with HP
        Amplifier <http://www.ti.com/lit/ds/symlink/tlv320aic31.pdf>`__

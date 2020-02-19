@@ -1,4 +1,4 @@
-# General family replacement variables and configuration values for Linux build
+# AM437X family replacement variables and configuration values for Linux build
 
 # This file is processed by Python scripts to define both replacement
 # variable and configuration values for a device family build.
@@ -13,14 +13,14 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'Sitara'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'Sitara devices'
+'__PART_FAMILY_NAME__'           : 'AM437x'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM437x devices'
 '__PRODUCT_LINE_NAME__'          : 'Sitara'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux'
 '__SDK_SHORT_NAME__'             : 'PLSDK'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-[platform]-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-[platformName]-evm-<version>'
-'__SDK_DOWNLOAD_URL__'           : '`AM57xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM57X/latest/index_FDS.html>`__'
+'__SDK_DOWNLOAD_URL__'           : '`AM437X-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM437X/latest/index_FDS.html>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '16.04 (64-bit), 18.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '16.04 or 18.04'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '14.04 (64-bit), 16.04 (64-bit)'
@@ -29,7 +29,7 @@ Replacement Variables
 
 Configuration Values
 --------------------
-'CONFIG_part_family'      : 'General_family'
+'CONFIG_part_family'      : 'AM437X_family'
 'CONFIG_sdk'              : 'PLSDK'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'

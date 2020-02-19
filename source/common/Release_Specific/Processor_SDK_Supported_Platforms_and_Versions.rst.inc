@@ -8,7 +8,7 @@ Supported Platforms and Versions
 The following operating systems have been validated to work with our
 SDK.
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     -  **Linux SDK**
 
@@ -206,6 +206,25 @@ The following platforms and EVMs are supported with Processor SDK.
     |                                      |/tmdxice110>`__                       |          |`Hardware Setup with CCS <http://processors |                |                |                |
     |                                      |                                      |          |.wiki.ti.com/index.php/ICE_AMIC110_         |                |                |                |
     |                                      |                                      |          |Hardware_Setup>`__                          |                |                |                |
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
+
+.. ifconfig:: CONFIG_part_family in ('AM437X_family')
+
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
+    |**Platform**                          |**EVM**                               |**Tested  |**Document**                                |**Processor SDK |**Processor SDK |**Processor SDK |
+    |                                      |                                      |Version** |                                            |Linux**         |RT Linux**      |RTOS**          |
+    +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
+    |`AM437x <http://www.ti.com/lsds/ti/   |`AM437x EVM                           | 1.5B     |`Hardware User's Guide <http://             | X              | X              | X              |
+    |processors/sitara/arm_cortex-a9/      |<http://www.ti.com/tool/              |          |processors.wiki.ti.com/index.php/AM437x_    |                |                |                |
+    |am437x/overview.page>`__              |TMDXEVM437X>`__                       |          |General_Purpose_EVM_HW_User_Guide>`__       |                |                |                |
+    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
+    |                                      |`AM437x SK                            | 1.1A     |`Hardware User's Guide <http://             | X              |                | X              |
+    |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/spruhw8>`__              |                |                |                |
+    |                                      |TMDXSK437X>`__                        |          |                                            |                |                |                |
+    |                                      +--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
+    |                                      |`AM437x IDK                           | 1.4A     |`Hardware User's Guide <http://             |                | X              | X              |
+    |                                      |<http://www.ti.com/tool/              |          |www.ti.com/lit/pdf/sprw259>`__              |                |                |                |
+    |                                      |tmdsidk437x>`__                       |          |                                            |                |                |                |
     +--------------------------------------+--------------------------------------+----------+--------------------------------------------+----------------+----------------+----------------+
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')

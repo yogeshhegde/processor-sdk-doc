@@ -1,4 +1,4 @@
-# General family replacement variables and configuration values for RTOS build
+# AM437X family replacement variables and configuration values for RTOS build
 
 # This file is processed by Python scripts to define both replacement
 # variable and configuration values for a device family build.
@@ -13,14 +13,14 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'Sitara'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'Sitara devices'
+'__PART_FAMILY_NAME__'           : 'AM437x'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM437x devices'
 '__PRODUCT_LINE_NAME__'          : 'Sitara'
 '__SDK_FULL_NAME__'              : 'Processor SDK RTOS'
 '__SDK_SHORT_NAME__'             : 'PRSDK'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-rtos-[platform]-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : '<HOME>/ti'
-'__SDK_DOWNLOAD_URL__'           : '`AM57xx-RTOS-SDK-Download-page <http://software-dl.ti.com/processor-sdk-rtos/esd/AM57X/latest/index_FDS.html>`__'
+'__SDK_DOWNLOAD_URL__'           : '`AM437X-RTOS-SDK-Download-page <http://software-dl.ti.com/processor-sdk-rtos/esd/AM437X/latest/index_FDS.html>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '18.04 (64-bit)'

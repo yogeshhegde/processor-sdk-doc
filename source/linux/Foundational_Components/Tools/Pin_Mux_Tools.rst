@@ -217,7 +217,7 @@ Edit the appropriate file in this directory:
 
     ${SDK\_INSTALL\_DIR}\\board\_support\\linux-\*\\arch\\arm64\\boot\\dts\\${BOARD}.dts
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
     ${SDK\_INSTALL\_DIR}\\board\_support\\linux-\*\\arch\\arm\\boot\\dts\\${BOARD}.dts
 
@@ -243,7 +243,7 @@ Edit the appropriate file in this directory:
 
     ${SDK\_INSTALL\_DIR}\\board\_support\\u-boot-\*\\board\\ti\\ks2\_evm\\mux-k2g.h
 
-.. ifconfig:: CONFIG_part_family in ('AM335X_family')
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
     .. rubric:: AM3 and AM4 u-boot
        :name: am3-and-am4-u-boot
