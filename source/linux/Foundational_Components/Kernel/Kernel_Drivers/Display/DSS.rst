@@ -430,9 +430,9 @@ standard, but some are omapdrm specific.
 +--------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | CTM                | crtc     | OMAP4+: Color Transformation Matrix blob property. Implemented trough Color phase rotation matrix in DSS IP. Applied after gamma table. Not available on OMAP4+ TV output.        |
 +--------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| GAMMA\_LUT         | crtc     | OMAP4+: Blob property to set the gamma lookup table (LUT) mapping pixel data sent to the connector.                                                                        |
+| GAMMA\_LUT         | crtc     | OMAP4+: Blob property to set the gamma lookup table (LUT) mapping pixel data sent to the connector.                                                                               |
 +--------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| GAMMA\_LUT\_SIZE   | crtc     | OMAP4+: Number of elements in gammma lookup table.                                                                                                                         |
+| GAMMA\_LUT\_SIZE   | crtc     | OMAP4+: Number of elements in gammma lookup table.                                                                                                                                |
 +--------------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 .. rubric:: Buffers
