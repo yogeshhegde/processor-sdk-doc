@@ -9,6 +9,7 @@ boot time?**
 
     # cat /etc/modprobe.d/modprobe.conf
     blacklist musb_am335x
+
 |
 
 **Q: How to disable a peripheral then enable it again?**

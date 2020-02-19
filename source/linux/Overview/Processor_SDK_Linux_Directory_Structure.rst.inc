@@ -24,10 +24,12 @@ Processor SDK devices.
 -  **board-support** - Contains the SDK components that need to be
    modified when porting to a custom platform. This includes the kernel
    and boot loaders as well as any out of tree drivers.
+
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
     -  **configs** - Contains Yocto config to describe different yocto recipe
        sources and layers to be used for building SDKs.
+
 -  **docs** - Contains various SDK documentation such as the software
    manifest and additional user's guide. This is also the location where
    you can find the *training* directory with the device training

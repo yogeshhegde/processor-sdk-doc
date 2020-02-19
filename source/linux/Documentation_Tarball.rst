@@ -7,6 +7,7 @@ Please click the link below to download a snapshot of the entire documentation i
 .. raw:: html
 
     <a href="processor-sdk-linux-docs.tar.gz">Download processor-sdk-linux-docs.tar.gz</a>
+
 |
 
 Unpack the tarball using the command below:

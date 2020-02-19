@@ -970,6 +970,7 @@ ICSSG2 port 0
  boot
 
 .. note:: To boot over second port (MII port 1) of ICSSG2, user needs to edit arch/arm/dts/k3-am654-base-board-u-boot.dtsi in the U-Boot source tree. See DTS file for instruction. For example, user needs to comment pruss2_emac0 DT node and uncomment pruss2_emac1 node. Similarly to enable second port for ICSSG0 and ICSSG1, user needs to edit arch/arm/dts/k3-am654-idk.dtso and enable pruss0_emac1 and pruss1_emac1 nodes respectives. After this rebuild u-boot images and use it. Port 1 is marked as by Eth1 on on base board (ICSSG2), Eth1 (ICSSG0) and Eth3 (ICSSG1) on IDK Application board.
+
 | 
 
 NAND
@@ -2227,9 +2228,11 @@ UFS
 Universal Flash Subsystem (UFS) devices show up as scsi devices similar
 to SATA in the `previous section <Foundational_Components_U-Boot.html#sata>`__.
 One additional command to initialize all ufs devices is:
+
 ::
     => ufs init
     Device at ufs@4e84000 up at:[RX, TX]: gear=[3, 3], lane[2, 2], pwr[FAST MODE, FAST MODE], rate = 2
+
 |
 
 Then we can go ahead with 'scsi scan' to see the attached devices:
