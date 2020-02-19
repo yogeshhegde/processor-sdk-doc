@@ -74,7 +74,7 @@ the sampling rate with ``-r``, or the number of channels with ``-c``.
 In this case, one should open the hw device (not the plughw) via ``-Dhw:0,0``.
 For example, record 48KHz, stereo 16bit audio:
 
-.. code-block:: text:
+.. code-block:: text
 
     arecord -Dhw:0,0 -fdat -t wav record_48K_stereo_16bit.wav
 
