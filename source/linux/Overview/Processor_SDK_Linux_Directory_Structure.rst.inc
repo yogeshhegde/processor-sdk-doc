@@ -41,6 +41,7 @@ Processor SDK devices.
    system.
 -  **linux-devkit** - Contains the cross-compile toolchain and libraries
    to speed development for the target device.
+
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
     -  **patches** - Contains recipe patches for different yocto layers which

@@ -87,8 +87,11 @@ The path for debugfs file has changed to include the PRU-ICSS ID as there could 
 For example, the path for hsr/prp changed from
 
 - /sys/kernel/debug/prueth-<hsr/prp>/
+
  to
+
 - /sys/kernel/debug/prueth-<hsr/prp>-<ID>/
+
 Where ID is the PRU-ICSS ID as described in the HSR/PRP User Guide.
 
 - For HSR on PRU-ICSS2 of AM571x, path is changed to /sys/kernel/debug/prueth-hsr-2/
@@ -107,6 +110,7 @@ The path for sysfs files have also changed from
  to
 
 - /sys/devices/platform/pruss<ID>_eth/net/eth2/
+
 Where ID is the PRU-ICSS ID as described in the User Guide.
 
 For example, nsp_credit sysfs file is now accessed at
@@ -127,7 +131,9 @@ instances of the device can co-exist and each will have its own unique path name
 Path is now changed from
 
 - /sys/kernel/debug/<hsr/prp>/
+
  to
+
 - /sys/kernel/debug/<if_name>/
 
 For example, if hsr interface name is hsr0, the path will be
