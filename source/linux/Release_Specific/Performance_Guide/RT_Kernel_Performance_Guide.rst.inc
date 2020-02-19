@@ -579,6 +579,7 @@ Table:  **GStreamer MPEG2 in MP4 Container Decode Performance**
 |
 
 |
+
 Ethernet Driver
 -------------------------
 
@@ -1171,14 +1172,6 @@ Table: **USB Host EXT2**
 |
 |
 
-|
-|
-
-|
-|
-
-|
-|
 CRYPTO Driver
 -------------------------
 

@@ -110,6 +110,7 @@ Note: timing is for reference only.
  mstpctl showbridge
 
 |
+
 The script
 
    a. starts mstpd daemon
