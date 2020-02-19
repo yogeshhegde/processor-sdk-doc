@@ -97,17 +97,13 @@ How to change dtb files
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
     | 3   | k3-j721e-common-proc-board-infotainment.dtbo                 | Overlay for IVI adapter card                            | IVI card needs to be connected                    |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
-    | 4   | k3-j721e-auto-common.dtbo                                    | Overlay for common memory map for automotive use case   | N/A                                               |
+    | 4   | k3-j721e-common-proc-board-jailhouse.dtbo                    | Overlay for enabling Jailhouse support                  | #3 DTBO should be applied before this             |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
-    | 5   | k3-j721e-common-proc-board-jailhouse.dtbo                    | Overlay for enabling Jailhouse support                  | Both #3 amd #4 DTBO should be applied before this |
+    | 5   | k3-j721e-common-proc-board-infotainment-display-sharing.dtbo | Overlay for sharing DSS with Linux and RTOS             | #3 DTBO should be applied before this             |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
-    | 6   | k3-j721e-common-proc-board-infotainment-display-sharing.dtbo | Overlay for sharing DSS with Linux and RTOS             | #3 DTBO should be applied before this             |
+    | 6   | k3-j721e-vision-apps.dtbo                                    | Overlay for running Processor SDK RTOS Automotive demos | N/A                                               |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
-    | 7   | k3-j721e-psdkla-apps.dtbo                                    | Overlay for running automotive demos                    | N/A                                               |
-    +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
-    | 8   | k3-j721e-vision-apps.dtbo                                    | Overlay for running Processor SDK RTOS Automotive demos | #4 DTBO should be applied                         |
-    +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
-    | 9   | k3-j721e-pcie-backplane.dtbo                                 | Overlay for running PCIe Backplane demo                 | N/A                                               |
+    | 7   | k3-j721e-pcie-backplane.dtbo                                 | Overlay for running PCIe Backplane demo                 | N/A                                               |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
 
     .. rubric:: uEnv.txt options
@@ -135,10 +131,6 @@ How to change dtb files
     +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
     | uenv.txt.jailhouse         | Use for running hypervisor use cases.                                         | HDMI monitor connected via infotainment daughter card.     |
     |                            |                                                                               | DP monitor connected to DISPLAY0 Display Port.             |
-    +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
-    | uenv.txt.gateway           | Use for running gateway demos.                                                | Ethernet connected via GESI adapter card.                  |
-    |                            |                                                                               | CAN connected via GESI card                                |
-    |                            |                                                                               | Ethernet firmware symlink updated in filesystem.           |
     +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
     | uenv.psdkra                | Use for running Processor SDK RTOS Automotive demos.                          | All the R5 and C6x firmware symlinks updated in filesystem |
     +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
