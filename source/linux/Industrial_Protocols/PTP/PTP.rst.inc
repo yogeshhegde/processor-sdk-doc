@@ -175,7 +175,7 @@ To enable PPS the device needs to first be booted using a different device tree
 file to enable the PPS pins, as listed below:
 
 +--------------------------+------------------------------+
-| SoC                      | Device Tree File (*.dtb)     |
+| SoC                      | Device Tree File (\*.dtb)    |
 +==========================+==============================+
 | AM335x                   | am335x-icev2-prueth-pps.dtb  |
 +--------------------------+------------------------------+
