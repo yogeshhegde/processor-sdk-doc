@@ -888,8 +888,6 @@ env variable to that of the tftp server used in the setup.
 
 .. note:: Currently only 100Mbps and 1Gbps Full Duplex (FD) links are supported for ICSSG ports. Linux Kernel boot with NFS rootfs over PRUETH Ethernet interface has not been validated.
 
-::
-
 ICSSG0 port 0
 
 ::
@@ -915,8 +913,6 @@ ICSSG0 port 0
  saveenv
  boot
 
-::
-
 ICSSG1 port 0
 
 ::
@@ -941,8 +937,6 @@ ICSSG1 port 0
  setenv bootcmd 'run init_mmc; run init_icssg1; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
  saveenv
  boot
-
-::
 
 ICSSG2 port 0
 
@@ -2236,7 +2230,9 @@ One additional command to initialize all ufs devices is:
 |
 
 Then we can go ahead with 'scsi scan' to see the attached devices:
+
 ::
+
     => scsi scan
     scanning bus for devices...
   Device 0: (0:0) Vendor: TOSHIBA Prod.: THGAF8G8T23BAILB Rev: 0300
