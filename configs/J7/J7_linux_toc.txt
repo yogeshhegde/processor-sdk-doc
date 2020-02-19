@@ -14,7 +14,6 @@ linux/Overview/GCC_ToolChain
 linux/Overview/PSDKLA_Formatting_SD_Card
 linux/Release_Specific
 linux/Release_Specific_PSDKLA_Release_Notes
-linux/Release_Specific_Data_Sheet
 linux/Release_Specific_Yocto_layer_Configuration
 linux/Release_Specific_Supported_Platforms_and_Versions
 linux/Foundational_Components
