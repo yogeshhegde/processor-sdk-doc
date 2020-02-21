@@ -307,35 +307,29 @@ folder to be used for Hello Example project, and start CCS. You may be
 prompted with **New Products Discovered**, so select all and **click on
 Finish**
 
-2. On CCS click View --> Resource Explorer 
-Classic.
+2. Select File --> New --> 
+CCS Project.
 
-3. On SYS/BIOS scroll down to AM65x - Cortex A53 --> AM6548 --> Cortex R --> TI Target Examples --> Generic Examples
---> click on Hello Example.
+3. Select Target: 
+AM6548.
 
-.. Image:: ../images/AM65x_R5_Examples.png
+4. Select Cortex R 
+[ARM] tab.
 
-4. To import Hello Example, on the right window click on step 1. Import
-The Example to CCS Project.
+5. Under Project templates and examples, 
+expand SYS/BIOS. Expand More Examples..., click Search using Import Wizard.
 
-5. On New CCS Project window enter project name, set the device endianness to little, and add the linker command 
-file located at (PDK INSTALL PATH)/packages/ti/build/am65xx/linker_r5_sysbios.lds and click Next. 
+6. Select "hello" project, 
+click Finish.
 
-6. On RSTC window, make sure the correct XDCtools version is selected and select the correct versions 
-of the SYS/BIOS and PDK packages. 
+7. Launch the target configuration using the appropriate emulator to 
+connect to AM65x EVM as described in the AM65x EVM Hardware Setup Guide.
 
-7. Set the platform to ti.platforms.cortexR:AM65X and set the target 
-to ti.targets.arm.elf.R5F.
+8. Right click on DMSC_Cortex_M3_0 and 
+click Connect Target.
 
-.. Image:: ../images/AM65x_R5_CCS_Project.png
-
-8. Click Finish. Your project should appear in Project Explorer window.
-
-9. Launch the target configuration using the appropriate emulator to connect to AM65x EVM as described in the AM65x EVM Hardware Setup Guide.
-
-10. Right click on DMSC_Cortex_M3_0 and click Connect Target. 
-
-11. Connect to the MCU_PULSAR_Cortex_R5_0 core. Load and run Hello Example out file. You should see Hello World string displayed on console window.
+9. Connect to the MCU_PULSAR_Cortex_R5_0 core. Load and run Hello Example 
+out file. You should see Hello World string displayed on console window.
 
 
 ARM Cortex-M4
