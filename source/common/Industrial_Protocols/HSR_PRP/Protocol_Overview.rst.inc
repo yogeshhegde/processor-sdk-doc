@@ -1,27 +1,25 @@
 
-HSR stands for High Availability Seamless Redundancy. This is a protocol
-used to support redundant networks needed for industrial applications
-such as factory automation, substation automation etc. The standard is
-defined in IEC 62439-3 clause 5. HSR Ethernet frames are not compatible
-with standard Ethernet frames. HSR frames are identified uniquely by the
-HSR tag. So only HSR frames are possible in the network which is not
-identifiable by a standard Ethernet device. Factory or field devices are
-connected to a Double Attached Node HSR (DANH). Typically these nodes
-are connected in a Ring topology and only DANH compliant nodes can be
-connected to the HSR network. Other standard Ethernet devices (Singly
-Attached Nodes, SANs) needs to be connected through a Redundancy Box
-(RedBox) to work with HSR networks. HSR tag is used to manage redundancy
-in HSR network.
+HSR (High-availability Seamless Redundancy) and PRP (Parellel Redundancy
+Protocol) are protocols supporting redundant network connections defined by
+IEC 62439-3. Both operate by using two ethernet ports together, and duplicating
+every frame to be sent over both ports, so if one connection fails, the
+transmission succeeds. Frames are tagged with a sequence number, so the
+receiving node can identify and discard duplicates. HSR/PRP provides an
+advantage over other protocols that handle link failure (e.g. STP/RSTP)
+because there is no downtime or packet loss on link failure. This is
+required in some industrial networking situations.
 
-A DANH node has two ports operated in parallel. A source DANH prefixes a
-frame passed from its upper layers with an HSR tag to identify frame
-duplicates and sends the frame over each port.
+The major difference between HSR and PRP is that HSR networks are configured
+as a ring, then frames are sent both directions around the ring by all nodes.
+PRP networks can take any configuration, and all connections are simply
+physically duplicated. Additionally, PRP nodes can interoperate with standard
+ethernet networks, while HSR cannot. (See more details below and full
+details in IEC 62439-3)
 
-A destination DANH receives, in the fault-free state, two identical
-frames (one from each port) within a certain interval. It removes the
-HSR tag of the first frame before passing it to its upper layers and
-discards any duplicate. The nodes support the IEEE 802.1D bridge
-functionality and forward frames from one port to the other, except if
-they already sent the same frame in that same direction. In particular,
-the node will not forward a frame that it injected into the ring. 
+The HSR/PRP protocols can be run by the Linux kernel, and function over
+standard ethernet ports, but the advantage of using the PRU-ICSS supported
+industrial ethernet ports is that the PRU-ICSS HSR/PRP firmware offloads much
+of the protocol functionality to firmware, allowing more processing bandwidth
+for an application, and in the case of HSR, providing faster cut-through
+switching as frames pass through ring nodes.
 
