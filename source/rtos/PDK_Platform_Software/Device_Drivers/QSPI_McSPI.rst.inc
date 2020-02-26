@@ -449,6 +449,33 @@ Building SPI examples
    ./pdkProjectCreate.sh [soc] [board] [endian] spi [project type] [processor] [SECUREMODE=<yes/no>]
    Import and build CCS Project from  <pdk>/packages/MyExampleProjects/
 
+OSPI Driver Configuration to support QSPI flash
+-----------------------------------------------
+
+If the board has a QSPI flash, the PDK driver needs to be updated to support the QSPI flash:
+
+-  Board QSPI Flash Instance Configuration in board_cfg.h
+::
+
+    #define BOARD_QSPI_NOR_INSTANCE  <OSPI instance connected to QSPI flash>
+
+-  SPI SoC Driver Configurations:
+::
+
+    ...
+    OSPI_v0_HwAttrs ospi_cfg;
+
+    SPI_init();
+
+    OSPI_socGetInitCfg(BOARD_QSPI_NOR_INSTANCE, &ospi_cfg);
+    ospi_cfg.xferLines      = OSPI_XFER_LINES_QUAD;
+    ospi_cfg.pageSize       = <QSPI flash page size>;
+    ospi_cfg.devDelays[0]   = <QSPI device delay>;
+    ospi_cfg.devDelays[1]   = <QSPI device delay>;
+    ospi_cfg.devDelays[2]   = <QSPI device delay>;
+    ospi_cfg.devDelays[3]   = <QSPI device delay>;
+    ospi_cfg.rdDataCapDelay = <QSPI read capture delay>;
+    OSPI_socSetInitCfg(BOARD_OSPI_NOR_INSTANCE, &ospi_cfg);
 
 Support for Benchmark Testing
 ------------------------------
