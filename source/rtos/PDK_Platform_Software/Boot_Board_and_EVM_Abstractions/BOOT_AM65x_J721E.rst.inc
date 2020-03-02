@@ -85,10 +85,11 @@ The SBL is in turn used by the board framework to load and start diagnostics
    for the SoC to complete the system boot flow.
 -  The first 256 bytes of the ATCM are reserved by SBL for its use. The SBL initializes
    the ATCM with 0xFF before it uses it.
--  If the multicore application image is also signed with a X.509 certificate, the same 
-   binary can be used on GP and HS devices. For information on the application's X.509 
-   certificate format, please refer `Security X509 Certificate Documentation <http://downloads.
-   ti.com/tisci/esd/latest/2_tisci_msgs/security/sec_cert_format.html#security-x509-certificate-documentation>`__
+-  If the multicore application image is signed using the TI Dummy Key, instead of a
+   degenerate key (default setting) the same binary can be used on GP and HS devices.
+   For information on the application's X.509 certificate format, please refer
+   `Security X509 Certificate Documentation <http://downloads.ti.com/tisci/esd/latest/
+   2_tisci_msgs/security/sec_cert_format.html#security-x509-certificate-documentation>`__
 -  When the R5 is released from reset, it will always fetch and execute the first
    intruction from address 0x0.
    
@@ -236,12 +237,15 @@ the `J721E Technical Reference Manual <http://www.ti.com/lit/pdf/spruil1>`__
 .. note::  For HS devices, the SBL and system firmware have to be signed with the MPK.
            For an easy out-of-box experience, the Processor SDK for HS devices signs the 
            SBL and system firmware with a TI Dummy Key. Images signed with a TI dummy
-           key will boot on both GP and HS boards from TI.
-
+           key will boot on both GP and HS boards from TI. The build system invokes the script
+           <PDK>/packages/ti/build/makerules/x509CertificateGen* which inturn calls OpenSSL
+           to create the X509 certificate.
 
 .. warning::  The TI Dummy Key(s) *MUST* be replaced by customers during production
               with their own Private Keys. If the TI Dummy Keys are used in a production
-              system, the system will be open to security attacks.
+              system, the system will be open to security attacks. The path of the default
+              (dummy) key used by the signing script for HS devices is
+              <PDK>/packages/ti/build/makerules/k3_dev_mpk.pem
 
 .. warning::  While SBL and system firmware images signed with the TI Dummy Keys will work
               on both GP and HS devices, the boot time will be significantly impacted on GP
@@ -385,7 +389,7 @@ To build all the SBL components:
 
 The SBL supports several compile time options to tweak the SBL to satisfy requirements of
 ease of use, boot time and size. These can be enabled or disabled by editing `sbl/sbl_component.mk 
-<http://git.ti.com/keystone-rtos/sbl/blobs/master/sbl_component.mk>`__
+<http://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/boot/sbl/sbl_component.mk>`__
 
 -  SBL_LOG_LEVEL : Controls amount of SBL logs (on the MCU UART) and system firmware logs(on WAKEUP UART). 
    Varies from 0(no logs) to  3 (all logs)
@@ -408,7 +412,9 @@ ease of use, boot time and size. These can be enabled or disabled by editing `sb
    without resetting the core. Enables faster boot time. Will not change the MCU's
    mode (lock-step/split). Application also inherits the MCU state as the SBL
    left it in.
-   
+-  SBL_ENABLE_DEV_GRP_MCU : Will cause the system firmware to only use MCU domain
+   resources during system firmware initialization. This can be dont either to support
+   boot when the main power domain is off, or to save boot time.
 
 The SBL also supports a "custom" build, in addition to standard out-of-box builds.
 A custom build is a useful way of testing out the effect of different build options - 
@@ -416,8 +422,42 @@ like when optimizing for boot time, or enabling custom usecases like eXecute In 
 to reduce memory usage.
 
 For an example of how to use such custom builds, please refer to `sbl/sbl_component.mk 
-<https://git.ti.com/keystone-rtos/sbl/blobs/master/sbl_component.mk#line426>`__. It shows
+<https://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/boot/sbl/sbl_component.mk#n526>`__. It shows
 how to specify a select list of build options while building SBL images and libs.
+
+
+**SBL Startup**
+
+The SBL can specify the R5 configuration (lockstep or split) that ROM needs to use when it
+starts up the SBL. This info is passed to ROM as a field in the X509 certificate. The value
+in this field can be controlled by editing the build flag R5_STARTUP_MODE  in `sbl/build/sbl_img.mk 
+<https://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/boot/sbl/build/sbl_img.mk#n91>`__ 
+
+-  EFUSE_DEFAULT : SBL will run with the same R5 configuration the boot rom ran in.
+-  SPLIT_MODE  : ROM will switch the R5 to split mode before starting the SBL (default).
+
+
+**Enabling/Disabling JTAG on secure devices**
+
+JTAG access is controlled using a field in the X509 certificate.
+
+By default, for an easy out of box experience, the Processor SDK enables debug via JTAG
+on High Secure devices. Leaving JTAG enabled, while making it easy for software development,
+creates a major security hole in production devices.
+
+To disable/change the level of JTAG access on HS devices, update the value of the debugType field in the
+signing scripts `build/makerules/x509template.txt <http://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/build/makerules/x509template.txt#n74>`__ 
+(when building from windows) and `build/makerules/x509CertificateGen.sh 
+<http://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/build/makerules/x509CertificateGen.sh#n513>`__ (when building from linux).
+
+
+Valid values are
+
+-  0 : Disable all JTAG access (most secure and most restrictive)
+-  1 : Use device defaults (most secure and most restrictive)
+-  2 : Allow debug of non-secure code, when the CPU is running in secure mode, JTAG connectivity will be lost
+-  4 : Allow debug of both secure and non-secure code (least secure and least restrictive). This is the default.
+
 
 .. raw:: html
 
@@ -519,7 +559,7 @@ To stitch multiple .rprc images into a multicore image, execute the following co
 
 -  The linux host environment needs to have `mono <http://www.mono-project.com>`__ installed.
 -  The values used for the Core ID and Device ID can be found in `sbl/soc/k3/
-   sbl_slave_core_boot.h <http://git.ti.com/keystone-rtos/sbl/blobs/master/soc/k3/sbl_slave_core_boot.h#line51>`__
+   sbl_slave_core_boot.h <https://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/boot/sbl/soc/k3/sbl_slave_core_boot.h#n51>`__
 -  To simply load an ELF without executing it, use CoreID value ONLY_LOAD_ID
 -  If an image for MCU_1 core is provided, the SBL will attempt to switch to 
    split mode. 
@@ -588,14 +628,14 @@ the different tests exercises are listed below.
 -  sbl_baremetal_boot_perf_*_mcu1_0TestApp_release.appimage: A single MCU1_0 test
    case that can be used to measure the effect of enabling/disabling the perf.
    tuning knobs in the SBL for OSPI boot. The size of the test case can be easily 
-   modified by changing the value of SIZE_OF_PAD in `sbl/example/k3MulticoreApp/
-   sbl_mcu_0_boot_perf_benchmark.c <http://git.ti.com/keystone-rtos/sbl/blobs/master/example/k3MulticoreApp/sbl_mcu_0_boot_perf_benchmark.c#line90>`__
+   modified by changing the values of .space directives in `sbl/example/k3MulticoreApp/
+   sbl_boot_perf_r5.asm <http://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/boot/sbl/example/k3MulticoreApp/sbl_boot_perf_r5.asm#n42>`__
    to profile for different app image sizes.
 -  sbl_baremetal_boot_xip_test_*_mcu1_0TestApp_release.xer5f.bin: A testcase
    demonstrating booting an XIP application from OSPI flash. Please refer `sbl/build/
-   sbl_mcu0_boot_xip_test.mk <https://git.ti.com/keystone-rtos/sbl/blobs/master/build/
+   sbl_mcu0_boot_xip_test.mk <https://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/boot/sbl/build/
    sbl_mcu0_boot_xip_test.mk>`__ and `sbl/example/k3MulticoreApp/mcuXiplinker.lds
-   <https://git.ti.com/keystone-rtos/sbl/blobs/master/example/k3MulticoreApp/mcuXiplinker.lds>`__ 
+   <https://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/boot/sbl/example/k3MulticoreApp/mcuXiplinker.lds>`__ 
    to see how to convert an existing application into an XIP application. The
    sbl_*_xip_entry_*.appimage works in tandem with sbl_*xip_test_*.xer5f.bin to transition
    the system from non-xip to xip boot, as the ROM, by default, does not support XIP from 
