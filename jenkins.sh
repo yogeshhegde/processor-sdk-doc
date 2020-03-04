@@ -4,7 +4,9 @@ usage() {
     cat << EOF
 
   Usage:
-         $0 <target_os: linux, rtos, android, all>
+         $0 <target_os> <device_family>
+		target_os:     linux, rtos, android, all
+		device_family: GEN, AM335X, all
 
 EOF
 }
@@ -17,7 +19,14 @@ case "$1" in
         ;;
     rtos) echo "Build doc for rtos"
         ;;
-    android) echo "Build doc for android"
+    android)
+	if [[ "$2" == "AM335X" ]]; then
+	    echo "Android doc build is not available for $2"
+	    usage
+	    exit
+	else
+	    echo "Build doc for android"
+        fi
         ;;
     *) echo "Wrong argument $1"
        usage
@@ -30,6 +39,7 @@ ARTIFACTS="$(dirname $(readlink -m $0))/artifacts"
 OUTPUT="${ARTIFACTS}/output"
 TEMP="${ARTIFACTS}/temp"
 OS="${1:-all}"
+DEV="${2:-all}"
 LOGS="${ARTIFACTS}/logs"
 
 
@@ -80,12 +90,20 @@ build_doc()
 {
     # build targets
     OS=$1
-    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/docs/${VERSION}"
-    echo "processor-sdk-${OS}/esd/docs/${VERSION}/${OS}/index.html" >> "${BUILD_TARGETS}"
+    DEV=$2
+
+    if [[ "$DEV" != "GEN" ]]; then
+	    dev_path="${DEV}/"
+    else
+	    dev_path=''
+    fi
+
+    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/${dev_path}docs/${VERSION}"
+    echo "processor-sdk-${OS}/esd/${dev_path}docs/${VERSION}/${OS}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
-    make config DEVFAMILY="GEN" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
-    make BUILDDIR="${BUILDDIR}" DEVFAMILY="GEN" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
+    make config DEVFAMILY="${DEV}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
+    make BUILDDIR="${BUILDDIR}" DEVFAMILY="${DEV}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
 
     # provide link to output
     echo "${BUILDDIR}" | sed -e "s|^${ARTIFACTS}|${BUILD_URL}/artifacts/|g" | \
@@ -104,10 +122,14 @@ build_doc()
 }
 
 if [[ ${OS} == all ]]; then
-    build_doc linux
-    build_doc rtos
-    build_doc android
+    for dev in "GEN" "AM335X"; do
+	build_doc linux $dev
+	build_doc rtos $dev
+	if [[ "$dev" == "GEN" ]]; then
+	    build_doc android $dev
+	fi
+    done
 else
-    build_doc ${OS}
+    build_doc ${OS} ${DEV}
 fi
 

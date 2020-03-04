@@ -38,7 +38,10 @@ cd processor-sdk-doc
 Build instruction for Ubuntu
 *****************************
 Note that DEVFAMILY represents the Device Family.
-Possible values for <FAMILY> are "J7" (representing Jacinto 7) or "GEN" (representing General family).
+Possible values for <FAMILY> are
+ - "J7" (representing Jacinto 7)
+ - "AM335X" (representing AM335X family)
+ - "GEN" (representing General family)
 
 linux:
 make config DEVFAMILY=<FAMILY> OS=linux
@@ -48,7 +51,7 @@ rtos:
 make config DEVFAMILY=<FAMILY> OS=rtos
 make DEVFAMILY=<FAMILY> OS=rtos
 
-android
+android (unavailable for AM335X):
 make config DEVFAMILY=<FAMILY> OS=android
 make DEVFAMILY=<FAMILY> OS=android
 
