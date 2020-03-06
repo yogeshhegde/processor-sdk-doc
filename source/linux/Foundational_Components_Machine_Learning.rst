@@ -38,6 +38,8 @@ TVM runtime, TensorFlow Lite, Arm NN, and RNN library.
 * Open source deep learning runtime for on-device inference.
 * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
 * Imports Tensorflow Lite models.
+* Uses TIDL import tool to create TIDL offloadable Tensorflow Lite models,
+  which can be executed via Tensorflow Lite runtime with TIDL acceleration on AM5729 and AM5749 devices.
 
 .. rubric:: `Arm NN <Foundational_Components/Machine_Learning/armnn.html>`__
 
