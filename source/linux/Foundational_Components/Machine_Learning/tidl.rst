@@ -84,7 +84,7 @@ Current implementation of TIDL API provides following important features:
     This can be achieved just by modifying a `device type parameter <http://downloads.ti.com/mctools/esd/docs/tidl-api/api.html#_CPPv2N4tidl10DeviceTypeE>`_
     More details in `Introduction to Programming Model`_
 
-Maximum number of inference tasks on AM5749 is 4 (2xEVE and 2xDSP), whereas on AM5728 maximum number of tasks is 2 (2xDSP). All TIDL related memory buffers (~64MB per core: network configuration parameters, layer activations, input/output buffers) must fit into `CMEM section <Foundational_Components_CMEM.html>`__
+Maximum number of inference tasks on AM5749 is 4 (2xEVE and 2xDSP), whereas on AM5728 maximum number of tasks is 2 (2xDSP). All TIDL related memory buffers (~64MB per core: network configuration parameters, layer activations, input/output buffers) must fit into `CMEM section <../../Foundational_Components_CMEM.html>`__.
 
 Verified networks topologies
 ----------------------------
