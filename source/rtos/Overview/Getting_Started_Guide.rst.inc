@@ -253,7 +253,6 @@ download stall or slow download. One simple solution is to run a
 download manager/accelerator such as
 http://www.freedownloadmanager.org/.
 
-
 Code Composer Studio
 -----------------------
 
@@ -354,6 +353,10 @@ From the appropriate software product page, go to the download page by
 clicking "Get Software" for the RTOS package.
 
 .. note::
+    -  When Installing on linux (Ubuntu 16.04 and above) the following packages need to be installed before the Procsdk RTOS installer is installed
+    
+       **sudo apt install diffstat texinfo gawk chrpath dos2unix unzip socat doxygen libc6:i386 libncurses-dev:i386 libstdc++6:i386 libz1:i386**
+       
     -  To avoid configuring CCS "Tool Discovery Path" to search for
        components in different directories, it is recommended to install the
        SDK in the same directory as CCS. This is *C:/TI* for Windows and
