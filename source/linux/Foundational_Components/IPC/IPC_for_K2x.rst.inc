@@ -234,13 +234,18 @@ Here are the key files that you should see after a successful build:
 Running the Bundled IPC Examples
 ********************************
 
+**NOTE 1**: Before running the IPC examples, any other application already running and using the DSP cores, need to be stopped and disabled.
+In addition, the EVM need to be rebooted so that the cache configuration of the previous firmware downloaded does not affect the execution of the example.
+In the Linux Filesystem distributed part of the Processor SDK, OpenCL examples are configured to run by default. So use the following procedure to shutdown the openCL under section before running the IPC example: `Disable OpenCL Application`_.
+
+**NOTE 2**: If the application really needs to dynamically download different DSP images, especially with different cache configuration, then a dummy image which resets the cache configuration in the DSP, need to be downloaded and run before downloading the actual example images.
 
 You will need to copy the ex02\_messageq executable binaries onto the target (through SD card, NFS export, SCP, etc.).
 You can copy the entire ex02\_messageq directory, though we're primarily interested in
 these executable binaries:
 
 -   Core0/bin/debug/ server_core0.xe66
--	host/bin/debug/app_host
+-   host/bin/debug/app_host
 
 The Multi-Processor Manager (MPM) Command Line utilities are used to download and start the DSP executables. 
 
@@ -555,28 +560,12 @@ So we will need to add the following lines to place the trace buffer and resourc
 	Program.sectMap[".resource_table"].loadSegment = "L2SRAM";
 	var Resource = xdc.useModule('ti.ipc.remoteproc.Resource');
 	Resource.loadSegment = "L2SRAM"
-	
-**Disable OpenCL application**
-
-
-The OpenCL application that runs by default needs to be disabled since it interferes with the caching properties of the memory region used by our modified example. If it is not disabled, the application will hang at App_create(). It can be disabled by issuing the following command:
 
 ::
 
-	root@k2g-evm:~# systemctl disable ti-mct-daemon.service
+Now follow the steps in `Running the Bundled IPC Examples`_.
 	
-**Run the Example**
 
-After power-cycling the EVM, we can now load and run the example:
-
-::
-
-	mpmcl reset dsp0
-	mpmcl load dsp0 server_core0.xe66
-	mpmcl run dsp0
-	./app_host CORE0
-
-	
 Loading DSP images from CCS (without using MPM)
 ###############################################
    
@@ -670,7 +659,21 @@ The MPM creates an ELF formatted core dump.
 The above command will generate a coredump file with name coredump.out for the DSP core 0.
 
 .. note:: The coredump can be captured from a running system that is not crashed, in this case the register information won't be available in the coredump.
- 
+
+
+Disable OpenCL Application
+##########################
+
+The OpenCL application needs to be disabled since it interferes with the caching properties of the memory region used by our modified example. If it is not disabled, the application will hang at App_create(). It can be disabled by issuing the following command:
+
+::
+
+	root@k2g-evm:~# systemctl disable ti-mct-daemon.service
+	
+| 
+
+After power-cycling the EVM, we can now load and run the example.
+
 
 Frequently Asked Questions
 ##########################
