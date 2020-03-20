@@ -4,7 +4,7 @@ Overview
 -----------
 
 
-TI Jacinto7/AM65XX family of devices consists of many cores - ARM53/72, R5Fs (MCU or Main Domain) and/or DSPs (C66x / C7x). The actual cores varies with actual device. Refer to datasheet of the device for actual cores present on soc. Inter-Processor Communication (IPC) provides communication channel between various cores. IPCLLD is low-level driver for IPC which provides core-agnostic and OS-agnostic framework for communication.
+TI Jacinto7/AM65XX family of devices consists of many cores - ARM53/72, R5Fs (MCU or Main Domain) and/or DSPs (C66x / C7x). The actual cores vary with actual device. Refer to the datasheet of the device for the actual cores present on SoC. Inter-Processor Communication (IPC) provides a communication channel between various cores. IPCLLD is the low-level driver for IPC, which provides a core-agnostic and OS-agnostic framework for communication.
 
 More information regarding the `TI multicore processors <http://www.ti.com/processors/automotive-processors/overview.html>`_ is available .
 
@@ -18,9 +18,7 @@ Term      Definition or Explanation
 IPC       Inter-Processor Communication
 RirtIO    Virtual I/O driver
 MailBox   IP which provides queued interrupt mechanism  for communication channel
-RA        Ring accelerator
-VRing     Ring Buffer on shared memory
-RM        Resource Management
+VRing     Ring Buffer in shared memory
 PDK       Platform Development Kit
 PSDKRA    Processor SDK RTOS Automotive
 PSDKLA    Processor SDK Linux Automotive
@@ -34,24 +32,24 @@ References
 
 
 Features
-^^^^^^^^^
+--------
 
-* Provides ipc low-level driver which can be compiled for any cores on AM65xx or J721E devices
+* Provides ipc low-level driver, which can be compiled for any of the cores on AM65xx or J721E devices
 * Supports Bios/Bios communication and Linux/Bios concurrently for all cores
-* Supports TI RTOS, Linux, QNX and baremetal use(No-OS).
+* Supports TI RTOS, Linux, QNX and baremetal (No-OS) use.
 * It can be extended for any third-party RTOS by adding OS adaptation layer
 * IPCLLD also provides many examples for quick reference
 
 
 Installation
-^^^^^^^^^^^^^
+------------
 
-IPCLLD is part of TI pdk (platform Development Kit) package. Once PSDKRA is installed, pdk and all dependent packages and tool-chains are installed automatically. 
-IPCLLD can also be located at <PSDKRA_HOME>/pdk/packages/ti/drv/ipc. IPCLLD is also available publically at `<http://git.ti.com/keystone-rtos/ipc-lld>`_. 
+IPCLLD is part of TI PDK (Platform Development Kit) package. Once PRSDK is installed, PDK and all dependent packages and tool-chains are installed automatically. 
+IPCLLD can also be located at <PRSDK_HOME>/pdk/packages/ti/drv/ipc. IPCLLD is also available publically at `<https://git.ti.com/processor-sdk/pdk/>`_ at packages/ti/drv/ipc. 
 
 It can also be cloned using following git command:
 
-* git clone git://git.ti.com/keystone-rtos/ipc-lld.git
+* git clone git://git.ti.com/processor-sdk/pdk.git
 * Provides many examples for quick reference
 
 The file  and directory oraganization are as below.
@@ -62,29 +60,13 @@ The file  and directory oraganization are as below.
 
 
 Build
-^^^^^^
+-----
 
-IPCLLD uses pdk build systems to build IPCLLD library and example applications.
-
-Compilers and Tool-chains Required:
------------------------------------
-
-========================   =============================================
-Compiler/Tool-Chain         Tool Version and Download Links
-========================   =============================================
-SysBios                     `Bios 6.76.02.02 <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/sysbios/6_76_02_02/exports/bios_6_76_02_02.run>`_
-XDC tool                    `XDCtools 3.55.02.22 <http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/rtsc/3_55_02_22/exports/xdccore/xdctools_3_55_02_22_core_linux.zip>`_
-XDAIS tool                  `XDAIS 7.24.00.04 <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/xdais/7_24_00_04/index_FDS.html>`_
-TI Code-Gen tool for ARM    `TI Arm CGT 18.2.1.LTS <http://software-dl.ti.com/codegen/esd/cgt_public_sw/TMS470/18.12.1.LTS/ti_cgt_tms470_18.12.1.LTS_linux_installer_x86.bin>`_
- Linaro Tools                * `aarch64-elf <https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/aarch64-elf/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-elf.tar.xz>`_
-                             * `aarch64-linux-gnu <https://releases.linaro.org/components/toolchain/binaries/7.2-2017.11/aarch64-linux-gnu/gcc-linaro-7.2.1-2017.11-x86_64_aarch64-linux-gnu.tar.xz>`_
-========================   =============================================
-
-
+IPCLLD uses the PDK build systems to build the IPCLLD library and example applications.
 
 Dependency of External PDK Components
--------------------------------------
-IPCLLD does access any hardware diretly. It uses pdk/csl component to configure Mailbox registers. It uses sciclient to set/release Mailbox interrupt. Also it uses pdk/osal to congire OS related steps like Semaphore etc.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+IPCLLD does not access any hardware diretly. It uses the PDK/csl component to configure Mailbox registers. It uses sciclient to set/release Mailbox interrupt. Also it uses PDK/osal to configure OS-related steps like Semaphore etc.
 
 - pdk/csl : Configures Mailbox registers
 - pdk/sciclient : Set Mailbox interrupts
@@ -92,83 +74,101 @@ IPCLLD does access any hardware diretly. It uses pdk/csl component to configure 
 
 
 
-Command to build IPCLLD:
--------------------------
+Command to build IPCLLD
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Build IPCLLD library
-
-    make -C ./ti/drv/ipc lib
-
-- Build IPCLLD examples
-
-    make -C ./ti/drv/ipc examples
-
-- Clean IPCLLD library and examples
-
-    make -C ./ti/drv/ipc clean
-
-- Build IPCLLD and examples 
-
-    make -C ./ti/drv/ipc all
-
-Following environment variables must be defined.
+The build can be done either from the IPCLLD's path in the PDK packages, or from the PDK build folder. For either method, the following environment variables must be defined, or supplied with the build command (if they are different from the defaults of the SDK installation):
 
 - SDK_INSTALL_PATH: Installation root for sdk
-- TOOLS_INSTALL_PATH: where all the tool chains are installed
+- TOOLS_INSTALL_PATH: where all the tool chains are installed, if different from SDK_INSTALL_PATH
 - PDK_INSTALL_PATH: Installtion root for pdk
 
-If pdk build system is used to build, then use following steps to build
+The following build instructions are for Linux. For Windows build, please replace "make" with "gmake".
 
-- Go to <pdk_root>/package/ti/build
-- To build the IPCLLD library, run command
-  
-    make -s -j BUILD_PROFILE=<debug/release> BOARD=<am65xx/j721e-evm> CORE=<core_name> ipc
-- To build the IPCLLD examples, run command
-  
-    make -s -j BUILD_PROFILE=<debug/release> BOARD=<am65xx/j721e-evm> CORE=<core_name> ipc_echo_test
-- To clean IPCLLD examples, run command
-  
-    make -s -j BUILD_PROFILE=<debug/release> BOARD=<am65xx/j721e-evm> CORE=<core_name> ipc_echo_test_clean
-    
-Core names:
------------
-        - mpu1_0: available on AM65xx and J721E device
-        - mcu1_0: available on AM65xx and J721E device
-        - mcu1_1: available on AM65xx and J721E device
-        - mcu2_0: available on J721E device
-        - mcu2_1: available on J721E device
-        - mcu3_0: available on J721E device
-        - mcu3_1: available on J721E device
-        - c66xdsp_1: available on J721E device
-        - c66xdsp_2: available on J721E device   
-        - c7x_1: available on J721E device    
+Method 1:
+
+These libraries and examples are built from the IPCLLD's path in the PDK packages:
+
+    PDK_INSTALL_DIR/packages/ti/drv/ipc
+
+=======  ======================================================================================  ===========
+Target   Build Command                                                                           Description
+=======  ======================================================================================  ===========
+lib      make PDK_INSTALL_PATH=PDK_INSTALL_DIR/packages SDK_INSTALL_PATH=SDK_INSTALL_PATH lib    IPCLLD library
+apps     make PDK_INSTALL_PATH=PDK_INSTALL_DIR/packages SDK_INSTALL_PATH=SDK_INSTALL_PATH apps   IPCLLD examples
+clean    make PDK_INSTALL_PATH=PDK_INSTALL_DIR/packages SDK_INSTALL_PATH=SDK_INSTALL_PATH clean  Clean IPCLLD library and examples
+all      make PDK_INSTALL_PATH=PDK_INSTALL_DIR/packages SDK_INSTALL_PATH=SDK_INSTALL_PATH all    Build IPCLLD library and examples
+=======  ======================================================================================  ===========
+
+Method 2:
+
+If building from the PDK build folder, then use following steps to build
+
+    Go to PDK_INSTALL_DIR/packages/ti/build
+
+=======  ==========================================================================================================  ===========
+Target   Build Command                                                                                               Description
+=======  ==========================================================================================================  ===========
+lib      make -s -j BUILD_PROFILE=<debug/release> BOARD=<am65xx_evm/j721e_evm> CORE=<core_name> ipc                  IPCLLD library
+example  make -s -j BUILD_PROFILE=<debug/release> BOARD=<am65xx_evm/j721e_evm> CORE=<core_name> ipc_echo_test        ipc_echo_test example (this can be replaced with any available IPC test name to build the specific test)
+clean    make -s -j BUILD_PROFILE=<debug/release> BOARD=<am65xx_evm/j721e_evm> CORE=<core_name> ipc_echo_test_clean  Clean the ipc_echo_test (this can be replaced with any available IPC test name to build the specific test)
+=======  ==========================================================================================================  ===========
+
+See `Example Details`_ for list of supported examples. 
+
+Available Core names
+^^^^^^^^^^^^^^^^^^^^
+
+AM65XX:
+        - mpu1_0 (A53)
+        - mcu1_0 (r5f0_0)
+	- mcu1_1 (r5f0_1)
+J721E:
+	- mpu1_0 (A72)
+	- mcu1_0 (mcu-r5f0_0)
+        - mcu1_1 (mcu-r5f0_1)
+        - mcu2_0 (main-r5f0_0)
+        - mcu2_1 (main-r5f0_1)
+        - mcu3_0 (main-r5f1_0)
+        - mcu3_1 (main-r5f1_1)
+        - c66xdsp_1 (c66x_0)
+        - c66xdsp_2 (c66x_1)  
+        - c7x_1 (c71x_0)    
+
+Expected Output
+^^^^^^^^^^^^^^^
+
+The built example binaries can be found in the PDK's binary folder:
+
+    PDK_INSTALL_PATH/packages/ti/binary/<test_name>/bin/<board_name>/
 
 Running the IPCLLD examples
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
-IPCLLD comes with four examples.
+IPCLLD comes with the following examples.
 
-Example Details:
-----------------
+Example Details
+^^^^^^^^^^^^^^^
 
-- **ipc_echo_test:** This is most generic example application where A72 is running Linux, and all other cores running bios. All cores talk to each other bi-diectionally. It is send ping message and remote end responds pong message. There are 10 ping/pong messages exchanged between each core-pair. 
+- **ipc_echo_test:** This is most generic example application where A72 is running Linux, and all other cores running bios. All cores talk to each other bi-diectionally. It is send ping message and remote end responds pong message. There are 10000 ping/pong messages exchanged between each core-pair. 
 - **ex01_bios_2core_echo_test:** This is the simplistic ping/pong application between any two cores running BIOS
-- **ex02_bios_multicore_echo_test:** All cores running Bios, mani-to-many communication, each sending ping/pong with each other. A72 is also running Bios.
-- **ex03_linux_bios_2core_echo_test:** THis is simplistic ping/pong application where A72 running Linux and any other core is running Bios.
+- **ex02_bios_multicore_echo_test:** All cores running BIOS, many-to-many communication, each sending ping/pong with each other. A72 is also running BIOS.
+- **ex03_linux_bios_2core_echo_test:** This is simplistic ping/pong application where A72 running Linux and any other core is running Bios.
+- **ex04_linux_baremetal_2core_echo_test:** AM65xx only. This is a ping/pong application where A72 is running Linux and the other core is baremetal (no OS).
 
 Loading Remote Firmware
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Remote firmware can be loading using ccs or using uBoot SPL.
+Remote firmware can be loading using CCS or using uBoot SPL.
 
 1. **Loading using CCS** : 
    
-    Sciclient module contains default system firmware and ccs script to load the system firmware. THe load scripts should be modified to reflect the correct full-path of the scipt location. Once the script is updated, 
+    Sciclient module contains default system firmware and CCS script to load the system firmware. The load scripts should be modified to reflect the correct full-path of the script location. Once the script is updated, 
 
-    * start TI CCS 9.1
-    * open ccs script console using menu **View --> Scripting Console**
-    * Run the script using following command
-        - loadJSFile("<pdk_root>/packages/ti/drv/sciclient/tools/ccsLoadDmsc/j721e/launch.js")
+    * start TI CCS 9.1 or newer
+    * open CCS script console using menu **View --> Scripting Console**
+    * Run the script using following command (example below is for J721E, use the appropriate one for your target)
+        - loadJSFile("PDK_INSTALL_DIR/packages/ti/drv/sciclient/tools/ccsLoadDmsc/j721e/launch.js")
 
       .. image:: ../images/ipclld_LoadingSysFw_sciclient.png
                 :height: 160
@@ -188,7 +188,7 @@ Remote firmware can be loading using ccs or using uBoot SPL.
 
 2. **Loading using SPL/uBoot** 
     
-  Run following steps to configure remote firmware for SPL loading
+  Run following steps to configure remote firmware for SPL loading with HLOS running on MPU
 
   1) Copy the remote firmware to rootfs at /lib/firmware/pdk-ipc folder
   2) cd /lib/firmware
@@ -211,8 +211,11 @@ Remote firmware can be loading using ccs or using uBoot SPL.
   6) Reboot the system
 
 
-Running the ipc_echo_test
--------------------------
+Running the Echo Tests
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In this section ipc_echo_test is used to demonstrate, but same instructions apply to other examples that have Linux on MPU, though test output may be slightly different.
+
   1) Login as root
   2) Start sample app as below
 
@@ -230,42 +233,104 @@ Running the ipc_echo_test
         
   
 IPCLLD Design Details
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
-- Ring Buffer is used as shared memory to transfer the data. It must be reserved system wide. The base-address and size of ring Buffer must be provided to IPCLLD. It must be same for all core applications. the invidual memory-range for Ring Buffer between core combinations are calculated internally inside the library. The default base-address is 0xAA000000 and size is 0x1C00000
+- Ring Buffer is used as shared memory to transfer the data. It must be reserved system wide. The base-address and size of ring Buffer must be provided to IPCLLD. It must be same for all core applications. The invidual memory-range for Ring Buffer between core combinations are calculated internally inside the library. The default base-address and size used in the IPC examples is
+
+=======  =============  ==========
+Device   Base Address   Size
+=======  =============  ==========
+J721E    0xAA000000     0x1C00000
+AM65XX   0xA2000000     0x200000
+=======  =============  ==========
+
+The VRing base address and size is passed from the application during the Ipc_initVirtIO() call. See `Writing HelloWorld App using IPCLLD`_ for the example of usage.
+
+Additionally the Ring Buffer memory used when communicating with MPU running Linux must be reserved system wide. The base-address and size of the ring buffer is different from what is used between cores not running Linux. The base-address and size of the ring Buffer is provided to IPCLLD when Linux updates the core's resource table with the allocated addresses. Linux allocates the base-address from the first memory-region. See `Resource Table`_ for more information.
+
 - For each RPmessage object, the memory must be provided to library from local heap. All subsequent send/recv API is using rpmessage buffer provided during the create function.
-- RPMessage can transfer maximum of 512 bytes of data. 
-
+- RPMessage can transfer maximum of 512 bytes of data. For larger data transfers, it is recommended to pass a pointer/handle/offset to a larger shared memory buffer inside the message data.
+- For firmware that will communicate with Linux over IPC, a Resource Table is required. See `Resource Table`_ for more information.
 
 Typical Data-Flow in IPCLLD communication between two cores
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Following picture illustrates the data flow between two cres using mailbox IP as transport.
+Following picture illustrates the data flow between two cores using mailbox IP as transport.
 
 .. image:: ../images/ipclld_data_flow.png
                 :height: 470
                 :width: 687
 
+Resource Table
+^^^^^^^^^^^^^^
+For applications that will use Linux IPC, a resource table is required. Example resource tables can be found in the IPC examples:
+
+========  =========================================
+Device    Resource Table Example Location
+========  =========================================
+J721E     examples/common/src/ipc_rsctable.h
+AM65XX    examples/common/src/ipc_am65xx_rsctable.h
+========  =========================================
+
+The resource table must have at least one entry, the VDEV entry, to define the the vrings used for IPC communication with Linux.
+Optionally, the resource table can also have a TRACE entry which defines the location of the remote core trace buffer.
+
+The VDEV entry specifies the address as RPMSG_VRING_ADDR_ANY, meaning that the address will be allocated by the Linux driver during loading. The allocation is made from the first memory-region specified in the dts file for the remote core. For example, if the dts entry for mcu_r5fss0_core0 is ::
+
+    reserved_memory: reserved-memory {
+        #address-cells = <2>;
+	#size-cells = <2>;
+	ranges;
+
+	mcu_r5fss0_core0_dma_memory_region: r5f-dma-memory@a0000000 {
+        	compatible = "shared-dma-pool";
+        	reg = <0 0xa0000000 0 0x100000>;
+        	no-map;
+        };
+
+        mcu_r5fss0_core0_memory_region: r5f-memory@a0100000 {
+        	compatible = "shared-dma-pool";
+        	reg = <0 0xa0100000 0 0xf00000>;
+        	no-map;
+        };
+    }
+
+then the allocation for the vrings will come from the 0xa0000000 entry.
+
+Memory Considerations
+^^^^^^^^^^^^^^^^^^^^^
+As mentioned in `IPCLLD Design Details`_, the Ring Buffer memory must be reserved system-wide. In addition, the Ring Buffer memory should be configured as non-cached on all cores using IPCLLD. For examples of configurations for Ring Buffer memory, refer to the examples in pdk/packages/ti/drv/ipc/examples/.
+
 Writing HelloWorld App using IPCLLD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- **Step1: Initialize MultiProc ? SelfId, how many remote cores?**
+-----------------------------------
+- **Step1: Initialize MultiProc with SelfId, and how many remote cores** ::
+
      Ipc_mpSetConfig(selfProcId, numProc, remoteProc);
 
-- **Step2: Initialize VirtIO ? Base Address for Shared Memory used for RingBuffer**
+- **Step2: Load the Resource Table (required only if running Linux on A72/A53)** ::
+
+     Ipc_loadResourceTable((void*)&ti_ipc_remoteproc_ResourceTable);
+
+See `Resource Table`_ for details on the resource table.
+
+- **Step3: Initialize VirtIO (note: Base Address for Shared Memory used for RingBuffer)** ::
+
      vqParam.vqObjBaseAddr = (void*)sysVqBuf;
      vqParam.vqBufSize     = numProc * Ipc_getVqObjMemoryRequiredPerCore();
      vqParam.vringBaseAddr = (void*)VRING_BASE_ADDRESS;
      vqParam.vringBufSize  = VRING_BUFFER_SIZE;
      Ipc_initVirtIO(&vqParam);
 
-- **Step3: Initialize RPMessage**
+- **Step4: Initialize RPMessage** ::
+
      RPMessage_init(&cntrlParam);
 
-- **Step4: Send Message**
+- **Step5: Send Message** ::
+
      RPMessage_send(handle, dstProc, ENDPT1, myEndPt, (Ptr)buf, len);
 
-- **Step5: Receive Message**
-     RPMessage_recv(handle, (Ptr)buf, &len, &remoteEndPt,
-                         &remoteProcId, timeout);
+- **Step6: Receive Message** ::
+
+     RPMessage_recv(handle, (Ptr)buf, &len, &remoteEndPt, &remoteProcId, timeout);
 
 
