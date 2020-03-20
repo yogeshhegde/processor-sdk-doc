@@ -640,10 +640,61 @@ You can use the **ethtool** utility:
 -  **ethtool eth2** (for link status)
 -  **ethtool -S eth2** (for hardware statistics)
 
-.. rubric:: Is RX interrupt pacing supported?
-   :name: is-rx-interrupt-pacing-support
+.. rubric:: How to tune the system to optimize RX performance to minimize packet loss in -rt kernel?
 
-Yes, usage is the same as for HSR/PRP protocols, see 
-`HSR/PRP Linux Software>Receive Interrupt Pacing <Industrial_Protocols_HSR_PRP.html#receive-interrupt-pacing>`__.
+Linux driver uses NAPI for RX processing which relies on ksoftirqd kernel thread to
+schedule and poll for incoming packets. To minimize packet loss we need to increase
+the priority of ksoftirqd like so.
+
+* Throughput example:
+::
+
+    DUT: am571x-idk eth2
+    root@am57xx-evm:~# chrt -f -p 40 $(pgrep ksoftirqd/?)
+    root@am57xx-evm:~# iperf3 -s
+
+    [ ID] Interval Transfer Bitrate Jitter Lost/Total Datagrams
+    [ 5] 0.00-3599.99 sec 37.7 GBytes 90.0 Mbits/sec 0.166 ms 0/27513582 (0%) receiver
 
 
+    Traffic generator: PC
+    :~$ iperf3 -c 192.168.3.102 -u -b 90M -l 1472 -t 3600
+
+    - - - - - - - - - - - - - - - - - - - - - - - -
+    [ ID] Interval Transfer Bitrate Jitter Lost/Total Datagrams
+    [ 5] 0.00-3600.00 sec 37.7 GBytes 90.0 Mbits/sec 0.000 ms 0/27513582 (0%) sender
+    [ 5] 0.00-3599.99 sec 37.7 GBytes 90.0 Mbits/sec 0.166 ms 0/27513582 (0%) receiver
+
+* Packets per second example:
+
+You can download the sample udp-packet.pcap but make sure you update the MAC addresses and IP addresses to match your setup.
+
+:download:`udp-packet.pcap <../files/udp-packet.pcap>`
+
+::
+
+    DUT: AM571x-idk eth2
+    root@am57xx-evm:~# chrt -f -p 40  $(pgrep ksoftirqd/?)
+
+
+    PC:
+    sudo packETHcli -m 2 -t 300 -d 26 -i enx503eaa3bcbd5 -f udp-packet.pcap
+
+    Results:
+
+    PC:
+    Sent 11337831 packets on enx503eaa3bcbd5; 148 bytes packet length; 38161 packets/s; 45.182 Mbit/s data rate; 52.509 Mbit/s link utilization
+    ------------------------------------------------
+    Sent 11375671 packets on enx503eaa3bcbd5 in 300.000031 second(s).
+    ------------------------------------------------
+
+    DUT:
+    root@am57xx-evm:~# ifconfig eth2
+    eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0A:D1
+              inet addr:192.168.3.102  Bcast:192.168.3.255  Mask:255.255.255.0
+              inet6 addr: fe80::72ff:76ff:fe1c:ad1/64 Scope:Link
+              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+              RX packets:11375690 errors:0 dropped:0 overruns:0 frame:0
+              TX packets:364 errors:0 dropped:0 overruns:0 carrier:0
+              collisions:0 txqueuelen:1000
+              RX bytes:1683600596 (1.5 GiB)  TX bytes:61115 (59.6 KiB)
