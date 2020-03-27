@@ -41,6 +41,7 @@ Note that DEVFAMILY represents the Device Family.
 Possible values for <FAMILY> are
  - "J7" (representing Jacinto 7)
  - "AM335X" (representing AM335X family)
+ - "AM437X" (representing AM437X family)
  - "GEN" (representing General family)
 
 linux:
@@ -51,7 +52,7 @@ rtos:
 make config DEVFAMILY=<FAMILY> OS=rtos
 make DEVFAMILY=<FAMILY> OS=rtos
 
-android (unavailable for AM335X):
+android (unavailable for AM335X and AM437X):
 make config DEVFAMILY=<FAMILY> OS=android
 make DEVFAMILY=<FAMILY> OS=android
 

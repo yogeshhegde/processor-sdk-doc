@@ -6,7 +6,7 @@ usage() {
   Usage:
          $0 <target_os> <device_family>
 		target_os:     linux, rtos, android, all
-		device_family: GEN, AM335X, all
+		device_family: GEN, AM335X, AM437X, all
 
 EOF
 }
@@ -20,12 +20,12 @@ case "$1" in
     rtos) echo "Build doc for rtos"
         ;;
     android)
-	if [[ "$2" == "AM335X" ]]; then
+	if [[ "$2" == "GEN" ]]; then
+	    echo "Build doc for android"
+	else
 	    echo "Android doc build is not available for $2"
 	    usage
 	    exit
-	else
-	    echo "Build doc for android"
         fi
         ;;
     *) echo "Wrong argument $1"
@@ -122,7 +122,7 @@ build_doc()
 }
 
 if [[ ${OS} == all ]]; then
-    for dev in "GEN" "AM335X"; do
+    for dev in "GEN" "AM335X" "AM437X"; do
 	build_doc linux $dev
 	build_doc rtos $dev
 	if [[ "$dev" == "GEN" ]]; then
