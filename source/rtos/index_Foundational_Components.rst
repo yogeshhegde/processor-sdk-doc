@@ -21,6 +21,7 @@ IPC
 
 .. note:: This section mainly provides details of the software distributed part of the IPC 3.x package (installed under ipc_<version>). The IPC package provides the IPC APIs with higher level software abstraction. In addition,starting from  Processor SDK 6.1 release, a lower level IPC driver (IPC LLD) using rpmsg based transport is included specifically for AM6x/J7 platforms. See the following link for additional details `IPC 3.x vs IPC LLD`_
 
+.. note:: Starting with releases after the 6.3 release, IPC3.x will be deprecated on the AM65x device and IPC LLD is the only IPC stack supported. Please stop new development on top of IPC3.x for AM65x, and migrate to IPC LLD stack. Please see `IPC LLD for AM65x/J721E <index_device_drv.html#ipclld>`_ for information on IPC LLD.
 
 IPC User's Guide
 ================
