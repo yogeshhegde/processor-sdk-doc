@@ -139,15 +139,21 @@ Options of ArmnnExamples are listed below:
                                           --number_frame 100.
 
 Here is an example of classification using live camera input - stop at any time with mouse right-click on output image window.
-::
+
+.. code-block:: shell
+
       ArmnnExamples -f tflite-binary -i input -s '1 224 224 3' -o MobilenetV2/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/camera_live_input -m /usr/share/arm/armnn/models/mobilenet_v2_1.0_224.tflite -c CpuAcc --number_frame 100
 
 Here is an example of classification using video clip - stop at any time with mouse right-click on output image window.
-::
+
+.. code-block:: shell
+
       ArmnnExamples -f tflite-binary -i input -s '1 224 224 3' -o MobilenetV2/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/test2.mp4 -m /usr/share/arm/armnn/models/mobilenet_v2_1.0_224.tflite -c CpuAcc --number_frame 100
 
 Here is an example of classification using JPG image - use "--number_frame" to select the number of runs.
-::
+
+.. code-block:: shell
+
      root@am57xx-evm:/usr/bin# ArmnnExamples -f tflite-binary -i input -s '1 224 224 3' -o MobilenetV2/Predictions/Reshape_1 -d /usr/share/arm/armnn/testvecs/baseball.jpg -m /usr/share/arm/armnn/models/mobilenet_v2_1.0_224.tflite -c CpuAcc --number_frame 10
      ArmNN v20190800
      

@@ -23,6 +23,7 @@ TVM runtime, TensorFlow Lite, Arm NN, and RNN library.
         * Supports CNN at the moment, and imports Caffe, ONNX, and Tensorflow models.
 
 .. rubric:: `Neo-AI Deep Learning Runtime (DLR) <Foundational_Components/Machine_Learning/neo.html>`__
+
 * Neo-AI-DLR is a new open source machine learning runtime for on-device inference.
 * Supports Keras, Tensorflow, TFLite, GluonCV, MXNet, Pytorch, ONNX, and XGBoost models optimized 
   automatically by `Amazon SageMaker Neo <https://aws.amazon.com/sagemaker/neo/>`__ 
@@ -31,6 +32,7 @@ TVM runtime, TensorFlow Lite, Arm NN, and RNN library.
 * On AM5729 and AM5749 devices, uses TIDL to accelerate supported models automatically.
 
 .. rubric:: `TVM Runtime <Foundational_Components/Machine_Learning/tvm.html>`__
+
 * Open source deep learning runtime for on-device inference, supporting models compiled by 
   `TVM compiler <https://github.com/apache/incubator-tvm/>`__.
 * Available on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
