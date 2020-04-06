@@ -40,7 +40,6 @@ scaling from a lower OPP to Higher OPP we scale the voltage first and
 then the frequency.
 
 .. rubric:: Release applicable
-   :name: release-applicable
 
 Latest release this documentation applies to is Kernel v4.4
 
@@ -146,7 +145,6 @@ All relevant options are listed below:
        ...
 
 .. rubric:: DT Configuration
-   :name: dt-configuration
 
 The clock information and the operating-points table need to be added as
 given in the example below. The voltage source needs to be hooked to the
@@ -304,7 +302,6 @@ transition to a different state. Current 'driver' is called to
 transition to the selected state.
 
 .. rubric:: Release applicable
-   :name: release-applicable-1
 
 Latest release this documentation applies to is Kernel v4.4
 
@@ -462,7 +459,6 @@ which allow additional wake-up sources to be used with less wake latency
 at the expense of less power savings.
 
 .. rubric:: Release applicable
-   :name: release-applicable-2
 
 Latest release this documentation applies to is Kernel v4.4.
 

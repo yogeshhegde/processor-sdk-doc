@@ -25,7 +25,6 @@ For more general information consult the top level kernel user's guide
 `here <http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide>`__.
 
 .. rubric:: Release Applicable
-   :name: release-applicable
 
 The latest release this documentation applies to is Kernel v3.12
 
@@ -50,7 +49,6 @@ The latest release this documentation applies to is Kernel v3.12
 -  AM437x
 
 .. rubric:: Driver Features
-   :name: driver-features
 
 .. rubric:: Supported Features
    :name: supported-features
@@ -79,7 +77,6 @@ The latest release this documentation applies to is Kernel v3.12
 | 
 
 .. rubric:: Unsupported Features/Limitations
-   :name: unsupported-featureslimitations
 
 -  Internal processing block color pattern, black level compensation and
    culling are not supported.
@@ -266,7 +263,6 @@ chips and go inside Encoders/decoders and other helper chips
     ...
 
 .. rubric:: Building as Loadable Kernel Module
-   :name: building-as-loadable-kernel-module
 
 -  If you want to build the driver as a module, use <M> instead of <\*>
    during menuconfig while selecting the drivers (as shown above). For
@@ -276,7 +272,6 @@ chips and go inside Encoders/decoders and other helper chips
 | 
 
 .. rubric:: DT Configuration
-   :name: dt-configuration
 
 Example configuration in your board DTS file to enable VPFE instance 0.
 This an excerpt from the arch/arm/boot/dts/am437x-gp-evm.dts

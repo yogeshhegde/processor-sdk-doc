@@ -284,7 +284,6 @@ DRM CRTC Features:
 |
 
 .. rubric:: Unsupported Features/Limitations
-   :name: unsupported-featureslimitations
 
 -  Rotation/Tiler 2D (Partially supported by the driver, but almost
    unusable due to HW limitations)

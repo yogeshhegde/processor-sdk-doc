@@ -101,7 +101,6 @@ Should the entry "TI's AM335X ADC driver" be missing the MFD component
             <M> TI ADC / Touch Screen chip support
 
 .. rubric:: Building as Loadable Kernel Module
-   :name: building-as-loadable-kernel-module
 
 -  In-case if you want to build the driver as module, use <M> instead of
    <\*> during menuconfig while selecting the drivers (as shown below).

@@ -38,7 +38,6 @@ different TI SoCs:
 +---------------+-----------+--------------------------------------+
 
 .. rubric:: Driver Features
-   :name: driver-features
 
 OSPI controllers support Double Data Rate (DDR) mode in Octal
 configuration wherein data can be read on both edges of the clock.
