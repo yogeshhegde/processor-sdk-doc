@@ -106,4 +106,6 @@ linux/How_to_Guides/Target/How_to_Boot_Beagle_Bone_Black_with_Processor_SDK_Linu
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/ICE_AM335x_Hardware_Setup
 linux/How_to_Guides/Hardware_Setup_with_CCS/ICE_AMIC110_EVM_Hardware_Setup
+linux/How_to_Guides_Board_Port
+linux/How_to_Guides/Board_Port/U-Boot
 linux/Documentation_Tarball
