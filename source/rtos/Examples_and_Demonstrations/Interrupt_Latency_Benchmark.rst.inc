@@ -10,7 +10,6 @@ different types of load configurations.
 This benchmark runs on:
 
 -  AM572x (A15)
--  AM65xx (A53)
 
 The sections below provide details of the application as well as build
 and run instructions.
@@ -53,7 +52,7 @@ Several design choices were made when creating the interrupt latency
 benchmark.
 
 -  The benchmark task is set to core 0
-    * Core 0 is the A15_0/A53_0 core,
+    * Core 0 is the A15_0 core,
       and is the primary core for the benchmark. The benchmark is forced to
       operate only on this core, no matter the load. This is achieved by setting
       the affinity of the task parameter to 0
@@ -117,33 +116,11 @@ To run the benchmark on AM572xx using CCS, use the following steps.
    -  If running in non-SMP mode, do not create a sync group. Only 
       load and run the binary on the A15_0 core
 
-To run the benchmark on AM65x using CCS, use the following steps.
-
-#. If this is the first time running the benchmark, refer to the 
-   following link to setup CCS for AM65x (http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/How_to_Guides_Hardware_Setup_with_CCS.html#advanced-am65x-debug-setup-with-dmsc-firmware-load)
-#. Once setup, click the drop down arrow next to the debug button 
-   and select Debug Configurations
-#. Select your corresponding AM65x .ccxml file and click Debug
-#. In the CCS debug view, disconnect the R5_0 core
-#. Create a sync group (http://software-dl.ti.com/ccs/esd/documents/ccs_smp-debug.html)
-   with the A53 cores and connect to them all
-#. Load the binary to all of the cores. The A53_0 core 
-   should halt at main while the SMP linked cores will begin 
-   auto-running upon load
-#. Once all cores have been loaded, run them all
-#. The output will be sent to the UART console in real time
-#. You must manually halt the cores to end the benchmark
-
-.. note::
-   -  If running in non-SMP mode, do not create a sync group. 
-      Only load and run the binary on the A53_0 core
-
 Secondary Bootloader (SBL)
 --------------------------
 
 To run the benchmark on a micro-SD card, follow the 
 corresponding steps for AM57x (http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#am57x)
-and AM65x (http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_Foundational_Components.html#am65x).
 
 .. note::
    -  The binary is the same format as a .out file
@@ -154,8 +131,6 @@ Known Issues and Limitations
 When running the benchmark, keep in mind the following
 issues which are still being fixed.
 
-#. SMP mode for AM65x is not working
-#. Loading through SBL on AM65x has not been verified
 #. The cause for several outliers in the data is being 
    investigated
 
