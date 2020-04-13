@@ -61,9 +61,6 @@ Released Oct 2019
 
 - AM65x
     - `IPC Low level driver support <index_device_drv.html#ipclld>`_
-    
-- AM335x
-    - `Sercos-III Softmaster Demo on AM335x ICEv2 <index_examples_demos.html#sercos-iii-softmaster>`_
 
 .. note::
    | C64P big endian targets are no longer supported since this release. 
