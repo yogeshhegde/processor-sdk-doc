@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_DWC3_User%27s_Guide
 
-DWC3
+USB DWC3
 ---------------------------------
 
 .. rubric:: **Introduction**

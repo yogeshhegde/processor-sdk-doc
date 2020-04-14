@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_MUSB_User%27s_Guide
 
-MUSB
+USB MUSB
 ---------------------------------
 
 .. rubric:: **Quick Start Guide**
