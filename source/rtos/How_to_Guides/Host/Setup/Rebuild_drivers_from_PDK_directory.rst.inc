@@ -57,18 +57,20 @@ the build time for targets 'all' and 'clean'. For example,
     C:\ti\pdk_[soc]_[version]\packages>gmake clean -j4
     C:\ti\pdk_[soc]_[version]\packages>gmake all -j4
 
-Individual PDK components can be cleaned and rebuilt with the following
-commands:
+Individual PDK components can be cleaned and rebuilt from within the component's directory 
+with the following commands
 
 ::
 
-    C:\ti\pdk_[soc]_[version]\packages>gmake <component>_clean
-    C:\ti\pdk_[soc]_[version]\packages>gmake <component>
+    cd  C:\ti\pdk_[soc]_[version]\packages\ti\drv\<component>
+    C:\ti\pdk_[soc]_[version]\packages>gmake clean
+    C:\ti\pdk_[soc]_[version]\packages>gmake all
 
     Example:
 
-    C:\ti\pdk_[soc]_[version]\packages>gmake i2c_clean
-    C:\ti\pdk_[soc]_[version]\packages>gmake i2c
+    cd C:\ti\pdk_[soc]_[version]\packages\ti\drv\i2c
+    C:\ti\pdk_[soc]_[version]\packages>gmake clean
+    C:\ti\pdk_[soc]_[version]\packages>gmake all
 
 Please note that parallel make (-j4) is not supported within individual 
 PDK components. It is supported only at the top level (C:\\ti\\pdk_[soc]_[version]\\packages)
@@ -138,8 +140,8 @@ commands:
 
 ::
 
-    ~/ti/pdk_[soc]_[version]/packages$ make clean 
-    ~/ti/pdk_[soc]_[version]/packages$ make all 
+    ~/ti/pdk_[soc]_[version]/packages$ make clean
+    ~/ti/pdk_[soc]_[version]/packages$ make all
 
 Please note that the user can specify parallelism with the make option -j to reduce 
 the build time for targets 'all' and 'clean'. For example,
@@ -149,18 +151,18 @@ the build time for targets 'all' and 'clean'. For example,
     ~/ti/pdk_[soc]_[version]/packages$ make clean -j4
     ~/ti/pdk_[soc]_[version]/packages$ make all -j4
 
-Individual PDK components can be cleaned and rebuilt with the following
-commands:
+Individual PDK components can be cleaned and rebuilt from within the components' directory as below
 
 ::
 
-    ~/ti/pdk_[soc]_[version]/packages$ make <component>_clean
-    ~/ti/pdk_[soc]_[version]/packages$ make <component>
+    cd ~/ti/pdk_[soc]_[version]/packages/ti/drv/<component>
+    ~/ti/pdk_[soc]_[version]/packages$ make clean
+    ~/ti/pdk_[soc]_[version]/packages$ make all
 
     Example:
-
-    ~/ti/pdk_[soc]_[version]/packages$ make i2c_clean
-    ~/ti/pdk_[soc]_[version]/packages$ make i2c
+    cd ~/ti/pdk_[soc]_[version]/packages/ti/drv/i2c
+    ~/ti/pdk_[soc]_[version]/packages$ make clean
+    ~/ti/pdk_[soc]_[version]/packages$ make all
 
 Please note that parallel make (-j) is not supported within individual 
 PDK components. It is supported only at the top level (~/ti/pdk_[soc]_[version]/packages)
@@ -192,7 +194,7 @@ To build only, DSP version of evmK2G board library
 
 ::
 
-    make LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="dsp_0" 
+    make LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="c66x" 
 
 PDK Example and Test Project Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
