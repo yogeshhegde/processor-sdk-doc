@@ -11,6 +11,22 @@ of the Processor SDK RTOS.
 Processor SDK 06.xx Releases
 ============================
 
+Processor SDK 06.03
+-------------------
+
+Build
+=====
+
+**Migration:** Building individual drivers' librabries/apps of PDK from PDK's top level makefile is not supported
+
+**Impact Scope:** Applicable for all drivers packaged in the PDK
+ 
+**Additional Details**:
+Prior to this release, libraries/applications of drivers included in pdk (pdk_xx/packages/ti) could be built from
+the top level makefile (pdk_xx/packages/makefile) using commands like "make uart_lib/uart_apps". This is no longer supported.
+Instead, the libraries and applications could either be built using "make all" from the top level makefile or issuing "make libs/apps" from within the module's directory.
+
+ 
 Processor SDK 06.01
 -------------------
 
