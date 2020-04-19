@@ -177,10 +177,12 @@ where multiple Evaluation platforms are supported.
 
     make LIMIT_BOARDS="<BOARD>" LIMIT_SOCS="<SOC>" LIMIT_CORES="<CORE>"
 
--  SOC can be am335x, am437x, am571x, am572x, k2g,k2h,k2e, etc.
--  CORE can be “a15_0”, “c66x”, or “ipu1_0”, for a15, c66, m4
+-  LIMIT_SOCS can be am335x, am437x, am571x, am572x, k2g,k2h,k2e, etc.
+-  LIMIT_CORES can be “a15_0”, “c66x”, or “ipu1_0”, for a15, c66, m4
    respectively.
--  BOARD can be any evaluation hardware platform that your SOC supports.
+-  LIMIT_BOARDS can be any evaluation hardware platform that your SOC supports.
+
+Please issue "make help" to list the LIMIT_SOCS/LIMIT_CORES/LIMIT_BOARDS supported.
 
 For Example:
 
@@ -195,6 +197,48 @@ To build only, DSP version of evmK2G board library
 ::
 
     make LIMIT_BOARDS="evmK2G" LIMIT_SOCS="k2g" LIMIT_CORES="c66x" 
+
+
+
+Building PDK components from git repo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The components PDK can be rebuilt from their git repositories. This is especially useful for development and/or picking up some bug fixes since the previous release.
+Below are the steps on how to set up a development environment with the git repositories
+-  Install the most recent version of processor-sdk
+-  Replace ~/processor-sdk-installation-dir/pdk_<soc>_<version>  with the PDK git repository https://git.ti.com/cgit/processor-sdk/pdk/
+
+::
+
+   cd ~/ti/<procsdk_install_dir>/
+   git clone  https://git.ti.com/git/processor-sdk/pdk.git
+
+- Clone the PDK components which were present in pdk_<soc>_<version> and  not in the pdk.git. This includes components like csl,sa,pm etc.
+
+::
+
+   cd ~/ti/<procsdk_install_dir>/pdk/packages/ti/
+   git clone https://git.ti.com/git/keystone-rtos/common-csl-ip.git csl
+   cd drv
+   git clone https://git.ti.com/git/keystone-rtos/pm-lld.git pm
+   git clone https://git.ti.com/git/keystone-rtos/sa-lld.git sa
+
+- Set up the development environment with the appropriate PDK_SOC (PDK_SOC is the <soc> field in the pdk_<soc>_<version> directory  which was replaced by pdk.git)
+
+::
+
+   cd ~/ti/<procsdk_install_dir>/pdk/packages/
+   export PDK_SOC=<soc>     //NOTE:PDK_SOC is the <soc> field in the pdk_<soc>_<version> directory  which was replaced by pdk.git
+   source ./pdksetupenv.sh
+
+- Re-build the libraries
+::
+
+   make all -j4
+
+.. note::
+   When updating PDK for picking up bug fixes or for development, please be aware that the supporting components like tools versions might have changed since the previous release.The tools versions used by PDK are specified in pdk/packages/ti/build/pdk_tools_path.mk . Please ensure that those are downloaded in the processor sdk installation directory.
+  
 
 PDK Example and Test Project Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
