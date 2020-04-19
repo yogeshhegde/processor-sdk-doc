@@ -14,12 +14,24 @@ Processor SDK 06.xx Releases
 Processor SDK 06.03
 -------------------
 
-Build
-=====
+Building PDK components from GIT repositories
+=============================================
+
+**Migration:** Change in git repository for PDK components.
+
+**Impact Scope:** Applicable for most drivers packaged in the PDK when used in development environment
+
+**Additional Details**:
+Prior to this release, libraries/applications of drivers included in pdk (pdk_xx/packages/ti) had their own git respositories which could be cloned and used for development or picking up bugfixes which are not yet released through a processor sdk release.
+From this release onwards, most of the drivers in the PDK are moved to the new pdk.git repository(https://git.ti.com/cgit/processor-sdk/pdk) and its components (drivers) moved in to their respective locations inside the pdk_<soc>_<ver> of the Processor SDK installation.
+For example the i2c driver has been moved from https://git.ti.com/cgit/keystone-rtos/i2c-lld to https://git.ti.com/cgit/processor-sdk/pdk/tree/packages/ti/drv/i2c. Consequently, the latest updates on a PDK driver should be fetched from the new pdk.git repo (https://git.ti.com/cgit/processor-sdk/pdk) as the older repos are rendered obselete.
+
+Building of libraries of individual PDK components
+==================================================
 
 **Migration:** Building individual drivers' librabries/apps of PDK from PDK's top level makefile is not supported
 
-**Impact Scope:** Applicable for all drivers packaged in the PDK
+**Impact Scope:** Applicable for PDK top level makefile
  
 **Additional Details**:
 Prior to this release, libraries/applications of drivers included in pdk (pdk_xx/packages/ti) could be built from
