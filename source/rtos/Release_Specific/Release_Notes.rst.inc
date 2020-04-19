@@ -66,16 +66,11 @@ Released Apr 2020
 - AM65x
     - Added Support for SR 2.0
     - Added Thumb2 mode support for R5 cores
-    - IPC LLD sample test for R5  to A53  running Linux
-    - IPC LLD Example : Support between A53 running RTOS and R5F in dual core mode
-    - CSL: Baremetal example for ePWM, WWDT
+    - `IPC LLD sample test for R5  to A53  running Linux <index_device_drv.html#example-details>`_
+    - `IPC LLD Example : Support between A53 running RTOS and R5F in dual core mode <index_device_drv.html#example-details>`_
+    - `CSL: Baremetal example for ePWM, WWDT <index_device_drv.html#csl-fl-examples>`_
     - EMAC Driver: Update to use NAVSS256L instead of MCU NAVSS
-    - ICSS-EMAC , NIMU ICSS EMAC support
-
-- J721E (External release will be available through Jacinto 7.0 release)
-    - CSL Baremetal: Added support for PBIST and LBIST 
-    - CSL Baremetal: Added support for EMIF/DDR 
-    - PCIe LLD Gen3 for Board Diagnostics
+    - Added support for ICSS-EMAC,NIMU ICSS EMAC
 
 - AM57x    
     - ICSS Ethernet Support - Standard Switch Ethernet
