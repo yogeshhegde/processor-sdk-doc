@@ -75,9 +75,11 @@ Released Apr 2020
 - AM57x    
     - ICSS Ethernet Support - Standard Switch Ethernet
 
-- AM335x/AM437x/AM57x/K2G
-    - Support RSTP using Multicast Filtering to pass through BPDU frames
-  
+
+- Descoped features
+    - Sercos3 softmaster demo on AM335x
+    
+
 .. rubric::  Component Version
    :name: component-version
 
@@ -210,7 +212,7 @@ release and any known workaround.
 
 .. csv-table::
    :header: "Record ID","Board/s","Component/s","Summary","Workaround"
-   :widths: 15,100,20,30,70
+   :widths: 15,100,20,30,20
 
 	PRSDK-769,Posix-SMP Demo DMIPS are wrong,Demonstrations,Multiple Platforms
 	PRSDK-5642,USB_DevBulk_ExampleProject: Failed to load/run app,Board Support,am335x-evm,Use JTAG to load and run the example
@@ -236,6 +238,7 @@ release and any known workaround.
 	PRSDK-3656,PM: shutdown test failed on DSP core for am572x-evm,Power,am572x-evm
 	PRSDK-8170,AM57xx: A15 QSPI flash block erase & DMA mode write issues,Control Drivers,am572x-idk,Use non-DMA (cpu based copy) instead of the DMA transfer
 	PRSDK-5879,Board: Board library needs to cover entire DDR region connected to EMIF1,Board Support,am654x-evm
+    PRSDK-7735,am65xx:Need to optimize time it takes to poll for packets from udma rings on R5,am654x-idk,"emac_poll_ctrl API is used to poll for rx packets, rx management responses and tx completion events. The parameters to this API are the port number, bitmap of receive packets, bitmap of management rings, and bitmap of tx completion rings to poll. The bitmaps are specified in the driver interface header file. In order to reduce the polling interval, it is recommended to call this API with only bitmap of rings that are required to be polled for an applications use call rather than polling for all the rings. Note that for release 6.3 applications and libraries for rR5F core are being compiled in thumb mode and initial testing indicates a ~20% reduction in cycle time versus release 6.1"
 	PRSDK-6382,SBL: R5F: Core 1 boot is not working with unsigned binary with ipc images,Boot,am654x-evm
 	PRSDK-4661,Maxwell: Board diagnostics LCD touchscreen test reports incorrect number of touch events,Diagnostics,"am654x-evm, am654x-hsevm, am654x-idk"
 	PRSDK-7908,R5 Board Diagnostics Apploader crashes on AM65x (PG1 & 2),PDK,"am654x-evm, am654x-hsevm, am654x-idk",Board Diagnostics can be executed from A53
