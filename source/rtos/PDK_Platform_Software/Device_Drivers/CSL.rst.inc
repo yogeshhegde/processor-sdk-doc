@@ -134,13 +134,14 @@ supported with the CSL library:
 -  MAILBOX
 -  I2C
 -  QSPI
--  WDTIMER
+-  WDTIMER (WWDT)
 -  MMCSD
 -  MMU
 -  SPINLOCK
 -  UART
 -  ECC : Limited to applicable SOC's/Boards:idkAM574x
 -  GPMC : Limited to a15 core on idkAM572 and evmAM572x
+-  ePWM : Duty Cycle example application - Limited to applicable SoC's/Boards: am65xx_evm, j721e_evm
 
 In order build the projects:
 
