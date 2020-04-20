@@ -150,11 +150,11 @@ IPCLLD comes with the following examples.
 Example Details
 ^^^^^^^^^^^^^^^
 
-- **ipc_echo_test:** This is most generic example application where A72 is running Linux, and all other cores running bios. All cores talk to each other bi-diectionally. It is send ping message and remote end responds pong message. There are 10000 ping/pong messages exchanged between each core-pair. 
+- **ipc_echo_test:** This is most generic example application where mpu1_0 is running Linux, and all other cores running bios. All cores talk to each other bi-diectionally. It is send ping message and remote end responds pong message. There are 10000 ping/pong messages exchanged between each core-pair.
 - **ex01_bios_2core_echo_test:** This is the simplistic ping/pong application between any two cores running BIOS
-- **ex02_bios_multicore_echo_test:** All cores running BIOS, many-to-many communication, each sending ping/pong with each other. A72 is also running BIOS.
-- **ex03_linux_bios_2core_echo_test:** This is simplistic ping/pong application where A72 running Linux and any other core is running Bios.
-- **ex04_linux_baremetal_2core_echo_test:** AM65xx only. This is a ping/pong application where A72 is running Linux and the other core is baremetal (no OS).
+- **ex02_bios_multicore_echo_test:** All cores running BIOS, many-to-many communication, each sending ping/pong with each other. mpu1_0 is also running BIOS.
+- **ex03_linux_bios_2core_echo_test:** This is simplistic ping/pong application where mpu1_0 running Linux and any other core is running Bios.
+- **ex04_linux_baremetal_2core_echo_test:** AM65xx only. This is a ping/pong application where mpu1_0 is running Linux and the other core is baremetal (no OS).
 
 Loading Remote Firmware
 ^^^^^^^^^^^^^^^^^^^^^^^
