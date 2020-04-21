@@ -43,38 +43,27 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 06.02.00
+Release 06.03.00
 ==================
 
-Released January 2020
+Released April 2020
 
 .. rubric:: What's New
    :name: whats-new
 
-- Processor SDK 6.2 Release is limited to AM5 and AM6 platforms w/ Linux OS, and has following new features:
+Processor SDK 6.3 Release has following new features:
+
+
 - Analytics
-    - Support new platform Beaglebone-AI (BB-AI)
-    - Support AM5729 IDK, with 4xEVE
-    - Neo-AI Deep Learning Runtime (DLR) Support. For more details see `here <Foundational_Components/Machine_Learning/neo.html>`__
-    - TVM Runtime Support. For more details see `here <Foundational_Components/Machine_Learning/tvm.html>`__
-    - Benchmarks for various Deep Learning Networks
+    - TensorFlow Lite classification and segmentation demos with OpenCV
+    - TensorFlow Lite heterogeneous execution with TIDL acceleration with EVE’s and DSP’s on AM5729 and AM5749 devices
+    - sitara_am57x supported as AWS Sagemaker NEO target device
 
-- AM57x Networking:
-    - Support Standard Ethernet Switch over ICSS
-    - Support Rapid Spanning Tree Protocol (RSTP) w/ cut-through offloaded to ICSS Switch
-    - Support Telecomm profile (G.8275.2) Slave Mode on ICSS EMAC interface
-    - Support Early boot of IPUs, and late attach from ARM core. For more details see `here <Foundational_Components_IPC.html#ipc-early-boot-for-am57xx-dra7xx>`__
+- ICSSM PRUETH
+    -  Network storm prevention enhancements 
 
-- AM65x:
-    - ICSSG PRUETH: Support 100M Link Speed full duplex operation, in addition to 1G
-    - Support SOC PRU PWM Interface
-
-- Graphics
-    - Re-enable qtWebengine and Chromium browser support
-    - Upgrade SGX DDK to support all required EGL 1.5-based extensions with Mesa-EGL instead of the traditional IMG WSEGL. 
-    - Both Wayland and GBM(DRM) window systems are supported by Mesa-based EGL while the nullDRM window system is dropped
-    - All the full-screen (EGLFS)-based applications have been updated to use GBM-based window system. 
-    - Please refer to the Graphics and Display section at the developer guide for details. See `here <Foundational_Components/Graphics/Migration_From_Prior_Releases.html#from-processor-sdk-6-1-to-6-2-for-am3-4-5-6>`__
+- ICSSG PRUETH
+    -  100M Uboot Support in ICSSG on AM654x
 
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
@@ -82,7 +71,7 @@ Released January 2020
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 4.19.79+ (2019 LTS)        |
+| Linux Kernel             | 4.19.94 (2019 LTS)         |
 +--------------------------+----------------------------+
 | U-Boot                   | 2019.01                    |
 +--------------------------+----------------------------+
@@ -124,7 +113,7 @@ U-Boot
 | Based on verson: 2019.01
 | URL: git.ti.com/processor-sdk/processor-sdk-u-boot.git
 | Branch: processor-sdk-u-boot-2019.01
-| Commit ID: a141f7abfd346f2e0e5a5864620d8f528436c860 
+| Commit ID: 333c3e72d362c1fd1e5011e4e961c231b8f8edc8
 
 |
 
@@ -135,10 +124,10 @@ Kernel
    :name: linux-kernel
 
 | The kernel git repository, branch and commit id can be found below:
-| Based on Version: 4.19.79
+| Based on Version: 4.19.94
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-4.19.y
-| Commit ID: 77dfab56c6029fc4bb85e3684950c54d541df110 
+| Commit ID: be5389fd85b69250aeb1ba477447879fb392152f
 
 |
 
@@ -147,12 +136,12 @@ Kernel
 
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
-| Kernel Version: 4.19.79
-| RT Kernel Version: 4.19.79-rt21
+| Kernel Version: 4.19.94
+| RT Kernel Version: 4.19.94-rt39
 
 | URL: git://git.ti.com/processor-sdk/processor-sdk-linux.git
 | Branch: processor-sdk-linux-rt-4.19.y
-| Commit ID: 5baf382c8f566e7ab46a144eed51b639dec32841  
+| Commit ID: a242ccf3f13f03d41d521411ce2cc09775c873a2  
 
 |
 
@@ -176,30 +165,8 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 30, 100
 
-   LCPD-16641,"am654x-evm, am654x-idk, am654x-hsevm, j721e-evm, j721e-evm-ivi",tidss: need to ensure the output width is divisible by 2
-   LCPD-13587,am57xx-evm,dwc3: g_audio can only record once
-   LCPD-16707,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm", "DRA7x: Off-by-one error while selecting OTV in tuning algorithm"
-   LCPD-15821,am654x-evm,AM6 tidss: 1680x1050 does not work with TC358767
-   LCPD-17185,am57xx-evm,U-Boot does not have Extended Mode Register support for the TI DP83867 PHY driver
-   LCPD-12470,,Analyze / fix klocwork warnings for TSCADC
-   LCPD-15714,,[Klokworks uboot] Resolve or indicate false positives on drivers/usb/dwc3/gadget.c
-   LCPD-15722,,[Klokworks uboot] Resolve or indicate false positives on drivers/usb/dwc3/core.c
-   LCPD-16937,"am43xx-epos, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk",U-Boot: usbhost boot failed on AM437x
-   LCPD-15241,am437x-sk,am437x-sk failed boot to uboot prompt from QSPI
-   LCPD-16190,"am335x-evm, am43xx-gpevm, am57xx-evm, dra72x-evm, dra7xx-evm",NBench's FP_Emulation benchmark is ~30% lower than expected
-   LCPD-15706,,[Klokworks] Resolve or indicate false positives on arch/arm/mach-omap2/omap_hwmod.c
-   LCPD-15707,,[Klokworks] Resolve or indicate false positives on drivers/clk/ti/autoidle.c
-   LCPD-15702,,[Klokworks] Resolve or indicate false positives on drivers/clk/ti/clockdomain.c
-   LCPD-15727,,[Klokworks uboot] Resolve or indicate false positives on drivers/core/regmap.c
-   LCPD-15717,,[Klokworks uboot] Resolve or indicate false positives on drivers/mtd/spi/spi-nor-core.c
-   LCPD-15712,,[Klokworks uboot] Resolve or indicate false positives on drivers/net/ti/cpsw.c
-   LCPD-15721,,[Klokworks uboot] Resolve or indicate false positives on drivers/thermal/ti-bandgap.c
-   LCPD-16838,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am654x-idk",icss/icssg: prueth: PHY shouldn't advertise flow control
-   PLSDK-3134,am572x-evm,NEO-AI DLR cannot be imported on the target
-   PLSDK-2943,am572x-evm,Browser app crashes if EVM is connected to Internet
-   PLSDK-3033,"am571x-idk,am572x-idk,am574x-idk",HSR mode PRP frames not forwarded
-   PLSDK-3150,am654x-idk,icssg U-boot revert the interposer card related patches
-   PLSDK-3095,"am571x-idk,am572x-idk",If nsp_credit is set to 0 storm prevention should be disabled
+   PLSDK-1398,"k2e-evm,k2e-hsevm,k2h-hsevm,k2g-hsevm",Documentation IPC Demo hangs if run after OpenCL demos
+   PLSDK-3143,"am335x-evm, am437x-evm, am437x-idk, am572x-evm, am572x-idk, am574x-idk",TVM inside PLSDK Linux devkit not working for code generation
 
 |
 
@@ -210,7 +177,9 @@ Issues found and closed on this release that may be applicable to prior releases
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 20, 70
 
-   PLSDK-3166,am571x-idk,In switch mode ifconfig up then down of an interface causes kernel crash
+   PLSDK-3157,"am654x-evm,am654x-idk,am654x-hsevm", ICSSG: Driver has to support changing of speed/duplex on the fly
+   PLSDK-3067,"am574x-idk", M4 Bind/Unbind Causes Hang
+   PLSDK-2642,"am574x-idk", PRU Ethernet links on IDK Application board are unstable
 
 |
 
@@ -317,16 +286,27 @@ SDK Known Issues
    PLSDK-3125,"am571x-idk, am572x-idk, am574x-idk",clean up timestamp queue when extts is disabled,
    PLSDK-3128,"am572x-evm, am572x-hsevm, am572x-idk, am574x-hsidk, am574x-idk",SDK disk image for Windows users too large for 16GB SD card,
    PLSDK-3138,,EtherCAT in Jailhouse inmate: instruction abort at 0x80013f00,
-   PLSDK-3143,"am335x-evm, am437x-evm, am437x-idk, am572x-evm, am572x-idk, am574x-idk",TVM inside    PLSDK Linux devkit not working for code generation,
    PLSDK-3147,am654x-idk,ICSSG: < 0.01 packet loss at 3/4/4.5 Mbits/sec for 10M Half Duplex link,
    PLSDK-3148,am654x-idk,ICSSG: 10M/100M Half duplex doesn't work with 10/100M Hub,
-   PLSDK-3151,beagleboneblack,ArmnnExamples cannot run on BBB for usb camera input,
    PLSDK-3152,am654x-idk,10M/100M EVM <-------> PC / H3C S5120V2: setup results in kernel errors and ping failures,
-   PLSDK-3157,"am654x-evm, am654x-idk, am654x-hsevm",ICSSG: Driver has to support changing of speed/duplex on the fly,
    PLSDK-3171,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",DualEMAC PTP IPv4/UDP transport does not support VLAN,
    PLSDK-3172,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, k2g-ice",DualEMAC PTP IPv4/UDP transport does not drop SYNC messages from unknown PTP masters,
-
-
+   PLSDK-3179,"am572x-idk",OpenCV_stereoBM_implementation test failed on am5729-idk,
+   PLSDK-3182,"am571x-idk",RSTP switch PRU ethernet driver should use 4 tx queues instead of 2,
+   PLSDK-3183,"am571x-idk",RSTP switch PRU ethernet driver should purge FDB only when going in or out of blocking state,
+   PLSDK-3184,"am571x-idk",RSTP switch PRU ethernet driver should age out dynamically learned FDB,
+   PLSDK-3185,"am571x-idk",RSTP switch PRU ethernet driver multicast filtering is not working,
+   PLSDK-3191,"am335x-ice",icss-m: prueth: AM335x Single EMAC broken,
+   PLSDK-3213,"am654x-idk",DP83867: auto negotiation at 10M/100M unstable,
+   PLSDK-3215,"omapl138-lcdk",Windows SD card creation does not result in bootable binary,
+   PLSDK-3219,"am571x-idk,am572x-idk,am574x-idk",Invalid PTP message type warnings,
+   PLSDK-3219,"am571x-idk,am572x-idk,am574x-idk",Invalid PTP message type warnings,
+   PLSDK-3220,"am572x-evm,am572x-idk", Neo-AI DLR TIDL demo image preprocssing incorrectly indexing pixels,
+   PLSDK-3225,"am654x-evm", bin/create-ubifs.sh not available in SDK,
+   PLSDK-3232,"am654x-evm", UDP throughput numbers are half of what they should be,
+   PLSDK-3238,"am335x-evm,am437x-evm", Docker hello world test failure on am335x-evm/am437x-evm/dra76x-evm,
+   PLSDK-3240,"am571x-idk,am572x-idk,am574x-idk", RSTP prueth: cable removal can cause instability on disabled Ethernet port,
+   PLSDK-3241,"am571x-idk,am572x-idk,am574x-idk", RSTP_SWITCH_FW: Re-calculate timeout value for PRU-side locking,
 
 |
 
@@ -357,19 +337,10 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround", "Impact"
    :widths: 5, 10, 70, 10, 5, 20, 35, 20
 
-   LCPD-17648,P2-High,ICSSG: Periodic packet loss seen at as low as 30Mbits/sec over 100M Full Duplex Link,Connectivity,,am654x-idk,"Use rate of 20Mbits/sec for 0 packet loss",
-   LCPD-17305,P2-High,ICSSG PRUETH: kernel crash when eth1 & eth3 connected and ifconfig up/down,Connectivity,,am654x-idk,,
    LCPD-16877,P3-Medium,ti-ipc-examples-linux intermittent build failure,"IPC, System Integration",,k2hk-evm,,
-   LCPD-17517,P3-Medium,Platform can't suspend due to IPU failing to suspend,IPC,,am57xx-evm,,
    LCPD-16534,P3-Medium,remoteproc/k3-r5f: PDK IPC echo_test image fails to do IPC in remoteproc mode on second run,IPC,Firmware,"am654x-evm, am654x-idk",None,
-   LCPD-17779,P3-Medium,UART Read/Write tests fail,Connectivity,UART,"am57xx-evm, am654x-evm, dra7xx-evm, k2g-evm",,
    LCPD-17529,P3-Medium,Could not access usbhost when booting from SD card,Connectivity,,am43xx-gpevm,,
-   LCPD-17482,P3-Medium,Linux spi-ti-qspi driver does not properly support multiple MTD devices,Connectivity,SPI,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",,
-   LCPD-17475,P3-Medium,Update PRUETH Single EMAC Bindings Documentation,Connectivity,,"am335x-ice, am437x-idk, am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am654x-idk, k2g-ice",,
-   LCPD-17472,P3-Medium,Missing commit b5376be4f in kernel 4.19 for K2E/L system hung caused by ethernet cable unplugged,Connectivity,,"k2e-evm, k2l-evm",,
-   LCPD-17470,P3-Medium,CPSW: Still seeing multicast packets with promisc and allmulti disabled,Connectivity,,"am654x-evm, j721e-idk-gw",,
    LCPD-17441,P3-Medium,TI_CPSW Module cannot be removed and reinserted,Connectivity,,am57xx-evm,,
-   LCPD-17420,P3-Medium,AM65x: MCU_UART lockup due to udma teardown timeout,Connectivity,UART,am654x-evm,,
    LCPD-17329,P3-Medium,K2E RT-Linux USB fails when using USB-Ethernet dongle to scp file (512MB),Connectivity,USB,k2e-evm,,
    LCPD-17118,P3-Medium,Kernel MMC/SD user's guide incorrectly refers to OMAP-HSMMC,Connectivity,MMCSD,"am57xx-evm, dra7xx-evm",None,
    LCPD-16590,P3-Medium,am335x: usb bus power lost after system suspend resume,Connectivity,usb,"am335x-evm, am335x-sk, beaglebone-black",,

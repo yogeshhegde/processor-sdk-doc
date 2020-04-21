@@ -12,6 +12,11 @@ of the Processor SDK for Linux.
 Processor SDK 06.xx Releases
 ============================
 
+Processor SDK 06.03
+--------------------
+- This is a quarterly update release on 2019 LTS stream and final release on that stream. 
+- ICSSM PRUETH: Network storm prevention enhancements. Please check 4.2.4.7 Network Storm Prevention section of user guide, for changes in user interface for configuring storm prevention.
+
 Processor SDK 06.02
 ---------------------
 - This is a quarterly update release on 2019 LTS stream.
