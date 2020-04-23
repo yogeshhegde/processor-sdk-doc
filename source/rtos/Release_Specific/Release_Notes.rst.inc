@@ -67,14 +67,9 @@ Released Apr 2020
     - Added Support for SR 2.0
     - Added Thumb2 mode support for R5 cores
     - `IPC LLD sample test for R5  to A53  running Linux <index_device_drv.html#example-details>`_
-    - `IPC LLD Example : Support between A53 running RTOS and R5F in dual core mode <index_device_drv.html#example-details>`_
     - `CSL: Baremetal example for ePWM, WWDT <index_device_drv.html#csl-fl-examples>`_
     - EMAC Driver: Update to use NAVSS256L instead of MCU NAVSS
     - Added support for ICSS-EMAC,NIMU ICSS EMAC
-
-- AM57x    
-    - ICSS Ethernet Support - Standard Switch Ethernet
-
 
 - Descoped features
     - Sercos3 softmaster demo on AM335x
