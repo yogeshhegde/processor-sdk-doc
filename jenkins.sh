@@ -82,7 +82,7 @@ if [[ ${branch} == next ]]; then
 else
    # For the other branches, use the latest SDF version number for the release
    TAG_PREFIX='DEV.PROCESSOR-SDK.'
-   VERSION="$(git ls-remote --tags "$CONFIG_REPO" "$TAG_PREFIX$RELEASE"\* | sed -ne 's|.*'"$TAG_PREFIX"'||p' | sort | tail -1)"
+   VERSION="$RELEASE.$(git ls-remote --tags "$CONFIG_REPO" "$TAG_PREFIX$RELEASE"\* | sed -ne 's|.*'"$TAG_PREFIX$RELEASE."'||p' | sort -n | tail -1)"
 fi
 VERSION=${VERSION//./_}
 
