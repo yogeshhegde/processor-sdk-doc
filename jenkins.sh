@@ -93,13 +93,13 @@ build_doc()
     DEV=$2
 
     if [[ "$DEV" != "GEN" ]]; then
-	    dev_path="${DEV}/"
+	    dev_path="/${DEV}"
     else
 	    dev_path=''
     fi
 
-    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/${dev_path}docs/${VERSION}"
-    echo "processor-sdk-${OS}/esd/${dev_path}docs/${VERSION}/${OS}/index.html" >> "${BUILD_TARGETS}"
+    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/docs/${VERSION}${dev_path}"
+    echo "processor-sdk-${OS}/esd/docs/${VERSION}${dev_path}/${OS}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
     make config DEVFAMILY="${DEV}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
