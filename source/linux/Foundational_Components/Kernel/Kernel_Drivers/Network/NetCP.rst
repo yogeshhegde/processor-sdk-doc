@@ -3771,34 +3771,11 @@ with some debug prints similar to the following shown:
 .. rubric:: Software Workaround
    :name: software-workaround
 
-A workaround that helps to avoid the issue is to **disable** the Gigabit
-MDIO and modify the Gigabit Ethernet interface link type to
-**SGMII\_LINK\_MAC\_PHY\_NO\_MDIO (4)** by making the following changes
-in the default K2HK devicetree bindings.
+A workaround that helps to avoid the issue is to modify the Gigabit Ethernet interface
+link type to **SGMII\_LINK\_MAC\_PHY\_NO\_MDIO (4)** and to remove the phy-handle in the
+gbe0 and gbe1 nodes as follows in the default K2HK netcp dtsi file.
 
 | 
-
-::
-
-      diff --git a/arch/arm/boot/dts/keystone-k2hk-evm.dts b/arch/arm/boot/dts/keystone-k2hk-evm.dts
-      index ff1c0fc..0cfa003 100644
-      --- a/arch/arm/boot/dts/keystone-k2hk-evm.dts
-      +++ b/arch/arm/boot/dts/keystone-k2hk-evm.dts
-      @@ -200,6 +200,7 @@
-              };
-       }; 
-      +/*
-       &mdio {
-              status = "ok";
-            thphy0: ethernet-phy@0 {
-      @@ -212,6 +213,7 @@
-                      reg = <1>;
-              };
-       };
-      +*/
-
-       &gbe_serdes {
-              status = "okay";
 
 ::
 
