@@ -74,7 +74,7 @@ echo "${repo_rev_line}" >> "${REPO_REV}"
 # Get the version number from processor-sdk-config git repo
 RELEASE="$(cat version.txt)"
 RELEASE=${RELEASE//_/.}
-CONFIG_REPO='https://bitbucket.itg.ti.com/scm/processor-sdk/processor-sdk-config.git'
+CONFIG_REPO='ssh://git@bitbucket.itg.ti.com/processor-sdk/processor-sdk-config.git'
 if [[ ${branch} == next ]]; then
     # For the next branch, use the same version number as in the nightly builds
     git clone $CONFIG_REPO
