@@ -66,7 +66,7 @@ Acronyms & Definitions
 | SDIO      | SD Input/Output    |
 +-----------+--------------------+
 
-Table:  **HSMMC Driver: Acronyms**
+Table:  **MMC/SD: Acronyms**
 
 | 
 
@@ -81,13 +81,6 @@ Features
    -  SD cards including SD High Speed and SDHC cards
    -  Uses block bounce buffer to aggregate scattered blocks
    
-   .. rubric:: **Features NOT supported**
-      :name: MMC-features-not-supported
-   
-   | Following features are not supported currently:
-   
-   -  Polling I/O mode
-
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
    The SD/MMC driver supports the following features:
@@ -115,17 +108,14 @@ Supported High Speed Modes
    +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
    | AM57XX-EVM         | N                 | N                 | N                 | N                 | N                 |
    +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-   | AM57XX-EVM-REVA3   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   |
+   | AM57XX-EVM-REVA3   | N		    | N			| N		    | N			| N		    |
    +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-   | AM572X-IDK         | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   |
+   | AM572X-IDK         | N		    | N			| N		    | N			| N		    |
    +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-   | AM571X-IDK         | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   | Y\ :sup:`*(1)*`   |
+   | AM571X-IDK         | N		    | N			| N		    | N			| N		    |
    +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
    
    Table:  **MMC1/SD**
-   
-   :sup:`*(1)*` - Does not have power cycle support. So if a card fails to
-   enumerate in UHS mode, it doesn't fall back to high speed mode.
    
    **Important Info**: Certain UHS cards doesn't enumerate in UHS cards.
    Find the list of functional UHS cards here:
@@ -181,175 +171,47 @@ Driver Configuration
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-   The default kernel configuration enables support for MMC/SD(built-in to
-   kernel). OMAP MMC/SD driver is used.
+   The default kernel configuration enables support for MMC/SD(built-in to kernel).
    
-   The selection of MMC/SD/SDIO driver can be modified as follows: start
-   Linux Kernel Configuration tool.
+   The selection of MMC/SD/SDIO driver can be modified using the linux kernel
+   configuration tool. Launch it by the following command:
    
    ::
    
        $ make menuconfig  ARCH=arm
    
-   -  Select Device Drivers from the main menu.
-   
-   ::
-   
-       ...
-       ...
-       Kernel Features  --->
-       Boot options  --->
-       CPU Power Management  --->
-       Floating point emulation  --->
-       Userspace binary formats  --->
-       Power management options  --->
-       [*] Networking support  --->
-       Device Drivers  --->
-       ...
-       ...
-   
    .. rubric:: **Building into Kernel**
       :name: building-into-kernel-mmcsd
-   
-   -  Select MMC/SD/SDIO card support from the menu.
-   
-   ::
-   
-       ...
-       ...
-       [*] USB support  --->
-       < > Ultra Wideband devices (EXPERIMENTAL)  --->
-       <*> MMC/SD/SDIO card support  --->
-       < > Sony MemoryStick card support (EXPERIMENTAL)  --->
-       ...
-       ...
-   
-   -  Select OMAP HSMMC driver
-   
-   ::
-   
-       ...
-       [ ] MMC debugging
-       [ ] Assume MMC/SD cards are non-removable (DANGEROUS) 
-          *** MMC/SD/SDIO Card Drivers ***
-       <*> MMC block device driver
-       [*]  Use bounce buffer for simple hosts
-       ...
-       <*>   TI OMAP High Speed Multimedia Card Interface support 
-       ...
-   
-   .. rubric:: **Building as Loadable Kernel Module**
-   
-   -  To build the above components as modules, press 'M' key after
-      navigating to config entries preceded with '< >' as shown below:
-   
-   ::
-   
-       ...
-       ...
-       [*] USB support  --->
-       < > Ultra Wideband devices (EXPERIMENTAL)  --->
-       <M> MMC/SD/SDIO card support  --->
-       < > Sony MemoryStick card support (EXPERIMENTAL)  --->
-       ...
-   
-   -  Select OMAP HSMMC driver to be built as module
-   
-   ::
-   
-       ...
-       [ ] MMC debugging
-       [ ] Assume MMC/SD cards are non-removable (DANGEROUS) 
-          *** MMC/SD/SDIO Card Drivers ***
-       <*> MMC block device driver
-       [*]  Use bounce buffer for simple hosts
-       ...
-       <*>   TI OMAP High Speed Multimedia Card Interface support 
-       ...
-   
-   -  After doing module selection, exit and save the kernel configuration
-      when prompted.
-   -  Now build the kernel and modules form Linux build host as
-   
-   ::
-   
-       $ make uImage
-       $ make modules
-   
-   -  Following modules will be built
-   
-   ::
-   
-       mmc_core.ko
-       mmc_block.ko
-       omap_hsmmc.ko
-   
-   -  Boot the newly built kernel and transfer the above mentioned .ko
-      files to the filesystem
-   -  Navigate to the directory containing these modules and insert them
-      form type the following commands in console to insert the modules in
-      specified order:
-   
-   ::
-   
-       # insmod mmc_core.ko
-       # insmod mmc_block.ko
-       # insmod omap_hsmmc.ko
-   
-   -  If 'udev' is running and the SD card is already inserted, the devices
-      nodes will be created and filesystem will be automatically mounted if
-      exists on the card.
-   
-   .. rubric:: **Suspend to Memory support**
-      :name: suspend-to-memory-support
-   
-   This driver supports suspend to memory functionality. To use the same,
-   the following configuration is enabled by default.
-   
-   -  Select Device Drivers from the main menu.
-   
-   ::
-   
-       ...
-       ...
-       Kernel Features  --->
-       Boot options  --->
-       CPU Power Management  --->
-       Floating point emulation  --->
-       Userspace binary formats  --->
-       Power management options  --->
-       [*] Networking support  --->
-       Device Drivers  --->
-       ...
-       ...
-   
-   -  Select MMC/SD/SDIO card support from the menu.
-   
-   ::
-   
-       ...
-       ...
-       [*] USB support  --->
-       < > Ultra Wideband devices (EXPERIMENTAL)  --->
-       <*> MMC/SD/SDIO card support  --->
-       < > Sony MemoryStick card support (EXPERIMENTAL)  --->
-       ...
-       ...
-   
-   -  Select Assume MMC/SD cards are non-removable option.
-   
-   ::
-   
-       ...
-       [ ] MMC debugging
-       [*] Assume MMC/SD cards are non-removable (DANGEROUS) 
-       *** MMC/SD/SDIO Card Drivers ***
-       <*> MMC block device driver
-       [*]  Use bounce buffer for simple hosts
-       ...
-       <*>   TI OMAP High Speed Multimedia Card Interface support 
-       ...
 
+   Ensure that the following config options are set to 'y':
+	* CONFIG_MMC
+	* CONFIG_MMC_BLOCK
+	* CONFIG_MMC_SDHCI
+	* CONFIG_MMC_SDHCI_OMAP		(for DRA7XX and AM57XX devices)
+	* CONFIG_MMC_OMAP		(for AM335X and AM437X devices)
+
+   .. rubric:: **Building as Loadable Kernel Module**
+
+   Depending on your configuration, any of the above options can be set to 'm'
+   to build them as a module. Use the following command to install all modules
+   tp your filesystem.
+
+   ::
+
+      # sudo -E make modules_install ARCH=arm INSTALL_MOD_PATH=path/to/filesystem
+
+   Boot the kernel upto kernel prompt and use modprobe to insert the driver
+   module and all its dependencies.
+
+   ::
+
+      # modprobe sdhci-omap		(for DRA7XX and AM57XX devices)
+      # modprobe omap_hsmmc		(for AM335X and AM437X devices)
+   
+   If 'udev' is running and the SD card is already inserted, the devices
+   nodes will be created and filesystem will be automatically mounted if
+   exists on the card.
+   
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
    The default kernel configuration enables support for MMC/SD driver as
