@@ -567,66 +567,13 @@ timestamp those packets.
 .. rubric:: CPTS Hardware Configurations
    :name: cpts-hardware-configurations
 
-**1.** CPTS Device Tree Bindings Following are the CPTS related device
-tree bindings
+**1.** CPTS Device Tree Bindings documentation
 
--  cpts\_reg\_ofs
-
-cpts register offset in cpsw module
-
--  cpts\_rftclk\_sel
-
-chooses the input rftclk, default is 0
-
--  cpts\_rftclk\_freq
-
-ref clock frequency in Hz if it is an **external** clock
-
--  cpsw\_cpts\_rft\_clk
-
-ref clock name if it is an **internal** clock
-
--  cpts\_ts\_comp\_length
-
-PPS Asserted Length (in Ref Clk Cycles)
-
--  cpts\_ts\_comp\_polarity
-
-if 1, PPS is assered high; otherwise asserted low
-
--  cpts\_clock\_mult, cpts\_clock\_shift, cpts\_clock\_div
-
-multiplier and divider for converting cpts counter value to timestamp
-time
-::
-
-      Example:
-
-::
-
-         netcp: netcp@2090000 {
-            ...
-            clocks = <&papllclk>, <&clkcpgmac>, <&chipclk12>;
-            clock-names = "clk_pa", "clk_cpgmac", "cpsw_cpts_rft_clk";
-            ...
-            cpsw: cpsw@2090000 {
-            ...
-               cpts_reg_ofs = <0xd00>;
-               ...
-               cpts_rftclk_sel=<8>;
-               /*cpts_rftclk_freq = <122800000>;*/
-               cpts_ts_comp_length = <3>;
-               cpts_ts_comp_polarity = <1>;  /* 1 - assert high */
-               /* cpts_clock_mult = <6250>; */
-               /* cpts_clock_shift = <8>; */
-               /* cpts_clock_div = <3>; */
-               ...
-            };
-            ...
-         };
-
+The CPTS properties are grouped under "cpts" sub-node.
+For DT documentation, please refer to Documentation/devicetree/bindings/net/keystone-netcp.txt in kernel source tree.
 | 
-| **2.** Configurations during driver initialization
+
+**2.** Configurations during driver initialization
 
 By default, cpts is configured with the following configurations at boot
 up:
