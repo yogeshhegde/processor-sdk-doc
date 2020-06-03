@@ -96,3 +96,8 @@ Sercos III Softmaster
 Interrupt Latency Benchmark
 **********************
 .. include:: Examples_and_Demonstrations/Interrupt_Latency_Benchmark.rst.inc
+
+**************************************************
+Sofware Diagnostics Reference and Test Framework
+**************************************************
+.. include:: Examples_and_Demonstrations/Sofware_Diagnostics_Reference.rst.inc
