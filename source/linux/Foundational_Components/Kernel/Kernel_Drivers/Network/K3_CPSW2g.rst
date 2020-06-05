@@ -84,10 +84,10 @@ places mentioned in the section above select module build (short-cut key
 
 The DT bindings description can be found at:
 
-|   `Documentation/devicetree/bindings/net/ti,am654-cpsw-nuss.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.19.y/Documentation/devicetree/bindings/net/ti,am654-cpsw-nuss.txt>`__
+|   `Documentation/devicetree/bindings/net/ti,am654-cpsw-nuss.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.4.y/Documentation/devicetree/bindings/net/ti,am654-cpsw-nuss.txt>`__
 
-|   `Documentation/devicetree/bindings/net/ti,am654-cpts.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.19.y/Documentation/devicetree/bindings/net/ti,am654-cpts.txt>`__
-
+|   `Documentation/devicetree/bindings/net/ti,am654-cpts.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.4.y/Documentation/devicetree/bindings/net/ti,am654-cpts.txt>`__
+|
 
 .. rubric:: Bringing Up interface
    :name: k3-bringing-up-interfaces
