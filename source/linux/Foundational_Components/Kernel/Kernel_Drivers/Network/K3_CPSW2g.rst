@@ -92,15 +92,14 @@ The DT bindings description can be found at:
 .. rubric:: Bringing Up interface
    :name: k3-bringing-up-interfaces
 
-Eth0 can be up by-default or configured manually:
+The network interface can be configured automatically depending on root file system or configured manually. Manual configuration:
 
-*DHCP*
 ::
 
-    ifup eth0
+    ip addr add 192.168.1.1/24 dev eth0
+    ip link set dev eth0 up
 
-*Manual IP address configuration*
-::
+    < or >
 
     ifconfig eth0 <ip> netmask <mask> up
 
@@ -163,8 +162,7 @@ It also provides some information about supported features.
 .. rubric:: RX checksum offload
    :name: k3-rx-csum-offload
 
-The Driver enables RX checksum offload by default. it can be disabled/enabled by
-using ethtool -K command:
+The Driver enables RX checksum offload by default. it can be disabled/enabled by using ``ethtool -K`` command:
 
 ::
 
@@ -178,36 +176,53 @@ using ethtool -K command:
 
 .. note::
 
-    TX checksum offload implemented, but disabled by default due to errata i2027.
+    TX checksum offload is implemented, but may disabled by default due to
+    errata i2027 on affected |__PART_FAMILY_DEVICE_NAMES__|.
 
 
 .. rubric:: **VLAN Config**
    :name: k3-vlan-config
 
-VLAN can be added/deleted using ``vconfig`` utility.
+VLAN can be added/deleted using ``ip`` or ``vconfig`` utility.
 
-|
 
 *VLAN Add*
 
-``vconfig add eth0 5``
+::
+
+    ip link add link eth0 name eth0.5 type vlan id 5
+
+    < or >
+
+    vconfig add eth0 5
 
 *VLAN del*
 
-``vconfig rem eth0 5``
+::
+
+    ip link del eth0.5
+
+    < or >
+
+    vconfig rem eth0 5
 
 *VLAN IP assigning*
 
 IP address can be assigned to the VLAN interface either via udhcpc
 when a VLAN aware dhcp server is present or via static ip assigning
-using ifconfig.
+using ``ip`` or ``ifconfig``.
 
 Once VLAN is added, it will create a new entry in Ethernet interfaces
 like eth0.5, below is an example how it check the vlan interface
 
 ::
 
-    # ifconfig eth0.5
+    ip addr add 192.168.1.1/24 dev eth0.5
+
+    < or >
+
+    ifconfig eth0.5
+    ....
     eth0.5    Link encap:Ethernet  HWaddr 20:CD:39:2B:C7:BE
               inet addr:192.168.10.5  Bcast:192.168.10.255  Mask:255.255.255.0
               UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -931,9 +946,9 @@ Here are the steps to configure this schedule.
 ::
 
  #Setup interface and queue configuration
-        ifconfig eth0 down
+        ip link set dev eth0 down
         ethtool -L eth0 tx 3
-        ifconfig eth0 up
+        ip link set dev eth0 up
 
  #disable rrobin
  ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
@@ -978,7 +993,8 @@ Here are the steps to configure this schedule.
  iperf3 -s -i30 -p5003&
 
  #At DUT, start trasmission of stream using iperf3
- ifconfig eth0 192.168.2.20
+ ip addr add 192.168.2.20/24 dev eth0
+ ip link set dev eth0 up
  iperf3 -c 192.168.2.10 -u -b100M  -p 5003 -l1472 -t10 -i5&
  iperf3 -c 192.168.2.10 -u -b100M  -p 5002 -l1472 -t10 -i5&
  iperf3 -c 192.168.2.10 -u -b100M  -p 5001 -l1472 -t10 -i5&
