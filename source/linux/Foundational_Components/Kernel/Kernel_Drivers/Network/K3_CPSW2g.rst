@@ -380,6 +380,61 @@ Sets the driver message type flags by name or number
            RX Jumbo:       0
            TX:             512
 
+.. rubric:: ``ethtool-l|--show-channels DEVNAME`` Query Channels
+   :name: k3-ethtool-query-channels
+
+::
+
+         # ethtool -l eth0
+         Channel parameters for eth0:
+         Pre-set maximums:
+         RX:             1
+         TX:             8
+         Other:          0
+         Combined:       0
+         Current hardware settings:
+         RX:             1
+         TX:             8
+         Other:          0
+         Combined:       0
+
+.. rubric:: ``ethtool -L\|--set-channels DEVNAME`` Set Channels.
+   :name: k3-ethtool--l--set-channels
+
+Allows to control number of TX channels driver is allowed to work with at DMA level. The maximum number of TX channels is 8.
+Supported options ``[ tx N ]``:
+
+::
+
+      # ethtool -L eth0 tx 3
+
+
+.. rubric:: ``ethtool --show-priv-flags/--set-priv-flags DEVNAME`` Show/Set private flags
+   :name: k3-ethtool--priv-flags
+
+Allows to control private flags supported by driver.
+
+==================== ====================
+ Flag
+==================== ====================
+p0-rx-ptype-rrobin   Controls TX DMA channels processing mode: round-robin or priority mode.
+                     In case priority mode is enabled, the high number channel will have higher priority: TX 7 - prio 7 ... TX 0 - prio 0.
+iet-frame-preemption Enables support for Interspersed Express Traffic (IET) IEEE 802.3br (frame preemption).
+iet-mac-verify       Enables Interspersed Express Traffic (IET) MAC verification procedure on link up event.
+==================== ====================
+
+::
+
+      # ethtool --show-priv-flags eth0
+      Private flags for eth0:
+      p0-rx-ptype-rrobin  : on
+      iet-frame-preemption: off
+      iet-mac-verify      : off
+
+      # ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
+
+.. note:: The network interface have to be down for private flags configuration.
+
 .. rubric:: ``ethtool -S|--statistics DEVNAME`` Show adapter statistics
    :name: k3-ethtool-show-adapter-statistics
 
@@ -455,24 +510,6 @@ Accessible when CPTS is enabled.
          Hardware Receive Filter Modes:
                  none                  (HWTSTAMP_FILTER_NONE)
                  all                   (HWTSTAMP_FILTER_ALL)
-
-.. rubric:: ``ethtool-l|--show-channels DEVNAME`` Query Channels
-   :name: k3-ethtool-query-channels
-
-::
-
-           # ethtool -l eth0
-         Channel parameters for eth0:
-         Pre-set maximums:
-         RX:             1
-         TX:             8
-         Other:          0
-         Combined:       0
-         Current hardware settings:
-         RX:             1
-         TX:             8
-         Other:          0
-         Combined:       0
 
 .. rubric:: ``ethtool --show-eee DEVNAME`` Show EEE settings
    :name: k3-ethtool-show-eee-settings
