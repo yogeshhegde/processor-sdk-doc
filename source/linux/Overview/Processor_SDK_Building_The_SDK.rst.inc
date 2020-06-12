@@ -144,11 +144,13 @@ Build Steps
         cd yocto-build
         ./oe-layertool-setup.sh -f configs/psdkla/psdkla-<version>.txt
         cd build
-	echo "INHERIT += \"own-mirrors\"" >> conf/local.conf
-	echo "SOURCE_MIRROR_URL = \"http://software-dl.ti.com/processor-sdk-mirror/sources/\"" >> conf/local.conf
-	echo "ARAGO_BRAND  = \"psdkla\"" >> conf/local.conf
+        echo "INHERIT += \"own-mirrors\"" >> conf/local.conf
+        echo "SOURCE_MIRROR_URL = \"http://software-dl.ti.com/processor-sdk-mirror/sources/\"" >> conf/local.conf
+        echo "ARAGO_BRAND  = \"psdkla\"" >> conf/local.conf
+        echo "DISTRO_FEATURES_append = \" virtualization\"" >> conf/local.conf
+        echo "IMAGE_INSTALL_append = \" docker\"">> conf/local.conf
         . conf/setenv
-        TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=j7-evm bitbake -k tisdk-rootfs-image
+        TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=j7-evm bitbake -k tisdk-default-image
 
 Processor SDK Build Reference
 =============================
@@ -198,7 +200,7 @@ The "Build Output" is given relative to the
     +==============================+===============================================================+============================+
     | arago-core-psdkla-bundle     | images/<machine>/processor-sdk-linux-image-<machine>.tar.xz   | Full SDK                   |
     +------------------------------+---------------------------------------------------------------+----------------------------+
-    | tisdk-rootfs-image           | images/<machine>/tisdk-rootfs-image-<machine>.tar.xz          | Target Filesystem          |
+    | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
     +------------------------------+---------------------------------------------------------------+----------------------------+
 
 |

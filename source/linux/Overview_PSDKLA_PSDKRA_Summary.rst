@@ -31,7 +31,7 @@ guide, ${PSDKRA_PATH}/index.html, for more details.
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
     +---------------+---------------------------+
-    | Version       | 06_01_00                  |
+    | Version       | 07_00_00_XX               |
     +---------------+---------------------------+
     | Release Notes | ${PSDKRA_PATH}/index.html |
     +---------------+---------------------------+

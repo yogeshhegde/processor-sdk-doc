@@ -108,8 +108,8 @@ makefile targets.
 
     ::
 
-        GCC83PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin:$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin
-        export PATH=$GCC83PATH:$PATH
+        GCC92PATH=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin:$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf/bin
+        export PATH=$GCC92PATH:$PATH
 
 .. rubric:: Target Types
    :name: target-types
@@ -265,7 +265,7 @@ the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
 ::
 
-    host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+    host# sudo cp board-support/u-boot_build/a72/u-boot.img board-support/u-boot_build/a72/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
     #Replace the path to SD card boot partition as appropriate
 
     host# cp board-support/system-firmware-image-gen*/sysfw-j721e-evm.itb /media/$USER/boot/sysfw.itb

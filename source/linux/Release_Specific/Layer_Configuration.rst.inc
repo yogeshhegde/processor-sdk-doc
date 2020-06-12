@@ -31,5 +31,5 @@ meta layers. These are the <config> used in the command:
     +------------------------+----------------------------------------------------+--------------------+
     |      Config File       |                    Description                     | Supported machines |
     +========================+====================================================+====================+
-    | psdkla-06_01_00_05.txt | Processor SDK Linux Automotive 06_01_00_05 Release | j7-evm             |
+    | psdkla-07_00_00_00.txt | Processor SDK Linux Automotive 07_00_00_00 Release | j7-evm             |
     +------------------------+----------------------------------------------------+--------------------+
