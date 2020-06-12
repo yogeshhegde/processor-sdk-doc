@@ -49,6 +49,7 @@ linux/Foundational_Components/Graphics/Graphics_and_Display
 linux/Foundational_Components_Multimedia_D5520_VXE384
 linux/Foundational_Components_Virtualization
 linux/Foundational_Components/Virtualization/Jailhouse
+linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components/Machine_Learning/neo_arm_only
 linux/Examples_and_Demos
