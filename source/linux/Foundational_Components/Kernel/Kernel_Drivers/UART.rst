@@ -95,6 +95,7 @@ From k3-j721e-main.dtsi
     };
 
 .. rubric:: Driver Usage
+   :name: linux-kernel-omap-uart-driver-usage
 
 Once the driver is probed, each of serial ports are exposed as a character
 device file by the kernel to be used by userspace:
