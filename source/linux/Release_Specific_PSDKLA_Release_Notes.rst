@@ -58,6 +58,7 @@ Released June 2020
 
 What's New
 ----------
+- First Processor SDK release with 2020 LTS Stream Kernel (v5.4), U-Boot (v2020.01), toolchain and Yocto branch
 - J721E-HS Support
 - Docker Linux Container Runtime
 - Neo-AI-DLR library
@@ -68,9 +69,9 @@ Release features
 
 -  R5 SPL:
 
-   -  Early booting of MCU R5F and MainSS R5F's
+   -  Early booting of MCU R5F and Main R5FSS Core0
    -  Bootstrapping 2nd stage boot loader (u-boot) on A72
-   -  Hyperflash support, UART boot, OSPI boot support.
+   -  UART boot, OSPI boot support.
    -  eMMC HS400 mode support
    -  eMMC boot support
 -  A72 U-boot:
@@ -78,8 +79,8 @@ Release features
    -  Early booting of remote cores (C7x, C66x, Main subsystem R5F's) with configurable order of boot-strapping
    -  Support for booting both compressed and uncompressed kernel image
    -  Basic HYP mode support - boots up uboot in EL2 privileged mode
-   -  Hyperflash support, OSPI support, MMCSD support
-   -  SD card boot, hyperflash boot support
+   -  OSPI support, MMCSD support
+   -  SD card boot support
    -  USB Host and mass storage support
    -  Support for DFU download to SD card, eMMC, OSPI
    -  UFS support
@@ -125,24 +126,6 @@ Release features
       -  A72 to each MCU island R5F core
    -  Support for IPC in both IPC-only mode (core loaded by u-boot) and remoteproc mode (core loaded by Linux Kernel)
    -  Mailbox and H/W spinlock support
--  Multimedia:
-
-   -  Decoder:
-
-      -  Gstreamer-based video decode plugin for H.264 & H.265/HEVC formats
-      -  Support for decode resolutions up to 4K\@60fps
-      -  Support for decoding NV12/NV16 pixel formats
-      -  Support for 8-bit and 10-bit pixel depths
-      -  Support for decoding streams with 'B' Frames
-      -  Support for multi channel decoding in driver and gstreamer
-      -  Support for MJPEG and JPEG Image decoder
-      -  Gstreamer plugin support for wayland sink
-      -  Support for video decoder error recovery
-      -  Support for interlaced video decode
-   -  Encoder:
-
-      -  Driver support for H.264 video encoder with NV12, 8 bit content
-      -  Driver support for multi channel encoding
 -  Display:
 
    -  DSS support for cropping, scaling, gamma correction, per-pixel blending and global alpha blending
@@ -157,13 +140,13 @@ Release features
    -  Multi-codec support
    -  McASP: Master and slave mode support
    -  Multi-codec support with separate serializer per codec
--  Virtualisation:
+-  Virtualization:
 
    -  Jailhouse hypervisor support
-   -  Static system partitioning: SD/eMMC, Display pipes, sproxy threads, UARTs, etc.
+   -  Static system partitioning: SD/eMMC, sproxy threads, UARTs, etc.
    -  IO isolation between VMs
    -  PVU and SMMU backed IO isolation support
-   -  SMMU emulation in Jailhouse hypervisor
+   -  Inter VM shared memory based communication
 -  Profiling
 
    -  A72 PMU support for Performance profiling
