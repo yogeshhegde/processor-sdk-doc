@@ -1,3 +1,6 @@
+PRU_ICSSG Ethernet
+------------------
+
 Introduction
 ^^^^^^^^^^^^
 
@@ -16,14 +19,14 @@ Boards Supported
 The AM65x Evaluation Module provides a platform to quickly start evaluation of Sitara™ Arm® Cortex®-A53 AM65x Processors (AM6548, AM6546, AM6528, AM6527, AM6526) and accelerate development for HMI, networking, patient monitoring, and other industrial applications. It is a development platform based on the quad core Cortex-A53, dual Cortex-R5F processor that is integrated with ample connectivity such as PCIe, USB 3.0/2.0, Gigabit Ethernet,  PRU_ICSSG Ethernet
 etc.
 
-.. Image:: ../images/Am65x_GP_EVM.jpg
+.. Image:: /images/Am65x_GP_EVM.jpg
 
 .. rubric:: `AM65x industrial development kit
    (IDK) <http://www.ti.com/tool/TMDX654IDKEVM>`__
 
 The AM65x Industrial Development Kit (IDK) is a development platform for evaluating the industrial communication and control capabilities of Sitara AM65x processors for applications in factory automation, drives, robotics, grid infrastructure, and more. AM65x processors include three PRU_ICSSG (Programmable Real-time Unit for Industrial Communications) sub-systems which can be used for gigabit industrial Ethernet protocols such as Profinet, EtherCAT, Ethernet/IP, and others.
 
-.. Image:: ../images/Am65x_idk.jpg
+.. Image:: /images/Am65x_idk.jpg
 
 Features supported
 ^^^^^^^^^^^^^^^^^^

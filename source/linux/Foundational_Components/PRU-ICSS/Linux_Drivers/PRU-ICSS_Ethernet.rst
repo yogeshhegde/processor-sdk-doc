@@ -1,4 +1,8 @@
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Ethernet
+
+PRU-ICSS Ethernet
+-----------------
+
 .. rubric:: Introduction
    :name: introduction-pru-icss-ethernet-linux
 
@@ -16,7 +20,7 @@ Archives section at the bottom of this page.
 .. rubric:: Boards Supported
    :name: boards-supported
 
-.. Image:: ../images/Am335x_ice.jpg
+.. Image:: /images/Am335x_ice.jpg
 
 .. rubric:: `AM3359 Industrial Communications Engine
    (ICE) <http://www.ti.com/tool/tmdsice3359>`__
@@ -33,7 +37,7 @@ communication technologies used in a broad range of industrial
 automation equipment. It enables low foot print designs with minimal
 external components and with best in class low power performance.
 
-.. Image:: ../images/Am437x_idk_500x300.jpg
+.. Image:: /images/Am437x_idk_500x300.jpg
 
 .. rubric:: `AM437x Industrial Development Kit
    (IDK) <http://www.ti.com/tool/tmdsidk437x>`__
@@ -52,7 +56,7 @@ technologies used in a broad range of industrial automation equipment.
 It enables low foot print designs with minimal external components and
 with best in class low power performance.
 
-.. Image:: ../images/Am571x_idk.JPG
+.. Image:: /images/Am571x_idk.JPG
 
 .. rubric:: `AM571x Industrial Development Kit
    (IDK) <http://www.ti.com/tool/TMDXIDK5718>`__
@@ -83,7 +87,7 @@ industrial communication network.
 
 | 
 
-.. Image:: ../images/Am572x_idk.PNG
+.. Image:: /images/Am572x_idk.PNG
 
 .. rubric:: `AM572x Industrial Development Kit
    (IDK) <http://www.ti.com/tool/TMDXIDK5728>`__
@@ -107,7 +111,7 @@ subsystems.
 
 | 
 
-.. Image:: ../images/K2g_ice.PNG
+.. Image:: /images/K2g_ice.PNG
 
 .. rubric:: `K2G Industrial Communication Engine
    (ICE) <http://www.ti.com/tool/k2gice>`__
@@ -185,7 +189,7 @@ IDK) additional 100 Mbps Ethernet interfaces to be exposed to the user.
   together. For more information see the schematics for the boards as
   well as the Linux driver source code.
 
-.. Image:: ../images/Pru_eth_block_diagram_3_0_0_4.PNG
+.. Image:: /images/Pru_eth_block_diagram_3_0_0_4.PNG
 
 | 
 
@@ -325,7 +329,7 @@ ports.
 | In this mode only one of the PRU-ICSS Ethernet ports are used. This is
   the simplest mode and works as you would expect it to.
 
-.. Image:: ../images/Pru_eth_block_single_port_3_0_0_4.PNG
+.. Image:: /images/Pru_eth_block_single_port_3_0_0_4.PNG
 
 --------------
 
@@ -348,7 +352,7 @@ the two subnets as shown below.
 
 | 
 
-.. Image:: ../images/Pru_eth_block_gateway_3_0_0_4.PNG
+.. Image:: /images/Pru_eth_block_gateway_3_0_0_4.PNG
 
 --------------
 
@@ -368,7 +372,7 @@ an increase in throughput.
   bonding available check out the `Linux bonding
   documentation <https://www.kernel.org/doc/Documentation/networking/bonding.txt>`__.
 
-.. Image:: ../images/Pru_eth_block_bonding_3_0_0_4.PNG
+.. Image:: /images/Pru_eth_block_bonding_3_0_0_4.PNG
 
 To learn even more about bonding see the `Wikipedia Link
 aggregation <https://en.wikipedia.org/wiki/Link_aggregation>`__ page.
@@ -647,6 +651,7 @@ schedule and poll for incoming packets. To minimize packet loss we need to incre
 the priority of ksoftirqd like so.
 
 * Throughput example:
+
 ::
 
     DUT: am571x-idk eth2
@@ -669,7 +674,7 @@ the priority of ksoftirqd like so.
 
 You can download the sample udp-packet.pcap but make sure you update the MAC addresses and IP addresses to match your setup.
 
-:download:`udp-packet.pcap <../files/udp-packet.pcap>`
+:download:`udp-packet.pcap </files/udp-packet.pcap>`
 
 ::
 

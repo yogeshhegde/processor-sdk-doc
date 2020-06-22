@@ -1,3 +1,6 @@
+PRU-ICSS Soft UART
+------------------
+
 .. rubric:: Introduction
 
 As of Processor SDK Linux v6.1, AM335x supports up to 6 additional UARTs

@@ -51,6 +51,13 @@ linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
 linux/Foundational_Components_PRU-ICSS_PRU_ICSSG
+linux/Foundational_Components/PRU-ICSS-Getting-Started
+linux/Foundational_Components/PRU-ICSS-Header-Files
+linux/Foundational_Components/PRU-ICSS-Linux-Drivers
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc_and_RPMsg
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart
+linux/Foundational_Components/PRU-ICSS-Linux-User-Space
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Graphics_and_Display
 linux/Foundational_Components/Graphics/SOC_Performance_Monitor

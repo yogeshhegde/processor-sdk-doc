@@ -1,3 +1,6 @@
+PRU-ICSSG PWM
+-------------
+
 .. rubric:: Introduction
 
 The PRU_ICSSG subsystem integrates one PWM module, which uses IEP0 and IEP1

@@ -24,7 +24,7 @@ driver vs. RTOS.
 
 | 
 
-.. Image:: ../images/Icss-emac_sw_stack.png
+.. Image:: /images/Icss-emac_sw_stack.png
 
 .. rubric:: Memory Access and Interrupt Handling through UIO
    :name: memory-access-and-interrupt-handling-through-uio
@@ -46,7 +46,7 @@ defined in kernel device tree, and how the application/driver can map
 and access the memory regions, as well as handle the interrupts through
 the UIO driver.
 
-.. Image:: ../images/Icss-emac_uio.png
+.. Image:: /images/Icss-emac_uio.png
 
 | 
 

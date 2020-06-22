@@ -1,4 +1,8 @@
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Remoteproc_and_RPMsg
+
+RemoteProc and RPMsg
+--------------------
+
 .. rubric:: Introduction
    :name: introduction-pru-icss-remoteproc-rpmsg
 
@@ -6,7 +10,7 @@
 
    <div>
 
-.. Image:: ../images/Overview.PNG
+.. Image:: /images/Overview.PNG
 
 .. raw:: html
 
@@ -74,7 +78,7 @@ load firmwares into the PRU cores and then run them.
 
    <div class="floatright">
 
-.. Image:: ../images/Step0_2_0_2_11.PNG
+.. Image:: /images/Step0_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -115,7 +119,7 @@ inserted.
 
    <div class="floatright">
 
-.. Image:: ../images/Step1_2_0_2_11.PNG
+.. Image:: /images/Step1_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -140,7 +144,7 @@ inserted.
 
    <div class="floatright">
 
-.. Image:: ../images/Step2_2_0_2_11.PNG
+.. Image:: /images/Step2_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -178,7 +182,7 @@ firmware loading process.
 
    <div class="floatright">
 
-.. Image:: ../images/Step3_2_0_2_11.PNG
+.. Image:: /images/Step3_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -201,7 +205,7 @@ firmware loading process.
 
    <div class="floatright">
 
-.. Image:: ../images/Step4_2_0_2_11.PNG
+.. Image:: /images/Step4_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -227,7 +231,7 @@ firmware loading process.
 
    <div class="floatright">
 
-.. Image:: ../images/Step5_2_0_2_11.PNG
+.. Image:: /images/Step5_2_0_2_11.PNG
 
 .. raw:: html
 
@@ -265,7 +269,7 @@ functions in order to communicate with the ARM core. Source code for the
 PRU RPMsg library is provided in the support package along with the
 ability to rebuild the library if changes are desired.
 
-.. Image:: ../images/Rpmsg_diagram_2_0_2_11.PNG
+.. Image:: /images/Rpmsg_diagram_2_0_2_11.PNG
 
 --------------
 
@@ -276,7 +280,7 @@ ability to rebuild the library if changes are desired.
 
    <div class="floatright">
 
-.. Image:: ../images/Arm-to-pru.PNG
+.. Image:: /images/Arm-to-pru.PNG
 
 .. raw:: html
 
@@ -319,7 +323,7 @@ abstraction layer.
 
    <div class="floatright">
 
-.. Image:: ../images/Pru-to-arm.PNG
+.. Image:: /images/Pru-to-arm.PNG
 
 .. raw:: html
 
@@ -364,7 +368,7 @@ abstraction layer.
   PRU Software Support Package that is include in the Linux Processor
   SDK.
 
-.. Image:: ../images/Rpmsg_code.PNG
+.. Image:: /images/Rpmsg_code.PNG
 
 .. rubric:: Next Steps
    :name: next-steps

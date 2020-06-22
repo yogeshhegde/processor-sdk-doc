@@ -1,4 +1,11 @@
 **********************************
 PRU-ICSS / PRU_ICSSG
 **********************************
-.. include:: Foundational_Components/PRU-ICSS.rst.inc
+
+.. toctree::
+   :maxdepth: 2
+
+   Foundational_Components/PRU-ICSS-Getting-Started
+   Foundational_Components/PRU-ICSS-Header-Files
+   Foundational_Components/PRU-ICSS-Linux-Drivers
+   Foundational_Components/PRU-ICSS-Linux-User-Space
