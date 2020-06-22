@@ -81,5 +81,4 @@ to :ref:`kenrel uart driver usage <linux-kernel-omap-uart-driver-usage>`.
     The index in ttyS1 could vary depending on the serial alias configuration
     in the device tree.
 
---------------
 

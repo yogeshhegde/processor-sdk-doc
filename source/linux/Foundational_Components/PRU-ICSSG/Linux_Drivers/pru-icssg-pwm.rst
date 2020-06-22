@@ -62,5 +62,4 @@ the PWM which first sets the PWM period (period ownner) has the permission to
 modify the PWM period setting. Other PWMs within the same pwmchip cannot modify
 the PWM period until the application deallocated the "period owner" PWM.
 
---------------
 

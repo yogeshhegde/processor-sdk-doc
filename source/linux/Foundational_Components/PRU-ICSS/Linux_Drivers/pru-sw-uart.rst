@@ -76,5 +76,4 @@ module.
 		Serial drivers  --->
 			<M> TI PRU Software UART suppor
 
---------------
 
