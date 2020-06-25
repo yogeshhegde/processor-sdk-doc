@@ -60,6 +60,7 @@ Machine Learning
    * Runs on all Cortex-A ARM cores (AM3x, AM4x, AM5x, AM6x Sitara devices).
    * Integrated into TI's Processor SDK Linux in an OOB demo for `Predictive Maintenance <Examples_and_Demos_Application_Demos.html#predictive-maintenance-demo>`__.
 
+
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
    Jacinto Machine Learning toolkit brings machine learning to the edge by enabling 
@@ -68,11 +69,11 @@ Machine Learning
    of Neo-AI-DLR library.
    
 .. toctree::
-   :hidden:
+   :maxdepth: 5
 
    Foundational_Components/Machine_Learning/tidl
    Foundational_Components/Machine_Learning/neo
    Foundational_Components/Machine_Learning/tvm
    Foundational_Components/Machine_Learning/tflite
    Foundational_Components/Machine_Learning/armnn
-   Foundational_Components/Machine_Learning/neo_arm_only
+
