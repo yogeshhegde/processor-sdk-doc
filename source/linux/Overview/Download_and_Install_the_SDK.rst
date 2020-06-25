@@ -1,6 +1,6 @@
 .. include:: ../replacevars.rst.inc
 
-Installing the SDK
+Download and Install the SDK
 ======================================
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Installer
