@@ -92,7 +92,7 @@ The Multiple Processor Manager (MPM) module is used to load and run DSP images f
 
 **Software Flow Diagram Slave States in MPM**
 
-.. Image:: ../images/MPM_Structure.png
+.. Image:: /images/MPM_Structure.png
 
 Methods to load and run ELF images using MPM
 *********************************************
@@ -193,7 +193,7 @@ Getting Started with IPC Linux Examples
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. DSP) running RTOS.
 
-.. Image:: ../images/LinuxIPC_with_RTOS_Slave.png
+.. Image:: /images/LinuxIPC_with_RTOS_Slave.png
 
 In order to setup IPC on slave cores, we provide some pre-built examples
 in IPC package that can be run from ARM Linux. The subsequent sections

@@ -54,29 +54,29 @@ projects into CCS.
    open the import dialog
 #. Select the **General -> Existing Projects into Workspace** option
 
-   .. Image:: ../../../images/Import_C_projects-1.png
+   .. Image:: /images/Import_C_projects-1.png
 
 #. Click **Next**
 #. On the **Import Projects** page click **Browse**
 
-   .. Image:: ../../../images/Sitara-Linux-CCS-import-c.png
+   .. Image:: /images/Sitara-Linux-CCS-import-c.png
 
 #. In the file browser window that is opened navigate to the **<SDK
    INSTALL DIR>/example-applications** directory and click **OK**
 
-   .. Image:: ../../../images/Example-applications.png
+   .. Image:: /images/Example-applications.png
 
 Select the projects you want to import. The following screen capture
 shows importing all of the example projects for an ARM-Cortex device,
 excluding the Qt projects.
 
-   .. Image:: ../../../images/Import-Qt.png
+   .. Image:: /images/Import-Qt.png
 
 #. Click **Finish** to import all of the selected projects.
 #. You can now see all of the projects listed in the **Project Explorer**
    tab.
 
-.. Image:: ../../../images/Projects-imported.png
+.. Image:: /images/Projects-imported.png
 
 .. rubric:: Creating a New Project
    :name: creating-a-new-project-ccs-compiling
@@ -92,14 +92,14 @@ build a simple **Hello World** application for the target.
 #. in the **Select a wizard** window select the **C/C++ -> C Project**
    wizard
 
-   .. Image:: ../../../images/Sitara-Linux-CCS-new-c-project.png
+   .. Image:: /images/Sitara-Linux-CCS-new-c-project.png
 
 #. Click **Next**
 #. In the **C Project** dialog set the following values:
    Project Name: **helloworld**
    Project type: **Cross-Compile Project**
 
-   .. Image:: ../../../images/Sitara-Linux-CCS-cross-compile.png
+   .. Image:: /images/Sitara-Linux-CCS-cross-compile.png
 
 #. Click **Next**
 #. In the **Command** dialog set the following values:
@@ -112,13 +112,13 @@ build a simple **Hello World** application for the target.
    directory and then to the **linux-devkit/bin** directory. You should
    see a list of tools such as **gcc** with the prefix you entered above.
 
-   .. Image:: ../../../images/Sitara-Linux-CCS-command-setup.png
+   .. Image:: /images/Sitara-Linux-CCS-command-setup.png
 
 #. Click **Next**
 #. In the **Select Configurations** dialog you can take the default
    **Debug** and **Release** configurations or add/remove more if you want.
 
-   .. Image:: ../../../images/Sitara-Linux-CCS-select-configurations.png
+   .. Image:: /images/Sitara-Linux-CCS-select-configurations.png
 
 #. Click **Finish**
 
@@ -129,14 +129,14 @@ build a simple **Hello World** application for the target.
    project in your CCS *Project Explorer* window, but the project has no
    sources.
 
-   .. Image:: ../../../images/Sitara-Linux-CCS-empty-helloworld.png
+   .. Image:: /images/Sitara-Linux-CCS-empty-helloworld.png
 
 #. From the main CCS window select **File -> New -> Source File** menu
    item
 #. In the **Source File** dialog set the *Source file:* setting to
    **helloworld.c**
 
-   .. Image:: ../../../images/Sitara-Linux-CCS-helloworld-c-file.png
+   .. Image:: /images/Sitara-Linux-CCS-helloworld-c-file.png
 
 #. Click **Finish**
 
@@ -144,7 +144,7 @@ build a simple **Hello World** application for the target.
    **helloworld.c** file. Add your code to this file like the image
    below:
 
-   .. Image:: ../../../images/Sitara-Linux-CCS-helloworld.png
+   .. Image:: /images/Sitara-Linux-CCS-helloworld.png
 
 .. rubric:: Compiling C/C++ Projects
    :name: compiling-cc-projects
@@ -156,11 +156,11 @@ build a simple **Hello World** application for the target.
       Release**
    -  For Debug builds: **Build Configurations -> Set Active -> Debug**
 
-   .. Image:: ../../../images/Code_Composer_Studio_Changing_Build_Configuration.png
+   .. Image:: /images/Code_Composer_Studio_Changing_Build_Configuration.png
 
 #. Select **Project -> Build Project** to build the highlighted project
 
-   .. Image:: ../../../images/Code_Composer_Studio_Compiling_Project.png
+   .. Image:: /images/Code_Composer_Studio_Compiling_Project.png
 
 #. 
 

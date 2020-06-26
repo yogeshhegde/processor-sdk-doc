@@ -124,7 +124,7 @@ video/image codecs, utilizing framework components and codec engine.
 
    <div class="floatnone">
 
-.. Image:: ../images/Mm_software_overview_v3.png
+.. Image:: /images/Mm_software_overview_v3.png
 
 .. raw:: html
 
@@ -255,7 +255,7 @@ destination at the alsasink element to play the decoded audio.
 
    <div class="floatnone">
 
-.. Image:: ../images/Gst_decode_playout_v2.png
+.. Image:: /images/Gst_decode_playout_v2.png
 
 .. raw:: html
 
@@ -284,7 +284,7 @@ RTP payloader and udp sink.
 
    <div class="floatnone">
 
-.. Image:: ../images/Gst_capture_encode_network.png
+.. Image:: /images/Gst_capture_encode_network.png
 
 .. raw:: html
 
@@ -575,7 +575,7 @@ this shared object can be compiled and installed separately. This
 approach allows easier modification, implementation and maintenance once
 the APIs are fixed.
 
-.. Image:: ../images/GST-dsp66-src.png
+.. Image:: /images/GST-dsp66-src.png
 
 The image processing functions in oclconv are implemented via calls to
 DSP optimized imglib and vlib library functions, or implemented in

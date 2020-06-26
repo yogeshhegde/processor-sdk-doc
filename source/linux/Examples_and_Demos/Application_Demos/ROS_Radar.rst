@@ -39,19 +39,19 @@ HW Setup
 
 *  `Sitara device, e.g. AM5728 GP EVM <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup>`__
 
-.. Image:: ../../../images//am572x-evm.png
+.. Image:: /images//am572x-evm.png
 
 *  `IWR1443 Radar EVM <http://www.ti.com/tool/IWR1443BOOST#0>`__ or
    `IWR1642 Radar EVM <http://www.ti.com/tool/IWR1642BOOST#0>`__
 
-.. Image:: ../../../images/radar-evm-1443.png
+.. Image:: /images/radar-evm-1443.png
 
 
 * USB to microUSB cable (connecting USB connector on Sitara side with microUSB connector on Radar EVM
 
 * [optional] Kobuki mobile base (as used by Turtlebot2), http://kobuki.yujinrobot.com/
 
-.. figure:: ../../../images/ros_radar_1.png
+.. figure:: /images/ros_radar_1.png
     :width: 800px
     :align: center
     :height: 450px
@@ -405,7 +405,7 @@ In RViz add point cloud from mmWave radar:
 
 You should see a point cloud image:
 
-.. Image:: ../../../images/ros_radar_rviz.png
+.. Image:: /images/ros_radar_rviz.png
 
 More information can be found in  `ROS driver document <http://dev.ti.com/tirex/content/mmwave_training_1_6_1/labs/lab0006-ros-driver/lab0006_ros_driver_pjt/TI_mmWave_ROS_Driver_Setup_Guide.pdf>`__
 in chapters: "Visualizating the data", "Reconfiguring the chirp profile", and "How it works"
@@ -426,7 +426,7 @@ E.g. on Windows PC (192.168.0.100), you can watch the stream using: "\Program Fi
 
 
 
-.. figure:: ../../../images/ros_radar_2.jpg
+.. figure:: /images/ros_radar_2.jpg
     :align: center
     :alt: alternate text
     :figclass: align-center

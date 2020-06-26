@@ -14,7 +14,7 @@ guest software programs called "inmates". One of these cells runs the
 Linux OS and is known as the "root cell". Other cells borrow CPUs and
 devices from the root cell as they are created.
 
-.. Image:: ../../../images/Jailhouse.png
+.. Image:: /images/Jailhouse.png
 
 The picture above shows the jailhouse on a system a) before the
 jailhouse is enabled; b) after the jailhouse is enabled; c) after a cell

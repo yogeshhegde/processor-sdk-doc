@@ -294,7 +294,7 @@ which you can start development.
 
    .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-       .. Image:: ../../images/AM335x_Development_Environment.png
+       .. Image:: /images/AM335x_Development_Environment.png
 
 #. **Use the SD Card to boot the target board** properly connected for
    your development environment.

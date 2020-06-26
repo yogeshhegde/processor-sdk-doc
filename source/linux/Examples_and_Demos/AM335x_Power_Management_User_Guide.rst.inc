@@ -14,7 +14,7 @@ than shown here, depending on screen size. (Screen shots from SDK 06.00)
 
 |
 
-.. Image:: ../images/Matrix_app_launcher.png
+.. Image:: /images/Matrix_app_launcher.png
 
 |
 
@@ -60,7 +60,7 @@ is from SDK 06.00.
 
 |
 
-.. Image:: ../images/AM335x_Power_screen.png
+.. Image:: /images/AM335x_Power_screen.png
 
 |
 
@@ -73,7 +73,7 @@ the screen you will see:
 
 |
 
-.. Image:: ../images/AM335x_matrix_set_frequency.png
+.. Image:: /images/AM335x_matrix_set_frequency.png
 
 |
 

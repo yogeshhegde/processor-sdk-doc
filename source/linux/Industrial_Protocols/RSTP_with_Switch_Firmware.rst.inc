@@ -20,7 +20,7 @@ as follows:
 
    <div class="thumbinner" style="width:671px;">
 
-.. Image:: ../images/rstp_with_switch_firmware.jpg
+.. Image:: /images/rstp_with_switch_firmware.jpg
 
 .. raw:: html
 

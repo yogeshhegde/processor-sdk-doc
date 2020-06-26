@@ -73,7 +73,7 @@ AM65xx SOC's have multiple processor cores - Cortex A53, ARM R5F cores. The A53 
 boot loader(U-Boot/SPL) boots and loads the A53 with the HLOS. The A53 
 boots the R5 cores.
 
-.. Image:: ../images/Normal-boot-a53.png
+.. Image:: /images/Normal-boot-a53.png
 
 In this sequence, the interval between the Power on Reset and the
 remote cores (i.e. the R5Fs) executing is dependent on the
@@ -87,7 +87,7 @@ HLOS initialization time.
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. R5F) running RTOS.
 
-.. Image:: ../images/LinuxIPC_with_RTOS_Slave.png
+.. Image:: /images/LinuxIPC_with_RTOS_Slave.png
 
 In order to setup IPC on slave cores, we provide some pre-built examples
 in IPC package that can be run from ARM Linux. The subsequent sections

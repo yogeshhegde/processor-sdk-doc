@@ -29,7 +29,7 @@ Table:  **PRU Ethernet Driver: Acronyms**
 
 Below figure shows the PRU Ethernet Driver architecture.
 
-.. Image:: ../../../../../images/PRU_ethernet_architecture.png
+.. Image:: /images/PRU_ethernet_architecture.png
 
 .. rubric:: **Overview**
    :name: overview-kernel-core-pruss

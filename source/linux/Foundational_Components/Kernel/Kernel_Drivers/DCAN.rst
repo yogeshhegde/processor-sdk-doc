@@ -98,7 +98,7 @@ to work will be listed below.
 |    <div class="thumbinner"                                  |    <div class="thumbinner"                  |
 |    style="width:302px;">                                    |    style="width:598px;">                    |
 |                                                             |                                             |
-| .. Image:: ../../../../images/Am335x-profile-selection.png  | .. Image:: ../../../../images/Dcan_node.png |
+| .. Image:: /images/Am335x-profile-selection.png             | .. Image:: /images/Dcan_node.png            |
 |                                                             |                                             |
 | .. raw:: html                                               | .. raw:: html                               |
 |                                                             |                                             |
@@ -146,7 +146,7 @@ seen above.
 |    class="thumbinner"                  |    class="thumbinner"                         |    class="thumbinner"                                |
 |    style="width:302px;">               |    style="width:302px;">                      |    style="width:302px;">                             |
 |                                        |                                               |                                                      |
-| .. Image:: ../../../../images/Dcan.png | .. Image:: ../../../../images/Dcan-header.png | .. Image:: ../../../../images/Dcan_header_to_db9.png |
+| .. Image:: /images/Dcan.png            | .. Image:: /images/Dcan-header.png            | .. Image:: /images/Dcan_header_to_db9.png            |
 |                                        |                                               |                                                      |
 | .. raw:: html                          | .. raw:: html                                 | .. raw:: html                                        |
 |                                        |                                               |                                                      |
@@ -174,7 +174,7 @@ DB9/Serial Port/RS 232 cable must be used to connect with the evm.
 Wheather the other end of the cable is female or male will depend on if
 the other CAN device the user will be connecting to.
 
-.. Image:: ../../../../images/DB9_cable.jpg
+.. Image:: /images/DB9_cable.jpg
    :scale: 50%
    :align: center 
 
@@ -182,7 +182,7 @@ the other CAN device the user will be connecting to.
 .. rubric:: **Jumper Wires**
    :name: jumper-wires
 
-.. Image:: ../../../../images/Female_to_female_jumper.png
+.. Image:: /images/Female_to_female_jumper.png
    :scale: 20%
    :align: center
 
@@ -204,7 +204,7 @@ GND pin.
 |                                                                          |
 |    <div class="floatnone">                                               |
 |                                                                          |
-| .. Image:: ../../../../images/Dcan_j6eco.png                             |
+| .. Image:: /images/Dcan_j6eco.png                                        |
 |                                                                          |
 | .. raw:: html                                                            |
 |                                                                          |
@@ -257,7 +257,7 @@ to the correct pins correctly. Use the below diagram as a reference.
 |                                                             |                                                |
 |    <div class="floatnone">                                  |    <div class="floatnone">                     |
 |                                                             |                                                |
-| .. Image:: ../../../../images/DCAN_custom_cable_diagram.png | .. Image:: ../../../../images/Custom_cable.png |
+| .. Image:: /images/DCAN_custom_cable_diagram.png            | .. Image:: /images/Custom_cable.png            |
 |                                                             |                                                |
 | .. raw:: html                                               | .. raw:: html                                  |
 |                                                             |                                                |
@@ -559,7 +559,7 @@ into three layers Viz user space, kernel space and hardware.
 
    <div class="thumbinner" style="width:592px;">
 
-.. Image:: ../../../../images/Dcan_driver_architecture.png
+.. Image:: /images/Dcan_driver_architecture.png
 
 .. raw:: html
 

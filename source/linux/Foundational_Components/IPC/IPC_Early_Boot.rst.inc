@@ -14,7 +14,7 @@ executing is dependent on the HLOS initialization time. This delay may
 not be suitable for realizing some usecases with tight time constraints.
 e.g. Rear View Camera.
 
-.. Image:: ../images/Normal-boot.png
+.. Image:: /images/Normal-boot.png
    :class: thumbimage
    :width: 511px
    :height: 263px
@@ -29,7 +29,7 @@ Attach" functionality. The "Early Boot" functionality is provided by the
 boot loader. The "Late Attach" functionality is a feature of the Linux
 Kernel.
 
-.. Image:: ../images/Early-boot.png
+.. Image:: /images/Early-boot.png
    :class: thumbimage
    :width: 511px
    :height: 263px

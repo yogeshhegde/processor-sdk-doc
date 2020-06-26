@@ -13,8 +13,8 @@ components provided with the Processor SDK for Linux.
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-   .. Image:: ../images/Processor_SDK_linux_stack_v3.png
+   .. Image:: /images/Processor_SDK_linux_stack_v3.png
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-   .. Image:: ../images/Processor_SDK_Auto_linux_stack.png
+   .. Image:: /images/Processor_SDK_Auto_linux_stack.png

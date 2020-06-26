@@ -34,7 +34,7 @@ https://wiki.linuxfoundation.org/networking/bridge
 
    <div class="thumbinner" style="width:671px;">
 
-.. Image:: ../images/Cpsw_rstp_mstpd_topology_1.jpg
+.. Image:: /images/Cpsw_rstp_mstpd_topology_1.jpg
 
 .. raw:: html
 

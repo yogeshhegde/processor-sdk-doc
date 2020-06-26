@@ -31,7 +31,7 @@ PCIe End Point
 
     Following is the block diagram of framework for endpoint mode:
 
-    .. Image:: ../../../../../images/ep_framework.png
+    .. Image:: /images/ep_framework.png
 
     .. rubric:: **Features of J7ES**
        :name: features-j7es-linux-pcie-ep
@@ -121,7 +121,7 @@ PCIe End Point
     like below is required.
 
 
-.. Image:: ../../../../../images/Pcie_ep_cable.jpg
+.. Image:: /images/Pcie_ep_cable.jpg
 
 This cable can be obtained from Adex Electronics (https://www.adexelec.com).
 
@@ -145,11 +145,11 @@ The ends of the modified cable should look like below:
 
 - A side
 
-    .. Image:: ../../../../../images/PCIE_A_both_sides.jpg
+    .. Image:: /images/PCIE_A_both_sides.jpg
 
 - B side
 
-    .. Image:: ../../../../../images/PCIE_B_both_sides.jpg
+    .. Image:: /images/PCIE_B_both_sides.jpg
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -158,7 +158,7 @@ The ends of the modified cable should look like below:
     device.
 
 
-    .. Image:: ../../../../../images/Back-to-back.jpeg
+    .. Image:: /images/Back-to-back.jpeg
 
     |
 
@@ -171,19 +171,19 @@ The ends of the modified cable should look like below:
         For AM65x boards, remove any jumpers present in the SERDES card when
         operating in endpoint mode.
 
-    .. Image:: ../../../../../images/MPCIe-to-PCIe_Adapter.jpg
+    .. Image:: /images/MPCIe-to-PCIe_Adapter.jpg
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
     Following is an image of two J721E EVMs connected back to back. There is no 
     restriction on which end of the cable should be connected to host and device.
 
-    .. Image:: ../../../../../images/j721e-evm-back-to-back.jpg
+    .. Image:: /images/j721e-evm-back-to-back.jpg
 
     For End Point mode, PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6) 
     should be set to '1'.
 
-    .. Image:: ../../../../../images/dip-switch.png
+    .. Image:: /images/dip-switch.png
 
 .. rubric:: **End Point (EP) Device Configuration**
    :name: ep-device-configuration
@@ -441,7 +441,7 @@ supported are:
 |                               | that data                                          |
 +-------------------------------+----------------------------------------------------+
 
-.. Image:: ../../../../../images/pci-epf-test.png
+.. Image:: /images/pci-epf-test.png
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 

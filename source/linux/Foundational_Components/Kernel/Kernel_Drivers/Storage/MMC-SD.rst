@@ -34,7 +34,7 @@ intervention.
       -  Maximum operating frequency of 48MHz
       -  MMC/SD card hot insertion and removal
 
-.. Image:: ../../../../../images/Mmcsd_Driver.png
+.. Image:: /images/Mmcsd_Driver.png
 
 MMC/SD Driver Architecture
 

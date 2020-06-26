@@ -553,7 +553,7 @@ Description of Matrix-GUI classification example
 
 Example is based on "imagenet" and "test" examples, with few additions related to decision filtering and visualization. There are two source files only:
 
-.. Image:: ../../../images/tidl-demo1.png
+.. Image:: /images/tidl-demo1.png
 
 
 * main.cpp
@@ -1007,7 +1007,7 @@ After conversion, we can visualize the network:
 
 Here is a graph (group 1 is executed on EVE, and group 2 is executed on DSP):
 
-.. Image:: ../../../images/j11split.png
+.. Image:: /images/j11split.png
 
 Output of layers group 1 is shared (common) with input buffer of layers group 2 so no extra buffer copy overhead. Due to this buffer allocation, sequential operation of EVE and DSP is necessary.
 

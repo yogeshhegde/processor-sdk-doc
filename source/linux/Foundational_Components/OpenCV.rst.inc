@@ -162,7 +162,7 @@ certain OpenCL kernels from executing on the DSP. The kernels are
 prevented to execute on the DSP if they did not pass the accuracy tests.
 
  
-.. Image:: ../images/FlowChart3.jpg
+.. Image:: /images/FlowChart3.jpg
 
 .. rubric:: Example of OpenCL offload
    :name: example-of-opencl-offload
@@ -373,13 +373,13 @@ xxx.xxx.xxx.xxx where xxx.xxx.xxx.xxx stands for the IP address of the
 TFTP server. Note that the process takes few minutes because the file
 is very large. (More than 600MB)
 
-.. Image:: ../images/UnzipMaster3.jpg
+.. Image:: /images/UnzipMaster3.jpg
 
 | 
 
-.. Image:: ../images/UnzipMaster4.jpg
+.. Image:: /images/UnzipMaster4.jpg
 
-.. Image:: ../images/InflatedZip.jpg
+.. Image:: /images/InflatedZip.jpg
 
 | 
 
@@ -404,7 +404,7 @@ level.
 From the OpenCV directory do the following: ***mv
 opencv\_extra-master/testdata .*** . See the screen shot below.
 
-.. Image:: ../images/MoveTestdata.jpg
+.. Image:: /images/MoveTestdata.jpg
 
 .. rubric:: Environment Settings and Run the Tests
    :name: environment-settings-and-run-the-tests
@@ -416,13 +416,13 @@ the environment variables that are needed for the unit tests.
 From the OpenCV directory do the following: ***cd titestsuit*** and
 then ***source ./setupEnv.sh*** . See the screen shot below.
  
-.. Image:: ../images/Environment1.jpg
+.. Image:: /images/Environment1.jpg
 
 The script runtests run all the unit tests. From the titestsuit
 directory do ***./runtests*** . The unit tests starts executing. The
 screen will show the following:
 
-.. Image:: ../images/RunTests1.jpg
+.. Image:: /images/RunTests1.jpg
 
 #. Currently the last three tests in the script (videoio) do not run on
    AM57X. The script will stuck after about 90 minutes. The user can
@@ -431,7 +431,7 @@ screen will show the following:
    /usr/share/OpenCV/titestsuite. The start of the log file looks like
    the following:
 
-.. Image:: ../images/Logfile.jpg
+.. Image:: /images/Logfile.jpg
 
 .. rubric:: Reports and Results
    :name: reports-and-results

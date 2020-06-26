@@ -130,7 +130,7 @@ and slave applications running on the supported TI platforms. For both
 the master and the slave stations, connect the Ethernet ports to be
 tested to a switch.
 
-.. Image:: ../images/Cclink_setup_pic.PNG
+.. Image:: /images/Cclink_setup_pic.PNG
 
 Please note that the jumper setting for AM335x ICE V2 EVM needs to be
 set correctly based on the type of application demonstrated:
@@ -169,7 +169,7 @@ On the slave station, simply run the slave sample application:
 The figure below shows the sample output from the console of the slave
 station.
 
-.. Image:: ../images/Cclink_slave_screenshot_linux.png
+.. Image:: /images/Cclink_slave_screenshot_linux.png
 
 | 
 

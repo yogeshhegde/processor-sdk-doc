@@ -605,7 +605,7 @@ Connect the RS232 Serial cable provided in the box to the serial port
 of the Host PC. If Host is running Windows OS, start tera term and
 configure the serial port settings as follows.
 
-.. Image:: ../../images/Tera_Term_Connect.jpg
+.. Image:: /images/Tera_Term_Connect.jpg
 
 |
 
@@ -629,7 +629,7 @@ Verifying NOR
 3. Make sure the evm is connected to the DHCP server.
 4. U-Boot will show up on the UART. A sample screen is shown below.
 
-.. Image:: ../../images/Spl-boot.j.jpg
+.. Image:: /images/Spl-boot.j.jpg
 
 .. rubric:: Verifying NAND
    :name: verifying-nand
@@ -668,7 +668,7 @@ to verify.**
 
 4. A sample screen is shown below.
 
-.. Image:: ../../images/Kernel_Boot.jpg
+.. Image:: /images/Kernel_Boot.jpg
 
 |
 

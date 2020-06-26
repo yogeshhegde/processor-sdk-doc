@@ -2984,7 +2984,7 @@ bindings. These bindings are documented in the kernel itself at
 The QoS implementation allows for an abstracted tree of scheduler nodes
 represented in device tree form. An example is depicted below
 
-.. Image:: ../../../../../images/Qos-tree.jpg
+.. Image:: /images/Qos-tree.jpg
 
 | At each node, shaping and dropping parameters may be specified, within
   limits of the constraints outlined in this document. The following
@@ -3002,7 +3002,7 @@ In the device tree we are setting up a shaper that is depicted below
 
 | 
 
-.. Image:: ../../../../../images/Qos-new-shaper.jpg
+.. Image:: /images/Qos-new-shaper.jpg
 
 | 
 | When egress shaper is enabled, all packets will be sent to the QoS
@@ -3018,7 +3018,7 @@ In the device tree we are setting up a shaper that is depicted below
 
 | 
 
-.. Image:: ../../../../../images/Shaper-config-details.jpg
+.. Image:: /images/Shaper-config-details.jpg
 
 .. rubric:: QoS Node Attributes
    :name: qos-node-attributes

@@ -72,7 +72,7 @@ using a web browser on the host machine. This single HTML page contains the Java
 for visualization of the statistics data from target. The following is an example of
 the contents of the Stats.html when opened in the Firefox browser:
 
-.. Image:: ../../../images/statistics-visualization-startup.png
+.. Image:: /images/statistics-visualization-startup.png
 
 Enter the IP address of the EVM in the box, update the port number, if required, and
 then the press the Connect button. After this, the browser connects to the statcol using
@@ -80,4 +80,4 @@ web sockets and shows different graphs with statistics data. You can filter out 
 statistics that you want to view by clicking the toggle filters. The following screenshot
 shows the expected behavior when running with ethernet firmware:
 
-.. Image:: ../../../images/statistics-visualization-ethfw.png
+.. Image:: /images/statistics-visualization-ethfw.png

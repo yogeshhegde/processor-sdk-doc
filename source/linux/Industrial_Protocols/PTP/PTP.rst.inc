@@ -41,7 +41,7 @@ Software Overview
 The picture below shows the Linux software stack of HSR/PRP/PTP in
 Processor SDK.
 
-.. Image:: ../images/Software-arch-v1.jpg
+.. Image:: /images/Software-arch-v1.jpg
 
 PTP is supported via the PRP firmware (in PRP EMAC mode) and Dual EMAC firmware.
 
@@ -990,7 +990,7 @@ Test Results
 The following scope captures show the offset and jitters of the PPS
 signal between master and slave OC clock.
 
-.. Image:: ../images/Pic_1pps_pruicss.png
+.. Image:: /images/Pic_1pps_pruicss.png
 
 ::
 
@@ -998,7 +998,7 @@ signal between master and slave OC clock.
 
 | 
 
-.. Image:: ../images/Pic_1pps_cpts.png
+.. Image:: /images/Pic_1pps_cpts.png
 
 ::
 
@@ -1124,7 +1124,7 @@ Sample BC Setups
 
 A sample set up for 3-port BC for testing purpose is shown below.
 
-.. Image:: ../images/Bc_connect.jpg
+.. Image:: /images/Bc_connect.jpg
 
 In this scenario, the BC ICSS2 PRU port (interface eth2) is in PTP
 slave state (ICSS2-IEP is the BC internal master clock). The other two
@@ -1135,7 +1135,7 @@ clocks).
 A sample set up for BC with HSR/PRP ports for testing purpose is shown
 below.
 
-.. Image:: ../images/Bc_dan_connect.jpg
+.. Image:: /images/Bc_dan_connect.jpg
 
 In this scenario, the BC CPSW/CPTS (interface eth1) is in PTP
 slave state (CPTS is the BC internal master clock). The other two
@@ -1226,11 +1226,11 @@ for more details.
 
 Example: See below pictures (J21 is the connector along the top right edge)
 
-.. Image:: ../images/Am571x_whole_small2.png
+.. Image:: /images/Am571x_whole_small2.png
 
 and this more J21 focused of the same picture above
 
-.. Image:: ../images/Am571x_j21.png
+.. Image:: /images/Am571x_j21.png
 
 .. rubric:: AM572x and AM574x IDK
    :name: am572x-1
@@ -1276,11 +1276,11 @@ for more details.
 
 Example: See below pictures (J21 is the connector along the top right edge)
 
-.. Image:: ../images/Am574x_whole_small2.png
+.. Image:: /images/Am574x_whole_small2.png
 
 and this more J21 focused of the same picture above
 
-.. Image:: ../images/Am574x_j21.png
+.. Image:: /images/Am574x_j21.png
 
 Software
 ^^^^^^^^
@@ -1741,7 +1741,7 @@ eth1 interface in the `sample setup <#sample-bc-setups>`__. Or simply
 rearrange the cable connections in the `sample
 setup <#sample-bc-setups>`__ as shown below.
 
-.. Image:: ../images/Bc_reconnect.jpg
+.. Image:: /images/Bc_reconnect.jpg
 
 See
 `here <http://processors.wiki.ti.com/images/8/83/Bc_reconnect_20180112.pdf>`__
@@ -1757,7 +1757,7 @@ Test Results
 
 | Oregano <==> BC-GMAC-eth1 <==> BC-ICSS2-eth2 <==> OC-ICSS2-eth2
 
-.. Image:: ../images/Pic_ptp_bc_eth1_eth2.png
+.. Image:: /images/Pic_ptp_bc_eth1_eth2.png
 
 | 
 
@@ -1766,42 +1766,42 @@ Test Results
 
 | Oregano <==> BC-GMAC-eth1 <==> BC-ICSS1-eth4 <==> OC-ICSS2-eth2
 
-.. Image:: ../images/Pic_ptp_bc_eth1_eth4.png
+.. Image:: /images/Pic_ptp_bc_eth1_eth4.png
 
 .. rubric:: BC (ICSS2 GMAC)
    :name: bc-icss2-gmac
 
 | Oregano <==> BC-ICSS2-eth2 <==> BC-GMAC-eth1 <==> OC-GMAC-eth1
 
-.. Image:: ../images/Pic_ptp_bc_eth2_eth1.png
+.. Image:: /images/Pic_ptp_bc_eth2_eth1.png
 
 .. rubric:: BC (ICSS1 GMAC)
    :name: bc-icss1-gmac
 
 | Oregano <==> BC-ICSS1-eth4 <==> BC-GMAC-eth1 <==> OC-GMAC-eth1
 
-.. Image:: ../images/Pic_ptp_bc_eth4_eth1.png
+.. Image:: /images/Pic_ptp_bc_eth4_eth1.png
 
 .. rubric:: BC (ICSS2 ICSS1)
    :name: bc-icss2-icss1
 
 | Oregano <==> BC-ICSS2-eth2 <==> BC-ICSS1-eth4 <==> OC-ICSS2-eth2
 
-.. Image:: ../images/Pic_ptp_bc_eth2_eth4.png
+.. Image:: /images/Pic_ptp_bc_eth2_eth4.png
 
 .. rubric:: BC (ICSS1 ICSS2)
    :name: bc-icss1-icss2
 
 | Oregano <==> BC-ICSS1-eth4 <==> BC-ICSS2-eth2 <==> OC-ICSS2-eth2
 
-.. Image:: ../images/Pic_ptp_bc_eth4_eth2.png
+.. Image:: /images/Pic_ptp_bc_eth4_eth2.png
 
 .. rubric:: BC (GMAC ICSS1-HSR)
    :name: bc-gmac-icss1-hsr
 
 | Oregano <==> BC-GMAC-eth1 <==> BC-ICSS1-eth4/5(HSR) <==> OC-ICSS2-eth2/3(HSR)
 
-.. Image:: ../images/Pic_ptp_bc_eth1_eth4_hsr.png
+.. Image:: /images/Pic_ptp_bc_eth1_eth4_hsr.png
 
 
 .. rubric:: BC (GMAC ICSS1-PRP)
@@ -1809,7 +1809,7 @@ Test Results
 
 | Oregano <==> BC-GMAC-eth1 <==> BC-ICSS1-eth4/5(PRP) <==> OC-ICSS2-eth2/3(PRP)
 
-.. Image:: ../images/Pic_ptp_bc_eth1_eth4_prp.png
+.. Image:: /images/Pic_ptp_bc_eth1_eth4_prp.png
 
 
 Limitations
@@ -1979,7 +1979,7 @@ Test 1. With a hybrid clock (OC+TC) between master and slave clock
 A Sample 3 HSR Hybrid Clock Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. Image:: ../images/3clock.jpg
+.. Image:: /images/3clock.jpg
 
 Although each clock in this setup is a HSR hybrid clock, the role that
 each clock plays in this test is as follows:
@@ -2107,7 +2107,7 @@ Test 2. Without a hybrid clock between Master and Slave Clock
 A Sample 2 Hybrid Clock Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. Image:: ../images/2clock.jpg
+.. Image:: /images/2clock.jpg
 
 Procedure
 ~~~~~~~~~
@@ -2126,12 +2126,12 @@ Test Results
 Test 1. With a hybrid clock (OC+TC) between master and slave clock
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. Image:: ../images/Hsr_pps_w_tc.png
+.. Image:: /images/Hsr_pps_w_tc.png
 
 Test 2. Without a hybrid clock between Master and Slave Clock
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. Image:: ../images/Hsr_pps_wo_tc.png
+.. Image:: /images/Hsr_pps_wo_tc.png
 
 Limitations
 -----------

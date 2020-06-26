@@ -9,11 +9,11 @@ directories and files
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    .. Image:: ../images/Processor-SDK-Linux-directory-structure.png
+    .. Image:: /images/Processor-SDK-Linux-directory-structure.png
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
-    .. Image:: ../images/PSDKLA-directory-structure.png
+    .. Image:: /images/PSDKLA-directory-structure.png
 
 These directories contain the code and tools used to develop for
 Processor SDK devices.

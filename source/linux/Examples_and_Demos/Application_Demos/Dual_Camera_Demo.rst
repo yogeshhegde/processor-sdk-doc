@@ -4,7 +4,7 @@ Dual Camera
 
 Below diagram illustrates the video data processing flow of dual camera demo.
 
-.. Image:: ../../../images/Dual_camera_demo.png
+.. Image:: /images/Dual_camera_demo.png
 
 **Dual camera example demo demonstrates following-**
 

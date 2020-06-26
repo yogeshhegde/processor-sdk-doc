@@ -120,11 +120,11 @@ The default selection of where to install is the user's home directory.
 
     In this particular example the name of the user is 'sitara'.
 
-    .. Image:: ../../images/Processor_sdk_select_directory.png
+    .. Image:: /images/Processor_sdk_select_directory.png
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
-    .. Image:: ../../images/Processor_sdk_j7_select_directory.png
+    .. Image:: /images/Processor_sdk_j7_select_directory.png
 
 
 After the installation, refer to section `Setting up host environment <Run_Setup_Scripts.html>`__ for next steps.

@@ -25,7 +25,7 @@ The Display Subsystem (DSS) is a hardware block responsible for fetching pixel d
 
 In addition to the SoC's DSS, boards often contain external display bridges (for example, DPI-to-HDMI bridge) and display panels.
 
-.. Image:: ../../../../../images/DSS7_HW.png
+.. Image:: /images/DSS7_HW.png
 
 The above image gives an overview of the DSS (on J721E) hardware. The arrows show how pipelines are connected to overlay managers, which are further connected to video-ports, which finally create an encoded pixel stream for display on the LCD or monitor.
 

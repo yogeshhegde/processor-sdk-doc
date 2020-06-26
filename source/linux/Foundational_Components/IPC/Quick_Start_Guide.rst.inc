@@ -43,13 +43,13 @@ The out of box demo is only available on Keystone-2 EVMs.
 4. Click the Multi-core Demonstrations, then Multi-core IPC Demo to
    start the IPC demonstration.
 
-   .. Image:: ../images/MatrixAppLauncher.jpg
+   .. Image:: /images/MatrixAppLauncher.jpg
       :scale: 60
 
 
    The result from running IPC Demo
    
-   .. Image:: ../images/IPC_Demo_Result.jpg
+   .. Image:: /images/IPC_Demo_Result.jpg
       :scale: 60
 
 

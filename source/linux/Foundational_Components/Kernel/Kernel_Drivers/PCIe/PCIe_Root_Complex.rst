@@ -552,14 +552,14 @@ including desktop, mobile, server, storage and embedded communications.
     For End Point mode, PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6) 
     should be set to '0'.
 
-    .. Image:: ../../../../../images/dip-switch.png
+    .. Image:: /images/dip-switch.png
 
 .. rubric:: **RC Software Architecture**
    :name: rc-software-architecture
 
 Following is the software architecture for Root Complex mode:
 
-.. Image:: ../../../../../images/Linux_PCIe_subsystem.png
+.. Image:: /images/Linux_PCIe_subsystem.png
 
 Following is a brief explanation of layers shown in the diagram:
 

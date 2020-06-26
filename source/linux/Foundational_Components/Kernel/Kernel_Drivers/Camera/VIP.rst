@@ -31,7 +31,7 @@ The VIP IP is only available on the following TI SoCs or SoC families:
 On supported SoCs the Video Input Port (VIP) module is used for video
 capture from video encoder/decoder and camera sensor.
 
-.. Image:: ../../../../../images/VIP-block-diagram.png
+.. Image:: /images/VIP-block-diagram.png
 
 VIP Instance block diagram
 
@@ -303,7 +303,7 @@ Table:  **Supported Output Pixel Format**
 .. rubric:: Hardware Limitations
    :name: hardware-limitations
 
-.. Image:: ../../../../../images/CSC_SC_PORTA_PORTB.png
+.. Image:: /images/CSC_SC_PORTA_PORTB.png
 
 VIP Slice
 

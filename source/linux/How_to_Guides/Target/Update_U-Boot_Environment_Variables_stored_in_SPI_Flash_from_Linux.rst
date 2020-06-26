@@ -35,7 +35,7 @@ u-boot must be cross compiled and copied into the file system. This tool
 is located in the board-support/u-boot<version>/tools/env directory of
 the latest AMSDK.
 
-.. Image:: ../../../images/Sitara-Linux-Spi_nor_overview_1.png
+.. Image:: /images/Sitara-Linux-Spi_nor_overview_1.png
 
 | 
 

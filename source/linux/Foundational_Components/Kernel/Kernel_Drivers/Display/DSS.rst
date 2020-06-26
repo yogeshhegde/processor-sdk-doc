@@ -43,14 +43,14 @@ encoders (for example, DPI to DVI encoder) and display panels.
 
 |
 
-.. Image:: ../../../../../images/DSS_Example.png
+.. Image:: /images/DSS_Example.png
 
 Simplified example setup where two overlays are merged into one output,
 which is encoded into DSI, then to LVDS, and shown on an LVDS panel.
 
 |
 
-.. Image:: ../../../../../images/DSS_HW.png
+.. Image:: /images/DSS_HW.png
 
 An overview of the DSS hardware. The arrows show how ovlerlays/pipelines
 are connected to overlay managers, which are further connected to

@@ -36,7 +36,7 @@ DWC3 is integrated in AM65x, OMAP5, DRA7x and AM437x SoCs from TI.
     OTG controller  module in the diagram) which interrupts the core using
     UTMI+ signals.
 
-    .. image:: ../../../../../images/Omap5-dwc3.png
+    .. image:: /images/Omap5-dwc3.png
 
     .. rubric:: DRA7x/AM57x
        :name: dra7xam57x
@@ -102,7 +102,7 @@ DWC3 is integrated in AM65x, OMAP5, DRA7x and AM437x SoCs from TI.
       on the SERDES card. Please remove this jumper for proper dual-role/device mode
       operation of USB1 port.
 
-    .. Image:: ../../../../../images/am65x-dwc3-usbhs.png
+    .. Image:: /images/am65x-dwc3-usbhs.png
 
     - On AM65x-evm, USB1 port is available as a Super-Speed device or host port
       (3.0 micro-AB) through a 1Lane PCIe USB3 SERDES card. See below figure.
@@ -111,7 +111,7 @@ DWC3 is integrated in AM65x, OMAP5, DRA7x and AM437x SoCs from TI.
       on the SERDES card. Please remove this jumper for proper dual-role/device mode
       operation of USB1 port.
 
-    .. Image:: ../../../../../images/am65x-dwc3-usbss.png
+    .. Image:: /images/am65x-dwc3-usbss.png
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
@@ -125,7 +125,7 @@ DWC3 is integrated in AM65x, OMAP5, DRA7x and AM437x SoCs from TI.
     -  On AM437x-gp-evm, AM437x-epos-evm and AM437x-sk-evm, USB0 port is
        used as dual-role port and USB1 port is used as Host port (Type-A).
 
-    .. Image:: ../../../../../images/Am437x-dwc3.png
+    .. Image:: /images/Am437x-dwc3.png
 
 |
 
@@ -376,7 +376,7 @@ Kernel Configuration tool.
     the market don't have ID pin grounded. If the ID pin is not grounded the
     dual-role port will not switch from peripheral mode to host mode.
 
-    .. Image:: ../../../../../images/OMAP5-HOST.jpg
+    .. Image:: /images/OMAP5-HOST.jpg
 
     .. rubric:: DRA7x-evm
        :name: dra7x-evm
@@ -389,7 +389,7 @@ Kernel Configuration tool.
     adapter cable like this. The ID pin within the adapter cable must be
     grounded.
 
-    .. Image:: ../../../../../images/Dra7-HOST.jpg
+    .. Image:: /images/Dra7-HOST.jpg
 
     For using the USB1 port in host mode use a Super-Speed OTG adapter cable
     similar to the one used in OMAP5.
@@ -403,7 +403,7 @@ Kernel Configuration tool.
     To use the USB0 port in host mode a micro OTG adapter cable is required
     like below.
 
-    .. Image:: ../../../../../images/Usb_af_to_micro_usb_male_adapter.jpg
+    .. Image:: /images/Usb_af_to_micro_usb_male_adapter.jpg
        :width: 200pt
        :height: 100pt
        :alt: usb to microAB male adapter

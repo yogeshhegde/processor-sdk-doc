@@ -122,7 +122,7 @@ set up decoders.
 
 |
 
-.. Image:: ../images/Main_screen.png
+.. Image:: /images/Main_screen.png
 
 |
 
@@ -149,7 +149,7 @@ and AAC audio codec as mentioned in the description page below.
 
 |
 
-.. Image:: ../images/Mpeg4aac.png
+.. Image:: /images/Mpeg4aac.png
 
 |
 
@@ -174,7 +174,7 @@ as mentioned in the description page below.
 
 |
 
-.. Image:: ../images/Mpeg4.png
+.. Image:: /images/Mpeg4.png
 
 |
 
@@ -192,7 +192,7 @@ as mentioned in the description page below.
 
 |
 
-.. Image:: ../images/H264.png
+.. Image:: /images/H264.png
 
 |
 
@@ -208,7 +208,7 @@ mentioned in the description page below.
 
 |
 
-.. Image:: ../images/Aac.png
+.. Image:: /images/Aac.png
 
 |
 
@@ -246,12 +246,12 @@ Multimedia framework for cortex-a8 SDK will leverage GStreamer
 multimedia stack with gst-ffmpeg plug-in's to support GPLv2+
 FFmpeg/libav library code.
 
-.. Image:: ../images/SDKMMFwk.png
+.. Image:: /images/SDKMMFwk.png
 
 gst-launch is used to build and run basic multimedia pieplines to
 demonstrate audio/avideo decoding examples.
 
-.. Image:: ../images/MMFwk.png
+.. Image:: /images/MMFwk.png
 
 .. rubric:: GStreamer
    :name: gstreamer
@@ -264,7 +264,7 @@ demonstrate audio/avideo decoding examples.
 
 Some of the build dependencies for GStreamer are shown here:
 
-.. Image:: ../images/GstBuildDependancies.png
+.. Image:: /images/GstBuildDependancies.png
 
 .. rubric:: Open Source FFmpeg Codecs
    :name: open-source-ffmpeg-codecs
@@ -311,7 +311,7 @@ Test Parameters:
 -  Benchmarks released by ARM demonstrating an overall performance
    improvement of ~2x.
 
-.. Image:: ../images/NeonPerf.png
+.. Image:: /images/NeonPerf.png
 
 .. rubric:: FFmpeg Codecs List
    :name: ffmpeg-codecs-list

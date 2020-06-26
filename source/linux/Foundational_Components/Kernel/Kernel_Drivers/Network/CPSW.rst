@@ -345,7 +345,7 @@ implementation
 
 .. rubric:: Block Diagram
 
-.. Image:: ../../../../../images/Dual-EMAC-Implementation.jpg
+.. Image:: /images/Dual-EMAC-Implementation.jpg
 
 .. rubric:: Assumptions
    :name: assumptions

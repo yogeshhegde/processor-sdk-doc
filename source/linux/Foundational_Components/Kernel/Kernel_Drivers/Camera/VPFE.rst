@@ -90,7 +90,7 @@ The latest release this documentation applies to is Kernel v3.12
 
 The following figure shows the basic block diagram of capture interface.
 
-.. Image:: ../../../../../images/AM437x_capture_overview.png
+.. Image:: /images/AM437x_capture_overview.png
 
 Capture Driver Component Overview
 

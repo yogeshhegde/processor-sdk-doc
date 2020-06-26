@@ -2519,19 +2519,19 @@ Step 2: Creating a Target Configuration File
 
 #. The first step is to create a target configuration file in CCS. Navigate to "View"-> "Target Configurations":
 
-	.. Image:: ../images/Uboot_Image1.png
+	.. Image:: /images/Uboot_Image1.png
 #. Right click on the "Target Configurations" window and select "New Target Configuration":
 
-	.. Image:: ../images/Uboot_Image2.png
+	.. Image:: /images/Uboot_Image2.png
 #. Create a name for target configuration:
 
-	.. Image:: ../images/Uboot_Image3.png
+	.. Image:: /images/Uboot_Image3.png
 #. Select the appropriate SoC and JTAG. **Note**: If we select the SoC name, the GEL files will not be loaded. However, if we select the board options, the GEL files will be loaded by default. In the below example, if GPEVM_AM65x or IDK_AM65x is selected, the GEL files are automatically enabled in the configuration. While debugging Uboot, it is recommended to avoid GEL files because Uboot is responsible for initializing the peripherals:
 
-	.. Image:: ../images/Uboot_Image4.png
+	.. Image:: /images/Uboot_Image4.png
 #. Next, click save and test connection to ensure CCS is able to communicate with the debugger:
 
-	.. Image:: ../images/Uboot_Image5.png
+	.. Image:: /images/Uboot_Image5.png
 
 Step 3: Loading Symbol files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2565,25 +2565,25 @@ If a user is working with AM335x/AM437x/AM57xx, the test code could be added in 
 
 #. On CCS, launch the target configuration file created in Step2:
 
-	.. Image:: ../images/Uboot_Image6.png
+	.. Image:: /images/Uboot_Image6.png
 
 #. After successful launch, connect to one of the ARM cores. On AM65x, the inital SPL code is executed on the R5 so the user would connect to the R5 core. For the AM335x/AM437/AM57xx, please connect to the A8/A9/A15 core.
 
-	.. Image:: ../images/Uboot_Image7.png
+	.. Image:: /images/Uboot_Image7.png
 
 #. After connecting to the core, click on "Run"-> "Load"->"Load Symbols...":
 
-	.. Image:: ../images/Uboot_Image8.png
-	.. Image:: ../images/Uboot_Image9.png
-	.. Image:: ../images/Uboot_Image10.png
+	.. Image:: /images/Uboot_Image8.png
+	.. Image:: /images/Uboot_Image9.png
+	.. Image:: /images/Uboot_Image10.png
 
 #. After loading the code, CCS should find the source code file and it should be stuck at the code previously added:
 
-	.. Image:: ../images/Uboot_Image11.png
+	.. Image:: /images/Uboot_Image11.png
 
 #. To break out of the loop, change the program counter in the Register Window:
 
-	.. Image:: ../images/Uboot_Image12.png
+	.. Image:: /images/Uboot_Image12.png
 
 At this point, the user has the ability to step through the SPL code and debug issues in the SPL.
 

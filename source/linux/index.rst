@@ -54,5 +54,5 @@ forum listed at `Technical Support`_.
 
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
-| .. Image:: ../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
+| .. Image:: /images/E2e.jpg     | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
 +--------------------------------+--------------------------------------------------------------------------------------------------+

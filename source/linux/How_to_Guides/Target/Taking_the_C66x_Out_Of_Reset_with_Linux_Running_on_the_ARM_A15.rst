@@ -30,13 +30,13 @@ your machine has the reset routines described below.
 
 | 
 
-.. Image:: ../../../images/Outofreset_1_lali.JPG
+.. Image:: /images/Outofreset_1_lali.JPG
 
 | 
 | 2) With the target configuration launched, right click on K2x.ccxml
   and select “Show all cores”
 
-.. Image:: ../../../images/Outofreset_2_lali.JPG
+.. Image:: /images/Outofreset_2_lali.JPG
 
 | 
 | 3) This will bring up the Non-Debuggable Devices section. Right click
@@ -44,7 +44,7 @@ your machine has the reset routines described below.
 
 | 
 
-.. Image:: ../../../images/Outofreset_3_lali.JPG
+.. Image:: /images/Outofreset_3_lali.JPG
 
 | 
 | 4) Go to Tools>GEL files and load the evmk2x.gel file by right
@@ -52,24 +52,24 @@ your machine has the reset routines described below.
   located in the CCS installation under
   \\ccsv6\\ccs\_base\\emulation\\boards\\evmk2x\\gel\\
 
-.. Image:: ../../../images/Outofreset_4_lali.png
+.. Image:: /images/Outofreset_4_lali.png
 
 | 
 | 5) Once the GEL has been successfully loaded, go to Scripts>default
   and select K2x\_TakeDSPOutofReset.
 
-.. Image:: ../../../images/Outofreset_5_lali.png
+.. Image:: /images/Outofreset_5_lali.png
 
 | 
 | 6) At this point the console would indicate that the DSP is out of
   reset.
 
-.. Image:: ../../../images/Outofreset_6_lali.png
+.. Image:: /images/Outofreset_6_lali.png
 
 | 
 | 7) Now the DSP cores can be right-clicked and connected successfully.
 
-.. Image:: ../../../images/Outofreset_7_lali.png
+.. Image:: /images/Outofreset_7_lali.png
 
 | 
 
@@ -89,5 +89,5 @@ script blank.
 
    </div>
 
-.. Image:: ../../../images/Outofreset_8_lali.JPG
+.. Image:: /images/Outofreset_8_lali.JPG
 

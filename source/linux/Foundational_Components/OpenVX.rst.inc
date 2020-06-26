@@ -36,7 +36,7 @@ TIOVX also provides optimized OpenVX kernels for C66x DSP. An extension
 API allows users to integrate their own natively developed custom
 kernels and call them using OpenVX APIs.
 
-.. Image:: ../images/Tiovx.PNG
+.. Image:: /images/Tiovx.PNG
 
 | 
 

@@ -7,7 +7,7 @@ Introduction
 The traditional watchdog with SoC/core reset capability on Linux is not supported on AM654x PG1.0 due to hardware limitation.
 In stead, the following workaround is implemented to demostrate the tranditional watchdog functionality as described and shown below.
 
-.. Image:: ../../../images/watchdog_demo.png
+.. Image:: /images/watchdog_demo.png
 
 * Standard Linux watchdog with MCU RTI0/1 in kernel
 * Linux watchdog daemon configures watchdog timeout, strats and feeds the watchdog periodically

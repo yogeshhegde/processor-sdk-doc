@@ -88,7 +88,7 @@ applications are used for transmitting and receiving Ethernet frames between
 PC and the J721E EVM. Similarly, any compatible CAN tool can be used for CAN
 message reception and transmission.
 
-.. Image:: ../../../images/CanEth_MCAL_SW_Arch.png
+.. Image:: /images/CanEth_MCAL_SW_Arch.png
    :height: 912px
    :width: 1635px
    :scale: 40 %
@@ -194,7 +194,7 @@ J721E Board Setup
 
 Conceptually the wiring should be done as shown below:
 
-.. Image:: ../../../images/CanEth_MCAL_demo_setup_graphic.png
+.. Image:: /images/CanEth_MCAL_demo_setup_graphic.png
    :height: 595px
    :width: 1004px
    :scale: 70 %
@@ -203,7 +203,7 @@ Conceptually the wiring should be done as shown below:
 
 When actual connections are made it looks like below:
 
-.. Image:: ../../../images/CANEth_MCAL_complete_setup_annotated.jpg
+.. Image:: /images/CANEth_MCAL_complete_setup_annotated.jpg
    :height: 1125px
    :width: 1500px
    :scale: 50 %
@@ -227,7 +227,7 @@ and J32 respectively on the J721E base EVM board. The MCAN pin connection is as 
 
 The following diagram shows the MCAN0 and MCAN1 connections on base EVM.
 
-.. Image:: ../../../images/CANEth_MCAL_MCAN_ports.jpg
+.. Image:: /images/CANEth_MCAL_MCAN_ports.jpg
   :height: 3456px
   :width: 4608px
   :scale: 20 %
@@ -237,7 +237,7 @@ The following diagram shows the MCAN0 and MCAN1 connections on base EVM.
 If using PCAN tool, the DB-9 connection is as follows:
 
 .. can-eth-pcan-connection:
-.. Image:: ../../../images/CanEth_PCANConnection.png
+.. Image:: /images/CanEth_PCANConnection.png
    :height: 1000px
    :width: 1500px
    :scale: 30 %
@@ -246,7 +246,7 @@ If using PCAN tool, the DB-9 connection is as follows:
 
 Use below image as reference to connect the wires.
 
-.. Image:: ../../../images/CanEth_MCAL_MCAN_Wiring.jpg
+.. Image:: /images/CanEth_MCAL_MCAN_Wiring.jpg
    :height: 595px
    :width: 1602px
    :scale: 80 %
@@ -299,7 +299,7 @@ website: https://www.peak-system.com/PCAN-USB-FD.365.0.html?&L=1
                     on MCAN configuration on the J721E side.
             * Click on **OK** button.
 
-            .. Image:: ../../../images/CanEth_PCANViewDeviceSelection.png
+            .. Image:: /images/CanEth_PCANViewDeviceSelection.png
                :height: 500px
                :width: 500px
                :scale: 70 %
@@ -318,7 +318,7 @@ website: https://www.peak-system.com/PCAN-USB-FD.365.0.html?&L=1
                 * **Cycle Time** as **1**
                 * **Data** can be selected randomly
 
-            .. Image:: ../../../images/CanEth_PCANViewTransmitMessageConfig.png
+            .. Image:: /images/CanEth_PCANViewTransmitMessageConfig.png
                :height: 500px
                :width: 600px
                :scale: 80 %
@@ -349,7 +349,7 @@ website: https://www.peak-system.com/PCAN-USB-FD.365.0.html?&L=1
         * Click on **OK** and then again on **OK**
 
     .. _pcan-view-bit-rate-config:
-    .. Image:: ../../../images/CanEth_PCANViewBitRateConfig.png
+    .. Image:: /images/CanEth_PCANViewBitRateConfig.png
       :height: 500px
       :width: 800px
       :scale: 80 %
@@ -393,7 +393,7 @@ For more details about installation of CCS and J721E target creation, refer to t
     * Set hardware and software flow control to "No".
     * Below figure shows serial parameters set in Minicom.
 
-   .. Image:: ../../../images/CanEth_MCAL_minicom_setting.png
+   .. Image:: /images/CanEth_MCAL_minicom_setting.png
       :scale: 50 %
       :alt: Serial Port Settings in Minicom
       :align: center
@@ -407,7 +407,7 @@ For more details about installation of CCS and J721E target creation, refer to t
 
 #. The application should boot up with the console log shown below. Note that the Ethernet interface takes a few seconds to come up.
 
-.. Image:: ../../../images/CanEth_MCAL_after_bootup.png
+.. Image:: /images/CanEth_MCAL_after_bootup.png
    :height: 233px
    :width: 1096px
    :scale: 100 %
@@ -441,7 +441,7 @@ SD Card Boot
     * Set hardware and software flow control to "No".
     * Below figure shows serial parameters set in Minicom.
 
-   .. Image:: ../../../images/CanEth_Minicom.png
+   .. Image:: /images/CanEth_Minicom.png
       :scale: 100 %
       :alt: Serial Port Settings in Minicom
       :align: center
@@ -450,7 +450,7 @@ SD Card Boot
    EVM board.
 #. The application should boot up with a console log as shown below:
 
-.. Image:: ../../../images/CanEth_MCAL_after_bootup.png
+.. Image:: /images/CanEth_MCAL_after_bootup.png
    :height: 233px
    :width: 1096px
    :scale: 100 %
@@ -508,7 +508,7 @@ Follow the next steps to test Eth-to-CAN routes:
 
 #. A screenshot of send_1722.out console application is shown below:
 
-.. Image:: ../../../images/CanEth_MCAL_send_1722.png
+.. Image:: /images/CanEth_MCAL_send_1722.png
    :height: 338px
    :width: 1102px
    :scale: 70 %
@@ -555,7 +555,7 @@ Follow the next steps to test CAN-to-Eth and CAN-to-CAN routes:
 #. Send a message with CAN ID of 0xC0 on PCAN1. The message will be routed to both PCAN2 and the Ethernet port where
    it will be shown by the application. See figures below:
 
-   .. Image:: ../../../images/CanEth_MCAL_recv_1722.png
+   .. Image:: /images/CanEth_MCAL_recv_1722.png
       :height: 269px
       :width: 727px
       :scale: 80 %
@@ -565,7 +565,7 @@ Follow the next steps to test CAN-to-Eth and CAN-to-CAN routes:
    
 #. Now repeat same process with PCAN2. This time, send a message with CAN ID of 0xB0. See figure below:
 
-    .. Image:: ../../../images/CanEth_MCAL_PCAN_Tool.png
+    .. Image:: /images/CanEth_MCAL_PCAN_Tool.png
        :height: 1044px
        :width: 1904px
        :scale: 40 %
@@ -588,7 +588,7 @@ When ``stat`` is used, the demo application prints performance and statistics in
 
 See figure below:
 
-.. Image:: ../../../images/CanEth_MCAL_Stats.png
+.. Image:: /images/CanEth_MCAL_Stats.png
     :height: 329px
     :width: 1114px
     :scale: 60 %
@@ -605,7 +605,7 @@ Known issues & limitations
    blinks red constantly, and no CAN messages are seen on the bus. To recover, first ``Disconnect (Ctrl + D)`` and then ``Connect (Ctrl + B)``
    the device. See below:
 
-    .. Image:: ../../../images/CanEth_MCAL_reset_pcan.png
+    .. Image:: /images/CanEth_MCAL_reset_pcan.png
       :height: 658px
       :width: 897px
       :scale: 50 %

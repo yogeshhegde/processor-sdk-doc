@@ -49,7 +49,7 @@ Table:  Boards M\_CAN Driver is Validated on
 |    class="thumbinner"                         |    class="thumbinner"                                |
 |    style="width:302px;">                      |    style="width:302px;">                             |
 |                                               |                                                      |
-| .. Image:: ../../../../images/Dcan-header.png | .. Image:: ../../../../images/Dcan_header_to_db9.png |
+| .. Image:: /images/Dcan-header.png            | .. Image:: /images/Dcan_header_to_db9.png            |
 |                                               |                                                      |
 | .. raw:: html                                 | .. raw:: html                                        |
 |                                               |                                                      |
@@ -77,7 +77,7 @@ For boards exposing M\_CAN using male DB9 connectors, a female connector
 is required. The other side can be male or female depending on the other
 CAN device the user connects to.
 
-.. Image:: ../../../../images/DB9_cable.jpg
+.. Image:: /images/DB9_cable.jpg
    :scale: 50%
    :align: center
 
@@ -92,7 +92,7 @@ L (lowest pin on the header). The pinout in the header might vary across
 different boards and users must consult the board's schematic to verify
 this.
 
-.. Image:: ../../../../images/Female_to_female_jumper.png
+.. Image:: /images/Female_to_female_jumper.png
    :scale: 20%
    :align: center
 
@@ -121,7 +121,7 @@ to the correct pins correctly. Use the below diagram as a reference.
 |                                                             |                                                |
 |    <div class="floatnone">                                  |    <div class="floatnone">                     |
 |                                                             |                                                |
-| .. Image:: ../../../../images/DCAN_custom_cable_diagram.png | .. Image:: ../../../../images/Custom_cable.png |
+| .. Image:: /images/DCAN_custom_cable_diagram.png            | .. Image:: /images/Custom_cable.png            |
 |                                                             |                                                |
 | .. raw:: html                                               | .. raw:: html                                  |
 |                                                             |                                                |

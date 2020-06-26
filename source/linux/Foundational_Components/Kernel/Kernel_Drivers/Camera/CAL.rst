@@ -43,7 +43,7 @@ Hardware Architecture
 On supported SoCs the Camera Abstraction Layer (CAL) module is used for
 video capture from CSI-2 and camera sensor.
 
-.. Image:: ../../../../../images/CAL-block-diagram.png
+.. Image:: /images/CAL-block-diagram.png
    :scale: 65 %
 
 CAL provides up to two MIPI CSI-2 interfaces:

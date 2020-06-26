@@ -39,7 +39,7 @@ does the following things:
 .. note::
     The host setup is common to all TI platforms.
 
-.. Image:: ../../images/Linux_Host_Development_System.png
+.. Image:: /images/Linux_Host_Development_System.png
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 

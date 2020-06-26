@@ -11,7 +11,7 @@ invokes OpenVX graph, and the processing is done once per input frame. OpenVX de
 topology and all configuration details. All resources are allocated and initialzied before processing.
 
 
-.. Image:: ../../../images/OpenVx-Example-Block-Diagram.png
+.. Image:: /images/OpenVx-Example-Block-Diagram.png
 
 |
 
@@ -34,7 +34,7 @@ and copy it to file system (e.g. ~/tiovx). Then, execute the commands below to l
 Screen capture after running the optical flow example:
 
 
-.. Image:: ../../../images/OpenVx-Example-Screen-Shot.png
+.. Image:: /images/OpenVx-Example-Screen-Shot.png
 
 
 Logs:
