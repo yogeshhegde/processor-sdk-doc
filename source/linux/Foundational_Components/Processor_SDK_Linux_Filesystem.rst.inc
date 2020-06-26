@@ -1,4 +1,4 @@
-.. include:: replacevars.rst.inc
+.. include:: /linux/replacevars.rst.inc
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Filesystem
 

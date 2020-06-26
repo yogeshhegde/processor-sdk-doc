@@ -1,4 +1,4 @@
-.. include:: ../replacevars.rst.inc
+.. include:: /linux/replacevars.rst.inc
 
 Run Setup Scripts
 ======================================

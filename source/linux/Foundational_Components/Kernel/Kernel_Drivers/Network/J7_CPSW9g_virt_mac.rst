@@ -1,4 +1,4 @@
-.. include:: ../../../../replacevars.rst.inc
+.. include:: /linux/replacevars.rst.inc
 
 |__PART_FAMILY_NAME__|  CPSW9g virtual MAC (remoteproc)
 -------------------------------------------------------

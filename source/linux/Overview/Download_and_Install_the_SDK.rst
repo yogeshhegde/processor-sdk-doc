@@ -1,4 +1,4 @@
-.. include:: ../replacevars.rst.inc
+.. include:: /linux/replacevars.rst.inc
 
 Download and Install the SDK
 ======================================
