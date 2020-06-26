@@ -7,6 +7,7 @@ a copy of the SD card rootfs filesystem.
 - Copy the mksdboot.sh from host machine <PATH_TO_INSTALLER>/bin/mksdboot.sh
   into the target filesystem.
 - Make sure the script has execute permissions.
+
 .. code-block:: bash
 
     chmod +x mksdboot.sh
@@ -14,6 +15,7 @@ a copy of the SD card rootfs filesystem.
 - Make sure the board boots with uenv.txt.base so that both SD and eMMC devices
   are available to kernel.
 - example output when both SD(mmcblk1) and eMMC(mmcblk0) are available
+
 .. code-block:: bash
 
     root@j7-evm:~# ls -l /dev/mmcblk*
@@ -26,17 +28,20 @@ a copy of the SD card rootfs filesystem.
     brw-rw----    1 root     disk      179,  98 Jul 17 22:37 /dev/mmcblk1p2
 
 - Unmount the eMMC partitions from root kernel
+
 .. code-block:: bash
 
     umount /dev/mmcblk0*
 
 - Stop the udev daemon to avoid auto mounting the partitions while we are
   formatting the eMMC
+
 .. code-block:: bash
 
     udevadm control -s
 
 - Partition the eMMC device using mksdboot.sh script as follows:
+
 .. code-block:: bash
 
     root@j7-evm:~# ./mksdboot.sh --device /dev/mmcblk0
