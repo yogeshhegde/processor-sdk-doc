@@ -5,7 +5,6 @@ Application Demos
 .. toctree::
    :maxdepth: 5
 
-   Examples_and_Demos/Application_Demos/Can_Eth_Gateway_Demo
    Examples_and_Demos/Application_Demos/Dual_Camera_Demo
    Examples_and_Demos/Application_Demos/Video_Analytics
    Examples_and_Demos/Application_Demos/Barcode
