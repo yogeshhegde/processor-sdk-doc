@@ -19,9 +19,9 @@ this How-To document we refer to that EVM as the "originating TI EVM".
     AM335x-based `BeagleBone <https://beagleboard.org/bone>`_ boards for a more
     tailored, cut-down starting point.  For this discussion here we will be
     assuming the AM335x General-Purpose EVM to be our starting point however
-    the same concepts apply also doing board ports starting off a different
-    base platform. The new board will get integrated cleanly it in a way like
-    other existing board are integrated into U-Boot.
+    the same concepts also apply doing board ports starting off a different
+    base platform. The new board will get integrated cleanly in a way like
+    other existing boards are integrated into U-Boot.
 
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
@@ -29,12 +29,13 @@ this How-To document we refer to that EVM as the "originating TI EVM".
     General-Purpose EVM <http://www.ti.com/tool/TMDSEVM437X>`_ or the `AM437x
     Starter Kit <http://www.ti.com/tool/TMDXSK437X>`_. For this discussion here
     we will be assuming the AM437x General-Purpose EVM to be our starting point
-    however the same concepts apply also doing board ports starting off a
-    different base platform.  The new board will get integrated cleanly it in a
-    way like other existing board are integrated into U-Boot.
+    however the same concepts also apply doing board ports starting off a
+    different base platform. The new board will get integrated cleanly it in a
+    way like other existing boards are integrated into U-Boot.
 
 Integrating support for a new board into the U-Boot tree
 --------------------------------------------------------
+
 Adding support is done by essentially cloning, stripping down, and flattening
 the TI EVM board support while integrating the resulting files into the U-Boot
 build flow, resulting in a custom defconfig, a custom board-specific header
@@ -68,22 +69,26 @@ Steps to create an intitial baseline:
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family')
 
-    #. Establish a custom-board specific CONFIG option that can be used to
+    #. Establish a custom board specific CONFIG option that can be used to
        identify the custom hardware and direct code and build flow accordingly
+
         * Clone the entire ``config TARGET_AM335X_EVM`` section located in
           **arch/arm/mach-omap2/am33xx/Kconfig** into a new section called
           ``config TARGET_AM335X_<MYBOARD>``
         * Update the ``config TARGET_AM335X_<MYBOARD>`` option description in
-          the newly cloned section from ``bool "Support am335x_evm"`` to
-          ``bool "Support am335x_<myboard>"``
-        * Similarly, update the ``help`` description of the newly cloned
-          section to reflect that it is for a custom board
+          the newly cloned section from ``bool "Support am335x_evm"`` to ``bool
+          "Support am335x_<myboard>"``
+        * Similarly, update the ``help`` description of the newly cloned section
+          to reflect that it is for a custom board
         * Remove the ``select TI_I2C_BOARD_DETECT`` entry from the new section.
-          In most cases we do not need or want this feature for custom boards
-          as we will be tailoring the solution around our specific platform so
+          In most cases we do not need or want this feature for custom boards as
+          we will be tailoring the solution around our specific platform so
           let's remove it right away.
+        * Add ``source "board/<mycompany>/<myboard>/Kconfig"`` to section
+          containing source locations located in **arch/arm/mach-omap2/Kconfig**
 
     #. Copy and update board files to a new folder
+
         * Copy all files from **board/ti/am335x/** to a new folder called
           **board/<mycompany>/<myboard>**
         * Remove (or update) the **README** and **MAINTAINERS** files (if they
@@ -110,10 +115,21 @@ Steps to create an intitial baseline:
           assume ``board_is_evm_15_or_later()`` to evaluate as ``true``, and
           all other ``board_is_*()`` functions as ``false``, and simplify the
           platform code accordingly.
+        * Edit **board/<mycompany>/<myboard>/Kconfig** as follows
+
+                * Update ``if TARGET_AM335X_EVM`` to ``if
+                  TARGET_AM335X_<MYBOARD>``
+                * Update ``default "am335x"`` to ``default "<myboard>"`` under
+                  ``config SYS_BOARD``
+                * Update ``default "ti"`` to ``default "<mycompany>"`` under
+                  ``config SYS_VENDOR``
+                * Update ``default "am335x_evm"`` to ``default
+                  "am335x_<myboard>"`` under ``config SYS_CONFIG_NAME``
 
     #. Copy and update board-specific header file
+
         * Copy **include/configs/am335x_evm.h** to a new file
-          **include/configs/<myboard>.h**
+          **include/configs/am335x_<myboard>.h**
         * Remove the ``#define CONFIG_SYS_LDSCRIPT`` definition, unless you are
           actually using NOR boot.
         * Remove the ``#define CONFIG_ENV_EEPROM_IS_ON_I2C``,
@@ -130,9 +146,9 @@ Steps to create an intitial baseline:
           this case. Not providing this file may lead to a silent failure during
           ENV-based U-Boot loading and the Kernel not coming up
 
-    #. Copy and update top-level device tree file and integrate into build
-       process
-        * Copy **arch/arm/dts/am335x-evm.dts** to
+    #. Copy and update top-level device tree file and integrate into build process
+
+        * Copy **arch/arm/dts/am335x-evm.dts** to 
           **arch/arm/dts/am335x-<myboard>.dts**
         * Edit **arch/arm/dts/am335x-<myboard>.dts** and update ``model`` node
           with a custom, board-specific string
@@ -154,6 +170,7 @@ Steps to create an intitial baseline:
           ``dtb-$(CONFIG_AM33XX)`` build target
 
     #. Copy and update U-Boot defconfig file
+
         * Copy **configs/am335x_evm_defconfig** to
           **configs/am335x_<myboard>_defconfig**
         * Edit **configs/am335x_<myboard>_defconfig** as follows
@@ -166,6 +183,7 @@ Steps to create an intitial baseline:
 
     #. Establish a custom-board specific CONFIG option that can be used to
        identify the custom hardware and direct code and build flow accordingly
+
         * Clone the entire ``config TARGET_AM43XX_EVM`` section located in
           **arch/arm/mach-omap2/am33xx/Kconfig** into a new section called
           ``config TARGET_AM43XX_<MYBOARD>``
@@ -178,8 +196,12 @@ Steps to create an intitial baseline:
           In most cases we do not need or want this feature for custom boards
           as we will be tailoring the solution around our specific platform so
           let's remove it right away.
+        * Add ``source "board/<mycompany>/<myboard>/Kconfig"`` to section
+          containing source locations located in **arch/arm/mach-omap2/Kconfig**
+
 
     #. Copy and update board files to a new folder
+
         * Copy all files from **board/ti/am43xx/** to a new folder called
           **board/<mycompany>/<myboard>**
         * Remove (or update) the **README** and **MAINTAINERS** files (if they
@@ -202,10 +224,22 @@ Steps to create an intitial baseline:
           assume ``board_is_evm()`` to evaluate as ``true``, and all other
           ``board_is_*()`` functions as ``false``, and simplify the platform
           code accordingly.
+        * Edit **board/<mycompany>/<myboard>/Kconfig** as follows
+
+                * Update ``if TARGET_AM43XX_EVM`` to ``if
+                  TARGET_AM43XX_<MYBOARD>``
+                * Update ``default "am43xx"`` to ``default "<myboard>"`` under
+                  ``config SYS_BOARD``
+                * Update ``default "ti"`` to ``default "<mycompany>"`` under
+                  ``config SYS_VENDOR``
+                * Update ``default "am43xx_evm"`` to ``default
+                  "am43xx_<myboard>"`` under ``config SYS_CONFIG_NAME``
+
 
     #. Copy and update board-specific header file
+
         * Copy **include/configs/am43xx_evm.h** to a new file
-          **include/configs/<myboard>.h**
+          **include/configs/am43xx_<myboard>.h**
         * Remove the ``#define CONFIG_ENV_EEPROM_IS_ON_I2C``,
           ``#define CONFIG_SYS_I2C_EEPROM_ADDR``,
           ``#define CONFIG_SYS_I2C_EEPROM_ADDR_LEN`` definitions as we usually
@@ -220,14 +254,14 @@ Steps to create an intitial baseline:
           this case. Not providing this file may lead to a silent failure during
           ENV-based U-Boot loading and the Kernel not coming up
 
-    #. Copy and update top-level device tree file and integrate into build
-       process
+    #. Copy and update top-level device tree file and integrate into build process
+
         * Copy **arch/arm/dts/am437x-gp-evm.dts** to
           **arch/arm/dts/am437x-<myboard>.dts**
         * Edit **arch/arm/dts/am437x-<myboard>.dts** and update ``model`` node
           with a custom, board-specific string
         * Edit **arch/arm/dts/am437x-<myboard>.dts** to include contents from
-          the implicitly included **am437x-evm-u-boot.dtsi** file.
+          the implicitly included **am437x-gp-evm-u-boot.dtsi** file.
 
         .. note::
             Many TI boards also come with a U-Boot specific device tree include
@@ -245,6 +279,7 @@ Steps to create an intitial baseline:
           ``dtb-$(CONFIG_AM43XX)`` build target
 
     #. Copy and update U-Boot defconfig file
+
         * Copy **configs/am43xx_evm_defconfig** to
           **configs/am43xx_<myboard>_defconfig**
         * Edit **configs/am43xx_<myboard>_defconfig** as follows
@@ -260,7 +295,8 @@ to complete this step, do the following:
 #. Build our custom board port using the usual flow of first building the newly
    created defconfig file, and then performing the actual build of SPL and
    U-Boot. Fix any build errors you may encounter and re-build until the build
-   performs cleanly, without any build warnings.
+   performs cleanly, without any build warnings. Ensure that the `toolchain path
+   <../../Overview/GCC_ToolChain.html>`__ has been set properly. 
 
     ::
 
@@ -286,7 +322,7 @@ U-Boot uses the same code base to build images for SPL and U-Boot itself. As
 you work with the different source and header files take note of how certain
 statements are wrapped in ``#ifdef CONFIG_SPL ... #endif`` statement
 preprocessor macros, which means the included sections are only applicable and
-get build when SPL is being build. Similarly, when you encounter config symbols
+get build when SPL is being built. Similarly, when you encounter config symbols
 that start with ``CONFIG_SPL_*`` either in the `Kconfig
 <https://gitlab.denx.de/u-boot/u-boot/-/blob/master/doc/README.kconfig>`_ tool
 (meaning, ``make [...] menuconfig``), in actual **Kconfig** files (in which
@@ -303,10 +339,11 @@ only activated or applicable to SPL.
 
     * Port DDR configuration if your DDR setup (devices, clock speeds, etc.)
       differs from the originating platform (EVM)
+
         * DDR timing and configuration data is setup in the **board.c** file
         * Follow the steps outlined in the `AM335x EMIF Tools Application
           Report <http://www.ti.com/lit/pdf/sprack4>`_ and its associated
-          `Configuration Tool <http://www.ti.com/lit/zip/sprack4>`_ in detail.
+          `Configuration Tool <http://www.ti.com/lit/zip/sprack4>`__ in detail.
           This application report also includes information useful for DDR
           bringup.
         * If any additional customization steps are needed such as the
@@ -321,10 +358,11 @@ only activated or applicable to SPL.
 
     * Port DDR configuration if your DDR setup (devices, clock speeds, etc.)
       differs from the originating platform (EVM)
+
         * DDR timing and configuration data is setup in the **board.c** file
         * Follow the steps outlined in the `AM43xx EMIF Tools Application
-          Report <http://www.ti.com/lit/pdf/sprac70>`_ and its associated
-          `Configuration Tool <http://www.ti.com/lit/zip/sprac70>`_ in detail.
+          Report <http://www.ti.com/lit/pdf/sprac70>`__ and its associated
+          `Configuration Tool <http://www.ti.com/lit/zip/sprac70>`__ in detail.
           This application report also includes information useful for DDR
           bringup.
         * If any additional customization steps are needed such as the
@@ -336,9 +374,10 @@ only activated or applicable to SPL.
           runtime in the architectural files by using ``get_ram_size()``.
 
 * Establish an initial minimal pinmux setup for the custom board
+
     * A minimal pinmux setup is needed to avoid any potential signal conflicts
       that may occur when running a configuration that was intended for a TI
-      EVM is simply run on a custom board
+      EVM that is simply run on a custom board
     * Pinmux performed in U-Boot is usually limited to the peripherals that are
       directly involved in the boot process (such as GPMC, DDR, MMC, SPI,
       etc.), an I2C module used for PMIC connectivity, as well as the console
@@ -358,6 +397,7 @@ only activated or applicable to SPL.
       data structures.
     * In order to quickly derive the pinmux settings needed there are two
       possible paths:
+
         #. Use the TI-provided
            `Pin MUX Utility <http://www.ti.com/tool/PINMUXTOOL>`_ which is
            available in a version running in the cloud as well as a version that
@@ -377,14 +417,15 @@ only activated or applicable to SPL.
         entries such as pinmux are applicable to U-Boot.
 
 * Update PMIC configuration
+
     * TI AMxxx SoCs are typically supplied by an external Power Management IC
       (PMIC) connected via the I2C interface. One of the jobs of the PMIC is it
       to supply and provide the VDD_MPU and VDD_CORE voltages according to the
       desired Operating Performance Point (OPP) meeting datasheet requirements.
     * The PMIC is being configured through the ``scale_vcores()`` function
       inside the **board.c** file which gets invoked by the architectural
-      drivers prior to setting up the SoC's PLLs
-    * The actual PMIC configuration  is made depended on the clock frequency
+      drivers prior to setting up the SoC's PLLs.
+    * The actual PMIC configuration  is made dependent on the clock frequency
       configured for a given board (see next step). It may also need to be made
       dependent on silicon revision, so review the originating TI EVM's code
       carefully, which is mostly directed based on ``board_is_*()`` invocations
@@ -397,6 +438,7 @@ only activated or applicable to SPL.
       drivers/power/pmic``.
 
 * Update SoC clock configuration
+
     * TI AMxxx SoCs are available in different speed grades, each supporting a
       maximum operating frequency, associated with a specific OPP.
     * The implementation of the ``get_dpll_mpu_params()`` function inside the
@@ -412,17 +454,19 @@ only activated or applicable to SPL.
 .. ifconfig:: CONFIG_part_family in ('AM335X_family')
 
     * Customize console UART settings
+
         * Configure desired console index using the Kconfig tool by updating
           ``CONFIG_CONS_INDEX``. This will take care of the UART-related pinmux
           performed inside ``set_uart_mux_conf()`` in **board.c**
         * Note that the function ``default_serial_console()`` is not used in
           case of ``CONFIG_DM_SERIAL`` as it is with the current AM335x EVM so
           it can be removed
-        * Update the **arch/arm/dts/am335x-<myboard>.dts** device tree file as
-          follows:
+
+        * Update the **arch/arm/dts/am335x-<myboard>.dts** device tree file as follows:
             * Update ``stdout-path`` propery with new phandle to new UART
             * Overlay the respective UART's device tree node with the correct
               pinmux reference and ensure it is set to ``status = "okay";``
+
         * Update the ``console=`` variable part of the
           ``CONFIG_EXTRA_ENV_SETTINGS`` definition in the board-specific header
           file **include/configs/<myboard>.h** to the desired UART to be used
@@ -432,17 +476,21 @@ only activated or applicable to SPL.
 .. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
     * Customize console UART settings
+
         * The UART pinmus is done through ``set_uart_mux_conf()`` in
           **board.c**, calling a pinmux configuration function
           ``enable_uart*_pin_mux`` for a specific UART interface inside
           **mux.c**. Update the call as well as the ``enable_uart*_pin_mux``
           function itself to use an updated pinmux structure as needed for the
           new UART interface.
+
         * Update the **arch/arm/dts/am437x-<myboard>.dts** device tree file as
           follows:
+
             * Update ``stdout-path`` propery with new phandle to new UART
             * Overlay the respective UART's device tree node with the correct
               pinmux reference and ensure it is set to ``status = "okay";``
+
         * Update the ``console=`` variable part of the
           ``CONFIG_EXTRA_ENV_SETTINGS`` definition in the board-specific header
           file **include/configs/<myboard>.h** to the desired UART to be used
@@ -450,6 +498,7 @@ only activated or applicable to SPL.
           for UART0, ``ttyS1,115200n8`` for UART1, and so on.
 
 * Setup early (debug) UART
+
     * The main console UART is brought up only well into the SPL boot process
       due to driver and other dependencies, making it difficult to bring up and
       instrument early startup code including boot peripheral configuration,
@@ -496,6 +545,7 @@ only activated or applicable to SPL.
 * Deactivate all peripheral initializations except for basic boot support like
   UART, MMC, etc. from the **<device>-<myboard>.dts** device tree file using
   one of the following methods:
+
     #. Remove all device tree nodes that are not applicable, including their
        references such as clocks, power regulator, and pinmux settings
     #. De-activate peripherals that are not needed by adding a
@@ -503,6 +553,7 @@ only activated or applicable to SPL.
 
 * De-activate possibly unnecessary functionality as needed through U-Boot menu
   configuration
+
     * Establish a new working **.config** file by building the new defconfig
       file ``make ARCH=arm CROSS_COMPILE='arm-linux-gnueabihf-'
       <device>_<myboard>_defconfig``
@@ -525,8 +576,15 @@ only activated or applicable to SPL.
 
     * Remove dependency on RTC
         * If a custom board does not use the SOC's built-in RTC peripheral,
-          disable ``CONFIG_SPL_AM33XX_ENABLE_RTC32K_OSC`` via ``make ARCH=arm
-          CROSS_COMPILE='arm-linux-gnueabihf-' menuconfig``
+          disable ``CONFIG_SPL_AM33XX_ENABLE_RTC32K_OSC`` via 
+          ``make ARCH=arm CROSS_COMPILE='arm-linux-gnueabihf-' menuconfig``
+
+            * Navigate to the **Device Drivers** section and
+              deselect the option ``Enable support for checking boot
+              count limit ----``. Exit to menuconfig page.
+            * Navigate to the **SPL / TPL** section and
+              deselect the option ``Enable the RTC32K OSC on AM33xx based
+              platforms``. Save and exit menuconfig. 
         * Note that to fully disable RTC support there are also changes needed
           to the Linux Kernel, specifically the disabling of the ``rtc`` node
           from the Kernel device tree file by adding a ``status = "disabled";``
@@ -534,6 +592,7 @@ only activated or applicable to SPL.
 
 * De-activate other possibly unnecessary functionality as needed through
   customizing the board-specific header file
+
     * Some SPL and U-Boot features have not yet been fully migrated to Kconfig
       and are controlled/enabled through the board-specific header file
       **include/configs/<myboard>.h** created earlier
@@ -546,6 +605,7 @@ only activated or applicable to SPL.
       shared U-Boot files can be avoided.
 
 * U-Boot Environment
+
     * The default U-Boot environment is to a large part defined through the
       ``CONFIG_EXTRA_ENV_SETTINGS`` definition in the board-specific header
       file **include/configs/<myboard>.h** and should be further tailored to
@@ -557,6 +617,7 @@ only activated or applicable to SPL.
       one should use this opportunity to remove any definitions related to boot
       modes that are not needed to yield a less cluttered and easier to
       understand overall U-Boot environment.
+
         * Remove ``BOOT_TARGET_*`` definitions that are not applicable
         * Remove ``DEFAULT_*_TI_ARGS`` definitions that are not applicable
         * Remove ``*ARGS``  definitions that are not applicable
@@ -617,14 +678,14 @@ U-Boot Bringup Debugging Tips
 Doing an U-Boot board port is usually an iterative process, involving some
 amount of debugging and troubleshooting, especially on a custom hardware
 platform that differs substantially from one of the TI EVMs. The following
-list gives some ideas that could be helpful during debugging and U-Boot
-bringup.
+list gives some ideas that could be helpful during debugging and U-Boot bringup.
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family')
 
     * The most efficient and powerful tool for board bringup is to have access
       to the SoC via JTAG debugger, and use a tool such as TI's Code Composer
       Studio (CCS) to inspect the device and code.
+
         * Use in conjunction with SPL and U-Boot ELF files for fully symbolic
           debug
         * A very useful tool is using the  CCS-specific `AM335x Debug Server
@@ -632,7 +693,7 @@ bringup.
           <https://git.ti.com/cgit/sitara-dss-files/am335x-dss-files/>`_ for
           low-level device state and boot analysis. Refer to the included
           `README
-          <https://git.ti.com/cgit/sitara-dss-files/am335x-dss-files/tree/README>`_
+          <https://git.ti.com/cgit/sitara-dss-files/am335x-dss-files/tree/README>`__
           file for further information.
         * It may be desirable to turn off the watchdog timer to avoid watchdog
           resets during the debug session (by disabling ``CONFIG_HW_WATCHDOG``,
@@ -644,6 +705,7 @@ bringup.
     * The most efficient and powerful tool for board bringup is to have access
       to the SoC via JTAG debugger, and use a tool such as TI's Code Composer
       Studio (CCS) to inspect the device and code.
+
         * Use in conjunction with SPL (**./spl/u-boot-spl**) and U-Boot
           (**./u-boot**) ELF files for fully symbolic debug
         * A very useful tool is using the  CCS-specific `AM43xx Debug Server
@@ -651,10 +713,11 @@ bringup.
           <https://git.ti.com/cgit/sitara-dss-files/am43xx-dss-files/>`_ for
           low-level device state and boot analysis. Refer to the included
           `README
-          <https://git.ti.com/cgit/sitara-dss-files/am43xx-dss-files/tree/README>`_
+          <https://git.ti.com/cgit/sitara-dss-files/am43xx-dss-files/tree/README>`__
           file for further information.
 
 * Performing basic printf()-style debugging
+
     * Use when JTAG is not available or not practical
     * To maximize usefulness of this approach usually requires the early (debug)
       UART to be configured and activated (which will happen as part of SPL's
