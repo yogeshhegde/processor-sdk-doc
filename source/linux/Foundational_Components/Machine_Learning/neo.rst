@@ -3,8 +3,9 @@ Neo-AI Deep Learning Runtime
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
-  Introduction
-  -------------
+  .. rubric:: Introduction
+   :name: Introduction-neo
+
   `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__ is an open source common runtime 
   for deep learning models and decision tree models compiled by TVM, AWS SageMaker Neo, 
   or Treelite. Processor SDK Linux has integrated Neo-AI-DLR. DLR stands for Deep Learning 
@@ -17,8 +18,8 @@ Neo-AI Deep Learning Runtime
   supported sub-graph will run on EVE/DSP cores, while unsupported layer sub-graph will 
   run on Arm core.
 
-  Examples
-  --------
+  .. rubric:: Examples
+   :name: Examples-neo
 
   Examples of running inference with Neo-AI-DLR are available in /usr/share/dlr
   of the target filesystem:
@@ -59,8 +60,8 @@ Neo-AI Deep Learning Runtime
 
   .. _Compiling Network Models:
 
-  Compiling Network Models to Run with DLR
-  ----------------------------------------
+  .. rubric:: Compiling Network Models to Run with DLR
+   :name: Compiling-Network-Models-neo
 
   SageMaker Neo compiler can compile neural network models to run with DLR on Sitara devices. 
   Neo compiler source code supporting Sitara devices is hosted at https://github.com/TexasInstruments/tvm 
@@ -97,8 +98,8 @@ Neo-AI Deep Learning Runtime
       but only TensorFlow models can be compiled to run on TIDL for acceleration if the model
       can be supported by TIDL. 
 
-  Benchmarking
-  ------------
+  .. rubric:: Benchmarking
+   :name: Benchmarking-neo
 
   Performance with and without TIDL offload is shown below for TensorFlow MobileNet v1 and v2. The performance depends 
   significantly on batch size (if batch size is 1, only one EVE is operating and performance would be very poor).
@@ -116,8 +117,8 @@ Neo-AI Deep Learning Runtime
      - This release only supports batch size up to 32.
      - There is no TVM auto-tuning for ARM (using default scheduling) and it is single A15 core execution.
 
-  Rebuilding DLR from Source
-  ------------------------------
+  .. rubric:: Rebuilding DLR from Source
+   :name: Rebuilding-DLR-from-Source-neo
 
   DLR for Sitara devices is included in Proc-SDK Linux target file system. Source 
   code is hosted at https://github.com/TexasInstruments/neo-ai-dlr and will be periodically 
@@ -144,8 +145,9 @@ Neo-AI Deep Learning Runtime
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
-  Introduction
-  -------------
+  .. rubric:: Introduction
+   :name: Introduction-neo
+
   `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__ is an open source common runtime
   for deep learning models and decision tree models compiled by TVM, AWS SageMaker Neo,
   or Treelite. Processor SDK Linux Automotive has integrated Neo-AI-DLR. DLR stands for Deep Learning
@@ -153,8 +155,8 @@ Neo-AI Deep Learning Runtime
   on Jacinto Arm core.
 
 
-  Examples
-  --------
+  .. rubric:: Examples
+   :name: Examples-neo
 
   Examples of running inference with Neo-AI-DLR are available in /usr/share/dlr
   of the target filesystem:
