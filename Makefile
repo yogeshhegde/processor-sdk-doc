@@ -66,7 +66,7 @@ clean:
 config:
 	cat python-scripts/conf.py source/${OS}/conf-${OS}.py ${TAGFILE} ${FAMILYSETUPFILE} > source/${OS}/conf.py
 	sed -i 's/SDKVERSION/${VERSION}/g' source/${OS}/conf.py
-	cp source/patch/layout.html source/_themes/sphinx_rtd_theme_ti/layout.html
+	cp sphinx_rtd_theme_ti/patch/layout.html sphinx_rtd_theme_ti/_themes/sphinx_rtd_theme_ti/layout.html
 
 html: 
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)
