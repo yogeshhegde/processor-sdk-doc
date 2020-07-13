@@ -135,15 +135,15 @@ drivers/net/ethernet/ti/netcp\_core.c
 
 | 
 
-.. rubric:: Gigabit and 10 Gigabit Ethernet Switching System
-   :name: gigabit-and-10-gigabit-ethernet-switching-system
+.. rubric:: Gigabit Ethernet Switching System
+   :name: gigabit-ethernet-switching-system
 
-There is a common Ethss driver developed to support all K2 SoCs and both
-GBE and XGE (10G). The driver make use of DT compatibility string to
-customize the driver for different variant of the hardware available on
-K2 devices. The driver is written as a netcp module and registers with
-the netcp core. The driver supports 4 port / n port (8 for K2E and 4 for
-K2L) / 2 port (XGE) switch subsystems available on the K2 SoCs.
+There is a common Ethss driver developed to support GBE on all K2 SoCs.
+The driver make use of DT compatibility string to customize the driver
+for different variant of the hardware available on K2 devices. The driver
+is written as a netcp module and registers with the netcp core. The driver
+supports 4 port / n port (8 for K2E, 4 for K2L and 1 for K2G) switch
+subsystems available on the K2 SoCs.
 
 .. rubric:: SGMII
    :name: sgmii
@@ -214,7 +214,7 @@ EVM going to edge connectors such as AMC
     66AK2E supports 8 Ethernet (SGMII) ports, 2 ports to
     the EVM PHYs, 2 ports to AMC connector, and 4 ports to RTM connector. To
     enable the rest Ethernet ports at AMC and RTM connectors, The example of
-    modification to the DTS fiels are shown below:
+    modification to the DTS files are shown below:
 
 1. Enable the SerDes1 and all lanes on both SerDes 66AK2E has two SerDes
 and 4 lanes each. The default configuration has only SerDes0 enabled.
@@ -301,8 +301,7 @@ following example is using Mistral AMC BoC and Mistral RTM BoC.
     +                          "netrx5",
     +                          "netrx6",
     +                          "netrx7",
-                               "nettx",
-                               "netrx0-pa",
+                               "nettx"
 
 | 4. Define switch ports
 
@@ -390,48 +389,10 @@ removed
                            };
     *****/
 
-6. Configure PA for each interface
-
-::
-
-                                            slave-port      = <1>;
-                                            rx-channel      = "netrx1-pa";
-                                    };
-    +                                pa2: interface-2 {
-    +                                        slave-port      = <2>;
-    +                                        rx-channel      = "netrx2-pa";
-    +                                };
-    +
-    +                                pa3: interface-3 {
-    +                                        slave-port      = <3>;
-    +                                        rx-channel      = "netrx3-pa";
-    +                                };
-    +                                pa4: interface-4 {
-    +                                        slave-port      = <4>;
-    +                                        rx-channel      = "netrx4-pa";
-    +                                };
-    +
-    +                                pa5: interface-5 {
-    +                                        slave-port      = <5>;
-    +                                        rx-channel      = "netrx5-pa";
-    +                                };
-    +                                pa6: interface-6 {
-    +                                        slave-port      = <6>;
-    +                                        rx-channel      = "netrx6-pa";
-    +                                };
-    +
-    +                                pa7: interface-7 {
-    +                                        slave-port      = <7>;
-    +                                        rx-channel      = "netrx7-pa";
-    +                                };
-                            };
-
-
-
 .. note::
 
     It is required that queues be contiguous on the rx
-    side, so rx-queue for gbe and xge need to be reassigned.
+    side, so rx-queue for gbe need to be reassigned.
 
 ::
 
@@ -442,8 +403,6 @@ removed
     +                       tx-completion-queue = <536>;
                             efuse-mac = <1>;
                             netcp-gbe = <&gbe0>;
-                            netcp-pa2 = <&pa0>;
-                            netcp-qos = <&qos0>;
                     };
     +                interface-1 {
     +                        rx-channel = "netrx1";
@@ -462,8 +421,6 @@ removed
     +                        efuse-mac = <0>;
     +                        local-mac-address = [02 18 31 7e 3e 00];
     +                        netcp-gbe = <&gbe1>;
-    +                        netcp-pa2 = <&pa1>;
-    +                         netcp-qos = <&qos1>;
     +                };
     +                interface-2 {
     +                        rx-channel = "netrx2";
@@ -481,7 +438,6 @@ removed
     +                        tx-completion-queue = <538>;
     +                        efuse-mac = <0>;
     +                        netcp-gbe = <&gbe2>;
-    +                        netcp-pa2 = <&pa2>;
     +                };
     +               interface-3 {
     +                       rx-channel = "netrx3";
@@ -499,7 +455,6 @@ removed
     +                       tx-completion-queue = <539>;
     +                       efuse-mac = <0>;
     +                       netcp-gbe = <&gbe3>;
-    +                       netcp-pa2 = <&pa3>;
     +                };
     +                interface-4 {
     +                        rx-channel = "netrx4";
@@ -520,7 +475,6 @@ removed
     +                        tx-completion-queue = <540>;
     +                        efuse-mac = <0>;
     +                        netcp-gbe = <&gbe4>;
-    +                        netcp-pa2 = <&pa4>;
     +                };
     +                interface-5 {
     +                        rx-channel = "netrx5";
@@ -541,7 +495,6 @@ removed
     +                        tx-completion-queue = <541>;
     +                        efuse-mac = <0>;
     +                        netcp-gbe = <&gbe5>;
-    +                        netcp-pa2 = <&pa5>;
     +                };
     +                interface-6 {
     +                        rx-channel = "netrx6";
@@ -562,7 +515,6 @@ removed
     +                        tx-completion-queue = <542>;
     +                        efuse-mac = <0>;
     +                        netcp-gbe = <&gbe6>;
-    +                        netcp-pa2 = <&pa6>;
     +                };
     +                interface-7 {
     +                        rx-channel = "netrx7";
@@ -583,42 +535,16 @@ removed
     +                        tx-completion-queue = <543>;
     +                        efuse-mac = <0>;
     +                        netcp-gbe = <&gbe7>;
-    +                        netcp-pa2 = <&pa7>;
     +                };
             }; 
 
-::
-
-    netcpx: netcp@2f00000 {
-                            tx-pool = <1024 12>; /* num_desc region-id */
-                            rx-queue-depth = <1024 1024 0 0>;
-                            rx-buffer-size = <1536 4096 0 0>;
-    -                       rx-queue = <532>;
-    -                       tx-completion-queue = <534>;
-    +                       rx-queue = <544>;
-    +                       tx-completion-queue = <546>;
-                            efuse-mac = <0>;
-                            netcp-xgbe = <&xgbe0>;
-
-    netcpx: netcp@2f00000 {
-                            tx-pool = <1024 12>; /* num_desc region-id */
-                            rx-queue-depth = <1024 1024 0 0>;
-                            rx-buffer-size = <1536 4096 0 0>;
-    -                       rx-queue = <533>;
-    -                       tx-completion-queue = <535>;
-    +                       rx-queue = <545>;
-    +                       tx-completion-queue = <547>;
-                            efuse-mac = <0>;
-                            netcp-xgbe = <&xgbe1>;
-                    };
-
 | 
 
-.. rubric:: XGMII & RGMII
-   :name: xgmii-rgmii
+.. rubric:: RGMII
+   :name: rgmii
 
 The netcp DT binding uses link-interface property to indicate interface
-types for XGMII for XGBE (10G) and RGMII for NetCP lite (K2G SoC) as
+types for RGMII for NetCP lite (K2G SoC) as
 well.
 
 Please see kernel source tree DT documentation at
@@ -626,77 +552,6 @@ Documentation/devicetree/bindings/net/keystone-netcp.txt values to be
 used
 
 | 
-
-.. rubric:: Mark\_mcast\_match Special Packet Processing Feature
-   :name: mark_mcast_match-special-packet-processing-feature
-
-This feature provide for special packet egress processing for specific
-marked packets. The intended use is:
-
-::
-
-    1) SOC Configured in multiple-interface mode
-    2) CPSW ALE re-enabled via /sys/class/net/eth0/device/ale_control (so that SOC switch is
-       active behind the scenes)
-    3) NetCP interfaces slaved to a bridge
-    4) NetCP interfaces feed a common QoS tree
-    5) Bridge forwarding disabled via "ebtables -P FORWARD DROP" (because CPSW is
-       doing the port to port forwarding)
-
-In this rather odd situation, the bridge will transmit locally generated
-multicast (and broadcast) packets by sending one on each of the slaved
-interfaces (i.e. bridge flooding). This has two ramifications:
-
-::
-
-     (a) This results in multiple packets (copies of these locally generated
-         muliticasts) through a common QoS, which is considered "bad"
-         because the common QOS tree is configured assuming only one copy.
-     (b) even if QOS is not present, sending multiple copies of these multicasts is
-         sub-optimal since the CPSW switch is capable of doing the forwarding itself given
-         just one copy of the original packet.
-
-To avoid these ramifications, such local multicast packets can be marked
-via ebtables for special processing in the NetCP PA module before the
-packets are queued for transmission. Packets thus recognized are NOT
-marked for egress via a specific slave port, and thus will be
-transmitted through all slave ports by the CPSW h/w forwarding logic.
-
-To do this, a new DTS parameter "mark\_mcast\_match" has been added.
-This parameter takes two u32 values: a "match" value and a "mask" value.
-
-When the NetCP PA module encounters a packet with a non-zero skb->mark
-field, it bitwise-ANDs the skb->mark value with the "mask" value and
-then compares the result with the "match" value. If these do not match,
-the mark is ignored and the packet is processed normally.
-
-However, if the "match" value matches, then the low-order 8 bits of the
-skb->mark field is used as a bitmask to determine whether the packet
-should be dropped. If the packet would normally have been directed to
-slave port 1, then bit 0 of skb->mark is checked; slave port 2 checks
-bit 1, etc. If the bit is set, then the packet is enqueued for ALE
-processing but with the CPSW engress port field in the descriptor set to
-0 (indicating that CPSW is responsible for selecting the egress port(s)
-to forward the packet too) ; if the bit is NOT set, the packet is
-silently dropped.
-
-An example...
-
-The device tree contains this PA definition:
-
-mark\_mcast\_match = <0x12345a00 0xffffff00>;
-
-The runtime configuration scripts execute this command:
-
-ebtables -A OUTPUT -d Multicast -j mark \\ --mark-set 0x12345a01
---mark-target ACCEPT
-
-When the bridge attempts to send an ARP (broadcast) packet, it will send
-one packet to each of the slave interfaces. The packet sent by the
-bridge to slave interface eth0 (CPSW slave port 1) will be passed to the
-CPSW, and the ALE will broadcast this packet on all slave ports. The
-packets sent by the bridge to other slave interfaces (eth1, CPSW slave
-port 2) will be silently dropped.
 
 .. rubric:: Common Platform Time Sync (CPTS)
    :name: common-platform-time-sync-cpts
@@ -2807,866 +2662,6 @@ To set to Port 1 to “Drop unknown VLAN”:
 
 | 
 
-.. rubric:: Packet Accelerator
-   :name: packet-accelerator
-
--  **WARNING!!!** The information listed here is subjected to change as
-   the driver code gets upstreamed to kernel.org in the future.
-
-The packet accelerator (PA) is one of the main components of the network
-coprocessor (NETCP) peripheral. The PA works together with the security
-accelerator (SA) and the gigabit Ethernet switch subsystem to form a
-network processing solution. The purpose of PA in the NETCP is to
-perform packet processing operations such as packet header
-classification, checksum generation, and multi-queue routing. Please
-refers to SPRUGS4A/SPRUHZ2 for more details. The driver is implemented
-as a netcp module that registers with the netcp core module.
-
-Packet Accelerator driver performs following functions at a higher
-level.
-
-::
-
-    - Reset and load firmware on the PA PDSPs. 
-    - Add basic rules to L2 LUT for network device operation
-    - Add rules in L3 LUT for rx checksum offload (Supported currently on PA).
-    - In the data path, it add commands to the packet descriptors to tell the PA to calculate L3/L4 checksums for IP packets and the same descriptors are enqueued to the designated hwqueues. 
-    - Tx/Rx timestamp on K2HK PA.
-
-A more detailed documentation is available in the kernel source tree at
-Documentation/arm/keystone/netcp-pa.txt.
-
-There are differences in the PA and PA2 hardwares. On PA there is a PDSP
-per classify/multiroute engine, where as on PA2 these engines are
-arranged in clusters, multiple PDSPs per cluster. For ease of design,
-driver considers clusters for PA and PA2, but treat it has 1 to 1
-relation between PDSP and cluster for PA. For PA2, the relation is 1 to
-many PDSPs per cluster. Each cluster has a queue to send command/packets
-to PA/PDSP. So in the DT, there is a tx-queue associated with a cluster.
-The driver enqueue descriptors with commands or IP data to this queue
-which will be processed by associated cluster in egress/ingress path.
-Responses from the cluster is processed by the command response channel
-and associated rx queue which is a qpend queue dynamically allocated by
-the driver. All responses from the cluster is processed by the driver in
-command response handler.
-
-For DT documentation, please refer to
-Documentation/devicetree/bindings/net/keystone-netcp.txt in kernel
-source tree.
-
-.. rubric:: PA Timestamp
-   :name: pa-timestamp
-
-PA timestamp has been implemented in the network driver. All receive
-packets will be timestamped and this timestamped by PDSP0/Cluster0 and
-this timestamp will be available in the timestamp field of the
-descriptor itself. To obtain the TX timestamp, driver calls a PA API to
-format the TX packet. Essentially what it does is to add a set of params
-to the "PSDATA" section of the descriptor. This packet is then sent to
-PDSP5. Internally this will route the packet to the switch. The
-timestamp command response for tx packets are received at the command
-response queue and processed by the response handler. Timestamp
-information is extracted and provided to the stack to process.
-
-To obtain the timestamps itself, we use generic kernel APIs and
-features.
-
-Appropriate documentation for this can be found at Timestamping
-Documentation in kernel source tree
-(Documentation/networking/timestamping.txt)
-
-The timestamping was tested with open source timestamping test code
-found at Timestamping Test Code
-(Documentation/networking/timestamping/txtimestamp.c)
-
-::
-
-    For Tx
-    ./timestamping eth0 SOF_TIMESTAMPING_TX_HARDWARE SOF_TIMESTAMPING_RAW_HARDWARE
-
-::
-
-    For Rx on PC
-    sudo ./timestamping eth0 SOF_TIMESTAMPING_TX_SOFTWARE
-    On EVM 
-    ./timestamping eth0 SOF_TIMESTAMPING_RX_HARDWARE SOF_TIMESTAMPING_RAW_HARDWARE
-
-For the PC application, do the following change and compile.
-
-::
-
-    --- a/Documentation/networking/timestamping/timestamping.c
-    +++ b/Documentation/networking/timestamping/timestamping.c
-    @@ -406,7 +406,7 @@ int main(int argc, char **argv)
-                    bail("bind");
-     
-            /* set multicast group for outgoing packets */
-    -       inet_aton("224.0.1.130", &iaddr); /* alternate PTP domain 1 */
-    +       inet_aton("224.0.1.129", &iaddr); /* alternate PTP domain 1 */
-
-.. rubric:: Special multicast packet handling
-   :name: special-multicast-packet-handling
-
-When the network interfaces are bridged, to avoid duplication of
-multicast packets in tx path to switch, a special packet processing is
-added in PA tx hook. This is configured through sysfs. The details can
-be seen at Documentation/networking/keystone-netcp.txt in the kernel
-source tree
-
-.. rubric:: Pre-classification
-   :name: pre-classification
-
-Pre-classification is a feature in PA firmware to classify broadcast and
-multicast packets and direct them to host for processing. Previously
-this was done through explicit rules in the LUT by the PA driver. Using
-this feature, user can free-up the LUT entries used for this and can be
-used for other applications. This can be disabled using the DT
-attribute. See the PA DT documentation in the source tree for details.
-
-| 
-
-.. rubric:: Security Accelerator
-   :name: security-accelerator
-
-The Security Accelerator (SA) is one of the main components of the
-Network Coprocessor (NETCP) peripheral. The SA works together with the
-Packet Accelerator (PA) and the Gigabit Ethernet (GbE) switch subsystem
-to form a network processing solution. The purpose of the SA is to
-assist the host by performing security related tasks. The SA provides
-hardware engines to perform encryption, decryption, and authentication
-operations on packets for commonly supported protocols, including IPsec
-ESP and AH, SRTP, and Air Cipher.
-
-See the http://www.ti.com/lit/ug/sprugy6b/sprugy6b.pdf for details.
-
-Keystone Linux kernel implements a crypto driver which offloads crypto
-algorithm processing to CP\_ACE. Crypto driver registers algorithm
-implementations in the kernel's crypto algorithm management framework.
-Since the primary use case for this driver is IPSec ESP offload, it
-currently registers only AEAD algorithms.
-
-Following algorithms are supported by the driver:
-
-::
-
-    1. authenc(hmac(sha1),cbc(aes))
-    2. authenc(hmac(sha1),cbc(des3-ede))
-    3. authenc(xcbc(aes),cbc(aes))
-    4. authenc(xcbc(aes),cbc(des3-ede))
-
-The driver source code: drivers/crypto/keystone-\*.[ch]
-
-See the Documentation/devicetree/bindings/soc/ti/keystone-crypto.txt for
-configuration.
-
-In order to work driver requires the sa\_mci.fw firmware. By default
-driver compiled as kernel module and loaded after root file system is
-mounted, it is enough to place the firmware to the /lib/firmware
-directory.
-
-| 
-
-.. rubric:: Quality of Service
-   :name: quality-of-service
-
-The linux qmss queue driver will download the Quality of Service
-Firmware to PDSP 3 and 7 of QMSS. PDSP 0 has accumulator firmware.
-
-The firmware will be programmed by the linux keystone qmss QoS driver.
-
-The configuration of the firmware is done with the help of device tree
-bindings. These bindings are documented in the kernel itself at
-**Documentation/devicetree/bindings/soc/ti/keystone-qos.txt**
-
-.. rubric:: QoS Tree Configuration
-   :name: qos-tree-configuration
-
-The QoS implementation allows for an abstracted tree of scheduler nodes
-represented in device tree form. An example is depicted below
-
-.. Image:: /images/Qos-tree.jpg
-
-| At each node, shaping and dropping parameters may be specified, within
-  limits of the constraints outlined in this document. The following
-  sections detail the device tree attributes applicable for this
-  implementation.
-
-The actual qos tree configuration can be found at
-arch/arm/boot/dts/keystone-qostree.dtsi.
-
-The device tree has attributes for configuring the QoS shaper. In the
-sections below we explain the various qos specific attributes which can
-be used to setup and configure a QoS shaper.
-
-In the device tree we are setting up a shaper that is depicted below
-
-| 
-
-.. Image:: /images/Qos-new-shaper.jpg
-
-| 
-| When egress shaper is enabled, all packets will be sent to the QoS
-  firmware for shaping via a set of the queues starting from the Q0S
-  base queue which is 8000 by default. DSCP value in the IP header(outer
-  IP incase of IPSec tunnels) or VLAN pbits (if VLAN interface) are used
-  to determine the QoS queue to which the packet is sent. E.g., if the
-  base queue is 8000, if the DSCP value is 46, the packet will be sent
-  to queue number 8046. i.e., base queue number + DSCP value Incase of
-  VLAN interfaces, if the pbit is 7, the packet will be sent to queue
-  number 8071. i.e., base queue number + skip 64 queues used for DSCP +
-  pbit value.
-
-| 
-
-.. Image:: /images/Shaper-config-details.jpg
-
-.. rubric:: QoS Node Attributes
-   :name: qos-node-attributes
-
-The following attributes are recognized within QoS configuration nodes:
-
--  **"strict-priority" and "weighted-round-robin"**
-
-e.g. strict-priority;
-
-This attribute specifies the type of scheduling performed at a node. It
-is an error to specify both of these attributes in a particular node.
-The absence of both of these attributes defaults the node type to
-unordered(first come first serve).
-
-| 
-
--  **"weight"**
-
-e.g. weight = <80>;
-
-This attribute specifies the weight attached to the child node of a
-weighted-round-robin node. It is an error to specify this attribute on a
-node whose parent is not a weighted-round-robin node.
-
-| 
-
--  **"priority"**
-
-e.g. priority = <1>;
-
-This attribute specifies the priority attached to the child node of a
-strict-priority node. It is an error to specify this attribute on a node
-whose parent is not a strict-priority node. It is also an error for
-child nodes of a strict-priority node to have the same priority
-specified.
-
-| 
-
--  **"byte-units" or "packet-units"**
-
-e.g. byte-units;
-
-The presence of this attribute indicates that the scheduler accounts for
-traffic in byte or packet units. If this attribute is not specified for
-a given node, the accounting mode is inherited from its parent node. If
-this attribute is not specified for the root node, the accounting mode
-defaults to byte units.
-
-| 
-
--  **"output-rate"**
-
-e.g. output-rate = <31250000 25000>;
-
-The first element of this attribute specifies the output shaped rate in
-bytes/second or packets/second (depending on the accounting mode for the
-node). If this attribute is absent, it defaults to infinity (i.e., no
-shaping). The second element of this attribute specifies the maximum
-accumulated credits in bytes or packets (depending on the accounting
-mode for the node). If this attribute is absent, it defaults to infinity
-(i.e., accumulate as many credits as possible).
-
-| 
-
--  **"overhead-bytes"**
-
-e.g. overhead-bytes = <24>;
-
-This attribute specifies a per-packet overhead (in bytes) applied in the
-byte accounting mode. This can be used to account for framing overhead
-on the wire. This attribute is inherited from parent nodes if absent. If
-not defined for the root node, a default value of 24 will be used. This
-attribute is passed through by inheritence (but ignored) on packet
-accounted nodes.
-
-| 
-
--  **"output-queue"**
-
-e.g. output-queue = <645>;
-
-This specifies the QMSS queue on which output packets are pushed. This
-attribute must be defined only for the root node in the qos tree. Child
-nodes in the tree will ignore this attribute if specified.
-
-| 
-
--  **"input-queues"**
-
-e.g. input-queues = <8010 8065>;
-
-This specifies a set of ingress queues that feed into a QoS node. This
-attribute must be defined only for leaf nodes in the QoS tree.
-Specifying input queues on non-leaf nodes is treated as an error. The
-absence of input queues on a leaf node is also treated as an error.
-
-| 
-
--  **"stats-class"**
-
-e.g. stats-class = "linux-best-effort";
-
-The stats-class attribute ties one or more input stage nodes to a set of
-traffic statistics (forwarded/discarded bytes, etc.). The system has a
-limited set of statistics blocks (up to 48), and an attempt to exceed
-this count is an error. This attribute is legal only for leaf nodes, and
-a stats-class attribute on an intermediate node will be treated as an
-error.
-
-| 
-
--  **"drop-policy"**
-
-e.g. drop-policy = "no-drop"
-
-The drop-policy attribute specifies a drop policy to apply to a QoS node
-(tail drop, random early drop, no drop, etc.) when the traffic pattern
-exceeds specifies parameters. The drop-policy parameters are configured
-separately within device tree (see "Traffic Police Policy Attributes
-section below). This attribute defaults to "no drop" for applicable
-input stage nodes. If a node in the QoS tree specifies a drop-policy, it
-is an error if any of its descendent nodes (children, children of
-children, ...) are of weighted-round-robin or strict-priority types.
-
-.. rubric:: Traffic Police Policy Attributes
-   :name: traffic-police-policy-attributes
-
-The following attributes are recognized within traffic drop policy
-nodes:
-
-| 
-
--  **"byte-units" or "packet-units"**
-
-e.g. byte-units;
-
-The presence of this attribute indicates that the dropr accounts for
-traffic in byte or packet units. If this attribute is not specified, it
-defaults to byte units. Policies that use random early drop must be of
-byte unit type.
-
-| 
-
--  **"limit"**
-
-e.g. limit = <10000>;
-
-Instantaneous queue depth limit (in bytes or packets) at which tail drop
-takes effect. This may be specified in combination with random early
-drop, which operates on average queue depth (instead of instantaneous).
-The absence of this attribute, or a zero value for this attribute
-disables tail drop behavior.
-
-| 
-
--  **"random-early-drop"**
-
-e.g. random-early-drop = <32768 65536 2 2000>;
-
-The random-early-drop attribute specifies the following four parameters
-in order:
-
-low threshold: No packets are dropped when the average queue depth is
-below this threshold (in bytes). This parameter must be specified.
-
-high threshold: All packets are dropped when the average queue depth
-above this threshold (in bytes). This parameter is optional, and
-defaults to twice the low threshold.
-
-max drop probability: the maximum drop probability
-
-half-life: Specified in milli seconds. This is used to calculate the
-average queue depth. This parameter is optional and defaults to 2000.
-
-.. rubric:: Sysfs support
-   :name: sysfs-support
-
-The keystone hardware queue driver has sysfs support for statistics,
-drop policies and the tree configuration.
-
-| 
-
-::
-
-    root@k2hk-evm:~# cd /sys/devices/platform/soc/soc:qmss@2a40000/qos-inputs-0
-    root@k2hk-evm:/sys/devices/platform/soc/soc:qmss@2a40000/qos-inputs-0# ls
-    drop-policies  qos-tree       statistics
-    root@keystone-evm:/sys/devices/platform/soc/soc:qmss@2a40000/qos-inputs-0#
-
-The above shows the location in the kernel where sysfs entries for the
-keystone hardware queue can be found. There are sysfs entries for the
-qos trees (qos-inuputs-0, qos-tree-inputs-1). Within the qos directory
-there are separate directories for statistics, drop-policies and the
-qos-tree itself.  Each node in the tree is a separate directory entry,
-starting with the root (tip) entry. 
-
-| 
-| Statistics are displayed for each statistics class in the device tree.
-  Four statistics are represented for each stats class.
-
--  bytes forwarded
--  bytes discarded
--  packets forwarded
--  packets discarded
-
-| 
-| An example is depicted below
-
-::
-
-    cat /sys/devices/platform/soc/soc:qmss@2a40000/qos-inputs-0/statistics/linux-be/packets_forwarded
-
-Drop policy configuration is also displayed for each drop policy. In the
-case of a drop policy, the parameters can also be changed. This is
-depicted below. Please note the the parameters that can be modified for
-tail drop are a subset of the parameters that can be modified for random
-early drop.
-
-| 
-
-| 
-| The qos tree is reached via the **qos\_tree** directory and its
-  sub-directories.  Each sub-directory entry may contain:
-
--  directory entries to reach the subtrees feeding this node
--  the input queues to this node (valid for leaf nodes only)
--  the output queue from this node
--  the output rate for the node. The current value can be shown by:  
-   "cat output\_rate".  The value can be modified by:  **echo  "<val>" > output\_rate**
--  the overhead bytes parameter for the node.  The current value can be
-   shown by: "cat overhead\_bytes". The value can be modified by: 
-   **echo "<val>" > overhead\_bytes**
--  burst size .  The current value can be shown by: "cat burst\_size".
-   The value can be modified by: **echo "<val>" > burst\_size**
--  drop\_policy . This is the name of the drop policy to be used.
--  stats\_class associated with node.  This is the name of stats class
-   to be used
--  the priority of the node (for strict priority nodes only).  The
-   current value can be shown by: "cat priority". The value can be
-   modified by:  **echo "<val>"  > priority**
--  weight : for wrr nodes.  The current value can be shown by: "cat
-   weight". The value can be modified by: **echo "<val>" > weight**
-
-.. rubric:: Debug Filesystem support
-   :name: debug-filesystem-support
-
-Debug Filesystem(debugfs) support is also being provided for QoS
-support. To make use of debugfs support a user might have to mount a
-debugfs filesystem. This can be done by issuing the command (if /debug
-does not exist on your filesystem, you may need to create the directory
-first).
-
-::
-
-    mount -t debugfs debugfs /debug
-
-| 
-| The appropriate path and contents are shown below
-
-::
-
-    root@keystone-evm:/debug/qos-3# ls
-    config_profiles  out_profiles     queue_configs    sched_ports
-
-With the debugfs support we will be able to see the actual configuration
-of
-
--  QoS scheduler ports
--  Drop scheduler queue configs
--  Drop scheduler output profiles
--  Drop scheduler config profiles
-
-| 
-| The QoS scheduler port configuration can be seen by issuing the
-  command **cat /debug/qos-3/sched\_ports**. This is shown below
-
-::
-
-    root@k2hk-evm:/debug/qos-3# cat sched_ports
-    port 14
-    unit flags 15 group # 1 out q 8171 overhead bytes 24 throttle thresh 2501 cir credit 5120000 cir max 51200000
-    total q's 4 sp q's 0 wrr q's 4
-    queue 0 cong thresh 0 wrr credit 384000
-    queue 1 cong thresh 0 wrr credit 384000
-    queue 2 cong thresh 0 wrr credit 384000
-    queue 3 cong thresh 0 wrr credit 384000
-
-    port 15
-    unit flags 15 group # 1 out q 8170 overhead bytes 24 throttle thresh 2501 cir credit 5120000 cir max 51200000
-    total q's 4 sp q's 0 wrr q's 4
-    queue 0 cong thresh 0 wrr credit 384000
-    queue 1 cong thresh 0 wrr credit 384000
-    queue 2 cong thresh 0 wrr credit 384000
-    queue 3 cong thresh 0 wrr credit 384000
-
-    port 16
-    unit flags 15 group # 1 out q 8169 overhead bytes 24 throttle thresh 2501 cir credit 5120000 cir max 51200000
-    total q's 4 sp q's 0 wrr q's 4
-    queue 0 cong thresh 0 wrr credit 384000
-    queue 1 cong thresh 0 wrr credit 384000
-    queue 2 cong thresh 0 wrr credit 384000
-    queue 3 cong thresh 0 wrr credit 384000
-
-    port 17
-    unit flags 15 group # 1 out q 8168 overhead bytes 24 throttle thresh 2501 cir credit 5120000 cir max 51200000
-    total q's 4 sp q's 0 wrr q's 4
-    queue 0 cong thresh 0 wrr credit 384000
-    queue 1 cong thresh 0 wrr credit 384000
-    queue 2 cong thresh 0 wrr credit 384000
-    queue 3 cong thresh 0 wrr credit 384000
-
-    port 18
-    unit flags 15 group # 1 out q 8173 overhead bytes 24 throttle thresh 3126 cir credit 5120000 cir max 51200000
-    total q's 4 sp q's 0 wrr q's 4
-    queue 0 cong thresh 0 wrr credit 384000
-    queue 1 cong thresh 0 wrr credit 768000
-    queue 2 cong thresh 0 wrr credit 1152000
-    queue 3 cong thresh 0 wrr credit 1536000
-
-    port 19
-    unit flags 7 group # 1 out q 645 overhead bytes 24 throttle thresh 0 cir credit 6400000 cir max 51200000
-    total q's 3 sp q's 3 wrr q's 0
-    queue 0 cong thresh 0 wrr credit 0
-    queue 1 cong thresh 0 wrr credit 0
-    queue 2 cong thresh 0 wrr credit 0
-
-    root@k2hk-evm:/debug/qos-3#
-
-| 
-| cat command can be used in a similar way for displaying the Drop
-  scheduler queue configs, output profiles and config profiles
-
-| 
-
-.. rubric:: Configuring QoS on an 1-GigE interface
-   :name: configuring-qos-on-an-1-gige-interface
-
-To configure QoS on an interface, several definitions must be added to
-the device tree:
-
--  Drop policies and a QoS tree must be defined. The outer-most QoS
-   block must specify an output queue number; this may be the 1-GigE
-   NETCP's PA PDSP 5 (645) or CPSW (648), one of the 10-GigE CPSW's
-   queues (8752, 8753), or other queue as appropriate.
-
-::
-
-    Example (keystone-qostree.dtsi):
-
-::
-
-    droppolicies: default-drop-policies {
-            no-drop {
-                    default;
-                    packet-units;
-                    limit = <0>;
-            };
-            ...
-            all-drop {
-                    byte-units;
-                    limit = <0>;
-            };
-    };
-
-::
-
-    Example (keystone-qostree.dtsi):
-
-::
-
-    qostree0: qos-tree-0 {
-            strict-priority;                /* or weighted-round-robin */
-            byte-units;                     /* packet-units or byte-units */
-            output-rate = <31250000 25000>;
-            overhead-bytes = <24>;          /* valid only if units are bytes */
-            output-queue = <645>;           /* allowed only on root node */
-
-::
-
-            high-priority {
-                    ...
-            }
-            ...
-            best-effort {
-                    ...
-            };
-    };
-
-::
-
-    qostree1: qos-tree-1 {
-            strict-priority;                /* or weighted-round-robin */
-            byte-units;                     /* packet-units or byte-units */
-            output-rate = <31250000 25000>;
-            overhead-bytes = <24>;          /* valid only if units are bytes */
-            output-queue = <648>;           /* allowed only on root node */
-
-::
-
-            high-priority {
-                    ...
-            }
-            ...
-            best-effort {
-                    ...
-            };
-    };
-
--  QoS inputs must be defined to the hwqueue subsystem. The QoS inputs
-   block defines which group of hwqueues will be used, and links to the
-   set of drop policies and QoS tree to be used.
-
-::
-
-    Example (k2hk-netcp.dtsi):
-
-::
-
-    qmss: qmss@2a40000 {
-            ...
-            queue-pools {
-                    ...
-                    qos {
-                            qosinputs0: qos-inputs-0 {
-                                    qrange                  = <8000 192>;
-                                    pdsp-id                 = <3>;
-                                    ...
-                                    drop-policies           = <&droppolicies>;
-                                    qos-tree                = <&qostree0>;
-                                    reserved;
-                            };
-                            qosinputs1: qos-inputs-1 {
-                                    values                  = <6400 192>;
-                                    pdsp-id                 = <7>;
-                                    ...
-                                    drop-policies           = <&droppolicies>;
-                                    qos-tree                = <&qostree2>;
-                                    reserved;
-                            };
-                    };
-            }
-    };
-
--  A PDSP must be defined, and loaded with the QoS firmware.
-
-::
-
-    Example (k2hk-netcp.dtsi):
-
-::
-
-    qmss: qmss@2a40000 {
-           ...
-           pdsps {
-                   ...
-                   pdsp3@0x2a13000 {
-                           firmware = "qos";
-                           ...
-                           id = <3>;
-                   };
-                   pdsp7@0x2a17000 {
-                           firmware = "qos";
-                           ...
-                           id = <7>;
-                   };
-           };
-    }; /* qmss */
-
-| 
-
--  A NETCP QoS block must be defined. For each interface, an
-   "interface-x" block is defined, which contains definitions for each
-   of the QoS input subqueues to be associated with that interface.
-
-::
-
-    Example (k2hk-netcp.dtsi):
-
-::
-
-    netcp: netcp@2090000 {
-            ...
-            qos@0 {
-                    label = "netcp-qos";
-                    ...
-                    interfaces {
-                            qos0: interface-0 {
-                                    tx-queues = <645 8072 8073 8074
-                                                 8075 8076 8077>;
-                            };
-                            qos1: interface-1 {
-                                    tx-queues = <645 6472 6473 6474
-                                                 6475 6476 6477>;
-                            };
-            };
-    };
-
--  By default, Linux network traffic will be queued to the interface's
-   first subqueue. To classify and route packets from Linux to specific
-   QoS queues, the Linux traffic control utility "tc" must be used.
-   First a class-full root queuing discipline must be established for
-   the interface, and then filters may be used to classify packets.
-   These filters can use the "skbedit queue\_mapping" action to set the
-   subqueue number for the packet. Here is an example:
-
-::
-
-    # Clear any existing configuration
-    tc qdisc del dev eth0 root
-
-::
-
-    # Add DSMARK as the root qdisc
-    tc qdisc add dev eth0 root handle 1 dsmark indices 8 default_index 0
-
-::
-
-    # Create filters to classify packets and route to queues
-    tc filter add dev eth0 parent 1:0 protocol ip prio 1 \
-            u32 match ip dport 5002 0xffff \
-            action skbedit queue_mapping 1
-    tc filter add dev eth0 parent 1:0 protocol ip prio 1 \
-            u32 match ip dport 5003 0xffff \
-            action skbedit queue_mapping 2
-    tc filter add dev eth0 parent 1:0 protocol ip prio 1 \
-            u32 match ip dport 5004 0xffff \
-            action skbedit queue_mapping 3
-    tc filter add dev eth0 parent 1:0 protocol ip prio 1 \
-            u32 match ip dport 5005 0xffff \
-            action skbedit queue_mapping 4
-    tc filter add dev eth0 parent 1:0 protocol ip prio 1 \
-            u32 match ip dport 5006 0xffff \
-            action skbedit queue_mapping 5
-
-Please refer to the Linux Advanced Routing & Traffic Control how-tos and
-related manpages available on the Internet for more information on "tc".
-
-.. rubric:: Disabling QoS on an 1-GigE interface
-   :name: disabling-qos-on-an-1-gige-interface
-
-The released "keystone-qostree.dtsi" file contains definitions for two
-QoS trees which are associated with the first two ports on the 1-GigE
-interface in the "k2hk-netcp.dtsi" file. These default trees are
-configured so that traffic queued to interface subqueue 0 will bypass
-the QoS tree. Only traffic specifically directed to subqueues 1-6 will
-be processed through the hardware QoS subsystem. This may be sufficient
-for your needs. However, you may prefer to remove the QoS configuration
-entirely from the device tree.
-
-To disable QoS on the two 1-GigE interfaces
-
--  delete all the qos related blocks or entries shown in the examples in
-   section `Configuring QoS on an 1-GigE
-   interface <#configuring-qos-on-an-1-gige-interface>`__, namely
-
--  droppolicies: default-drop-policies {...}
--  qostree0: qos-tree-0 {...}
--  qostree1: qos-tree-1 {...}
--  qos-inputs-0 {...}
--  qos-inputs-1 {...}
--  pdsp3@0x2a13000 {...}
--  pdsp7@0x2a17000 {...}
--  qos@0 {...}
-
-.. rubric:: Configuring QoS on a 10-GigE interface
-   :name: configuring-qos-on-a-10-gige-interface
-
-The following snippets together shows how to remove the QoS tree
-associated with the second port of the 1-GigE interface and associate it
-with the first port on the 10-GigE interface. In these snippets, we only
-depict and highlight the modifications made to the above 1-GigE
-examples. Contents not shown in the definitions should just be copy and
-paste from the file k2hk-netcp.dtsi.
-
-Note: this is only for demonstration purpose and is not part of the
-release.
-
--  Remove "netcp-qos = <&qos1>" from 1-GigE's netcp@2090000 >
-   netcp-interfaces > interface-1 {...}.
-
--  Remove qos1: interface-1 { ... } from 1-GigE's netcp qos block.
-
-::
-
-    netcp: netcp@2090000 {
-            ...
-            qos@0 {
-                    label = "netcp-qos";
-                    ...
-                    interfaces {
-                            qos0: interface-0 {
-                                    tx-queues = <645 8072 8073 8074
-                                                 8075 8076 8077>;
-                            };
-                            /* qos1:interface-1 removed */
-            };
-    };
-
--  Modify the output-queue number of qostree1 to that of the transmit
-   queue of the 10-GigE's first port.
-
-::
-
-    qostree1: qos-tree-1 {
-            output-queue = <8752>;           /* allowed only on root node */
-    };
-
--  Define a qos block in 10-GigE's netcp@2f00000 > netcp-devices {...}.
-
-::
-
-    netcpx: netcp@2f00000 {
-             ...
-             netcp-devices {
-                    ...
-                   qos@0 {
-                           label = "netcpx-qos";
-                           compatible = "ti,netcp-qos";
-                           tx-channel = "xnettx";
-
-                           interfaces {
-                                   qos1: interface-1 {
-                                           tx-queues = <645 6472 6473 6474
-                                                           6475 6476 6477>;
-                                   };
-                           };
-                   };
-            };
-    };
-
--  Finally, add a qos interface to 10-GigE's interface-1:
-
-::
-
-    netcpx: netcp@2f00000 {
-             ...
-             netcp-interfaces {
-                    ...
-                   interface-1 {
-                            ...
-                            netcp-xqos = <&qos1>;
-                   };
-            };
-    };
-
-| 
-
 .. rubric:: Using Accumulated queues for Network interfaces
    :name: using-accumulated-queues-for-network-interfaces
 
@@ -3730,29 +2725,6 @@ keystone-<SoC>-netcp.dtsi
            };
     };
 
-If PA is used, make sure rx-route which specifiy start queue is also
-replaced as shown below.
-
-::
-
-    netcp: netcp@2000000 { 
-
-    // other bindings
-           netcp-devices {
-
-                   // other bindings
-                   pa@0 {
-
-                         // other bindings
-
-                         rx-route                = <8704 22>;        <=============================== change this to <480 22>
-            
-                         // other bindings
-                  
-                   };
-           };
-    };
-
 .. rubric:: K2HK EVM Gigabit MDC/MDIO Signal Integrity Issue
    :name: k2hk-evm-gigabit-mdcmdio-signal-integrity-issue
 
@@ -3811,101 +2783,3 @@ As of Oct 10, 2016, it is reported that Mistral Solutions Inc. (vendor
 of the RTM-BOC) has produced a newer version (v2.16) of the RTM-BOC that
 has fixed the signal integrity issue. However the hardware fix has not
 yet been verified by the software development team.
-
-| 
-
-.. rubric:: 10G SerDes Auto-Configuration
-   :name: g-serdes-auto-configuration
-
-The 10G ethernet switch found in K2HK and K2E includes a MCU which
-allows running a firmware to perform SerDes configuration without the
-intervention of the switch driver.
-
-.. rubric:: Enabling Auto-Configuration
-   :name: enabling-auto-configuration
-
-To enable 10G SerDes auto-configuration, add the following in
-keystone-k2hk-evm.dts or keystone-k2e-evm.dts.
-
-::
-
-    +&xgbe_subsys {
-    +       status          = "okay";
-    +};
-    +
-    +&xgbe_pcsr {
-    +       status          = "okay";
-    +};
-    +
-    +&xgbe_serdes {
-    +       status          = "okay";
-    +
-    +       clocks          = <&clkxge>;
-    +       clock-names     = "xge_clk";
-    +
-    +       mcu-firmware {
-    +               status = "okay";
-    +
-    +               lane@0 {
-    +                       status = "okay";
-    +               };
-    +
-    +               lane@1 {
-    +                       status = "okay";
-    +               };
-    +       };
-    +};
-    +
-    +&netcpx {
-    +       status          = "okay";
-    +};
-
-.. rubric:: Usage Note
-   :name: usage-note
-
--  After the DUT bootup is completed, notice the all the enabled 10G
-   interfaces are up and running. Then verify the 10G interfaces as
-   usual, such as using the ping command.
--  Due to constraints there are several usage notes concerning the
-   firmware:
-
-#. When autonegotiation occurs there is a reset asserted on the lane
-   that affects the MAC layer and switch.
-
-   #. During a simultaneous boot of two devices they will sync and
-      autonegotiate before the aforementioned layers are configured.
-      There is no issue in this scenario.
-   #. If a single device is reset this will cause autonegotiation to
-      occur again. This will reset the lane of the device that stayed
-      persistently on. When this happens, re-program the MAC\_CONTROL
-      register for that lane, otherwise, an interface toggle using
-      ‘ifconfig’ is sufficient to reconfigure the interface back to a
-      working state.
-
-#. When switching between a non-FW configuration and a FW configuration
-   a POR is required.
-#. Due to errata KeyStoneII.BTS\_errata\_advisory.29:10GbE PCS Causes
-   Data Corruption, occasionally on link negotiation there may be high
-   levels of packet loss.
-
-   #. The symptoms of this are high packet loss, CRC and alignment
-      errors, and 0xff block errors in a small time period.
-   #. When this case is detected, assert SerDes Signal Detect low to
-      reforce an autonegotiation, then follow the above procedure for an
-      interface toggle.
-
-      #. Signal detect is located at register LANE\_004, BITS[2:1].
-         BIT[2] is override enable and BIT[1] is the override value.
-         Once override enable is set it will force the override value as
-         the value of signal detect. To force signal detect low, the
-         proper write would be BITS[2:1] = 0x2. Once this has been set
-         the firmware will respond to the lane being down and re-do
-         auto-negotiation, automatically clearing the signal detect low
-         state.
-
-#. If there is a total loss of signal, restarting the firmware may help.
-
-   #. The firmware can be restarted by writing to CPU\_CTRL register,
-      POR\_EN bit 29. Set this bit high, then set it low with at least
-      10ms in between.
-
