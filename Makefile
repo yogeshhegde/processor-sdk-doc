@@ -13,7 +13,7 @@ BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
 
 $(info DEVFAMILY is $(DEVFAMILY))
 TAGFILE         = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
-FAMILYSETUPFILE = source/common/family_setup.py
+FAMILYSETUPFILE = python-scripts/family_setup.py
 $(info TAGFILE is $(TAGFILE))
 
 # User-friendly check for sphinx-build
@@ -64,7 +64,7 @@ clean:
 	rm -f source/${OS}/conf.py
 
 config:
-	cat source/common/conf.py source/${OS}/conf-${OS}.py ${TAGFILE} ${FAMILYSETUPFILE} > source/${OS}/conf.py
+	cat python-scripts/conf.py source/${OS}/conf-${OS}.py ${TAGFILE} ${FAMILYSETUPFILE} > source/${OS}/conf.py
 	sed -i 's/SDKVERSION/${VERSION}/g' source/${OS}/conf.py
 	cp source/patch/layout.html source/_themes/sphinx_rtd_theme_ti/layout.html
 
