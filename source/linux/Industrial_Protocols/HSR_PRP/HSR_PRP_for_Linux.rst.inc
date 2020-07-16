@@ -33,7 +33,7 @@ Features supported
 -  **Support for Node Table**
 
    -  Total 128 entries on AMICx, AM335x, AM437x
-   -  Total 256 entries on AM57xx & K2G
+   -  Total 256 entries on AM57xx
    -  Hash Table for faster lookup
    -  Node Table statistics
 
@@ -101,7 +101,7 @@ HSR/PRP Driver source code and Kconfig option
 
 The driver source code is located under net/hsr-prp folder of the Linux
 source tree. To build kernel with this driver, set Kconfig option
-CONFIG\_HSR\_PRP=y in the dotconfig or enable it from the menu.
+CONFIG\_HSR=y in the dotconfig or enable it from the menu.
 
 Linux HSR/PRP Driver
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -122,7 +122,7 @@ package to support PRP defined in IEC 62439-3 clause 4. With this
 change, user will be able to create a Doubly Attached Node with PRP
 (**DAN-P**) using standard Ethernet interfaces. As in the case of HSR,
 using ip link command, user will be able to setup a prp interface using
-two Ethernet interfaces such as the one provided by PRU EMAC driver.
+two Ethernet interfaces such as the one provided by PRU Dual EMAC driver.
 
 Linux HSR/PRP driver provides a standard Ethernet interface to
 application layer and hide the details of the redundancy protocol under
@@ -142,7 +142,7 @@ PRU Ethernet driver to disable corresponding functions in its layer. The
 firmware is a re-use from the TI RTOS implementation that is discussed
 above. Re-use means the data structures and API should be re-used across
 both TI RTOS and Linux driver implementations. A common PRU Ethernet
-driver is developed to support existing EMAC device as well HSR/PRP
+driver is developed to support existing Dual EMAC device as well HSR/PRP
 
 .. Image:: /images/Hsr-prp-offload.png
 
@@ -155,11 +155,9 @@ PRU-ICSS Subsystem Driver provide a set of functions to client driver
 such as PRU Ethernet (described in next section) to load and run firmware
 on a specific core, such as PRU on a PRU-ICSS. On a SoC, there can be 1 or
 2 instance of the PRU-ICSS and client driver might want to know which
-instance it is referring to. For example, PRU Ethernet driver calls
-pruss_get() to get the instance ID. Also PRU-ICSS and PRU Ethernet
-driver support sysfs and debugfs files specific to an instance and user
-might have to know what instance the file refers to. Following mapping is
-used for the ID based on the SoC and the PRU-ICSS instance.
+instance it is referring to. PRU-ICSS sysfs files are specific to an instance
+and user might have to know what instance the file refers to. Following
+mapping is used for the ID based on the SoC and the PRU-ICSS instance.
 
 +---------------------------+------+-----------+--------------------+
 | SoC                       | ID   | if number | ICSS TRM reference |
@@ -174,14 +172,10 @@ used for the ID based on the SoC and the PRU-ICSS instance.
 +---------------------------+------+-----------+--------------------+
 | AM572/4                   |  2   | eth2/3    | PRU-ICSS2          |
 +---------------------------+------+-----------+--------------------+
-| K2G                       |  0   | eth1/2    | PRU-ICSS0          |
-+---------------------------+------+-----------+--------------------+
-| K2G                       |  1   | eth3/4    | PRU-ICSS1          |
-+---------------------------+------+-----------+--------------------+
 
-In the following section, the PRU-ICSS ID is used in the debugfs or
-sysfs file path and the same can be obtained from the table above to
-know which PRU-ICSS the file refers to.
+In the following section, the PRU-ICSS ID is used in the sysfs file path
+and the same can be obtained from the table above to know which PRU-ICSS
+the file refers to.
 
 You can also check which PRU-ICSS an ethernet interface belongs to via command
 line, e.g. eth2 on different platforms:
@@ -198,21 +192,22 @@ AM572x:
  root@am57xx-evm:~# ls -l /sys/class/net/eth2 | grep device
  lrwxrwxrwx    1 root     root             0 Jun 10 11:29 device -> ../../../pruss2_eth
 
-PRU Ethernet Driver (EMAC/HSR/PRP)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PRU Ethernet Driver (Dual EMAC/HSR/PRP)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting from Processor SDK 04.00.00 release, the PRU Ethernet driver
-supports HSR/PRP firmware offload. More specifically, based on a module
-parameter configured at boot time, the PRU Ethernet driver loads either
-a PRU EMAC firmware, PRU HSR firmware or PRU PRP firmware. The first
-case (EMAC) is the non-offload case, while the latter 2 cases are the
-firmware offload cases. When a HSR/PRP firmware is loaded, the PRU
-Ethernet driver will do proper firmware configurations and notify the
-Linux HSR/PRP driver stack that offload has been enabled. From then on,
-LRE functionality is carried out in firmware.
+As of Processor SDK 7.x, the PRU Ethernet driver supports HSR/PRP/SWITCH
+firmware offload. The PRU Ethernet driver initially probe in Dual EMAC mode and
+loads Dual EMAC firmware. HSR/PRP/SWITCH are the firmware offload cases.  Please
+refer to RSTP section on PRUETH SWITCH driver.  When a HSR/PRP firmware is
+loaded, the PRU Ethernet driver will do proper firmware configurations and
+notify the Linux HSR/PRP driver (under net/hsr directory. Also referred to
+as upper driver) stack that offload has been enabled through netdev feature
+flags. From then on, LRE functionality at the rx side is disabled in Linux
+HSR/PRP upper driver and carried out in firmware.  Tx LRE function continues
+to be in Linux HSR/PRP driver. i.e Tx frame duplication and Supervision frame
+generation is still done in the upper driver.
 
-Notice that, from the user point of view, other than providing a module
-parameter to specify which firmware to load, all of the above mentioned
+Notice that, from the user point of view, all of the above mentioned
 driver behavior is transparent to the user.
 
 .. note:: For all discussion and examples shown, AM57xx device is used as
@@ -247,7 +242,7 @@ to decide which queue to pick to enqueue frames towards Host or other
 PRU. Priority queues are assigned based on the PCP value in VLAN tag
 of an Ethernet frame. Untagged frame is treated like PCP 0. Here is
 the mapping value configured by driver in 4 bytes starting at offset
-QUEUE_2_PCP_MAP_OFFSET (defined in hsr_prp_firmware.h). Same mapping is
+QUEUE_2_PCP_MAP_OFFSET (defined in icss_lre_firmware.h). Same mapping is
 used for Ingress and Egress traffic.
 
 The convention is that higher queue value corresponds to lower priority
@@ -321,34 +316,45 @@ In Dual EMAC case, mapping is hard coded in firmware.
 Firmware sends the frames first from Q1, and then from the next higher
 queue (Q2) and so forth.
 
-For all ethernet types, at the Ingress, two separate irq handlers are
-assigned to each port to process the packets. Driver handler first process
-packets from the high priority queue followed by packets from the lower
-priority queue.
+For Dual EMAC and SWITCH ethernet types, at the Ingress, two separate irq
+handlers are assigned to each port to process the packets. Driver uses
+NAPI and NAPI polling is kicked once the interrupt event is received by
+for each port. Packets are drained by the NAPI Poll function.
+
+For HSR/PRP Ethernet type, an interrupt is attached to a pair of High
+Priority Queues and another interrupt to the pair of low priority queues.
+each queue is associated with a port. Two NAPI instances used, one for
+high priority queues and another for low priority queues to independently
+scan and drain the queues from the two ports. Interrupt handler kicks
+NAPI. NAPI poll handler drains packets from the High priority or Low
+priority queues based on timestamp maintained in memory. i.e packets are
+ordered based on the timestamp.
+
+.. _Changing_protocol_at_PRU_Ethernet:
 
 Changing protocol at PRU Ethernet
 """""""""""""""""""""""""""""""""""
 
-PRU Ethernet driver supports multiple protocols based on the firmware
-loaded on ICSS PRU. In Processor SDK 04.00.00, a capability was added to
-change the protocol running on the PRU at boot time through bootargs.
-This is described at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`.
-Starting Processor SDK 04.01.00, The driver can be configured to switch
-the protocol while the board is powered up and running Linux kernel. By
-default, the PRU Ethernet driver is probed to be in the EMAC mode and
-EMAC firmware is loaded on to the PRU unless user set the
-pruss2\_ethtype to run HSR (1) or PRP (2). Two feature names are added
-to help offload HSR or PRP in the PRU Ethernet driver :- hsr-rx-offload
-and prp-rx-offload. PRU Firmware essentially offload the rx side
-processing of LRE, such as duplicate detection and drop, node table
-update, stats update etc. To reflect the same, the features are named
-with a rx-offload suffx to the protocol name. Ethtool command has an
-option -K to set or clear the feature in a network device. So this flag
-can be set or reset rx offload feature in the PRU Ethernet device. As
-the device may be hooked up to a upper HSR/PRP network device, user is
-expected to delete the hsr or prp interface before changing the flag at
-the PRU Ethernet device. General procedure to change protocol at PRU
-Ethernet device is as follows:-
+PRU Ethernet driver supports multiple protocols/Ethernet types based
+on the firmware loaded on ICSS PRU. By default, the PRU Ethernet driver
+is probed to be in the Dual EMAC mode and EMAC firmware is loaded on to the
+PRU. From this mode, user will be able to change to one of the Ethernet
+type without having to reboot the board:-
+
+* HSR
+* PRP
+
+Two feature flags are added to help offload HSR or PRP in the PRU
+Ethernet driver :- hsr-rx-offload and prp-rx-offload. PRU Firmware
+essentially offload the rx side processing of LRE, such as duplicate
+detection and drop, node table update, stats update etc. To reflect the
+same, the features are named with a rx-offload suffx to the protocol name.
+Ethtool command has an option -K to set or clear the feature in a network
+device. So this flag can be set or reset rx offload feature in the PRU
+Ethernet device. As the device may be hooked up to a upper HSR/PRP network
+device, user is expected to delete the hsr or prp interface before
+changing the flag at the PRU Ethernet device. General procedure to change
+protocol at PRU Ethernet device is as follows:-
 
 Below assumes that hsr or prp interface using the PRU Ethernet devices
 is currently deleted. Here are the steps at a high level:-
@@ -362,7 +368,7 @@ unassign the ip address using ifconfig. For example
     ifconfig eth3 down 0.0.0.0
 
 2. If the PRU Ethernet device is currently running HSR or PRP offload
-feature, the same has to be disabled before switching to EMAC or another
+feature, the same has to be disabled before switching to Dual EMAC or another
 protocol using ethtool -K option. For example if HSR is currently
 running, do
 
@@ -413,7 +419,7 @@ Also assumes user create hsr0 or prp0 interface using eth2 and eth3
 interfaces. Please note that for each DAN, user needs to assign unique
 MAC address and IP address from the same subnet.
 
--  To switch from EMAC to HSR
+-  To switch from Dual EMAC to HSR
 
 ::
 
@@ -441,7 +447,7 @@ MAC address and IP address from the same subnet.
     ethtool -K eth3 prp-rx-offload on
     ifconfig eth2 up
     ifconfig eth3 up
-    ip link add name prp0 type prp slave1 eth2 slave2 eth3 supervision 45
+    ip link add name prp0 type hsr slave1 eth2 slave2 eth3 supervision 45 proto 1
     ifconfig prp0 192.168.2.20
 
 -  To switch from PRP to HSR
@@ -460,7 +466,7 @@ MAC address and IP address from the same subnet.
     ip link add name hsr0 type hsr slave1 eth2 slave2 eth3 supervision 45 version 1
     ifconfig hsr0 192.168.2.20
 
--  To switch from HSR to EMAC
+-  To switch from HSR to Dual EMAC
 
 ::
 
@@ -474,7 +480,7 @@ MAC address and IP address from the same subnet.
     ifconfig eth2 192.168.2.20
     ifconfig eth3 192.168.3.20
 
--  To switch from PRP to EMAC
+-  To switch from PRP to Dual EMAC
 
 ::
 
@@ -488,45 +494,6 @@ MAC address and IP address from the same subnet.
     ifconfig eth2 192.168.2.20
     ifconfig eth3 192.168.3.20
 
-.. _PLSDK_PRP_EMAC_Mode-label:
-
-PRP EMAC mode
-""""""""""""""
-
-PRP EMAC mode is a special mode of PRP Ethernet type where the driver
-configures the PRP firmware to work like EMAC firmware. This is because
-currently PTP support is available only in PRU PRP firmware. So the
-current implementation of SAN with PTP requires PRUETH driver to be
-configured as PRP using bootargs. User needs to configure the PRP
-Firmware in PRP EMAC mode before bringing up the Ethernet interfaces. It
-is expected to add the PTP support to EMAC firmware in a future release.
-Until then this intermediate solution is used. Here are the steps to use
-PRUETH as SAN with PTP
-
--  Boot the IDK EVM with prussX\_ethtype in bootargs set to PRP as
-   described at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
--  Once the EVM boots up and user login, first thing to verify is if
-   PRUETH is configured as PRP Ethernet type. See above section for
-   details
--  Configure PRP EMAC mode in the PRP firmware by issuing the following
-   command at the console
-
-::
-
-  echo 1 > /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/prp_emac_mode
-
-where <ID> and <if number> are described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
-
--  Now bring up Ethernet interfaces as usual and the device is ready to
-   be used as SAN. PTP support can be enabled at this time. See section
-   on
-   [`[1] <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_HSR_PRP#Linux_PTP>`__]
-   for the details.
-
-**NOTE: run time protocol switch is not supported for switch to SAN PTP
-for now and required boot time configuration and above debugfs command
-once device is boot up in PRP mode**
-
 Multicast filtering
 --------------------
 
@@ -534,56 +501,29 @@ Multicast filtering is an Ethernet frame filtering feature in PRU firmware based
 on the destination MAC address of the received frame. The PRU provides a
 Multicast filter table in Data RAM1 of PRU with a size of 256 entries of 1
 byte each. Firmware implements an imperfect match for filtering the frames based
-on a hash calculated using the destination MAC address of the frame and a
-configurable mask if the destination address is a multicast MAC address.
+on a hash calculated using the destination MAC address of the frame if the
+destination address is a multicast MAC address.
 
 ::
 
- Hash = (MAC_ADDR[0] AND MASK[0]) XOR
-        (MAC_ADDR[1] AND MASK[1]) XOR
-        (MAC_ADDR[2] AND MASK[2]) XOR
-        (MAC_ADDR[3] AND MASK[3]) XOR
-        (MAC_ADDR[4] AND MASK[4]) XOR
-        (MAC_ADDR[5] AND MASK[5])
+ Hash = (MAC_ADDR[0] XOR
+         MAC_ADDR[1] XOR
+         MAC_ADDR[2] XOR
+         MAC_ADDR[3] XOR
+         MAC_ADDR[4] XOR
+         MAC_ADDR[5])
 
-Where MASK is a user configurable value provided at boot time and MAC_ADDR is
-the multicast MAC address which is extracted from the destination address
-of the Ethernet frame and AND is the bitwise AND operation. In other words,
-a bitwise AND operation is performed between each byte of MAC address and
-a corresponding MASK byte and the resulting bytes are XOR-ed together to
-get the hash value. The hash is used to index into the Multicast filter
-table to check if it is set (1) or reset (0). If set, the frame is forwarded
-to ARM core (a.k.a Host). If reset, the frame is dropped at the PRU. This
-is an imperfect match since there can be multiple MAC addresses that produces
-the same hash value. So these frames will get forwarded to the ARM core.
+Where MAC_ADDR is the multicast MAC address which is extracted from the destination
+address of the Ethernet frame. A bitwise XOR operation is performed on each byte of
+MAC address to get the hash value. The hash is used to index into the Multicast
+filter table to check if it is set (1) or reset (0).  If set, the frame is forwarded
+to ARM core (a.k.a Host). If reset, the frame is dropped at the PRU. This is an
+imperfect match since there can be multiple MAC addresses that produces the same
+hash value. So these frames will get forwarded to the ARM core.
 
-ti_prueth.pruss<ID>_port<PORT>_mc_mask is the module parameter for MASK where <ID> is
-described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping` and <PORT> is
-'0' in HSR/PRP case since both ports share the same MASK (port 1 does not need 
-to be set and has no effect), and '0' or '1' in Dual
-EMAC case since both ports can be configured independently.
-
-Sample bootargs with MASK configured (HSR/PRP)
-
-::
-
- setenv pruss1_port0_mc_mask "FF:FF:FF:FF:00:00"
- setenv pruss2_port0_mc_mask "FF:FF:FF:FF:00:00"
- setenv args_mmc 'run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}  ti_prueth.pruss1_ethtype=${pruss1_ethtype} ti_prueth.pruss2_ethtype=${pruss2_ethtype} ti_prueth.pruss1_port0_mc_mask=${pruss1_port0_mc_mask} ti_prueth.pruss2_port0_mc_mask=${pruss2_port0_mc_mask}'
-
-A comparable sample bootargs with MASK configured for Dual EMAC
-
-::
-
- setenv pruss1_port0_mc_mask "FF:FF:FF:FF:00:00"
- setenv pruss1_port1_mc_mask "FF:FF:FF:FF:00:00"
- setenv pruss2_port0_mc_mask "FF:FF:FF:FF:00:00"
- setenv pruss2_port1_mc_mask "FF:FF:FF:FF:00:00"
- setenv args_mmc 'run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}  ti_prueth.pruss1_ethtype=${pruss1_ethtype} ti_prueth.pruss2_ethtype=${pruss2_ethtype} ti_prueth.pruss1_port0_mc_mask=${pruss1_port0_mc_mask} ti_prueth.pruss1_port1_mc_mask=${pruss1_port1_mc_mask} ti_prueth.pruss2_port0_mc_mask=${pruss2_port0_mc_mask} ti_prueth.pruss2_port1_mc_mask=${pruss2_port1_mc_mask}'
-
-Typically, an application joins the multicast group either using a raw
-socket of type SOCK_DGRAM and use setsockopt() API to Join or leave the
-multicast group. An interesting article on this is available at
+Typically, an application joins the multicast group either using a raw socket of type
+SOCK_DGRAM and use setsockopt() API to Join or leave the multicast group. An
+interesting article on this is available at
 
 http://www.tenouk.com/Module41c.html
 
@@ -609,7 +549,7 @@ ifconfig command.
  To display the Multicast address list of an interface, say eth2, user types
  >ip maddr show dev eth2
 
-sample display
+Sample display
 
 ::
 
@@ -629,63 +569,11 @@ sample display
          inet6 ff02::1
          inet6 ff01::1
 
-PRU Ethernet driver also provides a debugfs file mc_filter to display MC filter
-table in the memory
+Dual EMAC
+^^^^^^^^^
 
-::
-
- /sys/kernel/debug/prueth-prp-<ID>/mc_filter
-
-
-or
-
-::
-
- /sys/kernel/debug/prueth-hsr-<ID>/mc_filter
-
-
-or (for Dual EMAC)
-
-::
-
- /sys/kernel/debug/prueth-eth<if number>/mc_filter
-
-
-where ID/'if number' is described in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
-
-Sample display
-
-::
-
- root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp-2/mc_filter
- MC Filter : enabled
- MC Mask : ff:ff:ff:ff:0:0
- MC Filter table below 1 - Allowed, 0 - Dropped
-
-   0: 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  10: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  20: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  30: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  40: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  50: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
-  60: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  70: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  80: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  90: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  a0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  b0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  c0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  d0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-  e0: 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0
-  f0: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-
-Dual EMAC 
-^^^^^^^^^^^^^^^^^^
-
-If using Dual EMAC, the only interface differences are the debugfs paths and the
-mask parameters, as mentioned above. Internally, the multicast filter table(s)
-are stored in each PRU's Data RAM (PRU0->Data RAM0, PRU1->Data RAM1) instead of
-one table in Data RAM1 as for HSR/PRP.
+The multicast filter table(s) are stored in each PRU's Data RAM (PRU0->Data RAM0,
+PRU1->Data RAM1) instead of one table in Data RAM1 as for HSR/PRP.
 
 VLAN over PRU Ethernet
 -----------------------
@@ -754,9 +642,6 @@ On Node-1
              total frames received        68090
               total bytes received     52598480
           Broadcast/Multicast Rcvd           52
-
-::
-
           total frames transmitted        68090
            total bytes transmitted     52598459
     Device: hsr0
@@ -773,17 +658,9 @@ On Node-1
     Device: hsr0
     INGRESS priority mappings: 0:0  1:0  2:0  3:0  4:0  5:0  6:0 7:0
      EGRESS priority mappings: 0:0
-    root@am57xx-evm:~# cat /sys/kernel/debug/prueth-eth2/stats
-       TxQ-0    TxQ-1    TxQ-2    TxQ-3    RxQ-0    RxQ-1
-    =====================================================
-       68041        0        0    68908    67809    68925
-    root@am57xx-evm:~# cat /sys/kernel/debug/prueth-eth3/stats
-       TxQ-0    TxQ-1    TxQ-2    TxQ-3    RxQ-2    RxQ-3
-    =====================================================
-       68041        0        0    68912      234      695
 
 Similar procedure can be used for setting up VLAN interfaces over PRU
-EMAC and HSR Ethernet types.
+Dual EMAC and HSR Ethernet types.
 
 VLAN Filtering
 ---------------
@@ -793,9 +670,9 @@ unwanted VLAN traffic to the host. As soon a VLAN interface is created,
 the 802.1q Linux kernel module sends the VID information down to the
 lower layer HSR or PRP Linux device which in turn pass it down to the
 slave Ethernet devices below it (or directly to the Ethernet device in the
-case of Dual EMAC). The PRU Ethernet driver gets the VID
-information via net_device_ops:ndo_vlan_rx_add_vid(). On receiving this,
-PRU Ethernet driver sets the entry at the VID index in VLAN filter table
+case of Dual EMAC). The PRU Ethernet driver gets the VID information via
+net_device_ops:ndo_vlan_rx_add_vid(). On receiving this, PRU Ethernet
+driver sets the entry at the VID index in VLAN filter table
 to 1. When the VLAN interface is deleted, the driver receives the same
 information through ndo_vlan_rx_kill_vid() and reset the entry at the
 VID index.
@@ -813,96 +690,6 @@ interface.
 
 .. rubric:: Useful commands
    :name: Useful-commands
-
-User can use the following command to view the VLAN filter table at PRU.
-(Similar commands apply for HSR and Dual EMAC)
-
-::
-
- cat /sys/kernel/debug/prueth-prp-<ID>/vlan_filter
-
-Where ID is described at :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
-
-::
-
- root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp-2/vlan_filter
- VLAN Filter : enabled
- VLAN Filter untagged : allowed to Host
- VLAN Filter priority tagged: allowed to Host
-
-    0: 0011000000000000000000000000000000000000000000000000000000000000
-   64: 0000000000000000000000000000000000000000000000000000000000000000
-  128: 0000000000000000000000000000000000000000000000000000000000000000
-  192: 0000000000000000000000000000000000000000000000000000000000000000
-  256: 0000000000000000000000000000000000000000000000000000000000000000
-  320: 0000000000000000000000000000000000000000000000000000000000000000
-  384: 0000000000000000000000000000000000000000000000000000000000000000
-  448: 0000000000000000000000000000000000000000000000000000000000000000
-  512: 0000000000000000000000000000000000000000000000000000000000000000
-  576: 0000000000000000000000000000000000000000000000000000000000000000
-  640: 0000000000000000000000000000000000000000000000000000000000000000
-  704: 0000000000000000000000000000000000000000000000000000000000000000
-  768: 0000000000000000000000000000000000000000000000000000000000000000
-  832: 0000000000000000000000000000000000000000000000000000000000000000
-  896: 0000000000000000000000000000000000000000000000000000000000000000
-  960: 0000000000000000000000000000000000000000000000000000000000000000
- 1024: 0000000000000000000000000000000000000000000000000000000000000000
- 1088: 0000000000000000000000000000000000000000000000000000000000000000
- 1152: 0000000000000000000000000000000000000000000000000000000000000000
- 1216: 0000000000000000000000000000000000000000000000000000000000000000
- 1280: 0000000000000000000000000000000000000000000000000000000000000000
- 1344: 0000000000000000000000000000000000000000000000000000000000000000
- 1408: 0000000000000000000000000000000000000000000000000000000000000000
- 1472: 0000000000000000000000000000000000000000000000000000000000000000
- 1536: 0000000000000000000000000000000000000000000000000000000000000000
- 1600: 0000000000000000000000000000000000000000000000000000000000000000
- 1664: 0000000000000000000000000000000000000000000000000000000000000000
- 1728: 0000000000000000000000000000000000000000000000000000000000000000
- 1792: 0000000000000000000000000000000000000000000000000000000000000000
- 1856: 0000000000000000000000000000000000000000000000000000000000000000
- 1920: 0000000000000000000000000000000000000000000000000000000000000000
- 1984: 0000000000000000000000000000000000000000000000000000000000000000
- 2048: 0000000000000000000000000000000000000000000000000000000000000000
- 2112: 0000000000000000000000000000000000000000000000000000000000000000
- 2176: 0000000000000000000000000000000000000000000000000000000000000000
- 2240: 0000000000000000000000000000000000000000000000000000000000000000
- 2304: 0000000000000000000000000000000000000000000000000000000000000000
- 2368: 0000000000000000000000000000000000000000000000000000000000000000
- 2432: 0000000000000000000000000000000000000000000000000000000000000000
- 2496: 0000000000000000000000000000000000000000000000000000000000000000
- 2560: 0000000000000000000000000000000000000000000000000000000000000000
- 2624: 0000000000000000000000000000000000000000000000000000000000000000
- 2688: 0000000000000000000000000000000000000000000000000000000000000000
- 2752: 0000000000000000000000000000000000000000000000000000000000000000
- 2816: 0000000000000000000000000000000000000000000000000000000000000000
- 2880: 0000000000000000000000000000000000000000000000000000000000000000
- 2944: 0000000000000000000000000000000000000000000000000000000000000000
- 3008: 0000000000000000000000000000000000000000000000000000000000000000
- 3072: 0000000000000000000000000000000000000000000000000000000000000000
- 3136: 0000000000000000000000000000000000000000000000000000000000000000
- 3200: 0000000000000000000000000000000000000000000000000000000000000000
- 3264: 0000000000000000000000000000000000000000000000000000000000000000
- 3328: 0000000000000000000000000000000000000000000000000000000000000000
- 3392: 0000000000000000000000000000000000000000000000000000000000000000
- 3456: 0000000000000000000000000000000000000000000000000000000000000000
- 3520: 0000000000000000000000000000000000000000000000000000000000000000
- 3584: 0000000000000000000000000000000000000000000000000000000000000000
- 3648: 0000000000000000000000000000000000000000000000000000000000000000
- 3712: 0000000000000000000000000000000000000000000000000000000000000000
- 3776: 0000000000000000000000000000000000000000000000000000000000000000
- 3840: 0000000000000000000000000000000000000000000000000000000000000000
- 3904: 0000000000000000000000000000000000000000000000000000000000000000
- 3968: 0000000000000000000000000000000000000000000000000000000000000000
- 4032: 0000000000000000000000000000000000000000000000000000000000000000
-
-Dual EMAC 
-^^^^^^^^^^^^^^^^^^
-
-If using Dual EMAC, the only interface differences are the debugfs paths.
-
-::
-
- /sys/kernel/debug/prueth-eth<if number>/vlan_filter
 
 Internally, the VLAN filter table(s) are stored in each PRU's Data RAM 
 (PRU0->Data RAM0, PRU1->Data RAM1) instead of one table in Shared RAM 
@@ -927,28 +714,18 @@ enable to drop these frames if the number of frames received
 during a window (100 msec) reaches a threshold. PRUETH uses
 a credit value as the threshold which is user configurable
 on a per interface and packet type (broadcast/multicast/unicast) basis.
-There are sysfs entries ``nsp_credit_bc`` (broadcast),
-``nsp_credit_mc`` (multicast), and ``nsp_credit_uc`` (unicast) located at:
 
-::
-
-  /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/nsp_credit_bc
-  /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/nsp_credit_mc
-  /sys/devices/platform/pruss<ID>_eth/net/eth<if number>/nsp_credit_uc
-
-Where ID and if number are obtained from the table under the section
-:ref:`PLSDK_HSR_PRP_id_if_number_mapping`. The driver writes the credit value in DRAM
-based on the sysfs entry from user. The PRU firmware uses the credit
-value as a counter. The driver refreshes the counter every 100 msec.
-i.e write the credit value to memory every 100 msec. PRU Firmware
-upon receiving a frame decrements this counter until it
-becomes zero.  Firmware forwards the frames to Host or ARM
-until the counter is non zero. PRU Firmware drops the frames
-if the counter is zero. Since driver writes the credit value to DRAM
-every 100 msec, the number of frames sent to host or ARM
-during a 100 msec window is limited to the credit value and anything
-beyond that is dropped by the firmware. Firmware maintains statistics
-counters, stormPrevCounterBC/stormPrevCounterMC/stormPrevCounterUC,
+The driver writes the credit value in DRAM based on the user tc
+command. The PRU firmware uses the credit value as a counter. The
+driver refreshes the counter every 100 msec.  i.e write the credit
+value to memory every 100 msec. PRU Firmware upon receiving a frame
+decrements this counter until it becomes zero.  Firmware forwards
+the frames to Host or ARM until the counter is non zero. PRU Firmware
+drops the frames if the counter is zero. Since driver writes the
+credit value to DRAM every 100 msec, the number of frames sent to
+host or ARM during a 100 msec window is limited to the credit value
+and anything beyond that is dropped by the firmware. Firmware maintains
+statistics counters, stormPrevCounterBC/stormPrevCounterMC/stormPrevCounterUC,
 for the number of frames dropped due to storm prevention control
 for each packet type and can be seen using ethtool -S command.
 
@@ -962,32 +739,64 @@ DHCP broadcast, router advetisement etc. So user may observe the
 broadcast traffic in the network using network tools such as wireshark
 and set the credit value accordingly.
 
-Example
+Use tc command to configure the credit in unit of kbit.
 
-To enable do
-
-::
-
- >echo 10 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit_bc
-
-for setting broadcast credit value to 10 for eth2. Similarly for other
-interfaces and types
-
-To disable do
+For BC
 
 ::
 
- >echo 0 > /sys/devices/platform/pruss2_eth/net/eth2/nsp_credit_bc
+ tc qdisc add dev eth2 clsact
+ tc qdisc add dev eth3 clsact
+ tc filter add dev eth2 ingress flower skip_sw dst_mac ff:ff:ff:ff:ff:ff action police rate 29kbit burst 64k
+ tc filter add dev eth3 ingress flower skip_sw dst_mac ff:ff:ff:ff:ff:ff action police rate 29kbit burst 64k
+
+For MC
+
+::
+
+ tc qdisc add dev eth2 clsact
+ tc qdisc add dev eth3 clsact
+ tc filter add dev eth2 ingress flower skip_sw dst_mac 01:00:00:00:00:00 action police rate 29kbit burst 64k
+ tc filter add dev eth2 ingress flower skip_sw dst_mac 01:00:00:00:00:00 action police rate 29kbit burst 64k
+
+For UC
+
+::
+
+ tc qdisc add dev eth2 clsact
+ tc qdisc add dev eth3 clsact
+ tc filter add dev eth2 ingress flower skip_sw dst_mac 70:FF:76:1C:0F:A5 action police rate 29kbit burst 64k
+ tc filter add dev eth3 ingress flower skip_sw dst_mac 70:FF:76:1C:0F:A5 action police rate 29kbit burst 64k
+
+To delete classifier
+
+::
+
+ tc qdisc del dev eth2 clsact
+ tc qdisc del dev eth3 clsact
+
+The calculation for rate is as below (29kbit in the above command).
+
+* Credit (Packets allowed in 100 msec) = (rate_bits_per_sec  * 100) /(8 * 60 * 1000)
+* In the above tc command, the rate_bits_per_sec = 29kbit = 29000. So  Credit = (29000 * 100) / (8 * 60000) ~= 6 packets
+
+Or to get kbit/sec from credit in 100 msec,
+
+* Rate in kbits/sec = (credit * 8 * 60) / (100)
+* For 6 packets, Rate (in kbit per second) = (6 * 8 * 60) / (100) = 28.8 ~= 29
 
 Receive Interrupt Pacing
-------------------------
+-------------------------
 
 Receive interrupt pacing is a firmware feature to decrease the number of
-interrupts that need to be handled by the host. Without interrupt pacing,
-one interrupt is triggered per frame received. This can result in decreased
-performance due to interrupt handling overhead in the Linux kernel,
-especially for small sized frames (as are often used in grid infrastructure
-networks).
+interrupts that need to be handled by the host. This control when interrupt
+is generated by firmware and its use may result in less overhead in the Linux
+kernel. NAPI already places the driver in a polling mode once interrupt is
+triggered. If packets are bursty, all of them will be handled in a single
+NAPI poll upto the NAPI budget. Once NAPI budget is reached, then driver
+re-enables interrupt. However in situations where packets are randomly
+spaced, then it may add additional overhead in NAPI scheduling and it is
+beneficial to even out the handling using interrupt pacing.
 
 This receive interrupt pacing allows Ethernet frames to accumulate
 in the ingress ring buffer between the host and PRU for a configurable
@@ -996,23 +805,20 @@ queued frames upon receiving an RX interrupt. The firmware implements
 this RX pacing timer, which is configured by the PRUETH driver when the
 network device is opened and stopped when the device is closed. For HSR/PRP,
 one RX pacing timer is shared between ports. One timer is used because
-the HSR/PRP ports trigger common priority-based interrupts. For EMAC,
+the HSR/PRP ports trigger common priority-based interrupts. For Dual EMAC,
 there is one RX pacing timer per port.
 
 The user may show the timer value using the ethtool –c option which
 is a standard Linux command to show different coalesce parameters at
-the network device. –C option allows user to override the default value
-at the device. The driver uses a default timeout value of 123 usec
-(Duration of an MTU frame). User is not expected to change this as
-there are limited number of buffers in the receive path between Host
-and PRU and using a bigger value can result in packet loss. However
-ethtool –c option is implemented in the PRUETH driver to show current
-setting in the driver and -C to change it if needed. Driver supports
-rx-usecs and adaptive-rx parameters from the available list of
-parameters and can be changed using –C option. There are 3 modes
-of pacing available:
+the network device. –C option allows user to set rx interrupt pacing
+at the device.  There are limited number of buffers in the receive
+path between Host and PRU and using a bigger value can result in
+packet loss. ethtool –c option is implemented in the PRUETH driver
+to show current setting in the driver and -C to change it if needed.
+Driver supports rx-usecs and adaptive-rx parameters from the available
+list of parameters. There are 3 modes of pacing available:
 
-**Pacing enabled (default):**
+**Pacing enabled :**
 At each timer expiry, firmware checks if any frames were received during the
 interval, and if so triggers an interrupt. Frames received during timer interval
 set a flag but do not trigger an interrupt. Default timer interval is 123 us.
@@ -1086,7 +892,6 @@ Both parameters may be updated in one go as
 More details on the command syntax are available by typing man ethtool
 on a Linux PC as this is a standard Linux command.
 
-
 VLAN Tag in Supervision frame
 -----------------------------
 
@@ -1117,7 +922,7 @@ to use vlan. A default value of zero is used if not supplied by the user.
 Node Table
 ----------
 
-HSR/PRP offloaded LRE supports a Node Table (NT) of 256 entries on AM5/K2G
+HSR/PRP offloaded LRE supports a Node Table (NT) of 256 entries on AM5
 devices and 128 entries on AM3/4 devices. NT entries are maintained in
 shared RAM of the PRU ICSS. For HSR, an entry containing the MAC address
 of the remote node is inserted to the Node table when a supervison(SV) frame
@@ -1386,548 +1191,62 @@ configuration of the HSR/PRP interfaces after kernel boot up are no
 different than the case without firmware offload. The differences are,
 in the case of firmware offload, the correct PRU firmware needs to be
 loaded and the PRUETH driver needs to be configured to interface with
-the type of firmware loaded, during boot up.
-
-The module parameter "ti\_prueth.pruss1\_ethtype" and
-"ti\_prueth.pruss2\_ethtype" are used for instructing the PRU Ethernet
-driver what type of PRU firmware is to be loaded to PRU-ICSS1 and
-PRU-ICSS2 respectively. These type values are:
-
-+---------------------------------------+-----------------+
-| ti\_prueth.prussX\_ethtype, X = 1,2   | firmware type   |
-+=======================================+=================+
-| 0                                     | EMAC            |
-+---------------------------------------+-----------------+
-| 1                                     | HSR             |
-+---------------------------------------+-----------------+
-| 2                                     | PRP             |
-+---------------------------------------+-----------------+
-
-These ti\_prueth.prussX\_type values can be set up in the Kernel boot
-argument in Uboot. For example, to load HSR firmware to PRU-ICSS1 and
-PRP firmware to PRU-ICSS2, and assuming boot using NFS rootfs, the
-Kernel boot argument can be configured as follows. Under Uboot prompt,
-
-::
-
-     => setenv netargs 'setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp
-    ti_prueth.pruss1_ethtype=${pruss1_ethtype} ti_prueth.pruss2_ethtype=${pruss2_ethtype}'
-     => setenv pruss1_ethtype 1
-     => setenv pruss2_ethtype 2
-     => saveenv
-
-**NOTE** If using mmc rootfs, update args\_mmc as below
-
-::
-
-     => setenv args_mmc 'run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
-    ti_prueth.pruss1_ethtype=${pruss1_ethtype} ti_prueth.pruss2_ethtype=${pruss2_ethtype}'
-
-Just change the value of pruss1\_ethtype or pruss2\_ethtype in the above
-example to switch to a different type of firmware (see the above table).
-If a ti\_prueth.prussX\_ethtype is not configured, ie. does not appear
-in Kernel boot argument, the default EMAC firmware will be loaded to the
-corresponding PRU-ICSSX. In this case, if user sets up HSR/PRP
-interface, it will work without offload using the PRU EMAC firmware and
-driver. So using offload or no offload is controlled via selecting
-appropriate firmware at boot up and is transparent to user.
-
-Remarks:
-
-#. Setting ti\_prueth.prussX\_ethtype to 0 is the same as not using it
-   in the Kernel argument. In either case, default EMAC firmware is
-   loaded.
-#. "ti\_prueth.prussX\_ethtype=", ie. setting the module parameter but
-   without a value, is incorrect.
-#. On AM572x IDK, only PRU-ICSS2 is supported. Hence only
-   prueth.pruss2\_type takes effect.
+the type of firmware loaded, during ndo_open() or when interface is up.
 
 To verify PRU Ethernet type after boot, do following that display TI PRU
 ethernet type
 
 ::
 
-    dmesg | grep "TI PRU ethernet (type"
+    dmesg | grep "EMAC mode"
 
-For PRU Emac, the string displayed will be
+Now change Ethernet type to HSR or PRP as explained :ref:`Changing_protocol_at_PRU_Ethernet`
 
-::
-
-    prueth pruss2_eth: TI PRU ethernet (type 0) driver initialized
-
-For PRU HSR, the string displayed will be
-
-::
-
-    prueth pruss2_eth: TI PRU ethernet (type 1) driver initialized
-
-For PRU PRP, the string displayed will be
-
-::
-
-    prueth pruss2_eth: TI PRU ethernet (type 2) driver initialized
-
-Where type is what is set in the bootargs and is listed in the table at
-the beginning of this section
-
-Node Tables (firmware offload)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+Node Tables
+^^^^^^^^^^^
 In the case of HSR/PRP firmware offload, the Node Table can be displayed
 as follows. Note: the locations are different from those when there is
 no firmware offload.
 
-To show the **HSR Node Table**, under the kernel prompt on the terminal
-connected to the IDK, do
+To show the **HSR Node Table** do below command (assume hsr0 is the
+interface name)
 
--  root@am57xx-evm:~# cat /sys/kernel/debug/**prueth-hsr-<ID>**/node\_table
--  Sample display
+ >cat /proc/hsr0/node-table
 
-::
-
-     root@am57xx-evm:~# cat /sys/kernel/debug/prueth-hsr-2/node_table
-     
-     Remote nodes in network: 1
-     
-     Node[1]:
-     MAC ADDR: 70:ff:76:1c:0f:99
-     state: valid
-     DANH
-     RxA=2992 SupRxA=148
-     RxB=2992 SupRxB=148
-     Time Last Seen: Sup=0 RxA=0 RxB=0
-
-To show the **PRP Node Table**, under the kernel prompt on the terminal
-connected to the IDK, do
-
--  root@am57xx-evm:~# cat /sys/kernel/debug/**prueth-prp-<ID>**/node\_table
--  Sample display
+Sample display
 
 ::
 
-     root@am57xx-evm:~# cat /sys/kernel/debug/prueth-prp-2/node_table
-     
-     Remote nodes in network: 1
-     
-     Node[1]:
-     MAC ADDR: 70:ff:76:1c:0f:99
-     state: valid
-     DupDiscard (0x80)
-     DANP
-     RxA=17 SupRxA=17
-     RxB=17 SupRxB=17
-     Time Last Seen: Sup=0 RxA=0 RxB=0
-     PRP LineID Err: A=0 B=0
+ root@am57xx-evm:~# cat /proc/hsr0/node-table
+  Remote nodes in network: 1
+  Node[0]:
+  DANH
+  MAC ADDR: 70:ff:76:1c:0e:0d
+  Time Last Seen: RxA=5015 RxB=5015
 
-LRE Statistics (firmware offload)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To show the PRP Node Table, under the kernel prompt on the terminal connected to the IDK, do (assume prp0 is the interface name)
 
-The LRE statistics is displayed as part the interface statistics using
-the "ethtool -S DEVNAME" command, where DEVNAME, in the case AM572x IDK,
-is eth2 or eth3. The fields pertaining to LRE statistics are prefixed
-with "lre". Since LRE statistics are LRE specific, instead of interface
-specific, so either "ethtool -S eth2" or "ethtool -S eth3" will show the
-same LRE statistics.
+ >cat /proc/prp0/node-table
 
-Sample display:
+Sample display
 
 ::
 
-     root@am57xx-evm:~# ethtool -S eth2     
-     NIC statistics:
-          txBcast: 1
-          txMcast: 11635
-          txUcast: 3
-          txOctets: 816642
-          rxBcast: 0
-          rxMcast: 36
-          rxUcast: 17
-          rxOctets: 4841
-          tx64byte: 6
-          tx65_127byte: 11633
-          tx128_255byte: 0
-          tx256_511byte: 0
-          tx512_1023byte: 0
-          tx1024byte: 0
-          rx64byte: 4
-          rx65_127byte: 49
-          rx128_255byte: 0
-          rx256_511byte: 0
-          rx512_1023byte: 0
-          rx1024byte: 0
-          lateColl: 0
-          singleColl: 0
-          multiColl: 0
-          excessColl: 0
-          rxMisAlignmentFrames: 0
-          stormPrevCounter: 0
-          macRxError: 0
-          SFDError: 0
-          defTx: 0
-          macTxError: 0
-          rxOverSizedFrames: 0
-          rxUnderSizedFrames: 0
-          rxCRCFrames: 0
-          droppedPackets: 0
-          txHWQOverFlow: 0
-          txHWQUnderFlow: 0
-          lreTxA: 11636
-          lreTxB: 11639
-          lreTxC: 66
-          lreErrWrongLanA: 0
-          lreErrWrongLanB: 0
-          lreErrWrongLanC: 0
-          lreRxA: 40
-          lreRxB: 40
-          lreRxC: 0
-          lreErrorsA: 11560
-          lreErrorsB: 11559
-          lreErrorsC: 0
-          lreNodes: 0
-          lreProxyNodes: 0
-          lreUniqueRxA: 0
-          lreUniqueRxB: 0
-          lreUniqueRxC: 0
-          lreDuplicateRxA: 0
-          lreDuplicateRxB: 0
-          lreDuplicateRxC: 0
-          lreMultiRxA: 0
-          lreMultiRxB: 0
-          lreMultiRxC: 0
-          lreOwnRxA: 0
-          lreOwnRxB: 0
-          lreDuplicateDiscard: 2
-          lreTransRecept: 1
-          lreNtLookupErrA: 0
-          lreNtLookupErrB: 0
-          lreNodeTableFull: 0
+ root@am57xx-evm:~# cat /proc/prp0/node-table
+  Remote nodes in network: 1
+  Node[0]:
+  MAC ADDR: 70:ff:76:1c:0e:0d
+  DANP
+  Time Last Seen: RxA=4094 RxB=4414
 
-.. _PLSDK_HSR_Testing:
-
-HSR Testing
+LRE Statistics
 ^^^^^^^^^^^^^^
-
-To test HSR, user would need two AM572x EVMs.
-
-#. Setup HSR Ring network as per diagram below. Connect the PRU2ETH0
-   (See the marking on the EVM) Ethernet ports of the two EVMs together
-   (corresponds to Linux interface eth2) as shown below. Similarly,
-   connect the PRU2ETH1 ports (Linux interface eth3) as well.
-#. Configure the bootargs to boot PRU with HSR firmware as described
-   above at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
-#. Boot the EVMs using the pre-built images from the Processor SDK
-   release. These images are built with Linux HSR/PRP driver enabled.
-   Login to the console using root user name.
-#. Note the MAC Address of eth2 at DAN-H-1(Say MAC-A) using the ifconfig
-   command. Do ifconfig eth2 at the Linux console of DAN-H-1
-#. Note the MAC Address of eth2 at DAN-H-2(Say MAC-B) using the ifconfig
-   command. Do ifconfig eth2 at the Linux console of DAN-H-2
-
-   #. ifconfig eth2 down
-   #. ifconfig eth3 down
-   #. ifconfig eth3 hw ether <MAC-A>
-   #. ifconfig eth2 up
-   #. ifconfig eth3 up
-   #. ip link add name hsr0 type hsr slave1 eth2 slave2 eth3 supervision
-      45 version 1
-   #. ifconfig hsr0 <IP Address of hsr interface at DAN-H-1> up
-
-#. Repeat the above steps for DAN-H-2, but this time use MAC-B in step
-   4.3 above. And use IP Address from the same subnet as that of DAN-H-1
-   hsr interface hsr0.
-
-.. Image:: /images/Hsr-network-setup-v2.jpg
-
-For example use Ip Address 192.168.2.20 for DAN-H-1 and 192.168.2.30 for
-DAN-H-2. Assume CPSW ports at the EVM are on a different Subnet than the
-HSR interface.
-
-Once both hsr0 interfaces are created, user should be able to do a ping
-from DAN-H-1 to DAN-H-2 or vice-versa. Disconnect Ethernet cable at eth2
-or eth3. The Ping should continue to go through. User could run iperf
-between the two HSR interfaces and test the iperf is not affected when
-one of the cable is disconnected. This verifies redundancy.
-
-A Sample script that automates the steps 4.1 to 4.7, say setup.sh, is
-below
+There is a lre-stats file to dump this under /proc/<hsr/prp interface name>. For
+example to dump this for prp0 interface, do:
 
 ::
 
-
-    #!/bin/sh
-    if [ $# -lt 3 ]
-    then
-            echo "setup.sh <hsr/prp> <MAC-Address for both slaves> <ip address for hsr/prp interface>"
-            exit
-    fi
-      
-    if [ "$1" != "hsr" ] && [ "$1" != "prp" ]
-    then
-        echo "use hsr or prp as first argument"
-        exit
-    fi
-     
-    echo "Setting up $10 interface with MAC address $2 for slaves and IP address $3"
-     
-    ifconfig eth2 down
-    ifconfig eth3 down
-    ifconfig eth2 hw ether $2
-    ifconfig eth3 hw ether $2
-    ifconfig eth2 up
-    ifconfig eth3 up
-     
-    if [ "$1" == "hsr" ]
-    then
-            ip link add name hsr0 type hsr slave1 eth2 slave2 eth3 supervision 45 version 1
-            ifconfig hsr0 $3 up
-    else
-            ip link add name prp0 type prp slave1 eth2 slave2 eth3 supervision 45
-            ifconfig prp0 $3 up
-    fi
-
-Using this script, user can setup hsr interface as
-
-::
-
-     
-    /setup.sh hsr <MAC-A> <IP Address of the interface>
-
-where it is assumed that the setup.sh is copied to the root directory of
-the target file system and is made executable
-
-Below script can be used to teardown the hsr interface (say teardown.sh)
-
-::
-
-    #!/bin/sh
-    if [ $# -lt 1 ]
-    then
-            echo "teardown.sh <hsr/prp>"
-            exit
-    fi
-
-    if [ "$1" != "hsr" ] && [ "$1" != "prp" ]
-    then
-        echo "use hsr or prp as first argument"
-        exit
-    fi
-
-    if [ "$1" == "hsr" ]
-    then
-            ip link del hsr0
-    else
-            ip link del prp0
-    fi
-
-Using the above script, user teardown the hsr interface as
-
-::
-
-    /teardown.sh hsr
-
-Sample script below can be used to create two instances of HSR/PRP at PRU-ICSS1 and PRU-ICSS2 on AM571x. For other platform
-where applicable, this can be customized by changing the slave eth interface names to match with that on the specific
-platform. The script also allows configuring the LRE to use VLAN tag for Supervision frames by providing an optional vlan
-string in the command line of the script as documented in the script.
-
-**On PRU-ICSS1 of AM571x**
-::
-
- #!/bin/sh
- if [ $# -lt 4 ]
- then
- 	echo "setup-pruss1.sh <hsr/prp> <MAC-Address of slave-A>"
- 	echo "   <ip address for hsr/prp interface>"
- 	echo "	<if_name of hsr/prp interface>  [vlan]" 
- 	echo " vlan is optional and if present use vlan tag"
- 	echo " in the SV frame. Use values of vid, pcp and"
- 	echo " and dei hardcoded in the script"
- 	exit
- fi
-
- if [ "$1" != "hsr" ] && [ "$1" != "prp" ]
- then
- 	echo "use hsr or prp as first argument"
- 	exit
- fi
-
- if_a=eth2
- if_b=eth3
- if_name=$4
- vl=$5
- #change this as needed
- vid=10
- pcp=5
- dei=0
-
- ifconfig $if_a down
- ifconfig $if_b down
- ifconfig $if_a hw ether $2
- ifconfig $if_b hw ether $2
- ifconfig $if_a up
- ifconfig $if_b up
-
- echo "Setting up $if_name with MAC address $2 for slaves and IP address $3"
- echo "          using $if_a and $if_b"
-
- if [ "$1" = "hsr" ]; then
-  	if [ "$vl" = "vlan" ]; then
- 	options="version 1 sv_vid $vid sv_pcp $pcp sv_dei $dei"
-  		echo $options
- 	else
-		options="version 1"
- 	fi
- else
- 	if [ "$vl" = "vlan" ]; then
- 		options="sv_vid $vid sv_pcp $pcp sv_dei $dei"
- 	else
- 		options=""
- 	fi
- fi
-
- ip link add name $if_name type $1 slave1 $if_a slave2 $if_b supervision 0 $options
- ifconfig $if_name $3 up
-
-
-**On PRU-ICSS2 of AM571x**
-
-::
-
- #!/bin/sh
- if [ $# -lt 4 ]
- then
- 	echo "setup-pruss2.sh <hsr/prp> <MAC-Address of slave-A>"
- 	echo "   <ip address for hsr/prp interface>"
- 	echo "	<if_name of hsr/prp interface>  [vlan]" 
- 	echo " vlan is optional and if present use vlan tag"
- 	echo " in the SV frame. Use values of vid, pcp and"
- 	echo " and dei hardcoded in the script"
- 	exit
- fi
- 
- if [ "$1" != "hsr" ] && [ "$1" != "prp" ]
- then
- 	echo "use hsr or prp as first argument"
- 	exit
- fi
- 
- if_a=eth4
- if_b=eth5
- if_name=$4
- vl=$5
- #change this as needed
- vid=10
- pcp=5
- dei=0
- 
- ifconfig $if_a down
- ifconfig $if_b down
- ifconfig $if_a hw ether $2
- ifconfig $if_b hw ether $2
- ifconfig $if_a up
- ifconfig $if_b up
- 
- echo "Setting up $if_name with MAC address $2 for slaves and IP address $3"
- echo "          using $if_a and $if_b"
- 
- if [ "$1" = "hsr" ]; then
- 	if [ "$vl" = "vlan" ]; then
- 		options="version 1 sv_vid $vid sv_pcp $pcp sv_dei $dei"
- 		echo $options
- 	else
-  		options="version 1"
- 	fi
- else
- 	if [ "$vl" = "vlan" ]; then
- 		options="sv_vid $vid sv_pcp $pcp sv_dei $dei"
- 	else
- 		options=""
- 	fi
- fi
- 
- ip link add name $if_name type $1 slave1 $if_a slave2 $if_b supervision 0 $options
- ifconfig $if_name $3 up
- 
-Sample logs are shown below:
-
-**DAN-H-1**
-
-::
-
-    root@am57xx-evm:~# ifconfig eth2
-    eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0F:8D  [   38.944687] random: nonblocking pool is initialized
-              BROADCAST MULTICAST  MTU:1500  Metric:1
-              RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:1000
-               RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
-
-    root@am57xx-evm:~# /setup.sh hsr 70:FF:76:1C:0F:8D 192.168.2.20
-    Setting up hsr0 interface with MAC address 70:FF:76:1C:0F:8D for slaves and IP address 192.168.2.20
-    [   62.319328]  remoteproc6: powering up 4b2b4000.pru0
-    [   62.325015]  remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 4350
-    [   62.335303] ti-pruss 4b280000.pruss: configured system_events = 0x0000060000500000 intr_channels = 0x00000095 host_intr = 0x00000115
-    [   62.348724]  remoteproc6: remote processor 4b2b4000.pru0 is now up
-    [   62.354947] net eth2: started
-    [   62.360842] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
-    [   62.408479]  remoteproc7: powering up 4b2b8000.pru1
-    [   62.413790]  remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 4382
-    [   62.422088] ti-pruss 4b280000.pruss: configured system_events = 0x0060000000a00000 intr_channels = 0x0000012a host_intr = 0x0000022a
-    [   62.434059]  remoteproc7: remote processor 4b2b8000.pru1 is now up
-    [   62.440281] net eth3: started
-    [   62.444625] IPv6: ADDRCONF(NETDEV_UP): eth3: link is not ready
-    [   62.509276] device eth2 entered promiscuous mode
-    [   62.549502] device eth3 entered promiscuous mode
-    [   62.593878] hsr0: Slave A (eth2) is not up; please bring it up to get a fully working HSR network
-    [   62.604214] IPv6: ADDRCONF(NETDEV_UP): hsr0: link is not ready
-    [   62.614722] IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
-    root@am57xx-evm:~#
-    root@am57xx-evm:~# [   63.648569] eth2: Link is Up - 100Mbps/Full - flow control off
-    [   63.654446] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
-    [   63.748602] eth3: Link is Up - 100Mbps/Full - flow control off
-    [   63.754477] IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
-
-    =========Setup hsr0 on DAN-H-2=============================================
-
-    root@am57xx-evm:~# ping 192.168.2.30
-    PING 192.168.2.30 (192.168.2.30): 56 data bytes
-    64 bytes from 192.168.2.30: seq=0 ttl=64 time=0.400 ms
-    64 bytes from 192.168.2.30: seq=1 ttl=64 time=0.190 ms
-    64 bytes from 192.168.2.30: seq=2 ttl=64 time=0.200 ms
-
-    --- 192.168.2.30 ping statistics ---
-    3 packets transmitted, 3 packets received, 0% packet loss
-    round-trip min/avg/max = 0.190/0.263/0.400 ms
-    root@am57xx-evm:~#
-    root@am57xx-evm:~# iperf -s
-    ------------------------------------------------------------
-    Server listening on TCP port 5001
-    TCP window size: 85.3 KByte (default)
-    ------------------------------------------------------------
-    [  4] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 33546
-    [ ID] Interval       Transfer     Bandwidth
-    [  4]  0.0-10.0 sec   108 MBytes  90.7 Mbits/sec
-    root@am57xx-evm:~# iperf -s -u
-    ------------------------------------------------------------
-    Server listening on UDP port 5001
-    Receiving 1470 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 47913
-    [ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
-    [  3]  0.0-10.0 sec   106 MBytes  89.0 Mbits/sec   0.078 ms  587/76246 (0.77%)
-    [  3]  0.0-10.0 sec  1 datagrams received out-of-order
-    root@am57xx-evm:~#
-    root@am57xx-evm:~# cat /proc/hsr0/node-table 
-    
-    Remote nodes in network: 1
-    
-    Node[0]:
-    MAC ADDR: d6:ab:09:0d:f0:e5
-    DANH
-    Time Last Seen: RxA=0 RxB=0
-
-    root@am57xx-evm:~# cat /proc/hsr0/lre-stats  
+ root@am57xx-evm:~# cat /proc/prp0/lre-stats
     LRE statistics:
     Rx Offloaded: 1
         lreTxA: 15915369
@@ -1956,91 +1275,226 @@ Sample logs are shown below:
         lreOwnRxA: 0
         lreOwnRxB: 0
 
+.. _PLSDK_HSR_Testing:
 
-**DAN-H-2**
+HSR Testing
+^^^^^^^^^^^^^^
+
+To test HSR, user would need two AM572x EVMs.
+
+#. Setup HSR Ring network as per diagram below. Connect the PRU2ETH0
+   (See the marking on the EVM) Ethernet ports of the two EVMs together
+   (corresponds to Linux interface eth2) as shown below. Similarly,
+   connect the PRU2ETH1 ports (Linux interface eth3) as well.
+
+#. Boot the EVMs using the pre-built images from the Processor SDK
+   release. These images are built with Linux HSR/PRP driver enabled.
+   Login to the console using root user name.
+
+#. Now change Ethernet type to HSR as
+   explained :ref:`Changing_protocol_at_PRU_Ethernet`
+
+#. Note the MAC Address of eth2 at DAN-H-1(Say MAC-A) using the ifconfig
+   command. Do ifconfig eth2 at the Linux console of DAN-H-1
+#. Note the MAC Address of eth2 at DAN-H-2(Say MAC-B) using the ifconfig
+   command. Do ifconfig eth2 at the Linux console of DAN-H-2
+
+   #. ifconfig eth2 down
+   #. ifconfig eth3 down
+   #. ifconfig eth3 hw ether <MAC-A>
+   #. ifconfig eth2 up
+   #. ifconfig eth3 up
+   #. ip link add name hsr0 type hsr slave1 eth2 slave2 eth3 supervision
+      45 version 1
+   #. ifconfig hsr0 <IP Address of hsr interface at DAN-H-1> up
+
+#. Repeat the above steps for DAN-H-2, but this time use MAC-B in step
+   4.3 above. And use IP Address from the same subnet as that of DAN-H-1
+   hsr interface hsr0.
+
+.. Image:: /images/Hsr-network-setup-v2.jpg
+
+For example use Ip Address 192.168.2.10 for DAN-H-1 and 192.168.2.20 for
+DAN-H-2. Assume CPSW ports at the EVM are on a different Subnet than the
+HSR interface.
+
+Once both hsr0 interfaces are created, user should be able to do a ping
+from DAN-H-1 to DAN-H-2 or vice-versa. Disconnect Ethernet cable at eth2
+or eth3. The Ping should continue to go through. User could run iperf
+between the two HSR interfaces and test the iperf is not affected when
+one of the cable is disconnected. This verifies redundancy.
+
+A Sample script that automates the steps using eth2 and eth3 is provided
+below
 
 ::
 
-    root@am57xx-evm:~# ifconfig eth2
-    eth2      Link encap:Ethernet  HWaddr D6:AB:09:0D:F0:E5
-              BROADCAST MULTICAST  MTU:1500  Metric:1
-              RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:1000
-              RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+ #!/bin/sh
+ #<args: <hsr|prp>
+ # on AM57x only
+ # Dual EMAC to HSR/PRP on DUT-A
+ if [ "$#" != "1" ]
+ then
+	echo "$0 <hsr|prp>"
+ 	exit
+ fi
 
-    root@am57xx-evm:~# /setup.sh hsr D6:AB:09:0D:F0:E5 192.168.2.30
-    Setting up hsr0 interface with MAC address D6:AB:09:0D:F0:E5 for slaves and IP address
-    192.168.2.30
-    [   66.015629]  remoteproc6: powering up 4b2b4000.pru0
-    [   66.021263]  remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 4350
-    [   66.031502] ti-pruss 4b280000.pruss: configured system_events = 0x0000060000500000
-    intr_channels = 0x00000095 host_intr = 0x00000115
-    [   66.044965]  remoteproc6: remote processor 4b2b4000.pru0 is now up
-    [   66.052043] net eth2: started
-    [   66.055419] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
-    [   66.108268]  remoteproc7: powering up 4b2b8000.pru1
-    [   66.113562]  remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 4382
-    [   66.123585] ti-pruss 4b280000.pruss: configured system_events = 0x0060000000a00000
-    intr_channels = 0x0000012a host_intr = 0x0000022a
-    [   66.136973]  remoteproc7: remote processor 4b2b8000.pru1 is now up
-    [   66.143998] net eth3: started
-    [   66.147284] IPv6: ADDRCONF(NETDEV_UP): eth3: link is not ready
-    [   66.218855] device eth2 entered promiscuous mode
-    [   66.258015] device eth3 entered promiscuous mode
-    [   66.303911] hsr0: Slave A (eth2) is not up; please bring it up to get a fully working HSR
-    network
-    [   66.313621] IPv6: ADDRCONF(NETDEV_UP): hsr0: link is not ready
-    [   66.323162] IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
-    root@am57xx-evm:~# [   67.358460] eth2: Link is Up - 100Mbps/Full - flow control off
-    [   67.364336] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
-    [   67.518489] eth3: Link is Up - 100Mbps/Full - flow control off
-    [   67.524363] IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
+ if [ "$1" != "hsr" ] && [ "$1" != "prp" ]
+ then
+	echo "$0 <hsr|prp>"
+ 	exit
+ fi
 
-    root@am57xx-evm:~# iperf -c 192.168.2.20
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, TCP port 5001
-    TCP window size: 70.0 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 33546 connected with 192.168.2.20 port 5001
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-10.0 sec   108 MBytes  90.9 Mbits/sec
-    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b 90M
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, UDP port 5001
-    Sending 1470 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 47913 connected with 192.168.2.20 port 5001
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-10.0 sec   107 MBytes  89.7 Mbits/sec
-    [  3] Sent 76247 datagrams
-    [  3] Server Report:
-    [  3]  0.0-10.0 sec   106 MBytes  89.0 Mbits/sec   0.078 ms  587/76246 (0.77%)
-    [  3]  0.0-10.0 sec  1 datagrams received out-of-order
+ if [ "$1" == "hsr" ]
+ then
+	if=hsr0
+ else
+	if=prp0
+ fi
+ 
+ ifa=eth2
+ ifb=eth3
+ ip=192.168.2.10
+ mac=70:FF:76:1C:02:0A
+ echo "ip=$ip"
+ echo "if=$if"
+ echo "mac=$mac"
+ echo "slave-a=$ifa"
+ echo "slave-b=$ifb"
 
-    root@am57xx-evm:~# cat /proc/hsr0/node-table 
-    
+ ifconfig $ifa 0.0.0.0 down
+ ifconfig $ifb 0.0.0.0 down
+ ifconfig $ifa hw ether $mac
+ ifconfig $ifb hw ether $mac
+ if [ "$1" == "hsr" ]
+ then
+	ethtool -K $ifa hsr-rx-offload on
+	ethtool -K $ifb hsr-rx-offload on
+ else
+	ethtool -K $ifa prp-rx-offload on
+	ethtool -K $ifb prp-rx-offload on
+ fi
+
+ ifconfig $ifa up
+ ifconfig $ifb up
+ if [ "$1" == "hsr" ]
+ then
+	ip link add name $if type hsr slave1 $ifa slave2 $ifb supervision 45 version 1 sv_vid 3 sv_pcp 7 sv_dei 0
+ else
+	ip link add name $if type hsr slave1 $ifa slave2 $ifb supervision 45 proto 1 sv_vid 3 sv_pcp 7 sv_dei 0
+ fi
+ 
+ ifconfig $if $ip
+ ifconfig $if
+ ifconfig $ifa
+ ifconfig $ifb
+
+To customize the script for another device, please change the mac and ip
+variables. Similarly to use a different vid, pcp and dei for supervision
+frame VLAN, change the same in the above script. To delete the hsr or prp
+interface, user may use ip link command as
+
+ip link delete <hsr or prp interface name>.  Example for hsr0 interface name, user type
+
+:: 
+
+ ip link delete hsr0
+
+Note that the Ethernet interfaces should be updated with original MAC address
+after this as below assuming eth2 and eth3 interfaces
+
+::
+
+ ifconfig eth2 0.0.0.0 down
+ ifconfig eth3 0.0.0.0 down
+ ifconfig eth2 hw ether 70:FF:76:1C:02:0A
+ ifconfig eth3 hw ether 70:FF:76:1C:02:0B
+
+
+**DAN-H-1**
+
+::
+
+ root@am57xx-evm:~# ifconfig eth2
+  eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0F:8D 
+            BROADCAST MULTICAST  MTU:1500  Metric:1
+            RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+            TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+            collisions:0 txqueuelen:1000
+            RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+ root@am57xx-evm:~#
+ root@am57xx-evm:~# <script to setup HSR interface>
+ [  504.221620] 001: remoteproc remoteproc6: powering up 4b2b4000.pru
+ [  504.223172] 001: remoteproc remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 7228
+ [  504.223386] 001: pru-rproc 4b2b4000.pru: configured system_events[63-0] = 00000600,04500000
+ [  504.223394] 001: pru-rproc 4b2b4000.pru: configured intr_channels = 0x000000d5 host_intr = 0x00000155
+ [  504.223403] 001: remoteproc remoteproc6: remote processor 4b2b4000.pru is now up
+ [  504.223750] 001: net eth2: started
+ [  504.267344] 001: pru-rproc 4b2b4000.pru: unconfigured system_events[63-0] = 00000600,04500000
+ [  504.267355] 001: pru-rproc 4b2b4000.pru: unconfigured host_intr = 0x00000155
+ [  504.267363] 001: remoteproc remoteproc6: stopped remote processor 4b2b4000.pru
+ [  504.267391] 001: net eth2: stopped
+ [  504.280076] 001: remoteproc remoteproc7: powering up 4b2b8000.pru
+ [  504.281224] 001: remoteproc remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 7256
+ [  504.281467] 001: pru-rproc 4b2b8000.pru: configured system_events[63-0] = 00600000,08a00000
+ [  504.281475] 001: pru-rproc 4b2b8000.pru: configured intr_channels = 0x0000032a host_intr = 0x000002aa
+ [  504.281483] 001: remoteproc remoteproc7: remote processor 4b2b8000.pru is now up
+ [  504.281846] 001: net eth3: started
+ [  504.327322] 001: pru-rproc 4b2b8000.pru: unconfigured system_events[63-0] = 00600000,08a00000
+ [  504.327333] 001: pru-rproc 4b2b8000.pru: unconfigured host_intr = 0x000002aa
+ [  504.327340] 001: remoteproc remoteproc7: stopped remote processor 4b2b8000.pru
+ [  504.327367] 001: net eth3: stopped
+ [  504.378975] 001: remoteproc remoteproc6: powering up 4b2b4000.pru
+ [  504.385687] 001: remoteproc remoteproc6: Booting fw image ti-pruss/am57xx-pru0-pruhsr-fw.elf, size 8252
+ [  504.385901] 001: pru-rproc 4b2b4000.pru: configured system_events[63-0] = 00000600,00900000
+ [  504.385909] 001: pru-rproc 4b2b4000.pru: configured intr_channels = 0x00000095 host_intr = 0x00000115
+ [  504.385917] 001: remoteproc remoteproc6: remote processor 4b2b4000.pru is now up
+ [  504.385935] 001: remoteproc remoteproc7: powering up 4b2b8000.pru
+ [  504.391421] 001: remoteproc remoteproc7: Booting fw image ti-pruss/am57xx-pru1-pruhsr-fw.elf, size 7920
+ [  504.391648] 001: pru-rproc 4b2b8000.pru: configured system_events[63-0] = 00600000,01200000
+ [  504.391656] 001: pru-rproc 4b2b8000.pru: configured intr_channels = 0x0000012a host_intr = 0x0000022a
+ [  504.391664] 001: remoteproc remoteproc7: remote processor 4b2b8000.pru is now up
+ [  504.392181] 001: net eth2: started
+ [  504.406518] 001: net eth3: started
+ [  504.563871] 001: hsr0: Slave A (eth2) is not up; please bring it up to get a fully working HSR network
+ [  504.563884] 001: hsr0: Slave B (eth3) is not up; please bring it up to get a fully working HSR network
+ [  505.951046] 001: prueth pruss2_eth eth2: Link is Up - 100Mbps/Full - flow control off
+ [  505.951074] 001: IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
+ [  505.951418] 001: IPv6: ADDRCONF(NETDEV_CHANGE): hsr0: link becomes ready
+ [  505.962594] 001: prueth pruss2_eth eth3: Link is Up - 100Mbps/Full - flow control off
+ [  505.962620] 001: IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
+ [  511.334554] 001: prueth pruss2_eth eth2: Link is Down
+ [  511.397766] 001: prueth pruss2_eth eth3: Link is Down
+ [  513.106896] 001: prueth pruss2_eth eth2: Link is Up - 100Mbps/Full - flow control off
+ [  513.114243] 001: prueth pruss2_eth eth3: Link is Up - 100Mbps/Full - flow control off
+ root@am57xx-evm:~#
+ root@am57xx-evm:~# ifconfig hsr0
+ hsr0      Link encap:Ethernet  HWaddr 70:FF:76:1C:0E:0D
+           inet addr:192.168.2.20  Bcast:192.168.2.255  Mask:255.255.255.0
+           inet6 addr: fe80::72ff:76ff:fe1c:e0d/64 Scope:Link
+           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+           RX packets:15 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:35 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:1200 (1.1 KiB)  TX bytes:5433 (5.3 KiB)
+ root@am57xx-evm:~# cat /proc/hsr0/node-table
     Remote nodes in network: 1
-    
     Node[0]:
-    MAC ADDR: 70:ff:76:1c:0f:8d
+    MAC ADDR: d6:ab:09:0d:f0:e5
     DANH
     Time Last Seen: RxA=0 RxB=0
-
-    root@am57xx-evm:/# cat /proc/prp0/lre-stats  
+ root@am57xx-evm:~# cat /proc/hsr0/lre-stats
     LRE statistics:
     Rx Offloaded: 1
-
-        lreTxA: 208128
-        lreTxB: 208128
-        lreTxC: 31305063
-        lreErrWrongLanA: 0
-        lreErrWrongLanB: 0
+        lreTxA: 15915369
+        lreTxB: 15915369
+        lreTxC: 673
+        lreErrWrongLanA: 207816
+        lreErrWrongLanB: 207789
         lreErrWrongLanC: 0
         lreRxA: 0
-        lreRxB: 0
-        lreRxC: 208
+        lreRxB: 27
+        lreRxC: 15707590
         lreErrorsA: 0
         lreErrorsB: 0
         lreErrorsC: 0
@@ -2058,8 +1512,67 @@ Sample logs are shown below:
         lreOwnRxA: 0
         lreOwnRxB: 0
 
+**DAN-H-2**
 
-.. _PLSDK_PTP_Testing:
+::
+
+ root@am57xx-evm:~# ifconfig eth2
+ eth2      Link encap:Ethernet  HWaddr D6:AB:09:0D:F0:E5
+           BROADCAST MULTICAST  MTU:1500  Metric:1
+           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+ root@am57xx-evm:~#
+ root@am57xx-evm:~# <script to setup HSR interface> (#different MAC address than in DAN-H-1)
+ [  520.528397] 000: remoteproc remoteproc6: powering up 4b2b4000.pru
+ [  520.529991] 000: remoteproc remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 7228
+ [  520.530205] 000: pru-rproc 4b2b4000.pru: configured system_events[63-0] = 00000600,04500000
+ [  520.530213] 000: pru-rproc 4b2b4000.pru: configured intr_channels = 0x000000d5 host_intr = 0x00000155
+ [  520.530221] 000: remoteproc remoteproc6: remote processor 4b2b4000.pru is now up
+ [  520.530571] 000: net eth2: started
+ [  520.579114] 000: pru-rproc 4b2b4000.pru: unconfigured system_events[63-0] = 00000600,04500000
+ [  520.579125] 000: pru-rproc 4b2b4000.pru: unconfigured host_intr = 0x00000155
+ [  520.579132] 000: remoteproc remoteproc6: stopped remote processor 4b2b4000.pru
+ [  520.579158] 000: net eth2: stopped
+ [  520.589374] 000: remoteproc remoteproc7: powering up 4b2b8000.pru
+ [  520.593239] 000: remoteproc remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 7256
+ [  520.593461] 000: pru-rproc 4b2b8000.pru: configured system_events[63-0] = 00600000,08a00000
+ [  520.593469] 000: pru-rproc 4b2b8000.pru: configured intr_channels = 0x0000032a host_intr = 0x000002aa
+ [  520.593477] 000: remoteproc remoteproc7: remote processor 4b2b8000.pru is now up
+ [  520.593831] 000: net eth3: started
+ [  520.633506] 000: pru-rproc 4b2b8000.pru: unconfigured system_events[63-0] = 00600000,08a00000
+ [  520.633518] 000: pru-rproc 4b2b8000.pru: unconfigured host_intr = 0x000002aa
+ [  520.633525] 000: remoteproc remoteproc7: stopped remote processor 4b2b8000.pru
+ [  520.633554] 000: net eth3: stopped
+ [  520.698838] 000: remoteproc remoteproc6: powering up 4b2b4000.pru
+ [  520.700225] 000: remoteproc remoteproc6: Booting fw image ti-pruss/am57xx-pru0-pruhsr-fw.elf, size 8252
+ [  520.700439] 000: pru-rproc 4b2b4000.pru: configured system_events[63-0] = 00000600,00900000
+ [  520.700448] 000: pru-rproc 4b2b4000.pru: configured intr_channels = 0x00000095 host_intr = 0x00000115
+ [  520.700456] 000: remoteproc remoteproc6: remote processor 4b2b4000.pru is now up
+ [  520.700473] 000: remoteproc remoteproc7: powering up 4b2b8000.pru
+ [  520.701476] 000: remoteproc remoteproc7: Booting fw image ti-pruss/am57xx-pru1-pruhsr-fw.elf, size 7920
+ [  520.701653] 000: pru-rproc 4b2b8000.pru: configured system_events[63-0] = 00600000,01200000
+ [  520.701660] 000: pru-rproc 4b2b8000.pru: configured intr_channels = 0x0000012a host_intr = 0x0000022a
+ [  520.701668] 000: remoteproc remoteproc7: remote processor 4b2b8000.pru is now up
+ [  520.702171] 000: net eth2: started
+ [  520.726685] 000: net eth3: started
+ [  520.922529] 000: hsr0: Slave A (eth2) is not up; please bring it up to get a fully working HSR network
+ [  520.922541] 000: hsr0: Slave B (eth3) is not up; please bring it up to get a fully working HSR network
+ root@am57xx-evm:~#
+ root@am57xx-evm:~#  ping 192.168.2.10
+ PING 192.168.2.10 (192.168.2.10): 56 data bytes
+ 64 bytes from 192.168.2.10: seq=0 ttl=64 time=0.618 ms
+ 64 bytes from 192.168.2.10: seq=1 ttl=64 time=0.341 ms
+ root@am57xx-evm:~#
+ root@am57xx-evm:~# cat /proc/hsr0/node-table
+    Remote nodes in network: 1
+    Node[0]:
+    MAC ADDR: 70:ff:76:1c:0f:8d
+    DANH
+    Time Last Seen: RxA=0 RxB=0
+
+.. _PLSDK_PRP_Testing:
 
 PRP Testing
 ^^^^^^^^^^^^^^
@@ -2075,46 +1588,23 @@ interface eth2 is Link-A (slave1 in ip link command) and eth3 is Link-B
 DUT to Switch A and Link-B is the Ethernet cable that connects to
 Switch-B. **This is very important for PRP as swapping them is an
 incorrect connection and can produce undesirable results.**
+Alternately user may connect Link-A to Link-A and Link-B to Link-B which
+is the simplified setup where switches are replaced with ethernet cable.
 
 #. Connect the DAN-P-1 EVM, PRU2ETH0 (marking on EVM) to a port at
    Ethernet switch A and PRU2ETH1 to a port at Ethernet switch B
 #. Similarly, connect DAN-P-2 EVM, PRU2ETH0 to a port at Ethernet switch
    A and PRU2ETH1 to a port at Ethernet switch B
-#. Configure the PRU to load PRP firmware by setting env variable as
-   discussed at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
+#. Now change Ethernet type to PRP as
+   explained :ref:`Changing_protocol_at_PRU_Ethernet`
 #. Boot the EVMs using the pre-built images from the Processor SDK
    release. These images are built with Linux HSR/PRP driver enabled.
    Login to the console using root user name.
-#. This time user may use the script (setup.sh) to create the prp
-   interface. Note the MAC-A and MAC-B as in the case of HSR (MAC
-   address of eth2)
-#. setup the prp interface at DAN-P-1 as follows
+#. This time user may use the script to create the prp interface. Use different
+   MAC address at each DUT
 
-   #. /setup.sh prp <MAC-A> <IP Address of prp interface>
-
-#. setup the prp interface at DAN-P-2 as follows:-
-
-   #. /setup.sh prp <MAC-B> <IP Address of prp interface>
-
-If PRP interface uses IP address 192.168.2.20 and eth2 MAC address is
-70:ff:76:1c:0f:8d, following example command may be used at DAN-P-1
-
-::
-
-    /setup.sh prp 70:ff:76:1c:0f:8d 192.168.2.20
-
-If PRP interface uses IP address 192.168.2.30 and eth2 MAC address is
-70:ff:76:1c:0f:8e following example command may be use at DAN-P-2
-
-::
-
-    /setup.sh prp 70:ff:76:1c:0f:8e 192.168.2.30
-
-To teardown the prp interface do
-
-::
-
-    /teardown.sh prp
+Same sample script mentioned earlier for HSR Testing can be used for PRP interface
+with command line parameter prp specified as argument.
 
 Sample logs are shown below:
 
@@ -2122,7 +1612,7 @@ Sample logs are shown below:
 
 ::
 
-    root@am57xx-evm:~# ifconfig eth2
+ root@am57xx-evm:~# ifconfig eth2
     eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0F:8D
               inet6 addr: fe80::72ff:76ff:fe1c:f8d%3068183320/64 Scope:Link
               UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
@@ -2130,80 +1620,68 @@ Sample logs are shown below:
               TX packets:40905 errors:0 dropped:0 overruns:0 carrier:0
               collisions:0 txqueuelen:1000
               RX bytes:121704175 (116.0 MiB)  TX bytes:2716445 (2.5 MiB)
-
-    root@am57xx-evm:~# /setup.sh prp 70:FF:76:1C:0F:8D 192.168.2.20
-    Setting up prp0 interface with MAC address 70:FF:76:1C:0F:8D for slaves and IP address
-    192.168.2.20
-    [21649.978346] ti-pruss 4b280000.pruss: unconfigured system_events = 0x0000060000500000
-    host_intr = 0x00000115
-    [21649.988138]  remoteproc6: stopped remote processor 4b2b4000.pru0
-    [21649.994196] net eth2: stopped
-    [21650.048408] ti-pruss 4b280000.pruss: unconfigured system_events = 0x0060000000a00000
-    host_intr = 0x0000022a
-    [21650.058199]  remoteproc7: stopped remote processor 4b2b8000.pru1
-    [21650.064258] net eth3: stopped
-    [21650.084733]  remoteproc6: powering up 4b2b4000.pru0
-    [21650.090419]  remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 4350
-    [21650.098711] ti-pruss 4b280000.pruss: configured system_events = 0x0000060000500000
-    intr_channels = 0x00000095 host_intr = 0x00000115
-    [21650.110746]  remoteproc6: remote processor 4b2b4000.pru0 is now up
-    [21650.117709] net eth2: started
-    [21650.121113] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
-    [21650.131268]  remoteproc7: powering up 4b2b8000.pru1
-    [21650.136538]  remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 4382
-    [21650.144871] ti-pruss 4b280000.pruss: configured system_events = 0x0060000000a00000
-    intr_channels = 0x0000012a host_intr = 0x0000022a
-    [21650.156838]  remoteproc7: remote processor 4b2b8000.pru1 is now up
-    [21650.163795] net eth3: started
-    [21650.167169] IPv6: ADDRCONF(NETDEV_UP): eth3: link is not ready
-    [21650.188520] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
-    [21650.248510] device eth2 entered promiscuous mode
-    [21650.287995] device eth3 entered promiscuous mode
-    [21650.328127] IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
-
-    root@am57xx-evm:~# ping 192.168.2.30
-    PING 192.168.2.30 (192.168.2.30): 56 data bytes
-    64 bytes from 192.168.2.30: seq=0 ttl=64 time=0.401 ms
-    64 bytes from 192.168.2.30: seq=1 ttl=64 time=0.189 ms
-    64 bytes from 192.168.2.30: seq=2 ttl=64 time=0.186 ms
-    ^C
-    --- 192.168.2.30 ping statistics ---
-    3 packets transmitted, 3 packets received, 0% packet loss
-    round-trip min/avg/max = 0.186/0.258/0.401 ms
-    root@am57xx-evm:~#
-    root@am57xx-evm:~#
-    root@am57xx-evm:~#
-    root@am57xx-evm:~# iperf -s
-    ------------------------------------------------------------
-    Server listening on TCP port 5001
-    TCP window size: 85.3 KByte (default)
-    ------------------------------------------------------------
-    [  4] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 38900
-    [ ID] Interval       Transfer     Bandwidth
-    [  4]  0.0-10.0 sec   109 MBytes  91.5 Mbits/sec
-    ^Croot@am57xx-evm:~# iperf -s  -u
-    ------------------------------------------------------------
-    Server listening on UDP port 5001
-    Receiving 1470 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 43497
-    [ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
-    [  3]  0.0-10.0 sec   106 MBytes  88.8 Mbits/sec   0.070 ms  0/76109 (0.0%)
-    [  3]  0.0-10.0 sec  1 datagrams received out-of-order
-    ^Croot@am57xx-evm:~#
-    root@am57xx-evm:~#
-    root@am57xx-evm:~#
-    root@am57xx-evm:/# cat /proc/prp0/node-table 
-   
-    Remote nodes in network: 1
-   
-    Node[0]:
-    MAC ADDR: 2a:da:8c:50:1b:86 
-    DANP
-    Time Last Seen: RxA=0 RxB=0
-
-    root@am57xx-evm:/# cat /proc/prp0/lre-stats  
+ root@am57xx-evm:~#
+ root@am57xx-evm:~# <script to create prp interface>
+ [   86.546039] 001: remoteproc remoteproc6: powering up 4b2b4000.pru
+ [   86.547682] 001: remoteproc remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 7228
+ [   86.547898] 001: pru-rproc 4b2b4000.pru: configured system_events[63-0] = 00000600,04500000
+ [   86.547906] 001: pru-rproc 4b2b4000.pru: configured intr_channels = 0x000000d5 host_intr = 0x00000155
+ [   86.547915] 001: remoteproc remoteproc6: remote processor 4b2b4000.pru is now up
+ [   86.548261] 001: net eth2: started
+ [   86.602785] 001: pru-rproc 4b2b4000.pru: unconfigured system_events[63-0] = 00000600,04500000
+ [   86.602798] 001: pru-rproc 4b2b4000.pru: unconfigured host_intr = 0x00000155
+ [   86.602806] 001: remoteproc remoteproc6: stopped remote processor 4b2b4000.pru
+ [   86.602835] 001: net eth2: stopped
+ [   86.611607] 001: remoteproc remoteproc7: powering up 4b2b8000.pru
+ [   86.623565] 001: remoteproc remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 7256
+ [   86.623814] 001: pru-rproc 4b2b8000.pru: configured system_events[63-0] = 00600000,08a00000
+ [   86.623823] 001: pru-rproc 4b2b8000.pru: configured intr_channels = 0x0000032a host_intr = 0x000002aa
+ [   86.623831] 001: remoteproc remoteproc7: remote processor 4b2b8000.pru is now up
+ [   86.624199] 001: net eth3: started
+ [   86.662750] 001: pru-rproc 4b2b8000.pru: unconfigured system_events[63-0] = 00600000,08a00000
+ [   86.662761] 001: pru-rproc 4b2b8000.pru: unconfigured host_intr = 0x000002aa
+ [   86.662769] 001: remoteproc remoteproc7: stopped remote processor 4b2b8000.pru
+ [   86.662799] 001: net eth3: stopped
+ Actual changes:
+ l2-fwd-offload: off [requested on]
+ prp-rx-offload: on
+ [   86.721664] 001: remoteproc remoteproc6: powering up 4b2b4000.pru
+ [   86.745026] 001: remoteproc remoteproc6: Booting fw image ti-pruss/am57xx-pru0-pruprp-fw.elf, size 7736
+ [   86.745242] 001: pru-rproc 4b2b4000.pru: configured system_events[63-0] = 00000600,00900000
+ [   86.745251] 001: pru-rproc 4b2b4000.pru: configured intr_channels = 0x00000095 host_intr = 0x00000115
+ [   86.745260] 001: remoteproc remoteproc6: remote processor 4b2b4000.pru is now up
+ [   86.745278] 001: remoteproc remoteproc7: powering up 4b2b8000.pru
+ [   86.746786] 001: remoteproc remoteproc7: Booting fw image ti-pruss/am57xx-pru1-pruprp-fw.elf, size 7616
+ [   86.746964] 001: pru-rproc 4b2b8000.pru: configured system_events[63-0] = 00600000,01200000
+ [   86.746971] 001: pru-rproc 4b2b8000.pru: configured intr_channels = 0x0000012a host_intr = 0x0000022a
+ [   86.746979] 001: remoteproc remoteproc7: remote processor 4b2b8000.pru is now up
+ [   86.747477] 001: net eth2: started
+ [   86.756707] 001: net eth3: started
+ [   86.938973] 001: prp0: Slave A (eth2) is not up; please bring it up to get a fully working HSR network
+ [   86.938985] 001: prp0: Slave B (eth3) is not up; please bring it up to get a fully working HSR network
+ [   88.336697] 001: prueth pruss2_eth eth3: Link is Up - 100Mbps/Full - flow control off
+ [   88.336726] 001: IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
+ [   88.337060] 001: IPv6: ADDRCONF(NETDEV_CHANGE): prp0: link becomes ready
+ [   88.342023] 001: prueth pruss2_eth eth2: Link is Up - 100Mbps/Full - flow control off
+ [   88.342043] 001: IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
+ root@am57xx-evm:~#
+ root@am57xx-evm:~# ifconfig prp0
+ prp0      Link encap:Ethernet  HWaddr 70:FF:76:1C:16:EF
+           inet addr:192.168.2.10  Bcast:192.168.2.255  Mask:255.255.255.0
+           inet6 addr: fe80::72ff:76ff:fe1c:16ef/64 Scope:Link
+           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+           RX packets:58 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:62 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:11462 (11.1 KiB)  TX bytes:8138 (7.9 KiB)
+ root@am57xx-evm:/# cat /proc/prp0/node-table
+ Remote nodes in network: 1
+ Node[0]:
+ MAC ADDR: 2a:da:8c:50:1b:86
+ DANP
+ Time Last Seen: RxA=0 RxB=0
+ root@am57xx-evm:~#
+ root@am57xx-evm:/# cat /proc/prp0/lre-stats
     LRE statistics:
     Rx Offloaded: 1
 
@@ -2237,81 +1715,35 @@ Sample logs are shown below:
 
 ::
 
-    root@am57xx-evm:~# ifconfig eth2
-    eth2      Link encap:Ethernet  HWaddr 2A:DA:8C:50:1B:86
-             inet6 addr: fe80::28da:8cff:fe50:1b86%3068203800/64 Scope:Link
-             UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-             RX packets:40881 errors:0 dropped:10 overruns:0 frame:64
-             TX packets:81022 errors:0 dropped:3528075 overruns:0 carrier:0
-             collisions:0 txqueuelen:1000
-             RX bytes:2718950 (2.5 MiB)  TX bytes:122601929 (116.9 MiB)
-
-    root@am57xx-evm:~# /setup.sh prp 2A:DA:8C:50:1B:86 192.168.2.30
-    Setting up prp0 interface with MAC address 2A:DA:8C:50:1B:86 for slaves and IP address
-    192.168.2.30
-    [21684.048303] ti-pruss 4b280000.pruss: unconfigured system_events = 0x0000060000500000
-    host_intr = 0x00000115
-    [21684.058095]  remoteproc6: stopped remote processor 4b2b4000.pru0
-    [21684.064152] net eth2: stopped
-    [21684.118368] ti-pruss 4b280000.pruss: unconfigured system_events = 0x0060000000a00000
-    host_intr = 0x0000022a
-    [21684.128160]  remoteproc7: stopped remote processor 4b2b8000.pru1
-    [21684.134217] net eth3: stopped
-    [21684.158347]  remoteproc6: powering up 4b2b4000.pru0
-    [21684.164069]  remoteproc6: Booting fw image ti-pruss/am57xx-pru0-prueth-fw.elf, size 4350
-    [21684.172524] ti-pruss 4b280000.pruss: configured system_events = 0x0000060000500000
-    intr_channels = 0x00000095 host_intr = 0x00000115
-    [21684.184563]  remoteproc6: remote processor 4b2b4000.pru0 is now up
-    [21684.191761] net eth2: started
-    [21684.195184] IPv6: ADDRCONF(NETDEV_UP): eth2: link is not ready
-    [21684.205638]  remoteproc7: powering up 4b2b8000.pru1
-    [21684.210960]  remoteproc7: Booting fw image ti-pruss/am57xx-pru1-prueth-fw.elf, size 4382
-    [21684.219252] ti-pruss 4b280000.pruss: configured system_events = 0x0060000000a00000
-    intr_channels = 0x0000012a host_intr = 0x0000022a
-    [21684.231220]  remoteproc7: remote processor 4b2b8000.pru1 is now up
-    [21684.238235] net eth3: started
-    [21684.241684] IPv6: ADDRCONF(NETDEV_UP): eth3: link is not ready
-    [21684.339123] device eth2 entered promiscuous mode
-    [21684.377962] device eth3 entered promiscuous mode
-    [21684.425802] prp0: Slave A (eth2) is not up; please bring it up to get a fully working HSR
-    network
-    [21684.436772] IPv6: ADDRCONF(NETDEV_UP): prp0: link is not ready
-    [21684.443615] IPv6: ADDRCONF(NETDEV_CHANGE): prp0: link becomes ready
-    root@am57xx-evm:~# [21684.488601] IPv6: ADDRCONF(NETDEV_CHANGE): eth2: link becomes ready
-    [21684.518615] IPv6: ADDRCONF(NETDEV_CHANGE): eth3: link becomes ready
-
-    root@am57xx-evm:~# iperf -c 192.168.2.20
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, TCP port 5001
-    TCP window size: 43.8 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 38900 connected with 192.168.2.20 port 5001
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-10.0 sec   109 MBytes  91.5 Mbits/sec
-    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b 88M
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, UDP port 5001
-    Sending 1470 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 43497 connected with 192.168.2.20 port 5001
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-10.0 sec   107 MBytes  89.5 Mbits/sec
-    [  3] Sent 76110 datagrams
-    [  3] Server Report:
-    [  3]  0.0-10.0 sec   106 MBytes  88.8 Mbits/sec   0.069 ms  0/76109 (0.0%)
-    [  3]  0.0-10.0 sec  1 datagrams received out-of-order
-    Remote nodes in network: 1
-   
-    Node[0]:
-    MAC ADDR: 70:ff:76:1c:0f:8d
-    DANP
-    Time Last Seen: RxA=0 RxB=0
-
-    root@am57xx-evm:/# cat /proc/prp0/lre-stats  
-    LRE statistics:
-    Rx Offloaded: 1
-
+ root@am57xx-evm:~# ifconfig eth2
+ eth2      Link encap:Ethernet  HWaddr 2A:DA:8C:50:1B:86
+           inet6 addr: fe80::28da:8cff:fe50:1b86%3068203800/64 Scope:Link
+           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+           RX packets:40881 errors:0 dropped:10 overruns:0 frame:64
+           TX packets:81022 errors:0 dropped:3528075 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:2718950 (2.5 MiB)  TX bytes:122601929 (116.9 MiB)
+ root@am57xx-evm:~# <script to create prp interface> Use a different MAC address than DAN-P-1
+ root@am57xx-evm:~# ifconfig prp0
+ prp0      Link encap:Ethernet  HWaddr 70:FF:76:1C:0E:0D
+           inet addr:192.168.2.20  Bcast:192.168.2.255  Mask:255.255.255.0
+           inet6 addr: fe80::72ff:76ff:fe1c:e0d/64 Scope:Link
+           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+           RX packets:4 errors:0 dropped:0 overruns:0 frame:0
+           TX packets:38 errors:0 dropped:0 overruns:0 carrier:0
+           collisions:0 txqueuelen:1000
+           RX bytes:224 (224.0 B)  TX bytes:5963 (5.8 KiB)
+ root@am57xx-evm:~#
+ root@am57xx-evm:~# cat /proc/prp0/node-table
+ Remote nodes in network: 1
+ Node[0]:
+ MAC ADDR: 70:ff:76:1c:0e:0d
+ DANP
+ Time Last Seen: RxA=882 RxB=818
+ root@am57xx-evm:~#
+ root@am57xx-evm:/# cat /proc/prp0/lre-stats
+ LRE statistics:
+        Rx Offloaded: 1
         lreTxA: 208128
         lreTxB: 208128
         lreTxC: 31305063
@@ -2338,240 +1770,91 @@ Sample logs are shown below:
         lreOwnRxA: 0
         lreOwnRxB: 0
 
-|
-
 Performance Test and Logs
 -------------------------
 
 Boot up two AM571x/572x EVM to configure PRU Ethernet in HSR or PRP mode
 as described at :ref:`PLSDK_HSR_PRP_Testing_Firmware_Offload`
 They are connected over eth2 and eth3 as described in
-:ref:`PLSDK_HSR_Testing` or :ref:`PLSDK_PTP_Testing`
+:ref:`PLSDK_HSR_Testing` or :ref:`PLSDK_PRP_Testing`
 
 .. rubric:: UDP
    :name: udp
 
-Sample iperf UDP test showing no packet loss for MTU sized packets. For
-HSR/PRP, there are 6 bytes of Tag effectively reducing pay load size to
-1466 (1500 - 6 - 20 - 8)
+**Server side (hsr)**
 
-Server Side
+Create HSR interface and raise the priority of softirq/0 thread
 
 ::
 
-    root@am57xx-evm:~# iperf -s -u
-    ------------------------------------------------------------
-    Server listening on UDP port 5001
-    Receiving 1470 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 34255
-    [ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
-    [  3]  0.0-60.0 sec   630 MBytes  88.1 Mbits/sec   0.002 ms    0/450887 (0%)
-    [  3]  0.0-60.0 sec  1 datagrams received out-of-order
+ root@am57xx-evm:~# <script to switch to HSR>
+ root@am57xx-evm:~# chrt -f -p 40 9
+ root@am57xx-evm:~# iperf3 -s -i60&
 
-Client side
+ [1] 1336
 
-::
+ root@am57xx-evm:~#
+ -----------------------------------------------------------
+ Server listening on 5201
+ -----------------------------------------------------------
+ root@am57xx-evm:~# Accepted connection from 192.168.2.20, port 44770
+ [  5] local 192.168.2.10 port 5201 connected to 192.168.2.20 port 38368
+ root@am57xx-evm:~# [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+ [  5]   0.00-60.00  sec   629 MBytes  88.0 Mbits/sec  0.002 ms  0/448363 (0%)
+ [  5]  60.00-120.00 sec   629 MBytes  88.0 Mbits/sec  0.003 ms  0/448369 (0%)
+ [  5] 120.00-180.00 sec   629 MBytes  88.0 Mbits/sec  0.009 ms  0/448370 (0%)
+ [  5] 180.00-240.00 sec   629 MBytes  88.0 Mbits/sec  0.007 ms  0/448371 (0%)
+ [  5] 240.00-300.00 sec   629 MBytes  88.0 Mbits/sec  0.005 ms  0/448370 (0%)
+ [  5] 300.00-360.00 sec   629 MBytes  88.0 Mbits/sec  0.003 ms  0/448373 (0%)
+ [  5] 360.00-420.00 sec   629 MBytes  88.0 Mbits/sec  0.013 ms  0/448372 (0%)
+ [  5] 420.00-480.00 sec   629 MBytes  88.0 Mbits/sec  0.039 ms  0/448374 (0%)
+ [  5] 480.00-540.00 sec   629 MBytes  88.0 Mbits/sec  0.009 ms  0/448373 (0%)
+ [  5] 540.00-600.00 sec   629 MBytes  88.0 Mbits/sec  0.007 ms  0/448358 (0%)
+ - - - - - - - - - - - - - - - - - - - - - - - - -
+ [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
 
-    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b88M -l1466 -t60
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, UDP port 5001
-    Sending 1466 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 34255 connected with 192.168.2.20 port 5001
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-60.0 sec   630 MBytes  88.1 Mbits/sec
-    [  3] Sent 450888 datagrams
-    [  3] Server Report:
-    [  3]  0.0-60.0 sec   630 MBytes  88.1 Mbits/sec   0.002 ms    0/450887 (0%)
-    [  3]  0.0-60.0 sec  1 datagrams received out-of-order
+ [  5]   0.00-600.00 sec  6.15 GBytes  88.0 Mbits/sec  0.007 ms  0/4483693 (0%)  receiver
 
-**NOTE:** When doing UDP test, user may observe out of order packets
-sometimes. This is normal as the driver doesn't use NAPI and packets may
-get queued to backlog queues of each CPU which may get delivered out of
-sequence to the iperf application. Out of order delivery of UDP packets
-are normal and kernel doesn't guarantee in sequence delivery of UDP
-packets to application. So iperf may show some packets lost during the
-test. User may use some of the tools available to migrate the rx irq
-threads and iperf server to same CPU, example CPU 0, to mitigate out of
-order issue and get a no loss iperf stats for udp tests.
+ -----------------------------------------------------------
+ Server listening on 5201
+ -----------------------------------------------------------
 
-For example, here is a snapshot of the test that shows packet lost
-during the test. The test also shows 106 datagram received out of order.
+**Client side (hsr)**
+
+Create HSR interface and raise the priority of softirq/0 thread
 
 ::
 
-    root@am57xx-evm:~# iperf -s -u
-    ------------------------------------------------------------
-    Server listening on UDP port 5001
-    Receiving 1470 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 5001 connected with 192.168.2.20 port 41976
-    [ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total Datagrams
-    [  3]  0.0-600.0 sec  6.15 GBytes  88.0 Mbits/sec   0.004 ms    5/4501411 (0.00011%)
-    [  3]  0.0-600.0 sec  106 datagrams received out-of-order
+ root@am57xx-evm:~# <script to setup hsr>
+ root@am57xx-evm:~#ping -c2 192.168.2.10
+ PING 192.168.2.10 (192.168.2.10): 56 data bytes
+ 64 bytes from 192.168.2.10: seq=0 ttl=64 time=0.618 ms
+ 64 bytes from 192.168.2.10: seq=1 ttl=64 time=0.341 ms
+ root@am57xx-evm:~# chrt -f -p 40 9
+ root@am57xx-evm:~# iperf3 -c 192.168.2.10 -u -b88M -l1472 -t600 -i60&
+ [1] 1330
+ root@am57xx-evm:~# warning: UDP block size 1472 exceeds TCP MSS 1448, may result in fragmentation / drops
+ Connecting to host 192.168.2.10, port 5201
+ [  5] local 192.168.2.20 port 38368 connected to 192.168.2.10 port 5201
+ root@am57xx-evm:~# [ ID] Interval           Transfer     Bitrate         Total Datagrams
+ [  5]   0.00-60.00  sec   629 MBytes  88.0 Mbits/sec  448369
+ [  5]  60.00-120.00 sec   629 MBytes  88.0 Mbits/sec  448363
+ [  5] 120.00-180.00 sec   629 MBytes  88.0 Mbits/sec  448370
+ [  5] 180.00-240.00 sec   629 MBytes  88.0 Mbits/sec  448375
+ [  5] 240.00-300.00 sec   629 MBytes  88.0 Mbits/sec  448368
+ [  5] 300.00-360.00 sec   629 MBytes  88.0 Mbits/sec  448371
+ [  5] 360.00-420.00 sec   629 MBytes  88.0 Mbits/sec  448368
+ [  5] 420.00-480.00 sec   629 MBytes  88.0 Mbits/sec  448371
+ [  5] 480.00-540.00 sec   629 MBytes  88.0 Mbits/sec  448370
+ [  5] 540.00-600.00 sec   629 MBytes  88.0 Mbits/sec  448369
+ - - - - - - - - - - - - - - - - - - - - - - - - -
+ [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+ [  5]   0.00-600.00 sec  6.15 GBytes  88.0 Mbits/sec  0.000 ms  0/4483694 (0%)  sender
+ [  5]   0.00-600.00 sec  6.15 GBytes  88.0 Mbits/sec  0.007 ms  0/4483693 (0%)  receiver
+ iperf Done.
+ [1]+  Done                    iperf3 -c 192.168.2.10 -u -b88M -l1472 -t600 -i60
 
-| 
-| Here is how to re-run the test by migrating the iperf server and irq
-  threads to CPU 0
-
-Run the iperf -s -u & Do ps command and find the PID of the iperf and
-migrate the process to CPU 0 as follows
-
-::
-
-    root@am57xx-evm:~# ps
-     PID TTY          TIME CMD
-     964 ttyS2    00:00:00 login
-    1063 ttyS2    00:00:00 sh
-    1135 ttyS2    00:00:00 iperf
-    1141 ttyS2    00:00:00 ps
-    root@am57xx-evm:~# taskset -cp 0 1135
-    pid 1135's current affinity list: 0,1
-    pid 1135's new affinity list: 0
-
-Now find the irq thread for eth2, eth3 devices using
-
-::
-
-    root@am57xx-evm:~# ps -ef  | grep "eth3"
-    root      1464     2  0 06:01 ?        00:00:00 [irq/498-eth3]
-    root      1495  1065  0 06:04 ttyS2    00:00:00 grep irq/498-eth3
-    root@am57xx-evm:~# ps -ef  | grep "eth2"
-    root      1462     2  0 06:01 ?        00:00:00 [irq/496-eth2]
-    root      1497  1065  0 06:04 ttyS2    00:00:00 grep irq/496-eth2
-
-In the above example 1462 is the process id of irq/496-eth2 thread and
-1464 is the process ID of irq/498-eth3 . Do following to migrate them to
-CPU 0.
-
-::
-
-    root@am57xx-evm:~# taskset -cp 0 1464
-    pid 1464's current affinity list: 0,1
-    pid 1464's new affinity list: 0
-    root@am57xx-evm:~# taskset -cp 0 1462
-    pid 1462's current affinity list: 0,1
-    pid 1462's new affinity list: 0
-    root@am57xx-evm:~#
-    root@am57xx-evm:~#
-
-Now start iperf client on the other side. The server side log below with
-these tuning shows no packet loss.
-
-::
-
-    [  4] local 192.168.2.30 port 5001 connected with 192.168.2.20 port 36415
-    [  4]  0.0-600.0 sec  6.15 GBytes  88.0 Mbits/sec   0.007 ms    0/4501355 (0%)
-    [  4]  0.0-600.0 sec  1 datagrams received out-of-order
-
-| 
-
-+---------------+----------------------------------------+
-| Packet Size   | Tput with no packet loss (Mbits/sec)   |
-+===============+=========+=========+=========+==========+
-|               | AM335x  | AM437x  | AM57xx  |   K2G    |
-+---------------+---------+---------+---------+----------+
-| 1472          | 30      | 64      | 88      | 30       |
-+---------------+---------+---------+---------+----------+
-| 1024          | 29      | 52      | 86      | 26       |
-+---------------+---------+---------+---------+----------+
-| 512           | 18      | 36      | 52      | 16       |
-+---------------+---------+---------+---------+----------+
-| 256           | 11      | 22      | 25      | 10       |
-+---------------+---------+---------+---------+----------+
-
-Table:  UDP Performance for HSR
-
-+---------------+----------------------------------------+
-| Packet Size   | Tput with no packet loss (Mbits/sec)   |
-+===============+=========+=========+=========+==========+
-|               | AM335x  | AM437x  | AM57xx  |   K2G    |
-+---------------+---------+---------+---------+----------+
-| 1472          | 30      | 64      | 88      | 30       |
-+---------------+---------+---------+---------+----------+
-| 1024          | 27      | 52      | 88      | 26       |
-+---------------+---------+---------+---------+----------+
-| 512           | 19      | 34      | 46      | 15       |
-+---------------+---------+---------+---------+----------+
-| 256           | 11      | 22      | 28      | 9        |
-+---------------+---------+---------+---------+----------+
-
-Table:  UDP Performance for PRP
-
-| 
-
-**NOTE-1:**\ Test ran for 1 minute with single direction traffic (Client
-to Server). Both ports were individually disconnected and then reconnected
-during the test. Reduced the traffic from 88Mbits/sec until there is no out
-of order or lost packets in the iperf stats i.e. iperf command client side
-::
-
-    iperf3 -c <IP> -u -l1472 -b<Rate>M -t60 -i5
-
-.. rubric:: TCP
-   :name: tcp
-
-.. rubric:: HSR
-   :name: hsr
-
-Server side
-
-::
-
-    root@am57xx-evm:~# iperf -s   
-    ------------------------------------------------------------
-    Server listening on TCP port 5001
-    TCP window size: 85.3 KByte (default)
-    ------------------------------------------------------------
-    [  4] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 54148
-    [ ID] Interval       Transfer     Bandwidth
-    [  4]  0.0-60.0 sec   663 MBytes  92.7 Mbits/sec
-
-Client side
-
-::
-
-    root@am57xx-evm:~# iperf -c 192.168.2.20  -t60
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, TCP port 5001
-    TCP window size: 43.8 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 54148 connected with 192.168.2.20 port 5001
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-60.0 sec   663 MBytes  92.7 Mbits/sec
-
-.. rubric:: PRP
-   :name: prp
-
-Server side
-
-::
-
-    root@am57xx-evm:~# iperf -s
-    ------------------------------------------------------------
-    Server listening on TCP port 5001
-    TCP window size: 85.3 KByte (default)
-    ------------------------------------------------------------
-    [  4] local 192.168.2.20 port 5001 connected with 192.168.2.30 port 54150
-    [ ID] Interval       Transfer     Bandwidth
-    [  4]  0.0-60.0 sec   660 MBytes  92.3 Mbits/sec
-
-Client side
-
-::
-
-    root@am57xx-evm:~# iperf -c 192.168.2.20 -t60               
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, TCP port 5001
-    TCP window size: 43.8 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 54150 connected with 192.168.2.20 port 5001
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-60.0 sec   660 MBytes  92.3 Mbits/sec
+For PRP, the steps are similar. Create prp interface and do similar settings.
 
 Redundancy Test and Logs
 ------------------------
@@ -2579,55 +1862,62 @@ Redundancy Test and Logs
 For HSR and PRP redundancy is implemented using duplicate links and
 sending frame over both links and discarding the duplicate at the
 receive side. The test requires two DAN-P or DAN-H nodes connected over
-eth2 and eth3 Ethernet Links. Boot up the EVM with bootargs set to
-configure PRU Ethernet in HSR or PRP mode as described at
-`Processor\_SDK\_Linux\_HSR\_PRP#Testing\_HSR.2FPRP\_Firmware\_Offload <Industrial_Protocols_HSR_PRP.html#plsdk-hsr-prp-testing-firmware-offload>`__
-Do an iperf UDP test at 88Mbits/sec for MTU sized packets (size = 1466)
+eth2 and eth3 Ethernet Links. Boot up the EVM and create HSR or PRP
+interfaces as described at
+`Processor\_SDK\_Linux\_HSR\_PRP#Testing\_HSR.2FPRP\_Firmware\_Offload <Industrial_Protocols_HSR_PRP.html#plsdk-hsr-prp-testing-firmware-offload>`__.
+Do an iperf UDP test at 88Mbits/sec for MTU sized packets (size = 1472)
 and then pull out either eth2 or eth3 Ethernet cable. Make sure iperf
 stats doesn't show packet loss during the test period. Here is the log
-for HSR that show link failed during the test and there was no packet
-loss.
-
-eth3 link failed
+for HSR that shows link failed during the test and there was no packet
+loss. Logs assume that iperf3 server runs on the other connected DUT.
 
 ::
 
-    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b88M -l1466 -t60
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, UDP port 5001
-    Sending 1466 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 50443 connected with 192.168.2.20 port 5001
-    [  108.740402] prueth pruss2_eth eth3: Link is Down
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-60.0 sec   631 MBytes  88.2 Mbits/sec
-    [  3] Sent 451002 datagrams
-    [  3] Server Report:
-    [  3]  0.0-60.0 sec   631 MBytes  88.2 Mbits/sec   0.003 ms    0/451001 (0%)
-    [  3]  0.0-60.0 sec  1 datagrams received out-of-order
-    root@am57xx-evm:~# [  181.444988] prueth pruss2_eth eth3: Link is Up - 100Mbps/Full - flow control off
+ root@am57xx-evm:~# iperf3 -c 192.168.2.20 -u -b90M -l1472 -t60&
+ [1] 1376
+ root@am57xx-evm:~# warning: UDP block size 1472 exceeds TCP MSS 1448, may result in fragmentation / drops
+ Connecting to host 192.168.2.20, port 5201
 
-eth2 link failed
+ [  5] local 192.168.2.10 port 50289 connected to 192.168.2.20 port 5201
+ root@am57xx-evm:~# [ ID] Interval           Transfer     Bitrate         Total Datagrams
+ [  5]   0.00-1.00   sec  10.7 MBytes  90.0 Mbits/sec  7642
+ [  5]   1.00-2.00   sec  10.7 MBytes  90.0 Mbits/sec  7642
+ ............... Cut----------------------------------------
+ [  5]  11.00-12.00  sec  10.7 MBytes  90.0 Mbits/sec  7643
+ [  5]  12.00-13.00  sec  10.7 MBytes  90.0 Mbits/sec  7644
+ [  5]  13.00-14.00  sec  10.7 MBytes  90.0 Mbits/sec  7640
+ [ 1131.770666] 000: prueth pruss2_eth eth2: No link to transmit
+ [ 1131.770666] 001: prueth pruss2_eth eth2: Link is Down
+ [ 1131.770679] 000: prueth pruss2_eth eth2: No link to transmit
+ [  5]  14.00-15.00  sec  10.7 MBytes  90.0 Mbits/sec  7645
+ [ 1133.525538] 001: prueth pruss2_eth eth2: Link is Up - 100Mbps/Full - flow control off
+ [  5]  15.00-16.00  sec  10.7 MBytes  90.0 Mbits/sec  7639
+ [  5]  16.00-17.00  sec  10.7 MBytes  90.0 Mbits/sec  7644
+ [  5]  17.00-18.00  sec  10.7 MBytes  90.0 Mbits/sec  7645
+ ............... Cut----------------------------------------
+ [  5]  19.00-20.00  sec  10.7 MBytes  90.0 Mbits/sec  7640
+ [  5]  20.00-21.00  sec  10.7 MBytes  90.0 Mbits/sec  7645
+ [  5]  21.00-22.00  sec  10.7 MBytes  90.0 Mbits/sec  7643
+ [ 1140.570653] 001: prueth pruss2_eth eth3: Link is Down
+ [ 1140.570654] 000: prueth pruss2_eth eth3: No link to transmit
+ [  5]  22.00-23.00  sec  10.7 MBytes  89.4 Mbits/sec  7596
+ [  5]  23.00-24.00  sec  10.8 MBytes  90.5 Mbits/sec  7688
+ [ 1142.308893] 001: prueth pruss2_eth eth3: Link is Up - 100Mbps/Full - flow control off
+ [  5]  24.00-25.00  sec  10.7 MBytes  90.0 Mbits/sec  7643
+ [  5]  25.00-26.00  sec  10.7 MBytes  90.0 Mbits/sec  7643
+ [  5]  26.00-27.00  sec  10.7 MBytes  90.0 Mbits/sec  7644
+ [  5]  27.00-28.00  sec  10.7 MBytes  90.0 Mbits/sec  7640
+ ............... Cut----------------------------------------
+ [  5]  59.00-60.00  sec  10.7 MBytes  90.0 Mbits/sec  7640
+ - - - - - - - - - - - - - - - - - - - - - - - - -
+ [ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+ [  5]   0.00-60.00  sec   644 MBytes  90.0 Mbits/sec  0.000 ms  0/458557 (0%)  sender
+ [  5]   0.00-60.00  sec   644 MBytes  90.0 Mbits/sec  0.011 ms  0/458556 (0%)  receiver
+ iperf Done.
+ [1]+  Done                    iperf3 -c 192.168.2.20 -u -b90M -l1472 -t60
 
-::
-
-    root@am57xx-evm:~# iperf -c 192.168.2.20 -u -b88M -l1466 -t60
-    ------------------------------------------------------------
-    Client connecting to 192.168.2.20, UDP port 5001
-    Sending 1466 byte datagrams
-    UDP buffer size:  160 KByte (default)
-    ------------------------------------------------------------
-    [  3] local 192.168.2.30 port 49260 connected with 192.168.2.20 port 5001
-    [  204.253286] prueth pruss2_eth eth2: Link is Down
-    [ ID] Interval       Transfer     Bandwidth
-    [  3]  0.0-60.0 sec   631 MBytes  88.2 Mbits/sec
-    [  3] Sent 451028 datagrams
-    [  3] Server Report:
-    [  3]  0.0-60.0 sec   631 MBytes  88.2 Mbits/sec   0.005 ms    0/451027 (0%)
-    [  3]  0.0-60.0 sec  1 datagrams received out-of-order
-    root@am57xx-evm:~# uname -a
-    Linux am57xx-evm 4.9.41-rt23-gc038d21a22 #2 SMP PREEMPT RT Wed Sep 27 06:34:09 EDT 2017 armv7l GNU/Linux
+Note that during the iperf3 session, the link failed 2 times, first eth2 and then eth3
+and no packet drop observed.
 
 Useful Commands
 ---------------
@@ -2666,27 +1956,8 @@ To change prp transparent reception mode
 To disable SV frame transmission
 -  echo 1 > /proc/<hsr/prp-if_name>/disable-sv_frame
 
- **PRU Ethernet driver help commands**
-
-
-To see queue stats
-
--  cat /sys/kernel/debug/prueth-eth<if_number>/stats
-
-To see lre_config
-
--  cat /sys/kernel/debug/prueth-<hsr/prp>-<ID>>/lre_config
-
-To dump node table
-
--  cat /sys/kernel/debug/prueth-<hsr/prp>-<ID>>/node_table
-
-Also
-
--  cat /sys/kernel/debug/prueth-<hsr/prp-<ID>/new\_nt\_bins
-
-In the above commands ID and if_numbers are chosen as described
-in section :ref:`PLSDK_HSR_PRP_id_if_number_mapping`
+To display lre_info to display things like, offload, SV vid, etc
+- cat /sys/kernel/debug/hsr/<hsr/prp-if_name>/lre_info
 
 FAQ
 ----

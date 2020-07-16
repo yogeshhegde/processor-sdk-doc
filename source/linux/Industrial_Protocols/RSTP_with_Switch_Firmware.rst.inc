@@ -45,26 +45,18 @@ as follows:
 
 Boot up the IDKs as follows:
 
-1. Boot into uboot prompt.
+1. Boot IDKs into linux prompt.
 
-2. Modify args_mmc as follows:
-
-=> setenv args_mmc 'run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype} ti_prueth.pruss1_ethtype=3 ti_prueth.pruss2_ethtype=3'
-
-=> saveenv
-
-3. Boot IDKs into linux prompt.
-
-4. Make sure the following lines appear in the boot log:
+2. Make sure the following lines appear in the boot log:
 
 .. code-block:: bash
 
- [   30.617491] prueth pruss1_eth: TI PRU ethernet (type 3) driver initialized
- [   31.207474] prueth pruss2_eth: TI PRU ethernet (type 3) driver initialized
+ [   30.617491] prueth pruss1_eth: TI PRU ethernet initialized: Dual EMAC mode
+ [   31.207474] prueth pruss2_eth: TI PRU ethernet initialized: Dual EMAC mode
 
 Note: timing is for reference only.
 
-5. Run the following script rstp.sh on each IDK.
+3. Run the following script rstp.sh on each IDK.
 
 .. code-block:: bash
 
@@ -121,7 +113,7 @@ The script
 
    d. shows some information about the bridge
 
-6. Issue command to show port information on each IDK:
+4. Issue command to show port information on each IDK:
 
 .. code-block:: console
 
@@ -150,12 +142,20 @@ a discard state appears. This discard state is a result of the RSTP protocol
 which breaks the cyclic connection into a tree (in this case, a serial
 connection.
 
-7. In step 6, make sure the cyclic connection is broken by a discard
+Note 3:
+In step 3 as soon as the first interface is added to the Linux bridge, the
+Ethernet device automatically change mode to SWITCH. When the interface is
+brought up, driver loads SWITCH firmware and brings up the PRUs in switch
+mode. Similarly when last interface is removed from the Linux bridge, the
+driver change the Etherent type to Dual EMAC. Thus Dual EMAC firmware is
+loaded and run at the PRUs when next time interface is brought up.
+
+5. In step 4, make sure the cyclic connection is broken by a discard
    state in one of the ports of one of the DUTs.
 
    In setup in step 1, it is Dut2.eth2.
 
-8. configure an IP address on br0 on any one DUT and another IP address
+6. configure an IP address on br0 on any one DUT and another IP address
    of the same subnet on another DUT. E.g.
 
    on Dut1:
@@ -164,6 +164,8 @@ connection.
    on Dut3:
    $ ifconfig br0 192.168.2.71
 
-9. Make sure ping works fron Dut1 to Dut3.
+7. Make sure ping works fron Dut1 to Dut3.
 
-10. Unplug any of the 3 cables and make sure the ping continues to work each time.
+8. Unplug any of the 3 cables and make sure the ping continues to work each time.
+
+

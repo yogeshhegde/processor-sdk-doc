@@ -703,3 +703,10 @@ You can download the sample udp-packet.pcap but make sure you update the MAC add
               TX packets:364 errors:0 dropped:0 overruns:0 carrier:0
               collisions:0 txqueuelen:1000
               RX bytes:1683600596 (1.5 GiB)  TX bytes:61115 (59.6 KiB)
+
+Currently driver doesn't use Tx IRQ as it is found that small frame througput
+performance is better when Tx IRQ is not used. However for MTU frames,
+performance is seen better with Tx IRQ used. If a specific application
+predominantly uses MTU frame, user may enable Tx IRQ in the driver by adding
+Tx Interrupt property in the DTS. For details refer to
+Documentation/devicetree/bindings/net/ti-prueth.txt

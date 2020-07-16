@@ -43,8 +43,6 @@ Processor SDK.
 
 .. Image:: /images/Software-arch-v1.jpg
 
-PTP is supported via the PRP firmware (in PRP EMAC mode) and Dual EMAC firmware.
-
 Software Components
 --------------------
 
@@ -359,8 +357,7 @@ PTP Ordinary Clock on PRU-ICSS
 
 Timestamping of PTP event messages at the PRU-ICSS ports is provided by
 the PRU-ICSS IEP module together with the PRU firmware. PTP is supported via
-the Dual EMAC firmware, PRP firmware (configured in
-SAN (Single Attached Node). PTP with redundancy is supported via both HSR and
+the Dual EMAC firmware. PTP with redundancy is supported via both HSR and
 PRP firmware.
 
 In this Linux PRU-ICSS OC implementation, the PRU firmware stores
@@ -377,12 +374,6 @@ Linux <https://www.kernel.org/doc/Documentation/ptp/ptp.txt#>`__ for
 more details.
 
 The PTP OC protocol is provided by the linuxptp application.
-
-If using PRP firmware for SAN, follow the steps at :ref:`PLSDK_PRP_EMAC_Mode-label`
-to boot up the AM57xx IDK and configure the PRU-PRP firmware to run in
-**PRP\_EMAC** mode (not needed if using Dual EMAC firmware). Once the AM57xx
-IDK is boot into Linux kernel prompt and the PRU-ICSS Ethernet ports are
-properly configured, to run linuxptp over the PRU-ICSS Ethernet ports, do
 
 ::
 
@@ -932,10 +923,6 @@ the following command
 .. rubric:: PRU-ICSS Port Configurations
    :name: pru-icss-port-configurations
 
-Follow the steps at :ref:`PLSDK_PRP_EMAC_Mode-label`
-to boot up the AM57xx IDK and configure the PRU-PRP firmware to run in
-PRP\_EMAC mode if using PRP firmware.
-
 Use the ifconfig command to configure the desired IP address, for example
 
 ::
@@ -1327,9 +1314,7 @@ the command
     $ ls /sys/devices/platform/44000000.ocp/48484000.ethernet/net
       eth0/ eth1/
 
-If using PRP firmware configured to run in SAN mode, enable EMAC mode on
-each of the ICSS PRU interfaces
-(assuming eth2 and eth3 are on ICSS2, eth4 and eth5 are on ICSS1):
+Assuming eth2 and eth3 are on ICSS2, eth4 and eth5 are on ICSS1:
 
 ::
 

@@ -36,7 +36,7 @@ and PRU-ICSS ports are eth1/eth2):
 
     ethtool -K eth1 prp-rx-offload on && ethtool -K eth2 prp-rx-offload on
     ifconfig eth1 up && ifconfig eth2 up
-    ip link add name prp0 type prp slave1 eth1 slave2 eth2 supervision 45
+    ip link add name prp0 type hsr slave1 eth1 slave2 eth2 supervision 45 proto 1
     ifconfig prp0 192.168.2.20
 
 4 ) Attempt to ping from one device to the other, and try disconnecting a link.

@@ -9,6 +9,34 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
+Processor SDK 07.xx Releases
+============================
+
+Processor SDK 07.01.00
+----------------------
+- Linux HSR, PRP driver. The source directory is now net/hsr instead of
+  net/hsr-prp and all source files are prefixed as originally with hsr
+  prefix instead of hsr_prp. Consequently CONFIG_HSR_PRP is changed to
+  CONFIG_HSR as well.
+- ip link command for prp interface creation is changed to use type hsr
+  and a new proto parameter with a value of 1 for prp and 0 for hsr.
+- PRUETH Driver uses NAPI vs irq thread based processing in older release.
+  User is expected to issue a chrt command and raise priority of softirq
+  daemon to avoid packet loss.
+- The boot parameters for Ethernet type is now removed. User is expected
+  to switch to HSR/PRP/Switch following instructions from user guide.
+- Network Storm Prevention now uses tc filter command instead of sysfs file
+  as documented in the User guide.
+- VLAN/MC filter dump now uses switch-config instead of debugfs.
+- Tx IRQ is removed for PRUETH EMAC driver because testing showed that
+  performance for small size frames is better with IRQ not used. For
+  MTU frames, Tx IRQ provides better performance. User may add DT entry
+  for Tx IRQ to enable this if the use case is predominantly using MTU
+  size frames to take advantage of this. See
+  Documentation/devicetree/bindings/net/ti-prueth.txt
+  for details on DT changes needed to use Tx IRQ.
+- PRP Emac mode is obsolete and not supported anymore.
+
 Processor SDK 06.xx Releases
 ============================
 
