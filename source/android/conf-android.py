@@ -5,7 +5,7 @@ master_doc = 'android/index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['rtos', 'linux', 'swtoolsdev']
+exclude_patterns = ['rtos', 'linux']
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ProcessorSDKAndroiddoc'

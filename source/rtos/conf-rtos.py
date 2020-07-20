@@ -5,7 +5,7 @@ master_doc = 'rtos/index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['linux', 'android', 'swtoolsdev']
+exclude_patterns = ['linux', 'android']
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ProcessorSDKRTOSdoc'
