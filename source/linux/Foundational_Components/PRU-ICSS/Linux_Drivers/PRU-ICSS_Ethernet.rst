@@ -474,6 +474,20 @@ On your development board console
 
 --------------
 
+|
+
+.. rubric:: Dual EMAC Network Storm Prevention Support
+   :name: dual-emac-storm-prevention
+
+Dual EMAC mode supports credit based network storm prevention feature
+for each port.
+
+Refer to `Network Storm Prevention section <../../../Industrial_Protocols_HSR_PRP.html#network-storm-prevention>`__
+of HSR/PRP documentation for more details.
+
+
+--------------
+
 .. rubric:: Frequently Asked Questions
    :name: frequently-asked-questions
 
@@ -482,9 +496,9 @@ On your development board console
 
 Yes! The HSR and PRP protocols are currently supported on the AM572x IDK
 board. To learn more about the HSR and PRP PRU firmware implementation
-click `here <Industrial_Protocols_HSR_PRP.html>`__. To learn more about
+click `here <../../../Industrial_Protocols_HSR_PRP.html>`__. To learn more about
 running the protocols/firmwares while using the Linux Processor SDK
-click `here <Industrial_Protocols_HSR_PRP.html#linux-software>`__.
+click `here <../../../Industrial_Protocols_HSR_PRP.html#linux-software>`__.
 
 HSR stands for High Availability Seamless Redundancy. This is a protocol
 used to support redundant networks needed for industrial applications
