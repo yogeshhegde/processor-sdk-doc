@@ -575,6 +575,73 @@ Dual EMAC
 The multicast filter table(s) are stored in each PRU's Data RAM (PRU0->Data RAM0,
 PRU1->Data RAM1) instead of one table in Data RAM1 as for HSR/PRP.
 
+RSTP Switch
+^^^^^^^^^^^
+
+In case of RSTP switch mode, multicast filtering is available for
+Host/CPU port only. There is a per port multicast filter
+table in firmware that can be configured to indicate which of the
+multicast addresses are allowed to forwarded to host port from the given
+port. Linux driver sets up both filter table to be identical.
+Note that currently there is no way to disable multicast filter in RSTP
+switch mode (setting ALLMULTI on the bridge port won't help).
+
+Multicast filter has no affect on L2 cut-throughput forwarding of
+multicast packets.
+
+Testing Multicast filtering
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On slave side (i.e device connected to Dual EMAC or Switch port) start
+UDP iperf client:
+
+::
+
+ root@slave:~# ifconfig eth0 10.0.0.55
+ root@slave:~# route add 224.1.100.1 eth0
+ root@slave:~# iperf -c  224.1.100.1 -u -t 600
+
+On host side, multicast packets are reported as being dropped as
+firmware filter is not set to allow this unregistered addresses to host
+port. Here host port refers to  one of the PRU Ethernet's port in Dual EMAC
+mode or the bridge port in case of RSTP switch mode. This can be
+verified with ethtool
+
+::
+
+ root@am57xx-evm:~# ethtool -S eth2 | grep multicastDropped
+      multicastDropped: 35
+
+This shows that filtering is indeed working.
+
+Now start a UDP iperf server bound to same multicast IP on host side
+(one of the Dual EMAC ports say eth2 or bridge port say br0 in case of
+RSTP switch mode):
+
+::
+
+ root@am57xx-evm:~# ifconfig eth2 10.0.0.1
+ root@am57xx-evm:~# route add 224.1.100.1 eth2
+ root@am57xx-evm:~# iperf -s -u -B 224.1.100.1 -i 5
+ ------------------------------------------------------------
+ Server listening on UDP port 5001
+ Binding to local address 224.1.100.1
+ Joining multicast group  224.1.100.1
+ Receiving 1470 byte datagrams
+ UDP buffer size:  176 KByte (default)
+ ------------------------------------------------------------
+ [  3] local 224.1.100.1 port 5001 connected with 10.0.0.55 port 34241
+ [ ID] Interval       Transfer     Bandwidth        Jitter   Lost/Total
+  Datagrams
+ [  3]  0.0- 5.0 sec   639 KBytes  1.05 Mbits/sec   0.011 ms 2096/ 2541
+  (82%)
+ [  3]  5.0-10.0 sec   640 KBytes  1.05 Mbits/sec   0.028 ms    0/  446
+  (0%)
+ [  3] 10.0-15.0 sec   640 KBytes  1.05 Mbits/sec   0.022 ms    0/  446
+  (0%)
+
+Packets are no longer dropped and are received by the host.
+
 VLAN over PRU Ethernet
 -----------------------
 
