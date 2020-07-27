@@ -1799,4 +1799,44 @@ It's required to rebuild kernel with below changes first:
        event index 3 at 1493259031.378311139
        event index 3 at 1493259032.378881279
 
+.. rubric:: Generating Pulse Per Second (PPS) signal syncronized to CPTS PTP clock
+   :name: generating-pulse-per-second-signal-syncronized-to-cpts-ptp-clock
+
+CPTS module in AM335x, AM437x and AM57xx SoCs did not support generating a PTP clock synchronized
+Pulse-Per-Second (PPS) signal. But few general purpose timers are connected to CPTS module which
+are capable of generating a hardware TS push events (HW\_TS\_PUSH). Using this event and the
+general purpose timer configured in PWM mode, a PPS signal is generated the is syncronized to
+second boundary of CPTS PTP clock.
+
+- It is required to boot kernel using pps specfic dtb. Like for am571-idk, am571x-idk-pps.dtb should be used.
+- `phc2pwm <https://git.ti.com/cgit/processor-sdk/linuxptp/tree/phc2pwm.c?h=ti-linuxptp>`__ inside linuxptp project can be used to generate this PPS signal.
+
+::
+
+        # phc2pwm -h
+       usage: phc2pwm [options]
+
+       -p [dev]       Clock device to use
+       -e [id]        PTP index for event/trigger
+       -w [id]        PWM chip device id
+       -c [id]        PWM channel id from PWM chip
+       -l [num]       set the logging level to 'num'
+       -h             prints this message and exits
+
+
+- Boot the kernel and run the following commnd at linux prompt
+
+::
+
+        # ./phc2pwm -p /dev/ptp0 -c 0 -e 3 -w 0
+       Timestamp = 233000000009
+       Timestamp = 234000000001
+       Timestamp = 234999999996
+       Timestamp = 235999999993
+       Timestamp = 236999999995
+       Timestamp = 237999999994
+       Timestamp = 238999999995
+       Timestamp = 240000000001
+       Timestamp = 240999999996
+       Timestamp = 241999999993
 
