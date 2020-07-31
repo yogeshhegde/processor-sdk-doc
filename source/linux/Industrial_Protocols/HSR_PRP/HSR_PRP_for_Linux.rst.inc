@@ -584,7 +584,8 @@ table in firmware that can be configured to indicate which of the
 multicast addresses are allowed to forwarded to host port from the given
 port. Linux driver sets up both filter table to be identical.
 Note that currently there is no way to disable multicast filter in RSTP
-switch mode (setting ALLMULTI on the bridge port won't help).
+switch mode (setting ALLMULTI on the bridge port has no effect
+currently).
 
 Multicast filter has no affect on L2 cut-throughput forwarding of
 multicast packets.
