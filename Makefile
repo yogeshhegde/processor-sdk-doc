@@ -11,6 +11,10 @@ OS            = linux
 VERSION       = $(shell cat version.txt)
 BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
 
+mkfile_path = $(abspath $(lastword $(MAKEFILE_LIST)))
+export ROOTDIR = $(dir $(mkfile_path))
+$(info ROOTDIR is $(ROOTDIR))
+
 $(info DEVFAMILY is $(DEVFAMILY))
 TAGFILE         = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
 FAMILYSETUPFILE = python-scripts/family_setup.py

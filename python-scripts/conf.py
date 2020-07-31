@@ -19,7 +19,8 @@ import shlex
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
-sys.path.append('../../python-scripts')
+rootdir = os.environ.get('ROOTDIR')
+sys.path.append(rootdir + 'python-scripts')
 
 # -- General configuration ------------------------------------------------
 
@@ -37,7 +38,7 @@ extensions = [
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['../_templates']
+#templates_path = ['../_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -104,7 +105,7 @@ html_theme = 'sphinx_rtd_theme_ti'
 html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ["../../sphinx_rtd_theme_ti/_themes"]
+html_theme_path = [rootdir + 'sphinx_rtd_theme_ti/_themes']
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -116,12 +117,12 @@ html_theme_path = ["../../sphinx_rtd_theme_ti/_themes"]
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
-html_favicon = '../images/favicon.ico'
+html_favicon = rootdir + 'source/images/favicon.ico'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['../../sphinx_rtd_theme_ti/_static']
+html_static_path = [rootdir + 'sphinx_rtd_theme_ti/_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
