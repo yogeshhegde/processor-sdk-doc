@@ -130,13 +130,6 @@ Steps to create an intitial baseline:
 
         * Copy **include/configs/am335x_evm.h** to a new file
           **include/configs/am335x_<myboard>.h**
-        * Remove the ``#define CONFIG_SYS_LDSCRIPT`` definition, unless you are
-          actually using NOR boot.
-        * Remove the ``#define CONFIG_ENV_EEPROM_IS_ON_I2C``,
-          ``#define CONFIG_SYS_I2C_EEPROM_ADDR``,
-          ``#define CONFIG_SYS_I2C_EEPROM_ADDR_LEN`` definitions as we usually
-          do not want to use an external EEPROM for configuration storage, but
-          instead want to use the boot media.
         * Update the ``findfdt`` U-Boot environmental variable definition made
           via ``CONFIG_EXTRA_ENV_SETTINGS`` to hard-code board-specific DTB file
           used to boot the Linux Kernel
