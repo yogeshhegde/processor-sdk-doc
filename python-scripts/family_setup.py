@@ -72,5 +72,5 @@ def setup(app):
         print(elem)
     print(']')
     # Write to the replacevars.rst.inc file for usage by Sphinx
-    replacevars.write_replacevars(app, sdk_os, family_replacevars)
+    replacevars.write_replacevars(app, family_replacevars)
     print("Device Family Build setup completed")

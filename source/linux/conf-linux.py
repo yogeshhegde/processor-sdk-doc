@@ -5,7 +5,7 @@ master_doc = 'linux/index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['rtos', 'android']
+exclude_patterns = ['rtos', 'android', 'release_specific']
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ProcessorSDKLinuxdoc'

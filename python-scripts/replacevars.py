@@ -5,14 +5,12 @@ import os
 # Description:  Writes replacement variable array to source/${OS}/replacevars.rst.inc
 #
 # Parameters: app          - Application calling this Python function
-#             operating_os - Operating System for the SDK (i.e. source/{op_os} for the
-#                            documentation source
 #             replacevars  - Input hash table of replacevars that will be converted into
 #                            "replace" directives in the replacevars.rst.inc file
 
-def write_replacevars(app, operating_os, replacevars):
+def write_replacevars(app, replacevars):
     replacevarstext = []
-    replacevarsfile="source" + "/" + operating_os + "/" + "replacevars.rst.inc"
+    replacevarsfile= os.environ.get('CONFDIR') + "/" + "replacevars.rst.inc"
     with open(replacevarsfile, 'w') as f:
         for key in replacevars:
             nextline=".. |" + key + "| replace:: " + replacevars[key]

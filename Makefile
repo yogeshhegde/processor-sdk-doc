@@ -8,8 +8,6 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
 OS            = linux
-VERSION       = $(shell cat version.txt)
-BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
 
 mkfile_path = $(abspath $(lastword $(MAKEFILE_LIST)))
 export ROOTDIR = $(dir $(mkfile_path))
@@ -20,6 +18,17 @@ TAGFILE         = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
 FAMILYSETUPFILE = python-scripts/family_setup.py
 $(info TAGFILE is $(TAGFILE))
 
+ifeq ($(OS), am64x)
+    CONFDIR     = source/release_specific/${OS}
+    VERSION     = $(shell cat ${CONFDIR}/version.txt)
+else
+    CONFDIR     = source/${OS}
+    VERSION     = $(shell cat version.txt)
+endif
+export CONFDIR
+
+BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
+
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
 $(error The '$(SPHINXBUILD)' command was not found. Make sure you have Sphinx installed, then set the SPHINXBUILD environment variable to point to the full path of the '$(SPHINXBUILD)' executable. Alternatively you can add the directory with the executable to your PATH. If you don't have Sphinx installed, grab it from http://sphinx-doc.org/)
@@ -28,7 +37,7 @@ endif
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-CONFLOC         = -c source/${OS}
+CONFLOC         = -c ${CONFDIR}
 VEROPTS         = -D version=${VERSION} -D release=${VERSION}
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(CONFLOC) $(VEROPTS) source
 # the i18n builder cannot share the environment and doctrees with the others
@@ -65,11 +74,12 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
-	rm -f source/${OS}/conf.py
+	rm -f ${CONFDIR}/conf.py
+	rm -f ${CONFDIR}/replacevars.rst.inc
 
 config:
-	cat python-scripts/conf.py source/${OS}/conf-${OS}.py ${TAGFILE} ${FAMILYSETUPFILE} > source/${OS}/conf.py
-	sed -i 's/SDKVERSION/${VERSION}/g' source/${OS}/conf.py
+	cat python-scripts/conf.py ${CONFDIR}/conf-${OS}.py ${TAGFILE} ${FAMILYSETUPFILE} > ${CONFDIR}/conf.py
+	sed -i 's/SDKVERSION/${VERSION}/g' ${CONFDIR}/conf.py
 	cp sphinx_rtd_theme_ti/patch/layout.html sphinx_rtd_theme_ti/_themes/sphinx_rtd_theme_ti/layout.html
 
 html: 
