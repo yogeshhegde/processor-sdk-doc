@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/The_ti.sdo.ipc_Package 
 
-.. |ipcSdoRun_Img1| Image:: ../images/Book_run.png
+.. |ipcSdoRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/files.html
 
 Introduction

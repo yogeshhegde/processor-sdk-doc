@@ -96,5 +96,4 @@ API reference for application can be found in below file:
 |                                   | LLD.pdf                           |
 +-----------------------------------+-----------------------------------+
 
-.. raw:: html
 

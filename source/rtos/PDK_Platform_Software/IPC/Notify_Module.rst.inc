@@ -1,9 +1,9 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Notify_Module 
 
-.. |notCfg_Img1| Image:: ../images/Book_cfg.png
+.. |notCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |notRun_Img1| Image:: ../images/Book_run.png
+.. |notRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_notify_8h.html
 
 | 

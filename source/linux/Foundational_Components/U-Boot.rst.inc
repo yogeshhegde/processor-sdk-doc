@@ -3,7 +3,7 @@
 *******************************
 U-Boot
 *******************************
-.. include:: Foundational_Components/U-Boot/Linux_Core_U-Boot_Users_Guide.rst.inc
+.. include:: /linux/Foundational_Components/U-Boot/Linux_Core_U-Boot_Users_Guide.rst.inc
 
 
 U-Boot Release Notes
@@ -33,7 +33,7 @@ Known Issues
     Please refer to `Known Issues <Release_Specific_PSDKLA_Release_Notes.html#issues-tracker>`__ for details.
 
 
-.. include:: Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
+.. include:: /linux/Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
 
 
 Troubleshooting

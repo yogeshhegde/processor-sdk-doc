@@ -334,4 +334,3 @@ detected, pinmux configuration and confirm DDR initialization and slave
 core states. This helps minimize the number of variables in the system
 boot and helps us zero in on the most likely cause for the boot failure.
 
-.. raw:: html

@@ -38,4 +38,3 @@ individual DSP cores.
 
 Sync Module implements support for Multicore Barriers and Locks.
 
-.. raw:: html

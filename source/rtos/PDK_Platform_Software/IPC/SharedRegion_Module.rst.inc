@@ -1,16 +1,16 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/SharedRegion_Module 
 
-.. |srmCfg_Img1| Image:: ../images/Book_cfg.png
+.. |srmCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |srmCfg_Img2| Image:: ../images/Book_cfg.png
+.. |srmCfg_Img2| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
 
-.. |srmRun_Img1| Image:: ../images/Book_run.png
+.. |srmRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
 
-.. |srmRun_Img2| Image:: ../images/Book_run.png
+.. |srmRun_Img2| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
                  
 | 
@@ -24,7 +24,7 @@
 The SharedRegion module is designed to be used in a multi-processor environment where there are memory regions that are shared and accessed across different processors.
 In an environment with shared memory regions, a common problem is that these shared regions are memory mapped to different address spaces on different processors. This is shown in the following figure. The shared memory region "DDR2" is mapped into Proc0's local memory space at base address 0x80000000 and Proc1's local memory space at base address 0x90000000. Therefore, the pointers in "DDR2" need to be translated in order for them to be portable between Proc0 and Proc1. The local memory regions for Proc0 and Proc1 are not shared thus they do not need to be added to the SharedRegion module.
 
-.. image:: ../images/IpcUG_ipc_2_8_1.png
+.. image:: /images/IpcUG_ipc_2_8_1.png
 
 On systems where address translation is not required, translation is a noop, so performance is not affected.
 
@@ -97,7 +97,7 @@ If, during static configuration, you don't know the base address for every proce
 
 The following figure shows the configuration of a SharedRegion table for the system in the following figure. This system has seven processors and two shared memory regions. Region 0 ("ext") is accessible by all processors. Region 1 ("local") is accessible only by processors 1 to 6.
 
-.. image:: ../images/IpcUG_ipc_2_8_2.png
+.. image:: /images/IpcUG_ipc_2_8_2.png
 
 If the "createHeap" field is set to true, a HeapMemMP instance is created within the SharedRegion.
 

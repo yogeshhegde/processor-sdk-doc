@@ -1,16 +1,16 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/NameServer_Module 
 
-.. |nsmCfg_Img1| Image:: ../images/Book_cfg.png
+.. |nsmCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/index.html#ti/sdo/utils/NameServer.html
 
-.. |nsmCfg_Img2| Image:: ../images/Book_cfg.png
+.. |nsmCfg_Img2| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |nsmRun_Img1| Image:: ../images/Book_run.png
+.. |nsmRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_name_server_8h.html
 
-.. |nsmRun_Img2| Image:: ../images/Book_run.png
+.. |nsmRun_Img2| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_name_server_8h.html
                  
 | 

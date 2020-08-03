@@ -77,7 +77,7 @@ steps:
 #. Under the **Products and Repositories** tab, uncheck *all* the boxes
    for IPC. This ensures that no version is selected.
 
-   .. image:: ../images/Rebuild_deselect.png
+   .. image:: /images/Rebuild_deselect.png
 
 #. Click the **Add** button next to the **Products and Repositories**
    tab.
@@ -86,7 +86,7 @@ steps:
    IPC. For example, the location may be
    C:\myIpcBuilds\custom_ipc_1_22_##-##\packages.
 
-   .. image:: ../images/Rebuild_addrep.png
+   .. image:: /images/Rebuild_addrep.png
 
 #. Click **OK** to apply these changes to the project.
 #. You may now rebuild your project using the re-built version of IPC.

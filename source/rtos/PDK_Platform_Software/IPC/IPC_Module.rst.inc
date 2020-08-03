@@ -1,16 +1,16 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/Ipc_Module 
 
-.. |ipcCfg_Ipc_Img1| Image:: ../images/Book_cfg.png
+.. |ipcCfg_Ipc_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/index.html#ti/sdo/ipc/Ipc.html
 
-.. |ipcCfg_Ipc_Img2| Image:: ../images/Book_cfg.png
+.. |ipcCfg_Ipc_Img2| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |ipcRun_Ipc_Img1| Image:: ../images/Book_run.png
+.. |ipcRun_Ipc_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_ipc_8h.html
 
-.. |ipcRun_Ipc_Img2| Image:: ../images/Book_run.png
+.. |ipcRun_Ipc_Img2| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_ipc_8h.html
 
 | 

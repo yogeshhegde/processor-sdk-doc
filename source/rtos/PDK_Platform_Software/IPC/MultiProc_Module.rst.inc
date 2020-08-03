@@ -1,16 +1,16 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/MultiProc_Module 
 
-.. |mpmCfg_Img1| Image:: ../images/Book_cfg.png
+.. |mpmCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |mpmCfg_Img2| Image:: ../images/Book_cfg.png
+.. |mpmCfg_Img2| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |mpmRun_Img1| Image:: ../images/Book_run.png
+.. |mpmRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
 
-.. |mpmRun_Img2| Image:: ../images/Book_run.png
+.. |mpmRun_Img2| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_multi_proc_8h.html
                  
 | 

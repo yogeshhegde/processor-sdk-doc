@@ -63,7 +63,7 @@ architecture with reference to the NIMU implementations. For details
 for the NDK/NIMU architecture, please refer to NDK Programmer's
 Reference Guide `[2] <http://www-s.ti.com/sc/techlit/spru524.pdf>`__
 
-.. Image:: ../images/NDK_ARCH.png
+.. Image:: /images/NDK_ARCH.png
 
 NIMU for CPSW
 -------------
@@ -464,7 +464,7 @@ Jumbo frames have packet sizes larger than 1500 bytes. Jumbo frame support can b
 Finally, please rebuild the test application with updated NDK and NIMU libraries. A reference example for C6678 is available at: http://processors.wiki.ti.com/index.php/Enabling_Jumbo_Packet_Support_for_C6678. Note the work was implemented on earlier BIOS MCSDK package which was obsolete. 
 
 Keystone PA or NDK example doesn’t work in other boot mode than no-boot mode using CCS/JTAG?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When running the program with CCS/JTAG, the default GEL file initializes the SOC. Same initialization, like turning on all the relevant power domains, and configuring the SGMII, Serdes, may not be implemented in other boot modes. First check GEL file under ccs_base\emulation\boards\<boards>\gel, function Global_Default_Setup() function to add the missing initializations into the application. Next, look for any boot mode dependent code in the application.  For example, passPowerUp() is called in no_boot mode to turn on PA, this has to be executed in your application when booting from other boot modes as well.   
 
@@ -491,4 +491,3 @@ Additional Documentation References
 
 .. _Network Developers Kit FAQ: http://processors.wiki.ti.com/index.php/Network_Developers_Kit_FAQ 
 
-.. raw:: html

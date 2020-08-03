@@ -39,7 +39,7 @@ for simple synchronization in which you want to send a message to
 another processor to tell it to perform some action and optionally have
 it notify the first processor when it is finished.
 
-.. Image:: ../images/IpcUG_over_1_2_1.png
+.. Image:: /images/IpcUG_over_1_2_1.png
 
 In this scenario, you make API calls to the Notify module. For example,
 the Notify_sendEvent() function sends an event to the specified
@@ -64,7 +64,7 @@ Data Passing Scenario (BIOS-to-BIOS only)
 In addition to the IPC modules used in the previous scenario, you can
 use the ListMP module to share a linked list between processors.
 
-.. Image:: ../images/IpcUG_over_1_2_2.png
+.. Image:: /images/IpcUG_over_1_2_2.png
 
 In this scenario, you make API calls to the Notify and ListMP modules.
 
@@ -100,7 +100,7 @@ Dynamic Allocation Scenario (BIOS-to-BIOS only)
 To the previous scenario, you can add dynamic allocation of ListMP
 elements using one of the Heap*MP modules.
 
-.. Image:: ../images/IpcUG_over_1_2_3.png
+.. Image:: /images/IpcUG_over_1_2_3.png
 
 In this scenario, you make API calls to the Notify and ListMP modules
 and a Heap*MP module.
@@ -121,7 +121,7 @@ scenario supported by IPC, you can add the MessageQ module. Note that
 the following diagram shows one particular transport (TransportShm) and
 may not apply to all devices and/or environments.
 
-.. Image:: ../images/IpcUG_over_1_2_4.png
+.. Image:: /images/IpcUG_over_1_2_4.png
 
 In this scenario, you make API calls to the MessageQ module for
 inter-processor communication.

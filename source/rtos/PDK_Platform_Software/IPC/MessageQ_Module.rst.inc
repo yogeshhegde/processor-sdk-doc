@@ -1,16 +1,16 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/MessageQ_Module 
 
-.. |msgCfg_Img1| Image:: ../images/Book_cfg.png
+.. |msgCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |msgCfg_Img2| Image:: ../images/Book_cfg.png
+.. |msgCfg_Img2| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |msgRun_Img1| Image:: ../images/Book_run.png
+.. |msgRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_message_q_8h.html
 
-.. |msgRun_Img2| Image:: ../images/Book_run.png
+.. |msgRun_Img2| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_message_q_8h.html
 
 | 
@@ -55,7 +55,7 @@ A thread may read from or write to multiple message queues.
 
 The following figure shows the flow in which applications typically use the main runtime MessageQ APIs:
 
-.. Image:: ../images/IpcUG_ipc_2_3_1.png
+.. Image:: /images/IpcUG_ipc_2_3_1.png
 
 Conceptually, the reader thread creates and owns the message queue. Writer threads then open a created message queue to get access to them.
 
@@ -506,5 +506,5 @@ A message queue is created by a Task. An open on the same processor then occurs.
 Assume there is one message in the system. The opener allocates the message and 
 sends it to the created message queue, which gets and frees it.
 
-.. Image:: ../images/IpcUG_ipc_2_3_2.png
+.. Image:: /images/IpcUG_ipc_2_3_2.png
 

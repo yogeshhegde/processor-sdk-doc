@@ -16,7 +16,7 @@ Guide on building and running the IPC examples of Processor SDK
   target EVMs and how to run the run the IPC examples of processor SDK
   on target EVM.
 
-| Download the guide from :download:`Keystone II IPC Examples <../files/Guide_Keystone_II_IPC_examples_.zip>`
+| Download the guide from :download:`Keystone II IPC Examples </files/Guide_Keystone_II_IPC_examples_.zip>`
 
 | This guide will have steps on
 | 1. Flashing the u-boot and boot u-boot.
@@ -205,7 +205,7 @@ Refer the screenshot below in which the correct path should be provided
 to pick up the project and its sources. Note that the option for “Copy
 projects into work space" should be unchecked.
 
-.. Image:: ../images/ImportPjt.jpg
+.. Image:: /images/ImportPjt.jpg
 
 | 
 
@@ -213,7 +213,7 @@ In the project explorer screen, check whether you are able to see the
 folders, slave --> src --> \*.c files.... Right click on the project and
 give build.
 
-.. Image:: ../images/Sourcefilepjt.jpg
+.. Image:: /images/Sourcefilepjt.jpg
 
 .. rubric:: Q: After building the slave code of the Image processing
    demo using CCS, where it needs to be replaced in the linux file
@@ -351,7 +351,7 @@ messages between the cores via the QMSS transport. The messages will be
 used to measure the transport's performance. The test will be complete
 after the throughput (msg/s) has been calculated.
 
-.. Image:: ../images/Qmss_IPC.png
+.. Image:: /images/Qmss_IPC.png
 
 .. rubric:: Q: How can I build the qmssIpcbenchmark of pdk_C6678_1_1_2_x
    pdk_C6678_1_1_2_x with release build configuration ?
@@ -380,7 +380,7 @@ after the throughput (msg/s) has been calculated.
 | 4. Now build qmssIpcBenchmark project.
 | Screenshot of the successful release build of qmssIpcBenchmark
   project.
-.. Image:: ../images/QMSSIPC_project1.png
+.. Image:: /images/QMSSIPC_project1.png
 
 | 
 
@@ -441,6 +441,6 @@ To allow single-step debug of the IPC and BIOS source rebuild the
 example projects with the following command added to the example's .cfg
 file BIOS.libType = BIOS.LibType_Debug; <--- here.
 
-.. Image:: ../images/Qmss_transports.png
+.. Image:: /images/Qmss_transports.png
 
 

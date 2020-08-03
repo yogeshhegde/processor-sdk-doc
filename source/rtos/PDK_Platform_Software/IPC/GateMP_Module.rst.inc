@@ -1,13 +1,13 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/GateMP_Module 
 
-.. |gpmCfg_Img1| Image:: ../images/Book_cfg.png
+.. |gpmCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
                  
-.. |gmpRun_Img1| Image:: ../images/Book_run.png
+.. |gmpRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_gate_m_p_8h.html
 
-.. |gmpRun_Img2| Image:: ../images/Book_run.png
+.. |gmpRun_Img2| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_gate_m_p_8h.html
 
 | 
@@ -178,6 +178,6 @@ Sample Runtime Program Flow (Dynamic)
 The following diagram shows the program flow for a two-processor (or two-thread) application. 
 This application creates a Gate dynamically.
 
-.. Image:: ../images/IpcUG_ipc_2_6_1.png
+.. Image:: /images/IpcUG_ipc_2_6_1.png
 
 

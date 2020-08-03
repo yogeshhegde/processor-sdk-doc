@@ -195,18 +195,18 @@ demonstration on TI platform. Connect the tested eth port of the evm to
 a switch for master station. Do the same connection for slave station to
 same switch.
 
-.. Image:: ../images/Cclink_setup_pic.PNG
+.. Image:: /images/Cclink_setup_pic.PNG
 
 | 
 | Once the connection is done, load master and slave station code on
   both evm and run them simultaneously. You would see following output
   on uart port of master station.
 
-.. Image:: ../images/Cclink_master_screeshot_linux.png
+.. Image:: /images/Cclink_master_screeshot_linux.png
 
 You would see following output on uart port of slave station.
 
-.. Image:: ../images/Cclink_slave_screenshot_linux.png
+.. Image:: /images/Cclink_slave_screenshot_linux.png
 
 | 
 

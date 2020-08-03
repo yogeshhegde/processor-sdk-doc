@@ -89,7 +89,7 @@ those who are new to CCS.
 When you load and run your first program, CCS needs to know which core
 to run it on. You see a dialog box similar this one:
 
-.. Image:: ../images/Select_core.JPG
+.. Image:: /images/Select_core.JPG
 
 Check the box only for core 0.
 
@@ -123,7 +123,7 @@ see some *Hello world example* projects. Select the best one for your HW
 platform. In this screen shot, the selection is for C6678. Select
 **Next**.
 
-.. Image:: ../images/Omp_h1_project_setup.jpg
+.. Image:: /images/Omp_h1_project_setup.jpg
 
 The next dialog shows the RTSC Configuration Settings. If only one
 version of the MCSDK is installed, then nothing more is required. If
@@ -170,13 +170,13 @@ In the **Project Explorer** window, insure the new project is selected.
 
 Select the Debug icon.
 
-.. Image:: ../images/Omp_h2_debug_icon.JPG
+.. Image:: /images/Omp_h2_debug_icon.JPG
 
 Next a dialog will come up which asks which CPU cores to load the
 program on. Select cores 0-3, then click **OK**. It will appear similar
 to this ...
 
-.. Image:: ../images/Omp_h3_select_cores.JPG
+.. Image:: /images/Omp_h3_select_cores.JPG
 
 The following actions take place automatically:
 
@@ -193,7 +193,7 @@ The following actions take place automatically:
 Now you are ready to execute. In the Debug window, click the Resume
 execution icon.
 
-.. Image:: ../images/Omp_h4_resume_icon.JPG
+.. Image:: /images/Omp_h4_resume_icon.JPG
 
 The console window will show output similar to, but not exactly the same
 as, the following ...
@@ -234,7 +234,7 @@ Start it the same way as the hello world project. But give it a
 different name, look for *matrix* among the examples, and choose the
 *OpenMP matrix vector multiplication example* for your system.
 
-.. Image:: ../images/Omp_h5_matvec_setup.JPG
+.. Image:: /images/Omp_h5_matvec_setup.JPG
 
 .. rubric:: Build and Execute
    :name: build-and-execute
@@ -299,14 +299,14 @@ again. Here is a good way to do that.
 In the **Debug** window, select cores 0-3, right-click and choose
 **Group Core(s)**.
 
-.. Image:: ../images/Omp_h6_group_cores.JPG
+.. Image:: /images/Omp_h6_group_cores.JPG
 
 Now reset the cores in the newly formed group. Select the group and
 click the **CPU Reset** icon near the top right of the **Debug** window.
 
 CPU Reset icon
 
-.. Image:: ../images/Omp_h7_cpu_reset.JPG
+.. Image:: /images/Omp_h7_cpu_reset.JPG
 
 Then reload the program with the menu selection **Run \| Load \| Reload
 Program**. Now you are ready to resume execution as before. Compare with
@@ -321,6 +321,4 @@ forum <http://e2e.ti.com/support/development_tools/compiler/f/343.aspx>`__
 with the tag ``openmp``. Please use the tag. Use of the tag triggers an
 e-mail to the current support team. Without the tag, the issue may go
 unnoticed for some time.
-
-.. raw:: html
 

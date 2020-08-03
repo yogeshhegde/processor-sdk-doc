@@ -11,13 +11,13 @@ This video demonstrates how to build and run IPC examples on the AM572x General 
 
 |
 
-IPC Training v2.21 - IPC 3.x Full Training Material :download:`(PowerPoint) <../files/IPC_Training_2_21.pptx>` :download:`(PowerPointShow) <../files/IPC_Training_2_21.ppsx>` :download:`(PDF) <../files/IPC_Training_2_21.pdf>`
+IPC Training v2.21 - IPC 3.x Full Training Material :download:`(PowerPoint) </files/IPC_Training_2_21.pptx>` :download:`(PowerPointShow) </files/IPC_Training_2_21.ppsx>` :download:`(PDF) </files/IPC_Training_2_21.pdf>`
 
 |
 
-IPC Lab 1 - Hello :download:`(PowerPoint) <../files/IPC_Lab_1_Hello.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_1_Hello.ppsx>` :download:`(PDF) <../files/IPC_Lab_1_Hello.pdf>`
+IPC Lab 1 - Hello :download:`(PowerPoint) </files/IPC_Lab_1_Hello.pptx>` :download:`(PowerPointShow) </files/IPC_Lab_1_Hello.ppsx>` :download:`(PDF) </files/IPC_Lab_1_Hello.pdf>`
 
-IPC Lab 2 - MessageQ :download:`(PowerPoint) <../files/IPC_Lab_2_MessageQ.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_2_MessageQ.ppsx>` :download:`(PDF) <../files/IPC_Lab_2_MessageQ.pdf>`
+IPC Lab 2 - MessageQ :download:`(PowerPoint) </files/IPC_Lab_2_MessageQ.pptx>` :download:`(PowerPointShow) </files/IPC_Lab_2_MessageQ.ppsx>` :download:`(PDF) </files/IPC_Lab_2_MessageQ.pdf>`
 
-IPC Lab 3 - Scalability :download:`(PowerPoint) <../files/IPC_Lab_3_Scalability.pptx>` :download:`(PowerPointShow) <../files/IPC_Lab_3_Scalability.ppsx>` :download:`(PDF) <../files/IPC_Lab_3_Scalability.pdf>`
+IPC Lab 3 - Scalability :download:`(PowerPoint) </files/IPC_Lab_3_Scalability.pptx>` :download:`(PowerPointShow) </files/IPC_Lab_3_Scalability.ppsx>` :download:`(PDF) </files/IPC_Lab_3_Scalability.pdf>`
 

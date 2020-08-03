@@ -1,9 +1,9 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/ListMP_Module 
 
-.. |lmpCfg_Img1| Image:: ../images/Book_cfg.png
+.. |lmpCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |lmpRun_Img1| Image:: ../images/Book_run.png
+.. |lmpRun_Img1| Image:: /images/Book_run.png
                  :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/_list_m_p_8h.html
 
 | 
@@ -130,7 +130,7 @@ Other processors can obtain a handle to the linked list by calling ListMP_open()
 
 The following figure shows local memory and shared memory for processors Proc 0 and Proc 1, in which Proc 0 calls ListMP_create() and Proc 1 calls ListMP_open().
 
-.. Image:: ../images/IpcUG_ipc_2_4_1.png
+.. Image:: /images/IpcUG_ipc_2_4_1.png
 
 
 The cache alignment used by the list is taken from the SharedRegion on a per-region basis. The alignment must be the same across all processors and should be the worst-case cache line boundary.

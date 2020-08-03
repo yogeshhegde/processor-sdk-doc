@@ -1,9 +1,9 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide 
         
-.. |ipcCfg_Img| Image::  ../images/Book_cfg.png
+.. |ipcCfg_Img| Image::  /images/Book_cfg.png
                :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |ipcRun_Img| Image::  ../images/Book_run.png
+.. |ipcRun_Img| Image::  /images/Book_run.png
                :target: http://downloads.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/doxygen/html/index.html
 
 
@@ -15,7 +15,7 @@ IPC can be used to communicate with the following:
 - Threads on other processors running SYS/BIOS
 - Threads on other processors running an HLOS (e.g., Linux, QNX, Android)
 
-.. image:: ../images/IPC_comm_features.JPG
+.. image:: /images/IPC_comm_features.JPG
 
 Overview
 ========

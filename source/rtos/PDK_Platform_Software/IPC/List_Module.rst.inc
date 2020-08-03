@@ -1,9 +1,9 @@
 .. http://processors.wiki.ti.com/index.php/IPC_Users_Guide/List_Module 
 
-.. |lisCfg_Img1| Image:: ../images/Book_cfg.png
+.. |lisCfg_Img1| Image:: /images/Book_cfg.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/ipc/latest/docs/cdoc/indexChrome.html
 
-.. |lisRun_Img1| Image:: ../images/Book_run.png
+.. |lisRun_Img1| Image:: /images/Book_run.png
                  :target: http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/syslink/latest/docs/html/_list_8h.html
 
 | 
