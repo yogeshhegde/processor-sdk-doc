@@ -5,8 +5,8 @@ usage() {
 
   Usage:
          $0 <target_os> <device_family>
-		target_os:     linux, rtos, android, all
-		device_family: GEN, AM335X, AM437X, all
+		target_os:     linux, rtos, android, am64x, all
+		device_family: GEN, AM335X, AM437X, AM64X, all
 
 EOF
 }
@@ -14,6 +14,8 @@ EOF
 if [ "$1" ]; then
 case "$1" in
     all) echo "Build doc for all: linux/rtos/android"
+        ;;
+    am64x) echo "Build doc for am64x"
         ;;
     linux) echo "Build doc for linux"
         ;;
@@ -92,14 +94,23 @@ build_doc()
     OS=$1
     DEV=$2
 
-    if [[ "$DEV" != "GEN" ]]; then
+    if [[ "$OS" == "am64x" ]]; then
+            VERSION="$(cat source/release_specific/${OS}/version.txt)"
+    fi
+
+    if [[ "$DEV" == "AM335X"  || "$DEV" == "AM437X" ]]; then
 	    dev_path="/${DEV}"
     else
 	    dev_path=''
     fi
 
+    release_path=''
+    if [ "$DEV" == "AM64X" ]; then
+            release_path='/release_specific'
+    fi
+
     BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/docs/${VERSION}${dev_path}"
-    echo "processor-sdk-${OS}/esd/docs/${VERSION}${dev_path}/${OS}/index.html" >> "${BUILD_TARGETS}"
+    echo "processor-sdk-${OS}/esd/docs/${VERSION}${dev_path}${release_path}/${OS}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
     make config DEVFAMILY="${DEV}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
@@ -129,6 +140,8 @@ if [[ ${OS} == all ]]; then
 	    build_doc android $dev
 	fi
     done
+    # build AM64X
+    build_doc am64x AM64X
 else
     build_doc ${OS} ${DEV}
 fi
