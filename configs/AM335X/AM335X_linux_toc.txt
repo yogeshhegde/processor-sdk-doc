@@ -119,4 +119,5 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/ICE_AM335x_Hardware_Setup
 linux/How_to_Guides/Hardware_Setup_with_CCS/ICE_AMIC110_EVM_Hardware_Setup
 linux/How_to_Guides_Board_Port
 linux/How_to_Guides/Board_Port/U-Boot
+linux/How_to_Guides/Board_Port/Linux
 linux/Documentation_Tarball
