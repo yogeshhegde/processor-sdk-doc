@@ -171,6 +171,9 @@ You can use SharedRegion_getHeap() to get a handle to the heap associated with a
 You can retrieve a specific shared region's cache configuration from the SharedRegion table by using SharedRegion_isCacheEnabled() and SharedRegion_getCacheLineSize().
 
 .. note::
+   In order to account for the case where the contents of the SharedRegion with an index of 0 cannot be known before the cores are booted, it is recommended to place the SharedRegion 0 owner procId in the MultiProc config array before all other cores that will be attaching to the owner of SharedRegion 0. In this way, it is guaranteed that the SharedRegion 0 owner is able to zero-init the memory before other cores start to access it during Ipc_attach. For example, if IPU1 is the SharedRegion 0 owner, the order would look like this in order to put IPU1 first in the array: ["IPU1","EVE1","DSP1"]
+
+.. note::
    The SharedRegion Module is only supported in SYS/BIOS environments. It is not provided on HLOS's. For HLOS environments, we suggest using native shared memory APIs when available, for example ION on Android. Other alternatives include CMEM (for Linux) and the QNX-specific SharedMemoryAlloctor, provided in IPC's qnx/ directory.
 
 
