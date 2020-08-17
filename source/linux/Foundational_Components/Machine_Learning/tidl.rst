@@ -426,6 +426,8 @@ Layers in current release of TIDL Lib have certain parameter related constraints
    - Only Slim based models are validated. Please refer InceptionNetV1 and mobilenet_1.0 from below as examples for building your models.
    - TF-Slim: https://github.com/tensorflow/models/tree/master/research/slim
 
+.. _tidl-examples-and-demos:
+
 Examples and Demos
 -------------------
 
@@ -438,10 +440,10 @@ target file-system in: /usr/share/ti/tidl/examples (make).
 ===================================  ===========================================================================================================
 Example                              Link
 ===================================  ===========================================================================================================
-Imagenet Classification              `Image classification <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#imagenet>`_
-Segmentation                         `Pixel segmentation <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#segmentation>`_
-SSD_multibox                         `Single shot Multi-box Detection <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#ssd>`_
-test                                 `Unit test <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#test>`_
+Imagenet Classification              `Image classification <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#imagenet>`__
+Segmentation                         `Pixel segmentation <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#segmentation>`__
+SSD_multibox                         `Single shot Multi-box Detection <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#ssd>`__
+test                                 `Unit test <http://downloads.ti.com/mctools/esd/docs/tidl-api/example.html#test>`__
 Classification with class filtering  tidl-matrix-gui-demo_
 ===================================  ===========================================================================================================
 
