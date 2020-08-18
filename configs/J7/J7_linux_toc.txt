@@ -25,6 +25,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
+linux/Foundational_Components/Kernel/Kernel_Drivers/HYPERFLASH
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/K3_CPSW2g
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/J7_CPSW9g_virt_mac
