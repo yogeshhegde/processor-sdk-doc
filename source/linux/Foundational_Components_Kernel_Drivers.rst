@@ -17,6 +17,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Display/LCDC
    Foundational_Components/Kernel/Kernel_Drivers/Display/PWM
    Foundational_Components/Kernel/Kernel_Drivers/GPIO
+   Foundational_Components/Kernel/Kernel_Drivers/HYPERFLASH
    Foundational_Components/Kernel/Kernel_Drivers/I2C
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW
    Foundational_Components/Kernel/Kernel_Drivers/Network/NetCP

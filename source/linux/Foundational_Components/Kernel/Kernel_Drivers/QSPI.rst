@@ -233,6 +233,8 @@ or via command line arguments):
         mtd5: 00800000 00010000 "QSPI.KERNEL"
         mtd6: 036d0000 00010000 "QSPI.FILESYSTEM"
 
+.. _testing-kernel-qspi-label:
+
 .. rubric:: Testing
    :name: testing-kernel-qspi
 
