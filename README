@@ -44,6 +44,7 @@ Possible values for <FAMILY> are
  - "AM437X" (representing AM437X family)
  - "GEN" (representing General family)
  - "AM64X" (representing AM64X family)
+ - "CORESDK" (representing CORESDK)
 
 linux:
 make config DEVFAMILY=<FAMILY> OS=linux
