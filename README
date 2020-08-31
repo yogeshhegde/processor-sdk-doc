@@ -59,8 +59,8 @@ make config DEVFAMILY=<FAMILY> OS=android
 make DEVFAMILY=<FAMILY> OS=android
 
 am64x:
-make config DEVFAMILY=AM64X OS=am64x
-make DEVFAMILY=AM64X OS=am64x
+make config DEVFAMILY=AM64X
+make DEVFAMILY=AM64X
 
 *****************************
 Build instruction for Windows

@@ -36,10 +36,17 @@ import replacevars
 import sectinc
 import interpretvalues
 
-# List of Inclusion TOC files to use
-family_tocfiles = [fam_name + '/' + fam_name + '_' + sdk_os + '_toc.txt']
-# Family Configuration file to use
-family_config_inputfile = fam_name + '/' + fam_name + '_' + sdk_os + '_config.txt'
+if (fam_name is 'AM64X') :
+    # List of Inclusion TOC files to use
+    family_tocfiles = [fam_name + '/' + fam_name + '_toc.txt']
+    # Family Configuration file to use
+    family_config_inputfile = fam_name + '/' + fam_name + '_config.txt'
+else:
+    # List of Inclusion TOC files to use
+    family_tocfiles = [fam_name + '/' + fam_name + '_' + sdk_os + '_toc.txt']
+    # Family Configuration file to use
+    family_config_inputfile = fam_name + '/' + fam_name + '_' + sdk_os + '_config.txt'
+
 # Hash table for Replacement Variables
 family_replacevars = {}
 # Hash table for Configuration Values

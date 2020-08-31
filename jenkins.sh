@@ -5,7 +5,7 @@ usage() {
 
   Usage:
          $0 <target_os> <device_family>
-		target_os:     linux, rtos, android, am64x, all
+		target_os:     linux, rtos, android, all
 		device_family: GEN, AM335X, AM437X, AM64X, all
 
 EOF
@@ -13,9 +13,7 @@ EOF
 
 if [ "$1" ]; then
 case "$1" in
-    all) echo "Build doc for all: linux/rtos/android"
-        ;;
-    am64x) echo "Build doc for am64x"
+    all) echo "Build doc for all: linux/rtos/android and am64x"
         ;;
     linux) echo "Build doc for linux"
         ;;
@@ -86,7 +84,7 @@ else
    TAG_PREFIX='DEV.PROCESSOR-SDK.'
    VERSION="$RELEASE.$(git ls-remote --tags "$CONFIG_REPO" "$TAG_PREFIX$RELEASE"\* | sed -ne 's|.*'"$TAG_PREFIX$RELEASE."'||p' | sort -n | tail -1)"
 fi
-VERSION=${VERSION//./_}
+ROOT_VERSION=${VERSION//./_}
 
 build_doc()
 {
@@ -94,23 +92,34 @@ build_doc()
     OS=$1
     DEV=$2
 
-    if [[ "$OS" == "am64x" ]]; then
-            VERSION="$(cat source/release_specific/${OS}/version.txt)"
+    release_path=''
+    if [[ "$DEV" == "AM64X" || "$DEV" == "AM335X" ]]; then
+            release_path="/release_specific/${DEV}"
+            if ["$DEV" == "AM64X"]; then
+                VERSION="$(cat source${release_path}/version.txt)"
+	    else
+                VERSION="$(cat source${release_path}/${OS}/version.txt)"
+            fi
+    else
+	    VERSION=${ROOT_VERSION}
     fi
 
-    if [[ "$DEV" == "AM335X"  || "$DEV" == "AM437X" ]]; then
+    if [[ "$DEV" == "AM437X" ]]; then
 	    dev_path="/${DEV}"
     else
 	    dev_path=''
     fi
 
-    release_path=''
-    if [ "$DEV" == "AM64X" ]; then
-            release_path='/release_specific'
+    if [[ "$DEV" == "AM64X" ]]; then
+            BUILDNAME="processor-sdk-${DEV}"
+            os_path=''
+    else
+            BUILDNAME="processor-sdk-${OS}"
+            os_path="/${OS}"
     fi
 
-    BUILDDIR="${OUTPUT}/processor-sdk-${OS}/esd/docs/${VERSION}${dev_path}"
-    echo "processor-sdk-${OS}/esd/docs/${VERSION}${dev_path}${release_path}/${OS}/index.html" >> "${BUILD_TARGETS}"
+    BUILDDIR="${OUTPUT}/${BUILDNAME}/esd/docs/${VERSION}${dev_path}"
+    echo "${BUILDNAME}/esd/docs/${VERSION}${dev_path}${release_path}${os_path}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
     make config DEVFAMILY="${DEV}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
@@ -123,12 +132,12 @@ build_doc()
     # copy repo-revs.txt to output directory
     cp $REPO_REV $BUILDDIR
 
-    rm -rf ${BUILDDIR}/${OS}/processor-sdk-${OS}-docs.tar.gz
-    cp -r ${BUILDDIR} ${TEMP}/processor-sdk-${OS}-docs-${VERSION}
+    rm -rf ${BUILDDIR}/${OS}/${BUILDNAME}-docs.tar.gz
+    cp -r ${BUILDDIR} ${TEMP}/${BUILDNAME}-docs-${VERSION}
     CURRDIR=$PWD
     cd ${TEMP}
-    tar -czvf processor-sdk-${OS}-docs.tar.gz processor-sdk-${OS}-docs-${VERSION}
-    cp processor-sdk-${OS}-docs.tar.gz ${BUILDDIR}/${OS}
+    tar -czvf ${BUILDNAME}-docs.tar.gz ${BUILDNAME}-docs-${VERSION}
+    cp ${BUILDNAME}-docs.tar.gz ${BUILDDIR}/${OS}
     cd ${CURRDIR}
 }
 
@@ -141,7 +150,7 @@ if [[ ${OS} == all ]]; then
 	fi
     done
     # build AM64X
-    build_doc am64x AM64X
+    build_doc "" AM64X
 else
     build_doc ${OS} ${DEV}
 fi

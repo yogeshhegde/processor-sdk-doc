@@ -7,27 +7,39 @@ default: html
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
-OS            = linux
+OS            =
 
 mkfile_path = $(abspath $(lastword $(MAKEFILE_LIST)))
 export ROOTDIR = $(dir $(mkfile_path))
 $(info ROOTDIR is $(ROOTDIR))
 
 $(info DEVFAMILY is $(DEVFAMILY))
-TAGFILE         = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
 FAMILYSETUPFILE = python-scripts/family_setup.py
-$(info TAGFILE is $(TAGFILE))
 
-ifeq ($(OS), am64x)
-    CONFDIR     = source/release_specific/${OS}
+ifeq ($(DEVFAMILY), $(filter $(DEVFAMILY), AM64X AM335X))
+    ifeq ($(DEVFAMILY), AM64X)
+       CONFDIR  = source/release_specific/$(DEVFAMILY)
+       TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
+    else
+       CONFDIR  = source/release_specific/$(DEVFAMILY)/${OS}
+       TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_${OS}_tags.py
+    endif
     VERSION     = $(shell cat ${CONFDIR}/version.txt)
-else
+else #TODO: this is for supporting the old structure
     CONFDIR     = source/${OS}
+    TAGFILE     = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
     VERSION     = $(shell cat version.txt)
+    OS_CONF     = ${CONFDIR}/conf-${OS}.py
 endif
+$(info TAGFILE is $(TAGFILE))
+$(info CONFDIR is $(CONFDIR))
 export CONFDIR
 
+ifeq ($(OS),)
+BUILDDIR      = build/processor-sdk-${DEVFAMILY}/esd/docs/${VERSION}
+else
 BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
+endif
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -78,7 +90,7 @@ clean:
 	rm -f ${CONFDIR}/replacevars.rst.inc
 
 config:
-	cat python-scripts/conf.py ${CONFDIR}/conf-${OS}.py ${TAGFILE} ${FAMILYSETUPFILE} > ${CONFDIR}/conf.py
+	cat python-scripts/conf.py ${OS_CONF} ${TAGFILE} ${FAMILYSETUPFILE} > ${CONFDIR}/conf.py
 	sed -i 's/SDKVERSION/${VERSION}/g' ${CONFDIR}/conf.py
 	cp sphinx_rtd_theme_ti/patch/layout.html sphinx_rtd_theme_ti/_themes/sphinx_rtd_theme_ti/layout.html
 
