@@ -1771,6 +1771,70 @@ To boot kernel from OSPI, at the U-Boot prompt:
   => setenv boot ubi
   => boot
 
+J7200 Support
+^^^^^^^^^^^^^^
+
+J7200 is largely similar to J721E and AM654. The major differences are that it
+has the Cypress S28HS512T flash and sysfw is bundled with tiboot3.bin.
+
+**Flashing Images to OSPI**
+
+Below commands can be used to download tiboot3.bin, tispl.bin and
+u-boot.img over tftp and then flash it to OSPI at respective addresses.
+
+.. code-block:: console
+
+  => sf probe
+  => tftp ${loadaddr} tiboot3.bin
+  => sf update $loadaddr 0x0 $filesize
+  => tftp ${loadaddr} tispl.bin
+  => sf update $loadaddr 0x80000 $filesize
+  => tftp ${loadaddr} u-boot.img
+  => sf update $loadaddr 0x280000 $filesize
+
+**PHY Calibration**
+
+PHY calibration allows for higher read performance. To enable PHY, the PHY
+calibration pattern must be flashed to OSPI at the start of the last erase
+sector. For the Cypress S28HS512T flash, this lies at the address 0x3fc0000.
+
+Below commands can be used to flash the PHY pattern, with the location of the
+pattern depending on which flash is being used:
+
+.. code-block:: console
+
+   => sf probe
+   => tftp ${loadaddr} pattern_file
+   => sf update $loadaddr 0x3fc0000 $filesize
+
+**Flash Layout for OSPI**
+
+.. code-block:: console
+
+         0x0 +----------------------------+
+             |     ospi.tiboot3(512K)     |
+             |                            |
+     0x80000 +----------------------------+
+             |     ospi.tispl(2M)         |
+             |                            |
+    0x280000 +----------------------------+
+             |     ospi.u-boot(4M)        |
+             |                            |
+    0x680000 +----------------------------+
+             |     ospi.env(256K)         |
+             |                            |
+    0x6C0000 +----------------------------+
+             |   ospi.env.backup (256K)   |
+             |                            |
+    0x700000 +----------------------------+
+             |       padding (1M)         |
+    0x800000 +----------------------------+
+             |     ospi.rootfs(UBIFS)     |
+             |                            |
+   0x3FC0000 +----------------------------+
+             |   ospi.phypattern (256k)   |
+             |                            |
+             +----------------------------+
 
 DRA7xx support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
