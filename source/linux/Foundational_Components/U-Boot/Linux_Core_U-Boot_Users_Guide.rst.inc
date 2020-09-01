@@ -1713,6 +1713,21 @@ u-boot.img over tftp and then flash it to OSPI at respective addresses.
   => tftp ${loadaddr} sysfw.itb
   => sf update $loadaddr 0x6C0000 $filesize
 
+**PHY Calibration**
+
+PHY calibration allows for higher read performance. To enable PHY, the PHY
+calibration pattern must be flashed to OSPI at the start of the last erase
+sector. For the Micron MT35XU512ABA flash, this lies at the address 0x3fe0000.
+
+Below commands can be used to flash the PHY pattern, with the location of the
+pattern depending on which flash is being used:
+
+.. code-block:: console
+
+   => sf probe
+   => tftp ${loadaddr} pattern_file
+   => sf update $loadaddr 0x3fe0000 $filesize
+
 **Flash Layout for OSPI**
 
 .. code-block:: console
@@ -1739,6 +1754,9 @@ u-boot.img over tftp and then flash it to OSPI at respective addresses.
              |      padding (256k)        |
     0x800000 +----------------------------+
              |     ospi.rootfs(UBIFS)     |
+             |                            |
+   0x3FE0000 +----------------------------+
+             |   ospi.phypattern (128k)   |
              |                            |
              +----------------------------+
 
