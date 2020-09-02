@@ -1,4 +1,4 @@
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_create_SD_card_script
 

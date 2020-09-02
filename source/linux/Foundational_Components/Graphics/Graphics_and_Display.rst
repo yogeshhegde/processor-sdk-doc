@@ -1,7 +1,7 @@
 ..
     The top level heading in this rst file would be level 2 header with `====`
 
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 Introduction
 ============

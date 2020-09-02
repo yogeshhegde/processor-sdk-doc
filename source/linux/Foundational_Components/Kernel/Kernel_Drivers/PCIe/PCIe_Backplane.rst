@@ -1,4 +1,4 @@
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 PCIe Backplane
 ---------------------------------

@@ -1,6 +1,7 @@
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 .. http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
+
 .. rubric:: Overview
    :name: overview-linux-kernel-ug
 

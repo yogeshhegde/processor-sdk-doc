@@ -104,7 +104,7 @@ build_doc()
 	    VERSION=${ROOT_VERSION}
     fi
 
-    if [[ "$DEV" == "AM437X" ]]; then
+    if [[ "$DEV" == "AM437X" || "$DEV" == "J7" ]]; then
 	    dev_path="/${DEV}"
     else
 	    dev_path=''
@@ -151,6 +151,8 @@ if [[ ${OS} == all ]]; then
     done
     # build AM64X
     build_doc "" AM64X
+    # build J7
+    build_doc linux J7
 else
     build_doc ${OS} ${DEV}
 fi

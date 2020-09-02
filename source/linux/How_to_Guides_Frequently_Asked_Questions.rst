@@ -2,7 +2,7 @@
 Frequently Asked Questions
 ***************************************
 
-.. include:: replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 How to verify IPC between Linux and MCU R5 in Keystone devices?
 ---------------------------------------------------------------------

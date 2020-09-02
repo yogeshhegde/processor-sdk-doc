@@ -11,7 +11,7 @@ master_doc = 'release_specific/AM335X/linux/index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['rtos', 'android', 'linux/index.rst', 'release_specific/AM6335X/rtos', 'release_specific/AM64X']
+exclude_patterns = ['rtos', 'android', 'linux/index.rst', 'release_specific/AM335X/rtos', 'release_specific/AM64X']
 
 # OS for the build. Sphinx uses source/{sdk_os} when looking for doc inputs
 sdk_os = 'linux'
