@@ -1946,6 +1946,38 @@ and reset the EVM. The SPL directly boots the kernel image from QSPI.
 
 | 
 
+AM335X support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SPI boot is supported on the following platforms:
+
++--------------+-----------------------------------------------------------+
+| Board        | Config target                                             |
++==============+===========================================================+
+| AM335x ICE   | am335x\_evm\_spiboot_defconfig				   |
++--------------+-----------------------------------------------------------+
+
+::
+
+	U-Boot # mmc rescan
+	U-Boot # sf probe 0
+	U-Boot # sf erase 0x0 0x100000
+	U-Boot # fatload mmc 0 ${loadaddr} MLO.byteswap
+	U-Boot # sf write ${loadaddr} 0x0 ${filesize}
+	U-Boot # fatload mmc 0 ${loadaddr} u-boot.img
+	U-Boot # sf write ${loadaddr} 0x20000 ${filesize}
+
+Note:
+
+-  AM335X ICE boots from SPI by default. To boot from SD card, erase the
+   MLO partition:
+
+::
+
+	U-Boot # sf erase 0x0 0x20000
+
+|
+
 AM43xx support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
