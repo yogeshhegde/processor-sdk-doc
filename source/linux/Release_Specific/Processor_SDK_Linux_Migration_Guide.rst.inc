@@ -59,7 +59,7 @@ Processor SDK 06.01
 
 Processor SDK 06.00
 ----------------------
-- This is the first release in 2019 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch. Please see `SDK Components & Versions <Release_Specific_Release_Notes.html#sdk-components-versions>`__.
+- This is the first release in 2019 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch. Please see :ref:`release-specific-sdk-components-versions`.
 - Toplevel Makefile: There are additional packages required on the host, such as flex, bison and libssl-dev, for the top-level Makefile to build successfully. You can find the complete list of required host packages in `this chapter <Overview/Top_Level_Makefile.html>`__
 - Resistive Touchscreen TSCADC (resistive touchscreen) wakeup control on AM335x and AM437x has moved from TSCADC MFD device node to TSC input device node.
    - Disable touchscreen as wakeup source use: echo disabled > /sys/devices/platform/ocp/44e0d000.tscadc/TI-am335x-tsc.0.auto/power/wakeup

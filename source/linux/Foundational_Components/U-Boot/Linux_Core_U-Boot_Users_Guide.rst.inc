@@ -58,7 +58,7 @@ Getting the U-Boot Source Code
   .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
       The GIT repo URL, branch and commit id can be found in the
-      `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_PLSDK_Release_Notes.html#u-boot>`__
+      :ref:`release-specific-build-information-u-boot` section of the release notes.
 
 |
 
@@ -209,7 +209,7 @@ Several prebuilt images are required from the TI Processor SDK for building U-Bo
 Go `here <Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
 TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
-`build information <Release_Specific_Release_Notes.html#build-information>`__.
+:ref:`release-specific-build-information-u-boot`.
 
 .. rubric:: Setting the tool chain path
    :name: setting-the-full-tool-chain-path

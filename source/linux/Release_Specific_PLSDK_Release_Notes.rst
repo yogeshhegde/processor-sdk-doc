@@ -65,6 +65,9 @@ Processor SDK 6.3 Release has following new features:
 - ICSSG PRUETH
     -  100M Uboot Support in ICSSG on AM654x
 
+
+.. _release-specific-sdk-components-versions:
+
 .. rubric:: SDK Components & Versions
    :name: sdk-components-versions
 
@@ -106,6 +109,8 @@ See `here <Release_Specific_Supported_Platforms_and_Versions.html>`__ for a list
 Build Information
 =====================================
 
+.. _release-specific-build-information-u-boot:
+
 U-Boot
 -------------------------
 
@@ -117,8 +122,12 @@ U-Boot
 
 |
 
+.. _release-specific-build-information-kernel:
+
 Kernel
 -------------------------
+
+.. _release-specific-build-information-linux-kernel:
 
 .. rubric:: Linux Kernel
    :name: linux-kernel
@@ -130,6 +139,8 @@ Kernel
 | Commit ID: be5389fd85b69250aeb1ba477447879fb392152f
 
 |
+
+.. _release-specific-build-information-rt-linux-kernel:
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
@@ -144,6 +155,9 @@ Kernel
 | Commit ID: a242ccf3f13f03d41d521411ce2cc09775c873a2  
 
 |
+
+
+.. _release-specific-generic-kernel-release-notes:
 
 .. rubric:: Generic Kernel Release Notes
    :name: generic-kernel-release-notes
@@ -310,6 +324,8 @@ SDK Known Issues
 
 |
 
+.. _release-specific-u-boot-known-issues:
+
 U-Boot Known Issues
 ------------------------
 .. csv-table::
@@ -330,6 +346,7 @@ U-Boot Known Issues
 
 |
 
+.. _release-specific-linux-kernel-known-issues:
 
 Linux Kernel Known Issues
 ---------------------------
@@ -398,6 +415,8 @@ Linux Kernel Known Issues
 
 |
 
+.. _release-specific-rt-linux-kernel-known-issues:
+
 RT Linux Kernel Known Issues
 -----------------------------
 
@@ -425,7 +444,7 @@ Composer Studio.
    :name: host-support
 
 The Processor SDK is developed, built and verified on Ubuntu 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu
-are described in `this page <How_to_Guides_Host.html#how-to-build-a-ubuntu-linux-host-under-vmware>`__.
+are described in `this page <How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware.html>`__.
 
 
 .. note::

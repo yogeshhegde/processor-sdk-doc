@@ -5,14 +5,14 @@ RT Kernel Release Notes
 
 Build Information
 -------------------
-Please refer to `RT Linux Kernel Build Information <Release_Specific_PLSDK_Release_Notes.html#real-time-rt-linux-kernel>`__ for details.
+Please refer to the :ref:`release-specific-build-information-rt-linux-kernel` section of the release notes for details.
 
 Generic Kernel Release Notes
 ------------------------------
-Please refer to `Generic Kernel Release Notes <Release_Specific_PLSDK_Release_Notes.html#generic-kernel-release-notes>`__ for details.
+Please refer to :ref:`release-specific-generic-kernel-release-notes` for details.
 
 
 Known Issues
 --------------
-Please refer to `RT Linux Kernel Known Issues <Release_Specific_PLSDK_Release_Notes.html#rt-linux-kernel-known-issues>`__ for details.
+Please refer to :ref:`release-specific-rt-linux-kernel-known-issues` for details.
 

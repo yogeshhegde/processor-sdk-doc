@@ -49,7 +49,7 @@ Processor SDK 06.02
 ---------------------
 - This is a quarterly update release on 2019 LTS stream.
 - Note that this version of Processor SDK updates only AM5 and AM6 platforms w/ Linux OS.
-- The SGX driver has been enhanced to replace IMG WSEGL with MESA-EGL which supports the essential EGL 1.5 extensions required by the latest versions of certain graphics applications such as Chromium browser. See `here <Foundational_Components/Graphics/Migration_From_Prior_Releases.html#from-processor-sdk-6-1-to-6-2-for-am3-4-5-6>`__ for more details about compatability 
+- The SGX driver has been enhanced to replace IMG WSEGL with MESA-EGL which supports the essential EGL 1.5 extensions required by the latest versions of certain graphics applications such as Chromium browser. See `here <../../../linux/Foundational_Components/Graphics/Migration_From_Prior_Releases.html#from-processor-sdk-6-1-to-6-2-for-am3-4-5-6>`__ for more details about compatability
 
 Processor SDK 06.01
 ---------------------
@@ -59,8 +59,8 @@ Processor SDK 06.01
 
 Processor SDK 06.00
 ----------------------
-- This is the first release in 2019 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch. Please see `SDK Components & Versions <Release_Specific_Release_Notes.html#sdk-components-versions>`__.
-- Toplevel Makefile: There are additional packages required on the host, such as flex, bison and libssl-dev, for the top-level Makefile to build successfully. You can find the complete list of required host packages in `this chapter <Overview/Top_Level_Makefile.html>`__
+- This is the first release in 2019 LTS stream, with new versions of Kernel, U-boot, toolchain and Yocto branch. Please see :ref:`release-specific-sdk-components-versions`.
+- Toplevel Makefile: There are additional packages required on the host, such as flex, bison and libssl-dev, for the top-level Makefile to build successfully. You can find the complete list of required host packages in `this chapter <../../../linux/Overview/Top_Level_Makefile.html>`__
 - Resistive Touchscreen TSCADC (resistive touchscreen) wakeup control on AM335x and AM437x has moved from TSCADC MFD device node to TSC input device node.
    - Disable touchscreen as wakeup source use: echo disabled > /sys/devices/platform/ocp/44e0d000.tscadc/TI-am335x-tsc.0.auto/power/wakeup
    - Enable touchscreen as wakeup source use: echo enabled > /sys/devices/platform/ocp/44e0d000.tscadc/TI-am335x-tsc.0.auto/power/wakeup
@@ -220,7 +220,7 @@ Processor SDK 05.00
 - Keystone-2: PA/PA2 is not supported in NetCP driver.
 - Keystone-2: NWAL is not supported
 - MMC: AM57x uses sdhci-omap.c driver instead of omap_hsmmc.c driver
-- PCIe: The way in which PCIe endpoint is configured has changed. More details can be found from `PCIe End Point Driver <Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point.html#pcie-end-point-4-14-kernel>`__.
+- PCIe: The way in which PCIe endpoint is configured has changed. More details can be found from `PCIe End Point Driver <../../../linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point.html#pcie-end-point-4-14-kernel>`__.
 - AM335x ICE v2: A new DT file (am335x-ice-v2-prueth.dts) is added to support PRUSS Ethernet ports. The following configurations are supported.
 
 :: 
@@ -482,9 +482,6 @@ Processor SDK 03.00
    multiple interfaces, please disable CONFIG\_DM\_ET option in u-boot
    .config and build.
 -  See the Release Notes for full list of modifications.
--  For information on migrating from MCSDK (K2x) to Processor SDK, see
-   `this migration
-   page <MCSDK_to_Processor_SDK_Migration.html>`__.
 
 | 
 
@@ -503,9 +500,6 @@ Processor SDK 02.00.02
 -  See the `Release
    Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes#Release_02.00.02>`__
    for full list of modifications.
--  For information on migrating from MCSDK (K2x) to Processor SDK, see
-   `this migration
-   page <MCSDK_to_Processor_SDK_Migration.html>`__.
 
 | 
 
@@ -522,9 +516,6 @@ Processor SDK 02.00.01
 -  See the `Release
    Notes <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes#Release_02.00.01>`__
    for full list of modifications.
--  For information on migrating from MCSDK (K2x) to Processor SDK, see
-   `this migration
-   page <MCSDK_to_Processor_SDK_Migration.html>`__.
 
 | 
 
