@@ -27,7 +27,7 @@ Processor SDK Linux Software Developer's Guide
 
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the Linux
-forum listed at `Technical Support`_.
+forum listed at :ref:`Technical Support <overview-technical-support>`.
 
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+

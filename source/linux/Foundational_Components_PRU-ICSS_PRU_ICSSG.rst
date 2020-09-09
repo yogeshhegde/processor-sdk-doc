@@ -1,3 +1,5 @@
+.. _foundational-components-pru-icss-pru-icssg:
+
 **********************************
 PRU-ICSS / PRU_ICSSG
 **********************************

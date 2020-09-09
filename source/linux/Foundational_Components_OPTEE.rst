@@ -1,3 +1,5 @@
+.. _foundational-components-optee:
+
 OP-TEE
 ========================================
 .. rubric:: Overview

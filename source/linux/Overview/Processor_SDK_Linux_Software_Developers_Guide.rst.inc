@@ -12,17 +12,17 @@ suggestions <Feedback>`.
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
     | **Processor SDK Linux**                                                                                                                                |
     +========================================================================+===============================================================================+
-    | `Getting Started Guide`_  <-- **Start Here**                           | `How To Guides`_                                                              |
+    | |__Getting Started Guide__|  <-- **Start Here**                        | |__How To Guides__|                                                           |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | `Supported Platforms and Versions`_                                    | `Linux Software Stack`_                                                       |
+    | |__Supported Platforms and Versions__|                                 | |__Linux Software Stack__|                                                    |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | `Directory Structure Overview`_                                        | `Building the SDK`_                                                           |
+    | |__Directory Structure Overview__|                                     | |__Building the SDK__|                                                        |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | `Release Notes <Release_Specific_PLSDK_Release_Notes.html>`_           | `Migration Guide`_                                                            |
+    | |__Release Notes__|                                                    | |__Migration Guide__|                                                         |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | `GPLv3 Disclaimer`_                                                    | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
+    | |__GPLv3 Disclaimer__|                                                 | `Training <https://training.ti.com/processor-sdk-training-series>`__          |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-    | `Technical Support`_                                                   |                                                                               |
+    | |__Technical Support__|                                                |                                                                               |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
@@ -30,115 +30,89 @@ suggestions <Feedback>`.
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
     |           **Processor SDK Linux**                                     |                                                                      |
     +=======================================================================+======================================================================+
-    | `Getting Started Guide`_  <-- **Start Here**                          | `Directory Structure Overview`_                                      |
+    | |__Getting Started Guide__|  <-- **Start Here**                       | |__Directory Structure Overview__|                                   |
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
-    | `Release Notes <Release_Specific_PSDKLA_Release_Notes.html>`__        | `How To Guides`_                                                     |
+    | |__Release Notes__|                                                   | |__How To Guides__|                                                  |
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
-    | `Technical Support`_                                                  | `Building the SDK`_                                                  |
+    | |__Technical Support__|                                               | |__Building the SDK__|                                               |
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
-    | `Linux Software Stack`_                                               | `GPLv3 Disclaimer`_                                                  |
+    | |__Linux Software Stack__|                                            | |__GPLv3 Disclaimer__|                                               |
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
     | `Training <https://training.ti.com/processor-sdk-training-series>`__  |                                                                      |
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
 
-.. _Getting Started Guide: Overview_Getting_Started_Guide.html
-.. _Directory Structure Overview: Overview_Directory_Structure_Overview.html
-.. _Building the SDK: Overview_Building_the_SDK.html
-.. _GPLv3 Disclaimer: Overview_GPLv3_Disclaimer.html
-.. _Technical Support: Overview_Technical_Support.html
-
-.. _Supported Platforms and Versions: Release_Specific_Supported_Platforms_and_Versions.html
-.. _Hardware platform: Release_Specific_Supported_Platforms_and_Versions.html#supported-platforms-and-evms
-.. _Linux Software Stack: Overview_Software_Stack.html
-.. _Embedded Linux System: Overview_Software_Stack.html
-.. _Migration Guide: Release_Specific_Migration_Guide.html
-.. _How To Guides: How_to_Guides.html
-.. _Processor SDK Linux How-To Guides: How_to_Guides.html
-.. _Linux SDK Software Developer's Guide: index.html
-.. _Processor SDK Linux Software Developer's Guide: index.html
-.. _SD Card using default images: Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-default-images
-.. _SD Card using custom images: Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-custom-images
-.. _SD Card using parition tarballs: Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-partition-tarballs
-.. _Examples and Demos: Examples_and_Demos.html
-
+.. |__Getting Started Guide__| replace:: :ref:`Getting Started Guide <overview-getting-started>`
+.. |__Directory Structure Overview__| replace:: :ref:`Directory Structure Overview <overview-directory-structure>`
+.. |__Building the SDK__| replace:: :ref:`Building the SDK <overview-building-the-sdk>`
+.. |__GPLv3 Disclaimer__| replace:: :ref:`GPLv3 Disclaimer <overview-gplv3-disclaimer>`
+.. |__Technical Support__| replace:: :ref:`Technical Support <overview-technical-support>`
+.. |__Supported Platforms and Versions__| replace:: :ref:`Supported Platforms and Versions <release-specific-supported-platforms-and-versions>`
+.. |__Linux Software Stack__| replace:: :ref:`Linux Software Stack <overview-software-stack>`
+.. |__Migration Guide__| replace:: :ref:`Migration Guide <release-specific-migration-guide>`
+.. |__How To Guides__| replace:: :ref:`How To Guides <how-to-guides>`
+.. |__Release Notes__| replace:: :ref:`Release Notes <release-specific-release-notes>`
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
-    +---------------+--------------------+-------------------------+----------------------------+
-    | **Foundational Components** (more information on each piece of the distribution)          |
-    +===============+====================+=========================+============================+
-    | `U-Boot`_     | `Boot Monitor`_    | `Kernel`_               | `Filesystem`_              |
-    +---------------+--------------------+-------------------------+----------------------------+
-    | `Tools`_      | `OpenCL`_          | `OpenCV`_               | `Graphics & Display`_      |
-    +---------------+--------------------+-------------------------+----------------------------+
-    | `Multimedia`_ | `Examples, Demos`_ | `PRU-ICSS / PRU_ICSSG`_ | `Virtualization`_          |
-    +---------------+--------------------+-------------------------+----------------------------+
-    | `IPC`_        | `OpenVX`_          | `CMEM`_                 | `Machine Learning`_        |
-    +---------------+--------------------+-------------------------+----------------------------+
-    | `ATF`_        | `OPTEE`_           |                         |                            |
-    +---------------+--------------------+-------------------------+----------------------------+
+    +------------------+------------------------+----------------------------+----------------------------+
+    | **Foundational Components** (more information on each piece of the distribution)                    |
+    +==================+========================+============================+============================+
+    | |__U-Boot__|     | |__Boot Monitor__|     | |__Kernel__|               | |__Filesystem__|           |
+    +------------------+------------------------+----------------------------+----------------------------+
+    | |__Tools__|      | |__OpenCL__|           | |__OpenCV__|               | |__Graphics & Display__|   |
+    +------------------+------------------------+----------------------------+----------------------------+
+    | |__Multimedia__| | |__Examples & Demos__| | |__PRU-ICSS & PRU_ICSSG__| | |__Virtualization__|       |
+    +------------------+------------------------+----------------------------+----------------------------+
+    | |__IPC__|        | |__OpenVX__|           | |__CMEM__|                 | |__Machine Learning__|     |
+    +------------------+------------------------+----------------------------+----------------------------+
+    | |__ATF__|        | |__OPTEE__|            |                            |                            |
+    +------------------+------------------------+----------------------------+----------------------------+
 
-    .. _U-Boot: Foundational_Components_U-Boot.html
-    .. _Processor SDK Linux U-Boot: Foundational_Components_U-Boot.html
-    .. _Boot Monitor: Foundational_Components_Boot_Monitor.html
-    .. _Kernel: Foundational_Components_Kernel.html
-    .. _Processor SDK Linux Kernel: Foundational_Components_Kernel.html
-    .. _Filesystem: Foundational_Components_Filesystem.html
-    .. _Processor SDK Linux Filesystem: Foundational_Components_Filesystem.html
-    .. _Tools: Foundational_Components_Tools.html
-    .. _Processor SDK Linux Tools: Foundational_Components_Tools.html
-    .. _OpenCL: http://downloads.ti.com/mctools/esd/docs/opencl/index.html
-    .. _OpenCV: Foundational_Components_OpenCV.html
-    .. _Graphics & Display: Foundational_Components_Graphics.html
-    .. _Multimedia: Foundational_Components_Multimedia.html
-    .. _Examples, Demos: Examples_and_Demos.html
-    .. _PRU-ICSS / PRU_ICSSG: Foundational_Components_PRU-ICSS_PRU_ICSSG.html
-    .. _Virtualization: Foundational_Components_Virtualization.html
-    .. _IPC: Foundational_Components_IPC.html
-    .. _OpenVX: Foundational_Components_OpenVX.html
-    .. _CMEM: Foundational_Components_CMEM.html
-    .. _Machine Learning: Foundational_Components_Machine_Learning.html
-    .. _ATF: Foundational_Components_ATF.html
-    .. _OPTEE: Foundational_Components_OPTEE.html
+.. |__Boot Monitor__| replace:: :ref:`Boot Monitor  <foundational-components-boot-monitor>`
+.. |__OpenCL__| replace:: `OpenCL <http://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
+.. |__OpenCV__| replace:: :ref:`OpenCV <foundational-components-opencv>`
+.. |__Multimedia__| replace:: :ref:`Multimedia <foundational-components-multimedia>`
+.. |__Virtualization__| replace:: :ref:`Virtualization <foundational-components-virtualization>`
+.. |__IPC__| replace:: :ref:`IPC <foundational-components-ipc>`
+.. |__OpenVX__| replace:: :ref:`OpenVX <foundational-components-openvx>`
+.. |__CMEM__| replace:: :ref:`CMEM <foundational-components-cmem>`
+.. |__Machine Learning__| replace:: :ref:`Machine Learning <foundational-components-machine-learning>`
+.. |__ATF__| replace:: :ref:`ATF <foundational-components-atf>`
+.. |__OPTEE__| replace:: :ref:`OPTEE <foundational-components-optee>`
 
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
-    +-----------------------+-----------------------+-------------------------+------------+
-    | **Foundational Components** (more information on each piece of the distribution)     |
-    +=======================+=======================+=========================+============+
-    | `U-Boot`_             | `Kernel`_             | `Filesystem`_           | `Tools`_   |
-    +-----------------------+-----------------------+-------------------------+------------+
-    | `Graphics & Display`_ | `Examples, Demos`_    | `PRU-ICSS / PRU_ICSSG`_ |            |
-    +-----------------------+-----------------------+-------------------------+------------+
+    +--------------------------+------------------------+----------------------------+-------------+
+    | **Foundational Components** (more information on each piece of the distribution)             |
+    +==========================+========================+============================+=============+
+    | |__U-Boot__|             | |__Kernel__|           | |__Filesystem__|           | |__Tools__| |
+    +--------------------------+------------------------+----------------------------+-------------+
+    | |__Graphics & Display__| | |__Examples & Demos__| | |__PRU-ICSS & PRU_ICSSG__| |             |
+    +--------------------------+------------------------+----------------------------+-------------+
 
-    .. _U-Boot: Foundational_Components_U-Boot.html
-    .. _Processor SDK Linux U-Boot: Foundational_Components_U-Boot.html
-    .. _Kernel: Foundational_Components_Kernel.html
-    .. _Processor SDK Linux Kernel: Foundational_Components_Kernel.html
-    .. _Filesystem: Foundational_Components_Filesystem.html
-    .. _Processor SDK Linux Filesystem: Foundational_Components_Filesystem.html
-    .. _Tools: Foundational_Components_Tools.html
-    .. _Processor SDK Linux Tools: Foundational_Components_Tools.html
-    .. _Graphics & Display: Foundational_Components_Graphics.html
-    .. _Examples, Demos: Examples_and_Demos.html
-    .. _PRU-ICSS / PRU_ICSSG: Foundational_Components_PRU-ICSS_PRU_ICSSG.html
-
+.. |__U-Boot__| replace:: :ref:`U-Boot <foundational-components-u-boot>`
+.. |__Kernel__| replace:: :ref:`Kernel <foundational-components-kernel>`
+.. |__Filesystem__| replace:: :ref:`Filesystem <foundational-components-filesystem>`
+.. |__Tools__| replace:: :ref:`Tools <foundational-components-tools>`
+.. |__Graphics & Display__| replace:: :ref:`Graphics & Display <foundational-components-graphics-and-display>`
+.. |__Examples & Demos__| replace:: :ref:`Examples, Demos <examples-and-demos>`
+.. |__PRU-ICSS & PRU_ICSSG__| replace:: :ref:`PRU-ICSS / PRU_ICSSG <foundational-components-pru-icss-pru-icssg>`
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    +----------------+-------------------------+------------------+-----------------------------------+
+    +-----------------+------------------------+------------------+-----------------------------------+
     | **PRU-ICSS / PRU_ICSSG Protocols** (more information on each piece of the distribution)         |
-    +================+=========================+==================+===================================+
-    | `DUAL_EMAC`_   | `HSR\_PRP`_             | `PTP`_           | `RSTP`_                           |
-    +----------------+-------------------------+------------------+-----------------------------------+
-    | `CCLINK`_      | `SORTE`_                | `OPC/UA`_        |                                   |
-    +----------------+-------------------------+------------------+-----------------------------------+
+    +=================+========================+==================+===================================+
+    | |__DUAL_EMAC__| | |__HSR_PRP__|          | |__PTP__|        | |__RSTP__|                        |
+    +-----------------+------------------------+------------------+-----------------------------------+
+    | |__CCLINK__|    | |__SORTE__|            | |__OPCUA__|      |                                   |
+    +-----------------+------------------------+------------------+-----------------------------------+
 
-    .. _DUAL_EMAC: Industrial_Protocols_ICSS_Dual_EMAC.html
-    .. _HSR\_PRP: Industrial_Protocols_HSR_PRP.html
-    .. _RSTP: Industrial_Protocols_RSTP.html
-    .. _PTP: Industrial_Protocols_PTP.html
-    .. _CCLINK: Industrial_Protocols_CCLINK.html
-    .. _SORTE: Industrial_Protocols_SORTE.html
-    .. _OPC/UA: Industrial_Protocols_OPCUA.html
+.. |__DUAL_EMAC__| replace:: :ref:`DUAL_EMAC <industrial-protocols-dual-emac>`
+.. |__HSR_PRP__| replace:: :ref:`HSR_PRP <industrial-protocols-hsr-prp>`
+.. |__PTP__| replace:: :ref:`PTP <industrial-protocols-ptp>`
+.. |__RSTP__| replace:: :ref:`RSTP <industrial-protocols-rstp>`
+.. |__CCLINK__| replace:: :ref:`CCLINK <industrial-protocols-cclink>`
+.. |__SORTE__| replace:: :ref:`SORTE <industrial-protocols-sorte>`
+.. |__OPCUA__| replace:: :ref:`OPC/UA <industrial-protocols-opcua>`

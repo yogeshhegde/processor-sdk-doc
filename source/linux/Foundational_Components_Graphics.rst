@@ -4,6 +4,8 @@
     subsections are specified as a seperate rst file with toplevel headers in
     them being of subsection level 2 header type.
 
+.. _foundational-components-graphics-and-display:
+
 Graphics and Display
 ********************
 

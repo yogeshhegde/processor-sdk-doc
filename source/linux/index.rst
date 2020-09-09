@@ -17,7 +17,7 @@ Processor SDK Linux Software Developer's Guide
          consuming the content generated with emergent documentation tools.
        |
        | Wiki content will be left for reference during this migration process to find any missing old content. Feel free to drop us a note using the
-         forums listed at `Technical Support`_, and we would love to hear from you.
+         forums listed at :ref:`Technical Support <overview-technical-support>`, and we would love to hear from you.
        |
        | Old Wiki Documentation links from previous releases:
        |    - `Wiki Software Developer's Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Software_Developer%E2%80%99s_Guide>`__.
@@ -50,7 +50,7 @@ Processor SDK Linux Software Developer's Guide
 
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the Linux
-forum listed at `Technical Support`_.
+forum listed at :ref:`Technical Support <overview-technical-support>`.
 
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+

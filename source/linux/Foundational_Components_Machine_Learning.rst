@@ -1,3 +1,5 @@
+.. _foundational-components-machine-learning:
+
 ********************
 Machine Learning
 ********************

@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Migration_Guide
 
+.. _release-specific-migration-guide:
+
 ************************************
 Migration Guide for AM335X
 ************************************
