@@ -888,7 +888,7 @@ list of parameters. There are 3 modes of pacing available:
 **Pacing enabled :**
 At each timer expiry, firmware checks if any frames were received during the
 interval, and if so triggers an interrupt. Frames received during timer interval
-set a flag but do not trigger an interrupt. Default timer interval is 123 us.
+set a flag but do not trigger an interrupt.
 
 **Adaptive pacing enabled:**
 At each timer expiry, firmware checks if any frames were received during the
@@ -899,8 +899,9 @@ improve latency when using pacing, but is disabled by default because as it
 results in lower throughput.)
 
 **Pacing disabled:**
-An interrupt is triggered for each frame received.
-
+An interrupt is triggered for each frame received. By default interrupt
+pacing is disabled at the PRUETH interface and user has to use ethtool command
+to enable it.
 
 Example
 

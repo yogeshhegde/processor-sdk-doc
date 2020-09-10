@@ -14,6 +14,9 @@ Processor SDK 07.xx Releases
 
 Processor SDK 07.01.00
 ----------------------
+- Rx interrupt pacing is disabled by default in the ICSS PRUETH driver
+  (Emac/HSR/PRP) and user has to explicitly enable it through ethtool
+  command.
 - Linux HSR, PRP driver. The source directory is now net/hsr instead of
   net/hsr-prp and all source files are prefixed as originally with hsr
   prefix instead of hsr_prp. Consequently CONFIG_HSR_PRP is changed to
