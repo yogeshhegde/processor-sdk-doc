@@ -7,7 +7,7 @@ default: html
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
-OS            =
+OS            = linux
 
 mkfile_path = $(abspath $(lastword $(MAKEFILE_LIST)))
 export ROOTDIR = $(dir $(mkfile_path))
@@ -18,6 +18,7 @@ FAMILYSETUPFILE = python-scripts/family_setup.py
 
 ifeq ($(DEVFAMILY), $(filter $(DEVFAMILY), AM64X AM335X))
     ifeq ($(DEVFAMILY), AM64X)
+       OS       =
        CONFDIR  = source/release_specific/$(DEVFAMILY)
        TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
     else
@@ -25,7 +26,8 @@ ifeq ($(DEVFAMILY), $(filter $(DEVFAMILY), AM64X AM335X))
        TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_${OS}_tags.py
     endif
     VERSION     = $(shell cat ${CONFDIR}/version.txt)
-else #TODO: this is for supporting the old structure
+else # TODO: this is for supporting the old structure;
+     # Remove the else branch after the new structure is used for all device families
     CONFDIR     = source/${OS}
     TAGFILE     = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
     VERSION     = $(shell cat version.txt)

@@ -6,6 +6,9 @@
 # Set 'html_title' = The name for this set of Sphinx documents.
 #                    If None, it defaults to "<project> v<release> documentation".
 
+# todo: the defines below will be moved to configs/<dev>/dev_<os>_tags.py
+# with the new structure. Remove this section as well as "sdk_product" in *tags.py
+# after the new structure is used for all the device families
 if (sdk_os is 'linux'):
     if (sdk_product is 'general'):
         project = u'Processor SDK Linux'

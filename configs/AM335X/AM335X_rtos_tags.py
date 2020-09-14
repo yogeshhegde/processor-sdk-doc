@@ -3,8 +3,8 @@ fam_name = 'AM335X'
 
 # Project name and HTML title
 sdk_product = 'null' #todo: remove after the new structure is used for all device families
-project = u'Processor SDK RTOS'
-html_title = 'Processor SDK RTOS Documentation'
+project = u'Processor SDK RTOS for AM335X'
+html_title = 'Processor SDK RTOS for AM335X Documentation'
 
 # The master toctree document.
 master_doc = 'release_specific/AM335X/rtos/index'

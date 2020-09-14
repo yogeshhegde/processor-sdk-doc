@@ -3,8 +3,8 @@ fam_name = 'AM335X'
 
 # Project name and HTML title
 sdk_product = 'null' #todo: remove after the new structure is used for all device families
-project = u'Processor SDK Linux'
-html_title = 'Processor SDK Linux Documentation'
+project = u'Processor SDK Linux for AM335X'
+html_title = 'Processor SDK Linux for AM335X Documentation'
 
 # The master toctree document.
 master_doc = 'release_specific/AM335X/linux/index'
