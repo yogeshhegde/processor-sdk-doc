@@ -600,8 +600,7 @@ platform that support USB Peripheral boot mode.
       cable.
    -  From Ubuntu (or the host) PC, fetch and build usbboot application.
       usbboot pre-built binaries for particular distributions may be
-      available in `Processor
-      SDK <index.html>`__
+      available in :ref:`Processor SDK Linux <linux-index>`
       already. Here are the steps to build usbboot application.
 
    ::
