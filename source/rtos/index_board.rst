@@ -1,6 +1,10 @@
+.. _board-board-support:
+
 Board Support
 ==============
 .. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Board_Support.rst.inc
+
+.. _index-board-diagnostics:
 
 Diagnostics
 ============
@@ -9,6 +13,8 @@ Diagnostics
 Diagnostics Execution
 ======================
 .. include:: PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Diagnostics_Execution.rst.inc
+
+.. _board-power-on-self-test:
 
 Power-On Self Test
 ===================

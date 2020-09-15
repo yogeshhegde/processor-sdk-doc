@@ -1,3 +1,5 @@
+.. _RTOS-SDK-Migration-Guide-label:
+
 ****************
 Migration Guide
 ****************

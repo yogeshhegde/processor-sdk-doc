@@ -12,7 +12,7 @@ Processor SDK RTOS Software Developer's Guide
      consuming the content generated with emergent documentation tools.
    |
    | Wiki content will be left for reference during this migration process to find any missing old content. Feel free to drop us a note using the
-     forums listed at `Technical Support`_, and we would love to hear from you.
+     forums listed at :ref:`Technical Support <overview-technical-support>`, and we would love to hear from you.
    |
    | Old Wiki Documentation links from previous releases:
    |    - `Wiki Software Developer's Guide <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_Software_Developer_Guide>`__.
@@ -57,180 +57,180 @@ build information, and examples to use as a template to start development.
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 | **Processor SDK RTOS**                                                                                                                                 |
 +========================================================================+===============================================================================+
-| `Getting Started Guide`_  <-- **Start Here**                           | `Release Notes`_                                                              | 
+| |__Getting Started Guide__|  <-- **Start Here**                        | |__Release Notes__|                                                           | 
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-|  `Examples and Demonstrations`_                                        | `RTOS Software Stack`_                                                        |
+| |__Examples and Demonstrations__|                                      | |__RTOS Software Stack__|                                                     |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `Directory Structure Overview`_                                        | `Building the SDK`_                                                           |
+| |__Directory Structure Overview__|                                     | |__Building the SDK__|                                                        |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `Training <https://training.ti.com/processor-sdk-training-series>`__   | `Migration Guide`_                                                            |
+| `Training <https://training.ti.com/processor-sdk-training-series>`__   | |__Migration Guide__|                                                         |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `Technical Support`_                                                   | `How To Guides`_                                                              |
+| |__Technical Support__|                                                | |__How To Guides__|                                                           |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `Related Software`_                                                    | `Frequently Asked Questions (FAQ)`_                                           |
+| |__Related Software__|                                                 | |__Frequently Asked Questions (FAQ)__|                                        |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
-| `Supported Platforms and Versions`_                                                                                                                    |
+| |__Supported Platforms and Versions__|                                                                                                                 |
 +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
 
-.. _Getting Started Guide: index_overview.html#getting-started-guide
-.. _Release Notes: Release_Specific.html#release-notes
-.. _Examples and Demonstrations: index_examples_demos.html
-.. _RTOS Software Stack: index_overview.html#rtos-software-stack
-.. _Directory Structure Overview: index_overview.html#directory-structure
-.. _Building the SDK: index_overview.html#building-the-sdk
-.. _Migration Guide: Release_Specific.html#migration-guide
-.. _Technical Support: index_overview.html#technical-support
-.. _How To Guides: index_how_to_guides.html
-.. _Related Software: index_overview.html#related-software
-.. _Frequently Asked Questions (FAQ): index_faq.html
-.. _Supported Platforms and Versions: Release_Specific.html#supported-platforms-and-versions
+.. |__Getting Started Guide__| replace:: :ref:`Getting Started Guide <overview-getting-started-guide>`
+.. |__Release Notes__| replace:: :ref:`Release Notes <processor-sdk-rtos-release-notes>`
+.. |__Examples and Demonstrations__| replace:: :ref:`Examples and Demonstrations <index-examples-demos>`
+.. |__RTOS Software Stack__| replace:: :ref:`RTOS Software Stack <overview-rtos-software-stack>`
+.. |__Directory Structure Overview__| replace:: :ref:`Directory Structure Overview <overview-directory-structure>`
+.. |__Building the SDK__| replace:: :ref:`Building the SDK <overview-building-the-sdk>`
+.. |__Migration Guide__| replace:: :ref:`Migration Guide <RTOS-SDK-Migration-Guide-label>`
+.. |__Technical Support__| replace:: :ref:`Technical Support <overview-technical-support>`
+.. |__How To Guides__| replace:: :ref:`How To Guides <index-how-to-guides>`
+.. |__Related Software__| replace:: :ref:`Related Software <overview-related-software>`
+.. |__Frequently Asked Questions (FAQ)__| replace:: :ref:`Frequently Asked Questions (FAQ) <index-faq>`
+.. |__Supported Platforms and Versions__| replace:: :ref:`Supported Platforms and Versions <RTOS-SDK-Supported-Platforms>`
 
-+---------------------+-------------------+---------------------+-------------------+
-| **Board/EVM Abstration**                                                          |
-+=====================+===================+=====================+===================+
-| `Diagnostics`_      | `Board Support`_  |`Power-On Self Test`_|                   |
-+---------------------+-------------------+---------------------+-------------------+
++---------------------+---------------------+--------------------------+-------------------+
+| **Board/EVM Abstration**                                                                 |
++=====================+=====================+==========================+===================+
+| |__Diagnostics__|   | |__Board Support__| | |__Power-On Self Test__| |                   |
++---------------------+---------------------+--------------------------+-------------------+
 
-.. _Diagnostics: index_board.html#diagnostics
-.. _Board Support: index_board.html#board-support
-.. _Power-On Self Test: index_board.html#power-on-self-test
+.. |__Diagnostics__| replace:: :ref:`Diagnostics <index-board-diagnostics>`
+.. |__Board Support__| replace:: :ref:`Board Support <board-board-support>`
+.. |__Power-On Self Test__| replace:: :ref:`Power-On Self Test <board-power-on-self-test>`
 
 +---------------------+-------------------+--------------------+--------------------+
 | **Foundational Components**                                                       |
 +=====================+===================+====================+====================+
-| `TI-RTOS Kernel`_   | `Boot`_           | `IPC`_             | `MPM`_             |
+| |__TI-RTOS Kernel__|| |__Boot__|        | |__IPC__|          | |__MPM__|          |
 +---------------------+-------------------+--------------------+--------------------+
-| `OpenMP`_           | `FC`_             | `OpenCL`_          | `Network`_         |
+| |__OpenMP__|        | |__FC__|          | |__OpenCL__|       | |__Network__|      |
 +---------------------+-------------------+--------------------+--------------------+
-| `XDAIS`_            | `PKTLIB`_         | `NWAL`_            | `Tools`_           |
+| |__XDAIS__|         | |__PKTLIB__|      | |__NWAL__|         | |__Tools__|        |
 +---------------------+-------------------+--------------------+--------------------+
 
-.. _TI-RTOS Kernel: index_Foundational_Components.html#ti-rtos-kernel
-.. _Boot: index_Foundational_Components.html#boot
-.. _IPC: index_Foundational_Components.html#IPC
-.. _MPM: index_Foundational_Components.html#mpm
-.. _OpenMP: index_Foundational_Components.html#openmp
-.. _FC: index_Foundational_Components.html#fc
-.. _OpenCL: index_Foundational_Components.html#opencl
-.. _Network: index_Foundational_Components.html#ndk
-.. _XDAIS: index_Foundational_Components.html#xdais
-.. _PKTLIB: index_Foundational_Components.html#pktlib
-.. _NWAL: index_Foundational_Components.html#nwal
-.. _Tools: index_Foundational_Components.html#tools
+.. |__TI-RTOS Kernel__| replace:: :ref:`TI-RTOS Kernel <foundational-components-ti-rtos-kernel>`
+.. |__Boot__| replace:: :ref:`BOOT <foundational-components-boot>`
+.. |__IPC__| replace:: :ref:`IPC <foundational-components-IPC>`
+.. |__MPM__| replace:: :ref:`MPM <foundational-components-mpm>`
+.. |__OpenMP__| replace:: :ref:`OpenMP <foundational-components-openmp>`
+.. |__FC__| replace:: :ref:`FC <foundational-components-fc>`
+.. |__OpenCL__| replace:: :ref:`OpenCL <foundational-components-opencl>`
+.. |__Network__| replace:: :ref:`Network <foundational-components-ndk>`
+.. |__XDAIS__| replace:: :ref:`XDAIS <foundational-components-xdais>`
+.. |__PKTLIB__| replace:: :ref:`PKTLIB <foundational-components-pktlib>`
+.. |__NWAL__| replace:: :ref:`NWAL <foundational-components-nwal>`
+.. |__Tools__| replace:: :ref:`Tools <foundational-components-tools>`
 
 
 +---------------------+-------------------+--------------------+--------------------+
 | **DSP Optimized Libraries**                                                       |
 +=====================+===================+====================+====================+
-| `MATHLIB`_          | `IMGLIB`_         | `DSPLIB`_          | `FFTLIB`_          |
+| |__MATHLIB__|       | |__IMGLIB__|      | |__DSPLIB__|       | |__FFTLIB__|       |
 +---------------------+-------------------+--------------------+--------------------+
-| `LINALG`_           |                   |                    |                    |
+| |__LINALG__|        |                   |                    |                    |
 +---------------------+-------------------+--------------------+--------------------+
 
-.. _MATHLIB: index_dsp_sw.html#dsp-optimized-libraries 
-.. _IMGLIB: index_dsp_sw.html#dsp-optimized-libraries
-.. _DSPLIB: index_dsp_sw.html#dsp-optimized-libraries
-.. _FFTLIB: index_dsp_sw.html#dsp-optimized-libraries
-.. _LINALG: index_dsp_sw.html#dsp-optimized-libraries
+.. |__MATHLIB__| replace:: :ref:`MATHLIB <dsp-sw-dsp-optimized-libraries>`
+.. |__IMGLIB__| replace:: :ref:`IMGLIB <dsp-sw-dsp-optimized-libraries>`
+.. |__DSPLIB__| replace:: :ref:`DSPLIB <dsp-sw-dsp-optimized-libraries>`
+.. |__FFTLIB__| replace:: :ref:`FFTLIB <dsp-sw-dsp-optimized-libraries>`
+.. |__LINALG__| replace:: :ref:`LINALG <dsp-sw-dsp-optimized-libraries>`
 
 
 +---------------------+-------------------+--------------------+--------------------+
 | **DSP Debug and Trace**                                                           |
 +=====================+===================+====================+====================+
-| `CToolsLib`_        | `UIA`_            | `Trace`_           |                    |
+| |__CToolsLib__|     | |__UIA__|         | |__Trace__|        |                    |
 +---------------------+-------------------+--------------------+--------------------+
-| `Fault Mgt`_        | `WDT`_            |                    |                    |
+| |__Fault Mgt__|     | |__WDT__|         |                    |                    |
 +---------------------+-------------------+--------------------+--------------------+
 
-.. _CToolsLib: index_dsp_sw.html#ctoolslib
-.. _UIA: index_dsp_sw.html#uia
-.. _Trace: index_dsp_sw.html#trace
-.. _Fault Mgt: index_dsp_sw.html#fault-management
-.. _WDT: index_dsp_sw.html#wdt
+.. |__CToolsLib__| replace:: :ref:`CToolsLib <dsp-sw-ctoolslib>`
+.. |__UIA__| replace:: :ref:`UIA <dsp-sw-uia>`
+.. |__Trace__| replace:: :ref:`Trace <dsp-sw-trace>`
+.. |__Fault Mgt__| replace:: :ref:`Fault Mgt <dsp-sw-fault-management>`
+.. |__WDT__| replace:: :ref:`WDT <dsp-sw-wdt>`
 
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 | **Device Drivers**                                                                                                 |
 +=============================+============================+============================+============================+
-| `CSL`_                      | `UART`_                    | `USB`_                     | `PCIe`_                    |
+| |__CSL__|                   | |__UART__|                 | |__USB__|                  | |__PCIe__|                 |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `GPIO`_                     | `I2C`_                     | `McSPI-QSPI-OSPI`_         | `EDMA3`_                   |
+| |__GPIO__|                  | |__I2C__|                  | |__McSPI-QSPI-OSPI__|      | |__EDMA3__|                |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-|`ICSS-EMAC(DRIVER,FIRMWARE)`_| `PRUSS`_                   | `FATFS`_                   | `MMCSD`_                   |
+||__ICSS-EMAC__|              | |__PRUSS__|                | |__FATFS__|                | |__MMCSD__|                |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `QMSS`_                     | `CPPI`_                    | `PA`_                      | `SA`_                      |
+| |__QMSS__|                  | |__CPPI__|                 | |__PA__|                   | |__SA__|                   |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `SRIO`_                     | `HYPLNK`_                  | `TSIP`_                    | `MCBSP`_                   |
+| |__SRIO__|                  | |__HYPLNK__|               | |__TSIP__|                 | |__MCBSP__|                |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `EMAC`_                     | `MCASP`_                   | `PM`_                      | `RM`_                      |
+| |__EMAC__|                  | |__MCASP__|                | |__PM__|                   | |__RM__|                   |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `GPMC`_                     | `VPS Drivers`_             | `DSS`_                     | `CAL`_                     |
+| |__GPMC__|                  | |__VPS Drivers__|          | |__DSS__|                  | |__CAL__|                  |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
-| `UDMA`_                     | `SCICLIENT`_               |  `IOLINK`_                 |                            |
+| |__UDMA__|                  | |__SCICLIENT__|            |  |__IOLINK__|              |                            |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 
-.. _CSL: index_device_drv.html#csl
-.. _UART: index_device_drv.html#uart
-.. _USB: index_device_drv.html#usb
-.. _PCIe: index_device_drv.html#pcie
-.. _GPIO: index_device_drv.html#gpio
-.. _I2C: index_device_drv.html#i2c
-.. _McSPI-QSPI-OSPI: index_device_drv.html#mcspi-qspi-ospi
-.. _EDMA3: index_device_drv.html#edma3
-.. _ICSS-EMAC(DRIVER,FIRMWARE): index_device_drv.html#icss-emac-driver-firmware
-.. _PRUSS: index_device_drv.html#pruss
-.. _FATFS: index_device_drv.html#fatfs
-.. _MMCSD: index_device_drv.html#mmcsd
-.. _QMSS: index_device_drv.html#qmss
-.. _CPPI: index_device_drv.html#cppi
-.. _PA: index_device_drv.html#pa
-.. _SA: index_device_drv.html#sa
-.. _SRIO: index_device_drv.html#srio
-.. _HYPLNK: index_device_drv.html#hyplnk
-.. _TSIP: index_device_drv.html#tsip
-.. _MCBSP: index_device_drv.html#mcbsp
-.. _EMAC: index_device_drv.html#emac
-.. _MCASP: index_device_drv.html#mcasp
-.. _PM: index_device_drv.html#pm
-.. _RM: index_device_drv.html#rm
-.. _GPMC: index_device_drv.html#gpmc
-.. _VPS Drivers: index_device_drv.html#vps-drivers
-.. _DSS: index_device_drv.html#dss
-.. _CAL: index_device_drv.html#cal
-.. _UDMA: index_device_drv.html#udma
-.. _SCICLIENT: index_device_drv.html#sciclient
-.. _IOLINK: index_device_drv.html#iolink
+.. |__CSL__| replace:: :ref:`CSL <device-driver-csl>`
+.. |__UART__| replace:: :ref:`UART <device-driver-uart>`
+.. |__USB__| replace:: :ref:`USB <device-driver-usb>`
+.. |__PCIe__| replace:: :ref:`PCIe <device-driver-pcie>`
+.. |__GPIO__| replace:: :ref:`GPIO <device-driver-gpio>`
+.. |__I2C__| replace:: :ref:`I2C <device-driver-i2c>`
+.. |__McSPI-QSPI-OSPI__| replace:: :ref:`McSPI-QSPI-OSPI <device-driver-mcspi-qspi-ospi>`
+.. |__EDMA3__| replace:: :ref:`EDMA3 <device-driver-edma3>`
+.. |__ICSS-EMAC__| replace:: :ref:`ICSS-EMAC(DRIVER,FIRMWARE) <device-driver-icss-emac>`
+.. |__PRUSS__| replace:: :ref:`PRUSS <device-driver-pruss>`
+.. |__FATFS__| replace:: :ref:`FATFS <device-driver-fatfs>`
+.. |__MMCSD__| replace:: :ref:`MMCSD <device-driver-mmcsd>`
+.. |__QMSS__| replace:: :ref:`QMSS <device-driver-qmss>`
+.. |__CPPI__| replace:: :ref:`CPPI <device-driver-cppi>`
+.. |__PA__| replace:: :ref:`PA <device-driver-pa>`
+.. |__SA__| replace:: :ref:`SA <device-driver-sa>`
+.. |__SRIO__| replace:: :ref:`SRIO <device-driver-srio>`
+.. |__HYPLNK__| replace:: :ref:`HYPLNK <device-driver-hyplnk>`
+.. |__TSIP__| replace:: :ref:`TSIP <device-driver-tsip>`
+.. |__MCBSP__| replace:: :ref:`MCBSP <device-driver-mcbsp>`
+.. |__EMAC__| replace:: :ref:`EMAC <device-driver-emac>`
+.. |__MCASP__| replace:: :ref:`MCASP <device-driver-mcasp>`
+.. |__PM__| replace:: :ref:`PM <device-driver-pm>`
+.. |__RM__| replace:: :ref:`RM <device-driver-rm>`
+.. |__GPMC__| replace:: :ref:`GPMC <device-driver-gpmc>`
+.. |__VPS Drivers__| replace:: :ref:`VPS Drivers <device-driver-vps-drivers>`
+.. |__DSS__| replace:: :ref:`DSS <device-driver-dss>`
+.. |__CAL__| replace:: :ref:`CAL <device-driver-cal>`
+.. |__UDMA__| replace:: :ref:`UDMA <device-driver-udma>`
+.. |__SCICLIENT__| replace:: :ref:`SCICLIENT <device-driver-sciclient>`
+.. |__IOLINK__| replace:: :ref:`IOLINK <device-driver-iolink>`
 
 
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 | **Device Driver Utilities**                                                                                        |
 +=============================+============================+============================+============================+
-| `OSAL`_                     | `Profiling`_               |                            |                            |
+| |__OSAL__|                  | |__Profiling__|            |                            |                            |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 
-.. _OSAL: index_device_drv.html#osal
-.. _Profiling: index_device_drv.html#profiling
+.. |__OSAL__| replace:: :ref:`OSAL <device-driver-osal>`
+.. |__Profiling__| replace:: :ref:`Profiling <device-driver-profiling>`
 
 
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 | **PRU-ICSS Firmware**                                                                                              |
 +=============================+============================+============================+============================+
-| `Dual EMAC and Switch`_     | `PRU-ICSS SORTE`_          | `PRU-ICSS I2C`_            | `PRU-ICSS IOLINK`_         |
+| |__Dual EMAC and Switch__|  | |__PRU-ICSS SORTE__|       | |__PRU-ICSS I2C__|         | |__PRU-ICSS IOLINK__|      |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 
-.. _Dual EMAC and Switch: index_pru_icss_fw.html#dual-emac-and-switch
-.. _PRU-ICSS SORTE: index_pru_icss_fw.html#pru-icss-sorte
-.. _PRU-ICSS I2C: index_pru_icss_fw.html#pru-icss-i2c
-.. _PRU-ICSS IOLINK: index_pru_icss_fw.html#pru-icss-iolink
+.. |__Dual EMAC and Switch__| replace:: :ref:`Dual EMAC and Switch <pru-icss-fw-dual-emac-and-switch>`
+.. |__PRU-ICSS SORTE__| replace:: :ref:`PRU-ICSS SORTE <pru-icss-fw-pru-icss-sorte>`
+.. |__PRU-ICSS I2C__| replace:: :ref:`PRU-ICSS I2C <pru-icss-fw-pru-icss-i2c>`
+.. |__PRU-ICSS IOLINK__| replace:: :ref:`PRU-ICSS IOLINK <pru-icss-fw-pru-icss-iolink>`
 
 
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 | **Compilers**                                                                                                      |
 +=============================+============================+============================+============================+
-| `TI C6000`_                 | `TI ARM`_                  | `TI PRU`_                  | `Linaro GCC ARM`_          |
+| |__TI C6000__|              | |__TI ARM__|               | |__TI PRU__|               | |__Linaro GCC ARM__|       |
 +-----------------------------+----------------------------+----------------------------+----------------------------+
 
-.. _TI C6000: Compilers.html#ti-c6000
-.. _TI ARM: Compilers.html#ti-arm
-.. _TI PRU: Compilers.html#ti-pru
-.. _Linaro GCC ARM: Compilers.html#linaro-gcc-arm
+.. |__TI C6000__| replace:: :ref:`TI C6000 <compilers-ti-c6000>`
+.. |__TI ARM__| replace:: :ref:`TI ARM <compilers-ti-arm>`
+.. |__TI PRU__| replace:: :ref:`TI PRU <compilers-ti-pru>`
+.. |__Linaro GCC ARM__| replace:: :ref:`Linaro GCC ARM <compilers-linaro-gcc-arm>`
