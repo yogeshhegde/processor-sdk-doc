@@ -1,8 +1,8 @@
 rtos/Overview
 rtos/index_overview
-release_specific/AM335X/rtos/Release_Specific
-release_specific/AM335X/rtos/Release_Specific_Release_Notes
-release_specific/AM335X/rtos/Release_Specific_Migration_Guide
+devices/AM335X/rtos/Release_Specific
+devices/AM335X/rtos/Release_Specific_Release_Notes
+devices/AM335X/rtos/Release_Specific_Migration_Guide
 rtos/Board_EVM_Abstration
 rtos/index_board
 rtos/Foundational_Components

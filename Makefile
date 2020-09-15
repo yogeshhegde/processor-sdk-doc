@@ -19,10 +19,10 @@ FAMILYSETUPFILE = python-scripts/family_setup.py
 ifeq ($(DEVFAMILY), $(filter $(DEVFAMILY), AM64X AM335X))
     ifeq ($(DEVFAMILY), AM64X)
        OS       =
-       CONFDIR  = source/release_specific/$(DEVFAMILY)
+       CONFDIR  = source/devices/$(DEVFAMILY)
        TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
     else
-       CONFDIR  = source/release_specific/$(DEVFAMILY)/${OS}
+       CONFDIR  = source/devices/$(DEVFAMILY)/${OS}
        TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_${OS}_tags.py
     endif
     VERSION     = $(shell cat ${CONFDIR}/version.txt)
