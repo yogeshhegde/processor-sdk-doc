@@ -40,7 +40,7 @@ export CONFDIR
 ifeq ($(OS),)
 BUILDDIR      = build/processor-sdk-${DEVFAMILY}/esd/docs/${VERSION}
 else
-BUILDDIR      = build/processor-sdk-${OS}/esd/docs/${VERSION}
+BUILDDIR      = build/processor-sdk-${OS}-${DEVFAMILY}/esd/docs/${VERSION}
 endif
 
 # User-friendly check for sphinx-build

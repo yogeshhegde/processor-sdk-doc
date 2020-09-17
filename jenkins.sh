@@ -104,22 +104,19 @@ build_doc()
 	    VERSION=${ROOT_VERSION}
     fi
 
-    if [[ "$DEV" == "AM437X" || "$DEV" == "J7" ]]; then
-	    dev_path="/${DEV}"
-    else
-	    dev_path=''
-    fi
-
     if [[ "$DEV" == "AM64X" ]]; then
             BUILDNAME="processor-sdk-${DEV}"
             os_path=''
-    else
+    elif [[ "$DEV" == "GEN" ]]; then
             BUILDNAME="processor-sdk-${OS}"
+            os_path="/${OS}"
+    else
+            BUILDNAME="processor-sdk-${OS}-${DEV}"
             os_path="/${OS}"
     fi
 
-    BUILDDIR="${OUTPUT}/${BUILDNAME}/esd/docs/${VERSION}${dev_path}"
-    echo "${BUILDNAME}/esd/docs/${VERSION}${dev_path}${release_path}${os_path}/index.html" >> "${BUILD_TARGETS}"
+    BUILDDIR="${OUTPUT}/${BUILDNAME}/esd/docs/${VERSION}"
+    echo "${BUILDNAME}/esd/docs/${VERSION}${release_path}${os_path}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
     make config DEVFAMILY="${DEV}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
