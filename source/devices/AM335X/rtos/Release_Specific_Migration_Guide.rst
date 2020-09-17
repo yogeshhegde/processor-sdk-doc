@@ -197,8 +197,8 @@ earlier embedded in the SBL, is now a separate binary. The system firmware image
 can be found at ``<PDK>/packages/ti/drv/sciclient/soc/V0/sysfw.bin``
 
 For MMC/SD boot, if the steps followed in `Windows SD Card Creation Guide
-<index_overview.html#windows-sd-card-creation-guide>`_ or `Linux SD Card
-Creation Guide <index_overview.html#tools-create-sd-card-linux-label>`_ are
+<../../../rtos/index_overview.html#windows-sd-card-creation-guide>`__ or :ref:`Linux SD Card
+Creation Guide <tools-create-sd-card-linux-label>` are
 used, no additional steps are need. If the SD card is being created manually,
 then the ``sysfw.bin`` file also needs to be copied into the root directory of
 the MMC SD card, along with ``tiboot3.bin`` and ``app``.
@@ -234,7 +234,7 @@ and interrupt configuration. In this release, requirement for application will
 be more mandated as more components are using common infrastructure.
 
 DMSC firmware should be loaded onto Cortex-M4 core using SBL or `CCS GEL script
-<index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`_
+<../../../rtos/index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`__
 before calling the Board Init API with 'BOARD_INIT_PLL' flag.
 
 Board
@@ -263,8 +263,8 @@ detecting single vs multiple partitions run time.
 Limited to the case if user had used MS-DOS Floppy disk format for formatting
 the SD/eMMC memory. No impact if the SD/eMMC is formatted using the steps
 provided by `Windows SD Card Creation Guide
-<index_overview.html#windows-sd-card-creation-guide>`_/ `Linux SD Card Creation
-Guide <index_overview.html#tools-create-sd-card-linux-label>`_ 
+<./../../rtos/index_overview.html#windows-sd-card-creation-guide>`__/:ref:`Linux SD Card Creation
+Guide <tools-create-sd-card-linux-label>`.
 
 **Additional Details**:
 Partition entry information may be wrongly detected for the storage media
@@ -273,8 +273,8 @@ this case.
 
 **Workaround**:
 Format the storage media using the steps provided by `Windows SD Card Creation
-Guide <index_overview.html#windows-sd-card-creation-guide>`_/ `Linux SD Card
-Creation Guide <index_overview.html#tools-create-sd-card-linux-label>`_
+Guide <./../../rtos/index_overview.html#windows-sd-card-creation-guide>`__/:ref:`Linux SD Card
+Creation Guide <tools-create-sd-card-linux-label>`
 in case this issue is observed.
 
 Processor SDK 05.01
@@ -424,8 +424,8 @@ All of this is done in a transparent manner, so there is **no API change** and
 will not affect existing applications. However, there are considerations with
 respect to memory placement and potential conflicts between the board library
 and SBL code. These restrictions have always existed but are now more clearly
-defined and documented. Please refer to `Board Support
-<Board_EVM_Abstration.html#board-support>`__ for more details.
+defined and documented. Please refer to :ref:`Board Support
+<board-board-support>` for more details.
 
 I2C
 ^^^

@@ -65,17 +65,10 @@ Released Apr 2020
     - Sysbios update to 6.76.03.01
     - TI ARM CGT update to 18.12.5 LTS
 
-- AM65x
-    - Added Support for SR 2.0
-    - Added Thumb2 mode support for R5 cores
-    - `IPC LLD sample test for R5  to A53  running Linux <index_device_drv.html#example-details>`_
-    - `CSL: Baremetal example for ePWM, WWDT <index_device_drv.html#csl-fl-examples>`_
-    - EMAC Driver: Update to use NAVSS256L instead of MCU NAVSS
-    - Added support for ICSS-EMAC,NIMU ICSS EMAC
-
 - Descoped features
     - Sercos3 softmaster demo on AM335x
     
+.. _release-notes-component-version:
 
 .. rubric::  Component Version
    :name: component-version
@@ -166,7 +159,7 @@ environment (IDE) for all devices and EVMs:
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
-If you need to install CCS, see the `CCS installation section <Overview.html#code-composer-studio>`__
+If you need to install CCS, see the `CCS installation section <../../../rtos/index_overview.html#code-composer-studio>`__
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
 
@@ -251,7 +244,7 @@ release and any known workaround.
 	PRSDK-2989,MMCSD LLD fails on OMAPl137 with 1024 byte block size,High-Speed Drivers,omapl137-evm
 	PRSDK-4043,OMAPL13x: USB Baremetal project binaries not built via top level make,High-Speed Drivers,"omapl137-evm, omapl138-lcdk"
 
-.. RN_Supported-Platforms-label:
+.. _RN-Supported-Platforms-label:
 
 Supported Platforms 
 =====================
@@ -390,14 +383,14 @@ The following table lists all supported devices for a given installer.
 Evaluation Modules 
 --------------------
 
-See `Processor SDK Supported Platforms <Release_Specific.html#supported-platforms-and-versions>`__
+See :ref:`Processor SDK Supported Platforms <RTOS-SDK-Supported-Platforms>`
 page for a list of supported EVMs per platform and links to more
 information.
 
 Demonstrations 
 ----------------
 
-See `Examples and Demonstrations <Examples_and_Demonstrations.html>`__
+See :ref:`Examples and Demonstrations <index-examples-demos>`
 page for a list of demonstrations per platform and EVM.
 
 Drivers 
@@ -733,6 +726,3 @@ Archived
 :ref:`Migration Guide <RTOS-SDK-Migration-Guide-label>` for information on
 migration from these releases.
 
-| 
-
-.. raw:: html

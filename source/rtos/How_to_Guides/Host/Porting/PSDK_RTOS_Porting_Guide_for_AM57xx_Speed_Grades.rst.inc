@@ -49,9 +49,9 @@ Code Composer Studio (CCS) and Emulation support
 
 TI Supports following evaluation platform for AM57xx class of devices:
 
--  `AM572x GP EVM <index_release_specific.html#supported-platforms-and-versions>`__
--  `AM571x IDK <index_release_specific.html#supported-platforms-and-versions>`__
--  `AM572x IDK <index_release_specific.html#supported-platforms-and-versions>`__
+-  :ref:`AM572x GP EVM <RTOS-SDK-Supported-Platforms>`
+-  :ref:`AM571x IDK <RTOS-SDK-Supported-Platforms>`
+-  :ref:`AM572x IDK <RTOS-SDK-Supported-Platforms>`
 
 When developer selects any of the above platforms in Code composer
 Studio, the target configuration automatically brings in the required
