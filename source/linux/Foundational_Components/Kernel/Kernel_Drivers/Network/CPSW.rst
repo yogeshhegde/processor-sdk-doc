@@ -360,8 +360,6 @@ implementation
 -  Hardware statistics is common for all the ports
 -  Switch config will not be available in dual emac interface mode
 
-| 
-
 .. rubric:: Constraints
    :name: constraints
 
@@ -380,13 +378,33 @@ The following are the constrains for Dual Emac mode implementation
    only configuring bridging, and not doing IP routing, then you can
    configure the two interfaces on the same subnet.
 
-| 
+.. rubric:: Bridging Dual Emac interfaces
+   :name: bridging-dual-emac-interfaces
 
-| 
+The Linux Bridge uses VLAN id 1 as default VLAN, by default.
+As result, the attempt to add Dual Emac interfaces to the Linux Bridge using default configuration may fail.
 
-| 
+To allow Dual Emac interfaces to be added to the Linux Bridge one of following can be done:
 
-| 
+- or update DT "dual_emac_res_vlan" properties to avoid VID id 1 usage for Dual Emac mode
+- or reconfigure the Linux Bridge to not use VID id 1 as default VLAN::
+
+   ip link add name br0 type bridge
+   ip link set dev br0 type bridge vlan_filtering 0
+   echo "New VID id" > /sys/class/net/br0/bridge/default_pvid
+   ip link set dev br0 type bridge vlan_filtering 1
+   ip link set dev eth0 master br0
+   ip link set dev eth1 master br0
+
+- or configure the Linux Bridge in vlan unaware mode::
+
+   ip link add name br0 type bridge
+   ip link set dev br0 type bridge vlan_filtering 0
+   echo 0 > /sys/class/net/br0/bridge/default_pvid
+   ip link set dev eth0 master br0
+   ip link set dev eth1 master br0
+
+|
 
 .. rubric:: Dual EMAC Device tree entry
    :name: dual-emac-device-tree-entry
@@ -421,7 +439,11 @@ device tree node as the reference patch below
     +       dual_emac_res_vlan = <2>;
      };
 
-| 
+|
+
+|
+
+|
 
 .. rubric:: Bringing Up interfaces
    :name: bringing-up-interfaces
