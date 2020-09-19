@@ -28,15 +28,15 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page. The manifest can be found on the SDK
 download page or in the installed directory as indicated below. In
-addition, see `PLSDK GPLv3 Disclaimer <../../../linux/Overview_GPLv3_Disclaimer.html>`__
+addition, see :ref:`PLSDK GPLv3 Disclaimer <overview-gplv3-disclaimer>`.
 
 Documentation
 ===============
--  `Processor SDK Linux Software Developer's Guide <index.html>`__: Provides information on features, functions, delivery package and,
+-  :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
    infrastructure to allow developers to start creating applications.
--  `Processor SDK Linux Getting Started Guide <../../../linux/Overview_Getting_Started_Guide.html>`__: Provides information on getting the software and running
+-  :ref:`Processor SDK Linux Getting Started Guide <overview-getting-started>`: Provides information on getting the software and running
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software
    included in the SDK release. This document is in the release at
@@ -103,7 +103,7 @@ Processor SDK 7.1 Release has following new features:
 
 Supported Platforms
 =====================================
-See `here <../../../linux/Release_Specific_Supported_Platforms_and_Versions.html>`__ for a list of supported platforms and links to more information.
+See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
 |
 
@@ -436,7 +436,7 @@ RT Linux Kernel Known Issues
 .. rubric:: Installation and Usage
    :name: installation-and-usage
 
-The `Software Developer's Guide <index.html>`__ provides instructions on how to setup up your Linux development
+The :ref:`Software Developer's Guide <linux-index>` provides instructions on how to setup up your Linux development
 environment, install the SDK and start your development.  It also includes User's Guides for various Example Applications and Code
 Composer Studio.
 
@@ -446,7 +446,7 @@ Composer Studio.
    :name: host-support
 
 The Processor SDK is developed, built and verified on Ubuntu 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu
-are described in `this page <../../../linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware.html>`__.
+are described in :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>`.
 
 
 .. note::

@@ -253,6 +253,8 @@ download stall or slow download. One simple solution is to run a
 download manager/accelerator such as
 http://www.freedownloadmanager.org/.
 
+.. _overview-code-composer-studio:
+
 Code Composer Studio
 -----------------------
 

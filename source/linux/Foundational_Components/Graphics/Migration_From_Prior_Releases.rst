@@ -119,6 +119,8 @@ configuration file qt\_env.sh at /etc/profile.d
 
 -  export QT\_QPA\_EGLFS\_INTEGRATION=none
 
+.. _from-processor-sdk-6-1-to-6-2-for-am3-4-5-6:
+
 from Processor SDK 6.1 to 6.2 for AM3/4/5/6
 ----------------------------------------------
 

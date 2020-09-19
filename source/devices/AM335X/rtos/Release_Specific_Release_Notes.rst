@@ -159,7 +159,7 @@ environment (IDE) for all devices and EVMs:
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
-If you need to install CCS, see the `CCS installation section <../../../rtos/index_overview.html#code-composer-studio>`__
+If you need to install CCS, see the :ref:`CCS installation section <overview-code-composer-studio>`
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
 

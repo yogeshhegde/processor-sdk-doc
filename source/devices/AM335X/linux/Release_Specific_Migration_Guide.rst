@@ -51,7 +51,7 @@ Processor SDK 06.02
 ---------------------
 - This is a quarterly update release on 2019 LTS stream.
 - Note that this version of Processor SDK updates only AM5 and AM6 platforms w/ Linux OS.
-- The SGX driver has been enhanced to replace IMG WSEGL with MESA-EGL which supports the essential EGL 1.5 extensions required by the latest versions of certain graphics applications such as Chromium browser. See `here <../../../linux/Foundational_Components/Graphics/Migration_From_Prior_Releases.html#from-processor-sdk-6-1-to-6-2-for-am3-4-5-6>`__ for more details about compatability
+- The SGX driver has been enhanced to replace IMG WSEGL with MESA-EGL which supports the essential EGL 1.5 extensions required by the latest versions of certain graphics applications such as Chromium browser. See :ref:`here <from-processor-sdk-6-1-to-6-2-for-am3-4-5-6>` for more details about compatability.
 
 Processor SDK 06.01
 ---------------------
@@ -222,7 +222,7 @@ Processor SDK 05.00
 - Keystone-2: PA/PA2 is not supported in NetCP driver.
 - Keystone-2: NWAL is not supported
 - MMC: AM57x uses sdhci-omap.c driver instead of omap_hsmmc.c driver
-- PCIe: The way in which PCIe endpoint is configured has changed. More details can be found from `PCIe End Point Driver <../../../linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point.html#pcie-end-point-4-14-kernel>`__.
+- PCIe: The way in which PCIe endpoint is configured has changed. More details can be found from :ref:`PCIe End Point Driver <pcie-end-point-4-14-kernel>`.
 - AM335x ICE v2: A new DT file (am335x-ice-v2-prueth.dts) is added to support PRUSS Ethernet ports. The following configurations are supported.
 
 :: 

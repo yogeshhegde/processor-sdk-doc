@@ -498,6 +498,8 @@ The same GEL output will be shown if connecting to the Cortex R5 first instead o
 
 |
 
+.. _advanced-am65x-debug-setup-with-dmsc-firmware-load:
+
 Advanced AM65x Debug Setup with DMSC Firmware Load 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

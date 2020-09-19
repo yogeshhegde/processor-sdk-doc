@@ -196,8 +196,8 @@ flash. To reduce the size of the SBL,  the system firmware image, which was
 earlier embedded in the SBL, is now a separate binary. The system firmware image
 can be found at ``<PDK>/packages/ti/drv/sciclient/soc/V0/sysfw.bin``
 
-For MMC/SD boot, if the steps followed in `Windows SD Card Creation Guide
-<../../../rtos/index_overview.html#windows-sd-card-creation-guide>`__ or :ref:`Linux SD Card
+For MMC/SD boot, if the steps followed in :ref:`Windows SD Card Creation Guide
+<windows-sd-card-creation-guide>` or :ref:`Linux SD Card
 Creation Guide <tools-create-sd-card-linux-label>` are
 used, no additional steps are need. If the SD card is being created manually,
 then the ``sysfw.bin`` file also needs to be copied into the root directory of
@@ -233,8 +233,8 @@ sciclient library  as components internally will be using sciclient API for PLL
 and interrupt configuration. In this release, requirement for application will
 be more mandated as more components are using common infrastructure.
 
-DMSC firmware should be loaded onto Cortex-M4 core using SBL or `CCS GEL script
-<../../../rtos/index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`__
+DMSC firmware should be loaded onto Cortex-M4 core using SBL or :ref:`CCS GEL script
+<advanced-am65x-debug-setup-with-dmsc-firmware-load>`
 before calling the Board Init API with 'BOARD_INIT_PLL' flag.
 
 Board
@@ -262,8 +262,8 @@ detecting single vs multiple partitions run time.
 **Impact Scope:**
 Limited to the case if user had used MS-DOS Floppy disk format for formatting
 the SD/eMMC memory. No impact if the SD/eMMC is formatted using the steps
-provided by `Windows SD Card Creation Guide
-<./../../rtos/index_overview.html#windows-sd-card-creation-guide>`__/:ref:`Linux SD Card Creation
+provided by :ref:`Windows SD Card Creation Guide
+<windows-sd-card-creation-guide>`/:ref:`Linux SD Card Creation
 Guide <tools-create-sd-card-linux-label>`.
 
 **Additional Details**:
@@ -272,8 +272,8 @@ formated to  MS-DOS Floppy disk format. FATFS APIs fail to access the disk in
 this case.
 
 **Workaround**:
-Format the storage media using the steps provided by `Windows SD Card Creation
-Guide <./../../rtos/index_overview.html#windows-sd-card-creation-guide>`__/:ref:`Linux SD Card
+Format the storage media using the steps provided by :ref:`Windows SD Card Creation
+Guide <windows-sd-card-creation-guide>`/:ref:`Linux SD Card
 Creation Guide <tools-create-sd-card-linux-label>`
 in case this issue is observed.
 
