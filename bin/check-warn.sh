@@ -54,6 +54,13 @@ then
 	exit 4
 fi
 
+# do nothing if target ${_new} doesn't exist,
+# don't wait for it fails after ${_old} was built
+if ! git cat-file -t ${_new} > /dev/null 2>&1; then
+	echo "${_new} not found"
+	exit 5
+fi
+
 # convert 'HEAD' to its commit ID
 if [[ "$_new" == "HEAD" ]]; then
 	_new=$(git rev-parse HEAD)
