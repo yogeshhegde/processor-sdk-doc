@@ -2,6 +2,7 @@
 .. Getting Started Guide
 .. ************************************
 .. _Processor-SDK-RTOS-Getting-Started-Guide-label:
+.. _overview-getting-started-guide:
 .. include:: Overview/Getting_Started_Guide.rst.inc
 
 .. Create an SD card on Windows host
@@ -15,6 +16,7 @@
 .. _Tools-Create-SD-Card-Linux-label:
 .. include:: Development_Tools/Create_SD_Card_Linux.rst.inc
 
+.. _overview-directory-structure:
 
 ************************************
 Directory Structure
@@ -22,11 +24,15 @@ Directory Structure
 .. include:: Overview/Directory_Structure.rst.inc
 
 
+.. _overview-rtos-software-stack:
+
 ************************************
 RTOS Software Stack
 ************************************
 .. include:: Overview/Software_Stack.rst.inc
 
+
+.. _overview-building-the-sdk:
 
 *****************
 Building the SDK
@@ -34,17 +40,21 @@ Building the SDK
 .. include:: Release_Specific/Build_the_SDK.rst.inc
 
 
+.. _overview-related-software:
+
 ************************************
 Related Software
 ************************************
 .. include:: Overview/Related_Software.rst.inc
 
 
+.. _overview-technical-support:
+
 .. ************************************
 .. Technical Support
 .. ************************************
 .. _PRSDK-technical-support-label:
-.. include:: ../common/Overview/Processor_SDK_Technical_Support.rst.inc
+.. include:: /common/Overview/Processor_SDK_Technical_Support.rst.inc
 
 
 ************************************
@@ -55,5 +65,5 @@ Training
    
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+
-| .. Image:: ../../images/E2e.jpg   | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
+| .. Image:: /images/E2e.jpg     | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
 +--------------------------------+--------------------------------------------------------------------------------------------------+

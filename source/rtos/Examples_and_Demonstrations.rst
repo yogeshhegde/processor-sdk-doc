@@ -1,3 +1,5 @@
+.. _index-examples-demos:
+
 ############################
 Examples and Demonstrations
 ############################

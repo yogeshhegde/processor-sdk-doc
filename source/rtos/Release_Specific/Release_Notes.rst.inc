@@ -74,6 +74,7 @@ Released Apr 2020
 - Descoped features
     - Sercos3 softmaster demo on AM335x
     
+.. _release-notes-component-version:
 
 .. rubric::  Component Version
    :name: component-version
@@ -164,7 +165,7 @@ environment (IDE) for all devices and EVMs:
 | Emulators |          |      |      |      |      |       |     |     |     |     |     |         |         |
 +-----------+----------+------+------+------+------+-------+-----+-----+-----+-----+-----+---------+---------+
 
-If you need to install CCS, see the `CCS installation section <Overview.html#code-composer-studio>`__
+If you need to install CCS, see the `CCS installation section <index_overview.html#code-composer-studio>`__
 in the *Getting Started Guide* for options to select for Processor-SDK.
 
 
@@ -249,7 +250,7 @@ release and any known workaround.
 	PRSDK-2989,MMCSD LLD fails on OMAPl137 with 1024 byte block size,High-Speed Drivers,omapl137-evm
 	PRSDK-4043,OMAPL13x: USB Baremetal project binaries not built via top level make,High-Speed Drivers,"omapl137-evm, omapl138-lcdk"
 
-.. RN_Supported-Platforms-label:
+.. _RN-Supported-Platforms-label:
 
 Supported Platforms 
 =====================
@@ -388,7 +389,7 @@ The following table lists all supported devices for a given installer.
 Evaluation Modules 
 --------------------
 
-See `Processor SDK Supported Platforms <Release_Specific.html#supported-platforms-and-versions>`__
+See :ref:`Processor SDK Supported Platforms <RTOS-SDK-Supported-Platforms>`
 page for a list of supported EVMs per platform and links to more
 information.
 

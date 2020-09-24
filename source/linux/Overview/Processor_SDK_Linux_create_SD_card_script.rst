@@ -1,4 +1,4 @@
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_create_SD_card_script
 
@@ -12,10 +12,10 @@ The |__SDK_FULL_NAME__| package includes a script in the **<SDK INSTALL DIR>/bin
 directory named **create-sdcard.sh**. The purpose of this script is to
 create SD cards for the following high-level use cases:
 
-#. Create the `SD Card using default images`_ from the |__SDK_FULL_NAME__|
+#. Create the `SD Card using default images <Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-default-images>`__ from the |__SDK_FULL_NAME__|
    package
-#. Create the `SD card using custom images`_
-#. Create the `SD card using partition tarballs`_ (This is not common
+#. Create the `SD card using custom images <Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-custom-images>`__
+#. Create the `SD card using partition tarballs <Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-partition-tarballs>`__ (This is not common
    and is used most often by board vendors)
 
 The script will give you information about each step, but the following

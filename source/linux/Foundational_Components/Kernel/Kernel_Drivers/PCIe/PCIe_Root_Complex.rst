@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_PCIE_User%27s_Guide
 
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 PCIe Root Complex
 ---------------------------------

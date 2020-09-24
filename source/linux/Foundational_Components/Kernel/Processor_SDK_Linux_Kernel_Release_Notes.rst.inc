@@ -8,7 +8,7 @@ Build Information
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    Please refer to `Kernel Build Information <Release_Specific_PLSDK_Release_Notes.html#linux-kernel>`__ for details.
+    Please refer to :ref:`release-specific-build-information-linux-kernel` section of the release notes for details.
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
@@ -19,7 +19,7 @@ Generic Kernel Release Notes
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    Please refer to `Generic Kernel Release Notes <Release_Specific_PLSDK_Release_Notes.html#generic-kernel-release-notes>`__ for details.
+    Please refer to :ref:`release-specific-generic-kernel-release-notes` for details.
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
@@ -31,7 +31,7 @@ Known Issues
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    Please refer to `Linux Kernel Known Issues <Release_Specific_PLSDK_Release_Notes.html#linux-kernel-known-issues>`__ for details.
+    Please refer to :ref:`release-specific-linux-kernel-known-issues` for details.
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 

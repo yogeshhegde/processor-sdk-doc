@@ -1,3 +1,5 @@
+.. _windows-sd-card-creation-guide:
+
 Windows SD Card Creation Guide
 ===============================
 

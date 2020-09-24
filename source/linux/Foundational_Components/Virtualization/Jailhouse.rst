@@ -1,7 +1,7 @@
 Jailhouse Hypervisor
 =======================
 
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 .. rubric:: Overview
    :name: overview-virtualization

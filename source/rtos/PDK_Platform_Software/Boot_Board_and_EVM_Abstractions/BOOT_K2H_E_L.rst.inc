@@ -11,7 +11,7 @@ not overlap the memory space that SBL uses.
 
 The K2H/K2E/K2L SBL supports ARM master boot using SPI NOR. Please refer
 to the boot mode dip switch settings in the respective EVM hardware page
-(`link <index_release_specific.html#supported-platforms-and-versions>`__)
+(:ref:`link <RTOS-SDK-Supported-Platforms>`)
 to configure your EVM for NOR boot.
 
 Flashing the Bootloader

@@ -96,7 +96,7 @@ AM437x EVM; configuration information for other supported EVMs are also
 provided as needed.
 
 For EVM specific instructions, refer to the **Hardware User's Guide**
-for your `EVM <index_release_specific.html#supported-platforms-and-versions>`__
+for your :ref:`EVM <RTOS-SDK-Supported-Platforms>`
 
 .. note::
    **Note for K2G devices:** If using CCS v6.1.2 and Keystone2 device

@@ -1,8 +1,12 @@
+.. _foundational-components-ti-rtos-kernel:
+
 ***************
 TI-RTOS Kernel
 ***************
 - `SYSBIOS <http://processors.wiki.ti.com/index.php?title=Category:SYSBIOS>`__
 
+
+.. _foundational-components-xdais:
 
 *******
 XDAIS
@@ -10,10 +14,14 @@ XDAIS
 - `XDAIS <http://processors.wiki.ti.com/index.php?title=Category:XDAIS>`__
 
 
+.. _foundational-components-fc:
+
 ****
 FC
 ****
 - `Framework Components <http://processors.wiki.ti.com/index.php?title=Category:Framework_Components>`__
+
+.. _foundational-components-ipc:
 
 *******
 IPC
@@ -169,11 +177,15 @@ QNX Install Guide
 .. include:: /rtos/PDK_Platform_Software/IPC/IPC_Install_Guide_QNX.rst.inc
 
 
+.. _foundational-components-opencl:
+
 ***************
 OpenCL
 ***************
 `OpenCL <http://downloads.ti.com/mctools/esd/docs/opencl/index.html>`__
 
+
+.. _foundational-components-boot:
 
 ***************
 Boot
@@ -182,11 +194,15 @@ Boot
 .. include:: /rtos/PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Boot.rst.inc
 
 
+.. _foundational-components-mpm:
+
 *****
 MPM
 *****
 .. include:: /rtos/MPM.rst.inc
 
+
+.. _foundational-components-openmp:
 
 *******
 OpenMP
@@ -194,10 +210,14 @@ OpenMP
 .. include:: /rtos/Compute/OpenMP.rst.inc
 
 
+.. _foundational-components-pktlib:
+
 ***************
 PKTLIB
 ***************
 .. include:: /rtos/PDK_Platform_Software/Device_Drivers/PKTLIB.rst.inc
+
+.. _foundational-components-network:
 
 ***************
 Network
@@ -205,13 +225,20 @@ Network
 CCLink
 =======
 .. include:: /rtos/PDK_Platform_Software/Network_and_Transport/CCLink.rst.inc
+
+.. _foundational-components-ndk:
+
 NDK
 =======
 .. include:: /rtos/PDK_Platform_Software/Network_and_Transport/NDK.rst.inc
 
+.. _foundational-components-nwal:
+
 NWAL
 ***************
 .. include:: /rtos/PDK_Platform_Software/Device_Drivers/NWAL.rst.inc
+
+.. _foundational-components-transport:
 
 ***************
 Transport
@@ -219,6 +246,8 @@ Transport
 TimeSync (PTP)
 ==============
 .. include:: /rtos/PDK_Platform_Software/Network_and_Transport/TimeSync.rst.inc
+
+.. _foundational-components-tools:
 
 ***************
 Tools

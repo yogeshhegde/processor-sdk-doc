@@ -64,10 +64,10 @@ Software Dependencies
 -  `Code Composer Studio IDE Environment v7 and later <index_overview.html#code-composer-studio>`__
 
 .. note::
-   **For correct version of Code Composer Studio to download, please refer
-   to the `Release Notes <index_release_specific.html#release-notes>`__
+   For correct version of Code Composer Studio to download, please refer
+   to the :ref:`Release Notes <processor-sdk-rtos-release-notes>`
    corresponding to the Processor SDK RTOS version that you have
-   installed**
+   installed
 
 Supported Hardware
 ==================
@@ -262,7 +262,7 @@ Using CCS
 
 **Step 1: Connect Emulator and UART to Hardware**
 
--  Refer to the `Hardware Setup guide <index_release_specific.html#supported-platforms-and-versions>`__
+-  Refer to the :ref:`Hardware Setup guide <RTOS-SDK-Supported-Platforms>`
    and connect the onboard or external emulator to the Hardware and Host
    machine with CCS installed.
 
@@ -289,7 +289,7 @@ Instructions specific to supported EVMs:
    Setup <http://processors.wiki.ti.com/index.php/AM572x_GP_EVM_Hardware_Setup#Connect_without_a_SD_card_boot_image>`__
 
 .. note::
-   Please refer to `Hardware User Guide <index_release_specific.html#supported-platforms-and-versions>`__
+   Please refer to :ref:`Hardware User Guide <RTOS-SDK-Supported-Platforms>`
    corresponding to each supported EVM so setup the boot switches to No
    boot if available
 

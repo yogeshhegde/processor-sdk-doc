@@ -1,4 +1,4 @@
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 |__PART_FAMILY_NAME__|  CPSW2g Ethernet
 ---------------------------------------

@@ -1,3 +1,5 @@
+.. _rtos-index:
+
 .. include:: Overview/Processor_SDK_RTOS_Software_Developers_Guide.rst.inc
 
 .. toctree::

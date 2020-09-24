@@ -1,3 +1,5 @@
+.. _index-faq:
+
 ############################
 Frequently Asked Questions
 ############################
@@ -56,14 +58,14 @@ There are three main documents for Processor SDK RTOS:
 -  :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>`
    Provides information on setting up software and running basic
    examples/demonstrations bundled within the Processor SDK.
--  `Software Developer
-   Guide <index.html#processor-sdk-rtos-software-developer-s-guide>`__:
+-  :ref:`Software Developer
+   Guide <rtos-index>`:
    Provides information on features, functions, delivery package, and
    compile tools for the Processor SDK RTOS release. This guide also
    provides detailed information regarding software elements and
    software infrastructure to allow developers to start creating
    applications.
--  `Migration Guide <Release_Specific.html#migration-guide>`__: Provides
+-  :ref:`Migration Guide <RTOS-SDK-Migration-Guide-label>`: Provides
    migration information for applications built on top of the Processor
    SDK for RTOS.
 
@@ -78,12 +80,12 @@ Host and Target Setup
 
 The steps to set up CCS and Processor SDK RTOS when the SDK or the IDE
 is installed in a location other than the default location are described
-below: `Processor SDK RTOS Setup with CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__
+below: `Processor SDK RTOS Setup with CCS <How_to_Guides.html#setup-ccs-for-evm-and-processor-sdk-rtos>`__.
 
-**A common gotcha while setting up the build environment is
-compatibility with CCS version. Please refer to `Release
-Notes <Release_Specific.html#release-notes>`__ for the
-recommended version of CCS** 
+A common gotcha while setting up the build environment is
+compatibility with CCS version. Please refer to :ref:`Release
+Notes <processor-sdk-rtos-release-notes>` for the
+recommended version of CCS.
 
 .. rubric:: Can I install multiple versions of the Processor SDK RTOS in
    the same folder?
@@ -200,8 +202,8 @@ inter-processor communication component known as (IPC). For SOCs that
 contain an C66x DSP, the SDK provides several optimized DSP libraries
 (DSPLIB, MATHLIB and IMGLIB). These components also ship with pre-built
 examples that can be built using build steps described in their
-documentation that is linked at the top level `Software Developer
-Guide <index.html#processor-sdk-rtos-software-developer-s-guide>`__.
+documentation that is linked at the top level :ref:`Software Developer
+Guide <rtos-index>`.
 
 | 
 
@@ -297,7 +299,7 @@ Device Drivers
    :name: how-do-i-find-out-if-a-driver-is-supported-in-the-package-for-my-device
 
 For all SoC and board-specific driver support, we recommend that you
-refer to the `Release Notes <Release_Specific.html#supported-platforms>`__
+refer to the :ref:`Release Notes <RN-Supported-Platforms-label>`
 corresponding to your release.
 
 If you need further details for driver support on all cores on
@@ -734,8 +736,8 @@ Filesystem Support
    :name: what-filesystem-support-if-provided-by-processor-sdk-rtos-can-i-use-ubifs-ramfs-or-fatfs-with-ti-rtos-when-using-external-non-volatile-memory-devices
 
 Processor SDK RTOS only supports use of FATFS filesystem for some
-devices. For availability of support for your devices check the `Release
-Notes <Release_Specific.html#release-notes>`__
+devices. For availability of support for your devices check the :ref:`Release
+Notes <processor-sdk-rtos-release-notes>`
 There are numerous examples for using FATFS with USB driver and SD/MMC
 driver in the SDK that you can use for reference. The FATFS-specific
 documentation for Processor SDK RTOS is available in the `FATFS wiki
@@ -766,7 +768,7 @@ predefined templates provided as part of CCS installation and then add
 custom configuration on top of it. CCS allows users to create a TI RTOS
 project with Minimum, Typical, and a set of generic examples, as you can
 see from wiki `Processor SDK RTOS TI RTOS Getting Started
-Examples <Release_Specific.html#release-notes>`__.
+Examples <index_overview.html#processor-sdk-rtos-getting-started-guide>`__.
 
 Other than that, there is an TI RTOS workshop that addresses different
 features and use cases of TI RTOS with CCS: `Introduction to the TI-RTOS
@@ -903,7 +905,7 @@ Networking Support
 The NDK software stack provided by TI typically requires a transport
 layer called Network Interface Management Unit (NIMU) layer to interface
 the underlying platform software elements and device drivers. Please
-check the `Processor SDK RTOS Release Notes <Release_Specific.html#release-notes>`__
+check the :ref:`Processor SDK RTOS Release Notes <processor-sdk-rtos-release-notes>`
 for support of the NIMU transport driver to determine if NDK software
 can be utilized on your device.
 

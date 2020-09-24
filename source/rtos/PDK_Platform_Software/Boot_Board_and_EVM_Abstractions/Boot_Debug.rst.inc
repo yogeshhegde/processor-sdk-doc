@@ -133,7 +133,7 @@ entire DDR address space for confirming the SOC EMIF settings.
 
 The processor SDK RTOS bootloader is like any other application that can
 be loaded over the emulator and debugged. Steps to connect an emulator
-to the EVM have been described in the `**Hardware Setup Guides** <Release_Specific.html#supported-platforms-and-versions>`__
+to the EVM have been described in the :ref:`Hardware Setup Guides <RTOS-SDK-Supported-Platforms>`
 that is linked to the Processor SDK RTOS documentation.
 
 Loading the bootloader over emulator can be very useful step in

@@ -1,3 +1,5 @@
+.. _industrial-protocols-dual-emac:
+
 **********************************
 PRU-ICSS Dual EMAC
 **********************************

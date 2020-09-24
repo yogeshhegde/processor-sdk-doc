@@ -1,3 +1,5 @@
+.. _release-specific-migration-guide:
+
 .. include:: Release_Specific/Processor_SDK_Linux_Migration_Guide.rst.inc
 
 .. include:: ../common/Release_Specific/MCSDK_to_Processor_SDK_Migration.rst.inc

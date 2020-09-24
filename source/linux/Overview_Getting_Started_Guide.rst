@@ -1,3 +1,5 @@
+.. _overview-getting-started:
+
 **********************************
 Getting Started Guide
 **********************************

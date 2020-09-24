@@ -90,8 +90,8 @@ Code Composer Studio (CCS) and an Evaluation Module (EVM). See sections
 below for information to configure CCS and EVM for development. This is
 a top-level starting point, but you may need to go to your specific EVM
 hardware setup guide for some steps (e.g., connecting external JTAG). A
-cross reference to all hardware users guide can be found on the `Supported
-Platforms <index_release_specific.html#supported-platforms-and-versions>`__
+cross reference to all hardware users guide can be found on the :ref:`Supported
+Platforms <RTOS-SDK-Supported-Platforms>`
 page.
 
 “Hello World” example with no operating system
@@ -243,7 +243,7 @@ development ecosystem:
 -  Latest CCS Emulation package (for connecting to target using JTAG)
 -  Processor-SDK RTOS software
 
-See the `Release Notes <index_release_specific.html#release-notes>`__
+See the :ref:`Release Notes <processor-sdk-rtos-release-notes>`
 for information on minimum requirements for host PC.
 
 The size of the installer is large since we want to provide one bundle
@@ -252,6 +252,8 @@ downloading the Processor-SDK installer, you may run into issues such as
 download stall or slow download. One simple solution is to run a
 download manager/accelerator such as
 http://www.freedownloadmanager.org/.
+
+.. _overview-code-composer-studio:
 
 Code Composer Studio
 -----------------------
@@ -270,7 +272,7 @@ download page for your platform (see links in below section).
 
 
 .. Attention::
-   See the `Release Notes <index_release_specific.html#release-notes>`__ for the
+   See the :ref:`Release Notes <processor-sdk-rtos-release-notes>` for the
    recommended version of CCS. This is the version that was validated with
    the software in the SDK and will provide the best user experience.
    Occasionally, there may be compatibility issues if different versions
@@ -365,7 +367,7 @@ clicking "Get Software" for the RTOS package.
     -  On Ubuntu 14.04 Linux Host, if you are installing Processor SDK RTOS
        and observe that the installer exits immediately after you try to run
        from command line then you need resolve dependencies using
-       instructions provided here `Processor SDK RTOS_Release Notes <index_release_specific.html#release-notes>`__
+       instructions provided here :ref:`Processor SDK RTOS_Release Notes <processor-sdk-rtos-release-notes>`
 
 | 
 
@@ -385,7 +387,7 @@ SoC. Follow instructions in the included *EVM Quick Start Guide* for
 information on hardware configuration and other pertinent information.
 This guide is included in the EVM kit and also available for download
 from the software download page for your particular device. The list of
-supported EVMs are provided in the `Release Notes <index_release_specific.html#supported-platforms>`__
+supported EVMs are provided in the :ref:`Release Notes <RN-Supported-Platforms-label>`.
 
 If you connect to the EVM UART, use the following host configuration:
 
@@ -395,7 +397,7 @@ If you connect to the EVM UART, use the following host configuration:
 -  **Flow Control**: Off
 
 For more information beyond what is covered in the *EVM Quick Start
-Guide*, see `EVM Hardware User Guides <index_release_specific.html#supported-platforms-and-versions>`__
+Guide*, see :ref:`EVM Hardware User Guides <RTOS-SDK-Supported-Platforms>`
 
 | 
 
@@ -434,10 +436,10 @@ Useful links
 - `Training Videos <https://training.ti.com/processor-sdk-training-series>`__
 - `Getting Started Guide <index_overview.html#getting-started-guide>`__
 
-- `Supported Platforms <index_release_specific.html#supported-platforms-and-versions>`__
+- :ref:`Supported Platforms <RTOS-SDK-Supported-Platforms>`
 
 - `Landing Page to All Processor SDK RTOS Packages <http://www.ti.com/tool/ti-rtos-proc>`__
-- `Release Notes <index_release_specific.html#release-notes>`__
+- :ref:`Release Notes <processor-sdk-rtos-release-notes>`
 - `Examples and Demonstrations <index_examples_demos.html>`__
 - `FAQ <index_faq.html>`__
 | 

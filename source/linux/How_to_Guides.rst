@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_How_To_Guides
 
+.. _how-to-guides:
+
 ##################
 How to Guides
 ##################

@@ -1,4 +1,4 @@
-.. include:: replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 Processor SDK RTOS Automotive
 =============================

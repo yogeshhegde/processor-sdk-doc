@@ -1,6 +1,7 @@
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 .. http://processors.wiki.ti.com/index.php/Linux_Kernel_Users_Guide
+
 .. rubric:: Overview
    :name: overview-linux-kernel-ug
 
@@ -19,7 +20,7 @@ This wiki will cover the basic steps for building the Linux kernel.
   .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
       You can find the details about the git repository, branch and commit id in
-      the `Processor\_SDK\_Linux\_Release\_Notes <Release_Specific_PLSDK_Release_Notes.html#kernel>`__
+      the :ref:`release-specific-build-information-kernel` section of the release notes.
 
 | 
 

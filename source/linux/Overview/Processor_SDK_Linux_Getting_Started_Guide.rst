@@ -1,4 +1,4 @@
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 Getting Started Here
 ====================
@@ -47,7 +47,7 @@ good baseline.
 
 As you go along your development journey and have questions, there is
 documentation and support available to you. Make sure to save a pointer
-to the `Processor SDK Linux Software Developer's Guide <../index.html>`__. If you don't find what you
+to the :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`. If you don't find what you
 need, take a look at the active `E2E Processor Support
 <http://e2e.ti.com/support/processors>`__ Forum
 and see if the topic has been covered before. If not, post
@@ -370,7 +370,7 @@ possibilities:
     |`66AK2Gx <http://www.ti.com/tool/PROCESSOR-SDK-K2G>`__, `66AK2Hx <http://www.ti.com/tool/PROCESSOR-SDK-K2H>`__,     |                                                                                                                    |
     |`66AK2Lx <http://www.ti.com/tool/PROCESSOR-SDK-K2L>`__                                                              |                                                                                                                    |
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-    |`Processor SDK Linux Software Developer's Guide <../index.html>`__                                                  |The SDK's Homepage, a must have link for SDK users.                                                                 |
+    |:ref:`Processor SDK Linux Software Developer's Guide <linux-index>`                                                 |The SDK's Homepage, a must have link for SDK users.                                                                 |
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
     |`Processor SDK Training Series <http://training.ti.com/processor-sdk-training-series>`__                            |This series provides an introduction to the Processor SDK and how to use this software to start building            |
     |                                                                                                                    |applications on TI embedded processors.                                                                             |
@@ -404,7 +404,7 @@ possibilities:
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
     |  **Link**                                                                                                          | **Summary**                                                                                                        |
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
-    |`Processor SDK Linux Software Developer's Guide <../index.html>`__                                                  |The SDK's Homepage, a must have link for SDK users.                                                                 |
+    |:ref:`Processor SDK Linux Software Developer's Guide <linux-index>`                                                 |The SDK's Homepage, a must have link for SDK users.                                                                 |
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
     |`Processor SDK Training Series <http://training.ti.com/processor-sdk-training-series>`__                            |This series provides an introduction to the Processor SDK and how to use this software to start building            |
     |                                                                                                                    |applications on TI embedded processors.                                                                             |

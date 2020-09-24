@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Tools
 
+.. _foundational-components-tools:
+
 ******************
 Tools
 ******************

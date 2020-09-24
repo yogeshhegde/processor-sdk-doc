@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_PCIe_EP_User%27s_Guide
 
-.. include:: /linux/replacevars.rst.inc
+.. include:: /replacevars.rst.inc
 
 PCIe End Point
 ---------------------------------
@@ -611,6 +611,8 @@ supported are:
 
     Once the above step is completed, the PCI endpoint is ready to establish
     a link with the host.
+
+    .. _pcie-end-point-4-14-kernel:
 
     .. rubric:: 4.14 Kernel
        :name: pcie-end-point-4-14-kernel

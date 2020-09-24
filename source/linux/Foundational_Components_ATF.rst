@@ -1,3 +1,5 @@
+.. _foundational-components-atf:
+
 ARM Trusted Firmware-A
 ========================================
 .. rubric:: Overview

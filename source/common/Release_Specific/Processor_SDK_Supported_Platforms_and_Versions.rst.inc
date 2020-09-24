@@ -1,3 +1,5 @@
+.. _release-specific-supported-platforms-and-versions:
+
 ************************************
 Supported Platforms and Versions
 ************************************

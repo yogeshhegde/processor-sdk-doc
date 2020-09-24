@@ -71,8 +71,8 @@ application.
    style="margin: 5px; padding: 2px 10px; background-color: #ecffff; border-left: 5px solid #3399ff;">
 
 **NOTE**
-For information on boot mode setting, see the applicable `EVM Hardware
-User Guide <index_release_specific.html#supported-platforms-and-versions>`__.
+For information on boot mode setting, see the applicable :ref:`EVM Hardware
+User Guide <RTOS-SDK-Supported-Platforms>`.
 
 .. raw:: html
 
@@ -264,7 +264,7 @@ entire DDR address space for confirming the SOC EMIF settings.
 
 The processor SDK RTOS bootloader is like any other application that can
 be loaded over the emulator and debugged. Steps to connect an emulator
-to the EVM have been described in the `**Hardware Setup Guides** <index_release_specific.html#supported-platforms-and-versions>`__
+to the EVM have been described in the :ref:`Hardware Setup Guides <RTOS-SDK-Supported-Platforms>`
 that is linked to the Processor SDK RTOS documentation.
 
 Loading the bootloader over emulator can be very useful step in

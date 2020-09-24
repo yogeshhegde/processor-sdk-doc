@@ -1,4 +1,6 @@
-.. include:: replacevars.rst.inc
+.. include:: /replacevars.rst.inc
+
+.. _foundational-components-multimedia:
 
 *************************
 Multimedia

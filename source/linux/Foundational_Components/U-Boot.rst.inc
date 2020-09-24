@@ -14,7 +14,7 @@ Build Information
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    Please refer to `U-Boot Build Information <Release_Specific_PLSDK_Release_Notes.html#u-boot>`__ for details.
+    Please refer to :ref:`release-specific-build-information-u-boot` for details.
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
@@ -26,7 +26,7 @@ Known Issues
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    Please refer to `U-Boot Known Issues <Release_Specific_PLSDK_Release_Notes.html#u-boot-known-issues>`__ for details.
+    Please refer to :ref:`release-specific-u-boot-known-issues` for details.
 
 .. ifconfig:: CONFIG_sdk in ('PSDKLA')
 

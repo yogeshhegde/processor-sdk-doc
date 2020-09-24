@@ -47,41 +47,41 @@ Possible values for <FAMILY> are
  - "CORESDK" (representing CORESDK)
 
 linux:
+make clean DEVFAMILY=<FAMILY> OS=linux
 make config DEVFAMILY=<FAMILY> OS=linux
 make DEVFAMILY=<FAMILY> OS=linux
 
 rtos:
+make clean DEVFAMILY=<FAMILY> OS=rtos
 make config DEVFAMILY=<FAMILY> OS=rtos
 make DEVFAMILY=<FAMILY> OS=rtos
 
 android (unavailable for AM335X and AM437X):
+make clean DEVFAMILY=<FAMILY> OS=android
 make config DEVFAMILY=<FAMILY> OS=android
 make DEVFAMILY=<FAMILY> OS=android
 
 am64x:
-make config DEVFAMILY=AM64X OS=am64x
-make DEVFAMILY=AM64X OS=am64x
-
-*****************************
-Build instruction for Windows
-*****************************
-linux:
-make config linux
-make html linux
-
-rtos:
-make config rtos
-make html rtos
-
-android
-make config android
-make html android
+make config DEVFAMILY=AM64X
+make DEVFAMILY=AM64X
 
 ******************
 HTML page output
 ******************
-Open index pages and explore in browser
+Open index pages in a web browser
+
+AM335X:
+linux: ./build/processor-sdk-linux-<FAMILY>/esd/docs/[version]/device/<FAMILY>/linux/index.html
+rtos: ./build/processor-sdk-rtos-<FAMILY>/esd/docs/[version]/device/<FAMILY>/rtos/index.html
+
+AM64X:
+am64x: ./build/processor-sdk-am64x/esd/docs/[version]/devices/AM64X/index.html
+
+GEN family (TODO: to be migrated to the new structure):
 linux: ./build/processor-sdk-linux/esd/docs/[version]/linux/index.html
 rtos: ./build/processor-sdk-rtos/esd/docs/[version]/rtos/index.html
 android: ./build/processor-sdk-android/esd/docs/[version]/android/index.html
-am64x: ./build/processor-sdk-am64x/esd/docs/[version]/release_specific/am64x/index.html
+
+Others (TODO: to be migrated to the new structure):
+linux: ./build/processor-sdk-linux-<FAMILY>/esd/docs/[version]/linux/index.html
+rtos: ./build/processor-sdk-rtos-<FAMILY>/esd/docs/[version]/rtos/index.html

@@ -1,3 +1,5 @@
+.. include:: /replacevars.rst.inc
+
 ************************************
 Processor SDK Technical Support
 ************************************
