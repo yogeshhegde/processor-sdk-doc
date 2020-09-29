@@ -24,7 +24,7 @@ What is Needed
 *  A `BeagleBone Black <https://www.ti.com/tool/BEAGLEBK>`__
 *  A 5V power supply compatible with the BeagleBone Black
 *  A Serial Debug Cable is recommended to monitor U-Boot outputs
-*  The following flasher script  available `here <https://git.ti.com/>`__
+*  The flasher script: :download:`sd-card-flasher.sh <files/sd-card-flasher.sh>`
 
 Preparing the SD Card
 ---------------------

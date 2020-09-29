@@ -34,12 +34,12 @@ What is Needed
 *  A Serial Debug Cable is recommended to monitor U-Boot outputs
 *  A configured `TFTP Server
    <../Host/How_to_Setup_Ubuntu_1404_Network_Boot.html>`__
-*  The following files available `here <https://git.ti.com/>`__
+*  The following files:
 
-   * **fetcher.sh** script
-   * **flasher.sh** script
-   * **interfaces** file
-   * **tisdk_am335x-evm-flasher_defconfig** file
+  * :download:`**fetcher.sh** <files/fetcher.sh>` script
+  * :download:`**flasher.sh** <files/flasher.sh>` script
+  * :download:`**interfaces** <files/interfaces>` file
+  * :download:`**tisdk_am335x-evm-flasher_defconfig** <files/tisdk_am335x-evm-flasher_defconfig>` file
 
 Preparing the Flasher Image 
 --------------------------- 
