@@ -54,6 +54,13 @@ then
 	exit 4
 fi
 
+# do nothing if target ${_new} doesn't exist,
+# don't wait for it fails after ${_old} was built
+if ! git cat-file -t ${_new} > /dev/null 2>&1; then
+	echo "${_new} not found"
+	exit 5
+fi
+
 # convert 'HEAD' to its commit ID
 if [[ "$_new" == "HEAD" ]]; then
 	_new=$(git rev-parse HEAD)
@@ -72,29 +79,29 @@ fi
 git checkout ${_old} || exit 10
 
 make DEVFAMILY=${_dev} OS=${_os} clean
-make DEVFAMILY=${_dev} OS=${_os} config > _a.log 2>&1 || exit 12
-make DEVFAMILY=${_dev} OS=${_os} >> _a.log 2>&1 || exit 13
-grep "WARNING:" _a.log > _a-warn.log
+make DEVFAMILY=${_dev} OS=${_os} config > build/_a.log 2>&1 || exit 12
+make DEVFAMILY=${_dev} OS=${_os} >> build/_a.log 2>&1 || exit 13
+grep "WARNING:" build/_a.log > build/_a-warn.log
 
 git checkout ${_new} || exit 20
 
 make DEVFAMILY=${_dev} OS=${_os} clean
-make DEVFAMILY=${_dev} OS=${_os} config > _b.log 2>&1 || exit 22
-make DEVFAMILY=${_dev} OS=${_os} >> _b.log 2>&1 || exit 23
-grep "WARNING:" _b.log > _b-warn.log
+make DEVFAMILY=${_dev} OS=${_os} config > build/_b.log 2>&1 || exit 22
+make DEVFAMILY=${_dev} OS=${_os} >> build/_b.log 2>&1 || exit 23
+grep "WARNING:" build/_b.log > build/_b-warn.log
 
 restore_branch
 
 diff --changed-group-format="%>" --unchanged-group-format="" \
-	_a-warn.log _b-warn.log > _new-warn.log
+	build/_a-warn.log build/_b-warn.log > build/_new-warn.log
 
-_num=$(cat _new-warn.log | wc -l)
+_num=$(cat build/_new-warn.log | wc -l)
 
 echo
 echo "Found $_num new build WARNING(s)."
 echo
 
 if [[ $_num != "0" ]]; then
-	cat _new-warn.log
+	cat build/_new-warn.log
 fi
 
