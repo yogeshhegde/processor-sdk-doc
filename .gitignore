@@ -1,2 +1,6 @@
-source/*/conf.py
+conf.py
+!python-scripts/conf.py
 *.swp
+*.pyc
+build/
+source/replacevars.rst.inc
