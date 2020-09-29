@@ -1,0 +1,48 @@
+/*
+ * Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 as
+ * published by the Free Software Foundation.
+ */
+/dts-v1/;
+
+#include "am33xx.dtsi"
+
+/ {
+	model = "TI AM335x Hello World ";
+	compatible = "ti,am335x-bone-black", "ti,am335x-bone", "ti,am33xx";
+
+        memory@80000000 {
+                device_type = "memory";
+                reg = <0x80000000 0x10000000>; /* 256 MB */
+        };
+
+        chosen {
+                stdout-path = &uart0;
+        };
+
+        vmmcsd_fixed: fixedregulator0 {
+                compatible = "regulator-fixed";
+                regulator-name = "vmmcsd_fixed";
+                regulator-min-microvolt = <3300000>;
+                regulator-max-microvolt = <3300000>;
+        };
+};
+
+&uart0 {
+        pinctrl-names = "default";
+        pinctrl-0 = <&uart0_pins_default>;
+
+        status = "okay";
+};
+
+&mmc1 {
+        status = "okay";
+        bus-width = <0x4>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&mmc1_pins_default>;
+        cd-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
+	vmmc-supply = <&vmmcsd_fixed>;
+};
+

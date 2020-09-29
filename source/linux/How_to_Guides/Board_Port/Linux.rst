@@ -12,7 +12,7 @@ This tutorial assumes the latest `TI SDK
 <https://software-dl.ti.com/processor-sdk-linux/esd/AM335X/latest/index_FDS.html>`__ 
 has been installed, and a host machine has been properly configured.
 
-This tutorial also recommends using TI's `hello_world.dts <git.ti.com>`__ file.
+This tutorial also recommends using TI's :download:`hello_world.dts <files/hello_world.dts>` file.
 
 .. Image:: /images/Elements_of_linux_board_port.png
 
