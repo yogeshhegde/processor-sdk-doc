@@ -7,24 +7,34 @@ Run Setup Scripts
 .. rubric:: Overview
    :name: processor-sdk-linux-setup-script-overview
 
-Run the following script after the installer setup is done.
+.. ifconfig:: CONFIG_sdk in ('PSDKLA')
 
-**./sdk-install.sh**
+    Run the following script after the installer setup is done.
 
-This will setup the required toolchain in the linux-devkit directory.
-It will also setup the default paths in the Rules.make
+    **./sdk-install.sh**
 
-.. note::
+    This will setup the required toolchain in the linux-devkit directory.
+    It will also setup the default paths in the Rules.make
 
-    The sdk-install.sh script is to be run only once, after the installation,
-    the script will be deleted automatically. Make sure to run this before running
-    any of the below setup scripts so that the correct paths can be used for setup.
+    .. note::
 
-After running the sdk-install.sh on the Linux host, the setup script
-should be run to prepare the host for software development. Some of
-the tasks require administrator privileges. The script will prompt you
-when these administrator privileges are required. The setup script
-does the following things:
+        The sdk-install.sh script is to be run only once, after the installation,
+        the script will be deleted automatically. Make sure to run this before running
+        any of the below setup scripts so that the correct paths can be used for setup.
+
+    After running the sdk-install.sh on the Linux host, the setup script
+    should be run to prepare the host for software development. Some of
+    the tasks require administrator privileges. The script will prompt you
+    when these administrator privileges are required. The setup script
+    does the following things:
+
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
+
+    After installation of the SDK on the Linux host, the setup script
+    should be run to prepare the host for software development. Some of
+    the tasks require administrator privileges. The script will prompt you
+    when these administrator privileges are required. The setup script
+    does the following things:
 
 -  Verification that the Linux host is the recommended Ubuntu LTS
    version
