@@ -192,6 +192,7 @@ To do so:
     <PDK>/packages/ti/boot/sbl/binary/mmcsd/<BOARD> to SD card and 
     rename it to tiboot3.bin.
     Copy the system firmware image <PDK>/packages/ti/drv/sciclient/soc/V0/sysfw.bin to SD card
+    (for AM65xx SR2, copy "sysfw_sr2.bin" instead and rename it "sysfw.bin" on the SD card)
 
 You should see the following screen when board is bootted with diagnostic binaries in SD card:
 
