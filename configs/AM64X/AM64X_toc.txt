@@ -10,3 +10,4 @@ devices/am64x/Foundational_Components_Linux
 devices/am64x/Foundational_Components_RTOS
 system/Demo_User_Guides/Demo_User_Guides
 system/Demo_User_Guides/Servo_Drive_Demo_User_Guide
+system/Demo_User_Guides/Benchmark_Demo_User_Guide
