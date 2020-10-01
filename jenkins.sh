@@ -93,7 +93,7 @@ build_doc()
     DEV=$2
 
     release_path=''
-    if [[ "$DEV" == "AM64X" || "$DEV" == "AM335X" ]]; then
+    if [[ "$DEV" == "AM64X" || "$DEV" == "AM335X" || "$DEV" == "AM437X" ]]; then
             release_path="/devices/${DEV}"
             if ["$DEV" == "AM64X"]; then
                 VERSION="$(cat source${release_path}/version.txt)"

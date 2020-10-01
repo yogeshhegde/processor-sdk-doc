@@ -13,11 +13,11 @@ linux/Overview/Download_and_Install_the_SDK
 linux/Overview/Run_Setup_Scripts
 linux/Overview/Top_Level_Makefile
 linux/Overview/GCC_ToolChain
-linux/Release_Specific
-linux/Release_Specific_PLSDK_Release_Notes
-linux/Release_Specific_Performance_Guide
+devices/AM437X/linux/Release_Specific
+devices/AM437X/linux/Release_Specific_Release_Notes
+devices/AM437X/linux/Release_Specific_Migration_Guide
+devices/AM437X/linux/Release_Specific_Performance_Guide
 linux/Release_Specific_Yocto_layer_Configuration
-linux/Release_Specific_Migration_Guide
 linux/Release_Specific_Supported_Platforms_and_Versions
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
