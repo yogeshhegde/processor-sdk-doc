@@ -11,7 +11,6 @@
    Release_Specific
    /rtos/Board_EVM_Abstration
    /rtos/Foundational_Components
-   /rtos/DSP_Software
    /rtos/Device_Drivers
    /rtos/PRU_ICSS
    /rtos/Compilers

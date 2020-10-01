@@ -8,8 +8,6 @@ rtos/Board_EVM_Abstration
 rtos/index_board
 rtos/Foundational_Components
 rtos/index_Foundational_Components
-rtos/DSP_Software
-rtos/index_dsp_sw
 rtos/Device_Drivers
 rtos/index_device_drv
 rtos/PRU_ICSS
