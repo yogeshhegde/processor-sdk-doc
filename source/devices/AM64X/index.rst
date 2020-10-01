@@ -12,6 +12,7 @@ Processor SDK AM64X Software Developer's Guide
    Overview
    Release_Specific
    Foundational_Components
+   /system/Demo_User_Guides/Demo_User_Guides
 
 |
 
