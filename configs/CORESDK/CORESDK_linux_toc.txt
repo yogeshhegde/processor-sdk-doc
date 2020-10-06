@@ -1,3 +1,4 @@
+linux/index
 linux/Release_Specific
 linux/Release_Specific_CoreSDK_Release_Notes
 linux/Release_Specific_CoreSDK_Performance_Guide

@@ -1,5 +1,6 @@
 rtos/Overview
 rtos/index_overview
+devices/AM335X/rtos/index
 devices/AM335X/rtos/Release_Specific
 devices/AM335X/rtos/Release_Specific_Release_Notes
 devices/AM335X/rtos/Release_Specific_Migration_Guide

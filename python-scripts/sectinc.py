@@ -35,37 +35,38 @@ def fill_docs_to_keep(app, family_configlist, verbosity):
 # set_excluded_docs
 # -----------------
 #
-# Description:  For each toctreesection in the master list, searches the docs_to_keep[] array
-#               for its explicit inclusion in the device family build.  If the toctreesection
+# Description:  For each file in all_rst_files, searches the docs_to_keep[] array
+#               for its explicit inclusion in the device family build.  If the file
 #               is not found, it is placed in the exclusion_list so that Sphinx does not build it.
 #
 # Parameters: app            - Application calling this Python function
 #             exclusion_list - Section (.rst file) exclusion list used by Sphinx build
 
 def set_excluded_docs(app, exclusion_list):
-    for entry in toctreesections:
+    for entry in all_rst_files:
         #print("Checking " + entry)
-        if entry not in docs_to_keep:
+        if entry[:-4] not in docs_to_keep: # use [:-4] to remove ".rst" at the end
             #print("Removing " + entry)
-            exclusion_list.append(entry + '.rst')
+            exclusion_list.append(entry)
 
 # find_toctree_files
 # ------------------
 #
-# Description:  Recursively searches for all files in source/{op_os} folder
+# Description:  Recursively searches for all files in the source folder (except those in excluded_patters)
 # that contain "toctree" directives, and places the names of these files in toctreefiles[].
 #
-# Parameters: app   - Application calling this Python function
-#             op_os - Operating System for the SDK (i.e. source/{op_os} for the
-#                     documentation source
+# Parameters: app             - Application calling this Python function
+#             exclude_in_conf - excluded_patterns from <device>_tags.py
 
-def find_toctree_files(app, op_os):
-    directory=os.getcwd() + os.sep + "source" + os.sep + op_os
+def find_toctree_files(app, exclude_in_conf):
+    directory=os.getcwd() + os.sep + "source"
     #print("Running find_toctree_files: directory = " + directory)
     for root, dirs, files in os.walk(directory):
+        # exclude directories specified by excluded_patters in <device>_tags.py
+        dirs[:] = [d for d in dirs if (os.path.join(root, d).replace(directory+"/", "")) not in exclude_in_conf]
         for filename in files:
-            #print("Checking" + filename)
-            if filename.endswith(".rst"):
+            if filename.endswith(".rst") and os.path.join(root, filename).replace(directory+"/", "") not in exclude_in_conf:
+                #print("Checking " + filename)
                 path = os.path.join(root, filename)
                 f = open(path, 'r')
 
@@ -79,18 +80,20 @@ def find_toctree_files(app, op_os):
 # find_all_rst_files
 # ------------------
 #
-# Description: Recursively finds all .rst files in the source/{op_os} directory
+# Description: Recursively finds all .rst files in the source directory, excluding those
+#              defined in excluded_patterns from <device>_tags.py
 #
-# Parameters: app   - Application calling this Python function
-#             op_os - Operating System for the SDK (i.e. source/{op_os} for the
-#                     documentation source
+# Parameters: app             - Application calling this Python function
+#             exclude_in_conf - excluded_patterns from <device>_tags.py
 
-def find_all_rst_files(app, op_os):
+def find_all_rst_files(app, exclude_in_conf):
     extension = '.rst'
-    directory = "source" + os.sep + op_os
+    directory = "source"
     for dirpath, dirnames, files in os.walk(directory):
+        # exclude directories specified by excluded_patters in <device>_tags.py
+        dirnames[:] = [d for d in dirnames if (os.path.join(dirpath, d)).replace("source/", "") not in exclude_in_conf]
         for name in files:
-            if extension and name.lower().endswith(extension):
+            if extension and name.lower().endswith(extension) and os.path.join(dirpath, name).replace("source/", "") not in exclude_in_conf :
                 rst_path = os.path.join(dirpath, name)
                 all_rst_files.append(rst_path.replace("source/",""))
     #print("Finished .rst file search")
@@ -111,10 +114,8 @@ def find_all_rst_files(app, op_os):
 #
 # Parameters: app             - Application calling this Python function
 #             toctreenodefile - An .rst file that contains a toctree directive
-#             op_os           - Operating System for the SDK (i.e. source/{op_os} for the
-#                               documentation source
 
-def get_toctree_entries(app, toctreenodefile, op_os):
+def get_toctree_entries(app, toctreenodefile):
     with open(toctreenodefile, 'r') as tocfile:
         line = 1
         cnt = 0
@@ -170,16 +171,14 @@ def get_toctree_entries(app, toctreenodefile, op_os):
 # The result of this function is a master list (in toctreesections[]) of all .rst files
 # that the Table of Contents stage of the Sphinx build could utilize.
 #
-# Parameters: app   - Application calling this Python function
-#             op_os - Operating System for the SDK (i.e. source/{op_os} for the documentation source
-#                     Currently only tested on "linux", but should be able to be used on
-#                     android or rtos.
+# Parameters: app             - Application calling this Python function
+#             exclude_in_conf - excluded_patterns from <device>_tags.py
 
-def create_master_rst_list(app, op_os):
-    find_toctree_files(app, op_os)
-    find_all_rst_files(app, op_os)
+def create_master_rst_list(app, exclude_in_conf):
+    find_toctree_files(app, exclude_in_conf)
+    find_all_rst_files(app, exclude_in_conf)
     #print(toctreefiles)
     for files in toctreefiles:
-        get_toctree_entries(app, files, op_os)
+        get_toctree_entries(app, files)
     #for section in toctreesections:
     #    print(section)

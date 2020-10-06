@@ -13,6 +13,7 @@ linux/Overview/Download_and_Install_the_SDK
 linux/Overview/Run_Setup_Scripts
 linux/Overview/Top_Level_Makefile
 linux/Overview/GCC_ToolChain
+devices/AM437X/linux/index
 devices/AM437X/linux/Release_Specific
 devices/AM437X/linux/Release_Specific_Release_Notes
 devices/AM437X/linux/Release_Specific_Migration_Guide

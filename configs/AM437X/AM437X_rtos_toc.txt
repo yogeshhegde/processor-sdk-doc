@@ -1,5 +1,6 @@
 rtos/Overview
 rtos/index_overview
+devices/AM437X/rtos/index
 devices/AM437X/rtos/Release_Specific
 devices/AM437X/rtos/Release_Specific_Release_Notes
 devices/AM437X/rtos/Release_Specific_Migration_Guide

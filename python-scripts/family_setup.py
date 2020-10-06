@@ -73,7 +73,7 @@ def setup(app):
     print("family_configvals = ")
     pprint.pprint(family_configvals)
     # Determine which sections need to be excluded
-    sectinc.create_master_rst_list(app, sdk_os)
+    sectinc.find_all_rst_files(app, exclude_patterns)
     sectinc.fill_docs_to_keep(app, family_tocfiles, 0)
     sectinc.set_excluded_docs(app, exclude_patterns)
     print(fam_name + " exclude_patterns is:")
