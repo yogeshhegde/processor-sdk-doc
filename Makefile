@@ -18,7 +18,6 @@ FAMILYSETUPFILE = python-scripts/family_setup.py
 
 ifeq ($(DEVFAMILY), $(filter $(DEVFAMILY), AM64X AM335X AM437X))
     ifeq ($(DEVFAMILY), AM64X)
-       OS       =
        CONFDIR  = source/devices/$(DEVFAMILY)
        TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
     else
@@ -37,7 +36,7 @@ $(info TAGFILE is $(TAGFILE))
 $(info CONFDIR is $(CONFDIR))
 export CONFDIR
 
-ifeq ($(OS),)
+ifeq ($(DEVFAMILY), AM64X)
 BUILDDIR      = build/processor-sdk-${DEVFAMILY}/esd/docs/${VERSION}
 else
 BUILDDIR      = build/processor-sdk-${OS}-${DEVFAMILY}/esd/docs/${VERSION}
