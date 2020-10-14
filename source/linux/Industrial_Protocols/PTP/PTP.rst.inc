@@ -217,19 +217,19 @@ commands respectively
 
 ::
 
-    echo 1 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_enable
-    echo 0 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_enable
+    echo 1 > /sys/class/ptp/ptp1/pps_enable
+    echo 0 > /sys/class/ptp/ptp1/pps_enable
     or
-    echo 1 > /sys/devices/platform/pruss2_eth/ptp/ptp2/pps_enable
-    echo 0 > /sys/devices/platform/pruss2_eth/ptp/ptp2/pps_enable
+    echo 1 > /sys/class/ptp/ptp2/pps_enable
+    echo 0 > /sys/class/ptp/ptp2/pps_enable
 
 ::
 
-    echo 1 > /sys/devices/platform/pruss1_eth/ptp/ptp2/pps_enable
-    echo 0 > /sys/devices/platform/pruss1_eth/ptp/ptp2/pps_enable
+    echo 1 > /sys/class/ptp/ptp2/pps_enable
+    echo 0 > /sys/class/ptp/ptp2/pps_enable
     or
-    echo 1 > /sys/devices/platform/pruss1_eth/ptp/ptp1/pps_enable
-    echo 0 > /sys/devices/platform/pruss1_eth/ptp/ptp1/pps_enable
+    echo 1 > /sys/class/ptp/ptp1/pps_enable
+    echo 0 > /sys/class/ptp/ptp1/pps_enable
 
 Please note that both ptp1/2 may be assigned to pruss1(2)\_eth based on
 the order of operations. Use the following command to find out the
@@ -237,8 +237,8 @@ assigned PTP ports.
 
 ::
 
-    ls /sys/devices/platform/pruss1_eth/ptp
-    ls /sys/devices/platform/pruss2_eth/ptp
+    ethtool -T eth2/3 | grep "PTP Hardware Clock"
+    ethtool -T eth4/5 | grep "PTP Hardware Clock"
 
 .. note::
     Known Issue: On AM335x/AM437x, the current PPS implementation has the
@@ -659,12 +659,7 @@ To see what is available under an ICSS-PRU ptp support:
 
 ::
 
-    root@am57xx-evm:~# ls /sys/devices/platform/pruss2_eth/ptp
-    ptp1/
-
-::
-
-    root@am57xx-evm:~# ls /sys/devices/platform/pruss2_eth/ptp/ptp1
+    root@am57xx-evm:~# ls /sys/class/ptp/ptp1
     clock_name             fifo                   n_periodic_outputs     pps_available
     dev                    max_adjustment         n_programmable_pins    pps_enable
     device@                n_alarms               period                 subsystem@
@@ -672,12 +667,12 @@ To see what is available under an ICSS-PRU ptp support:
 
 ::
 
-    root@am57xx-evm:~# cat /sys/devices/platform/pruss1_eth/ptp/ptp2/clock_name
+    root@am57xx-evm:~# cat /sys/class/ptp/ptp2/clock_name
     PRUSS1 timer
 
 ::
 
-    root@am57xx-evm:~# cat /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_available
+    root@am57xx-evm:~# cat /sys/class/ptp/ptp1/pps_available
     1
 
 If ptp4l is started in the background and without the "-m" option to
@@ -943,7 +938,7 @@ port
 ::
 
     #ptp4l -2 -P -f oc_eth2.txt -s -m &
-    #echo 1 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_enable
+    #echo 1 > /sys/class/ptp/ptp1/pps_enable
 
 .. rubric:: GMAC Port Configurations
    :name: gmac-port-configurations
@@ -1808,13 +1803,13 @@ Limitations
 
 ::
 
-    echo 1 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_enable
+    echo 1 > /sys/class/ptp/ptp1/pps_enable
 
 or
 
 ::
 
-    echo 1 > /sys/devices/platform/pruss1_eth/ptp/ptp2/pps_enable
+    echo 1 > /sys/class/ptp/ptp2/pps_enable
 
 The same is true for other combinations. The intention is to avoid
 having more than one PPS enabled when the IDK has the HW mod mentioned
@@ -2043,13 +2038,13 @@ section for HSR) will be used in the setup of the tests.
 
 ::
 
-    $ echo 1 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_enable
+    $ echo 1 > /sys/class/ptp/ptp1/pps_enable
 
 -  Open a telnet terminal to DUT-3 and enable PPS:
 
 ::
 
-    $ echo 1 > /sys/devices/platform/pruss2_eth/ptp/ptp1/pps_enable
+    $ echo 1 > /sys/class/ptp/ptp1/pps_enable
 
 -  Measure PPS jitter between DUT-2 (master) and DUT-3 (slave)
 
