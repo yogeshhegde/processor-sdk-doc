@@ -102,7 +102,7 @@ For this step, we will be using the terminal connected to the primary UART.
         => 
 
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     We will need to add the jailhouse device tree overlay to the list of overlays to
     apply in u-boot.This is controlled by the environment variable "overlay_files".

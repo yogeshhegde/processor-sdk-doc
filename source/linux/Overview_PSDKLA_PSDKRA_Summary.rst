@@ -6,8 +6,10 @@ Processor SDK RTOS Automotive
 Processor SDK RTOS Automotive (PSDKRA) is a companion SDK to PSDKLA on
 the |__PART_FAMILY_NAME__| family of devices.  In order to use some SoC
 features from the core running Linux, one needs to download and install the PSDKRA package.
-After downloading this PSDKRA package, refer to the PSDKRA top level user
-guide, ${PSDKRA_PATH}/index.html, for more details.
+
+Refer to the  `PSDKRA top level user guide online 
+<http://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-jacinto7/latest/exports/docs/psdk_rtos_auto/docs/user_guide/index.html>`__
+or after downloading the installer at ${PSDKRA_PATH}/index.html, for more details.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
@@ -27,14 +29,4 @@ guide, ${PSDKRA_PATH}/index.html, for more details.
 
 .. important::
     This package is NOT included in PSDKLA installer and needs to be downloaded separately.
-
-.. ifconfig:: CONFIG_part_family in ('J7_family')
-
-    +---------------+---------------------------+
-    | Version       | 07_00_00_XX               |
-    +---------------+---------------------------+
-    | Release Notes | ${PSDKRA_PATH}/index.html |
-    +---------------+---------------------------+
-    | User Guide    | ${PSDKRA_PATH}/index.html |
-    +---------------+---------------------------+
 

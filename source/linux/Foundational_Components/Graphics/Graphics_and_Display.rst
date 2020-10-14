@@ -242,7 +242,7 @@ The picture below shows the software architecture of Graphics in
     .. figure:: ../../../images/j7-graphics-software-stack.png
         :align: center
 
-        PSDKLA Jacinto 7 Graphics Software Stack
+        PSDK Linux Jacinto 7 Graphics Software Stack
 
 .. raw:: html
 

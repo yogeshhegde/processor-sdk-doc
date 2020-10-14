@@ -13,7 +13,7 @@ Getting Started Guide
    Overview/Download_and_Install_the_SDK
    Overview/Program_EVM
    Overview/Run_Setup_Scripts
-   Overview/PSDKLA_Formatting_SD_Card
+   Overview/Processor_SDK_Linux_Formatting_SD_Card
    Overview/Top_Level_Makefile
    Overview/GCC_ToolChain
 

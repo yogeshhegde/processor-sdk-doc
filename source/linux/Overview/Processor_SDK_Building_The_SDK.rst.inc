@@ -27,7 +27,7 @@ Prerequisites (One-time setup)
 .. rubric:: Host Setup - Ubuntu (Recommended)
    :name: Host Setup - ubuntu (Recommended)
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL')
 
     The recommended Linux distribution is Ubuntu 16.04 or Ubuntu 18.04.
 
@@ -35,13 +35,13 @@ The following build host packages are required for Ubuntu. The following
 command will install the required tools on the Ubuntu Linux
 distribution.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL')
 
     For Ubuntu 16.04 and 18.04, please run the following:
 
 ::
 
-    $ sudo apt-get install git build-essential python diffstat texinfo gawk chrpath dos2unix wget unzip socat doxygen libc6:i386 libncurses5:i386 libstdc++6:i386 libz1:i386
+    $ sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools python diffstat texinfo gawk chrpath dos2unix wget unzip socat doxygen libc6:i386 libncurses5:i386 libstdc++6:i386 libz1:i386 g++-multilib
 
 By default Ubuntu uses "dash" as the default shell for /bin/sh. You must
 reconfigure to use bash by running the following command:
@@ -99,7 +99,7 @@ Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
         $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/8.3-2019.03/binrel/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz
         $ tar -Jxvf gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu.tar.xz -C $HOME
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     Download the toolchain compilers from the links provided in the SDK release page.
     Keep the extracted toolchains in the $HOME directory of host Linux machine.
@@ -132,12 +132,12 @@ Build Steps
         $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
         $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the
-    layer configuration for a particular release of Processor SDK Linux. The final command below
-    will build the **tisdk-rootfs-image**, which is the minimal Processor SDK filesystem.
-    See `Build Options`_ for a list of additional targets.
+    layer configuration for a particular release of Processor SDK Linux. 
+    See `Build Options`_ for a list of additional targets.  The MACHINE can be set to
+    |__SDK_BUILD_MACHINE__|.
 
     ::
 
@@ -150,7 +150,7 @@ Build Steps
         echo "DISTRO_FEATURES_append = \" virtualization\"" >> conf/local.conf
         echo "IMAGE_INSTALL_append = \" docker\"">> conf/local.conf
         . conf/setenv
-        TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=j7-evm bitbake -k tisdk-default-image
+        TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=<machine> bitbake -k tisdk-default-image
 
 Processor SDK Build Reference
 =============================
@@ -193,7 +193,7 @@ The "Build Output" is given relative to the
     | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
     +------------------------------+---------------------------------------------------------------+----------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     +------------------------------+---------------------------------------------------------------+----------------------------+
     | Target                       | Build Output                                                  | Description                |
@@ -326,15 +326,15 @@ the recipe and all its dependencies.
     folder, independent shared objects (.so files) under packages-split
     folder, and IPKs under deploy-ipks folder.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     For example, the command below builds only the jailhouse recipe and all the
     dependencies it defines.
 
-    ``MACHINE=j7-evm bitbake jailhouse``
+    ``MACHINE=<machine> bitbake jailhouse``
 
     After the bitbake command above is successfully done,
-    **arago-tmp-[toolchain]/work/j7\_evm-linux/jailhouse** directory
+    **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse** directory
     will be available including the original source code under the git
     folder, independent shared objects (.so files) under packages-split
     folder, and IPKs under deploy-ipks folder.
@@ -356,17 +356,17 @@ the recipe and all its dependencies.
 
     ``MACHINE=am57xx-evm bitbake opencl``
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     When needed, source code under the work directory (e.g.,
-    **arago-tmp-[toolchain]/work/j7\_evm-linux/jailhouse**/git) can
+    **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse**/git) can
     be modified. After the modification is done, run the following commands
     to force recompilation with the new code and rebuilding of the recipe,
     e.g.,
 
-    ``MACHINE=j7-evm bitbake jailhouse --force -c compile``
+    ``MACHINE=<machine> bitbake jailhouse --force -c compile``
 
-    ``MACHINE=j7-evm bitbake jailhouse``
+    ``MACHINE=<machine> bitbake jailhouse``
 
 .. rubric:: Installing Package
    :name: installing-package
@@ -381,11 +381,11 @@ the recipe and all its dependencies.
 
     ``opkg install [package_ipk].ipk``
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     To install a modified and rebuilt package, copy the new IPKs from the
     deploy-ipks folder (e.g.,
-    **arago-tmp-[toolchain]/work/j7\_evm-linux/jailhouse/[version]/deploy-ipks**)
+    **arago-tmp-[toolchain]/work/<machine>-linux/jailhouse/[version]/deploy-ipks**)
     to the target system and then run the following command to install the
     IPKs:
 
@@ -468,7 +468,7 @@ Common Variations
 
         /etc/init.d/xorg <start|stop>
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     N/A
 

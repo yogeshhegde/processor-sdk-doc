@@ -62,8 +62,9 @@ The cross-compilers and tools such as qmake2 can be found the the
 **<SDK INSTALL DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin** directory. Adding this
 directory to your PATH will allow using these tools. For example:
 
-**host# export PATH="<SDK INSTALL
-DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin:$PATH"**
+::
+
+ host# export PATH="<SDK INSTALL DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin:$PATH"
 
 Additional tools are also located here such as the **qmake2, rcc, uic** tools
 used by Qt. In addition there is a qt.conf file that can be used by tools such
@@ -93,12 +94,12 @@ architectures found in Processor SDK.
     | aarch64-linux-gnu-    | ARMv8        | am65xx-evm                                                              |
     +-----------------------+--------------+-------------------------------------------------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     +-----------------------+--------------+-------------------------------------------------------------------------+
     | Toolchain Prefix      | Architecture | Processor SDK Device                                                    |
     +-----------------------+--------------+-------------------------------------------------------------------------+
-    | aarch64-linux-gnu-    | ARMv8        | j7-evm                                                                  |
+    | aarch64-linux-gnu-    | ARMv8        | j7-evm j7200-evm am65xx-evm                                             |
     +-----------------------+--------------+-------------------------------------------------------------------------+
 
 In an effort to be succient, the specific toolchain prefix will be replaced with
@@ -128,8 +129,9 @@ an example if your application wants access to the alsa asound library
 then you can now do the following command (assuming you have added the
 cross compiler to your PATH):
 
-**host# ${TOOLCHAIN_PREFIX}gcc -lasound app.c -o app.out**
-| 
+:: 
+
+  host# ${TOOLCHAIN_PREFIX}gcc -lasound app.c -o app.out
 
 .. rubric:: environment-setup script
    :name: environment-setup-script
@@ -149,8 +151,9 @@ for you. This script exports variables to perform actions such as:
 To **use** the environment-setup script you only need to source it. This
 is as simple as:
 
-**host# source linux-devkit/environment-setup**
-| 
+::
+
+  host# source linux-devkit/environment-setup
 
 To know if the environment setup script has been sourced in your current
 shell the shell prompt will be changed to contain the
@@ -175,9 +178,16 @@ the kernel to fail to compile.
 
 .. rubric:: Usage
 
-The following sections give some examples of how to use the included
-toolchain to compile simple applications such as *HelloWorld* to more
-complex examples such as configuring and compiler GStreamer plugins.
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+    The following sections give some examples of how to use the included
+    toolchain to compile a simple *HelloWorld* application.
+
+.. ifconfig:: CONFIG_sdk not in ('PSDKL')
+
+    The following sections give some examples of how to use the included
+    toolchain to compile simple applications such as *HelloWorld* to more
+    complex examples such as configuring and compiler GStreamer plugins.
 
 .. rubric:: Simple Cross-Compile
    :name: simple-cross-compile
@@ -197,7 +207,6 @@ show how to make a simple helloworld application and cross-compile that
 application.
 
 Create a **helloworld.c** file
-| 
 
 .. code-block:: c
 
@@ -214,9 +223,9 @@ having been added to our PATH.
 
 | 
 
-**host# <SDK INSTALL
-DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin/${TOOLCHAIN_PREFIX}gcc
-helloworld.c -o helloworld**
+::
+
+  host# <SDK INSTALL DIR>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/${TOOLCHAIN_PREFIX}gcc helloworld.c -o helloworld
 
 | 
 
@@ -226,159 +235,148 @@ simple way to check this is to run the following command:
 
 | 
 
-**host# file helloworld**
+::
 
-| 
+  host# file helloworld
 
 This should yield output like:
 
-| 
+::
 
-"helloworld: ELF 32-bit LSB executable, **ARM**, version 1 (SYSV),
-dynamically linked (uses shared libs), for GNU/Linux 2.6.31, not
-stripped"
+  helloworld: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, with debug_info, not stripped
 
-| 
+.. ifconfig:: CONFIG_sdk not in ('PSDKL')
 
-.. note::
-   The ARM entry above was made bold for emphasis.
+    .. rubric:: Using PThreads
+       :name: using-pthreads
 
-| 
+    In many cases your simple application probably wants to use additional
+    libraries than the standard libgcc and glibc libraries. In this case
+    you will need to include the header files for those libraries as well
+    as add the library to the compile line. In this example we will look
+    at how to build a simple threading application and use the pthread
+    library. This example was derived from the example code at
+    `**http://www.amparo.net/ce155/thread-ex.html** <http://www.amparo.net/ce155/thread-ex.html>`__
 
-.. rubric:: Using PThreads
-   :name: using-pthreads
+    Create a file **thread-ex.c** with the following contents
 
-In many cases your simple application probably wants to use additional
-libraries than the standard libgcc and glibc libraries. In this case
-you will need to include the header files for those libraries as well
-as add the library to the compile line. In this example we will look
-at how to build a simple threading application and use the pthread
-library. This example was derived from the example code at
-`**http://www.amparo.net/ce155/thread-ex.html** <http://www.amparo.net/ce155/thread-ex.html>`__
+    | 
 
-Create a file **thread-ex.c** with the following contents
+    .. code:: c
 
-| 
+        #include <unistd.h>;
+        #include <sys/types.h>;
+        #include <errno.h>;
+        #include <stdio.h>;
+        #include <stdlib.h>;
+        #include <pthread.h>;
+        #include <string.h>;
+         
+        int print_message_function(void *ptr);
+         
+        /* struct to hold data to be passed to a thread
+        this shows how multiple data items can be passed to a thread */
+        typedef struct str_thdata
+        {
+            int thread_no;
+            char message[100];
+        } thdata;
+         
+        int main(int argc, void **argv)
+        {
+            pthread_t thread1, thread2;
+            thdata data1, data2;
+         
+            data1.thread_no = 1;
+            strcpy(data1.message, "Hello!");
+         
+            data2.thread_no = 2;
+            strcpy(data2.message, "Hi!");
+         
+            pthread_create (&thread1, NULL, (void *) &print_message_function, (void *) &data1);
+            pthread_create (&thread2, NULL, (void *) &print_message_function, (void *) &data2);
+         
+            pthread_join(thread1, NULL);
+            pthread_join(thread2, NULL);
+         
+            exit(0);
+        }
+         
+        int print_message_function ( void *ptr )
+        {
+            thdata *data;
+            data = (thdata *) ptr;  /* type cast to a pointer to thdata */
+         
+            /* do the work */
+            printf("Thread %d says%s \n", data->thread_no, data->message);
+         
+            return 0;
+        }
 
-.. code:: c
+    | 
 
-    #include <unistd.h>;
-    #include <sys/types.h>;
-    #include <errno.h>;
-    #include <stdio.h>;
-    #include <stdlib.h>;
-    #include <pthread.h>;
-    #include <string.h>;
-     
-    int print_message_function(void *ptr);
-     
-    /* struct to hold data to be passed to a thread
-    this shows how multiple data items can be passed to a thread */
-    typedef struct str_thdata
-    {
-        int thread_no;
-        char message[100];
-    } thdata;
-     
-    int main(int argc, void **argv)
-    {
-        pthread_t thread1, thread2;
-        thdata data1, data2;
-     
-        data1.thread_no = 1;
-        strcpy(data1.message, "Hello!");
-     
-        data2.thread_no = 2;
-        strcpy(data2.message, "Hi!");
-     
-        pthread_create (&thread1, NULL, (void *) &print_message_function, (void *) &data1);
-        pthread_create (&thread2, NULL, (void *) &print_message_function, (void *) &data2);
-     
-        pthread_join(thread1, NULL);
-        pthread_join(thread2, NULL);
-     
-        exit(0);
-    }
-     
-    int print_message_function ( void *ptr )
-    {
-        thdata *data;
-        data = (thdata *) ptr;  /* type cast to a pointer to thdata */
-     
-        /* do the work */
-        printf("Thread %d says%s \n", data->thread_no, data->message);
-     
-        return 0;
-    }
+    Cross-compile the **thread-ex.c** file using the cross-compile
+    toolchain. In this example we will first add the toolchain to our PATH.
+    This only needs to be done once. We will also add the pthread library to
+    the compile line so that we will link with the library file that
+    provides the pthread\_\* functions.
 
-| 
 
-Cross-compile the **thread-ex.c** file using the cross-compile
-toolchain. In this example we will first add the toolchain to our PATH.
-This only needs to be done once. We will also add the pthread library to
-the compile line so that we will link with the library file that
-provides the pthread\_\* functions.
+    ::
 
-| 
+      host# export PATH="<SDK INSTALL DIR>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/:$PATH"
 
-**export PATH="<SDK INSTALL
-DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin/:$PATH"**
+      host# ${TOOLCHAIN_PREFIX}gcc -lpthread thread-ex.c -o thread-ex
 
-| 
 
-**${TOOLCHAIN_PREFIX}gcc '**\ **-lpthread'** **thread-ex.c -o thread-ex**
+.. ifconfig:: CONFIG_sdk not in ('PSDKL')
 
-| 
+    .. rubric:: Configure/Autotools
+       :name: configureautotools
 
-.. note::
-   The -lpthread entry above was made italics for emphasis.
+    The last case to cover is one where the **environment-setup** script is
+    useful. In this case we will download the **gst-plugins-bad** package and
+    configure and build it using the environment-setup script to configure
+    the system for the **autotools** to properly detect the libraries
+    available as pre-built libraries.
 
-.. rubric:: Configure/Autotools
-   :name: configureautotools
+    #. First download the
+       `gst-plugins-bad-0.10.11.tar.gz <http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.11.tar.gz>`__
+       package
+       wget
+       http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.11.tar.gz
 
-The last case to cover is one where the **environment-setup** script is
-useful. In this case we will download the **gst-plugins-bad** package and
-configure and build it using the environment-setup script to configure
-the system for the **autotools** to properly detect the libraries
-available as pre-built libraries.
+       .. raw:: html
 
-#. First download the
-   `gst-plugins-bad-0.10.11.tar.gz <http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.11.tar.gz>`__
-   package
-   wget
-   http://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-0.10.11.tar.gz
+          <div
+          style="margin: 5px; padding: 5px 10px; background-color: #ffffec; border-left: 5px solid #ff6600;">
 
-   .. raw:: html
+       **IMPORTANT**
+       In order to build the gst-plugins-bad package you will need
+       libglib2.0-dev installed on your system. You can install this using
+       **sudo apt-get install libglib2.0-dev**
 
-      <div
-      style="margin: 5px; padding: 5px 10px; background-color: #ffffec; border-left: 5px solid #ff6600;">
+       .. raw:: html
 
-   **IMPORTANT**
-   In order to build the gst-plugins-bad package you will need
-   libglib2.0-dev installed on your system. You can install this using
-   **sudo apt-get install libglib2.0-dev**
+          </div>
 
-   .. raw:: html
-
-      </div>
-
-#. Extract the plugins tarball
-   **tar zxf gst-plugins-bad-0.10.11.tar.gz**
-#. Change directory into the extracted sources
-   **cd gst-plugins-bad-0.10.11**
-#. Source the **<SDK INSTALL DIR>/linux-devkit/environment-setup**
-   script to prepare to configure and build the plugins.
-   **source <SDK INSTALL DIR>/linux-devkit/environment-setup**
-#. Now configure the package. We need to define the *host* setting to
-   tell the configuration utility what our host system is, and we will
-   also disable some plugins that are known to be bad.
-   **./configure --host=i686 --disable-deinterlace2 --disable-x264**
-#. When the configuration is done the last sections will show which
-   plugins will be build based on the libraries available. This is the
-   key point behind what the environment-setup script provides. By
-   setting up the PKG\_CONFIG\_\* paths and other variables the
-   configure script was able to check for required libraries being
-   available to know which plugins to enable. Now that the sources have
-   been configured you can compile them with a simple make command.
-   **make**
+    #. Extract the plugins tarball
+       **tar zxf gst-plugins-bad-0.10.11.tar.gz**
+    #. Change directory into the extracted sources
+       **cd gst-plugins-bad-0.10.11**
+    #. Source the **<SDK INSTALL DIR>/linux-devkit/environment-setup**
+       script to prepare to configure and build the plugins.
+       **source <SDK INSTALL DIR>/linux-devkit/environment-setup**
+    #. Now configure the package. We need to define the *host* setting to
+       tell the configuration utility what our host system is, and we will
+       also disable some plugins that are known to be bad.
+       **./configure --host=i686 --disable-deinterlace2 --disable-x264**
+    #. When the configuration is done the last sections will show which
+       plugins will be build based on the libraries available. This is the
+       key point behind what the environment-setup script provides. By
+       setting up the PKG\_CONFIG\_\* paths and other variables the
+       configure script was able to check for required libraries being
+       available to know which plugins to enable. Now that the sources have
+       been configured you can compile them with a simple make command.
+       **make**
 

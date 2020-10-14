@@ -26,8 +26,6 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+----------------------------------------------------------------------------------------------------------------+
 | AM65x EVM      | AM65x Evaluation Module rev 1.0 with ARM running at 800MHz, DDR4-2400 (1600 MT/S), TMDX654GPEVM                |
 +----------------+----------------------------------------------------------------------------------------------------------------+
-| J721e EVM      | J721e Evaluation Module rev E2 with ARM running at 2GHz, DDR data rate 3733 MT/S, L3 Cache size 3MB            |
-+----------------+----------------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
 

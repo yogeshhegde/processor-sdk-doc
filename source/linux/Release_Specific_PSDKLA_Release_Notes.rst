@@ -7,7 +7,7 @@ Release Notes
 Overview
 ========
 
-The **Processor Software Development Kit (Processor-SDK) for Linux Automotive**
+The **Processor Software Development Kit (Processor-SDK) for Linux**
 provides a fundamental software platform for development, deployment and
 execution of Linux based applications and includes the following:
 
@@ -19,7 +19,7 @@ execution of Linux based applications and includes the following:
 
 .. Note::
     For building some of the RTOS-based demonstrations, you should also download
-    Processor SDK RTOS Automotive (PSDKRA) installer. For more information,
+    Processor SDK RTOS installer. For more information,
     refer to <PSDKRA install path>/index.html.
 
 
@@ -171,7 +171,8 @@ Component versions
 
 Issues Tracker
 ===============
-
+..
+   project in (LCPD, "ADAS Algorithms") AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm, J7-EVM) AND fixversion in (2020.00, 07.00.00, SDK_J7_07_00_00) AND OS = Linux and resolution = Done AND (labels != SKIP_REL_NOTES OR labels is EMPTY) ORDER BY key ASC
 Issues fixed in this release
 ----------------------------
 .. csv-table::
@@ -238,6 +239,8 @@ Issues fixed in this release
    LCPD-18850,Watchdog test failed to reboot EVM
    LCPD-18858,DMA heaps are not cached in Core SDK Linux
 
+..
+   project = LCPD AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) AND ErrataID is not EMPTY AND status = Closed ORDER BY priority DESC
 Errata workarounds
 ------------------
 .. csv-table::
@@ -248,7 +251,8 @@ Errata workarounds
    LCPD-16605,MMC: MMC1/2 Speed Issue,,i2090
    LCPD-17220,U-Boot Hyperbus: Hyperflash reads limited to 125MHz max. frequency,,i2088
 
-
+..
+   project in (LCPD, "ADAS Algorithms") AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm, J7-EVM) AND status not in ("In Build", Closed, Resolved) AND OS = Linux AND (labels != SKIP_REL_NOTES OR labels is EMPTY) AND component != "System Test" ORDER BY key ASC
 Open Defects
 ------------
 .. csv-table::
@@ -299,6 +303,8 @@ Open Defects
    LCPD-18912,QSPI read performance decreased,
    LCPD-18936,Jailhouse: GPIO driver probe fails,
 
+..
+   project = LCPD AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) AND status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other") AND OS = Linux ORDER BY key ASC
 Known issues & limitations
 --------------------------
 .. csv-table::
@@ -329,9 +335,6 @@ For the specific supported hosts for current SDK, see `Supported Platforms <Rele
 
 
 .. note::
-   Processor SDK Installer is 64-bit, and installs only on 64-bit host
-   machine. Support for 32-bit host is dropped as Linaro toolchain is
-   available only for 64-bit machines.
-
+   Processor SDK Installer is 64-bit, and installs only on 64-bit host machine. 
 
 .. |reg| unicode:: U+00AE .. REGISTERED SIGN

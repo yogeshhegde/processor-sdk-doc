@@ -43,7 +43,7 @@ SDK.
     |                           | | 18.04 (64-bit)        |
     +---------------------------+-------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     -  **Linux SDK**
 
@@ -235,7 +235,9 @@ The following platforms and EVMs are supported with Processor SDK.
     | **Platform** | **EVM**   | **Tested  | **Document**          | **Processor SDK   | **Processor SDK  |
     |              |           | Version** |                       | Linux Automotive**| RTOS Automotive**|
     +--------------+-----------+-----------+-----------------------+-------------------+------------------+
-    | J721e/DRA82x | J721e EVM | Alpha     | Hardware User's Guide | Y                 | Y                |
+    | J721e/DRA829 | J721e EVM | Alpha     | Hardware User's Guide | Y                 | Y                |
     +--------------+-----------+-----------+-----------------------+-------------------+------------------+
-    | J721e/DRA82x | J721e EVM | Beta      | Hardware User's Guide | Y                 | Y                |
+    | J721e/DRA829 | J721e EVM | Beta      | Hardware User's Guide | Y                 | Y                |
+    +--------------+-----------+-----------+-----------------------+-------------------+------------------+
+    | J7200/DRA821 | J7200 EVM | Alpha     | Hardware User's Guide | Y                 | Y                |
     +--------------+-----------+-----------+-----------------------+-------------------+------------------+

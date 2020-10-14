@@ -1,6 +1,6 @@
-Thank you for choosing to evaluate one of our TI Processors `ARM
-microprocessors <http://www.ti.com/lsds/ti/dsp/arm.page>`__. It is
-designed to quickly provide the information you need most while evaluating a TI
+Thank you for choosing to evaluate one of our `TI Processors
+<http://www.ti.com/lsds/ti/dsp/arm.page>`__. It is designed to quickly
+provide the information you need most while evaluating a TI
 microprocessor, specifically running one of the Software Architectures
 available, embedded Linux. We are always striving to improve this
 product. Please let us know if you have :ref:`ideas or
@@ -25,7 +25,7 @@ suggestions <Feedback>`.
     | |__Technical Support__|                                                |                                                                               |
     +------------------------------------------------------------------------+-------------------------------------------------------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     +-----------------------------------------------------------------------+----------------------------------------------------------------------+
     |           **Processor SDK Linux**                                     |                                                                      |

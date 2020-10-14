@@ -11,7 +11,7 @@ directories and files
 
     .. Image:: /images/Processor-SDK-Linux-directory-structure.png
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     .. Image:: /images/PSDKLA-directory-structure.png
 
@@ -24,12 +24,6 @@ Processor SDK devices.
 -  **board-support** - Contains the SDK components that need to be
    modified when porting to a custom platform. This includes the kernel
    and boot loaders as well as any out of tree drivers.
-
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
-
-    -  **configs** - Contains Yocto config to describe different yocto recipe
-       sources and layers to be used for building SDKs.
-
 -  **docs** - Contains various SDK documentation such as the software
    manifest and additional user's guide. This is also the location where
    you can find the *training* directory with the device training
@@ -41,18 +35,17 @@ Processor SDK devices.
    system.
 -  **linux-devkit** - Contains the cross-compile toolchain and libraries
    to speed development for the target device.
-
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
-
-    -  **patches** - Contains recipe patches for different yocto layers which
-       are to be applied additionally.
-    -  **yocto-build** - This directory allows rebuilding SDK components and
-       filesystem using yocto bitbake. Refer to **Building the SDK** section
-       for more details on running yocto builds.
-
 -  **Makefile** - Provides build targets for many of the SDK components
    from the top-level of the SDK.
 -  **Rules.make** - Sets default values used by the top-level Makefile
    as well as sub-component Makefiles.
 -  **setup.sh** - Configures the users host system as well as the target
    system for development.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+    -  **configs** - Contains Yocto config to describe different yocto recipe
+       sources and layers to be used for building SDKs.
+    -  **yocto-build** - This directory allows rebuilding SDK components and
+       filesystem using yocto bitbake. Refer to `Building the SDK <Overview_Building_the_SDK.html>`__  section
+       for more details on running yocto builds.

@@ -18,7 +18,7 @@ TI microprocessor.
     target filesystem, example applications, toolchain and board support
     package, ease of use scripts and documentation.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     The SDK consists of a development filesystem, a
     target filesystem, example applications, toolchain and board support
@@ -52,13 +52,13 @@ distributions.
        Linux Host PC (using a USB SD Card reader).  The SDK Installer is found 
        in the START\_HERE partition of the SD card.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     .. rubric:: Downloading the SDK installer
        :name: downloading-the-sdk-installer
 
     You can download the latest |__SDK_FULL_NAME__| installer from the
-    `SDK download page <http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-jacinto7/latest/index_FDS.html>`__.
+    |__SDK_DOWNLOAD_URL__|.
 
 .. rubric:: How to Run the SDK Installer
    :name: how-to-run-the-sdk-installer
@@ -70,7 +70,7 @@ distributions.
     (probably the Downloads directory if downloaded or the START\_HERE
     partition mounted from the SD Card) and run the following commands:
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     Make sure that the execute permissions are set. Bring up a terminal
     window and change directories to where the installer is located
@@ -83,6 +83,13 @@ distributions.
 
 Alternatively, you can give execute permissions and run the "|__SDK_INSTALL_FILE__|"
 by double clicking on it within your Linux host PC.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+    .. note::
+       As a part of the installation, the packaging will run a script to configure your
+       environment and download the Linux devkit.  This will cause the installation to
+       continue for roughly a minute even once it shows that it has reached 100%.
 
 .. note::
    If nothing seems to happen, you are probably running a 32-bit version of
@@ -122,9 +129,18 @@ The default selection of where to install is the user's home directory.
 
     .. Image:: /images/Processor_sdk_select_directory.png
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-    .. Image:: /images/Processor_sdk_j7_select_directory.png
+    .. Image:: /images/Processor_sdk_jacinto_select_directory.png
 
 
 After the installation, refer to section `Setting up host environment <Run_Setup_Scripts.html>`__ for next steps.
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+  .. rubric:: Yocto Configuration
+     :name: yocto-configuration
+
+  The Yocto configuration is included within the Linux SDK package at the location configs/processor-sdk-linux-<version>.txt.
+
+  If all that is needed is the Yocto configuration, this can be downloaded directly from the release page.

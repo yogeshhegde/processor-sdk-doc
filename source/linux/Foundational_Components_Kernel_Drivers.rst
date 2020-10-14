@@ -22,8 +22,8 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW
    Foundational_Components/Kernel/Kernel_Drivers/Network/NetCP
    Foundational_Components/Kernel/Kernel_Drivers/Network/PRUSS
-   Foundational_Components/Kernel/Kernel_Drivers/Network/K3_CPSW2g
-   Foundational_Components/Kernel/Kernel_Drivers/Network/J7_CPSW9g_virt_mac
+   Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
+   Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW9g_virt_mac
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex

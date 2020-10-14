@@ -7,34 +7,11 @@ Run Setup Scripts
 .. rubric:: Overview
    :name: processor-sdk-linux-setup-script-overview
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
-
-    Run the following script after the installer setup is done.
-
-    **./sdk-install.sh**
-
-    This will setup the required toolchain in the linux-devkit directory.
-    It will also setup the default paths in the Rules.make
-
-    .. note::
-
-        The sdk-install.sh script is to be run only once, after the installation,
-        the script will be deleted automatically. Make sure to run this before running
-        any of the below setup scripts so that the correct paths can be used for setup.
-
-    After running the sdk-install.sh on the Linux host, the setup script
-    should be run to prepare the host for software development. Some of
-    the tasks require administrator privileges. The script will prompt you
-    when these administrator privileges are required. The setup script
-    does the following things:
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    After installation of the SDK on the Linux host, the setup script
-    should be run to prepare the host for software development. Some of
-    the tasks require administrator privileges. The script will prompt you
-    when these administrator privileges are required. The setup script
-    does the following things:
+After installation of the SDK on the Linux host, the setup script
+should be run to prepare the host for software development. Some of
+the tasks require administrator privileges. The script will prompt you
+when these administrator privileges are required. The setup script
+does the following things:
 
 -  Verification that the Linux host is the recommended Ubuntu LTS
    version
@@ -189,12 +166,12 @@ The default location is:
         In which directory do you want to install the target filesystem?(if this directory does not exist it will be created)
         [ /home/user/ti-processor-sdk-linux-[platformName]-evm-x.x.x.x/targetNFS ]
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     .. code-block:: text
 
         In which directory do you want to install the target filesystem?(if this directory does not exist it will be created)
-        [ /home/user/ti-processor-sdk-linux-automotive-j7-evm-x.x.x.x/targetNFS ]
+        [ /home/user/ti-processor-sdk-linux-[platformName]-x.x.x.x/targetNFS ]
 
 You can override the default location by typing in another location or
 by hitting <Enter> you can accept the default location. This can take a

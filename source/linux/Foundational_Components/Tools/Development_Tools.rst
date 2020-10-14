@@ -12,7 +12,7 @@ Please refer to `GCC ToolChain <../../Overview/GCC_ToolChain.html>`__ for detail
 
 Creating SD Cards
 -------------------------------------------------
-Please refer to `Linux SD Card Creation Guide <../../Overview/Processor_SDK_Linux_create_SD_card_script.html>`__ for details.
+Please refer to `Linux SD Card Creation Guide <../../Overview/Processor_SDK_Linux_Formatting_SD_Card.html>`__ for details.
 
 
 Processor SDK Linux Setup Script
