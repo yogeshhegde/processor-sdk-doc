@@ -114,8 +114,6 @@ in the table below.
 +--------------------------+--------------------------+--------------------------+-----------------------+
 | AM574x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| K2G                      | 1                        | 4(at 100Mbps)            | Dual EMAC / HSR / PRP |
-+--------------------------+--------------------------+--------------------------+-----------------------+
 
 When using PTP as SAN port, only 1 port of each PRU-ICSS can independently
 support PTP at a time e.g. on AM571x, there are 4 PRU-ICSS ports, but only 1
@@ -184,8 +182,6 @@ file to enable the PPS pins, as listed below:
 | AM572x                   | am572x-idk-pps.dtb           |
 +--------------------------+------------------------------+
 | AM574x                   | am574x-idk-pps.dtb           |
-+--------------------------+------------------------------+
-| K2G                      | keystone-k2g-ice-pps.dtb     |
 +--------------------------+------------------------------+
 
 To configure this, change the device tree loaded in Uboot. If using the default
@@ -868,7 +864,6 @@ Test Setup
 -   AM437x IDK (PRU-ICSS0:eth1-eth2)
 -   AM571x IDK (GMAC/CPTS: eth0-eth1, PRU-ICSS2:eth2-eth3,PRU-ICSS1:eth4-eth5)
 -   AM572x IDK (GMAC/CPTS: eth0-eth1, PRU-ICSS2:eth2-eth3)
--   K2G ICE (PRU-ICSS2:eth1-eth2,PRU-ICSS1:eth3-eth4)
 
 .. rubric:: Hardware Modifications
    :name: hardware-modifications
