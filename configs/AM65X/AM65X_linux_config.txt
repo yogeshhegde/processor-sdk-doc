@@ -1,4 +1,4 @@
-# Jacinto 7 replacement variables and configuration values for Linux build
+# AM65X replacement variables and configuration values for Linux build
 
 # This file is processed by Python scripts to define both replacement
 # variable and configuration values for a device family build.
@@ -13,15 +13,15 @@
 
 Replacement Variables
 ---------------------
-'__PART_FAMILY_NAME__'           : 'Jacinto 7'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'J721E'
+'__PART_FAMILY_NAME__'           : 'Jacinto'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM65xx devices'
 '__PRODUCT_LINE_NAME__'          : 'Jacinto'
-'__SDK_BUILD_MACHINE__'          : 'j7-evm'
-'__SDK_FULL_NAME__'              : 'Processor SDK Linux J721e'
+'__SDK_BUILD_MACHINE__'          : 'am65xx-evm'
+'__SDK_FULL_NAME__'              : 'Processor SDK Linux AM65xx'
 '__SDK_SHORT_NAME__'             : 'PSDKL'
-'__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-j7-evm-<version>-Linux-x86-Install.bin'
-'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-j7-evm-<version>'
-'__SDK_DOWNLOAD_URL__'           : '`Jacinto7-Linux-SDK-Download-page <http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-jacinto7/latest/index_FDS.html>`__'
+'__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-[platform]-<version>-Linux-x86-Install.bin'
+'__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-[platformName]-evm-<version>'
+'__SDK_DOWNLOAD_URL__'           : '`AM65xx-Linux-SDK-Download-page <http://software-dl.ti.com/processor-sdk-linux/esd/AM65X/latest/index_FDS.html>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '18.04 (64-bit)'
@@ -31,8 +31,9 @@ Replacement Variables
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'J7_family'
-'CONFIG_part_variant'     : 'J721E'
+'CONFIG_part_variant'     : 'AM65X'
 'CONFIG_sdk'              : 'PSDKL'
-'CONFIG_icss_support'     : 'no'
-'CONFIG_rt_linux_support' : 'no'
-'CONFIG_gpu_ip'           : 'Rogue_8XE'
+'CONFIG_icss_support'     : 'yes'
+'CONFIG_rt_linux_support' : 'yes'
+'CONFIG_gpu_ip'           : 'SGX'
+

@@ -16,7 +16,7 @@ $(info ROOTDIR is $(ROOTDIR))
 $(info DEVFAMILY is $(DEVFAMILY))
 FAMILYSETUPFILE = python-scripts/family_setup.py
 
-ifeq ($(DEVFAMILY), $(filter $(DEVFAMILY), AM64X AM335X AM437X))
+ifeq ($(DEVFAMILY), $(filter $(DEVFAMILY), AM64X AM335X AM437X AM65X J7 J7200))
     ifeq ($(DEVFAMILY), AM64X)
        CONFDIR  = source/devices/$(DEVFAMILY)
        TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
