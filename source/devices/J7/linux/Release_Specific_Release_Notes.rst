@@ -29,16 +29,16 @@ Licensing
 Please refer to the software manifest, which outlines the licensing
 status for all packages included in this release. The manifest can be found on the SDK
 download page or in the installed directory as indicated below. In
-addition, see `Processor SDK Linux GPLv3 Disclaimer <Overview_GPLv3_Disclaimer.html>`__.
+addition, see :ref:`Processor SDK Linux GPLv3 Disclaimer <overview-gplv3-disclaimer>`.
 
 
 Documentation
 ===============
--  `Processor SDK Linux Software Developer's Guide <index.html>`__: Provides information on features, functions, delivery package and,
+-  :ref:`Processor SDK Linux Software Developer's Guide <linux-index>`: Provides information on features, functions, delivery package and,
    compile tools for the Processor SDK Linux release. This also provides
    detailed information regarding software elements and software
    infrastructure to allow developers to start creating applications.
--  `Processor SDK Linux Getting Started Guide <Overview_Getting_Started_Guide.html>`__: Provides information on getting the software and running
+-  :ref:`Processor SDK Linux Getting Started Guide <overview-getting-started>`: Provides information on getting the software and running
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software
    included in the SDK release. This document is in the release at
@@ -50,7 +50,7 @@ Documentation
 
 Supported Platforms
 =====================================
-See `here <Release_Specific_Supported_Platforms_and_Versions.html>`__ for a list of supported platforms and links to more information.
+See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
 
 Release 07.00.00
@@ -153,7 +153,7 @@ Release features
 
    -  A72 PMU support for Performance profiling
 
-
+.. _release-specific-sdk-components-versions:
 
 Component versions
 ------------------
@@ -173,6 +173,7 @@ Issues Tracker
 ===============
 ..
    project in (LCPD, "ADAS Algorithms") AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm, J7-EVM) AND fixversion in (2020.00, 07.00.00, SDK_J7_07_00_00) AND OS = Linux and resolution = Done AND (labels != SKIP_REL_NOTES OR labels is EMPTY) ORDER BY key ASC
+
 Issues fixed in this release
 ----------------------------
 .. csv-table::
@@ -241,6 +242,7 @@ Issues fixed in this release
 
 ..
    project = LCPD AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) AND ErrataID is not EMPTY AND status = Closed ORDER BY priority DESC
+
 Errata workarounds
 ------------------
 .. csv-table::
@@ -253,6 +255,7 @@ Errata workarounds
 
 ..
    project in (LCPD, "ADAS Algorithms") AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm, J7-EVM) AND status not in ("In Build", Closed, Resolved) AND OS = Linux AND (labels != SKIP_REL_NOTES OR labels is EMPTY) AND component != "System Test" ORDER BY key ASC
+
 Open Defects
 ------------
 .. csv-table::
@@ -305,6 +308,9 @@ Open Defects
 
 ..
    project = LCPD AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) AND status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other") AND OS = Linux ORDER BY key ASC
+
+.. _release-specific-known-issues:
+
 Known issues & limitations
 --------------------------
 .. csv-table::
@@ -324,14 +330,14 @@ Known issues & limitations
 .. rubric:: Installation and Usage
    :name: installation-and-usage
 
-The `Software Developer's Guide <index.html>`__ provides instructions on how to setup your Linux development environment, install the SDK and start your development. It also includes User's Guides for various Example Applications.
+The :ref:`Software Developer's Guide <linux-index>` provides instructions on how to setup your Linux development environment, install the SDK and start your development. It also includes User's Guides for various Example Applications.
 
 |
 
 .. rubric:: Host Support
    :name: host-support
 
-For the specific supported hosts for current SDK, see `Supported Platforms <Release_Specific_Supported_Platforms_and_Versions.html>`__.
+For the specific supported hosts for current SDK, see :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>`.
 
 
 .. note::

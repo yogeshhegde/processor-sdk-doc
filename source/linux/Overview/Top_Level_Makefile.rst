@@ -1,5 +1,7 @@
 .. include:: /replacevars.rst.inc
 
+.. _top-level-makefile:
+
 Top-Level Makefile
 ======================================
 
@@ -50,24 +52,6 @@ Rules.make file.
    the u-boot sources for the correct device.
 -  **TI\_SDK\_PATH** - This points to the top-level of the SDK. This is
    the same directory where the Rules.make file itself is located.
-.. ifconfig:: CONFIG_part_family not in ('J7_family')
-
-    -  **DESTDIR** - This points to the base installation directory that
-       applications/drivers should be installed to. This is usually the root
-       of a target file system but can be changed to point anywhere. By
-       default the initial value is a unique key value of \_\_DESTDIR\_\_
-       which is replaced with the location of the target NFS file system
-       when the
-       `sdk-install.sh <Run_Setup_Scripts.html>`__ script
-       is run.
-.. ifconfig:: CONFIG_part_family in ('J7_family')
-
-    -  **DESTDIR** - This points to the base installation directory that
-       applications/drivers should be installed to. This is usually the root
-       of a target file system but can be changed to point anywhere. By
-       default the initial value is a unique key value of \_\_DESTDIR\_\_
-       which is replaced with the location of the target NFS file system
-       as a part of the SDK installation.
 -  **LINUX\_DEVKIT\_PATH** - This points to the linux-devkit directory.
    This directory is the base directory containing the cross-compiler
    and cross-libraries as well as the
@@ -263,28 +247,35 @@ the Makefile from the top-level of the SDK.
     host# make am-benchmarks_install
 
 
--  Build the sysfw.
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X')
+  .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-  -  By default, this builds the sysfw for AM65xx PG1.0.  To build sysfw for AM65xx PG2.0,
-     modify the SYSFW_SOC_am65xx-evm variable in the Makefile to equal am65x_sr2 and build.
+    -  By default, this builds the sysfw for AM65xx PG1.0.  To build sysfw for AM65xx PG2.0,
+       modify the SYSFW_SOC_am65xx-evm variable in the Makefile to equal am65x_sr2 and build.
 
-::
+  -  Build the sysfw.
 
-    host# make sysfw-image
+  .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
--  Clean the sysfw
+    -  By default, this builds the sysfw for AM65xx PG1.0.  To build sysfw for AM65xx PG2.0,
+       modify the SYSFW_SOC_am65xx-evm variable in the Makefile to equal am65x_sr2 and build.
 
-::
+  ::
 
-    host# make sysfw-image_clean
+      host# make sysfw-image
 
--  Install the sysfw
+  -  Clean the sysfw
 
-::
+  ::
 
-    host# make sysfw-image_install
+      host# make sysfw-image_clean
+
+  -  Install the sysfw
+
+  ::
+
+      host# make sysfw-image_install
 
 -  Build u-boot
 
@@ -298,11 +289,13 @@ the Makefile from the top-level of the SDK.
 
     host# make u-boot-spl_clean
 
-.. ifconfig:: CONFIG_part_variant in ('J7200')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-    -  Build the combined boot image.  This requires first building the R5 boot image.
-       This will generate the u-boot-spl.bin.  This file must be copied to the k3-image-gen* folder.
-       The tiboot3.bin can then be built from the k3-image-gen* folder.
+  .. ifconfig:: CONFIG_part_variant in ('J7200')
+
+      -  Build the combined boot image.  This requires first building the R5 boot image.
+         This will generate the u-boot-spl.bin.  This file must be copied to the k3-image-gen* folder.
+         The tiboot3.bin can then be built from the k3-image-gen* folder.
 
     ::
 
@@ -333,27 +326,29 @@ All the install targets copy the files in the rootfs pointed by the DESTDIR vari
 system firmware or u-boot, you should copy these binaries in the boot partition of
 the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-    ::
+  .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
-        #Replace the path to SD card boot partition as appropriate
+      ::
 
-        # For AM65xx-EVM PG1.0, copy the following sysfw file
-        host# cp board-support/k3-image-gen*/sysfw-am65x-evm.itb /media/$USER/boot/sysfw.itb
-        #Replace the path to SD card boot partition as appropriate
+          host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+          #Replace the path to SD card boot partition as appropriate
 
-        # For AM65xx-EVM PG2.0, copy the following sysfw file
-        host# cp board-support/k3-image-gen*/sysfw-am65x_sr2-evm.itb /media/$USER/boot/sysfw.itb
-        #Replace the path to SD card boot partition as appropriate
+          # For AM65xx-EVM PG1.0, copy the following sysfw file
+          host# cp board-support/k3-image-gen*/sysfw-am65x-evm.itb /media/$USER/boot/sysfw.itb
+          #Replace the path to SD card boot partition as appropriate
 
-.. ifconfig:: CONFIG_part_variant not in ('AM65X')
+          # For AM65xx-EVM PG2.0, copy the following sysfw file
+          host# cp board-support/k3-image-gen*/sysfw-am65x_sr2-evm.itb /media/$USER/boot/sysfw.itb
+          #Replace the path to SD card boot partition as appropriate
 
-    ::
+  .. ifconfig:: CONFIG_part_variant not in ('AM65X')
 
-        host# sudo cp board-support/u-boot_build/a72/u-boot.img board-support/u-boot_build/a72/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
-        #Replace the path to SD card boot partition as appropriate
+      ::
+
+          host# sudo cp board-support/u-boot_build/a72/u-boot.img board-support/u-boot_build/a72/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+          #Replace the path to SD card boot partition as appropriate
 
 .. rubric:: A Note about Out-of-tree Kernel Modules
    :name: a-note-about-out-of-tree-kernel-modules

@@ -5,7 +5,6 @@ Processor SDK Linux Software Developer's Guide
 **********************************************
 
 .. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for AM65X
-   :name: welcome-to-the-processor-sdk-linux-software-developers-guide
 
 .. include:: /linux/Overview/Processor_SDK_Linux_Software_Developers_Guide.rst.inc
 
@@ -24,10 +23,9 @@ Processor SDK Linux Software Developer's Guide
 
 |
 
-.. include:: /linux/Overview/Processor_SDK_Linux_QSG.rst.inc
+.. include:: /devices/AM65X/linux/Release_Specific_QSG.rst.inc
 
 .. rubric:: Feedback
-   :name: feedback
 
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the Linux

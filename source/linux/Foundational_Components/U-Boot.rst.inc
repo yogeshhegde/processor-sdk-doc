@@ -30,7 +30,7 @@ Known Issues
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-    Please refer to `Known Issues <Release_Specific_PSDKLA_Release_Notes.html#issues-tracker>`__ for details.
+    Please refer to :ref:`release-specific-known-issues` for details.
 
 
 .. include:: /linux/Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc

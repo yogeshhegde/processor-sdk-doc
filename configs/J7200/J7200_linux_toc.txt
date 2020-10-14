@@ -1,3 +1,4 @@
+linux/Overview
 linux/Overview_Getting_Started_Guide
 linux/Overview_Building_the_SDK
 linux/Overview_Directory_Structure_Overview
@@ -14,6 +15,7 @@ devices/J7200/linux/Release_Specific
 devices/J7200/linux/Release_Specific_Release_Notes
 devices/J7200/linux/Release_Specific_Yocto_layer_Configuration
 devices/J7200/linux/Release_Specific_Supported_Platforms_and_Versions
+devices/J7200/linux/Release_Specific_QSG
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
 linux/Foundational_Components_Kernel
@@ -25,7 +27,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
-linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW5g_virt_mac
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng_virt_mac
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI

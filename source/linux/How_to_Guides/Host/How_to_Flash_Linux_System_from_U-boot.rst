@@ -6,11 +6,11 @@ How to Flash Linux System from U-boot
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
     The procedure is documented in the u-boot documentation. The most updated
-    information can be found in the u-boot README file located under:
+    information can be found in the u-boot README file linked to below:
 
     ::
     
-        $SDK_INSTALL_DIR/board-support/u-boot<ver>/ti/board/am65xx/README
+        https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/board/ti/j721e/README
 
 
 .. ifconfig:: CONFIG_part_family in ('General_family')

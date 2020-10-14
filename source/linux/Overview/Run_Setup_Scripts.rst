@@ -1,5 +1,7 @@
 .. include:: /replacevars.rst.inc
 
+.. _run-setup-scripts:
+
 Run Setup Scripts
 ======================================
 

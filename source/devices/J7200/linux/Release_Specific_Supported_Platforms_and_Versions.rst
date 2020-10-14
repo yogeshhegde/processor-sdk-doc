@@ -5,7 +5,6 @@ Supported Platforms and Versions
 ************************************
 
 .. rubric:: Supported Host Operating Systems
-   :name: supported-host-operating-systems
 
 The following operating systems have been validated to work with our
 SDK.
@@ -21,7 +20,6 @@ SDK.
 | 
 
 .. rubric:: Supported Platforms and EVMs
-   :name: supported-platforms-and-evms
 
 The following platforms and EVMs are supported with Processor SDK.
 

@@ -1,6 +1,6 @@
 TensorFlow Lite
 ==============================
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+
 Introduction
 -------------
 

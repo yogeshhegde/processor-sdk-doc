@@ -1,3 +1,5 @@
+.. _formatting-sd-card-on-linux:
+
 Formatting SD card on Linux
 ===========================
 

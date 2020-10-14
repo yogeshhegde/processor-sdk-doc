@@ -5,7 +5,6 @@ Processor SDK Linux Software Developer's Guide
 **********************************************
 
 .. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for J7200
-   :name: welcome-to-the-processor-sdk-linux-software-developers-guide
 
 .. include:: /linux/Overview/Processor_SDK_Linux_Software_Developers_Guide.rst.inc
 
@@ -17,17 +16,14 @@ Processor SDK Linux Software Developer's Guide
    /linux/Overview
    Release_Specific
    /linux/Foundational_Components
-   /linux/Industrial_Protocols
-   /linux/Examples_and_Demos
    /linux/How_to_Guides
    /linux/Documentation_Tarball
 
 |
 
-.. include:: /linux/Overview/Processor_SDK_Linux_QSG.rst.inc
+.. include:: /devices/J7200/linux/Release_Specific_QSG.rst.inc
 
 .. rubric:: Feedback
-   :name: feedback
 
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the Linux

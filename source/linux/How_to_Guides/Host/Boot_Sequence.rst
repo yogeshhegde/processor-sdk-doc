@@ -8,7 +8,7 @@ Boot Sequence
 
     Please refer back to the particular U-boot component branch and version information for this release:
 
-    `Release Source Code Component Versions <../../Release_Specific_PSDKLA_Release_Notes.html#component-versions>`__
+    :ref:`release-specific-sdk-components-versions`
 
 
 .. ifconfig:: CONFIG_part_family in ('General_family')

@@ -1,8 +1,8 @@
 J7200 EVM Hardware Setup
 ====================================================
 
-.. rubric:: Description
-   :name: description
+Description
+-----------
 
 The J7200 Evaluation Module provides an affordable platform to quickly
 start evaluation of Jacinto™ DRA8xx Processors and accelerate development
@@ -12,8 +12,8 @@ applications.
 The J7200 Evaluation Module consists of a SoM(System on Module) and a
 common processor board.
 
-.. rubric:: J7VCL SOM
-   :name: j7vcl-som
+J7VCL SOM
+---------
 
 System on Module is a small board which has the SoC specific socket and
 other important platform specific hardware like PMIC, DDR memory, etc
@@ -26,16 +26,16 @@ of SoM:
 .. note::
     Alpha EVMs have "Interim PMIC" sticker on the SoM board.
 
-.. Image:: ../../../images/J721E_Alpha_Board_1.jpg
+.. Image:: /images/J721E_Alpha_Board_1.jpg
 
-.. Image:: ../../../images/J721E_Alpha_Board_2.jpg
+.. Image:: /images/J721E_Alpha_Board_2.jpg
 
 2. Beta board
 
 .. note::
     Beta EVMs don't have a "Interim PMIC" sticker on the SoM board.
 
-.. Image:: ../../../images/J721E_Beta_Board.jpg
+.. Image:: /images/J721E_Beta_Board.jpg
 
 
 Contents of the board
@@ -46,19 +46,19 @@ Contents of the board
 - OSPI NOR flash
 - Hyperflash
 
-.. rubric:: Common Processor Board
-   :name: common-proc-board
+Common Processor Board
+----------------------
 
 Common Processor Board is the main board which has peripherals to provide
 most common functionality. It allows to connect to different adapter cards.
 
 Common Processor Board with ALPHA-SOM
 
-.. Image:: ../../../images/K3-Common-Proc-Board-with-Alpha-som.png
+.. Image:: /images/K3-Common-Proc-Board-with-Alpha-som.png
 
 Common Processor Board with BETA-SOM
 
-.. Image:: ../../../images/K3-Common-Proc-Board-with-Beta-som.png
+.. Image:: /images/K3-Common-Proc-Board-with-Beta-som.png
 
 Contents of the board
 
@@ -76,14 +76,14 @@ for detail information regarding connecting peripherals to Common Processor Boar
 - SD card slot
 - 8GiB eMMC
 
-.. rubric:: Infotainment daughter card
-   :name: ivi-daughter-card
+Infotainment daughter card
+--------------------------
 
 Infotainment daughter card is adapter board which has additional peripherals for
 infotainment use cases. This has support for HDMI display, FPDlink display
 extra audio channels, CSI camera, etc
 
-.. Image:: ../../../images/K3-Infotainment-card.png
+.. Image:: /images/K3-Infotainment-card.png
 
 Contents of the board
 
@@ -93,13 +93,13 @@ Contents of the board
 - CSI camera connector
 - HDMI display connector
 
-.. rubric:: Quad Port Ethernet daughter card
-   :name: quad-port-ethernet-daughter-card
+Quad Port Ethernet daughter card
+--------------------------------
 
 Quad Port Ethernet (QPENet) board is an adapter board which offers
 additional Ethernet port capabilities to the Jacinto7 EVM.
 
-.. Image:: ../../../images/K3-QPENet-card.png
+.. Image:: /images/K3-QPENet-card.png
 
 Contents of the board:
 
@@ -107,14 +107,14 @@ Contents of the board:
 - 4x Ethernet ports
 - EEPROM with flashed MAC addresses
 
-.. rubric:: GESI daughter card
-   :name: gesi-daughter-card
+GESI daughter card
+------------------
 
 GESI(Gateway/Ethernet Switch/ Industrial) daughter card is adapter board which
 has additional peripherals for gateway and industrial use cases.
 This has support for extra ethernet ports and CAN ports, etc
 
-.. Image:: ../../../images/K3-GESI-card.png
+.. Image:: /images/K3-GESI-card.png
 
 Contents of the board
 
@@ -123,22 +123,22 @@ Contents of the board
 - Motor control headers
 - Additional CAN headers
 
-.. rubric:: Switch settings
-   :name: switch-settings
+Switch settings
+---------------
 
 Most common boot method is to use SD card. Following are the switch settings to
 set the boot mode to SD for common processor board.
 
-.. Image:: ../../../images/K3-J721E-EVM-Switch-SD-boot.png
+.. Image:: /images/K3-J721E-EVM-Switch-SD-boot.png
 
 When you want the binaries to be loaded from a debugger like CCS, the common
 processor boards has to be set in the NO boot mode.  Following are the switch settings
 to do the same.
 
-.. Image:: ../../../images/K3-J721E-EVM-Switch-NO-boot.png
+.. Image:: /images/K3-J721E-EVM-Switch-NO-boot.png
 
-.. rubric:: EVM connections
-   :name: evm-connections
+EVM connections
+---------------
 
 Connect Following peripherals for working with processor SDK Linux
 
