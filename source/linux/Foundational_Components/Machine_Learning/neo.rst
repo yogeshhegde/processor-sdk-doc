@@ -1,3 +1,5 @@
+.. include:: /linux/replacevars.rst.inc
+
 Neo-AI Deep Learning Runtime
 ============================
 
@@ -8,7 +10,7 @@ Neo-AI Deep Learning Runtime
 
   `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__ is an open source common runtime 
   for deep learning models and decision tree models compiled by TVM, AWS SageMaker Neo, 
-  or Treelite. Processor SDK Linux has integrated Neo-AI-DLR. DLR stands for Deep Learning 
+  or Treelite. |__SDK_FULL_NAME__| has integrated Neo-AI-DLR. DLR stands for Deep Learning
   Runtime. With this integration, the models compiled by AWS SageMaker Neo and TVM can run 
   on all Arm core of all Sitara devices (AM3/AM4/AM5/AM6).
 
@@ -150,7 +152,7 @@ Neo-AI Deep Learning Runtime
 
   `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__ is an open source common runtime
   for deep learning models and decision tree models compiled by TVM, AWS SageMaker Neo,
-  or Treelite. Processor SDK Linux Automotive has integrated Neo-AI-DLR. DLR stands for Deep Learning
+  or Treelite. |__SDK_FULL_NAME__| has integrated Neo-AI-DLR. DLR stands for Deep Learning
   Runtime. With this integration, the models compiled by AWS SageMaker Neo and TVM can run
   on Jacinto Arm core.
 
