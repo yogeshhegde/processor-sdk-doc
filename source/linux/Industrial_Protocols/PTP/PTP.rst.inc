@@ -255,22 +255,7 @@ GMAC
 The GMAC/CPTS does not support a programmable sync output. Instead, the
 GP Timer16 can be programmed to generate an output pulse every 100ms or
 second and then this signal is passed to CPTS/HW\_TS\_PUSH4 to trigger
-the HW\_TS\_PUSH event. Linux CPSW/CPTS driver checks this event in and
-run through a simple algorithm to adjust the GP Timer reload value after
-every hit to ensure that output sync pulse is aligned at the second
-boundary of the PTP system time. In order to satisfy the +/-50ns jitter
-requirement by reducing the accumulation error, the current 1PPS
-implementation will generate a output pulse every 100ms and 9 out of 10
-pulses will be filtered out except the one at the second boundary
-through the pad-config or GPIO-based output control.
-
-To enable/disable 1PPS signal on GMAC/CPTS, enter the following command
-respectively:
-
-::
-
-    echo 1 > /sys/devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0/pps_enable
-    echo 0 > /sys/devices/platform/44000000.ocp/48484000.ethernet/ptp/ptp0/pps_enable
+the HW\_TS\_PUSH event. Refer to :ref:`PLSDK_CPTS_Module-label` for details.
 
 .. _PLSDK_PTP_OC-label:
 
