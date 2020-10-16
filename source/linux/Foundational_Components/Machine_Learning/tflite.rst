@@ -159,7 +159,7 @@ Below is an example of running *tflite_classification* on target, using the pre-
 and grace_hopper.bmp/labels.txt reused from /usr/share/tensorflow-lite/examples folder. When the demo runs,
 the input image along with the classification label will be displayed. Right click the image window to exit the demo.
 
-.. code-block:: bash
+::
 
     # cd /usr/share/tensorflow-lite/demos
     # ./tflite_classification -m ./mobilenet_v1_1.0_224.tflite -i ../examples/grace_hopper.bmp -l ../examples/labels.txt -p 1
@@ -193,7 +193,7 @@ and bird_segmentation.bmp at the same folder of /usr/share/tensorflow-lite/demos
 the input image, the segmentation map, and overlay of the former two will be displayed in a single image window from
 the left to the right. Right click the image window to exit the demo.
 
-.. code-block:: bash
+::
 
     # cd /usr/share/tensorflow-lite/demos
     # ./tflite_segmentation -m ./deeplabv3_257_mv_gpu.tflite -i .ird_segmentation.bmp -p 1
@@ -381,6 +381,10 @@ for partial offload (mobilenet_v1_1.0_224_tidl_am5.tflite) with subgraph0.cfg ab
     cd /usr/share/tensorflow-lite/demos
     ./tflite_classification -m /usr/share/ti/tidl/utils/test/testvecs/config/tflite_models/mobilenet_v1_1.0_224_tidl_am5.tflite \
                             -i ../examples/grace_hopper.bmp -l ../examples/labels.txt -p 1
+
+
+More details about the design and implementation of Tensorflow Lite heterogeneous execution with TIDL compute offload
+can be found :download:`here </linux/Foundational_Components/Machine_Learning/files/HeterogeneousTFLiteWithTIDL_ti.pdf>`.
 
 
 Helper scripts for out of box experience
