@@ -991,6 +991,223 @@ signal between master and slave OC clock.
 
                Figure 2: PPS: Oregano Master vs. GMAC Slave Port
 
+PTP Transparent Clock with PRU RSTP switch
+==========================================
+
+The PRU ethernet subsystem on AM57x IDKs can be used as PTP Transparent Clock
+with PRU RSTP switch firmware. PTP packets are not cut through but sent to
+host Linux so linuxptp can process them and operate correctly.
+
+Test Setup/Procedure
+--------------------
+
+To test Transparent Clock on AM57x IDK we will need two more devices to operate
+as Ordinary Clock master and slave. In the below example we use a beagle bone
+as OC master and AM65x-IDK as OC slave.
+
+AM571x-IDK TC setup
+^^^^^^^^^^^^^^^^^^^
+
+Plug Beaglebone ethernet to eth2 port of AM571x-IDK. Plug eth3 port of AM571x-IDK to eth5 port of AM65x-IDK.
+You can use any Ethernet port of AM65x-IDK but make sure to update the oc.cfg file accordingly.
+
+Put PRU Ethernet ports to RSTP switch mode.
+
+::
+
+    ./rstp.sh
+
+The rstp.sh script is below.
+
+.. code-block:: bash
+
+ #!/bin/bash
+ # rstp.sh
+
+ echo "mstpd"
+ mstpd
+ sleep 1
+
+ echo "ifconfig eth2 up"
+ ifconfig eth2 up
+ sleep 1
+
+ echo "ifconfig eth3 up"
+ ifconfig eth3 up
+ sleep 1
+
+ echo "brctl addbr br0"
+ brctl addbr br0
+ sleep 1
+
+ echo "brctl addif br0 eth2"
+ brctl addif br0 eth2
+ sleep 1
+ echo "brctl addif br0 eth3"
+ brctl addif br0 eth3
+ sleep 1
+
+ echo "brctl stp br0 on"
+ brctl stp br0 on
+ sleep 1
+
+ echo "mstpctl setforcevers br0 rstp"
+ mstpctl setforcevers br0 rstp
+ sleep 1
+
+ echo "ifconfig br0 up"
+ ifconfig br0 up
+ sleep 1
+
+ echo "mstpctl showbridge"
+ mstpctl showbridge
+
+|
+
+Start ptp4l
+
+::
+
+    ptp4l -f tc.cfg -m
+
+tc.cfg is a ptp4l configuration file to put the IDK in TC mode. Example tc.cfg is below.
+
+::
+
+    [global]
+    tx_timestamp_timeout 10
+    logMinPdelayReqInterval -3
+    logSyncInterval -3
+    twoStepFlag 1
+    summary_interval 0
+
+    priority1               254
+    priority2               253
+    free_running            1
+    freq_est_interval       3
+    tc_spanning_tree        1
+    summary_interval        1
+    clock_type              P2P_TC
+    network_transport       L2
+    delay_mechanism         P2P
+
+    [eth2]
+    egressLatency 726
+    ingressLatency 186
+    delay_mechanism P2P
+    network_transport L2
+
+    [eth3]
+    egressLatency 726
+    ingressLatency 186
+    delay_mechanism P2P
+    network_transport L2
+
+Beaglebone OC master setup
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Start ptp4l
+
+::
+
+    ptp4l -f oc.cfg -m
+
+oc.cfg
+
+::
+
+    [global]
+    tx_timestamp_timeout 10
+    logMinPdelayReqInterval -3
+    logSyncInterval -3
+    twoStepFlag 1
+    summary_interval 0
+    priority1               100
+    [eth0]
+    egressLatency 726
+    ingressLatency 186
+    delay_mechanism P2P
+    network_transport L2
+
+AM65x-IDK OC slave setup
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Start ptp4l in slave mode
+
+::
+
+    ptp4l -f oc.cfg -m -s
+
+oc.cfg
+
+::
+
+    [global]
+    tx_timestamp_timeout 10
+    logMinPdelayReqInterval -3
+    logSyncInterval -3
+    twoStepFlag 1
+    summary_interval 0
+    [eth5]
+    egressLatency 726
+    ingressLatency 186
+    delay_mechanism P2P
+    network_transport L2
+
+Observe that the AM65x OC should sync with the master OC
+
+::
+
+    root@am65xx-evm:~# ptp4l -f oc.cfg -s -m
+    ptp4l[153.732]: selected /dev/ptp4 as PTP clock
+    ptp4l[153.780]: port 1: INITIALIZING to LISTENING on INIT_COMPLETE
+    ptp4l[153.780]: port 0: INITIALIZING to LISTENING on INIT_COMPLETE
+    ptp4l[154.290]: port 1: new foreign master d494a1.fffe.8c36e9-1
+    ptp4l[158.291]: selected best master clock d494a1.fffe.8c36e9
+    ptp4l[158.291]: port 1: LISTENING to UNCALIBRATED on RS_SLAVE
+    ptp4l[158.680]: port 1: UNCALIBRATED to SLAVE on MASTER_CLOCK_SELECTED
+    ptp4l[159.307]: rms 789386968596009088 max 1578773937192022272 freq -898594 +/- 534144 delay  -204 +/-  78
+    ptp4l[160.311]: rms 139417 max 213689 freq -449806 +/- 188985 delay   177 +/-  52
+    ptp4l[161.314]: rms 231686 max 243196 freq -28928 +/- 60800 delay  -115 +/-  72
+    ptp4l[162.319]: rms 146340 max 194522 freq +51920 +/- 5946 delay  -249 +/-  11
+    ptp4l[163.323]: rms 47123 max 77967 freq  +6645 +/- 17143 delay  -257 +/-   5
+    ptp4l[164.326]: rms 8521 max 13202 freq -43535 +/- 10735 delay  -236 +/-   8
+    ptp4l[165.329]: rms 13685 max 14472 freq -67015 +/- 3278 delay  -222 +/-   2
+    ptp4l[166.333]: rms 8304 max 11164 freq -71068 +/- 423 delay  -216 +/-   2
+    ptp4l[167.337]: rms 2552 max 4300 freq -68228 +/- 1018 delay  -214 +/-   2
+    ptp4l[168.340]: rms  530 max  805 freq -65322 +/- 606 delay  -216 +/-   0
+    ptp4l[169.344]: rms  807 max  861 freq -64012 +/- 175 delay  -216 +/-   0
+    ptp4l[170.347]: rms  466 max  636 freq -63822 +/-  29 delay  -211 +/-   2
+    ptp4l[171.351]: rms  141 max  238 freq -63988 +/-  60 delay  -216 +/-   2
+    ptp4l[172.357]: rms   35 max   53 freq -64164 +/-  33 delay  -215 +/-   2
+    ptp4l[173.360]: rms   52 max   58 freq -64243 +/-  13 delay  -214 +/-   4
+    ptp4l[174.364]: rms   27 max   41 freq -64249 +/-   8 delay  -214 +/-   3
+    ptp4l[175.367]: rms    9 max   16 freq -64236 +/-   8 delay  -217 +/-   2
+    ptp4l[176.372]: rms    3 max    5 freq -64227 +/-   4 delay  -220 +/-   1
+    ptp4l[177.375]: rms    3 max    7 freq -64230 +/-   4 delay  -221 +/-   1
+    ptp4l[178.379]: rms   10 max   13 freq -64247 +/-   6 delay  -215 +/-   2
+    ptp4l[179.383]: rms    3 max    7 freq -64242 +/-   4 delay  -211 +/-   2
+    ptp4l[180.386]: rms    6 max    9 freq -64236 +/-   7 delay  -214 +/-   2
+    ptp4l[181.389]: rms    5 max    9 freq -64228 +/-   3 delay  -218 +/-   1
+    ptp4l[182.393]: rms    4 max    6 freq -64238 +/-   4 delay  -219 +/-   1
+    ptp4l[183.397]: rms    5 max    9 freq -64243 +/-   4 delay  -216 +/-   2
+    ptp4l[184.400]: rms    3 max    6 freq -64240 +/-   4 delay  -213 +/-   2
+    ptp4l[185.404]: rms    4 max    6 freq -64234 +/-   3 delay  -220 +/-   2
+    ptp4l[186.407]: rms    7 max   10 freq -64245 +/-   7 delay  -214 +/-   2
+    ptp4l[187.410]: rms    2 max    4 freq -64241 +/-   3 delay  -216 +/-   1
+    ptp4l[188.413]: rms    1 max    1 freq -64242 +/-   1 delay  -215 +/-   0
+    ptp4l[189.417]: rms    3 max    4 freq -64243 +/-   4 delay  -216 +/-   1
+    ptp4l[190.421]: rms    3 max    6 freq -64243 +/-   4 delay  -217 +/-   0
+    ptp4l[191.425]: rms    8 max   11 freq -64257 +/-   3 delay  -213 +/-   1
+    ptp4l[192.428]: rms    3 max    9 freq -64253 +/-   4 delay  -213 +/-   2
+    ptp4l[193.431]: rms    3 max    5 freq -64254 +/-   4 delay  -214 +/-   4
+    ptp4l[194.435]: rms    6 max   13 freq -64259 +/-   7 delay  -214 +/-   3
+    ptp4l[195.438]: rms    6 max    9 freq -64263 +/-   6 delay  -211 +/-   1
+    ptp4l[196.442]: rms    3 max    5 freq -64255 +/-   3 delay  -212 +/-   0
+    ptp4l[197.445]: rms    4 max   10 freq -64259 +/-   5 delay  -214 +/-   3
+    ptp4l[198.449]: rms    5 max    8 freq -64266 +/-   4 delay  -214 +/-   1
+
+
 PTP Boundary Clock
 ==================
 
