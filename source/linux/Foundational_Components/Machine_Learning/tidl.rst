@@ -781,7 +781,11 @@ quantizationStyle    can be ‘0’ for fixed quantization by the training frame
 quantRoundAdd        can take any value from 0 to 100. Default value is 50. quantRoundAdd/100 will be added while rounding to integer
 numParamBits         can take values from 4 to 12. Default value is 8. This is the number of bits used to quantize the parameters
 preProcType          can take values from 0 to 6. Default value is 0. Refer to table below for more information about image preprocssing.
-Conv2dKernelType     can be either 0 or 1 for each layer. Default value is 0 for all the layers. Set it to 0 to use sparse convolution, otherwise, set it to 1 to use dense convolution
+conv2dKernelType     can be either 0 or 1 for each layer. Set it to 0 to use sparse convolution and set it to 1 to use dense convolution.
+                     Default: if this parameter is not set, import tool will automatically set convolution layers with width x height < 64x64 to dense convolution
+                     which is optimal for small resolutions, and set other convolution layers to sparse.
+
+                     **Note that this parameter must be set for every layer if users choose not to use the default.**
 inElementType        can be either 0 or 1. Default value is 1. Set it to 0 for 8-bit unsigned input or to 1 for 8-bit signed input
 inQuantFactor        can take values >0. Default value is -1
 rawSampleInData      can be either 0 or 1. Default value is 0. Set it to 0, if the input data is encoded, or set it to 1, if the input is RAW data. 
@@ -878,9 +882,6 @@ One specific example, tidl_import_j11_v2.txt, is listed below:
 
     # Weights are quantized into this many bits:
     numParamBits       = 12
-
-    # Specify sparse of dense
-    Conv2dKernelType   = 1
 
     # Network topology definition file
     inputNetFile       = "import/dogs_deploy.prototxt"
@@ -996,7 +997,8 @@ This can be accomplished in following way (providing an example for Jacinto11 ne
 
 Input and output layer belong to layer group 0. Layergroup 1 is dispatched to EVE, and layergroup 2 to DSP.
 
-Second row (conv2dKernelType) indicates if computation is sparse (0) or dense (1).
+Second row (conv2dKernelType) indicates if convolution is sparse (0) or dense (1). Users may also choose not to set this parameter
+so that the import tool automatically configures convolution layers to dense or sparse based on kernel sizes.
 
 
 After conversion, we can visualize the network:
