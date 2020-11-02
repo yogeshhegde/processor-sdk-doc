@@ -295,6 +295,8 @@ file.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
+    .. rubric:: **6.x SDK (4.19 Kernel)**
+
     To configure Beta J721E EVM in EP mode, apply the following patch:
 
     ::
@@ -354,6 +356,29 @@ file.
         &pcie1_rc {
                 reset-gpios = <&exp1 2 GPIO_ACTIVE_HIGH>;
                 phys = <&serdes1_pcie_link>;
+
+    .. rubric:: **7.x SDK (5.4 Kernel)**
+
+    To configure J721E EVM in EP mode, apply the following patch:
+
+    ::
+
+        diff --git a/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
+        index 6788a3611..b7cd6c7b6 100644
+        --- a/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
+        +++ b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
+        @@ -813,6 +813,7 @@
+                phys = <&serdes0_pcie_link>;
+                phy-names = "pcie_phy";
+                num-lanes = <1>;
+        +       status = "disabled";
+         }; &pcie1_rc {
+        @@ -833,7 +834,6 @@
+                phys = <&serdes0_pcie_link>;
+                phy-names = "pcie_phy";
+                num-lanes = <1>;
+        -       status = "disabled";
+         }; &pcie1_ep {
 
 .. rubric:: *Linux Driver Configuration*
    :name: linux-driver-configuration
