@@ -590,7 +590,8 @@ Following is a brief explanation of layers shown in the diagram:
     .. rubric:: *DTS Modification*
        :name: rc-dts-modification
 
-    The default dts is configured to be used in root complex mode.
+    The default dts for |__PART_FAMILY_DEVICE_NAMES__| is configured to be used in
+    root complex mode.
 
     .. rubric:: *Linux Driver Configuration*
        :name: linux-driver-configuration
@@ -1073,3 +1074,25 @@ Following is a brief explanation of layers shown in the diagram:
             real	0m 0.17s
             user	0m 0.00s
             sys	    0m 0.08s
+
+    .. rubric:: **J7200 Testing Details**
+
+    PCIe and QSGMII uses the same SERDES in J7200. The default SDK is enabled for QSGMII. In order to
+    test PCIe, Ethfw firmware shouldn't be loaded and PCIe overlay file should be applied.
+
+    The simplest way to avoid ethfw from being loaded is to link j7200-main-r5f0_0-fw to IPC firmware.
+    ::
+
+        root@j7200-evm:~# rm /lib/firmware/j7200-main-r5f0_0-fw
+        root@j7200-evm:~# ln -s /lib/firmware/pdk-ipc/ipc_echo_test_mcu2_0_release_strip.xer5f /lib/firmware/j7200-main-r5f0_0-fw
+
+    The following Device Tree Overlay should be applied for testing J7200 RC.
+
+    https://git.ti.com/cgit/ti-linux-kernel/ti-upstream-tools/tree/arch/arm64/boot/dts/ti/system_test/pcie/pcie_ep/k3-j7200-common-proc-board-pcie.dtso?h=ti-linux-5.4.y
+
+
+    The following command should be given in u-boot to apply overlay
+
+        ::
+
+           => setenv name_overlays k3-j7200-common-proc-board-pcie.dtbo
