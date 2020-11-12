@@ -14,9 +14,9 @@ meta layers. These are the <config> used in the command:
     | The following config files are located in the **configs/coresdk**
       directory of the `oe-layersetup git repo <http://arago-project.org/git/projects/oe-layersetup.git>`_.
 
-    +----------------------------------------+---------------------------------+-----------------------------+
-    | Config File                            | Description                     | Supported machines/platforms|
-    +========================================+=================================+=============================+
-    |  coresdk-07.00.00.005-config.txt       | CoreSDK 7.0.0.005 Release       | am654x, j721e               |
-    +----------------------------------------+---------------------------------+-----------------------------+
+    +-----------------------------------+-------------------------+---------------------------------------------+
+    | Config File                       | Description             | Supported machines/platforms                |
+    +===================================+=========================+=============================================+
+    |  coresdk-07.01.00.006-config.txt  | CoreSDK 07.01.00 Release| am335x, am437x, am57xx, am654x, j721e, j7200|
+    +-----------------------------------+-------------------------+---------------------------------------------+
 
