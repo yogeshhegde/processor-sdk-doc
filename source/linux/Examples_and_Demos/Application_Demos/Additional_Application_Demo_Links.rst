@@ -26,12 +26,23 @@ This demo showcases gesture controlled HMI, where the mmWave sensor detects pres
 More details can be found at http://www.ti.com/tool/TIDEP-01013.
 
 TIDL Demo
-========================
+=========
 
-Refer to various TIDL demos documented at  `TIDL Examples and Demos <Foundational_Components/Machine_Learning/tidl.html#examples-and-demos>`__
+.. ifconfig:: CONFIG_part_family in ('AM335X_family')
+
+    .. note:: This demo is not applicable to AM335X devices.
+
+.. ifconfig:: CONFIG_part_family in ('AM437X_family')
+
+    .. note:: This demo is not applicable to AM437X devices.
+
+.. ifconfig:: CONFIG_part_family in ('General_family')
+
+    Refer to various TI DeepLearning demos documented at
+    :ref:`TIDL Examples and Demos <tidl-examples-and-demos>`.
 
 Arm NN Classification Demo
 ==========================
 
-Refer to `Arm NN MobileNet Demo <Foundational_Components/Machine_Learning/armnn.html#arm-nn-mobilenet-demo>`__
+Refer to :ref:`arm-nn-mobilenet-demo`.
 

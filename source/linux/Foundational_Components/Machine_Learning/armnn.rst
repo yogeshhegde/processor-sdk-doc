@@ -92,6 +92,8 @@ Sample executables using TensorFlow Lite models:
    /usr/bin/TfLiteVGG16Quantized-Armnn
   
 
+.. _arm-nn-mobilenet-demo:
+
 Arm NN MobileNet Demo
 ---------------------
 
