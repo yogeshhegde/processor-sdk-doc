@@ -606,3 +606,10 @@ performance is seen better with Tx IRQ used. If a specific application
 predominantly uses MTU frame, user may enable Tx IRQ in the driver by adding
 Tx Interrupt property in the DTS. For details refer to
 Documentation/devicetree/bindings/net/ti-prueth.txt
+
+.. rubric:: Is full-duplex and half-duplex PHY operation supported?
+
+The firmware and ICSS subsystem supports both full-duplex and half-duplex PHYs.
+However some TI boards do not have COL and CS lines of the PHY connected to the
+SoC for half-duplex support. On such boards, half-duplex support is disabled
+by passing the 'ti,no-half-duplex" flag to the PRU Ethernet device tree node.
