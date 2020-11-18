@@ -37,6 +37,12 @@ different TI SoCs:
 |               | 1x QSPI   |                                      |
 +---------------+-----------+--------------------------------------+
 
+.. note::
+
+    Not all OSPI flashes can be supported. Users are recommended to check
+    whether or not the OSPI flash part chosen for custom board designs meets all
+    the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
+
 .. rubric:: Driver Features
 
 OSPI controllers support Double Data Rate (DDR) mode in Octal
