@@ -40,7 +40,8 @@ following platforms:
 
 	-  `AM65x EVM <http://www.ti.com/tool/TMDX654GPEVM>`__
 	-  `AM65x IDK <http://www.ti.com/tool/TMDX654IDKEVM>`__
-	-  J721E EVM
+	-  `J721E EVM <http://www.ti.com/tool/J721EXSOMXEVM>`__
+	-  `J7200 EVM <http://www.ti.com/tool/J7200XSOMXEVM>`__
 
 General Information
 -----------------------------------
@@ -273,32 +274,89 @@ Use the following table to determine what defconfig to use to configure with:
 |    J721E EVM               |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |
 |                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |
 +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+|    J7200 EVM               |    j7200\_evm\_r5\_defconfig    |   j7200\_evm\_r5\_defconfig    |                                |                                |                                |
+|                            |    j7200\_evm\_a72\_defconfig   |   j7200\_evm\_a72\_defconfig   |                                |                                |                                |
++----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
 
 
-Below are the steps for building images for AM65x IDK (substitute with the right config for the board that you are building for).
 
-**R5**
+**Building Bootloader for AM65x EVM/IDK**
+
+*R5*
 
 .. code-block:: console
 
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
 
-**ARM64**
+*A53*
 
 .. code-block:: console
 
   $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
   $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
 
+**Building Bootloader for J721E EVM**
+
+*R5*
+
+.. code-block:: console
+
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- j721e_evm_r5_defconfig O=<output directory>/r5
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+
+*A72*
+
+.. code-block:: console
+
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- j721e_evm_a72_defconfig O=<output directory>/a53
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+
+**Building bootloader for J7200 EVM**
+
+*R5*
+
+.. code-block:: console
+
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
+  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+
+*A72*
+
+.. code-block:: console
+
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- j7200_evm_a72_defconfig O=<output directory>/a53
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+  $ cd <path to K3-image-gen project>
+  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- SOC=j7200 ROM_COMBINED_IMAGE=1 SBL=<path to tisdk>/board-support/prebuilt-images>/u-boot-spl.bin
+
+.. rubric:: Dependent Project location
+
+- K3-image-gen (For generating tiboot3.bin and sysfw.itb) project is located `here <https://git.ti.com/cgit/k3-image-gen/k3-image-gen>`__
+- Linux Firmware (for device specific ti-dm and ti-sysfw binaries) project is located `here <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__ 
+
 .. rubric:: Target Images
 
 Copy the below images to the boot partition of an SD card and boot.
 Instructions to format the SD card can be found `here <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__.
 
+*AM65x*
+
 - tiboot3.bin from <output directory>/r5
 - tispl.bin, u-boot.img from <output directory>/a53
 - sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
+
+*J721E*
+
+- tiboot3.bin from <output directory>/r5
+- tispl.bin, u-boot.img from <output directory>/a72
+- sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
+
+*J7200*
+
+- tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
+- tispl.bin, u-boot.img from <output directory>/a72
+
 
 .. rubric:: Image Formats
 
