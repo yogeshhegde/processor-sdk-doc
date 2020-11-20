@@ -302,3 +302,70 @@ section <#enabling-qspi-driver-configurations>`__ for more information).
          root:~#
 
 Now you can access filesystem at /mnt/flash/.
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    .. rubric:: Using Cypress S28HS512TGABHM010 flash on J721E
+       :name: using-cypress-s28-on-j721e
+
+    J721E by default comes with with the Micron MT35XU512ABA1G12-0AAT flash. But the
+    Cypress S28HS512TGABHM010 flash can be used with it with some slight
+    modifications to the device tree properties. The below patch should allow using
+    the flash on J721E. Note that applying it will likely make the Micron flash unusable.
+
+    ::
+
+             diff --git a/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi b/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
+             index 90bcc6be3834..7c43b56cf849 100644
+             --- a/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
+             +++ b/arch/arm64/boot/dts/ti/k3-j721e-som-p0.dtsi
+             @@ -181,13 +181,13 @@
+              		cdns,tsd2d-ns = <60>;
+              		cdns,tchsh-ns = <60>;
+              		cdns,tslch-ns = <60>;
+             -		cdns,read-delay = <0>;
+             +		cdns,read-delay = <4>;
+              		cdns,phy-mode;
+              		#address-cells = <1>;
+              		#size-cells = <1>;
+             -		partition@3fe0000 {
+             +		partition@3fc0000 {
+              			label = "ospi.phypattern";
+             -			reg = <0x3fe0000 0x20000>;
+             +			reg = <0x3fc0000 0x40000>;
+              		};
+              	};
+              };
+
+    .. rubric:: Using Micron MT35XU512ABA1G12-0AAT flash on J7200
+       :name: using-micron-mt35-on-j7200
+
+    J7200 by default comes with with the Cypress S28HS512TGABHM010 flash. But the
+    Micron MT35XU512ABA1G12-0AAT flash can be used with it with some slight
+    modifications to the device tree properties. The below patch should allow using
+    the flash on J7200. Note that applying it will likely make the Cypress flash
+    unusable.
+
+    ::
+
+             diff --git a/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi b/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
+             index df8d9e2ad3dd..8decb9c0de9a 100644
+             --- a/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
+             +++ b/arch/arm64/boot/dts/ti/k3-j7200-som-p0.dtsi
+             @@ -168,13 +168,13 @@
+              		cdns,tsd2d-ns = <60>;
+              		cdns,tchsh-ns = <60>;
+              		cdns,tslch-ns = <60>;
+             -		cdns,read-delay = <4>;
+             +		cdns,read-delay = <0>;
+              		cdns,phy-mode;
+              		#address-cells = <1>;
+              		#size-cells = <1>;
+             -		partition@3fc0000 {
+             +		partition@3fe0000 {
+              			label = "ospi.phypattern";
+             -			reg = <0x3fc0000 0x40000>;
+             +			reg = <0x3fe0000 0x20000>;
+              		};
+              	};
+              };
