@@ -11,7 +11,8 @@ Processor SDK AM64X Software Developer's Guide
 
    Overview
    Release_Specific
-   Foundational_Components
+   Foundational_Components_Linux
+   Foundational_Components_RTOS
    /system/Demo_User_Guides/Demo_User_Guides
 
 |
