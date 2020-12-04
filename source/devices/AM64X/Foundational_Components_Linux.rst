@@ -2,4 +2,10 @@
 Linux
 ######
 
-.. include:: /linux/Foundational_Components/U-Boot.rst.inc
+.. toctree::
+   :maxdepth: 2
+
+   /linux/Foundational_Components_U-Boot
+   /linux/Foundational_Components_Kernel
+   /linux/Foundational_Components_Filesystem
+   /linux/Foundational_Components_Tools
