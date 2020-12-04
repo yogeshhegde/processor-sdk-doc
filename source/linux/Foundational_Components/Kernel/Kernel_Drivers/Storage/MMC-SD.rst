@@ -114,13 +114,46 @@ Supported High Speed Modes
    +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
    | AM571X-IDK         | N		    | N			| N		    | N			| N		    |
    +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
-   
+   | AM654-SR2-EVM      | Y		    | Y			| Y		    | Y			| Y		    |
+   +--------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
    Table:  **MMC1/SD**
    
-   **Important Info**: Certain UHS cards doesn't enumerate in UHS cards.
-   Find the list of functional UHS cards here:
-   http://processors.wiki.ti.com/index.php/Linux_Core_MMC/SD_User%27s_Guide#Testing_Information
+   **Note**: In AM654-SR1-EVM none of the UHS modes are supported.   
+
+   **Important Info**: Certain UHS cards do not enumerate.
+   The list of functional UHS cards is given in the following tables
+
+   +-------------------------------------------------------------------------------------------+
+   | FUNCTIONAL UHS CARDS                                                                      |
+   +===========================================================================================+
+   | ATP 32GB UHS CARD AF32GUD3                                                                |
+   +-------------------------------------------------------------------------------------------+
+   | STRONTIUM NITRO 466x UHS CARD                                                             |
+   +-------------------------------------------------------------------------------------------+
+   | SANDISK EXTREME UHS CARD                                                                  |
+   +-------------------------------------------------------------------------------------------+
+   | SANDISK ULTRA UHS CARD                                                                    |
+   +-------------------------------------------------------------------------------------------+
+   | SAMSUNG EVO+ UHS CARD                                                                     |
+   +-------------------------------------------------------------------------------------------+
+   | SAMSUNG EVO UHS CARD                                                                      |
+   +-------------------------------------------------------------------------------------------+
+   | KINGSTON UHS CARD (DDR mode)                                                              |
+   +-------------------------------------------------------------------------------------------+
+   | TRANSCEND PREMIUM 400X UHS CARD (Non fatal error and then it re-enumerates in UHS mode)   |
+   +-------------------------------------------------------------------------------------------+
    
+   +------------------------------------------------------------------------------+
+   | FUNCTIONAL (WITH LIMITED CAPABILITY) UHS CARD                                |
+   +==============================================================================+
+   | SONY UHS CARD - Voltage switching fails and enumerates in high speed         |
+   +------------------------------------------------------------------------------+
+   | GSKILL UHS CARD - Voltage switching fails and enumerates in high speed       |
+   +------------------------------------------------------------------------------+
+   | PATRIOT 8G UHS CARD - Voltage switching fails and enumerates in high speed   |
+   +------------------------------------------------------------------------------+
+
    **Known Workaround**: For cards which doesn't enumerate in UHS mode,
    removing the PULLUP resistor in CLK line and changing the GPIO to
    PULLDOWN increases the frequency in which the card enumerates in UHS
@@ -145,7 +178,9 @@ Supported High Speed Modes
    +--------------------+-------+---------+
    | AM571X-IDK         | Y     | N       |
    +--------------------+-------+---------+
-   
+   | AM654-SR2-EVM      | Y     | Y       |
+   +--------------------+-------+---------+
+
    Table:  **MMC2/EMMC**
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
@@ -288,34 +323,4 @@ Driver Configuration
    ::
    
        root@dra7xx-evm:/# ls /dev/mmcblk*boot*
-       /dev/mmcblk0boot0  /dev/mmcblk0boot1
-   
-   +-------------------------------------------------------------------------------------------+
-   | FUNCTIONAL UHS CARDS                                                                      |
-   +===========================================================================================+
-   | ATP 32GB UHS CARD AF32GUD3                                                                |
-   +-------------------------------------------------------------------------------------------+
-   | STRONTIUM NITRO 466x UHS CARD                                                             |
-   +-------------------------------------------------------------------------------------------+
-   | SANDISK EXTREME UHS CARD                                                                  |
-   +-------------------------------------------------------------------------------------------+
-   | SANDISK ULTRA UHS CARD                                                                    |
-   +-------------------------------------------------------------------------------------------+
-   | SAMSUNG EVO+ UHS CARD                                                                     |
-   +-------------------------------------------------------------------------------------------+
-   | SAMSUNG EVO UHS CARD                                                                      |
-   +-------------------------------------------------------------------------------------------+
-   | KINGSTON UHS CARD (DDR mode)                                                              |
-   +-------------------------------------------------------------------------------------------+
-   | TRANSCEND PREMIUM 400X UHS CARD (Non fatal error and then it re-enumerates in UHS mode)   |
-   +-------------------------------------------------------------------------------------------+
-   
-   +------------------------------------------------------------------------------+
-   | FUNCTIONAL (WITH LIMITED CAPABILITY) UHS CARD                                |
-   +==============================================================================+
-   | SONY UHS CARD - Voltage switching fails and enumerates in high speed         |
-   +------------------------------------------------------------------------------+
-   | GSKILL UHS CARD - Voltage switching fails and enumerates in high speed       |
-   +------------------------------------------------------------------------------+
-   | PATRIOT 8G UHS CARD - Voltage switching fails and enumerates in high speed   |
-   +------------------------------------------------------------------------------+
+       /dev/mmcblk0boot0  /dev/mmcblk0boot1 
