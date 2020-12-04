@@ -16,3 +16,4 @@ Host
    How_to_Guides/Host/How_to_Setup_Ubuntu_1404_Network_Boot
    How_to_Guides/Host/Additional_How_to_Guide_Links
    How_to_Guides/Host/AM335x_AM437x_Hardware_Migration_Guide
+   How_to_Guides/Host/Program_the_eMMC_on_Beaglebone_Black
