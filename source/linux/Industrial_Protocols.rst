@@ -3,7 +3,7 @@ Industrial Protocols
 ######################
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
 
    Industrial_Protocols_ICSS_Dual_EMAC
    Industrial_Protocols_HSR_PRP
