@@ -295,6 +295,8 @@ file.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
+    .. rubric:: **6.x SDK (4.19 Kernel)**
+
     To configure Beta J721E EVM in EP mode, apply the following patch:
 
     ::
@@ -354,6 +356,29 @@ file.
         &pcie1_rc {
                 reset-gpios = <&exp1 2 GPIO_ACTIVE_HIGH>;
                 phys = <&serdes1_pcie_link>;
+
+    .. rubric:: **7.x SDK (5.4 Kernel)**
+
+    To configure J721E EVM in EP mode, apply the following patch:
+
+    ::
+
+        diff --git a/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
+        index 6788a3611..b7cd6c7b6 100644
+        --- a/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
+        +++ b/arch/arm64/boot/dts/ti/k3-j721e-common-proc-board.dts
+        @@ -813,6 +813,7 @@
+                phys = <&serdes0_pcie_link>;
+                phy-names = "pcie_phy";
+                num-lanes = <1>;
+        +       status = "disabled";
+         }; &pcie1_rc {
+        @@ -833,7 +834,6 @@
+                phys = <&serdes0_pcie_link>;
+                phy-names = "pcie_phy";
+                num-lanes = <1>;
+        -       status = "disabled";
+         }; &pcie1_ep {
 
 .. rubric:: *Linux Driver Configuration*
    :name: linux-driver-configuration
@@ -1273,3 +1298,27 @@ The following config options have to be enabled in order to use the
     +           +---------------------------------------------------+                                   +
     |           | drivers/pci/endpoint/pcie-cadence-host.c          |                                   |
     +-----------+---------------------------------------------------+-----------------------------------+
+
+    .. rubric:: **J7200 Testing Details**
+
+    PCIe and QSGMII uses the same SERDES in J7200. The default SDK is enabled for QSGMII. In order to
+    test PCIe, Ethfw firmware shouldn't be loaded and PCIe overlay file should be applied.
+
+    The simplest way to avoid ethfw from being loaded is to link j7200-main-r5f0_0-fw to IPC firmware.
+    ::
+
+        root@j7200-evm:~# rm /lib/firmware/j7200-main-r5f0_0-fw
+        root@j7200-evm:~# ln -s /lib/firmware/pdk-ipc/ipc_echo_test_mcu2_0_release_strip.xer5f /lib/firmware/j7200-main-r5f0_0-fw
+
+    The following two Device Tree Overlay should be applied for testing J7200 EP.
+
+    https://git.ti.com/cgit/ti-linux-kernel/ti-upstream-tools/tree/arch/arm64/boot/dts/ti/system_test/pcie/pcie_ep/k3-j7200-common-proc-board-pcie.dtso?h=ti-linux-5.4.y
+
+    https://git.ti.com/cgit/ti-linux-kernel/ti-upstream-tools/tree/arch/arm64/boot/dts/ti/system_test/pcie/pcie_ep/k3-j7200-common-proc-board-pcie-ep.dtso?h=ti-linux-5.4.y
+
+
+    The following command should be given in u-boot to apply overlay
+
+        ::
+
+           => setenv name_overlays k3-j7200-common-proc-board-pcie.dtbo k3-j7200-common-proc-board-pcie-ep.dtso
