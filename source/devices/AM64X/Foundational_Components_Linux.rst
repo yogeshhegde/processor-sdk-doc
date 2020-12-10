@@ -9,3 +9,4 @@ Linux
    /linux/Foundational_Components_Kernel
    /linux/Foundational_Components_Filesystem
    /linux/Foundational_Components_Tools
+   /linux/Foundational_Components_Machine_Learning
