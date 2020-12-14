@@ -4,7 +4,7 @@
 Machine Learning
 ********************
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM64X_family')
  
    Sitara Machine Learning toolkit brings machine learning to the edge by enabling 
    machine learning inference on all Sitara devices (Arm only, Arm + specialized hardware 

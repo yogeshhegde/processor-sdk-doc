@@ -2,4 +2,4 @@
 RTOS
 ######
 
-.. include:: /rtos/index_Foundational_Components.rst
+.. note:: This is a place holder for RTOS documentation, which will be external links.

@@ -5,7 +5,7 @@ IPC Low Level Driver
 Overview
 ==================================
 
-On AM65X/Jacinto 7 platforms, a lower level IPC driver (IPC LLD) using rpmsg-based transport is included in the Processor SDK RTOS
+On AM64x/AM65X/Jacinto 7 platforms, a lower level IPC driver (IPC LLD) using rpmsg-based transport is included in the Processor SDK RTOS
 release. Sample firmware binaries for all remote cores are located at <Processor SDK Linux root filesystem>/lib/firmware.
 Jacinto 7/AM65X remote cores can be loaded by u-boot from the filesystem as part of the boot sequence. The Processor SDK Linux
 release also supports loading the remote firmware by remoteproc kernel driver. The remote firmware demonstrates the interprocessor

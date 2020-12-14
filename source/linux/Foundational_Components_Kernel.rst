@@ -5,7 +5,7 @@ Kernel
 ********************
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
 
    Foundational_Components_Kernel_Users_Guide
    Foundational_Components_Kernel_Release_Notes
