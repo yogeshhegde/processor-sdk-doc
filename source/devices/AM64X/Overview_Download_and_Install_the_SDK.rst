@@ -3,7 +3,7 @@ Download and Install the SDK
 
 **Processor SDK AM64x 0.9 (Early Adapter)** Release support both Linux and Windows versions of installers
 
--  processor_sdk_sitara_am64x_00_09_00_00-windows-installer.exe
+-  processor_sdk_sitara_am64x_00_09_00_00-windows-x64-installer.exe
 -  processor_sdk_sitara_am64x_00_09_00_00-linux-x64-installer.run
 
 For windows installer, install always in C:/ti. Do not install in any deeper directory structure as build might fail due to the 260 character path length limit exist in Windows operating system
@@ -13,7 +13,7 @@ Note: This early adapter release contain basic demos, Linux/RTOS drivers & indus
 
 **Instructions to set-up CCS**
 
--  Refer /<INSTALL-DIR>/rtos/pdk_am64x_xx_xx_xx_xx/docs/userguide/am64x/ccs_setup_am64x.html
+-  Refer /<INSTALL-DIR>/rtos/pdk_am64x_xx_xx_xx_xx/docs/userguide/am64x/ccs_setup_am64x.html - `[Use Link] <../../rtos/pdk_am64x/docs/userguide/am64x/ccs_setup_am64x.html>`__
 
 
 **Build Instructions**
@@ -27,17 +27,22 @@ For Winnows version use “gmake” from /<INSTALL-DIR>/rtos/xdctools_3_61_03_29
 
 Build R5F Hello World App
 
--  $ cd /<INSTALL-DIR>/sitara-apps
 
 For Linux
 
--  $ make common_libs
--  $ make r5f_hello_world
+    ::
+
+        $ cd /<INSTALL-DIR>/sitara-apps
+        $ make common_libs
+        $ make r5f_hello_world
 
 For Windows
 
--  $ gmake common_libs
--  $ gmake r5f_hello_world
+    ::
+
+        $ cd /<INSTALL-DIR>/sitara-apps
+        $ gmake common_libs
+        $ gmake r5f_hello_world
 
 The built binary files will be in /<INSTALL-DIR>/sitara-apps/examples/r5f_hello_world/out/AM64X/R5F/NO_OS/release
 
@@ -50,10 +55,10 @@ Run R5F Hello World App using CCS with JTAG
 
 **Benchmark demos**
 
--  Refer Demo User Guides -> Benchmark Demo - User Guide
+-  Refer :ref:`Benchmark Demo User Guide <Benchmark-Demo-User-Guide-label>`
 
 
 **Servo drive demo**
 
--  Refer Demo User Guides -> Servo Drive Demo - User Guide
+-  Refer :ref:`Servo Drive Demo User Guide <Servo-Drive-Demo-User-Guide-label>`
 

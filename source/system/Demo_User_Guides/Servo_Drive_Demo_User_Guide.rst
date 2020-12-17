@@ -1,3 +1,6 @@
+
+.. _Servo-Drive-Demo-User-Guide-label:
+
 Servo Drive Demo - User Guide
 ==================================
 

@@ -1,3 +1,6 @@
+
+.. _Benchmark-Demo-User-Guide-label:
+
 Benchmark Demo - User Guide
 ================================
 

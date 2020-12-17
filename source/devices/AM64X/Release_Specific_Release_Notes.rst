@@ -60,7 +60,7 @@ This release integrates complete servo drive, timesync and benchmark examples bu
 -  4-ch IPC RPMsg_char functional between R5F/BM and A53/Linux
 -  All benchmarking R5F apps (CFFT, FIR, FOC, PID, ADC/PWM) are passing with expected cycle counts
 
-**Rest Isolation**
+**Reset Isolation**
 
 -  Standalone reset isolation validated with on board heartbeat LEDs
 
