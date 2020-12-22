@@ -43,6 +43,20 @@ following platforms:
 	-  `J721E EVM <http://www.ti.com/tool/J721EXSOMXEVM>`__
 	-  `J7200 EVM <http://www.ti.com/tool/J7200XSOMXEVM>`__
 
+
++-------------------+
+|K3 family of SoCs  |
++===================+
+| AM65              |
++-------------------+
+| J721E             |
++-------------------+
+| J7200             |
++-------------------+
+| AM64              |
++-------------------+
+
+
 General Information
 -----------------------------------
 
@@ -1297,6 +1311,18 @@ U-Boot out of ROM from the storage device as it is unsupported. Once
 U-Boot is running however, any of these may be used for the kernel and
 the root filesystem.
 
+Usually in all the platforms there will be two MMC instances of which one
+would be SD and the other would be eMMC. The index of them can vary from
+one class of platforms to the other. For a given platform, the device
+number (device num) can be found in the following way,
+
+::
+
+     U-Boot# mmc list
+     sdhci@fa10000: 0 (eMMC)
+     sdhci@fa00000: 1 (SD)
+
+
 Partitioning eMMC from U-Boot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1318,7 +1344,7 @@ the UUIDs used for the disk and each partition.
     uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
     U-Boot # setenv uuid_gpt_disk ...first uuid...
     U-Boot # setenv uuid_gpt_rootfs ...second uuid...
-    U-Boot # gpt write mmc 1 ${partitions}
+    U-Boot # gpt write mmc <device num> ${partitions} /* <device num> is device index obtained from mmc list for eMMC */
 
 A reset is required for the partition table to be visible.
 
@@ -1364,6 +1390,12 @@ MMC device and **printenv dfu\_alt\_settings\_mmc** or
         3              2024190         1815345      83
     U-Boot# printenv dfu_alt_info_mmc
     dfu_alt_info=boot part 0 1;rootfs part 0 2;MLO fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1"
+
+.. note::
+	The above command mmc part lists the partitions in the current
+	selected device. So, to list the partitions in eMMC or SD one needs to
+	switch to the required device by using the command ``mmc dev <device
+	num>``.
 
 This means that you can tell dfu-util to write anything to any of:
 
@@ -1438,8 +1470,8 @@ memory. For the exact details of each use **printenv** on the
 turn **printenv** other sub-sections of the command. The most important
 variables here are **mmcroot** and **mmcrootfstype**.
 
-Booting MLO and u-boot from eMMC boot partition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Booting MLO and u-boot from eMMC boot partition (For non-K3 class of SoCs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    :name: booting-mlo-and-u-boot-from-emmc-boot-partition
 
 The dra7xx and am57xx processors support booting from the eMMC boot partition. The following commands load the boot images from network and write them into the boot0 partition.
@@ -1464,8 +1496,8 @@ We also need to configure the eMMC using the bootbus and partconf commands. The 
 
 | 
 
-Booting tiboot3.bin, tispl.bin and u-boot.img from eMMC boot partition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Booting tiboot3.bin, tispl.bin and u-boot.img from eMMC boot partition (For K3 class of SoCs)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The K3 based processors support booting from the eMMC boot partition.
 The following commands can be used to download tiboot3.bin, tispl.bin and
@@ -1491,6 +1523,42 @@ used for the first time:
 
   => mmc partconf 0 1 1 1
   => mmc bootbus 0 2 0 0
+
+- eMMC layout:
+.. code-block:: console
+
+
+             boot0 partition (8 MB)                        user partition
+     0x0+----------------------------------+      0x0+-------------------------+
+        |     tiboot3.bin (512 KB)         |         |                         |
+   0x400+----------------------------------+         |                         |
+        |       tispl.bin (2 MB)           |         |                         |
+  0x1400+----------------------------------+         |        rootfs           |
+        |       u-boot.img (4 MB)          |         |                         |
+  0x3400+----------------------------------+         |                         |
+        |      environment (128 KB)        |         |                         |
+  0x3500+----------------------------------+         |                         |
+        |   backup environment (128 KB)    |         |                         |
+  0x3600+----------------------------------+         |                         |
+        |          sysfw (1 MB)            |         |                         |
+  0x3E00+----------------------------------+         +-------------------------+
+
+
+.. note::
+	rootfs is written to the user partition. The user partition is
+	first required to be formatted as a ext4 file system and then the rootfs
+	has to be written. It is not possible to format a partition to ext4 in
+	U-Boot. It is required to boot to kernel and write rootfs to user partition
+	after formatting it to ext4. Kernel image and DT are expected to be present
+	in the /boot folder of rootfs.
+
+To boot kernel from eMMC, use the following commands after writing rootfs to user partition:
+
+::
+
+    => setenv mmcdev 0
+    => setenv bootpart 0
+    => boot
 
 |
 
@@ -1607,6 +1675,9 @@ Set up the following u-boot environment variables:
 
 Booting from SD/eMMC from SPL (Single stage or Falcon mode)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+	Falcon mode is not supported on K3 family of devices.
 
 In this boot mode SPL (first stage bootloader) directly boots the Linux
 kernel. Optionally, in order to enter into U-Boot, reset the board while
