@@ -5,7 +5,6 @@ devices/AM64X/Overview_Download_and_Install_the_SDK
 devices/AM64X/Release_Specific
 devices/AM64X/Release_Specific_Release_Notes
 devices/AM64X/Release_Specific_Migration_Guide
-devices/AM64X/Release_Specific_Performance_Guide
 devices/AM64X/index_Linux
 devices/AM64X/index_RTOS
 devices/AM64X/Linux_Overview
