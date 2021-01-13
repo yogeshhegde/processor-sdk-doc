@@ -5,6 +5,7 @@ Linux
 .. toctree::
    :maxdepth: 2
 
+   Linux_Overview.rst
    /linux/Foundational_Components_U-Boot
    /linux/Foundational_Components_Kernel
    /linux/Foundational_Components_Filesystem
