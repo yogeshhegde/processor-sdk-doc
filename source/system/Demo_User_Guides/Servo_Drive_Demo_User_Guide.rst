@@ -26,7 +26,7 @@ HW Setup
 
 -  Ethernet or crossover cable
 
--  8GB SD card, of JTAG connection to CCS, or OSPI flashed with binaries
+-  8GB SD card, or JTAG connection to CCS, or OSPI flashed with binaries
 
 -  3x F280049 Launchpad: `LAUNCHXL-F280049C <https://www.ti.com/tool/LAUNCHXL-F280049C>`_
 
@@ -43,7 +43,7 @@ HW Setup
 
 -  5x Female-to-male jumper wires
 
--  24 volt power supply(s)
+-  3x 24 volt power supply(s)
 
    -  for the GaNFET BoosterPack power input
 
@@ -77,8 +77,10 @@ the available A53 and M4F cores located in the AM64x device:
 -  A53 cores - Running RT Linux to host an HTTP web server for a GUI
    composer visualization application
 
--  M4F core - Responding to error events by performing a reset isolation
-   routine and then resetting the main domain
+-  M4F core - Runs in an isolated domain separate from the main domain
+   cores (A53s and R5s). It monitors the device for ECC errors through
+   the ESM (Error Signaling Module) and responds to errors by resetting
+   the main domain. The M4F stays alive due to isolation from reset.
 
 The Software Architecture diagram is shown below:
 
@@ -149,32 +151,37 @@ MCU Channel
 .. Image:: /images/Servo_Drive_Demo_6.png
    :width: 800px
 
-The MCU Channel demo is broken into 3 main functions listed below:
+The M4 Application demo is broken into 3 main functions listed below:
 
--  Main Domain Monitoring
+-  Main Domain monitoring and reset isolation
 
-   -  Reset button
+   -  M4 domain is reset isolated from Main domain so M4 application stays
+      alive while rest of SoC reboots.
 
-   -  M4F and ICSSG1 default to being reset isolated
+   -  ICSSG1 is also reset isolated from Main domain so industrial
+      ethernet protocols with daisy chain stay connected while SoC reboots.
 
-   -  M4F will wait for handshake from ICSSG1 and then trigger a warm
-      reset on the main domain
+   -  SoC SRAM and DDR ECC Errors are monitored by M4 through ESM and
+      a reset to the Main domain can be triggered in response.
 
--  Safety inputs from external buttons or sensors
+-  Montitor safe inputs and drive safe outputs
 
-   -  Big Red Button for STO, light curtain, mmWave for proximity
-      detection, etc.
+   -  The application demos a Safe Torque Off input using SW5 on the EVM. An
+      external proximity detection device such as light curtain or mmWave radar
+      can also be connected via MCU_GPIO0_6 on J1 (active-low input).
 
-   -  M4F will trigger an STO signal or attempt a safe limited speed
-      (SLS) if proximity is close but not too close
+   -  M4 MCU_GPIO0_7 is the Safe Torque Off output which can be connected to
+      GaNFET BoosterPack pin 13 (nEnable). This will disable the BoosterPack
+      power stage and stop the motors.
 
--  Black channel communication path to the Safety channel
+-  Black Channel communication path using OC SRAM
 
-   -  Provide an example to customers on the method to pass data from
-      the main domain to the M4F
+   -  Provide an example on the method to safely pass notifications and data
+      between the main domain to the M4 core using a combination of the
+      mailbox module and dedicated OC SRAM.
 
-   -  Mimic data path for FSoE data coming from the R5F or HDSL Safety
-      data coming from ICSSG0
+   -  Mimics data path recommended for FSoE data coming from the R5F running
+      EtherCAT or HDSL Safety data coming from ICSSG0
 
 Inter-Processor Communication (IPC)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -187,7 +194,7 @@ The 3 methods of IPC needed in the demo are:
 
    -  Ultra-low latency needed
 
--  R5F RTOS <-> M4 Bare metal
+-  R5F RTOS <-> M4F Bare metal
 
    -  Will act as an example for the TI approved ‘Black Channel’
       communication path that will be needed in future
@@ -226,16 +233,17 @@ R5F RTOS <-> M4 Bare Metal IPC
 
 .. Image:: /images/Servo_Drive_Demo_8.png
 
+Also uses Interrupt-based Mailbox CSL communication
+
 1. Information from the R5F needs to be passed to the M4
 
 2. Data (payload) placed into OC SRAM shared memory in dedicated SRAM
    bank
 
-3. M4 notified that data is ready when the R5F uses Mailbox clusters 6
-   and 7 to create an interrupt into the MCU channel
+3. M4 is notified that data is ready when the R5F uses mailbox to create
+   an interrupt to the M4 core
 
-4. M4 (optionally) tears down the firewall, reads the payload from OC
-   SRAM, then rebuilds the firewall
+4. M4 retrieves the payload from OC SRAM
 
 Does not violate Functional Safety use case since nothing from the Main
 Domain is **pushed** into the MCU Channel except for the Mailbox
