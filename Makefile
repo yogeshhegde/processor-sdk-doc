@@ -50,7 +50,7 @@ endif
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-CONFLOC         = -c ${CONFDIR}
+CONFLOC         = -c build/
 VEROPTS         = -D version=${VERSION} -D release=${VERSION}
 ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) $(CONFLOC) $(VEROPTS) source
 # the i18n builder cannot share the environment and doctrees with the others
@@ -87,12 +87,12 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
-	rm -f ${CONFDIR}/conf.py
+	rm -f build/conf.py
 	rm -f ${CONFDIR}/replacevars.rst.inc
 
 config:
-	cat python-scripts/conf.py ${OS_CONF} ${TAGFILE} ${FAMILYSETUPFILE} > ${CONFDIR}/conf.py
-	sed -i 's/SDKVERSION/${VERSION}/g' ${CONFDIR}/conf.py
+	cat python-scripts/conf.py ${OS_CONF} ${TAGFILE} ${FAMILYSETUPFILE} > build/conf.py
+	sed -i 's/SDKVERSION/${VERSION}/g' build/conf.py
 	cp sphinx_rtd_theme_ti/patch/layout.html sphinx_rtd_theme_ti/_themes/sphinx_rtd_theme_ti/layout.html
 
 html: 
