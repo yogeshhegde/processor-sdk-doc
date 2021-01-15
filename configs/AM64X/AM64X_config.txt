@@ -30,6 +30,7 @@ Replacement Variables
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'AM64X_family'
+'CONFIG_part_variant'     : 'AM64X'
 'CONFIG_sdk'              : 'PSDK'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'

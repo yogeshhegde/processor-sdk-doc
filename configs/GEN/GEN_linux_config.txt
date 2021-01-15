@@ -30,6 +30,7 @@ Replacement Variables
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'General_family'
+'CONFIG_part_variant'     : 'Gen'
 'CONFIG_sdk'              : 'PLSDK'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'

@@ -78,7 +78,7 @@ pieces to simplify things a bit:
    -  U-Boot sources and configuration files
    -  Kernel sources and configuration files
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKLA')
+   .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
        -  Hypervisor sources and configuration files
 
@@ -91,7 +91,7 @@ pieces to simplify things a bit:
        -  A Yocto/OE compliant filesystem and sources for example
           applications in Matrix
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKLA')
+   .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
        -  A Yocto/OE compliant filesystem and sources for example
           applications
@@ -135,7 +135,7 @@ and a supported `Hardware Platform <../Release_Specific_Supported_Platforms_and_
     .. rubric:: Evaluating the SDK Embedded Linux System and Matrix
        :name: evaluating-the-sdk-embedded-linux-system-and-matrix
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     .. rubric:: Evaluating the SDK Embedded Linux System
        :name: evaluating-the-sdk-embedded-linux-system
@@ -256,9 +256,16 @@ which you can start development.
        Use the `SDK Create SD Card Script <Processor_SDK_Linux_create_SD_card_script.html>`__,
        or **One-time Program EVM for K2H/K2K, K2E, and K2L** - following directions for `Program EVM User Guide <Program_EVM.html>`__
 
-   .. ifconfig:: CONFIG_sdk in ('PSDKLA')
+   .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
        Use the mksdboot.sh script from the installer.
+
+       .. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+         .. note::
+            By default, the mksdboot.sh copies the PG2.0 sysfw to the SD card. To
+            use the PG1.0 sysfw, copy the board-support/prebuilt-images/sysfw-am65x-evm.itb
+            file to /media/$USER/boot/sysfw.itb.
 
    .. note::
       You will need a >8GB SD Card and the capability to connect that card
@@ -394,12 +401,12 @@ possibilities:
     |`Processor SDK Linux Tools <../Foundational_Components_Tools.html>`__                                               |Documentation for all of the various tools included with the SDK.                                                   |
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     .. Note::
-        Some of the training content below has been written for DRA809 devices.
-        Work towards making these trainings tailored for J721E is in progress.
-        Not all the trainings will be applicable for J721E.
+        Some of the training content below has been written for DRA80x devices.
+        Work towards making these trainings tailored for Jacinto devices is in progress.
+        Not all the trainings will be applicable for Jacinto devices.
 
     +--------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------+
     |  **Link**                                                                                                          | **Summary**                                                                                                        |

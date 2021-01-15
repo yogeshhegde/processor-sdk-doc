@@ -1,3 +1,5 @@
+.. _formatting-sd-card-on-linux:
+
 Formatting SD card on Linux
 ===========================
 
@@ -9,24 +11,19 @@ directory named **mksdboot.sh**. The purpose of this script is to
 create bootable SD cards by partitioning and formatting them so that
 target can boot using the boot images and filesystem.
 
-Partitioning SD card
---------------------
+   .. note::
+      You will need a >8GB SD Card and a SD Card Reader
 
-No matter which use case above that you are creating an SD card for the
-following steps are the same.
+   .. note::
+      If you are having trouble booting with the SD card, you may need
+      to run the following commands to clear the default environment.
+      You will then need to reboot the board for the commands to take
+      effect.
 
-The **mksdboot.sh** script can be run from any location but must be
-run with **root** permissions. This usually means using the **sudo**
-command to start execution of the script. For example:
+      .. code-block:: text
 
-::
-
-    sudo <SDK INSTALL DIR>/bin/mksdboot.sh --device /dev/sdX --sdk <SDK INSTALL DIR>
-    #Replace the /dev/sdX with appropriate device name
-
-If you fail to execute the script without root permissions you will
-receive a message that root permissions are required and the script will
-exit.
+         env default –a –f
+         saveenv
 
 Select the SD Card Device
 -------------------------
@@ -65,3 +62,28 @@ for the SD card you want to format. Example output looks like this:
 
 You should choose the device where the partition sizes match with the
 SD card you want to partition.
+
+Partitioning SD card
+--------------------
+
+No matter which use case above that you are creating an SD card for the
+following steps are the same.
+
+The **mksdboot.sh** script can be run from any location but must be
+run with **root** permissions. This usually means using the **sudo**
+command to start execution of the script. For example:
+
+::
+
+    sudo <SDK INSTALL DIR>/bin/mksdboot.sh --device /dev/sdX --sdk <SDK INSTALL DIR>
+    #Replace the /dev/sdX with appropriate device name
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+    By default, the mksdboot.sh copies the PG2.0 sysfw to the SD card. To
+    use the PG1.0 sysfw, copy the board-support/prebuilt-images/sysfw-am65x-evm.itb
+    file to /media/$USER/boot/sysfw.itb.
+
+If you fail to execute the script without root permissions you will
+receive a message that root permissions are required and the script will
+exit.

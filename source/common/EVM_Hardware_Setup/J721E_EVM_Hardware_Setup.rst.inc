@@ -26,16 +26,16 @@ of SoM:
 .. note::
     Alpha EVMs have "Interim PMIC" sticker on the SoM board.
 
-.. Image:: ../../../images/J721E_Alpha_Board_1.jpg
+.. Image:: /images/J721E_Alpha_Board_1.jpg
 
-.. Image:: ../../../images/J721E_Alpha_Board_2.jpg
+.. Image:: /images/J721E_Alpha_Board_2.jpg
 
 2. Beta board
 
 .. note::
     Beta EVMs don't have a "Interim PMIC" sticker on the SoM board.
 
-.. Image:: ../../../images/J721E_Beta_Board.jpg
+.. Image:: /images/J721E_Beta_Board.jpg
 
 
 Contents of the board
@@ -54,11 +54,11 @@ most common functionality. It allows to connect to different adapter cards.
 
 Common Processor Board with ALPHA-SOM
 
-.. Image:: ../../../images/K3-Common-Proc-Board-with-Alpha-som.png
+.. Image:: /images/K3-Common-Proc-Board-with-Alpha-som.png
 
 Common Processor Board with BETA-SOM
 
-.. Image:: ../../../images/K3-Common-Proc-Board-with-Beta-som.png
+.. Image:: /images/K3-Common-Proc-Board-with-Beta-som.png
 
 Contents of the board
 
@@ -83,7 +83,7 @@ Infotainment daughter card is adapter board which has additional peripherals for
 infotainment use cases. This has support for HDMI display, FPDlink display
 extra audio channels, CSI camera, etc
 
-.. Image:: ../../../images/K3-Infotainment-card.png
+.. Image:: /images/K3-Infotainment-card.png
 
 Contents of the board
 
@@ -100,7 +100,7 @@ GESI(Gateway/Ethernet Switch/ Industrial) daughter card is adapter board which
 has additional peripherals for gateway and industrial use cases.
 This has support for extra ethernet ports and CAN ports, etc
 
-.. Image:: ../../../images/K3-GESI-card.png
+.. Image:: /images/K3-GESI-card.png
 
 Contents of the board
 
@@ -115,13 +115,13 @@ Contents of the board
 Most common boot method is to use SD card. Following are the switch settings to
 set the boot mode to SD for common processor board.
 
-.. Image:: ../../../images/K3-J721E-EVM-Switch-SD-boot.png
+.. Image:: /images/K3-J721E-EVM-Switch-SD-boot.png
 
 When you want the binaries to be loaded from a debugger like CCS, the common
 processor boards has to be set in the NO boot mode.  Following are the switch settings
 to do the same.
 
-.. Image:: ../../../images/K3-J721E-EVM-Switch-NO-boot.png
+.. Image:: /images/K3-J721E-EVM-Switch-NO-boot.png
 
 .. rubric:: EVM connections
    :name: evm-connections

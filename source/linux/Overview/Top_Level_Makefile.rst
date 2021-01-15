@@ -1,5 +1,7 @@
 .. include:: /replacevars.rst.inc
 
+.. _top-level-makefile:
+
 Top-Level Makefile
 ======================================
 
@@ -50,14 +52,6 @@ Rules.make file.
    the u-boot sources for the correct device.
 -  **TI\_SDK\_PATH** - This points to the top-level of the SDK. This is
    the same directory where the Rules.make file itself is located.
--  **DESTDIR** - This points to the base installation directory that
-   applications/drivers should be installed to. This is usually the root
-   of a target file system but can be changed to point anywhere. By
-   default the initial value is a unique key value of \_\_DESTDIR\_\_
-   which is replaced with the location of the target NFS file system
-   when the
-   `sdk-install.sh <Run_Setup_Scripts.html>`__ script
-   is run.
 -  **LINUX\_DEVKIT\_PATH** - This points to the linux-devkit directory.
    This directory is the base directory containing the cross-compiler
    and cross-libraries as well as the
@@ -96,7 +90,7 @@ makefile targets.
     host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools
 
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     .. rubric:: Compiler toolchain
        :name: compiler-toolchain
@@ -161,23 +155,34 @@ targets by looking at the **all** target as described in the
 `**Top-Level Targets** <#top-level-targets>`__ section above. Some
 devices will have following additional targets:
 
--  **u-boot** - This target will build both u-boot and the u-boot
-   SPL (MLO) binaries used in newer versions of u-boot. This actually
-   provides a u-boot and u-boot-spl target in the Makefile.
--  **u-boot-legacy** - This target will build the u-boot binary for
-   older versions of u-boot which do not support the SPL build.
--  **wireless** - A wireless top-level build target that can be used to
-   rebuild the wireless drivers against the kernel sources in the
-   board-support directory.
--  **matrix-gui** - Builds the matrix-gui sources.
--  **matrix-gui-browser** - Builds the matrix GUI browser Qt project.
--  **refresh-screen** - Builds the refresh screen Qt project.
--  **sysfw-image** - Builds the system firmware itb file, which is a single
-   binary for the system firmware release along with the different board
-   configs.
--  **jailhouse** - Builds the required kernel module, hypervisor firmware,
-   jailhouse tools and cell configs. Applicable for only platforms with
-   Hypervisor support enabled.
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+  -  **sysfw-image** - Builds the system firmware itb file, which is a single
+     binary for the system firmware release along with the different board
+     configs.
+  -  **jailhouse** - Builds the required kernel module, hypervisor firmware,
+     jailhouse tools and cell configs. Applicable for only platforms with
+     Hypervisor support enabled.
+
+.. ifconfig:: CONFIG_sdk not in ('PSDKL')
+
+  -  **u-boot** - This target will build both u-boot and the u-boot
+     SPL (MLO) binaries used in newer versions of u-boot. This actually
+     provides a u-boot and u-boot-spl target in the Makefile.
+  -  **u-boot-legacy** - This target will build the u-boot binary for
+     older versions of u-boot which do not support the SPL build.
+  -  **wireless** - A wireless top-level build target that can be used to
+     rebuild the wireless drivers against the kernel sources in the
+     board-support directory.
+  -  **matrix-gui** - Builds the matrix-gui sources.
+  -  **matrix-gui-browser** - Builds the matrix GUI browser Qt project.
+  -  **refresh-screen** - Builds the refresh screen Qt project.
+  -  **sysfw-image** - Builds the system firmware itb file, which is a single
+     binary for the system firmware release along with the different board
+     configs.
+  -  **jailhouse** - Builds the required kernel module, hypervisor firmware,
+     jailhouse tools and cell configs. Applicable for only platforms with
+     Hypervisor support enabled.
 
 Along with these targets, there might be additional targets for different
 external kernel modules. This list is different for each platform.
@@ -241,6 +246,64 @@ the Makefile from the top-level of the SDK.
 
     host# make am-benchmarks_install
 
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+  .. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+    -  By default, this builds the sysfw for AM65xx PG1.0.  To build sysfw for AM65xx PG2.0,
+       modify the SYSFW_SOC_am65xx-evm variable in the Makefile to equal am65x_sr2 and build.
+
+  -  Build the sysfw.
+
+  .. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+    -  By default, this builds the sysfw for AM65xx PG1.0.  To build sysfw for AM65xx PG2.0,
+       modify the SYSFW_SOC_am65xx-evm variable in the Makefile to equal am65x_sr2 and build.
+
+  ::
+
+      host# make sysfw-image
+
+  -  Clean the sysfw
+
+  ::
+
+      host# make sysfw-image_clean
+
+  -  Install the sysfw
+
+  ::
+
+      host# make sysfw-image_install
+
+-  Build u-boot
+
+::
+
+    host# make u-boot-spl
+
+-  Clean u-boot
+
+::
+
+    host# make u-boot-spl_clean
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+  .. ifconfig:: CONFIG_part_variant in ('J7200')
+
+      -  Build the combined boot image.  This requires first building the R5 boot image.
+         This will generate the u-boot-spl.bin.  This file must be copied to the k3-image-gen* folder.
+         The tiboot3.bin can then be built from the k3-image-gen* folder.
+
+    ::
+
+        host# make u-boot-r5
+        host# cp board-support/u-boot_build/r5/spl/u-boot-spl.bin board-support/k3-image-gen*/.
+        host# cd board-support/k3-image-gen*/
+        host# make SOC=j7200 ROM_COMBINED_IMAGE=1 SBL=u-boot-spl.bin
+
 .. rubric:: Installing to SD card rootfs
    :name: installing-to-sd-card
 
@@ -263,13 +326,29 @@ All the install targets copy the files in the rootfs pointed by the DESTDIR vari
 system firmware or u-boot, you should copy these binaries in the boot partition of
 the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
-::
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-    host# sudo cp board-support/u-boot_build/a72/u-boot.img board-support/u-boot_build/a72/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
-    #Replace the path to SD card boot partition as appropriate
+  .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-    host# cp board-support/system-firmware-image-gen*/sysfw-j721e-evm.itb /media/$USER/boot/sysfw.itb
-    #Replace the path to SD card boot partition as appropriate
+      ::
+
+          host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+          #Replace the path to SD card boot partition as appropriate
+
+          # For AM65xx-EVM PG1.0, copy the following sysfw file
+          host# cp board-support/k3-image-gen*/sysfw-am65x-evm.itb /media/$USER/boot/sysfw.itb
+          #Replace the path to SD card boot partition as appropriate
+
+          # For AM65xx-EVM PG2.0, copy the following sysfw file
+          host# cp board-support/k3-image-gen*/sysfw-am65x_sr2-evm.itb /media/$USER/boot/sysfw.itb
+          #Replace the path to SD card boot partition as appropriate
+
+  .. ifconfig:: CONFIG_part_variant not in ('AM65X')
+
+      ::
+
+          host# sudo cp board-support/u-boot_build/a72/u-boot.img board-support/u-boot_build/a72/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+          #Replace the path to SD card boot partition as appropriate
 
 .. rubric:: A Note about Out-of-tree Kernel Modules
    :name: a-note-about-out-of-tree-kernel-modules

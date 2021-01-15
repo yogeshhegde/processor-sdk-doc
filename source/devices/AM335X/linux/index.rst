@@ -5,7 +5,6 @@ Processor SDK Linux Software Developer's Guide
 **********************************************
 
 .. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for AM335X
-   :name: welcome-to-the-processor-sdk-linux-software-developers-guide
 
 .. include:: /linux/Overview/Processor_SDK_Linux_Software_Developers_Guide.rst.inc
 

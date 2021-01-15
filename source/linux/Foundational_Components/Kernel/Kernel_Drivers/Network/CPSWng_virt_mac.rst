@@ -1,6 +1,6 @@
 .. include:: /replacevars.rst.inc
 
-|__PART_FAMILY_NAME__|  CPSW9g virtual MAC (remoteproc)
+CPSWng virtual MAC (remoteproc)
 -------------------------------------------------------
 
 Introduction
@@ -41,7 +41,7 @@ This solution is illustrated below.
                 +-----^-------+
                       |
        +--------------v--------------------+ rpmsg_remotedev/
-       | main_r5fss_cpsw9g_virt_mac0       | rpmsg_remotedev_eth_switch_ops API
+       | main_r5fss_cpswng_virt_mac0       | rpmsg_remotedev_eth_switch_ops API
        | ethernet/ti/j721e-cpsw-virt-mac.c <--------+
        +-----------------------------------+        |
                                                     |
@@ -75,7 +75,7 @@ This solution is illustrated below.
             |SoC                                           |
             |  +------------+        +------------------+  |
             |  |            |        |main_r5fss0_core0 |  |
-            |  |  CPSW9G    <--------+                  |  |
+            |  |  CPSWnG    <--------+                  |  |
             |  +------------+        +------------------+  |
             |                                              |
             +----------------------------------------------+
@@ -89,7 +89,7 @@ and creates the default virtio devices for interacting with this firmware.
 The virtio_rpmsg_bus driver performs discovery of the RPMSG devices and creates an rpmsg-kdrv device,
 which, in turn, will trigger the rpmsg-kdrv core to discover "mpu_1_0_ethswitch-device-0" and probe the rpmsg_kdrv_switch driver
 
-The j721e-cpsw-virt-mac driver is started separately by the Linux core once the corresponding main_r5fss_cpsw9g_virt_macX device has been created by the Linux DT parsing code.
+The j721e-cpsw-virt-mac driver is started separately by the Linux core once the corresponding main_r5fss_cpswng_virt_macX device has been created by the Linux DT parsing code.
 Once started, the j721e-cpsw-virt-mac driver will wait for rpmsg_kdrv_switch driver to be probed.
  
 .. note::
@@ -169,7 +169,7 @@ For RX side, the j721e-cpsw-virt-mac driver only performs UDMA RX flow initializ
               |      |                          |            |
               |  +---v--------+        +--------v---------+  |
               |  |            |        |main_r5fss0_core0 |  |
-              |  |  CPSW9G    <--------+                  |  |
+              |  |  CPSWnG    <--------+                  |  |
               |  +------------+        +------------------+  |
               |                                              |
               +----------------------------------------------+

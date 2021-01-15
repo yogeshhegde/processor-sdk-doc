@@ -43,10 +43,6 @@ Processor SDK Linux Software Developer's Guide
 
 |
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
-
-    .. include:: Overview/PSDKLA_QSG.rst.inc
-
 .. rubric:: Feedback
    :name: feedback
 

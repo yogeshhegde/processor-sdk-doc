@@ -16,7 +16,7 @@ Build Information
 
     Please refer to :ref:`release-specific-build-information-u-boot` for details.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     Please refer to Yocto build for details.
 
@@ -28,9 +28,9 @@ Known Issues
 
     Please refer to :ref:`release-specific-u-boot-known-issues` for details.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-    Please refer to `Known Issues <Release_Specific_PSDKLA_Release_Notes.html#issues-tracker>`__ for details.
+    Please refer to :ref:`release-specific-known-issues` for details.
 
 
 .. include:: /linux/Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc

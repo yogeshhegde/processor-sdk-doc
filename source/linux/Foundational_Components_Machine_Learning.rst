@@ -77,5 +77,6 @@ Machine Learning
    Foundational_Components/Machine_Learning/neo
    Foundational_Components/Machine_Learning/tvm
    Foundational_Components/Machine_Learning/tflite
+   Foundational_Components/Machine_Learning/tflite_j7
    Foundational_Components/Machine_Learning/armnn
 

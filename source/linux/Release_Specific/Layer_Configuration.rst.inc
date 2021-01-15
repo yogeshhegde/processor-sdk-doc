@@ -7,7 +7,7 @@ Yocto Layer Configuration
 Processor SDK uses the following oe-layersetup configs to configure the
 meta layers. These are the <config> used in the command:
 
-``$ ./oe-layersetup.sh -f <config>``
+``$ ./oe-layertool-setup.sh -f <config>``
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
@@ -18,18 +18,19 @@ meta layers. These are the <config> used in the command:
     +----------------------------------------+---------------------------------+------------------------------------------------+
     | Config File                            | Description                     | Supported machines/platforms                   |
     +========================================+=================================+================================================+
-    |                                        |                                 | am57xx-evm, am65xx-evm                         |
+    |                                        |                                 | am57xx-evm                                     |
     | processor-sdk-06.03.00.106-config.txt  | Processor SDK 6.3.0.106 Release |                                                |
     +----------------------------------------+---------------------------------+------------------------------------------------+
 
-.. ifconfig:: CONFIG_sdk in ('PSDKLA')
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     |
-    | The following config files are located in the **configs/psdkla**
-      directory of the **configs** directory.
+    | The following config files are located in the **configs/**
+      directory of the **configs** directory.  The yocto config can also be
+      downloaded directly from the SDK release page.
 
-    +------------------------+----------------------------------------------------+--------------------+
-    |      Config File       |                    Description                     | Supported machines |
-    +========================+====================================================+====================+
-    | psdkla-07_00_00_00.txt | Processor SDK Linux Automotive 07_00_00_00 Release | j7-evm             |
-    +------------------------+----------------------------------------------------+--------------------+
+    +------------------------+----------------------------------------------------+--------------------------------+
+    |      Config File       |                    Description                     | Supported machines             |
+    +========================+====================================================+================================+
+    | psdkla-07_01_00.txt    | Processor SDK Linux 07_01_00 Release               | j7-evm, j7200-evm, am65xx-evm  |
+    +------------------------+----------------------------------------------------+--------------------------------+

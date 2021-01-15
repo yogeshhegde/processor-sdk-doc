@@ -95,7 +95,7 @@ release that corresponds to this U-Boot release. For e.g:
 
 ::
 
-    export PATH=$HOME/gcc-linaro-4.9-2015.05-x86_64_arm-linux-gnueabihf/bin:$PATH
+    export PATH=$HOME/<TOOLCHAIN_PATH>/bin:$PATH
 
 .. rubric:: Cleaning the Sources
    :name: cleaning-the-sources

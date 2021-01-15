@@ -30,6 +30,7 @@ Replacement Variables
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'J7_family'
+'CONFIG_part_variant'     : 'J721E'
 'CONFIG_sdk'              : 'PSDKAA'
 'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'no'

@@ -39,11 +39,13 @@ Build instruction for Ubuntu
 *****************************
 Note that DEVFAMILY represents the Device Family.
 Possible values for <FAMILY> are
- - "J7" (representing Jacinto 7)
+ - "J7" (representing Jacinto 7 ES)
+ - "J7200" (representing Jacinto 7 VCL)
  - "AM335X" (representing AM335X family)
  - "AM437X" (representing AM437X family)
  - "GEN" (representing General family)
  - "AM64X" (representing AM64X family)
+ - "AM65X" (representing AM65X family)
  - "CORESDK" (representing CORESDK)
 
 linux:

@@ -7,7 +7,6 @@ Release Specific
 
    Release_Specific_CoreSDK_Release_Notes
    Release_Specific_PLSDK_Release_Notes
-   Release_Specific_PSDKLA_Release_Notes
    Release_Specific_CoreSDK_Performance_Guide
    Release_Specific_Performance_Guide
    Release_Specific_CoreSDK_Yocto_layer_Configuration

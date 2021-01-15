@@ -1,3 +1,5 @@
+.. _hardware-evm-setup:
+
 **********************************
 Hardware EVM Setup
 **********************************
@@ -16,3 +18,4 @@ Hardware EVM Setup
    How_to_Guides/Hardware_Setup_with_CCS/ICE_AMIC110_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/OMAPL138-C6748_LCDK_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/J721E_EVM_Hardware_Setup
+   How_to_Guides/Hardware_Setup_with_CCS/J7200_EVM_Hardware_Setup

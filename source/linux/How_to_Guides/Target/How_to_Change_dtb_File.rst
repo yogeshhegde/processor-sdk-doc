@@ -101,9 +101,13 @@ How to change dtb files
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
     | 5   | k3-j721e-common-proc-board-infotainment-display-sharing.dtbo | Overlay for sharing DSS with Linux and RTOS             | #3 DTBO should be applied before this             |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
-    | 6   | k3-j721e-vision-apps.dtbo                                    | Overlay for running Processor SDK RTOS Automotive demos | N/A                                               |
+    | 6   | k3-j721e-vision-apps.dtbo                                    | Overlay for running Processor SDK RTOS demos            | N/A                                               |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
     | 7   | k3-j721e-pcie-backplane.dtbo                                 | Overlay for running PCIe Backplane demo                 | N/A                                               |
+    +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
+    | 8   | k3-j7200-common-proc-board.dtb                               | Base DTB for J7200 EVM                                  | N/A                                               |
+    +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
+    | 9   | k3-j7200-common-proc-board-jailhouse.dtbo                    | Overlay for enabling Jailhouse support                  | N/A                                               |
     +-----+--------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------+
 
     .. rubric:: uEnv.txt options
@@ -132,6 +136,6 @@ How to change dtb files
     | uenv.txt.jailhouse         | Use for running hypervisor use cases.                                         | HDMI monitor connected via infotainment daughter card.     |
     |                            |                                                                               | DP monitor connected to DISPLAY0 Display Port.             |
     +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
-    | uenv.psdkra                | Use for running Processor SDK RTOS Automotive demos.                          | All the R5 and C6x firmware symlinks updated in filesystem |
+    | uenv.psdkra                | Use for running Processor SDK RTOS demos.                                     | All the R5 and C6x firmware symlinks updated in filesystem |
     +----------------------------+-------------------------------------------------------------------------------+------------------------------------------------------------+
 
