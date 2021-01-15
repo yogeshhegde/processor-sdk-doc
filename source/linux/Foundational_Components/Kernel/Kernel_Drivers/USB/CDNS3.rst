@@ -1,17 +1,20 @@
-#########
-USB CDNS3
-#########
+###
+USB
+###
 
 Introduction
 ************
 
-CDNS3 is a SuperSpeed (SS) USB 3.0 Dual-Role-Device (DRD) controller from
-Cadence.
+The USB subsystem has a SuperSpeed (SS) USB3.1 Gen1 Dual-Role-Device (DRD)
+controller with on-chip SS (USB3.1 Gen1) PHY and HS/FS/LS (USB2.0) PHY.
+
+.. note::
+    LowSpeed (LS) is only supported in host mode.
 
 TI SoC Integration
 ******************
 
-CDNS3 USB controller is integrated in J721E SoC from TI.
+The USB subsystem is integrated in J721E SoC from TI.
 
 J721E EVM
 *********
