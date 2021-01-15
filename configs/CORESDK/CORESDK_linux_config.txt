@@ -30,6 +30,7 @@ Replacement Variables
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'AM335X_family'
+'CONFIG_part_variant'     : 'AM335X'
 'CONFIG_sdk'              : 'PLSDK'
 'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'yes'

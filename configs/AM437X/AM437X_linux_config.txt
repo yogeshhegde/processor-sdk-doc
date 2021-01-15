@@ -30,6 +30,7 @@ Replacement Variables
 Configuration Values
 --------------------
 'CONFIG_part_family'      : 'AM437X_family'
+'CONFIG_part_variant'     : 'AM437X'
 'CONFIG_sdk'              : 'PLSDK'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
