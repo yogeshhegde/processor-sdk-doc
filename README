@@ -41,6 +41,7 @@ Note that DEVFAMILY represents the Device Family.
 Possible values for <FAMILY> are
  - "J7" (representing Jacinto 7 ES)
  - "J7200" (representing Jacinto 7 VCL)
+ - "DRA821A" (representing DRA821A)
  - "AM335X" (representing AM335X family)
  - "AM437X" (representing AM437X family)
  - "GEN" (representing General family)
