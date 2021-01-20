@@ -435,8 +435,8 @@ RT Linux Kernel Known Issues
 |
 
 
-.. rubric:: Installation and Usage
-   :name: installation-and-usage
+Installation and Usage
+======================
 
 The :ref:`Software Developer's Guide <linux-index>` provides instructions on how to setup up your Linux development
 environment, install the SDK and start your development.  It also includes User's Guides for various Example Applications and Code
@@ -444,8 +444,8 @@ Composer Studio.
 
 | 
 
-.. rubric:: Host Support
-   :name: host-support
+Host Support
+============
 
 The Processor SDK is developed, built and verified on Ubuntu 16.04 and 18.04. Details on how to create a virtual machine to load Ubuntu
 are described in :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>`.

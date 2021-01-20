@@ -327,15 +327,15 @@ Known issues & limitations
 |
 
 
-.. rubric:: Installation and Usage
-   :name: installation-and-usage
+Installation and Usage
+======================
 
 The :ref:`Software Developer's Guide <linux-index>` provides instructions on how to setup your Linux development environment, install the SDK and start your development. It also includes User's Guides for various Example Applications.
 
 |
 
-.. rubric:: Host Support
-   :name: host-support
+Host Support
+============
 
 For the specific supported hosts for current SDK, see :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>`.
 
