@@ -13,7 +13,7 @@ Processor SDK AM64X Software Developer's Guide
    Release_Specific
    index_Linux
    index_RTOS
-   /system/Demo_User_Guides/Demo_User_Guides
+   index_Applications
 
 |
 
