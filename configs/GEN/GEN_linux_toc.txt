@@ -23,6 +23,7 @@ linux/Release_Specific_Migration_Guide
 linux/Release_Specific_Supported_Platforms_and_Versions
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
+linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components_Boot_Monitor
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers

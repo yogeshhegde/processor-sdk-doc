@@ -6,33 +6,6 @@ U-Boot
 .. include:: /linux/Foundational_Components/U-Boot/Linux_Core_U-Boot_Users_Guide.rst.inc
 
 
-U-Boot Release Notes
-======================
-
-Build Information
--------------------
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    Please refer to :ref:`release-specific-build-information-u-boot` for details.
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
-
-    Please refer to Yocto build for details.
-
-
-Known Issues
---------------
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    Please refer to :ref:`release-specific-u-boot-known-issues` for details.
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
-
-    Please refer to :ref:`release-specific-known-issues` for details.
-
-
 .. include:: /linux/Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
 
 

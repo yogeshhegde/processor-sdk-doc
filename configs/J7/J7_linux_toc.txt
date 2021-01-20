@@ -18,6 +18,7 @@ devices/J7/linux/Release_Specific_Supported_Platforms_and_Versions
 devices/J7/linux/Release_Specific_QSG
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
+linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC

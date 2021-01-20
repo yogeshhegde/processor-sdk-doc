@@ -16,6 +16,7 @@ system/Demo_User_Guides/Servo_Drive_Demo_User_Guide
 system/Demo_User_Guides/Benchmark_Demo_User_Guide
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
+linux/Foundational_Components/U-Boot/Release-Notes
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
