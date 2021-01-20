@@ -52,6 +52,9 @@ Rules.make file.
    the u-boot sources for the correct device.
 -  **TI\_SDK\_PATH** - This points to the top-level of the SDK. This is
    the same directory where the Rules.make file itself is located.
+-  **DESTDIR** - This points to the base installation directory that
+   applications/drivers should be installed to. This is usually the root
+   of a target file system but can be changed to point anywhere.
 -  **LINUX\_DEVKIT\_PATH** - This points to the linux-devkit directory.
    This directory is the base directory containing the cross-compiler
    and cross-libraries as well as the
