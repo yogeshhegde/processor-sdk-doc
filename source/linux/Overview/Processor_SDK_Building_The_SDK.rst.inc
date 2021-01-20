@@ -142,7 +142,7 @@ Build Steps
     ::
 
         cd yocto-build
-        ./oe-layertool-setup.sh -f configs/psdkla/psdkla-<version>.txt
+        ./oe-layertool-setup.sh -f configs/processor-sdk-linux/processor-sdk-linux-<version>.txt
         cd build
         echo "INHERIT += \"own-mirrors\"" >> conf/local.conf
         echo "SOURCE_MIRROR_URL = \"http://software-dl.ti.com/processor-sdk-mirror/sources/\"" >> conf/local.conf
