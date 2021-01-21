@@ -8,4 +8,5 @@ U-Boot User's Guide
     UG-General-Info
     UG-DFU
     UG-Network
+    UG-NAND
 
