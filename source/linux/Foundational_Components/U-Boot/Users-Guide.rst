@@ -16,4 +16,5 @@ U-Boot User's Guide
     UG-UART
     UG-SATA
     UG-UFS
+    UG-DDR3
 
