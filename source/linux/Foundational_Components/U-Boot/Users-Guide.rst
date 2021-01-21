@@ -10,4 +10,5 @@ U-Boot User's Guide
     UG-Network
     UG-NAND
     UG-Memory
+    UG-SPI
 
