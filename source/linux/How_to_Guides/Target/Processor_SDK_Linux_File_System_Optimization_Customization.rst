@@ -31,11 +31,11 @@ SDK File System Optimization/Customization
 
     The Processor SDK Linux ships with two default file systems. They are:
 
-    #. base-rootfs-<machine>.tar.gz - This file system is the simple file
+    #. tisdk-base-image-<machine>.tar.gz - This file system is the simple file
        system that forms the base of the SDK file system. It has some basic
        utilities installed but is intended to be rather small and light
        weight.
-    #. tisdk-rootfs-<machine>.tar.gz - This file system is created by taking
+    #. tisdk-default-image-<machine>.tar.gz - This file system is created by taking
        the base file system and adding all the additional SDK components
        such as 3D graphics, matrix, profiling tools, etc. It is a larger
        file system but is meant to have most of the tools developers would
@@ -49,7 +49,7 @@ SDK File System Optimization/Customization
 
     The |__SDK_FULL_NAME__| ships with a default file system:
 
-    #. tisdk-rootfs-image-<machine>.tar.gz - This file system is created by taking
+    #. tisdk-default-image-<machine>.tar.gz - This file system is created by taking
        a base file system and adding all the additional SDK components
        such as 3D graphics, matrix, profiling tools, etc. It is somewhat larger than
        a base file system, but is meant to have most of the tools developers would

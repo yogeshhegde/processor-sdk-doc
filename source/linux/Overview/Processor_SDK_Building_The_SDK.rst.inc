@@ -114,12 +114,16 @@ Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
 Build Steps
 -----------
 
+Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the
+layer configuration for a particular release of Processor SDK Linux.
+See `Build Options`_ for a list of additional targets.  The MACHINE can be set to
+|__SDK_BUILD_MACHINE__|.
+
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the
-    layer configuration for a particular release of Processor SDK Linux. The final command below
-    will build the **arago-base-tisdk-image**, which is the minimal Processor SDK filesystem.
-    See `Build Options`_ for a list of additional targets.
+    The final command below will build the **tisdk-base-image**, which is the
+    minimal Processor SDK filesystem.  See `Build Options`_ for a list of
+    additional targets.
 
     ::
 
@@ -130,14 +134,9 @@ Build Steps
         $ . conf/setenv
         $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
         $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
-        $ MACHINE=am57xx-evm bitbake arago-base-tisdk-image
+        $ MACHINE=<machine> bitbake tisdk-base-image
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
-
-    Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the
-    layer configuration for a particular release of Processor SDK Linux. 
-    See `Build Options`_ for a list of additional targets.  The MACHINE can be set to
-    |__SDK_BUILD_MACHINE__|.
 
     ::
 
@@ -186,9 +185,9 @@ The "Build Output" is given relative to the
     +==============================+===============================================================+============================+
     | arago-core-tisdk-bundle      | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
     +------------------------------+---------------------------------------------------------------+----------------------------+
-    | tisdk-rootfs-image           | images/<machine>/tisdk-rootfs-image-<machine>.tar.xz          | Target Filesystem          |
+    | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
     +------------------------------+---------------------------------------------------------------+----------------------------+
-    | arago-base-tisdk-image       | images/<machine>/arago-base-tisdk-image-<machine>.tar.xz      | Minimal Target Filesytem   |
+    | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
     +------------------------------+---------------------------------------------------------------+----------------------------+
     | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
     +------------------------------+---------------------------------------------------------------+----------------------------+

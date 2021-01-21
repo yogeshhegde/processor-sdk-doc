@@ -1130,7 +1130,7 @@ display the NT entries.
 Net-SNMP
 --------
 
-The TI SDK release ships tisdk-rootfs-image-am57xx-evm.tar.xz with
+The TI SDK release ships tisdk-default-image-am57xx-evm.tar.xz with
 Net-SNMP 5.8 binaries pre-installed and snmpd is started as part of
 the user space initialization. TI has developed a Net-SNMP module to
 support IEC-62439-3 related MIB access at the DAN using snmp commands

@@ -286,7 +286,7 @@ run on the flash.
 #. Populate the "base" TI SDK rootfs image for populating the eMMC rootfs into
    the TFTP gome directory
 
-   * Copy **<Processor-SDK>/filesystem/arago-base-tisdk-image-am335x-evm.tar.xz** to
+   * Copy **<Processor-SDK>/filesystem/tisdk-base-image-am335x-evm.tar.xz** to
      root **/tftpboot/** directory
 
 Program the Flash

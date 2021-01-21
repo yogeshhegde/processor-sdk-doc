@@ -47,7 +47,7 @@ secondary UART to provide a login shell to the user.
        :name: keystone3-jailhouse-demo-step0
 
     Please follow the instructions for the `Create SD Card Script <../../Overview/Processor_SDK_Linux_create_SD_card_script.html#sd-card-using-default-images>`__
-    and when prompted to select the root filesystem image, select the default 'tisdk-rootfs-image'
+    and when prompted to select the root filesystem image, select the default 'tisdk-default-image'
     image.
 
 .. rubric:: Step 1: Host Setup
