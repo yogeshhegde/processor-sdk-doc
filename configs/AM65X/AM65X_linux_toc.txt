@@ -34,6 +34,7 @@ linux/Foundational_Components/U-Boot/UG-UART
 linux/Foundational_Components/U-Boot/UG-SATA
 linux/Foundational_Components/U-Boot/UG-UFS
 linux/Foundational_Components/U-Boot/UG-DDR3
+linux/Foundational_Components/U-Boot/UG-HyperBus
 linux/Foundational_Components_Boot_Monitor
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers

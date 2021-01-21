@@ -17,4 +17,5 @@ U-Boot User's Guide
     UG-SATA
     UG-UFS
     UG-DDR3
+    UG-HyperBus
 
