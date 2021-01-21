@@ -9,4 +9,5 @@ U-Boot User's Guide
     UG-DFU
     UG-Network
     UG-NAND
+    UG-Memory
 
