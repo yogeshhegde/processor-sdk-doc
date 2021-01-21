@@ -15,4 +15,5 @@ U-Boot User's Guide
     UG-NOR
     UG-UART
     UG-SATA
+    UG-UFS
 
