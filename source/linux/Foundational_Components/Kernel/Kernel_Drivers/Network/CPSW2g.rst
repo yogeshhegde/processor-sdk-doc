@@ -162,7 +162,7 @@ It also provides some information about supported features.
 .. rubric:: RX checksum offload
    :name: k3-rx-csum-offload
 
-The Driver enables RX checksum offload by default. it can be disabled/enabled by using ``ethtool -K`` command:
+The Driver enables RX checksum offload by default. It can be disabled/enabled by using ``ethtool -K`` command:
 
 ::
 
@@ -553,7 +553,7 @@ The TI switch-config tool can be used for CPSW NUSS register dump parsing.
 +--------------------+---------------------------------------------+
 | MMIO region registers dump (num_regs * 8 Bytes)                  |
 +--------------------+---------------------------------------------+
-| reg_offset (u32)   | resgister offset from the start             |
+| reg_offset (u32)   | register offset from the start              |
 |                    | of MCU NAVSS MMIO space                     |
 +--------------------+---------------------------------------------+
 | reg_value (u32)    | MMIO region dump length, including header   |
@@ -729,7 +729,7 @@ starts a ptp4l-over-L2 master on an EVM using hardware timestamping,
 
        ./ptp4l -E -2 -H -i eth0 -l 7 -m -q -p /dev/ptpN 
 
-On a Linux PC which does not supoort hardware timestamping, the
+On a Linux PC which does not support hardware timestamping, the
 following command starts a ptp4l-over-L2 master using software
 timestamping.
 
@@ -951,7 +951,7 @@ Example, CPTS registers dump::
         0003d044:reg(00000000)
         0003d048:reg(00000000)
 
-Ehnancements for Scheduled Traffic (EST) Offload
+Enhancements for Scheduled Traffic (EST) Offload
 """"""""""""""""""""""""""""""""""""""""""""""""
 IEEE 802.1Qbv/D2.2 Enhancements for Scheduled Traffic (EST), Formerly known as Time Aware Shaper (TAS), is an enhancement to Transmission Selection algorithm defined in 802.1Q standard. It became formally part of 802.1Q-2018 edition of the standard. As per standard, a Bridge or an end station may support enhancements that allow transmission from each queue to be scheduled relative to a known timescale.  In order to achieve this, a transmission gate is associated with each queue; the state of the transmission gate determines whether or not queued frames can be selected for transmission. For a given queue, the transmission gate can be in one of two states:
 
@@ -975,7 +975,7 @@ Schedule (commands) configuration depends on interface speed so driver translate
 An example configuration with 3 schedule entries given below:-
  * Uses 3 Queues (Q0-Q2). Each Q has a Gate associated in h/w. Maximum 8 Queues/Gates supported
  * 2 higher priority Gates open for 125usec (Q1 and Q2) each about 10 packets
- * Q7 is the higest priority Queue and Q0 is the lowest priority
+ * Q7 is the highest priority Queue and Q0 is the lowest priority
  * 1 lower priority (Q0) opens remaining gates for 250 usec
 
 Here are the steps to configure this schedule.
@@ -1057,7 +1057,7 @@ Packet highlighted are the first packet transmitted during Gate open of Q2/TC2 a
 .. rubric:: Guard band
    :name: est-guard-band
 
-CPSW2g EST H/W will transmit the frame during Gate open. If a frame happens to arrive at the h/w queue just before the Gate closes, it gets spilled over to the next schedule window. If this is not desirable, user may add a guard band between schedule window, duration of which should equal to the transmission time of a MTU frame (1518 * 8 = 12144 nsec) + 2336 nsec (TRM describes this as 292 wire clocks = 292 * 8 = 2336).  This ensures that frames don't splill over to the next sched window. For example, for the example schedule described above, to ensure no spill over, guard bands may be introduced as follows:-
+CPSW2g EST H/W will transmit the frame during Gate open. If a frame happens to arrive at the h/w queue just before the Gate closes, it gets spilled over to the next schedule window. If this is not desirable, user may add a guard band between schedule window, duration of which should equal to the transmission time of a MTU frame (1518 * 8 = 12144 nsec) + 2336 nsec (TRM describes this as 292 wire clocks = 292 * 8 = 2336).  This ensures that frames don't spill over to the next sched window. For example, for the example schedule described above, to ensure no spill over, guard bands may be introduced as follows:-
 
 ::
 
@@ -1097,7 +1097,7 @@ In the example schedule described earlier, there are 3 schedule windows describe
     cycle-time 600000 \
     flags 2
 
-In the above example, the last window gets stretched for a total of 350 usec instead of 250 usec resulting in a cycle-time of 600 usec. Similarly if the cycle-time is less than the sum of individual sched-entry, then schedule would get tructated.
+In the above example, the last window gets stretched for a total of 350 usec instead of 250 usec resulting in a cycle-time of 600 usec. Similarly if the cycle-time is less than the sum of individual sched-entry, then schedule would get truncated.
 
 ::
 
@@ -1115,7 +1115,7 @@ In the above example, the last window gets stretched for a total of 350 usec ins
     cycle-time 400000 \
     flags 2
 
-In the above case, last sched-entry will become truncated to 150 usec resulting in a cycle-time of 400 usec.  Also it takes about 16 wireside clock cycles (128 nsec) to fetch the sched-entry from the fetch ram. So that determines the minimum value of sched-entry interval. If it is less than this, packet splills over to the next window.
+In the above case, last sched-entry will become truncated to 150 usec resulting in a cycle-time of 400 usec.  Also it takes about 16 wireside clock cycles (128 nsec) to fetch the sched-entry from the fetch ram. So that determines the minimum value of sched-entry interval. If it is less than this, packet spills over to the next window.
 
 .. rubric:: Admin command
    :name: est-admin-command
@@ -1235,9 +1235,9 @@ Assume 2 AM65x IDKs are connected back to back over MCU Ethernet port (typically
 .. rubric:: IET FPE example 
    :name: iep-fpe-testing
 
-Highest priority Queue is Express queue. i.e if there are 8 queues configured through ethtool -L command, Q7 will be express and Q0-Q6 will be preemptible. Similarly if 4 queues are configured then Q3 will be express queue and Q0-Q2 will be preemptible queues. See below an example on how to verify preemption is happening in the hardware.  Setup requires 2 IDKs (Example AM65x) connected over MCU Ethernet/CPSW2g port. Assume that IET is enabled on both IDKs as in previous sections and either Force mode or MAC Verify mode is enabled. As soon as the Link comes up, the IET FPE gets enabled. The test requires MQPRIO qdisc to be configured at the Talker DUT'e eth0 port and enable classifier to map UDP frames with specific port to be to a given traffic class. Traffic class is used as the index to direct traffic to the specific h/w queue. CPSW2g stats module provide a statistics counter for following that can be used to verify the IET FPE is functional:-
+Highest priority Queue is Express queue. I.e if there are 8 queues configured through ethtool -L command, Q7 will be express and Q0-Q6 will be preemptible. Similarly if 4 queues are configured then Q3 will be express queue and Q0-Q2 will be preemptible queues. See below an example on how to verify preemption is happening in the hardware.  Setup requires 2 IDKs (Example AM65x) connected over MCU Ethernet/CPSW2g port. Assume that IET is enabled on both IDKs as in previous sections and either Force mode or MAC Verify mode is enabled. As soon as the Link comes up, the IET FPE gets enabled. The test requires MQPRIO qdisc to be configured at the Talker DUT's eth0 port and enable classifier to map UDP frames with specific port to be to a given traffic class. Traffic class is used as the index to direct traffic to the specific h/w queue. CPSW2g stats module provide a statistics counter for following that can be used to verify the IET FPE is functional:-
 
-* iet_rx_assembly_ok - Incremenets at the receiver if re-assembly of MAC fragements are successful.
+* iet_rx_assembly_ok - Increments at the receiver if re-assembly of MAC fragments are successful.
 * iet_rx_frag - Incremenets at the receiver if MAC fragments are received due to preemption
 * iet_tx_frag - Increments at the sender side if fragments are created due to frame preemption.
 
@@ -1375,4 +1375,4 @@ So to test, need to have traffic at the preemption queue as well as at the expre
 .. rubric:: Using IET together with EST
    :name: iet-with-est
 
-Express and preemption queues/Gates may be used as part of the EST schedule. If only Preemption queues are in a schedule entry, preceeding an entry with Express queue, the guard band requirement reduces to 2048 nsec (0x100 = 256 * 8) so that packets don't spill over to the next sched-entry. Otherwise, the guard band required is as explained in the EST section.
+Express and preemption queues/Gates may be used as part of the EST schedule. If only Preemption queues are in a schedule entry, preceding an entry with Express queue, the guard band requirement reduces to 2048 nsec (0x100 = 256 * 8) so that packets don't spill over to the next sched-entry. Otherwise, the guard band required is as explained in the EST section.
