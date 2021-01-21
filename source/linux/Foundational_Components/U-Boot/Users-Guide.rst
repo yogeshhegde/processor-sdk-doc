@@ -14,4 +14,5 @@ U-Boot User's Guide
     UG-QSPI
     UG-NOR
     UG-UART
+    UG-SATA
 
