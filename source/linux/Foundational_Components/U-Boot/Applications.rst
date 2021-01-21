@@ -7,3 +7,4 @@ U-Boot Applications
 
     Apps-SPL-Debug
     Apps-Load-in-CCS
+    Apps-Splash-Screen
