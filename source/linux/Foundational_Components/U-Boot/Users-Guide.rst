@@ -18,4 +18,5 @@ U-Boot User's Guide
     UG-UFS
     UG-DDR3
     UG-HyperBus
+    UG-RemoteProc
 
