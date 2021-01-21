@@ -12,4 +12,5 @@ U-Boot User's Guide
     UG-Memory
     UG-SPI
     UG-QSPI
+    UG-NOR
 

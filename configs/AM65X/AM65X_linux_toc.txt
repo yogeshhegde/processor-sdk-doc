@@ -29,6 +29,7 @@ linux/Foundational_Components/U-Boot/UG-NAND
 linux/Foundational_Components/U-Boot/UG-Memory
 linux/Foundational_Components/U-Boot/UG-SPI
 linux/Foundational_Components/U-Boot/UG-QSPI
+linux/Foundational_Components/U-Boot/UG-NOR
 linux/Foundational_Components_Boot_Monitor
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
