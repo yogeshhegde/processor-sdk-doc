@@ -1,10 +1,3 @@
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_U-Boot
-
-*******************************
-U-Boot
-*******************************
-
-
 Troubleshooting
 ================
 
