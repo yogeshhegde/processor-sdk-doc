@@ -11,4 +11,5 @@ U-Boot User's Guide
     UG-NAND
     UG-Memory
     UG-SPI
+    UG-QSPI
 

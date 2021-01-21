@@ -22,6 +22,7 @@ linux/Foundational_Components/U-Boot/UG-General-Info
 linux/Foundational_Components/U-Boot/UG-DFU
 linux/Foundational_Components/U-Boot/UG-Memory
 linux/Foundational_Components/U-Boot/UG-SPI
+linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
