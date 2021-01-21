@@ -152,9 +152,11 @@ Neo-AI Deep Learning Runtime
 
   `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__ is an open source common runtime
   for deep learning models and decision tree models compiled by TVM, AWS SageMaker Neo,
-  or Treelite. |__SDK_FULL_NAME__| has integrated Neo-AI-DLR. DLR stands for Deep Learning
-  Runtime. With this integration, the models compiled by AWS SageMaker Neo and TVM can run
-  on Jacinto Arm core.
+  or Treelite. Processor SDK has integrated Neo-AI-DLR. DLR stands for Deep Learning
+  Runtime. With this integration user has below option to compile models for Jacinto devices.
+
+      -  `AWS SageMaker neo Services  <https://aws.amazon.com/sagemaker/neo/>`__
+      -  `Offline TVM Compiler <https://github.com/TexasInstruments/tvm.git>`__
 
 
   .. rubric:: Examples
@@ -167,3 +169,16 @@ Neo-AI Deep Learning Runtime
 
     cd /usr/share/dlr/tests/python/integration/
     python3 load_and_run_tvm_model.py
+
+  .. note::
+
+     `The Processor SDK RTOS <http://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-jacinto7/latest/index_FDS.html>`__
+     also implements Heterogeneous Execution of CNN models on A72 and C7x-MMA using the  `TVM <https://tvm.apache.org/>`__
+     runtime and `Neo-AI-DLR <https://github.com/neo-ai/neo-ai-dlr>`__  runtime. This heterogeneous execution enables
+
+       - TVM/Neo-AI-DLR as the top level inference API for user applications
+       - Offloading subgraphs to C7x/MMA for accelerated execution with TIDL
+       - Generating code and running on the ARM A72 core for layers that are not supported by TIDL
+
+     Please refer to the section **Open Source Runtime->TVM/Neo-AI-DLR + TIDL Heterogeneous Execution** in TIDL user guide
+     (SDK components) for detailed instruction on usage.
