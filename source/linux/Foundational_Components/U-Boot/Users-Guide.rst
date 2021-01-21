@@ -6,4 +6,5 @@ U-Boot User's Guide
     :maxdepth: 1
 
     UG-General-Info
+    UG-DFU
 
