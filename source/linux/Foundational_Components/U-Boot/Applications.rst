@@ -6,3 +6,4 @@ U-Boot Applications
     :maxdepth: 1
 
     Apps-SPL-Debug
+    Apps-Load-in-CCS

@@ -3,8 +3,6 @@
 *******************************
 U-Boot
 *******************************
-.. include:: /linux/Foundational_Components/U-Boot/Linux_Core_U-Boot_Users_Guide.rst.inc
-
 
 .. include:: /linux/Foundational_Components/U-Boot/Processor_SDK_Linux_U-Boot_Splash_Screen.rst.inc
 
