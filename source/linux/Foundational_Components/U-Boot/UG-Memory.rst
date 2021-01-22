@@ -222,6 +222,7 @@ used for the first time:
   => mmc bootbus 0 2 0 0
 
 - eMMC layout:
+
 .. code-block:: console
 
 
