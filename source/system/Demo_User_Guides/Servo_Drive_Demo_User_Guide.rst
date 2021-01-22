@@ -79,7 +79,7 @@ The Main Node hardware includes the AM64x EVM and an FSI Adapter Board.
   This is so power is supplied to the adapter board from the FSI bus. See 
   [2], Table 2 for details.
 
-.. _Boot switch settings:
+.. _boot switch settings:
 
 The EVM Switch settings for different boot modes are shown in the table below.
 
@@ -198,8 +198,22 @@ Hardware Connections
 +---------------------------+------------------+----------------------------+------------------+--------------------------------------------+
  
 
+PC Software Setup
+-----------------
+
+Code Composer Studio Setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Setup of Code Composer Studio (CCS) for AM64x is documented here:
+`CCS Setup for AM64x <../../rtos/pdk_am64x/docs/userguide/am64x/ccs_setup_am64x.html#ccs-setup-for-am64x>`__. It is strongly recommended to install the CCS version mentioned in these instructions.
+
+The same version of CCS can be used for development on the F280049 Launchpad. 
+To enable development on C2000 devices, select "C2000 real-time MCUs" 
+in the "Select Components" window during CCS installation.
+
+
 TwinCAT Setup
--------------
+~~~~~~~~~~~~~
 Download and install TwinCAT 3.1 Build 4024.7 or greater from 
 `Beckhoff <https://www.beckhoff.com/en-us/>`__.
 
@@ -237,7 +251,7 @@ sub-folder.
     - The images should be copied to the root folder of an SD card, and the SD 
       card should be placed in uSD card slot on the EVM.
   
-The EVM boot switch settings are described in above `Boot switch settings`_.
+The EVM boot switch settings are described in `boot switch settings`_.
 
 Flash Pre-Built Binaries to Secondary Nodes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -285,6 +299,8 @@ Next create a target configuration for each node. Launch CCS and for each node:
     - In the "Enter the serial number" field, fill in the serial 
       number obtained obtained from (or assigned using) xdsdfu.
 
+.. _F280049 JTAG Load:
+
 After creating the target configurations, the pre-built C2000 binaries can be 
 written to the TMS320F28004x on-chip flash. For each node LaunchPad:
 
@@ -300,6 +316,8 @@ written to the TMS320F28004x on-chip flash. For each node LaunchPad:
 
     - Browse to the pre-built binary for the node, and click "OK". This will
       write the flash with the binary.
+
+.. _Execute Demo:
 
 Execute Demo
 ~~~~~~~~~~~~
@@ -347,9 +365,9 @@ click on the "Activate Configuration" button again.
           then click "Force" and set the target velocity for the axis 
           (e.g. set "Dec" field to 2000).
 
-        - The target velocity for an axis can be changed whether an axis is enabled
-         (see below) or not. To change the target velocity, click on "Force" and
-         set a new target velocity.
+        - The target velocity for an axis can be changed whether an axis is 
+          enabled (see below) or not. To change the target velocity, click on 
+          "Force" and set a new target velocity.
 
 .. Image:: /images/Servo_Drive_Demo_20.png
     
@@ -368,11 +386,11 @@ click on the "Activate Configuration" button again.
 .. Image:: /images/Servo_Drive_Demo_21.png
 
 
-Building Demo Software
-----------------------
+Build & Execute Demo Software
+-----------------------------
 
-Build AM64x Main Node Software
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build & Execute AM64x Main Node Software
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Beckhoff EtherCAT stack must be downloaded separately from the Servo Drive 
 Demo software. Instructions on downloading the EtherCAT stack and generating 
@@ -387,13 +405,52 @@ commands:
 
     - **Windows:** gmake common_libs servo_drive_demo BUILD_LINUX_APPS=0
 
-The resulting executables are described in the following table.
+The build outputs are described in the table below. All build outputs are 
+located in folder apps/servo_drive_demo/out/AM64X (referred to as <OUT> in 
+the table). 
 
-    xxx
++-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+| **Core(s)** | **Build Output**                                                   | **Description**                                            |
++=============+====================================================================+============================================================+
+| M4F_0       | <OUT>/M4F/NO_OS/release/app_no_os_m4f_0_servo_drive_safety.out     | - M4F demo app executable (see details below).             |
+|             |                                                                    | - Load to M4F_0 in CCS via JTAG.                           |
+|             +--------------------------------------------------------------------+------------------------------------------------------------+
+|             | <OUT>/M4F/NO_OS/debug/app_no_os_m4f_0_servo_drive_safety.out       | - M4F demo app executable (see details below).             |
+|             |                                                                    | - Load to M4F_0 in CCS via JTAG for full symbolic debug.   |
++-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+| R5F_0_0     | <OUT>/R5F/SYSBIOS/release/app_tirtos_mcu1_0_servo_drive_ethcat.out | - R5F EtherCAT SC release-mode executable.                 |
+|             |                                                                    | - Load to R5F_0_0 in CCS via JTAG.                         |
+|             +--------------------------------------------------------------------+------------------------------------------------------------+
+|             | <OUT>/R5F/SYSBIOS/debug/app_tirtos_mcu1_0_servo_drive_ethcat.out   | - R5F EtherCAT SC debug-mode executable.                   |
+|             |                                                                    | - Load to R5F_0_0 in CCS via JTAG for full symbolic debug. |
++-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+| R5F_1_0     | <OUT>/R5F/NO_OS/release/app_no_os_mcu2_0_servo_drive_pscontrol.out | - R5F Position-Speed Loop release-mode executable.         |
+|             |                                                                    | - Load to R5F_1_0 in CCS via JTAG.                         |
+|             +--------------------------------------------------------------------+------------------------------------------------------------+
+|             | <OUT>/R5F/NO_OS/debug/app_no_os_mcu2_0_servo_drive_pscontrol.out   | - R5F Position-Speed Loop debug-mode executable.           |
+|             |                                                                    | - Load to R5F_1_0 in CCS via JTAG for full symbolic debug. |
++-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+| M4F_0,      | <OUT>/OSPIImage                                                    | Application, SYSFW, and SBL release-mode binaries          |
+| R5F_0_0,    |                                                                    | for OSPI SBL boot.                                         |
+| R5F_1_0     |                                                                    |                                                            |
+|             +--------------------------------------------------------------------+------------------------------------------------------------+
+|             | <OUT>/SDCardImage                                                  | Application, SYSFW, and SBL release-mode binaries          |
+|             |                                                                    | for MMCSD SBL boot.                                        |
+|             |                                                                    |                                                            |
++-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+
+To load and run executables (.out files) on the AM64x cores via CCS/JTAG, 
+follow the procedures mentioned in 
+`Load Rtos & Baremetal Application Binaries Thru CCS <../../rtos/pdk_am64x/docs/userguide/am64x/ccs_setup_am64x.html#step-4-load-rtos-baremetal-application-binaries-thru-ccs>`__.
+
+The execute the Servo Drive Demo, follow the steps listed in `Execute Demo`_. 
+However, instead of booting from SD or OPSI, load the executables via JTAG 
+after power cycling the AM64x EVM. When loading the executables, ensure the 
+EVM boot settings are set for 'No Boot' mode (refer to `boot switch settings`_).
 
 
-Build C2000 Secondary Node Software
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build & Execute C2000 Secondary Node Software
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The C2000 code for the demo is provided here (v3.00.00.00 is used in the demo):
 `MotorControl software development kit (SDK) for C2000 MCUs <https://www.ti.com/tool/download/C2000WARE-MOTORCONTROL-SDK/3.00.00.00>`_.
@@ -408,13 +465,21 @@ C2000Ware_MotorControl_SDK_3_00_00_00/solutions/tidm_02006_multi_axis_drive/f280
 - multi_axis_slave_node3_f28004x_cpu.projectspec
 
 Details on code modifications to apply to the installed C2000 
-code are contained in file apps\servo_drive_demo\c2000_slave\am64x\README.
+code are contained in file apps/servo_drive_demo/c2000_slave/am64x/README.
 
 The Flash and RAM binaries for each node can be built as follows:
 
     - Right-click on project in Project Explorer
     
     - Select Build Configurations -> Build All
+
+To load and execute code on the a F280049 core via CCS/JTAG, follow the 
+procedure mentioned in `F280049 JTAG Load`_. Both RAM and Flash images
+can be loaded and executed using this procedure.
+
+
+AM64x Main Node Software for System Debug
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 SW Architecture
