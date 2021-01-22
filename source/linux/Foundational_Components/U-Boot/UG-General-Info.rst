@@ -1,8 +1,8 @@
 General Information
------------------------------------
+-------------------
 
 Getting the U-Boot Source Code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | The easiest way to get access to the U-boot source code is by
   downloading and installing the Processor SDK Linux. Once installed,
@@ -18,455 +18,456 @@ Getting the U-Boot Source Code
 
 |
 
-Build and Boot Flow on 32-bit platforms
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-We strongly recommend the use of separate object directories when
-building. This is done with O= parameter to make. We also recommend that
-you use an output directory name that is identical to the configuration
-target name. That way if you are working with multiple configuration
-targets it is very easy to know which folder contains the u-boot
-binaries that you are interested in.
-
-.. rubric:: Setting the tool chain path
-   :name: setting-the-tool-chain-path
-
-We strongly recommend using the toolchain that came with the Linux Core
-release that corresponds to this U-Boot release. For e.g:
-
-::
-
-    export PATH=$HOME/<TOOLCHAIN_PATH>/bin:$PATH
-
-.. rubric:: Cleaning the Sources
-   :name: cleaning-the-sources
-
-If you did not use a separate object directory:
-
-::
-
-    $ make CROSS_COMPILE=arm-linux-gnueabihf- distclean
-
-If you used 'O=am335x\_evm' as your object directory:
-
-::
-
-    $ rm -rf ./am335x_evm
-
-.. rubric:: Compiling MLO and u-boot
-   :name: compiling-mlo-and-u-boot
-
-Building of both u-boot and SPL is done at the same time. You must
-however first configure the build for the board you are working with.
-Use the following table to determine what defconfig to use to configure
-with:
-
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| Board                      | SD Boot                     | eMMC Boot                | NAND Boot                                  | UART Boot                | Ethernet Boot            | USB Ethernet Boot        | USB Host Boot                           | SPI Boot                                 |
-+============================+=============================+==========================+============================================+==========================+==========================+==========================+=========================================+==========================================+
-| AM335x GP EVM              | am335x\_evm\_defconfig      |                          | am335x\_evm\_defconfig                     | am335x\_evm\_defconfig   | am335x\_evm\_defconfig   | am335x\_evm\_defconfig   |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM335x EVM-SK              | am335x\_evm\_defconfig      |                          |                                            | am335x\_evm\_defconfig   |                          | am335x\_evm\_defconfig   |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM335x ICE                 | am335x\_evm\_defconfig      |                          |                                            | am335x\_evm\_defconfig   |                          |                          |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| BeagleBone Black           | am335x\_evm\_defconfig      | am335x\_evm\_defconfig   |                                            | am335x\_evm\_defconfig   |                          |                          |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| BeagleBone White           | am335x\_evm\_defconfig      |                          |                                            | am335x\_evm\_defconfig   |                          |                          |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM437x GP EVM              | am43xx\_evm\_defconfig      |                          | am43xx\_evm\_defconfig                     | am43xx\_evm\_defconfig   | am43xx\_evm\_defconfig   | am43xx\_evm\_defconfig   | am43xx\_evm\_usbhost\_boot\_defconfig   |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM437x EVM-Sk              | am43xx\_evm\_defconfig      |                          |                                            |                          |                          |                          | am43xx\_evm\_usbhost\_boot\_defconfig   |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM437x IDK                 | am43xx\_evm\_defconfig      |                          |                                            |                          |                          |                          |                                         | am43xx\_evm\_qspiboot\_defconfig (XIP)   |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM437x ePOS EVM            | am43xx\_evm\_defconfig      |                          | am43xx\_evm\_defconfig                     |                          |                          |                          | am43xx\_evm\_usbhost\_boot\_defconfig   |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM572x GP EVM              | am57xx\_evm\_defconfig      |                          |                                            | am57xx\_evm\_defconfig   |                          |                          |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM572x IDK                 | am57xx\_evm\_defconfig      |                          |                                            |                          |                          |                          |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| AM571x IDK                 | am57xx\_evm\_defconfig      |                          |                                            |                          |                          |                          |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| DRA74x/DRA72x/DRA71x EVM   | dra7xx\_evm\_defconfig      | dra7xx\_evm\_defconfig   | dra7xx\_evm\_defconfig (DRA71x EVM only)   |                          |                          |                          |                                         | dra7xx\_evm\_defconfig(QSPI)             |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| K2HK EVM                   |                             |                          | k2hk\_evm\_defconfig                       | k2hk\_evm\_defconfig     | k2hk\_evm\_defconfig     |                          |                                         | k2hk\_evm\_defconfig                     |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| K2L EVM                    |                             |                          | k2l\_evm\_defconfig                        | k2l\_evm\_defconfig      |                          |                          |                                         | k2l\_evm\_defconfig                      |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| K2E EVM                    |                             |                          | k2e\_evm\_defconfig                        | k2e\_evm\_defconfig      |                          |                          |                                         | k2e\_evm\_defconfig                      |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| K2G GP EVM                 | k2g\_evm\_defconfig         |                          |                                            | k2g\_evm\_defconfig      | k2g\_evm\_defconfig      |                          |                                         | k2g\_evm\_defconfig                      |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| K2G ICE                    | k2g\_evm\_defconfig         |                          |                                            |                          |                          |                          |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-| OMAP-L138 LCDK             | omapl138\_lcdk\_defconfig   |                          | omapl138\_lcdk\_defconfig                  |                          |                          |                          |                                         |                                          |
-+----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
-
-Then:
-
-::
-
-    # Use 'am335x_evm' and 'AM335x GP EVM' in this example
-    $ make CROSS_COMPILE=arm-linux-gnueabihf- O=am335x_evm am335x_evm_defconfig
-    $ make CROSS_COMPILE=arm-linux-gnueabihf- O=am335x_evm
-
-Note that not all possible build targets for a given platform are listed
-here as the community has additional build targets that are not
-supported by TI. To find these read the 'boards.cfg' file and look for
-the build target listed above. And please note that the main config file
-will leverage other files under include/configs, as seen by #include
-statements.
-
-.. rubric:: Boot Flow
-   :name: boot-flow
+Build U-Boot
+^^^^^^^^^^^^
+
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+
+    We strongly recommend the use of separate object directories when
+    building. This is done with O= parameter to make. We also recommend that
+    you use an output directory name that is identical to the configuration
+    target name. That way if you are working with multiple configuration
+    targets it is very easy to know which folder contains the u-boot
+    binaries that you are interested in.
+
+    .. rubric:: Setting the tool chain path
+
+    We strongly recommend using the toolchain that came with the Linux Core
+    release that corresponds to this U-Boot release. For e.g:
+
+    ::
+
+        export PATH=$HOME/<TOOLCHAIN_PATH>/bin:$PATH
 
-Booting the Linux kernel on an embedded platform is not as simple as simply
-pointing a program counter to the kernel location and letting the processor
-run. This section will review the four bootloader software stages that must
-be run before the kernel can be booted and run on the device.
-
-Application processors such as the the AM335x are complex pieces of hardware,
-but have limited internal RAM (e.g., 128KB). Because of this limited amount
-of RAM, multiple bootloader stages are needed. These bootloader stages
-systematically unlock the full functionality of the device so that all
-complexities of the device are available to the kernel.
-
-There are four distinct bootloader stages:
-
-.. Image:: /images/U-Boot_Boot_Order_32bit.png
-
-1. ROM Code
+    .. rubric:: Cleaning the Sources
 
-The first stage bootloader is housed in ROM on the device. The ROM code is
-the first block of code that is automatically run on device start-up or
-after power-on reset (POR). The ROM bootloader code is hardcoded into the
-device and cannot be changed by the user. Because of this, it is important
-to get an understanding of what exactly the ROM code is doing.
+    If you did not use a separate object directory:
 
-The ROM code has two main functions:
+    ::
 
-* Configuration of the device and initialization of primary peripherals
-  such as stack setup, configuring the Watchdog Timer (see TRM for details)
-  as well as the PLL and system clocks configuration
-* Readies the device for next bootloader by checking boot sources for next
-  stage of bootloader (SPL) as well as loading the actual next stage
-  bootloader code into memory and starting it
+        $ make CROSS_COMPILE=arm-linux-gnueabihf- distclean
 
-The list of booting devices that the ROM code will search through for the
-second stage bootloader is configured by the voltage levels set on the
-devices SYSBOOT pins on startup. These pins also set other boot parameters
-(i.e. expected crystal frequency, bus width of external memory). For more
-information on the SYSBOOT pins and associated boot parameters see the
-device TRM.
+    If you used 'O=am335x\_evm' as your object directory:
+
+    ::
 
-2. SPL or MLO
+        $ rm -rf ./am335x_evm
 
-The second stage bootloader is known as the SPL (Secondary Program Loader),
-but is sometimes referred to as the MLO (MMC Card Loader). The SPL is the
-first stage of U-Boot, and must be loaded from one of the boot sources into
-internal RAM. The SPL has very limited configuration or user interaction,
-and mainly serves to initialize the external DDR memory and set-up the boot
-process for the next bootloader stage: U-Boot.
+    .. rubric:: Compiling MLO and u-boot
 
-3. U-Boot
+    Building of both u-boot and SPL is done at the same time. You must
+    however first configure the build for the board you are working with.
+    Use the following table to determine what defconfig to use to configure
+    with:
 
-U-Boot allows for powerful command-based control over the kernel boot
-environment via a serial terminal. The user has control over a number of
-parameters such as boot arguments and the kernel boot command. In addition,
-U-Boot environment variables can be configured. These environment variables
-are stored in the **uEnv.txt** file on your storage medium or directly in
-a Flash-based memory if configured such. These environment variables can be
-viewed, modified, and saved using the **env print**, **env set**, and
-**env save** commands, respectively. U-Boot is also a very useful tool to
-program and manipulate a wide range of external memory devices as well as
-a helpful aid during custom board bringup.
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | Board                      | SD Boot                     | eMMC Boot                | NAND Boot                                  | UART Boot                | Ethernet Boot            | USB Ethernet Boot        | USB Host Boot                           | SPI Boot                                 |
+    +============================+=============================+==========================+============================================+==========================+==========================+==========================+=========================================+==========================================+
+    | AM335x GP EVM              | am335x\_evm\_defconfig      |                          | am335x\_evm\_defconfig                     | am335x\_evm\_defconfig   | am335x\_evm\_defconfig   | am335x\_evm\_defconfig   |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM335x EVM-SK              | am335x\_evm\_defconfig      |                          |                                            | am335x\_evm\_defconfig   |                          | am335x\_evm\_defconfig   |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM335x ICE                 | am335x\_evm\_defconfig      |                          |                                            | am335x\_evm\_defconfig   |                          |                          |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | BeagleBone Black           | am335x\_evm\_defconfig      | am335x\_evm\_defconfig   |                                            | am335x\_evm\_defconfig   |                          |                          |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | BeagleBone White           | am335x\_evm\_defconfig      |                          |                                            | am335x\_evm\_defconfig   |                          |                          |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM437x GP EVM              | am43xx\_evm\_defconfig      |                          | am43xx\_evm\_defconfig                     | am43xx\_evm\_defconfig   | am43xx\_evm\_defconfig   | am43xx\_evm\_defconfig   | am43xx\_evm\_usbhost\_boot\_defconfig   |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM437x EVM-Sk              | am43xx\_evm\_defconfig      |                          |                                            |                          |                          |                          | am43xx\_evm\_usbhost\_boot\_defconfig   |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM437x IDK                 | am43xx\_evm\_defconfig      |                          |                                            |                          |                          |                          |                                         | am43xx\_evm\_qspiboot\_defconfig (XIP)   |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM437x ePOS EVM            | am43xx\_evm\_defconfig      |                          | am43xx\_evm\_defconfig                     |                          |                          |                          | am43xx\_evm\_usbhost\_boot\_defconfig   |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM572x GP EVM              | am57xx\_evm\_defconfig      |                          |                                            | am57xx\_evm\_defconfig   |                          |                          |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM572x IDK                 | am57xx\_evm\_defconfig      |                          |                                            |                          |                          |                          |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | AM571x IDK                 | am57xx\_evm\_defconfig      |                          |                                            |                          |                          |                          |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | DRA74x/DRA72x/DRA71x EVM   | dra7xx\_evm\_defconfig      | dra7xx\_evm\_defconfig   | dra7xx\_evm\_defconfig (DRA71x EVM only)   |                          |                          |                          |                                         | dra7xx\_evm\_defconfig(QSPI)             |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | K2HK EVM                   |                             |                          | k2hk\_evm\_defconfig                       | k2hk\_evm\_defconfig     | k2hk\_evm\_defconfig     |                          |                                         | k2hk\_evm\_defconfig                     |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | K2L EVM                    |                             |                          | k2l\_evm\_defconfig                        | k2l\_evm\_defconfig      |                          |                          |                                         | k2l\_evm\_defconfig                      |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | K2E EVM                    |                             |                          | k2e\_evm\_defconfig                        | k2e\_evm\_defconfig      |                          |                          |                                         | k2e\_evm\_defconfig                      |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | K2G GP EVM                 | k2g\_evm\_defconfig         |                          |                                            | k2g\_evm\_defconfig      | k2g\_evm\_defconfig      |                          |                                         | k2g\_evm\_defconfig                      |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | K2G ICE                    | k2g\_evm\_defconfig         |                          |                                            |                          |                          |                          |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
+    | OMAP-L138 LCDK             | omapl138\_lcdk\_defconfig   |                          | omapl138\_lcdk\_defconfig                  |                          |                          |                          |                                         |                                          |
+    +----------------------------+-----------------------------+--------------------------+--------------------------------------------+--------------------------+--------------------------+--------------------------+-----------------------------------------+------------------------------------------+
 
-4. Linux Kernel
+    Then (Use 'am335x_evm' and 'AM335x GP EVM' in this example):
 
-**zImage** is the compressed kernel image wrapped with header info that
-describes the kernel. This header includes the target architecture, the
-operating system, kernel size, entry points, etc. The loading of the kernel
-image is typically performed through the use of scripts stored in the U-Boot
-environment (all starting with the **bootcmd** ENV variable that gets
-executed after the autoboot countdown expires or manually by entering the
-**boot** command at the U-Boot prompt). This also involves passing a board-
-specific device tree blob (DTB) as an argument to U-Boot's **bootz**
-command that will extract and start the actual kernel.
+    ::
 
+        $ make CROSS_COMPILE=arm-linux-gnueabihf- O=am335x_evm am335x_evm_defconfig
+        $ make CROSS_COMPILE=arm-linux-gnueabihf- O=am335x_evm
 
-Build and Boot Flow on 64-bit platforms (based on K3 architecture)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    .. note::
+        Not all possible build targets for a given platform are listed
+        here as the community has additional build targets that are not
+        supported by TI. To find these read the 'boards.cfg' file and look for
+        the build target listed above. And please note that the main config file
+        will leverage other files under include/configs, as seen by #include
+        statements.
 
-Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
-Go `here <Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
-TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
-:ref:`release-specific-build-information-u-boot`.
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-.. rubric:: Setting the tool chain path
-   :name: setting-the-full-tool-chain-path
+    Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
+    Go `here <Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
-We strongly recommend using the toolchain that came with the Linux Core
-release that corresponds to this U-Boot release. For e.g:
+    TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
+    :ref:`release-specific-build-information-u-boot`.
 
-::
+    .. rubric:: Setting the tool chain path
 
-    export PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin:$PATH
-    export PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin:$PATH
+    We strongly recommend using the toolchain that came with the Linux Core
+    release that corresponds to this U-Boot release. For e.g:
 
-.. rubric:: Compiling R5 and ARM64 images
-   :name: compiling-r5-and-arm64-images
+    ::
 
-Use the following table to determine what defconfig to use to configure with:
+        export PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin:$PATH
+        export PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin:$PATH
 
-+----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
-|  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |         Hyper Flash            |           USB DFU              |
-+============================+=================================+================================+================================+================================+================================+
-|    AM65x EVM/IDK           |    am65x\_evm\_r5\_defconfig    |   am65x\_evm\_r5\_defconfig    |   am65x\_evm\_r5_defconfig     |                                |                                |
-|                            |    am65x\_evm\_a53\_defconfig   |   am65x\_evm\_a53\_defconfig   |   am65x\_evm\_a53\_defconfig   |                                |                                |
-+----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
-|    J721E EVM               |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |
-|                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |
-+----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
-|    J7200 EVM               |    j7200\_evm\_r5\_defconfig    |   j7200\_evm\_r5\_defconfig    |                                |                                |                                |
-|                            |    j7200\_evm\_a72\_defconfig   |   j7200\_evm\_a72\_defconfig   |                                |                                |                                |
-+----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+    .. rubric:: Compiling R5 and ARM64 images
 
+    Use the following table to determine what defconfig to use to configure with:
 
+    .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-**Building Bootloader for AM65x EVM/IDK**
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+        |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |         Hyper Flash            |           USB DFU              |
+        +============================+=================================+================================+================================+================================+================================+
+        |    AM65x EVM/IDK           |    am65x\_evm\_r5\_defconfig    |   am65x\_evm\_r5\_defconfig    |   am65x\_evm\_r5_defconfig     |                                |                                |
+        |                            |    am65x\_evm\_a53\_defconfig   |   am65x\_evm\_a53\_defconfig   |   am65x\_evm\_a53\_defconfig   |                                |                                |
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
 
-*R5*
+       *R5*
 
-.. code-block:: console
+       .. code-block:: console
 
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
 
-*A53*
+       *A53*
 
-.. code-block:: console
+       .. code-block:: console
 
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
 
-**Building Bootloader for J721E EVM**
+    .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-*R5*
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
+        |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |         Hyper Flash            |           USB DFU              |
+        +============================+=================================+================================+================================+================================+================================+
+        |    J721E EVM               |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |
+        |                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
 
-.. code-block:: console
+       *R5*
 
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- j721e_evm_r5_defconfig O=<output directory>/r5
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+       .. code-block:: console
 
-*A72*
+          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- j721e_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
 
-.. code-block:: console
+       *A72*
 
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- j721e_evm_a72_defconfig O=<output directory>/a53
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+       .. code-block:: console
 
-**Building bootloader for J7200 EVM**
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- j721e_evm_a72_defconfig O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
 
-*R5*
+    .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-.. code-block:: console
+        +----------------------------+---------------------------------+--------------------------------+
+        |  Board                     |            SD/eMMC Boot         |           UART boot            |
+        +============================+=================================+================================+
+        |    J7200 EVM               |    j7200\_evm\_r5\_defconfig    |   j7200\_evm\_r5\_defconfig    |
+        |                            |    j7200\_evm\_a72\_defconfig   |   j7200\_evm\_a72\_defconfig   |
+        +----------------------------+---------------------------------+--------------------------------+
 
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+       *R5*
 
-*A72*
+       .. code-block:: console
 
-.. code-block:: console
+          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
 
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- j7200_evm_a72_defconfig O=<output directory>/a53
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
-  $ cd <path to K3-image-gen project>
-  $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- SOC=j7200 ROM_COMBINED_IMAGE=1 SBL=<path to tisdk>/board-support/prebuilt-images>/u-boot-spl.bin
+       *A72*
 
-.. rubric:: Dependent Project location
+       .. code-block:: console
 
-- K3-image-gen (For generating tiboot3.bin and sysfw.itb) project is located `here <https://git.ti.com/cgit/k3-image-gen/k3-image-gen>`__
-- Linux Firmware (for device specific ti-dm and ti-sysfw binaries) project is located `here <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__ 
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- j7200_evm_a72_defconfig O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+          $ cd <path to K3-image-gen project>
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- SOC=j7200 ROM_COMBINED_IMAGE=1 SBL=<path to tisdk>/board-support/prebuilt-images>/u-boot-spl.bin
 
-.. rubric:: Target Images
+    .. rubric:: Dependent Project location
 
-Copy the below images to the boot partition of an SD card and boot.
-Instructions to format the SD card can be found `here <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__.
+    - K3-image-gen (For generating tiboot3.bin and sysfw.itb) project is
+      located `here <https://git.ti.com/cgit/k3-image-gen/k3-image-gen>`__
+    - Linux Firmware (for device specific ti-dm and ti-sysfw binaries) project
+      is located `here <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__ 
 
-*AM65x*
+    .. rubric:: Target Images
 
-- tiboot3.bin from <output directory>/r5
-- tispl.bin, u-boot.img from <output directory>/a53
-- sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
+    Copy the below images to the boot partition of an SD card and boot.
+    Instructions to format the SD card can be found `here <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__.
 
-*J721E*
+    .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-- tiboot3.bin from <output directory>/r5
-- tispl.bin, u-boot.img from <output directory>/a72
-- sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
+       - tiboot3.bin from <output directory>/r5
+       - tispl.bin, u-boot.img from <output directory>/a53
+       - sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
 
-*J7200*
+    .. ifconfig:: CONFIG_part_variant in ('J721E')
 
-- tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
-- tispl.bin, u-boot.img from <output directory>/a72
+       - tiboot3.bin from <output directory>/r5
+       - tispl.bin, u-boot.img from <output directory>/a72
+       - sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
 
+    .. ifconfig:: CONFIG_part_variant in ('J7200')
 
-.. rubric:: Image Formats
+       - tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
+       - tispl.bin, u-boot.img from <output directory>/a72
 
-- tiboot3.bin
+    .. rubric:: Image Formats
 
-.. code-block:: console
+    - tiboot3.bin
 
-    +-----------------------+
-    |        X.509          |
-    |      Certificate      |
-    | +-------------------+ |
-    | |                   | |
-    | |        R5         | |
-    | |   u-boot-spl.bin  | |
-    | |                   | |
-    | +-------------------+ |
-    | |                   | |
-    | |     FIT header    | |
-    | | +---------------+ | |
-    | | |               | | |
-    | | |   DTB 1...N   | | |
-    | | +---------------+ | |
-    | +-------------------+ |
-    +-----------------------+
-
-
-- tispl.bin
-
-.. code-block:: console
-
-    +-----------------------+
-    |                       |
-    |       FIT HEADER      |
-    | +-------------------+ |
-    | |                   | |
-    | |      ARM64 ATF    | |
-    | +-------------------+ |
-    | |                   | |
-    | |     ARM64 OPTEE   | |
-    | +-------------------+ |
-    | |                   | |
-    | |      ARM64 SPL    | |
-    | +-------------------+ |
-    | |                   | |
-    | |   SPL DTB 1...N   | |
-    | +-------------------+ |
-    +-----------------------+
-
-- sysfw.itb
-
-.. code-block:: console
-
-    +-----------------------+
-    |                       |
-    |       FIT HEADER      |
-    | +-------------------+ |
-    | |                   | |
-    | |     sysfw.bin     | |
-    | +-------------------+ |
-    | |                   | |
-    | |    board config   | |
-    | +-------------------+ |
-    | |                   | |
-    | |     PM config     | |
-    | +-------------------+ |
-    | |                   | |
-    | |     RM config     | |
-    | +-------------------+ |
-    | |                   | |
-    | |    Secure config  | |
-    | +-------------------+ |
-    +-----------------------+
-
-.. rubric:: Boot Flow
-   :name: k3-boot-flow
-
-On K3 architecture based devices, ROM supports boot only via MCU(R5). This means that
-bootloader has to run on R5 core. In order to meet this constraint, keeping
-safety in picture and to have faster boot time, the software boot architecture
-is designed as below:
-
-.. code-block:: console
-
-    +------------------------------------------------------------------------+
-    |        DMSC            |         R5            |        ARM64          |
-    +------------------------------------------------------------------------+
-    |    +--------+          |                       |                       |
-    |    |  Reset |          |                       |                       |
-    |    +--------+          |                       |                       |
-    |         :              |                       |                       |
-    |    +--------+          |   +-----------+       |                       |
-    |    | *ROM*  |----------|-->| Reset rls |       |                       |
-    |    +--------+          |   +-----------+       |                       |
-    |    |        |          |         :             |                       |
-    |    |  ROM   |          |         :             |                       |
-    |    |services|          |         :             |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |          |   |  *R5 ROM*   |     |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |<---------|---|Load and auth|     |                       |
-    |    |        |          |   | tiboot3.bin |     |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |          |         :             |                       |
-    |    |        |          |         :             |                       |
-    |    |        |          |         :             |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |          |   |  *R5 SPL*   |     |                       |
-    |    |        |          |   +-------------+     |                       |
-    |    |        |          |   |    Load     |     |                       |
-    |    |        |          |   |  sysfw.itb  |     |                       |
-    |    | Start  |          |   +-------------+     |                       |
-    |    | System |<---------|---|    Start    |     |                       |
-    |    |Firmware|          |   |    SYSFW    |     |                       |
-    |    +--------+          |   +-------------+     |                       |
-    |        :               |   |             |     |                       |
-    |    +---------+         |   |   Load      |     |                       |
-    |    | *SYSFW* |         |   |   system    |     |                       |
-    |    +---------+         |   | Config data |     |                       |
-    |    |         |<--------|---|             |     |                       |
-    |    |         |         |   +-------------+     |                       |
-    |    |         |         |   |             |     |                       |
-    |    |         |         |   |    DDR      |     |                       |
-    |    |         |         |   |   config    |     |                       |
-    |    |         |         |   +-------------+     |                       |
-    |    |         |         |   |             |     |                       |
-    |    |         |<--------|---| Start A53   |     |                       |
-    |    |         |         |   |  and Reset  |     |                       |
-    |    |         |         |   +-------------+     |                       |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |---------|-----------------------|---->| Reset rls |     |
-    |    |         |         |                       |     +-----------+     |
-    |    |  DMSC   |         |                       |          :            |
-    |    |Services |         |                       |     +-----------+     |
-    |    |         |<--------|-----------------------|---->|*ATF/OPTEE*|     |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |         |                       |          :            |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |<--------|-----------------------|---->| *A53 SPL* |     |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |         |                       |     |   Load    |     |
-    |    |         |         |                       |     | u-boot.img|     |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |         |                       |          :            |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |<--------|-----------------------|---->| *U-Boot*  |     |
-    |    |         |         |                       |     +-----------+     |
-    |    |         |         |                       |     |  prompt   |     |
-    |    |         |         |                       |     +-----------+     |
-    |    +---------+         |                       |                       |
-    |                        |                       |                       |
-    +------------------------------------------------------------------------+
-
-Here DMSC acts as master and provides all the critical services. R5/ARM64
-requests DMSC to get these services done as shown in the above diagram.
+    .. code-block:: console
 
+        +-----------------------+
+        |        X.509          |
+        |      Certificate      |
+        | +-------------------+ |
+        | |                   | |
+        | |        R5         | |
+        | |   u-boot-spl.bin  | |
+        | |                   | |
+        | +-------------------+ |
+        | |                   | |
+        | |     FIT header    | |
+        | | +---------------+ | |
+        | | |               | | |
+        | | |   DTB 1...N   | | |
+        | | +---------------+ | |
+        | +-------------------+ |
+        +-----------------------+
+
+    - tispl.bin
+
+    .. code-block:: console
+
+        +-----------------------+
+        |                       |
+        |       FIT HEADER      |
+        | +-------------------+ |
+        | |                   | |
+        | |      ARM64 ATF    | |
+        | +-------------------+ |
+        | |                   | |
+        | |     ARM64 OPTEE   | |
+        | +-------------------+ |
+        | |                   | |
+        | |      ARM64 SPL    | |
+        | +-------------------+ |
+        | |                   | |
+        | |   SPL DTB 1...N   | |
+        | +-------------------+ |
+        +-----------------------+
+
+    - sysfw.itb
+
+    .. code-block:: console
+
+        +-----------------------+
+        |                       |
+        |       FIT HEADER      |
+        | +-------------------+ |
+        | |                   | |
+        | |     sysfw.bin     | |
+        | +-------------------+ |
+        | |                   | |
+        | |    board config   | |
+        | +-------------------+ |
+        | |                   | |
+        | |     PM config     | |
+        | +-------------------+ |
+        | |                   | |
+        | |     RM config     | |
+        | +-------------------+ |
+        | |                   | |
+        | |    Secure config  | |
+        | +-------------------+ |
+        +-----------------------+
+
+Boot Flow
+^^^^^^^^^
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
+
+    Booting the Linux kernel on an embedded platform is not as simple as simply
+    pointing a program counter to the kernel location and letting the processor
+    run. This section will review the four bootloader software stages that must
+    be run before the kernel can be booted and run on the device.
+
+    Application processors such as the the AM335x are complex pieces of hardware,
+    but have limited internal RAM (e.g., 128KB). Because of this limited amount
+    of RAM, multiple bootloader stages are needed. These bootloader stages
+    systematically unlock the full functionality of the device so that all
+    complexities of the device are available to the kernel.
+
+    There are four distinct bootloader stages:
+
+    .. Image:: /images/U-Boot_Boot_Order_32bit.png
+
+    1. ROM Code
+
+    The first stage bootloader is housed in ROM on the device. The ROM code is
+    the first block of code that is automatically run on device start-up or
+    after power-on reset (POR). The ROM bootloader code is hardcoded into the
+    device and cannot be changed by the user. Because of this, it is important
+    to get an understanding of what exactly the ROM code is doing.
+
+    The ROM code has two main functions:
+
+    * Configuration of the device and initialization of primary peripherals
+      such as stack setup, configuring the Watchdog Timer (see TRM for details)
+      as well as the PLL and system clocks configuration
+    * Readies the device for next bootloader by checking boot sources for next
+      stage of bootloader (SPL) as well as loading the actual next stage
+      bootloader code into memory and starting it
+
+    The list of booting devices that the ROM code will search through for the
+    second stage bootloader is configured by the voltage levels set on the
+    devices SYSBOOT pins on startup. These pins also set other boot parameters
+    (i.e. expected crystal frequency, bus width of external memory). For more
+    information on the SYSBOOT pins and associated boot parameters see the
+    device TRM.
+
+    2. SPL or MLO
+
+    The second stage bootloader is known as the SPL (Secondary Program Loader),
+    but is sometimes referred to as the MLO (MMC Card Loader). The SPL is the
+    first stage of U-Boot, and must be loaded from one of the boot sources into
+    internal RAM. The SPL has very limited configuration or user interaction,
+    and mainly serves to initialize the external DDR memory and set-up the boot
+    process for the next bootloader stage: U-Boot.
+
+    3. U-Boot
+
+    U-Boot allows for powerful command-based control over the kernel boot
+    environment via a serial terminal. The user has control over a number of
+    parameters such as boot arguments and the kernel boot command. In addition,
+    U-Boot environment variables can be configured. These environment variables
+    are stored in the **uEnv.txt** file on your storage medium or directly in
+    a Flash-based memory if configured such. These environment variables can be
+    viewed, modified, and saved using the **env print**, **env set**, and
+    **env save** commands, respectively. U-Boot is also a very useful tool to
+    program and manipulate a wide range of external memory devices as well as
+    a helpful aid during custom board bringup.
+
+    4. Linux Kernel
+
+    **zImage** is the compressed kernel image wrapped with header info that
+    describes the kernel. This header includes the target architecture, the
+    operating system, kernel size, entry points, etc. The loading of the kernel
+    image is typically performed through the use of scripts stored in the U-Boot
+    environment (all starting with the **bootcmd** ENV variable that gets
+    executed after the autoboot countdown expires or manually by entering the
+    **boot** command at the U-Boot prompt). This also involves passing a board-
+    specific device tree blob (DTB) as an argument to U-Boot's **bootz**
+    command that will extract and start the actual kernel.
+
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+
+    On K3 architecture based devices, ROM supports boot only via MCU(R5). This means that
+    bootloader has to run on R5 core. In order to meet this constraint, keeping
+    safety in picture and to have faster boot time, the software boot architecture
+    is designed as below:
+
+    .. code-block:: console
+
+        +------------------------------------------------------------------------+
+        |        DMSC            |         R5            |        ARM64          |
+        +------------------------------------------------------------------------+
+        |    +--------+          |                       |                       |
+        |    |  Reset |          |                       |                       |
+        |    +--------+          |                       |                       |
+        |         :              |                       |                       |
+        |    +--------+          |   +-----------+       |                       |
+        |    | *ROM*  |----------|-->| Reset rls |       |                       |
+        |    +--------+          |   +-----------+       |                       |
+        |    |        |          |         :             |                       |
+        |    |  ROM   |          |         :             |                       |
+        |    |services|          |         :             |                       |
+        |    |        |          |   +-------------+     |                       |
+        |    |        |          |   |  *R5 ROM*   |     |                       |
+        |    |        |          |   +-------------+     |                       |
+        |    |        |<---------|---|Load and auth|     |                       |
+        |    |        |          |   | tiboot3.bin |     |                       |
+        |    |        |          |   +-------------+     |                       |
+        |    |        |          |         :             |                       |
+        |    |        |          |         :             |                       |
+        |    |        |          |         :             |                       |
+        |    |        |          |   +-------------+     |                       |
+        |    |        |          |   |  *R5 SPL*   |     |                       |
+        |    |        |          |   +-------------+     |                       |
+        |    |        |          |   |    Load     |     |                       |
+        |    |        |          |   |  sysfw.itb  |     |                       |
+        |    | Start  |          |   +-------------+     |                       |
+        |    | System |<---------|---|    Start    |     |                       |
+        |    |Firmware|          |   |    SYSFW    |     |                       |
+        |    +--------+          |   +-------------+     |                       |
+        |        :               |   |             |     |                       |
+        |    +---------+         |   |   Load      |     |                       |
+        |    | *SYSFW* |         |   |   system    |     |                       |
+        |    +---------+         |   | Config data |     |                       |
+        |    |         |<--------|---|             |     |                       |
+        |    |         |         |   +-------------+     |                       |
+        |    |         |         |   |             |     |                       |
+        |    |         |         |   |    DDR      |     |                       |
+        |    |         |         |   |   config    |     |                       |
+        |    |         |         |   +-------------+     |                       |
+        |    |         |         |   |             |     |                       |
+        |    |         |<--------|---| Start A53   |     |                       |
+        |    |         |         |   |  and Reset  |     |                       |
+        |    |         |         |   +-------------+     |                       |
+        |    |         |         |                       |     +-----------+     |
+        |    |         |---------|-----------------------|---->| Reset rls |     |
+        |    |         |         |                       |     +-----------+     |
+        |    |  DMSC   |         |                       |          :            |
+        |    |Services |         |                       |     +-----------+     |
+        |    |         |<--------|-----------------------|---->|*ATF/OPTEE*|     |
+        |    |         |         |                       |     +-----------+     |
+        |    |         |         |                       |          :            |
+        |    |         |         |                       |     +-----------+     |
+        |    |         |<--------|-----------------------|---->| *A53 SPL* |     |
+        |    |         |         |                       |     +-----------+     |
+        |    |         |         |                       |     |   Load    |     |
+        |    |         |         |                       |     | u-boot.img|     |
+        |    |         |         |                       |     +-----------+     |
+        |    |         |         |                       |          :            |
+        |    |         |         |                       |     +-----------+     |
+        |    |         |<--------|-----------------------|---->| *U-Boot*  |     |
+        |    |         |         |                       |     +-----------+     |
+        |    |         |         |                       |     |  prompt   |     |
+        |    |         |         |                       |     +-----------+     |
+        |    +---------+         |                       |                       |
+        |                        |                       |                       |
+        +------------------------------------------------------------------------+
+
+    Here DMSC acts as master and provides all the critical services. R5/ARM64
+    requests DMSC to get these services done as shown in the above diagram.
 
 U-Boot Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
