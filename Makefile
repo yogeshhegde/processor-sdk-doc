@@ -91,6 +91,7 @@ clean:
 	rm -f ${CONFDIR}/replacevars.rst.inc
 
 config:
+	mkdir -pv build
 	cat python-scripts/conf.py ${OS_CONF} ${TAGFILE} ${FAMILYSETUPFILE} > build/conf.py
 	sed -i 's/SDKVERSION/${VERSION}/g' build/conf.py
 	cp sphinx_rtd_theme_ti/patch/layout.html sphinx_rtd_theme_ti/_themes/sphinx_rtd_theme_ti/layout.html
