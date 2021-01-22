@@ -1,5 +1,5 @@
-Troubleshooting
-================
+U-Boot Debug Tips
+=================
 
 1. After U-boot upgrade, Kernel stops booting
 

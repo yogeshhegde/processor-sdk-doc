@@ -1,5 +1,5 @@
-Uboot SPL Debugging Tips
------------------------------
+Debugging SPL in CCS
+--------------------
 
 The following section demonstrates how to connect a board to CCS and load the SPL symbols for debugging. For the experiment below, users are expected to boot their board from a SD card.
 

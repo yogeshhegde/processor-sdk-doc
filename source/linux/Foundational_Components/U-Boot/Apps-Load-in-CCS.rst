@@ -1,5 +1,5 @@
-Loading Uboot through Code Composer Studio (CCS)
----------------------------------------------------
+Loading Uboot through CCS
+-------------------------
 
 The below lab is going to walk you through the process of using CCS to load SPL/U-Boot images on the `AM437x EVM <http://www.ti.com/tool/TMDSEVM437X>`__. The same process applies to other boards as well.
 
