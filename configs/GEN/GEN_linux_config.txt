@@ -16,6 +16,7 @@ Replacement Variables
 '__PART_FAMILY_NAME__'           : 'Sitara'
 '__PART_FAMILY_DEVICE_NAMES__'   : 'Sitara devices'
 '__PRODUCT_LINE_NAME__'          : 'Sitara'
+'__SDK_BUILD_MACHINE__'          : 'am57xx-evm'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux'
 '__SDK_SHORT_NAME__'             : 'PLSDK'
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-[platform]-<version>-Linux-x86-Install.bin'

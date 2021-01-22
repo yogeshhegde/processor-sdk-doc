@@ -50,7 +50,7 @@ Preparing the SD Card
 
   ::
 
-   sudo cp <PROCESSOR-SDK>/filesystem/tisdk-rootfs-image-am335x-evm.tar.xz
+   sudo cp <PROCESSOR-SDK>/filesystem/tisdk-default-image-am335x-evm.tar.xz
    <PATH-TO-SD-CARD>/rootfs/home/root/
 
 * Verify rootfs tarball has been copied to SD card:

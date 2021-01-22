@@ -169,7 +169,7 @@ OCMC RAM. This guide will include how to convert the generic format for
 U-boot.
 
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK') 
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
     .. rubric:: Processor SDK RTOS
        :name: processor-sdk-rtos
