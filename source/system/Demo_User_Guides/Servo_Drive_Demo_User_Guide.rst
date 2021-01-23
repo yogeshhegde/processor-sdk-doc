@@ -409,35 +409,37 @@ The build outputs are described in the table below. All build outputs are
 located in folder apps/servo_drive_demo/out/AM64X (referred to as <OUT> in 
 the table). 
 
-+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
-| **Core(s)** | **Build Output**                                                   | **Description**                                            |
-+=============+====================================================================+============================================================+
-| M4F_0       | <OUT>/M4F/NO_OS/release/app_no_os_m4f_0_servo_drive_safety.out     | - M4F demo app executable (see details below).             |
-|             |                                                                    | - Load to M4F_0 in CCS via JTAG.                           |
-|             +--------------------------------------------------------------------+------------------------------------------------------------+
-|             | <OUT>/M4F/NO_OS/debug/app_no_os_m4f_0_servo_drive_safety.out       | - M4F demo app executable (see details below).             |
-|             |                                                                    | - Load to M4F_0 in CCS via JTAG for full symbolic debug.   |
-+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
-| R5F_0_0     | <OUT>/R5F/SYSBIOS/release/app_tirtos_mcu1_0_servo_drive_ethcat.out | - R5F EtherCAT SC release-mode executable.                 |
-|             |                                                                    | - Load to R5F_0_0 in CCS via JTAG.                         |
-|             +--------------------------------------------------------------------+------------------------------------------------------------+
-|             | <OUT>/R5F/SYSBIOS/debug/app_tirtos_mcu1_0_servo_drive_ethcat.out   | - R5F EtherCAT SC debug-mode executable.                   |
-|             |                                                                    | - Load to R5F_0_0 in CCS via JTAG for full symbolic debug. |
-+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
-| R5F_1_0     | <OUT>/R5F/NO_OS/release/app_no_os_mcu2_0_servo_drive_pscontrol.out | - R5F Position-Speed Loop release-mode executable.         |
-|             |                                                                    | - Load to R5F_1_0 in CCS via JTAG.                         |
-|             +--------------------------------------------------------------------+------------------------------------------------------------+
-|             | <OUT>/R5F/NO_OS/debug/app_no_os_mcu2_0_servo_drive_pscontrol.out   | - R5F Position-Speed Loop debug-mode executable.           |
-|             |                                                                    | - Load to R5F_1_0 in CCS via JTAG for full symbolic debug. |
-+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
-| M4F_0,      | <OUT>/OSPIImage                                                    | Application, SYSFW, and SBL release-mode binaries          |
-| R5F_0_0,    |                                                                    | for OSPI SBL boot.                                         |
-| R5F_1_0     |                                                                    |                                                            |
-|             +--------------------------------------------------------------------+------------------------------------------------------------+
-|             | <OUT>/SDCardImage                                                  | Application, SYSFW, and SBL release-mode binaries          |
-|             |                                                                    | for MMCSD SBL boot.                                        |
-|             |                                                                    |                                                            |
-+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+.. _Normal Build Images Table:
+
++---------+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+| **No.** | **Core(s)** | **Build Output**                                                   | **Description**                                            |
++=========+=============+====================================================================+============================================================+
+| 1       | M4F_0       | <OUT>/M4F/NO_OS/release/app_no_os_m4f_0_servo_drive_safety.out     | - M4F demo app release executable (see details below).     |
+|         |             |                                                                    | - Load to M4F_0 in CCS via JTAG.                           |
++---------+             +--------------------------------------------------------------------+------------------------------------------------------------+
+| 2       |             | <OUT>/M4F/NO_OS/debug/app_no_os_m4f_0_servo_drive_safety.out       | - M4F demo app debug executable (see details below).       |
+|         |             |                                                                    | - Load to M4F_0 in CCS via JTAG for full symbolic debug.   |
++---------+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+| 3       | R5F_0_0     | <OUT>/R5F/SYSBIOS/release/app_tirtos_mcu1_0_servo_drive_ethcat.out | - R5F EtherCAT SC release executable.                      |
+|         |             |                                                                    | - Load to R5F_0_0 in CCS via JTAG.                         |
++---------+             +--------------------------------------------------------------------+------------------------------------------------------------+
+| 4       |             | <OUT>/R5F/SYSBIOS/debug/app_tirtos_mcu1_0_servo_drive_ethcat.out   | - R5F EtherCAT SC debug executable.                        |
+|         |             |                                                                    | - Load to R5F_0_0 in CCS via JTAG for full symbolic debug. |
++---------+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+| 5       | R5F_1_0     | <OUT>/R5F/NO_OS/release/app_no_os_mcu2_0_servo_drive_pscontrol.out | - R5F Position-Speed Loop release executable.              |
+|         |             |                                                                    | - Load to R5F_1_0 in CCS via JTAG.                         |
++---------+             +--------------------------------------------------------------------+------------------------------------------------------------+
+| 6       |             | <OUT>/R5F/NO_OS/debug/app_no_os_mcu2_0_servo_drive_pscontrol.out   | - R5F Position-Speed Loop debug executable.                |
+|         |             |                                                                    | - Load to R5F_1_0 in CCS via JTAG for full symbolic debug. |
++---------+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
+| 7       | M4F_0,      | <OUT>/OSPIImage                                                    | Application, SYSFW, and SBL release binaries               |
+|         | R5F_0_0,    |                                                                    | for OSPI SBL boot.                                         |
+|         | R5F_1_0     |                                                                    |                                                            |
++---------+             +--------------------------------------------------------------------+------------------------------------------------------------+
+| 8       |             | <OUT>/SDCardImage                                                  | Application, SYSFW, and SBL release binaries               |
+|         |             |                                                                    | for MMCSD SBL boot.                                        |
+|         |             |                                                                    |                                                            |
++---------+-------------+--------------------------------------------------------------------+------------------------------------------------------------+
 
 To load and run executables (.out files) on the AM64x cores via CCS/JTAG, 
 follow the procedures mentioned in 
@@ -478,8 +480,78 @@ procedure mentioned in `F280049 JTAG Load`_. Both RAM and Flash images
 can be loaded and executed using this procedure.
 
 
-AM64x Main Node Software for System Debug
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+AM64x Main Node Software for System Development/Debug
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Several R5F programs are provided for system debug, or for system development 
+in the case not all Servo Drive Demo hardware is available (e.g. the Seconary Node
+hardware is unavailable). These programs can be built alongside the normal Main Node
+software by adding BUILD_DEBUG_TEST_TARGETS=1 to the build commands as below:
+
+    - **Linux:** make common_libs servo_drive_demo BUILD_LINUX_APPS=0 BUILD_DEBUG_TEST_TARGETS=1
+
+    - **Windows:** gmake common_libs servo_drive_demo BUILD_LINUX_APPS=0 BUILD_DEBUG_TEST_TARGETS=1
+
+The table below provides a brief description of these programs and their 
+intended use for system develpment and debug. All build outputs are 
+located in folder apps/servo_drive_demo/out/AM64X (referred to as <OUT> in 
+the table). 
+
+.. _Debug Build Images Table:
+
++---------+----------+--------------------------------------------------------------------+------------------------------------------------------------+
+| **No.** | **Core** | **Build Output**                                                   | **Description**                                            |
++=========+==========+====================================================================+============================================================+
+| 1       | R5F_0_0  | <OUT>/R5F/SYSBIOS/release/app_tirtos_mcu1_0_ethercat_emulation.out | - R5F EtherCAT SC emulation release executable.            |
+|         |          |                                                                    | - Allows control of Position-Speed Loop executable         |
+|         |          |                                                                    |   from R5F_0_0 without EtherCAT SC & TwinCAT.              |
+|         |          |                                                                    | - Use with `Normal Build Images Table`_, No. 5 or 6.       |
+|         |          |                                                                    | - Load to R5F_0_0 in CCS via JTAG.                         |
++---------+          +--------------------------------------------------------------------+------------------------------------------------------------+
+| 2       |          | <OUT>/R5F/SYSBIOS/debug/app_tirtos_mcu1_0_ethercat_emulation.out   | - R5F EtherCAT SC emulation debug executable.              |
+|         |          |                                                                    | - Allows control of Position-Speed Loop executable         |
+|         |          |                                                                    |   from R5F_0_0 without EtherCAT SC & TwinCAT.              |
+|         |          |                                                                    | - Use with `Normal Build Images Table`_, No. 5 or 6.       |
+|         |          |                                                                    | - Load to R5F_0_0 in CCS via JTAG for full symbolic debug. |
++---------+          +--------------------------------------------------------------------+------------------------------------------------------------+
+| 3       |          | <OUT>/R5F/SYSBIOS/release/app_tirtos_mcu1_0_mailbox_ipc_test.out   | - R5F IPC Mailbox test release executable.                 |
+|         |          |                                                                    | - Continuously exchanges IPC messages with R5F_0_1.        |
+|         |          |                                                                    | - Use with Build Output No. 7 or 8.                        |
+|         |          |                                                                    | - Load to R5F_0_0 in CCS via JTAG.                         |
++---------+          +--------------------------------------------------------------------+------------------------------------------------------------+
+| 4       |          | <OUT>/R5F/SYSBIOS/debug/app_tirtos_mcu1_0_mailbox_ipc_test.out     | - R5F IPC Mailbox test debug executable.                   |
+|         |          |                                                                    | - Continuously exchanges IPC messages with R5F_0_1.        |
+|         |          |                                                                    | - Use with Build Output No. 7 or 8.                        |
+|         |          |                                                                    | - Load to R5F_0_0 in CCS via JTAG for full symbolic debug. |
++---------+----------+--------------------------------------------------------------------+------------------------------------------------------------+
+| 5       | R5F_1_0  | <OUT>/R5F/NO_OS/release/app_no_os_mcu2_0_pslctrl_emulation.out     | - R5F Position-Speed Loop emulation release executable.    |
+|         |          |                                                                    | - Loops back Rx Mailbox IPC messages (MC 3-axis formatted) |
+|         |          |                                                                    |   to R5F_1_0.                                              |
+|         |          |                                                                    | - Use with `Normal Build Images Table`_, No. 3 or 4 to     |
+|         |          |                                                                    |   test extended EtherCAT loopback.                         |
+|         |          |                                                                    | - Use with Build Output No. 1 or 2 to test MBX IPC         |
+|         |          |                                                                    |   message exchange with EtherCAT SC emulation executable.  |
+|         |          |                                                                    | - Load to R5F_1_0 in CCS via JTAG.                         |
++---------+          +--------------------------------------------------------------------+------------------------------------------------------------+
+| 6       |          | <OUT>/R5F/NO_OS/debug/app_no_os_mcu2_0_pslctrl_emulation.out       | - R5F Position-Speed Loop emulation debug executable.      |
+|         |          |                                                                    | - Loops back Rx Mailbox IPC messages (MC 3-axis formatted) |
+|         |          |                                                                    |   to R5F_1_0.                                              |
+|         |          |                                                                    | - Use with `Normal Build Images Table`_, No. 3 or 4 to     |
+|         |          |                                                                    |   test extended EtherCAT loopback.                         |
+|         |          |                                                                    | - Use with Build Output No. 1 or 2 to test MBX IPC         |
+|         |          |                                                                    |   message exchange with EtherCAT SC emulation executable.  |
+|         |          |                                                                    | - Load to R5F_1_0 in CCS via JTAG for full symbolic debug. |
++---------+          +--------------------------------------------------------------------+------------------------------------------------------------+
+| 7       |          | <OUT>/R5F/NO_OS/release/app_no_os_mcu2_0_mailbox_ipc_test.out      | - R5F IPC Mailbox test release executable.                 |
+|         |          |                                                                    | - Continuously exchanges IPC messages with R5F_0_0.        |
+|         |          |                                                                    | - Use with Build Output No. 3 or 4.                        |
+|         |          |                                                                    | - Load to R5F_1_0 in CCS via JTAG.                         |
++---------+          +--------------------------------------------------------------------+------------------------------------------------------------+
+| 8       |          | <OUT>/R5F/NO_OS/debug/app_no_os_mcu2_0_mailbox_ipc_test.out        | - R5F IPC Mailbox test debug executable.                   |
+|         |          |                                                                    | - Continuously exchanges IPC messages with R5F_0_0.        |
+|         |          |                                                                    | - Use with Build Output No. 3 or 4.                        |
+|         |          |                                                                    | - Load to R5F_1_0 in CCS via JTAG.                         |
++---------+----------+--------------------------------------------------------------------+------------------------------------------------------------+
 
 
 SW Architecture
