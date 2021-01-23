@@ -553,6 +553,23 @@ the table).
 |         |          |                                                                    | - Load to R5F_1_0 in CCS via JTAG.                         |
 +---------+----------+--------------------------------------------------------------------+------------------------------------------------------------+
 
+Additional system development and debug capability is supplied through a
+compile-time option for the R5F Position-Speed Loop program 
+(`Normal Build Images Table`_, No. 5 or 6). Specifically, this program can be 
+built in FSI loopback mode. In this case, the Position-Speed Loop program loops 
+FSI Tx traffic (normally sent to the Secondary Nodes over the FSI daisy chain) 
+to FSI Rx. This is useful if the Secondary Node hardware is unavailable, or 
+there is a desire to simplify Main Node code development by temporarily 
+disconnecting the Secondary Node hardware.
+
+The R5F Position-Speed Loop program can be built in FSI loopback mode by adding 
+FSI_LOOPBACK=1 to the build commands as below. The resulting executable has the 
+same folder and file name as the normal FSI build. 
+
+    - **Linux:** make common_libs servo_drive_demo BUILD_LINUX_APPS=0 FSI_LOOPBACK=1
+
+    - **Windows:** gmake common_libs servo_drive_demo BUILD_LINUX_APPS=0 FSI_LOOPBACK=1
+
 
 SW Architecture
 ---------------
