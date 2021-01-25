@@ -93,6 +93,7 @@ linux/How_to_Guides/Target/How_to_visualize_statistics_data
 linux/How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
 linux/How_to_Guides/FAQ/How_to_Configure_MSMC_memory
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
+linux/How_to_Guides/FAQ/Tda4_Latest_FAQs
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
 linux/How_to_Guides_Hardware_Setup_with_CCS
