@@ -13,7 +13,7 @@ performing a position/speed loop calculation and sending torque and flux
 reference values to a C2000 device over the FSI interface.
 
 .. Image:: /images/Servo_Drive_Demo_1.png
-   :width: 800px
+   :width: 1000px
 
 Hardware Prerequisites
 ----------------------
@@ -609,12 +609,12 @@ the available A53 and M4F cores located in the AM64x device:
 The Software Architecture diagram is shown below:
 
 .. Image:: /images/Servo_Drive_Demo_2.png
-   :width: 800px
+   :width: 1000px
 
 The software stack up in the demo is shown below:
 
 .. Image:: /images/Servo_Drive_Demo_3.png
-   :width: 800px
+   :width: 1000px
 
 Building Blocks
 ---------------
@@ -623,7 +623,7 @@ Memory Usage
 ~~~~~~~~~~~~
 
 .. Image:: /images/Servo_Drive_Demo_4.png
-   :width: 800px
+   :width: 1000px
 
 On-chip SRAM bank partitioning
 
@@ -673,7 +673,7 @@ MCU Channel
 ~~~~~~~~~~~
 
 .. Image:: /images/Servo_Drive_Demo_6.png
-   :width: 800px
+   :width: 1000px
 
 The M4 Application demo is broken into 3 main functions listed below:
 
@@ -828,7 +828,7 @@ processing and FSI transmissions in the demo. This process is shown
 below.
 
 .. Image:: /images/Servo_Drive_Demo_9.png
-   :width: 900px
+   :width: 1000px
 
 Real-Time Path Timing Diagram
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -865,7 +865,7 @@ of:
     Compare Event Router to pre-trigger the real-time R5F
 
 .. Image:: /images/Servo_Drive_Demo_10.png
-   :width: 900px
+   :width: 1000px
 
 Directory Contents
 -------------------
