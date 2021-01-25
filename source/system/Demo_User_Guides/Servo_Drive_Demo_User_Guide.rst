@@ -816,7 +816,9 @@ A53 RT Linux <-> R5F RTOS IPC
    -  A low-latency IPC between A53 and R5F needs to be developed
       (planned for a later demonstration)
 
-Demo Syncronization Technique
+.. _Demo Synchronization Technique:
+
+Demo Synchronization Technique
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The EtherCAT slave stack using the CMP1 event of the ICSSG1 IEP
@@ -830,39 +832,68 @@ below.
 .. Image:: /images/Servo_Drive_Demo_9.png
    :width: 1000px
 
-Real-Time Path Timing Diagram
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Real-Time Path Data Flow
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-The timing diagram of the Servo Drive Demo is shown below and is made up
-of:
+The data flow diagram of the Servo Drive Demo is shown below and is made up
+of the following:
 
-1.  Position/Speed reference passed to AM64x from Motion Control PLC
-    (also the EtherCAT master)
+-  ICSSG1 performing the EtherCAT slave controller function which creates three
+   tasks for the EtherCAT R5F: SYNC0 task, SYNC1 task and the PDI task
 
-2.  R5F running the EtherCAT slave stack will pass the position/speed
-    reference to the real-time control R5F using low-latency Mailbox CSL
-    IPC
+-  The PDI task occurs periodically as data arrives from the EtherCAT master.
+   This data arrival generates an interrupt on the EtherCAT R5F which runs the
+   CiA402 application state machine
 
-3.  Real-time control R5F will use the reference value to run its
-    control loop to create a torque reference value
+   -  During operational runtime (OP state) the CiA402 application receives the
+      latest 'Target Position' and 'Target Velocity' values from the EtherCAT
+      master as well as transmits the latest 'Actual Position' and 'Actual
+      Velocity' back to the EtherCAT master
 
-4.  Torque reference value passed to C2000 over FSI
+   -  In addition to communicating with the EtherCAT master, the CiA402
+      application also uses the CSL Mailbox API to transfer the latest target
+      values to the Motor Control R5F using its local TCM as a shared memory
 
-5.  C2000 will run its current loop and actuate the motor
+-  An interrupt occurs on the Motor Control R5F when new data is available from
+   the EtherCAT R5F core
 
-6.  Actual speed/position values will be passed from C2000 back to the
-    real-time R5F over FSI
+   -  The newly received position and velocity targets are stored into local TCM
+      memory to be used in the next position/speed loop algorithm cycle
 
-7.  Speed/position values are passed from the real-time R5F to the
-    EtherCAT slave stack R5F
+-  A TimeSync trigger occurs every 125us on the Motor Control R5F that is
+   synchronized to the EtherCAT SYNC0 pulse
 
-8.  EtherCAT slave stack passes the speed/position back to the Motion
-    Control PLC master (*not shown in diagram*)
+   -  This trigger uses the mechanism described in the `Demo Synchronization
+      Technique`_
 
-9.  EtherCAT master provides SYNC0 pulse every 125us
+   -  The SYNC0 pulse occurs once every millisecond and the Motor Control R5F
+      TimeSync trigger is a synchronized multiple of that event (8x in this
+      case)
 
-10. Demo Time Sync (previous slide) creates a pre-trigger using CMP3 and
-    Compare Event Router to pre-trigger the real-time R5F
+-  The TimeSync trigger creates an interrupt that triggers the Position/Speed
+   loop algorithm to run using the latest Position/Speed targets received from
+   the EtherCAT master as well as the latest feedback data received from the
+   C2000 devices
+
+   -  At the end of the Position/Speed loop algorithm, new target Flux and
+      Torque values are created
+
+   -  These newly created Flux and Torque reference values are then sent to the
+      C2000 devices through an FSI TX peripheral
+
+-  Periodically the C2000 devices pass new feedback information back to the
+   Motor Control R5F. The Receive event creates an interrupt on the R5F
+
+   -  The feedback data is stored locally in the R5F in order to be used in the
+      next iteration of the Position/Speed loops
+
+   -  The feedback data, mainly Actual Position and Actual Speed, is also sent
+      to the EtherCAT R5F using the CSL Mailbox APIs
+
+-  This Mailbox receive interrupt on the EtherCAT R5F completes the full
+   feedback loop as the Actual Position and Actual Speed are stored locally to
+   be ready for the next PDI event to have the values sent back to the EtherCAT
+   Master
 
 .. Image:: /images/Servo_Drive_Demo_10.png
    :width: 1000px
