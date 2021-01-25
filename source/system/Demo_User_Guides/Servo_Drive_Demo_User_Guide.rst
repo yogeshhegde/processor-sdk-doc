@@ -580,7 +580,7 @@ that is made up of:
 -  ICSSG1 - EtherCAT Slave Controller firmware
 
 -  R5F0_0 - EtherCAT Slave Stack application implementing CiA402 using
-   TI RTOS
+   RTOS
 
 -  Mailbox IPC - Real-time, low-latency Interrupt based IPC between the
    two R5F cores
@@ -596,15 +596,12 @@ This real-time path demonstrates the components needed to make up a
 bare-bones Servo Drive from receiving data from an EtherCAT master to
 sending the data to the device running the current loop to spin the
 motor. In addition to the real-time path the demo also aims to showcase
-the available A53 and M4F cores located in the AM64x device:
-
--  A53 cores - Running RT Linux to host an HTTP web server for a GUI
-   composer visualization application
+the available M4F cores located in the AM64x device:
 
 -  M4F core - Runs in an isolated domain separate from the main domain
-   cores (A53s and R5s). It monitors the device for ECC errors through
-   the ESM (Error Signaling Module) and responds to errors by resetting
-   the main domain. The M4F stays alive due to isolation from reset.
+   cores (A53s and R5s). It monitors a user switch on the AM64x EVM and
+   responds to the button press by resetting the main domain. The M4F
+   stays alive due to isolation from reset.
 
 The Software Architecture diagram is shown below:
 
@@ -629,7 +626,7 @@ On-chip SRAM bank partitioning
 
 -  AM64x architecture allows contention-free access to each SRAM bank
 
--  Demo aims to show customers how to use static linker file
+-  Demo aims to be an example showing how to use static linker file
    partitioning to give each core/function its own SRAM space
 
 -  Suggested demo split pictured above
@@ -644,30 +641,8 @@ OSPI boot
 
 DDR4
 
--  Expected to be used exclusively by A53/Linux in the Servo Drive Demo
-
-SBL based Combined Boot Flow
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. Image:: /images/Servo_Drive_Demo_5.png
-
--  Solution being demonstrated by the Motor Drive demo is a ‘Combined
-   Boot Flow’ based on the RTOS Secondary Boot Loader (SBL) running on
-   the R5F boot core that is capable of booting RT Linux on the A53 core
-
--  Interleaved SBL boot process allows fast booting of the real-time
-   control path
-
-   -  Configurable core boot order based on customer needs
-
-   -  Once the R5-1 or M4 program is copied from external memory the
-      core can be started immediately, no need to wait for the rest of
-      the boot process to complete
-
--  Optimized Linux Kernel and filesystem can be loaded for fast Linux
-   boot
-
-   -  Goal is boot to Linux prompt in < 3 seconds
+-  Expected to be used exclusively by A53/Linux. Not currently shown in
+   the Servo Drive Demo
 
 MCU Channel
 ~~~~~~~~~~~
@@ -710,7 +685,7 @@ The M4 Application demo is broken into 3 main functions listed below:
 Inter-Processor Communication (IPC)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The 3 methods of IPC needed in the demo are:
+The 2 methods of IPC needed in the demo are:
 
 -  R5F RTOS <-> R5F Bare metal
 
@@ -720,18 +695,10 @@ The 3 methods of IPC needed in the demo are:
 
 -  R5F RTOS <-> M4F Bare metal
 
-   -  Will act as an example for the TI approved ‘Black Channel’
-      communication path that will be needed in future
+   -  Will act as an example for ‘Black Channel’ communication path
 
    -  SOC architecture and Functional Safety concerns dictate the method
       of passing information
-
--  A53 Linux <-> R5F RTOS
-
-   -  Needed to expose diagnostics and configuration data between the
-      R5F core and the A53
-
-   -  A53 running RT Linux will pass the data to a human consumable GUI
 
 R5F RTOS <-> R5F Bare Metal IPC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -779,42 +746,6 @@ being checked, the ‘black channel’ is extended.
 This path (and its reverse) will be used in future Safety application
 demonstrations such as Fail-safe over EtherCAT (FSoE) and HIPERFACE DSL
 Safety.
-
-A53 RT Linux <-> R5F RTOS IPC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-2 distinct use cases for A53 Linux <-> R5F RTOS IPC
-
--  Passing data to the A53 running Linux to be exposed for human
-   consumption
-
-   -  HTTP/OPC UA server providing data to a PC based client application
-
-   -  Human operator can peek at diagnostic information
-
-   -  Human operator can poke in tuning values
-
-   -  Existing rpmsg IPC could suffice, real-time requirement is relaxed
-      since data is only for human consumption
-
-   -  This is the Motor Drive Demo use case
-
--  Passing data to the A53 running Linux to be used in a real-time
-   control loop
-
-   -  Method needed for integrating the Motion Controller into the same
-      device that is running the Motor Control application
-
-   -  CODESYS Motion Control master runs on RT Linux on an A53
-
-   -  8kHz Motion Control loops (125us) are not uncommon in this use
-      case
-
-   -  This places the communication between the A53 and R5F into a
-      real-time path where rpmsg WILL NOT suffice
-
-   -  A low-latency IPC between A53 and R5F needs to be developed
-      (planned for a later demonstration)
 
 .. _Demo Synchronization Technique:
 
