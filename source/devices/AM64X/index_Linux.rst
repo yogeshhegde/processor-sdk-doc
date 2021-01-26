@@ -12,3 +12,5 @@ Linux
    /linux/Foundational_Components_Tools
    /linux/Foundational_Components_IPCLLD
    /linux/Foundational_Components_Machine_Learning
+   /linux/Foundational_Components_ATF
+   /linux/Foundational_Components_OPTEE

@@ -56,3 +56,5 @@ linux/Foundational_Components/Machine_Learning/armnn
 linux/Foundational_Components/Machine_Learning/tflite
 linux/Foundational_Components/Machine_Learning/neo
 linux/Foundational_Components/Machine_Learning/tvm
+linux/Foundational_Components_ATF
+linux/Foundational_Components_OPTEE
