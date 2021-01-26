@@ -11,5 +11,5 @@ solutions.
 .. toctree::
    :maxdepth: 5
 
-   Overview_Download_and_Install_the_SDK
+   Overview_Getting_Started_Guide
    Overview_Technical_Support
