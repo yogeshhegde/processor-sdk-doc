@@ -1,7 +1,8 @@
 .. _foundational-components-optee:
 
 OP-TEE
-========================================
+======
+
 .. rubric:: Overview
 
 OP-TEE is a Trusted Execution Environment (TEE) designed as companion
@@ -19,6 +20,14 @@ Those APIs are defined in the GlobalPlatform API specifications.
 
 .. rubric:: Building OP-TEE
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-    $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3 CFG_ARM64_core=y all
+    ::
+
+        $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3-am65x CFG_ARM64_core=y
+
+.. ifconfig:: CONFIG_part_variant not in ('AM65X')
+
+    ::
+
+        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-j721e CFG_ARM64_core=y
