@@ -53,6 +53,9 @@ following platform(s):
 
    |  `J7200 EVM <http://www.ti.com/tool/J7200XSOMXEVM>`__
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   |  `AM64x EVM <https://www.ti.com/store/ti/en/p/product/?p=TMDS64GPEVM>`__
 |
 
 .. toctree::

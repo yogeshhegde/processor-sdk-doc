@@ -211,6 +211,32 @@ Build U-Boot
           $ cd <path to K3-image-gen project>
           $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- SOC=j7200 ROM_COMBINED_IMAGE=1 SBL=<path to tisdk>/board-support/prebuilt-images>/u-boot-spl.bin
 
+    .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+
+        |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |
+        +============================+=================================+================================+================================+
+        |    AM64X EVM               |    am64x\_evm\_r5\_defconfig    |   am64x\_evm\_r5\_defconfig    |   am64x\_evm\_r5\_defconfig    |
+        |                            |    am64x\_evm\_a53\_defconfig   |   am64x\_evm\_a53\_defconfig   |   am64x\_evm\_a53\_defconfig   |
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+
+
+       *R5*
+
+       .. code-block:: console
+
+          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am64x_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+
+       *A53*
+
+       .. code-block:: console
+
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am64x_evm_a53_defconfig O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin  O=<output directory>/a53
+          $ cd <path to K3-image-gen project>
+          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- SOC=am64x ROM_COMBINED_IMAGE=1 SBL=<output directory>/r5/spl/u-boot-spl.bin
+
+
     .. rubric:: Dependent Project location
 
     - K3-image-gen (For generating tiboot3.bin and sysfw.itb) project is
@@ -239,6 +265,11 @@ Build U-Boot
 
        - tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
        - tispl.bin, u-boot.img from <output directory>/a72
+
+    .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+       - tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
+       - tispl.bin, u-boot.img from <output directory>/a53
 
     .. rubric:: Image Formats
 
