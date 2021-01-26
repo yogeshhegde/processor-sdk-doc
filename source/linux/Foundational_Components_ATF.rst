@@ -22,20 +22,32 @@ in the non-secure world.
 
 .. rubric:: Building ATF
 
-::
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
-    $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 DEBUG=1 SPD=opteed all
+    ::
+
+        $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
+
+.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
+
+    ::
+
+        $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
 
 .. rubric:: Default load locations
 
-ATF image 0x70000000
-
-OP-TEE image 0x9e800000
-
-U-Boot/Linux kernel image 0x80080000
-
-DTB 0x82000000
++---------------------------+------------+
+| ATF image                 | 0x70000000 |
++---------------------------+------------+
+| OP-TEE image              | 0x9e800000 |
++---------------------------+------------+
+| U-Boot/Linux kernel image | 0x80080000 |
++---------------------------+------------+
+| DTB                       | 0x82000000 |
++---------------------------+------------+
 
 These can be changed from the defaults if needed in:
 
-plat/ti/k3/board/generic/board.mk
+::
+
+    plat/ti/k3/board/generic/board.mk
