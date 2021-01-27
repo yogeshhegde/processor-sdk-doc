@@ -18,6 +18,19 @@ system/Demo_User_Guides/Servo_Drive_Demo_User_Guide
 system/Demo_User_Guides/Benchmark_Demo_User_Guide
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
+linux/Foundational_Components/U-Boot/Release-Notes
+linux/Foundational_Components/U-Boot/Users-Guide
+linux/Foundational_Components/U-Boot/UG-General-Info
+linux/Foundational_Components/U-Boot/UG-DFU
+linux/Foundational_Components/U-Boot/UG-Memory
+linux/Foundational_Components/U-Boot/UG-SPI
+linux/Foundational_Components/U-Boot/UG-QSPI
+linux/Foundational_Components/U-Boot/UG-UART
+linux/Foundational_Components/U-Boot/UG-DDR3
+linux/Foundational_Components/U-Boot/Applications
+linux/Foundational_Components/U-Boot/Apps-SPL-Debug
+linux/Foundational_Components/U-Boot/Apps-Load-in-CCS
+linux/Foundational_Components/U-Boot/Apps-TroubleShooting
 linux/Foundational_Components_Kernel
 linux/Foundational_Components_Kernel_Drivers
 linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
@@ -45,3 +58,5 @@ linux/Foundational_Components/Machine_Learning/armnn
 linux/Foundational_Components/Machine_Learning/tflite
 linux/Foundational_Components/Machine_Learning/neo
 linux/Foundational_Components/Machine_Learning/tvm
+linux/Foundational_Components_ATF
+linux/Foundational_Components_OPTEE
