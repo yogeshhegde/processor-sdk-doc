@@ -53,7 +53,7 @@ by double clicking on it within your Linux host PC.
 Double click on the installer to begin installation.
 
 .. note::
-   For windows installer, always install the SDK in C:/ti. Do not install in any
+   For windows installer, always install the SDK in C:/ti/psdk_am64x. Do not install in any
    deeper directory structure, because the build might fail due to the 260
    character path length limit in Windows operating system.
 
@@ -93,4 +93,4 @@ Refer to the :ref:`Release Notes <Release-note-label>` for complete feature-set 
 
 **Instructions to set-up CCS**
 
--  Refer /<INSTALL-DIR>/rtos/pdk_am64x_xx_xx_xx_xx/docs/userguide/am64x/ccs_setup_am64x.html - `[Use Link] <../../rtos/pdk_am64x/docs/userguide/am64x/ccs_setup_am64x.html>`__
+-  Refer /<INSTALL-DIR>/rtos/pdk_am64x_xx_xx_xx_xx/docs/userguide/am64x/ccs_setup_am64x.html - `[Use Link] <../../../rtos/pdk_am64x/docs/userguide/am64x/ccs_setup_am64x.html>`__
