@@ -5,7 +5,7 @@
 Overview
 --------
 
-This wiki will cover the basic steps for building the Linux kernel.
+This document will cover the basic steps for building the Linux kernel.
 
 Getting the Kernel Source Code
 ------------------------------
