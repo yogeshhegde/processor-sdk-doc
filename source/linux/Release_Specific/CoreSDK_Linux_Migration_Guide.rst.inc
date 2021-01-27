@@ -12,6 +12,10 @@ of the Processor SDK for Linux.
 Processor CoreSDK 07.xx Releases
 ================================
 
+Processor CoreSDK 07.02
+-----------------------
+- Introduces AM64XX Support
+
 Processor CoreSDK 07.01
 -----------------------
 - Introduces J7200 Support
