@@ -7,3 +7,4 @@ Linux Overview
 
    Linux_Release_Notes
    Linux_Performance_Guide
+   RT_Linux_Performance_Guide
