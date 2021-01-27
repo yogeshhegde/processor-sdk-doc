@@ -97,18 +97,38 @@ Yocto
 Issues Tracker
 ==============
 
-.. note::
-   The following sections will be updated later when finalized in Core SDK.
-
-Errata Workarounds Available in this Release
---------------------------------------------
-
-SDK Known Issues
------------------
-
 U-Boot Known Issues
-------------------------
+-------------------
+
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 5, 70
+
+   "LCPD-20131","am64xx uboot fails to enumerate devices attached to a usb hub on the first 'usb reset' call"
 
 Linux Kernel Known Issues
----------------------------
+-------------------------
 
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 5, 70
+
+   "LCPD-20171","AM64x: Occasional boot failure due to dmesg log about cdns-usb3 that blocks the prompt "
+   "LCPD-20169","AM64x: CPSW3g link can take up to 45 seconds to come back up"
+   "LCPD-20168","USB driver trace seen on boot"
+   "LCPD-20165","TSN PTP binary testptp not present by default in am64 filesystem"
+   "LCPD-20164","TSN IET (Frame Preemption) eth0 link sometimes does not come back up after configuring"
+   "LCPD-20163","am64xx fails to boot when using the mmcmode custom build"
+   "LCPD-20162","Degraded performance when running IET tests over eth1"
+   "LCPD-20130","am64xx PCIe-EP test failing due to a NULL pointer exception"
+   "LCPD-20122","am64xx not recognizing a USB stick attached to a PCIe USB card"
+   "LCPD-20119","Kernel user's guide does not mention ARM64 or AM64x"
+   "LCPD-20111","TSN IET (Frame Preemption) iperf3 network is unreachable with VLAN"
+   "LCPD-20107","USBDEVICE Bi-directional iperf test fails on am64xx when running from dut to server"
+   "LCPD-20106","USBDEVICE ping from DUT to host fails when packet_count=470"
+   "LCPD-20105","AM64x: Kernel: ADC: RX DMA channel request fails"
+   "LCPD-20061","Occasional PHY error during during TSN Time-Aware Shaper execution"
+   "LCPD-20055","Assign am64xx GPIO test pins in ltp-ddt"
+   "LCPD-20050","Ramfs does not support ti-test installation due to 2GB RAM on AM64"
+   "LCPD-20006","AM64x: remoteproc may be stuck in the start phase after a few times of stop/start"
+   "LCPD-20004","AM64: g_ether module failing to bringup link on host side"
