@@ -189,7 +189,7 @@ repository.
 
     The list of defconfig map file (i.e., ti\_sdk\_[device]\_release used
     above) supported can be found from
-    ti\_config\_fragments/defconfig\_map.txt file.
+    ti\_config\_fragments/v8\_defconfig\_map.txt file.
 
 
 Customizing the Configuration
