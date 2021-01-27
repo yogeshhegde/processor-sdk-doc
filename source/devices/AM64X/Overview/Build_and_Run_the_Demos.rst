@@ -85,12 +85,12 @@ Set-up Linux build environment to rebuild kernel, u-boot & DTB
 
 Refer the respective user guides to build Linux and other RTOS/BM packages
 
--  For Linux Kernel, u-boot & DTB     `[Use Link] <index_Linux.html>`__
--  For Platform Development Kit (PDK) `[Use Link] <../../rtos/pdk_am64x/docs/userguide/am64x/index_am64x.html>`__
--  For EtherCAT Slave                 `[Use Link] <../../rtos/pru_icss_docs/indsw/EtherCAT_Slave/EtherCAT_Slave.html>`__
--  For ProfiNetSlave                  `[Use Link] <../../rtos/pru_icss_docs/indsw/profinet_slave/profinet_slave.html>`__
--  For Ethernet_ip_adapter            `[Use Link] <../../rtos/pru_icss_docs/indsw/ethernetIP_adapter/ethernetIP_adapter.html>`__
--  For Industrial Drives (EnDAT,HDSL) `[Use Link] <../../rtos/pru_icss_docs/indsw/Industrial_Drives/Industrial_Drives.html>`__
+-  For Linux Kernel, u-boot & DTB     `[Use Link] <../index_Linux.html>`__
+-  For Platform Development Kit (PDK) `[Use Link] <../../../rtos/pdk_am64x/docs/userguide/am64x/index_am64x.html>`__
+-  For EtherCAT Slave                 `[Use Link] <../../../rtos/pru_icss_docs/indsw/EtherCAT_Slave/EtherCAT_Slave.html>`__
+-  For ProfiNetSlave                  `[Use Link] <../../../rtos/pru_icss_docs/indsw/profinet_slave/profinet_slave.html>`__
+-  For Ethernet_ip_adapter            `[Use Link] <../../../rtos/pru_icss_docs/indsw/ethernetIP_adapter/ethernetIP_adapter.html>`__
+-  For Industrial Drives (EnDAT,HDSL) `[Use Link] <../../../rtos/pru_icss_docs/indsw/Industrial_Drives/Industrial_Drives.html>`__
 
 
 

@@ -96,6 +96,11 @@ Refer below component release notes for complete feature-set and further details
    
 -  For windows installer, install always in C:/ti. Do not install in any deeper directory structure as build might fail due to the 260 character path length limit exist in Windows operating system 
 
+-  SITSW-373 - Servo Drive Demo: TwinCAT stuck in INIT mode with OPSI boot
+
+-  SITSW-372 - Continuous mode does not work for EnDAT.
+
+
 
 .. rubric:: Issues Fixed
    :name: Issues Fixed
