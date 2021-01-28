@@ -4,8 +4,6 @@
 Create SD Card
 ==============
 
-.. contents::
-
 .. note::
   You will need an SD Card and an SD Card Reader.
 
@@ -104,9 +102,9 @@ be created on the SD card:
    - boot partition
    - rootfs partition
 
-create-sdcard-image.sh was created to simplify this card creation process. Here
-are the steps on how to use the script to create a custom WIC image to place on
-an SD card.
+create-sdcard-image.sh is provided in the Processor SDK to simplify this card
+creation process. Here are the steps on how to use the script to create a custom
+WIC image to place on an SD card.
 
 1.  Install the AM64x Processor SDK on a Linux machine at <PSDK\_PATH> .
 
@@ -168,6 +166,8 @@ an SD card.
     write your custom WIC image to an SD card.
 
 |
+
+.. _am64x-create-sd-card-for-rtos-or-baremetal-only-applications:
 
 Create SD Card for RTOS or Baremetal Only Applications
 ------------------------------------------------------
