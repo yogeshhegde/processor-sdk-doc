@@ -527,26 +527,6 @@ AM64xx-EVM
 - SSD being used: Lite-On Technology Corporation M8Pe Series NVMe SSD [14a4:22f1] (rev 01)
 
 
-OSPI Flash Driver
--------------------------
-
-
-
-AM64XX-EVM
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-UBIFS
-"""""""""""""""""""""""""""
-
-
-RAW
-"""""""""""""""""""""""""""
-
-.. csv-table::
-    :header: "File size (Mbytes)","am64xx-evm: Raw Read Throughput (Mbytes/sec)"
-
-    "50","5000.00"
-
 |
 
 MMC/SD Driver

@@ -548,14 +548,6 @@ UBIFS
     "1048576","0.16 (min 0.11, max 0.19)","55.83 (min 54.70, max 56.36)","47.31","44.44"
 
 
-RAW
-"""""""""""""""""""""""""""
-
-.. csv-table::
-    :header: "File size (Mbytes)","am64xx-evm: Raw Read Throughput (Mbytes/sec)"
-
-    "50","5000.00"
-
 
 EMMC Driver
 -------------------------
