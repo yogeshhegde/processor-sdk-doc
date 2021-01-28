@@ -123,4 +123,6 @@ Example of running *label_image* on target, using the pre-installed mobilenet_v1
     0.0117647: 466 bulletproof vest
     0.00784314: 835 suit
 
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
+   .. note:: the **average time** in the example above is **208.587 ms** for AM64x platform.
