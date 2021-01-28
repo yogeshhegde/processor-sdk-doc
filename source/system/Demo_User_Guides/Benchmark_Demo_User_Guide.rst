@@ -334,5 +334,7 @@ R5 Benchmarks (Average)
 .. note:: "CPU Usage %" is computed based on R5F core running at 800Mhz
 .. note:: "*" is the default running frequencywhen the benchmark demo starts
 
-A53 Benchmarks (TBD)
-~~~~~~~~~~~~~~~~~~~~
+..
+  [comment] commenting out the A53 Benchmarks until we have data to put here
+  [comment] A53 Benchmarks (TBD)
+  [comment] ~~~~~~~~~~~~~~~~~~~~
