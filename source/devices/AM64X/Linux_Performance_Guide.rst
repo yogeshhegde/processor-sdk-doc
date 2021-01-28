@@ -493,19 +493,6 @@ PCIe-NVMe-SSD
 
 |
 
-OSPI Flash Driver
------------------
-
-RAW
-^^^
-
-.. csv-table::
-    :header: "File size (Mbytes)","am64xx-evm: Raw Read Throughput (Mbytes/sec)"
-
-    "50","5000.00"
-
-|
-
 MMC/SD Driver
 -------------
 
