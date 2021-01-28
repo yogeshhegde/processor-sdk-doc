@@ -33,10 +33,11 @@ or stand alone from TI that you do **NOT** source the
 kernel. Doing so will cause the compilation of host side components
 within the kernel tree to fail.
 
-The following commands are intended to be run from the root of the
-kernel tree unless otherwise specified. The root of the kernel tree is
-the top-level directory and can be identified by looking for the
-"MAINTAINERS" file.
+.. note::
+    The following commands are intended to be run from the root of the
+    kernel tree unless otherwise specified. The root of the kernel tree is
+    the top-level directory and can be identified by looking for the
+    "MAINTAINERS" file.
 
 Compiler
 ^^^^^^^^
