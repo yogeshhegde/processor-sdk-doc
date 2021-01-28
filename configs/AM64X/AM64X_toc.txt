@@ -13,6 +13,7 @@ devices/AM64X/index_Applications
 devices/AM64X/Linux_Overview
 devices/AM64X/Linux_Release_Notes
 devices/AM64X/Linux_Performance_Guide
+devices/AM64X/RT_Linux_Performance_Guide
 system/combined-boot-flow
 system/Demo_User_Guides/Servo_Drive_Demo_User_Guide
 system/Demo_User_Guides/Benchmark_Demo_User_Guide
