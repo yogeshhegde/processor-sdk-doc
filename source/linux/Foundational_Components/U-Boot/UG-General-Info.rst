@@ -20,6 +20,11 @@ Getting the U-Boot Source Code
 
 Build U-Boot
 ^^^^^^^^^^^^
+.. note::
+    The following commands are intended to be run from the root of the
+    U-Boot tree unless otherwise specified. The root of the U-Boot tree is
+    the top-level directory and can be identified by looking for the
+    "MAINTAINERS" file.
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
