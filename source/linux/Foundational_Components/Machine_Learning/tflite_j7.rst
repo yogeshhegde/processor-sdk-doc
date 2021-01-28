@@ -109,20 +109,34 @@ Options for *label_image*:
 Example of running *label_image* on target, using the pre-installed mobilenet_v1_1.0_224_quant.tflite model,
 `grace_hopper.bmp <https://raw.githubusercontent.com/tensorflow/tensorflow/r1.12/tensorflow/contrib/lite/examples/label_image/testdata/grace_hopper.bmp>`__, and labels.txt.
 
-::
+.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
 
-    # cd /usr/share/tensorflow-lite/examples
-    # ./label_image -i grace_hopper.bmp -l labels.txt -m mobilenet_v1_1.0_224_quant.tflite
-    Loaded model mobilenet_v1_1.0_224_quant.tflite
-    resolved reporter
-    invoked 
-    average time: 164.164 ms 
-    0.780392: 653 military uniform
-    0.105882: 907 Windsor tie
-    0.0156863: 458 bow tie
-    0.0117647: 466 bulletproof vest
-    0.00784314: 835 suit
+    ::
+
+        # cd /usr/share/tensorflow-lite/examples
+        # ./label_image -i grace_hopper.bmp -l labels.txt -m mobilenet_v1_1.0_224_quant.tflite
+        Loaded model mobilenet_v1_1.0_224_quant.tflite
+        resolved reporter
+        invoked
+        average time: 164.164 ms
+        0.780392: 653 military uniform
+        0.105882: 907 Windsor tie
+        0.0156863: 458 bow tie
+        0.0117647: 466 bulletproof vest
+        0.00784314: 835 suit
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
-   .. note:: the **average time** in the example above is **208.587 ms** for AM64x platform.
+    ::
+
+        # cd /usr/share/tensorflow-lite/examples
+        # ./label_image -i grace_hopper.bmp -l labels.txt -m mobilenet_v1_1.0_224_quant.tflite
+        Loaded model mobilenet_v1_1.0_224_quant.tflite
+        resolved reporter
+        invoked
+        average time: 280.587 ms
+        0.780392: 653 military uniform
+        0.105882: 907 Windsor tie
+        0.0156863: 458 bow tie
+        0.0117647: 466 bulletproof vest
+        0.00784314: 835 suit
