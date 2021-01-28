@@ -4,7 +4,7 @@
 Machine Learning
 ********************
 
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family', 'AM64X_family')
+.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
  
    Sitara Machine Learning toolkit brings machine learning to the edge by enabling 
    machine learning inference on all Sitara devices (Arm only, Arm + specialized hardware 
@@ -70,8 +70,15 @@ Machine Learning
    TI's Processor SDK Linux, free to download and use. Jacinto machine learning today consists
    of Neo-AI-DLR library.
    
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+   The Machine Learning toolkit brings machine learning to the edge by enabling
+   machine learning inference on Sitara devices. It is provided as part of
+   TI's Processor SDK Linux, free to download and use. The Machine Learning
+   toolkit consists of TensorFlow Lite library.
+
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
 
    Foundational_Components/Machine_Learning/tidl
    Foundational_Components/Machine_Learning/neo

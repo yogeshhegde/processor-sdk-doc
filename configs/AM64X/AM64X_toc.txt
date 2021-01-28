@@ -55,9 +55,6 @@ linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components_IPCLLD
 linux/Foundational_Components_Machine_Learning
-linux/Foundational_Components/Machine_Learning/armnn
-linux/Foundational_Components/Machine_Learning/tflite
-linux/Foundational_Components/Machine_Learning/neo
-linux/Foundational_Components/Machine_Learning/tvm
+linux/Foundational_Components/Machine_Learning/tflite_j7
 linux/Foundational_Components_ATF
 linux/Foundational_Components_OPTEE
