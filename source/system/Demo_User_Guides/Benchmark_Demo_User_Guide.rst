@@ -32,64 +32,46 @@ Hardware Prerequisites
 Get Started
 -----------
 
-1.  Install the AM64x Processor SDK on a Linux or a Windows machine at
-    <PSDK\_PATH>
+1.  Follow the instructions in section
+    :ref:`am64x-create-sd-card-with-default-images` to create an SD card with
+    the prebuilt WIC image.
 
-2.  The prebuilt SD card image (WIC file) is available
-    at <PSDK\_PATH>/linux/filesystem/tisdk-default-image-am64xx-evm.wic.xz
+2.  Insert the SD card into the AM64x EVM
 
-3.  unzip the tisdk-default-image-am64xx-evm.wic.xz to tisdk-default-image-am64xx-evm.wic
-
-::
-
-    unxz tisdk-default-image-am64xx-evm.wic.xz
-
-4.  Flash the WIC to SD card
-
-    - For Windows, using Win32DiskImager (https://sourceforge.net/projects/win32diskimager/files/latest/download)
-
-    - For Linux, using the following command
-
-::
-
-    sudo dd bs=4M if=./tisdk-default-image-am64xx-evm.wic of=/dev/sdx status=progress && sync
-
-5.  Insert the SD card into the AM64x EVM
-
-6.  Set the AM64x EVM Boot mode to "Boot from SD card"
+3.  Set the AM64x EVM Boot mode to "Boot from SD card"
 
     - SW2(1:8) on, on, off, off, off, off, on, off
     - SW3(1:8) off, on, off, off, off, off, off, off
 
-7.  Connect an ethernet cable from your ethernet switch or router to the
+4.  Connect an ethernet cable from your ethernet switch or router to the
     AM64x EVM
 
-8.  Connect your PC to the same ethernet switch or router
+5.  Connect your PC to the same ethernet switch or router
 
-9.  Connect the UART (J26 via USB cable) to the PC's USB port.
+6.  Connect the UART (J26 via USB cable) to the PC's USB port.
 
-10. Open the the main UART0 port using the TeraTerm or other UART emulator 
+7. Open the the main UART0 port using the TeraTerm or other UART emulator 
     program. Set the port to 115200bps, 8 bit, no parity, 1 stop bit, no flow control
 
-11. Power on the AM64x
+8. Power on the AM64x
 
-12. After the Linux boot completes, login as "root", then type in "ifconfig" in 
+9. After the Linux boot completes, login as "root", then type in "ifconfig" in 
     Linux prompt to find out the IP address for the AM64x EVM
 
 .. Image:: /images/OOB_Linux_ifconfig.png
 
-13. On the PC, open a Internet Browser and enter in the
+10. On the PC, open a Internet Browser and enter in the
     following: \ http://IP_ADDRESS_OF_AM64x_EVM:8081, for example, http://192.168.86.198:8081
 
-14. The following web page will pop up:
+11. The following web page will pop up:
 
 .. Image:: /images/OOB_GUI_root.png
 
-15. Click on the "Benchmark Demo": 
+12. Click on the "Benchmark Demo": 
 
 .. Image:: /images/OOB_GUI_stats.png
 
-16. With the current release, the R5F app for each R5F core are fixed. User can only 
+13. With the current release, the R5F app for each R5F core are fixed. User can only 
     change the "Options" for each core, then click "LOAD" to refresh the statistics 
 
 +-------------+------------------+----------------------+-----------------------------------------------------------+
