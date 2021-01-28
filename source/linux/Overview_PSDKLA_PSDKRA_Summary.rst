@@ -44,5 +44,5 @@ features from the core running Linux, one needs to download and install the PSDK
     -   MCU/AutoSAR MCAL on R5F
 
 .. important::
-    This package is NOT included in PSDKLA installer and needs to be downloaded separately.
+    This package is NOT included in PSDK Linux installer and needs to be downloaded separately.
 
