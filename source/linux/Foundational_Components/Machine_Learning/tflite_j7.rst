@@ -5,7 +5,7 @@ Introduction
 -------------
 
 `TensorFlow Lite <https://www.tensorflow.org/lite>`__ is an open source library for deep learning models.
-TensorFlow Lite runs on Jacinto Arm cores. 
+TensorFlow Lite runs on ARM cores.
 
 Supported version
 ------------------
@@ -22,7 +22,8 @@ please download those models and then copy them to the target.
 
 .. code-block:: bash
 
-    root@am57xx-evm:/usr/share/tensorflow-lite/examples# ls -l
+    # cd /usr/share/tensorflow-lite/examples
+    # ls -l
     total 8356
     -rwxr-xr-x 1 root root 2423336 Aug 28 08:27 benchmark_model
     -rw-r--r-- 1 root root  940650 Aug 28 07:56 grace_hopper.bmp
