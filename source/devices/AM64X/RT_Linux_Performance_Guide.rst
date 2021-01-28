@@ -330,7 +330,7 @@ thread-enabled workloads to be tested.
     "rotate-4ms1 (workloads/)","16.93"
     "rotate-4ms1w1 (workloads/)","4.41"
     "rotate-4ms64 (workloads/)","17.09"
-    "rotate_-4ms64w1 (workloads/)","17.15"
+    "rotate-4ms64w1 (workloads/)","17.15"
     "x264-4mq (workloads/)","0.21"
     "x264-4mqw1 (workloads/)","0.41"
 
@@ -500,10 +500,20 @@ UBIFS
 .. csv-table::
     :header: "Buffer size (bytes)","am64xx-evm: Write UBIFS Throughput (Mbytes/sec)","am64xx-evm: Write UBIFS CPU Load (%)","am64xx-evm: Read UBIFS Throughput (Mbytes/sec)","am64xx-evm: Read UBIFS CPU Load (%)"
 
-    "102400","0.18 (min 0.12, max 0.30)","55.85 (min 54.93, max 56.32)","49.50","50.00"
-    "262144","0.16 (min 0.11, max 0.19)","56.07 (min 55.68, max 56.33)","49.62","28.57"
-    "524288","0.16 (min 0.11, max 0.19)","56.26 (min 55.82, max 56.76)","48.67","55.56"
-    "1048576","0.16 (min 0.11, max 0.19)","55.83 (min 54.70, max 56.36)","47.31","44.44"
+    "102400","0.18 (min 0.12, max 0.30)","56.26 (min 55.95, max 56.65)","51.24","42.86"
+    "262144","0.14 (min 0.11, max 0.19)","57.00 (min 56.75, max 57.19)","48.99","55.56"
+    "524288","0.16 (min 0.11, max 0.19)","56.39 (min 55.94, max 56.86)","48.95","42.86"
+    "1048576","0.15 (min 0.11, max 0.19)","56.27 (min 55.20, max 56.87)","47.26","55.56"
+
+|
+
+RAW
+^^^
+
+.. csv-table::
+    :header: "File size (Mbytes)","am64xx-evm: Raw Read Throughput (Mbytes/sec)"
+
+    "50","34.72"
 
 |
 
