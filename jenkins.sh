@@ -6,7 +6,7 @@ usage() {
   Usage:
          $0 <target_os> <device_family>
 		target_os:     linux, rtos, android, all
-		device_family: GEN, AM335X, AM437X, AM64X, all
+		device_family: GEN, CORESDK, AM335X, AM437X, AM64X, all
 
 EOF
 }
@@ -55,7 +55,7 @@ rm -rf "${TEMP}"
 mkdir -pv "${ARTIFACTS}" "${OUTPUT}" "${LOGS}" "${TEMP}"
 
 # Set up host
-sudo apt-get -y install ${UBUNTU_PACKAGES}
+which sphinx-build > /dev/null || sudo apt-get -y install ${UBUNTU_PACKAGES}
 
 # Update submodule
 echo "Update submodule..."
@@ -150,6 +150,8 @@ if [[ ${OS} == all ]]; then
     build_doc "" AM64X
     # build J7
     build_doc linux J7
+    # build CORESDK
+    build_doc linux CORESDK
 else
     build_doc ${OS} ${DEV}
 fi
