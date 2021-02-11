@@ -335,7 +335,7 @@ thread-enabled workloads to be tested.
     "rotate-4ms1 (workloads/)","19.65"
     "rotate-4ms1w1 (workloads/)","19.61"
     "rotate-4ms64 (workloads/)","19.72"
-    "rotate_-4ms64w1 (workloads/)","19.72"
+    "rotate-4ms64w1 (workloads/)","19.72"
     "x264-4mq (workloads/)","0.41"
     "x264-4mqw1 (workloads/)","0.41"
 
@@ -490,6 +490,32 @@ PCIe-NVMe-SSD
 - FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
 - Platform: Speed 8GT/s, Width x1
 - SSD being used: Lite-On Technology Corporation M8Pe Series NVMe SSD [14a4:22f1] (rev 01)
+
+|
+
+OSPI Flash Driver
+-----------------
+
+UBIFS
+^^^^^
+
+.. csv-table::
+    :header: "Buffer size (bytes)","am64xx-evm: Write UBIFS Throughput (Mbytes/sec)","am64xx-evm: Write UBIFS CPU Load (%)","am64xx-evm: Read UBIFS Throughput (Mbytes/sec)","am64xx-evm: Read UBIFS CPU Load (%)"
+
+    "102400","0.19 (min 0.12, max 0.31)","48.85 (min 47.70, max 50.21)","65.25","20.00"
+    "262144","0.16 (min 0.11, max 0.19)","47.39 (min 46.39, max 48.52)","64.15","42.86"
+    "524288","0.16 (min 0.11, max 0.19)","47.14 (min 46.05, max 47.76)","64.07","33.33"
+    "1048576","0.16 (min 0.11, max 0.19)","48.41 (min 47.03, max 50.71)","69.55","33.33"
+
+|
+
+RAW
+^^^
+
+.. csv-table::
+    :header: "File size (Mbytes)","am64xx-evm: Raw Read Throughput (Mbytes/sec)"
+
+    "50","36.76"
 
 |
 
