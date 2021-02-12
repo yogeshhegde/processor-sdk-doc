@@ -53,30 +53,6 @@ reconfigure to use bash by running the following command:
 Be sure to select "No" when you are asked to use dash as the default
 system shell.
 
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    .. rubric:: Host Setup - CentOS
-       :name: Host Setup - CentOS
-
-    The build also requires that ``bash`` is configured as the default
-    system shell. The following steps will configure Ubuntu to use ``bash``
-    instead of the default ``dash``.
-
-    ::
-
-        $ sudo dpkg-reconfigure dash
-        (Select "no" when prompted)
-
-    The following host packages are required for CentOS. Install the
-    packages using the command below:
-
-    ::
-
-        $ yum install gawk make wget tar bzip2 gzip python unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel texinfo chrpath socat SDL-devel xterm doxygen glibc-devel.i686 glibc-devel libstdc++-devel.i686 libgcc.i686 libstdc++-devel dos2unix
-
-    Perl’s Thread::Queue module needs to be installed also. Download and install perl-Thread-Queue-3.02-2.el7.noarch.rpm from
-    https://www.rpmfind.net/linux/rpm2html/search.php?query=perl-Thread-Queue.
-
 .. rubric:: Proxy Setup
    :name: Proxy Setup
 
