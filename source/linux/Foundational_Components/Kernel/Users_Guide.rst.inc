@@ -386,7 +386,7 @@ Compiling the Device Tree Binaries
 
     ::
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <dt filename>.dtb
+        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/<dt filename>.dtb
 
     The compiled device tree file with be located in arch/arm64/boot/dts/ti.
 
@@ -395,7 +395,7 @@ Compiling the Device Tree Binaries
 
     ::
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- k3-am642-evm.dtb
+        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/k3-am642-evm.dtb
 
     Alternatively, you can build every device tree binary with command
 
