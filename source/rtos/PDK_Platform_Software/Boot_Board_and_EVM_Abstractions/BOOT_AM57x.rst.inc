@@ -350,7 +350,7 @@ The images can be flashed into QSPI flash by following steps given
 below.
 
 #. Copy QSPI mode SBL image
-   *TI_PDK_INSTALL_DIR\packages\ti\boot\sbl\binary\<BoardName>\qspi\bin\MLO*
+   *<TI_PDK_INSTALL_DIR>/packages/ti/boot/sbl/binary/<BoardName>/qspi/bin/MLO*
    and application image(app) generated using the Script into the SD
    card.
    Rename the bootloader file to 'boot' and application image to 'app'
@@ -358,7 +358,7 @@ below.
 #. Copy 'config' file into the SD card, the config file should contain
    names of the image to be flashed and the offset.
    A sample config file can be found at
-   *TI_PDK_INSTALL_DIR\packages\ti\boot\sbl\tools\flashWriter\qspi\config*.
+   *<TI_PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/qspi/config*.
    Do not change the name of the config file.
    **NOTE:** "config" file can be used without any modifications if
    bootloader and application images are renamed to "boot" and "app".
@@ -370,7 +370,7 @@ below.
    Insert it into the SD card slot.
 #. Connect the board with CCS and and load the prebuilt qspi flash
    writer application from
-   $(TI_PDK_INSTALL_DIR)\packages\ti\boot\sbl\tools\flashWriter\qspi\bin\<BoardName>\\
+   <TI_PDK_INSTALL_DIR>/packages/ti/boot/sbl/tools/flashWriter/qspi/bin/<BoardName>
 #. Run the QSPI flash writer application. You will see the following
    logs on the EVM's UART console.
 #. After the images have been flashed to the QSPI device disconnect from
@@ -571,7 +571,7 @@ Follow these steps to load the test application using a SD card on the
 target
 
 copy the MLO to your SD card (located
-at %TI_PDK_INSTALL_DIR%\packages\ti\boot\sbl\binary\[BOARD]\mmcsd)
+at $(TI_PDK_INSTALL_DIR)/packages/ti/boot/sbl/binary/[BOARD]/mmcsd)
 
 #. copy the example app located at path pointed to by BIN_PATH to your
    SD card
@@ -606,7 +606,7 @@ map file for the boot loader to check for latest information on the
 memory utilization in the boot loader.
 
 **Location of linker command file**:
-<PDK_INSTALL_PATH>\packages\ti\boot\sbl\board\<BOARD>\build
+<PDK_INSTALL_PATH>/packages/ti/boot/sbl/board/<BOARD>/build
 
 The SBL memory map is shown below
 
@@ -634,7 +634,7 @@ is a user defined bootloader so many of the defaults can easily be
 modified to meet application requirements. For example the flash offset
 location from which the bootloader reads the application is configured
 in the source files located under
-PDK_INSTALL_PATH\packages\ti\boot\sbl\src\<BOOT_MEDIA>
+<PDK_INSTALL_PATH>/packages/ti/boot/sbl/src/<BOOT_MEDIA>
 
 Examples of customization that can be changed:
 -  QSPI/SPI flash offsets: These offsets are configured in sbl_qspi.c
@@ -648,7 +648,7 @@ The SBL for AM57xx devices uses LLD drivers to read and write from boot
 media supported. The SBL uses the default SOC configuration of the
 drivers and the speeds setup. For example, the SPI driver default SPI
 bitrate is 1 MHz (Refer
-PDK_INSTALL_PATH\packages\ti\drv\spi\src\SPI_drv.c) so if you wish to
+<PDK_INSTALL_PATH>/packages/ti/drv/spi/src/SPI_drv.c) so if you wish to
 speed up boot you can update the SPI parameter in the SBL as shown
 below:
 
@@ -711,7 +711,7 @@ sets up AVS and ABB configuration features using PM LLD APIs The
 complete details of PMIC configuration and AVS and ABB configuration
 required by the chip for different OPP has been implemented in the file:
 
-PDK_INSTALL_PATH\packages\ti\boot\sbl\board\src\sbl_avs_config.c If you
+<PDK_INSTALL_PATH>/packages/ti/boot/sbl/board/src/sbl_avs_config.c If you
 are using the same PMIC as GP EVM or IDK platform then you can reuse the
 settings as is in SBL for your custom platform
 

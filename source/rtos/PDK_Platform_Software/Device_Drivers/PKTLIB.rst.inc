@@ -39,7 +39,7 @@ Pktlib_HeapCfg configuration structure.
 
 For details about individual fields of this structure, see the Doxygen
 help by opening
-PDK_INSTALL_DIR\packages\ti\runtime\pktlib\docs\doxygen\html\index.html.
+<PDK_INSTALL_DIR>/packages/ti/runtime/pktlib/docs/doxygen/html/index.html.
 
 .. rubric:: **APIs**
    :name: apis
@@ -67,12 +67,12 @@ API reference for application can be found in below file:
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \runtime\pktlib\docs\doxygen\html |
-|                                   | \index.html                       |
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /runtime/pktlib/docs/doxygen/html |
+|                                   | /index.html                       |
 +-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \runtime\pktlib\docs\ReleaseNotes |
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /runtime/pktlib/docs/ReleaseNotes |
 |                                   | _pktlib.pdf                       |
 +-----------------------------------+-----------------------------------+
 

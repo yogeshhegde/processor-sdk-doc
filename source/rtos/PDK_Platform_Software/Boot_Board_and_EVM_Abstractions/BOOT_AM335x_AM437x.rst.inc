@@ -21,9 +21,9 @@ Bootloader build files for AM335x/AM437x
 
 **Source files:**
 
--  **BASE_DIR\bootloader\src**: Common source files for bootloader
+-  **BASE_DIR/bootloader/src**: Common source files for bootloader
    functionality
--  **BASE_DIR\bootloader\src\<device>**: Files specific to device to
+-  **BASE_DIR/bootloader/src/<device>**: Files specific to device to
    initialize platform features like PLL, pinmux and DDR
 
 **Build Files:**
@@ -337,7 +337,7 @@ Preparing SD card 
    created in the process of making the SD bootable.
 #. Bootloader images with ti header (<mmcsd_bootloader>_ti.bin)should be
    renamed to "*MLO*". Bootloader images are located at
-   *<PDK_INSTALL_DIR\packages\ti\starterware\starterware\binary\bootloader\bin\<TargetType*>
+   *<PDK_INSTALL_DIR/packages/ti/starterware/binary/bootloader/bin/<TargetType*>
 #. Similarly the converted application binary image has to be renamed to
    "*app*" from "*<app_name>_ti.bin*"
 #. Copy both the boot loader image "*MLO*" and the application image
@@ -402,7 +402,7 @@ details below:
 #. Copy the 'config' file into the SD card which will contain the names
    of the image to be flashed and the offset.
    A sample config file can be found at
-   *<\PDK_INSTALL_DIR\packages\ti\starterware\starterware\tools\qspi\config\>
+   *<PDK_INSTALL_DIR/packages/ti/starterware/tools/qspi/config/>
    directory*. Do not change name of the **config** file.
    **NOTE:** "config" file can be used without any modifications if
    bootloader and application images are renamed to "boot" and "app".
@@ -414,7 +414,7 @@ details below:
    Insert it into the SD card slot.
 #. Connect the board with CCS and load the prebuilt qspi flash writer
    application from
-   *<PDK_INSTALL_DIR\packages\ti\starterware\starterware\binary\qspi_app_flash_writer\bin\m43xx-evm>*
+   *<PDK_INSTALL_DIR/packages/ti/starterware/binary/qspi_app_flash_writer/bin/m43xx-evm>*
 #. Run the QSPI flash writer application. Following logs expected on
    console.
 
@@ -526,7 +526,7 @@ Booting from McSPI involves two steps.
    board connected.
 -  Connect target to required core. Ex: A8.
 -  Load the flash writer from
-   *<PDK_INSTALL_DIR\packages\ti\starterware\starterware\tools\flash_writer\spi_flash_writer_AM335X.out*
+   *<PDK_INSTALL_DIR/packages/ti/starterware/tools/flash_writer/spi_flash_writer_AM335X.out*
    onto the EVM.
 -  Run the application and observe the logs on CCS console.
 
@@ -597,7 +597,7 @@ Booting from NAND involves two steps.
    settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
 -  Connect target with CCS.
 -  Load the
-   *<PDK_INSTALL_DIR\packages\ti\starterware\starterware\tools\flash_writer\nand_flash_writer_AM335X.out>*
+   *<PDK_INSTALL_DIR/packages/ti/starterware/tools/flash_writer/nand_flash_writer_AM335X.out>*
    to target and Run. Flash writer will output messages to CCS console.
    When it prompts for inputs, proper inputs shall be given via CCS
    console.
@@ -619,7 +619,7 @@ Booting from NAND involves two steps.
     Enter image file path
 
     Provide the complete path (e.g.
-<PDK_INSTALL_DIR\packages\ti\starterware\starterware\binary\bootloader\bin\<am335x/am437x-evm>\<compiler>\bootloader_boot_nand_a8host_<debug/release>_ti.bin)
+<PDK_INSTALL_DIR/packages/ti/starterware/binary/bootloader/bin/<am335x/am437x-evm>/<compiler>/bootloader_boot_nand_a8host_<debug/release>_ti.bin)
 
 -  Enter offset when prompted as shown below.
 
@@ -736,9 +736,9 @@ application requirement.
 -  **Configuring entry point for SBL**
 
 The three files that help setup the entry point in the bootloader build
-are "PDK_INSTALL_PATH\packages\ti\starterware\soc\armv7a\gcc\sbl_init.S"
+are "PDK_INSTALL_PATH/packages/ti/starterware/soc/armv7a/gcc/sbl_init.S"
 and the linker command file
-"PDK_INSTALL_PATH\packages\ti\starterware\examples\gcc\<device>_boot.lds".
+"PDK_INSTALL_PATH/packages/ti/starterware/examples/gcc/<device>_boot.lds".
 The global symbol Entry is used to provide the entry point to the
 bootloader. The Base address of the memory section OCMCRAM (starts at 1K
 offset in OCMC RAM as defined in TRM) is then used by the tiimage or
