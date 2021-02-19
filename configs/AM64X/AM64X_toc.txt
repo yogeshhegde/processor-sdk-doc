@@ -38,7 +38,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/ADC
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
-linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW3g
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
