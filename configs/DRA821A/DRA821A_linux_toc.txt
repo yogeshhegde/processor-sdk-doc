@@ -74,6 +74,7 @@ linux/How_to_Guides/Host/How_to_Setup_a_Samba_Server
 linux/How_to_Guides/Host/Boot_Sequence
 linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
 linux/How_to_Guides/Host/How_to_Flash_Linux_System_from_U-boot
+linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 linux/How_to_Guides/Target/How_to_Change_dtb_File
 linux/How_to_Guides/Target/How_to_flash_emmc_device
