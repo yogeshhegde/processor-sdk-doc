@@ -191,7 +191,7 @@ OpenCL
 Boot
 ***************
 .. _FC-Boot-label:
-.. include:: /rtos/PDK_Platform_Software/Boot_Board_and_EVM_Abstractions/Boot.rst.inc
+.. include:: /rtos/Boot.rst.inc
 
 
 .. _foundational-components-mpm:
