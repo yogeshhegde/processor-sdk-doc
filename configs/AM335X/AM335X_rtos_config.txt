@@ -29,7 +29,7 @@ Replacement Variables
 
 Configuration Values
 --------------------
-'CONFIG_part_family'      : 'General_family'
+'CONFIG_part_family'      : 'AM335X_family'
 'CONFIG_part_variant'     : 'AM335X'
 'CONFIG_sdk'              : 'PSDKRTOS'
 'CONFIG_icss_support'     : 'yes'
