@@ -22,8 +22,24 @@ interfaces with complete isolation (no packet switching between external
 ports), or can be configured in Switch mode with IEEE 802.1Q HW bridge
 in managed or learning mode between each of the individual MAC ports.
 
+The driver follows the standard Linux network interface architecture and
+supports the following features:
+
+#. Mulitple indpendent MAC mode
+#. Switch mode as per IEEE 802.1Q
+#. Cut Through forwarding in Switch mode
+#. 10/100/1000 Mbps mode of operation.
+#. Auto negotiation.
+#. Linux NAPI support
+#. VLAN filtering
+#. Ethertool
+#. CPTS/PTP as per 802.1AS-2011 (TSN)
+#. EST/TAS offload as per 802.1Q-2018 (TSN)
+#. IET/preemption offload as per 802.1Q-2018 (TSN)
+
+
 .. note::
- Default mode of operation is Mulitple indpendent MAC ports.
+ Default mode of operation is multiple indpendent MAC ports.
 
 Supported platforms
 """""""""""""""""""
@@ -52,12 +68,10 @@ custom builds, please ensure following configs are enabled.
 .. rubric:: **Module Build**
    :name: k3-module-build
 
-Module build for the cpsw driver is supported. To do this, at all the
-places mentioned in the section above select module build (short-cut key
-**M**).
+Module build for the cpsw driver is supported. To do this, use option 'm' for above configs, where applicable.
 
-.. rubric:: **Device tree bindings**
-   :name: k3-dt-binding
+Device tree bindings
+====================
 
 The DT bindings description can be found at:
 
