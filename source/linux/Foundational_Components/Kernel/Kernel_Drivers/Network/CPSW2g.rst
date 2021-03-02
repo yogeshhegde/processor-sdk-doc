@@ -1,10 +1,13 @@
 .. include:: /replacevars.rst.inc
 
 CPSW2g Ethernet
----------------------------------------
+---------------
+
+.. contents:: :local:
+    :depth: 3
 
 Introduction
-"""""""""""""
+============
 
 The TI |__PART_FAMILY_DEVICE_NAMES__| SoC Gigabit Ethernet Switch subsystem (CPSW NUSS) has two ports and
 provides Ethernet packet communication for the device. It supports MII interfaces
@@ -22,47 +25,24 @@ operating by TI |__PART_FAMILY_DEVICE_NAMES__| NAVSS Unified DMA Peripheral Root
 The driver follows the standard Linux network interface architecture and
 supports the following features:
 
-#. 100/1000 Mbps mode of operation.
+#. 10/100/1000 Mbps mode of operation.
 #. Auto negotiation.
 #. Linux NAPI support
 #. VLAN filtering
 #. Ethertool
-#. CPTS
-#. EST/TAS offload as per 802.1Q-2018
+#. CPTS/PTP as per 802.1AS-2011 (TSN)
+#. EST/TAS offload as per 802.1Q-2018 (TSN)
+#. IET/preemption offload as per 802.1Q-2018 (TSN)
 
 *Not supported*:
 
 - Interrupt Pacing is not supported by HW. NAPI is used by driver.
 
-.. rubric:: **Driver Configuration**
-   :name: k3-driver-configuration-cpsw
+Driver Configuration
+====================
 
-The TI Processor SDK has |__PART_FAMILY_NAME__|  MCU CPSW2g driver enabled by default.
-
-To enable/disable Networking support manually, start the *Linux Kernel Configuration*
-tool:
-
-::
-
-    $ make ARCH=arm64 menuconfig
-
-| Select *Device Drivers* from the main menu ->
-| Select *Network device support* ->
-| Select *Ethernet driver support* ->
-| Select ** as shown here:
-
-::
-
-       ...
-       [*]   Texas Instruments (TI) devices
-       -*-     TI DaVinci MDIO Support
-       -*-     TI CPSW ALE Support
-       <*>     TI K3 CPSW Ethernet driver
-       [*]       Enable TAS offload in AM65 CPSW
-       <*>     TI K3 AM65x CPTS
-       ...
-
-Kernel Kconfig options:
+The TI Processor SDK has |__PART_FAMILY_DEVICE_NAMES__| MCU CPSW2g driver enabled by default.
+In case of custom builds, please ensure following configs are enabled.
 
 ::
 
@@ -71,16 +51,15 @@ Kernel Kconfig options:
     CONFIG_TI_AM65_CPSW_NUSS
     CONFIG_TI_AM65_CPTS
     CONFIG_TI_AM65_CPSW_TAS
+    CONFIG_PHY_TI_GMII_SEL
 
 .. rubric:: **Module Build**
    :name: k3-module-build
 
-Module build for the cpsw driver is supported. To do this, at all the
-places mentioned in the section above select module build (short-cut key
-**M**).
+Module build for the cpsw driver is supported. To do this, use option 'm' for above configs, where applicable.
 
-.. rubric:: **Device tree bindings**
-   :name: k3-dt-binding
+Device tree bindings
+====================
 
 The DT bindings description can be found at:
 
@@ -88,5 +67,8 @@ The DT bindings description can be found at:
 
 |   `Documentation/devicetree/bindings/net/ti,am654-cpts.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.4.y/Documentation/devicetree/bindings/net/ti,am654-cpts.txt>`__
 |
+
+MAC mode
+========
 
 .. include:: K3-CPSW-common.rst.inc
