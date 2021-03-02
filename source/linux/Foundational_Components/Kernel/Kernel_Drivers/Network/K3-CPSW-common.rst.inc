@@ -83,11 +83,12 @@ The Driver enables RX checksum offload by default. It can be disabled/enabled by
 
     ethtool -K <dev> rx-checksum on|off
 
-.. note::
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-    TX checksum offload is implemented, but may disabled by default due to
-    errata i2027 on affected |__PART_FAMILY_DEVICE_NAMES__|.
+    .. note::
 
+      TX checksum offload is implemented, but it is disabled by default
+      on affected |__PART_FAMILY_DEVICE_NAMES__| SR1.0 due to errata i2027.
 
 .. rubric:: **VLAN Config**
    :name: k3-vlan-config
