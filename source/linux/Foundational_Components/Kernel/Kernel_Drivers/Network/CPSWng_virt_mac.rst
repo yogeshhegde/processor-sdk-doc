@@ -245,24 +245,29 @@ Eth0 can be started by default or configured manually:
 ::
 
       udhcpc -i ethX
-      ifup eth0
+      ip link set dev ethX up
 
 *Manual IP address configuration*
 
 ::
 
-    ifconfig eth0 <ip> netmask <mask> up
+    ip addr add <ip>/24 dev ethX
+    ip link set dev ethX up
 
-.. rubric:: ifconfig - Set MAC address
+    < or >
+
+    ifconfig ethX <ip> netmask <mask> up
+
+.. rubric:: Set MAC address
    :name: k3-j721e-cpsw-virt-mac-set-mac
 
 The j721e-cpsw-virt-mac supports changing the HW MAC address, but this operation can be performed only when the network device is inactive (down).
 
 ::
 
-   # ifconfig <dev> down
-   # ifconfig <dev> hw ether <MAC-addr>
-    
+   ip link set dev ethX down
+   ip link set dev ethX address <MAC-addr>
+   ip link set dev ethX up
 
 .. rubric:: ethtool - Get driver information
    :name: k3-j721e-cpsw-virt-mac-ethtool-i-driver

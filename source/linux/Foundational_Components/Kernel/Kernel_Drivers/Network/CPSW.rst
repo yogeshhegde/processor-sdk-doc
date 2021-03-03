@@ -239,39 +239,56 @@ Examples:
 .. rubric:: **VLAN Config**
    :name: vlan-config
 
-VLAN can be added/deleted using ``vconfig`` utility. In switch mode
+VLAN can be added/deleted using ``ip`` or ``vconfig`` utility. In switch mode
 added vlan will be subscribed to all the ports, in Dual EMAC mode added
 VLAN will be subscribed to host port and the respective slave ports.
 
-.. rubric:: Examples
-
 **VLAN Add**
 
-``vconfig add eth0 5``
+::
+
+    ip link add link eth0 name eth0.5 type vlan id 5
+
+    < or >
+
+    vconfig add eth0 5
 
 **VLAN del**
 
-``vconfig rem eth0 5``
+::
+
+    ip link del eth0.5
+
+    < or >
+
+    vconfig rem eth0 5
 
 **IP assigning**
 
 IP address can be assigned to the VLAN interface either via udhcpc
 when a VLAN aware dhcp server is present or via static ip asigning
-using ifconfig.
+using ip/ifconfig tools.
+
+::
+
+    ip addr add 192.168.10.5/24 dev eth0.5
+    ip link set dev eth0 up
+
+    < or >
+
+    ifconfig eth0.5 192.168.10.5
 
 Once VLAN is added, it will create a new entry in Ethernet interfaces
 like eth0.5, below is an example how it check the vlan interface
 
 ::
 
-    root@dra7xx-evm:~# ifconfig eth0.5
-    eth0.5    Link encap:Ethernet  HWaddr 20:CD:39:2B:C7:BE
-              inet addr:192.168.10.5  Bcast:192.168.10.255  Mask:255.255.255.0
-              UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-              RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-              TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-              collisions:0 txqueuelen:0
-              RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+    ip link show dev eth0.5
+    ip addr show dev eth0.5
+
+    < or >
+
+    ifconfig eth0.5
 
 .. rubric:: Packet Send/Receive
    :name: packet-sendreceive
@@ -449,23 +466,19 @@ device tree node as the reference patch below
    :name: bringing-up-interfaces
 
 Eth0 will be up by-default. Eth1 interface has to be brought up manually
-using either of the folloing command or through init scripts
+using either of the folloing command or through init scripts.
 
-.. rubric:: DHCP
-   :name: dhcp
-
-::
-
-    ifup eth1
-
-.. rubric:: Manual IP address configuration
-   :name: manual-ip-address-configuration
+The network interface IP address can be configured automatically (DHCP) depending on root file system or configured manually. Manual configuration:
 
 ::
 
-    ifconfig eth1 <ip> netmask <mask> up
+    ip addr add 192.168.1.1/24 dev eth0
+    ip link set dev eth0 up
 
-| 
+    < or >
+
+    ifconfig eth0 <ip> netmask <mask> up
+
 
 | 
 

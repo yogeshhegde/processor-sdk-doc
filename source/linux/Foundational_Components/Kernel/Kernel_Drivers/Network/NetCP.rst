@@ -891,8 +891,15 @@ interface.
 
 ::
 
+      $ ip link add link eth0 name eth0.10 type vlan id 10
+      $ ip addr add 192.168.1.200/24 dev eth0.10
+      $ ip link set dev eth0.10 up
+
+      < or >
+
       $ vconfig add eth0 10
       $ ifconfig eth0.10 192.168.1.200
+
       $ ifconfig
       eth0      Link encap:Ethernet  HWaddr 00:17:EA:F4:32:3A
                 inet addr:132.168.138.88  Bcast:0.0.0.0  Mask:255.255.254.0

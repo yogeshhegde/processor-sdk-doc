@@ -593,7 +593,7 @@ To turn on PPS,
 
 ::
 
-       # ifconfig eth1 up
+       # ip link set dev eth1 up
        # ./testptp -d /dev/ptp2 -P 1
        pps for system time request okay
 

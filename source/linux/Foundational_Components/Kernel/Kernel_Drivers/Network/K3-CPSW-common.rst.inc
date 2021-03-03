@@ -1084,7 +1084,7 @@ Assume 2 AM65x IDKs are connected back to back over MCU Ethernet port (typically
 
 ::
 
- root@am65xx-evm:~# ifconfig eth0 down                                                                                               
+ root@am65xx-evm:~# ip link set dev eth0 down
  [  169.798571] am65-cpsw-nuss 46000000.ethernet eth0: Link is Down                                                                  
  root@am65xx-evm:~# ethtool -L eth0 tx 2                                                                                             
  root@am65xx-evm:~# ethtool -l eth0                                                                                                  
@@ -1112,7 +1112,7 @@ Assume 2 AM65x IDKs are connected back to back over MCU Ethernet port (typically
  p0-rx-ptype-rrobin  : off                                                                                                           
  iet-frame-preemption: on                                                                                                            
  iet-mac-verify      : on                                                                                                            
- root@am65xx-evm:~# ifconfig eth0 up                                                                                                 
+ root@am65xx-evm:~# ip link set dev eth0 up
  root@am65xx-evm:~#                                                                                                                  
  root@am65xx-evm:~# [  267.393967] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready                                           
  [  267.400353] am65-cpsw-nuss 46000000.ethernet eth0: Starting IET/FPE MAC Verify                                                   
@@ -1124,7 +1124,7 @@ Assume 2 AM65x IDKs are connected back to back over MCU Ethernet port (typically
 
 ::
 
- root@am65xx-evm:~# ifconfig eth0 down                                                                                               
+ root@am65xx-evm:~# ip link set dev eth0 down
  [  394.590576] am65-cpsw-nuss 46000000.ethernet eth0: Link is Down                                                                  
  root@am65xx-evm:~# ethtool --set-priv-flags eth0 iet-frame-preemption on                                                            
  #if iet-mac-verify was enabled before, turn it off
@@ -1135,7 +1135,8 @@ Assume 2 AM65x IDKs are connected back to back over MCU Ethernet port (typically
  iet-frame-preemption: on                                                                                                            
  iet-mac-verify      : off                                                                                                           
  root@am65xx-evm:~#                                                                                                                  
- root@am65xx-evm:~# ifconfig eth0 192.168.100.20                                                                                     
+ root@am65xx-evm:~# ip link set dev eth0 up
+ root@am65xx-evm:~# ip addr add 192.168.100.20/24 dev eth0
  [  500.502660] TI DP83867 46000f00.mdio:00: attached PHY driver [TI DP83867] (mii_bus:phy_addr=46000f00.mdio:00, irq=POLL)          
  root@am65xx-evm:~# [  500.516232] am65-cpsw-nuss 46000000.ethernet eth0: Link is Down                                               
  root@am65xx-evm:~# [  552.738077] am65-cpsw-nuss 46000000.ethernet eth0: IET Enable Force mode                                      
@@ -1177,10 +1178,10 @@ So to test, need to have traffic at the preemption queue as well as at the expre
  # From above mqprio settings, TC at index 3 is 1. So this TC packets go to Q1
  root@am65xx-evm:~# tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5003 0xffff action skbedit priority 3        
  root@am65xx-evm:~#                                                                                                                  
- root@am65xx-evm:~# ifconfig eth0 192.168.100.20                                                                                     
+ root@am65xx-evm:~# ip addr add 192.168.100.20/24 dev eth0
 
  # At the Listener DUT, setup ip address and run iperf3 server session listening to port 5002 and 5003.
- # ifconfig eth0 192.168.100.30
+ # ip addr add 192.168.100.30/24 dev eth0
  root@am65xx-evm:~# iperf3 -s -i30 -p5002&                                                                                           
  [1] 1224                                                                                                                            
  root@am65xx-evm:~# iperf3 -s -i30 -p5003&                                                                                           
