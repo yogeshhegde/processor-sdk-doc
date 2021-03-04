@@ -44,7 +44,7 @@ U-Boot
 | uBoot Version: 2020.01
 | uBoot Description: 07.02.00.004
 
-| Clone: ssh://git@bitbucket.itg.ti.com/lcpdpub/ti-u-boot.git
+| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: 07.02.00.004
 | uBoot Tag: 07.02.00.004
 
@@ -59,7 +59,7 @@ Kernel
 | Kernel Version: 5.4.87
 | Kernel Description: 07.02.00.004
 
-| Repo: ssh://git@bitbucket.itg.ti.com/lcpdpub/ti-linux-kernel.git
+| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-5.4.y
 | Tag: 07.02.00.004
 | Kernel defconfig: multi_v7_defconfig
@@ -75,7 +75,7 @@ Kernel
 | RT Kernel Version: 5.4.87-rt48
 | Kernel Description: 07.02.00.004-rt
 
-| Repo: ssh://git@bitbucket.itg.ti.com/lcpdpub/ti-linux-kernel.git
+| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.4.y
 | Tag: 07.02.00.004-rt
 | Kernel defconfig: multi_v7_defconfig
