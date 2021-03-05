@@ -311,7 +311,7 @@ Here are the steps needed to test out the new Ethernet interfaces:
       and **ifup eth4** to bring up the PRU Ethernet interfaces
 
 -  If all goes well you should see the PRU-ICSS ports in the output of
-   the **ifconfig** command
+   the **ip/ifconfig** command
 
 | 
 
@@ -456,7 +456,7 @@ to get your PRU-ICSS interface up and running already):
    'see' each other on the network (I connect both to the same switch
    and allow them to use DHCP to acquire IP addresses on the same
    network)
--  Use **ifconfig** on both your Linux development machine and your
+-  Use **ip/ifconfig** on both your Linux development machine and your
    board and note down each IP address
 
    -  For the purposes of this example I will use 192.168.0.105 as the
@@ -590,6 +590,8 @@ You can download the sample udp-packet.pcap but make sure you update the MAC add
     ------------------------------------------------
 
     DUT:
+    root@am57xx-evm:~# ip -s link show dev eth2
+    <or>
     root@am57xx-evm:~# ifconfig eth2
     eth2      Link encap:Ethernet  HWaddr 70:FF:76:1C:0A:D1
               inet addr:192.168.3.102  Bcast:192.168.3.255  Mask:255.255.255.0
