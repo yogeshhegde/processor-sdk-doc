@@ -59,7 +59,7 @@ structure.
 This structure must be initialized before the nwal_create() function API
 is called and cannot be changed afterwards. For details regarding
 individual fields of this structure, see the Doxygen help by opening
-PDK_INSTALL_DIR\packages\ti\drv\nwal\docs\doxygen\html\index.html.
+PDK_INSTALL_DIR/packages/ti/drv/nwal/docs/doxygen/html/index.html.
 
 .. rubric:: **APIs**
    :name: apis
@@ -87,12 +87,12 @@ API reference for application can be found in below file:
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\nwal\docs\doxygen\html\index |
+| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/nwal/docs/doxygen/html/index |
 |                                   | .html                             |
 +-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \drv\nwal\docs\ReleaseNotes_NWAL_ |
+| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /drv/nwal/docs/ReleaseNotes_NWAL_ |
 |                                   | LLD.pdf                           |
 +-----------------------------------+-----------------------------------+
 

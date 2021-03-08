@@ -88,13 +88,13 @@ as indicated in the table above.
 +-------------------------------+-----------------------------------------------------------------------+
 |**Install Package**            | PDK                                                                   |
 +-------------------------------+-----------------------------------------------------------------------+
-|**Install Directory**          | $(TI_PDK_INSTALL_DIR)\packages\ti\transport\ndk\nimu                  |
+|**Install Directory**          | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu                  |
 +-------------------------------+-----------------------------------------------------------------------+
 |**Project Type**               |`Eclipse RTSC <http://www.eclipse.org/rtsc/>`__                        |
 +-------------------------------+-----------------------------------------------------------------------+
 |**Endian Support**             | Little                                                                |
 +-------------------------------+-----------------------------------------------------------------------+
-|**Library Path**               | $(TI_PDK_INSTALL_DIR)\packages\ti\transport\ndk\nimu\lib              |
+|**Library Path**               | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/lib              |
 +-------------------------------+-----------------------------------------------------------------------+
 |**Reference Guides**           | None                                                                  |
 +-------------------------------+-----------------------------------------------------------------------+
@@ -126,13 +126,13 @@ table above. For details of the PRU-ICSS, please refer to
 +-------------------------------+-----------------------------------------------------------------------+
 |**Install Package**            | PDK                                                                   |
 +-------------------------------+-----------------------------------------------------------------------+
-|**Install Directory**          | $(TI_PDK_INSTALL_DIR)\packages\ti\transport\ndk\nimu_icss             |
+|**Install Directory**          | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss             |
 +-------------------------------+-----------------------------------------------------------------------+
 |**Project Type**               |`Eclipse RTSC <http://www.eclipse.org/rtsc/>`__                        |
 +-------------------------------+-----------------------------------------------------------------------+
 |**Endian Support**             | Little                                                                |
 +-------------------------------+-----------------------------------------------------------------------+
-|**Library Path**               | $(TI_PDK_INSTALL_DIR)\packages\ti\transport\ndk\nimu_icss\lib         |
+|**Library Path**               | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/lib         |
 +-------------------------------+-----------------------------------------------------------------------+
 |**Reference Guides**           | None                                                                  |
 +-------------------------------+-----------------------------------------------------------------------+
@@ -163,7 +163,7 @@ Building the NDK examples
 | This can be found under the <PDK>/packages folder. The only
   modification to these scripts, if any, is to update the
   CCS_INSTALL_PATH variable to point to CCS location if its not in the
-  c:\ti\ccsv6 directory . Please refer to `Rebuilding
+  c:/ti/ccsv6 directory . Please refer to `Rebuilding
   PDK <index_how_to_guides.html#rebuild-drivers-from-pdk-directory>`__ for details of example project
   creation and how to run the example projects using CCS.
 

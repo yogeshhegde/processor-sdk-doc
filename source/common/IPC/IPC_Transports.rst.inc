@@ -706,20 +706,20 @@ Additional References
 +-----------------------------------+-----------------------------------+
 | **Document**                      | **Location**                      |
 +-----------------------------------+-----------------------------------+
-| TransportQmss API Reference       | $(TI_PDK_INSTALL_DIR)\packages\ti |
-| Manual                            | \transport\ipc\c66\qmss\docs\doxy |
-|                                   | gen\html\index.html               |
+| TransportQmss API Reference       | $(TI_PDK_INSTALL_DIR)/packages/ti |
+| Manual                            | /transport/ipc/c66/qmss/docs/doxy |
+|                                   | gen/html/index.html               |
 +-----------------------------------+-----------------------------------+
-| TransportQmss Release Notes       | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \transport\ipc\c66\qmss\docs\Rele |
+| TransportQmss Release Notes       | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /transport/ipc/c66/qmss/docs/Rele |
 |                                   | aseNotes_TransportQmss.pdf        |
 +-----------------------------------+-----------------------------------+
-| TransportSrio API Reference       | $(TI_PDK_INSTALL_DIR)\packages\ti |
-| Manual                            | \transport\ipc\c66\srio\docs\doxy |
-|                                   | gen\html\index.html               |
+| TransportSrio API Reference       | $(TI_PDK_INSTALL_DIR)/packages/ti |
+| Manual                            | /transport/ipc/c66/srio/docs/doxy |
+|                                   | gen/html/index.html               |
 +-----------------------------------+-----------------------------------+
-| TransportSrio Release Notes       | $(TI_PDK_INSTALL_DIR)\packages\ti |
-|                                   | \transport\ipc\c66\srio\docs\Rele |
+| TransportSrio Release Notes       | $(TI_PDK_INSTALL_DIR)/packages/ti |
+|                                   | /transport/ipc/c66/srio/docs/Rele |
 |                                   | aseNotes_TransportSrio.pdf        |
 +-----------------------------------+-----------------------------------+
 
