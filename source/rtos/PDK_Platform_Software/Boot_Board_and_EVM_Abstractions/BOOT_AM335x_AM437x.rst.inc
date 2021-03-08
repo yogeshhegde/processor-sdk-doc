@@ -235,7 +235,7 @@ for the various EVMs.
 | 
 
 Building the Bootloader
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 **Pre-requisite:** Setup SDK build environment as described in article
  `Setup_Environment <index_overview.html#setup-environment>`__
@@ -259,7 +259,7 @@ built using the following command in starterware.
 
 -  BOOT_MODE: mcspi, nand, qspi, mmcsd, uart (Check supported boot modes
    for your evaluation platform)
--  EVM: am335x-evm, am43xx-evm
+-  EVM: am335x-evm (for all AM335x/AMIC110 based boards), am43xx-evm (for all AM43xx based boards)
 -  BUILD_PROFILE: debug, release
 
 Additional Build Options
@@ -320,12 +320,13 @@ industrial use case.
 | 
 
 Boot Mode settings
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
-Boot mode settings for all supported AM335x and AM437x boards are `here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+Boot mode settings for supported AM335x and AM437x boards can be found in
+the applicable `EVM Hardware User's Guide <index_release_specific.html#supported-platforms-and-versions>`__.
 
 Boot Modes
-^^^^^^^^^^^^
+^^^^^^^^^^
 
 Booting Via SD Card
 """""""""""""""""""""
@@ -381,9 +382,10 @@ After this the application will take control and execute.
 selection pins from hardware reference manuals.
 
 | If the boards have no boot mode selection pins and a valid boot image
-  is present on McSPI flash, Booting will happen from McSPI flash. Erase
-  McSPI flash in such cases to boot from SD card `McSPI flash
-  erase <http://processors.wiki.ti.com/index.php?title=StarterWare_Booting_And_Flashing&action=edit&redlink=1>`__.
+  is present on McSPI flash, booting will happen from McSPI flash. Erase
+  McSPI flash in such cases to boot from SD card.
+  Refer to `Booting Via McSPI <index_Foundational_Components.html#booting-via-mcspi>`__
+  for how to rease McSPI flash.
   The boot sequence depends on ROM bootloader.
 
 
@@ -528,8 +530,8 @@ Booting from McSPI involves two steps.
 .. rubric:: Preparing Flash Device
    :name: preparing-flash-device-1
 
--  Set the appropriate bootmode if applicable for EVM.Refer `Boot mode
-   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__.
+-  Set the appropriate bootmode if applicable for EVM. Refer to corresponding
+   hardware user's guide for bootmode settings.
    **Note**: Most of the boards may not have switch settings.
 -  Add a required target configuration in CCS depending on emulator and
    board connected.
@@ -603,8 +605,7 @@ Booting from NAND involves two steps.
 .. rubric:: Preparing Flash Device
    :name: preparing-flash-device-2
 
--  Configure BOOT pins for NAND `Boot mode
-   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+-  Configure BOOT pins for NAND according to the hardware user's guide.
 -  Connect target with CCS.
 -  Load the
    *<PDK_INSTALL_DIR/packages/ti/starterware/tools/flash_writer/nand_flash_writer_AM335X.out>*
@@ -677,8 +678,8 @@ bootloader uses the BCH8 ECC scheme.
 -  Connect a UART cable to a host running a serial terminal application
    (teraterm/hyperterminal) with 115200 baud, 8bit, No parity and 1 STOP
    bit configuration.
--  Configure the board for NAND boot mode. Refer  `Boot mode
-   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+-  Configure the board for NAND boot mode. Refer to corresponding
+   hardware user's guide for bootmode settings.
 -  On reset, ROM detects bootloader from NAND and copies it to internal
    memory. Bootloader then copies application image from the NAND to DDR
    and passes control to application. If the process is successful,
