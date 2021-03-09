@@ -183,7 +183,7 @@ This section provides the guidelines for creating a custom board library.
 
 Below image shows the recommended sequence to be followed while porting processor SDK to custom board.
 
-.. Image:: ../images/prsdk_rtos_custom_board_porting_steps.png
+.. Image:: /images/prsdk_rtos_custom_board_porting_steps.png
 
 Board Configurations
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -547,9 +547,9 @@ Creating Board Library with Custom Name
 This section describes how to create a board library with custom name using
 AM572x as an example. Due to dependencies on the starterware, AM335x/AM437x
 board library creation is different and is described in the
-`section for AM335x/AM437x <index_board.html#creating-custom-board-library-for-am335x-and-am437x>`_.
+`section for AM335x/AM437x <index_board.html#creating-custom-board-library-for-am335x-and-am437x>`__.
 
-As mentioned in section `Board Configurations <index_board.html#board-configurations>`_,
+As mentioned in section `Board Configurations <index_board.html#board-configurations>`__,
 adding custom board library can follow one of two approaches. This section provides detailed
 instructions for the second approach - adding a custom board to PDK build.
 
@@ -772,8 +772,9 @@ Currently the AM335x and AM437x board libraries reuse the board support code in
 legacy starterware (now part of the PDK). Therefore, rebuilding the board
 library involves compiling the starterware source code. Both approaches of
 creating a custom board library are described in this section:
-   - Modifying an existing TI board
-   - Adding a new custom board
+
+- Modifying an existing TI board
+- Adding a new custom board
 
 Modifying an Existing TI Board for AM335x/AM437x
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -789,7 +790,7 @@ may choose to modify any other existing board and the procedure is the same.
    - Use the tool to change the configuration and make sure there are no conflicts.
    - When configuration is finalized, save the starterware pinmux files as shown below:
 
-.. Image:: ../images/pinmux_save_files.jpg
+.. Image:: /images/pinmux_save_files.jpg
 
 **Step 2: Using newly generated pinmux files for the board to be modified**
 
@@ -945,8 +946,3 @@ and do the following before building the custom board library:
         ifeq ($(BOARD),$(filter $(BOARD), myCustomBoard))
             SRCS_COMMON += am335x_myCustomBoard_pinmux_data.c
         endif
-
-
-
-.. raw:: html
-
