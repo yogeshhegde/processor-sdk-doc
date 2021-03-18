@@ -183,7 +183,7 @@ This section provides the guidelines for creating a custom board library.
 
 Below image shows the recommended sequence to be followed while porting processor SDK to custom board.
 
-.. Image:: ../images/prsdk_rtos_custom_board_porting_steps.png
+.. Image:: /images/prsdk_rtos_custom_board_porting_steps.png
 
 Board Configurations
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -544,6 +544,15 @@ Below are the recommended diagnostic tests which can be validated on custom boar
 Creating Board Library with Custom Name
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+This section describes how to create a board library with custom name using
+AM572x as an example. Due to dependencies on the starterware, AM335x/AM437x
+board library creation is different and is described in the
+`section for AM335x/AM437x <index_board.html#creating-custom-board-library-for-am335x-and-am437x>`__.
+
+As mentioned in section `Board Configurations <index_board.html#board-configurations>`__,
+adding custom board library can follow one of two approaches. This section provides detailed
+instructions for the second approach - adding a custom board to PDK build.
+
 Instructions to add custom Board to the PDK build
 """"""""""""""""""""""""""""""""""""""""""""""""""
 Follow below steps for creating board library with custom name. 
@@ -552,15 +561,21 @@ AM572x platform is used as reference in the examples wherever needed.
 **Step 1: Creating new directory for custom board library**
 
 In <PDK_INSTALL_PATH>/packages/ti/board/src, 
-Create new directory myCustomBoard and copy files from existing board
+create new directory myCustomBoard and copy files from existing board
 library package which closely matches your custom board design.
 
 **Step 2: Updating names and makefile inside the customBoard package**
 
-In <PDK_INSTALL_PATH>/packages/ti/board/src/myCustomBoard, Rename file
+In <PDK_INSTALL_PATH>/packages/ti/board/src/myCustomBoard, rename file
 src_files_<Board>.mk to src_files_myCustomBoard.mk. This file will
 need a bit of work depending on what elements of board you need for your
-platform.
+platform. At a minimum, modify SRCDIR and INCDIR to have correct paths to
+the newly created directory in previous step:
+
+::
+
+    SRCDIR += src/myCustomBoard src/myCustomBoard/device src/myCustomBoard/include
+    INCDIR += src/myCustomBoard src/myCustomBoard/device src/myCustomBoard/include
 
 **Step 3: Adding MACRO based inclusion of updated board_cfg.h
 corresponding to custom Board**
@@ -576,12 +591,14 @@ and board specific defines can be picked up
     #endif
 
 **Step 4: Update top level board package makefile to include build for
-customBoard Library** The makefile is used to include all relevant make
-files for including Low level driver(LLD), source files relevant to
-board and the common board.c file
+customBoard library**
 
--  In packages/ti/board/build/makefile.mk, add board.c to the
-   customBoard build:
+Modify makefile packages/ti/board/build/makefile.mk which includes all relevant
+makefiles for low level driver(LLD), source files relevant to
+board and the common board.c file.
+
+-  Add customBoard build for board.c and boardStub.c (notice the newly added
+   myCustomBoard):
 
 ::
 
@@ -590,18 +607,13 @@ board and the common board.c file
     SRCS_COMMON += board.c
     endif
 
--  Add board library source files and LLD files to the customBoard build
-
-In packages/ti/board/build/makefile.mk, change
-
-::
-
-    ifeq ($(BOARD),$(filter $(BOARD), evmAM572x idkAM571x idkAM572x))
-    include $(PDK_BOARD_COMP_PATH)/src/$(BOARD)/src_files_$(BOARD).mk
-    include $(PDK_BOARD_COMP_PATH)/src/src_files_lld.mk
+    ifeq ($(BOARD),$(filter $(BOARD),evmAM335x icev2AM335x iceAMIC110 skAM335x bbbAM335x evmAM437x idkAM437x skAM437x myCustomBoard evmAM572x idkAM571x idkAM572x evmK2H evmK2K evmK2E evmK2L iceK2G evmC6678 evmC6657 evmOMAPL137 lcdkOMAPL138 idkAM574x evmDRA72x evmDRA75x evmDRA78x evmTDAxx j721e_sim j721e_qt j7200_evm tpr12_evm))
+    # Board stub function enabled for all the boards except evmK2G
+    SRCS_COMMON += boardStub.c
     endif
 
-to
+
+-  Add customBoard build for board library source files and LLD files:
 
 ::
 
@@ -612,8 +624,9 @@ to
 
 **Step 5: Update Global makerules**
 
-build_config.mk defines the global CFLAGS used to compile different PDK
-components. Add the following line in the BOARD Specific configurations.
+Makefile packages/ti/build/makerules/build_config.mk defines the global CFLAGS
+used to compile different PDK components. Add the following line in the BOARD
+specific configurations:
 
 ::
 
@@ -651,8 +664,10 @@ In packages/ti/build/makerules/platform.mk, add the following lines:
    users are not required to follow this convention.
 
 **Step 6: Update source files corresponding to drivers used in board
-library**. src_files_lld.mk file adds source files corresponding to LLD
-drivers used in the board library. Usually most boards utilitize control
+library**
+
+Makefile src_files_lld.mk file adds source files corresponding to LLD
+drivers used in the board library. Usually most boards utilize control
 driver like I2C (for programming the PMIC or reading EEPROM), UART
 drivers (for IO) and boot media drivers like (SPI/QSPI, MMC or NAND). In
 the example below, we assume that the custom Board library has
@@ -705,7 +720,7 @@ limit the build by specify only a15_0 and C66x in the CORELIST
     #board_lib_am572x_CORELIST = c66x a15_0 ipu1_0
     board_lib_am572x_CORELIST = a15_0 c66x
 
-**Step 8: Update .bld files for XDCTOOL based build steps.**
+**Step 8: Update .bld files for XDCTOOL based build steps**
 
 Make corresponding changes in packages/ti/board/config.bld, by adding
 the following lines:
@@ -729,47 +744,205 @@ Also, in packages/ti/board/package.bld, add the following line:
     Pkg.otherFiles[Pkg.otherFiles.length++] = "src/myCustomBoard/src_files_myCustomBoard.mk";
 
 
-**Step 9: Setup Top level PDK build files to add the Custom board to
-setup environment.**
+**Step 9: Add custom board to board list**
 
-Final setup involves updating the top level setup file for PDK package
-to update to setup the build environment to include the custom Board in
-setup. This can be done by commenting out the top line and adding in the
-bottom line in <PDK_INSTALL_PATH>/packages/Rules.make:
-
+Add myCustomBoard to AM572x board list in file packages/ti/build/soc_info.mk:
 
 ::
 
-    #export LIMIT_BOARDS ?= evmAM572x idkAM571x idkAM572x
-    export LIMIT_BOARDS ?= myCustomBoard
+    BOARD_LIST_am572x = evmAM572x idkAM572x myCustomBoard
 
-**Alternative:** Invoke the build using command line options to limit
-the build to specific board, specific SOC and specific CORE. For
-example, if you want to build the A15 version of board library for
-AM572x EVM, you can invoke the build using:
+
+**Step 10: Build the custom board library with the updated settings**
+
+First change directory to <PDK_INSTALL_PATH>/packages and run pdksetupenv.bat.
+
+Then change directory to <PDK_INSTALL_PATH>/packages/ti/board and build the board library:
 
 ::
 
-    gmake board_lib LIMIT_SOCS=am572x LIMIT_BOARDS=myCustomBoard LIMIT_CORES=a15_0 
+    gmake LIMIT_SOCS=am572x LIMIT_BOARDS=myCustomBoard LIMIT_CORES=a15_0
 
 
+Creating Custom Board Library for AM335x and AM437x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Step 10: Building the custom board with the updated settings**
+This section describes how to create a custom board library for AM335x/AM437x.
+Currently the AM335x and AM437x board libraries reuse the board support code in
+legacy starterware (now part of the PDK). Therefore, rebuilding the board
+library involves compiling the starterware source code. Both approaches of
+creating a custom board library are described in this section:
 
-To build package change directory to
-<SDK_INSTALL_PATH>/<PDK_INSTALL_PATH>/packages, first run pdksetupenv.bat
+- Modifying an existing TI board
+- Adding a new custom board
 
-To make just the board library: gmake board_lib
+Modifying an Existing TI Board for AM335x/AM437x
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+This approach is less time consuming since the board library setup already
+exists in PDK, but requires users to back up the existing TI board library for reference.
+The instructions below use AM335x GP EVM as the existing board to modify. Users
+may choose to modify any other existing board and the procedure is the same.
+
+**Step 1: Generating a new pinmux configuration**
+   - Download and run the `PINMUX Tool <https://www.ti.com/tool/PINMUXTOOL>`_.
+   - Use "Open an Existing Design" and open <PDK_INSTALL_PATH>/packages/ti/starterware/tools/pinmux_config/am335x/gpevm_config.pinmux.
+   - Use the tool to change the configuration and make sure there are no conflicts.
+   - When configuration is finalized, save the starterware pinmux files as shown below:
+
+.. Image:: /images/pinmux_save_files.jpg
+
+**Step 2: Using newly generated pinmux files for the board to be modified**
+
+- Open am335x_pinmux.h saved in previous step and replace the following line at the bottom of the file
+
+::
+
+  extern pinmuxBoardCfg_t gAM335xPinmuxData[];
+
+with the following lines from <PDK_INSTALL_PATH>/packages/ti/starterware/board/am335x/am335x_pinmux.h:
+
+::
+
+  /** \brief Pinmux configuration data for the board. Auto-generated from
+             Pinmux tool. */
+  extern pinmuxBoardCfg_t gGpevmPinmuxData[];
+
+  /** \brief Pinmux configuration data for the board. Auto-generated from
+             Pinmux tool. */
+  extern pinmuxBoardCfg_t gEvmskPinmuxData[];
+
+  /** \brief Pinmux configuration data for the board. Auto-generated from
+             Pinmux tool. */
+  extern pinmuxBoardCfg_t gBbPinmuxData[];
+
+  /** \brief Pinmux configuration data for the board. Auto-generated from
+             Pinmux tool. */
+  extern pinmuxBoardCfg_t gBbbPinmuxData[];
+
+  /** \brief Pinmux configuration data for the board. Auto-generated from
+             Pinmux tool. */
+  extern pinmuxBoardCfg_t gIceV1PinmuxData[];
+
+  /** \brief Pinmux configuration data for the board. Auto-generated from
+             Pinmux tool. */
+  extern pinmuxBoardCfg_t gIceV2PinmuxData[];
+
+  /** \brief Pinmux configuration data for the board. Auto-generated from
+             Pinmux tool for IceV2, but with AMIC11x naming. Intended for
+             manual deviation from IceV2, if applicable. */
+  extern pinmuxBoardCfg_t gAMIC11xPinmuxData[];
 
 
-Additional steps for AM335x/AM437x users
-"""""""""""""""""""""""""""""""""""""""""
+- Rename am335x_pinmux_data.c saved in previous step to am335x_gpevm_pinmux_data.c.
+   Then replace the following line toward the end of this file
 
-.. note::
-   Currently the AM335x and AM437x board libraries re-use the board support
-   that was used in legacy starterware software. AM335x and AM437x users
-   will need to additionally modify build files in starterware to build
-   their custom board library.
+::
 
-.. raw:: html
+  pinmuxBoardCfg_t gAM335xPinmuxData[] =
 
+
+with
+
+::
+
+  pinmuxBoardCfg_t gGpevmPinmuxData[] =
+
+
+- Replace am335x_pinmux.h and am335x_gpevm_pinmux_data.c in folder
+   <PDK_INSTALL_PATH>/packages/ti/starterware/board/am335x with the two files newly
+   generated and modified above. It is recommended to keep a copy of this folder as 
+   a reference before replacing the two files.
+
+**Step 3: Updating board library files accordingly**
+
+- Update pinmux configuration in <PDK_INSTALL_PATH>/packages/ti/board/src/evmAM335x_pinmux.c.
+  For example, to add another UART instance, the following line can be added to
+  function Board_pinmuxConfig():
+
+::
+
+     status = PINMUXModuleConfig(CHIPDB_MOD_ID_UART, 1U, NULL);
+
+- Update power and clocking in <PDK_INSTALL_PATH>/packages/ti/board/src/evmAM335x.c.
+  For example, to enable power and clocking for the second UART instance, the
+  following line can be added to function Board_moduleClockInit():
+
+::
+
+    status = PRCMModuleEnable(CHIPDB_MOD_ID_UART, 1U, 0U);
+
+
+- Update LLD initialization if necessary in <PDK_INSTALL_PATH>/packages/ti/board/src/evmAM335x_lld_init.c.
+  For example, to initialize the second UART, following line can be added to
+  function Board_uartStdioInit():
+
+::
+
+    UART_stdioInit(1);
+
+
+**Step 4: Rebuilding board library for the modified board**
+
+- Setup build environment:
+
+::
+
+    C:\ti\pdk_am335x_1_0_17\packages>pdksetupenv.bat
+
+
+- Rebuild board library:
+
+::
+
+    C:\ti\pdk_am335x_1_0_17\packages\ti\board>gmake LIMIT_SOCS=am335x LIMIT_BOARDS=evmAM335x
+
+
+**Step 5: Rebuilding the boot loader**
+
+After the board library is rebuilt, the application can be built against the new
+board library. If the secondary boot loader is used to initialize the board, the
+boot loader will also need to be rebuilt according to section
+`Building AM335x/AM437x Bootloader <index_Foundational_Components.html#building-the-bootloader>`__.
+
+For example, issue following command under <PDK_INSTALL_PATH>/packages/ti/starterware
+to build MMCSD boot loader for AM335x:
+
+::
+
+    gmake bootloader BUILDCFG=boot BOOTMODE=mmcsd PLATFORM=am335x-evm PROFILE=release -s KW_BUILD=no
+
+
+Adding a New Custom Board for AM335x/AM437x
+"""""""""""""""""""""""""""""""""""""""""""
+
+For this approach, due to the board library's dependencies on starterware for AM335x/AM437x,
+additional steps are needed on top of what's described in section
+`Board Library Creation with Custom Name <index_board.html#creating-board-library-with-custom-name>`_.
+Please follow all the steps given in that section to setup the custom board,
+and do the following before building the custom board library:
+
+- First, make sure "var myCustomBoard" is added to packages/ti/board/config.bld
+  and it includes all custom starterware files, especially the pinmux data
+  source file. For example,
+
+::
+
+    var myCustomBoard = {
+        name: "myCustomBoard",
+        ccOpts: "-DmyCustomBoard -DSOC_AM335X -DAM335X_FAMILY_BUILD -Dam335x -DBUILDCFG_MOD_UART -DBUILDCFG_MOD_GPIO  -DBUILDCFG_MOD_I2C  -DBUILDCFG_MOD_MCSPI  -DBUILDCFG_MOD_QSPI -DBUILDCFG_MOD_PRU_ETH -DBUILDCFG_MOD_MMCSD  -DBUILDCFG_MOD_CPSW -DBUILDCFG_MOD_PWMSS -DBUILDCFG_MOD_DSS -DBUILDCFG_MOD_USB -DBUILDCFG_MOD_GPMC -DBUILDCFG_MOD_DCAN -DBUILDCFG_MOD_MCASP -DBUILDCFG_MOD_VPFE -DBUILDCFG_MOD_MDIO -DBUILDCFG_MOD_DMTIMER -DBUILDCFG_MOD_EDMA3CC -DBUILDCFG_MOD_EDMA3TC -DBUILDCFG_MOD_RTC -DBUILDCFG_MOD_WDT -DBUILDCFG_MOD_ADC -DBUILDCFG_MOD_LCDC",
+        stwFiles: ["$(PDK_INSTALL_PATH)/ti/starterware/board/am335x/am335x_myCustomBoard_pinmux_data.c",
+                ...
+    }
+
+- Second, in packages/ti/board/src/src_files_starterware.mk, add custom board
+  build option and add custom pinmux data source file. For example,
+
+::
+
+    ifeq ($(BOARD),$(filter $(BOARD), evmAM335x icev2AM335x iceAMIC110 skAM335x bbbAM335x myCustomBoard))
+                 ...
+
+        ifeq ($(BOARD),$(filter $(BOARD), myCustomBoard))
+            SRCS_COMMON += am335x_myCustomBoard_pinmux_data.c
+        endif

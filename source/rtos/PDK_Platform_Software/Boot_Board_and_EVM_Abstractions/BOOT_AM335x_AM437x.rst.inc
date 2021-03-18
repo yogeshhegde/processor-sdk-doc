@@ -30,7 +30,7 @@ Bootloader build files for AM335x/AM437x
 
 -  **BASE_DIR/build/makerules/rules_a8.mk**: Common Compiler flags used
    for A8 cores. Applies to AMIC110 and AM335x
--  **BASE_DIR/build/makerules/rules_a8.mk**: Common Compiler flags used
+-  **BASE_DIR/build/makerules/rules_a9.mk**: Common Compiler flags used
    for A9 cores. Applies to AM437x devices
 -  **BASE_DIR/build/makerules/platform.mk**: Global settings for all
    components for a particular platform.
@@ -147,12 +147,16 @@ Tools and Binary formats
 +------------+----------------------------+
 
 .. note::
-   - For bootloader Entry point is usually 0x402f0000
-   - For the app the entry point is usually 0x80000000.
+   - For bootloader, the entry point is usually 0x402f0000
+   - For app, the entry point is usually 0x80000000.
 
 
 Binary format conversion procedure
 """""""""""""""""""""""""""""""""""
+
+The GCC tool chain, referred as GCC_TOOLCHAIN_PATH below, is installed during
+the Processor-SDK RTOS installation. For example, Processor-SDK RTOS 6.3 has
+gcc-arm-none-eabi-7-2018-q2-update.
 
 Binary format conversion in Linux
 ''''''''''''''''''''''''''''''''''
@@ -160,7 +164,7 @@ Binary format conversion in Linux
 
 ::
 
-    TOOLCHAIN_PATH_<A8/A9>/bin/arm-none-eabi-objcopy -O binary <application>.out <application>.bin
+    <GCC_TOOLCHAIN_PATH>/bin/arm-none-eabi-objcopy -O binary <application>.out <application>.bin
 
 2) Build tiimage.out. Go to starterware/tools/ti_image/
 
@@ -180,7 +184,7 @@ Binary format conversion in Windows
 
 ::
 
-    TOOLCHAIN_PATH_<A8/A9>/bin/arm-none-eabi-objcopy -O binary <application>.out <application>.bin
+    <GCC_TOOLCHAIN_PATH>/bin/arm-none-eabi-objcopy -O binary <application>.out <application>.bin
 
 2) To convert from .bin -> \_ti.bin. tiimage.exe is provided as prebuilt
 binary in starterware/tools/ti_image.
@@ -214,6 +218,9 @@ for the various EVMs.
 | BeagleBon |           |           |           |           |           |
 | eBlack**  |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
+| **AMIC110 |    NO     |    NO     |    YES    |    NO     |    YES    |
+| ICE**     |           |           |           |           |           |
++-----------+-----------+-----------+-----------+-----------+-----------+
 | **AM437x  |    YES    |    NO     |    NO     |    NO     |    YES    |
 | GPEVM**   |           |           |           |           |           |
 +-----------+-----------+-----------+-----------+-----------+-----------+
@@ -228,20 +235,22 @@ for the various EVMs.
 | 
 
 Building the Bootloader
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
 
 **Pre-requisite:** Setup SDK build environment as described in article
  `Setup_Environment <index_overview.html#setup-environment>`__
 
 Change working directory to the packages/ti/starterware directory
     cd <procsdk_install_dir>/pdk_<soc>_<version>/packages/ti/starterware
-  
-.. rubric:: Normal Operation of Bootloader:
-   :name: normal-operation-of-bootloader
+
+NOTE: For the starterware build targets below, the parallel make option (-j) is not supported. Please ensure that the below are built without parallel make option.
+
+Normal Operation of Bootloader:
+"""""""""""""""""""""""""""""""""""
 
 Bootloading an application from flash into DDR memory as in case of TI
 evaluation platforms is described as normal operation mode for the
-bootloader. This is the default behaviour of the bootloader and can be
+bootloader. This is the default behavior of the bootloader and can be
 built using the following command in starterware.
 
 ::
@@ -250,14 +259,13 @@ built using the following command in starterware.
 
 -  BOOT_MODE: mcspi, nand, qspi, mmcsd, uart (Check supported boot modes
    for your evaluation platform)
--  EVM: am335x-evm, am43xx-evm, amic110-ddrless
+-  EVM: am335x-evm (for all AM335x/AMIC110 based boards), am43xx-evm (for all AM43xx based boards)
 -  BUILD_PROFILE: debug, release
 
-NOTE: For the starterware build targets below, the parallel make option (-j) is not supported. Please ensure that the below are built without parallel make option.
+Additional Build Options
+""""""""""""""""""""""""
 
-.. rubric:: Additional Build options (currently support only for
-   AMIC110/AM335x ICE Users)
-   :name: additional-build-options-currently-support-only-for-amic110am335x-ice-users
+The build options listed below are currently supported only for AMIC110/AM335x ICE Users.
 
 -  **DDR less Application boot setup**
 
@@ -267,7 +275,7 @@ NOTE: For the starterware build targets below, the parallel make option (-j) is 
     gmake bootloader BUILDCFG=boot BOOTMODE=mcspi PLATFORM=amic110-ddrless PROFILE=release -s KW_BUILD=no USE_DDR=no
 
 This option builds an ultra light weight (<10 KB) bootloader for cost
-optimized application that don`t external DDR memory.
+optimized application that doesn't use external DDR memory.
 
 -  **PRU/ICSS Enable in SBL**
 
@@ -290,13 +298,13 @@ combining the ENABLE_PRU and BIN_LOAD arguments.
 The location of binaries in offset is configured using
 sbl_flash_offset_cfg.h in the bootloader source. Users are required to
 use TIIMAGE tool to append an header to the binary so that the
-bootloader knows the loction and size of the binary to be loaded.
+bootloader knows the location and size of the binary to be loaded.
 
-.. rubric:: Industrial DDRless Booting
-   :name: industrial-ddrless-booting
+Special Build Option for Industrial DDRless Booting
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 The AMIC110 DDRLESS platform provides a superset flag to enable all the
-above features and build the bootloader . The superset build is invoked
+above features and build the bootloader. The superset build is invoked
 using **BUILD_ICSS_DDRLESS_BOOT=yes** as shown below:
 
 ::
@@ -312,12 +320,13 @@ industrial use case.
 | 
 
 Boot Mode settings
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^
 
-Boot mode settings for all supported AM335x and AM437x boards are `here <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+Boot mode settings for supported AM335x and AM437x boards can be found in
+the applicable `EVM Hardware User's Guide <index_release_specific.html#supported-platforms-and-versions>`__.
 
 Boot Modes
-^^^^^^^^^^^^
+^^^^^^^^^^
 
 Booting Via SD Card
 """""""""""""""""""""
@@ -364,19 +373,21 @@ Booting target
 #. Once SD boot image is chosen, the *MLO* is first detected and copied
    and executed from the OCMC0 RAM. The *MLO* then copies the
    application image (*app*) from the card to the SDRAM and passes the
-   control to the application. If the process is succesful, messages
+   control to the application. If the process is successful, messages
    identifying board and SoC will appear on the serial console.
 
 After this the application will take control and execute.
 
-**NOTE:** If board have BootMode selection pins choose proper Boot
-Selection pins from hardware reference manuals.
+**NOTE:** If board has boot mode selection pins, choose proper boot mode
+selection pins from hardware reference manuals.
 
 | If the boards have no boot mode selection pins and a valid boot image
-  is present on McSPI flash, Booting will happen from McSPI flash. Erase
-  McSPI flash in such cases to boot from SD card `McSPI flash
-  erase <http://processors.wiki.ti.com/index.php?title=StarterWare_Booting_And_Flashing&action=edit&redlink=1>`__
-  . The boot sequence depends on ROM bootloader.
+  is present on McSPI flash, booting will happen from McSPI flash. Erase
+  McSPI flash in such cases to boot from SD card.
+  Refer to `Booting Via McSPI <index_Foundational_Components.html#booting-via-mcspi>`__
+  for how to rease McSPI flash.
+  The boot sequence depends on ROM bootloader.
+
 
 Booting Via QSPI
 """"""""""""""""""
@@ -519,8 +530,8 @@ Booting from McSPI involves two steps.
 .. rubric:: Preparing Flash Device
    :name: preparing-flash-device-1
 
--  Set the appropriate bootmode if applicable for EVM.Refer `Boot mode
-   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__.
+-  Set the appropriate bootmode if applicable for EVM. Refer to corresponding
+   hardware user's guide for bootmode settings.
    **Note**: Most of the boards may not have switch settings.
 -  Add a required target configuration in CCS depending on emulator and
    board connected.
@@ -554,10 +565,7 @@ Booting from McSPI involves two steps.
 
 -  Provide **0x00000** to flash bootloader.
 
--  To flash application binary image <app_name>_a8host_ti.bin, provide
-   **0x20000**.
-
--  Wait for few miniuits as flashing is a slower process.
+-  Wait for few minutes as flashing is a slower process.
 
 ::
 
@@ -566,6 +574,10 @@ Booting from McSPI involves two steps.
     Writing flash at page offset: x, number of pages: xxxx
     Flashing is in progress...
     Verifying... Success. 
+
+-  Repeat the steps to load and run the flash writer, then choose the application
+   binary image <app_name>_a8host_ti.bin and enter **0x20000** as the offset.
+   Wait until the flashing completes.
 
 -  Once SPI flash writing completes disconnect target.
 
@@ -576,7 +588,7 @@ Booting from McSPI involves two steps.
    application (teraterm/hyperterminal) with 115200 baud, 8bit, No
    parity and 1 STOP bit configuration.
 #. Configure the board for SPI boot mode.
-#. On reset, ROM bootloder copies the bootloader from flash to internal
+#. On reset, ROM bootloader copies the bootloader from flash to internal
    memory. The bootloader then copies the application image from flash
    to DDR and passes the control to the application.
 
@@ -593,8 +605,7 @@ Booting from NAND involves two steps.
 .. rubric:: Preparing Flash Device
    :name: preparing-flash-device-2
 
--  Configure BOOT pins for NAND `Boot mode
-   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+-  Configure BOOT pins for NAND according to the hardware user's guide.
 -  Connect target with CCS.
 -  Load the
    *<PDK_INSTALL_DIR/packages/ti/starterware/tools/flash_writer/nand_flash_writer_AM335X.out>*
@@ -667,11 +678,11 @@ bootloader uses the BCH8 ECC scheme.
 -  Connect a UART cable to a host running a serial terminal application
    (teraterm/hyperterminal) with 115200 baud, 8bit, No parity and 1 STOP
    bit configuration.
--  Configure the board for NAND boot mode. Refer  `Boot mode
-   settings <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CSL_AM335x/AM437x_Boot_mode_settings>`__
+-  Configure the board for NAND boot mode. Refer to corresponding
+   hardware user's guide for bootmode settings.
 -  On reset, ROM detects bootloader from NAND and copies it to internal
    memory. Bootloader then copies application image from the NAND to DDR
-   and passes control to application. If the process is succesful,
+   and passes control to application. If the process is successful,
    following messages appear in serial console.
 
 ::
