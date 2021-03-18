@@ -6,7 +6,6 @@ PCIe End Point
 ---------------------------------
 
 .. rubric:: **Introduction**
-   :name: introduction-linux-pcie-ep
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -27,14 +26,12 @@ PCIe End Point
     right now).
 
     .. rubric:: **Block Diagram**
-       :name: block-diagram-linux-pcie-ep
 
     Following is the block diagram of framework for endpoint mode:
 
     .. Image:: /images/ep_framework.png
 
     .. rubric:: **Features of J7ES**
-       :name: features-j7es-linux-pcie-ep
 
     There are four instances of the PCIe subsystem. Following are some of the 
     main features:
@@ -68,7 +65,6 @@ PCIe End Point
         - 4 GB region with address above 32 bits
 
     .. rubric:: **Capabilities of J721E EVM**
-       :name: capabilities-j721e-evm-pcie-ep
 
     There are three instances of the PCIe subsystem on the EVM. Following are 
     some of the details for each instance:
@@ -88,7 +84,6 @@ PCIe End Point
     This wiki page provides usage information of PCIe EP Linux driver.
 
 .. rubric:: **Hardware Setup Details**
-   :name: hardware-setup-details
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -189,7 +184,6 @@ The ends of the modified cable should look like below:
    :name: ep-device-configuration
 
 .. rubric:: *DTS Modification*
-   :name: dts-modification
 
 The default dts is configured to be used in root complex mode. In order
 to use it in endpoint mode, the following changes have to be made in dts
@@ -381,7 +375,6 @@ file.
          }; &pcie1_ep {
 
 .. rubric:: *Linux Driver Configuration*
-   :name: linux-driver-configuration
 
 The following config options have to be enabled in order to configure the
 PCI controller to be used as a "Endpoint Test" function driver.
@@ -406,7 +399,6 @@ PCI controller to be used as a "Endpoint Test" function driver.
         CONFIG_PCIE_CADENCE_EP=y
 
 .. rubric:: *Endpoint Controller devices and Function drivers*
-   :name: endpoint-controller-devices-and-function-drivers
 
 To find the list of endpoint controller devices in the system:
 
@@ -442,7 +434,6 @@ To find the list of endpoint function drivers in the system:
         pci_epf_test  pci_epf_ntb
 
 .. rubric:: *Using the pci-epf-test function driver*
-   :name: using-the-pci-epf-test-function-driver
 
 The pci-epf-test function driver can be used to test the endpoint
 functionality of the PCI controller. Some of the tests that are currently
@@ -471,10 +462,8 @@ supported are:
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
     .. rubric:: 4.4 Kernel
-       :name: pcie-end-point-4-4-kernel
 
     .. rubric:: Creating pci-epf-test device
-       :name: creating-pci-epf-test-device
 
     PCI endpoint function device can be created using the configfs. To
     create pci-epf-test device, the following commands can be used:
@@ -516,7 +505,6 @@ supported are:
     | 
 
     .. rubric:: Configuring pci-epf-test device
-       :name: configuring-pci-epf-test-device
 
     The user can configure the pci-epf-test device using the configfs. In
     order to change the vendorid and the number of MSI interrupts used by
@@ -528,7 +516,6 @@ supported are:
         # echo 16 >  msi_interrupts
 
     .. rubric:: Binding pci-epf-test device to a EP controller
-       :name: binding-pci-epf-test-device-to-a-ep-controller
 
     In order for the endpoint function device to be useful, it has to be
     bound to a PCI endpoint controller driver. Use the configfs to bind the
@@ -542,10 +529,8 @@ supported are:
     a link with the host.
 
     .. rubric:: 4.9 Kernel
-       :name: pcie-end-point-4-9-kernel
 
     .. rubric:: Creating pci-epf-test device
-       :name: creating-pci-epf-test-device-1
 
     PCI endpoint function device can be created using the configfs. To
     create pci-epf-test device, the following commands can be used:
@@ -587,7 +572,6 @@ supported are:
     | 
 
     .. rubric:: Configuring pci-epf-test device
-       :name: configuring-pci-epf-test-device-1
 
     The user can configure the pci-epf-test device using the configfs. In
     order to change the vendorid and the number of MSI interrupts used by
@@ -624,7 +608,6 @@ supported are:
     | 
 
     .. rubric:: Binding pci-epf-test device to a EP controller
-       :name: binding-pci-epf-test-device-to-a-ep-controller-1
 
     In order for the endpoint function device to be useful, it has to be
     bound to a PCI endpoint controller driver. Use the configfs to bind the
@@ -637,8 +620,6 @@ supported are:
     Once the above step is completed, the PCI endpoint is ready to establish
     a link with the host.
 
-    .. _pcie-end-point-4-14-kernel:
-
     .. rubric:: 4.14 Kernel
        :name: pcie-end-point-4-14-kernel
 
@@ -647,7 +628,6 @@ supported are:
     upstreamed solution.
 
     .. rubric:: Creating pci-epf-test device
-       :name: creating-pci-epf-test-device-2
 
     PCI endpoint function device can be created using the configfs. To
     create pci-epf-test device, the following commands can be used:
@@ -706,7 +686,6 @@ supported are:
     |
 
     .. rubric:: Configuring pci-epf-test device
-       :name: configuring-pci-epf-test-device-2
 
     The user can configure the pci-epf-test device using the configfs. In
     order to change the vendorid and the number of MSI interrupts used by
@@ -753,7 +732,6 @@ supported are:
     between 1 to 32 for MSI.    
 
     .. rubric:: Binding pci-epf-test device to a EP controller
-       :name: binding-pci-epf-test-device-to-a-ep-controller-2
 
     In order for the endpoint function device to be useful, it has to be
     bound to a PCI endpoint controller driver. Use the configfs to bind the
@@ -780,7 +758,6 @@ supported are:
         # ln -s functions/pci_epf_test_am6/func1 controllers/5500000.pcie-ep
 
     .. rubric:: Starting the EP device
-       :name: starting-the-ep-device
 
     In order for the EP device to be ready to establish the link, the
     following command should be given.
@@ -810,7 +787,6 @@ supported are:
 
 
     .. rubric:: *K2G Limitation*
-       :name: k2g-limitation
 
     K2G outbound transfers has a limitation that the target address should
     be aligned to a minimum of 1MB address. This restriction is because of
@@ -832,7 +808,6 @@ supported are:
 .. ifconfig:: CONFIG_part_family in ('J7_family')
 
     .. rubric:: Creating pci-epf-test device
-       :name: creating-pci-epf-test-device
 
     PCI endpoint function device can be created using the configfs. To
     create pci-epf-test function, the following commands can be used:
@@ -866,7 +841,6 @@ supported are:
         0x0001
 
     .. rubric:: Configuring pci-epf-test device
-       :name: configuring-pci-epf-test-device-3
 
     The user can configure the pci-epf-test device using the configfs. In
     order to change the vendorid and the number of MSI interrupts used by
@@ -894,7 +868,6 @@ supported are:
     configured should be between 1 to 32 for MSI and 1 to 2048 for MSI-X.
 
     .. rubric:: Binding pci-epf-test device to a EP controller
-       :name: binding-pci-epf-test-device-to-a-ep-controller-2
 
     In order for the endpoint function device to be useful, it has to be
     bound to a PCI endpoint controller driver. Use the configfs to bind the
@@ -905,7 +878,6 @@ supported are:
         root@j7-evm:/sys/kernel/config/pci_ep# ln -s functions/pci_epf_test/func1 controllers/d000000.pcie-ep/
 
     .. rubric:: Starting the EP device
-       :name: starting-the-ep-device
 
     In order for the EP device to be ready to establish the link, the
     following command should be given:
@@ -965,7 +937,6 @@ supported are:
         echo 1 > controllers/d000000.pcie-ep/start
 
     .. rubric::Using virtual functions
-       :name: using-virtual-functions
 
     If you want to use the virtual functions, you need to bind it to a physical 
     function. And the physical function needs to be bound to a controller.
@@ -1008,7 +979,6 @@ device. This restriction is because the PCI HOST doesn't have hot plug
 support.
 
 .. rubric:: *Linux Driver Configuration*
-   :name: linux-driver-configuration-1
 
 The following config options have to be enabled in order to use the
 "Endpoint Test" PCI device.
@@ -1030,7 +1000,6 @@ The following config options have to be enabled in order to use the
         CONFIG_PCIE_CADENCE_HOST=y
 
 .. rubric:: *lspci output*
-   :name: lspci-output
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -1054,7 +1023,6 @@ The following config options have to be enabled in order to use the
         0002:00:00.0 PCI bridge: Texas Instruments Device b00d
 
 .. rubric:: *Using the Endpoint Test function device*
-   :name: using-the-endpoint-test-function-device
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -1085,7 +1053,6 @@ The following config options have to be enabled in order to use the
         cp tools/pci/pcitest.sh <rootfs>
 
     .. rubric:: pcitest.sh output
-       :name: pcitest.sh-output
 
     ::
 
@@ -1181,7 +1148,6 @@ The following config options have to be enabled in order to use the
         cp tools/pci/pcitest.sh <rootfs>
 
     .. rubric:: pcitest output
-       :name: pcitest-output
 
     pcitest can be used as follows:
     ::
@@ -1225,7 +1191,6 @@ The following config options have to be enabled in order to use the
 
 
 .. rubric:: **Files**
-   :name: files
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 

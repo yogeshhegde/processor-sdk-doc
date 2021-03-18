@@ -55,12 +55,12 @@ Run R5F Hello World App using CCS with JTAG
 -  Power up the AM64x EVM, Launch the CCS, Launch the AM64x_EVM.ccxml
 -  Run load script - loadJSFile “/<INSTALL-DIR>/rtos/pdk_am64x_xx_xx_xx_xx/packages/ti/drv/sciclient/tools/ccsLoadDmsc/am64x launch.js”
 -  By default, the MAIN_Cor_R5_0_0 will be halt at 0x00000000. Load the OUT
-files for mcu1_0 to MAIN_Cor_R5_0_0 and run
+   files for mcu1_0 to MAIN_Cor_R5_0_0 and run
 
 Run R5F Hello World App using SD card boot
 
 -  Copy all 3 files (app, sysfw.bin & tiboot3.bin) from
-/<INSTALL-DIR>/sitara-apps/examples/r5f_hello_world/out/AM64X/SDCardImage into an SD card
+   /<INSTALL-DIR>/sitara-apps/examples/r5f_hello_world/out/AM64X/SDCardImage into an SD card
 -  Insert the SD card and power up the AM64x EVM
 
 

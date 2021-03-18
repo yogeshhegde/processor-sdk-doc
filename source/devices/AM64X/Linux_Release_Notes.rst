@@ -16,6 +16,8 @@ execution of Linux based applications and includes the following:
 Build Information
 =================
 
+.. _release-specific-build-information-u-boot:
+
 U-Boot
 ------
 
@@ -29,6 +31,8 @@ U-Boot
 | uBoot Tag: 07.02.00.004
 
 |
+
+.. _release-specific-build-information-kernel:
 
 Kernel
 ------

@@ -45,8 +45,13 @@ Compiler
 Before compiling the kernel or kernel modules the SDK's toolchain needs
 to be added to the PATH environment variable
 
-.. The same path applies to both 32 bit and 64 bit processors
-``export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin:$PATH``
+.. only:: _comment
+
+    [comment] The same path applies to both 32 bit and 64 bit processors
+
+::
+
+    export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin:$PATH
 
 The current compiler supported for this release along with download
 location can be found in the release notes for the kernel release.

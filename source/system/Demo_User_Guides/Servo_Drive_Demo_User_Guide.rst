@@ -750,7 +750,7 @@ Safety.
 .. _Demo Synchronization Technique:
 
 Demo Synchronization Technique
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The EtherCAT slave stack using the CMP1 event of the ICSSG1 IEP
 peripheral to create a SYNC0 signal as dictated by the EtherCAT master
