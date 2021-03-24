@@ -204,6 +204,10 @@ Turning flooding on/off on switch ports::
 Enabling Cut Through forwarding
 """""""""""""""""""""""""""""""
 
+.. Caution::
+
+    The Cut Through configuration interface could be changed significantly in the future depending on Linux Kernel mainline development.
+
 Cut Through feature allows forwarding packet from one external port to
 another without being stored in Port FIFOs thus reducing overall latency
 for packet forwarding.
