@@ -71,4 +71,4 @@ The DT bindings description can be found at:
 MAC mode
 ========
 
-.. include:: K3-CPSW-common.rst.inc
+.. include:: K3-CPSW-common.inc.rst

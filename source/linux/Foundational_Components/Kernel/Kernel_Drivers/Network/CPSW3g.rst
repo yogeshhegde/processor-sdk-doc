@@ -87,7 +87,7 @@ Multi MAC mode
  This section documents Independent MAC mode of operation with
  CPSW3g.
 
-.. include:: K3-CPSW-common.rst.inc
+.. include:: K3-CPSW-common.inc.rst
 
 Multi port Switch mode
 ======================
