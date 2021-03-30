@@ -17,7 +17,7 @@ Create SD Card with Default Images
 |
 
 2.  The default bootable SD card image (WIC file) is available
-    at <PSDK\_PATH>/linux/filesystem/tisdk-default-image-am64xx-evm.wic.xz
+    at <PSDK\_PATH>/filesystem/tisdk-default-image-am64xx-evm.wic.xz
 
 |
 
@@ -27,7 +27,7 @@ Create SD Card with Default Images
 
     ::
 
-        cd <PSDK_PATH>/linux/filesystem
+        cd <PSDK_PATH>/filesystem
         unxz tisdk-default-image-am64xx-evm.wic.xz
 
     - For Windows, decompress the WIC image with a file archiver like 7-zip or
@@ -96,7 +96,7 @@ Create SD Card with Custom Images
   The TI script used to generate custom SD card images should be run on a Linux
   computer.
 
-For a Linux+baremetal application to boot from a SD card, two partitions need to
+For a Linux + RTOS/baremetal application to boot from a SD card, two partitions need to
 be created on the SD card:
 
    - boot partition
@@ -114,15 +114,15 @@ WIC image to place on an SD card.
     to populate the rootfs partition on the WIC image.
 
     Let's use the prebuilt rootfs as an example. It is located at
-    <PSDK\_PATH>/linux/filesystem/tisdk-default-image-am64xx-evm.tar.xz
+    <PSDK\_PATH>/filesystem/tisdk-default-image-am64xx-evm.tar.xz
 
     ::
 
-        cd <PSDK\_PATH>/linux/filesystem
+        cd <PSDK_PATH>/filesystem
         mkdir rootfs
 
     Un-tar the tisdk-default-image-am64xx-evm.tar.xz to
-    <PSDK\_PATH>/linux/filesystem/rootfs
+    <PSDK\_PATH>/filesystem/rootfs
 
     ::
 
@@ -134,7 +134,7 @@ WIC image to place on an SD card.
     populate the boot partition on the WIC image.
 
     Let's use the prebuilt images as an example. They are located at
-    <PSDK\_PATH>/linux/board-support/prebuilt-images
+    <PSDK\_PATH>/board-support/prebuilt-images
 
     ::
 
@@ -167,50 +167,4 @@ WIC image to place on an SD card.
 
 |
 
-.. _am64x-create-sd-card-for-rtos-or-baremetal-only-applications:
 
-Create SD Card for RTOS or Baremetal Only Applications
-------------------------------------------------------
-
-For an RTOS or baremetal only application to boot from a SD card, the boot
-partition is the only partition needed. However, you can still use an SD card
-with multiple partitions. For example, the prebuilt WIC file
-<PSDK\_PATH>/linux/filesystem/tisdk-default-image-am64xx-evm.wic.xz has both a
-boot partition and a rootfs partition, but it can still be used for RTOS or
-baremetal only applications. Just make your modifications to the boot partition
-and ignore the rootfs partition.
-
-
-1.  Create an SD card.
-
-    For example, use steps in section
-    :ref:`am64x-create-sd-card-with-default-images` to
-    create an SD card with the prebuilt WIC image.
-
-|
-
-2.  Build the RTOS or baremetal applications you want to run.
-
-    We will use the benchmark_demo as an example. Refer to
-    :ref:`Benchmark-Demo-User-Guide-label` for more details.
-
-    ::
-
-        make common_libs benchmark_demo BUILD_LINUX_APPS=0 RTOS_ONLY_BUILD=1   (for Linux) 
-        gmake common_libs benchmark_demo BUILD_LINUX_APPS=0 RTOS_ONLY_BUILD=1  (for Windows)
-
-|
-
-3.  Place the bootable files you generated into the SD card boot partition.
-
-    In our example, you can find the 3 baremetal SD card bootable files in
-    <PSDK\_PATH>/apps/benchmark\_demo/out/AM64X/SDCardImage
-
-    a.  Delete all files from the SD card boot partition
-    b.  Copy the 3 baremetal SD card bootable files from
-        <PSDK\_PATH>/apps/benchmark\_demo/out/AM64X/SDCardImage
-        to the boot partition of the SD card
-
-|
-
-4.  The modified SD card is now ready to be used on AM64x EVM

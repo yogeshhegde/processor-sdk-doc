@@ -5,20 +5,23 @@
 Download and Install the SDK
 ======================================
 
-The Processor SDK Sitara AM64x Installer will install the necessary components
-to start your development on the TI microprocessor.
+The Processor SDK Linux AM64x Installer will install the necessary components
+to start Linux development on the TI microprocessor.
 
-**Processor SDK SITARA AM64x Release has installers for both Linux and Windows.**
+**Processor SDK Linux AM64x Release has installers for both Linux and Windows machines.**
 
-+------------------------------------------+-----------------------------------------------------------------------+
-| **Installer Details**                    |   **Installers Name**                                                 |
-+------------------------------------------+-----------------------------------------------------------------------+
-| Linux + RTOS Installer (Windows version) | processor_sdk_sitara_am64x_xx_yy_zz_nn-windows-x64-installer.exe      |
-+------------------------------------------+-----------------------------------------------------------------------+
-| Linux + RTOS Installer (Linux version)   | processor_sdk_sitara_am64x_xx_yy_zz_nn-linux-x64-installer.run        |
-+------------------------------------------+-----------------------------------------------------------------------+
-| Linux only Installer   (Linux version)   | processor_sdk_sitara_am64x_linux_xx_yy_zz_nn-linux-x64-installer.run  |
-+------------------------------------------+-----------------------------------------------------------------------+
++----------------------------------------------+------------------------------------------------------------------+
+| **Installer Details**                        |   **Installers Name**                                            |
++----------------------------------------------+------------------------------------------------------------------+
+| PSDK Linux AM64x Installer (Windows version) | processor_sdk_linux_am64x_xx_yy_zz_nn-windows-x64-installer.exe  |
++----------------------------------------------+------------------------------------------------------------------+
+| PSDK Linux AM64x Installer (Linux version)   | processor_sdk_linux_am64x_xx_yy_zz_nn-linux-x64-installer.run    |
++----------------------------------------------+------------------------------------------------------------------+
+
+Windows installer has only the prebuilt-image and filesystems, meant for out of the box demo experience.
+
+Use Linux installer for complete source package, tools, prebuilt-image, filesystems etc. for product development.
+
 
 The |__SDK_FULL_NAME__| includes the ARM GCC toolchain.
 The |__SDK_FULL_NAME__| was built and tested against a specific Linux
@@ -53,11 +56,6 @@ by double clicking on it within your Linux host PC.
 Double click on the installer to begin installation.
 
 .. note::
-   For windows installer, always install the SDK in C:/ti/psdk_am64x. Do not install in any
-   deeper directory structure, because the build might fail due to the 260
-   character path length limit in Windows operating system.
-
-.. note::
    As a part of the installation, the packaging will run a script to configure your
    environment and download the Linux devkit.  This will cause the installation to
    continue for roughly a minute even after it shows that it has reached 100%.
@@ -68,29 +66,43 @@ Double click on the installer to begin installation.
 
 **Package Overview**
 
-This AM64x Software development kit contains Linux, RTOS and Baremetal device
-drivers, industrial protocols, industrial drives, sample examples and
+This AM64x Software development kit contains Linux device drivers, sample examples and
 application specific demos.  The SDK has the below folder structure
 
 
 +---------------------+-----------------------------------------------------------------------+
 | **Folder Name**     |   **Description**                                                     |
 +---------------------+-----------------------------------------------------------------------+
-| linux               | Linux board supported packages (Linux kernel and u-boot in source),   |
-|                     | linux-devkit, prebuilt-images, file-system,                           |
-|                     | resource-partitioning tool, set-up scripts,                           |
+| bin                 | set-up scripts, SD card image creation script                         |
+|                     |                                                                       |
 +---------------------+-----------------------------------------------------------------------+
-| rtos                | RTOS/BM platform development kit, industrial protocols and drives,    |
-|                     | RTOS build tools                                                      |
+| board-support       | Linux board supported packages (prebuilt-images, tools,               |
+|                     | Linux kernel and u-boot in source)                                    |
 +---------------------+-----------------------------------------------------------------------+
-| sitara-apps         | Sample examples and                                                   |
-|                     | application specific demos (servo drive & benchmarking demos)         |
+| docs                | Manifest and License                                                  |
+|                     |                                                                       |
++---------------------+-----------------------------------------------------------------------+
+| filesystem          | Prebuilt Filesystems (both tar and wic images)                        |
+|                     |                                                                       |
++---------------------+-----------------------------------------------------------------------+
+| linux-devkit        | Linux development kit (tools, compilers etc.)                         |
+|                     |                                                                       |
++---------------------+-----------------------------------------------------------------------+
+| sitara-apps         | Sample examples and application specific demos                        |
+|                     | (GUI composer of benchmark demos)                                     |
 +---------------------+-----------------------------------------------------------------------+
 
 
-Refer to the :ref:`Release Notes <Release-note-label>` for complete feature-set and further details
+Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and further details
 
+
+**MCU-PLUS-SDK for RTOS/BM**
+
+.. note::
+   Processor SDK Linux AM64x contains only the Linux specific source and application intended   
+   to runs on A53/Linux core. For R5F and RTOS/BM side source and applications, refer **MCU-PLUS-SDK** 
+   package `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/index.html>`__.
 
 **Instructions to set-up CCS**
 
--  Refer /<INSTALL-DIR>/rtos/pdk_am64x_xx_xx_xx_xx/docs/userguide/am64x/ccs_setup_am64x.html - `[Use Link] <../../../rtos/pdk_am64x/docs/userguide/am64x/ccs_setup_am64x.html>`__
+-  Refer `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/CCS_SETUP_PAGE.html>`__
