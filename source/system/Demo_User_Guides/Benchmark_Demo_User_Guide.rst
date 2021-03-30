@@ -78,6 +78,7 @@ Get Started
 | **R5 Core** | **App Name**     |   Default Option     | **Description**                                           |
 +=============+==================+======================+===========================================================+
 | 0_0         | ADC and PWM Loop |      8Khz            | ADC/PWM benchmark for R5 5 ADC sample read & 1 PWM write  |
+|             |                  |                      | This is not enabled in current release.                   |  
 +-------------+------------------+----------------------+-----------------------------------------------------------+
 | 0_1         | CFFT             |      1Khz & 128pt    | CMSIS CFFT benchmark for R5                               |
 +-------------+------------------+----------------------+-----------------------------------------------------------+
@@ -85,8 +86,6 @@ Get Started
 +-------------+------------------+----------------------+-----------------------------------------------------------+
 | 1_1         | FOC Loop         |      16Khz           | CMSIS FOC benchmark for R5                                |
 +-------------+------------------+----------------------+-----------------------------------------------------------+
-
-.. note:: Sometimes, you see spikes in "CPU Usage". It happens sparsely, so the average numbers are not affected. This is a known issue and we are investigating right now.
 
 Software Architecture
 ---------------------
@@ -108,22 +107,8 @@ Building Blocks
 
 -  **R5 and A53 Applications:**
 
-   -  IPC RPMsg\_char library for R5: it provides a API for R5
-      application to receive/send a RPMsg\_char message from/to A53
-
-   -  CMSIS DSP library 5.6.0 compiled with TI CGT for R5
-
-   -  CMSIS CFFT benchmark for R5: CFFT benchmark application using
-      CMSIS DSP library for R5 
-
-   -  CMSIS FIR benchmark for R5: FIR benchmark application using CMSIS
-      DSP library for R5 
-
-   -  CMSIS FOC benchmark for R5: FOC benchmark application using CMSIS
-      DSP library for R5 
-
-   -  ADC/PWM benchmark for R5: ADC/PWM loop benchmark application for
-      R5 
+   -  All the R5F applicatins are built in MCU+SDK. Please refer
+      MCU+ SDK for more details.
 
    -  Linux application code handles the IPC RPMsg\_char and the JSON
       file update for A53 
@@ -177,88 +162,14 @@ A53 Linux application will also get the benchmark data from the R5 cores
 and then update the JSON file accordingly. The updated JSON file
 will then be displayed on the GUI every second.     
 
-Build Linux+Baremetal Demos and Update SD card
-----------------------------------------------
-
-1. Install the Sitara SDK on a Linux machine at
-   <PSDK\_PATH>
-
-2. Change directory
-
-::
-
-   cd <PSDK_PATH>/sitara-apps
-
-3. Build the demo
-
-::
-
-   make common_libs benchmark_demo BUILD_LINUX_APPS=1 RTOS_ONLY_BUILD=0
-
-4. The R5 apps will be in
-   <PSDK\_PATH>/apps/benchmark\_demo/out/AM64X/R5F/NO\_OS/release
-
-5. The A53 app will be in
-   <PSDK\_PATH>/apps/benchmark\_demo/webserver\_app/linux\_app/rpmsg\_json
-
-6. Update the SD card with above newly built R5 apps and A53 app
-
-   - Copy the R5 apps from <PSDK\_PATH>/apps/benchmark\_demo/out/AM64X/R5F/NO\_OS/release/\*.out
-     to /lib/firmware/sitara-apps/sitara-benchmark-demo/ of rootfs partition on SD card
-
-   - Copy the A53 app from <PSDK\_PATH>/apps/benchmark\_demo/webserver\_app/linux\_app/rpmsg\_json
-     to /usr/bin/rpmsg\_json of rootfs partition of SD card
-
 Build Baremetal Demos and Update SD card
 ----------------------------------------
 
-1. Install the Sitara SDK on a Linux or a Windows machine at
-   <PSDK\_PATH>
+1. Install MCU+SDK. Refer MCU+SDK on how to build demos.
 
-2. Change directory
-
-::
-
-   cd <PSDK_PATH>/sitara-apps
-
-3. Build the demo
-
-::
-
-   make common_libs benchmark_demo BUILD_LINUX_APPS=0 RTOS_ONLY_BUILD=1   (for Linux) 
-   gmake common_libs benchmark_demo BUILD_LINUX_APPS=0 RTOS_ONLY_BUILD=1  (for Windows)
-
-4. The 3 baremetal SD card bootable files will be in
-   <PSDK\_PATH>/apps/benchmark\_demo/out/AM64X/SDCardImage
-
-5. Update the SD card with above newly built Baremetal SD card bootable files
-
-   - Delete all files from the SD card boot partition
-   - Copy the 3 baremetal SD card bootable files from
-     <PSDK\_PATH>/apps/benchmark\_demo/out/AM64X/SDCardImage
-     to boot partition on SD card
-
-6. Display the benchmark statistics for baremetal only SD card boot
-
-   - Because the baremetal only demo will not be able to display anything on 
-     webserver, in order to see the benchmark statstics, CCS has to be used
-   - Create a target configuration (ccxml) file with no gel file attached to DSMC core
-   - Put the AM64x EVM in SD card boot mode: 
-      - SW2(1:8) on, on, off, off, off, off, on, off
-      - SW3(1:8) off, on, off, off, off, off, off, off
-   - Boot for a baremetal only SD card, wait until the Linux boot is completed
-   - Launch the target configuration file without gel file on DSMC core
-   - Connect to the R5F core of interest (R5_0_0, R5_0_1, R5_1_0, or R5_1_1)
-   - To examine the statistics, you will need to add gCoreStat into your Expressions. 
-      - gCoreStat.output.cload.cur: the current CPU loading in percentage
-      - gCoreStat.output.cload.ave: the average CPU loading in percentage
-      - gCoreStat.output.cload.max: the maximum CPU loading in percentage
-      - gCoreStat.output.ilate.ave: the average interrupt latency in ns
-      - gCoreStat.output.ilate.max: the maximum interrupt latency in ns
-      - gCoreStat.output.ccploop.ave: the average cycle count per loop
-      - gCoreStat.output.ccploop.max: the maximum cycle count per loop
-      - gCoreStat.output.ave_count: the number of loops has been perfomed in this benchmark 
-
+2. Once the R5F binaries are available, copy them to Linux file system  in folder /lib/firmware.
+   The copy step can only be done using a Linux machine since the Linux filesystem on the 
+   SD card cannot be seen on a Windows machine.
 
 Directory Structure
 -------------------
@@ -267,74 +178,9 @@ Directory Structure
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
 |      | **Directory Name**                               | **Description**                                                                        |
 +======+==================================================+========================================================================================+
-| 1    | apps/common/ipc\_rpmsg\_lib                      | IPC RPMsg\_char library for R5                                                         |
+| 1    | apps/benchmark\_demo/webserver\_app/app          | GUI code and component files                                                           |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 2    | apps/common/libs/cmsis                           | CMSIS DSP library 5.6.0 compiled with TI CGT                                           |
+| 2    | apps/benchmark\_demo/webserver\_app/linux\_app   | Linux application code handles the IPC RPMsg\_char and the JSON file update for A53    |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 3    | apps/benchmark\_demo/cmsis\_cfft                 | CMSIS CFFT benchmark for R5                                                            |
+| 3    | apps/benchmark\_demo/webserver\_app/webserver    | Web server and node files                                                              |
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 4    | apps/benchmark\_demo/cmsis\_fir                  | CMSIS FIR filtering benchmark for R5                                                   |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 5    | apps/benchmark\_demo/cmsis\_foc                  | CMSIS FOC benchmark for R5                                                             |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 6    | apps/benchmark\_demo/cmsis\_pid                  | CMSIS speed/position control benchmark for R5                                          |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 7    | apps/benchmark\_demo/adc\_pwm                    | ADC/PWM benchmark for R5                                                               |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 8    | apps/benchmark\_demo/webserver\_app/app          | GUI code and component files                                                           |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 9    | apps/benchmark\_demo/webserver\_app/linux\_app   | Linux application code handles the IPC RPMsg\_char and the JSON file update for A53    |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-| 10   | apps/benchmark\_demo/webserver\_app/webserver    | Web server and node files                                                              |
-+------+--------------------------------------------------+----------------------------------------------------------------------------------------+
-
-Benchmark Results
------------------
-
-R5 Benchmarks (Average)
-~~~~~~~~~~~~~~~~~~~~~~~
-
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| Application                                            | Cycle Count Per Loop | CPU Usage % | RAM Usage % | Interrupt Latency ns |
-+========================================================+======================+=============+=============+======================+
-| CFFT (SP, 128pt) @ 1Khz*                               |         9857         |      1      |      38     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| CFFT (SP, 256pt) @ 1Khz                                |        20770         |      2      |      38     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| CFFT (SP, 512pt) @ 1Khz                                |        45421         |      5      |      38     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| CFFT (SP, 1024pt) @ 1Khz                               |       107701         |     13      |      38     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| FIR Filtering (SP, 320pt, 29 taps) @ 1Khz*             |        20169         |      2      |      28     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| FIR Filtering (SP, 320pt, 29 taps) @ 2Khz              |        20154         |      5      |      28     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| FIR Filtering (SP, 320pt, 29 taps) @ 4Khz              |        20166         |     10      |      28     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| FIR Filtering (SP, 320pt, 29 taps) @ 8Khz              |        20169         |     20      |      28     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| FOC Control Loop using CMSIS funcs @ 16Khz*            |         326          |      0      |      27     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| FOC Control Loop using CMSIS funcs @ 32Khz             |         330          |      1      |      27     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| FOC Control Loop using CMSIS funcs @ 100Khz            |         328          |      4      |      27     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| FOC Control Loop using CMSIS funcs @ 250Khz            |         290          |      9      |      27     |          80          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| 5 ADC Sampling and Conversion and 1 ePWM Write @ 8Khz* |         604          |      0      |      27     |         N/A          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| 5 ADC Sampling and Conversion and 1 ePWM Write @ 16Khz |         604          |      1      |      27     |         N/A          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| 5 ADC Sampling and Conversion and 1 ePWM Write @ 32Khz |         606          |      2      |      27     |         N/A          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-| 5 ADC Sampling and Conversion and 1 ePWM Write @ 50Khz |         743          |      4      |      27     |         N/A          |
-+--------------------------------------------------------+----------------------+-------------+-------------+----------------------+
-
-.. note:: "RAM Usage %" is computed based on 320KB (64KB TCM + 256KB MSMC) per R5F core
-.. note:: "CPU Usage %" is computed based on R5F core running at 800Mhz
-.. note:: "*" is the default running frequencywhen the benchmark demo starts
-
-..
-  [comment] commenting out the A53 Benchmarks until we have data to put here
-  [comment] A53 Benchmarks (TBD)
-  [comment] ~~~~~~~~~~~~~~~~~~~~
