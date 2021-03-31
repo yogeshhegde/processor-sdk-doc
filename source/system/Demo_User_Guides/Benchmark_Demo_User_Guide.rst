@@ -108,7 +108,7 @@ Building Blocks
 -  **R5 and A53 Applications:**
 
    -  All the R5F applicatins are built in MCU+SDK. Please refer
-      MCU+ SDK for more details.
+      MCU+SDK for more details.
 
    -  Linux application code handles the IPC RPMsg\_char and the JSON
       file update for A53 
@@ -165,7 +165,8 @@ will then be displayed on the GUI every second.     
 Build Baremetal Demos and Update SD card
 ----------------------------------------
 
-1. Install MCU+SDK. Refer MCU+SDK on how to build demos.
+1. Install `MCU+SDK <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/EXAMPLE_MOTORCONTROL_BENCHMARKDEMO.html>`__. Refer MCU+SDK on how to build demos.
+   Generated binaries will be in  <MCU+SDK>\examples\motor_control\benchmark_demo\am64x-evm\system_nortos 
 
 2. Once the R5F binaries are available, copy them to Linux file system  in folder /lib/firmware.
    The copy step can only be done using a Linux machine since the Linux filesystem on the 
