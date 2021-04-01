@@ -36,11 +36,7 @@ $(info TAGFILE is $(TAGFILE))
 $(info CONFDIR is $(CONFDIR))
 export CONFDIR
 
-ifeq ($(DEVFAMILY), AM64X)
-BUILDDIR      = build/processor-sdk-${DEVFAMILY}/esd/docs/${VERSION}
-else
 BUILDDIR      = build/processor-sdk-${OS}-${DEVFAMILY}/esd/docs/${VERSION}
-endif
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
