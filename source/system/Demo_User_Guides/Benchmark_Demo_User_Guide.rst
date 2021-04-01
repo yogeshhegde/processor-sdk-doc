@@ -166,11 +166,11 @@ Build Baremetal Demos and Update SD card
 ----------------------------------------
 
 1. Install `MCU+SDK <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/EXAMPLE_MOTORCONTROL_BENCHMARKDEMO.html>`__. Refer MCU+SDK on how to build demos.
-   Generated binaries will be in  <MCU+SDK>\examples\motor_control\benchmark_demo\am64x-evm\system_nortos 
+   Generated binaries will be in  <MCU+SDK>/examples/motor_control/benchmark_demo/am64x-evm/system_nortos 
 
-2. Once the R5F binaries are available, copy them to Linux file system  in folder /lib/firmware.
+2. Once the R5F binaries are available, copy them to Linux file system in folder /lib/firmware/mcusdk-benchmark_demo/.
    The copy step can only be done using a Linux machine since the Linux filesystem on the 
-   SD card cannot be seen on a Windows machine.
+   SD card cannot be seen on a Windows machine. Once copied, make sure the soft links are pointing to the correct binaries.
 
 Directory Structure
 -------------------
