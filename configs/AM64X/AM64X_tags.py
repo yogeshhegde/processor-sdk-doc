@@ -14,6 +14,6 @@ exclude_patterns = ['android', 'example_code', 'files', 'rtos', 'devices/AM335X'
 # OS for the build. Sphinx uses source/{sdk_os} when looking for doc inputs
 sdk_os = 'null' #todo: remove this after the new release specific structure is used for all device families
 
-project = u'Processor SDK for AM64X'
+project = u'Processor SDK Linux for AM64X'
 
 html_title = 'Processor SDK AM64X Documentation'
