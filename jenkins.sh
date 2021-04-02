@@ -104,10 +104,7 @@ build_doc()
 	    VERSION=${ROOT_VERSION}
     fi
 
-    if [[ "$DEV" == "AM64X" ]]; then
-            BUILDNAME="processor-sdk-${DEV}"
-            os_path=''
-    elif [[ "$DEV" == "GEN" ]]; then
+    if [[ "$DEV" == "GEN" ]]; then
             BUILDNAME="processor-sdk-${OS}"
             os_path="/${OS}"
     else
@@ -147,7 +144,7 @@ if [[ ${OS} == all ]]; then
 	fi
     done
     # build AM64X
-    build_doc "" AM64X
+    build_doc linux AM64X
     # build J7
     build_doc linux J7
     # build CORESDK
