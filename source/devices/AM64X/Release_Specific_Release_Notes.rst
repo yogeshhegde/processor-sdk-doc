@@ -66,9 +66,9 @@ This release integrates benchmark examples built on top of RTOS, Baremetal and L
 Refer below component release notes for complete feature-set and further details
 
 -  For Linux Kernel, u-boot & DTB     `[Use Link] <Linux_Release_Notes.html>`__
--  For RTOS/BM source (MCU-PLUS-SDK)  `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/RELEASE_NOTES_PAGE.html>`__
+-  For RTOS/BM source (MCU+ SDK)      `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/RELEASE_NOTES_PAGE.html>`__
 -  For Industrial Protocols (ECAT)    `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/INDUSTRIAL_PROTOCOLS.html>`__
--  For Industrial Drives (EnDAT,HDSL) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/MOTOR_CONTROL.html>`__
+-  For Industrial Drives (EnDAT,HDSL) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/EXAMPLES_MOTORCONTROL.html>`__
 
 
 .. rubric:: Known Issues
