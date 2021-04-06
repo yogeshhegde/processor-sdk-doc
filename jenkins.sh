@@ -113,7 +113,7 @@ build_doc()
     fi
 
     BUILDDIR="${OUTPUT}/${BUILDNAME}/esd/docs/${VERSION}"
-    echo "${BUILDNAME}/esd/docs/${VERSION}${release_path}${os_path}/index.html" >> "${BUILD_TARGETS}"
+    echo "${BUILDNAME}/esd/docs/${VERSION}/index.html" >> "${BUILD_TARGETS}"
 
     # do the thing
     make config DEVFAMILY="${DEV}" OS="${OS}" VERSION="${VERSION}" 2>&1 | tee -a "${LOGS}/make.log"
