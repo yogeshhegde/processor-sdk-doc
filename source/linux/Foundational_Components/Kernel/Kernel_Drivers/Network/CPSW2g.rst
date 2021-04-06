@@ -33,6 +33,8 @@ supports the following features:
 #. CPTS/PTP as per 802.1AS-2011 (TSN)
 #. EST/TAS offload as per 802.1Q-2018 (TSN)
 #. IET/preemption offload as per 802.1Q-2018 (TSN)
+#. Forwarding and Queuing Enhancements for Time-Sensitive Streams (FQTSS) as per 802.1Q-2018 previously referred to as CBS or 802.1Qav
+
 
 *Not supported*:
 
@@ -71,4 +73,4 @@ The DT bindings description can be found at:
 MAC mode
 ========
 
-.. include:: K3-CPSW-common.rst.inc
+.. include:: K3-CPSW-common.inc.rst

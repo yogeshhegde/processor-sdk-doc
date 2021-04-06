@@ -1048,6 +1048,11 @@ In the above case, last sched-entry will become truncated to 150 usec resulting 
 
 Intersperse Express Traffic (IET) Frame Preemption offload
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. Caution::
+
+    The IET configuration interface could be changed significantly in the future depending on Linux Kernel mainline development.
+
 CPSW2g h/w support Intersperse Express Traffic (IET, defined in P802.3br/D2.0 spec which later is included in IEEE 802.3 2018) Frame preemption (FPE) feature and also to allow MAC layer to Verify if the peer supports IET MAC merge layer or not. MAC merge layer is responsible for preempting the transmission of frame from a preemptible queue if there is frame waiting for transmission at a higher priority Express queue. The h/w sends an initial segment of the frame satisfying min fragment size requirement and then schedule frame from the Express queue for transmission. Finally when no more frames available at the Express queue, it will resume transmission of remaining segments of the frame of the preemptible queue which was preempted. At the peer end, the segments are re-assembled and delivered to the MAC interface.
 
 IET FPE feature is configured for a port through ethtool --set-priv-flags command. Note that this is a temporary interface to allow configure IET FPE in CPSW2g driver and is not approved by netdev subsystem maintainers in Linux Kernel Mailing List (LKML) and may change in the future. Driver configures IET FPE for a port when network device is opened (ndo_open()) if user has turned ON the iet-frame-preemption priv flag. Note that since IET is a common feature applicable to all slave ports, this has to be done before the network ports of the CPSW2g are brought up. The user may also turn ON the iec-mac-verify flag if the peer device connected to CPSW2g port is also capable of verifying MAC merge/FPE capability. For this, driver schedules a worker thread to do the MAC/Verify process as soon as the Link is up and iec-mac-verify priv flag is set.  It resets the LINKFAIL bit and check if the Verify succeeds or not.  On failure, the MAC Verify state machine is reset by toggling LINKFAIL bit and process repeats for 20 times before bailing out. If iec-mac-verify priv flag is not set, driver assumes that peer is capable of supporting FPE, but not able to do MAC Verify. So it configures the device into force mode. User needs to verify that peer device is capable of supporting IET FPE to use force mode.
@@ -1287,3 +1292,167 @@ So to test, need to have traffic at the preemption queue as well as at the expre
    :name: iet-with-est
 
 Express and preemption queues/Gates may be used as part of the EST schedule. If only Preemption queues are in a schedule entry, preceding an entry with Express queue, the guard band requirement reduces to 2048 nsec (0x100 = 256 * 8) so that packets don't spill over to the next sched-entry. Otherwise, the guard band required is as explained in the EST section.
+
+
+Forwarding and Queuing Enhancements for Time-Sensitive Streams (FQTSS, 802.1Qav)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The K3 CPSW HW supports 2 level of traffic 802.1Qav shapers which are bound to TX CPPI channels on Host P0 (CPPI Receive thread) and External Ports FIFOs which represent HW traffic
+classes. The HW shapers allows to configure Committed Information Rate (guaranteed) and Excess Information Rate (non guaranteed) per TX CPPI channels or External Ports Fifos.
+
+The CPSWxG driver allows to perform Traffic Rate Limiting/shaping at:
+
+* Host port ingress, CPPI Port Receive Rate Limiting, by configuring per TX CPPI channels shaper. Only committed information rate is supported.
+* Switch egress, Ethernet Port Transmit Rate Limiting, by configuring per TX FIFO shaper. Both committed and excess information rate is supported.
+
+The number Host port TX CPPI channels is configurable (up to 8) through ethtool commands:- -L.
+The Host port TX CPPI channels processing mode has to be switched in Fixed priority mode through ethtool commands: –set-priv-flags.
+Also note that –set-priv-flags and -L ethtool commands can be execute only when all Ethernet interfaces are down.
+
+The Linux TC MQPRIO Qdisc can be used for mapping of packet priorities to traffic classes and routing packets to dedicated TX CPPI channels or External Ports FIFOs.
+
+Host port ingress, CPPI Port Receive Rate Limiting offload
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The netdev sysfs **tx_maxrate** parameter can be used to configure rate limit in Mbit/s per TX CPPI channel.
+The rate for shapers has to be set a little bit more then potential incoming rate, and real rates can differ, due to discreetness.
+
+::
+
+   echo 100 > /sys/class/net/eth2/queues/tx-7/tx_maxrate
+
+.. rubric:: Host port ingress, CPPI Port Receive Rate Limiting offload example
+
+In this example Rate Limiting is enabled only for Host port TX channels.
+
+* tc filters are used to assign pri for iperf3 traffic using port as filter value
+* pri7 traffic routed to TX CPPI channel 7, rate limit 100Mbit
+* pri6 traffic routed to TX CPPI channel 6, rate limit 200Mbit
+* pri0-5 traffic routed to TX CPPI channel 0
+
+::
+
+   ip link set dev eth0 down
+   ethtool -L eth0 tx 8
+   ip link set dev eth0 up
+
+   tc qdisc replace dev eth0 handle 100: parent root mqprio num_tc 3 \
+   map 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 queues 1@0 1@6 1@7 hw 0
+
+   echo 106 > /sys/class/net/eth0/queues/tx-7/tx_maxrate
+   echo 212 > /sys/class/net/eth0/queues/tx-6/tx_maxrate
+
+   tc qdisc add dev eth0 clsact
+   tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5001 0xffff action skbedit priority 7
+   tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5002 0xffff action skbedit priority 6
+
+   iperf3 -c 192.168.1.2 -t10 -p5001 -Tpri7 & \
+   iperf3 -c 192.168.1.2 -t10 -p5002 -Tpri6 & \
+   iperf3 -c 192.168.1.2 -t10 -p5003 -Tpri0
+
+   #result
+   pri0:  - - - - - - - - - - - - - - - - - - - - - - - - -
+   pri0:  [ ID] Interval           Transfer     Bitrate         Retr
+   pri0:  [  5]   0.00-10.00  sec   767 MBytes   644 Mbits/sec    0             sender
+   pri0:  [  5]   0.00-10.00  sec   766 MBytes   642 Mbits/sec                  receiver
+
+   pri6:  - - - - - - - - - - - - - - - - - - - - - - - - -
+   pri6:  [ ID] Interval           Transfer     Bitrate         Retr
+   pri6:  [  5]   0.00-10.00  sec   238 MBytes   200 Mbits/sec    0             sender
+   pri6:  [  5]   0.00-10.01  sec   238 MBytes   199 Mbits/sec                  receiver
+
+   pri7:  - - - - - - - - - - - - - - - - - - - - - - - - -
+   pri7:  [ ID] Interval           Transfer     Bitrate         Retr
+   pri7:  [  5]   0.00-10.00  sec   120 MBytes   101 Mbits/sec    0             sender
+   pri7:  [  5]   0.00-10.01  sec   119 MBytes  99.9 Mbits/sec                  receiver
+
+   #statistic
+   tx_pri0: 2819633
+   tx_pri1: 2
+   tx_pri2: 0
+   tx_pri3: 102
+   tx_pri4: 26
+   tx_pri5: 0
+   tx_pri6: 847449
+   tx_pri7: 1237148
+
+Switch egress, Ethernet Port Transmit Rate Limiting offload
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Linux MQPRIO Qdisc in channel offload mode can be used for mapping of packet priorities to traffic classes and configuring rate limit in Mbit/s per External Ports FIFOs.
+The MQPRIO Qdisc **shaper bw_rlimit min_rate and max_rate** parameters can be used to configure External Ports FIFO shapers.
+
+* the traffic class (TC) in terms of MQPRIO Qdisc is mapped 1:1 to External Ports FIFO. TC0 is lowest priority.
+* MQPRIO Qdisk offload is expected to work with VALN/priority tagged traffic first of all and untagged traffic has to be mapped only to TC0.
+* to handle properly untagged traffic from Host Port the 1:1 mapping has to be preserved between packet priority and Host TX CPPI channel used to send packet
+* VALN/priority tagged packets mapped to TC0 will exit switch with VALN tag.
+* if Host sends traffic to the same, rate limited External Ports FIFO then corresponding Host TX CPPI channel shapers has to be enabled and its rate has to be set equal or less than External Ports FIFO rate
+* the rate for shapers has to be set a little bit more then potential incoming rate, and real rates can differ, due to discreetness.
+
+::
+
+   tc qdisc add dev eth0 parent root handle 100: mqprio num_tc 3 \
+   map 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 \
+   queues 1@0 1@6 1@7 hw 1 mode channel \
+   shaper bw_rlimit min_rate 0 212mbit 106mbit max_rate 0 250mbit 150mbit
+
+.. rubric::  Switch egress, Ethernet Port Transmit Rate Limiting example
+
+In this example Rate Limiting is enabled for Host port TX channels and External Ports FIFO.
+
+* tc filters are used to assign pri for iperf3 traffic using port as filter value
+* untagged traffic
+* pri7 traffic routed to TX CPPI channel 7, rate limit 100Mbit
+* pri6 traffic routed to TX CPPI channel 6, rate limit 200Mbit
+* pri0-5 traffic routed to TX CPPI channel 0
+* pri7 traffic mapped to TC2, External Ports FIFO2, cir=100Mbit, eir=150Mbit
+* pri6 traffic mapped to TC1, External Ports FIFO1, cir=200Mbit, eir=250Mbit
+* pri0-5 traffic mapped to TC1, External Ports FIFO0
+
+::
+
+   ip link set dev eth0 down
+   ethtool -L eth0 tx 8
+   ip link set dev eth0 up
+
+   tc qdisc add dev eth0 parent root handle 100: mqprio num_tc 3 \
+   map 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 \
+   queues 1@0 1@6 1@7 hw 1 mode channel \
+   shaper bw_rlimit min_rate 0 212mbit 106mbit max_rate 0 250mbit 150mbit
+
+   echo 106 > /sys/class/net/eth0/queues/tx-7/tx_maxrate
+   echo 212 > /sys/class/net/eth0/queues/tx-6/tx_maxrate
+
+   tc qdisc add dev eth0 clsact
+   tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5001 0xffff action skbedit priority 7
+   tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5002 0xffff action skbedit priority 6
+
+   iperf3 -c 192.168.1.2 -t10 -p5001 -Tpri7 & \
+   iperf3 -c 192.168.1.2 -t10 -p5002 -Tpri6 & \
+   iperf3 -c 192.168.1.2 -t10 -p5003 -Tpri0
+
+   #result
+   pri7:  - - - - - - - - - - - - - - - - - - - - - - - - -
+   pri7:  [ ID] Interval           Transfer     Bitrate         Retr
+   pri7:  [  5]   0.00-10.00  sec   120 MBytes   100 Mbits/sec    0             sender
+   pri7:  [  5]   0.00-10.00  sec   119 MBytes  99.9 Mbits/sec                  receiver
+
+   pri6:  - - - - - - - - - - - - - - - - - - - - - - - - -
+   pri6:  [ ID] Interval           Transfer     Bitrate         Retr
+   pri6:  [  5]   0.00-10.00  sec   238 MBytes   200 Mbits/sec    0             sender
+   pri6:  [  5]   0.00-10.00  sec   238 MBytes   199 Mbits/sec                  receiver
+
+   pri0:  - - - - - - - - - - - - - - - - - - - - - - - - -
+   pri0:  [ ID] Interval           Transfer     Bitrate         Retr
+   pri0:  [  5]   0.00-10.00  sec   767 MBytes   643 Mbits/sec    0             sender
+   pri0:  [  5]   0.00-10.00  sec   766 MBytes   642 Mbits/sec                  receiver
+
+   #statistic
+   tx_pri0: 2012441
+   tx_pri1: 172147
+   tx_pri2: 259038
+   tx_pri3: 0
+   tx_pri4: 2
+   tx_pri5: 9
+   tx_pri6: 0
+   tx_pri7: 0

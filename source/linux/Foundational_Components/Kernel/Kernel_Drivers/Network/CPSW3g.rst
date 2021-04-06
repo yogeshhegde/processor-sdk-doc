@@ -36,6 +36,7 @@ supports the following features:
 #. CPTS/PTP as per 802.1AS-2011 (TSN)
 #. EST/TAS offload as per 802.1Q-2018 (TSN)
 #. IET/preemption offload as per 802.1Q-2018 (TSN)
+#. Forwarding and Queuing Enhancements for Time-Sensitive Streams (FQTSS) as per 802.1Q-2018 previously referred to as CBS or 802.1Qav
 
 
 .. note::
@@ -87,7 +88,7 @@ Multi MAC mode
  This section documents Independent MAC mode of operation with
  CPSW3g.
 
-.. include:: K3-CPSW-common.rst.inc
+.. include:: K3-CPSW-common.inc.rst
 
 Multi port Switch mode
 ======================
@@ -204,6 +205,10 @@ Turning flooding on/off on switch ports::
 Enabling Cut Through forwarding
 """""""""""""""""""""""""""""""
 
+.. Caution::
+
+    The Cut Through configuration interface could be changed significantly in the future depending on Linux Kernel mainline development.
+
 Cut Through feature allows forwarding packet from one external port to
 another without being stored in Port FIFOs thus reducing overall latency
 for packet forwarding.
@@ -282,3 +287,241 @@ taking effect
  tx_mult_coll_frames:      Enet_Pn_RxCut_NoDelay Enet Port n Rx Cut Thru with no delay (full-duplex)
  tx_excessive_collisions:  Enet_Pn_RxCut_Delay Enet Port n Rx Cut Thru with delay (full-duplex)
  tx_late_collisions:       Enet_Pn_RxCut_SAF Enet Port n Rx Store and Forward (full-duplex)
+
+Transmit Traffic Control and Rate Limiting
+""""""""""""""""""""""""""""""""""""""""""
+
+For general info see `Forwarding and Queuing Enhancements for Time-Sensitive Streams (FQTSS, 802.1Qav)`_
+The main difference between one port and multi port devices is that TX CPPI channels
+are shared between all network devices while External Ports FIFO are per port.
+The MQPRIO Qdisk can be used to assign different TX CPPI channels to different ports
+and this way improve over all TX performance.
+
+* the configured External Ports Fifos rate should must not be oversubscribed.
+  If some Ext. port and Host port both send to the same priority then Ext. Ports
+  Fifos rate for this priority has to be set as sum of Ext. and Host port rates
+  plus some margin.
+
+.. rubric::  Example Host port ingress with separate TX CPPI channel per port, no QoS
+
+* switch mode: on | off
+* Port 1 assigned TX CPPI channel 0
+* Port 2 assigned TX CPPI channel 1
+* TX CPPI channels processing mode: Round Robin
+
+::
+
+   ip link set dev eth0 down
+   ip link set dev eth1 down
+   ethtool -L eth0 tx 2
+   ethtool --set-priv-flags eth1 p0-rx-ptype-rrobin on
+   ip link set dev eth0 up
+   ip link set dev eth1 up
+   tc qdisc add dev eth0 handle 100: parent root mqprio num_tc 1 map 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 queues 1@0 hw 1 mode channel
+   tc qdisc add dev eth1 handle 100: parent root mqprio num_tc 1 map 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 queues 1@1 hw 1 mode channel
+
+If TX CPPI channels processing mode is Round Robin (p0-rx-ptype-rrobin off) then Rate Limiting should for selected TX CPPI channels.
+
+::
+
+   echo 800 > /sys/class/net/eth0/queues/tx-0/tx_maxrate
+   echo 800 > /sys/class/net/eth0/queues/tx-1/tx_maxrate
+
+.. rubric::  Example Host port ingress with separate TX CPPI channel per port and Rate Limiting
+
+Linux Host send bulk and rate limited traffic to both ports.
+No traffic switching between P1 and P2.
+
+::
+
+   to Host1│  CPSW3g Host bridge │ to Host2
+           │     /    \          │
+           │   P1     P2         │
+           │   |       |         │
+           │  Host1   Host2      │
+           ▼                     ▼
+
+* switch mode: on
+* tc filters are used to assign pri for iperf3 traffic using port as filter value
+* VLAN tagged traffic vid=100
+
+**eth0: Ports 1**
+
+* pri7 traffic routed to TX CPPI channel 7, rate limit 100Mbit
+* pri6 traffic routed to TX CPPI channel 6, rate limit 200Mbit
+* pri0-5 traffic routed to TX CPPI channel 0
+* pri7 traffic mapped to TC2, External Ports FIFO2, cir=100Mbit
+* pri6 traffic mapped to TC1, External Ports FIFO1, cir=200Mbit
+* pri0-5 traffic mapped to TC0, External Ports FIFO0
+
+**eth1: Ports 2**
+
+* pri7 traffic routed to TX CPPI channel 5, rate limit 100Mbit
+* pri6 traffic routed to TX CPPI channel 4, rate limit 200Mbit
+* pri0-5 traffic routed to TX CPPI channel 0
+* pri7 traffic mapped to TC2, External Ports FIFO2, cir=100Mbit
+* pri6 traffic mapped to TC1, External Ports FIFO1, cir=200Mbit
+* pri0-5 traffic mapped to TC1, External Ports FIFO0
+
+::
+
+   ip link set dev eth0 down
+   ip link set dev eth1 down
+   ethtool -L eth0 tx 8
+   ethtool --set-priv-flags eth1 p0-rx-ptype-rrobin off
+   ip link add name br0 type bridge
+   ip link set dev eth0 up
+   ip link set dev eth1 up
+   ip link set dev eth0 master br0
+   ip link set dev eth1 master br0
+   ip link set dev br0 up
+
+   #configure bridge...
+   #configure bridge vlan
+   ip link add link br0 name br0.100 type vlan id 100
+   ip link set br0.100 type vlan egress 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7
+   bridge vlan add dev eth0 vid 100 master
+   bridge vlan add dev eth1 vid 100 master
+   bridge vlan add dev br0 vid 100 self
+
+   # set IP to br0.100 192.168.100.1
+
+   echo 100 > /sys/class/net/eth0/queues/tx-7/tx_maxrate
+   echo 200 > /sys/class/net/eth0/queues/tx-6/tx_maxrate
+   echo 100 > /sys/class/net/eth0/queues/tx-5/tx_maxrate
+   echo 200 > /sys/class/net/eth0/queues/tx-4/tx_maxrate
+
+   tc qdisc add dev br0.100 clsact
+   tc filter add dev br0.100 egress protocol ip prio 1 u32 match ip dport 5001 0xffff action skbedit priority 7
+   tc filter add dev br0.100 egress protocol ip prio 1 u32 match ip dport 5002 0xffff action skbedit priority 6
+
+   #eth0
+   tc qdisc add dev eth0 parent root handle 100: mqprio num_tc 3 \
+   map 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 \
+   queues 1@0 1@6 1@7 hw 1 mode channel \
+   shaper bw_rlimit min_rate 0 200mbit 100mbit
+
+   #eth1
+   tc qdisc add dev eth1 parent root handle 100: mqprio num_tc 3 \
+   map 0 0 0 0 0 0 1 2 0 0 0 0 0 0 0 0 \
+   queues 1@0 1@4 1@5 hw 1 mode channel \
+   shaper bw_rlimit min_rate 0 200mbit 100mbit
+
+   iperf3 -c 192.168.100.3 -t10 -p5001 -Tpri71 & \
+   iperf3 -c 192.168.100.3 -t10 -p5002 -Tpri61 & \
+   iperf3 -c 192.168.100.3 -t10 -p5003 -Tpri01 & \
+   iperf3 -c 192.168.100.2 -t10 -p5001 -Tpri72 & \
+   iperf3 -c 192.168.100.2 -t10 -p5002 -Tpri62
+
+
+
+.. rubric::  Example Bridging with TX CPPI channel and External Ports FIFO shapers
+
+Linux Host send bulk and rate limited traffic to Host 2 (Port 2) pri3 200Mbit and
+Host 1 sends rate limited traffic to Host 2 (Port 2) pri3 200Mbit.
+
+::
+
+   CPSW3g Host bridge │ to Host2
+      /    \          │ 200Mbit
+    P1     P2         │
+    |       |         │
+   Host1   Host2      │
+                      ▼
+
+   ──────────────►
+   to Host2
+   200Mbit
+
+* switch mode: on
+* tc filters are used to assign pri for iperf3 traffic using port as filter value
+* VLAN tagged traffic vid=100
+* assume pri3 is class A and pri 2 is class B (not used)
+
+**eth0: Ports 1**
+
+* pri0-7 traffic routed to TX CPPI channel 0, no HW offload
+
+**eth1: Ports 2**
+
+* pri3 traffic routed to TX CPPI channel 7, rate limit 200Mbit
+* pri2 traffic routed to TX CPPI channel 6, rate limit 100Mbit
+* pri0,1,4-7 traffic routed to TX CPPI channel 0
+* pri3 traffic mapped to TC2, External Ports FIFO2, cir=200Mbit
+* pri2 traffic mapped to TC1, External Ports FIFO1, cir=100Mbit
+* pri0,1,4-7 traffic mapped to TC0, External Ports FIFO0
+
+**CPSW3g Host bridge configuration**
+
+::
+
+   ip link set dev eth0 down
+   ip link set dev eth1 down
+   ethtool -L eth0 tx 8
+   ethtool --set-priv-flags eth1 p0-rx-ptype-rrobin off
+   ip link add name br0 type bridge
+   ip link set dev eth0 up
+   ip link set dev eth1 up
+   ip link set dev eth0 master br0
+   ip link set dev eth1 master br0
+   ip link set dev br0 up
+
+   #configure bridge...
+   #configure bridge vlan
+   ip link add link br0 name br0.100 type vlan id 100
+   ip link set br0.100 type vlan egress 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7
+   bridge vlan add dev eth0 vid 100 master
+   bridge vlan add dev eth1 vid 100 master
+   bridge vlan add dev br0 vid 100 self
+
+   # set IP to br0.100 192.168.100.1
+
+   echo 200 > /sys/class/net/eth0/queues/tx-7/tx_maxrate
+   echo 100 > /sys/class/net/eth0/queues/tx-6/tx_maxrate
+
+   tc qdisc add dev br0.100 clsact
+   tc filter add dev br0.100 egress protocol ip prio 1 u32 match ip dport 5002 0xffff action skbedit priority 3
+
+   #eth0
+   tc qdisc add dev eth0 handle 100: parent root mqprio num_tc 1 \
+   map 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 queues 1@0 hw 0
+
+   #eth1
+   tc qdisc add dev eth1 parent root handle 100: mqprio num_tc 3 \
+   map 0 0 1 2 0 0 0 0 0 0 0 0 0 0 0 0 \
+   queues 1@0 1@6 1@7 hw 1 mode channel \
+   shaper bw_rlimit min_rate 0 100mbit 410mbit
+
+   iperf3 -c 192.168.100.2 -t10 -p5002 -Tpri22 -t30 & \
+   iperf3 -c 192.168.100.2 -t10 -p5003 -Tpri02 -t30 &
+
+**Host 1 configuration**
+
+::
+
+   ip link add link eth0 name eth0.100 type vlan id 100
+   ip link set eth0.100 type vlan egress 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7
+
+   # set IP to br0.100 192.168.100.3
+
+   tc qdisc add dev eth0.100 clsact
+   tc filter add dev eth0.100 egress protocol ip prio 1 u32 match ip dport 5001 0xffff action skbedit priority 3
+
+   #Real QoS configuration depends Host 2 functionality
+
+   iperf3 -c 192.168.100.2 -t10 -p5001 -Tpri3 -t30
+   # - or -
+   iperf3 -c 192.168.100.2 -t10 -p5001 -Tpri3 -t30 -u -b210M
+
+**Host 2 configuration**
+
+::
+
+   ip link add link eth0 name eth0.100 type vlan id 100
+   ip link set eth0.100 type vlan egress 0:0 1:1 2:2 3:3 4:4 5:5 6:6 7:7
+
+   # set IP to br0.100 192.168.100.3
+
+   iperf3 -s -p 5001&
+   iperf3 -s -p 5002&
+   iperf3 -s -p 5003&
