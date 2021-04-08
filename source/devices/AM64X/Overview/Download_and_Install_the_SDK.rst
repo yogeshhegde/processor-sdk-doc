@@ -96,11 +96,11 @@ application specific demos.  The SDK has the below folder structure
 Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and further details
 
 
-**MCU+ SDK for RTOS/BM**
+**MCU+ SDK for RTOS/NO-RTOS**
 
 .. note::
    Processor SDK Linux AM64x contains only the Linux specific source and application intended   
-   to runs on A53/Linux core. For R5F and RTOS/BM side source and applications, refer **MCU+ SDK** 
+   to runs on A53/Linux core. For R5F and RTOS/NO-RTOS side source and applications, refer **MCU+ SDK** 
    package `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/index.html>`__.
 
 **Instructions to set-up CCS**
