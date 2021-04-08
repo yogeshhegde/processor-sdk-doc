@@ -82,8 +82,9 @@ Create SD Card with Default Images
 
                sudo dd bs=4M if=./tisdk-default-image-am64xx-evm.wic of=/dev/sdc status=progress && sync
 
-    - For Windows, write the WIC image to the SD card with Win32DiskImager.exe
-      (https://sourceforge.net/projects/win32diskimager/files/latest/download)
+    - For Windows:
+        Write the WIC image to the SD card with Win32DiskImager.exe
+        (https://sourceforge.net/projects/win32diskimager/files/latest/download)
 
 |
 
@@ -96,7 +97,7 @@ Create SD Card with Custom Images
   The TI script used to generate custom SD card images should be run on a Linux
   computer.
 
-For a Linux + RTOS/baremetal application to boot from a SD card, two partitions need to
+For a Linux + RTOS/NO-RTOS application to boot from a SD card, two partitions need to
 be created on the SD card:
 
    - boot partition

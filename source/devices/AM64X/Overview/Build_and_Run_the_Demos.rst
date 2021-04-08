@@ -30,10 +30,10 @@ Set-up Linux build environment to rebuild kernel, u-boot & DTB
         $ cd /<INSTALL-DIR>/bin/scripts
         $ ./setup-ubuntu.sh
 
-Refer the respective user guides to build Linux and other RTOS/BM packages
+Refer the respective user guides to build Linux and other RTOS/NO-RTOS packages
 
 -  For Linux Kernel, u-boot & DTB     `[Use Link] <../index_Linux.html>`__
--  For RTOS/BM source (MCU+ SDK)      `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/index.html>`__
+-  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/index.html>`__
 -  For Industrial Protocols (ECAT)    `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/INDUSTRIAL_PROTOCOLS.html>`__
 -  For Industrial Drives (EnDAT,HDSL) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/EXAMPLES_MOTORCONTROL.html>`__
 

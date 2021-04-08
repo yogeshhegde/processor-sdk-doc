@@ -46,13 +46,13 @@ Released on March 2021
 
 Processor SDK Linux AM64x Release has following new features:
 
-This release integrates benchmark examples built on top of RTOS, Baremetal and Linux platform software. Refer to highlights per subsystem for more detailed information.
+This release integrates benchmark examples built on top of RTOS, NO-RTOS and Linux platform software. Refer to highlights per subsystem for more detailed information.
 
 
 **Benchmark Demo:**
 
--  Benchmark_demo with GUI (A53/Linux) working for all 4 R5F/BM cores with u-boot based SD card boot
--  4-ch IPC RPMsg_char functional between R5F/BM and A53/Linux
+-  Benchmark_demo with GUI (A53/Linux) working for all 4 R5F/NO-RTOS cores with u-boot based SD card boot
+-  4-ch IPC RPMsg_char functional between R5F/NO-RTOS and A53/Linux
 -  Benchmarking R5F apps such as CFFT, FIR and FOC with profile/cycle counts 
 
 
@@ -66,7 +66,7 @@ This release integrates benchmark examples built on top of RTOS, Baremetal and L
 Refer below component release notes for complete feature-set and further details
 
 -  For Linux Kernel, u-boot & DTB     `[Use Link] <Linux_Release_Notes.html>`__
--  For RTOS/BM source (MCU+ SDK)      `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/RELEASE_NOTES_PAGE.html>`__
+-  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/RELEASE_NOTES_PAGE.html>`__
 -  For Industrial Protocols (ECAT)    `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/INDUSTRIAL_PROTOCOLS.html>`__
 -  For Industrial Drives (EnDAT,HDSL) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/EXAMPLES_MOTORCONTROL.html>`__
 
