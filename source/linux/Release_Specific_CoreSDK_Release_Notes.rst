@@ -20,17 +20,23 @@ Licensing
 Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location. 
 
-Release 07.02.00
+Release 07.03.00
 ==================
 
-Released January 2021
+Released April 2021
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 7.2 Release has following new features:
+Processor SDK 7.3 Release has following new features:
 
-- AM64XX Support
+- Final release on 2020 LTS 5.4 kernel
+- AM64 Kernel Support for MMC SDR104 and DDR50 and eMMC HS200 speed modes 
+- AM64 TSN Switch Support
+- AM64 am64xx-sk Support
+- J7200 Kernel and Uboot Support for SDR104 speed mode
+- J7200 Kernel eMMC HS200 and HS400 speed modes
+
 
 
 Build Information
@@ -39,75 +45,72 @@ Build Information
 U-Boot
 -------------------------
 
-| Head Commit: 84b608fd3489c8dd93d8eb20e7f005d967b88402 arm: | dts: k3-am65: Add tag to disable UHS modes in SR 1.0
-| Date: Thu Jan 21 08:28:10 CST 2021
+| Head Commit: 2781231a33c3d779e32445f4fe55164c45d6d7c1 arm: mach-k3: j721e_init: probe clock node after sci node is probed
+| Date: Wed Apr 7 21:12:38 CDT 2021
 | uBoot Version: 2020.01
-| uBoot Description: 07.02.00.004
+| uBoot Description: 07.03.00.005
 
-| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: 07.02.00.004
-| uBoot Tag: 07.02.00.004
+| Clone: https://git.ti.com/ti-u-boot/ti-u-boot.git
+| Branch: 07.03.00.005
+| uBoot Tag: 07.03.00.005
+
+| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
 Kernel
 -------------------------
-
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 60de748aca87c99a32f726a6abf1b6472f297ae3 Merged TI feature connectivity into ti-linux-5.4.y
-| Date: Thu Jan 21 08:37:49 CST 2021
-| Kernel Version: 5.4.87
-| Kernel Description: 07.02.00.004
-
-| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Head Commit: 023faefa70274929bff92dc41167b007f7523792 Merged TI feature connectivity into ti-linux-5.4.y
+| Date: Wed Apr 7 14:38:29 CDT 2021
+| Kernel Version: 5.4.106
+| Kernel Description: 07.03.00.005
+| Repo: https://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-5.4.y
-| Tag: 07.02.00.004
-| Kernel defconfig: multi_v7_defconfig
+| Tag: 07.03.00.005
 
 | Compiler Information: arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: e0c39cf61df45b3f69d7ad1afd919e104d39eba3 Merged TI feature | ti_linux_base_rt into ti-rt-linux-5.4.y
-| Date: Thu Jan 21 09:07:27 CST 2021
-| Kernel Version: 5.4.87
-| RT Kernel Version: 5.4.87-rt48
-| Kernel Description: 07.02.00.004-rt
+| Head Commit: 519667b0d81d74a6e55105dcd6072ae550352599 Merged TI feature ti_linux_base_rt into ti-rt-linux-5.4.y
+| Date: Wed Apr 7 21:12:27 CDT 2021
+| Kernel Version: 5.4.106
+| RT Kernel Version: 5.4.106-rt54
+| Kernel Description: 07.03.00.005-rt
 
-| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Repo: https://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.4.y
-| Tag: 07.02.00.004-rt
-| Kernel defconfig: multi_v7_defconfig
+| Tag: 07.03.00.005-rt
 
-| Compiler Information: arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
 Yocto
 ------------------------
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 542456ca082de7133a61be21222d13974a87e41d 
-| ti-sci-fw: Update image gen and sysfw to v2020.12a
-| Date: 2021-1-21
+| Head Commit: 52ffccb09385ef3a369770b2fa45bc09418a5050
+| ti-rtos: Update metadata and versions for RTOS firmware
+| Date: 2021-4-05
 | Version: dunfell-3.1
 
-| Clone: git://git.yoctoproject.org/meta-ti
+| Clone: https://git.yoctoproject.org/meta-ti
 | Branch: dunfell
-| Release Tag: 07.02.00.004
+| Release Tag: 07.03.00.005
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 3d81e5add1f7173e34a4fbc189bf56872969fc98  
-| branding: core-next: AUTOREV kernel and uboot
-| Date: 2021-1-21
+| Head Commit: ee6ff44d90945429051c8d9573c8b60705104149
+| omapconf: Bump to v1.75 release
+| Date: 2021-4-01
 | Version: 2020.05
 
-| Clone: git://arago-project.org/git/meta-arago.git
+| Clone: https://arago-project.org/git/meta-arago.git
 | Branch: dunfell
-| Release Tag: 07.02.00.004
-|
+| Release Tag: 07.03.00.005
 |
 
 Issues Tracker

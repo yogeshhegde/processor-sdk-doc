@@ -12,6 +12,15 @@ of the Processor SDK for Linux.
 Processor CoreSDK 07.xx Releases
 ================================
 
+Processor CoreSDK 07.03
+-----------------------
+- Final release on 2020 LTS 5.4 kernel
+- AM64  Kernel Support for MMC SDR104 and DDR50 and eMMC HS200 speed modes
+- AM64 TSN Switch Support
+- AM64 am64xx-sk Support
+- J7200 Kernel and Uboot Support for SDR104 speed mode
+- J7200 Kernel eMMC HS200 and HS400 speed modes
+
 Processor CoreSDK 07.02
 -----------------------
 - Introduces AM64XX Support
