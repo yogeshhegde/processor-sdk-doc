@@ -1,12 +1,11 @@
-************************************
-Release Notes
-************************************
-.. http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_Release_Notes
+*******************
+Linux Release Notes
+*******************
 
 Overview
 ========
 
-The **Processor-CoreSDK for Linux**
+The **Processor SDK for Linux**
 provides a fundamental software platform for development, deployment and
 execution of Linux based applications and includes the following:
 
@@ -18,7 +17,7 @@ Licensing
 =========
 
 Please refer to the software manifest, which outlines the licensing
-status for all packages included in the prebuilt binaries location. 
+status for all packages included in the prebuilt binaries location.
 
 Release 07.03.00
 ==================
@@ -26,24 +25,20 @@ Release 07.03.00
 Released April 2021
 
 .. rubric:: What's New
-   :name: whats-new
 
 Processor SDK 7.3 Release has following new features:
 
 - Final release on 2020 LTS 5.4 kernel
-- AM64 Kernel Support for MMC SDR104 and DDR50 and eMMC HS200 speed modes 
+- AM64 Kernel Support for MMC SDR104 and DDR50 and eMMC HS200 speed modes
 - AM64 TSN Switch Support
-- AM64 am64xx-sk Support
-- J7200 Kernel and Uboot Support for SDR104 speed mode
-- J7200 Kernel eMMC HS200 and HS400 speed modes
-
-
 
 Build Information
-=====================================
+=================
+
+.. _release-specific-build-information-u-boot:
 
 U-Boot
--------------------------
+------
 
 | Head Commit: 2781231a33c3d779e32445f4fe55164c45d6d7c1 arm: mach-k3: j721e_init: probe clock node after sci node is probed
 | Date: Wed Apr 7 21:12:38 CDT 2021
@@ -56,10 +51,12 @@ U-Boot
 
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
+.. _release-specific-build-information-kernel:
+
 Kernel
--------------------------
+------
+
 .. rubric:: Linux Kernel
-   :name: linux-kernel
 
 | Head Commit: 023faefa70274929bff92dc41167b007f7523792 Merged TI feature connectivity into ti-linux-5.4.y
 | Date: Wed Apr 7 14:38:29 CDT 2021
@@ -72,7 +69,6 @@ Kernel
 | Compiler Information: arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
 .. rubric:: Real Time (RT) Linux Kernel
-   :name: real-time-rt-linux-kernel
 
 | Head Commit: 519667b0d81d74a6e55105dcd6072ae550352599 Merged TI feature ti_linux_base_rt into ti-rt-linux-5.4.y
 | Date: Wed Apr 7 21:12:27 CDT 2021
@@ -87,9 +83,9 @@ Kernel
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
 Yocto
-------------------------
+-----
+
 .. rubric:: meta-ti
-   :name: meta-ti
 
 | Head Commit: 52ffccb09385ef3a369770b2fa45bc09418a5050
 | ti-rtos: Update metadata and versions for RTOS firmware
@@ -101,7 +97,6 @@ Yocto
 | Release Tag: 07.03.00.005
 
 .. rubric:: meta-arago
-   :name: meta-arago
 
 | Head Commit: ee6ff44d90945429051c8d9573c8b60705104149
 | omapconf: Bump to v1.75 release
@@ -114,10 +109,10 @@ Yocto
 |
 
 Issues Tracker
-=====================================
+==============
 
 Issues opened in previous releases that were closed on this release
----------------------------------------------------------------------
+-------------------------------------------------------------------
 
 .. csv-table::
    :header: "Record ID", "Platform", "Title"
@@ -147,7 +142,8 @@ Issues opened in previous releases that were closed on this release
 
 
 Issues found and closed on this release that may be applicable to prior releases
------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
@@ -173,7 +169,8 @@ Issues found and closed on this release that may be applicable to prior releases
 |
 
 Errata Workarounds Available in this Release
-------------------------------------------------
+--------------------------------------------
+
 .. csv-table::
    :header: "Record ID",  "Title"
    :widths: 15, 180
@@ -285,7 +282,8 @@ Errata Workarounds Available in this Release
 |
 
 SDK Known Issues
------------------
+----------------
+
 .. csv-table::
    :header: "Record ID","Platform", "Title","Workaround"
    :widths: 15, 30, 70, 30
@@ -375,7 +373,8 @@ SDK Known Issues
 
 
 U-Boot Known Issues
-------------------------
+-------------------
+
 .. csv-table::
    :header: "Record ID","Platform", "Title","Workaround"
    :widths: 15, 30, 70, 30
@@ -414,11 +413,13 @@ U-Boot Known Issues
    "LCPD-5517","AM572x","Board fails to load bootloader sometimes when eSATA is connected","None"
    "LCPD-5416","K2G","U-BOOT: K2G: ""reset"" fails for certain SD cards","None"
    "LCPD-5116","AM335x","BBB: U-Boot: Board fails to acquire dhcp address sometimes","None"
+
 |
 
 
 Linux Kernel Known Issues
----------------------------
+-------------------------
+
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround" 
    :widths: 5, 10, 70, 35
