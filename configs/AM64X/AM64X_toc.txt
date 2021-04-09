@@ -59,4 +59,3 @@ linux/Foundational_Components/Machine_Learning/tflite_j7
 linux/Foundational_Components_ATF
 linux/Foundational_Components_OPTEE
 linux/Release_Specific_CoreSDK_Yocto_layer_Configuration
-linux/Release_Specific/CoreSDK_Layer_Configuration

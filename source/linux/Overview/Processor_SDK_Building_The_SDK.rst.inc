@@ -90,10 +90,8 @@ Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
 Build Steps
 -----------
 
-Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the
-layer configuration for a particular release of Processor SDK Linux, 
-or refer to `here <Release_Specific_CoreSDK_Yocto_layer_Configuration.html>`__ for the
-layer configuration for a particular release of Core SDK Linux, whichever applicable.
+Please refer to `here <Release_Specific_CoreSDK_Yocto_layer_Configuration.html>`__ for the
+layer configuration for a particular release of Processor SDK Linux.
 See `Build Options`_ for a list of additional targets.  The MACHINE can be set to
 |__SDK_BUILD_MACHINE__|.
 
@@ -137,9 +135,8 @@ options, and supported platforms of the Processor SDK.
 
 Layer Configuration
 -------------------
-Please refer to `here <Release_Specific_Yocto_layer_Configuration.html>`__ for the layer configuration for a particular release of Processor SDK Linux, 
-or refer to `here <Release_Specific_CoreSDK_Yocto_layer_Configuration.html>`__ for the layer configuration for a particular release of Core SDK Linux,
-whichever applicable.
+Please refer to `here <Release_Specific_CoreSDK_Yocto_layer_Configuration.html>`__
+for the layer configuration for a particular release of Processor SDK Linux.
 
 
 Build Options
