@@ -123,26 +123,36 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 30, 100
 
-   LCPD-19854,"j721e-evm, j721e-hsevm, j721e-evm-ivi, j721e-idk-gw",PCIe: EP: Low Throughput using DMA
-   LCPD-19695,am654x-evm,am654-gpevm: kernel image boot reports corruption
-   LCPD-19249,"am654x-evm, am654x-idk","Kernel WARN observed in some cases, tisci timeout reported"
-   LCPD-19784,am654x-idk,DFU MMC test fails
-   LCPD-19823,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",ICSS PTP: Fix order of registering ICSS PTP
-   LCPD-19573,,Internel Tree Build Failed with overlay repo (ti-upstream-tools)
-   LCPD-19733,"j7200-evm, j7200-hsevm",[ti:ti-rt-linux-5.4.y 3364/11241] drivers/pci/endpoint/functions/pci-epf-ntb.c:860 epf_ntb_init_epc_bar_interface() warn: unsigned 'barno' is never less than zero.
-   LCPD-19781,"am654x-evm, am654x-idk, j721e-evm, j721e-hsevm, j721e-evm-ivi, j7200-evm, j7200-hsevm",OE: ti-rpmsg-char: Library header files and primary so file are missing in FS
-   LCPD-18620,"am654x-evm, am654x-idk",AM65x PG2: U-Boot MMC/SD does not work at greater than 25MHz clock
-   LCPD-19891,j721e-evm,V5.10-rc: usb: cdns3 otg does not work on type-C port
-   LCPD-19845,,ti: regression: cpts irq not working after a suspend/resume cycle
-   LCPD-19870,j721e-evm,next-20201119: cdns3 null pointer derefrence issue
-   LCPD-19751,j721e-idk-gw,[ti:ti-linux-5.4.y 3067/10775] drivers/pci/endpoint/pci-epf-bus.c:36:34: warning: unused variable 'pci_epf_bus_id_table'
-   LCPD-19273,,UART custom builds are missing
-   LCPD-19264,"am654x-evm, am654x-idk",Uboot: No usb controllers found
-   LCPD-19857,,Uboot: Nodes with same name not distinguished while assigning sequence numbers
-   LCPD-19818,j721e-idk-gw,CPSW2G netperf egress performance lower
-   LCPD-19772,"am654x-evm, am654x-idk, am654x-hsevm, j721e-hsevm, j721e-evm-ivi, j721e-idk-gw, j7200-evm, j7200-hsevm",ATF/Uboot GTC frequency handover bug
-
-
+   "LCPD-20177","J7200 UART boot not working","j7200-evm"
+   "LCPD-20170","am654x UART boot not working","am654x-evm,am654x-idk"
+   "LCPD-20161","NFS Boot failure on J7*/K3: 5.11.0-rc4-next-20210120","j721e-evm,j721e-idk-gw,j7200-evm"
+   "LCPD-20122","Add external power supply to PCIe USB card on am64xx and j7200","am64xx-evm,j7200-evm"
+   "LCPD-20120","U-Boot user's guide does not mention AM64x","am64xx-evm"
+   "LCPD-20119","Kernel user's guide does not mention ARM64 or AM64x","am64xx-evm"
+   "LCPD-20113","Upstream: remoteproc/pruss: Fix #address-cells warnings with ICSSG INTC nodes","am654x-evm,am654x-idk,j721e-evm,j721e-evm-ivi,j721e-idk-gw"
+   "LCPD-20111","TSN IET (Frame Preemption) iperf3 network is unreachable with VLAN","am64xx-evm"
+   "LCPD-20107","USBDEVICE Bi-directional iperf test fails on am64xx when running from dut to server","am64xx-evm"
+   "LCPD-20059","Uboot: Nodes with same name not distinguished while assigning sequence numbers",""
+   "LCPD-20057","dmaengine: ti: k3-udma: Fix pktdma rchan TPL level setup",""
+   "LCPD-20026","AM654: PG1.0: MMC boot failure with SDK 7.1 on some boards","am654x-evm,am654x-idk"
+   "LCPD-20023","AM64x DDR4 startup instability seen due to driver clock configuration","am64xx-evm"
+   "LCPD-20004","AM64: g_ether module failing to bringup link on host side","am64xx-evm"
+   "LCPD-19995","Upstream: U-Boot: AM65x SR1.0 board does not boot","am654x-evm,am654x-idk"
+   "LCPD-19949","Documentation: Update u-boot user guide documentation for AM65x w.r.t creating roofs partitions",""
+   "LCPD-19936","OSPI UBIFS test fails on j7200","j7200-evm"
+   "LCPD-19884","Images missing for j7200 custom build: 07.01.00-005_usbdev-hs","j7200-evm"
+   "LCPD-19864","AM65xx: Support SD card modes not documented in the SDK documentation","am654x-evm,am654x-idk"
+   "LCPD-19862","USB SuperSpeed enumeration not working on j7200e","j7200-evm"
+   "LCPD-19740","TLS1.2 hangs on handshake","am654x-idk,j721e-evm"
+   "LCPD-19731","HSR/PRP : warning: ignoring return value of ‘skb_put_padto'","j7200-evm,j7200-hsevm"
+   "LCPD-19704","rtcwake failure on am335x-evm: 20201002","am335x-evm,am43xx-gpevm"
+   "LCPD-19694","next-20200929: k2g-evm: Kernel boot is broken","k2g-evm,k2g-ice"
+   "LCPD-19669","PCI Backplane: Does not work for more than one function ","j721e-evm,j721e-idk-gw"
+   "LCPD-19274","Kernel crash during resume from suspend state","am43xx-gpevm"
+   "LCPD-19253","am4 could not boot up using cumtom built images for eMMC","am43xx-gpevm"
+   "LCPD-19180","AM65 PG1 fails to boot with MMC/SD","am654x-evm"
+   "LCPD-19083","Some powerdomains don't transition into suspend state","am335x-evm,am43xx-gpevm"
+   "LCPD-18916","Documentation: networking: don't use ifconfig ifup/down",""
 |
 
 
@@ -152,136 +162,105 @@ Issues found and closed on this release that may be applicable to prior releases
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
 
-   LCPD-19854,"j721e-evm, j721e-hsevm, j721e-evm-ivi, j721e-idk-gw",PCIe: EP: Low Throughput using DMA
-   LCPD-20008,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",ICSS PTP: Fix updating latch registers
-   LCPD-20022,"am574x-idk, am574x-hsidk",AM574 IDK HS fails to boot
-   LCPD-20099,am654x-evm,U-Boot: AM65: broken boot (Both PG1.0 and 2.0)
-   LCPD-19823,"am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm",ICSS PTP: Fix order of registering ICSS PTP
-   LCPD-19947,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",remoteproc/k3-dsp: Fix erroneous error check on devm_ioremap_wc()
-   LCPD-19946,"am654x-evm, am654x-idk, j721e-evm, j721e-evm-ivi, j721e-idk-gw, j7200-evm",remoteproc/k3-r5f: Fix couple of warnings
-   LCPD-19844,am335x-evm,ALL legacy: CPTS: PTPv1 is advertised by mistake
-   LCPD-19845,"am335x-evm,am43xx-gpevm",ti: regression: cpts irq not working after a suspend/resume cycle
-   LCPD-19837,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",k3conf: DSP frequencies are printed incorrectly as 0
-   LCPD-20034,"am571x-idk, am572x-idk, am574x-idk",prueth: incorrect port renaming
-   LCPD-20033,"am571x-idk, am572x-idk, am574x-idk",cpts: icss_iep: provides incorrect phc index through ethtool
-   LCPD-20066,am64xx-evm,AM64x PDK IPC firmwares are missing from rootfs
-   LCPD-19969,j7200-evm,Kernel: Random DMA timeouts on OSPI
-   LCPD-20065,j721e-idk-gw,Kernel: Scatter-gather DMA missing data at the end of the buffer
-   LCPD-20058,"am64xx-evm, j7200-evm",Kernel: Fix UBIFS errors on Cypress S28 flash
-   LCPD-20103,am64xx-evm,AM64x: Kernel: BCDMA Split RX chan request fails
-
+   "LCPD-21348","K3: CPSWxG: can't disable rate limit for TX CPPI channels on Host P0","am654x-idk,j721e-idk-gw,am64xx-sk"
+   "LCPD-21346","k3: cpswxg: switchdev: crash in am65_cpsw_port_offload_fwd_mark_update() when there is a disabled port","am64xx-evm,am64xx-sk"
+   "LCPD-21341","am64: cut-thru auto speed detection not working properly","am64xx-evm,am64xx-sk"
+   "LCPD-21330","J721e: commit arm: mach-k3: j721e_init: Force early probe of clk-k3 driver breaks boot",""
+   "LCPD-21327","gstreamer: plugins-good build failure with DDK1.13 update","j721e-idk-gw"
+   "LCPD-20750","ICSS-M: PTP is not working","am571x-idk,am572x-idk,am574x-idk"
+   "LCPD-20642","j721e-idk-gw fails to boot when using the mmcmode custom build","j721e-idk-gw"
+   "LCPD-20634","J7200: SDK Builds fail to complete","j7200-evm"
+   "LCPD-20618","k3: cpswxg: bindings not updated","am64xx-evm,am654x-evm,am654x-idk,j721e-idk-gw,j7200-evm,am64xx-sk"
+   "LCPD-20524","doc: i2027 errata incorrectly documented as applicable for J721E/J7200.","j721e-evm,j7200-evm"
+   "LCPD-20388","SPL clk-k3 driver can experience severe rounding error beyond just off-by-one error seen with 166MHz","j721e-evm"
+   "LCPD-20323","AM64x: USB option_cv not being programmed","am64xx-evm"
+   "LCPD-20306","Occasional AM64x EVM u-boot hangs seen after new CONFIG options enabled","am64xx-evm"
+   "LCPD-20299","Obsolete ti,sci-rm-range-girq usage in Wkup GPIO Interrupt Routers","j721e-evm,j721e-evm-ivi,j721e-idk-gw,j7200-evm"
+   "LCPD-20242","U-Boot: reset command fails on AM64x EVM","am64xx-evm"
+   "LCPD-20209","cpsw: dual_mac: kernel crash when DT ""slaves=<1>""","am335x-evm"
 |
 
 Errata Workarounds Available in this Release
 ------------------------------------------------
 .. csv-table::
-   :header: "Record ID",  "Title"
+   :header: "Record ID", "Title"
    :widths: 15, 180
 
-   LCPD-19992,PRU-ICSSG: FDB table corruption during switch operation
-   LCPD-19991,CPSW9g: Reset isolation not working correctly
-   LCPD-19987,UDMAP: Spurious ECC errors due to MAIN/MCU NAVSS rofifo_wr_byten issue
-   LCPD-19986,UDMAP: TX Channel SA2UL teardown issue
-   LCPD-19978,CPSW: CPSW directed frames are not observed when classification overrides the destination port via the egress opcode feature
-   LCPD-19972,OSPI Boot: OSPI Boot doesn't support some xSPI modes or xSPI devices
-   LCPD-19966,I3C: SDAPULLEN drives low instead of Hi-Z
-   LCPD-19919,CPTS: GENF and ESTF nudge value not  cleared by hardware
-   LCPD-19874,PSIL: Clock stop operation can result in undefined behavior
-   LCPD-19811,CPSW: ALE incorrectly routes packets with CRC errors
-   LCPD-19586,USB: 2.0 PHY hangs if received signal amplitude crosses squelch threshold multiple times within the same packet
-   LCPD-19517,R5FSS: The same interrupt cannot be nested back-2-back within another interrupt
-   LCPD-19447,DSS: Disabling a layer connected to Overlay may result in synclost during the next frame
-   LCPD-19068,DSS: Disabling a layer connected to Overlay may result in synclost during the next frame
-   LCPD-19056,USB: DMA hangs if USB reset is received during DMA transfer in device mode
-   LCPD-19048,USB: Invalid termination of DMA transfer for endpoint following Isochronous endpoint in Superspeed device mode
-   LCPD-19047,USB: Race condition while reading TRB from system memory in device mode
-   LCPD-19041,PCIe: End of Interrupt (EOI) not enabled for PCIe legacy interrupts
-   LCPD-19032,CPSW: CPSW Does Not Support Intersperced Express Traffic (IET â€“ P802.3br/D2.0) In 10/100Mbps Mode
-   LCPD-19031,[CPTS] GENF (and ESTF)  Reconfiguration Issue
-   LCPD-19030,USB: USB2PHY Charger Detect is enabled by default without VBUS presence
-   LCPD-19029,PCI-Express (PCIe) May Corrupt Inbound Data
-   LCPD-19028,DSS : DSS DPI Interface does not support BT.656 and BT.1120 output modes
-   LCPD-19027,CPSW does not support CPPI receive checksum (Host to Ethernet) offload feature
-   LCPD-19026,MMCSD: Negative Current from UHS-I PHY May Create an Over-Voltage Condition on VDDS6 and VDDS7 which exposes the Device to a Significant Reliability Risk
-   LCPD-19025,"IO, MMCSD: Incorrect IO Power Supply Connectivity Prevent Dynamic Voltage Change on VDDSHV6 and VDDSHV7"
-   LCPD-19024,RINGACC and UDMA ring state interoperability issue after channel teardown
-   LCPD-19022,UDMA-P Real-time Remote Peer Registers not Functional Across UDMA-P Domains
-   LCPD-18999,PCIe: Endpoint destination select attribute (ASEL) based routing issue
-   LCPD-18996,Hyperflash: Hyperflash is not functional
-   LCPD-18995,OSPI: OSPI Boot doesn't support some xSPI modes or xSPI devices
-   LCPD-18992,DSS: Frame Buffer Flip/Mirror Feature Using RGB24/BGR24 Packed Format can Result in Pixel Corruption
-   LCPD-18981,UDMAP: Packet mode descriptor Address Space Select Field Restrictions
-   LCPD-18979,MCAN: Message Transmitted with Wrong Arbitration and Control Fields (Early Start of Frame)
-   LCPD-18955,DSS : DSS Does Not Support YUV Pixel Data Formats
-   LCPD-18954,DSS : DSS Does Not Support YUV Pixel Data Formats
-   LCPD-18953,DSS : DSS Does Not Support YUV Pixel Data Formats
-   LCPD-18952,DSS : DSS Does Not Support YUV Pixel Data Formats
-   LCPD-17806,Cortex-R5F: Deadlock might occur  when one or more MPU regions is configured for write allocate mode
-   LCPD-17788,PCI-Express: GEN3 (8GT/s) Operation Not Supported.
-   LCPD-17787,SA2UL: Auth/decrypt operations with 2nd input thread does not send the DMA packet out
-   LCPD-17786,UART: Spurious UART Interrupts When Using DMA
-   LCPD-17785,UART: Spurious UART Interrupts When Using DMA
-   LCPD-17784,CPSW: CPSW Does Not Support Intersperced Express Traffic (IET â€“ P802.3br/D2.0) In 10/100Mbps Mode
-   LCPD-17783,USB: USB2PHY Charger Detect is enabled by default without VBUS presence
-   LCPD-17333,[CPTS] GENF (and ESTF)  Reconfiguration Issue
-   LCPD-17220,U-Boot Hyperbus: Hyperflash reads limited to 125MHz max. frequency
-   LCPD-16904,PCIe: Unsupported request (UR) or Configuration Request Retry Status (CRS) in configuration completion response packets results in external abort
-   LCPD-16643,Hyperbus: Hyperflash reads limited to 125MHz max. frequency
-   LCPD-16605,MMC: MMC1/2 Speed Issue
-   LCPD-16538,PCI-Express (PCIe) May Corrupt Inbound Data
-   LCPD-16364,MMCSD: Negative Current from UHS-I PHY May Create an Over-Voltage Condition on VDDS6 and VDDS7 which exposes the Device to a Significant Reliability Risk
-   LCPD-16363,"IO, MMCSD: Incorrect IO Power Supply Connectivity Prevent Dynamic Voltage Change on VDDSHV6 and VDDSHV7"
-   LCPD-16350,DSS: Frame Buffer Flip/Mirror Feature Using RGB24/BGR24 Packed Format can Result in Pixel Corruption
-   LCPD-14941,RINGACC and UDMA ring state interoperability issue after channel teardown
-   LCPD-14580,DSS : DSS Does Not Support YUV Pixel Data Formats
-   LCPD-14579,DSS : DSS Does Not Support YUV Pixel Data Formats
-   LCPD-14578,DSS : DSS DPI Interface does not support BT.656 and BT.1120 output modes
-   LCPD-14577,CPSW does not support CPPI receive checksum (Host to Ethernet) offload feature
-   LCPD-14187,UDMA-P Real-time Remote Peer Registers not Functional Across UDMA-P Domains
-   LCPD-14186,UDMA-P Host Packet Descriptorâ€™s â€œ0x3FFFFFâ€ Packet Length Mode not Functional
-   LCPD-14185,MSMC: Non-coherent memory access to coherent memory can cause invalidation of snoop filter
-   LCPD-14184,USB:  SuperSpeed USB Non-Functional
-   LCPD-14159,The assertion of warm reset coinciding with a debug configuration access targeting the STM Subsystem may result in a hang of said debug configuration access
-   LCPD-13887,DDR Controller ECC Scrubbing feature can cause DRAM data corruption
-   LCPD-13884,"CPTracer Bus Probes MAIN_CAL0_0 and MCU_SRAM_SLV_1 are not able to distinguish between secure and non-secure transactions"
-   LCPD-9173,i897: USB Stop Endpoint doesnt work in certain circumstances
-   LCPD-9084,i887: Software workaround to limit mmc3 speed to 64MHz
-   LCPD-8294,37 pins + VOUT pins need slow slew enabled for timing and reliability respectively
-   LCPD-8277,u-boot: j6: SATA is not shutdown correctly as per errata i818
-   LCPD-7642,MMC/SD: i832: return DLL to default reset state with CLK gated if not in SDR104/HS200 mode.
-   LCPD-6907,Workaround errata i880 for RGMII2 is missing
-   LCPD-5931,DRA7xx: AM57xx: mmc: upstream errata workaround for i834
-   LCPD-5924,ALL: CONNECTIVITY: CPSW: errata i877 workarround for cpsw
-   LCPD-5836,CAL: Errata: i913: CSI2 LDO needs to be disabled when module is powered on
-   LCPD-5460,Implement WA for Vayu errata i829 (Reusing Pipe Connected To Writeback Pipeline On The Fly To An Active Panel)
-   LCPD-5311,i893: DCAN ram init issues in HW AUTO and when traffic hitting CAN bus (open investigation)
-   LCPD-5310,"i900:  CTRL_CORE_MMR_LOCK_5 region after locking results in ctrl module inaccessible, recoverable only post a reset"
-   LCPD-5309,"i896: USB Port disable doesnt work"
-   LCPD-5308,i897: USB Stop Endpoint doesnt work in certain circumstances
-   LCPD-5052,Upstream: Post the dmtimer errata fix for i874
-   LCPD-4975,DSS AM5/DRA7: implement WA for errata i886
-   LCPD-4912,DRA7: USB: Implement ErrataID_i896_PED_issue
-   LCPD-4911,DRA7: USB: Investigate applicability of Errata i897: StopEndpoint_issue
-   LCPD-4910,J6/OMAP5: errata i810 implementation
-   LCPD-4648,[rpmsg 2014 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP
-   LCPD-4647,[rpmsg 2015 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP
-   LCPD-4225,J6: Errata: i834: Investigate possibility of software workaround
-   LCPD-4218,Implement Workaround for Errata i813 - Spurious Thermal Alert Generation When Temperature Remains in Expected Range
-   LCPD-4217,Implement Workaround for Errata i814 - Bandgap Temperature read Dtemp can be corrupted
-   LCPD-4195,J6: SATA: Investigate applicability of i807
-   LCPD-4184,Implement workaround for errata i814 - Bandgap Temperature read Dtemp can be corrupted
-   LCPD-1776,"[J6 SATA Adaptation] J6 - Errata i783, SATA Lockup After SATA DPLL Unlock/Relock"
-   LCPD-1188,J6: Baseport: Errata i877: RGMII clocks must be enabled to avoid IO timing degradation due to Assymetric Aging
-   LCPD-1171,DRA7: DMM errata i878 (framebuffer part)
-   LCPD-1146,DMM hang: Errata VAYU-BUG02976 (i878) (register part)
-   LCPD-1108,J6: Wrong Access In 1D Burst For YUV4:2:0-NV12 Format (Errata i631)
-   LCPD-1087,J6: MMC: Errata: i802: OMAP5430 MMCHS: DCRC errors during tuning procedure
-   LCPD-1022,J6: Errata: i694: System I2C hang due to miss of Bus Clear support @ OMAP level
-   LCPD-976,J6/J6eco: 32clk is psuedo (erratum i856) - clock source
-   LCPD-975,J6/J6eco: 32clk is psuedo (erratum i856) - realtime counter
-   LCPD-941,"OMAP4,5: DSS: implement workaround for errata i740"
-   LCPD-876,OMAP5: "Errata i810: DPLL Controller Sticks when left clock requests are removed"
-
+   "LCPD-19987","UDMAP: Spurious ECC errors due to MAIN/MCU NAVSS rofifo_wr_byten issue"
+   "LCPD-19986","UDMAP: TX Channel SA2UL teardown issue"
+   "LCPD-19966","I3C: SDAPULLEN drives low instead of Hi-Z"
+   "LCPD-19965","OSPI PHY Controller Bug Affecting Read Transactions"
+   "LCPD-19874","PSIL: Clock stop operation can result in undefined behavior"
+   "LCPD-19811","CPSW: ALE incorrectly routes packets with CRC errors"
+   "LCPD-19586","USB: 2.0 PHY hangs if received signal amplitude crosses squelch threshold multiple times within the same packet"
+   "LCPD-19447","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame"
+   "LCPD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame"
+   "LCPD-19056","USB: DMA hangs if USB reset is received during DMA transfer in device mode"
+   "LCPD-19048","USB: Invalid termination of DMA transfer for endpoint following Isochronous endpoint in Superspeed device mode"
+   "LCPD-19047","USB: Race condition while reading TRB from system memory in device mode"
+   "LCPD-19041","PCIe: End of Interrupt (EOI) not enabled for PCIe legacy interrupts"
+   "LCPD-19032","CPSW: CPSW Does Not Support Intersperced Express Traffic (IET – P802.3br/D2.0) In 10/100Mbps Mode"
+   "LCPD-19031","[CPTS] GENF (and ESTF)  Reconfiguration Issue"
+   "LCPD-19030","USB: USB2PHY Charger Detect is enabled by default without VBUS presence"
+   "LCPD-19029","PCI-Express (PCIe) May Corrupt Inbound Data"
+   "LCPD-19028","DSS : DSS DPI Interface does not support BT.656 and BT.1120 output modes"
+   "LCPD-19027","CPSW does not support CPPI receive checksum (Host to Ethernet) offload feature"
+   "LCPD-19026","MMCSD: Negative Current from UHS-I PHY May Create an Over-Voltage Condition on VDDS6 and VDDS7 which exposes the Device to a Significant Reliability Risk"
+   "LCPD-19025","IO, MMCSD: Incorrect IO Power Supply Connectivity Prevent Dynamic Voltage Change on VDDSHV6 and VDDSHV7"
+   "LCPD-19024","RINGACC and UDMA ring state interoperability issue after channel teardown"
+   "LCPD-19022","UDMA-P Real-time Remote Peer Registers not Functional Across UDMA-P Domains"
+   "LCPD-18999","PCIe: Endpoint destination select attribute (ASEL) based routing issue"
+   "LCPD-18996","Hyperflash: Hyperflash is not functional"
+   "LCPD-18995","OSPI: OSPI Boot doesn't support some xSPI modes or xSPI devices"
+   "LCPD-18981","UDMAP: Packet mode descriptor Address Space Select Field Restrictions"
+   "LCPD-18979","MCAN: Message Transmitted with Wrong Arbitration and Control Fields (Early Start of Frame)"
+   "LCPD-18952","DSS : DSS Does Not Support YUV Pixel Data Formats"
+   "LCPD-17806","Cortex-R5F: Deadlock might occur  when one or more MPU regions is configured for write allocate mode"
+   "LCPD-17788","PCI-Express: GEN3 (8GT/s) Operation Not Supported."
+   "LCPD-17786","UART: Spurious UART Interrupts When Using DMA"
+   "LCPD-17784","CPSW: CPSW Does Not Support Intersperced Express Traffic (IET – P802.3br/D2.0) In 10/100Mbps Mode"
+   "LCPD-17783","USB: USB2PHY Charger Detect is enabled by default without VBUS presence"
+   "LCPD-17333","[CPTS] GENF (and ESTF)  Reconfiguration Issue"
+   "LCPD-17220","U-Boot Hyperbus: Hyperflash reads limited to 125MHz max. frequency"
+   "LCPD-16904","PCIe: Unsupported request (UR) or Configuration Request Retry Status (CRS) in configuration completion response packets results in external abort"
+   "LCPD-16643","Hyperbus: Hyperflash reads limited to 125MHz max. frequency"
+   "LCPD-16605","MMC: MMC1/2 Speed Issue"
+   "LCPD-16538","PCI-Express (PCIe) May Corrupt Inbound Data"
+   "LCPD-14941","RINGACC and UDMA ring state interoperability issue after channel teardown"
+   "LCPD-14579","DSS : DSS Does Not Support YUV Pixel Data Formats"
+   "LCPD-14577","CPSW does not support CPPI receive checksum (Host to Ethernet) offload feature"
+   "LCPD-14187","UDMA-P Real-time Remote Peer Registers not Functional Across UDMA-P Domains"
+   "LCPD-14185","MSMC: Non-coherent memory access to coherent memory can cause invalidation of snoop filter"
+   "LCPD-14184","USB:  SuperSpeed USB Non-Functional"
+   "LCPD-9084","i887: Software workaround to limit mmc3 speed to 64MHz"
+   "LCPD-8294","37 pins + VOUT pins need slow slew enabled for timing and reliability respectively"
+   "LCPD-8277","u-boot: j6: SATA is not shutdown correctly as per errata i818"
+   "LCPD-7642","MMC/SD: i832: return DLL to default reset state with CLK gated if not in SDR104/HS200 mode."
+   "LCPD-6907","Workaround errata i880 for RGMII2 is missing"
+   "LCPD-5931","DRA7xx: AM57xx: mmc: upstream errata workaround for i834"
+   "LCPD-5924","ALL: CONNECTIVITY: CPSW: errata i877 workarround for cpsw"
+   "LCPD-5836","CAL: Errata: i913: CSI2 LDO needs to be disabled when module is powered on"
+   "LCPD-5309","LCPD:  i896: USB Port disable doesnt work"
+   "LCPD-5308","i897: USB Stop Endpoint doesnt work in certain circumstances"
+   "LCPD-5052","Upstream: Post the dmtimer errata fix for i874"
+   "LCPD-4975","DSS AM5/DRA7: implement WA for errata i886"
+   "LCPD-4912","DRA7: USB: Implement ErrataID_i896_PED_issue"
+   "LCPD-4910","J6/OMAP5: errata i810 implementation"
+   "LCPD-4648","[rpmsg 2014 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP"
+   "LCPD-4647","[rpmsg 2015 LTS] Implement errata i879 - DSP MStandby requires CD_EMU in SW_WKUP"
+   "LCPD-4225","J6: Errata: i834: Investigate possibility of software workaround"
+   "LCPD-4218","Implement Workaround for Errata i813 - Spurious Thermal Alert Generation When Temperature Remains in Expected Range"
+   "LCPD-4217","Implement Workaround for Errata i814 - Bandgap Temperature read Dtemp can be corrupted"
+   "LCPD-4195","J6: SATA: Investigate applicability of i807"
+   "LCPD-4184","Implement workaround for errata i814 - Bandgap Temperature read Dtemp can be corrupted"
+   "LCPD-1776","[J6 SATA Adaptation] J6 - Errata i783, SATA Lockup After SATA DPLL Unlock/Relock"
+   "LCPD-1188","J6: Baseport: Errata i877: RGMII clocks must be enabled to avoid IO timing degradation due to Assymetric Aging"
+   "LCPD-1146","DMM hang: Errata VAYU-BUG02976 (i878) (register part)"
+   "LCPD-1108","J6: Wrong Access In 1D Burst For YUV4:2:0-NV12 Format (Errata i631)"
+   "LCPD-1087","J6: MMC: Errata: i802: OMAP5430 MMCHS: DCRC errors during tuning procedure"
+   "LCPD-976","J6/J6eco: 32clk is psuedo (erratum i856) - clock source"
+   "LCPD-975","J6/J6eco: 32clk is psuedo (erratum i856) - realtime counter"
+   "LCPD-876","OMAP5: Errata i810: DPLL Controller Sticks when left clock requests are removed"
 |
 
 SDK Known Issues
@@ -290,87 +269,86 @@ SDK Known Issues
    :header: "Record ID","Platform", "Title","Workaround"
    :widths: 15, 30, 70, 30
 
-   LCPD-14263,am43xx-epos,Hardware RNG module not getting probed in Linux for AM438x,
-   LCPD-15029,j721e-vlab,tidec_decode app crashes the system when run several times,
-   LCPD-17182,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",Android: j721e: unable to boot to UI with 2K display,
-   LCPD-16454,j721e-evm,DSS underflows with 1080p/2.5k display on inmate cell,
-   LCPD-17387,"j721e-evm-ivi, j721e-idk-gw",Underflow and CRTC SYNC LOST observed while running GLMark2 (1x1080p + 1x4k),
-   LCPD-17164,"am335x-evm, am571x-idk, am574x-idk, am57xx-evm, dra71x-evm, dra7xx-evm",GLBenchmark is not able to run missing libgbm.so.2 error reported,create a symlink for linker file
-   LCPD-17213,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",Weston sometimes fails to start when booting with nfs filesystem,
-   LCPD-16921,j721e-evm,GPU driver doesn't unregister genpd name on unload,
-   LCPD-17659,am437x-idk,Disable GPU on AM437x IDK,
-   LCPD-16664,"am654x-evm, am654x-idk",MMU Alloc errors and Kernel Oops with RT build,
-   LCPD-15864,am57xx-evm,SoC Performance Monitoring tool is still not enabled,
-   LCPD-16366,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",RGX kick test fails when 32 sync dependencies are set for each command,
-   LCPD-15794,"am57xx-evm, dra71x-evm, dra72x-evm, dra76x-evm, dra7xx-evm",Allow non-root user access to graphics resources to enable graphics use case,
-   LCPD-16130,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",Exception triggered by drm_dev_unregister during poweroff,
-   LCPD-12270,dra72x-evm,VDD_SHV5 power consumption is ~ 200mw higher than on previous releases,
-   LCPD-13429,,Init/exit sequence in GBM leads to error,None
-   LCPD-10964,dra76x-evm,Segmentation fault observed when trying to run GC320 test app,
-   LCPD-17412,am654x-evm,QT5 Webengine-based browser crashing with any resize operation,
-   LCPD-17413,"am335x-evm, am43xx-gpevm, am57xx-evm, am654x-evm",QT Webengine-based browser: the mouse does not work within the web page with QPA EGLFS,
-   LCPD-17370,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",Android: Executing Andebenchpro benchmark app results in kernel crash,
-   LCPD-15410,dra7xx-evm,vdd_shv_power is ~200mw higher than on previous lts,
-   LCPD-18214,dra7xx-evm,SGX-HW recovery seen with NV12 buffer usage with wayland-drm applications,
-   LCPD-18115,j721e-idk-gw,PVR Error observed while running glmark2,
-   LCPD-9616,am57xx-evm,QtCreator GDB (remote) debugging stops working since QT5.7.1,use GDB from Processor SDK 3.2
-   LCPD-9006,"am57xx-evm, dra72x-evm, dra7xx-evm",Some GLBenchmark tests fail to run,
-   LCPD-9819,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",drmextended app cannot enable plane,
-   LCPD-7130,dra7xx-evm,KMSCube with video does not work,
-   LCPD-8352,"am43xx-gpevm, am57xx-evm, dra7xx-evm",weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory,1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer
-   LCPD-16877,k2hk-evm,ti-ipc-examples-linux intermittent build failure,
-   LCPD-17283,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",Running Gstreamer's gst-discoverer causes a crash,
-   LCPD-17138,,Kernel warning reported during h264 video encode operations,
-   LCPD-15810,"am335x-evm, am43xx-gpevm, k2g-evm",Illegal instruction reported when trying to decode h264 stream with gstreamer,None
-   LCPD-15795,"am57xx-evm, dra71x-evm, dra72x-evm, dra76x-evm, dra7xx-evm",Allow non-root user access to IPC resources to enable multimedia use case,
-   LCPD-13817,am654x-evm,Qt5 Webengine-based broswer does not work on AM654x with pagesize = 64k,
-   LCPD-13816,am654x-evm,Chromium-wayland broswer does not work on AM654x with page size = 64k,
-   LCPD-13443,am57xx-hsevm,Camera is not detected on AM572x-HSEVM,
-   LCPD-16531,j721e-evm,video decode: vxd_dec warnings displayed at end of gstreamer hevc playback to kmssink for certain video,
-   LCPD-9754,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",GLSDK Sometimes capture + encode fails,
-   LCPD-9753,"am571x-idk, am572x-idk, am57xx-evm, am57xx-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",GLSDK gst test suite waylandsink and 1080i kmssink tests fail,
-   LCPD-5654,AM335x,AM3 Beaglebone black: MPEG4+AAC Dec does not play out any audio for some HDMI monitors,
-   LCPD-16207,am574x-hsidk,Board does not boot sometimes due to crypto crash when debug options are enabled,None
-   LCPD-12709,am43xx-hsevm,Boards resets when standby state is attempted,
-   LCPD-17817,"am335x-hsevm, am43xx-epos, am43xx-hsevm, k2e-hsevm, k2g-hsevm, k2hk-hsevm, k2l-hsevm",Images created with Proc-SECDEV grow with number of times SECDEV has been used,
-   LCPD-17781,am43xx-epos,am43xx-epos boot instability,
-   LCPD-9364,am57xx-hsevm,There are SCM FW warnings during the am57xx-hsevm boot,
-   LCPD-9254,am43xx-hsevm,Kernel warnings in boot for am437x-hsevm,
-   LCPD-9782,k2e-hsevm,CPU hotplug generates an exception and system crashes,
-   LCPD-20038,am64xx-evm,OPTEE test applications are missing from rootfs,
-   LCPD-16114,"am335x-evm, am335x-ice, am335x-sk",RTC Init Script Needs to Wait for Module Load,
-   LCPD-15562,,OpenSSL1.1 does not have hooks for using hw crypto,Use openssl1.0 for crypto
-   LCPD-14552,,Enable snmpd in coresdk,
-   LCPD-14254,"am654x-evm, am654x-idk",meta-ti: Need a recipe update to pick up the new AM65x PRU Ethernet firmwares,
-   LCPD-12443,omapl138-lcdk,SD boot time with coresdk rootfs increases ~30% on omapl138-lcdk,
-   LCPD-12405,"am335x-evm, am335x-ice, am43xx-epos, am43xx-gpevm, am57xx-evm, dra71x-evm, k2e-evm, k2e-hsevm, k2g-evm, k2g-hsevm, k2l-evm",Openssl certgen fails due to coredump in openssl_gen_cert.sh,
-   LCPD-12383,omapl138-lcdk,Umount failed if sata is mounted as vfat after boot without enough delay before umount,
-   LCPD-16053,"k2e-evm, k2g-evm, k2hk-evm, k2l-evm",IP address is not getting displayed on EVM LCD for K2 EVMs,
-   LCPD-15918,"am43xx-gpevm, dra7xx-evm, k2g-evm, k2l-hsevm",ti-ipc-rtos gets stuck in xdctools,
-   LCPD-13947,am335x-evm,nativesdk-opkg is broken in the devkit,
-   LCPD-9415,,File system is missing resource visualization tool,
-   LCPD-9072,"k2e-evm, k2e-hsevm, k2hk-evm, k2hk-hsevm, k2l-evm, k2l-hsevm",netapi requires changes due to new libnl and xfrm,
-   LCPD-9923,"am335x-evm, am43xx-gpevm, am57xx-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm",Error message in boot log for K2 and AM platforms,
-   LCPD-4952,"K2E, K2G, K2HK, K2L",tisdk-image.bbclass limitation on TARGET_IMAGES,
-   LCPD-5091,AM335x,Installing AM335x CoreSDK 15.01 leads to dumped core,
-   LCPD-5649,"K2E, K2HK, K2L",Integration: Release content for core-sdk should not be the content of SD card for k2 platform,
-   LCPD-7255,"am335x-evm, am335x-ice, am335x-sk, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am57xx-evm, beaglebone, beaglebone-black, beaglebone-black-ice, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2g-evm, k2g-ice, k2hk-evm, k2l-evm",Telnet login takes too long (~40 seconds),"Booting with rootfs mounted over NFS might cause ~40 seconds delay on telnet login because DNS entries might not be properly populated. To work around this issue, enter appropriate DNS server IP in resolv.conf. For example: echo 'nameserver 192.0.2.2' > /etc/resolv.conf;" 
-   LCPD-8404,,Fix jira check script to only send one email per broken instance,
-   LCPD-7025,am43xx-gpevm,System takes more than 10 seconds to go from login prompt to system prompt,Automated tests need to account for this boot delay
-   LCPD-8345,"am335x-evm, am437x-idk, dra7xx-evm, dra7xx-hsevm, k2e-evm, k2e-hsevm, k2hk-evm, k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)",Restart the EVM
-   LCPD-4327,AM572x,remove temporary files from kernel package,
-   LCPD-17449,"am335x-evm, am335x-hsevm, am335x-ice, am335x-sk, am43xx-epos, am43xx-gpevm, am43xx-hsevm, am437x-idk, am437x-sk, am571x-idk, am572x-idk, am574x-idk, am574x-hsidk, am57xx-evm, am57xx-beagle-x15, am57xx-hsevm, am654x-evm, am654x-idk, am654x-hsevm, beaglebone, beaglebone-black, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra76x-evm, dra76x-hsevm, dra7xx-evm, dra7xx-hsevm",libasan_preinit.o is missing in devkit,
-   LCPD-4890,,ECS_TEAM: ap_test.sh demo script does not work as is and changes required are documented here,
-   LCPD-8686,,ECS: DRA7 - wl18xx_multi module insert/remove leads to mm_fault errors,
-   LCPD-17368,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",Format support - Mismatch with DDK - Android Allocator (NV12),
-   LCPD-8210,"am571x-idk, am572x-idk, am57xx-evm",QT Touchscreen interaction (Bear Whack) crash,
-   LCPD-17304,"j721e-evm, j721e-evm-ivi, j721e-idk-gw",Error Recovery Test for VDEC_ERROR_SR_ERROR does not trigger error,
-   LCPD-9423,,kmscube with video: viddec3test sometimes return error 139,None
-   LCPD-8398,"dra7xx-evm, dra7xx-hsevm",gsttestplayer: Reverse playback stops after next seek,
-   LCPD-8278,k2e-hsevm,Secure boot takes more than 10 minutes,
-   LCPD-15367,"am335x-evm, am574x-idk",Boot time increased about 15s,
-   LCPD-20148,am335x-evm,am335x-evm: Yocto recipe in meta-processor-sdk needs to be fixed for origin reference,
-
+   "LCPD-22097","j721e-evm","Kernel crash for video file based demo",""
+   "LCPD-21527","am654x-evm,am654x-idk","AM654x -GLMark2 Wayland benchmark test fails",""
+   "LCPD-21298","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Frame Buffer Decompression does not show expected improvement",""
+   "LCPD-20148","am335x-evm","am335x-evm: Yocto recipe in meta-processor-sdk needs to be fixed for origin reference",""
+   "LCPD-18214","dra7xx-evm","SGX-HW recovery seen with NV12 buffer usage with wayland-drm applications",""
+   "LCPD-18115","j721e-idk-gw","PVR Error observed while running glmark2",""
+   "LCPD-17817","am335x-hsevm,am43xx-epos,am43xx-hsevm,k2e-hsevm,k2g-hsevm,k2hk-hsevm,k2l-hsevm","Images created with Proc-SECDEV grow with number of times SECDEV has been used",""
+   "LCPD-17781","am43xx-epos","am43xx-epos boot instability ",""
+   "LCPD-17659","am437x-idk","Disable GPU on AM437x IDK",""
+   "LCPD-17449","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm","libasan_preinit.o is missing in devkit",""
+   "LCPD-17413","am335x-evm,am43xx-gpevm,am57xx-evm,am654x-evm","QT Webengine-based browser: the mouse does not work within the web page with QPA EGLFS",""
+   "LCPD-17412","am654x-evm","QT5 Webengine-based browser crashing with any resize operation",""
+   "LCPD-17387","j721e-evm-ivi,j721e-idk-gw","Underflow and CRTC SYNC LOST observed while running GLMark2 (1x1080p + 1x4k)",""
+   "LCPD-17370","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Android: Executing Andebenchpro benchmark app results in kernel crash",""
+   "LCPD-17368","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Format support - Mismatch with DDK - Android Allocator (NV12)",""
+   "LCPD-17304","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Error Recovery Test for VDEC_ERROR_SR_ERROR does not trigger error",""
+   "LCPD-17283","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Running Gstreamer's gst-discoverer causes a crash",""
+   "LCPD-17213","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Weston sometimes fails to start when booting with nfs filesystem",""
+   "LCPD-17182","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Android: j721e: unable to boot to UI with 2K display",""
+   "LCPD-17164","am335x-evm,am571x-idk,am574x-idk,am57xx-evm,dra71x-evm,dra7xx-evm","GLBenchmark is not able to run missing libgbm.so.2 error reported","create a symlink for linker file"
+   "LCPD-17138","","Kernel warning reported during h264 video encode operations",""
+   "LCPD-16921","j721e-evm","GPU driver doesn't unregister genpd name on unload",""
+   "LCPD-16877","k2hk-evm","ti-ipc-examples-linux intermittent build failure",""
+   "LCPD-16664","am654x-evm,am654x-idk","MMU Alloc errors and Kernel Oops with RT build",""
+   "LCPD-16531","j721e-evm","video decode: vxd_dec warnings displayed at end of gstreamer hevc playback to kmssink for certain video",""
+   "LCPD-16454","j721e-evm","DSS underflows with 1080p/2.5k display on inmate cell",""
+   "LCPD-16366","j721e-evm,j721e-evm-ivi,j721e-idk-gw","RGX kick test fails when 32 sync dependencies are set for each command",""
+   "LCPD-16207","am574x-hsidk","Board does not boot sometimes due to crypto crash when debug options are enabled","None"
+   "LCPD-16130","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Exception triggered by drm_dev_unregister during poweroff",""
+   "LCPD-16114","am335x-evm,am335x-ice,am335x-sk","RTC Init Script Needs to Wait for Module Load",""
+   "LCPD-16053","k2e-evm,k2g-evm,k2hk-evm,k2l-evm","IP address is not getting displayed on EVM LCD for K2 EVMs",""
+   "LCPD-15918","am43xx-gpevm,dra7xx-evm,k2g-evm,k2l-hsevm","ti-ipc-rtos gets stuck in xdctools",""
+   "LCPD-15864","am57xx-evm","SoC Performance Monitoring tool is still not enabled",""
+   "LCPD-15810","am335x-evm,am43xx-gpevm,k2g-evm","Illegal instruction reported when trying to decode h264 stream with gstreamer","None"
+   "LCPD-15795","am57xx-evm,dra71x-evm,dra72x-evm,dra76x-evm,dra7xx-evm","Allow non-root user access to IPC resources to enable multimedia use case",""
+   "LCPD-15794","am57xx-evm,dra71x-evm,dra72x-evm,dra76x-evm,dra7xx-evm","Allow non-root user access to graphics resources to enable graphics use case",""
+   "LCPD-15562","","OpenSSL1.1 does not have hooks for using hw crypto","Use openssl1.0 for crypto"
+   "LCPD-15410","dra7xx-evm","vdd_shv_power is ~200mw higher than on previous lts",""
+   "LCPD-15367","am335x-evm,am574x-idk","Boot time increased about 15s ",""
+   "LCPD-15029","j721e-vlab","tidec_decode app crashes the system when run several times",""
+   "LCPD-14552","","Enable snmpd in coresdk",""
+   "LCPD-14263","am43xx-epos","Hardware RNG module not getting probed in Linux for AM438x ",""
+   "LCPD-14254","am654x-evm,am654x-idk","meta-ti: Need a recipe update to pick up the new AM65x PRU Ethernet firmwares",""
+   "LCPD-13947","am335x-evm","nativesdk-opkg is broken in the devkit",""
+   "LCPD-13817","am654x-evm","Qt5 Webengine-based broswer does not work on AM654x with pagesize = 64k",""
+   "LCPD-13816","am654x-evm","Chromium-wayland broswer does not work on AM654x with page size = 64k",""
+   "LCPD-13443","am57xx-hsevm","Camera is not detected on AM572x-HSEVM",""
+   "LCPD-13429","","Init/exit sequence in GBM leads to error","None"
+   "LCPD-12709","am43xx-hsevm","Boards resets when standby state is attempted ",""
+   "LCPD-12443","omapl138-lcdk","SD boot time with coresdk rootfs increases ~30% on omapl138-lcdk",""
+   "LCPD-12405","am335x-evm,am335x-ice,am43xx-epos,am43xx-gpevm,am57xx-evm,dra71x-evm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2l-evm","Openssl certgen fails due to coredump in openssl_gen_cert.sh",""
+   "LCPD-12383","omapl138-lcdk","Umount failed if sata is mounted as vfat after boot without enough delay before umount",""
+   "LCPD-12270","dra72x-evm","VDD_SHV5 power consumption is ~ 200mw higher than on previous releases",""
+   "LCPD-10964","dra76x-evm","Segmentation fault observed when trying to run GC320 test app",""
+   "LCPD-9923","am335x-evm,am43xx-gpevm,am57xx-evm,k2e-evm,k2g-evm,k2hk-evm,k2l-evm","Error message in boot log for K2 and AM platforms",""
+   "LCPD-9819","am571x-idk,am572x-idk,am57xx-evm,am57xx-hsevm,dra72x-evm,dra72x-hsevm,dra7xx-evm,dra7xx-hsevm","drmextended app cannot enable plane",""
+   "LCPD-9782","k2e-hsevm","CPU hotplug generates an exception and system crashes",""
+   "LCPD-9754","am571x-idk,am572x-idk,am57xx-evm,am57xx-hsevm,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra7xx-evm,dra7xx-hsevm","GLSDK Sometimes capture + encode fails",""
+   "LCPD-9753","am571x-idk,am572x-idk,am57xx-evm,am57xx-hsevm,dra72x-evm,dra72x-hsevm,dra7xx-evm,dra7xx-hsevm","GLSDK gst test suite waylandsink and 1080i kmssink tests fail",""
+   "LCPD-9616","am57xx-evm","QtCreator GDB (remote) debugging stops working since QT5.7.1","use GDB from Processor SDK 3.2"
+   "LCPD-9423","","kmscube with video: viddec3test sometimes return error 139","None"
+   "LCPD-9415","","File system is  missing resource visualization tool",""
+   "LCPD-9364","am57xx-hsevm","There are SCM FW warnings during the am57xx-hsevm boot",""
+   "LCPD-9254","am43xx-hsevm","Kernel warnings in boot for am437x-hsevm",""
+   "LCPD-9072","k2e-evm,k2e-hsevm,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm","netapi requires changes due to new libnl and xfrm",""
+   "LCPD-9006","am57xx-evm,dra72x-evm,dra7xx-evm","Some GLBenchmark tests fail to run",""
+   "LCPD-8686","","ECS: DRA7 - wl18xx_multi module insert/remove leads to mm_fault errors",""
+   "LCPD-8398","dra7xx-evm,dra7xx-hsevm","gsttestplayer: Reverse playback stops after next seek",""
+   "LCPD-8352","am43xx-gpevm,am57xx-evm,dra7xx-evm","weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory","1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer"
+   "LCPD-8345","am335x-evm,am437x-idk,dra7xx-evm,dra7xx-hsevm,k2e-evm,k2e-hsevm,k2hk-evm,k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)","Restart the EVM"
+   "LCPD-8278","k2e-hsevm","Secure boot takes more than 10 minutes",""
+   "LCPD-8210","am571x-idk,am572x-idk,am57xx-evm","QT Touchscreen interaction (Bear Whack) crash",""
+   "LCPD-7255","am335x-evm,am335x-ice,am335x-sk,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am57xx-evm,beaglebone,beaglebone-black,beaglebone-black-ice,dra72x-evm,dra72x-hsevm,dra7xx-evm,dra7xx-hsevm,k2e-evm,k2g-evm,k2g-ice,k2hk-evm,k2l-evm","Telnet login takes too long (~40 seconds)","""Booting with rootfs mounted over NFS might cause ~40 seconds delay on telnet login because DNS entries might not be properly populated. To work around this issue, enter appropriate DNS server IP in resolv.conf. For example:   echo 'nameserver 192.0.2.2' > /etc/resolv.conf;"""
+   "LCPD-7130","dra7xx-evm","KMSCube with video does not work",""
+   "LCPD-7025","am43xx-gpevm","System takes more than 10 seconds to go from login prompt to system prompt","Automated tests need to account for this boot delay"
+   "LCPD-5649","K2E,K2HK,K2L","Integration: Release content for core-sdk should not be the content of SD card for k2 platform",""
+   "LCPD-5091","AM335x","Installing AM335x CoreSDK 15.01 leads to dumped core",""
+   "LCPD-4952","K2E,K2G,K2HK,K2L","tisdk-image.bbclass limitation on TARGET_IMAGES",""
+   "LCPD-4890","","ECS_TEAM: ap_test.sh demo script does not work as is and changes required are documented here",""
+   "LCPD-4327","AM572x","remove temporary files from kernel package",""
 |
 
 
@@ -380,8 +358,7 @@ U-Boot Known Issues
    :header: "Record ID","Platform", "Title","Workaround"
    :widths: 15, 30, 70, 30
 
-   "LCPD-20131","am64xx-evm","am64xx uboot fails to enumerate devices attached to a usb hub on the first 'usb reset' call ",""
-   "LCPD-20120","am64xx-evm","U-Boot user's guide does not mention AM64x",""
+   "LCPD-21986","j721e-idk-gw","j721e U-Boot DDR50 mode cannot be tested using the default image",""
    "LCPD-19133","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk","Netconsole output corrupted when CONFIG_NETCONSOLE_BUFFER_SIZE >= 281",""
    "LCPD-18643","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","U-Boot: AM335x/AM473x: Both SPI CS signals get asserted",""
    "LCPD-17789","j721e-idk-gw","UBOOT J7:  Could not see UFS device by scsi scan",""
@@ -423,28 +400,36 @@ Linux Kernel Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround" 
    :widths: 5, 10, 70, 35
 
-   "LCPD-20177","j7200-evm","J7200 UART boot not working",""
-   "LCPD-20171","am64xx-evm","AM64x: Occasional boot failure due to dmesg log about cdns-usb3 that blocks the prompt ",""
-   "LCPD-20170","am654x-evm,am654x-idk","am654x UART boot not working",""
-   "LCPD-20169","am64xx-evm","AM64x: CPSW3g link can take up to 45 seconds to come back up",""
-   "LCPD-20168","am64xx-evm","USB driver trace seen on boot",""
-   "LCPD-20165","am64xx-evm","TSN PTP binary testptp not present by default in am64 filesystem",""
+   "LCPD-21961","am571x-idk,am572x-idk,am574x-idk","ICSS-M: pru netdev up sequence affect IEP functionali",""
+   "LCPD-21538","am64xx-evm","am64xx-evm PCI-EP MSI tests are failing",""
+   "LCPD-21536","am654x-evm","AM654x - Display port tests fail due to tidss not found",""
+   "LCPD-21516","am64xx-evm","WIC file generated does not include tiboot3.bin",""
+   "LCPD-21511","am64xx-evm","ADC tests fail due to elements missing in /sys/bus path",""
+   "LCPD-21510","am64xx-evm","USB devices attached to am64xx-evm are not enumerated",""
+   "LCPD-21508","j7200-evm","USB stick attached to a PCIe USB card on j7200 not enumerated after reboot",""
+   "LCPD-21507","am64xx-evm,j7200-evm","am64xx and j7200 PCIe USB card must use an external power supply to enumerate the attached USB stick",""
+   "LCPD-21350","j7200-evm","j7200 PCIE-EP tests failing",""
+   "LCPD-21345","","TF-A: PIE mode is broken and potential SRAM corruption",""
+   "LCPD-20721","am64xx-sk","AM64-sk: Memtester failures",""
+   "LCPD-20716","am64xx-sk","video capture on am64xx-sk not working with a USB3 camera",""
+   "LCPD-20705","am64xx-evm","USB stick attached to PCIe USB card is not enumerated",""
+   "LCPD-20647","","write to mmc partition fails on some boards due to  Unrecognized filesystem type  error",""
+   "LCPD-20646","","Linux docs indicate VCL has two USB interfaces",""
+   "LCPD-20622","j721e-evm-ivi","J721e-ivi-evm DSS CRTC0 sync lost error",""
+   "LCPD-20598","am571x-idk,am572x-idk,am574x-idk","ABB: NAPI scheme in PRU-ICSS driver in Kernel 5.4 is not behaving as expected",""
+   "LCPD-20558","am64xx-sk","OSPI UBIFS tests failing on am64xx-sk",""
+   "LCPD-20320","j7200-evm","CPSW5g high packet loss",""
+   "LCPD-20309","j7200-evm","TCP/UDP performance tests sometimes fail due to no netperf output",""
+   "LCPD-20291","am335x-evm","am335x: gpio wakeup event is ignored",""
+   "LCPD-20243","am654x-idk","AM65x Transition Kernel: pru-icssg support for100M half duplex mode is broken",""
    "LCPD-20164","am64xx-evm","TSN IET (Frame Preemption) eth0 link sometimes does not come back up after configuring",""
-   "LCPD-20163","am64xx-evm","am64xx fails to boot when using the mmcmode custom build",""
    "LCPD-20162","am64xx-evm","Degraded performance when running IET tests over eth1",""
-   "LCPD-20130","am64xx-evm","am64xx PCIe-EP test failing due to a NULL pointer exception",""
-   "LCPD-20122","am64xx-evm","am64xx not recognizing a USB stick attached to a PCIe USB card",""
-   "LCPD-20119","am64xx-evm","Kernel user's guide does not mention ARM64 or AM64x",""
-   "LCPD-20111","am64xx-evm","TSN IET (Frame Preemption) iperf3 network is unreachable with VLAN",""
-   "LCPD-20107","am64xx-evm","USBDEVICE Bi-directional iperf test fails on am64xx when running from dut to server",""
-   "LCPD-20106","am64xx-evm","USBDEVICE ping from DUT to host fails when packet_count=470",""
+   "LCPD-20106","am64xx-evm,j7200-evm","USBDEVICE ping from DUT to host fails when packet_count=470",""
    "LCPD-20105","am64xx-evm","AM64x: Kernel: ADC: RX DMA channel request fails",""
    "LCPD-20074","","drivers/net/ethernet/ti/icssg_classifier.c:402:6: warning: no previous prototype for 'icssg_class_add_mcast'",""
    "LCPD-20061","am64xx-evm","Occasional PHY error during during TSN Time-Aware Shaper execution",""
    "LCPD-20055","am64xx-evm","Assign am64xx GPIO test pins in ltp-ddt",""
-   "LCPD-20050","am64xx-evm","Ramfs does not support ti-test installation due to 2GB RAM on AM64",""
    "LCPD-20006","am64xx-evm","AM64x: remoteproc may be stuck in the start phase after a few times of stop/start",""
-   "LCPD-20004","am64xx-evm","AM64: g_ether module failing to bringup link on host side",""
    "LCPD-19216","k2e-evm","K2E PCIe is not enumerated when EVM boots up cold",""
    "LCPD-19068","j721e-evm,j721e-evm-ivi,j721e-idk-gw","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame",""
    "LCPD-18044","omapl138-lcdk","Seeing kernel oops when bring up USB Ethernet interface",""
@@ -457,16 +442,14 @@ Linux Kernel Known Issues
    "LCPD-17794","j721e-idk-gw","ext4write failed to write firmware to SD card",""
    "LCPD-17790","am335x-evm","AM335x: USB Device: 15% performance drop",""
    "LCPD-17782","","INTRTR: Spurious interrupts generated when programming certain Interrupt Routers",""
-   "LCPD-17780","am654x-evm,j721e-idk-gw","Mbox timedout in resp",""
    "LCPD-17777","am654x-evm","AES HW is not exercised",""
    "LCPD-17673","am335x-evm,am43xx-gpevm,am571x-idk,am572x-idk,am574x-idk,am57xx-evm,am654x-evm,beaglebone-black,dra71x-evm,dra72x-evm,dra7xx-evm,j721e-evm","No software documentation for the Timer module",""
    "LCPD-17543","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Some cpuhotplug tests failed",""
    "LCPD-17471","am654x-evm,am654x-idk","device hang when restarting crashed R5F",""
    "LCPD-17421","j721e-idk-gw","CPSW9G: Can't bring up interface over NFS",""
    "LCPD-17418","j721e-idk-gw","J7 sometimes failed to boot","Flash firmware into mmc rootfs"
-   "LCPD-17403","j721e-evm-ivi,j721e-idk-gw","PAT: DMA-API warning",""
    "LCPD-17387","j721e-evm-ivi,j721e-idk-gw","Underflow and CRTC SYNC LOST observed while running GLMark2 (1x1080p + 1x4k)",""
-   "LCPD-17373","dra71x-hsevm,dra72x-hsevm,dra76x-hsevm,dra7xx-hsevm","ARM Exception from PPA Signature Verification Call on HS Device","In our SDK solution OP-TEE replaces the Secure ROM. OP-TEE does not use the Crypto HWA so we let the kernel manage and disable/enable them as needed. If one would like to continue using the Secure ROM then, as you have figured out in the description, you need to add the Crypto HWAs to the list of non-hwmod controlled devices (like we do for TRNG and GPTIMER12 that OP-TEE does use). We cant do this by default as our default configuration is to let the kernel crypto driver use these devices."
+   "LCPD-17373","dra71x-hsevm,dra72x-hsevm,dra76x-hsevm,dra7xx-hsevm","ARM Exception from PPA Signature Verification Call on HS Device","""In our SDK solution OP-TEE replaces the Secure ROM. OP-TEE does not use the Crypto HWA so we let the kernel manage and disable/enable them as needed. If one would like to continue using the Secure ROM then, as you have figured out in the description, you need to add the Crypto HWAs to the list of non-hwmod controlled devices (like we do for TRNG and GPTIMER12 that OP-TEE does use). We cant do this by default as our default configuration is to let the kernel crypto driver use these devices."""
    "LCPD-17284","j721e-evm,j721e-evm-ivi,j721e-idk-gw","remoteproc/k3-r5: Cores are started out-of-order when core 0 file size >> core 1 file size",""
    "LCPD-17172","j721e-idk-gw","Uboot USBhost: Sandisk Extreme USB 3.0 msc stick could not be detected at second time",""
    "LCPD-17171","j721e-idk-gw","Uboot dhcp occasionally failed",""
@@ -569,7 +552,6 @@ Linux Kernel Known Issues
    "LCPD-9466","am57xx-evm,dra7xx-evm","SATA PMP causes suspend failures",""
    "LCPD-9455","am335x-evm","Kernel Warning reported for a USB audio device when listing with pulseaudio",""
    "LCPD-9428","k2e-evm,k2hk-evm,k2l-evm","Ethernet performace UDP: iperf command fails with two threads for lower buffer length",""
-   "LCPD-9427","dra71x-evm","vip error logs during gst-capture-encode testcases",""
    "LCPD-9402","dra72x-evm","DRA72x: HDMI display EDID read fails on Rev B EVM","Add the required HDMI modes into the kernel binary as per instructions in http://lxr.free-electrons.com/source/Documentation/EDID/"
    "LCPD-9372","am335x-evm","Nand stress tests failed on a particular am335x-evm board",""
    "LCPD-9366","k2g-evm","PCIe USB drive sometimes could not be enumerated",""
