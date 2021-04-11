@@ -127,6 +127,17 @@ Build U-Boot
 
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
+    .. ifconfig:: CONFIG_part_variant not in ('AM65X', 'AM64X')
+    
+      .. note:: Note about HSM Rearchitecture
+
+         After HSM rearchitecture in bootloader, loading of remote cores with firmware 
+         will be supported at A72 SPL stage only and not at R5 SPL stage. Early loading
+         of remote core firmware in R5 SPL requires core reset functionality. As part 
+         of HSM rearchitecture, this functionality has moved into the DM service which 
+         requires SPL to re-implement device and clock control. This support is not 
+         present in Uboot R5 SPL due to memory constraints on the existing 64-bit TI devices.
+
     Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
     Go `here <Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
