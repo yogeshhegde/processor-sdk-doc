@@ -53,18 +53,16 @@ Supported Platforms
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
 
-Release 07.00.00
+Release 07.03.00
 ================
-Released June 2020
+Released April 2021
 
 
 What's New
 ----------
-- First Processor SDK release with 2020 LTS Stream Kernel (v5.4), U-Boot (v2020.01), toolchain and Yocto branch
-- J721E-HS Support
-- Docker Linux Container Runtime
-- Neo-AI-DLR library
-
+- Final release on 2020 LTS 5.4 kernel
+- J721E HS ES 1.0 Support (does not support J721E HS ES 1.1)
+- Support for H.264 video decoder
 
 Release features
 ----------------
@@ -142,13 +140,6 @@ Release features
    -  Multi-codec support
    -  McASP: Master and slave mode support
    -  Multi-codec support with separate serializer per codec
--  Virtualization:
-
-   -  Jailhouse hypervisor support
-   -  Static system partitioning: SD/eMMC, sproxy threads, UARTs, etc.
-   -  IO isolation between VMs
-   -  PVU and SMMU backed IO isolation support
-   -  Inter VM shared memory based communication
 -  Profiling
 
    -  A72 PMU support for Performance profiling
@@ -162,86 +153,52 @@ Component versions
    :header: "component", "source", "branch", "version"
    :widths: 20,40,20,30
 
-   arm-trusted-firmware,git://git.ti.com/atf/arm-trusted-firmware.git,ti-atf,5b907a2813faf039d752cdeb6a7b94e95580c46b
-   optee-os,git://git.ti.com/optee/ti-optee-os.git,ti-optee-os,199fca17b575d4c748c9c435e908a6ec9618c75a
-   U-boot,git://git.ti.com/ti-u-boot/ti-u-boot.git,ti-u-boot-2020.01,f9b0d030d31ab79577f1dd1e48814a8f3119c481
-   Linux Kernel,git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git,ti-linux-5.4.y,66cf445b7697a4963cfc796e06918fe5b147fe7d
-   Jailhouse,git://git.ti.com/jailhouse/ti-jailhouse.git,ti-jailhouse-0.12,8fd88c37ae1a4f7130ef40899c0eadd737c64832
+   arm-trusted-firmware,git://git.ti.com/atf/arm-trusted-firmware.git,ti-atf,65dd16b4ea5032752af62e94ca64cff41733a123
+   optee-os,git://git.ti.com/optee/ti-optee-os.git,ti-optee-os,36905c9566936f7502e3741b48015c1f147b3bd3
+   U-boot,git://git.ti.com/ti-u-boot/ti-u-boot.git,ti-u-boot-2020.01,2781231a33c3d779e32445f4fe55164c45d6d7c1
+   Linux Kernel,git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git,ti-linux-5.4.y,023faefa70274929bff92dc41167b007f7523792
 
 
 Issues Tracker
 ===============
 ..
-   project in (LCPD, "ADAS Algorithms") AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm, J7-EVM) AND fixversion in (2020.00, 07.00.00, SDK_J7_07_00_00) AND OS = Linux and resolution = Done AND (labels != SKIP_REL_NOTES OR labels is EMPTY) ORDER BY key ASC
+   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", Graphics, Multimedia, Wireless, "System Integration", Security) AND closedDate > 2020-11-18 AND createdDate <= 2020-11-17 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) ORDER BY key DESC, priority DESC
 
-Issues fixed in this release
-----------------------------
+Issues opened in previous releases that were closed on this release
+---------------------------------------------------------------------
 .. csv-table::
    :header: "Record ID", "Summary"
    :widths: 20, 80
 
-   LCPD-17010,J7ES: USB: gadget mode breaks with PC host with USB3.0 LPM
-   LCPD-17236,PDK-IPC build from sources is not creating stripped images and links
-   LCPD-17286,PCIe EP stress test failed with large number of EP functions
-   LCPD-17404,PAT: lockdep warning
-   LCPD-17675,Flash-based boot takes an extra 4 sec if SD card is not present in the J721e EVM
-   LCPD-17771,cryptomgr_test kmemleak
-   LCPD-17772,systemd doesn't show ansi sequences correctly
-   LCPD-17773,cryptomgr_test related DMA-API errors
-   LCPD-18055,rpmsg_rpc: allmodconfig with ARM 9.2 compiler generates bunch of warnings
-   LCPD-18084,irqchip/pruss-intc: Fix up couple of build related issues
-   LCPD-18137,J7 could not to uboot prompt with NITRO Strontium 16g card
-   LCPD-18157,Jailhouse 0.12 build fails
-   LCPD-18158,Automation interface does not work for some SD cards.
-   LCPD-18159,Uboot: MMC could not be detected and 'mmc list' does not work on Alpha boards
-   LCPD-18163,j721e audio is broken on alpha SOMs
-   LCPD-18166,Jailhouse: Missing Jailhouse dtbo in the filesystem
-   LCPD-18187,Audio Alsa tests are failing due to pulseaudio missing or default changing to pulseaudio
-   LCPD-18198,ASoC: Incorrect DMA caused delay reporting
-   LCPD-18204,eMMC alternative boot does not work
-   LCPD-18205,SPL DFU boot test failed
-   LCPD-18206,Uboot USB superspeed msc detection failed on J7
-   LCPD-18211,Uboot OSPI performance decreased for both read/write
-   LCPD-18216,arm and aarch64 target-side c compilation fails
-   LCPD-18222,"Crypto 3DES, SHA1, SHA256 failures due to interrupt count not increasing"
-   LCPD-18231,CPSW9G interface does not come up
-   LCPD-18238,Kernel Oops generated sometimes by sa2ul
-   LCPD-18244,Jailhouse linux-demo inmate does not boot
-   LCPD-18245,openssl: missing cryptodev module
-   LCPD-18252,opkg missing package for coremarkpro
-   LCPD-18253,Jailhouse: missing cells for uart demo and gic demo
-   LCPD-18254,U-Boot: remoteproc/k3-r5: rproc_init is failing for Main R5FSS0 Core0
-   LCPD-18257,Jailhouse: Unhandled data abort with USB0 address
-   LCPD-18270,Ivi shell test fails. Lib ivi-controller.so and other components are missing from the file system
-   LCPD-18271,Git is missing from the default packages installed for testing
-   LCPD-18286,crypto: sa2ul: memory leak with fallback algos
-   LCPD-18287,tcrypto: multiblock sha test provides bad data chunks to driver
-   LCPD-18288,crypto: sa2ul: openssl does not use sha accelerator
-   LCPD-18304,U-Boot: Fix couple of issues with K3 DSP remoteproc driver
-   LCPD-18342,IPC tests failed on j721e
-   LCPD-18375,Operation is not permitted when setup pcie backplane
-   LCPD-18447,J721e: SD/MMC back up boot mode not functional when eMMC is primary boot mode
-   LCPD-18455,Jailhouse: lspci fails when Jailhouse is enabled
-   LCPD-18501,ICSSG/CPSW9G: wrong IRQ trigger type used
-   LCPD-18522,rpmsg_kdrv: fix build warnings
-   LCPD-18523,U-Boot: Fix stale env variable in FIT loading support
-   LCPD-18543,J721e HS QoS MMR programming causes firewall exception
-   LCPD-18593,CPSW2G: restore vlan cfg after ifconfig up/down
-   LCPD-18594,CPSW2G: CPTS: sync PPS to adjusted PTP clock
-   LCPD-18656,OSPI/SPI ubifs test failed due to cannot read 64 bytes from mtd6/mtd0
-   LCPD-18659,Jailhouse: ivshmem: Failed to map regions
-   LCPD-18661,Jailhouse: ivshmem: Root cell does not receive interrupts
-   LCPD-18672,J721e HS package is missing fit image
-   LCPD-18694,AM65x: cpsw2g: ale parameters init issue
-   LCPD-18695,AM65x: cpsw2g: allmulti mode is broken
-   LCPD-18787,SPL DFU boot test failed
-   LCPD-18793,pcie ep tests failed with big size with DMA mode
-   LCPD-18847,UDMA: atype is ignored even if it is correctly specified for non slave channels
-   LCPD-18850,Watchdog test failed to reboot EVM
-   LCPD-18858,DMA heaps are not cached in Core SDK Linux
+   LCPD-19818,CPSW2G netperf egress performance lower
+   LCPD-19781,OE: ti-rpmsg-char: Library header files and primary so file are missing in FS
+   LCPD-19772,ATF/Uboot GTC frequency handover bug
+   LCPD-19751,[ti:ti-linux-5.4.y 3067/10775] drivers/pci/endpoint/pci-epf-bus.c:36:34: warning: unused variable 'pci_epf_bus_id_table'
+   LCPD-19740,TLS1.2 hangs on handshake
+   LCPD-19669,PCI Backplane: Does not work for more than one function 
 
 ..
-   project = LCPD AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) AND ErrataID is not EMPTY AND status = Closed ORDER BY priority DESC
+   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", "System Integration", Wireless, Graphics, Multimedia, Security) AND closedDate > 2020-11-18 AND createdDate > 2020-11-18 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND fixversion not in (Upstream) AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) ORDER BY key DESC, priority DESC
+
+Issues found and closed on this release that may be applicable to prior releases
+--------------------------------------------------------------------------------
+.. csv-table::
+   :header: "Record ID", "Summary"
+   :widths: 20, 80
+
+   LCPD-21348,K3: CPSWxG: can't disable rate limit for TX CPPI channels on Host P0
+   LCPD-21327,gstreamer: plugins-good build failure with DDK1.13 update
+   LCPD-20642,j721e-idk-gw fails to boot when using the mmcmode custom build
+   LCPD-20618,k3: cpswxg: bindings not updated
+   LCPD-20524,doc: i2027 errata incorrectly documented as applicable for J721E/J7200.
+   LCPD-20388,SPL clk-k3 driver can experience severe rounding error beyond just off-by-one error seen with 166MHz
+   LCPD-20299,"Obsolete ti,sci-rm-range-girq usage in Wkup GPIO Interrupt Routers"
+   LCPD-20065,Kernel: Scatter-gather DMA missing data at the end of the buffer
+   LCPD-19947,remoteproc/k3-dsp: Fix erroneous error check on devm_ioremap_wc()
+   LCPD-19946,remoteproc/k3-r5f: Fix couple of warnings
+
+..
+   project = LCPD AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) AND ErrataID is not EMPTY AND status = Closed AND (Labels not in (PLSDK_NOT_RN) OR labels is EMPTY) ORDER BY priority DESC
 
 Errata workarounds
 ------------------
@@ -249,82 +206,137 @@ Errata workarounds
    :header: "Record ID", "Summary", "Workaround", "ErrataID"
    :widths: 20, 80, 60, 20
 
-   LCPD-16350,DSS: Frame Buffer Flip/Mirror Feature Using RGB24/BGR24 Packed Format can Result in Pixel Corruption,"If the RGB24 or BGR24 packed format is selected, then use the GPU to implement the flip/mirror operation.",i2039
-   LCPD-16605,MMC: MMC1/2 Speed Issue,,i2090
+   LCPD-19965,OSPI PHY Controller Bug Affecting Read Transactions,,i2189
+   LCPD-19068,DSS: Disabling a layer connected to Overlay may result in synclost during the next frame,,i2097
+   LCPD-19047,USB: Race condition while reading TRB from system memory in device mode,,i2067
    LCPD-17220,U-Boot Hyperbus: Hyperflash reads limited to 125MHz max. frequency,,i2088
+   LCPD-16605,MMC: MMC1/2 Speed Issue,,i2090
 
 ..
-   project in (LCPD, "ADAS Algorithms") AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm, J7-EVM) AND status not in ("In Build", Closed, Resolved) AND OS = Linux AND (labels != SKIP_REL_NOTES OR labels is EMPTY) AND component != "System Test" ORDER BY key ASC
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("System Integration", Graphics, Wireless, Security, Multimedia) AND (labels not in (LCPD_K3.14_MAINT, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND ((affectedVersion <= 07.03.00 AND affectedVersion >upstream ) OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) AND OS = "Linux" ORDER BY key DESC, priority DESC, component ASC
 
-Open Defects
-------------
+.. _release-specific-known-issues:
+
+SDK Known Issues
+----------------
 .. csv-table::
    :header: "Record ID", "Summary", "Workaround"
    :widths: 20, 80, 60
 
-   LCPD-16120,"DP: Link fails right after link training, unless voltage swing is 2 or 3",
-   LCPD-16130,Exception triggered by drm_dev_unregister during poweroff,
-   LCPD-16208,FIFO Underflows during video playback on 4k panel,
-   LCPD-16366,RGX kick test fails when 32 sync dependencies are set for each command,
-   LCPD-16505,"Wrong clock rate is reported for 157:400, 157:401 (HSDIVIDER after PLL4 and 15)",
-   LCPD-16531,video decode: vxd_dec warnings displayed at end of gstreamer hevc playback to kmssink for certain video,
-   LCPD-16535,remoteproc/k3-dsp: PDK IPC echo test binaries fails to do IPC in remoteproc mode on second run,
-   LCPD-16545,remoteproc/k3-r5f: PDK IPC echo_test image fails to boot up in remoteproc mode on second run,
-   LCPD-16591,PCIe wifi ping stress test failed,
-   LCPD-16616,Jailhouse: Failure in mhdp probe while restarting the Linux VM,
-   LCPD-16628,Could not enumerate PLEXTOR pcie SSD,
-   LCPD-16836,DP: GeChic display EDID read failures,
-   LCPD-16921,GPU driver doesn't unregister genpd name on unload,
-   LCPD-17006,4k DP Display Shows Blank Screen sometimes when booting,
-   LCPD-17213,Weston sometimes fails to start when booting with nfs filesystem,
-   LCPD-17284,remoteproc/k3-r5: Cores are started out-of-order when core 0 file size >> core 1 file size,
-   LCPD-17381,J7 Beta board ti_sci_power_domain_on: get_device(91) failed (-19),
-   LCPD-17387,Underflow and CRTC SYNC LOST observed while running GLMark2 (1x1080p + 1x4k),
-   LCPD-17398,J7 Beta board hangs and cannot power cycle via automation interface,
-   LCPD-17403,PAT: DMA-API warning,
-   LCPD-17406,U-boot: Uboot has no knowledge of memory reserved for remote cores,
-   LCPD-17418,J7 sometimes failed to boot,Flash firmware into mmc rootfs
-   LCPD-17421,CPSW9G: Can't bring up interface over NFS,
-   LCPD-17543,Some cpuhotplug tests failed,
-   LCPD-17673,No software documentation for the Timer module,
-   LCPD-17770,U-Boot: Fix order of MCU R5 shutdown depending on cluster mode,
-   LCPD-17780,Mbox timedout in resp,
-   LCPD-17794,ext4write failed to write firmware to SD card,
-   LCPD-17798,2020 LTS: INTA/INTR smp_affinity failure and IRQ allocation issues.,
-   LCPD-17814,Kingston 16G card could not boot to uboot prompt,
-   LCPD-18056,PVR Errors observed while running deqp-gles,
-   LCPD-18115,PVR Error observed while running glmark2,
-   LCPD-18233,MMC irq affinity to core 1 is not working.,
-   LCPD-18258,IPSEC perfomance failures,
-   LCPD-18657,Seeing bunch of Timed out in wait_for_event messages before getting to uboot prompt,
-   LCPD-18754,U-Boot: Upstream: DTB getting over-written when booting kernel,
-   LCPD-18849,OpenSSL HW crypto perfomance out of expected range,
+   LCPD-22097,Kernel crash for video file based demo,
+   LCPD-21298,Frame Buffer Decompression does not show expected improvement,
+   LCPD-20620,J721e: Gstreamer warning seen with video decoder mjpeg test,
+   LCPD-19948,Yocto: stream recipe is incorrect,
+   LCPD-19894,UYVY texture test fails due to internal data stream error,
+   LCPD-19893,RGX GLES3 test fails due to KCCB stall,
+   LCPD-19858,OE: OPTEE label used in SDK is old and wrong,
+   LCPD-19716,GFX_XS_FUNC_UYVY_TEXTURE test fails,
    LCPD-18851,UYVY texture test needs update,
-   LCPD-18860,isolcpus in the command line is not honored,
-   LCPD-18894,J7 failed to boot to kernel occasionally,
-   LCPD-18909,Uboot: SPL: failed to boot from all boot devices,
-   LCPD-18912,QSPI read performance decreased,
-   LCPD-18936,Jailhouse: GPIO driver probe fails,
+   LCPD-18270,Ivi shell test fails. Lib ivi-controller.so and other components are missing from the file system,
+   LCPD-18115,PVR Error observed while running glmark2,
+   LCPD-17387,Underflow and CRTC SYNC LOST observed while running GLMark2 (1x1080p + 1x4k),
+   LCPD-17213,Weston sometimes fails to start when booting with nfs filesystem,
+   LCPD-16921,GPU driver doesn't unregister genpd name on unload,
+   LCPD-16531,video decode: vxd_dec warnings displayed at end of gstreamer hevc playback to kmssink for certain video,
+   LCPD-16366,RGX kick test fails when 32 sync dependencies are set for each command,
+   LCPD-16130,Exception triggered by drm_dev_unregister during poweroff,
 
 ..
-   project = LCPD AND issuetype = Bug AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) AND status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other") AND OS = Linux ORDER BY key ASC
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Power & Thermal", Baseport, "Audio & Display", Connectivity, IPC) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND (summary ~ u-boot OR Subcomponent in (u-boot, UBOOT, Uboot)) AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) ORDER BY key DESC, priority DESC, component ASC
 
-.. _release-specific-known-issues:
-
-Known issues & limitations
---------------------------
+U-Boot Known Issues
+-------------------
 .. csv-table::
-   :header: "Record ID", "Summary" , "Workaround"
+   :header: "Record ID", "Summary", "Workaround"
    :widths: 20, 80, 60
 
-   LCPD-16396,J721E: RC: Unsupported request in configuration completion packets results in an abort,"Workaround for Multifunction: Configure all the physical functions supported by the endpoint. For configuring all the 6 functions of PCIe  controller instance '1' in J721E, the following can be used. mount -t configfs none /sys/kernel/config; cd /sys/kernel/config/pci_ep/; mkdir functions/pci_epf_test/func1; echo 0x104c > functions/pci_epf_test/func1/vendorid; echo 0xb00d > functions/pci_epf_test/func1/deviceid; echo 1 > functions/pci_epf_test/func1/msi_interrupts; echo 16 > functions/pci_epf_test/func1/msix_interrupts; ln -s functions/pci_epf_test/func1 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func2; echo 0x104c > functions/pci_epf_test/func2/vendorid; echo 0xb00d > functions/pci_epf_test/func2/deviceid; echo 1 > functions/pci_epf_test/func2/msi_interrupts; echo 16 > functions/pci_epf_test/func2/msix_interrupts; ln -s functions/pci_epf_test/func2 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func3; echo 0x104c > functions/pci_epf_test/func3/vendorid; echo 0xb00d > functions/pci_epf_test/func3/deviceid; echo 1 > functions/pci_epf_test/func3/msi_interrupts; echo 16 > functions/pci_epf_test/func3/msix_interrupts; ln -s functions/pci_epf_test/func3 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func4; echo 0x104c > functions/pci_epf_test/func4/vendorid; echo 0xb00d > functions/pci_epf_test/func4/deviceid; echo 1 > functions/pci_epf_test/func4/msi_interrupts; echo 16 > functions/pci_epf_test/func4/msix_interrupts; ln -s functions/pci_epf_test/func4 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func5; echo 0x104c > functions/pci_epf_test/func5/vendorid; echo 0xb00d > functions/pci_epf_test/func5/deviceid; echo 1 > functions/pci_epf_test/func5/msi_interrupts; echo 16 > functions/pci_epf_test/func5/msix_interrupts; ln -s functions/pci_epf_test/func5 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func6; echo 0x104c > functions/pci_epf_test/func6/vendorid; echo 0xb00d > functions/pci_epf_test/func6/deviceid; echo 1 > functions/pci_epf_test/func6/msi_interrupts; echo 16 > functions/pci_epf_test/func6/msix_interrupts; ln -s functions/pci_epf_test/func6 controllers/d800000.pcie-ep/; echo 1 > controllers/d800000.pcie-ep/start; echo 1 > /sys/bus/pci/devices/0000:00:00.0/remove; echo 1 > /sys/bus/pci/rescan; Workaround for switch card: No workarounds available."
-   LCPD-16640,PCIe RC: GIC ITS misbehaves when more than 4 devices use it simultaneously,
-   LCPD-17171,Uboot dhcp occasionally failed,
-   LCPD-17172,Uboot USBhost: Sandisk Extreme USB 3.0 msc stick could not be detected at second time,
+   LCPD-22048,U-Boot: J7/AM64: DDR driver size is bloated up,
+   LCPD-21986,j721e U-Boot DDR50 mode cannot be tested using the default image,
+   LCPD-20737,Documentation: u-boot documentation issues,
+   LCPD-20700,Direction for MCU_RGMII1_TXC pin in for u-boot and Kernel DTB don't match Pinmux tool's output,
+   LCPD-20229,U-Boot : HS Boot post Rearch for J721E,
+   LCPD-20131,Uboot fails to enumerate devices attached to a usb hub on the first 'usb reset' call ,Re-run usb reset command 
+   LCPD-19871,U-boot: Documentation: Combined Boot flow and SPL Rearch,
+   LCPD-19776,j7: uboot: some socketed evms fail to boot,
+   LCPD-19636,J7: HS: OSPI Boot broken,
    LCPD-17789,UBOOT J7:  Could not see UFS device by scsi scan,
+   LCPD-17770,U-Boot: Fix order of MCU R5 shutdown depending on cluster mode,
+   LCPD-17523,R5-SPL - Support to dump EEPROM to shared memory,
+   LCPD-17406,U-boot: Uboot has no knowledge of memory reserved for remote cores,
+
+..
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal") AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND summary !~ u-boot AND (Subcomponent not in (u-boot, UBOOT, Uboot) OR Subcomponent is EMPTY) AND Platform in (j721e-evm, j721e-evm-ivi, j721e-idk-gw, j721e-hsevm) ORDER BY key DESC, priority DESC, component DESC
+
+Linux Kernel Known Issues
+---------------------------
+.. csv-table::
+   :header: "Record ID", "Summary", "Workaround"
+   :widths: 20, 80, 60
+
+   LCPD-20622,J721e-ivi-evm DSS CRTC0 sync lost error,
+   LCPD-20526,Kernel: UBIFS test failing on J721E,
+   LCPD-20297,CPSW9G eventually fails to become enumerated,
+   LCPD-20290,CPSW Performance regression on j721e-idk-gw,
+   LCPD-20240,MMC Modular testcase regression,
+   LCPD-19942,"UART tests at certain speeds fail on j7200, j721e",
+   LCPD-19822,ARM benchmark testcases returning lower than expected performance,
+   LCPD-19792,j721e boot fails sometimes due to EL1 exception,
+   LCPD-19659,Doc: PCIe: Update documentation to indicate how to move to compliance mode,
+   LCPD-19084,Few SD cards not enumerating in Kernel with Alpha EVM,
+   LCPD-19068,DSS: Disabling a layer connected to Overlay may result in synclost during the next frame,
+   LCPD-19046,Very low IPSEC throughput,
+   LCPD-18980,PCIe: Gen2 capable endpoint devices always enumerate as Gen1,
+   LCPD-18935,IPC tests failed on j721e in 07.00 rc5,
+   LCPD-18894,J7 failed to boot to kernel occasionally,
+   LCPD-18860,isolcpus in the command line is not honored,
    LCPD-18790,eMMC tests failed on J7 rev E2 EVM,
+   LCPD-18684,"syscalls sync failures: fdatasync03, fsync04, sync03, syncfs01, sync_file_range02",
+   LCPD-18258,IPSEC perfomance failures,
+   LCPD-18233,MMC irq affinity to core 1 is not working.,
+   LCPD-17814,Kingston 16G card could not boot to uboot prompt,
+   LCPD-17798,2020 LTS: INTA/INTR smp_affinity failure and IRQ allocation issues.,
+   LCPD-17794,ext4write failed to write firmware to SD card,
+   LCPD-17673,No software documentation for the Timer module,
+   LCPD-17543,Some cpuhotplug tests failed,
+   LCPD-17421,CPSW9G: Can't bring up interface over NFS,
+   LCPD-17418,J7 sometimes failed to boot,Flash firmware into mmc rootfs
+   LCPD-17387,Underflow and CRTC SYNC LOST observed while running GLMark2 (1x1080p + 1x4k),
+   LCPD-17284,remoteproc/k3-r5: Cores are started out-of-order when core 0 file size >> core 1 file size,
+   LCPD-17172,Uboot USBhost: Sandisk Extreme USB 3.0 msc stick could not be detected at second time,
+   LCPD-17171,Uboot dhcp occasionally failed,
+   LCPD-17006,4k DP Display Shows Blank Screen sometimes when booting,
+   LCPD-16836,DP: GeChic display EDID read failures with custom DP cable,
+   LCPD-16640,PCIe RC: GIC ITS misbehaves when more than 4 devices use it simultaneously,
+   LCPD-16628,Could not enumerate PLEXTOR pcie SSD,
+   LCPD-16616,Jailhouse: Failure in mhdp probe while restarting the Linux VM,
+   LCPD-16591,PCIe wifi ping stress test failed,
+   LCPD-16545,remoteproc/k3-r5f: PDK IPC echo_test image fails to boot up in remoteproc mode on second run,
+   LCPD-16535,remoteproc/k3-dsp: PDK IPC echo test binaries fails to do IPC in remoteproc mode on second run,
+   LCPD-16505,"Wrong clock rate is reported for 157:400, 157:401 (HSDIVIDER after PLL4 and 15)",
+   LCPD-16396,J721E: RC: Unsupported request in configuration completion packets results in an abort,"Workaround for Multifunction: Configure all the physical functions supported by the endpoint. For configuring all the 6 functions of PCIe  controller instance '1' in J721E, the following can be used. mount -t configfs none /sys/kernel/config; cd /sys/kernel/config/pci_ep/; mkdir functions/pci_epf_test/func1; echo 0x104c > functions/pci_epf_test/func1/vendorid; echo 0xb00d > functions/pci_epf_test/func1/deviceid; echo 1 > functions/pci_epf_test/func1/msi_interrupts; echo 16 > functions/pci_epf_test/func1/msix_interrupts; ln -s functions/pci_epf_test/func1 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func2; echo 0x104c > functions/pci_epf_test/func2/vendorid; echo 0xb00d > functions/pci_epf_test/func2/deviceid; echo 1 > functions/pci_epf_test/func2/msi_interrupts; echo 16 > functions/pci_epf_test/func2/msix_interrupts; ln -s functions/pci_epf_test/func2 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func3; echo 0x104c > functions/pci_epf_test/func3/vendorid; echo 0xb00d > functions/pci_epf_test/func3/deviceid; echo 1 > functions/pci_epf_test/func3/msi_interrupts; echo 16 > functions/pci_epf_test/func3/msix_interrupts; ln -s functions/pci_epf_test/func3 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func4; echo 0x104c > functions/pci_epf_test/func4/vendorid; echo 0xb00d > functions/pci_epf_test/func4/deviceid; echo 1 > functions/pci_epf_test/func4/msi_interrupts; echo 16 > functions/pci_epf_test/func4/msix_interrupts; ln -s functions/pci_epf_test/func4 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func5; echo 0x104c > functions/pci_epf_test/func5/vendorid; echo 0xb00d > functions/pci_epf_test/func5/deviceid; echo 1 > functions/pci_epf_test/func5/msi_interrupts; echo 16 > functions/pci_epf_test/func5/msix_interrupts; ln -s functions/pci_epf_test/func5 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func6; echo 0x104c > functions/pci_epf_test/func6/vendorid; echo 0xb00d > functions/pci_epf_test/func6/deviceid; echo 1 > functions/pci_epf_test/func6/msi_interrupts; echo 16 > functions/pci_epf_test/func6/msix_interrupts; ln -s functions/pci_epf_test/func6 controllers/d800000.pcie-ep/; echo 1 > controllers/d800000.pcie-ep/start; echo 1 > /sys/bus/pci/devices/0000:00:00.0/remove; echo 1 > /sys/bus/pci/rescan; Workaround for switch card: No workarounds available."
+   LCPD-16208,FIFO Underflows during video playback on 4k panel,
+   LCPD-16031,J721e: PCIe: Legacy interrupts do not work,
 
 |
+
+Past Release Descopes
+=====================
+
+
+SDK features present in 7.0 that were descoped in 7.1
+-----------------------------------------------------
+.. csv-table::
+   :header: "Feature", "Comments"
+   :widths: 40, 60
+
+   HS support,Restored in 7.3
+   SPL/Uboot boot modes restricted to SD card boot mode,Restored in 7.3
+   1s Linux boot,
+   Descope for support of native H264 encode/decode,Use R5F based driver with OpenVX as interface.  H.264 decoder support restored in 7.3
+   GPU compression,
+   SA2UL driver optimization,
+   Display Sharing,Display sharing demo available in SDK v6.1
+   Virtualization (Jailhouse hypervisor/IPC virtualization/CPSW9G virtualization),Does not affect 3P virtualization solutions. Basic Jailhouse demo can be seen in SDK 7.0
 
 
 Installation and Usage
@@ -338,7 +350,6 @@ Host Support
 ============
 
 For the specific supported hosts for current SDK, see :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>`.
-
 
 .. note::
    Processor SDK Installer is 64-bit, and installs only on 64-bit host machine. 

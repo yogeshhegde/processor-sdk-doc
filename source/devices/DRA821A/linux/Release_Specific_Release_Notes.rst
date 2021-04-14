@@ -51,10 +51,15 @@ Supported Platforms
 =====================================
 See :ref:`here <release-specific-supported-platforms-and-versions>` for a list of supported platforms and links to more information.
 
-
-Release 07.01.01
+Release 07.03.00
 ================
-Released November 2020
+Released April 2021
+
+What's New
+----------
+- Final release on 2020 LTS 5.4 kernel
+- J7200 Kernel and Uboot Support for SDR104 speed mode
+- J7200 Kernel eMMC HS200 and HS400 speed modes
 
 Release features
 ----------------
@@ -63,10 +68,10 @@ Release features
 
    -  Support for booting both compressed and uncompressed kernel image
    -  Basic HYP mode support - boots up uboot in EL2 privileged mode
-   -  MMCSD support
+   -  OSPI support, MMCSD support
    -  SD card boot support
    -  USB Host and mass storage support
-   -  Support for DFU download to SD card, eMMC
+   -  Support for DFU download to SD card, eMMC, OSPI
    -  UFS support
    -  eMMC boot support
 -  Kernel: Kernel image includes support for the following drivers
@@ -93,7 +98,7 @@ Release features
 
    -  A72 PMU support for Performance profiling
 
-
+.. _release-specific-sdk-components-versions:
 
 Component versions
 ------------------
@@ -102,57 +107,110 @@ Component versions
    :header: "component", "source", "branch", "version"
    :widths: 20,40,20,30
 
-   arm-trusted-firmware,git://git.ti.com/atf/arm-trusted-firmware.git,ti-atf,52c334fc361194e3896ea3b2529c10a06e586a5f
-   optee-os,git://git.ti.com/optee/ti-optee-os.git,ti-optee-os,199fca17b575d4c748c9c435e908a6ec9618c75a
-   U-boot,git://git.ti.com/ti-u-boot/ti-u-boot.git,ti-u-boot-2020.01,3c9ebdb87d65aacc4ec302be8bef3df15364bacd
-   Linux Kernel,git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git,ti-linux-5.4.y,9574bba32a1898794895ca3816e815154c80226d
-   Jailhouse,git://git.ti.com/jailhouse/ti-jailhouse.git,ti-jailhouse-0.12,0d059b6f2c3efeaa2466517300540498b34b7655
+   arm-trusted-firmware,git://git.ti.com/atf/arm-trusted-firmware.git,ti-atf,65dd16b4ea5032752af62e94ca64cff41733a123
+   optee-os,git://git.ti.com/optee/ti-optee-os.git,ti-optee-os,36905c9566936f7502e3741b48015c1f147b3bd3
+   U-boot,git://git.ti.com/ti-u-boot/ti-u-boot.git,ti-u-boot-2020.01,2781231a33c3d779e32445f4fe55164c45d6d7c1
+   Linux Kernel,git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git,ti-linux-5.4.y,023faefa70274929bff92dc41167b007f7523792
 
 
 Issues Tracker
 ===============
 ..
-   Issues fixed in this release: project in (LCPD, "ADAS Algorithms") AND issuetype = Bug AND project = LCPD AND platform=j7200-evm  AND ErrataID is not EMPTY AND status = Closed ORDER BY priority DESC) AND fixversion in (2020.00, 07.00.00, SDK_J7_07_00_00) AND OS = Linux and resolution = Done AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) ORDER BY key ASC
+   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", Graphics, Multimedia, Wireless, "System Integration", Security) AND closedDate > 2020-11-18 AND createdDate <= 2020-11-17 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC
+
+Issues opened in previous releases that were closed on this release
+---------------------------------------------------------------------
+.. csv-table::
+   :header: "Record ID", "Summary"
+   :widths: 20, 80
+
+   LCPD-19772,ATF/Uboot GTC frequency handover bug
+   LCPD-19733,[ti:ti-rt-linux-5.4.y 3364/11241] drivers/pci/endpoint/functions/pci-epf-ntb.c:860 epf_ntb_init_epc_bar_interface() warn: unsigned 'barno' is never less than zero.
+   LCPD-19731,HSR/PRP : warning: ignoring return value of ‘skb_put_padto'
 
 ..
-   Errata workarounds: project = LCPD AND platform=j7200-evm  AND ErrataID is not EMPTY AND status = Closed AND (Labels not in (PLSDK_NOT_RN) OR labels is EMPTY) ORDER BY priority DESC
+   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", "System Integration", Wireless, Graphics, Multimedia, Security) AND closedDate > 2020-11-18 AND createdDate > 2020-11-18 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND fixversion not in (Upstream) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC
+
+Issues found and closed on this release that may be applicable to prior releases
+--------------------------------------------------------------------------------
+.. csv-table::
+   :header: "Record ID", "Summary"
+   :widths: 20, 80
+
+   LCPD-20634,J7200: SDK Builds fail to complete
+   LCPD-20618,k3: cpswxg: bindings not updated
+   LCPD-20524,doc: i2027 errata incorrectly documented as applicable for J721E/J7200.
+   LCPD-20299,"Obsolete ti,sci-rm-range-girq usage in Wkup GPIO Interrupt Routers"
+   LCPD-20177,J7200 UART boot not working
+   LCPD-20122,Add external power supply to PCIe USB card on am64xx and j7200
+   LCPD-20058,Kernel: Fix UBIFS errors on Cypress S28 flash
+   LCPD-19969,Kernel: Random DMA timeouts on OSPI
+   LCPD-19946,remoteproc/k3-r5f: Fix couple of warnings
+   LCPD-19936,OSPI UBIFS test fails on j7200
+   LCPD-19884,Images missing for j7200 custom build: 07.01.00-005_usbdev-hs
+   LCPD-19862,USB SuperSpeed enumeration not working on j7200e
 
 ..
-   project in (LCPD, "ADAS Algorithms") AND issuetype = Bug AND platform=j7200-evm  AND status not in ("In Build", Closed, Resolved) AND OS = Linux AND (Labels not in (PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND component != "System Test" ORDER BY key ASC
+   project = LCPD AND Platform in (j7200-evm) AND ErrataID is not EMPTY AND status = Closed AND (Labels not in (PLSDK_NOT_RN) OR labels is EMPTY) ORDER BY priority DESC
 
-Open Defects
-------------
+Errata workarounds
+------------------
+.. csv-table::
+   :header: "Record ID", "Summary", "Workaround", "ErrataID"
+   :widths: 20, 80, 60, 20
+
+   LCPD-19965,OSPI PHY Controller Bug Affecting Read Transactions,,i2189
+
+
+..
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("System Integration", Graphics, Wireless, Security, Multimedia) AND (labels not in (LCPD_K3.14_MAINT, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND ((affectedVersion <= 07.03.00 AND affectedVersion >upstream ) OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (j7200-evm) AND OS = "Linux" ORDER BY key DESC, priority DESC, component ASC
+
+.. _release-specific-known-issues:
+
+SDK Known Issues
+----------------
 .. csv-table::
    :header: "Record ID", "Summary", "Workaround"
    :widths: 20, 80, 60
 
-   LCPD-17798,2020 LTS: INTA/INTR smp_affinity failure and IRQ allocation issues.,
-   LCPD-19460,J7200: USB3 devices fail to enumerate at 2.0 when SERDES multi-link (PCIe + USB3),No workaround for USB 3.0 devices exists. USB 2.0 devices enumerate fine.
-   LCPD-19497,CPSW2g: interface goes up and down sporadically,Seen only on very few EVMs. No workaround. 
-   LCPD-19499,Kernel: OSPI write throughput is less than 1MB/s,
-   LCPD-19519,Kernel: RT Linux build error with SPI NOR hack to find the PHY pattern location,
-   LCPD-19659,Doc: PCIe: Update documentation to indicate how to move to compliance mode,
-   LCPD-19664,Upstream: kernel MMC dts properties need to avoid _ in property names,
-   LCPD-19716,GFX_XS_FUNC_UYVY_TEXTURE test fails,
-   LCPD-19723,RTI watchdog test fails on J7VCL E5 SOM,
-   LCPD-19772,ATF/Uboot GTC frequency handover bug,
-   LCPD-19800,tisci_sysreset_request blocks boot for several tests,
-   LCPD-19838,Cryptodev not building against 5.10 kernel,
    LCPD-19858,OE: OPTEE label used in SDK is old and wrong,
+   LCPD-19743,Packages.gz is missing,
 
 ..
-   Known issues & limitations: project = LCPD AND issuetype = Bug AND platform=j7200-evm AND status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other") AND OS = Linux AND (Labels not in (PLSDK_NOT_RN) OR labels is EMPTY) ORDER BY key ASC
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Power & Thermal", Baseport, "Audio & Display", Connectivity, IPC) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND (summary ~ u-boot OR Subcomponent in (u-boot, UBOOT, Uboot)) AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC, component ASC
 
-
-Known issues & limitations
---------------------------
+U-Boot Known Issues
+-------------------
 .. csv-table::
-   :header: "Record ID", "Summary" , "Workaround"
+   :header: "Record ID", "Summary", "Workaround"
    :widths: 20, 80, 60
 
-   LCPD-19636,J7: OSPI Boot broken,
-   LCPD-19739,AM65 shutdown error,
-   LCPD-19743,Packages.gz is missing,
+   LCPD-20131,Uboot fails to enumerate devices attached to a usb hub on the first 'usb reset' call ,Re-run usb reset command 
+   LCPD-19871,U-boot: Documentation: Combined Boot flow and SPL Rearch,
+   LCPD-17523,R5-SPL - Support to dump EEPROM to shared memory,
+
+..
+   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal") AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND summary !~ u-boot AND (Subcomponent not in (u-boot, UBOOT, Uboot) OR Subcomponent is EMPTY) AND Platform in (j7200-evm) ORDER BY key DESC, priority DESC, component DESC
+
+Linux Kernel Known Issues
+---------------------------
+.. csv-table::
+   :header: "Record ID", "Summary", "Workaround"
+   :widths: 20, 80, 60
+
+   LCPD-21508,USB stick attached to a PCIe USB card on j7200 not enumerated after reboot,
+   LCPD-21507,am64xx and j7200 PCIe USB card must use an external power supply to enumerate the attached USB stick,
+   LCPD-21350,j7200 PCIE-EP tests failing,
+   LCPD-20320,CPSW5g high packet loss,
+   LCPD-20309,TCP/UDP performance tests sometimes fail due to no netperf output,
+   LCPD-20106,USBDEVICE ping from DUT to host fails when packet_count=470,
+   LCPD-19942,"UART tests at certain speeds fail on j7200, j721e",
+   LCPD-19723,RTI watchdog test fails on J7VCL E5 SOM,
+   LCPD-19659,Doc: PCIe: Update documentation to indicate how to move to compliance mode,
+   LCPD-19499,Kernel: OSPI write throughput is less than 1MB/s,
+   LCPD-19497,J7200: CPSW2g: interface goes up and down sporadically,Seen only on very few EVMs. No workaround. 
+   LCPD-19460,J7200: USB3 devices fail to enumerate at 2.0/3.0 when SERDES multi-link (PCIe + USB3),No workaround for USB 3.0 devices exists. USB 2.0 devices enumerate fine.
+   LCPD-17798,2020 LTS: INTA/INTR smp_affinity failure and IRQ allocation issues.,
 
 |
 
@@ -161,6 +219,7 @@ Installation and Usage
 ======================
 
 The :ref:`Software Developer's Guide <linux-index>` provides instructions on how to setup your Linux development environment, install the SDK and start your development. It also includes User's Guides for various Example Applications.
+
 
 |
 
