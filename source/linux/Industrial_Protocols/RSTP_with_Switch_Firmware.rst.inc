@@ -43,6 +43,22 @@ as follows:
 
 |
 
+.. note::
+
+ The ICSS switch firmware has multicast filtering enabled by default, hence it's important to ensure
+ that STP multicast address 01:80:c2:00:00:00 is enabled in the ICSS switch firmware.
+ The STP multicast address can be added manually to the bridge netdev once it's created,
+ like: ``ip maddr add 01:80:c2:00:00:00 dev br0``, and PRU ethernet driver will ensure it's
+ configured properly when PRU netdev added to the bridge.
+
+|
+
+.. note::
+
+ Some rootfs systems, like systemd, may assign random, local MAC address to the bridge netdev by default.
+ It's recommended to reassign bridge netdev MAC address to the MAC address of the one of the child interfaces.
+ Like: ``ip link set dev br0 address $(cat /sys/class/net/<intf>/address)``
+
 Boot up the IDKs as follows:
 
 1. Boot IDKs into linux prompt.
@@ -58,47 +74,51 @@ Note: timing is for reference only.
 
 3. Run the following script rstp.sh on each IDK.
 
+The script can be run with default (eth2, eth3, br0) or user parameters, like ``rstp.sh pru10 pru11``
+
 .. code-block:: bash
 
  #!/bin/bash
  # rstp.sh
- 
- echo "mstpd"
+
+ set -x #echo on
+
+ ETH1=${1:-eth2}
+ ETH2=${2:-eth3}
+ BR0=${4:-br0}
+
  mstpd
  sleep 1
- 
- echo "ifconfig eth2 up"
- ifconfig eth2 up
+
+ ip link set dev $ETH1 up
  sleep 1
- 
- echo "ifconfig eth3 up"
- ifconfig eth3 up
+
+ ip link set dev $ETH2 up
  sleep 1
- 
- echo "brctl addbr br0"
- brctl addbr br0
+
+ brctl addbr $BR0
  sleep 1
- 
- echo "brctl addif br0 eth2"
- brctl addif br0 eth2
+
+ # manually add STP MC address to enable it in PRU MC filter table
+ ip maddr add 01:80:c2:00:00:00 dev $BR0
+
+ ip link set dev $BR0 address $(cat /sys/class/net/$ETH1/address)
+
+ brctl addif $BR0 $ETH1
  sleep 1
- echo "brctl addif br0 eth3"
- brctl addif br0 eth3
+
+ brctl addif $BR0 $ETH2
  sleep 1
- 
- echo "brctl stp br0 on"
- brctl stp br0 on
+
+ brctl stp $BR0  on
  sleep 1
- 
- echo "mstpctl setforcevers br0 rstp"
- mstpctl setforcevers br0 rstp
+
+ mstpctl setforcevers $BR0 rstp
  sleep 1
- 
- echo "ifconfig br0 up"
- ifconfig br0 up
+
+ ip link set dev $BR0 up
  sleep 1
- 
- echo "mstpctl showbridge"
+
  mstpctl showbridge
 
 |
@@ -143,7 +163,7 @@ which breaks the cyclic connection into a tree (in this case, a serial
 connection.
 
 Note 3:
-In step 3 as soon as the first interface is added to the Linux bridge, the
+In step 3 as soon as the **both** interface are added to the Linux bridge, the
 Ethernet device automatically change mode to SWITCH. When the interface is
 brought up, driver loads SWITCH firmware and brings up the PRUs in switch
 mode. Similarly when last interface is removed from the Linux bridge, the
@@ -159,10 +179,10 @@ loaded and run at the PRUs when next time interface is brought up.
    of the same subnet on another DUT. E.g.
 
    on Dut1:
-   $ ifconfig br0 192.168.2.72
+   $ ip addr add 192.168.1.1/24 dev br0
 
    on Dut3:
-   $ ifconfig br0 192.168.2.71
+   $ ip addr add 192.168.1.2/24 dev br0
 
 7. Make sure ping works fron Dut1 to Dut3.
 
