@@ -358,6 +358,23 @@ the two subnets as shown below.
 
 |
 
+.. rubric:: Linux network device re-naming
+
+It's possible to perform Linux network devices renaming for devices created by
+PRU Ethernet driver for consistency, as standard Linux Ethernet network devices
+naming (ethX) depends in platform configuration and drivers initialization sequence.
+The  PRU Ethernet network devices renaming can be achieved by using udev rules,
+like below, which can be added in /etc/udev/rules.d/autonet.rules, for example.
+
+.. code-block:: bash
+
+ SUBSYSTEM=="net", ACTION=="add", KERNELS=="pruss1_eth", ATTR{phys_port_name}=="p1", NAME="pru10"
+ SUBSYSTEM=="net", ACTION=="add", KERNELS=="pruss1_eth", ATTR{phys_port_name}=="p2", NAME="pru11"
+ SUBSYSTEM=="net", ACTION=="add", KERNELS=="pruss2_eth", ATTR{phys_port_name}=="p1", NAME="pru20"
+ SUBSYSTEM=="net", ACTION=="add", KERNELS=="pruss2_eth", ATTR{phys_port_name}=="p2", NAME="pru21"
+
+|
+
 .. rubric:: Dual EMAC Network Storm Prevention Support
    :name: dual-emac-storm-prevention
 
