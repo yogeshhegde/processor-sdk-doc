@@ -78,6 +78,8 @@ fi
 
 git checkout ${_old} || exit 10
 
+mkdir -p build
+
 make DEVFAMILY=${_dev} OS=${_os} clean
 make DEVFAMILY=${_dev} OS=${_os} config > build/_a.log 2>&1 || exit 12
 make DEVFAMILY=${_dev} OS=${_os} >> build/_a.log 2>&1 || exit 13
