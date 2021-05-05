@@ -40,8 +40,9 @@ Introduction
     |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
     accelerator based on the Rogue 8XE series from Imagination Technologies Inc.
     It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
-    API's. The OpenGL\ |reg| ES API's up to and including version 3.2 are
-    supported by the hardware.
+    API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
+    render surfaces upto 4k and input textures upto 8k sizes are supported by
+    the hardware.
 
     The following extensions are supported:
 
