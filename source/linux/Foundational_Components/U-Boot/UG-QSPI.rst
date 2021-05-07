@@ -38,13 +38,14 @@ PHY calibration allows for higher read performance. To enable PHY, the PHY
 calibration pattern must be flashed to OSPI at the start of the last erase
 sector. For the Micron MT35XU512ABA flash, this lies at the address 0x3fe0000.
 
+Download the binary file containing the PHY pattern from :download:`here </files/ospi_phy_pattern>`.
 Below commands can be used to flash the PHY pattern, with the location of the
 pattern depending on which flash is being used:
 
 .. code-block:: console
 
    => sf probe
-   => tftp ${loadaddr} pattern_file
+   => tftp ${loadaddr} ospi_phy_pattern
    => sf update $loadaddr 0x3fe0000 $filesize
 
 **Flash Layout for OSPI**
@@ -117,13 +118,14 @@ PHY calibration allows for higher read performance. To enable PHY, the PHY
 calibration pattern must be flashed to OSPI at the start of the last erase
 sector. For the Cypress S28HS512T flash, this lies at the address 0x3fc0000.
 
+Download the binary file containing the PHY pattern from :download:`here </files/ospi_phy_pattern>`.
 Below commands can be used to flash the PHY pattern, with the location of the
 pattern depending on which flash is being used:
 
 .. code-block:: console
 
    => sf probe
-   => tftp ${loadaddr} pattern_file
+   => tftp ${loadaddr} ospi_phy_pattern
    => sf update $loadaddr 0x3fc0000 $filesize
 
 **Flash Layout for OSPI**
