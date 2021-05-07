@@ -119,8 +119,8 @@ loaded into the kernel dynamically.
    :name: enabling-qspi-driver-configurations
 
 Following needs to be enabled to access OSPI/QSPI flash: TI QSPI controller
-driver, SPI NOR framework and MTD M25P80 generic serial flash driver in
-the kernel via menuconfig.
+driver, Cadence OSPI controller driver, and SPI NOR framework in the kernel via
+menuconfig.
 
 .. note::
     OSPI/QSPI drivers and their dependencies are enabled by default in
@@ -147,15 +147,6 @@ To enable SPI NOR framework:
               Device Drivers  --->
                 <*> Memory Technology Device (MTD) support  --->
                   <*>   SPI-NOR device support  --->  
-
-To enable M25P80 generic SPI flash driver:
-
-.. code-block:: text
-
-              Device Drivers  --->
-                <*> Memory Technology Device (MTD) support  --->
-                  Self-contained MTD device drivers  ---> 
-                    <*> Support most SPI Flash chips (AT26DF, M25P, W25X, ...)
 
 To enable spi-cadence-quadspi driver:
 
