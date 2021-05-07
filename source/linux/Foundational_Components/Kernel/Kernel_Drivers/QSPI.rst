@@ -31,9 +31,9 @@ different TI SoCs:
 +---------------+-----------+--------------------------------------+
 | DRA7xx/AM57xx | QSPI      | drivers/spi/spi-ti-qspi.c            |
 +---------------+-----------+--------------------------------------+
-| 66AK2Gx       | QSPI      | drivers/mtd/spi-nor/cadence-quadspi.c|
+| 66AK2Gx       | QSPI      | drivers/spi/spi-cadence-quadspi.c    |
 +---------------+-----------+--------------------------------------+
-| AM654/J721e   | 1x OSPI,  | drivers/mtd/spi-nor/cadence-quadspi.c|
+| AM654/J721e   | 1x OSPI,  | drivers/spi/spi-cadence-quadspi.c    |
 |               | 1x QSPI   |                                      |
 +---------------+-----------+--------------------------------------+
 
@@ -69,7 +69,7 @@ the table "SPI Clock Modes Definition" of particular SoC's TRM. But make
 sure that the selected mode is supported by the clocking requirements of
 the device as per the device's datasheet.
 
-cadence-quadspi.c driver supports standard SPI mode 0 only.
+spi-cadence-quadspi.c driver supports standard SPI mode 0 only.
 
 .. rubric:: DMA support
    :name: dma-support
@@ -106,7 +106,7 @@ OSPI does not support interfacing with non flash SPI slaves.
 
 The source file for the QSPI driver can be found at: drivers/spi/spi-ti-qspi.c under Linux kernel source tree.
 
-OSPI driver is at: drivers/mtd/spi-nor/cadence-quadspi.c under Linux kernel source tree.
+OSPI driver is at: drivers/spi/spi-cadence-quadspi.c under Linux kernel source tree.
 This driver also supports QSPI version of the same IP.
 
 .. rubric:: Kernel Configuration Options
@@ -157,14 +157,13 @@ To enable M25P80 generic SPI flash driver:
                   Self-contained MTD device drivers  ---> 
                     <*> Support most SPI Flash chips (AT26DF, M25P, W25X, ...)
 
-To enable cadence-quadspi driver:
+To enable spi-cadence-quadspi driver:
 
 .. code-block:: text
 
               Device Drivers  --->
-                <*> Memory Technology Device (MTD) support  --->
-                  <*>   SPI-NOR device support  --->
-		    <*>   Cadence Quad SPI controller
+                [*] SPI support --->
+                  <*>   Cadence Quad SPI controller
 
 To enable them as modules, make <\*> as <M>.
 
@@ -183,7 +182,7 @@ Refer to Documentation/devicetree/bindings/spi/ti\_qspi.txt under
 kernel source tree for spi-ti-qspi controller driver's DT bindings and
 their usage.
 
-For cadence-quadspi controller refer to Documentation/devicetree/bindings/mtd/cadence-quadspi.txt
+For spi-cadence-quadspi controller refer to Documentation/devicetree/bindings/mtd/cadence-quadspi.txt
 for DT bindings and their usage.
 
 To configure OSPI/QSPI flash partitions and flash related DT bindings refer
@@ -213,7 +212,7 @@ of dependencies and load those modules as well):
 ::
 
        $modprobe spi-ti-qspi
-       $modprobe cadence-quadspi
+       $modprobe spi-cadence-quadspi
 
 
 This should create /dev/mtdX entries for every partition defined in DT
