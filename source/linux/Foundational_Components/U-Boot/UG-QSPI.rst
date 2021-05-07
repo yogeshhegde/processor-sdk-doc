@@ -11,6 +11,12 @@ supported hardware. For simplicity we assume the files are being loaded
 from an SD card. Using the network interface (if applicable) is
 documented above.
 
+.. note::
+
+    Not all OSPI flashes can be supported. Users are recommended to check
+    whether or not the OSPI flash part chosen for custom board designs meets all
+    the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
+
 AM654/J721E Support
 ^^^^^^^^^^^^^^^^^^^^
 ROM supports booting from OSPI from offset 0x0.
