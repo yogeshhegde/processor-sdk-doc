@@ -48,9 +48,6 @@ different TI SoCs:
 OSPI controllers support Double Data Rate (DDR) mode in Octal
 configuration wherein data can be read on both edges of the clock.
 
-.. note::
-    Driver does not support Octal or Quad mode writes.
-
 .. rubric:: Memory mapped read support
    :name: memory-mapped-read-support
 
