@@ -414,7 +414,7 @@ To find the list of endpoint controller devices in the system:
     ::
 
         root@j7-evm:~# ls /sys/class/pci_epc/
-        d000000.pcie-ep
+        2900000.pcie-ep
 
 
 To find the list of endpoint function drivers in the system:
@@ -875,7 +875,7 @@ supported are:
 
     ::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# ln -s functions/pci_epf_test/func1 controllers/d000000.pcie-ep/
+        root@j7-evm:/sys/kernel/config/pci_ep# ln -s functions/pci_epf_test/func1 controllers/2900000.pcie-ep/
 
     .. rubric:: Starting the EP device
 
@@ -884,7 +884,7 @@ supported are:
 
     ::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# echo 1 > controllers/d000000.pcie-ep/start
+        root@j7-evm:/sys/kernel/config/pci_ep# echo 1 > controllers/2900000.pcie-ep/start
 
     The complete sequence when using six physical functions, will look like the
     following:
@@ -898,43 +898,43 @@ supported are:
         echo 0xb00d > functions/pci_epf_test/func1/deviceid
         echo 2 > functions/pci_epf_test/func1/msi_interrupts
         echo 2 > functions/pci_epf_test/func1/msix_interrupts
-        ln -s functions/pci_epf_test/func1 controllers/d000000.pcie-ep/
+        ln -s functions/pci_epf_test/func1 controllers/2900000.pcie-ep/
 
         mkdir functions/pci_epf_test/func2
         echo 0x104c > functions/pci_epf_test/func2/vendorid
         echo 0xb00d > functions/pci_epf_test/func2/deviceid
         echo 2 > functions/pci_epf_test/func2/msi_interrupts
         echo 2 > functions/pci_epf_test/func2/msix_interrupts
-        ln -s functions/pci_epf_test/func2 controllers/d000000.pcie-ep/
+        ln -s functions/pci_epf_test/func2 controllers/2900000.pcie-ep/
 
         mkdir functions/pci_epf_test/func3
         echo 0x104c > functions/pci_epf_test/func3/vendorid
         echo 0xb00d > functions/pci_epf_test/func3/deviceid
         echo 2 > functions/pci_epf_test/func3/msi_interrupts
         echo 2 > functions/pci_epf_test/func3/msix_interrupts
-        ln -s functions/pci_epf_test/func3 controllers/d000000.pcie-ep/
+        ln -s functions/pci_epf_test/func3 controllers/2900000.pcie-ep/
 
         mkdir functions/pci_epf_test/func4
         echo 0x104c > functions/pci_epf_test/func4/vendorid
         echo 0xb00d > functions/pci_epf_test/func4/deviceid
         echo 2 > functions/pci_epf_test/func4/msi_interrupts
         echo 2 > functions/pci_epf_test/func4/msix_interrupts
-        ln -s functions/pci_epf_test/func4 controllers/d000000.pcie-ep/
+        ln -s functions/pci_epf_test/func4 controllers/2900000.pcie-ep/
 
         mkdir functions/pci_epf_test/func5
         echo 0x104c > functions/pci_epf_test/func5/vendorid
         echo 0xb00d > functions/pci_epf_test/func5/deviceid
         echo 2 > functions/pci_epf_test/func5/msi_interrupts
         echo 2 > functions/pci_epf_test/func5/msix_interrupts
-        ln -s functions/pci_epf_test/func5 controllers/d000000.pcie-ep/
+        ln -s functions/pci_epf_test/func5 controllers/2900000.pcie-ep/
 
         mkdir functions/pci_epf_test/func6
         echo 0x104c > functions/pci_epf_test/func6/vendorid
         echo 0xb00d > functions/pci_epf_test/func6/deviceid
         echo 2 > functions/pci_epf_test/func6/msi_interrupts
         echo 2 > functions/pci_epf_test/func6/msix_interrupts
-        ln -s functions/pci_epf_test/func6 controllers/d000000.pcie-ep/
-        echo 1 > controllers/d000000.pcie-ep/start
+        ln -s functions/pci_epf_test/func6 controllers/2900000.pcie-ep/
+        echo 1 > controllers/2900000.pcie-ep/start
 
     .. rubric::Using virtual functions
 
@@ -967,9 +967,9 @@ supported are:
 
         ln -s functions/pci_epf_test/vf1 functions/pci_epf_test/pf1
         ln -s functions/pci_epf_test/vf2 functions/pci_epf_test/pf1
-        ln -s functions/pci_epf_test/pf1 controllers/d800000.pcie-ep
+        ln -s functions/pci_epf_test/pf1 controllers/2910000.pcie-ep
 
-        echo 1 > controllers/d800000.pcie-ep/start
+        echo 1 > controllers/2910000.pcie-ep/start
 
 .. rubric:: **HOST Device Configuration**
    :name: host-device-configuration
