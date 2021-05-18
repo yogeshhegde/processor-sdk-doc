@@ -20,3 +20,10 @@ meta layers. These are the <config> used in the command:
     |  coresdk-07.03.00.005-config.txt  | CoreSDK 07.03.00 Release| am335x, am437x, am57xx, am654x, j7, j7200, am64xx|
     +-----------------------------------+-------------------------+--------------------------------------------------+
 
+.. note::
+
+    AM64xx uses the internal OE layer to build the u-boot with the latest updates from the ti-u-boot repository. To build the u-boot with yocto for AM64xx, user has to follow the below step,
+   
+    - Update the meta-ti layer's u-boot yocto recipe with the latest commit ID. 
+	
+	- For commit ID and other u-boot build information, refer to the AM64x `Release notes <Linux_Release_Notes.html#build-information>`__.
