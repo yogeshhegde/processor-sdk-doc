@@ -36,10 +36,10 @@ found on the SDK download page or in the installed directory as indicated below.
 -  App/Demos Manifest:  "/sitara-apps/Processor_SDK_manifest.html"
 
 
-Release 07.03.00
+Release 07.03.01
 ================
 
-Released on March 2021
+Released on May 2021
 
 .. rubric:: What's New
    :name: whats-new
@@ -49,36 +49,32 @@ Processor SDK Linux AM64x Release has following new features:
 This release integrates benchmark examples built on top of RTOS, NO-RTOS and Linux platform software. Refer to highlights per subsystem for more detailed information.
 
 
-**Benchmark Demo:**
+**Benchmark Demo**
 
 -  Benchmark_demo with GUI (A53/Linux) working for all 4 R5F/NO-RTOS cores with u-boot based SD card boot
 -  4-ch IPC RPMsg_char functional between R5F/NO-RTOS and A53/Linux
 -  Benchmarking R5F apps such as CFFT, FIR and FOC with profile/cycle counts 
 
 
-**Platform SW/board-support**
+**Supported Platforms and EVMs**
 
--  Integrated with latest tools and Platform SW releases
+-  Integrated with latest tools and Platform SW releases. The following platforms and EVMs are supported with Processor SDK
+
++--------------------------------------+--------------------------------------+----------------+----------------+----------------+
+|**Platform**                          |**EVM**                               |**Processor SDK |**Processor SDK |**MCU PLUS SDK  |
+|                                      |                                      |Linux**         |RT Linux**      |RTOS**          |
++--------------------------------------+--------------------------------------+----------------+----------------+----------------+
+| AM64x                                |  AM64x GP EVM                        | X              | X              | X              |
+|                                      +--------------------------------------+----------------+----------------+----------------+
+|                                      |  AM64x SK                            | X              | X              | X              |
++--------------------------------------+--------------------------------------+----------------+----------------+----------------+
 
 
 **Dependent component Release notes**
 
-Refer below component release notes for complete feature-set and further details
+Refer below component release notes for complete feature-set, known issues, issues fixed and further details
 
 -  For Linux Kernel, u-boot & DTB     `[Use Link] <Linux_Release_Notes.html>`__
 -  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/RELEASE_NOTES_PAGE.html>`__
 -  For Industrial Protocols (ECAT)    `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/INDUSTRIAL_PROTOCOLS.html>`__
 -  For Industrial Drives (EnDAT,HDSL) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/EXAMPLES_MOTORCONTROL.html>`__
-
-
-.. rubric:: Known Issues
-   :name: Known Issue
-   
--  None
-
-
-
-.. rubric:: Issues Fixed
-   :name: Issues Fixed
-
--  This is the first release of Processor SDK Linux AM64X.
