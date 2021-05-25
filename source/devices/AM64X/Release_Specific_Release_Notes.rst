@@ -78,3 +78,12 @@ Refer below component release notes for complete feature-set, known issues, issu
 -  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/RELEASE_NOTES_PAGE.html>`__
 -  For Industrial Protocols (ECAT)    `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/INDUSTRIAL_PROTOCOLS.html>`__
 -  For Industrial Drives (EnDAT,HDSL) `[Use Link] <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/EXAMPLES_MOTORCONTROL.html>`__
+
+.. rubric:: Known Issues
+   :name: Known Issue
+
+.. csv-table::
+   :header: "Record ID", "Title"
+   :widths: 15, 100
+
+   "SITSW-430","AM64: LPDDR4 is not stable with 800MHz frequency on AM64x SK platform"

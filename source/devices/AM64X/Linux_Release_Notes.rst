@@ -41,13 +41,12 @@ U-Boot
 ------
 
 | Head Commit: e995ed0ec11baf3912470f8b7c8d33dd65f2d6da  configs: am64x_sk: Drop unused defconfigs
-| Date: Wed Apr 7 21:12:38 CDT 2021
+| Date: Wed May 12 15:48:40 2021 +0530
 | uBoot Version: 2020.01
 | uBoot Description: 07.03.01.006
 
 | Clone: https://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2020.01
-| uBoot Tag: 07.03.01.006
 
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
