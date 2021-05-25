@@ -263,7 +263,7 @@ Boot media: MMCSD
     :header: "Boot Configuration","am654x-evm: boot time (sec)"
 
     "Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","15.41 (min 15.18, max 15.68)"
-    "Kernel boot time test when init is /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","5.09 (min 5.03, max 5.33)"
+    "Kernel boot time test when init is only /bin/sh and bootloader, kernel and sdk-rootfs are in mmc-sd","5.09 (min 5.03, max 5.33)"
 
 Table:  **Boot time MMC/SD**
 
