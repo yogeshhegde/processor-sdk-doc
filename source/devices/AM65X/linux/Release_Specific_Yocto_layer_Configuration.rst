@@ -1,3 +1,5 @@
+.. _yocto-layer-configuration:
+
 **************************
 Yocto Layer Configuration
 **************************
@@ -10,12 +12,11 @@ meta layers. These are the <config> used in the command:
 ``$ ./oe-layertool-setup.sh -f <config>``
 
 |
-| The following config files are located in the **configs/**
-  directory of the **configs** directory.  The yocto config can also be
-  downloaded directly from the SDK release page.
+| The following config files are located in the **yocto-build/configs/processor-sdk-linux**
+  directory.
 
-+------------------------+----------------------------------------------------+--------------------------------+
-|      Config File       |                    Description                     | Supported machines             |
-+========================+====================================================+================================+
-| psdkla-07_01_01.txt    | Processor SDK Linux 07_01_01 Release               | am65xx-evm                     |
-+------------------------+----------------------------------------------------+--------------------------------+
++-------------------------------------+----------------------------------------------------+--------------------------------+
+|      Config File                    |                    Description                     | Supported machines             |
++=====================================+====================================================+================================+
+| processor-sdk-linux-07_03_00.txt    | Processor SDK Linux 07_03_00 Release               | am65xx-evm                     |
++-------------------------------------+----------------------------------------------------+--------------------------------+
