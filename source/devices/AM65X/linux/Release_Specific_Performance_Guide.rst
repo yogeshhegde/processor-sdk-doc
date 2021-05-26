@@ -2,10 +2,6 @@
 Performance Guide
 ************************************
 
-Kernel Performance Guide
-=================================
-.. include:: /linux/Release_Specific/Performance_Guide/Kernel_Performance_Guide.rst.inc
-
 RT Kernel Performance Guide
 =================================
-.. include:: /linux/Release_Specific/Performance_Guide/RT_Kernel_Performance_Guide.rst.inc
+.. include:: /devices/AM65X/linux/Release_Specific_RT_Kernel_Performance_Guide.rst.inc
