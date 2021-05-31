@@ -49,13 +49,13 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Camera/CAL
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto
 linux/Foundational_Components/Kernel/Kernel_Drivers/DCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
-linux/Foundational_Components/Kernel/Kernel_Drivers/Display/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/PRUSS
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
+linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND

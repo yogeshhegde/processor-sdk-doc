@@ -48,12 +48,12 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Audio
 linux/Foundational_Components/Kernel/Kernel_Drivers/Crypto
 linux/Foundational_Components/Kernel/Kernel_Drivers/DCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Display/LCDC
-linux/Foundational_Components/Kernel/Kernel_Drivers/Display/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/PRUSS
 linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management
+linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD

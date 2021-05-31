@@ -108,7 +108,7 @@ source/linux/Kernel/Kernel_Drivers/SPI.rst
 http://processors.wiki.ti.com/index.php/Linux_Core_SPI_User%27s_Guide
 source/linux/Kernel/Kernel_Drivers/I2C.rst
 http://processors.wiki.ti.com/index.php/Linux_Core_I2C_User%27s_Guide
-source/linux/Kernel/Kernel_Drivers/Display/PWM.rst
+source/linux/Kernel/Kernel_Drivers/PWM.rst
 http://processors.wiki.ti.com/index.php/Linux_Core_PWM_User%27s_Guide
 source/linux/Kernel/Kernel_Drivers/Display/LCDC.rst
 http://processors.wiki.ti.com/index.php/Linux_Core_LCD_Controller_User_Guide

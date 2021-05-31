@@ -15,7 +15,6 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Display/DSS
    Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
    Foundational_Components/Kernel/Kernel_Drivers/Display/LCDC
-   Foundational_Components/Kernel/Kernel_Drivers/Display/PWM
    Foundational_Components/Kernel/Kernel_Drivers/GPIO
    Foundational_Components/Kernel/Kernel_Drivers/HYPERFLASH
    Foundational_Components/Kernel/Kernel_Drivers/I2C
@@ -29,6 +28,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
    Foundational_Components/Kernel/Kernel_Drivers/Power_Management
+   Foundational_Components/Kernel/Kernel_Drivers/PWM
    Foundational_Components/Kernel/Kernel_Drivers/QSPI
    Foundational_Components/Kernel/Kernel_Drivers/SPI
    Foundational_Components/Kernel/Kernel_Drivers/Storage/SATA
