@@ -45,10 +45,10 @@ U-Boot
 | uBoot Version: 2020.01
 | uBoot Description: 07.03.01.006
 
-| Clone: https://git.ti.com/ti-u-boot/ti-u-boot.git
+| Clone: https://git.ti.com/ti-u-boot/ti-u-boot
 | Branch: ti-u-boot-2020.01
 
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Compiler Information:  arm-none-linux-gnueabihf-gcc and aarch64-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
 |
 
@@ -63,11 +63,11 @@ Kernel
 | Date: Wed Apr 7 14:38:29 CDT 2021
 | Kernel Version: 5.4.106
 | Kernel Description: 07.03.00.005
-| Repo: https://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Repo: https://git.ti.com/ti-linux-kernel/ti-linux-kernel
 | Branch: ti-linux-5.4.y
 | Tag: 07.03.00.005
 
-| Compiler Information: arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Compiler Information: aarch64-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
 |
 
@@ -79,11 +79,11 @@ Kernel
 | RT Kernel Version: 5.4.106-rt54
 | Kernel Description: 07.03.00.005-rt
 
-| Repo: https://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Repo: https://git.ti.com/ti-linux-kernel/ti-linux-kernel
 | Branch: ti-rt-linux-5.4.y
 | Tag: 07.03.00.005-rt
 
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Compiler Information:  aarch64-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
 |
 
