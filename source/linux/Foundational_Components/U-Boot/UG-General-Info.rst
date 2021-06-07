@@ -18,6 +18,8 @@ Getting the U-Boot Source Code
 
 |
 
+.. _Build-U-Boot-label:
+
 Build U-Boot
 ^^^^^^^^^^^^
 .. note::

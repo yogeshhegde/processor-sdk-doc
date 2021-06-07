@@ -19,44 +19,46 @@ The USB Peripheral boot mode is used to boot using USB
 interface using SPL-DFU feature. Steps outlined here can be used on
 platform that support USB Peripheral boot mode.
 
-#. Enable the SPL-DFU feature in u-boot and build MLO/u-boot binaries.
-#. Load the MLO and u-boot.img using the dfu-util from host PC.
-#. Once the u-boot is up, use DFU command from u-boot to flash the
-   binary images from Host PC (using dfu-utils tool) to the eMMC, or
-   QSPI to fresh/factory boards.
+.. ifconfig:: CONFIG_part_family in ('General_family','J7_family')
 
--  Example provided here is for dra7xx platform.
+  #. Enable the SPL-DFU feature in u-boot and build MLO/u-boot binaries.
+  #. Load the MLO and u-boot.img using the dfu-util from host PC.
+  #. Once the u-boot is up, use DFU command from u-boot to flash the
+     binary images from Host PC (using dfu-utils tool) to the eMMC, or
+     QSPI to fresh/factory boards.
 
--  Use default "dra7xx\_evm\_defconfig" to build spl/u-boot-spl.bin,
-   u-boot.img.
+  -  Example provided here is for dra7xx platform.
 
-::
+  -  Use default "dra7xx\_evm\_defconfig" to build spl/u-boot-spl.bin,
+     u-boot.img.
 
-     host$ make dra7xx_evm_defconfig
-     host$ make menuconfig
+  ::
 
-     select SPL/DFU support
-     menuconfig->SPL/TPL--->
-        ..
-        [*] Support booting from RAM
-        [*] Support USB Gadget drivers
-        [ ]    Support USB Ethernet drivers
-        [*]    Support DFU (Device Firmware Upgrade)
-                  DFU device selection (RAM device) -->
+       host$ make dra7xx_evm_defconfig
+       host$ make menuconfig
 
-::
+       select SPL/DFU support
+       menuconfig->SPL/TPL--->
+          ..
+          [*] Support booting from RAM
+          [*] Support USB Gadget drivers
+          [ ]    Support USB Ethernet drivers
+          [*]    Support DFU (Device Firmware Upgrade)
+                    DFU device selection (RAM device) -->
 
-     Unselect CONFIG_HUSH_PARSER
-     menuconfig--->Command Line interface
-        [*] Support U-boot commands
-        [ ]   Use hush shell
+  ::
+
+       Unselect CONFIG_HUSH_PARSER
+       menuconfig--->Command Line interface
+          [*] Support U-boot commands
+          [ ]   Use hush shell
 
 
--  Build spl/u-boot-spl.bin and u-boot.img
+  -  Build spl/u-boot-spl.bin and u-boot.img
 
-::
+  ::
 
-     host$ make
+       host$ make
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
@@ -107,16 +109,42 @@ platform that support USB Peripheral boot mode.
 
    -  Now EVM will boot to u-boot prompt.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
+  #. Build the bootloader images using default "am64x_evm_r5_defconfig"
+     and "am64x_evm_a53_defconfig" configs files. The configs required for
+     DFU boot as well as DFU in U-Boot are already enabled. For instructions
+     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+  #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
+     the dfu-util from host PC.
+  #. Once the U-Boot is up, use DFU command from u-boot to flash the
+     binary images from Host PC (using dfu-utils tool) to the eMMC, or
+     QSPI to fresh/factory boards.
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
 
     .. rubric:: USB Peripheral boot mode on J721E EVM (SPL-DFU boot mode)
        :name: dfu-j721e
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    .. rubric:: USB Peripheral boot mode on AM64X EVM (SPL-DFU boot mode)
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
 
     -  Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of J721E TRM for boot switch details)
     -  Make sure USB0 port in UFP/DRP mode: SW3[3:4] = 01 or 1x
     -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
     -  Power on the board
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    - Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of AM64 TRM for boot switch details)
+    - For AM64X GP EVM, SYSBOOT switch settings are SW2[1:8] = 11001010 and  SW3[1:8] = 00000000. Also, the jumper on pin header J23 has to be removed.
+    - Connect USB 2.0 Port on EVM to PC through USB cable
+    - Power on the board
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family')
 
     On host side:
 
@@ -126,6 +154,8 @@ platform that support USB Peripheral boot mode.
 
     This will show the following DFU entities:
 
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
     .. code-block:: text
 
 		Found DFU: [0451:6163] ver=0200, devnum=50, cfg=1, intf=0, path="3-2", alt=1, name="SocId", serial="01.00.00.00"
@@ -133,25 +163,52 @@ platform that support USB Peripheral boot mode.
 
     Send boot images in this order: tiboot3.bin -> sysfw.itb -> tispl.bin -> u-boot.img.
 
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
     .. code-block:: text
 
-	    host$  sudo dfu-util -R -a bootloader -D tiboot3.bin
-	    host$ sudo dfu-util -l
+		Found DFU: [0451:6165] ver=0200, devnum=9, cfg=1, intf=0, path="1-2.2", alt=1, name="SocId", serial="01.00.00.00"
+		Found DFU: [0451:6165] ver=0200, devnum=9, cfg=1, intf=0, path="1-2.2", alt=0, name="bootloader", serial="01.00.00.00"
 
-	    Found DFU: [0451:6163] ver=0224, devnum=51, cfg=1, intf=0, path="3-2", alt=0, name="sysfw.itb", serial="UNKNOWN"
+    Send boot images in this order: tiboot3.bin -> tispl.bin -> u-boot.img
 
-	    host$ sudo dfu-util -R -a sysfw.itb -D sysfw.itb
-	    host$ sudo dfu-util -l
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family')
 
-	    Found DFU: [0451:6163] ver=0224, devnum=52, cfg=1, intf=0, path="3-2", alt=1, name="u-boot.img", serial="UNKNOWN"
-	    Found DFU: [0451:6163] ver=0224, devnum=52, cfg=1, intf=0, path="3-2", alt=0, name="tispl.bin", serial="UNKNOWN"
+    Move to directory containing the images and give the following commands
 
-	    host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
-	    host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    .. code-block:: text
+
+		host$ sudo dfu-util -R -a bootloader -D tiboot3.bin
+		host$ sudo dfu-util -l
+		  Found DFU: [0451:6163] ver=0224, devnum=51, cfg=1, intf=0, path="3-2", alt=0, name="sysfw.itb", serial="UNKNOWN"
+
+		host$ sudo dfu-util -R -a sysfw.itb -D sysfw.itb
+		host$ sudo dfu-util -l
+		  Found DFU: [0451:6163] ver=0224, devnum=52, cfg=1, intf=0, path="3-2", alt=1, name="u-boot.img", serial="UNKNOWN"
+		  Found DFU: [0451:6163] ver=0224, devnum=52, cfg=1, intf=0, path="3-2", alt=0, name="tispl.bin", serial="UNKNOWN"
+
+		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
+		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    .. code-block:: text
+
+		host$ sudo dfu-util -R -a bootloader -D tiboot3.bin
+		host$ sudo dfu-util -l
+		  Found DFU: [0451:6165] ver=0224, devnum=11, cfg=1, intf=0, path="1-2.2", alt=1, name="u-boot.img", serial="UNKNOWN"
+		  Found DFU: [0451:6165] ver=0224, devnum=11, cfg=1, intf=0, path="1-2.2", alt=0, name="tispl.bin", serial="UNKNOWN"
+
+		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
+		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family')
 
     At this point, the board should boot to the U-Boot prompt.
 
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
     .. note::
         This mode is not supported on J721E Rev E2 and earlier boards.
-
-
