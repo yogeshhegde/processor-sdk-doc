@@ -105,11 +105,12 @@ See `Build Options`_ for a list of additional targets.  The MACHINE can be set t
 
         $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
         $ cd tisdk
-        $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
+        $ ./oe-layertool-setup.sh -f configs/core-sdk/core-sdk-<version>-config.txt
         $ cd build
         $ . conf/setenv
-        $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
-        $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
+        $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
+        $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
+
         $ MACHINE=<machine> bitbake tisdk-base-image
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
@@ -198,6 +199,8 @@ The "Build Output" is given relative to the
     +--------------+---------------------------------------------------------------------------------------+
     | am57xx-evm   | AM572x GP EVM, AM572x Industrial Development Kit, AM571x Industrial Development Kit   |
     +--------------+---------------------------------------------------------------------------------------+
+    | am64xx-evm   | AM64x GP EVM, AM64x Starter Kit (SK) EVM                                              |
+    +--------------+---------------------------------------------------------------------------------------+
     | am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
     +--------------+---------------------------------------------------------------------------------------+
     | k2hk-evm     | 66AK2Hx EVM , K2K EVM                                                                 |
@@ -228,6 +231,8 @@ The "Build Output" is given relative to the
     +--------------+---------------------------------------------------------------------------------------+
     | am57xx-evm   | AM572x GP EVM, AM574x Industrial Development Kit,                                     |
     |              | AM572x Industrial Development Kit, AM571x Industrial Development Kit                  |
+    +--------------+---------------------------------------------------------------------------------------+
+    | am64xx-evm   | AM64x GP EVM, AM64x Starter Kit (SK) EVM                                              |
     +--------------+---------------------------------------------------------------------------------------+
     | am65xx-evm   | AM65x Evaluation Module, AM65x Industrial Development Kit, DRA80xM Evaluation Module  |
     +--------------+---------------------------------------------------------------------------------------+
@@ -269,8 +274,8 @@ The "Build Output" is given relative to the
         $ cd ..</span>
         $ cd build
         $ . conf/setenv
-        $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf
-        $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu
+        $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
+        $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
         $ MACHINE=<target-board> bitbake arago-core-tisdk-bundle
 
 .. _building-the-sdk-recipes:
