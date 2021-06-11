@@ -5,7 +5,7 @@ Create SD Card
 ==============
 
 .. note::
-  You will need an SD Card and an SD Card Reader.
+  You will need a micro-SD Card (16GB or larger) and an SD Card Reader.
 
 .. _am64x-create-sd-card-with-default-images:
 
