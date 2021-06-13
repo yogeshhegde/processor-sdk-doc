@@ -14,8 +14,9 @@ of the Processor SDK for Linux.
 Processor SDK 07.xx Releases
 ============================
 
-Processor SDK 07.01.00
+Processor SDK 07.03.00
 ----------------------
+- 2020 LTS Update release, with new versions of Kernel, U-boot, toolchain and Yocto. Please see :ref:`release-specific-sdk-components-versions`.
 - Linux HSR, PRP driver. The source directory is now net/hsr instead of
   net/hsr-prp and all source files are prefixed as originally with hsr
   prefix instead of hsr_prp. Consequently CONFIG_HSR_PRP is changed to
