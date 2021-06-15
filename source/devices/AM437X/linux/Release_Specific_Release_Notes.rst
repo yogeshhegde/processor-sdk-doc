@@ -206,6 +206,7 @@ SDK Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 25, 30, 50, 600
 
+   SITSW-428,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Matrix demo is not running by default","Restart the Matrix demo manually after boot"
    LCPD-20673,"am43xx-gpevm","packaging: ipsec: command not found",""
    LCPD-19858,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am64xx-evm,am64xx-vlab,am64xx-zebu,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm","OE: OPTEE label used in SDK is old and wrong",""
    LCPD-19279,"am335x-evm,am43xx-gpevm","openssl_perf.sh functionality to be included in rootfs (decouple from matrixgui)",""
