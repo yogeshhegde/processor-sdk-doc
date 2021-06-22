@@ -14,3 +14,4 @@ Linux
    /linux/Foundational_Components_Machine_Learning
    /linux/Foundational_Components_ATF
    /linux/Foundational_Components_OPTEE
+   /linux/Foundational_Components_PRU-ICSS_PRU_ICSSG

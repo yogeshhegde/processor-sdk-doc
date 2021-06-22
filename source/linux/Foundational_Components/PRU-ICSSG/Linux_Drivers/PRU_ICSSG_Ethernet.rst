@@ -2,6 +2,9 @@
 PRU_ICSSG Ethernet
 ******************
 
+.. contents:: :local:
+    :depth: 3
+
 Introduction
 ############
 
@@ -11,31 +14,26 @@ Driver is developed complying to Linux Driver model and implements netdev and NA
 
 One of the key difference in the driver implementation compared to PRU-ICSS driver is the use of UDMA driver interface and ring accelerator driver available on Keystone III SoC to send/receive frames between ARM Host processor and PRU_ICSSG. This allows for efficient moving of data and is more efficient than the shared memory transport used in PRU-ICSS.
 
-Boards Supported
-################
+Supported platforms
+###################
 
-.. rubric:: `AM65x evaluation module
-   (EVM) <http://www.ti.com/tool/TMDX654GPEVM>`__
++-----------+-------------------------------+
+| SoC       | Number of external ports      |
++===========+===============================+
+| AM65X     | 3 x ICSSG, 6 Ports max        |
++-----------+-------------------------------+
+| AM64X     | 2 x ICSSG, 4 Ports max        |
++-----------+-------------------------------+
 
-The AM65x Evaluation Module provides a platform to quickly start evaluation of Sitara™ Arm® Cortex®-A53 AM65x Processors (AM6548, AM6546, AM6528, AM6527, AM6526) and accelerate development for HMI, networking, patient monitoring, and other industrial applications. It is a development platform based on the quad core Cortex-A53, dual Cortex-R5F processor that is integrated with ample connectivity such as PCIe, USB 3.0/2.0, Gigabit Ethernet,  PRU_ICSSG Ethernet, etc.
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-On this platform one CPSW Ethernet port and two ICSSG2 Ethernet ports are available for use.
+  .. include:: AM65X_PRU_ICSSG_boards.rst
 
-.. Image:: /images/Am65x_GP_EVM.jpg
-
-.. rubric:: `AM65x industrial development kit
-   (IDK) <http://www.ti.com/tool/TMDX654IDKEVM>`__
-
-The AM65x Industrial Development Kit (IDK) is a development platform for evaluating the industrial communication and control capabilities of Sitara AM65x processors for applications in factory automation, drives, robotics, grid infrastructure, and more. AM65x processors include three PRU_ICSSG (Programmable Real-time Unit for Industrial Communications) sub-systems which can be used for gigabit industrial Ethernet protocols such as Profinet, EtherCAT, Ethernet/IP, and others.
-
-On this platform one CPSW Ethernet port and two ICSSG2 Ethernet ports are available on the baseboard and 4 Ethernet ports, 2 each of ICSSG0 and ICSSG1 are available on the IDK application module.
-
-.. Image:: /images/Am65x_idk.jpg
 
 Features supported
 ##################
 
-- Two 1G/100M Full-Duplex Ethernet ports on AM65x GP EVM (six ports on AM65x IDK) - 10M link speed is not supported, Half-Duplex is not supported.
+- 1G/100M/10M Full-Duplex Ethernet ports, Half-Duplex is not supported.
 - Multiple TX queues (upto 4), single RX queue.
 - VLAN
 - PTP Ordinary clock
@@ -47,65 +45,28 @@ Driver Configuration
 ####################
 
 The TI Processor SDK has ICSSG driver enabled by default on supported platforms.
-
-To enable/disable Networking support manually, start the *Linux Kernel Configuration*
-tool:
-
-::
-
-    $ make ARCH=arm64 menuconfig
-
-| Select *Device Drivers* from the main menu ->
-| Select *SOC (System On Chip) specific Drivers* ->
-| Select *TI SOC drivers support (SOC_TI [=y])* ->
-| Select options as shown here:
-
-::
-
-       ...
-       <M>   TI PRU-ICSS Subsystem Platform drivers
-       ...
-
-| Select *Device Drivers* from the main menu ->
-| Select *Remoteproc drivers* ->
-| Select options as shown here:
-
-::
-
-       ...
-       [*] Support for Remote Processor subsystem
-       <M>   TI PRU remoteproc support
-       ...
-
-| Select *Device Drivers* from the main menu ->
-| Select *Network device support* ->
-| Select *Ethernet driver support* ->
-| Select options as shown here:
-
-::
-
-       ...
-       [*]   Texas Instruments (TI) devices
-       ...
-       <M>     TI Gigabit PRU Ethernet driver
-       ...
-
-Kernel Kconfig options:
+In case of custom builds, please ensure following configs are enabled.
 
 ::
 
     CONFIG_TI_PRUSS
     CONFIG_REMOTEPROC
     CONFIG_PRU_REMOTEPROC
+    CONFIG_TI_PRUSS_INTC
     CONFIG_TI_DAVINCI_MDIO
+    CONFIG_TI_ICSS_IEP
     CONFIG_TI_ICSSG_PRUETH
+
+.. rubric:: **Module Build**
+
+Module build for the ICSSG driver is supported. To do this, use option 'm' for above configs, where applicable.
 
 Device tree bindings
 ####################
 
 The DT bindings description can be found at:
 
-| `Documentation/devicetree/bindings/net/ti,icssg-prueth.txt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,icssg-prueth.txt?h=ti-linux-5.4.y>`__
+| `Documentation/devicetree/bindings/net/ti,icssg-prueth.txt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,icssg-prueth.txt?h=ti-linux-5.10.y>`__
 |
 
 User guide
@@ -125,18 +86,20 @@ The network interface can be configured automatically depending on root file sys
 
     ifconfig eth1 <ip> netmask <mask> up
 
+|
+
 Get information (ethtool)
 *************************
 
-.. rubric:: Get driver information
-   :name: icssg-ethtool-i
+Get driver information
+^^^^^^^^^^^^^^^^^^^^^^
 
-The interface can be identified by using ``ethtool -i|--driver`` command.
+The interface can be identified by using ``ethtool -i|--driver DEVNAME`` command.
 It also provides some information about supported features.
 
 ::
 
-	root@am65xx-evm:~# ethtool -i eth1
+	~# ethtool -i eth1
 	driver: icssg-prueth
 	version: 
 	firmware-version: 
@@ -148,12 +111,14 @@ It also provides some information about supported features.
 	supports-register-dump: no
 	supports-priv-flags: no
 
-.. rubric:: ethtool - Display standard information about device/link
-   :name: icssg-ethtool-info
+Display standard information about device/link
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Run ``ethtool DEVNAME`` command without parameters.
 
 ::
 
-	root@am65xx-evm:~# ethtool eth1
+	~# ethtool eth1
 	Settings for eth1:
 		Supported ports: [ TP MII ]
 		Supported link modes:   100baseT/Full 
@@ -181,6 +146,148 @@ It also provides some information about supported features.
 		Current message level: 0x00007fff (32767)
 				       drv probe link timer ifdown ifup rx_err tx_err tx_queued intr tx_done rx_status pktdata hw wol
 		Link detected: yes
+
+Display time stamping capabilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The interface time stamping capabilities can be retrieved by using  ``ethtool -T|--show-time-stamping DEVNAME`` command.
+
+::
+
+   ethtool -T eth2
+   Time stamping parameters for eth2:
+   Capabilities:
+        hardware-transmit     (SOF_TIMESTAMPING_TX_HARDWARE)
+        software-transmit     (SOF_TIMESTAMPING_TX_SOFTWARE)
+        hardware-receive      (SOF_TIMESTAMPING_RX_HARDWARE)
+        software-receive      (SOF_TIMESTAMPING_RX_SOFTWARE)
+        software-system-clock (SOF_TIMESTAMPING_SOFTWARE)
+        hardware-raw-clock    (SOF_TIMESTAMPING_RAW_HARDWARE)
+   PTP Hardware Clock: 2
+   Hardware Transmit Timestamp Modes:
+        off                   (HWTSTAMP_TX_OFF)
+        on                    (HWTSTAMP_TX_ON)
+   Hardware Receive Filter Modes:
+        none                  (HWTSTAMP_FILTER_NONE)
+        all                   (HWTSTAMP_FILTER_ALL)
+
+Show permanent hardware address
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The interface permanent hardware address can be retrieved by using ``ethtool -P|--show-permaddr DEVNAME`` command.
+
+::
+
+   ~# ethtool -P eth1
+   Permanent address: 70:ff:76:1d:5c:64
+
+Query Channels information
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The interface DMA Channels information can be retrieved by using ``ethtool-l|--show-channels DEVNAME`` command.
+
+::
+
+   # ethtool -l eth1
+   Channel parameters for eth1:
+   Pre-set maximums:
+   RX:             1
+   TX:             4
+   Other:          0
+   Combined:       0
+   Current hardware settings:
+   RX:             1
+   TX:             1
+   Other:          0
+   Combined:       0
+
+Show adapter statistics
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The interface statistics can be retrieved by using ``ethtool -S|--statistics DEVNAME`` command.
+It displays statistic for the ethernet port.
+
+::
+
+   # ethtool -S eth1
+   NIC statistics:
+        rx_good_frames: 53
+        rx_broadcast_frames: 1
+        rx_multicast_frames: 53
+        rx_crc_error_frames: 0
+        rx_mii_error_frames: 0
+        rx_odd_nibble_frames: 0
+        rx_frame_max_size: 2000
+        rx_max_size_error_frames: 0
+        rx_frame_min_size: 64
+        rx_min_size_error_frames: 11
+        rx_overrun_frames: 0
+        rx_class0_hits: 64
+        rx_class1_hits: 0
+        rx_class2_hits: 0
+        rx_class3_hits: 0
+        rx_class4_hits: 0
+        rx_class5_hits: 0
+        rx_class6_hits: 0
+        rx_class7_hits: 0
+        rx_class8_hits: 0
+        rx_class9_hits: 0
+        rx_class10_hits: 0
+        rx_class11_hits: 0
+        rx_class12_hits: 0
+        rx_class13_hits: 0
+        rx_class14_hits: 0
+        rx_class15_hits: 0
+        rx_smd_frags: 0
+        rx_bucket1_size: 64
+        rx_bucket2_size: 128
+        rx_bucket3_size: 256
+        rx_bucket4_size: 512
+        rx_64B_frames: 2
+        rx_bucket1_frames: 13
+        rx_bucket2_frames: 30
+        rx_bucket3_frames: 20
+        rx_bucket4_frames: 1
+        rx_bucket5_frames: 0
+        rx_total_bytes: 7864
+        rx_tx_total_bytes: 24165
+        tx_good_frames: 98
+        tx_broadcast_frames: 0
+        tx_multicast_frames: 98
+        tx_odd_nibble_frames: 0
+        tx_underflow_errors: 0
+        tx_frame_max_size: 2000
+        tx_max_size_error_frames: 0
+        tx_frame_min_size: 64
+        tx_min_size_error_frames: 0
+        tx_bucket1_size: 64
+        tx_bucket2_size: 128
+        tx_bucket3_size: 256
+        tx_bucket4_size: 512
+        tx_64B_frames: 0
+        tx_bucket1_frames: 0
+        tx_bucket2_frames: 68
+        tx_bucket3_frames: 21
+        tx_bucket4_frames: 9
+        tx_bucket5_frames: 0
+        tx_total_bytes: 12479
+
+Show EEE settings
+^^^^^^^^^^^^^^^^^
+
+The interface EEE settings can be retrieved by using ``ethtool --show-eee DEVNAME`` command.
+
+::
+
+   ethtool --show-eee eth1
+   EEE Settings for eth1:
+      EEE status: disabled
+      Tx LPI: disabled
+      Supported EEE link modes:  100baseT/Full
+                  1000baseT/Full
+      Advertised EEE link modes:  Not reported
+      Link partner advertised EEE link modes:  100baseT/Full
+                      1000baseT/Full
 
 
 VLAN Config
@@ -227,7 +334,7 @@ like eth1.5, below is an example how it check the vlan interface
     ifconfig eth1.5 10.0.0.5
     ....
 
-    root@am65xx-evm:~# ifconfig eth1.5         
+    ~# ifconfig eth1.5
     eth1.5    Link encap:Ethernet  HWaddr 70:FF:76:1D:5C:64  
               inet addr:10.0.0.5  Bcast:10.255.255.255  Mask:255.0.0.0
               inet6 addr: fe80::72ff:76ff:fe1d:5c64/64 Scope:Link
@@ -306,23 +413,16 @@ socket ioctl SIOCADDMULTI/SIOCDELMULTI.
 
     # ip maddr del 01:00:5e:00:00:05 dev eth1
 
-| 
+|
 
-Other ethtool commands
-**********************
+Configure interface (ethtool)
+*****************************
 
-.. rubric:: ``ethtool -P|--show-permaddr DEVNAME`` Show permanent hardware
-   address
-   :name: icssg-ethtool-show-permaddr
+Change generic options
+^^^^^^^^^^^^^^^^^^^^^^
 
-::
-
-	~# ethtool -P eth1
-	Permanent address: 70:ff:76:1d:5c:64
-
-
-.. rubric:: ``ethtool -s|--change DEVNAME`` Change generic options
-   :name: icssg-ethtool-change-generic-options
+The interface generic options can be configured by using ``ethtool -s|--change DEVNAME`` command.
+The main purpose of this command is to configure physical link settings (PHY) like speed, duplex, auto-negotiation.
 
 Below commands will be redirected to the phy driver:
 
@@ -340,6 +440,8 @@ Below commands will be redirected to the phy driver:
     ICSSG Ethernet driver does not perform any kind of WOL specific actions or
     configurations.
 
+Below is an example of forcing link speed to 100M and duplexity to full:
+
 ::
 
 	# ethtool -s eth1 duplex full speed 100
@@ -347,8 +449,10 @@ Below commands will be redirected to the phy driver:
 	[   78.592924] icssg-prueth pruss2_eth eth1: Link is Up - 100Mbps/Full - flow control off
 
 
-.. rubric:: ``ethtool -r|--negotiate DEVNAME`` Restart N-WAY negotiation
-   :name: icssg-ethtool-restart-n-way-negotiation
+Restart N-WAY (PHY) negotiation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The interface PHY auto-negotiation can be restarted by using ``ethtool -r|--negotiate DEVNAME`` command.
 
 ::
 
@@ -356,154 +460,25 @@ Below commands will be redirected to the phy driver:
 	[  273.151655] icssg-prueth pruss2_eth eth1: Link is Down
 	[  276.225423] icssg-prueth pruss2_eth eth1: Link is Up - 1Gbps/Full - flow control off
 
+Set Channels parameters
+^^^^^^^^^^^^^^^^^^^^^^^
 
-.. rubric:: ``ethtool-l|--show-channels DEVNAME`` Query Channels
-   :name: icssg-ethtool-query-channels
-
-::
-
-	# ethtool -l eth1
-	Channel parameters for eth1:
-	Pre-set maximums:
-	RX:             1
-	TX:             4
-	Other:          0
-	Combined:       0
-	Current hardware settings:
-	RX:             1
-	TX:             1
-	Other:          0
-	Combined:       0
-
-
-.. rubric:: ``ethtool -L\|--set-channels DEVNAME`` Set Channels.
-   :name: icssg-ethtool--l--set-channels
-
-Allows to control number of TX channels driver is allowed to work with at DMA level. The maximum number of TX channels is 4.
+The interface DMA channels parameters can be set by using ``ethtool -L\|--set-channels DEVNAME`` command.
+It allows to control number of TX channels driver is allowed to work with at DMA level. The maximum number of TX channels is 4.
 Supported options ``[ tx N ]``:
 
 ::
 
       # ethtool -L eth1 tx 4
 
-.. rubric:: ``ethtool -S|--statistics DEVNAME`` Show adapter statistics
-   :name: icssg-ethtool-show-adapter-statistics
-
-"ethtool -S" command displays statistic for the ethernet port.
-
-::
-
-	# ethtool -S eth1
-	NIC statistics:
-	     rx_good_frames: 53
-	     rx_broadcast_frames: 1
-	     rx_multicast_frames: 53
-	     rx_crc_error_frames: 0
-	     rx_mii_error_frames: 0
-	     rx_odd_nibble_frames: 0
-	     rx_frame_max_size: 2000
-	     rx_max_size_error_frames: 0
-	     rx_frame_min_size: 64
-	     rx_min_size_error_frames: 11
-	     rx_overrun_frames: 0
-	     rx_class0_hits: 64
-	     rx_class1_hits: 0
-	     rx_class2_hits: 0
-	     rx_class3_hits: 0
-	     rx_class4_hits: 0
-	     rx_class5_hits: 0
-	     rx_class6_hits: 0
-	     rx_class7_hits: 0
-	     rx_class8_hits: 0
-	     rx_class9_hits: 0
-	     rx_class10_hits: 0
-	     rx_class11_hits: 0
-	     rx_class12_hits: 0
-	     rx_class13_hits: 0
-	     rx_class14_hits: 0
-	     rx_class15_hits: 0
-	     rx_smd_frags: 0
-	     rx_bucket1_size: 64
-	     rx_bucket2_size: 128
-	     rx_bucket3_size: 256
-	     rx_bucket4_size: 512
-	     rx_64B_frames: 2
-	     rx_bucket1_frames: 13
-	     rx_bucket2_frames: 30
-	     rx_bucket3_frames: 20
-	     rx_bucket4_frames: 1
-	     rx_bucket5_frames: 0
-	     rx_total_bytes: 7864
-	     rx_tx_total_bytes: 24165
-	     tx_good_frames: 98
-	     tx_broadcast_frames: 0
-	     tx_multicast_frames: 98
-	     tx_odd_nibble_frames: 0
-	     tx_underflow_errors: 0
-	     tx_frame_max_size: 2000
-	     tx_max_size_error_frames: 0
-	     tx_frame_min_size: 64
-	     tx_min_size_error_frames: 0
-	     tx_bucket1_size: 64
-	     tx_bucket2_size: 128
-	     tx_bucket3_size: 256
-	     tx_bucket4_size: 512
-	     tx_64B_frames: 0
-	     tx_bucket1_frames: 0
-	     tx_bucket2_frames: 68
-	     tx_bucket3_frames: 21
-	     tx_bucket4_frames: 9
-	     tx_bucket5_frames: 0
-	     tx_total_bytes: 12479
-
-
-.. rubric:: ``ethtool -T|--show-time-stamping DEVNAME`` Show time stamping
-   capabilities.
-   :name: icssg-ethtool-show-time-stamping-capabilities.
-
-::
-
-	# ethtool -T eth1
-	Time stamping parameters for eth1:
-	Capabilities:
-		hardware-transmit     (SOF_TIMESTAMPING_TX_HARDWARE)
-		software-transmit     (SOF_TIMESTAMPING_TX_SOFTWARE)
-		hardware-receive      (SOF_TIMESTAMPING_RX_HARDWARE)
-		software-receive      (SOF_TIMESTAMPING_RX_SOFTWARE)
-		software-system-clock (SOF_TIMESTAMPING_SOFTWARE)
-		hardware-raw-clock    (SOF_TIMESTAMPING_RAW_HARDWARE)
-	PTP Hardware Clock: 2
-	Hardware Transmit Timestamp Modes:
-		off                   (HWTSTAMP_TX_OFF)
-		on                    (HWTSTAMP_TX_ON)
-	Hardware Receive Filter Modes:
-		none                  (HWTSTAMP_FILTER_NONE)
-		all                   (HWTSTAMP_FILTER_ALL)
-
-
-.. rubric:: ``ethtool --show-eee DEVNAME`` Show EEE settings
-   :name: icssg-ethtool-show-eee-settings
-
-::
-
-	ethtool --show-eee eth1
-	EEE Settings for eth1:
-		EEE status: disabled
-		Tx LPI: disabled
-		Supported EEE link modes:  100baseT/Full 
-					   1000baseT/Full 
-		Advertised EEE link modes:  Not reported
-		Link partner advertised EEE link modes:  100baseT/Full 
-							 1000baseT/Full 
-
+|
 
 PTP Ordinary Clock
 ******************
 
-The PRU Ethernet & IEP drivers implement the Linux PTP hardware clock
-subsystem APIs, the PRU-ICSS PTP clock can therefore be adjusted by
+The PRU Ethernet & IEP drivers implement the Linux PTP hardware clock subsystem APIs, the PRU-ICSS PTP clock can therefore be adjusted by
 using those standard APIs. See `PTP hardware clock infrastructure for
-Linux <https://www.kernel.org/doc/Documentation/ptp/ptp.txt#>`__ for
+Linux <https://www.kernel.org/doc/html/latest/driver-api/ptp.html?highlight=ptp#ptp-hardware-clock-infrastructure-for-linux>`__ for
 more details.
 
 The PTP Ordinary Clock (OC) implementation is provided by the linuxptp application.
@@ -528,7 +503,7 @@ Example oc.cfg for OC,
     delay_mechanism P2P
     network_transport L2
 
-where **eth1** is the intended PRU-ICSS Ethernet port over which the OC
+where **eth1** is the intended PRU-ICSSG Ethernet port over which the OC
 functionality is provided.
 
 See `The Linux PTP Project <http://linuxptp.sourceforge.net#>`__ for
@@ -585,7 +560,7 @@ They are available at LEDs LD2 and LD5 respectively.
 
 PPS can be tested using `testptp.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/tools/testing/selftests/ptp/testptp.c>`__ tool.
 
-To find out the PTP device number i.e. PTP Hardware Clock, use ``ethtool -T <devname>``
+To find out the PTP device number i.e. PTP Hardware Clock, use ``ethtool -T DEVNAME``
 
 .. note:: For PPS to work, the firmware needs to be running so the ICSSG network interface must be brought up.
 
