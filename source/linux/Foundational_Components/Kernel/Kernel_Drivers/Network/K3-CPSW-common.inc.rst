@@ -747,8 +747,11 @@ Then execute::
 .. rubric:: PPS Pulse Per Second support
    :name: k3-cpts-pps-support
 
-By default, PPS support for |__PART_FAMILY_DEVICE_NAMES__| is implemented and enabled in TI SDK by wiring
-GENF1 output to HW3_TS_PUSH_EN input::
+The default PPS support for |__PART_FAMILY_DEVICE_NAMES__| depends on TI SCI system firmware configuration which may put timesync_router IO space under firewall in which case the Linux can not configure timesync_router.
+In such case, the timesync_router has to be configured from Core for which timesync_router IO space access is allowed and Linux DT should provide CPTS "ti,pps" property configuration.
+
+The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled by adding below changes to the board DT file to
+route CPSWxG CPTS GENF1 output to HW3_TS_PUSH_EN input, for example::
 
        k3-am654-base-board.dts
        #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x80000000 | val)
@@ -772,6 +775,11 @@ GENF1 output to HW3_TS_PUSH_EN input::
                      ti,pps = <3 1>;
               };
        };
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+ The PPS support for |__PART_FAMILY_DEVICE_NAMES__| is enabled in TI SDK by default.
 
 Once enabled, PPS can be tested using testptp and ppstest tools::
 
