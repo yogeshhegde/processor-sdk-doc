@@ -65,9 +65,9 @@ Device tree bindings
 
 The DT bindings description can be found at:
 
-|   `Documentation/devicetree/bindings/net/ti,am654-cpsw-nuss.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.4.y/Documentation/devicetree/bindings/net/ti,am654-cpsw-nuss.txt>`__
+|   `Documentation/devicetree/bindings/net/ti,k3-am654-cpsw-nuss.yaml <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.10.y/Documentation/devicetree/bindings/net/ti,k3-am654-cpsw-nuss.yaml>`__
 
-|   `Documentation/devicetree/bindings/net/ti,am654-cpts.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.4.y/Documentation/devicetree/bindings/net/ti,am654-cpts.txt>`__
+|   `Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.10.y/Documentation/devicetree/bindings/net/ti,k3-am654-cpts.yaml>`__
 |
 
 MAC mode
