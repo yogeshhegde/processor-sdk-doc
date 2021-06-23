@@ -34,12 +34,19 @@ Features supported
 ##################
 
 - 1G/100M/10M Full-Duplex Ethernet ports, Half-Duplex is not supported.
+- RGMII mode with TX delay (configured in DTS). RX delay is not supported and
+  has to be provided by PHY.
 - Multiple TX queues (upto 4), single RX queue.
-- VLAN
 - PTP Ordinary clock
 - PPS Out
-- Promiscuous mode, All-multi mode
-- RGMII mode with RX delay (configured in DTS)
+- Promiscuous mode
+
+.. rubric:: **Features not supported**
+
+- VLAN HW filtering
+- All-multi mode is always enabled
+- Multi-cast HW filtering
+
 
 Driver Configuration
 ####################
@@ -481,6 +488,9 @@ using those standard APIs. See `PTP hardware clock infrastructure for
 Linux <https://www.kernel.org/doc/html/latest/driver-api/ptp.html?highlight=ptp#ptp-hardware-clock-infrastructure-for-linux>`__ for
 more details.
 
+The IEP0 is used by PRU Ethernet driver and Firmware PTP hardware clock and shared between PRU Ethernet ports.
+The IEP1 is used for Firmware purposes.
+
 The PTP Ordinary Clock (OC) implementation is provided by the linuxptp application.
 
 ::
@@ -553,7 +563,7 @@ PTP/OC in slave mode:
 |
 
 PPS Pulse Per Second support
-****************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 PPS hardware pin is available only on the IDK application card i.e. ICSSG0 port 0 and ICSSG1 port 1.
 They are available at LEDs LD2 and LD5 respectively.
