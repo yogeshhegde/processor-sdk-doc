@@ -228,11 +228,19 @@ Building the SBL
 
 To build the SBL components:
 
-#. **cd <PDK>/packages/ti/board/diag**
-#. **make all BOARD=<BOARD_NAME> SOC=<SOC_NAME> BOOTMODE=<BOOTMEDIA>**
+#. **cd <PDK>/packages**
+#. **Run pdksetupenv script**
+#. **make all -C ti/boot/sbl BOARD=<BOARD_NAME> SOC=<SOC_NAME> BOOTMODE=<BOOTMEDIA>**
 
 -  BOARD_NAME : idkAM572x, idkAM571x, evmAM572x, idkAM574x
 -  SOC_NAME : AM572x, AM571x, AM574x
+
+SBL can be built for all the AM57x platforms using below command
+
+#. **cd <PDK>/packages**
+#. **Run pdksetupenv script**
+#. **cd <PDK>/packages/ti/boot/sbl**
+#. **make all_sbl_images SBL_PLATFORM=am57xx**
 
 This will make the SBL for a specific $BOARD and $BOOT_MEDIA. Output
 files will be located in: **<PDK>/packages/ti/boot/sbl/binary/<BOARD>**

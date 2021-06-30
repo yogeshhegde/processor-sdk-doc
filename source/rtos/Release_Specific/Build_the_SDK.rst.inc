@@ -199,7 +199,7 @@ Windows
 
 ::
 
-     C:\ti\processor_sdk_rtos_[soc]_[version]> gmake -j4
+     C:\ti\processor_sdk_rtos_[soc]_[version]> gmake all -j4
 
 -  Clean all
 
@@ -214,7 +214,7 @@ Linux
 
 ::
 
-     ~/ti/processor_sdk_rtos_[soc]_[version]$ make -j4
+     ~/ti/processor_sdk_rtos_[soc]_[version]$ make all -j4
 
 -  Clean all
 

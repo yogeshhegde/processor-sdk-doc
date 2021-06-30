@@ -58,9 +58,8 @@ can just ignore it and just continue without scanning.
 
 This example acts like a USB - MMCSD card reader. The example exposes
 the EVM's MMCSD card to the Host PC via USB MSC. The Host PC can
-manipulate files on the attached MMCSD card on the EVM. This example is
-currently supported on AM335GP EVM. This is how it looks. Its code is
-similar to that of the USB device MSC example but with the call back
+manipulate files on the attached MMCSD card on the EVM. This is how it looks.
+Its code is similar to that of the USB device MSC example but with the call back
 functions calling MMCSD API's instead of RamDisk APIs
 
 .. Image:: ../images/Usb_device_mmcsd.PNG
@@ -196,6 +195,10 @@ core interrupts.
 After these steps, application code then can expect to have USB
 enumeration done and start USB transfer through the provided APIs.
 
+Then handle reset function is called for the reconnecting of usb ,
+and Usb_close() is called to disconnect the handle and it is called in 
+USB device bulk application.
+
 API Call Flow
 ^^^^^^^^^^^^^
 
@@ -289,11 +292,18 @@ for how to create and build examples projects
 +=======================+=======================+=======================+
 | **USB_DevMsc_mmcsd**  | AM335GP EVM,          | eMMC is used on AM572 |
 |                       | BeagleBoneBlack,      | and BealgeBoneBlack   |
-|                       | AM572 EVM             | examples              |
+|                       | AM572 EVM,            | examples              |
 |                       |                       | This example can be   |
 |                       |                       | used to format eMMC,  |
 |                       |                       | just like any other   |
 |                       |                       | USB storage device    |
++-----------------------+-----------------------+-----------------------+
+| **USB_DevMsc_mmcsd**  | AM572xIDK,            | SD card is used as    |
+|                       | AM574IDK,             | storage media for     |
+|                       | AM571IDK              | USB MSC application   |
+|                       |                       | Insert a SD card into |
+|                       |                       | the board while       |
+|                       |                       | running the example.  |
 +-----------------------+-----------------------+-----------------------+
 | **USB_DevMsc**        | AM335GP, AM437xGP,    | OMAPL13 LCDK host and |
 |                       | OMAP137EVM,           | device examples share |
@@ -318,12 +328,12 @@ for how to create and build examples projects
 |                       |                       | the Demo sections     |
 |                       |                       | below                 |
 +-----------------------+-----------------------+-----------------------+
-| **USB_DevBulk**       | AM335xGP, AM437xGP,   |                       |
-|                       | AM572xIDK, AM571xIDK, |                       |
-|                       | AM574xIDK, K2GEVM,    |                       |
-|                       | OMAPL137EVM,          |                       |
-|                       | OMAP138LCDK,          |                       |
-|                       | AM654x EVM/IDK        |                       |
+| **USB_DevBulk**       | AM335xGP, AM437xGP,   | Verifies USB device   |
+|                       | AM572xIDK, AM571xIDK, | operation in bulk mode|
+|                       | AM574xIDK, K2GEVM,    | Host trasactions are  |
+|                       | OMAPL137EVM,          | invoked using Python  |
+|                       | OMAP138LCDK,          | scripts provided as   |
+|                       | AM654x EVM/IDK        | part of the example.  |
 |                       |                       |                       |
 +-----------------------+-----------------------+-----------------------+
 
