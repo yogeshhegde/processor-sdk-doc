@@ -62,15 +62,15 @@ with the following commands
 
 ::
 
-    cd  C:\ti\pdk_[soc]_[version]\packages\ti\drv\<component>
-    C:\ti\pdk_[soc]_[version]\packages>gmake clean
-    C:\ti\pdk_[soc]_[version]\packages>gmake all
+    cd  C:\ti\pdk_[soc]_[version]\packages\ti\<component>
+    C:\ti\pdk_[soc]_[version]\packages\ti\<component>gmake clean
+    C:\ti\pdk_[soc]_[version]\packages\ti\<component>gmake all
 
     Example:
 
     cd C:\ti\pdk_[soc]_[version]\packages\ti\drv\i2c
-    C:\ti\pdk_[soc]_[version]\packages>gmake clean
-    C:\ti\pdk_[soc]_[version]\packages>gmake all
+    C:\ti\pdk_[soc]_[version]\packages\ti\drv\i2c>gmake clean
+    C:\ti\pdk_[soc]_[version]\packages\ti\drv\i2c>gmake all
 
 Please note that parallel make (-j4) is not supported within individual 
 PDK components. It is supported only at the top level (C:\\ti\\pdk_[soc]_[version]\\packages)
@@ -156,13 +156,13 @@ Individual PDK components can be cleaned and rebuilt from within the components'
 ::
 
     cd ~/ti/pdk_[soc]_[version]/packages/ti/drv/<component>
-    ~/ti/pdk_[soc]_[version]/packages$ make clean
-    ~/ti/pdk_[soc]_[version]/packages$ make all
+    ~/ti/pdk_[soc]_[version]/packages/ti/<component>$ make clean
+    ~/ti/pdk_[soc]_[version]/packages/ti/<component>$ make all
 
     Example:
     cd ~/ti/pdk_[soc]_[version]/packages/ti/drv/i2c
-    ~/ti/pdk_[soc]_[version]/packages$ make clean
-    ~/ti/pdk_[soc]_[version]/packages$ make all
+    ~/ti/pdk_[soc]_[version]/packages/ti/drv/i2c$ make clean
+    ~/ti/pdk_[soc]_[version]/packages/ti/drv/i2c$ make all
 
 Please note that parallel make (-j) is not supported within individual 
 PDK components. It is supported only at the top level (~/ti/pdk_[soc]_[version]/packages)
@@ -276,6 +276,7 @@ how the scripts are used to create CCS project content.
    -  When soc is "AM572x" and board is "all", the script uses evmAM572x as
       the default platform. Please specify board to idkAM572x to create the
       project for AM572x IDK EVM.
+   -  Run the pdksetupenv script to setup the PDK and SDK path variables
    -  Run the pdkProjectCreate script. The script takes parameters which
       allow targeted creation of PDK example and test project content.
       Below are the command formats for Window's pdkProjectCreate.bat and
