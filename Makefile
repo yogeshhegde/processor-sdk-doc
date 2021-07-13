@@ -60,7 +60,6 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
-	rm -f build/conf.py
 	rm -f ${CONFDIR}/replacevars.rst.inc
 
 config:
