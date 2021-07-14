@@ -12,7 +12,7 @@ core foundation and building blocks that facilitate application software
 development on TI's embedded processors. This *Release Notes* focuses on
 the Real-time operating system (RTOS).
 
-| 
+|
 
 Licensing
 ===========
@@ -22,7 +22,7 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as
 indicated below.
 
-| 
+|
 
 Documentation
 ===============
@@ -46,7 +46,7 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-| 
+|
 
 Processor SDK v06.03.02
 ========================
@@ -70,11 +70,11 @@ Released July 2021
        - Bug fixes
     - MMCSD driver
        - Added support for different timeout errors
-       - Bug fixes 
+       - Bug fixes
     - PRU Firmware
        - Added version details
        - Dual EMAC firmware memory map update
-    
+
 .. _release-notes-component-version:
 
 .. rubric::  Component Version
@@ -85,7 +85,7 @@ SDK installer. See the :ref:`Software Developer Guide <Index-Processor-SDK-RTOS-
 more information on each item.
 
 .. note::
-   | This release has been tested with the following component and tool versions. It is recommended to use the versions listed here to avoid compatibility issues. 
+   | This release has been tested with the following component and tool versions. It is recommended to use the versions listed here to avoid compatibility issues.
 
 +-------------+------------+------+------+------+------+-------+------+------+------+------+------+---------+---------+
 |  Component  |   Version  |AM335x|AM437x|AM57x |AM65x |K2H/K2K| K2E  | K2L  | K2G  |C665x |C667x |OMAP-L137|OMAP-L138|
@@ -171,7 +171,7 @@ in the *Getting Started Guide* for options to select for Processor-SDK.
 
 
 
-Fixed Issues 
+Fixed Issues
 ==============
 
 
@@ -195,7 +195,7 @@ Fixed Issues
     | PDK-10277                                                      | NIMU CCLink test failure on M4 core                                                                                   | NIMU              | 6.03.00              | am571x-idk, am572x-idk, am574x-idk                |
     +----------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+-------------------+----------------------+---------------------------------------------------+
 
-Known Issues 
+Known Issues
 ==============
 
 This section contains the list of known issues at the time of making the
@@ -217,23 +217,23 @@ release and any known workaround.
 +----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------+-----------------------+------------------------------------------------------+----------------------------------------------------------------+-------------------------------------------------------+
 | `PDK-10282 <https://sir.ext.ti.com/jira/browse/EXTSYNC-2972>`_ | CSL timer example hang on DSP core while configuring timer instance 32                            | CSL examples      | 6.03.02               |  am571x-idk, am572x-evm, am572x-idk, am574x-idk      | CSL timer test hang                                            | None                                                  |
 +----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------+-----------------------+------------------------------------------------------+----------------------------------------------------------------+-------------------------------------------------------+
-| PDK-10302                                                      | Prebuilt SD images are not included in AM57x processor SDK demos package                          | Demos             | 6.03.02               |  am571x-idk, am572x-evm, am572x-idk, am574x-idk      | No prebuilt images                                             | Generate the diagnostic test binaries by following    |
+| `PDK-10302 <https://sir.ext.ti.com/jira/browse/EXT_EP-10456>`_ | Prebuilt SD images are not included in AM57x processor SDK demos package                          | Demos             | 6.03.02               |  am571x-idk, am572x-evm, am572x-idk, am574x-idk      | No prebuilt images                                             | Generate the diagnostic test binaries by following    |
 |                                                                |                                                                                                   |                   |                       |                                                      |                                                                | `Diag-Build`_ steps                                   |
 +----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------+-----------------------+------------------------------------------------------+----------------------------------------------------------------+-------------------------------------------------------+
-| PDK-10313                                                      | System fails to recover using clearFeature when USB bulk application is made to                   | USB               | 6.03.02               |  am574x-idk                                          | Aborting pending transactions with clearFeature fails          | None                                                  |
+| `PDK-10313 <https://sir.ext.ti.com/jira/browse/EXT_EP-10454>`_ | System fails to recover using clearFeature when USB bulk application is made to                   | USB               | 6.03.02               |  am574x-idk                                          | Aborting pending transactions with clearFeature fails          | None                                                  |
 |                                                                | sleep in different sequences                                                                      |                   |                       |                                                      |                                                                |                                                       |
 +----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------+-----------------------+------------------------------------------------------+----------------------------------------------------------------+-------------------------------------------------------+
-| PDK-10328                                                      | Build warnings from hexpru tool while generating PRU firmware loader files                        | ICSS EMAC         | 6.03.02               |  am571x-idk, am572x-idk, am574x-idk                  | Warnings during ICSS EMAC LLD build                            | None                                                  |
+| `PDK-10328 <https://sir.ext.ti.com/jira/browse/EXT_EP-10455>`_ | Build warnings from hexpru tool while generating PRU firmware loader files                        | ICSS EMAC         | 6.03.02               |  am571x-idk, am572x-idk, am574x-idk                  | Warnings during ICSS EMAC LLD build                            | None                                                  |
 +----------------------------------------------------------------+---------------------------------------------------------------------------------------------------+-------------------+-----------------------+------------------------------------------------------+----------------------------------------------------------------+-------------------------------------------------------+
 
 .. _Diag-Build: https://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/index_board.html#building-the-examples
 
 .. _RN-Supported-Platforms-label:
 
-Supported Platforms 
+Supported Platforms
 =====================
 
-Devices 
+Devices
 ---------
 
 The following table lists all supported devices for a given installer.
@@ -364,20 +364,20 @@ The following table lists all supported devices for a given installer.
 .. _C6746: http://www.ti.com/product/tms320c6746
 .. _C6748: http://www.ti.com/product/tms320c6748
 
-Evaluation Modules 
+Evaluation Modules
 --------------------
 
 See :ref:`Processor SDK Supported Platforms <RTOS-SDK-Supported-Platforms>`
 page for a list of supported EVMs per platform and links to more
 information.
 
-Demonstrations 
+Demonstrations
 ----------------
 
 See `Examples and Demonstrations <Examples_and_Demonstrations.html>`__
 page for a list of demonstrations per platform and EVM.
 
-Drivers 
+Drivers
 ---------
 
 The following tables show RTOS driver availability per platform and EVM.
@@ -389,7 +389,7 @@ platform/EVM.
 +------------------+--------------------------------+---------------+-----------+-----------+-----------+----------+
 |     Feature      |    Platform/SOC                |  AM335x EVM   |AM437x EVM | AM57x EVM | AM65x EVM |J721E EVM |
 +==================+=======+======+=====+=====+=====+===+===+===+===+===+===+===+=====+=====+=====+=====+==========+
-|                  |AM335x |AM437x|AM57x|AM65x|J721E|GP |ICE|SK |BBB|GP |IDK|SK | GP  | IDK | GP  | IDK |  GP      | 
+|                  |AM335x |AM437x|AM57x|AM65x|J721E|GP |ICE|SK |BBB|GP |IDK|SK | GP  | IDK | GP  | IDK |  GP      |
 +------------------+-------+------+-----+-----+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+----------+
 | CSL              |   X   |   X  |  X  |  X  |  X  | X | X | X | X | X | X | X |  X  |  X  |  X  |  X  |  X       |
 +------------------+-------+------+-----+-----+-----+---+---+---+---+---+---+---+-----+-----+-----+-----+----------+
@@ -555,7 +555,7 @@ platform/EVM.
 
 - In general driver support is available across all cores within an SOC
   with following exceptions
-  
+
 +----------------+-------------------+
 |    Feature     | Not supported     |
 +================+=========+=========+
@@ -576,7 +576,7 @@ platform/EVM.
 |All Drivers     | K2E/L/K |    A15  |
 +----------------+---------+---------+
 
-Other Features 
+Other Features
 ----------------
 
 The following table shows other feature availability per platform and
@@ -665,7 +665,7 @@ EVM:
 |Network (CPSW)|    X    |    X    |      X      |   X   |   X    |
 +--------------+---------+---------+-------------+-------+--------+
 
-Installation and Usage 
+Installation and Usage
 ========================
 
 The :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-Started-Guide-label>` provides
@@ -676,18 +676,18 @@ To uninstall the SDK, remove the individual component directories from
 the installed path. This is safe to do even in Windows since these
 components do not modify the Windows registry.
 
-| 
+|
 
-Technical Support and Product Updates 
+Technical Support and Product Updates
 =======================================
 
 For further information or to report any problems, contact:
 -  `TI E2E Processor Support <https://e2e.ti.com/support/processors/>`__ for all supported platforms
 
 
-| 
+|
 
-Archived 
+Archived
 ==========
 -  `Processor-SDK RTOS
    6.3.0 <https://software-dl.ti.com/processor-sdk-rtos/esd/docs/06_03_00_106/rtos/Release_Specific.html#processor-sdk-rtos-release-notes>`__
@@ -712,6 +712,6 @@ Archived
 :ref:`Migration Guide <RTOS-SDK-Migration-Guide-label>` for information on
 migration from these releases.
 
-| 
+|
 
 .. raw:: html
