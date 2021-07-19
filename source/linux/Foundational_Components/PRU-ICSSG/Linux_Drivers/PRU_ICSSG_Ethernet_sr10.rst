@@ -1,6 +1,6 @@
-******************
-PRU_ICSSG Ethernet
-******************
+************************
+PRU_ICSSG Ethernet SR1.0
+************************
 
 .. contents:: :local:
     :depth: 3
@@ -17,13 +17,11 @@ One of the key difference in the driver implementation compared to PRU-ICSS driv
 Supported platforms
 ###################
 
-+-----------+-------------------------------+
-| SoC       | Number of external ports      |
-+===========+===============================+
-| AM65X     | 3 x ICSSG, 6 Ports max        |
-+-----------+-------------------------------+
-| AM64X     | 2 x ICSSG, 4 Ports max        |
-+-----------+-------------------------------+
++-----------------+-------------------------------+
+| SoC             | Number of external ports      |
++=================+===============================+
+| AM65X SR1.0     | 3 x ICSSG, 6 Ports max        |
++-----------------+-------------------------------+
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -40,13 +38,12 @@ Features supported
 - PTP Ordinary clock
 - PPS Out
 - Promiscuous mode
+- All-multi mode
+- Multi-cast HW filtering
 
 .. rubric:: **Features not supported**
 
 - VLAN HW filtering
-- All-multi mode is always enabled
-- Multi-cast HW filtering
-
 
 Driver Configuration
 ####################
@@ -74,7 +71,6 @@ Device tree bindings
 The DT bindings description can be found at:
 
 | `Documentation/devicetree/bindings/net/ti,icssg-prueth.txt <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,icssg-prueth.txt?h=ti-linux-5.10.y>`__
-| `Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,davinci-mdio.yaml?h=ti-linux-5.10.y>`__
 |
 
 User guide
@@ -517,6 +513,9 @@ Example oc.cfg for OC,
 where **eth1** is the intended PRU-ICSSG Ethernet port over which the OC
 functionality is provided.
 
+On AM65X SR1.0 ICSS-G both IEP0 and IEP1 are available and assigned to the corresponding PRU Ethernet ports:
+IEP0 - MII0 and IEP1 - MII1, which require to use jbod mode in case of boundary cock with external synchronization (phc2sys).
+
 See `The Linux PTP Project <http://linuxptp.sourceforge.net#>`__ for
 more details about linuxptp in general and `ptp4l(8) - Linux man
 page <https://man.cx/ptp4l>`__ about ptp4l configurations in particular.
@@ -591,57 +590,4 @@ To turn off PPS,
 
        # ./testptp -d /dev/ptp2 -P 0
        pps for system time request okay
-
-
-Tips
-####
-
-.. _eth-phy-bundings:
-
-Ethernet PHYs/MDIO bindings
-***************************
-
-The PRU_ICSSG Ethernet driver follows standard Linux DT bindings for MDIO bus, Ethernet controlers and PHYs which can be found at:
-
-| `ethernet-controller.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ethernet-controller.yaml?h=ti-linux-5.10.y>`__
-| `mdio.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/mdio.yaml?h=ti-linux-5.10.y>`__
-| `ethernet-phy.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ethernet-phy.yaml?h=ti-linux-5.10.y>`__
-|
-
-The existing TI Ethernet PHYs DT bindings:
-
-| `ti,dp83822.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83822.yaml?h=ti-linux-5.10.y>`__
-| `ti,dp83867.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83867.yaml?h=ti-linux-5.10.y>`__
-| `ti,dp83869.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/net/ti,dp83869.yaml?h=ti-linux-5.10.y>`__
-|
-
-Fixed link
-**********
-
-The Linux PRU_ICSSG Ethernet driver provides support for 'fixed-link' MAC-MAC connection support
-which can be defined following standard :ref:`Ethernet Controller Generic Binding<eth-phy-bundings>` for each "ethernet-miiX' ICSSG port.
-
-.. note::
-
-    Fixed link is use-case specific and got limited testing, so should be considered experimental.
-
-
-Example::
-
-   icssg2_emac1: ethernet-mii1 {
-      phy-mode = "rgmii-rxid";
-      syscon-rgmii-delay = <&scm_conf 0x4124>;
-      local-mac-address = [00 00 00 00 00 00];
-
-      fixed-link {
-         speed = <1000>;
-         full-duplex;
-      };
-   };
-
-**RGMII Fixed link**
-
-In case of RGMII MAC-MAC the 'phy-mode' DT property should be specifying properly for RGMII RX/TX delay configuration,
-taking into account ICSSG HW capability to provide only TX delay (which for some SoCs is not recommended to be disabled).
-Consult with SoC documentation (Data sheet, User guide) for supported RGMII RX/TX delay configurations.
 
