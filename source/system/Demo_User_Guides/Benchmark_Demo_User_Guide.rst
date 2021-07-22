@@ -43,6 +43,8 @@ Get Started
     - SW2(1:8) on, on, off, off, off, off, on, off
     - SW3(1:8) off, on, off, off, off, off, off, off
 
+.. Image:: /images/boot_pins_sd_mode_oob.png
+
 4.  Connect an ethernet cable from your ethernet switch or router to the
     AM64x EVM
 
