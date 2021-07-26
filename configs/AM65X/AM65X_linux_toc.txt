@@ -83,6 +83,7 @@ linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet
 linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet_sr10
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart
 linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/pru-icssg-pwm
+linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components_IPCLLD
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Graphics_and_Display
@@ -126,3 +127,6 @@ linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/TMDX654_EVM_Hardware_Setup
 linux/Documentation_Tarball
+common/PRU-ICSS/PRU-Cape-Building-Demos
+common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
+common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
