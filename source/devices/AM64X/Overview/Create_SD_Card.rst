@@ -69,18 +69,31 @@ Create SD Card with Default Images
                ├─sdc1   8:33   1 131.8M  0 part 
                └─sdc2   8:34   1 765.9M  0 part 
 
-        b) Next, write the WIC image to the SD card with the following command:
+        b) Next, install bmap-tools using the following command:
+           
+           ::
+
+               sudo apt-get install bmap-tools 
+        
+           Then generate a bmap file from the decompressed WIC image with the following command.
+           This step can be skipped but the bmap file significantly reduces the time taken to flash the SD card.
 
            ::
 
-               sudo dd bs=4M if=./tisdk-default-image-am64xx-evm.wic of=/dev/sdx status=progress && sync
+               bmaptool create -o tisdk-default-image.bmap tisdk-default-image-am64xx-evm.wic
+
+        c) Then write the WIC image to the SD card with the following command:
+
+           ::
+
+               sudo bmaptool copy --bmap tisdk-default-image.bmap tisdk-default-image-am64xx-evm.wic /dev/sdx
 
            In the above example, the SD card is at /dev/sdc. In that case, the
            image write command would look like this:
 
            ::
 
-               sudo dd bs=4M if=./tisdk-default-image-am64xx-evm.wic of=/dev/sdc status=progress && sync
+               sudo bmaptool copy --bmap tisdk-default-image.bmap tisdk-default-image-am64xx-evm.wic /dev/sdc
 
     - For Windows:
         Write the WIC image to the SD card with Win32DiskImager.exe
