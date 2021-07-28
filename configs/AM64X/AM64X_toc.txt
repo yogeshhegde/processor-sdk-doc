@@ -59,7 +59,9 @@ linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc_and_RPMsg
 linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet
 linux/Foundational_Components/PRU-ICSS-Hardware
+linux/Foundational_Components/PRU-ICSS-Labs
 linux/Release_Specific_CoreSDK_Yocto_layer_Configuration
 common/PRU-ICSS/PRU-Cape-Building-Demos
 common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
 common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
+common/PRU-ICSS/PRU-Hands-on-Labs
