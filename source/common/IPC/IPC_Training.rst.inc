@@ -20,4 +20,3 @@ IPC Lab 1 - Hello :download:`(PowerPoint) </files/IPC_Lab_1_Hello.pptx>` :downlo
 IPC Lab 2 - MessageQ :download:`(PowerPoint) </files/IPC_Lab_2_MessageQ.pptx>` :download:`(PowerPointShow) </files/IPC_Lab_2_MessageQ.ppsx>` :download:`(PDF) </files/IPC_Lab_2_MessageQ.pdf>`
 
 IPC Lab 3 - Scalability :download:`(PowerPoint) </files/IPC_Lab_3_Scalability.pptx>` :download:`(PowerPointShow) </files/IPC_Lab_3_Scalability.ppsx>` :download:`(PDF) </files/IPC_Lab_3_Scalability.pdf>`
-
