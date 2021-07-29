@@ -97,6 +97,7 @@ linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart
 linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/pru-icssg-pwm
 linux/Foundational_Components/PRU-ICSS-Linux-User-Space
+linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components_IPC
 linux/Foundational_Components_CMEM
 linux/Foundational_Components_Graphics
@@ -180,3 +181,6 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/ICE_AMIC110_EVM_Hardware_Setup
 linux/How_to_Guides/Hardware_Setup_with_CCS/OMAPL138-C6748_LCDK_Hardware_Setup
 linux/How_to_Guides_Linux_Porting_Guide_AM571x_AM570x_Speed_Grades
 linux/Documentation_Tarball
+common/PRU-ICSS/PRU-Cape-Building-Demos
+common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
+common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
