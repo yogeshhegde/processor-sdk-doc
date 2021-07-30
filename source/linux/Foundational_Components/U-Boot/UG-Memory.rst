@@ -1,5 +1,5 @@
-SD, eMMC or USB Storage
-------------------------------------
+SD, eMMC and USB
+----------------
 
 The commands for using SD cards, eMMC flash and USB mass storage devices
 (hard drives, flash drives, card readers, etc) are all very similar. The
