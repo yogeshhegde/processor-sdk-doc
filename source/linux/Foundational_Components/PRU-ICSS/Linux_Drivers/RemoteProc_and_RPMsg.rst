@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Remoteproc_and_RPMsg
 
+.. _pru_remoteproc_and_rpmsg:
+
 RemoteProc and RPMsg
 --------------------
 

@@ -286,6 +286,8 @@ Compiling the Kernel
     This will result in a kernel image file being created in the
     arch/arm64/boot/ directory called Image.
 
+.. _kernel_users_guide_compiling_the_device_tree_binaries:
+
 Compiling the Device Tree Binaries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

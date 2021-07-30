@@ -75,6 +75,7 @@ linux/Foundational_Components/PRU-ICSS-Getting-Started
 linux/Foundational_Components/PRU-ICSS-Header-Files
 linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc_and_RPMsg
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg_Quick_Start_Guide
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pruss-uart
