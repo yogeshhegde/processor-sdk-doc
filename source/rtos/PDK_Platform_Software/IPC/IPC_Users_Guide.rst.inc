@@ -41,9 +41,9 @@ and run-time C processing (|ipcRun_Img|) for each module.
 
 **Application Development**
 
--  `Create DSP and IPU firmware using PDK drivers and IPC to load from ARM Linux on AM57xx devices <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#create-dsp-and-ipu-firmware-using-pdk-drivers-and-ipc-to-load-from-arm-linux-on-am57xx-devices>`__
+-  `Create DSP and IPU firmware using PDK drivers and IPC to load from ARM Linux on AM57xx devices <index_how_to_guides.html#create-dsp-and-ipu-firmware-using-pdk-drivers-and-ipc-to-load-from-arm-linux-on-am57xx-devices>`__
 
--  `Customizing Memory map for creating Multicore Applications on AM57xx using IPC <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#customizing-memory-map-for-creating-multicore-applications-on-am57xx-using-ipc>`__
+-  `Customizing Memory map for creating Multicore Applications on AM57xx using IPC <index_how_to_guides.html#customizing-memory-map-for-creating-multicore-applications-on-am57xx-using-ipc>`__
 
 -  `Optimizing IPC
    Applications <index_Foundational_Components.html#optimizing-ipc-applications>`__
@@ -58,7 +58,7 @@ and run-time C processing (|ipcRun_Img|) for each module.
    ResourceTable <index_Foundational_Components.html#resource-custom-table>`__
    Provides details of customizing the resource table.
    
--  `IPC Debugging Tools and Techniques on AM57xx <http://software-dl.ti.com/processor-sdk-rtos/esd/docs/latest/rtos/How_to_Guides.html#ipc-debugging-tools-and-techniques-on-am57xx>`__
+-  `IPC Debugging Tools and Techniques on AM57xx <index_how_to_guides.html#ipc-debugging-tools-and-techniques-on-am57xx>`__
 
 **IPC Internal/API & Other Useful Links**
 

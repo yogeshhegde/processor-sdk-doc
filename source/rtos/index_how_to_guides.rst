@@ -6,10 +6,6 @@ Run IPC Examples on AM572x
 ==============================================
 .. include:: How_to_Guides/Target/Run_IPC_Examples_on_AM572x.rst.inc
 
-Run IPC Examples on AM65XX
-==============================================
-.. include:: How_to_Guides/Target/Run_IPC_Examples_on_AM65xx.rst.inc
-
 Taking the C66x Out Of Reset with Linux Running on the ARM A15
 ===============================================================
 .. include:: How_to_Guides/Target/C66x_Reset_from_A15_Running_Linux.rst.inc
