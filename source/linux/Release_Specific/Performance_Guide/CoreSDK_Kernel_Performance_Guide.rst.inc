@@ -801,6 +801,22 @@ PCIe-EP
 PCIe-NVMe-SSD
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+AM64xx-EVM
+"""""""""""""""""""""""""""
+
+.. csv-table::
+    :header: "Buffer size (bytes)","am64xx-evm: Write EXT4 Throughput (Mbytes/sec)","am64xx-evm: Write EXT4 CPU Load (%)","am64xx-evm: Read EXT4 Throughput (Mbytes/sec)","am64xx-evm: Read EXT4 CPU Load (%)"
+
+    "1m","355.00","100.00","397.00","97.53"
+    "4m","364.00","95.07","398.00","96.32"
+    "4k","23.00","99.99","45.90","99.81"
+    "256k","288.00","99.58","360.00","97.27"
+
+- Filesize used is: 10G
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based 
+- Platform: Speed 8GT/s, Width x1
+- SSD being used: Lite-On Technology Corporation M8Pe Series NVMe SSD [14a4:22f1] (rev 01)
+
 J721E-IDK-GW
 """""""""""""""""""""""""""
 
