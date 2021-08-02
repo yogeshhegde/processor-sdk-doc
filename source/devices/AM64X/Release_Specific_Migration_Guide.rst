@@ -7,6 +7,14 @@ Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK Linux AM64X.
 
+Processor SDK Linux AM64X 08.xx Releases
+========================================
+
+Processor SDK 08.00
+------------------------
+- USB DFU boot mode support
+- SRAM memory layout during R5 SPL boot stage, has been changed. Please refer :ref:`AM64-SRAM-Layout-label`.
+
 Processor SDK Linux AM64X 07.03.xx Releases
 ===========================================
 

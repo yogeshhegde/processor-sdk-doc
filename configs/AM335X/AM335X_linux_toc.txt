@@ -80,6 +80,7 @@ linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pruss-uart
 linux/Foundational_Components/PRU-ICSS-Linux-User-Space
 linux/Foundational_Components/PRU-ICSS-Hardware
+linux/Foundational_Components/PRU-ICSS-Labs
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Graphics_and_Display
 linux/Foundational_Components/Graphics/SOC_Performance_Monitor
@@ -144,3 +145,4 @@ linux/Documentation_Tarball
 common/PRU-ICSS/PRU-Cape-Building-Demos
 common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
 common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
+common/PRU-ICSS/PRU-Hands-on-Labs

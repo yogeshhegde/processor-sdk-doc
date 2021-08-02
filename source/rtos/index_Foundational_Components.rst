@@ -3,7 +3,7 @@
 ***************
 TI-RTOS Kernel
 ***************
-- `SYSBIOS <http://processors.wiki.ti.com/index.php?title=Category:SYSBIOS>`__
+- `SYSBIOS <https://www.ti.com/tool/SYSBIOS>`__
 
 
 .. _foundational-components-xdais:

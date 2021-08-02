@@ -12,3 +12,4 @@ PRU-ICSS / PRU_ICSSG
    Foundational_Components/PRU-ICSS-Linux-Drivers
    Foundational_Components/PRU-ICSS-Linux-User-Space
    Foundational_Components/PRU-ICSS-Hardware
+   Foundational_Components/PRU-ICSS-Labs
