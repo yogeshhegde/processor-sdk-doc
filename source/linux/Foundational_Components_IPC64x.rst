@@ -1,26 +1,27 @@
-.. rubric:: Introduction
-   :name: introduction-linux-ipc-on-am64xx
+IPC for AM64x 
+=============
 
-The AM64xx device's main domain consists of Dual-Core Cortex-R5F processor subsystem (R5FSS) in addition to Dual core Cortex-A53 subsystem.
-The R5FSS can be operated in Dual Core mode or single core mode. Please refer to the AM64x Technical Referece Manual for details.
+The AM64x device's main domain consists of Dual-Core Cortex-R5F processor
+subsystem (R5FSS) in addition to Dual core Cortex-A53 subsystem.  The R5FSS can
+be operated in Dual Core mode or single core mode. Please refer to the AM64x
+Technical Referece Manual for details.
 
-This article is geared toward AM64xx users that are running Linux on the
-Cortex A53 core. The goal is to help users understand how to establish communication 
+This article is geared toward AM64x users that are running Linux on the Cortex
+A53 core. The goal is to help users understand how to establish communication
 with the R5F cores.
 
-There are many facets to this task: building, loading, debugging,
-memory sharing, etc. This article intends to take incremental steps  
-toward understanding all of those pieces.
+There are many facets to this task: building, loading, debugging, memory
+sharing, etc. This article intends to take incremental steps toward
+understanding all of those pieces.
 
-.. rubric:: Software Dependencies to Get Started
-   :name: ipc-am64xx-software-dependencies-to-get-started
+Software Dependencies to Get Started
+------------------------------------
 
 Prerequisites
 
--  `Processor SDK Linux for
-   AM64xx <http://software-dl.ti.com/processor-sdk-linux/esd/AM64X/latest/index_FDS.html>`__
--  `Processor SDK RTOS for
-   AM64xx <http://software-dl.ti.com/processor-sdk-rtos/esd/AM64X/latest/index_FDS.html>`__
+-  `Processor SDK Linux for AM64x <|__SDK_DOWNLOAD_URL__|>`__
+-  `Processor SDK MCU+ for
+   AM64x <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM64X>`__
 
 .. note::
    Please be sure that you have the same version number
@@ -28,17 +29,18 @@ Prerequisites
 
 `Please refer to IPCLLD driver for R5F IPC architecture and builds: <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/IPC_GUIDE.html>`__
 
-.. rubric:: Typical Boot Flow on AM64xx for ARM Linux users
-   :name: typical-boot-flow-on-am64xx-for-arm-linux-users
+Typical Boot Flow on AM64x for ARM Linux users
+----------------------------------------------
 
-AM64xx SOC's have multiple processor cores - Cortex A53, ARM R5F cores. The A53 typically runs a HLOS 
-like Linux/Android and the remote cores (R5Fs) run No-OS or RTOS (FreeRTOS etc). In the normal operation, 
-boot loader(U-Boot/SPL) boots and loads the A53 with the HLOS. The A53 boots the R5 cores.
+AM64x SOC's have multiple processor cores - Cortex A53, ARM R5F cores. The A53
+typically runs a HLOS like Linux/Android and the remote cores (R5Fs) run No-OS
+or RTOS (FreeRTOS etc). In the normal operation, boot loader(U-Boot/SPL) boots
+and loads the A53 with the HLOS. The A53 boots the R5 cores.
 
 .. Image:: /images/Normal-boot-a53.png
 
-.. rubric:: Getting Started with IPC Linux Examples
-   :name: ipc-am64xx-getting-started-with-ipc-linux-examples
+Getting Started with IPC Linux Examples
+---------------------------------------
 
 The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
 kernel communicates with IPC driver on slave processor (e.g. R5F) running RTOS.
@@ -51,6 +53,7 @@ in SDK package that can be run from ARM Linux.
 The remoteproc driver is hard-coded to look for specific files when
 loading the R5F cores. Here are the files it looks on AM64x device:
 ::
+
 	+------------------+-----------------+--------------------+----------------------+
 	| Core Name        | RemoteProc Name | Description        | Firmware File Name   |
 	+==================+=================+====================+======================+
@@ -63,10 +66,9 @@ loading the R5F cores. Here are the files it looks on AM64x device:
 	| R5F1-1           | 78600000.r5f    | R5F cluster1-Core1 | am64-main-r5f1_1-fw  |
 	+------------------+-----------------+--------------------+----------------------+
 
-
-Generally on a target file system the abive files are soft linked to the intended executable FW files.: 
+Generally on a target file system the abive files are soft linked to the
+intended executable FW files.: 
 ::
-
 
 	root@am64xx-evm:~# ls -l /lib/firmware/
 	total 31928
@@ -76,7 +78,8 @@ Generally on a target file system the abive files are soft linked to the intende
 	lrwxrwxrwx 1 1000 1000      72 Jul 23  2021 am64-main-r5f1_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu2_0_release_strip.xer5f
 	lrwxrwxrwx 1 1000 1000      72 Jul 23  2021 am64-main-r5f1_1-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu2_1_release_strip.xer5f
 
-.. rubric:: Booting Remote Cores from Linux console/User space
+Booting Remote Cores from Linux console/User space
+--------------------------------------------------
 
 To reload R5F0 with new executables, please follow below steps:
 
@@ -109,14 +112,18 @@ First identify the remotproc node associated with R5F0. This can be done by:
 	[25885.022326] remoteproc remoteproc0: remote processor 78000000.r5f is now up
 
 .. note::
-   Please note remoteproc start/stop commands are not working correctly after system boot in current release. It will be fixed in future releases. 
-   So, for now the recommended way is to get the R5F cores booted by remoteproc during kernel/system boot. So, a system reset is needed to change the R5F FW binaries.
+   Please note remoteproc start/stop commands are not working correctly after
+   system boot in current release. It will be fixed in future releases.  So, for
+   now the recommended way is to get the R5F cores booted by remoteproc during
+   kernel/system boot. So, a system reset is needed to change the R5F FW
+   binaries.
 
+DMA memory Carveouts
+--------------------
 
-.. rubric:: DMA memory Carveouts
-   :name: dma-memory-carveouts
-
-System memory is carved out for each remote processor core for IPC and as external memory to the remote processors code/data section needs. The default memory carveouts (DMA pools) are as below:
+System memory is carved out for each remote processor core for IPC and as
+external memory to the remote processors code/data section needs. The default
+memory carveouts (DMA pools) are as below:
 ::
 
 	+------------------+--------------------+---------+----------------------------+
@@ -148,19 +155,23 @@ System memory is carved out for each remote processor core for IPC and as extern
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3000000, size 1 MiB
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3100000, size 15 MiB
 
-As shown above, by deafult the first 1MB of each pool is used for the Virtio and Vring buffers towards
-that remote processor and the reminiang 15MB of the carveout is to be used for
-R5 external memory i.e for R5 programe code, data as needed.
+As shown above, by deafult the first 1MB of each pool is used for the Virtio and
+Vring buffers towards that remote processor and the reminiang 15MB of the
+carveout is to be used for R5 external memory i.e for R5 programe code, data as
+needed.
 
 .. note::
-   Please note early boot is not yet supported on AM64x devices. And the resource table entity (describes the system resources needed by the remote processor) needs to be at the beginning of the 15MB remote processor external memory section.
+    Please note early boot is not yet supported on AM64x devices. And the
+    resource table entity (describes the system resources needed by the remote
+    processor) needs to be at the beginning of the 15MB remote processor
+    external memory section.
 
 
 For details on how to adjust the sizes and locations of the R5F Pool
 carveouts, please see the corresponding section for changing the R5F memory map.
 
-.. rubric:: Changing the R5F Memory Map
-   :name: changing-the-r5f-memory-map
+Changing the R5F Memory Map
+---------------------------
 
 The DMA memory carveouts wrt the address and size needs to match with the MCU (R5F) linker mapfile.
 
@@ -223,65 +234,74 @@ The DMA memory carveouts wrt the address and size needs to match with the MCU (R
 		};
 	};
 
-**Be careful not to overlap carveouts!**
+.. warning:: Be careful not to overlap carveouts!
 
-.. rubric:: RPMsg Char Driver
-   :name: RPMsg Char driver
+RPMsg Char Driver
+-----------------   
 
-The below picture depicts the kernel driver components and the user space device model for using RPMsg Char driver for communicating with the remote processor.
+The below picture depicts the kernel driver components and the user space device
+model for using RPMsg Char driver for communicating with the remote processor.
 
 .. Image:: /images/RPMsgstack-linux.png
 
-The RPMsg char driver exposes RPMsg endpoints to user-space processes. 
-Multiple user-sapce applications can use one RPMsg device uniquely by requesting different interactions with the remore service.
-The RPMsg char driver supports the creation of multiple endpoints for each probed RPMsg char device, enbaling the use of the same device for different instances.
+The RPMsg char driver exposes RPMsg endpoints to user-space processes. Multiple
+user-sapce applications can use one RPMsg device uniquely by requesting
+different interactions with the remore service. The RPMsg char driver supports
+the creation of multiple endpoints for each probed RPMsg char device, enbaling
+the use of the same device for different instances.
 
 Each created endpoint device shows up as a single character device in /dev.
 
-The RPMsg bus sits on top of the VirtIO bus. Each virtio name service announcement message creates a new RPMsg device, 
-which is supposed to bind to a RPMsg driver. RPMsg devices are created dynamically:
-The remote processor announces the existence of a remote RPMsg service by sending a name service announcement message containing 
-the name of the service (i.e. name of the device), source and destination addresses.
-The message is handled by the RPMsg bus, which dynamically creates and registers an RPMsg device which represents the remote service.
-As soon as a relevant RPMsg driver is registered, it is immediately probed by the bus and the two sides can start exchanging messages.
+The RPMsg bus sits on top of the VirtIO bus. Each virtio name service
+announcement message creates a new RPMsg device, which is supposed to bind to a
+RPMsg driver. RPMsg devices are created dynamically:
+    
+The remote processor announces the existence of a remote RPMsg service by
+sending a name service announcement message containing the name of the service
+(i.e. name of the device), source and destination addresses. The message is
+handled by the RPMsg bus, which dynamically creates and registers an RPMsg
+device which represents the remote service. As soon as a relevant RPMsg driver
+is registered, it is immediately probed by the bus and the two sides can start
+exchanging messages.
 
 The control interface
+    The RPMsg char driver provides control interface (in the form of a character
+    device under /dev/rpmsg_ctrlX) allowing user-space to export an endpoint
+    interface for each exposed endpoint. The control interface provides a
+    dedicated ioctl to create an endpoint device.
 
-The RPMsg char driver provides control interface (in the form of a character device under /dev/rpmsg_ctrlX) allowing user-space to export an endpoint interface for each exposed endpoint. The control interface provides a dedicated ioctl to create an endpoint device.
-
-
-.. rubric:: ti-rpmsg-char library
-   :name: RPMsg Char library
-
+ti-rpmsg-char library
+---------------------
 A thin userspace rpmsg char library is provided abstracting the rpmsg char
-driver usage from userspace. This library provides an easy means to identify
-and open rpmsg character devices created by the kernel rpmsg-char driver.
+driver usage from userspace. This library provides an easy means to identify and
+open rpmsg character devices created by the kernel rpmsg-char driver.
 
 This library support TI K3 family of devices i.e AM65x, AM64x, J721E and J7200
 SoCs.
 
 The library provides 4 basic APIs wrapping all the rpmsg char driver calls.
-`Please check documentation in 'include/ti_rpmsg_char.h' for details. <https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/ti_rpmsg_char.h>`__.
+`Please check documentation in 'include/ti_rpmsg_char.h' for details.
+<https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/ti_rpmsg_char.h>`__.
 
-- rpmsg_char_init()
-This function checks that the needed kernel drivers (remoteproc. rpmsg,
-virtio) are installed and accessible from the user space. Further it also
-checks the SoC device supports the requested remote processor.
+rpmsg_char_init()
+    This function checks that the needed kernel drivers (remoteproc. rpmsg,
+    virtio) are installed and accessible from the user space. Further it
+    also checks the SoC device supports the requested remote processor.
 
-- rpmsg_char_exit()
-This function finalizes and performs all the de-initialization
-and any cleanup on the library. This is the last function that
-needs to be invoked after all usage is done as part of the
-application's cleanup. This only need to be invoked once in an
-application, there is no reference counting. The function also
-needs to be invoked in any application's signal handlers to
-perform the necessary cleanup of stale rpmsg endpoint devices.
+rpmsg_char_exit()
+    This function finalizes and performs all the de-initialization and any
+    cleanup on the library. This is the last function that needs to be invoked
+    after all usage is done as part of the application's cleanup. This only need
+    to be invoked once in an application, there is no reference counting. The
+    function also needs to be invoked in any application's signal handlers to
+    perform the necessary cleanup of stale rpmsg endpoint devices.
 
-- rpmsg_char_open()
-Function to create and access a rpmsg endpoint device for a given rpmsg device
+rpmsg_char_open()
+    Function to create and access a rpmsg endpoint device for a given rpmsg
+    device.
 
-- rpmsg_char_close()
-Function to close and delete a previously created local endpoint
+rpmsg_char_close()
+    Function to close and delete a previously created local endpoint
  
 `All remote proc ids are defined in rproc_id.h <https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h>`__
 
@@ -313,9 +333,10 @@ The below table lists the device enumerations as defined in the rpmsg_char_libra
 .. note::
 	The R5F clusters on AM64x can be in either single core or dual core mode. In dual core mode enumerations 'R5F_MAIN0_1 and R5F_MAIN1_1' are not valid.
 
-.. rubric:: RPMsg user space example
-   :name: RPMsg Char Userspace example
+RPMsg examples:
+---------------
 
+RPMsg user space example
 ::
 
 	root@am64xx-evm:~# rpmsg_char_simple 
@@ -354,8 +375,7 @@ The below table lists the device enumerations as defined in the rpmsg_char_libra
 
 	Communicated 10 messages successfully on rpmsg-char-2-1027
 
-.. rubric:: RPMsg kernel space example
-   :name: RPMsg kernelspace example
+RPMsg kernel space example
 ::
 
 	root@am64xx-evm:~# modprobe rpmsg_client_sample count=10

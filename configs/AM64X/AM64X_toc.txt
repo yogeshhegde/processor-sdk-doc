@@ -49,7 +49,7 @@ linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
 linux/Foundational_Components_Kernel_FAQs
 linux/Foundational_Components_Filesystem
-linux/Foundational_Components_IPCLLD
+linux/Foundational_Components_IPC64x
 linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components/Machine_Learning/tflite_j7
 linux/Foundational_Components_ATF
@@ -58,8 +58,4 @@ linux/Foundational_Components_PRU-ICSS_PRU_ICSSG
 linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc_and_RPMsg
 linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet
-linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Release_Specific_CoreSDK_Yocto_layer_Configuration
-common/PRU-ICSS/PRU-Cape-Building-Demos
-common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
-common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
