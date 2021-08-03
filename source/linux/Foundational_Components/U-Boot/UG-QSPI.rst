@@ -114,9 +114,9 @@ u-boot.img over tftp and then flash it to OSPI at respective addresses.
   => tftp ${loadaddr} tiboot3.bin
   => sf update $loadaddr 0x0 $filesize
   => tftp ${loadaddr} tispl.bin
-  => sf update $loadaddr 0x80000 $filesize
+  => sf update $loadaddr 0x100000 $filesize
   => tftp ${loadaddr} u-boot.img
-  => sf update $loadaddr 0x280000 $filesize
+  => sf update $loadaddr 0x300000 $filesize
 
 **PHY Calibration**
 
@@ -155,6 +155,37 @@ pattern depending on which flash is being used:
              |                            |
     0x700000 +----------------------------+
              |       padding (1M)         |
+    0x800000 +----------------------------+
+             |     ospi.rootfs(UBIFS)     |
+             |                            |
+   0x3FC0000 +----------------------------+
+             |   ospi.phypattern (256k)   |
+             |                            |
+             +----------------------------+
+
+**Flash Layout for OSPI in J7200**
+
+The Flash layout in J7200 is different from the layout in other devices.
+
+.. code-block:: console
+
+         0x0 +----------------------------+
+             |     ospi.tiboot3(1M)       |
+             |                            |
+    0x100000 +----------------------------+
+             |     ospi.tispl(2M)         |
+             |                            |
+    0x300000 +----------------------------+
+             |     ospi.u-boot(4M)        |
+             |                            |
+    0x700000 +----------------------------+
+             |     ospi.env(128K)         |
+             |                            |
+    0x720000 +----------------------------+
+             |   ospi.env.backup(128K)    |
+             |                            |
+    0x740000 +----------------------------+
+             |      padding (768k)        |
     0x800000 +----------------------------+
              |     ospi.rootfs(UBIFS)     |
              |                            |
