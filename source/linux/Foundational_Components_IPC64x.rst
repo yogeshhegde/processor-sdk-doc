@@ -19,7 +19,7 @@ Software Dependencies to Get Started
 
 Prerequisites
 
--  `Processor SDK Linux for AM64x <|__SDK_DOWNLOAD_URL__|>`__
+-  Processor SDK Linux for AM64x |__SDK_DOWNLOAD_URL__|.
 -  `Processor SDK MCU+ for
    AM64x <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM64X>`__
 
@@ -27,7 +27,7 @@ Prerequisites
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
-`Please refer to IPCLLD driver for R5F IPC architecture and builds: <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/IPC_GUIDE.html>`__
+`Please refer to the MCU+SDK IPC documentation for R5F IPC architecture and builds: <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/IPC_GUIDE.html>`__
 
 Typical Boot Flow on AM64x for ARM Linux users
 ----------------------------------------------
@@ -112,11 +112,9 @@ First identify the remotproc node associated with R5F0. This can be done by:
 	[25885.022326] remoteproc remoteproc0: remote processor 78000000.r5f is now up
 
 .. note::
-   Please note remoteproc start/stop commands are not working correctly after
-   system boot in current release. It will be fixed in future releases.  So, for
-   now the recommended way is to get the R5F cores booted by remoteproc during
-   kernel/system boot. So, a system reset is needed to change the R5F FW
-   binaries.
+   The RemoteProc driver does not support a graceful shutdown of R5 cores in
+   Linux Processor SDK 8.0. For now, it is recommended to reboot the board
+   before loading new binaries into an R5F core.
 
 DMA memory Carveouts
 --------------------
@@ -155,10 +153,9 @@ memory carveouts (DMA pools) are as below:
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3000000, size 1 MiB
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3100000, size 15 MiB
 
-As shown above, by deafult the first 1MB of each pool is used for the Virtio and
-Vring buffers towards that remote processor and the reminiang 15MB of the
-carveout is to be used for R5 external memory i.e for R5 programe code, data as
-needed.
+By default the first 1MB of each pool is used for the Virtio and Vring buffers
+used to communicate with the remote processor. The remaining 15MB of the
+carveout is used for R5 external memory (program code,data, etc).
 
 .. note::
     Please note early boot is not yet supported on AM64x devices. And the
@@ -168,7 +165,9 @@ needed.
 
 
 For details on how to adjust the sizes and locations of the R5F Pool
-carveouts, please see the corresponding section for changing the R5F memory map.
+carveouts, please see section :ref:`changing_the_r5f_memory_map`.
+
+.. _changing_the_r5f_memory_map:
 
 Changing the R5F Memory Map
 ---------------------------
@@ -245,9 +244,9 @@ model for using RPMsg Char driver for communicating with the remote processor.
 .. Image:: /images/RPMsgstack-linux.png
 
 The RPMsg char driver exposes RPMsg endpoints to user-space processes. Multiple
-user-sapce applications can use one RPMsg device uniquely by requesting
-different interactions with the remore service. The RPMsg char driver supports
-the creation of multiple endpoints for each probed RPMsg char device, enbaling
+user-space applications can use one RPMsg device uniquely by requesting
+different interactions with the remote service. The RPMsg char driver supports
+the creation of multiple endpoints for each probed RPMsg char device, enabling
 the use of the same device for different instances.
 
 Each created endpoint device shows up as a single character device in /dev.
