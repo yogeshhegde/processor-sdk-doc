@@ -172,7 +172,8 @@ carveouts, please see section :ref:`changing_the_r5f_memory_map`.
 Changing the R5F Memory Map
 ---------------------------
 
-The DMA memory carveouts wrt the address and size needs to match with the MCU (R5F) linker mapfile.
+The DMA memory carveouts wrt the address and size needs to match with the MCU
+(R5F) external memory section sizes in linker mapfile.
 
 | 
 | linux/arch/arm64/boot/dts/ti/k3-am642-sk.dts
