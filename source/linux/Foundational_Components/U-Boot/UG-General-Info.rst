@@ -140,8 +140,8 @@ Build U-Boot
 
     ::
 
-        export PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-arm-linux-gnueabihf/bin:$PATH
-        export PATH=$HOME/gcc-arm-8.3-2019.03-x86_64-aarch64-linux-gnu/bin:$PATH
+        export PATH=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf/bin:$PATH
+        export PATH=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu/bin:$PATH
 
     .. rubric:: Compiling R5 and ARM64 images
 
@@ -238,17 +238,17 @@ Build U-Boot
 
        .. code-block:: console
 
-          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am64x_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am64x_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
 
        *A53*
 
        .. code-block:: console
 
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am64x_evm_a53_defconfig O=<output directory>/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin  O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_evm_a53_defconfig O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin  O=<output directory>/a53
           $ cd <path to K3-image-gen project>
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- SOC=am64x SBL=<output directory>/r5/spl/u-boot-spl.bin
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- SOC=am64x SBL=<output directory>/r5/spl/u-boot-spl.bin
 
 
     .. rubric:: Dependent Project location

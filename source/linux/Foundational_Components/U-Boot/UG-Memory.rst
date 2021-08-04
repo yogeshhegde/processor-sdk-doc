@@ -50,7 +50,7 @@ Updating an SD card from a host PC
 
 This section assume that you have created an SD card following the
 instructions on `Processor SDK Linux Create SD Card
-Script <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__ or have
+Script <../../../devices/AM64X/Overview/Create_SD_Card.html>`__ or have
 made a compatible layout by hand. In this case, you will need to copy
 the all the boot images (**MLO** and **u-boot.img** for 32-bit platforms,
 **tiboot3.bin**, **sysfw.itb**, **tispl.bin**, **u-boot.img** for K3 based platforms)
