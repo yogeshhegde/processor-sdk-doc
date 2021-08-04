@@ -27,24 +27,46 @@ In K3 based platforms, ROM supports booting from MCU_UART0 via X-Modem protocol.
 The entire UART-based boot process up to U-Boot (proper) prompt goes through
 different stages and uses different UART peripherals as follows:
 
-+---------------+---------------+-------------+------------+
-|   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
-+===============+===============+=============+============+
-| Boot ROM      |  tiboot3.bin  |  MCU_UART0  |  X-Modem   |
-+---------------+---------------+-------------+------------+
-| R5 SPL        |  sysfw.itb    |  MCU_UART0  |  Y-Modem   |
-+---------------+---------------+-------------+------------+
-| R5 SPL        |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
-+---------------+---------------+-------------+------------+
-| A53/A72 SPL   |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
-+---------------+---------------+-------------+------------+
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E')
 
-UART_BOOT_MAIN_UART and UART_BOOT_MCU_UART should be set to serial ports such as /dev/ttyUSBx.
+   +---------------+---------------+-------------+------------+
+   |   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
+   +===============+===============+=============+============+
+   | Boot ROM      |  tiboot3.bin  |  MCU_UART0  |  X-Modem   |
+   +---------------+---------------+-------------+------------+
+   | R5 SPL        |  sysfw.itb    |  MCU_UART0  |  Y-Modem   |
+   +---------------+---------------+-------------+------------+
+   | R5 SPL        |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
+   +---------------+---------------+-------------+------------+
+   | A53/A72 SPL   |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
+   +---------------+---------------+-------------+------------+
 
-::
+   UART_BOOT_MAIN_UART and UART_BOOT_MCU_UART should be set to serial ports such as /dev/ttyUSBx.
 
-    $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
-    $ sb --ymodem $SYSFW_ITB > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
-    $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
-    $ sb --xmodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+   ::
+
+      $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
+      $ sb --ymodem $SYSFW_ITB > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
+      $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+      $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'J7200')
+
+   +---------------+---------------+-------------+------------+
+   |   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
+   +===============+===============+=============+============+
+   | Boot ROM      |  tiboot3.bin  |  MCU_UART0  |  X-Modem   |
+   +---------------+---------------+-------------+------------+
+   | R5 SPL        |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
+   +---------------+---------------+-------------+------------+
+   | A53/A72 SPL   |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
+   +---------------+---------------+-------------+------------+
+
+   UART_BOOT_MAIN_UART and UART_BOOT_MCU_UART should be set to serial ports such as /dev/ttyUSBx.
+
+   ::
+
+      $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MCU_UART < $UART_BOOT_MCU_UART
+      $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+      $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
 
