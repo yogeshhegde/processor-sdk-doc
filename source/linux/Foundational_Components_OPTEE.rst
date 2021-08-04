@@ -20,13 +20,13 @@ Those APIs are defined in the GlobalPlatform API specifications.
 
 .. rubric:: Building OP-TEE
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X')
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'AM64X')
 
     ::
 
         $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3-am65x CFG_ARM64_core=y
 
-.. ifconfig:: CONFIG_part_variant not in ('AM65X')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200')
 
     ::
 
