@@ -70,7 +70,7 @@ Kernel
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-5.10.y
 | Tag: 08.00.00.004
-| Kernel defconfig: multi_v7_defconfig
+| Kernel defconfig: ti_sdk_arm64_release_defconfig
 
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
@@ -86,7 +86,7 @@ Kernel
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.10.y
 | Tag: 08.00.00.004-rt
-| Kernel defconfig: multi_v7_defconfig
+| Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
 
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
