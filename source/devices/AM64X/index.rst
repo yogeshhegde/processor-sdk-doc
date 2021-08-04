@@ -13,7 +13,8 @@ Processor SDK AM64X Software Developer's Guide
 
    Overview
    Release_Specific
-   index_Linux
+   /linux/Foundational_Components
+   /linux/How_to_Guides
    index_RTOS
    index_Applications
 
