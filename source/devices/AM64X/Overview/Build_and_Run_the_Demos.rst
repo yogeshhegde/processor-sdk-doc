@@ -23,13 +23,6 @@ Below is a list of build targets supported by processor SDK AM64x:
 
 **How to build dependent components**
 
-Set-up Linux build environment to rebuild kernel, u-boot & DTB
-
-    ::
-
-        $ cd /<INSTALL-DIR>/bin/scripts
-        $ ./setup-ubuntu.sh
-
 Refer the respective user guides to build Linux and other RTOS/NO-RTOS packages
 
 -  For Linux Kernel, u-boot & DTB     `[Use Link] <../index_Linux.html>`__
