@@ -90,3 +90,4 @@ common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
 common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
 
 system/Demo_User_Guides/Benchmark_Demo_User_Guide
+system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide

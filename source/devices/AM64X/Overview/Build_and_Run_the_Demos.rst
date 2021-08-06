@@ -19,7 +19,9 @@ Below is a list of build targets supported by processor SDK AM64x:
 
 -  Refer :ref:`[Benchmark Demo User Guide] <Benchmark-Demo-User-Guide-label>`
 
+**WiFi OOB demo**
 
+-  Refer :ref:`[WiFi OOB Demo User Guide] <WiFi-OOB-Demo-User-Guide-label>`
 
 **How to build dependent components**
 
