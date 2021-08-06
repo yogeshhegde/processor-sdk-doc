@@ -52,7 +52,7 @@ Build U-Boot
 
     ::
 
-        $ make CROSS_COMPILE=arm-linux-gnueabihf- distclean
+        $ make CROSS_COMPILE=arm-none-linux-gnueabihf- distclean
 
     If you used 'O=am335x\_evm' as your object directory:
 
@@ -113,8 +113,8 @@ Build U-Boot
 
     ::
 
-        $ make CROSS_COMPILE=arm-linux-gnueabihf- O=am335x_evm am335x_evm_defconfig
-        $ make CROSS_COMPILE=arm-linux-gnueabihf- O=am335x_evm
+        $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am335x_evm am335x_evm_defconfig
+        $ make CROSS_COMPILE=arm-none-linux-gnueabihf- O=am335x_evm
 
     .. note::
         Not all possible build targets for a given platform are listed
@@ -160,15 +160,15 @@ Build U-Boot
 
        .. code-block:: console
 
-          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
 
        *A53*
 
        .. code-block:: console
 
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
 
     .. ifconfig:: CONFIG_part_variant in ('J721E')
 
@@ -186,15 +186,15 @@ Build U-Boot
 
        .. code-block:: console
 
-          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- j721e_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721e_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
 
        *A72*
 
        .. code-block:: console
 
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- j721e_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721e_evm_a72_defconfig O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
 
     .. ifconfig:: CONFIG_part_variant in ('J7200')
 
@@ -209,17 +209,17 @@ Build U-Boot
 
        .. code-block:: console
 
-          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
 
        *A72*
 
        .. code-block:: console
 
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- j7200_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j7200_evm_a72_defconfig O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
           $ cd <path to K3-image-gen project>
-          $ make ARCH=arm CROSS_COMPILE=aarch64-linux-gnu- SOC=j7200 SBL=<output directory>/r5/spl/u-boot-spl.bin
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- SOC=j7200 SBL=<output directory>/r5/spl/u-boot-spl.bin
 
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')

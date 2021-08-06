@@ -51,11 +51,11 @@ U-Boot
 | uBoot Version: 2021.01
 | uBoot Description: 08.00.00.004
 
-| Clone: ssh://git@bitbucket.itg.ti.com/lcpdpub/ti-u-boot.git
+| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: 08.00.00.004
 | uBoot Tag: 08.00.00.004
 
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 
 Kernel
 -------------------------
@@ -67,12 +67,12 @@ Kernel
 | Kernel Version: 5.10.41
 | Kernel Description: 08.00.00.004
 
-| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-5.10.y
 | Tag: 08.00.00.004
 | Kernel defconfig: ti_sdk_arm64_release_defconfig
 
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
@@ -83,36 +83,34 @@ Kernel
 | RT Kernel Version: 5.10.41-rt39<br>
 | Kernel Description: 08.00.00.004-rt
 
-| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.10.y
 | Tag: 08.00.00.004-rt
 | Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
 
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 
 Yocto
 ------------------------
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 15f3d4a3c3773294f1cdb66a88744930941a892e
-| ti-rtos-firmware: Add soft link to the rtos firmware binaries
+| Head Commit: 15f3d4a3c3773294f1cdb66a88744930941a892e ti-rtos-firmware: Add soft link to the rtos firmware binaries
 | Date: 2021-07-23
 | Version: dunfell-3.1
 
-| Clone: https://git.yoctoproject.org/meta-ti
+| Clone: git://git.yoctoproject.org/meta-ti
 | Branch: dunfell
 | Release Tag: 08.00.00.004
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: ae47bd7fbea2776a4f8792f20c493d7959ee2f54
-| iproute2: upgrade to 5.10
+| Head Commit: ae47bd7fbea2776a4f8792f20c493d7959ee2f54 iproute2: upgrade to 5.10
 | Date: 2021-07-21
 | Version: 2020.05
 
-| Clone: https://arago-project.org/git/meta-arago.git
+| Clone: git://git.yoctoproject.org/git/meta-arago.git
 | Branch: dunfell
 | Release Tag: 08.00.00.004
 |
