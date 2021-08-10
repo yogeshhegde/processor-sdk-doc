@@ -1,3 +1,8 @@
+.. _getting_started_with_pssp:
+
+Getting Started with PRU Software Support Package
+=================================================
+
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Getting_Started_Guide
 .. rubric:: Overview
    :name: overview-pruss-getting-started
@@ -6,16 +11,15 @@
 
  This section covers the software aspects of getting started on the PRU-ICSS and
  the PRU_ICSSG. Hardware information, training material, software development
- resources, and more are currently located on the `PRU-ICSS wiki page
- <http://processors.wiki.ti.com/index.php/PRU-ICSS>`__
+ resources, and more are in the :ref:`pru_icss_icssg_overview`
 
 
 The PRU Software Support Package provides support for the PRU-ICSS
-Subsystem in AM335x, AM437x, AM57xx, and K2G devices. This package
+Subsystem in AM335x, AM437x, AM57xx, AM64x, AM65x, and K2G devices. This package
 contains:
 
 -  Support for ARM<->PRU interaction via remoteproc and rpmsg Linux
-   drivers
+   drivers (only Processor SDK Linux 7.3 and earlier)
 
    -  Remoteproc supports basic control functions such as firmware load,
       start/halt, simple debug, and interrupt managing
@@ -41,11 +45,13 @@ contains:
       `Linux Processor SDK for
       AM57xx <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-LINUX-AM57X/latest/index_FDS.html>`__,
       `Linux Processor SDK for
+      AM64x <http://software-dl.ti.com/processor-sdk-linux/esd/AM64X/latest/index_FDS.html>`__
+      `Linux Processor SDK for
       AM65xx <http://software-dl.ti.com/processor-sdk-linux/esd/AM65X/latest/index_FDS.html>`__
       or `Linux Processor SDK for
       K2G <http://software-dl.ti.com/processor-sdk-linux/esd/K2G/latest/index_FDS.html>`__
    -  The PRU Software Support Package is built into the Linux Processor
-      SDK in the '<%SDK\_INSTALL\_DIR%>/example-applications/' folder
+      SDK in the '<%SDK_INSTALL_DIR%>/example-applications/' folder
 
 -  ARM running RTOS
 
@@ -55,8 +61,10 @@ contains:
       AM437x <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-RTOS-AM437X/latest/index_FDS.html>`__,
       `RTOS Processor SDK for
       AM57xx <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-RTOS-AM57X/latest/index_FDS.html>`__,
+      `MCU+ SDK RTOS/NO-RTOS for
+      AM64x <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM64X>`__
       `RTOS Processor SDK for
-      AM65xx <http://software-dl.ti.com/processor-sdk-rtos/esd/AM65X/latest/index_FDS.html>`__
+      AM65xx <https://www.ti.com/tool/download/PROCESSOR-SDK-RTOS-AM65X>`__
       or `RTOS Processor SDK for
       K2G <http://software-dl.ti.com/processor-sdk-rtos/esd/K2G/latest/index_FDS.html>`__
    -  `PRU Software Support
@@ -78,10 +86,11 @@ a few requirements once you have installed to your preferred directory.
    `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__.
    Location does not matter, but the default installation directory is
    strongly suggested and makes using the SDK's scripts much easier.
-#. Install the PRU Software Support Package into the SDK you chose above
-   Starting with Linux Processor SDK v2.0.1.7 the support package is
-   built into the SDK at the 'examples-applications/pru-icss-x.y.z/'
-   folder
+#. If your Processor SDK Linux has a top-level example-applications folder, the PRU
+   Software Support Package is built into the SDK at
+   'example-applications/pru-icss-x.y.z/'. Otherwise you can download the files
+   from the public Git repository
+   `here <https://git.ti.com/pru-software-support-package/pru-software-support-package/trees/master>`__.
 #. (**Optional**) Install CCS to the directory of your choosing
    CCS installation instruction for Linux can be found
    `here <http://processors.wiki.ti.com/index.php/Linux_Host_Support_CCSv7#Installation_Instructions>`__.
@@ -114,9 +123,7 @@ a few requirements once you have installed to your preferred directory.
 | Beginning with Linux Processor SDK v2.0.2.11 the remoteproc and rpmsg
   modules are enabled by default and included out of the box in the
   Linux Processor SDK. Therefore, you do not need to make any menuconfig
-  changes in order to load firmwares in the PRU cores. If you are using
-  an older Linux Processor SDK please see the archive links at the
-  bottom of this page.
+  changes in order to load firmwares in the PRU cores.
 
 .. rubric:: How to Begin Programming
    :name: how-to-begin-programming
@@ -124,19 +131,17 @@ a few requirements once you have installed to your preferred directory.
 Programming the PRU core is not terribly different from programming any
 other core. Because we now have a C compiler we are able to write
 regular C code and have it perform tasks on the PRU cores. A great place
-to start development is to take a look at the `Hands-on
-Labs <http://processors.wiki.ti.com/index.php/PRU_Training:_Hands-on_Labs>`__ that are provided in
-the PRU Software Support Package.
+to start development is to take a look at the :ref:`pru_hands_on_labs`
+that are provided in the PRU Software Support Package.
 
 .. rubric:: Register Header Files
    :name: register-header-files
 
 Several register header files were created to help facilitate quick and
 easy configuration. In Linux, these are located in the
-<SDK\_install\_dir>/example-applications/pru-icss-x.y.z/include
+<SDK_install_dir>/example-applications/pru-icss-x.y.z/include
 directory by default. In the Git repository these are located in the
-include folder. See the `header
-files <Foundational_Components_PRU-ICSS_PRU_ICSSG.html#header-files>`__ page for more information.
+include folder. See the :ref:`pru_header_files` page for more information.
 
 | 
 

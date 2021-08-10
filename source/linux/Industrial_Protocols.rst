@@ -1,3 +1,5 @@
+.. _industrial_protocols:
+
 ######################
 Industrial Protocols
 ######################

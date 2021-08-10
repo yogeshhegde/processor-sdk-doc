@@ -1,3 +1,8 @@
+.. _pru_header_files:
+
+Header Files
+============
+
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Header_Files
 
 .. rubric:: Introduction
@@ -41,15 +46,15 @@ layout is like this:
 | struct{
 
 union{
-u32 register\_name;
+u32 register_name;
 struct {
-bit\_field\_names : bit\_size;
+bit_field_names : bit_size;
 . . .
-} register\_name\_bit;
+} register_name_bit;
 };
 . . .
-| } register\_set;
+| } register_set;
 
 Thus you can access a register programmatically through the structure
-(e.g., register\_set.register\_name[\_bit.bitfield\_name] = value).
+(e.g., register_set.register_name[_bit.bitfield_name] = value).
 

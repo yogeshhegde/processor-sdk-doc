@@ -72,7 +72,6 @@ linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc_and_RPMsg
 linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet
 linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components/PRU-ICSS-Labs
-common/PRU-ICSS/PRU-Hands-on-Labs
 linux/How_to_Guides
 linux/How_to_Guides_Host
 linux/How_to_Guides_Target
@@ -89,9 +88,14 @@ linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
+
+common/PRU-ICSS/Getting_Started_with_PSSP
+common/PRU-ICSS/Header_Files
+common/PRU-ICSS/Overview
 common/PRU-ICSS/PRU-Cape-Building-Demos
 common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
 common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
+common/PRU-ICSS/PRU-Hands-on-Labs
 
 system/Demo_User_Guides/Benchmark_Demo_User_Guide
 system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide

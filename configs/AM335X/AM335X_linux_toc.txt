@@ -71,8 +71,6 @@ linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Code_Composer_Studio
 linux/Foundational_Components_PRU-ICSS_PRU_ICSSG
-linux/Foundational_Components/PRU-ICSS-Getting-Started
-linux/Foundational_Components/PRU-ICSS-Header-Files
 linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc_and_RPMsg
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg_Quick_Start_Guide
@@ -143,6 +141,9 @@ linux/How_to_Guides_Board_Port
 linux/How_to_Guides/Board_Port/U-Boot
 linux/How_to_Guides/Board_Port/Linux
 linux/Documentation_Tarball
+common/PRU-ICSS/Getting_Started_with_PSSP
+common/PRU-ICSS/Header_Files
+common/PRU-ICSS/Overview
 common/PRU-ICSS/PRU-Cape-Building-Demos
 common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
 common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
