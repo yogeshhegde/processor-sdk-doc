@@ -119,7 +119,7 @@ Software Information
    Linux Software information
    ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   RemoteProc driver information at :ref:`pru_remoteproc_and_rpmsg`
+   RemoteProc driver information at :ref:`pru_remoteproc`
 
    .. ifconfig::  CONFIG_part_family in ('AM335X_family','AM437X_family','General_family')
 

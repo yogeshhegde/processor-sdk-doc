@@ -11,8 +11,9 @@ Introduction
 RPMsg is a method of passing messages and data between the PRU cores and
 the ARM core running Linux. RPMsg is
 enabled by a combination of remoteproc and the virtio framework. For
-more information on what's under the hood of remoteproc and RPMsg reference
-:ref:`pru_remoteproc_and_rpmsg`.
+more information about remoteproc, reference
+:ref:`pru_remoteproc`. For more information abour RPMsg, reference
+:ref:`pru_rpmsg`.
 
 This Quick Start Guide will walk you through every step necessary to run
 your first RPMsg example, from downloading the Linux Processor SDK, all
