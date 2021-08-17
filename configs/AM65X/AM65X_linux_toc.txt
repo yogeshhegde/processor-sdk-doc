@@ -81,7 +81,6 @@ linux/Foundational_Components/PRU-ICSS/RPMsg_Quick_Start_Guide
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet_sr10
-linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-sw-uart
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-icssg-pwm
 linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components/PRU-ICSS/PRU-EVMs
