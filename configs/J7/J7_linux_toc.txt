@@ -47,6 +47,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
 linux/Foundational_Components/Kernel/Kernel_Drivers/GPIO
 linux/Foundational_Components/Kernel/Kernel_Drivers/HYPERFLASH
 linux/Foundational_Components/Kernel/Kernel_Drivers/I2C
+linux/Foundational_Components/Kernel/Kernel_Drivers/MCAN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng_virt_mac
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
