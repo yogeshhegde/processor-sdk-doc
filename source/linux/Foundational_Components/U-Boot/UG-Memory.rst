@@ -206,6 +206,8 @@ variables here are **mmcroot** and **mmcrootfstype**.
         U-boot # mmc partconf 1 1 1 0
         U-boot # mmc rst-function 1 1
 
+.. _mmc-boot-label:
+
 Booting tiboot3.bin, tispl.bin and u-boot.img from eMMC boot partition (For K3 class of SoCs)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -451,6 +453,8 @@ To boot kernel from eMMC, use the following commands after writing rootfs to use
     => setenv bootpart 0
     => boot
 
+.. _U-Boot-USB-MSC-boot-label:
+
 Booting to U-Boot prompt from USB storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -493,7 +497,70 @@ Booting to U-Boot prompt from USB storage
 
   #. Connect the USB Mass storage device with the bootloader images and boot up the board.
 
-.. ifconfig:: CONFIG_part_family not in ('AM64X')
+
+Booting Linux from USB storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+  This feature is currently not supported.
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    To load the Linux kernel, Device Tree and the Root file system from USB Mass storage device, 
+    the following changes are required to be done,
+
+    - U-Boot
+
+      #. In U-Boot the USB controller can be used in either host or peripheral mode. For booting to linux kernel
+         from USB storage device, the USB port is to be set as host.
+      #. By default, the USB controller is set in peripheral mode.
+      #. If the boot media used to boot to U-Boot is USB Host mode(:ref:`U-Boot-USB-MSC-boot-label`) then, 
+         the USB controller is set to host mode during runtime. Therefore, no changes would be required in this case.
+      #. If a boot media other than USB Host is used, the USB controller needs to be set host mode and custom 
+         bootloader images are required to be built. Please refer to note in section :ref:`mmc-boot-label`
+
+    - Kernel
+
+      #. In kernel, by default the USB subsystem is built as modules. For booting from USB mass storage device,
+         USB subsytem is required to be built into the image. This can be done by making the following changes
+         in the configuration used for building kernel,
+
+      ::
+
+          CONFIG_USB=y
+          CONFIG_USB_XHCI_HCD=y
+          CONFIG_USB_XHCI_PLATFORM=y
+          CONFIG_USB_STORAGE=y
+          CONFIG_USB_GADGET=y
+          CONFIG_USB_CDNS3=y
+          CONFIG_USB_CDNS3_GADGET=y
+          CONFIG_USB_CDNS3_HOST=y
+          CONFIG_USB_CDNS3_TI=y
+
+    - Copying the images to USB storage device
+
+      #. After making the required changes mentioned above, build the kernel and bootloader images
+      #. The USB Mass storage device should have two partitions,
+
+        - boot
+
+          - For creating this parition please refer :ref:`U-Boot-USB-MSC-boot-label`
+        - rootfs
+
+          - An ext4 partition with filesystem and the following images in /boot/ directory
+
+            - Kernel image
+            - device tree file
+
+    - During the boot, cancel the autoboot at U-Boot and run the following command on U-Boot
+      prompt
+
+      .. code-block:: console
+
+        => run usbboot
+
+.. ifconfig:: CONFIG_part_family not in ('AM64X_family', 'J7_family')
 
     Booting Linux from USB storage
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
