@@ -206,6 +206,8 @@ variables here are **mmcroot** and **mmcrootfstype**.
         U-boot # mmc partconf 1 1 1 0
         U-boot # mmc rst-function 1 1
 
+.. _mmc-boot-label:
+
 Booting tiboot3.bin, tispl.bin and u-boot.img from eMMC boot partition (For K3 class of SoCs)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -256,7 +258,116 @@ respective addresses.
     => fatload mmc 1 ${loadaddr} u-boot.img
     => mmc write ${loadaddr} 0x1800 0x2000
 
+For loading images from a FAT partition on a different media, replace mmc with the required
+media. For example, to load images from a FAT partition on a USB Storage device connected to
+the zeroth instance of usb,
 
+.. code-block:: console
+
+  => fatload usb 0 ${loadaddr} <file name>
+
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200')
+
+  .. note::
+      USB0 instance on J721e/J7200 base board is connected to TypeC port that can be
+      used both as host port and device port. By default, USB0 is port is
+      configured to be in **peripheral mode**. Since U-Boot does not support
+      dynamic switching of USB roles, below DT fragment needs to be
+      applied and U-Boot image needs to be rebuilt to make USB0 port to be
+      USB 3.0 host port.
+
+  ::
+
+      diff --git a/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi b/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
+      index 50effb4812b2..28986c4d2c2a 100644
+      --- a/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
+      +++ b/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
+      @@ -184,11 +184,10 @@
+
+       &usbss0 {
+              u-boot,dm-spl;
+      -       ti,usb2-only;
+       };
+
+       &usb0 {
+      -       dr_mode = "peripheral";
+      +       dr_mode = "host";
+              u-boot,dm-spl;
+       };
+
+  ::
+
+      diff --git a/arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi b/arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi
+      index 1b0f5658200f..daa05291b4cc 100644
+      --- a/arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi
+      +++ b/arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi
+      @@ -155,11 +155,10 @@
+ 
+       &usbss0 {
+              u-boot,dm-spl;
+      -       ti,usb2-only;
+       };
+ 
+       &usb0 {
+      -       dr_mode = "peripheral";
+      +       dr_mode = "host";
+              u-boot,dm-spl;
+       };
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+  .. note::
+      USB instance in AM64 SoC is brought out using a USB 2.0 micro-AB port on the GP EVM. This port can be
+      used in both host and device modes. By default in U-Boot, peripheral mode is supported. 
+      For accessing USB storage devices in U-Boot, dr_mode should be set to "host" in the U-Boot 
+      device tree file. The following diff shows the required changes to be done. On Starter Kit, 
+      USB instance in AM64 SoC is brought out using a USB 3.0 Type A port, so the mode is set to
+      host by default and the following diff would not be required.
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+  .. note::
+      There are two instance of USB on AM654 SoC. The zero instance is not brought out on EVM
+      and the first instance is brought using a USB 2.0 micro-AB port on the EVM.
+      By default in U-Boot, peripheral mode is supported. For accessing USB storage devices in U-Boot,
+      dr_mode should be set to "host" in the U-Boot device tree file. The following diff shows the
+      required changes to be done.
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    ::
+
+        diff --git a/arch/arm/dts/k3-am642-evm-u-boot.dtsi b/arch/arm/dts/k3-am642-evm-u-boot.dtsi
+        index d066973f89f1..ff8afee09402 100644
+        --- a/arch/arm/dts/k3-am642-evm-u-boot.dtsi
+        +++ b/arch/arm/dts/k3-am642-evm-u-boot.dtsi
+        @@ -55,7 +55,7 @@
+        };
+
+         &usb0 {
+        -       dr_mode="peripheral";
+        +       dr_mode="host";
+                u-boot,dm-spl;
+         };
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+    ::
+
+        diff --git a/arch/arm/dts/k3-am654-base-board-u-boot.dtsi b/arch/arm/dts/k3-am654-base-board-u-boot.dtsi
+        index fd8f88bd3451..a754400ca122 100644
+        --- a/arch/arm/dts/k3-am654-base-board-u-boot.dtsi
+        +++ b/arch/arm/dts/k3-am654-base-board-u-boot.dtsi
+        @@ -108,5 +108,9 @@
+                       <&mcu_udmap 0x4303>; /* mgmnt rsp slice 1 */
+         };
+
+        +&usb1 {
+        +       dr_mode = "host";
+        +};
+        +
+         /* Disable ICSSG2 EMAC1 */
+         /delete-node/ &icssg2_emac1;
 
 To give the ROM access to the boot partition, the following commands must be
 used for the first time:
@@ -342,9 +453,114 @@ To boot kernel from eMMC, use the following commands after writing rootfs to use
     => setenv bootpart 0
     => boot
 
-|
+.. _U-Boot-USB-MSC-boot-label:
 
-.. ifconfig:: CONFIG_part_family not in ('AM64X')
+Booting to U-Boot prompt from USB storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. ifconfig:: CONFIG_part_variant in ('J7200', 'J721E')
+
+  J721e and J7200 SoC does not support booting from USB mass storage devices. 
+  However, it can be used as storage device at U-Boot prompt.
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+  Booting to U-Boot prompt from USB storage is supported. The following are the steps to be followed,
+  
+  #. Build the bootloader images using default "am64x_evm_r5_defconfig"
+     and "am64x_evm_a53_defconfig" configs files. The configs required for
+     USB MSC boot are already enabled. For instructions to build the bootloader 
+     images please refer to :ref:`Build-U-Boot-label`.
+
+  #. Create a FAT32 partition with boot flag enabled on the USB storage device.
+
+  #. Copy the bootloader images(tiboot3.bin, tispl.bin, u-boot.img) into the above created partition.
+
+  #. Set the boot mode switches to usb host mode by referring to the Technical Reference manual.
+
+  #. Connect the USB Mass storage device with the bootloader images and boot up the board.
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+  Booting to U-Boot prompt from USB storage is supported. The following are the steps to be followed,
+
+  #. Build the bootloader images using default "am65x_evm_r5_usbmsc_defconfig"
+     and "am65x_evm_a53_defconfig" configs files. The configs required for
+     USB MSC boot are already enabled. For instructions to build the bootloader 
+     images please refer to :ref:`Build-U-Boot-label`.
+
+  #. Create a FAT32 partition with boot flag enabled on the USB storage device.
+
+  #. Copy the bootloader images(tiboot3.bin, sysfw.itb, tispl.bin, u-boot.img) into the above created partition.
+
+  #. Set the boot mode switches to usb host mode by referring to the Technical Reference manual.
+
+  #. Connect the USB Mass storage device with the bootloader images and boot up the board.
+
+
+Booting Linux from USB storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+  This feature is currently not supported.
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    To load the Linux kernel, Device Tree and the Root file system from USB Mass storage device, 
+    the following changes are required to be done,
+
+    - U-Boot
+
+      #. In U-Boot the USB controller can be used in either host or peripheral mode. For booting to linux kernel
+         from USB storage device, the USB port is to be set as host.
+      #. By default, the USB controller is set in peripheral mode.
+      #. If the boot media used to boot to U-Boot is USB Host mode(:ref:`U-Boot-USB-MSC-boot-label`) then, 
+         the USB controller is set to host mode during runtime. Therefore, no changes would be required in this case.
+      #. If a boot media other than USB Host is used, the USB controller needs to be set host mode and custom 
+         bootloader images are required to be built. Please refer to note in section :ref:`mmc-boot-label`
+
+    - Kernel
+
+      #. In kernel, by default the USB subsystem is built as modules. For booting from USB mass storage device,
+         USB subsytem is required to be built into the image. This can be done by making the following changes
+         in the configuration used for building kernel,
+
+      ::
+
+          CONFIG_USB=y
+          CONFIG_USB_XHCI_HCD=y
+          CONFIG_USB_XHCI_PLATFORM=y
+          CONFIG_USB_STORAGE=y
+          CONFIG_USB_GADGET=y
+          CONFIG_USB_CDNS3=y
+          CONFIG_USB_CDNS3_GADGET=y
+          CONFIG_USB_CDNS3_HOST=y
+          CONFIG_USB_CDNS3_TI=y
+
+    - Copying the images to USB storage device
+
+      #. After making the required changes mentioned above, build the kernel and bootloader images
+      #. The USB Mass storage device should have two partitions,
+
+        - boot
+
+          - For creating this parition please refer :ref:`U-Boot-USB-MSC-boot-label`
+        - rootfs
+
+          - An ext4 partition with filesystem and the following images in /boot/ directory
+
+            - Kernel image
+            - device tree file
+
+    - During the boot, cancel the autoboot at U-Boot and run the following command on U-Boot
+      prompt
+
+      .. code-block:: console
+
+        => run usbboot
+
+.. ifconfig:: CONFIG_part_family not in ('AM64X_family', 'J7_family')
 
     Booting Linux from USB storage
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -421,39 +637,6 @@ To boot kernel from eMMC, use the following commands after writing rootfs to use
 
     **Note:**: <hex\_len> must be at least the hex size of the k2-fw-initrd.cpio.gz file size.
 
-    .. ifconfig:: CONFIG_part_family in ('J7_family')
-
-        .. rubric:: Enabling USB 3.0 host port on J721e EVM
-           :name: j721e-evm-usb-30-host
-
-        .. note::
-            J721e SoC does not support booting from USB mass storage devices. But can be used as storage device at U-Boot prompt.
-
-        USB0 instance on J721e base board is connected to TypeC port that can be
-        used both as host port and device port. By default, USB0 is port is
-        configured to be in **peripheral mode**. Since U-Boot does not support
-        dynamic switching of USB roles, below DT fragment needs to be
-        applied and U-Boot image needs to be rebuilt to make USB0 port to be
-        USB 3.0 host port.
-
-        ::
-
-            diff --git a/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi b/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
-            index 50effb4812b2..28986c4d2c2a 100644
-            --- a/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
-            +++ b/arch/arm/dts/k3-j721e-common-proc-board-u-boot.dtsi
-            @@ -184,11 +184,10 @@
-
-             &usbss0 {
-                    u-boot,dm-spl;
-            -       ti,usb2-only;
-             };
-
-             &usb0 {
-            -       dr_mode = "peripheral";
-            +       dr_mode = "host";
-                    u-boot,dm-spl;
-             };
 
     Booting from SD/eMMC from SPL (Single stage or Falcon mode)
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
