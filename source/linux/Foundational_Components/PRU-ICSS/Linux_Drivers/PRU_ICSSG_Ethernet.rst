@@ -36,6 +36,7 @@ Features supported
 - 1G/100M/10M Full-Duplex Ethernet ports, Half-Duplex is not supported.
 - RGMII mode with TX delay (configured in DTS). RX delay is not supported and
   has to be provided by PHY.
+- MII mode
 - Multiple TX queues (upto 4), single RX queue.
 - PTP Ordinary clock
 - PPS Out
@@ -46,7 +47,12 @@ Features supported
 - VLAN HW filtering
 - All-multi mode is always enabled
 - Multi-cast HW filtering
+- Different MII modes for Real-Time Ethernet ports (MII_G_RT1 and MII_G_RT2). For example, MII_G_RT1=MII and MII_G_RT1=RGMII
 
+.. rubric:: **Limitations**
+
+Both MIIx ports have to be enabled in DT even if one of them is not used (no Ethernet PHY wired) for proper PRU_ICSSG Ethernet driver work.
+Use fixed-link for unused port as workaround.
 
 Driver Configuration
 ####################
