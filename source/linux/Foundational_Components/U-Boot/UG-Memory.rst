@@ -497,6 +497,13 @@ Booting to U-Boot prompt from USB storage
 
   #. Connect the USB Mass storage device with the bootloader images and boot up the board.
 
+.. note::
+  While using ``usb reset`` or ``usb start`` command in U-Boot, or booting from a USB Mass storage device, some of the USB
+  devices fail to get detected. This issue is seen because these USB
+  devices are failing to follow the spec for power good delay. It can be
+  resolved by overriding the power good delay using the environment variable
+  ``usb_pgood_delay``. Setting it to 2000 should be good enough for all cases.
+
 
 Booting Linux from USB storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
