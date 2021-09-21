@@ -180,6 +180,7 @@ Build Baremetal Demos and Update SD card
 Directory Structure
 -------------------
 
+The source code can be found at `[this link] <https://git.ti.com/cgit/processor-sdk/sitara-apps/>`__.
 
 +------+--------------------------------------------------+----------------------------------------------------------------------------------------+
 |      | **Directory Name**                               | **Description**                                                                        |
