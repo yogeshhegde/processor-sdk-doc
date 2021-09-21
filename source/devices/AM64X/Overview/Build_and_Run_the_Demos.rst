@@ -4,7 +4,8 @@ Build and Run the Demos
 **Build Instructions**
 
 Processor SDK AM64x support GNU make based build system. Refer to
-/<INSTALL-DIR>/sitara-apps/makerules folder for all supported demos and build targets
+sitara-apps/makerules folder in `this link <https://git.ti.com/cgit/processor-sdk/sitara-apps/>`__
+for all supported demos and build targets.
 
 Below is a list of build targets supported by processor SDK AM64x:
 
