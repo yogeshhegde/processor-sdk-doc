@@ -1,3 +1,5 @@
+.. _pru_icssg_ethernet:
+
 ******************
 PRU_ICSSG Ethernet
 ******************
