@@ -1,10 +1,13 @@
 .. include:: /replacevars.rst.inc
 
 CPSWng virtual MAC (remoteproc)
--------------------------------------------------------
+-------------------------------
+
+.. contents:: :local:
+    :depth: 3
 
 Introduction
-""""""""""""
+============
 
 The TI |__PART_FAMILY_NAME__| SoC has integrated nine-port Gigabit Ethernet Switch subsystem
 into device MAIN domain named CPSW0 and has 8 external Ethernet ports.
@@ -81,8 +84,8 @@ This solution is illustrated below.
             +----------------------------------------------+
 
 
-.. rubric:: **Drivers initialization**
-   :name: k3-cpsw-virt-mac-init
+Drivers initialization
+""""""""""""""""""""""
 
 The Linux TI remoteproc core ensures proper R5F core initialization, loads and starts the EthSwitch firmware,
 and creates the default virtio devices for interacting with this firmware.
@@ -96,8 +99,8 @@ Once started, the j721e-cpsw-virt-mac driver will wait for rpmsg_kdrv_switch dri
 
    The EthSwitch FW may also be loaded by the bootloader, and, in this case, the remoteproc components will be started in "IPC-only" mode.
 
-.. rubric:: **rpmsg_kdrv_switch driver**
-   :name: k3-rpmsg_kdrv_switch-drv
+rpmsg_kdrv_switch driver
+""""""""""""""""""""""""
 
 The rpmsg_kdrv_switch driver (drivers/rpmsg-kdrv/rpmsg_kdrv_switch.c) does not perform any functions by iteslf,
 except checking for the supported EthSwitch FW version. It's intended to provide the RPMSG-KDRV rpmsg_remotedev API interface to be used by the j721e-cpsw-virt-mac driver.
@@ -109,8 +112,8 @@ Features controlled by the RPMSG-KDRV rpmsgi_remotedev API include:
 - dbg: CPSW0 register access
 - dbg: statistic print request on R5F console (ioctl)
 
-.. rubric:: **j721e-cpsw-virt-mac driver**
-   :name: k3-j721e-cpsw-virt-mac-drv
+j721e-cpsw-virt-mac driver
+""""""""""""""""""""""""""
 
 The j721e-cpsw-virt-mac driver (drivers/net/ethernet/ti/j721e-cpsw-virt-mac.c) follows the standard Linux network interface architecture and supports the following features:
 
@@ -124,8 +127,8 @@ The j721e-cpsw-virt-mac driver (drivers/net/ethernet/ti/j721e-cpsw-virt-mac.c) f
 
 - Interrupt Pacing is not supported by HW. NAPI is used by driver.
 
-.. rubric:: **Network data flow**
-   :name: k3-j721e-cpsw-virt-mac-data-flow
+Network data flow
+"""""""""""""""""
 
 The EthSwitch FW is responsible for UDMA resource management and allocation between attached remote cores.
 The j721e-cpsw-virt-mac driver requests the EthSwitch FW for available UDMA resources during initialization by performing an attach operation: TX channel and RX flow through the Control path (rpmsg_remotedev API).
@@ -178,43 +181,12 @@ TThe EthSwitch FW needs to know which traffic to segregate to the Linux Host; th
 registers the MAC address assigned to the virt_mac Network device within EthSwitch FW using Control path.
 
 Once configured, the network data can be passed between the Linux virt_mac Network device and the CPSW0 without interaction with EthSwitch FW.
-|
-|
 
-Enabling j721e-cpsw-virt-mac driver
-"""""""""""""""""""""""""""""""""""
+Driver Configuration
+====================
 
-The |__SDK_FULL_NAME__| package has a |__PART_FAMILY_NAME__| rpmsg_kdrv_switch and j721e-cpsw-virt-mac drivers enabled by default to be built as modules.
-
-To enable/disable j721e-cpsw-virt-mac driver support manually, start the *Linux Kernel Configuration*
-tool:
-
-::
-
-    # make ARCH=arm64 menuconfig
-
-| Select *Device Drivers* from the main menu ->
-| Select *Rpmsg virtual device drivers* ->
-| Select ** as shown here:
-
-::
-
-   -*- RPMSG virtual device interface
-   <M> RPMSG virtual eth switch device support
-    ...
-
-| Select *Device Drivers* from the main menu ->
-| Select *Network device support* ->
-| Select *Ethernet driver support* ->
-| Select ** as shown here:
-
-::
-
-    [*]   Texas Instruments (TI) devices
-    <M>     TI Virtual Eth MAC driver
-    ...
-
-Kernel Kconfig options:
+The |__SDK_FULL_NAME__| package has a |__PART_FAMILY_NAME__| rpmsg_kdrv_switch and j721e-cpsw-virt-mac drivers enabled by default and built as modules.
+In case of custom builds, please ensure following configs are enabled.
 
 ::
 
@@ -223,20 +195,19 @@ Kernel Kconfig options:
    CONFIG_TI_RDEV_ETH_SWITCH_VIRT_EMAC
 
 
-.. rubric:: **Device tree bindings**
-   :name: k3-j721e-cpsw-virt-mac-dt-binding
+Device tree bindings
+====================
 
 The DT bindings description can be found at:
 
-|   `Documentation/devicetree/bindings/net/ti,cpsw-virt-mac.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-4.19.y/Documentation/devicetree/bindings/net/ti,cpsw-virt-mac.txt>`__
-|
+|   `Documentation/devicetree/bindings/net/ti,cpsw-virt-mac.txt <https://git.ti.com/ti-linux-kernel/ti-linux-kernel/blobs/ti-linux-5.10.y/Documentation/devicetree/bindings/net/ti,cpsw-virt-mac.txt>`__
 |
 
-User space interface
-""""""""""""""""""""
+User guide
+==========
 
-.. rubric:: Starting the interface
-   :name: k3-j721e-cpsw-virt-mac-bringing-up-interfaces
+Starting the interface
+""""""""""""""""""""""
 
 Eth0 can be started by default or configured manually:
 
@@ -258,8 +229,8 @@ Eth0 can be started by default or configured manually:
 
     ifconfig ethX <ip> netmask <mask> up
 
-.. rubric:: Set MAC address
-   :name: k3-j721e-cpsw-virt-mac-set-mac
+Set MAC address
+"""""""""""""""
 
 The j721e-cpsw-virt-mac supports changing the HW MAC address, but this operation can be performed only when the network device is inactive (down).
 
@@ -269,8 +240,11 @@ The j721e-cpsw-virt-mac supports changing the HW MAC address, but this operation
    ip link set dev ethX address <MAC-addr>
    ip link set dev ethX up
 
-.. rubric:: ethtool - Get driver information
-   :name: k3-j721e-cpsw-virt-mac-ethtool-i-driver
+ethtool interface
+"""""""""""""""""
+
+Get driver information
+^^^^^^^^^^^^^^^^^^^^^^
 
 The CPSW0 interface can be identified by using ``ethtool -i|--driver`` command.
 It also provides some information about supported features.
@@ -280,8 +254,8 @@ It also provides some information about supported features.
     # ethtool -i <dev>
     ...
 
-.. rubric:: ethtool - Display standard information about device/link
-   :name: k3-j721e-cpsw-virt-mac-ethtool-display-info
+Display standard information about device/link
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -290,17 +264,16 @@ It also provides some information about supported features.
 .. note::
    This command is supported, but not very useful, as the link is always up and no PHY.
 
-.. rubric:: ethtool - Show permanent hardware address
-   address
-   :name: k3-j721e-cpsw-virt-mac-ethtool-show-permaddr
+Show permanent hardware address
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
            # ethtool -P eth0
            Permanent address: a0:f6:fd:a6:46:6e"
 
-.. rubric:: ethtool - RX/TX checksum offload
-   :name: k3-j721e-cpsw-virt-mac-csum-offload
+RX/TX checksum offload
+^^^^^^^^^^^^^^^^^^^^^^
 
 The driver enables RX checksum offload by default. The current status can be obtained by using "ethtool -k" command:
 
@@ -324,8 +297,8 @@ It can be disabled/enabled by using "ethtool -K" command:
 
     TX checksum offload enablement is controlled by EthSwitch FW and current status provided to j721e-cpsw-virt-mac driver.
 
-.. rubric:: ethtool - driver testing
-   :name: k3-j721e-cpsw-virt-mac-test
+Driver testing
+^^^^^^^^^^^^^^
 
 ::
 
