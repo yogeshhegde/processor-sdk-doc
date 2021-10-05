@@ -485,10 +485,56 @@ Exception: ALE table dumped as raw array of ALE records (3 * u32 per record).
            0x0060:         38 00 00 00 00 00 00 00 3c 00 00 00 00 00 00 00 
            ...
 
+Interrupt pacing
+""""""""""""""""
 
+The Interrupt pacing (IRQ coalescing) based on hrtimers for RX/TX data path separately can be enabled by following ethtool commands (min value is 20us).
+
+The RX data path - only one queue:
+
+::
+
+  # ethtool -C ethX rx-usecs N
+
+The TX data path - any of enabed TX queue (up to 8):
+
+::
+
+  - by default enables coalesing for TX0
+    # ethtool -C ethX tx-usecs N
+
+  - configure TX0
+    # ethtool -Q ethX queue_mask 1 --coalesce tx-usecs N
+
+  - configure TX1
+    # ethtool -Q ethX queue_mask 2 --coalesce tx-usecs N
+
+  - configure TX0 and TX1
+    # ethtool -Q ethX queue_mask 3 --coalesce tx-usecs N --coalesce tx-usecs N
+
+The Interrupt pacing (IRQ coalescing) configuration can be retrieved by commands:
+
+::
+
+    # ethtool -c ethX
+
+  - show configuration for TX0 and TX1:
+    # ethtool -Q eth0 queue_mask 3 --show-coalesce
+
+It is also possible to use standard Linux Net core hard irqs deferral feature which can be enabled by configuring:
+
+::
+
+ /sys/class/net/ethX/
+  gro_flush_timeout (in ns)
+  napi_defer_hard_irqs (number of retries)
+
+Enabling of hard IRQ will be deferred napi_defer_hard_irqs times with gro_flush_timeout timeout.
+
+The main difference of the hard irqs deferral feature from ethtool interrupt pacing (IRQ coalescing) is that it affects on both RX/TX data path and all TX/RX queues simultaneously.
 
 Common Platform Time Sync (CPTS) module
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""
 
 The Common Platform Time Sync (CPTS) module is used to facilitate host
 control of time sync operations. It enables compliance with the IEEE
