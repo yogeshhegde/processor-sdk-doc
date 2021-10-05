@@ -122,10 +122,11 @@ The j721e-cpsw-virt-mac driver (drivers/net/ethernet/ti/j721e-cpsw-virt-mac.c) f
    - IP address assignment
    - Basic Ethertool functions
    - RX/TX csum offload (if enabled by EthSwitch FW)
+   - SW Interrupt Pacing using timers.
 
 *Not supported*:
 
-- Interrupt Pacing is not supported by HW. NAPI is used by driver.
+- HW Interrupt Pacing is not supported.
 
 Network data flow
 """""""""""""""""
@@ -313,3 +314,30 @@ The j721e-cpsw-virt-mac can run several types of tests (if enabled by EthSwitch 
    - RPMSG Read reg: sends CPSW0 CPSW_SS_CPSW_NUSS_IDVER_REG (0x0C000000) read register command to EthSwitch FW
    - RPMSG Dump stat: sends command to EthSwitch FW to dump current status and statistics
 
+Interrupt pacing
+""""""""""""""""
+
+The Interrupt pacing (IRQ coalescing) based on hrtimers for RX/TX data path separately can be enabled by ethtool commands (min value is 20us):
+
+::
+
+  #  ethtool -C ethX tx-usecs N
+  #  ethtool -C ethX rx-usecs N
+
+The Interrupt pacing (IRQ coalescing) configuration can be retrieved by commands:
+
+::
+
+  #  ethtool -c ethX
+
+It is also possible to use standard Linux Net core hard irqs deferral feature which can be enabled by configuring:
+
+::
+
+ /sys/class/net/ethX/
+  gro_flush_timeout (in ns)
+  napi_defer_hard_irqs (number of retries)
+
+Enabling of hard IRQ will be deferred napi_defer_hard_irqs times with gro_flush_timeout timeout.
+
+The main difference of the hard irqs deferral feature from ethtool interrupt pacing (IRQ coalescing) is that it affects on both RX/TX data path simultaneously.
