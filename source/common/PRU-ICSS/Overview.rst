@@ -124,12 +124,12 @@ Software Information
    .. ifconfig::  CONFIG_part_family in ('AM335X_family','AM437X_family','General_family')
 
       Information about general purpose Ethernet over PRU is at
-      `PRU-ICSS Ethernet <../../linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet.html>`__
+      :ref:`pru_icss_ethernet`.
 
    .. ifconfig::  CONFIG_part_family in ('AM64X_family','J7_family')
 
       Information about general purpose Ethernet over PRU is at
-      `PRU_ICSSG Ethernet <../../linux/Foundational_Components/PRU-ICSSG/Linux_Drivers/PRU_ICSSG_Ethernet.html>`__
+      :ref:`pru_icssg_ethernet`.
 
    .. ifconfig:: CONFIG_part_family not in ('AM64X_family')
 

@@ -1,4 +1,4 @@
-.. http://processors.wiki.ti.com/index.php/PRU-ICSS_Ethernet
+.. _pru_icss_ethernet:
 
 PRU-ICSS Ethernet
 -----------------
