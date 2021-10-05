@@ -82,7 +82,7 @@ Training Material
 
    .. ifconfig:: CONFIG_sdk in ('PLSDK','PSDKL')
 
-      `RPMsg Quick Start Guide <../../linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg_Quick_Start_Guide.html>`__
+      :ref:`rpmsg_quick_start_guide`
 
 |
 
