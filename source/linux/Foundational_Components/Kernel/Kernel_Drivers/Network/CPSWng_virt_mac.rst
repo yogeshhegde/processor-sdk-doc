@@ -10,7 +10,7 @@ Introduction
 ============
 
 The TI |__PART_FAMILY_NAME__| SoC has integrated nine-port Gigabit Ethernet Switch subsystem
-into device MAIN domain named CPSW0 and has 8 external Ethernet ports.
+into device MAIN domain named CPSW0 and has 5 or 8 external Ethernet ports.
 
 The |__SDK_FULL_NAME__| on the |__PART_FAMILY_NAME__| family of SoC's does not allow direct access to CPSW0 from Linux and
 the CPSW0 is placed under exclusive control of the EthSwitch firmware running on one of the R5F cores (main_r5fss0_core0 by default).
@@ -18,7 +18,7 @@ the CPSW0 is placed under exclusive control of the EthSwitch firmware running on
 Only the EthSwitch firmware has full control over |__PART_FAMILY_NAME__| CPSW0 and allows segregate
 Ethernet traffic for each attached Remote CPU by using programable ALE classifiers and
 exclusive UDMA TX channels and RX flows. The EthSwitch firmware supports the rpmsg-kdrv protocol and presents itself
-as a rpmsg-kdrv device, which provides CPSW0 resource management and debugging services for each attached Remote CPU.
+as a number of rpmsg-kdrv devices, which provide CPSW0 resource management and debugging services for each attached Remote CPU.
 
 The |__SDK_FULL_NAME__| on the |__PART_FAMILY_NAME__| family of SoC's contains a solution to allow sending/receiving Ethernet traffic
 directed to/from CPU Core running Linux using a standard Linux network device.
@@ -44,12 +44,13 @@ This solution is illustrated below.
                 +-----^-------+
                       |
        +--------------v--------------------+ rpmsg_remotedev/
-       | main_r5fss_cpswng_virt_mac0       | rpmsg_remotedev_eth_switch_ops API
+       | main_r5fss_cpswng_virt_macX       | rpmsg_remotedev_eth_switch_ops API
        | ethernet/ti/j721e-cpsw-virt-mac.c <--------+
        +-----------------------------------+        |
                                                     |
                            +------------------------v------+
-                           | mpu_1_0_ethswitch-device-0    |
+                           | mpu_1_0_ethswitch-device-0 or |
+                           | mpu_1_0_ethmac-device-1       |
                            | rpmsg-kdrv/rpmsg_kdrv_switch.c|
                            +-------------^-----------------+
         rpmsg_kdr Bus                    |
@@ -73,7 +74,7 @@ This solution is illustrated below.
                                      | ti_k3_r5_remoteproc   |
                                      +--------+--------------+
  Kernel                                       |
- +--------------------------------------------|------------------------+                                              |
+ +--------------------------------------------|------------------------+
             +---------------------------------v------------+
             |SoC                                           |
             |  +------------+        +------------------+  |
@@ -83,6 +84,49 @@ This solution is illustrated below.
             |                                              |
             +----------------------------------------------+
 
+Depending on ethSwitch firmware configuration two types of rpmsg-kdrv devices are registered:
+
+**mpu_1_0_ethswitch-device-0** - virtual MAC interface which operates as part of the switch represented by number of CPSWng external ports, so called *virtual MAC switch mode*.
+Only one rpmsg-kdrv device of this type is supported.
+
+**mpu_1_0_ethmac-device-X** - virtual MAC interface which operated with dedicated CPSWng external port, so called *virtual MAC only mode*
+
+The separate standard Linux network interfaces are created for every registered rpmsg-kdrv devices.
+
+The |__SDK_FULL_NAME__| on the |__PART_FAMILY_NAME__| family of SoC contains ethSwitch firmware which is configured to instantiate one mpu_1_0_ethswitch-device-0 and one mpu_1_0_ethmac-device-1.
+
+.. note::
+
+   The EthSwitch FW configuration description is out of scope of this section.
+
+Virtual MAC switch mode
+"""""""""""""""""""""""
+
+In virtual MAC switch mode (mpu_1_0_ethswitch-device-0) the j721e-cpsw-virt-mac driver operates as part of the switch represented by number of CPSWng external ports.
+
+It can receive only traffic segregated to it by ethSwitch firmware which is, by default, *only unicast packets* to assigned MAC address.
+
+It can send any kind of packets, but how they are forwarded inside CPSWng switch HW is defined by learning process and ethSwitch firmware configuration.
+
+
+.. note::
+
+   The EthSwitch FW configuration description is out of scope of this section.
+
+Virtual MAC only mode
+"""""""""""""""""""""
+
+In virtual MAC only mode (mpu_1_0_ethmac-device-1) the j721e-cpsw-virt-mac driver operates with dedicated CPSWng external port X.
+
+It can receive all non-VLAN tagged traffic from dedicated CPSWng external port X including unicast (to assigned MAC address) and multicats packets by default.
+
+It should not receive packets from CPSWng external ports operated as switch.
+
+It can send any kind of packets to dedicated CPSWng external port X and those packets expected to egress only through this external port X and not be forwarded to any CPSWng external ports operated as switch.
+
+The Linux network interface (netdev) in this mode operates in ALLMULTI mode which can't be disabled, and also supports promisc mode, which enables reception of VLAN tagged packets.
+
+|
 
 Drivers initialization
 """"""""""""""""""""""
@@ -90,7 +134,7 @@ Drivers initialization
 The Linux TI remoteproc core ensures proper R5F core initialization, loads and starts the EthSwitch firmware,
 and creates the default virtio devices for interacting with this firmware.
 The virtio_rpmsg_bus driver performs discovery of the RPMSG devices and creates an rpmsg-kdrv device,
-which, in turn, will trigger the rpmsg-kdrv core to discover "mpu_1_0_ethswitch-device-0" and probe the rpmsg_kdrv_switch driver
+which, in turn, will trigger the rpmsg-kdrv core to discover "mpu_1_0_ethswitch-device-0" or "mpu_1_0_ethmac-device-1" and probe the rpmsg_kdrv_switch driver
 
 The j721e-cpsw-virt-mac driver is started separately by the Linux core once the corresponding main_r5fss_cpswng_virt_macX device has been created by the Linux DT parsing code.
 Once started, the j721e-cpsw-virt-mac driver will wait for rpmsg_kdrv_switch driver to be probed.
@@ -98,6 +142,28 @@ Once started, the j721e-cpsw-virt-mac driver will wait for rpmsg_kdrv_switch dri
 .. note::
 
    The EthSwitch FW may also be loaded by the bootloader, and, in this case, the remoteproc components will be started in "IPC-only" mode.
+
+Drivers initialization Linux kernel log example for Virtual MAC switch mode:
+
+::
+
+ rpmsg-kdrv-eth-switch rpmsg-kdrv-1-mpu_1_0_ethswitch-device-0: Device info: permissions: 0FFFFFFF uart_id: 2
+ rpmsg-kdrv-eth-switch rpmsg-kdrv-1-mpu_1_0_ethswitch-device-0: FW ver 0.2 (rev 0)  3/Oct/2021 SHA:31ed829b
+ j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: rpmsg attach_ext - rx_mtu:1522 features:00000003 tx_mtu[0]:2024 flow_idx:172 tx_cpsw_psil_dst_id:51712 mac_addr:70:ff:76:1d:92:c1 mac-only:0
+ j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: virt_cpsw_nuss mac loaded
+ j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: rdev_features:00000003 rdev_mtu:1522 flow_id:172 tx_psil_dst_id:4A00 mac_only:0
+ j721e-cpsw-virt-mac main_r5fss_cpsw9g_virt_mac0: local_mac_addr:00:00:00:00:00:00 rdev_mac_addr:70:ff:76:1d:92:c1
+
+Drivers initialization Linux kernel log example for Virtual MAC only mode:
+
+::
+
+ rpmsg-kdrv-eth-switch rpmsg-kdrv-3-mpu_1_0_ethmac-device-1: Device info: permissions: 0FFFFFFF uart_id: 2
+ rpmsg-kdrv-eth-switch rpmsg-kdrv-3-mpu_1_0_ethmac-device-1: FW ver 0.2 (rev 0)  3/Oct/2021 SHA:31ed829b
+ j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: rpmsg attach_ext - rx_mtu:1522 features:00000007 tx_mtu[0]:2024 flow_idx:173 tx_cpsw_psil_dst_id:51713 mac_addr:70:ff:76:1d:92:c2 mac-only:1
+ j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: virt_cpsw_nuss mac loaded
+ j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: rdev_features:00000007 rdev_mtu:1522 flow_id:173 tx_psil_dst_id:4A01 mac_only:1
+ j721e-cpsw-virt-mac main-r5fss-cpsw9g-virt-mac1: local_mac_addr:00:00:00:00:00:00 rdev_mac_addr:70:ff:76:1d:92:c2
 
 rpmsg_kdrv_switch driver
 """"""""""""""""""""""""
@@ -123,6 +189,11 @@ The j721e-cpsw-virt-mac driver (drivers/net/ethernet/ti/j721e-cpsw-virt-mac.c) f
    - Basic Ethertool functions
    - RX/TX csum offload (if enabled by EthSwitch FW)
    - SW Interrupt Pacing using timers.
+
+*Virtual MAC only mode*
+
+   - ALLMULTI mode - always on
+   - promisc mode
 
 *Not supported*:
 
