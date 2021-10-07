@@ -35,7 +35,8 @@ Supported platforms
 Features supported
 ##################
 
-- 1G/100M/10M Full-Duplex Ethernet ports, Half-Duplex is not supported.
+- 1G/100M/10M Full-Duplex Ethernet ports
+- 100M/10M Half-Duplex Ethernet ports
 - RGMII mode with TX delay (configured in DTS). RX delay is not supported and
   has to be provided by PHY.
 - MII mode
@@ -652,6 +653,38 @@ Example::
 In case of RGMII MAC-MAC the 'phy-mode' DT property should be specifying properly for RGMII RX/TX delay configuration,
 taking into account ICSSG HW capability to provide only TX delay (which for some SoCs is not recommended to be disabled).
 Consult with SoC documentation (Data sheet, User guide) for supported RGMII RX/TX delay configurations.
+
+100M/10M Half-Duplex
+********************
+
+The 10/100 half duplex (HD) support depends on HW capability to route PHY output pin (COL) to ICSSG GPI1O pin (PRGx_PRU0/1_GPI10) as input.
+To indicate that HW supports HD the DT "ti,half-duplex-capable" property shell be added to the corresponding ICSSG "ethernet-mii0" port node.
+
+For example:
+
+::
+
+  icssg0_eth: icssg0-eth {
+  ...
+
+     icssg0_emac1: ethernet-mii1 {
+     ...
+
+            ti,half-duplex-capable;
+     };
+  }
+
+  &main_pmx0 {
+  ...
+
+     icssg0_rgmii_pins_default: icssg0-rgmii-pins-default {
+           pinctrl-single,pins = <
+           ...
+                  AM65X_IOPAD(0x026c, PIN_INPUT, 1) /* (AA28) PRG0_PRU1_GPO10.PRG0_PRU1_GPI10 - col */
+           >;
+     };
+  };
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
