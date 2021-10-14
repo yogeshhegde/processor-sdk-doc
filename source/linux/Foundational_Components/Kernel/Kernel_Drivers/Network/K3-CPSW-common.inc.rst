@@ -915,6 +915,8 @@ Example, CPTS registers dump::
         0003d044:reg(00000000)
         0003d048:reg(00000000)
 
+.. _kernel_driver_cpsw2g_est:
+
 Enhancements for Scheduled Traffic (EST) Offload
 """"""""""""""""""""""""""""""""""""""""""""""""
 IEEE 802.1Qbv/D2.2 Enhancements for Scheduled Traffic (EST), Formerly known as Time Aware Shaper (TAS), is an enhancement to Transmission Selection algorithm defined in 802.1Q standard. It became formally part of 802.1Q-2018 edition of the standard. As per standard, a Bridge or an end station may support enhancements that allow transmission from each queue to be scheduled relative to a known timescale.  In order to achieve this, a transmission gate is associated with each queue; the state of the transmission gate determines whether or not queued frames can be selected for transmission. For a given queue, the transmission gate can be in one of two states:
@@ -1099,6 +1101,8 @@ In the above case, last sched-entry will become truncated to 150 usec resulting 
 * Show ConfigPending status (tc command shows  Oper and Admin schedule. So if admin schedule shows up, user application may consider this as ConfigPending)
 * Show ConfigChangeError
 * Show SupportedListMax - Maximum supported is 64 sched-entries if interval is < 128 usec) 
+
+.. _kernel_driver_cpsw2g_iet:
 
 Intersperse Express Traffic (IET) Frame Preemption offload
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
