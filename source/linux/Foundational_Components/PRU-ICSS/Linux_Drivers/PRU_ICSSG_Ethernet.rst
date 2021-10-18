@@ -653,3 +653,13 @@ In case of RGMII MAC-MAC the 'phy-mode' DT property should be specifying properl
 taking into account ICSSG HW capability to provide only TX delay (which for some SoCs is not recommended to be disabled).
 Consult with SoC documentation (Data sheet, User guide) for supported RGMII RX/TX delay configurations.
 
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+  Time Senstive Network (TSN) Offload Support
+  *******************************************
+
+  ICSSG Ethernet supports offloading of features such as Enhancements for Scheduled Traffic
+  (EST) and Intersperse Express Traffic (IET) Frame Preemption offload
+  similar to CPSW.
+
+  For EST setup refer to :ref:`kernel_driver_cpsw2g_est` and IET configuration refer to :ref:`kernel_driver_cpsw2g_iet`.
