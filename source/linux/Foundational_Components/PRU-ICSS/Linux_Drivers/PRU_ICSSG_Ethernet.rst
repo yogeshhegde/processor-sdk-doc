@@ -686,13 +686,17 @@ For example:
   };
 
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X')
+Time Senstive Network (TSN) Offload Support
+###########################################
 
-  Time Senstive Network (TSN) Offload Support
-  *******************************************
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
 
   ICSSG Ethernet supports offloading of features such as Enhancements for Scheduled Traffic
   (EST) and Intersperse Express Traffic (IET) Frame Preemption offload
   similar to CPSW.
 
   For EST setup refer to :ref:`kernel_driver_cpsw2g_est` and IET configuration refer to :ref:`kernel_driver_cpsw2g_iet`.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  This feature is not supported.
