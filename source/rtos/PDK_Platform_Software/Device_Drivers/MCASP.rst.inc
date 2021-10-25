@@ -273,11 +273,8 @@ Examples & Unit tests
 |                                    |   test application        |                       |          |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
 
-Test Details
-^^^^^^^^^^^^^
-
-.. rubric:: AudioEQ_ExampleProject
-   :name: AudioEQ_ExampleProject-1
+AudioEQ_ExampleProject
+^^^^^^^^^^^^^^^^^^^^^^^
 
 This example demonstrates stereo audio equalizer using biquad filters.
 
