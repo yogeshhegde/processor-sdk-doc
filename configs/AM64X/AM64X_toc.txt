@@ -56,6 +56,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
+linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/CDNS3
 linux/Foundational_Components_Kernel_Users_Guide
