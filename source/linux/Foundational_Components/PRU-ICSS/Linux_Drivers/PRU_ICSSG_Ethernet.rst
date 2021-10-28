@@ -685,6 +685,19 @@ For example:
      };
   };
 
+MII Support
+********************
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  .. rubric:: AM64 GP EVM
+
+  On AM64x-evm the DP83869HM are strapped to RGMII configuration by default. To use MII interface the
+  k3-am642-evm-icssg1-dualemac-mii.dtbo overlay file has to be applied using the following command in uboot.
+
+::
+
+  setenv bootcmd 'run findfdt; run envboot; run init_${boot}; run get_kern_${boot}; run get_fdt_${boot}; setenv name_overlays k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
 
 Time Senstive Network (TSN) Offload Support
 ###########################################
