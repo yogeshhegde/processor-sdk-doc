@@ -104,10 +104,12 @@ Virtual MAC switch mode
 
 In virtual MAC switch mode (mpu_1_0_ethswitch-device-0) the j721e-cpsw-virt-mac driver operates as part of the switch represented by number of CPSWng external ports.
 
-It can receive only traffic segregated to it by ethSwitch firmware which is, by default, *only unicast packets* to assigned MAC address.
+It can receive only traffic segregated to it by ethSwitch firmware which are:
+
+ - unicast packets to assigned MAC address
+ - multicast (MC) packets from registered MC addresses (exclusive, see :ref:`Multicast (MC) filtering<cpswng_virt_mac_mc_filtering>`)
 
 It can send any kind of packets, but how they are forwarded inside CPSWng switch HW is defined by learning process and ethSwitch firmware configuration.
-
 
 .. note::
 
@@ -189,6 +191,10 @@ The j721e-cpsw-virt-mac driver (drivers/net/ethernet/ti/j721e-cpsw-virt-mac.c) f
    - Basic Ethertool functions
    - RX/TX csum offload (if enabled by EthSwitch FW)
    - SW Interrupt Pacing using timers.
+
+*Virtual MAC switch mode*
+
+   - Multicast (MC) packet filtering
 
 *Virtual MAC only mode*
 
@@ -412,3 +418,59 @@ It is also possible to use standard Linux Net core hard irqs deferral feature wh
 Enabling of hard IRQ will be deferred napi_defer_hard_irqs times with gro_flush_timeout timeout.
 
 The main difference of the hard irqs deferral feature from ethtool interrupt pacing (IRQ coalescing) is that it affects on both RX/TX data path simultaneously.
+
+.. _cpswng_virt_mac_mc_filtering:
+
+Multicast (MC) filtering
+""""""""""""""""""""""""
+
+The EthFW supports MC filtering which allows to offload MC addresses list to EthFW and so enables MC traffic to be forwarded to Linux.
+
+The EthFW supports two logical types of MC addresses:
+
+  - *exclusive MC addresses* : such MC addresses will be exclusively directed to the Linux only through j721e-cpsw-virt-mac driver netdev.
+
+  - *shared MC addresses* : such MC addresses belongs to statically configurable by EthFW MC addresses range. In this case MC packets will be delivered to Linux host by other means (i.e. shared memory based TAP interface) and not through j721e-cpsw-virt-mac driver netdev.
+    Shared MC addresses intended to be used when it's required to deliver MC packets to more then one CPU cores present on |__PART_FAMILY_NAME__| SoC.
+
+  - *reserved MC addresses* : such MC addresses belongs to reserved, statically configurable by EthFW MC addresses range.
+    Reserved MC addresses intended to be consumed by EthFW itself only.
+
+
+  The j721e-cpsw-virt-mac driver doesn't distinguish between exclusive, shared and reserved MC addresses and offloads all requested MC addresses, but if MC address is shared or reserved - the offload operation become NOP from the j721e-cpsw-virt-mac driver point of view.
+
+.. note::
+
+   The EthSwitch FW configuration description and shared MC addresses processing is out of scope of this section.
+
+
+MC MAC addresses can be added/deleted using *ip maddr* command:
+
+::
+
+    # Add MC address 239.255.1.4
+    ip maddr add 01:00:5e:7f:01:04 dev ethX
+    ip maddr show dev ethX
+    2:      ethX
+        ...
+        link  01:00:5e:00:00:fb users 2
+        link  01:00:5e:00:00:fc users 2
+        link  01:00:5e:7f:01:03 users 2
+        link  01:00:5e:7f:01:04 users 2 static
+        ^^^^
+
+    # Del MC address 239.255.1.4
+    ip maddr del 01:00:5e:7f:01:04 dev eth0
+
+or by using Linux socket IOCTL SIOCADDMULTI/SIOCDELMULTI:
+
+::
+
+    ip route add 239.255.1.3 dev eth1
+    iperf -s -B 239.255.1.3 -u&
+    ip maddr show dev ethX
+    2:      ethX
+        ...
+        link  01:00:5e:7f:01:03 users 2
+        inet  239.255.1.3
+        ^^^^
