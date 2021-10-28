@@ -273,6 +273,85 @@ Examples & Unit tests
 |                                    |   test application        |                       |          |             |
 +------------------------------------+---------------------------+-----------------------+----------+-------------+
 
+AudioEQ_ExampleProject
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This example demonstrates stereo audio equalizer using biquad filters.
+
+-  Filter default configurations are:
+
+	-  Low_Fc       = 250.0   (Low Shelf cutoff frequency in Hz)
+	-  High_Fc      = 1000.0  (High Shelf cutoff frequency in Hz)
+	-  Sample_Rate  = 44100.0 (Number of samples per second)
+	-  Q_Factor     = 0.707   (Bandwidth of frequency that will be affected by an equalizer)
+	-  Default_Gain = 0.0     (increase or decrease in audio signal strength, expressed in dB)
+
+-  The default Gain has been set to 0, in order to suppress any noise.
+   The default Gain can be changed based on the test case requirement at, ti/drv/mcasp/example/src/audioEQ.c 'defaultGain = 0.0'.
+
+-  The filter gains can be tuned from the uart console based on the test case requirement.
+
+Sample log for the Audio Equalizer test is shown below
+
+::
+
+    ******** Audio EQ Demo ********
+    NUM_BUFS=2
+    PRIME_COUNT=2
+
+    EDMA driver initialization successful.
+
+
+    ======================================================
+
+     Currently playing Audio effect Demo.
+     Make sure a stereo input is connected to Line In and
+     Connect an headphone or a speaker to LineOut.
+
+    ======================================================
+
+    Initialization complete. priming about to begin
+     Demo currently shows 3 band equalization using shelving biquad filters
+     * low band = 0Hz to 250Hz
+     * mid band = 250Hz to 1000Hz,
+     * high band = 1000Hz to 22000Hz
+      All bands are boosted with a 8db Peak Gain
+
+
+    Do you wish to keep the equalization ON ? (y or n)
+    y
+
+    ======================================================
+
+    Press 0 and hit Enter to print current gain settings
+
+    OR
+
+    Select the Frequency Band to adjust the gain
+
+    *   Press 1 for Low  and hit Enter
+    *   Press 2 for High  and hit Enter
+    *   Press 3 for Mid and hit Enter
+    All other input will not have any effect
+
+    ======================================================
+
+    1
+
+    Enter the value of gain in dB (Recommendation -8 to 8)
+    4
+    Gain updated
+
+
+    Do you wish to keep the equalization ON ? (y or n)
+    n
+    Equalization OFF
+
+
+    Do you wish turn ON the equalization? (y or n)
+
+|
+
 Building CCS projects based examples
 ----------------------------------------------
 
