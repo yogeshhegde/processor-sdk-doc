@@ -1,3 +1,5 @@
+.. include:: /replacevars.rst.inc
+
 USB Device Firmware Upgrade (DFU)
 -----------------------------------
 
@@ -121,18 +123,18 @@ platform that support USB Peripheral boot mode.
      binary images from Host PC (using dfu-utils tool) to the eMMC, or
      QSPI to fresh/factory boards.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| EVM (SPL-DFU boot mode)
 
-    .. rubric:: USB Peripheral boot mode on J721E EVM (SPL-DFU boot mode)
-       :name: dfu-j721e
-
-.. ifconfig:: CONFIG_part_family in ('AM64X_family')
-
-    .. rubric:: USB Peripheral boot mode on AM64X EVM (SPL-DFU boot mode)
-
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
     -  Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of J721E TRM for boot switch details)
+    -  Make sure USB0 port in UFP/DRP mode: SW3[3:4] = 01 or 1x
+    -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
+    -  Power on the board
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    -  Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of J7200 TRM for boot switch details)
     -  Make sure USB0 port in UFP/DRP mode: SW3[3:4] = 01 or 1x
     -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
     -  Power on the board
@@ -154,7 +156,16 @@ platform that support USB Peripheral boot mode.
 
     This will show the following DFU entities:
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    .. code-block:: text
+
+		Found DFU: [0451:6164] ver=0200, devnum=99, cfg=1, intf=0, path="3-3", alt=1, name="SocId", serial="01.00.00.00"
+		Found DFU: [0451:6164] ver=0200, devnum=99, cfg=1, intf=0, path="3-3", alt=0, name="bootloader", serial="01.00.00.00"
+
+    Send boot images in this order: tiboot3.bin -> tispl.bin -> u-boot.img.
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
     .. code-block:: text
 
@@ -176,7 +187,19 @@ platform that support USB Peripheral boot mode.
 
     Move to directory containing the images and give the following commands
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    .. code-block:: text
+
+		host$ sudo dfu-util -R -a bootloader -D tiboot3.bin
+		host$ sudo dfu-util -l
+		  Found DFU: [0451:6164] ver=0224, devnum=100, cfg=1, intf=0, path="3-3", alt=1, name="u-boot.img", serial="UNKNOWN"
+		  Found DFU: [0451:6164] ver=0224, devnum=100, cfg=1, intf=0, path="3-3", alt=0, name="tispl.bin", serial="UNKNOWN"
+
+		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
+		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
     .. code-block:: text
 
@@ -208,7 +231,7 @@ platform that support USB Peripheral boot mode.
 
     At this point, the board should boot to the U-Boot prompt.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
     .. note::
         This mode is not supported on J721E Rev E2 and earlier boards.
