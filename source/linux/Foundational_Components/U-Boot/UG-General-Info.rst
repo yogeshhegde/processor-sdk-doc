@@ -727,3 +727,9 @@ SRAM memory Layout in AM64 during R5 SPL bootloader stage
      │      DMSC CODE AREA (128 KB)         │
      │                                      │
      └──────────────────────────────────────┘0x701FFFFF
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    - In the last 128 KB of memory used by DMSC during run time, initial 80 KB 
+      gets freed after a security handover happens. The last 48 KB still will be used by DMSC.
+    - For more details on Security handover see `here <https://software-dl.ti.com/tisci/esd/latest/6_topic_user_guides/security_handover.html>`__ .
