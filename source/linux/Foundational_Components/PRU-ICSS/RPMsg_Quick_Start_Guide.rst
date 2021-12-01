@@ -43,15 +43,7 @@ Linux ARM to PRU RPMsg communication is supported on these processors:
 
  * AM65x
 
- * K2G
-
-Supported SDK Versions
-""""""""""""""""""""""
-
-Linux RPMsg communication with PRU cores is supported up through TI's Linux
-kernel 5.4 releases (Linux Processor SDK 7.x). There are currently no plans to
-implement Linux RPMsg communication with PRU cores on TI's Linux kernel 5.10
-releases (Linux Processor SDK 8.x).
+ * AM64x
 
 Hardware Assumptions
 """"""""""""""""""""

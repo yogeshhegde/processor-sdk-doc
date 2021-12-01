@@ -22,6 +22,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW
    Foundational_Components/Kernel/Kernel_Drivers/Network/NetCP
    Foundational_Components/Kernel/Kernel_Drivers/Network/PRUSS
+   Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW3g
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng_virt_mac

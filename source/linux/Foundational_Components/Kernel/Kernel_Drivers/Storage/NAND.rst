@@ -280,6 +280,8 @@ the NAND's designated file-system partition.
 +-----------------+--------------------------------+-------------------------------------+
 | DRA71x EVM      | -F -m 2048 -e 126976 -c 8192   | -m 2048 -p 128KiB -s 512 -O 2048    |
 +-----------------+--------------------------------+-------------------------------------+
+| AM64 GP EVM     | -F -m 4096 -e 253952 -c 1926   | -m 4096 -p 256KiB -s 4096 -O 4096   |
++-----------------+--------------------------------+-------------------------------------+
 
 Table:  Table of Parameters to use for Building UBI filesystem image
 
@@ -320,6 +322,10 @@ Table:  Table of Parameters to use for Building UBI filesystem image
 |          | 08ADBCAH |          |          |          |          |          |          | |        |
 |          | 4:C      |          |          |          |          |          |          |          |
 +----------+----------+----------+----------+----------+----------+----------+----------+----------+
+| AM64     | MT29F8G0 | 1024 MB  | 8        | 256      | 4        | 256      | BCH 16   | GPMC     |
+|          | 8ADAFAH4 |          |          |          |          |          |          |          |
+|          | :F       |          |          |          |          |          |          |          |
++----------+----------+----------+----------+----------+----------+----------+----------+----------+
 
 Table:  NAND Flash Specification Summary
 
@@ -343,6 +349,11 @@ Out signals. Therefore, to have the signals properly muxed for NAND to
 work Pin 1 (first pin on the left) must be turned on and Pin 2 must be
 turned off. Pin 1 and 2 must never be switched on at the same time.
 Doing so may cause damage to the board or SoC.
+
+.. rubric:: AM64 GP EVM
+
+NAND flash is not present on the EVM but needs to be added via an Expansion
+card (TDMS64DC02EVM) that plugs into the High Speed Expansion (HSE) port.
 
 .. note::
 
