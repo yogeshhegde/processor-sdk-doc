@@ -144,6 +144,10 @@ Software Information
 Firmware Software Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Information about specific components of PRU projects can be found at
+:ref:`pru_resource_tables`, :ref:`pru_intc_configuration`, and
+:ref:`pru_header_files`.
+
 `PRU-ICSS / PRU_ICSSG Migration Guide <http://www.ti.com/lit/spracj8>`__
 
 |
