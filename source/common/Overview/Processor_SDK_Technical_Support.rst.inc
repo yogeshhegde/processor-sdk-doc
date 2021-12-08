@@ -85,7 +85,3 @@ Example applications:
 - Documentation, tutorials and examples of how to use OpenCV 3.1: https://docs.opencv.org/3.1.0/#gsc.tab=0
 - OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/platforms/opencl.html
 
-**Hypervisor**
-
-- Jailhouse: https://github.com/siemens/jailhouse
-- IVshmem based UIO driver: https://github.com/henning-schild-work/ivshmem-guest-code

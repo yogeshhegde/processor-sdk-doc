@@ -116,7 +116,6 @@ linux/Foundational_Components_OpenCL
 linux/Foundational_Components_OpenCV
 linux/Foundational_Components_OpenVX
 linux/Foundational_Components_Virtualization
-linux/Foundational_Components/Virtualization/Jailhouse
 linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components/Machine_Learning/tidl
