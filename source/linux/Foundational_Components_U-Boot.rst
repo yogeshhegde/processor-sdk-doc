@@ -48,6 +48,7 @@ following platform(s):
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
    |  `J721E EVM <http://www.ti.com/tool/J721EXSOMXEVM>`__
+   |  `J721E SK <http://www.ti.com/tool/SK-TDA4VM>` __
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
