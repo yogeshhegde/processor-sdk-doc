@@ -138,8 +138,10 @@ linux/How_to_Guides/Board_Port/U-Boot
 linux/Documentation_Tarball
 common/PRU-ICSS/Getting_Started_with_PSSP
 common/PRU-ICSS/Header_Files
+common/PRU-ICSS/INTC_Configuration
 common/PRU-ICSS/Overview
 common/PRU-ICSS/PRU-Cape-Building-Demos
 common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
 common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
 common/PRU-ICSS/PRU-Hands-on-Labs
+common/PRU-ICSS/Resource_Tables

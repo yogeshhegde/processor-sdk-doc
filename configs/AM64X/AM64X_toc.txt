@@ -98,11 +98,13 @@ linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customiz
 
 common/PRU-ICSS/Getting_Started_with_PSSP
 common/PRU-ICSS/Header_Files
+common/PRU-ICSS/INTC_Configuration
 common/PRU-ICSS/Overview
 common/PRU-ICSS/PRU-Cape-Building-Demos
 common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
 common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
 common/PRU-ICSS/PRU-Hands-on-Labs
+common/PRU-ICSS/Resource_Tables
 
 system/Demo_User_Guides/Benchmark_Demo_User_Guide
 system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
