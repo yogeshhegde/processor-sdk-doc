@@ -10,8 +10,6 @@ PRU_ICSSG Ethernet
 Introduction
 ############
 
-PRU_ICSSG Ethernet driver architecture is similar to PRU-ICSS Ethernet driver discussed at `PRU-ICSS Ethernet <Foundational_Components_PRU-ICSS_PRU_ICSSG.html#pru-icss-ethernet>`__
-
 Driver is developed complying to Linux Driver model and implements netdev and NAPI APIs along with other basic driver functions. Driver supports multiple instances of ICSSG each of which has two slices. Each slice consists of a pair of Programmable Real-Time Units (PRUs), Auxillary Programmable Real-time Units (RTUs) and TX Programmable Real-Time Units (TX_PRUS). So each ICSSG instance supports two Ethernet interfaces i.e. one per slice.
 
 One of the key difference in the driver implementation compared to PRU-ICSS driver is the use of UDMA driver interface and ring accelerator driver available on Keystone III SoC to send/receive frames between ARM Host processor and PRU_ICSSG. This allows for efficient moving of data and is more efficient than the shared memory transport used in PRU-ICSS.
