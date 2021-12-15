@@ -336,15 +336,6 @@ which you can start development.
 
    The file system can be rebuilt following the instructions at `Building the SDK <Overview_Building_the_SDK.html>`__.
 
-   .. note::
-      Some components such as Jailhouse Hypervisor needs a newer make (> 3.81) that what comes by default with
-      Ubuntu 14.04. Please check your make version (make -v) and upgrade to
-      latest using following instructions. You can make it your default make
-      by prefixing /usr/local/bin to your $PATH variable in your shell startup
-      file; for instance, in .profile or .bashrc if you use the bash shell.
-      Don't try to install a self-compiled make (or anything else that doesn't
-      come from the distribution's package manager) into /bin or /usr/bin;
-      doing that will confuse your package manager.
 
    .. code-block:: bash
 
