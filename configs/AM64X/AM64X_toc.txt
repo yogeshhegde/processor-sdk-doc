@@ -21,11 +21,13 @@ linux/Release_Specific/Layer_Configuration
 devices/AM64X/Release_Specific
 devices/AM64X/Release_Specific_Release_Notes
 devices/AM64X/Release_Specific_Migration_Guide
+devices/AM64X/Release_Specific_Kernel_Performance_Guide
 devices/AM64X/index_Linux
 devices/AM64X/index_RTOS
 devices/AM64X/index_Applications
 devices/AM64X/Linux_Overview
 devices/AM64X/Linux_Release_Notes
+devices/AM64X/Linux_Performance_Guide
 devices/AM64X/RT_Linux_Performance_Guide
 
 linux/Foundational_Components
