@@ -8,7 +8,7 @@ Download and Install the SDK
 The |__SDK_FULL_NAME__| Installer will install the necessary components
 to start Linux development on the TI microprocessor.
 
-**|__SDK_FULL_NAME__| Release supports installer only for Linux machine.**
+**The |__SDK_FULL_NAME__| Release supports installer only for Linux machine.**
 
 +--------------------------------------------+----------------------------------------------------------------------+
 | **Installer Details**                      | **Installers Name**                                                  |
