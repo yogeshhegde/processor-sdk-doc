@@ -26,7 +26,7 @@ Processor SDK AM64X Software Developer's Guide
 
 If you have feedback, suggestions, or ideas on how to improve the SDK,
 it is very appreciated. Please post your ideas to the Linux
-forum listed at `Technical Support <Overview_Technical_Support.html>`__.
+forum listed at `Technical Support <../../linux/Overview_Technical_Support.html>`__.
 
 
 +------------------------------+--------------------------------------------------------------------------------------------------+
