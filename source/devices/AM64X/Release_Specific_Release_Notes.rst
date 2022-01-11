@@ -32,7 +32,7 @@ Please refer to the software manifests, which outlines the licensing
 status for all packages included in this release. The manifest can be
 found on the SDK download page or in the installed directory as indicated below. 
 
--  Linux Manifest:  "/docs/software_manifest.htm"
+-  Linux Manifest:  "/docs/software_manifest.html"
 
 
 Release 08.00.00
@@ -63,7 +63,7 @@ U-Boot
 -------------------------
 
 | Head Commit: 53e79d0e89f975eeb874366dd9a92f68b3a599d1 defconfigs: am65x_hs_evm: Sync HS and non-HS defconfigs
-| Repo: git://git.ti.com/ti-u-boot/ti-u-boot.git
+| Repo: https://git.ti.com/cgit/ti-u-boot/ti-u-boot/
 | Branch: 08.00.00.004
 |
 
@@ -73,7 +73,7 @@ Kernel
    :name: linux-kernel
 
 | Head Commit: 4c2eade9f722838b0e457650368cba1c6c7483c2 Merged TI feature rpmsg into ti-linux-5.10.y
-| Repo: https://git.ti.com/cgit/ti-u-boot/ti-u-boot/
+| Repo: https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/
 | Branch: ti-linux-5.10.y
 | Kernel defconfig: ti_sdk_arm64_release_defconfig
 |
