@@ -59,6 +59,7 @@ Processor SDK 7.3 Release has following new features:
  - PRUSS HW UART Support
     - Up to 12M baud rate
     - Hardware flow control support
+- ICSS-EMAC support has been descoped
 
 .. _release-specific-sdk-components-versions:
 

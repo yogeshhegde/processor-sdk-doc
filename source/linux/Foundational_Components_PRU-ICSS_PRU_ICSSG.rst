@@ -10,6 +10,5 @@ PRU-ICSS / PRU_ICSSG
    /common/PRU-ICSS/Overview
    Foundational_Components/PRU-ICSS-Training
    Foundational_Components/PRU-ICSS-Linux-Drivers
-   Foundational_Components/PRU-ICSS-Linux-User-Space
    Foundational_Components/PRU-ICSS-Firmware-Development
    Foundational_Components/PRU-ICSS-Hardware
