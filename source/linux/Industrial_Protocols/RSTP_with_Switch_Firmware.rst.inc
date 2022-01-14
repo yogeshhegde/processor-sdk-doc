@@ -1,6 +1,11 @@
 With ICSS switch firmware, RSTP can be supported with L2 forwarding
 offload on the ICSSs in  AM57x IDK platforms.
 
+.. note::
+
+   RSTP functionality over PRU Ethernet is neither tested nor supported
+   on AM335x and AM437x.
+
 Briefly, in this case, the PRU ethernet driver together with the
 switch firmware are responsible for creating a forwarding database
 (FDB) table. MAC address in a frame received on a physical port is
