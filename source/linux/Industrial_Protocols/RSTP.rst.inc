@@ -5,6 +5,11 @@ Users that require automatic interface, bridge and msptd daemon setup at
 system initialization will need to do the steps necessary to implement
 this initialization method.
 
+.. note::
+
+   RSTP functionality over PRU Ethernet is neither tested nor supported
+   on AM335x and AM437x.
+
 | 
 | If you need a background in the bridge utility that Linux supports
   please refer to this link.
