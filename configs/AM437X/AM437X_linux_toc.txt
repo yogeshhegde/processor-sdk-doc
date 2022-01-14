@@ -103,7 +103,6 @@ linux/Industrial_Protocols_HSR_PRP
 linux/Industrial_Protocols_PTP
 linux/Industrial_Protocols_RSTP
 linux/Industrial_Protocols_CCLINK
-linux/Industrial_Protocols_SORTE
 linux/Industrial_Protocols_OPCUA
 linux/Examples_and_Demos
 linux/Examples_and_Demos_Application_Demos

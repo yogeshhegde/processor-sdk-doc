@@ -60,6 +60,7 @@ Processor SDK 7.3 Release has following new features:
     - Up to 12M baud rate
     - Hardware flow control support
 - ICSS-EMAC support has been descoped
+- SORTE support has been descoped
 
 .. _release-specific-sdk-components-versions:
 

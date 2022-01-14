@@ -57,6 +57,7 @@ Processor SDK 7.3 Release has following new features:
 
 - 2020 LTS Update (Kernel 5.4, U-boot: 2020.01, gcc: 9.2 2019.12 hf, Yocto 3.1 (dunfell))
 - ICSS-EMAC support has been descoped
+- SORTE support has been descoped
 
 .. _release-specific-sdk-components-versions:
 
