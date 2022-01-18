@@ -75,14 +75,10 @@ Training Material
 
 :ref:`pru_hands_on_labs`
 
-..
-   Only display RPMsg quick start guide for non-AM64x Linux SDK Documentation. 
 
-.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
+.. ifconfig:: CONFIG_sdk in ('PLSDK','PSDKL')
 
-   .. ifconfig:: CONFIG_sdk in ('PLSDK','PSDKL')
-
-      :ref:`rpmsg_quick_start_guide`
+   :ref:`rpmsg_quick_start_guide`
 
 |
 

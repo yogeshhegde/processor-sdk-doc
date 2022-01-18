@@ -18,16 +18,16 @@ The PRU Software Support Package provides support for the PRU-ICSS
 Subsystem in AM335x, AM437x, AM57xx, AM64x, AM65x, and K2G devices. This package
 contains:
 
--  Support for ARM<->PRU interaction via remoteproc and rpmsg Linux
-   drivers (only Processor SDK Linux 7.3 and earlier)
-
+-  Support for ARM loading and initializing PRU via Remoteproc Linux driver
    -  Remoteproc supports basic control functions such as firmware load,
       start/halt, simple debug, and interrupt managing
-   -  Rpmsg supports message passing
+
+-  Support for ARM<-> PRU communication via RPMsg Linux driver
+   -  RPMsg supports message passing
 
 -  Basic firmware examples showing simple functionality
 -  Register header files for easy register programming
--  Library/API for controlling vrings (used for rpmsg)
+-  Library/API for controlling vrings (used for RPMsg)
 
 .. rubric:: Things to Obtain
    :name: things-to-obtain
