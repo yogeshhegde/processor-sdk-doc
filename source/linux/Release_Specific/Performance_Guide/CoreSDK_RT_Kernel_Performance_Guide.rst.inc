@@ -198,8 +198,8 @@ cores the DMIPS/MHz score will be identical with the same compiler and flags.
 .. csv-table::
    :header: "Benchmarks","am64xx-evm: perf","am654x-evm: perf"
 
-   "cpu_clock (MHz)","400.00","400.00"
-   "dhrystone_per_mhz (DMIPS/MHz)","7.30","5.90"
+   "cpu_clock (MHz)","1000.00","800.00"
+   "dhrystone_per_mhz (DMIPS/MHz)","2.92","2.96"
    "dhrystone_per_second (DhrystoneP)","5128205.00","4166666.80"
 
 Table:  **Dhrystone Benchmark**
