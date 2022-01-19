@@ -39,6 +39,7 @@ Processor SDK 07.03.00
   Documentation/devicetree/bindings/net/ti-prueth.txt
   for details on DT changes needed to use Tx IRQ.
 - PRP Emac mode is obsolete and not supported anymore.
+- HSR/PRP with PRU-ICSS firmware offload is not supported.
 - ICSS-EMAC is not supported.
 - SORTE is not supported.
 

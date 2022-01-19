@@ -16,6 +16,10 @@ following sections provide details about the Software Architecture,
 Supported platforms, test setup and details about the support for
 Ordinary Clock (OC), Boundary Clock (BC) And Transparent Clock (TC)
 
+.. note::
+
+   HSR/PRP with PRU-ICSS firmware offload is not supported on AM335x & AM437x.
+
 Features supported
 
 - PTP/1588
@@ -34,6 +38,12 @@ Features supported
    -  Ordinary Clock (HSR/PRP port)
    -  Transparent clock as per IEC62439-3 Annex C
    -  Transparent clock one-step to two-step conversion (HSR node)
+
+Features not supported
+
+- HSR/PRP with PRU-ICSS firmware offload is not supported on AM335x & AM437x.
+  Any reference to PTP with HSR/PRP over PRU-ICSS does not apply to AM335x &
+  AM437x
 
 Software Overview
 =================
@@ -104,9 +114,9 @@ in the table below.
 +--------------------------+--------------------------+--------------------------+-----------------------+
 | SoC                      | # of GMAC ports          | # of PRU-ICSS ports      | PRU Firmware Supported|
 +==========================+==========================+==========================+=======================+
-| AM335x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
+| AM335x                   | 1                        | 2(at 100Mbps)            | Dual EMAC             |
 +--------------------------+--------------------------+--------------------------+-----------------------+
-| AM437x                   | 1                        | 2(at 100Mbps)            | Dual EMAC / HSR / PRP |
+| AM437x                   | 1                        | 2(at 100Mbps)            | Dual EMAC             |
 +--------------------------+--------------------------+--------------------------+-----------------------+
 | AM571x                   | 1                        | 4(at 100Mbps)            | Dual EMAC / HSR / PRP |
 +--------------------------+--------------------------+--------------------------+-----------------------+

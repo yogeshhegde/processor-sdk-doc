@@ -100,7 +100,6 @@ linux/Foundational_Components/Machine_Learning/neo
 linux/Foundational_Components/Machine_Learning/tvm
 linux/Industrial_Protocols
 linux/Industrial_Protocols_ICSS_Dual_EMAC
-linux/Industrial_Protocols_HSR_PRP
 linux/Industrial_Protocols_PTP
 linux/Industrial_Protocols_RSTP
 linux/Industrial_Protocols_CCLINK
