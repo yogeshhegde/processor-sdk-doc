@@ -15,14 +15,29 @@ history of this guide can be found at `Linux Core Power Management
 User's Guide
 History <http://processors.wiki.ti.com/index.php/Linux_Core_Power_Management_User%27s_Guide_History>`__.
 
-.. rubric:: Dynamic Power Management Techniques
-   :name: dynamic-power-management-techniques
 
-Dynamic or active Power management techniques reduce the active power
-consumption by an SoC when the system is active and performing tasks.
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family')
 
-#. DVFS
-#. CPUIdle
-#. Smartreflex
+	.. rubric:: Power Management on DRA7 platform
+	   :name: power-management-on-dra7-platform
+
+	The power management features enabled on DRA7 platforms (DRA7x/ J6/
+	AM57x) are as follows:
+
+	-  Suspend/Resume
+	-  MPU DVFS
+	-  SmartReflex
+
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
+
+	.. rubric:: Dynamic Power Management Techniques
+	   :name: dynamic-power-management-techniques
+
+	Dynamic or active Power management techniques reduce the active power
+	consumption by an SoC when the system is active and performing tasks.
+
+	#. DVFS
+	#. CPUIdle
+	#. Smartreflex
 
 
