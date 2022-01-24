@@ -2,16 +2,49 @@
 
 DVFS
 ---------------------------------
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family')
 
-.. rubric:: Dynamic Power Management Techniques
-   :name: dynamic-power-management-techniques
+	.. rubric:: Power Management on DRA7 platform
+	   :name: power-management-on-dra7-platform
+	The power management features enabled on DRA7 platforms (DRA7x/ J6/
+	AM57x) are as follows:
 
-Dynamic or active Power management techniques reduce the active power
-consumption by an SoC when the system is active and performing tasks.
+	-  Suspend/Resume
+	-  **MPU DVFS**
+	-  SmartReflex
 
-#. **DVFS**
-#. CPUIdle
-#. Smartreflex
+	.. rubric:: DVFS
+	   :name: dvfs
+
+	On-Demand is a load based DVFS governor, enabled by deafult. The
+	governor will scale voltage and frequency based on load between
+	available OPPs.
+
+	-  VDD\_MPU supports only 2 OPPs for now (OPP\_NOM, OPP\_OD). OPP\_HIGH
+	   is not yet enabled. Future versions of Kernel may support OPP\_HIGH.
+	-  VDD\_CORE has only one OPP which removes the possibility of DVFS on
+	   VDD\_CORE.
+	-  GPU DVFS is TBD.
+
+	Supported OPPs:
+
+	::
+
+		  /* kHz    uV */
+		  1000000 1090000   /* OPP_NOM */
+		  1176000 1210000   /* OPP_OD */
+
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437x_family')
+
+	.. rubric:: Dynamic Power Management Techniques
+	   :name: dynamic-power-management-techniques
+
+	Dynamic or active Power management techniques reduce the active power
+	consumption by an SoC when the system is active and performing tasks.
+
+	#. **DVFS**
+	#. CPUIdle
+	#. Smartreflex
 
 .. rubric:: Dynamic Voltage and Frequency Scaling(MPU aka CPUFREQ)
    :name: dynamic-voltage-and-frequency-scalingmpu-aka-cpufreq
@@ -26,21 +59,6 @@ Design: OPP is a pair of voltage frequency value. When scaling from High
 OPP to Low OPP Frequency is reduced first and then the voltage. When
 scaling from a lower OPP to Higher OPP we scale the voltage first and
 then the frequency.
-
-.. rubric:: Release applicable
-
-Latest release this documentation applies to is Kernel v4.4
-
-.. rubric:: Supported Devices
-   :name: supported-devices-kernel-pm
-
--  DRA7xx
--  J6
--  AM57x
--  AM437x
--  AM335x
-
-| 
 
 .. rubric:: Driver Features
    :name: driver-features-kernel-pm
