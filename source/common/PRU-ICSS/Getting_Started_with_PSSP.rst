@@ -22,7 +22,7 @@ contains:
    -  Remoteproc supports basic control functions such as firmware load,
       start/halt, simple debug, and interrupt managing
 
--  Support for ARM<-> PRU communication via RPMsg Linux driver
+-  Support for communication between ARM and PRU via RPMsg Linux driver
    -  RPMsg supports message passing
 
 -  Basic firmware examples showing simple functionality
