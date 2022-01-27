@@ -1,14 +1,17 @@
+.. include:: /replacevars.rst.inc
+
 IPC for AM64x 
 =============
 
-The AM64x device's main domain consists of Dual-Core Cortex-R5F processor
-subsystem (R5FSS) in addition to Dual core Cortex-A53 subsystem.  The R5FSS can
-be operated in Dual Core mode or single core mode. Please refer to the AM64x
-Technical Referece Manual for details.
+The AM64x processor has up to two Dual-Core Cortex-R5F subsystems (R5FSS),
+and a Cortex-M4F subsystem, in addition to a Dual core Cortex-A53 subsystem.
+The R5FSS can be operated in dual core mode (i.e., Split mode), or single core
+mode (i.e., Single-CPU mode). Please refer to the AM64x
+Technical Reference Manual for details.
 
 This article is geared toward AM64x users that are running Linux on the Cortex
-A53 core. The goal is to help users understand how to establish communication
-with the R5F cores.
+A53 cores. The goal is to help users understand how to establish communication
+with the R5F and M4F cores.
 
 There are many facets to this task: building, loading, debugging, memory
 sharing, etc. This article intends to take incremental steps toward
@@ -27,31 +30,37 @@ Prerequisites
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
-`Please refer to the MCU+SDK IPC documentation for R5F IPC architecture and builds: <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/IPC_GUIDE.html>`__
+`Please refer to the MCU+SDK IPC documentation for R5F and M4F IPC architecture and builds: <http://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/IPC_GUIDE.html>`__
 
 Typical Boot Flow on AM64x for ARM Linux users
 ----------------------------------------------
 
-AM64x SOC's have multiple processor cores - Cortex A53, ARM R5F cores. The A53
-typically runs a HLOS like Linux/Android and the remote cores (R5Fs) run No-OS
-or RTOS (FreeRTOS etc). In the normal operation, boot loader(U-Boot/SPL) boots
-and loads the A53 with the HLOS. The A53 boots the R5 cores.
+AM64x SOC's have multiple processor cores - Cortex-A53, Cortex-R5F, and
+Cortex-M4F ARM  cores. The A53 typically runs a HLOS like Linux/Android. The
+remote cores (R5Fs and M4F) run No-OS
+or RTOS (FreeRTOS etc). In normal operation, the boot loader (U-Boot/SPL) boots
+and loads the A53 with the HLOS. The A53 then boots the R5 and M4F cores.
 
 .. Image:: /images/Normal-boot-a53.png
+
+.. note::
+    Please note early boot is not yet supported on AM64x devices.
 
 Getting Started with IPC Linux Examples
 ---------------------------------------
 
-The figure below illustrates how remoteproc/rpmsg driver from ARM Linux
-kernel communicates with IPC driver on slave processor (e.g. R5F) running RTOS.
+The figure below illustrates how the Remoteproc/RPMsg driver from the ARM Linux
+kernel communicates with the IPC driver on a remote processor (e.g. R5F)
+running RTOS.
 
 .. Image:: /images/LinuxIPC_with_RTOS_Slave.png
 
-In order to setup IPC on slave cores, we provide some pre-built examples
-in SDK package that can be run from ARM Linux. 
+In order to setup IPC on remote cores, we provide some pre-built examples
+in the SDK package that can be run from ARM Linux.
 
 The remoteproc driver is hard-coded to look for specific files when
 loading the R5F cores. Here are the files it looks on AM64x device:
+
 ::
 
 	+------------------+-----------------+--------------------+----------------------+
@@ -65,63 +74,97 @@ loading the R5F cores. Here are the files it looks on AM64x device:
 	+------------------+-----------------+--------------------+----------------------+
 	| R5F1-1           | 78600000.r5f    | R5F cluster1-Core1 | am64-main-r5f1_1-fw  |
 	+------------------+-----------------+--------------------+----------------------+
+	| M4F              | 5000000.m4f     | M4F core           | am64-mcu-m4f0_0-fw   |
+	+------------------+-----------------+--------------------+----------------------+
 
-Generally on a target file system the abive files are soft linked to the
-intended executable FW files.: 
+Generally on a target file system the above files are soft linked to the
+intended executable FW files.:
+
 ::
 
-	root@am64xx-evm:~# ls -l /lib/firmware/
-	total 31928
-	-rw-r--r-- 1 1000 1000    2046 Jul 23  2021 LICENCE.iwlwifi_firmware
-	lrwxrwxrwx 1 1000 1000      72 Jul 23  2021 am64-main-r5f0_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu1_0_release_strip.xer5f
-	lrwxrwxrwx 1 1000 1000      72 Jul 23  2021 am64-main-r5f0_1-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu1_1_release_strip.xer5f
-	lrwxrwxrwx 1 1000 1000      72 Jul 23  2021 am64-main-r5f1_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu2_0_release_strip.xer5f
-	lrwxrwxrwx 1 1000 1000      72 Jul 23  2021 am64-main-r5f1_1-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu2_1_release_strip.xer5f
+	root@am64xx-evm:~# ls -l /lib/firmware
+	...
+	lrwxrwxrwx 1 root root      55 Jan  9  2022 am64-main-r5f0_0-fw -> /lib/firmware/mcusdk-benchmark_demo/am64-main-r5f0_0-fw
+	lrwxrwxrwx 1 root root      55 Jan  9  2022 am64-main-r5f0_1-fw -> /lib/firmware/mcusdk-benchmark_demo/am64-main-r5f0_1-fw
+	lrwxrwxrwx 1 root root      55 Jan  9  2022 am64-main-r5f1_0-fw -> /lib/firmware/mcusdk-benchmark_demo/am64-main-r5f1_0-fw
+	lrwxrwxrwx 1 root root      55 Jan  9  2022 am64-main-r5f1_1-fw -> /lib/firmware/mcusdk-benchmark_demo/am64-main-r5f1_1-fw
+	lrwxrwxrwx 1 root root      72 Jan  9  2022 am64-mcu-m4f0_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu3_0_release_strip.xer5f
+
+
+.. _booting_remote_cores_from_Linux_console:
 
 Booting Remote Cores from Linux console/User space
 --------------------------------------------------
 
-To reload R5F0 with new executables, please follow below steps:
+To reload a remote core with new executables, please follow the below steps.
 
-First identify the remotproc node associated with R5F0. This can be done by:
+First, identify the remotproc node associated with the remote core:
+
 ::
 
 	root@am64xx-evm:~# head /sys/class/remoteproc/remoteproc*/name
 	==> /sys/class/remoteproc/remoteproc0/name <==
-	78000000.r5f
+	5000000.m4fss
 
 	==> /sys/class/remoteproc/remoteproc1/name <==
-	78200000.r5f
+	78000000.r5f
 
 	==> /sys/class/remoteproc/remoteproc2/name <==
-	78400000.r5f
+	78200000.r5f
 
 	==> /sys/class/remoteproc/remoteproc3/name <==
+	78400000.r5f
+
+	==> /sys/class/remoteproc/remoteproc4/name <==
 	78600000.r5f
 
-	root@am64xx-evm:~# echo stop > /sys/class/remoteproc/remoteproc0/state                                                            
-	[25870.043782] remoteproc remoteproc0: stopped remote processor 78000000.r5f                                                      
-	root@am64xx-evm:~# echo start > /sys/class/remoteproc/remoteproc0/state                                                          
-	[25884.945700] remoteproc remoteproc0: powering up 78000000.r5f                                                                  
-	[25884.951731] remoteproc remoteproc0: Booting fw image am64-main-r5f0_0-fw, size 86732                                          
-	[25884.978483] platform 78000000.r5f: booting R5F core using boot addr = 0x0                                                      
-	[25884.988323]  remoteproc0#vdev0buffer: assigned reserved memory node r5f-dma-memory@a0000000                                    
-	[25885.001794] virtio_rpmsg_bus virtio0: rpmsg host is online                                                                    
-	[25885.002080] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xe                                                  
-	[25885.007961]  remoteproc0#vdev0buffer: registered virtio0 (type 7)                                                              
-	[25885.022326] remoteproc remoteproc0: remote processor 78000000.r5f is now up
+Then, use the sysfs interface to stop the remote core. For example, to stop R5F
+cluster0-Core0:
+
+::
+
+	root@am64xx-evm:~# echo stop > /sys/class/remoteproc/remoteproc1/state
+	[  778.963928] remoteproc remoteproc1: stopped remote processor 78000000.r5f
+
+If needed, update the firmware symbolic link to point to a new firmware:
+
+::
+
+	root@am64xx-evm:~# ln -sf /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu1_0_release_strip.xer5f am64-main-r5f0_0-fw
+
+Finally, use the sysfs interface to start the remote core:
+
+::
+
+	root@am64xx-evm:~# echo start > /sys/class/remoteproc/remoteproc1/state
+	[ 1141.491165] remoteproc remoteproc1: powering up 78000000.r5f
+	[ 1141.497109] remoteproc remoteproc1: Booting fw image am64-main-r5f0_0-fw, size 86352
+	[ 1141.507920]  remoteproc1#vdev0buffer: assigned reserved memory node r5f-dma-memory@a0000000
+	[ 1141.518539] virtio_rpmsg_bus virtio1: rpmsg host is online
+	[ 1141.525859] virtio_rpmsg_bus virtio1: creating channel rpmsg_chrdev addr 0xe
+	[ 1141.536806]  remoteproc1#vdev0buffer: registered virtio1 (type 7)
+	[ 1141.544195] remoteproc remoteproc1: remote processor 78000000.r5f is now up
 
 .. note::
-   The RemoteProc driver does not support a graceful shutdown of R5 cores in
-   Linux Processor SDK 8.0. For now, it is recommended to reboot the board
-   before loading new binaries into an R5F core.
+
+   The RemoteProc driver does not support a graceful shutdown of R5 and M4 cores
+   in the current Linux Processor SDK. For now, it is recommended to reboot the
+   board when loading new binaries into an R5F or M4F core.
 
 DMA memory Carveouts
 --------------------
 
-System memory is carved out for each remote processor core for IPC and as
-external memory to the remote processors code/data section needs. The default
-memory carveouts (DMA pools) are as below:
+System memory is carved out for each remote processor core for IPC and for the
+remote processor's code/data section needs. The default
+memory carveouts (DMA pools) are shown below.
+
+The default DMA pools assume that the
+R5F subsystems are operating in Split mode. If an R5F subsystem is run in
+Single-CPU mode, then R5F Core0 continues to use memory carveouts. However,
+R5F Core1 is unused in Single-CPU mode, so the Core1 memory carveouts can be
+reallocated to other cores. See the devicetree bindings documentation for more
+details: `Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml?h=ti-linux-5.10.y>`__
+
 ::
 
 	+------------------+--------------------+---------+----------------------------+
@@ -143,6 +186,10 @@ memory carveouts (DMA pools) are as below:
 	+------------------+--------------------+---------+----------------------------+
 	| R5F1-1 Pool      | 0xa3100000         | 15MB    | R5F externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
+	| M4F Pool         | 0xa4000000         | 1MB     | IPC (Virtio/Vring buffers) |
+	+------------------+--------------------+---------+----------------------------+
+	| M4F Pool         | 0xa4100000         | 15MB    | M4F externel code/data mem |
+	+------------------+--------------------+---------+----------------------------+
 
 	root@am64xx-evm:~# dmesg | grep 'Reserved'  
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0100000, size 15 MiB
@@ -152,31 +199,32 @@ memory carveouts (DMA pools) are as below:
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a2100000, size 15 MiB
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3000000, size 1 MiB
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3100000, size 15 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a4000000, size 1 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a4100000, size 15 MiB
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
-used to communicate with the remote processor. The remaining 15MB of the
-carveout is used for R5 external memory (program code,data, etc).
+used to communicate with the remote processor core. The remaining 15MB of the
+carveout is used for the remote core external memory (program code, data, etc).
 
 .. note::
-    Please note early boot is not yet supported on AM64x devices. And the
-    resource table entity (describes the system resources needed by the remote
+    The resource table entity (which describes the system resources needed by
+    the remote
     processor) needs to be at the beginning of the 15MB remote processor
     external memory section.
 
 
-For details on how to adjust the sizes and locations of the R5F Pool
-carveouts, please see section :ref:`changing_the_r5f_memory_map`.
+For details on how to adjust the sizes and locations of the remote core pool
+carveouts, please see section :ref:`changing_the_memory_map`.
 
-.. _changing_the_r5f_memory_map:
+.. _changing_the_memory_map:
 
-Changing the R5F Memory Map
+Changing the Memory Map
 ---------------------------
 
-The DMA memory carveouts wrt the address and size needs to match with the MCU
-(R5F) external memory section sizes in linker mapfile.
+The address and size of the DMA memory carveouts needs to match with the MCU
+(R5F & M4F) external memory section sizes in their linker mapfiles.
 
-| 
-| linux/arch/arm64/boot/dts/ti/k3-am642-sk.dts
+linux/arch/arm64/boot/dts/ti/k3-am642-sk.dts
 
 ::
 
@@ -232,7 +280,24 @@ The DMA memory carveouts wrt the address and size needs to match with the MCU
 			reg = <0x00 0xa3100000 0x00 0xf00000>;
 			no-map;
 		};
-	};
+
+		mcu_m4fss_dma_memory_region: m4f-dma-memory@a4000000 {
+			compatible = "shared-dma-pool";
+			reg = <0x00 0xa4000000 0x00 0x100000>;
+			no-map;
+		};
+
+		mcu_m4fss_memory_region: m4f-memory@a4100000 {
+			compatible = "shared-dma-pool";
+			reg = <0x00 0xa4100000 0x00 0xf00000>;
+			no-map;
+		};
+
+		rtos_ipc_memory_region: ipc-memories@a5000000 {
+			reg = <0x00 0xa5000000 0x00 0x00800000>;
+			alignment = <0x1000>;
+			no-map;
+		};
 
 .. warning:: Be careful not to overlap carveouts!
 
@@ -250,12 +315,14 @@ different interactions with the remote service. The RPMsg char driver supports
 the creation of multiple endpoints for each probed RPMsg char device, enabling
 the use of the same device for different instances.
 
+.. rubric:: RPMsg devices
+
 Each created endpoint device shows up as a single character device in /dev.
 
 The RPMsg bus sits on top of the VirtIO bus. Each virtio name service
 announcement message creates a new RPMsg device, which is supposed to bind to a
 RPMsg driver. RPMsg devices are created dynamically:
-    
+
 The remote processor announces the existence of a remote RPMsg service by
 sending a name service announcement message containing the name of the service
 (i.e. name of the device), source and destination addresses. The message is
@@ -264,20 +331,25 @@ device which represents the remote service. As soon as a relevant RPMsg driver
 is registered, it is immediately probed by the bus and the two sides can start
 exchanging messages.
 
-The control interface
-    The RPMsg char driver provides control interface (in the form of a character
-    device under /dev/rpmsg_ctrlX) allowing user-space to export an endpoint
-    interface for each exposed endpoint. The control interface provides a
-    dedicated ioctl to create an endpoint device.
+.. rubric:: The control interface
+
+The RPMsg char driver provides control interface (in the form of a character
+device under /dev/rpmsg_ctrlX) allowing user-space to export an endpoint
+interface for each exposed endpoint. The control interface provides a
+dedicated ioctl to create an endpoint device.
 
 ti-rpmsg-char library
 ---------------------
-A thin userspace rpmsg char library is provided abstracting the rpmsg char
-driver usage from userspace. This library provides an easy means to identify and
-open rpmsg character devices created by the kernel rpmsg-char driver.
+The ti-rpmsg-char package is located at the `ti-rpmsg-char git repo
+<https://git.ti.com/cgit/rpmsg/ti-rpmsg-char>`.
 
-This library support TI K3 family of devices i.e AM65x, AM64x, J721E and J7200
-SoCs.
+A thin userspace rpmsg char library is provided. The library abstracts the rpmsg
+char driver usage from userspace. This library provides an easy means to
+identify and open rpmsg character devices created by the kernel rpmsg-char
+driver.
+
+This library support TI K3 family of devices (i.e AM65x, AM64x, J721E, and J7200
+SoCs).
 
 The library provides 4 basic APIs wrapping all the rpmsg char driver calls.
 `Please check documentation in 'include/ti_rpmsg_char.h' for details.
@@ -329,22 +401,53 @@ The below table lists the device enumerations as defined in the rpmsg_char_libra
 	+------------------+--------------------+---------+-----------------------------------+
 	| DSP_C71_0        |N/A                 | No      | C71 DSP                           |
 	+------------------+--------------------+---------+-----------------------------------+
+	| M4F_MCU0_0       | 5000000.m4f        | Yes     | M4F core in MCU Domain            |
+	+------------------+--------------------+---------+-----------------------------------+
 
 .. note::
-	The R5F clusters on AM64x can be in either single core or dual core mode. In dual core mode enumerations 'R5F_MAIN0_1 and R5F_MAIN1_1' are not valid.
+
+	The R5F clusters on AM64x can be in either single core or dual core
+	mode. In single core mode enumerations 'R5F_MAIN0_1 and R5F_MAIN1_1' are
+	not valid.
 
 RPMsg examples:
 ---------------
 
-RPMsg user space example
+.. rubric:: RPMsg user space example
+
+.. note::
+
+   These steps were tested on Ubuntu 18.04.
+   Later versions of Ubuntu may need different steps
+
+Access source code in the git repo `here <https://git.ti.com/cgit/rpmsg/ti-rpmsg-char>`.
+rproc_id is defined at `include/rproc_id.h <https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h>`.
+
+Build the Linux Userspace example for Linux RPMsg by following the steps
+in the top-level README:
+
+#. Download the git repo
+
+#. Install GNU autoconf, GNU automake, GNU libtool, and v8 compiler as per the
+   README
+
+#. Perform the Build Steps as per the README
+
+Linux RPMsg can be tested with prebuilt binaries that are packaged in the
+"tisdk-default-image-am64xx-evm" filesystem:
+
+#. Copy the Linux RPMsg Userspace application from
+   <ti-rpmsg-char_repo>/examples/rpmsg_char_simple into the board's Linux
+   filesystem.
+
+#. Ensure that the remote core symbolic link points to the desired binary file
+   in /lib/firmware/pdk-ipc/. Update the symbolic link if needed. Reference
+   section :ref:`booting_remote_cores_from_Linux_console` for more information.
+
+#. Run the example on the board:
+
 ::
 
-	root@am64xx-evm:~# rpmsg_char_simple 
-	_rpmsg_char_find_rproc: SoC doesn't have rproc id 0
-	Can't create an endpoint device: Success
-	TEST STATUS: FAILED
-	root@am64xx-evm:~# rpmsg_char_simple -h
-	rpmsg_char_simple: invalid option -- 'h'
 	Usage: rpmsg_char_simple [-r <rproc_id>] [-n <num_msgs>] [-d <rpmsg_dev_name] [-p <remote_endpt]
 			Defaults: rproc_id: 0 num_msgs: 100 rpmsg_dev_name: NULL remote_endpt: 14
 
@@ -375,7 +478,42 @@ RPMsg user space example
 
 	Communicated 10 messages successfully on rpmsg-char-2-1027
 
-RPMsg kernel space example
+.. rubric:: RPMsg kernel space example
+
+The kernel space example is in the Linux Processor SDK under
+samples/rpmsg/rpmsg_client_sample.c
+
+Build the kernel module rpmsg_client_sample:
+
+#. Set up the kernel config to build the rpmsg client sample. Use menuconfig to
+   verify Kernel hacking > Sample kernel code > Build rpmsg client sample is M:
+
+::
+
+    $ export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin:$PATH
+    $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- distclean
+    $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- tisdk_am64xx-evm_defconfig
+    $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
+
+#. Make the kernel and modules. Multithreading with –j is optional:
+
+::
+
+    $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- -j8
+
+Linux RPMsg can be tested with prebuilt binaries that are packaged in the
+"tisdk-default-image-am64xx-evm" filesystem:
+
+#. Copy the Linux RPMsg kernel driver from
+   <Linux_SDK>/board-support/linux-x.x.x/samples/rpmsg/rpmsg_client_sample.ko
+   into the board's Linux filesystem.
+
+#. Ensure that the remote core symbolic link points to the desired binary file
+   in /lib/firmware/pdk-ipc/. Update the symbolic link if needed. Reference
+   section :ref:`booting_remote_cores_from_Linux_console` for more information.
+
+#. Run the example on the board:
+
 ::
 
 	root@am64xx-evm:~# modprobe rpmsg_client_sample count=10
