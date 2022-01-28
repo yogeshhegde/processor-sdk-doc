@@ -211,6 +211,8 @@ Build U-Boot
 
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+          $ cd ../k3-image-gen-<version>
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j7200 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j7200-gp.bin
 
        *A72*
 
@@ -218,8 +220,6 @@ Build U-Boot
 
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j7200_evm_a72_defconfig O=<output directory>/a72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
-          $ cd <path to K3-image-gen project>
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- SOC=j7200 SBL=<output directory>/r5/spl/u-boot-spl.bin
 
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')
@@ -240,6 +240,8 @@ Build U-Boot
 
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am64x_evm_r5_defconfig O=<output directory>/r5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+          $ cd ../k3-image-gen-<version>
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am64x SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-sci-firmware-am64x-gp.bin
 
        *A53*
 
@@ -247,16 +249,16 @@ Build U-Boot
 
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_evm_a53_defconfig O=<output directory>/a53
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin  O=<output directory>/a53
-          $ cd <path to K3-image-gen project>
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- SOC=am64x SBL=<output directory>/r5/spl/u-boot-spl.bin
 
 
     .. rubric:: Dependent Project location
 
-    - K3-image-gen (For generating tiboot3.bin and sysfw.itb) project is
+    - In case not use TI SDK and building U-Boot out of mainline, then
+      k3-image-gen (For generating tiboot3.bin and sysfw.itb) project is
       located `here <https://git.ti.com/cgit/k3-image-gen/k3-image-gen>`__
     - Linux Firmware (for device specific ti-dm and ti-sysfw binaries) project
-      is located `here <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__ 
+      is located `here <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/?h=ti-linux-firmware>`__.
+      Images are under ti-dm and ti-sysfw folders
 
     .. rubric:: Target Images
 
