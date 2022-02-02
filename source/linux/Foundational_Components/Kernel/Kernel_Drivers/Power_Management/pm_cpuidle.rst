@@ -1,20 +1,7 @@
-.. http://processors.wiki.ti.com/index.php/Linux_Core_Power_Management_User%27s_Guide
-
 CPUIdle
----------------------------------
+-------
 
-.. rubric:: Dynamic Power Management Techniques
-   :name: dynamic-power-management-techniques
-
-Dynamic or active Power management techniques reduce the active power
-consumption by an SoC when the system is active and performing tasks.
-
-#. DVFS
-#. **CPUIdle**
-#. Smartreflex
-
-.. rubric:: CPUIdle
-   :name: cpuidle
+.. rubric:: Overview
 
 The cpuidle framework consists of two key components:
 
@@ -26,20 +13,7 @@ C-state. Governor decides whether to continue in current state/
 transition to a different state. Current 'driver' is called to
 transition to the selected state.
 
-.. rubric:: Release applicable
-
-Latest release this documentation applies to is Kernel v4.4
-
-| 
-
-.. rubric:: Supported Devices
-   :name: supported-devices-1
-
--  AM335x
--  AM437x
-
 .. rubric:: Driver Features
-   :name: driver-features-1
 
 AM335x supports two different C-states
 
@@ -54,7 +28,6 @@ AM437x supports two different C-states
 | 
 
 .. rubric:: Source Location
-   :name: source-location-1
 
 ::
 
@@ -63,7 +36,7 @@ AM437x supports two different C-states
     drivers/cpuidle/cpuidle-arm.c
 
 .. rubric:: Kernel Configuration Options
-   :name: kernel-configuration-options-1
+
 
 The driver can be built into the kernel as a static module.
 
@@ -103,7 +76,6 @@ All relevant options are listed below:
 | 
 
 .. rubric:: DT Configuration
-   :name: dt-configuration-1
 
 ::
 
@@ -127,7 +99,6 @@ All relevant options are listed below:
     };
 
 .. rubric:: Driver Usage
-   :name: driver-usage-1
 
 CPUIdle requires no intervention by the user for it to work, it just
 works transparently in the background. By default the ladder governor is
