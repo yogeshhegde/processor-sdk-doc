@@ -1,67 +1,7 @@
-.. http://processors.wiki.ti.com/index.php/Linux_Core_Power_Management_User%27s_Guide
-
 DVFS
----------------------------------
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family')
+----
 
-	.. rubric:: Power Management on DRA7 platform
-	   :name: power-management-on-dra7-platform
-	The power management features enabled on DRA7 platforms (DRA7x/ J6/
-	AM57x) are as follows:
-
-	-  Suspend/Resume
-	-  **MPU DVFS**
-	-  SmartReflex
-
-	.. rubric:: DVFS
-	   :name: dvfs
-
-	On-Demand is a load based DVFS governor, enabled by deafult. The
-	governor will scale voltage and frequency based on load between
-	available OPPs.
-
-	-  VDD\_MPU supports only 2 OPPs for now (OPP\_NOM, OPP\_OD). OPP\_HIGH
-	   is not yet enabled. Future versions of Kernel may support OPP\_HIGH.
-	-  VDD\_CORE has only one OPP which removes the possibility of DVFS on
-	   VDD\_CORE.
-	-  GPU DVFS is TBD.
-
-	Supported OPPs:
-
-	::
-
-		  /* kHz    uV */
-		  1000000 1090000   /* OPP_NOM */
-		  1176000 1210000   /* OPP_OD */
-
-.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437x_family')
-
-	.. rubric:: Dynamic Power Management Techniques
-	   :name: dynamic-power-management-techniques
-
-	Dynamic or active Power management techniques reduce the active power
-	consumption by an SoC when the system is active and performing tasks.
-
-	#. **DVFS**
-	#. CPUIdle
-	#. Smartreflex
-
-.. rubric:: Dynamic Voltage and Frequency Scaling(MPU aka CPUFREQ)
-   :name: dynamic-voltage-and-frequency-scalingmpu-aka-cpufreq
-
-Dynamic voltage and frequency scaling, or DVFS as it is commonly known,
-is the ability of a part to modify both the voltage and frequency it
-operates at based on need, user preference, or other factors. MPU DVFS
-is supported in the kernel by the cpufreq driver. All supported SoCs use
-the generic cpufreq-cpu0 driver.
-
-Design: OPP is a pair of voltage frequency value. When scaling from High
-OPP to Low OPP Frequency is reduced first and then the voltage. When
-scaling from a lower OPP to Higher OPP we scale the voltage first and
-then the frequency.
-
-.. rubric:: Driver Features
-   :name: driver-features-kernel-pm
+.. rubric:: Overview
 
 Dynamic voltage and frequency scaling, or DVFS as it is commonly known,
 is the ability of a part to modify both the voltage and frequency it
@@ -94,7 +34,6 @@ governors are enabled with the ondemand governor selected as the default
 governor. To make changes, follow the instructions below.
 
 .. rubric:: Source Location
-   :name: source-location-pm
 
 drivers/cpufreq/ti-cpufreq.c drivers/cpufreq/cpufreq-dt.c
 
@@ -103,7 +42,6 @@ silicon characteristics. The OPP data itself is used by the cpufreq DT
 driver to scale voltages based on frequency changes for the CPU.
 
 .. rubric:: Kernel Configuration Options
-   :name: kconfig-options-pm
 
 The driver can be built into the kernel as a static module, dynamic
 module, or both.
@@ -193,7 +131,6 @@ OPPs for each silicon revision. More information can be found in the
 `Operating Points <#operating-points>`__ section.
 
 .. rubric:: Driver Usage
-   :name: driver-usage-pm
 
 All of the standard governors are built-in to the kernel, and by default
 the ondemand governor is selected.
@@ -245,6 +182,11 @@ system load)
 .. rubric:: Operating Points
    :name: operating-points
 
+Design: OPP is a pair of voltage frequency value. When scaling from High
+OPP to Low OPP Frequency is reduced first and then the voltage. When
+scaling from a lower OPP to Higher OPP we scale the voltage first and
+then the frequency.
+
 The OPP platform data defined in arch/arm/mach-omap2/oppXXXX\_data.c has
 been replaced by the TI cpufreq driver OPP modification code and the OPP
 tables in the DT files. These files allow defining of a different set of
@@ -293,4 +235,26 @@ based on what is detected to be supported by the specific SoC in use.
 To implement Dynamic Frequency Scaling (DFS), the voltages in the table
 can be changed to the same fixed value to avoid any voltage scaling from
 taking place if the system has been designed to use a single voltage.
+
+.. ifconfig:: CONFIG_part_family in ('General_family')
+
+	.. rubric:: On-Demand OPP
+	
+	On-Demand is a load based DVFS governor, enabled by deafult. The
+	governor will scale voltage and frequency based on load between
+	available OPPs.
+
+	-  VDD\_MPU supports only 2 OPPs for now (OPP\_NOM, OPP\_OD). OPP\_HIGH
+	   is not yet enabled. Future versions of Kernel may support OPP\_HIGH.
+	-  VDD\_CORE has only one OPP which removes the possibility of DVFS on
+	   VDD\_CORE.
+	-  GPU DVFS is TBD.
+
+	Supported OPPs:
+
+	::
+
+		  /* kHz    uV */
+		  1000000 1090000   /* OPP_NOM */
+		  1176000 1210000   /* OPP_OD */
 
