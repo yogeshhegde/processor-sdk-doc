@@ -267,7 +267,7 @@ device using:
 For J721E EVM, pre populated configuration descriptor binary file can be
 found below. So, to provision UFS flash on J721e EVM:
 
-- Download the :download:`file <../files/config_desc_data_ind_0>`
+- Download the :download:`file </files/config_desc_data_ind_0>`
 - Execute below command to flash descriptor and reboot the board to see
   new partitions
 
