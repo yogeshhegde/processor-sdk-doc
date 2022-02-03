@@ -13,7 +13,7 @@ provides a set of layers for `OpenEmbedded <http://openembedded.org/>`__
 and the `Yocto Project <http://yoctoproject.org/>`__ targeting TI
 platforms.
 
-This page will provide the basic steps require to recreate the Processor
+This page will provide the basic steps required to recreate the Processor
 SDK along with a reference of Processor SDK specific configurations,
 build targets, and target devices. Also, tips and suggestions are
 provided along with links for more in-depth information.
@@ -29,7 +29,7 @@ Prerequisites (One-time setup)
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL')
 
-    The recommended Linux distribution is Ubuntu 16.04 or Ubuntu 18.04.
+    The recommended Linux distribution is Ubuntu 18.04.
 
 The following build host packages are required for Ubuntu. The following
 command will install the required tools on the Ubuntu Linux
@@ -37,7 +37,7 @@ distribution.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL')
 
-    For Ubuntu 16.04 and 18.04, please run the following:
+    For Ubuntu 18.04, please run the following:
 
 ::
 
@@ -60,6 +60,14 @@ reconfigure to use bash by running the following command:
 
 Be sure to select "No" when you are asked to use dash as the default
 system shell.
+
+.. rubric:: Large Swap File
+
+Building large packages, especially several at a time, requires a lot of 
+working memory for a computer. For computers with 32 GB or RAM or more, this 
+should not be a problem. For computers with less RAM, a swap file of ~16GB may 
+be needed to build large packages. Creating a large swap file, or resizing a 
+small swap file to be larger will help avoid build errors for large packages.
 
 .. rubric:: Proxy Setup
    :name: Proxy Setup
@@ -102,7 +110,7 @@ Build Steps
 Please refer to :ref:`here <yocto-layer-configuration>` for the
 layer configuration for a particular release of Processor SDK Linux.
 See `Build Options`_ for a list of additional targets.  The MACHINE can be set to
-|__SDK_BUILD_MACHINE__|.
+|__SDK_BUILD_MACHINE__|, for example.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
