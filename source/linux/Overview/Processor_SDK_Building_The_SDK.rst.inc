@@ -41,7 +41,15 @@ distribution.
 
 ::
 
-    $ sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools python diffstat texinfo gawk chrpath dos2unix wget unzip socat doxygen libc6:i386 libncurses5:i386 libstdc++6:i386 libz1:i386 g++-multilib
+    $ sudo apt-get install build-essential autoconf \
+          automake bison \ 
+          flex libssl-dev bc u-boot-tools \
+          python diffstat \
+          texinfo gawk chrpath dos2unix \
+          wget unzip socat doxygen libc6:i386 \
+          libncurses5:i386 libstdc++6:i386 \
+          libz1:i386 g++-multilib \
+          git python3-distutils python3-apt 
 
 By default Ubuntu uses "dash" as the default shell for /bin/sh. You must
 reconfigure to use bash by running the following command:
