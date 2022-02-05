@@ -8,6 +8,7 @@ User's Guide
     UG-General-Info
     UG-DFU
     UG-Network
+    UG-Network-K3
     UG-NAND
     UG-Memory
     UG-SPI
