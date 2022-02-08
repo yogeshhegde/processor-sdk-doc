@@ -33,30 +33,30 @@ The Directory structure for CC-Link IE Field Network Basic source code
 and examples for both NIMU and NIMU_ICSS is shown in the following
 table.
 
-+-------------------------------------------------------------------------------------------------------------------+
-|                                        **CCLink for CPSW i.e. NIMU**                                              |
-+-------------------------------+-----------------------------------------------------------------------------------+
-+**Master Station Source code** | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/cclink_master |
-+-------------------------------+-----------------------------------------------------------------------------------+
-+**SLave Station Source code**  |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/cclink_slave   |
-+-------------------------------+-----------------------------------------------------------------------------------+
-+**Test Examples script**       |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/<SOC>          |
-+-------------------------------+-----------------------------------------------------------------------------------+
-+**Test Examples main code**    |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/src            |
-+-------------------------------+-----------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+|                                            **CCLink for CPSW i.e. NIMU**                                                  |
++-----------------------------------+---------------------------------------------------------------------------------------+
++**Controller Station Source code** | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/cclink_controller |
++-----------------------------------+---------------------------------------------------------------------------------------+
++**SLave Station Source code**      |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/cclink_device      |
++-----------------------------------+---------------------------------------------------------------------------------------+
++**Test Examples script**           |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/<SOC>              |
++-----------------------------------+---------------------------------------------------------------------------------------+
++**Test Examples main code**        |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu/example/CCLink/src                |
++-----------------------------------+---------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------+
-|                                     **CCLink for ICSS i.e. NIMU_ICSS**                                                 |
-+-------------------------------+----------------------------------------------------------------------------------------+
-+**Master Station Source code** | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/cclink_master |
-+-------------------------------+----------------------------------------------------------------------------------------+
-+**Slave Station Source code**  |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/cclink_slave   |
-+-------------------------------+----------------------------------------------------------------------------------------+
-+**Test Examples script**       |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/<SOC>          |
-+-------------------------------+----------------------------------------------------------------------------------------+
-+**Test Examples main code**    |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/src            |
-+-------------------------------+----------------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------+
+|                                            **CCLink for ICSS i.e. NIMU_ICSS**                                                  |
++-----------------------------------+--------------------------------------------------------------------------------------------+
++**Controller Station Source code** | $(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/cclink_controller |
++-----------------------------------+--------------------------------------------------------------------------------------------+
++**Device Station Source code**     |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/cclink_device      |
++-----------------------------------+--------------------------------------------------------------------------------------------+
++**Test Examples script**           |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/<SOC>              |
++-----------------------------------+--------------------------------------------------------------------------------------------+
++**Test Examples main code**        |$(TI_PDK_INSTALL_DIR)/packages/ti/transport/ndk/nimu_icss/example/CCLink/src                |
++-----------------------------------+--------------------------------------------------------------------------------------------+
 
 | 
 
@@ -76,15 +76,15 @@ CC-Link IE Field Network Basic Example Description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For each EVM Type supported, there is a cclink example which demonstates
-cyclic data communication between master and slave station. Once the
-application is loaded via CCS and run, you will be able to see master
-sending cyclic data packets and slave receiving the packet. For example,
+cyclic data communication between controller and device station. Once the
+application is loaded via CCS and run, you will be able to see controller
+sending cyclic data packets and device receiving the packet. For example,
 the config file for NIMU for CPSW for idkAM572x, can be found in
 ti/transport/ndk/nimu/example/CCLink/am572x/armv7/bios/cclink_idkAM572x.cfg.
-The default IP address for master is 192.168.3.100 and for slave it is
+The default IP address for controller is 192.168.3.100 and for device it is
 192.168.3.4. If you wish to re-configure the IP address of the CPSW
 interface you will need to modify the following configuration
-parameters. make sure master and slave are in same network.
+parameters. make sure controller and device are in same network.
 
 -  Ip.address = "new ip address"
 -  Ip.mask = "new ip mask"
@@ -96,11 +96,11 @@ Example Project using CCS.
 +-----------------------+-----------------------+-----------------------+
 | Name                  | Description           | EVM Configuration     |
 +=======================+=======================+=======================+
-| NIMU_CCLinkMaster_<ev | | Example             | | icev2AM335x:        |
-| m/idk>XXXX_<arm/c66x/ |   demonstrates CCLink |   Jumpers J18 and J19 |
-| m4>Exampleproject.txt |   master station      |   need to be set      |
-|                       |   sending cyclic      |   properly to select  |
-|                       |   packet to slave.    |   CPSW or ICSS mode.  |
+| NIMU_CCLinkController | | Example             | | icev2AM335x:        |
+| _<evm/idk>XXXX_<arm/  |   demonstrates CCLink |   Jumpers J18 and J19 |
+| c66x/m4>Exampleprojec |   controller station  |   need to be set      |
+| t.txt                 |   sending cyclic      |   properly to select  |
+|                       |   packet to device.   |   CPSW or ICSS mode.  |
 |                       |                       |                       |
 |                       |                       | | Pin2 and Pin3 need  |
 |                       |                       |   to be connected for |
@@ -118,14 +118,14 @@ Example Project using CCS.
 |                       |                       | external PC on same   |
 |                       |                       | subnet.               |
 +-----------------------+-----------------------+-----------------------+
-| NIMU_CCLinkSlave_<evm | | Example             | | icev2AM335x:        |
-| /idk>XXXX_<arm/c66x/m |   demonstrates CCLink |   Jumpers J18 and J19 |
-| 4>Exampleproject.txt  |   slave station       |   need to be set      |
+| NIMU_CCLinkDevice_<ev | | Example             | | icev2AM335x:        |
+| m/idk>XXXX_<arm/c66x/ |   demonstrates CCLink |   Jumpers J18 and J19 |
+| m4>Exampleproject.txt |   device station      |   need to be set      |
 |                       |   receiving cyclic    |   properly to select  |
-|                       |   packet from master  |   CPSW or ICSS mode.  |
-|                       |   and sending a       |                       |
-|                       |   response back.      | | Pin2 and Pin3 need  |
-|                       |                       |   to be connected for |
+|                       |   packet from         |   CPSW or ICSS mode.  |
+|                       |   controller and      |                       |
+|                       |   sending a response  | | Pin2 and Pin3 need  |
+|                       |   back.               |   to be connected for |
 |                       |                       |   ICSS mode and Pin1  |
 |                       |                       |   and Pin2 for CPSW   |
 |                       |                       |   mode.               |
@@ -142,9 +142,9 @@ Example Project using CCS.
 +-----------------------+-----------------------+-----------------------+
 | NIMU_ICSS_CCLinkMaste | | Example             | | icev2AM335x:        |
 | r_<evm/idk>XXXX_<arm/ |   demonstrates CCLink |   Jumpers J18 and J19 |
-| c66x/m4>Exampleprojec |   master station      |   need to be set      |
+| c66x/m4>Exampleprojec |   controller station  |   need to be set      |
 | t.txt                 |   sending cyclic      |   properly to select  |
-|                       |   packet to slave.    |   CPSW or ICSS mode.  |
+|                       |   packet to device.   |   CPSW or ICSS mode.  |
 |                       |                       |                       |
 |                       |                       | | Pin2 and Pin3 need  |
 |                       |                       |   to be connected for |
@@ -162,14 +162,14 @@ Example Project using CCS.
 |                       |                       | external PC on same   |
 |                       |                       | subnet.               |
 +-----------------------+-----------------------+-----------------------+
-| NIMU_ICSS_CCLinkSlave | | Example             | | icev2AM335x:        |
-| _<evm/idk>XXXX_<arm/c |   demonstrates CCLink |   Jumpers J18 and J19 |
-| 66x/m4>Exampleproject |   slave station       |   need to be set      |
-| .txt                  |   receiving cyclic    |   properly to select  |
-|                       |   packet from master  |   CPSW or ICSS mode.  |
-|                       |   and sending a       |                       |
-|                       |   response back.      | | Pin2 and Pin3 need  |
-|                       |                       |   to be connected for |
+| NIMU_ICSS_CCLinkDevic | | Example             | | icev2AM335x:        |
+| e_<evm/idk>XXXX_<arm/ |   demonstrates CCLink |   Jumpers J18 and J19 |
+| c66x/m4>Exampleprojec |   device station      |   need to be set      |
+| t.txt                 |   receiving cyclic    |   properly to select  |
+|                       |   packet from         |   CPSW or ICSS mode.  |
+|                       |   controller and      |                       |
+|                       |   sending a response  | | Pin2 and Pin3 need  |
+|                       |   back.               |   to be connected for |
 |                       |                       |   ICSS mode and Pin1  |
 |                       |                       |   and Pin2 for CPSW   |
 |                       |                       |   mode.               |
@@ -192,21 +192,21 @@ Running CC-Link IE Field Network Basic example
 
 The following is the test setup needed to run the example for CCLink
 demonstration on TI platform. Connect the tested eth port of the evm to
-a switch for master station. Do the same connection for slave station to
+a switch for controller station. Do the same connection for device station to
 same switch.
 
 .. Image:: /images/Cclink_setup_pic.PNG
 
 | 
-| Once the connection is done, load master and slave station code on
+| Once the connection is done, load controller and device station code on
   both evm and run them simultaneously. You would see following output
-  on uart port of master station.
+  on uart port of controller station.
 
-.. Image:: /images/Cclink_master_screeshot_linux.png
+.. Image:: /images/Cclink_controller_screeshot_linux.png
 
-You would see following output on uart port of slave station.
+You would see following output on uart port of device station.
 
-.. Image:: /images/Cclink_slave_screenshot_linux.png
+.. Image:: /images/Cclink_device_screenshot_linux.png
 
 | 
 

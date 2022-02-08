@@ -21,11 +21,11 @@ Terms and Abbreviations
 +-------------------------------+----------------------------------+
 | BC                            |  Boundary Clock                  |
 +-------------------------------+----------------------------------+
-| Master                        |  PTP master                      |
+| Controller                    |  PTP controller                  |
 +-------------------------------+----------------------------------+
-| Slave                         |  PTP Slave                       |
+| Device                        |  PTP Device                      |
 +-------------------------------+----------------------------------+
-| BMCA                          |  Best Master Clock Algorithm     |
+| BMCA                          |  Best Controller Clock Algorithm |
 +-------------------------------+----------------------------------+
 | RCF                           |  Synchronization/(Frequency      |
 |                               |  Compensation) Factor            |
@@ -37,11 +37,11 @@ Terms and Abbreviations
 Introduction
 ^^^^^^^^^^^^
 
-This document details the user guide aspects of PTP/1588 v2 master/slave implementation on PRU-ICSS.
+This document details the user guide aspects of PTP/1588 v2 controller/device implementation on PRU-ICSS.
 
 Dual EMAC firmware implementation supports P2P and the implementation is unique to Emac.
-The master capability added to the TimeSync driver is currently limitted to sending Sync and
-Announce frames. The BMCA/Management part of PTP master is not implemented.
+The controller capability added to the TimeSync driver is currently limitted to sending Sync and
+Announce frames. The BMCA/Management part of PTP controller is not implemented.
 
 
 TimeSync (PTP) driver does the task of
@@ -89,7 +89,7 @@ API reference for Application:
     #include <ti/transport/timeSync/icss_timeSync.h>
 
 Below sequence indicates API calling sequence for a simple use case of
-timeSync master operation
+timeSync controller operation
 
 .. code-block:: c
 
@@ -101,14 +101,14 @@ timeSync master operation
     /* Assumption: firmware is downloaded and ICSS_EMAC driver is initialized */
     TimeSync_drvInit(timeSyncHandle);
     TimeSync_drvEnable(timeSyncHandle);
-    TimeSync_enableMaster();
+    TimeSync_enableController();
     While(1)
     {
         Delay();
     }
 
 Below sequence indicates API calling sequence for a simple use case of
-timeSync slave operation
+timeSync device operation
 
 .. code-block:: c
 
@@ -120,7 +120,7 @@ timeSync slave operation
     /* Assumption: firmware is downloaded and ICSS_EMAC driver is initialized */
     TimeSync_drvInit(timeSyncHandle);
     TimeSync_drvEnable(timeSyncHandle);
-    TimeSync_disableMaster();
+    TimeSync_disableController();
     While(1)
     {
         Delay();
@@ -141,11 +141,11 @@ Below tasks would be created after Application calls TimeSync_drvInit() function
 +-------------------------------+----------------------------------+-----------------------------------------------------------------+
 | Handle Name                   | | Function Name                  | | What it does                                                  |
 +===============================+==================================+=================================================================+
-| timeSync_pDelayReqSendTask    | TimeSync_PdelayReqSendTask()     | | Send Peer Delay Requests periodically on both ports.          | 
+| timeSync_pDelayReqSendTask    | TimeSync_PdelayReqSendTask()     | | Send Peer Delay Requests periodically on both ports.          |
 |                               |                                  |   Delay is configurable. Only applicable for P2P configuration  |
 +-------------------------------+----------------------------------+-----------------------+-----------------------------------------+
-| timeSync_delayReqSendTask     | TimeSync_delayReqSendTask()      | | Send Delay requests to PTP Master. This is currently done for |
-|                               |                                  |   every Sync frame. Pends indefinitely on a semaphore.          | 
+| timeSync_delayReqSendTask     | TimeSync_delayReqSendTask()      | | Send Delay requests to PTP Controller. This is currently done |
+|                               |                                  |   for every Sync frame. Pends indefinitely on a semaphore.      |
 +-------------------------------+----------------------------------+-----------------------------------------------------------------+
 | timeSync_TxTSTaskP1           + TimeSync_TxTSTask_P1()           | | Process Tx timestamp for Port 1. Pends on an event posted by  |
 |                               |                                  |   Tx ISR indefinitely.                                          |
@@ -153,7 +153,7 @@ Below tasks would be created after Application calls TimeSync_drvInit() function
 | timeSync_TxTSTaskP2           + TimeSync_TxTSTask_P2()           | | Process Tx timestamp for Port 2. Pends on an event posted by  |
 |                               |                                  |   Tx ISR indefinitely.                                          |
 +-------------------------------+----------------------------------+-----------------------------------------------------------------+
-| timeSync_syncTxTask           + TimeSync_SyncTxTask()            | | Sends Sync frames on both ports in Master mode.               |
+| timeSync_syncTxTask           + TimeSync_SyncTxTask()            | | Sends Sync frames on both ports in Controller mode.           |
 |                               |                                  |   Pends indefinitely on a semaphore posted by the DM Timer ISR  |
 +-------------------------------+----------------------------------+-----------------------------------------------------------------+
 | timeSync_announceTxTask       | TimeSync_AnnounceTxTask()        | | Sends Announce frames on both ports periodically              |
@@ -180,9 +180,9 @@ Sample Examples
 |       Name               |      Description      || Expected Results     |
 +==========================+=======================+=======================+
 | timeSync_BasicExample    | Simple timeSync       || Clock Sync           |
-|                          | example demonstrating |  results at Slave     |
-|                          | sync between Master   |                       |
-|                          | and Slave             |                       |
+|                          | example demonstrating |  results at Device    |
+|                          | sync between          |                       |
+|                          | Controller and Device |                       |
 +--------------------------+-----------------------+-----------------------+
 
 Additional References
