@@ -477,7 +477,7 @@ CCLink Example
 
 Refer
 `Processor_SDK_RTOS_CCLINK <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_CCLINK>`__ for
-details on steps for running cclink master and slave examples on NDK.
+details on steps for running cclink controller and device examples on NDK.
 
 FAQ
 ---

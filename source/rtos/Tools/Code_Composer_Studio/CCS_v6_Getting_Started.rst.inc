@@ -84,8 +84,8 @@ configurations.
 `GSG:Common_target_configurations_v5 <http://processors.wiki.ti.com/index.php/GSG:Common_target_configurations_v5>`__
 `GSG:Adding GEL files to a target configuration
 v5 <http://processors.wiki.ti.com/index.php/GSG:Adding_GEL_files_to_a_target_configuration_v5>`__
-`GSG:Connecting to slave cores in SoC devices
-v5 <http://processors.wiki.ti.com/index.php/GSG:Connecting_to_slave_cores_in_SoC_devices_v5>`__
+`GSG:Connecting to target cores in SoC devices
+v5 <http://processors.wiki.ti.com/index.php/GSG:Connecting_to_target_cores_in_SoC_devices_v5>`__
 `http://processors.wiki.ti.com/index.php/Target_Configuration_-_Custom_Configurations <http://processors.wiki.ti.com/index.php/Target_Configuration_-_Custom_Configurations>`__
 .. rubric:: Linux development
    :name: linux-development

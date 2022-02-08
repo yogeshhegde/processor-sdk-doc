@@ -3,7 +3,7 @@
 Introduction
 ^^^^^^^^^^^^^^
 
-The IPC 3.x product introduced support for loading slave images which
+The IPC 3.x product introduced support for loading target images which
 include a `Linux-defined resource table <http://lwn.net/Articles/489009/>`__. 
 In IPC 3.00.01, `IPC added the ability <http://git.ti.com/cgit/cgit.cgi/ipc/ipcdev.git/commit/?h=ipc-next&id=44169db6cd6f02193acf7ee97c13f956f599431d>`__
 for users to override the default resource table with their own. This
@@ -37,7 +37,7 @@ C Code
 ^^^^^^^^^
 The user-supplied resource table is a C structure named
 ``ti_ipc_remoteproc_ResourceTable`` that needs to be linked into the
-slave executable. The platform-specific default resource tables are
+target executable. The platform-specific default resource tables are
 provided in IPC's **packages/ti/ip/remoteproc/rsc_table_*.h**, and are
 the recommended place to start from.
 

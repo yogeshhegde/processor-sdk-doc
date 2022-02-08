@@ -202,11 +202,11 @@ same switch.
   both evm and run them simultaneously. You would see following output
   on uart port of controller station.
 
-.. Image:: /images/Cclink_controller_screeshot_linux.png
+.. Image:: /images/Cclink_master_screeshot_linux.png
 
 You would see following output on uart port of device station.
 
-.. Image:: /images/Cclink_device_screenshot_linux.png
+.. Image:: /images/Cclink_slave_screenshot_linux.png
 
 | 
 

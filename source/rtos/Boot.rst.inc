@@ -6,7 +6,7 @@ provided in Processor SDK RTOS.
 
 The Secondary Bootloader (SBL) sets-up the PLL clocks, powers on the
 I/O Peripherals, initializes the DDR, loads the application image into
-DDR & brings the slave cores for applicable SOCs out of reset.
+DDR & brings the target cores for applicable SOCs out of reset.
 Additional details including execution boot flow is covered in more
 elaborate detail under individual SOC section.
 
