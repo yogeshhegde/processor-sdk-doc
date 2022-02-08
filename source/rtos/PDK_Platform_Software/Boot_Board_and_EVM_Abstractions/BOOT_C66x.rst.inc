@@ -272,7 +272,7 @@ application from NAND flash after reset. Figure below illustrates the
 elements of the NAND boot process.
 
 On reset the DSP starts execution with the bootrom which transfers
-execution to the secondary bootloader from EEPROM using the I2C slave
+execution to the secondary bootloader from EEPROM using the I2C target
 bus address 0x51. The secondary bootloader loads the application program
 from NAND flash then transfers control to the application. To execute
 the NAND bootloader you must ensure the DIP switches for your platform
@@ -297,7 +297,7 @@ application from NOR flash after reset. Figure below illustrates the
 elements of the NOR boot process.
 
 On reset the DSP starts execution with the bootrom which transfers
-execution to the secondary bootloader from EEPROM using the I2C slave
+execution to the secondary bootloader from EEPROM using the I2C target
 address 0x51. The secondary bootloader loads the application program
 from NOR flash then transfers control to the application. To execute the
 NOR bootloader you must ensure the DIP switches for your platform are
@@ -319,7 +319,7 @@ application from TFTP server after reset. Figure below illustrates the
 elements of the EMAC boot process.
 
 On reset the DSP starts execution with the bootrom which transfers
-execution to the secondary bootloader from EEPROM using the I2C slave
+execution to the secondary bootloader from EEPROM using the I2C target
 address 0x51. The secondary bootloader loads the application program
 from a remote TFTP server then transfers control to the application. To
 execute the EMAC bootloader you must ensure the DIP switches for your

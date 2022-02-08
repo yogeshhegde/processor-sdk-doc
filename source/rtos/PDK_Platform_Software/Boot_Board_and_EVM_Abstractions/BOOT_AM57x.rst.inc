@@ -46,7 +46,7 @@ Bootloader Execution Sequence
    -  It includes setting up PLLs, enabling clocks to all interfaces and
       modules, performing pinmux and setting up UART console.
    -  Once Board Initialization is complete, it enables clocks to the
-      slave cores like C66x/DSP, IPU, etc and brings them out of reset.
+      target cores like C66x/DSP, IPU, etc and brings them out of reset.
    -  Parses Multicore Application image located in memory device and
       copies it to DDR memory based on load address for different
       sections.
@@ -184,7 +184,7 @@ The script creates the bootable image in 2 steps
 +------------+------------------+
 
 Core ID and Device ID for specific devices can be located in the file
-sbl_slave_core_boot.h in the boot/sbl/soc/<SOC_NAME> folder
+sbl_target_core_boot.h in the boot/sbl/soc/<SOC_NAME> folder
 
 Refer section `App Image
 Creation <index_Foundational_Components.html#application-image-creation>`__
@@ -414,9 +414,9 @@ application image on A15 and DSP cores.The multicore sample
 application uses mailbox for inter-processor communication. It is used
 to validate the multi-core boot-up use case.
 
-Master application sends wake-up message to the DSP slave cores & waits
-for acknowledgement message from the slave cores in an infinite
-loop.Each slave DSP core waits for wake-up message from the master core 
+Master application sends wake-up message to the DSP target cores & waits
+for acknowledgement message from the target cores in an infinite
+loop.Each target DSP core waits for wake-up message from the master core 
 responds back with an acknowledgement message.
 
 Application Image Creation
