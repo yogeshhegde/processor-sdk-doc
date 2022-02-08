@@ -270,160 +270,173 @@ OSPI
 MCSPI
 ^^^^^
 
-+-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
-| Name            | Description     | Additional EVM                         | Expected        | SoC Supported       | Build Type          |
-|                 |                 | Configuration                          | Results         |                     |                     |
-+=================+=================+========================================+=================+=====================+=====================+
-| MCSPI_Serialize | Sample          | **AM57x IDK EVM:**                     | |               |    AM335x,          | CCS project         |
-| r               | Application     |                                        | | ** **         |    AM437x,          |                     |
-| Example         | demonstrating   |                                        |                 |    AM571x,          |                     |
-| application     | reading data    | Short pins 1  and 2 on header          | Following       |    AM572x,          |                     |
-|                 | generated from  | J37(Industrial I/O)                    | prints  on      |    AM574x,          |                     |
-|                 | industrial      |                                        | console         |                     |                     |
-|                 | input module.   | **AM335x ICE v2:**                     | expected:       |                     |                     |
-|                 | Application     | Short pins 1 and 2 on header           |                 |                     |                     |
-|                 | uses GPIO pins  | J14(Industrial I/O)                    | **Pass          |                     |                     |
-|                 | to assert load  |                                        | criteria:**     |                     |                     |
-|                 | signal in order | **AM437x IDK EVM:**                    |                 |                     |                     |
-|                 | to generate     | Short pins 1 and 2 on                  | All tests have  |                     |                     |
-|                 | date from       | header J1(Industrial I/O)              | passed.         |                     |                     |
-|                 | industrial      |                                        |                 |                     |                     |
-|                 | input module.   |                                        |                 |                     |                     |
-+-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
-| MCSPI_Dma_Seria | Sample          | **AM57x IDK EVM:**                     | |               |    AM437x,          | CCS project         |
-| lizer           | Application     | Short pins 1 and 2 on header           | | ** **         |    AM571x,          |                     |
-| Example         | demonstrating   | J37(Industrial I/O)                    |                 |    AM572x,          |                     |
-| application     | reading data    | |                                      | Following       |    AM574x,          |                     |
-|                 | generated from  | **AM437x IDK EVM:**                    | prints  on      |                     |                     |
-|                 | industrial      | Short pins 1 and 2 on header           | console         |                     |                     |
-|                 | input module    | J1(Industrial I/O)                     | expected:       |                     |                     |
-|                 | through EDMA.   |                                        |                 |                     |                     |
-|                 | Application     |                                        | **Pass          |                     |                     |
-|                 | uses GPIO pins  |                                        | criteria:**     |                     |                     |
-|                 | to assert load  |                                        |                 |                     |                     |
-|                 | signal in order |                                        | All tests have  |                     |                     |
-|                 | to generate     |                                        | passed.         |                     |                     |
-|                 | date from       |                                        |                 |                     |                     |
-|                 | industrial      |                                        |                 |                     |                     |
-|                 | input module.   |                                        |                 |                     |                     |
-+-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
-| MCSPI_SerialFla | Sample          | **AM335x GP EVM:**                     | |               |    AM335x,          | CCS project         |
-| sh              | Application     | Set the EVM in profile 2               | | ** **         |                     |                     |
-|                 | demonstrating   | (SW8[1] = OFF,                         |                 |                     |                     |
-|                 | writing and     |  SW8[2] = ON,                          | Following       |                     |                     |
-|                 | reading data    |  SW8[3:4] = OFF)                       | prints  on      |                     |                     |
-|                 | from the serial |                                        | console         |                     |                     |
-|                 | flash through   |                                        | expected:       |                     |                     |
-|                 | MCSPI EDMA      |                                        |                 |                     |                     |
-|                 | interface.      |                                        | **Pass          |                     |                     |
-|                 |                 |                                        | criteria:**     |                     |                     |
-|                 |                 |                                        |                 |                     |                     |
-|                 |                 |                                        | All tests have  |                     |                     |
-|                 |                 |                                        | passed.         |                     |                     |
-+-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
-| MCSPI_slavemode | Application     | **Pin Connections:**                   | | **On          |    AM335x,          | CCS project         |
-| example         | demonstrates    |                                        |   slave EVM     |    AM437x,          |                     |
-| application     | slave recieve   |                                        |   console:      |    AM571x,          |                     |
-|                 | and transmit    | | **IDK AM571x,**                      |   **\ SPI       |    AM572x,          |                     |
-|                 | features of     | | **IDK AM572x or IDK AM574x:**        |   initialized   |    AM574x,          |                     |
-|                 | McSPI.          | | EVM1(master) ==== EVM2(slave)        | | Slave: PASS:  |    k2g,             |                     |
-|                 | Application use | | J21-Pin24(CLK)---J21-Pin24(CLK)      |   Txd from      |                     |                     |
-|                 | case requires   | | J21-Pin26(MISO)---J21-Pin28(MISO)    |   master SPI    +---------------------+---------------------+
-|                 | two EVMs. One   | | J21-Pin28(MOSI)---J21-Pin26(MOSI)    |                 |    am65xx           | makefile            |
-|                 | acts as Master  | | J21-Pin30(CS)------J21-Pin30(CS)     | |               |    j721e            |                     |
-|                 | and Another as  | | J21-Pin22(DGND)--J21-Pin22(DGND)     | | **On Master   |                     |                     |
-|                 | slave. McSPI    | |                                      |   EVM console:  |                     |                     |
-|                 | connections     | | **IDK AM437x:**                      |                 |                     |                     |
-|                 | information and | | EVM1(master) ==== EVM2(slave)        |   initialized   |                     |                     |
-|                 | addtional       | | J16-Pin24(CLK)-----J16-Pin24(CLK)    | | Master: PASS: |                     |                     |
-|                 | details are as  | | J16-Pin26(MISO)---J16-Pin28(MISO)    |   Txd from      |                     |                     |
-|                 | follows.        | | J16-Pin28(MOSI)---J16-Pin26(MOSI)    |   slave SPI     |                     |                     |
-|                 |                 | | J16-Pin30(CS)------J16-Pin30(CS)     | | Done          |                     |                     |
-|                 | **No of Boards  | | J16-Pin22(DGND)--J16-Pin22(DGND)     |                 |                     |                     |
-|                 | Required**:     | |                                      |                 |                     |                     |
-|                 |                 | | **ICEv2AM335x:**                     |                 |                     |                     |
-|                 | 2               | | EVM1(master) ========= EVM2(slave)   |                 |                     |                     |
-|                 |                 | | J3-Pin12(CLK)---------J3-Pin12(CLK)  |                 |                     |                     |
-|                 | **Connection    | | J3-Pin14(MIS0)-------J3-Pin16(MISO)  |                 |                     |                     |
-|                 | requirements:** | | J3-Pin16(MOSI)-------J3-Pin14(MOSI)  |                 |                     |                     |
-|                 |                 | | J3-Pin18(CS)-----------J3-Pin18(CS)  |                 |                     |                     |
-|                 | | Consider EVM1 | | J3-Pin2(DGND)--------J3-Pin2(DGND)   |                 |                     |                     |
-|                 |   as Master and | |                                      |                 |                     |                     |
-|                 |   EVM2 as       | | **BBB AM335x:**                      |                 |                     |                     |
-|                 |   slave.        | | EVM1(master) ===== EVM2(slave)       |                 |                     |                     |
-|                 | | MasterSPI_CLK | | P9-Pin31(CLK)-------P9-Pin31(CLK)    |                 |                     |                     |
-|                 |   -------SlaveS | | P9-Pin29(MISO)------P9-Pin30(MISO)   |                 |                     |                     |
-|                 | PI_CLK          | | P9-Pin30(MOSI)------P9-Pin29(MOSI)   |                 |                     |                     |
-|                 | | MasterSPI_D0- | | P9-Pin28(CS)---------P9-Pin28(CS)    |                 |                     |                     |
-|                 | ---------SlaveS | | P9-Pin1(DGND)-------P9-Pin1(DGND)    |                 |                     |                     |
-|                 | PI_D1           | |                                      |                 |                     |                     |
-|                 | | MasterSPI_D1- | | **K2G EVM:**                         |                 |                     |                     |
-|                 | ---------Slave  | | EVM1(master) ======= EVM2(slave)     |                 |                     |                     |
-|                 |   SPI_D0        | | J12-Pin9(MISO)-------J12-Pin9(MISO)  |                 |                     |                     |
-|                 | | MasterSPI_CS0 | | J12-Pin11(MOSI)----J12-Pin11(MOSI)   |                 |                     |                     |
-|                 | --------SlaveSP | | J12-Pin13(CLK)------J12-Pin13(CLK)   |                 |                     |                     |
-|                 | I_CS0           | | J12-Pin15(CS0)------J12-Pin15(CS0)   |                 |                     |                     |
-|                 | | DGND--------- | | J12-Pin49(DGND)--J12-Pin49(DGND)     |                 |                     |                     |
-|                 | -------------DG | |                                      |                 |                     |                     |
-|                 | ND              |                                        |                 |                     |                     |
-|                 |                 | | **icev2AMIC110 EVM:**                |                 |                     |                     |
-|                 | **Additional    | | EVM1(master) ======= EVM2(slave)     |                 |                     |                     |
-|                 | Requirements:** | | J5-Pin12(MISO)-------J5-Pin14(MISO)  |                 |                     |                     |
-|                 |                 | | J5-Pin14(MOSI)------J5-Pin12(MOSI)   |                 |                     |                     |
-|                 | Run             | | J4-Pin13(CLK)------J4-Pin13(CLK)     |                 |                     |                     |
-|                 | "MCSPI_SlaveMod | | J5-Pin4(CS)---------J5-Pin4(CS)      |                 |                     |                     |
-|                 | e_SlaveExample_ | | J5-Pin2(DGND)-------J5-Pin2(DGND)    |                 |                     |                     |
-|                 | <BoardType><arm |                                        |                 |                     |                     |
-|                 | /c66x/m4>Exampl | | **am65xx EVM/IDK:**                  |                 |                     |                     |
-|                 | eProject"       | | MCU1_0 (master) ====== MPU1_0(slave) |                 |                     |                     |
-|                 | first on Slave  |                                        |                 |                     |                     |
-|                 | EVM and then    | | **J721e EVM:**                       |                 |                     |                     |
-|                 | "MCSPI_SlaveMode| | MCU1_0 (master) ====== MPU1_0(slave) |                 |                     |                     |
-|                 | _MasterExample  |                                        |                 |                     |                     |
-|                 | <BoardType>_<ar |                                        |                 |                     |                     |
-|                 | m/c66x/m4>Examp |                                        |                 |                     |                     |
-|                 | leProject"      |                                        |                 |                     |                     |
-|                 | on Master EVM.  |                                        |                 |                     |                     |
-|                 |                 |                                        |                 |                     |                     |
-|                 | |               |                                        |                 |                     |                     |
-|                 | | **Note:**     |                                        |                 |                     |                     |
-|                 |                 |                                        |                 |                     |                     |
-|                 | A DGND          |                                        |                 |                     |                     |
-|                 | connection may  |                                        |                 |                     |                     |
-|                 | be required     |                                        |                 |                     |                     |
-|                 | from expansion  |                                        |                 |                     |                     |
-|                 | connector on    |                                        |                 |                     |                     |
-|                 | each board to   |                                        |                 |                     |                     |
-|                 | make sure the   |                                        |                 |                     |                     |
-|                 | data transfer   |                                        |                 |                     |                     |
-|                 | is proper.      |                                        |                 |                     |                     |
-|                 |                 |                                        |                 |                     |                     |
-|                 | For AM6 or J7,  |                                        |                 |                     |                     |
-|                 | only one EVM is |                                        |                 |                     |                     |
-|                 | required. Slave |                                        |                 |                     |                     |
-|                 | is run on MPU1_0|                                        |                 |                     |                     |
-|                 | core and Master |                                        |                 |                     |                     |
-|                 | is run on MCU1_0|                                        |                 |                     |                     |
-|                 | core            |                                        |                 |                     |                     |
-+-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
-| MCSPI_SMP_Basic | Sample          |                                        | |               |      AM572x-EVM     | CCS project         |
-| Example         | Application     |                                        | | ** **         |                     |                     |
-| application     | demonstrating   |                                        |                 |                     |                     |
-|                 | reading data    |                                        | Following       |                     |                     |
-|                 | generated from  |                                        | prints  on      |                     |                     |
-|                 | industrial      |                                        | console         |                     |                     |
-|                 | input module.   |                                        | expected:       |                     |                     |
-|                 | Application     |                                        |                 |                     |                     |
-|                 | uses GPIO pins  |                                        | **Pass          |                     |                     |
-|                 | to assert load  |                                        | criteria:**     |                     |                     |
-|                 | signal in order |                                        |                 |                     |                     |
-|                 | to generate     |                                        | All tests have  |                     |                     |
-|                 | date from       |                                        | passed.         |                     |                     |
-|                 | industrial      |                                        |                 |                     |                     |
-|                 | input module    |                                        |                 |                     |                     |
-|                 | in SMP mode.    |                                        |                 |                     |                     |
-|                 | (A15 core)      |                                        |                 |                     |                     |
-+-----------------+-----------------+----------------------------------------+-----------------+---------------------+---------------------+
++-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
+| Name            | Description     | Additional EVM                            | Expected            | SoC Supported  | Build Type        |
+|                 |                 | Configuration                             | Results             |                |                   |
++=================+=================+===========================================+=====================+================+===================+
+| MCSPI_Serialize | Sample          | **AM57x IDK EVM:**                        | |                   |    AM335x,     | CCS project       |
+| r               | Application     |                                           | | ** **             |    AM437x,     |                   |
+| Example         | demonstrating   |                                           |                     |    AM571x,     |                   |
+| application     | reading data    | Short pins 1  and 2 on header             | Following           |    AM572x,     |                   |
+|                 | generated from  | J37(Industrial I/O)                       | prints  on          |    AM574x,     |                   |
+|                 | industrial      |                                           | console             |                |                   |
+|                 | input module.   | **AM335x ICE v2:**                        | expected:           |                |                   |
+|                 | Application     | Short pins 1 and 2 on header              |                     |                |                   |
+|                 | uses GPIO pins  | J14(Industrial I/O)                       | **Pass              |                |                   |
+|                 | to assert load  |                                           | criteria:**         |                |                   |
+|                 | signal in order | **AM437x IDK EVM:**                       |                     |                |                   |
+|                 | to generate     | Short pins 1 and 2 on                     | All tests have      |                |                   |
+|                 | date from       | header J1(Industrial I/O)                 | passed.             |                |                   |
+|                 | industrial      |                                           |                     |                |                   |
+|                 | input module.   |                                           |                     |                |                   |
++-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
+| MCSPI_Dma_Seria | Sample          | **AM57x IDK EVM:**                        | |                   |    AM437x,     | CCS project       |
+| lizer           | Application     | Short pins 1 and 2 on header              | | ** **             |    AM571x,     |                   |
+| Example         | demonstrating   | J37(Industrial I/O)                       |                     |    AM572x,     |                   |
+| application     | reading data    | |                                         | Following           |    AM574x,     |                   |
+|                 | generated from  | **AM437x IDK EVM:**                       | prints  on          |                |                   |
+|                 | industrial      | Short pins 1 and 2 on header              | console             |                |                   |
+|                 | input module    | J1(Industrial I/O)                        | expected:           |                |                   |
+|                 | through EDMA.   |                                           |                     |                |                   |
+|                 | Application     |                                           | **Pass              |                |                   |
+|                 | uses GPIO pins  |                                           | criteria:**         |                |                   |
+|                 | to assert load  |                                           |                     |                |                   |
+|                 | signal in order |                                           | All tests have      |                |                   |
+|                 | to generate     |                                           | passed.             |                |                   |
+|                 | date from       |                                           |                     |                |                   |
+|                 | industrial      |                                           |                     |                |                   |
+|                 | input module.   |                                           |                     |                |                   |
++-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
+| MCSPI_SerialFla | Sample          | **AM335x GP EVM:**                        | |                   |    AM335x,     | CCS project       |
+| sh              | Application     | Set the EVM in profile 2                  | | ** **             |                |                   |
+|                 | demonstrating   | (SW8[1] = OFF,                            |                     |                |                   |
+|                 | writing and     |  SW8[2] = ON,                             | Following           |                |                   |
+|                 | reading data    |  SW8[3:4] = OFF)                          | prints  on          |                |                   |
+|                 | from the serial |                                           | console             |                |                   |
+|                 | flash through   |                                           | expected:           |                |                   |
+|                 | MCSPI EDMA      |                                           |                     |                |                   |
+|                 | interface.      |                                           | **Pass              |                |                   |
+|                 |                 |                                           | criteria:**         |                |                   |
+|                 |                 |                                           |                     |                |                   |
+|                 |                 |                                           | All tests have      |                |                   |
+|                 |                 |                                           | passed.             |                |                   |
++-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
+| MCSPI_periphera | Application     | **Pin Connections:**                      | | **On              |    AM335x,     | CCS project       |
+| lmode example   | demonstrates    |                                           |   peripheral        |    AM437x,     |                   |
+| application     | peripheral      |                                           |   EVM console:      |    AM571x,     |                   |
+|                 | reciever and    | | **IDK AM571x,**                         |   **\ SPI           |    AM572x,     |                   |
+|                 | transmit        | | **IDK AM572x or IDK AM574x:**           |    initialized      |    AM574x,     |                   |
+|                 | features of     | | EVM1(controller) ==== EVM2(peripheral)  | | Peripheral:PASS:  |    k2g,        |                   |
+|                 | McSPI.          | | J21-Pin24(CLK)---J21-Pin24(CLK)         |   Txd from          |                |                   |
+|                 | Application use | | J21-Pin26(MISO)---J21-Pin28(MISO)       |   controller SPI    +----------------+-------------------+
+|                 | case requires   | | J21-Pin28(MOSI)---J21-Pin26(MOSI)       |                     |    am65xx,     | makefile          |
+|                 | two EVMs. One   | | J21-Pin30(CS)------J21-Pin30(CS)        |                     |    j721e       |                   |
+|                 | acts as         | | J21-Pin22(DGND)--J21-Pin22(DGND)        | | **On Controller   |                |                   |
+|                 | Controller      | |                                         |   EVM console:      |                |                   |
+|                 | and Another as  | | **IDK AM437x:**                         |                     |                |                   |
+|                 | peripheral.     | | EVM1(controller) ==== EVM2(peripheral)  |   initialized       |                |                   |
+|                 | McSPI           | | J16-Pin24(CLK)-----J16-Pin24(CLK)       | | Controller: PASS: |                |                   |
+|                 | connections     | | J16-Pin26(MISO)---J16-Pin28(MISO)       |   Txd from          |                |                   |
+|                 | information and | | J16-Pin28(MOSI)---J16-Pin26(MOSI)       |   peripheral SPI    |                |                   |
+|                 | addtional       | | J16-Pin30(CS)------J16-Pin30(CS)        | | Done              |                |                   |
+|                 | details are as  | | J16-Pin22(DGND)--J16-Pin22(DGND)        |                     |                |                   |
+|                 | follows.        | |                                         |                     |                |                   |
+|                 |                 | | **ICEv2AM335x:**                        |                     |                |                   |
+|                 | **No of Boards  | | EVM1(controller) ==== EVM2(peripheral)  |                     |                |                   |
+|                 | Required**:     | | J3-Pin12(CLK)---------J3-Pin12(CLK)     |                     |                |                   |
+|                 |                 | | J3-Pin14(MIS0)-------J3-Pin16(MISO)     |                     |                |                   |
+|                 | 2               | | J3-Pin16(MOSI)-------J3-Pin14(MOSI)     |                     |                |                   |
+|                 |                 | | J3-Pin18(CS)-----------J3-Pin18(CS)     |                     |                |                   |
+|                 | **Connection    | | J3-Pin2(DGND)--------J3-Pin2(DGND)      |                     |                |                   |
+|                 | requirements:** | |                                         |                     |                |                   |
+|                 |                 | | **BBB AM335x:**                         |                     |                |                   |
+|                 | | Consider EVM1 | | EVM1(controller) ==== EVM2(peripheral)  |                     |                |                   |
+|                 |   as Controller | | P9-Pin31(CLK)-------P9-Pin31(CLK)       |                     |                |                   |
+|                 |   and EVM2 as   | | P9-Pin29(MISO)------P9-Pin30(MISO)      |                     |                |                   |
+|                 |   peripheral.   | | P9-Pin30(MOSI)------P9-Pin29(MOSI)      |                     |                |                   |
+|                 | | ControllerSPI | | P9-Pin28(CS)---------P9-Pin28(CS)       |                     |                |                   |
+|                 |   _CLK          | | P9-Pin1(DGND)-------P9-Pin1(DGND)       |                     |                |                   |
+|                 |   --PeripheralS | |                                         |                     |                |                   |
+|                 |   PI_CLK        | | **K2G EVM:**                            |                     |                |                   |
+|                 | | ControllerSPI | | EVM1(controller) ==== EVM2(peripheral)  |                     |                |                   |
+|                 |   _D0-          | | J12-Pin9(MISO)-------J12-Pin9(MISO)     |                     |                |                   |
+|                 |   --PeripheralS | | J12-Pin11(MOSI)----J12-Pin11(MOSI)      |                     |                |                   |
+|                 |   PI_D1         | | J12-Pin13(CLK)------J12-Pin13(CLK)      |                     |                |                   |
+|                 | | ControllerSPI | | J12-Pin15(CS0)------J12-Pin15(CS0)      |                     |                |                   |
+|                 |   _D1-          | | J12-Pin49(DGND)--J12-Pin49(DGND)        |                     |                |                   |
+|                 |   ---Peripheral | |                                         |                     |                |                   |
+|                 |   SPI_D0        | | **icev2AMIC110 EVM:**                   |                     |                |                   |
+|                 | | ControllerSPI | | EVM1(controller) ==== EVM2(peripheral)  |                     |                |                   |
+|                 |   _CS0          | | J5-Pin12(MISO)-------J5-Pin14(MISO)     |                     |                |                   |
+|                 |   PeripheralSPI | | J5-Pin14(MOSI)------J5-Pin12(MOSI)      |                     |                |                   |
+|                 |   _CS0          | | J4-Pin13(CLK)------J4-Pin13(CLK)        |                     |                |                   |
+|                 | | DGND--------- | | J5-Pin4(CS)---------J5-Pin4(CS)         |                     |                |                   |
+|                 |   -----------DG | | J5-Pin2(DGND)-------J5-Pin2(DGND)       |                     |                |                   |
+|                 |   ND            | |                                         |                     |                |                   |
+|                 |                 | | **am65xx EVM/IDK:**                     |                     |                |                   |
+|                 | **Additional    | | MCU1_0 (controller) ===== MPU1_0        |                     |                |                   |
+|                 | Requirements:** |   (peripheral)                            |                     |                |                   |
+|                 |                 |                                           |                     |                |                   |
+|                 | Run             | | **J721e EVM:**                          |                     |                |                   |
+|                 | "MCSPI_Peripher | | MCU1_0 (controller) ====== MPU1_0       |                     |                |                   |
+|                 | alMode_Peripher |   (peripheral)                            |                     |                |                   |
+|                 | alExample_      |                                           |                     |                |                   |
+|                 | <BoardType><arm |                                           |                     |                |                   |
+|                 | /c66x/m4>Exampl |                                           |                     |                |                   |
+|                 | eProject"       |                                           |                     |                |                   |
+|                 | first on        |                                           |                     |                |                   |
+|                 | Peripheral      |                                           |                     |                |                   |
+|                 | EVM and then    |                                           |                     |                |                   |
+|                 | "MCSPI_Peripher |                                           |                     |                |                   |
+|                 | alMode          |                                           |                     |                |                   |
+|                 | _ControllerExam |                                           |                     |                |                   |
+|                 | ple             |                                           |                     |                |                   |
+|                 | <BoardType>_<ar |                                           |                     |                |                   |
+|                 | m/c66x/m4>Examp |                                           |                     |                |                   |
+|                 | leProject"      |                                           |                     |                |                   |
+|                 | on Controller   |                                           |                     |                |                   |
+|                 | EVM.            |                                           |                     |                |                   |
+|                 |                 |                                           |                     |                |                   |
+|                 | |               |                                           |                     |                |                   |
+|                 | | **Note:**     |                                           |                     |                |                   |
+|                 |                 |                                           |                     |                |                   |
+|                 | A DGND          |                                           |                     |                |                   |
+|                 | connection may  |                                           |                     |                |                   |
+|                 | be required     |                                           |                     |                |                   |
+|                 | from expansion  |                                           |                     |                |                   |
+|                 | connector on    |                                           |                     |                |                   |
+|                 | each board to   |                                           |                     |                |                   |
+|                 | make sure the   |                                           |                     |                |                   |
+|                 | data transfer   |                                           |                     |                |                   |
+|                 | is proper.      |                                           |                     |                |                   |
+|                 |                 |                                           |                     |                |                   |
+|                 | For AM6 or J7,  |                                           |                     |                |                   |
+|                 | only one EVM is |                                           |                     |                |                   |
+|                 | required.       |                                           |                     |                |                   |
+|                 | Peripheral is   |                                           |                     |                |                   |
+|                 | run on MPU1_0   |                                           |                     |                |                   |
+|                 | core and Cont   |                                           |                     |                |                   |
+|                 | roller is run   |                                           |                     |                |                   |
+|                 | on MCU1_0 core  |                                           |                     |                |                   |
++-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
+| MCSPI_SMP_Basic | Sample          |                                           | |                   |    AM572x-EVM  | CCS project       |
+| Example         | Application     |                                           | | ** **             |                |                   |
+| application     | demonstrating   |                                           |                     |                |                   |
+|                 | reading data    |                                           | Following           |                |                   |
+|                 | generated from  |                                           | prints  on          |                |                   |
+|                 | industrial      |                                           | console             |                |                   |
+|                 | input module.   |                                           | expected:           |                |                   |
+|                 | Application     |                                           |                     |                |                   |
+|                 | uses GPIO pins  |                                           | **Pass              |                |                   |
+|                 | to assert load  |                                           | criteria:**         |                |                   |
+|                 | signal in order |                                           |                     |                |                   |
+|                 | to generate     |                                           | All tests have      |                |                   |
+|                 | date from       |                                           | passed.             |                |                   |
+|                 | industrial      |                                           |                     |                |                   |
+|                 | input module    |                                           |                     |                |                   |
+|                 | in SMP mode.    |                                           |                     |                |                   |
+|                 | (A15 core)      |                                           |                     |                |                   |
++-----------------+-----------------+-------------------------------------------+---------------------+----------------+-------------------+
 
 Building SPI examples
 ----------------------
@@ -520,7 +533,7 @@ Additional References
 +-----------------------------------+-----------------------------------+
 | Release Notes                     | $(TI_PDK_INSTALL_DIR)\packages\ti |
 |                                   | \drv\spi\docs\ReleaseNotes_SPI_LL |
-|                  git                  | D.pdf                             |
+|              git                  | D.pdf                             |
 +-----------------------------------+-----------------------------------+
 
 | 

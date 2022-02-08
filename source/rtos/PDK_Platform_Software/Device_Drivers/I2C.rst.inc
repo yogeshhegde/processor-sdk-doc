@@ -9,8 +9,8 @@ Introduction
 I2C module provides an interface to any I2C-bus-compatible device
 accessible via I2C serial bus. External components attached to I2C bus
 can serially transmit/receive data to/from the CPU through two-wire
-interface. Driver supports three types of transfers in both I2C master
-mode and slave mode
+interface. Driver supports three types of transfers in both I2C controller
+mode and target mode
 
 -  Read
 -  Write
@@ -105,7 +105,7 @@ API reference for application:
     /* Initiate I2C transfers. Refer Example for details
     */
     I2C_transactionInit(&i2cTransaction);
-    transaction.masterMode   = true;
+    transaction.controllerMode   = true;
     ...
     ...
     transferOK = I2C_transfer(i2c, &i2cTransaction);
@@ -186,15 +186,15 @@ Refer Release Note for I2C support across different EVMs
 |                       |                       |  All tests have       |                     |                     |
 |                       |                       |  passed.              |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
-| I2C_master/slave      || Application          || Following prints will|    AM572x,          | CCS project         |
+| I2C_controller/target || Application          || Following prints will|    AM572x,          | CCS project         |
 |                       | demonstrates          |  come on console based|    AM574x,          |                     |
-|                       | master/slave          |  on pass/fail         |    k2g,             |                     |
+|                       | controller/target     |  on pass/fail         |    k2g,             |                     |
 |                       | transfer of I2C.      |  criteria:            |    omapl138,        |                     |
 |                       | Application use       ||                      |                     |                     |
 |                       | case requires two     || **Pass criteria:**   |                     |                     |
 |                       | EVMs. One acts as     ||                      |                     |                     |
-|                       | Master and the        || All tests have       |                     |                     |
-|                       | other as slave. I2C   | passed.               |                     |                     |
+|                       | Controller and the    || All tests have       |                     |                     |
+|                       | other as target. I2C  | passed.               |                     |                     |
 |                       | connections           |                       |                     |                     |
 |                       | information and       |                       |                     |                     |
 |                       | addtional details     |                       |                     |                     |
@@ -202,8 +202,8 @@ Refer Release Note for I2C support across different EVMs
 |                       ||                      |                       |                     |                     |
 |                       || AM57xx boards I2C bus|                       |                     |                     |
 |                       | connection on J9      |                       |                     |                     |
-|                       | (master board <-->    |                       |                     |                     |
-|                       | slave board)          |                       |                     |                     |
+|                       | (controller board <-->|                       |                     |                     |
+|                       | target board)         |                       |                     |                     |
 |                       ||                      |                       |                     |                     |
 |                       || pin22 (SCL)<-->      |                       |                     |                     |
 |                       | pin22 (SCL)           |                       |                     |                     |
@@ -216,8 +216,8 @@ Refer Release Note for I2C support across different EVMs
 |                       ||                      |                       |                     |                     |
 |                       || K2G boards I2C bus   |                       |                     |                     |
 |                       | connection on J12     |                       |                     |                     |
-|                       | (master board <-->    |                       |                     |                     |
-|                       | slave board)          |                       |                     |                     |
+|                       | (controller board <-->|                       |                     |                     |
+|                       | target board)         |                       |                     |                     |
 |                       | pin28 (SCL)<-->       |                       |                     |                     |
 |                       | pin28 (SCL)           |                       |                     |                     |
 |                       | pin30 (SDA)<-->       |                       |                     |                     |
@@ -229,8 +229,8 @@ Refer Release Note for I2C support across different EVMs
 |                       || OMAPL138/C6748       |                       |                     |                     |
 |                       | boards I2C bus        |                       |                     |                     |
 |                       | connection on J15     |                       |                     |                     |
-|                       | (master board <-->    |                       |                     |                     |
-|                       | slave board)          |                       |                     |                     |
+|                       | (controller board <-->|                       |                     |                     |
+|                       | target board)         |                       |                     |                     |
 |                       | pin13 (SCL)<-->       |                       |                     |                     |
 |                       | pin13 (SCL)           |                       |                     |                     |
 |                       | pin15 (SDA)<-->       |                       |                     |                     |
@@ -239,15 +239,15 @@ Refer Release Note for I2C support across different EVMs
 |                       | pin35 (GND)           |                       |                     |                     |
 |                       ||                      |                       |                     |                     |
 |                       || Run                  |                       |                     |                     |
-|                       | "I2C_Slave_<BoardTy   |                       |                     |                     |
+|                       | "I2C_Target_<BoardTy  |                       |                     |                     |
 |                       | pe>_<arm/c66x/m4>Test |                       |                     |                     |
 |                       | Project"              |                       |                     |                     |
-|                       | first on Slave EVM    |                       |                     |                     |
+|                       | first on Target EVM   |                       |                     |                     |
 |                       | and then              |                       |                     |                     |
-|                       | "I2C_Master_<BoardT   |                       |                     |                     |
-|                       | ype>_<arm/c66x/m4>Tes |                       |                     |                     |
-|                       | tProject"             |                       |                     |                     |
-|                       | on Master EVM.        |                       |                     |                     |
+|                       | "I2C_Controller_<Boar |                       |                     |                     |
+|                       | dType>_<arm/c66x/m4>  |                       |                     |                     |
+|                       | TestProject"          |                       |                     |                     |
+|                       | on Controller EVM.    |                       |                     |                     |
 +-----------------------+-----------------------+-----------------------+---------------------+---------------------+
 
 .. note::

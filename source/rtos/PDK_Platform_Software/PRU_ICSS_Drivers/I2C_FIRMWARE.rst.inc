@@ -32,7 +32,7 @@ Following are high-level I2C FW features:
 +-----------------------------------+-----------------------------------+
 | Addressing modes                  | 7/10-bit                          |
 +-----------------------------------+-----------------------------------+
-| Master mode                       | Supported                         |
+| Controller mode                   | Supported                         |
 +-----------------------------------+-----------------------------------+
 | I2C data transfer rate from       | 100 kHz / 400 kHz                 |
 | 100 kbps up to 400 kbps           |                                   |
@@ -52,13 +52,13 @@ Following are high-level I2C FW features:
 +-----------------------------------+-----------------------------------+
 | 8-bit-wide data access            | Supported                         |
 +-----------------------------------+-----------------------------------+
-| Slave reset feature               | Supported                         |
+| Target reset feature              | Supported                         |
 +-----------------------------------+-----------------------------------+
 | Internal loopback feature         | Supported                         |
 +-----------------------------------+-----------------------------------+
-| Slave mode                        | Not Supported                     |
+| Target mode                       | Not Supported                     |
 +-----------------------------------+-----------------------------------+
-| Combined Master-Slave             | Not Supported                     |
+| Combined Controller-Target        | Not Supported                     |
 | mode/transaction                  |                                   |
 +-----------------------------------+-----------------------------------+
 | DMA support                       | Not Supported                     |
@@ -275,7 +275,7 @@ Sample code for I2C transaction:
 
     /* Initiate I2C transfers */
     I2C_transactionInit(&i2cTransaction);
-    i2cTransaction.slaveAddress = I2C_EEPROM_ADDR;
+    i2cTransaction.targetAddress = I2C_EEPROM_ADDR;
     ...
     
     status = I2C_transfer(handle, &i2cTransaction);
