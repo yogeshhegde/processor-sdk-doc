@@ -291,20 +291,20 @@ EVM, you will see the message "AM437x GP EVM Initialization is Done":
 Additional Notes for AM57x
 """""""""""""""""""""""""""
 
-Connect to AM57x Slave Cores
+Connect to AM57x Target Cores
 '''''''''''''''''''''''''''''
 
 After connecting to the boot master core -- typically the ARM core --
-you may need to connect to a slave core in order to run code. Depending
-on your SOC, the slave core can be
+you may need to connect to a target core in order to run code. Depending
+on your SOC, the target core can be
 
 -  DSP C66x
 -  ARM M4
 -  PRUSS
 -  IVAHD
 
-Typically the slave cores will wait in reset state until the master core
-wakes up the slave core to run code. To connect to the slave core on
+Typically the target cores will wait in reset state until the master core
+wakes up the target core to run code. To connect to the target core on
 AM57x, go to **Scripts** menu in CCS Debug View and under **AM572x
 MULTICORE Initialization** enable the corresponding sub system clock.
 For example, enable ``DSP11SSClkEnable_API`` for the first DSP core.
@@ -316,12 +316,12 @@ Timer Suspend Control Options for DSP
 '''''''''''''''''''''''''''''''''''''''
 
 On AM57xx devices, all the timers on the chip have their suspend control
-signal routed to the A15 core. Which means that if any of the slave
+signal routed to the A15 core. Which means that if any of the target
 cores are using these timers, the timers will continue to run even when
-the slave core has been paused. The timer will only pause when the A15
+the target core has been paused. The timer will only pause when the A15
 core is halted.
 
-This is confusing while debugging code on slave cores if you are relying
+This is confusing while debugging code on target cores if you are relying
 on timer for logging, inserting delays or if the timer keeps firing
 interrupts even when the core is halted. One such scenario occurs with
 *GPtimer5* when DSP developers are using SYS/BIOS. The OS uses

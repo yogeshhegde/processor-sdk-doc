@@ -665,7 +665,7 @@ EVM as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-
 9. In order to wake up the M4 core from A15, Go to Menu option
 Scripts->AM572x_Multicore_Initialization->IPU1SSClkEnable_API. Refer to
 the
-`Processor_SDK_RTOS_Setup_CCS <index_how_to_guides.html#connect-to-am57x-slave-cores>`__.
+`Processor_SDK_RTOS_Setup_CCS <index_how_to_guides.html#connect-to-am57x-target-cores>`__.
 
 You should see the following log in the Console
 
@@ -925,7 +925,7 @@ EVM as described in the :ref:`Getting Started Guide <Processor-SDK-RTOS-Getting-
 9. In order to wake up the DSP1 core from A15, Go to Menu option
 Scripts->AM572x_Multicore_Initialization->DSP1SSClkEnable_API. Refer to
 the
-`Processor_SDK_RTOS_Setup_CCS <index_how_to_guides.html#connect-to-am57x-slave-cores>`__.
+`Processor_SDK_RTOS_Setup_CCS <index_how_to_guides.html#connect-to-am57x-target-cores>`__.
 
 You should see the following log in the Console
 
