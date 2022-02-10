@@ -3469,20 +3469,14 @@ RS485 UART Test
 This test verifies RS485 interface on platform under test.
 RS485 interface is connected to PRU-ICSS port of the SoC. 
 Test outputs a test string through RS485 UART interface and receives user input as confirmation.
-Test is executed on two boards for AM57xx IDK platforms. 
 RS485 to RS232 USB cable is used on AM65x IDK platform to run the test.
 
 Test Accessories
 """""""""""""""""
-Cable to connect RS485 ports on two boards (AM57x IDK)
 RS485 to RS232 USB cable (AM65x IDK)
 
 Test Setup
 """""""""""
-idkAM571x/idkAM572x:
- - Connect RS485 UART header (J39) between two boards
-
-| 
 am65x_idk:
  - Connect RS485 to RS232 USB cable between RS485 UART port of the board and host PC.
  - Setup serial console application on host PC with below configurations
@@ -3496,11 +3490,6 @@ am65x_idk:
 
 Test Execution
 """""""""""""""
-idkAM571x/idkAM572x:
- - Select the menu option to run ‘rs485_TEST’
- - Follow the instructions on serial console to send data from one board and receive on another board
- - Verify the test log on serial console
-| 
 am65x_idk:
  - Select the menu option to run ‘rs485_TEST’
  - Verify the test log on serial console
