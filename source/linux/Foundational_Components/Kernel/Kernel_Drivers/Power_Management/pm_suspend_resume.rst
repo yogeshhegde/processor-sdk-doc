@@ -1,10 +1,9 @@
-.. http://processors.wiki.ti.com/index.php/Linux_Core_Power_Management_User%27s_Guide
-
+##############
 Suspend/Resume
----------------------------------
+##############
 
-.. rubric:: Suspend/Resume Support
-   :name: suspendresume-support
+Overview
+========
 
 The user can deliberately force the system to low power state. There are
 various levels: Suspend to memory(RAM), Suspend to disk, etc. Certains
@@ -12,27 +11,7 @@ parts support different levels of idle, such as DeepSleep0 or standby,
 which allow additional wake-up sources to be used with less wake latency
 at the expense of less power savings.
 
-.. rubric:: Release applicable
-
-Latest release this documentation applies to is Kernel v4.4.
-
-.. rubric:: Supported Devices
-   :name: supported-devices-2
-
--  DRA7xx
--  J6
--  AM57x
--  AM437x
--  AM335x
-
-.. rubric:: Driver Features
-   :name: driver-features-2
-
-This is dependent on which device is in use. More information can be
-found in the device specific usage sections below.
-
 .. rubric:: Source Location
-   :name: source-location-3
 
 The files that provide suspend/resume differ from part to part however
 they generally reside in arch/arm/mach-omap2/pm\*\*\*\*.c for the
@@ -40,7 +19,6 @@ higher-level code and arch/arm/mach-omap2/sleep\*\*\*\*.S for the
 lower-level code.
 
 .. rubric:: Kernel Configuration Options
-   :name: kernel-configuration-options-2
 
 Suspend/resume can be enable or disabled within the kernel using the
 same method for all parts. To configure suspend/resume, enter the kernel
@@ -81,20 +59,7 @@ And then build the kernel as usual.
 
 | 
 
-.. rubric:: Power Management Usage
-   :name: power-management-usage
-
-Although the techniques and concepts involved with power management are
-common across many platforms, the actual implementation and usage of
-each differ from part to part. The following sections cover the
-specifics of using the aforementioned power management techniques for
-each part that is supported by this release.
-
-.. rubric:: Common Power Management
-   :name: common-power-management
-
 .. rubric:: IO Pad Configuration
-   :name: io-pad-configuration
 
 In order to optimize power on the I/O supply rails, each pin can be
 given a "sleep" configuration in addition to it's run-time
@@ -185,141 +150,8 @@ during boot even though there is no specific driver for these pins:
                             0x80    (PIN_INPUT_PULLDOWN | MUX_MODE7) /* gpmc_csn1.mmc1_clk */
                             ...
 
-.. rubric:: Power Management on AM335 and AM437
-   :name: power-management-on-am335-and-am437
-
-Because of the high level of overlap of power management techniques
-between the two parts, AM335 and AM437 are covered in the same section.
-The power management features enabled on AM335x are as follows:
-
--  Suspend/Resume
-
-   -  DeepSleep0 is supported with mem power state
-   -  Standby is supported with standby power state
-
--  MPU DVFS
--  CPU-Idle
-
-.. rubric:: CM3 Firmware
-   :name: cm3-firmware
-
-A small ARM Cortex-M3 co-processor is present on these parts that helps
-the SoC to get to the lowest power mode. This processor requires
-firmware to be loaded from the kernel at run-time for all low-power
-features of the SoC to be enabled. The name of the binary file
-containing this firmware is am335x-pm-firmware.elf for both SoCs. The
-git repository containing the source and pre-compiled binaries of this
-file can be found here:
-https://git.ti.com/processor-firmware/ti-amx3-cm3-pm-firmware/commits/ti-v4.1.y
-.
-
-There are two options for loading the CM3 firmware. If using the
-CoreSDK, the firmware will be included in /lib/firmware and the root
-filesystem should handle loading it automatically. Placing any version
-of ``am335x-pm-firmware.elf`` at this location will cause it to load
-automatically during boot. However, due to changes in the upstream
-kernel it is now required that
-CONFIG\_FW\_LOADER\_USER\_HELPER\_FALLBACK be enabled if the
-CONFIG\_WKUP\_M3\_IPC is being built-in to the kernel so that the
-firmware can be loaded once userspace and the root filesystem becomes
-avaiable. It is also possible to manually load the firmware by following
-the instructions below:
-
-The final option is to build the binary directly into the kernel. Note
-that if the firmware binary is built into the kernel it cannot be loaded
-using the methods above and will be automatically loaded during boot. To
-accomplish this, first make sure you have placed
-``am335x-pm-firmware.elf`` under ``<KERNEL SOURCE>/firmware``. Then
-enter the kernel configuration by typing:
-
-::
-
-    $ make menuconfig
-
-Select *Device Drivers* from the main menu.
-
-::
-
-    ...
-    ...
-    Kernel Features  --->
-    Boot options  --->
-    CPU Power Management  --->
-    Floating point emulation  --->
-    Userspace binary formats  --->
-    Power management options  --->
-    [*] Networking support  --->
-    Device Drivers  --->
-    ...
-    ...
-
-Select Generic Driver Options
-
-::
-
-    Generic Driver Options
-    CBUS support
-    ...
-    ...
-
-Configure the name of the PM firmware and the location as shown below
-
-::
-
-    ...
-    -*- Userspace firmware loading support
-    [*] Include in-kernel firmware blobs in the kernel binary
-    (am335x-pm-firmware.elf) External firmware blobs to build into the kernel binary
-    (firmware) Firmware blobs root directory
-
-The CM3 firmware is needed for all idle low power modes on am335x and
-am437x and for cpuidle on am335x. During boot, if the CM3 firmware has
-been properly loaded, the following message will be displayed:
-
-::
-
-        PM: CM3 Firmware Version = 0x191
-
-.. rubric:: CM3 Firmware Linux Kernel Interface
-   :name: cm3-firmware-linux-kernel-interface
-
-The kernel interface to the CM3 firmware is through the wkup\_m3\_rproc
-driver, which is used to load and boot the CM3 firmware, and the
-wkup\_m3\_ipc driver, which exposes an API to be used by the PM code to
-communicate with the CM3 firmware.
-
-.. rubric:: wkup\_m3\_rproc Driver
-   :name: wkup_m3_rproc-driver
-
-.. rubric:: Driver Features
-   :name: driver-features-3
-
-This driver is responsible for loading and booting the CM3 firmware on
-the wkup\_m3 inside the SoC using the remoteproc framework.
-
-.. rubric:: Source Location
-   :name: source-location-4
-
-`` drivers/remoteproc/wkup_m3_rproc.c ``
-
-.. rubric:: wkup\_m3\_ipc Driver
-   :name: wkup_m3_ipc-driver
-
-.. rubric:: Driver Features
-   :name: driver-features-4
-
-This driver exposes an API to be used by the PM code to provide board
-and SoC specific data from the kernel to the CM3 firmware, request
-certain power state transitions, and query the status of any previous
-power state transitions performed by the CM3 firmware.
-
-.. rubric:: Source Location
-   :name: source-location-5
-
-`` drivers/soc/ti/wkup_m3_ipc.c `` - provides the wkup\_m3\_ipc driver
-responsible for communicating with the CM3 firmware.
-
-.. rubric:: Suspend/Resume
+CM3 Firmware
+------------
 
 Suspend on am335x and am437x depends on interaction between the Linux
 kernel and the wkup\_m3, so there are several requirements when building
@@ -412,8 +244,115 @@ This is usually due to clocks that have not properly been shut off
 within the PER powerdomain. Make sure that all clocks within CM\_PER are
 properly shut off and try again.
 
-.. rubric:: Debugging Techniques
-   :name: debugging-techniques
+
+A small ARM Cortex-M3 co-processor is present on these parts that helps
+the SoC to get to the lowest power mode. This processor requires
+firmware to be loaded from the kernel at run-time for all low-power
+features of the SoC to be enabled. The name of the binary file
+containing this firmware is am335x-pm-firmware.elf for both SoCs. The
+git repository containing the source and pre-compiled binaries of this
+file can be found here:
+https://git.ti.com/processor-firmware/ti-amx3-cm3-pm-firmware/commits/ti-v4.1.y
+.
+
+There are two options for loading the CM3 firmware. If using the
+CoreSDK, the firmware will be included in /lib/firmware and the root
+filesystem should handle loading it automatically. Placing any version
+of ``am335x-pm-firmware.elf`` at this location will cause it to load
+automatically during boot. However, due to changes in the upstream
+kernel it is now required that
+CONFIG\_FW\_LOADER\_USER\_HELPER\_FALLBACK be enabled if the
+CONFIG\_WKUP\_M3\_IPC is being built-in to the kernel so that the
+firmware can be loaded once userspace and the root filesystem becomes
+avaiable. It is also possible to manually load the firmware by following
+the instructions below:
+
+The final option is to build the binary directly into the kernel. Note
+that if the firmware binary is built into the kernel it cannot be loaded
+using the methods above and will be automatically loaded during boot. To
+accomplish this, first make sure you have placed
+``am335x-pm-firmware.elf`` under ``<KERNEL SOURCE>/firmware``. Then
+enter the kernel configuration by typing:
+
+::
+
+    $ make menuconfig
+
+Select *Device Drivers* from the main menu.
+
+::
+
+    ...
+    ...
+    Kernel Features  --->
+    Boot options  --->
+    CPU Power Management  --->
+    Floating point emulation  --->
+    Userspace binary formats  --->
+    Power management options  --->
+    [*] Networking support  --->
+    Device Drivers  --->
+    ...
+    ...
+
+Select Generic Driver Options
+
+::
+
+    Generic Driver Options
+    CBUS support
+    ...
+    ...
+
+Configure the name of the PM firmware and the location as shown below
+
+::
+
+    ...
+    -*- Userspace firmware loading support
+    [*] Include in-kernel firmware blobs in the kernel binary
+    (am335x-pm-firmware.elf) External firmware blobs to build into the kernel binary
+    (firmware) Firmware blobs root directory
+
+The CM3 firmware is needed for all idle low power modes on am335x and
+am437x and for cpuidle on am335x. During boot, if the CM3 firmware has
+been properly loaded, the following message will be displayed:
+
+::
+
+        PM: CM3 Firmware Version = 0x191
+
+CM3 Firmware Linux Kernel Interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The kernel interface to the CM3 firmware is through the wkup\_m3\_rproc
+driver, which is used to load and boot the CM3 firmware, and the
+wkup\_m3\_ipc driver, which exposes an API to be used by the PM code to
+communicate with the CM3 firmware.
+
+.. rubric:: wkup\_m3\_rproc Driver
+
+This driver is responsible for loading and booting the CM3 firmware on
+the wkup\_m3 inside the SoC using the remoteproc framework.
+
+Source Location:
+
+`` drivers/remoteproc/wkup_m3_rproc.c ``
+
+.. rubric:: wkup\_m3\_ipc Driver
+
+This driver exposes an API to be used by the PM code to provide board
+and SoC specific data from the kernel to the CM3 firmware, request
+certain power state transitions, and query the status of any previous
+power state transitions performed by the CM3 firmware.
+
+Source Location:
+
+`` drivers/soc/ti/wkup_m3_ipc.c `` - provides the wkup\_m3\_ipc driver
+responsible for communicating with the CM3 firmware.
+
+Debugging Techniques
+^^^^^^^^^^^^^^^^^^^^
 
 Debugging suspend and resume issues can be inherently difficult because
 by nature portions of the processor may be clock gated or powered down,
@@ -430,105 +369,16 @@ To aid your debugging efforts, the following resources are available:
 
 | 
 
-.. rubric:: RTC-Only and RTC+DDR Mode
-   :name: rtc-only-and-rtcddr-mode
+RTC-Only and RTC+DDR Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The LCPD release also supports two RTC modes depending on what the
-specific hardware in use supports. RTC+DDR Mode is similar to the
-Suspend/Resume above but only supports wake by the Power Button present
-on the board or from an RTC ALARM2 Event. RTC-Only mode supports the
-same wake sources, however DDR context is not maintained so a wake event
-causes a cold boot.
+RTC-Only and RTC+DDR modes are only supported on AM437x devices.
 
-RTC-Only mode is supported on:
+.. ifconfig:: CONFIG_part_family in ('AM437X_family')
 
--  AM437x GP EVM
--  AM437x SK EVM
-
-RTC+DDR mode is supported on:
-
--  AM437x GP EVM
-
-.. rubric:: RTC+DDR Mode
-   :name: rtcddr-mode
-
-The first step in using RTC+DDR mode is to enable off mode by typing the
-following at the command line:
-
-::
-
-        $ echo 1 > /sys/kernel/debug/pm_debug/enable_off_mode
-
-With off-mode enabled, a command to enter DeepSleep0 will now enter
-RTC-Only mode:
-
-::
-
-        $ echo mem > /sys/power/state
-
-this method of entry only supports Power button as the wake source.
-
-To use the rtc as a wake source, after enabling off mode use the
-following command:
-
-::
-
-        $ rtcwake -s <NUMBER OF SECONDS TO SLEEP> -d /dev/rtc0 -m mem
-
-Whether or not your board enters RTC-Only mode or RTC+DDR mode depends
-on the regulator configuration and whether or not the regulator that
-supplies the DDR is configured to remain on during suspend. This is
-supported by the TPS65218 in use of the AM437x boards but not the
-TPS65217 or TPS65910 present on AM335x boards.
-
-::
-
-    tps65218: tps65218@24 {
-            reg = <0x24>;
-            compatible = "ti,tps65218";
-            interrupts = <GIC_SPI 7 IRQ_TYPE_NONE>; /* NMIn */
-            interrupt-parent = <&gic>;
-            interrupt-controller;
-            #interrupt-cells = <2>;
-
-            ...
-
-            dcdc3: regulator-dcdc3 {
-                    compatible = "ti,tps65218-dcdc3";
-                    regulator-name = "vdcdc3";
-                    regulator-suspend-enable;
-                    regulator-min-microvolt = <1500000>;
-                    regulator-max-microvolt = <1500000>;
-                    regulator-boot-on;
-                    regulator-always-on;
-            };
-
-            ...
-
-    };
-
-Another important thing to make sure of is that you are using the proper
-u-boot. A certain u-boot is required in order to support RTC+DDR mode
-otherwise the following message appears during boot of the kernel:
-
-``PM: bootloader does not support rtc-only!``
-
-When building u-boot, rather than using ``am43xx_evm_config`` you must
-use ``am43xx_evm_rtconly_config`` to support either RTC mode.
-
-.. rubric:: RTC-Only Mode
-   :name: rtc-only-mode
-
-RTC-Only mode does not maintain DDR context so placing a board into
-RTC-only mode allows for very low power consumption after which a
-supported wake source will cause a cold boot. RTC-Only mode is entered
-via the poweroff command.
-
-To wakeup from RTC-Only mode via an RTC alarm, a separate tool must be
-used to program an RTC alarm prior to entering poweroff.
+	 Please refer to :doc:`pm_rtc_ddr` for details.
 
 .. rubric:: DDR3 VTT Regulator Toggling
-   :name: ddr3-vtt-regulator-toggling
 
 Some boards using DDR3 have a VTT Regulator that must be shut off during
 suspend to further conserve power. There are two methods that can be
@@ -537,7 +387,6 @@ suspend on am335x and am437x, through the use of GPIO0 (AM335x and
 AM437x) or IO Isolation (AM437x only).
 
 .. rubric:: GPIO0 Toggling
-   :name: gpio0-toggling
 
 An example of a board with this regulator is the AM335X EVM SK. On
 AM335x and AM437x, GPIO0 remains powered during DS0 so it is possible to
@@ -556,8 +405,8 @@ within the board device tree file.
 be toggled and ``ti,vtt-gpio-pin`` indicates which pin within GPIO0 is
 connected to the VTT regulator to control it.
 
-.. rubric:: IO Isolation Control
-   :name: io-isolation-control
+IO Isolation Control
+^^^^^^^^^^^^^^^^^^^^
 
 Many of the pins on AM437x have the ability to configure both normal and
 sleep states. Because of this it is possible to use any pin with a
@@ -604,8 +453,8 @@ value provided in the ``ddr3_vtt_toggle_default`` pinctrl entry.
                     ...
             };
 
-.. rubric:: Deep Sleep Voltage Scaling
-   :name: deep-sleep-voltage-scaling
+Deep Sleep Voltage Scaling
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is possible to scale the voltages on both the MPU and CORE supply
 rails down to 0.95V while we are in DeepSleep once powerdomains are shut
@@ -654,7 +503,6 @@ passing the offsets to the wake and sleep sequences through IPC register
 driver will handle this automatically.
 
 .. rubric:: Binary Data Format
-   :name: binary-data-format
 
 Each binary file contains a small header with a magic number and offsets
 to the sleep wand wake sections and then the sleep and wake sections
@@ -707,8 +555,8 @@ voltage to the rail.
 
 | 
 
-.. rubric:: Simple Example
-   :name: simple-example
+Simple Example
+^^^^^^^^^^^^^^
 
 Single message for both sleep and wake sequence (from
 bin/am335x-evm-scale-data.bin).
@@ -734,8 +582,8 @@ Explanation of values:
     0034        # Wake sequence section, starts with two bytes to describe i2c bus in khz (100)
     02 2d 25 2b # Length of message, evm i2c bus addr, then message (i2c reg 0x25, write value 0x2b) 
 
-.. rubric:: Advanced Example
-   :name: advanced-example
+Advanced Example
+^^^^^^^^^^^^^^^^
 
 Multiple messages on sleep and wake sequence (from
 bin/am43x-evm-scale-data.bin).
