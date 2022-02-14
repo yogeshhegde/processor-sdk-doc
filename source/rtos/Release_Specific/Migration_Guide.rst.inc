@@ -639,7 +639,7 @@ Processor SDK 03.02
 
 PDK I2C LLD
 ^^^^^^^^^^^
-To support I2C slave mode, added ``I2C_transactionInit()`` API. Applications
+To support I2C target mode, added ``I2C_transactionInit()`` API. Applications
 need to call ``I2C_transactionInit()`` API before calling ``I2C_transfer()``
 API. 
 
@@ -649,7 +649,7 @@ API.
 
    I2C_Transaction   transaction;
    I2C_transactionInit(&transaction);
-   transaction.masterMode   = false;
+   transaction.controllerMode   = false;
    transaction.writeCount = wrLen;
    transaction.readCount  = rdLen;
    transaction.timeout    = timeout;
@@ -798,7 +798,7 @@ Device Drivers
 
    int16_t status;
    
-   i2cTransaction.slaveAddress = I2C_EEPROM_ADDR;
+   i2cTransaction.targetAddress = I2C_EEPROM_ADDR;
    i2cTransaction.writeBuf = (uint8_t *)&txBuf[0];
    i2cTransaction.writeCount = I2C_EEPROM_TEST_LENGTH + I2C_EEPROM_ADDR_SIZE;
    i2cTransaction.readBuf = NULL;

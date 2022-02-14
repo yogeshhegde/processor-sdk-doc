@@ -757,7 +757,7 @@ Secondary Bootloader
    :name: what-board-initialization-is-required-in-the-application-after-booting-using-the-secondary-boot-loader-sbl
 
 SBL calls the board library to set up the PLL clock, DDR, and Pin Mux,
-and to power on slave cores and the I/O peripheral from which it will
+and to power on target cores and the I/O peripheral from which it will
 boot the application. Excluding those just mentioned, any other
 configuration need to be done from the application code. As long as you
 have added all of the device initialization to the board library, you
@@ -1159,25 +1159,25 @@ we have decided to remove the warning in the next release of CCS.
 
 There are 3 SGMII connectivity modes: • SGMII port with PHY attached and
 auto-negotiation enabled - for connecting to an external PHY • SGMII
-master to SGMII slave with auto-negotiation enabled - this is for
+master to SGMII device with auto-negotiation enabled - this is for
 connecting two SGMII devices, one has to be set as master and the other
-as slave • SGMII port to SGMII port with forced link configuration –
+as device • SGMII port to SGMII port with forced link configuration –
 generally this is used when one of the ports does not support
 auto-negotiation
 
 When a device having an SGMII MAC port is connected to a PHY device, the
-SGMII MAC is the slave in this link and the PHY is the master. The link
+SGMII MAC is the device in this link and the PHY is the master. The link
 is established using auto-negotiation across the SGMII link that is
-initiated by the master with an expected response by the slave. If the
+initiated by the master with an expected response by the device. If the
 auto-negotiation is not initiated by the link master (PHY), the link
 will remain down. In TI Keystone EVMs, the Processor with an SGMII MAC
 port is connected to a PHY, which provides a copper interface to a
 Gigabit RJ-45 connector. The Processor’s SGMII MAC port is configured as
-a slave with auto-negotiation enabled. This is done in the Init_SGMII().
+a device with auto-negotiation enabled. This is done in the Init_SGMII().
 
 When a SGMII MAC port is connected to another SGMII MAC port and
 auto-negotiation is enabled, one must be configured to emulate a master
-while the other is a slave. The master port uses the MR_ADV_ABILITY
+while the other is a device. The master port uses the MR_ADV_ABILITY
 register to determine speed and duplex setting instead of the
 MR_LP_ADV_ABILITY register.
 

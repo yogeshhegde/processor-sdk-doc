@@ -55,7 +55,7 @@ TI Supports following evaluation platform for AM57xx class of devices:
 
 When developer selects any of the above platforms in Code composer
 Studio, the target configuration automatically brings in the required
-initialization files and GEL files to configure the clocks, slave cores,
+initialization files and GEL files to configure the clocks, target cores,
 external memory.
 
 If you are using a custom platform or AM5708 device that is not

@@ -25,7 +25,7 @@ to/from the CPU device through two-wire interface
    -   Blocking(interrupt or Non interrupt)
    -   Callback mode(interrupt)
 
-| Supports only master mode. Slave mode is not supported
+| Supports only controller mode. Peripheral mode is not supported
 
 | 
 

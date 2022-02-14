@@ -191,7 +191,7 @@ A useful data point for TI to debug boot related issues is to isolate
 commonly known initialization and to understand how far the bootloader
 has executed correctly before it runs into any issues. Users are
 required to capture ARM/DSP clocks, Program counter value, Entry points
-detected, pinmux configuration and confirm DDR initialization and slave
+detected, pinmux configuration and confirm DDR initialization and target
 core states. This helps minimize the number of variables in the system
 boot and helps us zero in on the most likely cause for the boot failure.
 

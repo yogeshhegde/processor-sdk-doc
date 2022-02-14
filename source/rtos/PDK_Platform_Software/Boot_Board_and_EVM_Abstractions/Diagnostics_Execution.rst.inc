@@ -1705,7 +1705,7 @@ Sample log for industrial LED test is shown below
     *********************************************
 
     Running Industrial LED test...
-    Verifying LED's connected to I2C IO Expander slave device...
+    Verifying LED's connected to I2C IO Expander target device...
 
     Testing Industrial LEDs
     Cycling Ethernet LEDs for 3 times
@@ -3588,11 +3588,11 @@ Sample log for temperature sensor test is shown below
     Read temperature register value - 568
 
     Temperature read from the temperature sensor
-     slave address - 0x48 is 35 degree centigrade
+     target address - 0x48 is 35 degree centigrade
     Read temperature register value - 520
 
     Temperature read from the temperature sensor
-     slave address - 0x49 is 32 degree centigrade
+     target address - 0x49 is 32 degree centigrade
     Temperature sensor test Passed!
 
 | 
@@ -5533,7 +5533,7 @@ Sample log for industrial LED stress test is shown below
 
 
     Running Industrial Test...
-    Verifying LED's connected to I2C IO Expander slave device...
+    Verifying LED's connected to I2C IO Expander target device...
 
     Testing Industrial LEDs
     Cycling LEDs 3 times
@@ -5555,7 +5555,7 @@ Sample log for industrial LED stress test is shown below
     Iteration : 1 Industrial Test Passed
 
     Running Industrial Test...
-    Verifying LED's connected to I2C IO Expander slave device...
+    Verifying LED's connected to I2C IO Expander target device...
 
     Testing Industrial LEDs
     Cycling LEDs 3 times
@@ -5577,7 +5577,7 @@ Sample log for industrial LED stress test is shown below
     Iteration : 2 Industrial Test Passed
 
     Running Industrial Test...
-    Verifying LED's connected to I2C IO Expander slave device...
+    Verifying LED's connected to I2C IO Expander target device...
 
     Testing Industrial LEDs
     Cycling LEDs 3 times
@@ -5599,7 +5599,7 @@ Sample log for industrial LED stress test is shown below
     Iteration : 3 Industrial Test Passed
 
     Running Industrial Test...
-    Verifying LED's connected to I2C IO Expander slave device...
+    Verifying LED's connected to I2C IO Expander target device...
 
     Testing Industrial LEDs
     Cycling LEDs 3 times
@@ -5625,7 +5625,7 @@ Sample log for industrial LED stress test is shown below
     ...
 
     Running Industrial Test...
-    Verifying LED's connected to I2C IO Expander slave device...
+    Verifying LED's connected to I2C IO Expander target device...
 
     Testing Industrial LEDs
     Cycling LEDs 3 times
@@ -5647,7 +5647,7 @@ Sample log for industrial LED stress test is shown below
     Iteration : 99 Industrial Test Passed
 
     Running Industrial Test...
-    Verifying LED's connected to I2C IO Expander slave device...
+    Verifying LED's connected to I2C IO Expander target device...
 
     Testing Industrial LEDs
     Cycling LEDs 3 times
@@ -6250,11 +6250,11 @@ Sample log for temperature sensor stress test is shown below
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
-     slave address - 0x48 is 42 degree centigrade
+     target address - 0x48 is 42 degree centigrade
     Read temperature register value - 616
 
     Temperature read from the temperature sensor
-     slave address - 0x49 is 38 degree centigrade
+     target address - 0x49 is 38 degree centigrade
     Temperature sensor test Passed!
 
 
@@ -6267,11 +6267,11 @@ Sample log for temperature sensor stress test is shown below
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
-     slave address - 0x48 is 42 degree centigrade
+     target address - 0x48 is 42 degree centigrade
     Read temperature register value - 616
 
     Temperature read from the temperature sensor
-     slave address - 0x49 is 38 degree centigrade
+     target address - 0x49 is 38 degree centigrade
     Temperature sensor test Passed!
 
 
@@ -6284,11 +6284,11 @@ Sample log for temperature sensor stress test is shown below
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
-     slave address - 0x48 is 42 degree centigrade
+     target address - 0x48 is 42 degree centigrade
     Read temperature register value - 616
 
     Temperature read from the temperature sensor
-     slave address - 0x49 is 38 degree centigrade
+     target address - 0x49 is 38 degree centigrade
     Temperature sensor test Passed!
 
 
@@ -6301,11 +6301,11 @@ Sample log for temperature sensor stress test is shown below
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
-     slave address - 0x48 is 42 degree centigrade
+     target address - 0x48 is 42 degree centigrade
     Read temperature register value - 616
 
     Temperature read from the temperature sensor
-     slave address - 0x49 is 38 degree centigrade
+     target address - 0x49 is 38 degree centigrade
     Temperature sensor test Passed!
 
 
@@ -6322,11 +6322,11 @@ Sample log for temperature sensor stress test is shown below
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
-     slave address - 0x48 is 42 degree centigrade
+     target address - 0x48 is 42 degree centigrade
     Read temperature register value - 616
 
     Temperature read from the temperature sensor
-     slave address - 0x49 is 38 degree centigrade
+     target address - 0x49 is 38 degree centigrade
     Temperature sensor test Passed!
 
 
@@ -6339,11 +6339,11 @@ Sample log for temperature sensor stress test is shown below
     Read temperature register value - 680
 
     Temperature read from the temperature sensor
-     slave address - 0x48 is 42 degree centigrade
+     target address - 0x48 is 42 degree centigrade
     Read temperature register value - 616
 
     Temperature read from the temperature sensor
-     slave address - 0x49 is 38 degree centigrade
+     target address - 0x49 is 38 degree centigrade
     Temperature sensor test Passed!
 
 
