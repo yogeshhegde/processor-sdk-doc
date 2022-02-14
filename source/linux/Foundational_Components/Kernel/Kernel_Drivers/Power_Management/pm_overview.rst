@@ -1,43 +1,35 @@
-.. http://processors.wiki.ti.com/index.php/Linux_Core_Power_Management_User%27s_Guide
+.. include:: /replacevars.rst.inc
 
 Power Management Overview
----------------------------------
+-------------------------
 
 .. rubric:: Power Management Overview
-   :name: Power Management Overview
 
 Power management is a wide reaching topic and reducing the power a
 system uses is handled by a number of drivers and techniques. Power
 Management can broadly be classified into two categories: Dynamic/Active
-Power management and Idle Power Management. This page covers power
-topics for the v4.4 Linux kernel. This the most recent version. A full
-history of this guide can be found at `Linux Core Power Management
-User's Guide
-History <http://processors.wiki.ti.com/index.php/Linux_Core_Power_Management_User%27s_Guide_History>`__.
+Power management and Idle Power Management.
 
+.. rubric:: Dynamic Power Management Techniques
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family')
+Dynamic or active Power management techniques reduce the active power
+consumption by an SoC when the system is active and performing tasks.
 
-	.. rubric:: Power Management on DRA7 platform
-	   :name: power-management-on-dra7-platform
+The dynamic power management features enables on |__PART_FAMILY_DEVICE_NAMES__| are as follows:
 
-	The power management features enabled on DRA7 platforms (DRA7x/ J6/
-	AM57x) are as follows:
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
-	-  Suspend/Resume
 	-  MPU DVFS
 	-  SmartReflex
 
 .. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
-	.. rubric:: Dynamic Power Management Techniques
-	   :name: dynamic-power-management-techniques
-
-	Dynamic or active Power management techniques reduce the active power
-	consumption by an SoC when the system is active and performing tasks.
-
 	#. DVFS
 	#. CPUIdle
 	#. Smartreflex
 
+.. rubric:: Idle Power Management Techniques
 
+This ensures the system is drawing minimum power when in idle state i.e
+no use-case is running. This is accomplished by turning off as many
+peripherals as that are not in use.
