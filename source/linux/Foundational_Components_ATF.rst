@@ -20,21 +20,43 @@ in the non-secure world.
 
     $ git clone https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
 
+.. rubric:: Getting Security Dev Tool
+    
+::
+    
+    $ git clone git://git.ti.com/security-development-tools/core-secdev-k3.git -b master
+    $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+
 .. rubric:: Building ATF
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
     ::
 
+        on GP
         $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
+
+    ::
+
+        on HS
+        $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
+        $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./build/k3/generic/lite/bl31.bin ./build/k3/lite/release/bl31.bin.signed
 
 .. ifconfig:: CONFIG_part_family not in ('AM64X_family')
 
     ::
-
+        
+        on GP
         $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
 
+    ::
+
+        on HS
+        $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
+        ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./build/k3/generic/release/bl31.bin ./build/k3/generic/release/bl31.bin.signed
+
 .. rubric:: Default load locations
+
 
 +---------------------------+------------+
 | ATF image                 | 0x70000000 |
@@ -48,6 +70,15 @@ in the non-secure world.
 
 These can be changed from the defaults if needed in:
 
-::
 
-    plat/ti/k3/board/generic/board.mk
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    ::
+
+        plat/ti/k3/board/lite/board.mk
+
+.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
+
+    ::
+
+        plat/ti/k3/board/generic/board.mk
