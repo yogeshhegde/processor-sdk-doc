@@ -19,3 +19,5 @@ Hardware EVM Setup
    How_to_Guides/Hardware_Setup_with_CCS/OMAPL138-C6748_LCDK_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/J721E_EVM_Hardware_Setup
    How_to_Guides/Hardware_Setup_with_CCS/J7200_EVM_Hardware_Setup
+   How_to_Guides/Hardware_Setup_with_CCS/J721S2_EVM_Hardware_Setup
+
