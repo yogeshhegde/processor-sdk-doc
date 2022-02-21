@@ -237,11 +237,11 @@ respective addresses.
 
     => mmc dev 0 1
     => fatload mmc 1 ${loadaddr} tiboot3.bin
-    => mmc write ${loadaddr} 0x0 0x400
+    => mmc write ${loadaddr} 0x0 0x800
     => fatload mmc 1 ${loadaddr} tispl.bin
-    => mmc write ${loadaddr} 0x400 0x1000
+    => mmc write ${loadaddr} 0x800 0x1000
     => fatload mmc 1 ${loadaddr} u-boot.img
-    => mmc write ${loadaddr} 0x1400 0x2000
+    => mmc write ${loadaddr} 0x1800 0x2000
 
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
@@ -403,18 +403,18 @@ used for the first time:
 
   .. code-block:: console
 
-               boot0 partition (7 MB)                        user partition
+               boot0 partition (8 MB)                        user partition
        0x0+----------------------------------+      0x0+-------------------------+
-          |     tiboot3.bin (512 KB)         |         |                         |
-     0x400+----------------------------------+         |                         |
+          |     tiboot3.bin (1 MB)           |         |                         |
+     0x800+----------------------------------+         |                         |
           |       tispl.bin (2 MB)           |         |                         |
-    0x1400+----------------------------------+         |        rootfs           |
+    0x1800+----------------------------------+         |        rootfs           |
           |       u-boot.img (4 MB)          |         |                         |
-    0x3400+----------------------------------+         |                         |
+    0x3800+----------------------------------+         |                         |
           |      environment (128 KB)        |         |                         |
-    0x3500+----------------------------------+         |                         |
+    0x3900+----------------------------------+         |                         |
           |   backup environment (128 KB)    |         |                         |
-    0x3600+----------------------------------+         +-------------------------+
+    0x3A00+----------------------------------+         +-------------------------+
 
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
