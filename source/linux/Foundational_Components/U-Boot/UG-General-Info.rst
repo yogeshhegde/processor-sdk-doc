@@ -335,6 +335,28 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_hs_evm_a53_defconfig O=<output directory>/a53
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin.signed TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin.signed  O=<output directory>/a53
 
+    .. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+        |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU              |
+        +============================+=================================+================================+================================+================================+
+        |    J721S2 EVM              |    j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |
+        |                            |    j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+
+        *on GP*
+
+       .. code-block:: console
+
+          R5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+          $ cd ../k3-image-gen-<version>
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721s2 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721s2-gp.bin
+
+          A72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_evm_a72_defconfig O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
 
     .. rubric:: Dependent Project location
 
@@ -418,7 +440,7 @@ Build U-Boot
        - tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
        - tispl.bin, u-boot.img from <output directory>/a53
 
-    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X')
+    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2')
 
        .. rubric:: Image Formats
 
