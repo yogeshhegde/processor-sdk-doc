@@ -26,7 +26,6 @@ The dynamic power management features enables on |__PART_FAMILY_DEVICE_NAMES__| 
 
 	#. DVFS
 	#. CPUIdle
-	#. Smartreflex
 
 .. rubric:: Idle Power Management Techniques
 
