@@ -32,6 +32,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Power_Management
    Foundational_Components/Kernel/Kernel_Drivers/PWM
    Foundational_Components/Kernel/Kernel_Drivers/QSPI
+   Foundational_Components/Kernel/Kernel_Drivers/SERDES/SERDES
    Foundational_Components/Kernel/Kernel_Drivers/SPI
    Foundational_Components/Kernel/Kernel_Drivers/Storage/SATA
    Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
