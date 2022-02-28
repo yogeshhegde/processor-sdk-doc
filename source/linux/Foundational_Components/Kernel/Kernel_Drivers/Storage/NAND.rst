@@ -21,26 +21,33 @@ engines:
 -  ELM ECC engine: used for locating and decoding ECC errors while
    reading the NAND device.
 
-| Important NAND related drivers can be further split into the following
-  sub-components.
-| For all devices:
+Depending on the SoC, a different set of NAND IP and drivers might be in use. The
+following table summarizes the NAND IP and drivers used for each SoC family.
 
--  NAND subsystem: protocol driver in MTD sub-system for interfacing
-   with NAND flash devices.
-
-For K2L and K2E:
-
--  AEMIF driver: controller driver for AEMIF engine
-
-For all other SoCs:
-
--  GPMC driver: controller driver for GPMC engine
--  ELM driver (for applicable SoC) : controller driver for ELM engine.
++----------------------------------+----------------------------------+
+| Soc Family                       | NAND IP (drivers)                |
++==================================+==================================+
+| OMAP2420, OMAP3430               | GPMC (omap2.o)                   |
++----------------------------------+----------------------------------+
+| OMAP4430, OMAP5430               | GPMC (omap2.o), ELM (omap_elm.o) |
++----------------------------------+----------------------------------+
+| AM335x, AM437x, AM57x, AM65x     | GPMC (omap2.o), ELM (omap_elm.o) |
++----------------------------------+----------------------------------+
+| DM814, DM816                     | GPMC (omap2.o), ELM (omap_elm.o) |
++----------------------------------+----------------------------------+
+| J5 (DRA62x), J6 (DRA72x), J721e  | GPMC (omap2.o), ELM (omap_elm.o) |
++----------------------------------+----------------------------------+
+| K2G                              | GPMC (omap2.o), ELM (omap_elm.o) |
++----------------------------------+----------------------------------+
+| K2E, K2HK, K2L                   | AEMIF (davinci_nand.o)           |
++----------------------------------+----------------------------------+
+| DA850                            | AEMIF (davinci_nand.o)           |
++----------------------------------+----------------------------------+
 
 .. rubric:: **Supported Features**
    :name: supported-features-kernel-nand
 
-| GPMC NAND driver supports:
+GPMC NAND driver supports:
 
 -  NAND devices having:
 
@@ -56,236 +63,256 @@ For all other SoCs:
    TRM).
 -  Sub-page write
 
-| 
-
 .. rubric:: Accessing NAND partitions
    :name: accessing-nand-partitions
 
 .. rubric:: Linux
    :name: linux
 
-Within the kernel NAND partitions are accessed via mtd devices. Instead
-are referring to a partition by its name or its offset a user simply
-needs to specify the NAND partition in question in the form of its mtd
-device path. Usually in the format of /dev/mtdX where X is the mtd
-device number.
+In Linux, NAND partitions are accessed via mtd devices through the Linux
+MTD subsystem. The mtd device names are named /dev/mtdX, where X is and integer.
 
-.. rubric:: Determine NAND Partition MTD Identifier
-   :name: determine-nand-partition-mtd-identifier
+    .. rubric:: Determine NAND Partition MTD Identifier
+       :name: determine-nand-partition-mtd-identifier
 
-Within the kernel figuring out the mtd device number that is for a
-particular NAND partition is simple. A user simply needs to view the
-list of mtd devices along with its name. Below command will provide this
-information:
+    Within the kernel figuring out the mtd device number that is for a
+    particular NAND partition is simple. A user simply needs to view the
+    list of mtd devices along with its name. Below command will provide this
+    information:
 
-::
+    ::
 
-    cat /proc/mtd
+        cat /proc/mtd
 
-An example of this output performed on the DRA71x EVM can be seen below.
+    An example of this output performed on the DRA71x EVM can be seen below.
 
-::
+    ::
 
-    dev:    size   erasesize  name                                                                                                                                                
-    mtd0: 00010000 00010000 "QSPI.SPL"                                                                                                                                            
-    mtd1: 00010000 00010000 "QSPI.SPL.backup1"                                                                                                                                    
-    mtd2: 00010000 00010000 "QSPI.SPL.backup2"                                                                                                                                    
-    mtd3: 00010000 00010000 "QSPI.SPL.backup3"                                                                                                                                    
-    mtd4: 00100000 00010000 "QSPI.u-boot"                                                                                                                                         
-    mtd5: 00080000 00010000 "QSPI.u-boot-spl-os"                                                                                                                                  
-    mtd6: 00010000 00010000 "QSPI.u-boot-env"                                                                                                                                     
-    mtd7: 00010000 00010000 "QSPI.u-boot-env.backup1"                                                                                                                             
-    mtd8: 00800000 00010000 "QSPI.kernel"                                                                                                                                         
-    mtd9: 01620000 00010000 "QSPI.file-system"                                                                                                                                    
-    mtd10: 00020000 00020000 "NAND.SPL"                                                                                                                                           
-    mtd11: 00020000 00020000 "NAND.SPL.backup1"                                                                                                                                   
-    mtd12: 00020000 00020000 "NAND.SPL.backup2"                                                                                                                                   
-    mtd13: 00020000 00020000 "NAND.SPL.backup3"                                                                                                                                   
-    mtd14: 00040000 00020000 "NAND.u-boot-spl-os"                                                                                                                                 
-    mtd15: 00100000 00020000 "NAND.u-boot"                                                                                                                                        
-    mtd16: 00020000 00020000 "NAND.u-boot-env"                                                                                                                                    
-    mtd17: 00020000 00020000 "NAND.u-boot-env.backup1"                                                                                                                            
-    mtd18: 00800000 00020000 "NAND.kernel"                                                                                                                                        
-    mtd19: 0f600000 00020000 "NAND.file-system"   
+        dev:    size   erasesize  name
+        mtd0: 00010000 00010000 "QSPI.SPL"
+        mtd1: 00010000 00010000 "QSPI.SPL.backup1"
+        mtd2: 00010000 00010000 "QSPI.SPL.backup2"
+        mtd3: 00010000 00010000 "QSPI.SPL.backup3"
+        mtd4: 00100000 00010000 "QSPI.u-boot"
+        mtd5: 00080000 00010000 "QSPI.u-boot-spl-os"
+        mtd6: 00010000 00010000 "QSPI.u-boot-env"
+        mtd7: 00010000 00010000 "QSPI.u-boot-env.backup1"
+        mtd8: 00800000 00010000 "QSPI.kernel"
+        mtd9: 01620000 00010000 "QSPI.file-system"
+        mtd10: 00020000 00020000 "NAND.SPL"
+        mtd11: 00020000 00020000 "NAND.SPL.backup1"
+        mtd12: 00020000 00020000 "NAND.SPL.backup2"
+        mtd13: 00020000 00020000 "NAND.SPL.backup3"
+        mtd14: 00040000 00020000 "NAND.u-boot-spl-os"
+        mtd15: 00100000 00020000 "NAND.u-boot"
+        mtd16: 00020000 00020000 "NAND.u-boot-env"
+        mtd17: 00020000 00020000 "NAND.u-boot-env.backup1"
+        mtd18: 00800000 00020000 "NAND.kernel"
+        mtd19: 0f600000 00020000 "NAND.file-system"
 
-As you can see above the list of mtd devices may not only include NAND
-partitions but list other peripherals that create mtd devices also. From
-the above you can see that if the user wants to access the file-system
-partition within the NAND then they use /dev/mtd19 to reference the
-partition. The names of these partitions, their sizes (in hex) and
-offsets (in hex) are determined within the specific board's device tree
-file.
+    As you can see from the above list, mtd devices not only include NAND
+    partitions but other MTD partitions as well (e.g. OSPI).
+    e.g. if you want to access the NAND.file-system partition you need to use
+    /dev/mtd19. Linux knows the partition names, offsets and sizes via the
+    MTD partition entry specified in the boards device tree.
 
-.. rubric:: Erasing, Reading and Writing
-   :name: erasing-reading-and-writing
+    .. rubric:: Erasing, Reading and Writing
+       :name: erasing-reading-and-writing
 
-For the below sections it is important to remember to replaced **mtdX**
-with the mtd device that is associated with the particular NAND
-partition as described in the above section.
+    For the below sections it is important to remember to replace **mtdX**
+    with the appropriate mtd device that is associated with the particular NAND
+    partition that you want to use.
 
-| **Erasing**
-| Erasing a NAND partition can be performed by using the below command:
+    | **Erasing**
+    | Erasing a NAND partition can be performed by using the below command:
 
-::
+    ::
 
-    flash_erase /dev/mtdX 0 0
+        flash_erase /dev/mtdX 0 0
 
-| **Writing**
-| Writing a NAND partition is usually a two step process. Writing to
-  NAND at a bit level is only able to change a bit from 1 to 0. This is
-  problematic since frequently when writing new data you will need to
-  change many bits from 1 to 0 along with changing some bits from 0 to
-  1. The only way to get around this is erasing the NAND partition
-  before writing. This is because erasing sets all the bits in a
-  partition to 1. Thus when performing raw NAND writes insure you
-  erasing the partition first otherwise you will experience numerous
-  NAND ECC errors during the write or read operation.
+    | **Writing**
+    | Writing a NAND partition is usually a two step process. Writing to
+      NAND at a bit level is only able to change a bit from 1 to 0. This is
+      problematic since frequently when writing new data you will need to
+      change many bits from 1 to 0 along with changing some bits from 0 to
+      1. The only way to get around this is erasing the NAND partition
+      before writing. This is because erasing sets all the bits in a
+      partition to 1.
 
-The command to write to a NAND partition is below:
+    | The command to write to a NAND partition is below:
 
-::
+    ::
 
-    nandwrite -p /dev/mtdX <filename>
+        nandwrite -p /dev/mtdX <filename>
 
-| The symbol **<filename>** should be replaced with the file path to the
-  file you will like to write.
-| **Reading**
-| Reading NAND can be done by running the below command:
+    | **Reading**
+    | Reading NAND can be done by running the below command:
 
-::
+    ::
 
-    nanddump /dev/mtdX -f <filename>
+        nanddump /dev/mtdX -f <filename>
 
-The symbol **<filename>** should be replaced with the name of a file you
-want to be created that contains with contents of the NAND partition.
-Note that the above command by default with save to a file the complete
-contents of the NAND partition. If your interested in only a certain
-amount of data being dumped additional parameters can be passed to the
-utility.
-
-.. rubric:: Command Line Partitioning
-   :name: command-line-partitioning
-
-In some situations, partitions defined in device-tree may not be
-sufficient or correct. Note that once partitions are defined in
-device-tree and present in a mainline kernel release, they cannot be
-changed because this breaks users who have existing data on NAND flash
-and upgrade to new kernel and device-tree. If you are not affected by
-this issue, you may choose to override partition information passed from
-device-tree using command line.
-
-In TI kernel releases, MTD command line partitioning support is built as
-module. To use it, add something like following to the kernel command
-line (passed using ``bootargs`` U-Boot variable)
-
-::
-
-    setenv bootargs ${bootargs} cmdlinepart.mtdparts=davinci-nand.0:1m(image)ro,-(free-space)
-
-Note that MTD command line parses breaks if there is space in partition
-name. So use "free-space" not "free space". Change ``davinci-nand.0`` to
-the correct device name. You can usually find the name to use from
-``dmesg``\ output
-
-::
-
-    Creating 2 MTD partitions on "davinci-nand.0":
-
-You can also setup new partitions after kernel has booted with old
-partitions. You will need to re-probe the NAND driver if it has already
-probed. Something like:
-
-::
-
-    $ modprobe -r davinci_nand
-    $ modprobe cmdlinepart mtdparts="davinci-nand.0:2m(image)ro,-(free space)"
-    $ modprobe davinci_nand
-
-``davinci_nand`` module name here may have to be changed based on the
-SoC you are using.
+    **Note:** The above command by default will save the full partition
+    contents to the file. If you are interested in only a certain
+    amount of data, additional parameters can be passed to the nanddump
+    utility.
 
 .. rubric:: U-boot
    :name: u-boot
 
-| Information regarding NAND booting and booting the kernel and file
-  system from NAND can be found in the U-boot User Guide NAND
-  section.
+Information regarding NAND booting and booting the kernel and file
+system from NAND can be found in the U-boot User Guide NAND
+section.
+
 
 .. rubric:: **NAND Based File system**
    :name: nand-based-file-system
 
-.. rubric:: Required Software
-   :name: required-software
+The bootloader and u-boot partitions don't use any filesystem. The
+images are flased directly to NAND flash.
 
-Building a UBI file system depends on two applications. Ubinize and
-mkfs.ubifs which are both provided by Ubuntu's mtd-utils package
-(apt-get install mtd-utils). The below instructions are based on version
-1.5.0 of mtd-utils although newer version are likely to work.
+The Filesystem though uses UBIFS filesystem. NAND flash is prone to
+bit-flips. UBI + UBIFS takes care of the bit-flips issue and as well as
+many other things like wear leveling, bad-block management, etc.
 
-.. rubric:: Building UBI File system
-   :name: building-ubi-file-system
+    .. rubric:: Required Software for UBI image creation
+       :name: required-software-ubifs
 
-When building a UBI file system you need to have a directory that
-contains the exact files and directories layout that you plan to use for
-your file system. This is similar to the files and directories layout
-you will use to copy a file system onto a SD card for booting purposes.
-It is important that your file system size is smaller than the file
-system partition in the NAND.
+    Building a UBI file system requires two applications, ubinize and
+    mkfs.ubifs. Both are both provided by mtd-utils package.
+    (sudo apt-get install mtd-utils).
 
-| Next you need a file named ubinize.cfg. Below contains the exact
-  contents of ubinize.cfg you should use. However, replace **<name>**
-  with a name of your choosing
-| ubinize.cfg contents:
+    .. rubric:: Building a UBI File system image
+       :name: building-ubi-file-system
 
-::
+    When building a UBI file system you need to have a directory that
+    contains the exact files and directories layout that you plan to use for
+    your file system. This is similar to the files and directories layout
+    you will use to copy a file system onto a SD card for booting purposes.
+    It is important that your file system size is smaller than the file
+    system partition in the NAND.
 
-    [ubifs]
-     mode=ubi
-     image=<name>.ubifs
-     vol_id=0
-     vol_type=dynamic
-     vol_name=rootfs
-     vol_flags=autoresize
+    Next you need a file named ubinize.cfg. Below contains the exact
+    contents of ubinize.cfg you should use. However, replace **<name>**
+    with a name of your choosing. e.g. rootfs
 
-| To build a ubi files system only requires the below two commands. The
-  symbol below **<directory path>** should be replaced with the path to
-  your directory that you want to convert into a ubifs. The symbol
-  <name> should be replaced with the same value you used in creating
-  ubinize.cfg. Make sure you use the same value of <name> across the two
-  commands and ubinize.cfg. The symbols **<MKUBIFS ARGS>** and
-  **<UBINIZE ARGS>** are board specific. Replace these values with the
-  values seen in the below table based on the TI EVM you are using.
-| Commands to execute:
+    ubinize.cfg contents:
 
-::
+    ::
 
-    mkfs.ubifs -r <directory path> -o <name>.ubifs <MKUBIFS ARGS>
-    ubinize -o <name>.ubi <UBINIZE ARGS> ubinize.cfg
+        [ubifs]
+         mode=ubi
+         image=<name>.ubifs
+         vol_id=0
+         vol_type=dynamic
+         vol_name=rootfs
+         vol_flags=autoresize
 
-Once these commands are executed <name>.ubi can then be programmed into
-the NAND's designated file-system partition.
+    To build a UBI files system requires the below two commands. The
+    symbol **<directory path>** should be replaced with the path to
+    your directory that you want to include into a ubifs. The symbol
+    <name> should be replaced with the same value you used in creating
+    ubinize.cfg. Make sure you use the same value of <name> across the two
+    commands and ubinize.cfg. The symbols **<MKUBIFS ARGS>** and
+    **<UBINIZE ARGS>** are board specific. Replace these values with the
+    values seen in the below table based on the TI EVM you are using.
 
-+-----------------+--------------------------------+-------------------------------------+
-| Board Name      | MKUBIFS Args                   | UBINIZE Args                        |
-+=================+================================+=====================================+
-| AM335X GP EVM   | -F -m 2048 -e 126976 -c 5600   | -m 2048 -p 128KiB -s 512 -O 2048    |
-+-----------------+--------------------------------+-------------------------------------+
-| AM437x GP EVM   | -F -m 4096 -e 253952 -c 2650   | -m 4096 -p 256KiB -s 4096 -O 4096   |
-+-----------------+--------------------------------+-------------------------------------+
-| K2E EVM         | -F -m 2048 -e 126976 -c 3856   | -m 2048 -p 128KiB -s 2048 -O 2048   |
-+-----------------+--------------------------------+-------------------------------------+
-| K2L EVM         | -F -m 4096 -e 253952 -c 1926   | -m 4096 -p 256KiB -s 4096 -O 4096   |
-+-----------------+--------------------------------+-------------------------------------+
-| K2G EVM         | -F -m 4096 -e 253952 -c 1926   | -m 4096 -p 256KiB -s 4096 -O 4096   |
-+-----------------+--------------------------------+-------------------------------------+
-| DRA71x EVM      | -F -m 2048 -e 126976 -c 8192   | -m 2048 -p 128KiB -s 512 -O 2048    |
-+-----------------+--------------------------------+-------------------------------------+
-| AM64 GP EVM     | -F -m 4096 -e 253952 -c 1926   | -m 4096 -p 256KiB -s 4096 -O 4096   |
-+-----------------+--------------------------------+-------------------------------------+
+    Commands to execute:
 
-Table:  Table of Parameters to use for Building UBI filesystem image
+    ::
 
-| 
+        ~# mkfs.ubifs -r <directory path> -o <name>.ubifs <MKUBIFS ARGS>
+        ~# ubinize -o <name>.ubi <UBINIZE ARGS> ubinize.cfg
+
+    Once these commands are executed <name>.ubi can then be flashed into
+    the NAND's file-system partition.
+
+    +-----------------+--------------------------------+-------------------------------------+
+    | Board Name      | MKUBIFS Args                   | UBINIZE Args                        |
+    +=================+================================+=====================================+
+    | AM335X GP EVM   | -F -m 2048 -e 126976 -c 5600   | -m 2048 -p 128KiB -s 512 -O 2048    |
+    +-----------------+--------------------------------+-------------------------------------+
+    | AM437x GP EVM   | -F -m 4096 -e 253952 -c 2650   | -m 4096 -p 256KiB -s 4096 -O 4096   |
+    +-----------------+--------------------------------+-------------------------------------+
+    | K2E EVM         | -F -m 2048 -e 126976 -c 3856   | -m 2048 -p 128KiB -s 2048 -O 2048   |
+    +-----------------+--------------------------------+-------------------------------------+
+    | K2L EVM         | -F -m 4096 -e 253952 -c 1926   | -m 4096 -p 256KiB -s 4096 -O 4096   |
+    +-----------------+--------------------------------+-------------------------------------+
+    | K2G EVM         | -F -m 4096 -e 253952 -c 1926   | -m 4096 -p 256KiB -s 4096 -O 4096   |
+    +-----------------+--------------------------------+-------------------------------------+
+    | DRA71x EVM      | -F -m 2048 -e 126976 -c 8192   | -m 2048 -p 128KiB -s 512 -O 2048    |
+    +-----------------+--------------------------------+-------------------------------------+
+    | AM64 GP EVM     | -F -m 4096 -e 258048 -c 3970   | -m 4096 -p 256KiB -s 1024 -O 1024   |
+    +-----------------+--------------------------------+-------------------------------------+
+
+    Table:  Table of Parameters to use for Building UBI filesystem image
+
+    |
+
+    .. rubric:: Flashing the UBI File system image to NAND
+       :name: flashing-ubi-file-system
+
+    Copy the UBI image created above to the EVM via SD card or Network.
+    Use ubiformat from EVM Linux to flash the UBI filesystem to the NAND file-system
+    partition.
+
+    ::
+
+        ~# ubiformat -f rootfs.ubi /dev/mtd<X>
+
+    Alternatively, you can use u-boot to download and flash the UBI image
+    to the NAND flash over USB in DFU mode (Not Supported in AM64 in 8.2).
+
+    At EVM u-boot:
+
+    ::
+
+        => setenv dfu_alt_info ${dfu_alt_info_nand}
+        => dfu 0 nand list
+        DFU alt settings list:
+        dev: NAND alt: 0 name: NAND.tiboot3 layout: RAW_ADDR
+        dev: NAND alt: 1 name: NAND.tispl layout: RAW_ADDR
+        dev: NAND alt: 2 name: NAND.tiboot3.backup layout: RAW_ADDR
+        dev: NAND alt: 3 name: NAND.u-boot layout: RAW_ADDR
+        dev: NAND alt: 4 name: NAND.u-boot-env layout: RAW_ADDR
+        dev: NAND alt: 5 name: NAND.u-boot-env.backup layout: RAW_ADDR
+        dev: NAND alt: 6 name: NAND.file-system layout: RAW_ADDR
+
+        => dfu 0 nand 0
+
+    At Host PC:
+    Attach a micro-USB cable between the PC and the EVMs USB port.
+
+    ::
+
+        linux-pc$ sudo dfu-util -l
+        Found DFU: [0451:6165] ver=0224, devnum=7, cfg=1, intf=0, path="3-13.1", alt=6, name="NAND.file-system", serial="0000000000000280"
+        Found DFU: [0451:6165] ver=0224, devnum=7, cfg=1, intf=0, path="3-13.1", alt=5, name="NAND.u-boot-env.backup", serial="0000000000000280"
+        Found DFU: [0451:6165] ver=0224, devnum=7, cfg=1, intf=0, path="3-13.1", alt=4, name="NAND.u-boot-env", serial="0000000000000280"
+        Found DFU: [0451:6165] ver=0224, devnum=7, cfg=1, intf=0, path="3-13.1", alt=3, name="NAND.u-boot", serial="0000000000000280"
+        Found DFU: [0451:6165] ver=0224, devnum=7, cfg=1, intf=0, path="3-13.1", alt=2, name="NAND.tiboot3.backup", serial="0000000000000280"
+        Found DFU: [0451:6165] ver=0224, devnum=7, cfg=1, intf=0, path="3-13.1", alt=1, name="NAND.tispl", serial="0000000000000280"
+        Found DFU: [0451:6165] ver=0224, devnum=7, cfg=1, intf=0, path="3-13.1", alt=0, name="NAND.tiboot3", serial="0000000000000280"
+
+        linux-pc$ sudo dfu-util -D rootfs.ubi -a NAND.file-system -v
+        Opening DFU capable USB device...
+        ID 0451:6165
+        Run-time device DFU version 0110
+        Claiming USB DFU Interface...
+        Setting Alternate Setting #6 ...
+        Determining device status: state = dfuIDLE, status = 0
+        dfuIDLE, continuing
+        DFU mode device DFU version 0110
+        Device returned transfer size 4096
+        Copying data from PC to DFU device
+        Download	[=                        ]   5%      4980736 bytes
+        Download	[=========================] 100%     90177536 bytes
+        Download done.
+        Sent a total of 90177536 bytes
+        state(7) = dfuMANIFEST, status(0) = No error condition is present
+        state(2) = dfuIDLE, status(0) = No error condition is present
+        Done!
+
 
 .. rubric:: **Board specific configurations**
    :name: board-specific-configurations
@@ -322,7 +349,7 @@ Table:  Table of Parameters to use for Building UBI filesystem image
 |          | 08ADBCAH |          |          |          |          |          |          | |        |
 |          | 4:C      |          |          |          |          |          |          |          |
 +----------+----------+----------+----------+----------+----------+----------+----------+----------+
-| AM64     | MT29F8G0 | 1024 MB  | 8        | 256      | 4        | 256      | BCH 16   | GPMC     |
+| AM64     | MT29F8G0 | 1024 MB  | 8        | 256      | 4        | 256      | BCH 8    | GPMC     |
 |          | 8ADAFAH4 |          |          |          |          |          |          |          |
 |          | :F       |          |          |          |          |          |          |          |
 +----------+----------+----------+----------+----------+----------+----------+----------+----------+
@@ -355,6 +382,9 @@ Doing so may cause damage to the board or SoC.
 NAND flash is not present on the EVM but needs to be added via an Expansion
 card (TDMS64DC02EVM) that plugs into the High Speed Expansion (HSE) port.
 
+The NAND flash and SoC supports BCH16 ECC Scheme but the BootROM does not support
+BCH16. So BCH8 ECC Scheme has been used on this board.
+
 .. note::
 
 	Aside from setting the correct bootmode (SYSBOOT[5:0]) for
@@ -364,23 +394,31 @@ card (TDMS64DC02EVM) that plugs into the High Speed Expansion (HSE) port.
 .. rubric:: Configurations (GPMC Specific)
    :name: configurations-gpmc-specific
 
-.. rubric:: **How to enable OMAP NAND driver in Linux Kernel ?**
-   :name: how-to-enable-omap-nand-driver-in-linux-kernel
+.. rubric:: **How to enable GPMC NAND driver in Linux Kernel ?**
+   :name: how-to-enable-gpmc-nand-driver-in-linux-kernel
 
-OMAP NAND driver can be enable/disable via *Linux Kernel
+GPMC NAND driver can be enabled/disabled via *Linux Kernel
 Configuration* tool. Enable below Configs to enable MTD Support along
-with MTD nand driver support
+with MTD NAND driver support
+
+::
+
+    $ make menuconfig  ARCH=arm
+
 
 ::
 
     Device Drivers  --->
       <*> Memory Technology Device (MTD) support  --->
-                [*]   Command line partition table parsing
-                <*>   Direct char device access to MTD devices
-                <*>   Caching block device access to MTD devices
-                <*>   NAND Device Support  --->
-                            <*>    NAND Flash device on OMAP2 and OMAP3
-                <*>   Enable UBI - Unsorted block images  --->
+        <*>   Caching block device access to MTD devices
+        <*>   Enable UBI - Unsorted block images  --->
+        NAND  --->
+            <*> Raw/Parallel NAND Device Support  --->
+                <*>   OMAP2, OMAP3, OMAP4 and Keystone NAND controller
+                [*]     Support hardware based BCH error correction
+        Partition parsers  --->
+            [*]   Command line partition table parsing
+            <*> OpenFirmware (device tree) partitioning parser
 
 .. rubric:: Transfer Modes
    :name: transfer-modes
@@ -388,8 +426,8 @@ with MTD nand driver support
 .. rubric:: **Choose correct bus transfer mode**
    :name: choose-correct-bus-transfer-mode
 
-| TI's NAND driver support following different modes of transfers data
-  to external NAND device.
+The GPMC NAND driver support following different modes of transfers data
+to external NAND device.
 
 -  "prefetch-polled" Prefetch polled mode (default)
 -  "polled" Polled mode, without prefetch
@@ -399,7 +437,7 @@ with MTD nand driver support
 Transfer mode can be configured in linux-kernel via DT binding
 **<ti,nand-xfer-type>**
 Refer: Linux kernel\_docs @
-$LINUX/Documentation/devicetree/bindings/mtd/gpmc-nand.txt
+$LINUX/Documentation/devicetree/bindings/mtd/ti,gpmc-nand.yaml
 
 .. rubric:: **DMA vs Non DMA Mode (PIO Mode)**
    :name: dma-vs-non-dma-mode-pio-mode
@@ -450,15 +488,10 @@ Section *Signal Control*
 -  In Linux, GPMC signal timing configurations are specified via DTB.
 
 Refer kernel\_docs
-$LINUX/Documentation/devicetree/bindings/bus/ti-gpmc.txt
+$LINUX/Documentation/devicetree/bindings/memory-controllers/ti,gpmc.yaml
+
 Some timing configurations like <gpmc,rd-cycle-ns>, <gpmc,wr-cycle-ns>
 have larger impact on NAND throughput than others.
-
--  In U-boot, GPMC signal timing configurations are specified during
-   GPMC initialization in arch/arm/cpu/armv7/../... mem.c or
-   mem\_common.c
-
-*gpmc\_init()* :: *struct gpmc\_cfg*
 
 .. rubric:: **Tweaking UBIFS**
    :name: tweaking-ubifs
@@ -471,10 +504,12 @@ have larger impact on NAND throughput than others.
 .. rubric:: Additional Resources
    :name: additional-resources
 
-| Following links should help you better understand NAND Flash as
-  technology.
-| http://www.linux-mtd.infradead.org/doc/nand.html
-| https://wiki.linaro.org/Flash%20memory
+Following links should help you better understand NAND Flash as
+technology.
 
+http://www.linux-mtd.infradead.org/doc/nand.html
+http://www.linux-mtd.infradead.org/doc/ubi.html
+http://www.linux-mtd.infradead.org/doc/ubifs.html
+https://wiki.linaro.org/Flash%20memory
 https://lwn.net/Articles/428584/
 
