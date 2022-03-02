@@ -10,6 +10,112 @@ Overview
 This page covers migration information for applications built on top
 of the Processor SDK RTOS.
 
+Processor SDK 08.xx Releases
+============================
+
+Processor SDK 08.01
+-------------------
+
+SDK Naming
+===========
+
+**Migration:**
+Some of the components in the SDK has undergone naming changes in this release for using 
+more inclusive terminology. While there is no change in the top-level folder or module name for
+any of the SDK components, there are changes to API, data structure, example file/folder names
+in multiple components as per the industry standard guidelines for moving towards more
+inclusive terminology.
+
+This change will have impact on some of the APIs and data structures used by applications
+and needs change in application software to move to the latest SDK release.
+Please refer 'Additional Details' section below for the details of the naming changes which
+helps application software migration to this SDK release.
+
+**Impact Scope:** Applicable for the applications using APIs, data structure and macros with 
+naming change listed in Additional Details section.
+
+**Additional Details**:
+Below table provides list of APIs, data structures and macros that are exposed to the applications
+and their names are changed in this release.
+
++------------+-----------------------------+-----------------------------+-------------------------------------+
+|  Component | Impact                      |    Old Name                 |  New Name                           |
++============+=============================+=============================+=====================================+
+|            | I2C_Transaction             |                             |                                     |
+|            | structure member            |  slaveAddress               |  targetAddress                      |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | I2C_Transaction             |                             |                                     |
+|            | structure member            |  masterMode                 |  controllerMode                     |
++  I2C       +-----------------------------+-----------------------------+-------------------------------------+
+|            | I2C_HwAttrs                 |                             |                                     |
+|            | structure member            |  ownSlaveAddr               |  ownTargetAddr                      |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | MACRO                       |  I2C_SLAVE_XFER_MODE        |  I2C_TARGET_XFER_MODE               |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | MACRO                       |  I2C_SLAVE_RESTART_MODE     |  I2C_TARGET_RESTART_MODE            |
++------------+-----------------------------+-----------------------------+-------------------------------------+
+|  EMAC      | EMAC_PORT_CB_V1_tag         |                             |                                     |
+|            | structure member            |  master_core_flag           |  controller_core_flag               |
++------------+-----------------------------+-----------------------------+-------------------------------------+
+|  MCASP     | Mcasp_AudioDevData          |                             |                                     |
+|            | structure member            |  isMaster                   |  isHost                             |
++------------+-----------------------------+-----------------------------+-------------------------------------+
+|  PCIE      | pciePlconfAxiSlvErrRespReg  |                             |                                     |
+|            | structure member            |  slaveErrMap                |  peripheralErrMap                   |
++------------+-----------------------------+-----------------------------+-------------------------------------+
+|  PRUSS     | API                         |  prussAppSorteRestartMaster |  prussAppSorteRestartController     |
++------------+-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  SBL_SlaveCoreBoot          |  SBL_TargetCoreBoot                 |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | FILE                        |  sbl_slave_core_boot.c      |  sbl_target_core_boot.c             |
++   SBL      +-----------------------------+-----------------------------+-------------------------------------+
+|            | FILE                        |  sbl_slave_core_boot.h      |  sbl_target_core_boot.h             |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | FILE                        |  sbl_slave_boot.c           |  sbl_target_boot.c                  |
++------------+-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  McSPIMasterModeEnable      |  McSPIControllerModeEnable          |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  McSPIMasterModeConfig      |  McSPIControllerModeConfig          |
++  CSL       +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  McSPISetSlaveChipSel       |  McSPISetPeripheralChipSel          |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  McSPISlaveModeEnable       |  McSPIPeripheralModeEnable          |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterEnable            |  I2CControllerEnable                |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterDisable           |  I2CControllerDisable               |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterInitExpClk        |  I2CControllerInitExpClk            |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterTargetAddrSet     |  I2CControllerTargetAddrSet         |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterEnableFreeRun     |  I2CControllerEnableFreeRun         |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterIntClearEx        |  I2CControllerIntClearEx            |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterControl           |  I2CControllerControl               |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterStart             |  I2CControllerStart                 |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterBusBusy           |  I2CControllerBusBusy               |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterDataPut           |  I2CControllerDataPut               |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  I2CMasterIntRawStatusEx    |  I2CControllerIntRawStatusEx        |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | CSL_emifDdrPhyParam         |  ctrlSlaveRatio             |  ctrlPeripheralRatio                |
+|            | structure member            |                             |                                     |
++------------+-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  TimeSync_enableMaster      |  TimeSync_enableController          |
++            +-----------------------------+-----------------------------+-------------------------------------+
+|            | API                         |  TimeSync_disableMaster     |  TimeSync_disableController         |
++ TIME_SYNC  +-----------------------------+-----------------------------+-------------------------------------+
+|            | TimeSync_Config_t           |  masterParams               |  controllerParams                   |
+|            |                             +-----------------------------+-------------------------------------+
+|            | Structure                   |  isMaster                   |  isController                       |
++------------+-----------------------------+-----------------------------+-------------------------------------+
+
+
 Processor SDK 06.xx Releases
 ============================
 
