@@ -82,3 +82,16 @@ For PRP
 
 With the above configuration, if a ping is run between the two platforms on the
 HSR/PRP interface, the ping will continue even if one of the connections is removed.
+
+For VLAN
+::
+
+  ifconfig hsr0 0.0.0.0
+  ip link add link hsr0 name hsr0.2 type vlan id 2
+  ip link add link hsr0 name hsr0.3 type vlan id 3
+
+  ip addr add 192.168.2.3 dev hsr0.2
+  ip addr add 192.168.3.3 dev hsr0.3
+
+  With the above configuration, tracing using tcpdump -i <hsr0> -xxx on the remote
+  side will show VLAN header with id information.
