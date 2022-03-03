@@ -150,6 +150,15 @@ Check that DFU can correctly see the NAND partition layout
     dev: NAND alt: 5 name: NAND.u-boot-env.backup layout: RAW_ADDR
     dev: NAND alt: 6 name: NAND.file-system layout: RAW_ADDR
 
+In case you see an error like 'Device nor0 not found!' then you need to
+ensure that all mtd devices specified in mtdids variable are available.
+
+e.g. To probe nor device you will have to do
+
+::
+
+    sf probe
+
 Before writing we must erase at least the area to be written to.
 
 ::
