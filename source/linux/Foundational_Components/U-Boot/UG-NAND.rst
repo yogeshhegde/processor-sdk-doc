@@ -269,6 +269,29 @@ the rootfs UBIFS volume.
 
     boot=nand
 
+U-Boot Environment in NAND
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, U-Boot environment is saved in a FAT partition on the SD-card.
+For saving/restoring U-Boot environment from a NAND partition, the following
+changes need to be done to U-Boot configuation at build time.
+
+Run menuconfig and set the U-Boot configuration as below
+
+::
+
+        Environment  --->
+            [ ] Environment in an MMC device
+            [*] Environment in a NAND device
+            [*] Enable redundant environment support
+            (0x00a00000) Environment offset
+            (0x00a40000) Redundant environment offset
+            (0x40000) Environment Size
+
+The 'Environment offset', 'Redundant environment offset' and 'Environment Size'
+represent the 'NAND.u-boot' and 'NAND.u-boot-env' partition offsets and size
+respectively. They can be obtained from the NAND device node specification in
+the board's device tree file.
 
 Information on creating a UBIFS image and NAND flashing can be found
 `here <Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND.html#nand-based-file-system>`__.
