@@ -163,6 +163,70 @@ documented above.
                  |                            |
                  +----------------------------+
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    AM64X has a cypress s28hs512t flash and sysfw is bundled with tiboot3.bin.
+
+    **flashing images to ospi**
+
+    below commands can be used to download tiboot3.bin, tispl.bin and
+    u-boot.img over tftp and then flash it to ospi at respective addresses.
+
+    .. code-block:: console
+
+      => sf probe
+      => tftp ${loadaddr} tiboot3.bin
+      => sf update $loadaddr 0x0 $filesize
+      => tftp ${loadaddr} tispl.bin
+      => sf update $loadaddr 0x100000 $filesize
+      => tftp ${loadaddr} u-boot.img
+      => sf update $loadaddr 0x300000 $filesize
+
+    **phy calibration**
+
+    phy calibration allows for higher read performance. to enable phy, the phy
+    calibration pattern must be flashed to ospi at the start of the last erase
+    sector. for the cypress s28hs512t flash, this lies at the address 0x3fc0000.
+
+    download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
+    below commands can be used to flash the phy pattern, with the location of the
+    pattern depending on which flash is being used:
+
+    .. code-block:: console
+
+       => sf probe
+       => tftp ${loadaddr} ospi_phy_pattern
+       => sf update $loadaddr 0x3fc0000 $filesize
+
+    **flash layout for ospi**
+
+    .. code-block:: console
+
+             0x0 +----------------------------+
+                 |     ospi.tiboot3(1m)       |
+                 |                            |
+        0x100000 +----------------------------+
+                 |     ospi.tispl(2m)         |
+                 |                            |
+        0x300000 +----------------------------+
+                 |     ospi.u-boot(4m)        |
+                 |                            |
+        0x700000 +----------------------------+
+                 |     ospi.env(128k)         |
+                 |                            |
+        0x720000 +----------------------------+
+                 |   ospi.env.backup(128k)    |
+                 |                            |
+        0x740000 +----------------------------+
+                 |      padding (768k)        |
+        0x800000 +----------------------------+
+                 |     ospi.rootfs(ubifs)     |
+                 |                            |
+       0x3fc0000 +----------------------------+
+                 |   ospi.phypattern (256k)   |
+                 |                            |
+                 +----------------------------+
+
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
     j721s2 is largely similar to j721e and am654. the major differences are that it
