@@ -54,3 +54,8 @@ Those APIs are defined in the GlobalPlatform API specifications.
         $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3-am65x CFG_ARM64_core=y
         $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
 
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    ::
+
+        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-j721e CFG_ARM64_core=y CFG_CONSOLE_UART=0x8

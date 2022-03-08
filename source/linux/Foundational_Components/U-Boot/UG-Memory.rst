@@ -216,10 +216,48 @@ The following commands can be used to download tiboot3.bin, tispl.bin and
 u-boot.img from an SD card and write them to the eMMC boot0 partition at
 respective addresses.
 
-.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
   .. code-block:: console
 
+    => mmc dev 0 1
+    => fatload mmc 1 ${loadaddr} tiboot3.bin
+    => mmc write ${loadaddr} 0x0 0x800
+    => fatload mmc 1 ${loadaddr} tispl.bin
+    => mmc write ${loadaddr} 0x800 0x1000
+    => fatload mmc 1 ${loadaddr} u-boot.img
+    => mmc write ${loadaddr} 0x1800 0x2000
+
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2')
+
+    .. code-block:: console
+    
+      => mmc dev 0 1
+      => fatload mmc 1 ${loadaddr} tiboot3.bin
+      => mmc write ${loadaddr} 0x0 0x400
+      => fatload mmc 1 ${loadaddr} tispl.bin
+      => mmc write ${loadaddr} 0x400 0x1000
+      => fatload mmc 1 ${loadaddr} u-boot.img
+      => mmc write ${loadaddr} 0x1400 0x2000
+      => fatload mmc 1 ${loadaddr} sysfw.itb
+      => mmc write ${loadaddr} 0x3600 0x800
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+    
+  .. code-block:: console
+    
+    => mmc dev 0 1
+    => fatload mmc 1 ${loadaddr} tiboot3.bin
+    => mmc write ${loadaddr} 0x0 0x800
+    => fatload mmc 1 ${loadaddr} tispl.bin
+    => mmc write ${loadaddr} 0x800 0x1000
+    => fatload mmc 1 ${loadaddr} u-boot.img
+    => mmc write ${loadaddr} 0x1800 0x2000
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+    
+  .. code-block:: console
+    
     => mmc dev 0 1
     => fatload mmc 1 ${loadaddr} tiboot3.bin
     => mmc write ${loadaddr} 0x0 0x400
@@ -227,36 +265,6 @@ respective addresses.
     => mmc write ${loadaddr} 0x400 0x1000
     => fatload mmc 1 ${loadaddr} u-boot.img
     => mmc write ${loadaddr} 0x1400 0x2000
-    => fatload mmc 1 ${loadaddr} sysfw.itb
-    => mmc write ${loadaddr} 0x3600 0x800
-
-
-.. ifconfig:: CONFIG_part_family in ('AM64X_family')
-
-  .. code-block:: console
-
-    => mmc dev 0 1
-    => fatload mmc 1 ${loadaddr} tiboot3.bin
-    => mmc write ${loadaddr} 0x0 0x800
-    => fatload mmc 1 ${loadaddr} tispl.bin
-    => mmc write ${loadaddr} 0x800 0x1000
-    => fatload mmc 1 ${loadaddr} u-boot.img
-    => mmc write ${loadaddr} 0x1800 0x2000
-
-
-.. ifconfig:: CONFIG_part_family in ('J7_family')
-
-  In J7200 the memory layout is different. Therefore, use the following commands
-
-  .. code-block:: console
-
-    => mmc dev 0 1
-    => fatload mmc 1 ${loadaddr} tiboot3.bin
-    => mmc write ${loadaddr} 0x0 0x800
-    => fatload mmc 1 ${loadaddr} tispl.bin
-    => mmc write ${loadaddr} 0x800 0x1000
-    => fatload mmc 1 ${loadaddr} u-boot.img
-    => mmc write ${loadaddr} 0x1800 0x2000
 
 For loading images from a FAT partition on a different media, replace mmc with the required
 media. For example, to load images from a FAT partition on a USB Storage device connected to
@@ -266,7 +274,7 @@ the zeroth instance of usb,
 
   => fatload usb 0 ${loadaddr} <file name>
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'J721S2')
 
   .. note::
       USB0 instance on J721e/J7200 base board is connected to TypeC port that can be
@@ -379,27 +387,7 @@ used for the first time:
 
 - eMMC layout:
 
-.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
-
-  .. code-block:: console
-
-               boot0 partition (8 MB)                        user partition
-       0x0+----------------------------------+      0x0+-------------------------+
-          |     tiboot3.bin (512 KB)         |         |                         |
-     0x400+----------------------------------+         |                         |
-          |       tispl.bin (2 MB)           |         |                         |
-    0x1400+----------------------------------+         |        rootfs           |
-          |       u-boot.img (4 MB)          |         |                         |
-    0x3400+----------------------------------+         |                         |
-          |      environment (128 KB)        |         |                         |
-    0x3500+----------------------------------+         |                         |
-          |   backup environment (128 KB)    |         |                         |
-    0x3600+----------------------------------+         |                         |
-          |          sysfw (1 MB)            |         |                         |
-    0x3E00+----------------------------------+         +-------------------------+
-
-
-.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
   .. code-block:: console
 
@@ -416,13 +404,30 @@ used for the first time:
           |   backup environment (128 KB)    |         |                         |
     0x3A00+----------------------------------+         +-------------------------+
 
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2')
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
-
-  - Shown below is the eMMC layout in J7200, which is different from other devices.
-
+    .. code-block:: console
+      
+                 boot0 partition (8 MB)                        user partition
+         0x0+----------------------------------+      0x0+-------------------------+
+            |     tiboot3.bin (512 KB)         |         |                         |
+       0x400+----------------------------------+         |                         |
+            |       tispl.bin (2 MB)           |         |                         |
+      0x1400+----------------------------------+         |        rootfs           |
+            |       u-boot.img (4 MB)          |         |                         |
+      0x3400+----------------------------------+         |                         |
+            |      environment (128 KB)        |         |                         |
+      0x3500+----------------------------------+         |                         |
+            |   backup environment (128 KB)    |         |                         |
+      0x3600+----------------------------------+         |                         |
+            |          sysfw (1 MB)            |         |                         |
+      0x3E00+----------------------------------+         +-------------------------+
+    
+    
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+    
   .. code-block:: console
-
+    
                 boot0 partition (8 MB)                        user partition
        0x0+----------------------------------+      0x0+-------------------------+
           |     tiboot3.bin (1 MB)           |         |                         |
@@ -436,6 +441,23 @@ used for the first time:
           |   backup environment (128 KB)    |         |                         |
     0x3A00+----------------------------------+         +-------------------------+
 
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+    
+  .. code-block:: console
+    
+                boot0 partition (8 MB)                        user partition
+       0x0+----------------------------------+      0x0+-------------------------+
+          |     tiboot3.bin (1 MB)           |         |                         |
+     0x400+----------------------------------+         |                         |
+          |       tispl.bin (2 MB)           |         |                         |
+    0x1400+----------------------------------+         |        rootfs           |
+          |       u-boot.img (4 MB)          |         |                         |
+    0x3400+----------------------------------+         |                         |
+          |      environment (128 KB)        |         |                         |
+    0x3500+----------------------------------+         |                         |
+          |   backup environment (128 KB)    |         |                         |
+    0x3600+----------------------------------+         +-------------------------+
 
 .. note::
 	rootfs is written to the user partition. The user partition is

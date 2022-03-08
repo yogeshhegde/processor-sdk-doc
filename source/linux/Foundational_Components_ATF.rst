@@ -29,7 +29,7 @@ in the non-secure world.
 
 .. rubric:: Building ATF
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
     ::
 
@@ -42,7 +42,13 @@ in the non-secure world.
         $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
         $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./build/k3/generic/lite/bl31.bin ./build/k3/lite/release/bl31.bin.signed
 
-.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    ::
+
+        $ make CROSS_COMPILE=aarch64-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed K3_USART=0x8
+
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J721S2')
 
     ::
         
@@ -57,16 +63,29 @@ in the non-secure world.
 
 .. rubric:: Default load locations
 
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
-+---------------------------+------------+
-| ATF image                 | 0x70000000 |
-+---------------------------+------------+
-| OP-TEE image              | 0x9e800000 |
-+---------------------------+------------+
-| U-Boot/Linux kernel image | 0x80080000 |
-+---------------------------+------------+
-| DTB                       | 0x82000000 |
-+---------------------------+------------+
+    +---------------------------+------------+
+    | ATF image                 | 0x701c0000 |
+    +---------------------------+------------+
+    | OP-TEE image              | 0x9e800000 |
+    +---------------------------+------------+
+    | U-Boot/Linux kernel image | 0x80080000 |
+    +---------------------------+------------+
+    | DTB                       | 0x82000000 |
+    +---------------------------+------------+
+
+.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
+
+    +---------------------------+------------+
+    | ATF image                 | 0x70000000 |
+    +---------------------------+------------+
+    | OP-TEE image              | 0x9e800000 |
+    +---------------------------+------------+
+    | U-Boot/Linux kernel image | 0x80080000 |
+    +---------------------------+------------+
+    | DTB                       | 0x82000000 |
+    +---------------------------+------------+
 
 These can be changed from the defaults if needed in:
 
