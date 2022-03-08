@@ -83,7 +83,8 @@ For PRP
 With the above configuration, if a ping is run between the two platforms on the
 HSR/PRP interface, the ping will continue even if one of the connections is removed.
 
-For VLAN
+.. rubric:: *VLAN*
+
 ::
 
   ifconfig hsr0 0.0.0.0
@@ -93,5 +94,224 @@ For VLAN
   ip addr add 192.168.2.3 dev hsr0.2
   ip addr add 192.168.3.3 dev hsr0.3
 
-  With the above configuration, tracing using tcpdump -i <hsr0> -xxx on the remote
-  side will show VLAN header with id information.
+With the above configuration, tracing using tcpdump -i <hsr0> -xxx on the remote
+side will show VLAN header with id information.
+
+.. rubric:: *VLAN Filtering*
+
+::
+
+  ip link add link hsr0 name hsr0.4 type vlan id 4
+
+Suppose on the remote side a new VLAN ID '4' is created and attempt to ping
+a system with only VLAN ID '2' and '3', the packet will be filtered and dropped.
+
+.. rubric:: *Multicast Filtering*
+
+All multi-cast addresses not registered will be filtered out.
+
+.. rubric:: Multicast Add/Delete
+
+Multicast MAC address can be added/deleted using ip maddr commands or Linux socket ioctl SIOCADDMULTI/SIOCDELMULTI.
+
+
+.. rubric:: Show muliticast address
+
+::
+
+    # ip maddr show dev <dev>
+    2:      eth0
+    link  01:00:5e:00:00:01
+    link  01:80:c2:00:00:00
+    link  01:80:c2:00:00:03
+    link  01:80:c2:00:00:0e
+    link  01:00:5e:00:00:fc
+    inet  224.0.0.252
+    inet  224.0.0.1
+
+.. rubric:: Add muliticast address
+
+::
+
+    # ip maddr add 01:00:5e:00:00:05 dev eth0
+    # ip maddr show dev eth0
+    2:      eth0
+    link  01:00:5e:00:00:01
+    link  01:80:c2:00:00:00
+    link  01:80:c2:00:00:03
+    link  01:80:c2:00:00:0e
+    link  01:00:5e:00:00:fc
+    link  01:00:5e:00:00:05 static
+    inet  224.0.0.252
+    inet  224.0.0.1
+
+.. rubric:: Delete muliticast address
+
+::
+
+    # ip maddr del 01:00:5e:00:00:05 dev eth0
+
+.. rubric:: PTP Ordinary Clock
+
+PTP Master Clock
+
+The PTP Ordinary Clock (OC) implementation is provided by the linuxptp application.
+The following command should be executed for master mode clock.
+
+::
+
+  ptp4l -f gm_hsr0.cfg -m
+
+
+The gm_hsr0.cfg is given below
+
+::
+
+  root@am65xx-evm:~# cat gm_hsr0.cfg
+  [global]
+  sanity_freq_limit 0
+  step_threshold 0.00002
+  tx_timestamp_timeout 20
+
+  domainNumber 0
+  priority1    127
+  priority2    128
+  slaveOnly    0
+
+  twoStepFlag                  1
+  summary_interval             0
+  doubly_attached_clock        1
+
+  [hsr0]
+  redundancy                   1
+  delay_mechanism              P2P
+  network_transport            L2
+
+  [eth1]
+  redundancy                   1
+  redundancy_master_interface  hsr0
+  redundancy_slave_number      1
+
+  logAnnounceInterval          0
+  logSyncInterval              0
+  logMinPdelayReqInterval      0
+  announceReceiptTimeout       3
+  syncReceiptTimeout           2
+
+  delay_mechanism              P2P
+  network_transport            L2
+  egressLatency                726
+  ingressLatency               186
+  fault_reset_interval         0
+
+  [eth2]
+  redundancy                   1
+  redundancy_master_interface  hsr0
+  redundancy_slave_number      2
+
+  logAnnounceInterval          0
+  logSyncInterval              0
+  logMinPdelayReqInterval      0
+  announceReceiptTimeout       3
+  syncReceiptTimeout           2
+
+  delay_mechanism              P2P
+  network_transport            L2
+  egressLatency                726
+  ingressLatency               186
+  fault_reset_interval         0
+
+PTP Slave Clock
+
+The following command should be executed for slave mode clock.
+
+::
+
+  ptp4l -f oc_hsr0.cfg -m -s
+
+The oc_hsr0.cfg is given below
+
+::
+
+  [global]
+  sanity_freq_limit 0
+  step_threshold 0.00002
+  tx_timestamp_timeout 20
+
+  domainNumber 0
+  priority1    128
+  priority2    128
+  slaveOnly    0
+
+  twoStepFlag                  1
+  summary_interval             0
+  doubly_attached_clock        1
+
+  [hsr0]
+  redundancy                   1
+  delay_mechanism              P2P
+  network_transport            L2
+
+  [eth1]
+  redundancy                   1
+  redundancy_master_interface  hsr0
+  redundancy_slave_number      1
+
+  logAnnounceInterval          0
+  logSyncInterval              1
+  logMinPdelayReqInterval      0
+  announceReceiptTimeout       3
+  syncReceiptTimeout           2
+
+  delay_mechanism              P2P
+  network_transport            L2
+  egressLatency                726
+  ingressLatency               186
+  fault_reset_interval         0
+
+  [eth2]
+  redundancy                   1
+  redundancy_master_interface  hsr0
+  redundancy_slave_number      2
+
+  logAnnounceInterval          0
+  logSyncInterval              1
+  logMinPdelayReqInterval      0
+  announceReceiptTimeout       3
+  syncReceiptTimeout           2
+
+  delay_mechanism              P2P
+  network_transport            L2
+  egressLatency                726
+  ingressLatency               186
+  fault_reset_interval         0
+
+PPS
+
+  PPS can be tested using testptp.c tool.
+
+  To find out the PTP device number i.e. PTP Hardware Clock, use
+
+::
+
+  ethtool -T DEVNAME
+
+To turn on PPS,
+
+::
+
+  # ip link set dev eth1 up
+  # ./testptp -d /dev/ptp2 -P 1
+    pps for system time request okay
+
+To turn off PPS,
+
+::
+
+  # ./testptp -d /dev/ptp2 -P 0
+  pps for system time request okay
+
+PTP Over VLAN
+
+For PTP Over VLAN, the PTP oc_hsr0.cfg and gm_hsr0.cfg should use VLAN
+interface instead of hsr0.
