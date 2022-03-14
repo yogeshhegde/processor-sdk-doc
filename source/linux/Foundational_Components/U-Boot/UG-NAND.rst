@@ -105,87 +105,126 @@ read from.
 Writing to NAND via DFU
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Currently in boards that support using DFU, the default build supports
-writing to NAND, so no custom build is required. To see the list of
-available places to write to (in DFU terms, altsettings) use the
-**mtdparts** command to list the known MTD partitions and **printenv
-dfu\_alt\_settings** to see how they are mapped and exposed to
-**dfu-util**.
+If the board supports NAND and USB then flashing NAND via DFU is
+most likely supported (Not supported in AM64 on 8.2).
+
+Before dfu commands can be used, **mtdparts** and **dfu_alt_info**
+must be correctly set.
+
+Check if NAND partitions are visible in **mtdparts** command
 
 ::
 
     U-Boot # mtdparts
 
-    device nand0 <nand0>, # parts = 8
+    device nand0 <omap2-nand.0>, # parts = 7
      #: name                size            offset          mask_flags
-     0: NAND.SPL            0x00020000      0x00000000      0
-     1: NAND.SPL.backup1    0x00020000      0x00020000      0
-     2: NAND.SPL.backup2    0x00020000      0x00040000      0
-     3: NAND.SPL.backup3    0x00020000      0x00060000      0
-     4: NAND.u-boot         0x001e0000      0x00080000      0
-     5: NAND.u-boot-env     0x00020000      0x00260000      0
-     6: NAND.kernel         0x00500000      0x00280000      0
-     7: NAND.file-system    0x0f880000      0x00780000      0
+     0: NAND.tiboot3        0x00200000      0x00000000      0
+     1: NAND.tispl          0x00200000      0x00200000      0
+     2: NAND.tiboot3.backup 0x00200000      0x00400000      0
+     3: NAND.u-boot         0x00400000      0x00600000      0
+     4: NAND.u-boot-env     0x00040000      0x00a00000      0
+     5: NAND.u-boot-env.backup0x00040000    0x00a40000      0
+     6: NAND.filesystem     0x3f580000      0x00a80000      0
 
-    active partition: nand0,0 - (SPL) 0x00080000 @ 0x00000000
-    U-Boot # printenv dfu_alt_info_nand
-    dfu_alt_info=NAND.SPL part 0 1;NAND.SPL.backup1 part 0 2;NAND.SPL.backup2 part 0 3;NAND.SPL.backup3 part 0 4;NAND.u-boot part 0 5;NAND.kernel part 0 7;NAND.file-system part 0 8
+    active partition: nand0,0 - (NAND.tiboot3) 0x00200000 @ 0x00000000
 
-This means that you can tell dfu-util to write anything to any of:
-
--  NAND.SPL
--  NAND.SPL.backup1
--  NAND.SPL.backup2
--  NAND.SPL.backup3
--  NAND.u-boot
--  NAND.kernel
--  NAND.file-system
-
-Before writing you must erase at least the area to be written to. Then
-to start DFU on the target on the first NAND device:
+Set the **dfu_alt_info** environment variable for DFU to NAND
 
 ::
 
-    U-Boot # nand erase.chip
     U-Boot # setenv dfu_alt_info ${dfu_alt_info_nand}
+
+Check that DFU can correctly see the NAND partition layout
+
+::
+
+    dfu 0 nand list
+
+    DFU alt settings list:
+    dev: NAND alt: 0 name: NAND.tiboot3 layout: RAW_ADDR
+    dev: NAND alt: 1 name: NAND.tispl layout: RAW_ADDR
+    dev: NAND alt: 2 name: NAND.tiboot3.backup layout: RAW_ADDR
+    dev: NAND alt: 3 name: NAND.u-boot layout: RAW_ADDR
+    dev: NAND alt: 4 name: NAND.u-boot-env layout: RAW_ADDR
+    dev: NAND alt: 5 name: NAND.u-boot-env.backup layout: RAW_ADDR
+    dev: NAND alt: 6 name: NAND.file-system layout: RAW_ADDR
+
+In case you see an error like 'Device nor0 not found!' then you need to
+ensure that all mtd devices specified in mtdids variable are available.
+
+e.g. To probe nor device you will have to do
+
+::
+
+    sf probe
+
+Before writing we must erase at least the area to be written to.
+
+::
+
+    U-Boot # nand erase.part NAND.file-system
+    --OR erase entire chip--
+    U-Boot # nand erase.chip
+
+Start DFU on the EVM.
+
+::
+
     U-Boot # dfu 0 nand 0
 
-Then on the host PC to write **MLO** to the first SPL partition:
+Plug the EVM to a PC via USB cable. Use the the correct DFU USB port on the EVM.
+On the PC, check that you can see the DFU USB interface
 
 ::
 
-    $ sudo dfu-util -D MLO -a NAND.SPL
+    $ sudo dfu-util -;
+
+Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=6, name="NAND.file-system", serial="0000000000000280"
+Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=5, name="NAND.u-boot-env.backup", serial="0000000000000280"
+Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=4, name="NAND.u-boot-env", serial="0000000000000280"
+Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=3, name="NAND.u-boot", serial="0000000000000280"
+Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=2, name="NAND.tiboot3.backup", serial="0000000000000280"
+Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=1, name="NAND.tispl", serial="0000000000000280"
+Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=0, name="NAND.tiboot3", serial="0000000000000280"
+
+
+On the PC, write the bootloader to the first NAND partition:
+
+::
+
+    $ sudo dfu-util -D tiboot3.bin -a NAND.tiboot3
 
 NAND Boot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you want to load and run U-Boot from NAND the first step is insuring
+If you want to load and run U-Boot from NAND, you need to ensure
 that the appropriate U-boot files are loaded in the correct partition.
 For AM335x, AM437x, DRA7x devices this means writing the file MLO to the
 NAND's SPL partition. For OMAP-L138 device, write the .ais image to the
-NAND's partition. For all devices this requires writing u-boot.img to
-the NAND's U-Boot partition.
+NAND's partition. For K3 devices you need to write tiboot3.bin to the
+NAND.tiboot3 and tispl.bin to the NAND.tispl partition.
 
-.. note:: 
-  The NAND partition of OMAP-L138 is different from other devices, please use the
-  following commands to program the NAND
+For all devices you will have to write u-boot.img to the NAND.u-boot partition.
+
+Example of flashing u-boot over network (tftp)
 
 ::
 
-      => setenv ipaddr <EVM_IPADDR>
-      => setenv serverip <TFTP_SERVER_IPADDR> 
-      => tftp ${loadaddr} ${serverip}:u-boot-omapl138-lcdk.ais
-      => print filesize
-      => nand erase 0x20000 <hex_len>
-      => nand write ${loadaddr} 0x20000 <hex_len>
-      * hex_len is next sector boundary of the filesize. The sector size is 0x10000.
-      set dip switch to NAND boot and power cycle the EVM
-      
+    => setenv ipaddr <EVM_IPADDR>
+    => setenv serverip <TFTP_SERVER_IPADDR>
+    => tftpboot ${loadaddr} tiboot3.bin
+    => print filesize
+        filesize=8b3fa
+    => nand erase.part NAND.tiboot3
+    => nand write ${loadaddr} NAND.tiboot3 8b3fa
+
+Repeat the process for all files required for u-boot. (e.g. tispl.bin and u-boot.img)      
 
 Once the file(s) have been written to NAND the board should then be
 powered off. Next evm's boot switches need to be configured for NAND
 booting. To understand the appropriate boot switches settings please see
-the evm's hardware setup guide.
+the EVM's hardware setup guide.
 
 | 
 
@@ -198,7 +237,7 @@ boot the kernel. At a minimum this includes kernel, dtb, file system.
 Some SoCs require additional files and firmware which also need to be
 stored in different NAND partitions.
 
-Similar to booting the kernel from any interface the user must insure
+Similar to booting the kernel from any interface the user must ensure
 that all required files needed for booting are loaded in DDR memory. The
 only exception is the filesystem which will be loaded by the kernel via
 the bootargs parameters. Bootargs contains information passed to the
@@ -213,11 +252,55 @@ filesystem
 
 In the above example bootargs, "rootfs" stands for the value specified
 by in the "vol\_name" parameter defined in the ubinize.cfg file. In
-ubi.mtd "NAND.file-system" and "2048" represents the name of the
-partition that contains the ubifs and page size. Rootfstype simply tells
+ubi.mtd "NAND.file-system" represents the name of the partition that
+contains the UBI volumes and "2048" is page size. Rootfstype simply tells
 the kernel what type of file system to use.
 
 By default for our evms properly loading, setting bootargs and booting
-the kernel is handled by running "run nandboot" in U-boot. Information
-on creating a UBIFS can be found
-`here <Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND.html#building-ubi-file-system>`__.
+the kernel is handled by running "run nandboot" in U-boot.
+
+Below is an example of u-boot environment settings for NAND booting on K3
+platforms. The kernel, device tree blobs and root filesystem are fetched from
+the rootfs UBIFS volume.
+
+::
+
+    bootdir=/boot
+
+    ubi_init=ubi part NAND.file-system; ubifsmount ubi0:rootfs;
+    args_nand=setenv bootargs console=${console} ${mtdparts} ubi.mtd=NAND.file-system root=ubi0:rootfs rootfstype=ubifs rootwait=1
+    init_nand=run args_all args_nand ubi_init findfdt
+
+    overlayaddr=0x89000000
+
+    get_fdt_nand=ubifsload ${fdtaddr} ${bootdir}/${fdtfile}; fdt address ${fdtaddr}; fdt resize 0x100000; echo "loading overlays"; for overlay in $name_overlays; do; echo ${overlay}; ubifsload ${overlayaddr} ${bootdir}/${overlay}; fdt apply ${overlayaddr}; done;
+    get_kern_nand=ubifsload ${loadaddr} ${bootdir}/${name_kern}
+
+    boot=nand
+
+U-Boot Environment in NAND
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, U-Boot environment is saved in a FAT partition on the SD-card.
+For saving/restoring U-Boot environment from a NAND partition, the following
+changes need to be done to U-Boot configuation at build time.
+
+Run menuconfig and set the U-Boot configuration as below
+
+::
+
+        Environment  --->
+            [ ] Environment in an MMC device
+            [*] Environment in a NAND device
+            [*] Enable redundant environment support
+            (0x00a00000) Environment offset
+            (0x00a40000) Redundant environment offset
+            (0x40000) Environment Size
+
+The 'Environment offset', 'Redundant environment offset' and 'Environment Size'
+represent the 'NAND.u-boot' and 'NAND.u-boot-env' partition offsets and size
+respectively. They can be obtained from the NAND device node specification in
+the board's device tree file.
+
+Information on creating a UBIFS image and NAND flashing can be found
+`here <Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND.html#nand-based-file-system>`__.
