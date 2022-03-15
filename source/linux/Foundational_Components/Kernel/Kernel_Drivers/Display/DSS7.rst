@@ -6,13 +6,13 @@ Introduction
 
 This page gives a basic description of DSS (Display SubSystem) hardware, the Linux kernel drivers (tidss) and various TI boards that use DSS. The technical reference manual (TRM) for the SoC in question, and the board documentation give more detailed descriptions.
 
-This page applies to TI's v4.19 kernel.
+This page applies to TI's v5.10 kernel.
 
 
 Supported Devices
 =================
 
-There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: K2G, AM65x, J721E.
+There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: K2G, AM65x, J721E, J721S2.
 
 
 Hardware Architecture
@@ -69,15 +69,17 @@ The timing generator part of the video port is responsible for providing the pix
 SoC Hardware Features
 ---------------------
 
-+-------+------------+---------------+-------------------+------------+
-| SoC   | DSS version| Outputs       | Pipes             | Video ports|
-+=======+============+===============+===================+============+
-| K2G   | DSS6-UL    |  DPI, DBI     | VID               | 1          |
-+-------+------------+---------------+-------------------+------------+
-| AM65x | DSS7-L     |  DPI, OLDI    | VID, VIDL         | 2          |
-+-------+------------+---------------+-------------------+------------+
-| J721E | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
-+-------+------------+---------------+-------------------+------------+
++--------+------------+---------------+-------------------+------------+
+| SoC    | DSS version| Outputs       | Pipes             | Video ports|
++========+============+===============+===================+============+
+| K2G    | DSS6-UL    |  DPI, DBI     | VID               | 1          |
++--------+------------+---------------+-------------------+------------+
+| AM65x  | DSS7-L     |  DPI, OLDI    | VID, VIDL         | 2          |
++--------+------------+---------------+-------------------+------------+
+| J721E  | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
++--------+------------+---------------+-------------------+------------+
+| J721S2 | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
++--------+------------+---------------+-------------------+------------+
 
 
 Driver Architecture
@@ -167,8 +169,6 @@ tidss supports building both as built-in or as a module.
 tidss can be found under "Device Drivers/Graphics support" in the kernel menuconfig. You need to enable DRM (CONFIG_DRM) before you can enable tidss (CONFIG_DRM_TIDSS).
 
 -  Enable DSS Display Subsystem support (CONFIG_DRM_TIDSS)
--  Enable TI DSS6 support (CONFIG_DRM_TIDSS_DSS6) for K2G SoC
--  Enable TI DSS7 support (CONFIG_DRM_TIDSS_DSS7) for K3 SoCs
 
 Additional kernel config options may be needed, depending on the SoC and board.
 
@@ -176,102 +176,11 @@ Additional kernel config options may be needed, depending on the SoC and board.
 - Bridges under "Device Drivers/Graphics support/Display Interface Bridges"
 - PHYs under "Device Drivers/PHY Subsystem"
 
+Device Tree Node
+----------------
 
-Display Sharing Configuration Options
--------------------------------------
-
-tidss supports sharing the display components with other drivers running on different cores.
-
-tidss can be initialised with sharing information by adding the appropriate resource partitioning information in the device-tree files: ::
-
-	dss_planes: dss-planes {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		/* vid1, Owned by us */
-		plane@0 {
-			reg = <0>;
-			managed = <1>;
-		};
-
-		/* vidl1, Reserved for jailhouse inmate */
-		plane@1 {
-			reg = <1>;
-			managed = <0>;
-		};
-
-		/* vid2, owned by RTOS */
-		plane@2 {
-			reg = <2>;
-			managed = <0>;
-		};
-
-		/* vidl2, marshalled to us by RTOS */
-		plane@3 {
-			reg = <3>;
-			managed = <0>;
-		};
-	};
-
-	dss_vps: dss-vps {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		/* Owned by jailhouse inmate */
-		vp@0 {
-			reg = <0>;
-			managed = <0>;
-		};
-
-		/* Owned by RTOS */
-		vp@1 {
-			reg = <1>;
-			managed = <0>;
-		};
-
-		/* Not owned by anyone
-		 * so keeping here
-		 */
-		vp@2 {
-			reg = <2>;
-			managed = <1>;
-		};
-
-		/* Owned by us */
-		vp@3 {
-			reg = <3>;
-			managed = <1>;
-		};
-	};
-
-In the above example, one plane *vid1* and one video port *vp4* is owned by us to drive a MIPI DPI output. Two planes, *vid2* and *vidl2*, are owned by TI_RTOS for driving *vp2*, and therefore are marked as *managed = <0>*. Please note that *vidl2* can be used by tidss using *remote-device* framework, but is actually owned by TI-RTOS. One plane *vidl1* and one video port *vp1* is used by a Linux virtual-machine, and therefore these are also marked as *managed = <0>*.
-
-tidss also supports using one of the four interrupts, and this can be partitioned as: ::
-
-	dss_commons: dss-commons {
-		#address-cells = <1>;
-		#size-cells = <0>;
-
-		interrupt-common {
-			reg = <1>;
-		};
-
-		config-common {
-			status = "disabled";
-			reg = <0>;
-		};
-	};
-
-In the above configuration, tidss is configured to use *common_s1* region for interrupt handling and the *common_m* region is marked as *"disabled"*, therefore making tidss dependant on another driver for initial configuration.
-
-In the situation described above, tidss is required to depend on an external driver for configuration and sending frames / receiving events. tidss can perform these operations by utilising *remote-device* framework if the following information is provided: ::
-
-	dss_remote: dss-remote {
-		#address-cells = <0>;
-		#size-cells = <0>;
-
-		remote-name = "r5f-tidss";
-	};
+Documentation for tidss device tree node and its properties can be found in linux kernel device tree bindings in below directory
+``Documentation/devicetree/bindings/display/ti/``. Seperate binding files are present for different version of the ip.
 
 
 Driver Usage
@@ -282,8 +191,6 @@ Loading tidss
 
 If built as a module, you need to load all the drm, tidss, bridge and panel modules before tidss will start. When tidss starts, it will prints something along these lines: ::
 
-    [    9.165740] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
-    [    9.182786] [drm] No driver support for vblank timestamp query.
     [    9.207746] [drm] Initialized tidss 1.0.0 20180215 for 4a00000.dss on minor 0
 
 
@@ -317,24 +224,22 @@ kmstest from kms++ is a good tool for testing tidss features. Note that any othe
 ::
 
   # kmsprint
-  Connector 0 (35) DP-1 (disconnected)
-    Encoder 0 (34) NONE
-  Connector 1 (43) HDMI-A-1 (connected)
-    Encoder 1 (42) NONE
-      Crtc 1 (41) 1920x1200 154.000 1920/48/32/80 1200/3/6/26 60 (59.95)
-          Plane 1 (36) fb-id: 57 (crtcs: 0 1) 0,0 1920x1200 -> 0,0 1920x1200 (AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 A
-  R15 AB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12)
-          FB 57 1920x1200
+  Connector 0 (39) DP-1 (connected)
+    Encoder 0 (38) NONE
+      Crtc 0 (37) 1920x1080 148.500 1920/88/44/148 1080/4/5/36 60 (60.00)
+        Plane 0 (31) fb-id: 62 (crtcs: 0 1) 0,0 1920x1080 -> 0,0 1920x1080 (AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 AR15 AB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12)
+          FB 62 1920x1080
+  Connector 1 (48) HDMI-A-1 (disconnected)
+    Encoder 1 (47) NONE
 
 ::
 
-  # kmstest -c hdmi -r 640x480
-  Connector 1/@43: HDMI-A-1
-    Crtc 1/@41: 640x480 31.500 640/16/64/120/- 480/1/3/16/- 75 (75.00) 0xa 0x40
-    Plane 0/@28: 0,0-640x480
-      Fb 77 640x480-XR24
+  # kmstest -c dp -r 640x480
+  Connector 0/@39: DP-1
+    Crtc 0/@37: 640x480 25.175 640/16/96/48/- 480/10/2/33/- 60 (59.94) 0xa 0x40
+    Plane 0/@31: 0,0-640x480
+      Fb 63 640x480-XR24
   press enter to exit
-
 
 tidss properties
 ----------------
