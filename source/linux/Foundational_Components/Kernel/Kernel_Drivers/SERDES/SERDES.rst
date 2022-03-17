@@ -186,12 +186,12 @@ some lanes can be left unused.
                                │                   │
                                │    4L SERDES      │
                      EDP_LANE2/│                   │
-                  QSGMII_LANE7 │                   │   <-> RX1/TX1
+                  QSGMII_LANE7 │                   │   <-> RX3/TX3
              ──────────────────┤                   ├────────────────
                                │                   │
                                │                   │
                      EDP_LANE3/│                   │
-                  QSGMII_LANE8 │                   │   <-> RX2/TX2
+                  QSGMII_LANE8 │                   │   <-> RX4/TX4
              ──────────────────┤                   ├────────────────
                                │                   │
                                └───────────────────┘
@@ -420,3 +420,77 @@ some lanes can be left unused.
 
     Support for driving clock out via ACSPCIE using ref_der_out_clock/refclk1_out is not present
     in SDK.
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    .. rubric:: **J721s2 SERDES**
+
+    J721s2 has one 4L Serdes.
+
+
+    .. rubric:: *SERDES Muxing*
+
+    The Following Section lists the possible ways SERDES can be muxed
+
+        .. rubric:: *SERDES 0*
+
+        .. code-block:: text
+
+                               ┌───────────────────┐
+                     EDP_LANE0/│                   │
+                   PCIE1_LANE0 │                   │   <-> RX1/TX1
+             ──────────────────┤                   ├────────────────
+                               │                   │
+                               │                   │
+                     EDP_LANE1/│                   │
+                   PCIE1_LANE1/│                   │
+                           USB │                   │   <-> RX2/TX2
+             ──────────────────┤                   ├────────────────
+                               │                   │
+                               │    4L SERDES      │
+                     EDP_LANE2/│                   │
+                     EDP_LANE0/│                   │
+                   PCIE1_LANE2 │                   │   <-> RX3/TX3
+             ──────────────────┤                   ├────────────────
+                               │                   │
+                               │                   │
+                     EDP_LANE3/│                   │
+                     EDP_LANE1/│                   │
+                   PCIE1_LANE3/│                   │
+                           USB │                   │   <-> RX4/TX4
+             ──────────────────┤                   ├────────────────
+                               │                   │
+                               └───────────────────┘
+
+    .. rubric:: *DT Muxing Configuration*
+
+    The following shows the default SERDES configuration for
+    the J721S2 common processor board.
+
+    .. code-block:: text
+
+        &serdes_ln_ctrl {
+            idle-states = <J721S2_SERDES0_LANE0_PCIE1_LANE0>, <J721S2_SERDES0_LANE1_USB>,
+                      <J721S2_SERDES0_LANE2_EDP_LANE2>, <J721S2_SERDES0_LANE3_EDP_LANE3>;
+        };
+
+        &edp_serdes_mux {
+            idle-states = <1>; /* EDP0 to SERDES lane 2/3 /
+        };
+
+    Additional edp mux configuration is required to use serdes lane 2 and 3 for edp
+
+    .. rubric:: *Serdes limitation on J721S2*
+
+    - Only 2 IPs can share serdes at a time, below are the possible option
+
+        - USB + PCIe
+        - EDP + PCIe
+        - EDP + USB
+
+      By default EDP + PCIe is enabled for J721S2 common processor board, USB
+      is enabled in high speed mode which does not use serdes
+
+    - Serdes can not be shared between RTOS and linux (SW limitation). Currently all
+      configuration for serdes sharing is done in linux driver, if serdes is
+      used in RTOS running in mcu cores it can not be used in linux
