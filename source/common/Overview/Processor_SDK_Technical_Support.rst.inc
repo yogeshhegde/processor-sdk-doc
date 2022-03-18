@@ -60,17 +60,17 @@ While TI integrates the FOSS in |__SDK_FULL_NAME__|, TI does not own, maintain a
 
 For programming external video devices, a V4L2 sub-device driver is needed to be used in conjunction with the V4L2 driver. It also uses some of the helper kernel libraries videobuf2 (VB2) for common buffer operations, queue management and memory management.
 
-- https://linuxtv.org/downloads/v4l-dvb-apis/
-- https://linuxtv.org/downloads/v4l-dvb-apis-new/uapi/v4l/v4l2.html
-- https://linuxtv.org/downloads/v4l-dvb-apis/kapi/v4l2-videobuf2.html
-- https://linuxtv.org/downloads/v4l-dvb-apis-new/kapi/v4l2-subdev.html
+- https://www.kernel.org/doc/html/v5.10/admin-guide/media/index.html
+- https://www.kernel.org/doc/html/v5.10/userspace-api/media/v4l/v4l2.html
+- https://www.kernel.org/doc/html/v5.10/driver-api/media/v4l2-videobuf2.html
+- https://www.kernel.org/doc/html/v5.10/driver-api/media/v4l2-subdev.html
 
 **Graphics**
 
 - Direct Rendering Infrastructure (DRI): https://dri.freedesktop.org/wiki/Documentation/
 - Direct Rendering Manager (DRM): http://dri.freedesktop.org/wiki/DRM/
-- Kernel Mode Setting (KMS): https://www.kernel.org/doc/html/v4.14/gpu/drm-kms.html
-- Graphics Execution Manager (GEM): https://www.kernel.org/doc/html/v4.14/gpu/drm-mm.html#the-graphics-execution-manager-gem
+- Kernel Mode Setting (KMS): https://www.kernel.org/doc/html/v5.10/gpu/drm-kms.html
+- Graphics Execution Manager (GEM): https://www.kernel.org/doc/html/v5.10/gpu/drm-mm.html#the-graphics-execution-manager-gem
 
 Example applications:
 
