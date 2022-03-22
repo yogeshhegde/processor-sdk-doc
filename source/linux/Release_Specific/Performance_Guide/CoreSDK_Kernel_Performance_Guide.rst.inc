@@ -24,7 +24,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+----------------------------------------------------------------------------------------------------------------+
 | J721e EVM      | J721e Evaluation Module rev E2 with ARM running at 2GHz, DDR data rate 4266 MT/S, L3 Cache size 3MB            |
 +----------------+----------------------------------------------------------------------------------------------------------------+
-| J721s2 EVM     | J721s2 Evaluation Module rev E2 with ARM running at 2GHz, DDR data rate 4266 MT/S, L3 Cache size 3MB            |
+| J721s2 EVM     | J721s2 Evaluation Module rev E2 with ARM running at 2GHz, DDR data rate 4266 MT/S, L3 Cache size 3MB           |
 +----------------+----------------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
@@ -201,7 +201,7 @@ cores the DMIPS/MHz score will be identical with the same compiler and flags.
     :header: "Benchmarks","am335x-evm: perf","am43xx-gpevm: perf","am57xx-evm: perf","am64xx-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf"
 
     "cpu_clock (MHz)","1000.00","1000.00","1500.00","1000.00","2000.00","2000.00"
-    "dhrystone_per_mhz (DMIPS/MHz)","2.10","2.50","3.40","2.92","3.70","5.17"
+    "dhrystone_per_mhz (DMIPS/MHz)","2.10","2.50","3.40","2.92","5.69","5.17"
     "dhrystone_per_second (DhrystoneP)","3636363.80","4347826.00","9090909.00","5128205.00","20000000.00","18181818.00"
 
 
