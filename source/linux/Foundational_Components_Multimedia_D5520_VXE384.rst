@@ -107,9 +107,9 @@ is an open source framework that simplifies the development of multimedia
 applications. The GStreamer library loads and interfaces with the GStreamer
 plugin (V4L2 plugin), which handles all the details specific to the use of
 the hardware accelerator. Specifically, the GStreamer plugin interfaces
-with the V4L2 decoder kernel driver interface. The V4L2 decoder driver
-controls the DECODER to enable the accelerated decoding.
-For the ENCODER, GStreamer support is not present.
+with the V4L2 decoder and encoder kernel driver interface. The V4L2 decoder driver
+controls the DECODER to enable the accelerated decoding and the V4L2 encoder
+driver controls the Encoder to enable the accelerated encoding.
 
 .. raw:: html
 
@@ -119,26 +119,10 @@ For the ENCODER, GStreamer support is not present.
 
    <div class="floatnone">
 
-.. figure:: ../images/MM_D5520MP2_SW_overview.png
-   :alt: decoder software stack
+.. figure:: ../images/MM_D5520MP2_VXE384MP2_SW_overview.png
+   :alt: codec software stack
 
-   DECODER Software Stack
-
-|
-|
-
-.. figure:: ../images/MM_VXE384MP2_SW_overview.png
-   :alt: encoder software stack
-
-   ENCODER Software Stack
-
-.. raw:: html
-
-   </div>
-
-.. raw:: html
-
-   </div>
+   CODEC Software Stack
 
 |
 
@@ -236,6 +220,181 @@ The following table shows the native color format support for each of the suppor
 |              |                              |
 |              | V4L2_PIX_FMT_YUV422M         |
 +--------------+------------------------------+
+
+.. rubric:: Codec Memory footprint Analysis
+
+Decoder Memory Details:
+ * Imagination decoder buffer requirement is as below
+ * Output Buffers = 2 * spsmax_num_ref_frames + DISPLAY_LAG; // DISPLAY_LAG is 3
+ * Input Buffer = Width * Height * 1.5
+ * Buffer size for NV12 format is calculated as: Width * Height * 1.5
+ * Ex: for 1080p stream, 1920 * 1088 * 1.5 = ~3MB
+
+**Configurations:**
+
++-------+-----------+-------------------------------+------------------------------------------------------+-----------------------------------------------+
+|**SI.**|**Config** |          **Config Details**   | **Customer actions for correct functioning**         |               **Trade offs**                  |
+|**No** |           |                               | **of decoder**                                       |                                               |
++-------+-----------+-------------------------------+------------------------------------------------------+-----------------------------------------------+
+|  1    | Default   |              Default          |                   None                               |                NA                             |
+|       |           |                               |                                                      |                                               |
++-------+-----------+-------------------------------+------------------------------------------------------+-----------------------------------------------+
+|       |           |#. As per h.264 spec (remove   | #. Customer can validate the Output Buffers          |                                               |
+|       |  OPT1     |   multiplication factor of 2) |    calculation as spsmax_num_ref_frames + DISPLAY_LAG|                NA                             |
+|  2    |           |#. Output Buffers              | #. This sequence will work for all streams           |                                               |
+|       |           |   = spsmax_num_ref_frames +   |    with I and B frames                               |                                               |
+|       |           |   DISPLAY_LAG;                |                                                      |                                               |
++-------+-----------+-------------------------------+------------------------------------------------------+-----------------------------------------------+
+|       |           |                               |#. Streams often uses only 2 ref frames but           |#. Bit streams having more than 2              |
+|       |           |#. Override the                |   the SPS parameter is put to max.                   |   reference frames might not work as          |
+|  3    |  OPT1     |   spsmax_num_ref_frames to 1. |#. Customer can validate this and optimize            |   expected.                                   |
+|       |           |                               |   buffer allocation by overriding this parameter     |#. This option will work for all               |
+|       |           |                               |                                                      |   streams with I and B frames                 |
+|       |           |                               |                                                      |   which uses only 2 reference frame           |
++-------+-----------+-------------------------------+------------------------------------------------------+-----------------------------------------------+
+|       |           |                               |#. Customer can override the DISPLAY_LAG              |#. Bit streams having more than 2              |
+|       |           |#. Override the DISPLAY_LAG    |   to optimize the buffer allocations.                |   reference frames might not work as          |
+|  4    |  OPT1     |   to 2.                       |#. This sequence will work for all streams            |   expected.                                   |
+|       |           |                               |   with I and B frames.                               |#. Generally, this is OK for most streams from |
+|       |           |                               |                                                      |   IP cameras as such cameras cannot afford    |
+|       |           |                               |                                                      |   higher latency due to multiple B frames.    |
++-------+-----------+-------------------------------+------------------------------------------------------+-----------------------------------------------+
+|       |           |#. OPT1 + OPT3                 |#. Customer can optimize the buffer allocations with  |#. Bit streams with more than 2 B-frames will  |
+|  5    | OPT1      |#. This is the Lowest Memory   |   combination of OPT1 + OPT3.                        |   not be supported.                           |
+|       |           |   configuration               |                                                      |                                               |
++-------+-----------+-------------------------------+------------------------------------------------------+-----------------------------------------------+
+
+**Default:**
+
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|**SI.**|  **Stream Name**        | **Resolution** |**Buffer Size for            |**sps**                |**Output**   |**Input**    |**Memory**        |
+|**No** |                         |                |1 x NV12 format**            |**>max_num_ref_frames**|**Buffer**   |**Buffer**   |**Requirement in**|
+|       |                         |                |**based on resolution (MB)** |                       |**allocated**|**allocated**|**MBs: Default**  |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  1    |Pedestrian_4k.264        |   3840x2160    |        12                   |          4            |      11     |     2       |      156         |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  2    |Pedestrian_2560x1440.256 |   2560x1440    |        5.5                  |          2            |      7      |     2       |      50          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  3    |Pedestrian_1080p.264     |   1920x1088    |        3                    |          1            |      5      |     2       |      21          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+
+**OPT1: Override the Output Buffers calculation as per h.264 specification**
+
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|**SI.**|  **Stream Name**        | **Resolution** |**Buffer Size for            |**sps**                |**Output**   |**Input**    |**Memory**        |
+|**No** |                         |                |1 x NV12 format**            |**>max_num_ref_frames**|**Buffer**   |**Buffer**   |**Requirement in**|
+|       |                         |                |**based on resolution (MB)** |                       |**allocated**|**allocated**|**MBs: OPT1**     |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  1    |Pedestrian_4k.264        |   3840x2160    |        12                   |          4            |      7      |     2       |      108         |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  2    |Pedestrian_2560x1440.256 |   2560x1440    |        5.5                  |          2            |      5      |     2       |      39          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  3    |Pedestrian_1080p.264     |   1920x1088    |        3                    |          1            |      4      |     2       |      18          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+
+**OPT2: Override the spsmax_num_ref_frames to 1**
+
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|**SI.**|  **Stream Name**        | **Resolution** |**Buffer Size for            |**sps**                |**Output**   |**Input**    |**Memory**        |
+|**No** |                         |                |1 x NV12 format**            |**>max_num_ref_frames**|**Buffer**   |**Buffer**   |**Requirement in**|
+|       |                         |                |**based on resolution (MB)** |                       |**allocated**|**allocated**|**MBs: OPT2**     |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  1    |Pedestrian_4k.264        |   3840x2160    |        12                   |          1            |      5      |     2       |      84          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  2    |Pedestrian_2560x1440.256 |   2560x1440    |        5.5                  |          1            |      5      |     2       |      39          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  3    |Pedestrian_1080p.264     |   1920x1088    |        3                    |          1            |      5      |     2       |      21          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+
+**OPT3: Override the DISPLAY_LAG to 2**
+
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|**SI.**|  **Stream Name**        | **Resolution** |**Buffer Size for            |**sps**                |**Output**   |**Input**    |**Memory**        |
+|**No** |                         |                |1 x NV12 format**            |**>max_num_ref_frames**|**Buffer**   |**Buffer**   |**Requirement in**|
+|       |                         |                |**based on resolution (MB)** |                       |**allocated**|**allocated**|**MBs: OPT3**     |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  1    |Pedestrian_4k.264        |   3840x2160    |        12                   |          4            |      10     |     2       |      144         |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  2    |Pedestrian_2560x1440.256 |   2560x1440    |        5.5                  |          2            |      6      |     2       |      44          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  3    |Pedestrian_1080p.264     |   1920x1088    |        3                    |          1            |      4      |     2       |      18          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+
+**OPT4: OPT1 + OPT3**
+
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|**SI.**|  **Stream Name**        | **Resolution** |**Buffer Size for            |**sps**                |**Output**   |**Input**    |**Memory**        |
+|**No** |                         |                |1 x NV12 format**            |**>max_num_ref_frames**|**Buffer**   |**Buffer**   |**Requirement in**|
+|       |                         |                |**based on resolution (MB)** |                       |**allocated**|**allocated**|**MBs: OPT3**     |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  1    |Pedestrian_4k.264        |   3840x2160    |        12                   |          4            |      6      |     2       |      96          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  2    |Pedestrian_2560x1440.256 |   2560x1440    |        5.5                  |          2            |      4      |     2       |      33          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+|  3    |Pedestrian_1080p.264     |   1920x1088    |        3                    |          1            |      3      |     2       |      15          |
++-------+-------------------------+----------------+-----------------------------+-----------------------+-------------+-------------+------------------+
+
+Encoder Memory Details:
+        * Output Buffers = Width * Height * 1.5
+        * Input Buffer = Width * Height * 1.5
+        * Buffer size for NV12 format is calculated as:
+        * Width * Height * 1.5
+        * Ex: for 1080p stream, 1920 * 1088 * 1.5 = ~3MB
+
+**Configurations:**
+
++-------+-------------------------+--------------------------------------------------------+---------------------------------------------------------+
+|**SI.**|  **Config**             | **Config Details**                                     |**Customer actions for correct functioning of encoder**  |
+|**No** |                         |                                                        |                                                         |
++-------+-------------------------+--------------------------------------------------------+---------------------------------------------------------+
+|  1    |Default                  |   Default (Current)                                    |   None                                                  |
++-------+-------------------------+--------------------------------------------------------+---------------------------------------------------------+
+|  2    | OPT1                    |#. Reduce the output buffer to 1                        |#. Customer can validate this and optimize buffer        |
+|       |                         |#. Above is OK as the encoder when configured for IPP   |   allocation reducing the output buffer to 1            |
+|       |                         |   (Baseline profile) will not need 2 reference frames  |                                                         |
++-------+-------------------------+--------------------------------------------------------+---------------------------------------------------------+
+
+**Default:**
+
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+-------------------------------+
+|**SI.**|  **Stream Name**             | **Resolution** |**Buffer Size for            |**Output**   |**Input      |**Default Memory**             |
+|**No** |                              |                |1 x NV12 format**            |**Buffer**   |Buffer**     |**Requirement in MBs: Default**|
+|       |                              |                |**based on resolution (MB)** |**allocated**|**allocated**|                               |
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+-------------------------------+
+|  1    |pedestrain_4k_nv12.yuv        |   3840x2160    |           12                |      2      |   6         |        48                     |
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+-------------------------------+
+|  2    |pedestrain_2560x1440_nv12.yuv |   2560x1440    |           5.5               |      2      |   4         |        22                     |
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+-------------------------------+
+|  3    |Pedestrian_1080p.264          |   1920x1088    |           3                 |      2      |   3         |        12                     |
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+-------------------------------+
+
+**OPT1: Reduce the output buffer to 1**
+
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+----------------------------+
+|**SI.**|  **Stream Name**             | **Resolution** |**Buffer Size for            |**Output**   |**Input      |**Default Memory**          |
+|**No** |                              |                |1 x NV12 format**            |**Buffer**   |Buffer**     |**Requirement in MBs: OPT1**|
+|       |                              |                |**based on resolution (MB)** |**allocated**|**allocated**|                            |
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+----------------------------+
+|  1    |pedestrain_4k_nv12.yuv        |   3840x2160    |           12                |      1      |    2        |        36                  |
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+----------------------------+
+|  2    |pedestrain_2560x1440_nv12.yuv |   2560x1440    |           5.5               |      1      |    2        |        17                  |
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+----------------------------+
+|  3    |Pedestrian_1080p.264          |   1920x1088    |           3                 |      1      |    2        |        9                   |
++-------+------------------------------+----------------+-----------------------------+-------------+-------------+----------------------------+
+
+**The best memory optimized option for decoder and encoder is shown below.**
+
++-------+------------------------------+--------------+-----------------------+---------------------+---------------------+---------------------+--------------------+--------------------+
+|**SI.**|  **Stream Name**             |**Resolution**|**Buffer Size for 1 x**|**Decoder Memory**   |**Decoder Memory**   |**Encoder Memory**   |**Total Memory for**|**Total Memory for**|
+|**No** |                              |              |**NV12 format based**  |**Req for 8 ch with**|**Req for 8 ch with**|**Req for 8 ch with**|**8Ch Dec OPT1 +**  |**8Ch Dec OPT4 +**  |
+|       |                              |              |**on resolution (MB)** |**OPT1 (MB)**        |**OPT4 (MB)**        |**OPT1 (MB)**        |**8Ch Enc OPT1**    |**8Ch Enc OPT1**    |
++-------+------------------------------+--------------+-----------------------+---------------------+---------------------+---------------------+--------------------+--------------------+
+| 1     |pedestrain_4k_nv12.yuv        |3840x2160     |      12               |       864           |      768            |      288            |     1152           |   1056             |
++-------+------------------------------+--------------+-----------------------+---------------------+---------------------+---------------------+--------------------+--------------------+
+| 2     |pedestrain_2560x1440_nv12.yuv |2560x1440     |      5.5              |        312          |       264           |      136            |     448            |    400             |
++-------+------------------------------+--------------+-----------------------+---------------------+---------------------+---------------------+--------------------+--------------------+
+| 3     |pedestrain_1080p_nv12.yuv     |1920x1088     |      3                |        144          |       120           |      72             |     216            |    192             |
++-------+------------------------------+--------------+-----------------------+---------------------+---------------------+---------------------+--------------------+--------------------+
 
 .. _v4l2-video-decoder-test-app:
 
@@ -348,19 +507,19 @@ The V4L2 encoder driver has the following configurable controls:
 
 The following table gives recommended values for bitrate based on resolution and frame type:
 
-+---------------------+--------------------------+--------------------+
-| **Resolution**      | **I-frame Only Bitrate** | **Normal Bitrate** |
-+---------------------+--------------------------+--------------------+
-| QCIF (176x144)      |                  1000000 |             500000 |
-+---------------------+--------------------------+--------------------+
-| CIF (352x288)       |                  2000000 |            1000000 |
-+---------------------+--------------------------+--------------------+
-| VGA (640x480)       |                  6000000 |            4000000 |
-+---------------------+--------------------------+--------------------+
-| HD (1280x720)       |                 12000000 |            7000000 |
-+---------------------+--------------------------+--------------------+
-| Full HD (1920x1080) |                 15000000 |           10000000 |
-+---------------------+--------------------------+--------------------+
++---------------------+---------------------------------------+------------------------------+
+| **Resolution**      | **Bitrate for I-frame Only sequence** | **Bitrate for IPP sequence** |
++---------------------+---------------------------------------+------------------------------+
+| QCIF (176x144)      |                   1000000             |             500000           |
++---------------------+---------------------------------------+------------------------------+
+| CIF (352x288)       |                   2000000             |            1000000           |
++---------------------+---------------------------------------+------------------------------+
+| VGA (640x480)       |                   6000000             |            4000000           |
++---------------------+---------------------------------------+------------------------------+
+| HD (1280x720)       |                  12000000             |            7000000           |
++---------------------+---------------------------------------+------------------------------+
+| Full HD (1920x1080) |                  15000000             |           10000000           |
++---------------------+---------------------------------------+------------------------------+
 
 .. _v4l2-video-encoder-test-app:
 
@@ -502,7 +661,7 @@ video decoding in the |__PART_FAMILY_DEVICE_NAMES__|.
 
 -  ENCODER
 
-Not Supported
+#. v4l2h264enc
 
 GStreamer Pipelines
 ===================
@@ -623,7 +782,6 @@ to start Weston before running the pipelines.
    #.  If the native format is not supported by the sink, then a color converter
        plugin will need to be used in the pipeline.
    #.  playbin is currently supported ONLY with kmssink and ONLY for NV12 format.
-   #.  capture-io-mode of dmabuf-import is currently NOT supported.
 
    For full list of limitations, see `Limitations of GStreamer Plugins`_.
 
@@ -653,6 +811,12 @@ selecting a kms plane with scaling support.
     Or
       target #  gst-launch-1.0 filesrc location=/<path_to_file> ! qtdemux ! h264parse ! v4l2h264dec ! video/x-raw,format=NV12 ! kmssink plane-id=41
 
+The following pipeline shows example of using the v4l2h264enc element.
+
+.. code-block:: text
+
+   H.264 video encoding to filesink
+      target #  gst-launch-1.0 filesrc location=/<path_to_file> rawvideoparse width=1280 height=720 framerate=30/1 format=23 ! v4l2h264enc ! filesink location=/<path_to_file>
 
 |
 
@@ -664,8 +828,6 @@ Limitations of GStreamer Plugins
 
 * GStreamer V4L2 plugin decoder elements need video filter
   (video/x-raw,format=<format>) to select the native color format for decoding.
-* capture-io-mode of dmabuf-import is not currently supported along with TI
-  V4L2 Decoder driver.
 * playbin is supported ONLY with kmssink and ONLY with NV12 format due to need
   for video filter with other sinks.
 
@@ -712,7 +874,7 @@ supported element.
 
         gst-launch-1.0 filesrc location=<file_location> ! h264parse ! v4l2h264dec ! **video/x-raw,format=NV12** ! kmssink
 
-   #.  The v4l2 deocde driver supports some
+   #.  The v4l2 decode driver supports some
        `custom 10-bit color formats <Foundational_Components_Multimedia_D5520_VXE384.html#v4l2-dec-color-format-support>`__,
        but that support is not available at GStreamer plugin side.
 
@@ -727,6 +889,7 @@ the target. For example:
 .. code-block:: text
 
     target #  gst-inspect-1.0 v4l2h264dec
+    target #  gst-inspect-1.0 v4l2h264enc
 
 .. note::
    gst-inspect-1.0 will show that all color formats are available for every element.
@@ -752,8 +915,8 @@ the best performance because internally the V4L2 decoder allocates contiguous
 buffers that can be sent to display without any buffer copies.
 
 .. note::
-   capture-io-mode of "dmabuf-import" (GST_V4L2_IO_DMABUF_IMPORT) is NOT
-   currently supported with TI's V4L2 Video Decoder Driver.
+   If the user wants to optimise the memory allocation at the slight cost of performance.
+   Change the Macro in Makefile as CAPTURE_CONTIG_ALLOC ?=n, and follow the driver rebuild instructions.
 
 |
 
@@ -810,7 +973,7 @@ with the appropriate options selected.
 DEBUG_DECODER_DRIVER can be set to 'y' to enable all the debug tracing
 in the decoder driver. This should only be used for debugging
 purposes. To enable it, set DEBUG_DECODER_DRIVER to 'y' and rebuild
-the encoder module following the instructions in `Rebuilding V4L2 Drivers`_.
+the decoder module following the instructions in `Rebuilding V4L2 Drivers`_.
 
 .. rubric:: V4L2 Encoder Debug Options
    :name: v4l2-enc-debug-options
@@ -841,8 +1004,8 @@ To enable firmware latency profiling, follow these steps:
 
    .. code-block:: text
 
-       -                 OSA_DEV_INFO(dev,
-       +                 OSA_DEV_ERR(dev,
+       -                 dev_info(dev,
+       +                 dev_err(dev,
                                   "fw decode time is %llu us for msg_id x%0x\n",
 
 #. Follow the instructions in the section `Rebuilding V4L2 Drivers`_ in
@@ -872,8 +1035,8 @@ To enable V4L2-level picture decode latency profiling, follow these steps:
 
    .. code-block:: text
 
-       -                 OSA_DEV_INFO(dev,
-       +                 OSA_DEV_ERR(dev,
+       -                 dev_info(dev,
+       +                 dev_err(dev,
                                  "picture buf decode time is %llu us for buf_map_id 0x%x\n",
 
 #. Follow the instructions in the section `Rebuilding V4L2 Drivers`_ in
