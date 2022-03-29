@@ -7,14 +7,14 @@ Release Notes
 Overview
 ========
 
-The **Processor Software Development Kit (Processor SDK)** is a unified software platform for TI embedded processors 
-providing easy setup and fast out-of-the-box access to benchmarks and demos.  All releases of Processor SDK are 
-consistent across TI’s broad portfolio, allowing developers to seamlessly reuse and develop software across devices. 
-Developing a scalable platform solutions has never been easier than with the Processor SDK and TI’s embedded processor 
+The **Processor Software Development Kit (Processor SDK)** is a unified software platform for TI embedded processors
+providing easy setup and fast out-of-the-box access to benchmarks and demos.  All releases of Processor SDK are
+consistent across TI’s broad portfolio, allowing developers to seamlessly reuse and develop software across devices.
+Developing a scalable platform solutions has never been easier than with the Processor SDK and TI’s embedded processor
 solutions.
 
-To simplify the end user experience, Processor SDK Linux AM64x installer provides, everything needed to create the embedded 
-system from “scratch”, with...
+To simplify the end user experience, Processor SDK Linux AM64x installer provides everything needed as discussed below
+to create the embedded system from “scratch” :
 
 -  Platform/board-support software and configuration files for Linux
 -  U-Boot and Kernel sources and configuration files
@@ -30,185 +30,177 @@ Licensing
 
 Please refer to the software manifests, which outlines the licensing
 status for all packages included in this release. The manifest can be
-found on the SDK download page or in the installed directory as indicated below. 
+found on the SDK download page or in the installed directory as indicated below.
 
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 08.01.00
+Release 08.02.00
 ================
 
-Released on January 2022
-
-.. rubric:: What's New
-   :name: whats-new
+Released on April 2022
 
 What's new
 ----------
 Processor SDK Linux AM64x Release has following new features:
 
-- Second release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
-- Linux kernel driver support for NAND
-- Linux remoteproc driver support for loading M4F core
-- Support PRU IPC with Linux
-- Support for booting HS-FS devices
-- Authentication of boot binaries like SPL, Uboot and kernel
-- Add support for ICSSG Ethernet MII mode in Linux driver
-- Service to Print IP address of the board on AM64 EVM
-
+- Third release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
+- Yocto Dunfell/3.1
+- NAND boot, Ethernet boot, Secure Boot, ICSSG-Dual Emac
 
 Build Information
 =====================================
 
 U-Boot
 -------------------------
+
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: 15769936a559b1840f50b83f94ee0c636b245001 configs: am64x: Add FIT ARGS for HS images
-| Date: Tue Dec 14 08:15:08 CST 2021
+| Head Commit: 44a87e3ab85c6d64044f0b5ad677008316baad70 ARM: dts: k3-j721s2: Correct timer frequency
+| Date: Wed Mar 16 17:05:52 CDT 2022
 | uBoot Version: 2021.01
-| uBoot Description: 08.01.00.006
-| Clone: https://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: 08.01.00.006
-| uBoot Tag: 08.01.00.006
+| uBoot Description: 08.02.00.006
+| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
+| Branch: 08.02.00.006
+| uBoot Tag: 08.02.00.006
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+|
 
 Kernel
 -------------------------
+
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: dcc6bedb2c2bdb509709e4ae08303206e95ce6c2 Merged TI feature connectivity into ti-linux-5.10.y
-| Date: Wed Dec 15 08:06:10 CST 2021
-| Kernel Version: 5.10.65
-| Kernel Description: 08.01.00.006
+| Head Commit: 7a7a3af903da2b2d551d058f8262a66e6b42b6b1 Merged TI feature connectivity into ti-linux-5.10.y
+| Date: Wed Mar 16 12:00:19 CDT 2022
+| Kernel Version: 5.10.100
+| Kernel Description: 08.02.00.006
 
-| Clone: https://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-5.10.y
-| Tag: 08.01.00.006
+| Tag: 08.02.00.006
 | Kernel defconfig: ti_sdk_arm64_release_defconfig
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+|
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 541ec9a6995c3dd881d6f0b63cc714a08ded457d Merged TI feature ti_linux_base_rt into ti-rt-linux-5.10.y
-| Date: Tue Dec 14 09:43:46 CST 2021
-| Kernel Version: 5.10.65
-| RT Kernel Version: 5.10.65-rt53
-| Kernel Description: 08.01.00.006-rt
+| Head Commit: 204ec708dc86f4334f585f04835527570be1c4eb Merged TI feature ti_linux_base_rt into ti-rt-linux-5.10.y
+| Date: Wed Mar 16 14:53:35 CDT 2022
+| Kernel Version: 5.10.100
+| RT Kernel Version: 5.10.100-rt62
+| Kernel Description: 08.02.00.006-rt
 
 | Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.10.y
-| Tag: 08.01.00.006-rt
+| Tag: 08.02.00.006-rt
 | Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+|
 
 Yocto
 ------------------------
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 15613c951051c450fc8726b2576c23c105b79d53 linux-ti-staging: block sa2ul for am64x hs and j7200 hs device
-| Date: 2021-12-10
+| Head Commit: facd5397cdc5c35c69e7a8e8f908a98a5c23d270 u-boot-ti-staging: Bump to 08.02.00.006 release
+| Date: 2022-03-08
 | Version: dunfell-3.1
-
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: dunfell
-| Release Tag: 08.01.00.006
+| Release Tag: 08.02.00.006
+|
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: e13e698213f5c4e2617ace97dca2d0ccf84ab0af Update the ltp-ddt to latest
-| Date: 2021-12-03
+| Head Commit: 382ca36beb21a524de726bfd1c57e3d26f10cf82 recipes-core: images: Add tisdk-thinlinux-image
+| Date: 2022-03-08
 | Version: 2021.09
 
-| Clone: git://git.yoctoproject.org/git/meta-arago.git
+| Clone: git://git.yoctoproject.org/meta-arago
 | Branch: dunfell
-| Release Tag: 08.01.00.006
+| Release Tag: 08.02.00.006
 |
-
 
 Issues Tracker
 =====================================
 
-Issues opened in previous releases that were closed on this release
----------------------------------------------------------------------
+Issues opened in previous releases that were closed in this release
+--------------------------------------------------------------------
 
 .. csv-table::
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 30, 100
 
-   "LCPD-22979","firmware links are missing in /lib/firmware directory for K3","am64xx-evm,am64xx-sk,am654x-evm,j721e-idk-gw,j7200-evm"
-   "LCPD-22941","ptp clock register breaks 5.14-rc1 kernel bootup","am64xx-evm,am654x-evm,j721e-evm,j7200-evm"
-   "LCPD-22920","AM64x Linux IPC documentation is insufficient / out-of-date","am64xx-evm"
-   "LCPD-22913","USBDEV ACM NCM enumeration fails on the device side ","am64xx-evm,am654x-idk,j721e-idk-gw,j7200-evm"
-   "LCPD-22852","AM64x: ICSSG ping with 16384 size shows high packet loss","am64xx-evm"
-   "LCPD-22823","Convert eeprom-93xx46.txt:    ""microchip,93lc46b"" to yaml","am335x-evm,am437x-idk,am572x-idk,am64xx-evm"
-   "LCPD-22822","Convert inside-secure,safexcel-eip76 (omap_rng.txt) to yaml","am335x-evm,am437x-idk,am572x-idk"
-   "LCPD-22789","cdns-usb3: g_mass_storage and g_ether fails on some boards","am64xx-evm"
-   "LCPD-22514","Broken USB MSC boot on AM642-EVM","am64xx-evm"
-   "LCPD-22338","ipc_echo_test test on am64xx-evm fails due to a firmware file name change","am64xx-evm"
-   "LCPD-21962","U-Boot documentation discrepancies","am64xx-evm"
-   "LCPD-21538","am64xx-evm PCI-EP MSI tests are failing","am64xx-evm"
-   "LCPD-21347","k3: cpswxg: switchdev: crash in am65_cpsw_port_offload_fwd_mark_update() when there is a disabled port","am64xx-evm,am64xx-sk"
-   "LCPD-20131","Uboot fails to enumerate devices attached to a usb hub on the first 'usb reset' call ","am64xx-evm,j721e-idk-gw,j7200-evm"
+   "LCPD-24627","icssg_prueth: NULL pointer deference during remove","am64xx-evm"
+   "LCPD-24625","am64 - Boot modes: eMMC alternative boot mode","am64xx-evm"
+   "LCPD-24624","am64 Boot modes: OSPI","am64xx-evm"
+   "LCPD-24622","TCP Bidir","am64xx-evm"
+   "LCPD-24612","am64xx-hsevm fails to boot","am64xx-hsevm"
+   "LCPD-24510","ARM: A72/53 L1 data cache and L2 cache set counts wrong(upstream)","am64xx-evm,am64xx-hsevm,am64xx-sk,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm"
+   "LCPD-24486","smatch reports potential dereference of ERR_PTR","am64xx-evm,am654x-evm,j721e-evm,j7200-evm,j721s2-evm"
+   "LCPD-24121","IPC SDK docs: link to example source code","am64xx-evm,am64xx-sk"
+   "LCPD-23019","OPTEE tests are failing (Impact 5)","am43xx-hsevm,am57xx-hsevm,am64xx-evm,am64xx-hsevm,am64xx-sk,am654x-evm,j721e-idk-gw,j7200-evm"
+   "LCPD-22841","Watchdog Timer test is failing (Impact 5.0)","am64xx-evm,j721e-idk-gw,j7200-evm"
+   "LCPD-22812","Upstream: reserved-memory.txt  convert to yaml","am64xx-hsevm,am64xx-sk,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,k2g-evm,k2g-hsevm,j721e-sk"
 
-|
-
-Issues found and closed on this release that may be applicable to prior releases
------------------------------------------------------------------------------------
+Issues found and closed in this release that may also be applicable to prior releases
+-------------------------------------------------------------------------------------
 .. csv-table::
    :header: "Record ID", "Title", "Platform"
    :widths: 15, 70, 20
 
-   "LCPD-24625","am64 - Boot modes: eMMC alternative boot mode","am64xx-evm"
-   "LCPD-24624","am64 Boot modes: OSPI","am64xx-evm"
-   "LCPD-24623","am64 DFU boot failure","am64xx-evm"
-   "LCPD-24600","Interrupt count wrong due to missing channel for crypto test","am64xx-evm,j7200-evm"
-   "LCPD-24501","Flashing Linux wic image to SD card does not boots Linux","am64xx-evm,am64xx-sk,am654x-idk,am654x-hsevm,j721e-evm,j721e-hsevm,j721e-idk-gw,j7200-evm,j7200-hsevm"
-   "LCPD-24493","j7200-evm PCI_L_PERF_USBHOST_VFAT performance outside 10 stdev ","j7200-evm"
-   "LCPD-24492","am64xx-evm Multiple NAND device failures","am64xx-evm"
-   "LCPD-24471","USBDEV_highspeed_multi_enumerate","am64xx-evm"
-   "LCPD-24435","ETH-CPSW2G_XS_FUNC_SPEED_1000Mbps_ALL","am64xx-evm"
-   "LCPD-24434","PCIe Wifi ping tests","am64xx-evm,j7200-evm"
-   "LCPD-24431","DFU: SPL-DFU boot support","am64xx-evm"
-   "LCPD-24294","TSN CPSW EST feature, counter not synchronized to ptp clock","am64xx-evm,am64xx-sk"
-   "LCPD-24293","ICSS based Ethernet performance vs CPSW (AM64x)","am64xx-evm"
-   "LCPD-24219","AM64: ICSSG: No RX packets after link down<and>up","am64xx-evm"
-   "LCPD-24212","Update the locations of various elements in SRAM","am64xx-evm"
-   "LCPD-24117","U-Boot user's guide does not have documentation on how to boot from USB mass storage","am64xx-evm"
-   "LCPD-24114","AM64x: MCAN documentation is missing","am64xx-evm"
-   "LCPD-23095","AM64: Add U-Boot,dm-spl tag in MMC1 pinmux dt node","am64xx-evm"
-   "LCPD-23024","PSDK-DOC: UBoot: USB host boot info is out of date","am64xx-evm"
+   "LCPD-25522","AM64: Ethernet broken at u-Boot prompt","am64xx-evm,am64xx-sk"
+   "LCPD-25074","AM64 HS Boot broken ","am64xx-hsevm"
+   "LCPD-25070","am64xx-sk uboot build failed to boot due to ","am64xx-sk"
+   "LCPD-25014","ramfs boot fails when using tisdk-base-image","am64xx-evm,am654x-evm,j721e-idk-gw,j7200-evm,j721s2-evm"
 
-|
-
-Known Issues
-------------
+U-Boot Known Issues
+-------------------
 .. csv-table::
-   :header: "Record ID", "Platform", "Title", "Workaround" 
+   :header: "Record ID","Platform", "Title","Workaround"
+   :widths: 15, 30, 70, 30
+
+    "LCPD-25540","am64xx-sk","u-boot: usb host boot failed on AM64x SK",""
+    "LCPD-25535","am64xx-evm,am64xx-hsevm,am64xx-sk,am654x-evm,am654x-idk,am654x-hsevm","UBoot: customized ${optargs} doesn't take affect on K3 devices",""
+    "LCPD-24726","am64xx-sk","Uboot qspi read write performance test  failed ",""
+    "LCPD-24507","am64xx-evm,am64xx-hsevm,am64xx-sk,j721e-idk-gw","U-Boot command ""saveenv"" doesn't save env ",""
+    "LCPD-23026","am64xx-evm,am64xx-sk","USB MSC Boot: USB controller not visible from u-boot",""
+    "LCPD-23020","am64xx-evm","am64xx-evm: U-Boot PHY autonegotiation failed 2 out of 100 times",""
+
+Linux Kernel Known Issues
+-------------------------
+.. csv-table::
+   :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 5, 10, 70, 35
 
-   "LCPD-20038","am64xx-evm","OPTEE test applications are missing from rootfs",""
-   "LCPD-24507","am64xx-evm,am64xx-hsevm,am64xx-sk","U-Boot command ""saveenv"" doesn't save env ",""
-   "LCPD-23026","am64xx-evm","USB MSC Boot: USB controller not visible from u-boot",""
-   "LCPD-23020","am64xx-evm","am64xx-evm: U-Boot PHY autonegotiation failed 2 out of 100 times",""
-   "LCPD-22841","am64xx-evm,j721e-idk-gw,j7200-evm","Watchdog Timer test is failing ",""
-   "LCPD-24627","am64xx-evm","icssg_prueth: NULL pointer deference during remove",""
-   "LCPD-24622","am64xx-evm","TCP Bidir",""
-   "LCPD-24620","am64xx-evm","ETH-USB-LCD-ALSA-NAND-MMC-0001 Suspend/Resume with RTC Wakeup",""
+   "LCPD-25558","am64xx-evm","the 'nand' tool doesn't seem to be working",""
+   "LCPD-25494","am64xx-evm","AM64 EVM TSN IET tests is failing",""
+   "LCPD-25348","am64xx-evm,am654x-evm,am654x-idk","nslookup time out when EVM has multiple eth connections",""
+   "LCPD-25320","am64xx-evm,am64xx-sk","Docs: AM64x: IPC chapter should be under Foundational Components",""
+   "LCPD-25112","am64xx-evm,j721e-idk-gw","Ethernet driver not gating its clock when interface is down",""
+   "LCPD-24872","am64xx-sk","Am64x-sk :LCPD-16811 CPSW  failed while throughput metrics comparison ",""
+   "LCPD-24823","am64xx-evm,am64xx-sk","Clarify Single-Core usage in ti,k3-r5f-rproc.yaml",""
+   "LCPD-24696","am64xx-sk","CPSW Promiscuous mode test failing on am64xx-sk",""
+   "LCPD-24691","am64xx-evm,j7200-evm,j721s2-evm,am62xx-evm","Kernel: Upstream: Set HIGH_SPEED_EN for MMC1 instance",""
+   "LCPD-24690","am64xx-evm,am64xx-sk,j7200-evm,j721s2-evm,am62xx-evm","Kernel: SDK: Set HIGH_SPEED_EN for MMC1 instance",""
+   "LCPD-24680","am64xx-sk,am654x-evm,j721e-evm,j7200-evm","missing document how to boot to Linux prompt in USB MSC boot mode",""
+   "LCPD-24595","am64xx-evm,am64xx-sk,j721e-idk-gw,j7200-evm,j721e-sk","j721e-idk-gw USB Suspend/Resume with RTC Wakeup fail (Impact 1)",""
    "LCPD-24593","am64xx-evm","am64xx-evm CAN_S_FUNC_MODULAR test failures",""
+   "LCPD-24511","am64xx-evm,am64xx-hsevm,am64xx-sk,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm","ARM: A72/53 L1 data cache and L2 cache set counts wrong",""
    "LCPD-24473","am64xx-evm","IPSEC_software_crypto_UDP_aes128_sha1_performance",""
-   "LCPD-24451","am64xx-evm","CRYPTO_S_PERF_MD5",""
-   "LCPD-24433","am64xx-evm","ETH-USB-LCD-ALSA-NAND-MMC-0001 Suspend/Resume with RTC Wakeup",""
-   "LCPD-24289","am64xx-evm,am64xx-sk,am654x-evm,am654x-idk","ICSSG Ethernet Docs Broken link to ICSS Eth docs",""
-   "LCPD-24121","am64xx-evm,am64xx-sk","IPC SDK docs: link to example source code",""
+   "LCPD-24467","am64xx-sk","am64xx-sk stress boot test files",""
+   "LCPD-24456","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am64xx-evm,am64xx-hsevm,am64xx-sk,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j7am-evm,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-vlab,j7200-evm,j7200-hsevm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm,omapl138-lcdk,j721s2-evm,j721s2-hsevm,j7amp-evm,j7ae-evm,j7am-vlab,j7am-zebu,j7ae-zebu,j7aep-zebu,j7amp-vlab,j7amp-zebu,j721e-sk,am62xx-evm,am62xx-sk,am62xx-hsevm,am62xx-vlab,am62xx-zebu,am62a-evm","Move IPC validation source from github to git.ti.com",""
+   "LCPD-24448","am64xx-evm","Verify IPC kernel: main-r5f0(s)/main-r5f1(s)",""
+   "LCPD-23102","am64xx-sk","AM64-SK: DMA is not stable",""
+   "LCPD-23066","am64xx-sk","am64x-sk :gpio: direction test fail",""
    "LCPD-22931","am64xx-evm,am64xx-sk,am654x-evm,am654x-idk,dra72x-evm","RemoteProc documentation missing",""
    "LCPD-22912","am64xx-evm","am64xx-evm SMP dual core test fails sporadically",""
    "LCPD-22892","am64xx-evm,am654x-evm,am654x-idk","icssg: due to FW bug both interfaces has to be loaded always",""
@@ -216,10 +208,15 @@ Known Issues
    "LCPD-22319","am64xx-evm,j7200-evm","OpenSSL performance test data out of bounds",""
    "LCPD-22215","am64xx-evm","PCIE NVM card stops enumerating on am64xx after some time",""
    "LCPD-20705","am64xx-evm","USB stick attached to PCIe USB card is not enumerated",""
+   "LCPD-20558","am64xx-sk","OSPI UBIFS tests failing on am64xx-sk",""
    "LCPD-20105","am64xx-evm","AM64x: Kernel: ADC: RX DMA channel request fails",""
    "LCPD-20061","am64xx-evm","Occasional PHY error during during TSN Time-Aware Shaper execution",""
    "LCPD-20006","am64xx-evm","AM64x: remoteproc may be stuck in the start phase after a few times of stop/start",""
-   "LCPD-18854","am64xx-evm,dra71x-evm,dra76x-evm","ov5640 sensor capture fails for raw format capture",""
-   "LCPD-24288","am64xx-evm,am654x-idk","am64xx-evm NCM/ACM network performance test crashes with RT images",""
 
-|
+Linux RT Kernel Known Issues
+----------------------------
+.. csv-table::
+   :header: "Record ID", "Platform", "Title", "Workaround"
+   :widths: 5, 10, 70, 35
+
+   "LCPD-24288","am64xx-evm,am654x-idk","am64xx-evm NCM/ACM network performance test crashes with RT images",""
