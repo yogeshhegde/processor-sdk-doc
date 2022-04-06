@@ -25,3 +25,4 @@ Foundational Components
    Foundational_Components_Machine_Learning
    Foundational_Components_ATF
    Foundational_Components_OPTEE
+   Foundational_Components/Sysfw

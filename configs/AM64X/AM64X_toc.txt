@@ -83,6 +83,8 @@ linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components/PRU-ICSS/PRU-EVMs
 linux/Foundational_Components/PRU-ICSS-Training
 linux/Foundational_Components/PRU-ICSS-Firmware-Development
+linux/Foundational_Components/Sysfw
+
 linux/How_to_Guides
 linux/How_to_Guides_Host
 linux/How_to_Guides_Target
