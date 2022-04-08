@@ -90,7 +90,7 @@ makefile targets.
 
 ::
 
-    host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools
+    host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig
 
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
