@@ -23,9 +23,11 @@ is installed
     $ sx -kb /path/to/u-boot-spl.bin < /dev/ttyUSB0 > /dev/ttyUSB0
     $ sx -kb --ymodem /path/to/u-boot.img < /dev/ttyUSB0 > /dev/ttyUSB0
 
-In K3 based platforms, ROM supports booting from MCU_UART0 via X-Modem protocol.
-The entire UART-based boot process up to U-Boot (proper) prompt goes through
-different stages and uses different UART peripherals as follows:
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200')
+
+  In K3 based platforms, ROM supports booting from MCU_UART0 via X-Modem protocol.
+  The entire UART-based boot process up to U-Boot (proper) prompt goes through
+  different stages and uses different UART peripherals as follows:
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E')
 
@@ -50,7 +52,7 @@ different stages and uses different UART peripherals as follows:
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'J7200')
+.. ifconfig:: CONFIG_part_variant in ('J7200')
 
    +---------------+---------------+-------------+------------+
    |   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
@@ -70,3 +72,26 @@ different stages and uses different UART peripherals as follows:
       $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
       $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  ROM supports booting from MAIN_UART0 via X-Modem protocol. R5 SPL, A53
+  SPL and U-Boot use Y-MODEM Protocol for downloading next stages over
+  MAIN_UART0
+
+   +---------------+---------------+-------------+------------+
+   |   WHO         | Loading WHAT  |  HW Module  |  Protocol  |
+   +===============+===============+=============+============+
+   | Boot ROM      |  tiboot3.bin  |  MAIN_UART0 |  X-Modem   |
+   +---------------+---------------+-------------+------------+
+   | R5 SPL        |  tispl.bin    |  MAIN_UART0 |  Y-Modem   |
+   +---------------+---------------+-------------+------------+
+   | A53 SPL       |  u-boot.img   |  MAIN_UART0 |  Y-Modem   |
+   +---------------+---------------+-------------+------------+
+
+   UART_BOOT_MAIN_UART should be set to serial ports such as /dev/ttyUSBx.
+
+   ::
+
+      $ sb --xmodem $OUT_R5/tiboot3.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+      $ sb --ymodem $OUT_AXX/tispl.bin > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
+      $ sb --ymodem $OUT_AXX/u-boot.img > $UART_BOOT_MAIN_UART < $UART_BOOT_MAIN_UART
