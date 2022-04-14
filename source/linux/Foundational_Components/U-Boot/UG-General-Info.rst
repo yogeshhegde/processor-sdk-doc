@@ -358,6 +358,33 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_evm_a72_defconfig O=<output directory>/a72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
 
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+
+        |  Board                     |            SD Boot              |            eMMC Boot            |           UART boot            |           OSPI boot            |
+        +============================+=================================+=================================+================================+================================+
+        |    AM62X SK                |    am62x\_evm\_r5\_defconfig    |    am62x\_evm\_r5\_defconfig    |   am62x\_evm\_r5\_defconfig    |   am62x\_evm\_r5\_defconfig    |
+        |                            |    am62x\_evm\_a53\_defconfig   |    am62x\_evm\_a53\_defconfig   |   am62x\_evm\_a53\_defconfig   |   am62x\_evm\_a53\_defconfig   |
+        +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+
+
+        *on GP*
+
+       .. code-block:: console
+
+          R5
+          To build u-boot-spl.bin for tiboot3.bin. Saved in <path-to-u-boot-r5>/r5.
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=<path-to-u-boot-r5>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<path-to-u-boot-r5>/r5
+
+          To build tiboot3.bin. Saved in ../k3-image-gen-<version>. Requires u-boot-spl.bin and ti-fs-firmware-am62x-gp.bin.
+          $ cd ../k3-image-gen-<version>
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62x SBL=<path-to-u-boot-r5>/r5/u-boot-spl.bin SYSFW_PATH=<path-to-ti-linux-fw>/ti-sysfw/ti-fs-firmware-am62x-gp.bin
+
+          A53
+          To build tispl.bin and u-boot.img. Saved in <path-to-u-boot-a53>/a53. Requires bl31.bin, tee-pager_v2.bin, and ipc_echo_testb_mcu1_0_release_strip.
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=<path-to-u-boot-a53>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path-to-atf>/build/k3/generic/release/bl31.bin TEE=<path-to-optee>/out/arm-plat-k3/core/tee-pager_v2.bin DM=<path-to-ti-linux-firmware>/ti-dm/am62x/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<path-to-u-boot-a53>/a53
+
     .. rubric:: Dependent Project location
 
     - In case not use TI SDK and building U-Boot out of mainline, then
@@ -440,7 +467,7 @@ Build U-Boot
        - tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
        - tispl.bin, u-boot.img from <output directory>/a53
 
-    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E')
+    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X')
 
        .. rubric:: Image Formats
 
