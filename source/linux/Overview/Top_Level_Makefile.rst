@@ -90,7 +90,7 @@ makefile targets.
 
 ::
 
-    host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools
+    host# sudo apt-get install build-essential autoconf automake bison flex libssl-dev bc u-boot-tools swig
 
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
@@ -329,29 +329,42 @@ All the install targets copy the files in the rootfs pointed by the DESTDIR vari
 system firmware or u-boot, you should copy these binaries in the boot partition of
 the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-  .. ifconfig:: CONFIG_part_variant in ('AM65X')
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-      ::
+    ::
 
-          host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
-          #Replace the path to SD card boot partition as appropriate
+        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+        #Replace the path to SD card boot partition as appropriate
 
-          # For AM65xx-EVM PG1.0, copy the following sysfw file
-          host# cp board-support/k3-image-gen*/sysfw-am65x-evm.itb /media/$USER/boot/sysfw.itb
-          #Replace the path to SD card boot partition as appropriate
+        # For AM65xx-EVM PG1.0, copy the following sysfw file
+        host# cp board-support/k3-image-gen*/sysfw-am65x-evm.itb /media/$USER/boot/sysfw.itb
+        #Replace the path to SD card boot partition as appropriate
 
-          # For AM65xx-EVM PG2.0, copy the following sysfw file
-          host# cp board-support/k3-image-gen*/sysfw-am65x_sr2-evm.itb /media/$USER/boot/sysfw.itb
-          #Replace the path to SD card boot partition as appropriate
+        # For AM65xx-EVM PG2.0, copy the following sysfw file
+        host# cp board-support/k3-image-gen*/sysfw-am65x_sr2-evm.itb /media/$USER/boot/sysfw.itb
+        #Replace the path to SD card boot partition as appropriate
 
-  .. ifconfig:: CONFIG_part_variant not in ('AM65X')
+.. ifconfig:: CONFIG_part_variant not in ('AM65X','AM64X')
 
-      ::
+    ::
 
-          host# sudo cp board-support/u-boot_build/a72/u-boot.img board-support/u-boot_build/a72/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
-          #Replace the path to SD card boot partition as appropriate
+        host# sudo cp board-support/u-boot_build/a72/u-boot.img board-support/u-boot_build/a72/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    ::
+
+        #Replace the path to SD card boot partition as appropriate
+        host# sudo cp board-support/u-boot_build/a53/u-boot.img /media/$USER/boot/u-boot.img
+        host# sudo cp board-support/u-boot_build/a53/tispl.bin /media/$USER/boot/tispl.bin
+        host# sudo cp board-support/k3-image-gen-2022.01/tiboot3.bin /media/$USER/boot/tiboot3.bin
+
+        NOTE: For AM64x HS EVM, please follow below steps instead:
+        #Replace the path to SD card boot partition as appropriate
+        host# sudo cp board-support/u-boot_build/a53/u-boot.img_HS /media/$USER/boot/u-boot.img
+        host# sudo cp board-support/u-boot_build/a53/tispl.bin_HS /media/$USER/boot/tispl.bin
+        host# sudo cp board-support/k3-image-gen-2022.01/tiboot3.bin /media/$USER/boot/tiboot3.bin
 
 .. rubric:: A Note about Out-of-tree Kernel Modules
    :name: a-note-about-out-of-tree-kernel-modules

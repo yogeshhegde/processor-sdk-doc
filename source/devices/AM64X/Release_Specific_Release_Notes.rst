@@ -47,6 +47,7 @@ Processor SDK Linux AM64x Release has following new features:
 - Third release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
 - Yocto Dunfell/3.1
 - NAND boot, Ethernet boot, Secure Boot, ICSSG-Dual Emac
+- AM64 HS EVM support
 
 Build Information
 =====================================
