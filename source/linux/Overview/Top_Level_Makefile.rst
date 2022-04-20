@@ -183,6 +183,8 @@ devices will have following additional targets:
   -  **sysfw-image** - Builds the system firmware itb file, which is a single
      binary for the system firmware release along with the different board
      configs.
+  -  **linux-fitimage** - Sign and pack linux kernel and dtbs into FIT image
+     required for booting HS devices.
   -  **jailhouse** - Builds the required kernel module, hypervisor firmware,
      jailhouse tools and cell configs. Applicable for only platforms with
      Hypervisor support enabled.
@@ -291,6 +293,17 @@ the Makefile from the top-level of the SDK.
 ::
 
     host# make u-boot-spl_clean
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  -  Build the combined boot image -  This requires first building the R5 boot image.
+     This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined
+     boot image at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3.bin
+
+    ::
+
+        host# make u-boot
+        host# make sysfw-image
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
