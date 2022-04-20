@@ -331,6 +331,10 @@ Build U-Boot
           $ cd ../k3-image-gen-<version>
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am64x HS=1 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-sci-firmware-am64x-hs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-sci-firmware-am64x-hs-cert.bin
 
+          Sign OPTEE and ATF binaries
+          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl31.bin bl31.bin.signed
+          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl32.bin bl32.bin.signed
+
           A53
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_hs_evm_a53_defconfig O=<output directory>/a53
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin.signed TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin.signed  O=<output directory>/a53
