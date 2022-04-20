@@ -151,7 +151,12 @@ as a starting point).
 
     ::
 
+        am64xx-evm:
         make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- tisdk_am64xx-evm_defconfig
+
+        am64xx-hs-evm:
+        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- tisdk_am64xx-hs-evm_defconfig
+
 
 After the configuration step has run the full configuration file is
 saved to the root of the kernel tree as .config. Any further
@@ -452,6 +457,54 @@ tree. These .ko files are the dynamic kernel modules.
     load, which will result in a loss of functionality.
 
 |
+
+Creating the kernel fitImage for high security device
+-----------------------------------------------------
+
+Build kernel image and dtbs as per instructions given above.
+
+Get the Security Dev Tool
+
+  ::
+
+    git clone git://git.ti.com/security-development-tools/core-secdev-k3.git -b master
+    export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+
+Sign kernel image and copy to <sdk path>/board_support/signed-images
+
+  ::
+
+    mkdir <sdk path>/board_support/signed-images
+    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh Image Image.sec
+    cp -p Image.sec <sdk path>/board-support/signed-images
+
+Sign devicetree binaries, and copy the signed binaries to <sdk path>/board_support/signed-images.
+The binaries to be signed is listed in <sdk path>/board-support/prebuilt-images/fitImage-its.its
+
+  ::
+
+    For am64xx-hs-evm:
+    cd <sdk path>/board-support/linux-5.10*/arch/arm64/boot/dts/ti/
+    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm.dtb k3-am642-evm.dtb.sec
+    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-sk.dtb k3-am642-sk.dtb.sec
+    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-icssg1-dualemac.dtbo k3-am642-evm-icssg1-dualemac.dtbo.sec
+    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-nand.dtbo k3-am642-evm-nand.dtbo.sec
+    cp -p *.sec <sdk path>/board-support/signed-images
+
+Generate the FIT image
+
+  ::
+  
+    cp <sdk path>/board-support/prebuilt-images/fitImage-its.its <sdk path>/board-support/signed-images
+    cd <sdk path>/board-support/signed-images
+    mkimage -f fitImage-its.its -r fitImage
+
+    Install the generated FIT image to "rootfs/boot" for MMC/SD card boot as an example
+
+  ::
+  
+    sudo cp -p fitImage /media/$(USER)/rootfs/boot/fitImage
+
 
 Installing the Kernel
 ---------------------
