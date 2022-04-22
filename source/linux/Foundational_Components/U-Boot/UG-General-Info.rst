@@ -1,3 +1,5 @@
+.. include:: /replacevars.rst.inc
+
 General Information
 -------------------
 
@@ -891,7 +893,7 @@ Boot Flow
     safety in picture and to have faster boot time, the software boot architecture
     is designed as below:
 
-    .. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM64X_family')
+    .. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM64X_family', 'AM62X_family')
 
          .. code-block:: console
 
@@ -1221,9 +1223,78 @@ Boot Flow
             |                        |                       |                       |                       |
             +------------------------------------------------------------------------+-----------------------+
 
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    Here DMSC acts as master and provides all the critical services. R5/ARM64
-    requests DMSC to get these services done as shown in the above diagram.
+        .. code-block:: console
+
+            +------------------------------------------------------------------------+
+            |        TIFS            |      Main R5          |        A53            |
+            +------------------------------------------------------------------------+
+            |    +--------+          |                       |                       |
+            |    |  Reset |          |                       |                       |
+            |    +--------+          |                       |                       |
+            |         :              |                       |                       |
+            |    +--------+          |   +-----------+       |                       |
+            |    | *ROM*  |----------|-->| Reset rls |       |                       |
+            |    +--------+          |   +-----------+       |                       |
+            |    |        |          |         :             |                       |
+            |    |  ROM   |          |         :             |                       |
+            |    |services|          |         :             |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |          |   |  *R5 ROM*   |     |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |<---------|---|Load and auth|     |                       |
+            |    |        |          |   | tiboot3.bin |     |                       |
+            |    +--------+          |   +-------------+     |                       |
+            |    |        |<---------|---| Load sysfw  |     |                       |
+            |    |        |          |   | part to TIFS|     |                       |
+            |    |        |          |   | core        |     |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |          |         :             |                       |
+            |    |        |          |         :             |                       |
+            |    |        |          |         :             |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |          |   |  *R5 SPL*   |     |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |          |   |    DDR      |     |                       |
+            |    |        |          |   |   config    |     |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |          |   |    Load     |     |                       |
+            |    |        |          |   |  tispl.bin  |     |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |          |   |   Load R5   |     |                       |
+            |    |        |          |   |   firmware  |     |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |<---------|---| Start A53   |     |                       |
+            |    |        |          |   | and jump to |     |                       |
+            |    |        |          |   | DM fw image |     |                       |
+            |    |        |          |   +-------------+     |                       |
+            |    |        |          |                       |     +-----------+     |
+            |    |        |----------|-----------------------|---->| Reset rls |     |
+            |    |        |          |                       |     +-----------+     |
+            |    |  TIFS  |          |                       |          :            |
+            |    |Services|          |                       |     +-----------+     |
+            |    |        |<---------|-----------------------|---->|*ATF/OPTEE*|     |
+            |    |        |          |                       |     +-----------+     |
+            |    |        |          |                       |          :            |
+            |    |        |          |                       |     +-----------+     |
+            |    |        |<---------|-----------------------|---->| *A53 SPL* |     |
+            |    |        |          |                       |     +-----------+     |
+            |    |        |          |                       |     |   Load    |     |
+            |    |        |          |                       |     | u-boot.img|     |
+            |    |        |          |                       |     +-----------+     |
+            |    |        |          |                       |          :            |
+            |    |        |          |                       |     +-----------+     |
+            |    |        |<---------|-----------------------|---->| *U-Boot*  |     |
+            |    |        |          |                       |     +-----------+     |
+            |    |        |          |                       |     |  prompt   |     |
+            |    |        |----------|-----------------------|-----+-----------+-----|
+            |    +--------+          |                       |                       |
+            |                        |                       |                       |
+            +------------------------------------------------------------------------+
+
+    Here |__SYSFW_CORE_NAME__| acts as master and provides all the critical services. R5/ARM64
+    requests |__SYSFW_CORE_NAME__| to get these services done as shown in the above diagram.
 
 U-Boot Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
