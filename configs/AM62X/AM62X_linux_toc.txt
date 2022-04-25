@@ -51,6 +51,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng_virt_mac
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
+linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
