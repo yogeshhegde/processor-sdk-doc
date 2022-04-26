@@ -43,4 +43,5 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/USB/MUSB
    Foundational_Components/Kernel/Kernel_Drivers/USB/DWC3
    Foundational_Components/Kernel/Kernel_Drivers/USB/CDNS3
+   Foundational_Components/Kernel/Kernel_Drivers/USB/AM62_DWC3
    Foundational_Components/Kernel/Kernel_Drivers/VPE
