@@ -146,7 +146,13 @@ platform that support USB Peripheral boot mode.
     - Connect USB 2.0 Port on EVM to PC through USB cable
     - Power on the board
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+    - Set SYSBOOT switches to USB DFU boot mode (Refer to **Initialization** chapter of AM62 TRM for boot switch details)
+    - Connect USB Type C DRD Port (J13) on SK board to PC through USB cable
+    - Power on the board
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
 
     On host side:
 
@@ -183,7 +189,7 @@ platform that support USB Peripheral boot mode.
 
     Send boot images in this order: tiboot3.bin -> sysfw.itb -> tispl.bin -> u-boot.img.
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family')
 
     .. code-block:: text
 
@@ -192,7 +198,7 @@ platform that support USB Peripheral boot mode.
 
     Send boot images in this order: tiboot3.bin -> tispl.bin -> u-boot.img
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
 
     Move to directory containing the images and give the following commands
 
@@ -236,7 +242,7 @@ platform that support USB Peripheral boot mode.
 		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
 		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family')
 
     .. code-block:: text
 
@@ -248,7 +254,7 @@ platform that support USB Peripheral boot mode.
 		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
 		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
 
     At this point, the board should boot to the U-Boot prompt.
 
