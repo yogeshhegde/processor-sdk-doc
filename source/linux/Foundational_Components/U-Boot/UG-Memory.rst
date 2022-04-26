@@ -1,3 +1,5 @@
+.. include:: /replacevars.rst.inc
+
 SD, eMMC and USB
 ----------------
 
@@ -228,7 +230,7 @@ respective addresses.
     => fatload mmc 1 ${loadaddr} u-boot.img
     => mmc write ${loadaddr} 0x1800 0x2000
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X')
 
     .. code-block:: console
     
@@ -254,7 +256,7 @@ respective addresses.
     => fatload mmc 1 ${loadaddr} u-boot.img
     => mmc write ${loadaddr} 0x1800 0x2000
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X')
     
   .. code-block:: console
     
@@ -332,6 +334,16 @@ the zeroth instance of usb,
       USB instance in AM64 SoC is brought out using a USB 3.0 Type A port, so the mode is set to
       host by default and the following diff would not be required.
 
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+  .. note::
+      There are two instances of USB on AM62 SoC. On the SK board, zeroth instance is brought out
+      through a Type C port and the first instance is brought through a Type A port. By default,
+      USB0 port is configured to be in **peripheral mode**. Since U-Boot does not support
+      dynamic switching of USB roles, below DT fragment needs to be applied and U-Boot image
+      needs to be rebuilt to make USB0 port to be USB 2.0 host port.
+
+
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
   .. note::
@@ -357,6 +369,22 @@ the zeroth instance of usb,
         +       dr_mode="host";
                 u-boot,dm-spl;
          };
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+    ::
+
+        diff --git a/arch/arm/dts/k3-am625-sk-u-boot.dtsi b/arch/arm/dts/k3-am625-sk-u-boot.dtsi
+        index 20c24d2fa7a4..2b662653023f 100644
+        --- a/arch/arm/dts/k3-am625-sk-u-boot.dtsi
+        +++ b/arch/arm/dts/k3-am625-sk-u-boot.dtsi
+        @@ -117,5 +117,5 @@
+         };
+
+         &usb0 {
+        -       dr_mode = "peripheral";
+        +       dr_mode = "host";
+                u-boot,dm-spl;
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -404,7 +432,7 @@ used for the first time:
           |   backup environment (128 KB)    |         |                         |
     0x3A00+----------------------------------+         +-------------------------+
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J7200', 'J721S2', 'AM62X')
 
     .. code-block:: console
       
@@ -442,7 +470,7 @@ used for the first time:
     0x3A00+----------------------------------+         +-------------------------+
 
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62X')
     
   .. code-block:: console
     
@@ -482,7 +510,7 @@ Booting to U-Boot prompt from USB storage
 
 .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721E')
 
-  J721e and J7200 SoC does not support booting from USB mass storage devices. 
+  |__PART_FAMILY_DEVICE_NAMES__| SoC does not support booting from USB mass storage devices. 
   However, it can be used as storage device at U-Boot prompt.
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
@@ -534,6 +562,58 @@ Booting Linux from USB storage
 
   This feature is currently not supported.
 
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+    To load the Linux kernel, Device Tree and the Root file system from USB Mass storage device,
+    the following changes are required to be done,
+
+    - U-Boot
+
+      #. In U-Boot the USB controller can be used in either host or peripheral mode. For booting to linux kernel
+         from USB storage device, the USB port is to be set as host.
+      #. By default, on AM625-SK board the zero instance of USB connected to the Type C port, is set to peripheral mode
+         and the first instance of USB connected to the Type A port is set to host mode.
+      #. Therefore, USB controller needs to be set host mode and custom bootloader images are required to be built, if zeroth
+         instance is used. Please refer to note in section :ref:`mmc-boot-label`
+
+    - Kernel
+
+      #. In kernel, by default the USB subsystem is built as modules. For booting from USB mass storage device,
+         USB subsytem is required to be built into the image. This can be done by making the following changes
+         in the configuration used for building kernel,
+
+      ::
+
+          CONFIG_USB_COMMON=y
+          CONFIG_USB=y
+          CONFIG_USB_XHCI_HCD=y
+          CONFIG_USB_XHCI_PCI=y
+          CONFIG_USB_XHCI_PLATFORM=y
+          CONFIG_USB_STORAGE=y
+          CONFIG_USB_DWC3=y
+          CONFIG_USB_DWC3_AM62=y
+          CONFIG_USB_GADGET=y
+          CONFIG_TYPEC=y
+          CONFIG_TYPEC_TPS6598X=y
+          CONFIG_USB_ROLE_SWITCH=y
+
+    - Copying the images to USB storage device
+
+      #. After making the required changes mentioned above, build the kernel, device tree file and modules
+      #. The USB Mass storage device should have the rootfs as the second partition with ext4 file system,
+
+          - The following images should be in /boot/ directory
+
+            - Kernel image
+            - device tree file
+
+    - During the boot, cancel the autoboot at U-Boot and run the following command on U-Boot
+      prompt
+
+      .. code-block:: console
+
+        => run usbboot
+
 .. ifconfig:: CONFIG_part_family in ('AM64X_family')
 
     To load the Linux kernel, Device Tree and the Root file system from USB Mass storage device, 
@@ -569,7 +649,7 @@ Booting Linux from USB storage
 
     - Copying the images to USB storage device
 
-      #. After making the required changes mentioned above, build the kernel and bootloader images
+      #. After making the required changes mentioned above, build the kernel, device tree file and modules
       #. The USB Mass storage device should have two partitions,
 
         - boot
@@ -577,7 +657,7 @@ Booting Linux from USB storage
           - For creating this parition please refer :ref:`U-Boot-USB-MSC-boot-label`
         - rootfs
 
-          - An ext4 partition with filesystem and the following images in /boot/ directory
+          - A partition with ext4 filesystem and the following images in /boot/ directory
 
             - Kernel image
             - device tree file
