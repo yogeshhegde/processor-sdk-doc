@@ -120,7 +120,7 @@ See `Build Options`_ for a list of additional targets.  The MACHINE can be set t
 
     ::
 
-        $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
+        $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
         $ cd tisdk
         $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
         $ cd build
@@ -282,7 +282,7 @@ The "Build Output" is given relative to the
 
     ::
 
-        $ git clone git://arago-project.org/git/projects/oe-layersetup.git tisdk
+        $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
         $ cd tisdk
         $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
         $ mkdir downloads
