@@ -31,6 +31,13 @@ the SDK Installation directory/filesystem/ folder.
     users to add packages and create a custom filesystem that suits their
     project needs.
 
+    .. rubric:: tisdk-thinlinux-image
+
+    This is a minimal system image enabled with containers to provide
+    an environment to start the next level of complex systems up. Depending
+    on the platform capabilities, graphics is enabled by default as well.
+
+
 .. rubric:: tisdk-default-image
 
 This is the complete filesystem image, that contains standard Linux
