@@ -32,30 +32,71 @@ binaries files to be sent over TFTP are listed in the table below.
         - CPSW PHYs should be strapped as per ROM's expectation described in part's TRM.
         - Link info Bootmode pin needs to be ON along with RGMII boot mode selection Bootmode pins.
 
-If using ISC dhcpd an example host entry would look like this:
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-::
+    +------------------+--------------------------------+------------------------+------------------------+---------------------------+---------------------------+
+    | Board            | Defconfigs                     | Supported interfaces   | ROM                    | R5 SPL                    | A53 SPL                   |
+    +==================+================================+========================+========================+===========================+===========================+
+    | AM62x SK         | am62x_evm_r5_ethboot_defconfig | CPSW NUSS Ethernet     | VCI:  TI K3 Bootp Boot | VCI: AM62X U-Boot R5 SPL  | VCI: AM62X U-Boot A53 SPL |
+    |                  | am62x\_evm\_a53\_defconfig     |                        | file: tiboot3.bin      | file: tispl.bin           | file: u-boot.img          |
+    +------------------+--------------------------------+------------------------+------------------------+---------------------------+---------------------------+
 
-  subnet 10.0.0.0 netmask 255.0.0.0
-  {
-    range dynamic-bootp 10.0.0.2 10.0.0.16;
-    if substring (option vendor-class-identifier, 0, 16) = "TI K3 Bootp Boot"
-    {
-      filename "tiboot3.bin";
-    } elsif substring (option vendor-class-identifier, 0, 20) = "AM64X U-Boot R5 SPL"
-    {
-      filename "tispl.bin";
-    } elsif substring (option vendor-class-identifier, 0, 21) = "AM64X U-Boot A53 SPL"
-    {
-      filename "u-boot.img";
-    }
+    .. note::
+        - Ethernet RGMII boot is supported over RGMII1 (First port) on AM62x SoC.
+        - CPSW PHYs should be strapped as per ROM's expectation described in part's TRM.
+        - Link info Bootmode pin needs to be ON along with RGMII boot mode selection Bootmode pins.
 
-    range 10.0.0.17 10.0.0.25;
-    default-lease-time 60000;
-    max-lease-time 720000;
-    next-server 10.0.0.1;
-  }
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
 
+  If using ISC dhcpd an example host entry would look like this:
+
+  ::
+
+      subnet 10.0.0.0 netmask 255.0.0.0
+      {
+        range dynamic-bootp 10.0.0.2 10.0.0.16;
+        if substring (option vendor-class-identifier, 0, 16) = "TI K3 Bootp Boot"
+        {
+          filename "tiboot3.bin";
+        } elsif substring (option vendor-class-identifier, 0, 20) = "AM64X U-Boot R5 SPL"
+        {
+          filename "tispl.bin";
+        } elsif substring (option vendor-class-identifier, 0, 21) = "AM64X U-Boot A53 SPL"
+        {
+          filename "u-boot.img";
+        }
+
+        range 10.0.0.17 10.0.0.25;
+        default-lease-time 60000;
+        max-lease-time 720000;
+        next-server 10.0.0.1;
+      }
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+  If using ISC dhcpd an example host entry would look like this:
+
+  ::
+
+      subnet 10.0.0.0 netmask 255.0.0.0
+      {
+        range dynamic-bootp 10.0.0.2 10.0.0.16;
+        if substring (option vendor-class-identifier, 0, 16) = "TI K3 Bootp Boot"
+        {
+          filename "tiboot3.bin";
+        } elsif substring (option vendor-class-identifier, 0, 20) = "AM62X U-Boot R5 SPL"
+        {
+          filename "tispl.bin";
+        } elsif substring (option vendor-class-identifier, 0, 21) = "AM62X U-Boot A53 SPL"
+        {
+          filename "u-boot.img";
+        }
+
+        range 10.0.0.17 10.0.0.25;
+        default-lease-time 60000;
+        max-lease-time 720000;
+        next-server 10.0.0.1;
+      }
 
 A walk through of these steps to setup isc-dhcp-server on Ubuntu can be found at `here
 <https://help.ubuntu.com/community/isc-dhcp-server>`__.
