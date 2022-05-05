@@ -1406,110 +1406,165 @@ sources. In the Keystone-2 family devices (K2H/K/E/L/G), it is specified
 by **name\_fdt** variable for each platform. The device tree is expected
 to be loaded from the same media as the kernel, and from the same relative path.
 
-
-
 .. _AM64-SRAM-Layout-label:
 
-SRAM memory Layout in AM64 during R5 SPL bootloader stage
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- -  In SDK 08.00 release, USB DFU boot mode support has been added in AM64. For
-    USB DFU boot mode there is a limitation on the load address of boot
-    images to be less than 0x70001000. In order to overcome this limitation,
-    the R5 SPL load address has been moved to 0x70000000.  Given below is the
-    SRAM memory layout in SDK 08.00 release, during R5 SPL bootloader stage.
+SRAM memory Layout during R5 SPL bootloader stage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. code-block:: console
+The SRAM memory layout explains the memory used for Bootloader's operation.
 
-     ┌──────────────────────────────────────┐0x70000000
-     │                                      │
-     │                                      │
-     │                                      │
-     │    SPL IMAGE (Max size 1.5 MB)       │
-     │                                      │
-     │                                      │
-     │                                      │
-     ├──────────────────────────────────────┤0x7017FFFF
-     │                                      │
-     │           SPL STACK                  │
-     │                                      │
-     ├──────────────────────────────────────┤0x70192727
-     │          GLOBAL DATA(216 B)          │
-     ├──────────────────────────────────────┤0x701927FF
-     │                                      │
-     │       INITIAL HEAP (32 KB)           │
-     │                                      │
-     ├──────────────────────────────────────┤0x7019A7FF
-     │                                      │
-     │          BSS  (20 KB)                │
-     ├──────────────────────────────────────┤0x7019F7FF
-     │         EEPROM DATA (2 KB)           │
-     ├──────────────────────────────────────┤0x7019FFFF
-     │                                      │
-     │                                      │
-     │            TF-A (123 KB)             │
-     │                                      │
-     │                                      │
-     ├──────────────────────────────────────┤0x701BEBFB
-     │   BOOT PARAMETER INDEX TABLE (5124 B)│
-     ├──────────────────────────────────────┤0x701BFFFF
-     │                                      │
-     │        UNALLOCATED  AREA(128 KB)     │
-     │                                      │
-     ├──────────────────────────────────────┤0x701DFFFF
-     │                                      │
-     │      DMSC CODE AREA (128 KB)         │
-     │                                      │
-     └──────────────────────────────────────┘0x701FFFFF
+    .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-- In SDK 08.01 release, TF-A will be moved to 0x701c0000 and 128 KB will be
-  reserved for it. Given below is the memory layout after making this
-  change.
+        -  In SDK 08.00 release, USB DFU boot mode support has been added in AM64. For
+           USB DFU boot mode there is a limitation on the load address of boot
+           images to be less than 0x70001000. In order to overcome this limitation,
+           the R5 SPL load address has been moved to 0x70000000.  Given below is the
+           SRAM memory layout in SDK 08.00 release, during R5 SPL bootloader stage.
 
-.. code-block:: console
+        .. code-block:: console
 
-     ┌──────────────────────────────────────┐0x70000000
-     │                                      │
-     │                                      │
-     │                                      │
-     │    SPL IMAGE (Max size 1.5 MB)       │
-     │                                      │
-     │                                      │
-     │                                      │
-     ├──────────────────────────────────────┤0x7017FFFF
-     │                                      │
-     │           SPL STACK                  │
-     │                                      │
-     ├──────────────────────────────────────┤0x70192727
-     │          GLOBAL DATA(216 B)          │
-     ├──────────────────────────────────────┤0x701927FF
-     │                                      │
-     │       INITIAL HEAP (32 KB)           │
-     │                                      │
-     ├──────────────────────────────────────┤0x7019A7FF
-     │                                      │
-     │          BSS  (20 KB)                │
-     ├──────────────────────────────────────┤0x7019F7FF
-     │         EEPROM DATA (2 KB)           │
-     ├──────────────────────────────────────┤0x7019FFFF
-     │                                      │
-     │                                      │
-     │     UNALLOCATED AREA (123 KB)        │
-     │                                      │
-     │                                      │
-     ├──────────────────────────────────────┤0x701BEBFB
-     │   BOOT PARAMETER INDEX TABLE (5124 B)│
-     ├──────────────────────────────────────┤0x701BFFFF
-     │                                      │
-     │             TF-A (128 KB)            │
-     │                                      │
-     ├──────────────────────────────────────┤0x701DFFFF
-     │                                      │
-     │      DMSC CODE AREA (128 KB)         │
-     │                                      │
-     └──────────────────────────────────────┘0x701FFFFF
+            ┌──────────────────────────────────────┐0x70000000
+            │                                      │
+            │                                      │
+            │                                      │
+            │    SPL IMAGE (Max size 1.5 MB)       │
+            │                                      │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x7017FFFF
+            │                                      │
+            │           SPL STACK                  │
+            │                                      │
+            ├──────────────────────────────────────┤0x70192727
+            │          GLOBAL DATA(216 B)          │
+            ├──────────────────────────────────────┤0x701927FF
+            │                                      │
+            │       INITIAL HEAP (32 KB)           │
+            │                                      │
+            ├──────────────────────────────────────┤0x7019A7FF
+            │                                      │
+            │          BSS  (20 KB)                │
+            ├──────────────────────────────────────┤0x7019F7FF
+            │         EEPROM DATA (2 KB)           │
+            ├──────────────────────────────────────┤0x7019FFFF
+            │                                      │
+            │                                      │
+            │            TF-A (123 KB)             │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x701BEBFB
+            │   BOOT PARAMETER INDEX TABLE (5124 B)│
+            ├──────────────────────────────────────┤0x701BFFFF
+            │                                      │
+            │        UNALLOCATED  AREA(128 KB)     │
+            │                                      │
+            ├──────────────────────────────────────┤0x701DFFFF
+            │                                      │
+            │      DMSC CODE AREA (128 KB)         │
+            │                                      │
+            └──────────────────────────────────────┘0x701FFFFF
 
-.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+        - In SDK 08.01 release, TF-A will be moved to 0x701c0000 and 128 KB will be
+          reserved for it. Given below is the memory layout after making this change.
 
-    - In the last 128 KB of memory used by DMSC during run time, initial 80 KB 
-      gets freed after a security handover happens. The last 48 KB still will be used by DMSC.
-    - For more details on Security handover see `here <https://software-dl.ti.com/tisci/esd/latest/6_topic_user_guides/security_handover.html>`__ .
+        .. code-block:: console
+
+            ┌──────────────────────────────────────┐0x70000000
+            │                                      │
+            │                                      │
+            │                                      │
+            │    SPL IMAGE (Max size 1.5 MB)       │
+            │                                      │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x7017FFFF
+            │                                      │
+            │           SPL STACK                  │
+            │                                      │
+            ├──────────────────────────────────────┤0x70192727
+            │          GLOBAL DATA(216 B)          │
+            ├──────────────────────────────────────┤0x701927FF
+            │                                      │
+            │       INITIAL HEAP (32 KB)           │
+            │                                      │
+            ├──────────────────────────────────────┤0x7019A7FF
+            │                                      │
+            │          BSS  (20 KB)                │
+            ├──────────────────────────────────────┤0x7019F7FF
+            │         EEPROM DATA (2 KB)           │
+            ├──────────────────────────────────────┤0x7019FFFF
+            │                                      │
+            │                                      │
+            │     UNALLOCATED AREA (123 KB)        │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x701BEBFB
+            │   BOOT PARAMETER INDEX TABLE (5124 B)│
+            ├──────────────────────────────────────┤0x701BFFFF
+            │                                      │
+            │             TF-A (128 KB)            │
+            │                                      │
+            ├──────────────────────────────────────┤0x701DFFFF
+            │                                      │
+            │      DMSC CODE AREA (128 KB)         │
+            │                                      │
+            └──────────────────────────────────────┘0x701FFFFF
+
+        - In the last 128 KB of memory used by DMSC during run time, initial 80 KB
+          gets freed after a security handover happens. The last 48 KB still will be used by DMSC.
+        - For more details on Security handover see `here <https://software-dl.ti.com/tisci/esd/latest/6_topic_user_guides/security_handover.html>`__ .
+
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        .. code-block:: console
+
+            ┌──────────────────────────────────────┐0x43c00000
+            │                                      │
+            │                                      │
+            │               SPL IMAGE              │
+            │           (Max size 204 KB)          │
+            │            (excluding BSS)           │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c33000
+            │                                      │
+            │             EMPTY (18KB)             │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c37800
+            │                                      │
+            │                                      │
+            │             BSS (20 KB)              │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3c800
+            │                                      │
+            │        DM config data (1.5KB)        │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3cd82
+            │                                      │
+            │                                      │
+            │              EMPTY (9KB)             │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3f290
+            │                                      │
+            │       ROM Boot parameter table       │
+            │    + Extended boot info (3.5 KB)     │
+            │                                      │
+            ├──────────────────────────────────────┤0x43c3ffff
+            .                                      .
+            .                                      .
+            .                                      .
+            ├──────────────────────────────────────┤0x70000000
+            │                                      │
+            │                                      │
+            │                STACK                 │
+            │                                      │
+            │                                      │
+            ├──────────────────────────────────────┤0x70006f1f
+            │             Global Data              │
+            ├──────────────────────────────────────┤0x70006fff
+            │                                      │
+            │                HEAP                  │
+            │                                      │
+            └──────────────────────────────────────┘0x7000ffff
