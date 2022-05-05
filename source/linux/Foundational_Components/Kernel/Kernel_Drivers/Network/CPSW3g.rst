@@ -102,6 +102,15 @@ mode.
 
      ip link set eth0 promisc on
 
+Set MacAddress manually
+=======================
+While the default MacAddress of the port is obtained from EEPROM, it's
+possible to change the MacAddress manually from shell.
+
+::
+     ip link set dev <eth0> address <macaddress>
+
+
 Multi port Switch mode
 ======================
 
