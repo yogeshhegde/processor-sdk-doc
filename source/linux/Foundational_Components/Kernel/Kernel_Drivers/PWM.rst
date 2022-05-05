@@ -3,210 +3,178 @@
 PWM
 ---------------------------------
 
-.. rubric:: **Introduction**
+.. rubric:: Introduction
    :name: introduction-linux-core-pwm-ug
 
-| Linux has support for Enhanced Pulse Width Modulator (ePWM) and
-  Auxiliary Pulse Width Modulator (APWM) modules. APWM is Enhanced
-  Capture (eCAP) module configured in PWM mode. These devices are part
-  of The Pulse-Width Modulation Subsystem (PWMSS)
+Linux has support for Enhanced Pulse Width Modulator (ePWM) and
+Auxiliary Pulse Width Modulator (APWM) modules. APWM is Enhanced
+Capture (eCAP) module configured in PWM mode. These devices are part
+of the Pulse-Width Modulation Subsystem (PWMSS).
 
-.. rubric:: **PWMSS software architecture**
+.. rubric:: PWMSS software architecture
    :name: pwmss-software-architecture
 
 .. Image:: /images/AM335X_PWM-SS_arch.JPG
 
-.. rubric:: Driver Configuration
+.. rubric:: Kernel Configuration
    :name: driver-configuration-pwm
 
-.. rubric:: Procedure to build eHRPWM driver
-   :name: procedure-to-build-ehrpwm-driver
+.. rubric:: Enable the eHRPWM driver
+   :name: enable-the-ehrpwm-driver
 
 ::
 
-             Device Drivers --->
-                     <*> Pulse Width Modulation(PWM) Support --->
-                        <*> eHRPWM PWM support   
+   Device Drivers --->
+      <*> Pulse Width Modulation(PWM) Support --->
+         <*> eHRPWM PWM support
 
-.. rubric:: Procedure to build eCAP driver
-   :name: procedure-to-build-ecap-driver
+.. rubric:: Enable the eCAP driver
+   :name: enable-the-ecap-driver
 
 ::
 
-             Device Drivers --->
-                     <*> Pulse Width Modulation(PWM) Support --->
-                        <*> eCAP PWM support   
+   Device Drivers --->
+      <*> Pulse Width Modulation(PWM) Support --->
+         <*> eCAP PWM support
 
-| 
+.. note::
+   -  eHRPWM modules provide two PWM output channels per instance.
 
-.. rubric:: **Driver Usage**
+   -  eCAP modules provide a single PWM output channel pre instance when configured in APWM mode.
+
+
+.. rubric:: Driver Usage
    :name: driver-usage-pwm
 
-.. rubric:: **eCAP**
-   :name: ecap
+.. rubric:: Using PWM with the sysfs interface
+   :name: using-pwm-with-sysfs-interface
 
-The current release of the driver supports only PWM mode. eCAP can be
-controlled from the user space through SYSFS interface. SYSFS interface
-for eCAP is available at
+The PWMs can be used from the userspace with a simple sysfs interface exposed at ``/sys/class/pwm/``. Each probed PWM controller/chip will be exported as pwmchipN, where N is the base of the PWM chip. The following attributes are available for each pwmchipN:
 
-::
+-  **npwm**
 
-    target$ cat /sys/class/pwm/pwmchipN
+  The number of PWM channels this chip supports.
 
-Where,
+-  **export**
 
-::
+  Exports a PWM channel for use with sysfs.
 
-    ‘N’ is the eCAP instance.
+-  **unexport**
 
-| **Various SYSFS Attributes**
+  Unexports a PWM channel from sysfs.
 
-| 2 types of SYSFS attributes are available
+The PWM channels are numbered per-chip from 0 to npwm-1.
+When a PWM channel is exported a pwmX directory will be created in the pwmchipN directory, where X is the number of the channel that was exported. The following attributes will then be available in the pwmX directory:
 
-#. Request and Control attributes
-#. Configuration attributes
+-  **period**
 
-.. raw:: html
+  The total period of the PWM signal in nanoseconds.
 
-   <div
-   style="padding-right: 5px; padding-left: 5px; background: rgb(238,238,238); padding-bottom: 5px; color: rgb(21,27,84); padding-top: 5px">
+-  **duty_cycle**
 
-**Note**
+  The active time of the PWM signal in nanoseconds. Must be less than the period.
 
--  Below examples uses eCAP instance 0 (i = 0).
+-  **polarity**
 
-.. raw:: html
+  Changes the polarity of the PWM signal. The value written is the string “normal” or “inversed”.
 
-   </div>
+-  **enable**
 
-**Type 1 attributes**
+  Enable/disable the PWM signal.
 
--  ***export*** Attribute.
+  -  0 - disabled
+  -  1 - enabled
 
-Ask the kernel to export a PWM channel. Writing 0 to the export
-attribute Acquires the channel and writing 0 to the unexport attribute
-Frees/Releases the channel. Before performing any operations, device has
-to be requested first.
+**Example**
 
-| 
-| **Example**
+List the available PWM controllers.
 
--  Request the Device:
+.. code-block:: bash
 
-::
+   $ ls /sys/class/pwm/
+   pwmchip0  pwmchip1  pwmchip2  pwmchip3  pwmchip5  pwmchip7
 
-    target$ echo 0 > /sys/class/pwm/pwmchip0/export
+The number of channels per controller is reported in the ``npwm`` attribute.
 
--  free the device:
+.. code-block:: bash
 
-::
+   $ cat /sys/class/pwm/pwmchip5/npwm
+   2
 
-    target$ echo 0 > /sys/class/pwm/pwmchip0/unexport
+The ``pwmchip5`` controller is a 2 channel ePWM. Export the second channel (EPWM_B, channel 1).
 
--  ***run*** Attribute
+.. code-block:: bash
 
-Enable/disable the PWM channel
+   $ echo 1 > /sys/class/pwm/pwmchip5/export
 
-| **Example**
+Verify ``pwm1`` directory exists in the ``pwmchip5`` directory.
 
--  Enable the PWM
+.. code-block:: bash
 
-::
+   $ ls /sys/class/pwm/pwmchip5/
+   device  export  npwm  power  pwm1  subsystem  uevent unexport
 
-    target$ echo 1 > /sys/class/pwm/pwmchip0/pwm0/enable
+.. note::
+    The PWM period and duty cycle must be configured before enabling any channel.
 
--  Disable the PWM
+Set a period of 100 milliseconds with 30% duty cycle. The values are in nanoseconds.
 
-::
+.. code-block:: bash
 
-    target$ echo 0 > /sys/class/pwm/pwmchip0/pwm0/enable
+    $ echo 100000000 > /sys/class/pwm/pwmchip5/pwm1/period
+    $ echo 30000000 > /sys/class/pwm/pwmchip5/pwm1/duty_cycle
 
-.. raw:: html
+Set the PWM signal polarity to "inversed" (or "normal") if required.
 
-   <div style="padding:5px; background: #eeeeee; color: #E8A317">
+.. code-block:: bash
 
-| **CAUTION**
-| Before enabling the module, the module needs to be configured using
-  below configuration attributes. Else proper operation is not assured.
+    $ echo "inversed" > /sys/class/pwm/pwmchip5/pwm1/polarity
+    $ cat /sys/class/pwm/pwmchip5/pwm1/polarity
+    inversed
 
-.. raw:: html
+Enable the PWM channel.
 
-   </div>
+.. code-block:: bash
 
-| 
+    $ echo 1 > /sys/class/pwm/pwmchip5/pwm1/enable
 
-**Type 2 attributes**
+.. rubric:: Using PWM with kernel PWM API
+   :name: using-pwm-with-kernel-pwm-api
 
-| i.\ **Setting the Period**
-| Following attributes set the period of the PWM waveform.
+A few examples of kernel drivers using the kernel PWM API:
 
--  ***period*** Attribute
+- pwm-backlight: `drivers/video/backligt/pwm_bl.c <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/video/backlight/pwm_bl.c?h=ti-linux-5.10.y>`_
 
-Enter the period in nano seconds value.
+- pwm-beeper: `drivers/input/misc/pwm-beeper.c <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/input/misc/pwm-beeper.c?h=ti-linux-5.10.y>`_
 
-| **Example**
-| if the period is 1 sec , enter
+- pwm-vibrator: `drivers/input/misc/pwm-vibra.c <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/drivers/input/misc/pwm-vibra.c?h=ti-linux-5.10.y>`_
 
-::
+.. rubric:: Troubleshooting the PWM setup
+   :name: troubleshoot-the-pwm-setup
 
-    target$ echo 1000000000 > /sys /class/pwm/pwmchip0/pwm0/period
+The current PWM settings for ePWM and eCAP(APWM) can be monitored from the debugfs ``pwm`` entry.
 
-| ii.\ **Setting the Duty**
-| Following attributes set the duty of the PWM waveform.
+.. code-block:: bash
 
--  ***duty\_cycle*** Attribute
+    $ cat /sys/kernel/debug/pwm
+    platform/23020000.pwm, 2 PWM devices
+     pwm-0   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
+     pwm-1   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
 
-Enter the Duty cycle value in nanoseconds.
+    platform/23010000.pwm, 2 PWM devices
+     pwm-0   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
+     pwm-1   (sysfs               ): requested enabled period: 100000000 ns duty: 50000000 ns polarity: inverse
 
-::
+    platform/23000000.pwm, 2 PWM devices
+     pwm-0   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
+     pwm-1   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
 
-    target$ echo val > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
+    platform/23120000.pwm, 1 PWM device
+     pwm-0   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
 
-| iii.\ **Setting the Polarity**
+    platform/23110000.pwm, 1 PWM device
+     pwm-0   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
 
--  ***Polarity*** Attribute.
-
-Setup Signal Polarity
-
-| **Example**
-| To set the polarity to Active High, Enter
-
-::
-
-    target$ echo 1 > /sys /class/pwm/pwmchip0/pwm0/polarity
-
-| 
-
-| **Example**
-| To set the polarity to Active Low, Enter
-
-::
-
-    target$ echo 0 > /sys /class/pwm/pwmchip0/pwm0/polarity
-
-| 
-
-.. rubric:: Controlling backlight
-   :name: controlling-backlight
-
-| Following are the 2 procedures to vary brightness of the LCD screen.
-
-| i. Setting duty percentage of pwm wave from eCAP sysfs files
-
-::
-
-    target$ echo val > /sys/class/pwm/pwmchip0/pwm0/duty_cycle
-
-| 'val' can range from 0 to 100.
-| ii. Setting brightness from backlight sysfs files
-
-::
-
-    target$ echo val > /sys/class/backlight/backlight.8/brightness
-
-'val' can range from 0 to 8.
-
-.. raw:: html
-
-   </div>
+    platform/23100000.pwm, 1 PWM device
+     pwm-0   ((null)              ): period: 0 ns duty: 0 ns polarity: normal
 
