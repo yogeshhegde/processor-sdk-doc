@@ -55,6 +55,11 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/DWC3
+linux/Foundational_Components/PRU-ICSS-Linux-Drivers
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg
+linux/Foundational_Components/PRU-ICSS/RPMsg_Quick_Start_Guide
+linux/Foundational_Components/PRU-ICSS-Training
 
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
