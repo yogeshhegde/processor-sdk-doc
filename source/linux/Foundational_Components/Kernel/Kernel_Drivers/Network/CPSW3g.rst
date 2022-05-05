@@ -90,6 +90,18 @@ Multi MAC mode
 
 .. include:: K3-CPSW-common.inc.rst
 
+Promiscous Mode
+===============
+By default promiscous mode is disabled. It can be enabled by using
+the below command.
+
+Please note running a tool like tcpdump will itself enable promiscous
+mode.
+
+::
+
+     ip link set eth0 promisc on
+
 Multi port Switch mode
 ======================
 
