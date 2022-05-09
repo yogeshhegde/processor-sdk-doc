@@ -48,6 +48,7 @@ Processor SDK Linux AM64x Release has following new features:
 - Yocto Dunfell/3.1
 - NAND boot, Ethernet boot, Secure Boot, ICSSG-Dual Emac
 - AM64 HS EVM support
+- Improved DDR bandwidth on AM64 SK Board
 
 Build Information
 =====================================
