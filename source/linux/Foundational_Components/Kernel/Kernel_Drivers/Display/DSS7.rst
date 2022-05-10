@@ -148,6 +148,8 @@ DRM Plane Features
 - Z-order
 - Global alpha blending
 - Alpha blending (pre-multipled & non-pre-multiplied)
+- Input Video Formats
+  (Fourcc codes of supported formats: AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 AR15 AB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12)
 
 DRM CRTC Features
 
