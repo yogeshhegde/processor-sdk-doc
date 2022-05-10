@@ -28,6 +28,7 @@ linux/Foundational_Components/U-Boot/UG-DFU
 #linux/Foundational_Components/U-Boot/UG-Network
 linux/Foundational_Components/U-Boot/UG-Memory
 linux/Foundational_Components/U-Boot/UG-SPI
+linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
 #linux/Foundational_Components/U-Boot/UG-DDR3	(Must be DDR4: Needs a new doc to be created in another patch)
 linux/Foundational_Components/U-Boot/UG-Network-K3
@@ -54,6 +55,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng_virt_mac
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/PWM
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
+linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/AM62_DWC3
