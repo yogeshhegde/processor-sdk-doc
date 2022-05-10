@@ -36,6 +36,9 @@ different TI SoCs:
 | AM654/J721e   | 1x OSPI,  | drivers/spi/spi-cadence-quadspi.c    |
 |               | 1x QSPI   |                                      |
 +---------------+-----------+--------------------------------------+
+| AM62x         | 1x OSPI,  | drivers/spi/cadence_qspi.c           |
+|               | 1x QSPI   |                                      |
++---------------+-----------+--------------------------------------+
 
 .. note::
 
@@ -362,3 +365,40 @@ Now you can access filesystem at /mnt/flash/.
               		};
               	};
               };
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+    .. rubric:: Using Micron MT35XU512ABA1G12-0AAT flash on AM62x
+
+    AM62x Starter Kit (SK) by default comes with with the Cypress S28HS512TGABHM010 flash. But the
+    Micron MT35XU512ABA1G12-0AAT flash can be used with it with some slight
+    modifications to the device tree properties. The patch below should allow using
+    the flash on AM62x SK. Note that applying it will likely make the Cypress flash unusable.
+
+    ::
+
+             diff --git a/arch/arm64/boot/dts/ti/k3-am625-sk.dts b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+             index 618e1efb7344..0fe52818f16b 100644
+             --- a/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+             +++ b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+             @@ -763,7 +763,7 @@ flash@0{
+                             cdns,tsd2d-ns = <60>;
+                             cdns,tchsh-ns = <60>;
+                             cdns,tslch-ns = <60>;
+             -               cdns,read-delay = <4>;
+             +               cdns,read-delay = <0>;
+                             cdns,phy-mode;
+ 
+                             partitions {
+             @@ -801,9 +801,9 @@ partition@800000 {
+                                             reg = <0x800000 0x37c0000>;
+                                     };
+ 
+             -                       partition@3fc0000 {
+             +                       partition@3fe0000 {
+                                             label = "ospi.phypattern";
+             -                               reg = <0x3fc0000 0x40000>;
+             +                               reg = <0x3fe0000 0x20000>;
+                                     };
+                              };
+                     };
