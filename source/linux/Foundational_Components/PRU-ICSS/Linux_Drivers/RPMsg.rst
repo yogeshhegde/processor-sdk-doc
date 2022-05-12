@@ -25,6 +25,8 @@ Linux ARM to PRU RPMsg communication is supported on these processors:
 
  * AM64x
 
+ * AM62x
+
 .. rubric:: RPMsg
    :name: rpmsg
 

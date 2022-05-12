@@ -90,6 +90,27 @@ Multi MAC mode
 
 .. include:: K3-CPSW-common.inc.rst
 
+Promiscous Mode
+===============
+By default promiscous mode is disabled. It can be enabled by using
+the below command.
+
+Please note running a tool like tcpdump will itself enable promiscous
+mode.
+
+::
+
+     ip link set eth0 promisc on
+
+Set MacAddress manually
+=======================
+While the default MacAddress of the port is obtained from EEPROM, it's
+possible to change the MacAddress manually from shell.
+
+::
+     ip link set dev <eth0> address <macaddress>
+
+
 Multi port Switch mode
 ======================
 
@@ -235,12 +256,15 @@ Here is the commands to setup cut-through for priority 0 traffic
  ip link set dev eth0 down
  ip link set dev eth1 down
 
- devlink dev param set platform/8000000.ethernet name switch_mode value
+ devlink dev param set platform/8000000.ethernet name switch_mode value true cmode runtime
 
  echo 1 > /sys/kernel/debug/8000000.ethernet/Port1/cut_thru_rx_pri_mask
  echo 1 > /sys/kernel/debug/8000000.ethernet/Port1/cut_thru_tx_pri_mask
  echo 1 > /sys/kernel/debug/8000000.ethernet/Port2/cut_thru_rx_pri_mask
  echo 1 > /sys/kernel/debug/8000000.ethernet/Port2/cut_thru_tx_pri_mask
+
+ ethtool --set-priv-flags eth0 cut-thru on
+ ethtool --set-priv-flags eth1 cut-thru on
 
  ip link add name br0 type bridge
  ip link set dev br0 type bridge ageing_time 1000
