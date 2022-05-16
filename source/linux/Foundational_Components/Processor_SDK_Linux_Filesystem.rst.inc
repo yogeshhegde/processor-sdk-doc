@@ -16,11 +16,27 @@ the SDK Installation directory/filesystem/ folder.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
+    .. rubric:: tisdk-bootstrap-image
+
+    This image is a complete minimal system containing a rootfs and an initrd
+    with platform test utilities that can be used for new platform bringup
+    activities. Typically one would use the bootstrap initrd till the
+    storage media access is debugged, following which one would switch
+    over to using the storage media of choice with the same content. This
+    image has systemd replaced with sysvinit.
+
     .. rubric:: tisdk-base-image
 
     This is the barebones images, intended to be a starting point for
     users to add packages and create a custom filesystem that suits their
     project needs.
+
+    .. rubric:: tisdk-thinlinux-image
+
+    This is a minimal system image enabled with containers to provide
+    an environment to start the next level of complex systems up. Depending
+    on the platform capabilities, graphics is enabled by default as well.
+
 
 .. rubric:: tisdk-default-image
 
