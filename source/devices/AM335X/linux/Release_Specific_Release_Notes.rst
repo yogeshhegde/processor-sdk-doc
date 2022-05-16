@@ -45,23 +45,17 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 07.03.00
+Release 08.02.00
 ==================
 
-Released June 2021
+Released May 2022
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 7.3 Release has following new features:
+Processor SDK 8.2 Release has following new features:
 
- - 2020 LTS Update (Kernel 5.4, U-boot: 2020.01, gcc: 9.2 2019.12 hf, Yocto 3.1 (dunfell))
- - PRUSS HW UART Support
-    - Up to 12M baud rate
-    - Hardware flow control support
-- HSR/PRP with PRU-ICSS firmware offload support has been descoped
-- ICSS-EMAC support has been descoped
-- SORTE support has been descoped
+ - 2021 LTS Update (Kernel 5.10, U-boot: 2021.01, gcc: 9.2 2019.12 hf, Yocto 3.1 (dunfell))
 
 .. _release-specific-sdk-components-versions:
 
@@ -71,9 +65,9 @@ Processor SDK 7.3 Release has following new features:
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 5.4.106 (2020 LTS)         |
+| Linux Kernel             | 5.10.100 (2021 LTS)        |
 +--------------------------+----------------------------+
-| U-Boot                   | 2020.01                    |
+| U-Boot                   | 2021.01                    |
 +--------------------------+----------------------------+
 | Yocto Project            | 3.1 (dunfell)              |
 +--------------------------+----------------------------+
@@ -112,10 +106,11 @@ U-Boot
 -------------------------
 
 | The U-Boot git repository, branch and commit id can be found below:
-| Based on verson: 2020.01
+| Based on verson: 2021.01
 | URL: git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2020.01
-| Commit ID: 2781231a33c3d779e32445f4fe55164c45d6d7c1
+| Branch: ti-u-boot-2021.01
+| uBoot Tag: 08.02.00.006
+| Commit ID: 44a87e3ab85c6d64044f0b5ad677008316baad70
 
 |
 
@@ -130,10 +125,11 @@ Kernel
    :name: linux-kernel
 
 | The kernel git repository, branch and commit id can be found below:
-| Based on Version: 5.4.106
+| Based on Version: 5.10.100
 | URL: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-5.4.y
-| Commit ID: 023faefa70274929bff92dc41167b007f7523792
+| Branch: ti-linux-5.10.y
+| Tag: 08.02.00.006
+| Commit ID: 7a7a3af903da2b2d551d058f8262a66e6b42b6b1
 
 |
 
@@ -144,11 +140,12 @@ Kernel
 
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
-| Kernel Version: 5.4.106
-| RT Kernel Version: 5.4.106-rt54
+| Kernel Version: 5.10.100
+| RT Kernel Version: 5.10.100-rt62
 
 | URL: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-5.4.y
+| Branch: ti-rt-linux-5.10.y
+| Tag: 08.02.00.006-rt
 | Commit ID: 519667b0d81d74a6e55105dcd6072ae550352599
 
 |
@@ -160,7 +157,7 @@ Kernel
    :name: generic-kernel-release-notes
 
 | Generic kernel release notes from kernelnewbies.org can be found at:
-  http://kernelnewbies.org/Linux_5.4
+  http://kernelnewbies.org/Linux_5.10
 | Archived versions can be found at:
   http://kernelnewbies.org/LinuxVersions
 
@@ -171,19 +168,19 @@ Issues Tracker
 
 Issues opened in previous releases that were closed on this release
 ---------------------------------------------------------------------
+.. csv-table::
+   :header: "Record ID", "Platform", "Title"
+   :widths: 15, 20, 70
 
- - None
+   SITSW-428,"am335x-evm,am335x-sk","Matrix demo is not running by default"
+   SITSW-706,"am335x-evm,am335x-ice,am335x-sk,am437x-idk,am437x-sk","Top level makefile broken in AM335x & AM437x"
 
 |
 
 
 Issues found and closed on this release that may be applicable to prior releases
 -----------------------------------------------------------------------------------
-.. csv-table::
-   :header: "Record ID", "Platform", "Title"
-   :widths: 15, 20, 70
-
-   LCPD-20209,"am335x-evm",cpsw: dual_mac: kernel crash when DT ""slaves=<1>""
+ - None
 
 |
 
@@ -193,18 +190,13 @@ SDK Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 25, 30, 50, 600
 
-   SITSW-428,"am335x-evm,am335x-sk","Matrix demo is not running by default","Restart the Matrix demo manually after boot"
-   SITSW-429,"am335x-ice","Kernel crash while running docker hello-world example",""
-   LCPD-20148,"am335x-evm","am335x-evm: Yocto recipe in meta-processor-sdk needs to be fixed for origin reference",""
+   SITSW-1357,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Some of the Matrix QT5 demos (Touch, Thermostat, Browser) are failing",""
+   SITSW-1358,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Matrix KMScube demo is failing",""
+   LCPD-28033,"am335x-evm,am335x-ice,am335x-sk,am43xx-gpevm,am437x-idk,am437x-sk,beaglebone","Error while running docker hello world example",""
+   LCPD-27524,"am335x-evm,am335x-sk","Yocto: SRCIPK Packaging Build Failures for Kernel/U-Boot",""
    LCPD-19858,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am64xx-evm,am64xx-vlab,am64xx-zebu,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm","OE: OPTEE label used in SDK is old and wrong",""
-   LCPD-19279,"am335x-evm,am43xx-gpevm","openssl_perf.sh functionality to be included in rootfs (decouple from matrixgui)",""
-   LCPD-18270,"am335x-evm,am43xx-gpevm,am571x-idk,am572x-idk,am574x-idk,am57xx-evm,am57xx-beagle-x15,am654x-evm,am654x-idk,dra71x-evm,dra72x-evm,dra76x-evm,dra7xx-evm,j721e-evm,j721e-evm-ivi,j721e-idk-gw","Ivi shell test fails. Lib ivi-controller.so and other components are missing from the file system",""
    LCPD-17817,"am335x-hsevm,am43xx-epos,am43xx-hsevm,k2e-hsevm,k2g-hsevm,k2hk-hsevm,k2l-hsevm","Images created with Proc-SECDEV grow with number of times SECDEV has been used",""
    LCPD-17449,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm","libasan_preinit.o is missing in devkit",""
-   LCPD-17413,"am335x-evm,am43xx-gpevm,am57xx-evm,am654x-evm","QT Webengine-based browser: the mouse does not work within the web page with QPA EGLFS",""
-   LCPD-17164,"am335x-evm,am571x-idk,am574x-idk,am57xx-evm,dra71x-evm,dra7xx-evm","GLBenchmark is not able to run missing libgbm.so.2 error reported","create a symlink for linker file"
-   LCPD-16114,"am335x-evm,am335x-ice,am335x-sk","RTC Init Script Needs to Wait for Module Load",""
-   LCPD-15810,"am335x-evm,am43xx-gpevm,k2g-evm","Illegal instruction reported when trying to decode h264 stream with gstreamer","None"
    LCPD-15367,"am335x-evm,am574x-idk","Boot time increased about 15s ",""
    LCPD-13947,"am335x-evm","nativesdk-opkg is broken in the devkit",""
    LCPD-12405,"am335x-evm,am335x-ice,am43xx-epos,am43xx-gpevm,am57xx-evm,dra71x-evm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2l-evm","Openssl certgen fails due to coredump in openssl_gen_cert.sh",""
@@ -233,6 +225,7 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround"
    :widths: 5, 10, 70, 10, 5, 20, 35
 
+   LCPD-26694,"am335x-ice,am437x-idk","AM335x/AM437x PRU Ethernet slowdown from kernel 4.19 -> 5.4/5.10",""
    LCPD-22355,"P5-Not Prioritized","Update PHY latency values in SDK documentation","Connectivity","","am335x-ice,am437x-idk,am571x-idk,am572x-idk,am574x-idk",""
    LCPD-19757,"P3-Medium","OpenSSL DES performance numbers are lower in 07.01","Baseport,System Test","","am335x-evm",""
    LCPD-19703,"P3-Medium","suspicious RCU usage wkup_m3_prepare_low_power on am335x-evm: 20201002","Baseport","","am335x-evm",""
@@ -244,7 +237,6 @@ Linux Kernel Known Issues
    LCPD-15787,"P3-Medium","Power suspend fails due to USB (scsi_bus_suspend) failure when HDD is in use","Connectivity","","am335x-evm",""
    LCPD-15648,"P4-Low","Uboot mmc write performance decreased","Connectivity","","am335x-evm",""
    LCPD-14855,"P3-Medium","omap_i2c_prepare_recovery() function can Lock System","Connectivity","I2C","am335x-evm,am335x-ice,am335x-sk",""
-   LCPD-14191,"P3-Medium","IPSec hardware-based throughput is 30% lower than 2018.03","Baseport","","am335x-evm,am57xx-evm",""
    LCPD-13720,"P3-Medium","SPI DMA TX Mode Halts During Continuous 16/32/64 bit Transfers ","Connectivity","","beaglebone-black",""
    LCPD-12392,"P4-Low","USBhost video: higher resolution tests fail with some cameras","Connectivity","","am335x-evm",""
    LCPD-10221,"P3-Medium","Longer resume times observed on setup with usb device cable","Connectivity","USB","am335x-evm",""
