@@ -36,5 +36,5 @@ Configuration Values
 'CONFIG_sdk'              : 'PLSDK'
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
-'CONFIG_gpu_ip'           : \
+'CONFIG_gpu_ip'           : 'Rogue_AXE'
 
