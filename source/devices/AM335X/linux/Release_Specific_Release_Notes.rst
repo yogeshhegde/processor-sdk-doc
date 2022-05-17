@@ -57,6 +57,8 @@ Processor SDK 8.2 Release has following new features:
 
  - 2021 LTS Update (Kernel 5.10, U-boot: 2021.01, gcc: 9.2 2019.12 hf, Yocto 3.1 (dunfell))
 
+|
+
 .. _release-specific-sdk-components-versions:
 
 .. rubric:: SDK Components & Versions
@@ -146,7 +148,7 @@ Kernel
 | URL: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.10.y
 | Tag: 08.02.00.006-rt
-| Commit ID: 519667b0d81d74a6e55105dcd6072ae550352599
+| Commit ID: 204ec708dc86f4334f585f04835527570be1c4eb
 
 |
 
@@ -192,6 +194,7 @@ SDK Known Issues
 
    SITSW-1357,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Some of the Matrix QT5 demos (Touch, Thermostat, Browser) are failing",""
    SITSW-1358,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Matrix KMScube demo is failing",""
+   SITSW-1376,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Matrix demo does not start until XFRM netlink socket initialization is complete","Reload localhost URL after XFRM netlink socket initialization is completed"
    LCPD-28033,"am335x-evm,am335x-ice,am335x-sk,am43xx-gpevm,am437x-idk,am437x-sk,beaglebone","Error while running docker hello world example",""
    LCPD-27524,"am335x-evm,am335x-sk","Yocto: SRCIPK Packaging Build Failures for Kernel/U-Boot",""
    LCPD-19858,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am64xx-evm,am64xx-vlab,am64xx-zebu,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm","OE: OPTEE label used in SDK is old and wrong",""
