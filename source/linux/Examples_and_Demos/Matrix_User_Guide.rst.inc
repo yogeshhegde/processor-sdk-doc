@@ -31,6 +31,13 @@ booting, and only
 `Remote\_Matrix <http://processors.wiki.ti.com/index.php/Matrix_Users_Guide#Remote_Matrix>`__
 is available for use after the booting.
 
+.. note::
+ Matrix demo does not start until XFRM netlink socket initialization is complete on the platfroms with display support.
+ If the Matrix demo is enabled to run during boot, an error message 'Connection Refused. Failed to load URL http://localhost' will be displayed.
+ Wait until 'Initializing XFRM netlink socket' message is displayed in the serial console and click on URL http://localhost to start the Matrix demo.
+
+|
+
 .. rubric:: Overview
    :name: overview-matrix
 
