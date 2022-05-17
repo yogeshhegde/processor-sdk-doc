@@ -8,6 +8,7 @@ Getting Started Guide
    :maxdepth: 5
 
    Overview/Processor_SDK_Linux_Getting_Started_Guide
+   Overview/Processor_SDK_Linux_create_SD_card
    Overview/Processor_SDK_Linux_create_SD_card_script
    Overview/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows
    Overview/Download_and_Install_the_SDK
