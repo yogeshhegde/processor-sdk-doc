@@ -12,6 +12,7 @@ PRU Getting Started Labs
    PRU-Getting-Started-Labs_Lab1
    PRU-Getting-Started-Labs_Lab2
    PRU-Getting-Started-Labs_Lab3
+   PRU-Getting-Started-Labs_Lab4
 
 Introduction
 ------------
