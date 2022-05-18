@@ -8,6 +8,7 @@ Lab 2: How to Write PRU Firmware
 
    PRU-Getting-Started-Labs_Lab2_cCode
    PRU-Getting-Started-Labs_Lab2_assemblyCode
+   PRU-Getting-Started-Labs_Lab2_mixedCandAssembly
 
 This lab will explain how to write firmware for a simple PRU program. The
 example PRU program will continuously add two numbers and save the result.
