@@ -193,5 +193,6 @@ common/PRU-ICSS/Overview
 common/PRU-ICSS/PRU-Cape-Building-Demos
 common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
 common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
+common/PRU-ICSS/PRU-Getting-Started-Labs
 common/PRU-ICSS/PRU-Hands-on-Labs
 common/PRU-ICSS/Resource_Tables
