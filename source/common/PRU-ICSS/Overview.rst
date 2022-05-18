@@ -127,7 +127,7 @@ Software Information
       Information about general purpose Ethernet over PRU is at
       :ref:`pru_icssg_ethernet`.
 
-   .. ifconfig:: CONFIG_part_family not in ('AM64X_family')
+   .. ifconfig:: CONFIG_part_family not in ('AM64X_family', 'AM62X_family')
 
       Industrial networking documentation at `Industrial Protocols <../../linux/Industrial_Protocols.html>`__
 
@@ -215,6 +215,10 @@ PRU evaluation hardware can be ordered from ti.com:
    * `TMDSIDK574 <https://www.ti.com/tool/TMDSIDK574>`__
 
    * `TMDXIDK5718 <https://www.ti.com/tool/TMDXIDK5718>`__
+
+ * AM62x
+
+   * SK-AM62
 
  * AM64x
 
@@ -313,7 +317,7 @@ My processor has a PRU. Is the PRU supported in the Linux Processor SDK?
 It depends. OMAP138 PRU is NOT supported in Processor SDKs, and there are
 no plans to add support for it. However, the latest Processor SDKs support
 general purpose PRU development for AM335x/AMIC110, AM437x/AMIC120, AM57x,
-AM243x, AM64x, AM65x, and 66AK2G02 (K2G). More processors will be added in
+AM243x, AM62x, AM64x, AM65x, and 66AK2G02 (K2G). More processors will be added in
 future releases.
 
 |

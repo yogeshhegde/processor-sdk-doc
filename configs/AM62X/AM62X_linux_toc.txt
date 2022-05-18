@@ -65,6 +65,17 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
 linux/Foundational_Components/Kernel/Kernel_Drivers/UART
 linux/Foundational_Components/Kernel/Kernel_Drivers/USB/AM62_DWC3
 
+linux/Foundational_Components_PRU-ICSS_PRU_ICSSG
+linux/Foundational_Components/PRU-ICSS-Linux-Drivers
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet
+linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg
+linux/Foundational_Components/PRU-ICSS/RPMsg_Quick_Start_Guide
+linux/Foundational_Components/PRU-ICSS-Hardware
+linux/Foundational_Components/PRU-ICSS/PRU-EVMs
+linux/Foundational_Components/PRU-ICSS-Training
+linux/Foundational_Components/PRU-ICSS-Firmware-Development
+
 linux/Foundational_Components_Kernel_Users_Guide
 linux/Foundational_Components_Kernel_LTP-DDT_Validation
 linux/Foundational_Components_Kernel_FAQs
@@ -100,3 +111,13 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
 
 system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
 system/Demo_User_Guides/HMI_and_3D_Demo_User_Guide
+
+common/PRU-ICSS/Getting_Started_with_PSSP
+common/PRU-ICSS/Header_Files
+common/PRU-ICSS/INTC_Configuration
+common/PRU-ICSS/Overview
+common/PRU-ICSS/PRU-Cape-Building-Demos
+common/PRU-ICSS/PRU-Cape-Getting-Started-Guide
+common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
+common/PRU-ICSS/PRU-Hands-on-Labs
+common/PRU-ICSS/Resource_Tables
