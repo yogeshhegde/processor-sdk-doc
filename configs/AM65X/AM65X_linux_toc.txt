@@ -139,5 +139,6 @@ common/PRU-ICSS/PRU-Cape-Hardware-User-Guide
 common/PRU-ICSS/PRU-Getting-Started-Labs
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab1
 common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2
+common/PRU-ICSS/PRU-Getting-Started-Labs_Lab2_cCode
 common/PRU-ICSS/PRU-Hands-on-Labs
 common/PRU-ICSS/Resource_Tables
