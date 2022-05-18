@@ -12,7 +12,7 @@ This page applies to TI's v5.10 kernel.
 Supported Devices
 =================
 
-There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS7, which are used on the following TI SoCs or SoC families: AM65x, J721E, J721S2.
+There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: AM65x, AM62x, J721E, J721S2.
 
 
 Hardware Architecture
