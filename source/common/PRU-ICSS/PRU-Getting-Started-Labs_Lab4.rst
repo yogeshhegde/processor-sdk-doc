@@ -30,6 +30,9 @@ running Linux.
    the TI-RTOS steps have **not** been tested for several years.
 
 
+.. provide a link here to the bottom of the page, where I'll list the legacy
+   TI-RTOS page
+
 .. _pru_getting_started_labs_initialize_from_ccs:
 
 Initializing the PRU from CCS
