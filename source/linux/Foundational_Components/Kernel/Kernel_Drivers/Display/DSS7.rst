@@ -1,3 +1,5 @@
+.. include:: /replacevars.rst.inc
+
 DSS
 #################
 
@@ -75,15 +77,24 @@ The timing generator part of the video port is responsible for providing the pix
 SoC Hardware Features
 ---------------------
 
-+--------+------------+---------------+-------------------+------------+
-| SoC    | DSS version| Outputs       | Pipes             | Video ports|
-+========+============+===============+===================+============+
-| AM65x  | DSS7-L     |  DPI, OLDI    | VID, VIDL         | 2          |
-+--------+------------+---------------+-------------------+------------+
-| J721E  | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
-+--------+------------+---------------+-------------------+------------+
-| J721S2 | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
-+--------+------------+---------------+-------------------+------------+
+SoC Family: |__PART_FAMILY_DEVICE_NAMES__|
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X')
+
+    +------------+---------------+-------------------+------------+
+    | DSS version| Outputs       | Pipes             | Video ports|
+    +============+===============+===================+============+
+    | DSS7-L     |  DPI, OLDI    | VID, VIDL         | 2          |
+    +------------+---------------+-------------------+------------+
+
+
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2')
+
+    +------------+---------------+-------------------+------------+
+    | DSS version| Outputs       | Pipes             | Video ports|
+    +============+===============+===================+============+
+    | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
+    +------------+---------------+-------------------+------------+
 
 
 Driver Architecture
