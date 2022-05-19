@@ -1,4 +1,4 @@
-DSS (DSS6 & DSS7)
+DSS
 #################
 
 Introduction
@@ -12,7 +12,7 @@ This page applies to TI's v5.10 kernel.
 Supported Devices
 =================
 
-There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: K2G, AM65x, J721E, J721S2.
+There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS7, which are used on the following TI SoCs or SoC families: AM65x, J721E, J721S2.
 
 
 Hardware Architecture
@@ -72,8 +72,6 @@ SoC Hardware Features
 +--------+------------+---------------+-------------------+------------+
 | SoC    | DSS version| Outputs       | Pipes             | Video ports|
 +========+============+===============+===================+============+
-| K2G    | DSS6-UL    |  DPI, DBI     | VID               | 1          |
-+--------+------------+---------------+-------------------+------------+
 | AM65x  | DSS7-L     |  DPI, OLDI    | VID, VIDL         | 2          |
 +--------+------------+---------------+-------------------+------------+
 | J721E  | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
