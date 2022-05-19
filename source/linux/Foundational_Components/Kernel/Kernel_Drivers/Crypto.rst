@@ -8,7 +8,7 @@ Crypto
 
 The Crypto API Driver is a set of Linux drivers that provide access to
 the hardware cryptographic accelerators available on
-AM335x/AM437x/AM57x/DRA7/AM65/J721E devices. These drivers are
+AM335x/AM437x/AM57x/DRA7/AM65/J721E/AM62 devices. These drivers are
 available built-in in the kernel in the current SDK release.
 
 Following are the Hardware accelerators supported on the following
@@ -20,6 +20,7 @@ devices:
     * AM437X       : MD5, SHA1, SAH224, SHA256, SHA384, SHA512, AES, DES, DES3DES
     * AM57x/DRA7   : AES, DES, DES3DES
     * AM65x/J721e  : AES, DES3DES, SHA1, SHA256, SHA512
+    * AM62X        : AES, SHA256, SHA512
 
 .. rubric:: Building the Driver
    :name: building-the-driver
