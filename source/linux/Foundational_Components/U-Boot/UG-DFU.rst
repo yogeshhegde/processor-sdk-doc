@@ -123,7 +123,25 @@ platform that support USB Peripheral boot mode.
      binary images from Host PC (using dfu-utils tool) to the eMMC, or
      QSPI to fresh/factory boards.
 
-.. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| EVM (SPL-DFU boot mode)
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+  #. Build the bootloader images using default "am62x_evm_r5_usbdfu_defconfig"
+     and "am62x_evm_a53_defconfig" configs files. The configs required for
+     DFU boot as well as DFU in U-Boot are already enabled. For instructions
+     to build the bootloader images please refer to :ref:`Build-U-Boot-label`.
+  #. Load the bootloader images tiboot3.bin, tispl.bin and u-boot.img using
+     the dfu-util from host PC.
+  #. Once the U-Boot is up, use DFU command from u-boot to flash the
+     binary images from Host PC (using dfu-utils tool) to the eMMC, or
+     QSPI to fresh/factory boards.
+
+.. ifconfig:: CONFIG_part_family not in ('AM62X_family')
+
+    .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| EVM (SPL-DFU boot mode)
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+    .. rubric:: USB Peripheral boot mode on |__PART_FAMILY_DEVICE_NAMES__| SK (SPL-DFU boot mode)
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
