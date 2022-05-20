@@ -68,7 +68,6 @@ linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
-linux/Foundational_Components_IPCLLD
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Graphics_and_Display
 linux/Foundational_Components_OPTEE
