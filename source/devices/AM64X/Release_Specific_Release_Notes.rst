@@ -64,7 +64,7 @@ U-Boot
 | uBoot Version: 2021.01
 | uBoot Description: 08.02.00.006
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: 08.02.00.006
+| Branch: ti-u-boot-2021.01
 | uBoot Tag: 08.02.00.006
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
