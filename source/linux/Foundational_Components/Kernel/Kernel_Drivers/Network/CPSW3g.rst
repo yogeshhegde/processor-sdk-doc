@@ -108,7 +108,24 @@ While the default MacAddress of the port is obtained from EEPROM, it's
 possible to change the MacAddress manually from shell.
 
 ::
+
      ip link set dev <eth0> address <macaddress>
+
+Broadcast/Multicast rate limiting
+=================================
+Broadcast/Multicast rate limiting can be performed by using switch-config tool
+
+For Broadcast rate limiting, the following command has to be used
+
+::
+
+    switch-config -l -B 500
+
+For Multicast rate limiting, the following command has to be used
+
+::
+
+    switch-config -l -L 500
 
 
 Multi port Switch mode
