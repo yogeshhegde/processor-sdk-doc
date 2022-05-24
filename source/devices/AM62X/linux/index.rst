@@ -16,6 +16,7 @@ Processor SDK Linux Software Developer's Guide
    /linux/Overview
    Release_Specific
    /linux/Foundational_Components
+   /linux/Foundational_Components_IPC62x
    /linux/How_to_Guides
    /linux/Documentation_Tarball
 
