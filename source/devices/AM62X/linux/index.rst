@@ -13,7 +13,7 @@ Processor SDK Linux Software Developer's Guide
    :hidden:
    :numbered:
 
-   /linux/Overview
+   Overview
    Release_Specific
    /linux/Foundational_Components
    /linux/Foundational_Components_IPC62x
