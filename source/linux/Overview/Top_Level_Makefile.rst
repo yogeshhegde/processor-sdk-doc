@@ -227,11 +227,31 @@ the Makefile from the top-level of the SDK.
 
     host# make linux
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+::
+
+    Build GPU Kernel Modules
+    host# make ti-img-rogue-driver_am62
+
 -  Install the Linux kernel modules
 
 ::
 
     host# make linux_install
+
+    To install in SD card directly:
+    host# sudo DESTDIR=/media/$USER/rootfs make linux_install
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+::
+
+    Install GPU Kernel Modules
+    host# make ti-img-rogue-driver_am62_install
+
+    To install in SD card directly:
+    host# sudo DESTDIR=/media/$USER/rootfs make ti-img-rogue-driver_am62_install
 
 -  Build the ARM Benchmarks
 
@@ -294,7 +314,7 @@ the Makefile from the top-level of the SDK.
 
     host# make u-boot-spl_clean
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
 
   -  Build the combined boot image -  This requires first building the R5 boot image.
      This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined
