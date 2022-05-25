@@ -20,19 +20,23 @@ Licensing
 Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location. 
 
-Release 08.02.00
+Release 08.03.00
 ==================
 
-Released December 2021
+Released May 2022
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 8.2 Release has following new features:
+Processor SDK 8.3 Release has following new features:
 
-- AM64:  NAND boot, Ethernet boot, Secure Boot, ICSSG-Dual Emac
-- J721E:  QSGMII in CPSW9G using virt-net (simultaneously work with PCIe using SERDES sharing feature), Video Encode
-- J721S2: Initial Platform Support
+- AM62: Initial Platform Support
+- U-Boot: OSPI NOR, SD/eMMC (HS200), UART, Ethernet (CPSW) support,
+  USB host (mass storage) and USB device (DFU)
+- ATF: Upgrade to v2.6
+- Kernel: SD/eMMC, SDIO, GPIO, OSPI NOR, USB host and device mode, RTC, ePWM,
+  CPSW 3G, IPC M4, IPC PRUSS, Mailbox, HWspinlock, SA3UL,
+  Display( DPI, HDMI), Graphics DDK 1.15, McASP audio out
 
 Build Information
 =====================================
