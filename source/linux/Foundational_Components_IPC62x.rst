@@ -327,9 +327,9 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Usage: rpmsg_char_simple [-r <rproc_id>] [-n <num_msgs>] [-d <rpmsg_dev_name] [-p <remote_endpt]
 			Defaults: rproc_id: 0 num_msgs: 100 rpmsg_dev_name: NULL remote_endpt: 14
 
-	root@am62xx-evm:~# rpmsg_char_simple -r 2 -n 10
-	Created endpt device rpmsg-char-2-1027, fd = 3 port = 1025
-	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 2 ...
+	root@am62xx-evm:~# rpmsg_char_simple -r 9 -n 10
+	Created endpt device rpmsg-char-9-989, fd = 3 port = 1024
+	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 9 ...
 
 	Sending message #0: hello there 0!
 	Receiving message #0: hello there 0!
@@ -352,7 +352,8 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Sending message #9: hello there 9!
 	Receiving message #9: hello there 9!
 
-	Communicated 10 messages successfully on rpmsg-char-2-1027
+	Communicated 10 messages successfully on rpmsg-char-9-989
+
 
 .. rubric:: RPMsg kernel space example
 
