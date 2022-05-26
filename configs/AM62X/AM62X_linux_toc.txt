@@ -71,6 +71,7 @@ linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components_IPC62x
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Graphics_and_Display
+linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 
