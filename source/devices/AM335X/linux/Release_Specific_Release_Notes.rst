@@ -175,7 +175,7 @@ Issues opened in previous releases that were closed on this release
    :widths: 15, 20, 70
 
    SITSW-428,"am335x-evm,am335x-sk","Matrix demo is not running by default"
-   SITSW-706,"am335x-evm,am335x-ice,am335x-sk,am437x-idk,am437x-sk","Top level makefile broken in AM335x & AM437x"
+   SITSW-706,"am335x-evm,am335x-ice,am335x-sk","Top level makefile broken in AM335x"
 
 |
 
@@ -192,17 +192,17 @@ SDK Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 25, 30, 50, 600
 
-   SITSW-1357,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Some of the Matrix QT5 demos (Touch, Thermostat, Browser) are failing",""
-   SITSW-1358,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Matrix KMScube demo is failing",""
-   SITSW-1376,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Matrix demo does not start until XFRM netlink socket initialization is complete","Reload localhost URL after XFRM netlink socket initialization is completed"
-   LCPD-28033,"am335x-evm,am335x-ice,am335x-sk,am43xx-gpevm,am437x-idk,am437x-sk,beaglebone","Error while running docker hello world example",""
+   SITSW-1357,"am335x-evm,am335x-sk","Some of the Matrix QT5 demos (Touch, Thermostat, Browser) are failing",""
+   SITSW-1358,"am335x-evm,am335x-sk","Matrix KMScube demo is failing",""
+   SITSW-1376,"am335x-evm,am335x-sk","Matrix demo does not start until XFRM netlink socket initialization is complete","Reload localhost URL after XFRM netlink socket initialization is completed"
+   LCPD-28033,"am335x-evm,am335x-ice,am335x-sk","Error while running docker hello world example",""
    LCPD-27524,"am335x-evm,am335x-sk","Yocto: SRCIPK Packaging Build Failures for Kernel/U-Boot",""
-   LCPD-19858,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am64xx-evm,am64xx-vlab,am64xx-zebu,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm","OE: OPTEE label used in SDK is old and wrong",""
-   LCPD-17817,"am335x-hsevm,am43xx-epos,am43xx-hsevm,k2e-hsevm,k2g-hsevm,k2hk-hsevm,k2l-hsevm","Images created with Proc-SECDEV grow with number of times SECDEV has been used",""
-   LCPD-17449,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm","libasan_preinit.o is missing in devkit",""
-   LCPD-15367,"am335x-evm,am574x-idk","Boot time increased about 15s ",""
+   LCPD-19858,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk","OE: OPTEE label used in SDK is old and wrong",""
+   LCPD-17817,"am335x-hsevm","Images created with Proc-SECDEV grow with number of times SECDEV has been used",""
+   LCPD-17449,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk","libasan_preinit.o is missing in devkit",""
+   LCPD-15367,"am335x-evm","Boot time increased about 15s ",""
    LCPD-13947,"am335x-evm","nativesdk-opkg is broken in the devkit",""
-   LCPD-12405,"am335x-evm,am335x-ice,am43xx-epos,am43xx-gpevm,am57xx-evm,dra71x-evm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2l-evm","Openssl certgen fails due to coredump in openssl_gen_cert.sh",""
+   LCPD-12405,"am335x-evm,am335x-ice","Openssl certgen fails due to coredump in openssl_gen_cert.sh",""
 
 |
 
@@ -215,7 +215,7 @@ U-Boot Known Issues
    :widths: 15, 30, 70, 30
 
    LCPD-19133,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk","Netconsole output corrupted when CONFIG_NETCONSOLE_BUFFER_SIZE >= 281",""
-   LCPD-18643,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","U-Boot: AM335x/AM473x: Both SPI CS signals get asserted",""
+   LCPD-18643,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk","U-Boot: AM335x/AM473x: Both SPI CS signals get asserted",""
    LCPD-7366,"am335x-evm","uboot McSPI driver drives multiple chip selects simultaneously","None"
 
 |
@@ -228,14 +228,14 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround"
    :widths: 5, 10, 70, 10, 5, 20, 35
 
-   LCPD-26694,"am335x-ice,am437x-idk","AM335x/AM437x PRU Ethernet slowdown from kernel 4.19 -> 5.4/5.10",""
-   LCPD-22355,"P5-Not Prioritized","Update PHY latency values in SDK documentation","Connectivity","","am335x-ice,am437x-idk,am571x-idk,am572x-idk,am574x-idk",""
+   LCPD-26694,"P1-Urgent","AM335x PRU Ethernet slowdown from kernel 4.19 -> 5.4/5.10","am335x-ice",""
+   LCPD-22355,"P5-Not Prioritized","Update PHY latency values in SDK documentation","Connectivity","","am335x-ice",""
    LCPD-19757,"P3-Medium","OpenSSL DES performance numbers are lower in 07.01","Baseport,System Test","","am335x-evm",""
    LCPD-19703,"P3-Medium","suspicious RCU usage wkup_m3_prepare_low_power on am335x-evm: 20201002","Baseport","","am335x-evm",""
-   LCPD-19702,"P3-Medium","crypto algapi failure on am335x-evm: 20201002","Baseport","","am335x-evm,am437x-sk",""
-   LCPD-19660,"P4-Low","Remove unused definitions and related code for SV frame MAC address","Connectivity","","am335x-ice,am437x-idk,am571x-idk,am572x-idk,am574x-idk",""
+   LCPD-19702,"P3-Medium","crypto algapi failure on am335x-evm: 20201002","Baseport","","am335x-evm",""
+   LCPD-19660,"P4-Low","Remove unused definitions and related code for SV frame MAC address","Connectivity","","am335x-ice",""
    LCPD-19262,"P3-Medium","Uboot: usb ethernet boot does not work on am335x-evm","Connectivity","","am335x-evm",""
-   LCPD-17673,"P3-Medium","No software documentation for the Timer module","Baseport","Timers","am335x-evm,am43xx-gpevm,am571x-idk,am572x-idk,am574x-idk,am57xx-evm,am654x-evm,beaglebone-black,dra71x-evm,dra72x-evm,dra7xx-evm,j721e-evm",""
+   LCPD-17673,"P3-Medium","No software documentation for the Timer module","Baseport","Timers","am335x-evm",""
    LCPD-16437,"P4-Low","Nand with prefetch dma: read perf drop ~20% comparing to 2018","Connectivity","","am335x-evm",""
    LCPD-15787,"P3-Medium","Power suspend fails due to USB (scsi_bus_suspend) failure when HDD is in use","Connectivity","","am335x-evm",""
    LCPD-15648,"P4-Low","Uboot mmc write performance decreased","Connectivity","","am335x-evm",""
