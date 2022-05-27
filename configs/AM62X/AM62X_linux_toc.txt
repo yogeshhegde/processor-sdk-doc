@@ -84,6 +84,7 @@ linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
 linux/How_to_Guides/Target/How_to_Change_dtb_File
 linux/How_to_Guides/Target/How_to_flash_emmc_device
+linux/How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
 #linux/How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5	(How to guide for M4 instead of R5, needs a diff doc)
 linux/How_to_Guides/FAQ/How_to_Configure_MSMC_memory
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
