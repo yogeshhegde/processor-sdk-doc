@@ -433,7 +433,7 @@ CPSW Ethernet Driver
 .. csv-table::
     :header: "TCP Window Size","am335x-evm: Throughput (Mbits/sec)","am335x-evm: CPU Load %"
 
-    "Default","389.39","100.00"
+    "Default","391.00","100.00"
 
 Table: **CPSW TCP Bidirectional Throughput**
 

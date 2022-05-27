@@ -18,7 +18,9 @@ meta layers. These are the <config> used in the command:
     +----------------------------------------+-----------------------------------+------------------------------------------------------+
     | Config File                            | Description                       | Supported machines/platforms                         |
     +========================================+===================================+======================================================+
-    | processor-sdk-08.02.00.23-config.txt   | Processor SDK 08.02.00.23 Release | am64xx-evm, am64xx-hs-evm, am335x-evm, am335x-hs-evm |
+    | processor-sdk-08.02.00.23-config.txt   | Processor SDK 08.02.00.23 Release | am64xx-evm, am64xx-hs-evm                            |
+    +----------------------------------------+-----------------------------------+------------------------------------------------------+
+    | processor-sdk-08.02.00.24-config.txt   | Processor SDK 08.02.00.24 Release | am335x-evm, am335x-hs-evm, am437x-evm, am437x-hs-evm |
     +----------------------------------------+-----------------------------------+------------------------------------------------------+
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')

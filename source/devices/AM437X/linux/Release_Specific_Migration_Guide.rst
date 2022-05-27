@@ -11,6 +11,13 @@ Migration Guide for AM437X
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
+Processor SDK 08.xx Releases
+============================
+
+Processor SDK 08.02.00
+-----------------------
+- 2021 LTS Update release, with new versions of Kernel and U-boot. Please see :ref:`release-specific-sdk-components-versions`.
+
 Processor SDK 07.xx Releases
 ============================
 

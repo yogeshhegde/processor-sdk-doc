@@ -7,8 +7,7 @@ linux/Overview_Technical_Support
 linux/Overview_Training
 linux/Overview_GPLv3_Disclaimer
 linux/Overview/Processor_SDK_Linux_Getting_Started_Guide
-linux/Overview/Processor_SDK_Linux_create_SD_card_script
-linux/Overview/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows
+linux/Overview/Processor_SDK_Linux_create_SD_card
 linux/Overview/Download_and_Install_the_SDK
 linux/Overview/Run_Setup_Scripts
 linux/Overview/Top_Level_Makefile
@@ -18,7 +17,8 @@ devices/AM437X/linux/Release_Specific
 devices/AM437X/linux/Release_Specific_Release_Notes
 devices/AM437X/linux/Release_Specific_Migration_Guide
 devices/AM437X/linux/Release_Specific_Performance_Guide
-linux/Release_Specific_CoreSDK_Yocto_layer_Configuration
+linux/Release_Specific_Yocto_layer_Configuration
+linux/Release_Specific/Layer_Configuration
 linux/Release_Specific_Supported_Platforms_and_Versions
 linux/Foundational_Components
 linux/Foundational_Components_U-Boot
@@ -137,7 +137,6 @@ linux/How_to_Guides/Target/How_to_Change_dtb_File
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides_Board_Port
 linux/How_to_Guides/Board_Port/U-Boot
-linux/Documentation_Tarball
 common/PRU-ICSS/Getting_Started_with_PSSP
 common/PRU-ICSS/Header_Files
 common/PRU-ICSS/INTC_Configuration

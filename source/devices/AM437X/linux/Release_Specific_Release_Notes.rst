@@ -45,20 +45,18 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 07.03.00
+Release 08.02.00
 ==================
 
-Released June 2021
+Released May 2022
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 7.3 Release has following new features:
+Processor SDK 8.2 Release has following new features:
 
-- 2020 LTS Update (Kernel 5.4, U-boot: 2020.01, gcc: 9.2 2019.12 hf, Yocto 3.1 (dunfell))
-- HSR/PRP with PRU-ICSS firmware offload has been descoped
-- ICSS-EMAC support has been descoped
-- SORTE support has been descoped
+ - 2021 LTS Update (Kernel 5.10, U-boot: 2021.01, gcc: 9.2 2019.12 hf, Yocto 3.1 (dunfell))
+
 
 .. _release-specific-sdk-components-versions:
 
@@ -68,9 +66,9 @@ Processor SDK 7.3 Release has following new features:
 +--------------------------+----------------------------+
 | Component                | Version                    |
 +==========================+============================+
-| Linux Kernel             | 5.4.106 (2020 LTS)         |
+| Linux Kernel             | 5.10.100 (2021 LTS)        |
 +--------------------------+----------------------------+
-| U-Boot                   | 2020.01                    |
+| U-Boot                   | 2021.01                    |
 +--------------------------+----------------------------+
 | Yocto Project            | 3.1 (dunfell)              |
 +--------------------------+----------------------------+
@@ -109,10 +107,11 @@ U-Boot
 -------------------------
 
 | The U-Boot git repository, branch and commit id can be found below:
-| Based on verson: 2020.01
+| Based on verson: 2021.01
 | URL: git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2020.01
-| Commit ID: 2781231a33c3d779e32445f4fe55164c45d6d7c1
+| Branch: ti-u-boot-2021.01
+| uBoot Tag: 08.02.00.006
+| Commit ID: 44a87e3ab85c6d64044f0b5ad677008316baad70
 
 |
 
@@ -127,10 +126,12 @@ Kernel
    :name: linux-kernel
 
 | The kernel git repository, branch and commit id can be found below:
-| Based on Version: 5.4.106
+| Based on:
+| Kernel Version: 5.10.100
 | URL: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-5.4.y
-| Commit ID: 023faefa70274929bff92dc41167b007f7523792
+| Branch: ti-linux-5.10.y
+| Tag: 08.02.00.006
+| Commit ID: 7a7a3af903da2b2d551d058f8262a66e6b42b6b1
 
 |
 
@@ -141,12 +142,12 @@ Kernel
 
 | The RT kernel git repository, branch and commit id can be found below:
 | Based on:
-| Kernel Version: 5.4.106
-| RT Kernel Version: 5.4.106-rt54
-
+| Kernel Version: 5.10.100
+| RT Kernel Version: 5.10.100-rt62
 | URL: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-5.4.y
-| Commit ID: 519667b0d81d74a6e55105dcd6072ae550352599
+| Branch: ti-rt-linux-5.10.y
+| Tag: 08.02.00.006-rt
+| Commit ID: 204ec708dc86f4334f585f04835527570be1c4eb
 
 |
 
@@ -157,7 +158,7 @@ Kernel
    :name: generic-kernel-release-notes
 
 | Generic kernel release notes from kernelnewbies.org can be found at:
-  http://kernelnewbies.org/Linux_5.4
+  http://kernelnewbies.org/Linux_5.10
 | Archived versions can be found at:
   http://kernelnewbies.org/LinuxVersions
 
@@ -173,33 +174,22 @@ Issues opened in previous releases that were closed on this release
    :header: "Record ID", "Platform", "Title"
    :widths: 15, 30, 100
 
-   LCPD-19704,"am335x-evm,am43xx-gpevm", rtcwake failure on am335x-evm: 20201002
-   LCPD-19274,"am43xx-gpevm", Kernel crash during resume from suspend state
-   LCPD-19253,"am43xx-gpevm", am4 could not boot up using cumtom built images for eMMC
-   LCPD-19083,"am335x-evm,am43xx-gpevm", Some powerdomains don't transition into suspend state
+   SITSW-428,"am437x-sk,am43xx-gpevm","Matrix demo is not running by default"
+   SITSW-706,"am437x-idk,am437x-sk","Top level makefile broken in AM437x"
+   LCPD-18270,"am43xx-gpevm","Ivi shell test fails. Lib ivi-controller.so and other components are missing from the file system",""
 
 |
 
 
 Issues found and closed on this release that may be applicable to prior releases
 -----------------------------------------------------------------------------------
-.. csv-table::
-   :header: "Record ID", "Platform", "Title"
-   :widths: 15, 20, 70
-
-   LCPD-22282,"am335x-evm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am57xx-evm,am57xx-beagle-x15,am64xx-evm,am64xx-sk,am654x-evm,am654x-idk,beaglebone,bbai,beaglebone-black,dra71x-evm,dra72x-evm,dra76x-evm,dra7xx-evm,j721e-evm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,k2e-evm,k2g-evm,k2g-ice,k2hk-evm,k2l-evm,omapl138-lcdk,am62xx-evm", U-Boot: reset to default env fails in 2021 LTS
+ - None
 
 |
 
 Errata Workarounds Available in this Release
 ------------------------------------------------
-.. csv-table::
-   :header: "Record ID",  "Title"
-   :widths: 15, 80
-
-   LCPD-5309, LCPD:  i896: USB Port disable doesnt work
-   LCPD-5308, i897: USB Stop Endpoint doesnt work in certain circumstances
-
+ - None
 
 |
 
@@ -209,20 +199,21 @@ SDK Known Issues
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 25, 30, 50, 600
 
-   SITSW-428,"am335x-evm,am335x-sk,am437x-sk,am43xx-gpevm","Matrix demo is not running by default","Restart the Matrix demo manually after boot"
+   SITSW-1357,"am437x-sk,am43xx-gpevm","Some of the Matrix QT5 demos (Touch, Thermostat, Browser) are failing",""
+   SITSW-1358,"am43xx-gpevm","Matrix KMScube demo is failing",""
+   SITSW-1376,"am437x-sk,am43xx-gpevm","Matrix demo does not start until XFRM netlink socket initialization is complete","Reload localhost URL after XFRM netlink socket initialization is completed"
+   LCPD-24839,"am43xx-gpevm","USBHOST video capture failed at 320x240",""
    LCPD-20673,"am43xx-gpevm","packaging: ipsec: command not found",""
-   LCPD-19858,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am64xx-evm,am64xx-vlab,am64xx-zebu,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm","OE: OPTEE label used in SDK is old and wrong",""
-   LCPD-19279,"am335x-evm,am43xx-gpevm","openssl_perf.sh functionality to be included in rootfs (decouple from matrixgui)",""
-   LCPD-18270,"am335x-evm,am43xx-gpevm,am571x-idk,am572x-idk,am574x-idk,am57xx-evm,am57xx-beagle-x15,am654x-evm,am654x-idk,dra71x-evm,dra72x-evm,dra76x-evm,dra7xx-evm,j721e-evm,j721e-evm-ivi,j721e-idk-gw","Ivi shell test fails. Lib ivi-controller.so and other components are missing from the file system",""
+   LCPD-19858,"am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","OE: OPTEE label used in SDK is old and wrong",""
+   LCPD-19279,"am43xx-gpevm","openssl_perf.sh functionality to be included in rootfs (decouple from matrixgui)",""
    LCPD-17659,"am437x-idk","Disable GPU on AM437x IDK",""
-   LCPD-17449,"am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm","libasan_preinit.o is missing in devkit",""
-   LCPD-17413,"am335x-evm,am43xx-gpevm,am57xx-evm,am654x-evm","QT Webengine-based browser: the mouse does not work within the web page with QPA EGLFS",""
-   LCPD-15918,"am43xx-gpevm,dra7xx-evm,k2g-evm,k2l-hsevm","ti-ipc-rtos gets stuck in xdctools",""
-   LCPD-12405,"am335x-evm,am335x-ice,am43xx-epos,am43xx-gpevm,am57xx-evm,dra71x-evm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2l-evm","Openssl certgen fails due to coredump in openssl_gen_cert.sh",""
-   LCPD-9923,"am335x-evm,am43xx-gpevm,am57xx-evm,k2e-evm,k2g-evm,k2hk-evm,k2l-evm","Error message in boot log for K2 and AM platforms",""
-   LCPD-8352,"am43xx-gpevm,am57xx-evm,dra7xx-evm","weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory","1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer"
-   LCPD-8345,"am335x-evm,am437x-idk,dra7xx-evm,dra7xx-hsevm,k2e-evm,k2e-hsevm,k2hk-evm,k2l-evm","Board fails to start login console after waiting 3.5 minutes ( hard to reproduce, ~4/1000)","Restart the EVM"
-   LCPD-7255,"am335x-evm,am335x-ice,am335x-sk,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am57xx-evm,beaglebone,beaglebone-black,beaglebone-black-ice,dra72x-evm,dra72x-hsevm,dra7xx-evm,dra7xx-hsevm,k2e-evm,k2g-evm,k2g-ice,k2hk-evm,k2l-evm","Telnet login takes too long (~40 seconds)","Booting with rootfs mounted over NFS might cause ~40 seconds delay on telnet login because DNS entries might not be properly populated. To work around this issue, enter appropriate DNS server IP in resolv.conf. For example:   echo 'nameserver 192.0.2.2' > /etc/resolv.conf;"
+   LCPD-17449,"am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","libasan_preinit.o is missing in devkit",""
+   LCPD-17413,"am43xx-gpevm","QT Webengine-based browser: the mouse does not work within the web page with QPA EGLFS",""
+   LCPD-15918,"am43xx-gpevm","ti-ipc-rtos gets stuck in xdctools",""
+   LCPD-12405,"am43xx-epos,am43xx-gpevm","Openssl certgen fails due to coredump in openssl_gen_cert.sh",""
+   LCPD-9923,"am43xx-gpevm","Error message in boot log for K2 and AM platforms",""
+   LCPD-8352,"am43xx-gpevm","weston: stress testing with 75 concurrent instances of simple-egl leads to unresponsive HMI due to running out of memory","1. Restart Wayland application. 2. Restart board if Weston is killed by oom-killer"
+   LCPD-7255,"am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","Telnet login takes too long (~40 seconds)","Booting with rootfs mounted over NFS might cause ~40 seconds delay on telnet login because DNS entries might not be properly populated. To work around this issue, enter appropriate DNS server IP in resolv.conf. For example:   echo 'nameserver 192.0.2.2' > /etc/resolv.conf;"
    LCPD-7025,"am43xx-gpevm","System takes more than 10 seconds to go from login prompt to system prompt","Automated tests need to account for this boot delay"
 
 |
@@ -235,8 +226,9 @@ U-Boot Known Issues
    :header: "Record ID","Platform", "Title","Workaround"
    :widths: 15, 30, 70, 30
 
-   "LCPD-18643","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","U-Boot: AM335x/AM473x: Both SPI CS signals get asserted",""
-   "LCPD-7864","am335x-evm,am335x-ice,am335x-sk,am43xx-gpevm,am437x-idk,am437x-sk","U-Boot: Ethernet boot fails on AM335x and AM437x",""
+   "LCPD-25271","am43xx-gpevm","UBoot NAND ECC 8/16 bit read test Fails",""
+   "LCPD-18643","am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk","U-Boot: AM473x: Both SPI CS signals get asserted",""
+   "LCPD-7864","am43xx-gpevm,am437x-idk,am437x-sk","U-Boot: Ethernet boot fails on AM437x",""
 
 
 |
@@ -249,26 +241,20 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround", "Impact"
    :widths: 5, 10, 70, 10, 5, 20, 35, 20
 
-   LCPD-9098,P4-Low,Writeback: error prints seen when doing wb capture,Audio & Display,"Capture, Display, Writeback","am571x-idk, am572x-idk, am57xx-evm, dra71x-evm, dra71x-hsevm, dra72x-evm, dra72x-hsevm, dra7xx-evm, dra7xx-hsevm",,
+   LCPD-26694,"P1-Urgent","AM437x PRU Ethernet slowdown from kernel 4.19 -> 5.4/5.10","am437x-idk",""
+   LCPD-24650,"P2-High","VPFE sensor capture fails","am43xx-gpevm",""
+   LCPD-22355,"P5-Not Prioritized","Update PHY latency values in SDK documentation","Connectivity","","am437x-idk",""
    LCPD-22748,"P5-Not Prioritized","Kernel Panic after shutdown of kernel","Baseport","","am437x-idk","",""
-   LCPD-22541,"P5-Not Prioritized","Kernel crash while running docker example","Connectivity","","am335x-ice,am437x-idk","",""
+   LCPD-22541,"P5-Not Prioritized","Kernel crash while running docker example","Connectivity","","am437x-idk","",""
    LCPD-21524,"P5-Not Prioritized","Resume taking longer time","Baseport","","am43xx-gpevm","",""
-   LCPD-21523,"P5-Not Prioritized","alpha blending test failure","Audio & Display","","am43xx-gpevm","",""
-   LCPD-20680,"P5-Not Prioritized","VPFE capture fails","Audio & Display","","am43xx-gpevm","",""
-   LCPD-20677,"P5-Not Prioritized","nbench: Numeric_Sort out of expected range: 431.72 < 529.7634209650582 - 46.19151441991239, String_Sort out of expected range: 52.731 < 60.232635274542424 - 3.325711027279963","Baseport","","am43xx-gpevm","",""
-   LCPD-20676,"P5-Not Prioritized","test setup: display tests depend on weston","Audio & Display","","am43xx-gpevm","",""
-   LCPD-20675,"P5-Not Prioritized","stream: measured value=591.3, historical mean=368.81875, std=0.6843183956822658","Baseport","","am43xx-gpevm","",""
-   LCPD-20674,"P5-Not Prioritized"," pm_runtime is not enabled for ETH ","Connectivity","","am43xx-gpevm","",""
-   LCPD-20653,"P5-Not Prioritized","ltp: kernel syscall tests fail","Baseport","","am335x-evm,am43xx-gpevm","",""
-   LCPD-20301,"P3-Medium","5.11-rc3 - crypto device not found ","Baseport","","am43xx-gpevm","",""
-   LCPD-19838,"P3-Medium","Cryptodev not building against 5.10 kernel","Baseport","","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am64xx-evm,am64xx-vlab,am64xx-zebu,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,dra8xx-qt,dra8xx-zebu,j7am-evm,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-vlab,j7200-evm,j7200-hsevm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm,omapl138-lcdk,j721s2-evm,j7amp-evm,j7ae-evm,j7am-vlab,j7am-zebu,j7ae-vlab,j7ae-zebu,j7aep-vlab,j7aep-zebu,j7amp-vlab,j7amp-zebu","",""
-   LCPD-19702,"P3-Medium","crypto algapi failure on am335x-evm: 20201002","Baseport","","am335x-evm,am437x-sk","",""
-   LCPD-19660,"P4-Low","Remove unused definitions and related code for SV frame MAC address","Connectivity","","am335x-ice,am437x-idk,am571x-idk,am572x-idk,am574x-idk","",""
-   LCPD-17673,"P3-Medium","No software documentation for the Timer module","Baseport","Timers","am335x-evm,am43xx-gpevm,am571x-idk,am572x-idk,am574x-idk,am57xx-evm,am654x-evm,beaglebone-black,dra71x-evm,dra72x-evm,dra7xx-evm,j721e-evm","",""
-   LCPD-12226,"P3-Medium","mmcsd first write perf decreased on some platforms","Connectivity","","am43xx-gpevm,am574x-idk,am57xx-evm,omapl138-lcdk","",""
+   LCPD-24505,"P3-Medium","KMS properties test failed","Audio & Display","","am43xx-gpevm","",""
+   LCPD-20653,"P5-Not Prioritized","ltp: kernel syscall tests fail","Baseport","","am43xx-gpevm","",""
+   LCPD-19660,"P4-Low","Remove unused definitions and related code for SV frame MAC address","Connectivity","","am437x-idk","",""
+   LCPD-17673,"P3-Medium","No software documentation for the Timer module","Baseport","Timers","am43xx-gpevm","",""
+   LCPD-12226,"P3-Medium","mmcsd first write perf decreased on some platforms","Connectivity","","am43xx-gpevm","",""
    LCPD-10974,"P3-Medium","am43xx-gpevm - usb camera gadget shows halting frames","Connectivity","USB","am43xx-gpevm","None",""
-   LCPD-7955,"P3-Medium","Uncorrectable Bitflip errors seen after switch to SystemD","Connectivity","GPMC","am335x-evm,am43xx-gpevm,k2e-evm,k2g-evm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm","Workaround to erase the NAND flash completely if flashed with an incompatible flash writer. SystemD tries to mount all partitions and that is the reason this is being seen now.",""
-   LCPD-1207,"P4-Low","AM43XX/AM57XX/DRA7: CONNECTIVITY: dwc3_omap on am43xx and xhci_plat_hcd on dra7 - removal results in segmentation fault","Connectivity","USB","am43xx-gpevm,am57xx-evm,dra7xx-evm","",""
+   LCPD-7955,"P3-Medium","Uncorrectable Bitflip errors seen after switch to SystemD","Connectivity","GPMC","am43xx-gpevm","Workaround to erase the NAND flash completely if flashed with an incompatible flash writer. SystemD tries to mount all partitions and that is the reason this is being seen now.",""
+   LCPD-1207,"P4-Low","AM43XX: CONNECTIVITY: dwc3_omap on am43xx and xhci_plat_hcd on dra7 - removal results in segmentation fault","Connectivity","USB","am43xx-gpevm","",""
 
 
 |
@@ -277,8 +263,6 @@ Linux Kernel Known Issues
 
 RT Linux Kernel Known Issues
 -----------------------------
-
-
    - None
      
 |
