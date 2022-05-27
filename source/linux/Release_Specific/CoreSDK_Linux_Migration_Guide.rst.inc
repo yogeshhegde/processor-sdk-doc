@@ -16,7 +16,7 @@ Processor CoreSDK 08.03
 -----------------------
 - This is the fourth release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
 
-- Third release on 5.10 kernel and 2021.01 U-boot
+- Fourth release on 5.10 kernel and 2021.01 U-boot
 - ATF 2.6
 - OPTEE 3.12
 - Yocto Dunfell/3.1
