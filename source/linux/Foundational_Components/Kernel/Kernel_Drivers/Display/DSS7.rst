@@ -1,4 +1,6 @@
-DSS (DSS6 & DSS7)
+.. include:: /replacevars.rst.inc
+
+DSS
 #################
 
 Introduction
@@ -12,7 +14,7 @@ This page applies to TI's v5.10 kernel.
 Supported Devices
 =================
 
-There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: K2G, AM65x, J721E, J721S2.
+There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: AM65x, AM62x, J721E, J721S2.
 
 
 Hardware Architecture
@@ -25,9 +27,15 @@ The Display Subsystem (DSS) is a hardware block responsible for fetching pixel d
 
 In addition to the SoC's DSS, boards often contain external display bridges (for example, DPI-to-HDMI bridge) and display panels.
 
-.. Image:: /images/DSS7_HW.png
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2')
 
-The above image gives an overview of the DSS (on J721E) hardware. The arrows show how pipelines are connected to overlay managers, which are further connected to video-ports, which finally create an encoded pixel stream for display on the LCD or monitor.
+    .. Image:: /images/DSS7_HW.png
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X')
+
+    .. Image:: /images/DSS7Lite_HW.png
+
+The above image gives an overview of the DSS hardware. The arrows show how pipelines are connected to overlay managers, which are further connected to video-ports, which finally create an encoded pixel stream for display on the LCD or monitor.
 
 
 Display Controller (DISPC)
@@ -69,17 +77,24 @@ The timing generator part of the video port is responsible for providing the pix
 SoC Hardware Features
 ---------------------
 
-+--------+------------+---------------+-------------------+------------+
-| SoC    | DSS version| Outputs       | Pipes             | Video ports|
-+========+============+===============+===================+============+
-| K2G    | DSS6-UL    |  DPI, DBI     | VID               | 1          |
-+--------+------------+---------------+-------------------+------------+
-| AM65x  | DSS7-L     |  DPI, OLDI    | VID, VIDL         | 2          |
-+--------+------------+---------------+-------------------+------------+
-| J721E  | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
-+--------+------------+---------------+-------------------+------------+
-| J721S2 | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
-+--------+------------+---------------+-------------------+------------+
+SoC Family: |__PART_FAMILY_DEVICE_NAMES__|
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X')
+
+    +------------+---------------+-------------------+------------+
+    | DSS version| Outputs       | Pipes             | Video ports|
+    +============+===============+===================+============+
+    | DSS7-L     |  DPI, OLDI    | VID, VIDL         | 2          |
+    +------------+---------------+-------------------+------------+
+
+
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2')
+
+    +------------+---------------+-------------------+------------+
+    | DSS version| Outputs       | Pipes             | Video ports|
+    +============+===============+===================+============+
+    | DSS7       |  DPI, DP, DSI | 2 x VIDL, 2 x VID | 4          |
+    +------------+---------------+-------------------+------------+
 
 
 Driver Architecture
@@ -133,6 +148,8 @@ DRM Plane Features
 - Z-order
 - Global alpha blending
 - Alpha blending (pre-multipled & non-pre-multiplied)
+- Input Video Formats
+  (Fourcc codes of supported formats: AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 AR15 AB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12)
 
 DRM CRTC Features
 

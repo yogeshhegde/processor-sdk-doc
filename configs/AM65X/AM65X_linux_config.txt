@@ -14,7 +14,7 @@
 Replacement Variables
 ---------------------
 '__PART_FAMILY_NAME__'           : 'Jacinto'
-'__PART_FAMILY_DEVICE_NAMES__'   : 'AM65xx devices'
+'__PART_FAMILY_DEVICE_NAMES__'   : 'AM65X'
 '__PRODUCT_LINE_NAME__'          : 'Jacinto'
 '__SDK_BUILD_MACHINE__'          : 'am65xx-evm'
 '__SDK_FULL_NAME__'              : 'Processor SDK Linux AM65xx'
