@@ -77,6 +77,29 @@ Machine Learning
    TI's Processor SDK Linux, free to download and use. The Machine Learning
    toolkit consists of TensorFlow Lite library.
 
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+   The Machine Learning toolkit brings machine learning to the edge by enabling
+   machine learning inference on Sitara devices. It is provided as part of
+   TI's Processor SDK Linux, free to download and use. The Machine Learning
+   toolkit consists of below modules. All the modules have been validated with examples available in `EdgeAI TIDL Tools <https://github.com/TexasInstruments/edgeai-tidl-tools>`__. Refer the documentation available here for more details on usage and examples
+
+
+   +--------------------------+-----------+--------------------+--------------------+--------------------+
+   | ML inference Library     | Version   | Delegate /         | Python API         | C/CPP API          |
+   |                          |           | Execution provider |                    |                    |
+   +==========================+===========+====================+====================+====================+
+   | TensorFlow Lite          | 2.8.0     | XNNPACK, ARMNN (1) | YES                | YES                |
+   +--------------------------+-----------+--------------------+--------------------+--------------------+
+   | ONNX Runtime             | 1.7.0     | CPU                | YES                | YES                |
+   +--------------------------+-----------+--------------------+--------------------+--------------------+
+
+
+   (1) ARMNN delegate libraries for TFLite are not part of SDK filesystem, this has been validated with the examples and scripts available at `EdgeAI TIDL Tools <https://github.com/TexasInstruments/edgeai-tidl-tools>`__.
+
+
+
 .. toctree::
    :maxdepth: 2
 
