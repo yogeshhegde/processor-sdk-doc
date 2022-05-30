@@ -92,3 +92,8 @@ linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
+
+devices/AM62X/index_RTOS
+
+devices/AM62X/index_Applications
+system/Demo_User_Guides/HMI_and_3D_Demo_User_Guide

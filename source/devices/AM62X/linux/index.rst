@@ -18,6 +18,8 @@ Processor SDK Linux Software Developer's Guide
    /linux/Foundational_Components
    /linux/Foundational_Components_IPC62x
    /linux/How_to_Guides
+   /devices/AM62X/index_RTOS
+   /devices/AM62X/index_Applications
    /linux/Documentation_Tarball
 
 |
