@@ -48,7 +48,7 @@ you should see a welcome message on the display wallpaper.
 The SDK Installer packages latest pre-built binaries and filesystem for the target.
 For detailed steps on flashing these binaries on the SD card, refer to the section
 format your SD card and flash all the pre-built binaries from the SDK release,
-:ref:`formatting-sd-card-on-linux`.
+:ref:`processor-sdk-linux-create-sd-card`.
 
 You should be able to verify the same out of box demo after flashing the SD card.
 This step should be used only when you want to completely overwrite the card with
