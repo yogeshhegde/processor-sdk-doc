@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_Crypto_User_Guide
 
+.. include:: /replacevars.rst.inc
+
 Crypto
 ---------------------------------
 
@@ -30,21 +32,12 @@ driver and additionally an Cryptodev (or OCF on AMSDK v6.0 or older)
 kernel module (for OpenSSL) is needed to access them.  Other devices use
 the pure software implementation of OpenSSL for the crypto demos.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family')
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family', 'AM62X_family')
 
-    .. ifconfig:: CONFIG_part_family in ('J7_family')
+    .. rubric:: Device specifics
 
-        .. rubric:: J721E specifics
-
-        J721E SoCs support hardware accelerator for crypto operations
-        (Security Accelerator Ultra Light).
-
-    .. ifconfig:: CONFIG_part_family in ('General_family')
-
-        .. rubric:: AM65 specifics
-
-        AM65 SoCs support hardware accelerator for crypto operations
-        (Security Accelerator Ultra Light).
+    |__PART_FAMILY_DEVICE_NAMES__| SoCs support hardware accelerator for crypto operations
+    (Security Accelerator Ultra Light).
 
     Current software support is added for IPSec use case. Once the basic
     strongswan and IPSec infrastructure is enabled on both host and target,
@@ -64,15 +57,7 @@ the pure software implementation of OpenSSL for the crypto demos.
           ¦     -> Cryptographic API (CRYPTO [=y])
           ¦ (1)   -> Hardware crypto devices (CRYPTO_HW [=y])
 
-    .. ifconfig:: CONFIG_part_family in ('J7_family')
-
-        .. rubric:: J721E building
-           :name: j721e building
-
-    .. ifconfig:: CONFIG_part_family in ('General_family')
-
-        .. rubric:: AM65 building
-           :name: am65 building
+    .. rubric:: |__PART_FAMILY_DEVICE_NAMES__| building
 
     To check if sa2ul module is properly installed,
     run the below command from the Linux command prompt:
@@ -88,15 +73,7 @@ the pure software implementation of OpenSSL for the crypto demos.
         sa2ul                 262144  1 omap_rng
         authenc               262144  1 sa2ul
 
-    .. ifconfig:: CONFIG_part_family in ('J7_family')
-
-        .. rubric:: J721E testing
-           :name: j721e testing
-
-    .. ifconfig:: CONFIG_part_family in ('General_family')
-
-        .. rubric:: AM65 testing
-           :name: am65 testing
+    .. rubric:: |__PART_FAMILY_DEVICE_NAMES__| testing
 
     tcrypt Testing:
 
