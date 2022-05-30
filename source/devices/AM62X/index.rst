@@ -13,8 +13,8 @@ Processor SDK Linux Software Developer's Guide
    :hidden:
    :numbered:
 
-   Overview
-   Release_Specific
+   /devices/AM62X/linux/Overview
+   /devices/AM62X/linux/Release_Specific
    /linux/Foundational_Components
    /linux/Foundational_Components_IPC62x
    /linux/How_to_Guides
