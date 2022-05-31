@@ -98,7 +98,7 @@ U-Boot
 | Date:
 | uBoot Version:
 | uBoot Description:
-| Clone: https://git.ti.com/ti-u-boot/ti-u-boot.git
+| Clone: https://git.ti.com/git/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2021.01
 | uBoot Tag:
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
@@ -113,34 +113,25 @@ Kernel
 | Date:
 | Kernel Version:
 | Kernel Description:
-| Clone: https://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-5.10.y
+| Clone: https://git.ti.com/git/ti-linux-kernel/ti-linux-kernel.git
+| Branch: ti-android-linux-5.10.y
 | Tag:
 | Compiler Information: aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 
 
-Yocto
+AOSP
 ------------------------
-.. rubric:: meta-ti
+.. rubric:: AOSP
 
 | Head Commit:
 | Date:
 | Version:
-| Clone: https://git.yoctoproject.org/meta-ti
-| Branch: dunfell
+| Clone: https://android.googlesource.com
+| Branch: android12-release
 | Release Tag:
 
-.. rubric:: meta-arago
-
-| Head Commit:
-| Date:
-| Version:
-| Clone: https://arago-project.org/git/meta-arago.git
-| Branch: dunfell
-| Release Tag:
 
 Wakeup status
-
 ===============
 
 Completed features
@@ -175,7 +166,16 @@ Host Support
 
 For the specific supported hosts for current SDK, see :ref:`this page <how-to-build-a-ubuntu-linux-host-under-vmware>`.
 
-.. note::
-   The Processor SDK Installer is 64-bit, and installs only on 64-bit host
-   machine. Support for 32-bit host is dropped as Linaro toolchain is
-   available only for 64-bit machines.
+Known Issues
+============
+
++----------------+-------------------------------------------------------------------------------+
+| **Issues**     |  **Description**                                                              |
++================+===============================================================================+
+| **SITSW-1387** | Mcasp: Buffer underflow console messages seen                                 |
++----------------+-------------------------------------------------------------------------------+
+| **SITSW-1386** | Some commands don't work from native console, but works via adb shell         |
++----------------+-------------------------------------------------------------------------------+
+| **SITSW-1385** | Wi-Fi cannot be turned off and turned on second time                          |
++----------------+-------------------------------------------------------------------------------+
+

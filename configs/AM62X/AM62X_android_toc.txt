@@ -2,7 +2,7 @@ devices/AM62X/android/index
 devices/AM62X/android/Overview_Getting_Started_Guide
 devices/AM62X/android/Overview_Building_the_SDK
 devices/AM62X/android/Overview
-android/Release_Specific
+devices/AM62X/android/Release_Specific
 devices/AM62X/android/Release_Specific_Release_Notes
 devices/AM62X/android/Overview_Technical_Support
 
