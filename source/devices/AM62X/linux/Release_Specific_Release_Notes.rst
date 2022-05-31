@@ -38,7 +38,7 @@ found on the SDK download page or in the installed directory as indicated below.
 Release 08.03.00
 ================
 
-Released on April 2022
+Released on May 2022
 
 What's new
 ----------
