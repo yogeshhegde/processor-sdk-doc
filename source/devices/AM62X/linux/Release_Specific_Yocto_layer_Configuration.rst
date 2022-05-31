@@ -11,12 +11,12 @@ meta layers. These are the <config> used in the command:
 
 ``$ ./oe-layertool-setup.sh -f <config>``
 
-|
-| The following config files are located in the **yocto-build/configs/processor-sdk-linux**
-  directory.
+The following config files are located in the **configs/processor-sdk**
+directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/oe-layersetup/>`_.
 
-+-------------------------------------+----------------------------------------------------+--------------------------------+
-|      Config File                    |                    Description                     | Supported machines             |
-+=====================================+====================================================+================================+
-|                                     | Processor SDK Linux          Release               | am62xx-SK                      |
-+-------------------------------------+----------------------------------------------------+--------------------------------+
++----------------------------------------+-----------------------------------+------------------------------------------------------+
+| Config File                            | Description                       | Supported machines/platforms                         |
++========================================+===================================+======================================================+
+| processor-sdk-08.03.00.19-config.txt   | Processor SDK 08.03.00.19 Release | am62xx-evm                                           |
++----------------------------------------+-----------------------------------+------------------------------------------------------+
+
