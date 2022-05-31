@@ -5,4 +5,5 @@ devices/AM62X/android/Overview
 devices/AM62X/android/Release_Specific
 devices/AM62X/android/Release_Specific_Release_Notes
 devices/AM62X/android/Overview_Technical_Support
+devices/AM62X/android/Overview_Flashing
 

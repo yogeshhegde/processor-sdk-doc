@@ -2,6 +2,11 @@
 Building the SDK
 ********************************************
 
+.. note::
+
+    The bootloader as well as the kernel builds are optional if you haven't modified anything in them.
+    
+
 Building Bootloader
 ===================
 
@@ -117,49 +122,29 @@ The usual (``make menuconfig`` ) is done via ``config.sh``:
    Users must have built the
    android kernel image prior to building the Android file system.
 
-Rebuilding Android from Sources
+Building Android File System
 =================================
-
-Follow the steps below to rebuild Android from sources when there is a need to do so,
-e.g., after modifications are made for the sources.
-
-Build PC setup
-----------------
-
-You need a 64-bit Ubuntu machine (`Version Supported <Release_Specific_Supported_Platforms_and_Versions.html>`__) for building the Android file
-system.
-
-**Install Pre-requisite packages for building the Android File System**
-
-Follow instructions from official Android page
-`here <https://source.android.com/source/initializing.html#setting-up-a-linux-build-environment>`__
-for setting up the packages required for building Android.
-
-Use the following command to install the same packages that were used
-during the SDK development process:
-
-::
-
-    sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip lzop bc u-boot-tools libssl-dev
-
-**repo Tool**
-
-Google's repo tool is used to clone all of the git repositories that you
-need to rebuild the full Android filesystem from source. A copy of the
-repo tool is provided in the Processor SDK Android in the
-**board-support/aosp-<ver>/.repo/repo/** directory. Instructions to
-use the repo tool are provided below in this guide.
-
-**Tool Chain for building Kernel and Drivers**
-
-The Kernel and Driver sources are built using the Android linux-x86
-toolchain for ARM GNU/Linux version . This tool chain is provided in the
-**android-devkit** directory of the SDK.
 
 | 
 
 U-Boot, Linux Kernel, and Android Filesystem Sources
 ------------------------------------------------------
+
+Setup
+~~~~~
+
+Please refer to the following pages to setup your environment for AOSP build:
+
+-  `Android's Build
+   requirements <https://source.android.com/setup/build/requirements>`__.
+-  `Android's Establishing a Build
+   Environment <https://source.android.com/setup/build/initializing>`__
+   guide.
+
+**Getting the Repo tool**
+
+You will need the Repo tool to retrieve repositories.
+To install it, please refer to this webpage : https://source.android.com/setup/develop#installing-repo
 
 .. rubric:: Android Filesystem Sources
    :name: android-filesystem-sources
@@ -181,17 +166,6 @@ Fetch the code using ``repo``:
 For more information about ``repo``, visit `Android's official
 documentation <https://source.android.com/setup/build/downloading>`__
 
-Setup
-~~~~~
-
-Refer to:
-
--  `Android's Build
-   requirements <https://source.android.com/setup/build/requirements>`__.
--  `Android's Establishing a Build
-   Environment <https://source.android.com/setup/build/initializing>`__
-   guide.
-
 Build
 ~~~~~
 
@@ -202,91 +176,11 @@ Build
     lunch am62x-userdebug
     m
 
-We also support the following build flags to enable optional features:
-
--  ``TARGET_AVB_ENABLE=true`` : Enable
-   `AVB <https://source.android.com/security/verifiedboot/avb>`__
--  ``TARGET_VKMS_ENABLED=true`` : Enable Virtual Display
-
-Flashing instructions
-~~~~~~~~~~~~~~~~~~~~~
-
-Once build is complete, prepare your eMMc binairies and images:
-
-1. Change Boot mode DIP switches for SD card boot.
-
-::
-
-   Revision E1:
-    Boot mode DIP Switch:
-    SW1: 01000011 SW2: 00010010
-
-   Revision E2:
-    Boot mode DIP Switch:
-    SW1: 11000010 SW2: 01000000
-
-2. Ensure the device is plugged in with USB Host and Debug UART/Serial Debug
-
-
-3. Boot the board with tiboot3.bin, u-boot.img, tispl.bin files in
-boot partition of SD card.
-
-
-4. Open a terminal debugger to view console output from the device:
-
-::
-
-    sudo picocom -b 115200 -r -l /dev/ttyUSB0
-
-5. Setup Android partition table:(Need to be removed after hardcoding it on the uboot source code)
-
-::
-
-    env default -f -a
-    run set_android_boot
-
-6. Enable fastboot on the device through the terminal debugger:
-
-::
-
-    => fastboot 0
-
-7. In a different terminal, change directory to ``out/target/product/am62x`` and run the ``flashall.sh`` script:
-
-::
-
-    cd out/target/product/am62x
-    sudo ./flashall.sh;
-
-8.Power off the board and remove the SD card.
-
-
-9. Change Boot mode DIP switches to boot from eMMC user partitions and power cycle the board:
-
-::
-
-   Revision E1:
-    Boot mode DIP Switch:
-    SW1: 01000011 SW2: 0000000
-
-   Revision E2:
-    Boot mode DIP Switch:
-    SW1: 11000010 SW2: 00000000
-| 
 
 .. rubric:: TI Hardware Accelerated Graphics Binaries
    :name: ti-hardware-accelerated-graphics-binaries
 
 Accelerated graphics binaries are part of Android file system build.
-
-.. rubric:: U-Boot Sources
-   :name: u-boot-sources
-
-The U-Boot sources are included in the Processor Android SDK in the
-**board-support/u-boot-<ver>/** directory.
-
-.. rubric:: Kernel & Driver Sources
-   :name: kernel-driver-sources
 
 |
 
