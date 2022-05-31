@@ -320,10 +320,10 @@ the Makefile from the top-level of the SDK.
      This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined
      boot image at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3.bin
 
-    ::
+::
 
-        host# make u-boot
-        host# make sysfw-image
+    host# make u-boot
+    host# make sysfw-image
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
