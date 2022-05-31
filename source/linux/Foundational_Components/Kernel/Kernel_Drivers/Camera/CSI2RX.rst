@@ -177,3 +177,32 @@ Below overlay is an example for adding the overlay nodes:
     		data-lanes = <1 2>;
     	};
     };
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+Example camera pipeline
+=========================
+AM62x supports camera overlay dtb for OV5640 camera sensor module which can be tested with below commands :
+
+1) During bootup stop at u-boot prompt by pressing any key and set camera overlay dtb :
+
+
+::
+
+    setenv name_overlays k3-am625-sk-csi2-ov5640.dtbo
+    boot
+
+2) Capture frames using aforementioned yavta command :
+
+::
+
+    yavta -c -Fcapture -s 640x480 -f UYVY /dev/video0
+
+3) If an HDMI display is connected then one can run capture->display pipeline using below commands :
+
+::
+
+    gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! kmssink driver-name=tidss
+    #NOTE: Above command can only be used when no display server is running.
+
+    gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! waylandsink
