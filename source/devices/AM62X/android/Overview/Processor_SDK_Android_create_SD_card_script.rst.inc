@@ -5,7 +5,7 @@ In order to flash the AM62X board's eMMC the fist time, a SD card containing the
 to boot into uboot and use fastboot.
 
 Partitioning the SD card
----------------------
+------------------------
 
 The SD card has to be partitioned using fdisk and the layout should look like as follow:
 
@@ -23,7 +23,7 @@ The SD card has to be partitioned using fdisk and the layout should look like as
     /dev/sda1  *      2048   272919   270872 132,3M  c W95 FAT32 (LBA)
 
 Formatting the SD card partitions
----------------------
+---------------------------------
 
 Once partitioned, the boot partition has to be formatted with a FAT filesystem.
 
@@ -34,10 +34,12 @@ Assuming the SD card is /dev/sda:
     mkfs.vfat /dev/sda1
 
 Copying the required bootloaders
----------------------
+--------------------------------
 
-Once the SD card has been partitioned and formatted, copy the 3 required binaries onto the newly formatted SD partition, either the pre-built ones located 
-in your Android folder in ``vendor/ti/am62x/bootloader`` or the ones you generated following the step in the next section.
+Once the SD card has been partitioned and formatted, copy the required binaries onto the newly formatted SD partition, either the pre-built ones located 
+in your Android source folder in ``vendor/ti/am62x/bootloader`` or the ones you generated following the build instructions step in the next section.
+
+These binaries are also present in the pre-built binaries tarball on the SDK download page.
 
 ::
 

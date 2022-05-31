@@ -1,8 +1,8 @@
 .. _android-index:
 
-**********************************************
+************************************************
 Processor SDK Android Software Developer's Guide
-**********************************************
+************************************************
 
 .. rubric:: Welcome to the Processor SDK Android Software Developer's Guide for AM62X
 
@@ -18,13 +18,3 @@ Processor SDK Android Software Developer's Guide
    /devices/AM62X/android/Application_Notes
 |
 
-.. rubric:: Feedback
-
-If you have feedback, suggestions, or ideas on how to improve the SDK,
-it is very appreciated. Please post your ideas to the Linux
-forum listed at :ref:`Technical Support <overview-technical-support>`.
-
-
-+--------------------------------+--------------------------------------------------------------------------------------------------+
-| .. Image:: /images/E2e.jpg     | For technical support please post your questions at `http://e2e.ti.com <http://e2e.ti.com/>`__.  |
-+--------------------------------+--------------------------------------------------------------------------------------------------+

@@ -2,94 +2,135 @@
 Building the SDK
 ********************************************
 
-.. note::
+Build PC Setup
+===============
 
-    The bootloader as well as the kernel builds are optional if you haven't modified anything in them.
-    
+Please refer to the following pages from Android documentatio to setup your environment for Android build:
 
-Building Bootloader
+-  `Android's Build
+   requirements <https://source.android.com/setup/build/requirements>`__.
+-  `Android's Establishing a Build
+   Environment <https://source.android.com/setup/build/initializing>`__
+   guide.
+
+
+**Getting the Repo tool**
+
+You will need the Repo tool to retrieve repositories.
+To install it, please refer to this webpage : https://source.android.com/setup/develop#installing-repo
+
+**Getting toolchain for u-boot builds**
+
+Links to download toolchains for building u-boot is mentioned in the SDK download page.
+
+
+Downloading Sources
 ===================
 
-Fetching the source code
-~~~~~~~~~~~~~~~~~~~~~~~~
+Create a folder for downloading all sources
 
 ::
 
-    mkdir ~/src/ti-bootloader-aosp/ && cd $_
+    mkdir ~/08_03_00 && cd $_
+    export YOUR_PATH=$PWD
+
+Bootloader components
+---------------------
+
+::
+
+    mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
     git clone -b 08.03.00.005 git://git.ti.com/k3-image-gen/k3-image-gen.git
-    git clone -b 08.03.00.005 https://git.ti.com/git/atf/arm-trusted-firmware.git
-    git clone -b 08.03.00.005 https://git.ti.com/git/optee/ti-optee-os.git
-    git clone -b 08.03.00.005 https://git.ti.com/git/ti-u-boot/ti-u-boot.git
+    git clone -b 08.03.00.005 git://git.ti.com/atf/arm-trusted-firmware.git
+    git clone -b 08.03.00.005 git://git.ti.com/optee/ti-optee-os.git
+    git clone -b 08.03.00.005 git://git.ti.com/ti-u-boot/ti-u-boot.git
     git clone -b 08.03.00.005 git://git.ti.com/processor-firmware/ti-linux-firmware.git
 
-Build
-~~~~~
+Kernel
+------
 
-The build is done in two stages:
-
-1. build tiboot3.bin
+Fetch the code using ``repo``:
 
 ::
 
-    cd ~/src/ti-bootloader-aosp/ti-u-boot/
+    mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
+    repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_03_Kernel.xml
+    repo sync
+
+
+Android File System
+-------------------
+
+Fetch the code using ``repo``:
+
+::
+
+    mkdir ${YOUR_PATH}/ti-aosp-12 && cd $_
+    repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_03.xml
+    repo sync
+
+
+
+Build Instructions
+==================
+
+.. note::
+
+    The Bootloader and Kernel builds below are optional if they are used as is from TI relase. Prebuilt copies of these
+    binaries are already part of Android file system sources in ``device/ti/am62x-kernel`` and
+    ``vendor/ti/am62x/bootloader`` folder.
+
+
+Bootloader components
+---------------------
+
+1. Build tiboot3.bin
+
+::
+
+    cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
     make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=/tmp/r5
     make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=/tmp/r5
-    cd ~/src/ti-bootloader-aosp/k3-image-gen
-    make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62x SBL=/tmp/r5/spl/u-boot-spl.bin SYSFW_PATH=~/src/ti-bootloader-aosp/ti-linux-firmware/ti-sysfw/ti-fs-firmware-am62x-gp.bin
+    cd ${YOUR_PATH}/ti-bootloader-aosp/k3-image-gen
+    make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62x SBL=/tmp/r5/spl/u-boot-spl.bin SYSFW_PATH=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware/ti-sysfw/ti-fs-firmware-am62x-gp.bin
 
-Use the tiboot3.bin generated from last command in ~/src/ti-bootloader-aosp/k3-image-gen
+Use the tiboot3.bin generated from last command in ${YOUR_PATH}/ti-bootloader-aosp/k3-image-gen
 
-2. build tispl.bin and u-boot.img
+
+2. Build tispl.bin and u-boot.img
 
 In order to build tispl.bin and u-boot.img, OPTEE and ATF (arm trusted firmware) need to be built.
 
 ::
 
-    cd ~/src/ti-bootloader-aosp/arm-trusted-firmware
+    cd ${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware
     make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=lite SPD=opteed
-    cd ~/src/ti-bootloader-aosp/ti-optee-os
+    cd ${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os
     make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu-
 
 It is now possible to generate tispl.bin and u-boot.img.
 
 ::
 
-    cd ~/src/ti-bootloader-aosp/ti-u-boot/
+    cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
     make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=/tmp/a53
-    make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=~/src/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin TEE=~/src/ti-bootloader-aosp/ti-optee-os/out/arm-plat-k3/core/tee-pager_v2.bin DM=~/src/ti-bootloader-aosp/ti-linux-firmware/ti-dm/am62xx/ipc_echo_testb_mcu1_0_release_strip.xer5f O=/tmp/a53
+    make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin TEE=${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os/out/arm-plat-k3/core/tee-pager_v2.bin DM=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware/ti-dm/am62xx/ipc_echo_testb_mcu1_0_release_strip.xer5f O=/tmp/a53
 
 Use tispl.bin and u-boot.img located in /tmp/a53
 
-Building Kernel
-=====================
+3. Copy the tiboot3.bin, tispl.bin and u-boot.img generated in steps 1 and 2 to ``${YOUR_PATH}/ti-aosp-12/vendor/ti/am62x/bootloader``. If not copied, the prebuilt bootloader binaries already present in vendor/ti/am62x/bootloader will get use by flashall.sh flashing script.
 
-Fetching the kernel code
-~~~~~~~~~~~~~~~~~~~~~~~~
 
-Fetch the code using ``repo``:
-
-::
-
-    mkdir ~/src/ti-kernel-aosp/ && cd $_
-    repo init -u https://git.ti.com/git/android/manifest.git -m kernel.xml -b android12-core-release
-    repo sync
-
-Build
-~~~~~
-
-In this section, we will assume that we already have an Android source tree which has been fully build and is located in:
-
-::
-
-    ~/src/ti-aosp-12
+Kernel
+------
 
 Building everything from scratch
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-    cd ~/src/ti-kernel-aosp/
-    export DIST_DIR=~/src/ti-aosp/device/ti/am62x-prebuilts/kernel/5.10
+    cd ${YOUR_PATH}/ti-kernel-aosp/
+    export DIST_DIR=${YOUR_PATH}/ti-aosp/device/ti/am62x-kernel/kernel/5.10
     export BUILD_CONFIG=./imgtech-module/build.config.imgtech
     build/build.sh
 
@@ -100,8 +141,8 @@ Add the ``SKIP_MRPROPER=1`` flag:
 
 ::
 
-    $ cd ~/src/ti-kernel-aosp/
-    $ export DIST_DIR=~/src/ti-aosp/device/ti/am62x-prebuilts/kernel/5.10
+    $ cd ${YOUR_PATH}/ti-kernel-aosp/
+    $ export DIST_DIR=${YOUR_PATH}/ti-aosp/device/ti/am62x-prebuilts/kernel/5.10
     $ export BUILD_CONFIG=./imgtech-module/build.config.imgtech
     $ export SKIP_MRPROPER=1
     $ build/build.sh
@@ -113,75 +154,25 @@ The usual (``make menuconfig`` ) is done via ``config.sh``:
 
 ::
 
-    cd ~/src/ti-kernel-aosp/
+    cd ${YOUR_PATH}/ti-kernel-aosp/
     export BUILD_CONFIG=./imgtech-module/build.config.imgtech
     build/config.sh
 
 .. note::
 
-   Users must have built the
-   android kernel image prior to building the Android file system.
+   Users must have built the android kernel image prior to building the Android file system.
+   Otherwise pre-built Kernel images present in ``device/ti/am62x-kernel`` will be used to create ``boot.img``
 
-Building Android File System
-=================================
 
-| 
-
-U-Boot, Linux Kernel, and Android Filesystem Sources
-------------------------------------------------------
-
-Setup
-~~~~~
-
-Please refer to the following pages to setup your environment for AOSP build:
-
--  `Android's Build
-   requirements <https://source.android.com/setup/build/requirements>`__.
--  `Android's Establishing a Build
-   Environment <https://source.android.com/setup/build/initializing>`__
-   guide.
-
-**Getting the Repo tool**
-
-You will need the Repo tool to retrieve repositories.
-To install it, please refer to this webpage : https://source.android.com/setup/develop#installing-repo
-
-.. rubric:: Android Filesystem Sources
-   :name: android-filesystem-sources
-
-Building Android
-----------------
-
-Fetching the code
-~~~~~~~~~~~~~~~~~
-
-Fetch the code using ``repo``:
+Android File System
+-------------------
 
 ::
 
-    mkdir ~/src/ti-aosp-12 && cd $_
-    repo init -u https://git.ti.com/git/android/manifest.git -b android12-core-release
-    repo sync
-
-For more information about ``repo``, visit `Android's official
-documentation <https://source.android.com/setup/build/downloading>`__
-
-Build
-~~~~~
-
-::
-
-    cd ~/src/ti-aosp-12
+    cd ${YOUR_PATH}/ti-aosp-12
     source build/envsetup.sh
     lunch am62x-userdebug
     m
 
 
-.. rubric:: TI Hardware Accelerated Graphics Binaries
-   :name: ti-hardware-accelerated-graphics-binaries
-
-Accelerated graphics binaries are part of Android file system build.
-
-|
-
-
+**After building all components, refer to instruction in next section for flashing the images to EVM**
