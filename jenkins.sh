@@ -136,7 +136,7 @@ build_doc()
 }
 
 if [[ ${OS} == all ]]; then
-    for dev in "GEN" "AM335X" "AM437X"; do
+    for dev in "GEN" "AM335X" "AM437X" "AM57X"; do
 	build_doc linux $dev
 	build_doc rtos $dev
 	if [[ "$dev" == "GEN" ]]; then
@@ -149,8 +149,6 @@ if [[ ${OS} == all ]]; then
     build_doc linux J7
     # build CORESDK
     build_doc linux CORESDK
-    # build AM57X
-    build_doc rtos AM57X
 else
     build_doc ${OS} ${DEV}
 fi
