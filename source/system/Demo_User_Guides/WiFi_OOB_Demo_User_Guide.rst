@@ -1,3 +1,4 @@
+.. include:: /replacevars.rst.inc
 
 .. _WiFi-OOB-Demo-User-Guide-label:
 
@@ -7,7 +8,7 @@ WiFi Out Of Box Demo - User Guide
 Overview
 --------
 
-The AM64x SK board has a WiLink Module (WL1837MODGIMOCT) from TI connected to the MMC0 port of the SoC.
+The |__PART_FAMILY_NAME__| SK board has a WiLink Module (WL1837MODGIMOCT) from TI connected to the MMC0 port of the SoC.
 Using this, a WiFi Out of Box Demo has been set up such that the board acts as both a WiFi Access
 Point( AP) and a WiFi Station that can connect to an external access point like a router or hotspot, on boot
 up. The board also starts iperf3 automatically on the access point interface and the user can run iperf3 on
@@ -18,7 +19,7 @@ All of the necessary equipment requirement and instructions are provided here.
 Hardware Prerequisites
 ----------------------
 
--  TI AM64x SK
+-  TI |__PART_FAMILY_NAME__| SK
 
 -  PC (Windows or Linux, to use serial terminal console)
 
@@ -35,18 +36,29 @@ Follow the steps below to connect to the WiFi Access Point of the SK board:
 
 1. Power on the board. The SK will start the WiFi Access Point(AP) automatically on system boot.
    
-2. Scan for WiFi network from your phone or PC. Each board has a specific AP SSID. For AM64x SK
-   it will be "AM64xSK-AP-xxxxxx".
+2. Scan for WiFi network from your phone or PC. Each board has a specific AP SSID. For |__PART_FAMILY_NAME__| SK
+   it will be "\ |__PART_FAMILY_NAME__|\ SK-AP_xxxxxx".
 
 3. Connect to this network using the password "tiwilink8".
 
-.. Image:: /images/am64sk-ap.jpg
-   :width: 407
-   :height: 400
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    .. Image:: /images/am64sk-ap.jpg
+       :width: 407
+       :height: 400
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    .. Image:: /images/am62sk-ap.png
+       :width: 407
+       :height: 400
 
 4. Once connected, you can access the Matrix GUI from http://192.168.43.1
 
-5. Also, the benchmark demo can be accessed from http://192.168.43.1:8081
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    5. Also, the benchmark demo can be accessed from http://192.168.43.1:8081
+
 
 Using the board as WiFi Station to connect to external WiFi AP
 --------------------------------------------------------------
