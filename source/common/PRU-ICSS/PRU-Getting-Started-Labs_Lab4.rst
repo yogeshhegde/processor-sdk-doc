@@ -182,8 +182,19 @@ Configure the Kernel
 The remoteproc and rpmsg modules are enabled by default. These modules are
 included out-of-the-box in the Linux Processor SDK.
 
-.. TODO: Provide documentation for manually configuring the Linux kernel.
-   Talk about which modules are required when
+Modules can be enabled or disabled by customing the Linux kernel config. For
+steps to use menuconfig to adjust the kernel config, reference the Processor SDK
+Linux documentation, section **Foundational Components > Kernel > Users Guide**.
+
+The Remoteproc driver can be found in menuconfig under **Device Drivers >
+Remoteproc drivers**.
+
+.. TODO: insert image
+
+The PRU RPMsg driver can be found in menuconfig under **Device Drivers >
+Rpmsg drivers**
+
+.. TODO: insert image
 
 
 Modify Device Tree Files to account for Pinmuxing
