@@ -13,7 +13,7 @@ Getting Started with PRU Software Support Package
  This section covers the software aspects of getting started with a PRU
  Subsystem (PRU-ICSS, PRU_ICSSG, PRU-SS).
  Hardware information, training material, software development
- resources, and more are in the :ref:`pru_icss_icssg_overview`
+ resources, and more are in the :ref:`pru_subsystem_overview`
 
 
 The PRU Software Support Package (PSSP) provides support for the PRU

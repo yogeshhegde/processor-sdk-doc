@@ -1,22 +1,58 @@
-.. _pru_icss_icssg_overview:
+.. _pru_subsystem_overview:
 
-Overview of PRU-ICSS and PRU_ICSSG
-==================================
+Overview of PRU Subsystem
+=========================
 
-The Programmable Real-Time Unit Subsystem and Industrial Communication SubSystem
-(PRU-ICSS) consists of dual 32-bit RISC cores (Programmable Real-Time Units, or
-PRUs), data and instruction memories, internal peripheral modules, and an
-interrupt controller (INTC). The programmable nature of the PRU-ICSS, along with
-their access to pins, events and all SoC resources, provides flexibility in
+The Programmable Real-time Unit (PRU) is a 32-bit RISC processor core that is
+tightly integrated with an IO subsystem, offering low-latency control of IO
+pins. The TI Sitara family of devices offer three flavors of PRU Subsystem.
+
+.. rubric:: PRU-ICSS: The Programmable Real-time Unit and Industrial Communication Subsystem
+
+The Programmable Real-time Unit and Industrial Communication Subsystem
+(PRU-ICSS) consists of dual 32- bit RISC cores (the PRUs), shared data,
+instruction memories, internal peripheral modules, and an interrupt controller
+(INTC). The programmable nature of the PRU, along with its access to pins (IOs),
+events and all System-on-Chip (SoC) resources, provides flexibility in
 implementing fast real-time responses, specialized data handling operations,
-custom peripheral interfaces, and in offloading tasks from the other processor
-cores of the system-on-chip (SoC).
+custom peripheral interfaces, and in off-loading tasks from the other processor
+cores of the SoC.
 
-The PRU-ICSS hardware can be used for two categories of applications:
+Devices offering the PRU-ICSS capability include AM335x, AM437x, AM57x and K2G.
+
+.. rubric:: PRU_ICSSG: The Programmable Real-time Unit and Industrial Communication Subsystem - Gigabit
+
+The Programmable Real-time Unit and Industrial Communication Subsystem - Gigabit
+(PRU_ICSSG) can be considered a superset of the PRU-ICSS. In addition to all
+PRU-ICSS features, the PRU_ICSSG adds two Auxiliary Programmable Real-Time Unit
+(RTU) cores, two Transmit PRU (TX_PRU) cores, broadside memories, improved event
+management with the task manager, data processing and data movement
+accelerators, and new peripherals such as PWM.
+
+Devices offering the PRU_ICSSG capability include AM24x, AM64x, and AM65x.
+
+.. rubric:: PRU-SS: The Programmable Real-time Unit Subsystem
+
+The Programmable Real-time Unit Subsystem (PRU-SS) consists of dual 32-bit RISC
+cores (the PRUs), shared data, instruction memories, internal peripheral
+modules, and an interrupt controller (INTC). The programmable nature of the PRU
+cores, along with their access to pins, events and all device resources,
+provides flexibility in implementing fast real-time responses, specialized data
+handling operations, custom peripheral interfaces, and in offloading tasks from
+the other processor cores of the device.
+
+Industrial Communication Subsystem features including Ethernet (MII signals and
+MDIO signals are not pinned out) are not supported.
+
+Devices offering the PRU-SS capability include AM62x.
+
+|
+
+The PRU subsystem hardware can be used for two categories of applications:
 
  * General-purpose applications (using the PRU subsystem)
 
- * Industrial applications (using the ICSS)
+ * Industrial applications (using the ICSS on applicable processors)
 
    * See :ref:`pru_overview_evaluation_hardware` for supported boards
 
@@ -72,6 +108,8 @@ Miscellaneous
 
 Training Material
 -----------------
+
+:ref:`pru_getting_started_labs`
 
 :ref:`pru_hands_on_labs`
 
@@ -132,7 +170,7 @@ Software Information
       Industrial networking documentation at `Industrial Protocols <../../linux/Industrial_Protocols.html>`__
 
    Other information about PRU development can be found throughout this
-   "PRU-ICSS / PRU_ICSSG" documentation.
+   "PRU Subsystem" documentation.
 
    For RTOS software information, reference the RTOS Processor SDK
    documentation.
@@ -218,7 +256,7 @@ PRU evaluation hardware can be ordered from ti.com:
 
  * AM62x
 
-   * SK-AM62
+   * `SK-AM62 <https://www.ti.com/tool/SK-AM62>`__
 
  * AM64x
 
@@ -285,7 +323,8 @@ PRU subsystem and ICSS both refer to the same hardware (PRU-ICSS), but
 their distinction lies in the targeted applications. The term "PRU
 subsystem" is used for broad market (or non-industrial) applications,
 while the term "ICSS" is used for industrial applications. The ICSS is
-supported with ICE and IDK boards and Industrial Software Kit.
+supported on applicable processors with ICE and IDK boards and Industrial
+Software Kit.
 
 Is TI providing libraries for the PRU?
 """"""""""""""""""""""""""""""""""""""
@@ -317,7 +356,7 @@ My processor has a PRU. Is the PRU supported in the Linux Processor SDK?
 It depends. OMAP138 PRU is NOT supported in Processor SDKs, and there are
 no plans to add support for it. However, the latest Processor SDKs support
 general purpose PRU development for AM335x/AMIC110, AM437x/AMIC120, AM57x,
-AM243x, AM62x, AM64x, AM65x, and 66AK2G02 (K2G). More processors will be added in
+AM243x, AM62x, AM64x, and AM65x. More processors will be added in
 future releases.
 
 |
