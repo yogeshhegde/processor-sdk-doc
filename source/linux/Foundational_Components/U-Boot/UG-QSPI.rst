@@ -107,14 +107,21 @@ documented above.
 
          #sudo apt-get install dfu-util
 
-    From u-boot:
+    From u-boot(for OSPI flash):
 
     ::
 
         U-Boot # env default -a
         U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "0:0:25000000:0"
 
-    From ubuntu PC: Using dfu-util utilities to flash the binares to QSPI flash.
+    From u-boot(for QSPI flash):
+
+    ::
+
+        U-Boot # env default -a
+        U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "1:0:40000000:0"
+
+    From ubuntu PC: Using dfu-util utilities to flash the binares to OSPI/QSPI flash.
 
     ::
 
