@@ -358,9 +358,19 @@ Table:  **Multibench**
  
  
 
- 
 
- 
+Boot-time Measurement
+-------------------------
+
+Boot media: MMCSD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. csv-table::
+    :header: "Boot Configuration","am62xx-sk: boot time (sec)"
+
+    "Kernel boot time test when bootloader, kernel and sdk-rootfs are in mmc-sd","19.38 (min 18.47, max 19.93)"
+
+Table:  **Boot time MMC/SD**
 
 
 
@@ -371,6 +381,20 @@ Graphics SGX/RGX Driver
 -------------------------
  
 
+
+GFXBench
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Run GFXBench and capture performance reported (Score and Display rate in fps). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
+
+.. csv-table::
+    :header: "Benchmark","am62xx-sk: Score","am62xx-sk: Fps"
+
+    " GFXBench 3.x gl_manhattan_off","82.49","1.33"
+    " GFXBench 3.x gl_trex_off","135.92","2.43"
+    " GFXBench 5.x gl_5_high_off","10.99","0.17"
+
+
+Table:  **GFXBench**
 
 
 
@@ -485,9 +509,51 @@ Table: **CPSW TCP Bidirectional Throughput**
 
 
 
+.. rubric::  UDP Throughput
+   :name: CPSW2g-udp-throughput-0-loss
+
+.. csv-table::
+    :header: "Frame Size(bytes)","am62xx-sk: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx-sk: THROUGHPUT (Mbits/sec)","am62xx-sk: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","18.00","17.22","43.38"
+    "128","82.00","78.36","43.38"
+    "256","210.00","206.08","43.96"
+    "1024","978.00","928.62","44.05"
+    "1518","1472.00","951.60","42.44"
+
+Table: **CPSW UDP Egress Throughput**
+|
 
 
 
+.. csv-table::
+    :header: "Frame Size(bytes)","am62xx-sk: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx-sk: THROUGHPUT (Mbits/sec)","am62xx-sk: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","18.00","11.26","14.14"
+    "128","82.00","15.94","6.10"
+    "256","210.00","74.93","9.87"
+    "1024","978.00","936.71","39.66"
+    "1518","1472.00","957.00","40.75"
+
+
+Table: **CPSW UDP Ingress Throughput (0% loss)**
+
+|
+
+
+
+.. csv-table::
+    :header: "Frame Size(bytes)","am62xx-sk: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am62xx-sk: THROUGHPUT (Mbits/sec)","am62xx-sk: CPU Load % (LOCAL_CPU_UTIL)","am62xx-sk: Packet Loss %"
+
+    "64","18.00","23.37","37.33","63.54"
+    "128","82.00","105.21","38.92","63.21"
+    "256","210.00","258.67","40.09","64.88"
+    "1024","978.00","935.29","40.03","0.16"
+    "1518","1472.00","956.43","41.28","0.07"
+
+Table: **CPSW UDP Ingress Throughput (possible loss)**
+
+|
  
  
 
@@ -512,12 +578,144 @@ Table: **CPSW TCP Bidirectional Throughput**
 
  
 
+
+EMMC Driver
+-------------------------
+
+.. warning::
+
+  **IMPORTANT**: The performance numbers can be severely affected if the media is
+  mounted in sync mode. Hot plug scripts in the filesystem mount
+  removable media in sync mode to ensure data integrity. For performance
+  sensitive applications, umount the auto-mounted filesystem and
+  re-mount in async mode.
+
+|
+
+
+
+
+
+
+AM62XX-SK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|
+
+.. csv-table::
+    :header: "Buffer size (bytes)","am62xx-sk: Write EXT4 Throughput (Mbytes/sec)","am62xx-sk: Write EXT4 CPU Load (%)","am62xx-sk: Read EXT4 Throughput (Mbytes/sec)","am62xx-sk: Read EXT4 CPU Load (%)"
+
+    "1m","57.80","1.44","173.00","1.95"
+    "4m","57.90","1.25","174.00","1.74"
+    "4k","51.00","20.10","55.70","19.06"
+    "256k","58.50","1.63","173.00","2.55"
+
+|
+ 
+
+ 
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
  
 
  
 
  
 
+
+MMC/SD Driver
+-------------------------
+
+.. warning::
+
+  **IMPORTANT**: The performance numbers can be severely affected if the media is
+  mounted in sync mode. Hot plug scripts in the filesystem mount
+  removable media in sync mode to ensure data integrity. For performance
+  sensitive applications, umount the auto-mounted filesystem and
+  re-mount in async mode.
+
+| 
+
+ 
+
+
+
+
+
+ 
+
+
+AM62XX-SK
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|
+
+.. csv-table::
+    :header: "Buffer size (bytes)","am62xx-sk: Write EXT4 Throughput (Mbytes/sec)","am62xx-sk: Write EXT4 CPU Load (%)","am62xx-sk: Read EXT4 Throughput (Mbytes/sec)","am62xx-sk: Read EXT4 CPU Load (%)"
+
+    "1m","9.13","0.50","75.70","1.41"
+    "4m","8.65","1.10","85.70","1.43"
+    "4k","3.09","1.95","25.60","7.32"
+    "256k","9.18","0.59","75.20","1.65"
+
+|
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+ 
+|
+
+
+The performance numbers were captured using the following:
+
+-  SanDisk 8GB MicroSDHC Class 10 Memory Card
+-  Partition was mounted with async option
+
+|
 
 
 
