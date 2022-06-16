@@ -220,6 +220,8 @@ A test application that interfaces directly through the V4L2 API is provided
 along with the release. The test application used for verifying the DECODER
 functionality through the V4L2 API is "tidec_decode".
 
+.. note:: tidec_decode is only able to handle raw streams, not container formats.
+
 Usage:
 
 .. code-block:: text
