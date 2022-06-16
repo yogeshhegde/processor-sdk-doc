@@ -349,6 +349,9 @@ Build U-Boot
         |    J721S2 EVM              |    j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |
         |                            |    j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |
         +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+        |    J721S2 HS EVM           | j721s2\_hs\_evm\_r5\_defconfig  | j721s2\_hs\_evm\_r5\_defconfig | j721s2\_hs\_evm\_r5\_defconfig | j721s2\_hs\_evm\_r5\_defconfig |
+        |                            | j721s2\_hs\_evm\_a72\_defconfig | j721s2\_ha\_evm\_a72\_defconfig| j721s2\_hs\_evm\_a72\_defconfig| j721s2\_hs\_evm\_a72\_defconfig|
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
 
         *on GP*
 
@@ -363,6 +366,21 @@ Build U-Boot
           A72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_evm_a72_defconfig O=<output directory>/a72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+
+	*on HS*
+
+       .. code-block:: console
+
+          R5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_hs_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+          $ cd ../k3-image-gen-<version>
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721s2 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721s2-hs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721s2--hs-cert.bin
+
+          A72
+          $ ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh <path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f <path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_hs_evm_a72_defconfig O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin.signed TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin.signed DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=<output directory>/a72
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
