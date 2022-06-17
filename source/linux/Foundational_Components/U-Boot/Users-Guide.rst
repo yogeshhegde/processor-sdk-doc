@@ -18,6 +18,7 @@ User's Guide
     UG-SATA
     UG-UFS
     UG-DDR3
+    UG-DDRSS
     UG-HyperBus
     UG-RemoteProc
 

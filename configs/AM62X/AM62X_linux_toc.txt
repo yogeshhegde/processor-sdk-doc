@@ -36,7 +36,7 @@ linux/Foundational_Components/U-Boot/UG-Memory
 linux/Foundational_Components/U-Boot/UG-SPI
 linux/Foundational_Components/U-Boot/UG-QSPI
 linux/Foundational_Components/U-Boot/UG-UART
-#linux/Foundational_Components/U-Boot/UG-DDR3	(Must be DDR4: Needs a new doc to be created in another patch)
+linux/Foundational_Components/U-Boot/UG-DDRSS
 linux/Foundational_Components/U-Boot/UG-Network-K3
 #linux/Foundational_Components/U-Boot/UG-RemoteProc # We do not support this for now
 
