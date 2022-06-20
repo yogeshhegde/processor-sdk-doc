@@ -45,6 +45,15 @@ If the processor has a Processor MCU+ SDK:
 
   #. Follow the steps to ensure that CCS has been properly installed and set up.
 
+     .. note::
+
+        AM62x support for PRU development is added in **Sitara device support
+        version 1.6.1**. To check the version number of the currently installed
+        **Sitara device support**, go **Help > About Code Composer Studio >
+        Installation Details > Installed Software > Sitara device support**.
+        The package can be updated from that menu, or from **Help > Check for
+        Updates**.
+
   #. If section "Create Target Configuration" says to "Bypass not used CPUs",
      **do not bypass the ICSS / ICSS_G cores**. The CCS debugger cannot connect
      to a PRU core if it has been bypassed.

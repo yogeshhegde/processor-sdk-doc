@@ -7,8 +7,12 @@ Lab 5: Basic Debugging of PRU Firmware
 
 .. note::
 
-   AM62x: At the time of writing, CCS does not support connecting to AM62x PRU
-   cores. Please load and debug PRU cores from Linux.
+   AM62x support for PRU debug from CCS is added in **Sitara device support
+   version 1.6.1**. To check the version number of the currently installed
+   **Sitara device support**, go **Help > About Code Composer Studio >
+   Installation Details > Installed Software > Sitara device support**.
+   The package can be updated from that menu, or from **Help > Check for
+   Updates**.
 
 .. _pru_getting_started_labs_debugging_from_ccs:
 
