@@ -124,9 +124,10 @@ Navigate to the **Variables** window. Variables x, y, and z are defined here.
    variables are stored in one location on the stack, but the CCS debugger
    thinks that the variables are stored in a different location. This bug does
    not affect PRU functionality, but it does mean that the **Variables** window
-   is not useful for debugging. Lab steps
-   will be written as if the Variables window is working properly. Workaround
-   steps will be documented as notes.
+   is not useful for debugging. The bug is fixed in CCS 12.1 as per
+   `this e2e thread <https://e2e.ti.com/support/processors-group/processors/f/processors-forum/1104252/am6442-pru-ccs-variables-view-pointing-to-the-wrong-memory-location/4109925#4109925>`__.
+   Lab steps are written as if the Variables window is working properly.
+   Workaround steps are documented as notes.
 
 The **Variables** window shows the value of a variable, as well as the
 variable's location in memory.
@@ -197,7 +198,7 @@ window:
 
       .. note::
 
-         At the time of writing, the location of x, y, z in the stack does NOT
+         As of June 2022, the location of x, y, z in the stack does NOT
          match the location of x, y, and z in the variables view. For example,
          in my tests, x was stored in the stack at 0xF0, y was stored at 0xF4,
          and z was stored at 0xF8. However, the **Variables** view thought
