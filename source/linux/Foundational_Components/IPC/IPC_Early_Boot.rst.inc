@@ -67,19 +67,30 @@ in /lib/firmware folder (used by kernel).
    memory allocations in kernel are modified, U-Boot should be modified
    to match with the configuration specified in the kernel.
 
-   The U-Boot source file to modify is ``drivers/remoteproc/ipu_rproc.c``.
+   The U-Boot DTS file to modify is ``arch/arm/dts/dra7-ipu-common-early-boot.dtsi``.
    ::
 
-       #define DRA7\_RPROC\_CMA\_BASE\_IPU1 0x9d000000
-       #define DRA7\_RPROC\_CMA\_BASE\_IPU2 0x95800000
+        ipu1_memory_region: ipu1-memory@9d000000 {
+            compatible = "shared-dma-pool";
+            reg = <0x0 0x9d000000 0x0 0x2000000>;
+            reusable;
+            status = "okay";
+            u-boot,dm-spl;
+        };
+        
+        ipu2_memory_region: ipu2-memory@95800000 {
+            compatible = "shared-dma-pool";
+            reg = <0x0 0x95800000 0x0 0x3800000>;
+            reusable;
+            status = "okay";
+            u-boot,dm-spl;
+        };
 
-       #define DRA7\_RPROC\_CMA\_SIZE\_IPU1 0x02000000
-       #define DRA7\_RPROC\_CMA\_SIZE\_IPU2 0x03800000
 
-   The definitions above should match the reserved-memory node region definitions in
-   the corresponding dts board file in the kernel. For example, see the defined
-   reserved-memory nodes in arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi file used
-   for all AM57xx EVM boards:
+   The reserved memory nodes above should match the reserved-memory node region
+   definitions in the corresponding dts board file in the kernel. For example,
+   see the defined reserved-memory nodes in arch/arm/boot/dts/am57xx-beagle-x15-common.dtsi
+   file used for all AM57xx EVM boards:
    ::
 
        ipu1_cma_pool: ipu1_cma@9d000000 {
@@ -88,7 +99,7 @@ in /lib/firmware folder (used by kernel).
            reusable;
            status = "okay";
        };
-
+       
        ipu2_cma_pool: ipu2_cma@95800000 {
            compatible = "shared-dma-pool";
            reg = <0x95800000 0x3800000>;
@@ -101,34 +112,25 @@ in /lib/firmware folder (used by kernel).
    Further, the kernel can overwrite the memory being used by firmwares and can result in crashes.
 
 
-3. There is an additional memory that needs to be carved out in
-   linux kernel for storing the MMU page tables of the individual
-   cores. This additional memory is at
-   0x95700000, and is specified in the late attach device tree
-   dra7-ipu-common-early-boot.dtsi as shown below.
-
-   ::
-
-       &reserved_mem {
-           mmu-early-page-tables@95700000 {
-               reg = <0x0 0x95700000 0x0 0x100000>;
-               no-map;
-               status = "okay";
-           };
-       };
-
-   For each core, we reserve 16 KB for the Level 1 page table and an
+3. For each core, we reserve 16 KB for the Level 1 page table and an
    additional 16 KB for Level 2 page tables i.e. 32 KB for core. This
    information is passed to the boot loader via the below macros in
-   ``drivers/remoteproc/ipu_rproc.c``.
+   ``arch/arm/dts/dra7-ipu-common-early-boot.dtsi``.
 
-
-   In U-boot 2019.01, ``drivers/remoteproc/ipu_rproc.c``,
 
    ::
 
-       #define DRA7\_PGTBL\_BASE\_IPU1 0x95700000
-       #define DRA7\_PGTBL\_BASE\_IPU2 0x95740000
+        ipu1_pgtbl: ipu1-pgtbl@95700000 {
+            reg = <0x0 0x95700000 0x0 0x40000>;
+            no-map;
+            u-boot,dm-spl;
+        };
+        
+        ipu2_pgtbl: ipu2-pgtbl@95740000 {
+            reg = <0x0 0x95740000 0x0 0x40000>;
+            no-map;
+            u-boot,dm-spl;
+        };
 
   The memory for the page tables (256 KB per IPU) is placed just before
   the carveout memories for the remote processors. 16 KB of memory is
@@ -150,7 +152,7 @@ in /lib/firmware folder (used by kernel).
    The location of the macros controlling these temporary load locations
    is listed below.
 
-   In U-Boot 2019.01, each core is assigned a distinct temporary load
+   In U-Boot, each core is assigned a distinct temporary load
    address. The source file in which the macro is defined is also
    modified.
 
@@ -164,7 +166,7 @@ in /lib/firmware folder (used by kernel).
    |                          |                          | and drivers/remoteproc/ipu_rproc.c`` |
    +--------------------------+--------------------------+------------------------------------------+
 
-   Table: U-boot 2019.01:Temporary load address for Early boot binaries
+   Table: U-boot:Temporary load address for Early boot binaries
 
 .. rubric:: Enabling Early Boot
    :name: enabling-early-boot
@@ -252,6 +254,108 @@ purpose. These can be found in the file
 
 In the next section, we describe the kernel modifications necessary to
 allow it to connect to a remotecore already loaded by MLO.
+
+.. rubric:: Early boot with SPI boot mode
+
+In DRA7xx/AM57xx, the boot ROM copies the first stage boot loader(MLO/SPL) from
+QSPI flash at a conservative speed of 48MHz. For certain use cases the time spent
+in ROM copy plays a significant role in the usecases time. To speed up the time
+to copy the firststage boot loader we use a ``umlo`` (micro MLO).
+
+The umlo configures the DRA7xx/AM57xx to operate at the maximum QSPI interface
+speed, which is 76.8MHz interface frequency, Quad mode, and Mode 0 operation. The
+umlo copies the MLO to the execution address in OCMC and jumps to it. With this
+the time taken to enter a 168 KB size of MLO is significantly reduced to 5.5 ms
+approximately.
+
+The umlo source can be cloned from the below link. The tool shall be compiled with
+any baremetal compiler that supports Cortex A15. Ensure that the toolchain is installed
+and have ``arm-none-eabi-gcc`` in the PATH. Follow ``README.md`` from the repo to
+compile and build umlo binary.
+
+::
+
+    git clone git://git.ti.com/glsdk/dra7xx-umlo.git
+
+The firmware that needs to be loaded into other cores should be converted into
+uImage format. Refer the below command to convert the firmware into uImage format
+
+::
+
+    mkimage -d dra7-ipu1-fw.xem4 dra7-ipu1_0-fw.uImage
+
+Flash the binaries into the QSPI memory offset as below.
+
+	+--------------------------+-------------+
+	| Name                     |     Offset  |
+	+==========================+=============+
+	| umlo                     | 0x00        |
+	|                          |             |
+	+--------------------------+-------------+
+	| MLO                      | 0x10000     |
+	|                          |             |
+	+--------------------------+-------------+
+	| u-boot.img               | 0x40000     |
+	|                          |             |
+	+--------------------------+-------------+
+	| IPU1-firmware            | 0xA60000    |
+	|                          |             |
+	+--------------------------+-------------+
+	| IPU2-firmware            | 0xE60000    |
+	|                          |             |
+	+--------------------------+-------------+
+
+To flash the QSPI memory:
+#. Create a folder named "qspi" in the SD card bootable partition & copy
+all required images into this folder.
+#. Boot the board with the SD card boot mode.
+#. Stop the boot at u-boot prompt and run the below commands.
+
+::
+
+    mmc dev 0
+    sf probe 0
+    
+    /* Flashing MLO */
+    fatload mmc 0 0x82000000 qspi/MLO
+    sf erase 0x10000 0x30000
+    sf write 0x82000000 0x10000 0x30000
+    
+    /* Flash u-boot */
+    fatload mmc 0 0x83000000 qspi/u-boot.img
+    sf erase 0x40000 0x200000
+    sf write 0x83000000 0x40000 0x200000
+    
+    /* Flashing umlo */
+    fatload mmc 0 0x82000000 qspi/umlo
+    sf erase 0x0 0x10000
+    sf write 0x82000000 0x0 0x10000
+    
+    /* Flashing remote core firmware */
+    fatload mmc 0 0x83000000 qspi/dra7-ipu1-fw.uImage
+    sf erase 0xA60000 0x800000
+    sf write 0x83000000 0xA60000 0x800000
+
+#. Reboot the target board with QSPI boot mode. By default the SD boot is the primary boot
+mode and the secondary boot mode is QSPI. To boot the target board in QSPI, remove the SD card
+from the slot and power on the board.
+#. Execute the below command after kernel boot-up to check the functionality.
+
+::
+
+    [2022-06-24 16:34:37.963] U-Boot SPL 2021.01-00003-ge559672da4 (Jun 24 2022 - 12:53:40 +0530)
+    [2022-06-24 16:34:37.979] DRA722-GP ES2.0
+    [2022-06-24 16:34:38.203] Trying to boot from SPI
+    [2022-06-24 16:34:38.204] Loading Environment from FAT... no pinctrl state for default mode
+    [2022-06-24 16:34:38.235] no pinctrl state for default mode
+    [2022-06-24 16:34:38.235] MMC: no card present
+    [2022-06-24 16:34:38.284] Loading Environment from MMC... *** Warning - bad CRC, using default environment
+
+| The timestamp difference between the first line & third line
+(Trying to boot from SPI) from the above log, ensures at this point of time the
+firmware is already start executed. From the above log the time taken to boot the 
+IPU is 240ms
+
 
 .. rubric:: Enabling Late attach
    :name: enabling-late-attach
