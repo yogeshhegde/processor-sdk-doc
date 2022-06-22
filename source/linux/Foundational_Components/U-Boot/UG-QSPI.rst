@@ -406,7 +406,7 @@ documented above.
         U-Boot # mmc rescan
         U-Boot # fatload mmc 0 ${loadaddr} MLO
         U-Boot # sf probe 0
-        U-Boot # sf erase 0x00000 0x100000
+        U-Boot # sf erase 0x00000 0x200000
         U-Boot # sf write ${loadaddr} 0x00000 ${filesize}
         U-Boot # fatload mmc 0 ${loadaddr} u-boot.img
         U-Boot # sf write ${loadaddr} 0x40000 ${filesize}
@@ -420,7 +420,7 @@ documented above.
         U-Boot # mmc rescan
         U-Boot # fatload mmc 0 ${loadaddr} MLO
         U-Boot # sf probe 0
-        U-Boot # sf erase 0x00000 0x100000
+        U-Boot # sf erase 0x00000 0x200000
         U-Boot # sf write ${loadaddr} 0x00000 0x10000
         U-Boot # fatload mmc 0 ${loadaddr} u-boot.img
         U-Boot # sf write ${loadaddr} 0x40000 0x60000
