@@ -373,6 +373,12 @@ Boot media: MMCSD
 Table:  **Boot time MMC/SD**
 
 
+ 
+ 
+
+ 
+
+
 
  
 
@@ -389,9 +395,9 @@ Run GFXBench and capture performance reported (Score and Display rate in fps). A
 .. csv-table::
     :header: "Benchmark","am62xx-sk: Score","am62xx-sk: Fps"
 
-    " GFXBench 3.x gl_manhattan_off","82.49","1.33"
-    " GFXBench 3.x gl_trex_off","135.92","2.43"
-    " GFXBench 5.x gl_5_high_off","10.99","0.17"
+    " GFXBench 3.x gl_manhattan_off","92.87","1.50"
+    " GFXBench 3.x gl_trex_off","134.95","2.41"
+    " GFXBench 5.x gl_5_high_off","11.44","0.18"
 
 
 Table:  **GFXBench**
@@ -566,6 +572,49 @@ Table: **CPSW UDP Ingress Throughput (possible loss)**
 
  
 
+
+OSPI Flash Driver
+-------------------------
+
+
+AM62XX-EVM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+UBIFS
+"""""""""""""""""""""""""""
+
+.. csv-table::
+    :header: "Buffer size (bytes)","am62xx-sk: Write UBIFS Throughput (Mbytes/sec)","am62xx-sk: Write UBIFS CPU Load (%)","am62xx-sk: Read UBIFS Throughput (Mbytes/sec)","am62xx-sk: Read UBIFS CPU Load (%)"
+
+    "102400","0.18 (min 0.13, max 0.29)","23.43 (min 23.28, max 23.57)","27.26","6.67"
+    "262144","0.16 (min 0.11, max 0.19)","23.50 (min 23.23, max 23.85)","26.97","12.12"
+    "524288","0.16 (min 0.11, max 0.19)","23.25 (min 23.01, max 23.66)","26.86","9.38"
+    "1048576","0.16 (min 0.11, max 0.19)","23.41 (min 23.04, max 23.64)","26.57","9.68"
+
+
+
+
+RAW
+"""""""""""""""""""""""""""
+
+.. csv-table::
+    :header: "File size (Mbytes)","am62xx-sk: Raw Read Throughput (Mbytes/sec)"
+
+    "50","35.97"
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
  
 
  
@@ -613,6 +662,7 @@ AM62XX-SK
  
 
  
+
  
 
  
@@ -675,6 +725,8 @@ AM62XX-SK
 
 
 
+
+
  
 
  
@@ -720,6 +772,51 @@ The performance numbers were captured using the following:
 
 
 
+
+USB Driver
+-------------------------
+ 
+
+
+USB Device Controller
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+
+
+
+
+
+.. csv-table::
+    :header: "Number of Blocks","am62xx-sk: Throughput (MB/sec)"
+
+    "150","39.10"
+
+Table: **USBDEVICE HIGHSPEED SLAVE READ THROUGHPUT**
+
+|
+|
+
+
+
+.. csv-table::
+    :header: "Number of Blocks","am62xx-sk: Throughput (MB/sec)"
+
+    "150","35.40"
+
+Table: **USBDEVICE HIGHSPEED SLAVE WRITE THROUGHPUT**
+
+|
+|
+
+
+
+
+ 
+ 
  
 
 
