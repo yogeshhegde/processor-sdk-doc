@@ -10,8 +10,12 @@ running Linux.
 
 .. note::
 
-   AM62x: At the time of writing, CCS does not support connecting to AM62x PRU
-   cores. Please load and debug PRU cores from Linux.
+   AM62x support for connecting to the PRU from CCS is added in **Sitara device support
+   version 1.6.1**. To check the version number of the currently installed
+   **Sitara device support**, go **Help > About Code Composer Studio >
+   Installation Details > Installed Software > Sitara device support**.
+   The package can be updated from that menu, or from **Help > Check for
+   Updates**.
 
 .. note::
 
@@ -182,8 +186,19 @@ Configure the Kernel
 The remoteproc and rpmsg modules are enabled by default. These modules are
 included out-of-the-box in the Linux Processor SDK.
 
-.. TODO: Provide documentation for manually configuring the Linux kernel.
-   Talk about which modules are required when
+Modules can be enabled or disabled by customing the Linux kernel config. For
+steps to use menuconfig to adjust the kernel config, reference the Processor SDK
+Linux documentation, section **Foundational Components > Kernel > Users Guide**.
+
+The Remoteproc driver can be found in menuconfig under **Device Drivers >
+Remoteproc drivers**.
+
+.. TODO: insert image
+
+The PRU RPMsg driver can be found in menuconfig under **Device Drivers >
+Rpmsg drivers**
+
+.. TODO: insert image
 
 
 Modify Device Tree Files to account for Pinmuxing

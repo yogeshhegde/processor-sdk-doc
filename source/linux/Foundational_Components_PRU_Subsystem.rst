@@ -1,8 +1,8 @@
-.. _foundational-components-pru-icss-pru-icssg:
+.. _foundational-components-pru-subsystem:
 
-**********************************
-PRU-ICSS / PRU_ICSSG
-**********************************
+*************
+PRU Subsystem
+*************
 
 .. toctree::
    :maxdepth: 2

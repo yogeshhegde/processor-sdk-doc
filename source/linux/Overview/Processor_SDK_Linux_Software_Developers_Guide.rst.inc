@@ -61,7 +61,7 @@ suggestions <Feedback>`.
     +------------------+------------------------+----------------------------+----------------------------+
     | |__Tools__|      | |__OpenCL__|           | |__OpenCV__|               | |__Graphics & Display__|   |
     +------------------+------------------------+----------------------------+----------------------------+
-    | |__Multimedia__| | |__Examples & Demos__| | |__PRU-ICSS & PRU_ICSSG__| | |__Virtualization__|       |
+    | |__Multimedia__| | |__Examples & Demos__| | |__PRU Subsystem__|        | |__Virtualization__|       |
     +------------------+------------------------+----------------------------+----------------------------+
     | |__IPC__|        | |__OpenVX__|           | |__CMEM__|                 | |__Machine Learning__|     |
     +------------------+------------------------+----------------------------+----------------------------+
@@ -88,7 +88,7 @@ suggestions <Feedback>`.
     +==========================+========================+============================+=============+
     | |__U-Boot__|             | |__Kernel__|           | |__Filesystem__|           | |__Tools__| |
     +--------------------------+------------------------+----------------------------+-------------+
-    | |__Graphics & Display__| | |__Examples & Demos__| | |__PRU-ICSS & PRU_ICSSG__| |             |
+    | |__Graphics & Display__| | |__Examples & Demos__| | |__PRU Subsystem__|        |             |
     +--------------------------+------------------------+----------------------------+-------------+
 
 .. |__U-Boot__| replace:: :ref:`U-Boot <foundational-components-u-boot>`
@@ -97,7 +97,7 @@ suggestions <Feedback>`.
 .. |__Tools__| replace:: :ref:`Tools <foundational-components-tools>`
 .. |__Graphics & Display__| replace:: :ref:`Graphics & Display <foundational-components-graphics-and-display>`
 .. |__Examples & Demos__| replace:: :ref:`Examples, Demos <examples-and-demos>`
-.. |__PRU-ICSS & PRU_ICSSG__| replace:: :ref:`PRU-ICSS / PRU_ICSSG <foundational-components-pru-icss-pru-icssg>`
+.. |__PRU Subsystem__| replace:: :ref:`PRU Subsystem <foundational-components-pru-subsystem>`
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 

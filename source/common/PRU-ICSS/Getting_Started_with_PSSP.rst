@@ -4,21 +4,24 @@ Getting Started with PRU Software Support Package
 =================================================
 
 .. http://processors.wiki.ti.com/index.php/PRU-ICSS_Getting_Started_Guide
+
 .. rubric:: Overview
    :name: overview-pruss-getting-started
 
 .. note::
 
- This section covers the software aspects of getting started on the PRU-ICSS and
- the PRU_ICSSG. Hardware information, training material, software development
- resources, and more are in the :ref:`pru_icss_icssg_overview`
+ This section covers the software aspects of getting started with a PRU
+ Subsystem (PRU-ICSS, PRU_ICSSG, PRU-SS).
+ Hardware information, training material, software development
+ resources, and more are in the :ref:`pru_subsystem_overview`
 
 
-The PRU Software Support Package provides support for the PRU-ICSS
-Subsystem in AM335x, AM437x, AM57xx, AM64x, AM65x, and K2G devices. This package
+The PRU Software Support Package (PSSP) provides support for the PRU
+Subsystem in AM335x, AM437x, AM57xx, AM62x, AM64x, and AM65x devices. This package
 contains:
 
 -  Support for ARM loading and initializing PRU via Remoteproc Linux driver
+
    -  Remoteproc supports basic control functions such as firmware load,
       start/halt, simple debug, and interrupt managing
 
@@ -34,44 +37,22 @@ contains:
 
 -  `Code Composer Studio <http://processors.wiki.ti.com/index.php/Download_CCS>`__
 -  `PRU Code Generation
-   Tools <http://software-dl.ti.com/codegen/non-esd/downloads/download.htm#PRU>`__
+   Tools <https://www.ti.com/tool/PRU-CGT>`__
    (you can also get these tools through the CCS App Center)
--  ARM running Linux
+-  For an ARM running Linux:
 
-   -  `Linux Processor SDK for
-      AM335x <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-LINUX-AM335X/latest/index_FDS.html>`__,
-      `Linux Processor SDK for
-      AM437x <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-LINUX-AM437X/latest/index_FDS.html>`__,
-      `Linux Processor SDK for
-      AM57xx <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-LINUX-AM57X/latest/index_FDS.html>`__,
-      `Linux Processor SDK for
-      AM64x <http://software-dl.ti.com/processor-sdk-linux/esd/AM64X/latest/index_FDS.html>`__
-      `Linux Processor SDK for
-      AM65xx <http://software-dl.ti.com/processor-sdk-linux/esd/AM65X/latest/index_FDS.html>`__
-      or `Linux Processor SDK for
-      K2G <http://software-dl.ti.com/processor-sdk-linux/esd/K2G/latest/index_FDS.html>`__
-   -  The PRU Software Support Package is built into the Linux Processor
-      SDK in the '<%SDK_INSTALL_DIR%>/example-applications/' folder
+   -  Install the Linux Processor SDK for the device.
+   -  The PSSP is built into the Linux Processor
+      SDK in the '<%SDK_INSTALL_DIR%>/example-applications/pru-icss-x.y.z' folder
 
--  ARM running RTOS
+-  For an ARM running RTOS:
 
-   -  `RTOS Processor SDK for
-      AM335x <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-RTOS-AM335X/latest/index_FDS.html>`__,
-      `RTOS Processor SDK for
-      AM437x <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-RTOS-AM437X/latest/index_FDS.html>`__,
-      `RTOS Processor SDK for
-      AM57xx <http://software-dl.ti.com/processor-sw/esd/PROCESSOR-SDK-RTOS-AM57X/latest/index_FDS.html>`__,
-      `MCU+ SDK RTOS/NO-RTOS for
-      AM64x <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM64X>`__
-      `RTOS Processor SDK for
-      AM65xx <https://www.ti.com/tool/download/PROCESSOR-SDK-RTOS-AM65X>`__
-      or `RTOS Processor SDK for
-      K2G <http://software-dl.ti.com/processor-sdk-rtos/esd/K2G/latest/index_FDS.html>`__
-   -  `PRU Software Support
+   -  Install the MCU+ SDK or RTOS SDK for the device.
+   -  The `PRU Software Support
       Package <https://git.ti.com/pru-software-support-package/pru-software-support-package/trees/master>`__
-      - Contains header files and register mappings
+      contains header files and register mappings
 
-| 
+|
 
 .. rubric:: Installation of Tools
    :name: installation-of-tools
@@ -81,32 +62,29 @@ a few requirements once you have installed to your preferred directory.
 
 .. rubric:: Linux
 
-#. Install Processor SDK to the directory of your choosing
-   Follow the installation instructions found
-   `here <Overview_Getting_Started_Guide.html#download-and-install-the-sdk>`__.
-   Location does not matter, but the default installation directory is
-   strongly suggested and makes using the SDK's scripts much easier.
+#. Install Processor SDK to the directory of your choosing.
+   Follow the installation instructions found at
+   :ref:`overview-getting-started`.
+
 #. If your Processor SDK Linux has a top-level example-applications folder, the PRU
    Software Support Package is built into the SDK at
    'example-applications/pru-icss-x.y.z/'. Otherwise you can download the files
    from the public Git repository
    `here <https://git.ti.com/pru-software-support-package/pru-software-support-package/trees/master>`__.
+
 #. (**Optional**) Install CCS to the directory of your choosing
    CCS installation instruction for Linux can be found
    `here <http://processors.wiki.ti.com/index.php/Linux_Host_Support_CCSv7#Installation_Instructions>`__.
-   Makefiles are provided (in addition to CCS projects for most
-   projects) in order to build all examples in the PRU Software Support
+   Makefiles are provided in order to build all examples in the PRU Software Support
    Package. The ability to build the PRU projects using the Makefiles
-   makes CCS completely optional in a Linux environment.
+   makes CCS optional in a Linux environment.
 
-| 
+|
 
 .. rubric:: Windows
    :name: windows
 
-#. There is no longer a standalone installer for the PRU Software
-   Support Package
-   You must now download the files from the public Git repository
+#. Download the PRU files from the public Git repository
    `here <https://git.ti.com/pru-software-support-package/pru-software-support-package/trees/master>`__.
 #. Install CCS to the directory of your choosing
    Installers can be found
@@ -117,13 +95,14 @@ a few requirements once you have installed to your preferred directory.
 .. rubric:: How to Enable PRU Support in Kernel
    :name: how-to-enable-pru-support-in-kernel
 
-| This step is used to enable the remoteproc driver in the Linux kernel.
-  Windows users that are loading the PRU through CCS can safely skip
-  this step during the development phase.
-| Beginning with Linux Processor SDK v2.0.2.11 the remoteproc and rpmsg
-  modules are enabled by default and included out of the box in the
-  Linux Processor SDK. Therefore, you do not need to make any menuconfig
-  changes in order to load firmwares in the PRU cores.
+This step is used to enable the remoteproc driver in the Linux kernel.
+Windows users that are loading the PRU through CCS can safely skip
+this step during the development phase.
+
+Beginning with Linux Processor SDK v2.0.2.11 the remoteproc and rpmsg
+modules are enabled by default and included out of the box in the
+Linux Processor SDK. Therefore, you do not need to make any menuconfig
+changes in order to load firmwares in the PRU cores.
 
 .. rubric:: How to Begin Programming
    :name: how-to-begin-programming
@@ -131,8 +110,9 @@ a few requirements once you have installed to your preferred directory.
 Programming the PRU core is not terribly different from programming any
 other core. Because we now have a C compiler we are able to write
 regular C code and have it perform tasks on the PRU cores. A great place
-to start development is to take a look at the :ref:`pru_hands_on_labs`
-that are provided in the PRU Software Support Package.
+to start development is to take a look at the :ref:`pru_getting_started_labs`
+and :ref:`pru_hands_on_labs`
+that are provided in the PSSP.
 
 .. rubric:: Register Header Files
    :name: register-header-files
@@ -143,7 +123,7 @@ easy configuration. In Linux, these are located in the
 directory by default. In the Git repository these are located in the
 include folder. See the :ref:`pru_header_files` page for more information.
 
-| 
+|
 
 .. rubric:: Special Considerations
    :name: special-considerations

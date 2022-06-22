@@ -73,7 +73,7 @@ linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components/Machine_Learning/tflite_j7
 linux/Foundational_Components_ATF
 linux/Foundational_Components_OPTEE
-linux/Foundational_Components_PRU-ICSS_PRU_ICSSG
+linux/Foundational_Components_PRU_Subsystem
 linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet

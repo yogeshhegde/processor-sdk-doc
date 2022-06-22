@@ -913,9 +913,8 @@ Build the Linux Kernel and remoteproc Driver
    not need to rebuild the kernel and driver modules. See section "Copy
    files to the target filesystem" for information on using the create SD
    card script. More information on enabling the remoteproc and rpmsg
-   modules may be found in the "How to Enable PRU Support in Kernel"
-   section
-   `here <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_PRU-ICSS_PRU_ICSSG.html#getting-started-with-pru-icss>`__.
+   modules may be found in the "Configuring the Kernel" section of
+   :ref:`pru_getting_started_labs_initialize_from_linux`.
 
 
 Modify Device Tree Files to Account for PRU Cape
