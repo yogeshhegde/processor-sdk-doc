@@ -201,6 +201,9 @@ env variable to that of the tftp server used in the setup.
 
 .. note:: Currently only 100Mbps and 1Gbps Full Duplex (FD) links are supported for ICSSG ports. Linux Kernel boot with NFS rootfs over PRUETH Ethernet interface has not been validated.
 
+Sample Script for AM65 SR1
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 ICSSG0 port 0
 
 ::
@@ -272,6 +275,96 @@ ICSSG2 port 0
       setenv firmware_file 'am65x-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 10 0x80000000 13040; rproc start 10; \
       setenv loadaddr 0x89000000; setenv firmware_file am65x-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 11 0x89000000 5676; \
       rproc start 11; dhcp; run stop_icssg2;'
+ setenv bootcmd 'run init_mmc; run init_icssg2; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
+ saveenv
+ boot
+
+Sample Script for AM65 SR2
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ICSSG0 port 0
+
+::
+
+ setenv start_icssg0 'rproc start 2; rproc start 3; rproc start 4; rproc start 5; rproc start 6; rproc start 7'
+ setenv stop_icssg0 'rproc stop 2; rproc stop 3; rproc stop 4; rproc stop 5; rproc stop 6; rproc stop 7'
+ setenv firmware_dir '/lib/firmware/ti-pruss'
+ setenv get_fdt_net 'run start_icssg0; tftp ${fdtaddr} ${serverip}:${bootdir}/${name_fdt}; run stop_icssg0'
+ setenv get_kern_net 'run start_icssg0; tftp ${loadaddr} ${serverip}:${bootdir}/${name_kern}; run stop_icssg0'
+ setenv get_overlay_net 'fdt address ${fdtaddr};fdt resize 0x0fffff;for overlay in $overlay_files;do; run start_icssg0; \
+         tftp ${overlayaddr} ${bootdir}/${overlay};fdt apply ${overlayaddr}; run stop_icssg0; done;'
+ setenv get_firmware_mmc 'load mmc ${bootpart} ${loadaddr} ${firmware_dir}/${firmware_file}'
+ setenv serverip 158.218.113.14
+ setenv bootdir 06.02.00.58-am6
+ setenv name_fdt k3-am654-base-board.dtb
+ setenv name_kern Image-am65xx-evm.bin
+ setenv overlay_files 'k3-am654-idk.dtbo k3-am654-pcie-usb2.dtbo'
+ setenv init_icssg0 'setenv ethact icssg0-eth; setenv autoload no; rproc init; setenv loadaddr 0x80000000; \
+     setenv firmware_file 'am65x-sr2-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 2 0x80000000 ${filesize}; \
+     setenv loadaddr 0x89000000; setenv firmware_file am65x-sr2-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 3 0x89000000 ${filesize}; \
+     setenv loadaddr 0x90000000; setenv firmware_file am65x-sr2-txpru0-prueth-fw.elf; run get_firmware_mmc; rproc load 4 0x90000000 ${filesize}; \
+     setenv loadaddr 0x80000000; setenv firmware_file am65x-sr2-pru1-prueth-fw.elf; run get_firmware_mmc; rproc load 5 0x80000000 ${filesize}; \
+     setenv loadaddr 0x89000000; setenv firmware_file am65x-sr2-rtu1-prueth-fw.elf; run get_firmware_mmc; rproc load 6 0x89000000 ${filesize}; \
+     setenv loadaddr 0x90000000; setenv firmware_file am65x-sr2-txpru1-prueth-fw.elf; run get_firmware_mmc; rproc load 7 0x90000000 ${filesize}; \
+     run start_icssg0; dhcp; run stop_icssg0;'
+ setenv bootcmd 'run init_mmc; run init_icssg0; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
+ saveenv
+ boot
+
+ICSSG1 port 0
+
+::
+
+ setenv start_icssg1 'rproc start 8; rproc start 9; rproc start 10; rproc start 11; rproc start 12; rproc start 13'
+ setenv stop_icssg1 'rproc stop 8; rproc stop 9; rproc stop 10; rproc stop 11; rproc stop 12; rproc stop 13'
+ setenv firmware_dir '/lib/firmware/ti-pruss'
+ setenv get_fdt_net 'run start_icssg1; tftp ${fdtaddr} ${serverip}:${bootdir}/${name_fdt}; run stop_icssg1'
+ setenv get_kern_net 'run start_icssg1; tftp ${loadaddr} ${serverip}:${bootdir}/${name_kern}; run stop_icssg1'
+ setenv get_overlay_net 'fdt address ${fdtaddr};fdt resize 0x0fffff;for overlay in $overlay_files;do; run start_icssg1; \
+         tftp ${overlayaddr} ${bootdir}/${overlay};fdt apply ${overlayaddr}; run stop_icssg1; done;'
+ setenv get_firmware_mmc 'load mmc ${bootpart} ${loadaddr} ${firmware_dir}/${firmware_file}'
+ setenv serverip 158.218.113.14
+ setenv bootdir 06.02.00.58-am6
+ setenv name_fdt k3-am654-base-board.dtb
+ setenv name_kern Image-am65xx-evm.bin
+ setenv overlay_files 'k3-am654-idk.dtbo k3-am654-pcie-usb2.dtbo'
+ setenv init_icssg1 'setenv ethact icssg1-eth; setenv autoload no; rproc init; setenv loadaddr 0x80000000; \
+     setenv firmware_file 'am65x-sr2-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 8 0x80000000 ${filesize}; \
+     setenv loadaddr 0x89000000; setenv firmware_file am65x-sr2-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 9 0x89000000 ${filesize}; \
+     setenv loadaddr 0x90000000; setenv firmware_file am65x-sr2-txpru0-prueth-fw.elf; run get_firmware_mmc; rproc load 10 0x90000000 ${filesize}; \
+     setenv loadaddr 0x80000000; setenv firmware_file am65x-sr2-pru1-prueth-fw.elf; run get_firmware_mmc; rproc load 11 0x80000000 ${filesize}; \
+     setenv loadaddr 0x89000000; setenv firmware_file am65x-sr2-rtu1-prueth-fw.elf; run get_firmware_mmc; rproc load 12 0x89000000 ${filesize}; \
+     setenv loadaddr 0x90000000; setenv firmware_file am65x-sr2-txpru1-prueth-fw.elf; run get_firmware_mmc; rproc load 13 0x90000000 ${filesize}; \
+     run start_icssg1; dhcp; run stop_icssg1;'
+ setenv bootcmd 'run init_mmc; run init_icssg1; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
+ saveenv
+ boot
+
+ICSSG2 port 0
+
+::
+
+ setenv start_icssg2 'rproc start 14; rproc start 15; rproc start 16; rproc start 17; rproc start 18; rproc start 19'
+ setenv stop_icssg2 'rproc stop 14; rproc stop 15; rproc stop 16; rproc stop 17; rproc stop 18; rproc stop 19'
+ setenv firmware_dir '/lib/firmware/ti-pruss'
+ setenv get_fdt_net 'run start_icssg2; tftp ${fdtaddr} ${serverip}:${bootdir}/${name_fdt}; run stop_icssg2'
+ setenv get_kern_net 'run start_icssg2; tftp ${loadaddr} ${serverip}:${bootdir}/${name_kern}; run stop_icssg2'
+ setenv get_overlay_net 'fdt address ${fdtaddr};fdt resize 0x0fffff;for overlay in $overlay_files;do; run start_icssg2; \
+         tftp ${overlayaddr} ${bootdir}/${overlay};fdt apply ${overlayaddr}; run stop_icssg2; done;'
+ setenv get_firmware_mmc 'load mmc ${bootpart} ${loadaddr} ${firmware_dir}/${firmware_file}'
+ setenv serverip 158.218.113.14
+ setenv bootdir 06.02.00.58-am6
+ setenv name_fdt k3-am654-base-board.dtb
+ setenv name_kern Image-am65xx-evm.bin
+ setenv overlay_files 'k3-am654-idk.dtbo k3-am654-pcie-usb2.dtbo'
+ setenv init_icssg2 'setenv ethact icssg2-eth; setenv autoload no; rproc init; setenv loadaddr 0x80000000; \
+     setenv firmware_file 'am65x-sr2-pru0-prueth-fw.elf'; run get_firmware_mmc;  rproc load 14 0x80000000 ${filesize}; \
+     setenv loadaddr 0x89000000; setenv firmware_file am65x-sr2-rtu0-prueth-fw.elf; run get_firmware_mmc; rproc load 15 0x89000000 ${filesize}; \
+     setenv loadaddr 0x90000000; setenv firmware_file am65x-sr2-txpru0-prueth-fw.elf; run get_firmware_mmc; rproc load 16 0x90000000 ${filesize}; \
+     setenv loadaddr 0x80000000; setenv firmware_file am65x-sr2-pru1-prueth-fw.elf; run get_firmware_mmc; rproc load 17 0x80000000 ${filesize}; \
+     setenv loadaddr 0x89000000; setenv firmware_file am65x-sr2-rtu1-prueth-fw.elf; run get_firmware_mmc; rproc load 18 0x89000000 ${filesize}; \
+     setenv loadaddr 0x90000000; setenv firmware_file am65x-sr2-txpru1-prueth-fw.elf; run get_firmware_mmc; rproc load 19 0x90000000 ${filesize}; \
+     run start_icssg2; dhcp; run stop_icssg2;'
  setenv bootcmd 'run init_mmc; run init_icssg2; run get_kern_net; run get_fdt_net ; run get_overlay_net ; run run_kern'
  saveenv
  boot
