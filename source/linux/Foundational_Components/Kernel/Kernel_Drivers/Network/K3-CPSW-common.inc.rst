@@ -1514,3 +1514,205 @@ In this example Rate Limiting is enabled for Host port TX channels and External 
    tx_pri5: 9
    tx_pri6: 0
    tx_pri7: 0
+
+Errata: i2329 MDIO interface corruption (CPSW and PRUSS)
+========================================================
+
+Description
+"""""""""""
+It is possible that the MDIO interface of all instances of CPSW and PRUSS peripherals (if present) returns corrupt read data on MDIO reads (e.g. returning stale or previous data), or sends incorrect data on MDIO writes.  It is also possible that the MDIO interface becomes unavailable until the next peripheral reset (either by LPSC reset or global device reset with reset isolation disabled in case of CPSW).
+
+Possible system level manifestations of this issue could be (1) erroneous ethernet PHY link down status (2) inability to properly configure an ethernet PHY over MDIO (3) incorrect PHY detection (e.g. wrong address) (4) read or write timeouts when attempting to configure PHY over MDIO.
+
+The most common issue with Linux is observation of following prints in the kernel log
+
+::
+
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+    am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+
+Workaround for TI SDK Version <= 8.4
+""""""""""""""""""""""""""""""""""""
+
+The workaround for TI SDK Version till 8.4 is to configure the MDIO lines for GPIO and
+performing bit-banging of the GPIO lines
+
+.. rubric:: **Kernel Configs**
+
+The following kernel configs has to be enabled for bit-banging of GPIO lines to implement the MDIO bus protocol.
+
+::
+
+    CONFIG_MDIO_BITBANG
+    CONFIG_MDIO_GPIO
+
+.. rubric:: **Device Tree Modifications**
+
+Device Tree should be modified to disable the CPSW MDIO controller.
+
+The following DT modifications should be done to disable CPSW MDIO controller.
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+    Remove main_mdio1_pins_default pinctrl configuration from cpsw3g node and keep
+    status = "disabled" for cpsw3g_mdio node and remove the PHY sub-nodes.
+
+    All the modifications are in k3-am625-sk.dts
+
+    ::
+
+        diff --git a/arch/arm64/boot/dts/ti/k3-am625-sk.dts b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+        index e5ca3b609ce0..ddb55cf238bc 100644
+        --- a/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+        +++ b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+        @@ -666,8 +666,7 @@
+
+         &cpsw3g {
+                pinctrl-names = "default";
+        -       pinctrl-0 = <&main_mdio1_pins_default
+        -                    &main_rgmii1_pins_default
+        +       pinctrl-0 = <&main_rgmii1_pins_default
+                             &main_rgmii2_pins_default>;
+         };
+
+        @@ -682,19 +681,7 @@
+         };
+
+         &cpsw3g_mdio {
+        -       cpsw3g_phy0: ethernet-phy@0 {
+        -               reg = <0>;
+        -               ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+        -               ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+        -               ti,min-output-impedance;
+        -       };
+        -
+        -       cpsw3g_phy1: ethernet-phy@1 {
+        -               reg = <1>;
+        -               ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+        -               ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+        -               ti,min-output-impedance;
+        -       };
+        +       status = "disabled";
+         };
+
+         &dss {
+
+    Add DT Node for MDIO GPIO bitbang driver to configure PHY.
+
+    ::
+
+        diff --git a/arch/arm64/boot/dts/ti/k3-am625-sk.dts b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+        index ddb55cf238bc..4e5618b86e81 100644
+        --- a/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+        +++ b/arch/arm64/boot/dts/ti/k3-am625-sk.dts
+        @@ -234,6 +234,30 @@
+                                };
+                        };
+                };
+        +
+        +       mdio0: bitbang-mdio {
+        +               compatible = "virtual,mdio-gpio";
+        +               pinctrl-names = "default";
+        +               pinctrl-0 = <&main_mdio1_pins_default>;
+        +               gpios = <&main_gpio0 86 GPIO_ACTIVE_HIGH>, /* MDC */
+        +                       <&main_gpio0 85 GPIO_ACTIVE_HIGH>; /* MDIO */
+        +               #address-cells = <1>;
+        +               #size-cells = <0>;
+        +
+        +               cpsw3g_phy0: ethernet-phy@0 {
+        +                       reg = <0>;
+        +                       ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+        +                       ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+        +                       ti,min-output-impedance;
+        +               };
+        +
+        +               cpsw3g_phy1: ethernet-phy@1 {
+        +                       reg = <1>;
+        +                       ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+        +                       ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+        +                       ti,min-output-impedance;
+        +               };
+        +       };
+         };
+
+         &main_pmx0 {
+        @@ -324,8 +348,8 @@
+
+                main_mdio1_pins_default: main-mdio1-pins-default {
+                        pinctrl-single,pins = <
+        -                       AM62X_IOPAD(0x160, PIN_OUTPUT, 0) /* (AD24) MDIO0_MDC */
+        -                       AM62X_IOPAD(0x15c, PIN_INPUT, 0) /* (AB22) MDIO0_MDIO */
+        +                       AM62X_IOPAD(0x160, PIN_OUTPUT, 7) /* (AD24) MDIO0_MDC.GPIO0_86 */
+        +                       AM62X_IOPAD(0x15c, PIN_INPUT, 7) /* (AB22) MDIO0_MDIO.GPIO0_85 */
+                        >;
+                };
+
+There is a non-fatal error
+::
+
+    mdio-gpio bitbang-mdio: failed to get alias id
+
+To get rid of the above error, an appropriate alias should be added in the aliases node.
+::
+
+    mdio-gpio0 = &mdio0;
+
+
+.. rubric:: **Disadvantages**
+
+The above mechanism has certain disadvantages such as MCU domain CPSW has to use
+MAIN domain GPIO. To avoid this MDIO bitbang mechanism would be introduced in Processor
+SDK v8.5.
+More details in next section.
+
+Workaround for TI SDK Version > 8.4
+"""""""""""""""""""""""""""""""""""
+
+MDIO protocol can be emulated by reading and writing to the appropriate bits within
+the MDIO_MANUAL_IF_REG register of the MDIO peripheral to directly manipulate the
+MDIO clock and data pins.   Refer to TRM for full details of manual mode register
+bits and their function.
+
+In this case the device pin multiplexing should be configured to allow the IO to be
+controlled by the CPSW or PRUSS peripherals (same as in normal intended operation),
+but the MDIO state machine must be disabled by ensuring MDIO_CONTROL_REG.ENABLE bit
+is 0 in the MDIO_CONTROL_REG and enable manual mode by setting
+MDIO_POLL_REG.MANUALMODE bit to 1.
+
+The implementation of the above workaround is in progress and will be added in
+Processor SDK v8.5.
