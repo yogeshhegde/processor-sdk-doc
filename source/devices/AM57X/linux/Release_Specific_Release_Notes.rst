@@ -43,40 +43,25 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 08.02.00
+Release 08.02.01
 ==================
 
-Released May 2022
+Released June 2022
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 8.2 Release has following new features:
-
-- 2021 LTS Update (Kernel 5.10, U-boot: 2021.01, gcc: 9.2 2019.12 hf, Yocto 3.1 (dunfell))
-
-- Early boot and late attach support.
-
-- Support for Falcon boot is added in U-Boot. Falcon boot shall be enabled by following the steps documented
-  in /doc/README.falcon in the U-Boot document folder.
-
-- Feature addition to HSR/PRP functionality.
+- Second release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
 
 .. rubric::  Other Updates
 
-- Features/Components Removed
-   - LCD Support for IDK boards. This feature will be added back in the next release. Use the IDK boards without LCD connected with this release.
-   - Jailhouse Hypervisor
-   - OpenCL & OpenCV
-   - H.265 based ARM codec
-   - EVE Support
-   - Demos & Examples
-      - OpenVX, OpenAMP, OpenCL, OpenMP based demos
-      - ROS based demos
-      - Big Data IPC
-      - Docker
-      - Barcode reader demo
-      - Video Analytics demos
+- Bug Fixes
+   - The IDK boards' LCD issue has been resolved. With this release, SDK boots properly on IDK boards with LCD connected.
+   - The HSR and PRP multicast and vlan filtering issue has been fixed.
+   - ICSS Firmware updated with the following fix
+       - HSR/PRP - Queue number corruption in memory, Dropping of packets even after the credits are expired have been resolved.
+	   - PTP Message ID check field is updated to 4 bits field.
+	   - HSR/PRP LRE NODE TABLE LOOKUP ERROR counters are removed.
 
 
 .. _release-specific-sdk-components-versions:
@@ -187,28 +172,10 @@ Issues closed on this release
    :header: "Record ID", "Summary"
    :widths: 20, 80
 
-   LCPD-25292,remoteproc/omap: IPU2 does not load correctly
-   LCPD-24817,AM57x: Runtime switching HSR to PRP failed
-   LCPD-24215,am57x/dra7x dtb file is missing
-   LCPD-24077,am57xx-idk: Choose the right DTB based on detected LCD Panel
-   LCPD-20573,rpmsg: Add a new rpmsg driver for PRU for 2021 LTS
-   LCPD-20572,remoteproc/pru: Add virtio_rpmsg transport support for PRUs for 2021LTS4
-   LCPD-21979,AM57x - analyze and fix gaps in test setup
-   LCPD-25292,remoteproc/omap: IPU2 does not load correctly
-   LCPD-24280,Tests the timers API
-   LCPD-20576,remoteproc/omap: Add support for error recovery from various faults on 2021 LTS
-   LCPD-20575,iommu/omap: Port remaining IOMMU non-upstreamed patches for 2021LTS
-   LCPD-20578,rpmsg-proto: Add error-recovery support for 2021 LTS
-   LCPD-24817,AM57x: Runtime switching HSR to PRP failed
-
-Errata Workarounds Available in this Release
-------------------------------------------------
-.. csv-table::
-   :header: "Record ID",  "Title"
-   :widths: 15, 80
-
-   LCPD-25292,"remoteproc/omap: IPU2 does not load correctly"
-
+   LCPD-28151,"HSR/PRP Multicast Filtering failure"
+   LCPD-28152,"AM571x-idk: Failed to load /boot/am571x-idk-lcd-osd101t2587.dtb during boot"
+   LCPD-26605,"am571x-idk and am572x-idk not booting from SD card"
+   
 SDK Known Issues
 -----------------
 .. csv-table::
@@ -216,7 +183,6 @@ SDK Known Issues
    :widths: 25, 30, 50, 600
 
    ADASVISION-5143,AM57,QT5 Browser is failing due to the python2 dependency
-   LCPD-26605,"am571x-idk,am572x-idk",am571x-idk and am572x-idk not booting from SD card
    LCPD-25762,am571x-idk,AM57x: Runtime switching between HSR/PRP and EMAC failed
    LCPD-25571,am57xx-evm,GPIO EDGE_ALL_BANK test fails
    LCPD-25570,am57xx-evm,GST Decode Tests fails
@@ -243,8 +209,6 @@ Linux Kernel Known Issues
    :header: "Record ID", "Priority", "Title", "Component", "Subcomponent", "Platform", "Workaround", "Impact"
    :widths: 5, 10, 70, 10, 5, 20, 35, 20
 
-   LCPD-28151,P5-Not Prioritized,"HSR/PRP Multicast Filtering failure",Connectivity,,"am571x-idk",,
-   LCPD-28152,P5-Not Prioritized,"AM571x-idk: Failed to load /boot/am571x-idk-lcd-osd101t2587.dtb during boot",Audio & Display,,"am571x-idk",,
    LCPD-26692,P5-Not Prioritized,"Hardware + Software IPSec Performance Test Failures",Crypto,,"am335x-evm,am43xx-gpevm,am57xx-evm,am64xx-evm,j721e-idk-gw",,
    LCPD-25326,P5-Not Prioritized,"MMC_L_PERF performance test failed",Connectivity,,"am335x-evm,am57xx-evm",,
    LCPD-24728,P3-Medium,"Power measurement with Standby/Suspend/Resume failure,Power & Thermal",,,"am335x-evm,am43xx-gpevm,am57xx-evm",,
