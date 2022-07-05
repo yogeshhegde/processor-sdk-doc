@@ -533,6 +533,8 @@ Enabling of hard IRQ will be deferred napi_defer_hard_irqs times with gro_flush_
 
 The main difference of the hard irqs deferral feature from ethtool interrupt pacing (IRQ coalescing) is that it affects on both RX/TX data path and all TX/RX queues simultaneously.
 
+.. _common_platform_time_sync:
+
 Common Platform Time Sync (CPTS) module
 """""""""""""""""""""""""""""""""""""""
 
@@ -637,6 +639,8 @@ Linux kernel documentation
 | `Open Source Project linuxptp <http://linuxptp.sourceforge.net/>`__
 | `Linux PPS tools <https://github.com/redlab-i/pps-tools>`__
 |
+
+For additional information regarding TSN testing, refer :ref:`tsn_with_cpsw`
 
 .. rubric:: Testing using ptp4l tool from linuxptp project
    :name: k3-testing-using-ptp4l-tool-from-linuxptp-project
