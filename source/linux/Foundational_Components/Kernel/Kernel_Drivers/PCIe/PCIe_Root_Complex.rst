@@ -497,7 +497,7 @@ including desktop, mobile, server, storage and embedded communications.
     once u-boot implements these env variables by default which is expected
     to be supported in the future.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
     .. rubric:: **Features of J7ES**
        :name: features-j7es-linux-pcie-ep

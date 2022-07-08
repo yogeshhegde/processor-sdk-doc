@@ -485,8 +485,8 @@ some lanes can be left unused.
     - Only 2 IPs can share serdes at a time, below are the possible option
 
         - USB + PCIe
-        - EDP + PCIe
-        - EDP + USB
+        - EDP + PCIe (Default SDK combination)
+        - EDP + USB (https://git.ti.com/cgit/ti-linux-kernel/ti-upstream-tools/tree/arch/arm64/boot/dts/ti/k3-j721s2-usb3.dtso?h=ti-linux-5.10.y)
 
       By default EDP + PCIe is enabled for J721S2 common processor board, USB
       is enabled in high speed mode which does not use serdes
