@@ -458,8 +458,8 @@ tree. These .ko files are the dynamic kernel modules.
 
 |
 
-Creating the kernel fitImage for high security device
------------------------------------------------------
+Creating the kernel fitImage for high security device (using SDK)
+-----------------------------------------------------------------
 
 Build kernel image and dtbs as per instructions given above.
 
@@ -481,15 +481,62 @@ Sign kernel image and copy to <sdk path>/board_support/signed-images
 Sign devicetree binaries, and copy the signed binaries to <sdk path>/board_support/signed-images.
 The binaries to be signed is listed in <sdk path>/board-support/prebuilt-images/fitImage-its.its
 
-  ::
+  .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    For am64xx-hs-evm:
-    cd <sdk path>/board-support/linux-5.10*/arch/arm64/boot/dts/ti/
-    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm.dtb k3-am642-evm.dtb.sec
-    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-sk.dtb k3-am642-sk.dtb.sec
-    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-icssg1-dualemac.dtbo k3-am642-evm-icssg1-dualemac.dtbo.sec
-    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-nand.dtbo k3-am642-evm-nand.dtbo.sec
-    cp -p *.sec <sdk path>/board-support/signed-images
+    ::
+
+      cd <sdk path>/board-support/linux-5.10*/arch/arm64/boot/dts/ti/
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm.dtb k3-am642-evm.dtb.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-sk.dtb k3-am642-sk.dtb.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-icssg1-dualemac.dtbo k3-am642-evm-icssg1-dualemac.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-icssg1-dualemac-mii.dtbo k3-am642-evm-icssg1-dualemac-mii.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-nand.dtbo k3-am642-evm-nand.dtbo.sec
+      cp -p *.sec <sdk path>/board-support/signed-images
+
+  .. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+    ::
+
+      cd <sdk path>/board-support/linux-5.10*/arch/arm64/boot/dts/ti/
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-base-board.dtb k3-am654-base-board.dtb.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-base-board-sr1.dtbo k3-am654-base-board-sr1.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-gp.dtbo k3-am654-gp.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-idk.dtbo k3-am654-idk.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-idk-sr1.dtbo k3-am654-idk-sr1.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-sr1.dtbo k3-am654-sr1.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-pcie-usb2.dtbo k3-am654-pcie-usb2.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-pcie-usb3.dtbo k3-am654-pcie-usb3.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-evm-tc358876.dtbo k3-am654-evm-tc358876.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-evm-oldi-lcd1evm.dtbo k3-am654-evm-oldi-lcd1evm.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am654-evm-ov5640.dtbo k3-am654-evm-ov5640.dtbo.sec
+      cp -p *.sec <sdk path>/board-support/signed-images
+
+  .. ifconfig:: CONFIG_part_variant in ('J721E')
+
+    ::
+
+      cd <sdk path>/board-support/linux-5.10*/arch/arm64/boot/dts/ti/
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-j721e-common-proc-board.dtb k3-j721e-common-proc-board.dtb.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-j721e-proc-board-tps65917.dtb k3-j721e-proc-board-tps65917.dtb.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-j721e-common-proc-board-infotainment.dtbo k3-j721e-common-proc-board-infotainment.dtbo.sec
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-j721e-sk.dtb k3-j721e-sk.dtb.sec
+      cp -p *.sec <sdk path>/board-support/signed-images
+
+  .. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    ::
+
+      cd <sdk path>/board-support/linux-5.10*/arch/arm64/boot/dts/ti/
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-j7200-common-proc-board.dtb k3-j7200-common-proc-board.dtb.sec
+      cp -p *.sec <sdk path>/board-support/signed-images
+
+  .. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    ::
+
+      cd <sdk path>/board-support/linux-5.10*/arch/arm64/boot/dts/ti/
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-j721s2-common-proc-board.dtb k3-j721s2-common-proc-board.dtb.sec
+      cp -p *.sec <sdk path>/board-support/signed-images
 
 Generate the FIT image
 
@@ -499,12 +546,49 @@ Generate the FIT image
     cd <sdk path>/board-support/signed-images
     mkimage -f fitImage-its.its -r fitImage
 
-    Install the generated FIT image to "rootfs/boot" for MMC/SD card boot as an example
+Install the generated FIT image to "rootfs/boot" for MMC/SD card boot as an example
 
   ::
   
     sudo cp -p fitImage /media/$(USER)/rootfs/boot/fitImage
 
+|
+
+Creating the kernel fitImage for high security device (using Kernel source)
+---------------------------------------------------------------------------
+
+SDKs have pre-built FIT images that contain the default kernel and dtb files.
+But developers may want to deploy and test new kernel and dtb without going
+through the standard build system. Developers can generate the fitImage directly
+in the "root/boot" partition of the SD card from the host system. For that, a Makefile
+is needed.
+
+Download the Makefile from :download:`here </files/Makefile-for-fitImage>`
+
+Pre-requisites:
+
+  ::
+
+    Have u-boot 'mkimage' tool in your path. This can be done with the following command:
+    $ sudo apt install u-boot-tools
+
+    Get the Security Dev Tools as mentioned in the section above.
+    $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+
+    Add the Makefile to the "root/boot" directory in SD card.
+
+Generating fitImage:
+
+  ::
+
+    Add the new images in the "root/boot" directory of SD card
+
+    Modify the fitImage.its accordingly
+
+    From the host system, go to the "root/boot" directory and run:
+    $ make
+
+|
 
 Installing the Kernel
 ---------------------
