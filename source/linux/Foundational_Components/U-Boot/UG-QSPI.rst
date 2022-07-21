@@ -97,6 +97,54 @@ documented above.
 
       => setenv boot ubi
       => boot
+    
+    **Writing to OSPI using DFU**
+
+    Setup: Connect the Type C port (USB0 port) of EVM to ubuntu host PC. Make sure
+    dfu-util tool is installed and USB0 port is in UFP/DRP mode: SW3[3:4] = 01 or 1x.
+
+    ::
+
+         #sudo apt-get install dfu-util
+
+    From u-boot(for OSPI flash):
+
+    ::
+
+        U-Boot # env default -a
+        U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "0:0:25000000:0"
+
+    From u-boot(for QSPI flash):
+
+    ::
+
+        U-Boot # env default -a
+        U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "1:0:40000000:0"
+
+    From ubuntu PC: Using dfu-util utilities to flash the binares to OSPI/QSPI flash.
+
+    ::
+
+        # sudo dfu-util -l
+        Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+        Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+        This program is Free Software and has ABSOLUTELY NO WARRANTY
+        Found DFU: [0451:6163] ver=0224, devnum=75, cfg=1, intf=0, path="1-5", alt=5, name="rootfs", serial="0000000000000110"
+        Found DFU: [0451:6163] ver=0224, devnum=75, cfg=1, intf=0, path="1-5", alt=4, name="sysfw.itb", serial="0000000000000110"
+        Found DFU: [0451:6163] ver=0224, devnum=75, cfg=1, intf=0, path="1-5", alt=3, name="u-boot-env", serial="0000000000000110"
+        Found DFU: [0451:6163] ver=0224, devnum=75, cfg=1, intf=0, path="1-5", alt=2, name="u-boot.img", serial="0000000000000110"
+        Found DFU: [0451:6163] ver=0224, devnum=75, cfg=1, intf=0, path="1-5", alt=1, name="tispl.bin", serial="0000000000000110"
+        Found DFU: [0451:6163] ver=0224, devnum=75, cfg=1, intf=0, path="1-5", alt=0, name="tiboot3.bin", serial="0000000000000110""
+
+    Flash the binaries to the respective regions using alternate interface
+    number (alt=<x>).
+
+    ::
+
+        # sudo dfu-util -c 1 -i 0 -a 0 -D tiboot3.bin
+        # sudo dfu-util -c 1 -i 0 -a 1 -D tispl.bin
+        # sudo dfu-util -c 1 -i 0 -a 2 -D u-boot.img
+        # sudo dfu-util -c 1 -i 0 -a 3 -D sysfw.itb
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
@@ -162,6 +210,45 @@ documented above.
                  |   ospi.phypattern (256k)   |
                  |                            |
                  +----------------------------+
+
+    **Writing to OSPI using DFU**
+
+    Setup: Connect the Type C port (USB0 port) of EVM to ubuntu host PC. Make sure
+    dfu-util tool is installed and USB0 port is in UFP/DRP mode: SW3[3:4] = 01 or 1x.
+
+    ::
+
+         #sudo apt-get install dfu-util
+
+    From u-boot:
+
+    ::
+
+        U-Boot # env default -a
+        U-Boot # setenv dfu_alt_info ${dfu_alt_info_ospi}; dfu 0 sf "0:0:25000000:0"
+
+    From ubuntu PC: Using dfu-util utilities to flash the binares to QSPI flash.
+
+    ::
+
+        # sudo dfu-util -l
+        Copyright 2005-2009 Weston Schmidt, Harald Welte and OpenMoko Inc.
+        Copyright 2010-2016 Tormod Volden and Stefan Schmidt
+        This program is Free Software and has ABSOLUTELY NO WARRANTY
+        Found DFU: [0451:6164] ver=0224, devnum=77, cfg=1, intf=0, path="1-5", alt=4, name="rootfs", serial="0000000000000005"
+        Found DFU: [0451:6164] ver=0224, devnum=77, cfg=1, intf=0, path="1-5", alt=3, name="u-boot-env", serial="0000000000000005"
+        Found DFU: [0451:6164] ver=0224, devnum=77, cfg=1, intf=0, path="1-5", alt=2, name="u-boot.img", serial="0000000000000005"
+        Found DFU: [0451:6164] ver=0224, devnum=77, cfg=1, intf=0, path="1-5", alt=1, name="tispl.bin", serial="0000000000000005"
+        Found DFU: [0451:6164] ver=0224, devnum=77, cfg=1, intf=0, path="1-5", alt=0, name="tiboot3.bin", serial="0000000000000005"
+
+    Flash the binaries to the respective regions using alternate interface
+    number (alt=<x>).
+
+    ::
+
+        # sudo dfu-util -c 1 -i 0 -a 0 -D tiboot3.bin
+        # sudo dfu-util -c 1 -i 0 -a 1 -D tispl.bin
+        # sudo dfu-util -c 1 -i 0 -a 2 -D u-boot.img
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
