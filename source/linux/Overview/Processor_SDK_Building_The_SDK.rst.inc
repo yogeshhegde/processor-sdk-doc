@@ -145,6 +145,21 @@ See `Build Options`_ for a list of additional targets.  The MACHINE can be set t
         . conf/setenv
         TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=<machine> bitbake -k tisdk-default-image
 
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+
+    .. rubric:: Building for a HS platform
+
+    To build for an HS platform, bitbake needs to know the location of the secdev utilities.
+    Obtain it with the following:
+
+      ::
+
+        $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
+        $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+
+    Then let bitbake know the location by adding TI_SECURE_DEV_PKG_K3=$TI_SECURE_DEV_PKG to the
+    list of environment variables before the bitbake command.
+
 Processor SDK Build Reference
 =============================
 
