@@ -22,7 +22,7 @@ Those APIs are defined in the GlobalPlatform API specifications.
     
 ::
     
-    $ git clone git://git.ti.com/security-development-tools/core-secdev-k3.git -b master
+    $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
     $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
 
     
