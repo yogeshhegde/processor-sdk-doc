@@ -2,285 +2,199 @@
 Building the SDK
 ********************************************
 
-Using the Prebuilt Release Images
-==================================
+Build PC Setup
+===============
 
-The prebuilt release image can be found in the
-'board-support/prebuilt-images/' directory of the Processor SDK Android
-installation.
+Please refer to the following pages from Android documentatio to setup your environment for Android build:
 
-Follow the `create-sdcard.sh
-script <Overview_Getting_Started_Guide.html#sd-card-creation>`__
-(found in the 'bin/' directory of the SDK) to create a bootable SD
-card. Then, use the top-level `setup.sh
-script <Overview_Getting_Started_Guide.html#run-setup-scripts>`__ to flash the
-prebuilt release images to the eMMC of your EVM or IDK.
-
-.. note::
-
-   Booting Android solely from the SD card is not
-   supported starting from the Processor SDK Android v4.2 release. The SD card
-   is used to run U-Boot in order to flash the onboard eMMC.
-
-.. note::
-
-   For AM572x EVM, the flashing procedure will put u-boot into the eMMC for
-   subsequent boots, and therefore, SD card is required for the first boot only.
-   For AM57xx IDK, u-boot is not flashed, and the SD card (with the boot
-   files) is required always.
-
-| 
-
-Rebuilding Android from Sources
-=================================
-
-Follow the steps below to rebuild Android from sources when there is a need to do so,
-e.g., after modifications are made for the sources.
-
-Build PC setup
-----------------
-
-You need a 64-bit Ubuntu machine (`Version Supported <Release_Specific_Supported_Platforms_and_Versions.html>`__) for building the Android file
-system.
-
-**Install Pre-requisite packages for building the Android File System**
-
-Follow instructions from official Android page
-`here <https://source.android.com/source/initializing.html#setting-up-a-linux-build-environment>`__
-for setting up the packages required for building Android.
-
-Use the following command to install the same packages that were used
-during the SDK development process:
-
-::
-
-    sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip lzop bc u-boot-tools libssl-dev
-
-**Proxy/Firewall**
-
-If you are behind proxy/firewall, workaround it using the instructions
-in `Host PC Setup <http://omapedia.org/wiki/Host_PC_Setup>`__. For installing repo
-make sure you also export https\_proxy environment variable.
-
-**repo Tool**
-
-Google's repo tool is used to clone all of the git repositories that you
-need to rebuild the full Android filesystem from source. A copy of the
-repo tool is provided in the Processor SDK Android in the
-**board-support/aosp-<ver>/.repo/repo/** directory. Instructions to
-use the repo tool are provided below in this guide.
-
-**Tool Chain for building Kernel and Drivers**
-
-The Kernel and Driver sources are built using the Android linux-x86
-toolchain for ARM GNU/Linux version . This tool chain is provided in the
-**android-devkit** directory of the SDK.
-
-| 
-
-U-Boot, Linux Kernel, and Android Filesystem Sources
-------------------------------------------------------
-
-.. rubric:: Android Filesystem Sources
-   :name: android-filesystem-sources
-
-You can get the Android filesystem sources for this release by using the
-repo tool along with the provided manifest file.
-
-::
-
-    cd ~/ti-processor-sdk-android-<platform>-<ver>/board-support/aosp-<ver>/
-    ./repo sync
+-  `Android's Build
+   requirements <https://source.android.com/setup/build/requirements>`__.
+-  `Android's Establishing a Build
+   Environment <https://source.android.com/setup/build/initializing>`__
+   guide.
 
 
-If it is desired to pull in changes and fixes made after the release,
-please run "./repo init" prior to "./repo sync".
+**Getting the Repo tool**
 
-::
+You will need the Repo tool to retrieve repositories.
+To install it, please refer to this webpage : https://source.android.com/setup/develop#installing-repo
 
-    cd ~/ti-processor-sdk-android-<platform>-<ver>/board-support/aosp-<ver>/
-    ./repo init
-    ./repo sync
+**Getting toolchain for u-boot builds**
 
-This command may take several hours as it is cloning hundreds of
-repositories and checking them out to a specific commit. This will also
-take up considerable space on your development machine's hard drive
-(~70GB).
+Links to download toolchains for building u-boot is mentioned in the SDK download page.
 
-.. note::
 
-   The repo tool has already been initialized with the manifest file
-   found in **board-support/aosp-<ver>/.repo/manifest.xml**.
-   That is why only the 'repo sync' command is required above.
+Downloading Sources
+===================
 
-| 
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-.. rubric:: TI Hardware Accelerated Graphics Binaries
-   :name: ti-hardware-accelerated-graphics-binaries
+    Create a folder for downloading all sources
 
-Accelerated graphics binaries are part of Android file system build.
+    ::
 
-.. rubric:: U-Boot Sources
-   :name: u-boot-sources
+        mkdir ~/08_03_00 && cd $_
+        export YOUR_PATH=$PWD
 
-The U-Boot sources are included in the Processor Android SDK in the
-**board-support/u-boot-<ver>/** directory.
+Bootloader components
+---------------------
 
-.. rubric:: Kernel & Driver Sources
-   :name: kernel-driver-sources
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-The Linux kernel sources are included in the Processor Android SDK in
-the **board-support/linux-<ver>/** directory.
+    ::
+
+        mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
+        git clone -b 08.03.00.005 git://git.ti.com/k3-image-gen/k3-image-gen.git
+        git clone -b 08.03.00.005 git://git.ti.com/atf/arm-trusted-firmware.git
+        git clone -b 08.03.00.005 git://git.ti.com/optee/ti-optee-os.git
+        git clone -b 08.03.00.005 git://git.ti.com/ti-u-boot/ti-u-boot.git
+        git clone -b 08.03.00.005 git://git.ti.com/processor-firmware/ti-linux-firmware.git
+
+Kernel
+------
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    Fetch the code using ``repo``:
+
+    ::
+
+        mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_03_Kernel.xml
+        repo sync
+
+
+Android File System
+-------------------
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    Fetch the code using ``repo``:
+
+    ::
+
+        mkdir ${YOUR_PATH}/ti-aosp-12 && cd $_
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_03.xml
+        repo sync
+
+
 
 Build Instructions
---------------------
+==================
 
-Building U-boot sources
-^^^^^^^^^^^^^^^^^^^^^^^^
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-The `top-level
-Makefile <Overview_Directory_Structure.html#top-level-makefile>`__ can be
-used to build MLO and U-Boot
+    .. note::
 
-::
-
-    cd ~/ti-processor-sdk-android-<platform>-<ver>/
-    make u-boot
-
-Building Kernel
-^^^^^^^^^^^^^^^^^^
-
-The `top-level
-Makefile <Overview_Directory_Structure.html#top-level-makefile>`__ can
-also be used to build the Linux kernel
-
-::
-
-    cd ~/ti-processor-sdk-android-<platform>-<ver>/
-    make linux
-    make linux-dtbs
-
-| 
-
-Building Android Filesystem (AFS)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. note::
-
-   Users must have built the
-   android kernel image prior to building the Android file system.
-
-**Instructions for building Android file system for AM5:**
-
-::
-
-    cd ~/ti-processor-sdk-android-am57xx-evm-<ver>/board-support/aosp-<ver>/
-    export KERNELDIR=~/ti-processor-sdk-android-am57xx-evm-<ver>/board-support/linux-<ver>/
-    make -j8 clean
-    . build/envsetup.sh
-    lunch beagle_x15-userdebug
-    make -j8
+        The Bootloader and Kernel builds below are optional if they are used as is from TI relase. Prebuilt copies of these
+        binaries are already part of Android file system sources in ``device/ti/am62x-kernel`` and
+        ``vendor/ti/am62x/bootloader`` folder.
 
 
-**Instructions for building Android file system for AM6:**
+Bootloader components
+---------------------
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    cd ~/ti-processor-sdk-android-am65xx-evm-<ver>/board-support/aosp-<ver>/
-    export KERNELDIR=~/ti-processor-sdk-android-am65xx-evm-<ver>/board-support/linux-<ver>/
-    make -j8 clean
-    . build/envsetup.sh
-    lunch am65xevm_full-userdebug
-    make -j8
+    1. Build tiboot3.bin
+
+    ::
+
+        cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=/tmp/r5
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=/tmp/r5
+        cd ${YOUR_PATH}/ti-bootloader-aosp/k3-image-gen
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62x SBL=/tmp/r5/spl/u-boot-spl.bin SYSFW_PATH=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware/ti-sysfw/ti-fs-firmware-am62x-gp.bin
+
+    Use the tiboot3.bin generated from last command in ${YOUR_PATH}/ti-bootloader-aosp/k3-image-gen
 
 
-See `Android Build
-Tricks <http://elinux.org/Android_Build_System#Build_tricks>`__ for
-tricks on building Android. Adjust -jX to match your build machine,
-where X is the number of jobs.
+    2. Build tispl.bin and u-boot.img
 
-|
+    In order to build tispl.bin and u-boot.img, OPTEE and ATF (arm trusted firmware) need to be built.
 
-Preparing Android Image
-------------------------
+    ::
 
-This step is to rebuild Android Filesystem (AFS) to include kernel,
-making your kernel to be part of boot.img
+        cd ${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware
+        make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=lite SPD=opteed
+        cd ${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os
+        make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu-
 
-**Copy Kernel Image:**
+    It is now possible to generate tispl.bin and u-boot.img.
 
-::
+    ::
 
-    cd ~/ti-processor-sdk-android-<platform>-<ver>/board-support/aosp-<ver>
-    cp -v ../linux-<ver>/arch/arm/boot/zImage device/ti/<platform>/kernel
+        cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
+        make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=/tmp/a53
+        make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin TEE=${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os/out/arm-plat-k3/core/tee-pager_v2.bin DM=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware/ti-dm/am62xx/ipc_echo_testb_mcu1_0_release_strip.xer5f O=/tmp/a53
 
-**Rebuild AFS to generate update images for AM5:**
+    Use tispl.bin and u-boot.img located in /tmp/a53
 
-::
+    3. Copy the tiboot3.bin, tispl.bin and u-boot.img generated in steps 1 and 2 to ``${YOUR_PATH}/ti-aosp-12/vendor/ti/am62x/bootloader``. If not copied, the prebuilt bootloader binaries already present in vendor/ti/am62x/bootloader will get use by flashall.sh flashing script.
 
-    cd ~/ti-processor-sdk-android-am57xx-evm-<ver>/board-support/aosp-<ver>/
-    . build/envsetup.sh
-    lunch am57xevm_full-userdebug
-    rm out/target/product/am57xevm/*.img
-    rm out/target/product/am57xevm/obj/PACKAGING/systemimage_intermediates/system.img
-    make -j2
 
-**Rebuild AFS to generate update images for AM6:**
+Kernel
+------
 
-::
+Building everything from scratch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    cd ~/ti-processor-sdk-android-am65xx-evm-<ver>/board-support/aosp-<ver>/
-    . build/envsetup.sh
-    lunch am65xevm_full-userdebug
-    rm out/target/product/am65xevm/*.img
-    rm out/target/product/am65xevm/obj/PACKAGING/systemimage_intermediates/system.img
-    make -j2
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-Flashing eMMC images
-=======================
+    ::
 
-Preparing eMMC binaries/images
--------------------------------
+        cd ${YOUR_PATH}/ti-kernel-aosp/
+        export DIST_DIR=${YOUR_PATH}/ti-aosp/device/ti/am62x-kernel/kernel/5.10
+        export BUILD_CONFIG=./imgtech-module/build.config.imgtech
+        build/build.sh
 
-Make a copy of the prebuilt-images directory, and then copy over the rebuilt files to the prebuilt-images directory.
+Rebuilding incrementally
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-**AM5:**
+Add the ``SKIP_MRPROPER=1`` flag:
 
-::
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    cd ~/ti-processor-sdk-android-am57xx-evm-<ver>/board-support/
-    cp -r prebuilt-images prebuilt-images-psdk
-    cp -v ./aosp-<ver>/out/target/product/am57xevm/*img prebuilt-images
-    cp -v ./aosp-<ver>/device/ti/am57xevm/fastboot.sh prebuilt-images
-    cp -v ./aosp-<ver>/out/host/linux-x86/bin/{simg2img,mkbootimg,fastboot,adb} prebuilt-images
-    cp -v ./linux-<ver>/arch/arm/boot/zImage prebuilt-images/zImage-am57xx-evm.bin
-    cp -v ./linux-<ver>/arch/arm/boot/dts/am57*.dtb prebuilt-images
-    cp -v ./u-boot-<ver>/MLO prebuilt-images
-    cp -v ./u-boot-<ver>/u-boot.img prebuilt-images
+    ::
 
-**AM6:**
+        $ cd ${YOUR_PATH}/ti-kernel-aosp/
+        $ export DIST_DIR=${YOUR_PATH}/ti-aosp/device/ti/am62x-prebuilts/kernel/5.10
+        $ export BUILD_CONFIG=./imgtech-module/build.config.imgtech
+        $ export SKIP_MRPROPER=1
+        $ build/build.sh
 
-::
+Defconfig/menuconfig changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    cd ~/ti-processor-sdk-android-am65xx-evm-<ver>/board-support/
-    cp -r prebuilt-images prebuilt-images-psdk
-    cp -v ./aosp-<ver>/out/target/product/am65xevm/*img prebuilt-images
-    cp -v ./aosp-<ver>/device/ti/am65xevm/fastboot.sh prebuilt-images
-    cp -v ./aosp-<ver>/out/host/linux-x86/bin/{simg2img,mkbootimg,fastboot,adb} prebuilt-images
-    cp -v ./aosp-<ver>/out/host/linux-x86/lib64/{libc++.so,libcutils.so,liblog.so,libselinux.so,libpcre2.so} prebuilt-images
-    cp -v ./u-boot_build/a53/u-boot.img prebuilt-images
-    cp -v ./u-boot_build/a53/tispl.bin prebuilt-images
-    cp -v ./u-boot_build/r5/tiboot3.bin prebuilt-images
+The usual (``make menuconfig`` ) is done via ``config.sh``:
 
-Flashing procedure
-----------------------
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
--  Create an SD card containing MLO and u-boot.img using the
-   `create-sdcard.sh
-   script <Overview_Getting_Started_Guide.html#sd-card-creation>`__
-   provided in the SDK and then boot the target board from this external
-   SD card.
+    ::
 
--  Follow `Run Setup Scripts <Overview_Getting_Started_Guide.html#run-setup-scripts>`__
-   to flash the rebuilt images (which have been copied to the prebuilt-images directory in the step above)
-   to the onboard eMMC.
+        cd ${YOUR_PATH}/ti-kernel-aosp/
+        export BUILD_CONFIG=./imgtech-module/build.config.imgtech
+        build/config.sh
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    .. note::
+
+           Users must have built the android kernel image prior to building the Android file system.
+           Otherwise pre-built Kernel images present in ``device/ti/am62x-kernel`` will be used to create ``boot.img``
+
+
+Android File System
+-------------------
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    ::
+
+        cd ${YOUR_PATH}/ti-aosp-12
+        source build/envsetup.sh
+        lunch am62x-userdebug
+        m
+
+
+**After building all components, refer to instruction in next section for flashing the images to EVM**

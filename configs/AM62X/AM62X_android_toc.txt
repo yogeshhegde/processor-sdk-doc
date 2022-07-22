@@ -1,10 +1,10 @@
-devices/AM62X/android/index
-devices/AM62X/android/Overview_Getting_Started_Guide
-devices/AM62X/android/Overview_Building_the_SDK
-devices/AM62X/android/Overview
+android/index
+android/Overview_Getting_Started_Guide
+android/Overview_Building_the_SDK
+android/Overview
 devices/AM62X/android/Release_Specific
 devices/AM62X/android/Release_Specific_Release_Notes
-devices/AM62X/android/Overview_Technical_Support
-devices/AM62X/android/Overview_Flashing
+android/Overview_Technical_Support
+android/Overview_Flashing
 devices/AM62X/android/Application_Notes
 devices/AM62X/android/Application_Notes_Partitions

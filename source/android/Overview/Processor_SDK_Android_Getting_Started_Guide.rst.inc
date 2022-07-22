@@ -186,8 +186,6 @@ which you can start development.
    common set up with a serial connection for console, an Ethernet for
    networking, and a USB connection for flashing and ADB:
 
-   .. Image:: ../images/Android_Dev_Environment_Cropped.png
-
 #. **Run the Setup Script** - Once the SDK has been installed and the SD
    card has been created and placed into the device, `run the setup.sh
    Script <Overview_Getting_Started_Guide.html#run-setup-scripts>`__ on your

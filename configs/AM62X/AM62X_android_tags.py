@@ -8,7 +8,7 @@ project = u'Processor SDK Android for AM62x'
 html_title = 'Processor SDK AM62x Documentation'
 
 # The master toctree document.
-master_doc = 'devices/AM62X/android/index'
+master_doc = 'android/index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.

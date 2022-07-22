@@ -16,6 +16,7 @@ Replacement Variables
 '__PART_FAMILY_NAME__'           : 'AM62x'
 '__PART_FAMILY_DEVICE_NAMES__'   : 'AM62x'
 '__PRODUCT_LINE_NAME__'          : 'Sitara MPU'
+'__SDK_OS_NAME__'                : 'Processor SDK Android'
 '__SDK_FULL_NAME__'              : 'Processor SDK Android AM62x'
 '__SDK_SHORT_NAME__'             : 'PSDKA'
 '__SDK_INSTALL_FILE__'           : 'TODO - INSTALLATION FILE GOES HERE'
