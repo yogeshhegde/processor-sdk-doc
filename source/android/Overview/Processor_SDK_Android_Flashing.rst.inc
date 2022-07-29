@@ -57,7 +57,7 @@ eMMC flashing
 ==============
 
 Flashing instructions
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 Once the build is complete, follow the steps below to flash the images to eMMC.
 Use the SD card created in previous step to get started.
