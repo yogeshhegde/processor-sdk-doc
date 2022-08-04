@@ -73,9 +73,8 @@ Build Information
 U-Boot
 -------------------------
 
-| Head Commit: 6cb42d71a32d8be3a23eea08770468c16ebd35d3 arch: arm: dts: k3-j784s4-mcu-wakeup: Fix interrupt parent and id for
-  wkup_gpio0, wkup_gpio1 and wkup_i2c0
-| Date: 29 Jun 2022 07:01 PM
+| Head Commit: 53e3a12a1d76913fcf20820eaa6cfb9bbead5550 arm: mach-k3: j784s4: Update clock and device data
+| Date: 15 Jul 2022 12:00 AM
 | uBoot Version: 2021.01
 | Clone: git://git@bitbucket.itg.ti.com/lcpd-priv-sdk/ti-u-boot.git
 | Branch: j784s4-wakeup
@@ -88,8 +87,8 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 6e9f968521af4bcd3394d1a8c1dddb031c858893 arm64: dts: ti: k3-j784s4-main: add 2nd wave5 codec
-| Date: 04 Jul 2022 05:20 PM
+| Head Commit: 507e01cc16db513193008988f5606fefb915bf3b arm64: dts: ti: k3-j784s4-main: Update device id for main_gpio_intr
+| Date: 14 Jul 2022 11:42 PM
 | Kernel Version: 5.10.120
 
 | Clone: ssh://git@bitbucket.itg.ti.com/lcpd-priv-sdk/ti-linux-kernel.git
@@ -109,12 +108,11 @@ Yocto
 ------------------------
 .. rubric:: meta-ti
 
-| Head Commit: e40f89a013cdadc8d8fa6d9d12011d88f7ceef7b linux-ti-staging: J7HAP Wakeup Auto-Merger: wakeup.2022.07.05.03:18:03
-| Date: 2022-07-05
+| Head Commit: c76841d3d791761d06e7bbd3a8b94979cc93eef0 cnm-wave-fw: Add support for j784s4-evm
+| Date: 2022-07-20
 
 | Clone: ssh://git@bitbucket.itg.ti.com/coresdk/meta-ti.git
 | Branch: dunfell-j7ahp-wakeup
-| Release Tag: J784S4_CORE_SDK_EEA_0.9
 |
 
 .. rubric:: meta-arago
@@ -124,7 +122,6 @@ Yocto
 
 | Clone: ssh://git@bitbucket.itg.ti.com/coresdk/meta-arago.git
 | Branch: dunfell-j7ahp-wakeup
-| Release Tag: J784S4_CORE_SDK_EEA_0.9
 |
 
 .. rubric:: meta-psdkla
@@ -146,75 +143,75 @@ Completed features
    :header: Module,Feature,Wakeup Status
    :widths: 20,60,20
 
-   U-Boot,JTAG connectivity (R5),Completed
-   ATF,Core 0 startup,Completed
-   ATF,Communication with TIFS - version message,Completed
-   ATF,Startup UART,Completed
-   ATF,Startup BL32 Secure OS (OPTEE),Completed
-   ATF,Startup A72 SPL,Completed
-   Linux,Startup Linux kernel,Completed
-   Linux,Linux earlyboot uart8250 (USART8),Completed
-   Linux,Linux single-core startup,Completed
-   Linux,Linux uart8250 K3 driver,Completed
-   Linux,Linux kernel ramdisk shell,Completed
-   Linux,Memtester,Completed
-   Linux,"TISCI clk, PD, reset control active",Completed
-   Linux,TISCI RM api functionality,Completed
-   Linux,TISCI bringup initial version message,Completed
-   Linux,TISCI IRQCHIP support,Completed
-   Linux,OPTEE driver bringup,Completed
-   Linux,DMA Engine bring up - memory to memory transfer,Completed
-   Linux,CPSW 2G (RGMIII) - NFS support,Completed
-   Linux,I2C bring-up,Completed
-   Linux,OSPI bring-up,Completed
-   Linux,SD Card support,Completed
-   Linux,eMMC support,Completed
-   Linux,GPIO support,Completed
-   Linux,Mailbox functionality,Completed
-   Linux,R5F split-mode IPC only,Completed
-   Linux,R5F lockstep mode: remoteproc,Completed
-   Linux,C7x: IPC only mode,Completed
-   Linux,C7x: remoteproc mode,Completed
-   Linux,PCIe RC,Completed
-   Linux,Display,Completed
-   Linux,Multi-Camera (Risk),Completed
-   Linux,Graphics,Completed
-   Linux,R5F lockstep mode IPC only,Completed
-   Linux,R5F split-mode: remoteproc mode,Completed
-   Linux/ATF/PSCI,Linux kernel quad core (Cluster 0).,Completed
-   OPTEE,OP-TEE boot and return to ATF,Completed
-   U-Boot,Pinmux,Completed
-   U-Boot,SPL message USART,Completed
-   U-Boot,SPL: version message to TIFS firmware,Completed
-   U-Boot,SPL configure DDR (quad instances with interleaving),Completed
-   U-Boot,SPL initialize MMC,Completed
-   U-Boot,SPL load tispl.bin(DM Firmware + ATF + OPTEE + A72 SPL),Completed
-   U-Boot,SPL hand off A72 boot via TIFS firmware,Completed
-   U-Boot,SPL jump to DM firmware,Completed
-   U-boot,SPL version response from DM,Completed
-   U-Boot,SPL startup and load u-boot.img,Completed
-   U-Boot,U-Boot to shell,Completed
-   U-Boot,SD support,Completed
-   U-Boot,DMA driver,Completed
-   U-Boot,CPSW 2G (RGMII) - TFTP,Completed
-   U-Boot,Reset,Completed
-   U-Boot,eMMC at U-Boot prompt,Completed
-   U-Boot,I2C bring-up,Completed
-   U-Boot,Start-up R5F core,Completed
-   U-Boot,Start-up C7x core.,Completed
-   U-Boot,eMMC boot mode,Completed
-   U-Boot,EEPROM,Completed
-   U-Boot,DFU Boot mode,Completed
+   ATF,Communication with TIFS - version message,COMPLETE
+   ATF,Core 0 startup,COMPLETE
+   ATF,Startup A72 SPL,COMPLETE
+   ATF,Startup BL32 Secure OS (OPTEE),COMPLETE
+   ATF,Startup UART,COMPLETE
+   INTEG,"Daily wakeup builds (Buffer)
+   Automated test setup (Buffer)",COMPLETE
+   Linux,C7x: IPC only mode,COMPLETE
+   Linux,C7x: remoteproc mode,COMPLETE
+   Linux,CAN,COMPLETE
+   Linux,CnM: Video Codec,COMPLETE
+   Linux,CPSW 2G (RGMIII) - NFS support,COMPLETE
+   Linux,Display,COMPLETE
+   Linux,DMA Engine bring up - memory to memory transfer,COMPLETE
+   Linux,eMMC support,COMPLETE
+   Linux,GPIO support,COMPLETE
+   Linux,Graphics,COMPLETE
+   Linux,I2C bring-up,COMPLETE
+   Linux,Linux earlyboot uart8250 (USART8),COMPLETE
+   Linux,Linux kernel ramdisk shell,COMPLETE
+   Linux,Linux single-core startup,COMPLETE
+   Linux,Linux uart8250 K3 driver,COMPLETE
+   Linux,Mailbox functionality,COMPLETE
+   Linux,Memtester,COMPLETE
+   Linux,Multi-Camera (Risk),COMPLETE
+   Linux,OPTEE driver bringup,COMPLETE
+   Linux,OSPI bring-up,COMPLETE
+   Linux,PCIe RC,COMPLETE
+   Linux,Pinmux bring up,COMPLETE
+   Linux,R5F lockstep mode: remoteproc,COMPLETE
+   Linux,R5F split-mode IPC only,COMPLETE
+   Linux,Reboot functionality,COMPLETE
+   Linux,SD Card support,COMPLETE
+   Linux,Startup Linux kernel,COMPLETE
+   Linux,TISCI bringup initial version message,COMPLETE
+   Linux,"TISCI clk, PD, reset control active",COMPLETE
+   Linux,TISCI IRQCHIP support,COMPLETE
+   Linux,TISCI RM api functionality,COMPLETE
+   Linux,USB device,COMPLETE
+   Linux,USB Host,COMPLETE
+   Linux,R5F lockstep mode IPC only,COMPLETE
+   Linux,R5F split-mode: remoteproc mode,COMPLETE
+   Linux/ATF/PSCI,Linux kernel quad core (Cluster 0).,COMPLETE
+   OPTEE,OP-TEE boot and return to ATF,COMPLETE
+   U-Boot,CPSW 2G (RGMII) - TFTP,COMPLETE
+   U-Boot,"DFU Boot mode",COMPLETE
+   U-Boot,DMA driver,COMPLETE
+   U-Boot,"eMMC at U-Boot prompt
+   eMMC boot mode",COMPLETE
+   U-Boot,"I2C bring-up
+   EEPROM",COMPLETE
+   U-Boot,JTAG connectivity (R5),COMPLETE
+   U-Boot,Pinmux,COMPLETE
+   U-Boot,Reset,COMPLETE
+   U-Boot,SD support,COMPLETE
+   U-Boot,SPL configure DDR (quad instances with interleaving),COMPLETE
+   U-Boot,SPL hand off A72 boot via TIFS firmware,COMPLETE
+   U-Boot,SPL initialize MMC,COMPLETE
+   U-Boot,SPL jump to DM firmware,COMPLETE
+   U-Boot,SPL load tispl.bin(DM Firmware + ATF + OPTEE + A72 SPL),COMPLETE
+   U-Boot,SPL message USART,COMPLETE
+   U-Boot,SPL startup and load u-boot.img,COMPLETE
+   U-boot,SPL version response from DM,COMPLETE
+   U-Boot,SPL: version message to TIFS firmware,COMPLETE
+   U-Boot,Start-up C7x core.,COMPLETE
+   U-Boot,Start-up R5F core,COMPLETE
+   U-Boot,U-Boot to shell,COMPLETE
+   U-Boot,UART boot mode,COMPLETE
 
-Partially Complete features
----------------------------
-
-.. csv-table::
-   :header: Module,Feature,Wakeup Status
-   :widths: 20,60,20
-
-   Linux,USB Host,Partially Completed
-   Linux,USB device,Partially Completed
 
 Pending/Failed features
 -----------------------
@@ -223,22 +220,17 @@ Pending/Failed features
    :header: Module,Feature,Wakeup Status
    :widths: 20,60,20
 
-   INTEG,Daily wakeup builds,In progress
-   INTEG,Automated test setup,In progress
-   Linux,CAN,In progress
+   INTEG,"Daily wakeup builds
+   Automated test setup",In progress
    Linux,PCIe EP,In progress
-   Linux,CnM: Video Codec,In progress
-   U-Boot,OSPI at U-Boot prompt,In progress
-   U-Boot,USB DFU support at U-Boot prompt,In progress
-   U-Boot,OSPI boot mode,In progress
-   Linux,Pinmux bring up,
-   Linux,Reboot functionality,
+   U-Boot,"OSPI at U-Boot prompt
+   OSPI boot mode",In progress
+   U-Boot,"USB DFU support at U-Boot prompt",In progress
+   Linux,Audio,
    Linux,HwSpinlock functionality,
    Linux,Main CPSW,
-   Linux,Audio,
    Linux,Single Camera (CSI),
    U-Boot,SPL: Base DM timer,
-   U-Boot,UART boot mode,
    U-Boot,USB Mass storage,
 
 Installation and Usage
