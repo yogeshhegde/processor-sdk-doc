@@ -46,3 +46,4 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/USB/CDNS3
    Foundational_Components/Kernel/Kernel_Drivers/USB/AM62_DWC3
    Foundational_Components/Kernel/Kernel_Drivers/VPE
+   Foundational_Components/Kernel/Kernel_Drivers/Watchdog
