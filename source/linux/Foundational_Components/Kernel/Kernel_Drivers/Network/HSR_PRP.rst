@@ -73,12 +73,24 @@ For PRP
 For HSR
 ::
 
-  ip addr add 192.168.2.20 dev hsr0
+  ip addr add 192.168.2.20/24 dev hsr0
 
 For PRP
 ::
 
-  ip addr add 192.168.2.20 dev prp0
+  ip addr add 192.168.2.20/24 dev prp0
+
+7) Bringup the HSR/PRP interface
+
+For HSR
+::
+
+   ip link set hsr0 up
+
+For PRP
+::
+
+   ip link set prp0 up
 
 With the above configuration, if a ping is run between the two platforms on the
 HSR/PRP interface, the ping will continue even if one of the connections is removed.
