@@ -38,59 +38,89 @@ and the ethernet ports are eth1/eth2):
 1) Connect the Ethernet ports between devices, eth1 to eth1 and eth2 to eth2.
 (This acts as a 2 node ring for HSR, or a 2 node point-to-point for PRP)
 
-2) Bring down both the ethernet interfaces
+2) The below script automates the steps to create a HSR/PRP interface using
+ethernet interfaces and IP address for HSR/PRP provided as arguments
 
 ::
 
-  ip link set eth1 down && ip link set eth2 down
+  #!/bin/sh
 
-3) Configure both ports to have the same MAC address
+  if [ "$#" != "4" ]
+  then
+          echo "$0 <hsr|prp> <intf1> <intf2> <ip addr>"
+          exit
+  fi
+
+  if [ "$1" != "hsr" ] && [ "$1" != "prp" ]
+  then
+          echo "$0 <hsr|prp>"
+          exit
+  fi
+
+  if [ "$1" == "hsr" ]
+  then
+          if=hsr0
+  else
+          if=prp0
+  fi
+
+  ifa=$2
+  ifb=$3
+
+  ip=$4
+  mac=`ifconfig $ifa | grep ether | cut -d " " -f 10`
+
+  echo "ip=$ip"
+  echo "if=$if"
+  echo "mac=$mac"
+  echo "slave-a=$ifa"
+  echo "slave-b=$ifb"
+  if [ "$1" == "hsr" ]
+  then
+          ip link delete prp0  2> /dev/null
+  else
+          ip link delete hsr0  2> /dev/null
+  fi
+
+  ip link set $ifa down
+  ip link set $ifb down
+  sleep 1
+
+  ip link set dev $ifa address $mac
+  ip link set dev $ifb address $mac
+
+  ip link set $ifa up
+  sleep 1
+
+  ip link set $ifb up
+  sleep 1
+
+  if [ "$1" == "hsr" ]
+  then
+          ip link add name $if type hsr slave1 $ifa slave2 $ifb supervision 45 version 1
+  else
+          ip link add name $if type hsr slave1 $ifa slave2 $ifb supervision 45 proto 1
+  fi
+  sleep 3
+
+  ip addr add $ip/24 dev $if
+  ip link set $if up
+
+To create HSR interface with IP address 192.168.2.20 using eth1 and eth2, run
+the script by passing the arguments as below
 
 ::
 
-  ip link set dev eth1 address 70:FF:76:1C:0E:8C && ip link set dev eth2 address 70:FF:76:1C:0E:8C
+  sh ./<script_filenmae.sh> hsr eth1 eth2 192.168.2.20
 
-4) Bring up both the ethernet interfaces
+To create a PRP interface with IP address 192.168.2.20 using eth1 and eth2, run
+the script by passing the arguments as below
 
 ::
 
-  ip link set eth1 up && ip link set eth2 up
+  sh ./<script_filename.sh> prp eth1 eth2 192.168.2.20
 
-5) Create HSR or PRP feature
-
-For HSR
-::
-
-  ip link add name hsr0 type hsr slave1 eth1 slave2 eth2 supervision 45 version 1
-
-For PRP
-::
-
-  ip link add name prp0 type hsr slave1 eth1 slave2 eth2 supervision 45 proto 1
-
-6) Assign an IP address to the HSR/PRP interface
-
-For HSR
-::
-
-  ip addr add 192.168.2.20/24 dev hsr0
-
-For PRP
-::
-
-  ip addr add 192.168.2.20/24 dev prp0
-
-7) Bringup the HSR/PRP interface
-
-For HSR
-::
-
-   ip link set hsr0 up
-
-For PRP
-::
-
-   ip link set prp0 up
+Please make sure that the IP address on both the platforms are unique
 
 With the above configuration, if a ping is run between the two platforms on the
 HSR/PRP interface, the ping will continue even if one of the connections is removed.
