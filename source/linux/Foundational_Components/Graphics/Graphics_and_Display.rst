@@ -704,13 +704,13 @@ On the default display:
 
 ::
 
-      target # weston --tty=1 --connector=<default connector-id>
+      target # weston --tty=1 --display=<default connector-id>
 
 On the secondary display:
 
 ::
 
-      target # weston --tty=1 --connector=<secondary connector-id>
+      target # weston --tty=1 --display=<secondary connector-id>
 
 On all connected displays (LCD and HDMI):
 
