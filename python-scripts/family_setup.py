@@ -9,25 +9,25 @@
 # todo: the defines below will be moved to configs/<dev>/dev_<os>_tags.py
 # with the new structure. Remove this section as well as "sdk_product" in *tags.py
 # after the new structure is used for all the device families
-if (sdk_os is 'linux'):
-    if (sdk_product is 'general'):
+if sdk_os == 'linux':
+    if sdk_product == 'general':
         project = u'Processor SDK Linux'
         html_title = 'Processor SDK Linux Documentation'
-    if (sdk_product is 'automotive'):
+    if sdk_product == 'automotive':
         project = u'Processor SDK Linux Automotive'
         html_title = 'Processor SDK Linux Automotive Documentation'
-if (sdk_os is 'rtos'):
-    if (sdk_product is 'general'):
+if sdk_os == 'rtos':
+    if sdk_product == 'general':
         project = u'Processor SDK RTOS'
         html_title = 'Processor SDK RTOS Documentation'
-    if (sdk_product is 'automotive'):
+    if sdk_product == 'automotive':
         project = u'Processor SDK RTOS Automotive'
         html_title = 'Processor SDK RTOS Automotive Documentation'
-if (sdk_os is 'android'):
-    if (sdk_product is 'general'):
+if sdk_os == 'android':
+    if sdk_product == 'general':
         project = u'Processor SDK Android'
         html_title = 'Processor SDK Android Documentation'
-    if (sdk_product is 'automotive'):
+    if sdk_product == 'automotive':
         project = u'Processor SDK Android Automotive'
         html_title = 'Processor SDK Android Automotive Documentation'
 
@@ -39,7 +39,7 @@ import replacevars
 import sectinc
 import interpretvalues
 
-if (fam_name is 'AM64X') :
+if fam_name == 'AM64X':
     # List of Inclusion TOC files to use
     family_tocfiles = [fam_name + '/' + fam_name + '_toc.txt']
     # Family Configuration file to use
