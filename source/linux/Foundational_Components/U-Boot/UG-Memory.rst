@@ -218,6 +218,14 @@ The following commands can be used to download tiboot3.bin, tispl.bin and
 u-boot.img from an SD card and write them to the eMMC boot0 partition at
 respective addresses.
 
+.. note::
+        By default, SDK chooses boot0 partition for eMMC boot (equivalently done
+        using ``mmc partconf 0 1 1 1``). Boot partition can also be switched from
+        boot0 to boot1 by using ``mmc partconf 0 1 2 1``. This enables booting from
+        boot1 partition. Switch to boot1 partition using ``mmc dev 0 2`` and follow
+        regular eMMC write commands (seen below). On rebooting with regular eMMC dip
+        switch settings, boot1 partition will be used.
+
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
   .. code-block:: console
