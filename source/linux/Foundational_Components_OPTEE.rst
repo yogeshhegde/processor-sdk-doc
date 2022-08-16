@@ -1,6 +1,6 @@
-.. _foundational-components-optee:
-
 .. include:: /replacevars.rst.inc
+
+.. _foundational-components-optee:
 
 OP-TEE
 ======
