@@ -58,6 +58,7 @@ Update submodule:
 * "J7" (representing Jacinto 7 ES)
 * "J7200" (representing Jacinto 7 VCL)
 * "J721S2" (representing Jacinto 7 AEP)
+* "J784S4" (representing Jacinto 7 AHP)
 * "GEN" (representing General family not listed above)
 * "CORESDK" (representing CORESDK)
 
