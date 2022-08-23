@@ -1,5 +1,7 @@
 .. _foundational-components-optee:
 
+.. include:: /replacevars.rst.inc
+
 OP-TEE
 ======
 
@@ -7,119 +9,113 @@ OP-TEE
 
 OP-TEE is a Trusted Execution Environment (TEE) designed as companion
 to a non-secure Linux kernel running on Arm; Cortex-A cores using the
-TrustZone technology. OP-TEE implements TEE Internal Core API v1.1.x
-which is the API exposed to Trusted Applications and the TEE Client
-API v1.0, which is the API describing how to communicate with a TEE.
-Those APIs are defined in the GlobalPlatform API specifications.
+TrustZone technology. OP-TEE binary is compiled with U-Boot and following
+are the instructions for compiling and booting it.
 
-Official OPTEE documentation `here <https://optee.readthedocs.io/en/latest/>`__.
+Furthur information about it can be found at: https://optee.readthedocs.io/en/latest/general/about.html
+
+Official OP-TEE documentation `here <https://optee.readthedocs.io/en/latest/>`__.
 
 .. rubric:: Getting the OP-TEE Source Code
 
-::
+.. parsed-literal::
 
     $ git clone https://github.com/OP-TEE/optee_os.git
 
 .. rubric:: Getting Security Dev Tool
-    
-::
-    
+
+.. parsed-literal::
+
     $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
     $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
-    
+
 .. rubric:: Building OP-TEE
-
-.. ifconfig:: CONFIG_part_variant in ('AM65X')
-
-    On GP
-    ::
-
-        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-am65x CFG_ARM64_core=y
-
-    With debug parameters
-    ::
-
-        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-am65x CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
-
-    Sign image for HS
-    ::
-
-        $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
-
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
-
-    On GP
-    ::
-
-        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-am64x CFG_ARM64_core=y
-
-    With debug parameters
-    ::
-
-        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-am64x CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
-
-    Sign image for HS
-    ::
-
-        $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
-
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-    On GP
-    ::
-
-        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-am62x CFG_ARM64_core=y
-
-    With debug parameters
-    ::
-
-        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-am62x CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
-
-    Sign image for HS
-    ::
-
-        $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
-
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200')
-
-    On GP
-    ::
-
-        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-j721e CFG_ARM64_core=y
-
-    Sign image for HS
-    ::
-
-        $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-    On GP
-    ::
+    .. parsed-literal::
 
-        $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-j721s2 CFG_ARM64_core=y CFG_CONSOLE_UART=0x8
+        $ export CFG_CONSOLE_UART=0x8
 
-    Sign image for HS
-    ::
+* On GP
 
-        $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
+.. parsed-literal::
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM64X')
-    
-    .. note::
-        
-        If building for an HS device, tee-pager_v2.bin must be signed before it is packaged in tispl.bin. To sign the binary, the script secure-binary-image.sh is called as shown above with the path to the newly built binary: tee-pager_v2.bin (the first argument) and with the expected output binary path and name: tee-pager_v2.bin.signed (the second argument). Once the binary is signed, continue with the HS boot instructions found here: :ref:`Build-U-Boot-label`.
+    $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
 
-    Exptected binary output
+* With debug parameters
 
-        - Generated binary: tee-pager_v2.bin
-        - Binary saved saved in: <path-to-optee>/out/arm-plat-k3/core
+.. parsed-literal::
 
-    Integrate binary output into U-boot
+    $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
 
-        - Go to u-boot folder <path-to-u-boot>
-        - Re-build U-boot with A53 instructions found under: :ref:`Build-U-Boot-label`, but with the TEE parameter pointing to the newly built tee-pager_v2.bin. i.e. TEE=<path-to-optee>/out/arm-plat-k3/core/tee-pager_v2.bin
+* Sign image for HS
 
-    .. note::
+.. parsed-literal::
 
-        tee-pager_v2.bin may be called bl32.bin in other documentation.
+    $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
+
+
+.. rubric:: Secure Storage with RPMB (For HS)
+
+OP-TEE provides secure storage functionality. TI SoCs with HS configuration have a
+KEK embedded in them that is programmed across OP-TEE instances that are distributed
+in a derived manner. Each HS device has its own signing key which is different from other
+HS devices.
+
+For enabling RPMB support along with secure storage, additional flags need to be passed to
+the build instructions. The information for the flags can be found here.
+https://optee.readthedocs.io/en/latest/architecture/secure_storage.html
+
+There is a hybrid mode in which both the flags i.e `CFG_REE_FS=y` and `CFG_RPMB_FS=y` are enabled.
+This mode stores the state of the Secure Storage directory in RPMB partition to check for the
+integrity of the data present in it. It is the recommended way.
+
+E.g. For enabling hybrid mode of RPMB along with REE_FS
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    .. parsed-literal::
+
+        $ export CFG_CONSOLE_UART=0x8
+
+.. parsed-literal::
+
+    $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_REE_FS=y CFG_RPMB_FS=y
+    $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
+
+OPTEE-client also needs to be updated to enable the use of real
+emmc instead of the virtual emmc that is enabled by default
+
+.. rubric:: Getting OP-TEE Client source code
+
+::
+
+  $ git clone https://github.com/OP-TEE/optee_client
+
+.. rubric:: Building OP-TEE Client with RPMB support
+
+::
+
+  $ make CROSS_COMPILE="aarch64-linux-gnu-" PLATFORM=k3 CFG_TEE_SUPP_LOG_LEVEL=2 RPMB_EMU=0 CFG_ARM64_core=y
+
+Now update optee-client binary and libraries on your SD card with the generated ones
+in `out/export/usr` folder
+
+.. rubric:: Building u-boot with OP-TEE os
+
+If building for an HS device, tee-pager_v2.bin must be signed before it is packaged in tispl.bin. To sign the binary, the script secure-binary-image.sh is called as shown above with the path to the newly built binary: tee-pager_v2.bin (the first argument) and with the expected output binary path and name: tee-pager_v2.bin.signed (the second argument). Once the binary is signed, continue with the HS boot instructions found here: :ref:`Build-U-Boot-label`.
+
+Expected binary output
+
+    - Generated binary: tee-pager_v2.bin
+    - Binary saved saved in: <path-to-optee>/out/arm-plat-k3/core
+
+Integrate binary output into U-boot
+
+    - Go to u-boot folder <path-to-u-boot>
+    - Re-build U-boot with A72/A53 instructions found under: :ref:`Build-U-Boot-label`, but with the TEE parameter pointing to the newly built tee-pager_v2.bin. i.e. TEE=<path-to-optee>/out/arm-plat-k3/core/tee-pager_v2.bin
+
+.. note::
+
+    tee-pager_v2.bin may be called bl32.bin in other documentation.
