@@ -8,8 +8,7 @@ Overview
    :maxdepth: 5
 
    Overview_Getting_Started_Guide
-   Overview_Directory_Structure
    Overview_Building_the_SDK
-   Overview_Software_Stack
+   Overview_Flashing
    Overview_Technical_Support
-   Overview_GPLv3_Disclaimer
+
