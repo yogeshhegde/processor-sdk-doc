@@ -1682,16 +1682,187 @@ The following DT modifications should be done to disable CPSW MDIO controller.
                         >;
                 };
 
-There is a non-fatal error
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    All the modifications for CPSW are in k3-j721s2-common-proc-board.dts
+
+    Add DT Node for MDIO GPIO bitbang driver to configure PHY.
+
+    ::
+
+        diff --git a/arch/arm64/boot/dts/ti/k3-j721s2-common-proc-board.dts b/arch/arm64/boot/dts/ti/k3-j721s2-common-proc-board.dts
+        index 920d2b0ae875..6223ba1901de 100644
+        --- a/arch/arm64/boot/dts/ti/k3-j721s2-common-proc-board.dts
+        +++ b/arch/arm64/boot/dts/ti/k3-j721s2-common-proc-board.dts
+        @@ -32,6 +32,7 @@
+                        can3 = &main_mcan3;
+                        can4 = &main_mcan5;
+                        ethernet1 = &main_cpsw_port1;
+        +               mdio-gpio1 = &mdio1;
+                };
+
+                evm_12v0: fixedregulator-evm12v0 {
+        @@ -171,6 +172,22 @@
+                                };
+                        };
+                };
+        +
+        +       mdio1: bitbang-mcu-mdio {
+        +               compatible = "virtual,mdio-gpio";
+        +               pinctrl-names = "default";
+        +               pinctrl-0 = <&mcu_mdio_pins_default>;
+        +               gpios = <&wkup_gpio0 53 GPIO_ACTIVE_HIGH>,
+        +                       <&wkup_gpio0 52 GPIO_ACTIVE_HIGH>;
+        +               #address-cells = <1>;
+        +               #size-cells = <0>;
+        +               phy0: ethernet-phy@0 {
+        +                       reg = <0>;
+        +                       ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+        +                       ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+        +                       ti,min-output-impedance;
+        +               };
+        +       };
+         };
+
+         &main_i2c4 {
+        @@ -276,8 +293,8 @@
+
+                mcu_mdio_pins_default: mcu-mdio-pins-default {
+                        pinctrl-single,pins = <
+        -                       J721S2_WKUP_IOPAD(0x09c, PIN_OUTPUT, 0) /* (A21) MCU_MDIO0_MDC */
+        -                       J721S2_WKUP_IOPAD(0x098, PIN_INPUT, 0) /* (A22) MCU_MDIO0_MDIO */
+        +                       J721S2_WKUP_IOPAD(0x09c, PIN_OUTPUT, 7) /* (A21) MCU_MDIO0_MDC */
+        +                       J721S2_WKUP_IOPAD(0x098, PIN_INPUT, 7) /* (A22) MCU_MDIO0_MDIO */
+                        >;
+                };
+
+    Remove mcu_mdio_pins_default pinctrl configuration from mcu_cpsw node and keep
+    status = "disabled" for davinci_mdio node and remove the PHY sub-nodes.
+
+    ::
+
+	@@ -453,16 +470,11 @@
+
+	 &mcu_cpsw {
+		pinctrl-names = "default";
+	-       pinctrl-0 = <&mcu_cpsw_pins_default &mcu_mdio_pins_default>;
+	+       pinctrl-0 = <&mcu_cpsw_pins_default>;
+	};
+
+	&davinci_mdio {
+	-       phy0: ethernet-phy@0 {
+	-               reg = <0>;
+	-               ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+	-               ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+	-               ti,min-output-impedance;
+	-       };
+	+       status = "disabled";
+
+There is a non-fatal error.
+
 ::
 
     mdio-gpio bitbang-mdio: failed to get alias id
 
 To get rid of the above error, an appropriate alias should be added in the aliases node.
-::
 
-    mdio-gpio0 = &mdio0;
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
 
+    ::
+
+        mdio-gpio0 = &mdio0;
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    ::
+
+        mdio-gpio1 = &mdio1;
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    For the GESI Expansion Board , similar procedure can be followed.
+    All the modifications for GESI Expansion Board are in k3-j721s2-gesi-exp-board.dts
+
+    Overlay a new DT node for MDIO GPIO bitbang driver to configure PHY.
+    The alias for the new node must also be added to avoid MDIO probe failures.
+
+    ::
+
+        diff --git a/arch/arm64/boot/dts/ti/k3-j721s2-gesi-exp-board.dts b/arch/arm64/boot/dts/ti/k3-j721s2-gesi-exp-board.dts
+        index 95bd0824e2f5..9df1a4600854 100644
+        --- a/arch/arm64/boot/dts/ti/k3-j721s2-gesi-exp-board.dts
+        +++ b/arch/arm64/boot/dts/ti/k3-j721s2-gesi-exp-board.dts
+        @@ -12,11 +12,43 @@
+         #include <dt-bindings/net/ti-dp83867.h>
+         #include <dt-bindings/pinctrl/k3.h>
+
+        +
+        +/ {
+        +       fragment@101 {
+        +               target-path = "/";
+        +
+        +               __overlay__ {
+        +
+        +                       aliases {
+        +                               mdio-gpio0 = "/bitbang-main-mdio";
+        +                       };
+        +
+        +                       mdio0: bitbang-main-mdio {
+        +                               compatible = "virtual,mdio-gpio";
+        +                               pinctrl-names = "default";
+        +                               pinctrl-0 = <&main_cpsw_mdio_pins_default>;
+        +                               gpios = <&main_gpio0 48 GPIO_ACTIVE_HIGH>,
+        +                                       <&main_gpio0 47 GPIO_ACTIVE_HIGH>;
+        +                               #address-cells = <1>;
+        +                               #size-cells = <0>;
+        +
+        +                               main_cpsw_phy0: ethernet-phy@0 {
+        +                                       reg = <0>;
+        +                                       ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+        +                                       ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+        +                                       ti,min-output-impedance;
+        +                               };
+        +                       };
+        +               };
+        +       };
+        +};
+        +
+        +
+         &main_pmx0 {
+                main_cpsw_mdio_pins_default: main-cpsw-mdio-pins-default {
+                        pinctrl-single,pins = <
+        -                       J721S2_IOPAD(0x0c0, PIN_OUTPUT, 6) /* (T28) MCASP1_AXR0.MDIO0_MDC */
+        -                       J721S2_IOPAD(0x0bc, PIN_INPUT, 6) /* (V28) MCASP1_AFSX.MDIO0_MDIO */
+        +                       J721S2_IOPAD(0x0c0, PIN_OUTPUT, 7) /* (T28) MCASP1_AXR0.MDIO0_MDC */
+        +                       J721S2_IOPAD(0x0bc, PIN_INPUT, 7) /* (V28) MCASP1_AFSX.MDIO0_MDIO */
+                        >;
+                };
+
+    Remove main_cpsw_mdio_pins_default pinctrl configuration from main_cpsw node and keep
+    status = "disabled" for main_cpsw_mdio node and remove the PHY sub-nodes.
+
+    ::
+
+	&main_cpsw {
+		pinctrl-names = "default";
+	-       pinctrl-0 = <&main_cpsw_mdio_pins_default
+	-                    &rgmii1_pins_default>;
+	+       pinctrl-0 = <&rgmii1_pins_default>;
+	        status = "okay";
+	 };
+
+	 &main_cpsw_mdio {
+	-       #address-cells = <1>;
+	-       #size-cells = <0>;
+	-
+	-       main_cpsw_phy0: ethernet-phy@0 {
+	-               reg = <0>;
+	-               ti,rx-internal-delay = <DP83867_RGMIIDCTL_2_00_NS>;
+	-               ti,fifo-depth = <DP83867_PHYCR_FIFO_DEPTH_4_B_NIB>;
+	-               ti,min-output-impedance;
+	-       };
+	+       status = "disabled";
+	 };
 
 .. rubric:: **Disadvantages**
 
