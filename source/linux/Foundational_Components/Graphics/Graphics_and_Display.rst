@@ -567,7 +567,7 @@ display.
 Finding Plane ID
 ----------------
 
-To find the Plane ID, run the modetest command:
+To find the Plane ID, run the ``modetest`` command:
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
@@ -806,6 +806,13 @@ Exiting Weston
 Terminate all Weston clients before exiting Weston. If you have invoked
 Weston from the serial console, exit Weston by pressing Ctrl-C.
 
+If Weston was started automatically by the init system then it can be stopped
+with:
+
+::
+
+     target # /etc/init.d/weston stop
+
 It is also possible to invoke Weston from the native console, exit
 Weston by pressing Ctrl-Alt-Backspace.
 
@@ -955,8 +962,12 @@ additional details on the tools and detailed documentation.
 
 The target file system includes a subset of PowerVR tools such as
 PVRScope and PVRTrace recorder libraries from Imagination PowerVR SDK to
-profile and trace SGX activities. In addition, it also includes
+profile and trace GFX activities. In addition, it also includes
 PVRPerfServerDeveloper tool.
+
+.. note:: If you are experiencing issues with any of the tools try updating to
+          the latest provided by Imagination at
+          https://developer.imaginationtech.com/
 
 PVRTune
 -------
