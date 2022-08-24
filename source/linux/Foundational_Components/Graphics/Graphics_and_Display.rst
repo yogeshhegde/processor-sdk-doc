@@ -837,10 +837,6 @@ line).
 
     [core]
     shell=ivi-shell.so
-    modules=ivi-controller.so
-
-    [ivi-shell]
-    ivi-input-module=ivi-input-controller.so
 
 After the above configuration is completed, we can restart Weston by
 running the following commands
@@ -855,95 +851,15 @@ running the following commands
           with background.
 
 With ivi-shell configured for Weston, Wayland client applications use
-ivi-application protocol to be managed by a central HMI window
-management. The wayland-ivi-extension provides ivi-controller.so to
-manage properties of surfaces/layers/screens and it also provides the
-ivi-input-controller.so to manage the input focus on a surface.
+ivi-application protocol to be managed by a central HMI window management.
 
-Applications must support the ivi-application protocol to be managed
-by the HMI central controller with an unique numeric ID.
+Applications must support the ivi_application Wayland protocol to be managed by
+the HMI central controller with an unique numeric ID.
 
-Some important references to wayland-ivi-extension can be found at the
-following links:
+Some important references to Weston IVI-shell can be found at the following
+link:
 
--   https://at.projects.genivi.org/wiki/display/WIE/01.+Quick+start
--   https://at.projects.genivi.org/wiki/display/PROJ/Wayland+IVI+Extension+Design
-
-Running Weston's sample client applications with IVI shell
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-All the sample client applications in the Weston package, such as
-weston-simple-egl, weston-simple-shm, weston-flower, etc. also have
-support for ivi-shell. The SDK includes the application called
-layer-add-surfaces, which is part of the wayland-ivi-extension. This
-application allows the user to invoke the various functionalities of the
-ivi-shell and control the applications.
-
-The following is an example sequence of commands and the corresponding
-effect on the target.
-
-After launching Weston with the ivi-shell, please run the below
-sequence of commands:
-
-::
-
-    target# weston-simple-shm &
-
-At this point nothing is displayed on the screen; some additional
-commands are required.
-
-::
-
-    target# layer-add-surfaces -l 1000 -s 2 &
-
-This command creates a layer with ID 1000 and adds a maximum of 2
-surfaces to this layer on the default screen (which is usually the LCD).
-
-At this point, the user can see weston-simple-shm running on the LCD. This
-also prints the numericID (surfaceID) to which client’s surface is
-mapped as shown below:
-
-::
-
-    layer-add-surfaces: surface (10507) created
-    layer-add-surfaces: surface (10507) configured with:
-        dst region: x:0 y:0 w:250 h:250
-        src region: x:0 y:0 w:250 h:250
-        visibility: TRUE
-        added to layer (1000)
-    layer-add-surfaces: surface (10507) configured with:
-        dst region: x:0 y:0 w:250 h:250
-        src region: x:0 y:0 w:250 h:250
-        visibility: TRUE
-        added to layer (1000)
-
-Here, 10507 is the number to which weston-simple-shm application’s
-surface is mapped.
-
-User can launch one more client application which allows
-layer\_add\_surfaces to add a second surface to the layer 1000 as shown
-below.
-
-::
-
-    target# weston-flower &
-
-User can control the properties of the above surfaces using
-LayerManagerControl as shown below to set the position/resize,
-opacity and visibility respectively.
-
-::
-
-    target# LayerManagerControl set surface 10507 destination region 150 150 300 300
-    target# LayerManagerControl set surface 10507 opacity 0.5
-    target# LayerManagerControl set surface 10507 visibility 1
-
-::
-
-    target# LayerManagerControl  help
-
-The help option prints all possible control operations with the
-LayerManagerControl binary. Please refer to the available options.
+-   https://wayland.pages.freedesktop.org/weston/toc/ivi-shell.html
 
 Running QT applications with IVI shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
