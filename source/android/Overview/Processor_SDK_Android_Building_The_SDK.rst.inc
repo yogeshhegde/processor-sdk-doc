@@ -192,9 +192,16 @@ Android File System
     ::
 
         cd ${YOUR_PATH}/ti-aosp-12
-        source build/envsetup.sh
-        lunch am62x-userdebug
+        lunch <BUILD_TARGET>
         m
 
+Where ``BUILD_TARGET`` is listed in the table below :
+
+========== =========================
+Build type Build target
+========== =========================
+userdebug  ``am62x-userdebug``
+user       ``am62x-user``
+========== =========================
 
 **After building all components, refer to instruction in next section for flashing the images to EVM**
