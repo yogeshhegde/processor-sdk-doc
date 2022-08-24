@@ -363,6 +363,10 @@ Introduction
 
     .. rubric:: GL extensions
 
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_AXE')
+
+    .. note:: OpenCL\ |reg| libraries are currently provided without support at
+              https://git.ti.com
 
 The OpenGL\ |reg| ES and EGL\ |reg| libraries are packaged with the
 |__SDK_FULL_NAME__| and are used by graphics stacks such as Wayland/Weston. The
