@@ -346,6 +346,24 @@ Introduction
     - GL_OES_vertex_array_object
     - GL_OES_vertex_half_float
 
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS')
+
+    |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
+    accelerator based on the B-Series BXS-4-64 from Imagination Technologies
+    Inc. It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
+    API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
+    render surfaces upto 4k and input textures upto 8k sizes are supported by
+    the hardware.
+
+    The following extensions are supported:
+
+    .. rubric:: EGL client extensions
+
+    .. rubric:: EGL extensions
+
+    .. rubric:: GL extensions
+
+
 The OpenGL\ |reg| ES and EGL\ |reg| libraries are packaged with the
 |__SDK_FULL_NAME__| and are used by graphics stacks such as Wayland/Weston. The
 drivers run on an ARM core and programs the firmware running inside a GPU core
@@ -366,7 +384,7 @@ The rest of this page will cover the following topics:
     - AM3 Beagle Bone Black Board Configuration
     - SGX Debugging Tips
 
-.. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE')
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE', 'Rogue_BXS')
 
     - Software architecture of Graphics
     - Instructions on how to run graphics demos
@@ -468,7 +486,7 @@ Native_SDK examples.
     the drm connector id. For information on how to get connector id please
     refer to the Display_ section.
 
-.. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE')
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE', 'Rogue_BXS')
 
     The following demos are available to run under the Wayland windowing system.
 
