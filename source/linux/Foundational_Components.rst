@@ -8,6 +8,7 @@ Foundational Components
    Foundational_Components_U-Boot
    Foundational_Components_Boot_Monitor
    Foundational_Components_Kernel
+   Foundational_Components_Security
    Foundational_Components_Filesystem
    Foundational_Components_Tools
    Foundational_Components_PRU_Subsystem
