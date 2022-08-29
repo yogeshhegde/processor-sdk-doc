@@ -9,34 +9,40 @@ SPHINXBUILD   = sphinx-build
 PAPER         =
 OS            = linux
 
+_UC = $(shell echo '$1' | tr '[:lower:]' '[:upper:]')
+_LC = $(shell echo '$1' | tr '[:upper:]' '[:lower:]')
+
+DEVFAMILY_UP=$(call _UC,${DEVFAMILY})
+OS_LOW=$(call _LC,${OS})
+
 mkfile_path = $(abspath $(lastword $(MAKEFILE_LIST)))
 export ROOTDIR = $(dir $(mkfile_path))
 $(info ROOTDIR is $(ROOTDIR))
 
-$(info DEVFAMILY is $(DEVFAMILY))
+$(info DEVFAMILY is $(DEVFAMILY_UP))
 FAMILYSETUPFILE = python-scripts/family_setup.py
 
-ifneq ($(DEVFAMILY), $(filter $(DEVFAMILY), GEN CORESDK))
-    ifeq ($(DEVFAMILY), AM64X)
-       CONFDIR  = source/devices/$(DEVFAMILY)
-       TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
+ifneq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), GEN CORESDK))
+    ifeq ($(DEVFAMILY_UP), AM64X)
+       CONFDIR  = source/devices/$(DEVFAMILY_UP)
+       TAGFILE  = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_tags.py
     else
-       CONFDIR  = source/devices/$(DEVFAMILY)/${OS}
-       TAGFILE  = configs/$(DEVFAMILY)/$(DEVFAMILY)_${OS}_tags.py
+       CONFDIR  = source/devices/$(DEVFAMILY_UP)/${OS_LOW}
+       TAGFILE  = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_${OS_LOW}_tags.py
     endif
     VERSION     = $(shell cat ${CONFDIR}/version.txt)
 else # TODO: this is for supporting the old structure;
      # Remove the else branch after the new structure is used for all device families
-    CONFDIR     = source/${OS}
-    TAGFILE     = configs/$(DEVFAMILY)/$(DEVFAMILY)_tags.py
+    CONFDIR     = source/${OS_LOW}
+    TAGFILE     = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_tags.py
     VERSION     = $(shell cat version.txt)
-    OS_CONF     = ${CONFDIR}/conf-${OS}.py
+    OS_CONF     = ${CONFDIR}/conf-${OS_LOW}.py
 endif
 $(info TAGFILE is $(TAGFILE))
 $(info CONFDIR is $(CONFDIR))
 export CONFDIR
 
-BUILDDIR      = build/processor-sdk-${OS}-${DEVFAMILY}/esd/docs/${VERSION}
+BUILDDIR      = build/processor-sdk-${OS_LOW}-${DEVFAMILY_UP}/esd/docs/${VERSION}
 
 # User-friendly check for sphinx-build
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
