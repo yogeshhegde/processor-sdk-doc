@@ -142,3 +142,21 @@ cable is connected from the host PC to the EVM.
     Input device can be a mouse or HDMI display that has a USB touch. Input USB device connects to Type-A connector on the board.
 
 |
+
+.. _android-flash_boot_image:
+
+Flashing the kernel
+===================
+
+In order to flash a new kernel, the new boot image should be flashed.
+
+    ::
+
+        adb reboot bootloader
+        < Wait for bootloader reboot >
+
+        cd <PATH/TO/BOOT/IMAGE>
+        fastboot flash boot boot.img
+        fastboot reboot
+
+The board should boot with the new kernel build.

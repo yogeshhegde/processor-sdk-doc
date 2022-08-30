@@ -183,6 +183,21 @@ The usual (``make menuconfig`` ) is done via ``config.sh``:
            Users must have built the android kernel image prior to building the Android file system.
            Otherwise pre-built Kernel images present in ``device/ti/am62x-kernel`` will be used to create ``boot.img``
 
+Building the kernel without Android project code
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Download and extract the prebuilt binaries following : :ref:`android-prebuilts` and start building the kernel by running the following commands.
+
+    ::
+
+        cd ${YOUR_PATH}/ti-kernel-aosp/
+        export BUILD_CONFIG=./imgtech-module/build.config.imgtech
+        export PREBUILT_BOOTIMG=<PATH/TO/ANDROID/PREBUILT/BINARIES/boot.img>
+        build/build.sh
+
+The new boot image will be located in ``${YOUR_PATH}/ti-kernel-aosp/out/android13-5.10/``
+
+Please refer to : :ref:`android-flash_boot_image` to flash the new kernel.
 
 Android File System
 -------------------
