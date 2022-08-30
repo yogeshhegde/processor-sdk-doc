@@ -38,4 +38,5 @@ Configuration Values
 'CONFIG_icss_support'     : 'yes'
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : \
+'CONFIG_crypto'           : 'sa2ul'
 

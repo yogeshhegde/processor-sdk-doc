@@ -38,3 +38,4 @@ Configuration Values
 'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'no'
 'CONFIG_gpu_ip'           : 'Rogue_8XE'
+'CONFIG_crypto'           : 'sa2ul'
