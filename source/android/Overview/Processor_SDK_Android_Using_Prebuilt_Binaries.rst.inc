@@ -1,5 +1,7 @@
 .. include:: /replacevars.rst.inc
 
+.. _android-prebuilts:
+
 Using Prebuilt binaries
 =======================
 
