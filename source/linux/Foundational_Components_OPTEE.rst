@@ -7,14 +7,14 @@ OP-TEE
 
 .. rubric:: Overview
 
-OP-TEE is a Trusted Execution Environment (TEE) designed as companion
-to a non-secure Linux kernel running on Arm; Cortex-A cores using the
-TrustZone technology. OP-TEE binary is compiled with U-Boot and following
-are the instructions for compiling and booting it.
+OP-TEE is a Trusted Execution Environment (TEE) designed as a companion to a
+non-secure Linux kernel running on Arm Cortex-A cores using the TrustZone technology.
 
-Furthur information about it can be found at: https://optee.readthedocs.io/en/latest/general/about.html
+- Furthur information about it can be found at: https://optee.readthedocs.io/en/latest/general/about.html
+- Official OP-TEE documentation: https://optee.readthedocs.io/en/latest
+- OP-TEE advisory listing: https://github.com/OP-TEE/optee_os/security/advisories
 
-Official OP-TEE documentation `here <https://optee.readthedocs.io/en/latest/>`__.
+The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the following are the instructions to build it.
 
 .. rubric:: Getting the OP-TEE Source Code
 
@@ -102,9 +102,12 @@ emmc instead of the virtual emmc that is enabled by default
 Now update optee-client binary and libraries on your SD card with the generated ones
 in `out/export/usr` folder
 
-.. rubric:: Building u-boot with OP-TEE os
+.. rubric:: Building u-boot with OP-TEE OS
 
-If building for an HS device, tee-pager_v2.bin must be signed before it is packaged in tispl.bin. To sign the binary, the script secure-binary-image.sh is called as shown above with the path to the newly built binary: tee-pager_v2.bin (the first argument) and with the expected output binary path and name: tee-pager_v2.bin.signed (the second argument). Once the binary is signed, continue with the HS boot instructions found here: :ref:`Build-U-Boot-label`.
+If building for an HS device, tee-pager_v2.bin must be signed before it is packaged in tispl.bin. To sign the binary,
+the script secure-binary-image.sh is called as shown above with the path to the newly built binary: tee-pager_v2.bin
+(the first argument) and with the expected output binary path and name: tee-pager_v2.bin.signed (the second argument).
+Once the binary is signed, continue with the HS boot instructions found here: :ref:`Build-U-Boot-label`.
 
 Expected binary output
 
