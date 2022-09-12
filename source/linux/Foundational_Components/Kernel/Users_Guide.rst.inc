@@ -458,6 +458,8 @@ tree. These .ko files are the dynamic kernel modules.
 
 |
 
+.. _fitImage-for-HS:
+
 Creating the kernel fitImage for high security device (using SDK)
 -----------------------------------------------------------------
 

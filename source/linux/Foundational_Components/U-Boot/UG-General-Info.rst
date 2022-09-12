@@ -549,6 +549,7 @@ Build U-Boot
            $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721e_sr1_1 HS=1 SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-cert.bin
 
     .. rubric:: Target Images
+        :name: target-images
 
     Copy the below images to the boot partition of an SD card and boot.
     Instructions to format the SD card can be found `here <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__.
