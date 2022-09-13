@@ -42,13 +42,14 @@ Features supported
 - PTP Ordinary clock
 - PPS Out
 - Promiscuous mode
+- Different MII modes for Real-Time Ethernet ports (MII_G_RT1 and MII_G_RT2) on different PRU_ICSSG instances. For example, MII on a PRU_ICSSG1 port, and RGMII on a PRU_ICSSG2 port, is supported.
 
 .. rubric:: **Features not supported**
 
 - VLAN HW filtering
 - All-multi mode is always enabled
 - Multi-cast HW filtering
-- Different MII modes for Real-Time Ethernet ports (MII_G_RT1 and MII_G_RT2). For example, MII_G_RT1=MII and MII_G_RT1=RGMII
+- Different MII modes for Real-Time Ethernet ports (MII_G_RT1 and MII_G_RT2) on a single PRU_ICSSG instance. For example, MII_G_RT1=MII and MII_G_RT2=RGMII.
 
 .. rubric:: **Limitations**
 
