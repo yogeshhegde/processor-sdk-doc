@@ -329,9 +329,9 @@ documented above.
       => tftp ${loadaddr} tiboot3.bin
       => sf update $loadaddr 0x0 $filesize
       => tftp ${loadaddr} tispl.bin
-      => sf update $loadaddr 0x100000 $filesize
+      => sf update $loadaddr 0x80000 $filesize
       => tftp ${loadaddr} u-boot.img
-      => sf update $loadaddr 0x300000 $filesize
+      => sf update $loadaddr 0x280000 $filesize
 
     **Phy calibration**
 
@@ -354,18 +354,18 @@ documented above.
     .. code-block:: console
 
              0x0 +----------------------------+
-                 |     ospi.tiboot3(1m)       |
+                 |     ospi.tiboot3(512k)     |
                  |                            |
-        0x100000 +----------------------------+
+         0x80000 +----------------------------+
                  |     ospi.tispl(2m)         |
                  |                            |
-        0x300000 +----------------------------+
+        0x280000 +----------------------------+
                  |     ospi.u-boot(4m)        |
                  |                            |
-        0x700000 +----------------------------+
+        0x680000 +----------------------------+
                  |     ospi.env(128k)         |
                  |                            |
-        0x720000 +----------------------------+
+        0x6c0000 +----------------------------+
                  |   ospi.env.backup(128k)    |
                  |                            |
         0x740000 +----------------------------+
