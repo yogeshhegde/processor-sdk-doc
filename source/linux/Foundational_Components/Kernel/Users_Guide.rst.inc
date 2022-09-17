@@ -78,7 +78,7 @@ The command to clean the kernel is:
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- distclean
 
 ..
   [comment] instructions for 64 bit processors
@@ -109,7 +109,7 @@ a command of the form:
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- <defconfig>
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <defconfig>
 
 ..
   [comment] instructions for 64 bit processors
@@ -138,7 +138,7 @@ as a starting point).
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- tisdk_am335x-evm_defconfig
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- tisdk_am335x-evm_defconfig
 
 ..
   [comment] instructions for 64 bit processors
@@ -218,13 +218,13 @@ To invoke the kernel configuration you simply use a command like:
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- <config type>
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <config type>
 
     i.e. for menuconfig the command would look like
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- menuconfig
 
 ..
   [comment] instructions for 64 bit processors
@@ -267,7 +267,7 @@ Compiling the Kernel
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- zImage
 
     This will result in a kernel image file being created in the
     arch/arm/boot/ directory called zImage.
@@ -352,7 +352,7 @@ Compiling the Device Tree Binaries
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- <dt filename>.dtb
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <dt filename>.dtb
 
     The compiled device tree file with be located in arch/arm/boot/dts.
 
@@ -361,13 +361,13 @@ Compiling the Device Tree Binaries
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x-boneblack.dtb
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am335x-boneblack.dtb
 
     Alternatively, you can build every device tree binary with command
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- dtbs
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- dtbs
 
 ..
   [comment] instructions for 64 bit processors
@@ -432,7 +432,7 @@ Compiling the Kernel Modules
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- modules
 
 ..
   [comment] instructions for 64 bit processors
