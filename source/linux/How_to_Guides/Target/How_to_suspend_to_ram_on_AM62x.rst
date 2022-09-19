@@ -67,3 +67,47 @@ Limitations
         root@am62xx-evm:~# echo 200000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
 
 Upcoming releases will add support for additional peripherals and cores.
+
+Supported Peripherals
+---------------------
+
+GPIO
+____
+
+The Deep Sleep support for the AM62x GPIOs is provided by two standalone drivers in Linux.
+
+System suspend and resume of the GPIO IP block is fully supported in the `gpio-davinci.c` driver. The information about the requested GPIOs and their state is saved on suspend and restored on resume from deep sleep.
+
+The GPIO interrupts require an additional setup of the IRQ routing in the Interrupt Router (INTR) with the help of TISCI_MSG_RM_IRQ_SET message over TISCI. This interrupt configuration is currently not stored by the System Firmware when entering Suspend-to-RAM. The `irq-ti-sci-intr.c` (INTR) driver provides support for restoring the IRQ routing setup after resuming from Deep Sleep from internally cached state.
+
+Validating the system suspend and resume support for GPIO on AM62x requires verifying the above two components. Any requested GPIO must preserve state after resuming from Deep Sleep and the requested GPIO interrupt handlers must trigger on the specified GPIO state change. The current version of the LPM demo for AM625-SK has a couple of GPIO consumers we can use for validation and testing.
+
+.. rubric:: GPIO state preservation
+
+`GPIO1_49` is used by the leds-gpio driver as heartbeat indicator. When the system is suspended to RAM the LD1 LED on the board will be off. After resuming LD1 must continue to indicate the system heartbeat. We can also switch the trigger to `default-on` and verify if the `brightness` sysfs attribute of the LED device is set to max. value (255).
+
+    ::
+
+        root@am62xx-evm:~# echo default-on > /sys/class/leds/am62-sk\:green\:heartbeat/trigger
+        root@am62xx-evm:~# rtcwake -s 1 -m mem
+        rtcwake: assuming RTC uses UTC ...
+        ...
+        root@am62xx-evm:~# cat /sys/class/leds/am62-sk\:green\:heartbeat/brightness
+        255
+
+.. rubric:: Interrupt routing state preservation
+
+On AM625-SK, `GPIO1_23` is configured as interrupt for a GPIO IO expander which it's also wired to the SW4 button. We can use the button to generate an interrupt as if it originates from the IO expander. All we need to know is the kernel registering the interrupt.
+
+    ::
+
+        root@am62xx-evm:~# grep davinci_gpio /proc/interrupts
+        278:          0      GPIO  23 Edge    -davinci_gpio  0-0022
+        root@am62xx-evm:~# rtcwake -s 1 -m mem
+        rtcwake: assuming RTC uses UTC ...
+        ...
+        root@am62xx-evm:~# grep davinci_gpio /proc/interrupts
+        278:          0      GPIO  23 Edge    -davinci_gpio  0-0022
+        # Press the SW4 button
+        root@am62xx-evm:~# grep davinci_gpio /proc/interrupts
+        278:          1      GPIO  23 Edge    -davinci_gpio  0-0022
