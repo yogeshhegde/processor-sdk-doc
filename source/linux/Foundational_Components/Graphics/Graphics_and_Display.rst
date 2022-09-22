@@ -667,6 +667,26 @@ Native_SDK examples.
         target # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation3D
         target # /usr/bin/SGX/demos/Wayland/OpenGLESParticleSystem
 
+    Additionally demos using the Null Window System / KMS / DRM / EGLFS are
+    provided with Qt. By default EGLFS will use the eglfs\_kms backend.
+
+    ::
+
+        target # /usr/share/qt5/examples/opengl/hellogles3/hellogles3 -platform eglfs
+        target # /usr/share/qt5/examples/opengl/2dpainting/2dpainting -platform eglfs
+        target # /usr/share/qt5/examples/opengl/paintedwindow/paintedwindow -platform eglfs
+
+    The default eglfs\_kms configuration file for Qt5 is located at:
+
+    ::
+
+        target # /etc/qt5/eglfs_kms_cfg.json
+
+    For more information about Qt's EGLFS and using Qt5 in embedded
+    applications see:
+
+    - https://doc.qt.io/qt-5/embedded-linux.html
+
 
 Display
 =======
