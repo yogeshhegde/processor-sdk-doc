@@ -172,11 +172,19 @@ platform that support USB Peripheral boot mode.
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
 
-    On host side:
+    .. rubric:: On Linux host
 
     .. code-block:: text
 
         host$ sudo dfu-util -l
+
+    .. rubric:: On Windows host
+
+    Download dfu-util from *Releases* section of `dfu-util Homepage <http://dfu-util.sourceforge.net/>`_ and extract the zip file.
+
+    .. code-block:: text
+
+        host> dfu-util.exe -l
 
     This will show the following DFU entities:
 
@@ -215,6 +223,8 @@ platform that support USB Peripheral boot mode.
 		Found DFU: [0451:6165] ver=0200, devnum=9, cfg=1, intf=0, path="1-2.2", alt=0, name="bootloader", serial="01.00.00.00"
 
     Send boot images in this order: tiboot3.bin -> tispl.bin -> u-boot.img
+
+    .. note:: On Windows, if you face any issues while listing the available DFU Interfaces, try installing/updating the Generic USB DFU Drivers using `Zadig <https://zadig.akeo.ie/>`_.
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
 
@@ -262,6 +272,8 @@ platform that support USB Peripheral boot mode.
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family', 'AM62X_family')
 
+    .. rubric:: On Linux host
+
     .. code-block:: text
 
 		host$ sudo dfu-util -R -a bootloader -D tiboot3.bin
@@ -271,6 +283,20 @@ platform that support USB Peripheral boot mode.
 
 		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
 		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
+
+    .. rubric:: On Windows host
+
+    .. code-block:: text
+
+        host> dfu-util.exe -R -a 0 -D tiboot3.bin
+        host> dfu-util.exe -l
+          Found DFU: [0451:6165] devnum=0, cfg=1, intf=0, alt=0, name="tispl.bin"
+          Found DFU: [0451:6165] devnum=0, cfg=1, intf=0, alt=1, name="u-boot.img"
+
+        host> dfu-util.exe -R -a 0 -D tispl.bin
+        host> dfu-util.exe -R -a 1 -D u-boot.img
+
+    .. note:: On Windows host, if `name` of the DFU Interface doesn't work, use `alt` number instead.
 
 .. ifconfig:: CONFIG_part_family in ('AM64X_family', 'J7_family', 'AM62X_family')
 
