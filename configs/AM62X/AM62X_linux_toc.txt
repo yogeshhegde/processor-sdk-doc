@@ -87,7 +87,6 @@ linux/Foundational_Components_Kernel_FAQs
 linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
-linux/Foundational_Components/Tools/Flash_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components_IPC62x
 linux/Foundational_Components_Graphics
@@ -98,7 +97,6 @@ linux/Foundational_Components_ATF
 
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
-linux/How_to_Guides_Frequently_Asked_Questions
 linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet
 linux/How_to_Guides/Host/How_to_Setup_a_Samba_Server
 linux/How_to_Guides/Host/Moving_Files_to_the_Target_System
