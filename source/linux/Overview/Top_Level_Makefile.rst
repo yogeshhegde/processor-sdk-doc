@@ -325,6 +325,28 @@ the Makefile from the top-level of the SDK.
     host# make u-boot
     host# make sysfw-image
 
+If TI_SECURE_DEV_PKG environment variable is not defined, tiboot3.bin can still be built for GP devices. The following errors will occur in K3-Image-Gen build logs when building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
+
+::
+
+    TI_SECURE_DEV_PKG must be set for HS, defaults will not work.  Stop.
+
+To fix the above issue, do the following and rebuild the `sysfw-image`.
+
+::
+
+    host# git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
+    host# export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  .. note:: To build `tiboot3.bin` for AM64x GP, update `PLATFORM_TYPE_am64xx-evm` and `SYSFW_SOC_am64xx-evm` in the top level Makefile as below:
+
+    ::
+
+        PLATFORM_TYPE_am64xx-evm = gp
+        SYSFW_SOC_am64xx-evm = am64x
+
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
   .. ifconfig:: CONFIG_part_variant in ('J7200')
