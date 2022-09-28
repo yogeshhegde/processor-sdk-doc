@@ -531,6 +531,27 @@ The OpenGL\ |reg| ES and EGL\ |reg| libraries are packaged with the
 drivers run on an ARM core and programs the firmware running inside a GPU core
 with rendering commands submitted by the user applications.
 
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
+   Other features of the Rogue series of GPUs include bilinear and trilinear filtering.
+
+   Support for the following pixel formats:
+
+   .. list-table:: Supported surface pixel formats
+
+      * - ARGB8888
+      * - BGRA8888
+      * - RGB565
+
+   .. list-table:: Supported texture pixel formats
+
+      * - ARGB4444
+      * - ARGB8888
+      * - BGRA8888
+      * - RGB565
+      * - RGBA5551
+      * - YUV420
+      * - YUYV
+
 The rest of this page will cover the following topics:
 
 .. ifconfig:: CONFIG_gpu_ip in ('SGX')
