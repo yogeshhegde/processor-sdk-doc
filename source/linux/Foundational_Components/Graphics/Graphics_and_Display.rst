@@ -578,10 +578,10 @@ The picture below shows the software architecture of Graphics in
 
 .. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
 
-    .. figure:: ../../../images/j7-graphics-software-stack.png
+    .. figure:: ../../../images/rogue-graphics-software-stack.png
         :align: center
 
-        PSDK Linux Jacinto 7 Graphics Software Stack
+        PSDK Linux Rogue Graphics Software Stack
 
 .. raw:: html
 
