@@ -612,6 +612,20 @@ The picture below shows the software architecture of Graphics in
 
    </div>
 
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
+
+   Please note that RGX-KM in this context refers to the pvrsrvkm kernel module, which is currently provided at:
+   https://git.ti.com/cgit/graphics/ti-img-rogue-driver
+
+   This is included by default in the SDK. The kernel module is located at:
+
+   ::
+
+       target # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
+
+   It is loaded automatically by the rc.pvr init script in /etc/init.d/ .
+
+
 Graphics Demos
 ==============
 
