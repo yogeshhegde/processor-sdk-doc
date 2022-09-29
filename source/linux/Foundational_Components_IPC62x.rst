@@ -1,5 +1,7 @@
 .. include:: /replacevars.rst.inc
 
+.. _foundational-components-ipc:
+
 IPC for AM62x
 =============
 

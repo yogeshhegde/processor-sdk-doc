@@ -16,7 +16,6 @@ Processor SDK Linux Software Developer's Guide
    /devices/AM62X/linux/Overview
    /devices/AM62X/linux/Release_Specific
    /linux/Foundational_Components
-   /linux/Foundational_Components_IPC62x
    /linux/How_to_Guides
    /devices/AM62X/index_RTOS
    /devices/AM62X/index_Applications
