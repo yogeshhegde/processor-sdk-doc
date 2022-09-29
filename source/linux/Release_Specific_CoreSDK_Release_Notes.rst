@@ -20,40 +20,42 @@ Licensing
 Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location. 
 
-Release 08.04.00
+
+Release 08.04.01
 ==================
 
-Released July 2022
+Released September 2022
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 8.4 Release supports the following platforms:
+Processor SDK 8.4 Sitara Release supports the following platforms:
 
-- J721E
-- J7200
-- J721S2
+- AM62x
+  * 1.4 Ghz Support and DFS (Dynaminc Frequency Scaling)
+  * DDR ECC Single bit mode
+  * VTM, WDT
+  * AM62 LP Starter Kit Initial Platform Support
+  ** OSPI SPI NAND Support
 
-Processor SDK 8.4 Release has following new features:
+- AM64x
+  * SR2.0 HS-FS (High Security - Field Securable) Support
+  * DDR ECC Single bit mode
+  * VTM
 
-- Native Linux networking (CPSW)
-- OSPI1 & Hyperflash boot
-- J7AEP stability progress (mostly MM)
-- J7VCL PG2.0
 
 Build Information
 =====================================
 
 U-Boot
 -------------------------
-| Head Commit: a169f4261024397dd3ddb944decc1601a623df2a HACK: j721s2: QoS workaround for GPU cache incoherency
-| Date: 25 Jul 2022 06:28 PM CDT
+| Head Commit: 2dd2e1d366acf7f41bbd8f2d1dbe6cf5e1bcbad6 dma: ti: k3-udma: Fix 'SZ_64K' undeclared error
+| Date: Wed Sep 28 16:41:34 CDT 2022
 | uBoot Version: 2021.01
-| uBoot Description: 08.04.00.005
+| uBoot Description: 08.04.01.005
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2021.01
-| uBoot Tag: 08.04.00.005
-
+| uBoot Tag: 08.04.01.005
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 
 Kernel
@@ -61,14 +63,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 95b90aa828165df6c45d6bb0e1cce905e83a66a7 Merged TI feature connectivity into ti-linux-5.10.y
-| Date: 22 Jul 2022 02:21 PM CDT
-| Kernel Version: 5.10.120
-| Kernel Description: 08.04.00.005
+| Head Commit: 5e63ae91b2138efad3db617a0ecb5ff76c591131 Merged TI feature connectivity into ti-linux-5.10.y-cicd
+| Date: 23 Sep 2022 09:11 AM
+| Kernel Version: 5.10.140
+| Kernel Description: 08.04.01.005
 
 | Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-5.10.y
-| Tag: 08.04.00.005
+| Tag: 08.04.01.005
 | Kernel defconfig: ti_sdk_arm64_release_defconfig
 
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
@@ -76,15 +78,15 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: adb96c641cb03198db729962eb348ca1a16978e2 Merged TI feature ti_linux_base_rt into ti-rt-linux-5.10.y
-| Date: 22 Jul 2022 02:57 PM CDT
-| Kernel Version: 5.10.120
-| Kernel Description: 08.04.00.005
+| Head Commit: 3a997318d8caa8caa100ecc69472e528ecfc2ebb Merge branch 'ti-rt-linux-5.10.y-cicd' into ti-rt-linux-5.10.y
+| Date: 24 Sep 2022 01:23 PM
+| Kernel Version: 5.10.140
+| Kernel Description: 08.04.01.005-rt
 
 | Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.10.y
-| Tag: 08.04.00.005
-| Kernel defconfig: ti_sdk_arm64_release_defconfig
+| Tag: 08.04.01.005-rt
+| Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
 
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 
@@ -93,24 +95,24 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 762f4908189fcd5f62cb259767768534264d7702 linux-ti-staging-rt: Bump to 08.04.00.005 release
-| Date: 2022-07-26
+| Head Commit: e84c0aeaa84afe9784f8b1dbe31377b5f4283a49 linux-ti-staging-rt: RC Auto-Merger: 08.04.01.005
+| Date: 2022-09-24
 | Version: dunfell-3.1
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: dunfell
-| Release Tag: 08.04.00.005
+| Release Tag: 08.04.01.005
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 28ab4e60678f0d54f552c3c7606ad76244dd0b5c ltp-ddt: Bump to 08.04.00.005 release
-| Date: 2022-07-26
+| Head Commit: 4061de845fc950ddaa983ba3bdfed60a7e602e92 ltp-ddt: CI/CD Auto-Merger: cicd.2022.09.16.17:39:59
+| Date: 2022-09-16
 | Version: 2021.09
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: dunfell
-| Release Tag: 08.04.00.005
+| Release Tag: 08.04.01.005
 |
 
 Issues Tracker
