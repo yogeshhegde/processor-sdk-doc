@@ -552,6 +552,14 @@ with rendering commands submitted by the user applications.
       * - YUV420
       * - YUYV
 
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
+
+   Support for up to 2Kx2K render surfaces.
+
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_8XE')
+
+   Support for up to 4Kx4K render surfaces.
+
 The rest of this page will cover the following topics:
 
 .. ifconfig:: CONFIG_gpu_ip in ('SGX')
