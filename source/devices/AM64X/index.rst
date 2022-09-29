@@ -14,7 +14,6 @@ Processor SDK AM64X Software Developer's Guide
    Overview
    Release_Specific
    /linux/Foundational_Components
-   /linux/Foundational_Components_IPC64x.rst
    /linux/How_to_Guides
    index_RTOS
    index_Applications
