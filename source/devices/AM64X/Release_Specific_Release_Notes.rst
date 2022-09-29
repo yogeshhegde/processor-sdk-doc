@@ -24,6 +24,8 @@ to create the embedded system from “scratch” :
 -  Other components needed to build an embedded system that don’t fit neatly into one of the above buckets
 -  Reference Examples, benchmarks
 
+This release supports SR2.0 High Security - Field Securable (HS-FS) devices. For migration guide and other info, refer :ref:`HS-Migration-Guide`
+
 
 Licensing
 =========
@@ -35,20 +37,18 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 08.02.00
+Release 08.04.01
 ================
 
-Released on April 2022
+Released on September 2022
 
 What's new
 ----------
 Processor SDK Linux AM64x Release has following new features:
 
-- Third release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
-- Yocto Dunfell/3.1
-- NAND boot, Ethernet boot, Secure Boot, ICSSG-Dual Emac
-- AM64 HS EVM support
-- Improved DDR bandwidth on AM64 SK Board
+- SR2.0 HS-FS (High Security - Field Securable) Support
+- DDR ECC Single bit mode
+- VTM
 
 Build Information
 =====================================
@@ -59,13 +59,13 @@ U-Boot
 .. rubric:: u-boot
    :name: u-boot
 
-| Head Commit: 44a87e3ab85c6d64044f0b5ad677008316baad70 ARM: dts: k3-j721s2: Correct timer frequency
-| Date: Wed Mar 16 17:05:52 CDT 2022
+| Head Commit: 2dd2e1d366acf7f41bbd8f2d1dbe6cf5e1bcbad6 dma: ti: k3-udma: Fix 'SZ_64K' undeclared error
+| Date: Wed Sep 28 16:41:34 CDT 2022
 | uBoot Version: 2021.01
-| uBoot Description: 08.02.00.006
+| uBoot Description: 08.04.01.005
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2021.01
-| uBoot Tag: 08.02.00.006
+| uBoot Tag: 08.04.01.005
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 |
@@ -76,14 +76,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 7a7a3af903da2b2d551d058f8262a66e6b42b6b1 Merged TI feature connectivity into ti-linux-5.10.y
-| Date: Wed Mar 16 12:00:19 CDT 2022
-| Kernel Version: 5.10.100
-| Kernel Description: 08.02.00.006
+| Head Commit: 5e63ae91b2138efad3db617a0ecb5ff76c591131 Merged TI feature connectivity into ti-linux-5.10.y-cicd
+| Date: 23 Sep 2022 09:11 AM
+| Kernel Version: 5.10.140
+| Kernel Description: 08.04.01.005
 
 | Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-5.10.y
-| Tag: 08.02.00.006
+| Tag: 08.04.01.005
 | Kernel defconfig: ti_sdk_arm64_release_defconfig
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
@@ -92,15 +92,14 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 204ec708dc86f4334f585f04835527570be1c4eb Merged TI feature ti_linux_base_rt into ti-rt-linux-5.10.y
-| Date: Wed Mar 16 14:53:35 CDT 2022
-| Kernel Version: 5.10.100
-| RT Kernel Version: 5.10.100-rt62
-| Kernel Description: 08.02.00.006-rt
+| Head Commit: 3a997318d8caa8caa100ecc69472e528ecfc2ebb Merge branch 'ti-rt-linux-5.10.y-cicd' into ti-rt-linux-5.10.y
+| Date: 24 Sep 2022 01:23 PM
+| RT Kernel Version: 5.10.140-rt
+| Kernel Description: 08.04.01.005-rt
 
 | Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.10.y
-| Tag: 08.02.00.006-rt
+| Tag: 08.04.01.005-rt
 | Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
@@ -111,24 +110,24 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: facd5397cdc5c35c69e7a8e8f908a98a5c23d270 u-boot-ti-staging: Bump to 08.02.00.006 release
-| Date: 2022-03-08
+| Head Commit: e84c0aeaa84afe9784f8b1dbe31377b5f4283a49 linux-ti-staging-rt: RC Auto-Merger: 08.04.01.005
+| Date: 2022-09-24
 | Version: dunfell-3.1
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: dunfell
-| Release Tag: 08.02.00.006
+| Release Tag: 08.04.01.005
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: 382ca36beb21a524de726bfd1c57e3d26f10cf82 recipes-core: images: Add tisdk-thinlinux-image
-| Date: 2022-03-08
+| Head Commit: 061de845fc950ddaa983ba3bdfed60a7e602e92 ltp-ddt: CI/CD Auto-Merger: cicd.2022.09.16.17:39:59
+| Date: 2022-09-16
 | Version: 2021.09
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: dunfell
-| Release Tag: 08.02.00.006
+| Release Tag: 08.04.01.005
 |
 
 Issues Tracker
