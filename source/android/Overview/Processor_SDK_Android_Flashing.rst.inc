@@ -97,6 +97,12 @@ partition table
     env default -f -a
     run set_android_boot
 
+.. note::
+    If you build with `TARGET_AVB_ENABLE=true` or flash User Images you need to do this command in uboot console:
+    ::
+
+        setenv force_avb "1"
+
 6. Power cycle the board one more time and stop at u-boot console again.
 
 7. Enable fastboot mode on the device through the terminal debugger by executing below command. Before running this command make sure USB-C

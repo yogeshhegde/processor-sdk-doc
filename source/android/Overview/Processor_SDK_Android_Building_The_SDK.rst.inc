@@ -212,11 +212,25 @@ Android File System
 
 Where ``BUILD_TARGET`` is listed in the table below :
 
-========== =========================
-Build type Build target
-========== =========================
-userdebug  ``am62x-userdebug``
-user       ``am62x-user``
-========== =========================
+================== =========================
+Android Build type   Build target
+================== =========================
+Tablet userdebug    ``am62x-userdebug``
+Tablet user         ``am62x-user``
+Car userdebug       ``am62x_car-userdebug``
+Car user            ``am62x_car-user``
+================== =========================
+
+.. note::
+    Default BUILD_TARGET to use is ``am62x-userdebug``
+
+.. note::
+    By default with User images AVB feature was enabled.
+    For userdebug images if you want to enable AVB feature you need to build with ``TARGET_AVB_ENABLE=true`` build args
+    ::
+
+        cd ${YOUR_PATH}/ti-aosp-12
+        lunch <BUILD_TARGET>
+        m TARGET_AVB_ENABLE=true
 
 **After building all components, refer to instruction in next section for flashing the images to EVM**

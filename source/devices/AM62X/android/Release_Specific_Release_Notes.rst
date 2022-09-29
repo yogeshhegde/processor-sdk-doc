@@ -39,10 +39,11 @@ Release Features
 Following features are enabled/tested in this release for AM62x Android:
 
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
-* **Platform:** SELinux Permissive mode, ADB over USB
+* **Platform:** SELinux Enforced mode with User build, ADB over USB
 * **Connectivity:** Ethernet and Wi-Fi (WiLink) support, USB touch
 * **Graphics:** GPU accelerated UI with Hwcomposer
 * **Audio:** Audio out
+* **Multimedia:** SW Video Decode/Encode, USB Camera Supported
 
 SDK Components and Versions
 ---------------------------
@@ -50,7 +51,7 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Component**                      |  **Version**                                                                  |
 +====================================+===============================================================================+
-| **Android**                        | Android 12                                                                    |
+| **Android**                        | Android 12 / Android 12 Car                                                   |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Linux Kernel**                   | Linux 5.10.140                                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
