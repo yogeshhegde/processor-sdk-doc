@@ -52,6 +52,18 @@ This puts system to sleep for 10s and then wakes it up via RTC interrupt
 Limitations
 -----------
 * Only one A53 core is enabled. Multi-core support is not enabled.
-* Following IPs are enabled in k3-am625-sk-lpmdemo.dts and function across system suspend and resume: UART, I2C, RTC, MMC/SD, MMC/eMMC.
+* Following IPs are enabled in k3-am625-sk-lpmdemo.dts and function across system suspend and resume: UART, I2C, RTC, MMC/SD, MMC/eMMC, INTR, GPIO, CPSW.
+* There is a known issue of performance drop after resuming from deep sleep. It can be worked around by temporarily disabling DFS and cycling through deep sleep:
+
+    ::
+
+        root@am62xx-evm:~# echo 1250000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
+        root@am62xx-evm:~# rtcwake -s 1 -m mem
+
+* To reenable DFS during the same session, scaling_min_freq will need to be reset:
+
+    ::
+
+        root@am62xx-evm:~# echo 200000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
 
 Upcoming releases will add support for additional peripherals and cores.
