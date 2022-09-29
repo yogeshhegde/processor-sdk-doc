@@ -33,7 +33,7 @@ Downloading Sources
 
     ::
 
-        mkdir ~/08_03_00 && cd $_
+        mkdir ~/08_04_00 && cd $_
         export YOUR_PATH=$PWD
 
 Bootloader components
@@ -44,11 +44,11 @@ Bootloader components
     ::
 
         mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-        git clone -b 08.03.00.005 git://git.ti.com/k3-image-gen/k3-image-gen.git
-        git clone -b 08.03.00.005 git://git.ti.com/atf/arm-trusted-firmware.git
-        git clone -b 08.03.00.005 git://git.ti.com/optee/ti-optee-os.git
-        git clone -b 08.03.00.005 git://git.ti.com/ti-u-boot/ti-u-boot.git
-        git clone -b 08.03.00.005 git://git.ti.com/processor-firmware/ti-linux-firmware.git
+        git clone -b 08.04.01.005 git://git.ti.com/k3-image-gen/k3-image-gen.git
+        git clone -b 08.04.01.005 git://git.ti.com/atf/arm-trusted-firmware.git
+        git clone -b 08.04.01.005 git://git.ti.com/optee/ti-optee-os.git
+        git clone -b 08.04.01.005 git://git.ti.com/ti-u-boot/ti-u-boot.git
+        git clone -b 08.04.01.005 git://git.ti.com/processor-firmware/ti-linux-firmware.git
 
 Kernel
 ------
@@ -60,7 +60,7 @@ Kernel
     ::
 
         mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_03_Kernel.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_04_Kernel.xml
         repo sync
 
 
@@ -74,7 +74,7 @@ Android File System
     ::
 
         mkdir ${YOUR_PATH}/ti-aosp-12 && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_03.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_04.xml
         repo sync
 
 
