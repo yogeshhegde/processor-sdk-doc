@@ -10,7 +10,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+---------------------------------------------------------------------------------------------------------------------+
 | Name           | Description                                                                                                         |
 +================+=====================================================================================================================+
-| AM62x EVM      | AM62x Evaluation Module rev E2 with ARM running at 1200 MHz, DDR data rate 1600 MT/S                                |
+| AM62x EVM      | AM62x Evaluation Module rev E2 with ARM running at 1.4 GHz, DDR data rate 1600 MT/S                                 |
 +----------------+---------------------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
