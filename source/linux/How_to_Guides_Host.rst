@@ -18,3 +18,4 @@ Host
    How_to_Guides/Host/AM335x_AM437x_Hardware_Migration_Guide
    How_to_Guides/Host/Program_the_eMMC_on_Beaglebone_Black
    How_to_Guides/Host/K3_Resource_Partitioning_Tool
+   How_to_Guides/Host/SYSFW_Trace_Parser
