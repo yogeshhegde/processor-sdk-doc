@@ -33,7 +33,7 @@ Downloading Sources
 
     ::
 
-        mkdir ~/08_03_00 && cd $_
+        mkdir ~/08_04_00 && cd $_
         export YOUR_PATH=$PWD
 
 Bootloader components
@@ -44,11 +44,11 @@ Bootloader components
     ::
 
         mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-        git clone -b 08.03.00.005 git://git.ti.com/k3-image-gen/k3-image-gen.git
-        git clone -b 08.03.00.005 git://git.ti.com/atf/arm-trusted-firmware.git
-        git clone -b 08.03.00.005 git://git.ti.com/optee/ti-optee-os.git
-        git clone -b 08.03.00.005 git://git.ti.com/ti-u-boot/ti-u-boot.git
-        git clone -b 08.03.00.005 git://git.ti.com/processor-firmware/ti-linux-firmware.git
+        git clone -b 08.04.01.005 git://git.ti.com/k3-image-gen/k3-image-gen.git
+        git clone -b 08.04.01.005 git://git.ti.com/atf/arm-trusted-firmware.git
+        git clone -b 08.04.01.005 git://git.ti.com/optee/ti-optee-os.git
+        git clone -b 08.04.01.005 git://git.ti.com/ti-u-boot/ti-u-boot.git
+        git clone -b 08.04.01.005 git://git.ti.com/processor-firmware/ti-linux-firmware.git
 
 Kernel
 ------
@@ -60,7 +60,7 @@ Kernel
     ::
 
         mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_03_Kernel.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_04_Kernel.xml
         repo sync
 
 
@@ -74,7 +74,7 @@ Android File System
     ::
 
         mkdir ${YOUR_PATH}/ti-aosp-12 && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_03.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_04.xml
         repo sync
 
 
@@ -212,11 +212,25 @@ Android File System
 
 Where ``BUILD_TARGET`` is listed in the table below :
 
-========== =========================
-Build type Build target
-========== =========================
-userdebug  ``am62x-userdebug``
-user       ``am62x-user``
-========== =========================
+================== =========================
+Android Build type   Build target
+================== =========================
+Tablet userdebug    ``am62x-userdebug``
+Tablet user         ``am62x-user``
+Car userdebug       ``am62x_car-userdebug``
+Car user            ``am62x_car-user``
+================== =========================
+
+.. note::
+    Default BUILD_TARGET to use is ``am62x-userdebug``
+
+.. note::
+    By default with User images AVB feature was enabled.
+    For userdebug images if you want to enable AVB feature you need to build with ``TARGET_AVB_ENABLE=true`` build args
+    ::
+
+        cd ${YOUR_PATH}/ti-aosp-12
+        lunch <BUILD_TARGET>
+        m TARGET_AVB_ENABLE=true
 
 **After building all components, refer to instruction in next section for flashing the images to EVM**
