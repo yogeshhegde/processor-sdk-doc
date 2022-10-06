@@ -497,6 +497,41 @@ including desktop, mobile, server, storage and embedded communications.
     once u-boot implements these env variables by default which is expected
     to be supported in the future.
 
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    .. rubric:: **Features of AM64**
+       :name: features-am64-linux-pcie-ep
+
+    There is one instance of the PCIe subsystem. Following are some of the
+    main features:
+
+    - The instance can be configured to operate in Root Complex mode or
+      End Point mode
+
+    - One lane configuration, capable up to 5.0 Gbps/lane (Gen2)
+
+    - Support for Legacy, MSI and MSI-X Interrupt
+
+    - There can be 32 different address mappings in outbound address translation
+      unit. The mappings can be from regions reserved for each PCIe instance.
+
+      - For instance PCIE0, there are two regions in SoC Memory Map:
+
+        - 128 MB region with address in lower 32 bits
+
+        - 4 GB region with address above 32 bits
+
+    .. rubric:: **Capabilities of AM64 EVM**
+       :name: capabilities-am64-evm-pcie-rc
+
+    Following are some of the details for PCIE0 instance:
+
+    +------------------------+-------------------+------------------------------------+
+    | Instance               | Supported lanes   | Supported Connector                |
+    +========================+===================+====================================+
+    | PCIE0                  | 1 lane            | Standard female connector          |
+    +------------------------+-------------------+------------------------------------+
+
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
     .. rubric:: **Features of J7ES**
@@ -542,12 +577,23 @@ including desktop, mobile, server, storage and embedded communications.
     +------------------------+-------------------+------------------------------------+
     | PCIE2                  | 2 lane            | m.2 connector keyed for SSD (M key)|
     +------------------------+-------------------+------------------------------------+
-    
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X','J721E')
+
     .. rubric:: **Hardware Setup Details**
        :name: hardware-setup-details
 
     |__PART_FAMILY_DEVICE_NAMES__| is, by default, intended to be operated in 
     Root Complex mode.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    Refer to the following image to toggle between Root Complex mode and End Point mode.
+
+    .. Image:: /images/am64-pcie-rc-ep-sel.png
+
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
     For End Point mode, PCIE_1L_MODE_SEL (switch 5) and PCIE_2L_MODE_SEL (switch 6) 
     should be set to '0'.
@@ -582,7 +628,7 @@ Following is a brief explanation of layers shown in the diagram:
   drivers. They configure platform-specific controllers and perform 
   actual register writes.
      
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     .. rubric:: **RC Device Configuration**
        :name: rc-device-configuration
@@ -620,10 +666,10 @@ Following is a brief explanation of layers shown in the diagram:
     
     Following are the outputs for some of them: 
 
-    - Loopback mode (J721E EVM to J721E EVM)
+    - Loopback mode (|__PART_FAMILY_DEVICE_NAMES__| EVM to |__PART_FAMILY_DEVICE_NAMES__| EVM)
 
-      Two J721E EVMs can be connected in loopback mode by following the steps 
-      explained in 
+      Two |__PART_FAMILY_DEVICE_NAMES__| EVMs can be connected in loopback mode by following
+      the steps explained in
       `End Point (EP) Device Configuration <PCIe_End_Point.html#ep-device-configuration>`_ 
       section for End Point (EP) and 
       `HOST Device Configuration <PCIe_End_Point.html#host-device-configuration>`_ 
@@ -632,6 +678,246 @@ Following is a brief explanation of layers shown in the diagram:
       driver will be configured for End Point(EP) using those steps. 
       
       The lspci output on the Root Complex (RC) device is as follows:
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+      ::
+
+          root@am64xx-evm:~# lspci
+          0000:00:00.0 PCI bridge: Texas Instruments Device b010
+          0000:01:00.0 Unassigned class [ff00]: Texas Instruments Device b010
+
+    -  WiFi card
+
+        - lspci output
+
+        ::
+
+            root@am64xx-evm:~# lspci
+            0000:00:00.0 PCI bridge: Texas Instruments Device b010
+            0000:01:00.0 Network controller: Intel Corporation Wireless 3160 (rev 6b)
+
+        - Test using ping
+
+        ::
+
+            root@am64xx-evm:~# ping 192.168.10.1 -w 10|
+            PING 192.168.10.1 (192.168.10.1): 56 data bytes
+            64 bytes from 192.168.10.1: seq=0 ttl=64 time=176.985 ms
+            64 bytes from 192.168.10.1: seq=1 ttl=64 time=49.840 ms
+            64 bytes from 192.168.10.1: seq=2 ttl=64 time=32.125 ms
+            64 bytes from 192.168.10.1: seq=3 ttl=64 time=4.652 ms
+            64 bytes from 192.168.10.1: seq=4 ttl=64 time=70.805 ms
+            64 bytes from 192.168.10.1: seq=6 ttl=64 time=195.564 ms
+            64 bytes from 192.168.10.1: seq=7 ttl=64 time=9.321 ms
+            64 bytes from 192.168.10.1: seq=8 ttl=64 time=5.784 ms
+            64 bytes from 192.168.10.1: seq=9 ttl=64 time=18.015 ms
+
+    -  NVMe SSD
+
+        - lspci output
+
+        ::
+
+            root@am64xx-evm:~# lspci -vv
+            00:00.0 PCI bridge: Texas Instruments Device b010 (prog-if 00 [Normal decode])
+                Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+                Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+                Latency: 0
+                Interrupt: pin A routed to IRQ 44
+                Region 0: Memory at <unassigned> (64-bit, prefetchable)
+                Bus: primary=00, secondary=01, subordinate=01, sec-latency=0
+                I/O behind bridge: [disabled]
+                Memory behind bridge: 68100000-681fffff [size=1M]
+                Prefetchable memory behind bridge: [disabled]
+                Secondary status: 66MHz- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- <SERR- <PERR-
+                BridgeCtl: Parity- SERR+ NoISA- VGA- VGA16- MAbort- >Reset- FastB2B-
+                        PriDiscTmr- SecDiscTmr- DiscTmrStat- DiscTmrSERREn-
+                Capabilities: [80] Power Management version 3
+                        Flags: PMEClk- DSI- D1+ D2- AuxCurrent=0mA PME(D0+,D1+,D2-,D3hot+,D3cold-)
+                        Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+                Capabilities: [90] MSI: Enable+ Count=1/1 Maskable+ 64bit+
+                        Address: 0000000001000000  Data: 0000
+                        Masking: 00000000  Pending: 00000000
+                Capabilities: [b0] MSI-X: Enable- Count=1 Masked-
+                        Vector table: BAR=0 offset=00000000
+                        PBA: BAR=0 offset=00000008
+                Capabilities: [c0] Express (v2) Root Port (Slot+), MSI 00
+                        DevCap: MaxPayload 128 bytes, PhantFunc 0
+                                ExtTag- RBE+
+                        DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
+                                RlxdOrd+ ExtTag- PhantFunc- AuxPwr- NoSnoop+
+                                MaxPayload 128 bytes, MaxReadReq 512 bytes
+                        DevSta: CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+                        LnkCap: Port #0, Speed 5GT/s, Width x1, ASPM L1, Exit Latency L1 <8us
+                                ClockPM- Surprise- LLActRep- BwNot+ ASPMOptComp+
+                        LnkCtl: ASPM Disabled; RCB 64 bytes Disabled- CommClk-
+                                ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+                        LnkSta: Speed 5GT/s (ok), Width x1 (ok)
+                                TrErr- Train- SlotClk- DLActive- BWMgmt- ABWMgmt+
+                        SltCap: AttnBtn- PwrCtrl- MRL- AttnInd- PwrInd- HotPlug- Surprise-
+                                Slot #0, PowerLimit 0.000W; Interlock- NoCompl-
+                        SltCtl: Enable: AttnBtn- PwrFlt- MRL- PresDet- CmdCplt- HPIrq- LinkChg-
+                                Control: AttnInd Off, PwrInd Off, Power+ Interlock-
+                        SltSta: Status: AttnBtn- PowerFlt- MRL+ CmdCplt- PresDet- Interlock-
+                                Changed: MRL- PresDet- LinkState-
+                        RootCap: CRSVisible-
+                        RootCtl: ErrCorrectable- ErrNon-Fatal- ErrFatal- PMEIntEna+ CRSVisible-
+                        RootSta: PME ReqID 0000, PMEStatus- PMEPending-
+                        DevCap2: Completion Timeout: Range B, TimeoutDis+, NROPrPrP-, LTR+
+                                 10BitTagComp-, 10BitTagReq-, OBFF Via message, ExtFmt+, EETLPPrefix+, MaxEETLPPrefixes 1
+                                 EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+                                 FRS-, LN System CLS Not Supported, TPHComp-, ExtTPHComp-, ARIFwd-
+                                 AtomicOpsCap: Routing- 32bit- 64bit- 128bitCAS-
+                        DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-, LTR+, OBFF Disabled ARIFwd-
+                                 AtomicOpsCtl: ReqEn- EgressBlck-
+                        LnkCtl2: Target Link Speed: 5GT/s, EnterCompliance- SpeedDis-
+                                 Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+                                 Compliance De-emphasis: -6dB
+                        LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete-, EqualizationPhase1-
+                                 EqualizationPhase2-, EqualizationPhase3-, LinkEqualizationRequest-
+                Capabilities: [100 v2] Advanced Error Reporting
+                        UESta:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                        UEMsk:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                        UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+                        CESta:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+                        CEMsk:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+                        AERCap: First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+                                MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+                        HeaderLog: 00000000 00000000 00000000 00000000
+                        RootCmd: CERptEn- NFERptEn- FERptEn-
+                        RootSta: CERcvd- MultCERcvd- UERcvd- MultUERcvd-
+                                 FirstFatal- NonFatalMsg- FatalMsg- IntMsg 0
+                        ErrorSrc: ERR_COR: 0000 ERR_FATAL/NONFATAL: 0000
+                Capabilities: [150 v1] Device Serial Number 00-00-00-00-00-00-00-00
+                Capabilities: [300 v1] Secondary PCI Express
+                        LnkCtl3: LnkEquIntrruptEn-, PerformEqu-
+                        LaneErrStat: 0
+                Capabilities: [4c0 v1] Virtual Channel
+                        Caps:   LPEVC=0 RefClk=100ns PATEntryBits=1
+                        Arb:    Fixed- WRR32- WRR64- WRR128-
+                        Ctrl:   ArbSelect=Fixed
+                        Status: InProgress-
+                        VC0:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                                Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                                Ctrl:   Enable+ ID=0 ArbSelect=Fixed TC/VC=ff
+                                Status: NegoPending- InProgress-
+                        VC1:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                                Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                                Ctrl:   Enable- ID=1 ArbSelect=Fixed TC/VC=00
+                                Status: NegoPending- InProgress-
+                        VC2:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                                Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                                Ctrl:   Enable- ID=2 ArbSelect=Fixed TC/VC=00
+                                Status: NegoPending- InProgress-
+                        VC3:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                                Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                                Ctrl:   Enable- ID=3 ArbSelect=Fixed TC/VC=00
+                                Status: NegoPending- InProgress-
+                Capabilities: [900 v1] L1 PM Substates
+                        L1SubCap: PCI-PM_L1.2+ PCI-PM_L1.1+ ASPM_L1.2+ ASPM_L1.1+ L1_PM_Substates+
+                                  PortCommonModeRestoreTime=255us PortTPowerOnTime=26us
+                        L1SubCtl1: PCI-PM_L1.2- PCI-PM_L1.1- ASPM_L1.2- ASPM_L1.1-
+                                   T_CommonMode=0us LTR1.2_Threshold=0ns
+                        L1SubCtl2: T_PwrOn=10us
+                Capabilities: [a20 v1] Precision Time Measurement
+                        PTMCap: Requester:- Responder:+ Root:+
+                        PTMClockGranularity: 4ns
+                        PTMControl: Enabled:- RootSelected:-
+                        PTMEffectiveGranularity: Unknown
+                Kernel driver in use: pcieport
+                Kernel modules: pci_endpoint_test
+
+            01:00.0 Non-Volatile memory controller: Intel Corporation Optane SSD 900P Series (prog-if 02 [NVM Express])
+                    Subsystem: Intel Corporation 900P Series [Add-in Card]
+                    Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
+                    Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
+                    Latency: 0
+                    Interrupt: pin A routed to IRQ 43
+                    Region 0: Memory at 68110000 (64-bit, non-prefetchable) [size=16K]
+                    Expansion ROM at 68100000 [virtual] [disabled] [size=64K]
+                    Capabilities: [40] Power Management version 3
+                            Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA PME(D0-,D1-,D2-,D3hot-,D3cold-)
+                            Status: D0 NoSoftRst+ PME-Enable- DSel=0 DScale=0 PME-
+                    Capabilities: [50] MSI-X: Enable+ Count=32 Masked-
+                            Vector table: BAR=0 offset=00002000
+                            PBA: BAR=0 offset=00003000
+                    Capabilities: [60] Express (v2) Endpoint, MSI 00
+                            DevCap: MaxPayload 256 bytes, PhantFunc 0, Latency L0s <4us, L1 <4us
+                                    ExtTag+ AttnBtn- AttnInd- PwrInd- RBE+ FLReset+ SlotPowerLimit 0.000W
+                            DevCtl: CorrErr- NonFatalErr- FatalErr- UnsupReq-
+                                    RlxdOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+ FLReset-
+                                    MaxPayload 128 bytes, MaxReadReq 512 bytes
+                            DevSta: CorrErr- NonFatalErr- FatalErr- UnsupReq- AuxPwr- TransPend-
+                            LnkCap: Port #0, Speed 8GT/s, Width x4, ASPM L0s, Exit Latency L0s <4us
+                                    ClockPM- Surprise- LLActRep- BwNot- ASPMOptComp+
+                            LnkCtl: ASPM Disabled; RCB 64 bytes Disabled- CommClk-
+                                    ExtSynch- ClockPM- AutWidDis- BWInt- AutBWInt-
+                            LnkSta: Speed 5GT/s (downgraded), Width x1 (downgraded)
+                                    TrErr- Train- SlotClk+ DLActive- BWMgmt- ABWMgmt-
+                            DevCap2: Completion Timeout: Range ABCD, TimeoutDis+, NROPrPrP-, LTR-
+                                     10BitTagComp-, 10BitTagReq-, OBFF Not Supported, ExtFmt-, EETLPPrefix-
+                                     EmergencyPowerReduction Not Supported, EmergencyPowerReductionInit-
+                                     FRS-, TPHComp-, ExtTPHComp-
+                                     AtomicOpsCap: 32bit- 64bit- 128bitCAS-
+                            DevCtl2: Completion Timeout: 50us to 50ms, TimeoutDis-, LTR-, OBFF Disabled
+                                     AtomicOpsCtl: ReqEn-
+                            LnkCtl2: Target Link Speed: 8GT/s, EnterCompliance- SpeedDis-
+                                     Transmit Margin: Normal Operating Range, EnterModifiedCompliance- ComplianceSOS-
+                                     Compliance De-emphasis: -6dB
+                            LnkSta2: Current De-emphasis Level: -6dB, EqualizationComplete-, EqualizationPhase1-
+                                     EqualizationPhase2-, EqualizationPhase3-, LinkEqualizationRequest-
+                    Capabilities: [100 v1] Advanced Error Reporting
+                            UESta:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                            UEMsk:  DLP- SDES- TLP- FCP- CmpltTO- CmpltAbrt- UnxCmplt- RxOF- MalfTLP- ECRC- UnsupReq- ACSViol-
+                            UESvrt: DLP+ SDES+ TLP- FCP+ CmpltTO- CmpltAbrt- UnxCmplt- RxOF+ MalfTLP+ ECRC- UnsupReq- ACSViol-
+                            CESta:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr-
+                            CEMsk:  RxErr- BadTLP- BadDLLP- Rollover- Timeout- AdvNonFatalErr+
+                            AERCap: First Error Pointer: 00, ECRCGenCap+ ECRCGenEn- ECRCChkCap+ ECRCChkEn-
+                                    MultHdrRecCap- MultHdrRecEn- TLPPfxPres- HdrLogCap-
+                            HeaderLog: 00000000 00000000 00000000 00000000
+                    Capabilities: [150 v1] Virtual Channel
+                            Caps:   LPEVC=0 RefClk=100ns PATEntryBits=1
+                            Arb:    Fixed- WRR32- WRR64- WRR128-
+                            Ctrl:   ArbSelect=Fixed
+                            Status: InProgress-
+                            VC0:    Caps:   PATOffset=00 MaxTimeSlots=1 RejSnoopTrans-
+                                    Arb:    Fixed- WRR32- WRR64- WRR128- TWRR128- WRR256-
+                                    Ctrl:   Enable+ ID=0 ArbSelect=Fixed TC/VC=ff
+                                    Status: NegoPending- InProgress-
+                    Capabilities: [180 v1] Power Budgeting <?>
+                    Capabilities: [190 v1] Alternative Routing-ID Interpretation (ARI)
+                            ARICap: MFVC- ACS-, Next Function: 0
+                            ARICtl: MFVC- ACS-, Function Group: 0
+                    Capabilities: [270 v1] Device Serial Number 55-cd-2e-41-4e-31-12-50
+                    Capabilities: [2a0 v1] Secondary PCI Express
+                            LnkCtl3: LnkEquIntrruptEn-, PerformEqu-
+                            LaneErrStat: 0
+                    Kernel driver in use: nvme
+                    Kernel modules: nvme
+
+        - Test using hdparm
+
+        ::
+
+            root@am64xx-evm:~# hdparm -tT /dev/nvme0n1
+
+            /dev/nvme0n1:
+            Timing cached reads: 1062 MB in  2.00 seconds = 530.42 MB/sec
+            Timing buffered disk reads: 812 MB in  3.01 seconds = 270.03 MB/sec
+
+        - Test using dd
+
+        ::
+
+            root@am64xx-evm:~# time dd if=/dev/urandom of=/home/root/srctest_file_pci_2199 bs=1M count=10
+            10+0 records in
+            10+0 records out
+            real	0m 0.22s
+            user	0m 0.00s
+            sys	    0m 0.20s
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
 
       ::
       

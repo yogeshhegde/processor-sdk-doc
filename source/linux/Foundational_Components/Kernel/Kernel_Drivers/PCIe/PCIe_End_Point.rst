@@ -16,7 +16,7 @@ PCIe End Point
     endpoint' and 'NTB' are the only PCIe EP functions supported in Linux kernel 
     right now).
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     PCIe controller IPs integrated in |__PART_FAMILY_NAME__| are capable
     of operating either in Root Complex mode (host) or End Point mode
@@ -30,6 +30,8 @@ PCIe End Point
     Following is the block diagram of framework for endpoint mode:
 
     .. Image:: /images/ep_framework.png
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
 
     .. rubric:: **Features of J7ES**
 
@@ -79,6 +81,41 @@ PCIe End Point
     | PCIE2                  | 2 lane            | m.2 connector keyed for SSD (M key)|
     +------------------------+-------------------+------------------------------------+
 
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    .. rubric:: **Features of AM64**
+
+    There is one instance of PCIe subsystem. Following are some of the main features:
+
+    - The instance can be configured to operate in Root Complex mode or
+      End Point mode
+
+    - One lane configuration, capable up to 5.0 Gbps/lane (Gen2)
+
+    - One Physical Function (PF)
+
+    - Support for Legacy, MSI and MSI-X Interrupt
+
+    - There can be 32 different address mappings in outbound address translation
+      unit. The mappings can be from regions reserved for the PCIe instance.
+
+      - For instance PCIE0, there are two regions in SoC Memory Map:
+
+        - 128 MB region with address in lower 32 bits
+
+        - 4 GB region with address above 32 bits
+
+    .. rubric:: **Capabilities of AM64 EVM**
+
+    There is one instance of the PCIe subsystem on the EVM. Following are
+    some of the details for that instance:
+
+    +------------------------+-------------------+------------------------------------+
+    | Instance               | Supported lanes   | Supported Connector                |
+    +========================+===================+====================================+
+    | PCIE0                  | 1 lane            | Standard female connector          |
+    +------------------------+-------------------+------------------------------------+
+
 .. ifconfig:: CONFIG_part_family in ('General_family')
 
     This wiki page provides usage information of PCIe EP Linux driver.
@@ -109,7 +146,7 @@ PCIe End Point
     mode. So in order to connect two boards, a specialized cable like below
     is required.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     |__PART_FAMILY_DEVICE_NAMES__| is, by default, intended to be operated in 
     Root Complex mode. So in order to connect two boards, a specialized cable 
@@ -128,7 +165,7 @@ This cable can be obtained from Adex Electronics (https://www.adexelec.com).
 Modify the cable to remove resistors in CK+ and CK- in order to avoid
 ground loops (power) and smoking clock drivers (clk+/-).
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     Remove the RST resistors to avoid reset (PERST) being propagated from Root 
     Complex to End Point. Also in Root Complex to End Point loopback connection, 
@@ -179,6 +216,18 @@ The ends of the modified cable should look like below:
     should be set to '1'.
 
     .. Image:: /images/dip-switch.png
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    Following is an image of two AM64 EVMs connected back to back. There is no
+    restriction on which end of the cable should be connected to host and device.
+
+    .. Image:: /images/am64-evm-back-to-back.jpg
+
+    Refer to the following image to toggle between Root Complex mode and
+    End Point mode.
+
+    .. Image:: /images/am64-pcie-rc-ep-sel.png
 
 .. rubric:: **End Point (EP) Device Configuration**
    :name: ep-device-configuration
@@ -374,6 +423,30 @@ file.
         -       status = "disabled";
          }; &pcie1_ep {
 
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    To configure AM64 EVM in EP mode, apply the following patch:
+
+    ::
+
+        diff --git a/arch/arm64/boot/dts/ti/k3-am642-evm.dts b/arch/arm64/boot/dts/ti/k3-am642-evm.dts
+        index 96f90ebf28aa..86703b1dd7f3 100644
+        --- a/arch/arm64/boot/dts/ti/k3-am642-evm.dts
+        +++ b/arch/arm64/boot/dts/ti/k3-am642-evm.dts
+        @@ -711,13 +711,13 @@ &pcie0_rc {
+                phys = <&serdes0_pcie_link>;
+                phy-names = "pcie-phy";
+                num-lanes = <1>;
+        +       status = "disabled";
+        };
+
+        &pcie0_ep {
+                phys = <&serdes0_pcie_link>;
+                phy-names = "pcie-phy";
+                num-lanes = <1>;
+        -       status = "disabled";
+        };
+
 .. rubric:: *Linux Driver Configuration*
 
 The following config options have to be enabled in order to configure the
@@ -388,7 +461,7 @@ PCI controller to be used as a "Endpoint Test" function driver.
         CONFIG_PCI_DRA7XX_EP=y
 
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     ::
 
@@ -409,13 +482,12 @@ To find the list of endpoint controller devices in the system:
         # ls /sys/class/pci_epc/
         51000000.pcie_ep
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
-    ::
+    .. parsed-literal::
 
-        root@j7-evm:~# ls /sys/class/pci_epc/
-        2900000.pcie-ep
-
+        root@evm:~# ls /sys/class/pci_epc/
+        |__PCIE_BASE_ADDRESS__|.pcie-ep
 
 To find the list of endpoint function drivers in the system:
 
@@ -426,11 +498,11 @@ To find the list of endpoint function drivers in the system:
         # ls /sys/bus/pci-epf/drivers
         pci_epf_test
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     ::
 
-        root@j7-evm:~# ls /sys/bus/pci-epf/drivers
+        root@evm:~# ls /sys/bus/pci-epf/drivers
         pci_epf_test  pci_epf_ntb
 
 .. rubric:: *Using the pci-epf-test function driver*
@@ -805,7 +877,7 @@ supported are:
     These restrictions are not specified in PCI standard and is bound to
     cause issues for 66AK2G users.
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     .. rubric:: Creating pci-epf-test device
 
@@ -826,7 +898,7 @@ supported are:
 
     ::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# ls functions/pci_epf_test/func1
+        root@evm:/sys/kernel/config/pci_ep# ls functions/pci_epf_test/func1
         baseclass_code  cache_line_size  deviceid  interrupt_pin  msi_interrupts  msix_interrupts  progif_code  revid  subclass_code  subsys_id  subsys_vendor_id  vendorid
 
     The driver populates these entries with default values when the device
@@ -835,9 +907,9 @@ supported are:
 
     ::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# cat functions/pci_epf_test/func1/vendorid
+        root@evm:/sys/kernel/config/pci_ep# cat functions/pci_epf_test/func1/vendorid
         0xffff
-        root@j7-evm:/sys/kernel/config/pci_ep# cat functions/pci_epf_test/func1/interrupt_pin
+        root@evm:/sys/kernel/config/pci_ep# cat functions/pci_epf_test/func1/interrupt_pin
         0x0001
 
     .. rubric:: Configuring pci-epf-test device
@@ -848,20 +920,20 @@ supported are:
 
     ::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# echo 0x104c > functions/pci_epf_test/func1/vendorid
+        root@evm:/sys/kernel/config/pci_ep# echo 0x104c > functions/pci_epf_test/func1/vendorid
 
     The above command configures Texas Instruments as the vendor.
 
-    ::
+    .. parsed-literal::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# echo 0xb00d > functions/pci_epf_test/func1/deviceid
+        root@evm:/sys/kernel/config/pci_ep# echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/func1/deviceid
 
     The above command configures the deviceid.
 
     ::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# echo 2 > functions/pci_epf_test/func1/msi_interrupts
-        root@j7-evm:/sys/kernel/config/pci_ep# echo 2 > functions/pci_epf_test/func1/msix_interrupts
+        root@evm:/sys/kernel/config/pci_ep# echo 2 > functions/pci_epf_test/func1/msi_interrupts
+        root@evm:/sys/kernel/config/pci_ep# echo 2 > functions/pci_epf_test/func1/msix_interrupts
 
     The above command configures the number of interrupts. 2 is the number of 
     MSI and MSI-X interrupts being configured. The number of interrupts 
@@ -873,68 +945,88 @@ supported are:
     bound to a PCI endpoint controller driver. Use the configfs to bind the
     function device to one of the controller drivers present in the system.
 
-    ::
+    .. parsed-literal::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# ln -s functions/pci_epf_test/func1 controllers/2900000.pcie-ep/
+        root@evm:/sys/kernel/config/pci_ep# ln -s functions/pci_epf_test/func1 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/
 
     .. rubric:: Starting the EP device
 
     In order for the EP device to be ready to establish the link, the
     following command should be given:
 
-    ::
+    .. parsed-literal::
 
-        root@j7-evm:/sys/kernel/config/pci_ep# echo 1 > controllers/2900000.pcie-ep/start
+        root@evm:/sys/kernel/config/pci_ep# echo 1 > controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/start
 
-    The complete sequence when using six physical functions, will look like the
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    The complete sequence when using one physical function will look like the
     following:
 
-    ::
+    .. parsed-literal::
 
         mount -t configfs none /sys/kernel/config
         cd /sys/kernel/config/pci_ep/
         mkdir functions/pci_epf_test/func1
         echo 0x104c > functions/pci_epf_test/func1/vendorid
-        echo 0xb00d > functions/pci_epf_test/func1/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/func1/deviceid
         echo 2 > functions/pci_epf_test/func1/msi_interrupts
         echo 2 > functions/pci_epf_test/func1/msix_interrupts
-        ln -s functions/pci_epf_test/func1 controllers/2900000.pcie-ep/
+        ln -s functions/pci_epf_test/func1 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/
+        echo 1 > controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/start
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
+
+    The complete sequence when using six physical functions, will look like the
+    following:
+
+    .. parsed-literal::
+
+        mount -t configfs none /sys/kernel/config
+        cd /sys/kernel/config/pci_ep/
+        mkdir functions/pci_epf_test/func1
+        echo 0x104c > functions/pci_epf_test/func1/vendorid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/func1/deviceid
+        echo 2 > functions/pci_epf_test/func1/msi_interrupts
+        echo 2 > functions/pci_epf_test/func1/msix_interrupts
+        ln -s functions/pci_epf_test/func1 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/
 
         mkdir functions/pci_epf_test/func2
         echo 0x104c > functions/pci_epf_test/func2/vendorid
-        echo 0xb00d > functions/pci_epf_test/func2/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/func2/deviceid
         echo 2 > functions/pci_epf_test/func2/msi_interrupts
         echo 2 > functions/pci_epf_test/func2/msix_interrupts
-        ln -s functions/pci_epf_test/func2 controllers/2900000.pcie-ep/
+        ln -s functions/pci_epf_test/func2 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/
 
         mkdir functions/pci_epf_test/func3
         echo 0x104c > functions/pci_epf_test/func3/vendorid
-        echo 0xb00d > functions/pci_epf_test/func3/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/func3/deviceid
         echo 2 > functions/pci_epf_test/func3/msi_interrupts
         echo 2 > functions/pci_epf_test/func3/msix_interrupts
-        ln -s functions/pci_epf_test/func3 controllers/2900000.pcie-ep/
+        ln -s functions/pci_epf_test/func3 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/
 
         mkdir functions/pci_epf_test/func4
         echo 0x104c > functions/pci_epf_test/func4/vendorid
-        echo 0xb00d > functions/pci_epf_test/func4/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/func4/deviceid
         echo 2 > functions/pci_epf_test/func4/msi_interrupts
         echo 2 > functions/pci_epf_test/func4/msix_interrupts
-        ln -s functions/pci_epf_test/func4 controllers/2900000.pcie-ep/
+        ln -s functions/pci_epf_test/func4 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/
 
         mkdir functions/pci_epf_test/func5
         echo 0x104c > functions/pci_epf_test/func5/vendorid
-        echo 0xb00d > functions/pci_epf_test/func5/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/func5/deviceid
         echo 2 > functions/pci_epf_test/func5/msi_interrupts
         echo 2 > functions/pci_epf_test/func5/msix_interrupts
-        ln -s functions/pci_epf_test/func5 controllers/2900000.pcie-ep/
+        ln -s functions/pci_epf_test/func5 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/
 
         mkdir functions/pci_epf_test/func6
         echo 0x104c > functions/pci_epf_test/func6/vendorid
-        echo 0xb00d > functions/pci_epf_test/func6/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/func6/deviceid
         echo 2 > functions/pci_epf_test/func6/msi_interrupts
         echo 2 > functions/pci_epf_test/func6/msix_interrupts
-        ln -s functions/pci_epf_test/func6 controllers/2900000.pcie-ep/
-        echo 1 > controllers/2900000.pcie-ep/start
+        ln -s functions/pci_epf_test/func6 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/
+        echo 1 > controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/start
 
     .. rubric::Using virtual functions
 
@@ -943,33 +1035,33 @@ supported are:
 
     A sample sequence of commands for using the virtual functions is as follows:
      
-    ::
+    .. parsed-literal::
 
         mount -t configfs none /sys/kernel/config
         cd /sys/kernel/config/pci_ep/
         mkdir functions/pci_epf_test/vf1
         echo 0x104c > functions/pci_epf_test/vf1/vendorid
-        echo 0xb00d > functions/pci_epf_test/vf1/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/vf1/deviceid
         echo 4 > functions/pci_epf_test/vf1/msi_interrupts
         echo 8 > functions/pci_epf_test/vf1/msix_interrupts
 
         mkdir functions/pci_epf_test/vf2
         echo 0x104c > functions/pci_epf_test/vf2/vendorid
-        echo 0xb00d > functions/pci_epf_test/vf2/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/vf2/deviceid
         echo 4 > functions/pci_epf_test/vf2/msi_interrupts
         echo 8 > functions/pci_epf_test/vf2/msix_interrupts
 
         mkdir functions/pci_epf_test/pf1
         echo 0x104c > functions/pci_epf_test/pf1/vendorid
-        echo 0xb00d > functions/pci_epf_test/pf1/deviceid
+        echo |__PCIE_DEVICE_ID__| > functions/pci_epf_test/pf1/deviceid
         echo 16 > functions/pci_epf_test/pf1/msi_interrupts
         echo 16 > functions/pci_epf_test/pf1/msix_interrupts
 
         ln -s functions/pci_epf_test/vf1 functions/pci_epf_test/pf1
         ln -s functions/pci_epf_test/vf2 functions/pci_epf_test/pf1
-        ln -s functions/pci_epf_test/pf1 controllers/2910000.pcie-ep
+        ln -s functions/pci_epf_test/pf1 controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep
 
-        echo 1 > controllers/2910000.pcie-ep/start
+        echo 1 > controllers/|__PCIE_BASE_ADDRESS__|.pcie-ep/start
 
 .. rubric:: **HOST Device Configuration**
    :name: host-device-configuration
@@ -991,7 +1083,7 @@ The following config options have to be enabled in order to use the
         CONFIG_PCI_ENDPOINT_TEST=y
         CONFIG_PCI_DRA7XX_HOST=y
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     ::
 
@@ -1021,6 +1113,13 @@ The following config options have to be enabled in order to use the
         0000:01:00.5 Unassigned class [ff00]: Texas Instruments Device b00d
         0001:00:00.0 PCI bridge: Texas Instruments Device b00d
         0002:00:00.0 PCI bridge: Texas Instruments Device b00d
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+    ::
+
+        0000:00:00.0 PCI bridge: Texas Instruments Device b010
+        0000:01:00.0 Unassigned class [ff00]: Texas Instruments Device b010
 
 .. rubric:: *Using the Endpoint Test function device*
 
@@ -1128,7 +1227,7 @@ The following config options have to be enabled in order to use the
         COPY (1024000 bytes):           OKAY
         COPY (1024001 bytes):           OKAY
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     pci\_endpoint\_test driver creates the Endpoint Test function device which 
     will be used by the following pcitest utility. pci\_endpoint\_test can 
@@ -1152,7 +1251,7 @@ The following config options have to be enabled in order to use the
     pcitest can be used as follows:
     ::
 
-        root@j7-evm:~# ./pcitest -h
+        root@evm:~# ./pcitest -h
         usage:  -h                      Print this help message
         [options]
         Options:
@@ -1173,22 +1272,21 @@ The following config options have to be enabled in order to use the
     Sample usage
     ::
 
-        root@j7-evm:~# ./pcitest -i 1 -D /dev/pci-endpoint-test.0
+        root@evm:~# ./pcitest -i 1 -D /dev/pci-endpoint-test.0
         SET IRQ TYPE TO MSI:            OKAY
-        root@j7-evm:~# ./pcitest -m 1 -D /dev/pci-endpoint-test.0
+        root@evm:~# ./pcitest -m 1 -D /dev/pci-endpoint-test.0
         MSI1:           OKAY
-        root@j7-evm:~# ./pcitest -e -D /dev/pci-endpoint-test.0
+        root@evm:~# ./pcitest -e -D /dev/pci-endpoint-test.0
         CLEAR IRQ:              OKAY
-        root@j7-evm:~# ./pcitest -i 2 -D /dev/pci-endpoint-test.0
+        root@evm:~# ./pcitest -i 2 -D /dev/pci-endpoint-test.0
         SET IRQ TYPE TO MSI-X:          OKAY
-        root@j7-evm:~# ./pcitest -x 1 -D /dev/pci-endpoint-test.0
+        root@evm:~# ./pcitest -x 1 -D /dev/pci-endpoint-test.0
         MSI-X1:         OKAY
-        root@j7-evm:~# ./pcitest -e -D /dev/pci-endpoint-test.0
+        root@evm:~# ./pcitest -e -D /dev/pci-endpoint-test.0
         CLEAR IRQ:              OKAY
 
     The script pcitest.sh runs all the bar tests, interrupt tests, read tests, 
     write tests and copy tests.
-
 
 .. rubric:: **Files**
 
@@ -1234,7 +1332,7 @@ The following config options have to be enabled in order to use the
     |           |  drivers/pci/dwc/pcie-designware-host.c           |                                   |
     +-----------+---------------------------------------------------+-----------------------------------+
 
-.. ifconfig:: CONFIG_part_family in ('J7_family')
+.. ifconfig:: CONFIG_part_family in ('AM64X_family','J7_family')
 
     +-----------+---------------------------------------------------+-----------------------------------+
     | Serial No | Location                                          | Description                       |
@@ -1263,6 +1361,8 @@ The following config options have to be enabled in order to use the
     +           +---------------------------------------------------+                                   +
     |           | drivers/pci/endpoint/pcie-cadence-host.c          |                                   |
     +-----------+---------------------------------------------------+-----------------------------------+
+
+.. ifconfig:: CONFIG_part_family in ('J7_family')
 
     .. rubric:: **J7200 Testing Details**
 
