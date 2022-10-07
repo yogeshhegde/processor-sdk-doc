@@ -46,147 +46,144 @@ Introduction
 
     The following extensions are supported:
 
-    .. rubric:: EGL client extensions
-       :name: egl-client-extensions
+    .. list-table:: EGL client extensions
 
-    - EGL_EXT_client_extensions
-    - EGL_EXT_platform_base
-    - EGL_KHR_client_get_all_proc_addresses
-    - EGL_KHR_debug
-    - EGL_EXT_platform_wayland
-    - EGL_MESA_platform_gbm
+       * - EGL_EXT_client_extensions
+       * - EGL_EXT_platform_base
+       * - EGL_KHR_client_get_all_proc_addresses
+       * - EGL_KHR_debug
+       * - EGL_EXT_platform_wayland
+       * - EGL_MESA_platform_gbm
 
-    .. rubric:: EGL extensions
-       :name: egl-extensions
+    .. list-table:: EGL extensions
 
-    - EGL_ANDROID_native_fence_sync
-    - EGL_EXT_buffer_age
-    - EGL_EXT_create_context_robustness
-    - EGL_EXT_image_dma_buf_import
-    - EGL_EXT_image_dma_buf_import_modifiers
-    - EGL_IMG_context_priority
-    - EGL_KHR_config_attribs
-    - EGL_KHR_create_context
-    - EGL_KHR_fence_sync
-    - EGL_KHR_get_all_proc_addresses
-    - EGL_KHR_gl_renderbuffer_image
-    - EGL_KHR_gl_texture_2D_image
-    - EGL_KHR_gl_texture_cubmap_image
-    - EGL_KHR_image
-    - EGL_KHR_image_base
-    - EGL_KHR_image_pixmap
-    - EGL_KHR_no_config_context
-    - EGL_KHR_reusable_sync
-    - EGL_KHR_surfaceless_context
-    - EGL_KHR_wait_sync
-    - EGL_MESA_configless_context
-    - EGL_MESA_drm_image
-    - EGL_MESA_image_dma_buf_export
-    - EGL_WL_bind_wayland_display
-    - EGL_IMG_cl_image
+       * - EGL_ANDROID_native_fence_sync
+       * - EGL_EXT_buffer_age
+       * - EGL_EXT_create_context_robustness
+       * - EGL_EXT_image_dma_buf_import
+       * - EGL_EXT_image_dma_buf_import_modifiers
+       * - EGL_IMG_context_priority
+       * - EGL_KHR_config_attribs
+       * - EGL_KHR_create_context
+       * - EGL_KHR_fence_sync
+       * - EGL_KHR_get_all_proc_addresses
+       * - EGL_KHR_gl_renderbuffer_image
+       * - EGL_KHR_gl_texture_2D_image
+       * - EGL_KHR_gl_texture_cubmap_image
+       * - EGL_KHR_image
+       * - EGL_KHR_image_base
+       * - EGL_KHR_image_pixmap
+       * - EGL_KHR_no_config_context
+       * - EGL_KHR_reusable_sync
+       * - EGL_KHR_surfaceless_context
+       * - EGL_KHR_wait_sync
+       * - EGL_MESA_configless_context
+       * - EGL_MESA_drm_image
+       * - EGL_MESA_image_dma_buf_export
+       * - EGL_WL_bind_wayland_display
+       * - EGL_IMG_cl_image
 
-    .. rubric:: GL extensions
-       :name: gl-extensions
+    .. list-table:: GL extensions
 
-    - GL_ANDROID_extension_pack_es31a
-    - GL_EXT_blend_minmax
-    - GL_EXT_buffer_storage
-    - GL_EXT_clip_control
-    - GL_EXT_color_buffer_float
-    - GL_EXT_conservative_depth
-    - GL_EXT_copy_image
-    - GL_EXT_discard_framebuffer
-    - GL_EXT_draw_buffers
-    - GL_EXT_draw_buffers_indexed
-    - GL_EXT_draw_elements_base_vertex
-    - GL_EXT_EGL_image_array
-    - GL_EXT_float_blend
-    - GL_EXT_geometry_point_size
-    - GL_EXT_geometry_shader
-    - GL_EXT_gpu_shader5
-    - GL_EXT_memory_object
-    - GL_EXT_multisampled_render_to_texture
-    - GL_EXT_multisampled_render_to_texture2
-    - GL_EXT_occlusion_query_boolean
-    - GL_EXT_polygon_offset_clamp
-    - GL_EXT_primitive_bounding_box
-    - GL_EXT_pvrtc_sRGB
-    - GL_EXT_read_format_bgra
-    - GL_EXT_robustness
-    - GL_EXT_separate_shader_objects
-    - GL_EXT_shader_framebuffer_fetch
-    - GL_EXT_shader_group_vote
-    - GL_EXT_shader_implicit_conversions
-    - GL_EXT_shader_io_blocks
-    - GL_EXT_shader_non_constant_global_initializers
-    - GL_EXT_shader_pixel_local_storage
-    - GL_EXT_shader_pixel_local_storage2
-    - GL_EXT_shader_texture_lod
-    - GL_EXT_shadow_samplers
-    - GL_EXT_sparse_texture
-    - GL_EXT_sRGB_write_control
-    - GL_EXT_tessellation_point_size
-    - GL_EXT_tessellation_shader
-    - GL_EXT_texture_border_clamp
-    - GL_EXT_texture_buffer
-    - GL_EXT_texture_cube_map_array
-    - GL_EXT_texture_filter_anisotropic
-    - GL_EXT_texture_format_BGRA8888
-    - GL_EXT_texture_rg
-    - GL_EXT_texture_sRGB_decode
-    - GL_EXT_texture_sRGB_R8
-    - GL_EXT_texture_sRGB_RG8
-    - GL_EXT_YUV_target
-    - GL_IMG_bindless_texture
-    - GL_IMG_framebuffer_downsample
-    - GL_IMG_multisampled_render_to_texture
-    - GL_IMG_program_binary
-    - GL_IMG_texture_compression_pvrtc
-    - GL_IMG_texture_compression_pvrtc2
-    - GL_IMG_texture_filter_cubic
-    - GL_IMG_texture_format_BGRA8888
-    - GL_IMG_texture_npot
-    - GL_KHR_blend_equation_advanced
-    - GL_KHR_blend_equation_advanced_coherent
-    - GL_KHR_debug
-    - GL_KHR_robustness
-    - GL_KHR_texture_compression_astc_ldr
-    - GL_KHR_compressed_ETC1_RGB8_texutre
-    - GL_OES_depth24
-    - GL_OES_depth_texture
-    - GL_OES_draw_buffers_indexed
-    - GL_OES_draw_elements_base_vertex
-    - GL_OES_EGL_image_external_essl3
-    - GL_OES_EGL_sync
-    - GL_OES_element_index_uint
-    - GL_OES_fragment_precision_high
-    - GL_OES_geometry_point_size
-    - GL_OES_geometry_shader
-    - GL_OES_get_program_binary
-    - GL_OES_gpu_shader5
-    - GL_OES_mapbuffer
-    - GL_OES_packed_depth_stencil
-    - GL_OES_required_internalformat
-    - GL_OES_rgb8_rgba8
-    - GL_OES_sample_shading
-    - GL_OES_sample_variables
-    - GL_OES_shader_image_atomic
-    - GL_OES_shader_io_blocks
-    - GL_OES_shader_multisample_interpolation
-    - GL_OES_standard_derivatives
-    - GL_OES_surfaceless_context
-    - GL_OES_tessellation_point_size
-    - GL_OES_tessellation_shader
-    - GL_OES_texture_border_clamp
-    - GL_OES_texture_buffer
-    - GL_OES_texture_cube_map_array
-    - GL_OES_texture_float
-    - GL_OES_texture_half_float
-    - GL_OES_texture_npot
-    - GL_OES_texture_stencil8
-    - GL_OES_texture_storage_multisample_2d_array
-    - GL_OES_vertex_array_object
-    - GL_OES_vertex_half_float
+       * - GL_ANDROID_extension_pack_es31a
+       * - GL_EXT_blend_minmax
+       * - GL_EXT_buffer_storage
+       * - GL_EXT_clip_control
+       * - GL_EXT_color_buffer_float
+       * - GL_EXT_conservative_depth
+       * - GL_EXT_copy_image
+       * - GL_EXT_discard_framebuffer
+       * - GL_EXT_draw_buffers
+       * - GL_EXT_draw_buffers_indexed
+       * - GL_EXT_draw_elements_base_vertex
+       * - GL_EXT_EGL_image_array
+       * - GL_EXT_float_blend
+       * - GL_EXT_geometry_point_size
+       * - GL_EXT_geometry_shader
+       * - GL_EXT_gpu_shader5
+       * - GL_EXT_memory_object
+       * - GL_EXT_multisampled_render_to_texture
+       * - GL_EXT_multisampled_render_to_texture2
+       * - GL_EXT_occlusion_query_boolean
+       * - GL_EXT_polygon_offset_clamp
+       * - GL_EXT_primitive_bounding_box
+       * - GL_EXT_pvrtc_sRGB
+       * - GL_EXT_read_format_bgra
+       * - GL_EXT_robustness
+       * - GL_EXT_separate_shader_objects
+       * - GL_EXT_shader_framebuffer_fetch
+       * - GL_EXT_shader_group_vote
+       * - GL_EXT_shader_implicit_conversions
+       * - GL_EXT_shader_io_blocks
+       * - GL_EXT_shader_non_constant_global_initializers
+       * - GL_EXT_shader_pixel_local_storage
+       * - GL_EXT_shader_pixel_local_storage2
+       * - GL_EXT_shader_texture_lod
+       * - GL_EXT_shadow_samplers
+       * - GL_EXT_sparse_texture
+       * - GL_EXT_sRGB_write_control
+       * - GL_EXT_tessellation_point_size
+       * - GL_EXT_tessellation_shader
+       * - GL_EXT_texture_border_clamp
+       * - GL_EXT_texture_buffer
+       * - GL_EXT_texture_cube_map_array
+       * - GL_EXT_texture_filter_anisotropic
+       * - GL_EXT_texture_format_BGRA8888
+       * - GL_EXT_texture_rg
+       * - GL_EXT_texture_sRGB_decode
+       * - GL_EXT_texture_sRGB_R8
+       * - GL_EXT_texture_sRGB_RG8
+       * - GL_EXT_YUV_target
+       * - GL_IMG_bindless_texture
+       * - GL_IMG_framebuffer_downsample
+       * - GL_IMG_multisampled_render_to_texture
+       * - GL_IMG_program_binary
+       * - GL_IMG_texture_compression_pvrtc
+       * - GL_IMG_texture_compression_pvrtc2
+       * - GL_IMG_texture_filter_cubic
+       * - GL_IMG_texture_format_BGRA8888
+       * - GL_IMG_texture_npot
+       * - GL_KHR_blend_equation_advanced
+       * - GL_KHR_blend_equation_advanced_coherent
+       * - GL_KHR_debug
+       * - GL_KHR_robustness
+       * - GL_KHR_texture_compression_astc_ldr
+       * - GL_KHR_compressed_ETC1_RGB8_texutre
+       * - GL_OES_depth24
+       * - GL_OES_depth_texture
+       * - GL_OES_draw_buffers_indexed
+       * - GL_OES_draw_elements_base_vertex
+       * - GL_OES_EGL_image_external_essl3
+       * - GL_OES_EGL_sync
+       * - GL_OES_element_index_uint
+       * - GL_OES_fragment_precision_high
+       * - GL_OES_geometry_point_size
+       * - GL_OES_geometry_shader
+       * - GL_OES_get_program_binary
+       * - GL_OES_gpu_shader5
+       * - GL_OES_mapbuffer
+       * - GL_OES_packed_depth_stencil
+       * - GL_OES_required_internalformat
+       * - GL_OES_rgb8_rgba8
+       * - GL_OES_sample_shading
+       * - GL_OES_sample_variables
+       * - GL_OES_shader_image_atomic
+       * - GL_OES_shader_io_blocks
+       * - GL_OES_shader_multisample_interpolation
+       * - GL_OES_standard_derivatives
+       * - GL_OES_surfaceless_context
+       * - GL_OES_tessellation_point_size
+       * - GL_OES_tessellation_shader
+       * - GL_OES_texture_border_clamp
+       * - GL_OES_texture_buffer
+       * - GL_OES_texture_cube_map_array
+       * - GL_OES_texture_float
+       * - GL_OES_texture_half_float
+       * - GL_OES_texture_npot
+       * - GL_OES_texture_stencil8
+       * - GL_OES_texture_storage_multisample_2d_array
+       * - GL_OES_vertex_array_object
+       * - GL_OES_vertex_half_float
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
 
@@ -199,157 +196,369 @@ Introduction
 
     The following extensions are supported:
 
-    .. rubric:: EGL client extensions
+    .. list-table:: EGL client extensions
 
-    - EGL_EXT_client_extensions
-    - EGL_EXT_device_base
-    - EGL_EXT_device_enumeration
-    - EGL_EXT_device_query
-    - EGL_EXT_platform_base
-    - EGL_KHR_client_get_all_proc_addresses
-    - EGL_KHR_debug EGL_EXT_platform_device
-    - EGL_EXT_platform_wayland
-    - EGL_KHR_platform_wayland
-    - EGL_MESA_platform_gbm
-    - EGL_KHR_platform_gbm
-    - EGL_MESA_platform_surfaceless
+       * - EGL_EXT_client_extensions
+       * - EGL_EXT_device_base
+       * - EGL_EXT_device_enumeration
+       * - EGL_EXT_device_query
+       * - EGL_EXT_platform_base
+       * - EGL_KHR_client_get_all_proc_addresses
+       * - EGL_KHR_debug EGL_EXT_platform_device
+       * - EGL_EXT_platform_wayland
+       * - EGL_KHR_platform_wayland
+       * - EGL_MESA_platform_gbm
+       * - EGL_KHR_platform_gbm
+       * - EGL_MESA_platform_surfaceless
 
-    .. rubric:: EGL extensions
+    .. list-table:: EGL extensions
 
-    - EGL_ANDROID_native_fence_sync
-    - EGL_EXT_buffer_age
-    - EGL_EXT_create_context_robustness
-    - EGL_EXT_image_dma_buf_import
-    - EGL_EXT_image_dma_buf_import_modifiers
-    - EGL_EXT_image_gl_colorspace
-    - EGL_EXT_swap_buffers_with_damage
-    - EGL_EXT_yuv_surface
-    - EGL_IMG_context_priority
-    - EGL_KHR_cl_event2
-    - EGL_KHR_config_attribs
-    - EGL_KHR_create_context
-    - EGL_KHR_fence_sync
-    - EGL_KHR_get_all_proc_addresses
-    - EGL_KHR_gl_colorspace
-    - EGL_KHR_gl_renderbuffer_image
-    - EGL_KHR_gl_texture_2D_image
-    - EGL_KHR_gl_texture_3D_image
-    - EGL_KHR_gl_texture_cubemap_image
-    - EGL_KHR_image_base
-    - EGL_KHR_no_config_context
-    - EGL_KHR_partial_update
-    - EGL_KHR_reusable_sync
-    - EGL_KHR_surfaceless_context
-    - EGL_KHR_swap_buffers_with_damage
-    - EGL_EXT_pixel_format_float
-    - EGL_KHR_wait_sync
-    - EGL_MESA_configless_context
-    - EGL_MESA_drm_image
-    - EGL_MESA_image_dma_buf_export
-    - EGL_WL_bind_wayland_display
-    - EGL_WL_create_wayland_buffer_from_image
-    - EGL_IMG_cl_image
+       * - EGL_ANDROID_native_fence_sync
+       * - EGL_EXT_buffer_age
+       * - EGL_EXT_create_context_robustness
+       * - EGL_EXT_image_dma_buf_import
+       * - EGL_EXT_image_dma_buf_import_modifiers
+       * - EGL_EXT_image_gl_colorspace
+       * - EGL_EXT_swap_buffers_with_damage
+       * - EGL_EXT_yuv_surface
+       * - EGL_IMG_context_priority
+       * - EGL_KHR_cl_event2
+       * - EGL_KHR_config_attribs
+       * - EGL_KHR_create_context
+       * - EGL_KHR_fence_sync
+       * - EGL_KHR_get_all_proc_addresses
+       * - EGL_KHR_gl_colorspace
+       * - EGL_KHR_gl_renderbuffer_image
+       * - EGL_KHR_gl_texture_2D_image
+       * - EGL_KHR_gl_texture_3D_image
+       * - EGL_KHR_gl_texture_cubemap_image
+       * - EGL_KHR_image_base
+       * - EGL_KHR_no_config_context
+       * - EGL_KHR_partial_update
+       * - EGL_KHR_reusable_sync
+       * - EGL_KHR_surfaceless_context
+       * - EGL_KHR_swap_buffers_with_damage
+       * - EGL_EXT_pixel_format_float
+       * - EGL_KHR_wait_sync
+       * - EGL_MESA_configless_context
+       * - EGL_MESA_drm_image
+       * - EGL_MESA_image_dma_buf_export
+       * - EGL_WL_bind_wayland_display
+       * - EGL_WL_create_wayland_buffer_from_image
+       * - EGL_IMG_cl_image
 
-    .. rubric:: GL extensions
+    .. list-table:: GL extensions
 
-    - GL_APPLE_texture_format_BGRA8888
-    - GL_EXT_blend_minmax
-    - GL_EXT_buffer_storage
-    - GL_EXT_clip_control
-    - GL_EXT_color_buffer_float
-    - GL_EXT_color_buffer_half_float
-    - GL_EXT_compressed_ETC1_RGB8_sub_texture
-    - GL_EXT_conservative_depth
-    - GL_EXT_copy_image
-    - GL_EXT_discard_framebuffer
-    - GL_EXT_draw_buffers
-    - GL_EXT_draw_buffers_indexed
-    - GL_EXT_draw_elements_base_vertex
-    - GL_EXT_EGL_image_array
-    - GL_EXT_float_blend
-    - GL_EXT_gpu_shader5
-    - GL_EXT_memory_object
-    - GL_EXT_memory_object_fd
-    - GL_EXT_multi_draw_arrays
-    - GL_EXT_multisampled_render_to_texture
-    - GL_EXT_multisampled_render_to_texture2
-    - GL_EXT_occlusion_query_boolean
-    - GL_EXT_polygon_offset_clamp
-    - GL_EXT_read_format_bgra
-    - GL_EXT_robustness
-    - GL_EXT_separate_shader_objects
-    - GL_EXT_shader_framebuffer_fetch
-    - GL_EXT_shader_group_vote
-    - GL_EXT_shader_implicit_conversions
-    - GL_EXT_shader_io_blocks
-    - GL_EXT_shader_non_constant_global_initializers
-    - GL_EXT_shader_pixel_local_storage
-    - GL_EXT_shader_pixel_local_storage2
-    - GL_EXT_shader_texture_lod
-    - GL_EXT_shadow_samplers
-    - GL_EXT_sparse_texture
-    - GL_EXT_sRGB_write_control
-    - GL_EXT_texture_border_clamp
-    - GL_EXT_texture_buffer
-    - GL_EXT_texture_cube_map_array
-    - GL_EXT_texture_format_BGRA8888
-    - GL_EXT_texture_format_sRGB_override
-    - GL_EXT_texture_rg
-    - GL_EXT_texture_shadow_lod
-    - GL_EXT_texture_sRGB_decode
-    - GL_EXT_texture_sRGB_R8
-    - GL_EXT_texture_sRGB_RG8
-    - GL_EXT_YUV_target
-    - GL_IMG_framebuffer_downsample
-    - GL_IMG_multisampled_render_to_texture
-    - GL_IMG_program_binary
-    - GL_IMG_read_format
-    - GL_IMG_shader_binary
-    - GL_IMG_texture_format_BGRA8888
-    - GL_IMG_texture_npot
-    - GL_KHR_blend_equation_advanced
-    - GL_KHR_blend_equation_advanced_coherent
-    - GL_KHR_debug
-    - GL_KHR_robustness
-    - GL_OES_compressed_ETC1_RGB8_texture
-    - GL_OES_depth24
-    - GL_OES_depth_texture
-    - GL_OES_draw_buffers_indexed
-    - GL_OES_draw_elements_base_vertex
-    - GL_OES_EGL_image
-    - GL_OES_EGL_image_external
-    - GL_OES_EGL_image_external_essl3
-    - GL_OES_EGL_sync
-    - GL_OES_element_index_uint
-    - GL_OES_fragment_precision_high
-    - GL_OES_get_program_binary
-    - GL_OES_gpu_shader5
-    - GL_OES_mapbuffer
-    - GL_OES_packed_depth_stencil
-    - GL_OES_required_internalformat
-    - GL_OES_rgb8_rgba8
-    - GL_OES_sample_shading
-    - GL_OES_sample_variables
-    - GL_OES_shader_image_atomic
-    - GL_OES_shader_io_blocks
-    - GL_OES_shader_multisample_interpolation
-    - GL_OES_standard_derivatives
-    - GL_OES_surfaceless_context
-    - GL_OES_texture_border_clamp
-    - GL_OES_texture_buffer
-    - GL_OES_texture_cube_map_array
-    - GL_OES_texture_float
-    - GL_OES_texture_half_float
-    - GL_OES_texture_npot
-    - GL_OES_texture_stencil8
-    - GL_OES_texture_storage_multisample_2d_array
-    - GL_OES_vertex_array_object
-    - GL_OES_vertex_half_float
+       * - GL_APPLE_texture_format_BGRA8888
+       * - GL_EXT_blend_minmax
+       * - GL_EXT_buffer_storage
+       * - GL_EXT_clip_control
+       * - GL_EXT_color_buffer_float
+       * - GL_EXT_color_buffer_half_float
+       * - GL_EXT_compressed_ETC1_RGB8_sub_texture
+       * - GL_EXT_conservative_depth
+       * - GL_EXT_copy_image
+       * - GL_EXT_discard_framebuffer
+       * - GL_EXT_draw_buffers
+       * - GL_EXT_draw_buffers_indexed
+       * - GL_EXT_draw_elements_base_vertex
+       * - GL_EXT_EGL_image_array
+       * - GL_EXT_float_blend
+       * - GL_EXT_gpu_shader5
+       * - GL_EXT_memory_object
+       * - GL_EXT_memory_object_fd
+       * - GL_EXT_multi_draw_arrays
+       * - GL_EXT_multisampled_render_to_texture
+       * - GL_EXT_multisampled_render_to_texture2
+       * - GL_EXT_occlusion_query_boolean
+       * - GL_EXT_polygon_offset_clamp
+       * - GL_EXT_read_format_bgra
+       * - GL_EXT_robustness
+       * - GL_EXT_separate_shader_objects
+       * - GL_EXT_shader_framebuffer_fetch
+       * - GL_EXT_shader_group_vote
+       * - GL_EXT_shader_implicit_conversions
+       * - GL_EXT_shader_io_blocks
+       * - GL_EXT_shader_non_constant_global_initializers
+       * - GL_EXT_shader_pixel_local_storage
+       * - GL_EXT_shader_pixel_local_storage2
+       * - GL_EXT_shader_texture_lod
+       * - GL_EXT_shadow_samplers
+       * - GL_EXT_sparse_texture
+       * - GL_EXT_sRGB_write_control
+       * - GL_EXT_texture_border_clamp
+       * - GL_EXT_texture_buffer
+       * - GL_EXT_texture_cube_map_array
+       * - GL_EXT_texture_format_BGRA8888
+       * - GL_EXT_texture_format_sRGB_override
+       * - GL_EXT_texture_rg
+       * - GL_EXT_texture_shadow_lod
+       * - GL_EXT_texture_sRGB_decode
+       * - GL_EXT_texture_sRGB_R8
+       * - GL_EXT_texture_sRGB_RG8
+       * - GL_EXT_YUV_target
+       * - GL_IMG_framebuffer_downsample
+       * - GL_IMG_multisampled_render_to_texture
+       * - GL_IMG_program_binary
+       * - GL_IMG_read_format
+       * - GL_IMG_shader_binary
+       * - GL_IMG_texture_format_BGRA8888
+       * - GL_IMG_texture_npot
+       * - GL_KHR_blend_equation_advanced
+       * - GL_KHR_blend_equation_advanced_coherent
+       * - GL_KHR_debug
+       * - GL_KHR_robustness
+       * - GL_OES_compressed_ETC1_RGB8_texture
+       * - GL_OES_depth24
+       * - GL_OES_depth_texture
+       * - GL_OES_draw_buffers_indexed
+       * - GL_OES_draw_elements_base_vertex
+       * - GL_OES_EGL_image
+       * - GL_OES_EGL_image_external
+       * - GL_OES_EGL_image_external_essl3
+       * - GL_OES_EGL_sync
+       * - GL_OES_element_index_uint
+       * - GL_OES_fragment_precision_high
+       * - GL_OES_get_program_binary
+       * - GL_OES_gpu_shader5
+       * - GL_OES_mapbuffer
+       * - GL_OES_packed_depth_stencil
+       * - GL_OES_required_internalformat
+       * - GL_OES_rgb8_rgba8
+       * - GL_OES_sample_shading
+       * - GL_OES_sample_variables
+       * - GL_OES_shader_image_atomic
+       * - GL_OES_shader_io_blocks
+       * - GL_OES_shader_multisample_interpolation
+       * - GL_OES_standard_derivatives
+       * - GL_OES_surfaceless_context
+       * - GL_OES_texture_border_clamp
+       * - GL_OES_texture_buffer
+       * - GL_OES_texture_cube_map_array
+       * - GL_OES_texture_float
+       * - GL_OES_texture_half_float
+       * - GL_OES_texture_npot
+       * - GL_OES_texture_stencil8
+       * - GL_OES_texture_storage_multisample_2d_array
+       * - GL_OES_vertex_array_object
+       * - GL_OES_vertex_half_float
+
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS')
+
+    |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
+    accelerator based on the B-Series BXS-4-64 from Imagination Technologies
+    Inc. It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
+    API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
+    render surfaces upto 4k and input textures upto 8k sizes are supported by
+    the hardware.
+
+    The following extensions are supported:
+
+    .. list-table:: EGL client extensions
+
+       * - EGL_EXT_client_extensions
+       * - EGL_EXT_device_base
+       * - EGL_EXT_device_enumeration
+       * - EGL_EXT_device_query
+       * - EGL_EXT_platform_base
+       * - EGL_KHR_client_get_all_proc_addresses
+       * - EGL_KHR_debug
+       * - EGL_EXT_platform_device
+       * - EGL_EXT_platform_wayland
+       * - EGL_KHR_platform_wayland
+       * - EGL_MESA_platform_gbm
+       * - EGL_KHR_platform_gbm
+       * - EGL_MESA_platform_surfaceless
+
+    .. list-table:: EGL extensions
+
+       * - EGL_ANDROID_native_fence_sync
+       * - EGL_EXT_buffer_age
+       * - EGL_EXT_create_context_robustness
+       * - EGL_EXT_image_dma_buf_import
+       * - EGL_EXT_image_dma_buf_import_modifiers
+       * - EGL_EXT_image_gl_colorspace
+       * - EGL_EXT_yuv_surface
+       * - EGL_IMG_context_priority
+       * - EGL_KHR_cl_event2
+       * - EGL_KHR_config_attribs
+       * - EGL_KHR_create_context
+       * - EGL_KHR_fence_sync
+       * - EGL_KHR_get_all_proc_addresses
+       * - EGL_KHR_gl_colorspace
+       * - EGL_KHR_gl_renderbuffer_image
+       * - EGL_KHR_gl_texture_2D_image
+       * - EGL_KHR_gl_texture_3D_image
+       * - EGL_KHR_gl_texture_cubemap_image
+       * - EGL_KHR_image
+       * - EGL_KHR_image_base
+       * - EGL_KHR_image_pixmap
+       * - EGL_KHR_no_config_context
+       * - EGL_KHR_partial_update
+       * - EGL_KHR_reusable_sync
+       * - EGL_KHR_surfaceless_context
+       * - EGL_EXT_pixel_format_float
+       * - EGL_KHR_wait_sync
+       * - EGL_MESA_configless_context
+       * - EGL_MESA_drm_image
+       * - EGL_MESA_image_dma_buf_export
+       * - EGL_WL_bind_wayland_display
+       * - EGL_IMG_cl_image
+
+    .. list-table:: GL extensions
+
+       * - GL_ANDROID_extension_pack_es31a
+       * - GL_APPLE_texture_format_BGRA8888
+       * - GL_EXT_EGL_image_array
+       * - GL_EXT_YUV_target
+       * - GL_EXT_blend_minmax
+       * - GL_EXT_buffer_storage
+       * - GL_EXT_clip_control
+       * - GL_EXT_color_buffer_float
+       * - GL_EXT_color_buffer_half_float
+       * - GL_EXT_compressed_ETC1_RGB8_sub_texture
+       * - GL_EXT_conservative_depth
+       * - GL_EXT_copy_image
+       * - GL_EXT_discard_framebuffer
+       * - GL_EXT_draw_buffers
+       * - GL_EXT_draw_buffers_indexed
+       * - GL_EXT_draw_elements_base_vertex
+       * - GL_EXT_float_blend
+       * - GL_EXT_geometry_point_size
+       * - GL_EXT_geometry_shader
+       * - GL_EXT_gpu_shader5
+       * - GL_EXT_memory_object
+       * - GL_EXT_memory_object_fd
+       * - GL_EXT_multi_draw_arrays
+       * - GL_EXT_multisampled_render_to_texture
+       * - GL_EXT_multisampled_render_to_texture2
+       * - GL_EXT_occlusion_query_boolean
+       * - GL_EXT_polygon_offset_clamp
+       * - GL_EXT_primitive_bounding_box
+       * - GL_EXT_read_format_bgra
+       * - GL_EXT_robustness
+       * - GL_EXT_sRGB_write_control
+       * - GL_EXT_separate_shader_objects
+       * - GL_EXT_shader_framebuffer_fetch
+       * - GL_EXT_shader_group_vote
+       * - GL_EXT_shader_implicit_conversions
+       * - GL_EXT_shader_io_blocks
+       * - GL_EXT_shader_non_constant_global_initializers
+       * - GL_EXT_shader_pixel_local_storage
+       * - GL_EXT_shader_pixel_local_storage2
+       * - GL_EXT_shader_texture_lod
+       * - GL_EXT_shadow_samplers
+       * - GL_EXT_sparse_texture
+       * - GL_EXT_tessellation_point_size
+       * - GL_EXT_tessellation_shader
+       * - GL_EXT_texture_border_clamp
+       * - GL_EXT_texture_buffer
+       * - GL_EXT_texture_cube_map_array
+       * - GL_EXT_texture_format_BGRA8888
+       * - GL_EXT_texture_format_sRGB_override
+       * - GL_EXT_texture_rg
+       * - GL_EXT_texture_sRGB_R8
+       * - GL_EXT_texture_sRGB_RG8
+       * - GL_EXT_texture_sRGB_decode
+       * - GL_EXT_texture_shadow_lod
+       * - GL_IMG_framebuffer_downsample
+       * - GL_IMG_multisampled_render_to_texture
+       * - GL_IMG_program_binary
+       * - GL_IMG_read_format
+       * - GL_IMG_shader_binary
+       * - GL_IMG_texture_format_BGRA8888
+       * - GL_IMG_texture_npot
+       * - GL_KHR_blend_equation_advanced
+       * - GL_KHR_blend_equation_advanced_coherent
+       * - GL_KHR_debug
+       * - GL_KHR_robustness
+       * - GL_KHR_texture_compression_astc_ldr
+       * - GL_OES_EGL_image
+       * - GL_OES_EGL_image_external
+       * - GL_OES_EGL_image_external_essl3
+       * - GL_OES_EGL_sync
+       * - GL_OES_compressed_ETC1_RGB8_texture
+       * - GL_OES_depth24
+       * - GL_OES_depth_texture
+       * - GL_OES_draw_buffers_indexed
+       * - GL_OES_draw_elements_base_vertex
+       * - GL_OES_element_index_uint
+       * - GL_OES_fragment_precision_high
+       * - GL_OES_geometry_point_size
+       * - GL_OES_geometry_shader
+       * - GL_OES_get_program_binary
+       * - GL_OES_gpu_shader5
+       * - GL_OES_mapbuffer
+       * - GL_OES_packed_depth_stencil
+       * - GL_OES_required_internalformat
+       * - GL_OES_rgb8_rgba8
+       * - GL_OES_sample_shading
+       * - GL_OES_sample_variables
+       * - GL_OES_shader_image_atomic
+       * - GL_OES_shader_io_blocks
+       * - GL_OES_shader_multisample_interpolation
+       * - GL_OES_standard_derivatives
+       * - GL_OES_surfaceless_context
+       * - GL_OES_tessellation_point_size
+       * - GL_OES_tessellation_shader
+       * - GL_OES_texture_border_clamp
+       * - GL_OES_texture_buffer
+       * - GL_OES_texture_cube_map_array
+       * - GL_OES_texture_float
+       * - GL_OES_texture_half_float
+       * - GL_OES_texture_npot
+       * - GL_OES_texture_stencil8
+       * - GL_OES_texture_storage_multisample_2d_array
+       * - GL_OES_vertex_array_object
+       * - GL_OES_vertex_half_float
+       * - GL_OVR_multiview
+       * - GL_OVR_multiview2
+       * - GL_OVR_multiview_multisampled_render_to_texture
+
+For more information about the supported OpenGL\ |reg| ES and EGL\ |reg|
+extensions see:
+
+- https://docs.imgtec.com/reference-manuals/open-gl-es-extensions/topics/overview.html
+- https://registry.khronos.org/OpenGL/
+
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_AXE')
+
+    .. note:: OpenCL\ |reg| libraries are currently provided without support at
+              https://git.ti.com
 
 The OpenGL\ |reg| ES and EGL\ |reg| libraries are packaged with the
 |__SDK_FULL_NAME__| and are used by graphics stacks such as Wayland/Weston. The
 drivers run on an ARM core and programs the firmware running inside a GPU core
 with rendering commands submitted by the user applications.
+
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
+   Other features of the Rogue series of GPUs include bilinear and trilinear filtering.
+
+   Support for the following pixel formats:
+
+   .. list-table:: Supported surface pixel formats
+
+      * - ARGB8888
+      * - BGRA8888
+      * - RGB565
+
+   .. list-table:: Supported texture pixel formats
+
+      * - ARGB4444
+      * - ARGB8888
+      * - BGRA8888
+      * - RGB565
+      * - RGBA5551
+      * - YUV420
+      * - YUYV
+
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
+
+   Support for up to 2Kx2K render surfaces.
+
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS', 'Rogue_8XE')
+
+   Support for up to 4Kx4K render surfaces.
 
 The rest of this page will cover the following topics:
 
@@ -366,7 +575,7 @@ The rest of this page will cover the following topics:
     - AM3 Beagle Bone Black Board Configuration
     - SGX Debugging Tips
 
-.. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE')
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE', 'Rogue_BXS')
 
     - Software architecture of Graphics
     - Instructions on how to run graphics demos
@@ -398,10 +607,10 @@ The picture below shows the software architecture of Graphics in
 
 .. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
 
-    .. figure:: ../../../images/j7-graphics-software-stack.png
+    .. figure:: ../../../images/rogue-graphics-software-stack.png
         :align: center
 
-        PSDK Linux Jacinto 7 Graphics Software Stack
+        PSDK Linux Rogue Graphics Software Stack
 
 .. raw:: html
 
@@ -410,6 +619,20 @@ The picture below shows the software architecture of Graphics in
 .. raw:: html
 
    </div>
+
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
+
+   Please note that RGX-KM in this context refers to the pvrsrvkm kernel module, which is currently provided at:
+   https://git.ti.com/cgit/graphics/ti-img-rogue-driver
+
+   This is included by default in the SDK. The kernel module is located at:
+
+   ::
+
+       target # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
+
+   It is loaded automatically by the rc.pvr init script in /etc/init.d/ .
+
 
 Graphics Demos
 ==============
@@ -468,7 +691,7 @@ Native_SDK examples.
     the drm connector id. For information on how to get connector id please
     refer to the Display_ section.
 
-.. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE')
+.. ifconfig:: CONFIG_gpu_ip in ('Rogue_8XE', 'Rogue_AXE', 'Rogue_BXS')
 
     The following demos are available to run under the Wayland windowing system.
 
@@ -483,6 +706,26 @@ Native_SDK examples.
         target # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation2D
         target # /usr/bin/SGX/demos/Wayland/OpenGLESNavigation3D
         target # /usr/bin/SGX/demos/Wayland/OpenGLESParticleSystem
+
+    Additionally demos using the Null Window System / KMS / DRM / EGLFS are
+    provided with Qt. By default EGLFS will use the eglfs\_kms backend.
+
+    ::
+
+        target # /usr/share/qt5/examples/opengl/hellogles3/hellogles3 -platform eglfs
+        target # /usr/share/qt5/examples/opengl/2dpainting/2dpainting -platform eglfs
+        target # /usr/share/qt5/examples/opengl/paintedwindow/paintedwindow -platform eglfs
+
+    The default eglfs\_kms configuration file for Qt5 is located at:
+
+    ::
+
+        target # /etc/qt5/eglfs_kms_cfg.json
+
+    For more information about Qt's EGLFS and using Qt5 in embedded
+    applications see:
+
+    - https://doc.qt.io/qt-5/embedded-linux.html
 
 
 Display
@@ -549,7 +792,7 @@ display.
 Finding Plane ID
 ----------------
 
-To find the Plane ID, run the modetest command:
+To find the Plane ID, run the ``modetest`` command:
 
 .. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
 
@@ -704,13 +947,13 @@ On the default display:
 
 ::
 
-      target # weston --tty=1 --connector=<default connector-id>
+      target # weston --tty=1 --display=<default connector-id>
 
 On the secondary display:
 
 ::
 
-      target # weston --tty=1 --connector=<secondary connector-id>
+      target # weston --tty=1 --display=<secondary connector-id>
 
 On all connected displays (LCD and HDMI):
 
@@ -788,6 +1031,13 @@ Exiting Weston
 Terminate all Weston clients before exiting Weston. If you have invoked
 Weston from the serial console, exit Weston by pressing Ctrl-C.
 
+If Weston was started automatically by the init system then it can be stopped
+with:
+
+::
+
+     target # /etc/init.d/weston stop
+
 It is also possible to invoke Weston from the native console, exit
 Weston by pressing Ctrl-Alt-Backspace.
 
@@ -808,10 +1058,6 @@ line).
 
     [core]
     shell=ivi-shell.so
-    modules=ivi-controller.so
-
-    [ivi-shell]
-    ivi-input-module=ivi-input-controller.so
 
 After the above configuration is completed, we can restart Weston by
 running the following commands
@@ -826,95 +1072,15 @@ running the following commands
           with background.
 
 With ivi-shell configured for Weston, Wayland client applications use
-ivi-application protocol to be managed by a central HMI window
-management. The wayland-ivi-extension provides ivi-controller.so to
-manage properties of surfaces/layers/screens and it also provides the
-ivi-input-controller.so to manage the input focus on a surface.
+ivi-application protocol to be managed by a central HMI window management.
 
-Applications must support the ivi-application protocol to be managed
-by the HMI central controller with an unique numeric ID.
+Applications must support the ivi_application Wayland protocol to be managed by
+the HMI central controller with an unique numeric ID.
 
-Some important references to wayland-ivi-extension can be found at the
-following links:
+Some important references to Weston IVI-shell can be found at the following
+link:
 
--   https://at.projects.genivi.org/wiki/display/WIE/01.+Quick+start
--   https://at.projects.genivi.org/wiki/display/PROJ/Wayland+IVI+Extension+Design
-
-Running Weston's sample client applications with IVI shell
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-All the sample client applications in the Weston package, such as
-weston-simple-egl, weston-simple-shm, weston-flower, etc. also have
-support for ivi-shell. The SDK includes the application called
-layer-add-surfaces, which is part of the wayland-ivi-extension. This
-application allows the user to invoke the various functionalities of the
-ivi-shell and control the applications.
-
-The following is an example sequence of commands and the corresponding
-effect on the target.
-
-After launching Weston with the ivi-shell, please run the below
-sequence of commands:
-
-::
-
-    target# weston-simple-shm &
-
-At this point nothing is displayed on the screen; some additional
-commands are required.
-
-::
-
-    target# layer-add-surfaces -l 1000 -s 2 &
-
-This command creates a layer with ID 1000 and adds a maximum of 2
-surfaces to this layer on the default screen (which is usually the LCD).
-
-At this point, the user can see weston-simple-shm running on the LCD. This
-also prints the numericID (surfaceID) to which client’s surface is
-mapped as shown below:
-
-::
-
-    layer-add-surfaces: surface (10507) created
-    layer-add-surfaces: surface (10507) configured with:
-        dst region: x:0 y:0 w:250 h:250
-        src region: x:0 y:0 w:250 h:250
-        visibility: TRUE
-        added to layer (1000)
-    layer-add-surfaces: surface (10507) configured with:
-        dst region: x:0 y:0 w:250 h:250
-        src region: x:0 y:0 w:250 h:250
-        visibility: TRUE
-        added to layer (1000)
-
-Here, 10507 is the number to which weston-simple-shm application’s
-surface is mapped.
-
-User can launch one more client application which allows
-layer\_add\_surfaces to add a second surface to the layer 1000 as shown
-below.
-
-::
-
-    target# weston-flower &
-
-User can control the properties of the above surfaces using
-LayerManagerControl as shown below to set the position/resize,
-opacity and visibility respectively.
-
-::
-
-    target# LayerManagerControl set surface 10507 destination region 150 150 300 300
-    target# LayerManagerControl set surface 10507 opacity 0.5
-    target# LayerManagerControl set surface 10507 visibility 1
-
-::
-
-    target# LayerManagerControl  help
-
-The help option prints all possible control operations with the
-LayerManagerControl binary. Please refer to the available options.
+-   https://wayland.pages.freedesktop.org/weston/toc/ivi-shell.html
 
 Running QT applications with IVI shell
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -937,8 +1103,12 @@ additional details on the tools and detailed documentation.
 
 The target file system includes a subset of PowerVR tools such as
 PVRScope and PVRTrace recorder libraries from Imagination PowerVR SDK to
-profile and trace SGX activities. In addition, it also includes
+profile and trace GFX activities. In addition, it also includes
 PVRPerfServerDeveloper tool.
+
+.. note:: If you are experiencing issues with any of the tools try updating to
+          the latest provided by Imagination at
+          https://developer.imaginationtech.com/
 
 PVRTune
 -------
