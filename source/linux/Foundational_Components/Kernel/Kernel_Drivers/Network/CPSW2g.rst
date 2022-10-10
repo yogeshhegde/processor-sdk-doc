@@ -1,5 +1,7 @@
 .. include:: /replacevars.rst.inc
 
+.. _cpsw2g:
+
 CPSW2g Ethernet
 ---------------
 

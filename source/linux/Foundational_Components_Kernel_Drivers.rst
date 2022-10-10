@@ -25,7 +25,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Network/HSR_PRP
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW3g
-   Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng_virt_mac
+   Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng
    Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN-Testing
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
    Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
