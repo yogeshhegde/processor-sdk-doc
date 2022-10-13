@@ -128,6 +128,8 @@ source/linux/Kernel/Kernel_Drivers/UART.rst
 http://processors.wiki.ti.com/index.php/Processor_SDK_Linux_UART_Driver_Overview
 source/linux/Kernel/Kernel_Drivers/VPE.rst
 http://processors.wiki.ti.com/index.php/Linux_Core_VPE_User%27s_Guide
+source/linux/Kernel/Kernel_Drivers/Watchdog.rst
+http://processors.wiki.ti.com/index.php/Linux_Core_Watchdog_User%27s_Guide
 source/linux/Kernel/Kernel_Drivers/DCAN.rst
 http://processors.wiki.ti.com/index.php/Linux_Core_DCAN_User%27s_Guide
 source/linux/Kernel/Kernel_Drivers/MCAN.rst
