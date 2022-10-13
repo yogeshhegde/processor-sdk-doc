@@ -24,9 +24,11 @@ Replacement Variables
 '__SDK_DOWNLOAD_URL__'           : '`Jacinto7-Linux-SDK-Download-page <http://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-j784s4/latest/index_FDS.html>`__'
 '__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
+'__OPTEE_PLATFORM_FLAVOR__'      : 'j784s4'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '18.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '7 (64-bit)'
 '__FEATURINGMATRIX__'            : \
+'__SYSFW_CORE_NAME__'            : 'TIFS'
 
 Configuration Values
 --------------------
@@ -36,3 +38,4 @@ Configuration Values
 'CONFIG_icss_support'     : 'no'
 'CONFIG_rt_linux_support' : 'no'
 'CONFIG_gpu_ip'           : 'Rogue_BXS'
+'CONFIG_crypto'           : 'sa2ul'
