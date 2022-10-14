@@ -710,6 +710,27 @@ MII Support
 
   setenv bootcmd 'run findfdt; run envboot; run init_${boot}; run get_kern_${boot}; run get_fdt_${boot}; setenv name_overlays k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern'
 
+
+CPSW / PRU Ethernet Selection
+#############################
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    On AM64x EVM (`TMDS64EVM <https://www.ti.com/tool/TMDS64EVM>`__ & `TMDS64GPEVM <https://www.ti.com/tool/TMDS64GPEVM>`__), one Ethernet port is connected to CPSW, one Ethernet port is connected to PRU Ethernet, and one Ethernet port can be muxed to either CPSW or PRU Ethernet depending on the device tree settings.
+    The Ethernet port is muxed to CPSW by default in the AM64x EVM device tree file k3-am642-evm.dts. In order to mux the Ethernet port to PRU Ethernet, override the mux settings by applying one of these two overlay files in uboot:
+    k3-am642-evm-icssg1-dualemac.dtbo (both PRU Ethernet PHYs set to RGMII)
+    k3-am642-evm-icssg1-dualemac-mii.dtbo (both PRU Ethernet PHYs set to MII)
+
+    For example, to use MII interface the k3-am642-evm-icssg1-dualemac-mii.dtbo overlay file has to be applied using the following command in uboot.
+
+    ::
+
+      setenv bootcmd ‘run findfdt; run envboot;run init_${boot}; run get_kern_${boot}; run get_fdt_${boot};setenv name_overlays k3-am642-evm-icssg1-dualemac-mii.dtbo; run get_overlay_${boot}; run run_kern’'
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+  This feature is not supported.
+
 Time Senstive Network (TSN) Offload Support
 ###########################################
 
