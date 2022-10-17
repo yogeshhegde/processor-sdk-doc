@@ -53,7 +53,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW2g
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng_virt_mac
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSWng-Native-Ethernet
-linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN-Testing
+linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-PTP
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-EST
 linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-CBS

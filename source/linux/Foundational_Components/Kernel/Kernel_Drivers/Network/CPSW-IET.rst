@@ -4,6 +4,249 @@ IET
 .. contents:: :local:
     :depth: 2
 
+Introduction
+------------
+
+CPSW h/w support Intersperse Express Traffic (IET, defined in P802.3br/D2.0 spec which later is included in IEEE 802.3 2018) Frame preemption (FPE) feature and also to allow MAC layer to Verify if the peer supports IET MAC merge layer or not. MAC merge layer is responsible for preempting the transmission of frame from a preemptible queue if there is frame waiting for transmission at a higher priority Express queue. The h/w sends an initial segment of the frame satisfying min fragment size requirement and then schedule frame from the Express queue for transmission. Finally when no more frames available at the Express queue, it will resume transmission of remaining segments of the frame of the preemptible queue which was preempted. At the peer end, the segments are re-assembled and delivered to the MAC interface.
+
+IET FPE feature is configured for a port through ethtool --set-priv-flags command. Note that this is a temporary interface to allow configure IET FPE in CPSW2g driver and is not approved by netdev subsystem maintainers in Linux Kernel Mailing List (LKML) and may change in the future. Driver configures IET FPE for a port when network device is opened (ndo_open()) if user has turned ON the iet-frame-preemption priv flag. Note that since IET is a common feature applicable to all slave ports, this has to be done before the network ports of the CPSW2g are brought up. The user may also turn ON the iec-mac-verify flag if the peer device connected to CPSW2g port is also capable of verifying MAC merge/FPE capability. For this, driver schedules a worker thread to do the MAC/Verify process as soon as the Link is up and iec-mac-verify priv flag is set.  It resets the LINKFAIL bit and check if the Verify succeeds or not.  On failure, the MAC Verify state machine is reset by toggling LINKFAIL bit and process repeats for 20 times before bailing out. If iec-mac-verify priv flag is not set, driver assumes that peer is capable of supporting FPE, but not able to do MAC Verify. So it configures the device into force mode. User needs to verify that peer device is capable of supporting IET FPE to use force mode.
+
+Driver assumes highest priority h/w Queue as the express Queue and configures lower queues (Q0-QN-2, where N is the maximum number of queues configured) as preemptible queues by programming the PN_REG_IET_CTRL register if the MAC Verify succeeds or if the force mode is enabled. p0-rx-ptype-rrobin flag should be turned off before using IET feature. i.e CPSW2g h/w should be programmed into strict priority mode for IET to work.
+
+To enable IET FPE with MAC Verify, do
+
+::
+
+  ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
+  ethtool --set-priv-flags eth0 iet-frame-preemption on
+  ethtool --set-priv-flags eth0 iet-mac-verify on
+
+To enable IET FPE with no MAC Verify (Force mode)
+
+::
+
+  ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
+  ethtool --set-priv-flags eth0 iet-frame-preemption on
+
+To disable IET FPE and restore rrobin mode
+
+::
+
+  ethtool --set-priv-flags eth0 iet-frame-preemption off
+  ethtool --set-priv-flags eth0 iet-mac-verify off
+  ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin on
+
+.. rubric:: Example session to enable IET FPE with MAC Verify.
+   :name: iet-mac-verify
+
+Assume 2 AM65x IDKs are connected back to back over MCU Ethernet port (typically eth0 interface. Example assumes 2 h/w queues configured. Q1 will be express queue and Q0 the preemption queue in this configuration.
+
+::
+
+ root@evm:~# ip link set dev eth0 down
+ [  169.798571] am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+ root@evm:~# ethtool -L eth0 tx 2
+ root@evm:~# ethtool -l eth0
+ Channel parameters for eth0:
+ Pre-set maximums:
+ RX:             1
+ TX:             8
+ Other:          0
+ Combined:       0
+ Current hardware settings:
+ RX:             1
+ TX:             2
+ Other:          0
+ Combined:       0
+ @evm:~# ethtool --set-priv-flags eth0 p0-rx-ptype-rrobin off
+ root@evm:~# ethtool --set-priv-flags eth0 iet-frame-preemption on
+ root@evm:~# ethtool --show-priv-flags eth0
+ Private flags for eth0:
+ p0-rx-ptype-rrobin  : off
+ iet-frame-preemption: on
+ iet-mac-verify      : off
+ root@evm:~# ethtool --set-priv-flags eth0 iet-mac-verify on
+ root@evm:~# ethtool --show-priv-flags eth0
+ Private flags for eth0:
+ p0-rx-ptype-rrobin  : off
+ iet-frame-preemption: on
+ iet-mac-verify      : on
+ root@evm:~# ip link set dev eth0 up
+ root@evm:~#
+ root@evm:~# [  267.393967] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+ [  267.400353] am65-cpsw-nuss 46000000.ethernet eth0: Starting IET/FPE MAC Verify
+ [  267.465086] am65-cpsw-nuss 46000000.ethernet eth0: IET/FPE MAC Verify Success
+ [  267.472276] am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+
+.. rubric:: Example session to enable IET FPE with no MAC Verify (Force mode)
+   :name: iet-no-mac-verify
+
+::
+
+ root@evm:~# ip link set dev eth0 down
+ [  394.590576] am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+ root@evm:~# ethtool --set-priv-flags eth0 iet-frame-preemption on
+ #if iet-mac-verify was enabled before, turn it of
+ root@evm:~# ethtool --set-priv-flags eth0 iet-mac-verify off
+ root@evm:~# ethtool --show-priv-flags eth0
+ Private flags for eth0:
+ p0-rx-ptype-rrobin  : off
+ iet-frame-preemption: on
+ iet-mac-verify      : off
+ root@evm:~#
+ root@evm:~# ip link set dev eth0 up
+ root@evm:~# ip addr add 192.168.100.20/24 dev eth0
+ [  500.502660] TI DP83867 46000f00.mdio:00: attached PHY driver [TI DP83867] (mii_bus:phy_addr=46000f00.mdio:00, irq=POLL)
+ root@evm:~# [  500.516232] am65-cpsw-nuss 46000000.ethernet eth0: Link is Down
+ root@evm:~# [  552.738077] am65-cpsw-nuss 46000000.ethernet eth0: IET Enable Force mode
+ [  552.744839] am65-cpsw-nuss 46000000.ethernet eth0: Link is Up - 1Gbps/Full - flow control off
+ [  552.753434] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+
+.. rubric:: IET FPE example 
+   :name: iep-fpe-testing
+
+Highest priority Queue is Express queue. I.e if there are 8 queues configured through ethtool -L command, Q7 will be express and Q0-Q6 will be preemptible. Similarly if 4 queues are configured then Q3 will be express queue and Q0-Q2 will be preemptible queues. See below an example on how to verify preemption is happening in the hardware.  Setup requires 2 IDKs (Example AM65x) connected over MCU Ethernet/CPSW2g port. Assume that IET is enabled on both IDKs as in previous sections and either Force mode or MAC Verify mode is enabled. As soon as the Link comes up, the IET FPE gets enabled. The test requires MQPRIO qdisc to be configured at the Talker DUT's eth0 port and enable classifier to map UDP frames with specific port to be to a given traffic class. Traffic class is used as the index to direct traffic to the specific h/w queue. CPSW2g stats module provide a statistics counter for following that can be used to verify the IET FPE is functional:-
+
+* iet_rx_assembly_ok - Increments at the receiver if re-assembly of MAC fragments are successful.
+* iet_rx_frag - Incremenets at the receiver if MAC fragments are received due to preemption
+* iet_tx_frag - Increments at the sender side if fragments are created due to frame preemption.
+
+So to test, need to have traffic at the preemption queue as well as at the express queue and use the above statistics counters to verify if fragmentation happens at the sender side and re-assembly at the receiver side. Below logs provide some example usage.
+
+::
+
+ # At the Talker side
+ # Set up mqprio qdisc at eth0 - 2 Queues configured. Q0 - preemption queue and Q1 express queue
+ root@evm:~# tc qdisc replace dev eth0 handle 100: parent root mqprio num_tc 2  map 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 queues 1@0
+ 1@1 hw 0
+ root@evm:~# tc -g class show dev eth0
+ +---(100:ffe1) mqprio 
+ |    +---(100:2) mqprio 
+ | 
+ +---(100:ffe0) mqprio 
+     +---(100:1) mqprio
+ # Enable classifier at net core
+ root@evm:~# tc qdisc add dev eth0 clsact
+ # Add tc filter rule to mark packet priority based on destination UDP port number - Port 5002 mapped to prio 2
+ # From above mqprio settings, TC at index 2 is 0. So this TC packets go to Q0
+ root@evm:~# tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5002 0xffff action skbedit priority 2
+ [  285.576105] u32 classifier
+ [  285.578910]     input device check on
+ [  285.582640]     Actions configured
+ # Add tc filter rule to map packets with UDP port number - Port 5003 to prio 3
+ # From above mqprio settings, TC at index 3 is 1. So this TC packets go to Q1
+ root@evm:~# tc filter add dev eth0 egress protocol ip prio 1 u32 match ip dport 5003 0xffff action skbedit priority 3
+ root@evm:~#
+ root@evm:~# ip addr add 192.168.100.20/24 dev eth0
+
+ # At the Listener DUT, setup ip address and run iperf3 server session listening to port 5002 and 5003.
+ # ip addr add 192.168.100.30/24 dev eth0
+ root@evm:~# iperf3 -s -i30 -p5002&
+ [1] 1224
+ root@evm:~# iperf3 -s -i30 -p5003&
+ -----------------------------------------------------------
+ Server listening on 5002
+ -----------------------------------------------------------
+ [2] 1225
+ -----------------------------------------------------------
+ Server listening on 5003
+ -----------------------------------------------------------
+ root@evm:~#
+ # At Listener DUT start iperf3 client session to port 5002 and 5003
+ root@evm:~# iperf3 -c 192.168.100.30 -u -b200M -l1472 -u -t30 -i30 -p5002&
+ [1] 1050
+ root@evm:~# iperf3 -c 192.168.100.30 -u -b50M -l1472 -u -t30 -i30 -p5003&
+ [2] 1051
+ root@evm:~#
+ root@evm:~# warning: UDP block size 1472 exceeds TCP MSS 1448, may result in fragmentation / drops
+ warning: UDP block size 1472 exceeds TCP MSS 1448, may result in fragmentation / drops
+ Connecting to host 192.168.100.30, port 5003
+ Connecting to host 192.168.100.30, port 5002
+ [  5] local 192.168.100.20 port 60646 connected to 192.168.100.30 port 5003
+ [  5] local 192.168.100.20 port 39515 connected to 192.168.100.30 port 5002
+
+ # Now at the Talker DUT, dump statistics counter for Q0 and Q1 as well as IET statistics
+ root@evm:~# ethtool -S eth0 | grep 'tx_pri1'
+     p0_tx_pri1: 0
+     p0_tx_pri1_bcnt: 0
+     p0_tx_pri1_drop: 0
+     p0_tx_pri1_drop_bcnt: 0
+     tx_pri1: 24869
+     tx_pri1_bcnt: 37722660
+     tx_pri1_drop: 0
+     tx_pri1_drop_bcnt: 0
+ root@evm:~# ethtool -S eth0 | grep 'tx_pri0'
+     p0_tx_pri0: 0
+     p0_tx_pri0_bcnt: 0
+     p0_tx_pri0_drop: 0
+     p0_tx_pri0_drop_bcnt: 0
+     tx_pri0: 100271
+     tx_pri0_bcnt: 152067960
+     tx_pri0_drop: 0
+     tx_pri0_drop_bcnt: 0
+ root@evm:~# ethtool -S eth0 | grep iet
+     iet_rx_assembly_err: 0
+     iet_rx_assembly_ok: 0
+     iet_rx_smd_err: 0
+     iet_rx_frag: 0
+     iet_tx_hold: 0
+     iet_tx_frag: 159
+ root@evm:~# ethtool -S eth0 | grep 'tx_pri1'
+     p0_tx_pri1: 0
+     p0_tx_pri1_bcnt: 0
+     p0_tx_pri1_drop: 0
+     p0_tx_pri1_drop_bcnt: 0
+     tx_pri1: 27718
+     tx_pri1_bcnt: 42047442
+     tx_pri1_drop: 0
+     tx_pri1_drop_bcnt: 0
+ root@evm:~# ethtool -S eth0 | grep 'tx_pri0'
+     p0_tx_pri0: 0
+     p0_tx_pri0_bcnt: 0
+     p0_tx_pri0_drop: 0
+     p0_tx_pri0_drop_bcnt: 0
+     tx_pri0: 111637
+     tx_pri0_bcnt: 169320030
+     tx_pri0_drop: 0
+     tx_pri0_drop_bcnt: 0
+ root@evm:~# ethtool -S eth0 | grep iet
+     iet_rx_assembly_err: 0
+     iet_rx_assembly_ok: 0
+     iet_rx_smd_err: 0
+     iet_rx_frag: 0
+     iet_tx_hold: 0
+     iet_tx_frag: 175
+
+ # As seen, iet_tx_frag statistics counter increments at the Talker showing fragmentation at the Talker
+ # Also dump the statistics at the listener DUT
+ ethtool -S eth0 | grep iet
+     iet_rx_assembly_err: 0
+     iet_rx_assembly_ok: 248
+     iet_rx_smd_err: 0
+     iet_rx_frag: 248
+     iet_tx_hold: 0
+     iet_tx_frag: 0
+ root@evm:~# ethtool -S eth0 | grep iet
+     iet_rx_assembly_err: 0
+     iet_rx_assembly_ok: 252
+     iet_rx_smd_err: 0
+     iet_rx_frag: 252
+     iet_tx_hold: 0
+     iet_tx_frag: 0
+ root@evm:~# ethtool -S eth0 | grep iet
+     iet_rx_assembly_err: 0
+     iet_rx_assembly_ok: 252
+     iet_rx_smd_err: 0
+     iet_rx_frag: 252
+     iet_tx_hold: 0
+     iet_tx_frag: 0
+ # As seen, iet_rx_frag and iet_rx_assembly_ok statistics counter increments at the Listener showing re-assembly at the Listener
+
+.. rubric:: Using IET together with EST
+   :name: iet-with-est
+
+Express and preemption queues/Gates may be used as part of the EST schedule. If only Preemption queues are in a schedule entry, preceding an entry with Express queue, the guard band requirement reduces to 2048 nsec (0x100 = 256 * 8) so that packets don't spill over to the next sched-entry. Otherwise, the guard band required is as explained in the EST section.
+
 Warning: IET with Fixed-Link Interface
 --------------------------------------
 

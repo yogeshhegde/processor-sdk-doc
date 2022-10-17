@@ -17,6 +17,26 @@ TI Common Platform Ethernet Switch (CPSW) supports TSN features such as:
 3. FQTSS / CBS (Credit Based Shaper) [IEEE-802.1Qav]
 4. IET (Interspersing Express Traffic) [IEEE-802.3br, IEEE-802.1Qbu]
 
+.. note::
+    All TSN features require CONFIG_TI_AM65_CPTS to be enabled.
+
+.. note::
+    Switch based TSN features are supported only with CPSWxg for x >= 3.
+
+Documentation and Testing
+=========================
+
+The documentation for each of the TSN features along with the tests are
+present at:
+
+.. toctree::
+    :maxdepth: 1
+
+    CPSW-PTP
+    CPSW-EST
+    CPSW-CBS
+    CPSW-IET
+
 Testing Details
 ================
 
@@ -32,18 +52,9 @@ Testing Details
 
 - **For all the tests, CONFIG_TI_K3_AM65_CPTS has to be enabled in kernel config.**
 
-- For additional information, refer :ref:`common_platform_time_sync`
-
 - For tuning the TSN features in Switch Mode, refer :ref:`tsn_tuning`
 
-Tests
-======
-
 .. toctree::
-    :maxdepth: 1
+    :hidden:
 
-    CPSW-PTP
-    CPSW-EST
-    CPSW-CBS
-    CPSW-IET
     CPSW-TSN-Tuning
