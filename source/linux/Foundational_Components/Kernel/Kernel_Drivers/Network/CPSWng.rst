@@ -1,5 +1,7 @@
 .. include:: /replacevars.rst.inc
 
+.. _cpswng:
+
 CPSWng Ethernet
 ---------------
 
@@ -37,7 +39,7 @@ Depending on the SoC, the value of n in CPSWng varies as follows:
 The SDK provides support to use the CPSWng ports in two different
 configurations:
 
-#. CPSWng Virtual MAC
+#. CPSWng Virtual Client
 #. CPSWng Native Ethernet Switch
 
 .. Caution::
@@ -45,10 +47,10 @@ configurations:
     can be enabled for a build.
 
 .. note::
-    By default, the SDK works with the CPSWng Virtual MAC configuration.
+    By default, the SDK works with the CPSWng Virtual Client configuration.
 
-CPSWng Virt Mac
-"""""""""""""""
+CPSWng Virtual Client
+"""""""""""""""""""""
 
 In this configuration, the EthSwitch firmware running on one of the R5F cores
 controls access to the CPSWng subsystem. The other cores have thin client

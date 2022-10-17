@@ -1,5 +1,7 @@
 .. include:: /replacevars.rst.inc
 
+.. _cpsw3g:
+
 CPSW3g
 ------
 
