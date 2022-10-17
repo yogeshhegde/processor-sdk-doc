@@ -11,14 +11,7 @@ CPSW2g Ethernet
 Introduction
 ============
 
-The TI |__PART_FAMILY_DEVICE_NAMES__| SoC Gigabit Ethernet Switch subsystem (CPSW NUSS) has two ports and
-provides Ethernet packet communication for the device. It supports MII interfaces
-the Reduced Gigabit Media Independent Interface (RGMII), Reduced Media Independent
-Interface (RMII), and the Management Data Input/Output (MDIO) interface for
-physical layer device (PHY) management.
-
 The TI |__PART_FAMILY_DEVICE_NAMES__| SoC has integrated two-port Gigabit Ethernet Switch subsystem
-into device MCU domain named MCU_CPSW0 and has only one external Ethernet port (port 1)
 with selectable RGMII and RMII interfaces and an internal Communications
 Port Programming Interface (CPPI) port (Host port 0). Host Port 0 CPPI Packet
 Streaming Interface interface supports 8 TX channels and one RX channel
@@ -37,25 +30,38 @@ supports the following features:
 #. IET/preemption offload as per 802.1Q-2018 (TSN)
 #. Forwarding and Queuing Enhancements for Time-Sensitive Streams (FQTSS) as per 802.1Q-2018 previously referred to as CBS or 802.1Qav
 
+Supported platforms
+"""""""""""""""""""
 
-*Not supported*:
-
-- Interrupt Pacing is not supported by HW. NAPI is used by driver.
++-----------+-------------------------------+--------------------+
+| SoC       | Number of external ports      | Instances - Domain |
++===========+===============================+====================+
+| J721e     | 1 external port (CPSW2g)      | 1 - MCU            |
++-----------+-------------------------------+--------------------+
+| J7200     | 1 external port (CPSW2g)      | 1 - MCU            |
++-----------+-------------------------------+--------------------+
+| J721S2    | 1 external port (CPSW2g)      | 2 - MAIN, MCU      |
++-----------+-------------------------------+--------------------+
+| J784S4    | 1 external port (CPSW2g)      | 2 - MAIN, MCU      |
++-----------+-------------------------------+--------------------+
 
 Driver Configuration
 ====================
 
-The TI Processor SDK has |__PART_FAMILY_DEVICE_NAMES__| MCU CPSW2g driver enabled by default.
+The TI Processor SDK has |__PART_FAMILY_DEVICE_NAMES__| CPSW2g driver enabled by default.
 In case of custom builds, please ensure following configs are enabled.
 
 ::
 
     CONFIG_TI_DAVINCI_MDIO
-    CONFIG_TI_CPSW_ALE
-    CONFIG_TI_AM65_CPSW_NUSS
-    CONFIG_TI_AM65_CPTS
+    CONFIG_TI_K3_AM65_CPSW_NUSS
+    CONFIG_TI_K3_AM65_CPTS
     CONFIG_TI_AM65_CPSW_TAS
     CONFIG_PHY_TI_GMII_SEL
+
+For further details regarding the above configs, refer:
+#. drivers/net/ethernet/ti/Kconfig
+#. drivers/phy/ti/Kconfig
 
 .. rubric:: **Module Build**
    :name: k3-module-build

@@ -44,10 +44,13 @@ supports the following features:
 
 Supported platforms
 """""""""""""""""""
+
 +-----------+-------------------------------+
 | SoC       | Number of external ports      |
 +===========+===============================+
-| AM64X     | 2 external port (CPSW3g)      |
+| AM62X     | 2 external ports (CPSW3g)     |
++-----------+-------------------------------+
+| AM64X     | 2 external ports (CPSW3g)     |
 +-----------+-------------------------------+
 
 
@@ -59,12 +62,16 @@ custom builds, please ensure following configs are enabled.
 
 ::
 
- CONFIG_TI_K3_AM65_CPSW_NUSS
- CONFIG_TI_K3_AM65_CPSW_SWITCHDEV
- CONFIG_TI_K3_AM65_CPTS
- CONFIG_TI_DAVINCI_MDIO
- CONFIG_TI_CPSW_ALE
- CONFIG_TI_AM65_CPSW_TAS
+    CONFIG_TI_DAVINCI_MDIO
+    CONFIG_TI_K3_AM65_CPSW_NUSS
+    CONFIG_TI_K3_AM65_CPSW_SWITCHDEV
+    CONFIG_TI_K3_AM65_CPTS
+    CONFIG_TI_AM65_CPSW_TAS
+    CONFIG_PHY_TI_GMII_SEL
+
+For further details regarding the above configs, refer:
+#. drivers/net/ethernet/ti/Kconfig
+#. drivers/phy/ti/Kconfig
 
 .. rubric:: **Module Build**
    :name: k3-module-build
@@ -332,7 +339,6 @@ taking effect
 Transmit Traffic Control and Rate Limiting
 """"""""""""""""""""""""""""""""""""""""""
 
-For general info see `Forwarding and Queuing Enhancements for Time-Sensitive Streams (FQTSS, 802.1Qav)`_
 The main difference between one port and multi port devices is that TX CPPI channels
 are shared between all network devices while External Ports FIFO are per port.
 The MQPRIO Qdisk can be used to assign different TX CPPI channels to different ports
