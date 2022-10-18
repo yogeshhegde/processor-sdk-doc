@@ -78,5 +78,32 @@ A running remotecore can be stopped using the following command.
 Make sure all the commands are run in the above given sequence. Currently IPC
 is not supported in U-boot.
 
-|
+HS Devices
+^^^^^^^^^^
 
+HS Devices by default use the secure firmware images present in the filesystem
+for booting the remoteproc cores. Symlinks to these secure firmware images have
+a suffix of `-sec` on them.
+
+All the firmware images are authenticated while loading from U-boot.
+
+Steps for signing and updating firmware images in filesystem.
+
+.. rubric:: Getting Security Dev Tool
+
+::
+
+    $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
+    $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+
+.. rubric:: Signing the firmware
+
+::
+
+    $ ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh $FIRMWARE $FIRMWARE.signed
+
+.. rubric:: Updating firmware image
+
+::
+
+    $ ln -vfs $FIRMWARE.signed /lib/firmware/j7-main-r5f0_0-fw-sec
