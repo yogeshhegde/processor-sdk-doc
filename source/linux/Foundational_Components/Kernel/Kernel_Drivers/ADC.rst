@@ -10,7 +10,7 @@ An analog-to-digital converter (abbreviated ADC) is a device that uses
 sampling to convert a continuous quantity to a discrete time
 representation in digital form.
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM65X')
 
    The TSC\_ADC\_SS (Touchscreen\_ADC\_subsystem) is an 8 channel general
    purpose ADC, with optional support for interleaving Touch Screen
@@ -31,7 +31,7 @@ representation in digital form.
    conversion cycle can be initiated after the previous data is read.
    Please note that the ADC output is positive binary weighted data.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X')
 
    The ADC is a 12-bit, 8-channel, general purpose ADC with a sample rate
    of 4 MSPS (Megasamples per second or millions of samples per second).
@@ -74,7 +74,7 @@ Formula:
 .. rubric:: **Accessing ADC Pins on TI EVMs**
    :name: accessing-adc-pins-on-ti-evms
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM65X')
 
    .. rubric:: **AM335x EVM**
       :name: am335x-evm-adc
@@ -101,6 +101,14 @@ Formula:
    `here <https://dev.ti.com/tirex/content/tirex-product-tree/am64x-devtools/docs/am64x_gpevm_quick_start_guide.html>`__,
    or see the ADC schematic (PROC101A(001)_SCH) found
    `here <https://www.ti.com/lit/zip/swrr171>`__.
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+   On AM65x platform, there is a 20-pin connector (J10) of part number
+   "TSW-110-07-S-D" for connecting ADC signals. The connector includes
+   MCU_ADC0_CH0-7 for ADC0 and ground connections. The ADC connector
+   schematic (PROC062E3(003)_SCH) can be found
+   `here <https://www.ti.com/lit/zip/sprcah2>`__.
 
 | 
 
@@ -156,7 +164,7 @@ Should the entry "TI's AM335X ADC driver" be missing the MFD component
 .. rubric:: **Device Tree**
    :name: device-tree
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM65X')
 
    ADC device tree data is added in
    file(\ ``arch/arm/boot/dts/am335x-evm.dts``) as shown below.
@@ -196,6 +204,24 @@ Should the entry "TI's AM335X ADC driver" be missing the MFD component
    channels you want to use for ADC; the example above is using channels
    CH0-CH7.
 
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+   ADC device tree data is added in
+   file(\ ``arch/arm64/boot/dts/ti/am654-base-board.dts``) as shown below.
+
+   ::
+
+      &tscadc0 {
+	      adc {
+		      ti,adc-channels = <0 1 2 3 4 5 6 7>;
+	      };
+      };
+
+   |
+   The parameter "ti,adc-channels" needs to hold data related to which
+   channels you want to use for ADC; the example above is using channels
+   CH0-CH7.
+
 You can find the source code for ADC in the kernel sources at
 ``drivers/iio/adc/ti_am335x_adc.c``.
 
@@ -219,7 +245,7 @@ between 0 and 1.8v reference voltage.
 
 On loading the module you would see the IIO device created
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM65X')
 
    ::
 
@@ -239,7 +265,7 @@ On loading the module you would see the IIO device created
       lrwxrwxrwx    1 root     root             0 Nov  1 22:06 subsystem -> ../../../../../../bus/iio
       -rw-r--r--    1 root     root          4096 Nov  1 22:06 uevent
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM65X')
 
    ::
 
