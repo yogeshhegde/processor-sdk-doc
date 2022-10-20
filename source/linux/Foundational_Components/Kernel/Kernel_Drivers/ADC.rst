@@ -10,26 +10,40 @@ An analog-to-digital converter (abbreviated ADC) is a device that uses
 sampling to convert a continuous quantity to a discrete time
 representation in digital form.
 
-The TSC\_ADC\_SS (Touchscreen\_ADC\_subsystem) is an 8 channel general
-purpose ADC, with optional support for interleaving Touch Screen
-conversions. The TSC\_ADC\_SS can be used and configured in one of the
-following application options:
+.. ifconfig:: CONFIG_part_variant not in ('AM64X')
 
--  8 general purpose ADC channels
--  4 wire TS, with 4 general purpose ADC channels
--  5 wire TS, with 3 general purpose ADC channels
+   The TSC\_ADC\_SS (Touchscreen\_ADC\_subsystem) is an 8 channel general
+   purpose ADC, with optional support for interleaving Touch Screen
+   conversions. The TSC\_ADC\_SS can be used and configured in one of the
+   following application options:
 
-ADC used is 12 bit SAR ADC with a sample rate of 200 KSPS (Kilo Samples
-Per Second). The ADC samples the analog signal when "start of
-conversion" signal is high and continues sampling 1 clock cycle after
-the falling edge. It captures the signal at the end of sampling period
-and starts conversion. It uses 12 clock cycles to digitize the sampled
-input; then an "end of conversion" signal is enabled high indicating
-that the digital data ADCOUT<11:0> is ready for SW to consume. A new
-conversion cycle can be initiated after the previous data is read.
-Please note that the ADC output is positive binary weighted data.
+   -  8 general purpose ADC channels
+   -  4 wire TS, with 4 general purpose ADC channels
+   -  5 wire TS, with 3 general purpose ADC channels
 
-| 
+   ADC used is 12 bit SAR ADC with a sample rate of 200 KSPS (Kilo Samples
+   Per Second). The ADC samples the analog signal when "start of
+   conversion" signal is high and continues sampling 1 clock cycle after
+   the falling edge. It captures the signal at the end of sampling period
+   and starts conversion. It uses 12 clock cycles to digitize the sampled
+   input; then an "end of conversion" signal is enabled high indicating
+   that the digital data ADCOUT<11:0> is ready for SW to consume. A new
+   conversion cycle can be initiated after the previous data is read.
+   Please note that the ADC output is positive binary weighted data.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   The ADC is a 12-bit, 8-channel, general purpose ADC with a sample rate
+   of 4 MSPS (Megasamples per second or millions of samples per second).
+   The ADC sits idle until a Start of Conversion (SOC) pulse allows the
+   it to start conversion. The ADC samples the analog signal when "start
+   of conversion" signal is high and continues sampling 1 clock cycle after
+   the falling edge. It captures the signal at the end of sampling period
+   and starts conversion. It uses 13 clock cycles to digitize the sampled
+   input; then an "end of conversion" signal is enabled high indicating
+   that the digital data ADCOUT<11:0> is ready for SW to consume. A new
+   conversion cycle can be initiated after the previous data is read.
+   Please note that the ADC output is positive binary weighted data.
 
 .. rubric:: **Convert Analog voltage to Digital**
    :name: convert-analog-voltage-to-digital
@@ -60,21 +74,33 @@ Formula:
 .. rubric:: **Accessing ADC Pins on TI EVMs**
    :name: accessing-adc-pins-on-ti-evms
 
-.. rubric:: **AM335x EVM**
-   :name: am335x-evm-adc
+.. ifconfig:: CONFIG_part_variant not in ('AM64X')
 
-On top of EVM, on LCD daughter board, J8 connector can be used, where
-ADC channel input AIN0-AN7 pins are brought out. For further information
-of J8 connector layout please refer to EVM schematics
-`here <http://www.ti.com/tool/tmdxevm3358#technicaldocuments>`__
+   .. rubric:: **AM335x EVM**
+      :name: am335x-evm-adc
 
-.. rubric:: **Beaglebone/Beaglebone Black**
-   :name: beaglebonebeaglebone-black
+   On top of EVM, on LCD daughter board, J8 connector can be used, where
+   ADC channel input AIN0-AN7 pins are brought out. For further information
+   of J8 connector layout please refer to EVM schematics
+   `here <http://www.ti.com/tool/tmdxevm3358#technicaldocuments>`__
 
-On BeagleBone platform, P9 expansion header can be used. For further
-information on expansion header layout please refer to the Beaglebone
-schematics
-`here <http://circuitco.com/support/index.php?title=BeagleBone#Rev_A6>`__
+   .. rubric:: **Beaglebone/Beaglebone Black**
+      :name: beaglebonebeaglebone-black
+
+   On BeagleBone platform, P9 expansion header can be used. For further
+   information on expansion header layout please refer to the Beaglebone
+   schematics
+   `here <http://circuitco.com/support/index.php?title=BeagleBone#Rev_A6>`__
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   On AM64x platform, there is a 20-pin connector (J3) of part number
+   "TSW-110-07-S-D" for connecting ADC signals. The connector includes
+   ADC0_AIN0-7, VDDA_ADC connections and ground connections.
+   For ADC connector (J3) Pin-Out go to the "AM64x User Guide" found
+   `here <https://dev.ti.com/tirex/content/tirex-product-tree/am64x-devtools/docs/am64x_gpevm_quick_start_guide.html>`__,
+   or see the ADC schematic (PROC101A(001)_SCH) found
+   `here <https://www.ti.com/lit/zip/swrr171>`__.
 
 | 
 
@@ -125,29 +151,50 @@ Should the entry "TI's AM335X ADC driver" be missing the MFD component
 
 ::
 
-    modprobe ti_am335x_adc.ko
+    modprobe ti_am335x_adc
 
 .. rubric:: **Device Tree**
    :name: device-tree
 
-ADC device tree data is added in
-file(\ ``arch/arm/boot/dts/am335x-evm.dts``) as shown below.
+.. ifconfig:: CONFIG_part_variant not in ('AM64X')
 
-::
+   ADC device tree data is added in
+   file(\ ``arch/arm/boot/dts/am335x-evm.dts``) as shown below.
 
-    &tscadc {
-            status = "okay";
-            adc {
-                    ti,adc-channels = <4 5 6 7>;
-            };
-    };
+   ::
 
-| 
-| The parameter "ti,adc-channels" needs to hold data related to which
-  channels you want to use for ADC.
+      &tscadc {
+               status = "okay";
+               adc {
+                     ti,adc-channels = <4 5 6 7>;
+               };
+      };
 
--  This example is using channels AIN4, AIN5, AIN6, and AIN7 are used by
-   ADC. The remaining channels (0 to 3) are used by TSC.
+   |
+   The parameter "ti,adc-channels" needs to hold data related to which
+   channels you want to use for ADC.
+
+   -  This example is using channels AIN4, AIN5, AIN6, and AIN7 are used by
+      ADC. The remaining channels (0 to 3) are used by TSC.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   ADC device tree data is added in
+   file(\ ``arch/arm64/boot/dts/ti/am642-evm.dts``) as shown below.
+
+   ::
+
+      &tscadc0 {
+               status = "okay";
+               adc {
+                     ti,adc-channels = <0 1 2 3 4 5 6 7>;
+               };
+      };
+
+   |
+   The parameter "ti,adc-channels" needs to hold data related to which
+   channels you want to use for ADC; the example above is using channels
+   CH0-CH7.
 
 You can find the source code for ADC in the kernel sources at
 ``drivers/iio/adc/ti_am335x_adc.c``.
@@ -172,23 +219,49 @@ between 0 and 1.8v reference voltage.
 
 On loading the module you would see the IIO device created
 
-::
+.. ifconfig:: CONFIG_part_variant not in ('AM64X')
 
-    root@arago-armv7:~# ls -al /sys/bus/iio/devices/iio\:device0/
-    drwxr-xr-x    5 root     root             0 Nov  1 22:06 .
-    drwxr-xr-x    4 root     root             0 Nov  1 22:06 ..
-    drwxr-xr-x    2 root     root             0 Nov  1 22:06 buffer
-    -r--r--r--    1 root     root          4096 Nov  1 22:06 dev
-    -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage4_raw
-    -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage5_raw
-    -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage6_raw
-    -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage7_raw
-    -r--r--r--    1 root     root          4096 Nov  1 22:06 name
-    lrwxrwxrwx    1 root     root             0 Nov  1 22:06 of_node -> ../../../../../../firmware/devicetree/base/ocp/tscadc@44e0d000/adc
-    drwxr-xr-x    2 root     root             0 Nov  1 22:06 power
-    drwxr-xr-x    2 root     root             0 Nov  1 22:06 scan_elements
-    lrwxrwxrwx    1 root     root             0 Nov  1 22:06 subsystem -> ../../../../../../bus/iio
-    -rw-r--r--    1 root     root          4096 Nov  1 22:06 uevent
+   ::
+
+      root@arago-armv7:~# ls -al /sys/bus/iio/devices/iio\:device0/
+      drwxr-xr-x    5 root     root             0 Nov  1 22:06 .
+      drwxr-xr-x    4 root     root             0 Nov  1 22:06 ..
+      drwxr-xr-x    2 root     root             0 Nov  1 22:06 buffer
+      -r--r--r--    1 root     root          4096 Nov  1 22:06 dev
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage4_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage5_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage6_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage7_raw
+      -r--r--r--    1 root     root          4096 Nov  1 22:06 name
+      lrwxrwxrwx    1 root     root             0 Nov  1 22:06 of_node -> ../../../../../../firmware/devicetree/base/ocp/tscadc@44e0d000/adc
+      drwxr-xr-x    2 root     root             0 Nov  1 22:06 power
+      drwxr-xr-x    2 root     root             0 Nov  1 22:06 scan_elements
+      lrwxrwxrwx    1 root     root             0 Nov  1 22:06 subsystem -> ../../../../../../bus/iio
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 uevent
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+   ::
+
+      root@arago-armv7:~# ls -al /sys/bus/iio/devices/iio\:device0/
+      drwxr-xr-x    5 root     root             0 Nov  1 22:06 .
+      drwxr-xr-x    4 root     root             0 Nov  1 22:06 ..
+      drwxr-xr-x    2 root     root             0 Nov  1 22:06 buffer
+      -r--r--r--    1 root     root          4096 Nov  1 22:06 dev
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage0_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage1_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage2_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage3_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage4_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage5_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage6_raw
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 in_voltage7_raw
+      -r--r--r--    1 root     root          4096 Nov  1 22:06 name
+      lrwxrwxrwx    1 root     root             0 Nov  1 22:06 of_node -> ../../../../../../firmware/devicetree/base/ocp/tscadc@44e0d000/adc
+      drwxr-xr-x    2 root     root             0 Nov  1 22:06 power
+      drwxr-xr-x    2 root     root             0 Nov  1 22:06 scan_elements
+      lrwxrwxrwx    1 root     root             0 Nov  1 22:06 subsystem -> ../../../../../../bus/iio
+      -rw-r--r--    1 root     root          4096 Nov  1 22:06 uevent
 
 .. rubric:: **Modes of operation**
    :name: modes-of-operation
