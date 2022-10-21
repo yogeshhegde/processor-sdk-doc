@@ -150,9 +150,9 @@ platform that support USB Peripheral boot mode.
     -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
     -  Power on the board
 
-.. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
 
-    -  Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of J7200 TRM for boot switch details)
+    -  Set SYSBOOT switches to USB Peripheral boot mode (Refer to **Initialization** chapter of TRM for boot switch details)
     -  Make sure USB0 port in UFP/DRP mode: SW3[3:4] = 01 or 1x
     -  Connect EVM's TypeC port (USB0 port) to PC through USB cable
     -  Power on the board
@@ -206,6 +206,15 @@ platform that support USB Peripheral boot mode.
 
     Send boot images in this order: tiboot3.bin -> tispl.bin -> u-boot.img.
 
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    .. code-block:: text
+
+		Found DFU: [0451:6167] ver=0200, devnum=44, cfg=1, intf=0, path="1-10", alt=1, name="SocId", serial="01.00.00.00"
+		Found DFU: [0451:6167] ver=0200, devnum=44, cfg=1, intf=0, path="1-10", alt=0, name="bootloader", serial="01.00.00.00"
+
+    Send boot images in this order: tiboot3.bin -> tispl.bin -> u-boot.img.
+
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
     .. code-block:: text
@@ -250,6 +259,18 @@ platform that support USB Peripheral boot mode.
 		host$ sudo dfu-util -l
 		  Found DFU: [0451:6168] ver=0224, devnum=100, cfg=1, intf=0, path="3-3", alt=1, name="u-boot.img", serial="UNKNOWN"
 		  Found DFU: [0451:6168] ver=0224, devnum=100, cfg=1, intf=0, path="3-3", alt=0, name="tispl.bin", serial="UNKNOWN"
+
+		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
+		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+     .. code-block:: text
+
+		host$ sudo dfu-util -R -a bootloader -D tiboot3.bin
+		host$ sudo dfu-util -l
+		  Found DFU: [0451:6168] ver=0224, devnum=47, cfg=1, intf=0, path="1-10", alt=1, name="u-boot.img", serial="UNKNOWN"
+		  Found DFU: [0451:6168] ver=0224, devnum=47, cfg=1, intf=0, path="1-10", alt=0, name="tispl.bin", serial="UNKNOWN"
 
 		host$ sudo dfu-util -R -a tispl.bin -D tispl.bin
 		host$ sudo dfu-util -R  -a u-boot.img -D u-boot.img
