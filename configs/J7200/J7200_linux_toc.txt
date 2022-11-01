@@ -56,6 +56,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/CPSW-TSN-Tuning
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_End_Point
 linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/QSPI
+linux/Foundational_Components/Kernel/Kernel_Drivers/SERDES/SERDES
 linux/Foundational_Components/Kernel/Kernel_Drivers/SPI
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/NAND
 linux/Foundational_Components/Kernel/Kernel_Drivers/Storage/MMC-SD
