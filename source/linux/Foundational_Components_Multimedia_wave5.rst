@@ -222,15 +222,16 @@ decoding through the V4L2 GStreamer plugin.
 Below is a list of GStreamer plugins that utilize the hardware-accelerated
 video decoding/encoding in the |__PART_FAMILY_DEVICE_NAMES__|.
 
+-  ENCODER
+
+        #. v4l2h264enc
+        #. v4l2h265enc
+
 -  DECODER
 
         #. v4l2h264dec
         #. v4l2h265dec
 
--  ENCODER
-
-        #. v4l2h264enc
-        #. v4l2h265enc
 
 V4L2 Video Encoder/Decoder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -240,6 +241,7 @@ formats:
 
         -  V4L2_PIX_FMT_H264
         -  V4L2_PIX_FMT_HEVC
+
 
 GStreamer Pipelines
 ===================
@@ -260,33 +262,132 @@ GStreamer Pipelines
    H.265 decode:
         target # gst-launch-1.0 filesrc location=/<path_to_file>  ! matroskademux ! h265parse ! queue ! v4l2h265dec ! filesink location=/<path_to_file>
 
+
+
+Memory Requirement
+===================
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+   The following calculations are taken for 1080p single channel 30fps stream using vmstat.
+
+   -  Encoder
+
+    #. v4l2h264enc : 43.19 MB
+
+    #. v4l2h265enc : 43.31 MB
+
+   -  Decoder
+
+    #. v4l2h264dec : 62.77 MB
+
+    #. v4l2h265dec : 31.91 MB
+
+    .. note::
+	    The Actual Memory foot print may vary depending on the input stream.
+
+
+|
+
+
+.. ifconfig:: CONFIG_part_variant not in ('J721S2')
+
+	Please refer to the Performance guide.
+|
+
+
+Performance metrics
+===================
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+   The following figures illustrate the performance of the IP.
+
+	+---------------+------------+---------+
+	| CodecH265/264 | Resolution | Latency |
+	+---------------+------------+---------+
+	|               | 4K         | 33.3 ms |
+	|               +------------+---------+
+	|               | 1080p      | 8.3 ms  |
+	| Encoder       +------------+---------+
+	|               | 720p       | 3.7 ms  |
+	|               +------------+---------+
+	|               | 480p       | 1.2 ms  |
+	+---------------+------------+---------+
+
+|
+
+.. ifconfig:: CONFIG_part_variant not in ('J721S2')
+
+	Please refer to the Performance guide.
+|
+
+Calculation of Performance metrics
+==================================
+
+The FW reports the tick information and wave5 driver can print the cycle information for each frame.
+Please refer the below source code.
+
+.. code::
+
+	wave5_vpu_dec.c
+	static void wave5_vpu_dec_finish_decode(struct vpu_instance *inst)
+	{
+	    ...
+            dev_dbg(inst->dev->dev, "frame_cycle %8d\n", dec_output_info.frame_cycle);
+	    ...
+	}
+
+	wave5_vpu_enc.c
+
+	static void wave5_vpu_enc_finish_encode(struct vpu_instance *inst)
+	{
+	    ...
+	    dev_dbg(inst->dev->dev, "frame_cycle %8d\n", enc_output_info.frame_cycle);
+	    ...
+	}
+
+Dividing the cycle information by the CPU Hz value, we can get the millisecond value.
+For example,
+
+Test environment : CPU 400MHz
+
+#1 frame_cycle 489472 => 489472 / 400000000 = 0.00122368 millisecond
+
+#2 frame_cycle 442368 => 442368 / 400000000 = 0.00110592 millisecond
+
+#3 frame_cycle 429824 => 429824 / 400000000 = 0.00107456 millisecond
+
+
+DMA Buffer Import
+=================
+
+Buffer import on encoder can be tested by selecting the output-io-mode as '5'. Example is mentioned below.
+
+.. code::
+
+	gst-launch-1.0 filesrc location=./sample_file.264 ! h264parse ! v4l2h264dec capture-io-mode=4 ! v4l2h264enc output-io-mode=5 ! filesink location=./output.264
+
+
+.. note::
+	    DMA Buf import is currently supported only on Encoder.
+
 .. note::
 
  Known Limitations:
 
-   #.  CTRL-C results in rmmod/insmod being needed to reinitialize the driver.
-
-       In the case that EOF is not handled in GStreamer, the user is left with no option but to hit ctrl-c to terminate the pipeline.
-       However after this has been done no subsequent operation can be performed using GStreamer with the wave5 encoder/decoder without first doing rmmod wave5 and then insmod wave5.ko,
-       after this has been done. New GStreamer pipelines can be correctly instantiated.
-
-   #.  kmssink rendering has color space mismatch.
-
-       When rendering to kmssink the output of wave5 driver is limited to I420 - the TI kmssink only handles NV12 - even if the caps are forced to NV12 the wave5 driver always
-       seems to output I420. When using the wayland sink (which does handle i420) the colors appear to be correct on the screen.
-       The colors in the image are messed up with this pipeline:
-
-       gst-launch-1.0 filesrc location=/<path_to_file> ! matroskademux ! h264parse ! v4l2h264dec ! kmssink driver-name=tidss
-       as does this:
-       gst-launch-1.0 filesrc location=/<path_to_file> ! matroskademux ! h264parse ! v4l2h264dec ! video/x-raw,format=NV12 ! kmssink driver-name=tidss
-
-       This works - but of course it is incredibly slow:
-       gst-launch-1.0 filesrc location=/<path_to_file> ! matroskademux ! h264parse ! v4l2h264dec ! video/x-raw,format=I420 ! videoconvert ! video/x-raw,format=NV12 \
-       ! kmssink driver-name=tidss
-
-   #.  GStreamer End of File does not result in pipeline termination.
-
-       When a gst filesrc is used for both the encoder and the decoder,  when the file hits EOF the pipeline just hangs and never terminates. Only way out is a ctrl-c.
-
    #.  The full set of encoder configurations is not currently exposed through the V4L2 interface
        See compliance data for what is available and what is not.
+
+   #.  Current driver supports 8 channel 1080p Encode and only 7ch 1080p Decode.
+       In the current driver, the requirement for 8ch Decode exceeds the available memory. Memory optimization is under process. The optimizations will be around 20 percent of current memory requirement, that can be saved.
+
+Configuration of CMA Size
+=========================
+
+The CMA size can be increased or decreased depending on the requirement and the memory map usage by other components.
+
+The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_j7-evm_defconfig in the linux directory of sdk.The default value is 400MB.
+The value can be increased according to the availability of space in DDR memory map.
+
+The CMA memory size can be decreased if the memory requirement is of limited number of channels.
