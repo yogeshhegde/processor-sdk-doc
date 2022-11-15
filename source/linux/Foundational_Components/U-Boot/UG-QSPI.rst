@@ -97,7 +97,7 @@ documented above.
 
       => setenv boot ubi
       => boot
-    
+
     **Writing to OSPI using DFU**
 
     Setup: Connect the Type C port (USB0 port) of EVM to ubuntu host PC. Make sure
@@ -415,6 +415,75 @@ documented above.
        => sf update $loadaddr 0x3fc0000 $filesize
 
     **flash layout for ospi**
+
+    .. code-block:: console
+
+             0x0 +----------------------------+
+                 |     ospi.tiboot3(1m)       |
+                 |                            |
+         0x80000 +----------------------------+
+                 |     ospi.tispl(2m)         |
+                 |                            |
+        0x280000 +----------------------------+
+                 |     ospi.u-boot(4m)        |
+                 |                            |
+        0x680000 +----------------------------+
+                 |     ospi.env(128k)         |
+                 |                            |
+        0x6A0000 +----------------------------+
+                 |   ospi.env.backup(128k)    |
+                 |                            |
+        0x6C0000 +----------------------------+
+                 |      padding (1280k)       |
+        0x800000 +----------------------------+
+                 |     ospi.rootfs(ubifs)     |
+                 |                            |
+       0x3fc0000 +----------------------------+
+                 |   ospi.phypattern (256k)   |
+                 |                            |
+                 +----------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    J784S4 is similar to J721S2, only difference being that OSPI is muxed
+    externally between a NOR and a NAND flash through a physical switch.
+    OSPI NOR and OSPI NAND can't be used at the same time, they need to be
+    selected by changing a physical configuration switch on the EVM board
+    before driver probes them. CONFIG SW2.1 should be in OFF state to use
+    OSPI NOR, and in ON STATE for OSPI NAND.
+
+    **Flashing images to OSPI NOR flash**
+
+    Following commands can be used to download tiboot3.bin, tispl.bin and
+    u-boot.img over tftp and then flash it to OSPI at respective addresses.
+
+    .. code-block:: console
+
+      => sf probe
+      => tftp ${loadaddr} tiboot3.bin
+      => sf update $loadaddr 0x0 $filesize
+      => tftp ${loadaddr} tispl.bin
+      => sf update $loadaddr 0x80000 $filesize
+      => tftp ${loadaddr} u-boot.img
+      => sf update $loadaddr 0x280000 $filesize
+
+    **PHY calibration**
+
+    PHY calibration allows for higher read performance. To enable PHY, the PHY
+    calibration pattern must be flashed to ospi at the start of the last erase
+    sector. For the cypress s28hs512t flash, this lies at the address 0x3fc0000.
+
+    download the binary file containing the phy pattern from :download:`here </files/ospi_phy_pattern>`.
+    below commands can be used to flash the phy pattern, with the location of the
+    pattern depending on which flash is being used:
+
+    .. code-block:: console
+
+       => sf probe
+       => tftp ${loadaddr} ospi_phy_pattern
+       => sf update $loadaddr 0x3fc0000 $filesize
+
+    **Flash layout for OSPI NOR**
 
     .. code-block:: console
 
