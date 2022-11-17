@@ -420,9 +420,6 @@ Build U-Boot
         |    AM62X SK                |    am62x\_evm\_r5\_defconfig    |    am62x\_evm\_r5\_defconfig    |   am62x\_evm\_r5\_defconfig    |   am62x\_evm\_r5\_defconfig    |   am62x\_evm\_r5\_usbdfu\_defconfig    |
         |                            |    am62x\_evm\_a53\_defconfig   |    am62x\_evm\_a53\_defconfig   |   am62x\_evm\_a53\_defconfig   |   am62x\_evm\_a53\_defconfig   |   am62x\_evm\_a53\_defconfig           |
         +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+----------------------------------------+
-        |    AM62X HS EVM            | am62x\_hs\_evm\_r5\_defconfig   | am62x\_hs\_evm\_r5\_defconfig   | am62x\_hs\_evm\_r5\_defconfig  | am62x\_hs\_evm\_r5\_defconfig  |                                        |
-        |                            | am62x\_hs\_evm\_a53\_defconfig  | am62x\_hs\_evm\_a53\_defconfig  | am62x\_hs\_evm\_a53\_defconfig | am62x\_hs\_evm\_a53\_defconfig |                                        |
-        +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+----------------------------------------+
 
         .. note::
 
