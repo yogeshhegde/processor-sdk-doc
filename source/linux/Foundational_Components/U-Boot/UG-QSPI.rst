@@ -378,6 +378,38 @@ documented above.
                  |                            |
                  +----------------------------+
 
+    **Enabling QSPI-NOR**
+
+    To use QSPI-NOR Flash with the AM625x SoC, the following changes are needed to configure the bus-width
+    to get 1-1-4 Mode working optimally. The OSPI module in the SoC is capable of
+    supporting single, dual, quad (QSPI mode) or octal I/O instructions. Cypress s25hs512t QSPI-NOR
+    Flash was tested to be working with the AM625x SoC after the following modifications in Device Tree.
+
+    .. code-block:: text
+
+        diff --git a/arch/arm/dts/k3-am625-sk.dts b/arch/arm/dts/k3-am625-sk.dts
+        index bfe1e78ed895..980054144d20 100644
+        --- a/arch/arm/dts/k3-am625-sk.dts
+        +++ b/arch/arm/dts/k3-am625-sk.dts
+        @@ -32,8 +32,8 @@
+            flash@0{
+                compatible = "jedec,spi-nor";
+                reg = <0x0>;
+        -       spi-tx-bus-width = <8>;
+        -       spi-rx-bus-width = <8>;
+        +       spi-tx-bus-width = <1>;
+        +       spi-rx-bus-width = <4>;
+                spi-max-frequency = <25000000>;
+                cdns,tshsl-ns = <60>;
+                cdns,tsd2d-ns = <60>;
+        -- 
+        2.25.1
+
+    The reason for choosing tx-bus-width as 1 is due to the fact that writing to flashes is always a
+    slow process and thus using multi I/O writes doesn't really offer much performance boost. Hence,
+    writes always take place in 1S mode. However, reads can happen much faster and hence we allow for
+    Quad Mode rx-bus-width.
+
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
     j721s2 is largely similar to j721e and am654. the major differences are that it
