@@ -304,9 +304,6 @@ Build U-Boot
         |    AM64X SK                |    am64x\_evm\_r5\_defconfig    |                                 |   am64x\_evm\_r5\_defconfig    |   am64x\_evm\_r5\_defconfig    |
         |                            |    am64x\_evm\_a53\_defconfig   |                                 |   am64x\_evm\_a53\_defconfig   |   am64x\_evm\_a53\_defconfig   |
         +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+
-        |    AM64X HS EVM            | am64x\_hs\_evm\_r5\_defconfig   | am64x\_hs\_evm\_r5\_defconfig   | am64x\_hs\_evm\_r5\_defconfig  | am64x\_hs\_evm\_r5\_defconfig  |
-        |                            | am64x\_hs\_evm\_a53\_defconfig  | am64x\_hs\_evm\_a53\_defconfig  | am64x\_hs\_evm\_a53\_defconfig | am64x\_hs\_evm\_a53\_defconfig |
-        +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+
 
         .. note::
 
