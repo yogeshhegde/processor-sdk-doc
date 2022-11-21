@@ -1,5 +1,7 @@
 .. http://processors.wiki.ti.com/index.php/Linux_Core_MCAN_User%27s_Guide
 
+.. _mcan:
+
 MCAN
 ---------------------------------
 
@@ -33,112 +35,124 @@ This wiki page provides usage information of M\_CAN Linux driver.
 +----------+---------+-----------------------+-------------------+----------------------+
 | J721S2   | EVM     | 5                     | Header            | Yes                  |
 +----------+---------+-----------------------+-------------------+----------------------+
+| AM62x    | SK      | 3                     | Header            | No                   |
++----------+---------+-----------------------+-------------------+----------------------+
 
 Table:  Boards M\_CAN Driver is Validated on
 
-.. rubric:: **Connection Configuration**
-   :name: connection-configuration
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-+-----------------------------------------------+------------------------------------------------------+
-| .. raw:: html                                 | .. raw:: html                                        |
-|                                               |                                                      |
-|    <div class="center">                       |    <div class="center">                              |
-|                                               |                                                      |
-| .. raw:: html                                 | .. raw:: html                                        |
-|                                               |                                                      |
-|    <div                                       |    <div                                              |
-|    class="thumb tnone">                       |    class="thumb tnone">                              |
-|                                               |                                                      |
-| .. raw:: html                                 | .. raw:: html                                        |
-|                                               |                                                      |
-|    <div                                       |    <div                                              |
-|    class="thumbinner"                         |    class="thumbinner"                                |
-|    style="width:302px;">                      |    style="width:302px;">                             |
-|                                               |                                                      |
-| .. Image:: /images/Dcan-header.png            | .. Image:: /images/Dcan_header_to_db9.png            |
-|                                               |                                                      |
-| .. raw:: html                                 | .. raw:: html                                        |
-|                                               |                                                      |
-|    <div                                       |    <div                                              |
-|    class="thumbcaption">                      |    class="thumbcaption">                             |
-|                                               |                                                      |
-| .. raw:: html                                 | .. raw:: html                                        |
-|                                               |                                                      |
-|    <div class="magnify">                      |    <div class="magnify">                             |
-|                                               |                                                      |
-+-----------------------------------------------+------------------------------------------------------+
-| Header to Header                              | Header to DB9                                        |
-+-----------------------------------------------+------------------------------------------------------+
+   **Notice for AM62x:**
 
+   The AM62x SK does not carry a transciever to experiment with. The SoC does support CAN-FD, but it is required to connect a CAN external
+   transceiver to the AM62x SK to test the full CAN functionality. Go to the following guide: :ref:`mcan-on-am62x` for an example
+   for connecting a CAN external transceiver to the AM62x SK.
 
-Table:  Various DCAN EVM Connection Configuration
+.. ifconfig:: CONFIG_part_variant not in ('AM62X')
 
-.. rubric:: **Equipment**
-   :name: equipment
+   .. rubric:: **Connection Configuration**
+      :name: connection-configuration
 
-.. rubric:: **Female DB9 Cable**
-   :name: female-db9-cable
-
-For boards exposing M\_CAN using male DB9 connectors, a female connector
-is required. The other side can be male or female depending on the other
-CAN device the user connects to.
-
-.. Image:: /images/DB9_cable.jpg
-   :scale: 50%
-   :align: center
+   +------------------------------------------------+------------------------------------------------------+
+   | .. raw:: html                                  | .. raw:: html                                        |
+   |                                                |                                                      |
+   |    <div class="center">                        |    <div class="center">                              |
+   |                                                |                                                      |
+   | .. raw:: html                                  | .. raw:: html                                        |
+   |                                                |                                                      |
+   |    <div                                        |    <div                                              |
+   |    class="thumb tnone">                        |    class="thumb tnone">                              |
+   |                                                |                                                      |
+   | .. raw:: html                                  | .. raw:: html                                        |
+   |                                                |                                                      |
+   |    <div                                        |    <div                                              |
+   |    class="thumbinner"                          |    class="thumbinner"                                |
+   |    style="width:302px;">                       |    style="width:302px;">                             |
+   |                                                |                                                      |
+   | .. Image:: /images/mcan-diagram-evm-to-evm.png | .. Image:: /images/Dcan_header_to_db9.png            |
+   |                                                |                                                      |
+   | .. raw:: html                                  | .. raw:: html                                        |
+   |                                                |                                                      |
+   |    <div                                        |    <div                                              |
+   |    class="thumbcaption">                       |    class="thumbcaption">                             |
+   |                                                |                                                      |
+   | .. raw:: html                                  | .. raw:: html                                        |
+   |                                                |                                                      |
+   |    <div class="magnify">                       |    <div class="magnify">                             |
+   |                                                |                                                      |
+   +------------------------------------------------+------------------------------------------------------+
+   | Header to Header                               | Header to DB9                                        |
+   +------------------------------------------------+------------------------------------------------------+
 
 
-.. rubric:: **Jumper Wires**
-   :name: jumper-wires
+   Table:  Various DCAN EVM Connection Configuration
 
-For boards where the CAN pins are broken out via a header, female jumper
-cables will be ideal for connection. The CAN pins will be CAN H
-(typically pin 1 of the header), GND (middle pin of the header) and CAN
-L (lowest pin on the header). The pinout in the header might vary across
-different boards and users must consult the board's schematic to verify
-this.
+   .. rubric:: **Equipment**
+      :name: equipment
 
-.. Image:: /images/Female_to_female_jumper.png
-   :scale: 20%
-   :align: center
+   .. rubric:: **Female DB9 Cable**
+      :name: female-db9-cable
+
+   For boards exposing M\_CAN using male DB9 connectors, a female connector
+   is required. The other side can be male or female depending on the other
+   CAN device the user connects to.
+
+   .. Image:: /images/DB9_cable.jpg
+      :scale: 50%
+      :align: center
 
 
-.. rubric:: **Custom DB9 to Header Cable**
-   :name: custom-db9-to-header-cable
+   .. rubric:: **Jumper Wires**
+      :name: jumper-wires
 
-Typically CAN devices use a DB9 connection therefore for boards whose
-CAN pins are broken out via a header it is helpful to create a header to
-DB9 connector cable. This custom cable is simple to make. Either a male
-or female DB9 connector (not cable) must be obtained along with three
-female jumper wires.
+   For boards where the CAN pins are broken out via a header, female jumper
+   cables will be ideal for connection. The CAN pins will be CAN H
+   (typically pin 1 of the header), GND (middle pin of the header) and CAN
+   L (lowest pin on the header). The pinout in the header might vary across
+   different boards and users must consult the board's schematic to verify
+   this.
 
-Snip one end of each of the jumper wires and expose some of the wiring.
-Now solder each of the exposed wires to pin 7 (CAN H), pin 2 (CAN L) and
-pin 3 (GND). Make sure your soldering on the side of the DB9 that has
-the metal lip meant to push some of the exposed wire into and soldering
-to the correct pins correctly. Use the below diagram as a reference.
+   .. Image:: /images/Female_to_female_jumper.png
+      :scale: 20%
+      :align: center
 
-+-------------------------------------------------------------+------------------------------------------------+
-| .. raw:: html                                               | .. raw:: html                                  |
-|                                                             |                                                |
-|    <div class="center">                                     |    <div class="center">                        |
-|                                                             |                                                |
-| .. raw:: html                                               | .. raw:: html                                  |
-|                                                             |                                                |
-|    <div class="floatnone">                                  |    <div class="floatnone">                     |
-|                                                             |                                                |
-| .. Image:: /images/DCAN_custom_cable_diagram.png            | .. Image:: /images/Custom_cable.png            |
-|                                                             |                                                |
-| .. raw:: html                                               | .. raw:: html                                  |
-|                                                             |                                                |
-|    </div>                                                   |    </div>                                      |
-|                                                             |                                                |
-| .. raw:: html                                               | .. raw:: html                                  |
-|                                                             |                                                |
-|    </div>                                                   |    </div>                                      |
-+-------------------------------------------------------------+------------------------------------------------+
-| Wiring Diagram                                              | Example of completed cable.                    |
-+-------------------------------------------------------------+------------------------------------------------+
+
+   .. rubric:: **Custom DB9 to Header Cable**
+      :name: custom-db9-to-header-cable
+
+   Typically CAN devices use a DB9 connection therefore for boards whose
+   CAN pins are broken out via a header it is helpful to create a header to
+   DB9 connector cable. This custom cable is simple to make. Either a male
+   or female DB9 connector (not cable) must be obtained along with three
+   female jumper wires.
+
+   Snip one end of each of the jumper wires and expose some of the wiring.
+   Now solder each of the exposed wires to pin 7 (CAN H), pin 2 (CAN L) and
+   pin 3 (GND). Make sure your soldering on the side of the DB9 that has
+   the metal lip meant to push some of the exposed wire into and soldering
+   to the correct pins correctly. Use the below diagram as a reference.
+
+   +-------------------------------------------------------------+------------------------------------------------+
+   | .. raw:: html                                               | .. raw:: html                                  |
+   |                                                             |                                                |
+   |    <div class="center">                                     |    <div class="center">                        |
+   |                                                             |                                                |
+   | .. raw:: html                                               | .. raw:: html                                  |
+   |                                                             |                                                |
+   |    <div class="floatnone">                                  |    <div class="floatnone">                     |
+   |                                                             |                                                |
+   | .. Image:: /images/DCAN_custom_cable_diagram.png            | .. Image:: /images/Custom_cable.png            |
+   |                                                             |                                                |
+   | .. raw:: html                                               | .. raw:: html                                  |
+   |                                                             |                                                |
+   |    </div>                                                   |    </div>                                      |
+   |                                                             |                                                |
+   | .. raw:: html                                               | .. raw:: html                                  |
+   |                                                             |                                                |
+   |    </div>                                                   |    </div>                                      |
+   +-------------------------------------------------------------+------------------------------------------------+
+   | Wiring Diagram                                              | Example of completed cable.                    |
+   +-------------------------------------------------------------+------------------------------------------------+
 
 .. rubric:: **CAN Utilities**
    :name: can-utilities
