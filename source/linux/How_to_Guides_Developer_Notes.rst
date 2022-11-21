@@ -25,6 +25,7 @@ Developer Notes
    How_to_Guides/Target/How_to_Boot_Beagle_Bone_Black_with_Processor_SDK_Linux
    How_to_Guides/Target/How_to_flash_emmc_device
    How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
+   How_to_Guides/Target/How_to_test_MCAN_on_AM62x
    How_to_Guides/Target/How_to_enable_DT_overlays_on_AM625_SK
    How_to_Guides/Target/How_to_playback_audio_over_HDMI
    How_to_Guides/Target/How_to_enable_Microtips_LVDS_Panel_on_AM62_SK_EVM
