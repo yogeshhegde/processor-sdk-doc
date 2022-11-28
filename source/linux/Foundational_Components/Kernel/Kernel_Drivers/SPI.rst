@@ -10,7 +10,7 @@ SPI
 
 -  Synchronous
 
--  Master-slave configuration (driver supports only master mode)
+-  Master-slave configuration
 
 -  Data Exchange - DMA/PIO
 
@@ -25,6 +25,14 @@ SPI
 | AM437x       | McSPI     |
 +--------------+-----------+
 | DRA7x        | McSPI     |
++--------------+-----------+
+| J721E        | McSPI     |
++--------------+-----------+
+| J7200        | McSPI     |
++--------------+-----------+
+| J721S2       | McSPI     |
++--------------+-----------+
+| AM62X        | McSPI     |
 +--------------+-----------+
 | 66AK2Gx      | McSPI     |
 +--------------+-----------+
@@ -43,7 +51,13 @@ Note this isn't meant to be an exhaustive list and only takes into
 account features the SPI peripheral in the SoC is capable of but is
 currently not supported in the Linux driver.
 
-- SPI slave mode isn't supported
+.. ifconfig:: CONFIG_part_family in ('J7_family', 'General_family', 'AM335X_family', 'AM437X_family')
+
+   - SPI slave mode is supported only with DMA enabled.
+
+.. ifconfig:: CONFIG_part_family not in ('J7_family')
+
+   - SPI slave mode isn't supported.
 
 .. rubric:: Kernel Configuration
 
@@ -218,4 +232,25 @@ In the kernel sources,
 ./tools/spi/\ `spidev\_test.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/spi/spidev_test.c>`__
 is a test application within the kernel that can be cross compiled to
 show a C application interacting with the SPI peripheral.
+
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J7200', 'J721S2')
+
+   .. rubric:: McSPI Master Slave Loopback
+
+   In the Jacinto family of devices  MAIN_MCSPI4 instance is internally
+   connected as slave to MCU_MCSPI2 master, a reference overlay is provided
+   to demonstrate the MCSPI internal loopback for J7200, for other platforms
+   the same overlay can be used with minor modifications to update for the PSIL
+   thread id.Run the following commands in u-boot console to load the overlays:
+
+   .. code-block:: text
+
+    => setenv name_overlays k3-j7200-mcspi-loopback.dtbo
+    => boot
+
+   This will instantiate MAIN_MCSPI4 instance in slave mode and a spidev device
+   on MCU_MCSPI2 master thus helping to test the loopback behavior from userspace.
+   Note that the SPI Slave in Linux doesn't implement flow-control by default and
+   custom flow control mechanism need to be implemented according to the application
+   for deterministic performance.
 
