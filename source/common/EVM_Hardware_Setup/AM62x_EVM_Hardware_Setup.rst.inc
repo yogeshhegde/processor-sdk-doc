@@ -3,12 +3,17 @@ AM62x SK EVM Hardware Setup
 
 .. rubric:: Description
 
-TBD...
+The AM62x starter kit (SK) evaluation module (EVM) is a stand-alone test and development platform
+built around the AM62x system-on-a-chip (SoC). AM62x processors are comprised of a quad-core 64-bit
+Arm®-Cortex®-A53 microprocessor, single-core Arm Cortex-R5F microcontroller (MCU) and an Arm
+Cortex-M4F MCU.
 
-The following is the image of the AM62x EVM:
+The following is the image of the AM62x SK EVM:
 
 .. Image:: ../../../images/AM62x_Board.jpg
         :scale: 20%
+
+|
 
 .. rubric:: EVM Layout and Key Components
 
@@ -17,6 +22,8 @@ The following is the image of the AM62x EVM:
 
 .. Image:: ../../../images/AM62x_Components_back.PNG
         :scale: 50%
+
+|
 
 AM62 StarterKit (SK) board is a low cost, small form factor board designed for TI’s AM625 SoC.
 It supports the following interfaces:
@@ -37,19 +44,25 @@ It supports the following interfaces:
 - 20-pin header for Programmable Realtime Unit (PRU) IO pins
 - 15-pin CSI header
 
+|
+
 .. rubric:: Switch settings
 .. note::
 	For SW2 and SW1: (1 = ON = Pull up)
 
-Boot Mode=> SW2:12345678 SW1:12345678
-	- Linux SD: 01000000 11000010
-	- USB DFU: 00000000 11001010
++-------------------+-------------------+
+| SD                | USB DFU           |
++-------------------+-------------------+
+| 01000000 11000010 | 00000000 11001010 |
++-------------------+-------------------+
 
 The most common boot method is by SD card. The following shows the switch
-settings to set the boot mode to boot from SD card on the EVM.
+settings to set the boot mode to boot from SD card on the AM62x SK EVM.
 
 .. Image:: ../../../images/AM62x_SD_boot.jpg
         :scale: 50%
+
+|
 
 .. rubric:: EVM connections
 
