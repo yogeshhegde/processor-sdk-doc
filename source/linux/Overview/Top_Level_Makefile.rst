@@ -400,7 +400,13 @@ the SD card. e.g. run following to copy boot binaries in SD card boot partition.
         host# cp board-support/k3-image-gen*/sysfw-am65x_sr2-evm.itb /media/$USER/boot/sysfw.itb
         #Replace the path to SD card boot partition as appropriate
 
-.. ifconfig:: CONFIG_part_variant not in ('AM65X','AM64X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    ::
+
+        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+
+.. ifconfig:: CONFIG_part_variant not in ('AM65X','AM64X', 'AM62X')
 
     ::
 
