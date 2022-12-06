@@ -149,11 +149,11 @@ Build U-Boot
 
 
     .. rubric:: Getting Security Dev Tool
-
+    
+    core-secdev-k3 is included in the SDK inside board-support directory.	
     ::
 
-        $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-        $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+        $ export TI_SECURE_DEV_PKG=<path-to-board-support-directory>/core-secdev-k3
 
     .. rubric:: Setting the tool chain path
 
