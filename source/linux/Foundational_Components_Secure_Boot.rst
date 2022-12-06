@@ -1,5 +1,5 @@
 **********************************
-Security Boot
+Secure Boot
 **********************************
 
 Authenticated Boot

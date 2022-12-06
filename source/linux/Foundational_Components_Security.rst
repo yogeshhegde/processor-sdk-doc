@@ -8,4 +8,4 @@ Security
    :maxdepth: 5
 
    Foundational_Components_Migration_Guide
-   Foundational_Components_Security_Boot
+   Foundational_Components_Secure_Boot
