@@ -9,7 +9,7 @@ Overview
 
 The AM62x SK board has an Imagination Technologies GPU.
 Using this, a QT based Human-Machine Interface (HMI) Out of Box Demo has been set up such that the board launches a Control Panel which user can control using the connected Mouse and Keyboard.
-The HMI Demo also launches a 3D Demo and Matrix GUI.
+The HMI Demo also launches a 3D Demo, Camera Demo and Matrix GUI.
 
 All of the necessary equipment requirement and instructions are provided here.
 
@@ -22,7 +22,9 @@ Hardware Prerequisites
 
 -  HDMI Monitor (to view the Demo on Display)
 
--  Keyboard & Mouse (to control the HMI & 3D Demo)
+-  OV5640 camera sensor module (for Camera Demo)
+
+-  Keyboard & Mouse (to control the HMI, Camera & 3D Demo)
 
 -  SD card (minimum 16GB)
 
@@ -33,7 +35,7 @@ The HMI Demo launches on Linux startup. Follow the below instructions to use it.
 
 1. Connect the Display, mouse & keyboard and Power on the board. The HMI Demo will launch when the Device is fully booted.
 
-.. Image:: /images/AM62x_HMI_Demo.PNG
+.. Image:: /images/AM62x_HMI_Demo.jpg
    :width: 407
    :height: 400
 
@@ -78,6 +80,22 @@ Launching the 3D Demo
         OpenGLESBinaryShaders
         OpenGLESSkinning
 
+Launching the Camera Demo
+-------------------------------------
+AM62x supports camera overlay dtb for OV5640 camera sensor module.
+
+1. During bootup stop at u-boot prompt by pressing any key and set camera overlay dtb :
+   ::
+
+       setenv name_overlays k3-am625-sk-csi2-ov5640.dtbo
+       boot
+
+2. Once the HMI Demo launches on Linux startup, click on the `Camera` button on the left panel to go to the Camera Demo. The Camera Demo will automatically get closed after 30 seconds. The image below is captured using OV5640 camera sensor module.
+
+.. Image:: /images/AM62X_CAMERA_DEMO.jpg
+   :width: 407
+   :height: 400  
+ 
 Launching the Matrix-GUI
 ------------------------
 
