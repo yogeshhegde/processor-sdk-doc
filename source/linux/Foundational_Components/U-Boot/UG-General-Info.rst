@@ -309,11 +309,13 @@ Build U-Boot
 
             Where to get the sources:
 
-            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__. Branch: ti-u-boot-2021.01.
-            - `ti-k3-image-gen <https://git.ti.com/git/k3-image-gen/k3-image-gen.git/>`__.
-            - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__. Branch: ti-linux-firmware.
-            - `ti-arm-trusted-firmware <https://git.ti.com/git/atf/arm-trusted-firmware.git/>`__.
-            - `ti-optee-os <https://git.ti.com/git/optee/ti-optee-os.git/>`__.
+            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2021.01
+            - `ti-k3-image-gen <https://git.ti.com/git/k3-image-gen/k3-image-gen.git/>`__ Branch: master
+            - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
+            - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 1309c6c805190bd376c0561597653f3f8ecd0f58
+            - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: d6c5d0037b46f46caf71d67d7825d4b722cbcddf
+
+            Notice: arm-trusted-firmware and optee-os are now sourced from upstream.
 
         ::
 
@@ -422,11 +424,13 @@ Build U-Boot
 
             Where to get the sources:
 
-            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__. Branch: ti-u-boot-2021.01.
-            - `ti-k3-image-gen <https://git.ti.com/git/k3-image-gen/k3-image-gen.git/>`__.
-            - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__. Branch: ti-linux-firmware.
-            - `ti-arm-trusted-firmware <https://git.ti.com/git/atf/arm-trusted-firmware.git/>`__.
-            - `ti-optee-os <https://git.ti.com/git/optee/ti-optee-os.git/>`__.
+            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2021.01
+            - `ti-k3-image-gen <https://git.ti.com/git/k3-image-gen/k3-image-gen.git/>`__ Branch: master
+            - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
+            - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 1309c6c805190bd376c0561597653f3f8ecd0f58
+            - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: d6c5d0037b46f46caf71d67d7825d4b722cbcddf
+
+            Notice: arm-trusted-firmware and optee-os are now sourced from upstream.
 
         ::
 

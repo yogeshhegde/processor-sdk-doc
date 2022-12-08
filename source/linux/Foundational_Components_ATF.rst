@@ -19,6 +19,7 @@ in the non-secure world.
 ::
 
     $ git clone https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
+    $ git checkout 1309c6c805190bd376c0561597653f3f8ecd0f58
 
 .. rubric:: Getting Security Dev Tool
     
