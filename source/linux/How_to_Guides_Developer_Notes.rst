@@ -33,5 +33,6 @@ Developer Notes
    How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
    How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
    How_to_Guides/Host/K3_Resource_Partitioning_Tool
+   How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
    How_to_Guides/Host/SYSFW_Trace_Parser
    How_to_Guides/FAQ/Tda4_Latest_FAQs
