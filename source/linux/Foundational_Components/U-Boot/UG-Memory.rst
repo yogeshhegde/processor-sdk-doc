@@ -162,6 +162,8 @@ new created on the host FAT filesystem image:
         U-Boot # fatload mmc 0 ${loadaddr} rootfs.ext4
         U-Boot # mmc write ${loadaddr} 0x1000 ...rootfs.ext4 size in bytes divided by 512, in hex...
 
+.. _boot-linux-from-mmc:
+
 Booting Linux from SD card or eMMC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
