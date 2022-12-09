@@ -669,6 +669,19 @@ Potential issues
 -  Try to use application which uses threads for interacting with ALSA
    and with the filesystem
 
+.. rubric:: In case of CPU stalls (when recording)
+   :name: in-case-of-cpu-stalls-when-recording
+
+| On some platforms, recording audio on high sample rates may work fine the
+  first time, but due to issues with channel cleanup it may cause CPU stalls
+  when recording the second time, requiring a reboot to fix.
+| In such scenarios, use smaller period sizes (64 to 256) while recording. For
+  example:
+
+.. code-block:: text
+
+    arecord -Dplughw:0,0 -r 48000 -t wav --period-size=64 <path to wav file>
+
 .. rubric:: ALSA period size must be aligned with the FIFO depth (tx/rx
    numevt)
    :name: alsa-period-size-must-be-aligned-with-the-fifo-depth-txrx-numevt
