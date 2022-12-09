@@ -474,11 +474,21 @@ Get the Security Dev Tool
 
 Sign kernel image and copy to <sdk path>/board_support/signed-images
 
-  ::
+  .. ifconfig:: CONFIG_part_variant not in ('AM64X')
 
-    mkdir <sdk path>/board_support/signed-images
-    $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh Image Image.sec
-    cp -p Image.sec <sdk path>/board-support/signed-images
+    ::
+
+      mkdir <sdk path>/board_support/signed-images
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh Image Image.sec
+      cp -p Image.sec <sdk path>/board-support/signed-images
+
+  .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    ::
+
+      mkdir <sdk path>/board_support/signed-images
+      $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh Image linux.bin.sec
+      cp -p linux.bin.sec <sdk path>/board-support/linux-5.10*/
 
 Sign devicetree binaries, and copy the signed binaries to <sdk path>/board_support/signed-images.
 The binaries to be signed is listed in <sdk path>/board-support/prebuilt-images/fitImage-its.its
@@ -493,7 +503,6 @@ The binaries to be signed is listed in <sdk path>/board-support/prebuilt-images/
       $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-icssg1-dualemac.dtbo k3-am642-evm-icssg1-dualemac.dtbo.sec
       $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-icssg1-dualemac-mii.dtbo k3-am642-evm-icssg1-dualemac-mii.dtbo.sec
       $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh k3-am642-evm-nand.dtbo k3-am642-evm-nand.dtbo.sec
-      cp -p *.sec <sdk path>/board-support/signed-images
 
   .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -542,11 +551,23 @@ The binaries to be signed is listed in <sdk path>/board-support/prebuilt-images/
 
 Generate the FIT image
 
-  ::
+  .. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    ::
   
-    cp <sdk path>/board-support/prebuilt-images/fitImage-its.its <sdk path>/board-support/signed-images
-    cd <sdk path>/board-support/signed-images
-    mkimage -f fitImage-its.its -r fitImage
+      cp <sdk path>/board-support/prebuilt-images/fitImage-its.its <sdk path>/board-support/linux-5.10*/
+      cd <sdk path>/board-support/linux-5.10*/
+      mkimage -f fitImage-its.its -r fitImage
+      cp -p fitImage <sdk path>/board-support/signed-images
+      cd <sdk path>/board-support/signed-images
+
+  .. ifconfig:: CONFIG_part_variant not in ('AM64X')
+
+    ::
+
+      cp <sdk path>/board-support/prebuilt-images/fitImage-its.its <sdk path>/board-support/linux
+      cd <sdk path>/board-support/signed-images
+      mkimage -f fitImage-its.its -r fitImage
 
 Install the generated FIT image to "rootfs/boot" for MMC/SD card boot as an example
 
