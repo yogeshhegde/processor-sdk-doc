@@ -21,6 +21,7 @@ The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the 
 .. parsed-literal::
 
     $ git clone https://github.com/OP-TEE/optee_os.git
+    $ git checkout d6c5d0037b46f46caf71d67d7825d4b722cbcddf
 
 .. rubric:: Getting Security Dev Tool
 
