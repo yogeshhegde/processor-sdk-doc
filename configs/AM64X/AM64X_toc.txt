@@ -99,7 +99,6 @@ linux/How_to_Guides
 linux/How_to_Guides_Host
 linux/How_to_Guides_Target
 linux/How_to_Guides_Developer_Notes
-linux/How_to_Guides_Board_Port
 linux/How_to_Guides_Frequently_Asked_Questions
 linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet
 linux/How_to_Guides/Host/How_to_Setup_a_Samba_Server

@@ -106,7 +106,6 @@ linux/How_to_Guides/Host/K3_Resource_Partitioning_Tool
 linux/How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
 linux/How_to_Guides/Host/SYSFW_Trace_Parser
 linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customization
-linux/How_to_Guides/Target/How_to_Change_dtb_File
 linux/How_to_Guides/Target/How_to_flash_emmc_device
 linux/How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_on_AM625_SK
