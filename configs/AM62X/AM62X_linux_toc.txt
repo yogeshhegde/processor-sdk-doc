@@ -89,6 +89,7 @@ linux/Foundational_Components_Filesystem
 linux/Foundational_Components_Tools
 linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
+linux/Foundational_Components/Tools/U-Boot_flash_writer
 linux/Foundational_Components_IPC62x
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Graphics_and_Display

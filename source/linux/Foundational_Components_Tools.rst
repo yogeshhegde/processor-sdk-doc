@@ -18,4 +18,5 @@ find a variety of help on this page.
    Foundational_Components/Tools/Flash_Tools
    Foundational_Components/Tools/Pin_Mux_Tools
    Foundational_Components/Tools/Code_Composer_Studio
+   Foundational_Components/Tools/U-Boot_flash_writer
 
