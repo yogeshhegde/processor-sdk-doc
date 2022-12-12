@@ -25,7 +25,8 @@ Developer Notes
    How_to_Guides/Target/How_to_Boot_Beagle_Bone_Black_with_Processor_SDK_Linux
    How_to_Guides/Target/How_to_flash_emmc_device
    How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
-   How_to_Guides/Target/How_to_enable_DT_overlay_for_OLDI_display_on_AM62_SK
+   How_to_Guides/Target/How_to_enable_DT_overlays_on_AM625_SK
+   How_to_Guides/Target/How_to_playback_audio_over_HDMI
    How_to_Guides/Target/How_to_visualize_statistics_data
    How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
    How_to_Guides/FAQ/How_to_Configure_MSMC_memory
