@@ -140,9 +140,16 @@ Build U-Boot
          of HSM rearchitecture, this functionality has moved into the DM service which 
          requires SPL to re-implement device and clock control. This support is not 
          present in Uboot R5 SPL due to memory constraints on the existing 64-bit TI devices.
-
+    
     Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
-    Go `here <Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
+    
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
+    	
+    	Go `here <../../../devices/AM62X/linux/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
+
+    .. ifconfig:: CONFIG_part_variant in ('AM64X')
+	
+    	Go `here <../../../devices/AM64X/linux/Overview/Download_and_Install_the_SDK.html>`__ to download and install the SDK.
 
     TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
     :ref:`release-specific-build-information-u-boot`.
