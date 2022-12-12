@@ -81,8 +81,15 @@ Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
 
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
+    
+    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    Run the following commands to install the ARM Toolchains. 64-bit products like AM64x need both. 32-bit products
+    	 Run the following commands to install the ARM Toolchains. 64-bit products like AM62x need both. 32-bit products
+    like AM335x and AM437x only need the 32-bit toolchain (arm-none-linux-).
+    
+    .. ifconfig:: CONFIG_part_variant in ('AM64X')
+    
+         Run the following commands to install the ARM Toolchains. 64-bit products like AM64x need both. 32-bit products
     like AM335x and AM437x only need the 32-bit toolchain (arm-none-linux-).
 
     ::

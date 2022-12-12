@@ -85,7 +85,7 @@ recipes that were updated while integrating the components to the
         │       └──meta-arago-distro/recipes-core/packagegroups/packagegroup-arago-tisdk-multimedia-sdk-target.bb: package
 
 
-If users wish to learn more about Yocto project or Arago build, please refer to the below video link and the documentation on `Building Processor SDK Linux through Yocto <Overview_Building_the_SDK.html>`__.
+If users wish to learn more about Yocto project or Arago build, please refer to the below video link and the documentation on `Building Processor SDK Linux through Yocto <../../Overview_Building_the_SDK.html>`__.
     
 - https://training.ti.com/customizing-yocto-for-production-introduction
 
