@@ -5,7 +5,7 @@
 U-Boot Flash Writer
 ===================
 
-U-Boot Flash Writer is a tool used to flash binaries to the on-chip flash memory. 
+U-Boot Flash Writer is a tool used to flash binaries to the on-chip flash memory. It is included in Processor SDK Linux AM62x package in <PSDK_PATH>/bin directory.  
 
 Requirements on Host PC
 -----------------------
@@ -34,7 +34,7 @@ Flash writer takes 3 arguments
 2. Flash memory (eMMC, OSPI flash )
 3. Serial port 
 
-Run following command on Linux host with suitable arguments to flash. All of the examples below assume that you are running commands from the top-level of the SDK. 
+Run u-boot_flashwriter.sh to use the flash writer on Linux host with suitable arguments. All of the examples below assume that you are running commands from the top-level of the SDK. 
 
   ::
 
