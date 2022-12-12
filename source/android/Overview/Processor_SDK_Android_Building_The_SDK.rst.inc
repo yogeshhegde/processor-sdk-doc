@@ -212,14 +212,18 @@ Android File System
 
 Where ``BUILD_TARGET`` is listed in the table below :
 
-================== =========================
-Android Build type   Build target
-================== =========================
-Tablet userdebug    ``am62x-userdebug``
-Tablet user         ``am62x-user``
-Car userdebug       ``am62x_car-userdebug``
-Car user            ``am62x_car-user``
-================== =========================
+============================= ============================
+Android Build type            Build target
+============================= ============================
+AM62X-SK Tablet userdebug       ``am62x-userdebug``
+AM62X-SK Tablet user            ``am62x-user``
+AM62X-SK Car userdebug          ``am62x_car-userdebug``
+AM62X-SK Car user               ``am62x_car-user``
+AM62X-LP-SK Tablet userdebug    ``am62x_lp-userdebug``
+AM62X-LP-SK Tablet user         ``am62x_lp-user``
+AM62X-LP-SK Car userdebug       ``am62x_lp_car-userdebug``
+AM62X-LP-SK Car user            ``am62x_lp_car-user``
+============================= ============================
 
 .. note::
     Default BUILD_TARGET to use is ``am62x-userdebug``
