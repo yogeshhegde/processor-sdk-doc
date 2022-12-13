@@ -98,6 +98,12 @@ partition table
     run set_android_boot
 
 
+.. warning::
+    For AM62X-LP SK EVM board u-boot due to a bug in u-boot env you need to do this command in u-boot console:
+    ::
+
+        setenv bootcmd "run distro_bootcmd"; saveenv;
+
 .. note::
     If you build with `TARGET_AVB_ENABLE=true` or flash User Images you need to do this command in uboot console:
     ::
