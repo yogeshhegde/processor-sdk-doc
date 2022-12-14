@@ -72,9 +72,11 @@ Documentation
 
 - `Getting Started Guide`_ page provides information on getting started with pre-built binaries and booting the Android images on EVM.
 - `Building the SDK`_ page provides information on downloading and building the Android images from sources.
+- `Application Notes`_ page provides Some Application Notes.
 
 .. _Getting Started Guide:  ../../../android/Overview_Getting_Started_Guide.html
 .. _Building the SDK: ../../../android/Overview_Building_the_SDK.html
+.. _Application Notes: Application_Notes.html
 
 Host Support
 ============

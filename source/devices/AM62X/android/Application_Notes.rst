@@ -8,4 +8,5 @@ Application Notes
    Application_Notes_Partitions
    Application_Notes_dtbo_support
    Application_Notes_GKI_support
+   Application_Notes_Android_SD_CARD
 
