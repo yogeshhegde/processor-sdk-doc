@@ -8,3 +8,4 @@ android/Overview_Technical_Support
 android/Overview_Flashing
 devices/AM62X/android/Application_Notes
 devices/AM62X/android/Application_Notes_Partitions
+devices/AM62X/android/Application_Notes_dtbo_support
