@@ -22,10 +22,10 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page.
 
 
-Release 08.04.00
+Release 08.05.00
 ================
 
-Released on September 2022
+Released on December 2022
 
 What's new
 ----------
@@ -42,7 +42,7 @@ Following features are enabled/tested in this release for AM62x Android:
 * **Platform:** SELinux Enforced mode with User build, ADB over USB
 * **Connectivity:** Ethernet and Wi-Fi (WiLink) support, USB touch
 * **Graphics:** GPU accelerated UI with Hwcomposer
-* **Audio:** Audio out
+* **Audio:** HDMI and Jack Audio out
 * **Multimedia:** SW Video Decode/Encode, USB Camera Supported
 
 SDK Components and Versions
@@ -53,7 +53,7 @@ SDK Components and Versions
 +====================================+===============================================================================+
 | **Android**                        | Android 12 / Android 12 Car                                                   |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Linux Kernel**                   | Linux 5.10.140                                                                |
+| **Linux Kernel**                   | Linux 5.10.153                                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Linux Kernel Toolchain**         | clang-r450784e                                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
@@ -61,9 +61,9 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **GCC Toolchain**                  | GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)           |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 08.04.01                                            |
+| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 08.05.00                                            |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Hardware Supported**             | AM62X-SK                                                                      |
+| **Hardware Supported**             | AM62X-SK / AM62X-LP                                                           |
 +------------------------------------+-------------------------------------------------------------------------------+
 
 
@@ -72,14 +72,16 @@ Documentation
 
 - `Getting Started Guide`_ page provides information on getting started with pre-built binaries and booting the Android images on EVM.
 - `Building the SDK`_ page provides information on downloading and building the Android images from sources.
+- `Application Notes`_ page provides Some Application Notes.
 
-.. _Getting Started Guide: Overview_Getting_Started_Guide.html
-.. _Building the SDK: Overview_Building_the_SDK.html
+.. _Getting Started Guide:  ../../../android/Overview_Getting_Started_Guide.html
+.. _Building the SDK: ../../../android/Overview_Building_the_SDK.html
+.. _Application Notes: Application_Notes.html
 
 Host Support
 ============
 
-The Processor SDK is developed, built and verified on Ubuntu 18.04. For all other
+The Processor SDK is developed, built and verified on Ubuntu 18.04, 20.04 and 22.04. For all other
 versions of Host support refer to Android documentation.
 
 
@@ -93,6 +95,3 @@ Known Issues
 +----------------+-------------------------------------------------------------------------------+
 | **SITSW-1386** | Some commands don't work from native console, but works via adb shell         |
 +----------------+-------------------------------------------------------------------------------+
-| **SITSW-1385** | Wi-Fi cannot be turned off and turned on second time                          |
-+----------------+-------------------------------------------------------------------------------+
-

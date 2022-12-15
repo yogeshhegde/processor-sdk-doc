@@ -97,11 +97,24 @@ partition table
     env default -f -a
     run set_android_boot
 
+
+.. warning::
+    For AM62X-LP SK EVM board u-boot due to a bug in u-boot env you need to do this command in u-boot console:
+    ::
+
+        setenv bootcmd "run distro_bootcmd"; saveenv;
+
 .. note::
     If you build with `TARGET_AVB_ENABLE=true` or flash User Images you need to do this command in uboot console:
     ::
 
         setenv force_avb "1"
+.. note::
+
+    By default No Device-Tree Overlays was selected. Please follow this link to set a `Device Tree Overlays`_
+
+.. _Device Tree Overlays: ../devices/AM62X/android/Application_Notes_dtbo_support.html
+
 
 6. Power cycle the board one more time and stop at u-boot console again.
 

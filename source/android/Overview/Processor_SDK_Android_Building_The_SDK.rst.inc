@@ -33,7 +33,7 @@ Downloading Sources
 
     ::
 
-        mkdir ~/08_04_00 && cd $_
+        mkdir ~/08_05_00 && cd $_
         export YOUR_PATH=$PWD
 
 Bootloader components
@@ -44,11 +44,11 @@ Bootloader components
     ::
 
         mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-        git clone -b 08.04.01.005 git://git.ti.com/k3-image-gen/k3-image-gen.git
-        git clone -b 08.04.01.005 git://git.ti.com/atf/arm-trusted-firmware.git
-        git clone -b 08.04.01.005 git://git.ti.com/optee/ti-optee-os.git
-        git clone -b 08.04.01.005 git://git.ti.com/ti-u-boot/ti-u-boot.git
-        git clone -b 08.04.01.005 git://git.ti.com/processor-firmware/ti-linux-firmware.git
+        git clone -b 08.05.00.007 git://git.ti.com/k3-image-gen/k3-image-gen.git
+        git clone -b 08.05.00.007 git://git.ti.com/atf/arm-trusted-firmware.git
+        git clone -b 08.05.00.007 git://git.ti.com/optee/ti-optee-os.git
+        git clone -b 08.05.00.007 git://git.ti.com/ti-u-boot/ti-u-boot.git
+        git clone -b 08.05.00.007 git://git.ti.com/processor-firmware/ti-linux-firmware.git
 
 Kernel
 ------
@@ -60,7 +60,7 @@ Kernel
     ::
 
         mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_04_Kernel.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_05_Kernel.xml
         repo sync
 
 
@@ -74,7 +74,7 @@ Android File System
     ::
 
         mkdir ${YOUR_PATH}/ti-aosp-12 && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_04.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_05.xml
         repo sync
 
 
@@ -145,7 +145,7 @@ Building everything from scratch
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
         export DIST_DIR=${YOUR_PATH}/ti-aosp/device/ti/am62x-kernel/kernel/5.10
-        export BUILD_CONFIG=./imgtech-module/build.config.imgtech
+        export BUILD_CONFIG=./common/build.config.ti
         build/build.sh
 
 Rebuilding incrementally
@@ -159,7 +159,7 @@ Add the ``SKIP_MRPROPER=1`` flag:
 
         $ cd ${YOUR_PATH}/ti-kernel-aosp/
         $ export DIST_DIR=${YOUR_PATH}/ti-aosp/device/ti/am62x-prebuilts/kernel/5.10
-        $ export BUILD_CONFIG=./imgtech-module/build.config.imgtech
+        $ export BUILD_CONFIG=./common/build.config.ti
         $ export SKIP_MRPROPER=1
         $ build/build.sh
 
@@ -173,7 +173,7 @@ The usual (``make menuconfig`` ) is done via ``config.sh``:
     ::
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
-        export BUILD_CONFIG=./imgtech-module/build.config.imgtech
+        export BUILD_CONFIG=./common/build.config.ti
         build/config.sh
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
@@ -191,7 +191,7 @@ Download and extract the prebuilt binaries following : :ref:`android-prebuilts` 
     ::
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
-        export BUILD_CONFIG=./imgtech-module/build.config.imgtech
+        export BUILD_CONFIG=./common/build.config.ti
         export PREBUILT_BOOTIMG=<PATH/TO/ANDROID/PREBUILT/BINARIES/boot.img>
         build/build.sh
 
@@ -212,14 +212,18 @@ Android File System
 
 Where ``BUILD_TARGET`` is listed in the table below :
 
-================== =========================
-Android Build type   Build target
-================== =========================
-Tablet userdebug    ``am62x-userdebug``
-Tablet user         ``am62x-user``
-Car userdebug       ``am62x_car-userdebug``
-Car user            ``am62x_car-user``
-================== =========================
+============================= ============================
+Android Build type            Build target
+============================= ============================
+AM62X-SK Tablet userdebug       ``am62x-userdebug``
+AM62X-SK Tablet user            ``am62x-user``
+AM62X-SK Car userdebug          ``am62x_car-userdebug``
+AM62X-SK Car user               ``am62x_car-user``
+AM62X-LP-SK Tablet userdebug    ``am62x_lp-userdebug``
+AM62X-LP-SK Tablet user         ``am62x_lp-user``
+AM62X-LP-SK Car userdebug       ``am62x_lp_car-userdebug``
+AM62X-LP-SK Car user            ``am62x_lp_car-user``
+============================= ============================
 
 .. note::
     Default BUILD_TARGET to use is ``am62x-userdebug``
@@ -232,5 +236,10 @@ Car user            ``am62x_car-user``
         cd ${YOUR_PATH}/ti-aosp-12
         lunch <BUILD_TARGET>
         m TARGET_AVB_ENABLE=true
+
+.. note::
+   Follow this link if you want to build and test in `Android Generic Kernel Image mode`_.
+
+.. _Android Generic Kernel Image mode: ../devices/AM62X/android/Application_Notes_GKI_support.html
 
 **After building all components, refer to instruction in next section for flashing the images to EVM**
