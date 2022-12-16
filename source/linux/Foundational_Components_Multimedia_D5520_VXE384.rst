@@ -885,3 +885,8 @@ To enable V4L2-level picture decode latency profiling, follow these steps:
 
 #. Each trace gives the v4l2-level picture decode time per frame. All numbers are in
    micro seconds.
+
+.. note::
+   Known limitations:
+      #. DMA Buf import on encoder works only for 16 byte width and height aligned buffers from the upstream element.
+         For Non 16 byte aligned resolution, the pipeline exits safely with buffer size negotiation error.
