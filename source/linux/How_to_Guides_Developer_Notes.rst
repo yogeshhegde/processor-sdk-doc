@@ -27,6 +27,7 @@ Developer Notes
    How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
    How_to_Guides/Target/How_to_enable_DT_overlays_on_AM625_SK
    How_to_Guides/Target/How_to_playback_audio_over_HDMI
+   How_to_Guides/Target/How_to_enable_Microtips_LVDS_Panel_on_AM62_SK_EVM
    How_to_Guides/Target/How_to_visualize_statistics_data
    How_to_Guides/FAQ/How_to_Verify_Ipc_Linux_R5
    How_to_Guides/FAQ/How_to_Configure_MSMC_memory
