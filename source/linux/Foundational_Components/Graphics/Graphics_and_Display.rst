@@ -551,6 +551,7 @@ with rendering commands submitted by the user applications.
       * - RGBA5551
       * - YUV420
       * - YUYV
+      * - NV12
 
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
 
