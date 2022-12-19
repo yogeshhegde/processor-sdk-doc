@@ -91,6 +91,9 @@ For additional details refer :ref:`usb-device-firmware-upgrade-label`.
 Flash to eMMC via DFU
 ~~~~~~~~~~~~~~~~~~~~~
 
+ .. note::
+        eMMC needs to be partitioned before running U-boot flash writer as a reset is required for the partition table to be visible. For steps refer :ref:`partitioning-eMMC-from-uboot`. 
+
 To flash bootloader binaries and filesystem to eMMC storage via USB-DFU, run following command in linux host
 
   ::
