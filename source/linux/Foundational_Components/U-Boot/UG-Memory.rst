@@ -21,6 +21,7 @@ number (device num) can be found in the following way,
      sdhci@fa10000: 0 (eMMC)
      sdhci@fa00000: 1 (SD)
 
+.. _partitioning-eMMC-from-uboot:
 
 Partitioning eMMC from U-Boot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
