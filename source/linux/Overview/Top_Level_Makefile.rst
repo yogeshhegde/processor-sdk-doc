@@ -404,7 +404,7 @@ the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
     ::
 
-        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/u-boot_build/r5/tiboot3.bin /media/$USER/boot
+        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/k3-image-gen*/tiboot3.bin /media/$USER/boot
 
 .. ifconfig:: CONFIG_part_variant not in ('AM65X','AM64X', 'AM62X')
 
