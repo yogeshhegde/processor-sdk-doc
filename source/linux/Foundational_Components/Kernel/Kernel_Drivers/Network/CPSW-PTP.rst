@@ -1,8 +1,305 @@
+.. include:: /replacevars.rst.inc
+
 PTP
 ===
 
 .. contents:: :local:
     :depth: 3
+
+Introduction
+------------
+
+The Common Platform Time Sync (CPTS) module is used to facilitate host
+control of time sync operations. It enables compliance with the IEEE
+1588-2008 standard for a precision clock synchronization protocol.
+
+The support for CPTS module can be enabled by Kconfig option
+CONFIG_TI_AM65_CPTS or through menuconfig tool.
+
+When CPTS module is enabled it will exports a kernel interface for
+specific clock drivers and a PTP clock API user space interface and
+enable support for SIOCSHWTSTAMP and SIOCGHWTSTAMP socket ioctls. The
+PTP exposes the PHC as a character device with standardized ioctls which
+usually can be found at path:
+
+::
+
+       /dev/ptpN
+
+Supported PTP hardware clock functionality:
+
+::
+
+    Basic clock operations
+       - Set time
+       - Get time
+       - Shift the clock by a given offset atomically
+       - Adjust clock frequency
+
+::
+
+    Ancillary clock features
+       - Time stamp external events
+       - Periodic output signals configurable from user space
+       - Synchronization of the Linux system time via the PPS subsystem
+
+Supported parameters for SIOCSHWTSTAMP and SIOCGHWTSTAMP:
+
+::
+
+    SIOCSHWTSTAMP
+       hwtstamp_config.flags = 0
+       hwtstamp_config.tx_type
+           HWTSTAMP_TX_ON - enables hardware time stamping for outgoing packets
+           HWTSTAMP_TX_OFF - no outgoing packet will need hardware time stamping
+       hwtstamp_config.rx_filter
+           HWTSTAMP_FILTER_NONE - time stamp no incoming packet at all
+           HWTSTAMP_FILTER_ALL - time stamp any incoming packet
+
+CPTS PTP packet timestamping default configuration when enabled
+(SIOCSHWTSTAMP):
+
+
+::
+
+    CPSW_PN_TS_CTL_REG
+       TS_MSG_TYPE_EN = 0xF (Sync, Delay_Req, Pdelay_Req, and Pdelay_Resp.)
+       TS_TX_ANNEX_F_EN = 1
+       TS_TX_ANNEX_E_EN = 1
+       TS_TX_ANNEX_D_EN = 1
+       TS_TX_VLAN_LTYPE1_E = 1
+
+::
+
+    CPSW_PN_TS_CTL_LTYPE2_REG
+       TS_TTL_NONZERO = 1
+       TS_320 = 1
+       TS_319 = 1
+       TS_132 = 1
+       TS_131 = 1
+       TS_130 = 1
+       TS_129 = 1
+       TS_107 = 1
+       TS_LTYPE1 = 0x88F7 (ETH_P_1588)
+
+::
+
+    CPSW_PN_TS_SEQ_LTYPE_REG
+       TS_SEQ_ID_OFFSET = 0x1e
+       TS_LTYPE1 = 0x88F7 (ETH_P_1588)
+
+::
+
+    CPSW_PN_TS_VLAN_LTYPE_REG
+       TS_VLAN_LTYPE1 =  0x8100 (ETH_P_8021Q)
+
+For more information about PTP clock API and Network timestamping see
+Linux kernel documentation
+
+| `Documentation/ptp/ptp.txt <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/ptp/ptp.txt>`__
+| `include/uapi/linux/ptp\_clock.h <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/include/uapi/linux/ptp_clock.h>`__
+| `Documentation/ABI/testing/sysfs-ptp <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/ABI/testing/sysfs-ptp>`__
+| `Documentation/networking/timestamping.txt <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/networking/timestamping.txt>`__
+| `Documentation/pps/pps.txt <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/Documentation/pps/pps.txt>`__
+|
+| Code examples and tools:
+| `tools/testing/selftests/ptp/testptp.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/tools/testing/selftests/ptp/testptp.c>`__
+| `tools/testing/selftests/networking/timestamping/timestamping.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/tools/testing/selftests/networking/timestamping/timestamping.c>`__
+|
+| `Open Source Project linuxptp <http://linuxptp.sourceforge.net/>`__
+| `Linux PPS tools <https://github.com/redlab-i/pps-tools>`__
+|
+
+To check the ptp clock adjustment with PTP protocol, a PTP slave
+(client) and a PTP master (server) applications are needed to run on
+separate devices (EVM or PC). Open source application package linuxptp
+can be used as slave and as well as master. Hence TX timestamp
+generation can be delayed (especially with low speed links) the ptp4l
+"tx_timestamp_timeout" parameter needs to be set for ptp4l to work.
+
+- create file ptp.cfg with content as below:
+
+::
+
+    [global]
+    tx_timestamp_timeout     400
+
+- pass configuration file to ptp4l using "-f" option:
+
+::
+
+     ptp4l -E -2 -H -i eth0  -l 6 -m -q -p /dev/ptpN -f ptp.cfg
+
+-  Slave Side Examples
+
+The following command can be used to run a ptp-over-L4 client on the evm
+in slave mode
+
+::
+
+       ./ptp4l -E -4 -H -i eth0 -s -l 7 -m -q -p /dev/ptpN
+
+For ptp-over-L2 client, use the command
+
+::
+
+       ./ptp4l -E -2 -H -i eth0 -s -l 7 -m -q -p /dev/ptpN
+
+-  Master Side Examples
+
+ptp4l can also be run in master mode. For example, the following command
+starts a ptp4l-over-L2 master on an EVM using hardware timestamping,
+
+::
+
+       ./ptp4l -E -2 -H -i eth0 -l 7 -m -q -p /dev/ptpN
+
+On a Linux PC which does not support hardware timestamping, the
+following command starts a ptp4l-over-L2 master using software
+timestamping.
+
+::
+
+       ./ptp4l -E -2 -S -i eth0 -l 7 -m -q
+
+.. rubric:: Testing using testptp tool from Linux kernel
+   :name: k3-testing-using-testptp-tool-from-linux-kernel
+
+-  get the ptp clock time
+
+::
+
+       # testptp -d /dev/ptpN -g
+       clock time: 1493255613.608918429 or Thu Apr 27 01:13:33 2017
+
+-  query the ptp clock's capabilities
+
+::
+
+       # testptp -d /dev/ptpN -c
+       capabilities:
+         10000000 maximum frequency adjustment (ppb)
+         0 programmable alarms
+         4 external time stamp channels
+         2 programmable periodic signals
+         1 pulse per second
+         0 programmable pins
+         0 cross timestamping
+
+-  Sanity testing of cpts ref frequency
+
+Time difference between to testptp -g calls should be equal sleep time
+
+::
+
+       # testptp -g -d /dev/ptpN && sleep 5 && testptp -g -d /dev/ptpN
+       clock time: 1493255884.565859901 or Thu Apr 27 01:18:04 2017
+       clock time: 1493255889.611065421 or Thu Apr 27 01:18:09 2017
+
+-  shift the ptp clock time by 'val' seconds
+
+::
+
+       # testptp -g -d /dev/ptpN && testptp -t 100 && testptp -g -d /dev/ptpN
+       clock time: 1493256107.640649117 or Thu Apr 27 01:21:47 2017
+       time shift okay
+       clock time: 1493256207.678819093 or Thu Apr 27 01:23:27 2017
+
+-  set the ptp clock time to 'val' seconds
+
+::
+
+       # testptp -g -d /dev/ptpN && testptp -T 1000000 && testptp -g -d /dev/ptpN
+       clock time: 1493256277.568238925 or Thu Apr 27 01:24:37 2017
+       set time okay
+       clock time: 100.018944504 or Thu Jan  1 00:01:40 1970
+
+-  adjust the ptp clock frequency by 'val' ppb
+
+::
+
+       # testptp -g -d /dev/ptpN && testptp -f 1000000 && testptp -g -d /dev/ptpN
+       clock time: 151.347795184 or Thu Jan  1 00:02:31 1970
+       frequency adjustment okay
+       clock time: 151.386187454 or Thu Jan  1 00:02:31 1970
+
+.. rubric:: Example of using Time stamp external events
+   :name: k3-example-of-using-time-stamp-external-events
+
+Timestamping of external events can be tested using
+testptp tool. Before testing the proper CPTS signal routing has to be done by
+using timesync router in DT.
+
+For example, output of GENF0 can be routed to HW3_TS_PUSH_EN input.
+It's required to rebuild kernel with below changes first
+
+::
+
+   #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x80000000 | val)
+
+   &timesync_router {
+      pinctrl-names = "default";
+      pinctrl-0 = <&mcu_cpts>;
+
+          /* Example of the timesync routing */
+              mcu_cpts: mcu_cpts {
+                      pinctrl-single,pins = <
+                              /* pps [cpts genf0] in12 -> out24 [cpts hw4_push] */
+                              TS_OFFSET(24, 12)
+                      >;
+              };
+   };
+
+Then execute::
+
+       # testptp -d /dev/ptpN -p 500000000 -i 0
+       # testptp -d /dev/ptpN -e 100 -i 2
+       event index 2 at 384.250000025
+       event index 2 at 384.750000025
+       event index 2 at 385.250000025
+       event index 2 at 385.750000025
+
+.. rubric:: PPS Pulse Per Second support
+   :name: k3-cpts-pps-support
+
+The default PPS support for |__PART_FAMILY_DEVICE_NAMES__| depends on TI SCI system firmware configuration which may put timesync_router IO space under firewall in which case the Linux can not configure timesync_router.
+In such case, the timesync_router has to be configured from Core for which timesync_router IO space access is allowed and Linux DT should provide CPTS "ti,pps" property configuration.
+
+The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled by adding below changes to the board DT file to
+route CPSWxG CPTS GENF1 output to HW3_TS_PUSH_EN input, for example::
+
+       #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x80000000 | val)
+
+       &timesync_router {
+              pinctrl-names = "default";
+              pinctrl-0 = <&mcu_cpts>;
+
+              /* Example of the timesync routing */
+              mcu_cpts: mcu_cpts {
+                     pinctrl-single,pins = <
+                            /* pps [cpts genf1] in13 -> out25 [cpts hw4_push] */
+                            TS_OFFSET(25, 13)
+                     >;
+              };
+       };
+
+       &mcu_cpsw {
+              ...
+              cpts {
+                     ti,pps = <3 1>;
+              };
+       };
+
+Once enabled, PPS can be tested using testptp and ppstest tools::
+
+       # ./testptp -d /dev/ptp1 -P 1
+       pps for system time request okay
+       # ./ppstest /dev/pps0
+       trying PPS source "/dev/pps0"
+       found PPS source "/dev/pps0"
+       ok, found 1 source(s), now start fetching data...
+       source 0 - assert 198.000000700, sequence: 7 - clear  0.000000000, sequence: 0
+       source 0 - assert 199.000000700, sequence: 8 - clear  0.000000000, sequence: 0
 
 Setup
 ------
