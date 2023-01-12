@@ -113,3 +113,11 @@ Limitations of switch mode offloading support
 * VLAN offloading is limited to 0-256 VIDs.
 * MDB/FDB static entries are limited to 511 entries and different FDBs can
   hash to same bucket and thus may not be completely offloaded
+
+SRAM Requirement
+""""""""""""""""
+
+* The ICSSG Ethernet driver can be used in switch mode. Two icssg ports are used per switch.
+* SRAM Required for each switch (per two ports) is 256 KB for AM65X SR 2.0 SoC.
+* For each ICSSG switch, the SRAM required needs to be contiguous.
+* PRUETH only uses the required amount of SRAM from the SRAM/MSMC pool. If PRUETH doesn't get the required amount of SRAM, the prueth_probe() API will return with -ENOMEM error.

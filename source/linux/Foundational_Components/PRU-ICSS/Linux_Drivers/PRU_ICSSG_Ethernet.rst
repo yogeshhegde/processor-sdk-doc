@@ -745,3 +745,31 @@ Time Senstive Network (TSN) Offload Support
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
   This feature is not supported.
+
+SRAM Requirement
+################
+
+The ICSSG Ethernet driver supports multiple instances of ICSSG each of which has two slices. Each ICSSG instance supports two Ethernet interfaces i.e. one per slice.
+
+SRAM Required for each ICSSG instance (per two ports) is as below.
+
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+  +------------------+--------------------------+-----------------------------------+
+  | SoC              | Mode                     | SRAM Required per ICSSG instance  |
+  +==================+==========================+===================================+
+  | AM65X SR 2.0     | Emac Mode                |             192 KB                |
+  +------------------+--------------------------+-----------------------------------+
+  | AM65X SR 2.0     | Emac Mode + Switch Mode  |             256 KB                |
+  +------------------+----------------------+---+-----------------------------------+
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  +-----------+--------------------------+-----------------------------------+
+  | SoC       | Mode                     | SRAM Required per ICSSG Instance  |
+  +===========+==========================+===================================+
+  | AM64X     | Emac Mode                |             192 KB                |
+  +-----------+--------------------------+-----------------------------------+
+
+For each ICSSG instance, the SRAM required needs to be contiguous.
+PRUETH only uses the required amount of SRAM from the SRAM/MSMC pool. If PRUETH doesn't get the required amount of SRAM, the prueth_probe() API will return with -ENOMEM error.
