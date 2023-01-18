@@ -21,7 +21,7 @@ The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the 
 .. parsed-literal::
 
     $ git clone https://github.com/OP-TEE/optee_os.git
-    $ git checkout d6c5d0037b46f46caf71d67d7825d4b722cbcddf
+    $ git checkout 8e74d47616a20eaa23ca692f4bbbf917a236ed94
 
 .. rubric:: Getting Security Dev Tool
 
@@ -42,7 +42,7 @@ The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the 
 
 .. parsed-literal::
 
-    $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
+    $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
 
 * With debug parameters
 
