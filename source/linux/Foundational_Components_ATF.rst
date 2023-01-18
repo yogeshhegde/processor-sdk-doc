@@ -64,7 +64,20 @@ in the non-secure world.
         $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed K3_USART=0x8
         ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./build/k3/generic/release/bl31.bin ./build/k3/generic/release/bl31.bin.signed
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J721S2', 'AM62X')
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    ::
+
+        on GP
+        $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
+
+    ::
+
+        on HS
+        $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
+        ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./build/k3/generic/release/bl31.bin ./build/k3/generic/release/bl31.bin.signed
+
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J721S2', 'AM62X', 'J784S4')
 
     ::
         
