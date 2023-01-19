@@ -1165,7 +1165,7 @@ Boot Flow
             |                        |                       |                       |                       |
             +------------------------------------------------------------------------+-----------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2')
+    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
 
         .. code-block:: console
 
