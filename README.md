@@ -53,6 +53,7 @@ Update submodule:
 * "AM57X" (representing AM57X family)
 * "AM64X" (representing AM64X family)
 * "AM62X" (representing AM62X family)
+* "AM62AX" (representing AM62AX family)
 * "AM65X" (representing AM65X family)
 * "DRA821A" (representing DRA821A)
 * "J7" (representing Jacinto 7 ES)
