@@ -513,6 +513,83 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_hs_evm_a53_defconfig O=$UBOOT_DIR/out/a53
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin.signed TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin.signed DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=$UBOOT_DIR/out/a53
 
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+        +-----------------------------+----------------------------------+--------------------------------------+
+        |  Board                      |            SD Boot               |            USB DFU                   |
+        +=============================+==================================+======================================+
+        |    AM62AX SK                |    am62ax\_evm\_r5\_defconfig    |    am62ax\_evm\_r5\_usbdfu_defconfig |
+        |                             |    am62ax\_evm\_a53\_defconfig   |    am62ax\_evm\_a53\_defconfig       |
+        +-----------------------------+----------------------------------+--------------------------------------+
+
+        .. note::
+
+            Where to get the sources:
+
+            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2021.01
+            - `ti-k3-image-gen <https://git.ti.com/git/k3-image-gen/k3-image-gen.git/>`__ Branch: master
+            - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
+            - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 2fcd408bb3a6756767a43c073c597cef06e7f2d5
+            - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: 3bc3809afe372ca7e8216fc5d7a64e965bb4ad70
+
+            Notice: arm-trusted-firmware and optee-os are now sourced from upstream.
+
+        ::
+
+          $ export UBOOT_DIR=<path-to-ti-u-boot>
+          $ export K3IG_DIR=<path-to-k3-image-gen>
+          $ export SYSFW_DIR=<path-to-ti-linux-firmware>/ti-sysfw
+          $ export DMFW_DIR=<path-to-ti-linux-firmware>/ti-dm/am62axx
+          $ export TFA_DIR=<path-to-arm-trusted-firmware>
+          $ export OPTEE_DIR=<path-to-ti-optee-os>
+
+        .. note::
+
+            The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`. For instructions to build tee-pager_v2.bin (bl32.bin)
+            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to obtain pre-build binares that come in the pre-built sdk.
+
+        *on GP*
+
+        .. code-block:: console
+
+          R5
+          To build u-boot-spl.bin for tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62ax_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
+
+          To build tiboot3-am62ax-gp-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and ti-fs-firmware-am62ax-gp.bin.
+          $ cd $K3IG_DIR
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62ax SOC_TYPE=gp SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
+
+          A53
+          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin, and ipc_echo_testb_mcu1_0_release_strip.xer5f.
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f O=$UBOOT_DIR/out/a53
+
+        *on HS*
+
+        .. code-block:: console
+
+          R5
+          To build u-boot-spl.bin for signed tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62ax_evm_r5_defconfig O=$UBOOT_DIR/out/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
+
+          To build tiboot3-am62ax-hs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and ti-fs-firmware-am62ax-hs.bin.
+          $ cd $K3IG_DIR
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62ax SOC_TYPE=hs SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
+
+          Sign bl31.bin binary found in $OPTEE_DIR/out/arm-plat-k3/core, sign tee-pager_v2.bin (bl32.bin) found in $TFA_DIR/build/k3/lite/release, and ipc_echo_testb_mcu1_0_release_strip.xer5f found in $DMFW_DIR.
+          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl31.bin bl31.bin.signed
+          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh tee-pager_v2.bin bl32.bin.signed
+          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh ipc_echo_testb_mcu1_0_release_strip.xer5f ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
+
+          A53
+          To build signed tispl.bin_HS and signed u-boot.img_HS. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin.signed and bl32.bin.signed.
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin.signed TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin.signed DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=$UBOOT_DIR/out/a53
+
+
     .. rubric:: Dependent Project location
 
     - In case of not using the TI SDK and instead building U-Boot out of mainline, then
@@ -602,7 +679,7 @@ Build U-Boot
 
     .. rubric:: Image Formats
 
-    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X')
+    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X'  'AM62AX')
 
        - tiboot3.bin
 
@@ -1018,7 +1095,7 @@ Boot Flow
     safety in picture and to have faster boot time, the software boot architecture
     is designed as below:
 
-    .. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM64X_family', 'AM62X_family')
+    .. ifconfig:: CONFIG_part_family not in ('J7_family', 'AM64X_family', 'AM62X_family', 'AM62AX_family')
 
          .. code-block:: console
 
