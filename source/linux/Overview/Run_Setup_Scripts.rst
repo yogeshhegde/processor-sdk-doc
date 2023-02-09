@@ -98,9 +98,8 @@ Then run the script:
     recommended Ubuntu Long Term Support (LTS) distribution, if not it will
     exit. If the user is running on a different Ubuntu version or another
     Linux distribution, they are encouraged to modify the environment setup
-    script to match their distribution. See which version of Ubuntu is
-    currently supported
-    `here <../Release_Specific_Supported_Platforms_and_Versions.html>`__.
+    script to match their distribution. Ubuntu version |__LINUX_UBUNTU_VERSION_SHORT__|
+    is currently supported.
 
 .. rubric:: Detailed step by step description through the setup script
    :name: detailed-step-by-step-description-through-the-setup-script
