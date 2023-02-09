@@ -8,7 +8,7 @@ Introduction
 ============
 This page provides the steps to build the Processor SDK and individual
 components from source. The Processor SDK build is based on the `Arago
-Project <http://arago-project.org/wiki/index.php/Main_Page>`__ which
+Project <https://git.yoctoproject.org/meta-arago>`__ which
 provides a set of layers for `OpenEmbedded <http://openembedded.org/>`__
 and the `Yocto Project <http://yoctoproject.org/>`__ targeting TI
 platforms.
