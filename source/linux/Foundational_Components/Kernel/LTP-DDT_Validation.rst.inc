@@ -284,10 +284,10 @@ test cases.
 | LTP-DDT is an open source project.
 | The LTP-DDT sources are hosted here
   http://arago-project.org/git/projects/test-automation/ltp-ddt.git
-| Developers are encouraged to join the Opentest mailing list at
-  http://arago-project.org/cgi-bin/mailman/listinfo/opentest
+| Developers are encouraged to join the Arago mailing list at
+  meta-arago@lists.yoctoproject.org
 | Of course patches and comments are welcome, please send them to
-  opentest@arago-project.org mailing list.
+  meta-arago@lists.yoctoproject.org mailing list.
 | Developers are encouraged to read sections 3) and 4) in the README-DDT
   file before submitting patches.
 

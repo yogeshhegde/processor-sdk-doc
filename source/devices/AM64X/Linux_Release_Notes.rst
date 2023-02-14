@@ -108,7 +108,7 @@ Yocto
 | Date: 2021-4-01
 | Version: 2020.05
 
-| Clone: https://arago-project.org/git/meta-arago.git
+| Clone: https://git.yoctoproject.org/meta-arago
 | Branch: dunfell
 | Release Tag: 07.03.00.005
 |

@@ -42,7 +42,7 @@ Rules.make file.
 -  **PLATFORM** - This represents the machine name of the device
    supported by the SDK. This machine name has a direct correlation to
    the machine definition in the `Arago
-   project <http://arago-project.org>`__ build system. The PLATFORM
+   project <https://git.yoctoproject.org/meta-arago>`__ build system. The PLATFORM
    variable can be used by component Makefiles to make decisions on a
    per-machine basis.
 -  **ARCH** - This represents the architecture family of the machine.
