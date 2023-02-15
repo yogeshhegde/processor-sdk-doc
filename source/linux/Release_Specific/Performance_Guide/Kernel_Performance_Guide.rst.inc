@@ -644,6 +644,7 @@ TensorFlow Lite source package and included in Processor SDK Linux filesystem.
 Table:  **TensorFlow Lite Performance**
 
 |
+
 Ethernet Driver - CPSW CPSW2G NETCP
 -------------------------------------
 
@@ -1174,6 +1175,7 @@ SATA Driver
 
 .. rubric::  AM57XX-EVM
    :name: am57xx-evm-sata
+
 |
 
 
@@ -1247,6 +1249,7 @@ mSATA Driver
 
 .. rubric::  AM57XX-EVM
    :name: am57xx-evm-msata
+
 |
 
 

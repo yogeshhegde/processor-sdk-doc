@@ -244,7 +244,7 @@ can move on to the next step.
       create a 2 partition card to give additional storage space to the
       root file system you would select **y** here.
 
-      .. note::
+   .. note::
       This operation **WILL ERASE** the contents of your SD card.
 
 |

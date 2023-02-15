@@ -3,13 +3,10 @@
 How to Setup and Debug using Lauterbach
 ==========================================
 
-.. rubric:: Introduction
+.. rubric:: Introduction Lauterbach
    :name: introduction-lauterbach
 
 This guide discusses how to use TRACE32 and Lauterbach for Debugging.
-
-.. rubric:: Lauterbach
-   :name: introduction-lauterbach
 
 Lauterbach provides integrated debug environments for embedded designs.
 

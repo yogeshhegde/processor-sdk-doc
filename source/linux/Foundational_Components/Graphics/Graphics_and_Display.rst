@@ -532,6 +532,7 @@ drivers run on an ARM core and programs the firmware running inside a GPU core
 with rendering commands submitted by the user applications.
 
 .. ifconfig:: CONFIG_part_family in ('J7_family', 'AM62X_family')
+
    Other features of the Rogue series of GPUs include bilinear and trilinear filtering.
 
    Support for the following pixel formats:

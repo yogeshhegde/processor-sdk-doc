@@ -118,7 +118,6 @@ Yocto
 | Release Tag: 08.05.00.007
 |
 
-
 Issues Tracker
 =====================================
 
@@ -157,9 +156,9 @@ Issues opened in previous releases that were closed on this release
    "LCPD-25264","BCDMA: Blockcopy Gets Corrupted if TR Read Responses Interleave with Source Data Fetch","am64xx-evm,am64xx-hsevm,am64xx-sk"
    "LCPD-21662","Doc: Linux watchdog support","am62xx-sk"
    "LCPD-25320","Docs: AM64x: IPC chapter should be under Foundational Components","am64xx-evm,am64xx-sk"
-   "LCPD-29509","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: CAN tests fail:  kvaser tool connection fail",""
-|
+   "LCPD-29509","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: CAN tests fail:  kvaser tool connection fail"
 
+|
 
 Issues found and closed on this release that may be applicable to prior releases
 -----------------------------------------------------------------------------------
@@ -205,7 +204,7 @@ Errata Workarounds Available in this Release
 U-Boot Known Issues
 ------------------------
 .. csv-table::
-   :header: "Record ID","Platform", "Title","Workaround"
+   :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 15, 30, 70, 30
 
    "LCPD-25540","am64xx-hsevm,am64xx-sk","u-boot: usb host boot failed on AM64x SK",""
@@ -219,7 +218,6 @@ U-Boot Known Issues
    "LCPD-28503","am62xx-sk,am64xx-evm,am64xx-sk","Need to sync up DTS files between u-boot and kernel for at least AM62x, possibly other boards too",""
 
 |
-
 
 Linux Known Issues
 ---------------------------
@@ -335,17 +333,15 @@ Linux Known Issues
 
 |
 
-
 Linux RT Kernel Known Issues
 ----------------------------
 .. csv-table::
    :header: "Record ID", "Platform", "Title", "Workaround"
    :widths: 5, 10, 70, 35
 
-
    "LCPD-29388","am62xx-sk,am64xx-evm,am64xx-sk","PREEMPT_RT interrupt latency with background memory load",""
    "LCPD-29339","am62xx-sk","Processor SDK 8.3 AM62x lacks RT Linux performance numbers",""
    "LCPD-29332","am62xx-sk","LPM Demo not Working on Linux RT",""
    "LCPD-24288","am64xx-evm,am654x-idk","am64xx-evm NCM/ACM network performance test crashes with RT images",""
-|
 
+|

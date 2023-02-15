@@ -11,7 +11,9 @@ SDK packages a SYSFW trace parser utility (``bin/sysfw_trace_parser.py``) which
 helps in parsing the hex strings that are output in UART when trace is enabled.
 
 Usage of this tool is described below. Current version of trace (Option -Tv) is ``0x03006``.
+
 ::
+
     usage: ./sysfw_trace_parser.py [-h] (-l LOG_FILE | -d SERIAL_PORT)
                                    (-o OUTPUT_FILE | -O) [-Tv TRACE_DATA_VERSION]
                                    [-t] [-r RULES_FILE] [-Pm]
