@@ -6,6 +6,12 @@ NAND
     .. note::
         NAND is not supported on J721E platform.
 
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+    .. note::
+        Use **am62x_lpsk_r5_gpmc_defconfig** as reference to enable GPMC NAND
+        boot with AM62x SoC.
+
 This section documents how to write files to the NAND device and use it
 to load and then boot the Linux Kernel using a root filesystem also
 found on NAND.
@@ -169,24 +175,41 @@ Before writing we must erase at least the area to be written to.
 
 Start DFU on the EVM.
 
+Plug the EVM to a PC via USB cable. At uboot prompt, run the following commands:
+
+::
+
+    U-Boot # env default -a -f
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+        ::
+
+                U-Boot # setenv dfu_alt_info ${dfu_alt_info_gpmc_nand}
+
+.. ifconfig:: CONFIG_part_family in ('AM64X_family')
+
+        ::
+
+                U-Boot # setenv dfu_alt_info ${dfu_alt_info_nand}
+
 ::
 
     U-Boot # dfu 0 nand 0
 
-Plug the EVM to a PC via USB cable. Use the the correct DFU USB port on the EVM.
-On the PC, check that you can see the DFU USB interface
+Use the the correct DFU USB port on the EVM. On the PC, check that you can see the DFU USB interface
 
 ::
 
-    $ sudo dfu-util -;
+    $ sudo dfu-util -l
 
-Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=6, name="NAND.file-system", serial="0000000000000280"
-Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=5, name="NAND.u-boot-env.backup", serial="0000000000000280"
-Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=4, name="NAND.u-boot-env", serial="0000000000000280"
-Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=3, name="NAND.u-boot", serial="0000000000000280"
-Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=2, name="NAND.tiboot3.backup", serial="0000000000000280"
-Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=1, name="NAND.tispl", serial="0000000000000280"
-Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=0, name="NAND.tiboot3", serial="0000000000000280"
+    Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=6, name="NAND.file-system", serial="0000000000000280"
+    Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=5, name="NAND.u-boot-env.backup", serial="0000000000000280"
+    Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=4, name="NAND.u-boot-env", serial="0000000000000280"
+    Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=3, name="NAND.u-boot", serial="0000000000000280"
+    Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=2, name="NAND.tiboot3.backup", serial="0000000000000280"
+    Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=1, name="NAND.tispl", serial="0000000000000280"
+    Found DFU: [0451:6165] ver=0224, devnum=8, cfg=1, intf=0, path="3-13.1", alt=0, name="NAND.tiboot3", serial="0000000000000280"
 
 
 On the PC, write the bootloader to the first NAND partition:
@@ -194,6 +217,16 @@ On the PC, write the bootloader to the first NAND partition:
 ::
 
     $ sudo dfu-util -D tiboot3.bin -a NAND.tiboot3
+
+Similarly for Other bootloader binaries:
+
+::
+
+    $ sudo dfu-util -D tispl.bin -a NAND.tispl
+
+::
+
+    $ sudo dfu-util -D u-boot.img -a NAND.u-boot
 
 NAND Boot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
