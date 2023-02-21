@@ -14,7 +14,7 @@ This page applies to TI's v5.10 kernel.
 Supported Devices
 =================
 
-There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: AM65x, AM62x, J721E, J721S2.
+There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: AM65x, AM62x, AM62Ax, J721E, J721S2.
 
 
 Hardware Architecture
@@ -31,11 +31,16 @@ In addition to the SoC's DSS, boards often contain external display bridges (for
 
     .. Image:: /images/DSS7_HW.png
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X', 'AM62AX')
 
     .. Image:: /images/DSS7Lite_HW.png
 
+
 The above image gives an overview of the DSS hardware. The arrows show how pipelines are connected to overlay managers, which are further connected to video-ports, which finally create an encoded pixel stream for display on the LCD or monitor.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    - **Note:** While the DSS7-L in AM62Ax has 2 video pipelines, there is only one video port (VP) coming out of the SoC. This VP outputs DPI signals. The other pipeline can be used to overlay video data on top of the first pipeline's output. On the AM62A-SK EVM, this DPI output is then forwarded to an on-board HDMI framer.
 
 
 Display Controller (DISPC)
@@ -85,6 +90,15 @@ SoC Family: |__PART_FAMILY_DEVICE_NAMES__|
     | DSS version| Outputs       | Pipes             | Video ports|
     +============+===============+===================+============+
     | DSS7-L     |  DPI, OLDI    | VID, VIDL         | 2          |
+    +------------+---------------+-------------------+------------+
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    +------------+---------------+-------------------+------------+
+    | DSS version| Outputs       | Pipes             | Video ports|
+    +============+===============+===================+============+
+    | DSS7-L     |  DPI          | VID, VIDL         | 1          |
     +------------+---------------+-------------------+------------+
 
 
