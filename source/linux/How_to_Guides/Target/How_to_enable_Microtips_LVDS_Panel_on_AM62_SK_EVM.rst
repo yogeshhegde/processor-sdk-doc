@@ -6,8 +6,8 @@ The following panel is currently supported with the AM625 SK EVM revision E3 boa
 
 **Steps to enable OLDI Panel DT overlay:**
 
-#. Follow the `How to enable DT overlays on AM625 SK
-   <How_to_enable_DT_overlays_on_AM625_SK.html>`__ guide for steps on building
+#. Follow the `How to enable DT overlays in linux
+   <How_to_enable_DT_overlays_in_linux.html>`__ guide for steps on building
    and adding the overlay in your SD card. Make sure that the overlay file 
    ``k3-am625-sk-oldi-panel.dtbo`` has been appended in the ``name_overlays`` 
    variable as suggested in the same page.
