@@ -229,7 +229,7 @@ the Makefile from the top-level of the SDK.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-::
+ ::
 
     Build GPU Kernel Modules
     host# make ti-img-rogue-driver_am62
@@ -245,7 +245,7 @@ the Makefile from the top-level of the SDK.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-::
+ ::
 
     Install GPU Kernel Modules
     host# make ti-img-rogue-driver_am62_install
