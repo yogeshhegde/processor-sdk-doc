@@ -1,15 +1,16 @@
 How to playback audio over HDMI
 ===============================
 
-AM62x SK EVMs support audio playback over HDMI. This requires shorting a jumper
-on the board, and applying an additional DT overlay (.dtbo) file:
+SK-AM62 and SK-AM62A support audio playback over HDMI. This requires shorting a
+jumper on the board, and applying an additional DT overlay (.dtbo) file:
 ``k3-am625-sk-hdmi-audio.dtbo``.
 
 **Steps to enable audio over HDMI:**
 
 #. Toggle the FET switch that shares audio lines between the 3.5mm Jack and
-   HDMI connector. For this you have to short the **J24** jumper on the EVM,
-   shown below:
+   HDMI connector. For this you have to short the **J24** jumper on the
+   SK-AM62, or the **J12** jumper on the SK-AM62A, at the location marked
+   below:
 
     .. Image:: ../../../images/AM62x_HDMI_Audio_Jumper.jpg
             :scale: 10%
