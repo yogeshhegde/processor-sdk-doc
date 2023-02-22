@@ -132,8 +132,7 @@ See `Build Options`_ for a list of additional targets.  The MACHINE can be set t
         $ . conf/setenv
         $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
         $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
-
-        $ MACHINE=<machine> bitbake tisdk-base-image
+        $ MACHINE=<machine> bitbake -k tisdk-base-image
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
@@ -196,7 +195,7 @@ The "Build Output" is given relative to the
     +------------------------------+---------------------------------------------------------------+----------------------------+
     | Target                       | Build Output                                                  | Description                |
     +==============================+===============================================================+============================+
-    | arago-core-tisdk-bundle      | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
+    | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
     +------------------------------+---------------------------------------------------------------+----------------------------+
     | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
     +------------------------------+---------------------------------------------------------------+----------------------------+
