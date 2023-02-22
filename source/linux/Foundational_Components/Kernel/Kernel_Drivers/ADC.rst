@@ -179,6 +179,7 @@ Should the entry "TI's AM335X ADC driver" be missing the MFD component
       };
 
    |
+
    The parameter "ti,adc-channels" needs to hold data related to which
    channels you want to use for ADC.
 
@@ -200,6 +201,7 @@ Should the entry "TI's AM335X ADC driver" be missing the MFD component
       };
 
    |
+
    The parameter "ti,adc-channels" needs to hold data related to which
    channels you want to use for ADC; the example above is using channels
    CH0-CH7.
@@ -218,6 +220,7 @@ Should the entry "TI's AM335X ADC driver" be missing the MFD component
       };
 
    |
+
    The parameter "ti,adc-channels" needs to hold data related to which
    channels you want to use for ADC; the example above is using channels
    CH0-CH7.

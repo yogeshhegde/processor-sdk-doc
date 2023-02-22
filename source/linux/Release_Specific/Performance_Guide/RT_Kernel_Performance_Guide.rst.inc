@@ -4,8 +4,8 @@
 .. rubric::  **Read This First**
    :name: read-this-first-rt-kernel-perf-guide
 
-**All performance numbers provided in this document are gathered using
-following Evaluation Modules unless otherwise specified.**
+All performance numbers provided in this document are gathered using
+following Evaluation Modules unless otherwise specified.
 
 +----------------+---------------------------------------------------------------------------------------------------------------------+
 | Name           | Description                                                                                                         |
@@ -24,7 +24,6 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+---------------------------------------------------------------------------------------------------------------------+
 | AM65x EVM      | AM65x Evaluation Module rev 1.0 with ARM running at 800MHz, DDR4-2400 (1333 MT/S), TMDX654GPEVM                     |
 +----------------+---------------------------------------------------------------------------------------------------------------------+
-
 
 Table:  Evaluation Modules
 
@@ -45,20 +44,21 @@ with drivers included in a particular release.
 For further information or to report any problems, contact
 http://community.ti.com/ or http://support.ti.com/
 
-System Benchmarks
--------------------------
+|
 
-LMBench
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric::  System Benchmarks
+
+**LMBench**
+
 LMBench is a collection of microbenchmarks of which the memory bandwidth 
 and latency related ones are typically used to estimate processor 
 memory system performance.
-  
-**Latency**: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
+
+*Latency*: lat_mem_rd-stride128-szN, where N is equal to or smaller than the cache
 size at given level measures the cache miss penalty. N that is at least
 double the size of last level cache is the latency to external memory.
 
-**Bandwidth**: bw_mem_bcopy-N, where N is is equal to or smaller than the cache size at
+*Bandwidth*: bw_mem_bcopy-N, where N is is equal to or smaller than the cache size at
 a given level measures the achivable memory bandwidth from software doing
 a memcpy() type operation. Typical use is for external memory bandwidth
 calculation. The bandwidth is calculated as byte read and written counts
@@ -68,7 +68,7 @@ as 1 which should be roughly half of STREAM copy result.
     :header: "Benchmarks","am574x-idk: perf","am654x-idk: perf"
 
     "af_unix_sock_stream_latency (microsec)","63.17","50.64"
-    "af_unix_socket_stream_bandwidth (MBs)","867.06","1213.27"
+     "af_unix_socket_stream_bandwidth (MBs)","867.06","1213.27"
     "bw_file_rd-io-1mb (MB/s)","681.66","964.69"
     "bw_file_rd-o2c-1mb (MB/s)","534.28","650.09"
     "bw_mem-bcopy-16mb (MB/s)","1542.61","904.47"
@@ -180,11 +180,10 @@ as 1 which should be roughly half of STREAM copy result.
     "tcp_ip_connection_cost_to_localhost (microsec)","148.24","82.78"
     "tcp_latency_using_localhost (microsec)","0.87","0.86"
 
+Table:  *LM Bench Metrics*
 
-Table:  **LM Bench Metrics**
+**Dhrystone**
 
-Dhrystone
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Dhrystone is a core only benchmark that runs from warm L1 caches in all
 modern processors. It scales linearly with clock speed. For standard ARM
 cores the DMIPS/MHz score will be identical with the same compiler and flags.
@@ -196,22 +195,19 @@ cores the DMIPS/MHz score will be identical with the same compiler and flags.
     "dhrystone_per_mhz (DMIPS/MHz)","344.90","6.10"
     "dhrystone_per_second (DhrystoneP)","6060606.00","4255319.00"
 
+Table:  *Dhrystone Benchmark*
 
-Table:  **Dhrystone Benchmark**
-
-Whetstone
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Whetstone**
 
 .. csv-table::
     :header: "Benchmarks","am574x-idk: perf","am654x-idk: perf"
 
     "whetstone (MIPS)","3333.30","3333.30"
 
+Table:  *Whetstone Benchmark*
 
-Table:  **Whetstone Benchmark**
+**Linpack**
 
-Linpack
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Linpack measures peak double precision (64 bit) floating point performance in
 sloving a dense linear system.
 
@@ -220,11 +216,9 @@ sloving a dense linear system.
 
     "linpack (Kflops)","666667.00","326300.00"
 
+Table:  *Linpack Benchmark*
 
-Table:  **Linpack Benchmark**
-
-NBench
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**NBench**
 
 .. csv-table::
     :header: "Benchmarks","am574x-idk: perf","am654x-idk: perf"
@@ -239,11 +233,10 @@ NBench
     "numeric_sort (Iterations)","439.40","296.85"
     "string_sort (Iterations)","93.97","94.51"
 
+Table:  *NBench Benchmarks*
 
-Table:  **NBench Benchmarks**
+**Stream**
 
-Stream
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 STREAM is a microbenchmarks for measuring data memory system performance without
 any data reuse. It is designed to miss on caches and exercise data prefetcher and
 apeculative accesseses. it uses double precision floating point (64bit) but in
@@ -260,23 +253,20 @@ counts as one resulting in a score that is double the bandwidth LMBench will sho
     "scale (MB/s)","3116.80","1823.80"
     "triad (MB/s)","2901.30","1497.40"
 
+Table:  *Stream*
 
-Table:  **Stream**
+**CoreMarkPro**
 
-CoreMarkPro
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 CoreMark®-Pro is a comprehensive, advanced processor benchmark that works with
 and enhances the market-proven industry-standard EEMBC CoreMark® benchmark.
 While CoreMark stresses the CPU pipeline, CoreMark-Pro tests the entire processor,
 adding comprehensive support for multicore technology, a combination of integer
 and floating-point workloads, and data sets for utilizing larger memory subsystems.
 
+Table:  *CoreMarkPro*
 
+**MultiBench**
 
-Table:  **CoreMarkPro**
-
-MultiBench
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 MultiBench™ is a suite of benchmarks that allows processor and system designers to
 analyze, test, and improve multicore processors. It uses three forms of concurrency:
 Data decomposition: multiple threads cooperating on achieving a unified goal and
@@ -292,12 +282,10 @@ establish a common programming model that communicates with the benchmark throug
 abstraction layer and provides a flexible interface to allow a wide variety of
 thread-enabled workloads to be tested.
 
+Table:  *Multibench*
 
+**Spec2K6**
 
-Table:  **Multibench**
-
-Spec2K6
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 CPU2006 is a set of benchmarks designed to test the CPU performance of a modern server
 computer system. It is split into two components, the first being CINT2006,
 the other being CFP2006 (SPECfp), for floating point testing.
@@ -312,23 +300,16 @@ As an example for SPECint2006, consider a processor which can run 400.perlbench 
 The time it takes the reference machine to run the benchmark is 9770 seconds. Thus the ratio is 4.885.
 Each ratio is computed, and then the geometric mean of those ratios is computed to produce an overall value.
 
-
 Rate (Multiple Cores)
-
-
-Table:  **Spec2K6**
-
 Speed (Single Core)
 
+|
 
-Table:  **Spec2K6 Speed**
+.. rubric::  Maximum Latency under different use cases
 
 
-Maximum Latency under different use cases
-------------------------------------------
+**Shield (dedicated core) Case**
 
-Shield (dedicated core) Case
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 | The following tests measure worst-case latency under different
   scenarios or use cases.
 | Cyclictest application was used to measured latency. Each test ran for
@@ -347,8 +328,6 @@ Shield (dedicated core) Case
     /bin/echo $$ > /sys/fs/cgroup/rt/tasks
     }
 
-|
-
 .. csv-table::
     :header: "Use Case","am574x-idk: Latency","am654x-idk: Latency"
 
@@ -363,27 +342,9 @@ Shield (dedicated core) Case
     "L_PERF_SHIELD_SMP_USB","68.00","56.00"
     "L_PERF_SHIELD_SMP_USB_NET","77.00"
 
-
 |
 
-Boot-time Measurement
--------------------------
-
-Boot media: MMCSD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-Table:  **Boot time MMC/SD**
-
-Boot media: NAND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-Table:  **Boot time NAND**
-
-
-ALSA SoC Audio Driver
--------------------------
+.. rubric::  ALSA SoC Audio Driver
 
 #. Access type - RW\_INTERLEAVED
 #. Channels - 2
@@ -391,9 +352,7 @@ ALSA SoC Audio Driver
 #. Period size - 64
 
 
-Table:  **Audio Capture**
-
-|
+Table:  *Audio Capture*
 
 .. csv-table::
     :header: "Sampling Rate (Hz)","am574x-idk: Throughput (bits/sec)","am574x-idk: CPU Load (%)"
@@ -409,32 +368,18 @@ Table:  **Audio Capture**
     "88200","2823548.00","3.25"
     "96000","3073248.00","0.08"
 
-Table:  **Audio Playback**
+Table:  *Audio Playback*
 
 |
 
-Sensor Capture
--------------------------
+.. rubric::  Sensor Capture
 
 Capture video frames (MMAP buffers) with v4l2c-ctl and record the
 reported fps
 
-
-Table:  **Sensor Capture**
-
 |
 
-Display Driver
--------------------------
-
-
-
-|
-
-
-
-|
-
+.. rubric::  Display Driver
 
 .. csv-table::
     :header: "Mode","am574x-idk: Fps"
@@ -477,28 +422,17 @@ Display Driver
     "832x624\@75","74.55 (min 74.38, max 74.73)"
     "848x480\@60","60.00 (min 59.91, max 60.09)"
 
-Table:  **Display performance (HDMI)**
+Table:  *Display performance (HDMI)*
 
+.. rubric::  Graphics SGX/RGX Driver
 
-|
-
-
-
-|
-
-
-Graphics SGX/RGX Driver
--------------------------
-
-GLBenchmark
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**GLBenchmark**
 
 Run GLBenchmark and capture performance reported Display rate (Fps),
 Fill rate, Vertex Throughput, etc. All display outputs (HDMI, Displayport and/or LCD)
 are connected when running these tests
 
-Performance (Fps)
-"""""""""""""""""""""""""""
+**Performance (Fps)**
 
 .. csv-table::
     :header: "Benchmark","am574x-idk: Test Number","am574x-idk: Fps"
@@ -517,11 +451,9 @@ Performance (Fps)
     "GLB25_EgyptTestC24Z16_ETC1_Offscreen test","2501011.00","24.00"
     "GLB25_EgyptTestStandardOffscreen_inherited test","2000010.00","83.00"
 
+Table:  *GLBenchmark 2.5 Performance*
 
-Table:  **GLBenchmark 2.5 Performance**
-
-Vertex Throughput
-"""""""""""""""""""""""""""
+**Vertex Throughput**
 
 .. csv-table::
     :header: "Benchmark","am574x-idk: Test Number","am574x-idk: Rate (triangles/sec)"
@@ -531,40 +463,28 @@ Vertex Throughput
     "GLB25_TriangleTexVertexLitTestC24Z16 test","2500411.00","20607806.00"
 
 
-Table:  **GLBenchmark 2.5 Vertex Throughput**
+Table:  *GLBenchmark 2.5 Vertex Throughput*
 
-Pixel Throughput
-"""""""""""""""""""""""""""
+**Pixel Throughput**
 
 .. csv-table::
     :header: "Benchmark","am574x-idk: Test Number","am574x-idk: Rate (texel/sec)","am574x-idk: Fps"
 
     "GLB25_FillTestC24Z16 test","2500101.00","1073744384.00","43.74 (min 42.29, max 44.26)"
 
+Table:  *GLBenchmark 2.5 Pixel Throughput*
 
-Table:  **GLBenchmark 2.5 Pixel Throughput**
+**GFXBench**
 
-GFXBench
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Run GFXBench and capture performance reported (Score and Display rate in fps). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
 
-
-
-Table:  **GFXBench**
-
-Glmark2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**Glmark2**
 
 Run Glmark2 and capture performance reported (Score). All display outputs (HDMI, Displayport and/or LCD) are connected when running these tests
 
-
-
-Table:  **Glmark2**
-
 |
 
-Multimedia (Decode)
--------------------------
+.. rubric::  Multimedia (Decode)
 
 Run gstreamer pipeline "gst-launch-1.0 playbin uri=\ file://\ <Path to
 stream> video-sink="kmssink sync=false connector=<connector id>"
@@ -573,8 +493,7 @@ time reported. All display display outputs (HDMI and LCD) were connected
 when running these tests, but playout was forced to LCD via the
 connector=<connector id> option.
 
-H264
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*H264*
 
 .. csv-table::
     :header: "Resolution","am574x-idk: Fps","am574x-idk: IVA Freq (MHz)","am574x-idk: IPU Freq (MHz)"
@@ -583,12 +502,9 @@ H264
     "720p","59940.00","532.00",""
     "CIF","","532.00",""
 
-Table:  **Gstreamer H264 in AVI Container Decode Performance**
+Table:  *Gstreamer H264 in AVI Container Decode Performance*
 
-|
-
-MPEG4
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**MPEG4**
 
 .. csv-table::
     :header: "Resolution","am574x-idk: Fps","am574x-idk: IVA Freq (MHz)","am574x-idk: IPU Freq (MHz)"
@@ -596,30 +512,22 @@ MPEG4
     "CIF","30.00","532.00",""
     "QVGA","30.00","532.00","1064.00"
 
+Table:  *GStreamer MPEG4 in 3GP Container Decode Performance*
 
-Table:  **GStreamer MPEG4 in 3GP Container Decode Performance**
-
-|
-
-MPEG2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**MPEG2**
 
 .. csv-table::
     :header: "Resolution","am574x-idk: Fps","am574x-idk: IVA Freq (MHz)","am574x-idk: IPU Freq (MHz)"
 
     "720p","29.97","532.00",""
 
-
-Table:  **GStreamer MPEG2 in MP4 Container Decode Performance**
-
-|
+Table:  *GStreamer MPEG2 in MP4 Container Decode Performance*
 
 |
-Ethernet Driver - CPSW CPSW2G NETCP
------------------------------------
 
-TCP Throughput
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. rubric::  Ethernet Driver - CPSW CPSW2G NETCP
+
+**TCP Throughput**
 
 .. csv-table::
     :header: "TCP Window Size (KBytes)","am574x-idk: Throughput (Mbits/sec)","am574x-idk: CPU Load ","am654x-idk: Throughput (Mbits/sec)","am654x-idk: CPU Load "
@@ -631,8 +539,7 @@ TCP Throughput
     "128","606.40","","1282.40",""
     "256","415.20","","1332.00",""
 
-Table: **TCP Throughput No Interrupt Pacing**
-
+Table: *TCP Throughput No Interrupt Pacing*
 
 .. csv-table::
     :header: "TCP Window Size (KBytes)","am574x-idk: Throughput (Mbits/sec)","am574x-idk: CPU Load "
@@ -644,11 +551,10 @@ Table: **TCP Throughput No Interrupt Pacing**
     "128","672.00",""
     "256","588.80",""
 
-Table: **TCP Throughput Interrupt Pacing**
+Table: *TCP Throughput Interrupt Pacing*
 
 
-UDP Throughput
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**UDP Throughput**
 
 .. csv-table::
     :header: "UDP Datagram Size(bytes)","am574x-idk: Throughput (Mbits/sec)","am574x-idk: CPU Load ","am574x-idk: Packets Per Second (kpps) ","am654x-idk: Throughput (Mbits/sec)","am654x-idk: CPU Load ","am654x-idk: Packets Per Second (kpps) "
@@ -663,8 +569,7 @@ UDP Throughput
     "4000","827.50","44.06","25.00"
     "8000","957.30","47.07","14.00"
 
-Table: **UDP Throughput Egress**
-
+Table: *UDP Throughput Egress*
 
 .. csv-table::
     :header: "UDP Datagram Size(bytes)","am574x-idk: Throughput (Mbits/sec)","am574x-idk: CPU Load ","am574x-idk: Packets Per Second (kpps) ","am654x-idk: Throughput (Mbits/sec)","am654x-idk: CPU Load ","am654x-idk: Packets Per Second (kpps) "
@@ -678,9 +583,7 @@ Table: **UDP Throughput Egress**
     "4000","0.00","0.03","0.00"
     "8000","0.00","0.07","0.00"
 
-Table: **UDP Throughput Ingress**
-
-|
+Table: *UDP Throughput Ingress*
 
 -  iperf version 2.0.5
 -  For receive performance, on DUT, invoke iperf in server mode.
@@ -697,34 +600,17 @@ Table: **UDP Throughput Ingress**
 
 |
 
-PCIe Driver
--------------------------
+.. rubric::  PCIe Driver
 
-PCIe-ETH
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+|
 
+.. rubric::  NAND Driver
 
-Table: **PCI Ethernet**
+|
 
-NAND Driver
--------------------------
+.. rubric::  QSPI Flash Driver
 
-
-
-
-
-
-
-
-
-
-QSPI Flash Driver
--------------------------
-
-
-
-AM574x-IDK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**AM574x-IDK**
 
 .. csv-table::
     :header: "Buffer size (bytes)","am574x-idk: Write UBIFS Throughput (Mbytes/sec)","am574x-idk: Write UBIFS CPU Load (%)","am574x-idk: Read UBIFS Throughput (Mbytes/sec)","am574x-idk: Read UBIFS CPU Load (%)"
@@ -734,13 +620,7 @@ AM574x-IDK
     "524288","0.25 (min 0.23, max 0.27)","59.62 (min 59.18, max 60.21)","15.69","24.00"
     "1048576","0.25 (min 0.23, max 0.27)","59.47 (min 58.13, max 60.77)","15.58","25.93"
 
-
-
-
-
-
-AM654X-IDK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**AM654X-IDK**
 
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write UBIFS Throughput (Mbytes/sec)","am654x-idk: Write UBIFS CPU Load (%)","am654x-idk: Read UBIFS Throughput (Mbytes/sec)","am654x-idk: Read UBIFS CPU Load (%)"
@@ -750,30 +630,13 @@ AM654X-IDK
     "524288","0.46 (min 0.35, max 0.53)","25.13 (min 25.09, max 25.16)","29.53","22.22"
     "1048576","0.47 (min 0.35, max 0.52)","25.15 (min 25.12, max 25.19)","32.10","23.08"
 
+|
 
+.. rubric::  SPI Flash Driver
 
+|
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-SPI Flash Driver
--------------------------
-
-
-
-
-EMMC Driver
--------------------------
+.. rubric::  EMMC Driver
 
 .. warning::
 
@@ -783,29 +646,7 @@ EMMC Driver
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
-|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-AM574x-IDK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-|
-
-
+**AM574x-IDK**
 
 .. csv-table::
     :header: "Buffer size (bytes)","am574x-idk: Write EXT2 Throughput (Mbytes/sec)","am574x-idk: Write EXT2 CPU Load (%)","am574x-idk: Read EXT2 Throughput (Mbytes/sec)","am574x-idk: Read EXT2 CPU Load (%)"
@@ -816,10 +657,6 @@ AM574x-IDK
     "1048576","32.77 (min 27.51, max 34.46)","14.94 (min 10.88, max 27.51)","75.30","21.90"
     "5242880","32.71 (min 27.48, max 34.42)","13.94 (min 9.80, max 27.67)","75.28","23.38"
 
-|
-
-
-
 .. csv-table::
     :header: "Buffer size (bytes)","am574x-idk: Write EXT4 Throughput (Mbytes/sec)","am574x-idk: Write EXT4 CPU Load (%)","am574x-idk: Read EXT4 Throughput (Mbytes/sec)","am574x-idk: Read EXT4 CPU Load (%)"
 
@@ -829,19 +666,7 @@ AM574x-IDK
     "1048576","32.20 (min 29.05, max 33.18)","15.70 (min 12.82, max 24.72)","77.58","23.25"
     "5242880","32.26 (min 29.01, max 33.40)","15.87 (min 13.43, max 24.27)","77.56","24.07"
 
-|
-
-
-
-
-
-
-
-
-
-
-AM654x-IDK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**AM654x-IDK**
 
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write VFAT Throughput (Mbytes/sec)","am654x-idk: Write VFAT CPU Load (%)","am654x-idk: Read VFAT Throughput (Mbytes/sec)","am654x-idk: Read VFAT CPU Load (%)"
@@ -852,10 +677,6 @@ AM654x-IDK
     "1048576","33.78 (min 25.61, max 35.86)","6.82 (min 5.57, max 11.07)","147.52","15.07"
     "5242880","33.80 (min 25.54, max 36.09)","6.74 (min 5.44, max 11.15)","145.30","15.38"
 
-|
-
-
-
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write EXT2 Throughput (Mbytes/sec)","am654x-idk: Write EXT2 CPU Load (%)","am654x-idk: Read EXT2 Throughput (Mbytes/sec)","am654x-idk: Read EXT2 CPU Load (%)"
 
@@ -864,10 +685,6 @@ AM654x-IDK
     "524288","34.85 (min 31.08, max 36.01)","4.93 (min 4.12, max 7.94)","155.98","17.74"
     "1048576","34.78 (min 30.81, max 35.98)","4.90 (min 3.96, max 7.58)","163.90","17.86"
     "5242880","34.79 (min 30.76, max 35.88)","4.99 (min 4.17, max 7.79)","163.61","18.58"
-
-|
-
-
 
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write EXT4 Throughput (Mbytes/sec)","am654x-idk: Write EXT4 CPU Load (%)","am654x-idk: Read EXT4 Throughput (Mbytes/sec)","am654x-idk: Read EXT4 CPU Load (%)"
@@ -880,97 +697,20 @@ AM654x-IDK
 
 |
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-SATA Driver
--------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-|
-
-|
-
-|
+.. rubric::  SATA Driver
 
 -  Filesize used is : 1G
 -  SATA II Harddisk used is: Seagate ST3500514NS 500G
 
 
-mSATA Driver
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-
-
-
-
-
-|
-
-|
+**mSATA Driver**
 
 -  Filesize used is : 1G
 -  MSATA Harddisk used is: SMS200S3/30G Kingston mSATA SSD drive
 
 |
 
-MMC/SD Driver
--------------------------
+.. rubric::  MMC/SD Driver
 
 .. warning::
 
@@ -980,33 +720,7 @@ MMC/SD Driver
   sensitive applications, umount the auto-mounted filesystem and
   re-mount in async mode.
 
-| 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-AM574x-IDK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**AM574x-IDK**
 
 .. csv-table::
     :header: "Buffer size (bytes)","am574x-idk: Write VFAT Throughput (Mbytes/sec)","am574x-idk: Write VFAT CPU Load (%)","am574x-idk: Read VFAT Throughput (Mbytes/sec)","am574x-idk: Read VFAT CPU Load (%)"
@@ -1017,10 +731,6 @@ AM574x-IDK
     "1048576","16.67 (min 10.85, max 18.85)","8.10 (min 6.31, max 12.84)","21.81","6.86"
     "5242880","16.74 (min 10.84, max 18.89)","8.90 (min 6.62, max 12.97)","21.82","7.96"
 
-|
-
-
-
 .. csv-table::
     :header: "Buffer size (bytes)","am574x-idk: Write EXT2 Throughput (Mbytes/sec)","am574x-idk: Write EXT2 CPU Load (%)","am574x-idk: Read EXT2 Throughput (Mbytes/sec)","am574x-idk: Read EXT2 CPU Load (%)"
 
@@ -1029,10 +739,6 @@ AM574x-IDK
     "524288","16.84 (min 12.58, max 18.68)","8.64 (min 4.08, max 16.95)","22.42","6.97"
     "1048576","18.10 (min 16.43, max 19.02)","8.41 (min 6.03, max 16.38)","22.58","6.70"
     "5242880","18.65 (min 16.90, max 19.22)","8.60 (min 5.86, max 17.10)","22.60","6.82"
-
-|
-
-
 
 .. csv-table::
     :header: "Buffer size (bytes)","am574x-idk: Write EXT4 Throughput (Mbytes/sec)","am574x-idk: Write EXT4 CPU Load (%)","am574x-idk: Read EXT4 Throughput (Mbytes/sec)","am574x-idk: Read EXT4 CPU Load (%)"
@@ -1043,13 +749,7 @@ AM574x-IDK
     "1048576","18.42 (min 17.41, max 18.79)","10.27 (min 7.69, max 16.17)","22.77","6.44"
     "5242880","17.96 (min 17.30, max 18.73)","8.44 (min 6.34, max 14.20)","22.79","6.87"
 
-|
-
-
-
-
-AM654x-IDK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**AM654x-IDK**
 
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write VFAT Throughput (Mbytes/sec)","am654x-idk: Write VFAT CPU Load (%)","am654x-idk: Read VFAT Throughput (Mbytes/sec)","am654x-idk: Read VFAT CPU Load (%)"
@@ -1060,10 +760,6 @@ AM654x-IDK
     "1048576","15.29 (min 13.40, max 16.60)","3.28 (min 2.13, max 6.53)","22.39","2.90"
     "5242880","15.57 (min 13.36, max 16.45)","3.35 (min 2.43, max 6.51)","22.38","2.79"
 
-|
-
-
-
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write EXT2 Throughput (Mbytes/sec)","am654x-idk: Write EXT2 CPU Load (%)","am654x-idk: Read EXT2 Throughput (Mbytes/sec)","am654x-idk: Read EXT2 CPU Load (%)"
 
@@ -1072,10 +768,6 @@ AM654x-IDK
     "524288","16.08 (min 13.89, max 17.03)","2.42 (min 1.72, max 3.97)","23.37","2.30"
     "1048576","16.55 (min 15.58, max 17.00)","2.37 (min 1.91, max 3.83)","23.46","2.31"
     "5242880","15.59 (min 13.38, max 17.04)","2.27 (min 1.68, max 3.35)","23.47","2.47"
-
-|
-
-
 
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write EXT4 Throughput (Mbytes/sec)","am654x-idk: Write EXT4 CPU Load (%)","am654x-idk: Read EXT4 Throughput (Mbytes/sec)","am654x-idk: Read EXT4 CPU Load (%)"
@@ -1086,58 +778,6 @@ AM654x-IDK
     "1048576","17.41 (min 16.44, max 18.28)","3.33 (min 2.53, max 5.18)","23.73","2.44"
     "5242880","17.64 (min 16.38, max 18.20)","3.26 (min 2.49, max 5.24)","23.72","2.44"
 
-|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-|
-
-|
-
-|
-
 The performance numbers were captured using the following:
 
 -  SanDisk 8GB MicroSDHC Class 10 Memory Card
@@ -1145,39 +785,33 @@ The performance numbers were captured using the following:
 
 |
 
-UART Driver
--------------------------
+.. rubric::  UART Driver
 
 Performance and Benchmarks not available in this release.
 
 |
 
-I2C Driver
--------------------------
+.. rubric::  I2C Driver
 
 Performance and Benchmarks not available in this release.
 
 |
 
-EDMA Driver
--------------------------
+.. rubric::  EDMA Driver
 
 Performance and Benchmarks not available in this release.
 
 |
 
-Touchscreen Driver
--------------------------
+.. rubric::  Touchscreen Driver
 
 Performance and Benchmarks not available in this release.
 
 |
 
-USB Driver
--------------------------
+.. rubric::  USB Driver
 
-MUSB/XHCI Host controller
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**MUSB/XHCI Host controller**
 
 .. warning::
 
@@ -1187,27 +821,19 @@ MUSB/XHCI Host controller
   integrity. For performance sensitive applications, umount the
   auto-mounted filesystem and re-mount in async mode.
 
-|
-
-**Setup** : SAMSUNG 850 PRO 2.5" 128GB SATA III Internal Solid State Drive (SSD) used with Inateck ASM1153E enclosure is
+*Setup* : SAMSUNG 850 PRO 2.5" 128GB SATA III Internal Solid State Drive (SSD) used with Inateck ASM1153E enclosure is
 connected to usb port under test. File read/write performance data is captured.
 
-|
+**USB Host VFAT**
 
-
-USB Host VFAT
-^^^^^^^^^^^^^
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write VFAT Throughput (Mbytes/sec)","am654x-idk: Write VFAT CPU Load (%)","am654x-idk: Read VFAT Throughput (Mbytes/sec)","am654x-idk: Read VFAT CPU Load (%)"
 
     "102400","33.59 (min 25.46, max 35.84)","8.41 (min 6.36, max 11.97)","37.23","6.85"
     "262144","33.51 (min 25.42, max 35.61)","8.63 (min 6.99, max 12.62)","37.96","6.86"
 
+**USB Host EXT2**
 
-
-
-USB Host EXT2
-^^^^^^^^^^^^^
 .. csv-table::
     :header: "Buffer size (bytes)","am654x-idk: Write EXT2 Throughput (Mbytes/sec)","am654x-idk: Write EXT2 CPU Load (%)","am654x-idk: Read EXT2 Throughput (Mbytes/sec)","am654x-idk: Read EXT2 CPU Load (%)"
 
@@ -1215,26 +841,11 @@ USB Host EXT2
     "1048576","35.59 (min 31.04, max 36.87)","5.95 (min 4.71, max 8.66)","37.11","6.60"
     "5242880","35.63 (min 30.79, max 36.95)","5.61 (min 4.38, max 8.41)","37.00","7.05"
 
-
-
-
-|
 |
 
-|
-|
+.. rubric::  CRYPTO Driver
 
-|
-|
-
-|
-|
-CRYPTO Driver
--------------------------
-
-OpenSSL Performance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+**OpenSSL Performance**
 
 .. csv-table::
     :header: "Algorithm","Buffer Size (in bytes)","am574x-idk: throughput (KBytes/Sec)","am654x-idk: throughput (KBytes/Sec)"
@@ -1295,10 +906,6 @@ OpenSSL Performance
     "sha512","64","1439.08","1472.02"
     "sha512","8192","35149.14","36610.05"
 
-
-|
-|
-
 .. csv-table::
     :header: "Algorithm","am574x-idk: CPU Load","am654x-idk: CPU Load"
 
@@ -1314,21 +921,15 @@ OpenSSL Performance
     "sha384","74.00","98.00"
     "sha512","74.00","98.00"
 
-
-
-|
 | Listed for each algorithm are the code snippets used to run each
   benchmark test.
-
-|
 
 ::
 
     time -v openssl speed -elapsed -evp aes-128-cbc
 
 
-IPSec Performance
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+**IPSec Performance**
 
 Note: queue\_len is set to 300 and software fallback threshold set to 9
 to enable software support for optimal performance
@@ -1338,15 +939,10 @@ to enable software support for optimal performance
 
     "aes128","88.00","7.00","27.20"
 
+|
 
-PRU Ethernet
-------------
-
+.. rubric::  PRU Ethernet
 
 Table: **PRU UDP Throughput Egress**
 
-
-
 Table: **PRU UDP Throughput Ingress**
-    
-
