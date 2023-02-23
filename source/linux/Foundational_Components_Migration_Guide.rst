@@ -121,7 +121,7 @@ change needed to run the HS-FS SDK on a GP board.
 K3-image-gen
 -------------
 
-K3-Image-Gen is a tool to allow users to create an image tree blob (a.k.a. FIT image) comprising of a signed System Firmware image as well
+K3-Image-Gen is a tool to allow users to create an image comprising of a signed System Firmware image as well
 as the binary configuration artifacts needed to bring up SYSFW as part of the U-Boot SPL startup. For more information go to:
 https://git.ti.com/cgit/k3-image-gen/k3-image-gen/tree/README.md.
 
@@ -238,7 +238,23 @@ Linux Kernel
 ---------------
 
 The following updates to ti-linux-kernel apply to the pre-built SDK, buildable SDK, and latest TI source for manual builds.
-No changes are needed when building the kernel. To package the kernel, it is recommended to bundle the Kernel, DTBs, and Initramfs
-images into a combined FIT image while signing each component. This is not required for GP and HS-FS devices, but on HS-SE devices
-only the signed FIT images will be allowed to boot. The pre-built SDK provides scripts to take a re-built kernel and re-bundle it
-into a FIT image :ref:`fitImage-for-HS`.
+No changes are needed when building the kernel.
+
+By default U-boot expects to boot kernel `Image`, DTB, and DTOs found in root/boot of the SD card if using SD/MMC boot. The exception is
+for HS-SE (High Security - Security Enforced) devices where the FIT image (Flattened Image Tree) named `fitImage` will boot by default. Booting
+with FIT image implements higher security. Each individual component is signed and when packaged, the FIT image will be authenticated during boot.
+
+Booting FIT image is not required for GP and HS-FS devices, but on HS-SE devices only the signed FIT image will be allowed to boot.
+
+To build your own FIT image, the pre-built SDK provides scripts to take a re-built kernel and re-bundle it into a FIT image :ref:`fitImage-for-HS`.
+
+To enable booting the FIT image, the u-boot environment variable `boot_fit` could be set to `1` in u-boot:
+::
+    setenv boot_fit 1
+    savenv
+    boot
+
+or we could copy the following code line to the uEnv.txt file located in the `boot` partition of the SD card after flashing a working bootable image, then
+boot AM64x via SD/MMC card boot:
+::
+    boot_fit=1

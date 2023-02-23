@@ -117,7 +117,7 @@ A53 SPL's output will be similar to this: (notice the "Authentication passed" li
 
 .. rubric:: U-Boot
 
-The boot flow continues as it does on a non-secure device, until loading the next FIT image `fitImage`. This FIT image includes the Linux kernel, DTB, and
+The boot flow continues as it does on a non-secure device, until loading the next FIT image named `fitImage`. This FIT image includes the Linux kernel, DTB, and
 other required boot artifacts. Each component is extracted and authenticated from this FIT image. Once all components are authenticated, U-boot starts Linux.
 
 U-boot's output will be similar to this: (notice the "Authentication passed" lines as we authenticate the Linux kernel and DTB).
