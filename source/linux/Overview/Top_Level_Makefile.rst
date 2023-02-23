@@ -320,7 +320,7 @@ the Makefile from the top-level of the SDK.
   
 This requires first building the R5 boot image. This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined boot image.
 
-**For GP**, 
+**For GP**
 ::
 
     host# make u-boot
@@ -328,7 +328,7 @@ This requires first building the R5 boot image. This will generate the u-boot-sp
   
 The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*x-gp-evm.bin 
  
-**For HS-FS**, 
+**For HS-FS**
 ::
 
     host# make u-boot
@@ -337,7 +337,7 @@ The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tib
   
 The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*x-hs-fs-evm.bin 
  
-**For HS-SE**, 
+**For HS-SE**
 ::
 
     host# make u-boot
@@ -412,9 +412,24 @@ the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
+    **For GP**
     ::
 
-        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin board-support/k3-image-gen*/tiboot3.bin /media/$USER/boot
+        host# sudo cp board-support/k3-image-gen*/tiboot3-am62x-gp-evm.bin /media/$USER/boot/tiboot3.bin
+        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin /media/$USER/boot
+
+    **For HS-FS**
+    ::
+
+        host# sudo cp board-support/k3-image-gen*/tiboot3-am62x-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
+        host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin /media/$USER/boot
+
+    **For HS-SE**
+    ::
+
+        host# sudo cp board-support/k3-image-gen*/tiboot3-am62x-hs-evm.bin /media/$USER/boot/tiboot3.bin
+        host# sudo cp board-support/u-boot_build/a53/tispl.bin_HS /media/$USER/boot/tispl.bin
+        host# sudo cp board-support/u-boot_build/a53/u-boot.img_HS /media/$USER/boot/u-boot.img
 
 .. ifconfig:: CONFIG_part_variant not in ('AM65X','AM64X', 'AM62X')
 
