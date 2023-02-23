@@ -314,7 +314,7 @@ the Makefile from the top-level of the SDK.
 
     host# make u-boot-spl_clean
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62AX')
 
 -  Build the combined boot image (tiboot3.bin) 
   
@@ -326,7 +326,7 @@ This requires first building the R5 boot image. This will generate the u-boot-sp
     host# make u-boot
     host# make sysfw-image DEVICE_TYPE=gp
   
-The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*x-gp-evm.bin 
+The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-gp-evm.bin
  
 **For HS-FS**
 ::
@@ -335,7 +335,7 @@ The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tib
     host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
     host# make sysfw-image DEVICE_TYPE=hs-fs
   
-The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*x-hs-fs-evm.bin 
+The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-fs-evm.bin
  
 **For HS-SE**
 ::
@@ -344,7 +344,7 @@ The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tib
     host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
     host# make sysfw-image DEVICE_TYPE=hs
   
-The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*x-hs-evm.bin 
+The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-evm.bin
 
 .. note:: If TI_SECURE_DEV_PKG environment variable is not defined, tiboot3.bin can still be built for GP devices. The following errors will occur in K3-Image-Gen build logs when building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
  ::
@@ -410,28 +410,28 @@ the SD card. e.g. run following to copy boot binaries in SD card boot partition.
         host# cp board-support/k3-image-gen*/sysfw-am65x_sr2-evm.itb /media/$USER/boot/sysfw.itb
         #Replace the path to SD card boot partition as appropriate
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
 
     **For GP**
     ::
 
-        host# sudo cp board-support/k3-image-gen*/tiboot3-am62x-gp-evm.bin /media/$USER/boot/tiboot3.bin
+        host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-gp-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin /media/$USER/boot
 
     **For HS-FS**
     ::
 
-        host# sudo cp board-support/k3-image-gen*/tiboot3-am62x-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
+        host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/u-boot_build/a53/u-boot.img board-support/u-boot_build/a53/tispl.bin /media/$USER/boot
 
     **For HS-SE**
     ::
 
-        host# sudo cp board-support/k3-image-gen*/tiboot3-am62x-hs-evm.bin /media/$USER/boot/tiboot3.bin
+        host# sudo cp board-support/k3-image-gen*/tiboot3-am62*-hs-evm.bin /media/$USER/boot/tiboot3.bin
         host# sudo cp board-support/u-boot_build/a53/tispl.bin_HS /media/$USER/boot/tispl.bin
         host# sudo cp board-support/u-boot_build/a53/u-boot.img_HS /media/$USER/boot/u-boot.img
 
-.. ifconfig:: CONFIG_part_variant not in ('AM65X','AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant not in ('AM65X','AM64X', 'AM62X', 'AM62AX')
 
     ::
 
