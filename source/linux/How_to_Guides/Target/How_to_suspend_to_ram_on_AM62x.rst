@@ -1,7 +1,14 @@
 How to Suspend to RAM (Deep Sleep) on AM62x
 ============================================
 
-AM62x has limited support for Low Power Mode (LPM) in current SDK release. Since not all peripherals drivers are updated to work across suspend/resume cycle,a cut-down version of DT file is provided with limited peripherals and Cores enabled to demonstrate Suspend to RAM (S2R) capability.
+AM62x has limited support for Low Power Mode (LPM) in current SDK release.
+Since not all peripheral drivers are updated to work across suspend/resume cycle,
+a cut-down version of DT file is provided with limited peripherals and cores enabled
+to demonstrate Suspend to RAM (S2R) capability.
+
+.. note::
+    Deep Sleep is currently supported only on AM62x GP Devices and support for HS-FS, HS-SE
+    is still under way.
 
 Supported Low power mode:
 
