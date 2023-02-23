@@ -188,7 +188,7 @@ must be available in the target filesystem to run ltp-ddt:
 -  rt-tests (cyclictest)
 
 There is an Arago/OE recipe
-`here <http://arago-project.org/git/?p=arago.git;a=blob;f=recipes/images/arago-test-image.bb>`__
+`here <https://git.ti.com/cgit/arago-project/meta-arago/tree/meta-arago-distro/recipes-core/packagegroups/ti-world.bb>`__
 that builds a filesystem image w/ the above tools plus:
 
 -  bonnie++
@@ -202,12 +202,12 @@ Clone the project
 
 ::
 
-    git clone http://arago-project.org/git/projects/test-automation/ltp-ddt.git
+    git clone https://git.ti.com/git/test-automation/ltp-ddt.git 
 
 | Installation instructions are in the README-DDT file. Check sections
   6) and 7)
 | There is also an Arago/OE recipe to build ltp-ddt
-  `here <http://arago-project.org/git/?p=arago.git;a=blob;f=recipes/ti/ltp-ddt_git.bb>`__
+  `here <https://git.ti.com/cgit/arago-project/meta-arago/tree/meta-arago-extras/recipes-devtools/ltp-ddt/ltp-ddt_20210524.bb>`__
 
 .. rubric:: Running Tests
    :name: running-tests
@@ -283,11 +283,11 @@ test cases.
 
 | LTP-DDT is an open source project.
 | The LTP-DDT sources are hosted here
-  http://arago-project.org/git/projects/test-automation/ltp-ddt.git
-| Developers are encouraged to join the Opentest mailing list at
-  http://arago-project.org/cgi-bin/mailman/listinfo/opentest
+  https://git.ti.com/git/test-automation/ltp-ddt.git
+| Developers are encouraged to join the Arago mailing list at
+  meta-arago@lists.yoctoproject.org
 | Of course patches and comments are welcome, please send them to
-  opentest@arago-project.org mailing list.
+  meta-arago@lists.yoctoproject.org mailing list.
 | Developers are encouraged to read sections 3) and 4) in the README-DDT
   file before submitting patches.
 

@@ -573,17 +573,9 @@ Common Variations
 See also
 ========
 
-General information for building TI SDKs using the Arago Project can be
-found at `Arago Project: Setting Up The Build
-Environment <http://arago-project.org/wiki/index.php/Setting_Up_Build_Environment>`__.
-This page contains information on the build host prerequisites, such as
-installing the toolchain, and required host packages and configuration,
-and the basic steps required to create an SDK completely from source.
-Once the Arago Project information is familiar, read the next section
-for a reference of layer configurations, build targets, and platforms
-supported by the Processor SDK.
+General information on Yocto, OpenEmbedded and Arago projects can be found at:
 
 -  `Yocto Project <http://yoctoproject.org/>`__
 -  `OpenEmbedded <http://openembedded.org/>`__
--  `Arago Project <http://arago-project.org/wiki/index.php/Main_Page>`__
+-  `Arago Project <https://git.yoctoproject.org/meta-arago>`__
 

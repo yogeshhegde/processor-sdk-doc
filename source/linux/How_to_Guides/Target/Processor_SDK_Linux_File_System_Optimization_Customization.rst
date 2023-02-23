@@ -203,7 +203,7 @@ into the target file system. One major advantage of using the package
 manager is the ability to track the package and it's content with the
 opkg package manager. More details will be coming about how to build
 your own packages, but for now please refer to `Building the
-SDK <../../Overview_Building_the_SDK.html>`__
-and `this
-link <http://arago-project.org/wiki/index.php/Building_with_Arago>`__ to
-learn more about building custom file systems with Arago.
+SDK <../../Overview_Building_the_SDK.html>`__ .
+
+To learn about Arago project, please refer `this
+link <https://git.yoctoproject.org/meta-arago>`__.
