@@ -29,11 +29,10 @@ U-Boot needs to be configured to switch to this dtb during kernel Image load and
 
         => run envboot; setenv name_fdt k3-am625-sk-lpmdemo.dtb; run init_mmc; run get_kern_mmc;run get_fdt_mmc;run get_overlay_mmc; booti ${loadaddr} ${rdaddr}:${filesize} ${fdtaddr}
 
-        Alternately, update uEnv.txt to following
+    Alternately, update uEnv.txt to following
 
     ::
 
-        #uenvcmd=run check_for_board; run findfdt
         uenvcmd=run check_for_board; setenv name_fdt k3-am625-sk-lpmdemo.dtb
 
 #. At Linux prompt, using RTC as wakeup source, test S2R using following cmd
