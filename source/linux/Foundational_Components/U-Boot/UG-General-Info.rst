@@ -437,6 +437,49 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_hs_evm_a72_defconfig O=<output directory>/a72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
 
+
+   .. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+        |  Board                     |            SD/eMMC Boot         |           UART boot            |           OSPI boot            |           USB DFU              |
+        +============================+=================================+================================+================================+================================+
+        |    J784S4 EVM              |    j784s4\_evm\_r5\_defconfig   |   j784s4\_evm\_r5\_defconfig   |   j784s4\_evm\_r5\_defconfig   |   j784s4\_evm\_r5\_defconfig   |
+        |                            |    j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+        |    AM69 HS-FS SK           |    j784s4\_evm\_r5\_defconfig   |   j784s4\_evm\_r5\_defconfig   |   j784s4\_evm\_r5\_defconfig   |                                |
+        |                            |    j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |                                |
+        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
+
+       *on GP*
+
+       .. code-block:: console
+
+          R5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j784s4_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+          $ cd ../k3-image-gen-<version>
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j784s4 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j784s4-gp.bin
+
+          A72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j784s4_evm_a72_defconfig O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+
+       *on HS-FS*
+
+       .. code-block:: console
+
+          R5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j784s4_evm_r5_defconfig O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+
+          To build tiboot3-j784s4-hs-fs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin, ti-sci-firmware-j784s4-hs-fs-cert.bin and ti-sci-firmware-j784s4-hs-fs-enc.bin
+          $ cd ../k3-image-gen-<version>
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j784s4 HS=1 SOC_TYPE=hs-fs SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j784s4-hs-fs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j784s4-hs-fs-cert.bin
+
+          A72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j784s4_evm_a72_defconfig O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
         +----------------------------+---------------------------------+---------------------------------+--------------------------------+--------------------------------+----------------------------------------+
