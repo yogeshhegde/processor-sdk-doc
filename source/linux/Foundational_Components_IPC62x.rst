@@ -5,13 +5,12 @@
 IPC for AM62x
 =============
 
-The AM62x processor has Cortex-M4F, Cortex-R5F subsystems in addition to
-a Quad core Cortex-A53 subsystem. Please refer to the
-AM62x Technical Reference Manual for details.
+The AM62x processors have Cortex-M4F and Cortex-R5F subsystems in addition to
+a Quad core Cortex-A53 subsystem. Please refer to the AM62x Technical Reference Manual for details.
 
 This article is geared toward AM62x users that are running Linux on the Cortex
-A53 cores. The goal is to help users understand how to establish communication
-with the M4F core and R5F core.
+A53 cores. The goal is to help users understand how to establish IPC communication
+with the M4F and R5F cores.
 
 There are many facets to this task: building, loading, debugging, memory
 sharing, etc. This article intends to take incremental steps toward
@@ -36,8 +35,8 @@ inter-processor communication (IPC)" for M4F IPC architecture and builds.
 Typical Boot Flow on AM62x for ARM Linux users
 ----------------------------------------------
 
-AM62x SOC's have multiple processor cores - Cortex-A53, Cortex-R5F, Cortex-M4F ARM core
-The A53 typically runs a HLOS like Linux/Android. The M4F remote core runs No-OS
+AM62x SOC's have multiple processor cores - Cortex-A53, Cortex-R5F and Cortex-M4F ARM cores.
+The A53 typically runs a HLOS like Linux/Android. The M4F and R5F remote cores run No-OS
 or RTOS (FreeRTOS etc). In normal operation, the boot loader (U-Boot/SPL) boots
 and loads the A53 with the HLOS. The A53 then boots the M4F core.
 
@@ -47,9 +46,6 @@ with a demo IPC application.
 Unlike M4F firmware, The R5F firmware is integrated as part of tispl.bin binary
 and is started early in the boot process by u-boot R5 SPL right after DDR initialization.
 
-
-.. note::
-    Please note early boot is not yet supported on AM62x devices.
 
 Getting Started with IPC Linux Examples
 ---------------------------------------
@@ -162,15 +158,6 @@ Finally, use the sysfs interface to start the remote core:
 	[  450.982840] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xe
 	[  450.988824] remoteproc remoteproc0: remote processor 5000000.m4fss is now up
 
-.. note::
-
-   The RemoteProc driver does not support a graceful shutdown of the M4 core
-   in the current Linux Processor SDK. For now, it is recommended to reboot the
-   board when loading new binaries into the M4F core.
-
-   Above steps to start/stop remoteproc don't apply to R5F remoteproc since R5F firmware boots early and
-   R5F remoteproc driver late attaches to it as mentioned in previous sections.
-
 DMA memory Carveouts
 --------------------
 
@@ -187,28 +174,28 @@ See the devicetree bindings documentation for more details: `Documentation/devic
 	+==================+====================+=========+============================+
 	| M4F Pool         | 0x9cb00000         | 1MB     | IPC (Virtio/Vring buffers) |
 	+------------------+--------------------+---------+----------------------------+
-	| M4F Pool         | 0x9cc00000         | 13MB    | M4F externel code/data mem |
+	| M4F Pool         | 0x9cc00000         | 14MB    | M4F externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
 	| R5F Pool         | 0x9d900000         | 1MB     | IPC (Virtio/Vring buffers) |
 	+------------------+--------------------+---------+----------------------------+
-	| R5F Pool         | 0x9da00000         | 13MB    | R5F externel code/data mem |
+	| R5F Pool         | 0x9da00000         | 12MB    | R5F externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
 
 	root@am62xx-evm:~# dmesg | grep Reserved
 	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009c800000, size 3 MiB
 	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009cb00000, size 1 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009cc00000, size 13 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009d900000, size 1 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009da00000, size 13 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009cc00000, size 14 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009da00000, size 1 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009db00000, size 12 MiB
 	[    0.000000] cma: Reserved 512 MiB at 0x00000000dd000000
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
-used to communicate with the remote processor core. The remaining 15MB of the
-carveout is used for the remote core external memory (program code, data, etc).
+used to communicate with the remote processor core. The remaining carveout is 
+used for the remote core external memory (program code, data, etc).
 
 .. note::
     The resource table entity (which describes the system resources needed by
-    the remote processor) needs to be at the beginning of the 13MB remote processor
+    the remote processor) needs to be at the beginning of the remote processor
     external memory section.
 
 
@@ -244,17 +231,17 @@ arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi
 				no-map;
 			};
 
-			wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9d900000 {
-				compatible = "shared-dma-pool";
-				reg = <0x00 0x9d900000 0x00 0x00100000>;
-				no-map;
-			};
+                	wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9da00000 {
+                        	compatible = "shared-dma-pool";
+                        	reg = <0x00 0x9da00000 0x00 0x00100000>;
+                        	no-map;
+                	};
 
-			wkup_r5fss0_core0_memory_region: r5f-memory@9da00000 {
-				compatible = "shared-dma-pool";
-				reg = <0x00 0x9da00000 0x00 0x00d00000>;
-				no-map;
-			};
+                	wkup_r5fss0_core0_memory_region: r5f-memory@9db00000 {
+                        	compatible = "shared-dma-pool";
+                        	reg = <0x00 0x9db00000 0x00 0x00c00000>;
+                        	no-map;
+                	};
 	};
 
 
