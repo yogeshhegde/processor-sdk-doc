@@ -276,13 +276,17 @@ Compiling the Kernel
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-    Once the kernel has been configured it must be compiled to generate the
-    bootable kernel image as well as any dynamic kernel modules that were
-    selected.
+    By default U-boot expects to boot kernel `Image`, DTB, and DTOs found in root/boot of the
+    SD card if using SD/MMC boot. The exception is for HS-SE (High Security - Security Enforced)
+    devices where the FIT image (Flattened Image Tree) named `fitImage` will boot by default.
 
-    By default U-boot expects Image to be the type of kernel image used.
+    The FIT image includes the kernel `Image`, DTB, and DTOs. Booting with the FIT image could be
+    enabled/disabled by setting/resetting u-boot environment variable `boot_fit`. If `boot_fit` is set
+    to `1`, then u-boot will boot the FIT image found in root/boot of the SD card.
 
-    To just build the Image use this command
+    Once the kernel has been configured it must be compiled to generate the bootable kernel `Image`
+    as well as any dynamic kernel modules that were selected. To rebuild kernel `Image` to boot as
+    is or for FIT image boot, use this command:
 
     ::
 
