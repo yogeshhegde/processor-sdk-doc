@@ -1,7 +1,14 @@
 How to Suspend to RAM (Deep Sleep) on AM62x
 ============================================
 
-AM62x has limited support for Low Power Mode (LPM) in current SDK release. Since not all peripherals drivers are updated to work across suspend/resume cycle,a cut-down version of DT file is provided with limited peripherals and Cores enabled to demonstrate Suspend to RAM (S2R) capability.
+AM62x has limited support for Low Power Mode (LPM) in current SDK release.
+Since not all peripheral drivers are updated to work across suspend/resume cycle,
+a cut-down version of DT file is provided with limited peripherals and cores enabled
+to demonstrate Suspend to RAM (S2R) capability.
+
+.. note::
+    Deep Sleep is currently supported only on AM62x GP Devices and support for HS-FS, HS-SE
+    is still under way.
 
 Supported Low power mode:
 
@@ -22,11 +29,10 @@ U-Boot needs to be configured to switch to this dtb during kernel Image load and
 
         => run envboot; setenv name_fdt k3-am625-sk-lpmdemo.dtb; run init_mmc; run get_kern_mmc;run get_fdt_mmc;run get_overlay_mmc; booti ${loadaddr} ${rdaddr}:${filesize} ${fdtaddr}
 
-        Alternately, update uEnv.txt to following
+    Alternately, update uEnv.txt to following
 
     ::
 
-        #uenvcmd=run check_for_board; run findfdt
         uenvcmd=run check_for_board; setenv name_fdt k3-am625-sk-lpmdemo.dtb
 
 #. At Linux prompt, using RTC as wakeup source, test S2R using following cmd
@@ -51,16 +57,11 @@ This puts system to sleep for 10s and then wakes it up via RTC interrupt
 
 Limitations
 -----------
-* Only one A53 core is enabled. Multi-core support is not enabled.
-* Following IPs are enabled in k3-am625-sk-lpmdemo.dts and function across system suspend and resume: UART, I2C, RTC, MMC/SD, MMC/eMMC, INTR, GPIO, CPSW, DMA,
-  INTA, OSPI, USB, MCAN, DM Timer, ECAP.
-* There is a known issue of performance drop after resuming from deep sleep. It can be worked around by temporarily disabling DFS and cycling through deep sleep:
 
-    ::
-
-        root@am62xx-evm:~# echo 1400000 > /sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq
-        root@am62xx-evm:~# rtcwake -s 1 -m mem
-
+* Following IPs are enabled in k3-am625-sk-lpmdemo.dts and functional across system suspend and resume:
+  UART, I2C, RTC, MMC/SD, MMC/eMMC, INTR, GPIO, CPSW, DMA,
+  INTA, OSPI, USB, MCAN, DM Timer, ECAP, ehrPWM, DMA, INTA,
+  McASP, McSPI, DSS, OLDI, HDMI, CSI.
 * To reenable DFS during the same session, scaling_min_freq will need to be reset:
 
     ::
