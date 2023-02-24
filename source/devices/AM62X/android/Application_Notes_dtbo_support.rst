@@ -34,6 +34,11 @@ The following Device-Tree Overlays are supported:
 +-----------+----------------------------------------------------------------------+
 |    2      |   TEVI-OV5640C-S84-IR-RPI Camera                                     |
 +-----------+----------------------------------------------------------------------+
+|    3      |   Microtips Technology USA 10.1"  WUXGA (1920x1200) OLDI panel       |
++-----------+----------------------------------------------------------------------+
+
+.. warning::
+    LVDS Display is supported only on E3 board revision.
 
 **- AM62X-LP-SK EVM**
 
