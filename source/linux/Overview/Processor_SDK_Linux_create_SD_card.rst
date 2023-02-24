@@ -22,6 +22,20 @@ This section provides guides to create SD cards for the following use cases:
 
    - :ref:`Create SD cards with custom images <processor-sdk-linux-create-sd-card-with-custom-images>`
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX', 'AM64X')
+
+   .. note:: After flashing the wic image on the SD-Card, it will boot on **HS-FS** devices by default.
+
+         To boot on **GP**, run the following command:
+         ::
+
+             host# sudo cp /media/$USER/boot/tiboot3-am6*-gp-evm.bin /media/$USER/boot/tiboot3.bin
+
+         To boot on **HS-SE**, run the following command:
+         ::
+
+             host# sudo cp /media/$USER/boot/tiboot3-am6*-hs-evm.bin /media/$USER/boot/tiboot3.bin
+
 .. _processor-sdk-linux-create-sd-card-using-balena:
 
 Create SD Card using balenaEtcher
