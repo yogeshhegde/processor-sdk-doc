@@ -7,6 +7,10 @@ Processor SDK Documentation in Sphinx
 
     $ sudo apt-get install python-sphinx
 
+OR use the following command if using Ubuntu > 18.04
+
+    # python3 -m pip install -r requirements.txt
+
 ### Clone the Git Repo
 
     $ git clone ssh://git@bitbucket.itg.ti.com/processor-sdk/processor-sdk-doc.git
