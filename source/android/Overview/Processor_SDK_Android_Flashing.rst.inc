@@ -141,6 +141,10 @@ cable is connected from the host PC to the EVM.
         cd AM62x_08.03.00_emmc
         sudo ./flashall.sh
 
+.. note::
+
+    To Flash HS-FS board use flash script with '--hsfs' arg.
+
 9. Once the flashing is complete, power off the board and remove the SD card.
 
 10. Change Boot mode DIP switches to boot from eMMC user partitions and power cycle the board:
