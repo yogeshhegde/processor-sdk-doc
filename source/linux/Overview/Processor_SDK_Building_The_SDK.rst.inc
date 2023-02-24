@@ -132,8 +132,7 @@ See `Build Options`_ for a list of additional targets.  The MACHINE can be set t
         $ . conf/setenv
         $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
         $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
-
-        $ MACHINE=<machine> bitbake tisdk-base-image
+        $ MACHINE=<machine> bitbake -k tisdk-base-image
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
@@ -196,7 +195,7 @@ The "Build Output" is given relative to the
     +------------------------------+---------------------------------------------------------------+----------------------------+
     | Target                       | Build Output                                                  | Description                |
     +==============================+===============================================================+============================+
-    | arago-core-tisdk-bundle      | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
+    | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
     +------------------------------+---------------------------------------------------------------+----------------------------+
     | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
     +------------------------------+---------------------------------------------------------------+----------------------------+
@@ -363,39 +362,6 @@ The "Build Output" is given relative to the
         +--------------+---------------------------------------------------------------------------------------+
         | k2g-evm      | K2G EVM                                                                               |
         +--------------+---------------------------------------------------------------------------------------+
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    .. rubric:: Using source package snapshot
-       :name: Using source package snapshot
-
-    Using the snapshot of the arago source packages can avoid fetch errors
-    during the build when external URLs become unavailable. To use the
-    snapshot of sources distributed with a given Processor SDK release, you
-    must download a script from the SDK download page and then execute it on
-    your host to fetch all the packages from TI servers. For example, see
-    |__SDK_INSTALL_FILE__| in |__SDK_DOWNLOAD_URL__|.
-    
-    Once this package is downloaded, there are just a few extra steps in the
-    build process to fetch all the corresponding packages. The extra steps
-    are shown in red below:
-
-    ::
-
-        $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-        $ cd tisdk
-        $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
-        $ mkdir downloads
-        $ cd downloads
-        $ # Assuming src file downloaded to $HOME/Downloads
-        $ tar xvf $HOME/Downloads/<target-board>-linux-sdk-arago-src-##.##.##.##.tar.xz
-        $ <target-board>-linux-sdk-arago-src-##.##.##.##/get_build_sources.sh <target-board>-linux-sdk-arago-src-##.##.##.##/source_pkg_list.txt
-        $ cd ..</span>
-        $ cd build
-        $ . conf/setenv
-        $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
-        $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
-        $ MACHINE=<target-board> bitbake arago-core-tisdk-bundle
 
 .. _building-the-sdk-recipes:
 
