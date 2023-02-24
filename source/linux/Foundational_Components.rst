@@ -14,6 +14,7 @@ Foundational Components
    Foundational_Components_PRU_Subsystem
    Foundational_Components_IPC
    Foundational_Components_IPC62x
+   Foundational_Components_IPC62ax
    Foundational_Components_IPC64x
    Foundational_Components_IPCLLD
    Foundational_Components_CMEM
