@@ -115,7 +115,7 @@ linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customiz
 #linux/How_to_Guides/Target/How_to_flash_emmc_device   # We do not support this for now
 linux/How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x
 linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
-linux/How_to_Guides/Target/How_to_enable_DT_overlays_on_AM625_SK
+linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_to_playback_audio_over_HDMI
 linux/How_to_Guides/Target/How_to_enable_Microtips_LVDS_Panel_on_AM62_SK_EVM
 linux/How_to_Guides/FAQ/How_to_Configure_MSMC_memory

@@ -14,8 +14,8 @@ on the board, and applying an additional DT overlay (.dtbo) file:
     .. Image:: ../../../images/AM62x_HDMI_Audio_Jumper.jpg
             :scale: 10%
 
-#. Follow the `How to enable DT overlays on AM625 SK
-   <How_to_enable_DT_overlays_on_AM625_SK.html>`__ guide for steps on building
+#. Follow the `How to enable DT overlays in linux
+   <How_to_enable_DT_overlays_in_linux.html>`__ guide for steps on building
    and adding the overlay in your SD card.
 
     (You may skip this step if the overlay is already present in ``/boot``
