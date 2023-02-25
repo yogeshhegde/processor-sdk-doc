@@ -178,31 +178,253 @@ Below overlay is an example for adding the overlay nodes:
     	};
     };
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
 Example camera pipeline
 =========================
-AM62x supports camera overlay dtb for OV5640 camera sensor module which can be tested with below commands :
 
-1) During bootup stop at u-boot prompt by pressing any key and set camera overlay dtb :
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    AM62x supports camera overlay dtb for OV5640 camera sensor module which can be tested with below commands :
+
+    1) During bootup stop at u-boot prompt by pressing any key and set camera overlay dtb :
 
 
-::
+    ::
 
-    setenv name_overlays k3-am625-sk-csi2-ov5640.dtbo
-    boot
+        setenv name_overlays k3-am625-sk-csi2-ov5640.dtbo
+        boot
 
-2) Capture frames using aforementioned yavta command :
+    2) Capture frames using aforementioned yavta command :
 
-::
+    ::
 
-    yavta -c -Fcapture -s 640x480 -f UYVY /dev/video0
+        yavta -c -Fcapture -s 640x480 -f UYVY /dev/video0
 
-3) If an HDMI display is connected then one can run capture->display pipeline using below commands :
+    3) If an HDMI display is connected then one can run capture->display pipeline using below commands :
 
-::
+    ::
 
-    gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! kmssink driver-name=tidss
-    #NOTE: Above command can only be used when no display server is running.
+        gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! kmssink driver-name=tidss
+        #NOTE: Above command can only be used when no display server is running.
 
-    gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! autovideosink
+        gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! autovideosink
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    SK-AM62A supports the following FPDLink cameras using fusion board: **IMX390,
+    OV2312**; and the following 22-pin FFC compatible cameras: **IMX219**.
+
+    For sensors directly connected to the SK using the FFC connector, the media
+    graph is fairly simple. For example IMX219 is connected to the CSI-RX
+    bridge directly, which ultimately ends up at a /dev/videoX node:
+
+    .. Image:: /images/imx219-pipeline.png
+
+    For sensors connected using FPDLink fusion board, the pipeline is a bit
+    more complicated. For example OV2312 is a multi-stream sensor, which is
+    first connected to a CSI-to-FPD serializer, and then to FPD-to-CSI
+    deserializer, finally routing the two virtual channels (streams) to
+    separate /dev/videoX nodes:
+
+    .. Image:: /images/ov2312-pipeline.png
+
+    Applying sensor overlays
+    ------------------------
+
+    To enable FPDLink cameras you will need to apply the device tree overlays
+    for both the fusion board and the sensor at U-boot prompt:
+
+    ::
+
+        # For OV2312 connected on Fusion board RX Port 0:
+        setenv name_overlays k3-am62a7-fpdlink-sk-fusion.dtbo k3-am62a7-fpdlink-ov2312-0-0.dtbo
+        boot
+
+        # For RCM IMX390 connected on Fusion board RX Port 0:
+        setenv name_overlays k3-am62a7-fpdlink-sk-fusion.dtbo k3-am62a7-fpdlink-imx390-rcm-0-0.dtbo
+        boot
+
+    To enable camera connected to the 22-pin FFC connector, enable the sensor
+    overlay at U-boot prompt:
+
+    ::
+
+        # For IMX219 connected to 22-pin FFC connector
+        setenv name_overlays k3-am62a7-sk-csi2-imx219.dtbo
+        boot
+
+    For more details on building or applying overlays permanently, refer to the
+    `How to enable DT overlays in linux
+    <../../../../How_to_Guides/Target/How_to_enable_DT_overlays_in_linux.html>`__
+    guide.
+
+    Configuring media pipeline
+    --------------------------
+
+    Once the overlay is applied, you can confirm that the sensor is being
+    probed by checking the output of lsmod or the media graph:
+
+    ::
+
+        $ lsmod | grep imx219
+        imx219                 24576  1
+        v4l2_fwnode            24576  2 imx219,cdns_csi2rx
+
+        $ media-ctl -p
+        Media controller API version 5.10.162
+        Media device information
+        ------------------------
+        driver          j721e-csi2rx
+        model           TI-CSI2RX
+        serial
+        bus info        platform:30102000.ticsi2rx
+        hw revision     0x1
+        driver version  5.10.162
+
+        Device topology
+        ....
+        - entity 15: imx219 4-0010 (1 pad, 1 link, 0 route)
+                     type V4L2 subdev subtype Sensor flags 0
+                     device node name /dev/v4l-subdev2
+                pad0: Source
+                        [stream:0 fmt:SRGGB8_1X8/1920x1080 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:full-range
+                         crop.bounds:(8,8)/3280x2464
+                         crop:(688,700)/1920x1080]
+                        -> "cdns_csi2rx.30101000.csi-bridge":0 [ENABLED,IMMUTABLE]
+        ....
+
+    The sensor and other subdevs (for example FPDLink ser/deser) should
+    automatically get configured by the initialization script on the SD card:
+
+    ::
+
+        [   15.958706] init_script.sh[859]: CSI Camera 0 detected
+        [   15.981126] init_script.sh[859]:     device = /dev/video2
+        [   15.981439] init_script.sh[859]:     name = imx219
+        [   15.981604] init_script.sh[859]:     format = [fmt:SRGGB8_1X8/1920x1080]
+        [   15.981740] init_script.sh[859]:     subdev_id = /dev/v4l-subdev2
+        [   15.981862] init_script.sh[859]:     isp_required = yes
+
+    For manual configuration, like switching to a different resolution or
+    bitdepth, you can use media-ctl as `explained above
+    <#utilities-to-interact-with-the-driver>`__. For example you can switch to
+    10-bit 1232p capture on IMX219 using:
+
+    ::
+
+        $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB10_1X10/1640x1232]'
+
+    Capturing raw frames
+    --------------------
+
+    Once the media pipeline is configured, you should be able to capture raw
+    frames from the sensor using any tool compliant with v4l2 apis. For example
+    you can use yavta to capture 100 frames from IMX219 @ 1080p:
+
+    ::
+
+        $ yavta -s 1920x1080 -f SRGGB8 /dev/video2 -c100
+        Device /dev/video2 opened.
+        Device `j721e-csi2rx' on `platform:30102000.ticsi2rx' is a video output (without mplanes) device.
+        Video format set: SRGGB8 (42474752) 1920x1080 (stride 1920) field none buffer size 2073600
+        Video format: SRGGB8 (42474752) 1920x1080 (stride 1920) field none buffer size 2073600
+        8 buffers requested.
+        length: 2073600 offset: 0 timestamp type/source: mono/EoF
+        Buffer 0/0 mapped at address 0xffff8cbba000.
+        ....
+        0 (0) [-] any 0 2073600 B 814.651190 814.651207 18.970 fps ts mono/EoF
+        1 (1) [-] any 1 2073600 B 814.684504 814.684517 30.017 fps ts mono/EoF
+        ....
+        98 (2) [-] any 98 2073600 B 817.917208 817.917241 29.985 fps ts mono/EoF
+        99 (3) [-] any 99 2073600 B 817.950513 817.950527 30.026 fps ts mono/EoF
+        Captured 100 frames in 3.352051 seconds (29.832478 fps, 61860626.507904 B/s).
+        8 buffers released.
+
+    By default the frames are copied over to DDR and discarded later. You can
+    optionally save a few frames to the SD card for debugging purposes:
+
+    ::
+
+        $ yavta -s 1920x1080 -f SRGGB8 /dev/video2 -c5 -Fframe-#.bin
+        ....
+        $ ls -l frame-*.bin
+        -rw-r--r-- 1 root root 2073600 Feb 22 05:24 frame-000000.bin
+        -rw-r--r-- 1 root root 2073600 Feb 22 05:24 frame-000001.bin
+        -rw-r--r-- 1 root root 2073600 Feb 22 05:24 frame-000002.bin
+        -rw-r--r-- 1 root root 2073600 Feb 22 05:24 frame-000003.bin
+        -rw-r--r-- 1 root root 2073600 Feb 22 05:24 frame-000004.bin
+
+    The raw bayer frames can be viewed directly on the host machine using
+    utilities like `7yuv <http://datahammer.de/7yuv_manual/index.htm>`__ or `PixelViewer
+    <https://carinastudio.azurewebsites.net/PixelViewer/>`__, or converted
+    using OpenCV.
+
+    Capture to Display using ISP
+    ----------------------------
+
+    To use the full capture to display pipeline, you can use gstreamer to call
+    the required ISP components to convert the raw frames, apply
+    auto-exposure/auto-white-balance algorithms and other pre-processing
+    blocks.
+
+    You may have to stop the display server (weston) before running the below
+    pipelines:
+
+    ::
+
+        $ systemctl stop weston.service
+
+    Use the following pipeline for IMX219 1080p RAW8 mode:
+
+    ::
+
+        $ gst-launch-1.0 v4l2src device=/dev/video2 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! \
+        tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss_1920x1080.bin \
+        sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-subdev2 ! \
+        video/x-raw,format=NV12 ! kmssink driver-name=tidss sync=false
+
+    For OV2312 you can either display the IR or the RGB stream using separate
+    pipelines:
+
+    ::
+
+        # RGB stream -> ISP -> Display
+        $ gst-launch-1.0                                                                                                    \
+        v4l2src device=/dev/video3 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 !      \
+        tiovxisp sensor-name=SENSOR_OV2312_UB953_LI                                                                         \
+        dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin                                                                       \
+        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin sink_0::device=/dev/v4l-subdev4 format-msb=9                     \
+        sink_0::pool-size=8 src::pool-size=8 !                                                                              \
+        video/x-raw, format=NV12, width=1600, height=1300 ! kmssink driver-name=tidss sync=false
+
+        # IR stream -> ISP -> Display
+        gst-launch-1.0                                                                                                      \
+        v4l2src device=/dev/video2 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 !      \
+        tiovxisp sensor-name=SENSOR_OV2312_UB953_LI                                                                         \
+        dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin                                                                       \
+        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin sink_0::device=/dev/v4l-subdev4 format-msb=9                     \
+        sink_0::pool-size=8 src::pool-size=8 !                                                                              \
+        video/x-raw, format=NV12, width=1600, height=1300 ! kmssink driver-name=tidss sync=false
+
+    Alternatively you can use a mosaic to display both streams together:
+
+    ::
+
+        # Mosaic of RGB and IR streams
+        $ gst-launch-1.0 \
+        v4l2src device=/dev/video3 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 ! \
+        tiovxisp sensor-name=SENSOR_OV2312_UB953_LI \
+        dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin \
+        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin sink_0::device=/dev/v4l-subdev4 format-msb=9 \
+        sink_0::pool-size=8 src::pool-size=8 ! \
+        video/x-raw, format=NV12, width=1600, height=1300 ! queue ! mosaic.sink_0 \
+        v4l2src device=/dev/video2 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 ! \
+        tiovxisp sensor-name=SENSOR_OV2312_UB953_LI \
+        dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin \
+        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin format-msb=9 sink_0::pool-size=8 src_0::pool-size=8 ! \
+        video/x-raw, format=GRAY8, width=1600, height=1300 ! videoconvert ! \
+        video/x-raw, format=NV12 ! queue ! mosaic.sink_1 \
+        tiovxmosaic name=mosaic \
+        sink_0::startx="<0>" sink_0::starty="<0>" sink_0::widths="<640>" sink_0::heights="<480>" \
+        sink_1::startx="<640>" sink_1::starty="<480>" sink_1::widths="<640>" sink_1::heights="<480>" ! \
+        kmssink driver-name=tidss sync=false
+
