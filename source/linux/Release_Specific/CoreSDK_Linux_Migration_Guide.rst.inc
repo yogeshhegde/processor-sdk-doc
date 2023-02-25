@@ -12,6 +12,13 @@ of the Processor SDK for Linux.
 Processor CoreSDK 08.xx Releases
 ================================
 
+Processor CoreSDK Jacinto 08.06
+-------------------------------
+- This is the nineth release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
+- ATF 2.8
+- OPTEE 3.20
+- Yocto Dunfell/3.1
+- Platforms Supported : J721E, J7200, J721S2, J784S4, AM68, AM69
 
 Processor CoreSDK Sitara 08.05
 -------------------------------
