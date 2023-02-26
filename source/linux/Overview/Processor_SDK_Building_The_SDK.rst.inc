@@ -117,6 +117,19 @@ layer configuration for a particular release of Processor SDK Linux.
 See `Build Options`_ for a list of additional targets.  The MACHINE can be set to
 |__SDK_BUILD_MACHINE__|, for example.
 
+.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
+
+   .. note:: To build for an HS platform, bitbake needs to know the location of the secdev utilities.
+             Obtain it with the following:
+
+             ::
+                 
+                 $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master 
+                 $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
+
+             Then let bitbake know the location by adding TI_SECURE_DEV_PKG_K3=$TI_SECURE_DEV_PKG to the
+             list of environment variables before the bitbake command.
+    
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
     The final command below will build the **tisdk-base-image**, which is the
@@ -134,6 +147,8 @@ See `Build Options`_ for a list of additional targets.  The MACHINE can be set t
         $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
         $ MACHINE=<machine> bitbake -k tisdk-base-image
 
+    Your wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card. 
+     
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
     ::
@@ -148,21 +163,6 @@ See `Build Options`_ for a list of additional targets.  The MACHINE can be set t
         echo "IMAGE_INSTALL_append = \" docker\"">> conf/local.conf
         . conf/setenv
         TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=<machine> bitbake -k tisdk-default-image
-
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
-
-    .. rubric:: Building for a HS platform
-
-    To build for an HS platform, bitbake needs to know the location of the secdev utilities.
-    Obtain it with the following:
-
-      ::
-
-        $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-        $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
-
-    Then let bitbake know the location by adding TI_SECURE_DEV_PKG_K3=$TI_SECURE_DEV_PKG to the
-    list of environment variables before the bitbake command.
 
 Processor SDK Build Reference
 =============================
