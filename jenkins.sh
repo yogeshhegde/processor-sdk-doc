@@ -6,7 +6,7 @@ usage() {
   Usage:
          $0 <target_os> <device_family>
 		target_os:     linux, rtos, android, all
-		device_family: GEN, CORESDK, AM335X, AM437X, AM57X, AM64X, AM62X, all
+		device_family: GEN, CORESDK, AM335X, AM437X, AM57X, AM64X, AM62X, AM62AX, all
 
 EOF
 }
@@ -93,7 +93,7 @@ build_doc()
     DEV=$2
 
     release_path=''
-    if [[ "$DEV" == "AM64X" || "$DEV" == "AM335X" || "$DEV" == "AM437X" || "$DEV" == "AM57X" || "$DEV" == "AM62X" ]]; then
+    if [[ "$DEV" == "AM64X" || "$DEV" == "AM335X" || "$DEV" == "AM437X" || "$DEV" == "AM57X" || "$DEV" == "AM62X" || "$DEV" == "AM62AX" ]]; then
             release_path="/devices/${DEV}"
             if [[ "$DEV" == "AM64X" ]]; then
                 VERSION="$(cat source${release_path}/version.txt)"
@@ -143,6 +143,8 @@ if [[ ${OS} == all ]]; then
 	    build_doc android $dev
 	fi
     done
+    # build AM62AX
+    build_doc linux AM62AX
     # build AM64X
     build_doc linux AM64X
     # build AM62X
