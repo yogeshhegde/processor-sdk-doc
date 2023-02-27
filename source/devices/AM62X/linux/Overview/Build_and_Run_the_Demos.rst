@@ -18,9 +18,9 @@ Processor SDK AM62x support GNU make based build system.
 Refer the respective user guides to build Linux and other RTOS/NO-RTOS packages
 
 -  For Linux Kernel, u-boot & DTB     `[Use Link] <../../../linux/Foundational_Components.html>`__
--  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_05_00_14/exports/docs/api_guide_am62x/index.html>`__
--  For Industrial Protocols (ECAT)    `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_05_00_14/exports/docs/api_guide_am62x/INDUSTRIAL_COMMS.html>`__
--  For Industrial Drives (EnDAT,HDSL) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_05_00_14/exports/docs/api_guide_am62x/EXAMPLES_MOTORCONTROL.html>`__
+-  For RTOS/NO-RTOS source (MCU+ SDK) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_06_00_18/exports/docs/api_guide_am62x/index.html>`__
+-  For Industrial Protocols (ECAT)    `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_06_00_18/exports/docs/api_guide_am62x/INDUSTRIAL_COMMS.html>`__
+-  For Industrial Drives (EnDAT,HDSL) `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_06_00_18/exports/docs/api_guide_am62x/EXAMPLES_MOTORCONTROL.html>`__
 
 
 

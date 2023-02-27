@@ -10,9 +10,9 @@ The **Processor-CoreSDK for Linux**
 provides a fundamental software platform for development, deployment and
 execution of Linux based applications and includes the following:
 
--  Bootloaders & Filesystems
--  Prebuilt Binaries
--  Detailed Release Notes
+  * Bootloaders & Filesystems.
+  * Prebuilt Binaries.
+  * Detailed Release Notes.
 
 Licensing
 =========
@@ -21,41 +21,43 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location. 
 
 
-Release 08.05.00
+Release 08.06.00
 ==================
 
-Released December 2022
+Released February 2023
 
 .. rubric:: What's New
    :name: whats-new
 
-Processor SDK 8.5 Release supports the following platforms:
+Processor SDK 8.6 Release supports the following platforms:
 
-- AM62x
-  * TPS65219 PMIC driver enablement
-  * GPMC NAND Flash support
-  * DDR at 1600MT/s Peak rate
-  * CPSW TCP Performance measure
+  * J721E
+  * J7200
+  * J721S2
+  * J784S4
+  * AM68
+  * AM69
 
-- AM64x
-  * SD UHS Mode support
-  * USB Device and Host Performance measure
-  * CPSW TCP Performance measure
-  * 2.0 HS-FS Stability and Coverage Improvement
+Processor SDK 8.6 Release has following new features:
 
+  * AM68-sk and AM69-sk HS-FS support
+  * Fusion 1 board for supporting multi-camera capture for Edge AI applications
+  * Replay Protected Memory Block (RPMB) access in OP-TEE userspace through eMMC RPMB
+  * SPI Master/Slave
+  * J7200 stability improvements
 
 Build Information
 =====================================
 
 U-Boot
 -------------------------
-| Head Commit: 3983bffabc137c885ab557ac3d1923e29d252fac mach-k3: am62a7_init: Avoid HSM SRAM access from A53 SPL/U-Boot
-| Date: Thu Dec 8 22:38:07 CST 2022
+| Head Commit: 62a9e513448d700cbc3d775f497f94ba63851c8e include: configs: Update env for selecting right dtb file
+| Date: Fri Feb 16 16:37:18 CST 2023
 | uBoot Version: 2021.01
-| uBoot Description: 08.05.00.007
+| uBoot Description: 08.06.00.006
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2021.01
-| uBoot Tag: 08.05.00.007
+| uBoot Tag: 08.06.00.006
 
 | Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 |
@@ -65,14 +67,14 @@ Kernel
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 3eee621d164a02048ba26ca1342cba9c8d913d46 Merged TI feature connectivity into ti-linux-5.10.y-cicd
-| Date: Thu Dec 8 22:59:10 CST 2022
-| Kernel Version: 5.10.153
-| Kernel Description: 08.05.00.007
+| Head Commit: 76b3e88d569210a51399e8d8c8babd995af29d11 Merged TI feature platform_base into ti-linux-5.10.y-cicd
+| Date: Fri Feb 16 14:32:58 CST 2023
+| Kernel Version: 5.10.162
+| Kernel Description: 08.06.00.006
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-linux-5.10.y
-| Tag: 08.05.00.007
+| Tag: 08.06.00.006
 | Kernel defconfig: ti_sdk_arm64_release_defconfig
 
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
@@ -81,41 +83,42 @@ Kernel
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 29dbc132ebfcdca4022663d80dbc6e7162c53ce5 Merge branch 'ti-rt-linux-5.10.y-cicd' into ti-rt-linux-5.10.y
-| Date: Thu Dec 8 23:10:45 CST 2022
-| Kernel Version: 5.10.153
-| Kernel Description: 08.05.00.007-rt
+| Head Commit: 02a1d48fd7af03f93bdf4ca06415618caa11bec2 Merge branch 'ti-rt-linux-5.10.y-cicd' into ti-rt-linux-5.10.y
+| Date: Fri Feb 16 16:11:49 CST 2023
+| Kernel Version: 5.10.162
+| Kernel Description: 08.06.00.006-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
 | Branch: ti-rt-linux-5.10.y
-| Tag: 08.05.00.007-rt
+| Tag: 08.06.00.006-rt
 | Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
 
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
 |
+
 
 Yocto
 ------------------------
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 6763a269b0398aa70ddfa9bece73e17a92849a9e linux-ti-staging-rt: RC Auto-Merger: 08.05.00.007
-| Date: 2022-12-02
+| Head Commit: 6aade6d4b54c0da2fc6887b0d4f8192d58180656 linux-ti-staging-rt: RC Auto-Merger: 08.06.00.005
+| Date: 2023-02-09
 
 | Clone: git://git.yoctoproject.org/meta-ti
 | Branch: dunfell
-| Release Tag: 08.05.00.007
+| Release Tag: 08.06.00.006
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: dc749e9898eb1594c1289406e908ca62b3b7b077 ltp-ddt: CI/CD Auto-Merger: cicd.2022.12.02.14:23:50
-| Date: 2022-12-02
+| Head Commit: 	97ebd081c7df3d7cfe1331cbcbc29c8db2400f80 ltp-ddt: RC Auto-Merger: 08.06.00.006
+| Date: 2023-02-09
 
 | Clone: git://git.yoctoproject.org/meta-arago
 | Branch: dunfell
-| Release Tag: 08.05.00.007
+| Release Tag: 08.06.00.006
 |
 
 Issues Tracker
@@ -123,225 +126,307 @@ Issues Tracker
 
 Issues opened in previous releases that were closed on this release
 ---------------------------------------------------------------------
-
 .. csv-table::
-   :header: "Record ID", "Title", "Platform"
-   :widths: 15, 70, 20
+  :header: "Record ID", "Title", "Platform"
+  :widths: 15, 70, 20
 
-   "LCPD-28416","Stop using git:// in meta-ti , meta-arago","am62xx-sk"
-   "LCPD-28774","plsdk-doc: PCIe doc content is incomplete for AM64x","am64xx-evm"
-   "LCPD-25613","Am64x-evm: DP83869 TX /RX delay values are wrong ( affects CPSW PORT2 / ICSSG PORT1/2)","am64xx-evm,am64xx-hsevm"
-   "LCPD-28745","am62x: mmc: fix autosuspend delay for runtime_pm","am62xx-sk"
-   "LCPD-28131","am62x: wlan interface up - down - up results in kernel crash","am62xx-sk"
-   "LCPD-28110","uboot and linux cannot boot in UHS speed modes on certain U1 class SD-cards -1","am62xx-sk"
-   "LCPD-26721","AM62x: Cannot resume with more than one A53 enabled ","am62xx-sk"
-   "LCPD-25503","ATF/A53 does not come out of WFI if TIFS/DM signals a suspend abort","am62xx-sk"
-   "LCPD-28435","devtool finish fails","am64xx-evm"
-   "LCPD-25634","Update ADC SDK docs for AM64x","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-25633","Add AM64x to ADC Bindings Doc","am64xx-evm,am64xx-hsevm"
-   "LCPD-28773","Incorrect macro definition for DST_TAG bit field in CSI-2 RX driver","am62xx-sk"
-   "LCPD-28762","GLMark2 visual errors around fragmentation shader tests","am62xx-hsevm,am62xx-sk,j721e-evm,j721e-hsevm,j721s2-evm,j721s2-hsevm,j784s4-evm,j784s4-hsevm"
-   "LCPD-28403","SDK: Crypto node cleanup across TI SOCs","am64xx-evm,am654x-evm,j721e-evm,j721s2-evm,j7200-evm,j784s4-evm"
-   "LCPD-28413","Clarify PRU Ethernet not supported features","am64xx-evm,am654x-evm"
-   "LCPD-27828","AM62: Fix the USB MSC environment setting","am62xx-sk"
-   "LCPD-24677","j721e-idk-gw PCI WIFI Tests Fail due to iperf issues(Impact 1)","am62xx-sk,j721e-idk-gw"
-   "LCPD-24470","QSPI Uboot Perf Test Failing","am64xx-evm"
-   "LCPD-29285","AM62x: U-Boot default defconfig does not generate unsigned image","am62xx-lp-sk,am62xx-sk"
-   "LCPD-29284","Fix ti,sci-inta, ti,sci-intr and mmc dtbs_check","am62xx-sk,am64xx-evm,j721e-idk-gw,j721s2-evm"
-   "LCPD-28826","linux - enable CONFIG_DEBUG_INFO","am62xx-sk"
-   "LCPD-28664","am62x_evm_r5_ethboot_defconfig ""spl/u-boot-spl.bin exceeds file size limit” Build Failure","am62xx-sk"
-   "LCPD-28307","Linux WDT SDK docs are missing","am64xx-evm"
-   "LCPD-28035","camera overlay packaged as dtb instead of dtbo","am62xx-sk"
-   "LCPD-26731","AM64x: OpenSSL benchmarks data is not seen","am64xx-evm,am64xx-hsevm"
-   "LCPD-25264","BCDMA: Blockcopy Gets Corrupted if TR Read Responses Interleave with Source Data Fetch","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-21662","Doc: Linux watchdog support","am62xx-sk"
-   "LCPD-25320","Docs: AM64x: IPC chapter should be under Foundational Components","am64xx-evm,am64xx-sk"
-   "LCPD-29509","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: CAN tests fail:  kvaser tool connection fail"
+  "LCPD-29636","TDA4VH: multi thread mutex usage causes kernel crash","j784s4-evm"
+  "LCPD-28317","GStreamer pipeline with decoder and fakesink causes kernel crash","j721e-evm,j721e-hsevm"
+  "LCPD-28256","Wave5: H264/265 Encoded file produces extra green garbage data on width","j721s2-evm"
+  "LCPD-28255","Wave5: Decode fails for Dynamic resolution change in input stream	","j721s2-evm"
+  "LCPD-25598","Wave5: Dynamic SRAM configuration in upstream driver","j721s2-evm"
+  "LCPD-25332","J721e Failing Video test","j721e-idk-gw"
+  `LCPD-28432 <https://sir.ext.ti.com/jira/browse/EXT_EP-10986>`_,"DRA821: PCIe: Segmentation fault","j7200-evm"
+  "LCPD-29714","iperf hangs during crypto performance testing","j721e-idk-gw"
+  "LCPD-29696","SERDES driver not being probed in U-Boot","j721e-evm,j7200-evm"
+  "LCPD-29554","EEPROM Header Unidentified Board","j721e-idk-gw,j7200-evm"
+  "LCPD-29402","tftp download in U-Boot fails on am64xx-evm1@eptf124 ","am64xx-evm,j721e-idk-gw,j7200-evm"
+  `LCPD-28889 <https://sir.ext.ti.com/jira/browse/EXT_EP-11000>`_,"j721s2: GPIO Interrupts are broken","j721s2-evm"
+  "LCPD-26728","J721e: Watchdog reset fails on newer SoMs","j721e-idk-gw,j721e-sk"
+  "LCPD-29599","Stream_1 benchmark executable missing","j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-28259","Wave5: V4l2 driver Multi stream support","j721s2-evm"
+  "LCPD-28257","Wave5: Video looping does not work with H264/265 Decoder","j721s2-evm"
+  "LCPD-22972","j721e-idk-gw GLBenchmark GLB25_EgyptTestStandardOffscreen_inherited test ","j721e-idk-gw"
+  "LCPD-28756","J7AHP - Enable ultra high speed mode for SDIO/MMC","j784s4-evm"
+  "LCPD-28485","j7200: Segmentation fault during reload PCIe driver.","j7200-evm"
+  "LCPD-28433","PCIe EP: DMA test fail","j721s2-evm"
+  "LCPD-25263","j721s2-evm: U-Boot USBHOST: Superspeed test is failing","j721s2-evm"
+  "LCPD-25112","Ethernet driver not gating its clock when interface is down","am64xx-evm,j721e-idk-gw"
+  "LCPD-22413","Hyperflash tests fail ~50% of the time on j7200","j7200-evm"
+  "LCPD-17113","[Cpsw9g][VirtualDriver][VirtualMAC] rpmsg_kdrv_switch is not autoloaded","j721e-idk-gw"
+  "LCPD-29694","gpio-line-names is limited to 100. it should be ti,ngpios","am62axx_sk-fs,am62xx-sk,am64xx-sk,am654x-idk,dra71x-evm,dra7xx-evm,j784s4-evm"
+  "LCPD-29646","Failure logs during boot:  Failed to get MSI domain","am62xx-sk,j721e-idk-gw"
+  "LCPD-29645","MMC: SD Card doesn't go into SDR104 mode","j784s4-evm"
+  "LCPD-29528","k3: integration: sdk: missing tag info for optee and atf projects","am62xx-sk,am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk,j721e-idk-gw,j721s2-evm,j721s2-hsevm,j7200-evm,j7200-hsevm,j784s4-evm"
+  "LCPD-29524","j721: sdhci0: Capabilities offered in U-Boot Vs Kernel dts are different","j721e-idk-gw"
+  "LCPD-27886","USART: Erroneous clear/trigger of timeout interrupt","am62axx_sk-fs,am62xx-sk,am64xx-evm,j721e-idk-gw,j7200-evm,j784s4-evm,j784s4-hsevm"
+  "LCPD-18860","isolcpus in the command line is not honored","am654x-evm,am654x-idk,j721e-idk-gw,j7200-evm"
+  "LCPD-22954","DRM Stress Test fails","am62xx-lp-sk,am62xx_lp_sk-fs,am62xx-sk,am654x-evm,j721e-idk-gw,j721s2-evm,j721s2-hsevm,j784s4-evm"
+  "LCPD-25663","Remove old IMG demo binaries  ","am62xx-sk,j721e-evm,j721s2-evm,j784s4-evm"
 
 |
 
 Issues found and closed on this release that may be applicable to prior releases
 -----------------------------------------------------------------------------------
 .. csv-table::
-   :header: "Record ID", "Title", "Platform"
-   :widths: 15, 70, 20
+  :header: "Record ID", "Title", "Platform"
+  :widths: 15, 70, 20
 
-   "LCPD-29807","am62x is unable to boot (missing rootfs)","am62xx-sk"
-   "LCPD-29860","CI/CD : Update Heading to AM62/64x Linux Processor SDK Stable Release","am62xx-sk,am64xx-evm"
-   "LCPD-29488","AM64x: IPC RPMSG Client: test case has Invalid argument","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-29438","DM memory map change has broken upstream linux","am62xx-sk"
-   "LCPD-29511","AM64x: USBHOST Func Audio Loopback: No USB Audio Loopback Device found","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-29352","SDK: AM62x Linux to M4 IPC: simple shared memory example","am62xx-sk,am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-29477","j721e-idk-gw PCI WIFI Tests Fail due to iperf issues(Impact 1)","am62xx-sk,j721e-idk-gw"
-   "LCPD-29419","J721s2-evm: u-boot: CPSW2g: interface goes up and down sporadically","am62xx-sk,j721s2-evm"
-   "LCPD-29534","kernels in arago-dunfell RT directory are not an RT-Kernels","am62xx-hsevm,am62xx-lp-sk,am62xx-sk,am64xx-sk,j721e-evm,j721e-hsevm,j721s2-evm,j721s2-hsevm,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm"
-   "LCPD-29528","k3: integration: sdk: missing tag info for optee and atf projects","am62xx-sk,am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk,j721e-idk-gw,j721s2-evm,j721s2-hsevm,j7200-evm,j7200-hsevm,j784s4-evm"
-   "LCPD-29527","AM64x: mcu_pmx node is missing in kernel device tree","am64xx-evm"
-   "LCPD-29520","Inline ECC documentation is missing (AM64x has old K2 DDR ECC, AM62x has nothing)","am62xx-sk,am64xx-evm,am64xx-hsevm"
-   "LCPD-29519","OSPI flash read corruption issue in DAC mode using cadence_qspi_apd_direct_read_execute","am62xx-sk"
-   "LCPD-29504","AM64x: dfu-util failed to load u-boot","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-29495","AM64x: NAND test cases fail getting device node, mtd parition number, mtd part range","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-29458","AM64x: Remove SRAM references from Benchmark demo GUI","am64xx-evm"
-   "LCPD-29733","Debugging code left in OV5640 DTS overlay file","am62xx-sk"
-   "LCPD-29447","Docs Processor SDK Linux Software Developer’s Guide incorrect camera and LCD inteface","am62xx-hsevm,am62xx-sk"
-   "LCPD-29718","Doc: Combine AM62x and AM64x GP and HS defconfigs","am62xx-hsevm,am62xx-sk,am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk"
-   "LCPD-29516","AM64x: NAND Modular test cases fail finding mtd part range","am64xx-evm,am64xx-hsevm,am64xx-sk"
+  "LCPD-32462","Documentation: List of supported Ubuntu versions link is broken","j721e-evm-ivi,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-32335","SDK: J784S4: Kernel crashes when am65_cpts_disable() is invoked for MAIN CPSW CPTS","j784s4-evm,j784s4-hsevm"
+  "LCPD-29931","Missing CPSWnG Native Driver Section in User Guide","j721e-evm-ivi,j721e-idk-gw,j721e-sk,j7200-evm"
+  `LCPD-32460 <https://sir.ext.ti.com/jira/browse/EXT_EP-11068>`_,"J7200/J7VCL: Linux crash when we cat pinctrl debugfs node","j7200-evm"
+  `LCPD-32292 <https://sir.ext.ti.com/jira/browse/EXT_EP-11063>`_,"Docs: J784S4: No information on Linux boot flow","j784s4-evm"
+  "LCPD-29894","Interrupt Values for adc are incorrect in dts","j721s2-evm,j784s4-evm"
+  "LCPD-29737","J7200: Watchdog reset test fails","j7200-evm"
+  "LCPD-32515","OV5640: LI OV5640 module fails to probe","am68_sk-fs,am69_sk-fs,j721e-sk,j721s2-evm,j784s4-evm"
+  "LCPD-32703","Fusion, CSI Camera overlays missing in rootfs for J7200, J721E, J721S2","j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm"
+  "LCPD-32692","J7200: am65xx: CPSW Checksum Offload Support: Test skipped","j7200-evm"
+  "LCPD-32493","J7200: USB CDC ECM class device fails","j7200-evm"
+  "LCPD-32472","J7200: CPSW5G Virtual Eth PING Tests fail","j7200-evm,j7200-hsevm"
+  "LCPD-29885","Fix DTC Warnings: J784S4 USXGMII Overlays","j784s4-evm,j784s4-hsevm"
+  "LCPD-29732","SDK: MDIO: DaVinci driver probe incorrectly deferred","j784s4-evm,j784s4-hsevm"
+  "LCPD-32654","uboot watchdog, ESM, PMIC test tracing RC4","j7200-evm"
+  "LCPD-32557","MCSPI Test failing due to missing configs","j7200-evm"
+  "LCPD-32494","J7200: U-boot shows multiple ti_sci message not acknowledged warnings","j7200-evm"
+  "LCPD-29900","k3: allmod config fails to build due to ti sci kconfig ","am62xx-sk,am64xx-evm,am64xx-sk,j721e-idk-gw"
+  "LCPD-29740","j721e-idk-gw:  EMMC_DD_RW_500M test fail","j721e-idk-gw,j7200-evm"
+  "LCPD-29729","j721e-idk-gw, j7200-evm  MMC_M_MODULAR_SDHC_MULTI tests fail","j721e-idk-gw,j7200-evm"
+  "LCPD-32467","tidss: Incorrect pixel format definitions","am62xx-lp-sk,am62xx_lp_sk-fs,am62xx-sk,j721e-idk-gw,j721s2-evm,j721s2-hsevm,j784s4-evm,j784s4-hsevm"
+  "LCPD-29883","Test to update bootloader in mmc using dfu failing","j721s2-evm"
+  "LCPD-29866","j721e-idk-gw:  MMC_M_FUNC_SDHC_EXT2_DD_RW_1G Failing","j721e-idk-gw"
 
 |
 
 Errata Workarounds Available in this Release
 ------------------------------------------------
 .. csv-table::
-   :header: "Record ID", "Platform", "Title"
-   :widths: 15, 30, 150
+  :header: "Record ID", "Title", "Platform"
+  :widths: 15, 30, 150
 
-   "LCPD-19965","am64xx-evm,am654x-idk,j721e-idk-gw,j7200-evm","OSPI PHY Controller Bug Affecting Read Transactions"
-   "LCPD-27887","am62xx-hsevm,am62xx-sk","i2327: RTC: Hardware wakeup event limitation"
-   "LCPD-25264","am64xx-evm,am64xx-hsevm,am64xx-sk","BCDMA: Blockcopy Gets Corrupted if TR Read Responses Interleave with Source Data Fetch"
+  "LCPD-19965","OSPI PHY Controller Bug Affecting Read Transactions","am64xx-evm,am654x-idk,j721e-idk-gw,j7200-evm"
+  "LCPD-19047","USB: Race condition while reading TRB from system memory in device mode","j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw"
+  "LCPD-17220","U-Boot Hyperbus: Hyperflash reads limited to 125MHz max. frequency","j721e-idk-gw"
+  "LCPD-16605","MMC: MMC1/2 Speed Issue","j721e-evm,j721e-evm-ivi,j721e-idk-gw"
+  "LCPD-27886","USART: Erroneous clear/trigger of timeout interrupt","am62axx_sk-fs,am62xx-sk,am64xx-evm,j721e-idk-gw,j7200-evm,j784s4-evm,j784s4-hsevm"
+  "LCPD-22544","DDR: LPDDR4 should be configured to 2666 MT/S","j7200-evm"
+  "LCPD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame","j721e-evm,j721e-evm-ivi,j721e-idk-gw"
 
 |
 
 U-Boot Known Issues
 ------------------------
 .. csv-table::
-   :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 15, 30, 70, 30
+  :header: "Record ID", "Title", "Platform", "Workaround"
+  :widths: 15, 30, 70, 30
 
-   "LCPD-25540","am64xx-hsevm,am64xx-sk","u-boot: usb host boot failed on AM64x SK",""
-   "LCPD-29402","am64xx-evm,j7200-evm","tftp download in U-Boot fails on am64xx-evm1@eptf124 ",""
-   "LCPD-29739","am64xx-hsevm","AM64: NAND device not detected in U-boot",""
-   "LCPD-25558","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: 'nand' tool doesn't seem to be working",""
-   "LCPD-23026","am64xx-evm,am64xx-sk","USB MSC Boot: USB controller not visible from u-boot",""
-   "LCPD-23020","am64xx-evm","am64xx-evm: U-Boot PHY autonegotiation failed 2 out of 100 times",""
-   "LCPD-29300","am62xx-sk","U-Boot: OSPI-NOR: sf probe shows 0 randomly",""
-   "LCPD-28660","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: tiboot3.bin generated by U-Boot build is confusing users",""
-   "LCPD-28503","am62xx-sk,am64xx-evm,am64xx-sk","Need to sync up DTS files between u-boot and kernel for at least AM62x, possibly other boards too",""
+  "LCPD-32697","Failed to get DHCP address in U-Boot","j784s4-evm",""
+  `LCPD-29852 <https://sir.ext.ti.com/jira/browse/EXT_EP-11056>`_,"j784s4-evm: SD card not recognized in U-Boot when booting over UART","j784s4-evm",""
+  `LCPD-29891 <https://sir.ext.ti.com/jira/browse/EXT_EP-11058>`_,"u-boot: USB storage device detection failed on j7200 ","j7200-evm",""
+  "LCPD-22512","Update dfu_alt_info_ospi to include flashing of PHY tuning data","j721e-evm,j7200-evm",""
+  "LCPD-17789","UBOOT J7:  Could not see UFS device by scsi scan","j721e-idk-gw",""
+  "LCPD-24824","J7200/VCL: u-boot SPL code configuring the SOC DDR PLL (PLL12) incorrectly. Desired boot frequency is 27.5 MHz","j7200-evm","Hardcode  desired DDR freq in function k3_ddrss_init_freq of u-boot "
+  "LCPD-22904","U-boot: Update EMIFtool for i2244:DDR: Valid stop value must be defined for write DQ VREF training","j721e-idk-gw,j7200-evm",""
+  "LCPD-17523","A72-SPL - Support to dump EEPROM to shared memory","j721e-evm,j721e-idk-gw,j7200-evm",""
+  "LCPD-32695","J784S4 : U-boot : Mass storage tests failure","j784s4-evm",""
+  "LCPD-32726","Test: U-Boot: Support Octal SPI(OSPI) flash devices  (AHP) RC 6 SDK 8.6","j784s4-evm",""
+  "LCPD-24108","U-Boot: TISCI config ring fail traces seen in OSPI boot mode on J721E","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-32721","U-boot DFU mode is not functional","j7200-evm",""
+  "LCPD-32660","J721S2: U-boot shows a ti_sci message not acknowledged warning.","j721s2-evm,j721s2-hsevm",""
 
 |
 
 Linux Known Issues
 ---------------------------
 .. csv-table::
-   :header: "Record ID", "Platform", "Title", "Workaround" 
-   :widths: 5, 10, 70, 35
+  :header: "Record ID", "Title", "Platform", "Workaround" 
+  :widths: 5, 10, 70, 35
 
-   "LCPD-29850","am62xx-sk,am64xx-evm","Ethernet link up down crashes the system",""
-   "LCPD-29640","am62xx-sk","AM62x : Reboot halts due to irqbalance daemon",""
-   "LCPD-28142","am62xx-sk,j784s4-evm","Automated performance testing - spec2k6 benchmark test broken",""
-   "LCPD-29851","am62xx-sk","CI/CD Snapshot page doesn't have default images.",""
-   "LCPD-29388","am62xx-sk,am64xx-evm,am64xx-sk","PREEMPT_RT interrupt latency with background memory load",""
-   "LCPD-29306","am64xx-evm,am654x-idk","PRU_ICSSG: How much SRAM is needed?",""
-   "LCPD-29515","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: Cannot boot with USB-MSC",""
-   "LCPD-29514","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: Cannot boot with NAND",""
-   "LCPD-29446","am335x-evm,am335x-ice,am335x-sk,am43xx-gpevm,am437x-idk,am437x-sk,am62xx-sk,am64xx-evm,am64xx-sk,am654x-evm,am654x-idk","Linux SDK docs should explicitly state what peripherals are supported",""
-   "LCPD-29441","am62xx-sk","am62x: kingston emmc fails on AM62x",""
-   "LCPD-29433","am62xx-sk,am64xx-sk","AM64/AM62: IRQBalance does not migrate IRQs ",""
-   "LCPD-29339","am62xx-sk","Processor SDK 8.3 AM62x lacks RT Linux performance numbers",""
-   "LCPD-24448","am64xx-evm","Verify IPC kernel: main-r5f0(s)/main-r5f1(s)",""
-   "LCPD-29855","am62xx-lp-sk,am62xx-sk","am62: Microtips OLDI Panels Distortion issue",""
-   "LCPD-29510","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: USB Host tests fail: No USB Camera found",""
-   "LCPD-28138","am62xx-sk","AM62x: RTC tests fail in automated testing",""
-   "LCPD-28130","am62xx-hsevm,am62xx-sk","uboot's 'bootcmd_recovery' env setting is too long",""
-   "LCPD-28099","am62xx-sk","System test - Linux ADD suport for can",""
-   "LCPD-24648","am335x-evm,am572x-idk,am64xx-evm,dra71x-evm,j721e-evm,j7200-evm","Move dma-heaps-test and ion-tests to TI repositories",""
-   "LCPD-21577","am64xx-evm","USBHOST_S_FUNC_SERIAL_0001 test passes even when the serial device is not enumerated",""
-   "LCPD-20331","am64xx-evm,am64xx-sk,j7200-evm","Farm: j7200-evm/k3-am642-evm/k3-am642-sk DT blob has to be passed manually",""
-   "LCPD-29651","am64xx-hsevm","AM64: NAND Flash device not detected",""
-   "LCPD-25386","am62xx-sk","SD card not being properly detected on AM62x SK ",""
-   "LCPD-20038","am64xx-evm","OPTEE test applications are missing from rootfs",""
-   "LCPD-29332","am62xx-sk","LPM Demo not Working on Linux RT",""
-   "LCPD-29353","am62xx-sk","Automate Test: AM62x Linux to M4 IPC: simple shared memory example",""
-   "LCPD-28614","am62xx-sk","RPMsg client driver sample does not work with AM62x",""
-   "LCPD-24823","am64xx-evm,am64xx-sk","Clarify Single-Core usage in ti,k3-r5f-rproc.yaml",""
-   "LCPD-24456","am62xx-hsevm,am62xx-sk,am64xx-evm,am64xx-hsevm,am64xx-sk,am654x-evm,am654x-idk,am654x-hsevm","Move IPC validation source from github to git.ti.com",""
-   "LCPD-22931","am64xx-evm,am64xx-sk,am654x-evm,am654x-idk,dra72x-evm","RemoteProc documentation missing",""
-   "LCPD-20006","am64xx-evm","AM64x: remoteproc may be stuck in the start phase after a few times of stop/start",""
-   "LCPD-29815","am62xx-sk","AM62 - Pixel format tests",""
-   "LCPD-25662","am62xx-sk,j721e-evm,j7200-evm","Remove SGX PVR tools from KS3 devices",""
-   "LCPD-29500","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: ETH CPSW2g TAS: tests fail with undefined method error",""
-   "LCPD-29499","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: ETH CPSW2g TAS: tests fail with queue 0 did not increase",""
-   "LCPD-29498","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: ETH CPSW2g TAS: Invalid traffic schedule",""
-   "LCPD-28672","am62axx-sk,am62xx-sk,am64xx-evm,am64xx-sk","CPSW: Add more details about driver config",""
-   "LCPD-28415","am62xx-sk","AM62: emmc: Had to disable higherspeeds",""
-   "LCPD-28105","am62xx-sk","Automated test failure - CPSW failure doing runtime pm",""
-   "LCPD-28104","am62xx-sk","Automated test failure - CPSW test is passing invalid parameters to switch-config",""
-   "LCPD-27924","am64xx-evm","AM65xx: Link does not come up after changing link settings while the interface is up with both endpoints on same board",""
-   "LCPD-27871","am64xx-evm","GPMC NAND driver misleading error",""
-   "LCPD-25563","am62xx-sk","Test: AM62: Linux: Add support for MCAN",""
-   "LCPD-25494","am64xx-evm","AM64 EVM TSN IET tests is failing",""
-   "LCPD-25112","am64xx-evm,j721e-idk-gw","Ethernet driver not gating its clock when interface is down",""
-   "LCPD-24690","am62xx-sk,am64xx-evm,am64xx-sk,j721s2-evm,j7200-evm","Kernel: SDK: Set HIGH_SPEED_EN for MMC1 instance",""
-   "LCPD-24595","am64xx-evm,am64xx-sk,j721e-idk-gw,j721e-sk,j7200-evm","j721e-idk-gw USB Suspend/Resume with RTC Wakeup fail (Impact 1)",""
-   "LCPD-24593","am64xx-evm","am64xx-evm CAN_S_FUNC_MODULAR test failures",""
-   "LCPD-24537","am64xx-evm,am64xx-hsevm,am654x-evm","am654x-idk nslookup times out when all netwokring interfaces are active",""
-   "LCPD-24288","am64xx-evm,am654x-idk","am64xx-evm NCM/ACM network performance test crashes with RT images",""
-   "LCPD-22892","am64xx-evm,am654x-evm,am654x-idk","icssg: due to FW bug both interfaces has to be loaded always",""
-   "LCPD-20105","am64xx-evm","AM64x: Kernel: ADC: RX DMA channel request fails",""
-   "LCPD-20061","am64xx-evm","Occasional PHY error during during TSN Time-Aware Shaper execution",""
-   "LCPD-29792","am62xx-sk","am62x: mcspi not functional",""
-   "LCPD-29654","am62xx-sk","AM62x: OSPI read Performance test fail ",""
-   "LCPD-29646","am62xx-sk,j721e-idk-gw","Failure logs during boot:  Failed to get MSI domain",""
-   "LCPD-29621","am62xx-lp-sk,am62xx-sk","MCAN user's guide is missing",""
-   "LCPD-29597","am64xx-evm","AM64x: dts: main_rti nodes are defined twice",""
-   "LCPD-29518","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: Dhrystone performance test fail",""
-   "LCPD-29508","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: EMMC speed test fails: MMC not running on HS400 mode",""
-   "LCPD-29489","am62xx-lp-sk,am62xx-sk,am64xx-evm,am64xx-sk","M4F Core should be able to load data to OC_SRAM",""
-   "LCPD-29480","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: PCIe tests fail to start EP controller",""
-   "LCPD-29445","am62xx-sk","am62xx-sk: MCAN loop-back test is failing",""
-   "LCPD-29442","am62xx-sk","Docs: AM62x-SK: Kernel User Guide uses tisdk_am64xx defconfigs",""
-   "LCPD-29409","am62xx-sk","DMIPS number should reflect all 4 cores",""
-   "LCPD-29362","am64xx-evm,am64xx-sk","AM64x EVM Devicetree should disable unused MCU peripherals",""
-   "LCPD-29305","am64xx-evm,am64xx-sk","AM64x Uboot SRAM addresses are outdated",""
-   "LCPD-28764","am62xx-sk","AM62x: Cannot resume from low power mode",""
-   "LCPD-28742","am62xx-sk","AM62x: Make ""Debugging SPL"" doc specific to AM62x",""
-   "LCPD-28688","am62xx-sk","AM62x Kernel User Guide: Document AM62x default kernel config",""
-   "LCPD-28514","am62xx-sk","AM62x: MMC Card detect does not work",""
-   "LCPD-28491","am62xx-sk","WiLink not functional with fw_devlink option set to `on` ",""
-   "LCPD-28448","am62xx-sk","Wall time does not account for sleep time",""
-   "LCPD-28414","am62xx-sk","AM62x EVM Devicetree should disable unused MCU peripherals",""
-   "LCPD-28156","am62xx-sk","Mcasp: Buffer underflow warnings",""
-   "LCPD-28111","am62xx-sk,am64xx-evm","wic image flashed sdcard should resize to full image",""
-   "LCPD-25410","am62xx-lp-sk,am62xx-sk,am64xx-evm,am64xx-sk","Test: Support read of On-die temperature sensor in Linux",""
-   "LCPD-25409","am62xx-sk,am64xx-evm,am64xx-hsevm,am64xx-sk","Doc: Support read of On-die temperature sensor in Linux",""
-   "LCPD-22912","am64xx-evm","am64xx-evm SMP dual core test fails sporadically",""
-   "LCPD-22834","am64xx-evm","am64xx-evm stress boot test fails",""
-   "LCPD-22715","am62xx-sk,j721e-idk-gw,j721s2-evm,j7200-evm","i2232: DDR: Controller postpones more than allowed refreshes after frequency change",""
-   "LCPD-22319","am64xx-evm,j7200-evm","OpenSSL performance test data out of bounds",""
-   "LCPD-29530","am62xx-sk","HDMI with Audio playback failure",""
-   "LCPD-25652","am62xx-sk","am62: sk: reset-gpio property for sil9022a",""
-   "LCPD-29861","am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk","AM64x: IPC tests fail",""
-   "LCPD-28139","am62xx-hsevm,am62xx-sk","AM62x: performance benchmarks degradation between RC4 and RC5 releases",""
-   "LCPD-25663","am62xx-sk,j721e-evm,j721s2-evm,j784s4-evm","Remove old IMG demo binaries  ",""
-   "LCPD-29580","am64xx-evm,am654x-evm,am654x-idk","ICSSG IET Statistics are not getting counted",""
-   "LCPD-29341","am64xx-evm","AM64x EVM: Clarify CPSW / PRU Ethernet selection steps",""
-   "LCPD-29649","am62xx-sk","inta_ack results in NULL pointer exception",""
-   "LCPD-18854","am64xx-evm,dra71x-evm,dra76x-evm","ov5640 sensor capture fails for raw format capture",""
-   "LCPD-28149","am62xx-sk","CMA warning while running GPU tests",""
-   "LCPD-26692","am335x-evm,am43xx-gpevm,am57xx-evm,am64xx-evm,j721e-idk-gw","Hardware + Software IPSec Performance Test Failures",""
-   "LCPD-29854","am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk","MCU UART TX baud rate is doubled",""
-   "LCPD-29734","am64xx-evm","AM64x PRUETH Performance Guide numbers are wrong",""
-   "LCPD-29589","am62axx-sk,am62xx-lp-sk,am62xx-sk","AM62x CPSW: PPS example not enabled by default",""
-   "LCPD-29588","am62axx-sk,am62xx-lp-sk,am62xx-sk,am64xx-evm,am64xx-sk,am654x-evm,am654x-idk","CPSW documentation: Time Sync Router no longer firewalled",""
-   "LCPD-29533","am335x-evm,am62xx-sk","dropbear fails to start automatically",""
-   "LCPD-29517","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: UDP test fail: failed T_cpu_util out of expected range",""
-   "LCPD-22215","am64xx-evm","PCIE NVM card stops enumerating on am64xx after some time",""
-   "LCPD-20705","am64xx-evm","USB stick attached to PCIe USB card is not enumerated",""
-   "LCPD-29877","am62xx-sk","am62x: openssl crypto performance tests fail",""
-   "LCPD-29876","am62xx-sk","am62x: crypto RNG functional and performance tests failures",""
-   "LCPD-29875","am62xx-sk","am62x: crypto SHA performance tests failures",""
-   "LCPD-29874","am62xx-sk","am62x: robustness: fails to boot 100 reboot test consistently",""
+  "LCPD-32580","J7200: System benchmarking tests are failing","j7200-evm",""
+  "LCPD-27522","Multi Stream decode fails","j721e-idk-gw",""
+  "LCPD-29521","R5 remote proc load does'nt guarentee CPU0 vs CPU1 sequencing","j721e-evm,j784s4-evm",""
+  "LCPD-28791","AHP GFX performance regression compaired to AEP","j784s4-evm,j784s4-hsevm",""
+  `LCPD-28511 <https://sir.ext.ti.com/jira/browse/EXT_EP-11062>`_,"GPU cache coherency issues","j721e-evm,j721e-hsevm,j721s2-evm,j721s2-hsevm,j784s4-evm,j784s4-hsevm",""
+  "LCPD-32430","OpenSSL Crypto Perf Intermittent Failure","j784s4-evm",""
+  "LCPD-19497","J7200: CPSW2g: interface goes up and down sporadically","j7200-evm","Seen only on very few EVMs. No workaround. "
+  `LCPD-17814 <https://sir.ext.ti.com/jira/browse/EXT_EP-10994>`_,"Kingston 16G card could not boot to uboot prompt","j721e-idk-gw",""
+  "LCPD-32794","j7200: wkup_pmx: Offsets of the pinctrl nodes under the wkup_pmx2 are wrong","j7200-evm",""
+  `LCPD-32365 <https://sir.ext.ti.com/jira/browse/EXT_EP-11055>`_,"J7200: Audit pinmux node for correct sizes","j7200-evm",""
+  "LCPD-32363","ATF: Address ARM Errata 854172","j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j721s2-hsevm,j7200-evm,j7200-hsevm,j784s4-evm,j784s4-hsevm",""
+  "LCPD-29949","[PROD STOP]I2c operations at 100KHz is broken","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,j721e-idk-gw",""
+  `LCPD-29705 <https://sir.ext.ti.com/jira/browse/EXT_EP-10984>`_,"J7200: DT compile time warnings","j7200-evm",""
+  "LCPD-32609","J784S4: Sync flip test fails for resolution>2k","j784s4-evm",""
+  `LCPD-32448 <https://sir.ext.ti.com/jira/browse/EXT_EP-11067>`_,"j721s2: display: eDP mode fails colorbar test","j721s2-evm",""
+  `LCPD-29525 <https://sir.ext.ti.com/jira/browse/EXT_EP-11061>`_,"Documentation for MCAN missing in the SDK","j7200-evm,j7200-hsevm",""
+  `LCPD-28645 <https://sir.ext.ti.com/jira/browse/EXT_EP-11064>`_,"K3conf wrong frequencies","j721e-idk-gw",""
+  "LCPD-29721","SDK: Linux: Kernel crashes with Intel PCIe WiFi Card","j721e-evm,j721e-idk-gw",""
+  "LCPD-32468","CMA allocation in higher memory (32bit+) fails","j721e-idk-gw,j721s2-evm,j784s4-evm",""
+  "LCPD-29680","vxe_enc_probe warning observed while booting with debug options enabled","j721e-evm,j721e-evm-ivi,j721e-idk-gw,j7200-evm",""
+  "LCPD-29634","Need to include codec maximum capabilities in SDK documentation","j721s2-evm",""
+  "LCPD-29620","IMG Decoder not passing ITU-T Streams","j721e-idk-gw",""
+  `LCPD-29320 <https://sir.ext.ti.com/jira/browse/EXT_EP-11054>`_,"The H.264 profile in the IMG video encoder driver is hardcoded to Base profile.","j721e-idk-gw","The following 2 patches enables the user to provide user defined profile for the video encoding using Gstreamer.
+
+  Board: J721e (TDA4VM)
+
+  SDK Version: 8.4
+
+  **Patch-1:** To be applied to Gstreamer plugin.
+
+  Patch file Name:  0001-Added-H264-profiles-support-to-Gstreamer-Plugin-for-.patch
+
+  In order to apply the patch, the user needs to have a Yocto setup and for setting up Yocto, please refer to SDK Documentation. Once the Yocto build is ready, the Gstreamer plugin is found at the location:
+
+  *<path-to-J721e-8.4-sdk>/yocto-build/build/arago-tmp-external-arm-glibc/work/j7_evm-linux/gstreamer1.0-plugins-good/1.16.3-r0.0.arago3_psdkla_0/gst-plugins-good-1.16.3*
+
+  The patch can be applied from this folder and changes are made to the files:
+
+  *./sys/v4l2/gstv4l2h264enc.c and ./sys/v4l2/gstv4l2h264enc.h*
+
+   
+
+  **Patch-2:** To be applied to Linux Kernel
+
+  Patch file name:
+
+  *0001-Added-H264-Profiles-Support-to-IMG-Video-encode-driv.patch*
+
+  Location of Linux Kernel:
+
+  *./ti-processor-sdk-linux-j7-evm-08_04_00_11/board-support/linux-5.10+gitAUTOINC+95b90aa828-g95b90aa828*
+
+  Apply the patch from this folder and changes are made to the file:
+
+  *./drivers/media/platform/vxe-vxd/encoder/vxe_v4l2.c*
+
+  *./drivers/media/platform/vxe-vxd/encoder/vxe_enc.c*
+
+  Once both the patches are applied, the driver can be verified by the below command. Use profile=0 for Base, profile=2 for Main, profile=4 for High. For any other value, default Base profile is set.
+
+  *$ gst-launch-1.0 videotestsrc pattern=ball do-timestamp=true num-buffers=100  ! video/x-raw, format=NV12, width=852, height=480, framerate=30/1 ! v4l2h264enc profile=2 ! h264parse ! mp4mux ! filesink location=demo_main.mp4*
+
+  Profile of the file can be verified using ffmpeg 
+  "
+  "LCPD-25619","Wave5: Encoded output, mplayer warnings","j721s2-evm",""
+  "LCPD-17138","Kernel warning reported during h264 video encode operations","j721e-idk-gw",""
+  "LCPD-25322","Docs: J7200: Improve the IPC chapter for ti-rpmsg-char","j7200-evm",""
+  "LCPD-25321","Docs: J721E: Improve the IPC chapter for ti-rpmsg-char","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-24456","Move IPC validation source from github to git.ti.com","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am62axx_sk-fs,am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am62xx-vlab,am62xx-zebu,am64xx-evm,am64xx-hsevm,am64xx-sk,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j7ae-evm,j7ae-zebu,j7aep-zebu,j7am-evm,j7am-vlab,j7am-zebu,j7amp-vlab,j7amp-zebu,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721e-vlab,j721s2-evm,j721s2-hsevm,j7200-evm,j7200-hsevm,j7amp-evm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm,omapl138-lcdk",""
+  "LCPD-17284","remoteproc/k3-r5: Cores are started out-of-order when core 0 file size >> core 1 file size","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-16545","remoteproc/k3-r5f: PDK IPC echo_test image fails to boot up in remoteproc mode on second run","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-16535","remoteproc/k3-dsp: PDK IPC echo test binaries fails to do IPC in remoteproc mode on second run","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-25662","Remove SGX PVR tools from KS3 devices","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,j721e-evm,j7200-evm",""
+  "LCPD-25221"," j721e-idk-gw failing Glmark2-DRM Test (Impact 1)","j721e-idk-gw",""
+  "LCPD-22921","j721e PVR profiling with PVRPerfServer test is failing","j721e-idk-gw",""
+  "LCPD-19894","UYVY texture test fails due to internal data stream error","j721e-idk-gw,j721s2-evm,j784s4-evm",""
+  "LCPD-26692","Hardware + Software IPSec Performance Test Failures","am335x-evm,am43xx-gpevm,am57xx-evm,am64xx-evm,j721e-idk-gw",""
+  "LCPD-24127","AM654x IPSEC Software Crypto tests fail (Impact 4)","am654x-evm,j721e-idk-gw",""
+  "LCPD-32784","Automated Test: J784S4: CPSW Ping fails","j784s4-evm,j784s4-hsevm",""
+  "LCPD-32725","[Cpsw9g][VirtualDriver][VirtualMAC]Netdev driver should support operate as a virtual driver that interacts with switch firmware via IPC  (AHP) RC 6 SDK 8.6","j784s4-evm",""
+  "LCPD-32702","J784S4 : USB Client : CDC ECM test failures","j784s4-evm",""
+  "LCPD-32701","J7200 : USB Client : Mass storage performance tests failure","j7200-evm",""
+  "LCPD-32700","Test: MCSPI loopback tests failing for all J7 Platforms","j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm",""
+  "LCPD-32699","Test: CPSW Virtual Net driver: Ping test fails since interface is not up","j7200-evm",""
+  "LCPD-32565","Serror while pcie bus scan","j721e-idk-gw",""
+  "LCPD-32564","Failed to set irq type to MSI","j7200-evm",""
+  "LCPD-32563","PCIe write test failed","j7200-evm",""
+  "LCPD-32542","Failed to set irq type to MSI-X","j7200-evm",""
+  "LCPD-32471","J7200: CPSW5G Virtual Eth Driver Performance Measurement","j7200-evm,j7200-hsevm",""
+  `LCPD-32334 <https://sir.ext.ti.com/jira/browse/EXT_EP-11066>`_,"V4L2 driver compliance test is failing","j721e-idk-gw,j721e-sk,j721s2-evm,j784s4-evm",""
+  "LCPD-28087","emmc: using RPMB panicks the TA on High speed mode","j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-25304","J7AEP: USB: USB 3.0 devices not getting enumerated in high speed","j721s2-evm",""
+  "LCPD-24725","PCIE RC Link fails when linux prints are made quiet","j721e-idk-gw",""
+  "LCPD-24690","Kernel: SDK: Set HIGH_SPEED_EN for MMC1 instance","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am64xx-evm,am64xx-sk,j721s2-evm,j7200-evm",""
+  "LCPD-24491","Docs: MMC/SD supported modes not documented properly for J721E/J7200","j721e-evm,j721e-evm-ivi,j721e-idk-gw,j7200-evm",""
+  "LCPD-22905","UDMA: TR15 hangs if ICNT0 is less than 64 bytes","am654x-evm,j721e-idk-gw",""
+  "LCPD-20240","MMC Modular testcase regression","j721e-idk-gw,j721e-sk",""
+  "LCPD-19659","Doc: PCIe: Update documentation to indicate how to move to compliance mode","j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j7200-evm,j7200-hsevm",""
+  "LCPD-19499","Kernel: OSPI write throughput is less than 1MB/s","j7200-evm,j7200-hsevm",""
+  "LCPD-19084","Few SD cards not enumerating in Kernel with Alpha EVM","j721e-idk-gw",""
+  "LCPD-17421","CPSW9G: Can't bring up interface over NFS","j721e-idk-gw",""
+  "LCPD-17172","Uboot USBhost: Sandisk Extreme USB 3.0 msc stick could not be detected at second time","j721e-idk-gw",""
+  "LCPD-17171","Uboot dhcp occasionally failed","j721e-idk-gw",""
+  "LCPD-16640","PCIe RC: GIC ITS misbehaves when more than 4 devices use it simultaneously","j721e-idk-gw",""
+  "LCPD-16396","J721E: RC: Unsupported request in configuration completion packets results in an abort","j721e-evm,j721e-evm-ivi,j721e-idk-gw","Workaround for Multifunction: Configure all the physical functions supported by the endpoint. For configuring all the 6 functions of PCIe  controller instance '1' in J721E, the following can be used. mount -t configfs none /sys/kernel/config; cd /sys/kernel/config/pci_ep/; mkdir functions/pci_epf_test/func1; echo 0x104c > functions/pci_epf_test/func1/vendorid; echo 0xb00d > functions/pci_epf_test/func1/deviceid; echo 1 > functions/pci_epf_test/func1/msi_interrupts; echo 16 > functions/pci_epf_test/func1/msix_interrupts; ln -s functions/pci_epf_test/func1 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func2; echo 0x104c > functions/pci_epf_test/func2/vendorid; echo 0xb00d > functions/pci_epf_test/func2/deviceid; echo 1 > functions/pci_epf_test/func2/msi_interrupts; echo 16 > functions/pci_epf_test/func2/msix_interrupts; ln -s functions/pci_epf_test/func2 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func3; echo 0x104c > functions/pci_epf_test/func3/vendorid; echo 0xb00d > functions/pci_epf_test/func3/deviceid; echo 1 > functions/pci_epf_test/func3/msi_interrupts; echo 16 > functions/pci_epf_test/func3/msix_interrupts; ln -s functions/pci_epf_test/func3 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func4; echo 0x104c > functions/pci_epf_test/func4/vendorid; echo 0xb00d > functions/pci_epf_test/func4/deviceid; echo 1 > functions/pci_epf_test/func4/msi_interrupts; echo 16 > functions/pci_epf_test/func4/msix_interrupts; ln -s functions/pci_epf_test/func4 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func5; echo 0x104c > functions/pci_epf_test/func5/vendorid; echo 0xb00d > functions/pci_epf_test/func5/deviceid; echo 1 > functions/pci_epf_test/func5/msi_interrupts; echo 16 > functions/pci_epf_test/func5/msix_interrupts; ln -s functions/pci_epf_test/func5 controllers/d800000.pcie-ep/; mkdir functions/pci_epf_test/func6; echo 0x104c > functions/pci_epf_test/func6/vendorid; echo 0xb00d > functions/pci_epf_test/func6/deviceid; echo 1 > functions/pci_epf_test/func6/msi_interrupts; echo 16 > functions/pci_epf_test/func6/msix_interrupts; ln -s functions/pci_epf_test/func6 controllers/d800000.pcie-ep/; echo 1 > controllers/d800000.pcie-ep/start; echo 1 > /sys/bus/pci/devices/0000:00:00.0/remove; echo 1 > /sys/bus/pci/rescan; Workaround for switch card: No workarounds available."
+  "LCPD-16031","J721e: PCIe: Legacy interrupts do not work","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-32656","AM69-SK: PCIe0 enumeration fails","am69_sk-fs,j784s4-evm,j784s4-hsevm",""
+  "LCPD-32655","J784S4: CTRL MMR IO PADCONFIG size is incorrect for wakeup domain","am69_sk-fs,j784s4-evm,j784s4-hsevm",""
+  "LCPD-32581","J721E HS: Boot is delayed because of a kernel warning for mmc recovery mode","j721e-hsevm",""
+  "LCPD-32560","j7200-evm: FSCK<NNNN>.REC files are sporadically created on the EMMC partition","j7200-evm",""
+  "LCPD-32539","J7AEP: Linux crash when we cat pinctrl debugfs node","j721s2-evm,j721s2-hsevm",""
+  "LCPD-32538","J7AHP: Linux crash when we cat pinctrl debugfs node","j784s4-evm,j784s4-hsevm",""
+  "LCPD-32487","J721S2: CTRL MMR IO PADCONFIG size is incorrect for wakeup domain","am68_sk-fs,j721s2-evm,j721s2-hsevm",""
+  "LCPD-32474","k3conf: Unknown silicon for J784S4","j784s4-evm",""
+  "LCPD-32279","k3conf reports J7ES silicon rev version incorrectly","j721e-idk-gw",""
+  `LCPD-29648 <https://sir.ext.ti.com/jira/browse/EXT_EP-11057>`_,"Failure logs during boot: Failed unmounting /var/lib & /var/volatile ","j7200-evm",""
+  `LCPD-29647 <https://sir.ext.ti.com/jira/browse/EXT_EP-11060>`_,"Non-fatal failure logs seen during system boot up","j7200-evm",""
+  "LCPD-29644","MMC: SD Card doesn't go into DDR50 mode","j784s4-evm",""
+  `LCPD-28861 <https://sir.ext.ti.com/jira/browse/EXT_EP-11059>`_,"J721e/j7200: MCU/WKUP UART as console. The output gets garbled after sysfw/dm load ","j721e-evm,j7200-evm",""
+  "LCPD-28250","J7AEP: QSPI Write corrupted when the first operation after powerup is erase","j721s2-evm",""
+  "LCPD-25692","linux needs to identify J7ES PG1.1 correctly","j721s2-evm,j721s2-hsevm",""
+  "LCPD-25686","k3conf needs to identify J7ES PG1.1 correctly","j721s2-evm,j721s2-hsevm",""
+  "LCPD-25262","j721s2-evm : cpuhotplug06 fails  ","j721s2-evm",""
+  "LCPD-25195","j721s2-evm: audio device is not found","j721s2-evm",""
+  "LCPD-23010","j721e-idk-gw stress boot test files","j721e-idk-gw",""
+  "LCPD-22715","i2232: DDR: Controller postpones more than allowed refreshes after frequency change","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,j721e-idk-gw,j721s2-evm,j7200-evm","Workaround 1:
+  Disable dynamic frequency change by programing DFS_ENABLE = 0::
+
+           DFS_ENABLE = 0
+
+  Workaround 2:
+  If switching frequency, program the register field values as follows::
+
+     if (old_freq/new_freq >= 7) {
+         if (PBR_EN==1) {  // Per-bank refresh is enabled
+               AREF_HIGH_THRESHOLD = 19
+               AREF_NORM_THRESHOLD = 18
+               AREF_PBR_CONT_EN_THRESHOLD = 1
+               AREF_CMD_MAX_PER_TREF = 8
+         }
+         else {  // Per-bank refresh is disabled
+               AREF_HIGH_THRESHOLD = 18
+               AREF_NORM_THRESHOLD = 17
+               AREF_CMD_MAX_PER_TREF = 8
+         }
+     } else {
+         AREF_HIGH_THRESHOLD = 21
+         AREF_CMD_MAX_PER_TREF = 8
+     }
+  "
+  "LCPD-22319","OpenSSL performance test data out of bounds","j7200-evm",""
+  "LCPD-20653","ltp: kernel syscall tests fail","am335x-evm,am43xx-gpevm,am654x-idk,j721e-idk-gw",""
+  "LCPD-19792","j721e boot fails sometimes due to EL1 exception","j721e-idk-gw",""
+  "LCPD-18258","IPSEC perfomance failures","am654x-evm,j721e-idk-gw",""
+  "LCPD-17543","Some cpuhotplug tests failed","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-32556","j721s2: kmstest fails when eDP is used","j721s2-evm",""
+  "LCPD-24502","j721e-evm-ivi Universal Planes fails (Impact 1)","j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-19068","DSS: Disabling a layer connected to Overlay may result in synclost during the next frame","j721e-evm,j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-17017","J7: DSS underflows seen on various use cases","j721e-evm-ivi,j721e-idk-gw",""
+  "LCPD-25583","H264 Encode followed by decode not working for all resolutions in Gstreamer","j721e-idk-gw",""
+  "LCPD-16531","video decode: vxd_dec warnings displayed at end of gstreamer hevc playback to kmssink for certain video","j721e-idk-gw",""
+  "LCPD-22513","Update SDK doc to include OSPI flashing instruction using dfu-util","j721e-evm,j7200-evm",""
+  "LCPD-18790","eMMC tests failed on J7 rev E2 EVM","j721e-idk-gw",""
+  "LCPD-32709","Test: QSPI tests are failing on J721E","j721e-idk-gw",""
+  "LCPD-29880","CAN_S_FUNC_MODULAR test fail","am64xx-evm,j7200-evm,j784s4-evm",""
+  "LCPD-29865","j721e-idk-gw:  MMC_M_MODULAR_NEG_MOD_RW_SDHC Fails","j721e-idk-gw",""
+  "LCPD-29755","j721e-idk-gw : Can Transmission and Reception Tests Fail","j721e-idk-gw",""
+  "LCPD-19743","Packages.gz is missing","j7200-evm,j7200-hsevm",""
+  "LCPD-19739","AM65 shutdown error","am654x-idk,j7200-evm",""
+  "LCPD-32762","Delayed detection of HP SD Card on J721s2","j721s2-evm",""
+  "LCPD-32722","Linux SDK  VENC: Performance - 1x 1080p60 [Failing on AHP]","j784s4-evm",""
+  "LCPD-32767","CI/CD failure","j721s2-hsevm",""
+  "LCPD-32724","remote proc booting of C7x in non-SMP mode  (AHP) RC 6 SDK 8.6","j784s4-evm",""
+  "LCPD-32723","remote proc booting of C7x in non-SMP mode (AHP) RC 6 SDK 8.6","am69_sk-fs,j784s4-evm",""
+  "LCPD-32469","PVR profiling with PVRPerfServer arm8 64bits failure","j721s2-evm",""
+  "LCPD-22339","PCI-E USBCARD, ETHCARD don't indicate 2-lane support with lspci","j721e-idk-gw,j7200-evm",""
+  "LCPD-32771","j721e: doc: Uboot: SD/eMMC build instructions is wrong","j721e-idk-gw,j721e-sk",""
+  "LCPD-32718","GPIO_S_FUNC_EDGE_ALL_BANK and GPIO_S_FUNC_DIR_IN_ALL_BANK Test failing in SDK 8.6","j784s4-evm",""
+  "LCPD-32708","J721s2: OSPI: Flash write error during stress test on 8.5 SDK","j721s2-evm",""
+  "LCPD-32544","J7200: OSPI Phy calibration fails intermittently","j7200-evm",""
+  "LCPD-29699","J721E tidss fails to keep in sync with displays requesting resolutions > 2k","j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk",""
 
 |
 
 Linux RT Kernel Known Issues
 ----------------------------
-.. csv-table::
-   :header: "Record ID", "Platform", "Title", "Workaround"
-   :widths: 5, 10, 70, 35
 
-   "LCPD-29388","am62xx-sk,am64xx-evm,am64xx-sk","PREEMPT_RT interrupt latency with background memory load",""
-   "LCPD-29339","am62xx-sk","Processor SDK 8.3 AM62x lacks RT Linux performance numbers",""
-   "LCPD-29332","am62xx-sk","LPM Demo not Working on Linux RT",""
-   "LCPD-24288","am64xx-evm,am654x-idk","am64xx-evm NCM/ACM network performance test crashes with RT images",""
-
-|
+There are no known issues in this release in the Linux RT Kernel.
