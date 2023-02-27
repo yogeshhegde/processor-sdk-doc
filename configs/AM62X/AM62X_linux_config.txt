@@ -39,4 +39,4 @@ Configuration Values
 'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'Rogue_AXE'
 'CONFIG_crypto'           : 'sa2ul'
-
+'CONFIG_mcrc'             : 'mcrc'
