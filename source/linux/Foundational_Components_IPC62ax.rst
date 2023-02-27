@@ -8,7 +8,7 @@ IPC for AM62ax
 The AM62ax processors have Cortex-R5F and C7x DSP subsystems in addition to
 a Quad core Cortex-A53 subsystem. Please refer to the AM62ax Technical Reference Manual for details.
 
-This article is geared toward AM62xx users that are running Linux on the Cortex
+This article is geared toward AM62ax users that are running Linux on the Cortex
 A53 cores. The goal is to help users understand how to establish IPC communication
 with the C7x DSP and R5F cores.
 
@@ -64,15 +64,13 @@ loading the R5F and C7x cores. Here are the files it looks for on an AM62ax devi
 
 ::
 
-	+------------------+-----------------+--------------------+----------------------+
-	| Core Name        | RemoteProc Name | Description        | Firmware File Name   |
-	+==================+=================+====================+======================+
-	| C7x              | 7e000000.c7x    | C7x core           | am62a-c71_0-fw       |
-	+------------------+-----------------+--------------------+----------------------+
-	| R5F              | 79000000.r5f    | R5F core           | am62a-mcu-r5f0_0-fw  |
-	+------------------+-----------------+--------------------+----------------------+
-	| R5F              | 78000000.r5f    | R5F core           | am62-wkup-r5f0_0-fw  |
-	+------------------+-----------------+--------------------+----------------------+
+	+------------------+-----------------+----------------------+----------------------+
+	| Core Name        | RemoteProc Name | Description          | Firmware File Name   |
+	+==================+=================+======================+======================+
+	| C7x              | 7e000000.c7x    | C7x core             | am62a-c71_0-fw       |
+	+------------------+-----------------+----------------------+----------------------+
+	| R5F	           | 79000000.r5f    | R5F core(MCU domain) | am62a-mcu-r5f0_0-fw  |
+	+------------------+-----------------+----------------------+----------------------+
 
 Generally on a target file system the above files are soft linked to the
 intended executable FW files:
@@ -199,6 +197,9 @@ See the devicetree bindings documentation for more details: `Documentation/devic
 	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000ae300000, size 288 MiB
 	[    0.000000] cma: Reserved 512 MiB at 0x00000000dd000000
 
+.. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
+          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=ti-linux-5.10.y'
+
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
 used to communicate with the remote processor core. The remaining carveout is 
 used for the remote core external memory (program code, data, etc).
@@ -268,6 +269,9 @@ arch/arm64/boot/dts/ti/k3-am62a7-sk.dts
 
 
 .. warning:: Be careful not to overlap carveouts!
+
+.. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
+          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=ti-linux-5.10.y'
 
 RPMsg Char Driver
 -----------------
@@ -403,7 +407,7 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Usage: rpmsg_char_simple [-r <rproc_id>] [-n <num_msgs>] [-d <rpmsg_dev_name] [-p <remote_endpt]
 			Defaults: rproc_id: 0 num_msgs: 100 rpmsg_dev_name: NULL remote_endpt: 14
 
-	# R5F<->A53_0 IPC
+	# MCU R5F<->A53_0 IPC
 	root@am62xx-evm:~# rpmsg_char_simple -r 9 -n 10
 	Created endpt device rpmsg-char-0-1908, fd = 3 port = 1024
 	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 0 ...
@@ -432,6 +436,9 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Communicated 10 messages successfully on rpmsg-char-0-1908
 
 	TEST STATUS: PASSED
+
+	# for DM R5F<->A53 IPC, use the below command. For remote proc ids, please refer to : 'https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h'
+	# root@am62xx-evm:~# rpmsg_char_simple -r 15 -n 10
 
 	# C7x<->A53_0 IPC
 	root@am62axx-evm:/lib/firmware# rpmsg_char_simple -r8 -n10                                                                         
