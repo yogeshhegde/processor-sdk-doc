@@ -8,5 +8,5 @@ RTOS/NO-RTOS [MCU+ SDK]
 
 **For MCU+ SDK RTOS/NO-RTOS documentation, refer below links**
 
--  `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_05_00_14/exports/docs/api_guide_am62x/index.html>`__
+-  `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_06_00_18/exports/docs/api_guide_am62x/index.html>`__
 
