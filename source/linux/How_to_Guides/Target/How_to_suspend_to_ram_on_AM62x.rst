@@ -41,17 +41,48 @@ U-Boot needs to be configured to switch to this dtb during kernel Image load and
     ::
 
         root@am62xx-evm:~# rtcwake -s 10 -m mem
-        rtcwake: wakeup from "mem" using /dev/rtc0 at Fri May 20 09:41:11 2022
-        [   42.148655] PM: suspend entry (deep)
-        [   42.152391] Filesystems sync: 0.000 seconds
-        [   42.166102] Freezing user space processes ... (elapsed 0.001 seconds)    done.
-        [   42.175081] OOM killer disabled.
-        [   42.178325] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
-        [   42.186951] printk: Suspending console(s) (use no_console_suspend to debug)
-        [   42.428329] Disabling non-boot CPUs ...
-        [   42.826185] OOM killer enabled.
-        [   42.829327] Restarting tasks ... done.
-        [   42.855525] PM: suspend exit
+        rtcwake: wakeup from "mem" using /dev/rtc0 at Fri Feb 24 04:52:49 2023
+        [   87.521442] PM: suspend entry (deep)
+        [   87.525113] Filesystems sync: 0.000 seconds
+        [   87.537560] Freezing user space processes ... (elapsed 0.001 seconds) done.
+        [   87.546590] OOM killer disabled.
+        [   87.549857] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+        [   87.559075] printk: Suspending console(s) (use no_console_suspend to debug)
+        [   87.572006] wlcore: down
+        [   87.572670] wlcore: down
+        [   87.710673] am65-cpsw-nuss 8000000.ethernet eth0: Link is Down
+        [   87.740005] Disabling non-boot CPUs ...
+        [   87.744131] CPU1: shutdown
+        [   87.744171] psci: CPU1 killed (polled 0 ms)
+        [   87.754492] CPU2: shutdown
+        [   87.754535] psci: CPU2 killed (polled 0 ms)
+        [   87.763646] IRQ 255: no longer affine to CPU3
+        [   87.764256] CPU3: shutdown
+        [   87.765349] psci: CPU3 killed (polled 4 ms)
+        [   87.771071] Enabling non-boot CPUs ...
+        [   87.771835] Detected VIPT I-cache on CPU1
+        [   87.771952] GICv3: CPU1: found redistributor 1 region 0:0x00000000018a0000
+        [   87.772127] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+        [   87.776179] CPU1 is up
+        [   87.776880] Detected VIPT I-cache on CPU2
+        [   87.776985] GICv3: CPU2: found redistributor 2 region 0:0x00000000018c0000
+        [   87.777137] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+        [   87.780827] CPU2 is up
+        [   87.781440] Detected VIPT I-cache on CPU3
+        [   87.781545] GICv3: CPU3: found redistributor 3 region 0:0x00000000018e0000
+        [   87.781705] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+        [   87.785655] CPU3 is up
+        [   87.814975] am65-cpsw-nuss 8000000.ethernet: set new flow-id-base 19
+        [   87.835671] am65-cpsw-nuss 8000000.ethernet eth0: PHY [8000f00.mdio:00] driver [TI DP83867] (irq=POLL)
+        [   87.835736] am65-cpsw-nuss 8000000.ethernet eth0: configuring for phy/rgmii-rxid link mode
+        [   87.850935] am65-cpsw-nuss 8000000.ethernet eth1: PHY [8000f00.mdio:01] driver [TI DP83867] (irq=POLL)
+        [   87.850983] am65-cpsw-nuss 8000000.ethernet eth1: configuring for phy/rgmii-rxid link mode
+        [   88.240106] wlcore: using inverted interrupt logic: 2
+        [   88.311185] wlcore: PHY firmware version: Rev 8.2.0.0.245
+        [   88.475402] wlcore: firmware booted (Rev 8.9.0.0.86)
+        [   88.677895] OOM killer enabled.
+        [   88.681034] Restarting tasks ... done.
+        [   88.687455] PM: suspend exit
         root@am62xx-evm:~#
 
 This puts system to sleep for 10s and then wakes it up via RTC interrupt
@@ -63,6 +94,9 @@ Limitations
   UART, I2C, RTC, MMC/SD, MMC/eMMC, INTR, GPIO, CPSW, DMA,
   INTA, OSPI, USB, MCAN, DM Timer, ECAP, ehrPWM, DMA, INTA,
   McASP, McSPI, DSS, OLDI, HDMI, CSI.
+
+* Unsupported IPs are disabled in k3-am625-sk-lpmdemo.dts, mainly crypto and IPC with R5 and M4 MCU are unsupported at the moment.
+
 * To reenable DFS during the same session, scaling_min_freq will need to be reset:
 
     ::
