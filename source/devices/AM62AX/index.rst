@@ -13,13 +13,15 @@ Processor SDK Linux Software Developer's Guide
    :hidden:
    :numbered:
 
-   /linux/Overview
-   /linux/Release_Specific
+   /devices/AM62AX/linux/Overview
+   /devices/AM62AX/linux/Release_Specific
    /linux/Foundational_Components
    /linux/How_to_Guides
    /linux/Documentation_Tarball
 
 |
+
+.. include:: /devices/AM62AX/linux/Release_Specific_QSG.rst.inc
 
 .. rubric:: Feedback
 

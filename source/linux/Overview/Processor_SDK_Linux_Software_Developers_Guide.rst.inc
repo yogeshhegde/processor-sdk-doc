@@ -102,7 +102,7 @@ suggestions <Feedback>`.
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
 
-    .. ifconfig:: CONFIG_part_variant not in ('AM62X')
+    .. ifconfig:: CONFIG_part_variant not in ('AM62X', 'AM62AX')
 
         +-----------------+------------------------+------------------+-----------------------------------+
         | **PRU-ICSS / PRU_ICSSG Protocols** (more information on each piece of the distribution)         |
