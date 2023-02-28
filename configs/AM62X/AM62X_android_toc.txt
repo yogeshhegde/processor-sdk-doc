@@ -11,3 +11,5 @@ devices/AM62X/android/Application_Notes_Partitions
 devices/AM62X/android/Application_Notes_dtbo_support
 devices/AM62X/android/Application_Notes_GKI_support
 devices/AM62X/android/Application_Notes_Android_SD_CARD
+devices/AM62X/android/Application_Notes_Android_Dual_Screen
+devices/AM62X/android/Application_Notes_Android_Low_Power
