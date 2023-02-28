@@ -439,18 +439,21 @@ the SD card. e.g. run following to copy boot binaries in SD card boot partition.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
+    **For HS-FS**
     ::
-
+        
         #Replace the path to SD card boot partition as appropriate
         host# sudo cp board-support/u-boot_build/a53/u-boot.img /media/$USER/boot/u-boot.img
         host# sudo cp board-support/u-boot_build/a53/tispl.bin /media/$USER/boot/tispl.bin
-        host# sudo cp board-support/k3-image-gen-2022.01/tiboot3.bin /media/$USER/boot/tiboot3.bin
-
-        NOTE: For AM64x HS EVM, please follow below steps instead:
+        host# sudo cp board-support/k3-image-gen*/tiboot3-am64x_sr2-hs-fs-evm.bin /media/$USER/boot/tiboot3.bin
+    
+    **For HS-SE**
+    ::
+       
         #Replace the path to SD card boot partition as appropriate
         host# sudo cp board-support/u-boot_build/a53/u-boot.img_HS /media/$USER/boot/u-boot.img
         host# sudo cp board-support/u-boot_build/a53/tispl.bin_HS /media/$USER/boot/tispl.bin
-        host# sudo cp board-support/k3-image-gen-2022.01/tiboot3.bin /media/$USER/boot/tiboot3.bin
+        host# sudo cp board-support/k3-image-gen*/tiboot3-am64x_sr2-hs-evm.bin /media/$USER/boot/tiboot3.bin
 
 .. rubric:: A Note about Out-of-tree Kernel Modules
    :name: a-note-about-out-of-tree-kernel-modules
