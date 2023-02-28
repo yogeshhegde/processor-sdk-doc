@@ -100,4 +100,6 @@ linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62ax_EVM_Hardware_Setup
 
+system/Demo_User_Guides/Edge_AI_Gallery_User_Guide
+
 linux/Documentation_Tarball
