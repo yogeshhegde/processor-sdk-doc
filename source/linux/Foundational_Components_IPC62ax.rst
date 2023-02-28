@@ -81,9 +81,9 @@ intended executable FW files:
 	lrwxrwxrwx 1 root root      60 Feb  2  2023 am62a-c71_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_test_c7x_1_release_strip.xe71
 	lrwxrwxrwx 1 root root      41 Feb  2  2023 am62a-mcu-r5f0_0-fw -> /lib/firmware/pdk-ipc/am62a-mcu-r5f0_0-fw
 
-For updating wakeup R5F firmware binary, tispl.bin needs to be recompiled with the new firmware binary as mentioned below :
+For updating wakeup (DM) R5F firmware binary, tispl.bin needs to be recompiled with the new firmware binary as mentioned below :
 
-#. Go to linux installer and replace the existing R5F firmware binary with the new one
+#. Go to linux installer and replace the existing R5F wakeup (DM) firmware binary with the new one
 
 ::
 
@@ -179,7 +179,7 @@ See the devicetree bindings documentation for more details: `Documentation/devic
 	+------------------+--------------------+---------+----------------------------+
 	| R5F(mcu) Pool    | 0x9b800000         | 1MB     | IPC (Virtio/Vring buffers) |
 	+------------------+--------------------+---------+----------------------------+
-	| R5F(mcu) Pool    | 0x9d900000         | 15MB    | R5F externel code/data mem |
+	| R5F(mcu) Pool    | 0x9b900000         | 15MB    | R5F externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
 	| R5F(wkup) Pool   | 0x9c800000         | 1MB     | IPC (Virtio/Vring buffers) |
 	+------------------+--------------------+---------+----------------------------+
@@ -408,8 +408,8 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 			Defaults: rproc_id: 0 num_msgs: 100 rpmsg_dev_name: NULL remote_endpt: 14
 
 	# MCU R5F<->A53_0 IPC
-	root@am62xx-evm:~# rpmsg_char_simple -r 9 -n 10
-	Created endpt device rpmsg-char-0-1908, fd = 3 port = 1024
+	root@am62axx-evm:~# rpmsg_char_simple -r0 -n10
+	Created endpt device rpmsg-char-0-1069, fd = 3 port = 1024
 	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 0 ...
 
 	Sending message #0: hello there 0!
@@ -433,12 +433,39 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Sending message #9: hello there 9!
 	Receiving message #9: hello there 9!
 
-	Communicated 10 messages successfully on rpmsg-char-0-1908
+	Communicated 10 messages successfully on rpmsg-char-0-1069
 
 	TEST STATUS: PASSED
 
 	# for DM R5F<->A53 IPC, use the below command. For remote proc ids, please refer to : 'https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h'
-	# root@am62xx-evm:~# rpmsg_char_simple -r 15 -n 10
+	root@am62axx-evm:~# rpmsg_char_simple -r15 -n10
+	Created endpt device rpmsg-char-15-963, fd = 3 port = 1024
+	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 15 ...
+
+	Sending message #0: hello there 0!
+	Receiving message #0: hello there 0!
+	Sending message #1: hello there 1!
+	Receiving message #1: hello there 1!
+	Sending message #2: hello there 2!
+	Receiving message #2: hello there 2!
+	Sending message #3: hello there 3!
+	Receiving message #3: hello there 3!
+	Sending message #4: hello there 4!
+	Receiving message #4: hello there 4!
+	Sending message #5: hello there 5!
+	Receiving message #5: hello there 5!
+	Sending message #6: hello there 6!
+	Receiving message #6: hello there 6!
+	Sending message #7: hello there 7!
+	Receiving message #7: hello there 7!
+	Sending message #8: hello there 8!
+	Receiving message #8: hello there 8!
+	Sending message #9: hello there 9!
+	Receiving message #9: hello there 9!
+
+	Communicated 10 messages successfully on rpmsg-char-15-963
+
+	TEST STATUS: PASSED
 
 	# C7x<->A53_0 IPC
 	root@am62axx-evm:/lib/firmware# rpmsg_char_simple -r8 -n10                                                                         
