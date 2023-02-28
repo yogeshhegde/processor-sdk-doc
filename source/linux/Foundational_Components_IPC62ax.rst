@@ -438,8 +438,8 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	TEST STATUS: PASSED
 
 	# for DM R5F<->A53 IPC, use the below command. For remote proc ids, please refer to : 'https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h'
-	root@am62axx-evm:~# rpmsg_char_simple -r15 -n10
-	Created endpt device rpmsg-char-15-963, fd = 3 port = 1024
+	root@am62axx-evm:~# rpmsg_char_simple -r15 -p21 -n10
+	Created endpt device rpmsg-char-15-127176, fd = 3 port = 1024
 	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 15 ...
 
 	Sending message #0: hello there 0!
@@ -463,13 +463,13 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Sending message #9: hello there 9!
 	Receiving message #9: hello there 9!
 
-	Communicated 10 messages successfully on rpmsg-char-15-963
+	Communicated 10 messages successfully on rpmsg-char-15-127176
 
 	TEST STATUS: PASSED
 
 	# C7x<->A53_0 IPC
-	root@am62axx-evm:/lib/firmware# rpmsg_char_simple -r8 -n10                                                                         
-	Created endpt device rpmsg-char-8-1981, fd = 3 port = 1024
+	root@am62axx-evm:~# rpmsg_char_simple -r8 -p21 -n10
+	Created endpt device rpmsg-char-8-127180, fd = 3 port = 1024
 	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 8 ...
 
 	Sending message #0: hello there 0!
@@ -493,10 +493,9 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Sending message #9: hello there 9!
 	Receiving message #9: hello there 9!
 
-	Communicated 10 messages successfully on rpmsg-char-8-1981
+	Communicated 10 messages successfully on rpmsg-char-8-127180
 
 	TEST STATUS: PASSED
-	root@am62xx-evm:~#
 
 .. rubric:: RPMsg kernel space example
 
