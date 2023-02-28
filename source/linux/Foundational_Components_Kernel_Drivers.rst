@@ -12,6 +12,7 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/Camera/CSI2RX
    Foundational_Components/Kernel/Kernel_Drivers/Crypto
    Foundational_Components/Kernel/Kernel_Drivers/MCAN
+   Foundational_Components/Kernel/Kernel_Drivers/MCRC
    Foundational_Components/Kernel/Kernel_Drivers/DCAN
    Foundational_Components/Kernel/Kernel_Drivers/Display/DSS
    Foundational_Components/Kernel/Kernel_Drivers/Display/DSS7
