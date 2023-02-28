@@ -41,7 +41,7 @@ or RTOS (FreeRTOS etc). In normal operation, the boot loader (U-Boot/SPL) boots
 and loads the A53 with the HLOS. The A53 then boots the C7x and R5F cores.
 
 The wakeup R5F firmware runs device manager software (SciServer) along
-with a demo IPC application.
+with vision apps application.
 
 The wakeup R5F firmware is integrated as part of tispl.bin binary
 and is started early in the boot process by u-boot R5 SPL right after DDR initialization.
