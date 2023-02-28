@@ -138,12 +138,15 @@ cable is connected from the host PC to the EVM.
         (OR)
 
         # If you are using pre-built binaries from SDK download page
-        cd AM62x_08.03.00_emmc
+        cd AM62x_08.06.00_emmc
         sudo ./flashall.sh
 
 .. note::
 
     To Flash HS-FS board use flash script with '--hsfs' arg.
+    ::
+    
+        sudo ./flashall.sh --hsfs
 
 9. Once the flashing is complete, power off the board and remove the SD card.
 

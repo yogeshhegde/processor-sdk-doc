@@ -22,10 +22,10 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page.
 
 
-Release 08.05.00
+Release 08.06.00
 ================
 
-Released on December 2022
+Released on February 2023
 
 What's new
 ----------
@@ -39,11 +39,15 @@ Release Features
 Following features are enabled/tested in this release for AM62x Android:
 
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
+* **Security:** Keymaster and gatekeeper implementaton with OP-TEE
 * **Platform:** SELinux Enforced mode with User build, ADB over USB
 * **Connectivity:** Ethernet and Wi-Fi (WiLink) support, USB touch
 * **Graphics:** GPU accelerated UI with Hwcomposer
-* **Audio:** HDMI and Jack Audio out
+* **Audio:** HDMI Output and Jack Audio Output/Input
 * **Multimedia:** SW Video Decode/Encode, USB Camera Supported
+* **Android Baseport:** Support of Generic System Image, 
+* **Display:** Support for LVDS panel and dual display (mirroring and extended)
+* **Power:** LPM demo using rtcwake
 
 SDK Components and Versions
 ---------------------------
@@ -53,7 +57,7 @@ SDK Components and Versions
 +====================================+===============================================================================+
 | **Android**                        | Android 12 / Android 12 Car                                                   |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Linux Kernel**                   | Linux 5.10.153                                                                |
+| **Linux Kernel**                   | Linux 5.10.168                                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Linux Kernel Toolchain**         | clang-r450784e                                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
@@ -61,7 +65,7 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **GCC Toolchain**                  | GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)           |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 08.05.00                                            |
+| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 08.06.07                                            |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Hardware Supported**             | AM62X-SK / AM62X-LP                                                           |
 +------------------------------------+-------------------------------------------------------------------------------+
