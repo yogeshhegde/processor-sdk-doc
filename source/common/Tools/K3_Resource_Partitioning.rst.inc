@@ -38,6 +38,16 @@ To start using this tool, follow these instructions:
 - Use this as the starting point for any customization. We do not recommend you
   to start from scratch, always load the baseline file **out/XYZ-platform-name.syscfg**
 
+.. note::
+
+  For devices that are not yet officially supported by the latest SysConfig tool,
+  K3 Resource Partitioning tool may provide patch files to support the device in 
+  SysConfig. 
+  
+  Run the **sysconfig-deviceData-update script** 
+  ``./scripts/sysconfig-deviceData-update.sh <soc> 
+  --sysconfig_dir=/path/to/sysconfig/installation`` to patch the SysConfig tool.
+
 Usage
 -----
 
@@ -60,7 +70,7 @@ describes the resources allocated to it. All the NAVSS resources are organized
 in different **groups**, where user can specify the required **count** for each
 resource. The tool automatically allocates the resources taking into consideration
 all the counts for all the hosts. Apart from the resource allocation, the tool
-also has an option to configure different **host capabilities**. Click on the**?**
+also has an option to configure different **host capabilities**. Click on the **?**
 sign next to the host name to read the detailed documentation for that host module.
 
 Review resource allocation
@@ -132,27 +142,29 @@ This tool generates different files which have the RM board config data, QoS
 configuration and firewall configuration. Following table describes how to use
 these files:
 
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-|            Filename            |    Used by    |       Output destination        |                                Comments                                |
-+================================+===============+=================================+========================================================================+
-| rm-cfg.c                       | k3-image-gen  | soc/<soc>/<profile>/            | e.g. - k3-image-gen/soc/j721e/evm/rm-cfg.c                             |
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-| sysfw_img_cfg.h                | k3-image-gen  | soc/<soc>/<profile>             | e.g. - k3-image-gen/soc/j721e/evm/sysfw_img_cfg.h                      |
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-| <soc>-qos-config.c             | U-boot        | Not yet supported               |                                                                        |
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-| <soc>-qos-config.c             | SBL           | Not yet supported               |                                                                        |
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-| <soc>-firewall-config.c        | U-boot        | Not yet supported               |                                                                        |
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-| <soc>-firewall-config.c        | SBL           | Not yet supported               |                                                                        |
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-| board-config.c                 | PDK sciclient | packages/ti/drv/sciclient/V<X>/ | e.g. - pdk/packages/ti/drv/sciclient/V1/board-config.c                 |
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
-| sciclient_defaultBoardcfg_rm.c | PDK sciclient | packages/ti/drv/sciclient/V<X>/ | e.g. - pdk/packages/ti/drv/sciclient/V1/sciclient_defaultBoardcfg_rm.c |
-+--------------------------------+---------------+---------------------------------+------------------------------------------------------------------------+
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+|            Filename            |    Used by    |       Output destination             |                                Comments                                    |
++================================+===============+======================================+============================================================================+
+| rm-cfg.c                       | k3-image-gen  | soc/<soc>/<profile>/                 | e.g. - k3-image-gen/soc/j721e/evm/rm-cfg.c                                 |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+| tifs-rm-cfg.c                  | k3-image-gen  | soc/<soc>/<profile>/                 | e.g. - k3-image-gen/soc/j784s4/evm/tifs-rm-cfg.c                           |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+| sysfw_img_cfg.h                | k3-image-gen  | soc/<soc>/<profile>                  | e.g. - k3-image-gen/soc/j721e/evm/sysfw_img_cfg.h                          |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+| <soc>-qos-config.c             | U-boot        | Not yet supported                    |                                                                            |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+| <soc>-qos-config.c             | SBL           | Not yet supported                    |                                                                            |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+| <soc>-firewall-config.c        | U-boot        | Not yet supported                    |                                                                            |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+| <soc>-firewall-config.c        | SBL           | Not yet supported                    |                                                                            |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+| sciclient_defaultBoardcfg.c    | PDK sciclient | packages/ti/drv/sciclient/soc/V<X>/  | e.g. - pdk/packages/ti/drv/sciclient/soc/V1/sciclient_defaultBoardcfg.c    |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
+| sciclient_defaultBoardcfg_rm.c | PDK sciclient | packages/ti/drv/sciclient/soc/V<X>/  | e.g. - pdk/packages/ti/drv/sciclient/soc/V1/sciclient_defaultBoardcfg_rm.c |
++--------------------------------+---------------+--------------------------------------+----------------------------------------------------------------------------+
 
 Troubleshooting
 ---------------
@@ -193,6 +205,8 @@ Directory structure
 - **data** - This contains the JSON objects that the tool uses to populate the
   UI items with SoC specific data. Many of these are auto generated using the
   parsing scripts.
+- **deviceData** - This contains SysConfig patch files for devices that are
+  not yet officially supported in the SysConfig Tool.
 
 Updating the device data
 ^^^^^^^^^^^^^^^^^^^^^^^^
