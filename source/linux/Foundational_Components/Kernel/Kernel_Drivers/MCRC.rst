@@ -129,11 +129,13 @@ The following code is for user-space application to access mcrc engine
 
     #include <unistd.h>
     #include <stdio.h>
+    #include <stdlib.h>
     #include <sys/socket.h>
     #include <linux/if_alg.h>
     #include <string.h>
 
-    #define BUFFER_SIZE  8192
+    #define BUFFER_SIZE 4096
+    #define SECTOR 4096
 
     int main (int argc, char **argv) {
 
@@ -164,11 +166,17 @@ The following code is for user-space application to access mcrc engine
         }
 
         FILE* file;
-        unsigned char buffer[BUFFER_SIZE];
+        unsigned char *buffer;
+        if(posix_memalign((void *)&buffer, SECTOR, BUFFER_SIZE)) {
+            perror("posix_memalign failed");
+            return -1;
+        }
+
         file = fopen(argv[1], "rb");
         if(file == NULL)
         {
             printf("An error occured while opening file: %s\n", argv[1]);
+            free(buffer);
             return -1;
         }
 
@@ -179,18 +187,24 @@ The following code is for user-space application to access mcrc engine
             {
                 printf("An error occurred while accessing the file: %s\n", argv[1]);
                 fclose(file);
-                return 0;
+                free(buffer);
+                return -1;
             }
 
-	    if (send(desc[1], buffer, count, MSG_MORE) != count)
-		return -1;
+            if (send(desc[1], buffer, count, MSG_MORE) != count) {
+                free(buffer);
+                return -1;
+            }
         }
 
         long int crc64 = 0x0000000000000000;
-        if(read(desc[1], &crc64, 8) != 8)
+        if(read(desc[1], &crc64, 8) != 8) {
+            free(buffer);
             return -1;
+        }
 
         printf("0x%llx\n", crc64);
+        free(buffer);
         return 0;
     }
 
