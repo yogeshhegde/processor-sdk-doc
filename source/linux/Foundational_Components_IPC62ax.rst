@@ -2,15 +2,15 @@
 
 .. _foundational-components-ipc:
 
-IPC for AM62x
-=============
+IPC for AM62ax
+==============
 
-The AM62x processors have Cortex-M4F and Cortex-R5F subsystems in addition to
-a Quad core Cortex-A53 subsystem. Please refer to the AM62x Technical Reference Manual for details.
+The AM62ax processors have Cortex-R5F and C7x DSP subsystems in addition to
+a Quad core Cortex-A53 subsystem. Please refer to the AM62ax Technical Reference Manual for details.
 
-This article is geared toward AM62x users that are running Linux on the Cortex
+This article is geared toward AM62ax users that are running Linux on the Cortex
 A53 cores. The goal is to help users understand how to establish IPC communication
-with the M4F and R5F cores.
+with the C7x DSP and R5F cores.
 
 There are many facets to this task: building, loading, debugging, memory
 sharing, etc. This article intends to take incremental steps toward
@@ -21,29 +21,29 @@ Software Dependencies to Get Started
 
 Prerequisites
 
--  Processor SDK Linux for AM62x |__SDK_DOWNLOAD_URL__|.
+-  Processor SDK Linux for AM62ax |__SDK_DOWNLOAD_URL__|.
 -  `Processor SDK MCU+ for
-   AM62x <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62X>`__
+   AM62ax <https://www.ti.com/tool/download/MCU-PLUS-SDK-AM62AX>`__
 
 .. note::
    Please be sure that you have the same version number
    for both Processor SDK RTOS and Linux.
 
 Please refer to the MCU+SDK documentation, section "Developer Guides" -> "Understanding
-inter-processor communication (IPC)" for M4F IPC architecture and builds.
+inter-processor communication (IPC)" for IPC architecture and builds.
 
-Typical Boot Flow on AM62x for ARM Linux users
-----------------------------------------------
+Typical Boot Flow on AM62ax for ARM Linux users
+-----------------------------------------------
 
-AM62x SOC's have multiple processor cores - Cortex-A53, Cortex-R5F and Cortex-M4F ARM cores.
-The A53 typically runs a HLOS like Linux/Android. The M4F and R5F remote cores run No-OS
+AM62ax SOC's have multiple processor cores - Cortex-A53, Cortex-R5F and DSP cores.
+The A53 typically runs a HLOS like Linux/Android. The C7x and R5F remote cores run No-OS
 or RTOS (FreeRTOS etc). In normal operation, the boot loader (U-Boot/SPL) boots
-and loads the A53 with the HLOS. The A53 then boots the M4F core.
+and loads the A53 with the HLOS. The A53 then boots the C7x and R5F cores.
 
-The R5F firmware runs device manager software (SciServer) along
-with a demo IPC application.
+The wakeup R5F firmware runs device manager software (SciServer) along
+with vision apps application.
 
-Unlike M4F firmware, The R5F firmware is integrated as part of tispl.bin binary
+The wakeup R5F firmware is integrated as part of tispl.bin binary
 and is started early in the boot process by u-boot R5 SPL right after DDR initialization.
 
 
@@ -51,7 +51,7 @@ Getting Started with IPC Linux Examples
 ---------------------------------------
 
 The figure below illustrates how the Remoteproc/RPMsg driver from the ARM Linux
-kernel communicates with the IPC driver on a remote processor (e.g. M4F)
+kernel communicates with the IPC driver on a remote processors (e.g. R5F)
 running RTOS.
 
 .. Image:: /images/LinuxIPC_with_RTOS_Slave.png
@@ -60,33 +60,30 @@ In order to setup IPC on remote cores, we provide some pre-built examples
 in the SDK package that can be run from ARM Linux.
 
 The remoteproc driver is hard-coded to look for specific files when
-loading the M4F core. Here are the files it looks for on an AM62x device:
+loading the R5F and C7x cores. Here are the files it looks for on an AM62ax device:
 
 ::
 
-	+------------------+-----------------+--------------------+----------------------+
-	| Core Name        | RemoteProc Name | Description        | Firmware File Name   |
-	+==================+=================+====================+======================+
-	| M4F              | 5000000.m4f     | M4F core           | am62-mcu-m4f0_0-fw   |
-	+------------------+-----------------+--------------------+----------------------+
-	| R5F              | 78000000.r5f    | R5F core           | am62-main-r5f0_0-fw  |
-	+------------------+-----------------+--------------------+----------------------+
+	+------------------+-----------------+----------------------+----------------------+
+	| Core Name        | RemoteProc Name | Description          | Firmware File Name   |
+	+==================+=================+======================+======================+
+	| C7x              | 7e000000.c7x    | C7x core             | am62a-c71_0-fw       |
+	+------------------+-----------------+----------------------+----------------------+
+	| R5F	           | 79000000.r5f    | R5F core(MCU domain) | am62a-mcu-r5f0_0-fw  |
+	+------------------+-----------------+----------------------+----------------------+
 
 Generally on a target file system the above files are soft linked to the
 intended executable FW files:
 
 ::
 
-	root@am62xx-evm:/opt/ltp# ls -l /lib/firmware
-	lrwxrwxrwx 1 root root      72 Sep 25  2022 am62-mcu-m4f0_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu2_0_release_strip.xer5f
-	lrwxrwxrwx 1 root root      72 Sep 25  2022 am62-main-r5f0_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_testb_mcu1_0_release_strip.xer5f
+	root@am62axx-evm:~# ls -l /lib/firmware/
+	lrwxrwxrwx 1 root root      60 Feb  2  2023 am62a-c71_0-fw -> /lib/firmware/pdk-ipc/ipc_echo_test_c7x_1_release_strip.xe71
+	lrwxrwxrwx 1 root root      41 Feb  2  2023 am62a-mcu-r5f0_0-fw -> /lib/firmware/pdk-ipc/am62a-mcu-r5f0_0-fw
 
-However, unlike M4F remoteproc driver which boots the M4F, the R5F remoteproc driver doesn't boot the R5F instead it late
-attaches to already running R5F firmware binary which is started early in the boot process as mentinoed in previous section.
+For updating wakeup (DM) R5F firmware binary, tispl.bin needs to be recompiled with the new firmware binary as mentioned below :
 
-For updating R5F firmware binary, tispl.bin needs to be recompiled with the new firmware binary as mentioned below :
-
-#. Go to linux installer and replace the existing R5F firmware binary with the new one
+#. Go to linux installer and replace the existing R5F wakeup (DM) firmware binary with the new one
 
 ::
 
@@ -117,46 +114,50 @@ First, identify the remotproc node associated with the remote core:
 
 ::
 
-	root@am62xx-evm:~# head /sys/class/remoteproc/remoteproc*/name
+	root@am62axx-evm:~# head /sys/class/remoteproc/remoteproc*/name   
 	==> /sys/class/remoteproc/remoteproc0/name <==
-	5000000.m4fss
+	7e000000.dsp
 
 	==> /sys/class/remoteproc/remoteproc1/name <==
-	78000000.r5f
+	79000000.r5f
 
 	==> /sys/class/remoteproc/remoteproc2/name <==
-	30074000.pru
-
-	==> /sys/class/remoteproc/remoteproc3/name <==
-	30078000.pru
+	78000000.r5f
 
 
-Then, use the sysfs interface to stop the remote core. For example, to stop the M4F
+Then, use the sysfs interface to stop the remote core. For example, to stop the C71x
 
 ::
 
-	root@am62xx-evm:~# echo stop > /sys/class/remoteproc/remoteproc0/state
-	[  440.832317] remoteproc remoteproc0: stopped remote processor 5000000.m4fss
+	root@am62axx-evm:~# echo stop > /sys/class/remoteproc/remoteproc0/state 
+	[   61.497327] remoteproc remoteproc0: stopped remote processor 7e000000.dsp
 
 If needed, update the firmware symbolic link to point to a new firmware:
 
 ::
 
-	root@am62xx-evm:/lib/firmware# ln -sf /lib/firmware/pdk-ipc/ipc_echo_baremetal_test_mcu2_0_release_strip.xer5f am62-mcu-m4f0_0-fw
+	root@am62xx-evm:/lib/firmware# ln -sf /lib/firmware/pdk-ipc/ipc_echo_test_c7x_1_release_strip.xe71 am62a-c71_0-fw
 
 Finally, use the sysfs interface to start the remote core:
 
 ::
 
-	root@am62xx-evm:~# echo start > /sys/class/remoteproc/remoteproc0/state
-	[  450.930070] remoteproc remoteproc0: powering up 5000000.m4fss
-	[  450.936112] remoteproc remoteproc0: Booting fw image am62-mcu-m4f0_0-fw, size 78960
-	[  450.960447]  remoteproc0#vdev0buffer: assigned reserved memory node m4f-dma-memory@9cb00000
-	[  450.969408] virtio_rpmsg_bus virtio0: rpmsg host is online
-	[  450.975089] virtio_rpmsg_bus virtio0: creating channel ti.ipc4.ping-pong addr 0xd
-	[  450.975850]  remoteproc0#vdev0buffer: registered virtio0 (type 7)
-	[  450.982840] virtio_rpmsg_bus virtio0: creating channel rpmsg_chrdev addr 0xe
-	[  450.988824] remoteproc remoteproc0: remote processor 5000000.m4fss is now up
+	root@am62axx-evm:~# echo start > /sys/class/remoteproc/remoteproc0/state                                                           
+	[   66.768814] remoteproc remoteproc0: powering up 7e000000.dsp
+	[   66.776893] remoteproc remoteproc0: Booting fw image am62a-c71_0-fw, size 2100144
+	[   66.785144] k3-dsp-rproc 7e000000.dsp: booting DSP core using boot addr = 0x9a000000
+	[   66.836110]  remoteproc0#vdev0buffer: assigned reserved memory node c7x-dma-memory@99800000
+	[   66.845052] virtio_rpmsg_bus virtio2: rpmsg host is online
+	[   66.850813] virtio_rpmsg_bus virtio2: creating channel ti.ipc4.ping-pong addr 0xd
+	[   66.851203]  remoteproc0#vdev0buffer: registered virtio2 (type 7)
+	[   66.858507] virtio_rpmsg_bus virtio2: creating channel rpmsg_chrdev addr 0xe
+	[   66.864574] remoteproc remoteproc0: remote processor 7e000000.dsp is now up
+
+.. note::
+
+   The RemoteProc driver does not support a graceful shutdown of R5 and DSP cores
+   in the current Linux Processor SDK. For now, it is recommended to reboot the
+   board when loading new binaries into an R5F or DSP core.
 
 DMA memory Carveouts
 --------------------
@@ -172,25 +173,32 @@ See the devicetree bindings documentation for more details: `Documentation/devic
 	+------------------+--------------------+---------+----------------------------+
 	| Memory Section   | Physical Address   | Size    | Description                |
 	+==================+====================+=========+============================+
-	| M4F Pool         | 0x9cb00000         | 1MB     | IPC (Virtio/Vring buffers) |
+	| C7x Pool         | 0x99800000         | 1MB     | IPC (Virtio/Vring buffers) |
 	+------------------+--------------------+---------+----------------------------+
-	| M4F Pool         | 0x9cc00000         | 14MB    | M4F externel code/data mem |
+	| C7x Pool         | 0x99900000         | 31MB    | C7x externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
-	| R5F Pool         | 0x9da00000         | 1MB     | IPC (Virtio/Vring buffers) |
+	| R5F(mcu) Pool    | 0x9b800000         | 1MB     | IPC (Virtio/Vring buffers) |
 	+------------------+--------------------+---------+----------------------------+
-	| R5F Pool         | 0x9db00000         | 12MB    | R5F externel code/data mem |
+	| R5F(mcu) Pool    | 0x9b900000         | 15MB    | R5F externel code/data mem |
+	+------------------+--------------------+---------+----------------------------+
+	| R5F(wkup) Pool   | 0x9c800000         | 1MB     | IPC (Virtio/Vring buffers) |
+	+------------------+--------------------+---------+----------------------------+
+	| R5F(wkup) Pool   | 0x9c900000         | 30MB    | R5F externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
 
-	root@am62xx-evm:~# dmesg | grep Reserved
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009c800000, size 3 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009cb00000, size 1 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009cc00000, size 14 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009da00000, size 1 MiB
-	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009db00000, size 12 MiB
+	root@am62axx-evm:/lib/firmware# dmesg | grep Reserved
+	[    0.000000] Reserved memory: created DMA memory pool at 0x0000000099800000, size 1 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x0000000099900000, size 30 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009b800000, size 1 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009b900000, size 15 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009c800000, size 1 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x000000009c900000, size 30 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0300000, size 32 MiB
+	[    0.000000] Reserved memory: created DMA memory pool at 0x00000000ae300000, size 288 MiB
 	[    0.000000] cma: Reserved 512 MiB at 0x00000000dd000000
 
 .. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-5.10.y'
+          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=ti-linux-5.10.y'
 
 By default the first 1MB of each pool is used for the Virtio and Vring buffers
 used to communicate with the remote processor core. The remaining carveout is 
@@ -213,7 +221,7 @@ Changing the Memory Map
 The address and size of the DMA memory carveouts needs to match with the MCU
 M4F and R5F external memory section sizes in their respective linker mapfiles.
 
-arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi
+arch/arm64/boot/dts/ti/k3-am62a7-sk.dts
 
 ::
 
@@ -222,27 +230,39 @@ arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi
 			#size-cells = <2>;
 			ranges;
 
-			mcu_m4fss_dma_memory_region: m4f-dma-memory@9cb00000 {
-				compatible = "shared-dma-pool";
-				reg = <0x00 0x9cb00000 0x00 0x100000>;
-				no-map;
-			};
-
-			mcu_m4fss_memory_region: m4f-memory@9cc00000 {
-				compatible = "shared-dma-pool";
-				reg = <0x00 0x9cc00000 0x00 0xe00000>;
-				no-map;
-			};
-
-                	wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9da00000 {
+                	wkup_r5fss0_core0_dma_memory_region: r5f-dma-memory@9c800000 {
                         	compatible = "shared-dma-pool";
-                        	reg = <0x00 0x9da00000 0x00 0x00100000>;
+                        	reg = <0x00 0x9c800000 0x00 0x100000>;
                         	no-map;
                 	};
 
-                	wkup_r5fss0_core0_memory_region: r5f-memory@9db00000 {
+                	wkup_r5fss0_core0_memory_region: r5f-dma-memory@9c900000 {
                         	compatible = "shared-dma-pool";
-                        	reg = <0x00 0x9db00000 0x00 0x00c00000>;
+                        	reg = <0x00 0x9c900000 0x00 0x01e00000>;
+                        	no-map;
+                	};
+
+                	mcu_r5fss0_core0_dma_memory_region: r5f-dma-memory@9b800000 {
+                        	compatible = "shared-dma-pool";
+                        	reg = <0x00 0x9b800000 0x00 0x100000>;
+                        	no-map;
+                	};
+
+                	mcu_r5fss0_core0_memory_region: r5f-dma-memory@9b900000 {
+                        	compatible = "shared-dma-pool";
+                        	reg = <0x00 0x9b900000 0x00 0x0f00000>;
+                        	no-map;
+                	};
+
+                	c7x_0_dma_memory_region: c7x-dma-memory@99800000 {
+                        	compatible = "shared-dma-pool";
+                        	reg = <0x00 0x99800000 0x00 0x100000>;
+                        	no-map;
+                	};
+
+                	c7x_0_memory_region: c7x-memory@99900000 {
+                        	compatible = "shared-dma-pool";
+                        	reg = <0x00 0x99900000 0x00 0x01efffff>;
                         	no-map;
                 	};
 	};
@@ -250,8 +270,8 @@ arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi
 
 .. warning:: Be careful not to overlap carveouts!
 
-.. note:: The DT fragments are provided as a reference and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
-          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-5.10.y'
+.. note:: The reserved memory sizes listed above are provided as a reference only and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
+          'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62a7-sk.dts?h=ti-linux-5.10.y'
 
 RPMsg Char Driver
 -----------------
@@ -300,7 +320,7 @@ char driver usage from userspace. This library provides an easy means to
 identify and open rpmsg character devices created by the kernel rpmsg-char
 driver.
 
-This library support TI K3 family of devices (i.e AM65x, AM64x, AM62x, J721E, and
+This library support TI K3 family of devices (i.e AM65x, AM64x, AM62x, AM62ax, J721E, and
 J7200 SoCs).
 
 The library provides 4 basic APIs wrapping all the rpmsg char driver calls.
@@ -335,9 +355,11 @@ The below table lists the device enumerations as defined in the rpmsg_char_libra
 	+------------------+--------------------+---------+-----------------------------------+
 	| Enumeration ID   | Device Name        | Valid   | Description                       |
 	+==================+====================+=========+===================================+
-	| M4F_MCU0_0       | 5000000.m4f        | Yes     | M4F core in MCU Domain            |
-	+------------------+--------------------+---------+-----------------------------------+
 	| R5F_WKUP0_0      | 78000000.r5f       | Yes     | R5F core in Wakeup Domain         |
+	+------------------+--------------------+---------+-----------------------------------+
+	| R5F_MCU0_0       | 79000000.r5f       | Yes     | R5F core in MCU Domain            |
+	+------------------+--------------------+---------+-----------------------------------+
+	| DSP_c71_0        | 7e000000.dsp       | Yes     | DSP core in Main Domain            |
 	+------------------+--------------------+---------+-----------------------------------+
 
 RPMsg examples:
@@ -385,10 +407,10 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Usage: rpmsg_char_simple [-r <rproc_id>] [-n <num_msgs>] [-d <rpmsg_dev_name] [-p <remote_endpt]
 			Defaults: rproc_id: 0 num_msgs: 100 rpmsg_dev_name: NULL remote_endpt: 14
 
-	# M4F<->A53_0 IPC
-	root@am62xx-evm:~# rpmsg_char_simple -r 9 -n 10
-	Created endpt device rpmsg-char-9-989, fd = 3 port = 1024
-	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 9 ...
+	# MCU R5F<->A53_0 IPC
+	root@am62axx-evm:~# rpmsg_char_simple -r0 -n10
+	Created endpt device rpmsg-char-0-1069, fd = 3 port = 1024
+	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 0 ...
 
 	Sending message #0: hello there 0!
 	Receiving message #0: hello there 0!
@@ -411,11 +433,13 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Sending message #9: hello there 9!
 	Receiving message #9: hello there 9!
 
-	Communicated 10 messages successfully on rpmsg-char-9-989
+	Communicated 10 messages successfully on rpmsg-char-0-1069
 
-	# R5f<->A53_0 IPC
-	root@am62xx-evm:~# rpmsg_char_simple -r 15 -n 10
-	Created endpt device rpmsg-char-15-1506, fd = 3 port = 1024
+	TEST STATUS: PASSED
+
+	# for DM R5F<->A53 IPC, use the below command. For remote proc ids, please refer to : 'https://git.ti.com/cgit/rpmsg/ti-rpmsg-char/tree/include/rproc_id.h'
+	root@am62axx-evm:~# rpmsg_char_simple -r15 -p21 -n10
+	Created endpt device rpmsg-char-15-127176, fd = 3 port = 1024
 	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 15 ...
 
 	Sending message #0: hello there 0!
@@ -439,10 +463,39 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 	Sending message #9: hello there 9!
 	Receiving message #9: hello there 9!
 
-	Communicated 10 messages successfully on rpmsg-char-15-1506
+	Communicated 10 messages successfully on rpmsg-char-15-127176
 
 	TEST STATUS: PASSED
-	root@am62xx-evm:~#
+
+	# C7x<->A53_0 IPC
+	root@am62axx-evm:~# rpmsg_char_simple -r8 -p21 -n10
+	Created endpt device rpmsg-char-8-127180, fd = 3 port = 1024
+	Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 8 ...
+
+	Sending message #0: hello there 0!
+	Receiving message #0: hello there 0!
+	Sending message #1: hello there 1!
+	Receiving message #1: hello there 1!
+	Sending message #2: hello there 2!
+	Receiving message #2: hello there 2!
+	Sending message #3: hello there 3!
+	Receiving message #3: hello there 3!
+	Sending message #4: hello there 4!
+	Receiving message #4: hello there 4!
+	Sending message #5: hello there 5!
+	Receiving message #5: hello there 5!
+	Sending message #6: hello there 6!
+	Receiving message #6: hello there 6!
+	Sending message #7: hello there 7!
+	Receiving message #7: hello there 7!
+	Sending message #8: hello there 8!
+	Receiving message #8: hello there 8!
+	Sending message #9: hello there 9!
+	Receiving message #9: hello there 9!
+
+	Communicated 10 messages successfully on rpmsg-char-8-127180
+
+	TEST STATUS: PASSED
 
 .. rubric:: RPMsg kernel space example
 
@@ -451,7 +504,7 @@ samples/rpmsg/rpmsg_client_sample.c
 
 Build the kernel module rpmsg_client_sample:
  .. note::
-	rpmsg_client_sample comes prepackaged in prebuilt wic image (tisdk-default-image-am62xx-evm.wic.xz)
+	rpmsg_client_sample comes prepackaged in prebuilt wic image (tisdk-default-image-am62axx-evm.wic.xz)
 	that comes with the release and below example can be directly run (Step 5) if using this prebuilt wic image
 
  #. Set up the kernel config to build the rpmsg client sample. Use menuconfig to
@@ -461,7 +514,7 @@ Build the kernel module rpmsg_client_sample:
 
     $ export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin:$PATH
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- distclean
-    $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- tisdk_am62xx-evm_defconfig
+    $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- tisdk_am62axx-evm_defconfig
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
 
 #. Make the kernel and modules. Multithreading with –j is optional:
@@ -471,7 +524,7 @@ Build the kernel module rpmsg_client_sample:
     $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- -j8
 
 Linux RPMsg can be tested with prebuilt binaries that are packaged in the
-"tisdk-default-image-am62xx-evm" filesystem:
+"tisdk-default-image-am62ax-evm" filesystem:
 
 #. Copy the Linux RPMsg kernel driver from
    <Linux_SDK>/board-support/linux-x.x.x/samples/rpmsg/rpmsg_client_sample.ko
@@ -485,27 +538,41 @@ Linux RPMsg can be tested with prebuilt binaries that are packaged in the
 
 ::
 
-	 root@am62xx-evm:~# modprobe rpmsg_client_sample count=10
-	 [18124.495957] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: new channel: 0x400 -> 0xd!
-	 [18124.504422] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 1 (src: 0xd)
-	 [18124.505183] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: new channel: 0x400 -> 0xd!
-	 [18124.512811] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 2 (src: 0xd)
-	 [18124.529509] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 3 (src: 0xd)
-	 [18124.537888] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 4 (src: 0xd)
-	 [18124.547779] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 5 (src: 0xd)
-	 [18124.556072] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 1 (src: 0xd)
-	 [18124.564376] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 6 (src: 0xd)
-	 [18124.572689] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 2 (src: 0xd)
-	 [18124.580989] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 7 (src: 0xd)
-	 [18124.589273] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 3 (src: 0xd)
-	 [18124.597566] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 8 (src: 0xd)
-	 [18124.605844] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 4 (src: 0xd)
-	 [18124.614134] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 9 (src: 0xd)
-	 [18124.622557] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 5 (src: 0xd)
-	 [18124.630865] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
-	 [18124.639227] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: goodbye!
-	 [18124.646048] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 6 (src: 0xd)
-	 [18124.654540] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 7 (src: 0xd)
-	 [18124.662915] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 8 (src: 0xd)
-	 [18124.671265] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 9 (src: 0xd)
-	 [18124.679645] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 10
+	root@am62axx-evm:/lib/firmware# modprobe rpmsg_client_sample count=10
+	[ 2081.593551] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: new channel: 0x400 -> 0xd!
+	[ 2081.602005] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 1 (src: 0xd)
+	[ 2081.602092] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: new channel: 0x400 -> 0xd!
+	[ 2081.612625] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 2 (src: 0xd)
+	[ 2081.619039] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: new channel: 0x400 -> 0xd!
+	[ 2081.628769] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 1 (src: 0xd)
+	[ 2081.644037] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 3 (src: 0xd)
+	[ 2081.655179] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 1 (src: 0xd)
+	[ 2081.663550] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 2 (src: 0xd)
+	[ 2081.671991] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 4 (src: 0xd)
+	[ 2081.680333] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 2 (src: 0xd)
+	[ 2081.688807] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 3 (src: 0xd)
+	[ 2081.697141] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 5 (src: 0xd)
+	[ 2081.705553] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 3 (src: 0xd)
+	[ 2081.713878] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 4 (src: 0xd)
+	[ 2081.722297] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 6 (src: 0xd)
+	[ 2081.730617] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 4 (src: 0xd)
+	[ 2081.739021] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 5 (src: 0xd)
+	[ 2081.747344] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 7 (src: 0xd)
+	[ 2081.755746] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 5 (src: 0xd)
+	[ 2081.764092] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 6 (src: 0xd)
+	[ 2081.772514] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 8 (src: 0xd)
+	[ 2081.780834] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 6 (src: 0xd)
+	[ 2081.789263] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 7 (src: 0xd)
+	[ 2081.797633] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 9 (src: 0xd)
+	[ 2081.806046] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 7 (src: 0xd)
+	[ 2081.814375] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 8 (src: 0xd)
+	[ 2081.822851] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
+	[ 2081.831239] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: goodbye!
+	[ 2081.838223] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 8 (src: 0xd)
+	[ 2081.846559] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 9 (src: 0xd)
+	[ 2081.855040] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 9 (src: 0xd)
+	[ 2081.863369] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
+	[ 2081.871858] rpmsg_client_sample virtio1.ti.ipc4.ping-pong.-1.13: goodbye!
+	[ 2081.878713] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
+	[ 2081.887258] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: goodbye!
+

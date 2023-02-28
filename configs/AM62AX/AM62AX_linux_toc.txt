@@ -77,7 +77,7 @@ linux/Foundational_Components/Tools/Development_Tools
 linux/Foundational_Components/Tools/Pin_Mux_Tools
 linux/Foundational_Components/Tools/Flash_via_DFU
 linux/Foundational_Components/Tools/Flash_via_UART
-linux/Foundational_Components_IPC62x
+linux/Foundational_Components_IPC62ax
 linux/Foundational_Components_Machine_Learning
 linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
