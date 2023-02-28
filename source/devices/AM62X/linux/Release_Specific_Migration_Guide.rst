@@ -10,6 +10,14 @@ of the Processor SDK Linux AM62X.
 Processor SDK Linux AM62X 08.xx Releases
 ========================================
 
+Processor SDK Sitara 08.06
+------------------------------
+- This is the fourth release of Processor SDK Linux AM62X on 2021 LTS 5.10 kernel, 2021.01 U-Boot
+- ATF 2.8+
+- OPTEE 3.20
+- Yocto Dunfell/3.1
+- Platforms Supported : AM62x (GP, HS-FS, HS-SE)
+
 Processor SDK 08.05
 -------------------
 - This is the third release of Processor SDK Linux AM62X on 2021 LTS 5.10 kernel, 2021.01 U-Boot
