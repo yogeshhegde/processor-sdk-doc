@@ -417,7 +417,7 @@ Build U-Boot
 
         *on GP*
 
-       .. code-block:: console
+        .. code-block:: console
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_evm_r5_defconfig O=<output directory>/r5
@@ -429,9 +429,11 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_evm_a72_defconfig O=<output directory>/a72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
 
-	*on HS*
+        |
 
-       .. code-block:: console
+	    *on HS*
+
+        .. code-block:: console
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_hs_evm_r5_defconfig O=<output directory>/r5
@@ -444,9 +446,11 @@ Build U-Boot
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_hs_evm_a72_defconfig O=<output directory>/a72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin.signed TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin.signed DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=<output directory>/a72
 
-	*on HS-FS*
+        |
 
-       .. code-block:: console
+	    *on HS-FS*
+
+        .. code-block:: console
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_hs_evm_r5_defconfig O=<output directory>/r5
