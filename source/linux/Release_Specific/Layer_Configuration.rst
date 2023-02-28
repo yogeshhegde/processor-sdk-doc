@@ -13,11 +13,11 @@ meta layers. These are the <config> used in the command:
 
     The following config files are located in the **configs/processor-sdk** directory of the `oe-layersetup git repo <https://git.ti.com/cgit/arago-project/oe-layersetup/>`_.
 
-    +----------------------------------------+-----------------------------------+------------------------------------------------------+
-    | Config File                            | Description                       | Supported machines/platforms                         |
-    +========================================+===================================+======================================================+
-    | processor-sdk-08.05.00.21-config.txt   | Processor SDK 08.05.00.21 Release | am64xx-evm (Including hs-fs 2.0)                     |
-    +----------------------------------------+-----------------------------------+------------------------------------------------------+
+    +----------------------------------------+-----------------------------------+---------------------------------+
+    | Config File                            | Description                       | Supported machines/platforms    |
+    +========================================+===================================+=================================+
+    | processor-sdk-08.06.00-config.txt      | Processor SDK 08.06.00.42 Release | am64xx-evm                      |
+    +----------------------------------------+-----------------------------------+---------------------------------+
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
