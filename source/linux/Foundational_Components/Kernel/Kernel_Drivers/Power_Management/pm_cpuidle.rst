@@ -13,116 +13,119 @@ C-state. Governor decides whether to continue in current state/
 transition to a different state. Current 'driver' is called to
 transition to the selected state.
 
-.. rubric:: Driver Features
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-AM335x supports two different C-states
+    The A53 cores on AM62x currently support only the Wait for Interrupt (WFI)
+    C-state. This state gets enabled by default in the CPUIdle driver without
+    requiring any additional DT configuration.
 
--  MPU WFI
--  MPU WFI + Clockdomain gating
+.. ifconfig:: CONFIG_part_family in ('AM335X_family', 'AM437X_family')
 
-AM437x supports two different C-states
+    .. rubric:: Driver Features
 
--  MPU WFI
--  MPU WFI + Clockdomain gating
+    AM335x supports two different C-states
 
-| 
+    -  MPU WFI
+    -  MPU WFI + Clockdomain gating
 
-.. rubric:: Source Location
+    AM437x supports two different C-states
 
-::
+    -  MPU WFI
+    -  MPU WFI + Clockdomain gating
 
-    arch/arm/mach-omap2/pm33xx-core.c
-    drivers/soc/ti/pm33xx.c
-    drivers/cpuidle/cpuidle-arm.c
+    .. rubric:: Source Location
 
-.. rubric:: Kernel Configuration Options
+        ::
+
+            arch/arm/mach-omap2/pm33xx-core.c
+            drivers/soc/ti/pm33xx.c
+            drivers/cpuidle/cpuidle-arm.c
+
+    .. rubric:: Kernel Configuration Options
+
+    The driver can be built into the kernel as a static module.
+
+    $ make menuconfig
+
+    Select CPU Power Management from the main menu.
+
+    ::
+
+        ...
+        ...
+        Boot options --->
+        CPU Power Management --->
+        Floating point emulation --->
+        ...
+
+    Select CPU Idle as shown here:
+
+    ::
+
+        ...
+        ...
+            CPU Frequency Scaling --->
+            CPU Idle --->
+        ...
+
+    All relevant options are listed below:
+
+    ::
+
+            [*] CPU idle PM support
+            [ ]   Support multiple cpuidle drivers
+            [*]   Ladder governor (for periodic timer tick)
+            -*-   Menu governor (for tickless system)
+                    ARM CPU Idle Drivers  ----
 
 
-The driver can be built into the kernel as a static module.
+        .. rubric:: DT Configuration
 
-$ make menuconfig
+        ::
 
-Select CPU Power Management from the main menu.
+            cpus {
+                    cpu: cpu0 {
+                            compatible = "arm,cortex-a9";
+                            enable-method = "ti,am4372";
+                            device-type = "cpu";
+                            reg = <0>;
 
-::
+                            cpu-idle-states = <&mpu_gate>;
+                    };
 
-       ...
-       ...
-       Boot options --->
-       CPU Power Management --->
-       Floating point emulation --->
-       ...
-
-Select CPU Idle as shown here:
-
-::
-
-       ...
-       ...
-           CPU Frequency Scaling --->
-           CPU Idle --->
-       ...
-
-All relevant options are listed below:
-
-::
-
-           [*] CPU idle PM support
-           [ ]   Support multiple cpuidle drivers
-           [*]   Ladder governor (for periodic timer tick)
-           -*-   Menu governor (for tickless system)
-                 ARM CPU Idle Drivers  ----
-
-| 
-
-.. rubric:: DT Configuration
-
-::
-
-    cpus {
-            cpu: cpu0 {
-                    compatible = "arm,cortex-a9";
-                    enable-method = "ti,am4372";
-                    device-type = "cpu";
-                    reg = <0>;
-
-                    cpu-idle-states = <&mpu_gate>;
+                    idle-states {
+                            compatible = "arm,idle-state";
+                            entry-latency-us = <40>;
+                            exit-latency-us = <100>;
+                            min-residency-us = <300>;
+                            local-timer-stop;
+                    };
             };
 
-            idle-states {
-                    compatible = "arm,idle-state";
-                    entry-latency-us = <40>;
-                    exit-latency-us = <100>;
-                    min-residency-us = <300>;
-                    local-timer-stop;
-            };
-    };
+        .. rubric:: Driver Usage
 
-.. rubric:: Driver Usage
+        CPUIdle requires no intervention by the user for it to work, it just
+        works transparently in the background. By default the ladder governor is
+        selected.
 
-CPUIdle requires no intervention by the user for it to work, it just
-works transparently in the background. By default the ladder governor is
-selected.
+        It is possible to get statistics about the different C-states during
+        runtime, such as how long each state is occupied.
 
-It is possible to get statistics about the different C-states during
-runtime, such as how long each state is occupied.
+        ::
 
-::
-
-    # ls -l /sys/devices/system/cpu/cpu0/cpuidle/state0/
-    -r--r--r--    1 root     root         4096 Jan  1 00:02 desc
-    -r--r--r--    1 root     root         4096 Jan  1 00:02 latency
-    -r--r--r--    1 root     root         4096 Jan  1 00:02 name
-    -r--r--r--    1 root     root         4096 Jan  1 00:02 power
-    -r--r--r--    1 root     root         4096 Jan  1 00:02 time
-    -r--r--r--    1 root     root         4096 Jan  1 00:02 usage
-    # ls -l /sys/devices/system/cpu/cpu0/cpuidle/state1/
-    -r--r--r--    1 root     root         4096 Jan  1 00:05 desc
-    -r--r--r--    1 root     root         4096 Jan  1 00:05 latency
-    -r--r--r--    1 root     root         4096 Jan  1 00:03 name
-    -r--r--r--    1 root     root         4096 Jan  1 00:05 power
-    -r--r--r--    1 root     root         4096 Jan  1 00:05 time
-    -r--r--r--    1 root     root         4096 Jan  1 00:02 usage
-
+            # ls -l /sys/devices/system/cpu/cpu0/cpuidle/state0/
+            -r--r--r--    1 root     root         4096 Jan  1 00:02 desc
+            -r--r--r--    1 root     root         4096 Jan  1 00:02 latency
+            -r--r--r--    1 root     root         4096 Jan  1 00:02 name
+            -r--r--r--    1 root     root         4096 Jan  1 00:02 power
+            -r--r--r--    1 root     root         4096 Jan  1 00:02 time
+            -r--r--r--    1 root     root         4096 Jan  1 00:02 usage
+            # ls -l /sys/devices/system/cpu/cpu0/cpuidle/state1/
+            -r--r--r--    1 root     root         4096 Jan  1 00:05 desc
+            -r--r--r--    1 root     root         4096 Jan  1 00:05 latency
+            -r--r--r--    1 root     root         4096 Jan  1 00:03 name
+            -r--r--r--    1 root     root         4096 Jan  1 00:05 power
+            -r--r--r--    1 root     root         4096 Jan  1 00:05 time
+            -r--r--r--    1 root     root         4096 Jan  1 00:02 usage
 
 
