@@ -135,12 +135,6 @@ Check if NAND partitions are visible in **mtdparts** command
 
     active partition: nand0,0 - (NAND.tiboot3) 0x00200000 @ 0x00000000
 
-Set the **dfu_alt_info** environment variable for DFU to NAND
-
-::
-
-    U-Boot # setenv dfu_alt_info ${dfu_alt_info_nand}
-
 Check that DFU can correctly see the NAND partition layout
 
 ::
@@ -173,13 +167,14 @@ Before writing we must erase at least the area to be written to.
     --OR erase entire chip--
     U-Boot # nand erase.chip
 
-Start DFU on the EVM.
-
-Plug the EVM to a PC via USB cable. At uboot prompt, run the following commands:
+Start DFU on the EVM. Plug the EVM to a PC via USB cable. At uboot prompt,
+run the following commands:
 
 ::
 
     U-Boot # env default -a -f
+
+Set the **dfu_alt_info** environment variable for DFU to NAND.
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
 
