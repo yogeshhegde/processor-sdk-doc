@@ -175,7 +175,7 @@ See the devicetree bindings documentation for more details: `Documentation/devic
 	+==================+====================+=========+============================+
 	| C7x Pool         | 0x99800000         | 1MB     | IPC (Virtio/Vring buffers) |
 	+------------------+--------------------+---------+----------------------------+
-	| C7x Pool         | 0x99900000         | 30MB    | C7x externel code/data mem |
+	| C7x Pool         | 0x99900000         | 31MB    | C7x externel code/data mem |
 	+------------------+--------------------+---------+----------------------------+
 	| R5F(mcu) Pool    | 0x9b800000         | 1MB     | IPC (Virtio/Vring buffers) |
 	+------------------+--------------------+---------+----------------------------+
