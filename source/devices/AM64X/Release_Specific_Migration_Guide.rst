@@ -10,6 +10,14 @@ of the Processor SDK Linux AM64X.
 Processor SDK Linux AM64X 08.xx Releases
 ========================================
 
+Processor SDK 08.06
+-------------------
+- This is the sixth release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
+- ATF 2.8+
+- OPTEE 3.20
+- Yocto Dunfell/3.1
+- Platforms Supported : AM64x SR2.0 (HS-FS, HS-SE ), AM64x (GP)
+  
 Processor SDK 08.05
 -----------------------
 - This is the fifth release on 2021 LTS 5.10 kernel, 2021.01 U-Boot
