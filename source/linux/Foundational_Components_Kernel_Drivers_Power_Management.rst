@@ -10,4 +10,4 @@ Power Management
    Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_smartreflex
    Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_suspend_resume
    Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_rtc_ddr
-
+   Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_sw_arch

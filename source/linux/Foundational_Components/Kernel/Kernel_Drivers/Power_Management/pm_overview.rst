@@ -27,6 +27,11 @@ The dynamic power management features enables on |__PART_FAMILY_DEVICE_NAMES__| 
 	#. DVFS
 	#. CPUIdle
 
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    #. Dynamic Frequency Scaling
+    #. CPUIdle
+
 .. rubric:: Idle Power Management Techniques
 
 This ensures the system is drawing minimum power when in idle state i.e
