@@ -24,6 +24,7 @@ to create the embedded system from “scratch” :
 -  Other components needed to build an embedded system that don’t fit neatly into one of the above buckets
 -  Reference Examples, benchmarks
 
+This release supports High Security - Field Securable (HS-FS) devices. For migration guide and other info, refer :ref:`HS-Migration-Guide`
 
 Licensing
 =========
