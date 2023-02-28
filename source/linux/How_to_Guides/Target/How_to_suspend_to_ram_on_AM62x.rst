@@ -14,6 +14,7 @@ Supported Low power mode:
 
 #. **Suspend to RAM (S2R):** All power domains are off except for Wakeup Domain that has Wakeup Co-processor (DM R5) running. DDR is in Self Refresh.
 
+.. _switching-to-lpm-demo-dts:
 Switching to LPM demo dts
 -------------------------
 
@@ -113,3 +114,32 @@ On AM625-SK, `GPIO1_23` is configured as interrupt for a GPIO IO expander which 
         # Press the SW4 button
         root@am62xx-evm:~# grep davinci_gpio /proc/interrupts
         278:          1      GPIO  23 Edge    -davinci_gpio  0-0022
+
+GPU
+___
+
+Support for OS Active Power Management (APM) and suspend/resume functionality
+is built into the pvrsrvkm out-of-tree module. No additional setup is required.
+The device should automatically power down when not in use, which thanks to
+Wayland's refresh scheduling should be quite often unless things are actively
+being rendered.
+
+Manual testing of the OS suspend/resume functionality with this component is conducted through the following process after :ref:`switching-to-lpm-demo-dts`:
+
+#. Initiate a load to wake up the GPU using rgx_compute_test:
+
+::
+
+    target # rgx_compute_test -f 100 &
+
+#. Trigger a suspend event with a scheduled wakeup:
+
+::
+
+    target # rtcwake -s 3 -m mem
+
+#. Wait for the scheduled wakeup.
+
+The above sequence should result in the background compute task being paused
+for the suspend action and then resumed after the scheduled wakeup 3 seconds 
+later.
