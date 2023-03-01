@@ -29,7 +29,7 @@ temperature readings (in milliCelcius) in the sysfs filesystem.
 Running this command on your SoC will print each temperature in
 milliCelcius for that region on the SoC.
 
-.. rubric:: Preset Thresholds & Triggers
+.. rubric:: Thresholds, Triggers and Cooling
 
 We can also program up to 3 threshold temperatures, 2 for greater than
 thresholds and 1 for a less than threshold, to allow the VTM to alert
@@ -42,28 +42,52 @@ we could issue a poweroff command to turn the device off completely once
 the 2\ :sup:`nd` threshold is exceeded.
 
 Threshold temperatures can be set in the kernel with the values we
-define inside the device tree. For example to set a 'critical'
-temperature, where the kernel will poweroff the SoC, we can add a node
-like this:
+define inside the device tree. This can be used for:
 
-.. code-block:: text
+#. To set a 'critical' temperature, where the kernel will poweroff the SoC
 
-  example_thermal: ex-thermal {
-        polling-delay-passive = <250>;  /* milliSeconds */
-        polling-delay = <500>;          /* milliSeconds */
-        thermal-sensors = <&wkup_vtm0 0>;
+#. To signal a 'passive' alert in kernel in event of overheating
 
-        trips {
-                example_crit: ex-crit {
-                        temperature = <125000>; /* milliCelsius */
-                        hysteresis = <2000>;    /* milliCelsius */
-                        type = "critical";
-                };
-        };
-  };
+#. To lower the MPU frequency by registering cpufreq driver as a cooling
+   device. cpufreq does DFS on the MPU to set the frequency specified in
+   OPP table in the device tree. For more details, see
+   `DFS <Power_Management/pm_dfs.html>`__.
 
-This example node will instruct the kernel to periodically poll this
-temperature sensor and to shutdown the SoC once it has exceeded 125
+::
+
+    /* From arch/arm64/boot/dts/ti/k3-j7200-thermal.dtsi */
+
+	mpu_thermal: mpu-thermal {
+		polling-delay-passive = <250>; /* milliseconds */
+		polling-delay = <500>; /* milliseconds */
+		thermal-sensors = <&wkup_vtm0 1>;
+
+		trips {
+			mpu_crit: mpu-crit {
+				temperature = <125000>; /* milliCelsius */
+				hysteresis = <2000>; /* milliCelsius */
+				type = "critical";
+			};
+
+			mpu_alert0: mpu_alert {
+				temperature = <55000>; /* millicelsius */
+				hysteresis = <5000>; /* millicelsius */
+				type = "passive";
+			};
+		};
+
+		cpu_cooling_maps: cooling-maps {
+			map0 {
+				trip = <&mpu_alert0>;
+				cooling-device =
+				<&cpu0 THERMAL_NO_LIMIT THERMAL_NO_LIMIT>;
+			};
+		};
+	};
+
+This node will instruct the kernel to periodically poll this temperature
+sensor and to shutdown the SoC once it has exceeded 125 degrees Celsius.
+And will enable cooling using DFS by cpufreq-dt driver on the MPU at 55
 degrees Celsius.
 
 Finding More Information
