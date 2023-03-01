@@ -47,7 +47,7 @@ Bootloader components
         git clone -b 08.06.00.007 git://git.ti.com/k3-image-gen/k3-image-gen.git
         git clone -b 08.06.00.007 git://git.ti.com/atf/arm-trusted-firmware.git
         git clone -b 08.06.00.007-android git://git.ti.com/optee/ti-optee-os.git
-        git clone -b 08.06.00.007 git://git.ti.com/ti-u-boot/ti-u-boot.git
+        git clone -b 08.06.00.007-android git://git.ti.com/ti-u-boot/ti-u-boot.git
         git clone -b 08.06.00.007 git://git.ti.com/processor-firmware/ti-linux-firmware.git
         git clone -b 08.06.00.007 git://git.ti.com/security-development-tools/core-secdev-k3.git
 
