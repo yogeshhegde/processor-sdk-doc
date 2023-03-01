@@ -112,7 +112,7 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
         Videos - /opt/edgeai-test-data/videos/
         Models - /opt/model_zoo/
 
-11. For further information on edge AI, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-sk-tda4vm/08_05_00/exports/docs/index.html>`__
+11. For further information on edge AI, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/08_06_00/exports/docs/devices/AM62AX/linux/index.html>`__
 
 
 Building the edge AI gallery

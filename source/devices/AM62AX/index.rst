@@ -16,9 +16,10 @@ Processor SDK Linux Software Developer's Guide
    /devices/AM62AX/linux/Overview
    /devices/AM62AX/linux/Release_Specific
    /linux/Foundational_Components
+   index_Edge_AI
+   index_RTOS
    /linux/How_to_Guides
    index_Applications
-   /linux/Documentation_Tarball
 
 |
 
