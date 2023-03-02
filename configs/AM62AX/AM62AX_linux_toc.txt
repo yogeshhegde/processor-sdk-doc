@@ -1,5 +1,6 @@
 devices/AM62AX/index
 devices/AM62AX/index_RTOS
+devices/AM62AX/index_Edge_AI
 devices/AM62AX/index_Applications
 devices/AM62AX/linux/Overview
 devices/AM62AX/linux/Overview_Getting_Started_Guide
