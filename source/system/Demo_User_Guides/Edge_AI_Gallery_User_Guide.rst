@@ -41,7 +41,7 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 |
 
-2. Once started, You can click on one of the `Image Classification`, `Object Detection` or `Semantic Segmentation` to validate the models with a fixed GStreamer pipeline.
+2. Once started, You can click on one of the ``Image Classification``, ``Object Detection`` or ``Semantic Segmentation`` to validate the models with a fixed GStreamer pipeline.
 
 .. Image:: /images/am62a_edge_ai_gallery_cl.jpg
    :width: 407
@@ -59,7 +59,7 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 3. To switch to a new pipeline, click on the same button again to stop the currently running pipeline.
 
-4. To create and run a custom pipeline, click on `Custom` button. You'll be provided with a popup menu to choose the below options.
+4. To create and run a custom pipeline, click on ``Custom`` button. You'll be provided with a popup menu to choose the below options.
 
    - Input Type: Image, Video or Camera
 
@@ -73,7 +73,8 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 |
 
-5. Select the 3 options as described above and click on `Start` to generate and start the pipeline.
+5. Select the 3 options as described above and click on ``Start`` to generate and start the pipeline.
+
    .. note:: As the note suggests, it might take a while for custom pipeline to start.
 
 .. Image:: /images/am62a_edge_ai_gallery_custom.jpg
@@ -82,12 +83,13 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 |
 
-5. Click on `Custom` button again to stop the custom pipeline.
+6. Click on ``Custom`` button again to stop the custom pipeline.
 
-6. For ease of use, the IP addr of the device is displayed at the bottom right when Network is connected.
+7. For ease of use, the IP addr of the device is displayed at the bottom right when Network is connected.
+
    .. note:: The IP addr is polled only for the first 100 seconds after the application has started.
 
-7. To close the application and go to the Wallpaper screen, use the close button on the top right corner.
+8. To close the application and go to the Wallpaper screen, use the close button on the top right corner.
 
 .. Image:: /images/am62a_edge_ai_gallery_wallpaper.jpg
    :width: 407
@@ -95,25 +97,33 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 
 |
 
-8. To relaunch the application, you should run
+
+9. To add new images, videos and models, you should add them in the below directories respectively
+
+   - Images - /opt/edgeai-test-data/images/
+
+   - Videos - /opt/edgeai-test-data/videos/
+
+   - Models - /opt/model_zoo/
+
+
+10. To change the videos in the prebuilt pipelines used for ``Image Classification``, ``Object Detection`` & ``Semantic Segmentation``, you can replace the video files ``oob-gui-video*.h264`` under ``/opt/oob-demo-assets/``.
+
+11. To add new models to the ``Model`` dropdown list in Custom popup menu, Add the names of the models in ``/opt/oob-demo-assets/allowedModels.txt``.
+
+   .. note:: For the above changes to take affect, close and relaunch the application.
+
+12. To relaunch the application, you should run
    ::
 
         /etc/init.d/edgeai-launcher.sh start
 
-9. And to stop the application again, you should run
+13. And to stop the application again, you should run
    ::
 
         /etc/init.d/edgeai-launcher.sh start
 
-10. To add new images, videos and models, you should add them in the below directories respectively
-    ::
-
-        Images - /opt/edgeai-test-data/images/
-        Videos - /opt/edgeai-test-data/videos/
-        Models - /opt/model_zoo/
-
-11. For further information on edge AI, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/08_06_00/exports/docs/devices/AM62AX/linux/index.html>`__
-
+14. For further information on edge AI, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/08_06_00/exports/docs/devices/AM62AX/linux/index.html>`__
 
 Building the edge AI gallery
 ----------------------------
