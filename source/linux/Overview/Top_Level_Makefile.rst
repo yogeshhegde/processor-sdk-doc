@@ -2,8 +2,8 @@
 
 .. _top-level-makefile:
 
-Top-Level Makefile
-======================================
+SDK Build using Makefile
+========================
 
 .. http://processors.wiki.ti.com/index.php/Processor_Linux_SDK_Top-Level_Makefile
 .. rubric:: Overview
@@ -142,10 +142,13 @@ package:
 -  **linux** - Compiles the Linux kernel using the default
    tisdk\_<PLATFORM>\_defconfig configuration.
 -  **linux-dtbs** - Compiles and creates the device tree blobs.
--  **am-benchmarks** - Builds the ARM Benchmarks for the ARCH defined in
-   Rules.make.
--  **am-sysinfo** - Build the helper applications used by the system
-   settings demos in Matrix.
+
+.. ifconfig:: CONFIG_sdk not in ('PLSDK')
+
+  -  **am-benchmarks** - Builds the ARM Benchmarks for the ARCH defined in
+     Rules.make.
+  -  **am-sysinfo** - Build the helper applications used by the system
+     settings demos in Matrix.
 
 | 
 
@@ -167,27 +170,23 @@ devices will have following additional targets:
      jailhouse tools and cell configs. Applicable for only platforms with
      Hypervisor support enabled.
 
-.. ifconfig:: CONFIG_sdk not in ('PSDKL')
+.. ifconfig:: CONFIG_sdk in ('PLSDK')
 
   -  **u-boot** - This target will build both u-boot and the u-boot
      SPL (MLO) binaries used in newer versions of u-boot. This actually
      provides a u-boot and u-boot-spl target in the Makefile.
-  -  **u-boot-legacy** - This target will build the u-boot binary for
-     older versions of u-boot which do not support the SPL build.
-  -  **wireless** - A wireless top-level build target that can be used to
-     rebuild the wireless drivers against the kernel sources in the
-     board-support directory.
-  -  **matrix-gui** - Builds the matrix-gui sources.
-  -  **matrix-gui-browser** - Builds the matrix GUI browser Qt project.
-  -  **refresh-screen** - Builds the refresh screen Qt project.
+
+  .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
+
+    -  **matrix-gui** - Builds the matrix-gui sources.
+    -  **matrix-gui-browser** - Builds the matrix GUI browser Qt project.
+    -  **refresh-screen** - Builds the refresh screen Qt project.
+
   -  **sysfw-image** - Builds the system firmware itb file, which is a single
      binary for the system firmware release along with the different board
      configs.
   -  **linux-fitimage** - Sign and pack linux kernel and dtbs into FIT image
      required for booting HS devices.
-  -  **jailhouse** - Builds the required kernel module, hypervisor firmware,
-     jailhouse tools and cell configs. Applicable for only platforms with
-     Hypervisor support enabled.
 
 Along with these targets, there might be additional targets for different
 external kernel modules. This list is different for each platform.
@@ -253,21 +252,24 @@ the Makefile from the top-level of the SDK.
     To install in SD card directly:
     host# sudo DESTDIR=/media/$USER/rootfs make ti-img-rogue-driver_am62_install
 
--  Build the ARM Benchmarks
 
-::
+.. ifconfig:: CONFIG_part_variant not in ('AM62AX', 'AM62X')
+
+ -  Build the ARM Benchmarks
+
+ ::
 
     host# make am-benchmarks
 
--  Clean the ARM Benchmarks
+ -  Clean the ARM Benchmarks
 
-::
+ ::
 
     host# make am-benchmarks_clean
 
--  Install the ARM Benchmarks
+ -  Install the ARM Benchmarks
 
-::
+ ::
 
     host# make am-benchmarks_install
 
