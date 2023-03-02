@@ -121,7 +121,7 @@ The edge AI gallery launches on Linux startup. Follow the below instructions to 
 13. And to stop the application again, you should run
    ::
 
-        /etc/init.d/edgeai-launcher.sh start
+        /etc/init.d/edgeai-launcher.sh stop
 
 14. For further information on edge AI, refer `Edge AI Documentation <https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-edgeai/AM62AX/08_06_00/exports/docs/devices/AM62AX/linux/index.html>`__
 
