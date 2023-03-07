@@ -114,40 +114,54 @@ Build Steps
 
 Please refer to :ref:`here <yocto-layer-configuration>` for the
 layer configuration for a particular release of Processor SDK Linux.
-See `Build Options`_ for a list of additional targets.  The MACHINE can be set to
-|__SDK_BUILD_MACHINE__|, for example.
+The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
-
-   .. note:: To build for an HS platform, bitbake needs to know the location of the secdev utilities.
-             Obtain it with the following:
-
-             ::
-                 
-                 $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master 
-                 $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
-
-             Then let bitbake know the location by adding TI_SECURE_DEV_PKG_K3=$TI_SECURE_DEV_PKG to the
-             list of environment variables before the bitbake command.
     
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
+ .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    The final command below will build the **tisdk-base-image**, which is the
-    minimal Processor SDK filesystem.  See `Build Options`_ for a list of
-    additional targets.
+   .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-    ::
+       The final command below will build the **tisdk-edgeai-image**, which is the
+       Processor SDK image with arago + edge ai filesystem.  See `Build Options`_ for a list of
+       additional targets.
 
-        $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
-        $ cd tisdk
-        $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-<version>-config.txt
-        $ cd build
-        $ . conf/setenv
-        $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
-        $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
-        $ MACHINE=<machine> bitbake -k tisdk-base-image
+       ::
 
-    Your wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card. 
+           $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+           $ cd tisdk
+           $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-08.06.00-config.txt
+           $ cd build
+           $ . conf/setenv
+           $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
+           $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
+           $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
+           $ export TI_SECURE_DEV_PKG=./core-secdev-k3
+           $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
+
+       Your tisdk-edgeai-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.
+      
+      
+   .. ifconfig:: CONFIG_part_variant not in ('AM62AX')
+
+       The final command below will build the **tisdk-default-image**, which is the
+       Processor SDK image with arago filesystem.  See `Build Options`_ for a list of
+       additional targets.
+
+       ::
+
+           $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+           $ cd tisdk
+           $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-08.06.00-config.txt
+           $ cd build
+           $ . conf/setenv
+           $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
+           $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
+           $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
+           $ export TI_SECURE_DEV_PKG=./core-secdev-k3
+           $ MACHINE=<machine> bitbake -k tisdk-default-image
+
+       Your tisdk-default-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.    
      
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
