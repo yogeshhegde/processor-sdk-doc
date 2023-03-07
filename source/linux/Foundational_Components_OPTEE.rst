@@ -42,13 +42,13 @@ The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the 
 
 .. parsed-literal::
 
-    $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
+    $ make CROSS_COMPILE64=aarch64-none-linux-gnu- CROSS_COMPILE=arm-none-linux-gnueabihf- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
 
 * With debug parameters
 
 .. parsed-literal::
 
-    $ make CROSS_COMPILE64=aarch64-none-linux-gnu- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
+    $ make CROSS_COMPILE64=aarch64-none-linux-gnu- CROSS_COMPILE=arm-none-linux-gnueabihf- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
 
 * Sign image for HS
 
