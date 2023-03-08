@@ -55,6 +55,7 @@ as 1 which should be roughly half of STREAM copy result.
 
 .. csv-table::
     :header: "Benchmarks","am62axx_sk-fs: perf"
+
     "af_unix_sock_stream_latency (microsec)","39.51"
     "af_unix_socket_stream_bandwidth (MBs)","1610.93"
     "bw_file_rd-io-1mb (MB/s)","1168.81"
