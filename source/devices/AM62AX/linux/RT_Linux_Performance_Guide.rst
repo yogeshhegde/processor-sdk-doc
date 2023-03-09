@@ -10,7 +10,7 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+----------------------------------------------------------------------------------------------------------------+
 | Name           | Description                                                                                                    |
 +================+================================================================================================================+
-| AM62A SK       | AM62A Starter Kit rev E2 with ARM running at 1200MHz, LPDDR4 data rate 1866 MT/S                               |
+| AM62A SK       | AM62A Starter Kit rev E2 with ARM running at 1200MHz, LPDDR4 data rate is 3733 MT/s                            |
 +----------------+----------------------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
