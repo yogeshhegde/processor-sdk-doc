@@ -211,7 +211,7 @@ The "Build Output" is given relative to the
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | Target                       | Build Output                                                  | Description                |
         +==============================+===============================================================+============================+
-        | arago-core-tisdk-bundle      | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
+        | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-edgeai-image           | images/<machine>/tisdk-edgeai-image-<machine>.tar.xz          | Target Edge AI Filesystem  |
         +------------------------------+---------------------------------------------------------------+----------------------------+
@@ -227,7 +227,7 @@ The "Build Output" is given relative to the
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | Target                       | Build Output                                                  | Description                |
         +==============================+===============================================================+============================+
-        | arago-core-tisdk-bundle      | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
+        | tisdk-core-bundle            | images/<machine>/processor-sdk-linux-bundle-<machine>.tar.xz  | Full SDK                   |
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
         +------------------------------+---------------------------------------------------------------+----------------------------+
