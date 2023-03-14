@@ -24,7 +24,7 @@ and ti-linux sources.
 
     .. note::
 
-        Images in the Processor SDK will by defualt boot HS-FS devices. To boot GP devices, use tiboot3-<family>-gp-evm.bin found in the Processor SDK. If using
+        Images in the Processor SDK will by default boot on HS-FS devices. To boot on GP devices, use tiboot3-<family>-gp-evm.bin found in the Processor SDK. If using
         SD/MMC boot and having flashed a .wic image (WIC file) to an SD card, tiboot3-<family>-gp-evm.bin should be found in the `boot` partition of the SD card.
         Renaming/removing the pre-existing`tiboot3.bin` and renaming `tiboot3-<family>-gp-evm.bin` to `tiboot3.bin` is the only change needed to boot the HS-FS
         device.

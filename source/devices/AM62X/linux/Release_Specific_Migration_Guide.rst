@@ -16,7 +16,7 @@ Processor SDK Sitara 08.06
 - ATF 2.8+
 - OPTEE 3.20
 - Yocto Dunfell/3.1
-- Platforms Supported : AM62x (GP, HS-FS, HS-SE)
+- Platforms Supported : AM62x (GP, HS-FS, HS-SE) with default boot on HS-FS
 
 Processor SDK 08.05
 -------------------
