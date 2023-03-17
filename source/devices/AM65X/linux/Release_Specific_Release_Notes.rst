@@ -43,35 +43,10 @@ Documentation
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
 
-Release 07.03.00
+Release 08.02.00
 ==================
 
-Released May 2021
-
-.. rubric:: What's New
-   :name: whats-new
-
-
-.. _release-specific-sdk-components-versions:
-
-.. rubric:: SDK Components & Versions
-   :name: sdk-components-versions
-
-+--------------------------+----------------------------+
-| Component                | Version                    |
-+==========================+============================+
-| Linux Kernel             | 5.4.106                    |
-+--------------------------+----------------------------+
-| U-Boot                   | 2020.01                    |
-+--------------------------+----------------------------+
-| Yocto Project            | 3.1 (dunfell)              |
-+--------------------------+----------------------------+
-| ARM Toolchain (gcc)      | 9.2-2019.12 hard-float     |
-+--------------------------+----------------------------+
-| TI C66x CGT Compiler     | 8.3.2                      |
-+--------------------------+----------------------------+
-
-|
+Released March 2022
 
 Supported Platforms
 =====================================
@@ -79,73 +54,58 @@ See :ref:`here <release-specific-supported-platforms-and-versions>` for a list o
 
 |
 
+.. _release-specific-sdk-components-versions:
 
 Build Information
 =====================================
 
-.. _release-specific-build-information-u-boot:
-
 U-Boot
 -------------------------
 
-| Head Commit: 2781231a33c3d779e32445f4fe55164c45d6d7c1 arm: mach-k3: j721e_init: probe clock node after sci node is probed
-| Date: Wed Apr 7 21:12:38 CDT 2021
-| uBoot Version: 2020.01
-| uBoot Description: 07.03.00.005
+| Head Commit: 44a87e3ab85c6d64044f0b5ad677008316baad70 ARM: dts: k3-j721s2: Correct timer frequency
+| Date: Wed Mar 16 17:05:52 CDT 2022
+| uBoot Version: 2021.01
+| uBoot Description: 08.02.00.006
+| Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
+| Branch: 08.02.00.006
+| uBoot Tag: 08.02.00.006
 
-| Clone: https://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: 07.03.00.005
-| uBoot Tag: 07.03.00.005
-
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
-
-.. _release-specific-build-information-kernel:
+| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| 
 
 Kernel
 -------------------------
-
-.. _release-specific-build-information-linux-kernel:
-
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 023faefa70274929bff92dc41167b007f7523792 Merged TI feature connectivity into ti-linux-5.4.y
-| Date: Wed Apr 7 14:38:29 CDT 2021
-| Kernel Version: 5.4.106
-| Kernel Description: 07.03.00.005
-| Repo: https://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-5.4.y
-| Tag: 07.03.00.005
+| Head Commit: 7a7a3af903da2b2d551d058f8262a66e6b42b6b1 Merged TI feature connectivity into ti-linux-5.10.y
+| Date: Wed Mar 16 12:00:19 CDT 2022
+| Kernel Version: 5.10.100
+| Kernel Description: 08.02.00.006
 
-| Compiler Information: arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Branch: ti-linux-5.10.y
+| Tag: 08.02.00.006
+| Kernel defconfig: ti_sdk_arm64_release_defconfig
 
-.. _release-specific-build-information-rt-linux-kernel:
+| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| 
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: 519667b0d81d74a6e55105dcd6072ae550352599 Merged TI feature ti_linux_base_rt into ti-rt-linux-5.4.y
-| Date: Wed Apr 7 21:12:27 CDT 2021
-| Kernel Version: 5.4.106
-| RT Kernel Version: 5.4.106-rt54
-| Kernel Description: 07.03.00.005-rt
+| Head Commit: 204ec708dc86f4334f585f04835527570be1c4eb Merged TI feature ti_linux_base_rt into ti-rt-linux-5.10.y
+| Date: Wed Mar 16 14:53:35 CDT 2022
+| Kernel Version: 5.10.100
+| RT Kernel Version: 5.10.100-rt62
+| Kernel Description: 08.02.00.006-rt
 
-| Repo: https://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-5.4.y
-| Tag: 07.03.00.005-rt
+| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Branch: ti-rt-linux-5.10.y
+| Tag: 08.02.00.006-rt
+| Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
 
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
-
-.. _release-specific-generic-kernel-release-notes:
-
-.. rubric:: Generic Kernel Release Notes
-   :name: generic-kernel-release-notes
-
-| Generic kernel release notes from kernelnewbies.org can be found at:
-  https://kernelnewbies.org/Linux_5.4
-| Archived versions can be found at:
-  http://kernelnewbies.org/LinuxVersions
-
+| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
 |
 
 Yocto
@@ -153,54 +113,108 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 52ffccb09385ef3a369770b2fa45bc09418a5050
-| ti-rtos: Update metadata and versions for RTOS firmware
-| Date: 2021-4-05
+| Head Commit: facd5397cdc5c35c69e7a8e8f908a98a5c23d270 u-boot-ti-staging: Bump to 08.02.00.006 release
+| Date: 2022-03-08
 | Version: dunfell-3.1
 
-| Clone: https://git.yoctoproject.org/meta-ti
+| Clone: git://git.yoctoproject.org/meta-ti
 | Branch: dunfell
-| Release Tag: 07.03.00.005
+| Release Tag: 08.02.00.006
+| 
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: ee6ff44d90945429051c8d9573c8b60705104149
-| omapconf: Bump to v1.75 release
-| Date: 2021-4-01
-| Version: 2020.05
+| Head Commit: 382ca36beb21a524de726bfd1c57e3d26f10cf82 recipes-core: images: Add tisdk-thinlinux-image
+| Date: 2022-03-08
+| Version: 2021.09
 
-| Clone: https://git.yoctoproject.org/meta-arago
+| Clone: git://git.yoctoproject.org/meta-arago
 | Branch: dunfell
-| Release Tag: 07.03.00.005
-|
+| Release Tag: 08.02.00.006
+| 
+
+.. rubric:: meta-psdkla
+
+| Head Commit: 5560e99ab3ffe0b67e1e5298ff4694ab3860325f recipes-demo: wifi-oob: Disable Station mode by default
+| Date: 2022-03-22
+
+| Clone: git://git.ti.com/jacinto-linux/meta-psdkla.git
+| Branch: master
+| 
+
+
 
 Issues Tracker
 =====================================
 ..
-   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", Graphics, Multimedia, Wireless, "System Integration", Security) AND closedDate > 2020-11-18 AND createdDate <= 2020-11-17 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND Platform in (am654x-evm, am654x-hsevm, am654x-idk) ORDER BY key DESC, priority DESC
+   project = LCPD AND platform in (am654x-evm, am654x-hsevm) AND
+      issuetype = Bug AND
+      status = Closed AND
+      resolution = Done AND
+      component in (
+         "Audio & Display", 
+         Baseport, 
+         Connectivity, 
+         IPC, 
+         "Power & Thermal", 
+         Graphics, 
+         Multimedia, 
+         Wireless, 
+         "System Integration", 
+         Security) AND
+      closedDate > 2021-12-10 AND
+      createdDate <= 2021-12-10 AND
+      (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE) OR labels is EMPTY) AND
+      OS in (Linux, RT-linux) 
+      ORDER BY priority DESC   
 
 Issues opened in previous releases that were closed on this release
----------------------------------------------------------------------
+-------------------------------------------------------------------
 
 .. csv-table::
    :header: "Record ID", "Summary"
    :widths: 20, 80
 
-   LCPD-19785,Uboot: usbhost has problem with detection
-   LCPD-19784,DFU MMC test fails
-   LCPD-19781,OE: ti-rpmsg-char: Library header files and primary so file are missing in FS
-   LCPD-19772,ATF/Uboot GTC frequency handover bug
-   LCPD-19740,TLS1.2 hangs on handshake
-   LCPD-19717,am654-gpevm: kernel image boot reports corruption
-   LCPD-19695,am654-gpevm: kernel image boot reports corruption
-   LCPD-19264,Uboot: No usb controllers found 
-   LCPD-19249,"Kernel WARN observed in some cases, tisci timeout reported"
-   LCPD-19180,AM65 PG1 fails to boot with MMC/SD
-   LCPD-18620,AM65x PG2: U-Boot MMC/SD does not work at greater than 25MHz clock
+    LCPD-24644,weston service takes a long time to terminate
+    LCPD-24308,linux/Documentation/devicetree/bindings/sound/davinci-mcasp-audio.txt Convert to YAML
+    LCPD-23019,OPTEE tests are failing (Impact 5)
+    LCPD-24586,am65 uboot usbhost custom builds are missing in 8.1
+    LCPD-24450,"j721e-idk-gw, j7200-evm UART tests fail (Impact 3.0)"
+    LCPD-24417,AM654x UART Boot Mode failing
+    LCPD-24284,DRM tests fail due to crash in panel_simple_probe
+    LCPD-24289,ICSSG Ethernet Docs Broken link to ICSS Eth docs
+    LCPD-22962,IPC performance- IPC_S_FUNC_PRU_ECHO test failing
+    LCPD-22953,v4l2 cal compliance test fails
+    LCPD-24526,"k3-am65-iot2050 have mcasp nodes with missing required properties "
+    LCPD-24486,smatch reports potential dereference of ERR_PTR
+    LCPD-20691,AM65xx - lcd backlight scenario not enabled (Impact 1)
+    LCPD-18270,Ivi shell test fails. Lib ivi-controller.so and other components are missing from the file system
+    LCPD-16664,MMU Alloc errors and Kernel Oops with RT build
+    LCPD-24605,ICSSG: Not all TX timestamps are received
 
 ..
-   project = LCPD AND issuetype = Bug AND status = Closed AND resolution = Done AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal", "System Integration", Wireless, Graphics, Multimedia, Security) AND closedDate > 2020-11-18 AND createdDate > 2020-11-18 AND (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE, PLSDK_NOT_RN) OR labels is EMPTY) AND OS in (Linux, RT-linux) AND fixversion not in (Upstream) AND Platform in (am654x-evm, am654x-hsevm, am654x-idk) ORDER BY key DESC, priority DESC
+   project = LCPD AND platform in (am654x-evm, am654x-hsevm) AND
+       issuetype = Bug AND
+       status = Closed AND
+       resolution = Done AND
+       component in (
+          "Audio & Display", 
+          Baseport,
+          Connectivity, 
+          IPC, 
+          "Power & Thermal",
+          "System Integration",
+          Wireless,
+          Graphics,
+          Multimedia,
+          Security) AND
+       closedDate > 2021-12-10 AND
+       createdDate > 2021-12-10 AND
+       (Labels not in (LCPD_K3.14_MAINT, MAINTENANCE) OR labels is EMPTY) AND
+       OS in (Linux, RT-linux) AND
+       fixversion not in (Upstream) 
+       ORDER BY priority DESC  
 
 Issues found and closed on this release that may be applicable to prior releases
 --------------------------------------------------------------------------------
@@ -209,18 +223,17 @@ Issues found and closed on this release that may be applicable to prior releases
    :header: "Record ID", "Summary"
    :widths: 20, 80
 
-   LCPD-21348,K3: CPSWxG: can't disable rate limit for TX CPPI channels on Host P0
-   LCPD-20623,AM654x UART boot failing to boot
-   LCPD-20618,k3: cpswxg: bindings not updated
-   LCPD-20170,am654x UART boot not working
-   LCPD-20099,U-Boot: AM65: broken boot (Both PG1.0 and 2.0)
-   LCPD-20026,AM654: PG1.0: MMC boot failure with SDK 7.1 on some boards
-   LCPD-20024,OPTEE dunfell bleeding builds fail
-   LCPD-19946,remoteproc/k3-r5f: Fix couple of warnings
-   LCPD-19864,AM65xx: Support SD card modes not documented in the SDK documentation
+    LCPD-25014	, ramfs boot fails when using tisdk-base-image
+    LCPD-24716	, am654: Module pruss_soc_bus is missing
 
 ..
-   project = LCPD AND Platform in (am654x-evm, am654x-hsevm, am654x-idk) AND ErrataID is not EMPTY AND status = Closed AND (Labels not in (PLSDK_NOT_RN) OR labels is EMPTY) ORDER BY priority DESC
+    project = LCPD AND
+       platform in (am654x-evm, am654x-hsevm) AND
+       ErrataID is not EMPTY AND
+       status = Closed AND
+       resolution not in (Duplicate, Rejected) 
+       ORDER BY priority DESC 
+
 
 Errata workarounds
 ------------------
@@ -229,15 +242,23 @@ Errata workarounds
    :header: "Record ID", "Summary", "Workaround", "ErrataID"
    :widths: 20, 80, 60, 20
 
-   LCPD-18979,MCAN: Message Transmitted with Wrong Arbitration and Control Fields (Early Start of Frame),,i939
-   LCPD-14579,DSS : DSS Does Not Support YUV Pixel Data Formats,,i2000
-   LCPD-17788,PCI-Express: GEN3 (8GT/s) Operation Not Supported.,,i2104
-   LCPD-17783,USB: USB2PHY Charger Detect is enabled by default without VBUS presence,,i2075
-   LCPD-19447,DSS: Disabling a layer connected to Overlay may result in synclost during the next frame,,i2097
-   LCPD-19965,OSPI PHY Controller Bug Affecting Read Transactions,,i2189
+    LCPD-19447,DSS: Disabling a layer connected to Overlay may result in synclost during the next frame,,i2097
+    LCPD-17788,PCI-Express: GEN3 (8GT/s) Operation Not Supported.,,i2104
+    LCPD-17783,USB: USB2PHY Charger Detect is enabled by default without VBUS presence,,i2075
+    LCPD-14184,USB:  SuperSpeed USB Non-Functional,,i2028
+    LCPD-14579,DSS : DSS Does Not Support YUV Pixel Data Formats,,i2000
 
 ..
-   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("System Integration", Graphics, Wireless, Security, Multimedia) AND (labels not in (LCPD_K3.14_MAINT, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND ((affectedVersion <= 07.03.00 AND affectedVersion >upstream ) OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (am654x-evm, am654x-hsevm, am654x-idk) AND OS = "Linux" ORDER BY key DESC, priority DESC, component ASC
+    project = LCPD AND
+       platform in (am654x-evm, am654x-hsevm) AND
+       issuetype = Bug AND
+       (status not in (Closed, "In Build") OR status = Closed AND
+       resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND
+       component in ("System Integration", Graphics, Wireless, Security, Multimedia) AND
+       (labels not in (LCPD_K3.14_MAINT, MAINTENANCE, DO_NOT_RELEASE_NOTE) OR labels is EMPTY) AND
+       (affectedVersion <= 08.02.00  AND
+       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY) 
+       ORDER BY key DESC, priority DESC, component ASC  
 
 .. _release-specific-known-issues:
 
@@ -248,18 +269,28 @@ SDK Known Issues
    :header: "Record ID", "Summary", "Workaround"
    :widths: 20, 80, 60
 
-   LCPD-21527,AM654x -GLMark2 Wayland benchmark test fails,
-   LCPD-19948,Yocto: stream recipe is incorrect,
-   LCPD-19858,OE: OPTEE label used in SDK is old and wrong,
-   LCPD-18270,Ivi shell test fails. Lib ivi-controller.so and other components are missing from the file system,
-   LCPD-17449,libasan_preinit.o is missing in devkit,
-   LCPD-17413,QT Webengine-based browser: the mouse does not work within the web page with QPA EGLFS,
-   LCPD-17412,QT5 Webengine-based browser crashing with any resize operation,
-   LCPD-13817,Qt5 Webengine-based broswer does not work on AM654x with pagesize = 64k,
-   LCPD-13816,Chromium-wayland broswer does not work on AM654x with page size = 64k,
+    LCPD-19948,Yocto: stream recipe is incorrect,
+    LCPD-19858,OE: OPTEE label used in SDK is old and wrong,
+    LCPD-18908,GLMark2 fails for am65x,
+    LCPD-17449,libasan_preinit.o is missing in devkit,
+    LCPD-17413,QT Webengine-based browser: the mouse does not work within the web page with QPA EGLFS,
+    LCPD-17412,QT5 Webengine-based browser crashing with any resize operation,
+    LCPD-14254,meta-ti: Need a recipe update to pick up the new AM65x PRU Ethernet firmwares,
+    LCPD-13817,Qt5 Webengine-based broswer does not work on AM654x with pagesize = 64k,
+    LCPD-13816,Chromium-wayland broswer does not work on AM654x with page size = 64k,
 
 ..
-   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Power & Thermal", Baseport, "Audio & Display", Connectivity, IPC) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND (summary ~ u-boot OR Subcomponent in (u-boot, UBOOT, Uboot)) AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND Platform in (am654x-evm, am654x-hsevm, am654x-idk) ORDER BY key DESC, priority DESC, component ASC
+    project = LCPD AND
+       platform in (am654x-evm, am654x-hsevm) AND
+       issuetype = Bug AND
+       (status not in (Closed, "In Build") OR status = Closed AND
+       resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND
+       component in ("Power & Thermal", Baseport, "Audio & Display", Connectivity, IPC) AND
+       (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE) OR labels is EMPTY) AND
+       (summary ~ u-boot OR Subcomponent in (u-boot, UBOOT, Uboot)) AND
+       (affectedVersion <= 08.02.00 AND
+       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY) 
+       ORDER BY priority DESC, component ASC, key DESC 
 
 U-Boot Known Issues
 -------------------
@@ -268,16 +299,31 @@ U-Boot Known Issues
    :header: "Record ID", "Summary", "Workaround"
    :widths: 20, 80, 60
 
-   LCPD-22188,j721e and am65 hs fails to build on 2021.01 uboot,
-   LCPD-18627,uboot does not read the reserve-memory from the fdt ,
-   LCPD-17770,U-Boot: Fix order of MCU R5 shutdown depending on cluster mode,
-   LCPD-16696,U-Boot does not recognize SD-Card after re-insert/change,
-   LCPD-16524,Need to adjust RMW bit when using enabling ECC,None
-   LCPD-15873,There is no dtbo in u-boot for PCIe x1 + usb3 daughter card,None
-   LCPD-14843,U-boot should support  default settings for netboot ,None
+    LCPD-22975,AM654x: 1Ghz & beyond caused boot hang on SR2.0,
+    LCPD-24628,am654x-idk DFU boot is failing,
+    LCPD-17770,U-Boot: Fix order of MCU R5 shutdown depending on cluster mode,
+    LCPD-16524,Need to adjust RMW bit when using enabling ECC,None
+    LCPD-14843,"U-boot should support  default settings for netboot ",None
+    LCPD-24717,am654: PCI-E ethernet interface shows link down in U-Boot,
+    LCPD-24130,AM654x: USB MSC boot mode fails,
+    LCPD-16696,U-Boot does not recognize SD-Card after re-insert/change,
+    LCPD-15873,There is no dtbo in u-boot for PCIe x1 + usb3 daughter card,None
+    LCPD-25535,UBoot: customized ${optargs} doesn't take affect on K3 devices,
 
 ..
-   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal") AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream)) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND summary !~ u-boot AND (Subcomponent not in (u-boot, UBOOT, Uboot) OR Subcomponent is EMPTY) AND Platform in (am654x-evm, am654x-hsevm, am654x-idk) ORDER BY key DESC, priority DESC, component DESC
+   project = LCPD AND
+       platform in (am654x-evm, am654x-hsevm) AND
+       issuetype = Bug AND
+       (status not in (Closed, "In Build") OR status = Closed AND
+       resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND
+       component in ("Audio & Display", Baseport, Connectivity, IPC, "Power & Thermal") AND
+       (affectedVersion <= 08.02.00  AND
+       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY) AND
+       (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE) OR labels is EMPTY) AND
+       summary !~ u-boot AND
+       (Subcomponent not in (u-boot, UBOOT, Uboot) OR Subcomponent is EMPTY) AND
+       OS = Linux 
+       ORDER BY priority DESC, component DESC, key DESC   
 
 .. _release-specific-linux-kernel-known-issues:
 
@@ -288,66 +334,88 @@ Linux Kernel Known Issues
    :header: "Record ID", "Summary", "Workaround"
    :widths: 20, 80, 60
 
-   LCPD-22239,2021.00 idk and pcie dtbs are missing for am654,
-   LCPD-21536,AM654x - Display port tests fail due to tidss not found,
-   LCPD-20243,AM65x Transition Kernel: pru-icssg support for100M half duplex mode is broken,
-   LCPD-20014,"remoteproc: TX_PRU: IRQ vring, IRQ kick not found error message on console",
-   LCPD-19929,Industrial protocols documentation,
-   LCPD-19924,[AM65xx]  ICSS-G TCP receive throughput degraded,
-   LCPD-19923,[AM65x] Linux reboot command fails,
-   LCPD-19873,Pings not received by DUT over Ethernet VLAN,
-   LCPD-19861,ICSSG: Unregistered multicast MAC packets are still visible in non-promiscuous mode,
-   LCPD-19859,ETH ICSSG netperf benchmark returns lower performance than expected,
-   LCPD-19580,am654- unable to select a mode (sdhci?),
-   LCPD-19447,DSS: Disabling a layer connected to Overlay may result in synclost during the next frame,
-   LCPD-18979,MCAN: Message Transmitted with Wrong Arbitration and Control Fields (Early Start of Frame),
-   LCPD-18860,isolcpus in the command line is not honored,
-   LCPD-18788,Uboot: Could not bring up PCIe interface,
-   LCPD-18756,ICSSG: eth5 and eth6 unknown interfaces ,
-   LCPD-18684,"syscalls sync failures: fdatasync03, fsync04, sync03, syncfs01, sync_file_range02",
-   LCPD-18665,Am65x Pg2: Board cannot do soft reboot when booting from SD card,
-   LCPD-18297,AM6: OV5640: 176x144 does not work,
-   LCPD-18289,pcie-usb tests sometimes fail,
-   LCPD-18258,IPSEC perfomance failures,
-   LCPD-18233,MMC irq affinity to core 1 is not working.,
-   LCPD-18228,PCI PM runtime suspend is not increasing,
-   LCPD-18212,am6 failed to boot due to FDT creation failed! hanging 3 of 100 times,
-   LCPD-17908,ICSSG: dual-emac: udp packets ocassionally sent out of order on egress,
-   LCPD-17800,CPSW: Master/Slave resolution failed message seen at console,
-   LCPD-17798,2020 LTS: INTA/INTR smp_affinity failure and IRQ allocation issues.,
-   LCPD-17777,AES HW is not exercised,
-   LCPD-17673,No software documentation for the Timer module,
-   LCPD-17471,device hang when restarting crashed R5F,
-   LCPD-17115,BUG: sleeping function called from invalid context at kernel/locking/rtmutex.c:967,
-   LCPD-16845,OPP freq update in DT impacts only cluster0,
-   LCPD-16534,remoteproc/k3-r5f: PDK IPC echo_test image fails to do IPC in remoteproc mode on second run,None
-   LCPD-16406,"Seeing ""e1000#0: ERROR: Hardware Initialization Failed"" sometimes when do dhcp via pcie-eth",
-   LCPD-15819,"tidss: the driver should reject dual-display setup, as it is not supported",
-   LCPD-15540,uvc-gadget results in segmentation fault,
-   LCPD-14183,am654x-idk failed to login to kernel a few times (7/1000),
-   LCPD-13938,PCIe EP read/write/copy test failed with larger sizes ,
-   LCPD-13936,Uboot dhcp timeout 1 of 100 times,
-   LCPD-13653,am65x-evm could not boot from MMC/SD when MMC/SD is backup boot mode,No workaround
-   LCPD-13603,One board could not boot rootfs from more than one SDHC card,
-   LCPD-13445,Seldom kernel oops triggered by prueth_netdev_init,
-   LCPD-13410,Reboot command is not operational,
+    LCPD-17471,device hang when restarting crashed R5F,
+    LCPD-25314,ICSSG: Timestamp for back-to-back with IPG < 100us not received,
+    LCPD-13653,am65x-evm could not boot from MMC/SD when MMC/SD is backup boot mode,No workaround
+    LCPD-24539,am654x-evm CAL test fails on PG2.0 boards,
+    LCPD-24456,Move IPC validation source from github to git.ti.com,
+    LCPD-22931,RemoteProc documentation missing,
+    LCPD-16534,remoteproc/k3-r5f: PDK IPC echo_test image fails to do IPC in remoteproc mode on second run,None
+    LCPD-24798,"j721e-idk-gw, j7200-evm UART tests fail (Impact 3.0)",
+    LCPD-24541,am65xx OSPI boot does not work,
+    LCPD-24199,"AM654x UART HWFLOW FUNC, PERF, STRESS tests fail (Impact 2)",
+    LCPD-22916,CSI: Interface Setup/Hold Timing Does Not Meet MIPI DPHY Spec above 600MHz,
+    LCPD-22892,icssg: due to FW bug both interfaces has to be loaded always,
+    LCPD-20683,am65xx fails emmc boot,
+    LCPD-19923,[AM65x] Linux reboot command fails,https://e2e.ti.com/support/processors-group/processors/f/processors-forum/1011070/am6548-linux-reboot-command-fails
+    LCPD-19861,ICSSG: Unregistered multicast MAC packets are still visible in non-promiscuous mode,
+    LCPD-19859,ETH ICSSG netperf benchmark returns lower performance than expected,
+    LCPD-19580,am654- unable to select a mode (sdhci?),
+    LCPD-18665,Am65x Pg2: Board cannot do soft reboot when booting from SD card,
+    LCPD-18289,pcie-usb tests sometimes fail,
+    LCPD-18228,PCI PM runtime suspend is not increasing,
+    LCPD-17908,ICSSG: dual-emac: udp packets ocassionally sent out of order on egress,
+    LCPD-17800,CPSW: Master/Slave resolution failed message seen at console,
+    LCPD-16048,UDP iperf with smaller packet sizes < 512 bytes does not complete consistently,
+    LCPD-15540,uvc-gadget results in segmentation fault,
+    LCPD-13938,"PCIe EP read/write/copy test failed with larger sizes ",
+    LCPD-13936,Uboot dhcp timeout 1 of 100 times,
+    LCPD-13603,One board could not boot rootfs from more than one SDHC card,
+    LCPD-13445,Seldom kernel oops triggered by prueth_netdev_init,
+    LCPD-19929,Industrial protocols documentation,
+    LCPD-18860,isolcpus in the command line is not honored,
+    LCPD-18684,"syscalls sync failures: fdatasync03, fsync04, sync03, syncfs01, sync_file_range02",
+    LCPD-18258,IPSEC perfomance failures,
+    LCPD-17798,2020 LTS: INTA/INTR smp_affinity failure and IRQ allocation issues.,
+    LCPD-17777,AES HW is not exercised,
+    LCPD-17673,No software documentation for the Timer module,
+    LCPD-16845,OPP freq update in DT impacts only cluster0,
+    LCPD-13410,Reboot command is not operational,
+    LCPD-24134,AM654x CAL DMABUF tests fail (Impact 4.0),
+    LCPD-22954,DRM Stress Test fails,
+    LCPD-22947,Alsa performance test fails,
+    LCPD-18297,AM6: OV5640: 176x144 does not work,
+    LCPD-15819,"tidss: the driver should reject dual-display setup, as it is not supported",
+    LCPD-20014,"remoteproc: TX_PRU: IRQ vring, IRQ kick not found error message on console",
+    LCPD-25348,nslookup time out when EVM has multiple eth connections,
+    LCPD-22959,UART Read/Write tests at baud rate 115200 fails,
+    LCPD-25252,"Docs: OPTEE SDK documentation is very minimal ",
+    LCPD-24718,am654x hwspinlock test failing,
+    LCPD-24680,missing document how to boot to Linux prompt in USB MSC boot mode,
+    LCPD-24319,am654x-evm DRM tests fail due to frequency mismatch (Impact 7),
+    LCPD-23008,AM65xx - display port scenario not enabled,
+    LCPD-23007,k3-am654-evm-hdmi.dtbo file is missing in CoreSDK for am654x,
 
 ..
-   project = LCPD AND issuetype = Bug AND (status not in (Closed, "In Build") OR status = Closed AND resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND component in ("Power & Thermal", Baseport, "Audio & Display", Connectivity, IPC) AND (labels not in (LCPD_K3.14_MAINT, upstream, MAINTENANCE, DO_NOT_RELEASE_NOTE, PLSDK_NOT_RN, SKIP_REL_NOTES) OR labels is EMPTY) AND summary ~ rt AND (affectedVersion <= 07.03.00 AND affectedVersion > upstream OR affectedVersion is EMPTY OR affectedVersion not in (Upstream, upstream))  AND (Platform in (am654x-evm, am654x-hsevm, am654x-idk) OR Platform is EMPTY ) ORDER BY priority DESC
+   project = LCPD AND
+       platform in (am654x-evm, am654x-hsevm) AND
+       issuetype = Bug AND
+       (status not in (Closed, "In Build") OR status = Closed AND
+       resolution in ("Known Issue : HW Limitation", "Known Issue : Other")) AND
+       component in ("Power & Thermal", Baseport, "Audio & Display", Connectivity, IPC) AND
+       (labels not in (LCPD_K3.14_MAINT, MAINTENANCE) OR labels is EMPTY) AND
+       summary ~ rt AND
+       (affectedVersion <= 08.02.00  AND
+       affectedVersion > Upstream OR affectedVersion < Upstream OR affectedVersion is EMPTY) 
+       ORDER BY  priority DESC
 
 .. _release-specific-rt-linux-kernel-known-issues:
 
 RT Linux Kernel Known Issues
 ----------------------------
 
-.. csv-table::
-   :header: "Record ID", "Summary", "Workaround"
-   :widths: 20, 80, 60
-
-   LCPD-6663,[RT] Kmemleak is buggy and boot is crashed randomly,
-   LCPD-22238,RT linux build sometimes fails to boot - might be related to remoteproc2,
+No known issues
 
 |
+
+Change Requests
+===============
+
+.. csv-table::
+   :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
+   :widths: 20, 90, 20, 20
+
+    JACINTOREQ-1431 ,Descope all non ETHERNET functionality inside PRU-ICSS subsystem, 08.00.00 ,None
 
 Installation and Usage
 ======================
@@ -356,7 +424,8 @@ The :ref:`Software Developer's Guide <linux-index>` provides instructions on how
 environment, install the SDK and start your development.  It also includes User's Guides for various Example Applications and Code
 Composer Studio.
 
-| 
+|
+
 
 Host Support
 ============
