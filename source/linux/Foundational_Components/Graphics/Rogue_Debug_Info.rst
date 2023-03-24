@@ -28,9 +28,9 @@ libraries:
    * - rgx_twiddling_test
      - Attempt to twiddle a number of textures in a number of pixel formats
 
-While future releases of the DDK may include more tools, this is the core set
-expected to be available in most DDK releases and are the most useful for
-verifying GPU functionality. 
+While future releases of ti-img-rogue-umlibs may include more tools, this is
+the core set expected to be available in most ti-img-rogue-umlibs releases and
+are the most useful for verifying GPU functionality. 
 
 The order of operation to verify fundamental GPU functionality is as follows:
 
