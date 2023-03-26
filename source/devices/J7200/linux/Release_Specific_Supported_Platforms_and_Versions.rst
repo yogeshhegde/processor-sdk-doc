@@ -25,7 +25,7 @@ The following platforms and EVMs are supported with Processor SDK.
 
 +--------------+-----------+-----------+-----------------------+-------------------+------------------+
 | **Platform** | **EVM**   | **Tested  | **Document**          | **Processor SDK   | **Processor SDK  |
-|              |           | Version** |                       | Linux Automotive**| RTOS Automotive**|
+|              |           | Version** |                       | Linux**           | RTOS**           |
 +--------------+-----------+-----------+-----------------------+-------------------+------------------+
 | J7200/DRA821 | J7200 EVM | Alpha     | Hardware User's Guide | Y                 | Y                |
 +--------------+-----------+-----------+-----------------------+-------------------+------------------+

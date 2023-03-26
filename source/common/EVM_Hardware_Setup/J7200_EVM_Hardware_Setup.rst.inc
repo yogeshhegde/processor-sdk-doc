@@ -6,7 +6,7 @@ Description
 
 The J7200 Evaluation Module provides an affordable platform to quickly
 start evaluation of Jacinto™ DRA8xx Processors and accelerate development
-for Infotainment, ADAS, Gateway and many other automotive
+for ADAS, Gateway and many other automotive
 applications.
 
 The J7200 Evaluation Module consists of a SoM(System on Module) and a
@@ -21,7 +21,8 @@ other important platform specific hardware like PMIC, DDR memory, etc
 There are 2 variants. Following are the images of EVMs with different versions
 of SoM:
 
-1. Alpha board
+1. Alpha board (Note: these images show a J721E SOM, but the J7200 SOM will look
+identical with the exception of the SOM label)
 
 .. note::
     Alpha EVMs have "Interim PMIC" sticker on the SoM board.
@@ -35,7 +36,7 @@ of SoM:
 .. note::
     Beta EVMs don't have a "Interim PMIC" sticker on the SoM board.
 
-.. Image:: /images/J721E_Beta_Board.jpg
+.. Image:: /images/J7200_Beta_Board.jpg
 
 
 Contents of the board
@@ -56,7 +57,8 @@ Common Processor Board with ALPHA-SOM
 
 .. Image:: /images/K3-Common-Proc-Board-with-Alpha-som.png
 
-Common Processor Board with BETA-SOM
+Common Processor Board with BETA-SOM (Note: this shows a J721E SOM, but the Common
+Processor Board labeling is the same as if it was a J7200 SOM)
 
 .. Image:: /images/K3-Common-Proc-Board-with-Beta-som.png
 
@@ -75,23 +77,6 @@ for detail information regarding connecting peripherals to Common Processor Boar
 - 2x PCIe connectors
 - SD card slot
 - 8GiB eMMC
-
-Infotainment daughter card
---------------------------
-
-Infotainment daughter card is adapter board which has additional peripherals for
-infotainment use cases. This has support for HDMI display, FPDlink display
-extra audio channels, CSI camera, etc
-
-.. Image:: /images/K3-Infotainment-card.png
-
-Contents of the board
-
-- 14x 3.5mm audio jacks
-- 2x FPDlink display connectors
-- Parallel port Omnivision camera connector
-- CSI camera connector
-- HDMI display connector
 
 Quad Port Ethernet daughter card
 --------------------------------

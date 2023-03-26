@@ -79,11 +79,9 @@ linux/Foundational_Components/PRU-ICSS-Linux-Drivers
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RemoteProc
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/RPMsg
 linux/Foundational_Components/PRU-ICSS/RPMsg_Quick_Start_Guide
-linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU-ICSS_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet_Switch
 linux/Foundational_Components/PRU-ICSS/Linux_Drivers/PRU_ICSSG_Ethernet_sr10
-linux/Foundational_Components/PRU-ICSS/Linux_Drivers/pru-icssg-pwm
 linux/Foundational_Components/PRU-ICSS-Hardware
 linux/Foundational_Components/PRU-ICSS/PRU-EVMs
 linux/Foundational_Components/PRU-ICSS-Training
@@ -109,9 +107,6 @@ linux/Industrial_Protocols_RSTP
 linux/Industrial_Protocols_CCLINK
 linux/Industrial_Protocols_SORTE
 linux/Industrial_Protocols_OPCUA
-linux/Examples_and_Demos
-linux/Examples_and_Demos_Application_Demos
-linux/Examples_and_Demos/Application_Demos/PdM_Anomaly_Detection
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
 linux/How_to_Guides/Host/Connect_to_an_EVM_via_Telnet
