@@ -191,6 +191,7 @@ U-Boot Known Issues
 
    "LCPD-29300","U-Boot: OSPI-NOR: sf probe shows 0 randomly","am62xx-sk,am62xx_sk-fs,am62xx_sk-se",""
    "LCPD-28503","Need to sync up DTS files between u-boot and kernel for at least AM62x & AM64x, possibly other boards too","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am64xx-evm,am64xx-sk",""
+   "LCPD-32945","AM62x USB-DFU Boot is broken in R5 SPL","am62xx-sk, am62xx_sk-fs","Refer to :ref:`workarounds`"
 
 |
 

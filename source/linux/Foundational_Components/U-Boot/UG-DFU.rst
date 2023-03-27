@@ -126,6 +126,11 @@ platform that support USB Peripheral boot mode.
      QSPI to fresh/factory boards.
 
 .. ifconfig:: CONFIG_part_family in ('AM62X_family')
+  
+  .. note::
+    
+     Please refer to :ref:`workarounds` to fix the USB Device Firmware Upgrade (DFU) Boot
+     failure in AM62x.
 
   #. Build the bootloader images using default "am62x_evm_r5_usbdfu_defconfig"
      and "am62x_evm_a53_defconfig" configs files. The configs required for
