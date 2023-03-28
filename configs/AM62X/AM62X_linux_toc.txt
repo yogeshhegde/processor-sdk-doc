@@ -69,7 +69,7 @@ linux/Foundational_Components/Kernel/Kernel_Drivers/Network/NETCONF-YANG
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Backplane
 #linux/Foundational_Components/Kernel/Kernel_Drivers/PCIe/PCIe_Root_Complex
 linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_overview
-linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_dvfs
+linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_dfs
 linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_cpuidle
 linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_sw_arch
 linux/Foundational_Components_Kernel_Drivers_Power_Management
