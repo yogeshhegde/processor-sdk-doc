@@ -86,67 +86,69 @@ All relevant options are listed below:
         <*>    Texas Instruments CPUFreq support
        ...
 
-.. rubric:: DT Configuration
+.. ifconfig:: CONFIG_part_variant in ('J7200')
 
-The clock information and the operating-points table need to be added as
-given in the example below.
+        .. rubric:: DT Configuration
 
-::
+        The clock information and the operating-points table need to be added as
+        given in the example below.
 
-    /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
+        ::
 
-    cpus {
-		#address-cells = <1>;
-		#size-cells = <0>;
-		cpu-map {
-			cluster0: cluster0 {
-				core0 {
-					cpu = <&cpu0>;
-				};
+            /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
 
-				core1 {
-					cpu = <&cpu1>;
-				};
-			};
+            cpus {
+                        #address-cells = <1>;
+                        #size-cells = <0>;
+                        cpu-map {
+                                cluster0: cluster0 {
+                                        core0 {
+                                                cpu = <&cpu0>;
+                                        };
 
-		};
+                                        core1 {
+                                                cpu = <&cpu1>;
+                                        };
+                                };
 
-		cpu0: cpu@0 {
-			compatible = "arm,cortex-a72";
-			reg = <0x000>;
-			device_type = "cpu";
-			enable-method = "psci";
-			i-cache-size = <0xc000>;
-			i-cache-line-size = <64>;
-			i-cache-sets = <256>;
-			d-cache-size = <0x8000>;
-			d-cache-line-size = <64>;
-			d-cache-sets = <256>;
-			next-level-cache = <&L2_0>;
-			clocks = <&k3_clks 202 2>;
-			clock-names = "cpu";
-			operating-points-v2 = <&cpu0_opp_table>;
-			#cooling-cells = <2>; /* min followed by max */
-		};
+                        };
 
-		cpu1: cpu@1 {
-			compatible = "arm,cortex-a72";
-			reg = <0x001>;
-			device_type = "cpu";
-			enable-method = "psci";
-			i-cache-size = <0xc000>;
-			i-cache-line-size = <64>;
-			i-cache-sets = <256>;
-			d-cache-size = <0x8000>;
-			d-cache-line-size = <64>;
-			d-cache-sets = <256>;
-			next-level-cache = <&L2_0>;
-			operating-points-v2 = <&cpu0_opp_table>;
-			#cooling-cells = <2>; /* min followed by max */
-			clocks = <&k3_clks 203 0>;
-			clock-names = "cpu";
-		};
-	};
+                        cpu0: cpu@0 {
+                                compatible = "arm,cortex-a72";
+                                reg = <0x000>;
+                                device_type = "cpu";
+                                enable-method = "psci";
+                                i-cache-size = <0xc000>;
+                                i-cache-line-size = <64>;
+                                i-cache-sets = <256>;
+                                d-cache-size = <0x8000>;
+                                d-cache-line-size = <64>;
+                                d-cache-sets = <256>;
+                                next-level-cache = <&L2_0>;
+                                clocks = <&k3_clks 202 2>;
+                                clock-names = "cpu";
+                                operating-points-v2 = <&cpu0_opp_table>;
+                                #cooling-cells = <2>; /* min followed by max */
+                        };
+
+                        cpu1: cpu@1 {
+                                compatible = "arm,cortex-a72";
+                                reg = <0x001>;
+                                device_type = "cpu";
+                                enable-method = "psci";
+                                i-cache-size = <0xc000>;
+                                i-cache-line-size = <64>;
+                                i-cache-sets = <256>;
+                                d-cache-size = <0x8000>;
+                                d-cache-line-size = <64>;
+                                d-cache-sets = <256>;
+                                next-level-cache = <&L2_0>;
+                                operating-points-v2 = <&cpu0_opp_table>;
+                                #cooling-cells = <2>; /* min followed by max */
+                                clocks = <&k3_clks 203 0>;
+                                clock-names = "cpu";
+                        };
+                };
 
 .. rubric:: Driver Usage
 
@@ -184,10 +186,19 @@ To view current OPP (frequency in kHz)
 
 To view supported OPP's (frequency in kHz),
 
-::
+.. ifconfig:: CONFIG_part_variant in ('J7200')
 
-    $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
-    750000000 1000000000 1500000000 2000000000
+        ::
+
+            $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
+            750000000 1000000000 1500000000 2000000000
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        ::
+
+                $ cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies
+                200000 400000 600000 800000 1000000 1250000 1400000
 
 To change OPP (can be done only for userspace governor. If governors
 like ondemand is used, OPP change happens automatically based on the
@@ -207,26 +218,87 @@ pair of voltage frequency value. To keep compatibility with the DVFS
 system, DFS uses same OPP tables with the voltages removed from the
 table.
 
-::
+.. ifconfig:: CONFIG_part_variant in ('J7200')
 
-    /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
+        ::
 
-	cpu0_opp_table: opp-table {
-		compatible = "operating-points-v2";
+            /* From arch/arm64/boot/dts/ti/k3-j7200.dtsi */
 
-		opp4-2000000000 {
-			opp-hz = /bits/ 64 <2000000000>;
-		};
+                cpu0_opp_table: opp-table {
+                        compatible = "operating-points-v2";
 
-		opp3-1500000000 {
-			opp-hz = /bits/ 64 <1500000000>;
-		};
+                        opp4-2000000000 {
+                                opp-hz = /bits/ 64 <2000000000>;
+                        };
 
-		opp2-1000000000 {
-			opp-hz = /bits/ 64 <1000000000>;
-		};
+                        opp3-1500000000 {
+                                opp-hz = /bits/ 64 <1500000000>;
+                        };
 
-		opp1-750000000 {
-			opp-hz = /bits/ 64 <750000000>;
-		};
-	};
+                        opp2-1000000000 {
+                                opp-hz = /bits/ 64 <1000000000>;
+                        };
+
+                        opp1-750000000 {
+                                opp-hz = /bits/ 64 <750000000>;
+                        };
+                };
+
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        The OPP tables defined in arch/arm64/boot/dts/ti/k3-am625.dtsi
+        allows defining of a different set of OPPs for each different SoC.
+
+        ::
+
+                /* From arch/arm64/boot/dts/ti/k3-am625.dtsi */
+                a53_opp_table: opp-table {
+                        compatible = "operating-points-v2-ti-cpu";
+                        opp-shared;
+                        syscon = <&wkup_conf>;
+
+                        opp-200000000 {
+                                opp-hz = /bits/ 64 <200000000>;
+                                opp-supported-hw = <0x01 0x0007>;
+                                clock-latency-ns = <6000000>;
+                                opp-suspend;
+                        };
+
+                        opp-400000000 {
+                                opp-hz = /bits/ 64 <400000000>;
+                                opp-supported-hw = <0x01 0x0007>;
+                                clock-latency-ns = <6000000>;
+                        };
+
+                        opp-600000000 {
+                                opp-hz = /bits/ 64 <600000000>;
+                                opp-supported-hw = <0x01 0x0007>;
+                                clock-latency-ns = <6000000>;
+                        };
+
+                        opp-800000000 {
+                                opp-hz = /bits/ 64 <800000000>;
+                                opp-supported-hw = <0x01 0x0007>;
+                                clock-latency-ns = <6000000>;
+                        };
+
+                        opp-1000000000 {
+                                opp-hz = /bits/ 64 <1000000000>;
+                                opp-supported-hw = <0x01 0x0006>;
+                                clock-latency-ns = <6000000>;
+                        };
+
+                        opp-1250000000 {
+                                opp-hz = /bits/ 64 <1250000000>;
+                                opp-supported-hw = <0x01 0x0004>;
+                                clock-latency-ns = <6000000>;
+                        };
+                };
+
+        To disable any of the above OPP's one can simply add
+        ::
+
+                status = "disabled";
+
+        to the corresponding DT Node.
