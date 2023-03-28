@@ -12,11 +12,11 @@ meta layers. These are the <config> used in the command:
 ``$ ./oe-layertool-setup.sh -f <config>``
 
 |
-| The following config files are located in the **yocto-build/configs/processor-sdk-linux**
+| The following config files are located in the **yocto-build/configs/processor-sdk/**
   directory.
 
-+-------------------------------------+----------------------------------------------------+--------------------------------+
-|      Config File                    |                    Description                     | Supported machines             |
-+=====================================+====================================================+================================+
-| processor-sdk-linux-08_02_00.txt    | Processor SDK Linux 08_02_00 Release               | am65xx-evm                     |
-+-------------------------------------+----------------------------------------------------+--------------------------------+
++--------------------------------------------+----------------------------------------------------+--------------------------------+
+|      Config File                           |                    Description                     | Supported machines             |
++============================================+====================================================+================================+
+| processor-sdk-08.06.00-am65xx-config.txt   | Processor SDK Linux 08_02_00 Release               | am65xx-evm, am65xx-hs-evm      |
++--------------------------------------------+----------------------------------------------------+--------------------------------+
