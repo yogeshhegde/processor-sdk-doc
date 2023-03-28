@@ -286,9 +286,9 @@ Example camera pipeline
                      type V4L2 subdev subtype Sensor flags 0
                      device node name /dev/v4l-subdev2
                 pad0: Source
-                        [stream:0 fmt:SRGGB8_1X8/1920x1080 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:full-range
+                        [stream:0 fmt:SRGGB10_1X10/1640x1232 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:full-range
                          crop.bounds:(8,8)/3280x2464
-                         crop:(688,700)/1920x1080]
+                         crop:(8,8)/3280x2464]
                         -> "cdns_csi2rx.30101000.csi-bridge":0 [ENABLED,IMMUTABLE]
         ....
 
@@ -297,54 +297,53 @@ Example camera pipeline
 
     ::
 
-        [   15.958706] init_script.sh[859]: CSI Camera 0 detected
-        [   15.981126] init_script.sh[859]:     device = /dev/video2
-        [   15.981439] init_script.sh[859]:     name = imx219
-        [   15.981604] init_script.sh[859]:     format = [fmt:SRGGB8_1X8/1920x1080]
-        [   15.981740] init_script.sh[859]:     subdev_id = /dev/v4l-subdev2
-        [   15.981862] init_script.sh[859]:     isp_required = yes
+        CSI Camera 0 detected
+            device = /dev/video2
+            name = imx219
+            format = [fmt:SRGGB10_1X10/1640x1232]
+            subdev_id = /dev/v4l-subdev2
+            isp_required = yes
 
     For manual configuration, like switching to a different resolution or
     bitdepth, you can use media-ctl as `explained above
     <#utilities-to-interact-with-the-driver>`__. For example you can switch to
-    10-bit 1232p capture on IMX219 using:
+    10-bit 1080p capture on IMX219 using:
 
     ::
 
-        $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB10_1X10/1640x1232]'
+        $ media-ctl --set-v4l2 '"imx219 4-0010":0[fmt:SRGGB10_1X10/1920x1080]'
 
     Capturing raw frames
     --------------------
 
     Once the media pipeline is configured, you should be able to capture raw
     frames from the sensor using any tool compliant with v4l2 apis. For example
-    you can use yavta to capture 100 frames from IMX219 @ 1080p:
+    you can use yavta to capture 100 frames from IMX219 @ 1232p:
 
     ::
 
-        $ yavta -s 1920x1080 -f SRGGB8 /dev/video2 -c100
+        $ yavta -s 1640x1232 -f SRGGB10 /dev/video2 -c100
         Device /dev/video2 opened.
         Device `j721e-csi2rx' on `platform:30102000.ticsi2rx' is a video output (without mplanes) device.
-        Video format set: SRGGB8 (42474752) 1920x1080 (stride 1920) field none buffer size 2073600
-        Video format: SRGGB8 (42474752) 1920x1080 (stride 1920) field none buffer size 2073600
+        Video format set: SRGGB10 (30314752) 1640x1232 (stride 3280) field none buffer size 4040960
+        Video format: SRGGB10 (30314752) 1640x1232 (stride 3280) field none buffer size 4040960
         8 buffers requested.
-        length: 2073600 offset: 0 timestamp type/source: mono/EoF
-        Buffer 0/0 mapped at address 0xffff8cbba000.
         ....
-        0 (0) [-] any 0 2073600 B 814.651190 814.651207 18.970 fps ts mono/EoF
-        1 (1) [-] any 1 2073600 B 814.684504 814.684517 30.017 fps ts mono/EoF
+        0 (0) [-] any 0 4040960 B 5147.594160 5147.594200 17.080 fps ts mono/EoF
+        1 (1) [-] any 1 4040960 B 5147.627500 5147.627570 29.994 fps ts mono/EoF
         ....
-        98 (2) [-] any 98 2073600 B 817.917208 817.917241 29.985 fps ts mono/EoF
-        99 (3) [-] any 99 2073600 B 817.950513 817.950527 30.026 fps ts mono/EoF
-        Captured 100 frames in 3.352051 seconds (29.832478 fps, 61860626.507904 B/s).
+        98 (2) [-] any 98 4040960 B 5150.860153 5150.860171 30.007 fps ts mono/EoF
+        99 (3) [-] any 99 4040960 B 5150.893480 5150.893499 30.006 fps ts mono/EoF
+        Captured 100 frames in 3.357886 seconds (29.780638 fps, 120342366.671406 B/s).
         8 buffers released.
+
 
     By default the frames are copied over to DDR and discarded later. You can
     optionally save a few frames to the SD card for debugging purposes:
 
     ::
 
-        $ yavta -s 1920x1080 -f SRGGB8 /dev/video2 -c5 -Fframe-#.bin
+        $ yavta -s 1640x1232 -f SRGGB10 /dev/video2 -c5 -Fframe-#.bin
         ....
         $ ls -l frame-*.bin
         -rw-r--r-- 1 root root 2073600 Feb 22 05:24 frame-000000.bin
@@ -373,7 +372,18 @@ Example camera pipeline
 
         $ systemctl stop weston.service
 
-    Use the following pipeline for IMX219 1080p RAW8 mode:
+    Use the following pipeline for IMX219 1232p RAW10 mode:
+
+    ::
+
+        $ gst-launch-1.0 v4l2src device=/dev/video2 io-mode=5 ! video/x-bayer,width=1640,height=1232,format=rggb10 ! \
+        tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss_10b_1640x1232.bin \
+        sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_10b_1640x1232.bin sink_0::device=/dev/v4l-subdev2 format-msb=9 ! \
+        video/x-raw,format=NV12 ! kmssink driver-name=tidss sync=false
+
+    If the sensor is configured to capture at some other resolution or format
+    (e.g. 1080p RAW8 mode) you can edit the above pipeline with the new width,
+    height, format and dcc-\*-file parameters:
 
     ::
 
