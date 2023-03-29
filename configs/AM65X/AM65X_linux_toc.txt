@@ -9,7 +9,7 @@ linux/Overview/Download_and_Install_the_SDK
 linux/Overview/Run_Setup_Scripts
 linux/Overview/Top_Level_Makefile
 linux/Overview/GCC_ToolChain
-linux/Overview/Processor_SDK_Linux_Formatting_SD_Card
+linux/Overview/Processor_SDK_Linux_create_SD_card
 devices/AM65X/linux/index
 devices/AM65X/linux/Release_Specific
 devices/AM65X/linux/Release_Specific_Release_Notes
