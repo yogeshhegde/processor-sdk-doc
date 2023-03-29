@@ -576,6 +576,11 @@ Running the following commands will trigger netperf clients to measure UDP burst
 
 |
 
+.. note::
+
+    | To reduce CPU Load and improve throughput, it is recommended to enable Interrupt Pacing. Interrupt Pacing can be enabled through ethtool command.
+    | For example, to enable Interrupt Pacing with tx coalesce parameter (tx-usecs) set to 250 microseconds and rx coalesce parameter (rx-usecs) set to 250 microseconds, the following command can be used for interface eth0:
+    | **ethtool -C eth0 tx-usecs 250 rx-usecs 250**
 
 CPSW/CPSW2g/CPSW3g Ethernet Driver 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -590,7 +595,7 @@ CPSW/CPSW2g/CPSW3g Ethernet Driver
 .. csv-table::
     :header: "Command Used","j7200-evm: THROUGHPUT (Mbits/sec)","j7200-evm: CPU Load % (LOCAL_CPU_UTIL)","j721e-idk-gw: THROUGHPUT (Mbits/sec)","j721e-idk-gw: CPU Load % (LOCAL_CPU_UTIL)","j721s2-evm: THROUGHPUT (Mbits/sec)","j721s2-evm: CPU Load % (LOCAL_CPU_UTIL)","j784s4-evm: THROUGHPUT (Mbits/sec)","j784s4-evm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1615.13","30.79","1844.71","27.81","1866.78","30.55","150.03","1.70"
+    "netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.0.1 -j -c -C -l 60 -t TCP_MAERTS","1615.13","30.79","1844.71","27.81","1866.78","30.55","1846.33","24.94"
 
 Table: **CPSW TCP Bidirectional Throughput**
 |
