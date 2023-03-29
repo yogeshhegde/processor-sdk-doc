@@ -273,20 +273,39 @@ the Makefile from the top-level of the SDK.
 
     host# make am-benchmarks_install
 
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
-
-  .. ifconfig:: CONFIG_part_variant in ('AM65X')
-
-    -  By default, this builds the sysfw for AM65xx PG1.0.  To build sysfw for AM65xx PG2.0,
-       modify the SYSFW_SOC_am65xx-evm variable in the Makefile to equal am65x_sr2 and build.
+.. ifconfig:: CONFIG_sdk in ('PSDKL') or CONFIG_part_variant in ('AM65X')
 
   -  Build the sysfw.
 
   .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-    -  By default, this builds the sysfw for AM65xx PG1.0.  To build sysfw for AM65xx PG2.0,
-       modify the SYSFW_SOC_am65xx-evm variable in the Makefile to equal am65x_sr2 and build.
+    -  By default, this builds the sysfw for AM65xx PG2.0 GP. To build sysfw for other variants,
+       run the following commands
+
+    ::
+
+        host# cd <installer>/board-support/prebuilt-binaries/
+
+    -  To build for AM65xx PG2.0 HS,
+    ::
+
+        host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x_sr2-hs-cert.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x_sr2-hs-cert.bin
+        host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x_sr2-hs-enc.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x_sr2-hs-enc.bin
+
+    -  To build for AM65xx PG1.0 HS,
+    ::
+
+        host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x-hs-cert.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x-hs-cert.bin
+        host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x-hs-enc.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x-hs-enc.bin
+
+    -  To build for AM65xx PG1.0 GP,
+    ::
+
+        host# wget https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/plain/ti-sysfw/ti-sci-firmware-am65x-gp.bin?h=cicd.dunfell.202303090400 -o ti-sci-firmware-am65x-gp.bin
+
+    -  And modify the SYSFW_SOC_am65xx-evm variable in the Makefile to equal am65x or am65x_sr2 based on the device your are building for (AM65xx PG1.0 or AM65xx PG2.0 respectively).
+
+    -  To Build for HS, add `SOC_TYPE=hs` in Rules.make file
 
   ::
 
@@ -318,46 +337,46 @@ the Makefile from the top-level of the SDK.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62AX')
 
--  Build the combined boot image (tiboot3.bin) 
+    -  Build the combined boot image (tiboot3.bin) 
   
-This requires first building the R5 boot image. This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined boot image.
+    This requires first building the R5 boot image. This will generate the u-boot-spl.bin. Then build sysfw-image to generate combined boot image.
 
-**For GP**
-::
+    **For GP**
+    ::
 
-    host# make u-boot
-    host# make sysfw-image DEVICE_TYPE=gp
+        host# make u-boot
+        host# make sysfw-image DEVICE_TYPE=gp
   
-The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-gp-evm.bin
+    The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-gp-evm.bin
  
-**For HS-FS**
-::
+    **For HS-FS**
+    ::
 
-    host# make u-boot
-    host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
-    host# make sysfw-image DEVICE_TYPE=hs-fs
+        host# make u-boot
+        host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
+        host# make sysfw-image DEVICE_TYPE=hs-fs
   
-The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-fs-evm.bin
+    The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-fs-evm.bin
  
-**For HS-SE**
-::
+    **For HS-SE**
+    ::
 
-    host# make u-boot
-    host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
-    host# make sysfw-image DEVICE_TYPE=hs
+        host# make u-boot
+        host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
+        host# make sysfw-image DEVICE_TYPE=hs
   
-The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-evm.bin
+    The combined boot image will be at <TI_SDK_PATH>/board-support/k3-image-gen*/tiboot3-am6*-hs-evm.bin
 
-.. note:: If TI_SECURE_DEV_PKG environment variable is not defined, tiboot3.bin can still be built for GP devices. The following errors will occur in K3-Image-Gen build logs when building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
- ::
+    .. note:: If TI_SECURE_DEV_PKG environment variable is not defined, tiboot3.bin can still be built for GP devices. The following errors will occur in K3-Image-Gen build logs when building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
+     ::
 
-   TI_SECURE_DEV_PKG must be set for HS, defaults will not work.  Stop.
+       TI_SECURE_DEV_PKG must be set for HS, defaults will not work.  Stop.
 
-To fix the above issue, do the following and rebuild the `sysfw-image`.
+    To fix the above issue, do the following and rebuild the `sysfw-image`.
 
-::
+    ::
 
-   host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
+       host# export TI_SECURE_DEV_PKG=<path-to-board-support>/core-secdev-k3
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
