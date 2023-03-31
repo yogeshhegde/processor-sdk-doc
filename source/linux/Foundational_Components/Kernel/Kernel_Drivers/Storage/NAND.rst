@@ -244,6 +244,8 @@ many other things like wear leveling, bad-block management, etc.
     +-----------------+--------------------------------+-------------------------------------+
     | AM64 GP EVM     | -F -m 4096 -e 258048 -c 3970   | -m 4096 -p 256KiB -s 1024 -O 1024   |
     +-----------------+--------------------------------+-------------------------------------+
+    | AM62 LP SK      | -F -m 4096 -e 258048 -c 3970   | -m 4096 -p 256KiB -s 1024 -O 1024   |
+    +-----------------+--------------------------------+-------------------------------------+
 
     Table:  Table of Parameters to use for Building UBI filesystem image
 
@@ -353,6 +355,10 @@ many other things like wear leveling, bad-block management, etc.
 |          | 8ADAFAH4 |          |          |          |          |          |          |          |
 |          | :F       |          |          |          |          |          |          |          |
 +----------+----------+----------+----------+----------+----------+----------+----------+----------+
+| AM62     | MT29F8G0 | 1024 MB  | 8        | 256      | 4        | 256      | BCH 8    | GPMC     |
+|          | 8ADAFAH4 |          |          |          |          |          |          |          |
+|          | :F       |          |          |          |          |          |          |          |
++----------+----------+----------+----------+----------+----------+----------+----------+----------+
 
 Table:  NAND Flash Specification Summary
 
@@ -396,6 +402,14 @@ BCH16. So BCH8 ECC Scheme has been used on this board.
 
 .. rubric:: **How to enable GPMC NAND driver in Linux Kernel ?**
    :name: how-to-enable-gpmc-nand-driver-in-linux-kernel
+
+.. ifconfig:: CONFIG_part_family in ('AM62X_family')
+
+    Apply GPMC NAND overlay at u-boot prompt in AM62x LP-SK board:
+
+    ::
+
+       =>  setenv name_overlays k3-am62x-lp-sk-nand.dtbo
 
 GPMC NAND driver can be enabled/disabled via *Linux Kernel
 Configuration* tool. Enable below Configs to enable MTD Support along

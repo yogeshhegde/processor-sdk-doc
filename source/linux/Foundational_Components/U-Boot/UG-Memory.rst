@@ -852,3 +852,101 @@ Booting Linux from USB storage
 
     Set the board boot from SD (or eMMC respectively) and reset the EVM. The
     SPL directly boots the kernel image from SD (or eMMC).
+
+Steps for working around SD card issues
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In some cases issue can be seen while using some SD cards, like
+
+#. Error while trying to initialize,
+
+    ::
+
+        U-Boot SPL 2021.01-g74fc69c889 (May 19 2022 - 02:44:29 +0000)
+        SYSFW ABI: 3.1 (firmware rev 0x0008 '8.3.2--v08.03.02 (Jolly Jellyfi')
+        Trying to boot from MMC2
+        spl: mmc init failed with error: -110
+        SPL: failed to boot from all boot devices
+        ### ERROR ### Please RESET the board ###
+
+Given below are the list of various workarounds that can be done in the
+device tree node to get SD card working. The workarounds are ordered in
+increasing order of reducing performance.
+
+All the  mentioned below, are to be done in the MMCSD device tree node
+corresponding to the SD instance. This is usually the first(index starting
+from zero) instance.
+
+#. Restricting to a given speed mode
+
+   - By default the U-Boot driver tries to enumerate a SD card in the highest
+     supported speed mode. Given below is the order in which the driver
+     tries to enumerate a SD card
+
+       - SDR104
+       - SDR50
+       - DDR50
+       - SD HS
+       - SD legacy
+
+   - These speed capabilites can be masked using device tree property
+     sdhci-caps-mask.
+
+       - Limit to SDR50: ``sdhci-caps-mask = <0x00000004 0x00000000>``
+       - Limit to DDR50: ``sdhci-caps-mask = <0x00000006 0x00000000>``
+       - Limit to SD HS: ``sdhci-caps-mask = <0x00000007 0x00000000>``
+       - Limit to SD legacy: ``sdhci-caps-mask = <0x00000007 0x00200000>``
+
+          ::
+
+              &sdhci1 {
+                  /* SD/MMC */
+                 vmmc-supply = <&vdd_mmc1>;
+                 vqmmc-supply = <&vdd_sd_dv>;
+                 pinctrl-names = "default";
+                 pinctrl-0 = <&main_mmc1_pins_default>;
+                 ti,driver-strength-ohm = <50>;
+                 disable-wp;
+                 sdhci-caps-mask = <0x00000006 0x00000000>; /* Limiting to DDR50 speed mode */
+              };
+
+#. Increase power cycle period
+
+    - Increasing the delay while power cycling the SD card. This can be done
+      by increasing the delay value in the diff indicated below,
+
+        ::
+
+            diff --git a/drivers/mmc/mmc.c b/drivers/mmc/mmc.c
+            index f486e2a2c364..38cc956b3d53 100644
+            --- a/drivers/mmc/mmc.c
+            +++ b/drivers/mmc/mmc.c
+            @@ -2761,7 +2761,7 @@ static int mmc_power_cycle(struct mmc *mmc)
+                     * SD spec recommends at least 1ms of delay. Let's wait for 2ms
+                     * to be on the safer side.
+                     */
+            -       udelay(2000);
+            +       udelay(4000);
+                    return mmc_power_on(mmc);
+             }
+
+#. Reduce the bus width
+
+    - The SD interface supports a bus width of 4. It can be reduced to 1 by
+      changing the ``bus-width`` device tree property from 4 to 1.
+
+        ::
+
+            diff --git a/arch/arm/dts/k3-am62-main.dtsi b/arch/arm/dts/k3-am62-main.dtsi
+            index c06ec7355035..4ab29b6aa4b7 100644
+            --- a/arch/arm/dts/k3-am62-main.dtsi
+            +++ b/arch/arm/dts/k3-am62-main.dtsi
+            @@ -373,7 +373,7 @@
+                            ti,itap-del-sel-sdr12 = <0x0>;
+                            ti,itap-del-sel-sdr25 = <0x0>;
+                            ti,clkbuf-sel = <0x7>;
+            -               bus-width = <4>;
+            +               bus-width = <1>;
+             };
+
+             sdhci2: mmc@fa20000 {
