@@ -120,7 +120,6 @@ linux/Examples_and_Demos/Application_Demos/PRU_ADC
 linux/Examples_and_Demos/Application_Demos/Video_Graphics_Test
 linux/Examples_and_Demos/Application_Demos/Watchdog_demo
 linux/Examples_and_Demos/Application_Demos/Additional_Application_Demo_Links
-linux/Examples_and_Demos_Matrix_User_Guide
 linux/Examples_and_Demos_Sub-system_Demos
 linux/How_to_Guides
 linux/How_to_Guides_Host
