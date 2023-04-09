@@ -549,6 +549,39 @@ Change Requests
       JACINTOREQ-5338 ,Jacinto PSDK 8.6 AEP/AHP industrial APL pull-in impact, 08.06.00 ,09.00.00
 
 
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+   SDK features descoped from 8.6 release
+   --------------------------------------
+   .. csv-table::
+      :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
+      :widths: 20, 90, 20, 20
+
+      JACINTOREQ-5338 ,Jacinto PSDK 8.6 AEP/AHP industrial APL pull-in impact, 08.06.00 ,09.00.00
+
+   SDK features descoped from 8.5 release
+   --------------------------------------
+   .. csv-table::
+      :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
+      :widths: 20, 90, 20, 20
+
+      JACINTOREQ-5060, Jacinto networking requirements - CR to 8.6, 08.05.00, 08.06.00
+      JACINTOREQ-4991, "Jacinto Baseport, Graphics, Multimedia CR to 8.6", 08.05.00, 08.06.00
+      JACINTOREQ-4934, CSI Capture Automated Testing for J7AEP, 08.05.00, 08.06.00
+      JACINTOREQ-4928, J7AEP Multimedia Scope Modify, 08.05.00, 08.06.00
+
+   SDK features descoped from 8.4 release
+   --------------------------------------
+   .. csv-table::
+     :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
+     :widths: 20, 90, 20, 20
+
+      JACINTOREQ-4905 ,J7AEP Graphics Scope Modify, 08.04.00 ,08.05.00/08.06.00
+      JACINTOREQ-4898 ,SERDES: PCIe + USB schedule update, 08.04.00 ,08.05.00
+      JACINTOREQ-4864 ,4k Resolution Scope change, 08.04.00 ,08.05.00
+      JACINTOREQ-4854 ,McASP Scope Change, 08.04.00 ,08.05.00
+      JACINTOREQ-4930 ,k3conf Doc and Test Modify, 08.04.00 ,08.05.00
+
 
 Installation and Usage
 ======================
