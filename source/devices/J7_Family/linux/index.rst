@@ -4,7 +4,8 @@
 Processor SDK Linux Software Developer's Guide
 **********************************************
 
-.. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for J721e
+
+.. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for |__PART_FAMILY_DEVICE_NAMES__|
 
 .. include:: /linux/Overview/Processor_SDK_Linux_Software_Developers_Guide.rst.inc
 
@@ -21,7 +22,7 @@ Processor SDK Linux Software Developer's Guide
 
 |
 
-.. include:: /devices/J7/linux/Release_Specific_QSG.rst.inc
+.. include:: /devices/J7_Family/linux/Release_Specific_QSG.rst.inc
 
 .. rubric:: Feedback
 

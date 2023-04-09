@@ -484,55 +484,58 @@ There are no known issues in this release in the Linux RT Kernel.
 Change Requests
 ===============
 
-SDK features descoped from 8.6 release
---------------------------------------
-.. csv-table::
-   :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
-   :widths: 20, 90, 20, 20
 
-    JACINTOREQ-5338 ,Jacinto PSDK 8.6 AEP/AHP industrial APL pull-in impact, 08.06.00 ,09.00.00
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
-SDK features scope change for 8.5 release
------------------------------------------
-.. csv-table::
-   :header: "ID", "Head Line"
-   :widths: 40, 60
+   SDK features descoped from 8.6 release
+   --------------------------------------
+   .. csv-table::
+      :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
+      :widths: 20, 90, 20, 20
 
-    JACINTOREQ-4994 , Video Codec Memory Optimization Scope Change
+       JACINTOREQ-5338 ,Jacinto PSDK 8.6 AEP/AHP industrial APL pull-in impact, 08.06.00 ,09.00.00
 
-SDK features descoped from 8.4 release
---------------------------------------
-.. csv-table::
-   :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
-   :widths: 20, 90, 20, 20
+   SDK features scope change for 8.5 release
+   -----------------------------------------
+   .. csv-table::
+      :header: "ID", "Head Line"
+      :widths: 40, 60
 
-    JACINTOREQ-4930 ,k3conf Doc and Test Modify, 08.04.00 ,08.05.00
+      JACINTOREQ-4994 , Video Codec Memory Optimization Scope Change
 
-SDK features descoped from 8.0 release
---------------------------------------
-.. csv-table::
-   :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
-   :widths: 20, 90, 20, 20
+   SDK features descoped from 8.4 release
+   --------------------------------------
+   .. csv-table::
+      :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
+      :widths: 20, 90, 20, 20
 
-    JACINTOREQ-1559 ,Linux H264 decoder support, 08.00.00 ,08.01.00
-    JACINTOREQ-1485 ,Linux writeback pipeline support ,08.00.00 ,None 
-    JACINTOREQ-1444 ,Vision apps inclusion in yocto build  ,08.00.00 ,None 
+      JACINTOREQ-4930 ,k3conf Doc and Test Modify, 08.04.00 ,08.05.00
+
+   SDK features descoped from 8.0 release
+   --------------------------------------
+   .. csv-table::
+      :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
+      :widths: 20, 90, 20, 20
+
+       JACINTOREQ-1559 ,Linux H264 decoder support, 08.00.00 ,08.01.00
+       JACINTOREQ-1485 ,Linux writeback pipeline support ,08.00.00 ,None 
+       JACINTOREQ-1444 ,Vision apps inclusion in yocto build  ,08.00.00 ,None 
 
 
-SDK features present in 7.0 that were descoped in 7.1
------------------------------------------------------
-.. csv-table::
-   :header: "Feature", "Comments"
-   :widths: 40, 60
+   SDK features present in 7.0 that were descoped in 7.1
+   -----------------------------------------------------
+   .. csv-table::
+      :header: "Feature", "Comments"
+      :widths: 40, 60
 
-   HS support,Restored in 7.3
-   SPL/Uboot boot modes restricted to SD card boot mode,Restored in 7.3
-   1s Linux boot,
-   Descope for support of native H264 encode/decode,Use R5F based driver with OpenVX as interface.  H.264 decoder support restored in 7.3
-   GPU compression,
-   SA2UL driver optimization,
-   Display Sharing,Display sharing demo available in SDK v6.1
-   Virtualization (Jailhouse hypervisor/IPC virtualization/CPSW9G virtualization),Does not affect 3P virtualization solutions. Basic Jailhouse demo can be seen in SDK 7.0
+      HS support,Restored in 7.3
+      SPL/Uboot boot modes restricted to SD card boot mode,Restored in 7.3
+      1s Linux boot,
+      Descope for support of native H264 encode/decode,Use R5F based driver with OpenVX as interface.  H.264 decoder support restored in 7.3
+      GPU compression,
+      SA2UL driver optimization,
+      Display Sharing,Display sharing demo available in SDK v6.1
+      Virtualization (Jailhouse hypervisor/IPC virtualization/CPSW9G virtualization),Does not affect 3P virtualization solutions. Basic Jailhouse demo can be seen in SDK 7.0
 
 
 Installation and Usage
