@@ -538,6 +538,18 @@ Change Requests
       Virtualization (Jailhouse hypervisor/IPC virtualization/CPSW9G virtualization),Does not affect 3P virtualization solutions. Basic Jailhouse demo can be seen in SDK 7.0
 
 
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+   SDK features descoped from 8.6 release
+   --------------------------------------
+   .. csv-table::
+      :header: "ID", "Head Line", "Original Fix Version", "New Fix Version"
+      :widths: 20, 90, 20, 20
+
+      JACINTOREQ-5338 ,Jacinto PSDK 8.6 AEP/AHP industrial APL pull-in impact, 08.06.00 ,09.00.00
+
+
+
 Installation and Usage
 ======================
 

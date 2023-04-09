@@ -37,14 +37,16 @@ as well as for instructions for booting with the default card.
 The preferred way for starting SDK development is SD card boot. The section referenced above
 describes pin settings to set the EVM in SD boot mode.
 
-.. rubric:: Running out of the box demo
-   :name: qsg-running-oob-demo
+.. ifconfig:: CONFIG_part_variant not in ('J7200')
 
-By default, the SD card comes with pre-built Linux SDK binaries flashed.
-This will allow you to quickly verify the EVM functionality with just a Display Port monitor.
+   .. rubric:: Running out of the box demo
+      :name: qsg-running-oob-demo
 
-Insert the SD card with pre-built binaries and boot the EVM. After successful bootup,
-you should see a welcome message on the display wallpaper.
+   By default, the SD card comes with pre-built Linux SDK binaries flashed.
+   This will allow you to quickly verify the EVM functionality with just a Display Port monitor.
+
+   Insert the SD card with pre-built binaries and boot the EVM. After successful bootup,
+   you should see a welcome message on the display wallpaper.
 
 .. rubric:: Flashing release binaries
    :name: qsg-flashing-release-binaries
