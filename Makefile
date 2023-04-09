@@ -27,7 +27,11 @@ ifneq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), GEN CORESDK))
        CONFDIR  = source/devices/$(DEVFAMILY_UP)
        TAGFILE  = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_tags.py
     else
-       CONFDIR  = source/devices/$(DEVFAMILY_UP)/${OS_LOW}
+	ifeq ($(DEVFAMILY_UP), $(filter $(DEVFAMILY_UP), J7 J7200 J721S2 J784S4))
+		CONFDIR  = source/devices/J7_Family/${OS_LOW}
+	else
+		CONFDIR  = source/devices/$(DEVFAMILY_UP)/${OS_LOW}
+	endif
        TAGFILE  = configs/$(DEVFAMILY_UP)/$(DEVFAMILY_UP)_${OS_LOW}_tags.py
     endif
     VERSION     = $(shell cat ${CONFDIR}/version.txt)
