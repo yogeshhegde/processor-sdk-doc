@@ -177,6 +177,7 @@ Issues opened in previous releases that were closed on this release
    :widths: 20, 80
 
    "LCPD-32773","Rx stall seen when there is network traffic during startup"
+   "LCPD-28492","AM65: ICSSG: phc_ctl: Seeing clock jumps in get"
 
 ..
    project = LCPD AND platform in (am654x-evm, am654x-hsevm) AND
@@ -336,21 +337,17 @@ Linux Kernel Known Issues
     LCPD-17412,QT5 Webengine-based browser crashing with any resize operation
     LCPD-24127,AM654x IPSEC Software Crypto tests fail (Impact 4)
     LCPD-29588,CPSW documentation: Time Sync Router no longer firewalled
-    LCPD-28492,AM65: ICSSG: phc_ctl: Seeing clock jumps in get
     LCPD-28436,AM65x Uboot PRUETH is broken
     LCPD-24537,am654x-idk nslookup times out when all netwokring interfaces are active
     LCPD-24288,am64xx-evm NCM/ACM network performance test crashes with RT images
-    LCPD-24128,Performance issues with CPSW/ICSSG Linux Driver
     LCPD-22905,UDMA: TR15 hangs if ICNT0 is less than 64 bytes
     LCPD-22892,icssg: due to FW bug both interfaces has to be loaded always
     LCPD-22772,PRU_ICSSG: 100Mbit/s MII is not supported when the PRU_ICSSG is operating at frequencies < 250MHz
     LCPD-22324,ICSSG port does not drop packets with SA matching interface MAC
     LCPD-19923,[AM65x] Linux reboot command fails
     LCPD-19861,ICSSG: Unregistered multicast MAC packets are still visible in non-promiscuous mode
-    LCPD-19859,ETH ICSSG netperf benchmark returns lower performance than expected
     LCPD-19580,am654- unable to select a mode (sdhci?)
     LCPD-18788,Uboot: Could not bring up PCIe interface
-    LCPD-18756,ICSSG: eth5 and eth6 unknown interfaces 
     LCPD-18665,Am65x Pg2: Board cannot do soft reboot when booting from SD card
     LCPD-18289,pcie-usb tests sometimes fail
     LCPD-18228,PCI PM runtime suspend is not increasing
@@ -375,17 +372,17 @@ Linux Kernel Known Issues
     LCPD-19447,DSS: Disabling a layer connected to Overlay may result in synclost during the next frame
     LCPD-18297,AM6: OV5640: 176x144 does not work
     LCPD-14443,CTS failures detected
-    LCPD-14442,Ethernert port does not obtain ip address
     LCPD-20014,remoteproc: TX_PRU: IRQ vring, IRQ kick not found error message on console
     LCPD-29580,ICSSG IET Statistics are not getting counted
     LCPD-24718,am654x hwspinlock test failing
     LCPD-19739,AM65 shutdown error
     LCPD-29872,PTP Time Synchronization needs to be restarted after link downs
     LCPD-22959,UART Read/Write tests at baud rate 115200 fails
-    LCPD-20243,AM65x Transition Kernel: pru-icssg support for100M half duplex mode is broken
     LCPD-24319,am654x-evm DRM tests fail due to frequency mismatch (Impact 7)
     LCPD-23008,AM65xx - display port scenario not enabled
     LCPD-23007,k3-am654-evm-hdmi.dtbo file is missing in CoreSDK for am654x
+    LCPD-32823,ICSS firmware does not process Rx packets once Min error frame is received
+    LCPD-34104,ICSSG interface statistics rx_total_bytes don't match tx_total_bytes (eth1 -> eth3)
 
 ..
    project = LCPD AND
