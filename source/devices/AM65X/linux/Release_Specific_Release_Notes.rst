@@ -178,7 +178,10 @@ Issues opened in previous releases that were closed on this release
 
    "LCPD-32773","Rx stall seen when there is network traffic during startup"
    "LCPD-28492","AM65: ICSSG: phc_ctl: Seeing clock jumps in get"
-
+   "LCPD-18258","IPSEC perfomance failures"
+   "LCPD-24127","AM654x IPSEC Software Crypto tests fail (Impact 4)"
+   "LCPD-19859","ETH ICSSG netperf benchmark returns lower performance than expected"
+   
 ..
    project = LCPD AND platform in (am654x-evm, am654x-hsevm) AND
        issuetype = Bug AND
@@ -335,7 +338,6 @@ Linux Kernel Known Issues
     LCPD-18908,GLMark2 fails for am65x
     LCPD-17413,QT Webengine-based browser: the mouse does not work within the web page with QPA EGLFS
     LCPD-17412,QT5 Webengine-based browser crashing with any resize operation
-    LCPD-24127,AM654x IPSEC Software Crypto tests fail (Impact 4)
     LCPD-29588,CPSW documentation: Time Sync Router no longer firewalled
     LCPD-28436,AM65x Uboot PRUETH is broken
     LCPD-24537,am654x-idk nslookup times out when all netwokring interfaces are active
@@ -361,7 +363,6 @@ Linux Kernel Known Issues
     LCPD-13445,Seldom kernel oops triggered by prueth_netdev_init
     LCPD-20653,ltp: kernel syscall tests fail
     LCPD-19929,Industrial protocols documentation
-    LCPD-18258,IPSEC perfomance failures
     LCPD-17777,AES HW is not exercised
     LCPD-17673,No software documentation for the Timer module
     LCPD-17115,BUG: sleeping function called from invalid context at kernel/locking/rtmutex.c:967
