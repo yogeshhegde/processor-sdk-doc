@@ -18,5 +18,5 @@ meta layers. These are the <config> used in the command:
 +--------------------------------------------+----------------------------------------------------+--------------------------------+
 |      Config File                           |                    Description                     | Supported machines             |
 +============================================+====================================================+================================+
-| processor-sdk-08.06.00-am65xx-config.txt   | Processor SDK Linux 08_02_00 Release               | am65xx-evm, am65xx-hs-evm      |
+| processor-sdk-08.06.00-am65xx-config.txt   | Processor SDK Linux 08_06_00 Release               | am65xx-evm, am65xx-hs-evm      |
 +--------------------------------------------+----------------------------------------------------+--------------------------------+
