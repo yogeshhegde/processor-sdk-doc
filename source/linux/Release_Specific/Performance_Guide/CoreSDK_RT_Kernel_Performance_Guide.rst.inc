@@ -20,6 +20,8 @@ following Evaluation Modules unless otherwise specified.**
 +----------------+---------------------------------------------------------------------------------------------------------------------+
 | AM62A SK       | AM62A Starter Kit rev E2 with ARM running at 1200MHz, LPDDR4 data rate 1866 MT/S				       |
 +----------------+---------------------------------------------------------------------------------------------------------------------+
+| AM62x SK	 | AM62x Starter Kit rev E2 and E3 with ARM running at 1400 MHz, DDR4 data rate 1600 MT/S			       |
++----------------+---------------------------------------------------------------------------------------------------------------------+
 
 
 Table:  Evaluation Modules
@@ -367,9 +369,26 @@ thread-enabled workloads to be tested.
 Table:  **Multibench**
 
 
- 
- 
+Cyclictest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Cyclictest is most commonly used for benchmarking RT systems.
+It is one of the most frequently used tools for evaluating the relative performance of real-time systems.
+Some performance tests which use Cyclictest are System benchmarking, Latency debugging with tracing and
+approximating application performance.
+
+Test command: 
+cyclictest -l10000000 -m -Sp90 -i400 -h400 -q
+
+.. csv-table::
+    :header: "Latencies","am62xx_sk:per-core", "am64xx-hsevm:per-core"
+
+    "Minimum (usec)","5,5,5,5", "6,6"
+    "Average (usec)","6,6,6,6", "8,8"
+    "Maximum (usec)","65,65,34,40", "152,82"
+
+
+Table:  **Cyclictest**
  
 
 
