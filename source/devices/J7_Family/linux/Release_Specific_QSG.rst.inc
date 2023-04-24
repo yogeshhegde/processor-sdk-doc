@@ -26,8 +26,14 @@ Detailed steps are described at :ref:`run-setup-scripts`
 .. rubric:: Hardware EVM setup
    :name: qsg-hardware-evm-setup
 
-The J7 EVM comes with a SoM (System on Chip) based on which J7 variant is being used,
-a common processor board, a PMIC and a few optional daughter cards.
+.. ifconfig:: CONFIG_part_variant not in ('J784S4')
+
+   The J7 EVM comes with a SoM (System on Chip) based on which J7 variant is being used,
+   a common processor board, a PMIC and a few optional daughter cards.
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   The J784S4 EVM comes with the main J784S4 EVM board, a PMIC and a few optional daughter cards.
 
 Detailed instructions for EVM setup with image illustration can be found at
 :ref:`hardware-evm-setup`.
@@ -36,6 +42,17 @@ as well as for instructions for booting with the default card.
 
 The preferred way for starting SDK development is SD card boot. The section referenced above
 describes pin settings to set the EVM in SD boot mode.
+
+.. ifconfig:: CONFIG_part_variant not in ('J7200')
+
+   .. rubric:: Running out of the box demo
+      :name: qsg-running-oob-demo
+
+   By default, the SD card comes with pre-built Linux SDK binaries flashed.
+   This will allow you to quickly verify the EVM functionality with just a Display Port monitor.
+
+   Insert the SD card with pre-built binaries and boot the EVM. After successful bootup,
+   you should see a welcome message on the display wallpaper.
 
 .. rubric:: Flashing release binaries
    :name: qsg-flashing-release-binaries

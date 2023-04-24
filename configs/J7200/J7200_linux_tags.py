@@ -7,7 +7,7 @@ project = u'Processor SDK Linux for J7200'
 html_title = 'Processor SDK Linux for J7200 Documentation'
 
 # The master toctree document.
-master_doc = 'devices/J7200/linux/index'
+master_doc = 'devices/J7_Family/linux/index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
