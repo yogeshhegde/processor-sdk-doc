@@ -61,6 +61,28 @@ Whetstone
 Table:  **Whetstone Benchmark**
 
 
+Cyclictest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Cyclictest is most commonly used for benchmarking RT systems.
+It is one of the most frequently used tools for evaluating the relative performance of real-time systems.
+Some performance tests which use Cyclictest are System benchmarking, Latency debugging with tracing and
+approximating application performance.
+
+Test command: 
+cyclictest -l10000000 -m -Sp90 -i400 -h400 -q
+
+.. csv-table::
+    :header: "Latencies", "am64xx-hsevm:per-core"
+
+    "Minimum (usec)", "6,6"
+    "Average (usec)", "8,8"
+    "Maximum (usec)", "152,82"
+
+
+Table:  **Cyclictest**
+
+
 Ethernet
 -----------------
 Ethernet performance benchmarks were measured using Netperf 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
