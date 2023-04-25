@@ -79,7 +79,7 @@ Build Steps
 -----------
 
 Please refer to :ref:`here <yocto-layer-configuration>` for the
-layer configuration for a particular release of Processor SDK Linux.
+layer configuration for a particular release of |__SDK_FULL_NAME__|.
 The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
@@ -222,15 +222,89 @@ The "Build Output" is given relative to the
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-    +------------------------------+---------------------------------------------------------------+----------------------------+
-    | Target                       | Build Output                                                  | Description                |
-    +==============================+===============================================================+============================+
-    | arago-core-psdkla-bundle     | images/<machine>/processor-sdk-linux-image-<machine>.tar.xz   | Full SDK                   |
-    +------------------------------+---------------------------------------------------------------+----------------------------+
-    | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-    +------------------------------+---------------------------------------------------------------+----------------------------+
+    .. ifconfig:: CONFIG_demo in ('Foundational')
+
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | Target                       | Build Output                                                  | Description                |
+        +==============================+===============================================================+============================+
+        | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
+        |                              |                                                               | with docker enabled        |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+
+    .. ifconfig:: CONFIG_demo not in ('Foundational')
+
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | Target                       | Build Output                                                  | Description                |
+        +==============================+===============================================================+============================+
+        | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
 
 |
+
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+    .. rubric:: Platforms
+
+    Please refer to :ref:`here <yocto-layer-configuration>` for the yocto build platforms supported in |__SDK_FULL_NAME__|.
+    These are the <machine> used in the command:
+
+    ``MACHINE=<machine> bitbake <target>``
+
+    .. ifconfig:: CONFIG_part_variant in ('J721E')
+
+        +-------------------------------+-----------------------------------------------------------------------+
+        | **MACHINE**                   | **Supported EVMs**                                                    |
+        +-------------------------------+-----------------------------------------------------------------------+
+        | |__SDK_BUILD_MACHINE__|       | J721E EVM, TDA4VM SK                                                  |
+        +-------------------------------+-----------------------------------------------------------------------+
+
+    .. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+        +-------------------------------+-----------------------------------------------------------------------+
+        | **MACHINE**                   | **Supported EVMs**                                                    |
+        +-------------------------------+-----------------------------------------------------------------------+
+        | |__SDK_BUILD_MACHINE__|       | J721S2 EVM, AM68 SK                                                   |
+        +-------------------------------+-----------------------------------------------------------------------+
+
+    .. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+        +-------------------------------+-----------------------------------------------------------------------+
+        | **MACHINE**                   | **Supported EVMs**                                                    |
+        +-------------------------------+-----------------------------------------------------------------------+
+        | |__SDK_BUILD_MACHINE__|       | J784S4 EVM, AM69 SK                                                   |
+        +-------------------------------+-----------------------------------------------------------------------+
+
+    .. ifconfig:: CONFIG_part_variant in ('J7200')
+
+        +-------------------------------+-----------------------------------------------------------------------+
+        | **MACHINE**                   | **Supported EVMs**                                                    |
+        +-------------------------------+-----------------------------------------------------------------------+
+        | |__SDK_BUILD_MACHINE__|       | J7200 EVM                                                             |
+        +-------------------------------+-----------------------------------------------------------------------+
+    
+    .. ifconfig:: CONFIG_rt_linux_support in ('yes') 
+
+        .. rubric:: RT Support
+
+        Run the command below, before the bitbake build command, to setup a yocto build with RT Linux Kernel:
+        ::
+
+            echo "ARAGO_RT_ENABLE = \"1\"" >> conf/local.conf
+
+        This will tell the Arago yocto setup to pick up RT-Linux Kernel when building any images that depend on the Kernel.
+        Alternatively, one can directly build the RT Kernel using below:
+
+        ``MACHINE=<machine> bitbake linux-ti-staging-rt``
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 

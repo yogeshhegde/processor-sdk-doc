@@ -36,6 +36,6 @@ Configuration Values
 'CONFIG_part_variant'     : 'J784S4'
 'CONFIG_sdk'              : 'PSDKL'
 'CONFIG_icss_support'     : 'no'
-'CONFIG_rt_linux_support' : 'no'
+'CONFIG_rt_linux_support' : 'yes'
 'CONFIG_gpu_ip'           : 'Rogue_BXS'
 'CONFIG_crypto'           : 'sa2ul'
