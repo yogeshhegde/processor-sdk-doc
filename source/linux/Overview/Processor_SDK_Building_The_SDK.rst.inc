@@ -1,7 +1,7 @@
 .. include:: /replacevars.rst.inc
 
 ************************************
-Building the SDK
+Building the SDK with Yocto
 ************************************
 
 Introduction
@@ -74,39 +74,6 @@ small swap file to be larger will help avoid build errors for large packages.
 If working behind a proxy, please see `Working Behind a Network
 Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
 
-.. rubric:: Cross-Compile Toolchain
-   :name: Cross-Compile Toolchain
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    .. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-        Run the following commands to install the ARM Toolchains. 64-bit products like AM62x need both. 32-bit products
-        like AM335x and AM437x only need the 32-bit toolchain (arm-none-linux-).
-    
-    .. ifconfig:: CONFIG_part_variant in ('AM64X')
-    
-        Run the following commands to install the ARM Toolchains. 64-bit products like AM64x need both. 32-bit products
-        like AM335x and AM437x only need the 32-bit toolchain (arm-none-linux-).
-
-    ::
-
-        $ wget https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
-        $ tar -Jxvf arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz -C $HOME
-        $ wget https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz
-        $ tar -Jxvf arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz -C $HOME
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
-
-    Download the toolchain compilers from the links provided in the SDK release page.
-    Keep the extracted toolchains in the $HOME directory of host Linux machine.
-    Use $HOME directory as the PATH_TO_TOOLCHAIN in following command.
-
-    .. Note::
-        For building all SDK components, you need two compilers.
-        ARMv8 for software running on A72
-        ARMv7 for software running on R5F
-        Make sure to download both of these toolchains before starting yocto build.
 
 Build Steps
 -----------
@@ -132,8 +99,6 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
            $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-08.06.00-config.txt
            $ cd build
            $ . conf/setenv
-           $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
-           $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
            $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
            $ export TI_SECURE_DEV_PKG_K3=`pwd`/core-secdev-k3
            $ MACHINE=am62axx-evm bitbake -k tisdk-edgeai-image
@@ -154,8 +119,6 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
            $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.00.00-config.txt
            $ cd build
            $ . conf/setenv
-           $ export TOOLCHAIN_PATH_ARMV7=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
-           $ export TOOLCHAIN_PATH_ARMV8=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
            $ MACHINE=<machine> bitbake -k tisdk-default-image
 
        Your tisdk-default-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.    
@@ -173,18 +136,28 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
      
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
+    |__SDK_FULL_NAME__| uses the 'oe-layersetup' tool to configure the meta layers. If you do not have the Linux SDK package installed:
     ::
 
+        git clone https://git.ti.com/git/arago-project/oe-layersetup.git yocto-build
         cd yocto-build
+
+    The Linux SDK package also has the above tool cloned at the top level. If you have it installed:
+    ::
+
+        cd <SDK INSTALL DIR>/yocto-build
+
+    Then run following commands to setup a yocto build for a specific release version and build the 'tisdk-default-image' target.
+    ::
+
         ./oe-layertool-setup.sh -f configs/processor-sdk-linux/processor-sdk-linux-<version>.txt
         cd build
-        echo "INHERIT += \"own-mirrors\"" >> conf/local.conf
-        echo "SOURCE_MIRROR_URL = \"http://software-dl.ti.com/processor-sdk-mirror/sources/\"" >> conf/local.conf
-        echo "ARAGO_BRAND  = \"psdkla\"" >> conf/local.conf
-        echo "DISTRO_FEATURES_append = \" virtualization\"" >> conf/local.conf
-        echo "IMAGE_INSTALL_append = \" docker\"">> conf/local.conf
         . conf/setenv
-        TOOLCHAIN_BASE=<PATH_TO_TOOLCHAIN> MACHINE=<machine> bitbake -k tisdk-default-image
+        MACHINE=<machine> bitbake -k tisdk-default-image
+
+    .. Note::
+        The build will ~250GB of hard disk space for building the tisdk-default-image.
+
 
 Processor SDK Build Reference
 =============================
