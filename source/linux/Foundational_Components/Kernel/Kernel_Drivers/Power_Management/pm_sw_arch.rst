@@ -28,7 +28,7 @@ System diagram and components
 
 
 Above diagram has software sequence for how deep sleep (ie. Suspend to RAM) works on
-AM25-SK-EVM.
+SK-AM62 ( Read more on the Starter Kit `here <https://www.ti.com/tool/SK-AM62>`__ ).
 
 #. The user first instructs the System to Suspend. This triggers a suspend
    sequence from linux side (which runs on the A53 cluster of the SoC).
@@ -80,3 +80,4 @@ Learning Resources
 #. `AM62x Technical Reference Manual <https://www.ti.com/lit/pdf/spruiv7>`__
 #. `Technical White Paper on Enabling Low Power on AM62x <https://www.ti.com/lit/wp/sprad41/sprad41.pdf>`__
 #. `How To Enable and Use Low Power Mode on AM62x Guide <../../../../How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x.html>`__
+
