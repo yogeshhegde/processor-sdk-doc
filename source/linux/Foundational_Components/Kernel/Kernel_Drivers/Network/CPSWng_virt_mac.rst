@@ -262,6 +262,36 @@ registers the MAC address assigned to the virt_mac Network device within EthSwit
 
 Once configured, the network data can be passed between the Linux virt_mac Network device and the CPSW0 without interaction with EthSwitch FW.
 
+.. _cpswng_virt_mac_u_boot:
+
+Enabling CPSWng Virtual Client for Linux
+========================================
+
+The CPSWng Virtual Client functionality is enabled by applying
+the corresponding Linux device-tree overlay at U-Boot prompt.
+
+At U-Boot prompt, run the following commands to enable Linux CPSWng Virtual Client functionality:
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+    .. code-block:: text
+
+        setenv name_overlays k3-j721e-evm-virt-mac-client.dtbo
+        saveenv
+        boot
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    .. code-block:: text
+
+        setenv name_overlays k3-j7200-evm-virt-mac-client.dtbo
+        saveenv
+        boot
+
+The **saveenv** command saves the **name_overlays** environment variable,
+thereby automating the process of applying the device-tree overlay on
+following boots.
+
 Driver Configuration
 ====================
 

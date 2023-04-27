@@ -47,7 +47,8 @@ configurations:
     can be enabled for a build.
 
 .. note::
-    By default, the SDK works with the CPSWng Virtual Client configuration.
+    | Enabling the CPSWng Virtual Client configuration requires applying a Linux device-tree overlay at U-Boot using the **name_overlays** U-Boot environment variable.
+    | For details, refer: :ref:`cpswng_virt_mac_u_boot`
 
 CPSWng Virtual Client
 """""""""""""""""""""
