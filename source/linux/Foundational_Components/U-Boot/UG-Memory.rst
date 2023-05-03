@@ -498,6 +498,13 @@ used for the first time:
           |   backup environment (128 KB)    |         |                         |
     0x3600+----------------------------------+         +-------------------------+
 
+To boot from UDA parition of eMMC. Please set following
+
+.. code-block:: console
+
+  => mmc partconf 0 1 7 1
+  => mmc bootbus 0 2 0 0
+
 .. note::
 	rootfs is written to the user partition. The user partition is
 	first required to be formatted as a ext4 file system and then the rootfs
