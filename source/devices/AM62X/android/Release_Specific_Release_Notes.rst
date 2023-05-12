@@ -70,6 +70,18 @@ SDK Components and Versions
 | **Hardware Supported**             | AM62X-SK / AM62X-LP                                                           |
 +------------------------------------+-------------------------------------------------------------------------------+
 
+Release 08.06.00a Patch Release
+-------------------------------
+
+A patch release has been made on top of SDK 8.6 that brings in below updates:
+
+* CSI Camera preview feature
+* Regression fix for Car UI build and Low Power Mode
+
+All the changes are only in userspace components. Kernel and U-boot remain the same as SDK 8.6.
+To get this update, use the alternate manifest file mentioned in section `Downloading Sources`_
+
+.. _Downloading Sources: ../../../android/Overview_Building_the_SDK.html#android-file-system
 
 Documentation
 =============

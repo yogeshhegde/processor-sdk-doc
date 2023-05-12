@@ -78,6 +78,13 @@ Android File System
         repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_06.xml
         repo sync
 
+    To get the SDK 8.6a patch release use the below manifest
+
+    ::
+
+        mkdir ${YOUR_PATH}/ti-aosp-12 && cd $_
+        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_06a.xml
+        repo sync
 
 
 Build Instructions
