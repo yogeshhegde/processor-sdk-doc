@@ -541,7 +541,7 @@ The CMA size can be increased or decreased depending on the requirement and the 
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_j7-evm_defconfig in the linux directory of sdk.The default value is 400MB.
+   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_j721e-evm_defconfig in the linux directory of sdk.The default value is 400MB.
    The value can be increased according to the availability of space in DDR memory map.
    The CMA memory size can be decreased if the memory requirement is of limited number of channels.
 

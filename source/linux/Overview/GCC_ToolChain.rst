@@ -99,7 +99,7 @@ architectures found in Processor SDK.
     +-----------------------+--------------+-------------------------------------------------------------------------+
     | Toolchain Prefix      | Architecture | Processor SDK Device                                                    |
     +-----------------------+--------------+-------------------------------------------------------------------------+
-    | aarch64-linux-gnu-    | ARMv8        | j7-evm j7200-evm am65xx-evm                                             |
+    | aarch64-linux-gnu-    | ARMv8        | j721e-evm j7200-evm am65xx-evm                                          |
     +-----------------------+--------------+-------------------------------------------------------------------------+
 
 In an effort to be succient, the specific toolchain prefix will be replaced with

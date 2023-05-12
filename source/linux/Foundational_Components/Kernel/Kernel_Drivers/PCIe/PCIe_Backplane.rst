@@ -9,7 +9,7 @@ PCIe Backplane
 PCIe backplane allows multiple hosts with RC ports to communicate and share
 data with each other.
 
-.. Image:: /images/j7-linux-pcie-backplane.png
+.. Image:: /images/j721e-linux-pcie-backplane.png
 
 PCIe backplane is implemented using multiple instances of multi-function
 endpoint controller. Each host should be connected to a separate endpoint
@@ -65,7 +65,7 @@ the endpoint side NTB architecture.
 The following picture shows J721E EVM connected to two DRA7 EVMs. Here the two
 DRA7x boards communicate with each other using J721E as backplane.
 
-.. Image:: /images/j7-backplane.jpg
+.. Image:: /images/j721e-backplane.jpg
 
 
 .. rubric:: **Backplane Configuration**

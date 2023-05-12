@@ -18,7 +18,7 @@ a copy of the SD card rootfs filesystem.
 
 .. code-block:: bash
 
-    root@j7-evm:~# ls -l /dev/mmcblk*
+    root@j721e-evm:~# ls -l /dev/mmcblk*
     brw-rw----    1 root     disk      179,   0 Jul 18 22:49 /dev/mmcblk0
     brw-rw----    1 root     disk      179,  32 Jul 17 22:37 /dev/mmcblk0boot0
     brw-rw----    1 root     disk      179,  64 Jul 17 22:37 /dev/mmcblk0boot1
@@ -44,7 +44,7 @@ a copy of the SD card rootfs filesystem.
 
 .. code-block:: bash
 
-    root@j7-evm:~# ./mksdboot.sh --device /dev/mmcblk0
+    root@j721e-evm:~# ./mksdboot.sh --device /dev/mmcblk0
     ./mksdboot.sh: line 83: [: too many arguments
     -- Main device is: /dev/mmcblk1p2
     ************************************************************
@@ -111,7 +111,7 @@ a copy of the SD card rootfs filesystem.
     Writing superblocks and filesystem accounting information: done
     
     Partitioning and formatting completed!
-    root@j7-evm:~# [87602.674595] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+    root@j721e-evm:~# [87602.674595] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
 
 - Now copy the contents of SD card rootfs partition into eMMC device rootfs partition.
   Run the Following commands on the target, one by one.

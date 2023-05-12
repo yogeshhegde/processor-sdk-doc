@@ -37,7 +37,7 @@ Update submodule:
     $ make config DEVFAMILY=<FAMILY> OS=rtos
     $ make DEVFAMILY=<FAMILY> OS=rtos
 
-#### Build android (available for J7 and GEN):
+#### Build android (available for J721E and GEN):
 
     $ make clean DEVFAMILY=<FAMILY> OS=android
     $ make config DEVFAMILY=<FAMILY> OS=android
@@ -60,7 +60,7 @@ Update submodule:
 * "AM62AX" (representing AM62AX family)
 * "AM65X" (representing AM65X family)
 * "DRA821A" (representing DRA821A)
-* "J7" (representing Jacinto 7 ES)
+* "J721E" (representing Jacinto 7 ES)
 * "J7200" (representing Jacinto 7 VCL)
 * "J721S2" (representing Jacinto 7 AEP)
 * "J784S4" (representing Jacinto 7 AHP)
