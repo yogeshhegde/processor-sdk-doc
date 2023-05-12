@@ -63,7 +63,7 @@ family_configvals = {}
 #     5. Write to the Linux folder's replacevars.rst.inc for all the substitution variables
 
 def setup(app):
-    app.add_stylesheet("theme_overrides.css")
+    app.add_css_file("theme_overrides.css")
     # Read the replacement variables and the configuration values
     print("Device Family Build setup started")
     interpretvalues.read_familyvals(app, family_config_inputfile, family_replacevars, family_configvals)
