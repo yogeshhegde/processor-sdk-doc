@@ -10,6 +10,7 @@ linux/Overview/Run_Setup_Scripts
 linux/Overview/Top_Level_Makefile
 linux/Overview/GCC_ToolChain
 linux/Overview/Processor_SDK_Linux_Formatting_SD_Card
+linux/Overview/Processor_SDK_Linux_create_SD_card
 devices/J7_Family/linux/index
 devices/J7_Family/linux/Release_Specific
 devices/J7_Family/linux/Release_Specific_Release_Notes
