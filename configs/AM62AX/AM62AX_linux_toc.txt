@@ -101,6 +101,7 @@ linux/How_to_Guides/Target/Processor_SDK_Linux_File_System_Optimization_Customiz
 linux/How_to_Guides/Target/How_to_test_MCAN_on_AM62x
 linux/How_to_Guides/Target/How_to_enable_DT_overlays_in_linux
 linux/How_to_Guides/Target/How_to_playback_audio_over_HDMI
+linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
 linux/How_to_Guides/FAQ/How_to_Configure_MSMC_memory
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
