@@ -356,7 +356,7 @@ Compiling the Device Tree Binaries
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <dt filename>.dtb
+        make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- <dt filename>.dtb
 
     The compiled device tree file with be located in arch/arm/boot/dts.
 
@@ -365,7 +365,7 @@ Compiling the Device Tree Binaries
 
     ::
 
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am335x-boneblack.dtb
+        make DTC_FLAGS=-@ ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am335x-boneblack.dtb
 
     Alternatively, you can build every device tree binary with command
 
@@ -412,7 +412,7 @@ Compiling the Device Tree Binaries
 
     ::
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/<dt filename>.dtb
+        make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/<dt filename>.dtb
 
     The compiled device tree file with be located in arch/arm64/boot/dts/ti.
 
@@ -421,7 +421,7 @@ Compiling the Device Tree Binaries
 
     ::
 
-        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/k3-am642-evm.dtb
+        make DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/k3-am642-evm.dtb
 
     Alternatively, you can build every device tree binary with command
 
