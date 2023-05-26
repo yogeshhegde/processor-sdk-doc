@@ -208,24 +208,3 @@ Directory structure
 - **deviceData** - This contains SysConfig patch files for devices that are
   not yet officially supported in the SysConfig Tool.
 
-Updating the device data
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-This tool needs lot of hardware and software data to present the GUI and to allocate
-resources. Majority of this data is auto generated using SoC JSON files,
-System firmware public documentation, etc. Most users do not need to update this data.
-This is required only when adding support for a new SoC, migrating to new SYSFW
-version or migrating to new SoC JSON, etc.
-
-Make sure to add symbolic links to the appropriate repositories as shown below:
-**Do this ONLY if you want to update the data for SysConfig tool**
-If you do not have the system firmware code, then probably you do not need to do this.
-
-.. code::
-
-    dir=`git rev-parse --show-toplevel`
-    ln -s <path/to/system firmware repo> $dir/../system-firmware
-    ln -s <path/to/system firmware autogen repo> $dir/../system-firmware
-
-There is a utility script ``scripts/generate-data.sh [SOCNAME | all]`` to generate
-all the required JSON objects for selected SoC or for all of them.
