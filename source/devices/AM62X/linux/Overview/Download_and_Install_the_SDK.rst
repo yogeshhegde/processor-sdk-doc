@@ -49,11 +49,6 @@ window and change directories to where the installer is located
 Alternatively, you can give execute permissions and run the "|__SDK_INSTALL_FILE__|"
 by double clicking on it within your Linux host PC.
 
-.. rubric:: How to Run the SDK Installer in Windows
-   :name: how-to-run-the-sdk-installer-windows
-
-Double click on the installer to begin installation.
-
 .. note::
    As a part of the installation, the installer will run a script to configure your
    environment and extract the Linux devkit. This will cause the installation to
