@@ -21,13 +21,6 @@ in the non-secure world.
     $ git clone https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
     $ git checkout 1309c6c805190bd376c0561597653f3f8ecd0f58
 
-.. rubric:: Getting Security Dev Tool
-    
-::
-    
-    $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-    $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
-
 .. rubric:: Building ATF
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
@@ -38,57 +31,26 @@ in the non-secure world.
 
     ::
 
-        on GP
         $ cd $TFA_DIR
         $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
-
-    ::
-
-        on HS
-        $ cd $TFA_DIR
-        $ make ARCH=aarch64 CROSS_COMPILE=aarch64-none-linux-gnu- PLAT=k3 TARGET_BOARD=lite SPD=opteed
-
-        Sign the output binary (bl31.bin) located in: $TFA_DIR/build/k3/lite/release
-        $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh $TFA_DIR/build/k3/lite/release/bl31.bin $TFA_DIR/build/k3/lite/release/bl31.bin.signed
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
     ::
 
-        on GP
         $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed K3_USART=0x8
-
-    ::
-
-        on HS
-        $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=generic SPD=opteed K3_USART=0x8
-        ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./build/k3/generic/release/bl31.bin ./build/k3/generic/release/bl31.bin.signed
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
     ::
 
-        on GP
         $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
-
-    ::
-
-        on HS
-        $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
-        ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./build/k3/generic/release/bl31.bin ./build/k3/generic/release/bl31.bin.signed
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J721S2', 'AM62X', 'J784S4')
 
     ::
         
-        on GP
         $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
-
-    ::
-
-        on HS
-        $ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=k3 TARGET_BOARD=generic SPD=opteed
-        ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./build/k3/generic/release/bl31.bin ./build/k3/generic/release/bl31.bin.signed
 
 .. rubric:: Default load locations
 

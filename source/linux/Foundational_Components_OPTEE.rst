@@ -23,13 +23,6 @@ The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the 
     $ git clone https://github.com/OP-TEE/optee_os.git
     $ git checkout 8e74d47616a20eaa23ca692f4bbbf917a236ed94
 
-.. rubric:: Getting Security Dev Tool
-
-.. parsed-literal::
-
-    $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-    $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
-
 .. rubric:: Building OP-TEE
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4')
@@ -38,24 +31,17 @@ The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the 
 
         $ export CFG_CONSOLE_UART=0x8
 
-* On GP
+* Building the OPTEE image
 
 .. parsed-literal::
 
     $ make CROSS_COMPILE64=aarch64-none-linux-gnu- CROSS_COMPILE=arm-none-linux-gnueabihf- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y
 
-* With debug parameters
+* Building the OPTEE image with debug parameters
 
 .. parsed-literal::
 
     $ make CROSS_COMPILE64=aarch64-none-linux-gnu- CROSS_COMPILE=arm-none-linux-gnueabihf- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_TEE_CORE_LOG_LEVEL=2 CFG_TEE_CORE_DEBUG=y
-
-* Sign image for HS
-
-.. parsed-literal::
-
-    $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
-
 
 .. rubric:: Secure Storage with RPMB (For HS)
 
@@ -83,7 +69,6 @@ E.g. For enabling hybrid mode of RPMB along with REE_FS
 .. parsed-literal::
 
     $ make CROSS_COMPILE64=aarch64-linux-gnu- PLATFORM=k3-\ |__OPTEE_PLATFORM_FLAVOR__| CFG_ARM64_core=y CFG_REE_FS=y CFG_RPMB_FS=y
-    $ {TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ./out/arm-plat-k3/core/tee-pager_v2.bin ./out/arm-plat-k3/core/tee-pager_v2.bin.signed
 
 OPTEE-client also needs to be updated to enable the use of real
 emmc instead of the virtual emmc that is enabled by default
@@ -105,10 +90,10 @@ in `out/export/usr` folder
 
 .. rubric:: Building u-boot with OP-TEE OS
 
-If building for an HS device, tee-pager_v2.bin must be signed before it is packaged in tispl.bin. To sign the binary,
-the script secure-binary-image.sh is called as shown above with the path to the newly built binary: tee-pager_v2.bin
-(the first argument) and with the expected output binary path and name: tee-pager_v2.bin.signed (the second argument).
-Once the binary is signed, continue with the HS boot instructions found here: :ref:`Build-U-Boot-label`.
+.. note::
+  As of Processor SDK 9.0, the signing functionality earlier provided by the TI Security Development Package, has
+  been integrated within U-Boot itself. This means tee-pager_v2.bin does not need to be signed before being packaged
+  in tispl.bin in U-Boot for HS devices.
 
 Expected binary output
 
