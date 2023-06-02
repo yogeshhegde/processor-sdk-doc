@@ -35,38 +35,44 @@ Enable the following configs for Native Ethernet with CPSWng:
     CONFIG_PHY_CADENCE_TORRENT
     CONFIG_PHY_CADENCE_SIERRA
 
-Supported Modes
-"""""""""""""""
+.. _cpswng_native_eth_overlays:
+
+Enabling CPSWng Native Ethernet for Linux
+"""""""""""""""""""""""""""""""""""""""""
 
 Currently, the following modes are supported in the SDK with the native ethernet driver:
 
-+-----------+-------------------------------+-----------------------------------------+
-| SoC       | Supported Modes               |           Overlay file to use           |
-+===========+===============================+=========================================+
-| J7200     | QSGMII                        |    k3-j7200-quad-port-eth-exp.dtbo      |
-+-----------+-------------------------------+-----------------------------------------+
-| J7200     | SGMII                         |    Overlay not part of SDK              |
-+-----------+-------------------------------+-----------------------------------------+
-| J721e     | RGMII                         |    k3-j721e-gesi-exp-board.dtbo         |
-+-----------+-------------------------------+-----------------------------------------+
-| J721e     | QSGMII                        |    k3-j721e-quad-port-eth-exp.dtbo      |
-+-----------+-------------------------------+-----------------------------------------+
-| J721e     | SGMII                         |    Overlay not part of SDK              |
-+-----------+-------------------------------+-----------------------------------------+
-| J721S2    | RGMII                         |    k3-j721s2-gesi-exp-board.dtbo        |
-+-----------+-------------------------------+-----------------------------------------+
-| J784S4    | QSGMII                        |    k3-j784s4-quad-port-eth1-exp.dtbo    |
-+-----------+-------------------------------+-----------------------------------------+
++-----------+-------------------------------+-------------------------------------------+
+| SoC       | Supported Modes               |           Overlay file to use             |
++===========+===============================+===========================================+
+| J7200     | QSGMII                        |    k3-j7200-evm-quad-port-eth-exp.dtbo    |
++-----------+-------------------------------+-------------------------------------------+
+| J7200     | SGMII                         |    Overlay not part of SDK                |
++-----------+-------------------------------+-------------------------------------------+
+| J721e     | RGMII                         |    k3-j721e-evm-gesi-exp-board.dtbo       |
++-----------+-------------------------------+-------------------------------------------+
+| J721e     | QSGMII                        |    k3-j721e-evm-quad-port-eth-exp.dtbo    |
++-----------+-------------------------------+-------------------------------------------+
+| J721e     | SGMII                         |    Overlay not part of SDK                |
++-----------+-------------------------------+-------------------------------------------+
+| J721S2    | RGMII                         |    k3-j721s2-evm-gesi-exp-board.dtbo      |
++-----------+-------------------------------+-------------------------------------------+
+| J784S4    | QSGMII                        |    k3-j784s4-evm-quad-port-eth1-exp.dtbo  |
++-----------+-------------------------------+-------------------------------------------+
+| J784S4    | USXGMII                       |    k3-j784s4-evm-usxgmii-exp1-exp2.dtbo   |
++-----------+-------------------------------+-------------------------------------------+
 
 .. note::
-    For enabling native ethernet, the am65-cpsw-nuss driver has to be included in the
-    kernel build. The native ethernet features are enabled by applying device-tree
-    overlays at U-Boot.
+    | For enabling native ethernet, the am65-cpsw-nuss driver has to be included in the kernel build.
+    | The native ethernet features are enabled by applying device-tree overlays at U-Boot.
+    | To apply an overlay at U-Boot save the following command in the uEnv.txt file:
+    |   **name_overlays="<overlay-file-name>"**
+    | where <overlay-file-name> is the corresponding overlay file from the table above.
 
 For RGMII mode, the GESI expansion card's overlay may be used.
 For QSGMII mode, the Quad Port Ethernet Expander daughter card's overlay may be used.
-While SGMII mode has been verified in the SoC's which mention SGMII mode, no overlay is
-provided with the SDK.
+While SGMII mode has been verified in the SoCs which mention SGMII mode, no overlay is
+provided with the SDK. USXGMII mode has been verified in a fixed-link configuration.
 
 MAC Mode
 """"""""
