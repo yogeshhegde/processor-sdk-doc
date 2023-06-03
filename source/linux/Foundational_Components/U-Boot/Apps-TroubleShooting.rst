@@ -32,7 +32,7 @@ Check if one of the cases below applies:
 - Check if the instruction for supported u-boot boot modes is followed.
 
 | Please follow instructions in `U-boot User's Guide 
-    <Foundational_Components_U-Boot.html#u-boot-user-s-guide>`__ 
+    <Users-Guide.html>`__ 
 |
 
 | Different boot modes ues diferent image formats. They are:
