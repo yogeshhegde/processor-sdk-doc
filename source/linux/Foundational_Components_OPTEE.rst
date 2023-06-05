@@ -32,7 +32,7 @@ The OP-TEE binary (bl32.bin/tee-pager_v2.bin) is bundled into tispl.bin and the 
 
 .. rubric:: Building OP-TEE
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'J784S4')
 
     .. parsed-literal::
 
