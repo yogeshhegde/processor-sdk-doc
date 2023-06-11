@@ -66,6 +66,13 @@ a memcpy() type operation. Typical use is for external memory bandwidth
 calculation. The bandwidth is calculated as byte read and written counts
 as 1 which should be roughly half of STREAM copy result.
 
+Execute the LMBench with the following:
+
+::
+
+    cd /opt/ltp
+    ./runltp -P j721e-idk-gw -f ddt/lmbench -s LMBENCH_L_PERF_0001
+
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
@@ -236,6 +243,12 @@ Linpack
 Linpack measures peak double precision (64 bit) floating point performance in
 solving a dense linear system.
 
+Execute the benchmark with the following:
+
+::
+
+    linpack
+
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
 
@@ -253,7 +266,6 @@ for commonly used operations such as sorting and analysis algorithms.
 More information about NBench at
 https://en.wikipedia.org/wiki/NBench and
 https://nbench.io/articles/index.html
-
 
 .. csv-table::
     :header: "Benchmarks","j7200-evm: perf","j721e-idk-gw: perf","j721s2-evm: perf","j784s4-evm: perf"
