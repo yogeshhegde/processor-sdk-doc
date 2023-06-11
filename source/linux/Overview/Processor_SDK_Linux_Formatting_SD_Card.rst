@@ -63,7 +63,7 @@ for the SD card you want to format. Example output looks like this:
 You should choose the device where the partition sizes match with the
 SD card you want to partition.
 
-Partitioning SD card
+Installting SDK to SD card
 --------------------
 
 No matter which use case above that you are creating an SD card for the
