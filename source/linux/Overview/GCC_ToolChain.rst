@@ -64,7 +64,7 @@ directory to your PATH will allow using these tools. For example:
 
 ::
 
- host# export PATH="<SDK INSTALL DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin:$PATH"
+ host# export PATH="<SDK INSTALL DIR>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin:$PATH"
 
 Additional tools are also located here such as the **qmake2, rcc, uic** tools
 used by Qt. In addition there is a qt.conf file that can be used by tools such
