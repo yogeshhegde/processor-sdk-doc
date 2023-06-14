@@ -5,7 +5,7 @@ Building the SDK
 Build PC Setup
 ===============
 
-Please refer to the following pages from Android documentatio to setup your environment for Android build:
+Please refer to the following pages from Android documentation to setup your environment for Android build:
 
 -  `Android's Build
    requirements <https://source.android.com/setup/build/requirements>`__.
@@ -21,8 +21,14 @@ To install it, please refer to this webpage : https://source.android.com/setup/d
 
 **Getting toolchain for u-boot builds**
 
-Links to download toolchains for building u-boot is mentioned in the SDK download page.
+Links to download toolchains for building u-boot are mentioned in the SDK download page.
 
+**Install Optee-OS build dependencies**
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+  Check OPTEE OS docs to know list of dependencies needed to be installed :
+  https://optee.readthedocs.io/en/latest/building/prerequisites.html
 
 Downloading Sources
 ===================
@@ -94,7 +100,7 @@ Build Instructions
 
     .. note::
 
-        The Bootloader and Kernel builds below are optional if they are used as is from TI relase. Prebuilt copies of these
+        The Bootloader and Kernel builds below are optional if they are used as is from TI release. Prebuilt copies of these
         binaries are already part of Android file system sources in ``device/ti/am62x-kernel`` and
         ``vendor/ti/am62x/bootloader`` folder.
 
