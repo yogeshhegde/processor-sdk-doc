@@ -43,6 +43,7 @@ Features supported
 - PPS Out
 - Promiscuous mode
 - Different MII modes for Real-Time Ethernet ports (MII_G_RT1 and MII_G_RT2) on different PRU_ICSSG instances. For example, MII on a PRU_ICSSG1 port, and RGMII on a PRU_ICSSG2 port, is supported.
+- IRQ Coalescing also known as interrupt pacing.
 
 .. rubric:: **Features not supported**
 
@@ -365,6 +366,31 @@ like eth1.5, below is an example how it check the vlan interface
 To Send or receive packets with the VLAN tag, bind the socket to the
 proper Ethernet interface shown above and can send/receive via that
 socket-fd.
+
+|
+
+Interrupt pacing
+****************
+
+The Interrupt pacing (IRQ coalescing) based on hrtimers for RX / TX data path separately can be enabled by ethtool commands (min value is 20us):
+
+::
+
+  ethtool -C ethX rx-usecs N # Enable RX coalescing
+  ethtool -C ethX tx-usecs N # Enable TX coalescing for TX0 by default.
+  ethtool -Q ethX queue_mask 1 --coalesce tx-usecs 100 # Enable coalescing for TX0
+  ethtool -Q ethX queue_mask 2 --coalesce tx-usecs 100 # Enable coalescing for TX1
+  ethtool -Q ethX queue_mask 3 --coalesce tx-usecs 100 --coalesce tx-usecs 100 # Enable coalescing for both TX0 and TX1
+
+The Interrupt pacing (IRQ coalescing) configuration can be retrieved by commands:
+
+::
+
+  ethtool -c ethX # Show RX coalescing and TX coalescing for TX0
+  ethtool -Q ethX queue_mask 1 --show-coalesce # Show coalescing configuration for TX0
+  ethtool -Q ethX queue_mask 2 --show-coalesce # Show coalescing configuration for TX1
+  ethtool -Q ethX queue_mask 3 --show-coalesce # Show coalescing configuration for both TX0 and TX1
+
 
 |
 
