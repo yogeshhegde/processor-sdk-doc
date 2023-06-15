@@ -226,68 +226,78 @@ It displays statistic for the ethernet port.
 
 ::
 
-   # ethtool -S eth1
-   NIC statistics:
-        rx_good_frames: 53
-        rx_broadcast_frames: 1
-        rx_multicast_frames: 53
-        rx_crc_error_frames: 0
-        rx_mii_error_frames: 0
-        rx_odd_nibble_frames: 0
-        rx_frame_max_size: 2000
-        rx_max_size_error_frames: 0
-        rx_frame_min_size: 64
-        rx_min_size_error_frames: 11
-        rx_overrun_frames: 0
-        rx_class0_hits: 64
-        rx_class1_hits: 0
-        rx_class2_hits: 0
-        rx_class3_hits: 0
-        rx_class4_hits: 0
-        rx_class5_hits: 0
-        rx_class6_hits: 0
-        rx_class7_hits: 0
-        rx_class8_hits: 0
-        rx_class9_hits: 0
-        rx_class10_hits: 0
-        rx_class11_hits: 0
-        rx_class12_hits: 0
-        rx_class13_hits: 0
-        rx_class14_hits: 0
-        rx_class15_hits: 0
-        rx_smd_frags: 0
-        rx_bucket1_size: 64
-        rx_bucket2_size: 128
-        rx_bucket3_size: 256
-        rx_bucket4_size: 512
-        rx_64B_frames: 2
-        rx_bucket1_frames: 13
-        rx_bucket2_frames: 30
-        rx_bucket3_frames: 20
-        rx_bucket4_frames: 1
-        rx_bucket5_frames: 0
-        rx_total_bytes: 7864
-        rx_tx_total_bytes: 24165
-        tx_good_frames: 98
-        tx_broadcast_frames: 0
-        tx_multicast_frames: 98
-        tx_odd_nibble_frames: 0
-        tx_underflow_errors: 0
-        tx_frame_max_size: 2000
-        tx_max_size_error_frames: 0
-        tx_frame_min_size: 64
-        tx_min_size_error_frames: 0
-        tx_bucket1_size: 64
-        tx_bucket2_size: 128
-        tx_bucket3_size: 256
-        tx_bucket4_size: 512
-        tx_64B_frames: 0
-        tx_bucket1_frames: 0
-        tx_bucket2_frames: 68
-        tx_bucket3_frames: 21
-        tx_bucket4_frames: 9
-        tx_bucket5_frames: 0
-        tx_total_bytes: 12479
+ ~# ethtool -S eth1
+ NIC statistics:
+     rx_good_frames: 1757
+     rx_broadcast_frames: 151
+     rx_multicast_frames: 585
+     rx_crc_error_frames: 0
+     rx_mii_error_frames: 0
+     rx_odd_nibble_frames: 0
+     rx_frame_max_size: 4972000
+     rx_max_size_error_frames: 0
+     rx_frame_min_size: 159104
+     rx_min_size_error_frames: 0
+     rx_overrun_frames: 0
+     rx_class0_hits: 1757
+     rx_class1_hits: 0
+     rx_class2_hits: 0
+     rx_class3_hits: 0
+     rx_class4_hits: 0
+     rx_class5_hits: 0
+     rx_class6_hits: 0
+     rx_class7_hits: 0
+     rx_class8_hits: 1757
+     rx_class9_hits: 1757
+     rx_class10_hits: 0
+     rx_class11_hits: 0
+     rx_class12_hits: 0
+     rx_class13_hits: 0
+     rx_class14_hits: 0
+     rx_class15_hits: 0
+     rx_smd_frags: 0
+     rx_bucket1_size: 159104
+     rx_bucket2_size: 318208
+     rx_bucket3_size: 636416
+     rx_bucket4_size: 1272832
+     rx_64B_frames: 1053
+     rx_bucket1_frames: 1053
+     rx_bucket2_frames: 366
+     rx_bucket3_frames: 88
+     rx_bucket4_frames: 250
+     rx_bucket5_frames: 0
+     rx_total_bytes: 203502
+     rx_tx_total_bytes: 1555610607
+     tx_good_frames: 1022405
+     tx_broadcast_frames: 2
+     tx_multicast_frames: 57
+     tx_odd_nibble_frames: 0
+     tx_underflow_errors: 0
+     tx_frame_max_size: 4972000
+     tx_max_size_error_frames: 0
+     tx_frame_min_size: 159104
+     tx_min_size_error_frames: 0
+     tx_bucket1_size: 159104
+     tx_bucket2_size: 318208
+     tx_bucket3_size: 636416
+     tx_bucket4_size: 1272832
+     tx_64B_frames: 0
+     tx_bucket1_frames: 0
+     tx_bucket2_frames: 3044
+     tx_bucket3_frames: 14
+     tx_bucket4_frames: 339
+     tx_bucket5_frames: 196605
+     tx_total_bytes: 1555407105
+     iet_bad_frag_slice0: 0
+     iet_bad_frag_slice1: 0
+     iet_asm_err_slice0: 0
+     iet_asm_err_slice1: 0
+     iet_tx_frag_slice0: 0
+     iet_tx_frag_slice1: 0
+     iet_asm_ok_slice0: 0
+     iet_asm_ok_slice1: 0
+     iet_rx_frag_slice0: 0
+     iet_rx_frag_slice1: 0
 
 Show EEE settings
 ^^^^^^^^^^^^^^^^^
@@ -760,7 +770,7 @@ CPSW / PRU Ethernet Selection
 Time Senstive Network (TSN) Offload Support
 ###########################################
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X')
+.. ifconfig:: CONFIG_part_variant in ('AM65X','AM64X')
 
   ICSSG Ethernet supports offloading of features such as Enhancements for Scheduled Traffic
   (EST) and Intersperse Express Traffic (IET) Frame Preemption offload
@@ -768,9 +778,8 @@ Time Senstive Network (TSN) Offload Support
 
   For EST setup refer to :ref:`kernel_driver_cpsw2g_est` and IET configuration refer to :ref:`kernel_driver_cpsw2g_iet`.
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X')
+  For the interface ethX, IET related statistics can be retrieved by using ``ethtool -S ethX | grep iet`` command.
 
-  This feature is not supported.
 
 SRAM Requirement
 ################
