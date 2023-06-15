@@ -1,5 +1,5 @@
 # Device Family is J7 = Jacinto 7
-fam_name = 'J7'
+fam_name = 'J721E'
 
 # Project name and HTML title
 sdk_product = 'null' #todo: remove after the new structure is used for all device families

@@ -775,7 +775,7 @@ First, please refer to `Building The SDK <Overview_Building_the_SDK.html>`__
 to set up the build environment and bitbake the original recipe for
 ti-img-encode-decode, i.e.,
 
-``MACHINE=j7-evm bitbake linux-ti-staging``
+``MACHINE=j721e-evm bitbake linux-ti-staging``
 
 After the bitbake command above is successfully done,
 ./build/arago-tmp-external-arm-toolchain/work/j7_evm-linux/ti-img-encode-decode/<\*>

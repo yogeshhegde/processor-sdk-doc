@@ -342,7 +342,7 @@ Linux Known Issues
 
   Location of Linux Kernel:
 
-  *./ti-processor-sdk-linux-j7-evm-08_04_00_11/board-support/linux-5.10+gitAUTOINC+95b90aa828-g95b90aa828*
+  *./ti-processor-sdk-linux-j721e-evm-08_04_00_11/board-support/linux-5.10+gitAUTOINC+95b90aa828-g95b90aa828*
 
   Apply the patch from this folder and changes are made to the file:
 

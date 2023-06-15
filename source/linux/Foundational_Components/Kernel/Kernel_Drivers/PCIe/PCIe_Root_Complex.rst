@@ -921,7 +921,7 @@ Following is a brief explanation of layers shown in the diagram:
 
       ::
       
-          root@j7-evm:~# lspci
+          root@j721e-evm:~# lspci
           0000:00:00.0 PCI bridge: Texas Instruments Device b00d
           0000:01:00.0 Unassigned class [ff00]: Texas Instruments Device b00d
           0000:01:00.1 Unassigned class [ff00]: Texas Instruments Device b00d
@@ -938,7 +938,7 @@ Following is a brief explanation of layers shown in the diagram:
 
         ::
 
-            root@j7-evm:~# lspci
+            root@j721e-evm:~# lspci
             0000:00:00.0 PCI bridge: Texas Instruments Device b00d
             0000:01:00.0 Network controller: Intel Corporation Wireless 3160 (rev 6b)
             0001:00:00.0 PCI bridge: Texas Instruments Device b00d
@@ -948,7 +948,7 @@ Following is a brief explanation of layers shown in the diagram:
 
         ::
 
-            root@j7-evm:~# ping 192.168.10.1 -w 10|
+            root@j721e-evm:~# ping 192.168.10.1 -w 10|
             PING 192.168.10.1 (192.168.10.1): 56 data bytes
             64 bytes from 192.168.10.1: seq=0 ttl=64 time=176.985 ms
             64 bytes from 192.168.10.1: seq=1 ttl=64 time=49.840 ms
@@ -966,7 +966,7 @@ Following is a brief explanation of layers shown in the diagram:
 
         ::
 
-            root@j7-evm:~# lspci -vv 
+            root@j721e-evm:~# lspci -vv
             0000:00:00.0 PCI bridge: Texas Instruments Device b00d (prog-if 00 [Normal decode])
                 Control: I/O- Mem- BusMaster- SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx-
                 Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
@@ -1344,7 +1344,7 @@ Following is a brief explanation of layers shown in the diagram:
 
         ::
         
-            root@j7-evm:~# hdparm -tT /dev/nvme0n1
+            root@j721e-evm:~# hdparm -tT /dev/nvme0n1
 
             /dev/nvme0n1:
             Timing cached reads: 3678 MB in 2.00 seconds = 1840.32 MB/sec
@@ -1354,7 +1354,7 @@ Following is a brief explanation of layers shown in the diagram:
 
         ::
         
-            root@j7-evm:~# time dd if=/dev/urandom of=/home/root/srctest_file_pci_2199 bs=1M count=10|
+            root@j721e-evm:~# time dd if=/dev/urandom of=/home/root/srctest_file_pci_2199 bs=1M count=10|
             10+0 records in
             10+0 records out
             real	0m 0.17s

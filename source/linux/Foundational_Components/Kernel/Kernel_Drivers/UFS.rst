@@ -152,7 +152,7 @@ flash. You can read current configuration of UFS device using:
 
 ::
 
-	root@j7-evm:~# ufs-tool desc -t 1 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-tool desc -t 1 -p /dev/bsg/ufs-bsg
 	Config Device Descriptor: [Byte offset 0x0]: bLength = 0x90
 	Config Device Descriptor: [Byte offset 0x1]: bDescriptorType = 0x1
 	Config Device Descriptor: [Byte offset 0x2]: bConfDescContinue = 0x0
@@ -289,9 +289,9 @@ For Active Data lanes:
 
 ::
 
-	root@j7-evm:~# ufs-tool uic -t 1 -i 0x1560 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x1560 -p /dev/bsg/ufs-bsg
 	[0x1560]PA_ActiveTxDataLanes                          : local = 0x00000002, peer = 0x00000002
-	root@j7-evm:~# ufs-tool uic -t 1 -i 0x1580 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x1580 -p /dev/bsg/ufs-bsg
 	[0x1580]PA_ActiveRxDataLanes                          : local = 0x00000002, peer = 0x00000002
 
 Value of 2 indicates 2 lanes are active
@@ -301,9 +301,9 @@ For Gear Speed:
 
 ::
 
-	root@j7-evm:~# ufs-tool uic -t 1 -i 0x1568 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x1568 -p /dev/bsg/ufs-bsg
 	[0x1568]PA_TxGear                                     : local = 0x00000003, peer = 0x00000003
-	root@j7-evm:~# ufs-tool uic -t 1 -i 0x1583 -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x1583 -p /dev/bsg/ufs-bsg
 	[0x1583]PA_RxGear                                     : local = 0x00000003, peer = 0x00000003
 
 Value of 3 indicates HS Gear3 is active
@@ -312,7 +312,7 @@ For HS Gear Series
 
 ::
 
-	root@j7-evm:~# ufs-tool uic -t 1 -i 0x156a -p /dev/bsg/ufs-bsg
+	root@j721e-evm:~# ufs-tool uic -t 1 -i 0x156a -p /dev/bsg/ufs-bsg
 	[0x156a]PA_HSSeries                                   : local = 0x00000002, peer = 0x00000002
 
 A value of 2 indicates series B is active

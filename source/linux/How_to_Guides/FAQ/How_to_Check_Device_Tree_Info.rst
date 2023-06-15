@@ -11,7 +11,7 @@ following in the /proc/device-tree directory:
 
 ::
 
-    root@j7-evm:~# ls /proc/device-tree/
+    root@j721e-evm:~# ls /proc/device-tree/
     #address-cells  firmware                l3-cache0
     #size-cells     fixedregulator-evm12v0  main_r5fss_cpsw9g_virt_mac0
     __symbols__     fixedregulator-sd       memory@80000000
@@ -33,10 +33,10 @@ Following are some typical usages you might need:
 
   ::
 
-        root@j7-evm:~# cat /proc/device-tree/__symbols__/main_i2c0
+        root@j721e-evm:~# cat /proc/device-tree/__symbols__/main_i2c0
         /interconnect@100000/i2c@2000000
 
-        root@j7-evm:~# ls /proc/device-tree/interconnect@100000/i2c@2000000/
+        root@j721e-evm:~# ls /proc/device-tree/interconnect@100000/i2c@2000000/
         #address-cells   clock-names  gpio@20     name       pinctrl-names
         #size-cells      clocks       gpio@22     phandle    power-domains
         clock-frequency  compatible   interrupts  pinctrl-0  reg
@@ -49,15 +49,15 @@ Following are some typical usages you might need:
   ::
 
         # Example for a string value
-        root@j7-evm:~# cat /proc/device-tree/interconnect@100000/i2c@2000000/compatible
+        root@j721e-evm:~# cat /proc/device-tree/interconnect@100000/i2c@2000000/compatible
         ti,j721e-i2cti,omap4-i2c
 
         # Example for an integer value
-        root@j7-evm:~# xxd -g4 /proc/device-tree/interconnect@100000/i2c@2000000/clock-frequency
+        root@j721e-evm:~# xxd -g4 /proc/device-tree/interconnect@100000/i2c@2000000/clock-frequency
         00000000: 00061a80                             ....
 
         # The above value is in hexadecimal. You can calculate it's value in decimal by using following command
-        root@j7-evm:~# echo $((0x00061a80))
+        root@j721e-evm:~# echo $((0x00061a80))
         400000
 
 - One common scenario of a device tree change is tweaking the memory for
@@ -67,7 +67,7 @@ Following are some typical usages you might need:
   ::
 
         # Finding symbols for R5Fs
-        root@j7-evm:~# ls /proc/device-tree/__symbols__/main_r5fss*
+        root@j721e-evm:~# ls /proc/device-tree/__symbols__/main_r5fss*
         /proc/device-tree/__symbols__/main_r5fss0                          /proc/device-tree/__symbols__/main_r5fss0_core1_dma_memory_region  /proc/device-tree/__symbols__/main_r5fss1_core0_memory_region
         /proc/device-tree/__symbols__/main_r5fss0_core0                    /proc/device-tree/__symbols__/main_r5fss0_core1_memory_region      /proc/device-tree/__symbols__/main_r5fss1_core1
         /proc/device-tree/__symbols__/main_r5fss0_core0_dma_memory_region  /proc/device-tree/__symbols__/main_r5fss1                          /proc/device-tree/__symbols__/main_r5fss1_core1_dma_memory_region
@@ -75,15 +75,15 @@ Following are some typical usages you might need:
         /proc/device-tree/__symbols__/main_r5fss0_core1                    /proc/device-tree/__symbols__/main_r5fss1_core0_dma_memory_region
 
         # Finding location from the symbols
-        root@j7-evm:~# cat /proc/device-tree/__symbols__/main_r5fss0_core0_memory_region
+        root@j721e-evm:~# cat /proc/device-tree/__symbols__/main_r5fss0_core0_memory_region
         /reserved-memory/r5f-memory@a2100000
 
-        root@j7-evm:~# cat /proc/device-tree/__symbols__/main_r5fss0_core0_dma_memory_region
+        root@j721e-evm:~# cat /proc/device-tree/__symbols__/main_r5fss0_core0_dma_memory_region
         /reserved-memory/r5f-dma-memory@a2000000
 
         # Checking the values
-        root@j7-evm:~# xxd -g4 /proc/device-tree/reserved-memory/r5f-memory@a2100000/reg
+        root@j721e-evm:~# xxd -g4 /proc/device-tree/reserved-memory/r5f-memory@a2100000/reg
         00000000: 00000000 a2100000 00000000 01f00000  ................
 
-        root@j7-evm:~# xxd -g4 /proc/device-tree/reserved-memory/r5f-dma-memory@a2000000/reg
+        root@j721e-evm:~# xxd -g4 /proc/device-tree/reserved-memory/r5f-dma-memory@a2000000/reg
         00000000: 00000000 a2000000 00000000 00100000  ................
