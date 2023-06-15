@@ -118,6 +118,6 @@ SRAM Requirement
 """"""""""""""""
 
 * The ICSSG Ethernet driver can be used in switch mode. Two icssg ports are used per switch.
-* SRAM Required for each switch (per two ports) is 256 KB for AM65X SR 2.0 SoC.
+* SRAM Required for each switch (per two ports) is 256 KB.
 * For each ICSSG switch, the SRAM required needs to be contiguous.
 * PRUETH only uses the required amount of SRAM from the SRAM/MSMC pool. If PRUETH doesn't get the required amount of SRAM, the prueth_probe() API will return with -ENOMEM error.
