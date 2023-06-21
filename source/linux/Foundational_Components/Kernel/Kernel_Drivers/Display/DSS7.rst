@@ -14,7 +14,7 @@ This page applies to TI's v5.10 kernel.
 Supported Devices
 =================
 
-There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: AM65x, AM62x, AM62Ax, J721E, J721S2.
+There are many DSS IP versions, all of which support slightly different set of features. DSS versions up to 5 are supported by the omapdrm driver, and DSS versions 6 and up are supported by the tidss driver. This document covers DSS6 and DSS7, which are used on the following TI SoCs or SoC families: AM65x, AM62x, AM62Ax, J721E, J721S2, J784S4.
 
 
 Hardware Architecture
@@ -27,7 +27,7 @@ The Display Subsystem (DSS) is a hardware block responsible for fetching pixel d
 
 In addition to the SoC's DSS, boards often contain external display bridges (for example, DPI-to-HDMI bridge) and display panels.
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
 
     .. Image:: /images/DSS7_HW.png
 
@@ -102,7 +102,7 @@ SoC Family: |__PART_FAMILY_DEVICE_NAMES__|
     +------------+---------------+-------------------+------------+
 
 
-.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2')
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
 
     +------------+---------------+-------------------+------------+
     | DSS version| Outputs       | Pipes             | Video ports|
