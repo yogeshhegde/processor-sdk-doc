@@ -268,6 +268,42 @@ formats:
         -  V4L2_PIX_FMT_HEVC
 
 
+Encoder and Decoder Capabilities
+================================
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62AX')
+
+   The Max Capability if the Encoder/Decoder is 4K60fps.
+.. code-block:: text
+
+   Maximun instances supported is 32 (Encode/Decode/Encode+Decode).
+   Eg: MAX 32 can be
+   (16Enc + 16 Dec) OR (32 Enc) OR (32 Dec).
+   (32 Enc + 32 Dec) - Not possible
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   The Max Capability if the Encoder/Decoder is 2x4K60fps.
+.. code-block:: text
+
+   Maximun instances supported is 64 (Encode/Decode/Encode+Decode).
+   Eg: MAX 64 can be
+   (32Enc + 32 Dec) OR (64 Enc) OR (64 Dec).
+   (64 Enc + 64 Dec) - Not possible
+
+ .. note::
+	    The number of instances is bound to the available CMA Memory.
+
+The supported external controls supported by Encoder and Decoder can be seen using below command.
+
+.. code-block:: text
+
+   Encoder: v4l2-ctl -d 1 -l
+   Decoder: v4l2-ctl -d 0 -l
+
+
+
+
 GStreamer Pipelines
 ===================
 
@@ -320,15 +356,15 @@ Memory Requirement
 
    -  Encoder
 
-    #. v4l2h264enc : 43.19 MB
+    #. v4l2h264enc : 31.78 MB
 
-    #. v4l2h265enc : 43.31 MB
+    #. v4l2h265enc : 31.90 MB
 
    -  Decoder
 
-    #. v4l2h264dec : 62.77 MB
+    #. v4l2h264dec : 51.47 MB
 
-    #. v4l2h265dec : 31.91 MB
+    #. v4l2h265dec : 39.59 MB
 
     .. note::
 	    The Actual Memory foot print may vary depending on the input stream.
@@ -516,14 +552,18 @@ Buffer import on encoder can be tested by selecting the output-io-mode as '5' or
 	gst-launch-1.0 filesrc location=./sample_file.264 ! h264parse ! v4l2h264dec capture-io-mode=4 ! v4l2h264enc output-io-mode=dmabuf-import ! filesink location=./output.264
 
 
-.. note::
-	    DMA Buf import is currently supported only on Encoder.
-
 Buffer export on decoder can be tested by selecting the capture-io-mode as '4' or 'dmabuf'. Example is mentioned below.
 
 .. code::
 
         gst-launch-1.0 filesrc location=./sample_file.264 ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! kmssink driver-name="tidss" -v
+
+Buffer import on decoder can be tested by selecting the capture-io-mode as '5' or 'dmabuf-import'. Example is mentioned below.
+
+.. code::
+
+        gst-launch-1.0 filesrc location=./sample_file.264 ! h264parse ! v4l2h264dec capture-io-mode=5 ! kmssink driver-name="tidss" -v
+
 
 .. note::
 
@@ -531,8 +571,7 @@ Buffer export on decoder can be tested by selecting the capture-io-mode as '4' o
 
    #.  The full set of encoder configurations is not currently exposed through the V4L2 interface
        See compliance data for what is available and what is not
-   #.  Current driver supports 8 channel 1080p Encode and only 7ch 1080p Decode.
-       In the current driver, the requirement for 8ch Decode exceeds the available memory. Memory optimization is under process. The optimizations will be around 20 percent of current memory requirement, that can be saved.
+   #.  Current driver supports 8 channel 1080p Encode and 8ch 1080p Decode owing to the default CMA Memory configuration.
 
 Configuration of CMA Size
 =========================
@@ -541,7 +580,7 @@ The CMA size can be increased or decreased depending on the requirement and the 
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_j721e-evm_defconfig in the linux directory of sdk.The default value is 400MB.
+   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_j721s2-evm_defconfig in the linux directory of sdk.The default value is 400MB.
    The value can be increased according to the availability of space in DDR memory map.
    The CMA memory size can be decreased if the memory requirement is of limited number of channels.
 
