@@ -37,3 +37,10 @@ The dynamic power management features enables on |__PART_FAMILY_DEVICE_NAMES__| 
 This ensures the system is drawing minimum power when in idle state i.e
 no use-case is running. This is accomplished by turning off as many
 peripherals as that are not in use.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    The idle power management features on AM62X are:
+	
+    #. Deep Sleep (Suspend-to-RAM)
+    #. MCU Only Mode
