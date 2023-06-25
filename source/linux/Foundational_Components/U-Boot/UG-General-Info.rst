@@ -768,13 +768,13 @@ Build U-Boot
 
            $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721e_sr1_1 HS=1 SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-cert.bin
 
-.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'J721S2' , 'J784S4')
 
     .. rubric:: Target Images
         :name: target-images
 
     Copy the below images to the boot partition of an SD card and boot.
-    Instructions to format the SD card can be found `here <Overview/Processor_SDK_Linux_create_SD_card_script.html>`__.
+    Instructions to format the SD card can be found `here <../../Overview/Processor_SDK_Linux_Formatting_SD_Card.html>`__.
 
     .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -788,7 +788,7 @@ Build U-Boot
        - tispl.bin, u-boot.img from <output directory>/a72
        - sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
 
-    .. ifconfig:: CONFIG_part_variant in ('J7200')
+    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
 
        - tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
        - tispl.bin, u-boot.img from <output directory>/a72
