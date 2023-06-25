@@ -1,6 +1,6 @@
 .. http://processors.wiki.ti.com/index.php/How_to_Flash_Linux_System_from_U-boot
 
-How to Flash Linux System from U-boot
+How to Flash from U-boot Shell
 ================================================
 
 .. ifconfig:: CONFIG_part_family in ('J7_family')
@@ -10,7 +10,7 @@ How to Flash Linux System from U-boot
 
     ::
     
-        https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/board/ti/j721e/README
+        https://git.ti.com/cgit/ti-u-boot/ti-u-boot/tree/doc/board/ti/j721e_evm.rst
 
 
 .. ifconfig:: CONFIG_part_family in ('General_family')
