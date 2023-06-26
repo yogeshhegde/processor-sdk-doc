@@ -622,8 +622,21 @@ PTP/OC in slave mode:
 PPS Pulse Per Second support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-PPS hardware pin is available only on the IDK application card i.e. ICSSG0 port 0 and ICSSG1 port 1.
-They are available at LEDs LD2 and LD5 respectively.
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+  PPS hardware pin is available only on the IDK application card i.e. ICSSG0 port 0 and ICSSG1 port 1.
+  They are available at LEDs LD2 and LD5 respectively.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  To enable PPS on AM64x, the hardware pin PRG0_IEP0EDC_SYNC_OUT0 needs to be enabled.
+
+  ::
+
+        icssg0_iep0_pins_default: icssg0-iep0-pins-default {
+            pinctrl-single,pins = <
+                    AM64X_IOPAD(0x01AC, PIN_OUTPUT, 2) /* (W1) PRG0_PRU0_GPO19.PRG0_IEP0_EDC_SYNC_OUT0 */
+           >;
 
 PPS can be tested using `testptp.c <https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/tools/testing/selftests/ptp/testptp.c>`__ tool.
 
@@ -639,7 +652,13 @@ To turn on PPS,
        # ./testptp -d /dev/ptp2 -P 1
        pps for system time request okay
 
-You should be able to see either LD2 or LD5 blink at 1 second interval.
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+  You should be able to see either LD2 or LD5 blink at 1 second interval on AM654x-IDK.
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+  This will generate PPS signal with 1 pulse per second which can be captured by oscilloscope.
 
 To turn off PPS,
 
