@@ -191,7 +191,13 @@ Supported High Speed Modes
       :header: "Platform", "SDR104", "DDR50", "SDR50", "SDR25", "SDR12"
       :widths: auto 
    
-      J721e-EVM, Y, Y, Y, Y, Y
+      J721e-EVM, N, Y, Y, Y, Y
+      J7200-EVM, Y, Y, Y, Y, Y
+      J721s2-EVM, Y, Y, Y, Y, Y
+      J784s4-EVM, Y, Y, Y, Y, Y
+      J721e-sk, Y, Y, Y, Y, Y
+      AM68-sk, Y, Y, Y, Y, Y
+      AM69-sk, Y, Y, Y, Y, Y
 
    * eMMC
 
@@ -199,7 +205,13 @@ Supported High Speed Modes
       :header: "Platform", "DDR52", "HS200", "HS400"
       :widths: auto
 
-      J721e-EVM, Y, Y, Y
+      J721e-EVM, Y, Y, N
+      J7200-EVM, Y, Y, Y
+      J721s2-EVM, Y, Y, Y
+      J784s4-EVM, Y, Y, Y
+      AM69-sk, Y, Y, Y
+
+   J721e-sk and AM68-sk does not support eMMC.
 
 Driver Configuration
 ^^^^^^^^^^^^^^^^^^^^
