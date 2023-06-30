@@ -1,3 +1,5 @@
+.. _pm_sw_arch:
+
 ##############
 S/W Architecture of System Suspend
 ##############
