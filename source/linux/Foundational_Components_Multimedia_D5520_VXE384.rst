@@ -20,7 +20,7 @@ following hardware accelerators:
 In order to make it easy for customers to write applications, and to
 leverage open source elements that provide functionality such as AVI
 stream demuxing, audio encode/decode, etc, TI's |__SDK_FULL_NAME__|
-supplies ARM-based GStreamer plugins that abstract the hardware
+provides ARM-based GStreamer plugins that abstract the hardware
 acceleration.
 
 This multimedia training page will cover the following topics:
@@ -28,7 +28,6 @@ This multimedia training page will cover the following topics:
      #.  Capabilities of DECODER and ENCODER
      #.  Out-of-box Multimedia Demos in |__SDK_FULL_NAME__|
      #.  Software Stack of Accelerated Codec Encoding/Decoding
-     #.  V4L2 Driver-level Test Application
      #.  GStreamer Pipelines for Multimedia Applications
      #.  Limitations of GStreamer Plugins
      #.  Memory Optimisation
@@ -40,27 +39,12 @@ This multimedia training page will cover the following topics:
 .. rubric:: Capabilities of DECODER, ENCODER, and ARM
    :name: capabilities-of-decoder-encoder-and-arm
 
-In |__SDK_FULL_NAME__|, DECODER hardware supports the following codecs:
-
-        -  Video Decode: H.264, HEVC/H.265, MPEG4/H.263, WMV9, VC-1, MPEG2,
-           DivX, AVS, RealVideo, VP8, VP6, Sorenson
-        -  Image Decode: MJPEG
-
-The multimedia decoding applications, however, support a subset of the
-codecs supported by the DECODER hardware. The decoding applications
-support these codecs:
+In |__SDK_FULL_NAME__|, DECODER supports the following codecs:
 
         -  Video Decode: H.264 and HEVC/H.265
         -  Image Decode: MJPEG
 
-The ENCODER hardware supports the following codecs:
-
-        - Video Encode: H.264, MPEG4, H.263, MPEG2
-        - Image Encode: JPEG
-
-The multimedia encoding applications, however, support a subset of the
-codecs supported by the ENCODER hardware. The encoding applications
-support these codecs:
+In |__SDK_FULL_NAME__|, ENCODER supports the following codecs:
 
         -  Video Encode: H.264
 
@@ -77,13 +61,7 @@ Demos
 
 The multimedia video decode capabilities can be demonstrated by using
 the GStreamer pipeline to decode to the display. Please refer to the section
-`GStreamer Pipelines`_  for further details. The decoder can also be
-tested at the V4L2 driver level using the standalone test application
-detailed in the section :ref:`v4l2-video-decoder-test-app`.
-
-At this time, GStreamer for encode using the ENCODER hardware is not supported.
-The encoder can be tested at the V4L2 driver level using the standalone
-test app detailed in the section :ref:`v4l2-video-encoder-test-app`.
+`GStreamer Pipelines`_  for further details.
 
 |
 
@@ -96,20 +74,18 @@ Software Stack of Accelerated Codec Encoding/Decoding
 As shown in the figures below, the software stack of the accelerated
 encoding and decoding has two parts:
 
-        -  A V4L2 (Video4Linux version 2) software driver running on Linux on the A72 MPU subsystem
+        -  A V4L2 (Video4Linux version 2) software driver running as part of Linux 
+        on the A72 MPU subsystem
         -  The firmware running on the DECODER and ENCODER
 
 The driver communicates with the firmware running on the ENCODER/DECODER
 through its own IPC (inter-processor communication).
-For the DECODER, at the highest level in the MPU subsystem on the A72,
-there is a Linux user space application which is based on GStreamer. GStreamer
-is an open source framework that simplifies the development of multimedia
-applications. The GStreamer library loads and interfaces with the GStreamer
-plugin (V4L2 plugin), which handles all the details specific to the use of
-the hardware accelerator. Specifically, the GStreamer plugin interfaces
-with the V4L2 decoder and encoder kernel driver interface. The V4L2 decoder driver
-controls the DECODER to enable the accelerated decoding and the V4L2 encoder
-driver controls the Encoder to enable the accelerated encoding.
+At the highest level in the MPU subsystem on the A72, |__SDK_FULL_NAME__|
+comes packaged with Gstreamer. GStreamer is an open source framework that 
+simplifies the development of multimedia applications. This application is
+responsible for abstracting away details specific to the hardware acceleators.
+The accelerators are reference in Gstreamer by the V4L2 plugin. This plugin is
+responsible for the interaction between user space and the V4L2 kernel driver.
 
 .. raw:: html
 
@@ -139,9 +115,9 @@ video capture and video memory-to-memory operations on Linux systems.
 
 Video encode and decode using the ENCODER and DECODER hardware, respectively,
 are enabled as V4L2 drivers. The V4L2 is integrated with the ENCODER and
-DECODER drivers by a thin layer that implements the V4L2 node ioctls
-and translates the V4L2 data structures to those understood by the
-ENCODER/DECODER.
+DECODER drivers by a thin layer that implements the required V4L2 ioctls.
+Furthermore, this layer is also responsible for translating the incoming
+V4L2 data structures to those understood by the ENCODER/DECODER.
 
 V4L2 Video Decoder
 ^^^^^^^^^^^^^^^^^^
@@ -211,74 +187,6 @@ The following table shows the native color format support for each of the suppor
 |              | V4L2_PIX_FMT_YUV422M         |
 +--------------+------------------------------+
 
-.. _v4l2-video-decoder-test-app:
-
-V4L2 Video Decoder Test Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A test application that interfaces directly through the V4L2 API is provided
-along with the release. The test application used for verifying the DECODER
-functionality through the V4L2 API is "tidec_decode".
-
-.. note:: tidec_decode is only able to handle raw streams, not container formats.
-
-Usage:
-
-.. code-block:: text
-
-    tidec_decode -i <input_file> [OPTIONS]
-    The final output file/s will be '<output_file_base>_xx.out'
-    where xx ranges from 00, 01, 02, ...
-    depending on how many fds are specified to -n
-
-    OPTIONS:
-            -h                              help
-            -b                              DO NOT use drm dss device capture buffer (instead, use v4l2)
-            -n <number>                     number of fds to open
-            -o <output_file_base>           Dump output stream to file
-                                            The final output file/s will be '<output_file_base>_xx.out'
-                                            where xx ranges from 00, 01, 02, ...
-                                            depending on how many fds are specified to -n
-            -f <number of frames to decode> Maximum number of frames to decode
-            -d <path>                       Path to which drm device to use for buffer allocation
-            -t                              for enable time profiling
-            -e <number of ms>               Number of milliseconds to sleep between
-                                            queueing the last bitstream buffer and sending CMD_STOP
-                                            Used to test various timing scenarios for EOS
-            -v <dev_name>                   Used to specify which device node is the decoder
-
-Verification:
-
-In order to verify basic functionality, runs can be done with no output file specified.
-In this case, the command line would be simply:
-
-.. code-block:: text
-
-    tidec_decode -i <input_file>
-
-At the end of a successful run, the test application prints:
-
-.. code-block:: text
-
-    test app completed successfully
-
-which can be used to verify a run to completion.
-
-In order to verify the decoded output, a YUV player or mplayer can be used
-on the host PC. In this case, an output file needs to be specified. The total
-command line would be:
-
-.. code-block:: text
-
-    tidec_decode -i <input_file> -o <output_file>
-
-The output could then be played back on the host PC. For example, to play back
-raw QCIF NV12 output:
-
-.. code-block:: text
-
-    mplayer output.yuv -demuxer rawvideo -rawvideo w=176:h=144:format=NV12
-
 
 V4L2 Video Encoder
 ^^^^^^^^^^^^^^^^^^
@@ -338,86 +246,6 @@ The following table gives recommended values for bitrate based on resolution and
 | Full HD (1920x1080) |                  15000000             |           10000000           |
 +---------------------+---------------------------------------+------------------------------+
 
-.. _v4l2-video-encoder-test-app:
-
-V4L2 Video Encoder Test Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A test application that interfaces directly through the V4L2 API is provided
-along with the release. The test application used for verifying the ENCODER
-functionality through the V4L2 API is "tienc_encode".
-
-Usage:
-
-.. code-block:: text
-
-    tienc_encode -i <input_file> -w <width> -h <height> [OPTIONS]
-    OPTIONS:
-            -o <output_file_name>
-                    Dump output stream to file
-            -d <device>
-                    Location of device node (ex. /dev/video0)
-            -e <device_path>
-                    Directory of device node (ex. /dev/)
-                    Not needed if -d argument is provided
-            -f <format>
-                    Input image format. Available formats:
-                            NV12
-            -c <codec>
-                    Output stream codec. Available codecs
-                            H264
-            -n <n_frames>
-                    Number of frames to encode
-            -b <bitrate>
-                    Bitrate in bits per second
-            -g <gop_size>
-                    IDR frame interval
-            -p <i_period>
-                    I frame period in H264
-            -r <framerate>
-                    Framerate in frames per second
-            -j
-                    Use DMA buffers for output stream
-            -k
-                    Use DMA buffers for capture stream
-            -l <drm_device_name>
-                    Location of drm device (ex. /dev/dri/card0)
-            -m <drm_device-path>
-                    Directory of drm device node (ex. /dev/dri/)
-                    Not needed if -l argument is provided
-
-Verification:
-
-In order to verify basic functionality, defaults can be used for most
-configurable options except for input file, width, height, and output file.
-In this case, the command line would be simply:
-
-.. code-block:: text
-
-    tienc_encode -i <input_file> -w <width> -h <height> -o <output_file>
-
-At the end of a successful run, the test application prints:
-
-.. code-block:: text
-
-    Got EPIPE, exiting
-
-which can be used to verify a run to completion.
-
-In order to verify the encoded bitstream, mplayer can be used on the host
-PC. The total command line would be:
-
-.. code-block:: text
-
-    tienc_encode -i <input_file> -w <width> -h <height> -o <output_file>
-
-The encoded bitstream could then be played back on the host PC. For example,
-to play back a raw H.264 bitstream:
-
-.. code-block:: text
-
-    mplayer -fps 30 output.h264
-
 GStreamer Plugins for Multimedia
 --------------------------------
 
@@ -445,7 +273,7 @@ easy plugin registration just by deploying new shared objects to the
 scanned for reserved data structures identifying capabilities of
 individual plugins. Individual processing nodes can be interconnected as
 a pipeline at run-time, creating complex topologies. Node interfacing
-compatibility is verified at that time - before the pipeline is started.
+compatibility is verified before the pipeline is started.
 
 GStreamer brings a lot of value-added features to |__SDK_FULL_NAME__|,
 including audio encoding/decoding, audio/video synchronization, and
@@ -683,7 +511,7 @@ supported element.
 +----------------------------+----------------------------+----------------------------+
 
 .. note::
-   #.  No color conversion is performed in the plugin or v4l2 decode driver. The
+   #.  No color conversion is performed in the plugin or V4L2 drivers. The
        color format selected should be that of the native color format of the encoded bitstream.
    #.  To select the appropriate color format, it is important to provide the color
        format filter to the GStreamer pipeline. See `Running a GStreamer pipeline`_ for more
@@ -724,12 +552,16 @@ the decoder element (and in turn the TI V4L2 decoder driver) to do the allocatio
 "dmabuf" (GST_V4L2_IO_DMABUF) is used. To request the element to import buffers
 allocated downstream, "dmabuf-import" (GST_V4L2_IO_DMABUF_IMPORT) is used. By
 default for the decode elements, GST_V4L2_IO_DMABUF will be selected due to V4L2
-decoder driver support for it.
+decoder driver support for it. An example of using dmabuf-import in a gstreamer
+pipeline:
+
+.. code-block:: text
+    gst-launch-1.0 filesrc location=<file_location> ! h264parse ! v4l2h264dec capture-io-mode=5 ! kmssink driver-name=tidss
 
 With the TI V4L2 Video Decoder Driver, the best latency performance to display is achieved
-with the default of "dmabuf" (GST_V4L2_IO_DMABUF). This default provides
-the best performance because internally the V4L2 decoder allocates contiguous
-buffers that can be sent to display without any buffer copies.
+with "dmabuf-import" (GST_V4L2_IO_DMABUF_IMPORT). This feature provides
+the best performance because internally the V4L2 element will no longer
+have to copy buffer information the element's region, to the display region.
 
 |
 
@@ -752,6 +584,9 @@ Decoder Driver Memory Optimisation
 
        -                 CAPTURE_CONTIG_ALLOC ?=y
        +                 CAPTURE_CONTIG_ALLOC ?=n
+   
+   By changing this macro, the memory allocation is switching from using CMA (contiguous memory allocation)
+   to taking advantage of the MMU that is packaged on the DECODER.
 
 |
 
@@ -761,39 +596,17 @@ Rebuilding and Debugging
 Rebuilding V4L2 Drivers
 -----------------------
 
-The V4L2 Encode and Decode drivers can be rebuilt using the
-"linux-ti-staging" Yocto recipe available with the release.
-If the recipe needs to be modified (for example, to enable/disable
-config options), the recipe can be found in the meta-ti
-sources, in the path "recipes-kernel/linux/linux-ti-staging-<version>/".
+If any modification are made to the drivers, they will need to be rebuilt
+and updated on the device. These drivers are rebuilt by following the standard 
+process for `Building TI's Linux Kernel <Foundational_Components_Kernel_Users_Guide.html>`__. 
+Please refer to this page for a more detailed guide in rebuilding modules. 
 
-After modifications/additions are made to the recipe or source code,
-the module needs to be rebuilt, and this can be done from the Yocto
-build.
-
-First, please refer to `Building The SDK <Overview_Building_the_SDK.html>`__
-to set up the build environment and bitbake the original recipe for
-ti-img-encode-decode, i.e.,
-
-``MACHINE=j721e-evm bitbake linux-ti-staging``
-
-After the bitbake command above is successfully done,
-./build/arago-tmp-external-arm-toolchain/work/j7_evm-linux/ti-img-encode-decode/<\*>
-will be created with the original source code under the git sub-folder.
-Copy the modified and/or the newly added files to the git sub-folder,
-and rebuild the module referring to `Rebuild
-Recipe <Overview_Building_the_SDK.html#recipes>`__.
-
-Last, install the rebuilt module(s) on target filesystem referring to
-`Installing Package <Overview_Building_the_SDK.html#installing-package>`__.
-After the installation, the following files will be updated and/or
-added.
+Once built, install the rebuilt module(s) on target filesystem. Copy the new kernel
+modules to their proper location on board. These locations for decoder and encoder,
+respectively, can be seen below.
 
         -  /lib/modules/<version>/kernel/drivers/media/platform/vxe-vxd/vxd-dec.ko
         -  /lib/modules/<version>/kernel/drivers/media/platform/vxe-vxd/vxe-enc.ko
-
-For rebuilding individual recipes in |__SDK_FULL_NAME__|, please refer to
-`Recipes <Overview_Building_the_SDK.html#recipes>`__.
 
 Debug Logs
 ----------
@@ -833,7 +646,7 @@ To enable firmware latency profiling, follow these steps:
 
    .. code-block:: text
 
-       drivers/media/platform/vxe-vxd/decoder/vxd_pvdec.c
+       drivers/media/platform/img/vxe-vxd/decoder/vxd_pvdec.c
 
    Make the following change:
 
@@ -864,7 +677,7 @@ To enable V4L2-level picture decode latency profiling, follow these steps:
 
    .. code-block:: text
 
-       ti-img-encode-decode/linux/decoder/vxd_v4l2.c
+       drivers/media/platform/img/vxe-vxd/decoder/vxd_v4l2.c
 
    Make the following change:
 
