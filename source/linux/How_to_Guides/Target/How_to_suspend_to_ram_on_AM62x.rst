@@ -7,8 +7,7 @@ a cut-down version of DT file is provided with limited peripherals and cores ena
 to demonstrate Suspend to RAM (S2R) capability.
 
 .. note::
-    Deep Sleep is currently supported only on AM62x GP Devices and support for HS-FS, HS-SE
-    is still under way.
+    The Documentation for Low Power Mode has now moved to Power Management section under `Linux Foundational Components </linux/Foundational_Components/Kernel/Kernel_Drivers/Power_Management/pm_low_power_modes.html>`__
 
 Supported Low power mode:
 
