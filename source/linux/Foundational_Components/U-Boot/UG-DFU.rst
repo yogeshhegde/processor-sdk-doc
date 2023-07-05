@@ -23,7 +23,7 @@ The USB Peripheral boot mode is used to boot using USB
 interface using SPL-DFU feature. Steps outlined here can be used on
 platform that support USB Peripheral boot mode.
 
-.. ifconfig:: CONFIG_part_family in ('General_family','J7_family')
+.. ifconfig:: CONFIG_part_family in ('General_family')
 
   #. Enable the SPL-DFU feature in u-boot and build MLO/u-boot binaries.
   #. Load the MLO and u-boot.img using the dfu-util from host PC.
