@@ -56,6 +56,24 @@ capabilities:
 
 |
 
+Encoder and Decoder Capabilities
+================================
+
+Max capabilites of the drivers seen in |__SDK_FULL_NAME__| are as follows:
+
+   - ENCODER: 2 x 1080p30 streams running in parallel
+   - DECODER : 8 x 1080p30 streams running in parallel
+
+ENCODER does not support resolutions greater than 1080p due to hardware limitations.
+No more than 2 channels can be processed in parallel. Higher framerates are supported
+for 1080p when only 1 channel is in use as it will split the load across both the hardware
+pipes. Max framerate for a single 1080p channel is 60fps. 
+
+4k decoding is supported by the DECODER. However, 8 channels, which represent maximum
+number of pipes on the device, do not have the capability of doing 4k simultaneously. 
+
+|
+
 Demos
 =====
 
@@ -245,6 +263,25 @@ The following table gives recommended values for bitrate based on resolution and
 +---------------------+---------------------------------------+------------------------------+
 | Full HD (1920x1080) |                  15000000             |           10000000           |
 +---------------------+---------------------------------------+------------------------------+
+
+The encoder driver is using standard v4l2 mechanisms for configuring the various parameters 
+for profile, level, bitrate, tools, gop structure, etc. This means the user can use 'v4l2-ctl -L' 
+to list all the available controls.  Then from gstreamer, use the extra-controls=s,<ctrl_name>=<value>
+syntax to actually set them as part of the v4l2h264enc parameters.
+    
+However, it is important to note that while profile and level can be set using
+this method, GStreamer 1.20.5 always sets profile and level to baseline/level_1.
+
+To overcome this, don't set profile/level with extra-controls, use the caps
+of the video stream to set profile and level like this between the encoder and the next element.
+
+.. code-block:: text
+
+      ! 'video/x-h264,profile=(string)main,level=(string)4.0'  !
+
+Please see section `Running a GStreamer pipeline`_ for example pipelines that properly
+set the additional controls in Gstreamer.
+
 
 GStreamer Plugins for Multimedia
 --------------------------------
@@ -462,6 +499,38 @@ The following pipeline shows example of using the v4l2h264enc element.
 
    H.264 video encoding to filesink
       target #  gst-launch-1.0 filesrc location=/<path_to_file> rawvideoparse width=1280 height=720 framerate=30/1 format=23 ! v4l2h264enc ! filesink location=/<path_to_file>
+
+As previously mentioned in `Linux Kernel Drivers`_, the encoder can be configured with additional controls. The following
+pipelines provided some insight on how these configurations can be done.
+
+.. code-block:: text
+
+   Main Profile, level 4, and CABAC disabled
+      target # gst-launch-1.0 videotestsrc num_buffers=1000 ! capssetter caps="video/x-raw,width=1920,height=1072,framerate=25/1,format=NV12" ! \
+               v4l2h264enc extra-controls="s,video_bitrate=1000000,h264_8x8_transform_enable=false,\
+               h264_entropy_mode=false,max_number_of_reference_pics=1" ! \
+               'video/x-h264,profile=(string)main,level=(string)4' ! filesink location=test.264
+
+.. code-block:: text 
+
+   High profile, level 5.1, with CABAC and 8x8 transform enabled
+      target # gst-launch-1.0 videotestsrc num_buffers=1000 ! capssetter caps="video/x-raw,width=1920,height=1072,framerate=25/1,format=NV12" ! \ 
+               v4l2h264enc extra-controls="s,video_bitrate=1000000,h264_8x8_transform_enable=true,\
+               h264_entropy_mode=true,max_number_of_reference_pics=1" ! 'video/x-h264,profile=(string)main,level=(string)5.1' ! filesink location=test.264
+
+.. code-block:: text   
+
+   Constrained baseline, level 2.1
+      target # gst-launch-1.0 videotestsrc num_buffers=1000 ! capssetter caps="video/x-raw,width=320,height=240,framerate=20/1,format=NV12" ! \
+               v4l2h264enc extra-controls="s,video_bitrate=64000,h264_8x8_transform_enable=false, h264_entropy_mode=0,max_number_of_reference_pics=1" ! \
+               'video/x-h264,profile=(string)baseline,level=(string)2.1' ! filesink location=test.264
+   
+.. note::
+   If an incorrect combination of tools is used, or a bitrate/num_ref_frames
+   more than the requested level can support, then the driver WILL override
+   the configuration that was scpecified. By specifying these settings, the user is
+   hinting to the driver what is desired, but the driver inevitably makes the final 
+   decision.
 
 |
 
