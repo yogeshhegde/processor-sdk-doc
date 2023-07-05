@@ -270,27 +270,25 @@ Enabling CPSWng Virtual Client for Linux
 The CPSWng Virtual Client functionality is enabled by applying
 the corresponding Linux device-tree overlay at U-Boot prompt.
 
-At U-Boot prompt, run the following commands to enable Linux CPSWng Virtual Client functionality:
+To enable Linux CPSWng Virtual Client functionality at U-Boot, save the following command in uEnv.txt:
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
     .. code-block:: text
 
-        setenv name_overlays k3-j721e-evm-virt-mac-client.dtbo
-        saveenv
-        boot
+        name_overlays="k3-j721e-evm-virt-mac-client.dtbo"
 
 .. ifconfig:: CONFIG_part_variant in ('J7200')
 
     .. code-block:: text
 
-        setenv name_overlays k3-j7200-evm-virt-mac-client.dtbo
-        saveenv
-        boot
+        name_overlays="k3-j7200-evm-virt-mac-client.dtbo"
 
-The **saveenv** command saves the **name_overlays** environment variable,
-thereby automating the process of applying the device-tree overlay on
-following boots.
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    .. code-block:: text
+
+        name_overlays="k3-j784s4-evm-virt-mac-client.dtbo"
 
 Driver Configuration
 ====================

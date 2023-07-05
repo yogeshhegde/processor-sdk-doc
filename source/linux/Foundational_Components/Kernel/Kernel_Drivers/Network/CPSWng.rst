@@ -47,8 +47,10 @@ configurations:
     can be enabled for a build.
 
 .. note::
-    | Enabling the CPSWng Virtual Client configuration requires applying a Linux device-tree overlay at U-Boot using the **name_overlays** U-Boot environment variable.
-    | For details, refer: :ref:`cpswng_virt_mac_u_boot`
+    | Enabling the CPSWng Virtual Client configuration or the CPSWng Native Ethernet configuration
+    | requires applying a Linux device-tree overlay at U-Boot using the **name_overlays** U-Boot environment variable.
+    | For details regarding applying CPSWng Virtual Client overlay, refer :ref:`cpswng_virt_mac_u_boot`.
+    | For details regarding applying CPSWng Native Ethernet overlay, refer :ref:`cpswng_native_eth_overlays`.
 
 CPSWng Virtual Client
 """""""""""""""""""""
