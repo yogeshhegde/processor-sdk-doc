@@ -1,3 +1,5 @@
+.. include:: /replacevars.rst.inc
+
 CPUIdle
 -------
 
@@ -13,9 +15,9 @@ C-state. Governor decides whether to continue in current state/
 transition to a different state. Current 'driver' is called to
 transition to the selected state.
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
 
-    The A53 cores on AM62x currently support only the Wait for Interrupt (WFI)
+    The A53 cores on |__PART_FAMILY_DEVICE_NAMES__| currently support only the Wait for Interrupt (WFI)
     C-state. This state gets enabled by default in the CPUIdle driver without
     requiring any additional DT configuration.
 
