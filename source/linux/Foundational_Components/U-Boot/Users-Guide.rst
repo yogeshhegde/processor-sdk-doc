@@ -22,4 +22,4 @@ User's Guide
     UG-HyperBus
     UG-RemoteProc
     UG-AVS
-
+    UG-Splash-Screen
