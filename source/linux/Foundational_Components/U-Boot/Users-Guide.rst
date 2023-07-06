@@ -21,4 +21,5 @@ User's Guide
     UG-DDRSS
     UG-HyperBus
     UG-RemoteProc
+    UG-AVS
 
