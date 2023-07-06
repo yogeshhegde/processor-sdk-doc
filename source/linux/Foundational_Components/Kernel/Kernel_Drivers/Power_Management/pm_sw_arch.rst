@@ -7,21 +7,13 @@ S/W Architecture of System Suspend
 Overview
 ========
 
-The user can deliberately force the system to a low power state. There are
-various levels: Suspend to memory (RAM), Suspend to disk, etc. In Upcoming
-releases we will support even more modes like MCU Only mode, Partial I/O
-mode, etc.
-
-First, let's try to understand what we mean by deep sleep. In AM62, Deep
-Sleep is the state of the SoC in which it is consuming very low power
+In AM62, Deep Sleep is the state of the SoC in which it consumes very low power
 overall yet it is not completely shut off. During Deep Sleep, Certain IPs
-(depending on power domain to which then belong) will lose register context on suspend.
-SW should save and restore the context as required across state transitions. DDR is in self-
-refresh. This mode is primarily used for Suspend to RAM for battery lifetime or backup
-operation.
+(depending on the power domain to which then belong) will lose context on suspend.
+S/W should save and restore the context as required across state transitions. DDR is in self-
+refresh to allow context saving.
 
-Here, we will try to cover the overall high level Software Flow of how the
-system suspends when a user issues a deep sleep.
+This document explains the overall high level Software Flow of deep sleep in AM62x.
 
 System diagram and components
 =============================
@@ -32,8 +24,15 @@ System diagram and components
 Above diagram has software sequence for how deep sleep (ie. Suspend to RAM) works on
 SK-AM62 ( Read more on the Starter Kit `here <https://www.ti.com/tool/SK-AM62>`__ ).
 
+Deep Sleep Entry:
+*****************
+
 #. The user first instructs the System to Suspend. This triggers a suspend
    sequence from linux side (which runs on the A53 cluster of the SoC).
+
+#. As part of the TI_SCI driver's suspend hook, I/O isolation is invoked which
+   isolates all the pads from their respective pinmuxed controllers. Refer to
+   :ref:`Wakeup sources Documentation<pm_wakeup_sources>` to understand more on this.
 
 #. Linux then suspends all the drivers in the order that they are probed.
    After ensuring that there were no faults in suspending the drivers, linux
@@ -49,14 +48,14 @@ SK-AM62 ( Read more on the Starter Kit `here <https://www.ti.com/tool/SK-AM62>`_
 #. Further it stops tick timer, disables interrupts that are not needed, and suspends local drivers.
    After the above steps it sends TISCI To DM for Suspend Finish and enters WFI.
 
-#. The DM (Device Manager) who is the final entity in this entire deep sleep sequence. The procedure followed is:
+#. The DM (Device Manager) is the final entity in this entire deep sleep sequence. It does the following:
 
-   a. now starts to save it's own context to DDR
-   b. Disable Security IP LPSCs, such as LPSC_SAUL.
-   c. Disable non-critical"IP-less" LPSCs, such as LPSC_main_test.
-   d. Save MAIN PADCONF MMRs
-   e. Save GTC counter and Disable it.
-   f. Finally, Suspend OS.
+   a. Saves own context to DDR
+   b. Disables Security IP LPSCs, such as LPSC_SAUL.
+   c. Disables non-critical "IP-less" LPSCs, such as LPSC_main_test.
+   d. Saves MAIN PADCONF MMRs
+   e. Saves GTC counter and Disable it.
+   f. Finally, Suspends OS.
 
    The OS in this case is the Free RTOS based Device Manager firmware itself. After this step it starts performing final
    Steps toward completion of Suspend to RAM.
@@ -76,10 +75,28 @@ SK-AM62 ( Read more on the Starter Kit `here <https://www.ti.com/tool/SK-AM62>`_
    DM in WFI will basically wait for the configured wakeup source to trigger
    an interrupt that will act as the wakeup signal.
 
+Deep Sleep Exit:
+****************
+
+#. External async wakeup from wake source triggers the DM to resume.
+#. The DM brings MAIN Domain out of reset.
+#. Secure (TIFS) ROM begins to boot.
+#. A small piece of code called the FS Stub is required to restore the remaining context and resume the
+   TIFS firmware.
+
+   The TIFS Stub is loaded into the ATCM (Tightly Coupled Memory A of the DM R5) during device boot.
+   The R5 SPL loads the TIFS Stub (which is a part of tispl.bin) onto DDR at address 0x9dc00000. The DM Firmware
+   pulls in this TIFS Stub from DDR RAM to it's ATCM where it then resides as long as the
+   device is not shutdown.
+#. Then, the rest of the resume sequence is a mirror image of the deep sleep entry sequence.
+#. As the A53 core resumes, and subsequently the linux TI_SCI driver's resume hook is called,
+   I/O isolation is disabled. This allows the pads to be re-connected to their respective controllers
+   and allow the device to function normally post resume.
+
 Learning Resources
 ==================
 
 #. `AM62x Technical Reference Manual <https://www.ti.com/lit/pdf/spruiv7>`__
 #. `Technical White Paper on Enabling Low Power on AM62x <https://www.ti.com/lit/wp/sprad41/sprad41.pdf>`__
-#. `How To Enable and Use Low Power Mode on AM62x Guide <../../../../How_to_Guides/Target/How_to_suspend_to_ram_on_AM62x.html>`__
+#. :ref:`Low Power Modes Documentation<lpm_modes>`
 
