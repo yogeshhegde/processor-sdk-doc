@@ -9,7 +9,7 @@ Kernel using a root filesystem also found on QSPI. At this time, no
 special builds of U-Boot are required to perform these operations on the
 supported hardware. For simplicity we assume the files are being loaded
 from an SD card. Using the network interface (if applicable) is
-documented above.
+documented in U-boot SPI section.
 
 .. note::
 
@@ -17,6 +17,11 @@ documented above.
     whether or not the OSPI flash part chosen for custom board designs meets all
     the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
 
+.. note::
+
+    The sf command is used to access SPI flash, supporting read/write/erase and
+    a few other functions. For more information on sf command in U-boot please
+    refer to the u-boot documentation: `here <https://u-boot.readthedocs.io/en/latest/usage/cmd/sf.html>`__.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E')
 
