@@ -197,13 +197,11 @@ Documentation/devicetree/bindings/mtd/partition.txt.
         On J721E EVM, switch SW3.1 should be in OFF position at the time
 	of powering on the board to access OSPI flash.
 
-Load QSPI or OSPI module as required using modprobe (this will take care
-of dependencies and load those modules as well):
+Load UBI module for using ubi commands:
 
 ::
 
-       $modprobe spi-ti-qspi
-       $modprobe spi-cadence-quadspi
+       $modprobe ubi
 
 
 This should create /dev/mtdX entries for every partition defined in DT
