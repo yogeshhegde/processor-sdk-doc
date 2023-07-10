@@ -716,6 +716,7 @@ Potential issues
 .. rubric:: In case of CPU stalls (when recording)
    :name: in-case-of-cpu-stalls-when-recording
 
+| **No longer relevant** as DMA driver does a force teardown of the channel.
 | On some platforms, recording audio on high sample rates may work fine the
   first time, but due to issues with channel cleanup it may cause CPU stalls
   when recording the second time, requiring a reboot to fix.
