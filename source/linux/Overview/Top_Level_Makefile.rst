@@ -15,9 +15,7 @@ Makefile uses the Rules.make file and gives an example of how the
 various components can be built and the parameters to use.
 
 **NOTE:** You should not call this makefile with the
-`environment-setup
-script <GCC_ToolChain.html#environment-setup-script>`__
-sourced. The sub-component Makefiles will handle sourcing this script
+"environment-setup" script sourced. The sub-component Makefiles will handle sourcing this script
 where appropriate, but some make targets such as the Linux kernel make
 target do not work properly when this script is already sourced.
 
