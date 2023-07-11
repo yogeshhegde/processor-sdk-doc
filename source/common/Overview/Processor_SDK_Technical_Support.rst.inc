@@ -83,5 +83,5 @@ Example applications:
 
 - OpenCV: https://opencv.org/
 - Documentation, tutorials and examples of how to use OpenCV 3.1: https://docs.opencv.org/3.1.0/#gsc.tab=0
-- OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/platforms/opencl.html
+- OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/opencl/
 
