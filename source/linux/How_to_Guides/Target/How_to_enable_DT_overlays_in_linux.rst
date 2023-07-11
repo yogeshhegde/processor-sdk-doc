@@ -26,13 +26,13 @@ The Processor SDK (PSDK) Linux supports various features in the form of device-t
 
     ::
 
-        $ sudo cp arch/arm64/boot/dts/ti/k3-<overlay>.dtbo <path-to-sd>/root/boot/
+        $ sudo cp arch/arm64/boot/dts/ti/k3-<overlay>.dtbo <path-to-sd>/root/boot/dtb/ti/
 
 #. Update the ``uEnv.txt`` file to let u-boot recognize the overlay. Depending on the use-case, multiple DT overlays can also be added, using "space" as the delimiter.
 
     ::
 
-        name_overlays=k3-<overlay-1>.dtbo k3-<overlay-2>.dtbo k3-<overlay-3>.dtbo
+        name_overlays=ti/k3-<overlay-1>.dtbo ti/k3-<overlay-2>.dtbo ti/k3-<overlay-3>.dtbo
 
 #. Unmount and eject the SD card. Plug it on the AM62 SK EVM and power on the EVM.
 
