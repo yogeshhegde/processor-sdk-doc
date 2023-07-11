@@ -50,11 +50,23 @@ Supported platforms
 +-----------+-------------------------------+
 | SoC       | Number of external ports      |
 +===========+===============================+
+| AM62AX    | 2 external ports (CPSW3g)     |
++-----------+-------------------------------+
 | AM62X     | 2 external ports (CPSW3g)     |
 +-----------+-------------------------------+
 | AM64X     | 2 external ports (CPSW3g)     |
 +-----------+-------------------------------+
 
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    .. note::
+        | The second CPSW MAC port of the CPSW3g instance on AM62A requires an Add-On card.
+        | Additionally, the device-tree overlay:
+        |  **k3-am62a7-sk-ethernet-dc01.dtbo**
+        | has to be applied at U-Boot stage using the command:
+        |  **setenv name_overlays k3-am62a7-sk-ethernet-dc01.dtbo**
+        | to enable functionality of the second CPSW port in Linux.
 
 Driver Configuration
 ====================
@@ -72,6 +84,7 @@ custom builds, please ensure following configs are enabled.
     CONFIG_PHY_TI_GMII_SEL
 
 For further details regarding the above configs, refer:
+
 #. drivers/net/ethernet/ti/Kconfig
 #. drivers/phy/ti/Kconfig
 

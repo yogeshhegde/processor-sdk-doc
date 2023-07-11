@@ -42,7 +42,7 @@ of the CPSW Ethernet Subsystem:
 
  For further details regarding the CPSWng instance, refer :ref:`cpswng`
 
-.. ifconfig:: CONFIG_part_family in ('AM62X_family','AM64X_family')
+.. ifconfig:: CONFIG_part_family in ('AM62X_family','AM62AX_family','AM64X_family')
 
    CPSW3g
 
@@ -64,7 +64,7 @@ The CPSW Ethernet Subsystem supports TSN features in the following configuration
    2. The CPSWng Native Ethernet configuration of the CPSWng instance supports both MAC mode
       and Switch mode TSN features.
 
-.. ifconfig:: CONFIG_part_family in ('AM62X_family','AM64X_family')
+.. ifconfig:: CONFIG_part_family in ('AM62X_family','AM62AX_family','AM64X_family')
 
     The CPSW3g instance supports MAC mode and Switch mode TSN features.
 
