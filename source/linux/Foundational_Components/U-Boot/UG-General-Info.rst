@@ -1745,58 +1745,6 @@ The SRAM memory layout explains the memory used for Bootloader's operation.
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-        -  In SDK 08.00 release, USB DFU boot mode support has been added in AM64. For
-           USB DFU boot mode there is a limitation on the load address of boot
-           images to be less than 0x70001000. In order to overcome this limitation,
-           the R5 SPL load address has been moved to 0x70000000.  Given below is the
-           SRAM memory layout in SDK 08.00 release, during R5 SPL bootloader stage.
-
-        .. code-block:: console
-
-            ┌──────────────────────────────────────┐0x70000000
-            │                                      │
-            │                                      │
-            │                                      │
-            │    SPL IMAGE (Max size 1.5 MB)       │
-            │                                      │
-            │                                      │
-            │                                      │
-            ├──────────────────────────────────────┤0x7017FFFF
-            │                                      │
-            │           SPL STACK                  │
-            │                                      │
-            ├──────────────────────────────────────┤0x70192727
-            │          GLOBAL DATA(216 B)          │
-            ├──────────────────────────────────────┤0x701927FF
-            │                                      │
-            │       INITIAL HEAP (32 KB)           │
-            │                                      │
-            ├──────────────────────────────────────┤0x7019A7FF
-            │                                      │
-            │          BSS  (20 KB)                │
-            ├──────────────────────────────────────┤0x7019F7FF
-            │         EEPROM DATA (2 KB)           │
-            ├──────────────────────────────────────┤0x7019FFFF
-            │                                      │
-            │                                      │
-            │            TF-A (123 KB)             │
-            │                                      │
-            │                                      │
-            ├──────────────────────────────────────┤0x701BEBFB
-            │   BOOT PARAMETER INDEX TABLE (5124 B)│
-            ├──────────────────────────────────────┤0x701BFFFF
-            │                                      │
-            │        UNALLOCATED  AREA(128 KB)     │
-            │                                      │
-            ├──────────────────────────────────────┤0x701DFFFF
-            │                                      │
-            │      DMSC CODE AREA (128 KB)         │
-            │                                      │
-            └──────────────────────────────────────┘0x701FFFFF
-
-        - In SDK 08.01 release, TF-A will be moved to 0x701c0000 and 128 KB will be
-          reserved for it. Given below is the memory layout after making this change.
-
         .. code-block:: console
 
             ┌──────────────────────────────────────┐0x70000000
