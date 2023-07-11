@@ -183,30 +183,129 @@ Enabling camera sensors
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    AM62x supports camera overlay dtb for OV5640 camera sensor module which can be tested with below commands :
+    SK-AM62 supports the following 15-pin FFC compatible camera modules with
+    **OV5640** sensor:
 
-    1) During bootup stop at u-boot prompt by pressing any key and set camera overlay dtb :
+        1. TEVI-OV5640-\*-RPI
+        2. Digilent PCam5C
+        3. ALINX AN5641
 
+    They can be tested with the following steps:
 
+    Applying sensor overlays
+    ------------------------
+
+    During bootup stop at u-boot prompt by pressing any key and enable camera devicetree overlay:
     ::
 
-        setenv name_overlays k3-am625-sk-csi2-ov5640.dtbo
+        # For Digilent PCam5C or ALINX AN5641
+        setenv name_overlays ti/k3-am625-sk-csi2-ov5640.dtbo
         boot
 
-    2) Capture frames using aforementioned yavta command :
+        # For Technexion TEVI-OV5640
+        setenv name_overlays ti/k3-am625-sk-csi2-tevi-ov5640.dtbo
+        boot
+
+    Once the overlay is applied, you can confirm that the sensor is being
+    probed by checking the output of lsmod or the media graph:
 
     ::
 
-        yavta -c -Fcapture -s 640x480 -f UYVY /dev/video0
+        $ lsmod | grep ov5640
+        ov5640                 36864  1
+        v4l2_fwnode            20480  2 ov5640,cdns_csi2rx
 
-    3) If an HDMI display is connected then one can run capture->display pipeline using below commands :
+        $ media-ctl -p
+        Media controller API version 6.1.33
+        Media device information
+        ------------------------
+        driver          j721e-csi2rx
+        model           TI-CSI2RX
+        serial
+        bus info        platform:30102000.ticsi2rx
+        hw revision     0x1
+        driver version  6.1.33
+
+        Device topology
+        ....
+        - entity 13: ov5640 4-003c (1 pad, 1 link, 0 route)
+                     type V4L2 subdev subtype Sensor flags 0
+                     device node name /dev/v4l-subdev2
+                pad0: Source
+                        [stream:0 fmt:UYVY8_1X16/640x480@1/30 field:none colorspace:srgb xfer:srgb ycbcr:601 quantization:full-range
+                         crop.bounds:(0,0)/2624x1964
+                         crop:(16,14)/2592x1944]
+                        -> "cdns_csi2rx.30101000.csi-bridge":0 [ENABLED,IMMUTABLE]
+        ....
+
+
+    Capturing raw frames
+    --------------------
+
+    Once the media pipeline is configured, you should be able to capture raw
+    frames from the sensor using any tool compliant with v4l2 apis. For example
+    you can use libcamera to capture 20 frames @ 480p:
 
     ::
 
-        gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! kmssink driver-name=tidss
-        #NOTE: Above command can only be used when no display server is running.
+        $ cam -c1 --stream width=640,height=480,pixelformat=UYVY -C20
 
-        gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! autovideosink
+    You can also capture at other sensor-supported resolutions:
+
+    ::
+
+        # List supported resolutions
+        $ cam -c1 -I
+        # Capture 20 frames @ 1024x768
+        $ cam -c1 --stream width=1024,height=768,pixelformat=UYVY -C20
+
+    **Note:** Due to a bug in the driver only UYVY format works with libcamera
+    tool. You can still manually change the format using media-ctl to use with
+    other tools.
+
+    To save the raw YUV frames to SD card for viewing later use the -F option:
+
+    ::
+
+        $ cam -c1 --stream width=640,height=480,pixelformat=UYVY -C20 -F#.uyvy
+        $ ls *.uyvy
+        -rw-r--r-- 1 root root 614400 Jan  1 19:19 cam0-stream0-000000.uyvy
+        -rw-r--r-- 1 root root 614400 Jan  1 19:19 cam0-stream0-000001.uyvy
+        -rw-r--r-- 1 root root 614400 Jan  1 19:19 cam0-stream0-000002.uyvy
+        -rw-r--r-- 1 root root 614400 Jan  1 19:19 cam0-stream0-000003.uyvy
+        -rw-r--r-- 1 root root 614400 Jan  1 19:19 cam0-stream0-000004.uyvy
+
+    Alternatively you can use tools like yavta or v4l2-ctl, but please note
+    they require manual configuration using media-ctl if you want to stream at
+    a different resolution and formats than the default (640x480 UYVY):
+
+    ::
+
+        $ yavta -s 640x480 -f UYVY /dev/video0 -c20
+        ....
+        $ v4l2-ctl -d0 --stream-mmap -v width=640,height=480,pixelformat=UYVY
+
+    Capture to display
+    ------------------
+
+    If a display (HDMI or LVDS) is connected then use the following steps to view the camera frames:
+
+    ::
+
+        # As a window within weston desktop
+        $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! autovideosink
+
+        # Direct KMS Sink
+        $ systemctl stop weston
+        $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! kmssink driver-name=tidss sync=false
+
+    You can also replace v4l2src with libcamerasrc above if you want to test
+    different sensor-supported resolutions like 480p, 720p etc.
+
+    ::
+
+        $ gst-launch-1.0 libcamerasrc ! video/x-raw, width=1024, height=768, format=UYVY ! autovideosink
+
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
