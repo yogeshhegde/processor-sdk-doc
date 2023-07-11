@@ -340,7 +340,121 @@ Boot media: MMCSD
 Table:  **Boot time MMC/SD**
 
 
+Ethernet
+-----------------
+Ethernet performance benchmarks were measured using Netperf 2.7.1 https://hewlettpackard.github.io/netperf/doc/netperf.html
+Test procedures were modeled after those defined in RFC-2544:
+https://tools.ietf.org/html/rfc2544, where the DUT is the TI device
+and the "tester" used was a Linux PC. To produce consistent results,
+it is recommended to carry out performance tests in a private network and to avoid
+running NFS on the same interface used in the test. In these results,
+CPU utilization was captured as the total percentage used across all cores on the device,
+while running the performance test over one external interface.
+
+UDP Throughput (0% loss) was measured by the procedure defined in RFC-2544 section 26.1: Throughput.
+In this scenario, netperf options burst_size (-b) and wait_time (-w) are used to limit bandwidth
+during different trials of the test, with the goal of finding the highest rate at which
+no loss is seen. For example, to limit bandwidth to 500Mbits/sec with 1472B datagram:
+
+::
+
+   burst_size = <bandwidth (bits/sec)> / 8 (bits -> bytes) / <UDP datagram size> / 100 (seconds -> 10 ms)
+   burst_size = 500000000 / 8 / 1472 / 100 = 425
+
+   wait_time = 10 milliseconds (minimum supported by Linux PC used for testing)
+
+UDP Throughput (possible loss) was measured by capturing throughput and packet loss statistics when
+running the netperf test with no bandwidth limit (remove -b/-w options).
+
+In order to start a netperf client on one device, the other device must have netserver running.
+To start netserver:
+
+::
+
+   netserver [-p <port_number>] [-4 (IPv4 addressing)] [-6 (IPv6 addressing)]
  
+Running the following shell script from the DUT will trigger netperf clients to measure
+bidirectional TCP performance for 60 seconds and report CPU utilization. Parameter -k is used in
+client commands to summarize selected statistics on their own line and -j is used to gain
+additional timing measurements during the test.
+
+::
+
+   #!/bin/bash
+   for i in 1
+   do
+      netperf -H <tester ip> -j -c -l 60 -t TCP_STREAM --
+         -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
+
+      netperf -H <tester ip> -j -c -l 60 -t TCP_MAERTS --
+         -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE &
+   done
+
+Running the following commands will trigger netperf clients to measure UDP burst performance for
+60 seconds at various burst/datagram sizes and report CPU utilization.
+
+- For UDP egress tests, run netperf client from DUT and start netserver on tester.
+
+::
+
+   netperf -H <tester ip> -j -c -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+
+- For UDP ingress tests, run netperf client from tester and start netserver on DUT.
+
+::
+
+   netperf -H <DUT ip> -j -C -l 60 -t UDP_STREAM -b <burst_size> -w <wait_time> -- -m <UDP datagram size>
+      -k DIRECTION,THROUGHPUT,MEAN_LATENCY,LOCAL_CPU_UTIL,REMOTE_CPU_UTIL,LOCAL_BYTES_SENT,REMOTE_BYTES_RECVD,LOCAL_SEND_SIZE
+
+|
+
+
+ICSSG Ethernet Driver
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. rubric::  TCP Bidirectional Throughput
+   :name: tcp-bidirectional-throughput
+
+.. csv-table::
+    :header: "Command Used","am65xx-evm: THROUGHPUT (Mbits/sec)","am65xx-evm: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "netperf -H 192.168.3.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.3.1 -j -c -C -l 60 -t TCP_MAERTS","1099","40.03"
+
+Table: **ICSSG TCP Bidirectional Throughput**
+
+|
+
+
+
+.. rubric::  UDP Throughput
+   :name: udp-throughput-0-loss
+
+.. csv-table::
+    :header: "Frame Size(bytes)","am65xx-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am65xx-evm: THROUGHPUT (Mbits/sec)","am65xx-evm: CPU Load % (LOCAL_CPU_UTIL)"
+
+    "64","18.00","16.26","82.50"
+    "128","82.00","71.19","81.43"
+    "256","210.00","169.31","79.13"
+    "1024","978.00","542.50","86.03"
+    "1518","1472.00","806.16","88.00"
+
+Table: **ICSSG UDP Egress Throughput**
+
+|
+
+
+
+.. csv-table::
+    :header: "Frame Size(bytes)","am65xx-evm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am65xx-evm: THROUGHPUT (Mbits/sec)","am65xx-evm: CPU Load %"
+
+    "64","18.00","14.47","81.94"
+    "128","82.00","68.91","81.03"
+    "256","210.00","171.43","79.55"
+    "1024","978.00","721.12","76.78"
+    "1518","1472.00","751.92","75.12"
+
+Table: **ICSSG UDP Ingress Throughput (0% loss)**
  
 
 

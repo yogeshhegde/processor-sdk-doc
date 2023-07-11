@@ -162,7 +162,7 @@ ICSSG Ethernet Driver
 .. csv-table::
     :header: "Command Used","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.2.1 -j -c -C -l 60 -t TCP_MAERTS","182.62","53.26"
+    "netperf -H 192.168.3.1 -j -c -C -l 60 -t TCP_STREAM; netperf -H 192.168.3.1 -j -c -C -l 60 -t TCP_MAERTS","877","67.65"
 
 Table: **ICSSG TCP Bidirectional Throughput**
 
@@ -176,11 +176,11 @@ Table: **ICSSG TCP Bidirectional Throughput**
 .. csv-table::
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load % (LOCAL_CPU_UTIL)"
 
-    "64","18.00","6.97","81.75"
-    "128","82.00","31.48","81.28"
-    "256","210.00","75.23","83.30"
-    "1024","978.00","93.64","28.51"
-    "1518","1472.00","12.95","1.14"
+    "64","18.00","14.47","81.94"
+    "128","82.00","68.91","81.03"
+    "256","210.00","171.43","79.55"
+    "1024","978.00","721.12","76.78"
+    "1518","1472.00","751.92","75.12"
 
 Table: **ICSSG UDP Egress Throughput**
 
@@ -191,11 +191,11 @@ Table: **ICSSG UDP Egress Throughput**
 .. csv-table::
     :header: "Frame Size(bytes)","am64xx-hsevm: UDP Datagram Size(bytes) (LOCAL_SEND_SIZE)","am64xx-hsevm: THROUGHPUT (Mbits/sec)","am64xx-hsevm: CPU Load %"
 
-    "64","18.00","1.99","20.76"
-    "128","82.00","8.13","14.28"
-    "256","210.00","14.11","16.85"
-    "1024","978.00","94.67","32.84"
-    "1518","1472.00","121.29","27.85"
+    "64","18.00","16.26","82.50"
+    "128","82.00","71.19","81.43"
+    "256","210.00","169.31","79.13"
+    "1024","978.00","542.50","86.03"
+    "1518","1472.00","806.16","88.00"
 
 Table: **ICSSG UDP Ingress Throughput (0% loss)**
 
