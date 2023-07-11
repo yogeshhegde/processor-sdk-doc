@@ -223,76 +223,251 @@ Time difference between to testptp -g calls should be equal sleep time
        frequency adjustment okay
        clock time: 151.386187454 or Thu Jan  1 00:02:31 1970
 
-.. rubric:: Example of using Time stamp external events
+.. rubric:: Time stamping external events
    :name: k3-example-of-using-time-stamp-external-events
 
-Timestamping of external events can be tested using
-testptp tool. Before testing the proper CPTS signal routing has to be done by
-using timesync router in DT.
+External events can be timestamped by the CPTS module. The CPTS module loads a hardware timestamp
+event to the Event FIFO, whenever the HWx_TS_PUSH inputs are set. Thus, it is possible to
+timestamp events by using the HWx_TS_PUSH inputs to the CPTS module.
 
-For example, output of GENF0 can be routed to HW3_TS_PUSH_EN input.
-It's required to rebuild kernel with below changes first
+The following example illustrates the process of timestamping an external event. The external
+event in the example corresponds to the rising edge of GENF0 (Timestamp Generator Function).
+This involves using the output of CPSWxG CPTS GENF0 as an input to one of the HWx_TS_PUSH inputs.
+
+The process of routing the CPSWxG CPTS GENF0 output to any of the HWx_TS_PUSH inputs is achieved
+through the Time Sync Router. The procedure to route the CPSWxG CPTS GENF0 output to HW4_TS_PUSH
+input for example, involves modifying the device-tree node of the Time Sync Router, to map the
+CPWSxG CPTS GENF0 output to HW4_TS_PUSH input.
+
+The following block shows the Time Sync Router device-tree node with the mapping from CPSWxG CPTS
+GENF0 to HW4_TS_PUSH added.
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
+
+    ::
+
+       #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+       &timesync_router {
+          pinctrl-names = "default";
+          pinctrl-0 = <&cpsw_cpts>;
+
+              /* Example of the timesync routing */
+                  cpsw_cpts: cpsw-cpts {
+                          pinctrl-single,pins = <
+                                  /* pps [cpsw cpts genf0] in16 -> out13 [cpsw cpts hw4_push] */
+                                  TS_OFFSET(13, 16)
+                          >;
+                  };
+       };
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    ::
+
+       #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+
+       &timesync_router {
+          pinctrl-names = "default";
+          pinctrl-0 = <&cpsw_cpts>;
+
+              /* Example of the timesync routing */
+                  cpsw_cpts: cpsw-cpts {
+                          pinctrl-single,pins = <
+                                  /* pps [cpsw cpts genf0] in21 -> out33 [cpsw cpts hw4_push] */
+                                  TS_OFFSET(33, 21)
+                          >;
+                  };
+       };
+
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
+
+    ::
+
+       #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+
+       &timesync_router {
+          pinctrl-names = "default";
+          pinctrl-0 = <&cpsw_cpts>;
+
+              /* Example of the timesync routing */
+                  cpsw_cpts: cpsw-cpts {
+                          pinctrl-single,pins = <
+                                  /* pps [cpsw cpts genf0] in16 -> out25 [cpsw cpts hw4_push] */
+                                  TS_OFFSET(25, 16)
+                          >;
+                  };
+       };
+
+Similar approach can be used for routing the outputs of other timestamp generator functions (GENFy)
+as inputs to other Hardware Timestamping push inputs (HWx_TS_PUSH).
+
+The Input Sources and their indices, along with the Output Destinations and their indices for the
+Time Sync Router are obtained from the documentation as mentioned below.
+
+The Input Sources for the Time Sync Router are documented at:
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    `Time Sync Router Input Sources for AM62AX <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62ax/interrupt_cfg.html#timesync-event-router0-interrupt-router-input-sources>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    `Time Sync Router Input Sources for AM62X <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62x/interrupt_cfg.html#timesync-event-router0-interrupt-router-input-sources>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    `Time Sync Router Input Sources for AM64X <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am64x/interrupt_cfg.html#timesync-event-introuter0-interrupt-router-input-sources>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+    `Time Sync Router Input Sources for J721E <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721e/interrupt_cfg.html#timesync-intrtr0-interrupt-router-input-sources>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    `Time Sync Router Input Sources for J7200 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j7200/interrupt_cfg.html#timesync-intrtr0-interrupt-router-input-sources>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    `Time Sync Router Input Sources for J721S2 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721s2/interrupt_cfg.html#timesync-intrtr0-interrupt-router-input-sources>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    `Time Sync Router Input Sources for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/interrupt_cfg.html#timesync-intrtr0-interrupt-router-input-sources>`_
+
+The Output Destinations for the Time Sync Router are documented at:
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+    `Time Sync Router Output Destinations for AM62AX <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62ax/interrupt_cfg.html#cmp-event-introuter0-interrupt-router-output-destinations>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    `Time Sync Router Output Destinations for AM62X <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am62x/interrupt_cfg.html#cmp-event-introuter0-interrupt-router-output-destinations>`_
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    `Time Sync Router Output Destinations for AM64X <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/am64x/interrupt_cfg.html#timesync-event-introuter0-interrupt-router-output-destinations>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J721E')
+
+    `Time Sync Router Output Destinations for J721E <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721e/interrupt_cfg.html#timesync-intrtr0-interrupt-router-output-destinations>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    `Time Sync Router Output Destinations for J7200 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j7200/interrupt_cfg.html#timesync-intrtr0-interrupt-router-output-destinations>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+    `Time Sync Router Output Destinations for J721S2 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j721s2/interrupt_cfg.html#timesync-intrtr0-interrupt-router-output-destinations>`_
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+    `Time Sync Router Output Destinations for J784S4 <https://software-dl.ti.com/tisci/esd/latest/5_soc_doc/j784s4/interrupt_cfg.html#timesync-intrtr0-interrupt-router-output-destinations>`_
+
+To test that the timestamping feature works with the above changes, execute the following
 
 ::
 
-   #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x80000000 | val)
-
-   &timesync_router {
-      pinctrl-names = "default";
-      pinctrl-0 = <&mcu_cpts>;
-
-          /* Example of the timesync routing */
-              mcu_cpts: mcu_cpts {
-                      pinctrl-single,pins = <
-                              /* pps [cpts genf0] in12 -> out24 [cpts hw4_push] */
-                              TS_OFFSET(24, 12)
-                      >;
-              };
-   };
-
-Then execute::
-
        # testptp -d /dev/ptpN -p 500000000 -i 0
-       # testptp -d /dev/ptpN -e 100 -i 2
+       # testptp -d /dev/ptpN -e 5 -i 3
        event index 2 at 384.250000025
        event index 2 at 384.750000025
        event index 2 at 385.250000025
        event index 2 at 385.750000025
+       event index 2 at 386.250000025
+
+The first command is used to specify that /dev/ptpN has to be used as the clock, with the output
+period ('p') being 500000000 nanoseconds (500 milliseconds) and the event index 'i' being 0
+(corresponding to GENF0).
+
+The second command is used to specify that /dev/ptpN has to be used as the clock, with the first
+5 events to be output ('e') , corresponding to the event index 3 ('i'). Event index starts from
+0, due to which, the 3 here corresponds to HW4_TS_PUSH.
 
 .. rubric:: PPS Pulse Per Second support
    :name: k3-cpts-pps-support
 
-The default PPS support for |__PART_FAMILY_DEVICE_NAMES__| depends on TI SCI system firmware configuration which may put timesync_router IO space under firewall in which case the Linux can not configure timesync_router.
-In such case, the timesync_router has to be configured from Core for which timesync_router IO space access is allowed and Linux DT should provide CPTS "ti,pps" property configuration.
+The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled with the following steps:
 
-The PPS support for |__PART_FAMILY_DEVICE_NAMES__| can be enabled by adding below changes to the board DT file to
-route CPSWxG CPTS GENF1 output to HW3_TS_PUSH_EN input, for example::
+1. Route the output of the CPSWxG CPTS timestamp generator function (GENFy) to one of the
+   CPSWxG CPTS timestamp generator inputs (HWx_TS_PUSH) using the Time Sync Router, by
+   modifying the device-tree node corresponding to the Time Sync Router:
 
-       #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x80000000 | val)
+For example, route CPSWxG CPTS GENF1 output to HW3_TS_PUSH input
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX','AM62X')
+
+    ::
+
+       #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
 
        &timesync_router {
               pinctrl-names = "default";
-              pinctrl-0 = <&mcu_cpts>;
+              pinctrl-0 = <&cpsw_cpts>;
 
-              /* Example of the timesync routing */
-              mcu_cpts: mcu_cpts {
+              /* Example of timesync routing */
+              cpsw_cpts: cpsw-cpts {
                      pinctrl-single,pins = <
-                            /* pps [cpts genf1] in13 -> out25 [cpts hw4_push] */
-                            TS_OFFSET(25, 13)
+                            /* pps [cpsw cpts genf1] in17 -> out12 [cpsw cpts hw3_push] */
+                            TS_OFFSET(12, 17)
                      >;
               };
        };
 
-       &mcu_cpsw {
-              ...
-              cpts {
-                     ti,pps = <3 1>;
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+    ::
+
+       #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+       &timesync_router {
+              pinctrl-names = "default";
+              pinctrl-0 = <&cpsw_cpts>;
+
+              /* Example of timesync routing */
+              cpsw_cpts: cpsw-cpts {
+                     pinctrl-single,pins = <
+                            /* pps [cpsw cpts genf1] in22 -> out32 [cpsw cpts hw3_push] */
+                            TS_OFFSET(32, 22)
+                     >;
               };
        };
 
-Once enabled, PPS can be tested using testptp and ppstest tools::
+.. ifconfig:: CONFIG_part_variant in ('J721E','J7200','J721S2','J784S4')
 
-       # ./testptp -d /dev/ptp1 -P 1
+    ::
+
+       #define TS_OFFSET(pa, val)     (0x4+(pa)*4) (0x10000 | val)
+
+       &timesync_router {
+              pinctrl-names = "default";
+              pinctrl-0 = <&cpsw_cpts>;
+
+              /* Example of timesync routing */
+              cpsw_cpts: cpsw-cpts {
+                     pinctrl-single,pins = <
+                            /* pps [cpsw cpts genf1] in17 -> out24 [cpsw cpts hw3_push] */
+                            TS_OFFSET(24, 17)
+                     >;
+              };
+       };
+
+2. Inform the mapping to the CPSWxG driver, by using the "ti,pps" device-tree property
+   in the cpts device-tree node present within the CPSWxG device-tree node:
+
+::
+
+   &cpswx {
+           cpts@3d000 {
+                   ti,pps = <2 1>;
+           };
+   };
+
+The property "ti,pps" is of the form <x-1 y>, where x and y correspond to the choice of
+HWx_TS_PUSH and GENFy.
+
+PPS can now be tested using testptp and ppstest tools::
+
+       # ./testptp -d /dev/ptpX -P 1
        pps for system time request okay
        # ./ppstest /dev/pps0
        trying PPS source "/dev/pps0"
