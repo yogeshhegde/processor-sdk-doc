@@ -141,6 +141,7 @@ linux/How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
 
 system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
 system/Demo_User_Guides/HMI_and_3D_Demo_User_Guide
+system/Demo_User_Guides/Seva_Store
 
 common/PRU-ICSS/Getting_Started_with_PSSP
 common/PRU-ICSS/Header_Files
