@@ -306,6 +306,80 @@ Enabling camera sensors
 
         $ gst-launch-1.0 libcamerasrc ! video/x-raw, width=1024, height=768, format=UYVY ! autovideosink
 
+    Suspend to RAM
+    --------------
+
+    The camera pipeline supports system supend to RAM on SK-AM62. You can refer
+    to `Power Management
+    <../Power_Management/pm_low_power_modes.html#suspend-to-ram-deep-sleep>`__ guide for
+    more details.
+
+    For example, you can start streaming from camera using any of the above
+    methods and then suspend to RAM for 5 seconds using the following command:
+
+    ::
+
+        $ rtcwake -s 5 -m mem
+
+    The system will automatically wake-up after 5 seconds, and camera streaming
+    should resume from where it left (as long as the sensor supports it).
+
+    The Technexion TEVI-OV5640 module supports this, but it may fail to set the
+    sensor registers in time when built as a module. You can fix this by making
+    it a part of the kernel image:
+
+    .. code-block:: diff
+
+        diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+        index 1f402994efed..0f081e5f96c1 100644
+        --- a/arch/arm64/configs/defconfig
+        +++ b/arch/arm64/configs/defconfig
+        @@ -739,14 +739,14 @@ CONFIG_RC_DECODERS=y
+         CONFIG_RC_DEVICES=y
+         CONFIG_IR_MESON=m
+         CONFIG_IR_SUNXI=m
+        -CONFIG_MEDIA_SUPPORT=m
+        +CONFIG_MEDIA_SUPPORT=y
+         # CONFIG_DVB_NET is not set
+         CONFIG_MEDIA_USB_SUPPORT=y
+         CONFIG_USB_VIDEO_CLASS=m
+         CONFIG_V4L_PLATFORM_DRIVERS=y
+         CONFIG_SDR_PLATFORM_DRIVERS=y
+         CONFIG_V4L_MEM2MEM_DRIVERS=y
+        -CONFIG_VIDEO_CADENCE_CSI2RX=m
+        +CONFIG_VIDEO_CADENCE_CSI2RX=y
+         CONFIG_VIDEO_WAVE_VPU=m
+         CONFIG_VIDEO_IMG_VXD_DEC=m
+         CONFIG_VIDEO_IMG_VXE_ENC=m
+        @@ -764,12 +764,12 @@ CONFIG_VIDEO_SAMSUNG_EXYNOS_GSC=m
+         CONFIG_VIDEO_SAMSUNG_S5P_JPEG=m
+         CONFIG_VIDEO_SAMSUNG_S5P_MFC=m
+         CONFIG_VIDEO_SUN6I_CSI=m
+        -CONFIG_VIDEO_TI_J721E_CSI2RX=m
+        +CONFIG_VIDEO_TI_J721E_CSI2RX=y
+         CONFIG_VIDEO_HANTRO=m
+         CONFIG_VIDEO_IMX219=m
+         CONFIG_VIDEO_IMX390=m
+         CONFIG_VIDEO_OV2312=m
+        -CONFIG_VIDEO_OV5640=m
+        +CONFIG_VIDEO_OV5640=y
+         CONFIG_VIDEO_OV5645=m
+         CONFIG_VIDEO_DS90UB953=m
+         CONFIG_VIDEO_DS90UB960=m
+        @@ -1309,8 +1309,8 @@ CONFIG_PHY_XGENE=y
+         CONFIG_PHY_CAN_TRANSCEIVER=m
+         CONFIG_PHY_SUN4I_USB=y
+         CONFIG_PHY_CADENCE_TORRENT=y
+        -CONFIG_PHY_CADENCE_DPHY=m
+        -CONFIG_PHY_CADENCE_DPHY_RX=m
+        +CONFIG_PHY_CADENCE_DPHY=y
+        +CONFIG_PHY_CADENCE_DPHY_RX=y
+         CONFIG_PHY_CADENCE_SIERRA=y
+         CONFIG_PHY_MIXEL_MIPI_DPHY=m
+         CONFIG_PHY_FSL_IMX8M_PCIE=y
+
+    To re-build the kernel with above changes you can refer to the `Users Guide
+    <../../../../Foundational_Components_Kernel_Users_Guide.html#configuring-the-kernel>`__.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
