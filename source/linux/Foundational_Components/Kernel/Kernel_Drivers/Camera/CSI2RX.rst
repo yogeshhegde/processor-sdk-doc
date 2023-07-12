@@ -297,7 +297,7 @@ Enabling camera sensors
 
         # Direct KMS Sink
         $ systemctl stop weston
-        $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! kmssink driver-name=tidss sync=false
+        $ gst-launch-1.0 v4l2src device="/dev/video0" ! video/x-raw, width=640, height=480, format=UYVY ! queue ! kmssink driver-name=tidss
 
     You can also replace v4l2src with libcamerasrc above if you want to test
     different sensor-supported resolutions like 480p, 720p etc.
@@ -335,11 +335,11 @@ Enabling camera sensors
     ::
 
         # For OV2312 connected on Fusion board RX Port 0:
-        setenv name_overlays k3-am62a7-fpdlink-sk-fusion.dtbo k3-am62a7-fpdlink-ov2312-0-0.dtbo
+        setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-ov2312-0-0.dtbo
         boot
 
         # For RCM IMX390 connected on Fusion board RX Port 0:
-        setenv name_overlays k3-am62a7-fpdlink-sk-fusion.dtbo k3-am62a7-fpdlink-imx390-rcm-0-0.dtbo
+        setenv name_overlays ti/k3-am62a7-sk-fusion.dtbo ti/k3-fpdlink-imx390-rcm-0-0.dtbo
         boot
 
     To enable camera connected to the 22-pin FFC connector, enable the sensor
@@ -348,7 +348,7 @@ Enabling camera sensors
     ::
 
         # For IMX219 connected to 22-pin FFC connector
-        setenv name_overlays k3-am62a7-sk-csi2-imx219.dtbo
+        setenv name_overlays ti/k3-am62a7-sk-csi2-imx219.dtbo
         boot
 
     For more details on building or applying overlays permanently, refer to the
@@ -369,7 +369,7 @@ Enabling camera sensors
         v4l2_fwnode            24576  2 imx219,cdns_csi2rx
 
         $ media-ctl -p
-        Media controller API version 5.10.162
+        Media controller API version 6.1.33
         Media device information
         ------------------------
         driver          j721e-csi2rx
@@ -377,7 +377,7 @@ Enabling camera sensors
         serial
         bus info        platform:30102000.ticsi2rx
         hw revision     0x1
-        driver version  5.10.162
+        driver version  6.1.33
 
         Device topology
         ....
@@ -397,10 +397,10 @@ Enabling camera sensors
     ::
 
         CSI Camera 0 detected
-            device = /dev/video2
+            device = /dev/video-rpi-cam0
             name = imx219
             format = [fmt:SRGGB10_1X10/1640x1232]
-            subdev_id = /dev/v4l-subdev2
+            subdev_id = /dev/v4l-rpi-subdev0
             isp_required = yes
 
     For manual configuration, like switching to a different resolution or
@@ -421,8 +421,8 @@ Enabling camera sensors
 
     ::
 
-        $ yavta -s 1640x1232 -f SRGGB10 /dev/video2 -c100
-        Device /dev/video2 opened.
+        $ yavta -s 1640x1232 -f SRGGB10 /dev/video-rpi-cam0 -c100
+        Device /dev/video-rpi-cam0 opened.
         Device `j721e-csi2rx' on `platform:30102000.ticsi2rx' is a video output (without mplanes) device.
         Video format set: SRGGB10 (30314752) 1640x1232 (stride 3280) field none buffer size 4040960
         Video format: SRGGB10 (30314752) 1640x1232 (stride 3280) field none buffer size 4040960
@@ -442,7 +442,7 @@ Enabling camera sensors
 
     ::
 
-        $ yavta -s 1640x1232 -f SRGGB10 /dev/video2 -c5 -Fframe-#.bin
+        $ yavta -s 1640x1232 -f SRGGB10 /dev/video-rpi-cam0 -c5 -Fframe-#.bin
         ....
         $ ls -l frame-*.bin
         -rw-r--r-- 1 root root 2073600 Feb 22 05:24 frame-000000.bin
@@ -475,10 +475,10 @@ Enabling camera sensors
 
     ::
 
-        $ gst-launch-1.0 v4l2src device=/dev/video2 io-mode=5 ! video/x-bayer,width=1640,height=1232,format=rggb10 ! \
+        $ gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1640,height=1232,format=rggb10 ! \
         tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss_10b_1640x1232.bin \
-        sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_10b_1640x1232.bin sink_0::device=/dev/v4l-subdev2 format-msb=9 ! \
-        video/x-raw,format=NV12 ! kmssink driver-name=tidss sync=false
+        sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_10b_1640x1232.bin sink_0::device=/dev/v4l-rpi-subdev0 format-msb=9 ! \
+        video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss
 
     If the sensor is configured to capture at some other resolution or format
     (e.g. 1080p RAW8 mode) you can edit the above pipeline with the new width,
@@ -486,47 +486,24 @@ Enabling camera sensors
 
     ::
 
-        $ gst-launch-1.0 v4l2src device=/dev/video2 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! \
+        $ gst-launch-1.0 v4l2src device=/dev/video-rpi-cam0 io-mode=5 ! video/x-bayer,width=1920,height=1080,format=bggr ! \
         tiovxisp sensor-name=SENSOR_SONY_IMX219_RPI dcc-isp-file=/opt/imaging/imx219/dcc_viss_1920x1080.bin \
-        sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-subdev2 ! \
-        video/x-raw,format=NV12 ! kmssink driver-name=tidss sync=false
+        sink_0::dcc-2a-file=/opt/imaging/imx219/dcc_2a_1920x1080.bin sink_0::device=/dev/v4l-rpi-subdev0 ! \
+        video/x-raw,format=NV12 ! queue ! kmssink driver-name=tidss
 
-    For OV2312 you can either display the IR or the RGB stream using separate
-    pipelines:
-
-    ::
-
-        # RGB stream -> ISP -> Display
-        $ gst-launch-1.0                                                                                                    \
-        v4l2src device=/dev/video3 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 !      \
-        tiovxisp sensor-name=SENSOR_OV2312_UB953_LI                                                                         \
-        dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin                                                                       \
-        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin sink_0::device=/dev/v4l-subdev4 format-msb=9                     \
-        sink_0::pool-size=8 src::pool-size=8 !                                                                              \
-        video/x-raw, format=NV12, width=1600, height=1300 ! kmssink driver-name=tidss sync=false
-
-        # IR stream -> ISP -> Display
-        gst-launch-1.0                                                                                                      \
-        v4l2src device=/dev/video2 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 !      \
-        tiovxisp sensor-name=SENSOR_OV2312_UB953_LI                                                                         \
-        dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin                                                                       \
-        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin sink_0::device=/dev/v4l-subdev4 format-msb=9                     \
-        sink_0::pool-size=8 src::pool-size=8 !                                                                              \
-        video/x-raw, format=NV12, width=1600, height=1300 ! kmssink driver-name=tidss sync=false
-
-    Alternatively you can use a mosaic to display both streams together:
+    For OV2312 use mosaic to display both streams together:
 
     ::
 
         # Mosaic of RGB and IR streams
         $ gst-launch-1.0 \
-        v4l2src device=/dev/video3 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 ! \
+        v4l2src device=/dev/video-ov2312-rgb-cam0 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 ! \
         tiovxisp sensor-name=SENSOR_OV2312_UB953_LI \
         dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin \
-        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin sink_0::device=/dev/v4l-subdev4 format-msb=9 \
+        sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin sink_0::device=/dev/v4l-ov2312-subdev0 format-msb=9 \
         sink_0::pool-size=8 src::pool-size=8 ! \
         video/x-raw, format=NV12, width=1600, height=1300 ! queue ! mosaic.sink_0 \
-        v4l2src device=/dev/video2 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 ! \
+        v4l2src device=/dev/video-ov2312-ir-cam0 io-mode=5 ! video/x-bayer, width=1600, height=1300, format=bggi10 ! queue leaky=2 ! \
         tiovxisp sensor-name=SENSOR_OV2312_UB953_LI \
         dcc-isp-file=/opt/imaging/ov2312/dcc_viss.bin \
         sink_0::dcc-2a-file=/opt/imaging/ov2312/dcc_2a.bin format-msb=9 sink_0::pool-size=8 src_0::pool-size=8 ! \
@@ -535,7 +512,7 @@ Enabling camera sensors
         tiovxmosaic name=mosaic \
         sink_0::startx="<0>" sink_0::starty="<0>" sink_0::widths="<640>" sink_0::heights="<480>" \
         sink_1::startx="<640>" sink_1::starty="<480>" sink_1::widths="<640>" sink_1::heights="<480>" ! \
-        kmssink driver-name=tidss sync=false
+        queue ! kmssink driver-name=tidss
 
 .. ifconfig:: CONFIG_part_variant in ('J721E')
 
