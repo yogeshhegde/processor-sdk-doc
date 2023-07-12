@@ -51,9 +51,8 @@ A reset is required for the partition table to be visible.
 Updating an SD card from a host PC
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section assume that you have created an SD card following the
-instructions on `Processor SDK Linux Create SD Card
-Script <../../Overview/Processor_SDK_Linux_create_SD_card.html>`__ or have
+This section assume that you have created an SD card using the
+script "create-sdcard.sh" packaged inside the installer or have
 made a compatible layout by hand. In this case, you will need to copy
 the all the boot images (**MLO** and **u-boot.img** for 32-bit platforms,
 **tiboot3.bin**, **sysfw.itb**, **tispl.bin**, **u-boot.img** for K3 based platforms,
