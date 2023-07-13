@@ -8,8 +8,6 @@ Introduction
 
 This page gives a basic description of DSS (Display SubSystem) hardware, the Linux kernel drivers (tidss) and various TI boards that use DSS. The technical reference manual (TRM) for the SoC in question, and the board documentation give more detailed descriptions.
 
-This page applies to TI's v5.10 kernel.
-
 
 Supported Devices
 =================
@@ -141,21 +139,58 @@ Note: this is not a comprehensive list of features supported/not supported, and 
 Supported Features
 ^^^^^^^^^^^^^^^^^^
 
-Outputs
+**SoC Outputs**
 
--  MIPI DPI
--  DP
+-  **MIPI DPI**
+        - Active matrix
+        - RGB
 
-MIPI DPI
+        **Note:**
+        TI EVMs do not provide the DPI signals through a connector, but instead pass the RGB
+        data through an HDMI/DP transmitters on-board. Custom EVMs based on these SoCs can
+        provide such connectors and can use the Active Matrix LCDs.
 
-- Active matrix
-- RGB
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
 
-DisplayPort
+        -  **DisplayPort**
+                - SST
 
-- SST
+        -  **MIPI DSI**
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-DRM Plane Features
+        -  **Open LVDS Display Interface (OLDI)**
+                -  Single Link OLDI
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        -  **Open LVDS Display Interface (OLDI)**
+                -  Single Link OLDI
+                -  Dual Link OLDI
+
+**EVM Outputs**
+
+- **HDMI Output**
+        - DPI output from SoC converted to HDMI via HDMI encoders on Starter-Kit (SK) EVMs.
+
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
+
+                **Note:**
+                Jacinto CPBs and EVMs do not support DPI to HDMI encoders. It is only available on SK-EVM variants.
+
+        - **DisplayPort Output**
+                - DisplayPort output from SoC directly.
+                - DSI output from SoC converted to DP via DSI-to-DP encoder on board.
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
+
+        -  **Open LVDS Display Interface (OLDI)**
+                -  Single Link OLDI output from the SoC directly.
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+        -  **Open LVDS Display Interface (OLDI)**
+                -  Single Link OLDI output from the SoC directly.
+                -  Dual Link OLDI output from the SoC directly.
+
+
+**DRM Plane Features**
 
 - CSC
 - Scaler
@@ -165,7 +200,7 @@ DRM Plane Features
 - Input Video Formats
   (Fourcc codes of supported formats: AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 AR15 AB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12)
 
-DRM CRTC Features
+**DRM CRTC Features**
 
 - Gamma table
 
@@ -173,20 +208,30 @@ DRM CRTC Features
 Unsupported Features/Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LCD output
+- **DPI output**
+        - TDM
+        - BT-656/1120
+        - MIPI DBI/RFBI
+        - Interlace
 
-- TDM
-- BT-656/1120
-- MIPI DBI/RFBI
-- Interlace
+.. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM65X')
 
-DisplayPort
+        - **DisplayPort**
 
-- MST
+        - **MIPI DSI**
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-DSI
+        - **DisplayPort**
 
-- Not supported
+        - **MIPI DSI**
+
+        - **Open LVDS Display Interface (OLDI)**
+.. ifconfig:: CONFIG_part_variant in ('J721E', 'J721S2', 'J784S4')
+
+        - **DisplayPort**
+                - MST
+
+        - **Open LVDS Display Interface (OLDI)**
 
 
 Driver Configuration
@@ -211,7 +256,7 @@ Device Tree Node
 ----------------
 
 Documentation for tidss device tree node and its properties can be found in linux kernel device tree bindings in below directory
-``Documentation/devicetree/bindings/display/ti/``. Seperate binding files are present for different version of the ip.
+``Documentation/devicetree/bindings/display/ti/``. Seperate binding files are present for different version of the DSS controller.
 
 
 Driver Usage

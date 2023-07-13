@@ -9,7 +9,7 @@ The following panel is currently supported with the AM625 SK EVM revision E3 boa
 #. Follow the `How to enable DT overlays in linux
    <How_to_enable_DT_overlays_in_linux.html>`__ guide for steps on building
    and adding the overlay in your SD card. Make sure that the overlay file 
-   ``k3-am625-sk-oldi-panel.dtbo`` has been appended in the ``name_overlays`` 
+   ``k3-am625-sk-microtips-mf101hie-panel.dtbo`` has been appended in the ``name_overlays``
    variable as suggested in the same page.
 
 **Steps to enable Touch on the Microtips Panel on AM625 SK EVM:**
