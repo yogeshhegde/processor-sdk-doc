@@ -9,12 +9,6 @@ Introduction
 - This page gives a basic information for audio usage on supported
   boards
 
-- More comprehensive information regarding to Linux audio (ALSA, ASoC)
-  can be found:
-
-    + http://processors.wiki.ti.com/index.php/AM335x_Audio_Driver%27s_Guide
-    + http://processors.wiki.ti.com/index.php/Sitara_SDK_Linux_Audio
-
 - For generic Linux information, use the `Linux Kernel Users Guide <../../../Foundational_Components_Kernel_Users_Guide.html>`__.
 
 Generic commands and instructions
@@ -722,6 +716,7 @@ Potential issues
 .. rubric:: In case of CPU stalls (when recording)
    :name: in-case-of-cpu-stalls-when-recording
 
+| **No longer relevant** as DMA driver does a force teardown of the channel.
 | On some platforms, recording audio on high sample rates may work fine the
   first time, but due to issues with channel cleanup it may cause CPU stalls
   when recording the second time, requiring a reboot to fix.
