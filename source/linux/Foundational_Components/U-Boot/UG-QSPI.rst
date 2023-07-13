@@ -9,7 +9,7 @@ Kernel using a root filesystem also found on QSPI. At this time, no
 special builds of U-Boot are required to perform these operations on the
 supported hardware. For simplicity we assume the files are being loaded
 from an SD card. Using the network interface (if applicable) is
-documented above.
+documented in U-boot SPI section.
 
 .. note::
 
@@ -17,6 +17,11 @@ documented above.
     whether or not the OSPI flash part chosen for custom board designs meets all
     the criteria listed at https://e2e.ti.com/support/processors/f/791/t/946418
 
+.. note::
+
+    The sf command is used to access SPI flash, supporting read/write/erase and
+    a few other functions. For more information on sf command in U-boot please
+    refer to the u-boot documentation: `here <https://u-boot.readthedocs.io/en/latest/usage/cmd/sf.html>`__.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E')
 
@@ -318,10 +323,34 @@ documented above.
 
     AM62x Starter Kit (SK) has a Cypress S28HS512T flash and sysfw is bundled with tiboot3.bin.
 
-    **Flashing images to OSPI**
+    Below are three methods which can be used to flash the OSPI device. For all methods, we will load the
+    bootloders into memory and then flash each to OSPI at the respective addresses.
 
-    The instructions below can be used to download tiboot3.bin, tispl.bin and
-    u-boot.img over TFTP and then flash each to OSPI at the respective addresses.
+    **Flashing images to OSPI using TFTP server**
+
+    In this example, use tftp-hpa in Ubuntu as tftp server. Assume bootloader names are 'tiboot3.bin', 'tispl.bin',
+    'u-boot.img'. Verify ethernet connection between AM62x EVM and host machine before proceeding.
+
+    1. Setup TFTP server in Host machine
+
+    .. code-block:: console
+
+      # For complete instructions refer to: https://help.ubuntu.com/community/TFTP
+      $ sudo apt install tftp-hpa
+      $ sudo vi /etc/default/tftpd-hpa #optional to change tftp directory and other options
+      $ sudo chown -R tftp /tftp #change owner/group of new directory /tftp
+      $ sudo systemctl restart tftpd-hpa #restart server
+
+    2. Setup U-boot environment for AM62x EVM
+
+    .. code-block:: console
+
+      # Boot to U-boot prompt using a working boot method
+      => setenv ipaddr <ip-address-for-EVM>
+      => setenv serverip <ip-address-of-tftp-server>
+      => saveenv #optional to save the U-boot ENV
+
+    3. Use tftp command to load the bootloaders into memory and flash to OSPI
 
     .. code-block:: console
 
@@ -332,6 +361,77 @@ documented above.
       => sf update $loadaddr 0x80000 $filesize
       => tftp ${loadaddr} u-boot.img
       => sf update $loadaddr 0x280000 $filesize
+
+    4. Change boot mode pins to boot with OSPI boot mode and reboot EVM
+
+    **Flashing images to OSPI using SD card**
+
+    In this example, load binaries from SD card. Assume bootloader names are 'tiboot3.bin', 'tispl.bin',
+    'u-boot.img'. Boot via SD card boot and stop at U-boot prompt before procceeding.
+
+    1. Use fatload command to load the bootloaders into memory and flash to OSPI
+
+    .. code-block:: console
+
+      => sf probe
+      => fatload mmc 1 ${loadaddr} tiboot3.bin
+      => sf update $loadaddr 0x0 $filesize
+      => fatload mmc 1 ${loadaddr} tispl.bin
+      => sf update $loadaddr 0x80000 $filesize
+      => fatload mmc 1 ${loadaddr} u-boot.img
+      => sf update $loadaddr 0x280000 $filesize
+
+    2. Change boot mode pins to boot with OSPI boot mode and reboot EVM
+
+    **Flashing images to OSPI using DHCP server**
+
+    The dhcp command can be used for obtaining a IP adress and for loading binaries over network. A DHCP server
+    should be present for dhcp command to assign an IP to the board. Use this method only if there is already a
+    DHCP server in your network. Assume bootloader names are 'tiboot3.bin', 'tispl.bin', 'u-boot.img'. Verify
+    ethernet connection between AM62x EVM and host machine before proceeding.
+
+    .. warning::
+        Setting up a custom DHCP server in company network may cause network issues, it is not the recommended
+        method.
+
+    1. Setup DHCP server
+
+      Please refer to the following documentation: `Linux Academy for AM62x <https://dev.ti.com/tirex/explore/node?node=A__AAMryXJaAxNxBtu83GpJJA__linux_academy_am62x__XaWts8R__LATEST>`__
+
+    2. Setup U-boot environment for AM62x EVM
+
+    .. code-block:: console
+
+      # Boot to U-boot prompt using a working boot method
+      => setenv serverip <ip-address-of-tftp-server>
+      => dhcp
+
+    3. Verify IP is assigned
+
+    .. code-block:: console
+
+      => dhcp
+      link up on port 1, speed 1000, full duplex
+      BOOTP broadcast 1
+      BOOTP broadcast 2
+      BOOTP broadcast 3
+      DHCP client bound to address 192.168.42.107 (1017 ms)
+
+    4. Use tftp *or* dhcp commands to load the bootloaders into memory and flash to OSPI
+
+      #. dhcp commands as shown in <path-to-Processor-SDK>/bin/Ethernet_flash/am62xx-evm/uEnv_ethernet_ospi-nor_am62xx-evm.txt
+      #. tftp commands as shown in step 3 of *Flashing images to OSPI using TFTP server*
+
+    5. Change boot mode pins to boot with OSPI boot mode and reboot EVM
+
+    **OSPI Boot Mode**
+
+    Please refer to the AM62x TRM Section 5.3 for more information. The following command could also be used to change boot mode to
+    OSPI after following one of the methods above. Verify to use the "reset" command which uses warm reset and not cold reset.
+
+    .. code-block:: console
+
+      => mw.l 0x43000030 0x00000273; reset
 
     **Phy calibration**
 
