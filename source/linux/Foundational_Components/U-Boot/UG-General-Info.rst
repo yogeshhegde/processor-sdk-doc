@@ -140,6 +140,13 @@ Build U-Boot
          of HSM rearchitecture, this functionality has moved into the DM service which 
          requires SPL to re-implement device and clock control. This support is not 
          present in Uboot R5 SPL due to memory constraints on the existing 64-bit TI devices.
+
+    .. ifconfig:: CONFIG_part_variant not in ('AM65X')
+
+      .. note::
+        As of Processor SDK 9.0, compilation of bootloader images will no longer require
+        different defconfigs for GP and HS devices. The same build commands will generate images
+        for GP, HS-SE and HS-FS devices.
     
     Several prebuilt images are required from the TI Processor SDK for building U-Boot on K3 based platforms.
     
@@ -153,14 +160,6 @@ Build U-Boot
 
     TI-u-boot is included in the SDK in <path to tisdk>/board-support. Ensure that the u-boot version matches the
     :ref:`release-specific-build-information-u-boot`.
-
-
-    .. rubric:: Getting Security Dev Tool
-    
-    core-secdev-k3 is included in the SDK inside board-support directory.	
-    ::
-
-        $ export TI_SECURE_DEV_PKG=<path-to-board-support-directory>/core-secdev-k3
 
     .. rubric:: Setting the tool chain path
 
@@ -194,11 +193,12 @@ Build U-Boot
           
           R5 
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
           A53
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am65x_evm_a53_defconfig O=<output directory>/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
 
         
        *on HS*
@@ -207,11 +207,13 @@ Build U-Boot
           
           R5 
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am65x_hs_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
 
           A53
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am65x_hs_evm_a53_defconfig O=<output directory>/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin.signed TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin.signed O=<output directory>/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
 
 
     .. ifconfig:: CONFIG_part_variant in ('J721E')
@@ -225,36 +227,18 @@ Build U-Boot
         |    J721E SK                |    j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |   j721e\_evm\_r5\_defconfig    |                                |                                |
         |                            |    j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |   j721e\_evm\_a72\_defconfig   |                                |                                |
         +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+
-        |    J721E HS EVM            | j721e\_hs\_evm\_r5\_defconfig   | j721e\_hs\_evm\_r5\_defconfig  | j721e\_hs\_evm\_r5\_defconfig  | j721e\_hs\_evm\_r5\_defconfig  | j721e\_hs\_evm\_r5\_defconfig  |
-        |                            | j721e\_hs\_evm\_a72\_defconfig  | j721e\_hs\_evm\_a72\_defconfig | j721e\_hs\_evm\_a72\_defconfig | j721e\_hs\_evm\_a72\_defconfig | j721e\_hs\_evm\_a72\_defconfig |
-        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+--------------------------------+   
-
-       *on GP*
 
        .. code-block:: console
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721e_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
 
           A72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721e_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
-       *on HS*
-
-       .. code-block:: console
-
-          R5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721e_hs_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
-
-
-          A72
-          $ ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh ipc_echo_testb_mcu1_0_release_strip.xer5f ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721e_hs_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin.signed TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin.signed DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=<output directory>/a72
-          
 
     .. ifconfig:: CONFIG_part_variant in ('J7200')
 
@@ -264,40 +248,17 @@ Build U-Boot
         |    J7200 EVM               |    j7200\_evm\_r5\_defconfig    |   j7200\_evm\_r5\_defconfig    |
         |                            |    j7200\_evm\_a72\_defconfig   |   j7200\_evm\_a72\_defconfig   |
         +----------------------------+---------------------------------+--------------------------------+
-        |    J7200 HS EVM            |  j7200\_hs\_evm\_r5\_defconfig  | j7200\_hs\_evm\_r5\_defconfig  |
-        |                            |  j7200\_hs\_evm\_a72\_defconfig | j7200\_hs\_evm\_a72\_defconfig |
-        +----------------------------+---------------------------------+--------------------------------+
-
-       *on GP*
 
        .. code-block:: console
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j7200_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
-          $ cd ../k3-image-gen-<version>
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j7200 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j7200-gp.bin
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
 
           A72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j7200_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
-
-	  
-       *on HS*
-
-       .. code-block:: console
-
-          R5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j7200_hs_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
-          $ cd ../k3-image-gen-<version>
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j7200 HS=1 SW_REV=1 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j7200-hs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j7200-hs-cert.bin
-
-          A72
-          $ ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh <path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f <path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j7200_hs_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin.signed TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin.signed DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=<output directory>/a72
-
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')
@@ -316,8 +277,7 @@ Build U-Boot
 
             Where to get the sources:
 
-            - `ti-u-boot <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/>`__ Branch: ti-u-boot-2021.01
-            - `ti-k3-image-gen <https://git.ti.com/cgit/k3-image-gen/k3-image-gen/>`__ Branch: master
+            - `ti-u-boot <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/>`__ Branch: ti-u-boot-2023.04
             - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/>`__ Branch: ti-linux-firmware
             - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 2fcd408bb3a6756767a43c073c597cef06e7f2d5
             - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: 3bc3809afe372ca7e8216fc5d7a64e965bb4ad70
@@ -327,78 +287,26 @@ Build U-Boot
         ::
 
           $ export UBOOT_DIR=<path-to-ti-u-boot>
-          $ export K3IG_DIR=<path-to-k3-image-gen>
-          $ export SYSFW_DIR=<path-to-ti-linux-firmware>/ti-sysfw
+          $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
           $ export TFA_DIR=<path-to-arm-trusted-firmware>
           $ export OPTEE_DIR=<path-to-ti-optee-os>
 
         .. note::
 
             The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`. For instructions to build bl32.bin/tee-pager_v2.bin
-            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to get the pre-build binares that come in the pre-built sdk.
-
-        *on HS-FS*
+            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to get the pre-build binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE and BINMAN_INDIRS can point to <path-to-tisdk>/board-support/prebuilt-images itself)
 
         .. code-block:: console
 
           R5
-          To build u-boot-spl.bin for tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
+          To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am64x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
-
-          To build tiboot3-am64x_sr2-hs-fs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin, TISCI HS-FS FW.
-          $ cd $K3IG_DIR
-          $ make CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am64x_sr2 SOC_TYPE=hs-fs SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
-          Sign OPTEE and ATF binaries
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl31.bin bl31.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl32.bin bl32.bin.signed
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
           A53
-          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin.signed and bl32.bin.signed.
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin.signed TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin.signed  O=$UBOOT_DIR/out/a53
-
-
-        *on GP*
-
-        .. code-block:: console
-
-          R5
-          To build u-boot-spl.bin for tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am64x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
-
-          To build tiboot3-am64x-gp-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and ti-sci-firmware-am64x-gp.bin.
-          $ cd $K3IG_DIR
-          $ make CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am64x SOC_TYPE=gp SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
-          A53
-          To build tispl.bin_unsigned and u-boot.img_unsigned. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin and tee-pager_v2.bin.
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53
-
-        *on HS*
-
-        .. code-block:: console
-
-          R5
-          To build u-boot-spl.bin for tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am64x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
-
-          To build tiboot3-am64x_sr2-hs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin, TISCI HS-SE FW
-          $ cd $K3IG_DIR
-          $ make CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am64x_sr2 SOC_TYPE=hs SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
-          Sign OPTEE and ATF binaries
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl31.bin bl31.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl32.bin bl32.bin.signed
-
-          A53
-          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin.signed and bl32.bin.signed.
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin.signed TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin.signed  O=$UBOOT_DIR/out/a53
+          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53.
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_evm_a53_defconfig O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
     .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
@@ -408,61 +316,20 @@ Build U-Boot
         |    J721S2 EVM              |    j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |
         |                            |    j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |
         +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
-        |    J721S2 HS EVM           | j721s2\_hs\_evm\_r5\_defconfig  | j721s2\_hs\_evm\_r5\_defconfig | j721s2\_hs\_evm\_r5\_defconfig | j721s2\_hs\_evm\_r5\_defconfig |
-        |                            | j721s2\_hs\_evm\_a72\_defconfig | j721s2\_ha\_evm\_a72\_defconfig| j721s2\_hs\_evm\_a72\_defconfig| j721s2\_hs\_evm\_a72\_defconfig|
-        +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
         |    AM68 HS-FS SK           |    j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |   j721s2\_evm\_r5\_defconfig   |                                |
         |                            |    j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |   j721s2\_evm\_a72\_defconfig  |                                |
         +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
-
-        *on GP*
 
         .. code-block:: console
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
-          $ cd ../k3-image-gen-<version>
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721s2 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721s2-gp.bin
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
 
           A72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
-
-        |
-
-	    *on HS*
-
-        .. code-block:: console
-
-          R5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_hs_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
-          $ cd ../k3-image-gen-<version>
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721s2 HS=1 SW_REV=1 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721s2-hs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721s2--hs-cert.bin
-
-          A72
-          $ ${TI_SECURE_DEV_PKG}/scripts/secure-binary-image.sh <path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f <path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_hs_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin.signed TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin.signed DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=<output directory>/a72
-
-        |
-
-	    *on HS-FS*
-
-        .. code-block:: console
-
-          R5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j721s2_hs_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
-
-          To build tiboot3-j721s2_sr1-hs-fs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin, ti-sci-firmware-j721s2-sr1-hs-fs-cert.bin and ti-sci-firmware-j721s2-sr1-hs-fs-enc.bin
-          $ cd ../k3-image-gen-<version>
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721s2 HS=1 SW_REV=1 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721s2-sr1-hs-fs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721s2-sr1-hs-fs-cert.bin
-
-          A72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j721s2_hs_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
 
    .. ifconfig:: CONFIG_part_variant in ('J784S4')
@@ -477,35 +344,17 @@ Build U-Boot
         |                            |    j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |   j784s4\_evm\_a72\_defconfig  |                                |
         +----------------------------+---------------------------------+--------------------------------+--------------------------------+--------------------------------+
 
-       *on GP*
-
        .. code-block:: console
 
           R5
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j784s4_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
-          $ cd ../k3-image-gen-<version>
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j784s4 SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j784s4-gp.bin
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
+
 
           A72
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j784s4_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin O=<output directory>/a72 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
-       *on HS-FS*
-
-       .. code-block:: console
-
-          R5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- j784s4_evm_r5_defconfig O=<output directory>/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=<output directory>/r5
-
-          To build tiboot3-j784s4-hs-fs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin, ti-sci-firmware-j784s4-hs-fs-cert.bin and ti-sci-firmware-j784s4-hs-fs-enc.bin
-          $ cd ../k3-image-gen-<version>
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j784s4 HS=1 SOC_TYPE=hs-fs SBL=<output directory>/r5/spl/u-boot-spl.bin SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j784s4-hs-fs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j784s4-hs-fs-cert.bin
-
-          A72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- j784s4_evm_a72_defconfig O=<output directory>/a72
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=<path to tisdk>/board-support/prebuilt-images/bl31.bin TEE=<path to tisdk>/board-support/prebuilt-images/bl32.bin DM=<path to tisdk>/board-support/prebuilt-images/ipc_echo_testb_mcu1_0_release_strip.xer5f O=<output directory>/a72
 
    .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -522,9 +371,8 @@ Build U-Boot
 
             Where to get the sources:
 
-            - `ti-u-boot <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/>`__ Branch: ti-u-boot-2021.01
-            - `ti-k3-image-gen <https://git.ti.com/cgit/k3-image-gen/k3-image-gen>`__ Branch: master
-            - `ti-linux-firmware <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware>`__ Branch: ti-linux-firmware
+            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2023.04
+            - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
             - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 1309c6c805190bd376c0561597653f3f8ecd0f58
             - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: d6c5d0037b46f46caf71d67d7825d4b722cbcddf
 
@@ -533,81 +381,29 @@ Build U-Boot
         ::
 
           $ export UBOOT_DIR=<path-to-ti-u-boot>
-          $ export K3IG_DIR=<path-to-k3-image-gen>
-          $ export SYSFW_DIR=<path-to-ti-linux-firmware>/ti-sysfw
-          $ export DMFW_DIR=<path-to-ti-linux-firmware>/ti-dm/am62xx
+          $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
           $ export TFA_DIR=<path-to-arm-trusted-firmware>
           $ export OPTEE_DIR=<path-to-ti-optee-os>
 
         .. note::
 
             The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`. For instructions to build tee-pager_v2.bin (bl32.bin)
-            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to obtain pre-build binares that come in the pre-built sdk.
+            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to obtain pre-build binaries that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE and BINMAN_INDIRS can point to <path-to-tisdk>/board-support/prebuilt-images itself)
 
-        *on HS-FS*
 
         .. code-block:: console
 
           R5
-          To build u-boot-spl.bin for signed tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
+          To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
-          To build tiboot3-am62x-hs-fs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and HS-FS TIFS FW.
-          $ cd $K3IG_DIR
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62x SOC_TYPE=hs-fs SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
-          Sign bl31.bin binary found in $OPTEE_DIR/out/arm-plat-k3/core, sign tee-pager_v2.bin (bl32.bin) found in $TFA_DIR/build/k3/lite/release, and ipc_echo_testb_mcu1_0_release_strip.xer5f found in $DMFW_DIR.
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl31.bin bl31.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh tee-pager_v2.bin bl32.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh ipc_echo_testb_mcu1_0_release_strip.xer5f ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
 
           A53
-          To build signed tispl.bin_HS and signed u-boot.img_HS. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin.signed and bl32.bin.signed.
+          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin.signed TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin.signed DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=$UBOOT_DIR/out/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=<path to tisdk>/board-support/prebuilt-images
 
-
-        *on GP*
-
-        .. code-block:: console
-
-          R5
-          To build u-boot-spl.bin for tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
-
-          To build tiboot3-am62x-gp-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and ti-fs-firmware-am62x-gp.bin.
-          $ cd $K3IG_DIR
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62x SOC_TYPE=gp SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
-          A53
-          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin, and ipc_echo_testb_mcu1_0_release_strip.xer5f.
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f O=$UBOOT_DIR/out/a53
-
-        *on HS*
-
-        .. code-block:: console
-
-          R5
-          To build u-boot-spl.bin for signed tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
-
-          To build tiboot3-am62x-hs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and TIFS HS-SE FW.
-          $ cd $K3IG_DIR
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62x SOC_TYPE=hs SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
-          Sign bl31.bin binary found in $OPTEE_DIR/out/arm-plat-k3/core, sign tee-pager_v2.bin (bl32.bin) found in $TFA_DIR/build/k3/lite/release, and ipc_echo_testb_mcu1_0_release_strip.xer5f found in $DMFW_DIR.
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl31.bin bl31.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh tee-pager_v2.bin bl32.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh ipc_echo_testb_mcu1_0_release_strip.xer5f ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
-
-          A53
-          To build signed tispl.bin_HS and signed u-boot.img_HS. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin.signed and bl32.bin.signed.
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin.signed TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin.signed DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=$UBOOT_DIR/out/a53
 
    .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -622,8 +418,7 @@ Build U-Boot
 
             Where to get the sources:
 
-            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2021.01
-            - `ti-k3-image-gen <https://git.ti.com/git/k3-image-gen/k3-image-gen.git/>`__ Branch: master
+            - `ti-u-boot <https://git.ti.com/git/ti-u-boot/ti-u-boot.git/>`__ Branch: ti-u-boot-2023.04
             - `ti-linux-firmware <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git/>`__ Branch: ti-linux-firmware
             - `arm-trusted-firmware <https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/>`__ Commit: 2fcd408bb3a6756767a43c073c597cef06e7f2d5
             - `optee-os <https://github.com/OP-TEE/optee_os.git/>`__ Commit: 3bc3809afe372ca7e8216fc5d7a64e965bb4ad70
@@ -633,140 +428,38 @@ Build U-Boot
         ::
 
           $ export UBOOT_DIR=<path-to-ti-u-boot>
-          $ export K3IG_DIR=<path-to-k3-image-gen>
-          $ export SYSFW_DIR=<path-to-ti-linux-firmware>/ti-sysfw
-          $ export DMFW_DIR=<path-to-ti-linux-firmware>/ti-dm/am62axx
+          $ export TI_LINUX_FW_DIR=<path-to-ti-linux-firmware>
           $ export TFA_DIR=<path-to-arm-trusted-firmware>
           $ export OPTEE_DIR=<path-to-ti-optee-os>
 
         .. note::
 
             The instructions below assume all binaries are built manually. For instructions to build bl31.bin go to: :ref:`foundational-components-optee`. For instructions to build tee-pager_v2.bin (bl32.bin)
-            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to obtain pre-build binares that come in the pre-built sdk.
-
-        *on HS-FS*
+            go to: :ref:`foundational-components-atf`. To use existing images, go to <path-to-tisdk>/board-support/prebuilt-images to obtain pre-build binares that come in the pre-built SDK (bl31.bin for BL31, bl32.bin for TEE and BINMAN_INDIRS can point to <path-to-tisdk>/board-support/prebuilt-images itself)
 
         .. code-block:: console
 
           R5
-          To build u-boot-spl.bin for signed tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
+          To build tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62ax_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
-
-          To build tiboot3-am62ax-hs-fs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and TIFS HS-FS FW.
-          $ cd $K3IG_DIR
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62ax SOC_TYPE=hs-fs SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
-          Sign bl31.bin binary found in $OPTEE_DIR/out/arm-plat-k3/core, sign tee-pager_v2.bin (bl32.bin) found in $TFA_DIR/build/k3/lite/release, and ipc_echo_testb_mcu1_0_release_strip.xer5f found in $DMFW_DIR.
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl31.bin bl31.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh tee-pager_v2.bin bl32.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh ipc_echo_testb_mcu1_0_release_strip.xer5f ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
+          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
           A53
-          To build signed tispl.bin_HS and signed u-boot.img_HS. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin.signed and bl32.bin.signed.
+          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin.
           $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin.signed TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin.signed DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=$UBOOT_DIR/out/a53
+          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- BL31=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin O=$UBOOT_DIR/out/a53 BINMAN_INDIRS=$TI_LINUX_FW_DIR
 
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX')
 
-        *on GP*
+     .. note::
 
-        .. code-block:: console
+       BINMAN_INDIRS is used to fetch the DM binary from board-support/prebuilt-images/ti-dm/ and SYSFW binaries from board-support/prebuilt-images/ti-sysfw/. If not using the SDK, BINMAN_INDIRS can point to either ti-linux-firmware or any folder where DM is located in <path to folder>/ti-dm/ and SYSFW binaries are present in <path to folder>/ti-sysfw/. Please make sure to use the absolute path.
 
-          R5
-          To build u-boot-spl.bin for tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62ax_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62AX')
 
-          To build tiboot3-am62ax-gp-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and ti-fs-firmware-am62ax-gp.bin.
-          $ cd $K3IG_DIR
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62ax SOC_TYPE=gp SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
+     .. note::
 
-          A53
-          To build tispl.bin and u-boot.img. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin, tee-pager_v2.bin, and ipc_echo_testb_mcu1_0_release_strip.xer5f.
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin TEE=$OPTEE_DIR/out/arm-plat-k3/core/tee-pager_v2.bin DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f O=$UBOOT_DIR/out/a53
-
-        *on HS*
-
-        .. code-block:: console
-
-          R5
-          To build u-boot-spl.bin for signed tiboot3.bin. Saved in $UBOOT_DIR/out/r5.
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62ax_evm_r5_defconfig O=$UBOOT_DIR/out/r5
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=$UBOOT_DIR/out/r5
-
-          To build tiboot3-am62ax-hs-evm.bin. Saved in $K3IG_DIR. Requires u-boot-spl.bin and TIFS HS-SE FW.
-          $ cd $K3IG_DIR
-          $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62ax SOC_TYPE=hs SBL=$UBOOT_DIR/out/r5/spl/u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
-          Sign bl31.bin binary found in $OPTEE_DIR/out/arm-plat-k3/core, sign tee-pager_v2.bin (bl32.bin) found in $TFA_DIR/build/k3/lite/release, and ipc_echo_testb_mcu1_0_release_strip.xer5f found in $DMFW_DIR.
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh bl31.bin bl31.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh tee-pager_v2.bin bl32.bin.signed
-          $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh ipc_echo_testb_mcu1_0_release_strip.xer5f ipc_echo_testb_mcu1_0_release_strip.xer5f.signed
-
-          A53
-          To build signed tispl.bin_HS and signed u-boot.img_HS. Saved in $UBOOT_DIR/out/a53. Requires bl31.bin.signed and bl32.bin.signed.
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62ax_evm_a53_defconfig O=$UBOOT_DIR/out/a53
-          $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=$TFA_DIR/build/k3/lite/release/bl31.bin.signed TEE=$OPTEE_DIR/out/arm-plat-k3/core/bl32.bin.signed DM=$DMFW_DIR/ipc_echo_testb_mcu1_0_release_strip.xer5f.signed O=$UBOOT_DIR/out/a53
-
-.. rubric:: Dependent Project location
-
-    - In case of not using the TI SDK and instead building U-Boot out of mainline, then
-      k3-image-gen (For generating tiboot3.bin) project is
-      located `here <https://git.ti.com/cgit/k3-image-gen/k3-image-gen>`__
-    - Linux Firmware (for device specific ti-dm and ti-sysfw binaries) project
-      is located `here <https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/tree/?h=ti-linux-firmware>`__.
-      Images are under ti-dm and ti-sysfw folders
-
-    .. ifconfig:: CONFIG_part_variant in ('AM65X')
-
-      .. rubric:: Building SYSFW
- 
-      - In case of building and generating sysfw.itb rather than downloading from
-        prebuilt download location, below is the instructions on how to do it.
-
-        *on GP*
-
-        .. code-block:: console
-
-           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am65x SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-sci-firmware-am65x-gp.bin
-
-        *on HS SR1/SR1.1*
-
-        .. code-block:: console
-
-           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am65x HS=1 SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-sci-firmware-am65x-hs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-sci-firmware-am65x-hs-cert.bin
-
-        *on HS SR2*
-
-        .. code-block:: console
-
-           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am65x_sr2 HS=1 SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-sci-firmware-am65x_sr2-hs-enc.bin SYSFW_HS_INNER_CERT_PATH=<path tto tisdk>/board-support/prebuilt-images/ti-sci-firmware-am65x_sr2-hs-cert.bin
-
-    .. ifconfig:: CONFIG_part_variant in ('J721E')
-
-      .. rubric:: Building SYSFW
- 
-      - In case of building and generating sysfw.itb rather than downloading from
-        prebuilt download location, below is the instructions on how to do it.
-
-        *on GP*
-
-        .. code-block:: console
-
-           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721e SYSFW_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-gp.bin
-
-        *on HS SR1*
-
-        .. code-block:: console
-
-           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721e HS=1 SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-cert.bin
-  
-        *on HS SR2*
-
-        .. code-block:: console
-
-           $ make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=j721e_sr1_1 HS=1 SYSFW_HS_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-enc.bin SYSFW_HS_INNER_CERT_PATH=<path to tisdk>/board-support/prebuilt-images/ti-fs-firmware-j721e-cert.bin
+      BINMAN_INDIRS is used to fetch the DM binary from <path to ti-linux-firmware>/ti-dm/ and SYSFW binaries from <path to ti-linux-firmware>/ti-sysfw/. If using the SDK, BINMAN_INDIRS can point to <path to SDK>/board-support/prebuilt-images. Else any folder where DM is located in <path to folder>/ti-dm/ and SYSFW binaries are present in <path to folder>/ti-sysfw/ can be used. Please make sure to use the absolute path.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X', 'J721E', 'J7200', 'AM64X', 'AM62X', 'AM62AX', 'J721S2' , 'J784S4')
 
@@ -776,32 +469,136 @@ Build U-Boot
     Copy the below images to the boot partition of an SD card and boot.
     Instructions to format the SD card can be found `here <../../Overview/Processor_SDK_Linux_Formatting_SD_Card.html>`__.
 
-    .. ifconfig:: CONFIG_part_variant in ('AM65X')
+.. ifconfig:: CONFIG_part_variant in ('AM65X')
 
-       - tiboot3.bin from <output directory>/r5
-       - tispl.bin, u-boot.img from <output directory>/a53
-       - sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
+       * GP
 
-    .. ifconfig:: CONFIG_part_variant in ('J721E')
+         * tiboot3-am65x_sr2-gp-evm.bin, sysfw-am65x_sr2-gp-evm.itb from <output directory>/r5
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
 
-       - tiboot3.bin from <output directory>/r5
-       - tispl.bin, u-boot.img from <output directory>/a72
-       - sysfw.itb from <path to tisdk>/board-support/prebuilt-images/
+       * HS
 
-    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
+         * tiboot3-am65x_sr2-hs-evm.bin, sysfw-am65x_sr2-hs-evm.itb from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
 
-       - tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
-       - tispl.bin, u-boot.img from <output directory>/a72
+.. ifconfig:: CONFIG_part_variant in ('J721E')
 
-    .. ifconfig:: CONFIG_part_variant in ('AM64X')
+       * GP
 
-       - tiboot3.bin from <path to K3-image-gen> (This is combined image of tiboot3.bin and sysfw.itb)
-       - tispl.bin, u-boot.img from <output directory>/a53
+         * tiboot3-j721e-gp-evm.bin, sysfw-j721e-gp-evm.itb from <output directory>/r5
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
 
-    .. ifconfig:: CONFIG_part_variant in ('AM62X', 'AM62AX')
+       * HS-FS
 
-       - tiboot3.bin from <path to K3-image-gen>
-       - tispl.bin, u-boot.img from <output directory>/a53
+         * tiboot3-j721e_sr2-hs-fs-evm.bin, sysfw-j721e_sr2-hs-fs-evm.itb from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+       * HS-SE
+
+         * tiboot3-j721e_sr2-hs-evm.bin, sysfw-j721e_sr2-hs-evm.itb from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+       * GP
+
+         * tiboot3-j7200-gp-evm.bin from <output directory>/r5
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+
+       * HS-FS
+
+         * tiboot3-j7200_sr2-hs-fs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+       * HS-SE
+
+         * tiboot3-j7200_sr2-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
+
+       * GP
+
+         * tiboot3-j721s2-gp-evm.bin from <output directory>/r5
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+
+       * HS-FS
+
+         * tiboot3-j721s2-hs-fs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+       * HS-SE
+
+         * tiboot3-j721s2-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+       * GP
+
+         * tiboot3-j784s4-gp-evm.bin from <output directory>/r5
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+
+       * HS-FS
+
+         * tiboot3-j784s4-hs-fs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+       * HS-SE
+
+         * tiboot3-j784s4-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+.. ifconfig:: CONFIG_part_variant in ('AM64X')
+
+       * GP
+
+         * tiboot3-am64x-gp-evm.bin from <output directory>/r5
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+
+       * HS-FS
+
+         * tiboot3-am64x_sr2-hs-fs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+       * HS-SE
+
+         * tiboot3-am64x_sr2-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+       * GP
+
+         * tiboot3-am62x-gp-evm.bin from <output directory>/r5
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+
+       * HS-FS
+
+         * tiboot3-am62x-hs-fs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+       * HS-SE
+
+         * tiboot3-am62x-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+       * GP
+
+         * tiboot3-am62ax-gp-evm.bin from <output directory>/r5
+         * tispl.bin_unsigned, u-boot.img_unsigned from <output directory>/a53
+
+       * HS-FS
+
+         * tiboot3-am62ax-hs-fs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
+
+       * HS-SE
+
+         * tiboot3-am62ax-hs-evm.bin from <output directory>/r5
+         * tispl.bin, u-boot.img from <output directory>/a53
 
 
 Image Formats

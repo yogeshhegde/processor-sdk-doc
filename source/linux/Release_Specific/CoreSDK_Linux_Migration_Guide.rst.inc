@@ -9,6 +9,27 @@ CoreSDK Linux Migration Guide
 This page covers migration information for applications built on top
 of the Processor SDK for Linux.
 
+Processor CoreSDK 09.xx Releases
+================================
+
+Processor CoreSDK Sitara 09.00
+------------------------------
+- This is the first release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
+- ATF 2.8+
+- OPTEE 3.20
+- Yocto Kirkstone/4.0
+- Platforms Supported : AM65x 2.0 (GP, HS-SE), AM64x 2.0 (HS-FS), AM62x ( GP, HS-FS, HS-SE), AM62x LP (HS-FS, HS-SE), AM62A (HS-FS, HS-SE)
+- k3-image-gen and core-secdev-k3 are no longer needed for U-Boot build, new build flow can be seen :ref:`here <Build-U-Boot-label>`.
+
+Processor CoreSDK Jacinto 09.00
+-------------------------------
+- This is the first release in the 2023 LTS stream 6.1 kernel, 2023.04 U-Boot and Yocto Kirkstone/4.0
+- ATF 2.8
+- OPTEE 3.20
+- Yocto Kirkstone/4.0
+- Platforms Supported : J721E, J7200, J721S2, J784S4, AM68, AM69
+- k3-image-gen and core-secdev-k3 are no longer needed for U-Boot build, new build flow can be seen :ref:`here <Build-U-Boot-label>`.
+
 Processor CoreSDK 08.xx Releases
 ================================
 
