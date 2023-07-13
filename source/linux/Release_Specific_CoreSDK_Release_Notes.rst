@@ -21,107 +21,106 @@ Please refer to the software manifest, which outlines the licensing
 status for all packages included in the prebuilt binaries location. 
 
 
-Release 08.06.00
+Release 09.00.00
 ==================
 
-Released February 2023
+Released July 2023
 
 .. rubric:: What's New
    :name: whats-new
 
-**Processor SDK 8.6 Sitara Release supports the following platforms**
+**Processor SDK 9.0 Sitara Release supports the following platforms**
 
-  * AM65x 2.0 (GP, HS-SE)
   * AM64x 2.0 (HS-FS)
   * AM62x (GP, HS-FS, HS-SE)
   * AM62x LP (HS-FS, HS-SE)
   * AM62A (HS-FS, HS-SE)
 
-**Processor SDK 8.6 Sitara Release has following Major Updates**
+**Processor SDK 9.0 Sitara Release has following Major Updates**
 
-  * AM62A First Public Release
-  * Upgrade ATF v2.8+, OPTEE 3.20
+  * LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Dunfell 4.0
+  * Binman Migration
   * HS-FS Default Boot Experience for AM64, AM62, AM62A, AM62 LP
-  * IRQ Affinity for AM64, AM62, AM62A
+  * Graphics: Weston 10 and DDK 23.1 Upgrade
+  * Multimedia: Gstreamer v1.20.5 Upgrade
 
 **AM62A**
   
-  * Uboot: OSPI NAND with UBIFS, C7x and R5 Early boot, DFU Flashing
-  * Uboot: QoS Optimization for DSS and CSI load
-  * Kernel: Wave521 Video Encode and Decode
-  * Kernel: CSI Support with OV5640, IMX219, IMX390 and OV2312 Sensors
-  * SA3UL with OPTEE TRNG
-  * K3conf debug tool
+  * U-Boot: Remoteproc boot with C7x
+  * Kernel: E5010 JPEG Encoder
+  * Low Power: DFS and CPUIdle on HS FS
+  * Camera: V4L2 multi-stream controls
 
 **AM62**
 
-  * Uboot: M4 Early boot, GPMC NAND (on SK LP)
-  * Kernel: Low Power Deep Sleep mode, CPUIdle on GP
-  * Kernel: RS485, mCRC, Dual Display
+  * Uboot: A53 Early splash screen and bmp display
+  * Low Power: Deep Sleep mode: HS FS Support, Main IO Daisychain support, Remoteproc with M4 and R5 Cores
+  * Low Power: Wakeup Sources: MCU GPIO, Main I/O Daisy wakeup, MCU M4 IPC Wakeup
+  * Low Power: DFS and CPUIdle on HS FS
+  * Low Power: MCU Only mode
+  * Kernel: Multi MCAN
   * IPC: A53 --> DM R5
-  * SA2UL with OPTEE TRNG
-  * TSN Network configuration support using netconf / YANG
+  * Camera: Libcamera support
+  * Audio: Recording bug-fixes
 
 **AM64**
 
-  * Kernel: RS485, RT Stress-ng validation
   * Bug Fixes and Stability Improvements
-  * TSN Network configuration support using netconf / YANG
+  * PRU-ICSSG: HSR Port-to-Port offload , Switch Mode, Multicast filtering in EMAC mode, Tx/Rx coalescing and Dump IET Statistic via ethtool
 
 **AM65**
 
-  * Major Refresh release 8.2 --> 8.6
-  * Includes Bug Fixes and Stability Improvements
+  * PRU-ICSSG: Multicast filtering in EMAC mode, Tx/Rx coalescing and Dump IET Statistic via ethtool
+
 
 Build Information
 =====================================
 
 U-Boot
 -------------------------
-| Head Commit: 2ee8efd6543648c6b8a14d93d52a6038854035c8 Revert "configs: am57xx_evm: Enable Android commands"
-| Date: Mon Feb 27 19:49:10 CST 2023
-| uBoot Version: 2021.01
-| uBoot Description: 08.06.00.007
+| Head Commit: 24098ea90dbaac7b16958e2f7d9f7a412ef1522a configs: am64: Fix booting of fitImage on AM64x"
+| Date: 2023-07-07 08:52:25 -0500
+| uBoot Version: 2023.04
+| uBoot Description: 09.00.00.006
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2021.01
-| uBoot Tag: 08.06.00.007
-
-| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| Branch: ti-u-boot-2023.04
+| uBoot Tag: 09.00.00.006
 |
+
 
 Kernel
 -------------------------
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 2c23e6c538c879e380401ae4b236f54020618eaa Merged TI feature connectivity into ti-linux-5.10.y-cicd
-| Date: Mon Feb 27 19:47:47 CST 2023
-| Kernel Version: 5.10.168
-| Kernel Description: 08.06.00.007
+| Head Commit: 40c32565ca0e213fb653570cc618408ee8e9c6cf arm64: dts: ti: k3-am64-main: Add ITAP delay values in Device Tree
+| Date: 2023-07-07 08:51:44 -0500
+| Kernel Version: 6.1.33
+| Kernel Description: 09.00.00.006
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-5.10.y
-| Tag: 08.06.00.007
-| Kernel defconfig: ti_sdk_arm64_release_defconfig
-
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Branch: ti-linux-6.1.y
+| Tag: 09.00.00.006
+| use-kernel-config=defconfig
+| config-fragment=kernel/configs/ti_arm64_prune.config
 |
+
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: c1a12919117a6978f40e723d6e0c67c744e026b9 Merge branch 'ti-rt-linux-5.10.y-cicd' into ti-rt-linux-5.10.y
-| Date: Mon Feb 27 20:29:47 CST 2023
-| Kernel Version: 5.10.168
-| Kernel Description: 08.06.00.007-rt
+| Head Commit: 685e77152461bd6b791500f717bec62d17c1b36d Merge branch 'ti-linux-6.1.y-cicd' of git://git.ti.com/ti-linux-kernel/ti-linux-kernel into ti-rt-linux-6.1.y-cicd
+| Date: 2023-07-07 08:51:50 -0500
+| Kernel Version: 6.1.33-rt11
+| Kernel Description: 09.00.00.006-rt
 
 | Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-5.10.y
-| Tag: 08.06.00.007-rt
-| Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
-
-| Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)) 9.2.1 20191025
+| Branch: ti-rt-linux-6.1.y
+| Tag: 09.00.00.006-rt
+| use-kernel-config=defconfig
+| config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
+
 
 
 Yocto
@@ -129,23 +128,23 @@ Yocto
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 45bdaf7da0bc79fa73f1e01bb30b5c3b2eb34545 linux-ti-staging-rt: RC Auto-Merger: 08.06.00.007
-| Date: 2023-02-23
+| Head Commit: 2e3ffb73630f4ff78227822bdb4c23e75a720223 linux-ti-staging_6.1: CI/CD Auto-Merger: cicd.kirkstone.202307061739
+| Date: 2023-07-07 08:52:30 -0500
 
 | Clone: git://git.yoctoproject.org/meta-ti
-| Branch: dunfell
-| Release Tag: 08.06.00.007
+| Branch: kirkstone
+| Release Tag: 09.00.00.006
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: e4fcc247b2fadc457efaff8edabdf12a6b4fa4d1 ltp-ddt: CI/CD Auto-Merger: cicd.dunfell.202302211800
-| Date: 2023-02-23
+| Head Commit: e1d3561ec681fd05509affa063e0d6212f1571d1 ltp-ddt: CI/CD Auto-Merger: cicd.kirkstone.202307061739
+| Date: 2023-07-07 08:51:10 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
-| Branch: dunfell
-| Release Tag: 08.06.00.007
+| Branch: kirkstone
+| Release Tag: 09.00.00.006
 |
 
 Issues Tracker
