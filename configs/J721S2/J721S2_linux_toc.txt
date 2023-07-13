@@ -92,6 +92,7 @@ linux/Foundational_Components_IPCLLD
 linux/Foundational_Components_Graphics
 linux/Foundational_Components/Graphics/Graphics_and_Display
 linux/Foundational_Components/Graphics/Rogue_Debug_Info
+linux/Foundational_Components/Graphics/Rogue_Power_Management_Info
 linux/Foundational_Components_Virtualization
 linux/Foundational_Components/Virtualization/Docker
 linux/Foundational_Components_OPTEE

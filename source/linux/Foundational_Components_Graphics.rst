@@ -24,4 +24,5 @@ the details on the features supported by these hardware blocks.
     Foundational_Components/Graphics/AM3_Beagle_Bone_Black_Configuration
     Foundational_Components/Graphics/SGX_Debug_Info
     Foundational_Components/Graphics/Rogue_Debug_Info
+    Foundational_Components/Graphics/Rogue_Power_Management_Info
 
