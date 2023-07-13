@@ -285,7 +285,7 @@ libdrm is included in TI releases and its sources can be found from: ::
 
     https://gitlab.freedesktop.org/mesa/drm
 
-libdrm also contains 'modetest' tool, which can be used to get basic information about DRM state, and to show a test pattern on a display.
+libdrm also contains 'modetest' tool, which can be used to get basic information about DRM state, and to show a test pattern on a display. Refer to the section `Testing tidss properties with modetest` below for some examples.
 
 Another option is kms++, a C++11 library for kernel mode setting which includes a bunch of test utilities and also V4L2 classes and Python bindings for DRM and V4L2. Some kms++ tools are included in TI releases. kms++ can be found from: ::
 
@@ -340,6 +340,178 @@ tidss supports configuration via DRM properties. These are standard DRM properti
 | GAMMA_LUT_SIZE     | crtc     | Number of elements in gammma lookup table.                                                          |
 +--------------------+----------+-----------------------------------------------------------------------------------------------------+
 
+Testing tidss properties with modetest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As the name suggests, ``modetest`` is DRM based mode setting test program available along with libdrm.
+It is an easy-to-use tool to test different features provided by display HWs. The DRM driver for,
+the display HWs, exposes these features as DRM properties, (see the table above), and the ``modetest``
+utility uses these properties to configure the display HW.
+
+``modetest`` outputs look different based on the number and types of displays connected, but the
+format remains the same. Before looking at this particular ``modetest``  output, ``kmsprint``
+output is provided as reference.
+
+::
+
+        $ kmsprint
+        Connector 0 (40) LVDS-1 (connected)
+          Encoder 0 (39) LVDS
+            Crtc 0 (38) 1920x1200@60.00 150.275 1920/32/52/24/? 1200/24/8/3/? 60 (60.00) 0x0 0x48
+              Plane 0 (31) fb-id: 51 (crtcs: 0 1) 0,0 1920x1200 -> 0,0 1920x1200 (AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 XR15 XB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12)
+                FB 51 1920x1200
+        Connector 1 (50) HDMI-A-1 (disconnected)
+          Encoder 1 (49) NONE
+
+
+In the example below, AM625 SK-EVM has been used, but this could extrapolated to all the EVMs
+running TI SoCs that support DSS7 / DSS7-L. An OLDI display is being run on the AM625 SK-EVM, while
+the HDMI is disconnected.
+
+Now, a shortened version of the command: ``modetest -M tidss`` that highlights some information used
+in the examples later.
+
+::
+
+        $ modetest -M tidss
+        Encoders:
+        id	crtc	type	possible crtcs	possible clones
+        39	38	LVDS	0x00000001	0x00000001
+        49	0	none	0x00000002	0x00000002
+
+        Connectors:
+        id	encoder	status		name		size (mm)	modes	encoders
+        40	39	connected	LVDS-1         	217x136		1	39
+          modes:
+                index name refresh (Hz) hdisp hss hse htot vdisp vss vse vtot
+          #0 1920x1200 60.00 1920 1952 2004 2028 1200 1224 1232 1235 150275 flags: ; type: preferred, driver
+          props:
+        [ ... ]
+
+        50	0	disconnected	HDMI-A-1       	0x0		0	49
+          props:
+        [ ... ]
+
+        CRTCs:
+        id	fb	pos	size
+        38	51	(0,0)	(1920x1200)
+          #0 1920x1200 60.00 1920 1952 2004 2028 1200 1224 1232 1235 150275 flags: ; type: preferred, driver
+          props:
+        [ ... ]
+
+        48	0	(0,0)	(0x0)
+          #0  nan 0 0 0 0 0 0 0 0 0 flags: ; type:
+          props:
+        [ ... ]
+
+        Planes:
+        id	crtc	fb	CRTC x,y	x,y	gamma size	possible crtcs
+        31	38	51	0,0		0,0	0       	0x00000003
+          formats: AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 XR15 XB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12
+          props:
+        [ ... ]
+
+        41	0	0	0,0		0,0	0       	0x00000003
+          formats: AR12 AB12 RA12 RG16 BG16 AR15 AB15 AR24 AB24 RA24 BA24 RG24 BG24 AR30 AB30 XR12 XB12 RX12 XR15 XB15 XR24 XB24 RX24 BX24 XR30 XB30 YUYV UYVY NV12
+          props:
+        [ ... ]
+
+From the information above, it can be inferred that the LVDS display ouput has these objects
+associated with it.
+
+        - Plane with ID = 31.
+        - CRTC with ID = 38.
+        - Encoder with ID = 39.
+        - Connector with ID = 40.
+
+Note that the plane 31 is the primary plane for CRTC 38 (LVDS Display). And for the HDMI display,
+the associated objects are as follows.
+
+        - Encoder with ID = 49.
+        - Connector with ID = 50.
+
+Since HDMI display is disconnected at the moment, no CRTC object has been enumerated for it, and
+hence plane 41 remains unused.
+
+
+- **Z order**
+
+Z position of the plane when multiple planes are being displayed.
+
+This property is enumerated as ``zpos`` in the modetest output. This property can be used with the
+``-w`` option of modetest. However, this property is not useful without plane overlaying, as it
+won't show use any discernible change on the display. Hence, refer the example given in the next
+section.
+
+- **Plane Overlaying**
+
+Use unused planes as overlay planes.
+
+Based on the version, the DSS controller can have 2 to 4 video pipelines, which get
+enumerated as DRM planes. If the number of displays connected is less than the
+number of video pipes in the DSS controller, the extra pipes can be used as overlay planes.
+
+In this example, plane 41 remains an unused plane, while plane 31 acts as a primary plane
+for CRTC 38. To use plane 41 as an overlay on top of plane 31, the following command can be
+used.
+
+::
+
+        $ modetest -M tidss -s 40@38:1920x1200 -P 41@38:1280x720 -w 41:zpos:1
+        setting mode 1920x1200-60.00Hz on connectors 40, crtc 38
+        testing 1280x720@XR24 overlay plane 41
+
+In this example, we use the primary plane via its connector and crtc using the ``-s`` option.
+``-s 40@38:1920x1200`` renders vertical color bars on the LVDS display. Adding the ``-P`` option,
+``-P 41@38:1280x720``, renders another frame of color bars (diagonal in this case) of resolution
+1280x720. The ``-w 41:zpos:1`` ensures that the plane 41 is displayed on top of plane 31 (or else,
+if plane 31 is on top, then plane 41 will be underneath and hence won't show up on the display).
+
+- **Global Alpha Blending**
+
+Full plane alpha-blending
+
+When displaying multiple planes on top of one another, we can assign transparency levels to each of
+the planes using the ``alpha`` property. For tidss, the value of this property ranges from 0 with
+complete transparency to 65535 with complete opacity.
+
+::
+
+        $ modetest -M tidss -s 40@38:1920x1200 -P 41@38:1280x720 -w 41:zpos:0 -w 31:zpos:1 -w 31:alpha:10000
+        setting mode 1920x1200-60.00Hz on connectors 40, crtc 38
+        testing 1280x720@XR24 overlay plane 41
+
+In this example, we are displaying the overlay plane (41) behind the primary plane (31) by
+manipulating the ``zpos`` property. Since the overlay plane is of a smaller resolution (1280x720)
+and the primary plane is of resolution 1920x1200, the overlay plane is expected to not be seen.
+However, with the introduction of the alpha property on the primary plane that doesn't happen. With
+``alpha`` = 10000 (out of 65535), faint vertical color bars can be seen on the display, along with
+diagonal color bars as solid.
+
+- **Scaling**
+
+Scale the frame smaller or larger.
+
+This feature will only work for plane IDs that map to the VID pipeline of tidss (and not the VIDL
+pipe). Follow this simple rule of thumb to find out if a particular DRM plane is VID or not. DSS-7
+has 4 pipelines in total, while DSS7-L has 2 pipelines. The VIDL pipelines get enumerated as DRM
+planes first, and then the VID pipes do. Therefore
+
+        - For DSS7 with 4 pipelines and DRM plane IDs 31, 41, 51, and 58, the DRM planes 51 and 58
+          are VID pipelines and thus have scaling support.
+
+        - For DSS7-L with 2 pipelines and DRM plane IDs 31, and 41, the DRM plane 41 is the VID
+          pipeline and thus have scaling support.
+
+The following example was run on DSS7-L and hence the pipe with scaling capability is DRM plane 41.
+
+::
+
+        $ modetest -M tidss -s 40@38:1920x1200@AR24 -P 41@38:400x400*2
+        setting mode 1920x1200-60.00Hz on connectors 40, crtc 38
+        testing 400x400@XR24 overlay plane 41
+
+Note that the ``*2`` at the end of ``-P 41@38:400x400*2`` is the scaling factor.
 
 
 Buffers
