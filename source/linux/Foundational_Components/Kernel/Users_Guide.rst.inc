@@ -122,7 +122,7 @@ a command of the form:
 Using Default Configurations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For this sdk, tisdk\_[platformName]\_defconfig was used to create the prebuilt
+For this sdk, the defconfig found in arch/arm64/configs is used to create the prebuilt
 files. We recommend users to use this kernel configuration (or at least use it
 as a starting point).
 
@@ -144,64 +144,20 @@ as a starting point).
   [comment] instructions for 64 bit processors
 .. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
 
-
-    platformName is am64xx-evm for AM64x, and am65xx-evm for AM65x.
-
-    For example, to apply the default AM64x kernel configuration, use:
+    For example, to apply the recommended kernel configuration for K3 devices, use:
 
     ::
 
-        am64xx-evm:
-        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- tisdk_am64xx-evm_defconfig
+        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_arm64_prune.config
 
-        am64xx-hs-evm:
-        make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- tisdk_am64xx-hs-evm_defconfig
-
+The config fragments found in <path-to-ti-linux-kernel>/kernel/configs can be used to trim/add 
+features when building a kernel that targets only TI EVMs. Append a config fragment to the end
+of "make" command like above to add/remove features.
 
 After the configuration step has run the full configuration file is
 saved to the root of the kernel tree as .config. Any further
 configuration changes are based on this file until it is cleaned up by
 doing a kernel clean as mentioned above.
-
-If the kernel was downloaded directly from
-the git repository, the defconfig will need to be built with scripts.
-Please see ti\_config\_fragments/README within the kernel sources for
-more information. Otherwise a user will notice a significant amount of
-features not working.
-
-Below is the procedure to build the defconfig from the kernel git
-repository.
-
-..
-  [comment] instructions for 32 bit processors
-.. ifconfig:: CONFIG_part_family in ('General_family', 'AM335X_family', 'AM437X_family')
-
-    ::
-
-        ti_config_fragments/defconfig_builder.sh -t ti_sdk_[device]_release
-        export ARCH=arm
-        make ti_sdk_[device]_release_defconfig
-        mv .config arch/arm/configs/tisdk_[platformName]-evm_defconfig
-
-    The list of defconfig map file (i.e., ti\_sdk\_[device]\_release used
-    above) supported can be found from
-    ti\_config\_fragments/defconfig\_map.txt file.
-
-..
-  [comment] instructions for 64 bit processors
-.. ifconfig:: CONFIG_part_family not in ('General_family', 'AM335X_family', 'AM437X_family')
-
-    ::
-
-        ti_config_fragments/defconfig_builder.sh -t ti_sdk_arm64_release
-        export ARCH=arm64
-        make ti_sdk_arm64_release_defconfig
-        mv .config arch/arm64/configs/tisdk_[platformName]-evm_defconfig
-
-    The list of defconfig map file (i.e., ti\_sdk\_[device]\_release used
-    above) supported can be found from
-    ti\_config\_fragments/v8\_defconfig\_map.txt file.
-
 
 Customizing the Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
