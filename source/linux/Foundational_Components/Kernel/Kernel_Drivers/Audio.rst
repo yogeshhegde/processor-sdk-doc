@@ -6,10 +6,34 @@ Audio
 Introduction
 ^^^^^^^^^^^^
 
-- This page gives a basic information for audio usage on supported
-  boards
+The audio subsystem present on various TI SoCs consists of two major components:
 
-- For generic Linux information, use the `Linux Kernel Users Guide <../../../Foundational_Components_Kernel_Users_Guide.html>`__.
+#. **Multi-channel Audio Serial Port (McASP)** - Provides a full-duplex
+   serial interface between the host processor and external audio peripherals
+   like codecs over industry-standard protocols like Inter-IC sound (I2S).
+
+#. **System DMA engine** - Provides McASP with direct access to system
+   memory to read audio samples from (for playback) or store audio samples to
+   (for capture).
+
+Along with the above, most TI EVMs and SKs have line input/output jack(s) wired
+to an on-board codec that can convert between the analog signals and the
+digital protocol supported by McASP.
+
+Software Architecture
+^^^^^^^^^^^^^^^^^^^^^
+
+All the hardware components are exposed to userspace applications using the
+Linux ALSA (Advance Linux Sound Architecture) framework, which allows control
+and configuration of the hardware through common APIs. For more details check
+the `links below <#additional-information>`__.
+
+Within the kernel there are separate drivers for each component. For each
+board a sound-card instance is created, usually using the :code:`sound {}`
+device tree node, that links together various components like different McASP
+instances to a codec or an HDMI bridge.
+
+.. Image:: /images/audio-asoc-arch.png
 
 Generic commands and instructions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
