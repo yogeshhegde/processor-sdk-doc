@@ -2,10 +2,12 @@ RemoteProc
 ------------
 
 This section documents how to initialize, load, start and stop remote cores from U-Boot prompt.
-Following remotecores support is available in U-boot:
+Following remotecores support is available in U-boot for K3 devices. However the actual remote
+cores deployed depends on the specific SoC used:
 
 -  Cortex-R5F in Lockstep more
 -  Cortex-R5F in split mode
+-  Cortex-M4F
 -  C66x DSP
 -  C71x DSP
 
@@ -27,7 +29,7 @@ The below command will initialize just the given remote core
 
    => rproc init <id>
 
-The below command lists all the available/initialized remotecores in the system.
+The below command lists all the available/initialized remotecores in a system.
 
 ::
 
