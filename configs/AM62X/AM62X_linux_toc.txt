@@ -136,7 +136,6 @@ linux/How_to_Guides/Target/How_to_Use_K3Conf_Tool
 linux/How_to_Guides/FAQ/How_to_Configure_MSMC_memory
 linux/How_to_Guides/FAQ/How_to_Check_Device_Tree_Info
 linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
-linux/How_to_Guides/Host/How_to_Build_a_Ubuntu_Linux_host_under_VMware
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
 
