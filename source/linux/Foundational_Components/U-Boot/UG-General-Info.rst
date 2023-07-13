@@ -1426,27 +1426,53 @@ Boot Flow
 U-Boot Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Please note that on many boards we modify the environment during system
-start for a variety of variables such as **board\_name** and if unset,
-**ethaddr**. When we restore defaults some variables will become unset,
-and this can lead to other things not working such as **findfdt** that
-rely on these run-time set variables.
+.. note::
 
-.. rubric:: Restoring defaults
-   :name: restoring-defaults
+   SDK 9.0 will not default to the environments that are saved on the boards,
+   It will default to the ones that are given with the particular uboot in
+   the release.
 
-It is possible to reset the set of U-Boot environment variables to their
-defaults and if desired, save them to where the environment is stored,
-if applicable. It is also required to restore the default setting when
-u-boot version changes from an upgrade or downgrade. To do so, issue the
-following commands:
+By default the SDK builds will have the default environments whenever being
+run, to have some custom environments, one needs to rely on uEnv.txt
+file.
 
-::
+The added benefit of using uEnv.txt is that it is more granular than the
+saveenv counterpart as we can choose to store the variables that are
+actually being set during the development workflow.
 
-    U-Boot # env default -f -a
-    U-Boot # saveenv
+**Writing to MMC/EMMC**
 
-| 
+.. code-block::
+
+  => env export -t $loadaddr <list of variables>
+  => fatwrite mmc ${mmcdev} ${loadaddr} ${bootenvfile} ${filesize}
+
+The following will update the uEnv.txt file on the bootmedia and then
+whenever "run envboot" is run on the board, uEnv.txt will be read based on
+mmcdev value to be read either from emmc/sd card.
+
+You can specifically choose the variables that you are changing in your
+development process so that the other variables are not affected due to the
+whole environment being saved. Optionally, one can save the full
+environment too in uEnv.txt by not specifying <list of variables> this
+will have some issues with the ethernet mac addresses not being overridden
+but other things will be set.
+
+**Reading from MMC/EMMC**
+
+By default run envboot will read it from the MMC/EMMC partition ( based on
+mmcdev) and set the environments.
+
+If manually needs to be done then the environment can be read from the
+filesystem and then imported
+
+.. code-block::
+
+  => fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+  => env import -t ${loadaddr} ${filesize}
+
+For production environments if one needs to rely on saveenv counterpart
+then they can always refer to the `commit <https://git.ti.com/cgit/ti-u-boot/ti-u-boot/commit/?h=ti-u-boot-2023.04-next&id=949e9cf709391136aa9a7a7f2c2215a9855261ef>`__
 
 .. rubric:: Networking Environment
    :name: networking-environment
