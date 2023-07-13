@@ -19,15 +19,15 @@ jumper on the board, and applying an additional DT overlay (.dtbo) file:
    <How_to_enable_DT_overlays_in_linux.html>`__ guide for steps on building
    and adding the overlay in your SD card.
 
-    (You may skip this step if the overlay is already present in ``/boot``
-    under the root partition of your SD card)
+    (You may skip this step if the overlay is already present in
+    ``/boot/dtb/ti`` under the root partition of your SD card)
 
 #. Enable the HDMI audio overlay by updating the ``name_overlays`` variable in
    the ``uEnv.txt`` file under the BOOT partition on your SD card.
 
     .. code-block:: text
 
-        name_overlays=k3-am625-sk-hdmi-audio.dtbo
+        name_overlays=ti/k3-am625-sk-hdmi-audio.dtbo
 
 #. Finally, reboot the board and playback a .WAV or raw PCM data using aplay:
 
