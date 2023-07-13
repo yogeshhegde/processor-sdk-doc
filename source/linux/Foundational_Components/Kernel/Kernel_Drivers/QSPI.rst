@@ -48,6 +48,17 @@ different TI SoCs:
 
 .. rubric:: Driver Features
 
+.. ifconfig:: CONFIG_part_family in ('AM62X_family', 'AM62AX_family', 'AM64X_family')
+
+   .. note::
+
+      The AM62X 9.0 SDK linux is not able to use the OSPI NOR flash
+      in Octal Double Data Rate (DDR) mode. Hence it always functions
+      only in 1S mode. Please apply this commit:
+      `mtd: spi-nor: sfdp: Update params->hwcaps.mask at xSPI profile 1.0 table parse <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/commit/?h=ti-linux-6.1.y-cicd&id=05222ef1f8edd5d5c314469ab00de71dca6c8421>`__
+      or switch to the latest `ti-linux-6.1.y branch <https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/log/?h=ti-linux-6.1.y>`__
+      to fix this issue.
+
 OSPI controllers support Double Data Rate (DDR) mode in Octal
 configuration wherein data can be read on both edges of the clock.
 
