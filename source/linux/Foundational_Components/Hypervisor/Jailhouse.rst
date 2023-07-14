@@ -1,0 +1,792 @@
+Jailhouse
+=========
+
+Overview
+--------
+
+Jailhouse is a static partitioning hypervisor that runs bare metal binaries. It 
+cooperates closely with Linux. Jailhouse doesn't emulate resources that don't 
+exist. It splits existing hardware resources into isolated compartments called 
+"cells" that are wholly dedicated to guest software programs called "inmates". 
+One of these cells runs the Linux OS and is known as the "root cell". Other cells 
+borrow CPUs and devices from the root cell as they are created.
+
+* The picture below shows the Jailhouse on a system before the Jailhouse is enabled
+
+.. Image:: ./images/arch_native.png
+
+|
+
+* After the Jailhouse is enabled
+
+.. Image:: ./images/enable_jailhouse.png
+
+|
+
+* After a cell is created
+
+.. Image:: ./images/root_inmate_new.png
+
+|
+
+Jailhouse consists of three parts: 
+
+- A Kernel module 
+- A Hypervisor firmware
+- Tools
+
+The tools helps in enabling the hypervisor on the device at runtime, in creating a cell, to load inmate a binary,
+to run the inmate binary and to stop the hypervisor itself. 
+
+Enabling hypervisor on AM62x platform
+-------------------------------------
+
+Jailhouse is an example of Asynchronous Multiprocessing (AMP) architecture. When we boot Linux on AM62x, which has 4 ARM cores, Linux uses the
+all four cores. After we enable hypervisor it moves Linux to the root-cell. The 
+root cell still uses the all ARM cores. When we create a new cell (ex. for linux-demo),
+hypervisor calls cpu_down() for the ARM1,ARM2 and ARM3 core, leaving ARM0 for 
+Linux.The new cell will use the three ARM cores and hardware resources dedicated 
+for this cell in the cell configuration file.
+
+The open source Jailhouse project from https://github.com/siemens/jailhouse is integrated in Yocto build environment.
+
+- Yocto recipe (Kirkstone) for Jailhouse can be found here: `meta-ti <https://git.ti.com/cgit/arago-project/meta-ti/tree/meta-ti-extras/recipes-ti/jailhouse?h=kirkstone>`__.
+
+- Jailhouse kernel patches are integrated with TI Linux Kernel (v6.1) and hosted here `Linux git.ti <https://git.ti.com/cgit/processor-sdk/linux/>`__. This repository includes Jailhouse module, 
+  uio_ivshmem module for shared-memory and device tree changes for Jailhouse.
+
+- U-Boot port for Jailhouse can be found here `U-Boot git.ti <https://git.ti.com/cgit/processor-sdk/u-boot/>`__. This repository contains the fix for error 
+  message during boot after memory for Jailhouse is reserved in device tree.
+
+Building Jailhouse Image for AM62x platform
+-------------------------------------------
+
+The list of components which should be built to get Jailhouse Image for AM62x are:
+
+* U-Boot ( tiboot3.bin, tispl.bin, u-boot.img ).
+* Kernel ( with Jailhouse and shared memory module ).
+* Filesystem for root cell and RAM filesystem for inmate.
+
+There are two options to build Jailhouse Image, one is using open source Yocto build environment with public repositories mentioned above or the other method is to use sources and makefile from TI Processors SDK installer.
+
+Building Jailhouse Image using Yocto
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Refer to prerequisites for Yocto build for an Ubuntu host: :ref:`Host Setup - ubuntu (Recommended)`.
+
+The steps to download and build the AM62x wic Image containing Jailhouse (tisdk-
+jailhouse-image) using Yocto build environment are as listed below :
+
+::
+
+    $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
+    $ cd tisdk
+    $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.00.00-config.txt
+    $ cd build
+    $ . conf/setenv
+    $ export TOOLCHAIN_PATH_ARMV7=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
+    $ export TOOLCHAIN_PATH_ARMV8=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
+    $ echo 'TI_EXTRAS="tie-jailhouse"' >> local.conf
+    $ MACHINE=am62xx-evm bitbake -k tisdk-jailhouse-image
+
+The bitbake command mentioned in the last line above builds the tisdk-jailhouse-image, the image can be located at tisdk/build/arago-tmp-default-glibc/deploy/images/am62xx-evm.
+
+This image includes a host cell filesystem Image based on arago 'default' filesystem, boot partition with bootloader binaries and kernel Image with Jailhouse components and
+uio_ivshmem kernel module for shared memory applications. The filesystem image also contains a RAM filesystem (cpio) which gets mounted by kernel booting on an inmate cell.
+
+Building Jailhouse using TI SDK Installer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The latest Processor SDK Linux AM62x installer is available on 
+https://www.ti.com/tool/PROCESSOR-SDK-AM62X.
+
+The installer should be downloaded on a Linux ubuntu host machine. The steps to install the sources using installer are:
+
+::
+
+    chmod +x ./ti-processor-sdk-linux-am62xx-evm-<version>-Linux-x86-Install.bin
+    ./ti-processor-sdk-linux-am62xx-evm-<version>-Linux-x86-Install.bin
+
+
+Create an SD card with prepackaged filesystem image by following instructions from the link :ref:`processor-sdk-linux-create-sd-card-with-custom-images`.
+
+The Jailhouse kernel sources, Jailhouse firmware and u-boot bootloader sources can be customized or modified and then built using the steps given below.
+
+Jailhouse sources are located at $TI_SDK_PATH/board-support/extra-drivers/jailhouse
+directory. The top level SDK Makefile has the *jailhouse_clean*, *jailhouse* and 
+*jailhouse_install* targets which can be used to clean, build and install Jailhouse 
+to the target file system using the default configs or after making any required changes. 
+The exact commands are:
+
+::
+
+    make jailhouse_clean
+    make jailhouse
+    make jailhouse_install DESTDIR=<root partition of target>
+
+These commands can be used to install Jailhouse kernel module, firmware and management tools in the target filesystem.
+
+The kernel and u-boot sources for Jailhouse image are located at 
+$TI_SDK_PATH/board-support/linux-extras and $TI_SDK_PATH/board-support/uboot-extras. 
+These targets can be build and installed using top-level Makefile. 
+
+Below commands can be used to install kernel image and modules to root of the target 
+filesystem.
+
+::
+
+    make linux-extras
+    make linux-extras_install DESTDIR=<root partition of target>
+
+
+Below commands can be used to install bootloader binaries to the boot partition
+of target.
+
+::
+
+    make u-boot-extras    
+    make u-boot-extras_install DESTDIR=<boot partition of target>
+
+
+Generate SD Card Image for Jailhouse
+------------------------------------
+
+You can download the tisdk-jailhouse-image-am62xx-evm.wic.xz from here 
+https://www.ti.com/tool/PROCESSOR-SDK-AM62X. After that you need to flash the 
+tisdk-jailhouse-image-am62xx-evm.wic.xz to a SD Card. Various ways to flash wic 
+image on SD card are mentioned here :ref:`processor-sdk-linux-create-sd-card`.
+
+Booting the SD Card Image
+-------------------------
+
+After the tisdk-jailhouse-image-am62xx-evm.wic.xz is flashed to SD Card. Change
+the boot mode pins in AM62x board for SD Card boot. 
+
+::
+
+    SW1[1:8] = 11000010 and SW2[1:8] = 01000000    
+    
+Insert the SD Card in SD Card slot in AM62x board. Use a USB Micro-B cable to 
+connect the host PC to the USB Micro-B interface for UART on the EVM then power 
+on the board, the following logs can be observed on the terminal window:
+
+::
+    
+    U-Boot SPL 2023.04-g765cab112d (Jul 11 2023 - 11:12:53 +0000)
+    SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+    SPL initial stack usage: 13376 bytes
+    Trying to boot from MMC2
+    Authentication passed
+    Authentication passed
+    Authentication passed
+    Authentication passed
+    Authentication passed
+    Starting ATF on ARM64 core...
+
+    ...
+
+    
+     _____                    _____           _         _   
+    |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_ 
+    |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+    |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|  
+              |___|                    |___|            
+
+    Arago Project am62xx-evm -
+
+    Arago 2023.04 am62xx-evm -
+
+    am62xx-evm login:
+
+Pre-built components in Jailhouse Image
+---------------------------------------
+The target filesystem on AM62x platform will consists of the following
+Jailhouse components:
+
+#. jailhouse.ko  : kernel module at
+   /lib/modules/<linux_kernel_version>/extra/driver directory;
+#. jailhouse.bin : hypervisor at /lib/firmware directory;
+#. Jailhouse management tools:
+   /usr/local/libexec/jailhouse and /usr/sbin directories;
+
+In order to create the root-cell and an inmate cell we need to provide
+cell configuration files. Those configuration files and example binaries
+are located at /usr/share/jailhouse/cells and /usr/share/jailhouse/inmates.
+
+Jailhouse Interface
+-------------------
+
+Jailhouse provides several user-space interfaces. Some important ones are listed
+below:
+
+- Enable Jailhouse
+
+::
+
+    root@am62xx-evm: jailhouse cell enable <root cell config>
+
+- To create a new cell
+
+::
+
+  root@am62xx-evm: jailhouse cell create <inmate cell config>
+
+- To list the running cell(s)
+
+::
+
+    root@am62xx-evm: jailhouse cell list
+
+-  Stop inmate cell
+
+::
+
+    root@am62xx-evm: jailhouse cell shutdown <id or name of inmate cell>
+
+-  Destroy cell
+
+::
+
+    root@am62xx-evm: jailhouse cell destroy <id or name of inmate cell>
+
+-  Disable Jailhouse
+
+::
+
+    root@am62xx-evm: jailhouse disable
+
+Running Jailhouse Demos on AM62x
+--------------------------------
+
+**Host Setup**
+
+Flash tisdk-jailhouse-image-am62xx-evm.wic.xz to SD card using balena and boot 
+AM62x from the SD card. As we will be running two instances ,two terminals are 
+required. Connect one terminal to the primary UART (e.g. /dev/ttyUSB0) and the 
+other to the secondary UART (e.g. /dev/ttyUSB1).
+
+Running Linux Demo
+^^^^^^^^^^^^^^^^^^
+
+The goal of this demo is to partition the CPU cores and run a second instance of 
+the Linux kernel with a RAM filesystem. The inmate kernel will use the 
+secondary UART to provide a login shell to the user. The steps to run 
+the demo are:
+
+- First enable Jailhouse
+
+::
+    
+    root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+
+- Create an inmate cell for linux
+
+::
+    
+    root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-linux-demo.cell
+
+-  Load the required inmate binaries
+
+::
+
+    root@am62xx-evm: jailhouse cell load k3-am625-sk-linux-demo /usr/libexec/jailhouse/linux-loader.bin -a 0x0 -s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000 /boot/Image -a 0xe0200000 /boot/tisdk-tiny-image-am62xx-evm.cpio -a 0xe294a000 /usr/share/jailhouse/inmate-k3-am625-sk.dtb -a 0xe0000000
+
+linux-loader.bin is a small application provided and built by Jailhouse source 
+tree to run inmates. As you can see (-a 0x0) it is loaded to virtual address 0x0.
+"-s "kernel=0xe0200000 dtb=0xe0000000" -a 0x1000" - is the linux_loader argument 
+loaded as string to virtual address 0x1000, which instructs the linux-loader to 
+branch to the those addresses. Kernel Image is loaded to the virtual address 
+0xe0200000, tiny image ramfs to 0xe294a000 and device tree for inmate to 0xe0000000.
+
+-  Start inmate cell
+
+::
+
+    root@am62xx-evm: jailhouse cell start k3-am625-sk-linux-demo
+
+- Now, on the secondary terminal, verify that the inmate kernel has booted with RAM filesystem.
+  Also note that the /dev/ttySX number used for root cell and inmate may or may not match.
+
+::
+
+    [  OK  ] Finished Record Runlevel Change in UTMP.
+
+    _____                    _____           _         _   
+    |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_ 
+    |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+    |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|  
+              |___|                    |___|            
+
+    Arago Project am62xx-evm -
+
+    Arago 2023.04 am62xx-evm -
+
+    am62xx-evm login: root
+
+The Linux demo (i.e Two Guest VMs) can be started using the 'linux-demo.sh' script 
+in that folder. There is no such script for the bare-metal demos but the commands 
+are very similar (all the needed pieces are in the filesystem already).
+
+Adding custom demos or applications in Inmate Filesystem
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Custom demos can also be run in inmate after copying the required files in RAM filesystem.
+This can be done using following steps:-
+
+- Extract the tisdk-tiny-image-am62xx-evm.cpio file in a seperate folder(ex. temp) in
+  linux host PC. This file is present in /media/$USER/root/boot/ or from output from
+  yocto build.
+
+::
+
+    $ cpio -iv < <path to cpio>/tisdk-tiny-image-am62xx-evm.cpio
+
+- Copy the your demo/app to folder where cpio is extracted
+
+::
+
+    $ cp <TI-SDK-PATH>/board-support/extra-drivers/jailhouse/tools/demos/ivshmem-demo <path to extracted cpio>
+
+- Generate a new cpio file
+
+::
+
+    $ find . | sort | cpio --reproducible -o -H newc -R root:root > <path you want to save your new cpio>/tisdk-tiny-image-am62xx-evm.cpio
+
+Running Shared Memory Demo
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Jailhouse image contains modules for userspace I/O system (UIO) and Inter-VM 
+shared memory (IVSHMEM). This allows VMs to communicate with each other via a 
+shared memory mechanism.The IVSHMEM device is emulated in the hypervisor, and the 
+shared memory regions are reserved in the DTB for cross-cell communication.
+
+For shared-memory demo we can use ivshmem-demo application located at tools/demos 
+in Jailhouse source directory. ivshmem-demo application is already packaged in root. 
+You can use following steps to copy this demo in the tisdk-tiny-image-am62xx-evm.cpio
+filesystem packaged in Jailhouse image.
+
+- Extract the tisdk-tiny-image-am62xx-evm.cpio file in a seperate folder(ex. temp) in
+  linux host PC. This file is present in /media/$USER/root/boot/ or from output from
+  yocto build.
+
+::
+
+    $ cpio -iv < <path to cpio>/tisdk-tiny-image-am62xx-evm.cpio
+
+- Copy the ivshmem-demo from Jailhouse source directory folder where cpio is extracted
+
+::
+
+    $ cp <TI-SDK-PATH>/board-support/extra-drivers/jailhouse/tools/demos/ivshmem-demo <path to extracted cpio>
+
+- Generate a new cpio file
+
+::
+
+    $ find . | sort | cpio --reproducible -o -H newc -R root:root > <path you want to save your new cpio>/tisdk-tiny-image-am62xx-evm.cpio
+
+- Copy the newly generated cpio file in SD card root/boot directory
+
+::
+
+    $ sudo cp <path to new cpio>/tisdk-tiny-image-am62xx-evm.cpio /media/$USER/root/boot/
+
+Boot the Jailhouse image and run the linux demo script. After both root and 
+linux inmate are is started. Check whether the device node exists. Run /dev/uio0 
+and cat /proc/interrupts | grep uio.
+
+Run ivshmem-demo on both root and inmate cell
+
+- Root cell
+
+::
+
+    root@am62xx-evm:/usr/share/jailhouse# ivshmem-demo 
+    ID = 0
+    Maximum peers = 3
+    state[0] = 1
+    state[1] = 0
+    state[2] = 3
+    rw[0] = 0
+    rw[1] = -1
+    rw[2] = 1
+    in@0x0000 = 0
+    in@0x2000 = -1
+    in@0x4000 = -1
+
+    Sending interrupt 1 to peer 1
+
+    Sending interrupt 1 to peer 1
+
+    Sending interrupt 1 to peer 1
+
+    Sending interrupt 1 to peer 1
+
+    Interrupt #1
+    state[0] = 1
+    state[1] = 0
+    state[2] = 0
+    rw[0] = 1
+    rw[1] = -1
+    rw[2] = 1
+    in@0x0000 = 10
+    in@0x2000 = -1
+    in@0x4000 = -1
+
+- Inmate cell
+
+::
+
+    root@am62xx-evm:/home# ./ivshmem-demo 
+    main program startedID = 2
+    Maximum peers = 3
+    state[0] = 0
+    state[1] = 0
+    state[2] = 3
+    rw[0] = -1
+    rw[1] = -1
+    rw[2] = 0
+    in@0x0000 = �
+    in@0x2000 = -1
+    in@0x4000 = -1
+
+    Sending interrupt 3 to peer 0
+
+    Sending interrupt 3 to peer 0
+
+    Interrupt #1
+    state[0] = 1
+    state[1] = 0
+    state[2] = 3
+    rw[0] = 0
+    rw[1] = -1
+    rw[2] = 1
+    in@0x0000 = 
+    in@0x2000 = -1
+    in@0x4000 = -1
+
+    Sending interrupt 3 to peer 0
+
+    Sending interrupt 3 to peer 0
+
+    Sending interrupt 3 to peer 0
+
+    Sending interrupt 3 to peer 0
+    ^C
+
+You can see interrupts will be received in both inmate and root cell. Also, check 
+the values using cat /proc/interrupts | grep uio.
+
+Below changes in ivshmem-demo.c can be done to send characters from root to inmate 
+and vice versa.
+
+::
+
+    diff --git a/tools/demos/ivshmem-demo.c b/tools/demos/ivshmem-demo.c
+    index f9ef438e..4e1d26db 100644
+    --- a/tools/demos/ivshmem-demo.c
+    +++ b/tools/demos/ivshmem-demo.c
+    @@ -75,7 +75,9 @@ static void print_shmem(void)
+        printf("rw[0] = %d\n", rw[0]);
+        printf("rw[1] = %d\n", rw[1]);
+        printf("rw[2] = %d\n", rw[2]);
+    -   printf("in@0x0000 = %d\n", in[0/4]);
+    +   //printf("in@0x0000 = %d\n", in[0/4]);
+    +   char *s = (char *)in;
+    +   printf("in@0x0000 = %c\n", s[0]);
+        printf("in@0x2000 = %d\n", in[0x2000/4]);
+        printf("in@0x4000 = %d\n", in[0x4000/4]);
+    }
+    @@ -193,7 +195,8 @@ int main(int argc, char *argv[])
+                                error(1, errno, "read(uio)");
+
+                        rw[id] = int_count;
+    -                   out[0] = int_count * 10;
+    +                   //out[0] = int_count * 10;
+    +                   memcpy((void *)out, "H", sizeof("H"));
+                        printf("\nInterrupt #%d\n", int_count);
+                        print_shmem();
+
+It will send character (here "H") to root to inmate or vice versa when an interrupt
+is received.
+
+**NOTES**:
+
+You may shutdown and start the same binary multiple times. Every time you start 
+the binary, it starts from the beginning.
+
+If you have different binaries which use the same cell resources, you may reuse 
+the created cell to run them. You need just shutdown the cell, load another 
+binary and start it. If you need to run different binaries that requires different 
+resources, you need to shutdown the running cell, destroy it, create a new one 
+with required resources, load a new binary and start it.
+
+Running Baremetal Demos
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Jailhouse comes with inmate demos located at the inmates/demos directory. We will
+see the working of two demo inmates: gic-demo and uart-demo. Those are very simple 
+bare-metal applications that demonstrate a uart and arm-timer interrupt. These 
+demos are common for all Jailhouse platforms.
+
+**Running UART Demo**
+
+- Enable Jailhouse
+
+::
+
+    root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+
+- Create a inmate cell  
+
+::
+
+    root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell 
+
+- load uart-demo.bin in inmate cell
+
+::
+
+    root@am62xx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/uart-demo.bin
+
+- Start inmate cell
+
+::
+
+    root@am62xx-evm: jailhouse cell start inmate-demo
+
+- You will see UART demo running in secondary terminal for inmate
+
+::
+    
+    Hello 1 from cell!
+    Hello 2 from cell!
+    Hello 3 from cell!
+    Hello 4 from cell!
+    Hello 5 from cell!
+    Hello 6 from cell!
+    Hello 7 from cell!
+    Hello 8 from cell!
+
+**Running GIC Demo**
+
+- Enable Jailhouse
+
+::
+
+    root@am62xx-evm: jailhouse enable /usr/share/jailhouse/cells/k3-am625-sk.cell
+
+- Create a inmate cell
+
+::
+
+    root@am62xx-evm: jailhouse cell create /usr/share/jailhouse/cells/k3-am625-sk-inmate-demo.cell
+
+- Load gic-demo.bin in inmate cell
+
+::
+
+    root@am62xx-evm: jailhouse cell load inmate-demo /usr/share/jailhouse/inmates/gic-demo.bin
+
+- Start inmate cell
+
+::
+
+    root@am62xx-evm: jailhouse cell start inmate-demo
+
+- You will see GIC demo running in secondary terminal inmate
+
+::
+    
+    Initializing the GIC...
+    Initializing the timer...
+    Timer fired, jitter:   9324 ns, min:   9324 ns, max:   9324 ns
+    Timer fired, jitter:   4794 ns, min:   4794 ns, max:   9324 ns
+    Timer fired, jitter:   4289 ns, min:   4289 ns, max:   9324 ns
+    Timer fired, jitter:   4249 ns, min:   4249 ns, max:   9324 ns
+    Timer fired, jitter:    739 ns, min:    739 ns, max:   9324 ns
+    Timer fired, jitter:   4489 ns, min:    739 ns, max:   9324 ns
+    Timer fired, jitter:   4184 ns, min:    739 ns, max:   9324 ns
+    Timer fired, jitter:   4184 ns, min:    739 ns, max:   9324 ns
+    Timer fired, jitter:   5034 ns, min:    739 ns, max:   9324 ns
+
+Memory Reservation
+------------------
+
+Linux kernel has to reserve some memory for Jailhouse hypervisor and for inmate. 
+This memory has to be reserved statically. Following example shows reservation of 
+518MB physical memory for hypervisor, inmates and also shared memory region for
+cross-cell communication.
+
+::
+
+    hyp_mem: jailhouse@dfa00000 {
+			reg = <0x0 0xdfa00000 0x0 0x20600000>; /* For jailhouse */
+			alignment = <0x1000>;
+			no-map;
+	};
+
+Hardware Modules Reservation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Jailhouse is a partitioning hypervisor. This means a HW peripheral is in exclusive 
+control of one of the cells. Jailhouse cell config file defines this ownership to 
+ensure that all accesses to peripherals are isolated between different cells. 
+Access to any peripheral outside of the owned will be treated as violation, and 
+Jailhouse will park that cell. To ensure that Linux uses only the assigned peripheral, 
+we can disable the peripherals which are owned by the other cell.
+
+Following nodes describe an example of how devices are disabled in the root cell 
+device tree.
+
+::
+    
+    /* Disable uart used by inmate cell */
+    &main_uart1 {
+        status = "disabled";
+    };
+
+    /* Disable emmc instance used by inmate cell */
+    &sdhci0 {                                                                     
+	    status = "disabled";                                                        
+    };
+
+Root-cell configuration
+^^^^^^^^^^^^^^^^^^^^^^^
+
+When hypervisor is being enabled it creates a cell for Linux and moves it to that 
+cell. The cell is called as "root-cell". The cell configuration as a "*.c" which
+gets compiled to "*.cell" file. The hypervisor uses the "cell" file to create a 
+cell. The cell configuration describes memory regions and their attributes which
+will be used by the cell,
+
+::
+
+    .mem_regions = {
+		/* IVSHMEM shared memory regions for 00:00.0 (demo) */
+		{
+			.phys_start = 0xdfa00000,
+			.virt_start = 0xdfa00000,
+			.size = 0x10000,
+			.flags = JAILHOUSE_MEM_READ,
+		},
+		{
+			.phys_start = 0xdfa10000,
+			.virt_start = 0xdfa10000,
+			.size = 0x10000,
+			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
+		},
+		/* Peer 0 */ {
+			.phys_start = 0xdfa20000,
+			.virt_start = 0xdfa20000,
+			.size = 0x10000,
+			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE,
+		},
+		/* Peer 1 */ {
+			.phys_start = 0xdfa30000,
+			.virt_start = 0xdfa30000,
+			.size = 0x10000,
+			.flags = JAILHOUSE_MEM_READ,
+		},
+		/* Peer 2 */ {
+			.phys_start = 0xdfa40000,
+			.virt_start = 0xdfa40000,
+			.size = 0x10000,
+			.flags = JAILHOUSE_MEM_READ,
+		},
+		/* IVSHMEM shared memory region for 00:01.0 */
+		JAILHOUSE_SHMEM_NET_REGIONS(0xdfb00000, 0),
+		{
+			.phys_start = 0x01810000,
+			.virt_start = 0x01810000,
+			.size = 0x00070000,
+			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				JAILHOUSE_MEM_IO,
+		},
+		{
+			.phys_start = 0x018a0000,
+			.virt_start = 0x018a0000,
+			.size = 0x00060000,
+			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				JAILHOUSE_MEM_IO,
+		},
+		/* RAM */ {
+			.phys_start = 0x80000000,
+			.virt_start = 0x80000000,
+			.size = 0x5fa00000,
+			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				JAILHOUSE_MEM_EXECUTE,
+		},
+		/* RAM. Reserved for inmates */ {
+			.phys_start = 0xe0000000,
+			.virt_start = 0xe0000000,
+			.size = 0x20000000,
+			.flags = JAILHOUSE_MEM_READ | JAILHOUSE_MEM_WRITE |
+				JAILHOUSE_MEM_EXECUTE,
+		},
+
+bitmap of CPU cores dedicated for the cell,
+
+::
+
+    .cpus = {
+            0xf,
+        },
+
+bitmap of interrupt controller SPI interrupts
+
+::
+
+    .irqchips = {
+		{
+			.address = 0x01800000,
+			.pin_base = 32,
+			.pin_bitmap = {
+				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+			},
+		},
+		{
+			.address = 0x01800000,
+			.pin_base = 160,
+			.pin_bitmap = {
+				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+			},
+		},
+		{
+			.address = 0x01800000,
+			.pin_base = 288,
+			.pin_bitmap = {
+				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+			},
+		},
+		{
+			.address = 0x01800000,
+			.pin_base = 416,
+			.pin_bitmap = {
+				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+			},
+		},
+		{
+			.address = 0x01800000,
+			.pin_base = 544,
+			.pin_bitmap = {
+				0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff,
+			},
+		},
+	},
+
+and some other parameters. That is for all the cells.
+
+In addition to that the root cell also allocates the physical memory for the 
+hypervisor.
+
+::
+
+    .hypervisor_memory = {
+		.phys_start = 0xdfc00000,
+		.size = 0x400000,
+	},
+
+The "memory regions" section is used by hypervisor to create the second stage 
+MMU translation table.
