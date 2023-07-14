@@ -42,7 +42,7 @@ Introduction
     It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
     API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
     render surfaces upto 4k and input textures upto 8k sizes are supported by
-    the hardware.
+    the hardware. It also supports Vulkan |reg| up to API version 1.2.
 
     The following extensions are supported:
 
@@ -185,6 +185,33 @@ Introduction
        * - GL_OES_vertex_array_object
        * - GL_OES_vertex_half_float
 
+    .. list-table:: Vulkan instance extensions
+
+       * - VK_KHR_device_group_creation
+         - v1
+       * - VK_KHR_external_fence_capabilities
+         - v1
+       * - VK_KHR_external_memory_capabilities
+         - v1
+       * - VK_KHR_external_semaphore_capabilities
+         - v1
+       * - VK_KHR_get_physical_device_properties2
+         - v2
+       * - VK_KHR_get_surface_capabilities2
+         - v1
+       * - VK_KHR_surface
+         - v25
+       * - VK_KHR_wayland_surface
+         - v6
+       * - VK_KHR_xcb_surface
+         - v6
+       * - VK_KHR_xlib_surface
+         - v6
+       * - VK_EXT_debug_report
+         - v10
+       * - VK_EXT_debug_utils
+         - v2
+
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_AXE')
 
     |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
@@ -192,7 +219,7 @@ Introduction
     It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
     API's. The OpenGL\ |reg| ES API's up to and including version 3.1 with
     render surfaces upto 4k and input textures upto 8k sizes are supported by
-    the hardware.
+    the hardware. It also supports Vulkan |reg| up to API version 1.2.
 
     The following extensions are supported:
 
@@ -343,6 +370,33 @@ Introduction
        * - GL_OES_vertex_array_object
        * - GL_OES_vertex_half_float
 
+    .. list-table:: Vulkan instance extensions
+
+       * - VK_KHR_device_group_creation
+         - v1
+       * - VK_KHR_external_fence_capabilities
+         - v1
+       * - VK_KHR_external_memory_capabilities
+         - v1
+       * - VK_KHR_external_semaphore_capabilities
+         - v1
+       * - VK_KHR_get_physical_device_properties2
+         - v2
+       * - VK_KHR_get_surface_capabilities2
+         - v1
+       * - VK_KHR_surface
+         - v25
+       * - VK_KHR_wayland_surface
+         - v6
+       * - VK_KHR_xcb_surface
+         - v6
+       * - VK_KHR_xlib_surface
+         - v6
+       * - VK_EXT_debug_report
+         - v10
+       * - VK_EXT_debug_utils
+         - v2
+
 .. ifconfig:: CONFIG_gpu_ip in ('Rogue_BXS')
 
     |__PART_FAMILY_DEVICE_NAMES__| device is enabled with 3D graphics
@@ -350,7 +404,7 @@ Introduction
     Inc. It enables the support of 3D graphics rendering using OpenGL\ |reg| ES
     API's. The OpenGL\ |reg| ES API's up to and including version 3.2 with
     render surfaces upto 4k and input textures upto 8k sizes are supported by
-    the hardware.
+    the hardware. It also supports Vulkan |reg| up to API version 1.2.
 
     The following extensions are supported:
 
@@ -514,6 +568,33 @@ Introduction
        * - GL_OVR_multiview
        * - GL_OVR_multiview2
        * - GL_OVR_multiview_multisampled_render_to_texture
+
+    .. list-table:: Vulkan instance extensions
+
+       * - VK_KHR_device_group_creation
+         - v1
+       * - VK_KHR_external_fence_capabilities
+         - v1
+       * - VK_KHR_external_memory_capabilities
+         - v1
+       * - VK_KHR_external_semaphore_capabilities
+         - v1
+       * - VK_KHR_get_physical_device_properties2
+         - v2
+       * - VK_KHR_get_surface_capabilities2
+         - v1
+       * - VK_KHR_surface
+         - v25
+       * - VK_KHR_wayland_surface
+         - v6
+       * - VK_KHR_xcb_surface
+         - v6
+       * - VK_KHR_xlib_surface
+         - v6
+       * - VK_EXT_debug_report
+         - v10
+       * - VK_EXT_debug_utils
+         - v2
 
 For more information about the supported OpenGL\ |reg| ES and EGL\ |reg|
 extensions see:
