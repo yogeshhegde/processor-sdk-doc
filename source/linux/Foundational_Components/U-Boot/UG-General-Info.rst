@@ -604,7 +604,7 @@ Build U-Boot
 Image Formats
 ^^^^^^^^^^^^^^^
 
-    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX')
+    .. ifconfig:: CONFIG_part_variant not in ('J7200', 'AM64X', 'J721S2', 'J721E', 'AM62X', 'AM62AX', 'J784S4')
 
        - tiboot3.bin
 
@@ -749,7 +749,7 @@ Image Formats
             | +-------------------+ |
             +-----------------------+
 
-    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2')
+    .. ifconfig:: CONFIG_part_variant in ('J7200', 'J721S2', 'J784S4')
 
         - tiboot3.bin:
 
