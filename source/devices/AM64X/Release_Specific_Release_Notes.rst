@@ -26,7 +26,6 @@ to create the embedded system from “scratch” :
 
 This release supports SR2.0 High Security - Field Securable (HS-FS) devices. For migration guide and other info, refer :ref:`HS-Migration-Guide`
 
-
 Licensing
 =========
 
@@ -37,159 +36,166 @@ found on the SDK download page or in the installed directory as indicated below.
 -  Linux Manifest:  "/docs/software_manifest.html"
 
 
-Release 08.06.00
+Release 09.00.00
 ================
 
-Released on February 2023
+Released on July 2023
 
 What's new
 ----------
-Processor SDK Linux AM64x Release has following new features:
 
-- Kernel: RS485, RT Stress-ng validation
-- Bug Fixes and Stability Improvements
-- TSN Network configuration support using netconf / YANG
+**Processor SDK 9.0 Sitara Release supports the following platforms**
+
+  * AM64x 2.0 (HS-FS)
+
+
+**Processor SDK 9.0 Sitara Release has following Major Updates**
+
+  * LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Dunfell 4.0
+  * Binman Migration
+  * HS-FS Default Boot Experience for AM64
+  * Graphics: Weston 10 and DDK 23.1 Upgrade
+  * Multimedia: Gstreamer v1.20.5 Upgrade
+  * Bug Fixes and Stability Improvements
+  * PRU-ICSSG: HSR Port-to-Port offload , Switch Mode, Multicast filtering in EMAC mode, Tx/Rx coalescing and Dump IET Statistic via ethtool
 
 Build Information
-=================
+=====================================
 
 U-Boot
-------
-
-.. rubric:: u-boot
-   :name: u-boot
-
-| Head Commit: 2ee8efd6543648c6b8a14d93d52a6038854035c8 Revert "configs: am57xx_evm: Enable Android commands"
-| Date: Mon Feb 27 19:49:10 CST 2023
-| uBoot Version: 2021.01
-| uBoot Description: 08.06.00.007
+-------------------------
+| Head Commit: 24098ea90dbaac7b16958e2f7d9f7a412ef1522a configs: am64: Fix booting of fitImage on AM64x"
+| Date: 2023-07-07 08:52:25 -0500
+| uBoot Version: 2023.04
+| uBoot Description: 09.00.00.006
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
-| Branch: ti-u-boot-2021.01
-| uBoot Tag: 08.06.00.007
-
-| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| Branch: ti-u-boot-2023.04
+| uBoot Tag: 09.00.00.006
 |
 
-Kernel
-------
 
+Kernel
+-------------------------
 .. rubric:: Linux Kernel
    :name: linux-kernel
 
-| Head Commit: 2c23e6c538c879e380401ae4b236f54020618eaa Merged TI feature connectivity into ti-linux-5.10.y-cicd
-| Date: Mon Feb 27 19:47:47 CST 2023
-| Kernel Version: 5.10.168
-| Kernel Description: 08.06.00.007
+| Head Commit: 40c32565ca0e213fb653570cc618408ee8e9c6cf arm64: dts: ti: k3-am64-main: Add ITAP delay values in Device Tree
+| Date: 2023-07-07 08:51:44 -0500
+| Kernel Version: 6.1.33
+| Kernel Description: 09.00.00.006
 
-| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-linux-5.10.y
-| Tag:  08.06.00.007
-| Kernel defconfig: ti_sdk_arm64_release_defconfig
-
-| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Branch: ti-linux-6.1.y
+| Tag: 09.00.00.006
+| use-kernel-config=defconfig
+| config-fragment=kernel/configs/ti_arm64_prune.config
 |
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
 
-| Head Commit: c1a12919117a6978f40e723d6e0c67c744e026b9 Merge branch 'ti-rt-linux-5.10.y-cicd' into ti-rt-linux-5.10.y
-| Date: Mon Feb 27 20:29:47 CST 2023
-| Kernel Version: 5.10.168
-| Kernel Description: 08.06.00.007-rt
+| Head Commit: 685e77152461bd6b791500f717bec62d17c1b36d Merge branch 'ti-linux-6.1.y-cicd' of git://git.ti.com/ti-linux-kernel/ti-linux-kernel into ti-rt-linux-6.1.y-cicd
+| Date: 2023-07-07 08:51:50 -0500
+| Kernel Version: 6.1.33-rt11
+| Kernel Description: 09.00.00.006-rt
 
-| Clone: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
-| Branch: ti-rt-linux-5.10.y
-| Tag: 08.06.00.007-rt
-| Kernel defconfig: ti_sdk_arm64_rt_release_defconfig
-
-| Compiler Information:  aarch64-none-linux-gnu-gcc (GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10))
+| Repo: git://git.ti.com/ti-linux-kernel/ti-linux-kernel.git
+| Branch: ti-rt-linux-6.1.y
+| Tag: 09.00.00.006-rt
+| use-kernel-config=defconfig
+| config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
 |
 
+
 Yocto
------
+------------------------
 .. rubric:: meta-ti
    :name: meta-ti
 
-| Head Commit: 45bdaf7da0bc79fa73f1e01bb30b5c3b2eb34545 linux-ti-staging-rt: RC Auto-Merger: 08.06.00.007
-| Date: 2023-02-23
+| Head Commit: 2e3ffb73630f4ff78227822bdb4c23e75a720223 linux-ti-staging_6.1: CI/CD Auto-Merger: cicd.kirkstone.202307061739
+| Date: 2023-07-07 08:52:30 -0500
+
 | Clone: git://git.yoctoproject.org/meta-ti
-| Branch: dunfell
-| Release Tag: 08.06.00.007
+| Branch: kirkstone
+| Release Tag: 09.00.00.006
 |
 
 .. rubric:: meta-arago
    :name: meta-arago
 
-| Head Commit: e4fcc247b2fadc457efaff8edabdf12a6b4fa4d1 ltp-ddt: CI/CD Auto-Merger: cicd.dunfell.202302211800
-| Date: 2023-02-23
+| Head Commit: e1d3561ec681fd05509affa063e0d6212f1571d1 ltp-ddt: CI/CD Auto-Merger: cicd.kirkstone.202307061739
+| Date: 2023-07-07 08:51:10 -0500
 
 | Clone: git://git.yoctoproject.org/meta-arago
-| Branch: dunfell
-| Release Tag: 08.06.00.007
+| Branch: kirkstone
+| Release Tag: 09.00.00.006
+|
+
+.. rubric:: meta-processor-sdk
+   :name: meta-processor-sdk
+
+| Head Commit: 9dad5765d33783f940ba3c32f4fc431e2b308621 ti-tisdk-setup: Fix LIC_FILES_CHKSUM
+| Date: 2023-07-13 11:07:46 -0500
+
+| Clone: git://git.ti.com/processor-sdk/meta-processor-sdk.git
+| Branch: kirkstone
 |
 
 Issues Tracker
 ==============
 
 Issues opened in previous releases that were closed in this release
---------------------------------------------------------------------
-
+-------------------------------------------------------------------
 .. csv-table::
-   :header: "Record ID", "Title", "Platform"
-   :widths: 15, 100, 50
+   :header: "Record ID", "Platform", "Title"
+   :widths: 15, 70, 20
 
-   "LCPD-29860","CI/CD : Update Heading to AM62/64x Linux Processor SDK Stable Release","am64xx-evm"
-   "LCPD-32731","Default booting behavior of HS-FS devices should be explicitly documented","am64xx-evm,am64xx-sk"
-   "LCPD-32773","Rx stall seen when there is network traffic during startup","am64xx-evm"
-   "LCPD-29900","k3: allmod config fails to build due to ti sci kconfig ","am64xx-evm,am64xx-sk"
+   "LCPD-28688","am62axx_sk-fs,am62xx-lp-sk,am62xx_lp_sk-fs,am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am64xx-evm,am64xx-sk","AM62x Kernel User Guide: Document AM62x default kernel config"
+   "LCPD-28492","am64xx-evm,am654x-evm","AM65: ICSSG: phc_ctl: Seeing clock jumps in get"
+   "LCPD-24691","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am64xx-evm,j721s2-evm,j721s2_evm-fs,j7200-evm","Kernel: Upstream: Set HIGH_SPEED_EN for MMC1 instance"
+   "LCPD-24690","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am64xx-evm,am64xx-sk,j721s2-evm,j721s2_evm-fs,j7200-evm","Kernel: SDK: Set HIGH_SPEED_EN for MMC1 instance"
 
+|
+   
 Issues found and closed in this release that may also be applicable to prior releases
 -------------------------------------------------------------------------------------
 .. csv-table::
-   :header: "Record ID", "Title", "Platform"
-   :widths: 15, 100, 50
+   :header: "Record ID", "Platform", "Title"
+   :widths: 15, 70, 20
     
-   "LCPD-29850","Ethernet link up down crashes the system","am64xx-evm"
-   "LCPD-29388","PREEMPT_RT interrupt latency with background memory load","am64xx-evm,am64xx-sk"
-   "LCPD-29734","AM64x PRUETH Performance Guide numbers are wrong","am64xx-evm"
-   "LCPD-29306","PRU_ICSSG: How much SRAM is needed?","am64xx-evm"
-   "LCPD-29433","AM64/AM62: IRQBalance does not migrate IRQs ","am64xx-sk"
-   "LCPD-29517","AM64x: UDP test fail: failed T_cpu_util out of expected range","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-25636","main uart0 pinmux not defined in k3-am642-sk.dts","am64xx-sk"
-   "LCPD-25112","Ethernet driver not gating its clock when interface is down","am64xx-evm"
-   "LCPD-20061","Occasional PHY error during during TSN Time-Aware Shaper execution","am64xx-evm"
-   "LCPD-29694","gpio-line-names is limited to 100. it should be ti,ngpios","am64xx-sk"
-   "LCPD-29528","k3: integration: sdk: missing tag info for optee and atf projects","am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk"
-   "LCPD-29518","AM64x: Dhrystone performance test fail","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-28111","wic image flashed sdcard should resize to full image","am64xx-evm"
-   "LCPD-27886","USART: Erroneous clear/trigger of timeout interrupt","am64xx-evm"
-   "LCPD-25409","Doc: Support read of On-die temperature sensor in Linux","am64xx-evm,am64xx-hsevm,am64xx-sk"
-   "LCPD-29341","AM64x EVM: Clarify CPSW / PRU Ethernet selection steps","am64xx-evm"
+   "LCPD-35033","am64xx-hsevm","AM64: ICSSG VLAN testcase is failing in 9.0-rc6"
+   "LCPD-34994","am64xx-hsevm","AM64x: fitImage not booting"
+   "LCPD-34992","am64xx-hsevm","AM64x DFU Boot fails with signed images"
+   "LCPD-34966","am62axx_sk-fs,am62xx-lp-sk,am62xx-sk,am62xx_sk-fs,am64xx-evm,am64xx-sk,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721s2-evm,j784s4-evm","rpmsg_ctrl device mapping errors see with 6.1 kernel"
+   "LCPD-34852","am62xx_sk-se,am64xx-evm,am654x-evm,j721e-idk-gw,j721s2-evm,j7200-evm","Few times payload is packed at size boundary by binman "
+   "LCPD-34686","am62axx_sk-fs,am64xx-evm","MMC itapdly sel values are not specified in uboot DTS"
+   "LCPD-34593","am62axx_sk-fs,am62xx-sk,am62xx_sk-fs,am64xx-evm,am64xx-hsevm,am654x-evm,am654x-idk,am654x-hsevm,beagleplay-gp","DISTRO BOOT: Not enabled on all Sitara Platforms"
+   "LCPD-32946","am64xx-evm,am654x-evm,am654x-idk","RT Linux: PRU Ethernet link down causes kernel crash"
+   "LCPD-32823","am64xx-evm,am654x-idk","ICSS firmware does not process Rx packets once Min error frame is received"
+
+|
 
 Errata Workarounds Available in this Release
 --------------------------------------------
 .. csv-table::
-   :header: "Record ID", "Title", "Platform"
-   :widths: 15, 100, 50
+   :header: "Record ID", "Platform", "Title"
+   :widths: 15, 30, 150
 
-   "LCPD-19965","OSPI PHY Controller Bug Affecting Read Transactions","am64xx-evm"
-   "LCPD-27886","USART: Erroneous clear/trigger of timeout interrupt","am64xx-evm"
+   "LCPD-27886","am62axx_sk-fs,am62xx-sk,am64xx-evm,j721e-idk-gw,j7200-evm,j784s4-evm,j784s4-hsevm","USART: Erroneous clear/trigger of timeout interrupt"
+   "LCPD-25264","am64xx-evm,am64xx-hsevm,am64xx-sk","BCDMA: Blockcopy Gets Corrupted if TR Read Responses Interleave with Source Data Fetch"
+   "LCPD-19965","am64xx-evm,am654x-idk,j721e-idk-gw,j7200-evm","OSPI PHY Controller Bug Affecting Read Transactions"
 
 |
 
 U-Boot Known Issues
 -------------------
 .. csv-table::
-   :header: "Record ID","Title", "Platform","Workaround"
-   :widths: 20, 100, 50, 5
+   :header: "Record ID", "Platform", "Title", "Workaround"
+   :widths: 15, 30, 70, 30
     
-   "LCPD-25540","u-boot: usb host boot failed on AM64x SK","am64xx-hsevm,am64xx-sk",""
-   "LCPD-29739","AM64: NAND device not detected in U-boot","am64xx-hsevm",""
-   "LCPD-25558","AM64x: 'nand' tool doesn't seem to be working","am64xx-evm,am64xx-hsevm,am64xx-sk",""
-   "LCPD-24726","Uboot qspi read write performance test  failed ","am64xx-sk",""
-   "LCPD-23020","am64xx-evm: U-Boot PHY autonegotiation failed 2 out of 100 times","am64xx-evm",""
-   "LCPD-28660","AM64x: tiboot3.bin generated by U-Boot build is confusing users","am64xx-evm,am64xx-hsevm,am64xx-sk",""
-   "LCPD-28503","Need to sync up DTS files between u-boot and kernel for at least AM62x & AM64x, possibly other boards too","am64xx-evm,am64xx-sk",""
+   "LCPD-28660","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: tiboot3.bin generated by U-Boot build is confusing users",""
+   "LCPD-28503","am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am64xx-evm,am64xx-sk","Need to sync up DTS files between u-boot and kernel for at least AM62x, possibly other boards too",""
+   "LCPD-25540","am64xx-hsevm,am64xx-sk","AM64: u-boot: usb host boot failed",""
 
 |
 
@@ -197,64 +203,44 @@ Linux Kernel Known Issues
 -------------------------
 
 .. csv-table::
-   :header: "Record ID", "Title", "Platform", "Workaround"
-   :widths: 20, 100, 50, 5
+   :header: "Record ID", "Platform", "Title", "Workaround" 
+   :widths: 5, 10, 70, 35
 
-   "LCPD-23102","AM64-SK: DMA is not stable","am64xx-sk",""
-   "LCPD-20558","OSPI UBIFS tests failing on am64xx-sk","am64xx-sk",""
-   "LCPD-29515","AM64x: Cannot boot with USB-MSC","am64xx-evm,am64xx-hsevm,am64xx-sk",""
-   "LCPD-29446","Linux SDK docs should explicitly state what peripherals are supported","am64xx-evm,am64xx-sk",""
-   "LCPD-24448","Verify IPC kernel: main-r5f0(s)/main-r5f1(s)","am64xx-evm",""
-   "LCPD-32481","AM64x: Environment variables for DFU to NAND","am64xx-evm,am64xx-hsevm",""
-   "LCPD-29651","AM64: NAND Flash device not detected","am64xx-hsevm",""
-   "LCPD-20038","OPTEE test applications are missing from rootfs","am64xx-evm",""
-   "LCPD-24456","Move IPC validation source from github to git.ti.com","am64xx-evm,am64xx-hsevm,am64xx-sk",""
-   "LCPD-22931","RemoteProc documentation missing","am64xx-evm,am64xx-sk",""
-   "LCPD-20006","AM64x: remoteproc may be stuck in the start phase after a few times of stop/start","am64xx-evm",""
-   "LCPD-26692","Hardware + Software IPSec Performance Test Failures","am64xx-evm",""
-   "LCPD-32640","Kernel HSR does not work on base image (same command works on default)","am64xx-evm",""
-   "LCPD-29854","MCU UART TX baud rate is doubled","am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk",""
-   "LCPD-29588","CPSW documentation: Time Sync Router no longer firewalled","am64xx-evm,am64xx-sk",""
-   "LCPD-29500","AM64x: ETH CPSW2g TAS: tests fail with undefined method error","am64xx-evm,am64xx-hsevm,am64xx-sk",""
-   "LCPD-29499","AM64x: ETH CPSW2g TAS: tests fail with queue 0 did not increase","am64xx-evm,am64xx-hsevm,am64xx-sk",""
-   "LCPD-29498","AM64x: ETH CPSW2g TAS: Invalid traffic schedule","am64xx-evm,am64xx-hsevm,am64xx-sk",""
-   "LCPD-28672","CPSW: Add more details about driver config","am64xx-evm,am64xx-sk",""
-   "LCPD-27924","AM65xx: Link does not come up after changing link settings while the interface is up with both endpoints on same board","am64xx-evm",""
-   "LCPD-27871","GPMC NAND driver misleading error","am64xx-evm",""
-   "LCPD-25494","AM64 EVM TSN IET tests is failing","am64xx-evm",""
-   "LCPD-24872","Am64x-sk :LCPD-16811 CPSW  failed while throughput metrics comparison ","am64xx-sk",""
-   "LCPD-24696","CPSW Promiscuous mode test failing on am64xx-sk","am64xx-sk",""
-   "LCPD-24690","Kernel: SDK: Set HIGH_SPEED_EN for MMC1 instance","am64xx-evm,am64xx-sk",""
-   "LCPD-24537","am654x-idk nslookup times out when all netwokring interfaces are active","am64xx-evm,am64xx-hsevm",""
-   "LCPD-24288","am64xx-evm NCM/ACM network performance test crashes with RT images","am64xx-evm",""
-   "LCPD-23066","am64x-sk :gpio: direction test fail","am64xx-sk",""
-   "LCPD-22892","icssg: due to FW bug both interfaces has to be loaded always","am64xx-evm",""
-   "LCPD-20105","AM64x: Kernel: ADC: RX DMA channel request fails","am64xx-evm",""
-   "LCPD-29597","AM64x: dts: main_rti nodes are defined twice","am64xx-evm",""
-   "LCPD-29508","AM64x: EMMC speed test fails: MMC not running on HS400 mode","am64xx-evm,am64xx-hsevm,am64xx-sk",""
-   "LCPD-29489","M4F Core should be able to load data to OC_SRAM","am64xx-evm,am64xx-sk",""
-   "LCPD-29362","AM64x EVM Devicetree should disable unused MCU peripherals","am64xx-evm,am64xx-sk",""
-   "LCPD-29305","AM64x Uboot SRAM addresses are outdated","am64xx-evm,am64xx-sk",""
-   "LCPD-25410","Test: Support read of On-die temperature sensor in Linux","am64xx-evm,am64xx-sk",""
-   "LCPD-24467","am64xx-sk stress boot test fails","am64xx-sk",""
-   "LCPD-22912","am64xx-evm SMP dual core test fails sporadically","am64xx-evm",""
-   "LCPD-22834","am64xx-evm stress boot test fails","am64xx-evm",""
-   "LCPD-29861","AM64x: IPC tests fail","am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk",""
-   "LCPD-29580","ICSSG IET Statistics are not getting counted","am64xx-evm",""
-   "LCPD-29943","AM64x: Upstream: Add boot mode switch settings","am62axx_sk-fs,am62axx_sk-se,am62xx-lp-sk,am62xx_lp_sk-fs,am62xx-sk,am62xx_sk-fs,am62xx_sk-se",""
-   "LCPD-29880","CAN_S_FUNC_MODULAR test fail","am64xx-evm",""
-   "LCPD-29805","AM64: Doc: Add boot mode switch settings","am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk",""
-   "LCPD-18854","ov5640 sensor capture fails for raw format capture","am64xx-evm",""
-   "LCPD-22215","PCIE NVM card stops enumerating on am64xx after some time","am64xx-evm",""
-   "LCPD-20705","USB stick attached to PCIe USB card is not enumerated","am64xx-evm",""
+   "LCPD-35022","am64xx-evm,am64xx-hsevm","AM64x: Benchmark OOB doesn't show any load on A53 and R5 (core 0) with latest ti-rpmsg-char v6.1",""
+   "LCPD-34993","am64xx-hsevm","AM64x: sf probe fails on hs-fs",""
+   "LCPD-34840","am64xx-hsevm","AM64: Networking failures including ICSSG",""
+   "LCPD-34837","am64xx-evm,am64xx-hsevm,am654x-evm,am654x-idk","TEST: Create automated test for LCPD-32336 (ICSSG driver XDP native mode support)",""
+   "LCPD-34834","am64xx-hsevm,am654x-evm,am654x-idk","Test: Create automated test for LCPD-34655 (IET Statistics for PRU Ethernet should be counted)",""
+   "LCPD-32868","am64xx-evm,am654x-idk","Kernel crash from PRU auto-forwarding packet",""
+   "LCPD-29861","am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk","AM64x: IPC tests fail",""
+   "LCPD-29515","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: Cannot boot with USB-MSC",""
+   "LCPD-24537","am64xx-evm,am64xx-hsevm,am654x-evm","am654x-idk nslookup times out when all netwokring interfaces are active",""
+   "LCPD-24456","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am62axx_sk-fs,am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am62xx-vlab,am62xx-zebu,am64xx-evm,am64xx-hsevm,am64xx-sk,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j7ae-evm,j7ae-zebu,j7aep-zebu,j7am-evm,j7am-vlab,j7am-zebu,j7amp-vlab,j7amp-zebu,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721e-vlab,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j7200-evm,j7200-hsevm,j7amp-evm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm,omapl138-lcdk","Move IPC validation source from github to git.ti.com",""
+   "LCPD-22931","am64xx-evm,am64xx-sk,am654x-evm,am654x-idk","RemoteProc documentation missing",""
+   "LCPD-22892","am64xx-evm,am654x-evm,am654x-idk","icssg: due to FW bug both interfaces has to be loaded always",""
+   "LCPD-22319","am62axx_sk-fs,am62xx-sk,am64xx-evm,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm","OpenSSL performance test data out of bounds",""
 
 |
 
 Linux RT Kernel Known Issues
 ----------------------------
 .. csv-table::
-   :header: "Record ID", "Title", "Platform", "Workaround"
-   :widths: 20, 100, 50, 5
+   :header: "Record ID", "Platform", "Title", "Workaround"
+   :widths: 15, 70, 20, 35
+ 
+   "LCPD-35022","am64xx-evm,am64xx-hsevm","AM64x: Benchmark OOB doesn't show any load on A53 and R5 (core 0) with latest ti-rpmsg-char v6.1",""
+   "LCPD-34993","am64xx-hsevm","AM64x: sf probe fails on hs-fs",""
+   "LCPD-34840","am64xx-hsevm","AM64: Networking failures including ICSSG",""
+   "LCPD-34837","am64xx-evm,am64xx-hsevm,am654x-evm,am654x-idk","TEST: Create automated test for LCPD-32336 (ICSSG driver XDP native mode support)",""
+   "LCPD-34834","am64xx-hsevm,am654x-evm,am654x-idk","Test: Create automated test for LCPD-34655 (IET Statistics for PRU Ethernet should be counted)",""
+   "LCPD-32868","am64xx-evm,am654x-idk","Kernel crash from PRU auto-forwarding packet",""
+   "LCPD-29861","am64xx-evm,am64xx-hsevm,am64xx-sk,am64xx-hssk","AM64x: IPC tests fail",""
+   "LCPD-29515","am64xx-evm,am64xx-hsevm,am64xx-sk","AM64x: Cannot boot with USB-MSC",""
+   "LCPD-24537","am64xx-evm,am64xx-hsevm,am654x-evm","am654x-idk nslookup times out when all netwokring interfaces are active",""
+   "LCPD-24456","am335x-evm,am335x-hsevm,am335x-ice,am335x-sk,am43xx-epos,am43xx-gpevm,am43xx-hsevm,am437x-idk,am437x-sk,am571x-idk,am572x-idk,am574x-idk,am574x-hsidk,am57xx-evm,am57xx-beagle-x15,am57xx-hsevm,am62axx_sk-fs,am62xx-sk,am62xx_sk-fs,am62xx_sk-se,am62xx-vlab,am62xx-zebu,am64xx-evm,am64xx-hsevm,am64xx-sk,am654x-evm,am654x-idk,am654x-hsevm,beaglebone,bbai,beaglebone-black,dra71x-evm,dra71x-hsevm,dra72x-evm,dra72x-hsevm,dra76x-evm,dra76x-hsevm,dra7xx-evm,dra7xx-hsevm,j7ae-evm,j7ae-zebu,j7aep-zebu,j7am-evm,j7am-vlab,j7am-zebu,j7amp-vlab,j7amp-zebu,j721e-evm,j721e-hsevm,j721e-evm-ivi,j721e-idk-gw,j721e-sk,j721e-vlab,j721s2-evm,j721s2-hsevm,j721s2_evm-fs,j7200-evm,j7200-hsevm,j7amp-evm,k2e-evm,k2e-hsevm,k2g-evm,k2g-hsevm,k2g-ice,k2hk-evm,k2hk-hsevm,k2l-evm,k2l-hsevm,omapl138-lcdk","Move IPC validation source from github to git.ti.com",""
+   "LCPD-24288","am64xx-evm,am654x-idk","am64xx-evm NCM/ACM network performance test crashes with RT images",""
+   "LCPD-22931","am64xx-evm,am64xx-sk,am654x-evm,am654x-idk","RemoteProc documentation missing",""
+   "LCPD-22892","am64xx-evm,am654x-evm,am654x-idk","icssg: due to FW bug both interfaces has to be loaded always",""
+   "LCPD-22319","am62axx_sk-fs,am62xx-sk,am64xx-evm,j721e-idk-gw,j721s2-evm,j7200-evm,j784s4-evm","OpenSSL performance test data out of bounds",""
 
-   "LCPD-24288","am64xx-evm NCM/ACM network performance test crashes with RT images","am64xx-evm",""
 |
