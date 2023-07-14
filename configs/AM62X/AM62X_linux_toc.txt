@@ -118,6 +118,8 @@ linux/Foundational_Components_OPTEE
 linux/Foundational_Components_ATF
 linux/Foundational_Components_Virtualization
 linux/Foundational_Components/Virtualization/Docker
+linux/Foundational_Components_Hypervisor
+linux/Foundational_Components/Hypervisor/Jailhouse
 
 linux/How_to_Guides
 linux/How_to_Guides_Developer_Notes
