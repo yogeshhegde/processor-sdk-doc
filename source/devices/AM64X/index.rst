@@ -17,6 +17,7 @@ Processor SDK AM64X Software Developer's Guide
    /linux/How_to_Guides
    index_RTOS
    index_Applications
+   /linux/Documentation_Tarball
 
 |
 
