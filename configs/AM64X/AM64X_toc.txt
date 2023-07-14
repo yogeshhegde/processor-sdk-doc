@@ -146,3 +146,5 @@ common/PRU-ICSS/Resource_Tables
 
 system/Demo_User_Guides/Benchmark_Demo_User_Guide
 system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
+
+linux/Documentation_Tarball
