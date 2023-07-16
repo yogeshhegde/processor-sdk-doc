@@ -29,7 +29,7 @@ Prerequisites (One-time setup)
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL')
 
-    The recommended Linux distribution is Ubuntu 18.04.
+    The recommended Linux distribution is Ubuntu 22.04.
 
 The following build host packages are required for Ubuntu. The following
 command will install the required tools on the Ubuntu Linux
@@ -37,19 +37,18 @@ distribution.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK', 'PSDKL')
 
-    For Ubuntu 18.04, please run the following:
+    For Ubuntu 22.04, please run the following:
 
 ::
 
-    $ sudo apt-get install build-essential autoconf \
-          automake bison \ 
-          flex libssl-dev bc u-boot-tools \
-          python diffstat \
-          texinfo gawk chrpath dos2unix \
-          wget unzip socat doxygen libc6:i386 \
-          libncurses5:i386 libstdc++6:i386 \
-          libz1:i386 g++-multilib \
-          git python3-distutils python3-apt 
+    $ sudo apt-get update
+    $ # Install packages required for builds
+    $ sudo apt-get -f -y install \
+        git build-essential diffstat texinfo gawk chrpath socat doxygen \
+        dos2unix python3 bison flex libssl-dev u-boot-tools mono-devel \
+        mono-complete curl python3-distutils repo pseudo python3-sphinx \
+        g++-multilib libc6-dev-i386 jq git-lfs pigz zstd liblz4-tool \
+        cpio file zstd lz4
 
 By default Ubuntu uses "dash" as the default shell for /bin/sh. You must
 reconfigure to use bash by running the following command:
@@ -92,10 +91,10 @@ Proxy <https://wiki.yoctoproject.org/wiki/Working_Behind_a_Network_Proxy>`__.
 
     ::
 
-        $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/9.2-2019.12/binrel/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf.tar.xz
-        $ tar -Jxvf gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf.tar.xz -C $HOME
-        $ wget https://developer.arm.com/-/media/Files/downloads/gnu-a/9.2-2019.12/binrel/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu.tar.xz
-        $ tar -Jxvf gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu.tar.xz -C $HOME
+        $ wget https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz
+        $ tar -Jxvf arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz -C $HOME
+        $ wget https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz
+        $ tar -Jxvf arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz -C $HOME
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
@@ -233,6 +232,9 @@ The "Build Output" is given relative to the
         +------------------------------+---------------------------------------------------------------+----------------------------+
         | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
         +------------------------------+---------------------------------------------------------------+----------------------------+
+        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
+        |                              |                                                               | with docker enabled        |
+        +------------------------------+---------------------------------------------------------------+----------------------------+
         | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
         +------------------------------+---------------------------------------------------------------+----------------------------+
 
@@ -284,21 +286,21 @@ The "Build Output" is given relative to the
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-        +---------------+---------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                    |
-        +---------------+---------------------------------------------------------------------------------------+
-        | am64xx-evm    | AM64x GP EVM, AM64x Starter Kit (SK)                                                  |
-        +---------------+---------------------------------------------------------------------------------------+
-        | am64xx-hs-evm | AM64x HS EVM                                                                          |
-        +---------------+---------------------------------------------------------------------------------------+
+        +---------------+-----------------------------------------------+
+        | **MACHINE**   | **Supported EVMs**                            |
+        +---------------+-----------------------------------------------+
+        | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                      |
+        +---------------+-----------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        +---------------+---------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                    |
-        +---------------+---------------------------------------------------------------------------------------+
-        | am62xx-evm    | AM62x Starter Kit (SK)                                                                |
-        +---------------+---------------------------------------------------------------------------------------+
+        +------------------+--------------------------------------------+
+        | **MACHINE**      | **Supported EVMs**                         |
+        +------------------+--------------------------------------------+
+        | am62xx-evm       | AM62x Starter Kit (SK) - GP, HS-FS, HS-SE  |
+        +------------------+--------------------------------------------+
+        | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
+        +------------------+--------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
@@ -369,19 +371,21 @@ The "Build Output" is given relative to the
 
     .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-        +---------------+--------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                   |
-        +---------------+--------------------------------------------------------------------------------------+
-        | am64xx-evm   | AM64x GP EVM, AM64x Starter Kit (SK)                                                  |
-        +--------------+---------------------------------------------------------------------------------------+
+        +---------------+-----------------------------------------------+
+        | **MACHINE**   | **Supported EVMs**                            |
+        +---------------+-----------------------------------------------+
+        | am64xx-evm    | AM64x EVM - HS-FS, HS-SE                      |
+        +---------------+-----------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-        +---------------+--------------------------------------------------------------------------------------+
-        | **MACHINE**   | **Supported EVMs**                                                                   |
-        +---------------+--------------------------------------------------------------------------------------+
-        | am62xx-evm    | AM62x Starter Kit (SK)                                                               |
-        +---------------+--------------------------------------------------------------------------------------+
+        +------------------+--------------------------------------------+
+        | **MACHINE**      | **Supported EVMs**                         |
+        +------------------+--------------------------------------------+
+        | am62xx-evm       | AM62x Starter Kit (SK) - GP, HS-FS, HS-SE  |
+        +------------------+--------------------------------------------+
+        | am62xx-lp-evm    | AM62x LP Starter Kit (SK) - HS-FS, HS-SE   |
+        +------------------+--------------------------------------------+
 
     .. ifconfig:: CONFIG_part_variant in ('AM65X')
 
@@ -506,79 +510,13 @@ A built recipe can be cleaned using:
 
 ``MACHINE=<machine> bitbake <target> -c cleansstate``
 
+or
+
+``MACHINE=<machine> bitbake <target> -c cleanall``
+
 The cleansstate task will clean recipe's work directory and remove the
 recipe's output from the dependency tree used by other recipe's during
 compilation.
-
-Common Variations 
-=================
-
-.. ifconfig:: CONFIG_sdk in ('PLSDK')
-
-    .. rubric:: Rebuilding without SGX
-       :name: rebuilding-without-sgx
-
-    In Processor SDK delivered today the graphics hardware acceleration is
-    enabled by default for device families with SGX (e.g. AM335x, AM437x,
-    AM57xx). As a result, some of the applications with graphics
-    dependencies will not run properly on device variants in those families
-    that do not contain the SGX accelerator (e.g. AM3352, AM4372, etc.). The
-    Processor SDK has been enhanced to provide the same OOB experience with
-    software rendering provided by QT5/Weston. The non-SGX software
-    rendering build will be enabled by adding the following to the bottom of
-    conf/local.conf immediately before invoking bitbake.
-
-    ``MACHINE_FEATURES_remove="sgx"``
-
-    ``PACKAGECONFIG_remove="wayland-egl"``
-
-    .. rubric:: Rebuilding without Wayland
-       :name: rebuilding-without-wayland
-
-    If a full Window system is not needed, i.e. if you simply want apps to
-    run full screen using EGLFS then you can remove Wayland by adding the
-    following to the bottom of conf/local.conf immediately before invoking
-    bitbake:
-
-    ``DISTRO_FEATURES_remove = "wayland"``
-
-    .. rubric:: X11 Build instructions
-       :name: x11-build-instructions
-
-    X11 has been validated as a build option, on top of Processor SDK 4.1 release.
-    In order to build with X11 instead of
-    Wayland, please use the configuration
-    processor-sdk-04.01.00.06-x11-config.txt for oe-layer-setup. One of the
-    key differences between this configuration file and the
-    processor-sdk-04.01.00.06 config file is the branch from
-    meta-processor-sdk. For X11 build, morty-x11-experimental branch is
-    used, where the DISTRO\_CONFIG is set to X11 instead of wayland.
-
-    .. rubric:: X11 Filesystem
-       :name: x11-filesystem
-
-    All the X11 related components are provided by the IMG DDK X11 package
-    and located under /usr/local/XSGX directory instead of /usr/include and
-    /usr/lib directories. The following applications and demos are built and
-    verified with X11:
-
-    -  SGX unitest programs: xgles1tests, xgles2test1, and etc.
-    -  PVR SDK 3D demo programs: ChameleonMan, ExampleUI, and etc.
-    -  QT5 Examples and demo programs over eglfs.x11 including
-       matrix-gui-browser
-
-    In the X11 build, the xorg (Xserver) is running and owns the DSS
-    resources by default. To support switching between X11 applications and
-    non-X11 applications such as DRM modetest and gstreamer pipelines, the
-    following shell file is provided to stop and start the Xserver.
-
-    ::
-
-        /etc/init.d/xorg <start|stop>
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
-
-    N/A
 
 See also
 ========

@@ -34,54 +34,64 @@ Open Source Software Support Disclaimer
 
 TI uses Yocto Project to integrate various software components and to build |__SDK_FULL_NAME__|. Yocto Project has two releases per year in April and October. TI’s Long-term Support (LTS) build for next year is based on current year’s October release of the Yocto Project. During a given year, TI’s LTS version migration only happens once per year and it occurs towards the end of the second quarter. The LTS migration usually signifies newer version of Kernel, U-boot, Toolchain, Yocto Project and etc. For more information on the current release, please refer to the Release Notes in the "Release Specific" section of respective platform. Therefore, the various open source components included in the |__SDK_FULL_NAME__| are only updated once per year.
 
-While TI integrates the FOSS in |__SDK_FULL_NAME__|, TI does not own, maintain and support the entire FOSS. If users have educational queries, feature enhancement requests or discover a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. Please keep in mind that we are only showing a few of the components below but the same concept applies to all of the FOSS integrated in the |__SDK_FULL_NAME__|. 
+While TI integrates the FOSS in |__SDK_FULL_NAME__|, TI does not own, maintain and support the entire FOSS. If users have educational queries, feature enhancement requests or discover a bug on any components, TI encourages the users to reach out to the respective FOSS community for any additional support. Below are helpful resources to seek support on a few of the individual FOSS components. Please keep in mind that we are only showing a few of the components below but the same concept applies to all of the FOSS integrated in the |__SDK_FULL_NAME__|.
 
-**Gstreamer Framework**
 
-- https://gstreamer.freedesktop.org/documentation/
-- Gstreamer application tutorials: https://gstreamer.freedesktop.org/documentation/tutorials/
+.. ifconfig:: CONFIG_part_family not in ('AM64X_family')
 
-**QT Framework**
+    **Gstreamer Framework**
 
-- https://www.qt.io
-- https://doc.qt.io
-- https://forum.qt.io
+    - https://gstreamer.freedesktop.org/documentation/
+    - Gstreamer application tutorials: https://gstreamer.freedesktop.org/documentation/tutorials/
 
-**Wayland Weston**
+    **QT Framework**
 
-- https://wayland.freedesktop.org
+    - https://www.qt.io
+    - https://doc.qt.io
+    - https://forum.qt.io
 
-**Robot Operating System (ROS)**
+    **Wayland Weston**
 
-- http://www.ROS.org
-- For meta-ros (embedded version of ROS, that runs on our ARM): https://github.com/bmwcarit/meta-ros
+    - https://wayland.freedesktop.org
 
-**V4L2**
+    .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-For programming external video devices, a V4L2 sub-device driver is needed to be used in conjunction with the V4L2 driver. It also uses some of the helper kernel libraries videobuf2 (VB2) for common buffer operations, queue management and memory management.
+        **Robot Operating System (ROS)**
 
-- https://www.kernel.org/doc/html/v5.10/admin-guide/media/index.html
-- https://www.kernel.org/doc/html/v5.10/userspace-api/media/v4l/v4l2.html
-- https://www.kernel.org/doc/html/v5.10/driver-api/media/v4l2-videobuf2.html
-- https://www.kernel.org/doc/html/v5.10/driver-api/media/v4l2-subdev.html
+        - http://www.ROS.org
+        - For meta-ros (embedded version of ROS, that runs on our ARM): https://github.com/bmwcarit/meta-ros
 
-**Graphics**
+    .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-- Direct Rendering Infrastructure (DRI): https://dri.freedesktop.org/wiki/Documentation/
-- Direct Rendering Manager (DRM): http://dri.freedesktop.org/wiki/DRM/
-- Kernel Mode Setting (KMS): https://www.kernel.org/doc/html/v5.10/gpu/drm-kms.html
-- Graphics Execution Manager (GEM): https://www.kernel.org/doc/html/v5.10/gpu/drm-mm.html#the-graphics-execution-manager-gem
+        **V4L2**
 
-Example applications:
+        For programming external video devices, a V4L2 sub-device driver is needed to be used in conjunction with the V4L2 driver. It also uses some of the helper kernel libraries videobuf2 (VB2) for common buffer operations, queue management and memory management.
 
-- https://github.com/tomba/kmsxx
-- https://git.ti.com/glsdk/example-applications/trees/master/drm-tests
-- http://git.ti.com/sitara-linux/dual-camera-demo/trees/master
-- The modetest tool is available inside git://anongit.freedesktop.org/git/mesa/drm
+        - https://www.kernel.org/doc/html/v5.10/admin-guide/media/index.html
+        - https://www.kernel.org/doc/html/v5.10/userspace-api/media/v4l/v4l2.html
+        - https://www.kernel.org/doc/html/v5.10/driver-api/media/v4l2-videobuf2.html
+        - https://www.kernel.org/doc/html/v5.10/driver-api/media/v4l2-subdev.html
 
-**OpenCV**
+    **Graphics**
 
-- OpenCV: https://opencv.org/
-- Documentation, tutorials and examples of how to use OpenCV 3.1: https://docs.opencv.org/3.1.0/#gsc.tab=0
-- OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/opencl/
+    - Direct Rendering Infrastructure (DRI): https://dri.freedesktop.org/wiki/Documentation/
+    - Direct Rendering Manager (DRM): http://dri.freedesktop.org/wiki/DRM/
+    - Kernel Mode Setting (KMS): https://www.kernel.org/doc/html/v5.10/gpu/drm-kms.html
+    - Graphics Execution Manager (GEM): https://www.kernel.org/doc/html/v5.10/gpu/drm-mm.html#the-graphics-execution-manager-gem
+
+
+    .. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+        Example applications:
+
+        - https://github.com/tomba/kmsxx
+        - https://git.ti.com/glsdk/example-applications/trees/master/drm-tests
+        - http://git.ti.com/sitara-linux/dual-camera-demo/trees/master
+        - The modetest tool is available inside git://anongit.freedesktop.org/git/mesa/drm
+
+        **OpenCV**
+
+        - OpenCV: https://opencv.org/
+        - Documentation, tutorials and examples of how to use OpenCV 3.1: https://docs.opencv.org/3.1.0/#gsc.tab=0
+        - OpenCL offload through OpenCV 3.1 transparent API: https://opencv.org/opencl/
 

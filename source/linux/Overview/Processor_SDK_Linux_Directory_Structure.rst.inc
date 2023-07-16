@@ -9,7 +9,21 @@ directories and files
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    .. Image:: /images/Processor-SDK-Linux-directory-structure.png
+    .. code-block::
+
+        ./
+        ├── bin/
+        ├── board-support/
+        ├── example-applications/
+        ├── external-toolchain-dir/
+        ├── filesystem/
+        ├── licenses/
+        ├── linux-devkit/
+        ├── Makefile
+        ├── makerules/
+        ├── manifest/
+        ├── Rules.make
+        └── setup.sh*
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
@@ -24,19 +38,19 @@ Processor SDK devices.
 -  **board-support** - Contains the SDK components that need to be
    modified when porting to a custom platform. This includes the kernel
    and boot loaders as well as any out of tree drivers.
--  **docs** - Contains various SDK documentation such as the software
-   manifest and additional user's guide. This is also the location where
-   you can find the *training* directory with the device training
-   materials.
+-  **manifest** - Contains software manifest files
+-  **licenses** - Contains software licenses
 -  **example-applications** - Contains the sources for the TI provided
    example applications seen during the out-of-box demonstration.
 -  **filesystem** - Contains the reference file systems. These include
    the smaller base file system as well as the full-featured SDK file
    system.
--  **linux-devkit** - Contains the cross-compile toolchain and libraries
-   to speed development for the target device.
+-  **external-toolchain-dir** - Contains cross-compile toolchain
+-  **linux-devkit** - Contains the tools and libraries to speed
+   development for the target device.
 -  **Makefile** - Provides build targets for many of the SDK components
    from the top-level of the SDK.
+-  **makerules** - Make rules for all the topLevel Makefile build targets
 -  **Rules.make** - Sets default values used by the top-level Makefile
    as well as sub-component Makefiles.
 -  **setup.sh** - Configures the users host system as well as the target
