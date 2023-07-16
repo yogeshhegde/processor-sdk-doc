@@ -7,11 +7,13 @@
 **All performance numbers provided in this document are gathered using
 following Evaluation Modules unless otherwise specified.**
 
-+----------------+---------------------------------------------------------------------------------------------------------------------+
-| Name           | Description                                                                                                         |
-+================+=====================================================================================================================+
-| AM62x EVM      | AM62x Evaluation Module rev E2 and E3 with ARM running at 1.4 GHz, DDR data rate 1600 MT/S                          |
-+----------------+---------------------------------------------------------------------------------------------------------------------+
++----------------+---------------------------------------------------------------------------------------------------+
+| Name           | Description                                                                                       |
++================+===================================================================================================+
+| AM62x EVM      | AM62x Evaluation Module rev E2 and E3 with ARM running at 1.4 GHz, DDR data rate 1600 MT/S        |
++----------------+---------------------------------------------------------------------------------------------------+
+| AM62x SK LP    | AM62x LP Starter Kit rev E1 with ARM running at 1250 MHz, LPDDR4 data rate 1600 MT/S              |
++----------------+---------------------------------------------------------------------------------------------------+
 
 Table:  Evaluation Modules
 
@@ -30,27 +32,29 @@ with drivers included in a particular release.
 For further information or to report any problems, contact
 http://e2e.ti.com/ or http://support.ti.com/
 
-System Benchmarks
--------------------
-
-
-Cyclictest
+Stress-ng and Cyclic Test
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+stress-ng (next-generation) will stress test a embedded platform in various selectable ways.
+It was designed to exercise various physical subsystems as well as the various
+operating system kernel interfaces. stress-ng can also measure test throughput rates;
+this can be useful to observe performance changes across different operating system or types of hardware.
 
 Cyclictest is most commonly used for benchmarking RT systems.
 It is one of the most frequently used tools for evaluating the relative performance of real-time systems.
 Some performance tests which use Cyclictest are System benchmarking, Latency debugging with tracing and
 approximating application performance.
 
-Test command: 
-cyclictest -l10000000 -m -Sp90 -i400 -h400 -q
+Test command for running stress-ng and cyclictest together
+
+``stress-ng -c 4 --cpu-method all &``
+
+``cyclictest -m -Sp80 -i400 -h400 -q -D1h``
 
 .. csv-table::
     :header: "Latencies","am62xx_sk:per-core"
 
-    "Minimum (usec)","5,5,5,5"
-    "Average (usec)","6,6,6,6"
-    "Maximum (usec)","65,65,34,40"
+    "Minimum (usec)","6,6,6,6"
+    "Average (usec)","8,9,8,8"
+    "Maximum (usec)","67,62,63,74"
 
-
-Table:  **Cyclictest**
