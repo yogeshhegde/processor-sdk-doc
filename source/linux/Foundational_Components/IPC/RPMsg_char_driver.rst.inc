@@ -101,6 +101,22 @@ rpmsg_char_close()
 		| DSP_c71_0        | 65800000.dsp       | Yes     | DSP core in Main Domain           |
 		+------------------+--------------------+---------+-----------------------------------+
 
+.. ifconfig::  CONFIG_part_variant in ('J7200')
+
+	The below table lists the device enumerations as defined in the rpmsg_char_library. The validity of the enumerations wrt J7200 is also specified.
+	::
+		+------------------+--------------------+---------+-----------------------------------+
+		| Enumeration ID   | Device Name        | Valid   | Description                       |
+		+==================+====================+=========+===================================+
+		| R5F_MCU0_0       | 41000000.r5f       | Yes     | R5F core(MCU domain)              |
+		+------------------+--------------------+---------+------------+----------------------+
+		| R5F_MCU0_1       | 41400000.r5f       | Yes     | R5F core(MCU domain)              |
+		+------------------+--------------------+---------+------------+----------------------+
+		| R5F_MAIN0_0      | 5c00000.r5f        | Yes     | R5F core(MAIN domain)             |
+		+------------------+--------------------+---------+------------+----------------------+
+		| R5F_MAIN0_1      | 5d00000.r5f        | Yes     | R5F core(MAIN domain)             |
+		+------------------+--------------------+---------+------------+----------------------+
+
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
 	The below table lists the device enumerations as defined in the rpmsg_char_library. The validity of the enumerations wrt AM62x is also specified.
@@ -236,6 +252,70 @@ SDK wic image filesystem:
 		Receiving message #9: hello there 9!
 
 		Communicated 10 messages successfully on rpmsg-char-8-1107
+
+		TEST STATUS: PASSED
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+    ::
+
+		# MCU R5F<->A72_0 IPC
+		root@j7200-evm:~# rpmsg_char_simple -r0 -n10
+		Created endpt device rpmsg-char-0-720, fd = 4 port = 1026
+		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 0 ...
+
+		Sending message #0: hello there 0!
+		Receiving message #0: hello there 0!
+		Sending message #1: hello there 1!
+		Receiving message #1: hello there 1!
+		Sending message #2: hello there 2!
+		Receiving message #2: hello there 2!
+		Sending message #3: hello there 3!
+		Receiving message #3: hello there 3!
+		Sending message #4: hello there 4!
+		Receiving message #4: hello there 4!
+		Sending message #5: hello there 5!
+		Receiving message #5: hello there 5!
+		Sending message #6: hello there 6!
+		Receiving message #6: hello there 6!
+		Sending message #7: hello there 7!
+		Receiving message #7: hello there 7!
+		Sending message #8: hello there 8!
+		Receiving message #8: hello there 8!
+		Sending message #9: hello there 9!
+		Receiving message #9: hello there 9!
+
+		Communicated 10 messages successfully on rpmsg-char-0-720
+
+		TEST STATUS: PASSED
+
+		# R5F_MAIN0_1<->A72_0 IPC
+		root@j7200-evm:~# rpmsg_char_simple -r3 -n10
+		Created endpt device rpmsg-char-3-738, fd = 4 port = 1026
+		Exchanging 10 messages with rpmsg device ti.ipc4.ping-pong on rproc id 3 ...
+
+		Sending message #0: hello there 0!
+		Receiving message #0: hello there 0!
+		Sending message #1: hello there 1!
+		Receiving message #1: hello there 1!
+		Sending message #2: hello there 2!
+		Receiving message #2: hello there 2!
+		Sending message #3: hello there 3!
+		Receiving message #3: hello there 3!
+		Sending message #4: hello there 4!
+		Receiving message #4: hello there 4!
+		Sending message #5: hello there 5!
+		Receiving message #5: hello there 5!
+		Sending message #6: hello there 6!
+		Receiving message #6: hello there 6!
+		Sending message #7: hello there 7!
+		Receiving message #7: hello there 7!
+		Sending message #8: hello there 8!
+		Receiving message #8: hello there 8!
+		Sending message #9: hello there 9!
+		Receiving message #9: hello there 9!
+
+		Communicated 10 messages successfully on rpmsg-char-3-738
 
 		TEST STATUS: PASSED
 
@@ -523,6 +603,36 @@ SDK wic image filesystem:
 		[ 4737.016515] rpmsg_client_sample virtio6.ti.ipc4.ping-pong.-1.13: goodbye!
 		[ 4737.023296] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
 		[ 4737.031630] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: goodbye!
+
+.. ifconfig:: CONFIG_part_variant in ('J7200')
+
+	::
+
+		root@j7200-evm:~# modprobe rpmsg_client_sample count=10
+		[  700.542444] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: new channel: 0x401 -> 0xd!
+		[  700.550889] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: new channel: 0x401 -> 0xd!
+		[  700.559291] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 1 (src: 0xd)
+		[  700.568127] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 1 (src: 0xd)
+		[  700.578876] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 2 (src: 0xd)
+		[  700.587202] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 2 (src: 0xd)
+		[  700.595498] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 3 (src: 0xd)
+		[  700.603788] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 3 (src: 0xd)
+		[  700.612057] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 4 (src: 0xd)
+		[  700.620334] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 4 (src: 0xd)
+		[  700.628596] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 5 (src: 0xd)
+		[  700.636867] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 5 (src: 0xd)
+		[  700.645167] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 6 (src: 0xd)
+		[  700.653458] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 6 (src: 0xd)
+		[  700.661770] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 7 (src: 0xd)
+		[  700.670075] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 7 (src: 0xd)
+		[  700.678365] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 8 (src: 0xd)
+		[  700.686656] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 8 (src: 0xd)
+		[  700.694949] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 9 (src: 0xd)
+		[  700.703249] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 9 (src: 0xd)
+		[  700.711540] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
+		[  700.719918] rpmsg_client_sample virtio0.ti.ipc4.ping-pong.-1.13: goodbye!
+		[  700.726733] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: incoming msg 10 (src: 0xd)
+		[  700.735092] rpmsg_client_sample virtio2.ti.ipc4.ping-pong.-1.13: goodbye!
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
