@@ -151,13 +151,11 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
 
            $ git clone https://git.ti.com/git/arago-project/oe-layersetup.git tisdk
            $ cd tisdk
-           $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-08.06.00-config.txt
+           $ ./oe-layertool-setup.sh -f configs/processor-sdk/processor-sdk-09.00.00-config.txt
            $ cd build
            $ . conf/setenv
-           $ export TOOLCHAIN_PATH_ARMV7=$HOME/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf
-           $ export TOOLCHAIN_PATH_ARMV8=$HOME/gcc-arm-9.2-2019.12-x86_64-aarch64-none-linux-gnu
-           $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-           $ export TI_SECURE_DEV_PKG_K3=`pwd`/core-secdev-k3
+           $ export TOOLCHAIN_PATH_ARMV7=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
+           $ export TOOLCHAIN_PATH_ARMV8=$HOME/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
            $ MACHINE=<machine> bitbake -k tisdk-default-image
 
        Your tisdk-default-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.    
