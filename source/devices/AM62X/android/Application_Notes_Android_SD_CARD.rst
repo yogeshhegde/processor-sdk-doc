@@ -17,19 +17,20 @@ Apply this patch in U-boot source code:
 
     ::
 
-        diff --git a/configs/am62x_evm_a53_defconfig b/configs/am62x_evm_a53_defconfig
-        index 51f7ea5ab9..aa7f7372d0 100644
-        --- a/configs/am62x_evm_a53_defconfig
-        +++ b/configs/am62x_evm_a53_defconfig
-        @@ -96,7 +96,7 @@ CONFIG_USB_FUNCTION_FASTBOOT=y
+        diff --git a/configs/am62x_android_a53.config b/configs/am62x_android_a53.config
+        index fc949f65d7fe..d50952557192 100644
+        --- a/configs/am62x_android_a53.config
+        +++ b/configs/am62x_android_a53.config
+        @@ -5,7 +5,7 @@ CONFIG_USB_FUNCTION_FASTBOOT=y
         CONFIG_FASTBOOT_BUF_ADDR=0xC0000000
         CONFIG_FASTBOOT_BUF_SIZE=0x2F000000
         CONFIG_FASTBOOT_FLASH=y
         -CONFIG_FASTBOOT_FLASH_MMC_DEV=0
         +CONFIG_FASTBOOT_FLASH_MMC_DEV=1
         CONFIG_FASTBOOT_CMD_OEM_FORMAT=y
-        CONFIG_TI_SCI_PROTOCOL=y
-        CONFIG_DM_I2C=y
+        # Enable Android boot flow
+        CONFIG_SYS_MALLOC_LEN=0x08000000
+
 
 Build U-Boot
 ------------
@@ -46,7 +47,7 @@ Go in your Android environment then rebuild with ``TARGET_SDCARD_BOOT=true`` bui
 
     ::
 
-        cd ${YOUR_PATH}/ti-aosp-12
+        cd ${YOUR_PATH}/ti-aosp-13
         lunch <BUILD_TARGET>
         m TARGET_SDCARD_BOOT=true
 
@@ -76,7 +77,7 @@ Flashing SD Card
 
         # If you are using binaries built locally
         cd out/target/product/am62x
-        sudo ./flashall.sh --sdcard="/dev/sdX"
+        sudo ./flashall.sh --board="am62x-sk" --sdcard="/dev/sdX"
 
 **flashall.sh script print in your console instruction to do**
 

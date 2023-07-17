@@ -25,17 +25,6 @@ LPM demo is only possible with cut-down dtb: k3-am625-sk-lpmdemo.dtb.
 **Steps to switch to LPM DT:**
 
 #. Setup an `Android kernel build system <../../../android/Overview_Building_the_SDK.html#kernel>`_  and `Android build system <../../../android/Overview_Building_the_SDK.html#android-file-system>`_ 
-#. Edit ``common/arch/arm64/boot/dts/ti/k3-am625-sk-lpmdemo.dts`` and remove :
-
-	.. code-block:: bash
-
-			firmware {
-				optee {
-					status = "disabled";
-				};
-			};
-
-#. Rebuild kernel, follow this `step <../../../android/Overview_Building_the_SDK.html#rebuilding-incrementally>`_
 
 #. Edit android build system
 
@@ -43,19 +32,6 @@ LPM demo is only possible with cut-down dtb: k3-am625-sk-lpmdemo.dtb.
 
 	.. code-block:: bash
 
-		diff --git a/build/tasks/dtimages.mk b/build/tasks/dtimages.mk
-		index 1ed79b08d9ed..77497a4007ab 100644
-		--- a/build/tasks/dtimages.mk
-		+++ b/build/tasks/dtimages.mk
-		@@ -13,7 +13,7 @@ DTBIMAGE := $(PRODUCT_OUT)/dtb.img
-
-		# Please keep this list fixed: add new files in the end of the list
-		DTB_FILES := \
-		-       $(LOCAL_DTB)/k3-am625-sk.dtb \
-		+       $(LOCAL_DTB)/k3-am625-sk-lpmdemo.dtb \
-				$(LOCAL_DTB)/k3-am62x-lp-sk.dtb
-
-		$(DTBIMAGE): $(DTB_FILES)
 		diff --git a/device.mk b/device.mk
 		index 686e3dbd99b2..d638ecd99390 100644
 		--- a/device.mk

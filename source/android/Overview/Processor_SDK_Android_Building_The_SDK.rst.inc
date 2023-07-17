@@ -3,7 +3,7 @@ Building the SDK
 ********************************************
 
 Build PC Setup
-===============
+==============
 
 Please refer to the following pages from Android documentation to setup your environment for Android build:
 
@@ -39,7 +39,7 @@ Downloading Sources
 
     ::
 
-        mkdir ~/08_06_00 && cd $_
+        mkdir ~/09_00_00 && cd $_
         export YOUR_PATH=$PWD
 
 Bootloader components
@@ -50,25 +50,27 @@ Bootloader components
     ::
 
         mkdir ${YOUR_PATH}/ti-bootloader-aosp/ && cd $_
-        git clone -b 08.06.00.007 git://git.ti.com/k3-image-gen/k3-image-gen.git
         git clone -b 08.06.00.007 git://git.ti.com/atf/arm-trusted-firmware.git
-        git clone -b 08.06.00.007-android git://git.ti.com/optee/ti-optee-os.git
-        git clone -b 08.06.00.007-android git://git.ti.com/ti-u-boot/ti-u-boot.git
-        git clone -b 08.06.00.007 git://git.ti.com/processor-firmware/ti-linux-firmware.git
-        git clone -b 08.06.00.007 git://git.ti.com/security-development-tools/core-secdev-k3.git
+        git clone -b 3.22.0-rc1 https://github.com/OP-TEE/optee_os.git
+        git clone -b 09.00.00.007-android git://git.ti.com/ti-u-boot/ti-u-boot.git
+        git clone -b 09.00.00.007 git://git.ti.com/processor-firmware/ti-linux-firmware.git
 
 Kernel
 ------
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    Fetch the code using ``repo``:
-
-    ::
+    Fetch the code using ``repo``::
 
         mkdir ${YOUR_PATH}/ti-kernel-aosp/ && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_06_Kernel.xml
+        repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_00_Kernel.xml
         repo sync
+
+    .. note::
+
+        To save same disk space, pass the ``--depth=1`` option to ``repo init``::
+
+            repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_00_Kernel.xml --depth=1
 
 
 Android File System
@@ -76,20 +78,10 @@ Android File System
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    Fetch the code using ``repo``:
+    Fetch the code using ``repo``::
 
-    ::
-
-        mkdir ${YOUR_PATH}/ti-aosp-12 && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_06.xml
-        repo sync
-
-    To get the SDK 8.6a patch release use the below manifest
-
-    ::
-
-        mkdir ${YOUR_PATH}/ti-aosp-12 && cd $_
-        repo init -u git://git.ti.com/android/manifest.git -b android12-core-release -m releases/RLS_08_06a.xml
+        mkdir ${YOUR_PATH}/ti-aosp-13 && cd $_
+        repo init -u git://git.ti.com/android/manifest.git -b android13-release -m releases/RLS_09_00.xml
         repo sync
 
 
@@ -110,46 +102,48 @@ Bootloader components
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    1. Build tiboot3.bin
-
-    ::
-
-        export TI_SECURE_DEV_PKG="${YOUR_PATH}/core-secdev-k3"
-        cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- am62x_evm_r5_defconfig O=/tmp/r5
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- O=/tmp/r5
-        cd ${YOUR_PATH}/ti-bootloader-aosp/k3-image-gen
-        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am62x SOC_TYPE=gp CONFIG=evm SBL=/tmp/r5/spl/u-boot-spl.bin SYSFW_PATH=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware/ti-sysfw/ti-fs-firmware-am62x-gp.bin
-
-    Use the tiboot3.bin generated from last command in ${YOUR_PATH}/ti-bootloader-aosp/k3-image-gen
-
-    .. note::
-
-        To build tiboot3 for HS-FS board change ``SOC_TYPE=gp`` by ``SOC_TYPE=hs-fs`` in make command
-
-    2. Build tispl.bin and u-boot.img
-
-    In order to build tispl.bin and u-boot.img, OPTEE and ATF (arm trusted firmware) need to be built.
+    1. Build ATF
 
     ::
 
         cd ${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware
-        make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=lite SPD=opteed CFLAGS+="-DK3_PM_SYSTEM_SUSPEND=1"
+        make E=0 CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=lite SPD=opteed CFLAGS+="-DK3_PM_SYSTEM_SUSPEND=1"
+
+    2. Build OPTEE-OS
+
+    ::
+
         cd ${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os
         make PLATFORM=k3 CFG_ARM64_core=y CROSS_COMPILE=arm-none-linux-gnueabihf- CROSS_COMPILE64=aarch64-none-linux-gnu-
 
-    It is now possible to generate tispl.bin and u-boot.img.
+    3. Build tiboot3.bin
 
     ::
 
         cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
-        make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am62x_evm_a53_defconfig O=/tmp/a53
-        make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- ATF=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin TEE=${YOUR_PATH}/ti-bootloader-aosp/ti-optee-os/out/arm-plat-k3/core/tee-pager_v2.bin DM=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware/ti-dm/am62xx/ipc_echo_testb_mcu1_0_release_strip.xer5f O=/tmp/a53
+        make ARCH=arm am62x_evm_r5_defconfig
+        make ARCH=arm CROSS_COMPILE=arm-none-linux-gnueabihf- \
+             BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
 
-    Use tispl.bin and u-boot.img located in /tmp/a53
+    4. Build tispl.bin and u-boot.img
 
-    3. Copy the tiboot3.bin, tispl.bin and u-boot.img generated in steps 1 and 2 to ``${YOUR_PATH}/ti-aosp-12/vendor/ti/am62x/bootloader``. If not copied, the prebuilt bootloader binaries already present in vendor/ti/am62x/bootloader will get use by flashall.sh flashing script.
+    ::
 
+        cd ${YOUR_PATH}/ti-bootloader-aosp/ti-u-boot/
+        make ARCH=arm am62x_evm_a53_defconfig
+        make ARCH=arm am62x_android_a53.config
+        make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- \
+            BL31=${YOUR_PATH}/ti-bootloader-aosp/arm-trusted-firmware/build/k3/lite/release/bl31.bin \
+            TEE=${YOUR_PATH}/ti-bootloader-aosp/optee_os/out/arm-plat-k3/core/tee-pager_v2.bin \
+            BINMAN_INDIRS=${YOUR_PATH}/ti-bootloader-aosp/ti-linux-firmware
+
+    5. Copy the tiboot3.bin, tispl.bin and u-boot.img generated in steps 3 and 4 to ``${YOUR_PATH}/ti-aosp-13/vendor/ti/am62x/bootloader``. If not copied, the prebuilt bootloader binaries already present in vendor/ti/am62x/bootloader will get use by flashall.sh flashing script.
+
+    .. note ::
+        To Build bootloaders for AM62X LP Board please do same step with this defconfig:
+
+            - For step 3 use ``am62x_lpsk_r5_defconfig``
+            - For step 4 use ``am62x_lpsk_a53_defconfig`` with same fragment
 
 Kernel
 ------
@@ -162,37 +156,36 @@ Building everything from scratch
     ::
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
-        export DIST_DIR=${YOUR_PATH}/ti-aosp/device/ti/am62x-kernel/kernel/5.10
-        export BUILD_CONFIG=./common/build.config.ti
-        build/build.sh
+        export DIST_DIR=${YOUR_PATH}/ti-aosp-13/device/ti/am62x-kernel/kernel/6.1
+        tools/bazel run --lto=full //common:ti_dist -- --dist_dir=$DIST_DIR
 
-Rebuilding incrementally
-~~~~~~~~~~~~~~~~~~~~~~~~
+    .. note:: 
 
-Add the ``SKIP_MRPROPER=1`` flag:
+        Android move on Kleaf bazel build system, AOSP documentation can be read `here <https://source.android.com/docs/setup/build/building-kernels?hl=fr>`__ and Kleaf documentatation `here  <https://android.googlesource.com/kernel/build/+/refs/heads/main/kleaf/README.md>`__
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
-
-    ::
-
-        $ cd ${YOUR_PATH}/ti-kernel-aosp/
-        $ export DIST_DIR=${YOUR_PATH}/ti-aosp/device/ti/am62x-prebuilts/kernel/5.10
-        $ export BUILD_CONFIG=./common/build.config.ti
-        $ export SKIP_MRPROPER=1
-        $ build/build.sh
-
-Defconfig/menuconfig changes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The usual (``make menuconfig`` ) is done via ``config.sh``:
+Rebuilding faster
+~~~~~~~~~~~~~~~~~
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
     ::
 
         cd ${YOUR_PATH}/ti-kernel-aosp/
-        export BUILD_CONFIG=./common/build.config.ti
-        build/config.sh
+        export DIST_DIR=${YOUR_PATH}/ti-aosp-13/device/ti/am62x-kernel/kernel/6.1
+        tools/bazel run --config=fast //common:ti_dist -- --dist_dir=$DIST_DIR
+
+
+Defconfig/menuconfig changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The usual (``make menuconfig`` ) is done via `bazel`` command :
+
+.. ifconfig:: CONFIG_part_variant in ('AM62X')
+
+    ::
+
+        cd ${YOUR_PATH}/ti-kernel-aosp/
+        tools/bazel run //common:ti_config -- menuconfig
 
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
@@ -201,21 +194,6 @@ The usual (``make menuconfig`` ) is done via ``config.sh``:
            Users must have built the android kernel image prior to building the Android file system.
            Otherwise pre-built Kernel images present in ``device/ti/am62x-kernel`` will be used to create ``boot.img``
 
-Building the kernel without Android project code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Download and extract the prebuilt binaries following : :ref:`android-prebuilts` and start building the kernel by running the following commands.
-
-    ::
-
-        cd ${YOUR_PATH}/ti-kernel-aosp/
-        export BUILD_CONFIG=./common/build.config.ti
-        export PREBUILT_BOOTIMG=<PATH/TO/ANDROID/PREBUILT/BINARIES/boot.img>
-        build/build.sh
-
-The new boot image will be located in ``${YOUR_PATH}/ti-kernel-aosp/out/android13-5.10/``
-
-Please refer to : :ref:`android-flash_boot_image` to flash the new kernel.
 
 Android File System
 -------------------
@@ -224,7 +202,7 @@ Android File System
 
     ::
 
-        cd ${YOUR_PATH}/ti-aosp-12
+        cd ${YOUR_PATH}/ti-aosp-13
         lunch <BUILD_TARGET>
         m
 
@@ -237,10 +215,6 @@ AM62X-SK Tablet userdebug       ``am62x-userdebug``
 AM62X-SK Tablet user            ``am62x-user``
 AM62X-SK Car userdebug          ``am62x_car-userdebug``
 AM62X-SK Car user               ``am62x_car-user``
-AM62X-LP-SK Tablet userdebug    ``am62x_lp-userdebug``
-AM62X-LP-SK Tablet user         ``am62x_lp-user``
-AM62X-LP-SK Car userdebug       ``am62x_lp_car-userdebug``
-AM62X-LP-SK Car user            ``am62x_lp_car-user``
 ============================= ============================
 
 .. note::
@@ -251,13 +225,8 @@ AM62X-LP-SK Car user            ``am62x_lp_car-user``
     For userdebug images if you want to enable AVB feature you need to build with ``TARGET_AVB_ENABLE=true`` build args
     ::
 
-        cd ${YOUR_PATH}/ti-aosp-12
+        cd ${YOUR_PATH}/ti-aosp-13
         lunch <BUILD_TARGET>
         m TARGET_AVB_ENABLE=true
-
-.. note::
-   Follow this link if you want to build and test in `Android Generic Kernel Image mode`_.
-
-.. _Android Generic Kernel Image mode: ../devices/AM62X/android/Application_Notes_GKI_support.html
 
 **After building all components, refer to instruction in next section for flashing the images to EVM**

@@ -22,15 +22,15 @@ status for all packages included in this release. The manifest can be
 found on the SDK download page.
 
 
-Release 08.06.00
+Release 09.00.00
 ================
 
-Released on February 2023
+Released on July 2023
 
 What's new
 ----------
 
-* This is a Android 12 based release of Processor SDK Android
+* This is a Android 13 based release of Processor SDK Android
 
 
 Release Features
@@ -41,13 +41,12 @@ Following features are enabled/tested in this release for AM62x Android:
 * **Boot:** eMMC boot, fastboot based flashing, A/B partition
 * **Security:** Keymaster and gatekeeper implementaton with OP-TEE
 * **Platform:** SELinux Enforced mode with User build, ADB over USB
-* **Connectivity:** Ethernet and Wi-Fi (WiLink) support, USB touch
+* **Connectivity:** Ethernet, USB touch
 * **Graphics:** GPU accelerated UI with Hwcomposer
 * **Audio:** HDMI Output and Jack Audio Output/Input
 * **Multimedia:** SW Video Decode/Encode, USB Camera Supported
 * **Android Baseport:** Support of Generic System Image, 
 * **Display:** Support for LVDS panel and dual display (mirroring and extended)
-* **Power:** LPM demo using rtcwake
 
 SDK Components and Versions
 ---------------------------
@@ -55,33 +54,20 @@ SDK Components and Versions
 +------------------------------------+-------------------------------------------------------------------------------+
 | **Component**                      |  **Version**                                                                  |
 +====================================+===============================================================================+
-| **Android**                        | Android 12 / Android 12 Car                                                   |
+| **Android**                        | Android 13 / Android 13 Car                                                   |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Linux Kernel**                   | Linux 5.10.168                                                                |
+| **Linux Kernel**                   | Linux 6.1.25                                                                  |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Linux Kernel Toolchain**         | clang-r450784e                                                                |
+| **Linux Kernel Toolchain**         | clang-r487747c                                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **U-boot**                         | 2021.01                                                                       |
+| **U-boot**                         | 2023.04                                                                       |
 +------------------------------------+-------------------------------------------------------------------------------+
 | **GCC Toolchain**                  | GNU Toolchain for the A-profile Architecture 9.2-2019.12 (arm-9.10)           |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 08.06.07                                            |
+| **Base Linux SDK**                 | PROCESSOR-SDK-LINUX-AM62X 09.00.07                                            |
 +------------------------------------+-------------------------------------------------------------------------------+
-| **Hardware Supported**             | AM62X-SK / AM62X-LP                                                           |
+| **Hardware Supported**             | AM62X-SK / AM62X-LP / AM62B-P1                                                |
 +------------------------------------+-------------------------------------------------------------------------------+
-
-Release 08.06.00a Patch Release
--------------------------------
-
-A patch release has been made on top of SDK 8.6 that brings in below updates:
-
-* CSI Camera preview feature
-* Regression fix for Car UI build and Low Power Mode
-
-All the changes are only in userspace components. Kernel and U-boot remain the same as SDK 8.6.
-To get this update, use the alternate manifest file mentioned in section `Downloading Sources`_
-
-.. _Downloading Sources: ../../../android/Overview_Building_the_SDK.html#android-file-system
 
 Documentation
 =============
@@ -108,6 +94,8 @@ Known Issues
 | **Issues**     |  **Description**                                                              |
 +================+===============================================================================+
 | **SITSW-1387** | Mcasp: Buffer underflow console messages seen                                 |
++----------------+-------------------------------------------------------------------------------+
+| **SITSW-2774** | AM62x: Android: LPM Not functional                                            |
 +----------------+-------------------------------------------------------------------------------+
 | **SITSW-1386** | Some commands don't work from native console, but works via adb shell         |
 +----------------+-------------------------------------------------------------------------------+

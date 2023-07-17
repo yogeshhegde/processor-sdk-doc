@@ -1,188 +1,177 @@
+
 ********************************************
 Flashing Instruction
 ********************************************
 
-SD Card Creation
-=============================
-
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-    In order to flash the AM62X board's eMMC the fist time, a SD card containing the required bootloaders will have to be used
-    to boot into uboot and use fastboot.
+    DFU Recovery
+    ============
 
-Partitioning the SD card
-------------------------
+    It's possible to put the AM62x SK EVM in USB DFU mode, which allows
+    loading bootloaders over DFU. This is done via the ``snagboot`` tool.
 
-The SD card has to be partitioned using fdisk and the layout should look like as follow:
+    This is useful for initial flashing or recoverying boards which have broken
+    bootloaders.
 
-::
+    Installation and setup
+    ----------------------
 
-    Disk /dev/sda: 30,2 GiB, 32227983360 bytes, 62945280 sectors
-    Disk model: Storage Device  
-    Units: sectors of 1 * 512 = 512 bytes
-    Sector size (logical/physical): 512 bytes / 512 bytes
-    I/O size (minimum/optimal): 512 bytes / 512 bytes
-    Disklabel type: dos
-    Disk identifier: 0x36c2ba10
+    Install snagboot following the `official instructions <https://github.com/bootlin/snagboot>`_
 
-    Device     Boot  Start      End  Sectors   Size Id Type
-    /dev/sda1  *      2048   272919   270872 132,3M  c W95 FAT32 (LBA)
+    .. note::
 
-Formatting the SD card partitions
----------------------------------
+        Snagboot requires at least Python 3.8, meaning that it can't run on Ubuntu 18.04 releases.
+        If Snagboot cannot be installed, it's possible boot the initial bootloaders from an SD card.
 
-Once partitioned, the boot partition has to be formatted with a FAT filesystem.
+        Follow `Initial Flashing on SD card`_ if you encounter issues with Snagboot.
 
-Assuming the SD card is /dev/sda:
+    .. _Initial Flashing on SD card: ../devices/AM62X/android/Application_Notes_Android_Bootloader_SD_Card.html
 
-::
 
-    mkfs.vfat /dev/sda1
+    eMMC flashing
+    ==============
 
-Copying the required bootloaders
---------------------------------
+    Flashing instructions
+    ---------------------
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+    Once the build is complete, follow the steps below to flash the images to eMMC.
 
-    Once the SD card has been partitioned and formatted, copy the required binaries onto the newly formatted SD partition, either the pre-built ones located 
-    in your Android source folder in ``vendor/ti/am62x/bootloader`` or the ones you generated following the build instructions step in the next section.
+    Procedure is for the pre-built images from SDK download page is used 
 
-These binaries are also present in the pre-built binaries tarball on the SDK download page.
+        .. Image:: ../images/am62x_sk_evm_setup.jpg
 
-::
+    1. Change the Boot Mode DIP switches to DFU mode.
 
-    tiboot3.bin  tispl.bin  u-boot.img
+        ::
 
-eMMC flashing
-==============
+            Boot mode DIP Switch:
+            SW1: 11001010 SW2: 00000000
 
-Flashing instructions
----------------------
+    2. Ensure the device is plugged in with USB Host and Debug UART/Serial Debug
 
-Once the build is complete, follow the steps below to flash the images to eMMC.
-Use the SD card created in previous step to get started.
+    3. Open a terminal debugger to view console output from the device:
 
-Procedure is same whether the pre-built images from SDK download page is used or
-the images are built from source.
+        ::
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+            sudo picocom -b 115200 -r -l /dev/ttyUSB0
 
-    .. Image:: ../images/am62x_sk_evm_setup.jpg
+    4. run ``snagrecover`` for host
 
-1. Change the Boot Mode DIP switches to SD card boot mode.
+        ::
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+            snagrecover -s am625 -f ./am62x-sk-evm.yaml
 
-    ::
 
-        Boot mode DIP Switch:
-        SW1: 11000010 SW2: 01000000
+        In the serial console, you will see:
 
-2. Ensure the device is plugged in with USB Host and Debug UART/Serial Debug
+        ::
 
-3. Boot the board with tiboot3.bin, u-boot.img, tispl.bin files in
-boot partition of SD card.
+            SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+            SPL initial stack usage: 1856 bytes
+            Trying to boot from DFU
 
-4. Open a terminal debugger to view console output from the device:
 
-::
+    .. note::
 
-    sudo picocom -b 115200 -r -l /dev/ttyUSB0
+        For AM62x LP variant, or HS-FS boards, edit ``am62x-sk-evm.yaml`` :
 
-5. Stop at u-boot console (interrupt the autoboot countdown) and do below commands to setup Android
-partition table
+            .. code:: yaml
 
-::
+                tiboot3:
+                    # for LP boards, use:
+                    path: tiboot3-am62x-lp-sk-dfu.bin
+                    # for LP with HS-FS:
+                    # path: tiboot3-am62x-lp-sk-dfu-hsfs.bin
+                    # for HS-FS:
+                    # path: tiboot3-am62x-sk-dfu-hsfs.bin
+                tispl:
+                    # For LP boards, use:
+                    path: tispl-am62x-lp-sk-dfu.bin
+                u-boot:
+                    # For LP boards, use:
+                    path: u-boot-am62x-lp-sk-dfu.img
 
-    env default -f -a
-    run set_android_boot
 
+    5. Setup default U-Boot environment
 
-.. warning::
-    For AM62X-LP SK EVM board u-boot due to a bug in u-boot env you need to do this command in u-boot console:
-    ::
+    .. _step_5_flashing_instructions:
 
-        setenv bootcmd "run distro_bootcmd"; saveenv;
+        Type ``Ctrl-C`` in the serial console to continue to U-Boot.
+        From there, we can run fastboot to recover with:
 
-.. note::
-    If you build with `TARGET_AVB_ENABLE=true` or flash User Images you need to do this command in uboot console:
-    ::
+        ::
 
-        setenv force_avb "1"
-.. note::
+            =>  env default -f -a; saveenv;
 
-    By default No Device-Tree Overlays was selected. Please follow this link to set a `Device Tree Overlays`_
+    .. note::
+        If you build with `TARGET_AVB_ENABLE=true` or flash User Images you need to do this command in uboot console:
+        ::
 
-.. _Device Tree Overlays: ../devices/AM62X/android/Application_Notes_dtbo_support.html
+            => setenv force_avb "1"; saveenv;
 
+    .. note::
 
-6. Power cycle the board one more time and stop at u-boot console again.
+        By default No Device-Tree Overlays was selected. Please follow this link to set a `Device Tree Overlays`_
 
-7. Enable fastboot mode on the device through the terminal debugger by executing below command. Before running this command make sure USB-C
-cable is connected from the host PC to the EVM.
+    .. _Device Tree Overlays: ../devices/AM62X/android/Application_Notes_dtbo_support.html
 
-::
+    6. Enable fastboot mode on the device through the terminal debugger by executing below command. Before running this command make sure USB-C cable is connected from the host PC to the EVM.
 
-    => fastboot 0
+        ::
 
-8. From the host PC run the ``flashall.sh`` script to start flashing the bianries to eMMC
+            => fastboot 0
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+    7. From the host PC run the ``flashall.sh`` script to start flashing the binaries to eMMC
 
-    ::
+        ::
 
-        # If you are using binaries built locally
-        cd out/target/product/am62x
-        sudo ./flashall.sh
+            # If you are using binaries built locally
+            cd out/target/product/am62x
+            sudo ./flashall.sh --board am62x-sk
 
-        (OR)
+            (OR)
 
-        # If you are using pre-built binaries from SDK download page
-        cd AM62x_08.06.00_emmc
-        sudo ./flashall.sh
+            # If you are using pre-built binaries from SDK download page
+            cd AM62x_09.00.00_emmc
+            sudo ./flashall.sh --board am62x-sk
 
-.. note::
+    .. note::
+        To flash AM62X-LP board you should do:
+        ::
 
-    To Flash HS-FS board use flash script with '--hsfs' arg.
-    ::
-    
-        sudo ./flashall.sh --hsfs
+            sudo ./flashall.sh --board am62x-lp-sk
 
-9. Once the flashing is complete, power off the board and remove the SD card.
+    .. note::
 
-10. Change Boot mode DIP switches to boot from eMMC user partitions and power cycle the board:
+        To Flash HS-FS board use flash script with ``--hsfs`` arg.
+        For example::
 
-.. ifconfig:: CONFIG_part_variant in ('AM62X')
+            sudo ./flashall.sh --board am62x-sk --hsfs
 
-    ::
+    8. Once the flashing is complete, power off the board
 
-        Boot mode DIP Switch:
-        SW1: 11000010 SW2: 00000000
+    9. Change Boot mode DIP switches to boot from eMMC user partitions and power cycle the board:
 
-11. Board should boot the Android images now.
+        ::
 
-.. note::
+            Boot mode DIP Switch:
+            SW1: 11000010 SW2: 00000000
 
-    **For successful Android boot, HDMI display and an input device needs to be connected to the board before powering on the board.**
+    10. Board should boot the Android images now.
 
-    Input device can be a mouse or HDMI display that has a USB touch. Input USB device connects to Type-A connector on the board.
+    Flashing the kernel
+    ===================
 
-|
+    In order to flash a new kernel, the new boot image should be flashed.
 
-.. _android-flash_boot_image:
+        ::
 
-Flashing the kernel
-===================
+            adb reboot bootloader
+            < Wait for bootloader reboot >
 
-In order to flash a new kernel, the new boot image should be flashed.
+            cd <PATH/TO/BOOT/IMAGE>
+            fastboot flash boot boot.img
+            fastboot reboot
 
-    ::
-
-        adb reboot bootloader
-        < Wait for bootloader reboot >
-
-        cd <PATH/TO/BOOT/IMAGE>
-        fastboot flash boot boot.img
-        fastboot reboot
-
-The board should boot with the new kernel build.
+    The board should boot with the new kernel build.
