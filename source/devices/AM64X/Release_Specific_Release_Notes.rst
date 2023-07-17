@@ -71,7 +71,10 @@ U-Boot
 | Clone: git://git.ti.com/ti-u-boot/ti-u-boot.git
 | Branch: ti-u-boot-2023.04
 | uBoot Tag: 09.00.00.006
-|
+
+| Compiler Information:
+| - arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
+| - arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
 
 
 Kernel
@@ -89,7 +92,10 @@ Kernel
 | Tag: 09.00.00.006
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config
-|
+
+| Compiler Information:
+| - arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
+| - arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
 
 .. rubric:: Real Time (RT) Linux Kernel
    :name: real-time-rt-linux-kernel
@@ -104,7 +110,10 @@ Kernel
 | Tag: 09.00.00.006-rt
 | use-kernel-config=defconfig
 | config-fragment=kernel/configs/ti_arm64_prune.config kernel/configs/ti_rt.config
-|
+
+| Compiler Information:
+| - arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu
+| - arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf
 
 
 Yocto
