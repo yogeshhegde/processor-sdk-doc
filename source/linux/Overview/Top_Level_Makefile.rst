@@ -472,7 +472,7 @@ the Makefile from the top-level of the SDK.
 
     ::
 
-        host# u-boot-r5
+        host# make u-boot-r5
 
     - Copy boot-binaries to built-images folder
 
