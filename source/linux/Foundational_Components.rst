@@ -15,6 +15,7 @@ Foundational Components
    Foundational_Components_IPC
    Foundational_Components_IPC_J721S2
    Foundational_Components_IPC_J7200
+   Foundational_Components_IPC_J721E
    Foundational_Components_IPC62x
    Foundational_Components_IPC62ax
    Foundational_Components_IPC64x
