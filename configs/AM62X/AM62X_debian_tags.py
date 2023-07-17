@@ -4,8 +4,8 @@ fam_name = 'AM62X'
 # Project name and HTML title
 sdk_product = 'null' #todo: remove after the new structure is used for all device families
 
-project = u'Debian SDK for AM62x'
-html_title = 'Debian SDK AM62x Documentation'
+project = u'Debian for AM62x'
+html_title = 'Debian AM62x Documentation'
 
 # The master toctree document.
 master_doc = 'debian/index'
