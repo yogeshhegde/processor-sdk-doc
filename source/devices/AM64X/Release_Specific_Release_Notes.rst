@@ -51,7 +51,7 @@ What's new
 
 **Processor SDK 9.0 Sitara Release has following Major Updates**
 
-  * LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Dunfell 4.0
+  * LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Kirkstone 4.0
   * Binman Migration
   * HS-FS Default Boot Experience for AM64
   * Graphics: Weston 10 and DDK 23.1 Upgrade
