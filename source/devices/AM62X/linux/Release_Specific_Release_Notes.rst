@@ -46,13 +46,24 @@ What's new
 
 Processor SDK Linux AM62x Release has following new features:
 
-- Support for GP, HS-FS, HS-SE with default Boot Experience on HS-FS
-- Uboot: M4 Early boot, GPMC NAND (on SK LP)
-- Kernel: Low Power Deep Sleep mode, CPUIdle on GP
-- Kernel: RS485, mCRC, Dual Display
-- IPC: A53 --> DM R5
-- SA2UL with OPTEE TRNG
-- TSN Network configuration support using netconf / YANG
+- New improved OOB experience
+- Jailhouse Hypervisor with various use-cases
+- SEVA store (Demo store/Apps Gallery)
+- Debian distribution
+- Kirkstone filesystem on Yocto based distribution
+- Binman Migration across all K3 platforms for Uboot builds
+- HS-FS Default Boot Experience for AM62x
+- A53 Early Splash-Screen
+- Low Power: Deep Sleep on HS-FS, MCU Only mode and more wakeup sources
+
+Major Refresh of component version:
+
+- Kernel 6.1
+- U-Boot 2023.04
+- Toolchain GCC 11.2
+- ATF 2.8+
+- OPTEE 3.20
+- Graphics DDK 23.1
 
 Build Information
 =================
