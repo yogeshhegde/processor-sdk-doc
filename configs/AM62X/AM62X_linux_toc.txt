@@ -143,8 +143,8 @@ linux/How_to_Guides/FAQ/How_to_Integrate_Open_Source_Software
 linux/How_to_Guides_Hardware_Setup_with_CCS
 linux/How_to_Guides/Hardware_Setup_with_CCS/AM62x_EVM_Hardware_Setup
 
+system/Demo_User_Guides/TI_Apps_Launcher_User_Guide
 system/Demo_User_Guides/WiFi_OOB_Demo_User_Guide
-system/Demo_User_Guides/HMI_and_3D_Demo_User_Guide
 system/Demo_User_Guides/Seva_Store
 
 common/PRU-ICSS/Getting_Started_with_PSSP
