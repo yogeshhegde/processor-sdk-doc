@@ -26,5 +26,5 @@ Use below in place of <Config File>, to setup the meta layers for the current re
 +-------------------------------------+----------------------------------------------------+--------------------------------+
 |      Config File                    |                    Description                     | Supported machines             |
 +=====================================+====================================================+================================+
-| processor-sdk-linux-08_06_00.txt    | Processor SDK Linux 08_06_00 Release               | |__SDK_BUILD_MACHINE__|        |
+| processor-sdk-linux-09_00_00.txt    | Processor SDK Linux 09_00_00 Release               | |__SDK_BUILD_MACHINE__|        |
 +-------------------------------------+----------------------------------------------------+--------------------------------+
