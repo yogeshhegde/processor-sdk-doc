@@ -231,7 +231,7 @@ MCU M4 IPC based WAKEUP
 ======================
 
 It's possible to use IPC based wakeup events from the MCU M4. For details on how to implement this
-from the firmware side, please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/08_06_00_18/exports/docs/api_guide_am62x/index.html>`__.
+from the firmware side, please refer to the `MCU+ SDK Documentation <https://software-dl.ti.com/mcu-plus-sdk/esd/AM62X/09_00_00_19/exports/docs/api_guide_am62x/index.html>`__.
 
 .. note::
     The Linux SDK 09.00 release image MCU Firmware expects that if device enters MCU Only mode then it will wakeup

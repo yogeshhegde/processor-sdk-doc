@@ -27,12 +27,6 @@ Therefore, you must rebuild all binaries to use either hard-fp and
 soft-fp since you can't mix and match. By default, all binaries included
 in the |__SDK_FULL_NAME__| package will be built for hard-fp.
 
-The name of the toolchain binaries have also been updated from older
-versions of the SDK. Previous versions may have used a prefix of
-"**arm-arago-linux-gnueabi-**". Current SDK ARMv7 toolchains use a prefix of
-"**arm-linux-gnueabihf-**" For example, the new toolchain's gcc compiler
-is named **arm-linux-gnueabihf-gcc**.
-
 .. rubric:: Linux-Devkit Structure
    :name: linux-devkit-structure
 
@@ -52,15 +46,15 @@ Here is the structure of the Linux-devkit directory within the SDK.
    :name: location-in-sdk
 
 The toolchain is located in the Linux SDK in the **<SDK INSTALL
-DIR>/linux-devkit** directory. The following sections will cover the key
+DIR>/external-toolchain-dir** directory. The following sections will cover the key
 components of the toolchain.
 
 .. rubric:: Cross-Compilers/Tools
    :name: cross-compilerstools
 
-The cross-compilers and tools such as qmake2 can be found the the
-**<SDK INSTALL DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin** directory. Adding this
-directory to your PATH will allow using these tools. For example:
+The cross-compilers and tools such as qmake2 can be found in the
+**<SDK INSTALL DIR>/linux-devkit/sysroots/x86\_64-arago-linux/usr/bin** or **<SDK INSTALL DIR>/external-toolchain-dir** directories. Adding these
+directories to your PATH will allow using these tools. For example:
 
 ::
 
@@ -84,15 +78,13 @@ architectures found in Processor SDK.
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    +-----------------------+--------------+-------------------------------------------------------------------------+
-    | Toolchain Prefix      | Architecture | Processor SDK Device                                                    |
-    +-----------------------+--------------+-------------------------------------------------------------------------+
-    | arm-oe-linux-gnueabi- | ARMv5        | omapl138-lcdk                                                           |
-    +-----------------------+--------------+-------------------------------------------------------------------------+
-    | arm-linux-gnueabihf-  | ARMv7        | am335x-evm, am437x-evm, am57xx-evm, k2e-evm, k2g-evm, k2hk-evm, k2l-evm |
-    +-----------------------+--------------+-------------------------------------------------------------------------+
-    | aarch64-linux-gnu-    | ARMv8        | am65xx-evm                                                              |
-    +-----------------------+--------------+-------------------------------------------------------------------------+
+    +--------------------------+--------------+-------------------------------------------------------------------------+
+    | Toolchain Prefix         | Architecture | Processor SDK Device                                                    |
+    +--------------------------+--------------+-------------------------------------------------------------------------+
+    | arm-linux-gnueabihf-     | ARMv7        | am335x-evm, am437x-evm                                                  |
+    +--------------------------+--------------+-------------------------------------------------------------------------+
+    | aarch64-none-linux-gnu-  | ARMv8        | am65xx-evm, am62xx-evm, am62xx-lp-evm, am64xx-evm                       |
+    +--------------------------+--------------+-------------------------------------------------------------------------+
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 

@@ -49,7 +49,7 @@ Then run the script:
     recommended Ubuntu Long Term Support (LTS) distribution, if not it will
     exit. If the user is running on a different Ubuntu version or another
     Linux distribution, they are encouraged to modify the environment setup
-    script to match their distribution. The 18.04 version of Ubuntu is
+    script to match their distribution. The 22.04 version of Ubuntu is
     currently supported.
 
 .. rubric:: Detailed step by step description through the setup script

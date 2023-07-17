@@ -22,10 +22,10 @@ Replacement Variables
 '__SDK_INSTALL_FILE__'           : 'ti-processor-sdk-linux-am62xx-evm-<version>-Linux-x86-Install.bin'
 '__SDK_INSTALL_DIR__'            : 'ti-processor-sdk-linux-am62xx-evm-<version>'
 '__SDK_DOWNLOAD_URL__'           : '`AM62x-SDK-Download-page <https://www.ti.com/tool/PROCESSOR-SDK-AM62X>`__'
-'__LINUX_UBUNTU_VERSION_LONG__'  : '18.04 (64-bit)'
-'__LINUX_UBUNTU_VERSION_SHORT__' : '18.04'
+'__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
+'__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
 '__OPTEE_PLATFORM_FLAVOR__'      : 'am62x'
-'__RTOS_UBUNTU_VERSION_LONG__'   : '18.04 (64-bit), 16.04 (64-bit)'
+'__RTOS_UBUNTU_VERSION_LONG__'   : '22.04 (64-bit), 16.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '10 (64-bit)'
 '__FEATURINGMATRIX__'            : \
 '__SYSFW_CORE_NAME__'            : 'TIFS'

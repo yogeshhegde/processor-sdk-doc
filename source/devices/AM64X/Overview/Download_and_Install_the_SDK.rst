@@ -69,27 +69,36 @@ This AM64x Software development kit contains Linux device drivers, sample exampl
 application specific demos.  The SDK has the below folder structure
 
 
-+----------------------+---------------------------------------------------------+
-| **Folder Name**      | **Description**                                         |
-+----------------------+---------------------------------------------------------+
-| bin                  | set-up scripts, SD card image creation script           |
-|                      |                                                         |
-+----------------------+---------------------------------------------------------+
-| board-support        | Linux board supported packages (prebuilt-images, tools, |
-|                      | Linux kernel and u-boot in source)                      |
-+----------------------+---------------------------------------------------------+
-| docs                 | Manifest and License                                    |
-|                      |                                                         |
-+----------------------+---------------------------------------------------------+
-| filesystem           | Prebuilt Filesystems (both tar and wic images)          |
-|                      |                                                         |
-+----------------------+---------------------------------------------------------+
-| linux-devkit         | Linux development kit (tools, compilers etc.)           |
-|                      |                                                         |
-+----------------------+---------------------------------------------------------+
-| example-applications | Sample examples and application specific demos          |
-|                      | (GUI composer of benchmark demos)                       |
-+----------------------+---------------------------------------------------------+
++--------------------------+---------------------------------------------------------+
+| **Folder Name**          | **Description**                                         |
++--------------------------+---------------------------------------------------------+
+| bin                      | set-up scripts, SD card image creation script           |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| board-support            | Linux board supported packages (prebuilt-images, tools, |
+|                          | Linux kernel, u-boot, jailhouse in source)              |
++--------------------------+---------------------------------------------------------+
+| licenses                 | License files                                           |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| manifest                 | Manifest files                                          |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| filesystem               | Prebuilt Filesystems (tar images for am62xx-evm and     |
+|                          | am62xx-lp-evm)                                          |
++--------------------------+---------------------------------------------------------+
+| linux-devkit             | Linux development kit (tools, compilers etc.)           |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| external-toolchain-dir   | External GCC ARM 32-bit and 64-bit toolchains           |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| example-applications     | Sample examples and application specific demos          |
+|                          |                                                         |
++--------------------------+---------------------------------------------------------+
+| makerules                | Contains make rules for all the top level Makefile      |
+|                          | targets                                                 |
++--------------------------+---------------------------------------------------------+
 
 
 Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and further details
@@ -100,8 +109,8 @@ Refer :ref:`Release Notes <Release-note-label>` for complete feature-set and fur
 .. note::
    Processor SDK Linux AM64x contains only the Linux specific source and application intended   
    to runs on A53/Linux core. For R5F and RTOS/NO-RTOS side source and applications, refer **MCU+ SDK** 
-   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/index.html>`__.
+   package `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/index.html>`__.
 
 **Instructions to set-up CCS**
 
--  Refer `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/08_05_00_24/exports/docs/api_guide_am64x/CCS_SETUP_PAGE.html>`__
+-  Refer `[Use Link] <https://software-dl.ti.com/mcu-plus-sdk/esd/AM64X/latest/exports/docs/api_guide_am64x/CCS_SETUP_PAGE.html>`__
