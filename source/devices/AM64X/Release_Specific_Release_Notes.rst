@@ -54,8 +54,6 @@ What's new
   * LTS Refresh with Stable Kernel 6.1, U-boot 2023.04, Yocto Kirkstone 4.0
   * Binman Migration
   * HS-FS Default Boot Experience for AM64
-  * Graphics: Weston 10 and DDK 23.1 Upgrade
-  * Multimedia: Gstreamer v1.20.5 Upgrade
   * Bug Fixes and Stability Improvements
   * PRU-ICSSG: HSR Port-to-Port offload , Switch Mode, Multicast filtering in EMAC mode, Tx/Rx coalescing and Dump IET Statistic via ethtool
 
