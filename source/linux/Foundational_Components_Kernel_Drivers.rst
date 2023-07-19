@@ -48,3 +48,4 @@ Kernel Drivers
    Foundational_Components/Kernel/Kernel_Drivers/VPE
    Foundational_Components/Kernel/Kernel_Drivers/VTM
    Foundational_Components/Kernel/Kernel_Drivers/Watchdog
+   Foundational_Components/Kernel/Kernel_Drivers/E5010_JPEG_Encoder
