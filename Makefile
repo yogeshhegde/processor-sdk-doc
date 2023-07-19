@@ -75,7 +75,6 @@ clean:
 config:
 	mkdir -pv build
 	cat python-scripts/conf.py ${OS_CONF} ${TAGFILE} ${FAMILYSETUPFILE} > build/conf.py
-	cp sphinx_rtd_theme_ti/patch/layout.html sphinx_rtd_theme_ti/_themes/sphinx_rtd_theme_ti/layout.html
 
 html: 
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)

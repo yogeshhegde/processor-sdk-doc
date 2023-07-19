@@ -720,8 +720,6 @@ The picture below shows the software architecture of Graphics in
 
        target # /lib/modules/$(uname -r)/extra/pvrsrvkm.ko
 
-   It is loaded automatically by the rc.pvr init script in /etc/init.d/ .
-
 
 Graphics Demos
 ==============
@@ -1020,11 +1018,42 @@ which should show something like below:
 Wayland/Weston
 ==============
 
-The supported Wayland/Weston version brings in the multiple display
-support in extended desktop mode and the ability to drag-and-drop
-windows from one display to the other.
+The supported Wayland/Weston version brings in the multiple display support in
+extended desktop mode and the ability to drag-and-drop windows from one display
+to the other.
 
-To launch Weston, do the following:
+
+Starting Weston with Systemd
+----------------------------
+
+Starting with Weston 10, the preferred way to start Weston is with the
+``weston`` user using the systemd service. If you need to interact with this
+instance using any other user then make sure that user is in the ``wayland`` or
+``root`` group and direct them to interact with that instance using the global
+socket at ``/run/wayland-0``.
+
+This global socket is special in that it will automatically launch Weston when
+a GUI application attempts to connect to it. A profile script in
+``/etc/profile.d`` will automatically set the ``WAYLAND_DISPLAY`` environment
+variable if the user has sufficient permission to interact with the socket.
+
+To start the systemd service manually, do the following:
+
+::
+
+      target # systemctl start weston
+
+To inspect the systemd service and socket status, do the following:
+
+::
+
+      target # systemctl status weston.service weston.socket
+
+
+Starting Weston Manually
+------------------------
+
+To launch Weston manually, do the following:
 
 On the target console:
 
@@ -1125,7 +1154,7 @@ with:
 
 ::
 
-     target # /etc/init.d/weston stop
+     target # systemctl stop weston
 
 It is also possible to invoke Weston from the native console, exit
 Weston by pressing Ctrl-Alt-Backspace.
@@ -1149,12 +1178,11 @@ line).
     shell=ivi-shell.so
 
 After the above configuration is completed, we can restart Weston by
-running the following commands
+running the following command
 
 ::
 
-    target# /etc/init.d/weston stop
-    target# /etc/init.d/weston start
+    target # systemctl restart weston
 
 .. note:: When Weston starts with ivi-shell, the default background is
           black, this is different from the desktop-shell that brings up a window
