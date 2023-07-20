@@ -43,7 +43,7 @@ Documentation
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software
    included in the SDK release. This document is in the release at
-   ``[INSTALL-DIR]/docs``.
+   ``[INSTALL-DIR]/manifest``.
 -  **EVM Quick Start Guide**: Provides information on hardware setup and
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
