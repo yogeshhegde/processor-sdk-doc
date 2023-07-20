@@ -271,30 +271,43 @@ formats:
 Encoder and Decoder Capabilities
 ================================
 
-.. ifconfig:: CONFIG_part_variant in ('J721S2', 'AM62AX')
+.. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-   The Max Capability if the Encoder/Decoder is 4K60fps.
-.. code-block:: text
+   The Max Capability of the Encoder/Decoder is 4K60fps equivalent load.
 
-   Maximun instances supported is 32 (Encode/Decode/Encode+Decode).
-   Eg: MAX 32 can be
-   (16Enc + 16 Dec) OR (32 Enc) OR (32 Dec).
-   (32 Enc + 32 Dec) - Not possible
+   .. code-block:: text
+
+      Maximum instances supported is 32 (Encode/Decode/Encode+Decode).
+      Eg: MAX 32 can be
+      (16 Enc + 16 Dec) OR (32 Enc) OR (32 Dec).
+      (32 Enc + 32 Dec) - Not possible
 
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-   The Max Capability if the Encoder/Decoder is 2x4K60fps.
-.. code-block:: text
+   The Max Capability of the Encoder/Decoder is 2x4K60fps equivalent load.
 
-   Maximun instances supported is 64 (Encode/Decode/Encode+Decode).
-   Eg: MAX 64 can be
-   (32Enc + 32 Dec) OR (64 Enc) OR (64 Dec).
-   (64 Enc + 64 Dec) - Not possible
+   .. code-block:: text
 
- .. note::
+      Maximum instances supported is 64 (Encode/Decode/Encode+Decode).
+      Eg: MAX 64 can be
+      (32 Enc + 32 Dec) OR (64 Enc) OR (64 Dec).
+      (64 Enc + 64 Dec) - Not possible
+
+.. ifconfig:: CONFIG_part_variant in ('AM62AX')
+
+   The Max Capability of the Encoder/Decoder is 4K30fps equivalent load.
+
+   .. code-block:: text
+
+      Maximum instances supported is 32 (Encode/Decode/Encode+Decode).
+      Eg: MAX 32 can be
+      (16 Enc + 16 Dec) OR (32 Enc) OR (32 Dec).
+      (32 Enc + 32 Dec) - Not possible
+
+.. note::
 	    The number of instances is bound to the available CMA Memory.
 
-The supported external controls supported by Encoder and Decoder can be seen using below command.
+The external controls supported by Encoder and Decoder can be seen using below command.
 
 .. code-block:: text
 
@@ -310,10 +323,10 @@ GStreamer Pipelines
 .. code-block:: text
 
     H.264 encode:
-        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 ! v4l2h264enc ! filesink location=/<path_to_file>  sync=true
+        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h264enc ! filesink location=/<path_to_file>  sync=true
 
     H.265 encode:
-        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 ! v4l2h265enc ! filesink location=/<path_to_file>  sync=true
+        target # gst-launch-1.0 filesrc location=/<path_to_file>  ! rawvideoparse width=1920 height=1080 format=i420 framerate=30/1 colorimetry=bt709 ! v4l2h265enc ! filesink location=/<path_to_file>  sync=true
 
 .. code-block:: text
 
@@ -346,6 +359,12 @@ GStreamer Pipelines
 
    Client (streamin->decode->display :
       target $gst-launch-1.0 -v udpsrc port=5000 caps = "application/x-rtp, media=(string)video, clock-rate=(int)90000, encoding-name=(string)H264, payload=(int)96" ! rtpjitterbuffer latency=50 ! rtph264depay ! h264parse ! v4l2h264dec capture-io-mode=dmabuf ! queue ! fpsdisplaysink text-overlay=false name=fpssink video-sink="kmssink driver-name=tidss sync=true show-preroll-frame=false" sync=true -v
+
+.. note::
+
+   #.   In Encode testcases, "colorimetry" should be specified to avoid negotiation failures.
+      Eg: gst-launch-1.0 filesrc location=sample_1072.yuv blocksize=3087360 ! rawvideoparse width=1920 height=1072 framerate=30/1 format=nv12 colorimetry=bt709 ! v4l2h264enc ! h264parse ! fakesink
+
 
 Memory Requirement
 ===================
@@ -580,19 +599,21 @@ The CMA size can be increased or decreased depending on the requirement and the 
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_j721s2-evm_defconfig in the linux directory of sdk.The default value is 400MB.
-   The value can be increased according to the availability of space in DDR memory map.
-   The CMA memory size can be decreased if the memory requirement is of limited number of channels.
+   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_j721s2-evm_defconfig in the linux directory of sdk.The default value is 896MB.
 
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_am62axx-evm_defconfig in the linux directory of sdk.The default value is 512MB.
-   The value can be increased according to the availability of space in DDR memory map.
+   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_am62axx-evm_defconfig in the linux directory of sdk.The default value is 576MB.
 
+.. ifconfig:: CONFIG_part_variant in ('J784S4')
+
+   The macro that specifies the CMA size is CONFIG_CMA_SIZE_MBYTES present in the file arch/arm64/configs/tisdk_am62axx-evm_defconfig in the linux directory of sdk.The default value is 1792MB.
+
+
+The value can be increased according to the availability of space in DDR memory map.
 Also to change cma without re-compilation,  one can stop at u-boot prompt during bootup and update cma as below and then boot :
 
 .. code::
 
         target# setenv args_all $args_all cma=1000M
         target# boot
-
