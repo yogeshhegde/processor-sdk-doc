@@ -693,6 +693,28 @@ PCIe-NVMe-SSD
 
  
 
+J784S4-EVM
+"""""""""""""""""""""""""""
+
+
+
+
+.. csv-table::
+    :header: "Buffer size (bytes)","j784s4-evm: Write EXT4 Throughput (Mbytes/sec)","j784s4-evm: Write EXT4 CPU Load (%)","j784s4-evm: Read EXT4 Throughput (Mbytes/sec)","j784s4-evm: Read EXT4 CPU Load (%)"
+
+    "1m","1698.00","5.51","2461.00","2.61"
+    "4m","1733.00","6.21","2460.00","1.80"
+    "4k","184.00","12.61","285.00","12.55"
+    "256k","2113.00","7.18","2455.00","4.25"
+
+
+
+- Filesize used is: 10G
+- FIO command options: --ioengine=libaio --iodepth=4 --numjobs=1 --direct=1 --runtime=60 --time_based
+- Platform: Speed 8GT/s, Width x4
+- SSD being used: INTEL OPTANE SSD 900P
+
+
 
 J721E-IDK-GW
 """""""""""""""""""""""""""
