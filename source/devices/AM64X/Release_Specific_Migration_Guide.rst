@@ -17,7 +17,17 @@ Processor SDK 09.00
 - OPTEE 3.20
 - Yocto Kirkstone/4.0
 - Platforms Supported : AM64x 2.0 (HS-FS)
-- k3-image-gen and core-secdev-k3 are no longer needed for U-Boot build, new build flow can be seen :ref:`here <Build-U-Boot-label>`.
+
+.. note::
+
+    - For U-Boot builds, k3-image-gen and core-secdev-k3 are no longer needed
+      as **binman** is used instead. Please refer to :ref:`U-Boot build
+      instructions<Build-U-Boot-label>` for the updated steps.
+
+    - For Linux builds, generic ``defconfig`` is used instead of custom
+      fragments. Please refer to `linux users guide
+      <../../../linux/Foundational_Components_Kernel_Users_Guide.html#preparing-to-build>`__
+      for build instructions.
 
 Processor SDK Linux AM64X 08.xx Releases
 ========================================
