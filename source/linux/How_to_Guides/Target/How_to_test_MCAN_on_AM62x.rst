@@ -12,9 +12,9 @@ information to and from the CAN bus.
 .. Image:: /images/mcan-environment.JPG
         :scale: 40%
 
-|
+For more information on MCAN, refer to TRM Peripherals -> Industrial and Control Interfaces -> Modular Controller Area Network (MCAN)
 
-.. note::
+The Linux Kernel driver for MCAN can be found in <path-to-linux>/drivers/net/can/m_can.
 
         Important! MCU MCANs are unsupported from Linux as their IRQs are not routed to the A53 GIC, as can be seen on the AM62x TRM
         Table 10-18 `Interrupt Connections Summary`.
@@ -77,64 +77,65 @@ The CAN external transceiver used in this project is SN65HVD230 CAN Board. The s
 .. Image:: /images/mcan-schematic-external-transceiver.PNG
         :scale: 50%
 
-- Pin 1 on Header 4 is CAN_TX
-- Pin 2 on Header 4 is CAN_RX
-- Pin 3 on Header 4 is DGND
-- Pin 4 on Header 4 is 3.3V
-- Pin 1 on Header 2 is CANL
-- Pin 2 on Header 2 is CANH
+#. Pin 1 on Header 4 is CAN_TX
+#. Pin 2 on Header 4 is CAN_RX
+#. Pin 3 on Header 4 is DGND
+#. Pin 4 on Header 4 is 3.3V
+#. Pin 1 on Header 2 is CANL
+#. Pin 2 on Header 2 is CANH
 
 AM64x EVM:
 __________
 
-On the second AM64x EVM we will need to use MCAN0_H and MCAN0_L pins.
+There are 2x MCANs MAIN domain, MCAN0 and MCAN1. On the AM64x GP EVM User's Guide section 3.4.14: `CAN Interface` and `CAN INTERFACE`
+section on the AM64x schematics, we can see the following:
 
-According to the AM64x EVM device tree `k3-am625-evm.dtb`, there is an MCAN0 instance in MAIN domain. We will be connecting to the CAN transceiver
-associated with this MCAN0 instance. On the AM64x GP EVM User's Guide at section 3.4.14: `CAN Interface` and `CAN INTERFACE` section on the AM64x
-schematics, we can see the following:
+#. MCAN0_H is brought out by pin 1 on J31 connector
+#. MCAN0_L is brought out by pin 3 on J31 connector
 
-- MCAN0_RX and MCAN0_TX pins are brought out by J9 connector
-- MCAN_TX/RX signals are inputs to the transceiver U4
-- MCAN0_H and MCAN0_L pins are brought out by J31 connector
-- Pin 1 on J31 is connectd to MCAN0_H
-- Pin 3 on J31 is connected to MCAN_L
-
-.. Image:: /images/mcan-schematic-can-interface.JPG
-        :scale: 40%
-
-To test CAN bus signals from the AM62x SK with the CAN external transceiver, we only need to use the MCAN0_H and MCAN0_L
-pins on this AM64x EVM, which are brought out by J31 connector.
++------------------------------------------------------+
+| .. Image:: /images/mcan-schematic-can-interface.JPG  |
+|                 :width: 380px                        |
+|                 :align: center                       |
++------------------------------------------------------+
+| Schematic for AM64x GP EVM - CAN Interface for MCAN0 |
++------------------------------------------------------+
 
 |
 
-Putting it all together
-------------------------------
+Testing 1x MCAN on AM62x and 1x MCAN on AM64x
+--------------------------------------------------------
 
-To test the CAN on AM62x SK, we are using the CAN-FD controller on the AM62x and a CAN external transceiver, which completes one node on the CAN bus.
-To read these CAN signals sent by this node to the bus, we will connect another AM64x EVM as is shown in the following diagram.
+*AM62x Hardware Setup*
 
-.. Image:: /images/mcan-diagram-am62x.jpg
+To test the MCAN0 on AM62x SK, we are using the CAN-FD controller on the AM62x and 1x external CAN transceiver, which completes one node on the CAN bus.
+Connect the CAN transceiver to AM62x as shown in the following diagram:
 
-To connect the CAN external transceiver to AM62x CAN-FD controller, connect pin 8 (MCAN0_RX) and pin 9 (MCAN0_TX) from AM62x User Expansion Connector to
-pin 1 (CAN_TX) and pin 2 (CAN_RX) on the CAN external transceiver. The CAN external transceiver will then need to be powered, connect 3.3V and GND pins
-to a power supply.
+.. Image:: /images/mcan-diagram-am62x-transceiver-am64x.png
 
-To test the CAN node consisting of AM62x CAN-FD controller and the CAN external transceiver, we will be connecting a AM64x EVM to the CAN external
-transceiver according to the following diagram:
+#. AM62x pin 8 (MCAN0_RX) on User Expansion to pin 2 (CAN_RX) on the CAN transceiver Header 1
+#. AM62x pin 10 (MCAN0_TX) on User Expansion to pin 1 (CAN_TX) on the CAN transceiver Header 1
+
+The CAN external transceiver will then need to be powered, connect 3.3V and GND pins to a reliable power supply.
+
+*AM64x hardware Setup*
+
+Now connect AM64x EVM to receive CAN packages from AM62x according to the following diagram:
 
 .. Image:: /images/mcan-diagram-evm-to-evm.png
+|
 
-Taking the CAN external transceiver and the AM64x EVM, connect pin 1 (CANL) and pin 2 (CANH) on the Header 2 of the CAN external transceiver to pin 3
-(MCAN0_L) and pin 1 (MCAN0_H) located on the AM64x's J31 connector.
+#. CAN transceiver pin 1 (CANL) on Header 2 to pin 3 (MCAN0_L) on AM64x J31 connector
+#. CAN transceiver pin 2 (CANH) on Header 2 to pin 1 (MCAN0_H) on AM64x J31 connector
 
-The following images show how the final setup should look like:
+*Final Setup*
+
+The following images shows the final setup for testing 1x MCAN on AM62x and 1x MCAN on AM64x:
 
 +-----------------------------------+---------------------------------------+
-|                                   |                                       |
 | .. Image:: /images/mcan-test0.JPG | .. Image:: /images/mcan-test1.JPG     |
 |       :width: 380px               |       :width: 380px                   |
 |       :align: center              |       :align: center                  |
-|                                   |                                       |
 +-----------------------------------+---------------------------------------+
 | AM62x and external transceiver    | AM64x receving CAN packets from AM62x |
 +-----------------------------------+---------------------------------------+
@@ -161,9 +162,8 @@ stopping AM62x bootup during U-boot and executing the following commands:
 Testing MCAN on AM62x
 -------------------------
 
-With all the boards powered on and the AM62x SK and AM64x EVM booted to Linux, the following commands could be executed to test CAN functionality.
+*MCAN0 on AM64x to display received CAN packet*
 
-**Setup AM64x to display received frames**
     ::
 
         root@am64xx-evm:~# ip link set can0 down
@@ -182,7 +182,8 @@ With all the boards powered on and the AM62x SK and AM64x EVM booted to Linux, t
 
 Note: Use Ctrl-C to terminate candump
 
-**Setup AM62x to transfer packets:**
+*MCAN0 on AM62x to send CAN packet:*
+
     ::
 
         # To send:
