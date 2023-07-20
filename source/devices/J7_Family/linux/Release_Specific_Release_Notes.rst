@@ -18,10 +18,12 @@ execution of Linux based applications and includes the following:
 -  Demo applications
 -  Documentation
 
-.. Note::
-    For building some of the RTOS-based demonstrations, you should also download
-    Processor SDK RTOS installer. For more information,
-    refer to <PSDKRA install path>/index.html.
+.. ifconfig:: CONFIG_sdk in ('PSDKL')
+
+   .. Note::
+      For building some of the RTOS-based demonstrations, you should also download
+      Processor SDK RTOS installer. For more information,
+      refer to <PSDKRA install path>/index.html.
 
 
 Licensing
@@ -68,8 +70,8 @@ Processor SDK 9.1 Release supports the following platforms:
   * J7200
   * J721S2
   * J784S4
-  * AM68A
-  * AM69A
+  * AM68
+  * AM69
 
 Processor SDK 9.1 Release has following new features:
 
