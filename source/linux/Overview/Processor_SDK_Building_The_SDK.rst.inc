@@ -159,6 +159,17 @@ The MACHINE can be set to |__SDK_BUILD_MACHINE__|, for example.
            $ MACHINE=<machine> bitbake -k tisdk-default-image
 
        Your tisdk-default-image wic image will be generated in arago-tmp-[toolchain]/deploy directory. Use `Processor\_SDK\_Linux\_create\_SD\_card <Overview/Processor_SDK_Linux_create_SD_card.html>`__ to flash this image on the SD-Card.    
+
+.. note:: While building images via Yocto, if you are facing **locale.Error: unsupported locale setting** error it means your system is trying to use locale setting which was not there. Run the following commands which will setup the locale and try building your target image again.
+
+    ::
+    
+        export LC_ALL="en_US.UTF-8"
+        export LC_CTYPE="en_US.UTF-8"
+        export LC_NUMERIC="en_US.UTF-8"
+        export LANG=en_US.UTF-8
+        export LANGUAGE=en_US.UTF-8
+        ulimit -n 4096   
      
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
