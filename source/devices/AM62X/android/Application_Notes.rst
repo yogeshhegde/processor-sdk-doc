@@ -7,8 +7,7 @@ Application Notes
 
    Application_Notes_Partitions
    Application_Notes_dtbo_support
-   Application_Notes_GKI_support
+   Application_Notes_Android_Bootloader_SD_Card
    Application_Notes_Android_SD_CARD
    Application_Notes_Android_Dual_Screen
    Application_Notes_Android_Low_Power
-
