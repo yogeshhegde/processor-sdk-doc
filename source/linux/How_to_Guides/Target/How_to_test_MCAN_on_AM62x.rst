@@ -1,8 +1,39 @@
 
 .. _mcan-on-am62x:
 
-MCAN on AM62x
-==========================
+3x MCAN on AM62x and AM62ax devices
+======================================
+
+The following guide applies to AM62x and AM62ax devices. However, to test 3x MCAN on AM62ax, please first enable MCU MCAN nodes as per instructions here:
+:ref:`Enable MCU MCANs on AM62ax`. Then proceed with the rest of the guide.
+
+*Processor SDK supporting 3x MCAN*
+
+The Processor SDK 9.0 release fully supports 3x MCAN on AM62 devices. For AM62ax, some changes have to be made as mentioned here
+:ref:`Enable MCU MCANs on AM62ax`.
+
+*Linux Kernel version supporting 3x MCAN*
+
+On AM62 SoCs, MCANs in MCU domain do not have hardware interrupt routed to A53 Linux. Instead timer polling functionality
+has been added to the MCAN driver in Linux Kernel to enable 3x MCAN. The driver changes have been merged to TI Linux Kernel on
+ti-linux-6.1.y branch.
+
+*Latency and CPU load benchmarks Results*
+
+1 MBPS timer polling interval was determined to be the better timer polling interval since it has comparable latency to hardware interrupt
+with the worse case being 1ms + CAN frame propagation time and CPU load is not substantial. Latency can be improved further with less than
+1 ms  polling intervals, howerver it is at the cost of CPU usage since CPU load increases at 0.5 ms.
+
+*Power implications*
+
+Enabling MCU MCANs with timer-polling might have a negative impact since the CPU has to wake up every 1 ms whether there are CAN packets
+pending in the RX FIFO or not. This might prevent the CPU from entering into deeper idle states for extended periods of time.
+
+|
+
+
+MCAN Overview
+--------------
 
 The CAN-FD transceiver and CAN-FD controller make up a CAN node. A CAN-FD transceiver is the interface between the CAN-FD controller and
 the CAN bus. It translates the logic level messages from the CAN-FD controller into the CAN differential scheme on the CANH and
@@ -12,18 +43,18 @@ information to and from the CAN bus.
 .. Image:: /images/mcan-environment.JPG
         :scale: 40%
 
+For more information on MCAN, refer to TRM Peripherals -> Industrial and Control Interfaces -> Modular Controller Area Network (MCAN)
+
+The Linux Kernel driver for MCAN can be found in <path-to-linux>/drivers/net/can/m_can.
+
 |
 
-.. note::
 
-        Important! MCU MCANs are unsupported from Linux as their IRQs are not routed to the A53 GIC, as can be seen on the AM62x TRM
-        Table 10-18 `Interrupt Connections Summary`.
-
-Transceiver on AM62x
--------------------------
-The AM62x SK does not carry a CAN-FD transciever to experiment with. The SoC does support CAN-FD, but it is required to connect an external
-CAN transceiver to the AM62x SK to test the full functionality of CAN. In this guide, we will connnect an external CAN transceiver as shown
-in the figure below to test CAN functionality on AM62x SK.
+CAN Transceiver
+----------------
+The AM62 SKs do not carry a CAN-FD transciever to experiment with. The SoC does support CAN-FD, but it is required to connect an
+external CAN-FD transceiver to the AM62x SK to test the full functionality of CAN. In this guide, we will connnect an external CAN transceiver
+(not CAN-FD capable) as shown in the figure below to test CAN functionality on AM62x SK.
 
 The CAN transceiver tested is included in `SN65HVD230 CAN Board Kit`, which is the transceiver soldered into a breakout board which can be purchased
 `here <https://a.co/d/aNM1gl2>`__. If only the transceiver needs to be purchased, it can be purchased in
@@ -36,134 +67,130 @@ or `Mouser Electronics <https://www.mouser.com/c/semiconductors/interface-ics/ca
 |
 
 Connections
----------------
+------------
+
 AM62x:
-______
+_______
 
-On AM62x SK we will need to use MCAN0 RX and MCAN0 TX pins.
+There is 1x MCAN in the MAIN domain and 2x MCAN in MCU domain. According to the AM62x datasheet on `Table 6-1. Pin Attributes` we can see
+the following:
 
-According to the AM62x SK device tree `k3-am625-sk.dtb`, there is an MCAN0 instance in the MAIN domain. According to the AM62x SK EVM User's
-Guide at `Table 2-25. 40 Pin User Expansion Connector` and the AM62x datasheet on `Table 6-32. MCAN0 Signal Descriptions`, we can see the
-following:
+#. MCAN0_RX is pinmuxed with UART5_TXD
+#. MCAN0_TX is pinmuxed with UART5_RXD
+#. MCU_MCAN1_RX is pinmuxed with MCU_GPIO0_16
+#. MCU_MCAN1_TX is pinmuxed with MCU_GPIO0_15
 
-- MCAN0_RX is associated with the ALW ball # E15
-- MCAN0_RX is pinmuxed with UART5_TXD
-- MCAN0_TX is associated with the ALW ball # C15
-- MCAN0_TX is pinmuxed with UART5_RXD
++-------------------------------------------------+
+| .. Image:: /images/mcan-pin-attributes.JPG      |
+|                 :width: 380px                   |
+|                 :align: center                  |
++-------------------------------------------------+
+| Ex: Pin attributes for MCAN0 (MAIN domain MCAN) |
++-------------------------------------------------+
 
-.. Image:: /images/mcan-signal-descriptions.JPG
-        :scale: 70%
-.. Image:: /images/mcan-pin-attributes.JPG
-        :scale: 60%
+On the AM62x schematics, `SOC - General`, `User Expansion Connector`, and `MCU Header` we can see the following:
 
-On the diagram below from AM62x schematics, section `SOC - General`, we can see MCAN0_RX and MCAN0_TX become signal names EXP_UART_TXD and
-EXP_UART5_RXD.
+#. MCAN0_RX becomes signal name EXP_UART5_TXD
+#. MCAN0_TX becomes signal name EXP_UART5_RXD
+#. EXP_UART5_TXD is pin 8 on User Expansion
+#. EXP_UART5_RXD is pin 10 on User Expansion
+#. MCU_MCAN0_RX is brought out by pin 22 on MCU Header
+#. MCU_MCAN0_TX is brought out by pin 16 on MCU Header
+#. MCU_GPIO0_16 is brought out by pin 11 on MCU Header
+#. MCU_GPIO0_15 is brought out by pin 10 on MCU Header
 
-.. Image:: /images/mcan-schematic-soc-general.JPG
-        :scale: 60%
++---------------------------------------------------+-------------------------------------------------------+-----------------------------------------+
+| .. Image:: /images/mcan-schematic-soc-general.JPG | .. Image:: /images/mcan-schematic-user-expansion.JPG  | .. Image:: /images/mcan-mcu-header.JPG  |
+|                  :width: 380px                    |                     :width: 380px                     |              :width: 380px              |
+|                  :align: center                   |                     :align: center                    |              :align: center             |
++---------------------------------------------------+-------------------------------------------------------+-----------------------------------------+
+| Schematic: SOC - General                          | Schematic: User Expansion Connector                   | Schematic: MCU Header                   |
++---------------------------------------------------+-------------------------------------------------------+-----------------------------------------+
 
+In summary:
 
-On the AM62x schematics, EXP_UART_TXD and EXP_UART5_RXD signals can be traced to the User Expansion Connector, pins 8 and 10. Therefore, pin
-8 brings out MCAN0 RX and pin 10 brings out MCAN0 TX on the User Expansion Connector.
+#. MCAN0_RX is brought out by pin 8 on User Expansion
+#. MCAN0_TX is brought out by pin 10 on User Expansion
+#. MCU_MCAN0_RX is brought out by pin 22 on MCU Header
+#. MCU_MCAN0_TX is brought out by pin 16 on MCU Header
+#. MCU_MCAN1_RX is brought out by pin 11 on MCU Header
+#. MCU_MCAN1_TX is brought out by pin 10 on MCU Header
 
-.. Image:: /images/mcan-schematic-user-expansion.JPG
-        :scale: 50%
+External CAN Transceiver:
+_________________________
 
-External Transceiver:
-________________________
-
-The CAN external transceiver used in this project is SN65HVD230 CAN Board. The scematic for this CAN board is the following:
+The CAN external transceiver used in this project is SN65HVD230 CAN Board. The schematic for this CAN board is the following:
 
 .. Image:: /images/mcan-schematic-external-transceiver.PNG
         :scale: 50%
 
-- Pin 1 on Header 4 is CAN_TX
-- Pin 2 on Header 4 is CAN_RX
-- Pin 3 on Header 4 is DGND
-- Pin 4 on Header 4 is 3.3V
-- Pin 1 on Header 2 is CANL
-- Pin 2 on Header 2 is CANH
+#. Pin 1 on Header 4 is CAN_TX
+#. Pin 2 on Header 4 is CAN_RX
+#. Pin 3 on Header 4 is DGND
+#. Pin 4 on Header 4 is 3.3V
+#. Pin 1 on Header 2 is CANL
+#. Pin 2 on Header 2 is CANH
 
 AM64x EVM:
 __________
 
-On the second AM64x EVM we will need to use MCAN0_H and MCAN0_L pins.
+There are 2x MCANs MAIN domain, MCAN0 and MCAN1. On the AM64x GP EVM User's Guide section 3.4.14: `CAN Interface` and `CAN INTERFACE`
+section on the AM64x schematics, we can see the following:
 
-According to the AM64x EVM device tree `k3-am625-evm.dtb`, there is an MCAN0 instance in MAIN domain. We will be connecting to the CAN transceiver
-associated with this MCAN0 instance. On the AM64x GP EVM User's Guide at section 3.4.14: `CAN Interface` and `CAN INTERFACE` section on the AM64x
-schematics, we can see the following:
+#. MCAN0_H is brought out by pin 1 on J31 connector
+#. MCAN0_L is brought out by pin 3 on J31 connector
 
-- MCAN0_RX and MCAN0_TX pins are brought out by J9 connector
-- MCAN_TX/RX signals are inputs to the transceiver U4
-- MCAN0_H and MCAN0_L pins are brought out by J31 connector
-- Pin 1 on J31 is connectd to MCAN0_H
-- Pin 3 on J31 is connected to MCAN_L
-
-.. Image:: /images/mcan-schematic-can-interface.JPG
-        :scale: 40%
-
-To test CAN bus signals from the AM62x SK with the CAN external transceiver, we only need to use the MCAN0_H and MCAN0_L
-pins on this AM64x EVM, which are brought out by J31 connector.
++------------------------------------------------------+
+| .. Image:: /images/mcan-schematic-can-interface.JPG  |
+|                 :width: 380px                        |
+|                 :align: center                       |
++------------------------------------------------------+
+| Schematic for AM64x GP EVM - CAN Interface for MCAN0 |
++------------------------------------------------------+
 
 |
 
-Putting it all together
-------------------------------
+Testing 1x MCAN on AM62x and 1x MCAN on AM64x
+--------------------------------------------------------
 
-To test the CAN on AM62x SK, we are using the CAN-FD controller on the AM62x and a CAN external transceiver, which completes one node on the CAN bus.
-To read these CAN signals sent by this node to the bus, we will connect another AM64x EVM as is shown in the following diagram.
+*AM62x Hardware Setup*
 
-.. Image:: /images/mcan-diagram-am62x.jpg
+To test the MCAN0 on AM62x SK, we are using the CAN-FD controller on the AM62x and 1x external CAN transceiver, which completes one node on the CAN bus.
+Connect the CAN transceiver to AM62x as shown in the following diagram:
 
-To connect the CAN external transceiver to AM62x CAN-FD controller, connect pin 8 (MCAN0_RX) and pin 9 (MCAN0_TX) from AM62x User Expansion Connector to
-pin 1 (CAN_TX) and pin 2 (CAN_RX) on the CAN external transceiver. The CAN external transceiver will then need to be powered, connect 3.3V and GND pins
-to a power supply.
+.. Image:: /images/mcan-diagram-am62x-transceiver-am64x.png
 
-To test the CAN node consisting of AM62x CAN-FD controller and the CAN external transceiver, we will be connecting a AM64x EVM to the CAN external
-transceiver according to the following diagram:
+#. AM62x pin 8 (MCAN0_RX) on User Expansion to pin 2 (CAN_RX) on the CAN transceiver Header 1
+#. AM62x pin 10 (MCAN0_TX) on User Expansion to pin 1 (CAN_TX) on the CAN transceiver Header 1
+
+The CAN external transceiver will then need to be powered, connect 3.3V and GND pins to a reliable power supply.
+
+*AM64x hardware Setup*
+
+Now connect AM64x EVM to receive CAN packages from AM62x according to the following diagram:
 
 .. Image:: /images/mcan-diagram-evm-to-evm.png
+|
 
-Taking the CAN external transceiver and the AM64x EVM, connect pin 1 (CANL) and pin 2 (CANH) on the Header 2 of the CAN external transceiver to pin 3
-(MCAN0_L) and pin 1 (MCAN0_H) located on the AM64x's J31 connector.
+#. CAN transceiver pin 1 (CANL) on Header 2 to pin 3 (MCAN0_L) on AM64x J31 connector
+#. CAN transceiver pin 2 (CANH) on Header 2 to pin 1 (MCAN0_H) on AM64x J31 connector
 
-The following images show how the final setup should look like:
+*Final Setup*
+
+The following images shows the final setup for testing 1x MCAN on AM62x and 1x MCAN on AM64x:
 
 +-----------------------------------+---------------------------------------+
-|                                   |                                       |
 | .. Image:: /images/mcan-test0.JPG | .. Image:: /images/mcan-test1.JPG     |
 |       :width: 380px               |       :width: 380px                   |
 |       :align: center              |       :align: center                  |
-|                                   |                                       |
 +-----------------------------------+---------------------------------------+
 | AM62x and external transceiver    | AM64x receving CAN packets from AM62x |
 +-----------------------------------+---------------------------------------+
 
-|
+With all boards powered on and booted to Linux kernel, the following commands could be executed to test CAN functionality.
 
-Enable Device Tree Overaly on AM62x
----------------------------------------------
+*MCAN0 on AM64x to display received CAN packet*
 
-Since the AM62x does not have an on-board CAN-FD transceiver there is no transceiver node on the AM62x Device Tree Source file; `k3-am625-evm.dts`.
-However a device tree overlay named `k3-am625-sk-mcan.dtbo` supported in the TI SDK which can be used to dynamically overlay the AM62x Device Tree.
-If an AM62x .wic image was flashed to an SD card, the `k3-am625-sk-mcan.dtbo` should be found in the root partition. This overlay can be loaded by
-stopping AM62x bootup during U-boot and executing the following commands:
-
-    ::
-
-        Hit any key to stop autoboot:  0
-        =>
-        => setenv name_overlays k3-am625-sk-mcan.dtbo
-        => boot
-
-|
-
-Testing MCAN on AM62x
--------------------------
-
-With all the boards powered on and the AM62x SK and AM64x EVM booted to Linux, the following commands could be executed to test CAN functionality.
-
-**Setup AM64x to display received frames**
     ::
 
         root@am64xx-evm:~# ip link set can0 down
@@ -182,7 +209,8 @@ With all the boards powered on and the AM62x SK and AM64x EVM booted to Linux, t
 
 Note: Use Ctrl-C to terminate candump
 
-**Setup AM62x to transfer packets:**
+*MCAN0 on AM62x to send CAN packet:*
+
     ::
 
         # To send:
@@ -195,4 +223,118 @@ Note: Use Ctrl-C to terminate candump
         [ 1392.594650] can: raw protocol
         root@am62xx-evm:~#
 
-For more MCAN driver instructions, go to :ref:`mcan`.
+For more documentation on using the CAN utilities software, go to :ref:`mcan`.
+
+Testing 3x MCAN on AM62x
+-------------------------
+
+To test the 3x MCANs, connect 3x external CAN transceivers to each MCAN on AM62x:
+
+#. AM62x pin 8 (MCAN0_RX) on User Expansion to pin 2 (CAN_RX) on the CAN transceiver Header 1
+#. AM62x pin 10 (MCAN0_TX) on User Expansion to pin 1 (CAN_TX) on the CAN transceiver Header 1
+#. AM62x pin 22 (MCU_MCAN0_RX) on MCU Header to pin 2 (CAN_RX) on the CAN transceiver Header 1
+#. AM62x pin 16 (MCU_MCAN0_TX) on MCU Header to pin 1 (CAN_TX) on the CAN transceiver Header 1
+#. AM62x pin 11 (MCU_MCAN1_RX) on MCU Header to pin 2 (CAN_RX) on the CAN transceiver Header 1
+#. AM62x pin 10 (MCU_MCAN1_TX) on MCU Header to pin 1 (CAN_TX) on the CAN transceiver Header 1
+
+The new CAN nodes can then be inserted to a working CAN setup or to test only on AM62x, the following can be done:
+
+#. 3x CAN transceiver pin 1 (CANL) on Header 2 together
+#. 3x CAN transceiver pin 2 (CANH) on Header 2 together
+
+Below is an image of 3x MCAN on AM62x as described by the setup above:
+
++-----------------------------------+
+| .. Image:: /images/mcan-test2.JPG |
+|          :width: 380px            |
+|          :align: center           |
++-----------------------------------+
+| Test 3x MCAN on AM62x             |
++-----------------------------------+
+
+Now CAN utilities software can be used to test, use CANDUMP command for one or two MCANs to display the received packets,
+and use the last MCAN to send CAN packets using the CANSEND or CANGEN commands. For more information on using CANUTILS
+go here: :ref:`mcan`.
+
+|
+
+Enable Device Tree Overlay
+---------------------------
+
+Since AM62 SKs do not have on-board CAN transceivers, there are no transceiver nodes in their respective DTB source files.
+
+A device tree overlay named `k3-am625-sk-mcan.dtbo` is supported in the Processor SDK 9.0 for AM62 devices that can be used to dynamically
+overlay each DTB. If an AM62 .wic image was flashed to an SD card, the overlay should be found in the root/boot/dtb/ti partition of the
+SD card. This overlay can be loaded by stopping bootup at U-boot prompt and executing the following commands:
+
+.. warning::
+
+        For AM62a, you will first need to add the MCU-MCAN nodes before applying this overlay to enable 3x MCAN on AM62ax. Go here
+        :ref:`Enable MCU MCANs on AM62ax`.
+
+::
+
+        Hit any key to stop autoboot:  0
+                =>
+                => setenv name_overlays k3-am625-sk-mcan.dtbo
+                => boot
+
+|
+
+.. _Enable MCU MCANs on AM62ax:
+
+Enable MCU MCANs on AM62ax
+---------------------------
+
+AM62ax 3x MCAN was not enabled for TI PSDK 9.0 release. Before following the guide above please follow the following steps to enable 3x MCAN on AM62ax.
+
+1. Add MCU_MCAN nodes to AM62ax DTS:
+
+Apply the following change to <path-to-ti-linux>/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
+
+::
+
+        diff --git a/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi b/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
+        index 4d0a291bceea..c7e768b7ac9b 100644
+        --- a/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
+        +++ b/arch/arm64/boot/dts/ti/k3-am62a-mcu.dtsi
+        @@ -145,6 +145,30 @@ mcu_gpio0: gpio@4201000 {
+                        status = "disabled";
+                };
+
+        +       mcu_mcan1: can@4e00000 {
+        +               compatible = "bosch,m_can";
+        +               reg = <0x00 0x4e00000 0x00 0x8000>,
+        +                     <0x00 0x4e08000 0x00 0x200>;
+        +               reg-names = "message_ram", "m_can";
+        +               power-domains = <&k3_pds 188 TI_SCI_PD_EXCLUSIVE>;
+        +               clocks = <&k3_clks 188 6>, <&k3_clks 188 1>;
+        +               clock-names = "hclk", "cclk";
+        +               bosch,mram-cfg = <0x0 128 64 64 64 64 32 32>;
+        +               status = "disabled";
+        +       };
+        +
+        +       mcu_mcan2: can@4e10000 {
+        +               compatible = "bosch,m_can";
+        +               reg = <0x00 0x4e10000 0x00 0x8000>,
+        +                     <0x00 0x4e18000 0x00 0x200>;
+        +               reg-names = "message_ram", "m_can";
+        +               power-domains = <&k3_pds 189 TI_SCI_PD_EXCLUSIVE>;
+        +               clocks = <&k3_clks 189 6>, <&k3_clks 189 1>;
+        +               clock-names = "hclk", "cclk";
+        +               bosch,mram-cfg = <0x0 128 64 64 64 64 32 32>;
+        +               status = "disabled";
+        +       };
+        +
+                mcu_r5fss0: r5fss@79000000 {
+                        compatible = "ti,am62-r5fss";
+                        #address-cells = <1>;
+
+2. Build the DTB for AM62ax:
+
+::
+
+        $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-  defconfig ti_arm64_prune.config
+        $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-  dtbs
+
+3. Copy `k3-am62a7-sk.dtb` and `k3-am625-sk-mcan.dtbo` to SD card root/boot/dtb/ti partition
