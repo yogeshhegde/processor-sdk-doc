@@ -6,7 +6,7 @@ GPLv3 Disclaimer
 There are GPLv3 licensed software components contained within the
 Processor SDK for Linux on both the target and the host.  The software
 manifest (software\_manifest.htm) for the Linux SDK is located in the
-docs/ directory of the installed SDK.  All GPLv3 components for both
+manifest/ directory of the installed SDK.  All GPLv3 components for both
 target and host are contained in the SDK directory.
 
 .. warning::
