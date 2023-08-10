@@ -39,4 +39,5 @@ Developer Notes
    How_to_Guides/Host/K3_Resource_Partitioning_Tool
    How_to_Guides/Host/How_to_Setup_and_Debug_using_Lauterbach
    How_to_Guides/Host/SYSFW_Trace_Parser
+   How_to_Guides/Host/Minimal_Platform_Development
    How_to_Guides/FAQ/Tda4_Latest_FAQs
