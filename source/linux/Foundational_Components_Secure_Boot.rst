@@ -87,7 +87,9 @@ will begin execution on the ARM64 core. R5 SPL also configures DDR and the conso
 
 R5 SPL's output will be similar to this:
 Notice the "Authentication passed" lines as TF-A, OPTEE, A53 SPL, and SPL DTB are authenticated.
-::
+
+.. code-block:: console
+
     U-Boot SPL 2021.01-dirty (May 13 2022 - 15:05:11 -0500)
     SYSFW ABI: 3.1 (firmware rev 0x0008 '8.4.0-3-gd5cb1+ (Jolly Jellyfis')
     SPL initial stack usage: 13392 bytes
@@ -108,7 +110,9 @@ A53 SPL then loads the U-Boot proper FIT image `U-boot.img` from the peripheral 
 and DTB are extracted before passing execution to u-boot proper.
 
 A53 SPL's output will be similar to this: (notice the "Authentication passed" lines as U-Boot and the DTB are authenticated).
-::
+
+.. code-block:: console
+
     U-Boot SPL 2021.01-g2de57d278b (May 16 2022 - 14:28:40 +0000)
     SYSFW ABI: 3.1 (firmware rev 0x0008 '8.4.0-3-gd5cb1+ (Jolly Jellyfis')
     Trying to boot from MMC2
@@ -121,7 +125,9 @@ The boot flow continues as it does on a non-secure device, until loading the nex
 other required boot artifacts. Each component is extracted and authenticated from this FIT image. Once all components are authenticated, U-boot starts Linux.
 
 U-boot's output will be similar to this: (notice the "Authentication passed" lines as we authenticate the Linux kernel and DTB).
-::
+
+.. code-block:: console
+
     U-Boot 2021.01-g2de57d278b (May 16 2022 - 14:28:40 +0000)
 
     SoC:   AM64X SR1.0
@@ -188,73 +194,39 @@ other files must be placed in a non-verifiable read-write user partition.
 HS Boot Flow Tools
 -------------------
 
-TI_SECURE_DEV_PKG:
-
-    The TI_SECURE_DEV_PKG package is a TI security project that is used to sign binaries in the HS boot flow. This software package is used when signing bl31.bin
-    as shown in :ref:`foundational-components-atf`, bl32.bin as shown in :ref:`foundational-components-optee`, and other componenents such as the Linux
-    kernel as shown in :ref:`fitImage-for-HS-with-SDK`. As shown in the diagram in the `Authenticated Boot` section above, all components involved in the
-    HS boot flow must be signed except DMSC/TIFS firmware which is signed with TI keys. For most binaries, there will be instructions in the Processor SDK
-    documentation for signing the images with the TI_SECURE_DEV_PKG package. In other cases, once the TI_SECURE_DEV_PKG environmental variable is exported, sources like u-boot
-    and K3-Image-Gen will be able to find the package and sign the tiboot3.bin, tispl.bin, and U-boot.img images. To sign each of the binaries with customer
-    keys, the dummy key in <path-to-TI_SECURE_DEV_PKG>/core-secdev-k3/keys/custMpk.pem must be replaced with a customer key.
-
-    ::
-
-        $ git clone https://git.ti.com/git/security-development-tools/core-secdev-k3.git -b master
-        $ export TI_SECURE_DEV_PKG=`pwd`/core-secdev-k3
-
-        Example use:
-        $ $TI_SECURE_DEV_PKG/scripts/secure-binary-image.sh input-file-name output-file-name
-
-K3-image-gen:
-
-    The K3-Image-Gen source is a TI project used to package the `tiboot3.bin` image. Before packaging it, there needs to be an existing R5
-    SPL (u-boot-spl.bin) which is built by U-Boot source. The K3-Image-Gen project will take the R5 SPL and DMSC firmware (for AM64x devices) as arguments
-    in the build instruction. If the TI_SECURE_DEV_PKG environment variable exists, K3-Image-Gen will use the TI_SECURE_DEV_PKG package to sign the tiboot3.bin image with the
-    key stored in TI_SECURE_DEV_PKG. If the TI_SECURE_DEV_PKG environment variable does not exist, K3-Image-Gen will still package tiboot3.bin for GP devices but not for HS-FS
-    or HS-SE devices.
-
-    ::
-
-        $ git clone https://git.ti.com/git/k3-image-gen/k3-image-gen.git
-
-        Example use:
-        $ make CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=am64x_sr2 SOC_TYPE=hs SBL=u-boot-spl.bin SYSFW_DIR=$SYSFW_DIR
-
 U-boot:
 
-    The ti-u-boot source is a TI project used to build R5 SPL, A53 SPL, and U-boot proper. To build  R5 SPL for AM64x family devices, u-boot builds an image named
-    u-boot-spl.bin and the K3-Image-Gen project will copy this image as well as DMSC firmware and package it into a `tiboot3.bin` image. To build A53 SPL, u-boot takes
-    the ATF and OPTEE images and packages them in `tispl.bin`. If the TI_SECURE_DEV_PKG environment variable exists, U-boot will use the TI_SECURE_DEV_PKG package to sign the images with
-    the key stored in the secdev package.
+    The ti-u-boot source is a project used to create tiboot3.bin, tispl.bin, and u-boot.img. To create  tiboot3.bin for AM64x family devices, u-boot builds R5 SPL and
+    binman packages it in a `tiboot3.bin` image. To build A53 SPL, binman takes ATF (bl31.bin), OPTEE (bl32.bin), A53 SPL, and A53 DTBs and packages
+    them in a `tispl.bin` image. The openssl library can then then be used to sign each component as specified in k3-am64x-binman.dtsi.
 
-    ::
+    .. code-block:: console
 
         $ git clone https://git.ti.com/git/ti-u-boot/ti-u-boot.git
 
         Example use:
         $ make ARCH=arm CROSS_COMPILE=aarch64-none-linux-gnu- am64x_evm_a53_defconfig
-        $ make CROSS_COMPILE=aarch64-none-linux-gnu- ATF=bl31.bin TEE=tee-pager_v2.bin
+        $ make CROSS_COMPILE=aarch64-none-linux-gnu- ATF=bl31.bin TEE=tee-pager_v2.bin BINMAN_INDIRS=<path-to-tisdk>/board-support/prebuilt-images
 
 Linux:
 
     The ti-linux source is a TI project used to build Linux kernel, DTB, and other boot artifacts. Some of these components could be included in a verifiable image
     `fitImage`. For HS devices, only the fitImage will be allowed to boot once `fitImage` has been authenticated.
 
-    ::
+    .. code-block:: console
 
         $ git clone https://git.ti.com/git/ti-linux-kernel/ti-linux-kernel.git
 
         Example use:
-        $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <config type>
+        $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_arm64_prune.config
         $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
-        $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- <target>
+        $ make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu-
 
 ATF:
 
     The ATF source (now called TF-A) is used to build `bl31.bin` that gets packaged into `tispl.bin`. For HS devices, this binary needs to be signed.
 
-    ::
+    .. code-block:: console
 
         $ git clone https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git
 
@@ -265,7 +237,7 @@ OPTEE:
 
    The OPTEE source is used to build `bl32.bin/tee-pager_v2.bin` that gets packaged into `tispl.bin`. For HS devices, this binary needs to be signed.
 
-    ::
+    .. code-block:: console
 
         $ git clone https://github.com/OP-TEE/optee_os.git
 
@@ -275,10 +247,10 @@ OPTEE:
 Ti-linux-firmware:
 
     The ti-linux-firmware is a TI repository where all firmware releases are stored. Firmwares for a device family can also be found in the pre-built SDK
-    under <path-to-tisdk>/board-support/prebuilt-images. The firmware binary locations need to be specified in K3-Image-Gen build instructions for AM64x
-    family devices and K3-Image-Gen and U-boot build instructions for AM62x family devices.
+    under <path-to-tisdk>/board-support/prebuilt-images/am64xx-evm. Binman expects to find the device firmware with the following appended to u-boot build command:
+    BINMAN_INDIRS=<path-to-tisdk>/board-support/prebuilt-images, and expects to find a ti-sysfw directory in this path.
 
-    ::
+    .. code-block:: console
 
         $ <https://git.ti.com/git/processor-firmware/ti-linux-firmware.git
         Branch: ti-linux-firmware.
