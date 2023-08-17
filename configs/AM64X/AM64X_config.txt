@@ -25,6 +25,7 @@ Replacement Variables
 '__LINUX_UBUNTU_VERSION_LONG__'  : '22.04 (64-bit)'
 '__LINUX_UBUNTU_VERSION_SHORT__' : '22.04'
 '__OPTEE_PLATFORM_FLAVOR__'      : 'am64x'
+'__FAMILY_NAME__'                : 'am64x'
 '__RTOS_UBUNTU_VERSION_LONG__'   : '14.04 (64-bit), 16.04 (64-bit)'
 '__WINDOWS_SUPPORTED_LONG__'     : '10 (64-bit)'
 '__FEATURINGMATRIX__'            : \
