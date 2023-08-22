@@ -42,4 +42,10 @@ The following Device-Tree Overlays are supported:
 
 **- AM62X-LP-SK EVM**
 
-No Device-Tree Overlays are supported for now.
+The following Device-Tree Overlays are supported:
+
++-----------+----------------------------------------------------------------------+
+|dtbo_index |  description                                                         |
++-----------+----------------------------------------------------------------------+
+|    4      |   Microtips Technology USA 10.1"  WUXGA (1920x1200) OLDI panel       |
++-----------+----------------------------------------------------------------------+
