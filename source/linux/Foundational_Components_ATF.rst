@@ -23,7 +23,7 @@ in the non-secure world.
 
 .. rubric:: Building ATF
 
-.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X')
+.. ifconfig:: CONFIG_part_variant in ('AM64X', 'AM62X', 'AM62AX')
 
     ::
 
@@ -46,7 +46,7 @@ in the non-secure world.
 
         $ make CROSS_COMPILE=aarch64-none-linux-gnu- ARCH=aarch64 PLAT=k3 TARGET_BOARD=j784s4 SPD=opteed K3_USART=0x8
 
-.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'J721S2', 'AM62X', 'J784S4')
+.. ifconfig:: CONFIG_part_variant not in ('AM64X', 'AM62X', 'AM62AX', 'J721S2', 'J784S4')
 
     ::
         
