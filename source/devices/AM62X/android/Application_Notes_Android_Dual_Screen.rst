@@ -34,8 +34,8 @@ How to enable Microtips LVDS Panel on AM62 SK EVM
 
 		console:/ $ su
 		console:/ $ rmmod ili210x
-		console:/ $ i2cset 0 0x3f 0x0e0109 w
-		console:/ $ i2cset 0 0x3f 0x6873504704 w
+		console:/ $ i2ctransfer -f -y 0 w3@0x3f 0x09 0x1 0x0e
+		console:/ $ i2ctransfer -f -y 0 w6@0x3f 0x08 0x04 0x47 0x50 0x73 0x68
 
 #. Power on the LVDS board
 #. Run the following command:
