@@ -222,37 +222,6 @@ The "Build Output" is given relative to the
 
 .. ifconfig:: CONFIG_sdk in ('PSDKL')
 
-    .. ifconfig:: CONFIG_demo in ('Foundational')
-
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                  | Description                |
-        +==============================+===============================================================+============================+
-        | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-base-image             | images/<machine>/tisdk-base-image-<machine>.tar.xz            | Minimal Target Filesytem   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-thinlinux-image        | images/<machine>/tisdk-thinlinux-image-<machine>.tar.xz       | Minimal Target Filesytem   |
-        |                              |                                                               | with docker enabled        |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | meta-toolchain-arago-tisdk   | sdk/arago-<arago-version>-<architecture>.sh                   | Devkit                     |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-
-    .. ifconfig:: CONFIG_demo not in ('Foundational')
-
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | Target                       | Build Output                                                  | Description                |
-        +==============================+===============================================================+============================+
-        | tisdk-core-bundle            | images/<machine>/tisdk-core-bundle-<machine>.tar.xz           | Full SDK                   |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-        | tisdk-default-image          | images/<machine>/tisdk-default-image-<machine>.tar.xz         | Target Filesystem          |
-        +------------------------------+---------------------------------------------------------------+----------------------------+
-
-|
-
-.. ifconfig:: CONFIG_sdk in ('PSDKL')
-
     .. rubric:: Platforms
 
     Please refer to :ref:`here <yocto-layer-configuration>` for the yocto build platforms supported in |__SDK_FULL_NAME__|.
