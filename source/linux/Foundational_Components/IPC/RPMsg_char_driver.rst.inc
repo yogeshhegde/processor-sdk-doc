@@ -78,7 +78,10 @@ rpmsg_char_close()
 
 .. ifconfig:: CONFIG_part_variant in ('J721S2')
 
-	The below table lists the device enumerations as defined in the rpmsg_char_library. The validity of the enumerations wrt J721S2 is also specified.
+	The below table lists the device enumerations as defined in the
+	rpmsg_char_library. The validity of the enumerations wrt J721S2 is also
+	specified.
+
 	::
 
 		+------------------+--------------------+---------+-----------------------------------+
@@ -101,9 +104,13 @@ rpmsg_char_close()
 		| DSP_c71_0        | 65800000.dsp       | Yes     | DSP core in Main Domain           |
 		+------------------+--------------------+---------+-----------------------------------+
 
+
 .. ifconfig:: CONFIG_part_variant in ('J784S4')
 
-	The below table lists the device enumerations as defined in the rpmsg_char_library. The validity of the enumerations wrt J784S4 is also specified.
+	The below table lists the device enumerations as defined in the
+	rpmsg_char_library. The validity of the enumerations wrt J784S4 is also
+	specified.
+
 	::
 
 		+------------------+--------------------+---------+-----------------------------------+
@@ -134,10 +141,15 @@ rpmsg_char_close()
 		| DSP_c71_3        | 67800000.dsp       | Yes     | DSP core in Main Domain           |
 		+------------------+--------------------+---------+-----------------------------------+
 
+
 .. ifconfig::  CONFIG_part_variant in ('J721E')
 
-	The below table lists the device enumerations as defined in the rpmsg_char_library. The validity of the enumerations wrt J721E is also specified.
+	The below table lists the device enumerations as defined in the
+	rpmsg_char_library. The validity of the enumerations wrt J721E is also
+	specified.
+
 	::
+
 		+------------------+--------------------+---------+-----------------------------------+
 		| Enumeration ID   | Device Name        | Valid   | Description                       |
 		+==================+====================+=========+===================================+
@@ -164,8 +176,12 @@ rpmsg_char_close()
 
 .. ifconfig::  CONFIG_part_variant in ('J7200')
 
-	The below table lists the device enumerations as defined in the rpmsg_char_library. The validity of the enumerations wrt J7200 is also specified.
+	The below table lists the device enumerations as defined in the
+	rpmsg_char_library. The validity of the enumerations wrt J7200 is also
+	specified.
+
 	::
+
 		+------------------+--------------------+---------+-----------------------------------+
 		| Enumeration ID   | Device Name        | Valid   | Description                       |
 		+==================+====================+=========+===================================+
@@ -178,9 +194,13 @@ rpmsg_char_close()
 		| R5F_MAIN0_1      | 5d00000.r5f        | Yes     | R5F core(MAIN domain)             |
 		+------------------+--------------------+---------+------------+----------------------+
 
+
 .. ifconfig:: CONFIG_part_variant in ('AM62X')
 
-	The below table lists the device enumerations as defined in the rpmsg_char_library. The validity of the enumerations wrt AM62x is also specified.
+	The below table lists the device enumerations as defined in the
+	rpmsg_char_library. The validity of the enumerations wrt AM62x is also
+	specified.
+
 	::
 
 		+------------------+--------------------+---------+-----------------------------------+
@@ -191,9 +211,13 @@ rpmsg_char_close()
 		| R5F_WKUP0_0      | 78000000.r5f       | Yes     | R5F core in Wakeup Domain         |
 		+------------------+--------------------+---------+-----------------------------------+
 
+
 .. ifconfig:: CONFIG_part_variant in ('AM62AX')
 
-	The below table lists the device enumerations as defined in the rpmsg_char_library. The validity of the enumerations wrt AM62Ax is also specified.
+	The below table lists the device enumerations as defined in the
+	rpmsg_char_library. The validity of the enumerations wrt AM62Ax is also
+	specified.
+
 	::
 
 		+------------------+--------------------+---------+-----------------------------------+
@@ -205,6 +229,7 @@ rpmsg_char_close()
 		+------------------+--------------------+---------+-----------------------------------+
 		| DSP_c71_0        | 7e000000.dsp       | Yes     | DSP core in Main Domain           |
 		+------------------+--------------------+---------+-----------------------------------+
+
 
 RPMsg examples:
 ---------------
