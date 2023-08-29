@@ -43,7 +43,7 @@ Documentation
    examples/demonstrations bundled in the SDK.
 -  **Software Manifest**: Provides license information on software
    included in the SDK release. This document is in the release at
-   ``[INSTALL-DIR]/docs``.
+   ``[INSTALL-DIR]/manifest``.
 -  **EVM Quick Start Guide**: Provides information on hardware setup and
    running the demonstration application that is loaded on flash. This
    document is provided as part of the EVM kit.
@@ -96,7 +96,7 @@ U-Boot
 |
 
 .. rubric:: Note:
-| meta-psdkla Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/jacinto-linux/meta-psdkla/tree/recipes-bsp/u-boot/u-boot-ti-staging?h=REL.PSDK.JACINTO.09.00.00.07>`__.
+| meta-psdkla Yocto layer contains additional patches for U-Boot `here <https://git.ti.com/cgit/jacinto-linux/meta-psdkla/tree/recipes-bsp/u-boot?h=09.00.00.06>`__.
 |
 
 Kernel
@@ -133,7 +133,7 @@ Kernel
 | Compiler Information:  arm-none-linux-gnueabihf-gcc (GNU Toolchain for the A-profile Architecture 11.3.0)
 
 .. rubric:: Note:
-| meta-psdkla Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/jacinto-linux/meta-psdkla/tree/recipes-kernel/linux/linux-ti-staging?h=REL.PSDK.JACINTO.09.00.00.07>`__.
+| meta-psdkla Yocto layer contains additional patches for Linux Kernel `here <https://git.ti.com/cgit/jacinto-linux/meta-psdkla/tree/recipes-kernel/linux?h=09.00.00.06>`__.
 |
 
 
@@ -163,12 +163,12 @@ Yocto
 
 .. rubric:: meta-psdkla
    
-| Head Commit: 0ea1910d30d612eb4bdf7beff71950828fd9ac5c edgeai-gui-app: Updating to latest masster
-| Date: 2023-03-03
+| Head Commit: f9dcc7e5da71de3d6a745c051ae6b67e7ba58ee2 ti-apps-launcher: PSDK Auto-Merger: 20230728_1554
+| Date: 2023-07-28
 
 | Clone: git://git.ti.com/jacinto-linux/meta-psdkla.git
-| Branch: master
-| Release Tag: REL.PSDK.JACINTO.08.06.00.11
+| Branch: kirkstone
+| Release Tag: 09.00.00.06
 |
 
 Issues Tracker
