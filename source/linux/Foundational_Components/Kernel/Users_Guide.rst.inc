@@ -449,11 +449,8 @@ Pre-requisites ( Already part of SDK installations )::
 
 .. note::
 
-    For GP/HS-FS Devices
-    ^^^^^^^^^^^^^^^^^^^^
-
-    GP/HS-FS devices will also enforce authentication if booting fitImage.
-    To disable authentication enforcement, FIT_SIGNATURE_ENFORCE needs to be
+    GP/HS-FS devices will also enforce authentication if booting fitImage. To
+    disable authentication enforcement, FIT_SIGNATURE_ENFORCE needs to be
     disabled in defconfig for the specific board during uboot build.
 
 Describing FIT source
