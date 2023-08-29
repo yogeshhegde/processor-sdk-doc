@@ -435,7 +435,7 @@ tree. These .ko files are the dynamic kernel modules.
 .. _fitImage-for-HS:
 
 Creating the kernel fitImage for high security device / GP devices
------------------------------------------------------------------
+------------------------------------------------------------------
 
 SDKs have pre-built FIT images that contain the default Kernel and DTB files.
 But developers may want to deploy and test new Kernel and DTB without going
