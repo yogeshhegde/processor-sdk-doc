@@ -9,25 +9,33 @@ GP to HS-FS Migration Guide
 Overview
 -----------
 
-The Processor SDK now supports HS-FS (High Security - Field Securable) device types. This migration guide targets customers who have |__PART_FAMILY_NAME__| GP
-devices and need to migrate to |__PART_FAMILY_NAME__| HS-FS devices. The Processor SDK will include source and build instruction updates for K3-Image-Gen, ti-u-boot,
-and ti-linux sources.
+The Processor SDK now supports HS-FS (High Security - Field Securable) device
+types. This migration guide targets customers who have |__PART_FAMILY_NAME__| GP
+devices and need to migrate to |__PART_FAMILY_NAME__| HS-FS devices. The
+Processor SDK will include source and build instruction updates for
+K3-Image-Gen, ti-u-boot, and ti-linux sources.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    The Processor SDK will include support for AM64x SR2.0 HS-FS and HS-SE devices and no longer support AM64x SR1.0 HS-FS and HS-SE devices; changing the firmware
-    that is distributed in the Processor SDK. More information on device specifications can be found below.
+    The Processor SDK will include support for AM64x SR2.0 HS-FS and HS-SE
+    devices and no longer support AM64x SR1.0 HS-FS and HS-SE devices; changing
+    the firmware that is distributed in the Processor SDK. More information on
+    device specifications can be found below.
 
 .. ifconfig:: CONFIG_part_variant not in ('AM64X')
 
-    The Processor SDK will include support for HS-FS, HS-SE, and GP variants. The default device targeted in the Processor SDK is of HS-FS type.
+    The Processor SDK will include support for HS-FS, HS-SE, and GP variants.
+    The default device targeted in the Processor SDK is of HS-FS type.
 
     .. note::
 
-        Images in the Processor SDK will by default boot on HS-FS devices. To boot on GP devices, use tiboot3-<family>-gp-evm.bin found in the Processor SDK. If using
-        SD/MMC boot and having flashed a .wic image (WIC file) to an SD card, tiboot3-<family>-gp-evm.bin should be found in the `boot` partition of the SD card.
-        Renaming/removing the pre-existing`tiboot3.bin` and renaming `tiboot3-<family>-gp-evm.bin` to `tiboot3.bin` is the only change needed to boot the HS-FS
-        device.
+        Images in the Processor SDK will by default boot on HS-FS devices. To
+        boot on GP devices, use tiboot3-<family>-gp-evm.bin found in the
+        Processor SDK. If using SD/MMC boot and having flashed a .wic image (WIC
+        file) to an SD card, tiboot3-<family>-gp-evm.bin should be found in the
+        `boot` partition of the SD card. Renaming/removing the
+        pre-existing`tiboot3.bin` and renaming `tiboot3-<family>-gp-evm.bin` to
+        `tiboot3.bin` is the only change needed to boot the HS-FS device.
 
 Device types
 ---------------
@@ -108,15 +116,21 @@ The string will print to log like the following output:
     Sec Cust MPK Hash    : ad0bc40b000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
     Sec Unique ID        : a6bbeab017b04e54d30c26460c175bc03e734507db2b8a206af12f3e38de6e47
 
-DeviceType will show whether an soc is GP, HS-FS, or HS-SE under `DeviceName`. ROM version will show whether an SOC is SR1.0 with [0,1,0,0] or SR2.0 with [0,2,0,0],
+DeviceType will show whether an soc is GP, HS-FS, or HS-SE under `DeviceName`.
+ROM version will show whether an SOC is SR1.0 with [0,1,0,0] or SR2.0 with
+[0,2,0,0],
 
 Processor SDK
 ---------------
 
-The boot images necessary to boot |__PART_FAMILY_NAME__| family devices are described here: :ref:`target-images`. Of those, the initial boot
-image that ROM loads is `tiboot3.bin`. The |__PART_FAMILY_NAME__| Processor SDK will include up to three versions of the `tiboot3.bin` initial boot
-image. This is due to `tiboot3.bin` packaging TI firmware. TI firmware is different for every |__PART_FAMILY_NAME__| device type and one firmware
-for one device type may not work on another |__PART_FAMILY_NAME__| device type. Use the `tiboot3.bin` version according to the target device type.
+The boot images necessary to boot |__PART_FAMILY_NAME__| family devices are
+described here: :ref:`target-images`. Of those, the initial boot image that ROM
+loads is `tiboot3.bin`. The |__PART_FAMILY_NAME__| Processor SDK will include up
+to three versions of the `tiboot3.bin` initial boot image. This is due to
+`tiboot3.bin` packaging TI firmware. TI firmware is different for every
+|__PART_FAMILY_NAME__| device type and one firmware for one device type may not
+work on another |__PART_FAMILY_NAME__| device type. Use the `tiboot3.bin`
+version according to the target device type.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
@@ -144,28 +158,35 @@ for one device type may not work on another |__PART_FAMILY_NAME__| device type. 
 
     Where <family> is |__PART_FAMILY_NAME__|
 
-A common way to boot a board is with a bootable SD card, so it is assumed this is the method used. In the pre-built SDK, a bootable
-SD card image (WIC file) can be found in <path-to-tisdk>/filesystem directory which can then be flashed onto an SD card. During boot,
-ROM will load the initial boot binary (found in the SD card boot partition) named `tiboot3.bin`. By default this binary will be the
-HS-FS version.
+A common way to boot a board is with a bootable SD card, so it is assumed this
+is the method used. In the pre-built SDK, a bootable SD card image (WIC file)
+can be found in <path-to-tisdk>/filesystem directory which can then be flashed
+onto an SD card. During boot, ROM will load the initial boot binary (found in
+the SD card boot partition) named `tiboot3.bin`. By default this binary will be
+the HS-FS version.
 
-The bootable SD card image will also have `tiboot3-<famly>-gp-evm.bin` in the boot partition of the SD card image.
-Renaming `tiboot3-<family>-gp-evm.bin` to `tiboot3.bin` and removing/renaming the pre-existing `tiboot3.bin` of HS-FS type is the only
-change needed to run the HS-FS SDK on a GP board.
+The bootable SD card image will also have `tiboot3-<famly>-gp-evm.bin` in the
+boot partition of the SD card image. Renaming `tiboot3-<family>-gp-evm.bin` to
+`tiboot3.bin` and removing/renaming the pre-existing `tiboot3.bin` of HS-FS type
+is the only change needed to run the HS-FS SDK on a GP board.
 
 K3-image-gen
 -------------
 
-K3-Image-Gen is a tool to allow users to create an image comprising of a signed System Firmware image as well
-as the binary configuration artifacts needed to bring up SYSFW as part of the U-Boot SPL startup. For more information go to:
+K3-Image-Gen is a tool to allow users to create an image comprising of a signed
+System Firmware image as well as the binary configuration artifacts needed to
+bring up SYSFW as part of the U-Boot SPL startup. For more information go to:
+
 https://git.ti.com/cgit/k3-image-gen/k3-image-gen/tree/README.md.
 
-The following updates to K3-Image-Gen apply to the pre-built SDK, buildable SDK, and latest TI source for manual builds.
-k3-image-gen will now include the SOC and SOC_TYPE Make flags for packaging `tiboot3.bin`.
+The following updates to K3-Image-Gen apply to the pre-built SDK, buildable SDK,
+and latest TI source for manual builds. k3-image-gen will now include the SOC
+and SOC_TYPE Make flags for packaging `tiboot3.bin`.
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    Below is a list with AM64x devices and the corresponding flags to be included in the K3-Image-Gen build instruction:
+    Below is a list with AM64x devices and the corresponding flags to be
+    included in the K3-Image-Gen build instruction:
 
     +-------------------+---------------+----------------+
     | Device Type       | SOC flag      | SOC_TYPE flag  |
@@ -181,7 +202,8 @@ k3-image-gen will now include the SOC and SOC_TYPE Make flags for packaging `tib
     | AM64x GP SR1.0    | SOC=am64x     | SOC_TYPE=gp    |
     +-------------------+---------------+----------------+
 
-    For example, to package the initial boot image for AM64x SR2.0 HS-FS device using the pre-built SDK, one could use the following:
+    For example, to package the initial boot image for AM64x SR2.0 HS-FS device
+    using the pre-built SDK, one could use the following:
 
     ::
 
@@ -202,18 +224,22 @@ k3-image-gen will now include the SOC and SOC_TYPE Make flags for packaging `tib
 
     Where <family> is |__PART_FAMILY_NAME__|
 
-    For example, to package the initial boot image for |__PART_FAMILY_NAME__| HS-FS device using the pre-built SDK, one could use the following:
+    For example, to package the initial boot image for |__PART_FAMILY_NAME__|
+    HS-FS device using the pre-built SDK, one could use the following:
 
     ::
 
-    $ cd <path-to-tisdk>/board-support/k3-image-gen-<version>
-    $ make CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=<family> SOC_TYPE=hs-fs SBL=./prebuilt-images/u-boot-spl.bin-<machine-name> SYSFW_DIR=./prebuilt-images
+        $ cd <path-to-tisdk>/board-support/k3-image-gen-<version>
+        $ make CROSS_COMPILE=arm-none-linux-gnueabihf- SOC=<family> SOC_TYPE=hs-fs SBL=./prebuilt-images/u-boot-spl.bin-<machine-name> SYSFW_DIR=./prebuilt-images
 
 
-K3-Image-Gen will name the target `tiboot3.bin` image in the following format: tiboot3-<soc_flag>-<soc_type>-evm.bin.
+K3-Image-Gen will name the target `tiboot3.bin` image in the following format:
+tiboot3-<soc_flag>-<soc_type>-evm.bin.
 
-If TI_SECURE_DEV_PKG environment variable is not defined, `tiboot3.bin` can still be built for GP devices. The following errors will occur in K3-Image-Gen build logs when
-building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
+If TI_SECURE_DEV_PKG environment variable is not defined, `tiboot3.bin` can
+still be built for GP devices. The following errors will occur in K3-Image-Gen
+build logs when building for HS-FS or HS-SE devices without the
+TI_SECURE_DEV_PKG environment variable defined and K3-Image-Gen build may fail:
 
 .. parsed-literal::
 
@@ -228,30 +254,40 @@ To fix the above issue, do the following:
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
-    If a AM64x device SoC is SR1.0 or SR2.0, it does not impact U-boot source, or linux source, only K3-Image-Gen source since it packages firmware that is unique to
-    specific SoC and its silicon revision number.
+    If a AM64x device SoC is SR1.0 or SR2.0, it does not impact U-boot source,
+    or linux source, only K3-Image-Gen source since it packages firmware that is
+    unique to specific SoC and its silicon revision number.
 
     .. note::
 
-        AM64x HS-FS SR1.0 and AM64x HS-SE SR1.0 will not be supported in the 08.04 SDK. Therefore, the following firmware may not be found in the Processor SDK:
-        ti-sci-firmware-am64x-hs.bin, ti-sci-firmware-am64x-hs-cert.bin, ti-sci-firmware-am64x-hs-fs.bin, and ti-sci-firmware-am64x-hs-fs-cert.bin.
+        AM64x HS-FS SR1.0 and AM64x HS-SE SR1.0 will not be supported in the
+        08.04 SDK. Therefore, the following firmware may not be found in the
+        Processor SDK: ti-sci-firmware-am64x-hs.bin,
+        ti-sci-firmware-am64x-hs-cert.bin, ti-sci-firmware-am64x-hs-fs.bin, and
+        ti-sci-firmware-am64x-hs-fs-cert.bin.
 
 U-Boot
 ---------
 
-The following updates to ti-u-boot apply to the pre-built SDK, buildable SDK, and latest TI source for manual builds.
-U-Boot will now use the same defconfig for both HS and non-HS device types. All devices are assumed to be secure and the
-default `<family>_evm_{r5,a53}_defconfig` will build for HS-FS and HS-SE devices. This causes U-Boot to attempt to sign the
-individual images (tispl.bin, tiboot3.bin, and u-boot.img) if `TI_SECURE_DEV_PKG` environment variable is defined and
-pointing to a copy of the SECDEV package. If not, the binaries will remain unsigned. If TI_SECURE_DEV_PKG environment variable is
-not defined all images can still be built for GP devices. The following warnings will occur in ti-u-boot build logs when
-building for HS-FS or HS-SE devices without the TI_SECURE_DEV_PKG environment variable defined:
+The following updates to ti-u-boot apply to the pre-built SDK, buildable SDK,
+and latest TI source for manual builds. U-Boot will now use the same defconfig
+for both HS and non-HS device types. All devices are assumed to be secure and
+the default `<family>_evm_{r5,a53}_defconfig` will build for HS-FS and HS-SE
+devices. This causes U-Boot to attempt to sign the individual images (tispl.bin,
+tiboot3.bin, and u-boot.img) if `TI_SECURE_DEV_PKG` environment variable is
+defined and pointing to a copy of the SECDEV package. If not, the binaries will
+remain unsigned. If TI_SECURE_DEV_PKG environment variable is not defined all
+images can still be built for GP devices. The following warnings will occur in
+ti-u-boot build logs when building for HS-FS or HS-SE devices without the
+TI_SECURE_DEV_PKG environment variable defined:
 
 .. parsed-literal::
 
-    WARNING: TI_SECURE_DEV_PKG environment variable must be defined for TI secure devices. spl/u-boot-spl-nodtb.bin was NOT secured!
+    WARNING: TI_SECURE_DEV_PKG environment variable must be defined for TI
+    secure devices. spl/u-boot-spl-nodtb.bin was NOT secured!
 
-After U-boot is built, the filenames of the generated images `tispl.bin` and `u-boot.img` are in the following format:
+After U-boot is built, the filenames of the generated images `tispl.bin` and
+`u-boot.img` are in the following format:
 
 .. ifconfig:: CONFIG_part_variant in ('AM64X')
 
@@ -265,9 +301,12 @@ After U-boot is built, the filenames of the generated images `tispl.bin` and `u-
 
 Unsigned images will boot on GP and HS-FS devices but not on HS-SE devices.
 
-On HS-SE device, unsigned images may cause no prints to be displayed on the console or we may see "Authentication failed" warnings and the
-device will fail to boot as seen below:
+On HS-SE device, unsigned images may cause no prints to be displayed on the
+console or we may see "Authentication failed" warnings and the device will fail
+to boot as seen below:
+
 ::
+
     U-Boot SPL 2021.01 (Aug 18 2022 - 15:15:21 -0500)
     EEPROM not available at 80, trying to read at 81
     SYSFW ABI: 3.1 (firmware rev 0x0008 '8.4.4-v08.04.04 (Jolly Jellyfi')
@@ -276,8 +315,11 @@ device will fail to boot as seen below:
     ti_sci system-controller@44043000: Message not acknowledgedAuthentication failed!
     ### ERROR ### Please RESET the board ###
 
-On HS-FS device, unsigned images will boot but we will see a "Skipping authentication" warning in the console ouput as seen below:
+On HS-FS device, unsigned images will boot but we will see a "Skipping
+authentication" warning in the console ouput as seen below:
+
 ::
+
     U-Boot SPL 2021.01 (Aug 18 2022 - 15:25:41 -0500)
     EEPROM not available at 80, trying to read at 81
     SYSFW ABI: 3.1 (firmware rev 0x0008 '8.4.4-v08.04.04 (Jolly Jellyfi')
@@ -286,7 +328,9 @@ On HS-FS device, unsigned images will boot but we will see a "Skipping authentic
     Warning: Did not detect image signing certificate. Skipping authentication to prevent boot failure. This will fail on Security Enforcing(HS-SE) devices
 
 Signed images will boot on all devices including GP device as can be seen on the ouput below:
+
 ::
+
     U-Boot SPL 2021.01 (Aug 18 2022 - 15:29:01 -0500)
     EEPROM not available at 80, trying to read at 81
     SYSFW ABI: 3.1 (firmware rev 0x0008 '8.4.4--v08.04.04 (Jolly Jellyfi')
@@ -297,24 +341,36 @@ Signed images will boot on all devices including GP device as can be seen on the
 Linux Kernel
 ---------------
 
-The following updates to ti-linux-kernel apply to the pre-built SDK, buildable SDK, and latest TI source for manual builds.
-No changes are needed when building the kernel.
+The following updates to ti-linux-kernel apply to the pre-built SDK, buildable
+SDK, and latest TI source for manual builds. No changes are needed when building
+the kernel.
 
-By default U-boot expects to boot kernel `Image`, DTB, and DTOs found in root/boot of the SD card if using SD/MMC boot. The exception is
-for HS-SE (High Security - Security Enforced) devices where the FIT image (Flattened Image Tree) named `fitImage` will boot by default. Booting
-with FIT image implements higher security. Each individual component is signed and when packaged, the FIT image will be authenticated during boot.
+By default U-boot expects to boot kernel `Image`, DTB, and DTOs found in
+root/boot of the SD card if using SD/MMC boot. The exception is for HS-SE (High
+Security - Security Enforced) devices where the FIT image (Flattened Image Tree)
+named `fitImage` will boot by default. Booting with FIT image implements higher
+security. Each individual component is signed and when packaged, the FIT image
+will be authenticated during boot.
 
-Booting FIT image is not required for GP and HS-FS devices, but on HS-SE devices only the signed FIT image will be allowed to boot.
+Booting FIT image is not required for GP and HS-FS devices, but on HS-SE devices
+only the signed FIT image will be allowed to boot.
 
-To build your own FIT image, the pre-built SDK provides scripts to take a re-built kernel and re-bundle it into a FIT image :ref:`fitImage-for-HS`.
+To build your own FIT image, the pre-built SDK provides scripts to take a
+re-built kernel and re-bundle it into a FIT image :ref:`fitImage-for-HS`.
 
-To enable booting the FIT image, the u-boot environment variable `boot_fit` could be set to `1` in u-boot:
+To enable booting the FIT image, the u-boot environment variable `boot_fit`
+could be set to `1` in u-boot:
+
 ::
+
     setenv boot_fit 1
     savenv
     boot
 
-or we could copy the following code line to the uEnv.txt file located in the `boot` partition of the SD card after flashing a working bootable image, then
+or we could copy the following code line to the uEnv.txt file located in the
+`boot` partition of the SD card after flashing a working bootable image, then
 boot AM64x via SD/MMC card boot:
+
 ::
+
     boot_fit=1
