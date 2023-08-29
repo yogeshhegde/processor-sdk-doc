@@ -1109,7 +1109,7 @@ weston documentation`_ for troubling shooting tips.
 The filesystem comes with a preconfigured **weston.ini** file which will
 be located in
 
-**/etc/weston.ini**
+**/etc/xdg/weston/weston.ini**
 
 Running Weston clients
 ----------------------
@@ -1164,15 +1164,14 @@ Weston by pressing Ctrl-Alt-Backspace.
 Using IVI shell feature
 -----------------------
 
-The SDK also has support for configuring Weston ivi-shell. The default
-shell that is configured in the SDK is the desktop-shell.
+The SDK also has support for configuring Weston ivi-shell. The default shell
+that is configured in the SDK is the desktop-shell.
 
-To change the shell to ivi-shell, the user will have to add the
-following lines into the /etc/weston.ini.
+To change the shell to ivi-shell, the user will have to add the following lines
+into the /etc/xdg/weston/weston.ini.
 
-To switch back to the desktop-shell can be done by commenting these
-lines in the /etc/weston.ini (comments begin with a '#' at the start of
-line).
+To switch back to the desktop-shell can be done by commenting these lines in the
+/etc/xdg/weston/weston.ini (comments begin with a '#' at the start of line).
 
 ::
 
