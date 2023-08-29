@@ -1100,9 +1100,11 @@ connectors, use the below command:
 
      weston --tty=1 --idle-time=0
 
-If you face any issues with the above procedure, please refer
-`GLSDK\_FAQs#Unable\_to\_run\_Weston\_on\_the\_GLSDK\_release <http://processors.wiki.ti.com/index.php/GLSDK_FAQs#Unable_to_run_Weston_on_the_GLSDK_release>`__
-for troubling shooting tips.
+If you face any issues with the above procedure, please refer to `the upstream
+weston documentation`_ for troubling shooting tips.
+
+.. _the upstream weston documentation:
+   https://wayland.pages.freedesktop.org/weston/toc/running-weston.html
 
 The filesystem comes with a preconfigured **weston.ini** file which will
 be located in
