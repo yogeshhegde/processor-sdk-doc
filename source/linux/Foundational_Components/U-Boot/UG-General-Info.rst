@@ -467,7 +467,7 @@ Build U-Boot
         :name: target-images
 
     Copy the below images to the boot partition of an SD card and boot.
-    Instructions to format the SD card can be found `here <../../Overview/Processor_SDK_Linux_Formatting_SD_Card.html>`__.
+    Instructions to format the SD card can be found `here <../../Overview/Processor_SDK_Linux_create_SD_card.html>`__.
 
 .. ifconfig:: CONFIG_part_variant in ('AM65X')
 

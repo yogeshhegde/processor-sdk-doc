@@ -42,7 +42,9 @@ Create SD Card using balenaEtcher
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    tisdk-default-image-<machine>.wic.xz
+    tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other 
+    WIC images that can be flashed to the SD card similarly. Assuming the SDK is installed on a 
+    Linux machine at <PSDK\_PATH>, you can find other available WIC images at <PSDK\_PATH>/filesystem/
 
 |
 
@@ -63,19 +65,15 @@ Create SD Card using balenaEtcher
 
 |
 
-4.  The  |__SDK_FULL_NAME__| installer also contains other WIC images that can be flashed to the SD card
-    similarly. Assuming the SDK is installed on a Linux machine at <PSDK\_PATH>, you can find other available
-    WIC images at <PSDK\_PATH>/filesystem/..
-
-|
-
 .. _processor-sdk-linux-create-sd-card-using-bmap:
 
 Create SD Card using bmap-tools
 ----------------------------------
 
 1.  Download the default bootable SD card image (WIC file) available on the release page as
-    tisdk-default-image-<machine>.wic.xz
+    tisdk-default-image-<machine>.wic.xz. The  |__SDK_FULL_NAME__| installer also contains other 
+    WIC images that can be flashed to the SD card similarly. Assuming the SDK is installed on a 
+    Linux machine at <PSDK\_PATH>, you can find other available WIC images at <PSDK\_PATH>/filesystem/
 
 |
 
@@ -152,11 +150,6 @@ Create SD Card using bmap-tools
 
 |
 
-4.  The |__SDK_FULL_NAME__| installer also contains other WIC images that can be flashed to the SD card
-    similarly. Assuming the SDK is installed on a Linux machine at <PSDK\_PATH>, you can find other available
-    WIC images at <PSDK\_PATH>/filesystem/..
-
-|
 
 .. _processor-sdk-linux-create-sd-card-with-custom-images:
 
@@ -429,8 +422,8 @@ directory and executed there, you may see a prompt like:
     Enter path to SDK :
 
 Enter the path to the SDK installation directory here. For example, if
-the SDK was installed into the home directory of the **sitara** user, the
-path to enter would be **/home/sitara/ti-processor-sdk-linux-<machine>-<version>**.
+the SDK was installed into the home directory of "**USER**", the
+path to enter would be **/home/USER/ti-processor-sdk-linux-<machine>-<version>**.
 You will be prompted to confirm the installation directory. The SD card will then
 be created using the default images and the script will exit when finished.
 

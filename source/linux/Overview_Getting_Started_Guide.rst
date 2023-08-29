@@ -11,7 +11,6 @@ Getting Started Guide
    Overview/Download_and_Install_the_SDK
    Overview/Program_EVM
    Overview/Run_Setup_Scripts
-   Overview/Processor_SDK_Linux_Formatting_SD_Card
    Overview/Processor_SDK_Linux_create_SD_card
    Overview/Processor_SDK_Linux_create_SD_card_script
    Overview/Processor_SDK_Linux_Creating_a_SD_Card_with_Windows
