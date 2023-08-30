@@ -7,7 +7,7 @@ Debian Developer's Guide
 .. rubric:: Welcome to the Debian Developer's Guide
    :name: welcome-to-the-debian-developers-guide
 
-.. include:: Debian_Developers_Guide.rst.inc
+.. include:: _Debian_Developers_Guide.rst
 
 .. toctree::
    :maxdepth: 5

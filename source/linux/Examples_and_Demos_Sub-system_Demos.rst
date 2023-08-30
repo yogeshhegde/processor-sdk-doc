@@ -4,11 +4,11 @@ Sub-system Demos
 
 Power Management
 ================
-.. include:: Examples_and_Demos/Power_Management.rst.inc
+.. include:: Examples_and_Demos/_Power_Management.rst
 
-.. include::  Examples_and_Demos/AM335x_Power_Management_User_Guide.rst.inc
+.. include::  Examples_and_Demos/_AM335x_Power_Management_User_Guide.rst
 
-.. include::  Examples_and_Demos/ARM_Multimedia_Users_Guide.rst.inc
+.. include::  Examples_and_Demos/_ARM_Multimedia_Users_Guide.rst
 
 Accelerated Multimedia
 ======================
@@ -22,12 +22,12 @@ DSP offload with OpenCL
 =======================
 See http://downloads.ti.com/mctools/esd/docs/opencl/examples/index.html
 
-.. include:: Examples_and_Demos/Camera_Users_Guide.rst.inc
+.. include:: Examples_and_Demos/_Camera_Users_Guide.rst
 
 WLAN and Bluetooth
 ==================
-.. include:: Examples_and_Demos/WLAN_and_Bluetooth.rst.inc
+.. include:: Examples_and_Demos/_WLAN_and_Bluetooth.rst
 
 Hands on with QT
 ================
-.. include:: Examples_and_Demos/Hands_on_with_QT.rst.inc
+.. include:: Examples_and_Demos/_Hands_on_with_QT.rst

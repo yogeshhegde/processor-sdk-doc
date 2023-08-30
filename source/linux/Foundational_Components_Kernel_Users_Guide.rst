@@ -2,4 +2,4 @@
 
 Users Guide
 ==================================
-.. include:: Foundational_Components/Kernel/Users_Guide.rst.inc
+.. include:: Foundational_Components/Kernel/_Users_Guide.rst

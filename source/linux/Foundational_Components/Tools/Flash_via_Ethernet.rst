@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 .. http://processors.wiki.ti.com/index.php/Flash_via_Ethernet
 

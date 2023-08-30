@@ -4,6 +4,6 @@
 Boot Monitor
 ***************************
 
-.. include:: Foundational_Components/Boot_Monitor/Boot_Monitor_Users_Guide.rst.inc
+.. include:: Foundational_Components/Boot_Monitor/_Boot_Monitor_Users_Guide.rst
 
-.. include:: Foundational_Components/Boot_Monitor/Boot_Monitor_Release_Notes.rst.inc
+.. include:: Foundational_Components/Boot_Monitor/_Boot_Monitor_Release_Notes.rst

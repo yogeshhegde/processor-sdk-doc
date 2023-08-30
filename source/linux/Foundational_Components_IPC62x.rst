@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 .. _foundational-components-ipc:
 
@@ -253,4 +253,4 @@ arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi
 .. note:: The DT fragments are provided as a reference and subject to change between releases. For latest memory reservations, please refer to the kernel device tree repository :
           'https://git.ti.com/cgit/ti-linux-kernel/ti-linux-kernel/tree/arch/arm64/boot/dts/ti/k3-am62x-sk-common.dtsi?h=ti-linux-5.10.y'
 
-.. include:: Foundational_Components/IPC/RPMsg_char_driver.rst.inc
+.. include:: Foundational_Components/IPC/_RPMsg_char_driver.rst

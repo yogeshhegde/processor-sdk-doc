@@ -1,1 +1,1 @@
-.. include:: ../../../common/EVM_Hardware_Setup/AM64x_EVM_Hardware_Setup.rst.inc
+.. include:: ../../../common/EVM_Hardware_Setup/_AM64x_EVM_Hardware_Setup.rst

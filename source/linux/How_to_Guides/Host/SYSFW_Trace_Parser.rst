@@ -1,1 +1,1 @@
-.. include:: /common/Tools/SYSFW_Trace_Parser.rst.inc
+.. include:: /common/Tools/_SYSFW_Trace_Parser.rst

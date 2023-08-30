@@ -1,1 +1,1 @@
-.. include:: /common/Tools/K3_Resource_Partitioning.rst.inc
+.. include:: /common/Tools/_K3_Resource_Partitioning.rst

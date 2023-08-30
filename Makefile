@@ -63,7 +63,7 @@ help:
 
 clean:
 	rm -rf "$(BUILDDIR)/*"
-	rm -f source/replacevars.rst.inc
+	rm -f source/_replacevars.rst
 
 config:
 	mkdir -pv build

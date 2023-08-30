@@ -6,7 +6,7 @@ Examples and Demos
 
 .. ifconfig:: CONFIG_sdk in ('PLSDK')
 
-    .. include:: Examples_and_Demos/Matrix_Demos.rst.inc
+    .. include:: Examples_and_Demos/_Matrix_Demos.rst
 
 .. toctree::
    :maxdepth: 5

@@ -10,7 +10,7 @@ import os
 
 def write_replacevars(app, replacevars):
     replacevarstext = []
-    replacevarsfile= os.environ.get('ROOTDIR') + "/source/" + "replacevars.rst.inc"
+    replacevarsfile= os.environ.get('ROOTDIR') + "/source/" + "_replacevars.rst"
     with open(replacevarsfile, 'w') as f:
         for key in replacevars:
             nextline=".. |" + key + "| replace:: " + replacevars[key]

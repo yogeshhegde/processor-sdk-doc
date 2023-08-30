@@ -2,14 +2,14 @@
 .. Release Notes
 .. ************************************
 .. _processor-sdk-rtos-release-notes:
-.. include:: Release_Specific/Release_Notes.rst.inc
+.. include:: Release_Specific/_Release_Notes.rst
 
 
 .. ************************************
 .. Supported Platforms and Versions
 .. ************************************
 .. _RTOS-SDK-Supported-Platforms:
-.. include:: /common/Release_Specific/Processor_SDK_Supported_Platforms_and_Versions.rst.inc
+.. include:: /common/Release_Specific/_Processor_SDK_Supported_Platforms_and_Versions.rst
 
 
 .. ****************

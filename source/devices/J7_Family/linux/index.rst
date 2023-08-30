@@ -7,7 +7,7 @@ Processor SDK Linux Software Developer's Guide
 
 .. rubric:: Welcome to the Processor SDK Linux Software Developer's Guide for |__PART_FAMILY_DEVICE_NAMES__|
 
-.. include:: /linux/Overview/Processor_SDK_Linux_Software_Developers_Guide.rst.inc
+.. include:: /linux/Overview/_Processor_SDK_Linux_Software_Developers_Guide.rst
 
 .. toctree::
    :maxdepth: 5
@@ -22,7 +22,7 @@ Processor SDK Linux Software Developer's Guide
 
 |
 
-.. include:: /devices/J7_Family/linux/Release_Specific_QSG.rst.inc
+.. include:: /devices/J7_Family/linux/_Release_Specific_QSG.rst
 
 .. rubric:: Feedback
 

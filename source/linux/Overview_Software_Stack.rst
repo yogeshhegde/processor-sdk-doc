@@ -1,3 +1,3 @@
 .. _overview-software-stack:
 
-.. include:: Overview/Processor_SDK_Linux_Software_Stack.rst.inc
+.. include:: Overview/_Processor_SDK_Linux_Software_Stack.rst

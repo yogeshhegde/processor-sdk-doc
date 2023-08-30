@@ -1,4 +1,4 @@
-.. include:: /replacevars.rst.inc
+.. include:: /_replacevars.rst
 
 SOC Performance monitoring tools on AM5 Devices
 ================================================

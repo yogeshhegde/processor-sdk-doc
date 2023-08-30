@@ -1,3 +1,3 @@
 .. _overview-technical-support:
 
-.. include:: /common/Overview/Processor_SDK_Technical_Support.rst.inc
+.. include:: /common/Overview/_Processor_SDK_Technical_Support.rst

@@ -4,7 +4,7 @@
 
 .. _dsp-sw-dsp-optimized-libraries:
 
-.. include:: DSP_Software/DSP_Optimized_Libraries.rst.inc
+.. include:: DSP_Software/_DSP_Optimized_Libraries.rst
 
 ********************
 DSP Debug and Trace
@@ -13,34 +13,34 @@ DSP Debug and Trace
 
 CToolsLib
 ==========
-.. include:: DSP_Software/DSP_Debug_and_Trace/CToolsLib.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/_CToolsLib.rst
 
 .. _dsp-sw-uia:
 
 UIA
 =====
-.. include:: DSP_Software/DSP_Debug_and_Trace/UIA.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/_UIA.rst
 
 
 .. _dsp-sw-trace:
 
 Trace
 ======
-.. include:: DSP_Software/DSP_Debug_and_Trace/Trace.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/_Trace.rst
 
 
 .. _dsp-sw-fault-management:
 
 Fault Management
 =================
-.. include:: DSP_Software/DSP_Debug_and_Trace/Fault_Management.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/_Fault_Management.rst
 
 
 .. _dsp-sw-wdt:
 
 WDT
 ======
-.. include:: DSP_Software/DSP_Debug_and_Trace/WDT.rst.inc
+.. include:: DSP_Software/DSP_Debug_and_Trace/_WDT.rst
    
 
 +--------------------------------+--------------------------------------------------------------------------------------------------+

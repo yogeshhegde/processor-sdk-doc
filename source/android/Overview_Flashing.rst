@@ -1,1 +1,1 @@
-.. include:: Overview/Processor_SDK_Android_Flashing.rst.inc
+.. include:: Overview/_Processor_SDK_Android_Flashing.rst

@@ -3,4 +3,4 @@
 *********************************
 PTP
 *********************************
-.. include:: Industrial_Protocols/PTP/PTP.rst.inc
+.. include:: Industrial_Protocols/PTP/_PTP.rst

@@ -6,7 +6,7 @@ HSR_PRP
 
 Protocol Overview
 =================================
-.. include:: ../common/Industrial_Protocols/HSR_PRP/Protocol_Overview.rst.inc
+.. include:: ../common/Industrial_Protocols/HSR_PRP/_Protocol_Overview.rst
 
 Getting Started
 ===============
@@ -48,10 +48,10 @@ The connection will continue without loss.
 ICSS Firmware
 =================================
 .. Firmware features
-.. include:: ../common/Industrial_Protocols/HSR_PRP/Firmware_Features.rst.inc
+.. include:: ../common/Industrial_Protocols/HSR_PRP/_Firmware_Features.rst
 
-.. include:: ../common/Industrial_Protocols/HSR_PRP/Firmware.rst.inc
+.. include:: ../common/Industrial_Protocols/HSR_PRP/_Firmware.rst
 
 Linux Software
 =================================
-.. include:: Industrial_Protocols/HSR_PRP/HSR_PRP_for_Linux.rst.inc
+.. include:: Industrial_Protocols/HSR_PRP/_HSR_PRP_for_Linux.rst

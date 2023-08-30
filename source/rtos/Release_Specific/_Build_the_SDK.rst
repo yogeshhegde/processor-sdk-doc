@@ -231,7 +231,7 @@ within the component. Here are a collection of useful pages:
 
 Rebuild PDK
 --------------
-.. include:: How_to_Guides/Host/Setup/Rebuild_drivers_from_PDK_directory.rst.inc
+.. include:: How_to_Guides/Host/Setup/_Rebuild_drivers_from_PDK_directory.rst
 
 Rebuild IPC
 --------------

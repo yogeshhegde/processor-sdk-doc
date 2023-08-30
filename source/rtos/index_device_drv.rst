@@ -3,7 +3,7 @@
 ***********
 CSL
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/CSL.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_CSL.rst
 
 
 .. _device-driver-uart:
@@ -11,7 +11,7 @@ CSL
 ***********
 UART
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/UART.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_UART.rst
 
 
 .. _device-driver-usb:
@@ -19,7 +19,7 @@ UART
 ***********
 USB
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/USB.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_USB.rst
 
 
 .. _device-driver-pcie:
@@ -27,7 +27,7 @@ USB
 ***********
 PCIe
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/PCIe.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_PCIe.rst
 
 
 .. _device-driver-gpio:
@@ -35,7 +35,7 @@ PCIe
 ***********
 GPIO
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/GPIO.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_GPIO.rst
 
 
 .. _device-driver-i2c:
@@ -43,14 +43,14 @@ GPIO
 ***********
 I2C
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/I2C.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_I2C.rst
 
 .. _device-driver-serdes-diag:
 
 ***********
 Serdes Diag
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/Serdes_Diag.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_Serdes_Diag.rst
 
 
 .. _device-driver-mcspi-qspi-ospi:
@@ -58,7 +58,7 @@ Serdes Diag
 ***************
 McSPI-QSPI-OSPI
 ***************
-.. include:: PDK_Platform_Software/Device_Drivers/QSPI_McSPI.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_QSPI_McSPI.rst
 
 
 .. _device-driver-edma3:
@@ -66,7 +66,7 @@ McSPI-QSPI-OSPI
 ***********
 EDMA3
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/EDMA3.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_EDMA3.rst
 
 
 .. _device-driver-icss-emac:
@@ -74,7 +74,7 @@ EDMA3
 *********************************
 ICSS-EMAC 
 *********************************
-.. include:: PDK_Platform_Software/Device_Drivers/ICSS_EMAC_LLD_FW.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_ICSS_EMAC_LLD_FW.rst
 
 
 .. _device-driver-pruss:
@@ -82,7 +82,7 @@ ICSS-EMAC
 ***********
 PRUSS
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/PRUSS.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_PRUSS.rst
 
 
 .. _device-driver-fatfs:
@@ -90,7 +90,7 @@ PRUSS
 ***********
 FATFS
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/FATFS.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_FATFS.rst
 
 
 .. _device-driver-mmcsd:
@@ -98,7 +98,7 @@ FATFS
 ***********
 MMCSD
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/MMCSD.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_MMCSD.rst
 
 
 .. _device-driver-qmss:
@@ -106,7 +106,7 @@ MMCSD
 ***********
 QMSS
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/QMSS.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_QMSS.rst
 
 
 .. _device-driver-cppi:
@@ -114,7 +114,7 @@ QMSS
 ***********
 CPPI
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/CPPI.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_CPPI.rst
 
 
 .. _device-driver-pa:
@@ -122,7 +122,7 @@ CPPI
 ***********
 PA
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/PA.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_PA.rst
 
 
 .. _device-driver-sa:
@@ -130,7 +130,7 @@ PA
 ***********
 SA
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/SA.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_SA.rst
 
 
 .. _device-driver-srio:
@@ -138,7 +138,7 @@ SA
 ***********
 SRIO
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/SRIO.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_SRIO.rst
 
 
 .. _device-driver-hyplnk:
@@ -146,7 +146,7 @@ SRIO
 ***********
 HYPLNK
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/HYPLNK.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_HYPLNK.rst
 
 
 .. _device-driver-tsip:
@@ -154,7 +154,7 @@ HYPLNK
 ***********
 TSIP
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/TSIP.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_TSIP.rst
 
 
 .. _device-driver-mcbsp:
@@ -162,7 +162,7 @@ TSIP
 ***********
 MCBSP
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/MCBSP.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_MCBSP.rst
 
 
 .. _device-driver-emac:
@@ -170,7 +170,7 @@ MCBSP
 ***********
 EMAC
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/EMAC.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_EMAC.rst
 
 
 .. _device-driver-mcasp:
@@ -178,7 +178,7 @@ EMAC
 ***********
 MCASP
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/MCASP.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_MCASP.rst
 
 
 .. _device-driver-dss:
@@ -186,7 +186,7 @@ MCASP
 ***********
 DSS
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/DSS.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_DSS.rst
 
 
 .. _device-driver-cal:
@@ -194,7 +194,7 @@ DSS
 ***********
 CAL
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/CAL.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_CAL.rst
 
 
 .. _device-driver-udma:
@@ -202,7 +202,7 @@ CAL
 ***********
 UDMA
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/UDMA.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_UDMA.rst
 
 
 .. _device-driver-pm:
@@ -210,7 +210,7 @@ UDMA
 ***********
 PM
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/PM.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_PM.rst
 
 
 .. _device-driver-rm:
@@ -218,7 +218,7 @@ PM
 ***********
 RM
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/RM.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_RM.rst
 
 
 .. _device-driver-gpmc:
@@ -226,7 +226,7 @@ RM
 ***********
 GPMC
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/GPMC.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_GPMC.rst
 
 
 .. _device-driver-sciclient:
@@ -234,7 +234,7 @@ GPMC
 ***********
 SCICLIENT
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/SCICLIENT.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_SCICLIENT.rst
 
 
 .. _device-driver-ipclld:
@@ -242,7 +242,7 @@ SCICLIENT
 ***********
 IPCLLD
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/IPCLLD.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_IPCLLD.rst
 
 
 .. _device-driver-vps-drivers:
@@ -250,7 +250,7 @@ IPCLLD
 ***********
 VPS Drivers
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/VPS_Drivers.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_VPS_Drivers.rst
 
 
 .. _device-driver-iolink:
@@ -258,7 +258,7 @@ VPS Drivers
 ***********
 IOLINK
 ***********
-.. include:: PDK_Platform_Software/Device_Drivers/IOLINK.rst.inc
+.. include:: PDK_Platform_Software/Device_Drivers/_IOLINK.rst
 
 
 .. _device-driver-osal:
@@ -266,7 +266,7 @@ IOLINK
 ***********
 OSAL
 ***********
-.. include:: PDK_Platform_Software/Device_Driver_Utilities/OSAL.rst.inc
+.. include:: PDK_Platform_Software/Device_Driver_Utilities/_OSAL.rst
 
 .. _device-driver-profiling:
 
