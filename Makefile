@@ -69,6 +69,9 @@ config:
 	mkdir -pv build
 	cat python-scripts/conf.py ${TAGFILE} ${FAMILYSETUPFILE} > build/conf.py
 
+lint:
+	rstcheck --log-level CRITICAL -r "$(SOURCEDIR)"
+
 html: 
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) "$(SOURCEDIR)" "$(BUILDDIR)"
 	@echo
