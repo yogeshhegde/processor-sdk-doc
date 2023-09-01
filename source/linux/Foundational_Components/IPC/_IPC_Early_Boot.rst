@@ -156,17 +156,26 @@ in /lib/firmware folder (used by kernel).
    address. The source file in which the macro is defined is also
    modified.
 
-   +--------------------------+--------------------------+------------------------------------------+
-   | Core                     | Load Address             | Defined in                               |
-   +==========================+==========================+==========================================+
-   | IPU1                     | ``IPU1_LOAD_ADDR``       | ``arch/arm/mach-omap2/boot-common.c      |
-   |                          |                          | and drivers/remoteproc/ipu_rproc.c`` |
-   +--------------------------+--------------------------+------------------------------------------+
-   | IPU2                     | ``IPU2_LOAD_ADDR``       | ``arch/arm/mach-omap2/boot-common.c      |
-   |                          |                          | and drivers/remoteproc/ipu_rproc.c`` |
-   +--------------------------+--------------------------+------------------------------------------+
+.. list-table:: U-boot: Temporary load address for Early boot binaries
+   :header-rows: 1
 
-   Table: U-boot:Temporary load address for Early boot binaries
+   * - Core
+
+     - IPU1
+
+     - IPU2
+
+   * - Load Address
+
+     - ``IPU1_LOAD_ADDR``
+
+     - ``IPU2_LOAD_ADDR``
+
+   * - Defined in
+
+     - ``arch/arm/mach-omap2/boot-common.c and drivers/remoteproc/ipu_rproc.c``
+
+     - ``arch/arm/mach-omap2/boot-common.c and drivers/remoteproc/ipu_rproc.c``
 
 .. rubric:: Enabling Early Boot
    :name: enabling-early-boot
