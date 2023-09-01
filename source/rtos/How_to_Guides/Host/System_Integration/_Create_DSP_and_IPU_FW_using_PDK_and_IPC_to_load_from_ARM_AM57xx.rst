@@ -2013,5 +2013,6 @@ filesystem that is used to load M4 firmware.
 .. rubric:: Download the Full CCS Project
    :name: download-the-full-ccs-project-1
 
-   `UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip <http://processors.wiki.ti.com/index.php/File:UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip>`__
+`UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip
+<http://processors.wiki.ti.com/index.php/File:UART_BasicExample_evmAM572x_m4ExampleProject_with_ipc.zip>`__
 

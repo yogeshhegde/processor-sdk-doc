@@ -171,9 +171,9 @@ in /lib/firmware folder (used by kernel).
 .. rubric:: Enabling Early Boot
    :name: enabling-early-boot
 
-   Early boot is enabled by default on all DRA7xx and AM57xx EVM boards in the
-   dra7xx_evm_defconfig and am57xx_evm_defconfig.
-   `Typical options needed for early-booting IPU remoteprocs are:
+Early boot is enabled by default on all DRA7xx and AM57xx EVM boards in the
+dra7xx_evm_defconfig and am57xx_evm_defconfig. Typical options needed for
+early-booting IPU remoteprocs are:
 
 ::
 

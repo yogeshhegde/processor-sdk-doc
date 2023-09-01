@@ -80,9 +80,6 @@ SPI IP V1 driver also supports multi-channel API's:
 
     #include <ti/drv/spi/MCSPI.h> 
 
-.. rubric:: 
-   :name: section
-
 Open SPI
 ^^^^^^^^
 
