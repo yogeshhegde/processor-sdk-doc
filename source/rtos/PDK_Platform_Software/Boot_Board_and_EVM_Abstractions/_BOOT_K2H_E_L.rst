@@ -89,20 +89,6 @@ The '0' used in step 2 refers to the Core ID to boot. By default, '0' is
 MPU (Cortex A15) core 0. You can input a different value to boot to
 other cores. Valid values are:
 
-.. list-table:: Title
-   :widths: 25 25 50
-   :header-rows: 2
-   
-    * - Heading row 1, column 1
-      - Heading row 1, column 2
-      - Heading row 1, column 3
-    * - Row 1, column 1
-      -
-      - Row 1, column 3
-    * - Row 2, column 1
-      - Row 2, column 2
-      - Row 2, column 3
-
 +-----------------------+-----------------------+-----------------------+
 |         K2H           |          K2E          |         K2L           |
 +==========+============+===========+===========+==========+============+
