@@ -89,27 +89,27 @@ When a PWM channel is exported a pwmX directory will be created in the pwmchipN 
 
 List the available PWM controllers.
 
-.. code-block:: bash
+.. code-block:: console
 
    $ ls /sys/class/pwm/
    pwmchip0  pwmchip1  pwmchip2  pwmchip3  pwmchip5  pwmchip7
 
 The number of channels per controller is reported in the ``npwm`` attribute.
 
-.. code-block:: bash
+.. code-block:: console
 
    $ cat /sys/class/pwm/pwmchip5/npwm
    2
 
 The ``pwmchip5`` controller is a 2 channel ePWM. Export the second channel (EPWM_B, channel 1).
 
-.. code-block:: bash
+.. code-block:: console
 
    $ echo 1 > /sys/class/pwm/pwmchip5/export
 
 Verify ``pwm1`` directory exists in the ``pwmchip5`` directory.
 
-.. code-block:: bash
+.. code-block:: console
 
    $ ls /sys/class/pwm/pwmchip5/
    device  export  npwm  power  pwm1  subsystem  uevent unexport
@@ -119,14 +119,14 @@ Verify ``pwm1`` directory exists in the ``pwmchip5`` directory.
 
 Set a period of 100 milliseconds with 30% duty cycle. The values are in nanoseconds.
 
-.. code-block:: bash
+.. code-block:: console
 
     $ echo 100000000 > /sys/class/pwm/pwmchip5/pwm1/period
     $ echo 30000000 > /sys/class/pwm/pwmchip5/pwm1/duty_cycle
 
 Set the PWM signal polarity to "inversed" (or "normal") if required.
 
-.. code-block:: bash
+.. code-block:: console
 
     $ echo "inversed" > /sys/class/pwm/pwmchip5/pwm1/polarity
     $ cat /sys/class/pwm/pwmchip5/pwm1/polarity
@@ -134,7 +134,7 @@ Set the PWM signal polarity to "inversed" (or "normal") if required.
 
 Enable the PWM channel.
 
-.. code-block:: bash
+.. code-block:: console
 
     $ echo 1 > /sys/class/pwm/pwmchip5/pwm1/enable
 
@@ -154,7 +154,7 @@ A few examples of kernel drivers using the kernel PWM API:
 
 The current PWM settings for ePWM and eCAP(APWM) can be monitored from the debugfs ``pwm`` entry.
 
-.. code-block:: bash
+.. code-block:: console
 
     $ cat /sys/kernel/debug/pwm
     platform/23020000.pwm, 2 PWM devices

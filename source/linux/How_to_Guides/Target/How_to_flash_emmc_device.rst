@@ -16,7 +16,7 @@ a copy of the SD card rootfs filesystem.
   are available to kernel.
 - example output when both SD(mmcblk1) and eMMC(mmcblk0) are available
 
-.. code-block:: bash
+.. code-block:: console
 
     root@j721e-evm:~# ls -l /dev/mmcblk*
     brw-rw----    1 root     disk      179,   0 Jul 18 22:49 /dev/mmcblk0
@@ -42,7 +42,7 @@ a copy of the SD card rootfs filesystem.
 
 - Partition the eMMC device using mksdboot.sh script as follows:
 
-.. code-block:: bash
+.. code-block:: console
 
     root@j721e-evm:~# ./mksdboot.sh --device /dev/mmcblk0
     ./mksdboot.sh: line 83: [: too many arguments
