@@ -209,7 +209,7 @@ with the following steps.
 **Prepare EVM for in-field update:**
 
 #. Remove power to the EVM.
-#. Set boot mode to "No Boot mode" ( See NoBootLittleEndian_ )
+#. Set boot mode to "No Boot mode"
 #. Remove the MCU\_BOOTSELECT (CN9) jumper (see picture below for
    location of jumper: Referred as "**G: MCU Reset Jumper for BMC field
    update**\ ").

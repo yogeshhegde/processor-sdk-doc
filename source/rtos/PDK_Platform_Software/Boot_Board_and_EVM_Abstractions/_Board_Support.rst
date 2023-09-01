@@ -798,7 +798,7 @@ The instructions below use AM335x GP EVM as the existing board to modify. Users
 may choose to modify any other existing board and the procedure is the same.
 
 **Step 1: Generating a new pinmux configuration**
-   - Download and run the `PINMUX Tool <https://www.ti.com/tool/PINMUXTOOL>`_.
+   - Download and run the `Pinmux Tool`_.
    - Use "Open an Existing Design" and open <PDK_INSTALL_PATH>/packages/ti/starterware/tools/pinmux_config/am335x/gpevm_config.pinmux.
    - Use the tool to change the configuration and make sure there are no conflicts.
    - When configuration is finalized, save the starterware pinmux files as shown below:

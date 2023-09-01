@@ -43,7 +43,7 @@ The following section describes how to connect to the LCDK and load code via CCS
 Hardware Setup
 ^^^^^^^^^^^^^^^
 
-- Set the SW1 DIP switches to UART boot mode as shown in the `DIP Switches`_ section.
+- Set the SW1 DIP switches to UART boot mode
 - Connect an external emulator to the J6 header.
 - Power on the LCDK using the J1 barrel connector.
  

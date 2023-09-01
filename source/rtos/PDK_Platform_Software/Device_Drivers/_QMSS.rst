@@ -377,32 +377,36 @@ Debug FAQ
 Additional References
 ---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/QMSS/docs/doxygen/html/index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/QMSS/docs/ReleaseNotes_QMSS_ |
-|                                   | LLD.pdf                           |
-+-----------------------------------+-----------------------------------+
-| QoS (Weighted Round Robin and SP  | $(TI_PDK_INSTALL_DIR)/packages/ti |
-| QoS tree)                         | /drv/QMSS/docs/firmware/qos_sched |
-|                                   | ,qos_sched_drop_sched,qos_sched_w |
-|                                   | ide.pdf                           |
-+-----------------------------------+-----------------------------------+
-| QoS (Leaky bucket and SRIO TX     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-| Scheduler)                        | /drv/QMSS/docs/firmware/qos.pdf   |
-+-----------------------------------+-----------------------------------+
-| Hardware Userguide/TRM            | `UG TRM                           |
-|                                   | PDF <http://www.ti.com/lit/sprugr |
-|                                   | 9>`__                             |
-+-----------------------------------+-----------------------------------+
-| CPPI LLD (Navigator/QMSS DMA      | `CPPI LLD`_                       |
-| component)                        |                                   |
-+-----------------------------------+-----------------------------------+
+.. list-table::
+   :header-rows: 1
+
+   * - **Document**
+
+     - **Location**
+
+   * - API Reference Manual
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/QMSS/docs/doxygen/html/index.html``
+
+   * - Release Notes
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/QMSS/docs/ReleaseNotes_QMSS_LLD.pdf``
+
+   * - QoS (Weighted Round Robin and SP QoS tree)
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/QMSS/docs/firmware/qos_sched,qos_sched_drop_sched,qos_sched_wide.pdf``
+
+   * - QoS (Leaky bucket and SRIO TX Scheduler)
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/QMSS/docs/firmware/qos.pdf``
+
+   * - Hardware Userguide/TRM
+
+     - `UG TRM PDF <http://www.ti.com/lit/sprugr9>`__
+
+   * - CPPI LLD (Navigator/QMSS DMA component)
+
+     - `CPPI LLD`_
 
 .. _CPPI LLD: index_device_drv.html#cppi
 

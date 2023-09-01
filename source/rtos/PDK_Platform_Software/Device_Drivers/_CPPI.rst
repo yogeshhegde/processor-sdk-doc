@@ -306,26 +306,28 @@ This came from k2k example:
 Additional References
 ---------------------
 
-+-----------------------------------+-----------------------------------+
-| **Document**                      | **Location**                      |
-+-----------------------------------+-----------------------------------+
-| API Reference Manual              | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/CPPI/docs/doxygen/html/index |
-|                                   | .html                             |
-+-----------------------------------+-----------------------------------+
-| Release Notes                     | $(TI_PDK_INSTALL_DIR)/packages/ti |
-|                                   | /drv/CPPI/docs/ReleaseNotes_CPPI_ |
-|                                   | LLD.pdf                           |
-+-----------------------------------+-----------------------------------+
-| Hardware Userguide/TRM            | `UG TRM                           |
-|                                   | PDF <http://www.ti.com/lit/sprugr |
-|                                   | 9>`__                             |
-+-----------------------------------+-----------------------------------+
-| QMSS LLD (Navigator/Queueing HW   | `QMSS LLD`_                       |
-| component)                        |                                   |
-+-----------------------------------+-----------------------------------+
+.. list-table::
+   :header-rows: 1
+
+   * - **Document**
+
+     - **Location**
+
+   * - API Reference Manual
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/CPPI/docs/doxygen/html/index.html``
+
+   * - Release Notes
+
+     - ``$(TI_PDK_INSTALL_DIR)/packages/ti/drv/CPPI/docs/ReleaseNotes_CPPI_LLD.pdf``
+
+   * - Hardware Userguide/TRM
+
+     - `UG TRM PDF <http://www.ti.com/lit/sprugr9>`__
+
+   * - QMSS LLD (Navigator/Queueing HW component)
+
+     - `QMSS LLD`_
 
 .. _QMSS LLD:  index_device_drv.html#qmss
-
-| 
 
