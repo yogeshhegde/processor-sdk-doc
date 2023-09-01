@@ -3901,9 +3901,14 @@ Stress Tests
 -----------------
 This section describes the test procedure and setup for diagnostic stress tests.
 Stress test execution is done based on the type of interface as listed below
- - Memory interfaces: Whole memory is accessed during stress test
- - Communication interfaces (Ethernet, UART etc): Bulk data is sent during the stress test
- - Control interfaces (On-board I2C, SPI, GPIO control interfaces): Functional test is repeated for 100 iterations 
+
+- Memory interfaces: Whole memory is accessed during stress test
+
+- Communication interfaces (Ethernet, UART etc): Bulk data is sent during the
+  stress test
+
+- Control interfaces (On-board I2C, SPI, GPIO control interfaces): Functional
+  test is repeated for 100 iterations 
 
 User confirmation for pass/fail status is disabled during the stress test.
 

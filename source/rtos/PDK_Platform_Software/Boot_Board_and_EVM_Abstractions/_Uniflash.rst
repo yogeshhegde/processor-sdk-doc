@@ -514,57 +514,78 @@ AM335x
 
 AM65xx/J721E
 """""""""""""
- - Flash programmer requires system firmware while downloading the flash programmer through UART on AM65xx and J721E platforms. 
-   Uniflash host CLI loads the system firmware automatically while loading the flash programmer on these platforms.
-   Flash programmer and system firmware binary (sysfw.bin) should be kept in the same folder for succesful downloading
-   of flash programmer and system firmware.
 
- - System firmware should be loaded through CCS script while loading the flash programmer through JTAG.
-   Refer the EVM CCS Setup Documentation section below for details of setting up the CCS target configuration with system firmware download.
-    - `AM65xx <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`__
-    - `J721E <http://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-jacinto7/latest/exports/docs/psdk_rtos_auto/docs/user_guide/ccs_setup_j721e.html>`__
+- Flash programmer requires system firmware while downloading the flash
+  programmer through UART on AM65xx and J721E platforms. Uniflash host CLI loads
+  the system firmware automatically while loading the flash programmer on these
+  platforms. Flash programmer and system firmware binary (sysfw.bin) should be
+  kept in the same folder for succesful downloading of flash programmer and
+  system firmware.
+
+- System firmware should be loaded through CCS script while loading the flash
+  programmer through JTAG. Refer the EVM CCS Setup Documentation section below
+  for details of setting up the CCS target configuration with system firmware
+  download.
+
+   - `AM65xx
+     <index_how_to_guides.html#advanced-am65x-debug-setup-with-dmsc-firmware-load>`__
+
+   - `J721E
+     <http://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-jacinto7/latest/exports/docs/psdk_rtos_auto/docs/user_guide/ccs_setup_j721e.html>`__
 
 J721E
 """"""
- - Set the dip switch SW3.1 on CP board to OFF while running the flash programmer for OSPI flashing on J721E EVM
+
+- Set the dip switch SW3.1 on CP board to OFF while running the flash programmer
+  for OSPI flashing on J721E EVM
 
 Uniflash FAQ
 ^^^^^^^^^^^^^
-#  How do I confirm my HW setup is proper for image download over UART?
-   Board should be configured for UART boot mode for downloading the images over UART.
-   RoM bootloader sends a character 'C' at regular intervals on serial port in UART boot mode.
-   Connect a serial console application on host PC to the UART port used for booting and veirfy 
-   the character 'C' is getting displayed, which confirms the HW setup needed for image download over UART is proper.
 
-#  How do I verify which COM number to be used for Uniflash image download?
-   There may be multiple UART ports supported on the board but Uniflash image download happens on
-   one specific UART port which is meant for UART boot.
-   RoM bootloader and Uniflash flash programmer sends a character 'C' at regular intervals
-   on the UART port used for image download. COM port number to be used for image download 
-   can be identified by checking for the character 'C' displayed on host PC.
+- How do I confirm my HW setup is proper for image download over UART? Board
+  should be configured for UART boot mode for downloading the images over UART.
+  RoM bootloader sends a character 'C' at regular intervals on serial port in
+  UART boot mode. Connect a serial console application on host PC to the UART
+  port used for booting and veirfy the character 'C' is getting displayed, which
+  confirms the HW setup needed for image download over UART is proper.
 
-#  I am running Uniflash on Windows host and Uniflash CLI is not able to open COM port. What could be the reason?
-   Some of the serial console application like TeraTerm on Windows changes the COM port settings which
-   causes the COM port open failure from Uniflash. Disconnect the UART cable and reconnet before running 
-   the Uniflash commands everytime a serial console application is used to access the COM port on Windows.
+- How do I verify which COM number to be used for Uniflash image download? There
+  may be multiple UART ports supported on the board but Uniflash image download
+  happens on one specific UART port which is meant for UART boot. RoM bootloader
+  and Uniflash flash programmer sends a character 'C' at regular intervals on
+  the UART port used for image download. COM port number to be used for image
+  download can be identified by checking for the character 'C' displayed on host
+  PC.
 
-#  Should the flash device be erased using Uniflash erase command before flashing the images?
-   No, Uniflash Erase command is provided to explicity erase the images on the flash device.
-   Uniflash flash programmer erases the flash by default before flashing the images.
+- I am running Uniflash on Windows host and Uniflash CLI is not able to open COM
+  port. What could be the reason? Some of the serial console application like
+  TeraTerm on Windows changes the COM port settings which causes the COM port
+  open failure from Uniflash. Disconnect the UART cable and reconnet before
+  running the Uniflash commands everytime a serial console application is used
+  to access the COM port on Windows.
 
-#  What all the images that need to be flashed to get my application boot?
-   It depends on the SoC flamily and OS being used by the application.
-   In general, a secondary bootloader, any configuration files needed for system configuration and an application image
-   are the minimum images that need to be flashed for booting to happen.
-   Refer below documentation for more details
-    * `RTOS <index_Foundational_Components.html#boot>`__
-    * `Linux <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_U-Boot.html#u-boot>`__
+- Should the flash device be erased using Uniflash erase command before flashing
+  the images? No, Uniflash Erase command is provided to explicity erase the
+  images on the flash device. Uniflash flash programmer erases the flash by
+  default before flashing the images.
+
+- What all the images that need to be flashed to get my application boot? It
+  depends on the SoC flamily and OS being used by the application. In general, a
+  secondary bootloader, any configuration files needed for system configuration
+  and an application image are the minimum images that need to be flashed for
+  booting to happen. Refer below documentation for more details
+
+   * `RTOS <index_Foundational_Components.html#boot>`__
+
+   * `Linux
+     <http://software-dl.ti.com/processor-sdk-linux/esd/docs/latest/linux/Foundational_Components_U-Boot.html#u-boot>`__
 
 Rebuilding Board-utils
 ^^^^^^^^^^^^^^^^^^^^^^
 - Use the following commands to rebuild Uniflash and Apploader supported as part of board utils
 
 - For Windows
+
 ::
 
         # cd <pdk_install_path>/packages
@@ -574,6 +595,7 @@ Rebuilding Board-utils
         # gmake
     
 - For Linux
+
 ::
 
         # cd <pdk_install_path>/packages
@@ -584,5 +606,3 @@ Rebuilding Board-utils
         
 - Uniflash binaries will be created under the folder <pdk_install_path>/packages/ti/board/utils/uniflash/bin/<board_name>/
 - Apploader binaries will be created under the folder <pdk_install_path>/packages/ti/board/utils/uartAppLoader/bin/<board_name>/
-
-.. raw:: html

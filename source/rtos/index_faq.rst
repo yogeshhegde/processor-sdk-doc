@@ -835,12 +835,14 @@ on the custom hardware.
 
 **How to test Keystone II serdes interface?**
 
-For Keystone II Serdes, there is also a Serdes diagnostics package which can be found in the path pdk_k2hk/k2e_x_x_x\\packages\\ti\\diag\\serdes_diag. 
-The tests run on C66x and cover BER, EYE and PRBS.
+For Keystone II Serdes, there is also a Serdes diagnostics package which can be
+found in the path pdk_k2hk/k2e_x_x_x/packages/ti/diag/serdes_diag. The tests run
+on C66x and cover BER, EYE and PRBS.
 
-For common Keystone I/II Serdes debug, please refer to `SERDES Link Commissioning on 
-KeyStone I and II Devices <http://www.ti.com/lit/an/sprac37/sprac37.pdf>`__"
- | 
+For common Keystone I/II Serdes debug, please refer to "`SERDES Link
+Commissioning on KeyStone I and II Devices
+<http://www.ti.com/lit/an/sprac37/sprac37.pdf>`__"
+
 
 Filesystem Support
 ==================
@@ -881,7 +883,6 @@ Useful Resources
    Worskshop <https://training.ti.com/ti-rtos-workshop-series>`__
 -  `SYS/BIOS_with_GCC_(CortexA) <http://processors.wiki.ti.com/index.php/SYS/BIOS_with_GCC_(CortexA)>`__
 
-| 
 .. rubric:: How do I start writing my TI RTOS application code? Is there
    any documentation that describes the process?
    :name: how-do-i-start-writing-my-ti-rtos-application-code-is-there-any-documentation-that-describes-the-process
@@ -920,8 +921,8 @@ If you do not have access to a release, you can access the release notes
 and going to the download link for the TI RTOS version that is part of
 the SDK.
 
--  `SYS/BIOS
-   Releases <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/bios/sysbios/index.html>`__
+- `SYS/BIOS Releases
+  <http://software-dl.ti.com/dsps/dsps_public_sw/sdo_sb/targetcontent/bios/sysbios/index.html>`__
 
 This link enables you to access any TI RTOS products and their
 associated release notes. The release notes may be browsed directly.

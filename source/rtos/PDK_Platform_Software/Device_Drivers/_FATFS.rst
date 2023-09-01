@@ -158,18 +158,19 @@ CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/s
 Building FATFS Test applications via makefiles
 ----------------------------------------------
 
--  FATFSD Test applications and dependent libraries are built from the top level fatfs makefile
--  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
-   of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
-	-  cd <pdk>/packages/
-	-  To build: make fatfs 
-	-  To clean: make fatfs_clean 
+- FATFSD Test applications and dependent libraries are built from the top level fatfs makefile
+- Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
+  of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
+
+    -  cd <pdk>/packages/
+    -  To build: make fatfs 
+    -  To clean: make fatfs_clean 
 
 - Similarly, to build at the module level, issue the following commands for rebuilding :
 	
-	- cd <pdk>/packages/ti/fs/fatfs
-	- To build: make all
-	- To clean: make clean
+    - cd <pdk>/packages/ti/fs/fatfs
+    - To build: make all
+    - To clean: make clean
 
 
 
@@ -188,6 +189,4 @@ Additional References
 |                                   | \\fs\\fatfs\\docs\\ReleaseNotes_FATFS   |
 |                                   | _LLD.pdf                                |
 +-----------------------------------+-----------------------------------------+
-
-| 
 

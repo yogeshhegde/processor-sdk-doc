@@ -492,15 +492,16 @@ Building EMAC Test applications via makefiles
    makefile
 -  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
    of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
-	-  cd <pdk>/packages/
-	-  To build: make emac 
-	-  To clean: make emac_clean 
+
+    -  cd <pdk>/packages/
+    -  To build: make emac 
+    -  To clean: make emac_clean 
 
 - Similarly, to build at the module level, issue the following commands for rebuilding :
 	
-	- cd <pdk>/packages/ti/drv/emac
-	- To build: make all
-	- To clean: make clean
+    - cd <pdk>/packages/ti/drv/emac
+    - To build: make all
+    - To clean: make clean
 
 	
 Running EMAC Examples and Test applications

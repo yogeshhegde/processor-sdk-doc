@@ -119,43 +119,42 @@ Jump to: `navigation <#mw-head>`__, `search <#p-search>`__
 
 | 
 
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Overview**          | .. rubric:: **User Interface**    |
-|    :name: overview                |    :name: user-interface          |
-|                                   |                                   |
-| -  `NDK                           |                                   |
-|    Overview </index.php/Processor |                                   |
-| _SDK_RTOS_NDK#NDK_Overview>`__    |                                   |
-| -  `NIMU                          |                                   |
-|    Transport </index.php/Processo |                                   |
-| r_SDK_RTOS_NDK#NIMU_Transport>`__ |                                   |
-|                                   |                                   |
-|    -  `NIMU for                   |                                   |
-|       CPSW </index.php/Processor_ |                                   |
-| SDK_RTOS_NDK#NIMU_FOR_CPSW>`__    |                                   |
-|    -  `NIMU for                   |                                   |
-|       ICSS </index.php/Processor_ |                                   |
-| SDK_RTOS_NDK#NIMU_FOR_ICSS>`__    |                                   |
-|                                   |                                   |
-| -  `Additional Documentation      |                                   |
-|    References </index.php/Process |                                   |
-| or_SDK_RTOS_NDK#Additional_Docume |                                   |
-| ntation_References>`__            |                                   |
-+-----------------------------------+-----------------------------------+
-| .. rubric:: **Application**       | .. rubric:: **Debug**             |
-|    :name: application             |    :name: debug                   |
-|                                   |                                   |
-| -  `Examples </index.php/Processo | -  `FAQ </index.php/Processor_SDK |
-| r_SDK_RTOS_NDK#Examples>`__       | _RTOS_NDK#FAQ>`__                 |
-|                                   |                                   |
-|    -  `PING                       |                                   |
-|       Example </index.php/Process |                                   |
-| or_SDK_RTOS_NDK#PING_Example>`__  |                                   |
-|    -  `CCLink                     |                                   |
-|       Example </index.php/Process |                                   |
-| or_SDK_RTOS_NDK#CCLink_Example>`_ |                                   |
-| _                                 |                                   |
-+-----------------------------------+-----------------------------------+
++-------------------------------------------------+-----------------------------------+
+| .. rubric:: **Overview**                        | .. rubric:: **User Interface**    |
+|    :name: overview                              |    :name: user-interface          |
+|                                                 |                                   |
+| - `NDK Overview </index.php/Processor           |                                   |
+|   _SDK_RTOS_NDK#NDK_Overview>`__                |                                   |
+| - `NIMU Transport </index.php/Processo          |                                   |
+|   r_SDK_RTOS_NDK#NIMU_Transport>`__             |                                   |
+|                                                 |                                   |
+|   - `NIMU for                                   |                                   |
+|     CPSW </index.php/Processor_                 |                                   |
+|     SDK_RTOS_NDK#NIMU_FOR_CPSW>`__              |                                   |
+|                                                 |                                   |
+|   - `NIMU for                                   |                                   |
+|     ICSS </index.php/Processor_                 |                                   |
+|     SDK_RTOS_NDK#NIMU_FOR_ICSS>`__              |                                   |
+|                                                 |                                   |
+| - `Additional Documentation                     |                                   |
+|   References </index.php/Process                |                                   |
+|   or_SDK_RTOS_NDK#Additional_Docume             |                                   |
+|   ntation_References>`__                        |                                   |
+|                                                 |                                   |
++-------------------------------------------------+-----------------------------------+
+| .. rubric:: **Application**                     | .. rubric:: **Debug**             |
+|    :name: application                           |    :name: debug                   |
+|                                                 |                                   |
+| - `Examples </index.php/Processo                | - `FAQ </index.php/Processor_SDK  |
+|   r_SDK_RTOS_NDK#Examples>`__                   |   _RTOS_NDK#FAQ>`__               |
+|                                                 |                                   |
+|    - `PING Example </index.php/Process          |                                   |
+|      or_SDK_RTOS_NDK#PING_Example>`__           |                                   |
+|                                                 |                                   |
+|    - `CCLink Example </index.php/Process        |                                   |
+|      or_SDK_RTOS_NDK#CCLink_Example>`_          |                                   |
+|                                                 |                                   |
++-------------------------------------------------+-----------------------------------+
 
 .. rubric:: NDK Overview
    :name: ndk-overview
@@ -537,13 +536,13 @@ Additional Documentation References
 
    <div class="hf-nsfooter">
 
-+-----------------------------------+-----------------------------------+
-| |E2e.jpg|                         | *For technical support please     |
-|                                   | post your questions at            |
-|                                   | http://e2e.ti.com. Please post    |
-|                                   | only comments about the article   |
-|                                   | **Processor SDK RTOS NDK** here.* |
-+-----------------------------------+-----------------------------------+
+.. list-table::
+
+   * - |E2e.jpg|
+
+     - For technical support please post your questions at http://e2e.ti.com.
+       Please post only comments about the article **Processor SDK RTOS NDK**
+       here.
 
 |Hyperlink blue.png|
 
@@ -553,42 +552,64 @@ Additional Documentation References
 
 **Links**
 
-+-----------------+-----------------+-----------------+-----------------+
-| | `Amplifiers & | | `DLP &        | `Processors <ht | | `Switches &   |
-|   Linear <http: |   MEMS <http:// | tp://www.ti.com |   Multiplexers  |
-| //www.ti.com/ls | www.ti.com/lsds | /lsds/ti/dsp/em | <http://www.ti. |
-| ds/ti/analog/am | /ti/analog/mems | bedded_processo | com/lsds/ti/ana |
-| plifier_and_lin | /mems.page>`__  | r.page>`__      | log/switches_an |
-| ear.page>`__    | | `High-Reliabi |                 | d_multiplexers. |
-| | `Audio <http: | lity <http://ww | -  `ARM         | page>`__        |
-| //www.ti.com/ls | w.ti.com/lsds/t |    Processors < | | `Temperature  |
-| ds/ti/analog/au | i/analog/high_r | http://www.ti.c |   Sensors &     |
-| dio/audio_overv | eliability.page | om/lsds/ti/dsp/ |   Control       |
-| iew.page>`__    | >`__            | arm.page>`__    |   ICs <http://w |
-| | `Broadband    | | `Interface <h | -  `Digital     | ww.ti.com/lsds/ |
-|   RF/IF &       | ttp://www.ti.co |    Signal       | ti/analog/tempe |
-|   Digital       | m/lsds/ti/analo |    Processors   | rature_sensor.p |
-|   Radio <http:/ | g/interface/int |    (DSP) <http: | age>`__         |
-| /www.ti.com/lsd | erface.page>`__ | //www.ti.com/ls | | `Wireless     |
-| s/ti/analog/rfi | | `Logic <http: | ds/ti/dsp/home. |   Connectivity  |
-| f.page>`__      | //www.ti.com/ls | page>`__        | <http://focus.t |
-| | `Clocks &     | ds/ti/logic/hom | -  `Microcontro | i.com/wireless/ |
-|   Timers <http: | e_overview.page | llers           | docs/wirelessov |
-| //www.ti.com/ls | >`__            |    (MCU) <http: | erview.tsp?fami |
-| ds/ti/analog/cl | | `Power        | //www.ti.com/ls | lyId=2003&secti |
-| ocksandtimers/c |   Management <h | ds/ti/microcont | onId=646&tabId= |
-| locks_and_timer | ttp://www.ti.co | roller/home.pag | 2735>`__        |
-| s.page>`__      | m/lsds/ti/analo | e>`__           |                 |
-| | `Data         | g/powermanageme | -  `OMAP        |                 |
-|   Converters <h | nt/power_portal |    Applications |                 |
-| ttp://www.ti.co | .page>`__       |    Processors < |                 |
-| m/lsds/ti/analo |                 | http://www.ti.c |                 |
-| g/dataconverter |                 | om/lsds/ti/omap |                 |
-| s/data_converte |                 | -applications-p |                 |
-| r.page>`__      |                 | rocessors/the-o |                 |
-|                 |                 | map-experience. |                 |
-|                 |                 | page>`__        |                 |
-+-----------------+-----------------+-----------------+-----------------+
+.. list-table::
+
+   * - `Amplifiers & Linear
+       <http://www.ti.com/lsds/ti/analog/amplifier_and_linear.page>`_
+
+     -
+
+        - `Audio <http://www.ti.com/lsds/ti/analog/audio/audio_overview.page>`_
+
+        - `Broadband RF/IF & Digital Radio
+          <http://www.ti.com/lsds/ti/analog/rfif.page>`_
+
+        - `Clocks & Timers
+          <http://www.ti.com/lsds/ti/analog/clocksandtimers/clocks_and_timers.page>`_
+
+        - `Data Converters
+          <http://www.ti.com/lsds/ti/analog/dataconverters/data_converter.page>`_
+
+   * - `DLP & MEMS <http://www.ti.com/lsds/ti/analog/mems/mems.page>`_
+
+     -
+
+        - `High-Reliability
+          <http://www.ti.com/lsds/ti/analog/high_reliability.page>`__
+
+        - `Interface <http://www.ti.com/lsds/ti/analog/interface/interface.page>`__
+
+        - `Logic <http://www.ti.com/lsds/ti/logic/home_overview.page>`__
+
+        - `Power Management
+          <http://www.ti.com/lsds/ti/analog/powermanagement/power_portal.page>`__
+
+   * - `Processors <http://www.ti.com/lsds/ti/dsp/embedded_processor.page>`__
+
+     -
+
+        - `ARM Processors <http://www.ti.com/lsds/ti/dsp/arm.page>`__
+
+        - `Digital Signal Processors (DSP)
+          <http://www.ti.com/lsds/ti/dsp/home.page>`__
+
+        - `Microcontrollers (MCU)
+          <http://www.ti.com/lsds/ti/microcontroller/home.page>`__
+
+        - `OMAP Applications Processors
+          <http://www.ti.com/lsds/ti/omap-applications-processors/the-omap-experience.page>`__
+
+   * - `Switches & Multiplexers
+       <http://www.ti.com/lsds/ti/analog/switches_and_multiplexers.page>`__
+
+     -
+     
+        - `Temperature Sensors & Control ICs
+          <http://www.ti.com/lsds/ti/analog/temperature_sensor.page>`__
+        
+        - `Wireless Connectivity
+          <http://focus.ti.com/wireless/docs/wirelessoverview.tsp?familyId=2003&sectionId=646&tabId=2735>`__
+
 
 .. raw:: html
 
@@ -656,9 +677,11 @@ Retrieved from
 .. rubric:: Personal tools
    :name: p-personal-label
 
--  `Log
-   in <http://processors.wiki.ti.com/index.php?title=Special:UserLogin&returnto=Processor+SDK+RTOS+NDK>`__
--  `Request account <http://processors.wiki.ti.com/index.php/Special:RequestAccount>`__
+-  `Log in
+  <http://processors.wiki.ti.com/index.php?title=Special:UserLogin&returnto=Processor+SDK+RTOS+NDK>`__
+
+-  `Request account
+  <http://processors.wiki.ti.com/index.php/Special:RequestAccount>`__
 
 .. raw:: html
 
@@ -677,7 +700,9 @@ Retrieved from
    :name: p-namespaces-label
 
 -  `Page <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK>`__
--  `Discussion <http://processors.wiki.ti.com/index.php?title=Talk:Processor_SDK_RTOS_NDK&action=edit&redlink=1>`__
+
+-  `Discussion
+  <http://processors.wiki.ti.com/index.php?title=Talk:Processor_SDK_RTOS_NDK&action=edit&redlink=1>`__
 
 .. raw:: html
 
@@ -719,10 +744,13 @@ Retrieved from
 .. rubric:: Views
    :name: p-views-label
 
--  `Read <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK>`__
--  `View source <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=edit>`__
--  `View
-   history <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=history>`__
+- `Read <http://processors.wiki.ti.com/index.php/Processor_SDK_RTOS_NDK>`__
+
+- `View source
+  <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=edit>`__
+
+- `View history
+  <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=history>`__
 
 .. raw:: html
 
@@ -783,7 +811,7 @@ Retrieved from
 
    <div id="p-logo" role="banner">
 
-` <http://processors.wiki.ti.com/index.php/Main_Page>`__
+`<http://processors.wiki.ti.com/index.php/Main_Page>`__
 
 .. raw:: html
 
@@ -801,12 +829,18 @@ Retrieved from
 
    <div class="body">
 
--  `Main Page <http://processors.wiki.ti.com/index.php/Main_Page>`__
--  `All pages <http://processors.wiki.ti.com/index.php/Special:AllPages>`__
--  `All categories <http://processors.wiki.ti.com/index.php/Special:Categories>`__
--  `Recent changes <http://processors.wiki.ti.com/index.php/Special:RecentChanges>`__
--  `Random page <http://processors.wiki.ti.com/index.php/Special:Random>`__
--  `Help <https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents>`__
+- `Main Page <http://processors.wiki.ti.com/index.php/Main_Page>`__
+
+- `All pages <http://processors.wiki.ti.com/index.php/Special:AllPages>`__
+
+- `All categories http://processors.wiki.ti.com/index.php/Special:Categories>`__
+
+- `Recent changes
+  http://processors.wiki.ti.com/index.php/Special:RecentChanges>`__
+
+- `Random page <http://processors.wiki.ti.com/index.php/Special:Random>`__
+
+- `Help <https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents>`__
 
 .. raw:: html
 
@@ -828,12 +862,14 @@ Retrieved from
 
    <div class="body">
 
--  `Create a
-   book <http://processors.wiki.ti.com/index.php?title=Special:Book&bookcmd=book_creator&referer=Processor+SDK+RTOS+NDK>`__
--  `Download as
-   PDF <http://processors.wiki.ti.com/index.php?title=Special:Book&bookcmd=render_article&arttitle=Processor+SDK+RTOS+NDK&oldid=232568&writer=rl>`__
--  `Printable
-   version <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&printable=yes>`__
+- `Create a book
+  <http://processors.wiki.ti.com/index.php?title=Special:Book&bookcmd=book_creator&referer=Processor+SDK+RTOS+NDK>`__
+
+- `Download as PDF
+  <http://processors.wiki.ti.com/index.php?title=Special:Book&bookcmd=render_article&arttitle=Processor+SDK+RTOS+NDK&oldid=232568&writer=rl>`__
+
+- `Printable version
+  <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&printable=yes>`__
 
 .. raw:: html
 
@@ -855,15 +891,20 @@ Retrieved from
 
    <div class="body">
 
--  `What links
-   here <http://processors.wiki.ti.com/index.php/Special:WhatLinksHere/Processor_SDK_RTOS_NDK>`__
--  `Related
-   changes <http://processors.wiki.ti.com/index.php/Special:RecentChangesLinked/Processor_SDK_RTOS_NDK>`__
--  `Special pages <http://processors.wiki.ti.com/index.php/Special:SpecialPages>`__
--  `Permanent
-   link <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&oldid=232568>`__
--  `Page
-   information <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=info>`__
+- `What links here
+  <http://processors.wiki.ti.com/index.php/Special:WhatLinksHere/Processor_SDK_RTOS_NDK>`__
+
+- `Related changes
+  <http://processors.wiki.ti.com/index.php/Special:RecentChangesLinked/Processor_SDK_RTOS_NDK>`__
+
+- `Special pages
+  <http://processors.wiki.ti.com/index.php/Special:SpecialPages>`__
+
+- `Permanent link
+  <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&oldid=232568>`__
+
+- `Page information
+  <http://processors.wiki.ti.com/index.php?title=Processor_SDK_RTOS_NDK&action=info>`__
 
 .. raw:: html
 
@@ -885,19 +926,28 @@ Retrieved from
 
    <div id="footer" role="contentinfo">
 
--  This page was last modified on 27 December 2017, at 15:28.
--  This page has been accessed 6,887 times.
--  Content is available under `Creative Commons
-   Attribution-ShareAlike <http://creativecommons.org/licenses/by-sa/3.0/>`__
-   unless otherwise noted.
+- This page was last modified on 27 December 2017, at 15:28.
 
--  `Privacy policy <http://processors.wiki.ti.com/index.php/Project:Privacy_policy>`__
--  `About Texas Instruments Wiki <http://processors.wiki.ti.com/index.php/Project:About>`__
--  `Disclaimers <http://processors.wiki.ti.com/index.php/Project:General_disclaimer>`__
--  `Terms of Use <http://processors.wiki.ti.com/index.php/Project:Terms_of_Service>`__
+- This page has been accessed 6,887 times.
 
--  |Creative Commons Attribution-ShareAlike|
--  |Powered by MediaWiki|
+- Content is available under `Creative Commons Attribution-ShareAlike
+  <http://creativecommons.org/licenses/by-sa/3.0/>`__ unless otherwise noted.
+
+- `Privacy policy
+  <http://processors.wiki.ti.com/index.php/Project:Privacy_policy>`__
+
+- `About Texas Instruments Wiki
+  <http://processors.wiki.ti.com/index.php/Project:About>`__
+
+- `Disclaimers
+  <http://processors.wiki.ti.com/index.php/Project:General_disclaimer>`__
+
+- `Terms of Use
+  <http://processors.wiki.ti.com/index.php/Project:Terms_of_Service>`__
+
+- |Creative Commons Attribution-ShareAlike|
+
+- |Powered by MediaWiki|
 
 .. raw:: html
 
@@ -915,18 +965,22 @@ Retrieved from
    :width: 561px
    :height: 504px
    :target: /index.php/File:NDK_ARCH.png
+
 .. |E2e.jpg| image:: /images/8/82/E2e.jpg
    :width: 305px
    :height: 63px
    :target: /index.php/File:E2e.jpg
+
 .. |Hyperlink blue.png| image:: /images/9/9f/Hyperlink_blue.png
    :width: 96px
    :height: 96px
    :target: /index.php/File:Hyperlink_blue.png
+
 .. |Creative Commons Attribution-ShareAlike| image:: /resources/assets/licenses/cc-by-sa.png
    :width: 88px
    :height: 31px
    :target: http://creativecommons.org/licenses/by-sa/3.0/
+
 .. |Powered by MediaWiki| image:: /resources/assets/poweredby_mediawiki_88x31.png
    :width: 88px
    :height: 31px

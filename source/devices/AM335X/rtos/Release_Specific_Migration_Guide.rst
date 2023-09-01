@@ -332,11 +332,15 @@ default. For accessing the tools from a different path, modify
 overriden from the build console as shown below.
 
 Windows
-::
+
+.. code:: console
+
        set TOOLS_INSTALL_PATH=<Path for the tools root folder>
 
 Linux
-::
+
+.. code:: console
+
        TOOLS_INSTALL_PATH=<Path for the tools root folder>
 
 

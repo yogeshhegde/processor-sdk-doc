@@ -628,8 +628,3 @@ Related
 -  `XDS510 <http://processors.wiki.ti.com/index.php/XDS510>`__
 -  `XDS560v2 System Trace <http://processors.wiki.ti.com/index.php/XDS560v2_System_Trace>`__
 -  `XDS560 Trace <http://processors.wiki.ti.com/index.php/XDS560_Trace>`__
-
---------------
-
-.. raw:: html
-

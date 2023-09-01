@@ -169,7 +169,9 @@ How to Launch Seva Store via CLI
 --------------------------------
 
 1. Before Launching Seva-Store via CLI ensure that your AM62x SK is connected to a network. To launch the Seva Store via CLI, run  
+
    ::
+
        WAYLAND_DISPLAY=wayland-1 XDG_RUNTIME_DIR=/run/user/1000 seva-launcher-aarch64
  
 .. note:: If you have connected the AM62x SK to a proxy network, then before launching Seva Store you need to configure Docker and System proxies. `seva-launcher-aarch64` takes http_proxy and no_proxy as input to help you configure it. **To launch the Seva Store via CLI in a proxy network**, run

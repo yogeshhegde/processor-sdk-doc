@@ -57,75 +57,96 @@ Supported EVMs and pin configurations for these EVMs are listed below. See the d
 .. rubric::  bbbAM335x
    :name: espi-bbbam335x
 
-+---------+-------+--------------+---------------------+--------+-------+
-| Core    | PRU   |Functional Pin|GPIO Pins            |EVM Port|EVM Pin|
-+=========+=======+==============+=====================+========+=======+
-|         |       | OUT[0]       |pr1_pru0_pru_r30_4   | J3     | 41    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | OUT[1]       |pr1_pru0_pru_r30_5   | J3     | 42    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | OUT[2]       |pr1_pru0_pru_r30_6   | J3     | 39    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | OUT[3]       |pr1_pru0_pru_r30_7   | J3     | 40    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | Alert        |pr1_pru0_pru_r30_9   | J3     | 29    |
-|         |       |--------------+---------------------+--------+-------+
-| ICSS1   | PRU1  | EN           |pr1_pru0_pru_r30_10  | J3     | 28    |
-|         |       |--------------+---------------------+--------+-------+
-|         |       | IN[0]        |pr1_pru0_pru_r30_0   | J3     | 45    |
-|         |       |--------------+---------------------+--------+-------+
-|         |       | IN[1]        |pr1_pru0_pru_r30_1   | J3     | 46    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | IN[2]        |pr1_pru0_pru_r30_2   | J3     | 43    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | IN[3]        |pr1_pru0_pru_r30_3   | J3     | 44    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | SCL          |pr1_pru0_pru_r30_8   | J3     | 27    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | CS           |pr1_pru0_pru_r30_11  | J3     | 30    |
-+---------+-------+--------------+---------------------+--------+-------+
-| A8      | n/a   | Reset        |GPIO_3_19            | J9     | 26    |
-+---------+-------+--------------+---------------------+--------+-------+
++---------+-------+----------------+----------------------+----------+---------+
+| Core    | PRU   | Functional Pin | GPIO Pins            | EVM Port | EVM Pin |
++=========+=======+================+======================+==========+=========+
+|         |       | OUT[0]         | pr1_pru0_pru_r30_4   | J3       | 41      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | OUT[1]         | pr1_pru0_pru_r30_5   | J3       | 42      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | OUT[2]         | pr1_pru0_pru_r30_6   | J3       | 39      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | OUT[3]         | pr1_pru0_pru_r30_7   | J3       | 40      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | Alert          | pr1_pru0_pru_r30_9   | J3       | 29      |
+|         |       +----------------+----------------------+----------+---------+
+| ICSS1   | PRU1  | EN             | pr1_pru0_pru_r30_10  | J3       | 28      |
+|         |       +----------------+----------------------+----------+---------+
+|         |       | IN[0]          | pr1_pru0_pru_r30_0   | J3       | 45      |
+|         |       +----------------+----------------------+----------+---------+
+|         |       | IN[1]          | pr1_pru0_pru_r30_1   | J3       | 46      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | IN[2]          | pr1_pru0_pru_r30_2   | J3       | 43      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | IN[3]          | pr1_pru0_pru_r30_3   | J3       | 44      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | SCL            | pr1_pru0_pru_r30_8   | J3       | 27      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | CS             | pr1_pru0_pru_r30_11  | J3       | 30      |
++---------+-------+----------------+----------------------+----------+---------+
+| A8      | n/a   | Reset          | GPIO_3_19            | J9       | 26      |
++---------+-------+----------------+----------------------+----------+---------+
 
 .. rubric::  idkAM437x
    :name: espi-idkAM437x
 
-+---------+-------+--------------+---------------------+--------+-------+
-| Core    | PRU   |Functional Pin|GPIO Pins            |EVM Port|EVM Pin|
-+=========+=======+==============+=====================+========+=======+
-|         |       | OUT[0]       |pr1_pru0_pru_r30_6   | P16    | 49    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | Alert        |pr1_pru0_pru_r30_11  | P16    | 48    |
-|         |       |--------------+---------------------+--------+-------+
-| ICSS1   | PRU0  | EN           |pr1_pru0_pru_r30_8   | P16    | 6     |
-|         |       |--------------+---------------------+--------+-------+
-|         |       | IN[0]        |pr1_pru0_pru_r30_16  | P16    | 42    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | SCL          |pr1_pru0_pru_r30_10  | P16    | 46    |
-|         |       |--------------+---------------------+--------+-------+ 
-|         |       | CS           |pr1_pru0_pru_r30_9   | P16    | 8     |
-+---------+-------+--------------+---------------------+--------+-------+
-| A9      | n/a   | Reset        |GPIO_5_9             | P16    | 32    |
-+---------+-------+--------------+---------------------+--------+-------+
++---------+-------+----------------+----------------------+----------+---------+
+| Core    | PRU   | Functional Pin | GPIO Pins            | EVM Port | EVM Pin |
++=========+=======+================+======================+==========+=========+
+|         |       | OUT[0]         | pr1_pru0_pru_r30_6   | P16      | 49      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | Alert          | pr1_pru0_pru_r30_11  | P16      | 48      |
+|         |       +----------------+----------------------+----------+---------+
+| ICSS1   | PRU0  | EN             | pr1_pru0_pru_r30_8   | P16      | 6       |
+|         |       +----------------+----------------------+----------+---------+
+|         |       | IN[0]          | pr1_pru0_pru_r30_16  | P16      | 42      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | SCL            | pr1_pru0_pru_r30_10  | P16      | 46      |
+|         |       +----------------+----------------------+----------+---------+ 
+|         |       | CS             | pr1_pru0_pru_r30_9   | P16      | 8       |
++---------+-------+----------------+----------------------+----------+---------+
+| A9      | n/a   | Reset          | GPIO_5_9             | P16      | 32      |
++---------+-------+----------------+----------------------+----------+---------+
 
 
 eSPI Applications
 =================
-We have included a simple example test application which handles PUT_IORD_SHORT, PUT_IOWR_SHORT, PUT_MEMRD32_SHORT, and PUT_MEMWR32_SHORT packets with expected address/data values. This can be used as a starting point to build your own applications, along with the following:
+
+We have included a simple example test application which handles PUT_IORD_SHORT,
+PUT_IOWR_SHORT, PUT_MEMRD32_SHORT, and PUT_MEMWR32_SHORT packets with expected
+address/data values. This can be used as a starting point to build your own
+applications, along with the following:
+
 - eSPI uses the MCSPI API
-    - Open as MCSPI instance 2
+
+   - Open as MCSPI instance 2
+
 - HW interrupts must be enabled
-    - i.e. HwiP_enableInterrupt(espi_cfg.intNum)
-- MCSPI_transfer() is blocking and takes a SPI_Transaction parameter which is used as follows:
-    - RX Transfer:
+
+   - i.e. HwiP_enableInterrupt(espi_cfg.intNum)
+
+- MCSPI_transfer() is blocking and takes a SPI_Transaction parameter which is
+  used as follows:
+
+   - RX Transfer:
+
       - transaction.rxBuf = <some pre-allocated buffer>
+
       - transaction.txBuf = Null
+
       - transaction.count = max packet size
-    - TX Transfer:
+
+   - TX Transfer:
+
       - transaction.rxBuf = Null
+
       - transaction.txBuf = <some pre-allocated buffer>
+
       - transaction.count = <size of packet>
-- The application must parse the full eSPI packet, and must respond with the full proper eSPI packet (the RSP code and CRC will be taken care of by the firmware)
+
+- The application must parse the full eSPI packet, and must respond with the
+  full proper eSPI packet (the RSP code and CRC will be taken care of by the
+  firmware)
 
 .. rubric::  example-application
    :name: espi-example-application
@@ -151,11 +172,11 @@ We have included a simple example test application which handles PUT_IORD_SHORT,
 
     /* Set GPIO pin configurations */
     GPIO_setConfig(ESPI_GPIO_PIN_RESET, GPIO_DEVICE_CONFIG(espi_cfg.resetPin.port,
-						    espi_cfg.resetPin.pinNum) |
-		 GPIO_CFG_IN_INT_RISING | GPIO_CFG_INPUT);
+    						    espi_cfg.resetPin.pinNum) |
+    		 GPIO_CFG_IN_INT_RISING | GPIO_CFG_INPUT);
 
     /* Initialize GPIO */
-    GPIO_init();   
+    GPIO_init();
 
     /* Initialize the MCSPI paramters */
     MCSPI_Params_init(&mcspiParams);
@@ -196,22 +217,22 @@ We have included a simple example test application which handles PUT_IORD_SHORT,
 
 Refer to the Release Notes for details concerning eSPI support across different EVMs.
 
-+-----------------------+-----------------------+--------------------------+
-| Name                  | Description           | Expected Results         |
-+=======================+=======================+==========================+
-| ESPI_FwExample        | Driver Firmware       | A short write to 0xDEAD  |
-|                       | example application   | or 0x0D0E0A0D will not   |
-|                       | for ESPI FW instances | print or return anything.|
-|                       |                       | A short read from 0xDEAD |
-|                       |                       | or 0x0D0E0A0D will return|
-|                       |                       | the command opcode + the |
-|                       |                       | byte-number of the       |
-|                       |                       | response. A read from any|
-|                       |                       | other address will return|
-|                       |                       | the opcode minus the     |
-|                       |                       | byte-number of the       |
-|                       |                       | response.                |
-+-----------------------+-----------------------+--------------------------+
++-----------------------+-----------------------+---------------------------+
+| Name                  | Description           | Expected Results          |
++=======================+=======================+===========================+
+| ESPI_FwExample        | Driver Firmware       | A short write to 0xDEAD   |
+|                       | example application   | or 0x0D0E0A0D will not    |
+|                       | for ESPI FW instances | print or return anything. |
+|                       |                       | A short read from 0xDEAD  |
+|                       |                       | or 0x0D0E0A0D will return |
+|                       |                       | the command opcode + the  |
+|                       |                       | byte-number of the        |
+|                       |                       | response. A read from any |
+|                       |                       | other address will return |
+|                       |                       | the opcode minus the      |
+|                       |                       | byte-number of the        |
+|                       |                       | response.                 |
++-----------------------+-----------------------+---------------------------+
 
 | 
 
@@ -228,6 +249,3 @@ Refer to the Release Notes for details concerning eSPI support across different 
 This document can be cosulted in case of interest in details of internal firmware 
 operation, or a desire to modify the firmware.**
 
-| 
-
-.. raw:: html

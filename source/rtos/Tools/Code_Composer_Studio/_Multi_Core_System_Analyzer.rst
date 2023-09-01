@@ -381,7 +381,3 @@ component (e.g. "UIA").
 -  Use the CCS/Eclipse Update Manager (see the Getting Started Guide
    above)
 
---------------
-
-.. raw:: html
-

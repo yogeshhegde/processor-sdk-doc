@@ -1572,5 +1572,3 @@ now be able to use your XDS100 with CCS.
 
 `essay writing <http://custom-essay.ws/index.php>`__
 
-.. raw:: html
-

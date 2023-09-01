@@ -23,6 +23,7 @@ development environment for embedded developers.
 Code Composer Studio v6 can be downloaded directly to your PC.
 
 `GSG:CCSv6 Download <http://processors.wiki.ti.com/index.php/GSG:CCSv6_Download>`__
+
 .. rubric:: Installing CCS
    :name: installing-ccs
 
@@ -30,6 +31,7 @@ The installation process is the same for both delivery methods (DVD or
 download).
 
 `GSG:CCSv6 installation <http://processors.wiki.ti.com/index.php/GSG:CCSv6_installation>`__
+
 .. rubric:: Running CCS for the first time
    :name: running-ccs-for-the-first-time
 
@@ -43,6 +45,7 @@ Follow the link below to learn about these last steps:
 
 `GSG:CCSv6 Running for the first
 time <http://processors.wiki.ti.com/index.php/GSG:CCSv6_Running_for_the_first_time>`__
+
 .. rubric:: Working with CCS
    :name: working-with-ccs
 
@@ -57,7 +60,7 @@ source, include and configuration files.
 
 `Device_Specific_Workshops_with_CCS <http://processors.wiki.ti.com/index.php/Device_Specific_Workshops_with_CCS>`__
 `CCS_Fundamentals_Workshop <http://processors.wiki.ti.com/index.php/CCS_Fundamentals_Workshop>`__
-| 
+ 
 | **Important!** The modules above require software libraries and
   components that are not installed with CCSv6 by default: MSP430Ware,
   Tivaware, ControlSUITE, Starterware, SYSBIOS, MCSDK, etc. These
@@ -67,7 +70,6 @@ source, include and configuration files.
 
 Additional quick start guides and videos can be found at the `CCS
 Training category <http://processors.wiki.ti.com/index.php/Category:CCS_Training>`__.
-| 
 
 .. rubric:: Advanced Topics
    :name: advanced-topics
@@ -87,6 +89,7 @@ v5 <http://processors.wiki.ti.com/index.php/GSG:Adding_GEL_files_to_a_target_con
 `GSG:Connecting to target cores in SoC devices
 v5 <http://processors.wiki.ti.com/index.php/GSG:Connecting_to_target_cores_in_SoC_devices_v5>`__
 `http://processors.wiki.ti.com/index.php/Target_Configuration_-_Custom_Configurations <http://processors.wiki.ti.com/index.php/Target_Configuration_-_Custom_Configurations>`__
+
 .. rubric:: Linux development
    :name: linux-development
 
@@ -100,6 +103,7 @@ environment.
 `How to create GCC projects in
 CCSv5 <http://processors.wiki.ti.com/index.php/How_to_create_GCC_projects_in_CCSv5>`__
 `Sitara_Linux_SDK_CCS_Debug <http://processors.wiki.ti.com/index.php/Sitara_Linux_SDK_CCS_Debug>`__
+
 .. rubric:: Resources and References
    :name: resources-and-references
 
@@ -114,6 +118,7 @@ CCSv5 <http://processors.wiki.ti.com/index.php/How_to_create_GCC_projects_in_CCS
 -  Eclipse Concepts:
 
 `http://processors.wiki.ti.com/index.php/Eclipse_Concepts <http://processors.wiki.ti.com/index.php/Eclipse_Concepts>`__
+
 .. rubric:: Example projects, libraries and source code
    :name: example-projects-libraries-and-source-code
 
@@ -137,6 +142,3 @@ http://focus.ti.com/docs/toolsw/folders/print/sprc101.html
 **5.** TMS320C6000 Libraries:
 
 http://focus.ti.com/dsp/docs/dspfindtoolswresults.tsp?sectionId=3&tabId=1620&familyId=44&toolTypeId=24&go=Go
-
-.. raw:: html
-

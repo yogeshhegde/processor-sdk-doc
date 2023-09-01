@@ -361,18 +361,28 @@ CCS Projects mentioned in the above table are built using pdkProjectCreate.bat/s
 Building MCASP Test applications via makefiles
 ----------------------------------------------
 
--  MCASP Test applications and dependent libraries are built from the top level mcasp makefile
--  Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  for details
-   of how to setup the build environment. Once you have setup the build environment, issue the following commands:  
-	-  cd <pdk>/packages/
-	-  To build: make mcasp 
-	-  To clean: make mcasp_clean 
+- MCASP Test applications and dependent libraries are built from the top level
+  mcasp makefile
 
-- Similarly, to build at the module level, issue the following commands for rebuilding :
-	
-	- cd <pdk>/packages/ti/drv/mcasp
-	- To build: make all
-	- To clean: make clean
+- Refer to the `Processor SDK RTOS Getting Started Guide
+  <index_overview.html#setup-environment>`__  for details of how to setup the
+  build environment. Once you have setup the build environment, issue the
+  following commands:  
+
+   -  cd <pdk>/packages/
+
+   -  To build: make mcasp 
+
+   -  To clean: make mcasp_clean 
+
+- Similarly, to build at the module level, issue the following commands for
+  rebuilding :
+
+   - cd <pdk>/packages/ti/drv/mcasp
+
+   - To build: make all
+
+   - To clean: make clean
 
 .. _AudioEQ example: http://www.ti.com/tool/tidep0069
 

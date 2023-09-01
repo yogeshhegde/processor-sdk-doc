@@ -349,10 +349,14 @@ makefile instead of CCS projects.
 Refer to the `Processor SDK RTOS Getting Started Guide <index_overview.html#setup-environment>`__  
 for details  of how to setup the build environment. Once you have setup the build environment, 
 issue the following commands:  
-	-  cd <pdk>/packages/
-	-  To build: make usb 
-	-  To clean: make usb_clean 
-	-  Test applications are then under (TI_PDK_INSTALL_DIR)/packages/ti/binary/
+
+- cd <pdk>/packages/
+
+- To build: make usb 
+
+- To clean: make usb_clean 
+
+- Test applications are then under (TI_PDK_INSTALL_DIR)/packages/ti/binary/
 
 +-----------------------------------+-----------------------+-------+---------------------------------+
 | Test App Name                     | EVM's supported       | Bare  |                                 |

@@ -645,10 +645,12 @@ in the source files located under
 <PDK_INSTALL_PATH>/packages/ti/boot/sbl/src/<BOOT_MEDIA>
 
 Examples of customization that can be changed:
--  QSPI/SPI flash offsets: These offsets are configured in sbl_qspi.c
-   and sbl_spi.c
--  MMCSD: The name of the application is hard coded as app in function
-   SBL_MMCBootImage in the sbl_mmcsd.c
+
+- QSPI/SPI flash offsets: These offsets are configured in sbl_qspi.c and
+  sbl_spi.c
+
+- MMCSD: The name of the application is hard coded as app in function
+  SBL_MMCBootImage in the sbl_mmcsd.c
 
 Speeding up boot by increasing speed of the boot interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
