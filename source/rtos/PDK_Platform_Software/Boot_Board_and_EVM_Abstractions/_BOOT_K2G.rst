@@ -199,9 +199,8 @@ below:
      Finished flashing 'app' with size 19398 at offset 80000
      Flashing completed!
 
-.. note::
-This application will flash the image at required offset without taking
-into consideration any overwriting to previously flashed image.
+.. note:: This application will flash the image at required offset without
+   taking into consideration any overwriting to previously flashed image.
 
 Booting via QSPI
 ''''''''''''''''''

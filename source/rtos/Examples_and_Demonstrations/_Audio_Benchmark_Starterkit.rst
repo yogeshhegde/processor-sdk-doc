@@ -181,10 +181,10 @@ script provided in the root directory of the starterkit.
 Developers are required to setup the Processor SDK RTOS build
 environment as described in :ref:`Processor SDK RTOS Setup environment <Build-The-SDK-Setup-Environment-label>`
 
-.. note::
-If developers install CCS or Processor SDK RTOS under a Custom path then
-they need to refer to the setup instructions described under 
-:ref:`Setup environment when installing to a custom path <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
+.. note:: If developers install CCS or Processor SDK RTOS under a Custom path
+   then they need to refer to the setup instructions described under :ref:`Setup
+   environment when installing to a custom path
+   <Processor-SDK-RTOS-Install-In-Custom-Path-label>`
 
 | 
 
