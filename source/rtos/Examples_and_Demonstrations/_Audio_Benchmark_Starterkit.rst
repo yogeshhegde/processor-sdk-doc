@@ -303,12 +303,6 @@ Instructions specific to supported EVMs:
 
 | 
 
-+--------------------------------+------------------------------+
-| **Output in CCS IO Console :** | **Output in UART Console :** |
-+================================+==============================+
-.. Image:: ../images/FFTBenchmark_CCS_Output.png
-+--------------------------------+------------------------------+
-
 Using SD card (Supported only on AM57xx and K2G)
 ------------------------------------------------
 
